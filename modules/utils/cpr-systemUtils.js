@@ -419,6 +419,7 @@ export default class CPRSystemUtils {
           "bonuses.deathSavePenalty": "CPR.effectSheet.combat.stats.deathPenalty",
           "bonuses.universalAttack": "CPR.effectSheet.combat.stats.universalAttack",
           "bonuses.universalDamage": "CPR.effectSheet.combat.stats.universalDamage",
+          "bonuses.universalDamageReduction": "CPR.effectSheet.combat.stats.universalDamageReduction",
           "bonuses.attack": "CPR.effectSheet.combat.net.attack",
           "bonuses.defense": "CPR.effectSheet.combat.net.defense",
           "bonuses.perception_net": "CPR.effectSheet.combat.net.perception",

@@ -12,9 +12,18 @@ export default class DamageApplicationPrompt {
           LOGGER.trace("_onCancel | Dialog DamageApplicationPrompt | called.");
           resolve(false);
         };
-        const _onConfirm = () => {
+        const _onConfirm = (html) => {
           LOGGER.trace("_onConfirm | Dialog DamageApplicationPrompt | called.");
-          resolve(true);
+          let damageReductionRole = html.find("[name=\"damageReductionRole\"");
+          let damageReductionAE = html.find("[name=\"damageReductionAE\"");
+          const formData = new FormDataExtended(html.find("form")[0]).toObject();
+          if (damageReductionRole.checked) {
+            formData.damageReductionRole = true;
+          }
+          if (damageReductionAE.checked) {
+            formData.damageReductionAE = true;
+          }
+          resolve(formData);
         };
         new Dialog({
           title,
@@ -23,12 +32,12 @@ export default class DamageApplicationPrompt {
             cancel: {
               icon: "<i class=\"fas fa-times\"></i>",
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
-              callback: () => _onCancel(),
+              callback: (html) => _onCancel(html),
             },
             confirm: {
               icon: "<i class=\"fas fa-check\"></i>",
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
-              callback: () => _onConfirm(),
+              callback: (html) => _onConfirm(html),
             },
           },
           default: "cancel",

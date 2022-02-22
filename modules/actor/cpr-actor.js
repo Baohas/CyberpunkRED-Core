@@ -72,6 +72,7 @@ export default class CPRActor extends Actor {
     this.data.bonuses.maxHumanity = 0;
     this.data.bonuses.universalAttack = 0;
     this.data.bonuses.universalDamage = 0;
+    this.data.bonuses.universalDamageReduction = 0;
     // netrunning things
     this.data.bonuses.speed = 0;
     this.data.bonuses.perception_net = 0; // beware of hacks because "perception" is also a skill
@@ -1127,8 +1128,10 @@ export default class CPRActor extends Actor {
    * @param {int} ablation - value of the ablation
    * @param {boolean} ignoreHalfArmor - if half of the armor should be ignored
    * @param {boolean} damageLethal - if this damage can cause HP <= 0
+   * @param {boolean} damageReductionRoles - if true, apply damage reduction effects from Roles
+   * @param {boolean} damageReductionAE - if true, apply damage redugction from Active Effects
    */
-  async _applyDamage(damage, bonusDamage, location, ablation, ignoreHalfArmor, damageLethal) {
+  async _applyDamage(damage, bonusDamage, location, ablation, ignoreHalfArmor, damageLethal, damageReductionRole, damageReductionAE) {
     LOGGER.trace("_applyDamage | CPRActor | Called.");
     let totalDamageDealt = 0;
     if (location === "brain") {
@@ -1172,10 +1175,33 @@ export default class CPRActor extends Actor {
       // Damage taken against the head is doubled.
       takenDamage *= 2;
     }
+    if (damageReductionRole) {
+      // Apply damage reduction from role abilities
+      let universalBonusDamageReduction = 0;
+      this.data.filteredItems.role.forEach((r) => {
+        if (r.data.data.universalBonuses.includes("damageReduction")) {
+          universalBonusDamageReduction += Math.floor(r.data.data.rank / r.data.data.bonusRatio);
+        }
+        const subroleUniversalBonuses = r.data.data.abilities.filter((a) => a.universalBonuses.includes("damageReduction"));
+        if (subroleUniversalBonuses.length > 0) {
+          subroleUniversalBonuses.forEach((b) => {
+            universalBonusDamageReduction += Math.floor(b.rank / b.bonusRatio);
+          });
+        }
+      });
+      takenDamage -= universalBonusDamageReduction;
+    }
+
+    if (damageReductionAE) {
+      // Apply damage reduction from active effects
+      takenDamage -= this.data.bonuses.universalDamageReduction;
+    }
+
     const currentHp = this.data.data.derivedStats.hp.value;
     if (takenDamage >= currentHp && !damageLethal) {
       takenDamage = currentHp - 1;
     }
+
     await this.update({ "data.derivedStats.hp.value": currentHp - takenDamage });
     totalDamageDealt += takenDamage;
     // Ablate the armor correctly.

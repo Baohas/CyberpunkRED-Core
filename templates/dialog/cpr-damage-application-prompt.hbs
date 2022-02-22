@@ -12,4 +12,25 @@
     <li>{{actor.name}}</li>
   {{/each}}
 </div>
+<hr>
+<form>
+<ol class="items-list">
+  <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        Apply damage reduction from Role Abilities?
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="damageReductionRole" checked></span>
+      </div>
+  </li>
+  <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        Apply damage reduction from Active Effects?
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="damageReductionAE" checked></span>
+      </div>
+  </li>
+</ol>
+</form>
 {{cprTrace "END CPR-DAMAGE-APPLICATION-PROMPT.HBS"}}

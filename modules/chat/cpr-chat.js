@@ -358,17 +358,25 @@ export default class CPRChat {
         forbiddenActors.push(actor);
       }
     });
+    let damageReductionRole;
+    let damageReductionAE;
     if (!event.ctrlKey) {
       const title = SystemUtils.Localize("CPR.chat.damageApplication.prompt.title");
       const allowedTypesMessage = `${SystemUtils.Format("CPR.chat.damageApplication.prompt.allowedTypes", { location })}`;
       const data = { allowedTypesMessage, allowedActors, forbiddenActors };
-      const confirmation = await DamageApplicationPrompt.RenderPrompt(title, data);
+/*       const confirmation = await DamageApplicationPrompt.RenderPrompt(title, data);
       if (!confirmation) {
         return;
+      } */
+      const formData = await DamageApplicationPrompt.RenderPrompt(title, data).catch((err) => LOGGER.debug(err));
+      if (formData === undefined) {
+        return;
       }
+      damageReductionRole = formData.damageReductionRole;
+      damageReductionAE = formData.damageReductionAE;
     }
     allowedActors.forEach((a) => {
-      a._applyDamage(totalDamage, bonusDamage, location, ablation, ignoreHalfArmor, damageLethal);
+      a._applyDamage(totalDamage, bonusDamage, location, ablation, ignoreHalfArmor, damageLethal, damageReductionRole, damageReductionAE);
     });
   }
 }
