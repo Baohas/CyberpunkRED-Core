@@ -1131,7 +1131,7 @@ export default class CPRActor extends Actor {
    * @param {boolean} damageReductionRoles - if true, apply damage reduction effects from Roles
    * @param {boolean} damageReductionAE - if true, apply damage redugction from Active Effects
    */
-  async _applyDamage(damage, bonusDamage, location, ablation, ignoreHalfArmor, damageLethal, damageReductionRole, damageReductionAE) {
+  async _applyDamage(damage, bonusDamage, location, ablation, ammoVariety, ignoreHalfArmor, damageLethal, formData) {
     LOGGER.trace("_applyDamage | CPRActor | Called.");
     let totalDamageDealt = 0;
     if (location === "brain") {
@@ -1142,6 +1142,7 @@ export default class CPRActor extends Actor {
       return;
     }
     const armors = this.getEquippedArmors(location);
+    const shields = this.getEquippedArmors("shield");
     // Determine the highest value of all the equipped armors in the specific location
     let armorValue = 0;
     armors.forEach((a) => {
@@ -1158,12 +1159,27 @@ export default class CPRActor extends Actor {
     if (ignoreHalfArmor) {
       armorValue = Math.ceil(armorValue / 2);
     }
-    // Apply the bonusDamage, which penetrates the armor
+
+    // Apply damage to shield, if used, first.
+    if (formData.useShield && shields[0].data.data.shieldHitPoints.value > 0) {
+      this._ablateArmor("shield", damage + bonusDamage)
+      if (ammoVariety !== "grenade" && ammoVariety !== "rocket") {
+        CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: 0 });
+        return;
+      } else if (shields[0].data.data.shieldHitPoints.value > 0) {
+        CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: 0 });
+        return;
+      }
+    }
+
+    // Apply the bonusDamage, which penetrates the armor.
     if (bonusDamage !== 0) {
       const currentHp = this.data.data.derivedStats.hp.value;
       await this.update({ "data.derivedStats.hp.value": currentHp - bonusDamage });
       totalDamageDealt += bonusDamage;
     }
+
+
     if (damage <= armorValue) {
       // Damage did not penetrate armor, thus only the bonus damage is applied.
       CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: totalDamageDealt, ablation: 0 });
@@ -1175,8 +1191,8 @@ export default class CPRActor extends Actor {
       // Damage taken against the head is doubled.
       takenDamage *= 2;
     }
-    if (damageReductionRole) {
-      // Apply damage reduction from role abilities
+    if (formData.damageReductionRole) {
+      // Apply damage reduction from role abilities.
       let universalBonusDamageReduction = 0;
       this.data.filteredItems.role.forEach((r) => {
         if (r.data.data.universalBonuses.includes("damageReduction")) {
@@ -1192,7 +1208,7 @@ export default class CPRActor extends Actor {
       takenDamage -= universalBonusDamageReduction;
     }
 
-    if (damageReductionAE) {
+    if (formData.damageReductionAE) {
       // Apply damage reduction from active effects
       takenDamage -= this.data.bonuses.universalDamageReduction;
     }
@@ -1265,7 +1281,7 @@ export default class CPRActor extends Actor {
           const armorData = a.data;
           armorData.data.shieldHitPoints.value = Number(armorData.data.shieldHitPoints.value);
           armorData.data.shieldHitPoints.max = Number(armorData.data.shieldHitPoints.max);
-          armorData.data.shieldHitPoints.value = Math.max((a.data.shieldHitPoints.value - ablation), 0);
+          armorData.data.shieldHitPoints.value = Math.max((a.data.data.shieldHitPoints.value - ablation), 0);
           updateList.push({ _id: a.id, data: armorData.data });
         });
         await this.updateEmbeddedDocuments("Item", updateList);

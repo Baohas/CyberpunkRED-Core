@@ -331,6 +331,7 @@ export default class CPRChat {
     const totalDamage = parseInt(SystemUtils.GetEventDatum(event, "data-total-damage"), 10);
     const bonusDamage = parseInt(SystemUtils.GetEventDatum(event, "data-bonus-damage"), 10);
     const damageLethal = (/true/i).test(SystemUtils.GetEventDatum(event, "data-damage-lethal"));
+    const ammoVariety = SystemUtils.GetEventDatum(event, "data-ammo-variety");
     let location = SystemUtils.GetEventDatum(event, "data-damage-location");
     if (location !== "head" && location !== "brain") {
       location = "body";
@@ -360,6 +361,8 @@ export default class CPRChat {
     });
     let damageReductionRole;
     let damageReductionAE;
+    let useShield;
+    let formData = { damageReductionRole, damageReductionAE, useShield };
     if (!event.ctrlKey) {
       const title = SystemUtils.Localize("CPR.chat.damageApplication.prompt.title");
       const allowedTypesMessage = `${SystemUtils.Format("CPR.chat.damageApplication.prompt.allowedTypes", { location })}`;
@@ -368,15 +371,16 @@ export default class CPRChat {
       if (!confirmation) {
         return;
       } */
-      const formData = await DamageApplicationPrompt.RenderPrompt(title, data).catch((err) => LOGGER.debug(err));
-      if (formData === undefined) {
+      const promptData = await DamageApplicationPrompt.RenderPrompt(title, data).catch((err) => LOGGER.debug(err));
+      if (promptData === undefined) {
         return;
       }
-      damageReductionRole = formData.damageReductionRole;
-      damageReductionAE = formData.damageReductionAE;
+      formData.damageReductionRole = promptData.damageReductionRole;
+      formData.damageReductionAE = promptData.damageReductionAE;
+      formData.useShield = promptData.useShield;
     }
     allowedActors.forEach((a) => {
-      a._applyDamage(totalDamage, bonusDamage, location, ablation, ignoreHalfArmor, damageLethal, damageReductionRole, damageReductionAE);
+      a._applyDamage(totalDamage, bonusDamage, location, ablation, ammoVariety, ignoreHalfArmor, damageLethal, formData);
     });
   }
 }

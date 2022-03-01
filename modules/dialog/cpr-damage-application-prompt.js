@@ -16,7 +16,11 @@ export default class DamageApplicationPrompt {
           LOGGER.trace("_onConfirm | Dialog DamageApplicationPrompt | called.");
           let damageReductionRole = html.find("[name=\"damageReductionRole\"");
           let damageReductionAE = html.find("[name=\"damageReductionAE\"");
+          let useShield = html.find("[name=\"useShield\"");
           const formData = new FormDataExtended(html.find("form")[0]).toObject();
+          if (useShield.checked) {
+            formData.useShield = true;
+          }
           if (damageReductionRole.checked) {
             formData.damageReductionRole = true;
           }
