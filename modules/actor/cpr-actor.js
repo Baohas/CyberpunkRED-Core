@@ -1161,14 +1161,16 @@ export default class CPRActor extends Actor {
     }
 
     // Apply damage to shield, if used, first.
-    if (formData.useShield && shields[0].data.data.shieldHitPoints.value > 0) {
-      this._ablateArmor("shield", damage + bonusDamage)
-      if (ammoVariety !== "grenade" && ammoVariety !== "rocket") {
-        CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: 0 });
-        return;
-      } else if (shields[0].data.data.shieldHitPoints.value > 0) {
-        CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: 0 });
-        return;
+    if (shields.length > 0) {
+      if (formData.useShield && shields[0].data.data.shieldHitPoints.value > 0) {
+        this._ablateArmor("shield", damage + bonusDamage)
+        if (ammoVariety !== "grenade" && ammoVariety !== "rocket") {
+          CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: 0 });
+          return;
+        } else if (shields[0].data.data.shieldHitPoints.value > 0) {
+          CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: 0 });
+          return;
+        }
       }
     }
 

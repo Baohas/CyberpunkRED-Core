@@ -359,28 +359,26 @@ export default class CPRChat {
         forbiddenActors.push(actor);
       }
     });
-    let damageReductionRole;
-    let damageReductionAE;
-    let useShield;
-    let formData = { damageReductionRole, damageReductionAE, useShield };
-    if (!event.ctrlKey) {
-      const title = SystemUtils.Localize("CPR.chat.damageApplication.prompt.title");
-      const allowedTypesMessage = `${SystemUtils.Format("CPR.chat.damageApplication.prompt.allowedTypes", { location })}`;
-      const data = { allowedTypesMessage, allowedActors, forbiddenActors };
-/*       const confirmation = await DamageApplicationPrompt.RenderPrompt(title, data);
-      if (!confirmation) {
-        return;
-      } */
-      const promptData = await DamageApplicationPrompt.RenderPrompt(title, data).catch((err) => LOGGER.debug(err));
-      if (promptData === undefined) {
-        return;
+    allowedActors.sort((a, b) => (a.data.name > b.data.name ? 1 : -1));
+    forbiddenActors.sort((a, b) => (a.data.name > b.data.name ? 1 : -1));
+
+    let formData = { damageReductionRole: true, damageReductionAE: true, useShield: true }; // data to feed to _applyDamage
+    let count = 0
+    while (count < allowedActors.length) {
+      let promptData;
+      if (!event.ctrlKey) {
+        const title = SystemUtils.Localize("CPR.chat.damageApplication.prompt.title");
+        const allowedTypesMessage = `${SystemUtils.Format("CPR.chat.damageApplication.prompt.allowedTypes", { location })}`;
+        const data = { allowedTypesMessage, allowedActors, forbiddenActors, count };
+        promptData = await DamageApplicationPrompt.RenderPrompt(title, data).catch((err) => LOGGER.debug(err)); // data to feed to formData
+        formData.damageReductionRole = promptData.damageReductionRole;
+        formData.damageReductionAE = promptData.damageReductionAE;
+        formData.useShield = promptData.useShield;
       }
-      formData.damageReductionRole = promptData.damageReductionRole;
-      formData.damageReductionAE = promptData.damageReductionAE;
-      formData.useShield = promptData.useShield;
+      if (promptData !== false) {
+        allowedActors[count]._applyDamage(totalDamage, bonusDamage, location, ablation, ammoVariety, ignoreHalfArmor, damageLethal, formData);
+      }
+      count += 1;
     }
-    allowedActors.forEach((a) => {
-      a._applyDamage(totalDamage, bonusDamage, location, ablation, ammoVariety, ignoreHalfArmor, damageLethal, formData);
-    });
   }
 }
