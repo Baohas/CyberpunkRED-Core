@@ -7,7 +7,7 @@
     {{#if (cprCompare a "===" ../count)}}
       <span class = "text-bold" >{{cprMath "sum" a "1"}}. {{actor.name}}</span>
     {{else}}
-      {{cprMath "sum" a "1"}}. {{actor.name}}
+      {{#if (cprCompare ">" ../allowedActors.length "1")}}{{cprMath "sum" a "1"}}.{{/if}} {{actor.name}}
     {{/if}}
     </li>
   {{/each}}

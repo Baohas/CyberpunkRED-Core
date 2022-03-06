@@ -123,6 +123,18 @@ const registerSystemSettings = () => {
     },
   });
 
+  game.settings.register("cyberpunk-red-core", "targetedTokensAutomation", {
+    name: "CPR.settings.targetedTokensAutomation.name",
+    hint: "CPR.settings.targetedTokensAutomation.hint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+    onChange: (value) => {
+      LOGGER.log(`Changed targetedTokensAutomation to ${value}`);
+    },
+  });
+
   game.settings.register("cyberpunk-red-core", "userSettings", {
     name: "User Settings",
     scope: "client",
