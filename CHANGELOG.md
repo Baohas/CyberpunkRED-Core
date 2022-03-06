@@ -37,6 +37,9 @@
 - Corrected an issue when a player did not have proper permissions on a Vendor, the purchase would fail, but the player would still be charged for the item
 - Fixed the ability to delete items from the Mook sheet.
 - Fixed #367 - As a GM, if you attempted to use a macro to roll a skill without having an actor selected, it failed with a traceback. We now catch this and throw an appropriate message.
+- Fixed #373 - Expansive Shotgun Slug ammunition is now usable with the Shotgun (and not the Heavy Pistol).
+- Fixed #380 - Corrected various typos
+- Corrected various spelling and formatting issues in the changelog
   
 **Maintenance items**
 - Moved preCreateItem hook from actor.js to item.js and combined the code of createItem hook from both actor.js and item.js into item.js
@@ -47,6 +50,7 @@
 - Consolidated the interface to get Roll Tables from the system into a method in systemUtils that can either use a regular expression or not.
 
 # Version 0.80.1 | Date: 2021-01-04
+
 **Hot Fix**
 - Addressed #352: Removed the fixed height CSS for the "Player Notes" section in the lifepath tab for a better writing/reading experience.
 - Fixed #354 - Item Upgrades should be removable again and additional upgrades can be installed.
@@ -97,6 +101,7 @@
 - Fixed a couple missing translation strings related to synchronizing armor SP to resource bars
 
 # Version 0.79.1 | Date: 2021-09-11
+
 **Hot Fix**
 - Fixed #325 - DV ruler broken. Restored by naming the function.
 
@@ -209,7 +214,7 @@
 - Added test cases for code quality: The english language file is checked for unused strings and the changelog is checked for changes with each merge request.
 - Skills are now also sorted alphabetically on the character sheet if translated into languages other than English.
 - The price of an item is interpreted as the price of a single unit of an item. This has been now clarified with a text upon hovering over the word "Price" in the item setting page.
-  - The single unit of an item is 1, whith an exception for some of the ammunitions, where it is 10. Please have a look at the rule book page 344 for that.
+  - The single unit of an item is 1, with an exception for some of the ammunition, where it is 10. Please have a look at the rule book page 344 for that.
 - The container sheet inventory will now stretch with the window length vertically
 - Many, many little tweaks and improvements to the French translation (thank you @h.gelis and @thevincekun)
 
@@ -226,6 +231,7 @@
 - Fixed an issue with Firefox browsers throwing an error when using our default SVG images.  The SVG tag we were using defined the height/width using a style property, however, Firefox perfers individual height and width properties.
 
 # Version 0.77.1 | Date: 2021-06-29
+
 **Hot Fix**
 - Corrected localization issue of text on chat cards when rolling Net Damage
 - Added Zap as a rollable interface ability as it was missing from the list (Zap damage will be handled in a future release)
@@ -322,8 +328,9 @@
 - Fixed #234 - Attempting to install cyberware, where there is no suitable foundation no longer throws an error in the console.
 - Fixed Issue, with netrunning tile naming case. This caused tiles to not be displayed on linux systems.
 
+# Version: 0.76.2 |  Date:  2021-05-28
 
-# Version: 0.76.2 (Hot Fix) |  Date:  2021-05-28
+**Hot Fix**
 - Non owned actor sheets (Limited and Observer permissions) render again, the content is also shown now.
 - Borgware items are now configured correctly as foundational in compendium.
 - Borgware no longer displays "0/0 Optional slots" when installed on character sheet.
@@ -335,7 +342,9 @@
 - Deleting/uninstalling optional cyberware from mook sheets now works correctly.
 - Cleaned up of many (but not all) trailing commas in mook sheet.
 
-# Version: 0.76.1 (Hot Fix) |  Date:  2021-05-27
+# Version: 0.76.1 |  Date:  2021-05-27
+
+**Hot Fix**
 - Programs can now be displayed in gear tab and on mook sheets for easier tracking.
 
 # Version 0.76.0 | Date: 2021-05-26
@@ -381,14 +390,13 @@
 - Added localization to places where it was not implemented. (!325)
 - Removed "Core" tag from Critical Injury and DV compendia (which should be imported) to make them distinct from "Skills - Core" and "Cyberware - Core" (which should NOT be imported). (!379)
 
-
 **Bug Fixes**
 - fixed #49 - The equipped glyph now takes the same space as the other two
 - fixed #158 - Stat padding fixed for LUCK and EMP, so that they have the same font size as the others
 - fixed #176 - Game paused animation properly translates now
 - fixed #187 - Item icons are now resizing correctly to fit into their frame
 - fixed #189 - EMP stat on new mook sheet can now be modified
-- fixed #192 - Fixed that double quotes in wepon names break macros
+- fixed #192 - Fixed that double quotes in weapon names break macros
 - fixed #195 - Fixed that 'Has Suppressive Fire' option didn't do anything
 - fixed #198 - Removes DV display when others are measuring
 - fixed #204 - Fixed IP and Eurobucks Ledger functions to work with unlinked tokens
@@ -398,15 +406,19 @@
 - fixed #228 - Fixed some mook sheet weapon/armor section alignment issues
 - fixed !366 - Body ablation not being shown in description tab due to typo
 
-# Version: 0.75.4 (Hot Fix) |  Date:  2021-05-05
+# Version: 0.75.4 |  Date:  2021-05-05
+
+**Hot Fix**
 - Fixed release manifest to not lock users into version 0.75.3 without possibility to update
 
-# Version: 0.75.3 (Hot Fix) |  Date:  2021-05-02
-**Bug Fix**
+# Version: 0.75.3 |  Date:  2021-05-02
+
+**Hot Fix**
 - Role ability settings were lost when changing other data on the sheet. [issue #203](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/issues/203)
 
-# Version: 0.74.1 (Hot Fix) |  Date:  2021-04-25
-**Bug Fix**
+# Version: 0.74.1 |  Date:  2021-04-25
+
+**Hot Fix**
 - Macros were not working due to a change in the way rolls were handled.
 
 # Version: 0.74.0  |  Date:  2021-04-23
@@ -446,19 +458,19 @@
 - Fixed a bug which caused unlinked tokens to erroneously pull certain data from the parent actor.
 - Fixed a bug which caused collapsed gear categories to not retain their state upon character sheet update.
 
-
 **Plumbing**
 - Refactored data model to conform with plans going forward.
 - Logging has been overhauled.
 
 # Version: 0.66  (Hotfix) |  Date:  2021-03-21
-**Bug Fix:**
+
+**Hot Fix**
 - Aimed shot was using the Autofire Skill when attacking instead of using the Weapon Skill
 - Suppressive Fire was using the Weapon Skill when attacking instead of using the Autofire Skill
+
 # Version: 0.65  |  Date:  2021-03-20
 
 **UI/UX**
-
 - Implemented a chat command “/red” which will roll 1d10 and explode on a 10 or negatively explode (implode?) on a 1. Rolls of the form “/red+X”, “/red-X”, and “/red XdY” are also supported (though there are no dice icons if Y isn’t a 6 or a 10).
 - Macros can now be made for weapons, skills, journal entries and actors by dragging and dropping to the macro bar. Weapon macros can be easily edited to roll for damage, aimed shots, autofire, and suppressive fire.
 - Improvement Points now trackable and exist on the front of the character sheet, underneath Humanity.
