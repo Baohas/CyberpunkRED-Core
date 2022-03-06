@@ -4,12 +4,24 @@
     <div class="cpr-block chat-rollTitle-stat">
       <div class="text-center text-padding-top text-normal">{{localize "CPR.chat.damageApplication.damageDealtTo"}}</div>
       <div class="rollcard-subtitle">
-        <div class="rollcard-subtitle-center text-small">{{name}}</div>
+        <div class="rollcard-subtitle-center text-small">{{actor.name}}</div>
+        <div class="rollcard-subtitle-right">
+          <a class="clickable"
+             data-action="reverseDamage"
+             data-actor-id="{{actor.id}}"
+             data-hp-reduction="{{hpReduction}}"
+             data-location="{{location}}"
+             data-ablation="{{ablation}}"
+             data-shield-ablation="{{shieldAblation}}">
+            <i class="fas fa-undo-alt" title="{{localize "CPR.chat.damageApplication.reverseDamage"}}"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
   <div class="rollcard-bottom">
     <div class="cpr-block">
+      {{log this}}
       {{#if rezReduction}}
         <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.rezReducedBy"}} <span class="text-bold">{{hpReduction}}</span></div>
       {{else}}
@@ -19,9 +31,19 @@
         {{else}}
           {{#if (cprCompare hpReduction "===" 0)}}
             <div class="text-center text-normal">{{localize "CPR.chat.damageApplication.damageDidNotPenetrate"}}</div>
+            <hr>
+            {{#if shieldAblation}}
+            <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.damageToShield"}} <span class="text-bold">{{shieldAblation}}</span></div>
+            {{/if}}
           {{else}}
+            {{#if totalDamageReduction}}
+            <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.damageReduction"}} <span class="text-bold">{{totalDamageReduction}}</span></div>
+            {{/if}}
             <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.healthReducedBy"}} <span class="text-bold">{{hpReduction}}</span></div>
             <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.armorAblation"}} <span class="text-bold">{{ablation}}</span></div>
+            {{#if shieldAblation}}
+            <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.damageToShield"}} <span class="text-bold">{{shieldAblation}}</span></div>
+            {{/if}}
           {{/if}}
         {{/if}}
       {{/if}}

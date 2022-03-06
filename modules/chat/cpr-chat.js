@@ -285,6 +285,16 @@ export default class CPRChat {
           this.damageApplication(event);
           break;
         }
+
+        case "reverseDamage": {
+          const actorId = SystemUtils.GetEventDatum(event, "data-actor-id");
+          const hpReduction = SystemUtils.GetEventDatum(event, "data-hp-reduction");
+          const location = SystemUtils.GetEventDatum(event, "data-location");
+          const ablation = SystemUtils.GetEventDatum(event, "data-ablation");
+          const shieldAblation = SystemUtils.GetEventDatum(event, "data-shield-ablation");
+          const actor = game.actors.find((a) => a.id === actorId);
+          actor._reverseDamage(hpReduction, location, ablation, shieldAblation);
+        }
         default: {
           LOGGER.warn(`No action defined for ${clickAction}`);
         }

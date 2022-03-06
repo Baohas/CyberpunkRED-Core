@@ -1138,7 +1138,7 @@ export default class CPRActor extends Actor {
       // This is damage done in a netrun, which completely ignores armor
       const currentHp = this.data.data.derivedStats.hp.value;
       await this.update({ "data.derivedStats.hp.value": currentHp - damage - bonusDamage });
-      CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: damage + bonusDamage, brainDamage: true });
+      CPRChat.RenderDamageApplicationCard({ actor: this, hpReduction: damage + bonusDamage, location, brainDamage: true });
       return;
     }
     const armors = this.getEquippedArmors(location);
@@ -1161,14 +1161,17 @@ export default class CPRActor extends Actor {
     }
 
     // Apply damage to shield, if used, first.
+    let shieldAblation;
     if (shields.length > 0) {
-      if (formData.useShield && shields[0].data.data.shieldHitPoints.value > 0) {
+      const shield = shields.sort((a, b) => (a.data.data.shieldHitPoints.value > b.data.data.shieldHitPoints.value ? 1 : -1)).reverse()[0]; // get equipped shield with highest HP;
+      if (formData.useShield && shield.data.data.shieldHitPoints.value > 0) { // if useShield is checked in dialog, and shield has HP, ablate shield and potentially resolve chat card;
+        shieldAblation = Math.min((damage + bonusDamage), shield.data.data.shieldHitPoints.value);
         this._ablateArmor("shield", damage + bonusDamage)
-        if (ammoVariety !== "grenade" && ammoVariety !== "rocket") {
-          CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: 0 });
+        if (ammoVariety !== "grenade" && ammoVariety !== "rocket") { // if ammo isn't explosive, resolve chat card with no damage to token;
+          CPRChat.RenderDamageApplicationCard({ actor: this, hpReduction: 0, location, shieldAblation });
           return;
-        } else if (shields[0].data.data.shieldHitPoints.value > 0) {
-          CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: 0 });
+        } else if (shield.data.data.shieldHitPoints.value > 0) { // if ammo is explosive and shield is still standing, resolve chat card with no damage to token;
+          CPRChat.RenderDamageApplicationCard({ actor: this, hpReduction: 0, location, shieldAblation });
           return;
         }
       }
@@ -1184,7 +1187,7 @@ export default class CPRActor extends Actor {
 
     if (damage <= armorValue) {
       // Damage did not penetrate armor, thus only the bonus damage is applied.
-      CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: totalDamageDealt, ablation: 0 });
+      CPRChat.RenderDamageApplicationCard({ actor: this, hpReduction: totalDamageDealt, location, ablation: 0, shieldAblation });
       return;
     }
     // Take the regular damage.
@@ -1193,9 +1196,10 @@ export default class CPRActor extends Actor {
       // Damage taken against the head is doubled.
       takenDamage *= 2;
     }
+
+    let universalBonusDamageReduction = 0;
     if (formData.damageReductionRole) {
       // Apply damage reduction from role abilities.
-      let universalBonusDamageReduction = 0;
       this.data.filteredItems.role.forEach((r) => {
         if (r.data.data.universalBonuses.includes("damageReduction")) {
           universalBonusDamageReduction += Math.floor(r.data.data.rank / r.data.data.bonusRatio);
@@ -1214,6 +1218,7 @@ export default class CPRActor extends Actor {
       // Apply damage reduction from active effects
       takenDamage -= this.data.bonuses.universalDamageReduction;
     }
+    const totalDamageReduction = universalBonusDamageReduction + this.data.bonuses.universalDamageReduction
 
     const currentHp = this.data.data.derivedStats.hp.value;
     if (takenDamage >= currentHp && !damageLethal) {
@@ -1225,7 +1230,23 @@ export default class CPRActor extends Actor {
     // Ablate the armor correctly.
     await this._ablateArmor(location, ablation);
 
-    CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: totalDamageDealt, ablation });
+    CPRChat.RenderDamageApplicationCard({ actor: this, hpReduction: totalDamageDealt, location, totalDamageReduction, ablation, shieldAblation });
+  }
+
+  /**
+   * Reverse damage and armor/shield ablation to the actor, in case someone made a mistake applying it.
+   *
+   * @param {int} hpReduction - value of the damage taken
+   * @param {string} location - location of the damage
+   * @param {int} ablation - value of the armor ablation
+   * @param {int} shieldAblation - value of the shield ablation
+   */
+  async _reverseDamage(hpReduction, location, ablation, shieldAblation) {
+    LOGGER.trace("_reverseDamage | CPRActor | Called.");
+    const currentHp = this.data.data.derivedStats.hp.value;
+    await this.update({ "data.derivedStats.hp.value": currentHp + hpReduction });
+    await this._ablateArmor(location, -ablation);
+    await this._ablateArmor("shield", -shieldAblation);
   }
 
   /**
