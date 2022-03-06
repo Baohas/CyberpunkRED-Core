@@ -116,8 +116,11 @@ Hooks.once("ready", () => {
   // the legacy migration scripts have been run before (i.e. they're on 0.80.0). If that is
   // not the case, we force them to migrate to 0.80.0 before moving to "1".
   let dataModelVersion = game.settings.get("cyberpunk-red-core", "dataModelVersion");
-  dataModelVersion = isNewerVersion("0.80.0", dataModelVersion) ? -1 : 0;
-  MigrationRunner.migrateWorld(dataModelVersion, DATA_MODEL_VERSION);
+  LOGGER.debug(`Data model before comparison: ${dataModelVersion}`);
+  if (dataModelVersion.indexOf(".") > -1) dataModelVersion = isNewerVersion("0.80.0", dataModelVersion) ? -1 : 0;
+  LOGGER.debug(`New data model version is: ${dataModelVersion}`);
+  const MR = new MigrationRunner();
+  MR.migrateWorld(dataModelVersion, DATA_MODEL_VERSION);
   UpdateScreen.RenderPopup();
 });
 

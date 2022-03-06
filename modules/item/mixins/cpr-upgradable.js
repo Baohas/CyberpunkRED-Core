@@ -17,7 +17,6 @@ const Upgradable = function Upgradable() {
     LOGGER.trace("uninstallUpgrades | Upgradable | Called.");
     let installedUpgrades = this.data.data.upgrades;
     const updateList = [];
-    LOGGER.debugObject(upgrades);
     upgrades.forEach((u) => {
       installedUpgrades = installedUpgrades.filter((iUpgrade) => iUpgrade._id !== u.id);
       updateList.push({ _id: u.id, "data.isInstalled": false });
@@ -177,8 +176,8 @@ const Upgradable = function Upgradable() {
   };
 
   /**
-   * Dynamically calculates the number of free upgrade slots on the weapon
-   * by starting with the number of slots this weapon has and substacting
+   * Dynamically calculates the number of free upgrade slots on the item
+   * by starting with the number of slots this item has and substacting
    * the slot size of each of the upgrades.
    *
    * Note that some items override this method: cyberware and cyberdecks.
@@ -186,7 +185,7 @@ const Upgradable = function Upgradable() {
    * @return {Number}
    */
   this.availableSlots = function availableSlots() {
-    LOGGER.trace("availableSlots | CPRWeaponItem | Called.");
+    LOGGER.trace("availableSlots | Upgradable | Called.");
     const itemData = duplicate(this.data.data);
     let unusedSlots = itemData.slots;
     itemData.upgrades.forEach((mod) => {

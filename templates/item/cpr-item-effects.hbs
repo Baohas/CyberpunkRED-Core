@@ -3,82 +3,84 @@
 <div class="item-effects-tab">
     <div class="item-effects-section">
         <div class="effects-list">
-            <li class="effects-header flexrow">
-                <span class="effect-image"></span>
-                <span class="effect-name">{{localize "CPR.itemSheet.effects.nameAndChanges"}}</span>
-                <span class="effect-actions text-padding-right">{{localize "CPR.itemSheet.effects.actions"}}</span>
-            </li>
+            {{#if (cprCompare this.isOwned "&&" (cprCompare item.data.effects.size "===" 0))}}
+                    {{localize "CPR.itemSheet.effects.editOwnedWarning"}}
+            {{else}}
+                <li class="effects-header flexrow">
+                    <span class="effect-image"></span>
+                    <span class="effect-name">{{localize "CPR.itemSheet.effects.nameAndChanges"}}</span>
+                    <span class="effect-actions text-padding-right">{{localize "CPR.itemSheet.effects.actions"}}</span>
+                </li>
 
-            {{#each item.data.effects}}
-            {{!-- "effects" is a Map, so "this" is now an Active Effects object within the #each loop! --}}
-            <div class="effects-list flexrow">
-                <span class="effect-image"><img src="{{this.data.icon}}" /></span>
-                <h4 class="text-vert-center"><strong>{{this.data.label}}</strong><br />
-                    {{#each this.data.changes}}
-                    {{!-- "this" is now an individual "change" for the AE object --}}
-                    {{localize (cprGetEffectModifierKeyName (lookup ../data.flags.cyberpunk-red-core.changes @index)
-                    this.key)}}:
-                    {{#if this.value}}
-                    {{cprEffectModMode this.mode this.value}}{{this.value}}{{#unless @last}},{{/unless}}
-                    {{else}}
-                    0{{#unless @last}},{{/unless}}
-                    {{/if}}
-                    {{/each}}
-                </h4>
-                <span class="effect-actions text-padding-right effect-controls">
-                    {{#if ../this.isOwned}}
-                    <i class="fas fa-question-circle" title="{{localize "
-                        CPR.itemSheet.effects.editOwnedWarning"}}"></i>
-                    {{else}}
-                    {{#if (cprCompare ../data.data.usage "===" "toggled")}}
-                    <a class="effect-control" data-action="toggle" data-effect-id="{{this.data._id}}"
-                        title="{{localize " CPR.itemSheet.effects.toggleEffectDesc"}}">
-                        <i class="far {{#if this.data.disabled}}fa-circle{{else}}fa-check-circle{{/if}}"></i>
-                    </a>
-                    {{/if}}
-                    <a class="effect-control" data-action="edit" data-effect-id="{{this.data._id}}" title="{{localize "
-                        CPR.itemSheet.effects.editEffectDesc"}}">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <a class="effect-control" data-action="delete" data-effect-id="{{this.data._id}}"
-                        title="{{localize " CPR.itemSheet.effects.deleteEffectDesc"}}">
-                        <i class="fas fa-trash"></i>
-                    </a>
-                    {{/if}}
-                </span>
-            </div>
-            {{/each}}
-            {{#unless this.isOwned}}
-            <br>
-            <div class="item-controls effect-controls">
-                <a class="effect-control" data-action="create"
-                    title="{{localize 'CPR.itemSheet.effects.createEffectDesc'}}">
-                    <i class="fas fa-plus"></i> {{localize "CPR.itemSheet.effects.createEffect"}}
-                </a>
-            </div>
-            {{/unless}}
+                {{#each item.data.effects}}
+                    {{!-- "effects" is a Map, so "this" is now an Active Effects object within the #each loop! --}}
+                    <div class="effects-list flexrow">
+                        <span class="effect-image"><img src="{{this.data.icon}}" /></span>
+                        <h4 class="text-vert-center"><strong>{{this.data.label}}</strong><br />
+                            {{#each this.data.changes}}
+                                {{!-- "this" is now an individual "change" for the AE object --}}
+                                {{localize (cprGetEffectModifierKeyName (lookup ../data.flags.cyberpunk-red-core.changes @index) this.key)}}:
+                                {{#if this.value}}
+                                    {{cprEffectModMode this.mode this.value}}{{this.value}}{{#unless @last}},{{/unless}}
+                                {{else}}
+                                    0{{#unless @last}},{{/unless}}
+                                {{/if}}
+                            {{/each}}
+                        </h4>
+                        <span class="effect-actions text-padding-right effect-controls">
+                            {{#if ../this.isOwned}}
+                                <i class="fas fa-question-circle" title="{{localize "
+                                    CPR.itemSheet.effects.editOwnedWarning"}}"></i>
+                            {{else}}
+                                {{#if (cprCompare ../data.data.usage "===" "toggled")}}
+                                <a class="effect-control" data-action="toggle" data-effect-id="{{this.data._id}}"
+                                    title="{{localize " CPR.itemSheet.effects.toggleEffectDesc"}}">
+                                    <i class="far {{#if this.data.disabled}}fa-circle{{else}}fa-check-circle{{/if}}"></i>
+                                </a>
+                                {{/if}}
+                                <a class="effect-control" data-action="edit" data-effect-id="{{this.data._id}}" title="{{localize "
+                                    CPR.itemSheet.effects.editEffectDesc"}}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="effect-control" data-action="delete" data-effect-id="{{this.data._id}}"
+                                    title="{{localize " CPR.itemSheet.effects.deleteEffectDesc"}}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            {{/if}}
+                        </span>
+                    </div>
+                {{/each}}
+                {{#unless this.isOwned}}
+                    <br>
+                    <div class="item-controls effect-controls">
+                        <a class="effect-control" data-action="create"
+                            title="{{localize 'CPR.itemSheet.effects.createEffectDesc'}}">
+                            <i class="fas fa-plus"></i> {{localize "CPR.itemSheet.effects.createEffect"}}
+                        </a>
+                    </div>
+                {{/unless}}
+            {{/if}}
         </div>
         <br />
         {{#if (cprCompare item.data.effects.size ">" 0)}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap text-vert-center">
-                {{localize "CPR.effectSheet.uses.usage"}}
-            </div>
-            {{log this}}
-            <div class="item flexrow setting-value text-nowrap item-end">
-                {{#if this.editable}}
-                <select name="data.usage" data-dtype="{{data.data.usage}}">
-                    {{#select data.data.usage}}
-                    {{#each data.data.allowedUsage as |use|}}
-                    <option value="{{use}}">{{localize (cprFindConfigValue "effectUses" use)}}</option>
-                    {{/each}}
-                    {{/select}}
-                </select>
-                {{else}}
-                <span class="text-flex-end">{{localize (cprFindConfigValue "effectUses" use)}}</span>
-                {{/if}}
-            </div>
-        </li>
+            <li class="item flexrow">
+                <div class="item flexrow setting-name text-nowrap text-vert-center">
+                    {{localize "CPR.effectSheet.uses.usage"}}
+                </div>
+                <div class="item flexrow setting-value text-nowrap item-end">
+                    {{#if this.editable}}
+                        <select name="data.usage" data-dtype="{{data.data.usage}}">
+                            {{#select data.data.usage}}
+                                {{#each data.data.allowedUsage as |use|}}
+                                    <option value="{{use}}">{{localize (cprFindConfigValue "effectUses" use)}}</option>
+                                {{/each}}
+                            {{/select}}
+                        </select>
+                    {{else}}
+                        <span class="text-flex-end">{{localize (cprFindConfigValue "effectUses" use)}}</span>
+                    {{/if}}
+                </div>
+            </li>
         {{/if}}
     </div>
 </div>

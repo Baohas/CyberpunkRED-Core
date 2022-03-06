@@ -7,7 +7,7 @@ import LOGGER from "../../utils/cpr-logger.js";
 const Valuable = function Valuable() {
   /**
    * Return the price of an Item that is set with the category.
-   * This is not used anywhere, but will be useful for future automation that sets the category
+   * This is used in migration code and will be useful for future automation that sets the category
    * automatically based on the price.
    *
    * @param {String} category - the price category for an Item
@@ -34,6 +34,42 @@ const Valuable = function Valuable() {
       if (itemData.variety !== "grenade" && itemData.variety !== "rocket") price /= 10;
     }
     return price;
+  };
+
+  this.getPriceCategory = function getPriceCategory(price) {
+    /* price = parseInt(price, 10);
+    switch (price) {
+      case price === 0:
+        return "free";
+      case price > 0 && price <= 5:
+        return "cheap";
+      case price > 5 && price <= 20:
+        return "everyday";
+      case price > 20 && price <= 50:
+        return "costly";
+      case price > 50 && price <= 100:
+        return "premium";
+      case price > 100 && price <= 500:
+        return "expensive";
+      case price > 500 && price <= 1000:
+        return "veryExpensive";
+      case price > 1000 && price <= 5000:
+        return "luxury";
+      case price > 5000 && price <= 10000:
+        return "superLuxury";
+      default:
+        return "extravagant";
+    } */
+    if (price === 0) return "free";
+    if (price > 0 && price <= 5) return "cheap";
+    if (price > 5 && price <= 20) return "everyday";
+    if (price > 20 && price <= 50) return "costly";
+    if (price > 50 && price <= 100) return "premium";
+    if (price > 100 && price <= 500) return "expensive";
+    if (price > 500 && price <= 1000) return "veryExpensive";
+    if (price > 1000 && price <= 5000) return "luxury";
+    if (price > 5000 && price <= 10000) return "superLuxury";
+    return "extravagant";
   };
 };
 

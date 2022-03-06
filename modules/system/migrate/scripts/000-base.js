@@ -12,8 +12,9 @@ export default class BaseMigration extends CPRMigration {
     this.version = 0;
   }
 
-  static async run() {
+  async run() {
     LOGGER.trace("run | 0-base Migration");
+    LOGGER.log(`Migrating to data model version ${this.version} (legacy migration script)`);
     let totalCount = game.items.contents.length;
     let quarterCount = totalCount / 4;
     let loopIndex = 0;
@@ -104,6 +105,7 @@ export default class BaseMigration extends CPRMigration {
         LOGGER.error(err);
       }
     }
+    game.settings.set("cyberpunk-red-core", "dataModelVersion", this.version);
   }
 
   // @param {object} actorData    The actor data object to update

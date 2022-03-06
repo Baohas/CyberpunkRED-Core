@@ -37,7 +37,7 @@ export default class CPRItem extends Item {
     if (this.data.type === "weapon") {
       cprData["data.dvTable"] = data["data.dvTable"] === null ? "" : data["data.dvTable"];
     }
-    super.update(cprData, options);
+    return super.update(cprData, options);
   }
 
   /**

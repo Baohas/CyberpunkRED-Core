@@ -37,7 +37,6 @@ export default class CPRActiveEffect extends ActiveEffect {
       if (!item) return null;
       return item;
     }
-    LOGGER.debugObject(this);
     LOGGER.error(`This AE has a crazy origin: ${this.data.origin}`);
     return null;
   }

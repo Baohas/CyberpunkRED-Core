@@ -1,4 +1,5 @@
 /* global game */
+import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 
 /**
@@ -25,10 +26,12 @@ export default class CPRMigration {
    */
   async run() {
     LOGGER.trace("run | CPRMigration");
-    await this.preMigrate();
-    for (const item of game.items.contents) await this.updateItem(item);
-    for (const actor of game.actors.contents) await this.updateActor(actor);
-    await this.postMigrate();
+    LOGGER.log(`Migrating to data model version ${this.version}`);
+    const classRef = Migrations[this.constructor.name];
+    await classRef.preMigrate();
+    for (const item of game.items.contents) await classRef.updateItem(item);
+    for (const actor of game.actors.contents) await classRef.updateActor(actor);
+    await classRef.postMigrate();
     game.settings.set("cyberpunk-red-core", "dataModelVersion", this.version);
   }
 
@@ -39,12 +42,12 @@ export default class CPRMigration {
    *
    * These all assume data model changes are sent to the server (they're mutators).
    */
-  async preMigrate() {};
-  async updateActor(actor) {};
-  async updateItem(item) {};
-  async updateMacro(macro) {};
-  async updateToken(token) {};
-  async updateTable(table) {};
-  async updateCompendium(comp) {};
-  async postMigrate() {};
+  static async preMigrate() {};
+  static async updateActor(actor) {};
+  static async updateItem(item) {};
+  static async updateMacro(macro) {};
+  static async updateToken(token) {};
+  static async updateTable(table) {};
+  static async updateCompendium(comp) {};
+  static async postMigrate() {};
 }

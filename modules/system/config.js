@@ -305,6 +305,7 @@ CPR.itemPriceCategory = {
   veryExpensive: "CPR.global.priceCategory.veryExpensive",
   luxury: "CPR.global.priceCategory.luxury",
   superLuxury: "CPR.global.priceCategory.superLuxury",
+  extravagant: "CPR.global.priceCategory.extravagant",
 };
 
 CPR.itemQuality = {

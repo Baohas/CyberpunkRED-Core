@@ -30,7 +30,6 @@ export default class CPRDrugItem extends CPRItem {
       const actorEffects = this.actor.data.effects.filter((ae) => ae.data.origin.endsWith(originItem) && ae.usage === "snorted");
       const effectUpdates = [];
       actorEffects.forEach((ae) => {
-        LOGGER.debug(`setting ${ae.id} disabled to false`);
         effectUpdates.push({ _id: ae.id, disabled: false });
       });
       this.actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates); // update AEs

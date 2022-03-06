@@ -71,6 +71,10 @@
             "max": 40,
             "transactions": []
           },
+          "roleInfo": {
+            "activeNetRole": "",
+            "activeRole": ""
+          },
           "currentWoundState": "notWounded",
           "seriouslyWounded": 20,
           "deathSave": {
@@ -112,6 +116,7 @@
         "common",
         "ledgerWealth"
       ],
+      
       "lifepath": {
         "culturalOrigin": "",
         "personality": "",

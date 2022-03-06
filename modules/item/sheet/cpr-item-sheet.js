@@ -79,7 +79,7 @@ export default class CPRItemSheet extends ItemSheet {
     } else {
       data.filteredItems.skill = await SystemUtils.GetCoreSkills();
     }
-    if (data.item.type === "cyberdeck" || data.item.type === "weapon" || data.item.type === "cyberware") {
+    if (["cyberdeck", "weapon", "armor", "cyberware", "clothing"].indexOf(data.item.type) > -1) {
       data.data.data.availableSlots = this.object.availableSlots();
     }
     data.dvTableNames = DvUtils.GetDvTables();
@@ -835,9 +835,7 @@ export default class CPRItemSheet extends ItemSheet {
   async _removeItemUpgrade(event) {
     LOGGER.trace("_removeItemUpgrade | CPRItemSheet | Called.");
     const upgradeId = SystemUtils.GetEventDatum(event, "data-item-id");
-    LOGGER.debugObject(upgradeId);
     const upgrade = this.actor.items.find((i) => i.data._id === upgradeId);
-    LOGGER.debugObject(upgrade);
     await this.item.uninstallUpgrades([upgrade]);
   }
 
