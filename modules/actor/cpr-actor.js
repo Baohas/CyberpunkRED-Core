@@ -1269,14 +1269,16 @@ export default class CPRActor extends Actor {
           armorData.data.headLocation.sp = Number(armorData.data.headLocation.sp);
           armorData.data.headLocation.ablation = Number(armorData.data.headLocation.ablation);
           const armorSp = (upgradeType === "override") ? upgradeValue : armorData.data.headLocation.sp + upgradeValue;
-          armorData.data.headLocation.ablation = Math.min(
-            (armorData.data.headLocation.ablation + ablation), armorSp,
-          );
+          armorData.data.headLocation.ablation = ablation < 0
+            ? Math.max((armorData.data.headLocation.ablation + ablation), 0)
+            : Math.min((armorData.data.headLocation.ablation + ablation), armorSp);
           updateList.push({ _id: a.id, data: armorData.data });
         });
         await this.updateEmbeddedDocuments("Item", updateList);
         // Update actor external data as head armor is ablated:
-        currentArmorValue = Math.max((this.data.data.externalData.currentArmorHead.value - ablation), 0);
+        currentArmorValue = ablation < 0
+          ? Math.min((this.data.data.externalData.currentArmorHead.value - ablation), this.data.data.externalData.currentArmorHead.max)
+          : Math.max((this.data.data.externalData.currentArmorHead.value - ablation), 0);
         await this.update({ "data.externalData.currentArmorHead.value": currentArmorValue });
         break;
       }
@@ -1288,14 +1290,16 @@ export default class CPRActor extends Actor {
           const upgradeValue = a.getAllUpgradesFor("bodySp");
           const upgradeType = a.getUpgradeTypeFor("bodySp");
           const armorSp = (upgradeType === "override") ? upgradeValue : armorData.data.bodyLocation.sp + upgradeValue;
-          armorData.data.bodyLocation.ablation = Math.min(
-            (armorData.data.bodyLocation.ablation + ablation), armorSp,
-          );
+          armorData.data.bodyLocation.ablation = ablation < 0
+          ? Math.max((armorData.data.bodyLocation.ablation + ablation), 0)
+          : Math.min((armorData.data.bodyLocation.ablation + ablation), armorSp);
           updateList.push({ _id: a.id, data: armorData.data });
         });
         await this.updateEmbeddedDocuments("Item", updateList);
         // Update actor external data as body armor is ablated:
-        currentArmorValue = Math.max((this.data.data.externalData.currentArmorBody.value - ablation), 0);
+        currentArmorValue = ablation < 0
+          ? Math.min((this.data.data.externalData.currentArmorBody.value - ablation), this.data.data.externalData.currentArmorBody.max)
+          : Math.max((this.data.data.externalData.currentArmorBody.value - ablation), 0)
         await this.update({ "data.externalData.currentArmorBody.value": currentArmorValue });
         break;
       }
@@ -1304,12 +1308,16 @@ export default class CPRActor extends Actor {
           const armorData = a.data;
           armorData.data.shieldHitPoints.value = Number(armorData.data.shieldHitPoints.value);
           armorData.data.shieldHitPoints.max = Number(armorData.data.shieldHitPoints.max);
-          armorData.data.shieldHitPoints.value = Math.max((a.data.data.shieldHitPoints.value - ablation), 0);
+          armorData.data.shieldHitPoints.value = ablation < 0
+            ? Math.min((a.data.data.shieldHitPoints.value - ablation), a.data.data.shieldHitPoints.max)
+            : Math.max((a.data.data.shieldHitPoints.value - ablation), 0);
           updateList.push({ _id: a.id, data: armorData.data });
         });
         await this.updateEmbeddedDocuments("Item", updateList);
         // Update actor external data as shield is damaged:
-        currentArmorValue = Math.max((this.data.data.externalData.currentArmorShield.value - ablation), 0);
+        currentArmorValue = ablation < 0
+          ? Math.min((this.data.data.externalData.currentArmorShield.value - ablation), this.data.data.externalData.currentArmorShield.max)
+          : Math.max((this.data.data.externalData.currentArmorShield.value - ablation), 0);
         await this.update({ "data.externalData.currentArmorShield.value": currentArmorValue });
         break;
       }
