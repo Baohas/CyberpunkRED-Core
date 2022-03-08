@@ -1161,12 +1161,12 @@ export default class CPRActor extends Actor {
     }
 
     // Apply damage to shield, if used, first.
-    let shieldAblation;
+    let shieldAblation = 0;
     if (shields.length > 0) {
       const shield = shields.sort((a, b) => (a.data.data.shieldHitPoints.value > b.data.data.shieldHitPoints.value ? 1 : -1)).reverse()[0]; // get equipped shield with highest HP;
       if (formData.useShield && shield.data.data.shieldHitPoints.value > 0) { // if useShield is checked in dialog, and shield has HP, ablate shield and potentially resolve chat card;
         shieldAblation = Math.min((damage + bonusDamage), shield.data.data.shieldHitPoints.value);
-        this._ablateArmor("shield", damage + bonusDamage)
+        await this._ablateArmor("shield", damage + bonusDamage)
         if (ammoVariety !== "grenade" && ammoVariety !== "rocket") { // if ammo isn't explosive, resolve chat card with no damage to token;
           CPRChat.RenderDamageApplicationCard({ actor: this, hpReduction: 0, location, shieldAblation });
           return;
@@ -1252,9 +1252,7 @@ export default class CPRActor extends Actor {
       await this.update({ "data.derivedStats.hp.value": maxHp });
     }
     await this._ablateArmor(location, -ablation);
-    if (!Number.isNaN(parseInt(shieldAblation, 10))) {
-      await this._ablateArmor("shield", -shieldAblation);
-    }
+    await this._ablateArmor("shield", -shieldAblation);
   }
 
   /**
