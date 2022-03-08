@@ -288,11 +288,14 @@ export default class CPRChat {
 
         case "reverseDamage": {
           const actorId = SystemUtils.GetEventDatum(event, "data-actor-id");
-          const hpReduction = SystemUtils.GetEventDatum(event, "data-hp-reduction");
+          const tokenId = SystemUtils.GetEventDatum(event, "data-token-id");
+          const hpReduction = parseInt(SystemUtils.GetEventDatum(event, "data-hp-reduction"), 10);
           const location = SystemUtils.GetEventDatum(event, "data-location");
-          const ablation = SystemUtils.GetEventDatum(event, "data-ablation");
-          const shieldAblation = SystemUtils.GetEventDatum(event, "data-shield-ablation");
-          const actor = game.actors.find((a) => a.id === actorId);
+          const ablation = parseInt(SystemUtils.GetEventDatum(event, "data-ablation"), 10);
+          const shieldAblation = parseInt(SystemUtils.GetEventDatum(event, "data-shield-ablation"), 10);
+          const actor = (Object.keys(game.actors.tokens).includes(tokenId))
+            ? game.actors.tokens[tokenId]
+            : game.actors.find((a) => a.id === actorId);
           actor._reverseDamage(hpReduction, location, ablation, shieldAblation);
         }
         default: {
