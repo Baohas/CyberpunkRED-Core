@@ -1225,6 +1225,7 @@ export default class CPRActor extends Actor {
       takenDamage = currentHp - 1;
     }
 
+    takenDamage = takenDamage < 0 ? 0 : takenDamage; // if takenDamage is negative from damageReduction, make 0. This way negative takenDamage doesn't heal.
     await this.update({ "data.derivedStats.hp.value": currentHp - takenDamage });
     totalDamageDealt += takenDamage;
     // Ablate the armor correctly.
@@ -1244,9 +1245,16 @@ export default class CPRActor extends Actor {
   async _reverseDamage(hpReduction, location, ablation, shieldAblation) {
     LOGGER.trace("_reverseDamage | CPRActor | Called.");
     const currentHp = this.data.data.derivedStats.hp.value;
-    await this.update({ "data.derivedStats.hp.value": currentHp + hpReduction });
+    const maxHp = this.data.data.derivedStats.hp.max;
+    if (maxHp > currentHp + hpReduction) {
+      await this.update({ "data.derivedStats.hp.value": currentHp + hpReduction });
+    } else {
+      await this.update({ "data.derivedStats.hp.value": maxHp });
+    }
     await this._ablateArmor(location, -ablation);
-    await this._ablateArmor("shield", -shieldAblation);
+    if (!Number.isNaN(parseInt(shieldAblation, 10))) {
+      await this._ablateArmor("shield", -shieldAblation);
+    }
   }
 
   /**

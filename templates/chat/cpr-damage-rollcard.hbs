@@ -92,7 +92,7 @@
       <div class="cpr-block">
         {{#each entityData.tokens as |token t|}}
         <br>
-        <div>
+        <div class="text-left text-small">
           {{cprMath "sum" t "1"}}.  {{token.actor.data.name}}
           <a class="clickable"
              data-action="applyDamage"
