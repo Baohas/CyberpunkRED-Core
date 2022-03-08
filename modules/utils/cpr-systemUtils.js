@@ -588,4 +588,13 @@ export default class CPRSystemUtils {
     }
     return actions;
   }
+
+  static getUserTargetsOrSelections() {
+    LOGGER.trace("getUserTargetsOrSelections | CPRSystemUtils | Called.");
+    const useTargets = game.settings.get("cyberpunk-red-core", "targetedTokensAutomation");
+    const targets = new Set(game.user.targets);
+    const tokens = !useTargets ? canvas.tokens.controlled : Array.from(targets);
+    tokens.sort((a, b) => (a.data.name > b.data.name ? 1 : -1));
+    return tokens;
+  }
 }

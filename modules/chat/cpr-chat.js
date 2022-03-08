@@ -259,14 +259,11 @@ export default class CPRChat {
             return;
           }
 
-          const useTargets = game.settings.get("cyberpunk-red-core", "targetedTokensAutomation");
-          const targets = new Set(game.user.targets);
-          const tokens = !useTargets ? canvas.tokens.controlled : Array.from(targets);
-          tokens.sort((a, b) => (a.data.name > b.data.name ? 1 : -1));
+          const targetedTokens = SystemUtils.getUserTargetsOrSelections(); // get user targeted tokens for output to chat
 
           cprRoll = await item.confirmRoll(cprRoll);
           await cprRoll.roll();
-          cprRoll.entityData = { actor: actorId, token: tokenId, item: itemId, tokens: tokens };
+          cprRoll.entityData = { actor: actorId, token: tokenId, item: itemId, tokens: targetedTokens };
           CPRChat.RenderRollCard(cprRoll);
           break;
         }
@@ -383,11 +380,9 @@ export default class CPRChat {
       }
       actor._applyDamage(totalDamage, bonusDamage, location, ablation, ammoVariety, ignoreHalfArmor, damageLethal, formData);
     } else {
-      const useTargets = game.settings.get("cyberpunk-red-core", "targetedTokensAutomation");
-      const targets = new Set(game.user.targets);
-      const tokens = !useTargets ? canvas.tokens.controlled : Array.from(targets);
+      const tokens = SystemUtils.getUserTargetsOrSelections(); // get user targeted tokens
       if (tokens.length === 0) {
-        if (useTargets) {
+        if (game.settings.get("cyberpunk-red-core", "targetedTokensAutomation")) {
           SystemUtils.DisplayMessage("warn", "CPR.chat.damageApplication.noTokenTargeted");
           return;
         } else {

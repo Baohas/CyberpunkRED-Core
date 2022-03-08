@@ -353,7 +353,9 @@ export default class CPRActorSheet extends ActorSheet {
 
     // output to chat
     const token = this.token === null ? null : this.token.data._id;
-    cprRoll.entityData = { actor: this.actor.id, token };
+    const targetedTokens = SystemUtils.getUserTargetsOrSelections(); // get user targeted tokens for output to chat
+
+    cprRoll.entityData = { actor: this.actor.id, token, tokens: targetedTokens };
     if (item) {
       cprRoll.entityData.item = item.id;
     }
