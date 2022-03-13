@@ -9,7 +9,7 @@
         {{#each this.data.changes}}
             {{!-- "this" is now an individual mod for the AE object --}}
             <div class="item-summary-line">
-                <span class="summary-value">&nbsp;&nbsp;{{localize (cprGetEffectModifierKeyName (lookup ../data.flags.cyberpunk-red-core.changes @index) this.key)}}: </span>
+                <span class="summary-value">&nbsp;&nbsp;{{localize (lookup (cprFindConfigValue "activeEffectKeys" (lookup ../data.flags.cyberpunk-red-core.changes @index)) this.key)}}: </span>
                 <span class="summary-value">
                     {{#if this.value}}
                         {{cprEffectModMode this.mode this.value}}{{this.value}}

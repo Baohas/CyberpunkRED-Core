@@ -32,6 +32,8 @@ export default class MigrationRunner {
    */
   static runMigrations(migrationsToDo) {
     LOGGER.trace("runMigrations | MigrationRunner");
+    // TODO: every() seems to always return true and runs async !?
+    // TODO: some error conditions are not caught, but maybe that's a byproduct of the above problem
     const allGood = migrationsToDo.every(async (m) => {
       try {
         return await m.run();

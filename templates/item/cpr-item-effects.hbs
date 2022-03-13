@@ -19,7 +19,7 @@
                         <h4 class="text-vert-center"><strong>{{this.data.label}}</strong><br />
                             {{#each this.data.changes}}
                                 {{!-- "this" is now an individual "change" for the AE object --}}
-                                {{localize (cprGetEffectModifierKeyName (lookup ../data.flags.cyberpunk-red-core.changes @index) this.key)}}:
+                                {{localize (lookup (cprFindConfigValue "activeEffectKeys" (lookup ../data.flags.cyberpunk-red-core.changes @index)) this.key)}}:
                                 {{#if this.value}}
                                     {{cprEffectModMode this.mode this.value}}{{this.value}}{{#unless @last}},{{/unless}}
                                 {{else}}

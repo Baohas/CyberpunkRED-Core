@@ -68,12 +68,15 @@ export default class CPRSystemUtils {
     switch (msgType) {
       case "warn":
         ui.notifications.warn(localizedMessage);
+        LOGGER.warn(localizedMessage);
         break;
       case "error":
         ui.notifications.error(localizedMessage);
+        LOGGER.error(localizedMessage);
         break;
       case "notify":
         ui.notifications.notify(localizedMessage);
+        LOGGER.log(localizedMessage);
         break;
       default:
     }
@@ -313,163 +316,6 @@ export default class CPRSystemUtils {
   }
 
   /**
-   * Produce a config map of all stats, skills, and roles with their corresponding localized name.
-   * Used in the ActiveEffects sheet when managing what is modified by an effect. This does not
-   * consider custom skills or roles.
-   *
-   * This method is called by a handlebars helper and handlebars does not support async helpers.
-   * That is why this is not programmatically generating the skill list with GetCoreSkills().
-   * Maybe there is a way to make that not async?
-   *
-   * @param {String} category - a category that helps sort keys that are presented
-   */
-  static GetEffectModifierMap(category) {
-    LOGGER.trace("GetEffectModifierMap | CPRSystemUtils | Called.");
-    switch (category) {
-      case "skill": {
-        return {
-          "bonuses.accounting": "CPR.global.skills.accounting",
-          "bonuses.acting": "CPR.global.skills.acting",
-          "bonuses.airVehicleTech": "CPR.global.skills.airVehicleTech",
-          "bonuses.animalHandling": "CPR.global.skills.animalHandling",
-          "bonuses.archery": "CPR.global.skills.archery",
-          "bonuses.athletics": "CPR.global.skills.athletics",
-          "bonuses.autofire": "CPR.global.skills.autofire",
-          "bonuses.basicTech": "CPR.global.skills.basicTech",
-          "bonuses.brawling": "CPR.global.skills.brawling",
-          "bonuses.bribery": "CPR.global.skills.bribery",
-          "bonuses.bureaucracy": "CPR.global.skills.bureaucracy",
-          "bonuses.business": "CPR.global.skills.business",
-          "bonuses.composition": "CPR.global.skills.composition",
-          "bonuses.concealOrRevealObject": "CPR.global.skills.concealOrRevealObject",
-          "bonuses.concentration": "CPR.global.skills.concentration",
-          "bonuses.contortionist": "CPR.global.skills.contortionist",
-          "bonuses.conversation": "CPR.global.skills.conversation",
-          "bonuses.criminology": "CPR.global.skills.criminology",
-          "bonuses.cryptography": "CPR.global.skills.cryptography",
-          "bonuses.cyberTech": "CPR.global.skills.cybertech",
-          "bonuses.dance": "CPR.global.skills.dance",
-          "bonuses.deduction": "CPR.global.skills.deduction",
-          "bonuses.demolitions": "CPR.global.skills.demolitions",
-          "bonuses.driveLandVehicle": "CPR.global.skills.driveLandVehicle",
-          "bonuses.education": "CPR.global.skills.education",
-          "bonuses.electronicsAndSecurityTech": "CPR.global.skills.electronicsAndSecurityTech",
-          "bonuses.endurance": "CPR.global.skills.endurance",
-          "bonuses.evasion": "CPR.global.skills.evasion",
-          "bonuses.firstAid": "CPR.global.skills.firstAid",
-          "bonuses.forgery": "CPR.global.skills.forgery",
-          "bonuses.gamble": "CPR.global.skills.gamble",
-          "bonuses.handgun": "CPR.global.skills.handgun",
-          "bonuses.heavyWeapons": "CPR.global.skills.heavyWeapons",
-          "bonuses.humanPerception": "CPR.global.skills.humanPerception",
-          "bonuses.interrogation": "CPR.global.skills.interrogation",
-          "bonuses.landVehicleTech": "CPR.global.skills.landVehicleTech",
-          "bonuses.language": "CPR.global.skills.language",
-          "bonuses.librarySearch": "CPR.global.skills.librarySearch",
-          "bonuses.lipReading": "CPR.global.skills.lipReading",
-          "bonuses.localExpert": "CPR.global.skills.localExpert",
-          "bonuses.martialArts": "CPR.global.skills.martialArts",
-          "bonuses.meleeWeapon": "CPR.global.skills.meleeWeapon",
-          "bonuses.paintOrDrawOrSculpt": "CPR.global.skills.paintOrDrawOrSculpt",
-          "bonuses.paramedic": "CPR.global.skills.paramedic",
-          "bonuses.perception": "CPR.global.skills.perception",
-          "bonuses.personalGrooming": "CPR.global.skills.personalGrooming",
-          "bonuses.persuasion": "CPR.global.skills.persuasion",
-          "bonuses.photographyAndFilm": "CPR.global.skills.photographyAndFilm",
-          "bonuses.pickLock": "CPR.global.skills.pickLock",
-          "bonuses.pickPocket": "CPR.global.skills.pickPocket",
-          "bonuses.pilotAirVehicle": "CPR.global.skills.pilotAirVehicle",
-          "bonuses.pilotSeaVehicle": "CPR.global.skills.pilotSeaVehicle",
-          "bonuses.playInstrument": "CPR.global.skills.playInstrument",
-          "bonuses.resistTortureOrDrugs": "CPR.global.skills.resistTortureOrDrugs",
-          "bonuses.riding": "CPR.global.skills.riding",
-          "bonuses.science": "CPR.global.skills.science",
-          "bonuses.seaVehicleTech": "CPR.global.skills.seaVehicleTech",
-          "bonuses.shoulderArms": "CPR.global.skills.shoulderArms",
-          "bonuses.stealth": "CPR.global.skills.stealth",
-          "bonuses.streetWise": "CPR.global.skills.streetwise",
-          "bonuses.tactics": "CPR.global.skills.tactics",
-          "bonuses.tracking": "CPR.global.skills.tracking",
-          "bonuses.trading": "CPR.global.skills.trading",
-          "bonuses.wardrobeAndStyle": "CPR.global.skills.wardrobeAndStyle",
-          "bonuses.weaponsTech": "CPR.global.skills.weaponstech",
-          "bonuses.wildernessSurvival": "CPR.global.skills.wildernessSurvival",
-        };
-      }
-      case "stat": {
-        return {
-          "data.stats.int.value": "CPR.global.stats.int",
-          "data.stats.ref.value": "CPR.global.stats.ref",
-          "data.stats.dex.value": "CPR.global.stats.dex",
-          "data.stats.tech.value": "CPR.global.stats.tech",
-          "data.stats.cool.value": "CPR.global.stats.cool",
-          "data.stats.will.value": "CPR.global.stats.will",
-          "data.stats.luck.max": "CPR.global.stats.luckMax",
-          "data.stats.move.value": "CPR.global.stats.move",
-          "data.stats.body.value": "CPR.global.stats.body",
-          "data.stats.emp.max": "CPR.global.stats.empMax",
-        };
-      }
-      case "combat": {
-        return {
-          "bonuses.hands": "CPR.effectSheet.combat.stats.numberOfHands",
-          "bonuses.initiative": "CPR.effectSheet.combat.stats.initiative",
-          "bonuses.maxHumanity": "CPR.effectSheet.combat.stats.maxHumanity",
-          "bonuses.maxHp": "CPR.effectSheet.combat.stats.maxHp",
-          "bonuses.deathSavePenalty": "CPR.effectSheet.combat.stats.deathPenalty",
-          "bonuses.universalAttack": "CPR.effectSheet.combat.stats.universalAttack",
-          "bonuses.universalDamage": "CPR.effectSheet.combat.stats.universalDamage",
-          "bonuses.universalDamageReduction": "CPR.effectSheet.combat.stats.universalDamageReduction",
-          "bonuses.attack": "CPR.effectSheet.combat.net.attack",
-          "bonuses.defense": "CPR.effectSheet.combat.net.defense",
-          "bonuses.perception_net": "CPR.effectSheet.combat.net.perception",
-          "bonuses.rez": "CPR.effectSheet.combat.net.rez",
-          "bonuses.speed": "CPR.effectSheet.combat.net.speed",
-        };
-      }
-      case "role": {
-        return {
-          "bonuses.operator": "CPR.global.role.fixer.ability.operator",
-          "bonuses.teamwork": "CPR.global.role.exec.ability.teamwork",
-          "bonuses.backup": "CPR.global.role.lawman.ability.backup",
-          "bonuses.credibility": "CPR.global.role.media.ability.credibility",
-          "bonuses.medicalTechCryosystemOperation": "CPR.global.role.medtech.ability.medtechCryo",
-          "bonuses.medicalTechPharmaceuticals": "CPR.global.role.medtech.ability.medtechPharma",
-          "bonuses.medicine": "CPR.global.role.medtech.ability.medicine",
-          "bonuses.surgery": "CPR.global.role.medtech.ability.surgery",
-          "bonuses.interface": "CPR.global.role.netrunner.ability.interface",
-          "bonuses.backdoor": "CPR.global.role.netrunner.interfaceAbility.backdoor",
-          "bonuses.cloak": "CPR.global.role.netrunner.interfaceAbility.cloak",
-          "bonuses.control": "CPR.global.role.netrunner.interfaceAbility.control",
-          "bonuses.eyedee": "CPR.global.role.netrunner.interfaceAbility.eyedee",
-          "bonuses.pathfinder": "CPR.global.role.netrunner.interfaceAbility.pathfinder",
-          "bonuses.scanner": "CPR.global.role.netrunner.interfaceAbility.scanner",
-          "bonuses.slide": "CPR.global.role.netrunner.interfaceAbility.slide",
-          "bonuses.virus": "CPR.global.role.netrunner.interfaceAbility.virus",
-          "bonuses.zap": "CPR.global.role.netrunner.interfaceAbility.zap",
-          "bonuses.moto": "CPR.global.role.nomad.ability.moto",
-          "bonuses.charismaticImpact": "CPR.global.role.rockerboy.ability.charismaticImpact",
-          "bonuses.combatAwareness": "CPR.global.role.solo.ability.combatAwareness",
-          "bonuses.damageDeflection": "CPR.global.role.solo.ability.damageDeflection",
-          "bonuses.fumbleRecovery": "CPR.global.role.solo.ability.fumbleRecovery",
-          "bonuses.initiativeReaction": "CPR.global.role.solo.ability.initiativeReaction",
-          "bonuses.precisionAttack": "CPR.global.role.solo.ability.precisionAttack",
-          "bonuses.spotWeakness": "CPR.global.role.solo.ability.spotWeakness",
-          "bonuses.threatDetection": "CPR.global.role.solo.ability.threatDetection",
-          "bonuses.fabricationExpertise": "CPR.global.role.tech.ability.fabricationExpertise",
-          "bonuses.fieldExpertise": "CPR.global.role.tech.ability.fieldExpertise",
-          "bonuses.inventionExpertise": "CPR.global.role.tech.ability.inventionExpertise",
-          "bonuses.maker": "CPR.global.role.tech.ability.maker",
-          "bonuses.upgradeExpertise": "CPR.global.role.tech.ability.upgradeExpertise",
-        };
-      }
-      // "custom" drops through here
-      default:
-    }
-    return {};
-  }
-
-  /**
    * We use temporary objects with keys derived from skill names elsewhere in the code base.
    * We need to be able to programmatically produce those keys from the name, and that is
    * what this method does. It takes a string and converts it to camelcase.
@@ -503,20 +349,6 @@ export default class CPRSystemUtils {
       return parenCaseSplit.charAt(0).toLowerCase() + parenCaseSplit.slice(1);
     }
     return andCaseSplit.charAt(0).toLowerCase() + andCaseSplit.slice(1);
-  }
-
-  /**
-   * Given a key category (skill, role, stat, etc) and a key, return the human-readable
-   * name for it. Used in item sheets that have active effects.
-   *
-   * @param {String} category - see GetEffectModifierMap for valid values
-   * @param {String} key - e.g. "bonuses.perception"
-   * @returns {String}
-   */
-  static GetEffectModifierKeyName(category, key) {
-    LOGGER.trace("GetEffectModifierKeyName | CPRSystemUtils | Called.");
-    if (category === "custom") return key;
-    return CPRSystemUtils.GetEffectModifierMap(category)[key];
   }
 
   /**

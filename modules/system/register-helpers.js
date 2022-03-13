@@ -622,18 +622,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Return a map of effects keys (e.g. data.stat.dex.value) to their localized name. This is based on a given
-   * category which helps sort the list of available options in the UI.
-   */
-  Handlebars.registerHelper("cprGetEffectModifierMap", (keyCategory) => SystemUtils.GetEffectModifierMap(keyCategory));
-
-  /**
-   * Return the localized string that matches with the provided ActiveEffect key. This basically iterates over GetEffectModifierMap
-   * until it receives a hit, or returns the given key. The latter behavior is for custom effects keys.
-   */
-  Handlebars.registerHelper("cprGetEffectModifierKeyName", (category, key) => SystemUtils.GetEffectModifierKeyName(category, key));
-
-  /**
    * Return true if a bit of text matches a filter value. If the filter is not set, everything matches.
    */
   Handlebars.registerHelper("cprSheetContentFilter", (filterValue, applyToText) => {

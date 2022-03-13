@@ -70,7 +70,7 @@
                     {{else}}
                         <select name="changes.{{i}}.key" data-dtype="String">
                             {{#select change.key}}
-                                {{#each (cprGetEffectModifierMap (lookup ../data.flags.cyberpunk-red-core.changes i)) as |modkeyname modkey|}}
+                                {{#each (cprFindConfigValue "activeEffectKeys" (lookup ../data.flags.cyberpunk-red-core.changes i)) as |modkeyname modkey|}}
                                     <option value="{{modkey}}">{{localize modkeyname}}</option>
                                 {{/each}}
                             {{/select}}
