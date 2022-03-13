@@ -40,6 +40,7 @@
 - Fixed #373 - Expansive Shotgun Slug ammunition is now usable with the Shotgun (and not the Heavy Pistol).
 - Fixed #380 - Corrected various typos
 - Corrected various spelling and formatting issues in the changelog
+- Fixed #374 - Mook sheets now correctly show the updated magazine size when an item upgrade that changes it is used.
   
 **Maintenance items**
 - Moved preCreateItem hook from actor.js to item.js and combined the code of createItem hook from both actor.js and item.js into item.js

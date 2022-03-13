@@ -27,7 +27,7 @@
                 <br>
                 {{#if weapon.data.data.isRanged}}
                   {{#if weapon.data.data.magazine.ammoId}}
-                    ({{localize "CPR.global.itemTypes.ammo"}}: {{weapon.data.data.magazine.value}}/{{weapon.data.data.magazine.max}})
+                    ({{localize "CPR.global.itemTypes.ammo"}}: {{weapon.data.data.magazine.value}}/{{cprApplyUpgrade weapon weapon.data.data.magazine.max "magazine"}})
                   {{else}}
                     ({{localize "CPR.mookSheet.items.unloaded"}})
                   {{/if}}
