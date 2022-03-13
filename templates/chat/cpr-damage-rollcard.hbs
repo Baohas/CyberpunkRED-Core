@@ -15,7 +15,7 @@
                        data-ablation="{{#if (cprCompare rollCardExtraArgs.ammoType "===" "armorPiercing")}}2{{else}}{{#if (cprCompare rollCardExtraArgs.ammoType "===" "rubber")}}0{{else}}1{{/if}}{{/if}}"
                        data-ammo-variety="{{rollCardExtraArgs.ammoVariety}}"
                        data-ignore-half-armor="{{#if rollCardExtraArgs.ignoreHalfArmor}}true{{else}}false{{/if}}">
-                        <i class="fas fa-bolt" title="{{localize "CPR.chat.damageApplication.applyDamage"}}"></i>
+                        <i class="fas fa-bolt" title="{{localize "CPR.chat.damageApplication.applyDamageSelected"}}"></i>
                     </a>
                 </div>
                 {{#if rollCardExtraArgs.ammoType}}
@@ -83,7 +83,7 @@
     <br>
     <div class="rollcard-top">
       <div class="cpr-block chat-rollTitle-stat">
-        <div class="text-center text-padding-top text-normal">{{localize "CPR.chat.damageApplication.applyDamageTo"}}</div>
+        <div class="text-center text-padding-top text-normal">{{localize "CPR.chat.damageApplication.applyDamageToFollowing"}}</div>
         <div class="rollcard-subtitle">
         </div>
       </div>

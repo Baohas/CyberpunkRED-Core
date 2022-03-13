@@ -254,12 +254,16 @@ export default class CPRChat {
             cprRoll.location = location;
           }
 
+          const targetedTokens = SystemUtils.getUserTargetedOrSelected("targeted"); // get user targeted tokens for output to chat
+          if (targetedTokens.length === 0) {
+            SystemUtils.DisplayMessage("warn", "CPR.chat.damageApplication.noTokenTargeted");
+          }
+
           const keepRolling = await cprRoll.handleRollDialog(event);
           if (!keepRolling) {
             return;
           }
 
-          const targetedTokens = SystemUtils.getUserTargetsOrSelections(); // get user targeted tokens for output to chat
 
           cprRoll = await item.confirmRoll(cprRoll);
           await cprRoll.roll();
@@ -380,15 +384,10 @@ export default class CPRChat {
       }
       actor._applyDamage(totalDamage, bonusDamage, location, ablation, ammoVariety, ignoreHalfArmor, damageLethal, formData);
     } else {
-      const tokens = SystemUtils.getUserTargetsOrSelections(); // get user targeted tokens
+      const tokens = SystemUtils.getUserTargetedOrSelected("selected"); // get user selected tokens
       if (tokens.length === 0) {
-        if (game.settings.get("cyberpunk-red-core", "targetedTokensAutomation")) {
-          SystemUtils.DisplayMessage("warn", "CPR.chat.damageApplication.noTokenTargeted");
-          return;
-        } else {
-          SystemUtils.DisplayMessage("warn", "CPR.chat.damageApplication.noTokenSelected");
-          return;
-        }
+        SystemUtils.DisplayMessage("warn", "CPR.chat.damageApplication.noTokenSelected");
+        return;
       }
       const allowedTypes = [
         "character",
