@@ -189,7 +189,6 @@ export default class CPRCyberdeckItem extends CPRItem {
 
   _createCyberdeckRoll(rollType, actor, extraData = {}) {
     LOGGER.trace("_createCyberdeckRoll | CPRCyberdeckItem | Called.");
-    let rollModifiers = 0;
     let cprRoll;
     const { programId } = extraData;
     const programList = this.getInstalledPrograms().filter((iProgram) => iProgram._id === programId);
@@ -213,7 +212,6 @@ export default class CPRCyberdeckItem extends CPRItem {
     const atkValue = (program === null) ? 0 : program.data.atk;
     const pgmName = (program === null) ? "Program" : program.name;
     const { executionType } = extraData;
-    rollModifiers = (program.data.class === "blackice") ? 0 : this.getBoosters(executionType);
     switch (executionType) {
       case "atk":
       case "def": {
@@ -241,7 +239,7 @@ export default class CPRCyberdeckItem extends CPRItem {
       default:
     }
     cprRoll.setNetCombat(pgmName);
-    cprRoll.addMod(rollModifiers);
+    if (roleName !== "blackice") cprRoll.addMod(this.actor.data.bonuses[SystemUtils.slugify(roleName)]);
     cprRoll.addMod(actor.getWoundStateMods());
     return cprRoll;
   }
@@ -281,6 +279,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     } else {
       cprRoll.addMod(this.actor.data.bonuses[interfaceAbility]);
     }
+    cprRoll.addMod(this.actor.data.bonuses[SystemUtils.slugify(roleName)]);
     cprRoll.addMod(this.actor.getWoundStateMods());
     return cprRoll;
   }

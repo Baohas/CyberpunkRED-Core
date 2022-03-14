@@ -22,98 +22,65 @@ export default class CPRRoleItem extends CPRItem {
     LOGGER.trace("_createRoleRoll | CPRRoleItem | Called.");
     const itemData = this.data.data;
     let roleName = itemData.mainRoleAbility;
-    let rollTitle;
     let statName = "--";
     let skillName = "--";
     let skillList;
     let roleValue = 0;
     let statValue = 0;
     let skillValue = 0;
-    let boosterModifiers;
-    switch (rollType) {
-      case CPRRolls.rollTypes.INTERFACEABILITY: {
-        roleName = rollInfo.netRoleItem.data.data.mainRoleAbility;
-        roleValue = rollInfo.netRoleItem.data.data.rank;
-        const { interfaceAbility } = rollInfo;
-        const { cyberdeck } = rollInfo;
-        switch (interfaceAbility) {
-          case "speed": {
-            rollTitle = SystemUtils.Localize("CPR.global.generic.speed");
-            break;
-          }
-          case "defense": {
-            rollTitle = SystemUtils.Localize("CPR.global.generic.defense");
-            break;
-          }
-          default: {
-            rollTitle = SystemUtils.Localize(CPR.interfaceAbilities[interfaceAbility]);
-          }
-        }
-
-        boosterModifiers = cyberdeck.getBoosters(interfaceAbility);
-        break;
+    if (rollInfo.rollSubType === "mainRoleAbility") {
+      if (itemData.addRoleAbilityRank) {
+        roleValue = itemData.rank;
       }
-      case CPRRolls.rollTypes.ROLEABILITY: {
-        if (rollInfo.rollSubType === "mainRoleAbility") {
-          if (itemData.addRoleAbilityRank) {
-            roleValue = itemData.rank;
-          }
-          if (itemData.stat !== "--") {
-            statName = itemData.stat;
-            statValue = actor.getStat(statName);
-          }
-          if (itemData.skill !== "--" && itemData.skill !== "varying") {
-            skillName = itemData.skill;
-            const skillObject = actor.data.filteredItems.skill.find((i) => skillName === i.data.name);
-            if (skillObject !== undefined) {
-              skillValue = skillObject.data.data.level;
-            } else {
-              SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.noskillbythatname"));
-            }
-          } else if (itemData.skill === "varying") {
-            skillName = "varying";
-            if (itemData.stat !== "--") {
-              skillList = actor.data.filteredItems.skill.filter((s) => s.data.data.stat === itemData.stat);
-            } else {
-              skillList = actor.data.filteredItems.skill;
-            }
-          }
-        }
-
-        if (rollInfo.rollSubType === "subRoleAbility") {
-          const subRoleAbility = itemData.abilities.find((a) => a.name === rollInfo.subRoleName);
-          roleName = subRoleAbility.name;
-          roleValue = subRoleAbility.rank;
-          if (subRoleAbility.stat !== "--") {
-            statName = subRoleAbility.stat;
-            statValue = actor.getStat(statName);
-          }
-          if (subRoleAbility.skill !== "--" && subRoleAbility.skill !== "varying") {
-            skillName = subRoleAbility.skill.name;
-            const skillObject = actor.data.filteredItems.skill.find((i) => skillName === i.data.name);
-            if (skillObject !== undefined) {
-              skillValue = skillObject.data.data.level;
-            } else {
-              SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.noskillbythatname"));
-            }
-          } else if (subRoleAbility.skill === "varying") {
-            skillName = "varying";
-            if (subRoleAbility.stat !== "--") {
-              skillList = actor.data.filteredItems.skill.filter((s) => s.data.data.stat === subRoleAbility.stat);
-            } else {
-              skillList = actor.data.filteredItems.skill;
-            }
-          }
-        }
-        break;
+      if (itemData.stat !== "--") {
+        statName = itemData.stat;
+        statValue = actor.getStat(statName);
       }
-      default:
+      if (itemData.skill !== "--" && itemData.skill !== "varying") {
+        skillName = itemData.skill;
+        const skillObject = actor.data.filteredItems.skill.find((i) => skillName === i.data.name);
+        if (skillObject !== undefined) {
+          skillValue = skillObject.data.data.level;
+        } else {
+          SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.noskillbythatname"));
+        }
+      } else if (itemData.skill === "varying") {
+        skillName = "varying";
+        if (itemData.stat !== "--") {
+          skillList = actor.data.filteredItems.skill.filter((s) => s.data.data.stat === itemData.stat);
+        } else {
+          skillList = actor.data.filteredItems.skill;
+        }
+      }
     }
+
+    if (rollInfo.rollSubType === "subRoleAbility") {
+      const subRoleAbility = itemData.abilities.find((a) => a.name === rollInfo.subRoleName);
+      roleName = subRoleAbility.name;
+      roleValue = subRoleAbility.rank;
+      if (subRoleAbility.stat !== "--") {
+        statName = subRoleAbility.stat;
+        statValue = actor.getStat(statName);
+      }
+      if (subRoleAbility.skill !== "--" && subRoleAbility.skill !== "varying") {
+        skillName = subRoleAbility.skill.name;
+        const skillObject = actor.data.filteredItems.skill.find((i) => skillName === i.data.name);
+        if (skillObject !== undefined) {
+          skillValue = skillObject.data.data.level;
+        } else {
+          SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.noskillbythatname"));
+        }
+      } else if (subRoleAbility.skill === "varying") {
+        skillName = "varying";
+        if (subRoleAbility.stat !== "--") {
+          skillList = actor.data.filteredItems.skill.filter((s) => s.data.data.stat === subRoleAbility.stat);
+        } else {
+          skillList = actor.data.filteredItems.skill;
+        }
+      }
+    }
+
     const cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, skillName, skillValue, statName, statValue, skillList);
-    if (rollType === "interfaceAbility") {
-      cprRoll.setNetCombat(rollTitle);
-      cprRoll.addMod(boosterModifiers);
-    }
     cprRoll.addMod(actor.data.bonuses[SystemUtils.slugify(skillName)]); // add skill bonuses from Active Effects
     cprRoll.addMod(actor.data.bonuses[SystemUtils.slugify(roleName)]); // add role bonuses from Active Effects
     cprRoll.addMod(actor.getWoundStateMods());
