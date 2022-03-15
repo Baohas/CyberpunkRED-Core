@@ -227,6 +227,7 @@ export default class CPRCyberdeckItem extends CPRItem {
           "program",
         );
         cprRoll.rollCardExtraArgs.program = program;
+        cprRoll.rollCardExtraArgs.cyberdeck = this;
         break;
       }
       case "damage": {

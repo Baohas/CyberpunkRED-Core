@@ -233,22 +233,35 @@ export default class CPRChat {
         }
         case "rollDamage": {
           // This will let us click a damage link off of the attack card
-          const rollType = "damage";
           const actorId = SystemUtils.GetEventDatum(event, "data-actor-id");
           const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
           const tokenId = SystemUtils.GetEventDatum(event, "data-token-id");
           const location = SystemUtils.GetEventDatum(event, "data-damage-location");
           const attackType = SystemUtils.GetEventDatum(event, "data-attack-type");
           const actor = (Object.keys(game.actors.tokens).includes(tokenId))
-            ? game.actors.tokens[tokenId]
-            : game.actors.find((a) => a.id === actorId);
+          ? game.actors.tokens[tokenId]
+          : game.actors.find((a) => a.id === actorId);
           const item = actor ? actor.items.find((i) => i.id === itemId) : null;
           const displayName = actor === null ? "ERROR" : actor.name;
           if (!item) {
             SystemUtils.DisplayMessage("warn", `[${displayName}] ${SystemUtils.Localize("CPR.actormissingitem")} ${itemId}`);
             return;
           }
-          let cprRoll = item.createRoll(rollType, actor, { damageType: attackType });
+
+          const rollType = item.type !== "cyberdeck" ? "damage": "cyberdeckProgram";
+          let cprRoll;
+          if (item.type !== "cyberdeck") {
+            cprRoll = item.createRoll("damage", actor, { damageType: attackType });
+          } else {
+            const programId = SystemUtils.GetEventDatum(event, "data-program-id");
+            const netRoleItem = actor.data.filteredItems.role.find((r) => r.data.name === actor.data.data.roleInfo.activeNetRole);
+            cprRoll = item.createRoll("cyberdeckProgram", actor, {
+              cyberdeckId: itemId,
+              programId,
+              executionType: "damage",
+              netRoleItem,
+            });
+          }
 
           if (location) {
             cprRoll.location = location;
