@@ -1,5 +1,4 @@
 {{cprTrace "CPR-DAMAGE-APPLICATION-CARD.HBS"}}
-{{log this}}
 <div class="rollcard">
   <div class="rollcard-top">
     <div class="cpr-block chat-rollTitle-stat">
@@ -27,6 +26,9 @@
         <div class="d6-number-div">
           <a> <span class="clickable fg-red text-bold" data-action="toggleVisibility" data-visible-element="d6-data-details">{{hpReduction}}</span> </a>
         </div>
+        {{#if (cprCompare location "!==" "body")}}
+          <div class="text-normal text-bold">{{localize "CPR.rolls.location"}}: {{localize (cprFindConfigValue "aimedLocation" location)}}</div>
+        {{/if}}
         <div class="d6-data-details hide">
           {{#if rezReduction}}
             <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.rezReducedBy"}} <span class="text-bold">{{hpReduction}}</span></div>

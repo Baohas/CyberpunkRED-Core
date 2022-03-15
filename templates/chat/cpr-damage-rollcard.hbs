@@ -100,7 +100,7 @@
              data-actor-id = "{{token.actor.id}}"
              data-token-id = "{{token.id}}"
              data-total-damage="{{../resultTotal}}" data-bonus-damage="{{#if ../criticalCard}}{{../bonusDamage}}{{else}}0{{/if}}"
-             data-damage-location="{{#if ../isAimed}}{{location}}{{else}}body{{/if}}"
+             data-damage-location="{{#if ../isAimed}}{{../location}}{{else}}body{{/if}}"
              data-damage-lethal="{{#if (cprCompare ../rollCardExtraArgs.ammoType "===" "rubber")}}false{{else}}true{{/if}}"
              data-ablation="{{#if (cprCompare ../rollCardExtraArgs.ammoType "===" "armorPiercing")}}2{{else}}{{#if (cprCompare ../rollCardExtraArgs.ammoType "===" "rubber")}}0{{else}}1{{/if}}{{/if}}"
              data-ammo-variety="{{../rollCardExtraArgs.ammoVariety}}"
