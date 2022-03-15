@@ -456,6 +456,7 @@
     "CPR.global.itemTypes.vehicle": "Vehicle",
     "CPR.global.itemTypes.weapon": "Weapon",
     "CPR.global.location.body": "Body",
+    "CPR.global.location.brain": "Brain",
     "CPR.global.location.head": "Head",
     "CPR.global.location.heldItem": "Held Item",
     "CPR.global.location.leg": "Leg",

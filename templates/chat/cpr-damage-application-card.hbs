@@ -27,7 +27,7 @@
           <a> <span class="clickable fg-red text-bold" data-action="toggleVisibility" data-visible-element="d6-data-details">{{hpReduction}}</span> </a>
         </div>
         {{#if (cprCompare location "!==" "body")}}
-          <div class="text-normal text-bold">{{localize "CPR.rolls.location"}}: {{localize (cprFindConfigValue "aimedLocation" location)}}</div>
+          <div class="text-normal text-bold">{{localize "CPR.rolls.location"}}: {{localize (cprFindConfigValue "damageLocation" location)}}</div>
         {{/if}}
         <div class="d6-data-details hide">
           {{#if rezReduction}}

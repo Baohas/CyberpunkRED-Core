@@ -337,6 +337,13 @@ CPR.aimedLocation = {
   leg: "CPR.global.location.leg",
 };
 
+CPR.damageLocation = {
+  brain: "CPR.global.location.brain",
+  head: "CPR.global.location.head",
+  heldItem: "CPR.global.location.heldItem",
+  leg: "CPR.global.location.leg",
+};
+
 CPR.blackIceType = {
   antipersonnel: "CPR.global.blackIce.type.antiPersonnel",
   antiprogram: "CPR.global.blackIce.type.antiProgram",
