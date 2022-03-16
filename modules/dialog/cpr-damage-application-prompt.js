@@ -17,6 +17,7 @@ export default class DamageApplicationPrompt {
           let damageReductionRole = html.find("[name=\"damageReductionRole\"");
           let damageReductionAE = html.find("[name=\"damageReductionAE\"");
           let useShield = html.find("[name=\"useShield\"");
+          let brainDamageReduction = html.find("[name=\"brainDamageReduction\"");
           const formData = new FormDataExtended(html.find("form")[0]).toObject();
           if (useShield.checked) {
             formData.useShield = true;
@@ -26,6 +27,9 @@ export default class DamageApplicationPrompt {
           }
           if (damageReductionAE.checked) {
             formData.damageReductionAE = true;
+          }
+          if (brainDamageReduction.checked) {
+            formData.brainDamageReduction = true;
           }
           resolve(formData);
         };

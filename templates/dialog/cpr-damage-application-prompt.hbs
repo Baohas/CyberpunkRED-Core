@@ -47,6 +47,17 @@
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="damageReductionAE" checked></span>
       </div>
   </li>
+  {{#if brainDamageReduction}}
+  <hr>
+    <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.chat.damageApplication.prompt.brainDamageReduction"}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="brainDamageReduction" {{#if brainDamageReduction}}checked{{/if}}></span>
+      </div>
+    </li>
+  {{/if}}
 </ol>
 </form>
 {{cprTrace "END CPR-DAMAGE-APPLICATION-PROMPT.HBS"}}

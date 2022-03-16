@@ -79,6 +79,7 @@ export default class CPRActor extends Actor {
     this.data.bonuses.attack = 0;
     this.data.bonuses.defense = 0;
     this.data.bonuses.rez = 0;
+    this.data.bonuses.brainDamageReduction = 0;
   }
 
   /**
@@ -1166,6 +1167,9 @@ export default class CPRActor extends Actor {
       // This is damage done in a netrun, which completely ignores armor
       const currentHp = this.data.data.derivedStats.hp.value;
       totalDamageDealt = damage + bonusDamage;
+      if (formData.brainDamageReduction) {
+        totalDamageReduction += this.data.bonuses.brainDamageReduction;
+      }
       takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
       await this.update({ "data.derivedStats.hp.value": currentHp - takenDamage });
       CPRChat.RenderDamageApplicationCard({ actor: this, damageRolled, hpReduction: takenDamage, totalDamageDealt, location, totalDamageReduction, armorValue, brainDamage: true });

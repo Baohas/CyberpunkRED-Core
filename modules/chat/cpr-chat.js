@@ -385,16 +385,18 @@ export default class CPRChat {
       ? game.actors.tokens[tokenId]
       : game.actors.find((a) => a.id === actorId);
 
-      let formData = { damageReductionRole: true, damageReductionAE: true, useShield: true }; // data to feed to _applyDamage
+      const brainDamageReduction = location === "brain" ? true : false; // whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
+      let formData = { damageReductionRole: true, damageReductionAE: true, useShield: true, brainDamageReduction }; // data to feed to _applyDamage
       let promptData;
       if (!event.ctrlKey) {
         const title = SystemUtils.Localize("CPR.chat.damageApplication.prompt.title");
         const allowedTypesMessage = `${SystemUtils.Format("CPR.chat.damageApplication.prompt.allowedTypes", { location })}`;
-        const data = { allowedTypesMessage, allowedActors: [actor] };
+        const data = { allowedTypesMessage, allowedActors: [actor], brainDamageReduction };
         promptData = await DamageApplicationPrompt.RenderPrompt(title, data).catch((err) => LOGGER.debug(err)); // data to feed to formData
         formData.damageReductionRole = promptData.damageReductionRole;
         formData.damageReductionAE = promptData.damageReductionAE;
         formData.useShield = promptData.useShield;
+        formData.brainDamageReduction = promptData.brainDamageReduction;
       }
       if (promptData === false) {
         return;
@@ -425,18 +427,20 @@ export default class CPRChat {
       allowedActors.sort((a, b) => (a.data.name > b.data.name ? 1 : -1));
       forbiddenActors.sort((a, b) => (a.data.name > b.data.name ? 1 : -1));
 
-      let formData = { damageReductionRole: true, damageReductionAE: true, useShield: true }; // data to feed to _applyDamage
+      const brainDamageReduction = location === "brain" ? true : false; // whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
+      let formData = { damageReductionRole: true, damageReductionAE: true, useShield: true, brainDamageReduction }; // data to feed to _applyDamage
       let count = 0
       while (count < allowedActors.length) {
         let promptData;
         if (!event.ctrlKey) {
           const title = SystemUtils.Localize("CPR.chat.damageApplication.prompt.title");
           const allowedTypesMessage = `${SystemUtils.Format("CPR.chat.damageApplication.prompt.allowedTypes", { location })}`;
-          const data = { allowedTypesMessage, allowedActors, forbiddenActors, count };
+          const data = { allowedTypesMessage, allowedActors, forbiddenActors, count, brainDamageReduction };
           promptData = await DamageApplicationPrompt.RenderPrompt(title, data).catch((err) => LOGGER.debug(err)); // data to feed to formData
           formData.damageReductionRole = promptData.damageReductionRole;
           formData.damageReductionAE = promptData.damageReductionAE;
           formData.useShield = promptData.useShield;
+          formData.brainDamageReduction = promptData.brainDamageReduction;
         }
         if (promptData !== false) {
           allowedActors[count]._applyDamage(totalDamage, bonusDamage, location, ablation, ammoVariety, ignoreHalfArmor, damageLethal, formData);
