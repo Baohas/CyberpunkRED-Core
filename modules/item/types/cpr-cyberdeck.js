@@ -240,8 +240,12 @@ export default class CPRCyberdeckItem extends CPRItem {
       default:
     }
     cprRoll.setNetCombat(pgmName);
-    if (roleName !== "blackice") cprRoll.addMod(this.actor.data.bonuses[SystemUtils.slugify(roleName)]);
-    cprRoll.addMod(actor.getWoundStateMods());
+
+    // Bonuses from roles, active effects, and wound state should not modify damage rolls.
+    if (executionType !== "damage") {
+      if (roleName !== "blackice") cprRoll.addMod(this.actor.data.bonuses[SystemUtils.slugify(roleName)]);
+      cprRoll.addMod(actor.getWoundStateMods());
+    }
     return cprRoll;
   }
 
