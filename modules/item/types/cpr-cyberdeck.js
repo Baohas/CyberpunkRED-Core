@@ -271,7 +271,31 @@ export default class CPRCyberdeckItem extends CPRItem {
         rollTitle = SystemUtils.Localize(CPR.interfaceAbilities[interfaceAbility]);
       }
     }
-    const cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, "--", 0, "--", 0, null);
+
+    // If interfaceAbiltiy is Zap, we will handle roll either as a Damage Roll or an Attack Roll.
+    // If interfaceAbility is anything else, we will handle roll as as a Role Roll.
+    let cprRoll;
+    if (interfaceAbility === "zap") {
+      if (rollInfo.executionType === "damage") {
+        cprRoll = new CPRRolls.CPRDamageRoll("SystemUtils.Localize(CPR.interfaceAbilities.zap)", "1d6", "program");
+      } else {
+        cprRoll = new CPRRolls.CPRAttackRoll(
+          "zap",
+          rollTitle,
+          0,
+          "",
+          0,
+          roleName,
+          roleValue,
+          "program",
+        );
+        cprRoll.rollCardExtraArgs.cyberdeck = this;
+        cprRoll.rollCardExtraArgs.isZap = true;
+      }
+    } else {
+      cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, "--", 0, "--", 0, null);
+    }
+
     cprRoll.setNetCombat(rollTitle);
     // consider active effects
     if (interfaceAbility === "perception") {

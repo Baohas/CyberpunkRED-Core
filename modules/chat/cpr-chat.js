@@ -248,15 +248,19 @@ export default class CPRChat {
             return;
           }
 
-          const rollType = item.type !== "cyberdeck" ? "damage": "cyberdeckProgram";
+          // If item isn't a cyberdeck, rollType is for regular damage. If item is a cyberdeck,
+          // we will roll damage through the cpr-cyberdeck.js (either through createCyberdeckRoll or createInterfaceRoll)
+          let rollType = item.type !== "cyberdeck" ? "damage": "cyberdeckProgram";
           let cprRoll;
           if (item.type !== "cyberdeck") {
-            cprRoll = item.createRoll("damage", actor, { damageType: attackType });
+            cprRoll = item.createRoll(rollType, actor, { damageType: attackType });
           } else {
             const programId = SystemUtils.GetEventDatum(event, "data-program-id");
+            rollType = programId === "zap" ? "interfaceAbility" : rollType; // reassign rollType to "interfaceAbility" if this is a Zap roll.
             const netRoleItem = actor.data.filteredItems.role.find((r) => r.data.name === actor.data.data.roleInfo.activeNetRole);
-            cprRoll = item.createRoll("cyberdeckProgram", actor, {
+            cprRoll = item.createRoll(rollType, actor, {
               cyberdeckId: itemId,
+              interfaceAbility: "zap",
               programId,
               executionType: "damage",
               netRoleItem,

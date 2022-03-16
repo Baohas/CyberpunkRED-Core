@@ -1,7 +1,13 @@
 {{cprTrace "CPR-VERIFY-PROGRAM-DAMAGE-PROMPT.HBS"}}
 <form>
+  {{log this}}
     <div>
-        {{localize "CPR.rolls.roll"}} {{localize "CPR.rolls.damageFor"}} "{{rollCardExtraArgs.program.name}} ({{localize (cprFindConfigValue "programClassList" rollCardExtraArgs.program.data.class)}})", Choomba!
+        {{localize "CPR.rolls.roll"}} {{localize "CPR.rolls.damageFor"}}
+        {{#if rollCardExtraArgs.program.name}}
+          "{{rollCardExtraArgs.program.name}} ({{localize (cprFindConfigValue "programClassList" rollCardExtraArgs.program.data.class)}})", Choomba!
+        {{else}}
+          "{{localize "CPR.global.role.netrunner.interfaceAbility.zap"}}"
+        {{/if}}
     </div>
     <ol class="items-list">
       {{#if (cprCompare (cprCompare rollCardExtraArgs.program.data.class "===" "antiprogramattacker") "&&" (cprCompare rollCardExtraArgs.program.data.damage.blackIce "!==" "")) }}
