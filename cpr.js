@@ -10,6 +10,7 @@ import CPRDemonActorSheet from "./modules/actor/sheet/cpr-demon-sheet.js";
 import CPRMookActorSheet from "./modules/actor/sheet/cpr-mook-sheet.js";
 import CPRCombat from "./modules/combat/cpr-combat.js";
 import CPRCombatant from "./modules/combat/cpr-combatant.js";
+import CPRToken from "./modules/token/cpr-token.js";
 
 import CPRItemSheet from "./modules/item/sheet/cpr-item-sheet.js";
 import LOGGER from "./modules/utils/cpr-logger.js";
@@ -91,6 +92,18 @@ Hooks.once("init", async () => {
   CONFIG.Combat.documentClass = CPRCombat;
   CONFIG.Item.documentClass = itemConstructor;
   CONFIG.Combatant.documentClass = CPRCombatant;
+  CONFIG.Token.documentClass = CPRToken;
+
+  CONFIG.CPR = {
+    trackableAttributes: {
+      derivedStats: { "*": true },
+      reputation: { "*": true },
+      improvementPoints: { "*": true },
+      lifestyle: { "*": true },
+      stats: { "*": true },
+      wealth: { "*": true },
+    },
+  };
 
   preloadHandlebarsTemplates();
   registerHandlebarsHelpers();
