@@ -151,7 +151,7 @@ export default class CPRActorSheet extends ActorSheet {
       );
 
       const installedOptionalCyberware = installedCyberware.filter(
-        (c) => c.system.isFoundational !== true && c.system.type === type,
+        (cyberware) => cyberware.system.isFoundational !== true && cyberware.system.type === type,
       ).map((cw) => ({
         _id: cw._id,
         uuid: cw.uuid,
@@ -161,6 +161,8 @@ export default class CPRActorSheet extends ActorSheet {
         type: cw.system.type,
       }));
 
+      const usedSlots = installedOptionalCyberware.map((cyberware) => cyberware.size).reduce((sum, addend) => sum + addend, 0);
+
       sortedInstalledCyberware[type] = sortedInstalledCyberware[type].map(
         (cyberware) => ({
           foundation: {
@@ -168,6 +170,7 @@ export default class CPRActorSheet extends ActorSheet {
             uuid: cyberware.uuid,
             name: cyberware.name,
             type: cyberware.system.type,
+            usedSlots,
             slots: cyberware.system.slots,
             isUpgraded: cyberware.system.isUpgraded,
             core: cyberware.system.core,

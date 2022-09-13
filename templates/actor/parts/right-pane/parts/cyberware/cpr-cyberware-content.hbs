@@ -6,7 +6,7 @@
 {{#unless foundation.core}}
 <li class="item flexrow" data-item-id="{{foundation._id}}" draggable="false">
     <div class="item-name cyberware-name text-nowrap">
-        <a class="name item-view">{{foundation.name}} {{cprShowSlotStatus foundation}}{{#if foundation.isUpgraded}}<sup><i class="fab fa-uniregistry"></sup></i>{{/if}}</a>
+        <a class="name item-view">{{foundation.name}} ({{foundation.usedSlots}}/{{foundation.slots}}){{#if foundation.isUpgraded}}<sup><i class="fab fa-uniregistry"></sup></i>{{/if}}</a>
     </div>
     <div class="item-detail cyberware-data text-nowrap">
         {{localize (cprFindConfigValue "cyberwareTypeList" foundation.type)}}

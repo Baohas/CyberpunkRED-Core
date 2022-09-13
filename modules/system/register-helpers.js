@@ -243,9 +243,8 @@ export default function registerHandlebarsHelpers() {
   /**
    * Show option slots on a cyberware item
    */
-  Handlebars.registerHelper("cprShowSlotStatus", (item) => {
+  Handlebars.registerHelper("cprShowSlotStatus", (obj) => {
     LOGGER.trace("cprShowSlotStatus | handlebarsHelper | Called.");
-    const obj = (typeof item === "object") ? item : SystemUtils.GetItemByUUID(item);
     if (obj.type === "cyberware") {
       const { optionSlots } = obj.system;
       if (optionSlots > 0) {
