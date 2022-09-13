@@ -290,63 +290,25 @@ export default class CPRActor extends Actor {
       Rules.lawyer(false, "CPR.messages.warnNoFoundationalCyberwareOfCorrectType");
       return;
     }
-    let formData;
-    if (item.system.isFoundational) {
-      formData = await InstallCyberwarePrompt.RenderPrompt({ item }).catch((err) => LOGGER.debug(err));
-      if (formData === undefined) {
-        return;
-      }
-      await this._addFoundationalCyberware(item, formData);
-    } else {
-      formData = await InstallCyberwarePrompt.RenderPrompt({
-        item,
-        foundationalCyberware: compatibleFoundationalCyberware,
-      }).catch((err) => LOGGER.debug(err));
-      if (formData === undefined) {
-        return;
-      }
-      await this._addOptionalCyberware(item, formData);
+
+    const formData = await InstallCyberwarePrompt.RenderPrompt({
+      item,
+      foundationalCyberware: compatibleFoundationalCyberware,
+    }).catch((err) => LOGGER.debug(err));
+    if (formData === undefined) {
+      return;
     }
-    await this.loseHumanityValue(item, formData);
-  }
 
-  /**
-   * Add (install) foundational cyberware, which includes losing Humanity.
-   *
-   * @private
-   * @param {CPRItem} item - the Cyberware item to install
-   * @returns {Object}
-   */
-  _addFoundationalCyberware(item) {
-    LOGGER.debug("_addFoundationalCyberware | CPRActor | Applying foundational cyberware.");
-    return this.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.isInstalled": true }]);
-  }
+    if (!item.system.isFoundational && !formData.foundationalId) {
+      Rules.lawyer(false, "CPR.messages.warnNoFoundationalCyberwareOfCorrectType");
+      return;
+    }
 
-  /**
-   * Add (install) optional cyberware, including the loss of Humanity
-   *
-   * @private
-   * @param {CPRItem} item - the Cyberware item to install
-   * @param {Object} formData - an object representing answers from the installation dialog box
-   * @returns {Object}
-   */
-  async _addOptionalCyberware(item, formData) {
-    LOGGER.trace("_addOptionalCyberware | CPRActor | Called.");
-    const tmpItem = item;
-    LOGGER.trace(`_addOptionalCyberware | CPRActor | applying optional cyberware to item ${formData.foundationalId}.`);
-    const foundationalCyberware = this._getOwnedItem(formData.foundationalId);
-    const newOptionalIds = foundationalCyberware.system.optionalIds.concat(item._id);
-    const newInstalledOptionSlots = foundationalCyberware.system.installedOptionSlots + item.system.size;
-    tmpItem.system.isInstalled = true;
-    const allowedSlots = Number(foundationalCyberware.availableSlots());
-    Rules.lawyer((item.system.size <= allowedSlots), "CPR.messages.tooManyOptionalCyberwareInstalled");
-    return this.updateEmbeddedDocuments("Item", [
-      { _id: item.id, "system.isInstalled": true }, {
-        _id: foundationalCyberware.id,
-        "system.optionalIds": newOptionalIds,
-        "system.installedOptionSlots": newInstalledOptionSlots,
-      },
-    ]);
+    const target = (item.system.isFoundational) ? this : this._getOwnedItem(formData.foundationalId);
+
+    if (await item.installInto(target)) {
+      await this.loseHumanityValue(item, formData);
+    }
   }
 
   /**
@@ -361,6 +323,7 @@ export default class CPRActor extends Actor {
   async removeCyberware(itemId, foundationalId, skipConfirm = false) {
     LOGGER.trace("removeCyberware | CPRActor | Called.");
     const item = this._getOwnedItem(itemId);
+
     let confirmRemove;
     if (!skipConfirm) {
       const dialogTitle = SystemUtils.Localize("CPR.dialog.removeCyberware.title");
@@ -370,62 +333,33 @@ export default class CPRActor extends Actor {
       confirmRemove = true;
     }
     if (confirmRemove) {
-      if (item.system.isFoundational) {
-        await this._removeFoundationalCyberware(item);
-      } else {
-        await this._removeOptionalCyberware(item, foundationalId);
-      }
-      await this.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.isInstalled": false }]);
+      await item.uninstallFrom(this);
       return this.setMaxHumanity();
     }
     return this.updateEmbeddedDocuments("Item", []);
   }
 
-  /**
-   * Remove (uninstall) optional cyberware
-   *
-   * @private
-   * @param {CPRItem} item - optional cyberware item to uninstall
-   * @param {String} foundationalId - The foundational cybeware Id to uninstall the cybeware from
-   * @returns {Object}
-   */
-  _removeOptionalCyberware(item, foundationalId) {
-    LOGGER.trace("_removeOptionalCyberware | CPRActor | Called.");
-    // If the cyberware item was not installed, don't process the removal from a non-existent foundational slot.
-    if (item.system.isInstalled) {
-      const foundationalCyberware = this._getOwnedItem(foundationalId);
-      const newInstalledOptionSlots = foundationalCyberware.system.installedOptionSlots - item.system.size;
-      const newOptionalIds = foundationalCyberware.system.optionalIds.filter(
-        (optionId) => optionId !== item._id,
-      );
-      return this.updateEmbeddedDocuments("Item", [{
-        _id: foundationalCyberware.id,
-        "system.optionalIds": newOptionalIds,
-        "system.installedOptionSlots": newInstalledOptionSlots,
-      }]);
+  canInstallItem(item) {
+    LOGGER.trace("canInstall | CPRActor | Called.");
+    return true;
+  }
+
+  async installItem(item) {
+    LOGGER.trace("installItem | CPRActor | Called.");
+    if (this._getOwnedItem(item._id)) {
+      const installedItems = [...new Set(this.system.installedItems.concat(item.uuid))];
+      return this.update({ "system.installedItems": installedItems });
     }
     return null;
   }
 
-  /**
-   * Remove (uninstall) foundational cyberware
-   *
-   * @private
-   * @param {CPRItem} item - foundational cyberware item to uninstall
-   * @returns {Object}
-   */
-  _removeFoundationalCyberware(item) {
-    LOGGER.trace("_removeFoundationalCyberware | CPRActor | Called.");
-    const updateList = [];
-    if (item.system.optionalIds) {
-      item.system.optionalIds.forEach(async (optionalId) => {
-        const optional = this._getOwnedItem(optionalId);
-        updateList.push({ _id: optional.id, "system.isInstalled": false });
-      });
-      updateList.push({ _id: item.id, "system.optionalIds": [], "system.installedOptionSlots": 0 });
-      return this.updateEmbeddedDocuments("Item", updateList);
+  async uninstallItem(item) {
+    LOGGER.trace("uninstallItem | CPRActor | Called.");
+    if (this._getOwnedItem(item.uuid)) {
+      const installedItems = this.system.installedItems.filter((itemUuid) => itemUuid !== item.uuid);
+      return this.update({ "system.installedItems": installedItems });
     }
-    return PromiseRejectionEvent();
+    return null;
   }
 
   /**

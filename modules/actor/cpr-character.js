@@ -23,7 +23,8 @@ export default class CPRCharacterActor extends CPRActor {
   static async create(data, options) {
     LOGGER.trace("create | CPRCharacterActor | called.");
     const createData = data;
-    if (typeof data.system === "undefined") {
+    const newActor = typeof data.system === "undefined";
+    if (newActor) {
       LOGGER.trace("create | New Actor | CPRCharacterActor | called.");
       createData.items = [];
       const tmpItems = data.items.concat(await SystemUtils.GetCoreSkills(), await SystemUtils.GetCoreCyberware());
@@ -43,7 +44,13 @@ export default class CPRCharacterActor extends CPRActor {
         bar1: { attribute: "derivedStats.hp" },
       };
     }
-    super.create(createData, options);
+    const actor = await super.create(createData, options);
+    if (newActor) {
+      const installedItems = [];
+      actor.itemTypes.cyberware.forEach((cw) => installedItems.push(cw.uuid));
+      await actor.update({ "system.installedItems": installedItems });
+    }
+    return actor;
   }
 
   /**

@@ -108,7 +108,8 @@
           "value": 0,
           "transactions": []
         },
-        "criticalInjuries": []
+        "criticalInjuries": [],
+        "installedItems": []
       },
       "ledgerWealth": {
         "wealth": {
@@ -122,7 +123,7 @@
         "common",
         "ledgerWealth"
       ],
-      
+
       "lifepath": {
         "culturalOrigin": "",
         "personality": "",
@@ -259,6 +260,7 @@
       },
       "common": {
         "tags": [],
+        "installedItems": [],
         "description": {
           "value": "",
           "chat": "",
@@ -284,7 +286,7 @@
         "ammoVariety": []
       },
       "installable": {
-        "install": "mall",
+        "installLocation": "mall",
         "isInstalled": false,
         "size": 1
       },

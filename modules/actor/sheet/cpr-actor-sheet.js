@@ -138,21 +138,43 @@ export default class CPRActorSheet extends ActorSheet {
   _getSortedInstalledCyberware() {
     LOGGER.trace("_getSortedInstalledCyberware | CPRActorSheet | Called.");
     // Get all Installed Cyberware first...
-    const installedCyberware = this.actor.getInstalledCyberware();
+    const allOwnedCyberware = this.actor.itemTypes.cyberware;
+    const installedCyberware = allOwnedCyberware.filter((c) => c.system.isInstalled);
     const installedFoundationalCyberware = installedCyberware.filter((c) => c.system.isFoundational === true);
 
-    // Now sort allInstalledCybere by type, and only get foundational
+    // Now sort allInstalledCyberware by type, and only get foundational
     const sortedInstalledCyberware = {};
+
     for (const [type] of Object.entries(CPR.cyberwareTypeList)) {
       sortedInstalledCyberware[type] = installedFoundationalCyberware.filter(
         (cyberware) => cyberware.system.type === type,
       );
+
+      const installedOptionalCyberware = installedCyberware.filter(
+        (c) => c.system.isFoundational !== true && c.system.type === type,
+      ).map((cw) => ({
+        _id: cw._id,
+        uuid: cw.uuid,
+        name: cw.name,
+        size: cw.system.size,
+        isUpgraded: cw.system.isUpgraded,
+        type: cw.system.type,
+      }));
+
       sortedInstalledCyberware[type] = sortedInstalledCyberware[type].map(
-        (cyberware) => ({ foundation: cyberware, optionals: [] }),
+        (cyberware) => ({
+          foundation: {
+            _id: cyberware._id,
+            uuid: cyberware.uuid,
+            name: cyberware.name,
+            type: cyberware.system.type,
+            slots: cyberware.system.slots,
+            isUpgraded: cyberware.system.isUpgraded,
+            core: cyberware.system.core,
+          },
+          optionals: installedOptionalCyberware,
+        }),
       );
-      sortedInstalledCyberware[type].forEach((entry) => {
-        entry.foundation.system.optionalIds.forEach((id) => entry.optionals.push(this._getOwnedItem(id)));
-      });
     }
     return sortedInstalledCyberware;
   }

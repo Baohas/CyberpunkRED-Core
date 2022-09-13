@@ -50,6 +50,11 @@ export default class CPRItem extends Item {
         });
       }
     }
+
+    if (this.isOwned) {
+      cprData._id = this._id;
+      return this.actor.updateEmbeddedDocuments("Item", [cprData]);
+    }
     return super.update(cprData, options);
   }
 
@@ -141,6 +146,23 @@ export default class CPRItem extends Item {
       }
       // LOGGER.debug(`Added mixin ${mixins[m]} to ${this.id}`);
     }
+  }
+
+  static canInstallItem(item) {
+    LOGGER.trace("canInstallItem | CPRItem | Called.");
+    return true;
+  }
+
+  async installItem(item) {
+    LOGGER.trace("installItem | CPRItem | Called.");
+    const installedItems = [...new Set(this.system.installedItems.concat(item.uuid))];
+    return this.update({ "system.installedItems": installedItems });
+  }
+
+  async uninstallItem(item) {
+    LOGGER.trace("uninstallItem | CPRItem | Called.");
+    const installedItems = this.system.installedItems.filter((itemUuid) => itemUuid !== item.uuid);
+    return this.update({ "system.installedItems": installedItems });
   }
 
   /**

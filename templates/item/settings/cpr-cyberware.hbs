@@ -26,15 +26,15 @@
     </div>
     <div class="item flexrow setting-value text-nowrap item-end">
         {{#if this.editable}}
-            <select name="system.install" data-dtype="{{item.system.install}}">
-                {{#select item.system.install}}
+            <select name="system.installLocation" data-dtype="{{item.system.installLocation}}">
+                {{#select item.system.installLocation}}
                     {{#each (cprFindConfigObj "cyberwareInstallList") as |install i|}}
                         <option value="{{i}}">{{localize install}}</option>
                     {{/each}}
                 {{/select}}
             </select>
         {{else}}
-            <span class="text-flex-end">{{localize (cprFindConfigValue "cyberwareInstallList" item.system.install)}}</span>
+            <span class="text-flex-end">{{localize (cprFindConfigValue "cyberwareInstallList" item.system.installLocation)}}</span>
         {{/if}}
     </div>
 </li>
