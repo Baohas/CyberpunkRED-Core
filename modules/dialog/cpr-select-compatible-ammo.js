@@ -10,11 +10,11 @@ export default class SelectCompatibleAmmo {
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {
-          LOGGER.trace("_onCancel | Dialog SelectRolesPrompt | called.");
+          LOGGER.trace("_onCancel | Dialog SelectCompatibleAmmo | called.");
           reject(new Error("Promise rejected: Window Closed"));
         };
         const _onConfirm = (html) => {
-          LOGGER.trace("_onConfirm | Dialog SelectRolesPrompt | called.");
+          LOGGER.trace("_onConfirm | Dialog SelectCompatibleAmmo | called.");
           const ammoList = html.find("[name=\"selectedAmmo\"");
           const selectedAmmo = [];
           const fd = new FormDataExtended(html.find("form")[0]);
