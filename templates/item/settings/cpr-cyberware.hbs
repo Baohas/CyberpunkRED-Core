@@ -98,13 +98,13 @@
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
                 {{#if this.editable}}
-                    {{#if item.system.hasOptionalSlots}}
-                        <a class="item-checkbox" data-target="system.hasOptionalSlots"><i class="far fa-check-circle"></i></a>
+                    {{#if item.system.installedItems.allowed}}
+                        <a class="item-checkbox" data-target="system.installedItems.allowed"><i class="far fa-check-circle"></i></a>
                     {{else}}
-                        <a class="item-checkbox" data-target="system.hasOptionalSlots"><i class="far fa-circle"></i></a>
+                        <a class="item-checkbox" data-target="system.installedItems.allowed"><i class="far fa-circle"></i></a>
                     {{/if}}
                 {{else}}
-                    {{#if item.system.hasOptionalSlots}}
+                    {{#if item.system.installedItems.allowed}}
                         <i class="far fa-check-circle"></i>
                     {{else}}
                         <i class="far fa-circle"></i>
@@ -113,20 +113,20 @@
             </div>
 
         </li>
-    {{else}}
-        {{!- Installation Size Settings --}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.itemSheet.cyberware.optionalSlots"}}
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                {{#if this.editable}}
-                    <input name="system.installedItems.slots" class="" type="number" value={{item.system.installedItems.slots}}>
-                {{else}}
-                    <span class="text-flex-end">{{item.system.installedItems.slots}}</span>
-                {{/if}}
-            </div>
-        </li>
+        {{#if item.system.installedItems.allowed}}
+          {{!- Installation Size Settings --}}
+          <li class="item flexrow">
+              <div class="item flexrow setting-name text-nowrap">
+                  {{localize "CPR.itemSheet.cyberware.optionalSlots"}}
+              </div>
+              <div class="item flexrow setting-value text-nowrap item-end">
+                  {{#if this.editable}}
+                      <input name="system.installedItems.slots" class="" type="number" value={{item.system.installedItems.slots}}>
+                  {{else}}
+                      <span class="text-flex-end">{{item.system.installedItems.slots}}</span>
+                  {{/if}}
+              </div>
+          </li>
         {{/if}}
     {{else}}
         <li class="item flexrow">

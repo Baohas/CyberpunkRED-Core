@@ -241,8 +241,11 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Top-level method to add (install) cyberware owned by an actor.
+   * Method to add (install) cyberware owned by an actor.
    * This will handle making sure it is going into the right foundational cyberware, if applicable.
+   * Additionally, if there is optional cyberware installed under a foundational cyberware which
+   * allows cyberware to be installed into it (ie Chipware Socket) and it has capacity, it will
+   * also be listed as an installation target.
    *
    * @async
    * @param {String} itemId - the ItemId of the cyberware to be added
@@ -261,26 +264,22 @@ export default class CPRActor extends Actor {
       return;
     }
 
-    // This will be a list of compatible Cyberware to install into
-    const compatibleTargetCyberware = [];
-
-    // First we add the Foundational Cyberware to installationTargets
-    // Then we recursively get all of the installed Items starting at the Foundational Cyberware
-    const installationTargetPromises = baseCompatibleFoundationalCyberware.map(async (cyberware) => {
-      compatibleTargetCyberware.push(cyberware);
-      return cyberware.getInstallationTargets(item.type);
-    });
-
-    const allInstallationTargetPromises = await Promise.allSettled(installationTargetPromises);
-
-    // Once we recursively get an item list of installed Cyberware, we create an array of objects
+    // For each Foundational Cyberware of the item.system.type that is installed
+    // Gather a list of all of the currently installed cyberware
     const installationTargets = [];
-    for (const promise of allInstallationTargetPromises.filter((p) => p.status === "fulfilled")) {
-      const installList = promise.value;
-      installList.forEach((i) => {
-        installationTargets.push(i);
-      });
-    }
+    baseCompatibleFoundationalCyberware.forEach((cyberware) => {
+      installationTargets.push(cyberware);
+      let uuidList = cyberware.system.installedItems.list;
+      while (uuidList.length > 0) {
+        const loopList = uuidList;
+        uuidList = [];
+        for (const uuid of loopList) {
+          const itemLookup = this._getOwnedItem(uuid);
+          installationTargets.push(itemLookup);
+          uuidList = uuidList.concat(itemLookup.system.installedItems.list);
+        }
+      }
+    });
 
     // Next we ensure each of the objects in the list can install the requested item.
     // This will check if there's available slots and they accept this item.type as an Installable
@@ -288,6 +287,7 @@ export default class CPRActor extends Actor {
 
     const allCanInstallPromises = await Promise.allSettled(canInstallPromises);
 
+    const compatibleTargetCyberware = [];
     // Finally if the cyberware can install item, then it is added to compatibleTargetCyberware
     installationTargets.forEach((cyberware, index) => {
       if (allCanInstallPromises[index].status === "fulfilled" && allCanInstallPromises[index].value) {
@@ -339,14 +339,8 @@ export default class CPRActor extends Actor {
       confirmRemove = true;
     }
     if (confirmRemove) {
-      const target = (item.system.installedIn === this.uuid) ? this : this._getOwnedItem(item.system.installedIn);
-      const uninstallPromises = item.system.installedItems.list.map(async (uuid) => {
-        const installedItem = (this.isOwned) ? await this.actor._getOwnedItem(uuid) : await fromUuid(uuid);
-        return installedItem.uninstallFrom(item);
-      });
-      await Promise.allSettled(uninstallPromises);
-      await item.uninstallFrom(target);
-      return this.setMaxHumanity();
+      const target = (this.uuid === item.system.installedIn) ? this : this._getOwnedItem(item.system.installedIn);
+      return item.uninstallFrom(target).then(() => this.setMaxHumanity());
     }
     return this.updateEmbeddedDocuments("Item", []);
   }
@@ -369,24 +363,6 @@ export default class CPRActor extends Actor {
   canInstallItem(item) {
     LOGGER.trace("canInstall | CPRActor | Called.");
     return (this.system.installedItems.allowed && this.system.installedItems.allowedTypes.includes(item.type));
-  }
-
-  async installItem(item) {
-    LOGGER.trace("installItem | CPRActor | Called.");
-    if (this._getOwnedItem(item.uuid) && this.system.installedItems.allowed) {
-      const installedItems = [...new Set(this.system.installedItems.list.concat(item.uuid))];
-      return this.update({ "system.installedItems.list": installedItems });
-    }
-    return null;
-  }
-
-  async uninstallItem(item) {
-    LOGGER.trace("uninstallItem | CPRActor | Called.");
-    if (this._getOwnedItem(item.uuid)) {
-      const installedItems = this.system.installedItems.list.filter((itemUuid) => itemUuid !== item.uuid);
-      return this.update({ "system.installedItems.list": installedItems });
-    }
-    return null;
   }
 
   /**

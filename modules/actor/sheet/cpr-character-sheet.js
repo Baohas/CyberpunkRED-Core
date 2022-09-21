@@ -262,7 +262,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     const itemId = CPRActorSheet._getItemId(event);
     const item = this._getOwnedItem(itemId);
     if (item.system.isInstalled) {
-      const foundationalId = SystemUtils.GetEventDatum(event, "data-foundational-id");
+      const foundationalId = SystemUtils.GetEventDatum(event, "data-installation-id");
       this.actor.uninstallCyberware(itemId, foundationalId);
     } else {
       this.actor.installCyberware(itemId);

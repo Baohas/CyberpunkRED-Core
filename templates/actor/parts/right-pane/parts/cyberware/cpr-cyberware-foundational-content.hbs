@@ -1,6 +1,4 @@
 {{cprTrace "START ACTOR PARTS RIGHT-PANE CYBERWARE CPR-CYBERWARE-FOUNDATIONAL-CONTENT.HBS"}}
-{{log "START ACTOR PARTS RIGHT-PANE CYBERWARE CPR-CYBERWARE-FOUNDATIONAL-CONTENT.HBS"}}
-{{log this}}
 {{#if cyberware.system.core}}
   {{#each cyberware.system.installedItems.list as |UUID|}}
     {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-optional-content.hbs" (cprMergeForPartialArg "actor,cyberware,depth" ../actor (cprGetOwnedItem ../actor UUID) 0)}}

@@ -31,7 +31,7 @@
     <!-- For each optional cyberware, display it in a selection -->
     {{~#if (cprCompare optionals.length ">" 0)~}}&nbsp;({{/if~}}
     {{~#each optionals as |optional o|~}}
-      <b><a class="name item installable changeable item-view" tabindex="0" title="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.shiftClickToInstallorUninstall"}}" data-item-id="{{optional._id}}" data-foundational-id="{{../foundation.id}}">
+      <b><a class="name item installable changeable item-view" tabindex="0" title="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.shiftClickToInstallorUninstall"}}" data-item-id="{{optional._id}}" data-installation-id="{{../foundation.id}}">
         {{~optional.name}}{{#unless @last}},&nbsp;{{/unless~}}
       </a></b>
     {{~/each}}

@@ -197,7 +197,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
           if (item.system.core === true) {
             SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware"));
           } else {
-            const foundationalId = SystemUtils.GetEventDatum(event, "data-foundational-id");
+            const foundationalId = SystemUtils.GetEventDatum(event, "data-installation-id");
             const dialogTitle = SystemUtils.Localize("CPR.dialog.uninstallCyberware.title");
             const dialogMessage = `${SystemUtils.Localize("CPR.dialog.uninstallCyberware.text")} ${item.name}?`;
             const confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
@@ -238,7 +238,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
         } else if (item.system.isInstalled === false) {
           this.actor.installCyberware(itemId);
         } else {
-          const foundationalId = SystemUtils.GetEventDatum(event, "data-foundational-id");
+          const foundationalId = SystemUtils.GetEventDatum(event, "data-installation-id");
           const dialogTitle = SystemUtils.Localize("CPR.dialog.uninstallCyberware.title");
           const dialogMessage = `${SystemUtils.Localize("CPR.dialog.uninstallCyberware.text")} ${item.name}?`;
           const confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);

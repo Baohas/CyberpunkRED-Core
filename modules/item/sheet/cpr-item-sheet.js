@@ -87,12 +87,6 @@ export default class CPRItemSheet extends ItemSheet {
       }
     }
 
-    cprData.installedItems.usedSlots = 0;
-    if (cprData.installedItems.list.length > 0) {
-      const availableSlots = await this.object.availableInstallSlots();
-      cprData.installedItems.usedSlots = cprData.installedItems.slots - availableSlots;
-    }
-
     cprData.dvTableNames = DvUtils.GetDvTables();
     foundryData.item.system = cprData;
     return foundryData;
@@ -991,7 +985,7 @@ export default class CPRItemSheet extends ItemSheet {
     }
 
     if (item.type === "weapon") {
-      const availableInstallSlots = await item.availableInstallSlots();
+      const availableInstallSlots = item.availableInstallSlots();
       if (availableInstallSlots < 0) {
         SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.toomanyattachments"));
       }

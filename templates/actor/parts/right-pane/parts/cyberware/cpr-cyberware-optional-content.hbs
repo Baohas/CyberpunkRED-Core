@@ -1,5 +1,5 @@
 {{cprTrace "START ACTOR PARTS RIGHT-PANE CYBERWARE CPR-CYBERWARE-OPTIONAL-CONTENT.HBS"}}
-<li class="item flexrow" data-item-id="{{cyberware._id}}" data-foundational-id="{{cyberware.system.installedIn}}" draggable="false">
+<li class="item flexrow" data-item-id="{{cyberware._id}}" data-installation-id="{{cyberware.system.installedIn}}" draggable="false">
     <div class="item-name cyberware-name flexrow text-nowrap">
       <span>
         <a class="name item-view"><span class="name">{{#cprLoop depth}}&nbsp;{{/cprLoop}}{{cyberware.name}}</span>{{#if cyberware.system.isUpgraded}}<sup><i class="fab fa-uniregistry"></sup></i>{{/if}}</a>
