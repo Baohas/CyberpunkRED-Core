@@ -8,14 +8,23 @@
 -
 
 **Bug Fixes**
-#473 - Fashionware foundational item not migrated to v10
-#472 - EMP & Luck Values/Max greater than 9 mess with the formatting.  If a user enters a value > 9, a warning banner is shown letting them know there will be formatting issues and the formatting changes to make it more obvious something is amiss.
-#468 - Actor image goes outside border over text fixed (overflow hidden).
-#474 - Replaced `filteredItems` on `Item` types with scoped, relative properties called `relativeSkills` and `relativeAmmo` for specific items which require these data points.
+- #473 - Fashionware foundational item not migrated to v10
+- #472 - EMP & Luck Values/Max greater than 9 mess with the formatting.  If a user enters a value > 9, a warning banner is shown letting them know there will be formatting issues and the formatting changes to make it more obvious something is amiss.
+- #468 - Actor image goes outside border over text fixed (overflow hidden).
+- #474 - Replaced `filteredItems` on `Item` types with scoped, relative properties called `relativeSkills` and `relativeAmmo` for specific items which require these data points.
 - Replaced all instances of filteredItems with actor.itemTypes (native to Foundry). This addressed an issue causing very slow loading times of the resources tab in the token configuration dialog.
 - Removed the need for installedPrograms data to be stored on the actor which was noticed during the filteredItems cleanup.
+- #490 - Vehicles still using v10 data/system shim.
+
 
 **Maintenance items**
+
+# Version 0.81.5 (Hotfix) | Date: 2022-09-20
+#467 - Fix shield ablation arrow in Fight Tab to be functional
+#461 - Throw an exception if someone enters a decimal point when modifying eurobucks.
+#477 - Autofire functionality is not working from the Fight Tab
+#468 - Actor image goes outside border over text
+- Item Upgrades & Cyberware which are weapons no longer get their item data corrupted when opening the item sheet
 
 # Version 0.81.4 (Hotfix) | Date: 2022-08-21
 #464 - Fix issue where containers corrupt eurobucks amount for non-stackable items

@@ -25,6 +25,8 @@
                 {{!-- Settings from mixins --}}
                 {{#each (cprGetTemplates item.type) as |mixin|}}
                   {{#if (cprCompare mixin "!==" "effects")}}
+                    {{!-- If it is the attackable mixin and this is either an itemUpgrade or cyberware, let those item types handle if
+                      the mixin should be displayed or not since they may or may not be attackable --}}
                     {{#unless (cprCompare (cprCompare mixin "===" "attackable") "&&" (cprCompare (cprCompare ../item.type "===" "itemUpgrade") "||" (cprCompare ../item.type "===" "cyberware")))}}
                       {{> (cprGeneratePartial "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-VAR.hbs" mixin) ../this}}
                     {{/unless}}

@@ -678,7 +678,7 @@ export default class CPRActorSheet extends ActorSheet {
    * @callback
    * @param {Object} event - object capturing event data (what was clicked and where?)
    */
-  _fireCheckboxToggle(event) {
+  async _fireCheckboxToggle(event) {
     LOGGER.trace("_fireCheckboxToggle | CPRActorSheet | Called.");
     const weaponID = SystemUtils.GetEventDatum(event, "data-item-id");
     const firemode = SystemUtils.GetEventDatum(event, "data-fire-mode");
@@ -686,27 +686,25 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.debug(`firemode is ${firemode}`);
     LOGGER.debug(`weaponID is ${weaponID}`);
     LOGGER.debug(`flag is ${flag}`);
-    let newDvTable;
     if (this.token !== null && firemode === "autofire") {
       const weaponDvTable = (this._getOwnedItem(weaponID)).system.dvTable;
       const currentDvTable = (weaponDvTable === "") ? getProperty(this.token, "flags.cprDvTable") : weaponDvTable;
       if (typeof currentDvTable !== "undefined") {
         const dvTable = currentDvTable.replace(" (Autofire)", "");
         const afTable = (DvUtils.GetDvTables()).filter((name) => name.includes(dvTable) && name.includes("Autofire"));
+        let newDvTable = currentDvTable;
         if (afTable.length > 0) {
           newDvTable = (flag === firemode) ? dvTable : afTable[0];
-        } else {
-          newDvTable = currentDvTable;
         }
+        await this.token.update({ "flags.cprDvTable": newDvTable });
       }
     }
     if (flag === firemode) {
       // if the flag was already set to firemode, that means we unchecked a box
-      this.actor.unsetFlag("cyberpunk-red-core", `firetype-${weaponID}`);
+      await this.actor.unsetFlag("cyberpunk-red-core", `firetype-${weaponID}`);
     } else {
-      this.actor.setFlag("cyberpunk-red-core", `firetype-${weaponID}`, firemode);
+      await this.actor.setFlag("cyberpunk-red-core", `firetype-${weaponID}`, firemode);
     }
-    this.token.update({ "flags.cprDvTable": newDvTable });
   }
 
   /**

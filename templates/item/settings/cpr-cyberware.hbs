@@ -1,5 +1,7 @@
 {{cprTrace "START ITEM SETTINGS CPR-CYBERWARE.HBS"}}
 {{!-- Cyberware Item Setting --}}
+
+{{!-- Type Setting --}}
 <li class="item flexrow">
     <div class="item flexrow setting-name text-nowrap">
         {{localize "CPR.global.generic.type"}}
@@ -19,7 +21,8 @@
 
     </div>
 </li>
-{{!-- Install Location Settings--}}
+
+{{!-- Install Location Settings --}}
 <li class="item flexrow">
     <div class="item flexrow setting-name text-nowrap">
         {{localize "CPR.global.generic.install"}}
@@ -38,7 +41,8 @@
         {{/if}}
     </div>
 </li>
-{{!-- Static Humanity Loss Settings--}}
+
+{{!- Static Humanity Loss Settings --}}
 <li class="item flexrow">
     <div class="item flexrow setting-name text-nowrap">
         {{localize "CPR.dialog.installCyberware.static"}} {{localize "CPR.dialog.installCyberware.humanityLoss"}}
@@ -51,7 +55,8 @@
         {{/if}}
     </div>
 </li>
-{{!-- Rolled Humanity Loss Settings--}}
+
+{{!- Rolled Humanity Loss Settings --}}
 <li class="item flexrow">
     <div class="item flexrow setting-name text-nowrap">
         {{localize "CPR.itemSheet.cyberware.rolled"}} {{localize "CPR.dialog.installCyberware.humanityLoss"}}
@@ -108,7 +113,8 @@
             </div>
 
         </li>
-        {{#if item.system.hasOptionalSlots}}
+    {{else}}
+        {{!- Installation Size Settings --}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.itemSheet.cyberware.optionalSlots"}}
@@ -136,7 +142,7 @@
             </div>
         </li>
     {{/if}}
-
+    {{!- Is A Weapon Settings --}}
     <li class="item flexrow">
         <div class="item flexrow setting-name text-nowrap">
             {{localize "CPR.itemSheet.common.isAWeapon"}}
@@ -157,6 +163,9 @@
             {{/if}}
         </div>
     </li>
+    {{#if data.data.isWeapon}}
+      {{> "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-attackable.hbs" this}}
+    {{/if}}
 {{/unless}}
 {{#if item.system.isWeapon}}
   {{> "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-attackable.hbs" this}}

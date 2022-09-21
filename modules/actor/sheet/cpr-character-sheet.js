@@ -542,21 +542,25 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   _updateEurobucks(event) {
     LOGGER.trace("_updateEurobucks | CPRCharacterActorSheet | Called.");
-    const { value } = event.currentTarget.parentElement.parentElement.children[1];
+    let { value } = event.currentTarget.parentElement.parentElement.children[1];
     const reason = event.currentTarget.parentElement.parentElement.nextElementSibling.lastElementChild.value;
-    const action = SystemUtils.GetEventDatum(event, "data-action");
+    let action = SystemUtils.GetEventDatum(event, "data-action");
     if (value !== "") {
+      value = parseInt(value, 10);
+      if (Number.isNaN(value)) {
+        action = "error";
+      }
       switch (action) {
         case "add": {
-          this._gainLedger("wealth", parseInt(value, 10), `${reason} - ${game.user.name}`);
+          this._gainLedger("wealth", value, `${reason} - ${game.user.name}`);
           break;
         }
         case "subtract": {
-          this._loseLedger("wealth", parseInt(value, 10), `${reason} - ${game.user.name}`);
+          this._loseLedger("wealth", value, `${reason} - ${game.user.name}`);
           break;
         }
         case "set": {
-          this._setLedger("wealth", parseInt(value, 10), `${reason} - ${game.user.name}`);
+          this._setLedger("wealth", value, `${reason} - ${game.user.name}`);
           break;
         }
         default: {
