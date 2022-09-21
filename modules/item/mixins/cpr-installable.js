@@ -16,11 +16,21 @@ const Installable = function Installable() {
     }
 
     if (!await target.canInstallItem(this)) {
+      if (!target.system.installedItems.allowed) {
+        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.installFailInvalidType"));
+      } else {
+        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.installFailNoSlotsAvailable"));
+      }
       return false;
     }
 
-    await target.installItem(this);
-    return this.update({ "system.isInstalled": true });
+    const installResult = target.installItem(this).then((installSuccessful) => {
+      if (installSuccessful) {
+        return this.update({ "system.isInstalled": true, "system.installedIn": target.uuid });
+      }
+      return null;
+    });
+    return installResult;
   };
 
   /**

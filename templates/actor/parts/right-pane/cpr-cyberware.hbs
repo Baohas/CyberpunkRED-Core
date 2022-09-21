@@ -9,7 +9,7 @@
                 <span class="item-detail gear-actions bg-black text-nowrap">{{localize "CPR.global.generic.actions"}}</span>
             </li>
             <ol class="items-list">
-                {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-content.hbs" (cprGetProp ../actor.system.installedCyberware t)}}
+                {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-content.hbs" (cprMergeForPartialArg "actor,cyberwareType" ../actor t)}}
             </ol>
         </div>
         {{/each}}

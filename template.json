@@ -109,7 +109,11 @@
           "transactions": []
         },
         "criticalInjuries": [],
-        "installedItems": []
+        "installedItems": {
+          "allowedTypes": "cyberware",
+          "allowed": true,
+          "list": []
+        }
       },
       "ledgerWealth": {
         "wealth": {
@@ -260,7 +264,13 @@
       },
       "common": {
         "tags": [],
-        "installedItems": [],
+        "installedItems": {
+          "allowedTypes": ["itemUpgrade"],
+          "allowed": true,
+          "list": [],
+          "usedSlots": 0,
+          "slots": 3
+        },
         "description": {
           "value": "",
           "chat": "",
@@ -287,6 +297,7 @@
       },
       "installable": {
         "installLocation": "mall",
+        "installedIn": "",
         "isInstalled": false,
         "size": 1
       },
@@ -374,11 +385,7 @@
       "type": "cyberArm",
       "isWeapon": false,
       "isFoundational": true,
-      "hasOptionalSlots": false,
-      "optionSlots": 0,
       "core": false,
-      "installedOptionSlots": 0,
-      "optionalIds": [],
       "humanityLoss": {
         "static": 3,
         "roll": "1d6"
@@ -390,6 +397,7 @@
         "physical",
         "upgradable",
         "equippable",
+        "installable",
         "valuable"
       ],
       "programs": {

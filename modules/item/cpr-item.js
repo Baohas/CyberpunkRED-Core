@@ -1,4 +1,4 @@
-/* global Item game */
+/* global Item game duplicate fromUuid */
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -134,7 +134,6 @@ export default class CPRItem extends Item {
           // Dynamically calculates the number of free upgrade slots on the item
           // by starting with the number of slots this item has and substacting
           // the slot size of each of the upgrades.
-          this.system.availableSlots = this.availableSlots();
           break;
         }
         case "valuable": {
@@ -148,21 +147,142 @@ export default class CPRItem extends Item {
     }
   }
 
-  static canInstallItem(item) {
+  async getInstallationTargets(allowedType) {
+    LOGGER.trace("getInstallationTargets | CPRItem | Called.");
+    const installedItems = await this.getInstalledItems();
+
+    if (installedItems.length === 0) {
+      return [];
+    }
+
+    const installTargets = [];
+    const unsettledPromises = installedItems.map(async (item) => {
+      installTargets.push(item);
+      return item.getInstallationTargets(allowedType);
+    });
+    const allPromises = await Promise.allSettled(unsettledPromises);
+
+    for (const promise of allPromises.filter((p) => p.status === "fulfilled")) {
+      if (promise.value.length > 0) {
+        const installedItem = promise.value[0];
+        installTargets.push(installedItem);
+      }
+    }
+    const filteredIntalledTargets = installTargets.filter((target) => target.system.installedItems.allowed
+                                                                      && target.system.installedItems.allowedTypes.includes(allowedType));
+
+    return filteredIntalledTargets;
+  }
+
+  async getSortedInstalledItems(type, properties = []) {
+    LOGGER.trace("getSortedInstalledItems | CPRItem | Called.");
+    const installedItems = await this.getInstalledItems(type);
+    if (installedItems.length === 0) {
+      return [];
+    }
+    const unsettledPromises = installedItems.map(async (item) => {
+      const system = properties.length === 0 ? duplicate(item.system) : {};
+      properties.forEach((prop) => {
+        system[prop] = (typeof item.system[prop] === "undefined") ? undefined : duplicate(item.system[prop]);
+      });
+      const itemData = {
+        system,
+        id: item.id,
+        uuid: item.uuid,
+        name: item.name,
+        type: item.type,
+      };
+      // const newList = await Promise.allSettled(item.getSortedInstalledItems(type));
+      item.getSortedInstalledItems(type).then((installList) => { itemData.system.installedItems.list = installList; });
+
+      // itemData.system.installedItems.list = newList;
+      return itemData;
+    });
+
+    const allPromises = await Promise.allSettled(unsettledPromises);
+
+    const installList = [];
+    for (const promise of allPromises.filter((p) => p.status === "fulfilled")) {
+      const installedItem = promise.value;
+      if (!type || (type && installedItem.type === type)) {
+        installList.push(installedItem);
+      }
+    }
+
+    return installList;
+  }
+
+  async getInstalledItems(type) {
+    LOGGER.trace("getInstalledItems | CPRItem | Called.");
+    const installedItems = [];
+
+    if (this.system.installedItems.list.length > 0) {
+      const unsettledPromises = this.system.installedItems.list.map(async (uuid) => {
+        try {
+          return await fromUuid(uuid);
+        } catch {
+          throw new Error(`Unable to obtain list of installed items`);
+        }
+      });
+
+      const allPromises = await Promise.allSettled(unsettledPromises);
+
+      for (const promise of allPromises.filter((p) => p.status === "fulfilled")) {
+        const installedItem = promise.value;
+        if (!type || (type && installedItem.type === type)) {
+          installedItems.push(installedItem);
+        }
+      }
+    }
+    return installedItems;
+  }
+
+  async availableInstallSlots() {
+    LOGGER.trace("availableInstallSlots | CPRItem | Called.");
+
+    const installedItems = await this.getInstalledItems();
+
+    let usedSlots = 0;
+    installedItems.forEach((item) => {
+      usedSlots += item.system.size ? item.system.size : 0;
+    });
+
+    return this.system.installedItems.slots - usedSlots;
+  }
+
+  async canInstallItem(item) {
     LOGGER.trace("canInstallItem | CPRItem | Called.");
-    return true;
+
+    let result = this.system.installedItems.allowed;
+
+    if (result && this.system.installedItems.allowedTypes.includes(item.type)) {
+      const itemSize = item.system.size ? item.system.size : 0;
+      const availableSlots = await this.availableInstallSlots();
+      result = availableSlots >= itemSize;
+    }
+    return result;
   }
 
   async installItem(item) {
     LOGGER.trace("installItem | CPRItem | Called.");
-    const installedItems = [...new Set(this.system.installedItems.concat(item.uuid))];
-    return this.update({ "system.installedItems": installedItems });
+    if (!this.system.installedItems.allowed) {
+      return SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.installItemNotAllowed"));
+    }
+
+    if (!this.system.installedItems.allowedTypes.includes(item.type)) {
+      return SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.installItemTypeNotAllowed"));
+    }
+    const installedItems = [...new Set(this.system.installedItems.list.concat(item.uuid))];
+    const usedSlots = this.system.installedItems.usedSlots + item.system.size;
+    await item.update({ "system.installedIn": this.uuid });
+    return this.update({ "system.installedItems.list": installedItems, "system.installedItems.usedSlots": usedSlots });
   }
 
   async uninstallItem(item) {
     LOGGER.trace("uninstallItem | CPRItem | Called.");
-    const installedItems = this.system.installedItems.filter((itemUuid) => itemUuid !== item.uuid);
-    return this.update({ "system.installedItems": installedItems });
+    const installedItems = this.system.installedItems.list.filter((itemUuid) => itemUuid !== item.uuid);
+    const usedSlots = this.system.installedItems.usedSlots - item.system.size;
+    return this.update({ "system.installedItems.list": installedItems, "system.installedItems.usedSlots": usedSlots });
   }
 
   /**

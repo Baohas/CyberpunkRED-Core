@@ -1,3 +1,5 @@
+/* globals duplicate */
+
 import CPRActor from "./cpr-actor.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -29,11 +31,14 @@ export default class CPRCharacterActor extends CPRActor {
       createData.items = [];
       const tmpItems = data.items.concat(await SystemUtils.GetCoreSkills(), await SystemUtils.GetCoreCyberware());
       tmpItems.forEach((item) => {
+        const updatedSystem = duplicate(item.system);
+
+        updatedSystem.installedItems.slots = 7;
         const cprItem = {
           name: item.name,
           img: item.img,
           type: item.type,
-          system: item.system,
+          system: updatedSystem,
         };
         createData.items.push(cprItem);
       });
@@ -48,7 +53,7 @@ export default class CPRCharacterActor extends CPRActor {
     if (newActor) {
       const installedItems = [];
       actor.itemTypes.cyberware.forEach((cw) => installedItems.push(cw.uuid));
-      await actor.update({ "system.installedItems": installedItems });
+      await actor.update({ "system.installedItems.slots": 50, "system.installedItems.list": installedItems });
     }
     return actor;
   }

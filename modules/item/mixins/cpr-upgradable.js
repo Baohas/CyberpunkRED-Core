@@ -1,6 +1,7 @@
 /* global duplicate */
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
+import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 /**
  * If an item can ACCEPT upgrades (i.e. it has slots), then it should include this
@@ -15,16 +16,19 @@ const Upgradable = function Upgradable() {
    */
   this.uninstallUpgrades = function uninstallUpgrades(upgrades) {
     LOGGER.trace("uninstallUpgrades | Upgradable | Called.");
+    let installedItems = this.system.installedItems.list;
     let installedUpgrades = this.system.upgrades;
+
     const updateList = [];
     upgrades.forEach((u) => {
       installedUpgrades = installedUpgrades.filter((iUpgrade) => iUpgrade._id !== u.id);
+      installedItems = installedItems.filter((uuid) => u.uuid !== uuid);
       updateList.push({ _id: u.id, "system.isInstalled": false });
     });
     const upgradeStatus = (installedUpgrades.length > 0);
     // Need to set this so it can be used further in this function.
     this.system.upgrades = installedUpgrades;
-    updateList.push({ _id: this.id, "system.isUpgraded": upgradeStatus, "system.upgrades": installedUpgrades });
+    updateList.push({ _id: this.id, "system.isUpgraded": upgradeStatus, "system.upgrades": installedUpgrades, "system.installedItems.list": installedItems });
 
     if (this.type === "weapon" && this.system.isRanged) {
       const magazineData = this.system.magazine;
@@ -36,7 +40,7 @@ const Upgradable = function Upgradable() {
         updateList.push({
           _id: this.id,
           "system.isUpgraded": upgradeStatus,
-          "system.upgrades": installedUpgrades,
+          "system.installedItems.list": installedItems,
           "system.magazine.value": magazineData.max,
         });
         const ammo = this.actor.items.find((i) => i._id === magazineData.ammoId);
@@ -53,13 +57,13 @@ const Upgradable = function Upgradable() {
       updateList.push({
         _id: this.id,
         "system.isUpgraded": upgradeStatus,
-        "system.upgrades": installedUpgrades,
+        "system.installedItems.list": installedItems,
         "system.bodyLocation": bodyLocation,
         "system.headLocation": headLocation,
         "system.shieldHitPoints": shieldHitPoints,
       });
     } else {
-      updateList.push({ _id: this.id, "system.isUpgraded": upgradeStatus, "system.upgrades": installedUpgrades });
+      updateList.push({ _id: this.id, "system.isUpgraded": upgradeStatus, "system.installedItems.list": installedItems });
     }
     return this.actor.updateEmbeddedDocuments("Item", updateList);
   };
@@ -73,17 +77,17 @@ const Upgradable = function Upgradable() {
   this.installUpgrades = function installUpgrades(upgrades) {
     LOGGER.trace("installUpgrades | Upgradable | Called.");
     if (typeof this.system.isUpgraded === "boolean") {
+      const installedItems = this.system.installedItems.list;
       const installedUpgrades = this.system.upgrades;
       const updateList = [];
       // Loop through the upgrades to install
       upgrades.forEach((u) => {
         // See if the upgrade is already installed, if it is, skip it
-        const alreadyInstalled = installedUpgrades.filter((iUpgrade) => iUpgrade._id === u._id);
+        const alreadyInstalled = installedItems.filter((installedUuid) => installedUuid === u.uuid);
         if (alreadyInstalled.length === 0) {
-          // Update the upgrade Item set the isInstalled Boolean and the install setting to this item
-          updateList.push({ _id: u._id, "system.isInstalled": true, "system.install": this.id });
-          const modList = {};
+          installedItems.push(u.uuid);
           const upgradeModifiers = u.system.modifiers;
+          const modList = {};
           // Loop through the modifiers this upgrade has on it
           Object.keys(upgradeModifiers).forEach((index) => {
             const modifier = upgradeModifiers[index];
@@ -102,16 +106,19 @@ const Upgradable = function Upgradable() {
           });
           const upgradeData = {
             _id: u._id,
+            uuid: u.uuid,
             name: u.name,
+            size: u.system.size,
             system: {
               modifiers: modList,
-              size: u.system.size,
             },
           };
           installedUpgrades.push(upgradeData);
+          // Update the upgrade Item set the isInstalled Boolean and the install setting to this item
+          updateList.push({ _id: u._id, "system.isInstalled": true, "system.installLocation": this.uuid });
         }
       });
-      updateList.push({ _id: this.id, "system.isUpgraded": true, "system.upgrades": installedUpgrades });
+      updateList.push({ _id: this.id, "system.isUpgraded": true, "system.installedItems.list": installedItems, "system.upgrades": installedUpgrades });
       return this.actor.updateEmbeddedDocuments("Item", updateList);
     }
     return null;
@@ -126,11 +133,12 @@ const Upgradable = function Upgradable() {
    * @param {String} dataPoint - a stat/property/value that this upgrade modifies on the parent item
    * @returns null or the upgrade type for a given data point
    */
-  this.getUpgradeTypeFor = function getUpgradeTypeFor(dataPoint) {
+  this.getUpgradeTypeFor =  function getUpgradeTypeFor(dataPoint) {
     LOGGER.trace("getUpgradeTypeFor | Upgradable | Called.");
     let upgradeType = "modifier";
     if (this.actor && typeof this.system.isUpgraded === "boolean" && this.system.isUpgraded) {
-      const installedUpgrades = this.system.upgrades;
+      let installedUpgrades = "LOADING...";
+      installedUpgrades = this.system.upgrades;
       installedUpgrades.forEach((upgrade) => {
         if (typeof upgrade.system.modifiers[dataPoint] !== "undefined") {
           const modType = upgrade.system.modifiers[dataPoint].type;
@@ -173,25 +181,6 @@ const Upgradable = function Upgradable() {
       upgradeNumber = (baseOverride === 0 || baseOverride === -100000) ? upgradeNumber : baseOverride;
     }
     return upgradeNumber;
-  };
-
-  /**
-   * Dynamically calculates the number of free upgrade slots on the item
-   * by starting with the number of slots this item has and substacting
-   * the slot size of each of the upgrades.
-   *
-   * Note that some items override this method: cyberware and cyberdecks.
-   *
-   * @return {Number}
-   */
-  this.availableSlots = function availableSlots() {
-    LOGGER.trace("availableSlots | Upgradable | Called.");
-    const cprItemData = duplicate(this.system);
-    let unusedSlots = cprItemData.slots;
-    cprItemData.upgrades.forEach((mod) => {
-      unusedSlots -= mod.system.size;
-    });
-    return unusedSlots;
   };
 
   /**

@@ -198,11 +198,11 @@ export default class CPRMookActorSheet extends CPRActorSheet {
             SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware"));
           } else {
             const foundationalId = SystemUtils.GetEventDatum(event, "data-foundational-id");
-            const dialogTitle = SystemUtils.Localize("CPR.dialog.removeCyberware.title");
-            const dialogMessage = `${SystemUtils.Localize("CPR.dialog.removeCyberware.text")} ${item.name}?`;
+            const dialogTitle = SystemUtils.Localize("CPR.dialog.uninstallCyberware.title");
+            const dialogMessage = `${SystemUtils.Localize("CPR.dialog.uninstallCyberware.text")} ${item.name}?`;
             const confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
             if (confirmRemove) {
-              await this.actor.removeCyberware(itemId, foundationalId, true);
+              await this.actor.uninstallCyberware(itemId, foundationalId, true);
               this._deleteOwnedItem(item, true);
             }
           }
@@ -236,14 +236,14 @@ export default class CPRMookActorSheet extends CPRActorSheet {
         if (item.system.core === true) {
           SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware"));
         } else if (item.system.isInstalled === false) {
-          this.actor.addCyberware(itemId);
+          this.actor.installCyberware(itemId);
         } else {
           const foundationalId = SystemUtils.GetEventDatum(event, "data-foundational-id");
-          const dialogTitle = SystemUtils.Localize("CPR.dialog.removeCyberware.title");
-          const dialogMessage = `${SystemUtils.Localize("CPR.dialog.removeCyberware.text")} ${item.name}?`;
+          const dialogTitle = SystemUtils.Localize("CPR.dialog.uninstallCyberware.title");
+          const dialogMessage = `${SystemUtils.Localize("CPR.dialog.uninstallCyberware.text")} ${item.name}?`;
           const confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
           if (confirmRemove) {
-            await this.actor.removeCyberware(itemId, foundationalId, true);
+            await this.actor.uninstallCyberware(itemId, foundationalId, true);
           }
         }
       }

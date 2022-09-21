@@ -1,5 +1,5 @@
 {
-  "version": "0.82.0",
+  "version": "0.82.1",
   "flags": { "featureVideoURL": "https://www.youtube.com/watch?v=OHK6czoghhU" },
   "id": "cyberpunk-red-core",
   "title": "Cyberpunk RED - CORE",
@@ -9,7 +9,7 @@
     "verified": 10,
     "maximum": 10
   },
-  "templateVersion": 2,
+  "templateVersion": 3,
   "authors": [
     {
       "name": "The Project Red Team",

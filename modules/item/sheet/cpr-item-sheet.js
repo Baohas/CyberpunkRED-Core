@@ -13,6 +13,7 @@ import CyberdeckSelectProgramsPrompt from "../../dialog/cpr-select-install-progr
 import SelectItemUpgradePrompt from "../../dialog/cpr-select-item-upgrade-prompt.js";
 import BoosterAddModifierPrompt from "../../dialog/cpr-booster-add-modifier-prompt.js";
 import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
+import ManageInstallableTypes from "../../dialog/cpr-manage-installable-types.js";
 import DvUtils from "../../utils/cpr-dvUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 
@@ -86,9 +87,12 @@ export default class CPRItemSheet extends ItemSheet {
       }
     }
 
-    // if (["cyberdeck", "weapon", "armor", "cyberware", "clothing"].indexOf(data.item.type) > -1) {
-    //   data.system.availableSlots = this.object.availableSlots();
-    // }
+    cprData.installedItems.usedSlots = 0;
+    if (cprData.installedItems.list.length > 0) {
+      const availableSlots = await this.object.availableInstallSlots();
+      cprData.installedItems.usedSlots = cprData.installedItems.slots - availableSlots;
+    }
+
     cprData.dvTableNames = DvUtils.GetDvTables();
     foundryData.item.system = cprData;
     return foundryData;
@@ -134,6 +138,8 @@ export default class CPRItemSheet extends ItemSheet {
     html.find(".remove-upgrade").click((event) => this._removeItemUpgrade(event));
 
     html.find(".item-view").click((event) => this._renderReadOnlyItemCard(event));
+
+    html.find(".manage-installable-types").click((event) => this._manageInstallableTypes(event));
 
     html.find(".netarch-generate-auto").click(() => {
       if (game.user.isGM) {
@@ -941,7 +947,7 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("_selectItemUpgrades | CPRItemSheet | Called.");
     const { item } = this;
 
-    // We only support upgraded items thatr are owned by an actor
+    // We only support upgraded items that are owned by an actor
     // Get the actor that owns this item (if owned)
 
     const actor = (item.isOwned) ? item.actor : null;
@@ -984,8 +990,11 @@ export default class CPRItemSheet extends ItemSheet {
       await item.installUpgrades(installList);
     }
 
-    if (item.type === "weapon" && item.availableSlots() < 0) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.toomanyattachments"));
+    if (item.type === "weapon") {
+      const availableInstallSlots = await item.availableInstallSlots();
+      if (availableInstallSlots < 0) {
+        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.toomanyattachments"));
+      }
     }
   }
 
@@ -1021,5 +1030,19 @@ export default class CPRItemSheet extends ItemSheet {
   _createItemImageContextMenu(html) {
     LOGGER.trace("_createItemImageContextMenu | CPRItemSheet | Called.");
     return createImageContextMenu(html, ".item-image-block", this.item);
+  }
+
+  async _manageInstallableTypes() {
+    LOGGER.trace("_manageInstallableTypes | CPRItemSheet | Called.");
+    let formData = {
+      installableTypes: this.item.system.installedItems.allowedTypes,
+    };
+    formData = await ManageInstallableTypes.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+    if (formData === undefined) {
+      return;
+    }
+    const allowedTypes = formData.selectedTypes;
+
+    await this.item.update({ "system.installedItems.allowedTypes": allowedTypes });
   }
 }

@@ -18,30 +18,6 @@ export default class CPRCyberdeckItem extends CPRItem {
   */
 
   /**
-   * Dynamically calculates the number of free slots on the Cyberdeck
-   * by starting with the number of slots this cyberdeck has and substacting
-   * the slot size of each of the installed programs.
-   *
-   * @override
-   * @public
-   */
-  availableSlots() {
-    LOGGER.trace("availableSlots | CPRCyberdeckItem | Called.");
-    const cprItemData = duplicate(this.system);
-    let unusedSlots = 0;
-    const upgradeValue = this.getAllUpgradesFor("slots");
-    const upgradeType = this.getUpgradeTypeFor("slots");
-    unusedSlots = (upgradeType === "override") ? upgradeValue : cprItemData.slots + upgradeValue;
-    cprItemData.programs.installed.forEach((program) => {
-      unusedSlots -= program.size;
-    });
-    cprItemData.upgrades.forEach((u) => {
-      unusedSlots -= u.system.size;
-    });
-    return unusedSlots;
-  }
-
-  /**
    * Returns a list of installed programs.  This is a list of ItemData as the
    * Item itself is not stored because Items can't own Items. As such, if you
    * are looking for a specific program, each Array entry has a entry._id of

@@ -59,7 +59,10 @@ export default function registerHandlebarsHelpers() {
   /**
    * Return an owned item on an actor given the ID
    */
-  Handlebars.registerHelper("cprGetOwnedItem", (actor, itemId) => actor.items.find((i) => i.id === itemId));
+  Handlebars.registerHelper("cprGetOwnedItem", (actor, itemId) => {
+    const item = actor.items.find((i) => i.id === itemId) ? actor.items.find((i) => i.id === itemId) : actor.items.find((i) => i.uuid === itemId);
+    return item;
+  });
 
   /**
    * Return true if an object is defined or not
@@ -241,30 +244,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Show option slots on a cyberware item
-   */
-  Handlebars.registerHelper("cprShowSlotStatus", (obj) => {
-    LOGGER.trace("cprShowSlotStatus | handlebarsHelper | Called.");
-    if (obj.type === "cyberware") {
-      const { optionSlots } = obj.system;
-      if (optionSlots > 0) {
-        LOGGER.trace(`hasOptionalSlots is greater than 0`);
-        const installedOptionSlots = optionSlots - obj.availableSlots();
-        return (`- ${installedOptionSlots}/${optionSlots} ${SystemUtils.Localize("CPR.itemSheet.cyberware.optionalSlots")}`);
-      }
-      LOGGER.trace(`hasOptionalSlots is 0`);
-    }
-    if (obj.type === "cyberdeck") {
-      const upgradeValue = obj.getAllUpgradesFor("slots");
-      const upgradeType = obj.getUpgradeTypeFor("slots");
-      const totalSlots = (upgradeType === "override") ? upgradeValue : obj.system.slots + upgradeValue;
-      const usedSlots = obj.system.upgrades.length + obj.system.programs.installed.length;
-      return (`${usedSlots}/${totalSlots}`);
-    }
-    return "";
-  });
-
-  /**
    * This helper accepts a string that is a list of words separated by strings. It returns true if
    * any of them match a given value.
    */
@@ -436,14 +415,8 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprHasCyberneticWeapons", (actor) => {
     LOGGER.trace("cprHasCyberneticWeapons | handlebarsHelper | Called.");
-    let returnValue = false;
-    const cyberware = actor.getInstalledCyberware();
-    cyberware.forEach((cw) => {
-      if (cw.system.isWeapon) {
-        returnValue = true;
-      }
-    });
-    return returnValue;
+    const cyberneticWeapons = actor.itemTypes.cyberware.filter((cw) => cw.system.isInstalled && cw.system.isWeapon);
+    return cyberneticWeapons.length > 0;
   });
 
   /**
@@ -822,6 +795,18 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprGetSkillBonus", (skillName, actor) => {
     LOGGER.trace("cprGetSkillBonus | handlebarsHelper | Called.");
     return actor.getSkillMod(skillName);
+  });
+
+  /**
+   * Provide a way to loop in html
+   */
+  Handlebars.registerHelper('cprLoop', (n, block) => {
+    LOGGER.trace("cprLoop | handlebarsHelper | Called.");
+    let accum = '';
+    for (let i = 0; i < n; ++i) {
+      accum += block.fn(i);
+    }
+    return accum;
   });
 
   /**

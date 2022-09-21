@@ -10,7 +10,7 @@
         </a>
     </div>
     <div class="item flexrow setting-name text-nowrap">
-        {{localize "CPR.itemSheet.cyberdeck.availableSlots"}}: {{item.system.availableSlots}}
+        {{localize "CPR.itemSheet.cyberdeck.availableSlots"}}: {{cprMath "subtract" item.system.installedItems.slots item.system.installedItems.usedSlots}}
     </div>
 </li>
 <div class="installed-programs">

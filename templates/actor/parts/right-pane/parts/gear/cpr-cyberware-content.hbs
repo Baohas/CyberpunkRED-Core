@@ -8,7 +8,7 @@
   <div class="item-detail gear-data text-nowrap">
         {{localize (cprFindConfigValue "cyberwareTypeList" item.system.type)}}
         {{#if item.system.isFoundational}}
-        {{#if (cprCompare item.system.optionSlots ">" 0)}}
+        {{#if (cprCompare item.system.installedItems.slots ">" 0)}}
         ({{localize "CPR.global.generic.foundational"}})
         {{/if}}
         {{/if}}

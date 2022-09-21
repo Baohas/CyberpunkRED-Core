@@ -181,7 +181,7 @@ const Attackable = function Attackable() {
    * @param {String} type - type of attack (autofire, etc)
    * @returns {CPRDamageRoll}
    */
-  this._createDamageRoll = function _createDamageRoll(type) {
+  this._createDamageRoll = async function _createDamageRoll(type) {
     LOGGER.trace("_createDamageRoll | Attackable | Called.");
     const cprWeaponData = this.system;
     const rollName = this.name;
@@ -279,7 +279,7 @@ const Attackable = function Attackable() {
    *
    * @returns {Number}
    */
-  this._getAttackMod = function _getAttackMod() {
+  this._getAttackMod = async function _getAttackMod() {
     LOGGER.trace("_getAttackMod | Attackable | Called.");
     const cprWeaponData = this.system;
     let returnValue = 0;

@@ -112,7 +112,7 @@ export default class CPRMookActor extends CPRActor {
         break;
       }
       case "cyberware": {
-        this.addCyberware(item._id);
+        this.installCyberware(item._id);
         break;
       }
       default:

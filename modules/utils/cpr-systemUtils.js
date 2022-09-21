@@ -1,4 +1,4 @@
-/* global game, ui, Folder, Item */
+/* global game, ui, Folder, fromUuid */
 /* eslint-env jquery */
 
 import LOGGER from "./cpr-logger.js";
@@ -314,12 +314,6 @@ export default class CPRSystemUtils {
       }
     }
     return id;
-  }
-
-  static async GetItemByUUID(uuid) {
-    LOGGER.trace("GetItemByUUID | CPRSystemUtils | Called.");
-    const data = { type: "Item", uuid };
-    return Item.implementation.fromDropData(data);
   }
 
   /**

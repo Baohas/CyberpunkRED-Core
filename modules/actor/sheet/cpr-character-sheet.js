@@ -72,7 +72,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     html.find(".repair").click((event) => this._repairArmor(event));
 
     // Install Cyberware
-    html.find(".install-remove-cyberware").click((event) => this._installRemoveCyberwareAction(event));
+    html.find(".install-remove-cyberware").click((event) => this._installuninstallCyberwareAction(event));
 
     // Select Roles for Character
     html.find(".select-roles").click(() => this._selectRoles());
@@ -218,7 +218,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @private
    * @param {*} event - object with details of the event
    */
-  _repairArmor(event) {
+  async _repairArmor(event) {
     LOGGER.trace("_repairArmor | CPRCharacterActorSheet | Called.");
     const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
     const upgradeValue = item.getAllUpgradesFor("shieldHp");
@@ -257,15 +257,15 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @private
    * @param {*} event - object with details of the event
    */
-  async _installRemoveCyberwareAction(event) {
-    LOGGER.trace("_installRemoveCyberwareAction | CPRCharacterActorSheet | Called.");
+  async _installuninstallCyberwareAction(event) {
+    LOGGER.trace("_installuninstallCyberwareAction | CPRCharacterActorSheet | Called.");
     const itemId = CPRActorSheet._getItemId(event);
     const item = this._getOwnedItem(itemId);
     if (item.system.isInstalled) {
       const foundationalId = SystemUtils.GetEventDatum(event, "data-foundational-id");
-      this.actor.removeCyberware(itemId, foundationalId);
+      this.actor.uninstallCyberware(itemId, foundationalId);
     } else {
-      this.actor.addCyberware(itemId);
+      this.actor.installCyberware(itemId);
     }
   }
 

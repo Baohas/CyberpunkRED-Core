@@ -148,7 +148,7 @@
                                     {{#if (cprCompare (cprApplyUpgrade weapon weapon.system.attackmod "attackmod") "<" "0")}}({{cprApplyUpgrade weapon weapon.system.attackmod "attackmod"}}){{/if}}
                                     {{#if weapon.system.magazine.ammoId}}
                                         <br>
-                                        ({{localize "CPR.global.itemTypes.ammo"}}:<input name = "system.magazine.value" class = "number weapon-input" style = "width:30px;text-align:right;" type = "text" data-item-prop = "system.magazine.value" value = "{{weapon.system.magazine.value}}">/{{cprApplyUpgrade weapon weapon.system.magazine.max "magazine"}})
+                                        ({{cprGetProp (cprGetOwnedItem ../actor this.system.magazine.ammoId) "name"}} {{localize "CPR.global.itemTypes.ammo"}}:<input name = "system.magazine.value" class = "number weapon-input" style = "width:30px;text-align:right;" type = "text" data-item-prop = "system.magazine.value" value = "{{weapon.system.magazine.value}}">/{{cprApplyUpgrade weapon weapon.system.magazine.max "magazine"}})
                                     {{/if}}
                                 </div>
                                 <div class="fight-weapon-actions text-nowrap">

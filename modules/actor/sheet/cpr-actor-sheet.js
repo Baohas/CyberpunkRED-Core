@@ -75,8 +75,6 @@ export default class CPRActorSheet extends ActorSheet {
     const foundryData = super.getData();
     const cprActorData = foundryData.actor.system;
     if (this.actor.type === "mook" || this.actor.type === "character") {
-      cprActorData.installedCyberware = this._getSortedInstalledCyberware();
-
       cprActorData.fightOptions = (this.actor.hasItemTypeEquipped("cyberdeck")) ? "both" : "";
       let fightState = this.actor.getFlag("cyberpunk-red-core", "fightState");
       if (!fightState || cprActorData.fightOptions !== "both") {
@@ -88,6 +86,7 @@ export default class CPRActorSheet extends ActorSheet {
         cprActorData.cyberdeck = this.actor.getEquippedCyberdeck();
       }
       cprActorData.filteredEffects = this.prepareActiveEffectCategories();
+
       foundryData.data.system = cprActorData;
     }
     // This appears to have been removed in V10?
@@ -129,58 +128,6 @@ export default class CPRActorSheet extends ActorSheet {
     return categories;
   }
 
-  /**
-   * Used in getData to turn installable Cyberware data into an organized structure
-   *
-   * @private
-   * @returns - object data about Cyberware
-   */
-  _getSortedInstalledCyberware() {
-    LOGGER.trace("_getSortedInstalledCyberware | CPRActorSheet | Called.");
-    // Get all Installed Cyberware first...
-    const allOwnedCyberware = this.actor.itemTypes.cyberware;
-    const installedCyberware = allOwnedCyberware.filter((c) => c.system.isInstalled);
-    const installedFoundationalCyberware = installedCyberware.filter((c) => c.system.isFoundational === true);
-
-    // Now sort allInstalledCyberware by type, and only get foundational
-    const sortedInstalledCyberware = {};
-
-    for (const [type] of Object.entries(CPR.cyberwareTypeList)) {
-      sortedInstalledCyberware[type] = installedFoundationalCyberware.filter(
-        (cyberware) => cyberware.system.type === type,
-      );
-
-      const installedOptionalCyberware = installedCyberware.filter(
-        (cyberware) => cyberware.system.isFoundational !== true && cyberware.system.type === type,
-      ).map((cw) => ({
-        _id: cw._id,
-        uuid: cw.uuid,
-        name: cw.name,
-        size: cw.system.size,
-        isUpgraded: cw.system.isUpgraded,
-        type: cw.system.type,
-      }));
-
-      const usedSlots = installedOptionalCyberware.map((cyberware) => cyberware.size).reduce((sum, addend) => sum + addend, 0);
-
-      sortedInstalledCyberware[type] = sortedInstalledCyberware[type].map(
-        (cyberware) => ({
-          foundation: {
-            _id: cyberware._id,
-            uuid: cyberware.uuid,
-            name: cyberware.name,
-            type: cyberware.system.type,
-            usedSlots,
-            slots: cyberware.system.slots,
-            isUpgraded: cyberware.system.isUpgraded,
-            core: cyberware.system.core,
-          },
-          optionals: installedOptionalCyberware,
-        }),
-      );
-    }
-    return sortedInstalledCyberware;
-  }
 
   /**
    * Activate listeners for the sheet. This should be only common listeners across Mook and Character sheets.
@@ -590,7 +537,7 @@ export default class CPRActorSheet extends ActorSheet {
   _renderReadOnlyItemCard(event) {
     LOGGER.trace("_renderReadOnlyItemCard | CPRActorSheet | Called.");
     const itemId = CPRActorSheet._getItemId(event);
-    const item = this.actor.items.find((i) => i._id === itemId);
+    const item = this._getOwnedItem(itemId);
     if (event.ctrlKey) {
       CPRChat.RenderItemCard(item);
       return;
@@ -627,7 +574,7 @@ export default class CPRActorSheet extends ActorSheet {
    */
   _getOwnedItem(itemId) {
     LOGGER.trace("_getOwnedItem | CPRActorSheet | Called.");
-    return this.actor.items.find((i) => i._id === itemId);
+    return this.actor._getOwnedItem(itemId);
   }
 
   /**

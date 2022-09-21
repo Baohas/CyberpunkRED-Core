@@ -74,6 +74,8 @@ export default function preloadHandlebarsTemplates() {
 
     // Cyberware Tab Partials
     "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-content.hbs",
+    "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-foundational-content.hbs",
+    "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-optional-content.hbs",
     "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-header.hbs",
 
     // Common Partials - Actions

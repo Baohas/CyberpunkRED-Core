@@ -33,7 +33,47 @@
 
                 {{!-- Settings specific to the item type --}}
                 {{> (cprGeneratePartial "systems/cyberpunk-red-core/templates/item/settings/cpr-VAR.hbs" item.type) this}}
-            </ol>
+
+                {{!-- Settings specific to allowing items to be installed other items --}}
+                <hr>
+                <li class="item flexrow">
+                  <div class="item flexrow setting-name text-nowrap">
+                    {{localize "CPR.itemSheet.common.canHaveInstalledItems"}}
+                  </div>
+                  <div class="item flexrow setting-value text-nowrap item-end">
+                      {{#if this.editable}}
+                          {{#if item.system.installedItems.allowed}}
+                              <a class="item-checkbox" data-target="system.installedItems.allowed"><i class="far fa-check-circle"></i></a>
+                          {{else}}
+                              <a class="item-checkbox" data-target="system.installedItems.allowed"><i class="far fa-circle"></i></a>
+                          {{/if}}
+                      {{else}}
+                          {{#if item.system.installedItems.allowed}}
+                              <i class="far fa-check-circle"></i>
+                          {{else}}
+                              <i class="far fa-circle"></i>
+                          {{/if}}
+                      {{/if}}
+                  </div>
+                </li>
+                {{#if item.system.installedItems.allowed}}
+                  <div class="text-left text-padding-left">
+                    <b><a class="manage-installable-types">{{localize "CPR.itemSheet.common.allowedInstallableItemTypes"}}<i class="text-smallest text-super fas fa-wrench"></i></a></b>
+                    {{#each item.system.installedItems.allowedTypes as |type| }}
+                    <li>{{localize (cprFindConfigValue "objectTypes" type)}}</li>
+                    {{/each}}
+                  </div>
+                {{/if}}
+                {{#if (cprCompare (cprCompare item.system.installedItems.list.length ">" 0) "&&" item.actor)}}
+                <hr>
+                  <div class="text-left text-padding-left">
+                    <b>{{localize "CPR.itemSheet.common.installedItems"}}</b>
+                    {{#each item.system.installedItems.list as |UUID| }}
+                    <li>{{cprGetProp (cprGetOwnedItem ../item.actor UUID) "name"}}</li>
+                    {{/each}}
+                  </div>
+                {{/if}}
+          </ol>
         </div>
     </div>
 </div>

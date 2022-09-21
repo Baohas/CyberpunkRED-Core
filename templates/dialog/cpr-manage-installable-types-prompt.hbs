@@ -1,0 +1,33 @@
+{{cprTrace "START DIALOG CPR-MANAGE-INSTALLABLE-TYPES-PROMPT.HBS"}}
+<form>
+  <ol class="items-list">
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.itemSheet.common.allowedInstallableItemTypes"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <span class="text-bold text-nowrap text-center text-space-around">{{localize "CPR.dialog.common.select"}}</span>
+      </div>
+    </li>
+
+
+
+    {{#each (cprFindConfigObj "objectTypes") as |objectType ot|}}
+    {{#if (cprListContains (cprGetTemplates ot) "attackable")}}
+    <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize objectType}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        {{#if (cprListContains ../installableTypes ot)}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedTypes" value="{{ot}}" checked></span>
+        {{else}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedTypes" value="{{ot}}"></span>
+        {{/if}}
+      </div>
+    </li>
+    {{/if}}
+    {{/each}}
+  </ol>
+</form>
+{{cprTrace "END CPR-MANAGE-INSTALLABLE-TYPES-PROMPT.HBS"}}

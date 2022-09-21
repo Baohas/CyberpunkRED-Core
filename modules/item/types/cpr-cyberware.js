@@ -10,48 +10,6 @@ import LOGGER from "../../utils/cpr-logger.js";
  */
 export default class CPRCyberwareItem extends CPRItem {
   /**
-   * Dynamically calculates the number of free slots on the cyberware
-   * by starting with the number of slots this cyberware has and substacting
-   * the slot size of each of the installed options.
-   *
-   * @override
-   * @public
-   */
-  availableSlots() {
-    LOGGER.trace("availableSlots | CPRCyberwareItem | Called.");
-    const cprItemData = duplicate(this.system);
-    let unusedSlots = cprItemData.optionSlots - cprItemData.installedOptionSlots;
-    cprItemData.upgrades.forEach((mod) => {
-      unusedSlots -= mod.system.size;
-    });
-    return unusedSlots;
-  }
-
-  async canInstallItem(item) {
-    LOGGER.trace("canInstallItem | CPRCyberwareItem | Called.");
-
-    const unsettledPromises = this.system.installedItems.map(async (uuid) => {
-      try {
-        return await SystemUtils.GetItemByUUID(uuid);
-      } catch {
-        throw new Error(`Unable to obtain list of installed items`);
-      }
-    });
-    const allPromises = await Promise.allSettled(unsettledPromises);
-    let usedSlots = item.system.size;
-    for (const promise of allPromises.filter((p) => p.status === "fulfilled")) {
-      const installedItem = promise.value;
-      usedSlots += installedItem.system.size ? installedItem.system.size : 0;
-    }
-
-    if (usedSlots > this.system.slots) {
-      SystemUtils.DisplayMessage("error", "CPR.messages.tooManyOptionalCyberwareInstalled");
-      return false;
-    }
-    return true;
-  }
-
-  /**
    * Perform a cyberware-specific action. Most of these map to attackable (mixin) calls
    * for cyberware that is an embedded weapon. This assumes the Item is also attackable.
    *
