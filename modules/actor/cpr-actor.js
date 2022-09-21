@@ -328,8 +328,6 @@ export default class CPRActor extends Actor {
    */
   async uninstallCyberware(itemId, foundationalId, skipConfirm = false) {
     LOGGER.trace("uninstallCyberware | CPRActor | Called.");
-    console.log("uninstallCyberware | CPRActor | Called.");
-    console.log(foundationalId);
     const item = this._getOwnedItem(itemId);
 
     let confirmRemove;
@@ -342,6 +340,11 @@ export default class CPRActor extends Actor {
     }
     if (confirmRemove) {
       const target = (item.system.installedIn === this.uuid) ? this : this._getOwnedItem(item.system.installedIn);
+      const uninstallPromises = item.system.installedItems.list.map(async (uuid) => {
+        const installedItem = (this.isOwned) ? await this.actor._getOwnedItem(uuid) : await fromUuid(uuid);
+        return installedItem.uninstallFrom(item);
+      });
+      await Promise.allSettled(uninstallPromises);
       await item.uninstallFrom(target);
       return this.setMaxHumanity();
     }

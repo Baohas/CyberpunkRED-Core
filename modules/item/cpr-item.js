@@ -282,6 +282,12 @@ export default class CPRItem extends Item {
     LOGGER.trace("uninstallItem | CPRItem | Called.");
     const installedItems = this.system.installedItems.list.filter((itemUuid) => itemUuid !== item.uuid);
     const usedSlots = this.system.installedItems.usedSlots - item.system.size;
+    const uninstallPromises = item.system.installedItems.list.map(async (uuid) => {
+      const installedItem = (this.isOwned) ? await this.actor._getOwnedItem(uuid) : await fromUuid(uuid);
+      return installedItem.uninstallFrom(item);
+    });
+
+    await Promise.allSettled(uninstallPromises);
     return this.update({ "system.installedItems.list": installedItems, "system.installedItems.usedSlots": usedSlots });
   }
 
