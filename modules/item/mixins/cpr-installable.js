@@ -107,8 +107,8 @@ const Installable = function Installable() {
       targetInstalledItems.usedSlots = (action === "install") ? targetInstalledItems.usedSlots + this.system.size : targetInstalledItems.usedSlots - this.system.size;
       updateList.push({ _id: target._id, "system.installedItems": targetInstalledItems });
     }
-
-    return actor.updateEmbeddedDocuments("Item", updateList);
+    const updateResult = await actor.updateEmbeddedDocuments("Item", updateList);
+    return updateResult;
   };
 };
 

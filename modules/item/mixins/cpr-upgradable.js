@@ -16,14 +16,15 @@ const Upgradable = function Upgradable() {
    */
   this.uninstallUpgrades = function uninstallUpgrades(upgrades) {
     LOGGER.trace("uninstallUpgrades | Upgradable | Called.");
-    let installedItems = this.system.installedItems.list;
+    const installedItems = duplicate(this.system.installedItems);
     let installedUpgrades = this.system.upgrades;
 
     const updateList = [];
     upgrades.forEach((u) => {
-      installedUpgrades = installedUpgrades.filter((iUpgrade) => iUpgrade._id !== u.id);
-      installedItems = installedItems.filter((uuid) => u.uuid !== uuid);
-      updateList.push({ _id: u.id, "system.isInstalled": false });
+      installedUpgrades = installedUpgrades.filter((iUpgrade) => iUpgrade.uuid !== u.uuid);
+      installedItems.list = installedItems.list.filter((uuid) => u.uuid !== uuid);
+      installedItems.usedSlots -= u.system.size;
+      updateList.push({ _id: u.id, "system.isInstalled": false, "system.installedIn": "" });
     });
     const upgradeStatus = (installedUpgrades.length > 0);
     // Need to set this so it can be used further in this function.
@@ -40,7 +41,7 @@ const Upgradable = function Upgradable() {
         updateList.push({
           _id: this.id,
           "system.isUpgraded": upgradeStatus,
-          "system.installedItems.list": installedItems,
+          "system.installedItems": installedItems,
           "system.magazine.value": magazineData.max,
         });
         const ammo = this.actor.items.find((i) => i._id === magazineData.ammoId);
@@ -57,7 +58,7 @@ const Upgradable = function Upgradable() {
       updateList.push({
         _id: this.id,
         "system.isUpgraded": upgradeStatus,
-        "system.installedItems.list": installedItems,
+        "system.installedItems": installedItems,
         "system.bodyLocation": bodyLocation,
         "system.headLocation": headLocation,
         "system.shieldHitPoints": shieldHitPoints,
@@ -74,18 +75,19 @@ const Upgradable = function Upgradable() {
    * @param {Array} upgrades - the list of upgrades to install
    * @returns the updated item document after the installation
    */
-  this.installUpgrades = function installUpgrades(upgrades) {
+  this.installUpgrades = async function installUpgrades(upgrades) {
     LOGGER.trace("installUpgrades | Upgradable | Called.");
     if (typeof this.system.isUpgraded === "boolean") {
-      const installedItems = this.system.installedItems.list;
-      const installedUpgrades = this.system.upgrades;
+      const installedItems = duplicate(this.system.installedItems);
+      const installedUpgrades = duplicate(this.system.upgrades);
       const updateList = [];
       // Loop through the upgrades to install
+      const installableUpgrades = [];
       upgrades.forEach((u) => {
         // See if the upgrade is already installed, if it is, skip it
-        const alreadyInstalled = installedItems.filter((installedUuid) => installedUuid === u.uuid);
-        if (alreadyInstalled.length === 0) {
-          installedItems.push(u.uuid);
+        const alreadyInstalled = installedItems.list.filter((installedUuid) => installedUuid === u.uuid);
+        if (alreadyInstalled.length === 0 && this.canInstallItem(u)) {
+          installableUpgrades.push(u);
           const upgradeModifiers = u.system.modifiers;
           const modList = {};
           // Loop through the modifiers this upgrade has on it
@@ -101,7 +103,9 @@ const Upgradable = function Upgradable() {
             */
             if (typeof modifier !== "undefined" && typeof CPR.upgradableDataPoints[this.type][index] !== "undefined"
               && modifier !== 0 && modifier !== null && modifier !== "") {
-              modList[index] = modifier;
+              if (typeof modifier.value === "undefined" || modifier.value !== null) {
+                modList[index] = modifier;
+              }
             }
           });
           const upgradeData = {
@@ -115,10 +119,13 @@ const Upgradable = function Upgradable() {
           };
           installedUpgrades.push(upgradeData);
           // Update the upgrade Item set the isInstalled Boolean and the install setting to this item
-          updateList.push({ _id: u._id, "system.isInstalled": true, "system.installLocation": this.uuid });
+          updateList.push({ _id: u._id, "system.isInstalled": true, "system.installedIn": this.uuid });
         }
       });
-      updateList.push({ _id: this.id, "system.isUpgraded": true, "system.installedItems.list": installedItems, "system.upgrades": installedUpgrades });
+      updateList.push({ _id: this.id, "system.isUpgraded": true, "system.upgrades": installedUpgrades });
+      for (const upgrade of installableUpgrades) {
+        await upgrade.installInto(this);
+      }
       return this.actor.updateEmbeddedDocuments("Item", updateList);
     }
     return null;
