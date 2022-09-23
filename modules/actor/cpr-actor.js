@@ -310,7 +310,7 @@ export default class CPRActor extends Actor {
 
     const target = (item.system.isFoundational) ? this : this._getOwnedItem(formData.foundationalId);
 
-    item.installInto(target).then(async (installationSuccess) => {
+    target.installItems([item]).then(async (installationSuccess) => {
       if (installationSuccess) {
         await this.loseHumanityValue(item, formData);
       }
@@ -340,12 +340,12 @@ export default class CPRActor extends Actor {
     }
     if (confirmRemove) {
       const target = (this.uuid === item.system.installedIn) ? this : this._getOwnedItem(item.system.installedIn);
-      return item.uninstallFrom(target).then(() => this.setMaxHumanity());
+      return target.uninstallItems([item]).then(() => this.setMaxHumanity());
     }
     return this.updateEmbeddedDocuments("Item", []);
   }
 
-  getInstalledItems(type) {
+  getInstalledItems(type = false) {
     LOGGER.trace("getInstalledItems | CPRActor | Called.");
     const installedItems = [];
 
@@ -360,9 +360,59 @@ export default class CPRActor extends Actor {
     return installedItems;
   }
 
-  canInstallItem(item) {
-    LOGGER.trace("canInstall | CPRActor | Called.");
-    return (this.system.installedItems.allowed && this.system.installedItems.allowedTypes.includes(item.type));
+  canInstallItems(itemList) {
+    LOGGER.trace("canInstallItems | CPRActor | Called.");
+    if (!Array.isArray(itemList)) {
+      LOGGER.debug(`CPRActor.canInstallItems argument is not an array: ${itemList}`);
+      return false;
+    }
+    let result = true;
+    itemList.forEach((item) => {
+      if (!this.system.installedItems.allowedTypes.includes(item.type) || !(SystemUtils.getDataModelTemplates(item.type).includes("installable"))) {
+        result = false;
+      }
+    });
+    return (this.system.installedItems.allowed && result);
+  }
+
+  async installItems(itemList) {
+    LOGGER.trace("installItems | CPRActor | Called.");
+    if (!Array.isArray(itemList)) {
+      return Promise.reject(new Error(`CPRActor.installItems argument is not an array: ${itemList}`));
+    }
+    if (!this.canInstallItems(itemList)) {
+      return Promise.reject(new Error("Installation failed.  One or more item types are not allowed to be installed."));
+    }
+    const installedItems = duplicate(this.system.installedItems);
+    const updateList = [];
+
+    itemList.forEach((item) => {
+      if (!installedItems.list.includes(item.uuid)) {
+        installedItems.list.push(item.uuid);
+      }
+      updateList.push({ _id: item.id, "system.isInstalled": true, "system.installedIn": this.uuid });
+    });
+
+    await this.update({ "system.installedItems": installedItems });
+    return this.updateEmbeddedDocuments("Item", updateList);
+  }
+
+  async uninstallItems(itemList) {
+    LOGGER.trace("uninstallItems | CPRActor | Called.");
+    if (!Array.isArray(itemList)) {
+      return Promise.reject(new Error(`CPRActor.uninstallItems argument is not an array: ${itemList}`));
+    }
+
+    const installedItems = duplicate(this.system.installedItems);
+    const updateList = [];
+
+    itemList.forEach((item) => {
+      installedItems.list = installedItems.list.filter((uuid) => item.uuid !== uuid);
+      updateList.push({ _id: item.id, "system.isInstalled": false, "system.installedIn": "" });
+    });
+
+    await this.update({ "system.installedItems": installedItems });
+    return this.updateEmbeddedDocuments("Item", updateList);
   }
 
   /**

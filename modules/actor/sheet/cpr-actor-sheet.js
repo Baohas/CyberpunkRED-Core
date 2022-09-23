@@ -128,7 +128,6 @@ export default class CPRActorSheet extends ActorSheet {
     return categories;
   }
 
-
   /**
    * Activate listeners for the sheet. This should be only common listeners across Mook and Character sheets.
    * This has to call super at the end for Foundry to process events properly and get built-in functionality

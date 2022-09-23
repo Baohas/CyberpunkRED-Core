@@ -29,7 +29,12 @@ const Upgradable = function Upgradable() {
     const upgradeStatus = (installedUpgrades.length > 0);
     // Need to set this so it can be used further in this function.
     this.system.upgrades = installedUpgrades;
-    updateList.push({ _id: this.id, "system.isUpgraded": upgradeStatus, "system.upgrades": installedUpgrades, "system.installedItems.list": installedItems });
+    updateList.push({
+      _id: this.id,
+      "system.isUpgraded": upgradeStatus,
+      "system.upgrades": installedUpgrades,
+      "system.installedItems.list": installedItems,
+    });
 
     if (this.type === "weapon" && this.system.isRanged) {
       const magazineData = this.system.magazine;
@@ -123,9 +128,7 @@ const Upgradable = function Upgradable() {
         }
       });
       updateList.push({ _id: this.id, "system.isUpgraded": true, "system.upgrades": installedUpgrades });
-      for (const upgrade of installableUpgrades) {
-        await upgrade.installInto(this);
-      }
+      await this.installItems(installableUpgrades);
       return this.actor.updateEmbeddedDocuments("Item", updateList);
     }
     return null;
@@ -140,7 +143,7 @@ const Upgradable = function Upgradable() {
    * @param {String} dataPoint - a stat/property/value that this upgrade modifies on the parent item
    * @returns null or the upgrade type for a given data point
    */
-  this.getUpgradeTypeFor =  function getUpgradeTypeFor(dataPoint) {
+  this.getUpgradeTypeFor = function getUpgradeTypeFor(dataPoint) {
     LOGGER.trace("getUpgradeTypeFor | Upgradable | Called.");
     let upgradeType = "modifier";
     if (this.actor && typeof this.system.isUpgraded === "boolean" && this.system.isUpgraded) {

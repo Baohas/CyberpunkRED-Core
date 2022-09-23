@@ -803,6 +803,7 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper('cprLoop', (n, block) => {
     LOGGER.trace("cprLoop | handlebarsHelper | Called.");
     let accum = '';
+    // eslint-disable-next-line no-plusplus
     for (let i = 0; i < n; ++i) {
       accum += block.fn(i);
     }

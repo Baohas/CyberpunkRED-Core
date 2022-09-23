@@ -142,47 +142,121 @@ export default class CPRItem extends Item {
     }
   }
 
-  async getInstalledItems(type) {
-    LOGGER.trace("getInstalledItems | CPRItem | Called.");
-    const installedItems = [];
-
-    if (this.system.installedItems.list.length > 0) {
-      const unsettledPromises = this.system.installedItems.list.map(async (uuid) => {
-        try {
-          return await fromUuid(uuid);
-        } catch {
-          throw new Error(`Unable to obtain list of installed items`);
-        }
-      });
-
-      const allPromises = await Promise.allSettled(unsettledPromises);
-
-      for (const promise of allPromises.filter((p) => p.status === "fulfilled")) {
-        const installedItem = promise.value;
-        if (!type || (type && installedItem.type === type)) {
-          installedItems.push(installedItem);
-        }
-      }
-    }
-    return installedItems;
-  }
-
   availableInstallSlots() {
     LOGGER.trace("availableInstallSlots | CPRItem | Called.");
     return this.system.installedItems.slots - this.system.installedItems.usedSlots;
   }
 
-  canInstallItem(item) {
-    LOGGER.trace("canInstallItem | CPRItem | Called.");
+  getInstalledItems(type = false) {
+    LOGGER.trace("getInstalledItems | CPRItem | Called.");
+
+    const actor = (this.isOwned) ? this.actor : false;
+
+    if (!actor) {
+      LOGGER.debug(`CPRItem.getInstalledItems() called on unowned item. Item: ${this.uuid}`);
+      return [];
+    }
+
+    const installedItems = [];
+
+    this.system.installedItems.list.forEach((uuid) => {
+      const item = actor._getOwnedItem(uuid);
+      if (!type || (item.type === type)) {
+        installedItems.push(item);
+      }
+    });
+
+    return installedItems;
+  }
+
+  canInstallItems(itemList) {
+    LOGGER.trace("canInstallItems | CPRItem | Called.");
+    if (!Array.isArray(itemList)) {
+      LOGGER.debug(`CPRActor.canInstallItems argument is not an array: ${itemList}`);
+      return false;
+    }
 
     let result = this.system.installedItems.allowed;
 
-    if (result && this.system.installedItems.allowedTypes.includes(item.type)) {
-      const itemSize = item.system.size ? item.system.size : 0;
-      const availableSlots = this.availableInstallSlots();
-      result = availableSlots >= itemSize;
+    let totalInstallationSize = 0;
+    itemList.forEach((item) => {
+      if (this.system.installedItems.allowedTypes.includes(item.type) && (item instanceof Installable)) {
+        totalInstallationSize += item.system.size;
+      } else {
+        result = false;
+      }
+    });
+
+    const availableSlots = this.availableInstallSlots();
+    if (totalInstallationSize > availableSlots) {
+      result = false;
     }
     return result;
+  }
+
+  async installItems(itemList) {
+    LOGGER.trace("installItems | CPRItem | Called.");
+    if (!Array.isArray(itemList)) {
+      return Promise.reject(new Error(`CPRItem.installItems argument is not an array: ${itemList}`));
+    }
+    if (!this.canInstallItems(itemList)) {
+      return Promise.reject(new Error("Installation failed.  One or more item types are not allowed to be installed."));
+    }
+
+    const actor = (this.isOwned) ? this.actor : false;
+
+    if (!actor) {
+      return Promise.reject(new Error("Can not install items in unowned objects."));
+    }
+
+    const installedItems = duplicate(this.system.installedItems);
+    const updateList = [];
+
+    itemList.forEach((item) => {
+      if (actor !== item.actor) {
+        LOGGER.debug(`CPRItem.installItems: Item "${item.name}" (${item.uuid})
+                      not owned by "${actor.name}" (${actor.uuid}) was attempted
+                      to be installed into "${this.name}". (${this.uuid})`);
+        return;
+      }
+      if (!installedItems.list.includes(item.uuid)) {
+        installedItems.list.push(item.uuid);
+      }
+      installedItems.usedSlots += item.system.size;
+      updateList.push({ _id: item.id, "system.isInstalled": true, "system.installedIn": this.uuid });
+    });
+    updateList.push({ _id: this.id, "system.installedItems": installedItems });
+    return actor.updateEmbeddedDocuments("Item", updateList);
+  }
+
+  async uninstallItems(itemList) {
+    LOGGER.trace("uninstallItems | CPRItem | Called.");
+    if (!Array.isArray(itemList)) {
+      return Promise.reject(new Error(`CPRItem.installItems argument is not an array: ${itemList}`));
+    }
+
+    const actor = (this.isOwned) ? this.actor : false;
+
+    if (!actor) {
+      return Promise.reject(new Error("Can not uninstall items from unowned objects."));
+    }
+
+    const installedItems = duplicate(this.system.installedItems);
+    const updateList = [];
+
+    itemList.forEach((item) => {
+      if (actor !== item.actor) {
+        LOGGER.debug(`CPRItem.uninstallItems: Item "${item.name}" (${item.uuid})
+                      not owned by "${actor.name}" (${actor.uuid}) was attempted
+                      to be uninstalled from "${this.name}". (${this.uuid})`);
+        return;
+      }
+      installedItems.list = installedItems.list.filter((uuid) => item.uuid !== uuid);
+      installedItems.usedSlots -= item.system.size;
+      updateList.push({ _id: item.id, "system.isInstalled": false, "system.installedIn": "" });
+    });
+    updateList.push({ _id: this.id, "system.installedItems": installedItems });
+    return actor.updateEmbeddedDocuments("Item", updateList);
   }
 
   /**
