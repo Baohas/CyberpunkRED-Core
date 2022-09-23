@@ -163,11 +163,8 @@
             {{/if}}
         </div>
     </li>
-    {{#if data.data.isWeapon}}
+    {{#if item.system.isWeapon}}
       {{> "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-attackable.hbs" this}}
     {{/if}}
 {{/unless}}
-{{#if item.system.isWeapon}}
-  {{> "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-attackable.hbs" this}}
-{{/if}}
 {{cprTrace "END CPR-CYBERWARE.HBS"}}

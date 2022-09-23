@@ -1,13 +1,13 @@
 # Version 0.83.0 | Date: WIP
 
 **New Features**
-- 
+-
 
 **Changes**
 -
 
 **Bug Fixes**
--
+- Cyberware & Upgrade templates still had some references to .data causing the shim to fire.
 
 # Version 0.82.0 | Date: 2022-09-22
 
