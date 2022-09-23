@@ -1,0 +1,31 @@
+{{cprTrace "START DIALOG CPR-SELECT-ITEM-UPGRADE-PROMPT.HBS"}}
+<form>
+  {{localize "CPR.dialog.selectItemUpgrades.selectItemUpgrades"}} "{{item.name}}", Choomba!
+  <ol class="items-list">
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.itemSheet.common.itemUpgrades"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <span class="text-bold text-nowrap text-align-last-end text-space-around">{{localize "CPR.dialog.common.select"}}</span>
+      </div>
+    </li>
+
+    {{#each this.availableUpgrades as |upgrade|}}
+    <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{upgrade.name}} ({{localize (cprFindConfigValue "objectTypes" upgrade.system.type)}})
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        {{#if upgrade.system.isInstalled}}
+        <span class="text-bold text-nowrap text-align-last-end text-space-around"><input type="checkbox" name="selectedUpgrade" value="{{upgrade._id}}" checked></span>
+        {{else}}
+        <span class="text-bold text-nowrap text-align-last-end text-space-around"><input type="checkbox" name="selectedUpgrade" value="{{upgrade._id}}"></span>
+        {{/if}}
+      </div>
+    </li>
+    {{/each}}
+
+  </ol>
+</form>
+{{cprTrace "END CPR-SELECT-ITEM-UPGRADE-PROMPT.HBS"}}

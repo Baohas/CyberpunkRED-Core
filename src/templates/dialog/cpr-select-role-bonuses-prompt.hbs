@@ -1,0 +1,82 @@
+{{cprTrace "START DIALOG CPR-SELECT-ROLE-BONUSES-PROMPT.HBS"}}
+<form>
+  {{localize "CPR.dialog.selectRoleBonuses.message"}}
+  <ol class="items-list">
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.dialog.selectRoleBonuses.bonusRatio"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        1:<input class="text-right" name="bonusRatio" type="number" value={{#if (cprCompare roleType "===" "mainRole")}}{{system.bonusRatio}}{{else}}{{subRole.bonusRatio}}{{/if}} />
+      </div>
+    </li>
+    <hr>
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.dialog.selectRoleBonuses.universalBonuses"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <span class="text-bold text-nowrap text-center text-space-around">{{localize "CPR.dialog.common.select"}}</span>
+      </div>
+    </li>
+    {{#each (cprFindConfigObj "universalBonuses") as |universalBonus u|}}
+    <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize universalBonus}}
+      </div>
+      {{#if (cprCompare ../roleType "===" "mainRole")}}
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        {{#if (cprListContains ../system.universalBonuses u)}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}" checked></span>
+        {{else}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}"></span>
+        {{/if}}
+      </div>
+      {{else}}
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        {{#if (cprListContains ../subRole.universalBonuses u)}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}" checked></span>
+        {{else}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}"></span>
+        {{/if}}
+      </div>
+      {{/if}}
+    </li>
+    {{/each}}
+    <hr>
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.dialog.selectRoleBonuses.skill"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <span class="text-bold text-nowrap text-center text-space-around">{{localize "CPR.dialog.common.select"}}</span>
+      </div>
+    </li>
+
+    {{#each (cprSort skillList "name") as |skill s|}}
+    <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{#if skill.core}}{{localize skill.name}}{{else}}{{skill.name}}{{/if}}
+      </div>
+      {{#if (cprCompare ../roleType "===" "mainRole")}}
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        {{#if (cprObjectListContains ../system.bonuses "name" skill.name)}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked></span>
+        {{else}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}"></span>
+        {{/if}}
+      </div>
+      {{else}}
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        {{#if (cprObjectListContains ../subRole.bonuses "name" skill.name)}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked></span>
+        {{else}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}"></span>
+        {{/if}}
+      </div>
+      {{/if}}
+    </li>
+    {{/each}}
+  </ol>
+</form>
+{{cprTrace "END CPR-SELECT-ROLE-BONUSES-PROMPT.HBS"}}

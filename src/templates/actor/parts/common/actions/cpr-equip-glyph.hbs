@@ -1,0 +1,13 @@
+{{cprTrace "START ACTOR PARTS COMMON ACTIONS CPR-EQUIP-GLYPH.HBS"}}
+<a class="equip" data-item-prop="system.equipped">
+    {{#if (cprCompare system.equipped "===" "equipped")}}
+    <i class="fas fa-hand-paper" title={{localize "CPR.global.equipState.equipped" }} style="width:14px;height:14px;text-align:left;"></i>
+    {{/if}}
+    {{#if (cprCompare system.equipped "===" "carried")}}
+    <i class="fas fa-suitcase" title={{localize "CPR.global.equipState.carried" }} style="width:14px;height:14px;text-align:left;"></i>
+    {{/if}}
+    {{#if (cprCompare system.equipped "===" "owned")}}
+    <i class="fas fa-circle-notch" title={{localize "CPR.global.equipState.owned" }} style="width:14px;height:14px;text-align:left;"></i>
+    {{/if}}
+</a>
+{{cprTrace "END CPR-EQUIP-GLYPH.HBS"}}

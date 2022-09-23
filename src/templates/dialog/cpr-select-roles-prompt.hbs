@@ -1,0 +1,40 @@
+{{cprTrace "START DIALOG CPR-SELECT-ROLES-PROMPT.HBS"}}
+<form>
+  <ol class="items-list">
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.dialog.selectRoles.roleName"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+       <span class="text-bold text-nowrap text-center text-space-around">{{localize "CPR.dialog.selectRoles.activeRole"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <span class="text-bold text-nowrap text-center text-space-around">{{localize "CPR.dialog.selectRoles.activeNetRole"}}</span>
+      </div>
+    </li>
+    {{#each roles as |role|}}
+    <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{role.name}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        {{#if (cprCompare actor.system.roleInfo.activeRole "===" role.name)}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="radio" name="activeRole" value="{{role.name}}" checked></span>
+        {{else}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="radio" name="activeRole" value="{{role.name}}"></span>
+        {{/if}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        {{#if (cprCompare actor.system.roleInfo.activeNetRole "===" role.name)}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="radio" name="activeNetRole" value="{{role.name}}" checked></span>
+        {{else}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="radio" name="activeNetRole" value="{{role.name}}"></span>
+        {{/if}}
+      </div>
+    </li>
+    {{/each}}
+  </ol>
+  <br>
+  <div>{{localize "CPR.dialog.selectRoles.multiClassRequirement"}}</div>
+</form>
+{{cprTrace "END CPR-SELECT-ROLES-PROMPT.HBS"}}

@@ -1,0 +1,16 @@
+{{cprTrace "START ITEM DESCRIPTION MIXIN ITEM-DESC-MIXIN CPR-UPGRADABLE.HBS"}}
+<div class="item-summary-line">
+    <span class="text-bold summary-name">
+        {{localize "CPR.itemSheet.itemUpgrade.usedSlots"}}:
+    </span>
+    <span class="summary-value">
+        {{#if (cprCompare item.type "===" "cyberware")}}
+            {{item.system.installedOptionSlots}}/{{item.system.slots}}
+        {{else if (cprCompare item.type "===" "cyberdeck")}}
+            {{cprShowSlotStatus item}}
+        {{else}}
+            {{item.system.upgrades.length}}/{{item.system.slots}}
+        {{/if}}
+    </span>
+</div>
+{{cprTrace "END CPR-UPGRADABLE.HBS"}}

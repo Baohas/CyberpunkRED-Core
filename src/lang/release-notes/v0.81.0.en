@@ -1,0 +1,37 @@
+<p>Welcome to the 0.81.0 release!</p>
+<p>This release beings a dramatic re-write of the item code to integrate with <i>active effects</i>,
+a feature provided by Foundry that allows items to change the stats of characters in the game.  
+A few things have been replaced or changed with active effects that we want to call out here so
+you can review and verify yourself. You checked the changelog too, right?  A lot of item fields
+and values have moved around.</p>
+
+<ul>
+  <li>Modifiers provided by programs (such as Boost providing a bonus to Speed) are provided by active effects now.
+    Take a look at your characters and confirm the effects are doing what you expect. You may wish to change the
+    programmatically generated name for them too.</li>
+  <li>Modifiers provided by item upgrades to gear and clothing are now provided by active effects. The migration
+    should have created active effects for those items automatically and removed the item upgrades associated with them.
+    If they are owned by a character, then the character should also have those effects bestowed on them. Again,
+    please review the active effects on the character and change the names to be something more appropriate.</li>
+  <li>Clothing and gear upgrade items no longer have modifers. Instead of those items, use active effects on
+    an upgraded item instead. You can still create more upgrade items, but know the ability to do so may be
+    removed in a future update. They provide no modifiers in this release.</li>
+  <li>Upgrade items with modifiers that *overrode* values rather than added/subtracted from are not yet
+    supported by active effects. Currently CPR-C effects can only add or subtract values to skills and rolls.
+    We will support the other active effect modes in a future release.</li>
+  <li>Arbitrary skill mods on characters cannot be set in the character sheet any more, that column
+    shows mods coming from active effects now. You can still create skill mods with active effects
+    using the Effects tab. You may want to convert them from actor effects to effects on the items
+    that provided the mod in your game. You may want to rename the effects on the characters to
+    something more appropriate too.</li>
+  <li>A drug item type has been added. Several items have been migrated over to that type in the
+    compendiums. You may want to re-create drugs with that item type if you created some of your
+    own already, then you can use active effects to simulate drug effects and withdrawal.</li>
+  <li>Vehicles and weapons no longer "stack." If a player had multiple in their
+    inventory, there will be duplicate items post migration instead, up to 50.</li>
+</ul>
+
+<p>Items in the provided CPR-C compendia have all been adapted to use active effects, we recommend
+using those as a base whenever you are creating a new item.  Any custom items in your game have been
+migrated, but we were conservative about creating Active Effects for them.  You may want to check on
+them specifically.  The same is true for items owned by characters and mooks.</p>

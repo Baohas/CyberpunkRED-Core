@@ -1,0 +1,52 @@
+{{cprTrace "START ACTOR PARTS RIGHT-PANE CYBERWARE CPR-CYBERWARE-CONTENT.HBS"}}
+{{#each this as |cyberware c|}}
+{{#unless foundation.system.core}}
+<li class="item flexrow" data-item-id="{{foundation._id}}" draggable="false">
+    <div class="item-name cyberware-name text-nowrap">
+        <a class="name item-view">{{foundation.name}} {{cprShowSlotStatus foundation}}{{#if foundation.system.isUpgraded}}<sup><i class="fab fa-uniregistry"></sup></i>{{/if}}</a>
+    </div>
+    <div class="item-detail cyberware-data text-nowrap">
+        {{localize (cprFindConfigValue "cyberwareTypeList" foundation.system.type)}}
+    </div>
+    <div class="item-detail cyberware-actions text-nowrap">
+        {{#unless (cprListContains "fashionware,cyberwareInternal,cyberwareExternal" foundation.system.type)}}
+        {{!-- INSTALL ACTION --}}
+        {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-uninstall-glyph.hbs" foundation}}
+        {{!-- ITEM MANAGEMENT --}}
+        {{#if system.isUpgraded}}
+          {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
+        {{else}}
+          {{#unless (cprIsEmpty (cprFilter (cprFilter foundation.actor.itemTypes.itemUpgrade "type" "cyberware") "system.isInstalled" false))}}
+            {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
+          {{/unless}}
+        {{/if}}
+        {{/unless}}
+    </div>
+</li>
+{{/unless}}
+{{#each optionals as |optional o|}}
+<li class="item flexrow" data-item-id="{{optional._id}}" data-foundational-id="{{../foundation.id}}" draggable="false">
+    <div class="item-name cyberware-name flexrow text-nowrap">
+        <a class="name item-view"><span class="name">&nbsp;{{optional.name}}</span>{{#if optional.system.isUpgraded}}<sup><i class="fab fa-uniregistry"></sup></i>{{/if}}</a>
+    </div>
+    <div class="item-detail cyberware-data text-nowrap">
+        {{localize (cprFindConfigValue "cyberwareTypeList" optional.system.type)}}
+    </div>
+    <div class="item-detail cyberware-actions text-nowrap">
+        {{#unless (cprListContains "fashionware,cyberwareInternal,cyberwareExternal" foundation.system.type)}}
+        {{!-- INSTALL ACTION --}}
+        {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-uninstall-glyph.hbs" optional}}
+        {{!-- ITEM MANAGEMENT --}}
+        {{#if system.isUpgraded}}
+          {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
+        {{else}}
+          {{#unless (cprIsEmpty (cprFilter (cprFilter actor.itemTypes.itemUpgrade "type" "cyberware") "system.isInstalled" false))}}
+            {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
+          {{/unless}}
+        {{/if}}
+        {{/unless}}
+    </div>
+</li>
+{{/each}}
+{{/each}}
+{{cprTrace "END CPR-CYBERWARE-CONTENT.HBS"}}

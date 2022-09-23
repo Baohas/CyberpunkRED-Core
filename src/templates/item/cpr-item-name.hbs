@@ -1,0 +1,15 @@
+{{cprTrace "START ITEM CPR-ITEM-NAME.HBS"}}
+<br>
+<li class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.global.generic.name"}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+        {{#if this.editable}}
+        <input name="name" class="" type="text" value="{{item.name}}">
+        {{else}}
+        <span class="text-flex-end">{{item.name}}</span>
+        {{/if}}
+    </div>
+</li>
+{{cprTrace "END CPR-ITEM-NAME.HBS"}}

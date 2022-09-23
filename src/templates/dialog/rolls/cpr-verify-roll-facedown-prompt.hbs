@@ -1,0 +1,35 @@
+{{cprTrace "START DIALOG ROLLS CPR-VERIFY-ROLL-FACEDOWN-PROMPT.HBS"}}
+<form>
+    <div>
+        {{localize "CPR.rolls.rollingFor"}} "{{localize "CPR.global.generic.facedown"}}", Choomba!
+    </div>
+    <ol class="items-list">
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.global.generic.stat"}} {{localize "CPR.global.generic.value"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="statValue" class="" type="number" data-dtype="Number" value={{statValue}}>
+            </div>
+        </li>
+
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.reputation"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="mods" class="" type="text" data-dtype="String" value={{mods}}>
+            </div>
+        </li>
+
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.shouldRollCriticals"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="calculateCritical" class="" type="checkbox" data-dtype="Checkbox" checked>
+            </div>
+        </li>
+    </ol>
+</form>
+{{cprTrace "END CPR-VERIFY-ROLL-FACEDOWN-PROMPT.HBS"}}

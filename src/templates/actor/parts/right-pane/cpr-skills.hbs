@@ -1,0 +1,18 @@
+{{cprTrace "START ACTOR PARTS RIGHT-PANE CPR-SKILLS.HBS"}}
+<div class="skills-tab">
+    <ol class="left-pane-skills items-list">
+        {{#each (cprFindConfigObj "skillCategories") as |category c|}}
+        {{#if (cprCompare c "<" "f")}}
+            {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/skills/cpr-skills-category.hbs"  (cprMergeForPartialArg "category,actor,sheet" c ../this.actor ../this)}}
+        {{/if}}
+        {{/each}}
+    </ol>
+    <ol class="right-pane-skills items-list">
+        {{#each (cprFindConfigObj "skillCategories") as |category c|}}
+        {{#if  (cprCompare c ">=" "f")}}
+            {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/skills/cpr-skills-category.hbs"  (cprMergeForPartialArg "category,actor,sheet" c ../this.actor ../this)}}
+        {{/if}}
+        {{/each}}
+    </ol>
+</div>
+{{cprTrace "END CPR-SKILLS.HBS"}}

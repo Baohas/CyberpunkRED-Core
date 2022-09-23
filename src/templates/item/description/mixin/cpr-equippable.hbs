@@ -1,0 +1,8 @@
+{{cprTrace "START ITEM DESCRIPTION MIXIN ITEM-DESC-MIXIN CPR-EQUIPPABLE.HBS"}}
+{{#if item.isOwned}}
+    <div class="item-summary-line">
+        <span class="text-bold summary-name">{{localize "CPR.itemSheet.physical.location"}}:</span>
+        <span class="summary-value">{{item.system.equipped}}</span>
+    </div>
+{{/if}}
+{{cprTrace "END CPR-EQUIPPABLE.HBS"}}

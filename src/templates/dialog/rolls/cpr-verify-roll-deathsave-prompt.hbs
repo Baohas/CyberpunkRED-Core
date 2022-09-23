@@ -1,0 +1,26 @@
+{{cprTrace "START DIALOG ROLLS CPR-VERIFY-ROLL-DEATHSAVE-PROMPT.HBS"}}
+<form>
+    <div>
+        {{localize "CPR.rolls.rollingFor"}} "{{rollTitle}}", Choomba!
+    </div>
+    <ol class="items-list">
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.global.generic.deathPenalty"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="penalty" class="" type="number" data-dtype="Number" value={{penalty}}>
+            </div>
+        </li>
+
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.characterSheet.rightPanke.skills.base"}} {{localize "CPR.global.generic.deathPenalty"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="basePenalty" class="" type="number" data-dtype="Number" value={{basePenalty}}>
+            </div>
+        </li>
+    </ol>
+</form>
+{{cprTrace "END CPR-VERIFY-ROLL-DEATHSAVE-PROMPT.HBS"}}

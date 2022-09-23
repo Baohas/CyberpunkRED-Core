@@ -1,0 +1,8 @@
+<p>Welcome to the 0.82.0 release!</p>
+<p>This release is a Foundry V10 Baseline Release.  There are no
+new features in this release other than to be compatible with
+Foundry V10.  All V9 fixes through 0.81.5 should be included as part
+of this release. As such, the links to the Feature Video still point
+to 0.81 release features.</p>
+
+<p>As always, if you find any issues with this release, please <a href="https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/issues" target="_blank">open an issue on our Gitlab page.</a></p>

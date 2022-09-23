@@ -1,0 +1,46 @@
+{{cprTrace "START ACTOR PARTS LEFT-PANE CPR-STAT-BLOCK.HBS"}}
+{{!-- Partials to create stat-units from template --}}
+{{#each actor.system.stats as |stat s|}}
+<div class="stat-block">
+  <div class="block-label">
+    <a class="rollable" data-roll-type="stat" data-roll-title="{{s}}">
+      {{localize (cprFindConfigValue "statList" s)}}
+    </a>
+  </div>
+  <div class="block-data">
+    {{#unless (cprIsDefined this.max)}}
+    <input class="" name="system.stats.{{s}}.value" type="number" value="{{this.value}}" />
+    {{else}}
+    <div class="min-of-max-container">
+      {{#if (cprCompare this.value ">" 9)}}
+      <div class="fg-red tooltip">
+        <span class="tooltiptext">{{s}} {{localize 'CPR.tooltip.valueOf'}} {{this.value}} {{localize 'CPR.tooltip.isTooLargeForThisField'}}.</span>
+        <input class="" name="system.stats.{{s}}.value" type="number" value="{{this.value}}" />
+      </div>
+      {{else}}
+        <input class="" name="system.stats.{{s}}.value" type="number" value="{{this.value}}" />
+      {{/if}}
+
+      {{#if (cprCompare (cprCompare this.value ">" 9) "||" (cprCompare this.max ">" 9))}}
+      <div class="tooltip">
+        <span class="tooltiptext">{{s}} {{localize 'CPR.tooltip.fieldsHaveNumbersTooLargeToDisplay'}}.</span>
+        <div class="of-stat bg-red fg-white text-normal text-bold">of</div>
+      </div>
+      {{else}}
+        <div class="of-stat bg-red fg-white text-normal text-bold">of</div>
+      {{/if}}
+
+      {{#if (cprCompare this.max ">" 9)}}
+      <div class="fg-red tooltip">
+        <span class="tooltiptext">{{s}} {{localize 'CPR.tooltip.maxOf'}} {{this.max}} {{localize 'CPR.tooltip.isTooLargeForThisField'}}.</span>
+        <input class="" name="system.stats.{{s}}.max" type="number" value="{{this.max}}" />
+      </div>
+      {{else}}
+        <input class="" name="system.stats.{{s}}.max" type="number" value="{{this.max}}" />
+      {{/if}}
+    </div>
+    {{/unless}}
+  </div>
+</div>
+{{/each}}
+{{cprTrace "END CPR-STAT-BLOCK.HBS"}}

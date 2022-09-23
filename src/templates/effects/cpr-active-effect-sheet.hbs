@@ -1,0 +1,133 @@
+{{cprTrace "START EFFECTS CPR-ACTIVE-EFFECT-SHEET.HBS"}}
+{{!-- taken from Foundry code in resources/app/templates/sheets/active-effect-config.html --}}
+<form>
+    <!-- Effect Header -->
+    <header class="sheet-header">
+        <img class="effect-icon" src="{{effect.icon}}" data-edit="icon">
+        <h1 class="effect-title">{{effect.label}}</h1>
+    </header>
+
+    <!-- Effect Configuration Tabs -->
+    <nav class="sheet-tabs tabs">
+        <a class="item" data-tab="details"><i class="fas fa-book"></i> {{localize "EFFECT.TabDetails"}}</a>
+        <a class="item" data-tab="effects"><i class="fas fa-cogs"></i> {{localize "EFFECT.TabEffects"}}</a>
+    </nav>
+
+    <!-- Details Tab -->
+    <section class="tab" data-tab="details">
+        <div class="form-group">
+            <label>{{ localize "EFFECT.Label" }}</label>
+            <div class="form-fields">
+                <input type="text" name="label" value="{{effect.label}}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>{{ localize "EFFECT.Icon" }}</label>
+            <div class="form-fields">
+                {{filePicker target="icon" type="image"}}
+                <input class="image" type="text" name="icon" placeholder="path/image.png" value="{{effect.icon}}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>{{ localize "EFFECT.IconTint" }}</label>
+            <div class="form-fields">
+                <input class="color" type="text" name="tint" value="{{effect.tint}}"/>
+                <input type="color" value="{{effect.tint}}" data-edit="tint"/>
+            </div>
+        </div>
+    </section>
+
+    <!-- Effects Tab -->
+    <section class="tab" data-tab="effects">
+        <header class="effect-change effects-header flexrow">
+            <div class="key">{{ localize "EFFECT.ChangeKey" }}</div>
+            <div class="value">{{ localize "EFFECT.ChangeValue" }}</div>
+            <div class="mode">{{ localize "EFFECT.ChangeMode" }}</div>
+            <div class="effect-controls">
+                <a class="effect-change-control" data-action="add"><i class="far fa-plus-square"></i></a>
+            </div>
+        </header>
+        <ol class="changes-list">
+            {{#each data.changes as |change i|}}
+            {{!-- "this" is now an element in the changes array of the effect --}}
+            <li class="effect-change flexrow">
+                <div class="key" data-index="{{i}}">
+                    <span class="form-fields effect-key-category" data-index="{{i}}">
+                        <select name="flags.cyberpunk-red-core.changes.{{i}}" data-dtype="String">
+                            {{#select (lookup ../data.flags.cyberpunk-red-core.changes i)}}
+                                {{#each (cprFindConfigObj "activeEffectKeys" ) as |effectCategory ec|}}
+                                {{!-- Dynamically create the various effect keys. Added here to pass language pipeline:
+                                    CPR.effectSheet.keyCategory.combat
+                                    CPR.effectSheet.keyCategory.netrun
+                                    CPR.effectSheet.keyCategory.role
+                                    CPR.effectSheet.keyCategory.skill
+                                    CPR.effectSheet.keyCategory.stat
+                                --}}
+                                    <option value="{{ec}}">{{localize (cprObjConcat "CPR.effectSheet.keyCategory." ec)}}</option>
+                                {{/each}}
+                                <option value="custom">{{localize "CPR.effectSheet.keyCategory.custom"}}</option>
+                            {{/select}}
+                        </select>
+                    </span>
+                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "custom")}}
+                        <input type="text" name="changes.{{i}}.key" value="{{change.key}}"/>
+                    {{/if}}
+                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "skill")}}
+                        <select name="changes.{{i}}.key" data-dtype="String">
+                            {{#select change.key}}
+                                    {{#each (cprGetSkillsForEffects ../this) as |modkeyname modkey|}}
+                                        <option value="{{modkey}}">{{localize modkeyname}}</option>
+                                    {{/each}}
+                                {{/select}}
+                            </select>
+                    {{/if}}
+                    {{#if (cprListContains "combat,netrun,role,stat" (lookup ../data.flags.cyberpunk-red-core.changes i))}}
+                        <select name="changes.{{i}}.key" data-dtype="String">
+                            {{#select change.key}}
+                                {{#each (cprFindConfigValue "activeEffectKeys" (lookup ../data.flags.cyberpunk-red-core.changes i)) as |modkeyname modkey|}}
+                                    <option value="{{modkey}}">{{localize modkeyname}}</option>
+                                {{/each}}
+                            {{/select}}
+                        </select>
+                    {{/if}}
+                </div>
+                <div class="value">
+                    <input type="text" name="changes.{{i}}.value" value="{{change.value}}"/>
+                </div>
+                <div class="mode">
+                    {{!-- Using other modes for skills means we need to make changes to actor.bonuses. Rather than 0 all values out, it
+                                needs to persist the existing value, and the mode so the math applies correctly. This has implications
+                                on how to present in the actor sheet too. --}}
+                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "stat")}}
+                        <select name="changes.{{i}}.mode" data-dtype="Number">
+                            {{#select change.mode}}
+                                {{#each (cprFindConfigObj "effectModifierModes") as |modename modenum|}}
+                                    <option value="{{modenum}}">{{localize modename}}</option>
+                                {{/each}}
+                            {{/select}}
+                        </select>
+                    {{else}}
+                        <input type="hidden" name="changes.{{i}}.mode" data-dtype="Number" value="2">
+                        <span>{{localize "CPR.effectSheet.modifiers.addSubtract"}}</option>
+                    {{/if}}
+                </div>
+                <div class="effect-controls">
+                    {{!-- Deleting a change is possible, but the changes Flag on the actor should be a map rather than an array.
+                          Being an array creats a problem when a change in the middle of the list is deleted.
+                           <a class="effect-change-control" data-action="delete" data-index={{i}}><i class="fas fa-trash"></i></a>  --}}
+                    {{#unless (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "stat")}}
+                        <i class="fas fa-question-circle" title="{{localize "CPR.effectSheet.info.deleteAndModesComing"}}"></i>
+                    {{/unless}}
+                </div>
+            </li>
+            {{/each}}
+        </ol>
+    </section>
+
+    <footer class="sheet-footer">
+        <button type="submit"><i class="fas fa-save"></i> {{localize submitText}}</button>
+    </footer>
+</form>
+{{cprTrace "END CPR-ACTIVE-EFFECT-SHEET.HBS"}}

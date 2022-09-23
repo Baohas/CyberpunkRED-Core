@@ -1,0 +1,46 @@
+{{cprTrace "START DIALOG CPR-INSTALL-CYBERWARE-PROMPT.HBS"}}
+<form id="installCyberware">
+    {{!-- Select HL --}}
+
+    <div style="text-align:center;">
+        {{localize "CPR.dialog.installCyberware.cyberwareHumanityLoss"}}<br><br>
+    </div>
+
+    <ol class="items-list">
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.dialog.installCyberware.humanityLoss"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <select name="humanityLoss">
+                    <option selected value="{{item.system.humanityLoss.roll}}">{{localize "CPR.rolls.roll"}}: {{item.system.humanityLoss.roll}}
+                    </option>
+                    <option value="{{item.system.humanityLoss.static}}">{{localize "CPR.dialog.installCyberware.static"}}: {{item.system.humanityLoss.static}}</option>
+                    <option value="None">{{localize "CPR.dialog.installCyberware.none"}}</option>
+                </select>
+            </div>
+        </li>
+        {{#unless item.system.isFoundational}}
+            {{#if (cprListContains "fashionware,cyberwareInternal,cyberwareExternal" item.type)}}
+                {{#each foundationalCyberware as |cyberware c|}}
+                <input type="hidden" name="foundationalId" value="{{cyberware._id}}">
+                {{/each}}
+            {{else}}
+                <li class="item flexrow">
+                    <div class="item flexrow setting-name text-nowrap">
+                        {{localize "CPR.global.generic.foundational"}} {{localize "CPR.global.itemTypes.cyberware"}}:
+                    </div>
+                    <div class="item flexrow setting-value text-nowrap item-end">
+                        <select name="foundationalId">
+                            {{!-- ONLY DISPLAY CYBERWARE OF SAME TYPE AS OPTIONAL --}}
+                            {{#each foundationalCyberware as |cyberware c|}}
+                            <option value="{{cyberware._id}}">{{cyberware.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </li>
+            {{/if}}
+        {{/unless}}
+    </ol>
+</form>
+{{cprTrace "END CPR-INSTALL-CYBERWARE-PROMPT.HBS"}}

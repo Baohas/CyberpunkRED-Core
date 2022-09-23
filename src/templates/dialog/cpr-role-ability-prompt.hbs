@@ -1,0 +1,93 @@
+{{cprTrace "START DIALOG CPR-ROLE-ABILITY-PROMPT.HBS"}}
+<form>
+  <ol class="items-list">
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.dialog.createEditRoleAbility.roleAbilityName"}}</span>
+      </div>
+      <div class="item flexrow setting-value text-nowrap item-end">
+        <input class="text-right" name="name" type="text" value="{{name}}" />
+      </div>
+    </li>
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.dialog.createEditRoleAbility.roleAbilityRank"}}</span>
+      </div>
+      <div class="item flexrow setting-value text-nowrap item-end">
+        <input class="text-right" name="rank" type="number" value={{rank}} />
+      </div>
+    </li>
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.dialog.createEditRoleAbility.multiplier"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <select name="multiplier">
+          {{#select multiplier}}
+            <option value = "--">{{localize "CPR.global.generic.notApplicable"}}</option>
+            {{#each multiplierOptions}}
+              <option value="{{.}}">{{.}}</option>
+            {{/each}}
+          {{/select}}
+        </select>
+      </div>
+    </li>
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.global.generic.stat"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <select name="stat">
+          {{#select stat}}
+          <optgroup label = "{{localize "CPR.dialog.createEditRoleAbility.specialOptions"}}">
+            {{#each (cprFindConfigObj "roleSpecialOptions") as |option o|}}
+            {{#if (cprCompare o "!==" "varying")}}
+              <option value="{{o}}">{{localize option}}</option>
+            {{/if}}
+            {{/each}}
+          </optgroup>
+          <optgroup label = "{{localize "CPR.dialog.createEditRoleAbility.statList"}}">
+            {{#each (cprFindConfigObj "statList") as |stat s|}}
+              <option value="{{s}}">{{localize stat}}</option>
+            {{/each}}
+          </optgroup>
+          {{/select}}
+        </select>
+      </div>
+    </li>
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.dialog.createEditRoleAbility.skill"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <select name="skill">
+          {{#select skill}}
+          <optgroup label = "{{localize "CPR.dialog.createEditRoleAbility.specialOptions"}}">
+            {{#each (cprFindConfigObj "roleSpecialOptions") as |option o|}}
+              <option value="{{o}}">{{localize option}}</option>
+            {{/each}}
+          </optgroup>
+          <optgroup label = "{{localize "CPR.dialog.createEditRoleAbility.skillList"}}">
+            {{#each (cprSort skillOptions "name") as |option o|}}
+              <option value="{{option.name}}">{{option.name}}</option>
+            {{/each}}
+          </optgroup>
+          {{/select}}
+        </select>
+      </div>
+    </li>
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.dialog.createEditRoleAbility.hasRoll"}}</span>
+      </div>
+      <div class="item flexrow setting-value text-nowrap item-end">
+        {{#if hasRoll}}
+          <input class="text-right" name="hasRoll" type="checkbox" value = "{{hasRoll}}" checked/>
+        {{else}}
+          <input class="text-right" name="hasRoll" type="checkbox" value = "{{hasRoll}}"/>
+        {{/if}}
+      </div>
+    </li>
+  </ol>
+</form>
+{{cprTrace "END CPR-ROLE-ABILITY-PROMPT.HBS"}}

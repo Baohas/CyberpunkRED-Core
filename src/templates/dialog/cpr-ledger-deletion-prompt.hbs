@@ -1,0 +1,11 @@
+{{cprTrace "START DIALOG CPR-LEDGER-DELETION-PROMPT.HBS"}}
+{{cprTrace this}}
+<div class="">
+  <div class="text-bold">{{localize "CPR.dialog.ledgerDeletion.statement"}}</div>
+  <div><span class="text-bold">{{localize "CPR.dialog.ledgerForm.transaction"}}:</span> {{this.transaction}}</div>
+  <div><span class="text-bold">{{localize "CPR.dialog.ledgerForm.reason"}}:</span> {{this.reason}}</div>
+  <br>
+  <div class="text-bold">{{localize "CPR.dialog.ledgerDeletion.questionValue"}}</div>
+  <div><span class="text-bold">{{localize "CPR.dialog.ledgerDeletion.valueDetected"}}</span> {{this.value}}</div>
+</div>
+{{cprTrace "END CPR-LEDGER-DELETION-PROMPT.HBS"}}

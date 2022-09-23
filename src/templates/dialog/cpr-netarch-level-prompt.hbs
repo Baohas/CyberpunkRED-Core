@@ -1,0 +1,73 @@
+{{cprTrace "START DIALOG CPR-NETARCH-LEVEL-PROMPT.HBS"}}
+<form>
+  <ol class="items-list">
+    <li class="item flexrow">
+        <div class="item flexrow setting-name">
+          <span class="text-bold text-nowrap">{{localize "CPR.dialog.netArchitectureNewFloor.floor"}}</span>
+        </div>
+        <div class="item flexrow setting-value">
+          <select name="floor">
+            {{#select floor}}
+            {{#each floornumbers}}
+            <option value="{{.}}">{{.}}</option>
+            {{/each}}
+            {{/select}}
+          </select>
+          <select name="branch">
+            {{#select branch}}
+            {{#each branchlabels}}
+            <option value="{{.}}">{{.}}</option>
+            {{/each}}
+            {{/select}}
+          </select>
+        </div>
+    </li>
+    <li class="item flexrow">
+        <div class="item flexrow setting-name">
+          <span class="text-bold text-nowrap">{{localize "CPR.dialog.netArchitectureNewFloor.contentType"}}</span>
+        </div>
+        <div class="item flexrow setting-value">
+          <select name="content">
+            {{#select content}}
+            {{#each contentoptions}}
+            <option value="{{@key}}">{{.}}</option>
+            {{/each}}
+            {{/select}}
+          </select>
+        </div>
+    </li>
+    <li class="item flexrow">
+        <div class="item flexrow setting-name">
+          <span class="text-bold text-nowrap">{{localize "CPR.netArchitecture.floor.dv"}}</span>
+        </div>
+        <div class="item flexrow setting-value">
+          <select name="dv">
+            {{#select dv}}
+            {{#each dvoptions}}
+            <option value="{{.}}">{{.}}</option>
+            {{/each}}
+            {{/select}}
+          </select>
+        </div>
+    </li>
+    <li class="item flexrow">
+        <div class="item flexrow setting-name">
+          <span class="text-bold text-nowrap">{{localize "CPR.dialog.netArchitectureNewFloor.blackIceType"}}</span>
+        </div>
+        <div class="item flexrow setting-value">
+          <select name="blackice">
+            {{#select blackice}}
+            {{#each blackiceoptions}}
+            <option value="{{@key}}">{{.}}</option>
+            {{/each}}
+            {{/select}}
+          </select>
+        </div>
+    </li>
+  </ol>
+  <div class="">
+    <div class="text-bold">{{localize "CPR.global.generic.description"}}</div>
+    <textarea class="" name="description">{{description}}</textarea>
+  </div>
+</form>
+{{cprTrace "END CPR-NETARCH-LEVEL-PROMPT.HBS"}}

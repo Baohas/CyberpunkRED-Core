@@ -1,0 +1,32 @@
+{{cprTrace "START DIALOG CPR-CONTAINER-CONFIGURE-SELL-TO-PROMPT.HBS"}}
+<form>
+  <ol class="items-list">
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap text-space-around">{{localize "CPR.dialog.container.vendor.itemType"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+       <span class="text-bold text-nowrap">{{localize "CPR.dialog.container.vendor.buyType"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <span class="text-bold text-nowrap text-space-around">{{localize "CPR.dialog.container.vendor.typePercentage"}}</span>
+      </div>
+    </li>
+    {{#each itemTypes as |type|}}
+    <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize (cprFindConfigValue "objectTypes" type)}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        <input type="checkbox" name="buying" value="{{type}}" {{#if (cprGetProp (cprGetProp ../currentConfig.itemTypes type) "isPurchasing")}}checked{{/if}}>
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        <input class="" name="pct-{{type}}" type="number" value={{cprGetProp (cprGetProp ../currentConfig.itemTypes type) "purchasePercentage"}} />
+      </div>
+    </li>
+    {{/each}}
+  </ol>
+  <br>
+  <div>{{localize "CPR.dialog.container.vendor.configureDescription"}}</div>
+</form>
+{{cprTrace "END CPR-CONTAINER-CONFIGURE-SELL-TO-PROMPT.HBS"}}

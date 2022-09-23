@@ -1,0 +1,9 @@
+{{cprTrace "START ACTOR PARTS COMMON ACTIONS CPR-RELOAD-GLYPH.HBS"}}
+{{#if (cprCompare system.magazine.ammoId "!==" "")}}
+    {{#if (cprCompare system.magazine.value "<" (cprApplyUpgrade this system.magazine.max "magazine"))}}
+        <a class="item-action" data-item-id="{{id}}" data-action="reload-ammo"><i class="fas fa-redo-alt" title="{{localize "CPR.actorSheets.commonActions.reload"}}"></i></a>
+    {{/if}}
+{{/if}}
+<a class="item-action" data-item-id="{{id}}" data-action="select-ammo"><i class="fas fa-exchange-alt" title="{{localize "CPR.actorSheets.commonActions.changeAmmo"}}"></i></a>
+{{cprTrace "END CPR-RELOAD-GLYPH.HBS"}}
+

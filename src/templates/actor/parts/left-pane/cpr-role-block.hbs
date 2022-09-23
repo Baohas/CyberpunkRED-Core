@@ -1,0 +1,15 @@
+{{cprTrace "START ACTOR PARTS LEFT-PANE CPR-ROLE-BLOCK.HBS"}}
+<div class="role-block main-block">
+  <div class="block-label" >
+    <a class="select-roles" title="{{localize "CPR.characterSheet.leftPane.editActiveRole"}}" data-item-prop="select-roles">{{localize "CPR.characterSheet.leftPane.roles"}}<i
+        class="text-smallest text-super fas fa-wrench"></i></a>
+  </div>
+  <div class="block-data">
+    {{#if actor.system.roleInfo.activeRole}}
+      {{actor.system.roleInfo.activeRole}}
+    {{else}}
+      --
+    {{/if}}
+  </div>
+</div>
+{{cprTrace "END CPR-ROLE-BLOCK.HBS"}}

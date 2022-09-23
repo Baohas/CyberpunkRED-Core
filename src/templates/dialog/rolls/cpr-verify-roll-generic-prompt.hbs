@@ -1,0 +1,65 @@
+{{cprTrace "START DIALOG ROLLS CPR-VERIFY-ROLL-GENERIC-PROMPT.HBS"}}
+<form>
+
+
+    <ol class="items-list">
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.roll"}} {{localize "CPR.global.generic.title"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="rollTitle" class="" type="text" data-dtype="String" value={{rollTitle}}>
+            </div>
+        </li>
+
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.roll"}} {{localize "CPR.global.generic.type"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="rollType" class="" type="text" data-dtype="String" value={{rollType}}>
+            </div>
+        </li>
+
+
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.global.generic.stat"}} {{localize "CPR.global.generic.value"}} ({{localize stat}}):
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="statValue" class="" type="number" data-dtype="Number" value={{statValue}}>
+            </div>
+        </li>
+
+
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.global.itemTypes.skill"}} {{localize "CPR.global.generic.value"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="skillValue" class="" type="number" data-dtype="Number" value={{skillValue}}>
+            </div>
+        </li>
+
+
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.mods"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="mods" class="" type="text" data-dtype="String" value={{mods}}>
+            </div>
+        </li>
+
+
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.shouldRollCriticals"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="calculateCritical" class="" type="checkbox" data-dtype="Checkbox" checked>
+            </div>
+        </li>
+    </ol>
+</form>
+{{cprTrace "END CPR-VERIFY-ROLL-GENERIC-PROMPT.HBS"}}

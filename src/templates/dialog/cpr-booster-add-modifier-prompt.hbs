@@ -1,0 +1,22 @@
+{{cprTrace "START DIALOG CPR-BOOSTER-ADD-MODIFIER-PROMPT.HBS"}}
+<form>
+  <div>
+    <ol class="items-list">
+      <li class="item flexrow">
+        <div class="item flexrow">
+          <select name="boosterType">
+            <option value="speed">{{localize "CPR.global.generic.speed"}}</option>
+            {{#each (cprFindConfigObj "interfaceAbilities") as |intAbility ia|}}
+              <option value="{{ia}}">{{localize intAbility}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="item flexrow">
+          <input class="text-right" name="modifierValue" type="number" value=0 placeholder=0 />
+        </div>
+      </li>
+    </ol>
+  </div>
+</form>
+{{cprTrace "END CPR-BOOSTER-ADD-MODIFIER-PROMPT.HBS"}}
+
