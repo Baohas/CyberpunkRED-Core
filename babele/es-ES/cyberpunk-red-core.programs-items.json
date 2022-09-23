@@ -7,7 +7,7 @@
 		},
 		"Banhammer": {
 			"name": "Banhammer",
-			"description": "<p>Inflige 3d6 REZ a programas no-Black ICE o 2d6 de daño a Black ICE. </p>"
+			"description": "<p>Inflige 3d6 REZ a programas no-Hielo Negro o 2d6 de daño a Hielo Negro. </p>"
 		},
 		"DeckKRASH": {
 			"name": "DeckKRASH",
@@ -19,7 +19,7 @@
 		},
 		"Flak": {
 			"name": "Flak",
-			"description": "<p>Los ataques de programas no-Black ICE contra ti se reducen a 0 mientras esta rezzado. Sólo 1 copia puede ser rezzada a la vez. Cada copia tiene 1 uso por Netrun.</p>"
+			"description": "<p>Los ataques de programas no-Hielo Negro contra ti se reducen a 0 mientras esta rezzado. Sólo 1 copia puede ser rezzada a la vez. Cada copia tiene 1 uso por Netrun.</p>"
 		},
 		"Hellbolt": {
 			"name": "Hellbolt",
@@ -27,11 +27,11 @@
 		},
 		"Nervescrub": {
 			"name": "Nervescrub",
-			"description": "<p>Reduce el REF INT y DEX de un Netrunner por 1d6 (min. 1) durante 1 hora.</p>"
+			"description": "<p>Reduce el REF INT y DES de un Netrunner por 1d6 (min. 1) durante 1 hora.</p>"
 		},
 		"Poison Flatline": {
 			"name": "Latine Venenoso",
-			"description": "<p>Destruye un programa no-Black ICE en la ciberdeck del enemigo al azar.</p>"
+			"description": "<p>Destruye un programa no-Hielo Negro en la Cyberterminal del enemigo al azar.</p>"
 		},
 		"See Ya": {
 			"name": "¡Nos vemos!",
@@ -39,10 +39,10 @@
 		},
 		"Shield": {
 			"name": "Escudo",
-			"description": "<p>Se detiene el primer ataque de daño cerebral realizado por un programa no-Black ICE. Solo 1 copia puede ser rezzada a la vez. Cada copia tiene 1 uso por Netrun.</p>"
+			"description": "<p>Se detiene el primer daño cerebral realizado por un programa no-Hielo Negro. Solo 1 copia puede ser rezzada a la vez. Cada copia tiene 1 uso por Netrun.</p>"
 		},
 		"Speedy Gonzalvez": {
-			"name": "Speedy González",
+			"name": "Speedy Gonzalvez",
 			"description": "<p>+2 a la velocidad mientras está Rezzado.</p>"
 		},
 		"Superglue": {
@@ -51,7 +51,7 @@
 		},
 		"Sword": {
 			"name": "Espada",
-			"description": "<p>Inflige 3d6 REZ a programas Black ICE o 2d6 de daño a no-Black ICE. </p>"
+			"description": "<p>Inflige 3d6 REZ a programas Hielo Negro o 2d6 de daño a no-Hielo Negro. </p>"
 		},
 		"Vrizzbolt": {
 			"name": "Vrizzbolt",

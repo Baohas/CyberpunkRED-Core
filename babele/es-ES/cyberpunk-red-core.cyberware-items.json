@@ -74,8 +74,8 @@
 			"description": "<p>Interfaz base para mejoras de audio.</p>"
 		},
 		"Cyberdeck (Hardwired)": {
-			"name": "Cyberdeck (Hardwired)",
-			"description": "<p>Un ciberdeck integrado. Siempre disponible. </p>"
+			"name": "Cyberterminal (Cableado)",
+			"description": "<p>Un Cyberterminal integrado. Siempre disponible. </p>"
 		},
 		"Cybereye": {
 			"name": "Cyberóptico",
@@ -111,7 +111,7 @@
 		},
 		"Grafted Muscle and Bone Lace": {
 			"name": "Implante de Hueso y Músculo",
-			"description": "<p>Aumenta el BODY en 2 (y estadísticas relacionadas). Acumulable. Máximo de 10 BODY.</p>"
+			"description": "<p>Aumenta el TCO en 2 (y estadísticas relacionadas). Acumulable. Máximo de 10 TCO.</p>"
 		},
 		"Grapple Hand": {
 			"name": "Mano de Escalada",
@@ -143,11 +143,11 @@
 		},
 		"Implanted Linear Frame β (Beta)": {
 			"name": "Armazón Lineal Implantado β (Beta)",
-			"description": "<p>Aumenta tu estadística BODY a 14 (ajustando tu HP, Umbral de Heridas y Salvación contra la muerte)</p>"
+			"description": "<p>Aumenta tu estadística TCO a 14 (y estadísticas relacionadas)</p>"
 		},
 		"Implanted Linear Frame ∑ (Sigma)": {
 			"name": "Armazón Lineal Implantado ∑ (Sigma)",
-			"description": "<p>Aumenta tu estadística BODY a 12 (ajustando tu HP, Umbral de Heridas y Salvación contra la muerte)</p>"
+			"description": "<p>Aumenta tu estadística TCO a 12 (y estadísticas relacionadas)</p>"
 		},
 		"Independent Air Supply": {
 			"name": "Suministro de Aire Independiente",
@@ -378,7 +378,7 @@
 			"description": "<p>Proporciona un +1 a los disparos apuntados.</p>"
 		},
 		"Techhair": {
-			"name": "Technopelo",
+			"name": "Tecnopelo",
 			"description": "<p>+2 Aseo Personal si se combina con Piel Química. Permite cambiar el color del cabello.</p>"
 		},
 		"Techscanner": {

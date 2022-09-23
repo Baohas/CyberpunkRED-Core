@@ -11,7 +11,7 @@
 		},
 		"Backup Drive": {
 			"name": "Copia de seguridad",
-			"description": "<p>Guarda programas no Black ICE cuando se destruyen. Estos programas pueden ser reinstalados por un Netrunner como una acción de carne.&nbsp;</p>"
+			"description": "<p>Guarda programas no Hielo Negro cuando se destruyen. Estos programas pueden ser reinstalados por un Netrunner como una acción de carne.&nbsp;</p>"
 		},
 		"Bayonet": {
 			"name": "Bayoneta",
@@ -19,7 +19,7 @@
 		},
 		"DNA Lock": {
 			"name": "Bloqueo de ADN",
-			"description": "<p>Utiliza los biométricos para bloquear el ciberdeck. Requiere verificación electrónica/técnica de seguridad DV17 para crackear.&nbsp;</p>"
+			"description": "<p>Utiliza los biométricos para bloquear el Cyberterminal. Requiere verificación electrónica/técnica de seguridad DV17 para crackear.&nbsp;</p>"
 		},
 		"Grenade Launcher Drum Magazine": {
 			"name": "Cargador de tambor de lanzagranadas",
@@ -35,7 +35,7 @@
 		},
 		"Hardened Circuitry": {
 			"name": "Circuitos Endurecidos",
-			"description": "<p>Los efectos EMP no pueden deshabilitar o destruir Cyberdeck.&nbsp;</p>"
+			"description": "<p>Los efectos EMP no pueden deshabilitar o destruir Cyberterminal.&nbsp;</p>"
 		},
 		"Heavy Pistol Drum Magazine": {
 			"name": "Cargador de Tambor de Pistola Pesada",
@@ -59,11 +59,11 @@
 		},
 		"Insulated Wiring": {
 			"name": "Cableado Aislante",
-			"description": "<p>La ropa de usuario y Cyberdeck no pueden prender fuego.&nbsp;</p>"
+			"description": "<p>La ropa de usuario y Cyberterminal no se pueden prender fuego.&nbsp;</p>"
 		},
 		"KRASH Barrier": {
 			"name": "Barrera KRASH",
-			"description": "<p>Cyberdeck es inmune a los efectos que obligan al Netrunner a salir (de forma segura o insegura)</p>"
+			"description": "<p>La Cyberterminal es inmune a los efectos que obligan al Netrunner a salir (de forma segura o insegura)</p>"
 		},
 		"Medium Pistol Drum Magazine": {
 			"name": "Cargador de Tambor de Pistola Media",
@@ -75,7 +75,7 @@
 		},
 		"Range Upgrade": {
 			"name": "Mejora de distancia",
-			"description": "<p>Cyberdeck puede conectarse a puntos de acceso hasta 8 m/yd (en lugar de 6 m/yds).</p>"
+			"description": "<p>La Cyberterminal puede conectarse a puntos de acceso hasta 8 m/yd (en lugar de 6 m/yds).</p>"
 		},
 		"Rocket Launcher Drum Magazine": {
 			"name": "Cargador de tambor de lanzacohetes",

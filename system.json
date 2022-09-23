@@ -187,6 +187,11 @@
       "path": "lang/en.json"
     },
     {
+      "lang": "de",
+      "name": "German",
+      "path": "lang/de-DE.json"
+    },
+    {
       "lang": "es",
       "name": "Spanish",
       "path": "lang/es-ES.json"
@@ -220,6 +225,6 @@
   "background" : "systems/cyberpunk-red-core/images/Header.jpg",
   "url": "https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core",
   "manifest": "https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/raw/master/system.json",
-  "download": "https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/archive/v0.82.0/fvtt-cyberpunk-red-core-v0.82.0.zip",
+  "download": "https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/archive/v0.83.0/fvtt-cyberpunk-red-core-v0.83.0.zip",
   "license": "GPL v3"
 }

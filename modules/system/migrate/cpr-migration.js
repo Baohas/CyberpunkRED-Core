@@ -148,12 +148,12 @@ export default class CPRMigration {
       try {
         return await classRef.migrateItem(item);
       } catch (err) {
-        throw new Error(`${item.name} had a migration error: ${err.message}`);
+        throw new Error(`${this.name}: ${item.name} had a migration error: ${err.message}`);
       }
     });
     const values = await Promise.allSettled(itemMigrations);
     for (const value of values.filter((v) => v.status !== "fulfilled")) {
-      LOGGER.error(`Migration error: ${value.reason.message}`);
+      LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
       LOGGER.error(value.reason.stack);
       good = false;
     }
@@ -171,12 +171,12 @@ export default class CPRMigration {
       try {
         return await this.migrateActor(actor);
       } catch (err) {
-        throw new Error(`${actor.name} had a migration error: ${err.message}`);
+        throw new Error(`${this.name}: ${actor.name} had a migration error: ${err.message}`);
       }
     });
     const values = await Promise.allSettled(actorMigrations);
     for (const value of values.filter((v) => v.status !== "fulfilled")) {
-      LOGGER.error(`Migration error: ${value.reason.message}`);
+      LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
       LOGGER.error(value.reason.stack);
       good = false;
     }
@@ -193,12 +193,12 @@ export default class CPRMigration {
       try {
         return await this.migrateScene(scene);
       } catch (err) {
-        throw new Error(`${scene.name} had a migration error: ${err.message}`);
+        throw new Error(`${this.name}: ${scene.name} had a migration error: ${err.message}`);
       }
     });
     const values = await Promise.allSettled(sceneMigrations);
     for (const value of values.filter((v) => v.status !== "fulfilled")) {
-      LOGGER.error(`Migration error: ${value.reason.message}`);
+      LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
       LOGGER.error(value.reason.stack);
       good = false;
     }
@@ -229,12 +229,12 @@ export default class CPRMigration {
       try {
         return await this.migrateActor(token.actor);
       } catch (err) {
-        throw new Error(`${token.actor.name} token had a migration error: ${err.message}`);
+        throw new Error(`${this.name}: ${token.actor.name} token had a migration error: ${err.message}`);
       }
     });
     const values = await Promise.allSettled(tokenMigrations);
     for (const value of values.filter((v) => v.status !== "fulfilled")) {
-      LOGGER.error(`Migration error: ${value.reason.message}`);
+      LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
       LOGGER.error(value.reason.stack);
     }
   }
@@ -276,7 +276,7 @@ export default class CPRMigration {
       });
       const values = await Promise.allSettled(packMigrations);
       for (const value of values.filter((v) => v.status !== "fulfilled")) {
-        LOGGER.error(`Migration error: ${value.reason.message}`);
+        LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
         LOGGER.error(value.reason.stack);
         good = false;
       }

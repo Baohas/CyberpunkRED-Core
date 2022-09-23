@@ -162,7 +162,7 @@
 			"description": "<p>Czas działania: 6h. Obsługuje maksymalnie dwa instrumenty na raz.</p>"
 		},
 		"Poor Quality Cyberdeck": {
-			"name": "Cyberdek (niskiej jakości)",
+			"name": "Cyberdek (słabej jakości)",
 			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Dek netrunnera. 5 gniazd.</span></p>"
 		},
 		"Radar Detector": {

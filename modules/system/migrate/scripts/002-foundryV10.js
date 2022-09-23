@@ -68,7 +68,7 @@ export default class FoundryV10Migration extends CPRMigration {
       if (item.system.programs.installed.length > 0) {
         const newInstalled = [];
         item.system.programs.installed.forEach((program) => {
-          const programData = duplicate(program.data);
+          const programData = (typeof program.data === "undefined") ? duplicate(program) : duplicate(program.data);
           delete program.data;
           newInstalled.push(mergeObject(program, programData));
         });
@@ -77,7 +77,7 @@ export default class FoundryV10Migration extends CPRMigration {
       if (item.system.programs.rezzed.length > 0) {
         const newRezzed = [];
         item.system.programs.rezzed.forEach((program) => {
-          const programData = duplicate(program.data);
+          const programData = (typeof program.data === "undefined") ? duplicate(program) : duplicate(program.data);
           delete program.data;
           newRezzed.push(mergeObject(program, programData));
         });

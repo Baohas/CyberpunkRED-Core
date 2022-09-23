@@ -2,7 +2,7 @@
 	"label": "Amunicja",
 	"entries": {
 		"Armor Piercing Arrow": {
-			"name": "Przebijająca strzała",
+			"name": "Przebijająca Strzała",
 			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
 		},
 		"Armor Piercing Grenade": {
@@ -10,27 +10,27 @@
 			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
 		},
 		"Armor Piercing Heavy Pistol": {
-			"name": "Pistoletowa Ciężka Przeciwpancerna",
+			"name": "Pistoletowa Ciężka PPanc.",
 			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
 		},
 		"Armor Piercing Medium Pistol": {
-			"name": "Średnia Pistoletowa Przeciwpancerna",
+			"name": "Średnia Pistoletowa PPanc.",
 			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
 		},
 		"Armor Piercing Rifle": {
-			"name": "Karabinowa Przeciwpancerna",
+			"name": "Karabinowa PPanc.",
 			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
 		},
 		"Armor Piercing Rocket": {
-			"name": "Rakieta Przeciwpancerna",
+			"name": "Rakieta PPanc.",
 			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
 		},
 		"Armor Piercing Shotgun Slug": {
-			"name": "Breneka Przeciwpancerna",
+			"name": "Breneka PPanc.",
 			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
 		},
 		"Armor Piercing Very Heavy Pistol": {
-			"name": "Pistoletowa B. Ciężka Przeciwpancerna",
+			"name": "Pistoletowa B. Ciężka PPanc.",
 			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
 		},
 		"Basic Arrow": {
@@ -66,11 +66,11 @@
 			"description": "<p>Ładowalny (1 godzina) pakiet baterii, powszechnie używany z egzotyczną bronią. Pozwala na 8 strzełów i może być ponownie naładowany.&nbsp;</p>"
 		},
 		"Biotoxin Arrow": {
-			"name": "Strzała biotoksynowa",
+			"name": "Strzała Biotoksynowa",
 			"description": "<p>Brak natychmiastowych obrażeń. Przy trafieniu cel rzuca PT15 Odporność na tortury/narkotyki. Przy niepowodzeniu 3k6 obrażeń do PW. Bez uszkodzenia pancerza.</p>"
 		},
 		"Biotoxin Grenade": {
-			"name": "Granat biotoksynowy",
+			"name": "Granat Biotoksynowy",
 			"description": "<p>Brak natychmiastowych obrażeń. Przy trafieniu cel rzuca PT15 Odporność na tortury/narkotyki. Przy niepowodzeniu 3k6 obrażeń do PW. Bez uszkodzenia pancerza.</p>"
 		},
 		"EMP Grenade": {
@@ -78,31 +78,31 @@
 			"description": "<p>Przy trafieniu cel rzuca PT15 na Cyberinżynierię. Przy porażce, 2 elementy cyborgizacji lub niesionych urządzeń elektronicznych (wybór MG) przestają działać na 1 minutę. Cyberkończyny luźno wiszą podobnie do odciętych mięsnych kończyn (s. 187).</p>"
 		},
 		"Expansive Arrow": {
-			"name": "Strzała dum-dum",
+			"name": "Strzała Dum-Dum",
 			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
 		},
 		"Expansive Heavy Pistol": {
-			"name": "Pistoletowa ciężka dum-dum",
+			"name": "Pistoletowa Ciężka Dum-Dum",
 			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
 		},
 		"Expansive Medium Pistol": {
-			"name": "Pistoletowa średnia dum-dum",
+			"name": "Pistoletowa Średnia Dum-Dum",
 			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
 		},
 		"Expansive Rifle": {
-			"name": "Karabinowa dum-dum",
+			"name": "Karabinowa Dum-Dum",
 			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
 		},
 		"Expansive Shotgun Slug": {
-			"name": "Breneka dum-dum",
+			"name": "Breneka Dum-Dum",
 			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
 		},
 		"Expansive Very Heavy Pistol": {
-			"name": "Pistoletowa b. ciężka dum-dum",
+			"name": "Pistoletowa B. Ciężka Dum-Dum",
 			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
 		},
 		"Flashbang Grenade": {
-			"name": "Granat hukbłyskowy",
+			"name": "Granat Hukbłyskowy",
 			"description": "<p>Nie zadaje obrażeń. Przy trafieniu cel rzuca PT15 na Odporność na tortury/narkotyki. Przy porażce, cel otrzymuje rany krytyczne Zranione Oko oraz Zranione Ucho (s. 188) na 1 minutę. Nie zadaje obrażeń krytycznych.</p>"
 		},
 		"Incendiary Arrow": {
@@ -178,31 +178,31 @@
 			"description": "<p>Nie zadaje obrażeń. Przy trafieniu biologiczny cel rzuca PT13 Odporność na tortury/narkotyki. Jeśli niezdany, cel zostaje przewrócony (s. 169) i jest nieprzytomny przez 1 minutę. Może zostać obudzony poprzez otrzymanie obrażeń lub inną osobę używającej akcji aby dotknąć/potrząsnąć celem.</p>"
 		},
 		"Smart Arrow": {
-			"name": "Strzała inteligentna",
+			"name": "Strzała Inteligentna",
 			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
 		},
 		"Smart Heavy Pistol": {
-			"name": "Pistoletowa ciężka inteligentna",
+			"name": "Pistoletowa Ciężka Inteligentna",
 			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
 		},
 		"Smart Medium Pistol": {
-			"name": "Pistoletowa średnia inteligentna",
+			"name": "Pistoletowa Średnia Inteligentna",
 			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
 		},
 		"Smart Rifle": {
-			"name": "Karabinowa inteligentna",
+			"name": "Karabinowa Inteligentna",
 			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
 		},
 		"Smart Rocket": {
-			"name": "Rakieta inteligentna",
+			"name": "Rakieta Inteligentna",
 			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
 		},
 		"Smart Shotgun Slug": {
-			"name": "Breneka inteligentna",
+			"name": "Breneka Inteligentna",
 			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
 		},
 		"Smart Very Heavy Pistol": {
-			"name": "Pistoletowa b. ciężka inteligentna",
+			"name": "Pistoletowa B. Ciężka Inteligentna",
 			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
 		},
 		"Smoke Grenade": {

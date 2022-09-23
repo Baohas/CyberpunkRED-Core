@@ -7,7 +7,7 @@
 		},
 		"Broken Leg": {
 			"name": "Pierna Rota",
-			"description": "<p>-4 MOVE.</p>"
+			"description": "<p>-4 MOV.</p>"
 		},
 		"Broken Ribs": {
 			"name": "Costillas Rotas",
@@ -15,7 +15,7 @@
 		},
 		"Collapsed Lung": {
 			"name": "Pulmón Colapsado",
-			"description": "<p>-2 MOVE.</p>"
+			"description": "<p>-2 MOV.</p>"
 		},
 		"Crushed Fingers": {
 			"name": "Dedos Triturados",
@@ -31,7 +31,7 @@
 		},
 		"Dismembered Leg": {
 			"name": "Pierna Desmembrada",
-			"description": "<p>Pierna eliminada. -6 Movimiento. No se puede esquivar.</p>"
+			"description": "<p>Pierna eliminada. -6 MOV. No se puede esquivar.</p>"
 		},
 		"Foreign Object": {
 			"name": "Objeto Extraño",

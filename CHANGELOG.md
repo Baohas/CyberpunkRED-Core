@@ -1,4 +1,15 @@
-# Version DEV | Date: WIP
+# Version 0.83.0 | Date: WIP
+
+**New Features**
+- 
+
+**Changes**
+-
+
+**Bug Fixes**
+-
+
+# Version 0.82.0 | Date: 2022-09-22
 
 **New Features**
 - Foundry V10 Compatibility
@@ -15,9 +26,10 @@
 - Replaced all instances of filteredItems with actor.itemTypes (native to Foundry). This addressed an issue causing very slow loading times of the resources tab in the token configuration dialog.
 - Removed the need for installedPrograms data to be stored on the actor which was noticed during the filteredItems cleanup.
 - #490 - Vehicles still using v10 data/system shim.
+- #486 - Autofire Skill correctly used when autofire toggle applied in fight tab
 
 
-**Maintenance items**
+**Maintenance Releases**
 
 # Version 0.81.5 (Hotfix) | Date: 2022-09-20
 #467 - Fix shield ablation arrow in Fight Tab to be functional
