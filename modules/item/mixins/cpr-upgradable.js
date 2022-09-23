@@ -14,19 +14,38 @@ const Upgradable = function Upgradable() {
    * @param {Array} upgrades - list of upgrade items to uninstall
    * @returns the updated item document after uninstallation
    */
-  this.uninstallUpgrades = function uninstallUpgrades(upgrades) {
+  this.uninstallUpgrades = async function uninstallUpgrades(upgrades) {
     LOGGER.trace("uninstallUpgrades | Upgradable | Called.");
-    const installedItems = duplicate(this.system.installedItems);
-    let installedUpgrades = this.system.upgrades;
 
+    const actor = (this.isOwned) ? this.actor : false;
+
+    if (!actor) {
+      return Promise.reject(new Error("Can not install upgrades in unowned objects."));
+    }
+
+    let installedUpgrades = JSON.parse(JSON.stringify(this.system.upgrades));
     const updateList = [];
+
+    for (const upgrade of this.system.upgrades) {
+      installedUpgrades = installedUpgrades.filter((installed) => installed.uuid !== upgrade.uuid);
+    }
+    const upgradeStatus = (installedUpgrades.length > 0);
+    updateList.push({
+      _id: this.id,
+      "system.isUpgraded": upgradeStatus,
+      "system.upgrades": installedUpgrades,
+    });
+
+    const installedItems = duplicate(this.system.installedItems);
+
+
     upgrades.forEach((u) => {
       installedUpgrades = installedUpgrades.filter((iUpgrade) => iUpgrade.uuid !== u.uuid);
       installedItems.list = installedItems.list.filter((uuid) => u.uuid !== uuid);
       installedItems.usedSlots -= u.system.size;
       updateList.push({ _id: u.id, "system.isInstalled": false, "system.installedIn": "" });
     });
-    const upgradeStatus = (installedUpgrades.length > 0);
+
     // Need to set this so it can be used further in this function.
     this.system.upgrades = installedUpgrades;
     updateList.push({
@@ -82,56 +101,61 @@ const Upgradable = function Upgradable() {
    */
   this.installUpgrades = async function installUpgrades(upgrades) {
     LOGGER.trace("installUpgrades | Upgradable | Called.");
-    if (typeof this.system.isUpgraded === "boolean") {
-      const installedItems = duplicate(this.system.installedItems);
-      const installedUpgrades = duplicate(this.system.upgrades);
-      const updateList = [];
-      // Loop through the upgrades to install
-      const installableUpgrades = [];
-      upgrades.forEach((u) => {
-        // See if the upgrade is already installed, if it is, skip it
-        const alreadyInstalled = installedItems.list.filter((installedUuid) => installedUuid === u.uuid);
-        if (alreadyInstalled.length === 0 && this.canInstallItem(u)) {
-          installableUpgrades.push(u);
-          const upgradeModifiers = u.system.modifiers;
-          const modList = {};
-          // Loop through the modifiers this upgrade has on it
-          Object.keys(upgradeModifiers).forEach((index) => {
-            const modifier = upgradeModifiers[index];
-            /*
-              Before we add this modifier to the list of upgrades for this item, we need to do several checks:
-              1. Ensure the modifier is defined as the key could have been added but the value never set
-              2. Ensure the modifier is valid for this item type. As this information is stored in an
-                 object, it's possible keys may exist that are not valid if one changes the itemUpgrade type.
-              3. The next couple checks ensure we are only adding actual modifications, null, 0 or empty strings don't modify
-                 anything, so we ignore those.
-            */
-            if (typeof modifier !== "undefined" && typeof CPR.upgradableDataPoints[this.type][index] !== "undefined"
-              && modifier !== 0 && modifier !== null && modifier !== "") {
-              if (typeof modifier.value === "undefined" || modifier.value !== null) {
-                modList[index] = modifier;
-              }
-            }
-          });
-          const upgradeData = {
-            _id: u._id,
-            uuid: u.uuid,
-            name: u.name,
-            size: u.system.size,
-            system: {
-              modifiers: modList,
-            },
-          };
-          installedUpgrades.push(upgradeData);
-          // Update the upgrade Item set the isInstalled Boolean and the install setting to this item
-          updateList.push({ _id: u._id, "system.isInstalled": true, "system.installedIn": this.uuid });
-        }
-      });
-      updateList.push({ _id: this.id, "system.isUpgraded": true, "system.upgrades": installedUpgrades });
-      await this.installItems(installableUpgrades);
-      return this.actor.updateEmbeddedDocuments("Item", updateList);
+
+    const actor = (this.isOwned) ? this.actor : false;
+
+    if (!actor) {
+      return Promise.reject(new Error("Can not install upgrades in unowned objects."));
     }
-    return null;
+
+    const installedItems = duplicate(this.system.installedItems);
+
+    const installableUpgrades = [];
+    for (const upgrade of upgrades) {
+      const alreadyInstalled = installedItems.list.includes(upgrade.uuid);
+      if (!alreadyInstalled) {
+        installableUpgrades.push(upgrade);
+      }
+    }
+
+    const updateList = [];
+    if (this.canInstallItems(installableUpgrades)) {
+      const installedUpgrades = this.system.upgrades;
+      for (const upgrade of installableUpgrades) {
+        const upgradeModifiers = upgrade.system.modifiers;
+        const modList = {};
+        Object.keys(upgradeModifiers).forEach((index) => {
+          const modifier = upgradeModifiers[index];
+          /*
+            Before we add this modifier to the list of upgrades for this item, we need to do several checks:
+            1. Ensure the modifier is defined as the key could have been added but the value never set
+            2. Ensure the modifier is valid for this item type. As this information is stored in an
+               object, it's possible keys may exist that are not valid if one changes the itemUpgrade type.
+            3. The next couple checks ensure we are only adding actual modifications, null, 0 or empty strings don't modify
+               anything, so we ignore those.
+          */
+          if (typeof modifier !== "undefined" && typeof CPR.upgradableDataPoints[this.type][index] !== "undefined"
+            && modifier !== 0 && modifier !== null && modifier !== "") {
+            if (typeof modifier.value === "undefined" || modifier.value !== null) {
+              modList[index] = modifier;
+            }
+          }
+        });
+        const upgradeData = {
+          _id: upgrade._id,
+          uuid: upgrade.uuid,
+          name: upgrade.name,
+          size: upgrade.system.size,
+          system: {
+            modifiers: modList,
+          },
+        };
+        installedUpgrades.push(upgradeData);
+      }
+      updateList.push({ _id: this._id, "system.isUpgraded": true, "system.upgrades": installedUpgrades });
+    }
+    await this.installItems(installableUpgrades);
+    return actor.updateEmbeddedDocuments("Item", updateList);
   };
 
   /**

@@ -266,32 +266,22 @@ export default class CPRActor extends Actor {
 
     // For each Foundational Cyberware of the item.system.type that is installed
     // Gather a list of all of the currently installed cyberware
-    const installationTargets = [];
+    const compatibleTargetCyberware = [];
     baseCompatibleFoundationalCyberware.forEach((cyberware) => {
-      installationTargets.push(cyberware);
+      compatibleTargetCyberware.push(cyberware);
       let uuidList = cyberware.system.installedItems.list;
       while (uuidList.length > 0) {
         const loopList = uuidList;
         uuidList = [];
         for (const uuid of loopList) {
           const itemLookup = this._getOwnedItem(uuid);
-          installationTargets.push(itemLookup);
+          if (itemLookup.system.installedItems.allowed
+            && itemLookup.system.installedItems.allowedTypes.includes(item.type)
+            && itemLookup.availableInstallSlots() >= item.system.size) {
+            compatibleTargetCyberware.push(itemLookup);
+          }
           uuidList = uuidList.concat(itemLookup.system.installedItems.list);
         }
-      }
-    });
-
-    // Next we ensure each of the objects in the list can install the requested item.
-    // This will check if there's available slots and they accept this item.type as an Installable
-    const canInstallPromises = installationTargets.map(async (cyberware) => cyberware.canInstallItem(item));
-
-    const allCanInstallPromises = await Promise.allSettled(canInstallPromises);
-
-    const compatibleTargetCyberware = [];
-    // Finally if the cyberware can install item, then it is added to compatibleTargetCyberware
-    installationTargets.forEach((cyberware, index) => {
-      if (allCanInstallPromises[index].status === "fulfilled" && allCanInstallPromises[index].value) {
-        compatibleTargetCyberware.push(cyberware);
       }
     });
 
@@ -406,9 +396,32 @@ export default class CPRActor extends Actor {
     const installedItems = duplicate(this.system.installedItems);
     const updateList = [];
 
-    itemList.forEach((item) => {
+    const uninstallList = JSON.parse(JSON.stringify(itemList));
+
+    for (const item of itemList) {
       installedItems.list = installedItems.list.filter((uuid) => item.uuid !== uuid);
-      updateList.push({ _id: item.id, "system.isInstalled": false, "system.installedIn": "" });
+      let embeddedItemList = item.getInstalledItems();
+
+      while (embeddedItemList.length > 0) {
+        const embeddedItems = JSON.parse(JSON.stringify(embeddedItemList));
+        embeddedItemList = [];
+        for (const embeddedItem of embeddedItems) {
+          uninstallList.push(embeddedItem);
+          if (embeddedItem.system.installedItems.list.length > 0) {
+            embeddedItemList = embeddedItemList.concat(embeddedItem.getInstalledItems());
+          }
+        }
+      }
+    }
+
+    uninstallList.forEach((item) => {
+      updateList.push({
+        _id: item._id,
+        "system.isInstalled": false,
+        "system.installedIn": "",
+        "system.installedItems.list": [],
+        "system.installedItems.usedSlots": 0,
+      });
     });
 
     await this.update({ "system.installedItems": installedItems });

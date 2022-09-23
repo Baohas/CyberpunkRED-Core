@@ -180,7 +180,7 @@ export default class CPRItem extends Item {
 
     let totalInstallationSize = 0;
     itemList.forEach((item) => {
-      if (this.system.installedItems.allowedTypes.includes(item.type) && (item instanceof Installable)) {
+      if (this.system.installedItems.allowedTypes.includes(item.type) && (SystemUtils.getDataModelTemplates(item.type).includes("installable"))) {
         totalInstallationSize += item.system.size;
       } else {
         result = false;
@@ -244,17 +244,35 @@ export default class CPRItem extends Item {
     const installedItems = duplicate(this.system.installedItems);
     const updateList = [];
 
-    itemList.forEach((item) => {
-      if (actor !== item.actor) {
-        LOGGER.debug(`CPRItem.uninstallItems: Item "${item.name}" (${item.uuid})
-                      not owned by "${actor.name}" (${actor.uuid}) was attempted
-                      to be uninstalled from "${this.name}". (${this.uuid})`);
-        return;
-      }
+    const uninstallList = JSON.parse(JSON.stringify(itemList));
+
+    for (const item of itemList) {
       installedItems.list = installedItems.list.filter((uuid) => item.uuid !== uuid);
       installedItems.usedSlots -= item.system.size;
-      updateList.push({ _id: item.id, "system.isInstalled": false, "system.installedIn": "" });
+      let embeddedItemList = item.getInstalledItems();
+
+      while (embeddedItemList.length > 0) {
+        const embeddedItems = JSON.parse(JSON.stringify(embeddedItemList));
+        embeddedItemList = [];
+        for (const embeddedItem of embeddedItems) {
+          uninstallList.push(embeddedItem);
+          if (embeddedItem.system.installedItems.list.length > 0) {
+            embeddedItemList = embeddedItemList.concat(embeddedItem.getInstalledItems());
+          }
+        }
+      }
+    }
+
+    uninstallList.forEach((item) => {
+      updateList.push({
+        _id: item._id,
+        "system.isInstalled": false,
+        "system.installedIn": "",
+        "system.installedItems.list": [],
+        "system.installedItems.usedSlots": 0,
+      });
     });
+
     updateList.push({ _id: this.id, "system.installedItems": installedItems });
     return actor.updateEmbeddedDocuments("Item", updateList);
   }

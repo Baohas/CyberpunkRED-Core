@@ -9,7 +9,7 @@
     </span>
 </div>
 {{else}}
-  {{#unless item.system.hasOptionalSlots}}
+  {{#unless item.system.installedItems.allowed}}
     {{#if (cprCompare item.system.installedItems.slots ">" 0)}}
       <div class="item-summary-line">
         <span class="text-bold summary-name">

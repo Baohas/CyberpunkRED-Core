@@ -312,7 +312,6 @@
       },
       "upgradable": {
         "upgrades": [],
-        "slots": 3,
         "isUpgraded": false
       },
       "valuable": {
