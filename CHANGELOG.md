@@ -8,6 +8,9 @@
 
 **Bug Fixes**
 - Cyberware & Upgrade templates still had some references to .data causing the shim to fire.
+# Version 0.82.1 (Hotfix) | Date: 2022-09-??
+- Fix an issue where the mook sheet notes were not writable
+- #494 - Cyberware weapons were corrupting data points
 
 # Version 0.82.0 | Date: 2022-09-22
 
@@ -16,7 +19,7 @@
 - Spanish translation! Thank you ZRAAA78!
 
 **Changes**
--
+- Nothing worth noting
 
 **Bug Fixes**
 - #473 - Fashionware foundational item not migrated to v10
