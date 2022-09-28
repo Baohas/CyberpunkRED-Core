@@ -8,8 +8,8 @@ import CPR from "../../system/config.js";
  * @extends {CPRItem}
  */
 export default class CPRArmorItem extends CPRItem {
-  postUpgradeUninstall(installedUpgrades) {
-    LOGGER.trace("postUpgradeUninstall | CPRArmor | Called.");
+  postUninstall(installedUpgrades) {
+    LOGGER.trace("postUninstall | CPRArmor | Called.");
 
     const upgradeMap = duplicate(CPR.upgradableDataPoints.armor);
 
@@ -35,6 +35,7 @@ export default class CPRArmorItem extends CPRItem {
       }
     }
 
+    const updateList = [];
     const updateObject = {};
     for (const mod of Object.keys(upgradeMap)) {
       const itemDataPoint = (typeof upgradeMap[mod].system !== "undefined") ? upgradeMap[mod].system : false;
@@ -44,6 +45,9 @@ export default class CPRArmorItem extends CPRItem {
           ? this.system[itemDataPoint].sp : this.system[itemDataPoint].ablation;
       }
     }
-    return [updateObject];
+    if (Object.keys(updateObject).length > 0) {
+      updateList.push(updateObject);
+    }
+    return updateList;
   }
 }

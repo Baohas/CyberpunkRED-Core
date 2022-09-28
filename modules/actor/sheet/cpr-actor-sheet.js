@@ -433,16 +433,12 @@ export default class CPRActorSheet extends ActorSheet {
           item.toggleFavorite();
           break;
         }
-        case "upgrade": {
-          await item.sheet._selectItemUpgrades(event);
-          break;
-        }
-        case "remove-upgrade": {
-          await item.sheet._removeItemUpgrade(event);
+        case "manage-upgrades": {
+          await item.sheet._manageInstalledItems("itemUpgrade");
           break;
         }
         case "manage-programs": {
-          await item.sheet._manageInstalledPrograms();
+          await item.sheet._manageInstalledItems("program");
           break;
         }
         case "split": {

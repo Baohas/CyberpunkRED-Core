@@ -10,7 +10,6 @@ import NetarchRolltableGenerationPrompt from "../../dialog/cpr-netarch-rolltable
 import RoleAbilityPrompt from "../../dialog/cpr-role-ability-prompt.js";
 import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import SelectInstallItemsPrompt from "../../dialog/cpr-select-install-items-prompt.js";
-import SelectItemUpgradePrompt from "../../dialog/cpr-select-item-upgrade-prompt.js";
 import BoosterAddModifierPrompt from "../../dialog/cpr-booster-add-modifier-prompt.js";
 import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
 import ManageInstallableTypes from "../../dialog/cpr-manage-installable-types.js";
@@ -119,7 +118,7 @@ export default class CPRItemSheet extends ItemSheet {
 
     html.find(".select-subrole-bonuses").click((event) => this._selectSubroleBonuses(event));
 
-    html.find(".select-installed-programs").click(() => this._manageInstalledPrograms());
+    html.find(".select-installed-programs").click(() => this._manageInstalledItems());
 
     html.find(".program-uninstall").click((event) => this._cyberdeckProgramUninstall(event));
 
@@ -127,7 +126,7 @@ export default class CPRItemSheet extends ItemSheet {
 
     html.find(".program-del-booster-modifier").click((event) => this._delBoosterModifier(event));
 
-    html.find(".select-item-upgrades").click(() => this._selectItemUpgrades());
+    html.find(".select-item-upgrades").click(() => this._manageItemUpgrades());
 
     html.find(".remove-upgrade").click((event) => this._removeItemUpgrade(event));
 
@@ -684,12 +683,52 @@ export default class CPRItemSheet extends ItemSheet {
     return this.item.update({ "data.modifiers": this.item.system.modifiers });
   }
 
-  // Cyberdeck Code
-  async _manageInstalledPrograms() {
-    LOGGER.trace("_manageInstalledPrograms | CPRItemSheet | Called.");
-    const promptResult = this._selectInstallableItems("program");
+  async _manageInstalledItems(itemType) {
+    LOGGER.trace("_manageInstalledItems | CPRItemSheet | Called.");
+    const { item } = this;
 
-    console.log(promptResult);
+    // We only support upgraded items that are owned by an actor
+    // Get the actor that owns this item (if owned)
+
+    const actor = (item.isOwned) ? item.actor : null;
+    if (!actor || (actor.type !== "character" && actor.type !== "mook")) {
+      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.ownedItemOnlyError"));
+      return;
+    }
+
+    const promptResult = await this._selectInstallableItems(itemType);
+
+    if (Object.keys(promptResult).length === 0) {
+      return;
+    }
+
+    if (promptResult.uninstallableItems.length > 0) {
+      await item.uninstallItems(promptResult.uninstallableItems);
+      if (typeof this.item.postUninstallItems === "function") {
+        await this.item.postUninstallItems(promptResult.uninstallableItems);
+      }
+    }
+
+    if (promptResult.installableItems.length > 0) {
+      await item.installItems(promptResult.installableItems);
+      if (typeof this.item.postInstallItems === "function") {
+        await this.item.postInstallItems(promptResult.installableItems);
+      }
+    }
+
+    if (item.type === "weapon") {
+      const availableInstallSlots = item.availableInstallSlots();
+      if (availableInstallSlots < 0) {
+        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.toomanyattachments"));
+      }
+    }
+  }
+
+  async _removeItemUpgrade(event) {
+    LOGGER.trace("_removeItemUpgrade | CPRItemSheet | Called.");
+    const upgradeId = SystemUtils.GetEventDatum(event, "data-item-id");
+    const upgrade = this.actor.items.find((i) => i._id === upgradeId);
+    await this.item.uninstallUpgrades([upgrade]);
   }
 
   async _selectInstallableItems(itemType = false) {
@@ -923,44 +962,6 @@ export default class CPRItemSheet extends ItemSheet {
         this._automaticResize(); // Resize the sheet as length of settings list might have changed
       }
     }
-  }
-
-  async _selectItemUpgrades() {
-    LOGGER.trace("_selectItemUpgrades | CPRItemSheet | Called.");
-    const { item } = this;
-
-    // We only support upgraded items that are owned by an actor
-    // Get the actor that owns this item (if owned)
-
-    const actor = (item.isOwned) ? item.actor : null;
-    if (!actor || (actor.type !== "character" && actor.type !== "mook")) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.ownedItemOnlyError"));
-      return;
-    }
-
-    const promptResult = await this._selectInstallableItems("itemUpgrade");
-
-    if (promptResult.uninstallableItems.length > 0) {
-      await item.uninstallUpgrades(promptResult.uninstallableItems);
-    }
-
-    if (promptResult.installableItems.length > 0) {
-      await item.installUpgrades(promptResult.installableItems);
-    }
-
-    if (item.type === "weapon") {
-      const availableInstallSlots = item.availableInstallSlots();
-      if (availableInstallSlots < 0) {
-        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.toomanyattachments"));
-      }
-    }
-  }
-
-  async _removeItemUpgrade(event) {
-    LOGGER.trace("_removeItemUpgrade | CPRItemSheet | Called.");
-    const upgradeId = SystemUtils.GetEventDatum(event, "data-item-id");
-    const upgrade = this.actor.items.find((i) => i._id === upgradeId);
-    await this.item.uninstallUpgrades([upgrade]);
   }
 
   /**

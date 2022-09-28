@@ -17,6 +17,20 @@ export default class CPRCyberdeckItem extends CPRItem {
    * The methods below apply to the CPRItem.type = "cyberdeck"
   */
 
+  postUninstall(installedUpgrades) {
+    LOGGER.trace("postUninstall | CPRCyberdeckItem | Called.");
+    console.log(installedUpgrades);
+    console.log(this);
+    return [];
+  }
+
+  postInstall(installedUpgrades) {
+    LOGGER.trace("postInstall | CPRCyberdeckItem | Called.");
+    console.log(installedUpgrades);
+    console.log(this);
+    return [];
+  }
+
   /**
    * Returns a list of installed programs.  This is a list of ItemData as the
    * Item itself is not stored because Items can't own Items. As such, if you

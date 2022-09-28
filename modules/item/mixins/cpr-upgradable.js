@@ -13,8 +13,8 @@ const Upgradable = function Upgradable() {
    * @param {Array} upgrades - list of upgrade items to uninstall
    * @returns the updated item document after uninstallation
    */
-  this.uninstallUpgrades = async function uninstallUpgrades(upgradeList) {
-    LOGGER.trace("uninstallUpgrades | Upgradable | Called.");
+  this.postUninstallItems = async function postUninstallItems(upgradeList) {
+    LOGGER.trace("postUninstallItems | Upgradable | Called.");
 
     const actor = (this.isOwned) ? this.actor : false;
 
@@ -22,26 +22,33 @@ const Upgradable = function Upgradable() {
       return Promise.reject(new Error("Can not install upgrades in unowned objects."));
     }
 
-    let installedUpgrades = JSON.parse(JSON.stringify(this.system.upgrades));
-    const updateList = [];
+    const installedItems = duplicate(this.system.installedItems);
+    let installedUpgrades = duplicate(this.system.upgrades);
 
-    for (const upgrade of upgradeList) {
-      installedUpgrades = installedUpgrades.filter((installed) => installed.uuid !== upgrade.uuid);
+    installedItems.upgrades = [];
+    installedItems.list.forEach((uuid) => {
+      const installedItem = actor.getOwnedItem(uuid);
+      if (installedItem.type === "itemUpgrade") {
+        installedItems.upgrades.push(installedItem);
+      }
+    });
+
+    for (const upgrade of this.system.upgrades) {
+      if (installedItems.upgrades.filter((u) => u.uuid === upgrade.uuid).length === 0) {
+        installedUpgrades = installedUpgrades.filter((u) => u.uuid !== upgrade.uuid);
+      }
     }
     const upgradeStatus = (installedUpgrades.length > 0);
 
-    const uninstallResult = await this.uninstallItems(upgradeList);
-    if (uninstallResult.length !== (upgradeList.length + 1)) {
-      return Promise.reject(new Error(`Un-installation of upgrades failed. upgrades: ${upgradeList}, installResult: ${uninstallResult}`));
-    }
-
+    const updateList = [];
     let thisChange = {
       _id: this.id,
       "system.isUpgraded": upgradeStatus,
       "system.upgrades": installedUpgrades,
     };
-    if (typeof this.postUpgradeUninstall === "function") {
-      const adjustmentChanges = this.postUpgradeUninstall(installedUpgrades.filter((u) => u.type === this.type));
+
+    if (typeof this.postUninstall === "function") {
+      const adjustmentChanges = this.postUninstall(installedUpgrades.filter((u) => u.type === this.type));
       for (const change of adjustmentChanges) {
         if (change._id === this._id) {
           // eslint-disable-next-line no-await-in-loop
@@ -62,8 +69,8 @@ const Upgradable = function Upgradable() {
    * @param {Array} upgrades - the list of upgrades to install
    * @returns the updated item document after the installation
    */
-  this.installUpgrades = async function installUpgrades(upgradeList) {
-    LOGGER.trace("installUpgrades | Upgradable | Called.");
+  this.postInstallItems = async function postInstallItems(upgradeList) {
+    LOGGER.trace("postInstallItems | Upgradable | Called.");
 
     const actor = (this.isOwned) ? this.actor : false;
 
@@ -72,26 +79,25 @@ const Upgradable = function Upgradable() {
     }
 
     const installedItems = duplicate(this.system.installedItems);
-    let installedUpgrades = duplicate(this.system.upgrades);
+    const installedUpgrades = duplicate(this.system.upgrades);
+
+    installedItems.upgrades = [];
+    installedItems.list.forEach((uuid) => {
+      const installedItem = actor.getOwnedItem(uuid);
+      if (installedItem.type === "itemUpgrade" && installedUpgrades.filter((upgrade) => upgrade.uuid === uuid).length === 0) {
+        installedItems.upgrades.push(installedItem);
+      }
+    });
+
+    const upgradeStatus = (installedItems.upgrades.length > 0);
     const updateList = [];
 
-    const installableUpgrades = [];
-    for (const upgrade of upgradeList) {
-      const alreadyInstalled = installedItems.list.includes(upgrade.uuid);
-      if (!alreadyInstalled) {
-        installableUpgrades.push(upgrade);
-        installedUpgrades = installedUpgrades.filter((u) => u.uuid !== upgrade.uuid);
-      }
-    }
-
-    if (installableUpgrades.length > 0) {
-      if (this.canInstallItems(installableUpgrades)) {
-        for (const upgrade of installableUpgrades) {
-          const upgradeModifiers = upgrade.system.modifiers;
-          const modList = {};
-          Object.keys(upgradeModifiers).forEach((index) => {
-            const modifier = upgradeModifiers[index];
-            /*
+    for (const upgrade of installedItems.upgrades) {
+      const upgradeModifiers = upgrade.system.modifiers;
+      const modList = {};
+      Object.keys(upgradeModifiers).forEach((index) => {
+        const modifier = upgradeModifiers[index];
+        /*
               Before we add this modifier to the list of upgrades for this item, we need to do several checks:
               1. Ensure the modifier is defined as the key could have been added but the value never set
               2. Ensure the modifier is valid for this item type. As this information is stored in an
@@ -99,34 +105,28 @@ const Upgradable = function Upgradable() {
               3. The next couple checks ensure we are only adding actual modifications, null, 0 or empty strings don't modify
                 anything, so we ignore those.
             */
-            if (typeof modifier !== "undefined" && typeof CPR.upgradableDataPoints[this.type][index] !== "undefined"
+        if (typeof modifier !== "undefined" && typeof CPR.upgradableDataPoints[this.type][index] !== "undefined"
               && modifier !== 0 && modifier !== null && modifier !== "") {
-              if (typeof modifier.value === "undefined" || modifier.value !== null) {
-                modList[index] = modifier;
-              }
-            }
-          });
-          if (Object.keys(modList).length > 0) {
-            const upgradeData = {
-              _id: upgrade._id,
-              uuid: upgrade.uuid,
-              name: upgrade.name,
-              type: upgrade.system.type,
-              size: upgrade.system.size,
-              system: {
-                modifiers: modList,
-              },
-            };
-            installedUpgrades.push(upgradeData);
+          if (typeof modifier.value === "undefined" || modifier.value !== null) {
+            modList[index] = modifier;
           }
         }
-        const installResult = await this.installItems(installableUpgrades);
-        if (installResult.length !== (installableUpgrades.length + 1)) {
-          return Promise.reject(new Error(`Installation of upgrades failed. installableUpgrades: ${installableUpgrades}, installResult: ${installResult}`));
-        }
-        updateList.push({ _id: this._id, "system.isUpgraded": true, "system.upgrades": installedUpgrades });
+      });
+      if (Object.keys(modList).length > 0) {
+        const upgradeData = {
+          _id: upgrade._id,
+          uuid: upgrade.uuid,
+          name: upgrade.name,
+          type: upgrade.system.type,
+          size: upgrade.system.size,
+          system: {
+            modifiers: modList,
+          },
+        };
+        installedUpgrades.push(upgradeData);
       }
     }
+    updateList.push({ _id: this._id, "system.isUpgraded": upgradeStatus, "system.upgrades": installedUpgrades });
     return actor.updateEmbeddedDocuments("Item", updateList);
   };
 

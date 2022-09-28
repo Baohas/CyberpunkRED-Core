@@ -8,8 +8,8 @@ import CPR from "../../system/config.js";
  * @extends {CPRItem}
  */
 export default class CPRWeaponItem extends CPRItem {
-  postUpgradeUninstall(installedUpgrades) {
-    LOGGER.trace("postUpgradeUninstall | CPRWeapon | Called.");
+  postUninstall(installedUpgrades) {
+    LOGGER.trace("postUninstall | CPRWeapon | Called.");
     const updateList = [];
     if (this.system.isRanged) {
       const magazineData = this.system.magazine;

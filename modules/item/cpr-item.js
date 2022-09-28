@@ -201,7 +201,7 @@ export default class CPRItem extends Item {
   }
 
   async installItems(itemList) {
-    LOGGER.trace("installItems | CPRItem | Called.");
+    LOGGER.trace("_installItems | CPRItem | Called.");
     if (!Array.isArray(itemList)) {
       return Promise.reject(new Error(`CPRItem.installItems argument is not an array: ${itemList}`));
     }

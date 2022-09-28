@@ -3,7 +3,7 @@
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
-export default class InstallProgramsPrompt {
+export default class InstallItemsPrompt {
   static async RenderPrompt(data) {
     LOGGER.trace("RenderPrompt | InstallItemsPrompt | called.");
     const template = "systems/cyberpunk-red-core/templates/dialog/cpr-select-install-items-prompt.hbs";

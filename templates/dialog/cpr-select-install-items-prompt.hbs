@@ -1,6 +1,4 @@
 {{cprTrace "START DIALOG cpr-select-install-items-prompt.hbs"}}
-{{log "START DIALOG cpr-select-install-items-prompt.hbs"}}
-{{log this}}
 <form>
   {{text}}, Choomba!
   <ol class="items-list">
@@ -16,7 +14,7 @@
     {{#each this.itemsList as |item|}}
     <li class="item flexrow">
       <div class="item flexrow setting-name text-nowrap">
-        {{item.name}}
+        {{item.name}} {{#if (cprCompare item.type "===" "program")}}({{localize (cprFindConfigValue "programClassList" item.system.class)}}){{/if}}
       </div>
       <div class="item flexrow setting-value text-nowrap text-space-around">
         {{#if item.system.isInstalled}}

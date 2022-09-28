@@ -678,25 +678,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   }
 
   /**
-   * Pop up a dialog box to select what programs in the character's inventory are installed
-   * in an equipped cyberdeck. This information is saved to the cyberdeck Item.
-   *
-   * @async
-   * @callback
-   * @private
-   * @param {*} event - object capturing event data (what was clicked and where?)
-   * @returns {null}
-   */
-  async _installItem(event) {
-    LOGGER.trace("_installItem | CPRCharacterActorSheet | Called.");
-    const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
-    const installType = SystemUtils.GetEventDatum(event, "data-item-install-type");
-    const item = this.getOwnedItem(itemId);
-
-    return item.sheet._selectInstallableItems(installType);
-  }
-
-  /**
    * Called when the erase program glyph is clicked (the red folder). Removes the program from
    * the equipped cyberdeck.
    *
