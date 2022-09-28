@@ -1,0 +1,33 @@
+{{cprTrace "START DIALOG cpr-select-install-items-prompt.hbs"}}
+{{log "START DIALOG cpr-select-install-items-prompt.hbs"}}
+{{log this}}
+<form>
+  {{text}}, Choomba!
+  <ol class="items-list">
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{itemType}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <span class="text-bold text-nowrap text-align-last-end text-space-around">{{localize "CPR.dialog.common.select"}}</span>
+      </div>
+    </li>
+
+    {{#each this.itemsList as |item|}}
+    <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{item.name}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        {{#if item.system.isInstalled}}
+        <span class="text-bold text-nowrap text-align-last-end text-space-around"><input type="checkbox" name="selectedItems" value="{{item._id}}" checked></span>
+        {{else}}
+        <span class="text-bold text-nowrap text-align-last-end text-space-around"><input type="checkbox" name="selectedItems" value="{{item._id}}"></span>
+        {{/if}}
+      </div>
+    </li>
+    {{/each}}
+
+  </ol>
+</form>
+{{cprTrace "END cpr-select-install-items-prompt.hbs"}}

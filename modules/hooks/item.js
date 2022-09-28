@@ -74,7 +74,7 @@ const itemHooks = () => {
       // when a new item is created (dragged) on a mook sheet, auto install or equip it
       if (Object.values(actor.apps).some((app) => app instanceof CPRMookActorSheet) && userId === game.user._id) {
         LOGGER.debug("handling a dragged item to the mook sheet");
-        actor.handleMookDraggedItem(actor._getOwnedItem(doc.id));
+        actor.handleMookDraggedItem(actor.getOwnedItem(doc.id));
       }
     }
   });

@@ -9,7 +9,7 @@ import NetarchLevelPrompt from "../../dialog/cpr-netarch-level-prompt.js";
 import NetarchRolltableGenerationPrompt from "../../dialog/cpr-netarch-rolltable-generation-prompt.js";
 import RoleAbilityPrompt from "../../dialog/cpr-role-ability-prompt.js";
 import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
-import CyberdeckSelectProgramsPrompt from "../../dialog/cpr-select-install-programs-prompt.js";
+import SelectInstallItemsPrompt from "../../dialog/cpr-select-install-items-prompt.js";
 import SelectItemUpgradePrompt from "../../dialog/cpr-select-item-upgrade-prompt.js";
 import BoosterAddModifierPrompt from "../../dialog/cpr-booster-add-modifier-prompt.js";
 import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
@@ -119,7 +119,7 @@ export default class CPRItemSheet extends ItemSheet {
 
     html.find(".select-subrole-bonuses").click((event) => this._selectSubroleBonuses(event));
 
-    html.find(".select-installed-programs").click(() => this._cyberdeckSelectInstalledPrograms());
+    html.find(".select-installed-programs").click(() => this._manageInstalledPrograms());
 
     html.find(".program-uninstall").click((event) => this._cyberdeckProgramUninstall(event));
 
@@ -685,94 +685,82 @@ export default class CPRItemSheet extends ItemSheet {
   }
 
   // Cyberdeck Code
+  async _manageInstalledPrograms() {
+    LOGGER.trace("_manageInstalledPrograms | CPRItemSheet | Called.");
+    const promptResult = this._selectInstallableItems("program");
 
-  async _cyberdeckSelectInstalledPrograms() {
-    LOGGER.trace("_cyberdeckSelectInstalledPrograms | CPRItemSheet | Called.");
-    const cyberdeck = this.item;
-    if (cyberdeck.type !== "cyberdeck") {
-      return;
-    }
+    console.log(promptResult);
+  }
 
-    // We only support loading programs onto owned decks, so let's get the actor
-    // Get the actor that owns this cyberdeck (if owned)
-    const actor = (cyberdeck.isOwned) ? cyberdeck.actor : null;
+  async _selectInstallableItems(itemType = false) {
+    LOGGER.trace("_selectInstallableItems | CPRItemSheet | Called.");
+    const installTarget = this.item;
+
+    const actor = (installTarget.isOwned) ? installTarget.actor : null;
 
     if (!actor || (actor.type !== "character" && actor.type !== "mook")) {
       SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.ownedItemOnlyError"));
-      return;
+      return {};
     }
 
-    // Get a list of programs that are installed on this cyberdeck
-    const installedPrograms = cyberdeck.getInstalledPrograms();
+    const installedItems = itemType ? installTarget.getInstalledItems(itemType) : installTarget.getInstalledItems();
+    let uninstalledItems = actor.items.filter((item) => this.item.system.installedItems.allowedTypes.includes(item.type)
+                                                          && item.system.isInstalled === false);
+    if (itemType) {
+      uninstalledItems = (itemType === "itemUpgrade")
+        ? uninstalledItems.filter((item) => item.type === itemType && item.system.type === this.item.type)
+        : uninstalledItems.filter((item) => item.type === itemType);
+    }
+    let itemsList = installedItems.concat(uninstalledItems);
 
-    // Prepare a list of programs for the prompt to select from
-    let programList = [];
+    itemsList = itemsList.sort((a, b) => (a.name > b.name ? 1 : -1));
 
-    // Start with the list of all programs owned by the actor
-    programList = actor.itemTypes.program;
-
-    // Remove all programs that are installed somewhere other than this deck
-    this.item.system.programs.installed.forEach((programId) => {
-      const onDeck = installedPrograms.filter((p) => p._id === programId);
-      if (onDeck.length === 0) {
-        programList = programList.filter((p) => p.id !== programId);
-      }
-    });
-
-    programList = programList.sort((a, b) => (a.name > b.name ? 1 : -1));
+    const dialogItemType = (itemType) ? SystemUtils.Localize(CPR.objectTypes[itemType]) : SystemUtils.Localize("CPR.global.generic.item");
+    const dialogPromptTitle = SystemUtils.Localize(SystemUtils.Format("CPR.dialog.selectInstallableItems.title", { type: dialogItemType }));
+    const dialogPromptText = SystemUtils.Localize(SystemUtils.Format(
+      "CPR.dialog.selectInstallableItems.text",
+      {
+        type: dialogItemType,
+        target: this.item.name,
+      },
+    ));
 
     let formData = {
-      cyberdeck,
-      programList,
+      target: installTarget,
+      title: dialogPromptTitle,
+      text: dialogPromptText,
+      itemsList,
+      itemType: dialogItemType,
       returnType: "array",
     };
 
-    formData = await CyberdeckSelectProgramsPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+    formData = await SelectInstallItemsPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
-      return;
+      return {};
     }
 
-    let selectedPrograms = [];
-    let unselectedPrograms = programList;
+    const uninstallableItems = [];
 
-    let storageRequired = 0;
-
-    formData.selectedPrograms.forEach((pId) => {
-      const program = (programList.filter((p) => p._id === pId))[0];
-      storageRequired += program.system.size;
-      selectedPrograms.push(program);
-      unselectedPrograms = unselectedPrograms.filter((p) => p._id !== program._id);
+    installedItems.forEach((item) => {
+      if (!formData.selectedItems.includes(item._id)) {
+        uninstallableItems.push(item);
+      }
     });
 
-    selectedPrograms = selectedPrograms.sort((a, b) => (a.name > b.name ? 1 : -1));
-    unselectedPrograms = unselectedPrograms.sort((a, b) => (a.name > b.name ? 1 : -1));
+    const installableItems = [];
 
-    // Because the dialog could contain programs that were already installed,
-    // we need to calculate the amount of slots available on the Cyberdeck for programs
-
-    // Start with getting the total number of slot available
-    const upgradeValue = cyberdeck.getAllUpgradesFor("slots");
-    const upgradeType = cyberdeck.getUpgradeTypeFor("slots");
-
-    let cyberdeckSlots = (upgradeType === "override") ? upgradeValue : cyberdeck.system.slots + upgradeValue;
-
-    // Adjust for installed upgrades/hardware
-    cyberdeck.system.upgrades.forEach((u) => {
-      cyberdeckSlots -= u.system.size;
+    formData.selectedItems.forEach((itemId) => {
+      if (installedItems.filter((item) => item._id === itemId).length === 0) {
+        installableItems.push(actor.getOwnedItem(itemId));
+      }
     });
 
-    if (storageRequired > cyberdeckSlots) {
-      SystemUtils.DisplayMessage("warn", "CPR.messages.cyberdeckInsufficientStorage");
-    }
+    const promptResult = {
+      uninstallableItems,
+      installableItems,
+    };
 
-    cyberdeck.uninstallPrograms(unselectedPrograms);
-    cyberdeck.installPrograms(selectedPrograms);
-
-    const updateList = [{ _id: cyberdeck.id, system: cyberdeck.system }];
-    programList.forEach((program) => {
-      updateList.push({ _id: program.id, system: program.system });
-    });
-    await actor.updateEmbeddedDocuments("Item", updateList);
+    return promptResult;
   }
 
   async _cyberdeckProgramUninstall(event) {
@@ -950,38 +938,14 @@ export default class CPRItemSheet extends ItemSheet {
       return;
     }
 
-    const installedUpgrades = item.system.upgrades;
-    const ownedUpgrades = actor.itemTypes.itemUpgrade;
-    const availableUpgrades = ownedUpgrades.filter((u) => u.system.type === item.type && u.system.isInstalled === false);
-    let uninstallList = [];
-    installedUpgrades.forEach((u) => {
-      const upgradeId = u._id;
-      const upgradeItem = actor._getOwnedItem(upgradeId);
-      availableUpgrades.push(upgradeItem);
-      uninstallList.push(upgradeItem);
-    });
-    let formData = {
-      item,
-      availableUpgrades,
-    };
-    formData = await SelectItemUpgradePrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
-      return;
+    const promptResult = await this._selectInstallableItems("itemUpgrade");
+
+    if (promptResult.uninstallableItems.length > 0) {
+      await item.uninstallUpgrades(promptResult.uninstallableItems);
     }
 
-    const installList = [];
-    formData.selectedUpgradeIds.forEach((id) => {
-      const upgradeItem = actor._getOwnedItem(id);
-      installList.push(upgradeItem);
-      uninstallList = uninstallList.filter((u) => u.id !== id);
-    });
-
-    if (uninstallList.length > 0) {
-      await item.uninstallUpgrades(uninstallList);
-    }
-
-    if (installList.length > 0) {
-      await item.installUpgrades(installList);
+    if (promptResult.installableItems.length > 0) {
+      await item.installUpgrades(promptResult.installableItems);
     }
 
     if (item.type === "weapon") {
@@ -1028,14 +992,18 @@ export default class CPRItemSheet extends ItemSheet {
 
   async _manageInstallableTypes() {
     LOGGER.trace("_manageInstallableTypes | CPRItemSheet | Called.");
+    const installableTypes = this.item.system.installedItems.allowedTypes;
     let formData = {
-      installableTypes: this.item.system.installedItems.allowedTypes,
+      installableTypes,
     };
     formData = await ManageInstallableTypes.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
     const allowedTypes = formData.selectedTypes;
+    if (!allowedTypes.includes("itemUpgrade")) {
+      allowedTypes.push("itemUpgrade");
+    }
 
     await this.item.update({ "system.installedItems.allowedTypes": allowedTypes });
   }

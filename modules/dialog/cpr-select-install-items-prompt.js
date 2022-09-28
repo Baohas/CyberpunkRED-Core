@@ -5,30 +5,30 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 
 export default class InstallProgramsPrompt {
   static async RenderPrompt(data) {
-    LOGGER.trace("RenderPrompt | InstallProgramsPrompt | called.");
-    const template = "systems/cyberpunk-red-core/templates/dialog/cpr-select-install-programs-prompt.hbs";
+    LOGGER.trace("RenderPrompt | InstallItemsPrompt | called.");
+    const template = "systems/cyberpunk-red-core/templates/dialog/cpr-select-install-items-prompt.hbs";
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {
-          LOGGER.trace("_onCancel | Dialog InstallProgramsPrompt | called.");
+          LOGGER.trace("_onCancel | Dialog InstallItemsPrompt | called.");
           reject(new Error("Promise rejected: Window Closed"));
         };
         const _onConfirm = (html) => {
-          LOGGER.trace("_onConfirm | Dialog InstallProgramsPrompt | called.");
-          const programList = html.find("[name=\"selectedPrograms\"");
-          const selectedPrograms = [];
+          LOGGER.trace("_onConfirm | Dialog InstallItemsPrompt | called.");
+          const itemsList = html.find("[name=\"selectedItems\"");
+          const selectedItems = [];
           const fd = new FormDataExtended(html.find("form")[0]);
           const formData = foundry.utils.expandObject(fd.object);
-          Object.keys(programList).forEach((program) => {
-            if (programList[program].checked) {
-              selectedPrograms.push(programList[program].value);
+          Object.keys(itemsList).forEach((program) => {
+            if (itemsList[program].checked) {
+              selectedItems.push(itemsList[program].value);
             }
           });
-          formData.selectedPrograms = selectedPrograms;
+          formData.selectedItems = selectedItems;
           resolve(formData);
         };
         new Dialog({
-          title: SystemUtils.Localize("CPR.itemSheet.cyberdeck.configureInstalledPrograms"),
+          title: data.title,
           content: html,
           buttons: {
             cancel: {

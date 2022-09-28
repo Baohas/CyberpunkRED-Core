@@ -123,9 +123,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     // Execute a program on a Cyberdeck
     html.find(".program-execution").click((event) => this._cyberdeckProgramExecution(event));
 
-    // Install programs on a Cyberdeck
-    html.find(".program-install").click((event) => this._cyberdeckProgramInstall(event));
-
     // Uninstall a program on a Cyberdeck
     html.find(".program-uninstall").click((event) => this._cyberdeckProgramUninstall(event));
 
@@ -177,7 +174,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   _cycleEquipState(event) {
     LOGGER.trace("_cycleEquipState | CPRCharacterActorSheet | Called.");
-    const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
+    const item = this.getOwnedItem(CPRActorSheet._getItemId(event));
     const prop = CPRActorSheet._getObjProp(event);
     switch (item.system.equipped) {
       case "owned": {
@@ -220,12 +217,11 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   async _repairArmor(event) {
     LOGGER.trace("_repairArmor | CPRCharacterActorSheet | Called.");
-    const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
-    const upgradeValue = item.getAllUpgradesFor("shieldHp");
-    const upgradeType = item.getUpgradeTypeFor("shieldHp");
+    const item = this.getOwnedItem(CPRActorSheet._getItemId(event));
+    const upgradeData = item.getAllUpgradesFor("shieldHp");
     const currentArmorBodyValue = item.system.bodyLocation.sp;
     const currentArmorHeadValue = item.system.headLocation.sp;
-    const currentArmorShieldValue = (upgradeType === "override") ? upgradeValue : item.system.shieldHitPoints.max + upgradeValue;
+    const currentArmorShieldValue = (upgradeData.type === "override") ? upgradeData.value : item.system.shieldHitPoints.max + upgradeData.value;
     // XXX: cannot use _getObjProp since we need to update 2 props
     this._updateOwnedItemProp(item, "system.headLocation.ablation", 0);
     this._updateOwnedItemProp(item, "system.bodyLocation.ablation", 0);
@@ -260,7 +256,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   async _installuninstallCyberwareAction(event) {
     LOGGER.trace("_installuninstallCyberwareAction | CPRCharacterActorSheet | Called.");
     const itemId = CPRActorSheet._getItemId(event);
-    const item = this._getOwnedItem(itemId);
+    const item = this.getOwnedItem(itemId);
     if (item.system.isInstalled) {
       const foundationalId = SystemUtils.GetEventDatum(event, "data-installation-id");
       this.actor.uninstallCyberware(itemId, foundationalId);
@@ -388,7 +384,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   _updateSkill(event) {
     LOGGER.trace("_updateSkill | CPRCharacterActorSheet | Called.");
-    const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
+    const item = this.getOwnedItem(CPRActorSheet._getItemId(event));
     item.setSkillLevel(parseInt(event.target.value, 10));
     this._updateOwnedItem(item);
   }
@@ -402,7 +398,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   _updateWeaponAmmo(event) {
     LOGGER.trace("_updateWeaponAmmo | CPRCharacterActorSheet | Called.");
-    const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
+    const item = this.getOwnedItem(CPRActorSheet._getItemId(event));
     const updateType = SystemUtils.GetEventDatum(event, "data-item-prop");
     if (updateType === "system.magazine.value") {
       if (!Number.isNaN(parseInt(event.target.value, 10))) {
@@ -423,7 +419,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   _updateAmount(event) {
     LOGGER.trace("_updateAmount | CPRCharacterActorSheet | Called.");
-    const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
+    const item = this.getOwnedItem(CPRActorSheet._getItemId(event));
     if (!Number.isNaN(parseInt(event.target.value, 10))) {
       item.setItemAmount(event.target.value);
     } else {
@@ -442,7 +438,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   async _updateRoleAbility(event) {
     LOGGER.trace("ActorID _updateRoleAbility | CPRCharacterActorSheet | Called.");
-    const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
+    const item = this.getOwnedItem(CPRActorSheet._getItemId(event));
     const cprItemData = duplicate(item.system);
     const subskill = SystemUtils.GetEventDatum(event, "data-subskill-name");
     const value = parseInt(event.target.value, 10);
@@ -625,9 +621,9 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     LOGGER.trace("_cyberdeckProgramExecution | CPRCharacterActorSheet | Called.");
     const executionType = SystemUtils.GetEventDatum(event, "data-execution-type");
     const programId = SystemUtils.GetEventDatum(event, "data-program-id");
-    const program = this._getOwnedItem(programId);
+    const program = this.getOwnedItem(programId);
     const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
-    const cyberdeck = this._getOwnedItem(cyberdeckId);
+    const cyberdeck = this.getOwnedItem(cyberdeckId);
     const { token } = this;
     switch (executionType) {
       case "rez": {
@@ -691,12 +687,13 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} event - object capturing event data (what was clicked and where?)
    * @returns {null}
    */
-  async _cyberdeckProgramInstall(event) {
-    LOGGER.trace("_cyberdeckProgramInstall | CPRCharacterActorSheet | Called.");
-    const cyberdeckId = SystemUtils.GetEventDatum(event, "data-item-id");
-    const cyberdeck = this._getOwnedItem(cyberdeckId);
+  async _installItem(event) {
+    LOGGER.trace("_installItem | CPRCharacterActorSheet | Called.");
+    const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
+    const installType = SystemUtils.GetEventDatum(event, "data-item-install-type");
+    const item = this.getOwnedItem(itemId);
 
-    return cyberdeck.sheet._cyberdeckSelectInstalledPrograms(event);
+    return item.sheet._selectInstallableItems(installType);
   }
 
   /**
@@ -709,7 +706,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   async _cyberdeckProgramUninstall(event) {
     LOGGER.trace("_cyberdeckProgramUninstall | CPRCharacterActorSheet | Called.");
     const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
-    const cyberdeck = this._getOwnedItem(cyberdeckId);
+    const cyberdeck = this.getOwnedItem(cyberdeckId);
 
     return cyberdeck.sheet._cyberdeckProgramUninstall(event);
   }

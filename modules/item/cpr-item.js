@@ -144,7 +144,13 @@ export default class CPRItem extends Item {
 
   availableInstallSlots() {
     LOGGER.trace("availableInstallSlots | CPRItem | Called.");
-    return this.system.installedItems.slots - this.system.installedItems.usedSlots;
+    const itemTemplates = SystemUtils.GetTemplateItemTypes(this.type);
+    let totalSlots = this.system.installedItems.slots;
+    if (itemTemplates.includes("upgradable")) {
+      const upgradeData = this.getAllUpgradesFor("slots");
+      totalSlots = (upgradeData.type === "override") ? upgradeData.value : totalSlots + upgradeData.value;
+    }
+    return totalSlots - this.system.installedItems.usedSlots;
   }
 
   getInstalledItems(type = false) {
@@ -160,7 +166,7 @@ export default class CPRItem extends Item {
     const installedItems = [];
 
     this.system.installedItems.list.forEach((uuid) => {
-      const item = actor._getOwnedItem(uuid);
+      const item = actor.getOwnedItem(uuid);
       if (!type || (item.type === type)) {
         installedItems.push(item);
       }

@@ -259,12 +259,11 @@ const Attackable = function Attackable() {
     if (halfArmorAttacks.includes(weaponType)) {
       cprRoll.rollCardExtraArgs.ignoreHalfArmor = true;
     }
-    const upgradeType = this.getUpgradeTypeFor("damage");
-    const upgradeValue = this.getAllUpgradesFor("damage");
-    if (upgradeType === "override") {
+    const upgradeData = this.getAllUpgradesFor("damage");
+    if (upgradeData.type === "override") {
       cprRoll.formula = "0d6";
     }
-    cprRoll.addMod(upgradeValue);
+    cprRoll.addMod(upgradeData.value);
 
     return cprRoll;
   };
@@ -285,9 +284,8 @@ const Attackable = function Attackable() {
     if (typeof cprWeaponData.attackmod !== "undefined") {
       returnValue = cprWeaponData.attackmod;
     }
-    const upgradeValue = this.getAllUpgradesFor("attackmod");
-    const upgradeType = this.getUpgradeTypeFor("attackmod");
-    returnValue = (upgradeType === "override") ? upgradeValue : returnValue + upgradeValue;
+    const upgradeData = this.getAllUpgradesFor("attackmod");
+    returnValue = (upgradeData.type === "override") ? upgradeData.value : returnValue + upgradeData.value;
     return returnValue;
   };
 };

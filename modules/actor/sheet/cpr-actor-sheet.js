@@ -246,19 +246,19 @@ export default class CPRActorSheet extends ActorSheet {
           rollSubType,
           subRoleName,
         };
-        item = this._getOwnedItem(itemId);
+        item = this.getOwnedItem(itemId);
         cprRoll = item.createRoll(rollType, this.actor, rollInfo);
         break;
       }
       case CPRRolls.rollTypes.SKILL: {
         const itemId = CPRActorSheet._getItemId(event);
-        item = this._getOwnedItem(itemId);
+        item = this.getOwnedItem(itemId);
         cprRoll = item.createRoll(rollType, this.actor);
         break;
       }
       case CPRRolls.rollTypes.DAMAGE: {
         const itemId = CPRActorSheet._getItemId(event);
-        item = this._getOwnedItem(itemId);
+        item = this.getOwnedItem(itemId);
         const damageType = this._getFireCheckbox(event);
         cprRoll = item.createRoll(rollType, this.actor, { damageType });
         if (rollType === CPRRolls.rollTypes.AIMED) {
@@ -268,7 +268,7 @@ export default class CPRActorSheet extends ActorSheet {
       }
       case CPRRolls.rollTypes.ATTACK: {
         const itemId = CPRActorSheet._getItemId(event);
-        item = this._getOwnedItem(itemId);
+        item = this.getOwnedItem(itemId);
         rollType = this._getFireCheckbox(event);
         cprRoll = item.createRoll(rollType, this.actor);
         break;
@@ -276,7 +276,7 @@ export default class CPRActorSheet extends ActorSheet {
       case CPRRolls.rollTypes.INTERFACEABILITY: {
         const interfaceAbility = SystemUtils.GetEventDatum(event, "data-interface-ability");
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
-        const cyberdeck = this._getOwnedItem(cyberdeckId);
+        const cyberdeck = this.getOwnedItem(cyberdeckId);
         const netRoleItem = this.actor.itemTypes.role.find((r) => r.name === this.actor.system.roleInfo.activeNetRole);
         if (!netRoleItem) {
           const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
@@ -290,7 +290,7 @@ export default class CPRActorSheet extends ActorSheet {
         const programId = SystemUtils.GetEventDatum(event, "data-program-id");
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
         const executionType = SystemUtils.GetEventDatum(event, "data-execution-type");
-        const cyberdeck = this._getOwnedItem(cyberdeckId);
+        const cyberdeck = this.getOwnedItem(cyberdeckId);
         const netRoleItem = this.actor.itemTypes.role.find((r) => r.name === this.actor.system.roleInfo.activeNetRole);
         if (!netRoleItem) {
           const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
@@ -417,7 +417,7 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _itemAction(event) {
     LOGGER.trace("_itemAction | CPRActorSheet | Called.");
-    const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
+    const item = this.getOwnedItem(CPRActorSheet._getItemId(event));
     const actionType = SystemUtils.GetEventDatum(event, "data-action-type");
     if (item) {
       switch (actionType) {
@@ -439,6 +439,10 @@ export default class CPRActorSheet extends ActorSheet {
         }
         case "remove-upgrade": {
           await item.sheet._removeItemUpgrade(event);
+          break;
+        }
+        case "manage-programs": {
+          await item.sheet._manageInstalledPrograms();
           break;
         }
         case "split": {
@@ -536,7 +540,7 @@ export default class CPRActorSheet extends ActorSheet {
   _renderReadOnlyItemCard(event) {
     LOGGER.trace("_renderReadOnlyItemCard | CPRActorSheet | Called.");
     const itemId = CPRActorSheet._getItemId(event);
-    const item = this._getOwnedItem(itemId);
+    const item = this.getOwnedItem(itemId);
     if (event.ctrlKey) {
       CPRChat.RenderItemCard(item);
       return;
@@ -571,9 +575,9 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {String} itemId - the Id of the owned item to retrieve
    * @returns the Item object matching the given Id
    */
-  _getOwnedItem(itemId) {
+  getOwnedItem(itemId) {
     LOGGER.trace("_getOwnedItem | CPRActorSheet | Called.");
-    return this.actor._getOwnedItem(itemId);
+    return this.actor.getOwnedItem(itemId);
   }
 
   /**
@@ -686,7 +690,7 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.debug(`weaponID is ${weaponID}`);
     LOGGER.debug(`flag is ${flag}`);
     if (this.token !== null && firemode === "autofire") {
-      const weaponDvTable = (this._getOwnedItem(weaponID)).system.dvTable;
+      const weaponDvTable = (this.getOwnedItem(weaponID)).system.dvTable;
       const currentDvTable = (weaponDvTable === "") ? getProperty(this.token, "flags.cprDvTable") : weaponDvTable;
       if (typeof currentDvTable !== "undefined") {
         const dvTable = currentDvTable.replace(" (Autofire)", "");

@@ -620,11 +620,10 @@ export default function registerHandlebarsHelpers() {
     const itemType = obj.type;
     let upgradeText = "";
     if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
-      const upgradeValue = obj.getAllUpgradesFor(dataPoint);
-      if (upgradeValue !== 0 && upgradeValue !== "") {
-        const modType = obj.getUpgradeTypeFor(dataPoint);
+      const upgradeData = obj.getAllUpgradesFor(dataPoint);
+      if (upgradeData.value !== 0 && upgradeData.value !== "") {
         const modSource = (itemType === "weapon") ? SystemUtils.Localize("CPR.itemSheet.weapon.attachments") : SystemUtils.Localize("CPR.itemSheet.common.upgrades");
-        upgradeText = `(${SystemUtils.Format("CPR.itemSheet.common.modifierChange", { modSource, modType, value: upgradeValue })})`;
+        upgradeText = `(${SystemUtils.Format("CPR.itemSheet.common.modifierChange", { modSource, modType: upgradeData.type, value: upgradeData.value })})`;
       }
     }
     return upgradeText;
@@ -643,17 +642,16 @@ export default function registerHandlebarsHelpers() {
       upgradeResult = baseValue;
     }
     if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
-      const upgradeValue = obj.getAllUpgradesFor(dataPoint);
-      const upgradeType = obj.getUpgradeTypeFor(dataPoint);
-      if (upgradeValue !== "" && upgradeValue !== 0) {
-        if (upgradeType === "override") {
-          upgradeResult = upgradeValue;
-        } else if (typeof upgradeResult !== "number" || typeof upgradeValue !== "number") {
-          if (upgradeValue !== 0 && upgradeValue !== "") {
-            upgradeResult = `${upgradeResult} + ${upgradeValue}`;
+      const upgradeData = obj.getAllUpgradesFor(dataPoint);
+      if (upgradeData.value !== "" && upgradeData.value !== 0) {
+        if (upgradeData.type === "override") {
+          upgradeResult = upgradeData.value;
+        } else if (typeof upgradeResult !== "number" || typeof upgradeData.value !== "number") {
+          if (upgradeData.value !== 0 && upgradeData.value !== "") {
+            upgradeResult = `${upgradeResult} + ${upgradeData.value}`;
           }
         } else {
-          upgradeResult += upgradeValue;
+          upgradeResult += upgradeData.value;
         }
       }
     }

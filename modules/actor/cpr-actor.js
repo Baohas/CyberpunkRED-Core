@@ -253,7 +253,7 @@ export default class CPRActor extends Actor {
    */
   async installCyberware(itemId) {
     LOGGER.trace("installCyberware | CPRActor | Called.");
-    const item = this._getOwnedItem(itemId);
+    const item = this.getOwnedItem(itemId);
 
     const baseCompatibleFoundationalCyberware = this.itemTypes.cyberware.filter((cw) => cw.system.isInstalled
         && cw.system.isFoundational
@@ -274,7 +274,7 @@ export default class CPRActor extends Actor {
         const loopList = uuidList;
         uuidList = [];
         for (const uuid of loopList) {
-          const itemLookup = this._getOwnedItem(uuid);
+          const itemLookup = this.getOwnedItem(uuid);
           if (itemLookup.system.installedItems.allowed
             && itemLookup.system.installedItems.allowedTypes.includes(item.type)
             && itemLookup.availableInstallSlots() >= item.system.size) {
@@ -298,7 +298,7 @@ export default class CPRActor extends Actor {
       return;
     }
 
-    const target = (item.system.isFoundational) ? this : this._getOwnedItem(formData.foundationalId);
+    const target = (item.system.isFoundational) ? this : this.getOwnedItem(formData.foundationalId);
 
     target.installItems([item]).then(async (installationSuccess) => {
       if (installationSuccess) {
@@ -318,7 +318,7 @@ export default class CPRActor extends Actor {
    */
   async uninstallCyberware(itemId, foundationalId, skipConfirm = false) {
     LOGGER.trace("uninstallCyberware | CPRActor | Called.");
-    const item = this._getOwnedItem(itemId);
+    const item = this.getOwnedItem(itemId);
 
     let confirmRemove;
     if (!skipConfirm) {
@@ -329,7 +329,7 @@ export default class CPRActor extends Actor {
       confirmRemove = true;
     }
     if (confirmRemove) {
-      const target = (this.uuid === item.system.installedIn) ? this : this._getOwnedItem(item.system.installedIn);
+      const target = (this.uuid === item.system.installedIn) ? this : this.getOwnedItem(item.system.installedIn);
       return target.uninstallItems([item]).then(() => this.setMaxHumanity());
     }
     return this.updateEmbeddedDocuments("Item", []);
@@ -341,7 +341,7 @@ export default class CPRActor extends Actor {
 
     if (this.system.installedItems.list.length > 0) {
       this.system.installedItems.list.forEach((uuid) => {
-        const installedItem = this._getOwnedItem(uuid);
+        const installedItem = this.getOwnedItem(uuid);
         if (installedItem && (!type || (type && installedItem.type === type))) {
           installedItems.push(installedItem);
         }
@@ -396,19 +396,23 @@ export default class CPRActor extends Actor {
     const installedItems = duplicate(this.system.installedItems);
     const updateList = [];
 
-    const uninstallList = JSON.parse(JSON.stringify(itemList));
+    const uninstallList = [];
 
     for (const item of itemList) {
-      installedItems.list = installedItems.list.filter((uuid) => item.uuid !== uuid);
-      let embeddedItemList = item.getInstalledItems();
+      if (installedItems.list.includes(item.uuid)) {
+        installedItems.list = installedItems.list.filter((uuid) => item.uuid !== uuid);
+        uninstallList.push(item);
+        let embeddedItemList = item.getInstalledItems();
 
-      while (embeddedItemList.length > 0) {
-        const embeddedItems = JSON.parse(JSON.stringify(embeddedItemList));
-        embeddedItemList = [];
-        for (const embeddedItem of embeddedItems) {
-          uninstallList.push(embeddedItem);
-          if (embeddedItem.system.installedItems.list.length > 0) {
-            embeddedItemList = embeddedItemList.concat(embeddedItem.getInstalledItems());
+        while (embeddedItemList.length > 0) {
+          const embeddedItemsData = JSON.parse(JSON.stringify(embeddedItemList));
+          embeddedItemList = [];
+          for (const embeddedItemData of embeddedItemsData) {
+            const embeddedItem = this.getOwnedItem(embeddedItemData._id);
+            uninstallList.push(embeddedItem);
+            if (embeddedItem.system.installedItems.list.length > 0) {
+              embeddedItemList = embeddedItemList.concat(embeddedItem.getInstalledItems());
+            }
           }
         }
       }
@@ -435,7 +439,7 @@ export default class CPRActor extends Actor {
    * @param {String} itemId - Id of the item to get
    * @returns {CPRItem}
    */
-  _getOwnedItem(itemId) {
+  getOwnedItem(itemId) {
     LOGGER.trace("_getOwnedItem | CPRActor | Called.");
     const item = (this.items.find((i) => i._id === itemId)) ? this.items.find((i) => i._id === itemId) : this.items.find((i) => i.uuid === itemId);
     return item;
@@ -630,15 +634,14 @@ export default class CPRActor extends Actor {
     itemTypes.forEach((itemType) => {
       const itemList = this.itemTypes[itemType].filter((i) => i.system.equipped === "equipped" && i.system.isUpgraded);
       itemList.forEach(async (i) => {
-        const upgradeValue = i.getAllUpgradesFor(baseName);
-        const upgradeType = i.getUpgradeTypeFor(baseName);
+        const upgradeData = i.getAllUpgradesFor(baseName);
         if (modType === "override") {
-          if (upgradeType === "override" && upgradeValue > modValue) {
-            modValue = upgradeValue;
+          if (upgradeData.type === "override" && upgradeData.value > modValue) {
+            modValue = upgradeData.value;
           }
         } else {
-          modValue = (upgradeType === "override") ? upgradeValue : modValue + upgradeValue;
-          modType = upgradeType;
+          modValue = (upgradeData.type === "override") ? upgradeData.value : modValue + upgradeData.value;
+          modType = upgradeData.type;
         }
       });
     });
@@ -871,7 +874,7 @@ export default class CPRActor extends Actor {
    */
   makeThisArmorCurrent(location, id) {
     LOGGER.trace("makeThisArmorCurrent | CPRActor | Called.");
-    const currentArmor = this._getOwnedItem(id);
+    const currentArmor = this.getOwnedItem(id);
     if (location === "body") {
       const currentArmorValue = currentArmor.system.bodyLocation.sp - currentArmor.system.bodyLocation.ablation;
       const currentArmorMax = currentArmor.system.bodyLocation.sp;
@@ -1242,11 +1245,10 @@ export default class CPRActor extends Actor {
       case "head": {
         armorList.forEach(async (a) => {
           const cprArmorData = a.system;
-          const upgradeValue = a.getAllUpgradesFor("headSp");
-          const upgradeType = a.getUpgradeTypeFor("headSp");
+          const upgradeData = a.getAllUpgradesFor("headSp");
           cprArmorData.headLocation.sp = Number(cprArmorData.headLocation.sp);
           cprArmorData.headLocation.ablation = Number(cprArmorData.headLocation.ablation);
-          const armorSp = (upgradeType === "override") ? upgradeValue : cprArmorData.headLocation.sp + upgradeValue;
+          const armorSp = (upgradeData.type === "override") ? upgradeData.value : cprArmorData.headLocation.sp + upgradeData.value;
           cprArmorData.headLocation.ablation = Math.min((cprArmorData.headLocation.ablation + ablation), armorSp);
           updateList.push({ _id: a.id, system: cprArmorData });
         });
@@ -1261,9 +1263,8 @@ export default class CPRActor extends Actor {
           const cprArmorData = a.system;
           cprArmorData.bodyLocation.sp = Number(cprArmorData.bodyLocation.sp);
           cprArmorData.bodyLocation.ablation = Number(cprArmorData.bodyLocation.ablation);
-          const upgradeValue = a.getAllUpgradesFor("bodySp");
-          const upgradeType = a.getUpgradeTypeFor("bodySp");
-          const armorSp = (upgradeType === "override") ? upgradeValue : cprArmorData.bodyLocation.sp + upgradeValue;
+          const upgradeData = a.getAllUpgradesFor("bodySp");
+          const armorSp = (upgradeData.type === "override") ? upgradeData.value : cprArmorData.bodyLocation.sp + upgradeData.value;
           cprArmorData.bodyLocation.ablation = Math.min((cprArmorData.bodyLocation.ablation + ablation), armorSp);
           updateList.push({ _id: a.id, system: cprArmorData });
         });

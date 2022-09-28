@@ -1,7 +1,6 @@
-/* global duplicate */
+/* global duplicate mergeObject */
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
-import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 /**
  * If an item can ACCEPT upgrades (i.e. it has slots), then it should include this
@@ -14,7 +13,7 @@ const Upgradable = function Upgradable() {
    * @param {Array} upgrades - list of upgrade items to uninstall
    * @returns the updated item document after uninstallation
    */
-  this.uninstallUpgrades = async function uninstallUpgrades(upgrades) {
+  this.uninstallUpgrades = async function uninstallUpgrades(upgradeList) {
     LOGGER.trace("uninstallUpgrades | Upgradable | Called.");
 
     const actor = (this.isOwned) ? this.actor : false;
@@ -26,71 +25,35 @@ const Upgradable = function Upgradable() {
     let installedUpgrades = JSON.parse(JSON.stringify(this.system.upgrades));
     const updateList = [];
 
-    for (const upgrade of this.system.upgrades) {
+    for (const upgrade of upgradeList) {
       installedUpgrades = installedUpgrades.filter((installed) => installed.uuid !== upgrade.uuid);
     }
     const upgradeStatus = (installedUpgrades.length > 0);
-    updateList.push({
-      _id: this.id,
-      "system.isUpgraded": upgradeStatus,
-      "system.upgrades": installedUpgrades,
-    });
 
-    const installedItems = duplicate(this.system.installedItems);
-
-
-    upgrades.forEach((u) => {
-      installedUpgrades = installedUpgrades.filter((iUpgrade) => iUpgrade.uuid !== u.uuid);
-      installedItems.list = installedItems.list.filter((uuid) => u.uuid !== uuid);
-      installedItems.usedSlots -= u.system.size;
-      updateList.push({ _id: u.id, "system.isInstalled": false, "system.installedIn": "" });
-    });
-
-    // Need to set this so it can be used further in this function.
-    this.system.upgrades = installedUpgrades;
-    updateList.push({
-      _id: this.id,
-      "system.isUpgraded": upgradeStatus,
-      "system.upgrades": installedUpgrades,
-      "system.installedItems.list": installedItems,
-    });
-
-    if (this.type === "weapon" && this.system.isRanged) {
-      const magazineData = this.system.magazine;
-      const upgradeValue = this.getAllUpgradesFor("magazine");
-      const upgradeType = this.getUpgradeTypeFor("magazine");
-      const magazineSize = (upgradeType === "override") ? upgradeValue : magazineData.max + upgradeValue;
-      const extraBullets = magazineData.value - magazineSize;
-      if (extraBullets > 0) {
-        updateList.push({
-          _id: this.id,
-          "system.isUpgraded": upgradeStatus,
-          "system.installedItems": installedItems,
-          "system.magazine.value": magazineData.max,
-        });
-        const ammo = this.actor.items.find((i) => i._id === magazineData.ammoId);
-        const ammoStack = ammo.system.amount + extraBullets;
-        updateList.push({ _id: ammo.id, "system.amount": ammoStack });
-      }
-    } else if (this.type === "armor") {
-      const { bodyLocation } = this.system;
-      const { headLocation } = this.system;
-      const { shieldHitPoints } = this.system;
-      bodyLocation.ablation = (bodyLocation.ablation > bodyLocation.sp) ? bodyLocation.sp : bodyLocation.ablation;
-      headLocation.ablation = (headLocation.ablation > headLocation.sp) ? headLocation.sp : headLocation.ablation;
-      shieldHitPoints.value = (shieldHitPoints.value > shieldHitPoints.max) ? shieldHitPoints.max : shieldHitPoints.value;
-      updateList.push({
-        _id: this.id,
-        "system.isUpgraded": upgradeStatus,
-        "system.installedItems": installedItems,
-        "system.bodyLocation": bodyLocation,
-        "system.headLocation": headLocation,
-        "system.shieldHitPoints": shieldHitPoints,
-      });
-    } else {
-      updateList.push({ _id: this.id, "system.isUpgraded": upgradeStatus, "system.installedItems.list": installedItems });
+    const uninstallResult = await this.uninstallItems(upgradeList);
+    if (uninstallResult.length !== (upgradeList.length + 1)) {
+      return Promise.reject(new Error(`Un-installation of upgrades failed. upgrades: ${upgradeList}, installResult: ${uninstallResult}`));
     }
-    return this.actor.updateEmbeddedDocuments("Item", updateList);
+
+    let thisChange = {
+      _id: this.id,
+      "system.isUpgraded": upgradeStatus,
+      "system.upgrades": installedUpgrades,
+    };
+    if (typeof this.postUpgradeUninstall === "function") {
+      const adjustmentChanges = this.postUpgradeUninstall(installedUpgrades.filter((u) => u.type === this.type));
+      for (const change of adjustmentChanges) {
+        if (change._id === this._id) {
+          // eslint-disable-next-line no-await-in-loop
+          thisChange = await mergeObject(thisChange, change);
+        } else {
+          updateList.push(change);
+        }
+      }
+    }
+    updateList.push(thisChange);
+
+    return actor.updateEmbeddedDocuments("Item", updateList);
   };
 
   /**
@@ -99,7 +62,7 @@ const Upgradable = function Upgradable() {
    * @param {Array} upgrades - the list of upgrades to install
    * @returns the updated item document after the installation
    */
-  this.installUpgrades = async function installUpgrades(upgrades) {
+  this.installUpgrades = async function installUpgrades(upgradeList) {
     LOGGER.trace("installUpgrades | Upgradable | Called.");
 
     const actor = (this.isOwned) ? this.actor : false;
@@ -109,94 +72,83 @@ const Upgradable = function Upgradable() {
     }
 
     const installedItems = duplicate(this.system.installedItems);
+    let installedUpgrades = duplicate(this.system.upgrades);
+    const updateList = [];
 
     const installableUpgrades = [];
-    for (const upgrade of upgrades) {
+    for (const upgrade of upgradeList) {
       const alreadyInstalled = installedItems.list.includes(upgrade.uuid);
       if (!alreadyInstalled) {
         installableUpgrades.push(upgrade);
+        installedUpgrades = installedUpgrades.filter((u) => u.uuid !== upgrade.uuid);
       }
     }
 
-    const updateList = [];
-    if (this.canInstallItems(installableUpgrades)) {
-      const installedUpgrades = this.system.upgrades;
-      for (const upgrade of installableUpgrades) {
-        const upgradeModifiers = upgrade.system.modifiers;
-        const modList = {};
-        Object.keys(upgradeModifiers).forEach((index) => {
-          const modifier = upgradeModifiers[index];
-          /*
-            Before we add this modifier to the list of upgrades for this item, we need to do several checks:
-            1. Ensure the modifier is defined as the key could have been added but the value never set
-            2. Ensure the modifier is valid for this item type. As this information is stored in an
-               object, it's possible keys may exist that are not valid if one changes the itemUpgrade type.
-            3. The next couple checks ensure we are only adding actual modifications, null, 0 or empty strings don't modify
-               anything, so we ignore those.
-          */
-          if (typeof modifier !== "undefined" && typeof CPR.upgradableDataPoints[this.type][index] !== "undefined"
-            && modifier !== 0 && modifier !== null && modifier !== "") {
-            if (typeof modifier.value === "undefined" || modifier.value !== null) {
-              modList[index] = modifier;
+    if (installableUpgrades.length > 0) {
+      if (this.canInstallItems(installableUpgrades)) {
+        for (const upgrade of installableUpgrades) {
+          const upgradeModifiers = upgrade.system.modifiers;
+          const modList = {};
+          Object.keys(upgradeModifiers).forEach((index) => {
+            const modifier = upgradeModifiers[index];
+            /*
+              Before we add this modifier to the list of upgrades for this item, we need to do several checks:
+              1. Ensure the modifier is defined as the key could have been added but the value never set
+              2. Ensure the modifier is valid for this item type. As this information is stored in an
+                object, it's possible keys may exist that are not valid if one changes the itemUpgrade type.
+              3. The next couple checks ensure we are only adding actual modifications, null, 0 or empty strings don't modify
+                anything, so we ignore those.
+            */
+            if (typeof modifier !== "undefined" && typeof CPR.upgradableDataPoints[this.type][index] !== "undefined"
+              && modifier !== 0 && modifier !== null && modifier !== "") {
+              if (typeof modifier.value === "undefined" || modifier.value !== null) {
+                modList[index] = modifier;
+              }
             }
+          });
+          if (Object.keys(modList).length > 0) {
+            const upgradeData = {
+              _id: upgrade._id,
+              uuid: upgrade.uuid,
+              name: upgrade.name,
+              type: upgrade.system.type,
+              size: upgrade.system.size,
+              system: {
+                modifiers: modList,
+              },
+            };
+            installedUpgrades.push(upgradeData);
           }
-        });
-        const upgradeData = {
-          _id: upgrade._id,
-          uuid: upgrade.uuid,
-          name: upgrade.name,
-          size: upgrade.system.size,
-          system: {
-            modifiers: modList,
-          },
-        };
-        installedUpgrades.push(upgradeData);
+        }
+        const installResult = await this.installItems(installableUpgrades);
+        if (installResult.length !== (installableUpgrades.length + 1)) {
+          return Promise.reject(new Error(`Installation of upgrades failed. installableUpgrades: ${installableUpgrades}, installResult: ${installResult}`));
+        }
+        updateList.push({ _id: this._id, "system.isUpgraded": true, "system.upgrades": installedUpgrades });
       }
-      updateList.push({ _id: this._id, "system.isUpgraded": true, "system.upgrades": installedUpgrades });
     }
-    await this.installItems(installableUpgrades);
     return actor.updateEmbeddedDocuments("Item", updateList);
   };
 
   /**
-   * Given a data point that this upgrade improves, find out the type of upgrade. In some ways
-   * this is a reimplementation of the "mode" for active effects. We could not use AEs here
-   * because AE cannot modify other items, only actors. Do not confuse this with the upgradeType
-   * property either, which controls what item types this upgrade is applicable for.
+   * Given a data point that this upgrade improves, find out the type of upgrade and total up all
+   * of the modifications being applied to it, and consider overrides. In some ways
+   * this is a reimplementation of what Active Effects provides, returnign the "mode" and value.
+   * We could not use AEs here because AE cannot modify other items, only actors. Do not confuse
+   * this with the upgradeType property either, which controls what item types this upgrade is applicable for.
    *
    * @param {String} dataPoint - a stat/property/value that this upgrade modifies on the parent item
-   * @returns null or the upgrade type for a given data point
-   */
-  this.getUpgradeTypeFor = function getUpgradeTypeFor(dataPoint) {
-    LOGGER.trace("getUpgradeTypeFor | Upgradable | Called.");
-    let upgradeType = "modifier";
-    if (this.actor && typeof this.system.isUpgraded === "boolean" && this.system.isUpgraded) {
-      let installedUpgrades = "LOADING...";
-      installedUpgrades = this.system.upgrades;
-      installedUpgrades.forEach((upgrade) => {
-        if (typeof upgrade.system.modifiers[dataPoint] !== "undefined") {
-          const modType = upgrade.system.modifiers[dataPoint].type;
-          if (modType !== "modifier") {
-            upgradeType = modType;
-          }
-        }
-      });
-      return upgradeType;
-    }
-    return null;
-  };
-
-  /**
-   * Given a data point, total up all modifications being applied to it, and consider overrides. Again
-   * this is like what AEs do, but we cannot use them here.
+   * @returns {Object} upgradeData - an object with a key for "type" and "value" of the upgrade
    *
-   * @param {} dataPoint - a stat/property/value that this upgrade modifies on the parent item
-   * @returns
    */
   this.getAllUpgradesFor = function getAllUpgradesFor(dataPoint) {
     LOGGER.trace("getAllUpgradesFor | Upgradable | Called.");
     let upgradeNumber = 0;
     let baseOverride = -100000;
+    const upgradeData = {
+      type: "modifier",
+      value: 0,
+    };
     if (this.actor && typeof this.system.isUpgraded === "boolean" && this.system.isUpgraded) {
       const installedUpgrades = this.system.upgrades;
       installedUpgrades.forEach((upgrade) => {
@@ -212,9 +164,15 @@ const Upgradable = function Upgradable() {
           }
         }
       });
-      upgradeNumber = (baseOverride === 0 || baseOverride === -100000) ? upgradeNumber : baseOverride;
+      if (baseOverride === 0 || baseOverride === -100000) {
+        upgradeData.type = "modifier";
+        upgradeData.value = upgradeNumber;
+      } else {
+        upgradeData.type = "override";
+        upgradeData.value = baseOverride;
+      }
     }
-    return upgradeNumber;
+    return upgradeData;
   };
 
   /**

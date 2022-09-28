@@ -186,7 +186,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     if (event.keyCode === 46) {
       LOGGER.debug("DEL key was pressed");
       const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
-      const item = this._getOwnedItem(itemId);
+      const item = this.getOwnedItem(itemId);
       switch (item.type) {
         case "skill": {
           item.setSkillLevel(0);
@@ -230,7 +230,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   async _handleInstallAction(event) {
     LOGGER.trace("_handleInstallAction | CPRMookActorSheet | Called.");
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
-    const item = this._getOwnedItem(itemId);
+    const item = this.getOwnedItem(itemId);
     if (event.shiftKey) {
       if (item.type === "cyberware") {
         if (item.system.core === true) {

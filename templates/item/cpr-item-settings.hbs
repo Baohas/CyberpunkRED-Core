@@ -40,7 +40,7 @@
                 <hr>
                 <li class="item flexrow">
                   <div class="item flexrow setting-name text-nowrap">
-                    {{localize "CPR.itemSheet.common.canHaveInstalledItems"}}
+                    {{localize "CPR.itemSheet.common.installedItemsAllowed"}}
                   </div>
                   <div class="item flexrow setting-value text-nowrap item-end">
                       {{#if this.editable}}
@@ -60,7 +60,7 @@
                 </li>
                 {{#if item.system.installedItems.allowed}}
                   <div class="text-left text-padding-left">
-                    <b><a class="manage-installable-types">{{localize "CPR.itemSheet.common.allowedInstallableItemTypes"}}<i class="text-smallest text-super fas fa-wrench"></i></a></b>
+                    <b><a class="manage-installable-types">{{localize "CPR.itemSheet.common.installedItemTypesAllowed"}}<i class="text-smallest text-super fas fa-wrench"></i></a></b>
                     {{#each item.system.installedItems.allowedTypes as |type| }}
                     <li>{{localize (cprFindConfigValue "objectTypes" type)}}</li>
                     {{/each}}
