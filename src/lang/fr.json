@@ -883,6 +883,8 @@
     "CPR.mookSheet.items.shiftClickToInstallorUninstall": "Maj+Clic pour installer où désinstaller le Cyberimplant",
     "CPR.mookSheet.items.specialGear": "Équipement Spécial",
     "CPR.mookSheet.items.unloaded": "Déchargé",
+    "CPR.mookSheet.noArmorEquipped": "No armor equipped",
+    "CPR.mookSheet.noWeaponEquipped": "No weapon equipped",
     "CPR.mookSheet.skills.base": "Base",
     "CPR.mookSheet.skills.clickToRollThisSkill": "Cliquez pour faire un jet de compétence",
     "CPR.mookSheet.skills.level": "Level",
