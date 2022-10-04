@@ -1,0 +1,65 @@
+
+{{cprTrace "START ACTOR PARTS RIGHT-PANE CPR-GEAR.HBS"}}
+<div class="gear-tab-data">
+    <div class="top-pane-gear">
+        <ol class="items-list gear-list">
+            {{#each (cprFindConfigObj "inventoryCategories") as |category c|}}
+            <div class="collapsible">
+                <li class="items-header flexrow collapsible">
+                    <span class="item-name gear-name bg-black text-nowrap expand-button " id="gearTab-{{c}}" title="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
+                        {{localize category}}&nbsp;
+                        {{#if (cprListContains ../this.options.collapsedSections (cprGeneratePartial "gearTab-VAR" c))}}
+                            <i class="fas fa-plus bg-black collapse-icon"></i>
+                            <i class="fas fa-minus bg-black expand-icon hide"></i>
+                        {{else}}
+                            <i class="fas fa-plus bg-black collapse-icon hide"></i>
+                            <i class="fas fa-minus bg-black expand-icon"></i>
+                        {{/if}}
+                    </span>
+                    <span class="item-detail gear-data bg-black text-nowrap">{{localize "CPR.characterSheet.rightPane.data"}}</span>
+                    <span class="item-detail gear-actions bg-black text-nowrap">
+                        {{localize "CPR.global.generic.actions"}}&nbsp;
+                        {{#if (cprSystemConfig "playersCreateInventory")}}<a class="item-create" title="{{localize "CPR.actorSheets.commonActions.createNewItem"}}" data-item-type="{{c}}"><i class="fas fa-plus-circle text-padding-right"></i></a>{{/if}}
+                    </span>
+                </li>
+                <ol class="items-list">
+                    {{#each (cprSort (cprGetProp ../actor.itemTypes c) "name") as |item i|}}
+                    {{#if (cprSheetContentFilter ../../this.options.cprContentFilter item.name)}}
+                    {{!-- Partial handles Name and Data columns --}}
+                    {{> (cprGeneratePartial "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/gear/cpr-VAR-content.hbs" c) (cprMergeForPartialArg "item,actor,sheet" this ../../this.actor ../../this)}}
+                    {{!- Item actions column --}}
+                    {{/if}}
+                    {{/each}}
+                </ol>
+            </div>
+            {{/each}}
+        </ol>
+    </div>
+    <div class="bottom-pane-gear">
+      <div class="eurobucks">
+        {{#if (cprCompare actor.type "===" "character")}}
+        <div class="current-eurobucks flexrow">
+          <div class="eurobucks-text">{{localize "CPR.characterSheet.rightPane.eurobucks.eurobucks"}}:</div>
+          <div class="eurobucks-value text-left">{{cprNumberFormat actor.system.wealth.value}}</div>
+          <a class="eurobucks-open-ledger" title="{{localize "CPR.ledger.ledgerOpen"}}"><i class="fas fa-sticky-note"></i></a>
+        </div>
+        <ol class="items-list">
+          <div class="modify-eurobucks flexrow">
+            <div class="eurobucks-modify-text">{{localize "CPR.characterSheet.rightPane.eurobucks.eurobucksModify"}}:</div>
+            <input class="number eurobucks-input eurobucks-modify-input" placeholder="0" type="number">
+            <div class="eurobucks-modify-buttons text-right">
+              <a class="eurobucks-input-button" title="{{localize "CPR.global.generic.add"}} {{localize "CPR.characterSheet.rightPane.eurobucks.eurobucks"}}" data-action="add"><i class="fas fa-plus-circle"></i></a>
+              <a class="eurobucks-input-button" title="{{localize "CPR.global.generic.subtract"}} {{localize "CPR.characterSheet.rightPane.eurobucks.eurobucks"}}" data-action="subtract"><i class="fas fa-minus-circle"></i></a>
+              <a class="eurobucks-input-button" title="{{localize "CPR.global.generic.set"}} {{localize "CPR.characterSheet.rightPane.eurobucks.eurobucks"}}" data-action="set"><i class="fas fa-chevron-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="modify-eurobucks flexrow">
+            <div class="eurobucks-modify-text">{{localize "CPR.characterSheet.rightPane.eurobucks.eurobucksModifyReason"}}:</div>
+            <input class="eurobucks-input-reason eurobucks-modify-reason" placeholder="{{localize "CPR.characterSheet.rightPane.eurobucks.eurobucksModifyReasonPlaceholder"}}" type="text">
+          </div>
+        </ol>
+      {{/if}}
+      </div>
+    </div>
+</div>
+{{cprTrace "END RIGHT-PANE CPR-GEAR.HBS"}}

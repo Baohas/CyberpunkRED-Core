@@ -1,0 +1,16 @@
+{{cprTrace "START ACTOR PARTS RIGHT-PANE PARTS GEAR CPR-PROGRAM-CONTENT.HBS"}}
+{{#unless item.system.isInstalled}}
+<li class="item flexrow{{#if item.system.favorite}} favorite{{else}}{{#if (cprListContains sheet.options.collapsedSections "gearTab-gear")}} hide{{/if}}{{/if}}" data-item-id="{{item._id}}"
+    data-item-category="{{item.type}}" draggable="true">
+    <div class="item-name gear-name text-nowrap">
+        <a class="name item-edit" title="{{item.name}} x{{item.system.amount}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{item.name}}</a>
+    </div>
+    <div class="item-detail gear-data text-nowrap">
+        {{#if item.system.class}}{{localize (cprFindConfigValue "programClassList" item.system.class)}} | {{/if}}{{localize "CPR.global.generic.price"}}: {{item.system.price.market}}
+    </div>
+    <div class="item-detail gear-actions text-nowrap">
+        {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-actions.hbs" item}}
+    </div>
+</li>
+{{/unless}}
+{{cprTrace "END CPR-PROGRAM-CONTENT.HBS"}}

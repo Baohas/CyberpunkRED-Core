@@ -1,0 +1,15 @@
+{{cprTrace "START DIALOG CPR-DAMAGE-APPLICATION-PROMPT.HBS"}}
+<div class="">
+  <div>{{allowedTypesMessage}}</div>
+  <br>
+  {{#each allowedActors as |actor|}}
+    <li>{{actor.name}}</li>
+  {{/each}}
+  <br>
+  <div>{{localize "CPR.chat.damageApplication.prompt.forbiddenTypes"}}</div>
+  <br>
+  {{#each forbiddenActors as |actor|}}
+    <li>{{actor.name}}</li>
+  {{/each}}
+</div>
+{{cprTrace "END CPR-DAMAGE-APPLICATION-PROMPT.HBS"}}

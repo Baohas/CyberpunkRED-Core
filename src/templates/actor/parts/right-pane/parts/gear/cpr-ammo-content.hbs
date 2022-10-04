@@ -1,0 +1,22 @@
+{{cprTrace "START ACTOR PARTS RIGHT-PANE PARTS GEAR CPR-AMMO-CONTENT.HBS"}}
+<li class="item flexrow{{#if item.system.favorite}} favorite{{else}}{{#if (cprListContains sheet.options.collapsedSections "gearTab-ammo")}} hide{{/if}}{{/if}}" data-item-id="{{item._id}}"
+  data-item-category="{{item.type}}" draggable="true">
+  <div class="item-name gear-name text-nowrap">
+    <a class="name item-edit" title="{{item.name}} x{{item.system.amount}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{item.name}}{{#if item.system.isUpgraded}}<sup><i class="fab fa-uniregistry"></sup></i>{{/if}}</a>&nbsp;
+      (x<span class="amount-input-wrap">
+        <span class="width-element">{{cprNumberFormat item.system.amount}}</span>
+        <input name = "item.system.amount" class = "number amount-input" style="text-align: right;" type = "text" data-item-prop = "item.system.amount" value = "{{cprNumberFormat item.system.amount}}">
+        </span>)
+  </div>
+  <div class="item-detail gear-data text-nowrap">
+        {{localize (cprFindConfigValue "ammoVariety" item.system.variety)}}
+        |
+        {{localize (cprFindConfigValue "ammoType" item.system.type)}}
+        |
+        {{localize "CPR.global.generic.unitPrice"}}: {{cprNumberFormat item.system.price.market}} |  {{localize "CPR.global.generic.stackPrice"}}: {{cprNumberFormat (cprCalculateStackValue item)}}
+  </div>
+  <div class="item-detail gear-actions text-nowrap">
+    {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-actions.hbs" item}}
+  </div>
+</li>
+{{cprTrace "END CPR-AMMO-CONTENT.HBS"}}

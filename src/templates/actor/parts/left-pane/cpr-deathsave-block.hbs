@@ -1,0 +1,30 @@
+{{cprTrace "START ACTOR PARTS LEFT-PANE CPR-DEATHSAVE-BLOCK.HBS"}}
+<div class="deathsave-block main-block">
+  <div class="block-label text-small flex-space-between">
+    <span class="text-padding-left">{{localize "CPR.characterSheet.leftPane.woundState"}}</span>
+    <span class="text-padding-right" title="{{localize "CPR.characterSheet.leftPane.deathSave.roll"}}"><a class="rollable"  data-roll-title="{{localize "CPR.characterSheet.leftPane.deathSave.title"}}" data-roll-type="deathsave">{{localize "CPR.characterSheet.leftPane.deathSave.title"}}</a></span>
+  </div>
+  <div class="block-data flex-space-between">
+    {{#with actor.system.derivedStats.currentWoundState as |state| }}
+    {{#if (cprCompare state "===" "notWounded")}}
+    <img class="width-full" src="systems/cyberpunk-red-core/icons/hud/wounded_none.svg" width="20" height="20" alt="{{localize "CPR.global.woundState.notWounded"}}" title="{{localize "CPR.global.woundState.notWounded"}}">
+    {{/if}}
+    {{#if (cprCompare state "===" "lightlyWounded")}}
+    <img class="width-full" src="systems/cyberpunk-red-core/icons/hud/wounded_lightly.svg" width="20" height="20" alt="{{localize "CPR.global.woundState.lightlyWounded"}}" title="{{localize "CPR.global.woundState.lightlyWounded"}}">
+    {{/if}}
+    {{#if (cprCompare state "===" "seriouslyWounded")}}
+    <img class="width-full" src="systems/cyberpunk-red-core/icons/hud/wounded_seriously.svg" width="20" height="20" alt="{{localize "CPR.global.woundState.seriouslyWounded"}}" title="{{localize "CPR.global.woundState.seriouslyWounded"}}">
+    {{/if}}
+    {{#if (cprCompare state "===" "mortallyWounded")}}
+    <img class="width-full" src="systems/cyberpunk-red-core/icons/hud/wounded_mortally.svg" width="20" height="20" alt="{{localize "CPR.global.woundState.mortallyWounded"}}" title="{{localize "CPR.global.woundState.mortallyWounded"}}">
+    {{/if}}
+    {{/with}}
+    <div class="width-full">
+      <span class="width-half" title="{{localize "CPR.characterSheet.leftPane.deathSave.reset"}}
+      {{localize "CPR.global.generic.deathPenalty"}}: {{actor.system.derivedStats.deathSave.penalty}}
+      {{localize "CPR.characterSheet.leftPane.deathSave.hoverCriticalInjuryPenalty"}}: {{actor.system.derivedStats.deathSave.basePenalty}}"><a class="reset-deathsave-value text-bold">{{actor.system.derivedStats.deathSave.value}}</a></span>
+      <a class="increase-deathsave-value"><i class="far fa-arrow-alt-circle-up text-smaller" title="{{localize "CPR.characterSheet.leftPane.deathSave.increase"}}"></i></a>
+    </div>
+  </div>
+</div>
+{{cprTrace "END CPR-DEATHSAVE-BLOCK.HBS"}}

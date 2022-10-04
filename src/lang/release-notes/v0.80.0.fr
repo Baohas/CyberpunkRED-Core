@@ -1,0 +1,3 @@
+Bienvenue dans la version 0.80.0 !
+Il n'y a pas de tâches spécifiques requises pour les MJ dans cette version, mais gardez un œil sur cette section après les futures mises à jour.
+Si des actions sont requises de votre part, cette page sera affichée lors de votre première connexion après la mise à jour. 

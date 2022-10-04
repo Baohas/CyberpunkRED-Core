@@ -1,0 +1,30 @@
+{{cprTrace "START DIALOG ROLLS CPR-VERIFY-PROGRAM-DAMAGE-PROMPT.HBS"}}
+<form>
+    <div>
+        {{localize "CPR.rolls.roll"}} {{localize "CPR.rolls.damageFor"}} "{{rollCardExtraArgs.program.name}} ({{localize (cprFindConfigValue "programClassList" rollCardExtraArgs.program.system.class)}})", Choomba!
+    </div>
+    <ol class="items-list">
+      {{#if (cprCompare (cprCompare rollCardExtraArgs.program.system.class "===" "antiprogramattacker") "&&" (cprCompare rollCardExtraArgs.program.system.damage.blackIce "!==" "")) }}
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.selectTarget"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+              <select name="formula">
+                    <option selected value="{{rollCardExtraArgs.program.system.damage.standard}}">{{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.itemSheet.program.nonBlackIce"}} ({{rollCardExtraArgs.program.system.damage.standard}})</option>
+                    <option value="{{rollCardExtraArgs.program.system.damage.blackIce}}">{{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.global.programClass.blackice"}} ({{rollCardExtraArgs.program.system.damage.blackIce}})</option>
+                </select>
+            </div>
+        </li>
+        {{/if}}
+         <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.mods"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="mods" class="" type="text" data-dtype="String" value={{mods}}>
+            </div>
+        </li>
+    </ol>
+</form>
+{{cprTrace "END CPR-VERIFY-PROGRAM-DAMAGE-PROMPT.HBS"}}

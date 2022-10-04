@@ -1,0 +1,32 @@
+{{cprTrace "START DIALOG CPR-SELECT-COMPATIBLE-AMMO-PROMPT.HBS"}}
+<form>
+  {{localize "CPR.dialog.selectCompatibleAmmo.selectCompatibleAmmo"}} "{{name}}", Choomba!
+  <ol class="items-list">
+    <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize "CPR.global.itemTypes.ammo"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <span class="text-bold text-nowrap text-center text-space-around">{{localize "CPR.dialog.common.select"}}</span>
+      </div>
+    </li>
+
+
+
+    {{#each (cprFindConfigObj "ammoVariety") as |ammoVariety a|}}
+    <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize ammoVariety}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        {{#if (cprListContains ../system.ammoVariety a)}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedAmmo" value="{{a}}" checked></span>
+        {{else}}
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedAmmo" value="{{a}}"></span>
+        {{/if}}
+      </div>
+    </li>
+    {{/each}}
+  </ol>
+</form>
+{{cprTrace "END CPR-SELECT-COMPATIBLE-AMMO-PROMPT.HBS"}}

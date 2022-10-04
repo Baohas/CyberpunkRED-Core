@@ -1,0 +1,45 @@
+{{cprTrace "START DIALOG ROLLS CPR-VERIFY-ROLL-CYBERDECK-PROMPT.HBS"}}
+<form>
+    <div>
+        {{localize "CPR.rolls.rollingFor"}} "{{rollTitle}}", Choomba!
+    </div>
+
+    <ol class="items-list">
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.abilityRank"}} ({{roleName}}):
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="roleValue" class="" type="number" data-dtype="Number" value={{roleValue}}>
+            </div>
+        </li>
+
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.mods"}}/{{localize "CPR.rolls.rezzedBoosters"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="mods" class="" type="text" data-dtype="String" value={{mods}}>
+            </div>
+        </li>
+
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.luck"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="luck" class="" type="number" data-dtype="Number" value={{luck}}>
+            </div>
+        </li>
+
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.shouldRollCriticals"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="calculateCritical" class="" type="checkbox" data-dtype="Checkbox" checked>
+            </div>
+        </li>
+
+</form>
+{{cprTrace "END CPR-VERIFY-ROLL-CYBERDECK-PROMPT.HBS"}}

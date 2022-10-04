@@ -1,0 +1,20 @@
+{{cprTrace "START DIALOG CPR-PURCHASE-PART-PROMPT.HBS"}}
+<form>
+  <div>
+    {{localize this}}
+  </div>
+  <div>
+    <ol class="items-list">
+      <li class="item flexrow">
+        <div class="item flexrow setting-name text-nowrap">
+          {{localize "CPR.dialog.purchasePart.amount"}}:
+        </div>
+        <div class="item flexrow setting-value text-nowrap item-end">
+          <input class="text-right" name="purchaseAmount" type="number" value="" placeholder="0" />
+        </div>
+      </li>
+    </ol>
+  </div>
+</form>
+{{cprTrace "END CPR-PURCHASE-PART-PROMPT.HBS"}}
+

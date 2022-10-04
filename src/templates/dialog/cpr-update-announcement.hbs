@@ -1,0 +1,16 @@
+{{cprTrace "START DIALOG CPR-UPDATE-ANNOUNCEMENT.HBS"}}
+<div>
+<h2>{{updateBanner}}</h2>
+{{changelogInformation}} <a href="https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/blob/master/CHANGELOG.md" target="_blank">{{HERE}}</a>
+{{#if (cprCompare featureVideoLink "!==" "")}}
+<br><br>
+<h2>{{featureVideoTitle}}</h2>
+{{featureVideoInformation}} <a href="{{featureVideoLink}}" target="_blank">{{HERE}}</a>
+{{/if}}
+{{#if (cprCompare releaseInstructions "!==" "")}}
+<br><br>
+<h2>{{releaseInstructionsTitle}} (v{{releaseVersion}})</h2>
+{{{releaseInstructions}}}
+{{/if}}
+</div>
+{{cprTrace "END CPR-UPDATE-ANNOUNCEMENT.HBS"}}

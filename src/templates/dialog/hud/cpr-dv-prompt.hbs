@@ -1,0 +1,15 @@
+{{cprTrace "START DIALOG HUD CPR-DV-PROMPT.HBS"}}
+<form>
+  <div class="cpr-hud-icon dv-config">
+    <div>{{localize "CPR.dialog.dv.selectDvTable"}}</div>
+    <div>
+      <select name="dvTable">
+        <option value="">N/A</option>
+        {{#each this as |rollTableName|}}
+        <option value="{{rollTableName}}">{{rollTableName}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+</form>
+{{cprTrace "END CPR-DV-PROMPT.HBS"}}

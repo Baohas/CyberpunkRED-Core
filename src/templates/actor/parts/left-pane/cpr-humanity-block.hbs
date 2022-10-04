@@ -1,0 +1,15 @@
+{{cprTrace "START ACTOR PARTS LEFT-PANE CPR-HUMANITY-BLOCK.HBS"}}
+<div class="humanity-block main-block">
+  <div class="block-label text-normal">
+    {{localize "CPR.characterSheet.leftPane.humanity"}}
+  </div>
+  <div class="block-data min-of-max-container text-padding-right">
+    <input class="width-full" name="system.derivedStats.humanity.value" type="number" value="{{actor.system.derivedStats.humanity.value}}"
+      data-dtype="Number" />
+    <div class="of bg-red fg-white text-normal text-bold">of</div>
+    <input class="width-full" name="system.derivedStats.humanity.max" type="number" value="{{actor.system.derivedStats.humanity.max}}"
+      data-dtype="Number" />
+    <a class="calculate-humanity" title="{{localize "CPR.characterSheet.leftPane.calculateMaxHumanity"}}"><i class="fas fa-calculator"></i></a>
+  </div>
+</div>
+{{cprTrace "END CPR-HUMANITY-BLOCK.HBS"}}

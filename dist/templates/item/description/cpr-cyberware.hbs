@@ -1,0 +1,13 @@
+{{cprTrace "START ITEM DESCRIPTION CPR-CYBERWARE.HBS"}}
+<div class="item-summary-line">
+    <span class="text-bold summary-name">{{localize "CPR.global.generic.install"}}: </span>
+    <span class="summary-value">{{localize (cprFindConfigValue "cyberwareInstallList" item.system.install)}}</span>
+</div>
+
+{{#if item.system.hasOptionalSlots}}
+    <div class="item-summary-line">
+        <span class="text-bold summary-name">{{localize "CPR.itemSheet.cyberware.optionalSlots"}}:</span>
+        <span class="summary-value">{{item.system.optionSlots}}</span>
+    </div>
+{{/if}}
+{{cprTrace "END CPR-CYBERWARE.HBS"}}

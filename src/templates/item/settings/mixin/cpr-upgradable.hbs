@@ -1,0 +1,67 @@
+{{cprTrace "START ITEM SETTINGS MIXIN CPR-UPGRADABLE.HBS"}}
+{{!-- Upgrade Installed Setting --}}
+<li class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.itemSheet.itemUpgrade.slots"}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+        {{#if this.editable}}
+            <input name="system.slots" class="" type="number" value="{{item.system.slots}}">
+        {{else}}
+            <span class="text-flex-end">{{item.system.slots}}</span>
+        {{/if}}
+    </div>
+</li>
+
+{{!-- listing out installed upgrades --}}
+{{#if (cprCompare item.type "===" "weapon")}}
+<li class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap">
+        &nbsp;&nbsp;({{localize "CPR.itemSheet.itemUpgrade.unusedSlots"}}: {{item.system.availableSlots}})
+    </div>
+</li>
+{{/if}}
+
+<li class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap">
+        {{#if this.editable}}
+            <a class="select-item-upgrades" data-item-prop="select-item-upgrades">
+        {{/if}}
+        <strong>
+            {{localize "CPR.itemSheet.common.itemUpgrades"}}
+            {{#if (cprCompare item.type "===" "weapon")}} &#38; {{localize "CPR.itemSheet.weapon.attachments"}}{{/if}}
+        </strong>
+        {{#if this.editable}}
+            <i class="text-smallest text-super fas fa-wrench"></i>
+            </a>
+        {{/if}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+    </div>
+</li>
+{{#if item.system.isUpgraded}}
+<hr>
+{{#each item.system.upgrades as |upgrade|}}
+<li class="item flexrow" data-item-id="{{upgrade._id}}" draggable="false">
+    <div class="item-name flexrow setting-name text-nowrap">
+        {{#if this.editable}}
+            <a class="name item-view">{{upgrade.name}}</a>
+        {{else}}
+            <span class="text-flex-end">{{upgrade.name}}</span>
+        {{/if}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+        {{localize "CPR.itemSheet.common.itemUpgradeSize"}}: {{upgrade.system.size}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+        {{#if ../this.editable}}
+            <a class="remove-upgrade" data-item-id="{{upgrade._id}}">
+                <i class="fab fa-superpowers fg-red" title="{{localize "CPR.actorSheets.commonActions.removeUpgrade"}}"></i>
+            </a>
+        {{/if}}
+    </div>
+</li>
+{{/each}}
+<hr>
+{{/if}}
+{{cprTrace "END CPR-UPGRADABLE.HBS"}}

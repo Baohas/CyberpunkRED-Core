@@ -1,0 +1,22 @@
+{{cprTrace "START ACTOR MOOKS CPR-MOOK-SHEET-LIMITED.HBS"}}
+<form>
+  <div class="mook-sheet-limited bg-red">
+    <div class="mook-image-limited bg-red">
+      <img class="mook-image-block-img" src="{{actor.img}}" title="{{actor.name}}"/>
+    </div>
+    <div class="mook-name-limited side-banner">
+      <div class="bg-red fg-white text-largest">
+        {{actor.name}}
+      </div>
+    </div>
+    <div class="mook-details-limited bg-red">
+      <div class="mook-notes-limited pad-thin fg-white">
+        <span class="text-padding-left">{{localize "CPR.global.generic.notes"}}</span>
+        <div class="mook-edit-section-limited fg-black text-padding-left">
+          {{editor system.information.notes target="system.information.notes"}}
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+{{cprTrace "END CPR-MOOK-SHEET-LIMITED.HBS"}}

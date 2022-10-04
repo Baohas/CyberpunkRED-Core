@@ -1,0 +1,15 @@
+{{cprTrace "START ACTOR PARTS LEFT-PANE CPR-HITPOINT-BLOCK.HBS"}}
+<div class="hitpoint-block main-block">
+  <div class="block-label">
+    <span>{{localize "CPR.global.generic.hitpoints"}}</span>
+  </div>
+  <div class="block-data min-of-max-container text-padding-right">
+    <input class="text-center" name="system.derivedStats.hp.value" type="number" value="{{actor.system.derivedStats.hp.value}}"
+      data-dtype="Number" />
+    <div class="of bg-red fg-white text-normal text-bold">of</div>
+    <input class="text-center" name="system.derivedStats.hp.max" type="number" value="{{actor.system.derivedStats.hp.max}}"
+      data-dtype="Number" />
+      <a class="calculate-hp" title="{{localize "CPR.characterSheet.leftPane.calculateMaxHp"}}"><i class="fas fa-calculator"></i></a>
+  </div>
+</div>
+{{cprTrace "END CPR-HITPOINT-BLOCK.HBS"}}

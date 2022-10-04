@@ -1,0 +1,35 @@
+{{cprTrace "START DIALOG CPR-LEDGER-FORM.HBS"}}
+<form>
+  <div class="text-normal">{{localize "CPR.dialog.ledgerForm.type"}}: {{localize ledgername}}</div>
+  <li class="ledger-grid items-header flexrow">
+    <span class="item-name ledger-number fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.dialog.ledgerForm.number"}}</span>
+    <span class="item-name ledger-transaction fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.dialog.ledgerForm.transaction"}}</span>
+    <span class="item-name ledger-reason fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.dialog.ledgerForm.reason"}}</span>
+    {{#if isGM}}<span class="item-name ledger-delete-title fg-white bg-black text-nowrap text-padding-left"></span>{{/if}}
+  </li>
+  <div class="ledger-content-scroll">
+    <div class="ledger-list">
+      <ol class="items-list">
+      {{#each (cprReverse contents) as |content c|}}
+        <li class="ledger-grid item flexrow">
+          <div class="ledger-number">
+            {{cprMath "subtract" ../contents.length @index}}
+          </div>
+          <div class="ledger-transaction">
+            {{content.[0]}}
+          </div>
+          <div class="ledger-reason">
+            {{content.[1]}}
+          </div>
+          {{#if ../isGM}}
+            <div class="ledger-delete">
+              <a class="delete-ledger-line" data-line="{{cprMath "subtract" ../contents.length @index 1}}"><i class="fas fa-trash-alt fg-red" title="{{localize "CPR.dialog.ledgerForm.delete"}}"></i></a>
+            </div>
+          {{/if}}
+        </li>
+      {{/each}}
+      </ol>
+    </div>
+  </div>
+</form>
+{{cprTrace "END CPR-LEDGER-FORM.HBS"}}

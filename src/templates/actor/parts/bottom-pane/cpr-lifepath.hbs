@@ -1,0 +1,109 @@
+{{cprTrace "START ACTOR PARTS BOTTOM-PANE CPR-LIFEPATH.HBS"}}
+<div class="lifepath-tab">
+    <div class="notes-section">
+        <div class="reputation-details text-large text-bold">
+            {{localize "CPR.characterSheet.bottomPane.reputation"}}
+            <span class="text-float-right">
+                {{actor.system.reputation.value}} <a class="reputation-edit-button" title="{{localize "CPR.characterSheet.bottomPane.reputationEdit"}}"><i class="fas fa-edit"></i></a> <a class="reputation-open-ledger" title="{{localize "CPR.ledger.ledgerOpen"}}"><i class="fas fa-sticky-note"></i></a>
+            </span>
+        </div>
+        <div class="notes-details">
+            <div class="notes-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.playerNotes"}}</div>
+            <div class="note-pad">
+            {{editor actor.system.information.notes target="system.information.notes" button=true owner=owner editable=editable}}
+            </div>
+        </div>
+    </div>
+    <div class="lifepath-section">
+        <div class="cultural-origins">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">
+                {{localize "CPR.characterSheet.bottomPane.lifepath.culturalOrigins"}}
+                <span class="text-float-right"><a class="set-lifepath" data-item-prop="set-lifepath"><i
+                            class="text-smaller text-super fas fa-wrench"></i></a></span>
+            </div>
+            <div class="lifepath-value">{{actor.system.lifepath.culturalOrigin}}</div>
+        </div>
+        <br>
+        <div class="languages">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.languages"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.languages}}</div>
+        </div>
+        <br>
+        <div class="personality">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.personality"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.personality}}</div>
+        </div>
+        <br>
+        <div class="clothing-style">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.clothingStyle"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.clothingStyle}}</div>
+        </div>
+        <br>
+        <div class="hairstyle">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.hairStyle"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.hairStyle}}</div>
+        </div>
+        <br>
+        <div class="affectation">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.affectation"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.affectation}}</div>
+        </div>
+        <br>
+        <div class="value-most">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.valueMost"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.valueMost}}</div>
+        </div>
+        <br>
+        <div class="people-feelings">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.peopleFeelings"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.aboutPeople}}</div>
+        </div>
+        <br>
+        <div class="valued-person">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.valuedPerson"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.valuedPerson}}</div>
+        </div>
+        <br>
+        <div class="valued-possession">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.valuedPossession"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.valuedPossession}}</div>
+        </div>
+        <br>
+        <div class="family-background">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.familyBackground"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.familyBackground}}</div>
+        </div>
+        <br>
+        <div class="child-environment">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.childhoodEnvironment"}}
+            </div>
+            <div class="lifepath-value">{{actor.system.lifepath.childhoodEnvironment}}</div>
+        </div>
+        <br>
+        <div class="family-crisis">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.familyCrisis"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.familyCrisis}}</div>
+        </div>
+        <br>
+        <div class="friends">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.friends"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.friends}}</div>
+        </div>
+        <br>
+        <div class="enemies">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.enemies"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.enemies}}</div>
+        </div>
+        <br>
+        <div class="lovers">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.lovers"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.lovers}}</div>
+        </div>
+        <br>
+        <div class="life-goals">
+            <div class="lifepath-label section-name fg-white bg-black text-nowrap text-padding-left">{{localize "CPR.characterSheet.bottomPane.lifepath.lifeGoals"}}</div>
+            <div class="lifepath-value">{{actor.system.lifepath.lifeGoals}}</div>
+        </div>
+    </div>
+</div>
+{{cprTrace "END CPR-LIFEPATH.HBS"}}

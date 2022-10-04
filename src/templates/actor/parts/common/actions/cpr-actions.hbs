@@ -1,0 +1,45 @@
+{{cprTrace "START ACTOR PARTS COMMON ACTIONS CPR-ACTIONS.HBS"}}
+{{#if (cprCompare type "===" "weapon")}}
+{{!-- LOAD/RELOAD ACTION --}}
+{{#if system.isRanged}}
+{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
+{{/if}}
+
+{{/if}}
+{{#if (cprCompare type "===" "cyberware")}}
+{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-install-cyberware-glyph.hbs"}}
+{{/if}}
+{{#if (cprCompare type "===" "cyberdeck")}}
+{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-install-programs-glyph.hbs"}}
+{{/if}}
+{{#if (cprCompare type "===" "armor")}}
+{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-repair-glyph.hbs"}}
+{{/if}}
+{{#if (cprCompare type "===" "drug")}}
+{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-snort-glyph.hbs"}}
+{{/if}}
+{{#if (cprCompare (cprListContains "ammo,gear,clothing" type) "&&" (cprCompare system.amount ">" "1"))}}
+{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-split-item.hbs"}}
+{{/if}}
+{{#if (cprListContains "weapon,armor,gear,clothing,cyberdeck" type)}}
+{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-equip-glyph.hbs"}}
+{{/if}}
+<a class="item-action" data-action-type="favorite" title="{{localize "CPR.actorSheets.commonActions.togglePin"}}">
+    {{#if system.favorite}}
+    <i class="fas fa-thumbtack fg-black favorite"></i>
+    {{else}}
+    <i class="fas fa-thumbtack fg-grey"></i>
+    {{/if}}
+</a>
+{{!-- ITEM MANAGEMENT --}}
+{{#if (cprIsUpgradable type)}}
+  {{#if system.isUpgraded}}
+    {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
+  {{else}}
+    {{#unless (cprIsEmpty (cprFilter (cprFilter actor.itemTypes.itemUpgrade "system.type" type) "system.isInstalled" false))}}
+      {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
+    {{/unless}}
+  {{/if}}
+{{/if}}
+<a class="item-action" data-action-type="delete"><i class="fas fa-trash-alt fg-red" title="{{localize "CPR.actorSheets.commonActions.deleteItem"}}"></i></a>
+{{cprTrace "END CPR-ACTIONS.HBS"}}

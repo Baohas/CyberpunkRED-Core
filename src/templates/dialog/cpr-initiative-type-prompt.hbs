@@ -1,0 +1,22 @@
+{{cprTrace "START DIALOG CPR-INITIATIVE-TYPE-PROMPT.HBS"}}
+<form>
+  <ol class="items-list">
+    <li class="item flexrow">
+      <div class="item flexrow setting-value">
+       <span class="text-bold text-nowrap text-center text-space-around">{{localize "CPR.dialog.initiativeType.meatInitiative"}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <span class="text-bold text-nowrap text-center text-space-around">{{localize "CPR.dialog.initiativeType.netInitiative"}}</span>
+      </div>
+    </li>
+    <li class="item flexrow">
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="radio" name="initiativeType" value="meat"></span>
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="radio" name="initiativeType" value="net" checked></span>
+      </div>
+    </li>
+  </ol>
+</form>
+{{cprTrace "END CPR-INITIATIVE-TYPE-PROMPT.HBS"}}

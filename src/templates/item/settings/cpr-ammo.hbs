@@ -1,0 +1,33 @@
+{{cprTrace "START ITEM SETTINGS CPR-AMMO.HBS"}}
+{{!-- Ammo Item Settings--}}
+{{!-- Ammo Variety Setting --}}
+<li class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.itemSheet.ammo.variety"}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+        <select name="system.variety" data-dtype="{{item.system.variety}}">
+            {{#select item.system.variety}}
+                {{#each (cprFindConfigObj "ammoVariety") as |variety v|}}
+                    <option value="{{v}}">{{localize variety}}</option>
+                {{/each}}
+            {{/select}}
+        </select>
+    </div>
+</li>
+{{!-- Ammo Type Settings--}}
+<li class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.global.generic.type"}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+        <select name="system.type" data-dtype="{{item.system.type}}">
+            {{#select item.system.type}}
+                {{#each (cprFindConfigObj "ammoType") as |type t|}}
+                    <option value="{{t}}">{{localize type}}</option>
+                {{/each}}
+            {{/select}}
+        </select>
+    </div>
+</li>
+{{cprTrace "END CPR-AMMO.HBS"}}

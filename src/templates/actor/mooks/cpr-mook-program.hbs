@@ -1,0 +1,21 @@
+{{cprTrace "START ACTOR MOOKS CPR-MOOK-PROGRAM.HBS"}}
+<div class="items-header bg-red fg-white flexrow">
+  <span class="item-name section-name text-nowrap text-padding-left">
+    {{localize "CPR.mookSheet.items.cyberdeckPrograms"}}
+  </span>
+</div>
+<div class="bg-white fg-black text-padding-left">
+  <!-- Program -->
+  {{#each actor.itemTypes.program as |item i|}}
+  {{#if item.system.isInstalled}}
+    <a class="name item-view" tabindex="0" title="{{localize "CPR.mookSheet.items.InstalledClickToViewItemReadOnly"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}" data-item-id="{{item.id}}">
+      <span class="text-italics">{{item.name}}</span>{{#unless @last}},{{/unless}}
+    </a>
+    {{else}}
+    <a class="name item deletable changeable item-edit" tabindex="0" title="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}" data-item-id="{{item.id}}">
+      {{item.name}}{{#unless @last}},{{/unless}}
+    </a>
+    {{/if}}
+  {{/each}}
+</div>
+{{cprTrace "END CPR-MOOK-PROGRAM.HBS"}}

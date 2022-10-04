@@ -1,0 +1,33 @@
+{{cprTrace "START CHAT CPR-DAMAGE-APPLICATION-CARD.HBS"}}
+<div class="rollcard">
+  <div class="rollcard-top">
+    <div class="cpr-block chat-rollTitle-stat">
+      <div class="text-center text-padding-top text-normal">{{localize "CPR.chat.damageApplication.damageDealtTo"}}</div>
+      <div class="rollcard-subtitle">
+        <div class="rollcard-subtitle-center text-small">{{name}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="rollcard-bottom">
+    <div class="cpr-block">
+      {{#if rezReduction}}
+        <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.rezReducedBy"}} <span class="text-bold">{{hpReduction}}</span></div>
+      {{else}}
+        {{#if brainDamage}}
+          <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.healthReducedBy"}} <span class="text-bold">{{hpReduction}}</span></div>
+          <div class="text-right text-smaller">{{localize "CPR.chat.damageApplication.defenderProgramsNotApplied"}}</div>
+        {{else}}
+          {{#if (cprCompare hpReduction "===" 0)}}
+            <div class="text-center text-normal">{{localize "CPR.chat.damageApplication.damageDidNotPenetrate"}}</div>
+          {{else}}
+            <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.healthReducedBy"}} <span class="text-bold">{{hpReduction}}</span></div>
+            {{#if (cprCompare ablation "!==" 0)}}
+              <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.armorAblation"}} <span class="text-bold">{{ablation}}</span></div>
+            {{/if}}
+          {{/if}}
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+</div>
+{{cprTrace "END CPR-DAMAGE-APPLICATION-CARD.HBS"}}

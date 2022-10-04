@@ -1,0 +1,32 @@
+{{cprTrace "START ACTOR CONTAINER CPR-ITEM-CONTENT.HBS"}}
+<li class="item flexrow" data-item-id="{{item.id}}" data-item-category="{{item.type}}" draggable="true">
+  <div class="item-name text-nowrap">
+    <a class="name item-edit" title="{{item.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{item.name}}</a>&nbsp;
+  </div>
+  <div class="item-detail text-nowrap">
+    {{#if (cprIsNumber (cprNumberFormat item.system.amount))}}
+    {{cprNumberFormat item.system.amount}}
+    {{else}}
+    1
+    {{/if}}
+  </div>
+  <div class="item-name gear-data text-nowrap">
+    {{#if (cprCompare item.system.amount ">" "1")}}
+      {{#if (cprCompare (cprCompare item.type "===" "ammo") "&&" (cprCompare (cprCompare item.system.variety "!==" "grenade") "&&" (cprCompare item.system.variety "!==" "rocket")))}}
+        {{localize "CPR.containerSheet.items.priceListingSingleAll" price=(cprMath "product" item.system.price.market "0.1") category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") item.system.price.category)) priceAll=(cprNumberFormat (cprMath "product" item.system.price.market item.system.amount "0.1"))}}
+      {{else}}
+        {{localize "CPR.containerSheet.items.priceListingSingleAll" price=item.system.price.market category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") item.system.price.category)) priceAll=(cprMath "product" item.system.price.market item.system.amount)}}
+      {{/if}}
+    {{else}}
+      {{#if (cprCompare (cprCompare item.type "===" "ammo") "&&" (cprCompare (cprCompare item.system.variety "!==" "grenade") "&&" (cprCompare item.system.variety "!==" "rocket")))}}
+        {{localize "CPR.containerSheet.items.priceListingSingle" price=(cprMath "product" item.system.price.market "0.1") category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") item.system.price.category))}}
+      {{else}}
+        {{localize "CPR.containerSheet.items.priceListingSingle" price=item.system.price.market category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") item.system.price.category))}}
+      {{/if}}
+    {{/if}}
+  </div>
+  <div class="item-end text-nowrap">
+    {{> "systems/cyberpunk-red-core/templates/actor/container/cpr-container-actions.hbs" (cprMergeForPartialArg "item,actor,isGM" item actor isGM)}}
+  </div>
+</li>
+{{cprTrace "END CPR-ITEM-CONTENT.HBS"}}
