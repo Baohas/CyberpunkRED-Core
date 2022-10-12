@@ -110,7 +110,7 @@
         },
         "criticalInjuries": [],
         "installedItems": {
-          "allowedTypes": "cyberware",
+          "allowedTypes": ["cyberware"],
           "allowed": true,
           "list": []
         }
