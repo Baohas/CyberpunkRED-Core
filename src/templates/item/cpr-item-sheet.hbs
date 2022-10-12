@@ -20,8 +20,8 @@
           {{item.system.source}}{{/if}}
         </div>
       </li>
-      <li></li>
-      <li></li>
+      <li>{{#unless this.editable}}({{localize "CPR.itemSheet.common.readOnlyMode"}}){{/unless}}</li>
+      <li>{{#if (cprCompare item.system.installedItems.list.length ">" 0)}}<div class="text-padding-left"><i>({{localize "CPR.itemSheet.hasInstalledItems"}})</i></div>{{/if}}</li>
     </div>
   </div>
   <div class="item-bottom-pane">

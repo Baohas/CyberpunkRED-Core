@@ -84,7 +84,7 @@ export default class CPRBlackIceActor extends Actor {
         }
       });
       if (netrunnerToken) {
-        program = netrunnerToken.actor._getOwnedItem(programId);
+        program = netrunnerToken.actor.getOwnedItem(programId);
       }
     } else {
       const programList = game.items.filter((i) => i._id === programId);

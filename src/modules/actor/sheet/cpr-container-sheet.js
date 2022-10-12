@@ -11,7 +11,7 @@ import PurchaseOrderPrompt from "../../dialog/cpr-container-vendor-purchase-orde
 
 /**
  * Implement the sheet for containers and shop keepers. This extends CPRActorSheet to make use
- * of owned-item management methods like _getOwnedItem and _deleteOwnedItem.
+ * of owned-item management methods like getOwnedItem and _deleteOwnedItem.
  *
  * @extends {CPRActorSheet}
  */
@@ -86,7 +86,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     html.find(".checkbox-toggle").click((event) => this._checkboxToggle(event));
     // Eurobucks management
     html.find(".eurobucks-input-button").click((event) => this._updateEurobucks(event));
-    html.find(".eurobucks-open-ledger").click(() => this.actor.showLedger());
+    html.find(".eurobucks-open-ledger").click(() => this.showLedger("wealth"));
     // Configure container to purchase items from players
     html.find(".vendor-configure-sell-to").click(() => this._configureSellTo());
 
@@ -145,7 +145,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   async _itemAction(event) {
     LOGGER.trace("_itemAction | CPRContainerSheet | Called.");
-    const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
+    const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     const actionType = SystemUtils.GetEventDatum(event, "data-action-type");
     if (item) {
       switch (actionType) {

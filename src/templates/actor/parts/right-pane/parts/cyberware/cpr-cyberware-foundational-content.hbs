@@ -6,7 +6,7 @@
 {{else}}
   <li class="item flexrow" data-item-id="{{cyberware._id}}" draggable="false">
       <div class="item-name cyberware-name text-nowrap">
-          <a class="name item-view">{{cyberware.name}} ({{cyberware.system.installedItems.usedSlots}}/{{cyberware.system.installedItems.slots}} {{localize "CPR.itemSheet.cyberware.optionalSlots"}}){{#if cyberware.system.isUpgraded}}<sup><i class="fab fa-uniregistry"></sup></i>{{/if}}</a>
+          <a class="name item-view">{{cyberware.name}} ({{cyberware.system.installedItems.usedSlots}}/{{cprApplyUpgrade cyberware cyberware.system.installedItems.slots "slots"}} {{localize "CPR.itemSheet.cyberware.optionalSlots"}}){{#if cyberware.system.isUpgraded}}<sup><i class="fab fa-uniregistry"></sup></i>{{/if}}</a>
       </div>
       <div class="item-detail cyberware-data text-nowrap">
           {{localize (cprFindConfigValue "cyberwareTypeList" cyberware.system.type)}}

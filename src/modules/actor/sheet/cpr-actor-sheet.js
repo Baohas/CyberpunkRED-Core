@@ -3,6 +3,7 @@ import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import CPR from "../../system/config.js";
 import CPRChat from "../../chat/cpr-chat.js";
+import CPRLedger from "../../dialog/cpr-ledger-form.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import RollCriticalInjuryPrompt from "../../dialog/cpr-roll-critical-injury-prompt.js";
 import Rules from "../../utils/cpr-rules.js";
@@ -75,8 +76,6 @@ export default class CPRActorSheet extends ActorSheet {
     const foundryData = super.getData();
     const cprActorData = foundryData.actor.system;
     if (this.actor.type === "mook" || this.actor.type === "character") {
-      cprActorData.installedCyberware = this._getSortedInstalledCyberware();
-
       cprActorData.fightOptions = (this.actor.hasItemTypeEquipped("cyberdeck")) ? "both" : "";
       let fightState = this.actor.getFlag("cyberpunk-red-core", "fightState");
       if (!fightState || cprActorData.fightOptions !== "both") {
@@ -127,34 +126,6 @@ export default class CPRActorSheet extends ActorSheet {
     }
 
     return categories;
-  }
-
-  /**
-   * Used in getData to turn installable Cyberware data into an organized structure
-   *
-   * @private
-   * @returns - object data about Cyberware
-   */
-  _getSortedInstalledCyberware() {
-    LOGGER.trace("_getSortedInstalledCyberware | CPRActorSheet | Called.");
-    // Get all Installed Cyberware first...
-    const installedCyberware = this.actor.getInstalledCyberware();
-    const installedFoundationalCyberware = installedCyberware.filter((c) => c.system.isFoundational === true);
-
-    // Now sort allInstalledCybere by type, and only get foundational
-    const sortedInstalledCyberware = {};
-    for (const [type] of Object.entries(CPR.cyberwareTypeList)) {
-      sortedInstalledCyberware[type] = installedFoundationalCyberware.filter(
-        (cyberware) => cyberware.system.type === type,
-      );
-      sortedInstalledCyberware[type] = sortedInstalledCyberware[type].map(
-        (cyberware) => ({ foundation: cyberware, optionals: [] }),
-      );
-      sortedInstalledCyberware[type].forEach((entry) => {
-        entry.foundation.system.optionalIds.forEach((id) => entry.optionals.push(this._getOwnedItem(id)));
-      });
-    }
-    return sortedInstalledCyberware;
   }
 
   /**
@@ -242,7 +213,7 @@ export default class CPRActorSheet extends ActorSheet {
 
     // Reputation related listeners
     html.find(".reputation-edit-button").click(() => this._updateReputation());
-    html.find(".reputation-open-ledger").click(() => this.actor.showLedger("reputation"));
+    html.find(".reputation-open-ledger").click(() => this.showLedger("reputation"));
 
     super.activateListeners(html);
   }
@@ -275,19 +246,19 @@ export default class CPRActorSheet extends ActorSheet {
           rollSubType,
           subRoleName,
         };
-        item = this._getOwnedItem(itemId);
+        item = this.actor.getOwnedItem(itemId);
         cprRoll = item.createRoll(rollType, this.actor, rollInfo);
         break;
       }
       case CPRRolls.rollTypes.SKILL: {
         const itemId = CPRActorSheet._getItemId(event);
-        item = this._getOwnedItem(itemId);
+        item = this.actor.getOwnedItem(itemId);
         cprRoll = item.createRoll(rollType, this.actor);
         break;
       }
       case CPRRolls.rollTypes.DAMAGE: {
         const itemId = CPRActorSheet._getItemId(event);
-        item = this._getOwnedItem(itemId);
+        item = this.actor.getOwnedItem(itemId);
         const damageType = this._getFireCheckbox(event);
         cprRoll = item.createRoll(rollType, this.actor, { damageType });
         if (rollType === CPRRolls.rollTypes.AIMED) {
@@ -297,7 +268,7 @@ export default class CPRActorSheet extends ActorSheet {
       }
       case CPRRolls.rollTypes.ATTACK: {
         const itemId = CPRActorSheet._getItemId(event);
-        item = this._getOwnedItem(itemId);
+        item = this.actor.getOwnedItem(itemId);
         rollType = this._getFireCheckbox(event);
         cprRoll = item.createRoll(rollType, this.actor);
         break;
@@ -305,7 +276,7 @@ export default class CPRActorSheet extends ActorSheet {
       case CPRRolls.rollTypes.INTERFACEABILITY: {
         const interfaceAbility = SystemUtils.GetEventDatum(event, "data-interface-ability");
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
-        const cyberdeck = this._getOwnedItem(cyberdeckId);
+        const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
         const netRoleItem = this.actor.itemTypes.role.find((r) => r.name === this.actor.system.roleInfo.activeNetRole);
         if (!netRoleItem) {
           const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
@@ -319,7 +290,7 @@ export default class CPRActorSheet extends ActorSheet {
         const programId = SystemUtils.GetEventDatum(event, "data-program-id");
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
         const executionType = SystemUtils.GetEventDatum(event, "data-execution-type");
-        const cyberdeck = this._getOwnedItem(cyberdeckId);
+        const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
         const netRoleItem = this.actor.itemTypes.role.find((r) => r.name === this.actor.system.roleInfo.activeNetRole);
         if (!netRoleItem) {
           const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
@@ -446,7 +417,7 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _itemAction(event) {
     LOGGER.trace("_itemAction | CPRActorSheet | Called.");
-    const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
+    const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     const actionType = SystemUtils.GetEventDatum(event, "data-action-type");
     if (item) {
       switch (actionType) {
@@ -462,12 +433,12 @@ export default class CPRActorSheet extends ActorSheet {
           item.toggleFavorite();
           break;
         }
-        case "upgrade": {
-          await item.sheet._selectItemUpgrades(event);
+        case "manage-upgrades": {
+          await item.sheet._manageInstalledItems("itemUpgrade");
           break;
         }
-        case "remove-upgrade": {
-          await item.sheet._removeItemUpgrade(event);
+        case "manage-programs": {
+          await item.sheet._manageInstalledItems("program");
           break;
         }
         case "split": {
@@ -545,7 +516,7 @@ export default class CPRActorSheet extends ActorSheet {
   _renderItemCard(event) {
     LOGGER.trace("_renderItemCard | CPRActorSheet | Called.");
     const itemId = CPRActorSheet._getItemId(event);
-    const item = this.actor.items.find((i) => i._id === itemId);
+    const item = this.actor.getOwnedItem(itemId);
     if (event.ctrlKey) {
       CPRChat.RenderItemCard(item);
       return;
@@ -565,7 +536,7 @@ export default class CPRActorSheet extends ActorSheet {
   _renderReadOnlyItemCard(event) {
     LOGGER.trace("_renderReadOnlyItemCard | CPRActorSheet | Called.");
     const itemId = CPRActorSheet._getItemId(event);
-    const item = this.actor.items.find((i) => i._id === itemId);
+    const item = this.actor.getOwnedItem(itemId);
     if (event.ctrlKey) {
       CPRChat.RenderItemCard(item);
       return;
@@ -591,18 +562,6 @@ export default class CPRActorSheet extends ActorSheet {
       id = SystemUtils.GetEventDatum(event, "data-item-id");
     }
     return id;
-  }
-
-  /**
-   * Return an owned Item object given the desired ID
-   *
-   * @private
-   * @param {String} itemId - the Id of the owned item to retrieve
-   * @returns the Item object matching the given Id
-   */
-  _getOwnedItem(itemId) {
-    LOGGER.trace("_getOwnedItem | CPRActorSheet | Called.");
-    return this.actor.items.find((i) => i._id === itemId);
   }
 
   /**
@@ -715,7 +674,7 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.debug(`weaponID is ${weaponID}`);
     LOGGER.debug(`flag is ${flag}`);
     if (this.token !== null && firemode === "autofire") {
-      const weaponDvTable = (this._getOwnedItem(weaponID)).system.dvTable;
+      const weaponDvTable = (this.actor.getOwnedItem(weaponID)).system.dvTable;
       const currentDvTable = (weaponDvTable === "") ? getProperty(this.token, "flags.cprDvTable") : weaponDvTable;
       if (typeof currentDvTable !== "undefined") {
         const dvTable = currentDvTable.replace(" (Autofire)", "");
@@ -993,6 +952,23 @@ export default class CPRActorSheet extends ActorSheet {
   }
 
   /**
+   * Pop up a dialog box with ledger records for a given property.
+   *
+   * @param {String} prop - name of the property that has a ledger
+   */
+  showLedger(prop) {
+    LOGGER.trace("showLedger | CPRActor | Called.");
+    if (this.actor.isLedgerProperty(prop)) {
+      const led = new CPRLedger();
+      led.setActor(this);
+      led.setLedgerContent(prop, this.actor.listRecords(prop));
+      led.render(true);
+    } else {
+      SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.ledgerErrorIsNoLedger"));
+    }
+  }
+
+  /**
    * Provide an Array of values and reasons IP has changed. Together this is the "ledger", a
    * collection of records for IP changes.
    *
@@ -1122,7 +1098,7 @@ export default class CPRActorSheet extends ActorSheet {
     cprNewItemData.amount = formData.splitAmount;
     delete cprNewItemData._id;
     await this.actor.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.amount": newAmount }]);
-    await this.actor.createEmbeddedDocuments("Item", [cprNewItemData], { CPRsplitStack: true });
+    await this.actor.createEmbeddedDocuments("Item", [{ name: item.name, type: item.type, system: cprNewItemData }], { CPRsplitStack: true });
   }
 
   /**

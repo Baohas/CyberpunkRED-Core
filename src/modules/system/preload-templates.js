@@ -63,7 +63,6 @@ export default function preloadHandlebarsTemplates() {
     "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/gear/cpr-clothing-content.hbs",
     "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/gear/cpr-cyberdeck-content.hbs",
     "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/gear/cpr-cyberware-content.hbs",
-    "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/gear/cpr-cyberware-content.hbs",
     "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/gear/cpr-drug-content.hbs",
     "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/gear/cpr-gear-content.hbs",
     "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/gear/cpr-itemUpgrade-content.hbs",
@@ -74,7 +73,8 @@ export default function preloadHandlebarsTemplates() {
 
     // Cyberware Tab Partials
     "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-content.hbs",
-    "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-header.hbs",
+    "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-foundational-content.hbs",
+    "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-optional-content.hbs",
 
     // Common Partials - Actions
     "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-actions.hbs",

@@ -142,9 +142,8 @@ const Loadable = function Loadable() {
 
         // By the time we reach here, we know the weapon and ammo we are loading
         // Let's find out how much space is in the gun.
-        const upgradeValue = this.getAllUpgradesFor("magazine");
-        const upgradeType = this.getUpgradeTypeFor("magazine");
-        const magazineSpace = (upgradeType === "override") ? upgradeValue - magazineData.value : magazineData.max - magazineData.value + upgradeValue;
+        const upgradeData = this.getAllUpgradesFor("magazine");
+        const magazineSpace = (upgradeData.type === "override") ? upgradeData.value - magazineData.value : magazineData.max - magazineData.value + upgradeData.value;
 
         if (magazineSpace > 0) {
           if (Number(ammo.system.amount) >= magazineSpace) {
@@ -232,6 +231,30 @@ const Loadable = function Loadable() {
     newData.system.magazine.ammoId = "";
     newData.system.magazine.value = 0;
     return newData;
+  };
+
+  /**
+   * Whenever a new loadable item is created, we automatically clear the ammo associated with it.
+   * Otherwise, a copied Item will contain references to ammo used in the original item.
+   *
+   * @param {Object} data - the data the item is being created from
+   */
+  this.syncMagazine = function syncMagazine() {
+    const updateData = [];
+    const { actor } = this;
+    const magazineData = this.system.magazine;
+    const upgradeData = this.getAllUpgradesFor("magazine");
+    const magazineSize = (upgradeData.type === "override") ? upgradeData.value : magazineData.max + upgradeData.value;
+    if (magazineSize < magazineData.value) {
+      const overage = magazineData.value - magazineSize;
+      updateData.push({ _id: this._id, "system.magazine.value": magazineSize });
+      const ammoItem = actor.getOwnedItem(magazineData.ammoId);
+      if (ammoItem) {
+        const newAmmoAmount = ammoItem.system.amount + overage;
+        updateData.push({ _id: ammoItem._id, "system.amount": newAmmoAmount });
+      }
+    }
+    return updateData;
   };
 };
 

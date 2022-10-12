@@ -5,10 +5,13 @@ cache:
   paths:
     - node_modules/
 
+variables:
+  SYSTEM_NAME: "cyberpunk-red-core"
+
 stages:
   - init
-  - build
   - test
+  - build
   - pre-release
   - release
 
@@ -16,33 +19,65 @@ init:
   stage: init
   script:
     - echo "Installing dependencies..."
-    - npm i
-
-build-css:
-  stage: build
-  script:
-    - echo "Building CSS..."
-    - npm run build:css
+    - npm install
+  only:
+    refs:
+      - merge_requests
+      - tags
 
 lint:
   stage: test
   script:
     - echo "Linting code..."
     - npm run lint
+  needs:
+    - job: init
+  only:
+    refs:
+      - merge_requests
+      - tags
 
 unit-test:
   stage: test
   script:
     - echo "Executing tests..."
     - npm test
+  needs:
+    - job: init
+  only:
+    refs:
+      - merge_requests
+      - tags
 
-lang-test 1/2:
+test-shell-scripts:
+  stage: test
+  before_script:
+    - apt-get update
+    - apt-get install shellcheck
+  script:
+    - ./.gitlab/pipeline_tests/test-shell-scripts.sh
+  needs:
+    - job: init
+  only:
+    refs:
+      - merge_requests
+      - tags
+    changes:
+      - "**/*.sh"
+
+language-unused-strings:
   stage: test
   script:
     - echo "Checking language file for unused strings..."
     - ./.gitlab/pipeline_tests/test-lang-file.sh
+  needs:
+    - job: init
+  only:
+    refs:
+      - merge_requests
+      - tags
 
-lang-test 2/2:
+language-exists:
   stage: test
   before_script:
     - apt-get update
@@ -50,69 +85,153 @@ lang-test 2/2:
   script:
     - echo "Checking if all the language files specified in system.json exist..."
     - ./.gitlab/pipeline_tests/test-lang-existence.sh
+  needs:
+    - job: init
+  only:
+    refs:
+      - merge_requests
+      - tags
 
-changelog-dev-test:
+changelog-has-changed:
   stage: test
   script:
     - echo "Checking if the CHANGELOG.md changed..."
+    - git fetch origin dev
     - ./.gitlab/pipeline_tests/test-changelog-dev-changed.sh
   allow_failure: true
-  except:
-    - master
-    - dev
+  needs:
+    - job: init
+  only:
+    refs:
+      - merge_requests
 
-main-css-test:
-  stage: test
-  script:
-    - echo "Ensuring a compiled main.css exists if less files changed..."
-    - ./.gitlab/pipeline_tests/test-main-css.sh
-
-code-test 1/2:
+trace-statements:
   stage: test
   script:
     - echo "Checking if there are proper trace statements in all hbs files..."
     - ./.gitlab/pipeline_tests/test-hbs-trace.sh
+  needs:
+    - job: init
+  only:
+    refs:
+      - merge_requests
+      - tags
 
-code-test 2/2:
+code-localization:
   stage: test
   script:
     - echo "Checking if our own localization and notification code is used..."
     - ./.gitlab/pipeline_tests/test-misc.sh
+  needs:
+    - job: init
+  only:
+    refs:
+      - merge_requests
+      - tags
 
-helper-test:
+handlebars-helpers:
   stage: test
   script:
   - echo "Checking use of handlebars helpers..."
   - ./.gitlab/pipeline_tests/test-handlebars-helpers.sh
+  needs:
+    - job: init
+  only:
+    refs:
+      - merge_requests
+      - tags
 
-pack-alpha-sort-test:
+# Build without artifacts when not tagging a release
+test-build:
   stage: test
+  script:
+    - echo "Building cyberpunk-red-core..."
+    - npm run build
+  needs:
+    - job: init
+  only:
+    refs:
+      - merge_requests
+
+# Builds and Uploads artifacts the gitlab generic repo
+build-artifacts:
+  stage: build
   before_script:
     - apt-get update
-    - apt-get install jq --yes
+    - apt-get install curl zip jq -y
   script:
-    - echo "Checking if packs are sorted alphabetically"
-    - ./.gitlab/pipeline_tests/test-pack-alpha-sort.sh
+    - echo "Building cyberpunk-red-core..."
+    - ./.gitlab/pipeline_utils/build.sh
+  artifacts:
+    expire_in: 1h
+    reports:
+      dotenv: build.env
+  needs:
+    - job: unit-test
+    - job: test-shell-scripts
+      optional: true
+    - job: language-unused-strings
+    - job: language-exists
+    - job: changelog-has-changed
+      optional: true
+    - job: trace-statements
+    - job: code-localization
+    - job: handlebars-helpers
+    - job: test-build
+      optional: true
+  only:
+    refs:
+      - tags
 
+# Creates a GitLab release with the previously uploaded artifacts
+create-release:
+  stage: build
+  before_script:
+    - apt-get update
+    - apt-get install curl jq -y
+    - curl --silent --location --output /usr/local/bin/release-cli "https://release-cli-downloads.s3.amazonaws.com/latest/release-cli-linux-amd64"
+    - chmod +x /usr/local/bin/release-cli
+  script:
+    - echo "Running Release Job..."
+    - ./.gitlab/pipeline_utils/release.sh
+  needs:
+    - job: build-artifacts
+      artifacts: true
+  only:
+    refs:
+      - tags
+
+# Pre-release tests
 pre-release:
   stage: pre-release
   before_script:
-    - 'apt-get update'
-    - 'apt-get install jq -y'
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "dev"'
-  allow_failure: true
+    - apt-get update
+    - apt-get install curl zip jq -y
   script:
-    - echo "Checking if Dev is suitable for release to Master..."
+    - echo "Running Pre Release Checks"
     - ./.gitlab/pipeline_tests/pre-release-checks.sh
+  needs:
+    - job: build-artifacts
+      artifacts: true
+    - job: create-release
+  only:
+    refs:
+      - tags
 
-release:
+# Build the `latest` system.json and upload to gitlab generic repo
+# This makes the release available in Foundry (I think?)
+publish:
   stage: release
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "master"'
-      when: manual
+  before_script:
+    - apt-get update
+    - apt-get install curl jq -y
   script:
-    - echo "Running the release job"
-    - MASTER_VERSION=$(grep version system.json | awk '{print $2}' | sed 's/^.//;s/..$//')
-    - >
-      curl --header "Content-Type: application/json" --header "JOB-TOKEN: $CI_JOB_TOKEN" --data "{\"name\": \"v$MASTER_VERSION\", \"tag_name\": \"v$MASTER_VERSION\", \"description\": \"Automated release of v$MASTER_VERSION\", \"ref\": \"$CI_COMMIT_SHA\" }" --request POST "https://gitlab.com/api/v4/projects/22820629/releases"
+    - echo "Releasing cyberpunk-red-core..."
+    - ./.gitlab/pipeline_utils/publish.sh
+  needs:
+    - job: build-artifacts
+      artifacts: true
+    - job: pre-release
+  only:
+    refs:
+      - tags

@@ -1,39 +1,33 @@
 {{cprTrace "START DIALOG CPR-MOD-MOOK-SKILL-PROMPT.HBS"}}
 <form>
-  <div>
+  <div class="mook-skills-list items-list">
+    <li class="items-header flexrow">
+      <span class="item-name skill-name bg-black text-nowrap text-padding-left">{{localize "CPR.mookSheet.skills.skill"}}</span>
+      <span class="item-detail skill-base bg-black text-nowrap">{{localize "CPR.mookSheet.skills.base"}}</span>
+      <span class="item-detail skill-level bg-black text-nowrap">{{localize "CPR.mookSheet.skills.level"}}</span>
+      <span class="item-detail skill-mod-value bg-black text-nowrap">{{localize "CPR.mookSheet.skills.mod"}}</span>
+    </li>
+    <br>
     <ol class="items-list">
-      <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap">
-          {{localize "CPR.dialog.modMookSkill.selectMookSkill"}}:
-        </div>
-        <div class="item flexrow setting-value text-nowrap item-end">
-          <select name="skillName">
-            {{#select skillName}}
-              {{#each skillList as |skill s|}}
-                <option value="{{skill}}">{{skill}}</option>
-              {{/each}}
-            {{/select}}
-          </select>
-        </div>
-      </li>
-      <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap">
-          {{localize "CPR.dialog.modMookSkill.setMookSkillLevel"}}:
-        </div>
-        <div class="item flexrow setting-value text-nowrap item-end">
-          <input class="text-right" name="skillLevel" type="number" value="0" />
-        </div>
-      </li>
-      <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap">
-          {{localize "CPR.dialog.modMookSkill.modifyAnotherSkill"}}?
-        </div>
-        <div class="item flexrow setting-value text-nowrap item-end">
-          <input type="checkbox" name="again">
-        </div>
-      </li>
-      <br>
+      {{#each skillList as |skill|}}
+        <li class="item skill-name flexrow">
+          <div class="item-name text-nowrap">
+            {{skill.name}}
+          </div>
+          <div class="item-detail skill-base text-nowrap">
+            +{{skill.stat}}
+          </div>
+          <div class="item-detail skill-level text-nowrap">
+            <input class="number skill-input" name="{{skill.name}}" type="number" value="{{skill.level}}" />
+          </div>
+          <div class="item-detail skill-mod-value text-nowrap">
+            {{!-- we only support mode 2 (add/subtract) for skills --}}
+            {{cprEffectModMode 2 skill.mod}}
+          </div>
+        </li>
+      {{/each}}
     </ol>
+    <br>
   </div>
 </form>
 {{cprTrace "END CPR-MOD-MOOK-SKILL-PROMPT.HBS"}}

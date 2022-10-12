@@ -16,7 +16,11 @@ import MookNamePrompt from "../../dialog/cpr-mook-name-prompt.js";
  * @extends {CPRActorSheet}
  */
 export default class CPRMookActorSheet extends CPRActorSheet {
-  /** @override */
+  /**
+   * getter that controls the sheet sizing
+   *
+   * @override
+   */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRMookActorSheet | Called.");
     const defaultWidth = 750;
@@ -34,8 +38,10 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * This is how details are obscured from those players, we simply do not render them.
    * Yes, they can still find this information in game.actors and the Foundry development
    * community does not really view this as a problem.
+   *
    * https://discord.com/channels/170995199584108546/596076404618166434/864673619098730506
    *
+   * @override
    * @property
    * @returns {String} - path to a handlebars template
    */
@@ -66,6 +72,28 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   }
 
   /**
+   * The Mook sheet goes a little further than actor.getData by tracking whether any armor
+   * or weapons (including cyberware weapons) are equipped on the mook.
+   *
+   * @override
+   * @returns {Object} data - a curated structure of actorSheet data
+   */
+  getData() {
+    LOGGER.trace("getData | CPRMookActorSheet | Called.");
+    const foundryData = super.getData();
+    const cprActorData = foundryData.actor.system;
+    cprActorData.equippedArmor = this.actor.itemTypes.armor.filter((item) => item.system.equipped === "equipped");
+    cprActorData.equippedWeapons = this.actor.itemTypes.weapon.filter((item) => item.system.equipped === "equipped");
+
+    // dsorrent - Need to fix this
+    // const installedCyberware = this.actor.getInstalledCyberware();
+    const installedWeapons = installedCyberware.filter((c) => c.system.isWeapon === true);
+    cprActorData.equippedWeapons = cprActorData.equippedWeapons.concat(installedWeapons);
+    foundryData.data.system = cprActorData;
+    return foundryData;
+  }
+
+  /**
    * Activate listeners for the sheet. This has to call super at the end to get additional
    * listners that are common between mooks and characters.
    *
@@ -75,7 +103,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   activateListeners(html) {
     LOGGER.trace("activateListeners | CPRMookActorSheet | Called.");
     super.activateListeners(html);
-    html.find(".mod-mook-skill").click(() => this._modMookSkill());
+    html.find(".mod-mook-skill").click(() => this._modMookSkills());
     html.find(".change-mook-name").click(() => this._changeMookName());
     html.find(".mook-image-toggle").click((event) => this._expandMookImage(event));
 
@@ -89,36 +117,55 @@ export default class CPRMookActorSheet extends CPRActorSheet {
 
   /**
    * Called when the edit-skills glyph (top right of the skills section on the sheet) is clicked. This
-   * pops up the wizard for modifying mook skills quickly.
+   * pops up the wizard for modifying mook skills quickly. The form data is then parsed for values that
+   * are different from what is current on the mook's skill objects. Those are the updates we send
+   * along.
    *
    * @async
    * @callback
    * @private
-   * @returns {null}
+   * @returns null
    */
-  async _modMookSkill() {
-    LOGGER.trace("_modMookSkill | CPRMookActorSheet | Called.");
-    let again = true;
+  async _modMookSkills() {
+    LOGGER.trace("_modMookSkills | CPRMookActorSheet | Called.");
     const skillList = [];
     this.actor.itemTypes.skill.map((s) => {
-      skillList.push(s.name);
-      return skillList.sort();
+      const skillRef = {
+        name: s.name,
+        level: s.system.level,
+        stat: this.actor.system.stats[s.system.stat].value,
+        mod: this.actor.bonuses[SystemUtils.slugify(s.name)],
+      };
+      skillList.push(skillRef);
+      return skillList.sort((a, b) => ((a.name > b.name) ? 1 : -1));
     });
-    while (again) {
-      // eslint-disable-next-line no-await-in-loop
-      const formData = await ModMookSkillPrompt.RenderPrompt({ skillList }).catch((err) => LOGGER.debug(err));
-      if (formData === undefined) {
-        return;
-      }
-      const skill = this.actor.itemTypes.skill.filter((s) => s.name === formData.skillName)[0];
-      skill.setSkillLevel(formData.skillLevel);
-      this._updateOwnedItem(skill);
-      const updated = SystemUtils.Localize("CPR.mookSheet.skills.updated");
-      const to = SystemUtils.Localize("CPR.mookSheet.skills.to");
-      const msg = `${updated} ${formData.skillName} ${to} ${formData.skillLevel}`;
-      SystemUtils.DisplayMessage("notify", msg);
-      again = formData.again;
+
+    // pop up the form with embedded skill details
+    const formData = await ModMookSkillPrompt.RenderPrompt({ skillList }).catch((err) => LOGGER.debug(err));
+    if (formData === undefined) {
+      return;
     }
+
+    // go over each skill and see if the value differs from the skill objects on the mook (actor)
+    const updatedSkills = [];
+    for (const skill of skillList) {
+      if (formData[skill.name] !== skill.level) {
+        LOGGER.debug(`you changed ${skill.name} from ${skill.level} to ${formData[skill.name]}`);
+        const [updatedSkill] = this.actor.itemTypes.skill.filter((s) => skill.name === s.name);
+        updatedSkill.setSkillLevel(formData[skill.name]);
+        updatedSkills.push({
+          _id: updatedSkill._id,
+          system: {
+            level: updatedSkill.system.level,
+          },
+        });
+      }
+    }
+    if (!updatedSkills.length) return;
+
+    // finally, update the skill objects
+    this.actor.updateEmbeddedDocuments("Item", updatedSkills);
+    SystemUtils.DisplayMessage("notify", `${updatedSkills.length} ${SystemUtils.Localize("CPR.mookSheet.skills.updated")}`);
   }
 
   /**
@@ -127,7 +174,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @async
    * @callback
    * @private
-   * @returns {bull}
+   * @returns null
    */
   async _changeMookName() {
     LOGGER.trace("_changeMookName | CPRMookActorSheet | Called.");
@@ -136,9 +183,9 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       return;
     }
     if (!this.isToken) {
-      await this.actor.setMookName(formData);
+      await this.actor.update(formData);
     } else {
-      await this.token.setMookName(formData);
+      await this.token.update(formData);
     }
   }
 
@@ -186,7 +233,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     if (event.keyCode === 46) {
       LOGGER.debug("DEL key was pressed");
       const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
-      const item = this._getOwnedItem(itemId);
+      const item = this.actor.getOwnedItem(itemId);
       switch (item.type) {
         case "skill": {
           item.setSkillLevel(0);
@@ -202,7 +249,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
             const dialogMessage = `${SystemUtils.Localize("CPR.dialog.removeCyberware.text")} ${item.name}?`;
             const confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
             if (confirmRemove) {
-              await this.actor.removeCyberware(itemId, foundationalId, true);
+              await this.actor.uninstallCyberware(itemId, foundationalId, true);
               this._deleteOwnedItem(item, true);
             }
           }
@@ -230,20 +277,20 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   async _handleInstallAction(event) {
     LOGGER.trace("_handleInstallAction | CPRMookActorSheet | Called.");
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
-    const item = this._getOwnedItem(itemId);
+    const item = this.actor.getOwnedItem(itemId);
     if (event.shiftKey) {
       if (item.type === "cyberware") {
         if (item.system.core === true) {
           SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware"));
         } else if (item.system.isInstalled === false) {
-          this.actor.addCyberware(itemId);
+          await this.actor.installCyberware(itemId);
         } else {
           const foundationalId = SystemUtils.GetEventDatum(event, "data-foundational-id");
           const dialogTitle = SystemUtils.Localize("CPR.dialog.removeCyberware.title");
           const dialogMessage = `${SystemUtils.Localize("CPR.dialog.removeCyberware.text")} ${item.name}?`;
           const confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
           if (confirmRemove) {
-            await this.actor.removeCyberware(itemId, foundationalId, true);
+            await this.actor.uninstallCyberware(itemId, foundationalId, true);
           }
         }
       }

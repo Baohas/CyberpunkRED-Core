@@ -7,18 +7,13 @@ pull_request_labels:
 commit_message: '[ci skip]'
 preserve_hierarchy: true
 files:
-  - source: /lang/en.json
-    translation: /lang/%locale%.json
+  - source: /src/lang/en.json
+    translation: /src/lang/%locale%.json
     type: json
     translation_replace:
       _: '-'
-  - source: /babele/en/*.json
-    translation: /babele/%locale%/%original_file_name%
+  - source: /src/babele/en/*.json
+    translation: /src/babele/%locale%/%original_file_name%
     type: json
     translation_replace:
       _: '-'
-  # - source: /lang/release-notes/*.en
-  #   translation: /lang/release-notes/%file_name%.%locale%
-  #   type: json
-  #   translation_replace:
-  #     _: '-'

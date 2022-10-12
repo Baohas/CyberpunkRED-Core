@@ -178,7 +178,7 @@
 			"description": "<p>Zasięg: 1.5km. Słuchawka dokanałowa.</p>"
 		},
 		"Radio Scanner/Music Player": {
-			"name": "Radioodtwarzacz",
+			"name": "Radio/odtwarzacz muzyki",
 			"description": "<p>Odbiera transmisje radiowe i pozwala odtwarzać muzykę. Zasięg: 1.5km. (s. 354)</p>"
 		},
 		"Road Flare": {

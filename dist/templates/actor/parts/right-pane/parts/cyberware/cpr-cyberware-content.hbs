@@ -1,7 +1,0 @@
-{{cprTrace "START ACTOR PARTS RIGHT-PANE CYBERWARE CPR-CYBERWARE-CONTENT.HBS"}}
-{{#each actor.system.installedItems.list as |UUID|}}
-  {{#if (cprCompare (cprGetProp (cprGetOwnedItem ../actor UUID) "system.type") "===" ../cyberwareType)}}
-    {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-foundational-content.hbs" (cprMergeForPartialArg "actor,cyberware" ../actor (cprGetOwnedItem ../actor UUID))}}
-  {{/if}}
-{{/each}}
-{{cprTrace "END ACTOR PARTS RIGHT-PANE CYBERWARE CPR-CYBERWARE-CONTENT.HBS"}}

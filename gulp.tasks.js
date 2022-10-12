@@ -9,6 +9,7 @@ const less = require("gulp-less");
 // Config
 const distFolderPath = "dist";
 const destFolder = path.resolve(process.cwd(), distFolderPath);
+console.log(destFolder);
 const sourceFiles = [
   {
     from: "src/cpr.js",

@@ -15,6 +15,9 @@
           {{localize "CPR.global.generic.actions"}}
         </div>
       </li>
+      {{#if (cprCompare this.data.system.equippedWeapons.length "===" 0)}}
+        {{localize "CPR.mookSheet.noWeaponEquipped"}}
+      {{/if}}
       {{#each (cprSort actor.itemTypes.weapon "name") as |weapon|}}
         {{#if (cprCompare weapon.system.equipped "===" "equipped")}}
           <li class="item flexrow" data-item-id="{{weapon.id}}">

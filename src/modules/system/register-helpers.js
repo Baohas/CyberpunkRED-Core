@@ -59,7 +59,10 @@ export default function registerHandlebarsHelpers() {
   /**
    * Return an owned item on an actor given the ID
    */
-  Handlebars.registerHelper("cprGetOwnedItem", (actor, itemId) => actor.items.find((i) => i.id === itemId));
+  Handlebars.registerHelper("cprGetOwnedItem", (actor, itemId) => {
+    const item = actor.items.find((i) => i.id === itemId) ? actor.items.find((i) => i.id === itemId) : actor.items.find((i) => i.uuid === itemId);
+    return item;
+  });
 
   /**
    * Return true if an object is defined or not
@@ -241,30 +244,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Show option slots on a cyberware item
-   */
-  Handlebars.registerHelper("cprShowSlotStatus", (obj) => {
-    LOGGER.trace("cprShowSlotStatus | handlebarsHelper | Called.");
-    if (obj.type === "cyberware") {
-      const { optionSlots } = obj.system;
-      if (optionSlots > 0) {
-        LOGGER.trace(`hasOptionalSlots is greater than 0`);
-        const installedOptionSlots = optionSlots - obj.availableSlots();
-        return (`- ${installedOptionSlots}/${optionSlots} ${SystemUtils.Localize("CPR.itemSheet.cyberware.optionalSlots")}`);
-      }
-      LOGGER.trace(`hasOptionalSlots is 0`);
-    }
-    if (obj.type === "cyberdeck") {
-      const upgradeValue = obj.getAllUpgradesFor("slots");
-      const upgradeType = obj.getUpgradeTypeFor("slots");
-      const totalSlots = (upgradeType === "override") ? upgradeValue : obj.system.slots + upgradeValue;
-      const usedSlots = obj.system.upgrades.length + obj.system.programs.installed.length;
-      return (`${usedSlots}/${totalSlots}`);
-    }
-    return "";
-  });
-
-  /**
    * This helper accepts a string that is a list of words separated by strings. It returns true if
    * any of them match a given value.
    */
@@ -436,14 +415,8 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprHasCyberneticWeapons", (actor) => {
     LOGGER.trace("cprHasCyberneticWeapons | handlebarsHelper | Called.");
-    let returnValue = false;
-    const cyberware = actor.getInstalledCyberware();
-    cyberware.forEach((cw) => {
-      if (cw.system.isWeapon) {
-        returnValue = true;
-      }
-    });
-    return returnValue;
+    const cyberneticWeapons = actor.itemTypes.cyberware.filter((cw) => cw.system.isInstalled && cw.system.isWeapon);
+    return cyberneticWeapons.length > 0;
   });
 
   /**
@@ -551,7 +524,7 @@ export default function registerHandlebarsHelpers() {
     LOGGER.trace("cprGetMookSkills | handlebarsHelper | Called.");
     const skillList = [];
     array.forEach((skill) => {
-      if (skill.system.level > 0 || skill.system.skillmod > 0) {
+      if (skill.system.level !== 0 || skill.system.skillmod > 0) {
         skillList.push(skill);
       }
     });
@@ -647,11 +620,10 @@ export default function registerHandlebarsHelpers() {
     const itemType = obj.type;
     let upgradeText = "";
     if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
-      const upgradeValue = obj.getAllUpgradesFor(dataPoint);
-      if (upgradeValue !== 0 && upgradeValue !== "") {
-        const modType = obj.getUpgradeTypeFor(dataPoint);
+      const upgradeData = obj.getAllUpgradesFor(dataPoint);
+      if (upgradeData.value !== 0 && upgradeData.value !== "") {
         const modSource = (itemType === "weapon") ? SystemUtils.Localize("CPR.itemSheet.weapon.attachments") : SystemUtils.Localize("CPR.itemSheet.common.upgrades");
-        upgradeText = `(${SystemUtils.Format("CPR.itemSheet.common.modifierChange", { modSource, modType, value: upgradeValue })})`;
+        upgradeText = `(${SystemUtils.Format("CPR.itemSheet.common.modifierChange", { modSource, modType: upgradeData.type, value: upgradeData.value })})`;
       }
     }
     return upgradeText;
@@ -670,17 +642,16 @@ export default function registerHandlebarsHelpers() {
       upgradeResult = baseValue;
     }
     if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
-      const upgradeValue = obj.getAllUpgradesFor(dataPoint);
-      const upgradeType = obj.getUpgradeTypeFor(dataPoint);
-      if (upgradeValue !== "" && upgradeValue !== 0) {
-        if (upgradeType === "override") {
-          upgradeResult = upgradeValue;
-        } else if (typeof upgradeResult !== "number" || typeof upgradeValue !== "number") {
-          if (upgradeValue !== 0 && upgradeValue !== "") {
-            upgradeResult = `${upgradeResult} + ${upgradeValue}`;
+      const upgradeData = obj.getAllUpgradesFor(dataPoint);
+      if (upgradeData.value !== "" && upgradeData.value !== 0) {
+        if (upgradeData.type === "override") {
+          upgradeResult = upgradeData.value;
+        } else if (typeof upgradeResult !== "number" || typeof upgradeData.value !== "number") {
+          if (upgradeData.value !== 0 && upgradeData.value !== "") {
+            upgradeResult = `${upgradeResult} + ${upgradeData.value}`;
           }
         } else {
-          upgradeResult += upgradeValue;
+          upgradeResult += upgradeData.value;
         }
       }
     }
@@ -721,17 +692,17 @@ export default function registerHandlebarsHelpers() {
     LOGGER.trace("cprEffectModMode | handlebarsHelper | Called.");
     switch (mode) {
       case 1:
-        return "*";
+        return `*${value}`;
       case 2:
-        return value > 0 ? "+" : ""; // account for minus already being there for negative numbers
+        return value > 0 ? `+${value}` : value; // account for minus already being there for negative numbers
       case 3:
-        return "<=";
+        return `<=${value}`;
       case 4:
-        return ">=";
+        return `>=${value}`;
       case 5:
-        return "=";
+        return `=${value}`;
       default:
-        return "?";
+        return `?${value}`;
     }
   });
 
@@ -822,6 +793,19 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprGetSkillBonus", (skillName, actor) => {
     LOGGER.trace("cprGetSkillBonus | handlebarsHelper | Called.");
     return actor.getSkillMod(skillName);
+  });
+
+  /**
+   * Provide a way to loop in html
+   */
+  Handlebars.registerHelper('cprLoop', (n, block) => {
+    LOGGER.trace("cprLoop | handlebarsHelper | Called.");
+    let accum = '';
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < n; ++i) {
+      accum += block.fn(i);
+    }
+    return accum;
   });
 
   /**

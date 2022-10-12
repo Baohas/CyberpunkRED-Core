@@ -18,7 +18,7 @@
                             {{!-- "this" is now an individual mod for the AE object --}}
                             {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes @index) change.key}}
                             {{#if change.value}}
-                                {{cprEffectModMode change.mode change.value}}{{change.value}}{{#unless @last}},{{/unless}}
+                                {{cprEffectModMode change.mode change.value}}{{#unless @last}},{{/unless}}
                             {{else}}
                                 0{{#unless @last}},{{/unless}}
                             {{/if}}

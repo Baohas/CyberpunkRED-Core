@@ -1,10 +1,10 @@
 const gulp = require("gulp");
-const tasks = require("./gulp.tasks.js");
+const build = require("./gulp/build.js");
 
-gulp.task("clean", tasks.clean);
-gulp.task("assets", tasks.assets);
-gulp.task("less", tasks.less);
+gulp.task("clean", build.clean);
+gulp.task("assets", build.assets);
+gulp.task("system", build.system);
+gulp.task("less", build.less);
 
-gulp.task("watch", tasks.watch);
-gulp.task("build", tasks.build);
-gulp.task("rebuild", tasks.rebuild);
+exports.build = gulp.series(build.assets, build.system, build.less);
+exports.watch = gulp.series(build.clean, exports.build, build.watch);

@@ -1,6 +1,5 @@
 {{cprTrace "START ACTOR MOOKS CPR-MOOK-IMAGE.HBS"}}
-<div class="mook-image-toggle side-banner fg-white" data-text="{{#if (cprCompare (cprCompare actor.system.flags.collapsedImage "===" undefined) "||" (cprCompare actor.system.flags.collapsedImage "===" true))}}{{localize "CPR.mookSheet.image.expand"}}{{else}}{{localize "CPR.mookSheet.image.collapse"}}{{/if}}"></div>
-<div class="mook-image-block {{#if (cprCompare (cprCompare actor.system.flags.collapsedImage "===" undefined) "||" (cprCompare actor.system.flags.collapsedImage "===" true))}}hide{{/if}}">
+<div class="mook-image-block">
   <img class="mook-image-block-img"
     src="{{actor.img}}"
     data-edit="img"

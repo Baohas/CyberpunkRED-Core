@@ -45,8 +45,9 @@ const itemHooks = () => {
 
     if (actor != null) {
       if (Object.values(actor.apps).some((app) => app instanceof CPRCharacterActorSheet
+          || app instanceof CPRMookActorSheet
           || app instanceof CPRContainerActorSheet) && userId === game.user._id && !options.CPRsplitStack) {
-        LOGGER.debug("Attempting to stack items");
+        LOGGER.debug("Attempting to stack items on a container sheet");
         returnValue = actor.automaticallyStackItems(doc);
       }
     }
@@ -70,11 +71,10 @@ const itemHooks = () => {
       if (doc.type === "role" && actor.system.roleInfo.activeRole === "") {
         actor.update({ "data.roleInfo.activeRole": doc.name });
       }
-
-      // when a new item is created (dragged) on a mook sheet, auto install or equip it
+      // when a new item is created (dragged) on a mook sheet, perform a couple changes like auto-equip
       if (Object.values(actor.apps).some((app) => app instanceof CPRMookActorSheet) && userId === game.user._id) {
         LOGGER.debug("handling a dragged item to the mook sheet");
-        actor.handleMookDraggedItem(actor._getOwnedItem(doc.id));
+        actor.handleMookDraggedItem(doc);
       }
     }
   });

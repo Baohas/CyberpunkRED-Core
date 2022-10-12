@@ -1,9 +1,9 @@
 /* globals Actor, game, getProperty, setProperty, hasProperty, duplicate */
-import CPRChat from "../chat/cpr-chat.js";
-import * as CPRRolls from "../rolls/cpr-rolls.js";
-import CPRLedger from "../dialog/cpr-ledger-form.js";
-import CPR from "../system/config.js";
 import ConfirmPrompt from "../dialog/cpr-confirmation-prompt.js";
+import CPR from "../system/config.js";
+import CPRChat from "../chat/cpr-chat.js";
+import CPRCharacterActorSheet from "./sheet/cpr-character-sheet.js";
+import * as CPRRolls from "../rolls/cpr-rolls.js";
 import InstallCyberwarePrompt from "../dialog/cpr-install-cyberware-prompt.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
@@ -16,6 +16,46 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
  * @extends {Actor}
  */
 export default class CPRActor extends Actor {
+  /**
+   * create() is called when creating the actor, but it's not the same as a constructor. In the
+   * code here, we pre-populate characters with skills, core cyberware, and other baked-in items.
+   *
+   * @async
+   * @override
+   * @static
+   * @param {Object} data - a complex structure with details and data to stuff into the actor object
+   * @param {Object} options - not used here, but required by the parent class
+   */
+  static async create(data, options) {
+    LOGGER.trace("create | CPRCharacterActor | called.");
+    const createData = data;
+    const newActor = typeof data.system === "undefined";
+    if (newActor) {
+      LOGGER.trace("create | New Actor | CPRCharacterActor | called.");
+      createData.items = [];
+      const tmpItems = data.items.concat(await SystemUtils.GetCoreSkills(), await SystemUtils.GetCoreCyberware());
+      tmpItems.forEach((item) => {
+        const updatedSystem = duplicate(item.system);
+        updatedSystem.installedItems.slots = 7;
+        updatedSystem.installedItems.allowedTypes = ['itemUpgrade', 'cyberware'];
+        const cprItem = {
+          name: item.name,
+          img: item.img,
+          type: item.type,
+          system: updatedSystem,
+        };
+        createData.items.push(cprItem);
+      });
+    }
+    const actor = await super.create(createData, options);
+    if (newActor) {
+      const installedItems = [];
+      actor.itemTypes.cyberware.forEach((cw) => installedItems.push(cw.uuid));
+      await actor.update({ "system.installedItems.slots": 50, "system.installedItems.list": installedItems });
+    }
+    return actor;
+  }
+
   /**
    * Called when an actor is passed to the client, we override this to calculate
    * derived stats and massage some of the data for convenience later.
@@ -32,8 +72,6 @@ export default class CPRActor extends Actor {
       // stat
       if (this.isOwner || game.user.isGM) {
         this._calculateDerivedStats();
-      } else {
-        const cprData = this.system;
       }
     }
   }
@@ -89,16 +127,6 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Does mostly nothing. We should probably get rid of this.
-   * TO BE REMOVED
-   * @return {Object} - a huge structured object representing actor data.
-   */
-  getData() {
-    LOGGER.trace("getData | CPRActor | Called.");
-    return this;
-  }
-
-  /**
    * The Active Effects do not have access to their parent at preparation time so we wait until
    * this stage to determine whether they are suppressed or not. Taken from dnd5e character code.
    *
@@ -144,51 +172,62 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Characters and Mooks have ways to calculate derived stats, and they extend
-   * this method to do so.
+   * This is where derived stats are calculated, and the behavior is driven by which sheet
+   * (aka "app") is associated with the actor. This includes max HP, Humanity, Empathy, and
+   * Death Saves. For mooks we skip humanity and hp calculations.
    *
-   * @abstract
-   */
-  // eslint-disable-next-line class-methods-use-this
-  _calculateDerivedStats() {
-    LOGGER.trace("_calculateDerivedStats | CPRActor | Called.");
-    throw new Error("This is an abstract method");
-  }
-
-  /**
-   * Calculate the character's max HP based on stats and effects.
+   * To Do: this is called 3 times when creating an actor... why?
    *
-   * @return {Number}
-   */
-  calcMaxHp() {
-    LOGGER.trace("_calcMaxHp | CPRActor | Called.");
-    const { stats } = this.system;
-    let maxHp = 10 + 5 * Math.ceil((stats.will.value + stats.body.value) / 2);
-    maxHp += this.bonuses.maxHp; // from any active effects
-    return maxHp;
-  }
-
-  /**
-   * Calculate the character's Humanity based on stats and effects.
-   *
-   * @return {Number}
    * @private
    */
-  _calcMaxHumanity() {
-    LOGGER.trace("_calcMaxHumanity | CPRActor | Called.");
+  _calculateDerivedStats() {
+    LOGGER.trace("_calculateDerivedStats | CPRActor | Called.");
     const cprData = this.system;
-    const { stats } = cprData;
-    let cyberwarePenalty = 0;
-    this.getInstalledCyberware().forEach((cyberware) => {
-      if (cyberware.system.type === "borgware") {
-        cyberwarePenalty += 4;
-      } else if (parseInt(cyberware.system.humanityLoss.static, 10) > 0) {
-        cyberwarePenalty += 2;
+    const { derivedStats } = cprData;
+
+    // Walk & Run, from the Move/Run Action (pg 127)
+    derivedStats.walk.value = cprData.stats.move.value * 2;
+    derivedStats.run.value = cprData.stats.move.value * 4;
+
+    // seriously wounded
+    derivedStats.seriouslyWounded = Math.ceil(derivedStats.hp.max / 2);
+
+    // We need to always call this because if the actor was wounded and now is not, their
+    // value would be equal to max, however their current wound state was never updated.
+    this._setWoundState();
+    // Updated derivedStats variable with currentWoundState
+    derivedStats.currentWoundState = this.system.derivedStats.currentWoundState;
+
+    // Death save
+    let basePenalty = this.bonuses.deathSavePenalty; // 0 + active effects
+    const critInjury = this.itemTypes.criticalInjury;
+    critInjury.forEach((criticalInjury) => {
+      const { deathSaveIncrease } = criticalInjury.system;
+      if (deathSaveIncrease) {
+        basePenalty += 1;
       }
     });
-    let maxHumanity = 10 * stats.emp.max - cyberwarePenalty; // minus sum of installed cyberware
-    maxHumanity += this.bonuses.maxHumanity; // from any active effects
-    return maxHumanity;
+    derivedStats.deathSave.basePenalty = basePenalty;
+    derivedStats.deathSave.value = derivedStats.deathSave.penalty + derivedStats.deathSave.basePenalty;
+    this.system.derivedStats = derivedStats;
+
+    if (typeof this.apps === "undefined") {
+      // this happens when the actor is being created, we hardcode defaults here based on 6s in all stats
+      derivedStats.hp.value = 40;
+      derivedStats.hp.max = 40;
+      derivedStats.humanity.value = 60;
+      derivedStats.humanity.max = 60;
+    } else if (Object.values(this.apps).some((app) => app instanceof CPRCharacterActorSheet)) {
+      // The rest is character-specific. We only calculate hp and humanity for characters because some mooks
+      // break the rules/standards.
+      derivedStats.hp.value = Math.min(
+        derivedStats.hp.value,
+        derivedStats.hp.max,
+      );
+      if (derivedStats.humanity.value > derivedStats.humanity.max) {
+        derivedStats.humanity.value = derivedStats.humanity.max;
+      }
+    }
   }
 
   /**
@@ -240,117 +279,74 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Returns an array of installed cyberware items
-   *
-   * @returns {Array} - installed Cyberware Items
-   */
-  getInstalledCyberware() {
-    LOGGER.trace("getInstalledCyberware | CPRActor | Called.");
-    return this.itemTypes.cyberware.filter((item) => item.system.isInstalled);
-  }
-
-  /**
-   * Return an Array of cyberware matching the provided type and is installed.
-   *
-   * @param {string} type uses the type of a cyberware item to return a list of
-   *                      compatiable foundational cyberware installed.
-   * @return {Array} - Foundational Cyberware matching the type and is installed
-   */
-  getInstalledFoundationalCyberware(type) {
-    LOGGER.trace("getInstalledFoundationalCyberware | CPRActor | Called.");
-    if (type) {
-      if (type in CPR.cyberwareTypeList) {
-        return this.itemTypes.cyberware.filter(
-          (item) => item.system.isInstalled
-            && item.system.isFoundational
-            && item.system.type === type,
-        );
-      }
-      SystemUtils.DisplayMessage("error", "Invalid cyberware type!");
-    }
-    return this.itemTypes.cyberware.filter(
-      (item) => item.system.isInstalled && item.system.isFoundational,
-    );
-  }
-
-  /**
-   * Top-level method to add (install) cyberware owned by an actor.
+   * Method to add (install) cyberware owned by an actor.
    * This will handle making sure it is going into the right foundational cyberware, if applicable.
+   * Additionally, if there is optional cyberware installed under a foundational cyberware which
+   * allows cyberware to be installed into it (ie Chipware Socket) and it has capacity, it will
+   * also be listed as an installation target.
    *
    * @async
    * @param {String} itemId - the ItemId of the cyberware to be added
    * @returns {null}
    */
-  async addCyberware(itemId) {
-    LOGGER.trace("addCyberware | CPRActor | Called.");
-    const item = this._getOwnedItem(itemId);
-    const compatibleFoundationalCyberware = this.getInstalledFoundationalCyberware(item.system.type);
+  async installCyberware(itemId) {
+    LOGGER.trace("installCyberware | CPRActor | Called.");
+    const item = this.getOwnedItem(itemId);
 
-    if (compatibleFoundationalCyberware.length < 1 && !item.system.isFoundational) {
+    const baseCompatibleFoundationalCyberware = this.itemTypes.cyberware.filter((cw) => cw.system.isInstalled
+        && cw.system.isFoundational
+        && cw.system.type === item.system.type);
+
+    if (baseCompatibleFoundationalCyberware.length < 1 && !item.system.isFoundational) {
       Rules.lawyer(false, "CPR.messages.warnNoFoundationalCyberwareOfCorrectType");
       return;
     }
-    let formData;
-    if (item.system.isFoundational) {
-      formData = await InstallCyberwarePrompt.RenderPrompt({ item }).catch((err) => LOGGER.debug(err));
-      if (formData === undefined) {
-        return;
+
+    // For each Foundational Cyberware of the item.system.type that is installed
+    // Gather a list of all of the currently installed cyberware
+    const compatibleTargetCyberware = [];
+    baseCompatibleFoundationalCyberware.forEach((cyberware) => {
+      compatibleTargetCyberware.push(cyberware);
+      let uuidList = cyberware.system.installedItems.list;
+      while (uuidList.length > 0) {
+        const loopList = uuidList;
+        uuidList = [];
+        for (const uuid of loopList) {
+          const itemLookup = this.getOwnedItem(uuid);
+          if (itemLookup.system.installedItems.allowed
+            && itemLookup.system.installedItems.allowedTypes.includes(item.type)
+            && itemLookup.availableInstallSlots() >= item.system.size) {
+            compatibleTargetCyberware.push(itemLookup);
+          }
+          uuidList = uuidList.concat(itemLookup.system.installedItems.list);
+        }
       }
-      await this._addFoundationalCyberware(item, formData);
-    } else {
-      formData = await InstallCyberwarePrompt.RenderPrompt({
-        item,
-        foundationalCyberware: compatibleFoundationalCyberware,
-      }).catch((err) => LOGGER.debug(err));
-      if (formData === undefined) {
-        return;
-      }
-      await this._addOptionalCyberware(item, formData);
+    });
+
+    const formData = await InstallCyberwarePrompt.RenderPrompt({
+      item,
+      foundationalCyberware: compatibleTargetCyberware,
+    }).catch((err) => LOGGER.debug(err));
+    if (formData === undefined) {
+      return;
     }
-    await this.loseHumanityValue(item, formData);
+
+    if (!item.system.isFoundational && !formData.foundationalId) {
+      Rules.lawyer(false, "CPR.messages.warnNoFoundationalCyberwareOfCorrectType");
+      return;
+    }
+
+    const target = (item.system.isFoundational) ? this : this.getOwnedItem(formData.foundationalId);
+
+    target.installItems([item]).then(async (installationSuccess) => {
+      if (installationSuccess) {
+        await this.loseHumanityValue(item, formData);
+      }
+    });
   }
 
   /**
-   * Add (install) foundational cyberware, which includes losing Humanity.
-   *
-   * @private
-   * @param {CPRItem} item - the Cyberware item to install
-   * @returns {Object}
-   */
-  _addFoundationalCyberware(item) {
-    LOGGER.debug("_addFoundationalCyberware | CPRActor | Applying foundational cyberware.");
-    return this.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.isInstalled": true }]);
-  }
-
-  /**
-   * Add (install) optional cyberware, including the loss of Humanity
-   *
-   * @private
-   * @param {CPRItem} item - the Cyberware item to install
-   * @param {Object} formData - an object representing answers from the installation dialog box
-   * @returns {Object}
-   */
-  async _addOptionalCyberware(item, formData) {
-    LOGGER.trace("_addOptionalCyberware | CPRActor | Called.");
-    const tmpItem = item;
-    LOGGER.trace(`_addOptionalCyberware | CPRActor | applying optional cyberware to item ${formData.foundationalId}.`);
-    const foundationalCyberware = this._getOwnedItem(formData.foundationalId);
-    const newOptionalIds = foundationalCyberware.system.optionalIds.concat(item._id);
-    const newInstalledOptionSlots = foundationalCyberware.system.installedOptionSlots + item.system.size;
-    tmpItem.system.isInstalled = true;
-    const allowedSlots = Number(foundationalCyberware.availableSlots());
-    Rules.lawyer((item.system.size <= allowedSlots), "CPR.messages.tooManyOptionalCyberwareInstalled");
-    return this.updateEmbeddedDocuments("Item", [
-      { _id: item.id, "system.isInstalled": true }, {
-        _id: foundationalCyberware.id,
-        "system.optionalIds": newOptionalIds,
-        "system.installedOptionSlots": newInstalledOptionSlots,
-      },
-    ]);
-  }
-
-  /**
-   * Remove (uninstall) Cyberware from an actor. Like addCyberware, this is the top-level entry method.
+   * Remove (uninstall) Cyberware from an actor. Like installCyberware, this is the top-level entry method.
    *
    * @async
    * @param {String} itemId - the Cyberware item ID to uninstall
@@ -358,178 +354,145 @@ export default class CPRActor extends Actor {
    * @param {Boolean} skipConfirm - a boolean to indicate whether the confirmation dialog should be displayed
    * @returns {Object}
    */
-  async removeCyberware(itemId, foundationalId, skipConfirm = false) {
-    LOGGER.trace("removeCyberware | CPRActor | Called.");
-    const item = this._getOwnedItem(itemId);
+  async uninstallCyberware(itemId, foundationalId, skipConfirm = false) {
+    LOGGER.trace("uninstallCyberware | CPRActor | Called.");
+    const item = this.getOwnedItem(itemId);
     let confirmRemove;
     if (!skipConfirm) {
-      const dialogTitle = SystemUtils.Localize("CPR.dialog.removeCyberware.title");
-      const dialogMessage = `${SystemUtils.Localize("CPR.dialog.removeCyberware.text")} ${item.name}?`;
+      const dialogTitle = SystemUtils.Localize("CPR.dialog.uninstallCyberware.title");
+      const dialogMessage = `${SystemUtils.Localize("CPR.dialog.uninstallCyberware.text")} ${item.name}?`;
       confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
     } else {
       confirmRemove = true;
     }
     if (confirmRemove) {
-      if (item.system.isFoundational) {
-        await this._removeFoundationalCyberware(item);
-      } else {
-        await this._removeOptionalCyberware(item, foundationalId);
+      const target = (this.uuid === item.system.installedIn) ? this : this.getOwnedItem(item.system.installedIn);
+      const uninstallList = await target.uninstallItems([item]);
+      for (const ui of uninstallList) {
+        if (SystemUtils.GetTemplateItemTypes("upgradable").includes(ui.type)) {
+          // eslint-disable-next-line no-await-in-loop
+          await ui.syncUpgrades();
+        }
+        if (ui.type === "cyberdeck") {
+          // eslint-disable-next-line no-await-in-loop
+          await ui.syncPrograms();
+        }
       }
-      await this.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.isInstalled": false }]);
-      return this.setMaxHumanity();
     }
-    return this.updateEmbeddedDocuments("Item", []);
+    return this.setMaxHumanity();
   }
 
-  /**
-   * Remove (uninstall) optional cyberware
-   *
-   * @private
-   * @param {CPRItem} item - optional cyberware item to uninstall
-   * @param {String} foundationalId - The foundational cybeware Id to uninstall the cybeware from
-   * @returns {Object}
-   */
-  _removeOptionalCyberware(item, foundationalId) {
-    LOGGER.trace("_removeOptionalCyberware | CPRActor | Called.");
-    // If the cyberware item was not installed, don't process the removal from a non-existent foundational slot.
-    if (item.system.isInstalled) {
-      const foundationalCyberware = this._getOwnedItem(foundationalId);
-      const newInstalledOptionSlots = foundationalCyberware.system.installedOptionSlots - item.system.size;
-      const newOptionalIds = foundationalCyberware.system.optionalIds.filter(
-        (optionId) => optionId !== item._id,
-      );
-      return this.updateEmbeddedDocuments("Item", [{
-        _id: foundationalCyberware.id,
-        "system.optionalIds": newOptionalIds,
-        "system.installedOptionSlots": newInstalledOptionSlots,
-      }]);
-    }
-    return null;
-  }
+  getInstalledItems(type = false) {
+    LOGGER.trace("getInstalledItems | CPRActor | Called.");
+    const installedItems = [];
 
-  /**
-   * Remove (uninstall) foundational cyberware
-   *
-   * @private
-   * @param {CPRItem} item - foundational cyberware item to uninstall
-   * @returns {Object}
-   */
-  _removeFoundationalCyberware(item) {
-    LOGGER.trace("_removeFoundationalCyberware | CPRActor | Called.");
-    const updateList = [];
-    if (item.system.optionalIds) {
-      item.system.optionalIds.forEach(async (optionalId) => {
-        const optional = this._getOwnedItem(optionalId);
-        updateList.push({ _id: optional.id, "system.isInstalled": false });
+    if (this.system.installedItems.list.length > 0) {
+      this.system.installedItems.list.forEach((uuid) => {
+        const installedItem = this.getOwnedItem(uuid);
+        if (installedItem && (!type || (type && installedItem.type === type))) {
+          installedItems.push(installedItem);
+        }
       });
-      updateList.push({ _id: item.id, "system.optionalIds": [], "system.installedOptionSlots": 0 });
-      return this.updateEmbeddedDocuments("Item", updateList);
     }
-    return PromiseRejectionEvent();
+    return installedItems;
+  }
+
+  canInstallItems(itemList) {
+    LOGGER.trace("canInstallItems | CPRActor | Called.");
+    if (!Array.isArray(itemList)) {
+      LOGGER.debug(`CPRActor.canInstallItems argument is not an array: ${itemList}`);
+      return false;
+    }
+    let result = true;
+    itemList.forEach((item) => {
+      if (!this.system.installedItems.allowedTypes.includes(item.type) || !(SystemUtils.getDataModelTemplates(item.type).includes("installable"))) {
+        result = false;
+      }
+    });
+    return (this.system.installedItems.allowed && result);
+  }
+
+  async installItems(itemList) {
+    LOGGER.trace("installItems | CPRActor | Called.");
+    if (!Array.isArray(itemList)) {
+      return Promise.reject(new Error(`CPRActor.installItems argument is not an array: ${itemList}`));
+    }
+    if (!this.canInstallItems(itemList)) {
+      return Promise.reject(new Error("Installation failed.  One or more item types are not allowed to be installed."));
+    }
+    const installedItems = duplicate(this.system.installedItems);
+    const updateList = [];
+
+    itemList.forEach((item) => {
+      if (!installedItems.list.includes(item.uuid)) {
+        installedItems.list.push(item.uuid);
+      }
+      updateList.push({ _id: item.id, "system.isInstalled": true, "system.installedIn": this.uuid });
+    });
+
+    await this.update({ "system.installedItems": installedItems });
+    return this.updateEmbeddedDocuments("Item", updateList);
+  }
+
+  async uninstallItems(itemList, recursive = true) {
+    LOGGER.trace("uninstallItems | CPRActor | Called.");
+    if (!Array.isArray(itemList)) {
+      return Promise.reject(new Error(`CPRActor.uninstallItems argument is not an array: ${itemList}`));
+    }
+
+    const installedItems = duplicate(this.system.installedItems);
+    const updateList = [];
+
+    const uninstallList = [];
+
+    for (const item of itemList) {
+      if (installedItems.list.includes(item.uuid)) {
+        installedItems.list = installedItems.list.filter((uuid) => item.uuid !== uuid);
+        uninstallList.push(item);
+        if (recursive) {
+          let embeddedItemList = item.getInstalledItems();
+
+          while (embeddedItemList.length > 0) {
+            const embeddedItemsData = JSON.parse(JSON.stringify(embeddedItemList));
+            embeddedItemList = [];
+            for (const embeddedItemData of embeddedItemsData) {
+              const embeddedItem = this.getOwnedItem(embeddedItemData._id);
+              uninstallList.push(embeddedItem);
+              if (embeddedItem.system.installedItems.list.length > 0) {
+                embeddedItemList = embeddedItemList.concat(embeddedItem.getInstalledItems());
+              }
+            }
+          }
+        }
+      }
+    }
+
+    uninstallList.forEach((item) => {
+      updateList.push({
+        _id: item._id,
+        "system.isInstalled": false,
+        "system.installedIn": "",
+        "system.installedItems.list": [],
+        "system.installedItems.usedSlots": 0,
+      });
+    });
+
+    await this.update({ "system.installedItems": installedItems });
+    return this.updateEmbeddedDocuments("Item", updateList);
   }
 
   /**
    * Return the Item object given an Id
    *
-   * @private
-   * @param {String} itemId - Id of the item to get
+   * @public
+   * @param {String} itemId - Id or UUID of the item to get
    * @returns {CPRItem}
    */
-  _getOwnedItem(itemId) {
-    LOGGER.trace("_getOwnedItem | CPRActor | Called.");
-    return this.items.find((i) => i._id === itemId);
+  getOwnedItem(itemId) {
+    LOGGER.trace("getOwnedItem | CPRActor | Called.");
+    const item = (this.items.find((i) => i._id === itemId)) ? this.items.find((i) => i._id === itemId) : this.items.find((i) => i.uuid === itemId);
+    return item;
   }
-
-  /**
-   * Calculate the max humanity on this actor.
-   * If current humanity is full and the max changes, we should update the current and EMP to match only
-   * if the new max is less than the old max.
-   * We assume that to be preferred behavior more often than not, especially during character creation.
-   *
-   * @callback
-   */
-  async setMaxHumanity() {
-    LOGGER.trace("setMaxHumanity | CPRActor | Called.");
-    const maxHumanity = this._calcMaxHumanity();
-    const { humanity } = this.system.derivedStats;
-    if (humanity.max === humanity.value && maxHumanity < humanity.max) {
-      await this.update({
-        "system.derivedStats.humanity.max": maxHumanity,
-        "system.derivedStats.humanity.value": maxHumanity,
-        "system.stats.emp.value": Math.floor(humanity.value / 10),
-      });
-    } else {
-      await this.update({
-        "system.derivedStats.humanity.max": maxHumanity,
-        "system.stats.emp.value": Math.floor(humanity.value / 10),
-      });
-    }
-  }
-
-  /**
-   * Called when cyberware is installed, this method decreases Humanity on an actor, rolling
-   * for the value if need be.
-   *
-   * To Do: this should be in cpr-character only since Humanity is overlooked for NPCs, however
-   * because users can switch between mook and character sheets independent of actor type, we
-   * have to keep this here for now. (i.e. they can create a mook but switch to the character sheet)
-   *
-   * @param {CPRItem} item - the Cyberware item being installed (provided just to name the roll)
-   * @param {Object} amount - contains a humanityLoss attribute we use to reduce humanity.
-   *                          Will roll dice if it is a formula.
-   * @returns {@Promise}
-   */
-  async loseHumanityValue(item, amount) {
-    LOGGER.trace("loseHumanityValue | CPRActor | Called.");
-    if (amount.humanityLoss === "None") {
-      LOGGER.trace("CPR Actor loseHumanityValue | Called. | humanityLoss was None.");
-      await this.setMaxHumanity();
-      return;
-    }
-    const { humanity } = this.system.derivedStats;
-    let value = Number.isInteger(humanity.value) ? humanity.value : humanity.max;
-    if (amount.humanityLoss.match(/[0-9]+d[0-9]+/)) {
-      const humRoll = new CPRRolls.CPRHumanityLossRoll(item.name, amount.humanityLoss);
-      await humRoll.roll();
-      value -= humRoll.resultTotal;
-      humRoll.entityData = { actor: this.id };
-      CPRChat.RenderRollCard(humRoll);
-      LOGGER.trace("CPR Actor loseHumanityValue | Called. | humanityLoss was rolled.");
-    } else {
-      value -= parseInt(amount.humanityLoss, 10);
-      LOGGER.trace("CPR Actor loseHumanityValue | Called. | humanityLoss was static.");
-    }
-
-    if (value <= 0) {
-      Rules.lawyer(false, "CPR.messages.youCyberpsycho");
-    }
-
-    await this.update({ "system.derivedStats.humanity.value": value });
-    await this.setMaxHumanity();
-  }
-
-  /**
-   * Persist life path information to the actor model
-   *
-   * To Do: this should be in cpr-character only since Humanity is overlooked for NPCs, however
-   * because users can switch between mook and character sheets independent of actor type, we
-   * have to keep this here for now. (i.e. they can create a mook but switch to the character sheet)
-   *
-   * @param {Object} formData  - an object of answers provided by the user in a form
-   * @returns {Object}
-   */
-  setLifepath(formData) {
-    LOGGER.trace("setLifepath | CPRActor | Called.");
-    return this.update(formData);
-  }
-
-  /**
-   * Called when the user accepts the dialog box defining roles and which one is "active." The data
-   * is persisted to the actor object here.
-   *
-   * @param {Object} formData - an object of answers provided by the user in a form
-   * @returns {Object}
-   */
 
   /**
    * Return the skill level (number) for a given skill on the actor.
@@ -629,15 +592,14 @@ export default class CPRActor extends Actor {
     itemTypes.forEach((itemType) => {
       const itemList = this.itemTypes[itemType].filter((i) => i.system.equipped === "equipped" && i.system.isUpgraded);
       itemList.forEach((i) => {
-        const upgradeValue = i.getAllUpgradesFor(baseName);
-        const upgradeType = i.getUpgradeTypeFor(baseName);
+        const upgradeData = i.getAllUpgradesFor(baseName);
         if (modType === "override") {
-          if (upgradeType === "override" && upgradeValue > modValue) {
-            modValue = upgradeValue;
+          if (upgradeData.type === "override" && upgradeData.value > modValue) {
+            modValue = upgradeData.value;
           }
         } else {
-          modValue = (upgradeType === "override") ? upgradeValue : modValue + upgradeValue;
-          modType = upgradeType;
+          modValue = (upgradeData.type === "override") ? upgradeData.value : modValue + upgradeData.value;
+          modType = upgradeData.type;
         }
       });
     });
@@ -747,6 +709,10 @@ export default class CPRActor extends Actor {
    * Return whether a property in actor data is a ledgerProperty. This means it has
    * two (sub-)properties, "value", and "transactions".
    *
+   * XXX: This method is copied to cpr-container.js because CPRContainerActor does not inherit
+   *      from this class. We could fix that, but then all other code in that file would be added
+   *      here, which is already long. If you make changes here, be sure to consider them there too.
+   *
    * @param {String} prop - name of the property that has a ledger
    * @returns {Boolean}
    */
@@ -762,23 +728,6 @@ export default class CPRActor extends Actor {
       return false;
     }
     return true;
-  }
-
-  /**
-   * Pop up a dialog box with ledger records for a given property.
-   *
-   * @param {String} prop - name of the property that has a ledger
-   */
-  showLedger(prop) {
-    LOGGER.trace("showLedger | CPRActor | Called.");
-    if (this.isLedgerProperty(prop)) {
-      const led = new CPRLedger();
-      led.setActor(this);
-      led.setLedgerContent(prop, this.listRecords(prop));
-      led.render(true);
-    } else {
-      SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.ledgerErrorIsNoLedger"));
-    }
   }
 
   /**
@@ -870,7 +819,7 @@ export default class CPRActor extends Actor {
    */
   makeThisArmorCurrent(location, id) {
     LOGGER.trace("makeThisArmorCurrent | CPRActor | Called.");
-    const currentArmor = this._getOwnedItem(id);
+    const currentArmor = this.getOwnedItem(id);
     if (location === "body") {
       const currentArmorValue = currentArmor.system.bodyLocation.sp - currentArmor.system.bodyLocation.ablation;
       const currentArmorMax = currentArmor.system.bodyLocation.sp;
@@ -1242,11 +1191,10 @@ export default class CPRActor extends Actor {
       case "head": {
         armorList.forEach((a) => {
           const cprArmorData = a.system;
-          const upgradeValue = a.getAllUpgradesFor("headSp");
-          const upgradeType = a.getUpgradeTypeFor("headSp");
+          const upgradeData = a.getAllUpgradesFor("headSp");
           cprArmorData.headLocation.sp = Number(cprArmorData.headLocation.sp);
           cprArmorData.headLocation.ablation = Number(cprArmorData.headLocation.ablation);
-          const armorSp = (upgradeType === "override") ? upgradeValue : cprArmorData.headLocation.sp + upgradeValue;
+          const armorSp = (upgradeData.type === "override") ? upgradeData.value : cprArmorData.headLocation.sp + upgradeData.value;
           cprArmorData.headLocation.ablation = Math.min((cprArmorData.headLocation.ablation + ablation), armorSp);
           updateList.push({ _id: a.id, system: cprArmorData });
         });
@@ -1261,9 +1209,8 @@ export default class CPRActor extends Actor {
           const cprArmorData = a.system;
           cprArmorData.bodyLocation.sp = Number(cprArmorData.bodyLocation.sp);
           cprArmorData.bodyLocation.ablation = Number(cprArmorData.bodyLocation.ablation);
-          const upgradeValue = a.getAllUpgradesFor("bodySp");
-          const upgradeType = a.getUpgradeTypeFor("bodySp");
-          const armorSp = (upgradeType === "override") ? upgradeValue : cprArmorData.bodyLocation.sp + upgradeValue;
+          const upgradeData = a.getAllUpgradesFor("bodySp");
+          const armorSp = (upgradeData.type === "override") ? upgradeData.value : cprArmorData.bodyLocation.sp + upgradeData.value;
           cprArmorData.bodyLocation.ablation = Math.min((cprArmorData.bodyLocation.ablation + ablation), armorSp);
           updateList.push({ _id: a.id, system: cprArmorData });
         });
@@ -1325,5 +1272,155 @@ export default class CPRActor extends Actor {
       if (!confirmDelete) return;
     }
     effect.delete();
+  }
+
+  /**
+   * Warning!
+   *
+   * When a user changes sheets (character/mook), the type for the actor itself does not change.
+   * This forces us to put actor code in the same place, and have the sheets encode specific behaviors,
+   * not the actors. Below you're going to see methods that look like they belong in cpr-mook.js
+   * or cpr-character.js, but doing so will result in broken functionality if a user swaps sheets.
+   */
+
+  /** CHARACTER SPECIFIC CODE */
+
+  /**
+   * Calculate the character's max HP based on stats and effects.
+   *
+   * @return {Number}
+   */
+  calcMaxHp() {
+    LOGGER.trace("_calcMaxHp | CPRActor | Called.");
+    const { stats } = this.system;
+    let maxHp = 10 + 5 * Math.ceil((stats.will.value + stats.body.value) / 2);
+    maxHp += this.bonuses.maxHp; // from any active effects
+    return maxHp;
+  }
+
+  /**
+   * Calculate the character's Humanity based on stats and effects.
+   *
+   * @return {Number}
+   * @private
+   */
+  _calcMaxHumanity() {
+    LOGGER.trace("_calcMaxHumanity | CPRActor | Called.");
+    const cprData = this.system;
+    const { stats } = cprData;
+    let cyberwarePenalty = 0;
+    const installedCyberware = this.itemTypes.cyberware.filter((cw) => cw.system.isInstalled);
+    installedCyberware.forEach((cyberware) => {
+      if (cyberware.system.type === "borgware") {
+        cyberwarePenalty += 4;
+      } else if (parseInt(cyberware.system.humanityLoss.static, 10) > 0) {
+        cyberwarePenalty += 2;
+      }
+    });
+    let maxHumanity = 10 * stats.emp.max - cyberwarePenalty; // minus sum of installed cyberware
+    maxHumanity += this.bonuses.maxHumanity; // from any active effects
+    return maxHumanity;
+  }
+
+  /**
+   * Calculate the max humanity on this actor.
+   * If current humanity is full and the max changes, we should update the current and EMP to match only
+   * if the new max is less than the old max.
+   * We assume that to be preferred behavior more often than not, especially during character creation.
+   *
+   * @callback
+   */
+  async setMaxHumanity() {
+    LOGGER.trace("setMaxHumanity | CPRActor | Called.");
+    const maxHumanity = this._calcMaxHumanity();
+    const { humanity } = this.system.derivedStats;
+    if (humanity.max === humanity.value && maxHumanity < humanity.max) {
+      await this.update({
+        "system.derivedStats.humanity.max": maxHumanity,
+        "system.derivedStats.humanity.value": maxHumanity,
+        "system.stats.emp.value": Math.floor(humanity.value / 10),
+      });
+    } else {
+      await this.update({
+        "system.derivedStats.humanity.max": maxHumanity,
+        "system.stats.emp.value": Math.floor(humanity.value / 10),
+      });
+    }
+  }
+
+  /**
+   * Called when cyberware is installed, this method decreases Humanity on an actor, rolling
+   * for the value if need be.
+   *
+   * You may think this should be in cpr-character only since Humanity is overlooked for NPCs, however
+   * because users can switch between mook and character sheets independent of actor type, we
+   * have to keep this here. (i.e. they can create a mook but switch to the character sheet)
+   *
+   * @param {CPRItem} item - the Cyberware item being installed (provided just to name the roll)
+   * @param {Object} amount - contains a humanityLoss attribute we use to reduce humanity.
+   *                          Will roll dice if it is a formula.
+   * @returns {@Promise}
+   */
+  async loseHumanityValue(item, amount) {
+    LOGGER.trace("loseHumanityValue | CPRActor | Called.");
+    if (amount.humanityLoss === "None") {
+      LOGGER.trace("CPR Actor loseHumanityValue | Called. | humanityLoss was None.");
+      await this.setMaxHumanity();
+      return;
+    }
+    const { humanity } = this.system.derivedStats;
+    let value = Number.isInteger(humanity.value) ? humanity.value : humanity.max;
+    if (amount.humanityLoss.match(/[0-9]+d[0-9]+/)) {
+      const humRoll = new CPRRolls.CPRHumanityLossRoll(item.name, amount.humanityLoss);
+      await humRoll.roll();
+      value -= humRoll.resultTotal;
+      humRoll.entityData = { actor: this.id };
+      CPRChat.RenderRollCard(humRoll);
+      LOGGER.trace("CPR Actor loseHumanityValue | Called. | humanityLoss was rolled.");
+    } else {
+      value -= parseInt(amount.humanityLoss, 10);
+      LOGGER.trace("CPR Actor loseHumanityValue | Called. | humanityLoss was static.");
+    }
+
+    if (value <= 0) {
+      Rules.lawyer(false, "CPR.messages.youCyberpsycho");
+    }
+
+    await this.update({ "system.derivedStats.humanity.value": value });
+    await this.setMaxHumanity();
+  }
+
+  /**
+   * Persist life path information to the actor model
+   *
+   * Again, this should be in cpr-character only since Humanity is overlooked for NPCs, but
+   * users can switch between sheet types.
+   *
+   * @param {Object} formData  - an object of answers provided by the user in a form
+   * @returns {Object}
+   */
+  setLifepath(formData) {
+    LOGGER.trace("setLifepath | CPRActor | Called.");
+    return this.update(formData);
+  }
+
+  /** MOOK SPECIFIC CODE */
+
+  /**
+   * Called by the createOwnedItem listener (hook) when a user drags an item on a mook sheet
+   * It handles the automatic equipping of gear and installation of cyberware.
+   *
+   * @param {CPRItem} item - the item document that was dragged
+   */
+  handleMookDraggedItem(item) {
+    LOGGER.trace("handleMookDraggedItem | CPRActor | Called.");
+    // auto-install this cyberware
+    if (item.type === "cyberware") {
+      this.addCyberware(item._id);
+    }
+    // auto-equip this item
+    if (SystemUtils.hasDataModelTemplate(item.type, "equippable")) {
+      this.updateEmbeddedDocuments("Item", [{ _id: item._id, "system.equipped": "equipped" }]);
+    }
   }
 }

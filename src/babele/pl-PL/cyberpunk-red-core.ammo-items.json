@@ -102,7 +102,7 @@
 			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
 		},
 		"Flashbang Grenade": {
-			"name": "Granat Hukbłyskowy",
+			"name": "Granat Ogłuszający",
 			"description": "<p>Nie zadaje obrażeń. Przy trafieniu cel rzuca PT15 na Odporność na tortury/narkotyki. Przy porażce, cel otrzymuje rany krytyczne Zranione Oko oraz Zranione Ucho (s. 188) na 1 minutę. Nie zadaje obrażeń krytycznych.</p>"
 		},
 		"Incendiary Arrow": {

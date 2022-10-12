@@ -1,14 +1,17 @@
-#!/bin/bash
-# Download the original changelog from dev branch.
-WORK_DIR=$(mktemp -d)
-wget -O ${WORK_DIR}/CHANGELOG.md https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/raw/dev/CHANGELOG.md
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
-if cmp -s ${WORK_DIR}/CHANGELOG.md CHANGELOG.md; then       ## Checking if files are different.
-    echo "Changelog not changed"
-    rm -rf ${WORK_DIR}
-    exit 1                                           ## Job will fail
+# Check that Gitlab has fetched the dev branch
+if ! git branch -a | grep -q 'remotes/origin/dev'; then
+  echo "remotes/origin/dev branch does not exist"
+  exit 1
+fi
+
+# Test if the CHANGELOG has been updated
+if git diff --quiet HEAD remotes/origin/dev -- CHANGELOG.md; then
+  echo "❌ Changelog not changed"
+  exit 1
 else
-    echo "Changelog changed"
-    rm -rf ${WORK_DIR}
-    exit 0                                           ## Job will pass
+  echo "✅ Changelog changed"
 fi

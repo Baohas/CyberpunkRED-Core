@@ -1,16 +1,43 @@
-# Version 0.83.0 | Date: WIP
+# Version 0.84.0 | Date: WIP
 
 **New Features**
 -
 
 **Changes**
--
+- Renamed `cpr-actor.js:_getOwnedItem()` to `cpr-actor.js:getOwnedItem()` and marked the function as public since it is actually called from several other objects.
+- Changed `cpr-actor.js:getOwnedItem()` to take either an item's `_id` or `uuid` to find the owned item.
 
 **Bug Fixes**
+-
+
+
+# Version 0.83.0 | Date: 2022-10-02
+
+**New Features**
+- New UI for modifying Mook skills on the Mook sheet
+- Drugs can be used in the Mook sheet
+- Stackable items can be dragged to the Mook sheet and stacked properly
+
+**Changes**
+- Automatic babele folder configuration, so that it does not have to be set by the user.
+- Mook portrait is always shown
+- A few minor UI improvements to the Mook sheet
+
+**Bug Fixes**
+- #476 - Vehicles cost can now be edited
 - Cyberware & Upgrade templates still had some references to .data causing the shim to fire.
 # Version 0.82.1 (Hotfix) | Date: 2022-09-??
 - Fix an issue where the mook sheet notes were not writable
 - #494 - Cyberware weapons were corrupting data points
+- #469 - Fixed icon display for Foreign Object Critical in Rollable Tables
+- #507 - Black ICE Class does not appear to save
+- #520 - Splitting items works again
+
+
+# Version 0.82.1 (Hotfix) | Date: 2022-09-23
+- Fix an issue where the mook sheet notes were not writable
+- #494 - Cyberware weapons were corrupting data points
+
 
 # Version 0.82.0 | Date: 2022-09-22
 
@@ -30,7 +57,6 @@
 - Removed the need for installedPrograms data to be stored on the actor which was noticed during the filteredItems cleanup.
 - #490 - Vehicles still using v10 data/system shim.
 - #486 - Autofire Skill correctly used when autofire toggle applied in fight tab
-
 
 **Maintenance Releases**
 

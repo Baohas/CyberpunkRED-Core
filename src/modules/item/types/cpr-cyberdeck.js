@@ -17,28 +17,49 @@ export default class CPRCyberdeckItem extends CPRItem {
    * The methods below apply to the CPRItem.type = "cyberdeck"
   */
 
-  /**
-   * Dynamically calculates the number of free slots on the Cyberdeck
-   * by starting with the number of slots this cyberdeck has and substacting
-   * the slot size of each of the installed programs.
-   *
-   * @override
-   * @public
-   */
-  availableSlots() {
-    LOGGER.trace("availableSlots | CPRCyberdeckItem | Called.");
-    const cprItemData = duplicate(this.system);
-    let unusedSlots = 0;
-    const upgradeValue = this.getAllUpgradesFor("slots");
-    const upgradeType = this.getUpgradeTypeFor("slots");
-    unusedSlots = (upgradeType === "override") ? upgradeValue : cprItemData.slots + upgradeValue;
-    cprItemData.programs.installed.forEach((program) => {
-      unusedSlots -= program.size;
-    });
-    cprItemData.upgrades.forEach((u) => {
-      unusedSlots -= u.system.size;
-    });
-    return unusedSlots;
+  async syncPrograms() {
+    LOGGER.trace("syncPrograms | CPRCyberdeckItem | Called.");
+
+    const actor = (this.isOwned) ? this.actor : false;
+
+    if (!actor) {
+      return Promise.reject(new Error("Can not install upgrades in unowned objects."));
+    }
+
+    const installedItems = duplicate(this.system.installedItems);
+
+    const uninstallList = [];
+    for (const program of this.system.programs.installed) {
+      if (!installedItems.list.includes(program.uuid)) {
+        const item = actor.getOwnedItem(program.uuid);
+        uninstallList.push(item);
+      }
+    }
+
+    const installList = [];
+    for (const uuid of installedItems.list) {
+      const item = actor.getOwnedItem(uuid);
+      if (item && item.type === "program") {
+        if (this.system.programs.installed.filter((p) => p.uuid === uuid).length === 0) {
+          installList.push(item);
+        }
+      }
+    }
+    if (uninstallList.length > 0) {
+      await this.uninstallPrograms(uninstallList);
+    }
+
+    if (installList.length > 0) {
+      await this.installPrograms(installList);
+    }
+
+    const allUpdates = installList.concat(uninstallList);
+    const updateList = [];
+    for (const item of allUpdates) {
+      updateList.push({ _id: item._id, system: item.system });
+    }
+    updateList.push({ _id: this._id, system: this.system });
+    return actor.updateEmbeddedDocuments("Item", updateList);
   }
 
   /**
@@ -81,6 +102,7 @@ export default class CPRCyberdeckItem extends CPRItem {
       if (onDeck.length === 0) {
         const programInstallation = p.system;
         programInstallation.isRezzed = false;
+        programInstallation.uuid = p.uuid;
         programInstallation._id = p._id;
         programInstallation.name = p.name;
         programInstallation.flags = p.flags;

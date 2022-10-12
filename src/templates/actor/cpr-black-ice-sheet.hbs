@@ -41,7 +41,7 @@
         </div>
         <div class="width-long width-full">
           <select name="system.class">
-            {{#select system.class}}
+            {{#select actor.system.class}}
               {{#each (cprFindConfigObj "blackIceType") as |class c|}}
                 <option value="{{c}}">{{localize class}}</option>
               {{/each}}
