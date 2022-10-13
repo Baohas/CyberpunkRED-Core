@@ -138,6 +138,30 @@ export default class CPRItem extends Item {
     }
   }
 
+  /**
+   * We extend this for when an item is deleted that contains other items,
+   * uninstalling them prior to deletion.
+   *
+   * @param {object} options - Any additional options
+   * @param {object} user - User initiating this deleteion
+   * @returns Promise
+   */
+  async _preDelete(options, user) {
+    LOGGER.trace("_preDelete | CPRItem | Called.");
+    if (this.system.installedItems.list.length > 0) {
+      const itemList = [];
+      this.system.installedItems.list.forEach((itemId) => itemList.push(this.actor.getOwnedItem(itemId)));
+      await this.uninstallItems(itemList, true);
+    }
+    return super._preDelete(options, user);
+  }
+
+  /**
+   * Return the number of available slots, taking into
+   * considerations any upgrades which may change the number
+   * of slots
+   * @returns Integer - Total number of available slots
+  */
   availableInstallSlots() {
     LOGGER.trace("availableInstallSlots | CPRItem | Called.");
     const itemTemplates = SystemUtils.GetTemplateItemTypes("upgradable");
@@ -146,9 +170,17 @@ export default class CPRItem extends Item {
       const upgradeData = this.getAllUpgradesFor("slots");
       totalSlots = (upgradeData.type === "override") ? upgradeData.value : totalSlots + upgradeData.value;
     }
-    return totalSlots - this.system.installedItems.usedSlots;
+    return parseInt(totalSlots - this.system.installedItems.usedSlots, 10);
   }
 
+  /**
+   * Get an array of the objects installed in this Item. An optional
+   * string parameter may be passed to filter the return list by a
+   * specific Item type.
+   *
+   * @param {String} type - Optionally return a list of a specific item type
+   * @returns {Array} - Array of objects that are installed
+   */
   getInstalledItems(type = false) {
     LOGGER.trace("getInstalledItems | CPRItem | Called.");
 
@@ -171,6 +203,16 @@ export default class CPRItem extends Item {
     return installedItems;
   }
 
+  /**
+   * Determine if a set of objects can be installed into this Item. Checks for
+   * the following criteria:
+   *  - Items are allowed to be installed
+   *  - Item in itemLists are all in the allowedTypes of this item
+   *  - Cumulative size of items in itemList is less than or equal to available slots
+   *
+   * @param {Array} itemList - Array of objects to wanting to be installed
+   * @returns {Boolean} - Whether this item can install all objects passed to it
+   */
   canInstallItems(itemList) {
     LOGGER.trace("canInstallItems | CPRItem | Called.");
     if (!Array.isArray(itemList)) {
@@ -185,17 +227,24 @@ export default class CPRItem extends Item {
       if (this.system.installedItems.allowedTypes.includes(item.type) && (SystemUtils.getDataModelTemplates(item.type).includes("installable"))) {
         totalInstallationSize += item.system.size;
       } else {
+        SystemUtils.DisplayMessage("error", SystemUtils.Format("CPR.messages.installInvalidType", { target: this.name, item: item.name }));
         result = false;
       }
     });
 
     const availableSlots = this.availableInstallSlots();
     if (totalInstallationSize > availableSlots) {
+      SystemUtils.DisplayMessage("error", SystemUtils.Format("CPR.messages.installInsufficientSlots", { item: this.name }));
       result = false;
     }
     return result;
   }
 
+  /**
+   * This will install items into this item.
+   * @param {Array} itemList - Array of Item Objects to be installed
+   * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
+   */
   async installItems(itemList) {
     LOGGER.trace("_installItems | CPRItem | Called.");
     if (!Array.isArray(itemList)) {
@@ -231,6 +280,13 @@ export default class CPRItem extends Item {
     return actor.updateEmbeddedDocuments("Item", updateList);
   }
 
+  /**
+   * @param {Array} itemList - Array of objects to uninstall
+   * @param {Boolean} recursive  - Boolean stating if the uninstallation should be recursive
+   *                               in that each item uninstalled should also have it's own
+   *                               installed items removed.  This is needed for Cyberware uninstallations.
+   * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
+   */
   async uninstallItems(itemList, recursive = false) {
     LOGGER.trace("uninstallItems | CPRItem | Called.");
     if (!Array.isArray(itemList)) {
