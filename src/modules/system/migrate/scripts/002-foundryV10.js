@@ -16,7 +16,7 @@ export default class FoundryV10Migration extends CPRMigration {
    * Executed before the migration takes place, see run() in the base migration class.
    */
   async preMigrate() {
-    LOGGER.trace("preMigrate | 1-activeEffects Migration");
+    LOGGER.trace("preMigrate | 2-foundryV10 Migration");
     LOGGER.log(`Starting migration: ${this.name}`);
   }
 
@@ -24,7 +24,7 @@ export default class FoundryV10Migration extends CPRMigration {
    * Takes place after the data migration completes.
    */
   async postMigrate() {
-    LOGGER.trace("postMigrate | 1-activeEffects Migration");
+    LOGGER.trace("postMigrate | 2-foundryV10 Migration");
     LOGGER.log(`Finishing migration: ${this.name}`);
   }
 
