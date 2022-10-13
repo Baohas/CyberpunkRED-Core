@@ -281,6 +281,18 @@ export default class CPRItem extends Item {
   }
 
   /**
+   * This will uninstall all items in itemList from this item.  By default, any installed items
+   * which also have installed items will NOT have those items removed from it.  Example:
+   * Uninstalling a Cyberdeck from a Bodyweight Suit will NOT also uninstall any programs/upgrades
+   * from the Cyberdeck.
+   *
+   * An exception here is the uninstallation of Cyberware.  Cyberware is always removed recursively
+   * so if you uninstall a CyberArm which has a Cyberdeck in it, all programs and upgrades from the
+   * Cyberdeck are also uninstalled.
+   *
+   * TODO: Determine if we should stop recursiveness on an item type change.  IE, if this
+   *       is a cyberware item, only remove all embedded cyberware items and if something else
+   *       is installed, like a cyberdeck, don't uninstall whatever it has installed.
    * @param {Array} itemList - Array of objects to uninstall
    * @param {Boolean} recursive  - Boolean stating if the uninstallation should be recursive
    *                               in that each item uninstalled should also have it's own

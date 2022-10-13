@@ -279,7 +279,7 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Method to add (install) cyberware owned by an actor.
+   * Method to install cyberware owned by an actor.
    * This will handle making sure it is going into the right foundational cyberware, if applicable.
    * Additionally, if there is optional cyberware installed under a foundational cyberware which
    * allows cyberware to be installed into it (ie Chipware Socket) and it has capacity, it will
@@ -352,7 +352,7 @@ export default class CPRActor extends Actor {
    * @param {String} itemId - the Cyberware item ID to uninstall
    * @param {String} foundationalId - the foundational Cyberware Id to uninstall from
    * @param {Boolean} skipConfirm - a boolean to indicate whether the confirmation dialog should be displayed
-   * @returns {Object}
+   * @returns {Promise} - Returns the promise from calling this.update()
    */
   async uninstallCyberware(itemId, foundationalId, skipConfirm = false) {
     LOGGER.trace("uninstallCyberware | CPRActor | Called.");
@@ -382,6 +382,14 @@ export default class CPRActor extends Actor {
     return this.setMaxHumanity();
   }
 
+  /**
+   * Get an array of the objects installed in this Item. An optional
+   * string parameter may be passed to filter the return list by a
+   * specific Item type.
+   *
+   * @param {String} type - Optionally return a list of a specific item type
+   * @returns {Array} - Array of objects that are installed
+   */
   getInstalledItems(type = false) {
     LOGGER.trace("getInstalledItems | CPRActor | Called.");
     const installedItems = [];
@@ -397,6 +405,15 @@ export default class CPRActor extends Actor {
     return installedItems;
   }
 
+  /**
+   * Determine if a set of objects can be installed into this Item. Checks for
+   * the following criteria:
+   *  - Items are allowed to be installed
+   *  - Item in itemLists are all in the allowedTypes of this item
+   *
+   * @param {Array} itemList - Array of objects to wanting to be installed
+   * @returns {Boolean} - Whether this item can install all objects passed to it
+   */
   canInstallItems(itemList) {
     LOGGER.trace("canInstallItems | CPRActor | Called.");
     if (!Array.isArray(itemList)) {
@@ -412,6 +429,11 @@ export default class CPRActor extends Actor {
     return (this.system.installedItems.allowed && result);
   }
 
+  /**
+   * This will install items into this Actor.
+   * @param {Array} itemList - Array of Item Objects to be installed
+   * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
+   */
   async installItems(itemList) {
     LOGGER.trace("installItems | CPRActor | Called.");
     if (!Array.isArray(itemList)) {
@@ -434,6 +456,24 @@ export default class CPRActor extends Actor {
     return this.updateEmbeddedDocuments("Item", updateList);
   }
 
+  /**
+   * This will uninstall all items in itemList from this Actor.  By default, any installed items
+   * which also have installed items WILL have those items removed from it.
+   *  Example 1:
+   *    Uninstall a CyberArm which has a Big Knucks will also remove the Big Knucks from the CyberArm
+   *  Example 2:
+   *    Uninstall a CyberArm which has a Cyberdeck in it, all programs and upgrades from the
+   *    Cyberdeck are also uninstalled. (Not preferrable, see TODO)
+   *
+   * TODO: Determine if we should stop recursiveness on an item type change.  IE, if this
+   *       is a cyberware item, only remove all embedded cyberware items and if something else
+   *       is installed, like a cyberdeck, don't uninstall whatever it has installed.
+   * @param {Array} itemList - Array of objects to uninstall
+   * @param {Boolean} recursive  - Boolean stating if the uninstallation should be recursive
+   *                               in that each item uninstalled should also have it's own
+   *                               installed items removed.  This is needed for Cyberware uninstallations.
+   * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
+   */
   async uninstallItems(itemList, recursive = true) {
     LOGGER.trace("uninstallItems | CPRActor | Called.");
     if (!Array.isArray(itemList)) {
