@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 # This script tweaks the manifest to allow running both a production
 # version of the system and a dev version from a cloned repo on
