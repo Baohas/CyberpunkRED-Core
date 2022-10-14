@@ -1,5 +1,6 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-await-in-loop */
-/* global duplicate Item game */
+/* global duplicate Item */
 
 import CPR from "../../config.js";
 import CPRMigration from "../cpr-migration.js";

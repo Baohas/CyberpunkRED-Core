@@ -1,5 +1,5 @@
 /* eslint-disable no-shadow */
-/* global renderTemplate FormDataExtended Dialog foundry */
+/* global renderTemplate Dialog */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
@@ -19,7 +19,6 @@ export default class SelectRolesPrompt {
           const netRoleList = html.find("[name=\"activeNetRole\"");
           let activeRole = "";
           let activeNetRole = "";
-          const fd = new FormDataExtended(html.find("form")[0]);
           const formData = {};
           Object.keys(roleList).forEach((role) => {
             if (roleList[role].checked) {

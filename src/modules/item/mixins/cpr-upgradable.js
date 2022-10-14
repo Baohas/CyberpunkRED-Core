@@ -17,7 +17,7 @@ const Upgradable = function Upgradable() {
    * @param {Array} upgrades - the list of upgrades to install
    * @returns the updated item document after the installation
    */
-  this.syncUpgrades = async function syncUpgrades(upgradeList) {
+  this.syncUpgrades = async function syncUpgrades() {
     LOGGER.trace("syncUpgrades | Upgradable | Called.");
 
     const actor = (this.isOwned) ? this.actor : false;

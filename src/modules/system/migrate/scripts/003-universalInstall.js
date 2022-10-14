@@ -1,23 +1,22 @@
-/* eslint-disable no-param-reassign */
 /* eslint-disable no-await-in-loop */
-/* global game, duplicate, mergeObject */
+/* global game */
 
 import CPRMigration from "../cpr-migration.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
-export default class FoundryV10Migration extends CPRMigration {
+export default class UniversalInstallMigration extends CPRMigration {
   constructor() {
-    LOGGER.trace("constructor | 2-foundryV10 Migration");
+    LOGGER.trace("constructor | 3-universalInstall Migration");
     super();
     this.version = 2;
-    this.name = "Foundry V10 Initial Migration";
+    this.name = "Universal Install Migration";
   }
 
   /**
    * Executed before the migration takes place, see run() in the base migration class.
    */
   async preMigrate() {
-    LOGGER.trace("preMigrate | 2-foundryV10 Migration");
+    LOGGER.trace("preMigrate | 3-universalInstall Migration");
     LOGGER.log(`Starting migration: ${this.name}`);
   }
 
@@ -25,7 +24,7 @@ export default class FoundryV10Migration extends CPRMigration {
    * Takes place after the data migration completes.
    */
   async postMigrate() {
-    LOGGER.trace("postMigrate | 2-foundryV10 Migration");
+    LOGGER.trace("postMigrate | 3-universalInstall Migration");
     LOGGER.log(`Finishing migration: ${this.name}`);
   }
 
@@ -39,59 +38,50 @@ export default class FoundryV10Migration extends CPRMigration {
    * @param {CPRActor} actor
    */
   async migrateActor(actor) {
-    LOGGER.trace("migrateActor | 2-foundryV10 Migration");
+    LOGGER.trace("migrateActor | 3-universalInstall Migration");
+    const { installedItems } = actor.system;
     const updatedItemList = [];
-    actor.items.forEach((item) => {
-      const systemChanges = FoundryV10Migration.scrubItem(item);
+    const cyberware = actor.items.filter((i) => i.type === "cyberware");
+    const installedFoundationalCyberware = cyberware.filter((i) => i.system.isFoundational && i.system.isInstalled);
 
-      if (item.system.upgrades && item.system.upgrades.length > 0) {
-        const newUpgrades = [];
-        item.system.upgrades.forEach((upgrade) => {
-          const upgradeData = duplicate(upgrade.data);
-          delete upgrade.data;
-          upgrade.system = upgradeData;
-          newUpgrades.push(upgrade);
-        });
-        systemChanges.upgrades = newUpgrades;
+    for (const cw of installedFoundationalCyberware) {
+      installedItems.list.push(cw.uuid);
+      const cwInstalledItems = cw.system.installedItems;
+      cwInstalledItems.allowedTypes = ["itemUpgrade", "cyberware"];
+      cwInstalledItems.slots = parseInt(cw.system.optionSlots, 10);
+      for (const ocwId of cw.optionalIds) {
+        const ocw = actor.getOwnedItem(ocwId);
+        cwInstalledItems.list.push(ocw.uuid);
+        cwInstalledItems.usedSlots += ocw.system.size;
       }
-
-      if (Object.keys(systemChanges).length !== 0) {
-        updatedItemList.push({
-          _id: item.id,
-          system: systemChanges,
-        });
-      }
-    });
+      updatedItemList.push({
+        _id: cw._id,
+        "system.installedIn": actor.uuid,
+        "system.isInstalled": true,
+        "system.installedItems": cwInstalledItems,
+      });
+    }
 
     const cyberdecks = actor.items.filter((i) => i.type === "cyberdeck");
     cyberdecks.forEach((item) => {
-      const systemChanges = {};
-      if (item.system.programs.installed.length > 0) {
-        const newInstalled = [];
-        item.system.programs.installed.forEach((program) => {
-          const programData = (typeof program.data === "undefined") ? duplicate(program) : duplicate(program.data);
-          delete program.data;
-          newInstalled.push(mergeObject(program, programData));
-        });
-        systemChanges.installed = newInstalled;
+      const oldPrograms = item.system.programs;
+      const newPrograms = {
+        installed: [],
+        rezzed: [],
+      };
+
+      for (const programData of oldPrograms.installed) {
+        const program = actor.getOwnedItem(programData._id);
+        programData.uuid = program.uuid;
+        newPrograms.installed.push(programData);
       }
-      if (item.system.programs.rezzed.length > 0) {
-        const newRezzed = [];
-        item.system.programs.rezzed.forEach((program) => {
-          const programData = (typeof program.data === "undefined") ? duplicate(program) : duplicate(program.data);
-          delete program.data;
-          newRezzed.push(mergeObject(program, programData));
-        });
-        systemChanges.rezzed = newRezzed;
+
+      for (const programData of oldPrograms.rezzed) {
+        const program = actor.getOwnedItem(programData._id);
+        programData.uuid = program.uuid;
+        newPrograms.rezzed.push(programData);
       }
-      if (Object.keys(systemChanges).length !== 0) {
-        updatedItemList.push({
-          _id: item.id,
-          system: {
-            programs: systemChanges,
-          },
-        });
-      }
+      updatedItemList.push({ _id: item._id, "system.programs": newPrograms });
     });
 
     if (updatedItemList.length > 0) {
@@ -106,9 +96,9 @@ export default class FoundryV10Migration extends CPRMigration {
    * @param {CPRItem} item
    */
   static async migrateItem(item) {
-    LOGGER.trace("migrateItem | 2-foundryV10 Migration");
+    LOGGER.trace("migrateItem |3-universalInstall Migration");
 
-    const systemChanges = FoundryV10Migration.scrubItem(item);
+    const systemChanges = UniversalInstallMigration.scrubItem(item);
 
     await item.update({ system: systemChanges }, { CPRmigration: true, mergeDeletes: true });
   }

@@ -1,6 +1,5 @@
 import CPRActor from "./cpr-actor.js";
 import LOGGER from "../utils/cpr-logger.js";
-import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
  * Character actors are generally represented by players, but for especially detailed NPCs,

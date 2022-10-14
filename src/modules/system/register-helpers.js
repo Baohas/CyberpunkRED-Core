@@ -798,9 +798,9 @@ export default function registerHandlebarsHelpers() {
   /**
    * Provide a way to loop in html
    */
-  Handlebars.registerHelper('cprLoop', (n, block) => {
+  Handlebars.registerHelper("cprLoop", (n, block) => {
     LOGGER.trace("cprLoop | handlebarsHelper | Called.");
-    let accum = '';
+    let accum = "";
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < n; ++i) {
       accum += block.fn(i);

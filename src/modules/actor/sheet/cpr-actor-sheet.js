@@ -1,7 +1,6 @@
 /* global ActorSheet, $, setProperty, game, getProperty, mergeObject duplicate, TextEditor */
 import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
-import CPR from "../../system/config.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRLedger from "../../dialog/cpr-ledger-form.js";
 import LOGGER from "../../utils/cpr-logger.js";

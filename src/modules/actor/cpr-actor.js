@@ -37,7 +37,7 @@ export default class CPRActor extends Actor {
       tmpItems.forEach((item) => {
         const updatedSystem = duplicate(item.system);
         updatedSystem.installedItems.slots = 7;
-        updatedSystem.installedItems.allowedTypes = ['itemUpgrade', 'cyberware'];
+        updatedSystem.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
         const cprItem = {
           name: item.name,
           img: item.img,

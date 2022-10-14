@@ -85,8 +85,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     cprActorData.equippedArmor = this.actor.itemTypes.armor.filter((item) => item.system.equipped === "equipped");
     cprActorData.equippedWeapons = this.actor.itemTypes.weapon.filter((item) => item.system.equipped === "equipped");
 
-    // dsorrent - Need to fix this
-    // const installedCyberware = this.actor.getInstalledCyberware();
+    const installedCyberware = this.actor.itemTypes.cyberware.filter((cw) => cw.system.isInstalled);
     const installedWeapons = installedCyberware.filter((c) => c.system.isWeapon === true);
     cprActorData.equippedWeapons = cprActorData.equippedWeapons.concat(installedWeapons);
     foundryData.data.system = cprActorData;

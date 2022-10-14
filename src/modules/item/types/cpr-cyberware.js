@@ -1,5 +1,3 @@
-/* global duplicate */
-
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";
 
@@ -32,6 +30,16 @@ export default class CPRCyberwareItem extends CPRItem {
     return null;
   }
 
+  /**
+   * This overrides the uninstallItems function, forcing a
+   * recursive uninstall
+   * @param {Array} itemList - Array of objects to uninstall
+   * @param {Boolean} recursive  - Boolean stating if the uninstallation should be recursive
+   *                               in that each item uninstalled should also have it's own
+   *                               installed items removed.  This is needed for Cyberware uninstallations.
+   * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
+   */
+  // eslint-disable-next-line no-unused-vars
   async uninstallItems(itemList, recursive = true) {
     LOGGER.trace("uninstallItems | CPRCyberwareItem | Called.");
     return super.uninstallItems(itemList, true);
