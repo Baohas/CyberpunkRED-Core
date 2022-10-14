@@ -286,7 +286,7 @@ export default class CPRActorSheet extends ActorSheet {
         break;
       }
       case CPRRolls.rollTypes.CYBERDECKPROGRAM: {
-        const programId = SystemUtils.GetEventDatum(event, "data-program-id");
+        const programUUID = SystemUtils.GetEventDatum(event, "data-program-uuid");
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
         const executionType = SystemUtils.GetEventDatum(event, "data-execution-type");
         const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
@@ -298,7 +298,7 @@ export default class CPRActorSheet extends ActorSheet {
         }
         const extraData = {
           cyberdeckId,
-          programId,
+          programUUID,
           executionType,
           netRoleItem,
         };
@@ -634,7 +634,8 @@ export default class CPRActorSheet extends ActorSheet {
       const programs = item.getInstalledPrograms();
       const updateList = [];
       programs.forEach((p) => {
-        updateList.push({ _id: p._id, "system.isInstalled": false });
+        const program = this.actor.getOwnedItem(p.uuid);
+        updateList.push({ _id: program._id, "system.isInstalled": false });
       });
       await this.actor.updateEmbeddedDocuments("Item", updateList);
     }

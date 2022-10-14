@@ -22,12 +22,12 @@
         <div class="item flexrow setting-name text-nowrap">
             {{#if (cprListContains "speed,attack,defense" program.system.class)}}
                 &nbsp;{{program.name}} ({{localize program.system.class}}) &nbsp;
-                <a class="program-uninstall" data-item-id="{{program._id}}">
+                <a class="program-uninstall" data-item-id="{{program.uuid}}">
                     <i class="fas fa-folder-minus fg-red" title="{{localize "CPR.itemSheet.cyberdeck.eraseProgram"}}"></i>
                 </a>
             {{else}}
                 &nbsp;{{program.name}} ({{localize (cprFindConfigValue "programClassList" program.class)}}) &nbsp;
-                <a class="program-uninstall" data-item-id="{{program._id}}">
+                <a class="program-uninstall" data-item-id="{{program.uuid}}">
                     <i class="fas fa-folder-minus fg-red" title="{{localize " CPR.itemSheet.cyberdeck.eraseProgram"}}"></i>
                 </a>
             {{/if}}

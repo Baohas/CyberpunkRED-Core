@@ -66,9 +66,9 @@
         </div>
 
         <div class="block-data text-large">
-          {{#if actor.token.system.flags.cyberpunk-red-core.programId}}
+          {{#if actor.token.system.flags.cyberpunk-red-core.programUUID}}
           {{#if (cprCompare system.class "!==" "other")}}
-            <a class="rollable" data-roll-type="damage"  data-program-id="{{actor.token.system.flags.cyberpunk-red-core.programId}}" data-netrunner-id="{{actor.token.system.flags.cyberpunk-red-core.netrunnerTokenId}}" data-scene-id="{{actor.token.system.flags.cyberpunk-red-core.sceneId}}"><i class="fas fa-tint red-fg" title="{{localize "CPR.actorSheets.commonActions.rollDamage"}}" ></i></a>
+            <a class="rollable" data-roll-type="damage"  data-program-uuid="{{actor.token.system.flags.cyberpunk-red-core.programUUID}}" data-netrunner-id="{{actor.token.system.flags.cyberpunk-red-core.netrunnerTokenId}}" data-scene-id="{{actor.token.system.flags.cyberpunk-red-core.sceneId}}"><i class="fas fa-tint red-fg" title="{{localize "CPR.actorSheets.commonActions.rollDamage"}}" ></i></a>
           {{/if}}
           {{/if}}
           {{#unless actor.token.system.flags.cyberpunk-red-core.netrunnerTokenId}}

@@ -111,7 +111,7 @@ const actorHooks = () => {
 
       const netrunnerTokenId = biToken.getFlag("cyberpunk-red-core", "netrunnerTokenId");
       const cyberdeckId = biToken.getFlag("cyberpunk-red-core", "sourceCyberdeckId");
-      const programId = biToken.getFlag("cyberpunk-red-core", "programId");
+      const programUUID = biToken.getFlag("cyberpunk-red-core", "programUUID");
       const sceneId = biToken.getFlag("cyberpunk-red-core", "sceneId");
       const sceneList = game.scenes.filter((s) => s.id === sceneId);
       if (sceneList.length === 1) {
@@ -121,7 +121,7 @@ const actorHooks = () => {
           const netrunnerToken = tokenList[0];
           const netrunner = netrunnerToken.actor;
           const cyberdeck = netrunner.getOwnedItem(cyberdeckId);
-          cyberdeck.updateRezzedProgram(programId, updatedData.system.stats);
+          cyberdeck.updateRezzedProgram(programUUID, updatedData.system.stats);
           netrunner.updateEmbeddedDocuments("Item", [{ _id: cyberdeck.id, system: cyberdeck.system }]);
         }
       }

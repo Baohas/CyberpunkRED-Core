@@ -98,12 +98,11 @@ export default class CPRCyberdeckItem extends CPRItem {
     LOGGER.trace("installPrograms | CPRCyberdeckItem | Called.");
     const { installed } = this.system.programs;
     programs.forEach((p) => {
-      const onDeck = installed.filter((iProgram) => iProgram._id === p._id);
+      const onDeck = installed.filter((iProgram) => iProgram.uuid === p.uuid);
       if (onDeck.length === 0) {
         const programInstallation = p.system;
         programInstallation.isRezzed = false;
         programInstallation.uuid = p.uuid;
-        programInstallation._id = p._id;
         programInstallation.name = p.name;
         programInstallation.flags = p.flags;
         installed.push(programInstallation);
@@ -164,9 +163,9 @@ export default class CPRCyberdeckItem extends CPRItem {
    */
   isRezzed(program) {
     LOGGER.trace("isRezzed | CPRCyberdeckItem | Called.");
-    const rezzedPrograms = this.system.programs.rezzed.filter((p) => p._id === program.id);
+    const rezzedPrograms = this.system.programs.rezzed.filter((p) => p.uuid === program.uuid);
     const { installed } = this.system.programs;
-    const installIndex = installed.findIndex((p) => p._id === program._id);
+    const installIndex = installed.findIndex((p) => p.uuid === program.uuid);
     const programState = installed[installIndex];
     programState.isRezzed = (rezzedPrograms.length > 0);
     installed[installIndex] = programState;
@@ -216,19 +215,19 @@ export default class CPRCyberdeckItem extends CPRItem {
   _createCyberdeckRoll(rollType, actor, extraData = {}) {
     LOGGER.trace("_createCyberdeckRoll | CPRCyberdeckItem | Called.");
     let cprRoll;
-    const { programId } = extraData;
-    const programData = this.getInstalledPrograms().filter((iProgram) => iProgram._id === programId);
+    const { programUUID } = extraData;
+    const programData = this.getInstalledPrograms().filter((iProgram) => iProgram.uuid === programUUID);
     let program = (programData.length > 0) ? programData[0] : null;
     let damageFormula = (program === null) ? "1d6" : program.damage.standard;
     if (program.class === "blackice") {
-      const rezzedList = this.getRezzedPrograms().filter((rProgram) => rProgram._id === programId);
+      const rezzedList = this.getRezzedPrograms().filter((rProgram) => rProgram.uuid === programUUID);
       program = (rezzedList.length > 0) ? rezzedList[0] : null;
       if (program.blackIceType === "antiprogram") {
         damageFormula = program.damage.blackIce;
       }
     }
     if (program === null) {
-      LOGGER.error(`_createCyberdeckRoll | CPRCyberdeckItem | Unable to locate program ${programId}.`);
+      LOGGER.error(`_createCyberdeckRoll | CPRCyberdeckItem | Unable to locate program ${programUUID}.`);
       return CPRRolls.CPRRoll("Unknown Program", "1d10");
     }
     const skillName = "";
@@ -387,7 +386,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     const tokenFlags = {
       netrunnerTokenId: netrunnerToken.id,
       sourceCyberdeckId: this.id,
-      programId: programData._id,
+      programUUID: programData.uuid,
       sceneId: scene.id,
     };
     const tokenData = [{
@@ -434,19 +433,21 @@ export default class CPRCyberdeckItem extends CPRItem {
    */
   async derezProgram(program) {
     LOGGER.trace("derezProgram | CPRCyberdeckItem | Called.");
-    const { installed } = this.system.programs;
-    const installIndex = installed.findIndex((p) => p._id === program.id);
-    const programState = installed[installIndex];
     const { rezzed } = this.system.programs;
-    const rezzedIndex = rezzed.findIndex((p) => p._id === program.id);
-    const programData = rezzed[rezzedIndex];
-    programState.isRezzed = false;
+    const rezzedIndex = rezzed.findIndex((p) => p.uuid === program.uuid);
+    const { installed } = this.system.programs;
+    const installIndex = installed.findIndex((p) => p.uuid === program.uuid);
+    const programState = (installIndex >= 0) ? installed[installIndex] : null;
+    const programData = (rezzedIndex >= 0) ? rezzed[rezzedIndex] : null;
     program.unsetRezzed();
-    installed[installIndex] = programState;
+    if (programState !== null) {
+      programState.isRezzed = false;
+      installed[installIndex] = programState;
+    }
     if (program.system.class === "blackice") {
       await CPRCyberdeckItem._derezBlackIceToken(programData);
     }
-    const newRezzed = this.system.programs.rezzed.filter((p) => p._id !== program.id);
+    const newRezzed = this.system.programs.rezzed.filter((p) => p.uuid !== program.uuid);
     this.system.programs.rezzed = newRezzed;
   }
 
@@ -536,13 +537,13 @@ export default class CPRCyberdeckItem extends CPRItem {
   /**
    * Update a rezzed program with updated data
    *
-   * @param {String} programId - the _id of the program to be updated
+   * @param {String} programUUID - the _id of the program to be updated
    * @param {Object} updatedData - object data of the program to update with
    */
-  updateRezzedProgram(programId, updatedData) {
+  updateRezzedProgram(programUUID, updatedData) {
     LOGGER.trace("updateRezzedProgram | CPRCyberdeckItem | Called.");
     const { rezzed } = this.system.programs;
-    const rezzedIndex = rezzed.findIndex((p) => p._id === programId);
+    const rezzedIndex = rezzed.findIndex((p) => p.uuid === programUUID);
     const programState = rezzed[rezzedIndex];
     const dataPoints = Object.keys(updatedData);
     dataPoints.forEach((attribute) => {

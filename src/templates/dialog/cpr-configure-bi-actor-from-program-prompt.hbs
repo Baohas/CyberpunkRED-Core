@@ -4,10 +4,10 @@
     <ol class="items-list">
       <li class="item flexrow">
         <div class="item flexrow">
-          <select name="programId">
+          <select name="programUUID">
             <option value = "unlink">{{localize "CPR.dialog.configureBlackIceActorFromProgram.unlinkBlackIceFromProgram"}}</option>
             {{#each biProgramList as |program|}}
-              <option value="{{program._id}}">{{#if (cprCompare program._id "===" linkedProgramId)}}* {{/if}}{{program.name}}</option>
+              <option value="{{program.uuid}}">{{#if (cprCompare program.uuid "===" linkedProgramUUID)}}* {{/if}}{{program.name}}</option>
             {{/each}}
           </select>
         </div>

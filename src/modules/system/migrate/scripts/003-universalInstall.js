@@ -3,6 +3,7 @@
 
 import CPRMigration from "../cpr-migration.js";
 import LOGGER from "../../../utils/cpr-logger.js";
+import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 
 export default class UniversalInstallMigration extends CPRMigration {
   constructor() {
@@ -44,18 +45,24 @@ export default class UniversalInstallMigration extends CPRMigration {
     const cyberware = actor.items.filter((i) => i.type === "cyberware");
     const installedFoundationalCyberware = cyberware.filter((i) => i.system.isFoundational && i.system.isInstalled);
 
-    for (const cw of installedFoundationalCyberware) {
-      installedItems.list.push(cw.uuid);
-      const cwInstalledItems = cw.system.installedItems;
+    for (const item of installedFoundationalCyberware) {
+      installedItems.list.push(item.uuid);
+      const cwInstalledItems = item.system.installedItems;
       cwInstalledItems.allowedTypes = ["itemUpgrade", "cyberware"];
-      cwInstalledItems.slots = parseInt(cw.system.optionSlots, 10);
-      for (const ocwId of cw.optionalIds) {
-        const ocw = actor.getOwnedItem(ocwId);
-        cwInstalledItems.list.push(ocw.uuid);
-        cwInstalledItems.usedSlots += ocw.system.size;
+      cwInstalledItems.slots = parseInt(item.system.optionSlots, 10);
+      for (const optionalId of item.optionalIds) {
+        const optionalItem = actor.getOwnedItem(optionalId);
+        cwInstalledItems.list.push(optionalItem.uuid);
+        cwInstalledItems.usedSlots += optionalItem.system.size;
+        updatedItemList.push({
+          _id: optionalItem._id,
+          "system.installedIn": item.uuid,
+          "system.isInstalled": true,
+          "system.installedItems": [],
+        });
       }
       updatedItemList.push({
-        _id: cw._id,
+        _id: item._id,
         "system.installedIn": actor.uuid,
         "system.isInstalled": true,
         "system.installedItems": cwInstalledItems,
@@ -63,7 +70,7 @@ export default class UniversalInstallMigration extends CPRMigration {
     }
 
     const cyberdecks = actor.items.filter((i) => i.type === "cyberdeck");
-    cyberdecks.forEach((item) => {
+    for (const item of cyberdecks) {
       const oldPrograms = item.system.programs;
       const newPrograms = {
         installed: [],
@@ -73,17 +80,29 @@ export default class UniversalInstallMigration extends CPRMigration {
       for (const programData of oldPrograms.installed) {
         const program = actor.getOwnedItem(programData._id);
         programData.uuid = program.uuid;
+        delete programData._id;
         newPrograms.installed.push(programData);
       }
 
       for (const programData of oldPrograms.rezzed) {
         const program = actor.getOwnedItem(programData._id);
         programData.uuid = program.uuid;
+        delete programData._id;
         newPrograms.rezzed.push(programData);
       }
       updatedItemList.push({ _id: item._id, "system.programs": newPrograms });
-    });
+    };
 
+    const upgradableTypes = CPRSystemUtils.GetTemplateItemTypes("upgradable");
+
+    const upgradableItems = actor.items.filter((i) => upgradableTypes.includes(i.type));
+    for ()
+
+
+    /** check token flags to switch from programId to programUUID ie:
+
+    actor.token.system.flags.cyberpunk-red-core.programUUID
+*/
     if (updatedItemList.length > 0) {
       await actor.updateEmbeddedDocuments("Item", updatedItemList);
     }

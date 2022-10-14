@@ -66,12 +66,12 @@ export default class CPRBlackIceActor extends Actor {
   /**
    * See createStatRoll
    *
-   * @param {String} programId - Id for the program item doing the damage
+   * @param {String} programUUID - Id for the program item doing the damage
    * @param {String} netrunnerTokenId - The token Id of the netrunner that supposedly owns the program item
    * @param {String} sceneId - the scene Id, used to find the token
    * @returns {CPRDamageRoll}
    */
-  createDamageRoll(programId, netrunnerTokenId, sceneId) {
+  createDamageRoll(programUUID, netrunnerTokenId, sceneId) {
     LOGGER.trace("createDamageRoll | CPRBlackIceActor | called.");
     let program;
     if (netrunnerTokenId) {
@@ -84,10 +84,10 @@ export default class CPRBlackIceActor extends Actor {
         }
       });
       if (netrunnerToken) {
-        program = netrunnerToken.actor.getOwnedItem(programId);
+        program = netrunnerToken.actor.getOwnedItem(programUUID);
       }
     } else {
-      const programList = game.items.filter((i) => i._id === programId);
+      const programList = game.items.filter((i) => i._id === programUUID);
       if (programList.length === 1) {
         [program] = programList;
       }

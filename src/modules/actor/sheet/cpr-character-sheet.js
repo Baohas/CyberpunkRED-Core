@@ -620,8 +620,8 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   async _cyberdeckProgramExecution(event) {
     LOGGER.trace("_cyberdeckProgramExecution | CPRCharacterActorSheet | Called.");
     const executionType = SystemUtils.GetEventDatum(event, "data-execution-type");
-    const programId = SystemUtils.GetEventDatum(event, "data-program-id");
-    const program = this.actor.getOwnedItem(programId);
+    const programUUID = SystemUtils.GetEventDatum(event, "data-program-uuid");
+    const program = this.actor.getOwnedItem(programUUID);
     const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
     const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
     const { token } = this;
