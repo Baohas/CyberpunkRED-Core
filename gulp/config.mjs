@@ -1,7 +1,7 @@
-const fs = require("fs-extra");
-const path = require("path");
+import fs from "fs-extra";
+import path from "path";
 
-const { DEFAULT_DESTINATION_FOLDER, SYSTEM_NAME } = require("./constants.js");
+import { DEFAULT_DESTINATION_FOLDER, SYSTEM_NAME } from "./constants.mjs";
 
 const SOURCE_FILES = [
   { from: "src/cpr.js", to: "" },
@@ -53,6 +53,6 @@ function resolveDestinationDir() {
   return DEFAULT_DESTINATION_FOLDER;
 }
 
-exports.dataPath = resolveDestinationDir();
-exports.sourceFiles = SOURCE_FILES;
-exports.sourceFolders = SOURCE_FOLDERS;
+export const dataPath = resolveDestinationDir();
+export const sourceFiles = SOURCE_FILES;
+export const sourceFolders = SOURCE_FOLDERS;

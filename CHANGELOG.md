@@ -1,14 +1,22 @@
-# Version 0.84.0 | Date: WIP
+# Version 0.83.1 (Hotfix) | Date: WIP
 
 **New Features**
 -
 
 **Changes**
+<<<<<<< HEAD
 - Renamed `cpr-actor.js:_getOwnedItem()` to `cpr-actor.js:getOwnedItem()` and marked the function as public since it is actually called from several other objects.
 - Changed `cpr-actor.js:getOwnedItem()` to take either an item's `_id` or `uuid` to find the owned item.
 
 **Bug Fixes**
 -
+=======
+-
+
+**Bug Fixes**
+- Fix non-shop containers having the wrong button
+- Fix rolling initiative before combat has started
+>>>>>>> origin/dev
 
 
 # Version 0.83.0 | Date: 2022-10-02

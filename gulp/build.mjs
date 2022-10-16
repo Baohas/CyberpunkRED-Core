@@ -1,10 +1,10 @@
-const fs = require("fs-extra");
-const path = require("path");
-const gulp = require("gulp");
-const less = require("gulp-less");
-const config = require("./config.js");
+import fs from "fs-extra";
+import path from "path";
+import gulp from "gulp";
+import less from "gulp-less";
 
-const { SYSTEM_FILE } = require("./constants.js");
+import * as config from "./config.mjs";
+import { SYSTEM_FILE } from "./constants.mjs";
 
 const destFolder = path.resolve(config.dataPath);
 const srcFolder = "src";
@@ -37,7 +37,7 @@ async function copyAssets() {
   });
 }
 
-async function updateSystem() {
+async function buildManifest() {
   createDist();
   // Read the template system.json from src/
   const systemRaw = fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE));
@@ -61,7 +61,7 @@ async function updateSystem() {
   fs.writeFileSync(path.resolve(destFolder, SYSTEM_FILE), JSON.stringify(system, null, 2));
 }
 
-async function watch() {
+async function watchSrc() {
   // Helper - watch the pattern, copy the output on change
   function watcher(pattern, out) {
     gulp.watch(pattern)
@@ -74,8 +74,10 @@ async function watch() {
   gulp.watch("src/**/*.less").on("change", () => compileLess());
 }
 
-exports.clean = cleanDist;
-exports.assets = copyAssets;
-exports.system = updateSystem;
-exports.less = compileLess;
-exports.watch = watch;
+export {
+  buildManifest,
+  cleanDist,
+  copyAssets,
+  compileLess,
+  watchSrc,
+};
