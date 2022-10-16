@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* global game */
+/* global game, duplicate, mergeObject */
 
 import CPRMigration from "../cpr-migration.js";
 import LOGGER from "../../../utils/cpr-logger.js";
@@ -40,69 +40,119 @@ export default class UniversalInstallMigration extends CPRMigration {
    */
   async migrateActor(actor) {
     LOGGER.trace("migrateActor | 3-universalInstall Migration");
-    const { installedItems } = actor.system;
-    const updatedItemList = [];
-    const cyberware = actor.items.filter((i) => i.type === "cyberware");
-    const installedFoundationalCyberware = cyberware.filter((i) => i.system.isFoundational && i.system.isInstalled);
-
-    for (const item of installedFoundationalCyberware) {
-      installedItems.list.push(item.uuid);
-      const cwInstalledItems = item.system.installedItems;
-      cwInstalledItems.allowedTypes = ["itemUpgrade", "cyberware"];
-      cwInstalledItems.slots = parseInt(item.system.optionSlots, 10);
-      for (const optionalId of item.optionalIds) {
-        const optionalItem = actor.getOwnedItem(optionalId);
-        cwInstalledItems.list.push(optionalItem.uuid);
-        cwInstalledItems.usedSlots += optionalItem.system.size;
-        updatedItemList.push({
-          _id: optionalItem._id,
-          "system.installedIn": item.uuid,
-          "system.isInstalled": true,
-          "system.installedItems": [],
-        });
-      }
-      updatedItemList.push({
-        _id: item._id,
-        "system.installedIn": actor.uuid,
-        "system.isInstalled": true,
-        "system.installedItems": cwInstalledItems,
-      });
-    }
-
-    const cyberdecks = actor.items.filter((i) => i.type === "cyberdeck");
-    for (const item of cyberdecks) {
-      const oldPrograms = item.system.programs;
-      const newPrograms = {
-        installed: [],
-        rezzed: [],
+    const installedItems = typeof actor.system.installedItems === "object"
+      ? duplicate(actor.system.installedItems)
+      : {
+        allowedTypes: ["cyberware"],
+        allowed: true,
+        list: [],
       };
 
-      for (const programData of oldPrograms.installed) {
-        const program = actor.getOwnedItem(programData._id);
-        programData.uuid = program.uuid;
-        delete programData._id;
-        newPrograms.installed.push(programData);
-      }
-
-      for (const programData of oldPrograms.rezzed) {
-        const program = actor.getOwnedItem(programData._id);
-        programData.uuid = program.uuid;
-        delete programData._id;
-        newPrograms.rezzed.push(programData);
-      }
-      updatedItemList.push({ _id: item._id, "system.programs": newPrograms });
-    };
-
+    let updatedItemList = [];
     const upgradableTypes = CPRSystemUtils.GetTemplateItemTypes("upgradable");
 
-    const upgradableItems = actor.items.filter((i) => upgradableTypes.includes(i.type));
-    for ()
+    for (const item of actor.items) {
+      let itemUpdates = {
+        _id: item._id,
+        system: {},
+      };
+      if (typeof item.system.installedItems === "object") {
+        itemUpdates.system.installedItems = duplicate(item.system.installedItems);
+      } else {
+        itemUpdates.system.installedItems = {
+          allowedTypes: ["itemUpgrade"],
+          allowed: true,
+          list: [],
+          usedSlots: 0,
+          slots: 3,
+        };
+      }
 
+      if (item.type === "cyberware" && item.system.isFoundational && item.system.isInstalled) {
+        installedItems.list.push(item.uuid);
 
-    /** check token flags to switch from programId to programUUID ie:
+        itemUpdates.system.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
+        itemUpdates.system.installedItems.slots = Math.max(itemUpdates.system.installedItems.slots, parseInt(item.system.optionSlots, 10));
 
-    actor.token.system.flags.cyberpunk-red-core.programUUID
-*/
+        for (const optionalId of item.system.optionalIds) {
+          const optionalItem = actor.getOwnedItem(optionalId);
+          let optionalItemUpdates = {
+            _id: optionalItem._id,
+            system: {},
+          };
+          itemUpdates.system.installedItems.list.push(optionalItem.uuid);
+          itemUpdates.system.installedItems.usedSlots += optionalItem.system.size;
+          optionalItemUpdates.system.installedIn = item.uuid;
+          optionalItemUpdates.system.isInstalled = true;
+          optionalItemUpdates.system.installedItems = {
+            allowedTypes: ["itemUpgrade"],
+            allowed: true,
+            list: [],
+            usedSlots: 0,
+            slots: 3,
+          };
+          optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "hasOptionalSlots") };
+          optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionSlots") };
+          optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "installedOptionSlots") };
+          optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionalIds") };
+          updatedItemList = this.safeUpdate(updatedItemList, optionalItemUpdates);
+        }
+        itemUpdates.system.installedIn = actor.uuid;
+        itemUpdates.system.isInstalled = true;
+        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "hasOptionalSlots") };
+        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "optionSlots") };
+        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "installedOptionSlots") };
+        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "optionalIds") };
+      }
+
+      if (upgradableTypes.includes(item.type)) {
+        itemUpdates.system.installedItems.slots = Math.max(itemUpdates.system.installedItems.slots, parseInt(item.system.slots, 10));
+        if (item.system.upgrades.length > 0) {
+          const newUpgrades = [];
+          for (const upgradeData of item.system.upgrades) {
+            const upgrade = actor.getOwnedItem(upgradeData._id);
+            upgradeData.uuid = upgrade.uuid;
+            delete upgradeData._id;
+            newUpgrades.push(upgradeData);
+            itemUpdates.system.installedItems.list.push(upgrade.uuid);
+            itemUpdates.system.installedItems.usedSlots += upgrade.system.size;
+          }
+          itemUpdates.system.upgrades = newUpgrades;
+        }
+        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "slots") };
+      }
+
+      if (item.type === "cyberdeck") {
+        itemUpdates.system.installedItems.slots = Math.max(itemUpdates.system.installedItems.slots, parseInt(item.system.slots, 10));
+        const oldPrograms = item.system.programs;
+        const newPrograms = {
+          installed: [],
+          rezzed: [],
+        };
+
+        for (const programData of oldPrograms.installed) {
+          const program = actor.getOwnedItem(programData._id);
+          programData.uuid = program.uuid;
+          delete programData._id;
+          newPrograms.installed.push(programData);
+          itemUpdates.system.installedItems.list.push(program.uuid);
+          itemUpdates.system.installedItems.usedSlots += program.system.size;
+        }
+
+        for (const programData of oldPrograms.rezzed) {
+          const program = actor.getOwnedItem(programData._id);
+          programData.uuid = program.uuid;
+          delete programData._id;
+          newPrograms.rezzed.push(programData);
+        }
+        itemUpdates.system.programs = newPrograms;
+      }
+
+      updatedItemList = this.safeUpdate(updatedItemList, itemUpdates);
+    }
+
+    await actor.update({ "system.installedItems": installedItems });
+
     if (updatedItemList.length > 0) {
       await actor.updateEmbeddedDocuments("Item", updatedItemList);
     }
@@ -131,25 +181,51 @@ export default class UniversalInstallMigration extends CPRMigration {
   static scrubItem(item) {
     LOGGER.trace("scrubItem | 2-foundryV10 Migration");
     let systemChanges = {};
-    if (typeof item.system.attachmentSlots !== "undefined") {
-      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "attachmentSlots") };
-    }
 
-    if (game.system.template.Item[item.type].templates.includes("physical") && typeof item.system.concealable !== "object") {
-      systemChanges.concealable = {
-        concealable: item.system.concealable,
-        isConcealed: item.system.isConcealed,
+    const removedProperties = ["hasOptionalSlots", "optionSlots", "installedOptionSlots", "optionalIds", "slots"];
+
+    if (typeof item.system.installedItems === "object") {
+      systemChanges.installedItems = duplicate(item.system.installedItems);
+    } else {
+      systemChanges.installedItems = {
+        allowedTypes: ["itemUpgrade"],
+        allowed: true,
+        list: [],
+        usedSlots: 0,
+        slots: 3,
       };
-      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "isConcealed") };
     }
 
-    if (!game.system.template.Item[item.type].templates.includes("stackable") && (typeof item.system.amount !== "undefined")) {
-      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "amount") };
-    }
-
-    if (typeof item.system.upgrade !== "undefined") {
-      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "upgrade") };
+    for (const prop of removedProperties) {
+      if (typeof item.system[prop] !== "undefined") {
+        switch (prop) {
+          case "optionSlots": {
+            systemChanges.installedItems.slots = Math.max(systemChanges.installedItems.slots, parseInt(item.system.optionSlots, 10));
+            break;
+          }
+          case "slots": {
+            systemChanges.installedItems.slots = Math.max(systemChanges.installedItems.slots, parseInt(item.system.slots, 10));
+            break;
+          }
+          default:
+        }
+        systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, prop) };
+      }
     }
     return systemChanges;
+  }
+
+  static safeUpdate(updateList, itemUpdate) {
+    LOGGER.trace("safeUpdate |3-universalInstall Migration");
+    let newList = duplicate(updateList);
+    const inList = updateList.filter((i) => i._id === itemUpdate._id);
+    if (inList.length > 0) {
+      const updatedData = mergeObject(itemUpdate, inList[0]);
+      newList = newList.filter((i) => i._id !== itemUpdate._id);
+      newList.push(updatedData);
+    } else {
+      newList.push(itemUpdate);
+    }
+    return newList;
   }
 }
