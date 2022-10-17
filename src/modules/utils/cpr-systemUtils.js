@@ -23,7 +23,7 @@ export default class CPRSystemUtils {
     let compName = cname;
     if (!cname.startsWith(game.system.id)) compName = `${game.system.id}.${cname}`;
     const comp = game.packs.get(compName);
-    const compContent = await comp.getIndex().contents;
+    const compContent = await comp.contents;
     return comp.getDocument(compContent.filter((i) => i.name === dname)[0]._id);
   }
 
