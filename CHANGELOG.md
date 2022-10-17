@@ -1,4 +1,4 @@
-# Version 0.83.1 (Hotfix) | Date: WIP
+# Version 0.84.0 | Date: WIP
 
 **New Features**
 -
@@ -8,13 +8,17 @@
 - Changed `cpr-actor.js:getOwnedItem()` to take either an item's `_id` or `uuid` to find the owned item.
 
 **Bug Fixes**
--
--
-
-**Bug Fixes**
 - Fix non-shop containers having the wrong button
 - Fix rolling initiative before combat has started
 
+# Version 0.83.1 | Date: 2022-10-17
+**Bug Fixes**
+- #529 - Fix non-shop containers having the wrong button
+- Fix rolling initiative before combat has started
+- Fix weapon upgrades that are secondary weapons to work correctly
+- Fix V10 migration for upgraded items: In some instances, where migration may have
+  had to be restarted, it could leave worlds in a state where the V10 migration
+  would never complete.  This would make future major system releases fail.
 
 # Version 0.83.0 | Date: 2022-10-02
 
