@@ -118,7 +118,8 @@ Hooks.once("ready", async () => {
   if (dataModelVersion.indexOf(".") > -1) dataModelVersion = isNewerVersion("0.80.0", dataModelVersion) ? -1 : 0;
   LOGGER.debug(`New data model version is: ${dataModelVersion}`);
   const MR = new MigrationRunner();
-  if (await MR.migrateWorld(dataModelVersion, DATA_MODEL_VERSION)) {
+  // migrateWorld expects to be passed two integer values.
+  if (await MR.migrateWorld(parseInt(dataModelVersion, 10), DATA_MODEL_VERSION)) {
     UpdateScreen.RenderPopup();
   }
   // Ensure load bar is gone
