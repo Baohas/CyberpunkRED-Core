@@ -72,6 +72,7 @@ async function watchSrc() {
   sourceFiles.forEach((file) => watcher(file.from, file.to));
   sourceFolders.forEach((folder) => watcher(folder.from, folder.to));
   gulp.watch("src/**/*.less").on("change", () => compileLess());
+  gulp.watch("src/system.json").on("change", () => buildManifest());
 }
 
 export {
