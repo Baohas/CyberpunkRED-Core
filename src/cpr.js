@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* global Actors ActorSheet CONFIG Hooks Items ItemSheet game isNewerVersion DocumentSheetConfig */
 // Object imports
 import CPRActiveEffect from "./modules/cpr-active-effect.js";
@@ -37,16 +38,11 @@ Hooks.once("init", async () => {
   LOGGER.credits();
   // Register Actor Sheet Application Classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("cyberpunk-red-core", CPRCharacterActorSheet,
-    { label: SystemUtils.Localize("CPR.sheets.characterSheet"), types: ["character", "mook"], makeDefault: true });
-  Actors.registerSheet("cyberpunk-red-core", CPRBlackIceActorSheet,
-    { label: SystemUtils.Localize("CPR.sheets.blackiceSheet"), types: ["blackIce"], makeDefault: true });
-  Actors.registerSheet("cyberpunk-red-core", CPRContainerActorSheet,
-    { label: SystemUtils.Localize("CPR.sheets.containerSheet"), types: ["container"], makeDefault: true });
-  Actors.registerSheet("cyberpunk-red-core", CPRDemonActorSheet,
-    { label: SystemUtils.Localize("CPR.sheets.demonSheet"), types: ["demon"], makeDefault: true });
-  Actors.registerSheet("cyberpunk-red-core", CPRMookActorSheet,
-    { label: SystemUtils.Localize("CPR.sheets.mookSheet"), types: ["character", "mook"] });
+  Actors.registerSheet("cyberpunk-red-core", CPRCharacterActorSheet, { label: SystemUtils.Localize("CPR.sheets.characterSheet"), types: ["character", "mook"], makeDefault: true });
+  Actors.registerSheet("cyberpunk-red-core", CPRBlackIceActorSheet, { label: SystemUtils.Localize("CPR.sheets.blackiceSheet"), types: ["blackIce"], makeDefault: true });
+  Actors.registerSheet("cyberpunk-red-core", CPRContainerActorSheet, { label: SystemUtils.Localize("CPR.sheets.containerSheet"), types: ["container"], makeDefault: true });
+  Actors.registerSheet("cyberpunk-red-core", CPRDemonActorSheet, { label: SystemUtils.Localize("CPR.sheets.demonSheet"), types: ["demon"], makeDefault: true });
+  Actors.registerSheet("cyberpunk-red-core", CPRMookActorSheet, { label: SystemUtils.Localize("CPR.sheets.mookSheet"), types: ["character", "mook"] });
 
   // Register Item Sheet Application Classes
   Items.unregisterSheet("core", ItemSheet);

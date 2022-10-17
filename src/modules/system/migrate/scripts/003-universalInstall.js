@@ -9,7 +9,7 @@ export default class UniversalInstallMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | 3-universalInstall Migration");
     super();
-    this.version = 2;
+    this.version = 3;
     this.name = "Universal Install Migration";
   }
 
@@ -95,7 +95,7 @@ export default class UniversalInstallMigration extends CPRMigration {
           optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionSlots") };
           optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "installedOptionSlots") };
           optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionalIds") };
-          updatedItemList = this.safeUpdate(updatedItemList, optionalItemUpdates);
+          updatedItemList = UniversalInstallMigration.safeUpdate(updatedItemList, optionalItemUpdates);
         }
         itemUpdates.system.installedIn = actor.uuid;
         itemUpdates.system.isInstalled = true;
@@ -148,7 +148,7 @@ export default class UniversalInstallMigration extends CPRMigration {
         itemUpdates.system.programs = newPrograms;
       }
 
-      updatedItemList = this.safeUpdate(updatedItemList, itemUpdates);
+      updatedItemList = UniversalInstallMigration.safeUpdate(updatedItemList, itemUpdates);
     }
 
     await actor.update({ "system.installedItems": installedItems });
