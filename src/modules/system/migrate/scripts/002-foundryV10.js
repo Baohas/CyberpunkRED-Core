@@ -40,7 +40,7 @@ export default class FoundryV10Migration extends CPRMigration {
    */
   async migrateActor(actor) {
     LOGGER.trace("migrateActor | 2-foundryV10 Migration");
-    const updatedItemList = [];
+    let updatedItemList = [];
     for (const item of actor.items) {
       const systemChanges = FoundryV10Migration.scrubItem(item);
 
@@ -58,10 +58,7 @@ export default class FoundryV10Migration extends CPRMigration {
       }
 
       if (Object.keys(systemChanges).length !== 0) {
-        updatedItemList.push({
-          _id: item.id,
-          system: systemChanges,
-        });
+        updatedItemList = CPRMigration.addToUpdateList(updatedItemList, { _id: item.id, system: systemChanges });
       }
     }
 
@@ -87,12 +84,7 @@ export default class FoundryV10Migration extends CPRMigration {
         systemChanges.rezzed = newRezzed;
       }
       if (Object.keys(systemChanges).length !== 0) {
-        updatedItemList.push({
-          _id: item.id,
-          system: {
-            programs: systemChanges,
-          },
-        });
+        updatedItemList = CPRMigration.addToUpdateList(updatedItemList, { _id: item.id, system: systemChanges });
       }
     }
 

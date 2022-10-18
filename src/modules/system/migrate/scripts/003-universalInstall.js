@@ -95,7 +95,7 @@ export default class UniversalInstallMigration extends CPRMigration {
           optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionSlots") };
           optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "installedOptionSlots") };
           optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionalIds") };
-          updatedItemList = UniversalInstallMigration.safeUpdate(updatedItemList, optionalItemUpdates);
+          updatedItemList = CPRMigration.addToUpdateList(updatedItemList, optionalItemUpdates);
         }
         itemUpdates.system.installedIn = actor.uuid;
         itemUpdates.system.isInstalled = true;
@@ -148,7 +148,7 @@ export default class UniversalInstallMigration extends CPRMigration {
         itemUpdates.system.programs = newPrograms;
       }
 
-      updatedItemList = UniversalInstallMigration.safeUpdate(updatedItemList, itemUpdates);
+      updatedItemList = CPRMigration.addToUpdateList(updatedItemList, itemUpdates);
     }
 
     await actor.update({ "system.installedItems": installedItems });
@@ -213,19 +213,5 @@ export default class UniversalInstallMigration extends CPRMigration {
       }
     }
     return systemChanges;
-  }
-
-  static safeUpdate(updateList, itemUpdate) {
-    LOGGER.trace("safeUpdate |3-universalInstall Migration");
-    let newList = duplicate(updateList);
-    const inList = updateList.filter((i) => i._id === itemUpdate._id);
-    if (inList.length > 0) {
-      const updatedData = mergeObject(itemUpdate, inList[0]);
-      newList = newList.filter((i) => i._id !== itemUpdate._id);
-      newList.push(updatedData);
-    } else {
-      newList.push(itemUpdate);
-    }
-    return newList;
   }
 }

@@ -138,6 +138,29 @@ export default class CPRMigration {
   }
 
   /**
+   * Takes in an array of object changes (updateList) and a requested object change (itemUpdateData)
+   * and if the object is in the array, it will merge the changes to that object in the array, otherwise
+   * it appends to the array.
+   * Returns an updated array.
+   * @param {Array} updateList - Array of objects to be passed to actor.*EmbeddedDocuments()
+   * @param {Object} itemUpdateData  - Object with at least _id: set and changes for the object
+   * @returns {Array} - Updated updateList including itemUpdateData
+   */
+  static addToUpdateList(updateList, itemUpdateData) {
+    LOGGER.trace("addToUpdateList | CPRMigration");
+    let newList = duplicate(updateList);
+    const inList = updateList.filter((i) => i._id === itemUpdateData._id);
+    if (inList.length > 0) {
+      const updatedData = mergeObject(itemUpdateData, inList[0]);
+      newList = newList.filter((i) => i._id !== itemUpdateData._id);
+      newList.push(updatedData);
+    } else {
+      newList.push(itemUpdateData);
+    }
+    return newList;
+  }
+  }
+  /**
    * Migrate unowned Items
    */
   static async migrateItems(classRef) {
