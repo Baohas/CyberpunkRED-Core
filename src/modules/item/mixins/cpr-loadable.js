@@ -43,7 +43,7 @@ const Loadable = function Loadable() {
     if (actor.sheet.token !== null) {
       const flag = getProperty(actor, `flags.cyberpunk-red-core.firetype-${this._id}`);
       if (flag === "autofire") {
-        const afTable = (await DvUtils.GetDvTables()).filter((name) => name.includes(dvTable) && name.includes("Autofire"));
+        const afTable = (DvUtils.GetDvTables()).filter((name) => name.includes(dvTable) && name.includes("Autofire"));
         if (afTable.length > 0) {
           [newDvTable] = afTable;
         }

@@ -720,7 +720,7 @@ export default class CPRActorSheet extends ActorSheet {
       const currentDvTable = (weaponDvTable === "") ? getProperty(this.token, "flags.cprDvTable") : weaponDvTable;
       if (typeof currentDvTable !== "undefined") {
         const dvTable = currentDvTable.replace(" (Autofire)", "");
-        const afTable = (await DvUtils.GetDvTables()).filter((name) => name.includes(dvTable) && name.includes("Autofire"));
+        const afTable = (DvUtils.GetDvTables()).filter((name) => name.includes(dvTable) && name.includes("Autofire"));
         let newDvTable = currentDvTable;
         if (afTable.length > 0) {
           newDvTable = (flag === firemode) ? dvTable : afTable[0];
