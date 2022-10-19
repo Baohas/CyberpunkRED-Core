@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* global game, duplicate, mergeObject */
+/* global game, duplicate, mergeObject, DATA_MODEL_VERSION */
 
 import CPRMigration from "../cpr-migration.js";
 import LOGGER from "../../../utils/cpr-logger.js";
@@ -7,9 +7,9 @@ import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 
 export default class UniversalInstallMigration extends CPRMigration {
   constructor() {
-    LOGGER.trace("constructor | 3-universalInstall Migration");
+    LOGGER.trace("constructor | 4-universalInstall Migration");
     super();
-    this.version = 3;
+    this.version = 4;
     this.name = "Universal Install Migration";
   }
 
@@ -17,7 +17,7 @@ export default class UniversalInstallMigration extends CPRMigration {
    * Executed before the migration takes place, see run() in the base migration class.
    */
   async preMigrate() {
-    LOGGER.trace("preMigrate | 3-universalInstall Migration");
+    LOGGER.trace("preMigrate | 4-universalInstall Migration");
     LOGGER.log(`Starting migration: ${this.name}`);
   }
 
@@ -25,7 +25,7 @@ export default class UniversalInstallMigration extends CPRMigration {
    * Takes place after the data migration completes.
    */
   async postMigrate() {
-    LOGGER.trace("postMigrate | 3-universalInstall Migration");
+    LOGGER.trace("postMigrate | 4-universalInstall Migration");
     LOGGER.log(`Finishing migration: ${this.name}`);
   }
 
@@ -39,7 +39,7 @@ export default class UniversalInstallMigration extends CPRMigration {
    * @param {CPRActor} actor
    */
   async migrateActor(actor) {
-    LOGGER.trace("migrateActor | 3-universalInstall Migration");
+    LOGGER.trace("migrateActor | 4-universalInstall Migration");
     const installedItems = typeof actor.system.installedItems === "object"
       ? duplicate(actor.system.installedItems)
       : {
@@ -165,7 +165,7 @@ export default class UniversalInstallMigration extends CPRMigration {
    * @param {CPRItem} item
    */
   static async migrateItem(item) {
-    LOGGER.trace("migrateItem |3-universalInstall Migration");
+    LOGGER.trace("migrateItem | 4-universalInstall Migration");
 
     const systemChanges = UniversalInstallMigration.scrubItem(item);
 
@@ -179,7 +179,7 @@ export default class UniversalInstallMigration extends CPRMigration {
    * @param {CPRItem} item
    */
   static scrubItem(item) {
-    LOGGER.trace("scrubItem | 2-foundryV10 Migration");
+    LOGGER.trace("scrubItem | 4-universalInstall Migration");
     let systemChanges = {};
 
     const removedProperties = ["hasOptionalSlots", "optionSlots", "installedOptionSlots", "optionalIds", "slots"];

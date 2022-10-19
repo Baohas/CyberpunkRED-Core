@@ -78,9 +78,9 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @override
    * @returns {Object} data - a curated structure of actorSheet data
    */
-  getData() {
+  async getData() {
     LOGGER.trace("getData | CPRMookActorSheet | Called.");
-    const foundryData = super.getData();
+    const foundryData = await super.getData();
     const cprActorData = foundryData.actor.system;
     cprActorData.equippedArmor = this.actor.itemTypes.armor.filter((item) => item.system.equipped === "equipped");
     cprActorData.equippedWeapons = this.actor.itemTypes.weapon.filter((item) => item.system.equipped === "equipped");

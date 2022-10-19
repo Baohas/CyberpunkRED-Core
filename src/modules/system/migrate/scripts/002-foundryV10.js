@@ -117,7 +117,7 @@ export default class FoundryV10Migration extends CPRMigration {
     LOGGER.trace("scrubItem | 2-foundryV10 Migration");
     let systemChanges = {};
     if (typeof item.system.attachmentSlots !== "undefined") {
-      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "attachmentSlots") };
+      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "system.attachmentSlots") };
     }
 
     if (game.system.template.Item[item.type].templates.includes("physical") && typeof item.system.concealable !== "object") {
@@ -125,15 +125,15 @@ export default class FoundryV10Migration extends CPRMigration {
         concealable: item.system.concealable,
         isConcealed: item.system.isConcealed,
       };
-      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "isConcealed") };
+      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "system.isConcealed") };
     }
 
     if (!game.system.template.Item[item.type].templates.includes("stackable") && (typeof item.system.amount !== "undefined")) {
-      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "amount") };
+      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "system.amount") };
     }
 
     if (typeof item.system.upgrade !== "undefined") {
-      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "upgrade") };
+      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "system.upgrade") };
     }
     return systemChanges;
   }
