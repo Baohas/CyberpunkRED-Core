@@ -76,26 +76,28 @@ export default class UniversalInstallMigration extends CPRMigration {
 
         for (const optionalId of item.system.optionalIds) {
           const optionalItem = actor.getOwnedItem(optionalId);
-          let optionalItemUpdates = {
-            _id: optionalItem._id,
-            system: {},
-          };
-          itemUpdates.system.installedItems.list.push(optionalItem.uuid);
-          itemUpdates.system.installedItems.usedSlots += optionalItem.system.size;
-          optionalItemUpdates.system.installedIn = item.uuid;
-          optionalItemUpdates.system.isInstalled = true;
-          optionalItemUpdates.system.installedItems = {
-            allowedTypes: ["itemUpgrade"],
-            allowed: true,
-            list: [],
-            usedSlots: 0,
-            slots: 3,
-          };
-          optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "hasOptionalSlots") };
-          optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionSlots") };
-          optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "installedOptionSlots") };
-          optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionalIds") };
-          updatedItemList = CPRMigration.addToUpdateList(updatedItemList, optionalItemUpdates);
+          if (typeof optionalItem === "object") {
+            let optionalItemUpdates = {
+              _id: optionalItem._id,
+              system: {},
+            };
+            itemUpdates.system.installedItems.list.push(optionalItem.uuid);
+            itemUpdates.system.installedItems.usedSlots += optionalItem.system.size;
+            optionalItemUpdates.system.installedIn = item.uuid;
+            optionalItemUpdates.system.isInstalled = true;
+            optionalItemUpdates.system.installedItems = {
+              allowedTypes: ["itemUpgrade"],
+              allowed: true,
+              list: [],
+              usedSlots: 0,
+              slots: 3,
+            };
+            optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "hasOptionalSlots") };
+            optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionSlots") };
+            optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "installedOptionSlots") };
+            optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionalIds") };
+            updatedItemList = CPRMigration.addToUpdateList(updatedItemList, optionalItemUpdates);
+          }
         }
         itemUpdates.system.installedIn = actor.uuid;
         itemUpdates.system.isInstalled = true;
@@ -111,11 +113,13 @@ export default class UniversalInstallMigration extends CPRMigration {
           const newUpgrades = [];
           for (const upgradeData of item.system.upgrades) {
             const upgrade = (typeof upgradeData.uuid === "undefined") ? actor.getOwnedItem(upgradeData._id) : actor.getOwnedItem(upgradeData.uuid);
-            upgradeData.uuid = upgrade.uuid;
-            delete upgradeData._id;
-            newUpgrades.push(upgradeData);
-            itemUpdates.system.installedItems.list.push(upgrade.uuid);
-            itemUpdates.system.installedItems.usedSlots += upgrade.system.size;
+            if (typeof upgrade === "object") {
+              upgradeData.uuid = upgrade.uuid;
+              delete upgradeData._id;
+              newUpgrades.push(upgradeData);
+              itemUpdates.system.installedItems.list.push(upgrade.uuid);
+              itemUpdates.system.installedItems.usedSlots += upgrade.system.size;
+            }
           }
           itemUpdates.system.upgrades = newUpgrades;
         }
@@ -132,18 +136,22 @@ export default class UniversalInstallMigration extends CPRMigration {
 
         for (const programData of oldPrograms.installed) {
           const program = (typeof programData.uuid === "undefined") ? actor.getOwnedItem(programData._id) : actor.getOwnedItem(programData.uuid);
-          programData.uuid = program.uuid;
-          delete programData._id;
-          newPrograms.installed.push(programData);
-          itemUpdates.system.installedItems.list.push(program.uuid);
-          itemUpdates.system.installedItems.usedSlots += program.system.size;
+          if (typeof program === "object") {
+            programData.uuid = program.uuid;
+            delete programData._id;
+            newPrograms.installed.push(programData);
+            itemUpdates.system.installedItems.list.push(program.uuid);
+            itemUpdates.system.installedItems.usedSlots += program.system.size;
+          }
         }
 
         for (const programData of oldPrograms.rezzed) {
           const program = (typeof programData.uuid === "undefined") ? actor.getOwnedItem(programData._id) : actor.getOwnedItem(programData.uuid);
-          programData.uuid = program.uuid;
-          delete programData._id;
-          newPrograms.rezzed.push(programData);
+          if (typeof program === "object") {
+            programData.uuid = program.uuid;
+            delete programData._id;
+            newPrograms.rezzed.push(programData);
+          }
         }
         itemUpdates.system.programs = newPrograms;
       }
