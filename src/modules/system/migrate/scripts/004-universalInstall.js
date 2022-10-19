@@ -87,7 +87,7 @@ export default class UniversalInstallMigration extends CPRMigration {
             optionalItemUpdates.system.isInstalled = true;
             optionalItemUpdates.system.installedItems = {
               allowedTypes: ["itemUpgrade"],
-              allowed: true,
+              allowed: false,
               list: [],
               usedSlots: 0,
               slots: 3,
