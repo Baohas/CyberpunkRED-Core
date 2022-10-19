@@ -110,7 +110,7 @@ export default class UniversalInstallMigration extends CPRMigration {
         if (item.system.upgrades.length > 0) {
           const newUpgrades = [];
           for (const upgradeData of item.system.upgrades) {
-            const upgrade = actor.getOwnedItem(upgradeData._id);
+            const upgrade = (typeof upgradeData.uuid === "undefined") ? actor.getOwnedItem(upgradeData._id) : actor.getOwnedItem(upgradeData.uuid);
             upgradeData.uuid = upgrade.uuid;
             delete upgradeData._id;
             newUpgrades.push(upgradeData);
@@ -131,7 +131,7 @@ export default class UniversalInstallMigration extends CPRMigration {
         };
 
         for (const programData of oldPrograms.installed) {
-          const program = actor.getOwnedItem(programData._id);
+          const program = (typeof programData.uuid === "undefined") ? actor.getOwnedItem(programData._id) : actor.getOwnedItem(programData.uuid);
           programData.uuid = program.uuid;
           delete programData._id;
           newPrograms.installed.push(programData);
@@ -140,7 +140,7 @@ export default class UniversalInstallMigration extends CPRMigration {
         }
 
         for (const programData of oldPrograms.rezzed) {
-          const program = actor.getOwnedItem(programData._id);
+          const program = (typeof programData.uuid === "undefined") ? actor.getOwnedItem(programData._id) : actor.getOwnedItem(programData.uuid);
           programData.uuid = program.uuid;
           delete programData._id;
           newPrograms.rezzed.push(programData);
