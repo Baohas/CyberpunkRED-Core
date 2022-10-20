@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* global game, duplicate, mergeObject, DATA_MODEL_VERSION */
+/* global duplicate */
 
 import CPRMigration from "../cpr-migration.js";
 import LOGGER from "../../../utils/cpr-logger.js";

@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* global game hasProperty */
+/* global game, hasProperty, duplicate, mergeObject */
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
