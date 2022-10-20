@@ -2,7 +2,11 @@
 <li class="item flexrow{{#if item.system.favorite}} favorite{{else}}{{#if (cprListContains sheet.options.collapsedSections "gearTab-gear")}} hide{{/if}}{{/if}}" data-item-id="{{item._id}}"
     data-item-category="{{item.type}}" draggable="true">
     <div class="item-name gear-name text-nowrap">
-        <a class="name item-edit" title="{{item.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{item.name}}{{#if item.system.isUpgraded}}<sup><i class="fab fa-uniregistry"></sup></i>{{/if}}</a>
+        <a class="name item-edit flex-center"
+           title="{{item.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
+            <img src="{{item.img}}" class="gear-icon">
+            {{item.name}}{{#if item.system.isUpgraded}}<sup><i class="fa-solid fa-square-up"></sup></i>{{/if}}
+        </a>
     </div>
     <div class="item-detail gear-data text-nowrap">
         {{localize "CPR.global.generic.slots"}}: {{item.system.slots}} | {{localize "CPR.global.generic.price"}}: {{item.system.price.market}}

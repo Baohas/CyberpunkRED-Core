@@ -6,7 +6,7 @@
             {{#each (cprFindConfigObj "inventoryCategories") as |category c|}}
             <div class="collapsible">
                 <li class="items-header flexrow collapsible">
-                    <span class="item-name gear-name bg-black text-nowrap expand-button " id="gearTab-{{c}}" title="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
+                    <span class="item-name gear-name bg-black gear-section-header text-nowrap expand-button" id="gearTab-{{c}}" title="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
                         {{localize category}}&nbsp;
                         {{#if (cprListContains ../this.options.collapsedSections (cprGeneratePartial "gearTab-VAR" c))}}
                             <i class="fas fa-plus bg-black collapse-icon"></i>
@@ -16,10 +16,19 @@
                             <i class="fas fa-minus bg-black expand-icon"></i>
                         {{/if}}
                     </span>
-                    <span class="item-detail gear-data bg-black text-nowrap">{{localize "CPR.characterSheet.rightPane.data"}}</span>
-                    <span class="item-detail gear-actions bg-black text-nowrap">
+                    {{#if (cprListContains "ammo,gear,clothing,drug" c)}}
+                      <span class="item-detail gear-amount bg-black gear-section-header text-nowrap">
+                        {{localize "CPR.global.generic.amount"}}
+                      </span>
+                    {{/if}}
+                    <span class="item-detail gear-data bg-black gear-section-header text-nowrap">
+                      {{localize "CPR.characterSheet.rightPane.data"}}
+                    </span>
+                    <span class="item-detail gear-actions bg-black gear-section-header text-nowrap">
                         {{localize "CPR.global.generic.actions"}}&nbsp;
-                        {{#if (cprSystemConfig "playersCreateInventory")}}<a class="item-create" title="{{localize "CPR.actorSheets.commonActions.createNewItem"}}" data-item-type="{{c}}"><i class="fas fa-plus-circle text-padding-right"></i></a>{{/if}}
+                        {{#if (cprSystemConfig "playersCreateInventory")}}
+                          <a class="item-create" title="{{localize "CPR.actorSheets.commonActions.createNewItem"}}" data-item-type="{{c}}"><i class="fas fa-plus-circle text-padding-right"></i></a>
+                        {{/if}}
                     </span>
                 </li>
                 <ol class="items-list">

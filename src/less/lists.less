@@ -148,13 +148,43 @@
         background-color: @chrome-white;
     }
 
+    .gear-section-header {
+        padding: 5px;
+    }
+
     .gear-name {
+        text-overflow: ellipsis;
         flex: 0 0 33%;
+    }
+
+    .name.item-edit > sup {
+        margin-left: 5px;
+    }
+
+    .gear-amount {
+      margin: 0;
+      flex: 1;
+
+      .gear-amount-value {
+        width: 100%;
+        text-align: center;
+
+        .gear-amount-input {
+          width: 30px;
+        }
+      }
+    }
+
+    .gear-icon {
+      width: 24px;
+      height: 24px;
+      margin: 3px 3px 3px 1px;
     }
 
     .gear-data {
         text-align: left;
         flex      : 0 0 45%;
+        padding-left: 10px;
     }
 
     .gear-actions {

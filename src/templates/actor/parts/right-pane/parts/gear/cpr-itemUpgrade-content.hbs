@@ -3,7 +3,11 @@
 <li class="item flexrow{{#if item.system.favorite}} favorite{{else}}{{#if (cprListContains sheet.options.collapsedSections "gearTab-gear")}} hide{{/if}}{{/if}}" data-item-id="{{item._id}}"
     data-item-category="{{item.type}}" draggable="true">
     <div class="item-name gear-name text-nowrap">
-        <a class="name item-edit" title="{{item.name}} x{{item.system.amount}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{item.name}}</a>
+        <a class="name item-edit flex-center"
+           title="{{item.name}} x{{item.system.amount}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
+            <img src="{{item.img}}" class="gear-icon">
+            {{item.name}}
+        </a>
     </div>
     <div class="item-detail gear-data text-nowrap">
         {{localize (cprFindConfigValue "objectTypes" item.system.type)}} | {{localize "CPR.global.generic.price"}}: {{item.system.price.market}}
