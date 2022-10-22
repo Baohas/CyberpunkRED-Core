@@ -314,6 +314,11 @@ CPR.itemQuality = {
   excellent: "CPR.global.itemQuality.excellent",
 };
 
+CPR.criticalInjuryTables = {
+  "Critical Injuries (Head)": "criticalInjuriesHead",
+  "Critical Injuries (Body)": "criticalInjuriesBody",
+};
+
 CPR.criticalInjuryLocation = {
   body: "CPR.global.location.body",
   head: "CPR.global.location.head",

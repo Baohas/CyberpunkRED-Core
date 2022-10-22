@@ -10,7 +10,7 @@ export default class CPRSystemUtils {
   /* COMPENDIA AND FOLDER UTILS */
 
   /**
-   * Retrieve a specifiy document in a compendium
+   * Retrieve a specific document in a compendium
    *
    * @async
    * @static
@@ -23,8 +23,7 @@ export default class CPRSystemUtils {
     let compName = cname;
     if (!cname.startsWith(game.system.id)) compName = `${game.system.id}.${cname}`;
     const comp = game.packs.get(compName);
-    const compContent = await comp.getIndex().contents;
-    return comp.getDocument(compContent.filter((i) => i.name === dname)[0]._id);
+    return comp.getDocument(comp.index.contents.filter((i) => i.name === dname)[0]._id);
   }
 
   /**
