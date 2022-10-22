@@ -243,12 +243,19 @@ const Attackable = function Attackable() {
       }
       default:
     }
+
+    // Feed ammo type and variety into the rollCard arguments for the damage application button.
     if (cprWeaponData.isRanged) {
       const ammoType = this._getLoadedAmmoType();
+      const ammoVariety = this._getLoadedAmmoVariety();
       if (ammoType !== "undefined") {
         cprRoll.rollCardExtraArgs.ammoType = ammoType;
       }
+      if (ammoVariety !== "undefined") {
+        cprRoll.rollCardExtraArgs.ammoVariety = ammoVariety;
+      }
     }
+
     const halfArmorAttacks = [
       "lightMelee",
       "medMelee",

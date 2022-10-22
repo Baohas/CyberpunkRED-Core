@@ -221,6 +221,22 @@ const Loadable = function Loadable() {
   };
 
   /**
+   * Get the variety of ammo loaded in this item.
+   *
+   * @returns {String}
+   */
+  this._getLoadedAmmoVariety = function _getLoadedAmmoVariety() {
+    LOGGER.trace("_getLoadedAmmoVariety | Loadable | Called.");
+    if (this.actor) {
+      const ammo = this.actor.items.find((i) => i.data._id === this.data.data.magazine.ammoId);
+      if (ammo) {
+        return ammo.data.data.variety;
+      }
+    }
+    return undefined;
+  };
+
+  /**
    * Whenever a new loadable item is created, we automatically clear the ammo associated with it.
    * Otherwise, a copied Item will contain references to ammo used in the original item.
    *
