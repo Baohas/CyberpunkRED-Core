@@ -1136,7 +1136,16 @@ export default class CPRActor extends Actor {
       }
       takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
       await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
-      CPRChat.RenderDamageApplicationCard({ actor: this, damageRolled, hpReduction: takenDamage, totalDamageDealt, location, totalDamageReduction, armorValue, brainDamage: true });
+      CPRChat.RenderDamageApplicationCard({
+        actor: this,
+        damageRolled,
+        hpReduction: takenDamage,
+        totalDamageDealt,
+        location,
+        totalDamageReduction,
+        armorValue,
+        brainDamage: true,
+      });
       return;
     }
 
@@ -1161,15 +1170,36 @@ export default class CPRActor extends Actor {
     // Deal damage to shield, if used, first.
     let shieldAblation = 0;
     if (shields.length > 0) {
-      const shield = shields.sort((a, b) => (a.system.shieldHitPoints.value > b.system.shieldHitPoints.value ? 1 : -1)).reverse()[0]; // get equipped shield with highest HP;
-      if (formData.useShield && shield.system.shieldHitPoints.value > 0) { // if useShield is checked in dialog, and shield has HP, ablate shield and potentially resolve chat card;
+      // get equipped shield with highest HP;
+      const shield = shields.sort((a, b) => (a.system.shieldHitPoints.value > b.system.shieldHitPoints.value ? 1 : -1)).reverse()[0];
+      // if useShield is checked in dialog, and shield has HP, ablate shield and potentially resolve chat card;
+      if (formData.useShield && shield.system.shieldHitPoints.value > 0) {
         shieldAblation = Math.min((damage + bonusDamage), shield.system.shieldHitPoints.value);
-        await this._ablateArmor("shield", shieldAblation)
+        await this._ablateArmor("shield", shieldAblation);
         if (ammoVariety !== "grenade" && ammoVariety !== "rocket") { // if ammo isn't explosive, resolve chat card with no damage to token;
-          CPRChat.RenderDamageApplicationCard({ actor: this, damageRolled, hpReduction: 0, totalDamageDealt, location, armorValue, ablation: 0, shieldAblation });
+          CPRChat.RenderDamageApplicationCard({
+            actor: this,
+            damageRolled,
+            hpReduction: 0,
+            totalDamageDealt,
+            location,
+            armorValue,
+            ablation: 0,
+            shieldAblation,
+          });
           return;
-        } else if (shield.system.shieldHitPoints.value > 0) { // if ammo is explosive and shield is still standing, resolve chat card with no damage to token;
-          CPRChat.RenderDamageApplicationCard({ actor: this, damageRolled, hpReduction: 0, totalDamageDealt, location, armorValue, ablation: 0, shieldAblation });
+        }
+        if (shield.system.shieldHitPoints.value > 0) { // if ammo is explosive and shield is still standing, resolve chat card with no damage to token;
+          CPRChat.RenderDamageApplicationCard({
+            actor: this,
+            damageRolled,
+            hpReduction: 0,
+            totalDamageDealt,
+            location,
+            armorValue,
+            ablation: 0,
+            shieldAblation,
+          });
           return;
         }
       }
@@ -1183,7 +1213,17 @@ export default class CPRActor extends Actor {
       takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
       const currentHp = this.system.derivedStats.hp.value;
       await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
-      CPRChat.RenderDamageApplicationCard({ actor: this, damageRolled, hpReduction: takenDamage, totalDamageDealt, location, totalDamageReduction, armorValue, ablation: 0, shieldAblation });
+      CPRChat.RenderDamageApplicationCard({
+        actor: this,
+        damageRolled,
+        hpReduction: takenDamage,
+        totalDamageDealt,
+        location,
+        totalDamageReduction,
+        armorValue,
+        ablation: 0,
+        shieldAblation,
+      });
       return;
     }
 
@@ -1211,7 +1251,17 @@ export default class CPRActor extends Actor {
       await this._ablateArmor(location, ablation);
     }
     const cardDisplayAblation = (armors.length > 0) ? ablation : 0;
-    CPRChat.RenderDamageApplicationCard({ actor: this, damageRolled, hpReduction: takenDamage, totalDamageDealt, location, totalDamageReduction, armorValue, ablation: cardDisplayAblation, shieldAblation });
+    CPRChat.RenderDamageApplicationCard({
+      actor: this,
+      damageRolled,
+      hpReduction: takenDamage,
+      totalDamageDealt,
+      location,
+      totalDamageReduction,
+      armorValue,
+      ablation: cardDisplayAblation,
+      shieldAblation,
+    });
   }
 
   /**
@@ -1285,7 +1335,7 @@ export default class CPRActor extends Actor {
         // Update actor external data as body armor is ablated:
         currentArmorValue = ablation < 0
           ? Math.min((this.system.externalData.currentArmorBody.value - ablation), this.system.externalData.currentArmorBody.max)
-          : Math.max((this.system.externalData.currentArmorBody.value - ablation), 0)
+          : Math.max((this.system.externalData.currentArmorBody.value - ablation), 0);
         await this.update({ "system.externalData.currentArmorBody.value": currentArmorValue });
         break;
       }

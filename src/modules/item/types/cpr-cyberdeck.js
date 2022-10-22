@@ -317,7 +317,7 @@ export default class CPRCyberdeckItem extends CPRItem {
       }
       cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
       cprRoll.addMod(this.actor.getWoundStateMods());
-  }
+    }
     return cprRoll;
   }
 

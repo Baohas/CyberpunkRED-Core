@@ -1,4 +1,5 @@
-/* global renderTemplate, Dialog */
+/* eslint-disable no-shadow */
+/* global renderTemplate, Dialog, FormDataExtended, foundry */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 
@@ -14,11 +15,12 @@ export default class DamageApplicationPrompt {
         };
         const _onConfirm = (html) => {
           LOGGER.trace("_onConfirm | Dialog DamageApplicationPrompt | called.");
-          let damageReductionRole = html.find("[name=\"damageReductionRole\"");
-          let damageReductionAE = html.find("[name=\"damageReductionAE\"");
-          let useShield = html.find("[name=\"useShield\"");
-          let brainDamageReduction = html.find("[name=\"brainDamageReduction\"");
-          const formData = new FormDataExtended(html.find("form")[0]).toObject();
+          const damageReductionRole = html.find("[name=\"damageReductionRole\"");
+          const damageReductionAE = html.find("[name=\"damageReductionAE\"");
+          const useShield = html.find("[name=\"useShield\"");
+          const brainDamageReduction = html.find("[name=\"brainDamageReduction\"");
+          const fd = new FormDataExtended(html.find("form")[0]);
+          const formData = foundry.utils.expandObject(fd.object);
           if (useShield.checked) {
             formData.useShield = true;
           }

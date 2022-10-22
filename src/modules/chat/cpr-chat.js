@@ -1,4 +1,4 @@
-/* global game, CONFIG, ChatMessage, renderTemplate, canvas, $ */
+/* global game, CONFIG, ChatMessage, renderTemplate, $ */
 import LOGGER from "../utils/cpr-logger.js";
 import { CPRRoll, CPRDamageRoll, CPRInitiative } from "../rolls/cpr-rolls.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -246,8 +246,8 @@ export default class CPRChat {
           const location = SystemUtils.GetEventDatum(event, "data-damage-location");
           const attackType = SystemUtils.GetEventDatum(event, "data-attack-type");
           const actor = (Object.keys(game.actors.tokens).includes(tokenId))
-          ? game.actors.tokens[tokenId]
-          : game.actors.find((a) => a.id === actorId);
+            ? game.actors.tokens[tokenId]
+            : game.actors.find((a) => a.id === actorId);
           const item = actor ? actor.items.find((i) => i.id === itemId) : null;
           const displayName = actor === null ? "ERROR" : actor.name;
           if (!item) {
@@ -257,7 +257,7 @@ export default class CPRChat {
 
           // If item isn't a cyberdeck, rollType is for regular damage. If item is a cyberdeck,
           // we will roll damage through the cpr-cyberdeck.js (either through createCyberdeckRoll or createInterfaceRoll)
-          let rollType = item.type !== "cyberdeck" ? "damage": "cyberdeckProgram";
+          let rollType = item.type !== "cyberdeck" ? "damage" : "cyberdeckProgram";
           let cprRoll;
           if (item.type !== "cyberdeck") {
             cprRoll = item.createRoll(rollType, actor, { damageType: attackType });
@@ -288,10 +288,14 @@ export default class CPRChat {
             return;
           }
 
-
           cprRoll = await item.confirmRoll(cprRoll);
           await cprRoll.roll();
-          cprRoll.entityData = { actor: actorId, token: tokenId, item: itemId, tokens: targetedTokens };
+          cprRoll.entityData = {
+            actor: actorId,
+            token: tokenId,
+            item: itemId,
+            tokens: targetedTokens,
+          };
           CPRChat.RenderRollCard(cprRoll);
           break;
         }
@@ -390,11 +394,14 @@ export default class CPRChat {
       const actorId = SystemUtils.GetEventDatum(event, "data-actor-id");
       const tokenId = SystemUtils.GetEventDatum(event, "data-token-id");
       const actor = (Object.keys(game.actors.tokens).includes(tokenId))
-      ? game.actors.tokens[tokenId]
-      : game.actors.find((a) => a.id === actorId);
+        ? game.actors.tokens[tokenId]
+        : game.actors.find((a) => a.id === actorId);
 
-      const brainDamageReduction = location === "brain" ? true : false; // whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
-      let formData = { damageReductionRole: true, damageReductionAE: true, useShield: true, brainDamageReduction }; // data to feed to _applyDamage
+      const brainDamageReduction = location === "brain"; // whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
+      // eslint-disable-next-line prefer-const
+      let formData = { // data to feed to _applyDamage
+        damageReductionRole: true, damageReductionAE: true, useShield: true, brainDamageReduction,
+      };
       let promptData;
       if (!event.ctrlKey) {
         const title = SystemUtils.Localize("CPR.chat.damageApplication.prompt.title");
@@ -435,15 +442,21 @@ export default class CPRChat {
       allowedActors.sort((a, b) => (a.name > b.name ? 1 : -1));
       forbiddenActors.sort((a, b) => (a.name > b.name ? 1 : -1));
 
-      const brainDamageReduction = location === "brain" ? true : false; // whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
-      let formData = { damageReductionRole: true, damageReductionAE: true, useShield: true, brainDamageReduction }; // data to feed to _applyDamage
-      let count = 0
+      const brainDamageReduction = location === "brain"; // whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
+      // eslint-disable-next-line prefer-const
+      let formData = {
+        damageReductionRole: true, damageReductionAE: true, useShield: true, brainDamageReduction, // data to feed to _applyDamage
+      };
+      let count = 0;
       while (count < allowedActors.length) {
         let promptData;
         if (!event.ctrlKey) {
           const title = SystemUtils.Localize("CPR.chat.damageApplication.prompt.title");
           const allowedTypesMessage = `${SystemUtils.Format("CPR.chat.damageApplication.prompt.allowedTypes", { location })}`;
-          const data = { allowedTypesMessage, allowedActors, forbiddenActors, count, brainDamageReduction };
+          const data = {
+            allowedTypesMessage, allowedActors, forbiddenActors, count, brainDamageReduction,
+          };
+          // eslint-disable-next-line no-await-in-loop
           promptData = await DamageApplicationPrompt.RenderPrompt(title, data).catch((err) => LOGGER.debug(err)); // data to feed to formData
           formData.damageReductionRole = promptData.damageReductionRole;
           formData.damageReductionAE = promptData.damageReductionAE;
