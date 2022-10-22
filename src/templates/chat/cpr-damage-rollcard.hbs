@@ -95,7 +95,7 @@
         {{#each entityData.tokens as |token t|}}
         <br>
         <div class="text-left text-small">
-          {{cprMath "sum" t "1"}}.  {{token.actor.data.name}}
+          {{cprMath "sum" t "1"}}.  {{token.actor.name}}
           <a class="clickable"
              data-action="applyDamage"
              data-scope="local"

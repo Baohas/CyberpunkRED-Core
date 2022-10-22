@@ -127,7 +127,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   async _modMookSkills() {
     LOGGER.trace("_modMookSkills | CPRMookActorSheet | Called.");
     const skillList = [];
-    this.actor.system.filteredItems.skill.map((s) => {
+    this.actor.itemTypes.skill.map((s) => {
       const skillRef = {
         name: s.name,
         level: s.system.level,
@@ -149,7 +149,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     for (const skill of skillList) {
       if (formData[skill.name] !== skill.level) {
         LOGGER.debug(`you changed ${skill.name} from ${skill.level} to ${formData[skill.name]}`);
-        const [updatedSkill] = this.actor.system.filteredItems.skill.filter((s) => skill.name === s.name);
+        const [updatedSkill] = this.actor.itemTypes.skill.filter((s) => skill.name === s.name);
         updatedSkill.setSkillLevel(formData[skill.name]);
         updatedSkills.push({
           _id: updatedSkill._id,

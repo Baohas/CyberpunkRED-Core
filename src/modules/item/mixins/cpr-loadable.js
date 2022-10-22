@@ -228,9 +228,9 @@ const Loadable = function Loadable() {
   this._getLoadedAmmoVariety = function _getLoadedAmmoVariety() {
     LOGGER.trace("_getLoadedAmmoVariety | Loadable | Called.");
     if (this.actor) {
-      const ammo = this.actor.items.find((i) => i.data._id === this.data.data.magazine.ammoId);
+      const ammo = this.actor.items.find((i) => i._id === this.system.magazine.ammoId);
       if (ammo) {
-        return ammo.data.data.variety;
+        return ammo.system.variety;
       }
     }
     return undefined;

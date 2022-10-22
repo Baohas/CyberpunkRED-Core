@@ -264,7 +264,7 @@ export default class CPRChat {
           } else {
             const programId = SystemUtils.GetEventDatum(event, "data-program-id");
             rollType = programId === "zap" ? "interfaceAbility" : rollType; // reassign rollType to "interfaceAbility" if this is a Zap roll.
-            const netRoleItem = actor.data.filteredItems.role.find((r) => r.data.name === actor.data.data.roleInfo.activeNetRole);
+            const netRoleItem = actor.itemTypes.role.find((r) => r.name === actor.system.roleInfo.activeNetRole);
             cprRoll = item.createRoll(rollType, actor, {
               cyberdeckId: itemId,
               interfaceAbility: "zap",
@@ -322,6 +322,7 @@ export default class CPRChat {
             ? game.actors.tokens[tokenId]
             : game.actors.find((a) => a.id === actorId);
           actor._reverseDamage(hpReduction, location, ablation, shieldAblation);
+          break;
         }
         default: {
           LOGGER.warn(`No action defined for ${clickAction}`);
@@ -431,8 +432,8 @@ export default class CPRChat {
           forbiddenActors.push(actor);
         }
       });
-      allowedActors.sort((a, b) => (a.data.name > b.data.name ? 1 : -1));
-      forbiddenActors.sort((a, b) => (a.data.name > b.data.name ? 1 : -1));
+      allowedActors.sort((a, b) => (a.name > b.name ? 1 : -1));
+      forbiddenActors.sort((a, b) => (a.name > b.name ? 1 : -1));
 
       const brainDamageReduction = location === "brain" ? true : false; // whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
       let formData = { damageReductionRole: true, damageReductionAE: true, useShield: true, brainDamageReduction }; // data to feed to _applyDamage

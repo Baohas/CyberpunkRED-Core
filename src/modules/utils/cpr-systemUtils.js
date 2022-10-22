@@ -429,7 +429,7 @@ export default class CPRSystemUtils {
     LOGGER.trace("getUserTargetedOrSelected | CPRSystemUtils | Called.");
     const targets = new Set(game.user.targets);
     const tokens = targetedOrSelected === "selected" ? canvas.tokens.controlled : Array.from(targets);
-    tokens.sort((a, b) => (a.data.name > b.data.name ? 1 : -1));
+    tokens.sort((a, b) => (a.name > b.name ? 1 : -1));
     return tokens;
   }
 

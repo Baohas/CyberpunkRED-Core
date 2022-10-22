@@ -175,7 +175,6 @@ export default class CPRActor extends Actor {
   _calculateDerivedStats() {
     LOGGER.trace("_calculateDerivedStats | CPRActor | Called.");
     const cprData = this.system;
-    cprData.filteredItems = this.itemTypes;
     const { derivedStats } = cprData;
 
     // Walk & Run, from the Move/Run Action (pg 127)
@@ -193,7 +192,7 @@ export default class CPRActor extends Actor {
 
     // Death save
     let basePenalty = this.bonuses.deathSavePenalty; // 0 + active effects
-    const critInjury = cprData.filteredItems.criticalInjury;
+    const critInjury = this.itemTypes.criticalInjury;
     critInjury.forEach((criticalInjury) => {
       const { deathSaveIncrease } = criticalInjury.system;
       if (deathSaveIncrease) {
@@ -1109,11 +1108,11 @@ export default class CPRActor extends Actor {
     if (formData.damageReductionRole) {
       // Apply damage reduction from role abilities.
       let universalBonusDamageReduction = 0;
-      this.data.filteredItems.role.forEach((r) => {
-        if (r.data.data.universalBonuses.includes("damageReduction")) {
-          universalBonusDamageReduction += Math.floor(r.data.data.rank / r.data.data.bonusRatio);
+      this.itemTypes.role.forEach((r) => {
+        if (r.system.universalBonuses.includes("damageReduction")) {
+          universalBonusDamageReduction += Math.floor(r.system.rank / r.system.bonusRatio);
         }
-        const subroleUniversalBonuses = r.data.data.abilities.filter((a) => a.universalBonuses.includes("damageReduction"));
+        const subroleUniversalBonuses = r.system.abilities.filter((a) => a.universalBonuses.includes("damageReduction"));
         if (subroleUniversalBonuses.length > 0) {
           subroleUniversalBonuses.forEach((b) => {
             universalBonusDamageReduction += Math.floor(b.rank / b.bonusRatio);
@@ -1125,7 +1124,7 @@ export default class CPRActor extends Actor {
 
     if (formData.damageReductionAE) {
       // Apply damage reduction from active effects
-      totalDamageReduction += this.data.bonuses.universalDamageReduction;
+      totalDamageReduction += this.bonuses.universalDamageReduction;
     }
 
     if (location === "brain") {
@@ -1182,8 +1181,8 @@ export default class CPRActor extends Actor {
     // If damage did not penetrate armor, then only the bonus damage (if any) is applied, minus any damage reduction.
     if (damage <= armorValue) {
       takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
-      const currentHp = this.data.data.derivedStats.hp.value;
-      await this.update({ "data.derivedStats.hp.value": currentHp - takenDamage });
+      const currentHp = this.system.derivedStats.hp.value;
+      await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
       CPRChat.RenderDamageApplicationCard({ actor: this, damageRolled, hpReduction: takenDamage, totalDamageDealt, location, totalDamageReduction, armorValue, ablation: 0, shieldAblation });
       return;
     }
@@ -1191,7 +1190,7 @@ export default class CPRActor extends Actor {
     // If damage did penetrate armor, deal the regular damage.
     if (location === "head") {
       // Damage taken against the head is doubled.
-      totalDamageDealt += 2*(damage-armorValue);
+      totalDamageDealt += 2 * (damage - armorValue);
     } else {
       totalDamageDealt += damage - armorValue;
     }
@@ -1228,9 +1227,9 @@ export default class CPRActor extends Actor {
     const currentHp = this.system.derivedStats.hp.value;
     const maxHp = this.system.derivedStats.hp.max;
     if (maxHp > currentHp + hpReduction) {
-      await this.update({ "data.derivedStats.hp.value": currentHp + hpReduction });
+      await this.update({ "system.derivedStats.hp.value": currentHp + hpReduction });
     } else {
-      await this.update({ "data.derivedStats.hp.value": maxHp });
+      await this.update({ "system.derivedStats.hp.value": maxHp });
     }
     await this._ablateArmor(location, -ablation);
     await this._ablateArmor("shield", -shieldAblation);
