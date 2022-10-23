@@ -4,7 +4,7 @@
 - 
 
 **Changes**
-- 
+- #434 - users no longer need to import critical injury compendia to use that functionality
 
 **Bug Fixes**
 - 
