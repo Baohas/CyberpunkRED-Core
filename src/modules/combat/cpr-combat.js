@@ -56,7 +56,7 @@ export default class CPRCombat extends Combat {
     LOGGER.trace("rollInitiative | CPRCombat | Called.");
     // Structure input data
     const combatantIds = typeof ids === "string" ? [ids] : ids;
-    const currentId = this.combatant.id;
+    const currentId = this.combatant ? this.combatant.id : null;
 
     // Iterate over Combatants, performing an initiative roll for each
     const updates = [];
@@ -134,8 +134,8 @@ export default class CPRCombat extends Combat {
     // Update multiple combatants
     await this.updateEmbeddedDocuments("Combatant", updates);
 
-    // Ensure the turn order remains with the same combatant
-    if (updateTurn) {
+    // Ensure the turn order remains with the same combatant if the combat already started
+    if (updateTurn && currentId) {
       await this.update({ turn: this.turns.findIndex((t) => t.id === currentId) });
     }
   }

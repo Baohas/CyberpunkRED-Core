@@ -39,9 +39,9 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @override
    * @returns {Object} data - a curated structure of actorSheet data
    */
-  getData() {
+  async getData() {
     LOGGER.trace("getData | CPRContainerSheet | Called.");
-    const foundryData = super.getData();
+    const foundryData = await super.getData();
     const cprActorData = foundryData.actor.system;
 
     cprActorData.userOwnedActors = [];
@@ -243,7 +243,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (!all) {
       const itemText = SystemUtils.Format("CPR.dialog.purchasePart.text", { itemName: item.name });
       const formData = await PurchasePartPrompt.RenderPrompt(itemText).catch((err) => LOGGER.debug(err));
-      const inventoryAmount = (typeof item.data.data.amount !== "undefined") ? parseInt(item.data.data.amount, 10) : 1;
+      const inventoryAmount = (typeof item.system.amount !== "undefined") ? parseInt(item.system.amount, 10) : 1;
       if (formData === undefined) {
         return;
       }
@@ -255,7 +255,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       transferredItemData.system.amount = newAmount;
       cost *= newAmount;
     } else {
-      cost *= (typeof item.data.data.amount !== "undefined") ? parseInt(item.data.data.amount, 10) : 1;
+      cost *= (typeof item.system.amount !== "undefined") ? parseInt(item.system.amount, 10) : 1;
     }
     const tradePartnerActor = game.actors.get(this.tradePartnerId);
     if (!getProperty(this.actor, "flags.cyberpunk-red-core.items-free")) {

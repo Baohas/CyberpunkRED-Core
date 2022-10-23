@@ -71,7 +71,7 @@ export default class CPRActorSheet extends ActorSheet {
    * @override
    * @returns {Object} data - a curated structure of actorSheet data
    */
-  getData() {
+  async getData() {
     LOGGER.trace("getData | CPRActorSheet | Called.");
     const foundryData = super.getData();
     const cprActorData = foundryData.actor.system;
@@ -93,6 +93,32 @@ export default class CPRActorSheet extends ActorSheet {
     }
     // This appears to have been removed in V10?
     foundryData.isGM = game.user.isGM;
+
+    foundryData.enrichedHTML = [];
+    if (this.actor.type !== "container") {
+      foundryData.enrichedHTML.systemInformationNotes = await TextEditor.enrichHTML(this.actor.system.information.notes, { async: true });
+    }
+    if (this.actor.type === "character") {
+      foundryData.enrichedHTML.systemLifepathCulturalOrigin = await TextEditor.enrichHTML(this.actor.system.lifepath.culturalOrigin, { async: true });
+      foundryData.enrichedHTML.systemLifepathLanguages = await TextEditor.enrichHTML(this.actor.system.lifepath.languages, { async: true });
+      foundryData.enrichedHTML.systemLifepathPersonality = await TextEditor.enrichHTML(this.actor.system.lifepath.personality, { async: true });
+      foundryData.enrichedHTML.systemLifepathClothingStyle = await TextEditor.enrichHTML(this.actor.system.lifepath.clothingStyle, { async: true });
+      foundryData.enrichedHTML.systemLifepathHairStyle = await TextEditor.enrichHTML(this.actor.system.lifepath.hairStyle, { async: true });
+      foundryData.enrichedHTML.systemLifepathAffectations = await TextEditor.enrichHTML(this.actor.system.lifepath.affectations, { async: true });
+      foundryData.enrichedHTML.systemLifepathValueMost = await TextEditor.enrichHTML(this.actor.system.lifepath.valueMost, { async: true });
+      foundryData.enrichedHTML.systemLifepathAboutPeople = await TextEditor.enrichHTML(this.actor.system.lifepath.aboutPeople, { async: true });
+      foundryData.enrichedHTML.systemLifepathValuedPerson = await TextEditor.enrichHTML(this.actor.system.lifepath.valuedPerson, { async: true });
+      foundryData.enrichedHTML.systemLifepathValuedPossession = await TextEditor.enrichHTML(this.actor.system.lifepath.valuedPossession, { async: true });
+      foundryData.enrichedHTML.systemLifepathFamilyBackground = await TextEditor.enrichHTML(this.actor.system.lifepath.familyBackground, { async: true });
+      foundryData.enrichedHTML.systemLifepathChildhoodEnvironment = await TextEditor.enrichHTML(this.actor.system.lifepath.childhoodEnvironment, { async: true });
+      foundryData.enrichedHTML.systemLifepathFamilyCrisis = await TextEditor.enrichHTML(this.actor.system.lifepath.familyCrisis, { async: true });
+      foundryData.enrichedHTML.systemLifepathLifeGoals = await TextEditor.enrichHTML(this.actor.system.lifepath.lifeGoals, { async: true });
+      foundryData.enrichedHTML.systemLifepathRoleLifepath = await TextEditor.enrichHTML(this.actor.system.lifepath.roleLifepath, { async: true });
+      foundryData.enrichedHTML.systemLifepathFriends = await TextEditor.enrichHTML(this.actor.system.lifepath.friends, { async: true });
+      foundryData.enrichedHTML.systemLifepathTragicLoveAffairs = await TextEditor.enrichHTML(this.actor.system.lifepath.tragicLoveAffairs, { async: true });
+      foundryData.enrichedHTML.systemLifepathEnemies = await TextEditor.enrichHTML(this.actor.system.lifepath.enemies, { async: true });
+    }
+
     return foundryData;
   }
 
@@ -1002,7 +1028,7 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("showLedger | CPRActor | Called.");
     if (this.actor.isLedgerProperty(prop)) {
       const led = new CPRLedger();
-      led.setActor(this);
+      led.setActor(this.actor);
       led.setLedgerContent(prop, this.actor.listRecords(prop));
       led.render(true);
     } else {

@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* global Hooks game Macro */
 import LOGGER from "../utils/cpr-logger.js";
 
@@ -22,19 +23,27 @@ const hotbarHooks = () => {
    * @param {Number} slot        - The slot # that was dragged to
    * @return {Null}
    */
-  Hooks.on("hotbarDrop", async (_, data, slot) => {
+  Hooks.on("hotbarDrop", (_, data, slot) => {
     LOGGER.trace("hotbarDrop | hotbarHooks | Called.");
+    const macroObject = {
+      name: "",
+      type: "script",
+      img: "",
+      command: "",
+    };
+    let macro = null;
+    let command = "";
     if (data.type === "Item") {
-      if (data.system === undefined || data._id === undefined) {
+      if (data.system === undefined || data.system === undefined || data.system.data === undefined || data.system.data._id === undefined) {
         return;
       }
-      const itemId = data._id;
+      const itemId = data.system.data._id;
       let item = game.items.find((i) => i.id === itemId);
 
       if (item === null || typeof item === "undefined") {
         // Item not found in the world, check actor for the item
-        if (data.actorId !== undefined) {
-          const actor = game.actors.find((a) => a.id === data.actorId);
+        if (data.system.actorId !== undefined) {
+          const actor = game.actors.find((a) => a.id === data.system.actorId);
           if (actor !== null) {
             item = actor.getEmbeddedDocument("Item", itemId);
           }
@@ -49,7 +58,6 @@ const hotbarHooks = () => {
       if (item.type !== "weapon" && !(item.type === "cyberware" && item.system.isWeapon) && item.type !== "skill") {
         return;
       }
-      let command = "";
       command += "// Set this to true if you want to skip the roll verify prompt.\n";
       command += "// Do not delete the semi-colon at the end of the line!\n";
       command += "const skipPrompt = false;\n";
@@ -83,47 +91,43 @@ const hotbarHooks = () => {
       } else if (item.type === "skill") {
         command += `game.cpr.macro.rollItemMacro("${itemName}", {skipPrompt});`;
       }
-      let macro = game.macros.contents.find((m) => (m.name === item.name) && (m.command === command));
+      macro = game.macros.contents.find((m) => (m.name === item.name) && (m.command === command));
       const img = item.type === "skill" ? "systems/cyberpunk-red-core/icons/chip-skill.png" : item.img;
       if (!macro) {
-        macro = await Macro.create({
-          name: item.name,
-          type: "script",
-          img,
-          command,
-        }, { displaySheet: false });
+        macroObject.name = item.name;
+        macroObject.img = img;
+        macroObject.command = command;
       }
-      game.user.assignHotbarMacro(macro, slot);
     } else if (data.type === "Actor") {
       // Create a macro to open the actor sheet of the actor dropped on the hotbar
 
       const actor = game.actors.get(data.id);
-      const command = `game.actors.get("${data.id}").sheet.render(true)`;
-      let macro = game.macros.contents.find((m) => (m.name === actor.name) && (m.command === command));
+      command = `game.actors.get("${data.id}").sheet.render(true)`;
+      macro = game.macros.contents.find((m) => (m.name === actor.name) && (m.command === command));
       if (!macro) {
-        macro = await Macro.create({
-          name: actor.name,
-          type: "script",
-          img: actor.img,
-          command,
-        }, { displaySheet: false });
-        game.user.assignHotbarMacro(macro, slot);
+        macroObject.name = actor.name;
+        macroObject.img = actor.img;
+        macroObject.command = command;
       }
     } else if (data.type === "JournalEntry") {
       // Create a macro to open the journal sheet of the journal dropped on the hotbar
       const journal = game.journal.get(data.id);
-      const command = `game.journal.get("${data.id}").sheet.render(true)`;
-      let macro = game.macros.contents.find((m) => (m.name === journal.name) && (m.command === command));
+      command = `game.journal.get("${data.id}").sheet.render(true)`;
+      macro = game.macros.contents.find((m) => (m.name === journal.name) && (m.command === command));
       if (!macro) {
-        macro = await Macro.create({
-          name: journal.name,
-          type: "script",
-          img: "systems/cyberpunk-red-core/icons/memory-card.svg",
-          command,
-        }, { displaySheet: false });
-        game.user.assignHotbarMacro(macro, slot);
+        macroObject.name = journal.name;
+        macroObject.img = "systems/cyberpunk-red-core/icons/memory-card.svg";
+        macroObject.command = command;
       }
     }
+    if (macroObject.name !== "") {
+      Macro.create(macroObject, { displaySheet: false }).then((newMacro) => {
+        game.user.assignHotbarMacro(newMacro, slot);
+      });
+    } else {
+      game.user.assignHotbarMacro(macro, slot);
+    }
+    return false;
   });
 };
 

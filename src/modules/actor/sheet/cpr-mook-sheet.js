@@ -78,9 +78,9 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @override
    * @returns {Object} data - a curated structure of actorSheet data
    */
-  getData() {
+  async getData() {
     LOGGER.trace("getData | CPRMookActorSheet | Called.");
-    const foundryData = super.getData();
+    const foundryData = await super.getData();
     const cprActorData = foundryData.actor.system;
     cprActorData.equippedArmor = this.actor.itemTypes.armor.filter((item) => item.system.equipped === "equipped");
     cprActorData.equippedWeapons = this.actor.itemTypes.weapon.filter((item) => item.system.equipped === "equipped");
@@ -127,7 +127,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   async _modMookSkills() {
     LOGGER.trace("_modMookSkills | CPRMookActorSheet | Called.");
     const skillList = [];
-    this.actor.system.filteredItems.skill.map((s) => {
+    this.actor.itemTypes.skill.map((s) => {
       const skillRef = {
         name: s.name,
         level: s.system.level,
@@ -149,7 +149,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     for (const skill of skillList) {
       if (formData[skill.name] !== skill.level) {
         LOGGER.debug(`you changed ${skill.name} from ${skill.level} to ${formData[skill.name]}`);
-        const [updatedSkill] = this.actor.system.filteredItems.skill.filter((s) => skill.name === s.name);
+        const [updatedSkill] = this.actor.itemTypes.skill.filter((s) => skill.name === s.name);
         updatedSkill.setSkillLevel(formData[skill.name]);
         updatedSkills.push({
           _id: updatedSkill._id,

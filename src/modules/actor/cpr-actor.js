@@ -173,7 +173,6 @@ export default class CPRActor extends Actor {
   _calculateDerivedStats() {
     LOGGER.trace("_calculateDerivedStats | CPRActor | Called.");
     const cprData = this.system;
-    cprData.filteredItems = this.itemTypes;
     const { derivedStats } = cprData;
 
     // Walk & Run, from the Move/Run Action (pg 127)
@@ -191,7 +190,7 @@ export default class CPRActor extends Actor {
 
     // Death save
     let basePenalty = this.bonuses.deathSavePenalty; // 0 + active effects
-    const critInjury = cprData.filteredItems.criticalInjury;
+    const critInjury = this.itemTypes.criticalInjury;
     critInjury.forEach((criticalInjury) => {
       const { deathSaveIncrease } = criticalInjury.system;
       if (deathSaveIncrease) {
