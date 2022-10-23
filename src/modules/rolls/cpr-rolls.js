@@ -4,6 +4,7 @@ import LOGGER from "../utils/cpr-logger.js";
 import DiceSoNice from "../extern/cpr-dice-so-nice.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import VerifyRoll from "../dialog/cpr-verify-roll-prompt.js";
+import CPRDialog from "../dialog/cpr-dialog-application.js";
 
 /**
  * This is a generic CPR roll object. It builds in critical success and failure
@@ -220,6 +221,8 @@ export class CPRRoll {
     }
 
     if (!skipDialog) {
+      const dialog = new CPRDialog(this);
+      dialog.render(true);
       const formData = await VerifyRoll.RenderPrompt(this).catch((err) => LOGGER.debug(err));
       if (formData === undefined) {
         // returns false if the dialog was closed
