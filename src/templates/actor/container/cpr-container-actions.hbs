@@ -2,7 +2,7 @@
 {{!-- Item purchase or take --}}
 {{#if (cprCompare item.system.amount ">" "1")}}
 <a class="item-action" data-action-type="purchaseFraction">
-  {{#if actor.system.flags.cyberpunk-red-core.items-free}}
+  {{#if actor.flags.cyberpunk-red-core.items-free}}
     <i class="fas fa-hand-pointer" title="{{localize "CPR.containerSheet.action.takeItemPart"}}"></i>
   {{else}}
   <i class="fas fa-shopping-basket" title="{{localize "CPR.containerSheet.action.purchaseItemPart"}}"></i>
@@ -10,14 +10,14 @@
 </a>
 {{/if}}
 <a class="item-action" data-action-type="purchase">
-  {{#if actor.system.flags.cyberpunk-red-core.items-free}}
+  {{#if actor.flags.cyberpunk-red-core.items-free}}
   <i class="fas fa-hand-paper" title="{{localize "CPR.containerSheet.action.takeItemAll"}}"></i>
   {{else}}
   <i class="fas fa-shopping-cart" title="{{localize "CPR.containerSheet.action.purchaseItemAll"}}"></i>
   {{/if}}
 </a>
 {{!-- Item deletion --}}
-{{#if (cprCompare isGM "||" actor.system.flags.cyberpunk-red-core.players-delete)}}
+{{#if (cprCompare isGM "||" actor.flags.cyberpunk-red-core.players-delete)}}
 <a class="item-action" data-action-type="delete"><i class="fas fa-trash-alt fg-red" title="{{localize "CPR.actorSheets.commonActions.deleteItem"}}"></i></a>
 {{/if}}
 {{cprTrace "END CPR-CONTAINER-ACTIONS.HBS"}}

@@ -1,6 +1,7 @@
 {
   "name": "fvtt-cyberpunk-red-core",
   "version": "0.0.1",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/"
@@ -9,11 +10,11 @@
   "scripts": {
     "test": "echo are there tests??",
     "start": "npx gulp",
-    "lint": "npx eslint src/modules",
+    "lint": "npx eslint gulpfile.mjs gulp/*.mjs src/modules",
     "build": "npx gulp build"
   },
   "devDependencies": {
-    "eslint": "^8.15.0",
+    "eslint": "^8.24.0",
     "eslint-plugin-foundry-cpr": "file:.gitlab/pipeline_tests/eslint-plugin-foundry-cpr",
     "gulp-cli": "^2.3.0"
   },
@@ -22,7 +23,6 @@
     "npm": ">7.0"
   },
   "dependencies": {
-    "del": "^5.1.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "fancy-log": "^2.0.0",
@@ -30,7 +30,7 @@
     "gulp": "^4.0.2",
     "gulp-less": "^5.0.0",
     "lint": "^1.1.2",
-    "minimatch": "^5.0.1",
-    "vinyl-fs": "^2.4.1"
+    "minimatch": "^5.1.0",
+    "vinyl-fs": "^3.0.3"
   }
 }

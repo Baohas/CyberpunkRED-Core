@@ -1,13 +1,14 @@
-# Version 0.84.0 | Date: WIP
+# Version 0.83.1 (Hotfix) | Date: WIP
 
 **New Features**
-- 
+-
 
 **Changes**
 - #434 - users no longer need to import critical injury compendia to use that functionality
 
 **Bug Fixes**
-- 
+- Fix non-shop containers having the wrong button
+- Fix rolling initiative before combat has started
 
 
 # Version 0.83.0 | Date: 2022-10-02
