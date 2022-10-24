@@ -60,7 +60,7 @@ export default class BaseMigration extends CPRMigration {
           await BaseMigration.createActorItems(a);
         }
 
-        const updateData = BaseMigration.migrateActorData(a.data, "actor");
+        const updateData = (typeof a.data === "undefined") ? {} : BaseMigration.migrateActorData(a.data, "actor");
         if (!foundry.utils.isObjectEmpty(updateData)) {
           BaseMigration._migrationLog(`Migrating Actor entity ${a.name}`);
           await a.update(updateData, { enforceTypes: false });
@@ -498,27 +498,51 @@ export default class BaseMigration extends CPRMigration {
               const hasRoleObject = actorDocument.itemTypes.role.find((r) => r.name.toLowerCase() === role);
               if (typeof hasRoleObject === "undefined") {
                 newRole = duplicate(content.find((c) => c.name.toLowerCase() === role).data);
-                newRole.data.rank = skillValue;
+                if (typeof newRole.data !== "undefined") {
+                  newRole.data.rank = skillValue;
+                }
+                if (typeof newRole.system !== "undefined") {
+                  newRole.system.rank = skillValue;
+                }
               }
             }
           }
           if (skillName === "subSkills" && newRole) {
             Object.entries(skillValue).forEach(([subSkillName, subSkillValue]) => {
               const niceSubRoleName = CPRSystemUtils.Localize(`CPR.global.role.${role}.ability.${subSkillName}`);
-              newRole.data.abilities.find((a) => a.name === niceSubRoleName).rank = subSkillValue;
+              if (typeof newRole.data !== "undefined") {
+                newRole.data.abilities.find((a) => a.name === niceSubRoleName).rank = subSkillValue;
+              }
+              if (typeof newRole.system !== "undefined") {
+                newRole.system.abilities.find((a) => a.name === niceSubRoleName).rank = subSkillValue;
+              }
             });
           }
         });
         if (newRole) {
           switch (role) {
             case "medtech": {
-              const medtechCryo = newRole.data.abilities.find((a) => a.name === "Medical Tech (Cryosystem Operation)").rank;
-              const medtechPharma = newRole.data.abilities.find((a) => a.name === "Medical Tech (Pharmaceuticals)").rank;
-              newRole.data.abilities.find((a) => a.name === "Medical Tech").rank = medtechCryo + medtechPharma;
+              const medtechCryo = (typeof newRole.data !== "undefined") ? newRole.data.abilities.find((a) => a.name === "Medical Tech (Cryosystem Operation)").rank
+                : newRole.system.abilities.find((a) => a.name === "Medical Tech (Cryosystem Operation)").rank;
+              const medtechPharma = (typeof newRole.data !== "undefined") ? newRole.data.abilities.find((a) => a.name === "Medical Tech (Pharmaceuticals)").rank
+                : newRole.system.abilities.find((a) => a.name === "Medical Tech (Pharmaceuticals)").rank;
+              if (typeof newRole.data !== "undefined") {
+                newRole.data.abilities.find((a) => a.name === "Medical Tech").rank = medtechCryo + medtechPharma;
+              }
+              if (typeof newRole.system !== "undefined") {
+                newRole.system.abilities.find((a) => a.name === "Medical Tech").rank = medtechCryo + medtechPharma;
+              }
+
               break;
             }
             case "fixer": {
-              newRole.data.abilities.find((a) => a.name === "Haggle").rank = newRole.data.rank;
+              if (typeof newRole.data !== "undefined") {
+                newRole.data.abilities.find((a) => a.name === "Haggle").rank = newRole.data.rank;
+              }
+              if (typeof newRole.system !== "undefined") {
+                newRole.system.abilities.find((a) => a.name === "Haggle").rank = newRole.system.rank;
+              }
+
               break;
             }
             default:
