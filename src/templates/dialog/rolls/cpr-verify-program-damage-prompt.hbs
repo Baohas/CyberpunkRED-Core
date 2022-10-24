@@ -1,10 +1,9 @@
 {{cprTrace "START DIALOG ROLLS CPR-VERIFY-PROGRAM-DAMAGE-PROMPT.HBS"}}
 <form>
-  {{log this}}
     <div>
         {{localize "CPR.rolls.roll"}} {{localize "CPR.rolls.damageFor"}}
         {{#if rollCardExtraArgs.program.name}}
-          "{{rollCardExtraArgs.program.name}} ({{localize (cprFindConfigValue "programClassList" rollCardExtraArgs.pgmClass)}})", Choomba!
+          "{{rollCardExtraArgs.program.name}} ({{localize (cprFindConfigValue "programClassList" rollCardExtraArgs.program.class)}})", Choomba!
         {{else}}
           "{{localize "CPR.global.role.netrunner.interfaceAbility.zap"}}"
         {{/if}}

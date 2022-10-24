@@ -54,10 +54,8 @@ export default class CPRBlackIceActor extends Actor {
 
     if (cprRoll.rollCardExtraArgs.length === 0) {
       cprRoll.rollCardExtraArgs.program = {
-        data: {
-          class: "blackice",
-          blackIceType: this.system.class,
-        },
+        class: "blackice",
+        blackIceType: this.system.class,
       };
     }
     return cprRoll;
