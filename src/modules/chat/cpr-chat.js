@@ -263,6 +263,11 @@ export default class CPRChat {
             cprRoll = item.createRoll(rollType, actor, { damageType: attackType });
           } else {
             const programId = SystemUtils.GetEventDatum(event, "data-program-id");
+            // Warn if no damage is configured.
+            if (!actor.items?.get(programId).system.damage.standard && !actor.items?.get(programId).system.damage.blackIce) {
+              SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.chat.rollDamage.warningProgramDmg"));
+              return;
+            }
             rollType = programId === "zap" ? "interfaceAbility" : rollType; // reassign rollType to "interfaceAbility" if this is a Zap roll.
             const netRoleItem = actor.itemTypes.role.find((r) => r.name === actor.system.roleInfo.activeNetRole);
             cprRoll = item.createRoll(rollType, actor, {
