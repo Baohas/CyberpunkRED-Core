@@ -101,7 +101,7 @@ export default class CPRMigration {
     if (this.errors !== 0) {
       throw Error("Migration errors encountered");
     }
-    game.settings.set("cyberpunk-red-core", "dataModelVersion", this.version);
+    await game.settings.set("cyberpunk-red-core", "dataModelVersion", this.version);
     return true;
   }
 
@@ -125,12 +125,15 @@ export default class CPRMigration {
   static safeDelete(doc, prop) {
     LOGGER.trace("safeDelete | CPRMigration");
     let key = prop;
-    const systemData = (this.foundryMajorVersion < 10) ? "data" : "system";
     if (this.foundryMajorVersion < 10) {
       if (key.includes("data.data")) key = key.slice(5); // should only be one data for v9
     }
 
-    if (hasProperty(doc[systemData], key)) {
+    const systemData = (this.foundryMajorVersion < 10) ? "data" : "system";
+    const regex = (this.foundryMajorVersion < 10) ? /^system./ : /^data./;
+    key = key.replace(regex, `${systemData}.`);
+
+    if (hasProperty(doc, key)) {
       key = prop.match(/.\../) ? prop.replace(/.([^.]*)$/, ".-=$1") : `-=${prop}`;
       return { [key]: null };
     }
@@ -161,6 +164,15 @@ export default class CPRMigration {
   }
 
   /**
+   * Does nothing and is meant to be over-ridden.
+   *
+   * @param {CPRItem} item
+   */
+  static async migrateItem(item) {
+    LOGGER.trace("migrateItem | CPRMigration");
+  }
+
+  /**
    * Migrate actors
    */
   async migrateActors() {
@@ -181,6 +193,15 @@ export default class CPRMigration {
       good = false;
     }
     return good;
+  }
+
+  /**
+   * Does nothing and is meant to be over-ridden.
+   *
+   * @param {CPRActor} actor
+   */
+  static async migrateActor(actor) {
+    LOGGER.trace("migrateActor | CPRMigration");
   }
 
   /**

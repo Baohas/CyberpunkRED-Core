@@ -39,9 +39,9 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @override
    * @returns {Object} data - a curated structure of actorSheet data
    */
-  getData() {
+  async getData() {
     LOGGER.trace("getData | CPRContainerSheet | Called.");
-    const foundryData = super.getData();
+    const foundryData = await super.getData();
     const cprActorData = foundryData.actor.system;
 
     cprActorData.userOwnedActors = [];

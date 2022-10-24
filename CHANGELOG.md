@@ -1,14 +1,33 @@
-# Version 0.83.1 (Hotfix) | Date: WIP
+# Version 0.84.0 | Date: WIP
 
 **New Features**
--
+- 
 
 **Changes**
--
+- 
 
 **Bug Fixes**
-- Fix non-shop containers having the wrong button
+- 
+
+
+# Version 0.83.1 | Date: 2022-10-23
+**Bug Fixes**
+- #529 - Fix non-shop containers having the wrong button
+- #536 - Spelling mistake: "Ememies" (English)
+- #495 - Ability to use UUID links in Character sheets or Item sheets.
+- Fixed location of Lifestyle Data for Tragic Love Affairs and Affectations.
 - Fix rolling initiative before combat has started
+- Fix weapon upgrades that are secondary weapons to work correctly
+- Fix cyberdeck program installation where it was adding the item._id under item.system
+- Fixed regression where filteredItems was re-introduced back into the system. This was replaced with actor.itemTypes in 0.82.0
+- Fixed an issue where attempting to delete a ledger line would throw an error
+- Fixed a couple migration issues:
+  - When a migration failed for any reason, on the next run through it could corrupt
+    upgraded items
+  - When running migration through multiple levels of migration, it was possible that
+    the world data model version would be set incorrectly because the code did not await
+    the update of the world data model version.  This would cause migration to execute a
+    second time which may cause problems.
 
 
 # Version 0.83.0 | Date: 2022-10-02

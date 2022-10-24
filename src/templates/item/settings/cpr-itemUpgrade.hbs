@@ -105,26 +105,4 @@
         {{/if}}
     {{/each}}
 {{/if}}
-{{#if (cprCompare (cprCompare item.system.type "===" "weapon") "||" (cprCompare item.system.type "===" "cyberware"))}}
-    <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap">
-            {{localize "CPR.itemSheet.itemUpgrade.isSecondaryWeapon"}}
-        </div>
-        <div class="item flexrow setting-value text-nowrap item-end">
-            {{#if this.editable}}
-                <select name="system.modifiers.secondaryWeapon.configured" data-dtype="text">
-                    {{#select item.system.modifiers.secondaryWeapon.configured}}
-                        <option value="false">{{localize "CPR.global.generic.false"}}</option>
-                        <option value="true">{{localize "CPR.global.generic.true"}}</option>
-                    {{/select}}
-                </select>
-            {{else}}
-                <span class="text-flex-end">{{item.system.modifiers.secondaryWeapon.configured}}</span>
-            {{/if}}
-        </div>
-    </li>
-    {{#if (cprCompare item.system.modifiers.secondaryWeapon.configured "===" "true")}}
-      {{> "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-attackable.hbs" this}}
-    {{/if}}
-{{/if}}
 {{cprTrace "END CPR-ITEMUPGRADE.HBS"}}
