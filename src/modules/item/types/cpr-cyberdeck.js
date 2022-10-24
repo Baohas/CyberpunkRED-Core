@@ -187,7 +187,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     LOGGER.trace("rezProgram | CPRCyberdeckItem | Called.");
     const programData = duplicate(program.system);
     const { installed } = this.system.programs;
-    const installIndex = installed.findIndex((p) => p._id === programData._id);
+    const installIndex = installed.findIndex((p) => p._id === program._id);
     const programState = installed[installIndex];
 
     // This instance ID is being added pro-actively because the rulebook

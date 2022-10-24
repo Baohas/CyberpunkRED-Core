@@ -92,7 +92,9 @@ export default class CPRActorSheet extends ActorSheet {
     foundryData.isGM = game.user.isGM;
 
     foundryData.enrichedHTML = [];
-    foundryData.enrichedHTML.systemInformationNotes = await TextEditor.enrichHTML(this.actor.system.information.notes, { async: true });
+    if (this.actor.type !== "container") {
+      foundryData.enrichedHTML.systemInformationNotes = await TextEditor.enrichHTML(this.actor.system.information.notes, { async: true });
+    }
     if (this.actor.type === "character") {
       foundryData.enrichedHTML.systemLifepathCulturalOrigin = await TextEditor.enrichHTML(this.actor.system.lifepath.culturalOrigin, { async: true });
       foundryData.enrichedHTML.systemLifepathLanguages = await TextEditor.enrichHTML(this.actor.system.lifepath.languages, { async: true });

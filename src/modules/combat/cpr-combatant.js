@@ -64,8 +64,11 @@ export default class CPRCombatant extends Combatant {
         cprInitiative = new CPRRolls.CPRInitiative("meat", actor.type, formula, 0);
         break;
     }
-    cprInitiative.addMod(actor.bonuses.initiative); // consider any active effects
-    cprInitiative.addMod(universalBonusInitiative); // add bonus from role abilities and subabilities
+    // Demons and Black ICE do not have initiative bonuses.
+    if (actor.type !== "demon" && actor.type !== "blackIce") {
+      cprInitiative.addMod(actor.bonuses.initiative); // consider any active effects
+      cprInitiative.addMod(universalBonusInitiative); // add bonus from role abilities and subabilities
+    }
     await cprInitiative.roll();
     return cprInitiative;
   }

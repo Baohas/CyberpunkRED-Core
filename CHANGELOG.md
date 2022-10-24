@@ -6,12 +6,11 @@
 **Changes**
 - Renamed `cpr-actor.js:_getOwnedItem()` to `cpr-actor.js:getOwnedItem()` and marked the function as public since it is actually called from several other objects.
 - Changed `cpr-actor.js:getOwnedItem()` to take either an item's `_id` or `uuid` to find the owned item.
+-
 
 **Bug Fixes**
-- Fix non-shop containers having the wrong button
-- Fix rolling initiative before combat has started
 
-# Version 0.83.1 | Date: 2022-10-18
+# Version 0.83.1 | Date: 2022-10-23
 **Bug Fixes**
 - #529 - Fix non-shop containers having the wrong button
 - #536 - Spelling mistake: "Ememies" (English)
@@ -29,7 +28,6 @@
     the world data model version would be set incorrectly because the code did not await
     the update of the world data model version.  This would cause migration to execute a
     second time which may cause problems.
-
 # Version 0.83.0 | Date: 2022-10-02
 
 **New Features**
