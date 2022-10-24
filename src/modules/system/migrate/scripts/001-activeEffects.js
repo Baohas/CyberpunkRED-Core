@@ -473,7 +473,8 @@ export default class ActiveEffectsMigration extends CPRMigration {
       let index = 0;
       const name = CPRSystemUtils.Localize("CPR.migration.effects.clothing");
       clothing.system.upgrades.forEach((upgradeItem) => {
-        for (const [dataPoint, settings] of Object.entries(upgradeItem.system.modifiers)) {
+        const upgradeModifiers = (typeof upgradeItem.data !== "undefined") ? upgradeItem.data.modifiers : upgradeItem.system.modifiers
+        for (const [dataPoint, settings] of Object.entries(upgradeModifiers)) {
           const { value } = settings;
           if (typeof value === "number") {
             const key = (dataPoint === "cool") ? "system.stats.cool.value" : "bonuses.wardrobeAndStyle";
