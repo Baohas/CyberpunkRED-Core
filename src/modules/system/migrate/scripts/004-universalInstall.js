@@ -109,6 +109,7 @@ export default class UniversalInstallMigration extends CPRMigration {
 
       if (upgradableTypes.includes(item.type)) {
         itemUpdates.system.installedItems.slots = Math.max(itemUpdates.system.installedItems.slots, parseInt(item.system.slots, 10));
+        itemUpdates.system.installedItems.allowed = (item.type === "cyberware" && !item.system.isFoundational) ? false : itemUpdates.system.installedItems.allowed;
         if (item.system.upgrades.length > 0) {
           const newUpgrades = [];
           for (const upgradeData of item.system.upgrades) {
