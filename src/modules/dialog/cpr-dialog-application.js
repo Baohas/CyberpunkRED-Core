@@ -1,20 +1,16 @@
-/* globals FormApplication mergeObject */
+/* globals FormApplication mergeObject $ duplicate getProperty setProperty hasProperty */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
- * Form application to handle dialogs more generally property.
+ * Form application to handle dialogs more generally.
  */
 export default class CPRDialog extends FormApplication {
   constructor(rollData) {
     LOGGER.trace("constructor | CPRDialog | Called.");
-    super();
-    /**
-     * Actor data is slightly different depending on whether or not CPRRollRequest is called via socket, or called directly (I am not sure why).
-     * CPRRollRequest is called directly when the user making the request is the same as the one that is requested (e.g. rolling attacks against a token you own).
-     * Thus, it is important that we know if we are the same user as the origin. This will come up in getData, _onRoll and _useRangedDv.
-     */
+    super(rollData, { title: rollData.rollTitle });
     this.rollData = rollData;
+    this.object = rollData;
   }
 
   /**
@@ -31,6 +27,8 @@ export default class CPRDialog extends FormApplication {
       template: "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-universal-roll-prompt.hbs",
       width: "auto",
       height: "auto",
+      closeOnSubmit: false,
+      submitOnChange: false,
     });
   }
 
@@ -39,5 +37,48 @@ export default class CPRDialog extends FormApplication {
     const data = super.getData();
     data.rollData = this.rollData;
     return data;
+  }
+
+  /* -------------------------------------------- */
+  /** @override */
+  activateListeners(html) {
+    LOGGER.trace("activateListeners | CPRDialog | Called.");
+    super.activateListeners(html);
+    if (!this.options.editable) return;
+
+    // Select all text when grabbing text input.
+    $("input[type=text]").focusin(() => $(this).select());
+
+    // generic listeners
+    html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
+
+    super.activateListeners(html);
+  }
+
+  _itemCheckboxToggle(event) {
+    LOGGER.trace("_itemCheckboxToggle | CPRDialog | Called.");
+    const { rollData } = this;
+    const target = SystemUtils.GetEventDatum(event, "data-target");
+    const value = !getProperty(rollData, target);
+    if (hasProperty(rollData, target)) {
+      setProperty(rollData, target, value);
+      // this.update(rollData);
+      // LOGGER.log(`Item ${this.item.id} ${target} set to ${value}`);
+      // this._automaticResize(); // Resize the sheet as length of settings list might have changed
+    }
+  }
+
+  static async verifyRoll() {
+    LOGGER.trace("verifyRoll | CPR Dialog | Called.");
+    return new Promise((resolve, reject) => {
+      resolve();
+    });
+  }
+
+  // eslint-disable-next-line no-unused-vars, foundry-cpr/logger-after-function-definition
+  async _updateObject(event, formData) {
+    mergeObject(this.rollData, formData);
+    this.render(true); // rerenders the FormApp with the new data.
+    return true;
   }
 }

@@ -70,9 +70,19 @@
                 {{localize "CPR.rolls.shouldRollCriticals"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="calculateCritical" class="" type="checkbox" data-dtype="Checkbox" checked>
+                <input name="calculateCritical" class="item-checkbox" type="checkbox" data-target = "calculateCritical" data-dtype="Checkbox" {{#if rollData.calculateCritical}} checked {{/if}}>
             </div>
         </li>
+
+        {{#if rollData.calculateCritical}}
+        TEST
+        {{/if}}
     </ol>
+      <footer class="sheet-footer flexrow">
+    <button type="submit" name="submit">
+        <i class="fa fa-check"></i> OK
+    </button>
+  </footer>
+
 </form>
 {{cprTrace "END CPR-VERIFY-ROLL-SKILL-PROMPT.HBS"}}
