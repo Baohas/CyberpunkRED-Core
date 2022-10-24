@@ -10,6 +10,10 @@
   This will prevent migration from on newly created worlds where it is not needed.
 
 **Bug Fixes**
+- Drugs can now be equipped, owned, or carried.
+
+**Bug Fixes**
+-
 
 # Version 0.83.1 | Date: 2022-10-23
 **Bug Fixes**

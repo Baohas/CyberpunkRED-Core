@@ -24,6 +24,7 @@ init:
     refs:
       - merge_requests
       - tags
+      - dev
 
 lint:
   stage: test
@@ -48,6 +49,7 @@ unit-test:
     refs:
       - merge_requests
       - tags
+      - dev
 
 test-shell-scripts:
   stage: test
@@ -62,6 +64,7 @@ test-shell-scripts:
     refs:
       - merge_requests
       - tags
+      - dev
     changes:
       - "**/*.sh"
 
@@ -76,6 +79,7 @@ language-unused-strings:
     refs:
       - merge_requests
       - tags
+      - dev
 
 language-exists:
   stage: test
@@ -91,6 +95,7 @@ language-exists:
     refs:
       - merge_requests
       - tags
+      - dev
 
 changelog-has-changed:
   stage: test
@@ -116,6 +121,7 @@ trace-statements:
     refs:
       - merge_requests
       - tags
+      - dev
 
 code-localization:
   stage: test
@@ -128,6 +134,7 @@ code-localization:
     refs:
       - merge_requests
       - tags
+      - dev
 
 handlebars-helpers:
   stage: test
@@ -140,6 +147,7 @@ handlebars-helpers:
     refs:
       - merge_requests
       - tags
+      - dev
 
 # Build without artifacts when not tagging a release
 test-build:
@@ -182,6 +190,7 @@ build-artifacts:
   only:
     refs:
       - tags
+      - dev
 
 # Creates a GitLab release with the previously uploaded artifacts
 create-release:
@@ -219,7 +228,7 @@ pre-release:
       - tags
 
 # Build the `latest` system.json and upload to gitlab generic repo
-# This makes the release available in Foundry (I think?)
+# This makes the release available in Foundry
 publish:
   stage: release
   before_script:
@@ -232,6 +241,8 @@ publish:
     - job: build-artifacts
       artifacts: true
     - job: pre-release
+      optional: true
   only:
     refs:
       - tags
+      - dev

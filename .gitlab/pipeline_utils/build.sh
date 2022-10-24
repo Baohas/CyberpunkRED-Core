@@ -3,17 +3,36 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # SYSTEM_NAME is declared in .gitlab-ci.yml
-# Get the version from the CI_COMMIT_TAG provided by GitLab CI
-VERSION="${CI_COMMIT_TAG}"
+# CI_API_V4_URL, CI_PROJECT_ID, CI_COMMIT_TAG come from Gitlab CI
+
 # Base URL for the project
 PROJECT_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}"
-# Base URL of the repo + $VERSION
+# Set CI_COMMIT_TAG to "" if it does not exist
+CI_COMMIT_TAG="${CI_COMMIT_TAG:-}"
+# System manifest
+SYSTEM_FILE="system.json"
+# Define the url we upload the packages to
 REPO_URL="${PROJECT_URL}/packages/generic/fvtt-${SYSTEM_NAME}"
+# Set the version number
+VERSION="${CI_COMMIT_TAG}"
+# SYSTEM_TITLE (display name for system in Foundry)
+SYSTEM_TITLE="Cyberpunk RED - CORE"
+
+# If we don't have CI_COMMIT_TAG we're most likely merging to dev so
+# overwite the defaults.
+if [[ -z "${CI_COMMIT_TAG}" ]]; then
+  # Append "-dev" to the package repo name
+  REPO_URL="${PROJECT_URL}/packages/generic/fvtt-${SYSTEM_NAME}-dev"
+  # Use the date/time as a version number
+  VERSION="v$(date +%Y%m%d.%H%M)"
+  # Set the system title to inclue DEV to make identifying it easier in Foundry
+  SYSTEM_TITLE="Cyberpunk RED - CORE - DEV"
+fi
+
 # Full name of the release including version
 # SYSTEM_NAME if declared in .gitlab-ci.yml
 RELEASE_NAME="fvtt-${SYSTEM_NAME}-${VERSION}"
 # Define the files we'll be working with to publish later
-SYSTEM_FILE="system.json"
 ZIP_FILE="${RELEASE_NAME}.zip"
 
 # Export some variables we'll use in later CI steps
@@ -23,17 +42,19 @@ ZIP_FILE="${RELEASE_NAME}.zip"
   echo "RELEASE_NAME=${RELEASE_NAME}"
   echo "REPO_URL=${REPO_URL}"
   echo "SYSTEM_FILE=${SYSTEM_FILE}"
+  echo "SYSTEM_TITLE=${SYSTEM_TITLE}"
   echo "VERSION=${VERSION}"
   echo "ZIP_FILE=${ZIP_FILE}"
 } > build.env
 
 # Export them for processes in this script
-export "PROJECT_URL=${PROJECT_URL}"
-export "RELEASE_NAME=${RELEASE_NAME}"
-export "REPO_URL=${REPO_URL}"
-export "SYSTEM_FILE=${SYSTEM_FILE}"
-export "VERSION=${VERSION}"
-export "ZIP_FILE=${ZIP_FILE}"
+export PROJECT_URL="${PROJECT_URL}"
+export RELEASE_NAME="${RELEASE_NAME}"
+export REPO_URL="${REPO_URL}"
+export SYSTEM_FILE="${SYSTEM_FILE}"
+export SYSTEM_TITLE="${SYSTEM_TITLE}"
+export VERSION="${VERSION}"
+export ZIP_FILE="${ZIP_FILE}"
 
 # Then stick them in an array so we can loop over them later
 declare -a UPLOAD_FILES
