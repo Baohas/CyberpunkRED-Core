@@ -264,7 +264,7 @@ export default class CPRChat {
           } else {
             const programId = SystemUtils.GetEventDatum(event, "data-program-id");
             // Warn if no damage is configured.
-            if (!actor.items?.get(programId).system.damage.standard && !actor.items?.get(programId).system.damage.blackIce) {
+            if ((!actor.items?.get(programId)?.system.damage.standard && !actor.items?.get(programId)?.system.damage.blackIce && programId !== "zap")) {
               SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.chat.rollDamage.warningProgramDmg"));
               return;
             }
