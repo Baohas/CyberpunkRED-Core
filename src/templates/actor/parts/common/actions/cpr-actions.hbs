@@ -21,7 +21,7 @@
 {{#if (cprCompare (cprListContains "ammo,gear,clothing" type) "&&" (cprCompare system.amount ">" "1"))}}
 {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-split-item.hbs"}}
 {{/if}}
-{{#if (cprListContains "weapon,armor,gear,clothing,cyberdeck" type)}}
+{{#if (cprListContains "weapon,armor,gear,clothing,cyberdeck,drug" type)}}
 {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-equip-glyph.hbs"}}
 {{/if}}
 <a class="item-action" data-action-type="favorite" title="{{localize "CPR.actorSheets.commonActions.togglePin"}}">

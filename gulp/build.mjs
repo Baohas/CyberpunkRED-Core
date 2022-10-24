@@ -4,7 +4,7 @@ import gulp from "gulp";
 import less from "gulp-less";
 
 import * as config from "./config.mjs";
-import { SYSTEM_FILE } from "./constants.mjs";
+import { SYSTEM_FILE, SYSTEM_TITLE } from "./constants.mjs";
 
 const destFolder = path.resolve(config.dataPath);
 const srcFolder = "src";
@@ -47,16 +47,13 @@ async function buildManifest() {
   // Construct some URLs
   const repoUrl = process.env.CI ? process.env.REPO_URL : "http://example.com";
   const zipFile = process.env.CI ? process.env.ZIP_FILE : "cpr.zip";
+  const manifestUrl = `${repoUrl}/latest/${SYSTEM_FILE}`;
   const downloadUrl = `${repoUrl}/${version}/${zipFile}`;
-  // If we're in the release stage of CI use the `latest` url for the manifest
-  // This will be used for the final release
-  const manifestUrl = process.env.CI_JOB_NAME === "publish"
-    ? `${repoUrl}/latest/${SYSTEM_FILE}`
-    : `${repoUrl}/${version}/${SYSTEM_FILE}`;
 
   system.version = version;
   system.manifest = manifestUrl;
   system.download = downloadUrl;
+  system.title = SYSTEM_TITLE;
 
   fs.writeFileSync(path.resolve(destFolder, SYSTEM_FILE), JSON.stringify(system, null, 2));
 }
