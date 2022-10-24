@@ -217,7 +217,7 @@ export default class UniversalInstallMigration extends CPRMigration {
           }
           default:
         }
-        systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, prop) };
+        systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, `system.${prop}`) };
       }
     }
     return systemChanges;
