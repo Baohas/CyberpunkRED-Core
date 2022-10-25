@@ -1005,8 +1005,6 @@
     "CPR.settings.preventDuplicateCriticalInjuries.warn": "Warn",
     "CPR.settings.systemDataModelVersion.hint": "Pin the system data model to a specific version. This will force or avoid data migrations and is VERY DANGEROUS. Only use this if you are tester or developer on the system module.",
     "CPR.settings.systemDataModelVersion.name": "System Data Model Version",
-    "CPR.settings.targetedTokensAutomation.hint": "When enabled = Use targeted tokens. When disabled = Use selected tokens.",
-    "CPR.settings.targetedTokensAutomation.name": "Use targeted tokens for attack and damage automation?",
     "CPR.settings.title": "Settings",
     "CPR.settings.traceLogs.hint": "Enable trace logs. Turn this on when you are filing a bug or working with module developers on an issue.",
     "CPR.settings.traceLogs.name": "Trace Logs",

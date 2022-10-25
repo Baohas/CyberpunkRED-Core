@@ -10,6 +10,9 @@
 **Changes**
 -
 
+**Changes**
+- Drugs can now be equipped, owned, or carried.
+
 **Bug Fixes**
 -
 
