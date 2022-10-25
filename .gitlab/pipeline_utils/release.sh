@@ -6,8 +6,7 @@ IFS=$'\n\t'
 # REPO_URL SYSTEM_FILE SYSTEM_NAME VERSION ZIP_FILE
 
 # Create a Release in GitLab
-# NOTE: This references the files created by `build.sh` not the
-#       system.json above
+# NOTE: This references the files created by the `build-artifacts` job.
 if ! release-cli create \
       --name "${VERSION}" \
       --description "Automated release of ${VERSION}" \
