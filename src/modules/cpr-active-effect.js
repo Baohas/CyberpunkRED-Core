@@ -1,4 +1,4 @@
-/* global ActiveEffect */
+/* global ActiveEffect game */
 import CPRActor from "./actor/cpr-actor.js";
 import LOGGER from "./utils/cpr-logger.js";
 

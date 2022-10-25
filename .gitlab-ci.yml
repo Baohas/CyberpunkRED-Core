@@ -152,7 +152,7 @@ handlebars-helpers:
 game-id:
   stage: test
   script:
-    - Making sure game.system.id is used appropriately
+    - echo "Making sure game.system.id is used appropriately..."
     - ./.gitlab/pipeline_tests/test-game-ids.sh
   needs:
     - job: init

@@ -1,4 +1,4 @@
-/* globals Actor, getProperty, hasProperty, setProperty, duplicate */
+/* globals Actor, getProperty, hasProperty, setProperty, duplicate game */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 
