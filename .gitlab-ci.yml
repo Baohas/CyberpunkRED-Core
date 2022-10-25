@@ -18,7 +18,7 @@ init:
   script:
     - echo "Testing ENVARs are exported..."
     - ./.gitlab/pipeline_tests/test-envar-exports.sh
-    - echo "Generating envars..."
+    - echo "Exporting ENVARs..."
     - ./.gitlab/pipeline_utils/envars.sh
     - echo "Installing dependencies..."
     - npm ci
@@ -112,7 +112,6 @@ changelog-has-changed:
   stage: test
   script:
     - echo "Checking if the CHANGELOG.md changed..."
-    - git fetch origin ${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}
     - ./.gitlab/pipeline_tests/test-changelog-dev-changed.sh
   allow_failure: true
   needs:
