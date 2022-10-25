@@ -21,7 +21,7 @@ init:
     - echo "Generating envars..."
     - ./.gitlab/pipeline_utils/envars.sh
     - echo "Installing dependencies..."
-    - npm install
+    - npm ci
   artifacts:
     expire_in: 1h
     reports:
