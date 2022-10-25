@@ -72,6 +72,7 @@ fi
 local_version=$(jq -r .version "${SYSTEM_FILE}")
 local_manifest=$(jq -r .manifest "${SYSTEM_FILE}")
 local_download=$(jq -r .download "${SYSTEM_FILE}")
+local_title=$(jq -r .title "${SYSTEM_FILE}")
 
 # Check the `version` is correct in systm.json
 if [[ "${local_version}" != "${VERSION}" ]]; then
@@ -95,6 +96,14 @@ if [[ "${local_download}" != "${REPO_URL}/${VERSION}/${ZIP_FILE}" ]]; then
   echo "❌ The 'download' url is incorrect in ${SYSTEM_FILE}"
 else
   echo "✅ The 'download' url is correct in ${SYSTEM_FILE}!"
+fi
+
+# Check the `title` url is corect
+if [[ "${local_title}" != "${SYSTEM_TITLE}" ]]; then
+  ((errors+=1))
+  echo "❌ The 'title' url is incorrect in ${SYSTEM_FILE}"
+else
+  echo "✅ The 'title' url is correct in ${SYSTEM_FILE}!"
 fi
 
 if [[ ${errors} -gt 0 ]]; then

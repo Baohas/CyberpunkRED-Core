@@ -1,13 +1,13 @@
 # Version 0.84.0 | Date: WIP
 
 **New Features**
-- 
+-
 
 **Changes**
-- 
+- Drugs can now be equipped, owned, or carried.
 
 **Bug Fixes**
-- 
+-
 
 
 # Version 0.83.1 | Date: 2022-10-23
