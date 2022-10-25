@@ -153,6 +153,12 @@ export default class CPRItem extends Item {
       this.system.installedItems.list.forEach((itemId) => itemList.push(this.actor.getOwnedItem(itemId)));
       await this.uninstallItems(itemList, true);
     }
+
+    if (typeof this.system.isInstalled === "boolean" && this.system.isInstalled) {
+      const installLocation = this.actor.getOwnedItem(this.system.installedIn);
+      await installLocation.uninstallItems([this], false);
+    }
+
     return super._preDelete(options, user);
   }
 
