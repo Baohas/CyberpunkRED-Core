@@ -125,7 +125,7 @@ trace-statements:
   stage: test
   script:
     - echo "Checking if there are proper trace statements in all hbs files..."
-    - ./.gitlab/pipeline_tests/test-hbs-trace.sh
+    - ./.gitlab/pipeline_tests/test-handlebars-trace.sh
   needs:
     - job: init
       artifacts: true
