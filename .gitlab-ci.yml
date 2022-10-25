@@ -5,9 +5,6 @@ cache:
   paths:
     - node_modules/
 
-variables:
-  SYSTEM_NAME: "cyberpunk-red-core"
-
 stages:
   - init
   - test
@@ -18,8 +15,16 @@ stages:
 init:
   stage: init
   script:
+    - echo "Testing ENVARs are exported..."
+    - ./.gitlab/pipeline_tests/test-envar-exports.sh
+    - echo "Generating envars..."
+    - ./.gitlab/pipeline_utils/envars.sh
     - echo "Installing dependencies..."
     - npm install
+  artifacts:
+    expire_in: 1h
+    reports:
+      dotenv: vars.env
   only:
     refs:
       - merge_requests
@@ -33,6 +38,7 @@ lint:
     - npm run lint
   needs:
     - job: init
+      artifacts: true
   only:
     refs:
       - merge_requests
@@ -45,6 +51,7 @@ unit-test:
     - npm test
   needs:
     - job: init
+      artifacts: true
   only:
     refs:
       - merge_requests
@@ -60,6 +67,7 @@ test-shell-scripts:
     - ./.gitlab/pipeline_tests/test-shell-scripts.sh
   needs:
     - job: init
+      artifacts: true
   only:
     refs:
       - merge_requests
@@ -75,6 +83,7 @@ language-unused-strings:
     - ./.gitlab/pipeline_tests/test-lang-file.sh
   needs:
     - job: init
+      artifacts: true
   only:
     refs:
       - merge_requests
@@ -91,6 +100,7 @@ language-exists:
     - ./.gitlab/pipeline_tests/test-lang-existence.sh
   needs:
     - job: init
+      artifacts: true
   only:
     refs:
       - merge_requests
@@ -106,6 +116,7 @@ changelog-has-changed:
   allow_failure: true
   needs:
     - job: init
+      artifacts: true
   only:
     refs:
       - merge_requests
@@ -117,6 +128,7 @@ trace-statements:
     - ./.gitlab/pipeline_tests/test-hbs-trace.sh
   needs:
     - job: init
+      artifacts: true
   only:
     refs:
       - merge_requests
@@ -130,6 +142,7 @@ code-localization:
     - ./.gitlab/pipeline_tests/test-misc.sh
   needs:
     - job: init
+      artifacts: true
   only:
     refs:
       - merge_requests
@@ -143,6 +156,7 @@ handlebars-helpers:
   - ./.gitlab/pipeline_tests/test-handlebars-helpers.sh
   needs:
     - job: init
+      artifacts: true
   only:
     refs:
       - merge_requests
@@ -156,6 +170,7 @@ game-id:
     - ./.gitlab/pipeline_tests/test-game-ids.sh
   needs:
     - job: init
+      artifacts: true
   only:
     refs:
       - merge_requests
@@ -183,6 +198,7 @@ test-build:
     - npm run build
   needs:
     - job: init
+      artifacts: true
   only:
     refs:
       - merge_requests
@@ -196,11 +212,9 @@ build-artifacts:
   script:
     - echo "Building cyberpunk-red-core..."
     - ./.gitlab/pipeline_utils/build.sh
-  artifacts:
-    expire_in: 1h
-    reports:
-      dotenv: build.env
   needs:
+    - job: init
+      artifacts: true
     - job: unit-test
     - job: test-shell-scripts
       optional: true
@@ -230,8 +244,9 @@ create-release:
     - echo "Running Release Job..."
     - ./.gitlab/pipeline_utils/release.sh
   needs:
-    - job: build-artifacts
+    - job: init
       artifacts: true
+    - job: build-artifacts
   only:
     refs:
       - tags
@@ -246,8 +261,9 @@ pre-release:
     - echo "Running Pre Release Checks"
     - ./.gitlab/pipeline_tests/pre-release-checks.sh
   needs:
-    - job: build-artifacts
+    - job: init
       artifacts: true
+    - job: build-artifacts
     - job: create-release
   only:
     refs:
@@ -264,8 +280,9 @@ publish:
     - echo "Releasing cyberpunk-red-core..."
     - ./.gitlab/pipeline_utils/publish.sh
   needs:
-    - job: build-artifacts
+    - job: init
       artifacts: true
+    - job: build-artifacts
     - job: pre-release
       optional: true
   only:

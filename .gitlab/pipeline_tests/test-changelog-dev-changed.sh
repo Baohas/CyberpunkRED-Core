@@ -2,6 +2,9 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# The following vars are set during the 'init' CI job.
+# CHANGELOG_FILE
+
 # Check that Gitlab has fetched the dev branch
 if ! git branch -a | grep -q 'remotes/origin/dev'; then
   echo "remotes/origin/dev branch does not exist"
@@ -9,7 +12,7 @@ if ! git branch -a | grep -q 'remotes/origin/dev'; then
 fi
 
 # Test if the CHANGELOG has been updated
-if git diff --quiet HEAD remotes/origin/dev -- CHANGELOG.md; then
+if git diff --quiet HEAD remotes/origin/dev -- "${CHANGELOG_FILE}"; then
   echo "❌ Changelog not changed"
   exit 1
 else
