@@ -7,7 +7,7 @@ export default class LOGGER {
   }
 
   static debug(msg) {
-    if (game.settings.get("cyberpunk-red-core", "debugLogs")) {
+    if (game.settings.get(game.system.id, "debugLogs")) {
       console.debug(`CPR DBG | ${msg}`);
       if (typeof msg === "object" && msg !== null) {
         console.log(msg);
@@ -16,7 +16,7 @@ export default class LOGGER {
   }
 
   static debugObject(obj) {
-    if (game.settings.get("cyberpunk-red-core", "debugLogs")) {
+    if (game.settings.get(game.system.id, "debugLogs")) {
       console.debug(obj);
     }
   }
@@ -26,7 +26,7 @@ export default class LOGGER {
   }
 
   static trace(msg) {
-    if (game.settings.get("cyberpunk-red-core", "traceLogs")) {
+    if (game.settings.get(game.system.id, "traceLogs")) {
       console.log(`CPR TRC | ${msg}`);
     }
   }

@@ -50,7 +50,7 @@ export default class CPRItemSheet extends ItemSheet {
   // eslint-disable-next-line class-methods-use-this
   get template() {
     LOGGER.trace("template | CPRItemSheet | Called.");
-    return `systems/cyberpunk-red-core/templates/item/cpr-item-sheet.hbs`;
+    return `systems/${game.system.id}/templates/item/cpr-item-sheet.hbs`;
   }
 
   get classes() {
@@ -292,7 +292,7 @@ export default class CPRItemSheet extends ItemSheet {
 
   _automaticResize() {
     LOGGER.trace("_automaticResize | CPRItemSheet | Called.");
-    const setting = game.settings.get("cyberpunk-red-core", "automaticallyResizeSheets");
+    const setting = game.settings.get(game.system.id, "automaticallyResizeSheets");
     if (setting && this.rendered && !this._minimized) {
       // It seems that the size of the content does not change immediately upon updating the content
       setTimeout(() => {
@@ -450,7 +450,7 @@ export default class CPRItemSheet extends ItemSheet {
     const cprItemData = duplicate(this.item.system);
 
     if (action === "delete") {
-      const setting = game.settings.get("cyberpunk-red-core", "deleteItemConfirmation");
+      const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
       if (setting) {
         const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${SystemUtils.Localize("CPR.netArchitecture.floor.deleteConfirmation")}?`;
         const confirmDelete = await ConfirmPrompt.RenderPrompt(
@@ -870,7 +870,7 @@ export default class CPRItemSheet extends ItemSheet {
     }
 
     if (action === "delete") {
-      const setting = game.settings.get("cyberpunk-red-core", "deleteItemConfirmation");
+      const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
       if (setting) {
         const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${SystemUtils.Localize("CPR.itemSheet.role.deleteConfirmation")}?`;
         const confirmDelete = await ConfirmPrompt.RenderPrompt(

@@ -77,35 +77,35 @@ export default class CPRContainerActor extends Actor {
    */
   async setContainerType(containerType) {
     LOGGER.trace("setContainerType | CPRContainerActor | Called.");
-    await this.setFlag("cyberpunk-red-core", "container-type", containerType);
+    await this.setFlag(game.system.id, "container-type", containerType);
     switch (containerType) {
       case "shop": {
-        await this.unsetFlag("cyberpunk-red-core", "items-free");
-        await this.unsetFlag("cyberpunk-red-core", "players-create");
-        await this.unsetFlag("cyberpunk-red-core", "players-delete");
-        await this.unsetFlag("cyberpunk-red-core", "players-modify");
-        await this.setFlag("cyberpunk-red-core", "players-sell", true);
-        await this.unsetFlag("cyberpunk-red-core", "players-move");
+        await this.unsetFlag(game.system.id, "items-free");
+        await this.unsetFlag(game.system.id, "players-create");
+        await this.unsetFlag(game.system.id, "players-delete");
+        await this.unsetFlag(game.system.id, "players-modify");
+        await this.setFlag(game.system.id, "players-sell", true);
+        await this.unsetFlag(game.system.id, "players-move");
         break;
       }
       case "loot": {
-        await this.unsetFlag("cyberpunk-red-core", "infinite-stock");
-        await this.setFlag("cyberpunk-red-core", "items-free", true);
-        await this.unsetFlag("cyberpunk-red-core", "players-create");
-        await this.unsetFlag("cyberpunk-red-core", "players-delete");
-        await this.unsetFlag("cyberpunk-red-core", "players-modify");
-        await this.unsetFlag("cyberpunk-red-core", "players-sell");
-        await this.unsetFlag("cyberpunk-red-core", "players-move");
+        await this.unsetFlag(game.system.id, "infinite-stock");
+        await this.setFlag(game.system.id, "items-free", true);
+        await this.unsetFlag(game.system.id, "players-create");
+        await this.unsetFlag(game.system.id, "players-delete");
+        await this.unsetFlag(game.system.id, "players-modify");
+        await this.unsetFlag(game.system.id, "players-sell");
+        await this.unsetFlag(game.system.id, "players-move");
         break;
       }
       case "stash": {
-        await this.unsetFlag("cyberpunk-red-core", "infinite-stock");
-        await this.unsetFlag("cyberpunk-red-core", "players-sell");
-        await this.setFlag("cyberpunk-red-core", "items-free", true);
-        await this.setFlag("cyberpunk-red-core", "players-create", true);
-        await this.setFlag("cyberpunk-red-core", "players-delete", true);
-        await this.setFlag("cyberpunk-red-core", "players-modify", true);
-        await this.setFlag("cyberpunk-red-core", "players-move", true);
+        await this.unsetFlag(game.system.id, "infinite-stock");
+        await this.unsetFlag(game.system.id, "players-sell");
+        await this.setFlag(game.system.id, "items-free", true);
+        await this.setFlag(game.system.id, "players-create", true);
+        await this.setFlag(game.system.id, "players-delete", true);
+        await this.setFlag(game.system.id, "players-modify", true);
+        await this.setFlag(game.system.id, "players-move", true);
         break;
       }
       case "custom": {
@@ -126,11 +126,11 @@ export default class CPRContainerActor extends Actor {
    */
   async toggleFlag(flagName) {
     LOGGER.trace("toggleFlag | CPRContainerActor | Called.");
-    const flag = this.getFlag("cyberpunk-red-core", flagName);
+    const flag = this.getFlag(game.system.id, flagName);
     if (flag === undefined || flag === false) {
-      return this.setFlag("cyberpunk-red-core", flagName, true);
+      return this.setFlag(game.system.id, flagName, true);
     }
-    return this.unsetFlag("cyberpunk-red-core", flagName);
+    return this.unsetFlag(game.system.id, flagName);
   }
 
   /**

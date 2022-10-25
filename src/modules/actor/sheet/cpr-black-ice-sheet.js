@@ -22,7 +22,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRBlackIceActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
-      template: "systems/cyberpunk-red-core/templates/actor/cpr-black-ice-sheet.hbs",
+      template: `systems/${game.system.id}/templates/actor/cpr-black-ice-sheet.hbs`,
       width: 745,
       height: 200,
     });
@@ -96,7 +96,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
   async _configureFromProgram() {
     LOGGER.trace("_configureFromProgram | CPRBlackIceActorSheet | Called.");
     const biPrograms = game.items.filter((i) => i.type === "program" && i.system.class === "blackice");
-    const linkedProgramId = (this.actor.isToken) ? this.actor.token.getFlag("cyberpunk-red-core", "programId") : null;
+    const linkedProgramId = (this.actor.isToken) ? this.actor.token.getFlag(game.system.id, "programId") : null;
     if (linkedProgramId === null) {
       SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.linkBlackIceWithoutToken"));
       return;
@@ -108,7 +108,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     }
     const { programId } = formData;
     if (programId === "unlink") {
-      await this.actor.token.unsetFlag("cyberpunk-red-core", "programId");
+      await this.actor.token.unsetFlag(game.system.id, "programId");
     } else {
       const program = (biPrograms.filter((p) => p.id === formData.programId))[0];
       const cprProgramData = duplicate(program.system);
@@ -124,7 +124,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       if (this.actor.isToken) {
         this.actor.token.name = program.name;
         this.actor.name = program.name;
-        await this.actor.token.setFlag("cyberpunk-red-core", "programId", program._id);
+        await this.actor.token.setFlag(game.system.id, "programId", program._id);
       }
     }
     this.render(true, { renderData: this.actor.system });
