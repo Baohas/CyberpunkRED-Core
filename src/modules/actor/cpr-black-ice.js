@@ -148,10 +148,26 @@ export default class CPRBlackIceActor extends Actor {
    */
   async _applyDamage(damage, bonusDamage) {
     LOGGER.trace("_applyDamage | CPRBlackIceActor | Called.");
-    // As a Black ICE does not have any armor the damage will be simply subtracted from the REZ.
+    // As a Black ICE does not have any armor, the damage will be simply subtracted from the REZ.
     const currentRez = this.system.stats.rez.value;
     await this.update({ "system.stats.rez.value": currentRez - damage - bonusDamage });
-    CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: damage + bonusDamage, rezReduction: true });
+    CPRChat.RenderDamageApplicationCard({
+      actor: this,
+      hpReduction: damage + bonusDamage,
+      rezReduction: true,
+    });
+  }
+
+  /**
+   * Reverse rez damage to the actor, in case someone made a mistake applying it.
+   *
+   * @param {int} rezReduction - value of the damage taken
+   */
+  async _reverseDamage(rezReduction) {
+    LOGGER.trace("_reverseDamage | CPRBlackIceActor | Called.");
+    const currentRez = this.system.stats.rez.value;
+    const updatedRez = Math.min(currentRez + rezReduction, this.system.stats.rez.max);
+    await this.update({ "system.stats.rez.value": updatedRez });
   }
 
   /**

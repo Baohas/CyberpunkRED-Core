@@ -133,7 +133,6 @@
     "CPR.chat.damageApplication.damageReduction": "Damage reduction:",
     "CPR.chat.damageApplication.damageRolled": "Damage rolled:",
     "CPR.chat.damageApplication.damageToShield": "Damage to shield:",
-    "CPR.chat.damageApplication.defenderProgramsNotApplied": "Damage reduction due to any rezzed defender programs not considered.",
     "CPR.chat.damageApplication.healthReducedBy": "HP reduced by:",
     "CPR.chat.damageApplication.noTokenSelected": "Error: No Token(s) selected!",
     "CPR.chat.damageApplication.noTokenTargeted": "Warning: No Token(s) targeted!",
