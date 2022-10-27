@@ -34,10 +34,13 @@ export default class CPRActor extends Actor {
       LOGGER.trace("create | New Actor | CPRCharacterActor | called.");
       createData.items = [];
       const tmpItems = data.items.concat(await SystemUtils.GetCoreSkills(), await SystemUtils.GetCoreCyberware());
+      const containerTemplates = SystemUtils.GetTemplateItemTypes("container");
       tmpItems.forEach((item) => {
         const updatedSystem = duplicate(item.system);
-        updatedSystem.installedItems.slots = 7;
-        updatedSystem.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
+        if (containerTemplates.includes(item.type)) {
+          updatedSystem.installedItems.slots = 7;
+          updatedSystem.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
+        }
         const cprItem = {
           name: item.name,
           img: item.img,
@@ -51,7 +54,7 @@ export default class CPRActor extends Actor {
     if (newActor) {
       const installedItems = [];
       actor.itemTypes.cyberware.forEach((cw) => installedItems.push(cw.uuid));
-      await actor.update({ "system.installedItems.slots": 50, "system.installedItems.list": installedItems });
+      await actor.update({ "system.installedItems.list": installedItems });
     }
     return actor;
   }

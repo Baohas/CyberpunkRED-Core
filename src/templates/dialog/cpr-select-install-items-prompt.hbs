@@ -19,9 +19,9 @@
             </div>
             <div class="item flexrow setting-value text-nowrap text-space-around">
               {{#if item.system.isInstalled}}
-              <span class="text-bold text-nowrap text-align-last-end text-space-around"><input type="checkbox" name="selectedItems" value="{{item._id}}" checked></span>
+              <span class="text-bold text-nowrap text-align-last-end text-space-around"><input type="checkbox" name="selectedItems" value="{{item.uuid}}" checked></span>
               {{else}}
-              <span class="text-bold text-nowrap text-align-last-end text-space-around"><input type="checkbox" name="selectedItems" value="{{item._id}}"></span>
+              <span class="text-bold text-nowrap text-align-last-end text-space-around"><input type="checkbox" name="selectedItems" value="{{item.uuid}}"></span>
               {{/if}}
             </div>
           </li>

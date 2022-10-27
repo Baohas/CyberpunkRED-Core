@@ -126,6 +126,7 @@ export default function preloadHandlebarsTemplates() {
     "systems/cyberpunk-red-core/templates/item/description/mixin/cpr-stackable.hbs",
     "systems/cyberpunk-red-core/templates/item/description/mixin/cpr-upgradable.hbs",
     "systems/cyberpunk-red-core/templates/item/description/mixin/cpr-valuable.hbs",
+    "systems/cyberpunk-red-core/templates/item/description/mixin/cpr-container.hbs",
 
     // Description Types
     "systems/cyberpunk-red-core/templates/item/description/cpr-ammo.hbs",
@@ -154,6 +155,7 @@ export default function preloadHandlebarsTemplates() {
     "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-stackable.hbs",
     "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-upgradable.hbs",
     "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-valuable.hbs",
+    "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-container.hbs",
 
     // Setting Types
     "systems/cyberpunk-red-core/templates/item/settings/cpr-ammo.hbs",

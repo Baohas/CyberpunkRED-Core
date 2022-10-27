@@ -1,4 +1,4 @@
-/* global duplicate game randomID Actor Scene canvas */
+/* global duplicate game randomID Actor Scene canvas fromUuidSync */
 
 import CPR from "../../system/config.js";
 import CPRItem from "../cpr-item.js";
@@ -22,23 +22,25 @@ export default class CPRCyberdeckItem extends CPRItem {
 
     const actor = (this.isOwned) ? this.actor : false;
 
+    /*
     if (!actor) {
       return Promise.reject(new Error("Can not install upgrades in unowned objects."));
     }
+    */
 
     const installedItems = duplicate(this.system.installedItems);
 
     const uninstallList = [];
     for (const program of this.system.programs.installed) {
       if (!installedItems.list.includes(program.uuid)) {
-        const item = actor.getOwnedItem(program.uuid);
+        const item = (!actor) ? fromUuidSync(program.uuid) : actor.getOwnedItem(program.uuid);
         uninstallList.push(item);
       }
     }
 
     const installList = [];
     for (const uuid of installedItems.list) {
-      const item = actor.getOwnedItem(uuid);
+      const item = (!actor) ? fromUuidSync(uuid) : actor.getOwnedItem(uuid);
       if (item && item.type === "program") {
         if (this.system.programs.installed.filter((p) => p.uuid === uuid).length === 0) {
           installList.push(item);
@@ -59,7 +61,7 @@ export default class CPRCyberdeckItem extends CPRItem {
       updateList.push({ _id: item._id, system: item.system });
     }
     updateList.push({ _id: this._id, system: this.system });
-    return actor.updateEmbeddedDocuments("Item", updateList);
+    return (!actor) ? this.update({ system: this.system }) : actor.updateEmbeddedDocuments("Item", updateList);
   }
 
   /**
@@ -106,7 +108,9 @@ export default class CPRCyberdeckItem extends CPRItem {
         programInstallation.name = p.name;
         programInstallation.flags = p.flags;
         installed.push(programInstallation);
-        p.setInstalled();
+        if (p.isOwned) {
+          p.setInstalled();
+        }
       }
     });
     this.system.programs.installed = installed;
@@ -126,7 +130,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     let sceneId;
     programs.forEach(async (program) => {
       if (program.system.class === "blackice" && this.isRezzed(program)) {
-        const rezzedIndex = this.system.programs.rezzed.findIndex((p) => p._id === program.id);
+        const rezzedIndex = this.system.programs.rezzed.findIndex((p) => p.uuid === program.uuid);
         const programData = this.system.programs.rezzed[rezzedIndex];
         const cprFlags = programData.flags["cyberpunk-red-core"];
         if (cprFlags.biTokenId) {
@@ -136,8 +140,8 @@ export default class CPRCyberdeckItem extends CPRItem {
           sceneId = cprFlags.sceneId;
         }
       }
-      installed = installed.filter((p) => p._id !== program.id);
-      rezzed = rezzed.filter((p) => p._id !== program.id);
+      installed = installed.filter((p) => p.uuid !== program.uuid);
+      rezzed = rezzed.filter((p) => p.uuid !== program.uuid);
       if ((typeof program.unsetInstalled === "function")) {
         program.unsetInstalled();
       }
@@ -187,7 +191,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     LOGGER.trace("rezProgram | CPRCyberdeckItem | Called.");
     const programData = duplicate(program.system);
     const { installed } = this.system.programs;
-    const installIndex = installed.findIndex((p) => p._id === program._id);
+    const installIndex = installed.findIndex((p) => p.uuid === program.uuid);
     const programState = installed[installIndex];
 
     // This instance ID is being added pro-actively because the rulebook

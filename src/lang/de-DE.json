@@ -690,7 +690,7 @@
     "CPR.itemSheet.criticalInjury.deathSaveIncrease": "Steigerung Todesrettungswurf",
     "CPR.itemSheet.criticalInjury.dv": "SG",
     "CPR.itemSheet.criticalInjury.treatment": "Behandlung",
-    "CPR.itemSheet.cyberdeck.availableSlots": "Verfügbare Slots",
+    "CPR.itemSheet.container.availableSlots": "Verfügbare Slots",
     "CPR.itemSheet.cyberdeck.configureInstalledPrograms": "Installierte Programme konfigurieren",
     "CPR.itemSheet.cyberdeck.eraseProgram": "Programm löschen",
     "CPR.itemSheet.cyberware.hasOptionSlots": "Hat Optionsslots",

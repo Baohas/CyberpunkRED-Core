@@ -1,4 +1,4 @@
-/* global Handlebars game getProperty */
+/* global Handlebars game getProperty fromUuidSync */
 import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -60,7 +60,12 @@ export default function registerHandlebarsHelpers() {
    * Return an owned item on an actor given the ID
    */
   Handlebars.registerHelper("cprGetOwnedItem", (actor, itemId) => {
-    const item = actor.items.find((i) => i.id === itemId) ? actor.items.find((i) => i.id === itemId) : actor.items.find((i) => i.uuid === itemId);
+    let item;
+    if (actor === null) {
+      item = fromUuidSync(itemId);
+    } else {
+      item = actor.items.find((i) => i.id === itemId) ? actor.items.find((i) => i.id === itemId) : actor.items.find((i) => i.uuid === itemId);
+    }
     return item;
   });
 

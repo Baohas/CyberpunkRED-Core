@@ -1,0 +1,57 @@
+{{cprTrace "START ITEM SETTINGS MIXIN CPR-CONTAINER.HBS"}}
+<hr>
+<li class="item flexrow">
+  <div class="item flexrow setting-name text-nowrap">
+    {{localize "CPR.itemSheet.common.installedItemsAllowed"}}
+  </div>
+  <div class="item flexrow setting-value text-nowrap item-end">
+      {{#if this.editable}}
+          {{#if item.system.installedItems.allowed}}
+              <a class="item-checkbox" data-target="system.installedItems.allowed"><i class="far fa-check-circle"></i></a>
+          {{else}}
+              <a class="item-checkbox" data-target="system.installedItems.allowed"><i class="far fa-circle"></i></a>
+          {{/if}}
+      {{else}}
+          {{#if item.system.installedItems.allowed}}
+              <i class="far fa-check-circle"></i>
+          {{else}}
+              <i class="far fa-circle"></i>
+          {{/if}}
+      {{/if}}
+  </div>
+</li>
+{{#if item.system.installedItems.allowed}}
+<li class="item flexrow"></li>
+  <div class="text-left text-padding-left">
+    <b><a class="manage-installable-types">{{localize "CPR.itemSheet.common.installedItemTypesAllowed"}}<i class="text-smallest text-super fas fa-wrench"></i></a></b>
+    {{#each item.system.installedItems.allowedTypes as |type| }}
+    <li>{{localize (cprFindConfigValue "objectTypes" type)}}</li>
+    {{/each}}
+  </div>
+{{/if}}
+</li>
+<hr>
+<li class="item flexrow">
+  <div class="item flexrow setting-name text-nowrap text-bold">
+    <a class="manage-installed-items">
+      {{localize "CPR.itemSheet.common.installedItems"}}
+      <i class="text-smallest text-super fas fa-wrench"></i>
+    </a>
+  </div>
+  <div>
+    {{localize "CPR.itemSheet.container.availableSlots"}}: {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}}
+        {{#if (cprCompare (cprApplyUpgrade item item.system.installedItems.slots "slots") "!==" item.system.installedItems.slots)}}<sup><i class="text-smallest text-super fab fa-uniregistry"></i></sup>{{/if}}
+  </div>
+</li>
+<li class="item flexrow">
+  <div class="text-left text-padding-left">
+    {{#if (cprCompare item.system.installedItems.list.length ">" 0)}}
+      {{#each item.system.installedItems.list as |UUID| }}
+        {{#unless (cprCompare (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type") "===" "program")}}
+          <li>&nbsp;{{cprGetProp (cprGetOwnedItem ../item.actor UUID) "name"}} ({{localize (cprFindConfigValue "objectTypes" (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type"))}})</li>
+        {{/unless}}
+      {{/each}}
+    {{/if}}
+  </div>
+</li>
+{{cprTrace "END CPR-CONTAINER.HBS"}}

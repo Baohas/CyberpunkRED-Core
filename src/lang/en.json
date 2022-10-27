@@ -699,7 +699,7 @@
     "CPR.itemSheet.criticalInjury.deathSaveIncrease": "Death Save Increase",
     "CPR.itemSheet.criticalInjury.dv": "DV",
     "CPR.itemSheet.criticalInjury.treatment": "Treatment",
-    "CPR.itemSheet.cyberdeck.availableSlots": "Available Slots",
+    "CPR.itemSheet.container.availableSlots": "Available Slots",
     "CPR.itemSheet.cyberdeck.configureInstalledPrograms": "Configure Installed Programs",
     "CPR.itemSheet.cyberdeck.eraseProgram": "Erase program",
     "CPR.itemSheet.cyberware.hasOptionSlots": "Has option slots",

@@ -9,10 +9,6 @@
             <i class="text-smallest text-super fas fa-wrench"></i>
         </a>
     </div>
-    <div class="item flexrow setting-name text-nowrap">
-        {{localize "CPR.itemSheet.cyberdeck.availableSlots"}}: {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}}
-        {{#if (cprCompare (cprApplyUpgrade item item.system.installedItems.slots "slots") "!==" item.system.installedItems.slots)}}<sup><i class="text-smallest text-super fab fa-uniregistry"></i></sup>{{/if}}
-    </div>
 </li>
 <div class="installed-programs">
 

@@ -1,5 +1,5 @@
 /* global ItemSheet */
-/* global mergeObject, game, $, hasProperty, getProperty, setProperty, duplicate */
+/* global mergeObject, game, $, hasProperty, getProperty, setProperty, duplicate, fromUuidSync */
 import LOGGER from "../../utils/cpr-logger.js";
 import CPR from "../../system/config.js";
 import { CPRRoll } from "../../rolls/cpr-rolls.js";
@@ -654,12 +654,14 @@ export default class CPRItemSheet extends ItemSheet {
     // We only support upgraded items that are owned by an actor
     // Get the actor that owns this item (if owned)
 
-    const actor = (item.isOwned) ? item.actor : null;
+    const actor = (item.isOwned) ? item.actor : false;
+
+    /*
     if (!actor || (actor.type !== "character" && actor.type !== "mook")) {
       SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.ownedItemOnlyError"));
       return;
     }
-
+    */
     const promptResult = await this._selectInstallableItems(itemType);
 
     if (Object.keys(promptResult).length === 0) {
@@ -668,13 +670,25 @@ export default class CPRItemSheet extends ItemSheet {
 
     let installedItemChanges = [];
     if (promptResult.uninstallableItems.length > 0) {
-      const changeList = await item.uninstallItems(promptResult.uninstallableItems);
-      installedItemChanges = installedItemChanges.concat(changeList.filter((i) => i._id !== item._id));
+      const changeResult = await item.uninstallItems(promptResult.uninstallableItems);
+      if (Array.isArray(changeResult)) {
+        // Returned actor.updatedEmbeddedDocuments() so it is an owned item
+        installedItemChanges = installedItemChanges.concat(changeResult.filter((i) => i._id !== item._id));
+      } else {
+        // Returned item.update() so it is a world item
+        installedItemChanges = installedItemChanges.concat(promptResult.uninstallableItems);
+      }
     }
 
     if (promptResult.installableItems.length > 0) {
-      const changeList = await item.installItems(promptResult.installableItems);
-      installedItemChanges = installedItemChanges.concat(changeList.filter((i) => i._id !== item._id));
+      const changeResult = await item.installItems(promptResult.installableItems);
+      if (Array.isArray(changeResult)) {
+        // Returned actor.updatedEmbeddedDocuments() so it is an owned item
+        installedItemChanges = installedItemChanges.concat(changeResult.filter((i) => i._id !== item._id));
+      } else {
+        // Returned item.update() so it is a world item
+        installedItemChanges = installedItemChanges.concat(promptResult.installableItems);
+      }
     }
 
     if (installedItemChanges.filter((i) => i.type === "itemUpgrade").length > 0) {
@@ -692,19 +706,14 @@ export default class CPRItemSheet extends ItemSheet {
     const { item } = this;
     const actor = (this.item.isOwned) ? this.item.actor : null;
 
-    if (!actor) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.ownedItemOnlyError"));
-      return;
-    }
+    const installedItem = (!actor) ? fromUuidSync(installedItemId) : actor.getOwnedItem(installedItemId);
+    await item.uninstallItems([installedItem]);
 
-    const installedItem = actor.getOwnedItem(installedItemId);
-    const changeList = await item.uninstallItems([installedItem]);
-
-    if (changeList.filter((i) => i.type === "itemUpgrade")) {
+    if (installedItem.type === "itemUpgrade") {
       await item.syncUpgrades();
     }
 
-    if (changeList.filter((i) => i.type === "program")) {
+    if (installedItem.type === "program") {
       await item.syncPrograms();
     }
   }
@@ -850,19 +859,23 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("_selectInstallableItems | CPRItemSheet | Called.");
     const installTarget = this.item;
 
-    const actor = (installTarget.isOwned) ? installTarget.actor : null;
+    const actor = (installTarget.isOwned) ? installTarget.actor : false;
 
+    /*
     if (!actor || (actor.type !== "character" && actor.type !== "mook")) {
       SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.ownedItemOnlyError"));
       return {};
     }
+    */
 
     // First get all items that are installed in this.
     const installedItems = itemType ? installTarget.getInstalledItems(itemType) : installTarget.getInstalledItems();
 
     // Next get all uninstalled items that
-    let uninstalledItems = actor.items.filter((item) => this.item.system.installedItems.allowedTypes.includes(item.type)
-                                                          && item.system.isInstalled === false);
+    let uninstalledItems = (!actor) ? game.items.filter((item) => this.item.system.installedItems.allowedTypes.includes(item.type)
+                                                          && item.system.isInstalled === false)
+      : actor.items.filter((item) => this.item.system.installedItems.allowedTypes.includes(item.type)
+                                      && item.system.isInstalled === false);
 
     // Remove itemUpgrades that are not upgrades for this installTarget.type
     uninstalledItems = uninstalledItems.filter((item) => item.type !== "itemUpgrade" || (item.type === "itemUpgrade" && item.system.type === installTarget.type));
@@ -872,7 +885,43 @@ export default class CPRItemSheet extends ItemSheet {
         ? uninstalledItems.filter((item) => item.type === itemType && item.system.type === installTarget.type)
         : uninstalledItems.filter((item) => item.type === itemType);
     }
-    let itemsList = installedItems.concat(uninstalledItems);
+
+    if (!actor) {
+      for (const installedItem of installedItems) {
+        uninstalledItems = uninstalledItems.filter((i) => i.uuid !== installedItem.uuid);
+      }
+    }
+    let itemsList = [];
+
+    for (const i of installedItems) {
+      const itemData = {
+        name: i.name,
+        uuid: i.uuid,
+        type: i.type,
+        system: {
+          isInstalled: true,
+        },
+      };
+      if (i.type === "program") {
+        itemData.system.class = i.system.class;
+      }
+      itemsList.push(itemData);
+    }
+
+    for (const i of uninstalledItems) {
+      const itemData = {
+        name: i.name,
+        uuid: i.uuid,
+        type: i.type,
+        system: {
+          isInstalled: false,
+        },
+      };
+      if (i.type === "program") {
+        itemData.system.class = i.system.class;
+      }
+      itemsList.push(itemData);
+    }
 
     itemsList = itemsList.sort((a, b) => (a.name > b.name ? 1 : -1));
 
@@ -885,8 +934,12 @@ export default class CPRItemSheet extends ItemSheet {
 
     typeList.sort();
 
+    const availableSlots = this.item.availableInstallSlots();
+    const totalSlots = availableSlots + this.item.system.installedItems.usedSlots;
+
     const dialogItemType = (itemType) ? SystemUtils.Localize(CPR.objectTypes[itemType]) : SystemUtils.Localize("CPR.global.generic.item");
-    const dialogPromptTitle = SystemUtils.Localize(SystemUtils.Format("CPR.dialog.selectInstallableItems.title", { type: dialogItemType }));
+    const dialogPromptTitle = `${SystemUtils.Localize(SystemUtils.Format("CPR.dialog.selectInstallableItems.title", { type: dialogItemType }))}
+      | ${SystemUtils.Localize("CPR.global.generic.item")} ${SystemUtils.Localize("CPR.global.generic.slots")}: ${totalSlots}`;
     const dialogPromptText = SystemUtils.Localize(SystemUtils.Format(
       "CPR.dialog.selectInstallableItems.text",
       {
@@ -922,7 +975,8 @@ export default class CPRItemSheet extends ItemSheet {
 
     formData.selectedItems.forEach((itemId) => {
       if (installedItems.filter((item) => item._id === itemId).length === 0) {
-        installableItems.push(actor.getOwnedItem(itemId));
+        const installedItem = (!actor) ? fromUuidSync(itemId) : actor.getOwnedItem(itemId);
+        installableItems.push(installedItem);
       }
     });
 

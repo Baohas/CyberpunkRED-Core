@@ -263,13 +263,6 @@
       },
       "common": {
         "tags": [],
-        "installedItems": {
-          "allowedTypes": ["itemUpgrade"],
-          "allowed": true,
-          "list": [],
-          "usedSlots": 0,
-          "slots": 3
-        },
         "description": {
           "value": "",
           "chat": "",
@@ -293,6 +286,15 @@
           "ammoId": ""
         },
         "ammoVariety": []
+      },
+      "container": {
+        "installedItems": {
+          "allowedTypes": ["itemUpgrade"],
+          "allowed": true,
+          "list": [],
+          "usedSlots": 0,
+          "slots": 3
+        }
       },
       "installable": {
         "installLocation": "mall",
@@ -337,7 +339,8 @@
         "equippable",
         "physical",
         "upgradable",
-        "valuable"
+        "valuable",
+        "container"
       ],
       "isHeadLocation": false,
       "headLocation": {
@@ -364,7 +367,8 @@
         "physical",
         "stackable",
         "upgradable",
-        "valuable"
+        "valuable",
+        "container"
       ],
       "type": "jacket",
       "style": "genericChic"
@@ -378,7 +382,8 @@
         "loadable",
         "physical",
         "upgradable",
-        "valuable"
+        "valuable",
+        "container"
       ],
       "type": "cyberArm",
       "isWeapon": false,
@@ -396,7 +401,8 @@
         "upgradable",
         "equippable",
         "installable",
-        "valuable"
+        "valuable",
+        "container"
       ],
       "programs": {
         "installed": [],
@@ -421,7 +427,8 @@
         "physical",
         "stackable",
         "upgradable",
-        "valuable"
+        "valuable",
+        "container"
       ]
     },
     "netarch": {
@@ -515,7 +522,8 @@
         "common",
         "physical",
         "upgradable",
-        "valuable"
+        "valuable",
+        "container"
       ],
       "sdp": 0,
       "seats": 0,
@@ -529,7 +537,8 @@
         "physical",
         "installable",
         "loadable",
-        "valuable"
+        "valuable",
+        "container"
       ],
       "handsReq": 0,
       "type": "weapon",

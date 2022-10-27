@@ -1,4 +1,4 @@
-/* global ActorSheet, $, setProperty, game, getProperty, mergeObject duplicate, TextEditor */
+/* global ActorSheet, $, setProperty, game, getProperty, mergeObject duplicate, TextEditor, fromUuidSync */
 import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import CPRChat from "../../chat/cpr-chat.js";
@@ -1056,9 +1056,12 @@ export default class CPRActorSheet extends ActorSheet {
   async _onDrop(event) {
     LOGGER.trace("_onDrop | CPRActorSheet | called.");
     const dragData = TextEditor.getDragEventData(event);
-    if (dragData.system && dragData.system.actorId !== undefined) {
+    let actor;
+    let item;
+    const transferItem = dragData.system && dragData.system.actorId !== undefined;
+    if (transferItem) {
       // Transfer ownership from one player to another
-      const actor = (Object.keys(game.actors.tokens).includes(dragData.system.tokenId))
+      actor = (Object.keys(game.actors.tokens).includes(dragData.system.tokenId))
         ? game.actors.tokens[dragData.system.tokenId]
         : game.actors.find((a) => a.id === dragData.system.actorId);
       if (actor.type === "container" && !game.user.isGM) {
@@ -1070,7 +1073,7 @@ export default class CPRActorSheet extends ActorSheet {
         if (actor._id === this.actor._id) {
           return;
         }
-        const item = dragData.system.data;
+        item = dragData.system.data;
         const cprData = item.system;
         // If the cyberware is marked as core, or is installed, throw an error message.
         if (cprData.core === true || (cprData.type === "cyberware" && cprData.isInstalled)) {
@@ -1081,13 +1084,33 @@ export default class CPRActorSheet extends ActorSheet {
           SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradedragupgradewarn"));
           return;
         }
-        if (await super._onDrop(event)) {
-          await actor.deleteEmbeddedDocuments("Item", [item._id]);
+      }
+    }
+    if (await super._onDrop(event) && transferItem) {
+      await actor.deleteEmbeddedDocuments("Item", [item._id]);
+    }
+  }
+
+  /**
+   * Handle the final creation of dropped Item data on the Actor.
+   * This method is factored out to allow downstream classes the opportunity to override item creation behavior.
+   * @private
+   * @override
+   * @param {object[]|object} itemData     The item data requested for creation
+   * @returns {Promise<Item[]>}
+   */
+  async _onDropItemCreate(itemData) {
+    LOGGER.trace("_onDropItemCreate | CPRActorSheet | called.");
+    const itemDataList = itemData instanceof Array ? itemData : [itemData];
+    for (const cprItemData of itemDataList) {
+      if (typeof cprItemData.system.installedItems !== "undefined" && cprItemData.system.installedItems.list.length > 0) {
+        for (const installedItemUUID of cprItemData.system.installedItems.list) {
+          const installedItem = fromUuidSync(installedItemUUID);
+          itemDataList.push(installedItem.toObject());
         }
       }
-    } else {
-      await super._onDrop(event);
     }
+    return this.actor.createEmbeddedDocuments("Item", itemDataList);
   }
 
   /**

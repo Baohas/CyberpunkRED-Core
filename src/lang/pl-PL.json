@@ -690,7 +690,7 @@
     "CPR.itemSheet.criticalInjury.deathSaveIncrease": "Zwiększenie Testu Przeżywalności",
     "CPR.itemSheet.criticalInjury.dv": "PT",
     "CPR.itemSheet.criticalInjury.treatment": "Leczenie",
-    "CPR.itemSheet.cyberdeck.availableSlots": "Dostępne Sloty",
+    "CPR.itemSheet.container.availableSlots": "Dostępne Sloty",
     "CPR.itemSheet.cyberdeck.configureInstalledPrograms": "Konfiguruj Zainstalowane Programy",
     "CPR.itemSheet.cyberdeck.eraseProgram": "Usuń Program",
     "CPR.itemSheet.cyberware.hasOptionSlots": "Posiada gniazda na opcje",
