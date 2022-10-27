@@ -8,6 +8,7 @@ cache:
 
 stages:
   - init
+  - cleanup
   - test
   - build
   - pre-release
@@ -36,6 +37,18 @@ init:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
+delete-packages-dev:
+  stage: cleanup
+  script:
+    - apt-get update
+    - apt-get install jq --yes
+    - echo "Deleting old dev releases... "
+    - ./.gitlab/pipeline_utils/cleanup.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    - if: $CPR_SCHEDULE == "cleanup-dev"
 
 lint:
   stage: test
