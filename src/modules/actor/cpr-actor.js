@@ -1098,7 +1098,6 @@ export default class CPRActor extends Actor {
    */
   async _applyDamage(damage, bonusDamage, location, ablation, ammoVariety, ignoreHalfArmor, damageLethal, formData) {
     LOGGER.trace("_applyDamage | CPRActor | Called.");
-    const damageRolled = damage + bonusDamage;
     let totalDamageDealt = 0;
     let totalDamageReduction = 0;
     let takenDamage = 0;
@@ -1138,7 +1137,9 @@ export default class CPRActor extends Actor {
       await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
       CPRChat.RenderDamageApplicationCard({
         actor: this,
-        damageRolled,
+
+        damage,
+        bonusDamage,
         hpReduction: takenDamage,
         totalDamageDealt,
         location,
@@ -1179,7 +1180,9 @@ export default class CPRActor extends Actor {
         if (ammoVariety !== "grenade" && ammoVariety !== "rocket") { // if ammo isn't explosive, resolve chat card with no damage to token;
           CPRChat.RenderDamageApplicationCard({
             actor: this,
-            damageRolled,
+
+            damage,
+            bonusDamage,
             hpReduction: 0,
             totalDamageDealt,
             location,
@@ -1192,7 +1195,8 @@ export default class CPRActor extends Actor {
         if (shield.system.shieldHitPoints.value > 0) { // if ammo is explosive and shield is still standing, resolve chat card with no damage to token;
           CPRChat.RenderDamageApplicationCard({
             actor: this,
-            damageRolled,
+            damage,
+            bonusDamage,
             hpReduction: 0,
             totalDamageDealt,
             location,
@@ -1215,7 +1219,8 @@ export default class CPRActor extends Actor {
       await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
       CPRChat.RenderDamageApplicationCard({
         actor: this,
-        damageRolled,
+        damage,
+        bonusDamage,
         hpReduction: takenDamage,
         totalDamageDealt,
         location,
@@ -1253,7 +1258,8 @@ export default class CPRActor extends Actor {
     const cardDisplayAblation = (armors.length > 0) ? ablation : 0;
     CPRChat.RenderDamageApplicationCard({
       actor: this,
-      damageRolled,
+      damage,
+      bonusDamage,
       hpReduction: takenDamage,
       totalDamageDealt,
       location,

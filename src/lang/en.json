@@ -126,6 +126,7 @@
     "CPR.chat.damageApplication.applyDamageToFollowing": "Apply damage to the following token(s).",
     "CPR.chat.damageApplication.armorAblation": "Armor ablation:",
     "CPR.chat.damageApplication.armorDeflection": "Armor deflection:",
+    "CPR.chat.damageApplication.criticalDamage": "Critical damage:",
     "CPR.chat.damageApplication.damageDealt": "Damage dealt:",
     "CPR.chat.damageApplication.damageDealtTo": "Damage dealt to",
     "CPR.chat.damageApplication.damageDidNotPenetrate": "The damage did not penetrate the armor.",
