@@ -2,6 +2,7 @@ default:
   image: node:latest
 
 cache:
+  key: $CI_MERGE_REQUEST_ID
   paths:
     - node_modules/
 
