@@ -26,11 +26,16 @@ init:
     expire_in: 1h
     reports:
       dotenv: vars.env
-  only:
-    refs:
-      - merge_requests
-      - tags
-      - dev
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
 
 lint:
   stage: test
@@ -40,10 +45,16 @@ lint:
   needs:
     - job: init
       artifacts: true
-  only:
-    refs:
-      - merge_requests
-      - tags
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 unit-test:
   stage: test
@@ -53,11 +64,16 @@ unit-test:
   needs:
     - job: init
       artifacts: true
-  only:
-    refs:
-      - merge_requests
-      - tags
-      - dev
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 test-shell-scripts:
   stage: test
@@ -69,13 +85,16 @@ test-shell-scripts:
   needs:
     - job: init
       artifacts: true
-  only:
-    refs:
-      - merge_requests
-      - tags
-      - dev
-    changes:
-      - "**/*.sh"
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 language-unused-strings:
   stage: test
@@ -85,11 +104,16 @@ language-unused-strings:
   needs:
     - job: init
       artifacts: true
-  only:
-    refs:
-      - merge_requests
-      - tags
-      - dev
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 language-exists:
   stage: test
@@ -102,11 +126,16 @@ language-exists:
   needs:
     - job: init
       artifacts: true
-  only:
-    refs:
-      - merge_requests
-      - tags
-      - dev
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 changelog-has-changed:
   stage: test
@@ -117,9 +146,12 @@ changelog-has-changed:
   needs:
     - job: init
       artifacts: true
-  only:
-    refs:
-      - merge_requests
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 trace-statements:
   stage: test
@@ -129,11 +161,16 @@ trace-statements:
   needs:
     - job: init
       artifacts: true
-  only:
-    refs:
-      - merge_requests
-      - tags
-      - dev
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 code-localization:
   stage: test
@@ -143,11 +180,16 @@ code-localization:
   needs:
     - job: init
       artifacts: true
-  only:
-    refs:
-      - merge_requests
-      - tags
-      - dev
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 handlebars-helpers:
   stage: test
@@ -157,11 +199,16 @@ handlebars-helpers:
   needs:
     - job: init
       artifacts: true
-  only:
-    refs:
-      - merge_requests
-      - tags
-      - dev
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 game-id:
   stage: test
@@ -171,11 +218,16 @@ game-id:
   needs:
     - job: init
       artifacts: true
-  only:
-    refs:
-      - merge_requests
-      - tags
-      - dev
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 compendia-use:
   stage: test
@@ -184,11 +236,16 @@ compendia-use:
     - ./.gitlab/pipeline_tests/test-compendia-use.sh
   needs:
     - job: init
-  only:
-    refs:
-      - merge_requests
-      - tags
-      - dev
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 # Build without artifacts when not tagging a release
 test-build:
@@ -199,9 +256,12 @@ test-build:
   needs:
     - job: init
       artifacts: true
-  only:
-    refs:
-      - merge_requests
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 # Builds and Uploads artifacts the gitlab generic repo
 build-artifacts:
@@ -227,10 +287,14 @@ build-artifacts:
     - job: handlebars-helpers
     - job: test-build
       optional: true
-  only:
-    refs:
-      - tags
-      - dev
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 # Creates a GitLab release with the previously uploaded artifacts
 create-release:
@@ -247,9 +311,12 @@ create-release:
     - job: init
       artifacts: true
     - job: build-artifacts
-  only:
-    refs:
-      - tags
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 # Pre-release tests
 pre-release:
@@ -265,9 +332,12 @@ pre-release:
       artifacts: true
     - job: build-artifacts
     - job: create-release
-  only:
-    refs:
-      - tags
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 # Build the `latest` system.json and upload to gitlab generic repo
 # This makes the release available in Foundry
@@ -285,7 +355,11 @@ publish:
     - job: build-artifacts
     - job: pre-release
       optional: true
-  only:
-    refs:
-      - tags
-      - dev
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
