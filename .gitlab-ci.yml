@@ -282,6 +282,8 @@ build-artifacts:
     - job: language-exists
     - job: changelog-has-changed
       optional: true
+    - job: game-id
+    - job: compendia-use
     - job: trace-statements
     - job: code-localization
     - job: handlebars-helpers
