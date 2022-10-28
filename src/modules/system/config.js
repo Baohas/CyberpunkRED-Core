@@ -585,7 +585,7 @@ CPR.activeEffectKeys = {
     "bonuses.conversation": "CPR.global.skills.conversation",
     "bonuses.criminology": "CPR.global.skills.criminology",
     "bonuses.cryptography": "CPR.global.skills.cryptography",
-    "bonuses.cyberTech": "CPR.global.skills.cybertech",
+    "bonuses.cybertech": "CPR.global.skills.cybertech",
     "bonuses.dance": "CPR.global.skills.dance",
     "bonuses.deduction": "CPR.global.skills.deduction",
     "bonuses.demolitions": "CPR.global.skills.demolitions",
@@ -630,7 +630,7 @@ CPR.activeEffectKeys = {
     "bonuses.tracking": "CPR.global.skills.tracking",
     "bonuses.trading": "CPR.global.skills.trading",
     "bonuses.wardrobeAndStyle": "CPR.global.skills.wardrobeAndStyle",
-    "bonuses.weaponsTech": "CPR.global.skills.weaponstech",
+    "bonuses.weaponstech": "CPR.global.skills.weaponstech",
     "bonuses.wildernessSurvival": "CPR.global.skills.wildernessSurvival",
   },
   stat: {
