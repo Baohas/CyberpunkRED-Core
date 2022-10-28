@@ -44,7 +44,7 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Critical Injuries (Body) - IMPORT ME",
+      "label": "Critical Injuries (Body)",
       "type": "Item",
       "name": "criticalInjuriesBody",
       "path": "packs/critical-injuries-body.db",
@@ -52,7 +52,7 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Critical Injuries (Head) - IMPORT ME",
+      "label": "Critical Injuries (Head)",
       "type": "Item",
       "name": "criticalInjuriesHead",
       "path": "packs/critical-injuries-head.db",
@@ -60,7 +60,7 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Critical Injury Tables - IMPORT ME",
+      "label": "Critical Injury Tables",
       "type": "RollTable",
       "name": "criticalInjuryTables",
       "path": "packs/critical-injury-tables.db",

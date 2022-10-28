@@ -1,0 +1,24 @@
+{{cprTrace "START APPS CRITICAL-INJURY-SETTINGS.HBS"}}
+<form>
+  <div>
+    <h4>{{localize "CPR.settings.criticalInjuryRollTableCompendium.desc1"}}</h4>
+    <ol>
+      <li>{{localize "CPR.settings.criticalInjuryRollTableCompendium.desc2"}}</li>
+      <li>{{localize "CPR.settings.criticalInjuryRollTableCompendium.desc3"}}</li>
+      <li>{{localize "CPR.settings.criticalInjuryRollTableCompendium.desc4"}}</li>
+      <li>{{localize "CPR.settings.criticalInjuryRollTableCompendium.desc5"}}</li>
+    </ol>
+    <hr>
+    <select name="injuryChoice">
+      {{selectOptions choices selected=current localize=true}}
+    </select>
+    <a class="fas fa-question-circle help-article"
+      href="https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/help-articles/homebrew-injuries"
+      title="{{localize "CPR.settings.criticalInjuryRollTableCompendium.help"}}">
+    </a>
+    <button type="submit">
+      <i class="fas fa-save"></i> {{localize "CPR.settings.saveSettings"}}
+    </button>
+  </div>
+</form>
+{{cprTrace "END CRITICAL-INJURY-SETTINGS.HBS"}}

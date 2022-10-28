@@ -9,16 +9,25 @@ import LOGGER from "./cpr-logger.js";
 export default class CPRSystemUtils {
   /* COMPENDIA AND FOLDER UTILS */
 
+  static GetWorldCompendia(ctype = null) {
+    LOGGER.trace("GetWorldCompendia | CPRSystemUtils | Called.");
+    if (!game.packs) return [];
+    const packs = game.packs.filter((p) => p.metadata.packageType === "world");
+    if (ctype) {
+      return packs.filter((p) => p.metadata.type === ctype);
+    }
+    return packs;
+  }
+
   /**
    * Retrieve a specific document in a compendium
    *
-   * @async
    * @static
    * @param {String} cname - compendium name
    * @param {String} dname - document name to look for
    * @returns {Document}
    */
-  static async GetCompendiumDoc(cname, dname) {
+  static GetCompendiumDoc(cname, dname) {
     LOGGER.trace("GetCompendiumDoc | CPRSystemUtils | Called.");
     let compName = cname;
     if (!cname.startsWith(game.system.id)) compName = `${game.system.id}.${cname}`;

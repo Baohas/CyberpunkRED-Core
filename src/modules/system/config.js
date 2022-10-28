@@ -319,6 +319,8 @@ CPR.criticalInjuryTables = {
   "Critical Injuries (Body)": "criticalInjuriesBody",
 };
 
+CPR.defaultCriticalInjuryTable = "criticalInjuryTables";
+
 CPR.criticalInjuryLocation = {
   body: "CPR.global.location.body",
   head: "CPR.global.location.head",

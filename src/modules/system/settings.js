@@ -1,10 +1,49 @@
 /* global game */
 import LOGGER from "../utils/cpr-logger.js";
+import CPRInjurySettings from "../apps/cpr-injury-settings.js";
 
 /**
  * This file defines user settings for the system module.
  */
 const registerSystemSettings = () => {
+  // XXX: Debug and trace logs come first because sometimes we're using them while in the
+  //      early initialization of FoundryVTT.
+  game.settings.register("cyberpunk-red-core", "debugLogs", {
+    name: "CPR.settings.debugLogs.name",
+    hint: "CPR.settings.debugLogs.hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      LOGGER.log(`Changed debugLogs to ${value}`);
+    },
+  });
+
+  game.settings.register("cyberpunk-red-core", "debugElements", {
+    name: "CPR.settings.debugElements.name",
+    hint: "CPR.settings.debugElements.hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      LOGGER.log(`Changed debugElements to ${value}`);
+    },
+  });
+
+  game.settings.register("cyberpunk-red-core", "traceLogs", {
+    name: "CPR.settings.traceLogs.name",
+    hint: "CPR.settings.traceLogs.hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      LOGGER.log(`Changed traceLogs to ${value}`);
+    },
+  });
+
   game.settings.register("cyberpunk-red-core", "playersCreateInventory", {
     name: "CPR.settings.playersCreateInventory.name",
     hint: "CPR.settings.playersCreateInventory.hint",
@@ -99,6 +138,26 @@ const registerSystemSettings = () => {
     },
   });
 
+  game.settings.register(game.system.id, "criticalInjuryRollTableCompendium", {
+    name: "CPR.settings.criticalInjuryRollTableCompendium.name",
+    hint: "CPR.settings.criticalInjuryRollTableCompendium.hint",
+    scope: "world",
+    config: false,
+    type: String,
+    default: "default",
+    onChange: (value) => {
+      LOGGER.log(`Changed criticalInjuryRollTableCompendium to ${value}`);
+    },
+  });
+
+  game.settings.registerMenu(game.system.id, "criticalInjurySettingsMenu", {
+    name: "CPR.settings.criticalInjuryRollTableCompendium.name",
+    label: "CPR.settings.criticalInjuryRollTableCompendium.button",
+    hint: "CPR.settings.criticalInjuryRollTableCompendium.hint",
+    icon: "fa-solid fa-user-injured",
+    type: CPRInjurySettings,
+  });
+
   game.settings.register("cyberpunk-red-core", "automaticallyResizeSheets", {
     name: "CPR.settings.automaticallyResizeSheets.name",
     hint: "CPR.settings.automaticallyResizeSheets.hint",
@@ -153,42 +212,6 @@ const registerSystemSettings = () => {
     default: "",
     onChange: (value) => {
       LOGGER.log(`Changed dataModelVersion to ${value}`);
-    },
-  });
-
-  game.settings.register("cyberpunk-red-core", "debugLogs", {
-    name: "CPR.settings.debugLogs.name",
-    hint: "CPR.settings.debugLogs.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed debugLogs to ${value}`);
-    },
-  });
-
-  game.settings.register("cyberpunk-red-core", "debugElements", {
-    name: "CPR.settings.debugElements.name",
-    hint: "CPR.settings.debugElements.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed debugElements to ${value}`);
-    },
-  });
-
-  game.settings.register("cyberpunk-red-core", "traceLogs", {
-    name: "CPR.settings.traceLogs.name",
-    hint: "CPR.settings.traceLogs.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed traceLogs to ${value}`);
     },
   });
 };
