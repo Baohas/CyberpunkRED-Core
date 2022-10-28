@@ -297,6 +297,8 @@ CPR.equipped = {
 };
 
 CPR.itemPriceCategory = {
+  free: "CPR.global.priceCategory.free",
+  dirtCheap: "CPR.global.priceCategory.dirtCheap",
   cheap: "CPR.global.priceCategory.cheap",
   everyday: "CPR.global.priceCategory.everyday",
   costly: "CPR.global.priceCategory.costly",
@@ -305,7 +307,19 @@ CPR.itemPriceCategory = {
   veryExpensive: "CPR.global.priceCategory.veryExpensive",
   luxury: "CPR.global.priceCategory.luxury",
   superLuxury: "CPR.global.priceCategory.superLuxury",
-  extravagant: "CPR.global.priceCategory.extravagant",
+};
+
+CPR.itemPriceCategoryMap = {
+  free: 0,
+  dirtCheap: 5,
+  cheap: 10,
+  everyday: 20,
+  costly: 50,
+  premium: 100,
+  expensive: 500,
+  veryExpensive: 1000,
+  luxury: 5000,
+  superLuxury: 10000,
 };
 
 CPR.itemQuality = {

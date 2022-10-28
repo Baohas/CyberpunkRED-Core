@@ -825,6 +825,29 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Return true if a literal is a number
+   * For whatever reason, if value is the string "NaN", Javascript thinks
+   * it is a number?
+   */
+  Handlebars.registerHelper("cprGetPriceCategory", (price) => {
+    LOGGER.trace("cprGetPriceCategory | handlebarsHelper | Called.");
+    let priceCategory = "free";
+    const PRICE_CATEGORY_MAPPINGS = {};
+    let priceTiers = [];
+    for (const key of Object.keys(CPR.itemPriceCategoryMap)) {
+      const integerValue = parseInt(CPR.itemPriceCategoryMap[key], 10);
+      PRICE_CATEGORY_MAPPINGS[integerValue] = key;
+      priceTiers.push(integerValue);
+    }
+    priceTiers = priceTiers.sort((a, b) => a - b);
+    for (const priceTier of priceTiers) {
+      priceCategory = (priceTier <= price) ? PRICE_CATEGORY_MAPPINGS[priceTier] : priceCategory;
+      priceCategory = (priceCategory === "free" && price > 0) ? PRICE_CATEGORY_MAPPINGS[priceTier] : priceCategory;
+    }
+    return priceCategory;
+  });
+
+  /**
    * Return true/false depending on whether debugElements setting in the game is enabled
    */
   Handlebars.registerHelper("cprIsDebug", () => {
