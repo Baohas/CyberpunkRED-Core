@@ -10,6 +10,7 @@
 - Fix Elfline Online Armory macro
 - #553 - Macros can be dragged to the hotbar.
 - #546 - Techscanner now properly gives bonuses to Cybertech and Weaponstech
+- #547 - Fixed the code so upgrades to attackmod are now taken into consideration
 
 
 # Version 0.83.1 | Date: 2022-10-23

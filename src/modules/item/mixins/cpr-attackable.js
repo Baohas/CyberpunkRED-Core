@@ -166,7 +166,21 @@ const Attackable = function Attackable() {
     cprRoll.addMod(actor.getArmorPenaltyMods(statName));
     cprRoll.addMod(actor.getWoundStateMods());
     cprRoll.addMod(skillMod);
-    cprRoll.addMod(cprWeaponData.attackmod);
+    const upgradeValue = this.getAllUpgradesFor("attackmod");
+    const upgradeType = this.getUpgradeTypeFor("attackmod");
+    let upgradeResult = cprWeaponData.attackmod;
+    if (upgradeValue !== "" && upgradeValue !== 0) {
+      if (upgradeType === "override") {
+        upgradeResult = upgradeValue;
+      } else if (typeof upgradeResult !== "number" || typeof upgradeValue !== "number") {
+        if (upgradeValue !== 0 && upgradeValue !== "") {
+          upgradeResult = `${upgradeResult} + ${upgradeValue}`;
+        }
+      } else {
+        upgradeResult += upgradeValue;
+      }
+    }
+    cprRoll.addMod(upgradeResult);
 
     if (cprRoll instanceof CPRRolls.CPRAttackRoll && cprWeaponData.isRanged) {
       Rules.lawyer(this.hasAmmo(cprRoll), "CPR.messages.weaponAttackOutOfBullets");
