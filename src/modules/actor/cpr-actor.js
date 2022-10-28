@@ -1101,7 +1101,11 @@ export default class CPRActor extends Actor {
     let totalDamageDealt = 0;
     let totalDamageReduction = 0;
     let takenDamage = 0;
-    let armorValue = 0;
+    const armors = this.getEquippedArmors(location);
+    const armorData = {
+      value: 0,
+      equipped: armors.length > 0,
+    };
 
     // If user chooses, calculate damage reduction from role abilities and active effects.
     if (formData.damageReductionRole) {
@@ -1137,20 +1141,19 @@ export default class CPRActor extends Actor {
       await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
       CPRChat.RenderDamageApplicationCard({
         actor: this,
-
         damage,
         bonusDamage,
         hpReduction: takenDamage,
         totalDamageDealt,
         location,
         totalDamageReduction,
-        armorValue,
+        armorData,
         brainDamage: true,
       });
       return;
     }
 
-    const armors = this.getEquippedArmors(location);
+    // const armors = this.getEquippedArmors(location);
     const shields = this.getEquippedArmors("shield");
     // Determine the highest value of all the equipped armors in the specific location
     armors.forEach((a) => {
@@ -1160,12 +1163,12 @@ export default class CPRActor extends Actor {
       } else {
         newValue = a.system.bodyLocation.sp - a.system.bodyLocation.ablation;
       }
-      if (newValue > armorValue) {
-        armorValue = newValue;
+      if (newValue > armorData.value) {
+        armorData.value = newValue;
       }
     });
     if (ignoreHalfArmor) {
-      armorValue = Math.ceil(armorValue / 2);
+      armorData.value = Math.ceil(armorData.value / 2);
     }
 
     // Deal damage to shield, if used, first.
@@ -1180,13 +1183,12 @@ export default class CPRActor extends Actor {
         if (ammoVariety !== "grenade" && ammoVariety !== "rocket") { // if ammo isn't explosive, resolve chat card with no damage to token;
           CPRChat.RenderDamageApplicationCard({
             actor: this,
-
             damage,
             bonusDamage,
             hpReduction: 0,
             totalDamageDealt,
             location,
-            armorValue,
+            armorData,
             ablation: 0,
             shieldAblation,
           });
@@ -1200,7 +1202,7 @@ export default class CPRActor extends Actor {
             hpReduction: 0,
             totalDamageDealt,
             location,
-            armorValue,
+            armorData,
             ablation: 0,
             shieldAblation,
           });
@@ -1213,7 +1215,7 @@ export default class CPRActor extends Actor {
     totalDamageDealt += bonusDamage;
 
     // If damage did not penetrate armor, then only the bonus damage (if any) is applied, minus any damage reduction.
-    if (damage <= armorValue) {
+    if (damage <= armorData.value) {
       takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
       const currentHp = this.system.derivedStats.hp.value;
       await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
@@ -1225,7 +1227,7 @@ export default class CPRActor extends Actor {
         totalDamageDealt,
         location,
         totalDamageReduction,
-        armorValue,
+        armorData,
         ablation: 0,
         shieldAblation,
       });
@@ -1235,9 +1237,9 @@ export default class CPRActor extends Actor {
     // If damage did penetrate armor, deal the regular damage.
     if (location === "head") {
       // Damage taken against the head is doubled.
-      totalDamageDealt += 2 * (damage - armorValue);
+      totalDamageDealt += 2 * (damage - armorData.value);
     } else {
-      totalDamageDealt += damage - armorValue;
+      totalDamageDealt += damage - armorData.value;
     }
 
     // Tally up takenDamage. If takenDamage is negative from damageReduction, make 0. This way negative takenDamage doesn't heal.
@@ -1264,7 +1266,7 @@ export default class CPRActor extends Actor {
       totalDamageDealt,
       location,
       totalDamageReduction,
-      armorValue,
+      armorData,
       ablation: cardDisplayAblation,
       shieldAblation,
     });
