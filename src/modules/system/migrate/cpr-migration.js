@@ -200,7 +200,7 @@ export default class CPRMigration {
    *
    * @param {CPRActor} actor
    */
-  static async migrateActor(actor) {
+  async migrateActor(actor) {
     LOGGER.trace("migrateActor | CPRMigration");
   }
 
