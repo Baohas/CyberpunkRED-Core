@@ -22,10 +22,16 @@
 </li>
 {{#if item.system.installedItems.allowed}}
 <li class="item flexrow"></li>
-  <div class="text-left text-padding-left">
-    <b><a class="manage-installable-types">{{localize "CPR.itemSheet.common.installedItemTypesAllowed"}}<i class="text-smallest text-super fas fa-wrench"></i></a></b>
+  <div class="item flexrow setting-name text-nowrap text-bold">
+    {{#if this.editable}}
+      <a class="manage-installable-types">{{localize "CPR.itemSheet.common.installedItemTypesAllowed"}}<i class="text-smallest text-super fas fa-wrench"></i></a>
+    {{else}}
+      <span class="manage-installable-types">{{localize "CPR.itemSheet.common.installedItemTypesAllowed"}}<i class="text-smallest text-super fas fa-wrench"></i></span>
+    {{/if}}
+  </div>
+  <div class="item flexrow setting-name text-nowrap text-padding-left">
     {{#each item.system.installedItems.allowedTypes as |type| }}
-    <li>{{localize (cprFindConfigValue "objectTypes" type)}}</li>
+      <li>&nbsp;{{localize (cprFindConfigValue "objectTypes" type)}}</li>
     {{/each}}
   </div>
 {{/if}}
@@ -33,10 +39,17 @@
 <hr>
 <li class="item flexrow">
   <div class="item flexrow setting-name text-nowrap text-bold">
+    {{#if this.editable}}
     <a class="manage-installed-items">
       {{localize "CPR.itemSheet.common.installedItems"}}
       <i class="text-smallest text-super fas fa-wrench"></i>
     </a>
+    {{else}}
+    <span class="manage-installed-items">
+      {{localize "CPR.itemSheet.common.installedItems"}}
+      <i class="text-smallest text-super fas fa-wrench"></i>
+    </span>
+    {{/if}}
   </div>
   <div>
     {{localize "CPR.itemSheet.container.availableSlots"}}: {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}}

@@ -469,7 +469,8 @@
         "loadable",
         "physical",
         "upgradable",
-        "valuable"
+        "valuable",
+        "container"
       ],
       "handsReq": 1
     },

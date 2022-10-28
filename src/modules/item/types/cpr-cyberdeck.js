@@ -34,7 +34,11 @@ export default class CPRCyberdeckItem extends CPRItem {
     for (const program of this.system.programs.installed) {
       if (!installedItems.list.includes(program.uuid)) {
         const item = (!actor) ? fromUuidSync(program.uuid) : actor.getOwnedItem(program.uuid);
-        uninstallList.push(item);
+        if (item) {
+          uninstallList.push(item);
+        } else {
+          uninstallList.push({ uuid: program.uuid, system: program });
+        }
       }
     }
 
@@ -58,7 +62,9 @@ export default class CPRCyberdeckItem extends CPRItem {
     const allUpdates = installList.concat(uninstallList);
     const updateList = [];
     for (const item of allUpdates) {
-      updateList.push({ _id: item._id, system: item.system });
+      if (typeof item._id !== "undefined") {
+        updateList.push({ _id: item._id, system: item.system });
+      }
     }
     updateList.push({ _id: this._id, system: this.system });
     return (!actor) ? this.update({ system: this.system }) : actor.updateEmbeddedDocuments("Item", updateList);
@@ -142,9 +148,6 @@ export default class CPRCyberdeckItem extends CPRItem {
       }
       installed = installed.filter((p) => p.uuid !== program.uuid);
       rezzed = rezzed.filter((p) => p.uuid !== program.uuid);
-      if ((typeof program.unsetInstalled === "function")) {
-        program.unsetInstalled();
-      }
     });
     this.system.programs.installed = installed;
     this.system.programs.rezzed = rezzed;

@@ -34,10 +34,10 @@ export default class CPRActor extends Actor {
       LOGGER.trace("create | New Actor | CPRCharacterActor | called.");
       createData.items = [];
       const tmpItems = data.items.concat(await SystemUtils.GetCoreSkills(), await SystemUtils.GetCoreCyberware());
-      const containerTemplates = SystemUtils.GetTemplateItemTypes("container");
+      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
       tmpItems.forEach((item) => {
         const updatedSystem = duplicate(item.system);
-        if (containerTemplates.includes(item.type)) {
+        if (containerTypes.includes(item.type)) {
           updatedSystem.installedItems.slots = 7;
           updatedSystem.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
         }

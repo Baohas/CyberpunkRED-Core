@@ -22,11 +22,6 @@ const Upgradable = function Upgradable() {
 
     const actor = (this.isOwned) ? this.actor : false;
 
-    if (!actor) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.ownedItemOnlyError"));
-      return Promise.reject(new Error("Can not install upgrades in unowned objects."));
-    }
-
     const installedItems = duplicate(this.system.installedItems);
     let installedUpgrades = duplicate(this.system.upgrades);
 
@@ -96,7 +91,7 @@ const Upgradable = function Upgradable() {
         upgradeData = upgradeData.concat(additionalUpdates);
       }
     }
-    return actor.updateEmbeddedDocuments("Item", upgradeData);
+    return (!actor) ? this.update({ system: this.system }) : actor.updateEmbeddedDocuments("Item", upgradeData);
   };
 
   /**

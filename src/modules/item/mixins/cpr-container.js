@@ -50,6 +50,35 @@ const Container = function Container() {
   };
 
   /**
+   * Get an array of the objects installed in this Item. An optional
+   * string parameter may be passed to filter the return list by a
+   * specific Item type.
+   *
+   * @returns {Array} - Array of objects that are installed
+   */
+  this.recursiveGetAllInstalledItems = function recursiveGetAllInstalledItems() {
+    LOGGER.trace("recursiveGetAllInstalledItems | Container | Called.");
+
+    const installedItems = [];
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+
+    if (this.system.installedItems.list.length > 0) {
+      let uuidList = this.system.installedItems.list;
+      while (uuidList.length > 0) {
+        for (const uuid of uuidList) {
+          const item = fromUuidSync(uuid);
+          installedItems.push(item);
+          uuidList = uuidList.filter((itemUUID) => itemUUID !== item.uuid);
+          if (containerTypes.includes(item.type)) {
+            uuidList = uuidList.concat(item.system.installedItems.list);
+          }
+        }
+      }
+    }
+    return installedItems;
+  };
+
+  /**
    * Determine if a set of objects can be installed into this Item. Checks for
    * the following criteria:
    *  - Items are allowed to be installed

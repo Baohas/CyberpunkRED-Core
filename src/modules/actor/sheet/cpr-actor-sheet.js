@@ -1056,61 +1056,112 @@ export default class CPRActorSheet extends ActorSheet {
   async _onDrop(event) {
     LOGGER.trace("_onDrop | CPRActorSheet | called.");
     const dragData = TextEditor.getDragEventData(event);
-    let actor;
-    let item;
+    return (dragData.type === "Item") ? this._cprOnItemDrop(event) : super._onDrop(event);
+  }
+
+  async _cprOnItemDrop(event) {
+    LOGGER.trace("_cprOnItemDrop | CPRActorSheet | called.");
+    const dragData = TextEditor.getDragEventData(event);
+    let sourceActor;
+    const sourceItem = fromUuidSync(dragData.uuid);
     const transferItem = dragData.system && dragData.system.actorId !== undefined;
     if (transferItem) {
       // Transfer ownership from one player to another
-      actor = (Object.keys(game.actors.tokens).includes(dragData.system.tokenId))
+      sourceActor = (Object.keys(game.actors.tokens).includes(dragData.system.tokenId))
         ? game.actors.tokens[dragData.system.tokenId]
         : game.actors.find((a) => a.id === dragData.system.actorId);
-      if (actor.type === "container" && !game.user.isGM) {
+      if (sourceActor.type === "container" && !game.user.isGM) {
         SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradeDragOutWarn"));
         return;
       }
-      if (actor) {
+      if (sourceActor) {
         // Do not move if the data is moved to itself
-        if (actor._id === this.actor._id) {
+        if (sourceActor._id === this.actor._id) {
           return;
         }
-        item = dragData.system.data;
-        const cprData = item.system;
+
         // If the cyberware is marked as core, or is installed, throw an error message.
-        if (cprData.core === true || (cprData.type === "cyberware" && cprData.isInstalled)) {
+        if (sourceItem.system.core === true || (sourceItem.system.type === "cyberware" && sourceItem.system.isInstalled)) {
           SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.cannotDropInstalledCyberware"));
           return;
         }
-        if (cprData.isUpgraded) {
-          SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradedragupgradewarn"));
-          return;
-        }
       }
     }
-    if (await super._onDrop(event) && transferItem) {
-      await actor.deleteEmbeddedDocuments("Item", [item._id]);
-    }
-  }
 
-  /**
-   * Handle the final creation of dropped Item data on the Actor.
-   * This method is factored out to allow downstream classes the opportunity to override item creation behavior.
-   * @private
-   * @override
-   * @param {object[]|object} itemData     The item data requested for creation
-   * @returns {Promise<Item[]>}
-   */
-  async _onDropItemCreate(itemData) {
-    LOGGER.trace("_onDropItemCreate | CPRActorSheet | called.");
-    const itemDataList = itemData instanceof Array ? itemData : [itemData];
-    for (const cprItemData of itemDataList) {
-      if (typeof cprItemData.system.installedItems !== "undefined" && cprItemData.system.installedItems.list.length > 0) {
-        for (const installedItemUUID of cprItemData.system.installedItems.list) {
-          const installedItem = fromUuidSync(installedItemUUID);
-          itemDataList.push(installedItem.toObject());
+    const deleteList = (transferItem) ? [sourceItem._id] : [];
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
+    const upgradabeTypes = SystemUtils.GetTemplateItemTypes("upgradable");
+
+    const [newItem] = await super._onDrop(event);
+
+    if (newItem && containerTypes.includes(sourceItem.type)) {
+      const objectMap = {};
+      const creationList = [];
+      const replicationSourceList = sourceItem.recursiveGetAllInstalledItems();
+      for (const oldItem of replicationSourceList) {
+        const newItemData = oldItem.toObject();
+        newItemData.system.cprOldUUID = oldItem.uuid;
+        if (newItem.system.installedItems.list.includes(oldItem.uuid)) {
+          newItemData.system.isInstalled = true;
+          newItemData.system.installedIn = newItem.uuid;
         }
+        creationList.push(newItemData);
+        deleteList.push(oldItem._id);
+      }
+
+      const replicationDestinationList = await this.actor.createEmbeddedDocuments("Item", creationList);
+      const updateList = [];
+
+      for (const item of replicationDestinationList) {
+        objectMap[item.system.cprOldUUID] = item.uuid;
+      }
+
+      let newList = [];
+      for (const oldUUID of newItem.system.installedItems.list) {
+        newList.push(objectMap[oldUUID]);
+      }
+
+      if (newList.length > 0) {
+        updateList.push({ _id: newItem._id, "system.installedItems.list": newList });
+      }
+
+      for (const item of replicationDestinationList) {
+        const updateData = {
+          _id: item._id,
+          "system.-=cprOldUUID": null,
+        };
+
+        if (containerTypes.includes(item.type) && item.system.installedItems.list.length > 0) {
+          newList = [];
+          for (const oldUUID of item.system.installedItems.list) {
+            newList.push(objectMap[oldUUID]);
+          }
+          updateData["system.installedItems.list"] = newList;
+        }
+
+        if (installableTypes.includes(item.type) && item.isInstalled) {
+          updateData["system.installedIn"] = objectMap[item.system.installedIn];
+        }
+        updateList.push(updateData);
+      }
+
+      if (updateList.length > 0) {
+        await this.actor.updateEmbeddedDocuments("Item", updateList);
       }
     }
-    return this.actor.createEmbeddedDocuments("Item", itemDataList);
+
+    if (newItem.type === "cyberdeck") {
+      newItem.syncPrograms();
+    }
+
+    if (upgradabeTypes.includes(newItem.type)) {
+      newItem.syncUpgrades();
+    }
+
+    if (newItem && transferItem) {
+      await sourceActor.deleteEmbeddedDocuments("Item", deleteList);
+    }
   }
 
   /**

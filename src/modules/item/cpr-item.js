@@ -153,8 +153,8 @@ export default class CPRItem extends Item {
    */
   async _preDelete(options, user) {
     LOGGER.trace("_preDelete | CPRItem | Called.");
-    const containerTemplates = SystemUtils.GetTemplateItemTypes("container");
-    if (containerTemplates.includes(this.type)) {
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    if (containerTypes.includes(this.type)) {
       if (this.system.installedItems.list.length > 0) {
         const itemList = [];
         for (const installedUuid of this.system.installedItems.list) {
@@ -169,7 +169,7 @@ export default class CPRItem extends Item {
 
     if (typeof this.system.isInstalled === "boolean" && this.system.isInstalled) {
       const installLocation = (this.isOwned && this.actor) ? this.actor.getOwnedItem(this.system.installedIn) : fromUuidSync(this.system.installedIn);
-      if (containerTemplates.includes(installLocation.type)) {
+      if (containerTypes.includes(installLocation.type)) {
         await installLocation.uninstallItems([this], false);
       }
     }
