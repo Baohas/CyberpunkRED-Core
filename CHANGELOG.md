@@ -8,6 +8,7 @@
 
 **Bug Fixes**
 - Fix Elfline Online Armory macro
+- #553 - Macros can be dragged to the hotbar.
 
 
 # Version 0.83.1 | Date: 2022-10-23
