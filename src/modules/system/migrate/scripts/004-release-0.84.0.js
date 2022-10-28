@@ -48,7 +48,10 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
     for (const activeEffect of actor.effects) {
       const aeChanges = await ReleaseEightyFourDotZero.updateActiveEffect(activeEffect);
       if (aeChanges) {
+        // Either way we try to update the ActiveEffect, it throws this in the console, however the AE does get updated:
+        // Error: Managing embedded Documents which are not direct descendants of a primary Document is un-supported at this time.
         await actor.updateEmbeddedDocuments("ActiveEffect", [{ _id: activeEffect._id, changes: aeChanges }]);
+        // await activeEffect.update({ changes: aeChanges });
       }
     }
 
