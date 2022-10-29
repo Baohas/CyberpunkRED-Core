@@ -1205,7 +1205,7 @@ export default class CPRActor extends Actor {
    */
   static async deleteEffect(effect) {
     LOGGER.trace("deleteEffect | CPRCharacterActor | Called.");
-    const setting = game.settings.get("cyberpunk-red-core", "deleteItemConfirmation");
+    const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     if (setting) {
       const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${effect.system.label}?`;
       const confirmDelete = await ConfirmPrompt.RenderPrompt(

@@ -19,7 +19,7 @@ export default class CPRNetArchItem extends CPRItem {
     LOGGER.trace("constructor | CPRNetarchUtils | called.");
     super(itemData, context);
     this.options = {
-      filePath: "systems/cyberpunk-red-core/tiles/netarch/PNG/",
+      filePath: `systems/${game.system.id}/tiles/netarch/PNG/`,
       fileExtension: "png",
       sceneName: null,
       gridSize: 110,
@@ -367,7 +367,7 @@ export default class CPRNetArchItem extends CPRItem {
     let formData = {
       animated: false,
       cusomTiles: false,
-      filePath: "systems/cyberpunk-red-core/tiles/netarch/PNG/",
+      filePath: `systems/${game.system.id}/tiles/netarch/PNG/`,
       fileExtension: "png",
       sceneName: "",
       gridSize: 110,
@@ -398,7 +398,7 @@ export default class CPRNetArchItem extends CPRItem {
         this.options.sceneName = formData.sceneName;
       }
     } else if (formData.animated) {
-      this.options.filePath = "systems/cyberpunk-red-core/tiles/netarch/WebM/";
+      this.options.filePath = `systems/${game.system.id}/tiles/netarch/WebM/`;
       this.options.fileExtension = "webm";
       this.animated = true;
     }

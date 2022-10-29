@@ -1,4 +1,4 @@
-/* global renderTemplate, Dialog */
+/* global game renderTemplate, Dialog */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 
@@ -6,7 +6,7 @@ export default class ContainerVendorSellToPrompt {
   static async RenderPrompt(data) {
     LOGGER.trace("RenderPrompt | ContainerVendorPurchaseOrderPrompt | called.");
     return new Promise((resolve, reject) => {
-      renderTemplate("systems/cyberpunk-red-core/templates/dialog/cpr-confirmation-prompt.hbs", data).then((html) => {
+      renderTemplate(`systems/${game.system.id}/templates/dialog/cpr-confirmation-prompt.hbs`, data).then((html) => {
         const _onCancel = () => {
           LOGGER.trace("_onCancel | Dialog ContainerVendorPurchaseOrderPrompt | called.");
           reject(new Error("Promise rejected: Window Closed"));

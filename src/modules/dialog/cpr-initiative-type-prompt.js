@@ -1,4 +1,4 @@
-/* global renderTemplate, Dialog, FormDataExtended foundry */
+/* global game renderTemplate, Dialog, FormDataExtended foundry */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 
@@ -6,7 +6,7 @@ import LOGGER from "../utils/cpr-logger.js";
 export default class InitiativeTypePrompt {
   static async RenderPrompt(data) {
     LOGGER.trace("RenderPrompt | InitiativeTypePrompt | called.");
-    const template = "systems/cyberpunk-red-core/templates/dialog/cpr-initiative-type-prompt.hbs";
+    const template = `systems/${game.system.id}/templates/dialog/cpr-initiative-type-prompt.hbs`;
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {

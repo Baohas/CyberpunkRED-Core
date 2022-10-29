@@ -149,6 +149,19 @@ handlebars-helpers:
       - tags
       - dev
 
+game-id:
+  stage: test
+  script:
+    - echo "Making sure game.system.id is used appropriately..."
+    - ./.gitlab/pipeline_tests/test-game-ids.sh
+  needs:
+    - job: init
+  only:
+    refs:
+      - merge_requests
+      - tags
+      - dev
+
 compendia-use:
   stage: test
   script:

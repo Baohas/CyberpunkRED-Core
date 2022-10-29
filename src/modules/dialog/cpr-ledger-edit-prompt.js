@@ -1,4 +1,4 @@
-/* global renderTemplate, FormDataExtended, Dialog foundry */
+/* global game renderTemplate, FormDataExtended, Dialog foundry */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 
@@ -6,7 +6,7 @@ export default class LedgerEditPrompt {
   static async RenderPrompt(title) {
     LOGGER.trace("RenderPrompt | LedgerEditPrompt | called.");
     return new Promise((resolve, reject) => {
-      renderTemplate("systems/cyberpunk-red-core/templates/dialog/cpr-ledger-edit-prompt.hbs").then((html) => {
+      renderTemplate(`systems/${game.system.id}/templates/dialog/cpr-ledger-edit-prompt.hbs`).then((html) => {
         const _onCancel = () => {
           LOGGER.trace("_onCancel | Dialog LedgerEditPrompt | called.");
           reject(new Error("Promise rejected: Window Closed"));

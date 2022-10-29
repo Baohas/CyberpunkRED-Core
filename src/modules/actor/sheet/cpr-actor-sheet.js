@@ -79,7 +79,7 @@ export default class CPRActorSheet extends ActorSheet {
       cprActorData.installedCyberware = this._getSortedInstalledCyberware();
 
       cprActorData.fightOptions = (this.actor.hasItemTypeEquipped("cyberdeck")) ? "both" : "";
-      let fightState = this.actor.getFlag("cyberpunk-red-core", "fightState");
+      let fightState = this.actor.getFlag(game.system.id, "fightState");
       if (!fightState || cprActorData.fightOptions !== "both") {
         fightState = "Meatspace";
       }
@@ -143,7 +143,7 @@ export default class CPRActorSheet extends ActorSheet {
       },
     };
 
-    const setting = game.settings.get("cyberpunk-red-core", "displayStatusAsActiveEffects");
+    const setting = game.settings.get(game.system.id, "displayStatusAsActiveEffects");
     // Iterate over active effects, classifying them into categories
     for (const e of this.actor.effects) {
       e._getSourceName(); // Trigger a lookup for the source name
@@ -318,7 +318,7 @@ export default class CPRActorSheet extends ActorSheet {
         const damageType = this._getFireCheckbox(event);
         cprRoll = item.createRoll(rollType, this.actor, { damageType });
         if (rollType === CPRRolls.rollTypes.AIMED) {
-          cprRoll.location = this.actor.getFlag("cyberpunk-red-core", "aimedLocation") || "body";
+          cprRoll.location = this.actor.getFlag(game.system.id, "aimedLocation") || "body";
         }
         break;
       }
@@ -402,7 +402,7 @@ export default class CPRActorSheet extends ActorSheet {
 
     // save the location so subsequent damage rolls hit/show the same place
     if (cprRoll instanceof CPRRolls.CPRAimedAttackRoll) {
-      this.actor.setFlag("cyberpunk-red-core", "aimedLocation", cprRoll.location);
+      this.actor.setFlag(game.system.id, "aimedLocation", cprRoll.location);
     }
   }
 
@@ -417,7 +417,7 @@ export default class CPRActorSheet extends ActorSheet {
   _getFireCheckbox(event) {
     LOGGER.trace("_getFireCheckbox | CPRActorSheet | Called.");
     const weaponID = SystemUtils.GetEventDatum(event, "data-item-id");
-    const box = this.actor.getFlag("cyberpunk-red-core", `firetype-${weaponID}`);
+    const box = this.actor.getFlag(game.system.id, `firetype-${weaponID}`);
     if (box) {
       return box;
     }
@@ -664,7 +664,7 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("_deleteOwnedItem | CPRActorSheet | Called.");
     // There's a bug here somewhere.  If the prompt is disabled, it doesn't seem
     // to delete, but if the player is prompted, it deletes fine???
-    const setting = game.settings.get("cyberpunk-red-core", "deleteItemConfirmation");
+    const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     // Only show the delete confirmation if the setting is on, and internally we do not want to skip it.
     if (setting && !skipConfirm) {
       const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${item.name}?`;
@@ -737,7 +737,7 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("_fireCheckboxToggle | CPRActorSheet | Called.");
     const weaponID = SystemUtils.GetEventDatum(event, "data-item-id");
     const firemode = SystemUtils.GetEventDatum(event, "data-fire-mode");
-    const flag = getProperty(this.actor, `flags.cyberpunk-red-core.firetype-${weaponID}`);
+    const flag = getProperty(this.actor, `flags.${game.system.id}.firetype-${weaponID}`);
     LOGGER.debug(`firemode is ${firemode}`);
     LOGGER.debug(`weaponID is ${weaponID}`);
     LOGGER.debug(`flag is ${flag}`);
@@ -756,9 +756,9 @@ export default class CPRActorSheet extends ActorSheet {
     }
     if (flag === firemode) {
       // if the flag was already set to firemode, that means we unchecked a box
-      await this.actor.unsetFlag("cyberpunk-red-core", `firetype-${weaponID}`);
+      await this.actor.unsetFlag(game.system.id, `firetype-${weaponID}`);
     } else {
-      await this.actor.setFlag("cyberpunk-red-core", `firetype-${weaponID}`, firemode);
+      await this.actor.setFlag(game.system.id, `firetype-${weaponID}`, firemode);
     }
   }
 
@@ -812,7 +812,7 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _drawCriticalInjuryTable(table, iteration) {
     LOGGER.trace("_drawCriticalInjuryTable | CPRActorSheet | Called.");
-    const setting = game.settings.get("cyberpunk-red-core", "preventDuplicateCriticalInjuries");
+    const setting = game.settings.get(game.system.id, "preventDuplicateCriticalInjuries");
 
     // check how many times we've been rolling. If this gets excessive maybe something is wrong with the table.
     if (iteration > 1000) {
@@ -870,7 +870,7 @@ export default class CPRActorSheet extends ActorSheet {
       const cprRoll = new CPRRolls.CPRTableRoll(
         injury.name,
         res.roll,
-        "systems/cyberpunk-red-core/templates/chat/cpr-critical-injury-rollcard.hbs",
+        `systems/${game.system.id}/templates/chat/cpr-critical-injury-rollcard.hbs`,
       );
       cprRoll.rollCardExtraArgs.tableName = table.name;
       cprRoll.rollCardExtraArgs.itemName = result[0].name;
@@ -892,7 +892,7 @@ export default class CPRActorSheet extends ActorSheet {
    */
   _automaticResize() {
     LOGGER.trace("_automaticResize | CPRActorSheet | Called.");
-    const setting = game.settings.get("cyberpunk-red-core", "automaticallyResizeSheets");
+    const setting = game.settings.get(game.system.id, "automaticallyResizeSheets");
     if (setting && this.rendered && !this._minimized) {
       // It seems that the size of the content does not change immediately upon updating the content
       setTimeout(() => {

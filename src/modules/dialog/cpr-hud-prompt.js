@@ -1,12 +1,13 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-undef */
+/* global game */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 export default class HudPrompt {
   static async RenderPrompt(type, data) {
     LOGGER.trace("RenderPrompt | HudPrompt | called.");
-    const template = `systems/cyberpunk-red-core/templates/dialog/hud/cpr-${type}-prompt.hbs`;
+    const template = `systems/${game.system.id}/templates/dialog/hud/cpr-${type}-prompt.hbs`;
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {

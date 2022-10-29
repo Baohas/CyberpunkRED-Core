@@ -4,7 +4,7 @@ import LOGGER from "../utils/cpr-logger.js";
 
 export default function enablePauseAnimation() {
   const setting = game.settings.get(
-    "cyberpunk-red-core",
+    game.system.id,
     "enablePauseAnimation",
   );
 
