@@ -7,6 +7,39 @@ import LOGGER from "./cpr-logger.js";
  * CPR-C utilities that are meant to have broad application across the whole system module.
  */
 export default class CPRSystemUtils {
+  /* COMPENDIA AND FOLDER UTILS */
+
+  /**
+   * Retrieve a specific document in a compendium
+   *
+   * @async
+   * @static
+   * @param {String} cname - compendium name
+   * @param {String} dname - document name to look for
+   * @returns {Document}
+   */
+  static async GetCompendiumDoc(cname, dname) {
+    LOGGER.trace("GetCompendiumDoc | CPRSystemUtils | Called.");
+    let compName = cname;
+    if (!cname.startsWith(game.system.id)) compName = `${game.system.id}.${cname}`;
+    const comp = game.packs.get(compName);
+    return comp.getDocument(comp.index.contents.filter((i) => i.name === dname)[0]._id);
+  }
+
+  /**
+   * Retrieve the documents packed up in a compendium (aka a pack)
+   *
+   * @static
+   * @param {String} cname - name of the compendium to retrieve
+   * @returns {Array}
+   */
+  static GetCompendiumDocs(cname) {
+    LOGGER.trace("GetCompendiumDocs | CPRSystemUtils | Called.");
+    let compName = cname;
+    if (!cname.startsWith(game.system.id)) compName = `${game.system.id}.${cname}`;
+    return game.packs.get(compName).getDocuments();
+  }
+
   /**
    * Return an array of "core" skills that are defined in the rules, and all characters
    * start with them defined.
@@ -15,11 +48,7 @@ export default class CPRSystemUtils {
    */
   static async GetCoreSkills() {
     LOGGER.trace("GetCoreSkills | CPRSystemUtils | Called.");
-    // grab basic skills from compendium
-    const pack = game.packs.get(`${game.system.id}.skills`);
-    // put into basickSills array
-    const content = await pack.getDocuments();
-    return content;
+    return CPRSystemUtils.GetCompendiumDocs("skills");
   }
 
   /**
@@ -30,15 +59,12 @@ export default class CPRSystemUtils {
    */
   static async GetCoreCyberware() {
     LOGGER.trace("GetCoreCyberware | CPRSystemUtils | Called.");
-    // grab basic cyberware from compendium
-    const pack = game.packs.get(`${game.system.id}.cyberware`);
-    // put into basicCyberware array
-    const content = await pack.getDocuments();
-    return content;
+    return CPRSystemUtils.GetCompendiumDocs("cyberware");
   }
 
   /**
-   * Get rollable tables by name, optionally by searching with a regexp
+   * Get rollable tables by name, optionally by searching with a regexp. Note this is not meant for
+   * compendia, but rather rolltables created in the world.
    *
    * @param {String} tableName
    * @param {RegExp} useRegExp
@@ -55,6 +81,24 @@ export default class CPRSystemUtils {
     }
     return tableList;
   }
+
+  /**
+   * Some actions users can take in this system will produce a bunch of documents are entities, and
+   * we group them up in a dynamically created folder. This is where that magic happens.
+   *
+   * @param {String} type - the entity type the folder should group together
+   * @param {String} name - a name for the folder
+   * @param {String} parent - (optional) folder ID to create this in, or null for a top-level folder
+   * @returns {Folder} - the referenced folder or a newly created one
+   */
+  static async GetFolder(type, name, parent = null) {
+    LOGGER.trace("GetFolder | CPRSystemUtils | Called.");
+    const folderList = game.folders.filter((folder) => folder.name === name && folder.type === type);
+    // If the folder does not exist, we create it.
+    return (folderList.length === 1) ? folderList[0] : Folder.create({ name, type, parent });
+  }
+
+  /* MESSAGE AND STRING UTILS */
 
   /**
    * Display user-visible message. (blue, yellow, or red background)
@@ -93,10 +137,48 @@ export default class CPRSystemUtils {
   }
 
   /**
+   * We use temporary objects with keys derived from skill names elsewhere in the code base.
+   * We need to be able to programmatically produce those keys from the name, and that is
+   * what this method does. It takes a string and converts it to camelcase.
+   *
+   * These are used as parts of translation string identifies too. Examples:
+   *  "CPR.global.skills.languageStreetslang"               "CPR.global.skills.athleticsAndContortionist"
+   *  "CPR.global.skills.basicTechAndWeaponstech"           "CPR.global.skills.compositionAndEducation"
+   *  "CPR.global.skills.enduranceAndResistTortureAndDrugs" "CPR.global.skills.persuasionAndTrading"
+   *  "CPR.global.skills.evasionAndDance"                   "CPR.global.skills.pickLockAndPickPocket"
+   *  "CPR.global.skills.firstAidAndParamedicAndSurgery"
+   *
+   * NOTE: The strings above are used for Elfines characters, and not used in the code base anywhere. We
+   *       have CI that checks all translation strings are used, so to avoid making that fail, please
+   *       keep the examples here.
+   *
+   * TODO: not sure returning something based on the name will work with localization
+   *
+   * @returns {String}
+   */
+  static slugify(name) {
+    LOGGER.trace("slugify | CPRSkillItem | Called.");
+    const slug = name;
+    const initialSplit = slug.split(" ").join("");
+    const orCaseSplit = initialSplit.split("/").join("Or");
+    const parenCaseSplit = initialSplit.split("(").join("").split(")").join("");
+    const andCaseSplit = initialSplit.split("/").join("And").split("&").join("And");
+    if (slug === "Conceal/Reveal Object" || slug === "Paint/Draw/Sculpt" || slug === "Resist Torture/Drugs") {
+      return orCaseSplit.charAt(0).toLowerCase() + orCaseSplit.slice(1);
+    }
+    if (slug === "Language (Streetslang)") {
+      return parenCaseSplit.charAt(0).toLowerCase() + parenCaseSplit.slice(1);
+    }
+    return andCaseSplit.charAt(0).toLowerCase() + andCaseSplit.slice(1);
+  }
+
+  /* USER SETTING UTILS */
+
+  /**
    * For settings like favorite items or skills, and opening or closing categories, we save the user's
    * preferences in a hidden system setting.
    *
-   * To Do: Flags may be a better implementation.
+   * To Do: Flags are a better implementation.
    *
    * @param {String} type - indicate whether this is a sheetConfig setting or something else
    * @param {String} name - name for the setting
@@ -259,21 +341,7 @@ export default class CPRSystemUtils {
     return imageLink;
   }
 
-  /**
-   * Some actions users can take in this system will produce a bunch of documents are entities, and
-   * we group them up in a dynamically created folder. This is where that magic happens.
-   *
-   * @param {String} type - the entity type the folder should group together
-   * @param {String} name - a name for the folder
-   * @param {String} parent - (optional) folder ID to create this in, or null for a top-level folder
-   * @returns {Folder} - the referenced folder or a newly created one
-   */
-  static async GetFolder(type, name, parent = null) {
-    LOGGER.trace("GetFolder | CPRSystemUtils | Called.");
-    const folderList = game.folders.filter((folder) => folder.name === name && folder.type === type);
-    // If the folder does not exist, we create it.
-    return (folderList.length === 1) ? folderList[0] : Folder.create({ name, type, parent });
-  }
+  /* DATA TEMPLATE UTILS */
 
   /**
    * Given a data model template name, return the array of item types it is applied to
@@ -292,64 +360,6 @@ export default class CPRSystemUtils {
       }
     });
     return itemTypes;
-  }
-
-  /**
-   * Inspect an event object for passed-in field specific to the target (link) that was clicked.
-   * This code will initially look at the current target, and if the field is not found, it will
-   * climb up the parents of the target until one is found, or print an error and return undefined.
-   *
-   * @param {Object} event - event data from jquery
-   * @param {String} datum - the field we are interested in getting
-   * @returns {String} - the value of the field passed in the event data
-   */
-  static GetEventDatum(event, datum) {
-    LOGGER.trace("GetEventDatum | CPRSystemUtils | Called.");
-    let id = $(event.currentTarget).attr(datum);
-    if (typeof id === "undefined") {
-      LOGGER.debug(`Could not find ${datum} in currentTarget trying .item parents`);
-      id = $(event.currentTarget).parents(".item").attr(datum);
-      if (typeof id === "undefined") {
-        LOGGER.warn(`Could not find ${datum} in the event data!`);
-      }
-    }
-    return id;
-  }
-
-  /**
-   * We use temporary objects with keys derived from skill names elsewhere in the code base.
-   * We need to be able to programmatically produce those keys from the name, and that is
-   * what this method does. It takes a string and converts it to camelcase.
-   *
-   * These are used as parts of translation string identifies too. Examples:
-   *  "CPR.global.skills.languageStreetslang"               "CPR.global.skills.athleticsAndContortionist"
-   *  "CPR.global.skills.basicTechAndWeaponstech"           "CPR.global.skills.compositionAndEducation"
-   *  "CPR.global.skills.enduranceAndResistTortureAndDrugs" "CPR.global.skills.persuasionAndTrading"
-   *  "CPR.global.skills.evasionAndDance"                   "CPR.global.skills.pickLockAndPickPocket"
-   *  "CPR.global.skills.firstAidAndParamedicAndSurgery"
-   *
-   * NOTE: The strings above are used for Elfines characters, and not used in the code base anywhere. We
-   *       have CI that checks all translation strings are used, so to avoid making that fail, please
-   *       keep the examples here.
-   *
-   * TODO: not sure returning something based on the name will work with localization
-   *
-   * @returns {String}
-   */
-  static slugify(name) {
-    LOGGER.trace("slugify | CPRSkillItem | Called.");
-    const slug = name;
-    const initialSplit = slug.split(" ").join("");
-    const orCaseSplit = initialSplit.split("/").join("Or");
-    const parenCaseSplit = initialSplit.split("(").join("").split(")").join("");
-    const andCaseSplit = initialSplit.split("/").join("And").split("&").join("And");
-    if (slug === "Conceal/Reveal Object" || slug === "Paint/Draw/Sculpt" || slug === "Resist Torture/Drugs") {
-      return orCaseSplit.charAt(0).toLowerCase() + orCaseSplit.slice(1);
-    }
-    if (slug === "Language (Streetslang)") {
-      return parenCaseSplit.charAt(0).toLowerCase() + parenCaseSplit.slice(1);
-    }
-    return andCaseSplit.charAt(0).toLowerCase() + andCaseSplit.slice(1);
   }
 
   /**
@@ -372,58 +382,7 @@ export default class CPRSystemUtils {
     return CPRSystemUtils.getDataModelTemplates(itemType).includes(template);
   }
 
-  /**
-   * Return the list of actions that can be taken with this item. Used by the actor sheet.
-   * Note that "pin" is left out, it is hardcoded in the sheet code.
-   * This is not used anywhere right now, but will be useful when associating actions with mixins.
-   *
-   * V10 WARNING - I do not know the intent of this, but with V10, the item data model changed which would
-   *               break the original code.  This has been updated but when used, you need to pass item, not item.data
-   *
-   * @param {ItemData} item - the item we will be inspecting
-   * @returns {String[]} - array of actions that can be taken
-   */
-  static getActions(item) {
-    LOGGER.trace("getActions | CPRItem | Called.");
-    const mixins = CPRSystemUtils.getDataModelTemplates(item.type);
-    const actions = ["delete"];
-    for (let m = 0; m < mixins.length; m += 1) {
-      switch (mixins[m]) {
-        case "drug": {
-          if (item.system.amount > 0) actions.push("snort");
-          break;
-        }
-        case "equippable": {
-          actions.push("equip");
-          break;
-        }
-        case "installable": {
-          if (!item.system.isInstalled) actions.push("install");
-          else actions.push("uninstall");
-          break;
-        }
-        case "loadable": {
-          actions.push("reload");
-          actions.push("changeAmmo");
-          break;
-        }
-        case "physical": {
-          if (item.system.concealable.concealable) actions.push("conceal");
-          break;
-        }
-        case "spawner": {
-          actions.push("rez");
-          break;
-        }
-        case "stackable": {
-          if (item.system.amount > 1) actions.push("split");
-          break;
-        }
-        default:
-      }
-    }
-    return actions;
-  }
+  /* MIGRATION UTILS */
 
   /**
    * Updates the migration bar at the top of the page.
@@ -477,5 +436,27 @@ export default class CPRSystemUtils {
         $(migrating).fadeOut(2000);
       }
     }
+  }
+
+  /**
+   * Inspect an event object for passed-in field specific to the target (link) that was clicked.
+   * This code will initially look at the current target, and if the field is not found, it will
+   * climb up the parents of the target until one is found, or print an error and return undefined.
+   *
+   * @param {Object} event - event data from jquery
+   * @param {String} datum - the field we are interested in getting
+   * @returns {String} - the value of the field passed in the event data
+   */
+  static GetEventDatum(event, datum) {
+    LOGGER.trace("GetEventDatum | CPRSystemUtils | Called.");
+    let id = $(event.currentTarget).attr(datum);
+    if (typeof id === "undefined") {
+      LOGGER.debug(`Could not find ${datum} in currentTarget trying .item parents`);
+      id = $(event.currentTarget).parents(".item").attr(datum);
+      if (typeof id === "undefined") {
+        LOGGER.warn(`Could not find ${datum} in the event data!`);
+      }
+    }
+    return id;
   }
 }

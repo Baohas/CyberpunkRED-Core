@@ -488,8 +488,7 @@ export default class BaseMigration extends CPRMigration {
     // Migrate role abilities to items and assign correct values.
     const { roleskills } = actorData.data.roleInfo;
     if ((typeof roleskills) !== "undefined") {
-      const pack = game.packs.get("cyberpunk-red-core.roles-items");
-      const content = await pack.getDocuments();
+      const content = await CPRSystemUtils.GetCompendiumDocs("roles-items");
       Object.entries(roleskills).forEach(([role, roleSkills]) => {
         let newRole;
         Object.entries(roleSkills).forEach(([skillName, skillValue]) => {
@@ -531,9 +530,8 @@ export default class BaseMigration extends CPRMigration {
     // This was added as part of 0.72.  We had one report of
     // a scenario where the actors somehow lost their core Cyberware items
     // so this ensures all actors have them.
-    const pack = game.packs.get("cyberpunk-red-core.cyberware");
     // put into basickSkills array
-    const content = await pack.getDocuments();
+    const content = await CPRSystemUtils.GetCompendiumDocs("cyberware");
     const missingContent = this._validateCoreContent(actorData, content);
     if (missingContent.length > 0) {
       missingContent.forEach((c) => {

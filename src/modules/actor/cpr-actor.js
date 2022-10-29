@@ -1016,41 +1016,6 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * TODO: Delete this method after the March 2022 release.
-   * This method was created to facilitate homebrew critical injuries with a macro.
-   * It is not used anywhere else, and likely belongs in its own file to be exposed in
-   * a sanctioned API. (_rollCriticalInjury() largely replaces this functionality.)
-   *
-   * @returns {Object}
-   */
-  addCriticalInjury(location, name, effect, quickFixType, quickFixDV, treatmentType, treatmentDV, deathSaveIncrease = false) {
-    LOGGER.trace("addCriticalInjury | CPRActor | Called.");
-    SystemUtils.Format("CPR.system.message.toBeDeprecated", { functionName: "actor.addCriticalInjury" });
-    const itemData = {
-      type: "criticalInjury",
-      name,
-      data: {
-        location,
-        description: {
-          value: effect,
-          chat: "",
-          unidentified: "",
-        },
-        quickFix: {
-          type: quickFixType,
-          dv: quickFixDV,
-        },
-        treatment: {
-          type: treatmentType,
-          dv: treatmentDV,
-        },
-        deathSaveIncrease,
-      },
-    };
-    return this.createEmbeddedEntity("Item", itemData, { force: true });
-  }
-
-  /**
    * automaticallyStackItems searches for an identical item on the actor
    * and if found increments the amount and price for the item on the actor
    * instead of adding it as a new item.
