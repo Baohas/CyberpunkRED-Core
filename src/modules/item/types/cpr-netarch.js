@@ -294,7 +294,7 @@ export default class CPRNetArchItem extends CPRItem {
     LOGGER.trace("_duplicateScene | CPRNetarchUtils | Called.");
     let scene = null;
     const sceneName = (this.animated) ? "NetarchTemplate-animated" : "NetarchTemplate";
-    const sceneList = SystemUtils.GetCompendiumDoc("scenes", sceneName);
+    const sceneList = await SystemUtils.GetCompendiumDoc("scenes", sceneName);
     if (sceneList.length > 0) {
       [scene] = sceneList;
     }
