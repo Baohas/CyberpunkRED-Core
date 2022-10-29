@@ -812,7 +812,7 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _drawCriticalInjuryTable(table, iteration) {
     LOGGER.trace("_drawCriticalInjuryTable | CPRActorSheet | Called.");
-    const setting = game.settings.get("cyberpunk-red-core", "preventDuplicateCriticalInjuries");
+    const setting = game.settings.get(game.system.id, "preventDuplicateCriticalInjuries");
 
     // check how many times we've been rolling. If this gets excessive maybe something is wrong with the table.
     if (iteration > 1000) {
@@ -870,7 +870,7 @@ export default class CPRActorSheet extends ActorSheet {
       const cprRoll = new CPRRolls.CPRTableRoll(
         injury.name,
         res.roll,
-        "systems/cyberpunk-red-core/templates/chat/cpr-critical-injury-rollcard.hbs",
+        `systems/${game.system.id}/templates/chat/cpr-critical-injury-rollcard.hbs`,
       );
       cprRoll.rollCardExtraArgs.tableName = table.name;
       cprRoll.rollCardExtraArgs.itemName = result[0].name;
