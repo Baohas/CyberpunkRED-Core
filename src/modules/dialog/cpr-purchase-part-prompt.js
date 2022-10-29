@@ -1,4 +1,4 @@
-/* global renderTemplate, FormDataExtended, Dialog foundry */
+/* global game renderTemplate, FormDataExtended, Dialog foundry */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 
@@ -6,7 +6,7 @@ export default class PurchasePartPrompt {
   static async RenderPrompt(itemText) {
     LOGGER.trace("RenderPrompt | PurchasePartPrompt | called.");
     return new Promise((resolve, reject) => {
-      renderTemplate("systems/cyberpunk-red-core/templates/dialog/cpr-purchase-part-prompt.hbs", itemText).then((html) => {
+      renderTemplate(`systems/${game.system.id}/templates/dialog/cpr-purchase-part-prompt.hbs`, itemText).then((html) => {
         const _onCancel = () => {
           LOGGER.trace("_onCancel | Dialog PurchasePartPrompt | called.");
           reject(new Error("Promise rejected: Window Closed"));

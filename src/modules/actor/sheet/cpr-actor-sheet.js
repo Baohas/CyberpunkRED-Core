@@ -79,7 +79,7 @@ export default class CPRActorSheet extends ActorSheet {
       cprActorData.installedCyberware = this._getSortedInstalledCyberware();
 
       cprActorData.fightOptions = (this.actor.hasItemTypeEquipped("cyberdeck")) ? "both" : "";
-      let fightState = this.actor.getFlag("cyberpunk-red-core", "fightState");
+      let fightState = this.actor.getFlag(game.system.id, "fightState");
       if (!fightState || cprActorData.fightOptions !== "both") {
         fightState = "Meatspace";
       }
@@ -143,7 +143,7 @@ export default class CPRActorSheet extends ActorSheet {
       },
     };
 
-    const setting = game.settings.get("cyberpunk-red-core", "displayStatusAsActiveEffects");
+    const setting = game.settings.get(game.system.id, "displayStatusAsActiveEffects");
     // Iterate over active effects, classifying them into categories
     for (const e of this.actor.effects) {
       e._getSourceName(); // Trigger a lookup for the source name
@@ -318,7 +318,7 @@ export default class CPRActorSheet extends ActorSheet {
         const damageType = this._getFireCheckbox(event);
         cprRoll = item.createRoll(rollType, this.actor, { damageType });
         if (rollType === CPRRolls.rollTypes.AIMED) {
-          cprRoll.location = this.actor.getFlag("cyberpunk-red-core", "aimedLocation") || "body";
+          cprRoll.location = this.actor.getFlag(game.system.id, "aimedLocation") || "body";
         }
         break;
       }
@@ -402,7 +402,7 @@ export default class CPRActorSheet extends ActorSheet {
 
     // save the location so subsequent damage rolls hit/show the same place
     if (cprRoll instanceof CPRRolls.CPRAimedAttackRoll) {
-      this.actor.setFlag("cyberpunk-red-core", "aimedLocation", cprRoll.location);
+      this.actor.setFlag(game.system.id, "aimedLocation", cprRoll.location);
     }
   }
 
@@ -417,7 +417,7 @@ export default class CPRActorSheet extends ActorSheet {
   _getFireCheckbox(event) {
     LOGGER.trace("_getFireCheckbox | CPRActorSheet | Called.");
     const weaponID = SystemUtils.GetEventDatum(event, "data-item-id");
-    const box = this.actor.getFlag("cyberpunk-red-core", `firetype-${weaponID}`);
+    const box = this.actor.getFlag(game.system.id, `firetype-${weaponID}`);
     if (box) {
       return box;
     }
@@ -664,7 +664,7 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("_deleteOwnedItem | CPRActorSheet | Called.");
     // There's a bug here somewhere.  If the prompt is disabled, it doesn't seem
     // to delete, but if the player is prompted, it deletes fine???
-    const setting = game.settings.get("cyberpunk-red-core", "deleteItemConfirmation");
+    const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     // Only show the delete confirmation if the setting is on, and internally we do not want to skip it.
     if (setting && !skipConfirm) {
       const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${item.name}?`;
@@ -737,7 +737,7 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("_fireCheckboxToggle | CPRActorSheet | Called.");
     const weaponID = SystemUtils.GetEventDatum(event, "data-item-id");
     const firemode = SystemUtils.GetEventDatum(event, "data-fire-mode");
-    const flag = getProperty(this.actor, `flags.cyberpunk-red-core.firetype-${weaponID}`);
+    const flag = getProperty(this.actor, `flags.${game.system.id}.firetype-${weaponID}`);
     LOGGER.debug(`firemode is ${firemode}`);
     LOGGER.debug(`weaponID is ${weaponID}`);
     LOGGER.debug(`flag is ${flag}`);
@@ -756,37 +756,24 @@ export default class CPRActorSheet extends ActorSheet {
     }
     if (flag === firemode) {
       // if the flag was already set to firemode, that means we unchecked a box
-      await this.actor.unsetFlag("cyberpunk-red-core", `firetype-${weaponID}`);
+      await this.actor.unsetFlag(game.system.id, `firetype-${weaponID}`);
     } else {
-      await this.actor.setFlag("cyberpunk-red-core", `firetype-${weaponID}`, firemode);
+      await this.actor.setFlag(game.system.id, `firetype-${weaponID}`, firemode);
     }
-  }
-
-  /**
-   * Look up the critical injury rollable tables based on name.
-   *
-   * @private
-   * @returns {Array} - a sorted list of rollable table names that match expectations
-   */
-  static _getCriticalInjuryTables() {
-    LOGGER.trace("_getCriticalInjuryTables | CPRActorSheet | Called.");
-    const pattern = "^Critical Injury|^CriticalInjury|^CritInjury|^Crit Injury|^Critical Injuries|^CriticalInjuries";
-    const tableNames = [];
-    const tableList = SystemUtils.GetRollTables(pattern, true);
-    tableList.forEach((table) => tableNames.push(table.name));
-    return tableNames.sort();
   }
 
   /**
    * Pop up a dialog box asking which critical injury table to use and return the user's answer.
    *
+   * @async
    * @private
    * @returns {String} - chosen name of the rollable table to be used for critical injuries
    */
   static async _setCriticalInjuryTable() {
     LOGGER.trace("_setCriticalInjuryTable | CPRActorSheet | Called.");
-    const critInjuryTables = CPRActorSheet._getCriticalInjuryTables();
-    const formData = await RollCriticalInjuryPrompt.RenderPrompt(critInjuryTables).catch((err) => LOGGER.debug(err));
+    const critInjuryTables = await SystemUtils.GetCompendiumDocs("criticalInjuryTables");
+    const tableNames = critInjuryTables.map((t) => t.name);
+    const formData = await RollCriticalInjuryPrompt.RenderPrompt(tableNames).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return undefined;
     }
@@ -806,8 +793,8 @@ export default class CPRActorSheet extends ActorSheet {
     if (tableName === undefined) {
       return;
     }
-    const table = (SystemUtils.GetRollTables(tableName, false))[0];
-    this._drawCriticalInjuryTable(tableName, table, 0);
+    const table = await SystemUtils.GetCompendiumDoc("criticalInjuryTables", tableName);
+    this._drawCriticalInjuryTable(table, 0);
     this._automaticResize();
   }
 
@@ -817,88 +804,84 @@ export default class CPRActorSheet extends ActorSheet {
    * this method. There is cap to prevent recursing too much or if there are unreachable entries on the
    * table.
    *
-   * @param {String} tableName - the name of the table to roll on
-   * @param {RollTable} table - the rollable table to draw from (roll on)
-   * @param {Number} iteration - iteration #, used to track how many times we have rolled to bail if too many
+   * @param {RollTable} table - the rollable table to draw from (roll on), pulled from a compendium
+   * @param {Number} iteration - the number of times the injury table has been rolled. This is here as
+   *                             a safety mechanism for malformed custom tables that have unreachable
+   *                             results. This can happen if the formula is wrong.
    * @returns {null}
    */
-  async _drawCriticalInjuryTable(tableName, table, iteration) {
+  async _drawCriticalInjuryTable(table, iteration) {
     LOGGER.trace("_drawCriticalInjuryTable | CPRActorSheet | Called.");
-    if (iteration > 100) {
-      // 6% chance to reach here in case of only one rare critical injury remaining (2 or 12 on 2d6)
-      const crit = game.items.find((item) => (
-        (item.type === "criticalInjury") && (item.name === table._source[0].text)
-      ));
-      if (!crit) {
+    const setting = game.settings.get(game.system.id, "preventDuplicateCriticalInjuries");
+
+    // check how many times we've been rolling. If this gets excessive maybe something is wrong with the table.
+    if (iteration > 1000) {
+      SystemUtils.DisplayMessage("error", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateLoopWarning")));
+      return;
+    }
+
+    // check that the table has critical injuries that could still be applied
+    let hurts = 0;
+    for (const injury of table.results) {
+      if (this.actor.itemTypes.criticalInjury.filter((i) => i.name === injury.text).length > 0) {
+        hurts += 1;
+      } else {
+        // there is at least 1 injury on this table the actor does not have yet
+        break;
+      }
+    }
+    if (hurts === table.results.size && setting === "reroll") {
+      // actor has every injury already, we cannot reroll for more
+      SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateAllWarning")));
+      return;
+    }
+
+    let injury;
+    table.draw({ displayChat: false }).then(async (res) => {
+      if (res.results.length !== 1) {
+        return;
+      }
+      // find the critical injury item that turned up in the roll
+      const injuryName = res.results[0].text;
+      injury = await SystemUtils.GetCompendiumDoc(CPR.criticalInjuryTables[table.name], injuryName);
+      if (!injury) {
         SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning")));
         return;
       }
-      const critType = crit.system.location;
-      LOGGER.debug(`critType is ${critType}`);
-      let numberCritInjurySameType = 0;
-      this.actor.itemTypes.criticalInjury.forEach((injury) => {
-        if (injury.system.location === critType) { numberCritInjurySameType += 1; }
-      });
-      if (table.results.contents.length <= numberCritInjurySameType) {
-        SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateAllWarning")));
-        return;
-      }
-      // Techincally possible to reach even if a critical injury is still missing (chance: 6*10e-11 %), though unlikely.
-      if (iteration > 1000) {
-        SystemUtils.DisplayMessage("error", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateLoopWarning")));
-        // Prevent endless loop in case of mixed (head and body) Critical Injury tables
-        // or unreachable elements in the rolltable.
-        return;
-      }
-    }
-    table.draw({ displayChat: false })
-      .then(async (res) => {
-        if (res.results.length > 0) {
-          // Check if the critical Injury already exists on the character
-          let injuryAlreadyExists = false;
-          this.actor.itemTypes.criticalInjury.forEach((injury) => {
-            if (injury.name === res.results[0].text) { injuryAlreadyExists = true; }
-          });
-          if (injuryAlreadyExists) {
-            const setting = game.settings.get("cyberpunk-red-core", "preventDuplicateCriticalInjuries");
-            if (setting === "reroll") {
-              this._drawCriticalInjuryTable(tableName, table, iteration + 1);
-              return;
-            }
-            if (setting === "warn") {
-              SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateWarning")));
-            }
-          }
-          const crit = game.items.find((item) => (
-            (item.type === "criticalInjury") && (item.name === res.results[0].text)
-          ));
-          if (!crit) {
-            SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning")));
-            return;
-          }
-          const cprItemData = {
-            name: crit.name,
-            type: crit.type,
-            img: crit.img,
-            system: duplicate(crit.system),
-          };
-          const result = await this.actor.createEmbeddedDocuments("Item", [cprItemData]);
-          const cprRoll = new CPRRolls.CPRTableRoll(
-            crit.name,
-            res.roll,
-            "systems/cyberpunk-red-core/templates/chat/cpr-critical-injury-rollcard.hbs",
-          );
-          cprRoll.rollCardExtraArgs.tableName = tableName;
-          cprRoll.rollCardExtraArgs.itemName = result[0].name;
-          cprRoll.rollCardExtraArgs.itemImg = result[0].img;
-          if (this.token) {
-            cprRoll.entityData = { actor: this.actor.id, token: this.token.id, item: result[0].id };
-          } else {
-            cprRoll.entityData = { actor: this.actor.id, item: result[0].id };
-          }
-          CPRChat.RenderRollCard(cprRoll);
+
+      // check whether the actor has this injury already
+      if (this.actor.itemTypes.criticalInjury.find((i) => i.name === injuryName)) {
+        if (setting === "reroll") {
+          await this._drawCriticalInjuryTable(table, iteration + 1);
+          return;
         }
-      });
+        if (setting === "warn") {
+          SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateWarning")));
+        }
+      }
+
+      const cprItemData = {
+        name: injury.name,
+        type: injury.type,
+        img: injury.img,
+        system: duplicate(injury.system),
+      };
+      const result = await this.actor.createEmbeddedDocuments("Item", [cprItemData]);
+      const cprRoll = new CPRRolls.CPRTableRoll(
+        injury.name,
+        res.roll,
+        `systems/${game.system.id}/templates/chat/cpr-critical-injury-rollcard.hbs`,
+      );
+      cprRoll.rollCardExtraArgs.tableName = table.name;
+      cprRoll.rollCardExtraArgs.itemName = result[0].name;
+      cprRoll.rollCardExtraArgs.itemImg = result[0].img;
+      if (this.token) {
+        cprRoll.entityData = { actor: this.actor.id, token: this.token.id, item: result[0].id };
+      } else {
+        cprRoll.entityData = { actor: this.actor.id, item: result[0].id };
+      }
+      CPRChat.RenderRollCard(cprRoll);
+    });
   }
 
   /**
@@ -909,7 +892,7 @@ export default class CPRActorSheet extends ActorSheet {
    */
   _automaticResize() {
     LOGGER.trace("_automaticResize | CPRActorSheet | Called.");
-    const setting = game.settings.get("cyberpunk-red-core", "automaticallyResizeSheets");
+    const setting = game.settings.get(game.system.id, "automaticallyResizeSheets");
     if (setting && this.rendered && !this._minimized) {
       // It seems that the size of the content does not change immediately upon updating the content
       setTimeout(() => {

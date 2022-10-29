@@ -102,7 +102,7 @@ export default class CPRMigration {
     if (this.errors !== 0) {
       throw Error("Migration errors encountered");
     }
-    await game.settings.set("cyberpunk-red-core", "dataModelVersion", this.version);
+    await game.settings.set(game.system.id, "dataModelVersion", this.version);
     return true;
   }
 

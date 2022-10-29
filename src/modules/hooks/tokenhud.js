@@ -1,4 +1,4 @@
-/* global Hooks renderTemplate */
+/* global game Hooks renderTemplate */
 import LOGGER from "../utils/cpr-logger.js";
 import HudInterface from "../hud/interface.js";
 
@@ -20,7 +20,7 @@ const tokenHudHooks = () => {
   Hooks.on("renderTokenHUD", async (hud, html, token) => {
     LOGGER.trace("renderTokenHUD | tokenHudHooks | Called.");
     // Configure DV Ruler
-    const dvHudTemplate = "systems/cyberpunk-red-core/templates/hud/dv.hbs";
+    const dvHudTemplate = `systems/${game.system.id}/templates/hud/dv.hbs`;
     const dvDisplay = await renderTemplate(dvHudTemplate, token.flags);
     html.find("div.left").append(dvDisplay);
     html.find(".dv-table-selector").click(() => {

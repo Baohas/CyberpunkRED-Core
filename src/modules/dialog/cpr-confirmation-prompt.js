@@ -1,4 +1,4 @@
-/* global renderTemplate, Dialog */
+/* global game renderTemplate, Dialog */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 
@@ -9,7 +9,7 @@ export default class ConfirmationPrompt {
   // Call to RenderPrompt should take one object as input, based on input type, prepare template and titles...
   static async RenderPrompt(title, data) {
     LOGGER.trace("RenderPrompt | ConfirmationPrompt | called.");
-    const template = "systems/cyberpunk-red-core/templates/dialog/cpr-confirmation-prompt.hbs";
+    const template = `systems/${game.system.id}/templates/dialog/cpr-confirmation-prompt.hbs`;
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {

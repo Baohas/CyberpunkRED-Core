@@ -95,7 +95,7 @@ const hotbarHooks = () => {
         command += `game.cpr.macro.rollItemMacro("${itemName}", {skipPrompt});`;
       }
       macro = game.macros.contents.find((m) => (m.name === item.name) && (m.command === command));
-      const img = item.type === "skill" ? "systems/cyberpunk-red-core/icons/chip-skill.png" : item.img;
+      const img = item.type === "skill" ? `systems/${game.system.id}/icons/chip-skill.png` : item.img;
       if (!macro) {
         macroObject.name = item.name;
         macroObject.img = img;
@@ -119,7 +119,7 @@ const hotbarHooks = () => {
       macro = game.macros.contents.find((m) => (m.name === journal.name) && (m.command === command));
       if (!macro) {
         macroObject.name = journal.name;
-        macroObject.img = "systems/cyberpunk-red-core/icons/memory-card.svg";
+        macroObject.img = `systems/${game.system.id}/icons/memory-card.svg`;
         macroObject.command = command;
       }
     }

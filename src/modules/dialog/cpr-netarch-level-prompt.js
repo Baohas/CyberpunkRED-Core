@@ -1,12 +1,12 @@
 /* eslint-disable no-shadow */
-/* global Dialog renderTemplate FormDataExtended foundry */
+/* global game Dialog renderTemplate FormDataExtended foundry */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 export default class NetarchLevelPrompt {
   static async RenderPrompt(data) {
     LOGGER.trace("RenderPrompt | NetarchLevelPrompt | called.");
-    const template = "systems/cyberpunk-red-core/templates/dialog/cpr-netarch-level-prompt.hbs";
+    const template = `systems/${game.system.id}/templates/dialog/cpr-netarch-level-prompt.hbs`;
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {

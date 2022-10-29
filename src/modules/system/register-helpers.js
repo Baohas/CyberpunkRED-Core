@@ -452,7 +452,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprFireMode", (actor, firemode, weaponID) => {
     LOGGER.trace("cprFireMode | handlebarsHelper | Called.");
-    const flag = getProperty(actor, `flags.cyberpunk-red-core.firetype-${weaponID}`);
+    const flag = getProperty(actor, `flags.${game.system.id}.firetype-${weaponID}`);
     if (flag === firemode) {
       return true;
     }
@@ -464,7 +464,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprFireFlag", (actor, firetype, weaponID) => {
     LOGGER.trace("cprFireFlag | handlebarsHelper | Called.");
-    const flag = getProperty(actor, `flags.cyberpunk-red-core.firetype-${weaponID}`);
+    const flag = getProperty(actor, `flags.${game.system.id}.firetype-${weaponID}`);
     if (flag === firetype) {
       return "checked";
     }
@@ -474,7 +474,7 @@ export default function registerHandlebarsHelpers() {
   /**
    * Return a system setting value given the name
    */
-  Handlebars.registerHelper("cprSystemConfig", (settingName) => game.settings.get("cyberpunk-red-core", settingName));
+  Handlebars.registerHelper("cprSystemConfig", (settingName) => game.settings.get(game.system.id, settingName));
 
   /**
    * Some skills and roles have spaces and/or parantheses in their name. When substituting in translated strings,
@@ -692,7 +692,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprSheetContentFilter", (filterValue, applyToText) => {
     LOGGER.trace("cprFilter | handlebarsHelper | Called.");
-    if (typeof filterValue === "undefined" || filterValue === "" || !game.settings.get("cyberpunk-red-core", "enableSheetContentFilter")) {
+    if (typeof filterValue === "undefined" || filterValue === "" || !game.settings.get(game.system.id, "enableSheetContentFilter")) {
       return true;
     }
     return applyToText.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1;
@@ -852,7 +852,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprIsDebug", () => {
     LOGGER.trace("cprIsDebug | handlebarsHelper | Called.");
-    return game.settings.get("cyberpunk-red-core", "debugElements");
+    return game.settings.get(game.system.id, "debugElements");
   });
 
   /**

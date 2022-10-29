@@ -19,7 +19,7 @@ export default class CPRNetArchItem extends CPRItem {
     LOGGER.trace("constructor | CPRNetarchUtils | called.");
     super(itemData, context);
     this.options = {
-      filePath: "systems/cyberpunk-red-core/tiles/netarch/PNG/",
+      filePath: `systems/${game.system.id}/tiles/netarch/PNG/`,
       fileExtension: "png",
       sceneName: null,
       gridSize: 110,
@@ -292,12 +292,8 @@ export default class CPRNetArchItem extends CPRItem {
    */
   async _duplicateScene(newName) {
     LOGGER.trace("_duplicateScene | CPRNetarchUtils | Called.");
-    let scene = null;
     const sceneName = (this.animated) ? "NetarchTemplate-animated" : "NetarchTemplate";
-    const sceneList = (await game.packs.get("cyberpunk-red-core.scenes").getDocuments()).filter((s) => s.name === sceneName);
-    if (sceneList.length > 0) {
-      [scene] = sceneList;
-    }
+    const scene = await SystemUtils.GetCompendiumDoc("scenes", sceneName);
     const sceneData = duplicate(scene);
     sceneData.id = null;
     sceneData.name = newName;
@@ -371,7 +367,7 @@ export default class CPRNetArchItem extends CPRItem {
     let formData = {
       animated: false,
       cusomTiles: false,
-      filePath: "systems/cyberpunk-red-core/tiles/netarch/PNG/",
+      filePath: `systems/${game.system.id}/tiles/netarch/PNG/`,
       fileExtension: "png",
       sceneName: "",
       gridSize: 110,
@@ -402,7 +398,7 @@ export default class CPRNetArchItem extends CPRItem {
         this.options.sceneName = formData.sceneName;
       }
     } else if (formData.animated) {
-      this.options.filePath = "systems/cyberpunk-red-core/tiles/netarch/WebM/";
+      this.options.filePath = `systems/${game.system.id}/tiles/netarch/WebM/`;
       this.options.fileExtension = "webm";
       this.animated = true;
     }
