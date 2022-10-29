@@ -1,7 +1,9 @@
+/* global duplicate Item game fromUuidSync */
 /* eslint-disable foundry-cpr/logger-after-function-definition */
 /* eslint-disable no-await-in-loop */
 
 import CPRMigration from "../cpr-migration.js";
+import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class ReleaseEightyFourDotZero extends CPRMigration {
@@ -17,6 +19,8 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
    */
   async preMigrate() {
     LOGGER.trace(`preMigrate | ${this.version}-${this.name}`);
+    CPRSystemUtils.DisplayMessage("notify", CPRSystemUtils.Localize("CPR.migration.effects.beginMigration"));
+    CPRMigration.createMigrationFolder();
     LOGGER.log(`Starting migration: ${this.name}`);
   }
 
@@ -25,6 +29,7 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
    */
   async postMigrate() {
     LOGGER.trace(`postMigrate | ${this.version}-${this.name}`);
+    CPRMigration.deleteMigrationFolder();
     LOGGER.log(`Finishing migration: ${this.name}`);
   }
 
@@ -34,8 +39,10 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
    * @param {CPRActor} actor
    */
   async migrateActor(actor) {
-    LOGGER.trace("migrateActor | CPRMigration");
-    const itemUpdates = [];
+    LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
+    let itemUpdates = [];
+    const itemDeletions = [];
+    const itemCreations = [];
     for (const item of actor.items) {
       if (typeof item.system.price !== "undefined" || typeof item.changes !== "undefined") {
         const updatedItem = ReleaseEightyFourDotZero.migrateItem(item);
@@ -46,13 +53,27 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
     }
 
     for (const activeEffect of actor.effects) {
+      // Using this to see if there's any updates to the ActiveEffect
       const aeChanges = await ReleaseEightyFourDotZero.updateActiveEffect(activeEffect);
       if (aeChanges) {
-        // Either way we try to update the ActiveEffect, it throws this in the console, however the AE does get updated:
-        // Error: Managing embedded Documents which are not direct descendants of a primary Document is un-supported at this time.
-        await actor.updateEmbeddedDocuments("ActiveEffect", [{ _id: activeEffect._id, changes: aeChanges }]);
-        // await activeEffect.update({ changes: aeChanges });
+        const aeSource = fromUuidSync(activeEffect.origin);
+        if (aeSource instanceof Item) {
+          const newItem = await CPRMigration.backupOwnedItem(aeSource);
+          await ReleaseEightyFourDotZero.migrateItem(newItem);
+          itemCreations.push(newItem.toObject());
+          itemDeletions.push(aeSource._id);
+          itemUpdates = itemUpdates.filter((i) => i._id !== aeSource._id);
+          await newItem.delete();
+        }
       }
+    }
+
+    if (itemDeletions.length > 0) {
+      await actor.deleteEmbeddedDocuments("Item", itemDeletions);
+    }
+
+    if (itemCreations.length > 0) {
+      await actor.createEmbeddedDocuments("Item", itemCreations);
     }
 
     return (itemUpdates.length > 0) ? actor.updateEmbeddedDocuments("Item", itemUpdates) : Promise.resolve();
@@ -68,10 +89,13 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
     LOGGER.trace(`migrateItem | ${this.version}-${this.name}`);
     let updateData = (item.isOwned) ? { _id: item._id } : {};
     // Migration code for Issue #546
-    for (const activeEffect of item.effects) {
-      const aeChanges = await ReleaseEightyFourDotZero.updateActiveEffect(activeEffect);
-      if (aeChanges) {
-        await item.updateEmbeddedDocuments("ActiveEffect", [{ _id: activeEffect._id, changes: aeChanges }]);
+    // Only fix AE on unowned items here, owned item AE's fixed as part of Actor Migration
+    if (!item.isOwned) {
+      for (const activeEffect of item.effects) {
+        const aeChanges = await ReleaseEightyFourDotZero.updateActiveEffect(activeEffect);
+        if (aeChanges) {
+          await item.updateEmbeddedDocuments("ActiveEffect", [{ _id: activeEffect._id, changes: aeChanges }]);
+        }
       }
     }
 
