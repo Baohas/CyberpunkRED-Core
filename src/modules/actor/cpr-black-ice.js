@@ -45,8 +45,8 @@ export default class CPRBlackIceActor extends Actor {
     const niceStatName = SystemUtils.Localize(CPR.blackIceStatList[statName]);
     const statValue = parseInt(this.system.stats[statName], 10);
     const cprRoll = new CPRRolls.CPRProgramStatRoll(niceStatName, statValue);
-    if (this.isToken && typeof this.token.flags["cyberpunk-red-core"] !== "undefined") {
-      const cprFlags = this.token.flags["cyberpunk-red-core"];
+    if (this.isToken && typeof this.token.flags[game.system.id] !== "undefined") {
+      const cprFlags = this.token.flags[game.system.id];
       if (typeof cprFlags.program !== "undefined") {
         cprRoll.rollCardExtraArgs.program = duplicate(cprFlags.program);
       }

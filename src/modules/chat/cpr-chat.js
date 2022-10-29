@@ -107,7 +107,7 @@ export default class CPRChat {
   static RenderItemCard(item) {
     LOGGER.trace("RenderItemCard | CPRChat | Called.");
     const trimmedItem = item;
-    const itemTemplate = "systems/cyberpunk-red-core/templates/item/cpr-item-roll-card.hbs";
+    const itemTemplate = `systems/${game.system.id}/templates/item/cpr-item-roll-card.hbs`;
 
     // trim strings so layout does not get too goofy
     const maxNameLen = 16;
@@ -150,7 +150,7 @@ export default class CPRChat {
    */
   static RenderDamageApplicationCard(damageData) {
     LOGGER.trace("RenderDamageApplicationCard | CPRChat | Called.");
-    const damageApplicationTemplate = "systems/cyberpunk-red-core/templates/chat/cpr-damage-application-card.hbs";
+    const damageApplicationTemplate = `systems/${game.system.id}/templates/chat/cpr-damage-application-card.hbs`;
 
     return renderTemplate(damageApplicationTemplate, damageData).then((html) => {
       const chatOptions = this.ChatDataSetup(html);

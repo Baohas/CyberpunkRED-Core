@@ -109,10 +109,10 @@ const actorHooks = () => {
     if (doc.type === "blackIce" && doc.isToken && updatedData.system && updatedData.system.stats) {
       const biToken = doc.token;
 
-      const netrunnerTokenId = biToken.getFlag("cyberpunk-red-core", "netrunnerTokenId");
-      const cyberdeckId = biToken.getFlag("cyberpunk-red-core", "sourceCyberdeckId");
-      const programId = biToken.getFlag("cyberpunk-red-core", "programId");
-      const sceneId = biToken.getFlag("cyberpunk-red-core", "sceneId");
+      const netrunnerTokenId = biToken.getFlag(game.system.id, "netrunnerTokenId");
+      const cyberdeckId = biToken.getFlag(game.system.id, "sourceCyberdeckId");
+      const programId = biToken.getFlag(game.system.id, "programId");
+      const sceneId = biToken.getFlag(game.system.id, "sceneId");
       const sceneList = game.scenes.filter((s) => s.id === sceneId);
       if (sceneList.length === 1) {
         const scene = sceneList[0];

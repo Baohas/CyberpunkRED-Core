@@ -7,6 +7,39 @@ import LOGGER from "./cpr-logger.js";
  * CPR-C utilities that are meant to have broad application across the whole system module.
  */
 export default class CPRSystemUtils {
+  /* COMPENDIA AND FOLDER UTILS */
+
+  /**
+   * Retrieve a specific document in a compendium
+   *
+   * @async
+   * @static
+   * @param {String} cname - compendium name
+   * @param {String} dname - document name to look for
+   * @returns {Document}
+   */
+  static async GetCompendiumDoc(cname, dname) {
+    LOGGER.trace("GetCompendiumDoc | CPRSystemUtils | Called.");
+    let compName = cname;
+    if (!cname.startsWith(game.system.id)) compName = `${game.system.id}.${cname}`;
+    const comp = game.packs.get(compName);
+    return comp.getDocument(comp.index.contents.filter((i) => i.name === dname)[0]._id);
+  }
+
+  /**
+   * Retrieve the documents packed up in a compendium (aka a pack)
+   *
+   * @static
+   * @param {String} cname - name of the compendium to retrieve
+   * @returns {Array}
+   */
+  static GetCompendiumDocs(cname) {
+    LOGGER.trace("GetCompendiumDocs | CPRSystemUtils | Called.");
+    let compName = cname;
+    if (!cname.startsWith(game.system.id)) compName = `${game.system.id}.${cname}`;
+    return game.packs.get(compName).getDocuments();
+  }
+
   /**
    * Return an array of "core" skills that are defined in the rules, and all characters
    * start with them defined.
@@ -15,11 +48,7 @@ export default class CPRSystemUtils {
    */
   static async GetCoreSkills() {
     LOGGER.trace("GetCoreSkills | CPRSystemUtils | Called.");
-    // grab basic skills from compendium
-    const pack = game.packs.get("cyberpunk-red-core.skills");
-    // put into basickSills array
-    const content = await pack.getDocuments();
-    return content;
+    return CPRSystemUtils.GetCompendiumDocs("skills");
   }
 
   /**
@@ -30,15 +59,12 @@ export default class CPRSystemUtils {
    */
   static async GetCoreCyberware() {
     LOGGER.trace("GetCoreCyberware | CPRSystemUtils | Called.");
-    // grab basic cyberware from compendium
-    const pack = game.packs.get("cyberpunk-red-core.cyberware");
-    // put into basicCyberware array
-    const content = await pack.getDocuments();
-    return content;
+    return CPRSystemUtils.GetCompendiumDocs("cyberware");
   }
 
   /**
-   * Get rollable tables by name, optionally by searching with a regexp
+   * Get rollable tables by name, optionally by searching with a regexp. Note this is not meant for
+   * compendia, but rather rolltables created in the world.
    *
    * @param {String} tableName
    * @param {RegExp} useRegExp
@@ -55,6 +81,24 @@ export default class CPRSystemUtils {
     }
     return tableList;
   }
+
+  /**
+   * Some actions users can take in this system will produce a bunch of documents are entities, and
+   * we group them up in a dynamically created folder. This is where that magic happens.
+   *
+   * @param {String} type - the entity type the folder should group together
+   * @param {String} name - a name for the folder
+   * @param {String} parent - (optional) folder ID to create this in, or null for a top-level folder
+   * @returns {Folder} - the referenced folder or a newly created one
+   */
+  static async GetFolder(type, name, parent = null) {
+    LOGGER.trace("GetFolder | CPRSystemUtils | Called.");
+    const folderList = game.folders.filter((folder) => folder.name === name && folder.type === type);
+    // If the folder does not exist, we create it.
+    return (folderList.length === 1) ? folderList[0] : Folder.create({ name, type, parent });
+  }
+
+  /* MESSAGE AND STRING UTILS */
 
   /**
    * Display user-visible message. (blue, yellow, or red background)
@@ -93,230 +137,6 @@ export default class CPRSystemUtils {
   }
 
   /**
-   * For settings like favorite items or skills, and opening or closing categories, we save the user's
-   * preferences in a hidden system setting.
-   *
-   * To Do: Flags may be a better implementation.
-   *
-   * @param {String} type - indicate whether this is a sheetConfig setting or something else
-   * @param {String} name - name for the setting
-   * @param {*} value - the value for the setting to save
-   * @param {*} extraSettings - a prefix for the name of the setting (sheetConfig only)
-   */
-  static SetUserSetting(type, name, value, extraSettings) {
-    LOGGER.trace("SetUserSetting | CPRSystemUtils | Called.");
-    const userSettings = game.settings.get("cyberpunk-red-core", "userSettings") ? game.settings.get("cyberpunk-red-core", "userSettings") : {};
-    switch (type) {
-      case "sheetConfig": {
-        // If this is a sheetConfig setting, our user may have settings for different sheets, so
-        // to account for this, we pass the id of the sheet that this setting is
-        // for in extraSettings.  We store the value as the id-settingName in userSettings.sheetConfig
-        const settingKey = `${extraSettings}-${name}`;
-        // Get all of the sheet config data stored for this user
-        let sheetConfigData = userSettings.sheetConfig;
-        // See if we have any sheetConfig data
-        if (sheetConfigData === undefined) {
-          // If not, we set sheetConfigData to an empty object;
-          sheetConfigData = {};
-        }
-        // We set the value of the sheet data for our key
-        sheetConfigData[settingKey] = value;
-
-        // Update the sheetConfig setting in our userSettings
-        userSettings.sheetConfig = sheetConfigData;
-        break;
-      }
-      default: {
-        // By default, we store a simple name value/key pair
-        userSettings[name] = value;
-      }
-    }
-    // Update the userSettings object
-    game.settings.set("cyberpunk-red-core", "userSettings", userSettings);
-  }
-
-  /**
-   * Get a hidden user setting. (see SetUserSetting above)
-   *
-   * @param {String} type - indicate whether this is a sheetConfig setting or something else
-   * @param {String} name - name for the setting
-   * @param {*} extraSettings - a prefix for the name of the setting (sheetConfig only)
-   * @returns - the request hidden setting value
-   */
-  static GetUserSetting(type, name, extraSettings) {
-    LOGGER.trace("GetUserSetting | CPRSystemUtils | Called.");
-    const userSettings = game.settings.get("cyberpunk-red-core", "userSettings") ? game.settings.get("cyberpunk-red-core", "userSettings") : {};
-    let requestedValue;
-    switch (type) {
-      case "sheetConfig": {
-        const settingKey = `${extraSettings}-${name}`;
-        const sheetConfigData = userSettings.sheetConfig;
-        if (sheetConfigData !== undefined) {
-          requestedValue = sheetConfigData[settingKey];
-        }
-        break;
-      }
-      default: {
-        requestedValue = userSettings[name];
-      }
-    }
-    return requestedValue;
-  }
-
-  /**
-   * When a new object (document) is created in our module, we want to provide a cool looking
-   * default icon. This method retrieves paths to icons based on the object type.
-   *
-   * @param {String} foundryObject - the object (document) type (Actor, Item, etc)
-   * @param {*} objectType - the subtype of object to get an icon for (e.g. ammo or armor for an Item)
-   * @returns {String} - path to an icon to use
-   */
-  static GetDefaultImage(foundryObject, objectType) {
-    LOGGER.trace("GetDefaultImage | CPRSystemUtils | Called.");
-    let imageLink = "";
-    if (foundryObject === "Item") {
-      switch (objectType) {
-        case "ammo": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg";
-          break;
-        }
-        case "armor": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg";
-          break;
-        }
-        case "clothing": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Clothing.svg";
-          break;
-        }
-        case "criticalInjury": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Critical_Injury.svg";
-          break;
-        }
-        case "cyberdeck": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Cyberdeck.svg";
-          break;
-        }
-        case "cyberware": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Cyberware.svg";
-          break;
-        }
-        case "gear": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg";
-          break;
-        }
-        case "netarch": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Net_Architecture.svg";
-          break;
-        }
-        case "program": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Program.svg";
-          break;
-        }
-        case "role": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg";
-          break;
-        }
-        case "skill": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Skill.svg";
-          break;
-        }
-        case "vehicle": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg";
-          break;
-        }
-        case "weapon": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol.svg";
-          break;
-        }
-        default: {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg";
-          break;
-        }
-      }
-    } else if (foundryObject === "Actor") {
-      switch (objectType) {
-        case "blackIce": {
-          imageLink = "systems/cyberpunk-red-core/icons/netrunning/Black_Ice.png";
-          break;
-        }
-        case "container": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Container.svg";
-          break;
-        }
-        case "demon": {
-          imageLink = "systems/cyberpunk-red-core/icons/netrunning/Demon.png";
-          break;
-        }
-        case "mook": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Mook.svg";
-          break;
-        }
-        default: {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_CPR_Mystery_Man.svg";
-        }
-      }
-    }
-    return imageLink;
-  }
-
-  /**
-   * Some actions users can take in this system will produce a bunch of documents are entities, and
-   * we group them up in a dynamically created folder. This is where that magic happens.
-   *
-   * @param {String} type - the entity type the folder should group together
-   * @param {String} name - a name for the folder
-   * @param {String} parent - (optional) folder ID to create this in, or null for a top-level folder
-   * @returns {Folder} - the referenced folder or a newly created one
-   */
-  static async GetFolder(type, name, parent = null) {
-    LOGGER.trace("GetFolder | CPRSystemUtils | Called.");
-    const folderList = game.folders.filter((folder) => folder.name === name && folder.type === type);
-    // If the folder does not exist, we create it.
-    return (folderList.length === 1) ? folderList[0] : Folder.create({ name, type, parent });
-  }
-
-  /**
-   * Given a data model template name, return the array of item types it is applied to
-   *
-   * @param {String} templateName - the template name to look up
-   * @returns {Array}
-   */
-  static GetTemplateItemTypes(templateName) {
-    LOGGER.trace("GetTemplateItemTypes | CPRSystemUtils | Called.");
-    const itemTypes = [];
-    const itemEntityTypes = game.system.template.Item.types;
-    itemEntityTypes.forEach((entityType) => {
-      const entity = game.system.template.Item[entityType];
-      if (entity.templates.includes(templateName)) {
-        itemTypes.push(entityType);
-      }
-    });
-    return itemTypes;
-  }
-
-  /**
-   * Inspect an event object for passed-in field specific to the target (link) that was clicked.
-   * This code will initially look at the current target, and if the field is not found, it will
-   * climb up the parents of the target until one is found, or print an error and return undefined.
-   *
-   * @param {Object} event - event data from jquery
-   * @param {String} datum - the field we are interested in getting
-   * @returns {String} - the value of the field passed in the event data
-   */
-  static GetEventDatum(event, datum) {
-    LOGGER.trace("GetEventDatum | CPRSystemUtils | Called.");
-    let id = $(event.currentTarget).attr(datum);
-    if (typeof id === "undefined") {
-      LOGGER.debug(`Could not find ${datum} in currentTarget trying .item parents`);
-      id = $(event.currentTarget).parents(".item").attr(datum);
-      if (typeof id === "undefined") {
-        LOGGER.warn(`Could not find ${datum} in the event data!`);
-      }
-    }
-    return id;
-  }
-
-  /**
    * We use temporary objects with keys derived from skill names elsewhere in the code base.
    * We need to be able to programmatically produce those keys from the name, and that is
    * what this method does. It takes a string and converts it to camelcase.
@@ -352,6 +172,196 @@ export default class CPRSystemUtils {
     return andCaseSplit.charAt(0).toLowerCase() + andCaseSplit.slice(1);
   }
 
+  /* USER SETTING UTILS */
+
+  /**
+   * For settings like favorite items or skills, and opening or closing categories, we save the user's
+   * preferences in a hidden system setting.
+   *
+   * To Do: Flags are a better implementation.
+   *
+   * @param {String} type - indicate whether this is a sheetConfig setting or something else
+   * @param {String} name - name for the setting
+   * @param {*} value - the value for the setting to save
+   * @param {*} extraSettings - a prefix for the name of the setting (sheetConfig only)
+   */
+  static SetUserSetting(type, name, value, extraSettings) {
+    LOGGER.trace("SetUserSetting | CPRSystemUtils | Called.");
+    const userSettings = game.settings.get(game.system.id, "userSettings") ? game.settings.get(game.system.id, "userSettings") : {};
+    switch (type) {
+      case "sheetConfig": {
+        // If this is a sheetConfig setting, our user may have settings for different sheets, so
+        // to account for this, we pass the id of the sheet that this setting is
+        // for in extraSettings.  We store the value as the id-settingName in userSettings.sheetConfig
+        const settingKey = `${extraSettings}-${name}`;
+        // Get all of the sheet config data stored for this user
+        let sheetConfigData = userSettings.sheetConfig;
+        // See if we have any sheetConfig data
+        if (sheetConfigData === undefined) {
+          // If not, we set sheetConfigData to an empty object;
+          sheetConfigData = {};
+        }
+        // We set the value of the sheet data for our key
+        sheetConfigData[settingKey] = value;
+
+        // Update the sheetConfig setting in our userSettings
+        userSettings.sheetConfig = sheetConfigData;
+        break;
+      }
+      default: {
+        // By default, we store a simple name value/key pair
+        userSettings[name] = value;
+      }
+    }
+    // Update the userSettings object
+    game.settings.set(game.system.id, "userSettings", userSettings);
+  }
+
+  /**
+   * Get a hidden user setting. (see SetUserSetting above)
+   *
+   * @param {String} type - indicate whether this is a sheetConfig setting or something else
+   * @param {String} name - name for the setting
+   * @param {*} extraSettings - a prefix for the name of the setting (sheetConfig only)
+   * @returns - the request hidden setting value
+   */
+  static GetUserSetting(type, name, extraSettings) {
+    LOGGER.trace("GetUserSetting | CPRSystemUtils | Called.");
+    const userSettings = game.settings.get(game.system.id, "userSettings") ? game.settings.get(game.system.id, "userSettings") : {};
+    let requestedValue;
+    switch (type) {
+      case "sheetConfig": {
+        const settingKey = `${extraSettings}-${name}`;
+        const sheetConfigData = userSettings.sheetConfig;
+        if (sheetConfigData !== undefined) {
+          requestedValue = sheetConfigData[settingKey];
+        }
+        break;
+      }
+      default: {
+        requestedValue = userSettings[name];
+      }
+    }
+    return requestedValue;
+  }
+
+  /**
+   * When a new object (document) is created in our module, we want to provide a cool looking
+   * default icon. This method retrieves paths to icons based on the object type.
+   *
+   * @param {String} foundryObject - the object (document) type (Actor, Item, etc)
+   * @param {*} objectType - the subtype of object to get an icon for (e.g. ammo or armor for an Item)
+   * @returns {String} - path to an icon to use
+   */
+  static GetDefaultImage(foundryObject, objectType) {
+    LOGGER.trace("GetDefaultImage | CPRSystemUtils | Called.");
+    let imageLink = "";
+    if (foundryObject === "Item") {
+      switch (objectType) {
+        case "ammo": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Ammo.svg`;
+          break;
+        }
+        case "armor": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Armor.svg`;
+          break;
+        }
+        case "clothing": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Clothing.svg`;
+          break;
+        }
+        case "criticalInjury": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Critical_Injury.svg`;
+          break;
+        }
+        case "cyberdeck": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Cyberdeck.svg`;
+          break;
+        }
+        case "cyberware": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Cyberware.svg`;
+          break;
+        }
+        case "gear": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Gear.svg`;
+          break;
+        }
+        case "netarch": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Net_Architecture.svg`;
+          break;
+        }
+        case "program": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Program.svg`;
+          break;
+        }
+        case "role": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Role.svg`;
+          break;
+        }
+        case "skill": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Skill.svg`;
+          break;
+        }
+        case "vehicle": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Vehicle.svg`;
+          break;
+        }
+        case "weapon": {
+          imageLink = `systems/${game.system.id}/icons/compendium/weapons/heavyPistol.svg`;
+          break;
+        }
+        default: {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Gear.svg`;
+          break;
+        }
+      }
+    } else if (foundryObject === "Actor") {
+      switch (objectType) {
+        case "blackIce": {
+          imageLink = `systems/${game.system.id}/icons/netrunning/Black_Ice.png`;
+          break;
+        }
+        case "container": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Container.svg`;
+          break;
+        }
+        case "demon": {
+          imageLink = `systems/${game.system.id}/icons/netrunning/Demon.png`;
+          break;
+        }
+        case "mook": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Mook.svg`;
+          break;
+        }
+        default: {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_CPR_Mystery_Man.svg`;
+        }
+      }
+    }
+    return imageLink;
+  }
+
+  /* DATA TEMPLATE UTILS */
+
+  /**
+   * Given a data model template name, return the array of item types it is applied to
+   *
+   * @param {String} templateName - the template name to look up
+   * @returns {Array}
+   */
+  static GetTemplateItemTypes(templateName) {
+    LOGGER.trace("GetTemplateItemTypes | CPRSystemUtils | Called.");
+    const itemTypes = [];
+    const itemEntityTypes = game.system.template.Item.types;
+    itemEntityTypes.forEach((entityType) => {
+      const entity = game.system.template.Item[entityType];
+      if (entity.templates.includes(templateName)) {
+        itemTypes.push(entityType);
+      }
+    });
+    return itemTypes;
+  }
+
   /**
    * Return an array of data model templates associated with this Item's type. "common" is intentionally
    * omitted because nothing should operate on it. The logic for common Item functionality should be in
@@ -372,58 +382,7 @@ export default class CPRSystemUtils {
     return CPRSystemUtils.getDataModelTemplates(itemType).includes(template);
   }
 
-  /**
-   * Return the list of actions that can be taken with this item. Used by the actor sheet.
-   * Note that "pin" is left out, it is hardcoded in the sheet code.
-   * This is not used anywhere right now, but will be useful when associating actions with mixins.
-   *
-   * V10 WARNING - I do not know the intent of this, but with V10, the item data model changed which would
-   *               break the original code.  This has been updated but when used, you need to pass item, not item.data
-   *
-   * @param {ItemData} item - the item we will be inspecting
-   * @returns {String[]} - array of actions that can be taken
-   */
-  static getActions(item) {
-    LOGGER.trace("getActions | CPRItem | Called.");
-    const mixins = CPRSystemUtils.getDataModelTemplates(item.type);
-    const actions = ["delete"];
-    for (let m = 0; m < mixins.length; m += 1) {
-      switch (mixins[m]) {
-        case "drug": {
-          if (item.system.amount > 0) actions.push("snort");
-          break;
-        }
-        case "equippable": {
-          actions.push("equip");
-          break;
-        }
-        case "installable": {
-          if (!item.system.isInstalled) actions.push("install");
-          else actions.push("uninstall");
-          break;
-        }
-        case "loadable": {
-          actions.push("reload");
-          actions.push("changeAmmo");
-          break;
-        }
-        case "physical": {
-          if (item.system.concealable.concealable) actions.push("conceal");
-          break;
-        }
-        case "spawner": {
-          actions.push("rez");
-          break;
-        }
-        case "stackable": {
-          if (item.system.amount > 1) actions.push("split");
-          break;
-        }
-        default:
-      }
-    }
-    return actions;
-  }
+  /* MIGRATION UTILS */
 
   static getUserTargetedOrSelected(targetedOrSelected) {
     LOGGER.trace("getUserTargetedOrSelected | CPRSystemUtils | Called.");
@@ -485,5 +444,27 @@ export default class CPRSystemUtils {
         $(migrating).fadeOut(2000);
       }
     }
+  }
+
+  /**
+   * Inspect an event object for passed-in field specific to the target (link) that was clicked.
+   * This code will initially look at the current target, and if the field is not found, it will
+   * climb up the parents of the target until one is found, or print an error and return undefined.
+   *
+   * @param {Object} event - event data from jquery
+   * @param {String} datum - the field we are interested in getting
+   * @returns {String} - the value of the field passed in the event data
+   */
+  static GetEventDatum(event, datum) {
+    LOGGER.trace("GetEventDatum | CPRSystemUtils | Called.");
+    let id = $(event.currentTarget).attr(datum);
+    if (typeof id === "undefined") {
+      LOGGER.debug(`Could not find ${datum} in currentTarget trying .item parents`);
+      id = $(event.currentTarget).parents(".item").attr(datum);
+      if (typeof id === "undefined") {
+        LOGGER.warn(`Could not find ${datum} in the event data!`);
+      }
+    }
+    return id;
   }
 }

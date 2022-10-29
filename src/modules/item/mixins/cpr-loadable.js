@@ -1,4 +1,4 @@
-/* global getProperty */
+/* global game getProperty */
 
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import DvUtils from "../../utils/cpr-dvUtils.js";
@@ -41,7 +41,7 @@ const Loadable = function Loadable() {
     LOGGER.trace("_measureDv | Loadable | Called.");
     let newDvTable = dvTable;
     if (actor.sheet.token !== null) {
-      const flag = getProperty(actor, `flags.cyberpunk-red-core.firetype-${this._id}`);
+      const flag = getProperty(actor, `flags.${game.system.id}.firetype-${this._id}`);
       if (flag === "autofire") {
         const afTable = (DvUtils.GetDvTables()).filter((name) => name.includes(dvTable) && name.includes("Autofire"));
         if (afTable.length > 0) {

@@ -1018,7 +1018,6 @@
     "CPR.tooltip.isTooLargeForThisField": "is too large for this field",
     "CPR.tooltip.maxOf": "max of",
     "CPR.tooltip.valueOf": "value of",
-    "CPR.system.message.toBeDeprecated": "Usage of '{functionName}' will be deprecated in a future release.  See changelog for more details.",
     "CPR.system.update.changelogInformation": "Check the changelog for more information on this release, which can be found",
     "CPR.system.update.here": "HERE",
     "CPR.system.update.popupTitle": "{systemTitle} - Version {version} Upgrade",

@@ -17,7 +17,7 @@ export default class CPRLedger extends FormApplication {
     LOGGER.trace("defaultOptions | CPRLedger | called.");
     return mergeObject(super.defaultOptions, {
       title: SystemUtils.Localize("CPR.ledger.title"),
-      template: "systems/cyberpunk-red-core/templates/dialog/cpr-ledger-form.hbs",
+      template: `systems/${game.system.id}/templates/dialog/cpr-ledger-form.hbs`,
       width: 600,
       height: 340,
     });

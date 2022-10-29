@@ -26,7 +26,7 @@ const tokenHooks = () => {
       // Defined x and/or y properties indicate the token is attempting to move to a new coordinate location.
       // this indicates a moved token, so we check the permissions.
       if (typeof data.x !== "undefined" || typeof data.y !== "undefined") {
-        if (typeof token.actor.getFlag("cyberpunk-red-core", "players-move") === "undefined") {
+        if (typeof token.actor.getFlag(game.system.id, "players-move") === "undefined") {
           SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.insufficientPermissions"));
           return false;
         }

@@ -1018,41 +1018,6 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * TODO: Delete this method after the March 2022 release.
-   * This method was created to facilitate homebrew critical injuries with a macro.
-   * It is not used anywhere else, and likely belongs in its own file to be exposed in
-   * a sanctioned API. (_rollCriticalInjury() largely replaces this functionality.)
-   *
-   * @returns {Object}
-   */
-  addCriticalInjury(location, name, effect, quickFixType, quickFixDV, treatmentType, treatmentDV, deathSaveIncrease = false) {
-    LOGGER.trace("addCriticalInjury | CPRActor | Called.");
-    SystemUtils.Format("CPR.system.message.toBeDeprecated", { functionName: "actor.addCriticalInjury" });
-    const itemData = {
-      type: "criticalInjury",
-      name,
-      data: {
-        location,
-        description: {
-          value: effect,
-          chat: "",
-          unidentified: "",
-        },
-        quickFix: {
-          type: quickFixType,
-          dv: quickFixDV,
-        },
-        treatment: {
-          type: treatmentType,
-          dv: treatmentDV,
-        },
-        deathSaveIncrease,
-      },
-    };
-    return this.createEmbeddedEntity("Item", itemData, { force: true });
-  }
-
-  /**
    * automaticallyStackItems searches for an identical item on the actor
    * and if found increments the amount and price for the item on the actor
    * instead of adding it as a new item.
@@ -1393,7 +1358,7 @@ export default class CPRActor extends Actor {
    */
   static async deleteEffect(effect) {
     LOGGER.trace("deleteEffect | CPRCharacterActor | Called.");
-    const setting = game.settings.get("cyberpunk-red-core", "deleteItemConfirmation");
+    const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     if (setting) {
       const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${effect.system.label}?`;
       const confirmDelete = await ConfirmPrompt.RenderPrompt(

@@ -2,9 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# The following vars come from build.sh which creates build.env
-# which is then loaded into the env by .gitlab-ci.yml
-# REPO_URL, SYSTEM_FILE, VERSION
+# The following vars are set during the 'init' CI job.
+# REPO_URL SYSTEM_FILE
 
 # Build so we can get the `latest` version of the `system.json` file
 # Build early to fail early before creating the release in Gitlab
