@@ -292,12 +292,8 @@ export default class CPRNetArchItem extends CPRItem {
    */
   async _duplicateScene(newName) {
     LOGGER.trace("_duplicateScene | CPRNetarchUtils | Called.");
-    let scene = null;
     const sceneName = (this.animated) ? "NetarchTemplate-animated" : "NetarchTemplate";
-    const sceneList = (await game.packs.get("cyberpunk-red-core.scenes").getDocuments()).filter((s) => s.name === sceneName);
-    if (sceneList.length > 0) {
-      [scene] = sceneList;
-    }
+    const scene = await SystemUtils.GetCompendiumDoc("scenes", sceneName);
     const sceneData = duplicate(scene);
     sceneData.id = null;
     sceneData.name = newName;

@@ -149,6 +149,19 @@ handlebars-helpers:
       - tags
       - dev
 
+compendia-use:
+  stage: test
+  script:
+    - echo "Making sure compendia APIs are used..."
+    - ./.gitlab/pipeline_tests/test-compendia-use.sh
+  needs:
+    - job: init
+  only:
+    refs:
+      - merge_requests
+      - tags
+      - dev
+
 # Build without artifacts when not tagging a release
 test-build:
   stage: test

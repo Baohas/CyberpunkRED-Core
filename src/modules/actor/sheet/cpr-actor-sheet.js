@@ -763,30 +763,17 @@ export default class CPRActorSheet extends ActorSheet {
   }
 
   /**
-   * Look up the critical injury rollable tables based on name.
-   *
-   * @private
-   * @returns {Array} - a sorted list of rollable table names that match expectations
-   */
-  static _getCriticalInjuryTables() {
-    LOGGER.trace("_getCriticalInjuryTables | CPRActorSheet | Called.");
-    const pattern = "^Critical Injury|^CriticalInjury|^CritInjury|^Crit Injury|^Critical Injuries|^CriticalInjuries";
-    const tableNames = [];
-    const tableList = SystemUtils.GetRollTables(pattern, true);
-    tableList.forEach((table) => tableNames.push(table.name));
-    return tableNames.sort();
-  }
-
-  /**
    * Pop up a dialog box asking which critical injury table to use and return the user's answer.
    *
+   * @async
    * @private
    * @returns {String} - chosen name of the rollable table to be used for critical injuries
    */
   static async _setCriticalInjuryTable() {
     LOGGER.trace("_setCriticalInjuryTable | CPRActorSheet | Called.");
-    const critInjuryTables = CPRActorSheet._getCriticalInjuryTables();
-    const formData = await RollCriticalInjuryPrompt.RenderPrompt(critInjuryTables).catch((err) => LOGGER.debug(err));
+    const critInjuryTables = await SystemUtils.GetCompendiumDocs("criticalInjuryTables");
+    const tableNames = critInjuryTables.map((t) => t.name);
+    const formData = await RollCriticalInjuryPrompt.RenderPrompt(tableNames).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return undefined;
     }
@@ -806,8 +793,8 @@ export default class CPRActorSheet extends ActorSheet {
     if (tableName === undefined) {
       return;
     }
-    const table = (SystemUtils.GetRollTables(tableName, false))[0];
-    this._drawCriticalInjuryTable(tableName, table, 0);
+    const table = await SystemUtils.GetCompendiumDoc("criticalInjuryTables", tableName);
+    this._drawCriticalInjuryTable(table, 0);
     this._automaticResize();
   }
 
@@ -817,88 +804,84 @@ export default class CPRActorSheet extends ActorSheet {
    * this method. There is cap to prevent recursing too much or if there are unreachable entries on the
    * table.
    *
-   * @param {String} tableName - the name of the table to roll on
-   * @param {RollTable} table - the rollable table to draw from (roll on)
-   * @param {Number} iteration - iteration #, used to track how many times we have rolled to bail if too many
+   * @param {RollTable} table - the rollable table to draw from (roll on), pulled from a compendium
+   * @param {Number} iteration - the number of times the injury table has been rolled. This is here as
+   *                             a safety mechanism for malformed custom tables that have unreachable
+   *                             results. This can happen if the formula is wrong.
    * @returns {null}
    */
-  async _drawCriticalInjuryTable(tableName, table, iteration) {
+  async _drawCriticalInjuryTable(table, iteration) {
     LOGGER.trace("_drawCriticalInjuryTable | CPRActorSheet | Called.");
-    if (iteration > 100) {
-      // 6% chance to reach here in case of only one rare critical injury remaining (2 or 12 on 2d6)
-      const crit = game.items.find((item) => (
-        (item.type === "criticalInjury") && (item.name === table._source[0].text)
-      ));
-      if (!crit) {
+    const setting = game.settings.get("cyberpunk-red-core", "preventDuplicateCriticalInjuries");
+
+    // check how many times we've been rolling. If this gets excessive maybe something is wrong with the table.
+    if (iteration > 1000) {
+      SystemUtils.DisplayMessage("error", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateLoopWarning")));
+      return;
+    }
+
+    // check that the table has critical injuries that could still be applied
+    let hurts = 0;
+    for (const injury of table.results) {
+      if (this.actor.itemTypes.criticalInjury.filter((i) => i.name === injury.text).length > 0) {
+        hurts += 1;
+      } else {
+        // there is at least 1 injury on this table the actor does not have yet
+        break;
+      }
+    }
+    if (hurts === table.results.size && setting === "reroll") {
+      // actor has every injury already, we cannot reroll for more
+      SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateAllWarning")));
+      return;
+    }
+
+    let injury;
+    table.draw({ displayChat: false }).then(async (res) => {
+      if (res.results.length !== 1) {
+        return;
+      }
+      // find the critical injury item that turned up in the roll
+      const injuryName = res.results[0].text;
+      injury = await SystemUtils.GetCompendiumDoc(CPR.criticalInjuryTables[table.name], injuryName);
+      if (!injury) {
         SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning")));
         return;
       }
-      const critType = crit.system.location;
-      LOGGER.debug(`critType is ${critType}`);
-      let numberCritInjurySameType = 0;
-      this.actor.itemTypes.criticalInjury.forEach((injury) => {
-        if (injury.system.location === critType) { numberCritInjurySameType += 1; }
-      });
-      if (table.results.contents.length <= numberCritInjurySameType) {
-        SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateAllWarning")));
-        return;
-      }
-      // Techincally possible to reach even if a critical injury is still missing (chance: 6*10e-11 %), though unlikely.
-      if (iteration > 1000) {
-        SystemUtils.DisplayMessage("error", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateLoopWarning")));
-        // Prevent endless loop in case of mixed (head and body) Critical Injury tables
-        // or unreachable elements in the rolltable.
-        return;
-      }
-    }
-    table.draw({ displayChat: false })
-      .then(async (res) => {
-        if (res.results.length > 0) {
-          // Check if the critical Injury already exists on the character
-          let injuryAlreadyExists = false;
-          this.actor.itemTypes.criticalInjury.forEach((injury) => {
-            if (injury.name === res.results[0].text) { injuryAlreadyExists = true; }
-          });
-          if (injuryAlreadyExists) {
-            const setting = game.settings.get("cyberpunk-red-core", "preventDuplicateCriticalInjuries");
-            if (setting === "reroll") {
-              this._drawCriticalInjuryTable(tableName, table, iteration + 1);
-              return;
-            }
-            if (setting === "warn") {
-              SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateWarning")));
-            }
-          }
-          const crit = game.items.find((item) => (
-            (item.type === "criticalInjury") && (item.name === res.results[0].text)
-          ));
-          if (!crit) {
-            SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning")));
-            return;
-          }
-          const cprItemData = {
-            name: crit.name,
-            type: crit.type,
-            img: crit.img,
-            system: duplicate(crit.system),
-          };
-          const result = await this.actor.createEmbeddedDocuments("Item", [cprItemData]);
-          const cprRoll = new CPRRolls.CPRTableRoll(
-            crit.name,
-            res.roll,
-            "systems/cyberpunk-red-core/templates/chat/cpr-critical-injury-rollcard.hbs",
-          );
-          cprRoll.rollCardExtraArgs.tableName = tableName;
-          cprRoll.rollCardExtraArgs.itemName = result[0].name;
-          cprRoll.rollCardExtraArgs.itemImg = result[0].img;
-          if (this.token) {
-            cprRoll.entityData = { actor: this.actor.id, token: this.token.id, item: result[0].id };
-          } else {
-            cprRoll.entityData = { actor: this.actor.id, item: result[0].id };
-          }
-          CPRChat.RenderRollCard(cprRoll);
+
+      // check whether the actor has this injury already
+      if (this.actor.itemTypes.criticalInjury.find((i) => i.name === injuryName)) {
+        if (setting === "reroll") {
+          await this._drawCriticalInjuryTable(table, iteration + 1);
+          return;
         }
-      });
+        if (setting === "warn") {
+          SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateWarning")));
+        }
+      }
+
+      const cprItemData = {
+        name: injury.name,
+        type: injury.type,
+        img: injury.img,
+        system: duplicate(injury.system),
+      };
+      const result = await this.actor.createEmbeddedDocuments("Item", [cprItemData]);
+      const cprRoll = new CPRRolls.CPRTableRoll(
+        injury.name,
+        res.roll,
+        "systems/cyberpunk-red-core/templates/chat/cpr-critical-injury-rollcard.hbs",
+      );
+      cprRoll.rollCardExtraArgs.tableName = table.name;
+      cprRoll.rollCardExtraArgs.itemName = result[0].name;
+      cprRoll.rollCardExtraArgs.itemImg = result[0].img;
+      if (this.token) {
+        cprRoll.entityData = { actor: this.actor.id, token: this.token.id, item: result[0].id };
+      } else {
+        cprRoll.entityData = { actor: this.actor.id, item: result[0].id };
+      }
+      CPRChat.RenderRollCard(cprRoll);
+    });
   }
 
   /**

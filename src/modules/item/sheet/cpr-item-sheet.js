@@ -219,8 +219,7 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("ItemSheet | _selectRoleBonuses | Called.");
     const cprItemData = this.item.system;
     const roleType = "mainRole";
-    const pack = game.packs.get("cyberpunk-red-core.skills");
-    const coreSkills = await pack.getDocuments();
+    const coreSkills = await SystemUtils.GetCompendiumDocs("skills");
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -256,8 +255,7 @@ export default class CPRItemSheet extends ItemSheet {
     const cprItemData = duplicate(this.item.system);
     const roleType = "subRole";
     const subRole = cprItemData.abilities.find((a) => a.name === subRoleName);
-    const pack = game.packs.get("cyberpunk-red-core.skills");
-    const coreSkills = await pack.getDocuments();
+    const coreSkills = await SystemUtils.GetCompendiumDocs("skills");
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -308,10 +306,8 @@ export default class CPRItemSheet extends ItemSheet {
     if (formData === undefined) {
       return;
     }
-    const packName = "cyberpunk-red-core.net-rolltables";
-    const packIndex = await game.packs.get(packName).getIndex();
-    const lobby = await game.packs.get(packName).getDocument(packIndex.contents.filter((i) => i.name === "First Two Floors (The Lobby)")[0]._id);
-    const other = await game.packs.get(packName).getDocument(packIndex.contents.filter((i) => i.name === "All Other Floors (".concat(formData.difficulty, ")"))[0]._id);
+    const lobby = await SystemUtils.GetCompendiumDoc("net-rolltables", "First Two Floors (The Lobby)");
+    const other = await SystemUtils.GetCompendiumDoc("net-rolltables", "All Other Floors (".concat(formData.difficulty, ")"));
     const numberOfFloorsRoll = new CPRRoll(SystemUtils.Localize("CPR.rolls.roll"), "3d6");
     await numberOfFloorsRoll.roll();
     const numberOfFloors = numberOfFloorsRoll.resultTotal;
@@ -805,8 +801,7 @@ export default class CPRItemSheet extends ItemSheet {
     const target = Number(SystemUtils.GetEventDatum(event, "data-action-target"));
     const action = SystemUtils.GetEventDatum(event, "data-action-type");
     const cprItemData = duplicate(this.item.system);
-    const pack = game.packs.get("cyberpunk-red-core.skills");
-    const coreSkills = await pack.getDocuments();
+    const coreSkills = await SystemUtils.GetCompendiumDocs("skills");
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
