@@ -19,6 +19,7 @@
          tier. Example, while `Dirt Cheap` is not supposed to start until `5 eb`, there's no category for `0-4 eb` so instead of it being in the `free`
          category, it is in the `Dirt Cheap` category.
 - #549 - stop reordering items from the role list of abilities after adding points to them (ex: Tech and Solo)
+- #471 - On a Macbook, the `Command` key can now be used in lieu of the `Control` key to skip roll dialogs
 
 
 # Version 0.83.1 | Date: 2022-10-23
