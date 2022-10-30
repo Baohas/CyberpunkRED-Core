@@ -9,7 +9,7 @@ export default class UpdateScreen extends Application {
     const { version } = game.system;
     const title = SystemUtils.Format("CPR.system.update.popupTitle", { systemTitle, version });
     return mergeObject(super.defaultOptions, {
-      template: `systems/cyberpunk-red-core/templates/dialog/cpr-update-announcement.hbs`,
+      template: `systems/${game.system.id}/templates/dialog/cpr-update-announcement.hbs`,
       resizable: true,
       width: 450,
       height: 636,
@@ -21,7 +21,7 @@ export default class UpdateScreen extends Application {
     LOGGER.trace("getData | UpdateScreen | Called.");
     const featureVideoLink = (typeof game.system.flags.featureVideoURL === "undefined") ? "" : game.system.flags.featureVideoURL;
 
-    const releaseSpecificInstructions = `systems/cyberpunk-red-core/lang/release-notes/v${game.system.version}`;
+    const releaseSpecificInstructions = `systems/${game.system.id}/lang/release-notes/v${game.system.version}`;
 
     let { lang } = game.i18n;
     let response = await fetch(`${releaseSpecificInstructions}.${lang}`);

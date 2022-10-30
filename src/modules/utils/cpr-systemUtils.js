@@ -196,7 +196,7 @@ export default class CPRSystemUtils {
    */
   static SetUserSetting(type, name, value, extraSettings) {
     LOGGER.trace("SetUserSetting | CPRSystemUtils | Called.");
-    const userSettings = game.settings.get("cyberpunk-red-core", "userSettings") ? game.settings.get("cyberpunk-red-core", "userSettings") : {};
+    const userSettings = game.settings.get(game.system.id, "userSettings") ? game.settings.get(game.system.id, "userSettings") : {};
     switch (type) {
       case "sheetConfig": {
         // If this is a sheetConfig setting, our user may have settings for different sheets, so
@@ -223,7 +223,7 @@ export default class CPRSystemUtils {
       }
     }
     // Update the userSettings object
-    game.settings.set("cyberpunk-red-core", "userSettings", userSettings);
+    game.settings.set(game.system.id, "userSettings", userSettings);
   }
 
   /**
@@ -236,7 +236,7 @@ export default class CPRSystemUtils {
    */
   static GetUserSetting(type, name, extraSettings) {
     LOGGER.trace("GetUserSetting | CPRSystemUtils | Called.");
-    const userSettings = game.settings.get("cyberpunk-red-core", "userSettings") ? game.settings.get("cyberpunk-red-core", "userSettings") : {};
+    const userSettings = game.settings.get(game.system.id, "userSettings") ? game.settings.get(game.system.id, "userSettings") : {};
     let requestedValue;
     switch (type) {
       case "sheetConfig": {
@@ -268,82 +268,82 @@ export default class CPRSystemUtils {
     if (foundryObject === "Item") {
       switch (objectType) {
         case "ammo": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Ammo.svg`;
           break;
         }
         case "armor": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Armor.svg`;
           break;
         }
         case "clothing": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Clothing.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Clothing.svg`;
           break;
         }
         case "criticalInjury": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Critical_Injury.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Critical_Injury.svg`;
           break;
         }
         case "cyberdeck": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Cyberdeck.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Cyberdeck.svg`;
           break;
         }
         case "cyberware": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Cyberware.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Cyberware.svg`;
           break;
         }
         case "gear": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Gear.svg`;
           break;
         }
         case "netarch": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Net_Architecture.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Net_Architecture.svg`;
           break;
         }
         case "program": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Program.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Program.svg`;
           break;
         }
         case "role": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Role.svg`;
           break;
         }
         case "skill": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Skill.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Skill.svg`;
           break;
         }
         case "vehicle": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Vehicle.svg`;
           break;
         }
         case "weapon": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/weapons/heavyPistol.svg`;
           break;
         }
         default: {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Gear.svg`;
           break;
         }
       }
     } else if (foundryObject === "Actor") {
       switch (objectType) {
         case "blackIce": {
-          imageLink = "systems/cyberpunk-red-core/icons/netrunning/Black_Ice.png";
+          imageLink = `systems/${game.system.id}/icons/netrunning/Black_Ice.png`;
           break;
         }
         case "container": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Container.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Container.svg`;
           break;
         }
         case "demon": {
-          imageLink = "systems/cyberpunk-red-core/icons/netrunning/Demon.png";
+          imageLink = `systems/${game.system.id}/icons/netrunning/Demon.png`;
           break;
         }
         case "mook": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Mook.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Mook.svg`;
           break;
         }
         default: {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_CPR_Mystery_Man.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_CPR_Mystery_Man.svg`;
         }
       }
     }

@@ -6,9 +6,21 @@
 **Changes**
 - #434 - users no longer need to import critical injury compendia to use that functionality
 - Drugs can now be equipped, owned, or carried.
+- Moved created migrationFolder management on CPRMigration and moved backupOwnedItem to CPRMigration as it will probably become
+  necessary if we have more ActiveEffect changes in the future.
 
 **Bug Fixes**
--
+- Fix Elfline Online Armory macro
+- #553 - Macros can be dragged to the hotbar.
+- #546 - Techscanner now properly gives bonuses to Cybertech and Weaponstech
+- #547 - Fixed the code so upgrades to attackmod are now taken into consideration
+- #554 - Introduced now price category `Dirt Cheap`. Changed the code to store Price Categories as config data (`config.js`) and altered code
+         to dynamically display the price categories based on the price passed `cprGetPriceCategory`. The `Valueable` mixin code was also adjusted
+         to utilize this single location of Price Categories.  Any item priced > 0 or < the second category will be lumped into the lowest category
+         tier. Example, while `Dirt Cheap` is not supposed to start until `5 eb`, there's no category for `0-4 eb` so instead of it being in the `free`
+         category, it is in the `Dirt Cheap` category.
+- #549 - stop reordering items from the role list of abilities after adding points to them (ex: Tech and Solo)
+- #471 - On a Macbook, the `Command` key can now be used in lieu of the `Control` key to skip roll dialogs
 
 
 # Version 0.83.1 | Date: 2022-10-23

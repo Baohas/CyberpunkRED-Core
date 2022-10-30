@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* global game hasProperty */
+/* global game hasProperty Item */
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
@@ -24,6 +24,7 @@ export default class CPRMigration {
     this.statusMessage = "";
     this.name = "Base CPRMigration Class";
     this.foundryMajorVersion = parseInt(game.version, 10);
+    this.migrationFolder = null;
   }
 
   /**
@@ -101,7 +102,7 @@ export default class CPRMigration {
     if (this.errors !== 0) {
       throw Error("Migration errors encountered");
     }
-    await game.settings.set("cyberpunk-red-core", "dataModelVersion", this.version);
+    await game.settings.set(game.system.id, "dataModelVersion", this.version);
     return true;
   }
 
@@ -200,7 +201,7 @@ export default class CPRMigration {
    *
    * @param {CPRActor} actor
    */
-  static async migrateActor(actor) {
+  async migrateActor(actor) {
     LOGGER.trace("migrateActor | CPRMigration");
   }
 
@@ -305,6 +306,62 @@ export default class CPRMigration {
     return good;
   }
 
+  static async createMigrationFolder() {
+    LOGGER.trace("createMigrationFolder | CPRMigration");
+    this.migrationFolder = await CPRSystemUtils.GetFolder("Item", `Active Effect ${this.name} Workspace`);
+  }
+
+  static deleteMigrationFolder() {
+    LOGGER.trace("deleteMigrationFolder | CPRMigration");
+    if (this.migrationFolder.contents.length === 0) {
+      LOGGER.debug("would delete migration folder");
+      this.migrationFolder.delete();
+    }
+  }
+
+  /**
+   * Copy an (owned) Item into the migration work folder. This will enable active effects to be created
+   * or changed on them. If it already exists, just return that.
+   *
+   * Note: this method is not idempotent intentionally. Tracking what should or should not backed up
+   *       is a hard problem because the IDs will always change with each call.
+   *
+   * @param {CPRItem} item - the item we are copying
+   * @returns the copied item data
+   */
+  static async backupOwnedItem(item) {
+    LOGGER.trace("backupOwnedItem | CPRMigration");
+    if (!this.migrationFolder) {
+      await this.createMigrationFolder();
+    }
+
+    const newItem = await Item.create({
+      name: item.name,
+      type: item.type,
+      system: item.system,
+      img: item.img,
+      folder: this.migrationFolder,
+    }, {
+      isMigrating: true,
+    });
+
+    if (item.effects.size > 0) {
+      for (const sourceEffect of item.effects) {
+        const [effect] = await newItem.createEffect();
+        const newData = {
+          _id: effect.id,
+          label: sourceEffect.name,
+          icon: sourceEffect.icon,
+          system: sourceEffect.system,
+          changes: sourceEffect.changes,
+          flags: sourceEffect.flags,
+          disabled: sourceEffect.disabled,
+        };
+        await newItem.updateEmbeddedDocuments("ActiveEffect", [newData]);
+      }
+    }
+    return newItem;
+  }
   /**
    * This block of abstract methods breaks down how each document type is migrated. If there
    * are any steps that need to be taken before migrating, put them in preMigrate. Likewise

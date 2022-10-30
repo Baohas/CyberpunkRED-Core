@@ -1,5 +1,5 @@
 /* eslint-disable no-shadow */
-/* global renderTemplate, FormDataExtended, Dialog foundry */
+/* global game renderTemplate, FormDataExtended, Dialog foundry */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 
@@ -8,7 +8,7 @@ export default class InstallCyberwarePrompt {
     LOGGER.trace("RenderPrompt | InstallCyberwarePrompt | called.");
     // setup
     return new Promise((resolve, reject) => {
-      const template = "systems/cyberpunk-red-core/templates/dialog/cpr-install-cyberware-prompt.hbs";
+      const template = `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`;
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {
           LOGGER.trace("_onCancel | Dialog InstallCyberwarePrompt | called.");

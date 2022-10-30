@@ -46,7 +46,7 @@ export default class CPRMacro {
     }
 
     if (rollType === "damage") {
-      extraData.damageType = actor.getFlag("cyberpunk-red-core", `firetype-${item._id}`);
+      extraData.damageType = actor.getFlag(game.system.id, `firetype-${item._id}`);
     }
 
     let cprRoll = item.createRoll(rollType, actor, extraData);
@@ -56,7 +56,7 @@ export default class CPRMacro {
 
     const fireModes = ["aimed", "autofire", "suppressive"];
     if (fireModes.includes(rollType)) {
-      actor.setFlag("cyberpunk-red-core", `firetype-${item._id}`, rollType);
+      actor.setFlag(game.system.id, `firetype-${item._id}`, rollType);
     }
 
     if (!extraData.skipPrompt) {

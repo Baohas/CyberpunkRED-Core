@@ -35,7 +35,7 @@ export default class BaseMigration extends CPRMigration {
           await i.update(updateData, { diff: false });
         }
       } catch (err) {
-        err.message = `CPR MIGRATION | Failed cyberpunk-red-core system migration for Item ${i.name}: ${err.message}`;
+        err.message = `CPR MIGRATION | Failed ${game.system.id} system migration for Item ${i.name}: ${err.message}`;
         this.errors += 1;
         LOGGER.error(err);
       }
@@ -66,7 +66,7 @@ export default class BaseMigration extends CPRMigration {
           await a.update(updateData, { enforceTypes: false });
         }
       } catch (err) {
-        err.message = `CPR MIGRATION | Failed cyberpunk-red-core system migration for Actor ${a.name}: ${err.message}`;
+        err.message = `CPR MIGRATION | Failed ${game.system.id} system migration for Actor ${a.name}: ${err.message}`;
         this.errors += 1;
         LOGGER.error(err);
       }
@@ -105,7 +105,7 @@ export default class BaseMigration extends CPRMigration {
           });
         }
       } catch (err) {
-        err.message = `CPR MIGRATION | Failed cyberpunk-red-core system migration for Scene ${s.name}: ${err.message}`;
+        err.message = `CPR MIGRATION | Failed ${game.system.id} system migration for Scene ${s.name}: ${err.message}`;
         this.errors += 1;
         LOGGER.error(err);
       }
@@ -113,7 +113,7 @@ export default class BaseMigration extends CPRMigration {
     if (this.errors !== 0) {
       return false;
     }
-    game.settings.set("cyberpunk-red-core", "dataModelVersion", this.version);
+    game.settings.set(game.system.id, "dataModelVersion", this.version);
     return true;
   }
 
@@ -124,15 +124,15 @@ export default class BaseMigration extends CPRMigration {
 
     // Remove flags from container actors, they should be configured on token actors
     if (actorData.type === "container" && dataSource === "actor" && !actorData.token.actorLink) {
-      updateData["flags.cyberpunk-red-core.-=infinite-stock"] = null;
-      updateData["flags.cyberpunk-red-core.-=items-free"] = null;
-      updateData["flags.cyberpunk-red-core.-=players-create"] = null;
-      updateData["flags.cyberpunk-red-core.-=players-delete"] = null;
-      updateData["flags.cyberpunk-red-core.-=players-modify"] = null;
-      updateData["flags.cyberpunk-red-core.-=shop"] = null;
-      updateData["flags.cyberpunk-red-core.-=stash"] = null;
-      updateData["flags.cyberpunk-red-core.-=loot"] = null;
-      updateData["flags.cyberpunk-red-core.-=custom"] = null;
+      updateData[`flags.${game.system.id}.-=infinite-stock`] = null;
+      updateData[`flags.${game.system.id}.-=items-free`] = null;
+      updateData[`flags.${game.system.id}.-=players-create`] = null;
+      updateData[`flags.${game.system.id}.-=players-delete`] = null;
+      updateData[`flags.${game.system.id}.-=players-modify`] = null;
+      updateData[`flags.${game.system.id}.-=shop`] = null;
+      updateData[`flags.${game.system.id}.-=stash`] = null;
+      updateData[`flags.${game.system.id}.-=loot`] = null;
+      updateData[`flags.${game.system.id}.-=custom`] = null;
     }
 
     // Migrate Owned Items
@@ -452,15 +452,15 @@ export default class BaseMigration extends CPRMigration {
 
     if (actor.type === "container") {
       const actorFlags = actor.data.flags;
-      if (typeof actorFlags["cyberpunk-red-core"] === "undefined") {
-        actor.data.flags["cyberpunk-red-core"] = {};
+      if (typeof actorFlags[game.system.id] === "undefined") {
+        actor.data.flags[game.system.id] = {};
       }
 
-      const systemFlags = actor.data.flags["cyberpunk-red-core"];
+      const systemFlags = actor.data.flags[game.system.id];
 
       if (typeof systemFlags["container-type"] === "undefined") {
-        actor.setFlag("cyberpunk-red-core", "container-type", "shop");
-        actor.setFlag("cyberpunk-red-core", "players-sell", true);
+        actor.setFlag(game.system.id, "container-type", "shop");
+        actor.setFlag(game.system.id, "players-sell", true);
       }
     }
 
@@ -1046,7 +1046,7 @@ export default class BaseMigration extends CPRMigration {
         // Save the entry
         await doc.update(updateData);
       } catch (err) {
-        err.message = `Failed cyberpunk-red-core system migration for entity ${doc.name} in pack ${pack.collection}: ${err.message}`;
+        err.message = `Failed ${game.system.id} system migration for entity ${doc.name} in pack ${pack.collection}: ${err.message}`;
         this.errors += 1;
         LOGGER.error(err);
       }

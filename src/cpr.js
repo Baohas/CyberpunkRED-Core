@@ -29,7 +29,7 @@ import registerSystemSettings from "./modules/system/settings.js";
 
 // This defines the version of the Data Model for this release.  We should
 // only update this when the Data Model Changes.
-const DATA_MODEL_VERSION = 3;
+const DATA_MODEL_VERSION = 4;
 export default DATA_MODEL_VERSION;
 
 Hooks.once("init", async () => {
@@ -37,20 +37,20 @@ Hooks.once("init", async () => {
   LOGGER.credits();
   // Register Actor Sheet Application Classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("cyberpunk-red-core", CPRCharacterActorSheet,
+  Actors.registerSheet(game.system.id, CPRCharacterActorSheet,
     { label: SystemUtils.Localize("CPR.sheets.characterSheet"), types: ["character", "mook"], makeDefault: true });
-  Actors.registerSheet("cyberpunk-red-core", CPRBlackIceActorSheet,
+  Actors.registerSheet(game.system.id, CPRBlackIceActorSheet,
     { label: SystemUtils.Localize("CPR.sheets.blackiceSheet"), types: ["blackIce"], makeDefault: true });
-  Actors.registerSheet("cyberpunk-red-core", CPRContainerActorSheet,
+  Actors.registerSheet(game.system.id, CPRContainerActorSheet,
     { label: SystemUtils.Localize("CPR.sheets.containerSheet"), types: ["container"], makeDefault: true });
-  Actors.registerSheet("cyberpunk-red-core", CPRDemonActorSheet,
+  Actors.registerSheet(game.system.id, CPRDemonActorSheet,
     { label: SystemUtils.Localize("CPR.sheets.demonSheet"), types: ["demon"], makeDefault: true });
-  Actors.registerSheet("cyberpunk-red-core", CPRMookActorSheet,
+  Actors.registerSheet(game.system.id, CPRMookActorSheet,
     { label: SystemUtils.Localize("CPR.sheets.mookSheet"), types: ["character", "mook"] });
 
   // Register Item Sheet Application Classes
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("cyberpunk-red-core", CPRItemSheet, {
+  Items.registerSheet(game.system.id, CPRItemSheet, {
     types: [
       "ammo",
       "armor",
@@ -86,7 +86,7 @@ Hooks.once("init", async () => {
 
   // Assign the actor class to the CONFIG
   CONFIG.ActiveEffect.documentClass = CPRActiveEffect;
-  DocumentSheetConfig.registerSheet(CPRActiveEffect, "cyberpunk-red-core", CPRActiveEffectSheet, { makeDefault: true });
+  DocumentSheetConfig.registerSheet(CPRActiveEffect, game.system.id, CPRActiveEffectSheet, { makeDefault: true });
   CONFIG.Actor.documentClass = actorConstructor;
   CONFIG.Combat.documentClass = CPRCombat;
   CONFIG.Item.documentClass = itemConstructor;
@@ -112,7 +112,7 @@ Hooks.once("ready", async () => {
   // Retrofit the old version scheme into the new one. The active effects migration assumes
   // the legacy migration scripts have been run before (i.e. they're on 0.80.0). If that is
   // not the case, we force them to migrate to 0.80.0 before moving to "1".
-  let dataModelVersion = (game.settings.get("cyberpunk-red-core", "dataModelVersion")) ? game.settings.get("cyberpunk-red-core", "dataModelVersion") : "0.0";
+  let dataModelVersion = (game.settings.get(game.system.id, "dataModelVersion")) ? game.settings.get(game.system.id, "dataModelVersion") : "0.0";
 
   LOGGER.debug(`Data model before comparison: ${dataModelVersion}`);
   if (dataModelVersion.indexOf(".") > -1) dataModelVersion = isNewerVersion("0.80.0", dataModelVersion) ? -1 : 0;

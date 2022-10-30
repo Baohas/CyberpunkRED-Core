@@ -1,11 +1,11 @@
-/* global renderTemplate, Dialog */
+/* global game renderTemplate, Dialog */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 
 export default class DamageApplicationPrompt {
   static async RenderPrompt(title, data) {
     LOGGER.trace("RenderPrompt | DamageApplicationPrompt | called.");
-    const template = "systems/cyberpunk-red-core/templates/dialog/cpr-damage-application-prompt.hbs";
+    const template = `systems/${game.system.id}/templates/dialog/cpr-damage-application-prompt.hbs`;
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {

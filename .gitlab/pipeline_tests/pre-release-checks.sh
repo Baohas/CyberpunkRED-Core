@@ -2,15 +2,12 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# The following vars come from build.sh which creates build.env
-# which is then loaded into the env by .gitlab-ci.yml
-# PROJECT_URL RELEASE_NAME REPO_URL SYSTEM_FILE VERSION ZIP_FILE
+# The following vars are set during the 'init' CI job.
+# CHANGELOG_FILE PROJECT_URL RELEASE_NAME REPO_URL SYSTEM_FILE VERSION ZIP_FILE
 
 # Create error counter
 errors=0
 
-# Verify that we don't have the "WIP" string in the changelog.
-CHANGELOG=CHANGELOG.md
 # Get the release from GitLab
 RELEASE=$(curl \
   --silent \
@@ -29,7 +26,7 @@ RELEASE_DOWNLOAD=$(echo "${RELEASE}" \
 )
 
 # Test if we have updated the CHANGELOG.md
-if grep -q "WIP" "${CHANGELOG}"; then
+if grep -q "WIP" "${CHANGELOG_FILE}"; then
 	echo "❌ The string 'WIP' exists in the changelog..."
   ((errors+=1))
 else

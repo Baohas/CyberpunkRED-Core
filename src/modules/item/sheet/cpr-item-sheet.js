@@ -50,7 +50,7 @@ export default class CPRItemSheet extends ItemSheet {
   // eslint-disable-next-line class-methods-use-this
   get template() {
     LOGGER.trace("template | CPRItemSheet | Called.");
-    return `systems/cyberpunk-red-core/templates/item/cpr-item-sheet.hbs`;
+    return `systems/${game.system.id}/templates/item/cpr-item-sheet.hbs`;
   }
 
   get classes() {
@@ -219,7 +219,7 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("ItemSheet | _selectRoleBonuses | Called.");
     const cprItemData = this.item.system;
     const roleType = "mainRole";
-    const coreSkills = SystemUtils.GetCompendiumDocs("skills");
+    const coreSkills = await SystemUtils.GetCompendiumDocs("skills");
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -255,7 +255,7 @@ export default class CPRItemSheet extends ItemSheet {
     const cprItemData = duplicate(this.item.system);
     const roleType = "subRole";
     const subRole = cprItemData.abilities.find((a) => a.name === subRoleName);
-    const coreSkills = SystemUtils.GetCompendiumDocs("skills");
+    const coreSkills = await SystemUtils.GetCompendiumDocs("skills");
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -290,7 +290,7 @@ export default class CPRItemSheet extends ItemSheet {
 
   _automaticResize() {
     LOGGER.trace("_automaticResize | CPRItemSheet | Called.");
-    const setting = game.settings.get("cyberpunk-red-core", "automaticallyResizeSheets");
+    const setting = game.settings.get(game.system.id, "automaticallyResizeSheets");
     if (setting && this.rendered && !this._minimized) {
       // It seems that the size of the content does not change immediately upon updating the content
       setTimeout(() => {
@@ -306,8 +306,8 @@ export default class CPRItemSheet extends ItemSheet {
     if (formData === undefined) {
       return;
     }
-    const lobby = SystemUtils.GetCompendiumDoc("net-rolltables", "First Two Floors (The Lobby)");
-    const other = SystemUtils.GetCompendiumDoc("net-rolltables", "All Other Floors (".concat(formData.difficulty, ")"));
+    const lobby = await SystemUtils.GetCompendiumDoc("net-rolltables", "First Two Floors (The Lobby)");
+    const other = await SystemUtils.GetCompendiumDoc("net-rolltables", "All Other Floors (".concat(formData.difficulty, ")"));
     const numberOfFloorsRoll = new CPRRoll(SystemUtils.Localize("CPR.rolls.roll"), "3d6");
     await numberOfFloorsRoll.roll();
     const numberOfFloors = numberOfFloorsRoll.resultTotal;
@@ -446,7 +446,7 @@ export default class CPRItemSheet extends ItemSheet {
     const cprItemData = duplicate(this.item.system);
 
     if (action === "delete") {
-      const setting = game.settings.get("cyberpunk-red-core", "deleteItemConfirmation");
+      const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
       if (setting) {
         const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${SystemUtils.Localize("CPR.netArchitecture.floor.deleteConfirmation")}?`;
         const confirmDelete = await ConfirmPrompt.RenderPrompt(
@@ -801,7 +801,7 @@ export default class CPRItemSheet extends ItemSheet {
     const target = Number(SystemUtils.GetEventDatum(event, "data-action-target"));
     const action = SystemUtils.GetEventDatum(event, "data-action-type");
     const cprItemData = duplicate(this.item.system);
-    const coreSkills = SystemUtils.GetCompendiumDocs("skills");
+    const coreSkills = await SystemUtils.GetCompendiumDocs("skills");
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -865,7 +865,7 @@ export default class CPRItemSheet extends ItemSheet {
     }
 
     if (action === "delete") {
-      const setting = game.settings.get("cyberpunk-red-core", "deleteItemConfirmation");
+      const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
       if (setting) {
         const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${SystemUtils.Localize("CPR.itemSheet.role.deleteConfirmation")}?`;
         const confirmDelete = await ConfirmPrompt.RenderPrompt(

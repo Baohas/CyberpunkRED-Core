@@ -34,7 +34,7 @@ const externalHooks = () => {
       }
     }
 
-    dragRuler.registerSystem("cyberpunk-red-core", cprSpeedProvider);
+    dragRuler.registerSystem(game.system.id, cprSpeedProvider);
   });
   Hooks.on("init", () => {
     if (game.modules.get("babele") !== undefined && game.modules.get("babele")?.active) {

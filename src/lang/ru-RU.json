@@ -883,6 +883,8 @@
     "CPR.mookSheet.items.shiftClickToInstallorUninstall": "Shift-Click to install or uninstall the cyberware",
     "CPR.mookSheet.items.specialGear": "Special Gear",
     "CPR.mookSheet.items.unloaded": "Unloaded",
+    "CPR.mookSheet.noArmorEquipped": "No armor equipped",
+    "CPR.mookSheet.noWeaponEquipped": "No weapon equipped",
     "CPR.mookSheet.skills.base": "Base",
     "CPR.mookSheet.skills.clickToRollThisSkill": "Click to roll this skill",
     "CPR.mookSheet.skills.level": "Level",

@@ -883,6 +883,8 @@
     "CPR.mookSheet.items.shiftClickToInstallorUninstall": "Shift-Click per installare o disinstallare il cyberware",
     "CPR.mookSheet.items.specialGear": "Equipaggiamento Speciale",
     "CPR.mookSheet.items.unloaded": "Scaricata",
+    "CPR.mookSheet.noArmorEquipped": "Nessuna armatura equipaggiata",
+    "CPR.mookSheet.noWeaponEquipped": "Nessun arma equipaggiata",
     "CPR.mookSheet.skills.base": "Base",
     "CPR.mookSheet.skills.clickToRollThisSkill": "Clicca per tirare su questa Abilità",
     "CPR.mookSheet.skills.level": "Livello",
