@@ -221,8 +221,8 @@ export class CPRRoll {
     }
 
     if (!skipDialog) {
-      const dialog = await new CPRDialog(this).render(true);
-      const formData = await VerifyRoll.RenderPrompt(this).catch((err) => LOGGER.debug(err));
+      const dialog = await CPRDialog.verifyRoll(this);
+      // const formData = await VerifyRoll.RenderPrompt(this).catch((err) => LOGGER.debug(err));
       if (dialog === undefined) {
         // returns false if the dialog was closed
         return false;

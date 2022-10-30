@@ -6,9 +6,9 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
  * Form application to handle dialogs more generally.
  */
 export default class CPRDialog extends FormApplication {
-  constructor(rollData) {
+  constructor(rollData, options) {
     LOGGER.trace("constructor | CPRDialog | Called.");
-    super(rollData, { title: rollData.rollTitle });
+    super(rollData, options);
     this.rollData = rollData;
     this.object = rollData;
   }
@@ -23,12 +23,12 @@ export default class CPRDialog extends FormApplication {
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRDialog | called.");
     return mergeObject(super.defaultOptions, {
-      title: `Roll Confirmation for...`,
       template: "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-universal-roll-prompt.hbs",
       width: "auto",
       height: "auto",
       closeOnSubmit: false,
-      submitOnChange: false,
+      submitOnChange: true,
+      submitOnClose: true,
     });
   }
 
@@ -48,6 +48,7 @@ export default class CPRDialog extends FormApplication {
 
     // Select all text when grabbing text input.
     $("input[type=text]").focusin(() => $(this).select());
+    $("input[type=number]").focusin(() => $(this).select());
 
     // generic listeners
     html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
@@ -62,23 +63,42 @@ export default class CPRDialog extends FormApplication {
     const value = !getProperty(rollData, target);
     if (hasProperty(rollData, target)) {
       setProperty(rollData, target, value);
-      // this.update(rollData);
-      // LOGGER.log(`Item ${this.item.id} ${target} set to ${value}`);
       // this._automaticResize(); // Resize the sheet as length of settings list might have changed
     }
   }
 
-  static async verifyRoll() {
+  // eslint-disable-next-line foundry-cpr/logger-after-function-definition
+  async close(options) {
+    /** Taken from Starfinder: Fire callback, then delete, as it would get called again by Dialog#close. */
+    if (this.options.close) {
+      this.options.close();
+      delete this.options.close;
+    }
+    return super.close(options);
+  }
+
+  static async verifyRoll(cprRoll) {
     LOGGER.trace("verifyRoll | CPR Dialog | Called.");
-    return new Promise((resolve, reject) => {
-      resolve();
+    return new Promise((resolve) => {
+      const dlg = new CPRDialog(cprRoll, {
+        close: () => resolve(cprRoll),
+        title: cprRoll.rollTitle,
+      });
+      dlg.render(true);
     });
   }
 
   // eslint-disable-next-line no-unused-vars, foundry-cpr/logger-after-function-definition
   async _updateObject(event, formData) {
-    mergeObject(this.rollData, formData);
+    const fd = duplicate(formData);
+    if (formData.mods) {
+      fd.mods = fd.mods.replace(/ +/g, ",");
+      fd.mods = fd.mods.replace(/,+/g, ",");
+      fd.mods = fd.mods.split(",").map(Number);
+    } else {
+      fd.mods = [];
+    }
+    mergeObject(this.rollData, fd);
     this.render(true); // rerenders the FormApp with the new data.
-    return true;
   }
 }
