@@ -5,15 +5,19 @@ IFS=$'\n\t'
 # The following vars are set during the 'init' CI job.
 # CHANGELOG_FILE
 
-# If not during a MR related job this will not be set, so default to dev
-CI_MERGE_REQUEST_TARGET_BRANCH_NAME="${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-dev}"
-# Make a shorter variable
-BRANCH="${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}"
+# The following vare are set by GitLab CI
+# CI_MERGE_REQUEST_TARGET_BRANCH_NAME
 
-# Check that Gitlab has fetched the dev branch
+# If not during a MR related job this will not be set, so default to dev
+BRANCH="${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-dev}"
+
+# Check that Gitlab has the target branch fetched and if not fetch it
 if ! git branch -a | grep -q "remotes/origin/${BRANCH}"; then
-  echo "remotes/origin/${BRANCH} branch does not exist"
-  exit 1
+  if ! git fetch --quiet origin "${BRANCH}" ; then
+    echo "❌ Unable to fetch ${BRANCH}"
+    echo "Check the target branch exists and re-run the job"
+    exit 1
+  fi
 fi
 
 # Test if the CHANGELOG has been updated
