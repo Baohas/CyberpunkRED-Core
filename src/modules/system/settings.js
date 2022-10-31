@@ -1,12 +1,12 @@
 /* global game */
-import LOGGER from "../utils/cpr-logger.js";
+import CPR from "./config.js";
 import CPRInjurySettings from "../apps/cpr-injury-settings.js";
+import LOGGER from "../utils/cpr-logger.js";
 
 /**
  * This file defines user settings for the system module.
  */
 const registerSystemSettings = () => {
-<<<<<<< HEAD
   // XXX: Debug and trace logs come first because sometimes we're using them while in the
   //      early initialization of FoundryVTT.
   game.settings.register("cyberpunk-red-core", "debugLogs", {
@@ -46,9 +46,6 @@ const registerSystemSettings = () => {
   });
 
   game.settings.register("cyberpunk-red-core", "playersCreateInventory", {
-=======
-  game.settings.register(game.system.id, "playersCreateInventory", {
->>>>>>> dev
     name: "CPR.settings.playersCreateInventory.name",
     hint: "CPR.settings.playersCreateInventory.hint",
     scope: "world",
@@ -148,7 +145,7 @@ const registerSystemSettings = () => {
     scope: "world",
     config: false,
     type: String,
-    default: "default",
+    default: CPR.defaultCriticalInjuryTable,
     onChange: (value) => {
       LOGGER.log(`Changed criticalInjuryRollTableCompendium to ${value}`);
     },
@@ -218,45 +215,6 @@ const registerSystemSettings = () => {
       LOGGER.log(`Changed dataModelVersion to ${value}`);
     },
   });
-<<<<<<< HEAD
-=======
-
-  game.settings.register(game.system.id, "debugLogs", {
-    name: "CPR.settings.debugLogs.name",
-    hint: "CPR.settings.debugLogs.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed debugLogs to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "debugElements", {
-    name: "CPR.settings.debugElements.name",
-    hint: "CPR.settings.debugElements.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed debugElements to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "traceLogs", {
-    name: "CPR.settings.traceLogs.name",
-    hint: "CPR.settings.traceLogs.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed traceLogs to ${value}`);
-    },
-  });
->>>>>>> dev
 };
 
 export default registerSystemSettings;

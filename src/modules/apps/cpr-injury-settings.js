@@ -1,5 +1,5 @@
 /* global game FormApplication mergeObject */
-
+import CPR from "../system/config.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
@@ -42,9 +42,9 @@ export default class CPRInjurySettings extends FormApplication {
   async getData() {
     LOGGER.trace("CPRInjurySettings | getData | called.");
     const current = await game.settings.get(game.system.id, "criticalInjuryRollTableCompendium");
-    const tables = { default: "CPR.settings.criticalInjuryRollTableCompendium.default" };
+    const tables = { [CPR.defaultCriticalInjuryTable]: "CPR.settings.criticalInjuryRollTableCompendium.default" };
     const comps = SystemUtils.GetWorldCompendia("RollTable");
-    for (const comp of comps) tables[comp.metadata.name] = comp.metadata.label;
+    for (const comp of comps) tables[`world.${comp.metadata.name}`] = comp.metadata.label;
     return { choices: tables, current };
   }
 
