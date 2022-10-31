@@ -90,10 +90,12 @@ unit-test:
 
 test-shell-scripts:
   stage: test
+  image: mvdan/shfmt:latest-alpine
   before_script:
-    - apt-get update
-    - apt-get install shellcheck
+    - apk update
+    - apk add bash shellcheck
   script:
+    - echo "Testing Shell Scripts..."
     - ./.gitlab/pipeline_tests/test-shell-scripts.sh
   needs:
     - job: init
