@@ -50,7 +50,7 @@ delete-packages-dev:
   rules:
     - if: $CPR_SCHEDULE == "cleanup-dev"
 
-lint:
+lint-code:
   stage: test
   script:
     - echo "Linting code..."
@@ -290,6 +290,7 @@ build-artifacts:
   needs:
     - job: init
       artifacts: true
+    - job: lint-code
     - job: unit-test
     - job: test-shell-scripts
       optional: true
