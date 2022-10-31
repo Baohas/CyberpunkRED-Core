@@ -30,7 +30,7 @@ i=0
 for lang in ${langfiles}; do
   if [[ ! -f "src/${lang}" ]]; then
     echo "❌ Unable to find src/${lang}"
-    ((i+=1))
+    ((i += 1))
   else
     echo "✅ ${lang} found!"
   fi

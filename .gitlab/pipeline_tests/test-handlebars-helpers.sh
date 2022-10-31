@@ -25,18 +25,18 @@ fi
 
 # Check if helpers are used and start with cpr
 i=0
-for helper in ${helpers} ; do
+for helper in ${helpers}; do
   if ! grep -rq "${helper}" src/templates/*; then
     # it is ok if cprDebug and cprIsDebug are not used anywhere
-    if [[  ! "${helper}" == "cprDebug" || "${helper}" == "cprIsDebug" ]] ; then
+    if [[ ! "${helper}" == "cprDebug" || "${helper}" == "cprIsDebug" ]]; then
       echo "❌ Handlebars helper not used: ${helper}"
-      i=$((i+=1))
+      i=$((i += 1))
     else
       echo "✅ ${helper} Handlebars helper found!"
     fi
   elif [[ ! "${helper}" =~ ^cpr.* ]]; then
     echo "❌ Handbars helpers must start with 'cpr', ${helper} does not."
-    i=$((i+=1))
+    i=$((i += 1))
   else
     echo "✅ ${helper} Handlebars helper starts with 'cpr'!"
   fi

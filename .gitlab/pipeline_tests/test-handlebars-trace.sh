@@ -14,9 +14,9 @@ fi
 
 # Check we have helpers in the helperfile
 # Shortcut to true as we test this after so we can give an error message
-helpers=$(grep "Handlebars.registerHelper" "${helperfile}" \
-  | awk -F "\"" '{print $2}' \
-  || true)
+helpers=$(grep "Handlebars.registerHelper" "${helperfile}" |
+  awk -F "\"" '{print $2}' ||
+  true)
 
 if [[ -z "${helpers}" ]]; then
   echo "❌ Unable to find any helpers in ${helperfile}"
@@ -66,12 +66,12 @@ for file in ${all_files}; do
     # Look for the starting trace messages in the file
     if [[ "$(grep "${first}" "${file}" | grep "${base}" -c)" != 1 ]]; then
       echo "❌ ${first} missing/incorrect at the beginning of ${file}"
-      ((i+=1))
+      ((i += 1))
     fi
     # Look for the end trace message in the file
     if [[ "$(grep "${last}" "${file}" | grep "${base}" -c)" != 1 ]]; then
       echo "❌ ${last} missing/incorrect at the end of ${file}"
-      ((i+=1))
+      ((i += 1))
     fi
   fi
 done
@@ -84,4 +84,4 @@ if [[ "${i}" -gt 0 ]]; then
   exit 1
 else
   echo "✅ All good!"
-  fi
+fi

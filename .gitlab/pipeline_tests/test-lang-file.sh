@@ -12,7 +12,7 @@ function check_string_exists() {
 
   if ! grep -rq --exclude-dir=lang --exclude-dir=node_modules "${string}" ./*; then
     echo "❌ String not used: ${string}"
-    ((ERRORS+1))
+    ((ERRORS + 1))
   else
     echo "✅ ${string} used!"
   fi
