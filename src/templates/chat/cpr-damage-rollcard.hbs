@@ -4,7 +4,7 @@
         <div class="cpr-block chat-rollTitle-stat">
             <div class="text-center text-padding-top text-normal">{{rollTitle}}</div>
             <div class="rollcard-subtitle">
-                <div class="rollcard-subtitle-center text-small">{{#if autofire}}{{localize "CPR.global.skill.autofire"}} {{/if}}{{localize "CPR.global.generic.damage"}}</div>
+                <div class="rollcard-subtitle-center text-small">{{#if autofire}}{{localize "CPR.global.itemType.skill.autofire"}} {{/if}}{{localize "CPR.global.generic.damage"}}</div>
                 <div class="rollcard-subtitle-right">
                     <a class="clickable"
                        data-action="applyDamage"
@@ -57,7 +57,7 @@
                 </div>
                 <div class="d6-data-div">
                     {{#if isAutofire}}
-                    <div class="text-normal text-bold">{{localize "CPR.global.skill.autofire"}}! (x{{autofireMultiplier}})</div>
+                    <div class="text-normal text-bold">{{localize "CPR.global.itemType.skill.autofire"}}! (x{{autofireMultiplier}})</div>
                     {{/if}}
                     {{#if isAimed}}
                     <div class="text-normal text-bold">{{localize "CPR.rolls.location"}}: {{localize (cprFindConfigValue

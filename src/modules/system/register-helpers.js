@@ -484,7 +484,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprSplitJoinCoreSkills", (skillObj) => {
     LOGGER.trace("cprSplitJoinCoreSkills | handlebarsHelper | Called.");
-    return "CPR.global.skill.".concat(SystemUtils.slugify(skillObj.name));
+    return "CPR.global.itemType.skill.".concat(SystemUtils.slugify(skillObj.name));
   });
 
   /**
