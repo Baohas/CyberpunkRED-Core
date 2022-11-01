@@ -1,4 +1,4 @@
-/* global game ui Folder */
+/* global game ui Folder duplicate */
 /* eslint-env jquery */
 
 import LOGGER from "./cpr-logger.js";
@@ -170,6 +170,39 @@ export default class CPRSystemUtils {
       return parenCaseSplit.charAt(0).toLowerCase() + parenCaseSplit.slice(1);
     }
     return andCaseSplit.charAt(0).toLowerCase() + andCaseSplit.slice(1);
+  }
+
+  static SortItemListByName(itemList) {
+    LOGGER.trace("SortItemListByName | CPRSystemUtils | Called.");
+    const itemDataList = itemList.map((o) => ({ name: o.name, uuid: o.uuid, type: o.type }));
+    const sortedList = itemDataList.length > 0 ? [] : itemList;
+    if (sortedList.length === 0) {
+      const sortedDataList = [];
+      itemDataList.forEach((itemData) => {
+        const newItemData = duplicate(itemData);
+        const localizedValue = `CPR.global.${newItemData.type}.`.concat(this.slugify(newItemData.name));
+        if (this.Localize(localizedValue) !== localizedValue) {
+          newItemData.name = this.Localize(localizedValue);
+        }
+        sortedDataList.push(newItemData);
+      });
+
+      sortedDataList.sort((a, b) => {
+        let comparator = 0;
+        if (a.name > b.name) {
+          comparator = 1;
+        } else if (b.name > a.name) {
+          comparator = -1;
+        }
+        return comparator;
+      });
+
+      for (const itemData of sortedDataList) {
+        const [item] = itemList.filter((i) => i.uuid === itemData.uuid);
+        sortedList.push(item);
+      }
+    }
+    return sortedList;
   }
 
   /* USER SETTING UTILS */

@@ -493,28 +493,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprSortCoreSkills", (skillObjArray) => {
     LOGGER.trace("cprSortCoreSkills | handlebarsHelper | Called.");
-    const sortedSkills = [];
-    skillObjArray.forEach((o) => {
-      const newElement = duplicate(o);
-      if (o.system.core) {
-        const tstring = "CPR.global.skill.".concat(SystemUtils.slugify(o.name));
-        newElement.translatedName = SystemUtils.Localize(tstring).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      } else {
-        newElement.translatedName = o.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      }
-      sortedSkills.push(newElement);
-    });
-
-    sortedSkills.sort((a, b) => {
-      let comparator = 0;
-      if (a.translatedName > b.translatedName) {
-        comparator = 1;
-      } else if (b.translatedName > a.translatedName) {
-        comparator = -1;
-      }
-      return comparator;
-    });
-    return sortedSkills;
+    return SystemUtils.SortItemListByName(skillObjArray);
   });
 
   /**
