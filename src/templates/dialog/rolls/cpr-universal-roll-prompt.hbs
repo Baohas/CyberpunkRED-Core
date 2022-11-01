@@ -77,10 +77,26 @@
         {{#if rollData.calculateCritical}}
         TEST
         {{/if}}
+
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.aimFor"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <select name="location">
+                    {{#each (cprFindConfigObj "aimedLocation") as |location l|}}
+                    <option value="{{l}}">{{localize location}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </li>
     </ol>
   <footer class="sheet-footer flexrow">
-    <button type="submit" name="submit">
+    <button class="confirm-roll" type="submit" name="submit" autofocus>
         <i class="fa fa-check"></i> OK
+    </button>
+    <button class="cancel-roll" name ="cancel">
+        <i class="fa fa-times"></i> Cancel
     </button>
   </footer>
 

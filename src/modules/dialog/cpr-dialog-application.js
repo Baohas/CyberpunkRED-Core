@@ -28,14 +28,14 @@ export default class CPRDialog extends FormApplication {
       height: "auto",
       closeOnSubmit: false,
       submitOnChange: true,
-      submitOnClose: true,
+      submitOnClose: false,
     });
   }
 
   getData() {
     LOGGER.trace("getData | CPRDialog | called.");
     const data = super.getData();
-    data.rollData = this.rollData;
+    data.rollData = this.rollData; // CPRRoll object
     return data;
   }
 
@@ -52,6 +52,9 @@ export default class CPRDialog extends FormApplication {
 
     // generic listeners
     html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
+    html.find(".confirm-roll").click(() => this.confirmRoll());
+    html.find(".cancel-roll").click(() => this.close());
+
 
     super.activateListeners(html);
   }
@@ -67,29 +70,51 @@ export default class CPRDialog extends FormApplication {
     }
   }
 
-  // eslint-disable-next-line foundry-cpr/logger-after-function-definition
-  async close(options) {
-    /** Taken from Starfinder: Fire callback, then delete, as it would get called again by Dialog#close. */
-    if (this.options.close) {
-      this.options.close();
-      delete this.options.close;
-    }
-    return super.close(options);
+  /**
+   * This will confirm the roll and resolve the Promise originally created when CPRDialog.showDialog is called.
+   *
+   * @param {Object} options - potential options to pass to this.close; currently unused;
+   */
+  async confirmRoll(options) {
+    LOGGER.trace("confirmRoll | CPRDialog | Called.");
+    /** Taken from Starfinder: Fire callback, then delete, as it would get called again by Dialog#close. '
+       * Do I need to do this though, since it does not have the same name? Seems like it works without it.
+       */
+
+    // if (this.options.confirmRoll) {
+    //   this.options.confirmRoll();
+    //   delete this.options.confirmRoll;
+    // }
+
+    this.options.confirmRoll();
+    return this.close(options);
   }
 
-  static async verifyRoll(cprRoll) {
-    LOGGER.trace("verifyRoll | CPR Dialog | Called.");
+  /**
+   * Creates a promise to be resolved when the dialog is confirmed. One can also override default options here.
+   *
+   * @param {CPRRoll} - Roll to be modified by the dialog.
+   */
+  static async showDialog(cprRoll) {
+    LOGGER.trace("showDialog | CPRDialog | Called.");
     return new Promise((resolve) => {
-      const dlg = new CPRDialog(cprRoll, {
-        close: () => resolve(cprRoll),
+      const dialog = new CPRDialog(cprRoll, {
+        confirmRoll: () => resolve(cprRoll),
         title: cprRoll.rollTitle,
       });
-      dlg.render(true);
+      dialog.render(true);
     });
   }
 
-  // eslint-disable-next-line no-unused-vars, foundry-cpr/logger-after-function-definition
+  /**
+   * Foundry provides this function, which is necessary to override for FormApplications.
+   *
+   * @param {Object} options - potential options to pass to this.close; currently unused;
+   * @param {CPRRoll} formData - Roll data to be merged with the original CPRRoll.
+   * @override
+   */
   async _updateObject(event, formData) {
+    LOGGER.trace("_updateObject | CPRDialog | Called.");
     const fd = duplicate(formData);
     if (formData.mods) {
       fd.mods = fd.mods.replace(/ +/g, ",");
@@ -98,6 +123,21 @@ export default class CPRDialog extends FormApplication {
     } else {
       fd.mods = [];
     }
+
+    switch (formData.constructor.name) {
+      case "CPRDamageRoll":
+      case "CPRAttackRoll": {
+        if (formData.autofire) {
+          fd.fireMode = "autofire";
+        }
+        if (formData.suppressive) {
+          fd.fireMode = "suppressive";
+        }
+        break;
+      }
+      default:
+    }
+
     mergeObject(this.rollData, fd);
     this.render(true); // rerenders the FormApp with the new data.
   }
