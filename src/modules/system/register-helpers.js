@@ -1,4 +1,4 @@
-/* global Handlebars game getProperty */
+/* global Handlebars game getProperty duplicate */
 import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -495,7 +495,7 @@ export default function registerHandlebarsHelpers() {
     LOGGER.trace("cprSortCoreSkills | handlebarsHelper | Called.");
     const sortedSkills = [];
     skillObjArray.forEach((o) => {
-      const newElement = o;
+      const newElement = duplicate(o);
       if (o.system.core) {
         const tstring = "CPR.global.skills.".concat(SystemUtils.slugify(o.name));
         newElement.translatedName = SystemUtils.Localize(tstring).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
