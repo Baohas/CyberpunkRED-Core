@@ -21,6 +21,7 @@
          category, it is in the `Dirt Cheap` category.
 - #549 - stop reordering items from the role list of abilities after adding points to them (ex: Tech and Solo)
 - #471 - On a Macbook, the `Command` key can now be used in lieu of the `Control` key to skip roll dialogs
+- #557 - Fix the variety of Shotgun Smart Slugs
 
 
 # Version 0.83.1 | Date: 2022-10-23
