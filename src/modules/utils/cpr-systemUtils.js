@@ -142,11 +142,11 @@ export default class CPRSystemUtils {
    * what this method does. It takes a string and converts it to camelcase.
    *
    * These are used as parts of translation string identifies too. Examples:
-   *  "CPR.global.skills.languageStreetslang"               "CPR.global.skills.athleticsAndContortionist"
-   *  "CPR.global.skills.basicTechAndWeaponstech"           "CPR.global.skills.compositionAndEducation"
-   *  "CPR.global.skills.enduranceAndResistTortureAndDrugs" "CPR.global.skills.persuasionAndTrading"
-   *  "CPR.global.skills.evasionAndDance"                   "CPR.global.skills.pickLockAndPickPocket"
-   *  "CPR.global.skills.firstAidAndParamedicAndSurgery"
+   *  "CPR.global.skill.languageStreetslang"               "CPR.global.skill.athleticsAndContortionist"
+   *  "CPR.global.skill.basicTechAndWeaponstech"           "CPR.global.skill.compositionAndEducation"
+   *  "CPR.global.skill.enduranceAndResistTortureAndDrugs" "CPR.global.skill.persuasionAndTrading"
+   *  "CPR.global.skill.evasionAndDance"                   "CPR.global.skill.pickLockAndPickPocket"
+   *  "CPR.global.skill.firstAidAndParamedicAndSurgery"
    *
    * NOTE: The strings above are used for Elfines characters, and not used in the code base anywhere. We
    *       have CI that checks all translation strings are used, so to avoid making that fail, please

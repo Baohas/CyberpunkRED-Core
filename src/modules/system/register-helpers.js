@@ -484,7 +484,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprSplitJoinCoreSkills", (skillObj) => {
     LOGGER.trace("cprSplitJoinCoreSkills | handlebarsHelper | Called.");
-    return "CPR.global.skills.".concat(SystemUtils.slugify(skillObj.name));
+    return "CPR.global.skill.".concat(SystemUtils.slugify(skillObj.name));
   });
 
   /**
@@ -497,7 +497,7 @@ export default function registerHandlebarsHelpers() {
     skillObjArray.forEach((o) => {
       const newElement = duplicate(o);
       if (o.system.core) {
-        const tstring = "CPR.global.skills.".concat(SystemUtils.slugify(o.name));
+        const tstring = "CPR.global.skill.".concat(SystemUtils.slugify(o.name));
         newElement.translatedName = SystemUtils.Localize(tstring).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
       } else {
         newElement.translatedName = o.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
