@@ -180,7 +180,7 @@ export default class CPRSystemUtils {
       const sortedDataList = [];
       itemDataList.forEach((itemData) => {
         const newItemData = duplicate(itemData);
-        const localizedValue = `CPR.global.${newItemData.type}.`.concat(this.slugify(newItemData.name));
+        const localizedValue = `CPR.global.itemType.${newItemData.type}.`.concat(this.slugify(newItemData.name));
         if (this.Localize(localizedValue) !== localizedValue) {
           newItemData.name = this.Localize(localizedValue);
         }

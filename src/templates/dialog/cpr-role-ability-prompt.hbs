@@ -1,5 +1,4 @@
 {{cprTrace "START DIALOG CPR-ROLE-ABILITY-PROMPT.HBS"}}
-<form>
   <ol class="items-list">
     <li class="item flexrow">
       <div class="item flexrow setting-name">
@@ -68,8 +67,8 @@
             {{/each}}
           </optgroup>
           <optgroup label = "{{localize "CPR.dialog.createEditRoleAbility.skillList"}}">
-            {{#each (cprSort skillOptions "name") as |option o|}}
-              <option value="{{option.name}}">{{option.name}}</option>
+            {{#each (cprSortCoreSkills skillOptions) as |option|}}
+              <option value="{{option.name}}">{{localize (cprGetLocalizedSkillNameKey option.name)}}</option>
             {{/each}}
           </optgroup>
           {{/select}}

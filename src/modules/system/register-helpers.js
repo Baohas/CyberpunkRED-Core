@@ -482,9 +482,11 @@ export default function registerHandlebarsHelpers() {
    *
    * Example: Resist Torture/Drugs -> Resist Torture Or Drugs
    */
-  Handlebars.registerHelper("cprSplitJoinCoreSkills", (skillObj) => {
-    LOGGER.trace("cprSplitJoinCoreSkills | handlebarsHelper | Called.");
-    return "CPR.global.itemType.skill.".concat(SystemUtils.slugify(skillObj.name));
+  Handlebars.registerHelper("cprGetLocalizedSkillNameKey", (skill) => {
+    LOGGER.trace("cprGetLocalizedSkillNameKey | handlebarsHelper | Called.");
+    const name = (typeof skill === "string") ? skill : skill.name;
+    const localizedSkillKey = "CPR.global.itemType.skill.".concat(SystemUtils.slugify(name));
+    return (SystemUtils.Localize(localizedSkillKey) === localizedSkillKey) ? name : localizedSkillKey;
   });
 
   /**

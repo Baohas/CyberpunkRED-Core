@@ -346,6 +346,7 @@ export class CPRSkillRoll extends CPRStatRoll {
     this.skillValue = skillValue;
     this.roleName = roleName;
     this.roleValue = roleValue;
+    this.rollTitle = SystemUtils.Localize(`CPR.global.itemType.skill.${skillName.toLowerCase()}`);
     this.universalBonusAttack = universalBonusAttack;
     this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-skill-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-skill-rollcard.hbs`;

@@ -139,7 +139,7 @@
             </div>
             <div class="item-detail role-skill text-nowrap">
               {{#if ability.skill.system.core}}
-              {{localize (cprSplitJoinCoreSkills ability.skill)}}
+              {{localize (cprGetLocalizedSkillNameKey ability.skill)}}
               {{else}}
               {{ability.skill.name}}
               {{/if}}

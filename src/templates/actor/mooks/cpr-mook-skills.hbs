@@ -19,7 +19,7 @@
   {{#each (cprSort (cprGetMookSkills actor.itemTypes.skill) "name") as |skill s|}}
     <span class="item deletable changeable" data-item-id="{{skill.id}}" tabindex="0">
       <a class="rollable"  data-roll-type="skill" data-roll-title="{{skill.name}}" title="{{localize "CPR.mookSheet.skills.clickToRollThisSkill"}}, {{localize "CPR.mookSheet.skills.pressDeleteToReset"}}">
-        {{#if skill.system.core}}{{localize (cprSplitJoinCoreSkills skill)}}{{else}}{{skill.name}}{{/if}}
+        {{#if skill.system.core}}{{localize (cprGetLocalizedSkillNameKey skill)}}{{else}}{{skill.name}}{{/if}}
           {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "level")}}
             ({{cprEffectModMode 2 skill.system.level}}){{#unless @last}},{{/unless}}
           {{/if}}
