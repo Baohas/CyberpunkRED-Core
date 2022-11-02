@@ -1,6 +1,6 @@
 /* global game */
 import CPR from "./config.js";
-import CPRInjurySettings from "../apps/cpr-injury-settings.js";
+import CPRInjurySettings from "../apps/cpr-compendia-settings.js";
 import LOGGER from "../utils/cpr-logger.js";
 
 /**
@@ -151,11 +151,23 @@ const registerSystemSettings = () => {
     },
   });
 
-  game.settings.registerMenu(game.system.id, "criticalInjurySettingsMenu", {
-    name: "CPR.settings.criticalInjuryRollTableCompendium.name",
-    label: "CPR.settings.criticalInjuryRollTableCompendium.button",
-    hint: "CPR.settings.criticalInjuryRollTableCompendium.hint",
-    icon: "fa-solid fa-user-injured",
+  game.settings.register(game.system.id, "netArchRollTableCompendium", {
+    name: "CPR.settings.netArchRollTableCompendium.name",
+    hint: "CPR.settings.netArchRollTableCompendium.hint",
+    scope: "world",
+    config: false,
+    type: String,
+    default: CPR.defaultCriticalInjuryTable,
+    onChange: (value) => {
+      LOGGER.log(`Changed netArchRollTableCompendium to ${value}`);
+    },
+  });
+
+  game.settings.registerMenu(game.system.id, "compendiumSettingsMenu", {
+    name: "CPR.settings.compendiumMenu.name",
+    label: "CPR.settings.compendiumMenu.button",
+    hint: "CPR.settings.compendiumMenu.hint",
+    icon: "fa-solid fa-book",
     type: CPRInjurySettings,
   });
 

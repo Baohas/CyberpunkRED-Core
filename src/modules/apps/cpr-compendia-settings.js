@@ -4,12 +4,12 @@ import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
- * Defines behaviors for a window that pops up when the Critical Injuries button in
+ * Defines behaviors for a window that pops up when the Config Compendia button in
  * system settings is clicked. We go this route because the options available are
  * based on content in game.packs, but game.packs is not defined when settings are
  * configured. So we have present options dynamically when a button is clicked.
  */
-export default class CPRInjurySettings extends FormApplication {
+export default class CPRCompendiaSettings extends FormApplication {
   /**
    * set up default things like the html template and window size
    *
@@ -17,12 +17,12 @@ export default class CPRInjurySettings extends FormApplication {
    * @static
    */
   static get defaultOptions() {
-    LOGGER.trace("CPRInjurySettings | defaultOptions | called.");
+    LOGGER.trace("CPRCompendiaSettings | defaultOptions | called.");
     return mergeObject(super.defaultOptions, {
-      title: SystemUtils.Localize("CPR.settings.criticalInjuryRollTableCompendium.title"),
+      title: SystemUtils.Localize("CPR.settings.compendiumMenu.title"),
       id: "injury-config",
-      template: `systems/${game.system.id}/templates/apps/critical-injury-settings.hbs`,
-      width: "auto",
+      template: `systems/${game.system.id}/templates/apps/compendia-settings.hbs`,
+      width: "400",
       height: "auto",
       closeOnSubmit: true,
     });
@@ -40,12 +40,19 @@ export default class CPRInjurySettings extends FormApplication {
    */
   // eslint-disable-next-line class-methods-use-this
   async getData() {
-    LOGGER.trace("CPRInjurySettings | getData | called.");
-    const current = await game.settings.get(game.system.id, "criticalInjuryRollTableCompendium");
-    const tables = { [CPR.defaultCriticalInjuryTable]: "CPR.settings.criticalInjuryRollTableCompendium.default" };
+    LOGGER.trace("CPRCompendiaSettings | getData | called.");
+    const critCurr = await game.settings.get(game.system.id, "criticalInjuryRollTableCompendium");
+    const netCurr = await game.settings.get(game.system.id, "netArchRollTableCompendium");
+    const choicesCrit = { [CPR.defaultCriticalInjuryTable]: "CPR.settings.criticalInjuryRollTableCompendium.default" };
+    const choicesNet = { [CPR.defaultNetArchTable]: "CPR.settings.netArchRollTableCompendium.default" };
     const comps = SystemUtils.GetWorldCompendia("RollTable");
-    for (const comp of comps) tables[`world.${comp.metadata.name}`] = comp.metadata.label;
-    return { choices: tables, current };
+    for (const comp of comps) {
+      choicesCrit[`world.${comp.metadata.name}`] = comp.metadata.label;
+      choicesNet[`world.${comp.metadata.name}`] = comp.metadata.label;
+    }
+    return {
+      choicesCrit, choicesNet, critCurr, netCurr,
+    };
   }
 
   /**
@@ -54,13 +61,14 @@ export default class CPRInjurySettings extends FormApplication {
    *
    * @async
    * @override
-   * @param {*} event
-   * @param {*} formData
+   * @param {*} event (not used here)
+   * @param {Object} formData - choices made with the dropdowns in the sub menus
    */
   // eslint-disable-next-line class-methods-use-this
   async _updateObject(event, formData) {
-    LOGGER.trace("CPRInjurySettings | _updateObject | called.");
+    LOGGER.trace("CPRCompendiaSettings | _updateObject | called.");
     await game.settings.set(game.system.id, "criticalInjuryRollTableCompendium", formData.injuryChoice);
-    SystemUtils.DisplayMessage("notify", SystemUtils.Localize("CPR.settings.criticalInjuryRollTableCompendium.update"));
+    await game.settings.set(game.system.id, "netArchRollTableCompendium", formData.netArchChoice);
+    SystemUtils.DisplayMessage("notify", SystemUtils.Localize("CPR.settings.compendiumMenu.update"));
   }
 }

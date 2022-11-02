@@ -306,8 +306,9 @@ export default class CPRItemSheet extends ItemSheet {
     if (formData === undefined) {
       return;
     }
-    const lobby = await SystemUtils.GetCompendiumDoc(`${game.system.id}.net-rolltables`, "First Two Floors (The Lobby)");
-    const other = await SystemUtils.GetCompendiumDoc(`${game.system.id}.net-rolltables`, "All Other Floors (".concat(formData.difficulty, ")"));
+    const tableSetting = game.settings.get(game.system.id, "netArchRollTableCompendium");
+    const lobby = await SystemUtils.GetCompendiumDoc(tableSetting, "First Two Floors (The Lobby)");
+    const other = await SystemUtils.GetCompendiumDoc(tableSetting, "All Other Floors (".concat(formData.difficulty, ")"));
     const numberOfFloorsRoll = new CPRRoll(SystemUtils.Localize("CPR.rolls.roll"), "3d6");
     await numberOfFloorsRoll.roll();
     const numberOfFloors = numberOfFloorsRoll.resultTotal;
