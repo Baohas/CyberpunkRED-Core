@@ -5,6 +5,11 @@ IFS=$'\n\t'
 LANGFILE="src/lang/en.json"
 ERRORS=0
 
+# List of strings we want to keep but do not care if are in use
+EXCLUSION_LIST=(
+  "CPR.system.message.toBeDeprecated"
+)
+
 if [[ ! -f "${LANGFILE}" ]]; then
   echo "❌ Unable to find ${LANGFILE}"
   exit 1
@@ -24,11 +29,18 @@ fi
 
 # Iterate through them and check if they exist elsewhere in the code
 for string in ${STRINGS}; do
-  if ! grep -rq --exclude-dir=lang --exclude-dir=node_modules "${string}" ./src; then
-    echo "❌ String not used: ${string}"
-    ((ERRORS = ERRORS + 1))
+  if [[ ! "${EXCLUSION_LIST[*]}" =~ ${string} ]]; then
+    if ! grep -rq \
+      --exclude-dir=lang \
+      --exclude-dir=node_modules "${string}" ./src; then
+
+      echo "❌ String not used: ${string}"
+      ((ERRORS = ERRORS + 1))
+    else
+      echo "✅ ${string} used!"
+    fi
   else
-    echo "✅ ${string} used!"
+    echo "✅ ${string} is in exclusion list."
   fi
 done
 
