@@ -22,6 +22,7 @@
 - #549 - stop reordering items from the role list of abilities after adding points to them (ex: Tech and Solo)
 - #471 - On a Macbook, the `Command` key can now be used in lieu of the `Control` key to skip roll dialogs
 - #557 - Fix the variety of Shotgun Smart Slugs
+- #559 - Fix multiple areas where the skill names were not being translated properly
 
 
 # Version 0.83.1 | Date: 2022-10-23
