@@ -20,6 +20,15 @@
       href="https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/help-articles/netarch"
       title="{{localize "CPR.settings.netArchRollTableCompendium.help"}}">
     </a>
+    <hr>
+       <h4>{{localize "CPR.settings.dvRollTableCompendium.name"}}</h4>
+    <select name="dvChoice">
+      {{selectOptions choicesDv selected=dvCurr localize=true}}
+    </select>
+    <a class="fas fa-question-circle help-article"
+      href="https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/DV-Tables"
+      title="{{localize "CPR.settings.dvTableCompendium.help"}}">
+    </a>
     <button type="submit">
       <i class="fas fa-save"></i> {{localize "CPR.settings.saveSettings"}}
     </button>

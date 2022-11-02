@@ -1,6 +1,6 @@
 /* global game */
 import CPR from "./config.js";
-import CPRInjurySettings from "../apps/cpr-compendia-settings.js";
+import CPRCompendiaSettings from "../apps/cpr-compendia-settings.js";
 import LOGGER from "../utils/cpr-logger.js";
 
 /**
@@ -157,9 +157,21 @@ const registerSystemSettings = () => {
     scope: "world",
     config: false,
     type: String,
-    default: CPR.defaultCriticalInjuryTable,
+    default: CPR.defaultNetArchTable,
     onChange: (value) => {
       LOGGER.log(`Changed netArchRollTableCompendium to ${value}`);
+    },
+  });
+
+  game.settings.register(game.system.id, "dvRollTableCompendium", {
+    name: "CPR.settings.dvRollTableCompendium.name",
+    hint: "CPR.settings.dvRollTableCompendium.hint",
+    scope: "world",
+    config: false,
+    type: String,
+    default: CPR.defaultDvTable,
+    onChange: (value) => {
+      LOGGER.log(`Changed dvRollTableCompendium to ${value}`);
     },
   });
 
@@ -168,7 +180,7 @@ const registerSystemSettings = () => {
     label: "CPR.settings.compendiumMenu.button",
     hint: "CPR.settings.compendiumMenu.hint",
     icon: "fa-solid fa-book",
-    type: CPRInjurySettings,
+    type: CPRCompendiaSettings,
   });
 
   game.settings.register("cyberpunk-red-core", "automaticallyResizeSheets", {

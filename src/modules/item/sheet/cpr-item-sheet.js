@@ -89,7 +89,8 @@ export default class CPRItemSheet extends ItemSheet {
     // if (["cyberdeck", "weapon", "armor", "cyberware", "clothing"].indexOf(data.item.type) > -1) {
     //   data.system.availableSlots = this.object.availableSlots();
     // }
-    cprData.dvTableNames = DvUtils.GetDvTables();
+    const dvTables = await DvUtils.GetDvTables();
+    for (const table of dvTables) cprData.dvTableNames.push(table.name);
     foundryData.item.system = cprData;
     return foundryData;
   }
