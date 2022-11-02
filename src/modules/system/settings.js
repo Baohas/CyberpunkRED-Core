@@ -150,7 +150,7 @@ const registerSystemSettings = () => {
     scope: "world",
     config: true,
     type: String,
-    default: "",
+    default: "4",
     onChange: (value) => {
       LOGGER.log(`Changed dataModelVersion to ${value}`);
     },
