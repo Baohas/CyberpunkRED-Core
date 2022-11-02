@@ -42,7 +42,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRCharacterActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
-      template: "systems/cyberpunk-red-core/templates/actor/cpr-character-sheet.hbs",
+      template: `systems/${game.system.id}/templates/actor/cpr-character-sheet.hbs`,
       tabs: [{ navSelector: ".navtabs-right", contentSelector: ".right-content-section", initial: "skills" },
         { navSelector: ".navtabs-bottom", contentSelector: ".bottom-content-section", initial: "fight" }],
     });
@@ -610,7 +610,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   _toggleFightState(event) {
     LOGGER.trace("_toggleFightState | CPRCharacterSheet | Called.");
     const fightState = SystemUtils.GetEventDatum(event, "data-state");
-    this.actor.setFlag("cyberpunk-red-core", "fightState", fightState);
+    this.actor.setFlag(game.system.id, "fightState", fightState);
   }
 
   /**

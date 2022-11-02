@@ -17,7 +17,7 @@ export default class CPRLedger extends FormApplication {
     LOGGER.trace("defaultOptions | CPRLedger | called.");
     return mergeObject(super.defaultOptions, {
       title: SystemUtils.Localize("CPR.ledger.title"),
-      template: "systems/cyberpunk-red-core/templates/dialog/cpr-ledger-form.hbs",
+      template: `systems/${game.system.id}/templates/dialog/cpr-ledger-form.hbs`,
       width: 600,
       height: 340,
     });
@@ -118,12 +118,12 @@ export default class CPRLedger extends FormApplication {
       return;
     }
     this.contents.splice(lineId, 1);
-    const dataPointTransactions = `data.${this.name}.transactions`;
-    const cprActorData = duplicate(this.actor.system);
+    const dataPointTransactions = `system.${this.name}.transactions`;
+    const cprActorData = duplicate(this.actor);
     setProperty(cprActorData, dataPointTransactions, this.contents);
     // Change the value if desired.
     if (confirmDelete.action && numbers[0] !== "NaN") {
-      const dataPointValue = `data.${this.name}.value`;
+      const dataPointValue = `system.${this.name}.value`;
       const value = getProperty(cprActorData, dataPointValue);
       setProperty(cprActorData, dataPointValue, value + (confirmDelete.sign * numbers[0]));
     }

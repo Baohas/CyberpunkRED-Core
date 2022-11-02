@@ -1,4 +1,4 @@
-/* global mergeObject ActorSheet */
+/* global game mergeObject ActorSheet */
 import CPRChat from "../../chat/cpr-chat.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
@@ -15,7 +15,7 @@ export default class CPRDemonActorSheet extends ActorSheet {
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRDemonActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
-      template: "systems/cyberpunk-red-core/templates/actor/cpr-demon-sheet.hbs",
+      template: `systems/${game.system.id}/templates/actor/cpr-demon-sheet.hbs`,
       width: 630,
       height: 205,
     });

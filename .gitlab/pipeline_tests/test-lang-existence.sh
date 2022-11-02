@@ -2,8 +2,11 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# The following vars are set during the 'init' CI job.
+# SYSTEM_FILE
+
 # Check if src/system.json exists
-systemfile="src/system.json"
+systemfile="src/${SYSTEM_FILE}"
 
 if [[ ! -f "${systemfile}" ]]; then
   echo "❌ Unable to find ${systemfile}"

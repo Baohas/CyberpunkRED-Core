@@ -47,9 +47,9 @@ export class CPRRoll {
     // the complete result of the roll after applying everything
     this.resultTotal = 0;
     // path to the right dialog box to pop up before rolling
-    this.rollPrompt = "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-verify-roll-generic-prompt.hbs";
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-generic-prompt.hbs`;
     // path to the roll card template for chat
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-base-rollcard.hbs";
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-base-rollcard.hbs`;
     // Any additional data we want to pass to the roll card
     this.rollCardExtraArgs = [];
   }
@@ -214,9 +214,9 @@ export class CPRRoll {
     LOGGER.trace("handleRollDialog | CPRRoll | Called.");
 
     // Handle skipping of the user verification step
-    let skipDialog = event.ctrlKey;
+    let skipDialog = event.ctrlKey || event.metaKey;
     if (event.type === "click") {
-      const ctrlSetting = game.settings.get("cyberpunk-red-core", "invertRollCtrlFunction");
+      const ctrlSetting = game.settings.get(game.system.id, "invertRollCtrlFunction");
       skipDialog = ctrlSetting ? !skipDialog : skipDialog;
     }
 
@@ -261,8 +261,8 @@ export class CPRInitiative extends CPRRoll {
     if (mod > 0) {
       this.addMod(mod);
     }
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-initiative-rollcard.hbs";
-    this.calculateCritical = game.settings.get("cyberpunk-red-core", "criticalInitiative");
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-initiative-rollcard.hbs`;
+    this.calculateCritical = game.settings.get(game.system.id, "criticalInitiative");
   }
 
   _computeBase() {
@@ -281,8 +281,8 @@ export class CPRStatRoll extends CPRRoll {
     super(name, "1d10");
     this.statName = name;
     this.statValue = value;
-    this.rollPrompt = "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-verify-roll-stat-prompt.hbs";
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-stat-rollcard.hbs";
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-stat-prompt.hbs`;
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-stat-rollcard.hbs`;
   }
 
   /**
@@ -307,8 +307,8 @@ export class CPRProgramStatRoll extends CPRStatRoll {
     super(name, value);
     this.statName = name;
     this.statValue = value;
-    this.rollPrompt = "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-verify-program-stat-prompt.hbs";
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-program-stat-rollcard.hbs";
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-stat-prompt.hbs`;
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-stat-rollcard.hbs`;
   }
 
   /**
@@ -319,7 +319,7 @@ export class CPRProgramStatRoll extends CPRStatRoll {
   setNetCombat(rollTitle) {
     LOGGER.trace("setNetCombat | CPRStatRoll | Called.");
     this.rollTitle = rollTitle;
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-program-stat-rollcard.hbs";
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-stat-rollcard.hbs`;
   }
 }
 
@@ -349,8 +349,8 @@ export class CPRSkillRoll extends CPRStatRoll {
     this.roleName = roleName;
     this.roleValue = roleValue;
     this.universalBonusAttack = universalBonusAttack;
-    this.rollPrompt = "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-verify-roll-skill-prompt.hbs";
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-skill-rollcard.hbs";
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-skill-prompt.hbs`;
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-skill-rollcard.hbs`;
   }
 
   /**
@@ -379,8 +379,8 @@ export class CPRFacedownRoll extends CPRStatRoll {
     this.statName = name;
     this.statValue = value;
     this.rollTitle = SystemUtils.Localize("CPR.dialog.facedown.title");
-    this.rollPrompt = "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-verify-roll-facedown-prompt.hbs";
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-facedown-rollcard.hbs";
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-facedown-prompt.hbs`;
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-facedown-rollcard.hbs`;
   }
 }
 
@@ -400,7 +400,7 @@ export class CPRHumanityLossRoll extends CPRRoll {
     LOGGER.debug(`formula is ${this.formula}`);
     this.rollTitle = SystemUtils.Localize("CPR.dialog.installCyberware.humanityLoss");
     this.calculateCritical = false;
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-humanity-loss-rollcard.hbs";
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-humanity-loss-rollcard.hbs`;
     this.cyberwareName = name;
   }
 }
@@ -433,7 +433,7 @@ export class CPRAttackRoll extends CPRSkillRoll {
     LOGGER.trace("constructor | CPRAttackRoll | Called.");
     super(statName, statValue, skillName, skillValue, roleName, roleValue, universalBonusAttack);
     this.rollTitle = `${attackName}`;
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-attack-rollcard.hbs";
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-attack-rollcard.hbs`;
     this.weaponType = weaponType;
   }
 
@@ -445,8 +445,8 @@ export class CPRAttackRoll extends CPRSkillRoll {
   setNetCombat(rollTitle) {
     LOGGER.trace("setNetCombat | CPRAttackRoll | Called.");
     this.rollTitle = rollTitle;
-    this.rollPrompt = "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-verify-program-attack-prompt.hbs";
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-program-attack-rollcard.hbs";
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-attack-prompt.hbs`;
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-attack-rollcard.hbs`;
   }
 }
 
@@ -473,8 +473,8 @@ export class CPRAimedAttackRoll extends CPRAttackRoll {
     LOGGER.trace("constructor | CPRAimedAttackRoll | Called.");
     super(weaponName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
     this.rollTitle = `${weaponName}`;
-    this.rollPrompt = "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-verify-roll-aimed-attack-prompt.hbs";
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-aimed-attack-rollcard.hbs";
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-aimed-attack-prompt.hbs`;
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-aimed-attack-rollcard.hbs`;
     this.addMod(-8);
     this.location = "head";
   }
@@ -500,7 +500,7 @@ export class CPRAutofireRoll extends CPRAttackRoll {
     LOGGER.trace("constructor | CPRAutofireRoll | Called.");
     super(weaponName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
     this.rollTitle = `${weaponName}`;
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-autofire-rollcard.hbs";
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-autofire-rollcard.hbs`;
   }
 }
 
@@ -524,7 +524,7 @@ export class CPRSuppressiveFireRoll extends CPRAttackRoll {
     LOGGER.trace("constructor | CPRSuppressiveFireRoll | Called.");
     super(weaponName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
     this.rollTitle = `${weaponName}`;
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-suppressive-fire-rollcard.hbs";
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-suppressive-fire-rollcard.hbs`;
   }
 }
 
@@ -553,8 +553,8 @@ export class CPRRoleRoll extends CPRRoll {
     this.skillValue = skillValue;
     this.statName = statName;
     this.statValue = statValue;
-    this.rollPrompt = "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-verify-roll-roleAbility-prompt.hbs";
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-role-rollcard.hbs";
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-roleAbility-prompt.hbs`;
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-role-rollcard.hbs`;
   }
 
   /**
@@ -579,8 +579,8 @@ export class CPRRoleRoll extends CPRRoll {
   setNetCombat(rollTitle) {
     LOGGER.trace("setNetCombat | CPRRoleRoll | Called.");
     this.rollTitle = rollTitle;
-    this.rollPrompt = "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-verify-roll-cyberdeck-prompt.hbs";
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-cyberdeck-rollcard.hbs";
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-cyberdeck-prompt.hbs`;
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-cyberdeck-rollcard.hbs`;
   }
 }
 
@@ -599,8 +599,8 @@ export class CPRDeathSaveRoll extends CPRRoll {
     LOGGER.trace("constructor | CPRDeathSaveRoll | Called.");
     super(SystemUtils.Localize("CPR.rolls.deathSave.title"), "1d10");
     this.calculateCritical = false;
-    this.rollPrompt = "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-verify-roll-deathsave-prompt.hbs";
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-deathsave-rollcard.hbs";
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-deathsave-prompt.hbs`;
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-deathsave-rollcard.hbs`;
     this.penalty = penalty;
     this.basePenalty = basePenalty;
     this.bodyStat = bodyStat;
@@ -635,8 +635,8 @@ export class CPRDamageRoll extends CPRRoll {
     LOGGER.trace("constructor | CPRDamageRoll | Called.");
     // we assume always d6s
     super(rollTitle, formula);
-    this.rollPrompt = "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-verify-roll-damage-prompt.hbs";
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-damage-rollcard.hbs";
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-damage-prompt.hbs`;
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-damage-rollcard.hbs`;
     // criticals just add 5 damage, they do not need more dice rolled
     this.calculateCritical = false;
     this.universalBonusDamage = universalBonusDamage;
@@ -740,8 +740,8 @@ export class CPRDamageRoll extends CPRRoll {
   setNetCombat(rollTitle) {
     LOGGER.trace("setNetCombat | CPRDamageRoll | Called.");
     this.rollTitle = rollTitle;
-    this.rollPrompt = "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-verify-program-damage-prompt.hbs";
-    this.rollCard = "systems/cyberpunk-red-core/templates/chat/cpr-program-damage-rollcard.hbs";
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-damage-prompt.hbs`;
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-damage-rollcard.hbs`;
   }
 }
 

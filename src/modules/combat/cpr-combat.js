@@ -114,7 +114,7 @@ export default class CPRCombat extends Combat {
       }
     }
 
-    const rollCriticals = game.settings.get("cyberpunk-red-core", "criticalInitiative");
+    const rollCriticals = game.settings.get(game.system.id, "criticalInitiative");
     const dsnPromises = [];
     rolls.forEach((d) => {
       dsnPromises.push(DiceSoNice.ShowDiceSoNice(d._roll));

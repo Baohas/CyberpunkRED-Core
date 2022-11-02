@@ -2,38 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# SYSTEM_NAME is declared in .gitlab-ci.yml
-# Get the version from the CI_COMMIT_TAG provided by GitLab CI
-VERSION="${CI_COMMIT_TAG}"
-# Base URL for the project
-PROJECT_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}"
-# Base URL of the repo + $VERSION
-REPO_URL="${PROJECT_URL}/packages/generic/fvtt-${SYSTEM_NAME}"
-# Full name of the release including version
-# SYSTEM_NAME if declared in .gitlab-ci.yml
-RELEASE_NAME="fvtt-${SYSTEM_NAME}-${VERSION}"
-# Define the files we'll be working with to publish later
-SYSTEM_FILE="system.json"
-ZIP_FILE="${RELEASE_NAME}.zip"
-
-# Export some variables we'll use in later CI steps
-# Keeps all the logic in one place
-{
-  echo "PROJECT_URL=${PROJECT_URL}"
-  echo "RELEASE_NAME=${RELEASE_NAME}"
-  echo "REPO_URL=${REPO_URL}"
-  echo "SYSTEM_FILE=${SYSTEM_FILE}"
-  echo "VERSION=${VERSION}"
-  echo "ZIP_FILE=${ZIP_FILE}"
-} > build.env
-
-# Export them for processes in this script
-export "PROJECT_URL=${PROJECT_URL}"
-export "RELEASE_NAME=${RELEASE_NAME}"
-export "REPO_URL=${REPO_URL}"
-export "SYSTEM_FILE=${SYSTEM_FILE}"
-export "VERSION=${VERSION}"
-export "ZIP_FILE=${ZIP_FILE}"
+# The following vars are set during the 'init' CI job.
+# RELEASE_NAME REPO_URL SYSTEM_FILE VERSION ZIP_FILE
 
 # Then stick them in an array so we can loop over them later
 declare -a UPLOAD_FILES

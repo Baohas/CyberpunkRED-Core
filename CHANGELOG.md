@@ -1,14 +1,47 @@
-# Version 0.83.1 (Hotfix) | Date: WIP
+# Version 0.84.0 | Date: WIP
 
 **New Features**
 -
 
 **Changes**
--
+- #434 - users no longer need to import critical injury compendia to use that functionality
+- Drugs can now be equipped, owned, or carried.
+- Moved created migrationFolder management on CPRMigration and moved backupOwnedItem to CPRMigration as it will probably become
+  necessary if we have more ActiveEffect changes in the future.
 
 **Bug Fixes**
-- Fix non-shop containers having the wrong button
+- Fix Elfline Online Armory macro
+- #553 - Macros can be dragged to the hotbar.
+- #546 - Techscanner now properly gives bonuses to Cybertech and Weaponstech
+- #547 - Fixed the code so upgrades to attackmod are now taken into consideration
+- #554 - Introduced now price category `Dirt Cheap`. Changed the code to store Price Categories as config data (`config.js`) and altered code
+         to dynamically display the price categories based on the price passed `cprGetPriceCategory`. The `Valueable` mixin code was also adjusted
+         to utilize this single location of Price Categories.  Any item priced > 0 or < the second category will be lumped into the lowest category
+         tier. Example, while `Dirt Cheap` is not supposed to start until `5 eb`, there's no category for `0-4 eb` so instead of it being in the `free`
+         category, it is in the `Dirt Cheap` category.
+- #549 - stop reordering items from the role list of abilities after adding points to them (ex: Tech and Solo)
+- #471 - On a Macbook, the `Command` key can now be used in lieu of the `Control` key to skip roll dialogs
+- #557 - Fix the variety of Shotgun Smart Slugs
+
+
+# Version 0.83.1 | Date: 2022-10-23
+**Bug Fixes**
+- #529 - Fix non-shop containers having the wrong button
+- #536 - Spelling mistake: "Ememies" (English)
+- #495 - Ability to use UUID links in Character sheets or Item sheets.
+- Fixed location of Lifestyle Data for Tragic Love Affairs and Affectations.
 - Fix rolling initiative before combat has started
+- Fix weapon upgrades that are secondary weapons to work correctly
+- Fix cyberdeck program installation where it was adding the item._id under item.system
+- Fixed regression where filteredItems was re-introduced back into the system. This was replaced with actor.itemTypes in 0.82.0
+- Fixed an issue where attempting to delete a ledger line would throw an error
+- Fixed a couple migration issues:
+  - When a migration failed for any reason, on the next run through it could corrupt
+    upgraded items
+  - When running migration through multiple levels of migration, it was possible that
+    the world data model version would be set incorrectly because the code did not await
+    the update of the world data model version.  This would cause migration to execute a
+    second time which may cause problems.
 
 
 # Version 0.83.0 | Date: 2022-10-02
