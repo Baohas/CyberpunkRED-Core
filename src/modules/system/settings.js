@@ -9,7 +9,7 @@ import LOGGER from "../utils/cpr-logger.js";
 const registerSystemSettings = () => {
   // XXX: Debug and trace logs come first because sometimes we're using them while in the
   //      early initialization of FoundryVTT.
-  game.settings.register("cyberpunk-red-core", "debugLogs", {
+  game.settings.register(game.system.id, "debugLogs", {
     name: "CPR.settings.debugLogs.name",
     hint: "CPR.settings.debugLogs.hint",
     scope: "client",
@@ -21,7 +21,7 @@ const registerSystemSettings = () => {
     },
   });
 
-  game.settings.register("cyberpunk-red-core", "debugElements", {
+  game.settings.register(game.system.id, "debugElements", {
     name: "CPR.settings.debugElements.name",
     hint: "CPR.settings.debugElements.hint",
     scope: "client",
@@ -33,7 +33,7 @@ const registerSystemSettings = () => {
     },
   });
 
-  game.settings.register("cyberpunk-red-core", "traceLogs", {
+  game.settings.register(game.system.id, "traceLogs", {
     name: "CPR.settings.traceLogs.name",
     hint: "CPR.settings.traceLogs.hint",
     scope: "client",
@@ -45,7 +45,7 @@ const registerSystemSettings = () => {
     },
   });
 
-  game.settings.register("cyberpunk-red-core", "playersCreateInventory", {
+  game.settings.register(game.system.id, "playersCreateInventory", {
     name: "CPR.settings.playersCreateInventory.name",
     hint: "CPR.settings.playersCreateInventory.hint",
     scope: "world",
@@ -183,7 +183,7 @@ const registerSystemSettings = () => {
     type: CPRCompendiaSettings,
   });
 
-  game.settings.register("cyberpunk-red-core", "automaticallyResizeSheets", {
+  game.settings.register(game.system.id, "automaticallyResizeSheets", {
     name: "CPR.settings.automaticallyResizeSheets.name",
     hint: "CPR.settings.automaticallyResizeSheets.hint",
     scope: "client",
