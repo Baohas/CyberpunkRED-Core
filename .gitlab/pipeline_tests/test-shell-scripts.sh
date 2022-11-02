@@ -4,19 +4,19 @@ IFS=$'\n\t'
 
 ERRORS=0
 
-mapfile -t scripts < <(
+mapfile -t SCRIPTS < <(
   find . \
     -not \( -path "./dist" -prune \) \
     -not \( -path "./node_modules" -prune \) \
     -iname "*.sh"
 )
 
-if [[ -z "${scripts[*]}" ]]; then
+if [[ -z "${SCRIPTS[*]}" ]]; then
   echo "❌ Unable to find any scripts in the repo"
   exit 1
 fi
 
-for script in "${scripts[@]}"; do
+for script in "${SCRIPTS[@]}"; do
   # Test we have a portable shebang and are strictmode compliant
   # http://redsymbol.net/articles/unofficial-bash-strict-mode/
   #
@@ -49,7 +49,7 @@ for script in "${scripts[@]}"; do
 
   # If any of the above fail add to the error count
   if [[ "${strictmode_errors}" -gt 0 ]]; then
-    ((ERRORS += 1))
+    ((ERRORS = ERRORS + 1))
     echo "❌ ${script##*/} is not strictmode compliant."
   else
     echo "✅ ${script##*/} is strictmode compliant!"
@@ -58,14 +58,14 @@ for script in "${scripts[@]}"; do
   # Check we pass shellcheck
   if ! shellcheck "${script}"; then
     echo "❌ ${script##*/} does not validate with shellcheck"
-    ((ERRORS += 1))
+    ((ERRORS = ERRORS + 1))
   else
     echo "✅ ${script##*/} passed shellcheck!"
   fi
 
   if ! shfmt -d "${script}" &>/dev/null; then
     echo "❌ ${script##*/} does not validate with shfmt"
-    ((ERRORS += 1))
+    ((ERRORS = ERRORS + 1))
   else
     echo "✅ ${script##*/} passed shfmt!"
   fi
@@ -75,5 +75,5 @@ if [[ "${ERRORS}" -gt 0 ]]; then
   echo "❌ ${ERRORS} files have errors please check the output above for more details"
   exit 1
 else
-  echo "✅ All good!"
+  echo "🎉 All good!"
 fi

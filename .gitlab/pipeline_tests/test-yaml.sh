@@ -5,7 +5,7 @@ IFS=$'\n\t'
 ERRORS=0
 
 # Get a list of all yaml files, ignore dirs we don't care about
-mapfile -t docs < <(
+mapfile -t DOCS < <(
   find . \
     -not \( -path "./dist" -prune \) \
     -not \( -path "./node_modules" -prune \) \
@@ -14,16 +14,16 @@ mapfile -t docs < <(
 )
 
 # Check we get files returned
-if [[ -z "${docs[*]}" ]]; then
+if [[ -z "${DOCS[*]}" ]]; then
   echo "❌ Unable to find any yaml files in the repo"
   exit 1
 fi
 
 # Loop over the files and run through yaml-lint
-for doc in "${docs[@]}"; do
+for doc in "${DOCS[@]}"; do
   if ! npx yaml-lint "${doc}" &>/dev/null; then
     echo "❌ ${doc} does not validate with yaml-lint"
-    ((ERRORS += 1))
+    ((ERRORS = ERRORS + 1))
   else
     echo "✅ ${doc} passed yaml-lint"
   fi

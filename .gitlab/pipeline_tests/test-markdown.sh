@@ -5,7 +5,7 @@ IFS=$'\n\t'
 ERRORS=0
 
 #get a list of all markdown files, ignore dirs we don't care about
-mapfile -t docs < <(
+mapfile -t DOCS < <(
   find . \
     -not \( -path "./dist" -prune \) \
     -not \( -path "./node_modules" -prune \) \
@@ -16,19 +16,19 @@ mapfile -t docs < <(
 )
 
 # Check we get files returned
-if [[ -z "${docs[*]}" ]]; then
+if [[ -z "${DOCS[*]}" ]]; then
   echo "❌ Unable to find any markdown files in the repo"
   exit 1
 fi
 
 # Loop over files and run through markdownlint
-for doc in "${docs[@]}"; do
+for doc in "${DOCS[@]}"; do
   if ! npx markdownlint-cli \
     --config .markdownlint.yaml \
     --quiet "${doc}"; then
 
     echo "❌ ${doc} does not validate with markdownlint"
-    ((ERRORS += 1))
+    ((ERRORS = ERRORS + 1))
   else
     echo "✅ ${doc} passed markdownlint!"
   fi
