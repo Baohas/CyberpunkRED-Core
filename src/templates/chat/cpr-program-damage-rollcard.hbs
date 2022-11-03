@@ -4,8 +4,8 @@
         <div class="cpr-block chat-rollTitle-stat">
             <div class="text-center text-padding-top text-normal">{{rollTitle}}</div>
             <div class="rollcard-subtitle">
-              {{#if (cprCompare (cprCompare rollCardExtraArgs.program.system.class "===" "antiprogramattacker") "&&" (cprCompare rollCardExtraArgs.program.system.damage.blackIce "!==" "")) }}
-                {{#if (cprCompare formula "===" rollCardExtraArgs.program.system.damage.standard)}}
+              {{#if (cprCompare (cprCompare rollCardExtraArgs.program.class "===" "antiprogramattacker") "&&" (cprCompare rollCardExtraArgs.program.damage.blackIce "!==" "")) }}
+                {{#if (cprCompare formula "===" rollCardExtraArgs.program.damage.standard)}}
                   <div class="rollcard-subtitle-center text-small">{{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.itemSheet.program.nonBlackIce"}}</div>
                 {{else}}
                 <div class="rollcard-subtitle-center text-small">{{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.global.programClass.blackice"}}</div>

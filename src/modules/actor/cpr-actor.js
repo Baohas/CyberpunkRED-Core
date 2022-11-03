@@ -1066,7 +1066,7 @@ export default class CPRActor extends Actor {
     let totalDamageDealt = 0;
     let totalDamageReduction = 0;
     let takenDamage = 0;
-    const armors = this.getEquippedArmors(location);
+    const armors = location === "brain" ? [] : this.getEquippedArmors(location);
     const armorData = {
       value: 0,
       equipped: armors.length > 0,
@@ -1214,6 +1214,9 @@ export default class CPRActor extends Actor {
     const currentHp = this.system.derivedStats.hp.value;
     if (takenDamage >= currentHp && !damageLethal) {
       takenDamage = currentHp - 1;
+      if (currentHp === 0) {
+        takenDamage = 0;
+      }
     }
 
     await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });

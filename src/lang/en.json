@@ -125,7 +125,7 @@
     "CPR.chat.damageApplication.applyDamageSelected": "Apply damage to selected Token(s).",
     "CPR.chat.damageApplication.applyDamageToFollowing": "Apply damage to the following token(s).",
     "CPR.chat.damageApplication.armorAblation": "Armor ablation:",
-    "CPR.chat.damageApplication.armorDeflection": "Armor deflection:",
+    "CPR.chat.damageApplication.armorSP": "Armor SP:",
     "CPR.chat.damageApplication.criticalDamage": "Critical damage:",
     "CPR.chat.damageApplication.damageDealt": "Damage dealt:",
     "CPR.chat.damageApplication.damageDealtTo": "Damage dealt to",

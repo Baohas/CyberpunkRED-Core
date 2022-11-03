@@ -4,6 +4,8 @@
         {{localize "CPR.rolls.roll"}} {{localize "CPR.rolls.damageFor"}}
         {{#if rollCardExtraArgs.program.name}}
           "{{rollCardExtraArgs.program.name}} ({{localize (cprFindConfigValue "programClassList" rollCardExtraArgs.program.class)}})", Choomba!
+        {{else if (cprCompare rollCardExtraArgs.program.class "===" "blackice")}}
+          "{{localize "CPR.global.programClass.blackice"}}"
         {{else}}
           "{{localize "CPR.global.role.netrunner.interfaceAbility.zap"}}"
         {{/if}}
