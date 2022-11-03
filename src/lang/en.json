@@ -50,6 +50,7 @@
     "CPR.characterSheet.bottomPane.fight.installed": "Installed",
     "CPR.characterSheet.bottomPane.fight.meat": "Meat",
     "CPR.characterSheet.bottomPane.fight.net": "Net",
+    "CPR.characterSheet.bottomPane.fight.netRoleTooltip": "Select role ability for Netrunning.",
     "CPR.characterSheet.bottomPane.fight.reduceRez": "Reduce REZ",
     "CPR.characterSheet.bottomPane.fight.resetRez": "Reset REZ",
     "CPR.characterSheet.bottomPane.fight.rezzed": "Rezzed",
