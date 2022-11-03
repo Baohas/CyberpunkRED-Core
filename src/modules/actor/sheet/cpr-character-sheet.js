@@ -74,9 +74,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     // Install Cyberware
     html.find(".install-remove-cyberware").click((event) => this._installRemoveCyberwareAction(event));
 
-    // Select Roles for Character
-    html.find(".select-roles").click(() => this._selectRoles());
-
     // Set Lifepath for Character
     html.find(".set-lifepath").click(() => this._setLifepath());
 
@@ -267,30 +264,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     } else {
       this.actor.addCyberware(itemId);
     }
-  }
-
-  /**
-   * Pops up the role selection dialog box and persists the form data (answers) to the actor.
-   *
-   * @async
-   * @callback
-   * @private
-   * @returns {null}
-   */
-  async _selectRoles() {
-    LOGGER.trace("_selectRoles | CPRCharacterActorSheet | Called.");
-    if (this.actor.itemTypes.role.length === 0) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.characterSheet.bottomPane.role.noRolesWarning"));
-      return;
-    }
-    let formData = {
-      roles: this.actor.itemTypes.role,
-    };
-    formData = await SelectRolePrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
-      return;
-    }
-    this.actor.update({ "system.roleInfo.activeRole": formData.activeRole, "system.roleInfo.activeNetRole": formData.activeNetRole });
   }
 
   /**
