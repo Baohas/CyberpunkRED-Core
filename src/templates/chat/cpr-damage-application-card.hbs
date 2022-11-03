@@ -31,7 +31,7 @@
           </div>
         </div>
         <!-- If location exists and it isn't "body" display it on the card. -->
-        {{#if (cprCompare location "&&" (cprCompare location "!==" "body"))}}<div class="text-normal text-bold">{{localize "CPR.rolls.location"}}: {{localize (cprFindConfigValue "damageLocation" location)}}</div>{{/if}}
+        {{#if (cprCompare location "&&" (cprCompare location "!==" "body"))}}<div class="text-normal text-bold"><div class="text-right">{{localize "CPR.rolls.location"}}: {{localize (cprFindConfigValue "damageLocation" location)}}</div></div>{{/if}}
         <div class="d6-data-div">
           <div class="d6-data-details hide">
           <!--If this affects rez, only show rez. -->
