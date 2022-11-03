@@ -50,11 +50,68 @@ delete-packages-dev:
   rules:
     - if: $CPR_SCHEDULE == "cleanup-dev"
 
-lint:
+lint-code:
   stage: test
   script:
     - echo "Linting code..."
     - npm run lint
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
+lint-json:
+  stage: test
+  script:
+    - echo "Linting json..."
+    - ./.gitlab/pipeline_tests/test-json.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
+lint-yaml:
+  stage: test
+  script:
+    - echo "Linting yaml..."
+    - ./.gitlab/pipeline_tests/test-yaml.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
+lint-markdown:
+  stage: test
+  script:
+    - echo "Linting markdown..."
+    - ./.gitlab/pipeline_tests/test-markdown.sh
   needs:
     - job: init
       artifacts: true
@@ -90,10 +147,12 @@ unit-test:
 
 test-shell-scripts:
   stage: test
+  image: mvdan/shfmt:latest-alpine
   before_script:
-    - apt-get update
-    - apt-get install shellcheck
+    - apk update
+    - apk add bash shellcheck
   script:
+    - echo "Testing Shell Scripts..."
     - ./.gitlab/pipeline_tests/test-shell-scripts.sh
   needs:
     - job: init
@@ -288,6 +347,10 @@ build-artifacts:
   needs:
     - job: init
       artifacts: true
+    - job: lint-code
+    - job: lint-json
+    - job: lint-yaml
+    - job: lint-markdown
     - job: unit-test
     - job: test-shell-scripts
       optional: true

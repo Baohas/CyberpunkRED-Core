@@ -95,4 +95,4 @@ ZIP_FILE="${RELEASE_NAME}.zip"
   echo "SYSTEM_TITLE=${SYSTEM_TITLE}"
   echo "VERSION=${VERSION}"
   echo "ZIP_FILE=${ZIP_FILE}"
-} > vars.env
+} >vars.env
