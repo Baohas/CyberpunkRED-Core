@@ -23,7 +23,7 @@ fi
 
 # Loop over the files and run through json lint
 for doc in "${DOCS[@]}"; do
-  if ! npx jsonlint --quiet "${doc}" &>/dev/null; then
+  if ! npx jsonlint --quiet "${doc}"; then
     echo "❌ ${doc} does not validate with jsonlint"
     ((ERRORS += 1))
   else
