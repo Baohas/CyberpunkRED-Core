@@ -26,6 +26,7 @@
 - #549 - stop reordering items from the role list of abilities after adding points to them (ex: Tech and Solo)
 - #471 - On a Macbook, the `Command` key can now be used in lieu of the `Control` key to skip roll dialogs
 - #557 - Fix the variety of Shotgun Smart Slugs
+- Fixed issued where the image on a sheet would overflow onto the sheet data.
 
 ## Version 0.83.1 (Hotfix) | Date: 2022-10-23
 
