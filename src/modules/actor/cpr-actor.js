@@ -1214,7 +1214,7 @@ export default class CPRActor extends Actor {
     const currentHp = this.system.derivedStats.hp.value;
     if (takenDamage >= currentHp && !damageLethal) {
       takenDamage = currentHp - 1;
-      if (currentHp === 0) {
+      if (currentHp <= 0) {
         takenDamage = 0;
       }
     }
