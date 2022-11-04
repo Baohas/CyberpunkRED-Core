@@ -11,6 +11,7 @@
 - Drugs can now be equipped, owned, or carried.
 - Moved created migrationFolder management on CPRMigration and moved backupOwnedItem to CPRMigration as it will probably become
   necessary if we have more ActiveEffect changes in the future.
+- The Role block in the left pane of the character sheet is now just a simple text box. Active Net Role is now set from the Net section of the Fight tab. This should be a lot clearer to users and require less maintenance.
 
 ### Bug Fixes
 
