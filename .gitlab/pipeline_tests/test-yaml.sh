@@ -21,7 +21,7 @@ fi
 
 # Loop over the files and run through yaml-lint
 for doc in "${DOCS[@]}"; do
-  if ! npx yaml-lint "${doc}" &>/dev/null; then
+  if ! npx yaml-lint "${doc}" 1>/dev/null; then
     echo "❌ ${doc} does not validate with yaml-lint"
     ((ERRORS = ERRORS + 1))
   else
