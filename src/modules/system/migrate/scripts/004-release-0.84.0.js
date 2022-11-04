@@ -68,6 +68,19 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
       }
     }
 
+    // Update activeNetRole to use ID instead of Name.
+    const netRoleItem = actor.itemTypes.role.find((r) => r.name === actor.system.roleInfo.activeNetRole);
+    if (netRoleItem) {
+      // If activeNetRole is set and has an item with the same name, set it to the ID of that item.
+      actor.update({ "system.roleInfo.activeNetRole": netRoleItem.id });
+    } else if (actor.itemTypes.role.length > 0) {
+      // If there is no netRoleItem, assign activeNetRole the ID of the first role in the list.
+      actor.update({ "system.roleInfo.activeNetRole": actor.itemTypes.role[0].id });
+    } else {
+      // If there are no roles on the actor, set activeNetRole to "".
+      actor.update({ "system.roleInfo.activeNetRole": "" });
+    }
+
     if (itemDeletions.length > 0) {
       await actor.deleteEmbeddedDocuments("Item", itemDeletions);
     }
