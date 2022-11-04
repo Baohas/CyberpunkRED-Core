@@ -90,6 +90,7 @@ export default class CPRItemSheet extends ItemSheet {
     //   data.system.availableSlots = this.object.availableSlots();
     // }
     const dvTables = await DvUtils.GetDvTables();
+    cprData.dvTableNames = [];
     for (const table of dvTables) cprData.dvTableNames.push(table.name);
     foundryData.item.system = cprData;
     return foundryData;

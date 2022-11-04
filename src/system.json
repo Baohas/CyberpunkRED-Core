@@ -36,7 +36,7 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "DV Rolltables - IMPORT ME",
+      "label": "DV Rolltables",
       "type": "RollTable",
       "name": "dvTables",
       "path": "packs/dvTables.db",
