@@ -74,22 +74,30 @@
             </div>
         </li>
 
-        {{#if rollData.calculateCritical}}
-        TEST
-        {{/if}}
-
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.rolls.aimedAttack"}}:
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="aimedAttack" class="item-checkbox" type="checkbox" data-target = "aimedAttack" data-meta="true" data-dtype="Checkbox" {{#if dialogData.aimedAttack}} checked {{/if}}>
+            </div>
+        </li>
+        {{#if dialogData.aimedAttack}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.rolls.aimFor"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
                 <select name="location">
+                  {{#select rollData.location}}
                     {{#each (cprFindConfigObj "aimedLocation") as |location l|}}
                     <option value="{{l}}">{{localize location}}</option>
                     {{/each}}
+                  {{/select}}
                 </select>
             </div>
         </li>
+        {{/if}}
     </ol>
   <footer class="sheet-footer flexrow">
     <button class="confirm-roll" type="submit" name="submit" autofocus>

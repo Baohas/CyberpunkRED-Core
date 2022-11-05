@@ -221,7 +221,7 @@ export class CPRRoll {
     }
 
     if (!skipDialog) {
-      const formData = await VerifyRoll.RenderPrompt(this).catch((err) => LOGGER.debug(err));
+      // const formData = await VerifyRoll.RenderPrompt(this).catch((err) => LOGGER.debug(err));
       const dialog = await CPRDialog.showDialog(this);
       if (dialog === undefined) {
         // returns false if the dialog was closed
@@ -435,6 +435,7 @@ export class CPRAttackRoll extends CPRSkillRoll {
     this.rollTitle = `${attackName}`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-attack-rollcard.hbs`;
     this.weaponType = weaponType;
+    this.location = "body";
   }
 
   /**

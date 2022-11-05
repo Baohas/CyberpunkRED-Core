@@ -11,6 +11,9 @@ export default class CPRDialog extends FormApplication {
     super(rollData, options);
     this.rollData = rollData;
     this.object = rollData;
+    this.dialogData = {
+      aimedAttack: false,
+    };
   }
 
   /**
@@ -36,6 +39,7 @@ export default class CPRDialog extends FormApplication {
     LOGGER.trace("getData | CPRDialog | called.");
     const data = super.getData();
     data.rollData = this.rollData; // CPRRoll object
+    data.dialogData = this.dialogData;
     return data;
   }
 
@@ -55,17 +59,19 @@ export default class CPRDialog extends FormApplication {
     html.find(".confirm-roll").click(() => this.confirmRoll());
     html.find(".cancel-roll").click(() => this.close());
 
-
     super.activateListeners(html);
   }
 
   _itemCheckboxToggle(event) {
     LOGGER.trace("_itemCheckboxToggle | CPRDialog | Called.");
     const { rollData } = this;
+    const { dialogData } = this;
     const target = SystemUtils.GetEventDatum(event, "data-target");
-    const value = !getProperty(rollData, target);
-    if (hasProperty(rollData, target)) {
-      setProperty(rollData, target, value);
+    const meta = (/true/i).test(SystemUtils.GetEventDatum(event, "data-meta"));
+    const changeData = meta ? dialogData : rollData;
+    const value = !getProperty(changeData, target);
+    if (hasProperty(changeData, target)) {
+      setProperty(changeData, target, value);
       // this._automaticResize(); // Resize the sheet as length of settings list might have changed
     }
   }
@@ -122,6 +128,11 @@ export default class CPRDialog extends FormApplication {
       fd.mods = fd.mods.split(",").map(Number);
     } else {
       fd.mods = [];
+    }
+
+    // If aimedAttack isn't selected, default to body.
+    if (!formData.aimedAttack) {
+      fd.location = "body";
     }
 
     switch (formData.constructor.name) {
