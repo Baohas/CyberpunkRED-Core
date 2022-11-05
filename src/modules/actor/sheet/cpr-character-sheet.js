@@ -94,7 +94,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     html.find(".skill-input").click((event) => event.target.select()).change((event) => this._updateSkill(event));
 
     // update the ammount of an item in the gear tab
-    html.find(".amount-input").click((event) => event.target.select()).change((event) => this._updateAmount(event));
+    html.find(".gear-amount-input").click((event) => event.target.select()).change((event) => this._updateAmount(event));
 
     // update a role ability
     html.find(".ability-input").click((event) => event.target.select()).change(
