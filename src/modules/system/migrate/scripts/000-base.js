@@ -488,7 +488,7 @@ export default class BaseMigration extends CPRMigration {
     // Migrate role abilities to items and assign correct values.
     const { roleskills } = actorData.data.roleInfo;
     if ((typeof roleskills) !== "undefined") {
-      const content = await CPRSystemUtils.GetCompendiumDocs("roles-items");
+      const content = await CPRSystemUtils.GetCompendiumDocs(`${game.system.id}.roles-items`);
       Object.entries(roleskills).forEach(([role, roleSkills]) => {
         let newRole;
         Object.entries(roleSkills).forEach(([skillName, skillValue]) => {
@@ -531,7 +531,7 @@ export default class BaseMigration extends CPRMigration {
     // a scenario where the actors somehow lost their core Cyberware items
     // so this ensures all actors have them.
     // put into basickSkills array
-    const content = await CPRSystemUtils.GetCompendiumDocs("cyberware");
+    const content = await CPRSystemUtils.GetCoreCyberware();
     const missingContent = this._validateCoreContent(actorData, content);
     if (missingContent.length > 0) {
       missingContent.forEach((c) => {
