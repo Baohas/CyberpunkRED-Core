@@ -7,7 +7,6 @@
 
 ### Changes
 
-**Changes**
 - #434 - users no longer need to import compendia to use DV measurements or roll critical injuries
 - Drugs can now be equipped, owned, or carried.
 - Moved created migrationFolder management on CPRMigration and moved backupOwnedItem to CPRMigration as it will probably become
