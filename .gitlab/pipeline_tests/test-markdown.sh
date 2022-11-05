@@ -25,7 +25,7 @@ fi
 for doc in "${DOCS[@]}"; do
   if ! npx markdownlint-cli \
     --config .markdownlint.yaml \
-    --quiet "${doc}"; then
+    "${doc}"; then
 
     echo "❌ ${doc} does not validate with markdownlint"
     ((ERRORS = ERRORS + 1))

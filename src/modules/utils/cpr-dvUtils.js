@@ -3,17 +3,16 @@ import LOGGER from "./cpr-logger.js";
 import SystemUtils from "./cpr-systemUtils.js";
 
 export default class DvUtils {
-  static GetDvTables() {
+  static async GetDvTables() {
     LOGGER.trace("GetDvTables | DvUtils | called.");
-    const tableNames = [];
-    const tableList = SystemUtils.GetRollTables("^DV", true);
-    tableList.forEach((table) => tableNames.push(table.name));
-    return tableNames.sort();
+    const tableList = await SystemUtils.GetCompendiumDocs(game.settings.get(game.system.id, "dvRollTableCompendium"));
+    tableList.sort((a, b) => ((a.name > b.name) ? 1 : -1));
+    return tableList;
   }
 
-  static GetDv(tableName, distance) {
+  static async GetDv(tableName, distance) {
     LOGGER.trace("GetDv | DvUtils | called.");
-    const dvTables = this.GetDvTables();
+    const dvTables = await this.GetDvTables();
     let DV = null;
     if (dvTables.includes(tableName)) {
       const rollTable = (SystemUtils.GetRollTables(tableName, false))[0];
