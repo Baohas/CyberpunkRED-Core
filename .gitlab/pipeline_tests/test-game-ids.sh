@@ -9,7 +9,7 @@ SYSTEM_NAME="cyberpunk-red-core"
 
 # Look for "cyberpunk-red-core" in the code, and fail if any is found.
 # Contributors should be using game.system.id instead.
-if grep -r --include="*.js" "${SYSTEM_NAME}" ./*; then
+if grep -r --include="*.js" --exclude="config.js" "${SYSTEM_NAME}" ./*; then
   echo "❌ '${SYSTEM_NAME}' string found, use 'game.system.id' instead."
   exit 1
 else

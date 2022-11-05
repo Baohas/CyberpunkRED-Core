@@ -24,11 +24,12 @@ fi
 
 # NOTE: This is done as the last step of the publishing step as this is where Foundry will pick up a new release
 # Upload the system.json we created to the `latest` release
-response=$(curl \
-  --silent \
-  --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
-  --upload-file "${SYSTEM_FILE}" \
-  "${REPO_URL}/latest/${SYSTEM_FILE}"
+response=$(
+  curl \
+    --silent \
+    --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+    --upload-file "${SYSTEM_FILE}" \
+    "${REPO_URL}/latest/${SYSTEM_FILE}"
 )
 
 if [[ "$(echo "${response}" | jq -r .message)" != "201 Created" ]]; then

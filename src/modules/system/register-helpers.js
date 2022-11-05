@@ -849,4 +849,12 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprTrace", (msg) => {
     LOGGER.trace(msg);
   });
+
+  /**
+   * Truncate HTML to a specified length and add … to the end
+   */
+  Handlebars.registerHelper("cprStripHtml", (string) => {
+    const text = string.replace(/<[^>]+>/g, '');
+    return text;
+  });
 }

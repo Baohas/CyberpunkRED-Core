@@ -114,16 +114,20 @@ Hooks.once("ready", async () => {
   // not the case, we force them to migrate to 0.80.0 before moving to "1".
   let dataModelVersion = (game.settings.get(game.system.id, "dataModelVersion")) ? game.settings.get(game.system.id, "dataModelVersion") : "0.0";
 
-  LOGGER.debug(`Data model before comparison: ${dataModelVersion}`);
-  if (dataModelVersion.indexOf(".") > -1) dataModelVersion = isNewerVersion("0.80.0", dataModelVersion) ? -1 : 0;
-  LOGGER.debug(`New data model version is: ${dataModelVersion}`);
-  const MR = new MigrationRunner();
-  // migrateWorld expects to be passed two integer values.
-  if (await MR.migrateWorld(parseInt(dataModelVersion, 10), DATA_MODEL_VERSION)) {
-    UpdateScreen.RenderPopup();
+  if (dataModelVersion === "newCprWorld") {
+    await game.settings.set(game.system.id, "dataModelVersion", DATA_MODEL_VERSION);
+  } else {
+    LOGGER.debug(`Data model before comparison: ${dataModelVersion}`);
+    if (dataModelVersion.indexOf(".") > -1) dataModelVersion = isNewerVersion("0.80.0", dataModelVersion) ? -1 : 0;
+    LOGGER.debug(`New data model version is: ${dataModelVersion}`);
+    const MR = new MigrationRunner();
+    // migrateWorld expects to be passed two integer values.
+    if (await MR.migrateWorld(parseInt(dataModelVersion, 10), DATA_MODEL_VERSION)) {
+      UpdateScreen.RenderPopup();
+    }
+    // Ensure load bar is gone
+    SystemUtils.fadeMigrationBar();
   }
-  // Ensure load bar is gone
-  SystemUtils.fadeMigrationBar();
 });
 
 registerHooks();

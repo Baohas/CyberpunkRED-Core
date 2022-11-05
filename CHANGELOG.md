@@ -1,20 +1,25 @@
-# Version 0.84.0 | Date: WIP
+<!-- markdownlint-disable MD024 -->
+# Changelog
 
-**New Features**
--
+## Version 0.84.0 | Date: WIP
 
-**Changes**
-- #434 - users no longer need to import critical injury compendia to use that functionality
+### New Features
+
+### Changes
+
+- #434 - users no longer need to import compendia to use DV measurements or roll critical injuries
 - Drugs can now be equipped, owned, or carried.
 - Moved created migrationFolder management on CPRMigration and moved backupOwnedItem to CPRMigration as it will probably become
   necessary if we have more ActiveEffect changes in the future.
+- UI improvements in the gear tab to make it more readable and clear
 
-**Bug Fixes**
+### Bug Fixes
+
 - Fix Elfline Online Armory macro
 - #553 - Macros can be dragged to the hotbar.
 - #546 - Techscanner now properly gives bonuses to Cybertech and Weaponstech
 - #547 - Fixed the code so upgrades to attackmod are now taken into consideration
-- #554 - Introduced now price category `Dirt Cheap`. Changed the code to store Price Categories as config data (`config.js`) and altered code
+- #554 - Introduced new price category `Dirt Cheap`. Changed the code to store Price Categories as config data (`config.js`) and altered code
          to dynamically display the price categories based on the price passed `cprGetPriceCategory`. The `Valueable` mixin code was also adjusted
          to utilize this single location of Price Categories.  Any item priced > 0 or < the second category will be lumped into the lowest category
          tier. Example, while `Dirt Cheap` is not supposed to start until `5 eb`, there's no category for `0-4 eb` so instead of it being in the `free`
@@ -24,9 +29,10 @@
 - #557 - Fix the variety of Shotgun Smart Slugs
 - #559 - Fix multiple areas where the skill names were not being translated properly
 
+## Version 0.83.1 (Hotfix) | Date: 2022-10-23
 
-# Version 0.83.1 | Date: 2022-10-23
-**Bug Fixes**
+### Bug Fixes
+
 - #529 - Fix non-shop containers having the wrong button
 - #536 - Spelling mistake: "Ememies" (English)
 - #495 - Ability to use UUID links in Character sheets or Item sheets.
@@ -44,42 +50,46 @@
     the update of the world data model version.  This would cause migration to execute a
     second time which may cause problems.
 
+## Version 0.83.0 | Date: 2022-10-02
 
-# Version 0.83.0 | Date: 2022-10-02
+### New Features
 
-**New Features**
 - New UI for modifying Mook skills on the Mook sheet
 - Drugs can be used in the Mook sheet
 - Stackable items can be dragged to the Mook sheet and stacked properly
 
-**Changes**
+### Changes
+
 - Automatic babele folder configuration, so that it does not have to be set by the user.
 - Mook portrait is always shown
 - A few minor UI improvements to the Mook sheet
 
-**Bug Fixes**
+### Bug Fixes
+
 - #476 - Vehicles cost can now be edited
 - Cyberware & Upgrade templates still had some references to .data causing the shim to fire.
 - #469 - Fixed icon display for Foreign Object Critical in Rollable Tables
 - #507 - Black ICE Class does not appear to save
 - #520 - Splitting items works again
 
+## Version 0.82.1 (Hotfix) | Date: 2022-09-23
 
-# Version 0.82.1 (Hotfix) | Date: 2022-09-23
 - Fix an issue where the mook sheet notes were not writable
 - #494 - Cyberware weapons were corrupting data points
 
+## Version 0.82.0 | Date: 2022-09-22
 
-# Version 0.82.0 | Date: 2022-09-22
+### New Features
 
-**New Features**
 - Foundry V10 Compatibility
 - Spanish translation! Thank you ZRAAA78!
 
-**Changes**
+### Changes
+
 - Nothing worth noting
 
-**Bug Fixes**
+### Bug Fixes
+
 - #473 - Fashionware foundational item not migrated to v10
 - #472 - EMP & Luck Values/Max greater than 9 mess with the formatting.  If a user enters a value > 9, a warning banner is shown letting them know there will be formatting issues and the formatting changes to make it more obvious something is amiss.
 - #468 - Actor image goes outside border over text fixed (overflow hidden).
@@ -89,42 +99,51 @@
 - #490 - Vehicles still using v10 data/system shim.
 - #486 - Autofire Skill correctly used when autofire toggle applied in fight tab
 
-**Maintenance Releases**
+## Version 0.81.5 (Hotfix) | Date: 2022-09-20
 
-# Version 0.81.5 (Hotfix) | Date: 2022-09-20
-#467 - Fix shield ablation arrow in Fight Tab to be functional
-#461 - Throw an exception if someone enters a decimal point when modifying eurobucks.
-#477 - Autofire functionality is not working from the Fight Tab
-#468 - Actor image goes outside border over text
+- 467 - Fix shield ablation arrow in Fight Tab to be functional
+- 461 - Throw an exception if someone enters a decimal point when modifying eurobucks
+- 477 - Autofire functionality is not working from the Fight Tab
+- 468 - Actor image goes outside border over text
 - Item Upgrades & Cyberware which are weapons no longer get their item data corrupted when opening the item sheet
 
-# Version 0.81.4 (Hotfix) | Date: 2022-08-21
-#464 - Fix issue where containers corrupt eurobucks amount for non-stackable items
+## Version 0.81.4 (Hotfix) | Date: 2022-08-21
 
-**New Features**
+- 464 - Fix issue where containers corrupt eurobucks amount for non-stackable items
+
+### New Features
+
 - Polish support available!
 
-# Version 0.81.3 (Hotfix) | Date: 2022-08-02
-**Bug Fixes**
+## Version 0.81.3 (Hotfix) | Date: 2022-08-02
+
+### Bug Fixes
+
 - When installing cyberware and selecting `None` for the Humanity Loss, the maximum humanity was not being decremented forcing one to re-calculate it using the calculator.
 - Corrected  an issue with Compendium Migration where `Scene` type Compendia was not properly being migrated.
 - #437 - Chat Card shows armor ablation even if target has no Armor
 - #419 - Invert function of CTRL Rolls creates an issue with Primary Role Abilities
-# Version 0.81.2 (Hotfix) | Date: 2022-08-02
-**Bug Fixes**
+
+## Version 0.81.2 (Hotfix) | Date: 2022-08-02
+
+### Bug Fixes
+
 - #458 - The rulers for the DV Calculation is broken for tables with regexp characters in the name [such as (Autofire)]
 - #455 - Containers/Vendors issues (non-English settings)
 
-# Version 0.81.1 (Hotfix) | Date: 2022-08-01
-**Bug Fixes**
+## Version 0.81.1 (Hotfix) | Date: 2022-08-01
+
+### Bug Fixes
+
 - #456 - Selling non-stackable items to vendors results in a NaN offer from the vendor
 - #454 - Kendachi Mono-Three has Incorrect Attack Bonus
 - #452 - Migrated Excellent Quality Weapons have no Bonus to Attack
 - #451 - All Migrated Weapon Icons Changed to Heavy Pistol
 
-# Version 0.81.0 | Date: 2022-07-31
+## Version 0.81.0 | Date: 2022-07-31
 
-**New Features**
+### New Features
+
 - #225 - Active effects for Items
   - Active Effects are a Foundry feature that allow items to apply modifications to stats and skills of characters in the game. Active Effects can also be added to Characters arbitrarily without associating to an item.
   - An Effects tab on the actor sheet has been added to summarize where active effects are coming from. From there character-level effects can be
@@ -155,8 +174,8 @@
 - Feature Request #424: Ability to use LUCK on Stat, Skill, Attack, Program, Cyberdeck, and Interface/Charismatic Impact rolls. Automatically deducts from character sheet.
 - #414 - German is now a supported language. Most game system text (excluding pre-made items) will appear in this language if set in game settings. Thank you to our German translators: High123, Similar and Tealk.
 
+### Changes
 
-**Changes**
 - Feature Request #352: Removed the fixed height CSS for the "Player Notes" section in the lifepath tab for a better writing/reading experience.
 - Consolidated gain, lose and set ledger functions for EB, IP and Reputation to make it more manageable.
 - #244 - Remove unused data points in the template
@@ -205,9 +224,8 @@
     You can still use the name and other fields (such at attack modifier) to express excellent quality items.
   - Some item types (weapons, vehicles) no longer "stack." They do not have an amount field any more.
 
+### Bug Fixes
 
-
-**Bug Fixes**
 - Corrected an issue when a player did not have proper permissions on a vendor, the purchase would fail, but the player would still be charged for the item
 - Fixed the ability to delete items from the Mook sheet
 - Fixed #367: As a GM, if you attempted to use a macro to roll a skill without having an actor selected, it failed with a traceback. We now catch this and throw an appropriate message
@@ -228,32 +246,36 @@
 - Fixes #449: The stat value now shows on a stat roll card
 - Fixes #450: Unable to delete ledger lines for a container type actor
 
-**Maintenance items**
+### Maintenance Items
+
 - Moved preCreateItem hook from actor.js to item.js and combined the code of createItem hook from both actor.js and item.js into item.js
 - Added a warning popup if a macro is using actor.addCriticalInjury() alerting a user to the eventual deprecation of the method.  [Please see the updated API Wiki for details on the new way to create a Critical Injury from a Macro.](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/API/addCriticalInjury)
 - Removed shading from the "Cancel" button on dialogs which may have inadvertently made people believe it was the default
-- Renamed method _favoriteVisibility to _toggleSectionVisibility and CSS tag toggle-favorite-visibility to toggle-section-visibility as it accurately describes what happens
+- Renamed method _favoriteVisibility to_toggleSectionVisibility and CSS tag toggle-favorite-visibility to toggle-section-visibility as it accurately describes what happens
 - Updated the prompt naming for the cyberware installation to be consistent with code
 - Consolidated the interface to get Roll Tables from the system into a method in systemUtils that can either use a regular expression or not
 
-# Version 0.80.1 | Date: 2021-01-04
+## Version 0.80.1 (Hotfix) | Date: 2021-01-04
 
-**Hot Fix**
+### Changes
+
 - Addressed #352: Removed the fixed height CSS for the "Player Notes" section in the lifepath tab for a better writing/reading experience.
 - Fixed #354 - Item Upgrades should be removable again and additional upgrades can be installed.
 - Fixed #355 - Drag and drop to hotbar restored
 - Corrected many French translation strings
 
-# Version 0.80.0 | Date: 2021-12-23
+## Version 0.80.0 | Date: 2021-12-23
 
-**New Features**
+### New Features
+
 - Updated the system for Foundry v9 compatibility. No further updates will be provided to the 0.8.x release. [Please backup your data before attempting any major upgrade!](https://www.youtube.com/watch?v=OmbxMmqNNXU)
 - Added functionality to delete single ledger lines for the GM. Players are not able to do so.
   - It is possible to not only delete the line in the ledger, but also change the value up or down upon deletion.
 - Added functionality to manually increase the Death Save Penalty of a character. This is useful in case a character gets hit, while Mortally Wounded.
 - Many new icons added to items in the compendiums! See CREDITS.md for attribution and thanks!
 
-**Changes**
+### Changes
+
 - When a release update is applied, a pop up window will now display with relevant information:
   - At a minimum, there will be a link to the CHANGELOG for the release
   - If there is a corresponding video which demonstrates new feature functions, it will also be linked off of the popup
@@ -267,7 +289,8 @@
   - All items on a mook can be dragged between sheets, allowing the GM to "loot" mooks on behalf of player characters.
   - Several changes to the GitLab README to assist with introducing new developers to the system (Join Us!)
 
-**Bug Fixes**
+### Bug Fixes
+
 - Rubber ammunition no longer ablates armor and will not reduce an actor to below 1 hit points per RAW.
 - Fixed #286 - The item data was not being passed when dragging from a Mook sheet causing the drag/drop to fail. This has been resolved.
 - Fixed #298 - DV ruler will attempt to automatically use the Autofire DV Table if an Autofire DV Table exists.
@@ -287,19 +310,14 @@
 - Fixed #350 - Fixed uninstalled cyberware on a mook sheet being impossible to delete if the original install failed.
 - Fixed a couple missing translation strings related to synchronizing armor SP to resource bars
 
-# Version 0.79.1 | Date: 2021-09-11
+## Version 0.79.1 (Hotfix) | Date: 2021-09-11
 
-**Hot Fix**
 - Fixed #325 - DV ruler broken. Restored by naming the function.
 
-# Version 0.79.0 | Date: 2021-09-11
+## Version 0.79.0 | Date: 2021-09-11
 
-**Hot Fix**
-- Fixed #325 - DV rulers broken when a DV table is set
+### New Features
 
-# Version 0.79.0 | Date: 2021-09-11
-
-**New Features**
 - Added support for automatic damage application on Characters and Mooks.
   - The damage chat card of weapon attacks now has an additional button to apply the damage to the selected tokens.
   - A prompt showing the tokens, which will be damaged is shown. It can be skipped by holding the ctrl key while clicking.
@@ -322,11 +340,13 @@
   - BREAKING: Netrunners must select which role should be utilized for netrunning from the "Configure Active Role" dialog on the main part (left) of the character sheet, otherwise you will not be able to utilize the cyberdeck tab of the character sheet. This will be selected for you on migration if you had the Netrunner role selected on a character previously, but will need to be configured on new characters.
 - Added filter capability for Skills & Gear.  This is a client side option which can be enabled/disabled in the System Settings.
 
-**Changes**
+### Changes
+
 - Feature Request #296: Exotic Weapons from the Core Rulebook are now present in the Weapons Compendium. The Battleglove has been placed into Cyberware Compendium, and Battery Pack has been placed into the Ammo Compendium.
 - Feature Request #319: Item Upgrades are now accessible on a Mook sheet. This includes support for Underbarrel weapons which will display as a usable weapon.
 
-**Bug Fixes**
+### Bug Fixes
+
 - Fixed #292: Attempting to delete installed cyberware is prevented now, as it can leave the actor in a broken state.
 - Fixed #294: Cybersnake and Vampyres cyberware items from the compendium now display their weapon stats in the fight tab.
 - Fixed #318: Underbarrel attachment item upgrades in the compendium now pre-select the appropriate ammo types.
@@ -335,20 +355,20 @@
 - Fixed #323: Cyberware weapons now show as weapons in the Mook Sheet.
 - Fixes #317: Before adding a Role Item during migration, added a check to see if one exists already.  Also added code to the data model migration to remove the `roleskills` data point which should result in zeroing all of the role skills on that actor.  This datapoint can be removed next release.
 - Fixes #324: This bug was introduced with the new initiative code so it never made it to master.  Critical damage should work again.
+- Fixed #325 - DV rulers broken when a DV table is set
 
-# Version 0.78.2 | Date: 2021-08-12
+## Version 0.78.2 (Hotfix) | Date: 2021-08-12
 
-**Hot Fix**
 - Fix missing import statement in macro code, which prevented all macros generated by dragging items to the hotbar from functioning.
 
-# Version 0.78.1 | Date: 2021-08-04
+## Version 0.78.1 (Hotfix) | Date: 2021-08-04
 
-**Hot Fix**
 - Fixes issue #289: There was a naming conflict on Handlebar helpers between `CPR` and the module `Better Roll Tables`.  This hotfix prefixes our helper with `cpr` to avoid this conflict.  A more permanent solution will be implemented for all helpers next release.
 
-# Version 0.78.0 | Date: 2021-08-03
+## Version 0.78.0 | Date: 2021-08-03
 
-**New Features**
+### New Features
+
 - Cyberware Items which act as weapons can now be configured as such
   - Core Rule Book Examples: Popup Weapons, Big Knucks, Wolvers, etc
   - These weapons will show in the Fight Tab as Cyberware Weapons under the standard weapons
@@ -395,7 +415,8 @@
 - A compendium for clothing has been added (thanks @aarong123!)
 - Help article buttons (?) are now available on items when viewing them in the top-right corner. This will redirect you to the associated item help page on our wiki.
 
-**Changes**
+### Changes
+
 - Newly created actors and items will automatically have default icons configured.
 - Restructured the language file for easier translations.
 - Added test cases for code quality: The english language file is checked for unused strings and the changelog is checked for changes with each merge request.
@@ -405,7 +426,8 @@
 - The container sheet inventory will now stretch with the window length vertically
 - Many, many little tweaks and improvements to the French translation (thank you @h.gelis and @thevincekun)
 
-**Bug Fixes**
+### Bug Fixes
+
 - Fixed #263: New containers now show infinite stock option, as they are initialized as a shop.
 - Fix #265, #266, #267: Gear tab now remembers scroll position.
 - Fix #276: Items can be transferred from unlinked actors
@@ -417,20 +439,21 @@
 - Fixed #261: Container actor tokens are not persisting their configuration when the token is unlinked - Foundry appears to share flag settings between actor & tokens so to solve this issue, the container settings were moved to persisting flags to the token actor. Configuring non-token actors has been disabled. Existing containers may need to be re-configured on the token post-migration.
 - Fixed an issue with Firefox browsers throwing an error when using our default SVG images.  The SVG tag we were using defined the height/width using a style property, however, Firefox perfers individual height and width properties.
 
-# Version 0.77.1 | Date: 2021-06-29
+## Version 0.77.1 (Hotfix) | Date: 2021-06-29
 
-**Hot Fix**
 - Corrected localization issue of text on chat cards when rolling Net Damage
 - Added Zap as a rollable interface ability as it was missing from the list (Zap damage will be handled in a future release)
 
-# Version 0.77.0 | Date: 2021-06-25
+## Version 0.77.0 | Date: 2021-06-25
 
-**Migration to foundry 0.8.X**
+### Migration to foundry 0.8.X
+
 - **BREAKING:** This version of our system will not work with Foundry version 0.7.X and below. Do not update this system until you are ready to update your Foundry to version 0.8.X. And as always, **make a backup of your user data** before updating!
 - Migrated the source code to work with foundry version 0.8.X
 - Rewrote the migration code support new features from foundry 0.8.X
 
-**New Features**
+### New Features
+
 - Improvements have been added to the cyberware tab. For foundational cyberware that has no optional slots (such as Borgware), no Used/Total is displayed in the title.
 - Added options to choose how to display the skill values for the mook character sheet. Now one can show it in the same way as it is printed in the book. Please look at the settings for this.
 - Improved Ledger functionality of the Eurobucks/wealth and Improvement Points of characters
@@ -460,7 +483,7 @@
   - Booster Roll Modifiers exposed in Roll verification dialog and added to the roll for Rezzed Boosters Only
     - Shipped Program Compendium updated to include these roll modifiers (Any imported items should be re-imported or manually updated to add these)
   - Programs (Attacker) have been enhanced to allow the setting of Damage. For Anti-Program Attackers, both BlackICE and non-BlackICE damage rolls may be configured
-    -  Attack rolls for Anti-Program Attack Rolls will prompt on which damage type to roll
+    - Attack rolls for Anti-Program Attack Rolls will prompt on which damage type to roll
   - When equipping a Cyberdeck in inventory, the Fight Tab exposes a toggle between Meat and Net space. Net space enables quick access to:
     - Roll Interface Abilities
     - Roll Speed against a Black-ICE encounter
@@ -497,16 +520,18 @@
   - Netrunning icons for actors (and some other things) are now included in the system. They can be accessed from the tile browser in "systems/cyberpunk-red-core/icons/netrunning". Big big thanks to Verasunrise (the artist) and Hyriu33 for letting us provide this awesome artwork with our system!
 - Street Drugs have been added to the "Gear" compendium.
 
-**Changes**
+### Changes
+
 - Restructured the code for character and mook sheets for ease of development
 - Changed the scene activation when generating a scene from a net architecture to just viewing the scene. This allows to show the new scene to the GM, but not the players in order to do some more preparation if needed.
 - Fixed various formatting issues on the mook sheet - i.e. whitespace trimmed; trailing commas and erroneous parentheses removed for Skills, Cyberware/Gear, Programs, and Critical Injuries lists.
 - Added icon artwork for many of the items in the shipped Weapons Compendium.  Artwork provided by [Flintwyrm](https://twitter.com/Flintwyrm).
 - Renamed some compendia to make it more clear which are necessary to import and which should not be imported.
-- Default images added for compendia. Images from https://game-icons.net. They can be accessed from the file browser in "systems/cyberpunk-red-core/icons/compendium/default".
+- Default images added for compendia. Images from <https://game-icons.net>. They can be accessed from the file browser in "systems/cyberpunk-red-core/icons/compendium/default".
 - The French translation has been updated to account for all strings in this release. (Thank you VinceKun!)
 
-**Bug Fixes**
+### Bug Fixes
+
 - Borgware items (Shoulder Mount / Implanted Frames / MultiOptic Mount / Shoulder Array) are now classified as foundational cyberware and do not require a missing foundational item.
 - Code added so New Worlds will not immediately go through migration
 - Fixed warning when the medtech would put the proper amount of points into surgery. The intention is, that per time you choose the surgery skill you should add two points there.
@@ -515,9 +540,8 @@
 - Fixed #234 - Attempting to install cyberware, where there is no suitable foundation no longer throws an error in the console.
 - Fixed Issue, with netrunning tile naming case. This caused tiles to not be displayed on linux systems.
 
-# Version: 0.76.2 |  Date:  2021-05-28
+## Version: 0.76.2 (Hotfix) | Date: 2021-05-28
 
-**Hot Fix**
 - Non owned actor sheets (Limited and Observer permissions) render again, the content is also shown now.
 - Borgware items are now configured correctly as foundational in compendium.
 - Borgware no longer displays "0/0 Optional slots" when installed on character sheet.
@@ -529,15 +553,15 @@
 - Deleting/uninstalling optional cyberware from mook sheets now works correctly.
 - Cleaned up of many (but not all) trailing commas in mook sheet.
 
-# Version: 0.76.1 |  Date:  2021-05-27
+## Version: 0.76.1 (Hotfix) | Date: 2021-05-27
 
-**Hot Fix**
 - Programs can now be displayed in gear tab and on mook sheets for easier tracking.
 
-# Version 0.76.0 | Date: 2021-05-26
+## Version 0.76.0 | Date: 2021-05-26
 
-**New Features**
-- FnWeather made a great video demonstrating some of the following changes which you can find here: https://www.youtube.com/watch?v=csgB6c5KhkU. Thanks to him!
+### New Features
+
+- FnWeather made a great video demonstrating some of the following changes which you can find here: <https://www.youtube.com/watch?v=csgB6c5KhkU>. Thanks to him!
 - Added "Option Slots Size" for optional cyberware. This allows proper tracking of cyberware that can use no slots, or multiple slots. By default when first updating to this version all cyberware has an assumed slot size of 1. Please update your optional cyberware accordingly in line with the core rulebook.
 - Added extra content to the cyberware tab to display the amount of 'used' slots for foundational cyberware.
 - Added option to reroll duplicate critical injuries. There is a system setting to decide if you want to use it, with the default being off.
@@ -569,7 +593,8 @@
   - The suppressive fire option is now considered in mook sheets (same as character sheets, see issue #195).
   - Portrait added in an expandable frame.
 
-**Changes**
+### Changes
+
 - Setting the autofire maximum multiplier on an item will now be taken into account when rolling damage for autofire damage rolls.  For weapons defined in the core rules (SMG, H. SMG & Assault Rifles) leaving this as 0 will utilize the core rule set for those items.  You can over-ride the core rules (for homebrew) by actually setting this to a non-zero amount.  If you set the multiplier in the roll dialog to a value higher than the allowable value, it will default to the maximum allowable multiplier.
 - Characters are now linked to their token by default, Mooks are not.
 - Hoverable input fields now remain visible if field is focused and fade out for a more visually pleasing transition from visible to not-visible. (Thanks to sdenec#3813 because I borrowed some of his code from Tidy5e Sheet to accomplish this.)
@@ -577,7 +602,8 @@
 - Added localization to places where it was not implemented. (!325)
 - Removed "Core" tag from Critical Injury and DV compendia (which should be imported) to make them distinct from "Skills - Core" and "Cyberware - Core" (which should NOT be imported). (!379)
 
-**Bug Fixes**
+### Bug Fixes
+
 - fixed #49 - The equipped glyph now takes the same space as the other two
 - fixed #158 - Stat padding fixed for LUCK and EMP, so that they have the same font size as the others
 - fixed #176 - Game paused animation properly translates now
@@ -593,25 +619,23 @@
 - fixed #228 - Fixed some mook sheet weapon/armor section alignment issues
 - fixed !366 - Body ablation not being shown in description tab due to typo
 
-# Version: 0.75.4 |  Date:  2021-05-05
+## Version: 0.75.4 (Hotfix) | Date: 2021-05-05
 
-**Hot Fix**
 - Fixed release manifest to not lock users into version 0.75.3 without possibility to update
 
-# Version: 0.75.3 |  Date:  2021-05-02
+## Version: 0.75.3 (Hotfix) | Date: 2021-05-02
 
-**Hot Fix**
 - Role ability settings were lost when changing other data on the sheet. [issue #203](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/issues/203)
 
-# Version: 0.74.1 |  Date:  2021-04-25
+## Version: 0.74.1 (Hotfix) | Date: 2021-04-25
 
-**Hot Fix**
 - Macros were not working due to a change in the way rolls were handled.
 
-# Version: 0.74.0  |  Date:  2021-04-23
+## Version: 0.74.0 | Date: 2021-04-23
 
-**UI/UX**
-- FnWeather made a great video demonstrating some of the following changes which you can find here: https://www.youtube.com/watch?v=Q8DP0qcR4AU. Thanks to him!
+### UI/UX
+
+- FnWeather made a great video demonstrating some of the following changes which you can find here: <https://www.youtube.com/watch?v=Q8DP0qcR4AU>. Thanks to him!
 - Added the ability to show DV for ranged weapons when using the ruler for measurement
   - Right clicking a token, you can select a DV table to use and after setting this, any ruler measurements will show the DV along with the measured range.
   - Ranged Weapons can be also configured to use a specific DV table in the item settings. Weapons with DV Tables associated with them will have a ruler in their Fight Tab which can be clicked to set the DV Table for the associated token to quickly switch DV tables when using the Ruler Measurement Tool.
@@ -639,25 +663,27 @@
 - Added a field for a static attack modifier on weapons.
 - Added a warning on cyberware install to remind users that installing cyberware also deducts from maximum humanity.
 
-**Bug Fixes**
+### Bug Fixes
+
 - 'Basic' skills (the ones that all characters have points in) now display as bold again (no issue to reference)
 - Token name now correctly displays in chat when rolling from a macro.
 - Fixed a bug which caused unlinked tokens to erroneously pull certain data from the parent actor.
 - Fixed a bug which caused collapsed gear categories to not retain their state upon character sheet update.
 
-**Plumbing**
+### Plumbing
+
 - Refactored data model to conform with plans going forward.
 - Logging has been overhauled.
 
-# Version: 0.66  (Hotfix) |  Date:  2021-03-21
+## Version: 0.66 (Hotfix) | Date: 2021-03-21
 
-**Hot Fix**
 - Aimed shot was using the Autofire Skill when attacking instead of using the Weapon Skill
 - Suppressive Fire was using the Weapon Skill when attacking instead of using the Autofire Skill
 
-# Version: 0.65  |  Date:  2021-03-20
+## Version: 0.65 | Date: 2021-03-20
 
-**UI/UX**
+### UI/UX
+
 - Implemented a chat command “/red” which will roll 1d10 and explode on a 10 or negatively explode (implode?) on a 1. Rolls of the form “/red+X”, “/red-X”, and “/red XdY” are also supported (though there are no dice icons if Y isn’t a 6 or a 10).
 - Macros can now be made for weapons, skills, journal entries and actors by dragging and dropping to the macro bar. Weapon macros can be easily edited to roll for damage, aimed shots, autofire, and suppressive fire.
 - Improvement Points now trackable and exist on the front of the character sheet, underneath Humanity.
@@ -675,12 +701,14 @@
 - Items of type ‘gear’ are now equippable (just a cosmetic feature for keeping track of what is on your person vs. somewhere else).
 - Improved alignment when there are multiple Roles selected to display.
 
-**Plumbing:**
+### Plumbing
+
 - All rolls moved off of the character sheet to allow for drag n’ drop macros.
 - Foundation for roll glyphs embedded into chat cards implemented.
 - Many changes and fixes for data migration during updates.
 
-**Bug Fixes:**
+### Bug Fixes
+
 - Applying status condition icons no longer fails.
 - Custom pause animation no longer disappears on unpause/re-pause.
 - Collapsing the side bar now works as expected.
