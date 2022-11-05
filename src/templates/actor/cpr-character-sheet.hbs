@@ -40,9 +40,8 @@
       </div>
       {{#if (cprSystemConfig "enableSheetContentFilter")}}
       <div class="sheet-cprFilter-section">
-          <a><i class="fas fa-trash-alt fg-red reset-content-filter" title="{{localize "CPR.actorSheets.clearFilter"}}"></i></a>
-          &nbsp;
-          <input class="filter-contents" value="{{options.cprContentFilter}}" type="string" placeholder="Enter cprFilter text here...">
+          <input class="filter-contents" value="{{options.cprContentFilter}}" type="string" placeholder="Search for skills, items and others...">
+          <a><i class="fas fa-xmark fg-red reset-content-filter" title="{{localize "CPR.actorSheets.clearFilter"}}"></i></a>
       </div>
       {{/if}}
       <div class="right-content-section">

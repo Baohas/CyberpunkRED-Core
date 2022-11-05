@@ -1,4 +1,4 @@
-/* global Ruler canvas */
+/* global Ruler canvas duplicate game */
 import DvUtils from "../utils/cpr-dvUtils.js";
 
 export default function overrideRulerFunctions() {
@@ -9,12 +9,21 @@ export default function overrideRulerFunctions() {
     if (this.user.isSelf) {
       const token = canvas.tokens.controlled["0"];
       if (token) {
-        const DvTable = token.document.flags.cprDvTable;
-        if (DvTable) {
-          const DV = DvUtils.GetDv(DvTable, distance);
-          if (DV !== null) {
-            const displayTable = DvTable.replace(/^DV /, "");
-            returnLabel = `${returnLabel} (${displayTable} DV: ${DV})`;
+        const DvTable = token.document.getFlag(game.system.id, "cprDvTable");
+        if (DvTable && typeof DvTable === "object") {
+          const displayTable = DvTable.name.replace(/^DV /, "");
+          const table = duplicate(DvTable.table);
+          if (typeof table === "object" && Object.keys(table).length > 0) {
+            let DV = 0;
+            for (const range of Object.keys(table)) {
+              const [start, end] = range.split("_");
+              if (parseInt(distance, 10) >= parseInt(start, 10) && parseInt(distance, 10) <= parseInt(end, 10)) {
+                DV = table[range];
+              }
+            }
+            if (DV > 0) {
+              returnLabel = `${returnLabel} (${displayTable} DV: ${DV})`;
+            }
           }
         }
       }

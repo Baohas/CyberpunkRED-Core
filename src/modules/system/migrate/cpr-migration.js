@@ -24,7 +24,7 @@ export default class CPRMigration {
     this.statusMessage = "";
     this.name = "Base CPRMigration Class";
     this.foundryMajorVersion = parseInt(game.version, 10);
-    this.migrationFolder = null;
+    this.migrationFolder = false;
   }
 
   /**
@@ -313,7 +313,7 @@ export default class CPRMigration {
 
   static deleteMigrationFolder() {
     LOGGER.trace("deleteMigrationFolder | CPRMigration");
-    if (this.migrationFolder.contents.length === 0) {
+    if (this.migrationFolder && this.migrationFolder.contents.length === 0) {
       LOGGER.debug("would delete migration folder");
       this.migrationFolder.delete();
     }
