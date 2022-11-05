@@ -1,10 +1,50 @@
 /* global game */
+import CPR from "./config.js";
+import CPRCompendiaSettings from "../apps/cpr-compendia-settings.js";
 import LOGGER from "../utils/cpr-logger.js";
 
 /**
  * This file defines user settings for the system module.
  */
 const registerSystemSettings = () => {
+  // XXX: Debug and trace logs come first because sometimes we're using them while in the
+  //      early initialization of FoundryVTT.
+  game.settings.register(game.system.id, "debugLogs", {
+    name: "CPR.settings.debugLogs.name",
+    hint: "CPR.settings.debugLogs.hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      LOGGER.log(`Changed debugLogs to ${value}`);
+    },
+  });
+
+  game.settings.register(game.system.id, "debugElements", {
+    name: "CPR.settings.debugElements.name",
+    hint: "CPR.settings.debugElements.hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      LOGGER.log(`Changed debugElements to ${value}`);
+    },
+  });
+
+  game.settings.register(game.system.id, "traceLogs", {
+    name: "CPR.settings.traceLogs.name",
+    hint: "CPR.settings.traceLogs.hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      LOGGER.log(`Changed traceLogs to ${value}`);
+    },
+  });
+
   game.settings.register(game.system.id, "playersCreateInventory", {
     name: "CPR.settings.playersCreateInventory.name",
     hint: "CPR.settings.playersCreateInventory.hint",
@@ -99,6 +139,50 @@ const registerSystemSettings = () => {
     },
   });
 
+  game.settings.register(game.system.id, "criticalInjuryRollTableCompendium", {
+    name: "CPR.settings.criticalInjuryRollTableCompendium.name",
+    hint: "CPR.settings.criticalInjuryRollTableCompendium.hint",
+    scope: "world",
+    config: false,
+    type: String,
+    default: CPR.defaultCriticalInjuryTable,
+    onChange: (value) => {
+      LOGGER.log(`Changed criticalInjuryRollTableCompendium to ${value}`);
+    },
+  });
+
+  game.settings.register(game.system.id, "netArchRollTableCompendium", {
+    name: "CPR.settings.netArchRollTableCompendium.name",
+    hint: "CPR.settings.netArchRollTableCompendium.hint",
+    scope: "world",
+    config: false,
+    type: String,
+    default: CPR.defaultNetArchTable,
+    onChange: (value) => {
+      LOGGER.log(`Changed netArchRollTableCompendium to ${value}`);
+    },
+  });
+
+  game.settings.register(game.system.id, "dvRollTableCompendium", {
+    name: "CPR.settings.dvRollTableCompendium.name",
+    hint: "CPR.settings.dvRollTableCompendium.hint",
+    scope: "world",
+    config: false,
+    type: String,
+    default: CPR.defaultDvTable,
+    onChange: (value) => {
+      LOGGER.log(`Changed dvRollTableCompendium to ${value}`);
+    },
+  });
+
+  game.settings.registerMenu(game.system.id, "compendiumSettingsMenu", {
+    name: "CPR.settings.compendiumMenu.name",
+    label: "CPR.settings.compendiumMenu.button",
+    hint: "CPR.settings.compendiumMenu.hint",
+    icon: "fa-solid fa-book",
+    type: CPRCompendiaSettings,
+  });
+
   game.settings.register(game.system.id, "automaticallyResizeSheets", {
     name: "CPR.settings.automaticallyResizeSheets.name",
     hint: "CPR.settings.automaticallyResizeSheets.hint",
@@ -153,42 +237,6 @@ const registerSystemSettings = () => {
     default: "newCprWorld",
     onChange: (value) => {
       LOGGER.log(`Changed dataModelVersion to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "debugLogs", {
-    name: "CPR.settings.debugLogs.name",
-    hint: "CPR.settings.debugLogs.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed debugLogs to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "debugElements", {
-    name: "CPR.settings.debugElements.name",
-    hint: "CPR.settings.debugElements.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed debugElements to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "traceLogs", {
-    name: "CPR.settings.traceLogs.name",
-    hint: "CPR.settings.traceLogs.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed traceLogs to ${value}`);
     },
   });
 };

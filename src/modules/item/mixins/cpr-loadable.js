@@ -43,7 +43,8 @@ const Loadable = function Loadable() {
     if (actor.sheet.token !== null) {
       const flag = getProperty(actor, `flags.${game.system.id}.firetype-${this._id}`);
       if (flag === "autofire") {
-        const afTable = (DvUtils.GetDvTables()).filter((name) => name.includes(dvTable) && name.includes("Autofire"));
+        const dvTables = await DvUtils.GetDvTables();
+        const afTable = (dvTables).filter((table) => table.name.includes(dvTable) && table.name.includes("Autofire"));
         if (afTable.length > 0) {
           [newDvTable] = afTable;
         }
