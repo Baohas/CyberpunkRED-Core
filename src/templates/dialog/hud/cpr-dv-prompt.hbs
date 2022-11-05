@@ -5,8 +5,8 @@
     <div>
       <select name="dvTable">
         <option value="">N/A</option>
-        {{#each this as |rollTableName|}}
-        <option value="{{rollTableName}}">{{rollTableName}}</option>
+        {{#each this as |rollTable|}}
+        <option value="{{rollTable.name}}">{{rollTable.name}}</option>
         {{/each}}
       </select>
     </div>
