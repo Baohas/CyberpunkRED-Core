@@ -10,7 +10,7 @@
       <li class="item flexrow">
         <div class="item-name text-large text-bold text-left text-padding-left">
           {{item.name}}{{#if (cprIsUpgradable item.type)}}{{#if item.system.isUpgraded}}<sup><i title="{{localize "
-              CPR.upgraded"}}" class="fab fa-uniregistry"></sup></i>{{/if}}{{/if}}
+              CPR.upgraded"}}" class="fa-solid fa-square-up"></sup></i>{{/if}}{{/if}}
         </div>
         <div class="item-detail text-right text-padding-right">
           {{#if (cprIsDebug)}}({{item.id}}){{/if}}

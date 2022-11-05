@@ -27,16 +27,17 @@ PACKAGES_KEEP="${PACKAGES_KEEP:-3}"
 
 # Get a list of release ids
 # Sorts by version number oldest => newest
-ALL_IDS=$(curl \
-  --silent \
-  --location \
-  --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
-  "${PACKAGES_URL}" \
-  | jq '.[]
+ALL_IDS=$(
+  curl \
+    --silent \
+    --location \
+    --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+    "${PACKAGES_URL}" |
+    jq '.[]
   | select(.name=="'"${PACKAGE_NAME}"'")
   | select(.version != "latest")
-  | { version: .version, id: .id}' \
-  | jq --slurp 'sort_by(.version) | .[] | .id'
+  | { version: .version, id: .id}' |
+    jq --slurp 'sort_by(.version) | .[] | .id'
 )
 
 # Filter ALL_IDS to get the ones we want to delete
@@ -49,30 +50,31 @@ function delete_package() {
 
   id="$1"
 
-  response_code=$(curl \
-    -w "%{http_code}\\n" \
-    --location \
-    --silent \
-    --request DELETE \
-    -o /dev/null \
-    --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
-    "${PACKAGES_URL}/${id}"
+  response_code=$(
+    curl \
+      -w "%{http_code}\\n" \
+      --location \
+      --silent \
+      --request DELETE \
+      -o /dev/null \
+      --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+      "${PACKAGES_URL}/${id}"
   )
 
   # Check of we got a response from curl
   if [[ -z "${response_code}" ]]; then
-    ((ERRORS+=1))
+    ((ERRORS += 1))
     echo "❌ Empty Response."
   elif [[ "${response_code}" =~ "404" ]]; then
     echo "❌ Package not found."
-    ((ERRORS+=1))
+    ((ERRORS += 1))
   elif [[ "${response_code}" == "401" ]]; then
     echo "❌ 401 Unauthorized."
-    ((ERRORS+=1))
+    ((ERRORS += 1))
   elif [[ "${response_code}" == "204" ]]; then
     echo "✅ Deleted package ID '${id}'."
   else
-    ((ERRORS+=1))
+    ((ERRORS += 1))
     echo "❌ Unknown Response: '${response_code}'."
   fi
 }

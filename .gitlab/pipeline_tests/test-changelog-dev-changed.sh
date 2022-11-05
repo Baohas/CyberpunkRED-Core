@@ -13,7 +13,7 @@ BRANCH="${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-dev}"
 
 # Check that Gitlab has the target branch fetched and if not fetch it
 if ! git branch -a | grep -q "remotes/origin/${BRANCH}"; then
-  if ! git fetch --quiet origin "${BRANCH}" ; then
+  if ! git fetch --quiet origin "${BRANCH}"; then
     echo "❌ Unable to fetch ${BRANCH}"
     echo "Check the target branch exists and re-run the job"
     exit 1
