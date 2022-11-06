@@ -2,25 +2,52 @@
 <form>
   {{localize "CPR.dialog.selectItemUpgrades.selectItemUpgrades"}} "{{item.name}}", Choomba!
   <ol class="items-list">
+    {{!-- Display Available Slots --}}
+    <li class="item flexrow">
+      <div class="item flexrow">
+        <span class="text-bold">
+          {{localize "CPR.itemSheet.itemUpgrade.slots"}}: {{item.system.upgrades.length}}/{{item.system.slots}}
+        </span>
+      </div>
+    </li>
+
+    {{!-- Item Upgrades Title --}}
     <li class="item flexrow">
       <div class="item flexrow setting-name">
-        <span class="text-bold text-nowrap">{{localize "CPR.itemSheet.common.itemUpgrades"}}</span>
+        <span class="text-bold text-left">
+          {{localize "CPR.itemSheet.common.itemUpgrades"}}
+        </span>
+      </div>
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-right">
+          {{localize "CPR.global.generic.slots"}}
+        </span>
       </div>
       <div class="item flexrow setting-value">
         <span class="text-bold text-nowrap text-align-last-end text-space-around">{{localize "CPR.dialog.common.select"}}</span>
       </div>
     </li>
 
+    {{!-- Item Upgrade Selection --}}
     {{#each this.availableUpgrades as |upgrade|}}
     <li class="item flexrow">
       <div class="item flexrow setting-name text-nowrap">
         {{upgrade.name}} ({{localize (cprFindConfigValue "objectTypes" upgrade.system.type)}})
       </div>
-      <div class="item flexrow setting-value text-nowrap text-space-around">
+      <div class="item flexrow setting-name text-nowrap">
+        <span class="text-bold text-nowrap text-right">
+          {{upgrade.system.size}}
+        </span>
+      </div>
+      <div class="text-bold text-nowrap text-align-last-end text-space-around">
         {{#if upgrade.system.isInstalled}}
-        <span class="text-bold text-nowrap text-align-last-end text-space-around"><input type="checkbox" name="selectedUpgrade" value="{{upgrade._id}}" checked></span>
+        <span class="text-bold text-nowrap text-align-last-end text-space-around">
+          <input type="checkbox" name="selectedUpgrade" value="{{upgrade._id}}" checked>
+        </span>
         {{else}}
-        <span class="text-bold text-nowrap text-align-last-end text-space-around"><input type="checkbox" name="selectedUpgrade" value="{{upgrade._id}}"></span>
+        <span class="text-bold text-nowrap text-align-last-end text-space-around">
+          <input type="checkbox" name="selectedUpgrade" value="{{upgrade._id}}">
+        </span>
         {{/if}}
       </div>
     </li>
