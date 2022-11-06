@@ -70,6 +70,7 @@ export default class CPRDialog extends FormApplication {
 
     // generic listeners
     html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
+    html.find(".active-effect-checkbox").click((event) => this._activeEffectToggle(event));
     html.find(".confirm-roll").click(() => this.confirmRoll());
     html.find(".cancel-roll").click(() => this.close());
 
@@ -88,6 +89,12 @@ export default class CPRDialog extends FormApplication {
       setProperty(changeData, target, value);
       // this._automaticResize(); // Resize the sheet as length of settings list might have changed
     }
+  }
+
+  _activeEffectToggle(event) {
+    LOGGER.trace("_activeEffectToggle | CPRDialog | Called.");
+    const value = parseInt(SystemUtils.GetEventDatum(event, "data-value"), 10);
+    this.rollData.addMod(value);
   }
 
   /**
