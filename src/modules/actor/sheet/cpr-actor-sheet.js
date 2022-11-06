@@ -366,7 +366,7 @@ export default class CPRActorSheet extends ActorSheet {
     }
 
     // note: for aimed shots this is where location is set
-    const keepRolling = await cprRoll.handleRollDialog(event);
+    const keepRolling = await cprRoll.handleRollDialog(event, this.actor, item);
     if (!keepRolling) {
       return;
     }

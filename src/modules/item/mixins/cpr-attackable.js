@@ -249,6 +249,7 @@ const Attackable = function Attackable() {
     switch (type) {
       case CPRRolls.rollTypes.AIMED: {
         cprRoll.isAimed = true;
+        cprRoll.location = "head";
         break;
       }
       case CPRRolls.rollTypes.AUTOFIRE: {

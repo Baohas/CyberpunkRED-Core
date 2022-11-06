@@ -210,7 +210,7 @@ export class CPRRoll {
    * @param {} event - an object representing a click event
    * @returns {Boolean}
    */
-  async handleRollDialog(event) {
+  async handleRollDialog(event, actor, item) {
     LOGGER.trace("handleRollDialog | CPRRoll | Called.");
 
     // Handle skipping of the user verification step
@@ -222,7 +222,7 @@ export class CPRRoll {
 
     if (!skipDialog) {
       // const formData = await VerifyRoll.RenderPrompt(this).catch((err) => LOGGER.debug(err));
-      const dialog = await CPRDialog.showDialog(this);
+      const dialog = await CPRDialog.showDialog(this, actor, item);
       if (dialog === undefined) {
         // returns false if the dialog was closed
         return false;

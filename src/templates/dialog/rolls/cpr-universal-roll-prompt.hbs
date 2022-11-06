@@ -99,6 +99,33 @@
         </li>
         {{/if}}
     </ol>
+
+    <hr>
+
+    <ol class="items-list">
+      {{#each activeEffects as |effect|}}
+      {{#each effect.changes as |change|}}
+      <li class="item flexrow">
+        <div class="item flexrow setting-name text-nowrap text-bold">
+            {{effect.label}}:
+        </div>
+        <div class="item flexrow setting-value text-nowrap">
+          {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes @index) change.key}}
+          {{#if change.value}}
+              {{cprEffectModMode change.mode change.value}}
+          {{else}}
+              0
+          {{/if}}
+        </div>
+        <div class="item flexrow setting-value text-nowrap item-end">
+          <input name="{{change.key}}" class="item-checkbox" type="checkbox" data-target = "aimedAttack" data-dtype="Checkbox">
+        </div>
+      </li>
+      {{/each}}
+      <br>
+      {{/each}}
+    </ol>
+
   <footer class="sheet-footer flexrow">
     <button class="confirm-roll" type="submit" name="submit" autofocus>
         <i class="fa fa-check"></i> OK

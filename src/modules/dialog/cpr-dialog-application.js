@@ -6,7 +6,7 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
  * Form application to handle dialogs more generally.
  */
 export default class CPRDialog extends FormApplication {
-  constructor(rollData, options) {
+  constructor(rollData, actor, item, options) {
     LOGGER.trace("constructor | CPRDialog | Called.");
     super(rollData, options);
     this.rollData = rollData;
@@ -14,6 +14,8 @@ export default class CPRDialog extends FormApplication {
     this.dialogData = {
       aimedAttack: false,
     };
+    this.actor = actor;
+    this.item = item;
   }
 
   /**
@@ -39,7 +41,19 @@ export default class CPRDialog extends FormApplication {
     LOGGER.trace("getData | CPRDialog | called.");
     const data = super.getData();
     data.rollData = this.rollData; // CPRRoll object
+    data.item = this.item;
     data.dialogData = this.dialogData;
+
+    // Get effects relevant to the roll.
+    const effects = this.actor.effects.contents;
+    const filteredEffects = [];
+
+    // Skill Effects.
+    const skillEffects = effects.filter((e) => e.changes.some((c) => c.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`));
+    skillEffects.forEach((e) => filteredEffects.push(e));
+
+    const combatEffects = [];
+    data.activeEffects = filteredEffects;
     return data;
   }
 
@@ -101,10 +115,10 @@ export default class CPRDialog extends FormApplication {
    *
    * @param {CPRRoll} - Roll to be modified by the dialog.
    */
-  static async showDialog(cprRoll) {
+  static async showDialog(cprRoll, actor, item) {
     LOGGER.trace("showDialog | CPRDialog | Called.");
     return new Promise((resolve) => {
-      const dialog = new CPRDialog(cprRoll, {
+      const dialog = new CPRDialog(cprRoll, actor, item, {
         confirmRoll: () => resolve(cprRoll),
         title: cprRoll.rollTitle,
       });
