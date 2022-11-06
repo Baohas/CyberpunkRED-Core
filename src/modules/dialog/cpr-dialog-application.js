@@ -11,9 +11,20 @@ export default class CPRDialog extends FormApplication {
     super(rollData, options);
     this.rollData = rollData;
     this.object = rollData;
-    this.dialogData = {
-      aimedAttack: false,
-    };
+
+    // Get the whole prototype chain so we know what kind of roll this is, and what its parent classes are.
+    // Adapted from this comment: https://stackoverflow.com/a/70089208
+    const prototypeChain = [];
+    let currentPrototype = rollData;
+    while (currentPrototype) {
+      currentPrototype = Object.getPrototypeOf(currentPrototype);
+      if (currentPrototype && currentPrototype.constructor.name !== "Object") {
+        prototypeChain.push(currentPrototype?.constructor.name);
+      }
+    }
+
+    this.prototypeChain = prototypeChain;
+
     this.actor = actor;
     this.item = item;
   }
@@ -41,17 +52,23 @@ export default class CPRDialog extends FormApplication {
     LOGGER.trace("getData | CPRDialog | called.");
     const data = super.getData();
     data.rollData = this.rollData; // CPRRoll object
-    data.item = this.item;
-    data.dialogData = this.dialogData;
+    data.prototypeChain = this.prototypeChain;
 
     // Get effects relevant to the roll.
     const effects = this.actor.effects.contents;
     const filteredEffects = [];
 
-    // Skill Effects.
-    const skillEffects = effects.filter((e) => e.changes.some((c) => c.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`));
-    skillEffects.forEach((e) => filteredEffects.push(e));
+    // Stat Effects. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
+    const statEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`));
+    statEffects.forEach((e) => filteredEffects.push(e));
 
+    // Skill Effects.
+    if (this.prototypeChain.includes("CPRSkillRoll") || this.prototypeChain.includes("CPRRoleRoll")) {
+      const skillEffects = effects.filter((e) => e.changes.some((c) => c.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`));
+      skillEffects.forEach((e) => filteredEffects.push(e));
+    }
+
+    // Combat Effects.
     const combatEffects = [];
     data.activeEffects = filteredEffects;
     return data;
@@ -80,13 +97,10 @@ export default class CPRDialog extends FormApplication {
   _itemCheckboxToggle(event) {
     LOGGER.trace("_itemCheckboxToggle | CPRDialog | Called.");
     const { rollData } = this;
-    const { dialogData } = this;
     const target = SystemUtils.GetEventDatum(event, "data-target");
-    const meta = (/true/i).test(SystemUtils.GetEventDatum(event, "data-meta"));
-    const changeData = meta ? dialogData : rollData;
-    const value = !getProperty(changeData, target);
-    if (hasProperty(changeData, target)) {
-      setProperty(changeData, target, value);
+    const value = !getProperty(rollData, target);
+    if (hasProperty(rollData, target)) {
+      setProperty(rollData, target, value);
       // this._automaticResize(); // Resize the sheet as length of settings list might have changed
     }
   }
@@ -95,6 +109,7 @@ export default class CPRDialog extends FormApplication {
     LOGGER.trace("_activeEffectToggle | CPRDialog | Called.");
     const value = parseInt(SystemUtils.GetEventDatum(event, "data-value"), 10);
     this.rollData.addMod(value);
+    this.render();
   }
 
   /**
@@ -149,11 +164,6 @@ export default class CPRDialog extends FormApplication {
       fd.mods = fd.mods.split(",").map(Number);
     } else {
       fd.mods = [];
-    }
-
-    // If aimedAttack isn't selected, default to body.
-    if (!formData.aimedAttack) {
-      fd.location = "body";
     }
 
     switch (formData.constructor.name) {

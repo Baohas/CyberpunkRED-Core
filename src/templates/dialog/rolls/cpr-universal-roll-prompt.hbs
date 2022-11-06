@@ -14,6 +14,7 @@
             </div>
         </li>
 
+        {{#if (cprListContains prototypeChain "CPRSkillRoll")}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.global.itemTypes.skill"}} {{localize "CPR.global.generic.value"}} ({{localize rollData.skillName}})
@@ -22,6 +23,7 @@
                 <input name="skillValue" class="" type="number" data-dtype="Number" value={{rollData.skillValue}}>
             </div>
         </li>
+        {{/if}}
 
         {{#if roleValue}}
         <li class="item flexrow">
@@ -74,20 +76,13 @@
             </div>
         </li>
 
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.rolls.aimedAttack"}}:
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="aimedAttack" class="item-checkbox" type="checkbox" data-target = "aimedAttack" data-meta="true" data-dtype="Checkbox" {{#if dialogData.aimedAttack}} checked {{/if}}>
-            </div>
-        </li>
-        {{#if dialogData.aimedAttack}}
+        {{#if (cprListContains prototypeChain "CPRAimedAttackRoll")}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.rolls.aimFor"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
+              {{log this}}
                 <select name="location">
                   {{#select rollData.location}}
                     {{#each (cprFindConfigObj "aimedLocation") as |location l|}}
