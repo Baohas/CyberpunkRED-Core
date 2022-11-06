@@ -12,6 +12,8 @@
 - Moved created migrationFolder management on CPRMigration and moved backupOwnedItem to CPRMigration as it will probably become
   necessary if we have more ActiveEffect changes in the future.
 - UI improvements in the gear tab to make it more readable and clear
+- Add ROF to weapons in the fight tab (#593)
+- Hide/Show `Used Upgrade Slots` if an item has slots
 
 ### Bug Fixes
 
