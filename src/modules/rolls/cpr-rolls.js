@@ -47,7 +47,7 @@ export class CPRRoll {
     // the complete result of the roll after applying everything
     this.resultTotal = 0;
     // path to the right dialog box to pop up before rolling
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-generic-prompt.hbs`;
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-universal-roll-prompt.hbs`;
     // path to the roll card template for chat
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-base-rollcard.hbs`;
     // Any additional data we want to pass to the roll card
@@ -281,7 +281,6 @@ export class CPRStatRoll extends CPRRoll {
     super(name, "1d10");
     this.statName = name;
     this.statValue = value;
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-stat-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-stat-rollcard.hbs`;
   }
 
@@ -349,7 +348,6 @@ export class CPRSkillRoll extends CPRStatRoll {
     this.roleName = roleName;
     this.roleValue = roleValue;
     this.universalBonusAttack = universalBonusAttack;
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-skill-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-skill-rollcard.hbs`;
   }
 
@@ -474,7 +472,6 @@ export class CPRAimedAttackRoll extends CPRAttackRoll {
     LOGGER.trace("constructor | CPRAimedAttackRoll | Called.");
     super(weaponName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
     this.rollTitle = `${weaponName}`;
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-aimed-attack-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-aimed-attack-rollcard.hbs`;
     this.addMod(-8);
     this.location = "head";

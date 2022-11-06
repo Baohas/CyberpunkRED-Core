@@ -25,6 +25,8 @@ export default class CPRDialog extends FormApplication {
 
     this.prototypeChain = prototypeChain;
 
+    this.options.template = rollData.rollPrompt;
+
     this.actor = actor;
     this.item = item;
   }
@@ -164,20 +166,6 @@ export default class CPRDialog extends FormApplication {
       fd.mods = fd.mods.split(",").map(Number);
     } else {
       fd.mods = [];
-    }
-
-    switch (formData.constructor.name) {
-      case "CPRDamageRoll":
-      case "CPRAttackRoll": {
-        if (formData.autofire) {
-          fd.fireMode = "autofire";
-        }
-        if (formData.suppressive) {
-          fd.fireMode = "suppressive";
-        }
-        break;
-      }
-      default:
     }
 
     mergeObject(this.rollData, fd);
