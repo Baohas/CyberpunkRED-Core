@@ -1,0 +1,61 @@
+_id: 4L05qIZxsy0uDSHz
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053157
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053157
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
+name: Very Heavy Pistol
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - vHeavyPistol
+  attachmentSlots: 3
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 4d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>A very heavy pistol. It can't be concealed. </p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 8
+    value: 0
+  price:
+    category: premium
+    market: 100
+  quality: standard
+  revealed: true
+  rof: 1
+  slots: 3
+  source: pg. 341
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: weapon

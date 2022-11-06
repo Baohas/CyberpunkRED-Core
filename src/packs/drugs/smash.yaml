@@ -1,0 +1,137 @@
+_id: PRLDaeBVeMuBBIeO
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830977238
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830977238
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: v688v2AQZUpGXV7t
+    changes:
+      - key: bonuses.acting
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.contortionist
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.conversation
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.dance
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.humanPerception
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.persuasion
+        mode: 2
+        priority: null
+        value: '2'
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
+          '1': skill
+          '2': skill
+          '3': skill
+          '4': skill
+          '5': skill
+    icon: systems/cyberpunk-red-core/icons/compendium/status/smash.svg
+    label: Smash Primary
+    tint: null
+    transfer: true
+  - _id: R7hdY2qZux5j9oVJ
+    changes:
+      - key: bonuses.acting
+        mode: 2
+        priority: null
+        value: '-2'
+      - key: bonuses.contortionist
+        mode: 2
+        priority: null
+        value: '-2'
+      - key: bonuses.conversation
+        mode: 2
+        priority: null
+        value: '-2'
+      - key: bonuses.dance
+        mode: 2
+        priority: null
+        value: '-2'
+      - key: bonuses.humanPerception
+        mode: 2
+        priority: null
+        value: '-2'
+      - key: bonuses.persuasion
+        mode: 2
+        priority: null
+        value: '-2'
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
+          '1': skill
+          '2': skill
+          '3': skill
+          '4': skill
+          '5': skill
+    icon: systems/cyberpunk-red-core/icons/compendium/status/smash_addiciton.svg
+    label: Smash Addiction
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/smash.svg
+name: Smash
+ownership:
+  default: 0
+sort: 0
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Dose lasts 4 hours.<br />The user feels happy and satisfied, receiving
+      a temporary modifier of +2 to: Dance/Contortionist/Conversation/Human
+      Perception/Persuasion/Acting.<br /><br />Secondary DV: 15.<br />When the
+      dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against
+      Secondary DV. If this fails, they take the secondary effect as noted in
+      the core rule book.&nbsp;</p>
+  favorite: false
+  price:
+    category: cheap
+    market: 10
+  revealed: true
+  source: pg. 357
+  tags: []
+  usage: toggled
+type: drug

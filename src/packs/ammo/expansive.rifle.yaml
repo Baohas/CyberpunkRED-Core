@@ -1,0 +1,39 @@
+_id: mDk8gPTM1ENRcB0K
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831195842
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831195842
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_expansive.png
+name: Expansive Rifle
+ownership:
+  default: 0
+sort: 0
+system:
+  amount: '10'
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>If you roll Foreign object Critical (see pg. 187), victim rolls for a
+      second (different) Critical Injury. Second injury does not deal bonus
+      damage.</p>
+  favorite: false
+  price:
+    category: premium
+    market: 100
+  source: pg. 345
+  tags: []
+  type: expansive
+  upgrade: ''
+  variety: rifle
+type: ammo

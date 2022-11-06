@@ -1,0 +1,67 @@
+_id: rW0qJ4pY3g4gK7yP
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831371611
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831371611
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: icons/svg/item-bag.svg
+name: Fashionware (7 Option Slots)
+permission:
+  LWjKaq4RwaNlJ7pG: 3
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: true
+  damage: 1d6
+  description: ''
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
+  humanityLoss:
+    roll: ''
+    static: '0'
+  install: mall
+  installedOptionSlots: 0
+  isFoundational: true
+  isInstalled: true
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: '7'
+  optionalIds: []
+  price:
+    category: ''
+    market: '0'
+  revealed: true
+  rof: 1
+  size: 1
+  slots: 3
+  source: ''
+  tags: []
+  type: fashionware
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: ''
+  weaponType: ''
+type: cyberware

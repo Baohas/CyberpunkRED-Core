@@ -1,0 +1,42 @@
+_id: jcOCxBFrKo5oBmOy
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831359670
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831359670
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/critical_injuries/cracked_skull.svg
+name: Cracked Skull
+ownership:
+  default: 0
+sort: 0
+system:
+  deathSaveIncrease: true
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Triples damage to HP on aimed headshots (rather than the normal double
+      damage).</p>
+  effects: ''
+  favorite: false
+  location: head
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 15
+    type: paramedic
+  revealed: true
+  source: ''
+  tags: []
+  treatment:
+    dvParamedic: 15
+    dvSurgery: 15
+    type: paramedicSurgery
+  usage: toggled
+type: criticalInjury

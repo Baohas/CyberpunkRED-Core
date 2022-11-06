@@ -1,0 +1,39 @@
+_id: wbMrUpgWHROY24OC
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830994301
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830994301
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/personal_carepak.svg
+name: Personal CarePak
+ownership:
+  default: 0
+sort: 0
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Toothbrush etc.</p>
+  equipped: owned
+  favorite: false
+  isUpgraded: false
+  price:
+    category: everyday
+    market: 20
+  revealed: true
+  slots: 3
+  source: pg. 354
+  tags: []
+  upgrades: []
+  usage: toggled
+type: gear

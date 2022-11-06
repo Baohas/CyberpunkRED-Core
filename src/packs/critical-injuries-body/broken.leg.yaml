@@ -1,0 +1,63 @@
+_id: yBy9rlhgZeaWGtHh
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831351787
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831351787
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: eHYkX8X9NklKx02I
+    changes:
+      - key: system.stats.move.value
+        mode: 2
+        priority: null
+        value: '-4'
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': stat
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_leg.svg
+    label: Broken Leg
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_leg.svg
+name: Broken Leg
+ownership:
+  default: 0
+sort: 0
+system:
+  deathSaveIncrease: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>-4 MOVE (minimum MOVE of 1).</p>
+  effects: ''
+  favorite: false
+  location: body
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 13
+    type: paramedic
+  revealed: true
+  source: ''
+  tags: []
+  treatment:
+    dvParamedic: 15
+    dvSurgery: 13
+    type: paramedicSurgery
+  usage: always
+type: criticalInjury

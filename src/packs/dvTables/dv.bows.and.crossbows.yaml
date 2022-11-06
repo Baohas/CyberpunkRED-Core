@@ -1,0 +1,117 @@
+_id: PhkOqknOSPQfNu20
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831962243
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831962243
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+description: Core Rulebook Page 173
+displayRoll: false
+flags:
+  core: {}
+folder: null
+formula: ''
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+name: DV Bows & Crossbows
+ownership:
+  default: 0
+replacement: false
+results:
+  - _id: 3OZE79eSMEk8LMAT
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 0
+      - 6
+    text: '15'
+    type: 0
+    weight: 1
+  - _id: B22LqLs9QV9ctkux
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 7
+      - 12
+    text: '13'
+    type: 0
+    weight: 1
+  - _id: xt9H0qAmGT6U6V4x
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 13
+      - 25
+    text: '15'
+    type: 0
+    weight: 1
+  - _id: 1D3I02oIbd6LIgy3
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 26
+      - 50
+    text: '17'
+    type: 0
+    weight: 1
+  - _id: f29GxuqCNRfU63i3
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 51
+      - 100
+    text: '20'
+    type: 0
+    weight: 1
+  - _id: UlBPdgDePsnVfmpo
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 101
+      - 200
+    text: '22'
+    type: 0
+    weight: 1
+  - _id: dVm8nesdC80bSOxq
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 201
+      - 400
+    text: N/A
+    type: 0
+    weight: 1
+  - _id: Cm7iqBVMUe2wgll7
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 401
+      - 800
+    text: N/A
+    type: 0
+    weight: 1
+sort: 0

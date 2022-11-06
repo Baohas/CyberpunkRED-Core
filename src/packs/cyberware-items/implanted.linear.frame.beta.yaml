@@ -1,0 +1,100 @@
+_id: 6JMYrnxIsTgSmbFi
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963843
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963843
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: t0JjeJeKhRUf3IUz
+    changes:
+      - key: system.stats.body.value
+        mode: 5
+        priority: null
+        value: '14'
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': stat
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/cyberware/implanted_linearframe_beta.svg
+    label: Implanted Linear Frame Beta
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/cyberware/implanted_linearframe_beta.svg
+name: Implanted Linear Frame β (Beta)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Increases your BODY stat to 14 (adjusting your HP and Wound Threshold
+      and Death Save)</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
+  humanityLoss:
+    roll: 4d6
+    static: '14'
+  install: hospital
+  installedOptionSlots: 0
+  isConcealed: false
+  isFoundational: true
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: 0
+  optionalIds: []
+  price:
+    category: cheap
+    market: 5000
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 0
+  slots: 3
+  source: pg. 367
+  tags: []
+  type: borgware
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

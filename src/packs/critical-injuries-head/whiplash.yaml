@@ -1,0 +1,41 @@
+_id: e5wyX6r4Tem6bNwQ
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831359670
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831359670
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/whiplash.svg
+name: Whiplash
+ownership:
+  default: 0
+sort: 0
+system:
+  deathSaveIncrease: true
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>No other effects beyond increasing the base Death Save Penalty by
+      1.</p>
+  effects: ''
+  favorite: false
+  location: head
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 13
+    type: paramedic
+  revealed: true
+  source: ''
+  tags: []
+  treatment:
+    dvParamedic: 13
+    dvSurgery: 13
+    type: paramedicSurgery
+  usage: toggled
+type: criticalInjury

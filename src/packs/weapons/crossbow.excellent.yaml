@@ -1,0 +1,63 @@
+_id: DDFkD0nWwz34WjRE
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053176
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053176
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Crossbow_excellent.svg
+name: Crossbow (Excellent)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - arrow
+  attachmentSlots: 3
+  attackmod: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 4d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: |-
+      <p>A crossbow, reloaded as part of an Attack Action.</p>
+      <p>+1 to Attack.</p>
+  dvTable: DV Bows & Crossbows
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 1
+    value: 0
+  price:
+    category: expensive
+    market: 500
+  quality: excellent
+  revealed: true
+  rof: 1
+  slots: 3
+  source: pg. 341
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: bow
+type: weapon

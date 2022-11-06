@@ -1,0 +1,63 @@
+_id: wNHXTitRqLd1X0Do
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053167
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053167
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle_poor.svg
+name: Assault Rifle (Poor)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - rifle
+  attachmentSlots: 3
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 5d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>A standard-issue assault rifle.  If you roll 1 on Attack (Crit fail)
+      the gun jams and requires using an action to clear. </p>
+  dvTable: DV Assault Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 4
+    suppressiveFire: true
+  handsReq: 2
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 25
+    value: 0
+  price:
+    category: premium
+    market: 100
+  quality: poor
+  revealed: true
+  rof: 1
+  slots: 3
+  source: pg. 341
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: assaultRifle
+type: weapon
