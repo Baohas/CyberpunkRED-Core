@@ -1,10 +1,24 @@
 import gulp from "gulp";
 
-import * as b from "./gulp/build.mjs";
+import * as bld from "./gulp/build.mjs";
+import * as packs from "./gulp/packs.mjs";
 
-export const clean = gulp.series(b.cleanDist);
-export const assets = gulp.series(b.copyAssets);
-export const system = gulp.series(b.buildManifest);
-export const less = gulp.series(b.compileLess);
-export const build = gulp.series(b.copyAssets, b.buildManifest, b.compileLess);
-export const watch = gulp.series(b.cleanDist, build, b.watchSrc);
+export const clean = gulp.series(bld.cleanDist);
+export const assets = gulp.series(bld.copyAssets);
+export const system = gulp.series(bld.buildManifest);
+export const less = gulp.series(bld.compileLess);
+export const extractPacks = gulp.series(packs.extPacks);
+export const generatePacks = gulp.series(packs.genPacks);
+
+export const build = gulp.series(
+  clean,
+  assets,
+  system,
+  less,
+  generatePacks,
+);
+
+export const watch = gulp.series(
+  build,
+  bld.watchSrc,
+);
