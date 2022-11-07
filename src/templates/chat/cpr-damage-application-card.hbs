@@ -59,6 +59,12 @@
                     <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.damageReduction"}} <span class="text-bold">{{totalDamageReduction}}</span></div>
                     <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.healthReducedBy"}} <span class="text-bold">{{hpReduction}}</span></div>
                     {{#if (cprCompare armorData.equipped "&&" armorData.value)}}<div class="text-right text-normal">{{localize "CPR.chat.damageApplication.armorAblation"}} <span class="text-bold">{{ablation}}</span></div>{{/if}}
+                  {{else if (cprCompare damageLethal "===" false)}}
+                  <!-- If damage did not cause HP reduction because ammo is non-lethal and current HP <= 1. -->
+                    <div class="text-center text-normal">{{localize "CPR.chat.damageApplication.nonLethalNoDamage"}}</div>
+                    <hr>
+                    <div class="text-right text-normal">{{localize "CPR.chat.damageApplication.damageRolled"}} <span class="text-bold">{{damage}}</span></div>
+                    {{#if bonusDamage}}<div class="text-right text-normal">{{localize "CPR.chat.damageApplication.criticalDamage"}} <span class="text-bold">{{bonusDamage}}</span></div>{{/if}}
                   {{else}}
                     <!-- If damage did not cause HP reduction because armor stopped it. -->
                     <div class="text-center text-normal">{{localize "CPR.chat.damageApplication.damageDidNotPenetrate"}}</div>

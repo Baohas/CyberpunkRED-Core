@@ -1237,6 +1237,7 @@ export default class CPRActor extends Actor {
       armorData,
       ablation: cardDisplayAblation,
       shieldAblation,
+      damageLethal,
     });
   }
 
