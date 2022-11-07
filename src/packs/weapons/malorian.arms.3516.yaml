@@ -1,0 +1,64 @@
+_id: YFAt5vDcufYFtFCr
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053174
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053174
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol_excellent.svg
+name: Malorian Arms 3516
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - vHeavyPistol
+  attachmentSlots: 0
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 5d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>An Exotic, Excellent Quality Very Heavy Pistol. You must connect to
+      this device with a Smartgun Link. Refer to the full item description on
+      pg. 348.</p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 8
+    value: 0
+  price:
+    category: superLuxury
+    market: 10000
+  quality: excellent
+  revealed: true
+  rof: 1
+  slots: 0
+  source: pg. 348
+  tags: []
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: weapon

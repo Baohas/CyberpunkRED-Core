@@ -1,0 +1,29 @@
+_id: TNA0LGN1MAYoA60l
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659832911111
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659832911111
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: icons/svg/item-bag.svg
+name: Heavy Weapons
+ownership:
+  default: 0
+sort: 0
+system:
+  basic: false
+  category: rangedweaponSkills
+  core: true
+  description: ''
+  difficulty: difficult
+  favorite: false
+  level: 0
+  source: ''
+  stat: ref
+  tags: []
+type: skill

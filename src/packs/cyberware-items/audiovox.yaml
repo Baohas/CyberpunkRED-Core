@@ -1,0 +1,114 @@
+_id: oSCkXo6VZXIwjWhL
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963835
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963835
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: 74gFz2rJ7G0uBkgx
+    changes:
+      - key: bonuses.acting
+        mode: 2
+        priority: null
+        value: '2'
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
+    icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
+    label: AudioVox Acting
+    tint: null
+    transfer: true
+  - _id: dqjjjMsDuHu1WoiE
+    changes: []
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags: {}
+    icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
+    label: AudioVox Singing (Play Instrument)
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
+name: AudioVox
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument checks.
+      </p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
+  humanityLoss:
+    roll: 1d6
+    static: '3'
+  install: clinic
+  installedOptionSlots: 0
+  isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: 0
+  optionalIds: []
+  price:
+    category: expensive
+    market: 500
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  slots: 3
+  source: pg. 362
+  tags: []
+  type: cyberwareInternal
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware
