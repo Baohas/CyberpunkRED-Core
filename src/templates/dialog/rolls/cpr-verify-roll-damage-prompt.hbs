@@ -1,26 +1,27 @@
 {{cprTrace "START DIALOG ROLLS CPR-VERIFY-ROLL-DAMAGE-PROMPT.HBS"}}
 <form>
     <div>
-        {{localize "CPR.rolls.tellThemToSayHello"}}! {{localize "CPR.rolls.roll"}} {{localize "CPR.global.generic.damage"}} {{localize "CPR.global.generic.with"}} "{{rollTitle}}", Choomba!
+        {{localize "CPR.rolls.tellThemToSayHello"}}! {{localize "CPR.rolls.roll"}} {{localize "CPR.global.generic.damage"}} {{localize "CPR.global.generic.with"}} "{{rollData.rollTitle}}", Choomba!
     </div>
     <ol class="items-list">
-        {{#if (cprCompare (cprListContains "assaultRifle,smg,heavySmg" weaponType) "||" isAutofire)}}
+        {{#if (cprCompare (cprListContains "assaultRifle,smg,heavySmg" rollData.weaponType) "||" rollData.isAutofire)}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.global.skills.autofire"}}?
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input type="checkbox" id="isAutofire" name="isAutofire" {{#if isAutofire}} checked{{/if}}>
+                <input type="checkbox" id="isAutofire" name="isAutofire" {{#if rollData.isAutofire}} checked{{/if}}>
             </div>
         </li>
+        {{#if rollData.isAutofire}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.global.generic.multiplier"}}
-                {{#if (cprCompare autofireMultiplierMax ">" 0)}}
-                    (1-{{autofireMultiplierMax}}):
+                {{#if (cprCompare rollData.autofireMultiplierMax ">" 0)}}
+                    (1-{{rollData.autofireMultiplierMax}}):
                   {{else}}
-                    {{#if (cprListContains "assaultRifle,smg,heavySmg" weaponType)}}
-                      (1-{{#if (cprCompare weaponType "===" "assaultRifle")}}4{{else}}3{{/if}}):
+                    {{#if (cprListContains "assaultRifle,smg,heavySmg" rollData.weaponType)}}
+                      (1-{{#if (cprCompare rollData.weaponType "===" "assaultRifle")}}4{{else}}3{{/if}}):
                     {{else}}
                       ({{localize "CPR.rolls.noAutfireMaxConfig"}})
                     {{/if}}
@@ -28,8 +29,9 @@
             </div>
         <div class="item flexrow setting-value text-nowrap item-end">
             <input type="number" class="number" name="autofireMultiplier" data-dtype="Number" value=1
-                max="{{#if (cprCompare weaponType "===" "assaultRifle")}}4{{else}}3{{/if}}" min="1">
+                max="{{#if (cprCompare rollData.weaponType "===" "assaultRifle")}}4{{else}}3{{/if}}" min="1">
         </div>
+        {{/if}}
         {{/if}}
 
         <li class="item flexrow">
@@ -38,10 +40,11 @@
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
 
-                <input name="isAimed" class="" type="checkbox" data-dtype="Checkbox"{{#if isAimed}} checked{{/if}}>
+                <input name="isAimed" class="aimed-checkbox" type="checkbox" data-dtype="Checkbox"{{#if rollData.isAimed}} checked{{/if}}>
             </div>
         </li>
 
+        {{#if rollData.isAimed}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.rolls.aimFor"}}:
@@ -50,19 +53,20 @@
                 <select name="location">
                     {{!-- ONLY DISPLAY CYBERWARE OF SAME TYPE AS OPTIONAL --}}
                     {{#each (cprFindConfigObj "aimedLocation") as |loc l|}}
-                    <option value="{{l}}" {{#if  (cprCompare ../location "===" l)}}selected{{/if}}>{{localize loc}}</option>
+                    <option value="{{l}}" {{#if  (cprCompare ../rollData.location "===" l)}}selected{{/if}}>{{localize loc}}</option>
                     {{/each}}
                 </select>
             </div>
         </li>
+        {{/if}}
 
-        {{#if universalBonusDamage}}
+        {{#if rollData.universalBonusDamage}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.universalBonuses.damage"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="universalBonusDamage" class="" type="number" data-dtype="Number" value={{universalBonusDamage}}>
+                <input name="universalBonusDamage" class="" type="number" data-dtype="Number" value={{rollData.universalBonusDamage}}>
             </div>
         </li>
         {{/if}}
@@ -73,9 +77,18 @@
                 {{localize "CPR.rolls.mods"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="mods" class="" type="text" data-dtype="String" value="{{mods}}">
+                <input name="mods" class="" type="text" data-dtype="String" value="{{rollData.mods}}">
             </div>
         </li>
     </ol>
+
+  <footer class="sheet-footer flexrow">
+    <button class="confirm-roll" type="submit" name="submit" autofocus>
+        <i class="fa fa-check"></i> OK
+    </button>
+    <button class="cancel-roll" name ="cancel">
+        <i class="fa fa-times"></i> Cancel
+    </button>
+  </footer>
 </form>
 {{cprTrace "END CPR-VERIFY-ROLL-DAMAGE-PROMPT.HBS"}}

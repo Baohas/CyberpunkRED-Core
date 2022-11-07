@@ -60,9 +60,16 @@ export default class CPRDialog extends FormApplication {
     const effects = this.actor.effects.contents;
     const filteredEffects = [];
 
+    if (this.prototypeChain.includes("CPRDamageRoll")) {
+      const damageEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.bonuses.universalDamage`));
+      damageEffects.forEach((e) => filteredEffects.push(e));
+    }
+
     // Stat Effects. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
-    const statEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`));
-    statEffects.forEach((e) => filteredEffects.push(e));
+    if (this.prototypeChain.includes("CPRStatRoll") || this.prototypeChain.includes("CPRRoleRoll")) {
+      const statEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`));
+      statEffects.forEach((e) => filteredEffects.push(e));
+    }
 
     // Skill Effects.
     if (this.prototypeChain.includes("CPRSkillRoll") || this.prototypeChain.includes("CPRRoleRoll")) {
@@ -88,12 +95,22 @@ export default class CPRDialog extends FormApplication {
     $("input[type=number]").focusin(() => $(this).select());
 
     // generic listeners
-    html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
+    // html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
     html.find(".active-effect-checkbox").click((event) => this._activeEffectToggle(event));
-    html.find(".confirm-roll").click(() => this.confirmRoll());
+    html.find(".aimed-checkbox").click((event) => this._aimedToggle(event));
+    html.find(".confirm-roll").click((event) => this.confirmRoll(event));
     html.find(".cancel-roll").click(() => this.close());
 
     super.activateListeners(html);
+  }
+
+  _aimedToggle(event) {
+    LOGGER.trace("_aimedToggle | CPRDialog | Called.");
+    if (this.rollData.isAimed) {
+      this.rollData.location = "body";
+    } else {
+      this.rollData.location = "head";
+    }
   }
 
   _itemCheckboxToggle(event) {
@@ -119,7 +136,7 @@ export default class CPRDialog extends FormApplication {
    *
    * @param {Object} options - potential options to pass to this.close; currently unused;
    */
-  async confirmRoll(options) {
+  async confirmRoll(event, options) {
     LOGGER.trace("confirmRoll | CPRDialog | Called.");
     /** Taken from Starfinder: Fire callback, then delete, as it would get called again by Dialog#close. '
        * Do I need to do this though, since it does not have the same name? Seems like it works without it.
@@ -129,7 +146,7 @@ export default class CPRDialog extends FormApplication {
     //   this.options.confirmRoll();
     //   delete this.options.confirmRoll;
     // }
-
+    // await this._updateObject(event, this.rollData);
     this.options.confirmRoll();
     return this.close(options);
   }
