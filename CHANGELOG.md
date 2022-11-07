@@ -4,6 +4,7 @@
 ## Version 0.84.0 | Date: WIP
 
 ### New Features
+
 - Revamped automatic damage application.
   - Shields are taken into account
   - Damage reduction active effects and role effects are taken into account.
