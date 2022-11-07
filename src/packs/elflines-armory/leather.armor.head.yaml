@@ -1,0 +1,52 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659830519746
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030605
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/equipment/head/cap-simple-leather-brown.webp
+name: Leather Armor (Head)
+system:
+  tags: []
+  description:
+    value: <p>Simple Leather armor for your head. No armor penalty.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 350
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 20
+    category: everyday
+  isHeadLocation: true
+  headLocation:
+    sp: 4
+    ablation: 0
+  isBodyLocation: false
+  bodyLocation:
+    sp: 0
+    ablation: 0
+  isShield: false
+  shieldHitPoints:
+    value: 0
+    max: 0
+  penalty: 0
+  upgrade: ''
+type: armor
+_id: djhqRvyLhzXexgoS
+folder: null
+sort: 0
+ownership:
+  default: 0

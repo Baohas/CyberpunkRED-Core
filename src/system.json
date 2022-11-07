@@ -178,6 +178,14 @@
       "path": "packs/drugs.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Elflines Online Armory",
+      "type": "Item",
+      "name": "elflines-armory",
+      "path": "packs/elflines-armory.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
     }
   ],
   "languages": [

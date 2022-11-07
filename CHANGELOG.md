@@ -14,10 +14,10 @@
 - UI improvements in the gear tab to make it more readable and clear
 - Add ROF to weapons in the fight tab (#593)
 - Hide/Show `Used Upgrade Slots` if an item has slots
+- #555 Create Elflines Online Compendium as a Compendium not a macro
 
 ### Bug Fixes
 
-- Fix Elfline Online Armory macro
 - #553 - Macros can be dragged to the hotbar.
 - #546 - Techscanner now properly gives bonuses to Cybertech and Weaponstech
 - #547 - Fixed the code so upgrades to attackmod are now taken into consideration
