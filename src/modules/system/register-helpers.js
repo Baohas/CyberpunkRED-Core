@@ -878,7 +878,7 @@ export default function registerHandlebarsHelpers() {
    * Truncate HTML to a specified length and add … to the end
    */
   Handlebars.registerHelper("cprStripHtml", (string) => {
-    const text = string.replace(/<[^>]+>/g, '');
+    const text = string.replace(/<[^>]+>/g, "");
     return text;
   });
 }
