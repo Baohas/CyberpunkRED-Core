@@ -120,8 +120,10 @@ async function genPacks() {
   );
   const { packs } = sysFile;
 
-  // Create the packs dir
-  fs.mkdirSync(packsDir);
+  // Create the packs dir if it doesn't exist.
+  if (!fs.existsSync(packsDir)) {
+    fs.mkdirSync(packsDir);
+  }
 
   // This is a bit convoluted as our packs `name` doesn't match `path` always
   // So we need to grab the path then split it up to get the name.
