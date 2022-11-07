@@ -1,0 +1,70 @@
+_id: KwNqQrQpLzbhpDNR
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831011845
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831011845
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: kN8ZSjESSuKrUSfU
+    changes:
+      - key: bonuses.pathfinder
+        mode: 2
+        priority: null
+        value: '2'
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': netrun
+    icon: systems/cyberpunk-red-core/icons/compendium/programs/see_ya.svg
+    label: See Ya
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/programs/see_ya.svg
+name: See Ya
+ownership:
+  default: 0
+sort: 0
+system:
+  atk: 0
+  blackIceType: antipersonnel
+  class: booster
+  damage:
+    blackIce: 1d6
+    standard: 1d6
+  def: 0
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>+2 to Pathfinder Checks while Rezzed.</p>
+  favorite: false
+  install: mall
+  interface: 0
+  isInstalled: false
+  isRezzed: false
+  per: 0
+  price:
+    category: everyday
+    market: 20
+  prototypeActor: ''
+  revealed: true
+  rez: 7
+  size: 1
+  source: pg. 368
+  spd: 0
+  tags: []
+  usage: rezzed
+type: program

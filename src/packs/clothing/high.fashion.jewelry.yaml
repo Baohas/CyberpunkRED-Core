@@ -1,0 +1,42 @@
+_id: v6QgCemk6DInkpZJ
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830947656
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830947656
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewllery.svg
+name: High Fashion Jewelry
+ownership:
+  default: 0
+sort: 0
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: ''
+  equipped: owned
+  favorite: false
+  isUpgraded: false
+  price:
+    category: superLuxury
+    market: 50000
+  quality: standard
+  revealed: true
+  slots: 3
+  source: ''
+  style: highFashion
+  tags: []
+  type: jewelry
+  upgrades: []
+  usage: equipped
+type: clothing

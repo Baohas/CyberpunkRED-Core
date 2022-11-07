@@ -1,0 +1,216 @@
+_id: jJVQ50IYLdZi4uU1
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659832329367
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659832329367
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+author: RHHKVzg3SHTeyLev
+command: >-
+  // Get all packs as a basis for the equivalency items
+
+  const armorPack = game.packs.get("cyberpunk-red-core.armor-items");
+
+  const weaponPack = game.packs.get("cyberpunk-red-core.weapons-items");
+
+  const ammoPack = game.packs.get("cyberpunk-red-core.ammo-items");
+
+  const gearPack = game.packs.get("cyberpunk-red-core.gear-items");
+
+
+  const armorContent = await armorPack.getDocuments();
+
+  const weaponContent = await weaponPack.getDocuments();
+
+  const ammoContent = await ammoPack.getDocuments();
+
+  const gearContent = await gearPack.getDocuments();
+
+
+  // Identify/Create folder for items
+
+  const folderList = game.folders.filter((folder) => folder.name === "Elflines
+  Online Armory" && folder.type === "Item");
+
+  const elOnlineArmoryFolder = (folderList.length === 1) ? folderList[0] : await
+  Folder.create({ name: "Elflines Online Armory", type: "Item" });
+
+
+  // Identify the items of Elflines Online
+
+  const armoryItems = {
+    "Leather Armor (Body)": {
+      type: "armor",
+      equivalent: "Leathers (Body)",
+      price: 20,
+      img: "icons/equipment/chest/breastplate-layered-leather-brown.webp",
+    },
+    "Leather Armor (Head)": {
+      type: "armor",
+      equivalent: "Leathers (Head)",
+      price: 20,
+      img: "icons/equipment/head/cap-simple-leather-brown.webp",
+    },
+    "Studded Leather Armor (Body)": {
+      type: "armor",
+      equivalent: "Kevlar (Body)",
+      price: 50,
+      img: "icons/equipment/chest/breastplate-layered-leather-studded-black.webp",
+    },
+    "Studded Leather Armor (Head)": {
+      type: "armor",
+      equivalent: "Kevlar (Head)",
+      price: 50,
+      img: "icons/equipment/head/helm-norman-leather-studded.webp",
+    },
+    "Chainmail Armor (Body)": {
+      type: "armor",
+      equivalent: "Medium Armorjack (Body)",
+      price: 100,
+      img: "icons/equipment/chest/breastplate-scale-grey.webp",
+    },
+    "Chainmail Armor (Head)": {
+      type: "armor",
+      equivalent: "Medium Armorjack (Head)",
+      price: 100,
+      img: "icons/equipment/head/cap-steel.webp",
+    },
+    "Full Plate Armor (Body)": {
+      type: "armor",
+      equivalent: "Flak (Body)",
+      price: 500,
+      img: "icons/equipment/chest/breastplate-banded-steel-gold.webp",
+    },
+    "Full Plate Armor (Head)": {
+      type: "armor",
+      equivalent: "Flak (Head)",
+      price: 500,
+      img: "icons/equipment/head/helm-barbute-rounded-steel.webp",
+    },
+    "Shield": {
+      type: "armor",
+      equivalent: "Bullet Proof Shield",
+      price: 100,
+      img: "icons/equipment/shield/buckler-wooden-boss-brown.webp",
+    },
+    "Dagger": {
+      type: "weapon",
+      equivalent: "Combat Knife",
+      price: 50,
+      img: "icons/weapons/daggers/dagger-straight-blue.webp",
+    },
+    "Shortsword": {
+      type: "weapon",
+      equivalent: "Crowbar",
+      price: 50,
+      img: "icons/weapons/swords/shortsword-guard-gold.webp",
+    },
+    "Longsword": {
+      type: "weapon",
+      equivalent: "Lead Pipe",
+      price: 100,
+      rof: 1,
+      img: "icons/weapons/swords/greatsword-crossguard-steel.webp",
+    },
+    "Greataxe": {
+      type: "weapon",
+      equivalent: "Naginata",
+      price: 500,
+      hands: 2,
+      img: "icons/weapons/axes/axe-double-black.webp",
+    },
+    "Bow": {
+      type: "weapon",
+      equivalent: "Bow",
+      price: 100,
+      img: "icons/weapons/bows/shortbow-recurve-red.webp",
+    },
+    "Arrow": {
+      type: "ammo",
+      equivalent: "Basic Arrow",
+      price: 1,
+      img: "icons/weapons/ammunition/arrow-broadhead.webp",
+    },
+    "Poison Arrow": {
+      type: "ammo",
+      equivalent: "Poison Arrow",
+      price: 10,
+      img: "icons/weapons/ammunition/arrow-broadhead-green.webp",
+    },
+    "Vial of Poison": {
+      type: "gear",
+      equivalent: "Vial of Poison",
+      price: 100,
+      img: "icons/consumables/potions/bottle-conical-corked-labeled-skull-poison-green.webp",
+    },
+    "Sacred Herbs": {
+      type: "gear",
+      equivalent: "None",
+      price: 50,
+      img: "icons/consumables/plants/herb-tied-bundle-dried-yellow.webp",
+    },
+  };
+
+
+  // Create each item in folder
+
+  Object.keys(armoryItems).forEach(async (itemName) => {
+
+    const itemType = armoryItems[itemName].type;
+    const cprItem = armoryItems[itemName].equivalent;
+    const price =  armoryItems[itemName].price;
+    const img = armoryItems[itemName].img;
+    let itemSearch;
+    if (cprItem !== "None") {
+
+      switch (itemType) {
+        case "weapon": {
+          itemSearch = weaponContent.filter((i) => i.name === cprItem);
+          break;
+        }
+        case "armor": {
+          itemSearch = armorContent.filter((i) => i.name === cprItem);
+          break;
+        }
+        case "gear": {
+          itemSearch = gearContent.filter((i) => i.name === cprItem);
+          break;
+        }
+        case "ammo": {
+          itemSearch = ammoContent.filter((i) => i.name === cprItem);
+          break;
+        }
+        default:
+      }
+    }
+
+    if (typeof itemSearch !== "undefined" && itemSearch.length === 1) {
+      const sourceItem = itemSearch[0];
+      const itemData = duplicate(sourceItem.data);
+      itemData.name =  itemName;
+      itemData.system.price.market = price;
+      itemData.folder = elOnlineArmoryFolder;
+      itemData.img = img;
+      await Item.create(itemData);
+    } else {
+      const itemData = {
+        name: itemName,
+        type: "gear",
+        folder: elOnlineArmoryFolder.id,
+        "system.price.market": price,
+        img: img,
+      };
+      await Item.create(itemData);
+    }
+  });
+flags:
+  core: {}
+folder: null
+img: icons/svg/dice-target.svg
+name: Create Elflines Online Armory
+ownership:
+  default: 0
+scope: global
+sort: 0
+type: script

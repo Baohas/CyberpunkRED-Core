@@ -1,0 +1,54 @@
+_id: Z3iVuSFtma3Bx7SX
+data:
+  deathSaveIncrease: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>-2 to Melee Attacks.</p>
+  effects: ''
+  favorite: false
+  location: body
+  quickFix:
+    dvFirstAid: 13
+    dvParamedic: 13
+    type: firstAidParamedic
+  revealed: true
+  source: ''
+  tags: []
+  treatment:
+    dvParamedic: 0
+    dvSurgery: 0
+    type: quickFix
+  usage: always
+effects:
+  - _id: KkhtjtxpPv03U2Km
+    changes:
+      - key: bonuses.melee
+        mode: 2
+        value: '-2'
+    data:
+      flags:
+        cyberpunk-red-core:
+          changes:
+            '0': combat
+    disabled: false
+    duration:
+      startTime: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': combat
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/torn_muscle.svg
+    label: Torn Muscle
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/torn_muscle.svg
+name: Torn Muscle
+ownership:
+  default: 0
+sort: 0
+type: criticalInjury

@@ -1,0 +1,64 @@
+_id: 5DZRWppYOzCk9rgQ
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053158
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053158
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun.svg
+name: Constitution Arms Hurricane Assault Weapon
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - shotgunShell
+    - shotgunSlug
+  attachmentSlots: 0
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 5d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11
+      or higher (unless mounted). Refer to the full item description on pg.
+      348.</p>
+  dvTable: DV Shotgun (Slug)
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 16
+    value: 0
+  price:
+    category: luxury
+    market: 5000
+  quality: standard
+  revealed: true
+  rof: 2
+  slots: 0
+  source: pg. 348
+  tags: []
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
+type: weapon
