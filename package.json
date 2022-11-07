@@ -36,7 +36,6 @@
     "minimatch": "^5.1.0",
     "nedb": "^1.8.0",
     "sanitize-filename": "^1.6.3",
-    "vinyl-fs": "^3.0.3",
-    "yaml-lint": "^1.7.0"
+    "vinyl-fs": "^3.0.3"
   }
 }
