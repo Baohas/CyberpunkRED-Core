@@ -49,10 +49,11 @@ fi
 
 for file in "${UPLOAD_FILES[@]}"; do
   # Upload the file and grab the response from the api
-  response=$(curl \
-    --silent \
-    --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
-    --upload-file "${file}" "${REPO_URL}/${VERSION}/${file}"
+  response=$(
+    curl \
+      --silent \
+      --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+      --upload-file "${file}" "${REPO_URL}/${VERSION}/${file}"
   )
 
   # Check the response

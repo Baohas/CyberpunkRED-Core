@@ -213,7 +213,7 @@ export class CPRRoll {
     LOGGER.trace("handleRollDialog | CPRRoll | Called.");
 
     // Handle skipping of the user verification step
-    let skipDialog = event.ctrlKey;
+    let skipDialog = event.ctrlKey || event.metaKey;
     if (event.type === "click") {
       const ctrlSetting = game.settings.get(game.system.id, "invertRollCtrlFunction");
       skipDialog = ctrlSetting ? !skipDialog : skipDialog;

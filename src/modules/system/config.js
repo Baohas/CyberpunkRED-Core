@@ -297,6 +297,8 @@ CPR.equipped = {
 };
 
 CPR.itemPriceCategory = {
+  free: "CPR.global.priceCategory.free",
+  dirtCheap: "CPR.global.priceCategory.dirtCheap",
   cheap: "CPR.global.priceCategory.cheap",
   everyday: "CPR.global.priceCategory.everyday",
   costly: "CPR.global.priceCategory.costly",
@@ -305,7 +307,19 @@ CPR.itemPriceCategory = {
   veryExpensive: "CPR.global.priceCategory.veryExpensive",
   luxury: "CPR.global.priceCategory.luxury",
   superLuxury: "CPR.global.priceCategory.superLuxury",
-  extravagant: "CPR.global.priceCategory.extravagant",
+};
+
+CPR.itemPriceCategoryMap = {
+  free: 0,
+  dirtCheap: 5,
+  cheap: 10,
+  everyday: 20,
+  costly: 50,
+  premium: 100,
+  expensive: 500,
+  veryExpensive: 1000,
+  luxury: 5000,
+  superLuxury: 10000,
 };
 
 CPR.itemQuality = {
@@ -318,6 +332,11 @@ CPR.criticalInjuryTables = {
   "Critical Injuries (Head)": "criticalInjuriesHead",
   "Critical Injuries (Body)": "criticalInjuriesBody",
 };
+
+// game.system is not defined when this file is read, so there is a magic string here
+CPR.defaultCriticalInjuryTable = "cyberpunk-red-core.criticalInjuryTables";
+CPR.defaultNetArchTable = "cyberpunk-red-core.net-rolltables";
+CPR.defaultDvTable = "cyberpunk-red-core.dvTables";
 
 CPR.criticalInjuryLocation = {
   body: "CPR.global.location.body",
@@ -601,7 +620,7 @@ CPR.activeEffectKeys = {
     "bonuses.conversation": "CPR.global.skills.conversation",
     "bonuses.criminology": "CPR.global.skills.criminology",
     "bonuses.cryptography": "CPR.global.skills.cryptography",
-    "bonuses.cyberTech": "CPR.global.skills.cybertech",
+    "bonuses.cybertech": "CPR.global.skills.cybertech",
     "bonuses.dance": "CPR.global.skills.dance",
     "bonuses.deduction": "CPR.global.skills.deduction",
     "bonuses.demolitions": "CPR.global.skills.demolitions",
@@ -646,7 +665,7 @@ CPR.activeEffectKeys = {
     "bonuses.tracking": "CPR.global.skills.tracking",
     "bonuses.trading": "CPR.global.skills.trading",
     "bonuses.wardrobeAndStyle": "CPR.global.skills.wardrobeAndStyle",
-    "bonuses.weaponsTech": "CPR.global.skills.weaponstech",
+    "bonuses.weaponstech": "CPR.global.skills.weaponstech",
     "bonuses.wildernessSurvival": "CPR.global.skills.wildernessSurvival",
   },
   stat: {

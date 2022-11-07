@@ -25,6 +25,9 @@ const hotbarHooks = () => {
    */
   Hooks.on("hotbarDrop", (_, data, slot) => {
     LOGGER.trace("hotbarDrop | hotbarHooks | Called.");
+    if (data.type === "Macro") {
+      return true;
+    }
     const macroObject = {
       name: "",
       type: "script",

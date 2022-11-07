@@ -1,0 +1,73 @@
+_id: RRXm4nt2yOVqtcZV
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963841
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963841
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/hardend_shielding.svg
+name: Hardened Shielding (Cyber Leg)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>The leg and installed options are not affected by EMP effects. </p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
+  humanityLoss:
+    roll: 1d6
+    static: '3'
+  install: clinic
+  installedOptionSlots: 0
+  isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: 0
+  optionalIds: []
+  price:
+    category: veryExpensive
+    market: 1000
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  slots: 3
+  source: pg. 367
+  tags: []
+  type: cyberLeg
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

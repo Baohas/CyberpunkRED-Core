@@ -1,0 +1,29 @@
+_id: wQZ4N3RJXfcAY5hR
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659832911122
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659832911122
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: icons/svg/item-bag.svg
+name: Pilot Air Vehicle
+ownership:
+  default: 0
+sort: 0
+system:
+  basic: false
+  category: controlSkills
+  core: true
+  description: ''
+  difficulty: difficult
+  favorite: false
+  level: 0
+  source: ''
+  stat: ref
+  tags: []
+type: skill

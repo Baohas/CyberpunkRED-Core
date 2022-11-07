@@ -23,17 +23,7 @@
         {{localize "CPR.itemSheet.physical.price.category"}}
     </div>
     <div class="item flexrow setting-value text-nowrap item-end">
-        {{#if this.editable}}
-        <select name="system.price.category" data-dtype="{{item.system.price.category}}">
-            {{#select item.system.price.category}}
-                {{#each (cprFindConfigObj "itemPriceCategory") as |category c|}}
-                    <option value="{{c}}">{{localize category}}</option>
-                {{/each}}
-            {{/select}}
-        </select>
-        {{else}}
-            <span class="text-flex-end">{{localize (cprFindConfigValue "itemPriceCategory" item.system.price.category)}}</span>
-        {{/if}}
+      <span class="text-flex-end">{{localize (cprFindConfigValue "itemPriceCategory" (cprGetPriceCategory item.system.price.market))}}</span>
     </div>
 </li>
 {{cprTrace "END CPR-VALUABLE.HBS"}}

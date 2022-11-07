@@ -89,7 +89,9 @@ export default class CPRItemSheet extends ItemSheet {
     // if (["cyberdeck", "weapon", "armor", "cyberware", "clothing"].indexOf(data.item.type) > -1) {
     //   data.system.availableSlots = this.object.availableSlots();
     // }
-    cprData.dvTableNames = DvUtils.GetDvTables();
+    const dvTables = await DvUtils.GetDvTables();
+    cprData.dvTableNames = [];
+    for (const table of dvTables) cprData.dvTableNames.push(table.name);
     foundryData.item.system = cprData;
     return foundryData;
   }
@@ -219,7 +221,7 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("ItemSheet | _selectRoleBonuses | Called.");
     const cprItemData = this.item.system;
     const roleType = "mainRole";
-    const coreSkills = await SystemUtils.GetCompendiumDocs("skills");
+    const coreSkills = await SystemUtils.GetCoreSkills();
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -255,7 +257,7 @@ export default class CPRItemSheet extends ItemSheet {
     const cprItemData = duplicate(this.item.system);
     const roleType = "subRole";
     const subRole = cprItemData.abilities.find((a) => a.name === subRoleName);
-    const coreSkills = await SystemUtils.GetCompendiumDocs("skills");
+    const coreSkills = await SystemUtils.GetCoreSkills();
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -306,8 +308,9 @@ export default class CPRItemSheet extends ItemSheet {
     if (formData === undefined) {
       return;
     }
-    const lobby = await SystemUtils.GetCompendiumDoc("net-rolltables", "First Two Floors (The Lobby)");
-    const other = await SystemUtils.GetCompendiumDoc("net-rolltables", "All Other Floors (".concat(formData.difficulty, ")"));
+    const tableSetting = game.settings.get(game.system.id, "netArchRollTableCompendium");
+    const lobby = await SystemUtils.GetCompendiumDoc(tableSetting, "First Two Floors (The Lobby)");
+    const other = await SystemUtils.GetCompendiumDoc(tableSetting, "All Other Floors (".concat(formData.difficulty, ")"));
     const numberOfFloorsRoll = new CPRRoll(SystemUtils.Localize("CPR.rolls.roll"), "3d6");
     await numberOfFloorsRoll.roll();
     const numberOfFloors = numberOfFloorsRoll.resultTotal;
@@ -801,7 +804,7 @@ export default class CPRItemSheet extends ItemSheet {
     const target = Number(SystemUtils.GetEventDatum(event, "data-action-target"));
     const action = SystemUtils.GetEventDatum(event, "data-action-type");
     const cprItemData = duplicate(this.item.system);
-    const coreSkills = await SystemUtils.GetCompendiumDocs("skills");
+    const coreSkills = await SystemUtils.GetCoreSkills();
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));

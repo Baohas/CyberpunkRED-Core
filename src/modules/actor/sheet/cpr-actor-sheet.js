@@ -751,7 +751,8 @@ export default class CPRActorSheet extends ActorSheet {
       const currentDvTable = (weaponDvTable === "") ? getProperty(this.token, "flags.cprDvTable") : weaponDvTable;
       if (typeof currentDvTable !== "undefined") {
         const dvTable = currentDvTable.replace(" (Autofire)", "");
-        const afTable = (DvUtils.GetDvTables()).filter((name) => name.includes(dvTable) && name.includes("Autofire"));
+        const dvTables = await DvUtils.GetDvTables();
+        const afTable = (dvTables).filter((name) => name.includes(dvTable) && name.includes("Autofire"));
         let newDvTable = currentDvTable;
         if (afTable.length > 0) {
           newDvTable = (flag === firemode) ? dvTable : afTable[0];
@@ -774,9 +775,9 @@ export default class CPRActorSheet extends ActorSheet {
    * @private
    * @returns {String} - chosen name of the rollable table to be used for critical injuries
    */
-  static async _setCriticalInjuryTable() {
+  static async _setCriticalInjuryTable(tableSetting) {
     LOGGER.trace("_setCriticalInjuryTable | CPRActorSheet | Called.");
-    const critInjuryTables = await SystemUtils.GetCompendiumDocs("criticalInjuryTables");
+    const critInjuryTables = await SystemUtils.GetCompendiumDocs(tableSetting);
     const tableNames = critInjuryTables.map((t) => t.name);
     const formData = await RollCriticalInjuryPrompt.RenderPrompt(tableNames).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
@@ -794,12 +795,14 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _rollCriticalInjury() {
     LOGGER.trace("_rollCriticalInjury | CPRActorSheet | Called.");
-    const tableName = await CPRActorSheet._setCriticalInjuryTable();
+    const tableSetting = game.settings.get(game.system.id, "criticalInjuryRollTableCompendium");
+    const tableName = await CPRActorSheet._setCriticalInjuryTable(tableSetting);
     if (tableName === undefined) {
       return;
     }
-    const table = await SystemUtils.GetCompendiumDoc("criticalInjuryTables", tableName);
-    this._drawCriticalInjuryTable(table, 0);
+    const rollTable = await SystemUtils.GetCompendiumDoc(tableSetting, tableName);
+    const injuryCompName = SystemUtils.GetCompendiumIdByLabel(tableName);
+    this._drawCriticalInjuryTable(rollTable, injuryCompName, 0);
     this._automaticResize();
   }
 
@@ -815,13 +818,13 @@ export default class CPRActorSheet extends ActorSheet {
    *                             results. This can happen if the formula is wrong.
    * @returns {null}
    */
-  async _drawCriticalInjuryTable(table, iteration) {
+  async _drawCriticalInjuryTable(table, injuryCompName, iteration) {
     LOGGER.trace("_drawCriticalInjuryTable | CPRActorSheet | Called.");
-    const setting = game.settings.get(game.system.id, "preventDuplicateCriticalInjuries");
+    const dupeSetting = game.settings.get(game.system.id, "preventDuplicateCriticalInjuries");
 
     // check how many times we've been rolling. If this gets excessive maybe something is wrong with the table.
     if (iteration > 1000) {
-      SystemUtils.DisplayMessage("error", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateLoopWarning")));
+      SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateLoopWarning"));
       return;
     }
 
@@ -835,9 +838,9 @@ export default class CPRActorSheet extends ActorSheet {
         break;
       }
     }
-    if (hurts === table.results.size && setting === "reroll") {
+    if (hurts === table.results.size && dupeSetting === "reroll") {
       // actor has every injury already, we cannot reroll for more
-      SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateAllWarning")));
+      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateAllWarning"));
       return;
     }
 
@@ -848,20 +851,20 @@ export default class CPRActorSheet extends ActorSheet {
       }
       // find the critical injury item that turned up in the roll
       const injuryName = res.results[0].text;
-      injury = await SystemUtils.GetCompendiumDoc(CPR.criticalInjuryTables[table.name], injuryName);
+      injury = await SystemUtils.GetCompendiumDoc(injuryCompName, injuryName);
       if (!injury) {
-        SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning")));
+        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning"));
         return;
       }
 
       // check whether the actor has this injury already
       if (this.actor.itemTypes.criticalInjury.find((i) => i.name === injuryName)) {
-        if (setting === "reroll") {
+        if (dupeSetting === "reroll") {
           await this._drawCriticalInjuryTable(table, iteration + 1);
           return;
         }
-        if (setting === "warn") {
-          SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateWarning")));
+        if (dupeSetting === "warn") {
+          SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateWarning"));
         }
       }
 

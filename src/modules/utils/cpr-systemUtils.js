@@ -9,35 +9,61 @@ import LOGGER from "./cpr-logger.js";
 export default class CPRSystemUtils {
   /* COMPENDIA AND FOLDER UTILS */
 
+  static GetWorldCompendia(ctype = null) {
+    LOGGER.trace("GetWorldCompendia | CPRSystemUtils | Called.");
+    if (!game.packs) return [];
+    const packs = game.packs.filter((p) => p.metadata.packageType === "world");
+    if (ctype) {
+      return packs.filter((p) => p.metadata.type === ctype);
+    }
+    return packs;
+  }
+
   /**
    * Retrieve a specific document in a compendium
    *
    * @async
    * @static
-   * @param {String} cname - compendium name
+   * @param {String} cname - compendium name (which is not the human readable thing, that's the "label")
    * @param {String} dname - document name to look for
    * @returns {Document}
    */
   static async GetCompendiumDoc(cname, dname) {
     LOGGER.trace("GetCompendiumDoc | CPRSystemUtils | Called.");
-    let compName = cname;
-    if (!cname.startsWith(game.system.id)) compName = `${game.system.id}.${cname}`;
-    const comp = game.packs.get(compName);
+    const comp = game.packs.get(cname);
     return comp.getDocument(comp.index.contents.filter((i) => i.name === dname)[0]._id);
+  }
+
+  /**
+   * Given a compendium label, return its ID. If multiple compendia have the same label, this will
+   * return the first one encountered and throw a warning.
+   *
+   * @static
+   * @param {String} name - name to look up by
+   */
+  static GetCompendiumIdByLabel(label) {
+    LOGGER.trace("GetCompendiumIdByLabel | CPRSystemUtils | Called.");
+    const comps = game.packs.filter((p) => p.metadata.label === label);
+    if (comps.length > 1) {
+      this.DisplayMessage("warn", `${this.Localize("CPR.messages.duplicateCompendiumLabel")} "${label}"`);
+    } else if (comps.length === 0) {
+      this.DisplayMessage("error", `${this.Localize("CPR.messages.noCompendiumLabel")} "${label}"`);
+      return null;
+    }
+    return comps[0].metadata.id;
   }
 
   /**
    * Retrieve the documents packed up in a compendium (aka a pack)
    *
+   * @async
    * @static
-   * @param {String} cname - name of the compendium to retrieve
+   * @param {String} cname - name of the compendium to retrieve (which is not the human readable thing, that's the "label")
    * @returns {Array}
    */
-  static GetCompendiumDocs(cname) {
+  static async GetCompendiumDocs(cname) {
     LOGGER.trace("GetCompendiumDocs | CPRSystemUtils | Called.");
-    let compName = cname;
-    if (!cname.startsWith(game.system.id)) compName = `${game.system.id}.${cname}`;
-    return game.packs.get(compName).getDocuments();
+    return game.packs.get(cname).getDocuments();
   }
 
   /**
@@ -48,7 +74,7 @@ export default class CPRSystemUtils {
    */
   static async GetCoreSkills() {
     LOGGER.trace("GetCoreSkills | CPRSystemUtils | Called.");
-    return CPRSystemUtils.GetCompendiumDocs("skills");
+    return CPRSystemUtils.GetCompendiumDocs(`${game.system.id}.skills`);
   }
 
   /**
@@ -59,7 +85,7 @@ export default class CPRSystemUtils {
    */
   static async GetCoreCyberware() {
     LOGGER.trace("GetCoreCyberware | CPRSystemUtils | Called.");
-    return CPRSystemUtils.GetCompendiumDocs("cyberware");
+    return CPRSystemUtils.GetCompendiumDocs(`${game.system.id}.cyberware`);
   }
 
   /**
