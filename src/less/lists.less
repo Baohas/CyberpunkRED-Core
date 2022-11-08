@@ -9,15 +9,17 @@
     background-color: @chrome-white;
 
     .items-header {
-        padding         : 0;
         align-items     : center;
         background-color: @flint-black;
         color           : @chrome-white;
+        span {
+          padding: 3px;
+        }
     }
 
     .item {
         align-items: center;
-        padding    : 0 2px;
+        padding: 0 2px;
     }
 
     .item-name {
@@ -27,6 +29,12 @@
         text-align : left;
         align-items: center;
         text-overflow: ellipsis;
+
+        img {
+          width: 28px;
+          height: 28px;
+          margin: 3px 3px 3px 1px;
+        }
     }
 
     .item-image {
@@ -36,7 +44,6 @@
     }
 
     .item-detail {
-        text-align : center;
         word-break : break-word;
         white-space: nowrap;
         overflow   : hidden;
@@ -82,13 +89,22 @@
         padding         : 0;
         background-color: @flint-black;
         color           : @chrome-white;
+        div {
+          padding: 3px;
+        }
+    }
+
+    .item.effect {
+      div {
+        padding: 3px;
+      }
     }
 
     .effect-image {
         flex        : 0 0 30px;
         border      : none;
         margin-right: 5px;
-        margin-left: 5px;
+        margin-left: 0;
         width: 32px;
     }
 
@@ -131,7 +147,8 @@
     .skill-base,
     .skill-mod-value,
     .skill-favorite {
-        flex: 0 0 30px;
+        flex: 0 0 37px;
+        text-align: center;
     }
 
     .skill-custom {
@@ -168,7 +185,7 @@
 
       .gear-amount-value {
         max-width: 100%;
-        text-align: center;
+        padding: 3px;
 
         .gear-amount-input {
           width: 30px;
@@ -176,16 +193,10 @@
       }
     }
 
-    .gear-icon {
-      width: 24px;
-      height: 24px;
-      margin: 3px 3px 3px 1px;
-    }
-
     .gear-data {
         text-align: left;
         flex: 0 0 40%;
-        padding-left: 10px;
+        padding-left: 2px;
     }
 
     .gear-actions {
