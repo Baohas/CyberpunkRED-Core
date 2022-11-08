@@ -1,0 +1,38 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659831195849
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030606
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/weapons/ammunition/arrow-broadhead-green.webp
+name: Poison Arrow
+system:
+  tags: []
+  description:
+    value: >-
+      <p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs
+      Check. On a fail 2d6 damage to HP. No Ablation. </p>
+    chat: ''
+    unidentified: ''
+  source: pg. 346
+  favorite: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  amount: '10'
+  price:
+    market: 10
+    category: premium
+  variety: arrow
+  type: poison
+  upgrade: ''
+type: ammo
+_id: IZwINpYpfLLAq5zb
+folder: null
+sort: 0
+ownership:
+  default: 0

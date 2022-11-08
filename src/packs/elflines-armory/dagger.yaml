@@ -1,0 +1,60 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659831053158
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030604
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/weapons/daggers/dagger-straight-blue.webp
+name: Dagger
+system:
+  weaponType: lightMelee
+  weaponSkill: Melee Weapon
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 1d6
+  rof: 2
+  dvTable: ''
+  isRanged: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: <p>A knife fit for the streets.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 340
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: true
+    isConcealed: false
+  upgrades: []
+  slots: 0
+  isUpgraded: false
+  price:
+    market: 50
+    category: costly
+  handsReq: 1
+  attachmentSlots: 3
+  isConcealed: false
+  quality: standard
+  upgrade: ''
+type: weapon
+_id: Cq0h1I75g6Q4NM1h
+folder: null
+sort: 0
+ownership:
+  default: 0

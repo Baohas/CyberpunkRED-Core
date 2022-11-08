@@ -1,0 +1,52 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659830519746
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030606
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/equipment/shield/buckler-wooden-boss-brown.webp
+name: Shield
+system:
+  tags: []
+  description:
+    value: <p>Requires an arm and has HP that is reduced by damage.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 351
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 100
+    category: premium
+  isHeadLocation: false
+  headLocation:
+    sp: 0
+    ablation: 0
+  isBodyLocation: false
+  bodyLocation:
+    sp: 0
+    ablation: 0
+  isShield: true
+  shieldHitPoints:
+    value: 10
+    max: 10
+  penalty: 0
+  upgrade: ''
+type: armor
+_id: PcfZoO9meC9iAMkY
+folder: null
+sort: 0
+ownership:
+  default: 0

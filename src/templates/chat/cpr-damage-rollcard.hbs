@@ -8,12 +8,14 @@
                 <div class="rollcard-subtitle-right">
                     <a class="clickable"
                        data-action="applyDamage"
+                       data-scope="global"
                        data-total-damage="{{resultTotal}}" data-bonus-damage="{{#if criticalCard}}{{bonusDamage}}{{else}}0{{/if}}"
                        data-damage-location="{{#if isAimed}}{{location}}{{else}}body{{/if}}"
                        data-damage-lethal="{{#if (cprCompare rollCardExtraArgs.ammoType "===" "rubber")}}false{{else}}true{{/if}}"
                        data-ablation="{{#if (cprCompare rollCardExtraArgs.ammoType "===" "armorPiercing")}}2{{else}}{{#if (cprCompare rollCardExtraArgs.ammoType "===" "rubber")}}0{{else}}1{{/if}}{{/if}}"
+                       data-ammo-variety="{{rollCardExtraArgs.ammoVariety}}"
                        data-ignore-half-armor="{{#if rollCardExtraArgs.ignoreHalfArmor}}true{{else}}false{{/if}}">
-                        <i class="fas fa-bolt" title="{{localize "CPR.chat.damageApplication.applyDamage"}}"></i>
+                        <i class="fas fa-bolt" title="{{localize "CPR.chat.damageApplication.applyDamageSelected"}}"></i>
                     </a>
                 </div>
                 {{#if rollCardExtraArgs.ammoType}}
@@ -79,5 +81,37 @@
             </div>
         </div>
     </div>
+    {{#if (cprCompare entityData.tokens.length ">" 0)}}
+    <br>
+    <div class="rollcard-top">
+      <div class="cpr-block chat-rollTitle-stat">
+        <div class="text-center text-padding-top text-normal">{{localize "CPR.chat.damageApplication.applyDamageToFollowing"}}</div>
+        <div class="rollcard-subtitle">
+        </div>
+      </div>
+    </div>
+    <div class="rollcard-bottom">
+      <div class="cpr-block">
+        {{#each entityData.tokens as |token t|}}
+        <br>
+        <div class="text-left text-small">
+          {{cprMath "sum" t "1"}}.  {{token.actor.name}}
+          <a class="clickable"
+             data-action="applyDamage"
+             data-scope="local"
+             data-actor-id = "{{token.actor.id}}"
+             data-token-id = "{{token.id}}"
+             data-total-damage="{{../resultTotal}}" data-bonus-damage="{{#if ../criticalCard}}{{../bonusDamage}}{{else}}0{{/if}}"
+             data-damage-location="{{#if ../isAimed}}{{../location}}{{else}}body{{/if}}"
+             data-damage-lethal="{{#if (cprCompare ../rollCardExtraArgs.ammoType "===" "rubber")}}false{{else}}true{{/if}}"
+             data-ablation="{{#if (cprCompare ../rollCardExtraArgs.ammoType "===" "armorPiercing")}}2{{else}}{{#if (cprCompare ../rollCardExtraArgs.ammoType "===" "rubber")}}0{{else}}1{{/if}}{{/if}}"
+             data-ammo-variety="{{../rollCardExtraArgs.ammoVariety}}"
+             data-ignore-half-armor="{{#if ../rollCardExtraArgs.ignoreHalfArmor}}true{{else}}false{{/if}}">
+              <i class="fas fa-bolt" title="{{localize "CPR.chat.damageApplication.applyDamage"}}"></i>
+          </a> </div>
+        {{/each}}
+      </div>
+    </div>
+    {{/if}}
 </div>
 {{cprTrace "END CPR-DAMAGE-ROLLCARD.HBS"}}
