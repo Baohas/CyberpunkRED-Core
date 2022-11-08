@@ -66,12 +66,12 @@
         </div>
 
         <div class="block-data text-large">
-          {{#if actor.token.system.flags.cyberpunk-red-core.programId}}
-          {{#if (cprCompare system.class "!==" "other")}}
-            <a class="rollable" data-roll-type="damage"  data-program-id="{{actor.token.system.flags.cyberpunk-red-core.programId}}" data-netrunner-id="{{actor.token.system.flags.cyberpunk-red-core.netrunnerTokenId}}" data-scene-id="{{actor.token.system.flags.cyberpunk-red-core.sceneId}}"><i class="fas fa-tint red-fg" title="{{localize "CPR.actorSheets.commonActions.rollDamage"}}" ></i></a>
+          {{#if actor.token.flags.cyberpunk-red-core.programId}}
+          {{#if (cprCompare actor.system.class "!==" "other")}}
+            <a class="rollable" data-roll-type="damage"  data-program-id="{{actor.token.flags.cyberpunk-red-core.programId}}" data-netrunner-id="{{actor.token.flags.cyberpunk-red-core.netrunnerTokenId}}" data-scene-id="{{actor.token.flags.cyberpunk-red-core.sceneId}}"><i class="fas fa-tint red-fg" title="{{localize "CPR.actorSheets.commonActions.rollDamage"}}" ></i></a>
           {{/if}}
           {{/if}}
-          {{#unless actor.token.system.flags.cyberpunk-red-core.netrunnerTokenId}}
+          {{#unless actor.token.flags.cyberpunk-red-core.netrunnerTokenId}}
           <a class="configure-from-program"><i class="fas fa-wrench red-fg" title="{{localize "CPR.blackIceSheet.configureFromProgram"}}" ></i></a>
           {{/unless}}
         </div>

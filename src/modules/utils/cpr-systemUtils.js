@@ -1,4 +1,4 @@
-/* global game ui Folder */
+/* global game ui Folder canvas */
 /* eslint-env jquery */
 
 import LOGGER from "./cpr-logger.js";
@@ -409,6 +409,14 @@ export default class CPRSystemUtils {
   }
 
   /* MIGRATION UTILS */
+
+  static getUserTargetedOrSelected(targetedOrSelected) {
+    LOGGER.trace("getUserTargetedOrSelected | CPRSystemUtils | Called.");
+    const targets = new Set(game.user.targets);
+    const tokens = targetedOrSelected === "selected" ? canvas.tokens.controlled : Array.from(targets);
+    tokens.sort((a, b) => (a.name > b.name ? 1 : -1));
+    return tokens;
+  }
 
   /**
    * Updates the migration bar at the top of the page.

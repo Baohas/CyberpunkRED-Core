@@ -5,6 +5,12 @@
 
 ### New Features
 
+- Revamped automatic damage application.
+  - Shields are taken into account
+  - Damage reduction active effects and role effects are taken into account.
+  - Zap now counts as an "attack" and you can roll damage from the chat card.
+  - Roll damage from program attack cards.
+
 ### Changes
 
 - #434 - users no longer need to import compendia to use DV measurements or roll critical injuries
