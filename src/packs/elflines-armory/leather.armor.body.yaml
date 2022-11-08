@@ -1,0 +1,52 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659830519746
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030605
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/equipment/chest/breastplate-layered-leather-brown.webp
+name: Leather Armor (Body)
+system:
+  tags: []
+  description:
+    value: <p>Simple Leather armor. No armor penalty.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 350
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 20
+    category: everyday
+  isHeadLocation: false
+  headLocation:
+    sp: 0
+    ablation: 0
+  isBodyLocation: true
+  bodyLocation:
+    sp: 4
+    ablation: 0
+  isShield: false
+  shieldHitPoints:
+    value: 0
+    max: 0
+  penalty: 0
+  upgrade: ''
+type: armor
+_id: aQsTfMuwscY8JqcG
+folder: null
+sort: 0
+ownership:
+  default: 0
