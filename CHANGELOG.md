@@ -5,6 +5,12 @@
 
 ### New Features
 
+- Revamped automatic damage application.
+  - Shields are taken into account
+  - Damage reduction active effects and role effects are taken into account.
+  - Zap now counts as an "attack" and you can roll damage from the chat card.
+  - Roll damage from program attack cards.
+
 ### Changes
 
 - #434 - users no longer need to import compendia to use DV measurements or roll critical injuries
@@ -14,10 +20,10 @@
 - UI improvements in the gear tab to make it more readable and clear
 - Add ROF to weapons in the fight tab (#593)
 - Hide/Show `Used Upgrade Slots` if an item has slots
+- #555 Create Elflines Online Compendium as a Compendium not a macro
 
 ### Bug Fixes
 
-- Fix Elfline Online Armory macro
 - #553 - Macros can be dragged to the hotbar.
 - #546 - Techscanner now properly gives bonuses to Cybertech and Weaponstech
 - #547 - Fixed the code so upgrades to attackmod are now taken into consideration

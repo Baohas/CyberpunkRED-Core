@@ -2,14 +2,62 @@
 <div class="">
   <div>{{allowedTypesMessage}}</div>
   <br>
-  {{#each allowedActors as |actor|}}
-    <li>{{actor.name}}</li>
+  {{#each allowedActors as |actor a|}}
+    <li>
+    {{#if (cprCompare a "===" ../count)}}
+      <span class = "text-bold" >{{cprMath "sum" a "1"}}. {{actor.name}}</span>
+    {{else}}
+      {{#if (cprCompare ">" ../allowedActors.length "1")}}{{cprMath "sum" a "1"}}.{{/if}} {{actor.name}}
+    {{/if}}
+    </li>
   {{/each}}
-  <br>
-  <div>{{localize "CPR.chat.damageApplication.prompt.forbiddenTypes"}}</div>
-  <br>
-  {{#each forbiddenActors as |actor|}}
-    <li>{{actor.name}}</li>
-  {{/each}}
+  {{#if (cprCompare forbiddenActors.length ">" 0)}}
+    <br>
+    <div>{{localize "CPR.chat.damageApplication.prompt.forbiddenTypes"}}</div>
+    <br>
+    {{#each forbiddenActors as |actor|}}
+      <li>{{actor.name}}</li>
+    {{/each}}
+  {{/if}}
 </div>
+<hr>
+<form>
+<ol class="items-list">
+  <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.chat.damageApplication.prompt.useShield"}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="useShield" checked></span>
+      </div>
+  </li>
+  <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.chat.damageApplication.prompt.damageReductionRole"}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="damageReductionRole" checked></span>
+      </div>
+  </li>
+  <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.chat.damageApplication.prompt.damageReductionAE"}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="damageReductionAE" checked></span>
+      </div>
+  </li>
+  {{#if brainDamageReduction}}
+  <hr>
+    <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.chat.damageApplication.prompt.brainDamageReduction"}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap text-space-around">
+        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="brainDamageReduction" {{#if brainDamageReduction}}checked{{/if}}></span>
+      </div>
+    </li>
+  {{/if}}
+</ol>
+</form>
 {{cprTrace "END CPR-DAMAGE-APPLICATION-PROMPT.HBS"}}

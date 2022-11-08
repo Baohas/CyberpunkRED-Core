@@ -18,7 +18,13 @@ export const build = gulp.series(
   generatePacks,
 );
 
+// Don't just call `build` & `bld.watch` because `build` cleans the directory
+// so we have a clean build, but if we clean the directory foundry dies because
+// the file descriptors to the packs change which it does not like.
 export const watch = gulp.series(
-  build,
+  assets,
+  system,
+  less,
+  generatePacks,
   bld.watchSrc,
 );
