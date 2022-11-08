@@ -17,7 +17,11 @@
 - Drugs can now be equipped, owned, or carried.
 - Moved created migrationFolder management on CPRMigration and moved backupOwnedItem to CPRMigration as it will probably become
   necessary if we have more ActiveEffect changes in the future.
-- UI improvements in the gear tab to make it more readable and clear
+- UI Improvements
+  - The gear tab of the character sheet now displays icons and is more readable/clear.
+  - Better spacing to multiple headers in the character sheet.
+  - Added icons to the container inventory.
+  - Removed action label on container sheets since it was poorly aligned and the buttons are self-explanatory.
 - Add ROF to weapons in the fight tab (#593)
 - Hide/Show `Used Upgrade Slots` if an item has slots
 - #555 Create Elflines Online Compendium as a Compendium not a macro
