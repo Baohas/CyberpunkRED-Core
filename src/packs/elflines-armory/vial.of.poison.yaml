@@ -1,0 +1,40 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659830994299
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030608
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: >-
+  icons/consumables/potions/bottle-conical-corked-labeled-skull-poison-green.webp
+name: Vial of Poison
+system:
+  tags: []
+  description:
+    value: <p>2d6 damage unless Resist Torture/Drugs. Armor does not apply.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 355
+  favorite: false
+  revealed: true
+  usage: toggled
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  amount: 1
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 100
+    category: premium
+type: gear
+_id: Du1fktuaMc52c1NH
+folder: null
+sort: 0
+ownership:
+  default: 0

@@ -1,0 +1,42 @@
+_id: jR1AReHKQFieIdWD
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831043778
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831043778
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+name: Compact Groundcar
+ownership:
+  default: 0
+sort: 0
+system:
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>A CHOOH2-powered groundcar. Very common with a few dozen manufacturers
+      producing similar models. </p>
+  favorite: false
+  isUpgraded: false
+  price:
+    category: superLuxury
+    market: 30000
+  sdp: 50
+  seats: 4
+  slots: 3
+  source: pg. 190
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+  tags: ''
+  upgrade: ''
+  upgrades: []
+type: vehicle

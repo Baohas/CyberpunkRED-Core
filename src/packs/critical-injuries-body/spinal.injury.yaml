@@ -1,0 +1,33 @@
+_id: pQ2F7FsQvZJyZGXe
+data:
+  deathSaveIncrease: true
+  description:
+    chat: ''
+    unidentified: ''
+    value: '<p>Next turn: No action, move only.</p>'
+  effects: ''
+  favorite: false
+  location: body
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 15
+    type: paramedic
+  revealed: true
+  source: ''
+  tags: []
+  treatment:
+    dvParamedic: 0
+    dvSurgery: 15
+    type: surgery
+  usage: toggled
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/critical_injuries/spinal_injury.svg
+name: Spinal Injury
+ownership:
+  default: 0
+sort: 0
+type: criticalInjury

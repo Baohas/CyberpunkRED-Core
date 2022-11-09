@@ -361,6 +361,13 @@ CPR.aimedLocation = {
   leg: "CPR.global.location.leg",
 };
 
+CPR.damageLocation = {
+  brain: "CPR.global.location.brain",
+  head: "CPR.global.location.head",
+  heldItem: "CPR.global.location.heldItem",
+  leg: "CPR.global.location.leg",
+};
+
 CPR.blackIceType = {
   antipersonnel: "CPR.global.blackIce.type.antiPersonnel",
   antiprogram: "CPR.global.blackIce.type.antiProgram",
@@ -410,6 +417,7 @@ CPR.roleSpecialOptions = {
 CPR.universalBonuses = {
   attack: "CPR.universalBonuses.attack",
   damage: "CPR.universalBonuses.damage",
+  damageReduction: "CPR.universalBonuses.damageReduction",
   initiative: "CPR.universalBonuses.initiative",
 };
 
@@ -538,6 +546,7 @@ CPR.activeEffectKeys = {
     "bonuses.deathSavePenalty": "CPR.effectSheet.combat.stats.deathPenalty",
     "bonuses.universalAttack": "CPR.effectSheet.combat.stats.universalAttack",
     "bonuses.universalDamage": "CPR.effectSheet.combat.stats.universalDamage",
+    "bonuses.universalDamageReduction": "CPR.effectSheet.combat.stats.universalDamageReduction",
     "bonuses.aimedShot": "CPR.effectSheet.combat.stats.aimedShot",
     "bonuses.singleShot": "CPR.effectSheet.combat.stats.singleShot",
     "bonuses.melee": "CPR.effectSheet.combat.stats.melee",
@@ -546,10 +555,12 @@ CPR.activeEffectKeys = {
     "bonuses.suppressive": "CPR.effectSheet.combat.stats.suppressive",
     "bonuses.run": "CPR.effectSheet.combat.stats.runSpeed",
     "bonuses.walk": "CPR.effectSheet.combat.stats.walkSpeed",
+
   },
   netrun: {
     "bonuses.attack": "CPR.effectSheet.netrun.attack",
     "bonuses.defense": "CPR.effectSheet.netrun.defense",
+    "bonuses.brainDamageReduction": "CPR.effectSheet.netrun.brainDamageReduction",
     "bonuses.perception_net": "CPR.effectSheet.netrun.perception",
     "bonuses.rez": "CPR.effectSheet.netrun.rez",
     "bonuses.speed": "CPR.effectSheet.netrun.speed",

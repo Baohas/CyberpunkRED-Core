@@ -1,0 +1,38 @@
+_id: r21n9rFplUOtnjHM
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830977237
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830977237
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/stim.svg
+name: Stim
+ownership:
+  default: 0
+sort: 0
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Injecting a target with Stim causes them to ignore all penalties from
+      being Seriously Wounded for one hour. It can only be used on a target once
+      per day.</p>
+  favorite: false
+  price:
+    category: premium
+    market: 200
+  revealed: true
+  source: pg. 150
+  tags: []
+  usage: toggled
+type: drug

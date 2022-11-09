@@ -1,0 +1,55 @@
+_id: q7yxRKUMzOf9o5qO
+data:
+  deathSaveIncrease: true
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Ear is removed. If move more than 4m/yds in a Turn, cannot move next
+      turn. -4 to hearing based Perception.</p>
+  effects: ''
+  favorite: false
+  location: head
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 0
+    type: notApplicable
+  revealed: true
+  source: ''
+  tags: []
+  treatment:
+    dvParamedic: 0
+    dvSurgery: 17
+    type: surgery
+  usage: always
+effects:
+  - _id: ioMOVsyk9FRbs9EI
+    changes:
+      - key: bonuses.perception
+        mode: 2
+        value: '-4'
+    data:
+      flags:
+        cyberpunk-red-core:
+          changes:
+            '0': skill
+    disabled: false
+    duration:
+      startTime: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
+    icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
+    label: Lost Ear
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
+name: Lost Ear
+ownership:
+  default: 0
+sort: 0
+type: criticalInjury

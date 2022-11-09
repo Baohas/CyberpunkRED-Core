@@ -1,0 +1,64 @@
+_id: Rju0qV9mEaZ8oJhG
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053166
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053166
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
+name: Tsunami Arms Helix
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - rifle
+  attachmentSlots: 0
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 5d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets,
+      using 20 bullets with each attack. Uses Autofire rules with a
+      multiplication up to a maximum of 5. Requires BODY 11 or higher (unless
+      mounted). Refer to the full item description on pg. 349.</p>
+  dvTable: DV Assault Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 5
+    suppressiveFire: false
+  handsReq: 2
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 40
+    value: 0
+  price:
+    category: luxury
+    market: 5000
+  quality: standard
+  revealed: true
+  rof: 1
+  slots: 0
+  source: pg. 349
+  tags: []
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Autofire
+  weaponType: assaultRifle
+type: weapon

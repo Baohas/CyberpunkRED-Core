@@ -1,0 +1,63 @@
+_id: KgqUdz9Fs55747gv
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053174
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053174
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher.svg
+name: Grenade Launcher
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - grenade
+  attachmentSlots: 3
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 6d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>A high-impact grenade launcher. You can use a variety of grenades with
+      this. </p>
+  dvTable: DV Grenade Launcher
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 2
+    value: 0
+  price:
+    category: expensive
+    market: 500
+  quality: standard
+  revealed: true
+  rof: 1
+  slots: 3
+  source: pg. 341
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: grenadeLauncher
+type: weapon

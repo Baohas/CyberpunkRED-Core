@@ -152,6 +152,7 @@
                                     {{/if}}
                                 </div>
                                 <div class="fight-weapon-actions text-nowrap">
+                                    ROF: {{weapon.system.rof}}
                                     {{#if weapon.system.isRanged}}
                                     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                                     {{>"systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
@@ -230,6 +231,7 @@
                                                 {{/if}}
                                             </div>
                                             <div class="fight-weapon-actions text-nowrap">
+                                                ROF: {{weapon.system.rof}}
                                                 {{#if weapon.system.isRanged}}
                                                     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                                                     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
@@ -318,6 +320,7 @@
                                     {{/if}}
                                 </div>
                                 <div class="fight-weapon-actions text-nowrap">
+                                    ROF: {{weapon.system.rof}}
                                     {{#if weapon.system.isRanged}}
                                     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                                     {{>"systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
@@ -396,6 +399,7 @@
                                                 {{/if}}
                                             </div>
                                             <div class="fight-weapon-actions text-nowrap">
+                                                ROF: {{weapon.system.rof}}
                                                 {{#if weapon.system.isRanged}}
                                                     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                                                     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
@@ -471,6 +475,13 @@
         <li class="items-header item flexrow" data-item-id="{{actor.system.cyberdeck.id}}">
             <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left">
                 <a class="name item-view">{{actor.system.cyberdeck.name}}</a>
+                <select class = "select-net-role" name="system.roleInfo.activeNetRole" data-tooltip = "{{localize "CPR.characterSheet.bottomPane.fight.netRoleTooltip"}}" data-tooltip-direction="UP">
+                  {{#select actor.roleInfo.activeNetRole}}
+                    {{#each actor.itemTypes.role}}
+                      <option value="{{this.id}}" {{#if (cprCompare this.id "===" ../actor.system.roleInfo.activeNetRole)}}selected{{/if}}>{{this.system.mainRoleAbility}}</option>
+                    {{/each}}
+                  {{/select}}
+                </select>
             </span>
         </li>
         <div class="net-actions-content">

@@ -1,0 +1,29 @@
+_id: FxviNlk84J78vEhV
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659832911109
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659832911109
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: icons/svg/item-bag.svg
+name: Human Perception
+ownership:
+  default: 0
+sort: 0
+system:
+  basic: true
+  category: socialSkills
+  core: true
+  description: ''
+  difficulty: typical
+  favorite: false
+  level: 2
+  source: ''
+  stat: emp
+  tags: []
+type: skill

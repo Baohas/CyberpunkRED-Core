@@ -1,0 +1,63 @@
+_id: UTScbqdHmttI41Xu
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053173
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053173
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Chainsaw_poor.svg
+name: Chainsaw (Poor)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attachmentSlots: 3
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 4d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>A portable, refuelable saw that runs on CHOOH2. Lasts about 2-3 hours
+      on one tank.  If you roll 1 on Attack (Crit Fail) the weapon fails in some
+      way and requires an action to be made usable again.</p>
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  isConcealed: false
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: premium
+    market: 100
+  quality: poor
+  revealed: true
+  rof: 1
+  slots: 0
+  source: pg. 340
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: vHeavyMelee
+type: weapon

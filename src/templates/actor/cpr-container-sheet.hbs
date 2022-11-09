@@ -214,17 +214,16 @@
                 <i class="fas fa-minus bg-black expand-icon"></i>
                 {{/if}}
               </span>
-              <span class="item-detail bg-black text-nowrap">
+              <span class="item-detail bg-black text-nowrap text-center">
                 {{localize "CPR.global.generic.amount"}}
               </span>
               <span class="item-name bg-black text-nowrap">
                 {{localize "CPR.global.generic.price"}}
               </span>
               <span class="item-end bg-black text-nowrap">
-                {{localize "CPR.global.generic.actions"}}&nbsp;
                 {{#if (cprCompare ../isGM "||" ../actor.flags.cyberpunk-red-core.players-create)}}
                   <a class="item-create" title="{{localize "CPR.actorSheets.commonActions.createNewItem"}}" data-item-type="{{c}}">
-                    <i class="fas fa-plus-circle text-padding-right"></i>
+                    <i class="fas fa-plus-circle text-padding-right" style="color: dimgrey;"></i>
                   </a>
                 {{/if}}
               </span>
