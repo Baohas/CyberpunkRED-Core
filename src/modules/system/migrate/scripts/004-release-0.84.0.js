@@ -1,4 +1,4 @@
-/* global duplicate Item game fromUuidSync */
+/* global Item fromUuidSync */
 /* eslint-disable foundry-cpr/logger-after-function-definition */
 /* eslint-disable no-await-in-loop */
 
@@ -6,6 +6,10 @@ import CPRMigration from "../cpr-migration.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
+/**
+ * Migrations in here were not for specific features but rather fixes to bugs and
+ * otherwise corrupted data. See #546, #554, and #484.
+ */
 export default class ReleaseEightyFourDotZero extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | 4-Release 0.84.0 Migration");
