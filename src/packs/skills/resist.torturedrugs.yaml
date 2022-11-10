@@ -1,0 +1,29 @@
+_id: 4nZAn6M44PYI8CU2
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659832911116
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659832911116
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: icons/svg/item-bag.svg
+name: Resist Torture/Drugs
+ownership:
+  default: 0
+sort: 0
+system:
+  basic: false
+  category: bodySkills
+  core: true
+  description: ''
+  difficulty: typical
+  favorite: false
+  level: 0
+  source: ''
+  stat: will
+  tags: []
+type: skill

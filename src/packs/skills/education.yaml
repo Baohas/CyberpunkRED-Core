@@ -1,0 +1,29 @@
+_id: m6zHqBrjzEGAs3c0
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659832911125
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659832911125
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: icons/svg/item-bag.svg
+name: Education
+ownership:
+  default: 0
+sort: 0
+system:
+  basic: true
+  category: educationSkills
+  core: true
+  description: ''
+  difficulty: typical
+  favorite: false
+  level: 2
+  source: ''
+  stat: int
+  tags: []
+type: skill

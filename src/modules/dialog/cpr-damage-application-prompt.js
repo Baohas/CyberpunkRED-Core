@@ -1,4 +1,5 @@
-/* global game renderTemplate, Dialog */
+/* eslint-disable no-shadow */
+/* global renderTemplate, Dialog, FormDataExtended, foundry game */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 
@@ -12,9 +13,27 @@ export default class DamageApplicationPrompt {
           LOGGER.trace("_onCancel | Dialog DamageApplicationPrompt | called.");
           reject(new Error("Promise rejected: Window Closed"));
         };
-        const _onConfirm = () => {
+        const _onConfirm = (html) => {
           LOGGER.trace("_onConfirm | Dialog DamageApplicationPrompt | called.");
-          resolve(true);
+          const damageReductionRole = html.find("[name=\"damageReductionRole\"");
+          const damageReductionAE = html.find("[name=\"damageReductionAE\"");
+          const useShield = html.find("[name=\"useShield\"");
+          const brainDamageReduction = html.find("[name=\"brainDamageReduction\"");
+          const fd = new FormDataExtended(html.find("form")[0]);
+          const formData = foundry.utils.expandObject(fd.object);
+          if (useShield.checked) {
+            formData.useShield = true;
+          }
+          if (damageReductionRole.checked) {
+            formData.damageReductionRole = true;
+          }
+          if (damageReductionAE.checked) {
+            formData.damageReductionAE = true;
+          }
+          if (brainDamageReduction.checked) {
+            formData.brainDamageReduction = true;
+          }
+          resolve(formData);
         };
         new Dialog({
           title,
@@ -23,12 +42,12 @@ export default class DamageApplicationPrompt {
             cancel: {
               icon: "<i class=\"fas fa-times\"></i>",
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
-              callback: () => _onCancel(),
+              callback: (html) => _onCancel(html),
             },
             confirm: {
               icon: "<i class=\"fas fa-check\"></i>",
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
-              callback: () => _onConfirm(),
+              callback: (html) => _onConfirm(html),
             },
           },
           default: "cancel",

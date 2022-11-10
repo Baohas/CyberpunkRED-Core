@@ -1,0 +1,98 @@
+_id: VbMY2fs3im1sP2dJ
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963852
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963852
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: hl1PHc6f7gRFz2gx
+    changes:
+      - key: bonuses.wardrobeAndStyle
+        mode: 2
+        priority: null
+        value: '2'
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
+    icon: systems/cyberpunk-red-core/icons/compendium/cyberware/light_tattoo.svg
+    label: Light Tattoo
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/light_tattoo.svg
+name: Light Tattoo
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Glowing tattoos. +2 to Wardrobe & Style if you have at least three
+      installed.</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
+  humanityLoss:
+    roll: '0'
+    static: '0'
+  install: mall
+  installedOptionSlots: 0
+  isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: 0
+  optionalIds: []
+  price:
+    category: premium
+    market: 100
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  slots: 3
+  source: pg. 358
+  tags: []
+  type: fashionware
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

@@ -1,0 +1,40 @@
+_id: kDE2jnvcsbbz1vaL
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831204019
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831204019
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
+name: Lawman
+ownership:
+  default: 0
+sort: 0
+system:
+  abilities: []
+  addRoleAbilityRank: true
+  bonusRatio: 1
+  bonuses: []
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Renegade defenders, corporate strike teams, or the last remnants of a
+      government police force, they patrol the streets to enforce some order in
+      an otherwise lawless world.</p>
+  favorite: false
+  hasRoll: false
+  mainRoleAbility: Backup
+  rank: 4
+  skill: '--'
+  skillBonuses: []
+  source: Pg. 158
+  stat: '--'
+  tags: []
+  universalBonuses: []
+type: role

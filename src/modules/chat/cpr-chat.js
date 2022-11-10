@@ -1,4 +1,4 @@
-/* global game, CONFIG, ChatMessage, renderTemplate, canvas, $ */
+/* global game, CONFIG, ChatMessage, renderTemplate, $ */
 import LOGGER from "../utils/cpr-logger.js";
 import { CPRRoll, CPRDamageRoll, CPRInitiative } from "../rolls/cpr-rolls.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -240,7 +240,6 @@ export default class CPRChat {
         }
         case "rollDamage": {
           // This will let us click a damage link off of the attack card
-          const rollType = "damage";
           const actorId = SystemUtils.GetEventDatum(event, "data-actor-id");
           const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
           const tokenId = SystemUtils.GetEventDatum(event, "data-token-id");
@@ -255,10 +254,38 @@ export default class CPRChat {
             SystemUtils.DisplayMessage("warn", `[${displayName}] ${SystemUtils.Localize("CPR.actormissingitem")} ${itemId}`);
             return;
           }
-          let cprRoll = item.createRoll(rollType, actor, { damageType: attackType });
+
+          // If item isn't a cyberdeck, rollType is for regular damage. If item is a cyberdeck,
+          // we will roll damage through the cpr-cyberdeck.js (either through createCyberdeckRoll or createInterfaceRoll)
+          let rollType = item.type !== "cyberdeck" ? "damage" : "cyberdeckProgram";
+          let cprRoll;
+          if (item.type !== "cyberdeck") {
+            cprRoll = item.createRoll(rollType, actor, { damageType: attackType });
+          } else {
+            const programId = SystemUtils.GetEventDatum(event, "data-program-id");
+            // Warn if no damage is configured.
+            if ((!actor.items?.get(programId)?.system.damage.standard && !actor.items?.get(programId)?.system.damage.blackIce && programId !== "zap")) {
+              SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.chat.rollDamage.warningProgramDmg"));
+              return;
+            }
+            rollType = programId === "zap" ? "interfaceAbility" : rollType; // reassign rollType to "interfaceAbility" if this is a Zap roll.
+            const netRoleItem = actor.itemTypes.role.find((r) => r.name === actor.system.roleInfo.activeNetRole);
+            cprRoll = item.createRoll(rollType, actor, {
+              cyberdeckId: itemId,
+              interfaceAbility: "zap",
+              programId,
+              executionType: "damage",
+              netRoleItem,
+            });
+          }
 
           if (location) {
             cprRoll.location = location;
+          }
+
+          const targetedTokens = SystemUtils.getUserTargetedOrSelected("targeted"); // get user targeted tokens for output to chat
+          if (targetedTokens.length === 0) {
+            SystemUtils.DisplayMessage("warn", "CPR.chat.damageApplication.noTokenTargeted");
           }
 
           const keepRolling = await cprRoll.handleRollDialog(event, actor, item);
@@ -268,7 +295,12 @@ export default class CPRChat {
 
           cprRoll = await item.confirmRoll(cprRoll);
           await cprRoll.roll();
-          cprRoll.entityData = { actor: actorId, token: tokenId, item: itemId };
+          cprRoll.entityData = {
+            actor: actorId,
+            token: tokenId,
+            item: itemId,
+            tokens: targetedTokens,
+          };
           CPRChat.RenderRollCard(cprRoll);
           break;
         }
@@ -285,6 +317,20 @@ export default class CPRChat {
         }
         case "applyDamage": {
           this.damageApplication(event);
+          break;
+        }
+
+        case "reverseDamage": {
+          const actorId = SystemUtils.GetEventDatum(event, "data-actor-id");
+          const tokenId = SystemUtils.GetEventDatum(event, "data-token-id");
+          const hpReduction = parseInt(SystemUtils.GetEventDatum(event, "data-hp-reduction"), 10);
+          const location = SystemUtils.GetEventDatum(event, "data-location");
+          const ablation = parseInt(SystemUtils.GetEventDatum(event, "data-ablation"), 10);
+          const shieldAblation = parseInt(SystemUtils.GetEventDatum(event, "data-shield-ablation"), 10);
+          const actor = (Object.keys(game.actors.tokens).includes(tokenId))
+            ? game.actors.tokens[tokenId]
+            : game.actors.find((a) => a.id === actorId);
+          actor._reverseDamage(hpReduction, location, ablation, shieldAblation);
           break;
         }
         default: {
@@ -338,44 +384,95 @@ export default class CPRChat {
     const totalDamage = parseInt(SystemUtils.GetEventDatum(event, "data-total-damage"), 10);
     const bonusDamage = parseInt(SystemUtils.GetEventDatum(event, "data-bonus-damage"), 10);
     const damageLethal = (/true/i).test(SystemUtils.GetEventDatum(event, "data-damage-lethal"));
+    const ammoVariety = SystemUtils.GetEventDatum(event, "data-ammo-variety");
     let location = SystemUtils.GetEventDatum(event, "data-damage-location");
     if (location !== "head" && location !== "brain") {
       location = "body";
     }
     const ablation = parseInt(SystemUtils.GetEventDatum(event, "data-ablation"), 10);
     const ignoreHalfArmor = (/true/i).test(SystemUtils.GetEventDatum(event, "data-ignore-half-armor"));
-    const tokens = canvas.tokens.controlled;
-    if (tokens.length === 0) {
-      SystemUtils.DisplayMessage("warn", "CPR.chat.damageApplication.noTokenSelected");
-      return;
-    }
-    const allowedTypes = [
-      "character",
-      "mook",
-      "demon",
-      "blackIce",
-    ];
-    const allowedActors = [];
-    const forbiddenActors = [];
-    tokens.forEach((t) => {
-      const { actor } = t;
-      if (allowedTypes.includes(actor.type)) {
-        allowedActors.push(actor);
-      } else {
-        forbiddenActors.push(actor);
+    const scope = SystemUtils.GetEventDatum(event, "data-scope");
+
+    // check if the button is on a single token (aka local; the list at the bottom of the damage Roll Card)
+    // If not local, it can apply to multiple tokens (disregarding the list at the bottom of the damage Roll Card)
+    if (scope === "local") {
+      const actorId = SystemUtils.GetEventDatum(event, "data-actor-id");
+      const tokenId = SystemUtils.GetEventDatum(event, "data-token-id");
+      const actor = (Object.keys(game.actors.tokens).includes(tokenId))
+        ? game.actors.tokens[tokenId]
+        : game.actors.find((a) => a.id === actorId);
+
+      const brainDamageReduction = location === "brain"; // whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
+      // eslint-disable-next-line prefer-const
+      let formData = { // data to feed to _applyDamage
+        damageReductionRole: true, damageReductionAE: true, useShield: true, brainDamageReduction,
+      };
+      let promptData;
+      if (!event.ctrlKey) {
+        const title = SystemUtils.Localize("CPR.chat.damageApplication.prompt.title");
+        const allowedTypesMessage = `${SystemUtils.Format("CPR.chat.damageApplication.prompt.allowedTypes", { location })}`;
+        const data = { allowedTypesMessage, allowedActors: [actor], brainDamageReduction };
+        promptData = await DamageApplicationPrompt.RenderPrompt(title, data).catch((err) => LOGGER.debug(err)); // data to feed to formData
+        formData.damageReductionRole = promptData.damageReductionRole;
+        formData.damageReductionAE = promptData.damageReductionAE;
+        formData.useShield = promptData.useShield;
+        formData.brainDamageReduction = promptData.brainDamageReduction;
       }
-    });
-    if (!event.ctrlKey) {
-      const title = SystemUtils.Localize("CPR.chat.damageApplication.prompt.title");
-      const allowedTypesMessage = `${SystemUtils.Format("CPR.chat.damageApplication.prompt.allowedTypes", { location })}`;
-      const data = { allowedTypesMessage, allowedActors, forbiddenActors };
-      const confirmation = await DamageApplicationPrompt.RenderPrompt(title, data);
-      if (!confirmation) {
+      if (promptData === false) {
         return;
       }
+      actor._applyDamage(totalDamage, bonusDamage, location, ablation, ammoVariety, ignoreHalfArmor, damageLethal, formData);
+    } else {
+      const tokens = SystemUtils.getUserTargetedOrSelected("selected"); // get user selected tokens
+      if (tokens.length === 0) {
+        SystemUtils.DisplayMessage("warn", "CPR.chat.damageApplication.noTokenSelected");
+        return;
+      }
+      const allowedTypes = [
+        "character",
+        "mook",
+        "demon",
+        "blackIce",
+      ];
+      const allowedActors = [];
+      const forbiddenActors = [];
+      tokens.forEach((t) => {
+        const { actor } = t;
+        if (allowedTypes.includes(actor.type)) {
+          allowedActors.push(actor);
+        } else {
+          forbiddenActors.push(actor);
+        }
+      });
+      allowedActors.sort((a, b) => (a.name > b.name ? 1 : -1));
+      forbiddenActors.sort((a, b) => (a.name > b.name ? 1 : -1));
+
+      const brainDamageReduction = location === "brain"; // whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
+      // eslint-disable-next-line prefer-const
+      let formData = {
+        damageReductionRole: true, damageReductionAE: true, useShield: true, brainDamageReduction, // data to feed to _applyDamage
+      };
+      let count = 0;
+      while (count < allowedActors.length) {
+        let promptData;
+        if (!event.ctrlKey) {
+          const title = SystemUtils.Localize("CPR.chat.damageApplication.prompt.title");
+          const allowedTypesMessage = `${SystemUtils.Format("CPR.chat.damageApplication.prompt.allowedTypes", { location })}`;
+          const data = {
+            allowedTypesMessage, allowedActors, forbiddenActors, count, brainDamageReduction,
+          };
+          // eslint-disable-next-line no-await-in-loop
+          promptData = await DamageApplicationPrompt.RenderPrompt(title, data).catch((err) => LOGGER.debug(err)); // data to feed to formData
+          formData.damageReductionRole = promptData.damageReductionRole;
+          formData.damageReductionAE = promptData.damageReductionAE;
+          formData.useShield = promptData.useShield;
+          formData.brainDamageReduction = promptData.brainDamageReduction;
+        }
+        if (promptData !== false) {
+          allowedActors[count]._applyDamage(totalDamage, bonusDamage, location, ablation, ammoVariety, ignoreHalfArmor, damageLethal, formData);
+        }
+        count += 1;
+      }
     }
-    allowedActors.forEach((a) => {
-      a._applyDamage(totalDamage, bonusDamage, location, ablation, ignoreHalfArmor, damageLethal);
-    });
   }
 }

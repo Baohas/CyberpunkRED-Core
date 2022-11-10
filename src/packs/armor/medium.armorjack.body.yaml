@@ -1,0 +1,52 @@
+_id: sV2rvaWBOntsxYvC
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830519749
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830519749
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+name: Medium Armorjack (Body)
+ownership:
+  default: 0
+sort: 0
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 12
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: '<p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>'
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 0
+  isBodyLocation: true
+  isHeadLocation: false
+  isShield: false
+  isUpgraded: false
+  penalty: -2
+  price:
+    category: premium
+    market: 100
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  slots: 3
+  source: pg. 350
+  tags: []
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+type: armor

@@ -1,0 +1,36 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659831195844
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030602
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/weapons/ammunition/arrow-broadhead.webp
+name: Arrow
+system:
+  tags: []
+  description:
+    value: <p>Basic ammo, nothing special.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 345
+  favorite: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  amount: '10'
+  price:
+    market: 1
+    category: cheap
+  variety: arrow
+  type: basic
+  upgrade: ''
+type: ammo
+_id: qQO7cw9BbGNNken1
+folder: null
+sort: 0
+ownership:
+  default: 0

@@ -1,0 +1,130 @@
+_id: I4qtphsiVa4rj9U8
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831204019
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831204019
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
+name: Solo
+ownership:
+  default: 0
+sort: 0
+system:
+  abilities:
+    - bonusRatio: 1
+      description: ''
+      hasRoll: false
+      index: 1
+      multiplier: '1'
+      name: Fumble Recovery
+      rank: 0
+      skill: '--'
+      skillBonuses: []
+      stat: '--'
+      universalBonuses: []
+    - bonusRatio: 1
+      description: ''
+      hasRoll: false
+      index: 2
+      multiplier: '1'
+      name: Initiative Reaction
+      rank: 0
+      skill: '--'
+      skillBonuses: []
+      stat: '--'
+      universalBonuses: []
+    - bonusRatio: 3
+      description: ''
+      hasRoll: false
+      index: 3
+      multiplier: '1'
+      name: Precision Attack
+      rank: 0
+      skill: '--'
+      skillBonuses: []
+      stat: '--'
+      universalBonuses:
+        - attack
+    - bonusRatio: 1
+      description: ''
+      hasRoll: false
+      index: 4
+      multiplier: '1'
+      name: Spot Weakness
+      rank: 0
+      skill: '--'
+      skillBonuses: []
+      stat: '--'
+      universalBonuses:
+        - damage
+    - bonusRatio: 1
+      description: ''
+      hasRoll: false
+      index: 5
+      multiplier: '1'
+      name: Threat Detection
+      rank: 0
+      skill: '--'
+      skillBonuses:
+        - _id: InrW2EFk0Jvdh195
+          data:
+            basic: true
+            category: awarenessSkills
+            core: true
+            description: ''
+            difficulty: typical
+            favorite: false
+            level: 2
+            skillmod: 0
+            source: ''
+            stat: int
+            tags: []
+          effects: []
+          flags: {}
+          folder: null
+          img: icons/svg/item-bag.svg
+          name: Perception
+          permission:
+            LWjKaq4RwaNlJ7pG: 3
+            default: 0
+          sort: 0
+          type: skill
+      stat: '--'
+      universalBonuses: []
+    - bonusRatio: 1
+      description: ''
+      hasRoll: false
+      index: 0
+      multiplier: '1'
+      name: Damage Deflection
+      rank: 0
+      skill: '--'
+      skillBonuses: []
+      stat: '--'
+      universalBonuses: []
+  addRoleAbilityRank: true
+  bonusRatio: 1
+  bonuses: []
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Experts in combat who use their fighting prowess to dominate in the
+      lawless time of the Red.</p>
+  favorite: false
+  hasRoll: false
+  mainRoleAbility: Combat Awareness
+  rank: 4
+  skill: '--'
+  skillBonuses: []
+  source: Pg. 146
+  stat: '--'
+  tags: []
+  universalBonuses: []
+type: role

@@ -2,11 +2,12 @@
 
 [Summarize your intentions with these changes]
 
-- [ ] This is meant for a hotfix
-- [ ] This is meant for the next release (see milestone)
-- [ ] This needs more reviewers than normal, there may be controversy
-- [ ] This intentionally introduces regressions that will be addressed later
-- [ ] There is/will be documentation changes on the wiki
+- [~] This is meant for a hotfix
+- [x] This is meant for the next release (see milestone)
+- [~] This needs more reviewers than normal, there may be controversy or high complexity
+- [~] This intentionally introduces regressions that will be addressed later
+- [~] There is/will be documentation changes on the wiki
+- [~] Please do not send commits here without coordinating closely with the owner
 
 
 ### Related Issues

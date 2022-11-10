@@ -1,10 +1,17 @@
 {{cprTrace "START DIALOG ROLLS CPR-VERIFY-PROGRAM-DAMAGE-PROMPT.HBS"}}
 <form>
     <div>
-        {{localize "CPR.rolls.roll"}} {{localize "CPR.rolls.damageFor"}} "{{rollData.rollCardExtraArgs.program.name}} ({{localize (cprFindConfigValue "programClassList" rollData.rollCardExtraArgs.pgmClass)}})", Choomba!
+        {{localize "CPR.rolls.roll"}} {{localize "CPR.rolls.damageFor"}}
+        {{#if rollData.rollCardExtraArgs.program.name}}
+          "{{rollData.rollCardExtraArgs.program.name}} ({{localize (cprFindConfigValue "programClassList" rollData.rollCardExtraArgs.pgmClass)}})", Choomba!
+        {{else if (cprCompare rollCardExtraArgs.pgmClass "===" "blackice")}}
+          "{{localize "CPR.global.programClass.blackice"}}"
+        {{else}}
+          "{{localize "CPR.global.role.netrunner.interfaceAbility.zap"}}"
+        {{/if}}
     </div>
     <ol class="items-list">
-      {{#if (cprCompare (cprCompare rollData.rollCardExtraArgs.pgmClass "===" "antiprogramattacker") "&&" (cprCompare rollData.rollCardExtraArgs.program.system.damage.blackIce "!==" "")) }}
+      {{#if (cprCompare (cprCompare rollData.rollCardExtraArgs.pgmClass "===" "antiprogramattacker") "&&" (cprCompare rollData.rollCardExtraArgs.pgmDamage.blackIce "!==" "")) }}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.rolls.selectTarget"}}:
