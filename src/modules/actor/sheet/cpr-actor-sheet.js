@@ -1157,7 +1157,12 @@ export default class CPRActorSheet extends ActorSheet {
     cprNewItemData.amount = formData.splitAmount;
     delete cprNewItemData._id;
     await this.actor.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.amount": newAmount }]);
-    await this.actor.createEmbeddedDocuments("Item", [{ name: item.name, type: item.type, system: cprNewItemData }], { CPRsplitStack: true });
+    await this.actor.createEmbeddedDocuments("Item", [{
+      name: item.name,
+      type: item.type,
+      img: item.img,
+      system: cprNewItemData,
+    }], { CPRsplitStack: true });
   }
 
   /**
