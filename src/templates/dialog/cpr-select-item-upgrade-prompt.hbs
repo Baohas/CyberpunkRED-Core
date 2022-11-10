@@ -18,13 +18,15 @@
           {{localize "CPR.itemSheet.common.itemUpgrades"}}
         </span>
       </div>
-      <div class="item flexrow item-detail">
-        <span class="text-bold text-right">
+      <div style="max-width: 60px" class="item flexrow item-detail">
+        <span class="text-bold text-right" >
           {{localize "CPR.global.generic.slots"}}
         </span>
       </div>
-      <div class="item flexrow item-detail">
-        <span class="text-bold text-align-last-end text-space-around">{{localize "CPR.dialog.common.select"}}</span>
+      <div style="max-width: 60px" class="item flexrow item-detail">
+        <span class="text-bold text-align-last-end text-space-around" >
+          {{localize "CPR.dialog.common.select"}}
+        </span>
       </div>
     </li>
 
@@ -32,17 +34,17 @@
     {{#each this.availableUpgrades as |upgrade|}}
     <li class="item flexrow">
       <div class="item flexrow text-nowrap item-name">
-        <span style="text-overflow: ellipsis; overflow: hidden">
+        <span class="width-full" style="text-overflow: ellipsis; overflow: hidden">
           {{upgrade.name}}
         </span>
       </div>
-      <div class="item flexrow item-detail text-right">
+      <div style="max-width: 60px" class="item flexrow item-detail text-right">
         <span>
           {{upgrade.system.size}}
         </span>
       </div>
-      <div class="item flexrow item-detail text-bold text-align-last-end text-space-around">
-        <span>
+      <div style="max-width: 60px" class="item flexrow item-detail text-bold text-align-last-end text-space-around">
+        <span >
           {{#if upgrade.system.isInstalled}}
             <input type="checkbox" name="selectedUpgrade" value="{{upgrade._id}}" checked>
           {{else}}
