@@ -121,14 +121,7 @@
       {{/each}}
     </ol>
 
-  <footer class="sheet-footer flexrow">
-    <button class="confirm-roll" type="submit" name="submit" autofocus>
-        <i class="fa fa-check"></i> OK
-    </button>
-    <button class="cancel-roll" name ="cancel">
-        <i class="fa fa-times"></i> Cancel
-    </button>
-  </footer>
+{{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 
 </form>
 {{cprTrace "END CPR-VERIFY-ROLL-SKILL-PROMPT.HBS"}}

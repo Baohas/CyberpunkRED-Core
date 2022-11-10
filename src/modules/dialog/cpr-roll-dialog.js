@@ -6,6 +6,7 @@ import CPRDialog from "./cpr-dialog-application.js";
 export default class CPRRollDialog extends CPRDialog {
   constructor(rollData, actor, item, options) {
     LOGGER.trace("constructor | CPRRollDialog | Called.");
+
     super(rollData, options);
 
     // Set data and options specific to this subclass.

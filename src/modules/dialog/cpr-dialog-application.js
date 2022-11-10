@@ -9,8 +9,6 @@ export default class CPRDialog extends FormApplication {
   constructor(dialogData, options) {
     LOGGER.trace("constructor | CPRDialog | Called.");
     super(dialogData, options);
-    this.dialogData = dialogData;
-    this.object = dialogData;
   }
 
   /**
@@ -119,7 +117,7 @@ export default class CPRDialog extends FormApplication {
       fd.mods = [];
     }
 
-    mergeObject(this.dialogData, fd);
+    mergeObject(this.object, fd);
     this.render(true); // rerenders the FormApp with the new data.
   }
 }

@@ -12,6 +12,7 @@ export default function preloadHandlebarsTemplates() {
     // Dialog Partials
     `systems/${game.system.id}/templates/dialog/cpr-confirmation-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-damage-application-prompt.hbs`,
+    `systems/${game.system.id}/templates/dialog/cpr-dialog-buttons.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-ledger-deletion-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-ledger-edit-prompt.hbs`,
@@ -25,6 +26,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/dialog/cpr-select-role-bonuses-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-split-item-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-update-announcement.hbs`,
+    `systems/${game.system.id}/templates/dialog/rolls/cpr-universal-roll-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-cyberdeck-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-damage-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-deathsave-prompt.hbs`,
