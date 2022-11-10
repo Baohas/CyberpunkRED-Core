@@ -269,7 +269,7 @@ export default class CPRChat {
               return;
             }
             rollType = programId === "zap" ? "interfaceAbility" : rollType; // reassign rollType to "interfaceAbility" if this is a Zap roll.
-            const netRoleItem = actor.itemTypes.role.find((r) => r.name === actor.system.roleInfo.activeNetRole);
+            const netRoleItem = actor.itemTypes.role.find((r) => r.id === actor.system.roleInfo.activeNetRole);
             cprRoll = item.createRoll(rollType, actor, {
               cyberdeckId: itemId,
               interfaceAbility: "zap",

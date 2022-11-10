@@ -22,6 +22,7 @@
   - Better spacing to multiple headers in the character sheet.
   - Added icons to the container inventory.
   - Removed action label on container sheets since it was poorly aligned and the buttons are self-explanatory.
+  - Add Slot details to Item Upgrade Dialogue
 - Add ROF to weapons in the fight tab (#593)
 - Hide/Show `Used Upgrade Slots` if an item has slots
 - #555 Create Elflines Online Compendium as a Compendium not a macro

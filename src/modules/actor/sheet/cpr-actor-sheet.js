@@ -752,7 +752,7 @@ export default class CPRActorSheet extends ActorSheet {
       if (typeof currentDvTable !== "undefined") {
         const dvTable = currentDvTable.replace(" (Autofire)", "");
         const dvTables = await DvUtils.GetDvTables();
-        const afTable = (dvTables).filter((name) => name.includes(dvTable) && name.includes("Autofire"));
+        const afTable = (dvTables).filter((table) => table.name.includes(dvTable) && table.name.includes("Autofire"));
         let newDvTable = currentDvTable;
         if (afTable.length > 0) {
           newDvTable = (flag === firemode) ? dvTable : afTable[0];
@@ -1157,7 +1157,12 @@ export default class CPRActorSheet extends ActorSheet {
     cprNewItemData.amount = formData.splitAmount;
     delete cprNewItemData._id;
     await this.actor.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.amount": newAmount }]);
-    await this.actor.createEmbeddedDocuments("Item", [{ name: item.name, type: item.type, system: cprNewItemData }], { CPRsplitStack: true });
+    await this.actor.createEmbeddedDocuments("Item", [{
+      name: item.name,
+      type: item.type,
+      img: item.img,
+      system: cprNewItemData,
+    }], { CPRsplitStack: true });
   }
 
   /**
