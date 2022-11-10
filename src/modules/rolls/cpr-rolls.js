@@ -4,6 +4,7 @@ import LOGGER from "../utils/cpr-logger.js";
 import DiceSoNice from "../extern/cpr-dice-so-nice.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import VerifyRoll from "../dialog/cpr-verify-roll-prompt.js";
+import CPRRollDialog from "../dialog/cpr-roll-dialog.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
 
 /**
@@ -222,7 +223,7 @@ export class CPRRoll {
 
     if (!skipDialog) {
       // const formData = await VerifyRoll.RenderPrompt(this).catch((err) => LOGGER.debug(err));
-      const dialog = await CPRDialog.showDialog(this, actor, item);
+      const dialog = await CPRDialog.showDialog(CPRRollDialog, this, actor, item);
       if (dialog === undefined) {
         // returns false if the dialog was closed
         return false;

@@ -6,29 +6,11 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
  * Form application to handle dialogs more generally.
  */
 export default class CPRDialog extends FormApplication {
-  constructor(rollData, actor, item, options) {
+  constructor(dialogData, options) {
     LOGGER.trace("constructor | CPRDialog | Called.");
-    super(rollData, options);
-    this.rollData = rollData;
-    this.object = rollData;
-
-    // Get the whole prototype chain so we know what kind of roll this is, and what its parent classes are.
-    // Adapted from this comment: https://stackoverflow.com/a/70089208
-    const prototypeChain = [];
-    let currentPrototype = rollData;
-    while (currentPrototype) {
-      currentPrototype = Object.getPrototypeOf(currentPrototype);
-      if (currentPrototype && currentPrototype.constructor.name !== "Object") {
-        prototypeChain.push(currentPrototype?.constructor.name);
-      }
-    }
-
-    this.prototypeChain = prototypeChain;
-
-    this.options.template = rollData.rollPrompt;
-
-    this.actor = actor;
-    this.item = item;
+    super(dialogData, options);
+    this.dialogData = dialogData;
+    this.object = dialogData;
   }
 
   /**
@@ -53,33 +35,6 @@ export default class CPRDialog extends FormApplication {
   getData() {
     LOGGER.trace("getData | CPRDialog | called.");
     const data = super.getData();
-    data.rollData = this.rollData; // CPRRoll object
-    data.prototypeChain = this.prototypeChain;
-
-    // Get effects relevant to the roll.
-    const effects = this.actor.effects.contents;
-    const filteredEffects = [];
-
-    if (this.prototypeChain.includes("CPRDamageRoll")) {
-      const damageEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.bonuses.universalDamage`));
-      damageEffects.forEach((e) => filteredEffects.push(e));
-    }
-
-    // Stat Effects. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
-    if (this.prototypeChain.includes("CPRStatRoll") || this.prototypeChain.includes("CPRRoleRoll")) {
-      const statEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`));
-      statEffects.forEach((e) => filteredEffects.push(e));
-    }
-
-    // Skill Effects.
-    if (this.prototypeChain.includes("CPRSkillRoll") || this.prototypeChain.includes("CPRRoleRoll")) {
-      const skillEffects = effects.filter((e) => e.changes.some((c) => c.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`));
-      skillEffects.forEach((e) => filteredEffects.push(e));
-    }
-
-    // Combat Effects.
-    const combatEffects = [];
-    data.activeEffects = filteredEffects;
     return data;
   }
 
@@ -96,39 +51,19 @@ export default class CPRDialog extends FormApplication {
 
     // generic listeners
     // html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
-    html.find(".active-effect-checkbox").click((event) => this._activeEffectToggle(event));
-    html.find(".aimed-checkbox").click((event) => this._aimedToggle(event));
-    html.find(".confirm-roll").click((event) => this.confirmRoll(event));
+    html.find(".confirm-roll").click((event) => this.confirmDialog(event));
     html.find(".cancel-roll").click(() => this.close());
-
-    super.activateListeners(html);
-  }
-
-  _aimedToggle(event) {
-    LOGGER.trace("_aimedToggle | CPRDialog | Called.");
-    if (this.rollData.isAimed) {
-      this.rollData.location = "body";
-    } else {
-      this.rollData.location = "head";
-    }
   }
 
   _itemCheckboxToggle(event) {
     LOGGER.trace("_itemCheckboxToggle | CPRDialog | Called.");
-    const { rollData } = this;
+    const { dialogData } = this;
     const target = SystemUtils.GetEventDatum(event, "data-target");
-    const value = !getProperty(rollData, target);
-    if (hasProperty(rollData, target)) {
-      setProperty(rollData, target, value);
+    const value = !getProperty(dialogData, target);
+    if (hasProperty(dialogData, target)) {
+      setProperty(dialogData, target, value);
       // this._automaticResize(); // Resize the sheet as length of settings list might have changed
     }
-  }
-
-  _activeEffectToggle(event) {
-    LOGGER.trace("_activeEffectToggle | CPRDialog | Called.");
-    const value = parseInt(SystemUtils.GetEventDatum(event, "data-value"), 10);
-    this.rollData.addMod(value);
-    this.render();
   }
 
   /**
@@ -136,8 +71,8 @@ export default class CPRDialog extends FormApplication {
    *
    * @param {Object} options - potential options to pass to this.close; currently unused;
    */
-  async confirmRoll(event, options) {
-    LOGGER.trace("confirmRoll | CPRDialog | Called.");
+  async confirmDialog(event, options) {
+    LOGGER.trace("confirmDialog | CPRDialog | Called.");
     /** Taken from Starfinder: Fire callback, then delete, as it would get called again by Dialog#close. '
        * Do I need to do this though, since it does not have the same name? Seems like it works without it.
        */
@@ -147,21 +82,20 @@ export default class CPRDialog extends FormApplication {
     //   delete this.options.confirmRoll;
     // }
     // await this._updateObject(event, this.rollData);
-    this.options.confirmRoll();
+    this.options.confirmDialog();
     return this.close(options);
   }
 
   /**
    * Creates a promise to be resolved when the dialog is confirmed. One can also override default options here.
    *
-   * @param {CPRRoll} - Roll to be modified by the dialog.
+   * @param {Object} - Some object to be modified by the dialog.
    */
-  static async showDialog(cprRoll, actor, item) {
+  static async showDialog(Cls, ...args) {
     LOGGER.trace("showDialog | CPRDialog | Called.");
     return new Promise((resolve) => {
-      const dialog = new CPRDialog(cprRoll, actor, item, {
-        confirmRoll: () => resolve(cprRoll),
-        title: cprRoll.rollTitle,
+      const dialog = new Cls(...args, {
+        confirmDialog: () => resolve(args[0]),
       });
       dialog.render(true);
     });
@@ -171,7 +105,7 @@ export default class CPRDialog extends FormApplication {
    * Foundry provides this function, which is necessary to override for FormApplications.
    *
    * @param {Object} options - potential options to pass to this.close; currently unused;
-   * @param {CPRRoll} formData - Roll data to be merged with the original CPRRoll.
+   * @param {Object} formData - Dialog data to be merged with the original CPRRoll.
    * @override
    */
   async _updateObject(event, formData) {
@@ -185,7 +119,7 @@ export default class CPRDialog extends FormApplication {
       fd.mods = [];
     }
 
-    mergeObject(this.rollData, fd);
+    mergeObject(this.dialogData, fd);
     this.render(true); // rerenders the FormApp with the new data.
   }
 }
