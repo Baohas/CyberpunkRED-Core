@@ -42,7 +42,15 @@ export default class CPRDemonActor extends Actor {
     LOGGER.trace("createStatRoll | CPRDemonActor | called.");
     const niceStatName = SystemUtils.Localize(CPR.demonStatList[statName]);
     const statValue = parseInt(this.system.stats[statName], 10);
-    return new CPRRolls.CPRProgramStatRoll(niceStatName, statValue);
+    const cprRoll = new CPRRolls.CPRProgramStatRoll(niceStatName, statValue);
+
+    if (cprRoll.rollCardExtraArgs.length === 0) {
+      cprRoll.rollCardExtraArgs.program = {
+        class: "demon",
+      };
+    }
+
+    return cprRoll;
   }
 
   /**

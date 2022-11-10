@@ -307,7 +307,7 @@ export class CPRProgramStatRoll extends CPRStatRoll {
     super(name, value);
     this.statName = name;
     this.statValue = value;
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-stat-prompt.hbs`;
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-attack-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-stat-rollcard.hbs`;
   }
 
@@ -578,7 +578,7 @@ export class CPRRoleRoll extends CPRRoll {
   setNetCombat(rollTitle) {
     LOGGER.trace("setNetCombat | CPRRoleRoll | Called.");
     this.rollTitle = rollTitle;
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-cyberdeck-prompt.hbs`;
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-attack-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-cyberdeck-rollcard.hbs`;
   }
 }

@@ -1,10 +1,11 @@
 {{cprTrace "START DIALOG ROLLS CPR-VERIFY-PROGRAM-ATTACK-PROMPT.HBS"}}
-<form>
+<form> {{log "Test"}}
     <div>
         {{localize "CPR.rolls.rollingFor"}} "{{rollData.rollTitle}}", Choomba!
     </div>
 
     <ol class="items-list">
+      {{#unless (cprListContains prototypeChain "CPRRoleRoll")}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.global.generic.stat"}} {{localize "CPR.global.generic.value"}} ({{localize rollData.statName}})
@@ -13,7 +14,9 @@
                 <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
             </div>
         </li>
+      {{/unless}}
 
+        {{#if rollData.roleName}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.rolls.abilityRank"}} ({{localize rollData.roleName}})
@@ -22,16 +25,18 @@
                 <input name="roleValue" class="" type="number" data-dtype="Number" value={{rollData.roleValue}}>
             </div>
         </li>
+        {{/if}}
 
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.rolls.mods"}}/{{localize "CPR.rolls.rezzedBoosters"}}:
+                {{localize "CPR.rolls.mods"}}
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
                 <input name="mods" class="" type="text" data-dtype="String" value={{rollData.mods}}>
             </div>
         </li>
 
+        {{#if (cprCompare (cprCompare rollData.rollCardExtraArgs.program.class "!==" "blackice") "&&" (cprCompare rollData.rollCardExtraArgs.program.class "!==" "demon"))}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.rolls.luck"}}:
@@ -40,6 +45,7 @@
                 <input name="luck" class="" type="number" data-dtype="Number" value={{rollData.luck}}>
             </div>
         </li>
+        {{/if}}
 
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
