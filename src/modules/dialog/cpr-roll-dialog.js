@@ -1,9 +1,10 @@
-/* global $ */
+/* eslint-disable max-classes-per-file */
+/* global */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";
 
-export default class CPRRollDialog extends CPRDialog {
+export class CPRRollDialog extends CPRDialog {
   constructor(rollData, actor, item, options) {
     LOGGER.trace("constructor | CPRRollDialog | Called.");
 
@@ -66,6 +67,11 @@ export default class CPRRollDialog extends CPRDialog {
     return data;
   }
 
+  /**
+   *
+   * @param {*} html
+   * @override
+   */
   activateListeners(html) {
     LOGGER.trace("activateListeners | CPRRollDialog | Called.");
     super.activateListeners(html);
@@ -76,6 +82,16 @@ export default class CPRRollDialog extends CPRDialog {
     html.find(".aimed-checkbox").click((event) => this._aimedToggle(event));
   }
 
+  /**
+   * When the aimed shot checkbox is toggled, it shows the drop down for aim location, but `cprRoll.location` is not
+   * actually updated until the next time the form is submitted. Unfortunately, when the OK button is pressed, the
+   * Promise is returned before the form is resubmitted. So, if a user toggles aimed shot but doesn't change any
+   * other data before pressing OK, the location is still set to "body". This function sets `cprRoll.location` to
+   * head when the toggle is checked and back to body when the toggle is unchecked, fixing the above issue (until
+   * I can figure out how to resolve the Promise after the form is submitted.)
+   *
+   * @param {*} event
+   */
   _aimedToggle(event) {
     LOGGER.trace("_aimedToggle | CPRRollDialog | Called.");
     if (this.rollData.isAimed) {
@@ -91,4 +107,8 @@ export default class CPRRollDialog extends CPRDialog {
     this.rollData.addMod(value);
     this.render();
   }
+}
+
+export class CPRRoleRollDialog extends CPRRollDialog {
+
 }
