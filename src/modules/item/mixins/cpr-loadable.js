@@ -1,7 +1,4 @@
-/* global game getProperty */
-
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
-import DvUtils from "../../utils/cpr-dvUtils.js";
 import LoadAmmoPrompt from "../../dialog/cpr-load-ammo-prompt.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
@@ -34,23 +31,12 @@ const Loadable = function Loadable() {
    * whether the item is set to autofire or not.
    *
    * @async
-   * @param {*} actor - actor associated with the token
-   * @param {*} dvTable - which dvTable to use, overridden if autofire is set.
+   * @param {CPRActor} actor - actor associated with the token
+   * @param {String} dvTable - which dvTable to use, overridden if autofire is set.
    */
-  this._measureDv = async function _measureDv(actor, dvTable) {
-    LOGGER.trace("_measureDv | Loadable | Called.");
-    let newDvTable = dvTable;
-    if (actor.sheet.token !== null) {
-      const flag = getProperty(actor, `flags.${game.system.id}.firetype-${this._id}`);
-      if (flag === "autofire") {
-        const dvTables = await DvUtils.GetDvTables();
-        const afTable = (dvTables).filter((table) => table.name.includes(dvTable) && table.name.includes("Autofire"));
-        if (afTable.length > 0) {
-          [newDvTable] = afTable;
-        }
-      }
-      actor.sheet.token.update({ "flags.cprDvTable": newDvTable });
-    }
+  this._setDvTable = async function _setDvTable(actor, dvTable) {
+    LOGGER.trace("_setDvTable | Loadable | Called.");
+    if (actor.sheet.token !== null) await SystemUtils.SetDvTable(actor.sheet.token, dvTable);
   };
 
   /**
