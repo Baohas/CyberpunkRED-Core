@@ -564,22 +564,28 @@ export class CPRRoleRoll extends CPRRoll {
    */
   _computeBase() {
     LOGGER.trace("_computeBase | CPRRoleRoll | Called.");
-    if (this.roleName === "Charismatic Impact" || this.roleName === "Interface") {
-      return this.initialRoll + this.totalMods() + this.roleValue + this.skillValue + this.statValue + this.luck;
-    }
-    return this.initialRoll + this.totalMods() + this.roleValue + this.skillValue + this.statValue;
+    return this.initialRoll + this.totalMods() + this.roleValue + this.skillValue + this.statValue + this.luck;
   }
+}
 
+export class CPRCyberdeckRoll extends CPRRoleRoll {
   /**
-   * Flip this roll to stat role from a program, which has a special name, prompt, and card design.
-   *
-   * @param {String} rollTitle - a title for the roll, shown in the roll card (chat message)
+   * @constructor
+   * @param {String} roleName - role ability name
+   * @param {Number} roleValue - role value
    */
-  setNetCombat(rollTitle) {
-    LOGGER.trace("setNetCombat | CPRRoleRoll | Called.");
-    this.rollTitle = rollTitle;
+  constructor(roleName, roleValue) {
+    LOGGER.trace("constructor | CPRCyberdeckRoll | Called.");
+    super(roleName, roleValue);
+    this.roleName = roleName;
+    this.roleValue = roleValue;
     this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-attack-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-cyberdeck-rollcard.hbs`;
+  }
+
+  _computeBase() {
+    LOGGER.trace("_computeBase | CPRCyberdeckRoll | Called.");
+    return this.initialRoll + this.totalMods() + this.roleValue + this.luck;
   }
 }
 

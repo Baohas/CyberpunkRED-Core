@@ -301,10 +301,11 @@ export default class CPRCyberdeckItem extends CPRItem {
         cprRoll.rollCardExtraArgs.isZap = true;
       }
     } else {
-      cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, "--", 0, "--", 0, null);
+      cprRoll = new CPRRolls.CPRCyberdeckRoll(roleName, roleValue);
     }
 
-    cprRoll.setNetCombat(rollTitle);
+    // Set the roll title to the name of the interface action.
+    cprRoll.rollTitle = rollTitle;
 
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.
     if (rollInfo.executionType !== "damage") {
