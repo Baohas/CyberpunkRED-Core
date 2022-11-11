@@ -1,7 +1,7 @@
 {{cprTrace "START DIALOG ROLLS CPR-VERIFY-ROLL-ROLEABILITY-PROMPT.HBS"}}
 <form>
     <div>
-        {{localize "CPR.rolls.rollingFor"}} {{roleName}}, Choomba!
+        {{localize "CPR.rolls.rollingFor"}} {{rollData.roleName}}, Choomba!
     </div>
 
     <ol class="items-list">
@@ -10,31 +10,31 @@
                 {{localize "CPR.rolls.abilityRank"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="roleValue" class="" type="number" data-dtype="Number" value={{roleValue}}>
+                <input name="roleValue" class="" type="number" data-dtype="Number" value={{rollData.roleValue}}>
             </div>
         </li>
 
-        {{#if statValue}}
+        {{#if rollData.statValue}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
-              {{localize "CPR.global.generic.stat"}} - {{localize (cprFindConfigValue "statList" statName)}}:
+              {{localize "CPR.global.generic.stat"}} - {{localize (cprFindConfigValue "statList" rollData.statName)}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="statValue" class="" type="number" data-dtype="Number" value={{statValue}}>
+                <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
             </div>
         </li>
         {{/if}}
 
-        {{#if (cprCompare skillName "!==" "--")}}
-        {{#if (cprCompare skillName "===" "varying")}}
+        {{#if (cprCompare rollData.skillName "!==" "--")}}
+        {{#if (cprCompare rollData.skillName "===" "varying")}}
         <li class="item flexrow">
           <div class="item flexrow setting-name text-nowrap">
             {{localize "CPR.itemSheet.role.chooseSkill"}}
           </div>
           <div class="item flexrow setting-value text-nowrap item-end">
             <select name = "skillName">
-              {{#select skillName}}
-                {{#each (cprSort skillList "name") as |skill|}}
+              {{#select rollData.skillName}}
+                {{#each (cprSort rollData.skillList "name") as |skill|}}
                   <option value = "{{skill.name}}">{{skill.name}}</option>
                 {{/each}}
               {{/select}}
@@ -44,13 +44,10 @@
         {{else}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.global.generic.skill"}} - {{skillName}}
-{{!--                 {{#if (cprCompare roleName "===" "operator")}} {{localize "CPR.trading"}}:{{/if}}
-                {{#if (cprCompare roleName "===" "medtechPharma")}} {{localize "CPR.medicaltechcryooperation"}}:{{/if}}
-                {{#if (cprCompare roleName "===" "medtechCryo")}} {{localize "CPR.medicaltechpharmaceuticals"}}:{{/if}} --}}
+                {{localize "CPR.global.generic.skill"}} - {{rollData.skillName}}
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="skillValue" class="" type="number" data-dtype="Number" value={{skillValue}}>
+                <input name="skillValue" class="" type="number" data-dtype="Number" value={{rollData.skillValue}}>
             </div>
         </li>
         {{/if}}
@@ -61,20 +58,18 @@
                 {{localize "CPR.rolls.mods"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="mods" class="" type="text" data-dtype="String" value={{mods}}>
+                <input name="mods" class="" type="text" data-dtype="String" value={{rollData.mods}}>
             </div>
         </li>
 
-        {{#if (cprCompare (cprCompare roleName "===" "Interface") "||" (cprCompare roleName "===" "Charismatic Impact"))}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.rolls.luck"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="luck" class="" type="number" data-dtype="Number" value={{luck}}>
+                <input name="luck" class="" type="number" data-dtype="Number" value={{rollData.luck}}>
             </div>
         </li>
-        {{/if}}
 
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
@@ -84,6 +79,9 @@
                 <input name="calculateCritical" class="" type="checkbox" data-dtype="Checkbox" checked>
             </div>
         </li>
+
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
+
 
 </form>
 {{cprTrace "END CPR-VERIFY-ROLL-ROLEABILITY-PROMPT.HBS"}}
