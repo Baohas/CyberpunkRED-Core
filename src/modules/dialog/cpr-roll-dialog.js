@@ -102,7 +102,7 @@ export class CPRRollDialog extends CPRDialog {
   }
 
   _activeEffectToggle(event) {
-    LOGGER.trace("_activeEffectToggle | CPRDialog | Called.");
+    LOGGER.trace("_activeEffectToggle | CPRRollDialog | Called.");
     const value = parseInt(SystemUtils.GetEventDatum(event, "data-value"), 10);
     this.rollData.addMod(value);
     this.render();
@@ -110,5 +110,14 @@ export class CPRRollDialog extends CPRDialog {
 }
 
 export class CPRRoleRollDialog extends CPRRollDialog {
+  getData() {
+    LOGGER.trace("getData | CPRRoleRollDialog | called.");
+    const data = super.getData();
 
+    if (this.rollData.skillName === "varying") {
+      data.isVarying = true;
+    }
+
+    return data;
+  }
 }

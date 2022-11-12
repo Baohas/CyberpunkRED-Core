@@ -26,7 +26,7 @@
         {{/if}}
 
         {{#if (cprCompare rollData.skillName "!==" "--")}}
-        {{#if (cprCompare rollData.skillName "===" "varying")}}
+        {{#if isVarying}}
         <li class="item flexrow">
           <div class="item flexrow setting-name text-nowrap">
             {{localize "CPR.itemSheet.role.chooseSkill"}}
