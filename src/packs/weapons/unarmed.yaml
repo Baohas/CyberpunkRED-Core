@@ -1,0 +1,60 @@
+_id: X6VYB5awDbtURwIv
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053170
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053170
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/unarmed.svg
+name: Unarmed
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attachmentSlots: 3
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Throwing hands, does not ignore half armor.</p>
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  isConcealed: false
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: cheap
+    market: 0
+  quality: standard
+  revealed: true
+  rof: 2
+  slots: 0
+  source: pg. 176
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Brawling
+  weaponType: unarmed
+type: weapon

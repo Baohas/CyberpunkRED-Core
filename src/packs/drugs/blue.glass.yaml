@@ -1,0 +1,41 @@
+_id: UrKzMiFp4xFOLNIC
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830977235
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830977235
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/blue_glass.svg
+name: Blue Glass
+ownership:
+  default: 0
+sort: 0
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Dose lasts 4 hours.<br />The GM may occasionally tell the user that
+      they are seeing swirls of colours. When this happens the user loses their
+      action on a single turn.<br /><br />Secondary DV: 15.<br />When the dose
+      wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against
+      Secondary DV. If this fails, they take the secondary effect as noted in
+      the core rule book.&nbsp;</p>
+  favorite: false
+  price:
+    category: everyday
+    market: 20
+  revealed: true
+  source: pg. 357
+  tags: []
+  usage: toggled
+type: drug

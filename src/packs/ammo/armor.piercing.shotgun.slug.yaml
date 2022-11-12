@@ -1,0 +1,37 @@
+_id: YFtrIcr5qsT2zO9V
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831195841
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831195841
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_slug_armorpiercing.png
+name: Armor Piercing Shotgun Slug
+ownership:
+  default: 0
+sort: 0
+system:
+  amount: '10'
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Double ablation to armor. </p>
+  favorite: false
+  price:
+    category: premium
+    market: 100
+  source: pg. 345
+  tags: []
+  type: armorPiercing
+  upgrade: ''
+  variety: shotgunSlug
+type: ammo

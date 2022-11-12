@@ -1,0 +1,102 @@
+_id: pEXcsIk1FYMNdbUc
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831027207
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831027207
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/item_upgrades/infrared_nightvision_scope.svg
+name: Infrared Nightvision Scope
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attachmentSlots: 0
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Reduces penalties against targets in darkness, smoke/fog to 0.</p>
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  install: mall
+  isInstalled: false
+  isRanged: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  modifiers:
+    attackmod:
+      type: modifier
+      value: null
+    body:
+      type: modifier
+      value: null
+    cool:
+      type: modifier
+      value: null
+    damage:
+      type: modifier
+      value: null
+    dex:
+      type: modifier
+      value: null
+    emp:
+      type: modifier
+      value: null
+    int:
+      type: modifier
+      value: null
+    luck:
+      type: modifier
+      value: null
+    magazine:
+      type: modifier
+      value: null
+    move:
+      type: modifier
+      value: null
+    ref:
+      type: modifier
+      value: null
+    rof:
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: 'false'
+    tech:
+      type: modifier
+      value: null
+    will:
+      type: modifier
+      value: null
+  price:
+    category: expensive
+    market: 500
+  rof: 1
+  size: 1
+  source: pg. 343
+  tags: []
+  type: weapon
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: ''
+  weaponType: ''
+type: itemUpgrade

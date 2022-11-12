@@ -333,7 +333,7 @@ export default class CPRActorSheet extends ActorSheet {
         const interfaceAbility = SystemUtils.GetEventDatum(event, "data-interface-ability");
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
         const cyberdeck = this._getOwnedItem(cyberdeckId);
-        const netRoleItem = this.actor.itemTypes.role.find((r) => r.name === this.actor.system.roleInfo.activeNetRole);
+        const netRoleItem = this.actor.itemTypes.role.find((r) => r.id === this.actor.system.roleInfo.activeNetRole);
         if (!netRoleItem) {
           const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
           SystemUtils.DisplayMessage("error", error);
@@ -347,7 +347,7 @@ export default class CPRActorSheet extends ActorSheet {
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
         const executionType = SystemUtils.GetEventDatum(event, "data-execution-type");
         const cyberdeck = this._getOwnedItem(cyberdeckId);
-        const netRoleItem = this.actor.itemTypes.role.find((r) => r.name === this.actor.system.roleInfo.activeNetRole);
+        const netRoleItem = this.actor.itemTypes.role.find((r) => r.id === this.actor.system.roleInfo.activeNetRole);
         if (!netRoleItem) {
           const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
           SystemUtils.DisplayMessage("error", error);
@@ -363,6 +363,10 @@ export default class CPRActorSheet extends ActorSheet {
         break;
       }
       default:
+    }
+    const targetedTokens = SystemUtils.getUserTargetedOrSelected("targeted"); // get user targeted tokens for output to chat
+    if (rollType === CPRRolls.rollTypes.DAMAGE && targetedTokens.length === 0) {
+      SystemUtils.DisplayMessage("warn", "CPR.chat.damageApplication.noTokenTargeted");
     }
 
     // note: for aimed shots this is where location is set
@@ -394,7 +398,8 @@ export default class CPRActorSheet extends ActorSheet {
 
     // output to chat
     const token = this.token === null ? null : this.token._id;
-    cprRoll.entityData = { actor: this.actor.id, token };
+
+    cprRoll.entityData = { actor: this.actor.id, token, tokens: targetedTokens };
     if (item) {
       cprRoll.entityData.item = item.id;
     }
@@ -746,8 +751,8 @@ export default class CPRActorSheet extends ActorSheet {
       const currentDvTable = (weaponDvTable === "") ? getProperty(this.token, "flags.cprDvTable") : weaponDvTable;
       if (typeof currentDvTable !== "undefined") {
         const dvTable = currentDvTable.replace(" (Autofire)", "");
-        const dvTables = DvUtils.GetDvTables();
-        const afTable = (dvTables).filter((name) => name.includes(dvTable) && name.includes("Autofire"));
+        const dvTables = await DvUtils.GetDvTables();
+        const afTable = (dvTables).filter((table) => table.name.includes(dvTable) && table.name.includes("Autofire"));
         let newDvTable = currentDvTable;
         if (afTable.length > 0) {
           newDvTable = (flag === firemode) ? dvTable : afTable[0];
@@ -1152,7 +1157,12 @@ export default class CPRActorSheet extends ActorSheet {
     cprNewItemData.amount = formData.splitAmount;
     delete cprNewItemData._id;
     await this.actor.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.amount": newAmount }]);
-    await this.actor.createEmbeddedDocuments("Item", [{ name: item.name, type: item.type, system: cprNewItemData }], { CPRsplitStack: true });
+    await this.actor.createEmbeddedDocuments("Item", [{
+      name: item.name,
+      type: item.type,
+      img: item.img,
+      system: cprNewItemData,
+    }], { CPRsplitStack: true });
   }
 
   /**

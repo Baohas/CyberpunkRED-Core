@@ -1,0 +1,40 @@
+_id: jQAAGVWOKKhzEIMK
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831043778
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831043778
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+name: Roadbike
+ownership:
+  default: 0
+sort: 0
+system:
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>A common CHOOH2-powered roadbike seen during the time of the Red.</p>
+  favorite: false
+  isUpgraded: false
+  price:
+    category: superLuxury
+    market: 20000
+  sdp: 35
+  seats: 2
+  slots: 3
+  source: pg. 190
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+  tags: ''
+  upgrade: ''
+  upgrades: []
+type: vehicle

@@ -1,0 +1,79 @@
+_id: qoegLCfpEOQifeZq
+data:
+  deathSaveIncrease: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>-2 to Ranged and Perception (vision).</p>
+  effects: ''
+  favorite: false
+  location: head
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 15
+    type: paramedic
+  revealed: true
+  source: ''
+  tags: []
+  treatment:
+    dvParamedic: 0
+    dvSurgery: 13
+    type: surgery
+  usage: always
+effects:
+  - _id: 4X5NAVowBcmDkhkm
+    changes:
+      - key: bonuses.perception
+        mode: 2
+        value: '-2'
+      - key: bonuses.archery
+        mode: 2
+        value: '-2'
+      - key: bonuses.autofire
+        mode: 2
+        value: '-2'
+      - key: bonuses.handgun
+        mode: 2
+        value: '-2'
+      - key: bonuses.heavyWeapons
+        mode: 2
+        value: '-2'
+      - key: bonuses.shoulderArms
+        mode: 2
+        value: '-2'
+    data:
+      flags:
+        cyberpunk-red-core:
+          changes:
+            '0': skill
+            '1': skill
+            '2': skill
+            '3': skill
+            '4': skill
+            '5': skill
+    disabled: false
+    duration:
+      startTime: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
+          '1': skill
+          '2': skill
+          '3': skill
+          '4': skill
+          '5': skill
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg
+    label: Damaged Eye
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg
+name: Damaged Eye
+ownership:
+  default: 0
+sort: 0
+type: criticalInjury

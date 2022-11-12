@@ -1,0 +1,215 @@
+_id: u2RTSakS4YNR4a4t
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831970372
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831970372
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+description: >-
+  Table for rolling for the standard floors of a NET architecture, as detailed
+  on page 211.
+displayRoll: false
+flags:
+  core: {}
+folder: null
+formula: 3d6
+img: icons/svg/d20-grey.svg
+name: All Other Floors (Standard)
+ownership:
+  default: 0
+replacement: true
+results:
+  - _id: gTFymnRnYv0uzwPG
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 3
+      - 3
+    text: Hellhound x2
+    type: 0
+    weight: 1
+  - _id: OcfpWh052AlMRmJB
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 4
+      - 4
+    text: Hellhound, Killer
+    type: 0
+    weight: 1
+  - _id: 6zKmgA9bq0fqSvX2
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 5
+      - 5
+    text: Skunk x2
+    type: 0
+    weight: 1
+  - _id: TxpaqyUljo7WJxoH
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 6
+      - 6
+    text: Sabertooth
+    type: 0
+    weight: 1
+  - _id: PyEP7XZdxLyjh8Yo
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 7
+      - 7
+    text: Scorpion
+    type: 0
+    weight: 1
+  - _id: ZOvOmNVoyCJOqYoP
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 8
+      - 8
+    text: Hellhound
+    type: 0
+    weight: 1
+  - _id: 9MNZfkBOBwhCOTjU
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 9
+      - 9
+    text: Password DV8
+    type: 0
+    weight: 1
+  - _id: dkOizxPow9rQOduG
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 10
+      - 10
+    text: File DV8
+    type: 0
+    weight: 1
+  - _id: TPrJEJkXVskySHcy
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 11
+      - 11
+    text: Control Node DV8
+    type: 0
+    weight: 1
+  - _id: uZutrunJaCj3I3u0
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 12
+      - 12
+    text: Password DV8
+    type: 0
+    weight: 1
+  - _id: Yk0NCUQVbAnsy1U0
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 13
+      - 13
+    text: Asp
+    type: 0
+    weight: 1
+  - _id: HVcgCTtotxv3c1jA
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 14
+      - 14
+    text: Killer
+    type: 0
+    weight: 1
+  - _id: 7mDiGoSfFC7OIC8I
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 15
+      - 15
+    text: Liche
+    type: 0
+    weight: 1
+  - _id: e86hWgiH9l8h1AZe
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 16
+      - 16
+    text: Asp
+    type: 0
+    weight: 1
+  - _id: 42tU8yLFBTygWzOz
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 17
+      - 17
+    text: Raven x3
+    type: 0
+    weight: 1
+  - _id: bFmeEyNKGPsKOb7f
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: icons/svg/d20-black.svg
+    range:
+      - 18
+      - 18
+    text: Liche, Raven
+    type: 0
+    weight: 1
+sort: 0

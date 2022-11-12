@@ -231,6 +231,7 @@ export default class CPRCyberdeckItem extends CPRItem {
           "program",
         );
         cprRoll.rollCardExtraArgs.program = program;
+        cprRoll.rollCardExtraArgs.cyberdeck = this;
         break;
       }
       case "damage": {
@@ -243,8 +244,12 @@ export default class CPRCyberdeckItem extends CPRItem {
       default:
     }
     cprRoll.setNetCombat(pgmName);
-    if (roleName !== "blackice") cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
-    cprRoll.addMod(actor.getWoundStateMods());
+
+    // Bonuses from roles, active effects, and wound state should not modify damage rolls.
+    if (executionType !== "damage") {
+      if (roleName !== "blackice") cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
+      cprRoll.addMod(actor.getWoundStateMods());
+    }
     return cprRoll;
   }
 
@@ -274,17 +279,45 @@ export default class CPRCyberdeckItem extends CPRItem {
         rollTitle = SystemUtils.Localize(CPR.interfaceAbilities[interfaceAbility]);
       }
     }
-    const cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, "--", 0, "--", 0, null);
-    cprRoll.setNetCombat(rollTitle);
-    // consider active effects
-    if (interfaceAbility === "perception") {
-      // hack because "perception" is already used for the skill
-      cprRoll.addMod(this.actor.bonuses.perception_net);
+
+    // If interfaceAbiltiy is Zap, we will handle roll either as a Damage Roll or an Attack Roll.
+    // If interfaceAbility is anything else, we will handle roll as as a Role Roll.
+    let cprRoll;
+    if (interfaceAbility === "zap") {
+      if (rollInfo.executionType === "damage") {
+        cprRoll = new CPRRolls.CPRDamageRoll(SystemUtils.Localize("CPR.global.role.netrunner.interfaceAbility.zap"), "1d6", "program");
+      } else {
+        cprRoll = new CPRRolls.CPRAttackRoll(
+          "zap",
+          rollTitle,
+          0,
+          "",
+          0,
+          roleName,
+          roleValue,
+          "program",
+        );
+        cprRoll.rollCardExtraArgs.cyberdeck = this;
+        cprRoll.rollCardExtraArgs.isZap = true;
+      }
     } else {
-      cprRoll.addMod(this.actor.bonuses[interfaceAbility]);
+      cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, "--", 0, "--", 0, null);
     }
-    cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
-    cprRoll.addMod(this.actor.getWoundStateMods());
+
+    cprRoll.setNetCombat(rollTitle);
+
+    // Bonuses from roles, active effects, and wound state should not modify damage rolls.
+    if (rollInfo.executionType !== "damage") {
+      // consider active effects
+      if (interfaceAbility === "perception") {
+        // hack because "perception" is already used for the skill
+        cprRoll.addMod(this.actor.bonuses.perception_net);
+      } else {
+        cprRoll.addMod(this.actor.bonuses[interfaceAbility]);
+      }
+      cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
+      cprRoll.addMod(this.actor.getWoundStateMods());
+    }
     return cprRoll;
   }
 

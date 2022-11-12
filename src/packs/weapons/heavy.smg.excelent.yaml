@@ -1,0 +1,61 @@
+_id: nmLsegi1CElgRVD3
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053153
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053153
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/heavySMG_excellent.svg
+name: Heavy SMG (Excelent)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - heavyPistol
+  attachmentSlots: 3
+  attackmod: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 3d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>
+  dvTable: DV SMG
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 3
+    suppressiveFire: true
+  handsReq: 1
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 40
+    value: 0
+  price:
+    category: expensive
+    market: 500
+  quality: excellent
+  revealed: true
+  rof: 1
+  slots: 3
+  source: pg. 341
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: smg
+type: weapon

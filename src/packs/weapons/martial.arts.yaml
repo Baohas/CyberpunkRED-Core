@@ -1,0 +1,59 @@
+_id: hW4eIbo01Hx2Jnc2
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053171
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053171
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/martial_arts.svg
+name: Martial Arts
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attachmentSlots: 3
+  attackmod: 0
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Throwing hands, does ignore half armor.</p>
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  isConcealed: false
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: cheap
+    market: 0
+  quality: standard
+  revealed: true
+  rof: 2
+  slots: 0
+  source: pg. 178
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Martial Arts
+  weaponType: martialArts
+type: weapon

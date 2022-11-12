@@ -1,0 +1,162 @@
+_id: QiwaqQtocypL0FXG
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831952430
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831952430
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+description: ''
+displayRoll: true
+flags:
+  core: {}
+folder: null
+formula: 2d6
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/default/Default_Critical_Injury.svg
+name: Critical Injuries (Head)
+ownership:
+  default: 0
+replacement: true
+results:
+  - _id: YtJ6jwE0F5OXIMOa
+    documentCollection: Item
+    documentId: D3bDbEM1u4YzxvwJ
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_eye.svg
+    range:
+      - 2
+      - 2
+    text: Lost Eye
+    type: 1
+    weight: 1
+  - _id: WbmtU83pd9dhGCdC
+    documentCollection: Item
+    documentId: SjInfAo25nRBN6gP
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/brain_injury.svg
+    range:
+      - 3
+      - 3
+    text: Brain Injury
+    type: 1
+    weight: 1
+  - _id: FcXqYiz6hwIg7kRx
+    documentCollection: Item
+    documentId: mTLeBmqqKtw9IjIH
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg
+    range:
+      - 4
+      - 4
+    text: Damaged Eye
+    type: 1
+    weight: 1
+  - _id: 3s2OYRZT5hkvMrQa
+    documentCollection: Item
+    documentId: y4tNzKeWFGZXJuTb
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/concussion.svg
+    range:
+      - 5
+      - 5
+    text: Concussion
+    type: 1
+    weight: 1
+  - _id: Ft1FYPiSpu2Jzdys
+    documentCollection: Item
+    documentId: 9iSlL5hT56VKMEgn
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_jaw.svg
+    range:
+      - 6
+      - 6
+    text: Broken Jaw
+    type: 1
+    weight: 1
+  - _id: bYx3Y66nMHXcoq3P
+    documentCollection: Item
+    documentId: 2CjmIo472HOuFUAJ
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/foreign_object_head.svg
+    range:
+      - 7
+      - 7
+    text: Foreign Object (H)
+    type: 1
+    weight: 1
+  - _id: Lz3o6eFK75xOgjU7
+    documentCollection: Item
+    documentId: 2vhsHJNJAOzS25vo
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/whiplash.svg
+    range:
+      - 8
+      - 8
+    text: Whiplash
+    type: 1
+    weight: 1
+  - _id: H9esuRsYtSHCwxKy
+    documentCollection: Item
+    documentId: Ft6JjcjCXe8J4qVo
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/cracked_skull.svg
+    range:
+      - 9
+      - 9
+    text: Cracked Skull
+    type: 1
+    weight: 1
+  - _id: 0xKBKE6t5ATy3T6Y
+    documentCollection: Item
+    documentId: bxWppkI1MHqfciu0
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_ear.svg
+    range:
+      - 10
+      - 10
+    text: Damaged Ear
+    type: 1
+    weight: 1
+  - _id: XjXBUzVoeLi39Zjn
+    documentCollection: Item
+    documentId: R2H7L6OMoukj7a3a
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_windpipe.svg
+    range:
+      - 11
+      - 11
+    text: Crushed Windpipe
+    type: 1
+    weight: 1
+  - _id: P3mRnto1pVz4bs9R
+    documentCollection: Item
+    documentId: z7fILPY2dQduIqWM
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
+    range:
+      - 12
+      - 12
+    text: Lost Ear
+    type: 1
+    weight: 1
+sort: 0

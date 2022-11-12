@@ -1,0 +1,43 @@
+_id: WNqG41VJWwDzQaIY
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831043777
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831043777
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+name: AV-4 Multipurpose Aerodyne
+permission:
+  Xqm436pL6P6n9SaN: 3
+  default: 0
+sort: 0
+system:
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>A multipurpose aircraft capable of quick insertion thanks to vertical
+      thrusters. Used commonly by Trauma Teams. </p>
+  favorite: false
+  isUpgraded: false
+  price:
+    category: superLuxury
+    market: 50000
+  sdp: 100
+  seats: 6
+  slots: 3
+  source: pg. 191
+  speedCombat: 40
+  speedNarrative: 200 MPH / 322 KPH
+  tags: ''
+  upgrade: ''
+  upgrades: []
+type: vehicle
