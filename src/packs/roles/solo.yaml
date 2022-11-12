@@ -97,7 +97,7 @@ system:
           type: skill
       stat: '--'
       universalBonuses: []
-    - bonusRatio: 1
+    - bonusRatio: 2
       description: ''
       hasRoll: false
       index: 0
@@ -107,7 +107,7 @@ system:
       skill: '--'
       bonuses: []
       stat: '--'
-      universalBonuses: []
+      universalBonuses: ["damageReduction"]
   addRoleAbilityRank: true
   bonusRatio: 1
   bonuses: []
