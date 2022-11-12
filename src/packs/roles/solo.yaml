@@ -25,7 +25,7 @@ system:
       name: Fumble Recovery
       rank: 0
       skill: '--'
-      skillBonuses: []
+      bonuses: []
       stat: '--'
       universalBonuses: []
     - bonusRatio: 1
@@ -36,9 +36,9 @@ system:
       name: Initiative Reaction
       rank: 0
       skill: '--'
-      skillBonuses: []
+      bonuses: []
       stat: '--'
-      universalBonuses: []
+      universalBonuses: ['initiative']
     - bonusRatio: 3
       description: ''
       hasRoll: false
@@ -47,7 +47,7 @@ system:
       name: Precision Attack
       rank: 0
       skill: '--'
-      skillBonuses: []
+      bonuses: []
       stat: '--'
       universalBonuses:
         - attack
@@ -59,7 +59,7 @@ system:
       name: Spot Weakness
       rank: 0
       skill: '--'
-      skillBonuses: []
+      bonuses: []
       stat: '--'
       universalBonuses:
         - damage
@@ -71,7 +71,7 @@ system:
       name: Threat Detection
       rank: 0
       skill: '--'
-      skillBonuses:
+      bonuses:
         - _id: InrW2EFk0Jvdh195
           data:
             basic: true
@@ -105,7 +105,7 @@ system:
       name: Damage Deflection
       rank: 0
       skill: '--'
-      skillBonuses: []
+      bonuses: []
       stat: '--'
       universalBonuses: []
   addRoleAbilityRank: true
@@ -122,7 +122,6 @@ system:
   mainRoleAbility: Combat Awareness
   rank: 4
   skill: '--'
-  skillBonuses: []
   source: Pg. 146
   stat: '--'
   tags: []

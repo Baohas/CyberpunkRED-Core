@@ -31,7 +31,6 @@ system:
   mainRoleAbility: Teamwork
   rank: 4
   skill: '--'
-  skillBonuses: []
   source: Pg. 153
   stat: '--'
   tags: []

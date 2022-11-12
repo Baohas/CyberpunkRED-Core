@@ -32,7 +32,6 @@ system:
   mainRoleAbility: Backup
   rank: 4
   skill: '--'
-  skillBonuses: []
   source: Pg. 158
   stat: '--'
   tags: []

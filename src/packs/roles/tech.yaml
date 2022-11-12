@@ -25,7 +25,7 @@ system:
       name: Field Expertise
       rank: 0
       skill: varying
-      skillBonuses: []
+      bonuses: []
       stat: tech
       universalBonuses: []
     - bonusRatio: 1
@@ -36,7 +36,7 @@ system:
       name: Upgrade Expertise
       rank: 0
       skill: varying
-      skillBonuses: []
+      bonuses: []
       stat: tech
       universalBonuses: []
     - bonusRatio: 1
@@ -47,7 +47,7 @@ system:
       name: Fabrication Expertise
       rank: 0
       skill: varying
-      skillBonuses: []
+      bonuses: []
       stat: tech
       universalBonuses: []
     - bonusRatio: 1
@@ -58,7 +58,7 @@ system:
       name: Invention Expertise
       rank: 0
       skill: varying
-      skillBonuses: []
+      bonuses: []
       stat: tech
       universalBonuses: []
   addRoleAbilityRank: true
@@ -75,7 +75,6 @@ system:
   mainRoleAbility: Maker
   rank: 4
   skill: '--'
-  skillBonuses: []
   source: Pg. 147
   stat: '--'
   tags: []
