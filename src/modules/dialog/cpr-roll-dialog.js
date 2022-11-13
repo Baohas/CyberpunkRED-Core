@@ -53,13 +53,13 @@ export class CPRRollDialog extends CPRDialog {
     }
 
     // Stat Effects. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
-    if (this.prototypeChain.includes("CPRStatRoll") || this.prototypeChain.includes("CPRRoleRoll")) {
+    if ((this.prototypeChain.includes("CPRStatRoll") || this.prototypeChain.includes("CPRRoleRoll")) && !this.prototypeChain.includes("CPRCyberdeckRoll")) {
       const statEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`));
       statEffects.forEach((e) => filteredEffects.push(e));
     }
 
     // Skill Effects.
-    if (this.prototypeChain.includes("CPRSkillRoll") || this.prototypeChain.includes("CPRRoleRoll")) {
+    if ((this.prototypeChain.includes("CPRSkillRoll") || this.prototypeChain.includes("CPRRoleRoll")) && !this.prototypeChain.includes("CPRCyberdeckRoll")) {
       const skillEffects = effects.filter((e) => e.changes.some((c) => c.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`));
       skillEffects.forEach((e) => filteredEffects.push(e));
     }
