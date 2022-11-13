@@ -41,6 +41,7 @@
 - #549 - stop reordering items from the role list of abilities after adding points to them (ex: Tech and Solo)
 - #471 - On a Macbook, the `Command` key can now be used in lieu of the `Control` key to skip roll dialogs
 - #557 - Fix the variety of Shotgun Smart Slugs
+- #560 - Fixed `Initiative Reaction` to apply to initiative rolls.
 - Fixed issued where the image on a sheet would overflow onto the sheet data.
 - Fixed issue where item images were no longer displaying on the item sheets.
 

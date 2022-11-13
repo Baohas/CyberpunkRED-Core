@@ -31,7 +31,6 @@ system:
   mainRoleAbility: Charismatic Impact
   rank: 4
   skill: '--'
-  skillBonuses: []
   source: Pg. 144
   stat: '--'
   tags: []

@@ -139,6 +139,8 @@ async function genPacks() {
 
       // Loop over each file
       fragments.forEach((fragment) => {
+        // Uncomment the following if pack building fails and you're unsure which YAML file is the issue
+        // console.log(`Processing ${packName}/${fragment}`);
         const fragmentPath = path.join(fragmentDir, packName, fragment);
         const entry = YAML.load(fs.readFileSync(fragmentPath), "UTF-8");
 

@@ -23,7 +23,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: '<p>A beefed-up version of a roadbike, capable of very high speeds. </p>'
+    value: <p>A beefed-up version of a roadbike, capable of very high speeds. </p>
   favorite: false
   isUpgraded: false
   price:

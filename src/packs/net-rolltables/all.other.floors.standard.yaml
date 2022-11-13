@@ -41,7 +41,7 @@ results:
     range:
       - 4
       - 4
-    text: 'Hellhound, Killer'
+    text: Hellhound, Killer
     type: 0
     weight: 1
   - _id: 6zKmgA9bq0fqSvX2
@@ -209,7 +209,7 @@ results:
     range:
       - 18
       - 18
-    text: 'Liche, Raven'
+    text: Liche, Raven
     type: 0
     weight: 1
 sort: 0

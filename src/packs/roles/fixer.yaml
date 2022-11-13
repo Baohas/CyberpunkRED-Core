@@ -48,7 +48,7 @@ system:
           pcvDIRHcQv6CtHpF: 3
         sort: 0
         type: skill
-      skillBonuses: []
+      bonuses: []
       stat: cool
       universalBonuses: []
   addRoleAbilityRank: true
@@ -66,7 +66,6 @@ system:
   mainRoleAbility: Operator
   rank: 4
   skill: '--'
-  skillBonuses: []
   source: Pg. 159
   stat: '--'
   tags: []
