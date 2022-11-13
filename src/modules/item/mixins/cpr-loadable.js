@@ -36,7 +36,7 @@ const Loadable = function Loadable() {
    */
   this._setDvTable = async function _setDvTable(actor, dvTable) {
     LOGGER.trace("_setDvTable | Loadable | Called.");
-    if (actor.sheet.token !== null) await SystemUtils.SetDvTable(actor.sheet.token, dvTable);
+    if (actor.sheet.token !== null) await SystemUtils.SetDvTable(actor.sheet.token.object, dvTable);
   };
 
   /**
