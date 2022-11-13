@@ -105,15 +105,22 @@ export class CPRRollDialog extends CPRDialog {
   }
 
   /**
-   * See TODO below.
+   * Add/remove mods from active effects.
    *
    * @param {*} event
    */
   _activeEffectToggle(event) {
-    // TODO: Temporary measure to add mod to modlist when toggling active effect. This will be changed later.
     LOGGER.trace("_activeEffectToggle | CPRRollDialog | Called.");
     const value = parseInt(SystemUtils.GetEventDatum(event, "data-value"), 10);
-    this.rollData.addMod(value);
+    const source = SystemUtils.GetEventDatum(event, "data-source");
+    const id = SystemUtils.GetEventDatum(event, "data-id");
+
+    if (this.rollData.mods.some((m) => m.id === id)) {
+      this.rollData.removeMod(id);
+    } else {
+      this.rollData.addMod(value, source, id);
+    }
+
     this.render();
   }
 }

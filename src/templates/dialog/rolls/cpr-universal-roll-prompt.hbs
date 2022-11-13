@@ -53,8 +53,13 @@
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.rolls.mods"}}:
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="mods" class="" type="text" data-dtype="String" value={{rollData.mods}}>
+            <div class="item flexrow setting-value text-nowrap item-end" data-tooltip="
+                {{#each rollData.mods}}
+                  {{this.source}}: {{this.value}}
+                  <br>
+                {{/each}}
+              ">
+              <input disabled name="mods" class="" type="text" data-dtype="String" value="{{#each rollData.mods}}{{this.value}}{{#unless @last}}, {{/unless}}{{/each}}">
             </div>
         </li>
 
@@ -112,7 +117,8 @@
           {{/if}}
         </div>
         <div class="item flexrow setting-value text-nowrap item-end">
-          <input name="{{change.key}}" class="active-effect-checkbox" type="checkbox" data-value = "{{change.value}}" data-dtype="Checkbox">
+          {{!--  {{#if (cprObjectListContains ../../rollData.mods "id" effect.id)}}checked{{/if}} --}}
+          <input {{checked (cprObjectListContains ../../rollData.mods "id" effect.id)}} name="{{change.key}}" class="active-effect-checkbox" type="checkbox" data-value = "{{change.value}}" data-source = "{{effect.label}}" data-id = "{{effect.id}}" data-dtype="Checkbox">
         </div>
       </li>
       {{/each}}

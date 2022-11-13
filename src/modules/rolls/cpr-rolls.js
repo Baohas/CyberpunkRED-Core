@@ -87,11 +87,20 @@ export class CPRRoll {
   /**
    * Apply a mod to the roll. This is a stack of integers that get summed later on
    *
-   * @param {Number} mod - the mod to apply to the roll
+   * @param {Number} value - the mod to apply to the roll (value)
+   * @param {String} source - where it came from
+   * @param {String} id - a unique identifier
    */
-  addMod(mod) {
+  addMod(value, source, id) {
     LOGGER.trace("addMod | CPRRoll | Called.");
-    if (mod && mod !== 0) this.mods.push(mod);
+    const mod = { value, source, id };
+    if (mod && mod.value !== 0) this.mods.push(mod);
+  }
+
+  removeMod(id) {
+    LOGGER.trace("removeMod | CPRRoll | Called.");
+    const modIndex = this.mods.findIndex((m) => m.id === id);
+    this.mods.splice(modIndex, 1);
   }
 
   /**
@@ -101,7 +110,11 @@ export class CPRRoll {
    */
   totalMods() {
     LOGGER.trace("totalMods | CPRRoll | Called.");
-    return this.mods.length > 0 ? this.mods.reduce((a, b) => a + b) : 0;
+    let modTotal = 0;
+    this.mods.forEach((mod) => {
+      modTotal += mod.value;
+    });
+    return this.mods.length > 0 ? modTotal : 0;
   }
 
   /**
@@ -487,7 +500,7 @@ export class CPRAimedAttackRoll extends CPRAttackRoll {
     super(weaponName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
     this.rollTitle = `${weaponName}`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-aimed-attack-rollcard.hbs`;
-    this.addMod(-8);
+    this.addMod(-8, "Aimed Shot Penalty");
     this.location = "head";
   }
 }
