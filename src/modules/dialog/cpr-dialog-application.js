@@ -102,8 +102,8 @@ export default class CPRDialog extends FormApplication {
   /**
    * Foundry provides this function, which is necessary to override for FormApplications.
    *
-   * @param {Object} options - potential options to pass to this.close; currently unused;
-   * @param {Object} formData - Dialog data to be merged with the original CPRRoll.
+   * @param {*} event
+   * @param {Object} formData - Updated dialog data to be merged with the original object.
    * @override
    */
   async _updateObject(event, formData) {

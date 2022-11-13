@@ -32,14 +32,20 @@
             {{localize "CPR.itemSheet.role.chooseSkill"}}
           </div>
           <div class="item flexrow setting-value text-nowrap item-end">
-            <select name = "skillName">
-              {{#select rollData.skillName}}
-                {{#each (cprSort rollData.skillList "name") as |skill|}}
-                  <option value = "{{skill.name}}">{{skill.name}}</option>
-                {{/each}}
-              {{/select}}
+            <select class="skill-list-select" name = "skillName">
+              {{#each (cprSort rollData.skillList "name") as |skill|}}
+                <option value = "{{skill.name}}" {{#if (cprCompare ../rollData.skillName "===" skill.name)}} selected {{/if}}>{{skill.name}}</option>
+              {{/each}}
             </select>
           </div>
+        </li>
+        <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+                {{localize "CPR.global.generic.skill"}} - {{#if (cprCompare rollData.skillName "===" "varying")}}{{localize "CPR.global.generic.varying"}}{{else}}{{rollData.skillName}}{{/if}}
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+                <input name="dummySkillValue" class="" type="number" data-dtype="Number" value={{rollData.skillValue}} {{#if (cprCompare rollData.skillName "===" "varying")}}disabled{{/if}}>
+            </div>
         </li>
         {{else}}
         <li class="item flexrow">

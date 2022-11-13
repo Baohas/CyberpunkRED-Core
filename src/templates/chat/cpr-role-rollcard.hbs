@@ -46,10 +46,8 @@
             <div class="text-normal text-bold text-nowrap">{{localize "CPR.rolls.mods"}} {{localize "CPR.rolls.total"}}:
               {{totalMods}}</div>
             {{/if}}
-            {{#if (cprCompare (cprCompare roleName "===" "Interface") "||" (cprCompare roleName "===" "Charismatic Impact"))}}
             {{#if luck}}
             <div class="text-normal text-bold text-nowrap">{{localize "CPR.global.stats.luck"}}: {{luck}}</div>
-            {{/if}}
             {{/if}}
           </div>
         </div>

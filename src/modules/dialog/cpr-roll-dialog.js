@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-/* global */
+/* global duplicate */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";
@@ -34,6 +34,9 @@ export class CPRRollDialog extends CPRDialog {
     this.item = item;
   }
 
+  /**
+   * Prepares data for roll dialog sheet.
+   */
   getData() {
     LOGGER.trace("getData | CPRRollDialog | called.");
     const data = super.getData();
@@ -101,7 +104,13 @@ export class CPRRollDialog extends CPRDialog {
     }
   }
 
+  /**
+   * See TODO below.
+   *
+   * @param {*} event
+   */
   _activeEffectToggle(event) {
+    // TODO: Temporary measure to add mod to modlist when toggling active effect. This will be changed later.
     LOGGER.trace("_activeEffectToggle | CPRRollDialog | Called.");
     const value = parseInt(SystemUtils.GetEventDatum(event, "data-value"), 10);
     this.rollData.addMod(value);
@@ -110,14 +119,56 @@ export class CPRRollDialog extends CPRDialog {
 }
 
 export class CPRRoleRollDialog extends CPRRollDialog {
+  /**
+   * Prepares any data unique to the Role Roll Dialog sheet.
+   */
   getData() {
     LOGGER.trace("getData | CPRRoleRollDialog | called.");
     const data = super.getData();
 
-    if (this.rollData.skillName === "varying") {
+    const skillIsVarying = this.item.system.skill === "varying"
+      || this.item.system.abilities.find((a) => a.name === this.rollData.roleName)?.skill === "varying";
+
+    if (skillIsVarying) {
       data.isVarying = true;
+      if (this.rollData.skillName === "varying") {
+        data.rollData.skillName = this.rollData.skillList.sort((a, b) => (a.name > b.name ? 1 : -1))[0].name;
+      }
     }
 
     return data;
+  }
+
+  activateListeners(html) {
+    LOGGER.trace("activateListeners | CPRRollRoleDialog | Called.");
+    super.activateListeners(html);
+    html.find(".skill-list-select").change((event) => this._updateSkillValue(event));
+  }
+
+  /**
+   * Updates the skill value when the varied skill is changed.
+   *
+   * @param {*} event
+   */
+  _updateSkillValue(event) {
+    LOGGER.trace("_updateSkillValue | CPRRoleRollDialog | called.");
+    const skill = this.rollData.skillList.find((s) => s.name === event.currentTarget.value);
+    this.rollData.skillValue = skill.system.level;
+  }
+
+  /**
+   * Updates the skill value when the varied skill is changed.
+   *
+   * @param {*} options
+   * @param {Object} formData - Updated dialog data to be merged with the original object.
+   */
+  _updateObject(event, formData) {
+    LOGGER.trace("_updateObject | CPRRoleRollDialog | called.");
+    const fd = duplicate(formData);
+    if (formData.dummySkillValue) {
+      fd.skillValue = formData.dummySkillValue;
+    }
+
+    super._updateObject(event, fd);
   }
 }

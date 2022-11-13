@@ -82,7 +82,6 @@
                 {{localize "CPR.rolls.aimFor"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-              {{log this}}
                 <select name="location">
                   {{#select rollData.location}}
                     {{#each (cprFindConfigObj "aimedLocation") as |location l|}}
