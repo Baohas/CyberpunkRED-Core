@@ -1,4 +1,4 @@
-/* global game ui Folder duplicate */
+/* global game ui Folder canvas duplicate */
 /* eslint-env jquery */
 
 import LOGGER from "./cpr-logger.js";

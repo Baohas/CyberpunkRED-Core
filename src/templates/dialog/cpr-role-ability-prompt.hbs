@@ -1,8 +1,8 @@
 {{cprTrace "START DIALOG CPR-ROLE-ABILITY-PROMPT.HBS"}}
   <ol class="items-list">
     <li class="item flexrow">
-      <div class="item flexrow setting-name">
-        <span class="text-bold text-nowrap">{{localize "CPR.dialog.createEditRoleAbility.roleAbilityName"}}</span>
+      <div class="item flexrow setting-name" data-tooltip="{{localize "CPR.tooltip.nameChangeWarning"}}">
+        <span class="text-bold text-nowrap">{{localize "CPR.dialog.createEditRoleAbility.roleAbilityName"}}<sup><i class="text-smallest text-super fa-solid fa-triangle-exclamation"></i></sup></span>
       </div>
       <div class="item flexrow setting-value text-nowrap item-end">
         <input class="text-right" name="name" type="text" value="{{name}}" />
