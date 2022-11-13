@@ -32,6 +32,13 @@
                     {{/if}}
                 </div>
                 <div class="effect-actions text-padding-right">
+                        <a class="is-situational">
+                          {{#unless (cprCheckSituational ../../actor "cyberpunk-red-core" effect.id)}}
+                            <i class="far fa-clock" title="{{localize 'CPR.characterSheet.rightPane.effects.isNotSituational'}}"></i>
+                          {{else}}
+                            <i class="fas fa-clock" title="{{localize 'CPR.characterSheet.rightPane.effects.isSituational'}}"></i>
+                          {{/unless}}
+                        </a>
                     {{#if (cprShowEffectToggle effect ../../actor.name)}}
                         <a class="effect-control" data-action="toggle" title="{{localize 'CPR.characterSheet.rightPane.effects.toggle'}}">
                             <i class="far {{#if effect.disabled}}fa-circle{{else}}fa-check-circle{{/if}}"></i>

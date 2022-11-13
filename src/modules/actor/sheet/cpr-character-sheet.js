@@ -129,6 +129,8 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     // Create Active Effect
     html.find(".effect-control").click((event) => this.manageEffect(event));
 
+    html.find(".is-situational").click((event) => this.toggleSituational(event));
+
     super.activateListeners(html);
   }
 
@@ -462,6 +464,17 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         return effect.update({ disabled: !effect.disabled });
       default:
         return null;
+    }
+  }
+
+  async toggleSituational(event) {
+    LOGGER.trace("toggleSituational | CPRCharacterActorSheet | Called.");
+    const effectId = SystemUtils.GetEventDatum(event, "data-effect-id");
+    const flag = this.actor.getFlag("cyberpunk-red-core", `isSituational-${effectId}`);
+    if (flag) {
+      await this.actor.setFlag("cyberpunk-red-core", `isSituational-${effectId}`, !flag);
+    } else {
+      await this.actor.setFlag("cyberpunk-red-core", `isSituational-${effectId}`, true);
     }
   }
 

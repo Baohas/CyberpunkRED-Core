@@ -37,10 +37,11 @@ export class CPRRollDialog extends CPRDialog {
   /**
    * Prepares data for roll dialog sheet.
    */
-  getData() {
+  async getData() {
     LOGGER.trace("getData | CPRRollDialog | called.");
     const data = super.getData();
     data.rollData = this.rollData; // CPRRoll object
+    data.actor = this.actor;
     data.prototypeChain = this.prototypeChain;
 
     // Get effects relevant to the roll.
@@ -50,6 +51,11 @@ export class CPRRollDialog extends CPRDialog {
     if (this.prototypeChain.includes("CPRDamageRoll")) {
       const damageEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.bonuses.universalDamage`));
       damageEffects.forEach((e) => filteredEffects.push(e));
+    }
+
+    if (this.prototypeChain.includes("CPRAttackRoll")) {
+      const attackEffects = effects.filter((e) => e.changes.some((c) => c.key === `bonuses.ranged`));
+      attackEffects.forEach((e) => filteredEffects.push(e));
     }
 
     // Stat Effects. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
@@ -66,6 +72,10 @@ export class CPRRollDialog extends CPRDialog {
 
     // Combat Effects.
     const combatEffects = [];
+    filteredEffects.filter((e) => {
+      const flag = this.actor.getFlag("cyberpunk-red-core", `isSituational-${e.id}`);
+      return flag;
+    });
     data.activeEffects = filteredEffects;
     return data;
   }
@@ -113,7 +123,7 @@ export class CPRRollDialog extends CPRDialog {
     LOGGER.trace("_activeEffectToggle | CPRRollDialog | Called.");
     const value = parseInt(SystemUtils.GetEventDatum(event, "data-value"), 10);
     const source = SystemUtils.GetEventDatum(event, "data-source");
-    const id = SystemUtils.GetEventDatum(event, "data-id");
+    const id = SystemUtils.GetEventDatum(event, "data-mod-id");
 
     if (this.rollData.mods.some((m) => m.id === id)) {
       this.rollData.removeMod(id);

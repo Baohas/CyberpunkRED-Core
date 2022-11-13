@@ -104,6 +104,7 @@
     <ol class="items-list">
       {{#each activeEffects as |effect|}}
       {{#each effect.changes as |change|}}
+      {{#if (cprCheckSituational ../../actor "cyberpunk-red-core" effect.id)}}
       <li class="item flexrow">
         <div class="item flexrow setting-name text-nowrap text-bold">
             {{effect.label}}:
@@ -117,10 +118,10 @@
           {{/if}}
         </div>
         <div class="item flexrow setting-value text-nowrap item-end">
-          {{!--  {{#if (cprObjectListContains ../../rollData.mods "id" effect.id)}}checked{{/if}} --}}
-          <input {{checked (cprObjectListContains ../../rollData.mods "id" effect.id)}} name="{{change.key}}" class="active-effect-checkbox" type="checkbox" data-value = "{{change.value}}" data-source = "{{effect.label}}" data-id = "{{effect.id}}" data-dtype="Checkbox">
+          <input {{checked (cprObjectListContains ../../rollData.mods "id" effect.id)}} name="{{change.key}}" class="active-effect-checkbox" type="checkbox" data-value = "{{change.value}}" data-source = "{{effect.label}}" data-mod-id = "{{effect.id}}" data-dtype="Checkbox">
         </div>
       </li>
+      {{/if}}
       {{/each}}
       <br>
       {{/each}}

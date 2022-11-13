@@ -85,11 +85,11 @@ export class CPRRoll {
   }
 
   /**
-   * Apply a mod to the roll. This is a stack of integers that get summed later on
+   * Apply a mod to the roll.
    *
    * @param {Number} value - the mod to apply to the roll (value)
    * @param {String} source - where it came from
-   * @param {String} id - a unique identifier
+   * @param {String} id - a unique identifier (comes from parent effect)
    */
   addMod(value, source, id) {
     LOGGER.trace("addMod | CPRRoll | Called.");
@@ -97,6 +97,11 @@ export class CPRRoll {
     if (mod && mod.value !== 0) this.mods.push(mod);
   }
 
+  /**
+   * Remove a mod from the roll.
+   *
+   * @param {String} id - id of mod to remove
+   */
   removeMod(id) {
     LOGGER.trace("removeMod | CPRRoll | Called.");
     const modIndex = this.mods.findIndex((m) => m.id === id);

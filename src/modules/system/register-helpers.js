@@ -825,6 +825,19 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Check if a particular effect is situational or not.
+   *
+   * @param {String} cat - category of change mods
+   * @param {String} key - key for the stat or skill that is being changed by an effect
+   * @return {String} - the name of the skill or stat being changed
+   */
+  Handlebars.registerHelper("cprCheckSituational", (actor, flag, id) => {
+    LOGGER.trace("cprCheckSituational | handlebarsHelper | Called.");
+    const foo = actor.flags?.[flag]?.[`isSituational-${id}`];
+    return foo;
+  });
+
+  /**
    * Return true if a literal is a number
    * For whatever reason, if value is the string "NaN", Javascript thinks
    * it is a number?
