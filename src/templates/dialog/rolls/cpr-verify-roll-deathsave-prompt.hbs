@@ -1,7 +1,7 @@
 {{cprTrace "START DIALOG ROLLS CPR-VERIFY-ROLL-DEATHSAVE-PROMPT.HBS"}}
 <form>
     <div>
-        {{localize "CPR.rolls.rollingFor"}} "{{rollTitle}}", Choomba!
+        {{localize "CPR.rolls.rollingFor"}} "{{rollData.rollTitle}}", Choomba!
     </div>
     <ol class="items-list">
         <li class="item flexrow">
@@ -9,7 +9,7 @@
                 {{localize "CPR.global.generic.deathPenalty"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="penalty" class="" type="number" data-dtype="Number" value={{penalty}}>
+                <input name="penalty" class="" type="number" data-dtype="Number" value={{rollData.penalty}}>
             </div>
         </li>
 
@@ -18,9 +18,12 @@
                 {{localize "CPR.characterSheet.rightPanke.skills.base"}} {{localize "CPR.global.generic.deathPenalty"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="basePenalty" class="" type="number" data-dtype="Number" value={{basePenalty}}>
+                <input name="basePenalty" class="" type="number" data-dtype="Number" value={{rollData.basePenalty}}>
             </div>
         </li>
     </ol>
+
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
+
 </form>
 {{cprTrace "END CPR-VERIFY-ROLL-DEATHSAVE-PROMPT.HBS"}}
