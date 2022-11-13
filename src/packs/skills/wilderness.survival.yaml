@@ -1,0 +1,29 @@
+_id: jFdPv4BuD0tLj7su
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659832911108
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659832911108
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: icons/svg/item-bag.svg
+name: Wilderness Survival
+ownership:
+  default: 0
+sort: 0
+system:
+  basic: false
+  category: educationSkills
+  core: true
+  description: ''
+  difficulty: typical
+  favorite: false
+  level: 0
+  source: ''
+  stat: int
+  tags: []
+type: skill

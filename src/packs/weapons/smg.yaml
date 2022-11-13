@@ -1,0 +1,61 @@
+_id: FdWzIROFGFrpvFMj
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053149
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053149
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/SMG.svg
+name: SMG
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety:
+    - medPistol
+  attachmentSlots: 3
+  attackmod: 0
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 2d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>A concealable SMG. </p>
+  dvTable: DV SMG
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 3
+    suppressiveFire: true
+  handsReq: 1
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 30
+    value: 0
+  price:
+    category: premium
+    market: 100
+  quality: standard
+  revealed: true
+  rof: 1
+  slots: 3
+  source: pg. 341
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: smg
+type: weapon

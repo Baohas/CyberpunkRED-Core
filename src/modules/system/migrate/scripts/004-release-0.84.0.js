@@ -1,4 +1,4 @@
-/* global duplicate Item game fromUuidSync */
+/* global Item fromUuidSync */
 /* eslint-disable foundry-cpr/logger-after-function-definition */
 /* eslint-disable no-await-in-loop */
 
@@ -6,6 +6,10 @@ import CPRMigration from "../cpr-migration.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
+/**
+ * Migrations in here were not for specific features but rather fixes to bugs and
+ * otherwise corrupted data. See #546, #554, and #484.
+ */
 export default class ReleaseEightyFourDotZero extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | 4-Release 0.84.0 Migration");
@@ -66,6 +70,19 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
           await newItem.delete();
         }
       }
+    }
+
+    // Update activeNetRole to use ID instead of Name.
+    const netRoleItem = actor.itemTypes.role.find((r) => r.name === actor.system.roleInfo.activeNetRole);
+    if (netRoleItem) {
+      // If activeNetRole is set and has an item with the same name, set it to the ID of that item.
+      actor.update({ "system.roleInfo.activeNetRole": netRoleItem.id });
+    } else if (actor.itemTypes.role.length > 0) {
+      // If there is no netRoleItem, assign activeNetRole the ID of the first role in the list.
+      actor.update({ "system.roleInfo.activeNetRole": actor.itemTypes.role[0].id });
+    } else {
+      // If there are no roles on the actor, set activeNetRole to "".
+      actor.update({ "system.roleInfo.activeNetRole": "" });
     }
 
     if (itemDeletions.length > 0) {

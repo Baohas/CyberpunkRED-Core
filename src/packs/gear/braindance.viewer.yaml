@@ -1,0 +1,39 @@
+_id: Ed0JaqTO1JyAUa47
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830994303
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830994303
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/braindance_viewer.svg
+name: Braindance Viewer
+ownership:
+  default: 0
+sort: 0
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Braindance viewing device.</p>
+  equipped: owned
+  favorite: false
+  isUpgraded: false
+  price:
+    category: veryExpensive
+    market: 1000
+  revealed: true
+  slots: 3
+  source: pg. 352
+  tags: []
+  upgrades: []
+  usage: toggled
+type: gear

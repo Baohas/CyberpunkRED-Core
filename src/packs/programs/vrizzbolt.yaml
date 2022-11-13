@@ -1,0 +1,49 @@
+_id: 4D6wNDXnBUKCbJTF
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831011841
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831011841
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/programs/vrizzbolt.svg
+name: Vrizzbolt
+ownership:
+  default: 0
+sort: 0
+system:
+  atk: 1
+  blackIceType: antipersonnel
+  class: antipersonnelattacker
+  damage:
+    blackIce: 1d6
+    standard: 1d6
+  def: 0
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>1d6 damage direct to Netrunner's Brain. Lowers total net actions they
+      can take by 1 (min. 2) on their next turn. </p>
+  favorite: false
+  install: mall
+  interface: 0
+  isInstalled: false
+  isRezzed: false
+  per: 0
+  price:
+    category: costly
+    market: 50
+  prototypeActor: ''
+  revealed: true
+  rez: 0
+  size: 1
+  source: pg. 370
+  spd: 0
+  tags: []
+  usage: toggled
+type: program

@@ -6,6 +6,17 @@
       <div class="rollcard-subtitle">
         <div class="rollcard-subtitle-center text-small">{{localize "CPR.rolls.attack"}}</div>
         <div class="rollcard-subtitle-right">
+          {{#if rollCardExtraArgs.isZap}}
+            <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
+              data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="zap">
+              <i class="fas fa-tint red-fg" title="Damage"></i>
+            </a>
+          {{else}}
+            <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
+              data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="{{rollCardExtraArgs.program._id}}">
+              <i class="fas fa-tint red-fg" title="Damage"></i>
+            </a>
+          {{/if}}
         </div>
         <div class="rollcard-subtitle-2-center text-small">{{#if (cprCompare rollCardExtraArgs.program.system.class "===" "blackice")}}{{localize (cprFindConfigValue "blackIceType" rollCardExtraArgs.program.system.blackIceType)}} {{/if}}{{localize (cprFindConfigValue "programClassList" rollCardExtraArgs.program.system.class)}}</div>
       </div>
@@ -35,7 +46,9 @@
         </div>
         <div class="d10-data-div">
           <div class="d10-data-details hide">
-            <div class="text-normal text-bold">{{localize statName}} + {{statValue}}</div>
+            {{#if statValue}}
+              <div class="text-normal text-bold">{{localize statName}} + {{statValue}}</div>
+            {{/if}}
             <div class="text-normal text-bold">{{localize roleName}} + {{roleValue}}</div>
             {{#if mods}}
             <span class="text-normal text-nowrap">{{localize "CPR.rolls.rollMods"}}: {{mods}}</span>

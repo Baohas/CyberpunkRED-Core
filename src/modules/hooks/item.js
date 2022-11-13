@@ -68,8 +68,15 @@ const itemHooks = () => {
     LOGGER.trace("createItem | actorHooks | Called.");
     const actor = doc.parent;
     if (actor !== null) {
-      if (doc.type === "role" && actor.system.roleInfo.activeRole === "") {
-        actor.update({ "data.roleInfo.activeRole": doc.name });
+      if (doc.type === "role") {
+        if (actor.system.roleInfo.activeRole === "") {
+          actor.update({ "system.roleInfo.activeRole": doc.name });
+        }
+        if (!actor.itemTypes.role.some((r) => r.id === actor.system.roleInfo.activeNetRole)) {
+          // If no roles are designated as activeNetRole, OR if an activeNetRole has been set,
+          // but that role has since been deleted, set activeNetRole.
+          actor.update({ "system.roleInfo.activeNetRole": doc.id });
+        }
       }
       // when a new item is created (dragged) on a mook sheet, perform a couple changes like auto-equip
       if (Object.values(actor.apps).some((app) => app instanceof CPRMookActorSheet) && userId === game.user._id) {
@@ -111,9 +118,15 @@ const itemHooks = () => {
             const warning = `${SystemUtils.Localize("CPR.messages.warnDeleteActiveRole")} ${newRole.name}`;
             SystemUtils.DisplayMessage("warn", warning);
           }
-          actor.update({ "data.roleInfo.activeRole": newRole.name });
+          actor.update({
+            "system.roleInfo.activeRole": newRole.name,
+            "system.roleInfo.activeNetRole": newRole.id,
+          });
         } else {
-          actor.update({ "data.roleInfo.activeRole": "" });
+          actor.update({
+            "system.roleInfo.activeRole": "",
+            "system.roleInfo.activeNetRole": "",
+          });
           SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.characterSheet.bottomPane.role.noRolesWarning"));
         }
       }

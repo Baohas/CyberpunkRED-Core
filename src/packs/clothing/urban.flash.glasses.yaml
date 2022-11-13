@@ -1,0 +1,42 @@
+_id: lNAutq2C1if6vjlT
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830947650
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830947650
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_glasses.svg
+name: Urban Flash Glasses
+ownership:
+  default: 0
+sort: 0
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: ''
+  equipped: owned
+  favorite: false
+  isUpgraded: false
+  price:
+    category: premium
+    market: 100
+  quality: standard
+  revealed: true
+  slots: 3
+  source: ''
+  style: urbanFlash
+  tags: []
+  type: glasses
+  upgrades: []
+  usage: equipped
+type: clothing

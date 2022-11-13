@@ -1,0 +1,49 @@
+_id: HLOBpJRg7sZRZWTO
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831011841
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831011841
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/programs/superglue.svg
+name: Superglue
+ownership:
+  default: 0
+sort: 0
+system:
+  atk: 2
+  blackIceType: antipersonnel
+  class: antipersonnelattacker
+  damage:
+    blackIce: 1d6
+    standard: 1d6
+  def: 0
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>The netrunner cannot progress further into the Local NET or safely
+      jacking out for 1d6 rounds.1 use per netrun. </p>
+  favorite: false
+  install: mall
+  interface: 0
+  isInstalled: false
+  isRezzed: false
+  per: 0
+  price:
+    category: premium
+    market: 100
+  prototypeActor: ''
+  revealed: true
+  rez: 0
+  size: 1
+  source: pg. 370
+  spd: 0
+  tags: []
+  usage: toggled
+type: program

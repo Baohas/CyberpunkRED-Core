@@ -443,6 +443,14 @@ export default class CPRSystemUtils {
 
   /* MIGRATION UTILS */
 
+  static getUserTargetedOrSelected(targetedOrSelected) {
+    LOGGER.trace("getUserTargetedOrSelected | CPRSystemUtils | Called.");
+    const targets = new Set(game.user.targets);
+    const tokens = targetedOrSelected === "selected" ? canvas.tokens.controlled : Array.from(targets);
+    tokens.sort((a, b) => (a.name > b.name ? 1 : -1));
+    return tokens;
+  }
+
   /**
    * Updates the migration bar at the top of the page.
    * The last time this is called should set the percentage to 100 so it will clear the bar.

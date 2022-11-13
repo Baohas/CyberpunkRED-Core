@@ -91,6 +91,8 @@ lint-json:
 lint-yaml:
   stage: test
   script:
+    - apt-get update
+    - apt-get install yamllint --yes
     - echo "Linting yaml..."
     - ./.gitlab/pipeline_tests/test-yaml.sh
   needs:
