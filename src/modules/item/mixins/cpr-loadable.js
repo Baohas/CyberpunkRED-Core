@@ -1,3 +1,4 @@
+/* global game getProperty */
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LoadAmmoPrompt from "../../dialog/cpr-load-ammo-prompt.js";
 import LOGGER from "../../utils/cpr-logger.js";
@@ -36,7 +37,9 @@ const Loadable = function Loadable() {
    */
   this._setDvTable = async function _setDvTable(actor, dvTable) {
     LOGGER.trace("_setDvTable | Loadable | Called.");
-    if (actor.sheet.token !== null) await SystemUtils.SetDvTable(actor.sheet.token.object, dvTable);
+    const flag = getProperty(actor, `flags.${game.system.id}.firetype-${this._id}`);
+    const activeTable = (flag === "autofire") ? `${dvTable} (Autofire)` : dvTable;
+    if (actor.sheet.token !== null) await SystemUtils.SetDvTable(actor.sheet.token.object, activeTable);
   };
 
   /**
