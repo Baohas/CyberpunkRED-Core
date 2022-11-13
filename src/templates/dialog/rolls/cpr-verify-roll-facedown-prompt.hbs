@@ -9,7 +9,7 @@
                 {{localize "CPR.global.generic.stat"}} {{localize "CPR.global.generic.value"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="statValue" class="" type="number" data-dtype="Number" value={{statValue}}>
+                <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
             </div>
         </li>
 
@@ -18,7 +18,7 @@
                 {{localize "CPR.rolls.reputation"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="mods" class="" type="text" data-dtype="String" value={{mods}}>
+                <input name="mods" class="" type="text" data-dtype="String" value={{rollData.repValue}}>
             </div>
         </li>
 
@@ -31,5 +31,8 @@
             </div>
         </li>
     </ol>
+
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
+
 </form>
 {{cprTrace "END CPR-VERIFY-ROLL-FACEDOWN-PROMPT.HBS"}}

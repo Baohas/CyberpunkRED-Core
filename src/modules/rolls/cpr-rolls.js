@@ -403,11 +403,12 @@ export class CPRSkillRoll extends CPRStatRoll {
  * A facedown roll extends the CPRStat to include the HBS files for Facedown
  */
 export class CPRFacedownRoll extends CPRStatRoll {
-  constructor(name, value) {
+  constructor(statName, statValue, repValue) {
     LOGGER.trace("constructor | CPRFacedownRoll | Called.");
-    super(name, "1d10");
-    this.statName = name;
-    this.statValue = value;
+    super(statName, "1d10");
+    this.statName = statName;
+    this.statValue = statValue;
+    this.repValue = repValue;
     this.rollTitle = SystemUtils.Localize("CPR.dialog.facedown.title");
     this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-facedown-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-facedown-rollcard.hbs`;

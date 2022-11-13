@@ -881,8 +881,8 @@ export default class CPRActor extends Actor {
     const statName = "cool";
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
-    const cprRoll = new CPRRolls.CPRFacedownRoll(niceStatName, statValue);
-    cprRoll.addMod(this.system.reputation.value);
+    const repValue = this.system.reputation.value;
+    const cprRoll = new CPRRolls.CPRFacedownRoll(niceStatName, statValue, repValue);
     return cprRoll;
   }
 
