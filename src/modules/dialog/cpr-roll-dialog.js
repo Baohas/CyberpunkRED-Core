@@ -61,17 +61,32 @@ export class CPRRollDialog extends CPRDialog {
     // Stat Effects. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
     if ((this.prototypeChain.includes("CPRStatRoll") || this.prototypeChain.includes("CPRRoleRoll")) && !this.prototypeChain.includes("CPRCyberdeckRoll")) {
       const statEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`));
-      statEffects.forEach((e) => filteredEffects.push(e));
+      statEffects.forEach((e) => {
+        const updatedEffect = {};
+        updatedEffect.changes = e.changes.filter((c) => c.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`);
+        updatedEffect.flags = e.flags;
+        updatedEffect.id = e.id;
+        updatedEffect.label = e.label;
+
+        filteredEffects.push(updatedEffect);
+      });
     }
 
     // Skill Effects.
     if ((this.prototypeChain.includes("CPRSkillRoll") || this.prototypeChain.includes("CPRRoleRoll")) && !this.prototypeChain.includes("CPRCyberdeckRoll")) {
       const skillEffects = effects.filter((e) => e.changes.some((c) => c.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`));
-      skillEffects.forEach((e) => filteredEffects.push(e));
+      skillEffects.forEach((e) => {
+        const updatedEffect = {};
+        updatedEffect.changes = e.changes.filter((c) => c.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`);
+        updatedEffect.flags = e.flags;
+        updatedEffect.id = e.id;
+        updatedEffect.label = e.label;
+
+        filteredEffects.push(updatedEffect);
+      });
     }
 
     // Combat Effects.
-    const combatEffects = [];
     filteredEffects.filter((e) => {
       const flag = this.actor.getFlag("cyberpunk-red-core", `isSituational-${e.id}`);
       return flag;
