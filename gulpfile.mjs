@@ -25,6 +25,5 @@ export const watch = gulp.series(
   assets,
   system,
   less,
-  generatePacks,
   bld.watchSrc,
 );
