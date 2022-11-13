@@ -39,10 +39,10 @@
             {{#select item.system.weaponSkill}}
                 {{#each (cprSortCoreSkills item.system.relativeSkills) as |skillOption| }}
                     {{#if (cprListContains "Athletics" skillOption.name)}}
-                        <option value="{{skillOption.name}}">{{localize (cprGetLocalizedSkillNameKey skillOption.name)}}</option>
+                        <option value="{{skillOption.name}}">{{localize (cprGetLocalizedlNameKey skillOption)}}</option>
                     {{/if}}
                     {{#if (cprListContains "rangedweaponSkills,fightingSkills" skillOption.system.category)}}
-                        <option value="{{skillOption.name}}">{{localize (cprGetLocalizedSkillNameKey skillOption.name)}}</option>
+                        <option value="{{skillOption.name}}">{{localize (cprGetLocalizedlNameKey skillOption)}}</option>
                     {{/if}}
                 {{/each}}
             {{/select}}

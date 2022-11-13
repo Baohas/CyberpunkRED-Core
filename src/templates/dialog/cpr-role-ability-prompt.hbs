@@ -68,7 +68,7 @@
           </optgroup>
           <optgroup label = "{{localize "CPR.dialog.createEditRoleAbility.skillList"}}">
             {{#each (cprSortCoreSkills skillOptions) as |option|}}
-              <option value="{{option.name}}">{{localize (cprGetLocalizedSkillNameKey option.name)}}</option>
+              <option value="{{option.name}}">{{localize (cprGetLocalizedlNameKey option.name "skill")}}</option>
             {{/each}}
           </optgroup>
           {{/select}}

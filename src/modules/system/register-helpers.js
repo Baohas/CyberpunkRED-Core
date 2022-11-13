@@ -482,11 +482,35 @@ export default function registerHandlebarsHelpers() {
    *
    * Example: Resist Torture/Drugs -> Resist Torture Or Drugs
    */
-  Handlebars.registerHelper("cprGetLocalizedSkillNameKey", (skill) => {
-    LOGGER.trace("cprGetLocalizedSkillNameKey | handlebarsHelper | Called.");
-    const name = (typeof skill === "string") ? skill : skill.name;
-    const localizedSkillKey = "CPR.global.itemType.skill.".concat(SystemUtils.slugify(name));
-    return (SystemUtils.Localize(localizedSkillKey) === localizedSkillKey) ? name : localizedSkillKey;
+  Handlebars.registerHelper("cprGetLocalizedlNameKey", (object, type = false) => {
+    LOGGER.trace("cprGetLocalizedlNameKey | handlebarsHelper | Called.");
+    const objectType = (typeof object === "string") ? type : object.type;
+    const name = (typeof object === "string") ? object : object.name;
+    let localizedKey = "";
+    switch (objectType) {
+      case "skill": {
+        // "CPR.global.itemType.skill.cybertech"
+        localizedKey = `CPR.global.itemType.skill.${SystemUtils.slugify(name)}`;
+        break;
+      }
+      case "role": {
+        // "CPR.global.role.tech.name"
+        localizedKey = `CPR.global.role.${SystemUtils.slugify(name)}.name`;
+        break;
+      }
+      case "roleAbility": {
+        // "CPR.global.role.tech.ability.fabricationExpertise":
+        for (const role of Object.keys(CPR.roleList)) {
+          const localizedRoleKey = `CPR.global.role.${role}.ability.${SystemUtils.slugify(name)}`;
+          if (SystemUtils.Localize(localizedRoleKey) !== localizedRoleKey) {
+            localizedKey = localizedRoleKey;
+          }
+        }
+        break;
+      }
+      default:
+    }
+    return (SystemUtils.Localize(localizedKey) === localizedKey) ? name : localizedKey;
   });
 
   /**

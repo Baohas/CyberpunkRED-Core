@@ -1,10 +1,10 @@
 {{cprTrace "START ITEM CPR-ITEM-NAME.HBS"}}
 <br>
 <li class="item flexrow">
-    <div class="item flexrow setting-name text-nowrap">
-        {{localize "CPR.global.generic.name"}}
+    <div class="item flexrow setting-name text-nowrap"{{#if (cprCompare item.type "===" "role")}} data-tooltip="{{localize "CPR.tooltip.nameChangeWarning"}}"{{/if}}>
+        {{localize "CPR.global.generic.name"}}{{#if (cprCompare item.type "===" "role")}}<sup><i class="text-smallest text-super fa-solid fa-triangle-exclamation"></i></sup>{{/if}}
     </div>
-    <div class="item flexrow setting-value text-nowrap item-end">
+    <div class="item flexrow setting-value text-nowrap item-end" >
         {{#if this.editable}}
         <input name="name" class="" type="text" value="{{item.name}}">
         {{else}}

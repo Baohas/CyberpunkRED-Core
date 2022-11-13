@@ -80,7 +80,7 @@ CPR.skillList = {
   bribery: "CPR.global.itemType.skill.bribery",
   concentration: "CPR.global.itemType.skill.concentration",
   conversation: "CPR.global.itemType.skill.conversation",
-  cyberTech: "CPR.global.itemType.skill.cybertech",
+  cybertech: "CPR.global.itemType.skill.cybertech",
   education: "CPR.global.itemType.skill.education",
   evasion: "CPR.global.itemType.skill.evasion",
   firstAid: "CPR.global.itemType.skill.firstAid",
@@ -138,7 +138,7 @@ CPR.skillList = {
   tactics: "CPR.global.itemType.skill.tactics",
   trading: "CPR.global.itemType.skill.trading",
   wardrobeAndStyle: "CPR.global.itemType.skill.wardrobeAndStyle",
-  weaponsTech: "CPR.global.itemType.skill.weaponstech",
+  weaponstech: "CPR.global.itemType.skill.weaponstech",
   wildernessSurvival: "CPR.global.itemType.skill.wildernessSurvival",
 };
 

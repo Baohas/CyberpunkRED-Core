@@ -2,8 +2,8 @@
       {{!--Item Name Settings--}}
       {{!-- Role Item Settings--}}
       <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap">
-          {{localize "CPR.itemSheet.role.mainAbilityName"}}
+        <div class="item flexrow setting-name text-nowrap"{{#if (cprCompare item.type "===" "role")}} data-tooltip="{{localize "CPR.tooltip.nameChangeWarning"}}"{{/if}}>
+          {{localize "CPR.itemSheet.role.mainAbilityName"}}{{#if (cprCompare item.type "===" "role")}}<sup><i class="text-smallest text-super fa-solid fa-triangle-exclamation"></i></sup>{{/if}}
         </div>
         <div class="item flexrow setting-value text-nowrap item-end">
           <input name="system.mainRoleAbility" class="" data-dtype="{{item.system.mainRoleAbility}}" value="{{item.system.mainRoleAbility}}" type="text">
@@ -123,7 +123,7 @@
       <ol class="items-list">
         {{#each (cprSort item.system.abilities "name") as |ability|}}
           <li class="item role-name flexrow">
-            <div class="item-name text-nowrap">{{ability.name}}</div>
+            <div class="item-name text-nowrap">{{localize (cprGetLocalizedlNameKey ability.name "roleAbility")}}</div>
             <div class="item-detail role-rank text-nowrap">
               {{ability.rank}}
             </div>
@@ -139,7 +139,7 @@
             </div>
             <div class="item-detail role-skill text-nowrap">
               {{#if ability.skill.system.core}}
-              {{localize (cprGetLocalizedSkillNameKey ability.skill)}}
+              {{localize (cprGetLocalizedlNameKey ability.skill)}}
               {{else}}
               {{ability.skill.name}}
               {{/if}}
