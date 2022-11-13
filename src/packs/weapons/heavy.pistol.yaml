@@ -27,7 +27,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: '<p>A concealable, heavy pistol. </p>'
+    value: <p>A concealable, heavy pistol. </p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

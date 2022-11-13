@@ -25,7 +25,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: '<p>Heavier version of an Armorjack. -2 to REF, DEX, and MOVE.</p>'
+    value: <p>Heavier version of an Armorjack. -2 to REF, DEX, and MOVE.</p>
   equipped: owned
   favorite: false
   headLocation:

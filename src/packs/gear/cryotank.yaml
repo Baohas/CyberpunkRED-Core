@@ -23,7 +23,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: '<p>Holds a fully-sized human, heals injuries faster than normal. </p>'
+    value: <p>Holds a fully-sized human, heals injuries faster than normal. </p>
   equipped: owned
   favorite: false
   isUpgraded: false

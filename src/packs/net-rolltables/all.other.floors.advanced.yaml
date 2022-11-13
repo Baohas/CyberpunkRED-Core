@@ -53,7 +53,7 @@ results:
     range:
       - 5
       - 5
-    text: 'Hellhound, Liche'
+    text: Hellhound, Liche
     type: 0
     weight: 1
   - _id: TxpaqyUljo7WJxoH
@@ -77,7 +77,7 @@ results:
     range:
       - 7
       - 7
-    text: 'Hellhound, Sabertooth'
+    text: Hellhound, Sabertooth
     type: 0
     weight: 1
   - _id: ZOvOmNVoyCJOqYoP
@@ -173,7 +173,7 @@ results:
     range:
       - 15
       - 15
-    text: 'Killer, Scorpion'
+    text: Killer, Scorpion
     type: 0
     weight: 1
   - _id: e86hWgiH9l8h1AZe
@@ -197,7 +197,7 @@ results:
     range:
       - 17
       - 17
-    text: 'Raven, Wisp, Hellhound'
+    text: Raven, Wisp, Hellhound
     type: 0
     weight: 1
   - _id: bFmeEyNKGPsKOb7f

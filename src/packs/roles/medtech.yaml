@@ -25,7 +25,7 @@ system:
       name: Surgery
       rank: 0
       skill: '--'
-      skillBonuses: []
+      bonuses: []
       stat: tech
       universalBonuses: []
     - bonusRatio: 1
@@ -36,7 +36,7 @@ system:
       name: Medical Tech (Pharmaceuticals)
       rank: 0
       skill: '--'
-      skillBonuses: []
+      bonuses: []
       stat: '--'
       universalBonuses: []
     - bonusRatio: 1
@@ -47,7 +47,7 @@ system:
       name: Medical Tech (Cryosystem Operation)
       rank: 0
       skill: '--'
-      skillBonuses: []
+      bonuses: []
       stat: '--'
       universalBonuses: []
     - bonusRatio: 1
@@ -58,7 +58,7 @@ system:
       name: Medical Tech
       rank: 0
       skill: '--'
-      skillBonuses: []
+      bonuses: []
       stat: tech
       universalBonuses: []
   addRoleAbilityRank: true
@@ -76,7 +76,6 @@ system:
   mainRoleAbility: Medicine
   rank: 4
   skill: '--'
-  skillBonuses: []
   source: Pg. 149
   stat: '--'
   tags: []

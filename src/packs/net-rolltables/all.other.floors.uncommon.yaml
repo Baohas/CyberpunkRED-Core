@@ -41,7 +41,7 @@ results:
     range:
       - 4
       - 4
-    text: 'Hellhound, Scorpion'
+    text: Hellhound, Scorpion
     type: 0
     weight: 1
   - _id: 6zKmgA9bq0fqSvX2
@@ -53,7 +53,7 @@ results:
     range:
       - 5
       - 5
-    text: 'Hellhound, Killer'
+    text: Hellhound, Killer
     type: 0
     weight: 1
   - _id: TxpaqyUljo7WJxoH
@@ -185,7 +185,7 @@ results:
     range:
       - 16
       - 16
-    text: 'Asp, Raven'
+    text: Asp, Raven
     type: 0
     weight: 1
   - _id: 42tU8yLFBTygWzOz
@@ -197,7 +197,7 @@ results:
     range:
       - 17
       - 17
-    text: 'Dragon, Wisp'
+    text: Dragon, Wisp
     type: 0
     weight: 1
   - _id: bFmeEyNKGPsKOb7f

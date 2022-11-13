@@ -27,7 +27,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: '<p>Reduces penalties against targets in darkness, smoke/fog to 0.</p>'
+    value: <p>Reduces penalties against targets in darkness, smoke/fog to 0.</p>
   dvTable: ''
   equipped: owned
   favorite: false
