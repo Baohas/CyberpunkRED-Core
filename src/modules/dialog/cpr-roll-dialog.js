@@ -37,7 +37,7 @@ export class CPRRollDialog extends CPRDialog {
   /**
    * Prepares data for roll dialog sheet.
    */
-  async getData() {
+  getData() {
     LOGGER.trace("getData | CPRRollDialog | called.");
     const data = super.getData();
     data.rollData = this.rollData; // CPRRoll object
@@ -94,7 +94,6 @@ export class CPRRollDialog extends CPRDialog {
       });
     }
 
-    // Combat Effects.
     filteredEffects.filter((e) => {
       const flag = this.actor.getFlag("cyberpunk-red-core", `isSituational-${e.id}`);
       return flag;
