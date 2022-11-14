@@ -307,10 +307,14 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprArrayLikeObjectByIndex", (arrayLikeObject, index, val) => {
     LOGGER.trace("cprArrayLikeObjectByIndex | handlebarsHelper | Called.");
+    // Return false if arrayLikeObject is not an object, so that we avoid sheet-breaking errors.
+    if (!(typeof arrayLikeObject === "object")) return false;
+
     const array = Object.values(arrayLikeObject);
     if (array) {
       return array[index][val];
     }
+
     return false;
   });
 
