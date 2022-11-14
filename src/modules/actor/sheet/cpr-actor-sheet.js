@@ -153,7 +153,15 @@ export default class CPRActorSheet extends ActorSheet {
     for (const e of this.actor.effects) {
       e._getSourceName(); // Trigger a lookup for the source name
       if (!(typeof e.flags.core !== "undefined" && typeof e.flags.core.statusId !== "undefined") || setting) {
-        const situationalList = Object.values(e.flags[`${game.system.id}`].changes.situational);
+        let situationalList = [];
+        // This will make sure that if the flag doesn't exist, we can still open the sheet.
+        try {
+          const flagObj = e.flags[`${game.system.id}`].changes.situational;
+          situationalList = Object.values(flagObj);
+        } catch {
+          // continue regardless of error
+        }
+
         if (situationalList.some((c) => c) && !e.disabled) categories.situational.effects.push(e);
         if (e.disabled || e.system.isSuppressed) categories.inactive.effects.push(e);
         else categories.active.effects.push(e);
