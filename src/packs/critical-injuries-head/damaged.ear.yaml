@@ -25,7 +25,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
+          cats:
+            '0': skill
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_ear.svg
     label: Damaged Ear

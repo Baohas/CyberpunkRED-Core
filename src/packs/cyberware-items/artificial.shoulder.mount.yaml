@@ -25,7 +25,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': combat
+          cats:
+            '0': combat
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/artificial_shoulder_mount.svg
     label: Artificial Shoulder Mount

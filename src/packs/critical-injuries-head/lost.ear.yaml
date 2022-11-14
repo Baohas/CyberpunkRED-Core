@@ -39,7 +39,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
+          cats:
+            '0': skill
     icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
     label: Lost Ear
     tint: null

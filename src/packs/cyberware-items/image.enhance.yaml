@@ -33,9 +33,10 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
-          '1': skill
-          '2': skill
+          cats:
+            '0': skill
+            '1': skill
+            '2': skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/image_enhance.svg
     label: Image Enhance
     tint: null

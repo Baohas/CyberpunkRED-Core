@@ -25,7 +25,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/boost.svg
     label: Boost Primary
     tint: null
@@ -48,7 +49,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/boost_addiction.svg
     label: Boost Addiction
     tint: null

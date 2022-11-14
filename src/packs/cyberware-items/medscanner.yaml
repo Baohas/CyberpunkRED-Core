@@ -29,8 +29,9 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
-          '1': skill
+          cats:
+            '0': skill
+            '1': skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/medscanner.svg
     label: Medscanner
     tint: null

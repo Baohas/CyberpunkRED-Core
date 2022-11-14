@@ -25,7 +25,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': netrun
+          cats:
+            '0': netrun
     icon: systems/cyberpunk-red-core/icons/compendium/programs/speedy_gonzalvez.svg
     label: Speedy Gonzalves
     tint: null

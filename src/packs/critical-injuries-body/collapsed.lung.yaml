@@ -25,7 +25,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/collapsed_lung.svg
     label: Collapsed Lung

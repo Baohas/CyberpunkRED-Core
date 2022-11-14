@@ -49,10 +49,11 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
-          '1': skill
-          '2': skill
-          '3': skill
+          cats:
+            '0': skill
+            '1': skill
+            '2': skill
+            '3': skill
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_jaw.svg
     label: Broken Jaw

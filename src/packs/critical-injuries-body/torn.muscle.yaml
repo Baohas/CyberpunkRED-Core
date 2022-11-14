@@ -37,7 +37,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': combat
+          cats:
+            '0': combat
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/torn_muscle.svg
     label: Torn Muscle

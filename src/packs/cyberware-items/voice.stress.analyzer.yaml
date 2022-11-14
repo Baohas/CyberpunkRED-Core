@@ -29,8 +29,9 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
-          '1': skill
+          cats:
+            '0': skill
+            '1': skill
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/voice_stress_analyzer.svg
     label: Voice Stress Analyzer

@@ -57,12 +57,13 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
-          '1': skill
-          '2': skill
-          '3': skill
-          '4': skill
-          '5': skill
+          cats:
+            '0': skill
+            '1': skill
+            '2': skill
+            '3': skill
+            '4': skill
+            '5': skill
     icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_eye.svg
     label: Lost Eye
     tint: null

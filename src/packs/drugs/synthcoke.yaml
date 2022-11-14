@@ -25,7 +25,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke.svg
     label: Synthcoke Primary
     tint: null
@@ -48,7 +49,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
     label: Synthcoke Addiction
     tint: null
@@ -71,7 +73,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
     label: Synthcoke Addicted Primary
     tint: null

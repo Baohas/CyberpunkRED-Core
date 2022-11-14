@@ -25,7 +25,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/implanted_linearframe_sigma.svg
     label: Implanted Linear Frame Sigma
