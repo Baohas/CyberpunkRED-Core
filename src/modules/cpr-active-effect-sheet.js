@@ -22,6 +22,9 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       defaultHeight,
       width: defaultWidth,
       height: defaultHeight,
+      // Submit on close to prevent an edge case where a user adds and active effect, but doesn't change anything.
+      // If they closed the dialog (without submitting) then there was just a blank AE on their sheet. This setting prevents that.
+      submitOnClose: true,
     });
   }
 
@@ -40,10 +43,13 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     $("input[type=text]").focusin(() => $(this).select());
     html.find(".effect-key-category").change((event) => this._changeModKeyCategory(event));
     html.find(".effect-change-control").click((event) => this._effectChangeControl(event));
+    html.find(".effect-change-key").change(() => this._changeModKey());
+    html.find(".toggle-situational").click((event) => this._toggleSituational(event));
   }
 
   /**
    * Change the key category flag on an active effect.
+   * Also submit the form to prevent duplicate change keys on the same AE. (see next function's jsdocs)
    *
    * @async
    * @callback
@@ -54,7 +60,28 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     const effect = this.object;
     const modnum = event.currentTarget.dataset.index;
     const keyCategory = event.target.value;
+
+    this.submit({
+      preventClose: true,
+    });
     return effect.setModKeyCategory(modnum, keyCategory);
+  }
+
+  /**
+   * Submit the form when we change the key on an active effect.
+   * The goal is to prevent duplicate change keys on the same AE. How?
+   * In the handlebars template, change keys that already exist on this AE are disabled.
+   * Submitting rerenders the sheet, disabling the correct values in the drop-down so that they cannot be selected.
+   *
+   * @async
+   * @callback
+   * @private
+   */
+  async _changeModKey() {
+    LOGGER.trace("_changeModKey | CPRActiveEffectSheet | Called.");
+    this.submit({
+      preventClose: true,
+    });
   }
 
   /**
@@ -96,7 +123,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       preventClose: true,
       updateData: {
         [`changes.${idx}`]: {
-          key: "bonuses.perception",
+          key: "",
           mode: CONST.ACTIVE_EFFECT_MODES.ADD,
           value: "",
         },
