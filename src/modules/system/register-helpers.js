@@ -303,6 +303,18 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Returns true if an array contains a desired element
+   */
+  Handlebars.registerHelper("cprArrayLikeObjectByIndex", (arrayLikeObject, index, val) => {
+    LOGGER.trace("cprArrayLikeObjectByIndex | handlebarsHelper | Called.");
+    const array = Object.values(arrayLikeObject);
+    if (array) {
+      return array[index][val];
+    }
+    return false;
+  });
+
+  /**
    * Accepts a string and replaces VAR with the desired value. Usually used to dynamically
    * produce file names for partial templates.
    */
@@ -873,7 +885,7 @@ export default function registerHandlebarsHelpers() {
    * Truncate HTML to a specified length and add … to the end
    */
   Handlebars.registerHelper("cprStripHtml", (string) => {
-    const text = string.replace(/<[^>]+>/g, '');
+    const text = string.replace(/<[^>]+>/g, "");
     return text;
   });
 }

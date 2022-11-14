@@ -162,7 +162,7 @@ export default class CPRActorSheet extends ActorSheet {
           // continue regardless of error
         }
 
-        if (situationalList.some((c) => c) && !e.disabled) categories.situational.effects.push(e);
+        if (situationalList.some((c) => c.isSituational) && !e.disabled) categories.situational.effects.push(e);
         if (e.disabled || e.system.isSuppressed) categories.inactive.effects.push(e);
         else categories.active.effects.push(e);
       }

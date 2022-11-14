@@ -24,8 +24,12 @@
                                 {{else}}
                                     0
                                 {{~/if}}
-                                {{~#if (lookup effect.flags.cyberpunk-red-core.changes.situational @index)}}
-                                <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-location-dot"></i>
+                                {{~#if (cprArrayLikeObjectByIndex effect.flags.cyberpunk-red-core.changes.situational @index "isSituational")}}
+                                    {{~#if (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational @index "onByDefault")}}
+                                      <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-link"></i>
+                                    {{~else}}
+                                      <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-link-slash"></i>
+                                    {{~/if}}
                                 {{~/if}}
                                 {{~#unless @last}},{{/unless}}
                             {{/each}}

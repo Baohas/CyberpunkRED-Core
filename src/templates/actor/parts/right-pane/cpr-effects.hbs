@@ -16,7 +16,7 @@
                     <h4><strong>{{effect.label}}</strong><br/>
                         {{#each effect.changes as |change|}}
                         {{#unless (cprCompare @../../index "===" 2)}}
-                          {{#unless (lookup effect.flags.cyberpunk-red-core.changes.situational @index)}}
+                          {{#unless (cprArrayLikeObjectByIndex effect.flags.cyberpunk-red-core.changes.situational @index "isSituational")}}
                             {{!-- "this" is now an individual mod for the AE object --}}
                             {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes.cats @index) change.key}}
                             {{#if change.value}}
@@ -27,7 +27,7 @@
                             {{~#unless @last}},{{~/unless}}
                           {{~/unless}}
                         {{else}}
-                          {{#if (lookup effect.flags.cyberpunk-red-core.changes.situational @index)}}
+                          {{#if (cprArrayLikeObjectByIndex effect.flags.cyberpunk-red-core.changes.situational @index "isSituational")}}
                             {{!-- "this" is now an individual mod for the AE object --}}
                             {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes.cats @index) change.key}}
                             {{#if change.value}}
@@ -36,7 +36,11 @@
                                 0
                             {{~/if}}
                             {{!-- <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-location-dot"></i> --}}
-                            <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-location-dot"></i>{{~#unless @last}},{{/unless}}
+                            {{#if (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational @index "onByDefault")}}
+                              <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-link"></i>{{~#unless @last}},{{/unless}}
+                            {{else}}
+                              <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-link-slash"></i>{{~#unless @last}},{{/unless}}
+                            {{/if}}
                           {{/if}}
                         {{/unless}}
                         {{/each}}

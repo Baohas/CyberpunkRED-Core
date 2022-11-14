@@ -46,6 +46,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     html.find(".effect-change-key").change(() => this._changeModKey());
     html.find(".effect-change-control").click((event) => this._effectChangeControl(event));
     html.find(".toggle-situational").click((event) => this._toggleSituational(event));
+    html.find(".toggle-on-by-default").click((event) => this._toggleOnByDefault(event));
   }
 
   /**
@@ -116,7 +117,20 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     const modnum = SystemUtils.GetEventDatum(event, "data-index");
     const isSituational = event.target.checked;
 
-    await effect.setFlag(`${game.system.id}`, `changes.situational.${modnum}`, isSituational);
+    await effect.setFlag(`${game.system.id}`, `changes.situational.${modnum}.isSituational`, isSituational);
+
+    this.submit({
+      preventClose: true,
+    });
+  }
+
+  async _toggleOnByDefault(event) {
+    LOGGER.trace("_toggleOnByDefault | CPRActiveEffectSheet | Called.");
+    const effect = this.object;
+    const modnum = SystemUtils.GetEventDatum(event, "data-index");
+    const onByDefault = event.target.checked;
+
+    await effect.setFlag(`${game.system.id}`, `changes.situational.${modnum}.onByDefault`, onByDefault);
 
     this.submit({
       preventClose: true,
@@ -143,7 +157,10 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
         },
         // we set the default "key category" here
         [`flags.${game.system.id}.changes.cats.${idx}`]: "skill",
-        [`flags.${game.system.id}.changes.situational.${idx}`]: false,
+        [`flags.${game.system.id}.changes.situational.${idx}`]: {
+          isSituational: false,
+          onByDefault: false,
+        },
       },
     });
   }

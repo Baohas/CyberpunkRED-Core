@@ -114,7 +114,12 @@
                         <span>{{localize "CPR.effectSheet.modifiers.addSubtract"}}</option>
                     {{/if}}
                 </div>
-                <div class="situational"><input name="isSituational" class="toggle-situational" type="checkbox" data-index={{i}} {{checked (lookup ../data.flags.cyberpunk-red-core.changes.situational i)}}></div>
+                <div class="situational">
+                  <input name="isSituational" class="toggle-situational" type="checkbox" data-index={{i}} {{checked (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational i "isSituational")}}>
+                  {{#if (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational i "isSituational")}}
+                    <input name="onByDefault" class="toggle-on-by-default" type="checkbox" data-index={{i}} {{checked (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational i "onByDefault")}}>
+                  {{/if}}
+                </div>
                 <div class="effect-controls">
                     {{!-- Deleting a change is possible, but the changes Flag on the actor should be a map rather than an array.
                           Being an array creats a problem when a change in the middle of the list is deleted.

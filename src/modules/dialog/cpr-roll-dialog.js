@@ -63,7 +63,7 @@ export class CPRRollDialog extends CPRDialog {
       const statEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`));
       statEffects.forEach((e) => {
         e.changes.forEach((c, v) => {
-          c.isSituational = e.flags[`${game.system.id}`].changes.situational[v];
+          c.isSituational = e.flags[`${game.system.id}`].changes.situational[v].isSituational;
         });
 
         const updatedEffect = {};
@@ -81,7 +81,7 @@ export class CPRRollDialog extends CPRDialog {
       const skillEffects = effects.filter((e) => e.changes.some((c) => c.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`));
       skillEffects.forEach((e) => {
         e.changes.forEach((c, v) => {
-          c.isSituational = e.flags[`${game.system.id}`].changes.situational[v];
+          c.isSituational = e.flags[`${game.system.id}`].changes.situational[v].isSituational;
         });
 
         const updatedEffect = {};
