@@ -20,10 +20,14 @@
                                 {{!-- "this" is now an individual "change" for the AE object --}}
                                 {{cprGetChangeNameByKey ../../item (lookup effect.flags.cyberpunk-red-core.changes.cats @index) change.key}}
                                 {{#if change.value}}
-                                    {{cprEffectModMode change.mode change.value}}{{#unless @last}},{{/unless}}
+                                    {{cprEffectModMode change.mode change.value}}
                                 {{else}}
-                                    0{{#unless @last}},{{/unless}}
-                                {{/if}}
+                                    0
+                                {{~/if}}
+                                {{~#if (lookup effect.flags.cyberpunk-red-core.changes.situational @index)}}
+                                <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-location-dot"></i>
+                                {{~/if}}
+                                {{~#unless @last}},{{/unless}}
                             {{/each}}
                         </h4>
                         <span class="effect-actions text-padding-right effect-controls">

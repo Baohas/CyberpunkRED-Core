@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-/* global duplicate */
+/* global duplicate game */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";
@@ -62,6 +62,10 @@ export class CPRRollDialog extends CPRDialog {
     if ((this.prototypeChain.includes("CPRStatRoll") || this.prototypeChain.includes("CPRRoleRoll")) && !this.prototypeChain.includes("CPRCyberdeckRoll")) {
       const statEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`));
       statEffects.forEach((e) => {
+        e.changes.forEach((c, v) => {
+          c.isSituational = e.flags[`${game.system.id}`].changes.situational[v];
+        });
+
         const updatedEffect = {};
         updatedEffect.changes = e.changes.filter((c) => c.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`);
         updatedEffect.flags = e.flags;
@@ -76,6 +80,10 @@ export class CPRRollDialog extends CPRDialog {
     if ((this.prototypeChain.includes("CPRSkillRoll") || this.prototypeChain.includes("CPRRoleRoll")) && !this.prototypeChain.includes("CPRCyberdeckRoll")) {
       const skillEffects = effects.filter((e) => e.changes.some((c) => c.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`));
       skillEffects.forEach((e) => {
+        e.changes.forEach((c, v) => {
+          c.isSituational = e.flags[`${game.system.id}`].changes.situational[v];
+        });
+
         const updatedEffect = {};
         updatedEffect.changes = e.changes.filter((c) => c.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`);
         updatedEffect.flags = e.flags;

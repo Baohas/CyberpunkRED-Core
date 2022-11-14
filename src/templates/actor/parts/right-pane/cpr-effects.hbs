@@ -18,10 +18,14 @@
                             {{!-- "this" is now an individual mod for the AE object --}}
                             {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes.cats @index) change.key}}
                             {{#if change.value}}
-                                {{cprEffectModMode change.mode change.value}}{{#unless @last}},{{/unless}}
+                                {{cprEffectModMode change.mode change.value}}
                             {{else}}
-                                0{{#unless @last}},{{/unless}}
-                            {{/if}}
+                                0
+                            {{~/if}}
+                            {{~#if (lookup effect.flags.cyberpunk-red-core.changes.situational @index)}}
+                            <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-location-dot"></i>
+                            {{~/if}}
+                            {{~#unless @last}},{{/unless}}
                         {{/each}}
                     </h4>
                 </div>
@@ -32,13 +36,6 @@
                     {{/if}}
                 </div>
                 <div class="effect-actions text-padding-right">
-                        <a class="is-situational">
-                          {{#unless (cprCheckSituational ../../actor "cyberpunk-red-core" effect.id)}}
-                            <i class="far fa-clock" title="{{localize 'CPR.characterSheet.rightPane.effects.isNotSituational'}}"></i>
-                          {{else}}
-                            <i class="fas fa-clock" title="{{localize 'CPR.characterSheet.rightPane.effects.isSituational'}}"></i>
-                          {{/unless}}
-                        </a>
                     {{#if (cprShowEffectToggle effect ../../actor.name)}}
                         <a class="effect-control" data-action="toggle" title="{{localize 'CPR.characterSheet.rightPane.effects.toggle'}}">
                             <i class="far {{#if effect.disabled}}fa-circle{{else}}fa-check-circle{{/if}}"></i>

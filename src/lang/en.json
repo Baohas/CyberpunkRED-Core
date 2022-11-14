@@ -464,6 +464,7 @@
     "CPR.global.generic.role": "Role",
     "CPR.global.generic.set": "Set",
     "CPR.global.generic.shield": "Shield",
+    "CPR.global.generic.situational": "Situational",
     "CPR.global.generic.skill": "Skill",
     "CPR.global.generic.slots": "Slots",
     "CPR.global.generic.snort": "Consume",
