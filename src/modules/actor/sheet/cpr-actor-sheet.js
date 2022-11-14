@@ -9,7 +9,6 @@ import RollCriticalInjuryPrompt from "../../dialog/cpr-roll-critical-injury-prom
 import Rules from "../../utils/cpr-rules.js";
 import SplitItemPrompt from "../../dialog/cpr-split-item-prompt.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import DvUtils from "../../utils/cpr-dvUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import LedgerEditPrompt from "../../dialog/cpr-ledger-edit-prompt.js";
 
@@ -751,7 +750,7 @@ export default class CPRActorSheet extends ActorSheet {
       const currentDvTable = (weaponDvTable === "") ? getProperty(this.token, "flags.cprDvTable") : weaponDvTable;
       if (typeof currentDvTable !== "undefined") {
         const dvTable = currentDvTable.replace(" (Autofire)", "");
-        const dvTables = await DvUtils.GetDvTables();
+        const dvTables = await SystemUtils.GetDvTables();
         const afTable = (dvTables).filter((table) => table.name.includes(dvTable) && table.name.includes("Autofire"));
         let newDvTable = currentDvTable;
         if (afTable.length > 0) {

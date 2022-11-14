@@ -89,6 +89,39 @@ export default class CPRSystemUtils {
   }
 
   /**
+   * Get DV tables that map DVs to distances when using a ranged weapon
+   * @returns {Array} - array of tables
+   */
+  static async GetDvTables() {
+    LOGGER.trace("GetDvTables | CPRSystemUtils | called.");
+    const tableList = await CPRSystemUtils.GetCompendiumDocs(game.settings.get(game.system.id, "dvRollTableCompendium"));
+    tableList.sort((a, b) => ((a.name > b.name) ? 1 : -1));
+    return tableList;
+  }
+
+  static async SetDvTable(token, tableName) {
+    LOGGER.trace("SetDvTable | CPRSystemUtils | called.");
+    const dvTables = await CPRSystemUtils.GetDvTables();
+    const [selectedTable] = dvTables.filter((table) => table.name === tableName);
+    const dvSetting = selectedTable ? { name: selectedTable.name, table: {} } : null;
+    if (selectedTable) {
+      for (const result of selectedTable.results) {
+        // Rolltable entry of type is a Text entry
+        if (result.type === 0) {
+          const { range } = result;
+          const key = `${range[0]}_${range[1]}`;
+          const dv = result.text;
+          dvSetting.table[key.toString()] = dv;
+        }
+      }
+    }
+    // Because we're setting a flag to an object, Foundry will try to merge it if we
+    // just call setFlag. We unset it first.
+    await token.document.unsetFlag(game.system.id, "cprDvTable");
+    await token.document.setFlag(game.system.id, "cprDvTable", dvSetting);
+  }
+
+  /**
    * Get rollable tables by name, optionally by searching with a regexp. Note this is not meant for
    * compendia, but rather rolltables created in the world.
    *

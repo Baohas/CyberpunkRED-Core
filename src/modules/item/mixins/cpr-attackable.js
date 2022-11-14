@@ -38,7 +38,7 @@ const Attackable = function Attackable() {
         this._loadItem(this.system.magazine.ammoId);
         break;
       case "measure-dv":
-        this._measureDv(actor, this.system.dvTable);
+        await this._setDvTable(actor, this.system.dvTable);
         break;
       default:
     }

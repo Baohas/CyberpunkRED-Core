@@ -13,7 +13,6 @@ import CyberdeckSelectProgramsPrompt from "../../dialog/cpr-select-install-progr
 import SelectItemUpgradePrompt from "../../dialog/cpr-select-item-upgrade-prompt.js";
 import BoosterAddModifierPrompt from "../../dialog/cpr-booster-add-modifier-prompt.js";
 import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
-import DvUtils from "../../utils/cpr-dvUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 
 /**
@@ -89,7 +88,7 @@ export default class CPRItemSheet extends ItemSheet {
     // if (["cyberdeck", "weapon", "armor", "cyberware", "clothing"].indexOf(data.item.type) > -1) {
     //   data.system.availableSlots = this.object.availableSlots();
     // }
-    const dvTables = await DvUtils.GetDvTables();
+    const dvTables = await SystemUtils.GetDvTables();
     cprData.dvTableNames = [];
     for (const table of dvTables) cprData.dvTableNames.push(table.name);
     foundryData.item.system = cprData;
