@@ -45,6 +45,7 @@
             <div class="key">{{ localize "EFFECT.ChangeKey" }}</div>
             <div class="value">{{ localize "EFFECT.ChangeValue" }}</div>
             <div class="mode">{{ localize "EFFECT.ChangeMode" }}</div>
+            <div class="situational">{{ localize "CPR.effectSheet.header.situational" }}</div>
             <div class="effect-controls">
                 <a class="effect-change-control" data-action="add"><i class="far fa-plus-square"></i></a>
             </div>
@@ -113,6 +114,7 @@
                         <span>{{localize "CPR.effectSheet.modifiers.addSubtract"}}</option>
                     {{/if}}
                 </div>
+                <div class="situational"><input class="toggle-situational" type="checkbox"></div>
                 <div class="effect-controls">
                     {{!-- Deleting a change is possible, but the changes Flag on the actor should be a map rather than an array.
                           Being an array creats a problem when a change in the middle of the list is deleted.

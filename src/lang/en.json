@@ -320,6 +320,7 @@
     "CPR.effectSheet.combat.stats.universalDamage": "Damage Bonus",
     "CPR.effectSheet.combat.stats.universalDamageReduction": "Damage Reduction",
     "CPR.effectSheet.combat.stats.walkSpeed": "Walking Speed",
+    "CPR.effectSheet.header.situational": "Situational?",
     "CPR.effectSheet.info.deleteAndModesComing": "Deleting changes and additional Active Effect modes for skills and combat abilities will be enabled in a future version",
     "CPR.effectSheet.keyCategory.combat": "Combat",
     "CPR.effectSheet.keyCategory.custom": "Custom Key",
