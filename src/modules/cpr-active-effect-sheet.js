@@ -1,6 +1,7 @@
 /* global ActiveEffectConfig CONST game mergeObject */
 /* eslint-env jquery */
 import LOGGER from "./utils/cpr-logger.js";
+import SystemUtils from "./utils/cpr-systemUtils.js";
 
 /**
  * Extend the base ActiveEffect class to implement system-specific logic.
@@ -110,7 +111,16 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
   }
 
   async _toggleSituational(event) {
+    LOGGER.trace("_toggleSituational | CPRActiveEffectSheet | Called.");
+    const effect = this.object;
+    const modnum = SystemUtils.GetEventDatum(event, "data-index");
+    const isSituational = event.target.checked;
 
+    await effect.setFlag(`${game.system.id}`, `changes.situational.${modnum}`, isSituational);
+
+    this.submit({
+      preventClose: true,
+    });
   }
 
   /**
@@ -133,6 +143,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
         },
         // we set the default "key category" here
         [`flags.${game.system.id}.changes.cats.${idx}`]: "skill",
+        [`flags.${game.system.id}.changes.situational.${idx}`]: false,
       },
     });
   }
@@ -150,7 +161,8 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     button.closest(".effect-change").remove();
     // remove the Flag tracking the key category
     // XXX: this doesn't work well if a mod in the middle of the list is deleted
-    effect.unsetFlag(game.system.id, `changes.cats.${button.dataset.index}`);
+    await effect.unsetFlag(game.system.id, `changes.cats.${button.dataset.index}`);
+    await effect.unsetFlag(game.system.id, `changes.situational.${button.dataset.index}`);
     return this.submit({ preventClose: true }).then(() => this.render());
   }
 

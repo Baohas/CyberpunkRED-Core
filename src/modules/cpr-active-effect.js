@@ -86,7 +86,7 @@ export default class CPRActiveEffect extends ActiveEffect {
    */
   async setModKeyCategory(num, category) {
     LOGGER.trace("setModKeyCategory | CPRActiveEffect | Called.");
-    this.setFlag(game.system.id, `changes.cats.${num}`, category);
+    await this.setFlag(game.system.id, `changes.cats.${num}`, category);
   }
 
   /**
