@@ -27,13 +27,9 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/dialog/cpr-split-item-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-update-announcement.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-universal-roll-prompt.hbs`,
-    `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-cyberdeck-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-damage-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-deathsave-prompt.hbs`,
-    `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-generic-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-roleAbility-prompt.hbs`,
-    `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-skill-prompt.hbs`,
-    `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-stat-prompt.hbs`,
 
     // Left Pane Actor Partials
     `systems/${game.system.id}/templates/actor/parts/left-pane/cpr-deathsave-block.hbs`,

@@ -3,7 +3,6 @@
 import LOGGER from "../utils/cpr-logger.js";
 import DiceSoNice from "../extern/cpr-dice-so-nice.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
-import VerifyRoll from "../dialog/cpr-verify-roll-prompt.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
 import * as CPRDialogs from "../dialog/cpr-roll-dialog.js";
 
