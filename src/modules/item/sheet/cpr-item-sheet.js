@@ -225,8 +225,9 @@ export default class CPRItemSheet extends ItemSheet {
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
     const allSkillsData = [];
-    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core }));
-    let formData = { skillList: allSkillsData, roleType, system: cprItemData };
+    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
+    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
+    let formData = { skillList: sortedAllSkills, roleType, system: cprItemData };
     formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
@@ -261,10 +262,11 @@ export default class CPRItemSheet extends ItemSheet {
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
     const allSkillsData = [];
-    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core }));
+    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
+    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
 
     let formData = {
-      skillList: allSkillsData, roleType, subRole, system: cprItemData,
+      skillList: sortedAllSkills, roleType, subRole, system: cprItemData,
     };
     formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {

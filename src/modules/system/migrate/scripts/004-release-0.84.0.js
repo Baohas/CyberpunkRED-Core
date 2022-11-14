@@ -128,12 +128,12 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
     if (effect.changes.length > 0) {
       for (const change of effect.changes) {
         switch (change.key) {
-          case "bonuses.cyberTech": {
+          case "bonuses.cybertech": {
             change.key = "bonuses.cybertech";
             needsUpdate = true;
             break;
           }
-          case "bonuses.weaponsTech": {
+          case "bonuses.weaponstech": {
             change.key = "bonuses.weaponstech";
             needsUpdate = true;
             break;
