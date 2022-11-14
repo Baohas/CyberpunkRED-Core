@@ -105,6 +105,7 @@
     "CPR.characterSheet.rightPane.effects.isSituational": "Is Situational Effect (Sometimes active)",
     "CPR.characterSheet.rightPane.effects.isNotSituational": "Not a Situational Effect (Always Active)",
     "CPR.characterSheet.rightPane.effects.noEditOnItem": "This effect comes from an owned Item, it cannot be edited until a future release.",
+    "CPR.characterSheet.rightPane.effects.situational": "Situational Effects",
     "CPR.characterSheet.rightPane.effects.source": "Source",
     "CPR.characterSheet.rightPane.effects.title": "Effects",
     "CPR.characterSheet.rightPane.effects.toggle": "Toggle Effect On/Off",

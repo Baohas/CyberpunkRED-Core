@@ -141,6 +141,11 @@ export default class CPRActorSheet extends ActorSheet {
         label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.inactive"),
         effects: [],
       },
+      situational: {
+        type: "situational",
+        label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.situational"),
+        effects: [],
+      },
     };
 
     const setting = game.settings.get(game.system.id, "displayStatusAsActiveEffects");
@@ -148,6 +153,8 @@ export default class CPRActorSheet extends ActorSheet {
     for (const e of this.actor.effects) {
       e._getSourceName(); // Trigger a lookup for the source name
       if (!(typeof e.flags.core !== "undefined" && typeof e.flags.core.statusId !== "undefined") || setting) {
+        const situationalList = Object.values(e.flags[`${game.system.id}`].changes.situational);
+        if (situationalList.some((c) => c) && !e.disabled) categories.situational.effects.push(e);
         if (e.disabled || e.system.isSuppressed) categories.inactive.effects.push(e);
         else categories.active.effects.push(e);
       }

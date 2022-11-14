@@ -15,6 +15,8 @@
                     <img class="effect-image" src="{{effect.icon}}"/>
                     <h4><strong>{{effect.label}}</strong><br/>
                         {{#each effect.changes as |change|}}
+                        {{#unless (cprCompare @../../index "===" 2)}}
+                          {{#unless (lookup effect.flags.cyberpunk-red-core.changes.situational @index)}}
                             {{!-- "this" is now an individual mod for the AE object --}}
                             {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes.cats @index) change.key}}
                             {{#if change.value}}
@@ -22,10 +24,21 @@
                             {{else}}
                                 0
                             {{~/if}}
-                            {{~#if (lookup effect.flags.cyberpunk-red-core.changes.situational @index)}}
-                            <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-location-dot"></i>
+                            {{~#unless @last}},{{~/unless}}
+                          {{~/unless}}
+                        {{else}}
+                          {{#if (lookup effect.flags.cyberpunk-red-core.changes.situational @index)}}
+                            {{!-- "this" is now an individual mod for the AE object --}}
+                            {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes.cats @index) change.key}}
+                            {{#if change.value}}
+                                {{cprEffectModMode change.mode change.value}}
+                            {{~else}}
+                                0
                             {{~/if}}
-                            {{~#unless @last}},{{/unless}}
+                            {{!-- <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-location-dot"></i> --}}
+                            <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-location-dot"></i>{{~#unless @last}},{{/unless}}
+                          {{/if}}
+                        {{/unless}}
                         {{/each}}
                     </h4>
                 </div>
@@ -36,11 +49,13 @@
                     {{/if}}
                 </div>
                 <div class="effect-actions text-padding-right">
+                  {{#unless (cprCompare @../index "===" 2)}}
                     {{#if (cprShowEffectToggle effect ../../actor.name)}}
                         <a class="effect-control" data-action="toggle" title="{{localize 'CPR.characterSheet.rightPane.effects.toggle'}}">
                             <i class="far {{#if effect.disabled}}fa-circle{{else}}fa-check-circle{{/if}}"></i>
                         </a>
                     {{/if}}
+                  {{/unless}}
                     {{#if (cprCompare effect.sourceName "===" ../../actor.name)}}
                         <a class="effect-control" data-action="edit" title="{{localize 'CPR.characterSheet.rightPane.effects.edit'}}">
                             <i class="fas fa-edit"></i>
