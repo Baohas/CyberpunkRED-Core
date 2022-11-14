@@ -21,7 +21,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: '<p>Hand removed, drop anything it was holding.</p>'
+    value: <p>Hand removed, drop anything it was holding.</p>
   effects: ''
   favorite: false
   location: body

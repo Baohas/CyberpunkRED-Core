@@ -26,7 +26,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: '<p>Throwing hands, does ignore half armor.</p>'
+    value: <p>Throwing hands, does ignore half armor.</p>
   dvTable: ''
   equipped: owned
   favorite: false

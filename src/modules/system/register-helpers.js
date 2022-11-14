@@ -1,4 +1,4 @@
-/* global Handlebars game getProperty */
+/* global Handlebars game getProperty duplicate */
 import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -494,9 +494,35 @@ export default function registerHandlebarsHelpers() {
    *
    * Example: Resist Torture/Drugs -> Resist Torture Or Drugs
    */
-  Handlebars.registerHelper("cprSplitJoinCoreSkills", (skillObj) => {
-    LOGGER.trace("cprSplitJoinCoreSkills | handlebarsHelper | Called.");
-    return "CPR.global.skills.".concat(SystemUtils.slugify(skillObj.name));
+  Handlebars.registerHelper("cprGetLocalizedlNameKey", (object, type = false) => {
+    LOGGER.trace("cprGetLocalizedlNameKey | handlebarsHelper | Called.");
+    const objectType = (typeof object === "string") ? type : object.type;
+    const name = (typeof object === "string") ? object : object.name;
+    let localizedKey = "";
+    switch (objectType) {
+      case "skill": {
+        // "CPR.global.itemType.skill.cybertech"
+        localizedKey = `CPR.global.itemType.skill.${SystemUtils.slugify(name)}`;
+        break;
+      }
+      case "role": {
+        // "CPR.global.role.tech.name"
+        localizedKey = `CPR.global.role.${SystemUtils.slugify(name)}.name`;
+        break;
+      }
+      case "roleAbility": {
+        // "CPR.global.role.tech.ability.fabricationExpertise":
+        for (const role of Object.keys(CPR.roleList)) {
+          const localizedRoleKey = `CPR.global.role.${role}.ability.${SystemUtils.slugify(name)}`;
+          if (SystemUtils.Localize(localizedRoleKey) !== localizedRoleKey) {
+            localizedKey = localizedRoleKey;
+          }
+        }
+        break;
+      }
+      default:
+    }
+    return (SystemUtils.Localize(localizedKey) === localizedKey) ? name : localizedKey;
   });
 
   /**
@@ -505,28 +531,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprSortCoreSkills", (skillObjArray) => {
     LOGGER.trace("cprSortCoreSkills | handlebarsHelper | Called.");
-    const sortedSkills = [];
-    skillObjArray.forEach((o) => {
-      const newElement = o;
-      if (o.system.core) {
-        const tstring = "CPR.global.skills.".concat(SystemUtils.slugify(o.name));
-        newElement.translatedName = SystemUtils.Localize(tstring).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      } else {
-        newElement.translatedName = o.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      }
-      sortedSkills.push(newElement);
-    });
-
-    sortedSkills.sort((a, b) => {
-      let comparator = 0;
-      if (a.translatedName > b.translatedName) {
-        comparator = 1;
-      } else if (b.translatedName > a.translatedName) {
-        comparator = -1;
-      }
-      return comparator;
-    });
-    return sortedSkills;
+    return SystemUtils.SortItemListByName(skillObjArray);
   });
 
   /**

@@ -17,7 +17,7 @@ effects:
         mode: 2
         priority: null
         value: '2'
-      - key: bonuses.cyberTech
+      - key: bonuses.cybertech
         mode: 2
         priority: null
         value: '2'
@@ -33,7 +33,7 @@ effects:
         mode: 2
         priority: null
         value: '2'
-      - key: bonuses.weaponsTech
+      - key: bonuses.weaponstech
         mode: 2
         priority: null
         value: '2'

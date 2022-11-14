@@ -23,7 +23,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: '<p>Basic ammo, nothing special.</p>'
+    value: <p>Basic ammo, nothing special.</p>
   favorite: false
   price:
     category: cheap

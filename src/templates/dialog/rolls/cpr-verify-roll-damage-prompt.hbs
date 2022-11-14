@@ -7,7 +7,7 @@
         {{#if (cprCompare (cprListContains "assaultRifle,smg,heavySmg" rollData.weaponType) "||" rollData.isAutofire)}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.global.skills.autofire"}}?
+                {{localize "CPR.global.itemType.skill.autofire"}}?
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
                 <input type="checkbox" id="isAutofire" name="isAutofire" {{#if rollData.isAutofire}} checked{{/if}}>

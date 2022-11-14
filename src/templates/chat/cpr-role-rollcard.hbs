@@ -3,7 +3,7 @@
   <div class="rollcard-top">
     <div class="cpr-block chat-rollTitle-stat">
       <div class="text-center text-padding-top text-normal">
-        {{rollTitle}}
+        {{localize (cprGetLocalizedlNameKey rollTitle "roleAbility")}}
       </div>
       <div class="text-center text-small">{{localize "CPR.rolls.roleAbility"}}</div>
     </div>
@@ -38,7 +38,7 @@
             {{/if}}
 
             {{#if skillValue}}
-            <div class="text-normal">{{skillName}}: {{skillValue}}</div>
+            <div class="text-normal">{{localize (cprGetLocalizedlNameKey skillName "skill")}}: {{skillValue}}</div>
             {{/if}}
 
             {{#if mods}}

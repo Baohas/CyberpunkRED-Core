@@ -1,5 +1,4 @@
 /* global Ruler canvas duplicate game */
-import DvUtils from "../utils/cpr-dvUtils.js";
 
 export default function overrideRulerFunctions() {
   const foundryPrototype = Ruler.prototype._getSegmentLabel;
@@ -22,7 +21,7 @@ export default function overrideRulerFunctions() {
               }
             }
             if (DV > 0) {
-              returnLabel = `${returnLabel} (${displayTable} DV: ${DV})`;
+              returnLabel = `${returnLabel}\n${displayTable} DV: ${DV}`;
             }
           }
         }

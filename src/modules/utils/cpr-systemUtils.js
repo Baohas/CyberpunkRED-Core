@@ -1,4 +1,4 @@
-/* global game ui Folder canvas */
+/* global game ui Folder canvas duplicate */
 /* eslint-env jquery */
 
 import LOGGER from "./cpr-logger.js";
@@ -89,6 +89,39 @@ export default class CPRSystemUtils {
   }
 
   /**
+   * Get DV tables that map DVs to distances when using a ranged weapon
+   * @returns {Array} - array of tables
+   */
+  static async GetDvTables() {
+    LOGGER.trace("GetDvTables | CPRSystemUtils | called.");
+    const tableList = await CPRSystemUtils.GetCompendiumDocs(game.settings.get(game.system.id, "dvRollTableCompendium"));
+    tableList.sort((a, b) => ((a.name > b.name) ? 1 : -1));
+    return tableList;
+  }
+
+  static async SetDvTable(token, tableName) {
+    LOGGER.trace("SetDvTable | CPRSystemUtils | called.");
+    const dvTables = await CPRSystemUtils.GetDvTables();
+    const [selectedTable] = dvTables.filter((table) => table.name === tableName);
+    const dvSetting = selectedTable ? { name: selectedTable.name, table: {} } : null;
+    if (selectedTable) {
+      for (const result of selectedTable.results) {
+        // Rolltable entry of type is a Text entry
+        if (result.type === 0) {
+          const { range } = result;
+          const key = `${range[0]}_${range[1]}`;
+          const dv = result.text;
+          dvSetting.table[key.toString()] = dv;
+        }
+      }
+    }
+    // Because we're setting a flag to an object, Foundry will try to merge it if we
+    // just call setFlag. We unset it first.
+    await token.document.unsetFlag(game.system.id, "cprDvTable");
+    await token.document.setFlag(game.system.id, "cprDvTable", dvSetting);
+  }
+
+  /**
    * Get rollable tables by name, optionally by searching with a regexp. Note this is not meant for
    * compendia, but rather rolltables created in the world.
    *
@@ -168,11 +201,11 @@ export default class CPRSystemUtils {
    * what this method does. It takes a string and converts it to camelcase.
    *
    * These are used as parts of translation string identifies too. Examples:
-   *  "CPR.global.skills.languageStreetslang"               "CPR.global.skills.athleticsAndContortionist"
-   *  "CPR.global.skills.basicTechAndWeaponstech"           "CPR.global.skills.compositionAndEducation"
-   *  "CPR.global.skills.enduranceAndResistTortureAndDrugs" "CPR.global.skills.persuasionAndTrading"
-   *  "CPR.global.skills.evasionAndDance"                   "CPR.global.skills.pickLockAndPickPocket"
-   *  "CPR.global.skills.firstAidAndParamedicAndSurgery"
+   *  "CPR.global.itemType.skill.languageStreetslang"               "CPR.global.itemType.skill.athleticsAndContortionist"
+   *  "CPR.global.itemType.skill.basicTechAndWeaponstech"           "CPR.global.itemType.skill.compositionAndEducation"
+   *  "CPR.global.itemType.skill.enduranceAndResistTortureAndDrugs" "CPR.global.itemType.skill.persuasionAndTrading"
+   *  "CPR.global.itemType.skill.evasionAndDance"                   "CPR.global.itemType.skill.pickLockAndPickPocket"
+   *  "CPR.global.itemType.skill.firstAidAndParamedicAndSurgery"
    *
    * NOTE: The strings above are used for Elfines characters, and not used in the code base anywhere. We
    *       have CI that checks all translation strings are used, so to avoid making that fail, please
@@ -196,6 +229,39 @@ export default class CPRSystemUtils {
       return parenCaseSplit.charAt(0).toLowerCase() + parenCaseSplit.slice(1);
     }
     return andCaseSplit.charAt(0).toLowerCase() + andCaseSplit.slice(1);
+  }
+
+  static SortItemListByName(itemList) {
+    LOGGER.trace("SortItemListByName | CPRSystemUtils | Called.");
+    const itemDataList = itemList.map((o) => ({ name: o.name, uuid: o.uuid, type: o.type }));
+    const sortedList = itemDataList.length > 0 ? [] : itemList;
+    if (sortedList.length === 0) {
+      const sortedDataList = [];
+      itemDataList.forEach((itemData) => {
+        const newItemData = duplicate(itemData);
+        const localizedValue = `CPR.global.itemType.${newItemData.type}.`.concat(this.slugify(newItemData.name));
+        if (this.Localize(localizedValue) !== localizedValue) {
+          newItemData.name = this.Localize(localizedValue);
+        }
+        sortedDataList.push(newItemData);
+      });
+
+      sortedDataList.sort((a, b) => {
+        let comparator = 0;
+        if (a.name > b.name) {
+          comparator = 1;
+        } else if (b.name > a.name) {
+          comparator = -1;
+        }
+        return comparator;
+      });
+
+      for (const itemData of sortedDataList) {
+        const [item] = itemList.filter((i) => i.uuid === itemData.uuid);
+        sortedList.push(item);
+      }
+    }
+    return sortedList;
   }
 
   /* USER SETTING UTILS */

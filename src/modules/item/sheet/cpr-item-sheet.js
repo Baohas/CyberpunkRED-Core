@@ -13,7 +13,6 @@ import CyberdeckSelectProgramsPrompt from "../../dialog/cpr-select-install-progr
 import SelectItemUpgradePrompt from "../../dialog/cpr-select-item-upgrade-prompt.js";
 import BoosterAddModifierPrompt from "../../dialog/cpr-booster-add-modifier-prompt.js";
 import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
-import DvUtils from "../../utils/cpr-dvUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 
 /**
@@ -89,7 +88,7 @@ export default class CPRItemSheet extends ItemSheet {
     // if (["cyberdeck", "weapon", "armor", "cyberware", "clothing"].indexOf(data.item.type) > -1) {
     //   data.system.availableSlots = this.object.availableSlots();
     // }
-    const dvTables = await DvUtils.GetDvTables();
+    const dvTables = await SystemUtils.GetDvTables();
     cprData.dvTableNames = [];
     for (const table of dvTables) cprData.dvTableNames.push(table.name);
     foundryData.item.system = cprData;
@@ -226,8 +225,9 @@ export default class CPRItemSheet extends ItemSheet {
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
     const allSkillsData = [];
-    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core }));
-    let formData = { skillList: allSkillsData, roleType, system: cprItemData };
+    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
+    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
+    let formData = { skillList: sortedAllSkills, roleType, system: cprItemData };
     formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
@@ -262,10 +262,11 @@ export default class CPRItemSheet extends ItemSheet {
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
     const allSkillsData = [];
-    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core }));
+    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
+    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
 
     let formData = {
-      skillList: allSkillsData, roleType, subRole, system: cprItemData,
+      skillList: sortedAllSkills, roleType, subRole, system: cprItemData,
     };
     formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
