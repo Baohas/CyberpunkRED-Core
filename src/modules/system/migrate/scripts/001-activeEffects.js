@@ -272,7 +272,7 @@ export default class ActiveEffectsMigration extends CPRMigration {
         // the key category is saved as a flag on the AE document for the UI to pull later
         for (const [category, entries] of Object.entries(CPR.activeEffectKeys)) {
           if (typeof entries[change.key] !== "undefined") {
-            newData[`flags.${game.system.id}.changes.${index}`] = category;
+            newData[`flags.${game.system.id}.changes.cats.${index}`] = category;
             break;
           }
         }
@@ -280,7 +280,7 @@ export default class ActiveEffectsMigration extends CPRMigration {
       });
     } else {
       changes.forEach(() => {
-        newData[`flags.${game.system.id}.changes.${index}`] = cats[index];
+        newData[`flags.${game.system.id}.changes.cats.${index}`] = cats[index];
         index += 1;
       });
     }

@@ -110,7 +110,7 @@
             {{effect.label}}:
         </div>
         <div class="item flexrow setting-value text-nowrap">
-          {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes @index) change.key}}
+          {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes.cats @index) change.key}}
           {{#if change.value}}
               {{cprEffectModMode change.mode change.value}}
           {{else}}

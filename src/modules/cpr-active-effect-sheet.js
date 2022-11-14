@@ -132,7 +132,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
           value: "",
         },
         // we set the default "key category" here
-        [`flags.${game.system.id}.changes.${idx}`]: "skill",
+        [`flags.${game.system.id}.changes.cats.${idx}`]: "skill",
       },
     });
   }
@@ -150,7 +150,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     button.closest(".effect-change").remove();
     // remove the Flag tracking the key category
     // XXX: this doesn't work well if a mod in the middle of the list is deleted
-    effect.unsetFlag(game.system.id, `changes.${button.dataset.index}`);
+    effect.unsetFlag(game.system.id, `changes.cats.${button.dataset.index}`);
     return this.submit({ preventClose: true }).then(() => this.render());
   }
 

@@ -56,8 +56,8 @@
             <li class="effect-change flexrow">
                 <div class="key" data-index="{{i}}">
                     <span class="form-fields effect-key-category" data-index="{{i}}">
-                        <select name="flags.cyberpunk-red-core.changes.{{i}}" data-dtype="String">
-                            {{#select (lookup ../data.flags.cyberpunk-red-core.changes i)}}
+                        <select name="flags.cyberpunk-red-core.changes.cats.{{i}}" data-dtype="String">
+                            {{#select (lookup ../data.flags.cyberpunk-red-core.changes.cats i)}}
                                 {{#each (cprFindConfigObj "activeEffectKeys" ) as |effectCategory ec|}}
                                 {{!-- Dynamically create the various effect keys. Added here to pass language pipeline:
                                     CPR.effectSheet.keyCategory.combat
@@ -72,10 +72,10 @@
                             {{/select}}
                         </select>
                     </span>
-                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "custom")}}
+                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "custom")}}
                         <input type="text" name="changes.{{i}}.key" value="{{change.key}}"/>
                     {{/if}}
-                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "skill")}}
+                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "skill")}}
                         <select class="effect-change-key" name="changes.{{i}}.key" data-dtype="String">
                             {{#select change.key}}
                                 {{#each (cprGetSkillsForEffects ../this) as |modkeyname modkey|}}
@@ -84,10 +84,10 @@
                             {{/select}}
                         </select>
                     {{/if}}
-                    {{#if (cprListContains "combat,netrun,role,stat" (lookup ../data.flags.cyberpunk-red-core.changes i))}}
+                    {{#if (cprListContains "combat,netrun,role,stat" (lookup ../data.flags.cyberpunk-red-core.changes.cats i))}}
                         <select name="changes.{{i}}.key" data-dtype="String">
                             {{#select change.key}}
-                                {{#each (cprFindConfigValue "activeEffectKeys" (lookup ../data.flags.cyberpunk-red-core.changes i)) as |modkeyname modkey|}}
+                                {{#each (cprFindConfigValue "activeEffectKeys" (lookup ../data.flags.cyberpunk-red-core.changes.cats i)) as |modkeyname modkey|}}
                                     <option {{#if (cprObjectListContains ../../data.changes "key" modkey)}}disabled{{/if}} value="{{modkey}}">{{localize modkeyname}}</option>
                                 {{/each}}
                             {{/select}}
@@ -101,7 +101,7 @@
                     {{!-- Using other modes for skills means we need to make changes to actor.bonuses. Rather than 0 all values out, it
                                 needs to persist the existing value, and the mode so the math applies correctly. This has implications
                                 on how to present in the actor sheet too. --}}
-                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "stat")}}
+                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "stat")}}
                         <select name="changes.{{i}}.mode" data-dtype="Number">
                             {{#select change.mode}}
                                 {{#each (cprFindConfigObj "effectModifierModes") as |modename modenum|}}
@@ -119,7 +119,7 @@
                     {{!-- Deleting a change is possible, but the changes Flag on the actor should be a map rather than an array.
                           Being an array creats a problem when a change in the middle of the list is deleted.
                            <a class="effect-change-control" data-action="delete" data-index={{i}}><i class="fas fa-trash"></i></a>  --}}
-                    {{#unless (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "stat")}}
+                    {{#unless (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "stat")}}
                         <i class="fas fa-question-circle" title="{{localize "CPR.effectSheet.info.deleteAndModesComing"}}"></i>
                     {{/unless}}
                 </div>

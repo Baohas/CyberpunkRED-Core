@@ -18,7 +18,7 @@
                         <h4 class="effect-name"><strong>{{effect.label}}</strong><br />
                             {{#each effect.changes as |change|}}
                                 {{!-- "this" is now an individual "change" for the AE object --}}
-                                {{cprGetChangeNameByKey ../../item (lookup effect.flags.cyberpunk-red-core.changes @index) change.key}}
+                                {{cprGetChangeNameByKey ../../item (lookup effect.flags.cyberpunk-red-core.changes.cats @index) change.key}}
                                 {{#if change.value}}
                                     {{cprEffectModMode change.mode change.value}}{{#unless @last}},{{/unless}}
                                 {{else}}
