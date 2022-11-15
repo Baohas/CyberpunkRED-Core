@@ -1,4 +1,4 @@
-/* global */
+/* global game */
 
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LOGGER from "../../utils/cpr-logger.js";
@@ -128,6 +128,21 @@ const Attackable = function Attackable() {
 
     // finally, total up active effects improving attacks
     universalBonusAttack += actor.bonuses.universalAttack;
+
+    const effects = actor.effects.contents;
+    const modChanges = [];
+
+    effects.forEach((e) => {
+      if (!e.disabled) {
+        const { id } = e;
+        e.changes.forEach((c, v) => {
+          c.isSituational = e.flags[`${game.system.id}`].changes.situational[v].isSituational;
+          c.onByDefault = e.flags[`${game.system.id}`].changes.situational[v].onByDefault;
+          c.id = `${c.key}-${id}`;
+          modChanges.push(c);
+        });
+      }
+    });
 
     switch (type) {
       case CPRRolls.rollTypes.AIMED: {

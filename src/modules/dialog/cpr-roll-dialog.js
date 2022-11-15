@@ -143,9 +143,10 @@ export class CPRRollDialog extends CPRDialog {
    */
   _activeEffectToggle(event) {
     LOGGER.trace("_activeEffectToggle | CPRRollDialog | Called.");
+    const changeKey = SystemUtils.GetEventDatum(event, "name");
     const value = parseInt(SystemUtils.GetEventDatum(event, "data-value"), 10);
     const source = SystemUtils.GetEventDatum(event, "data-source");
-    const id = SystemUtils.GetEventDatum(event, "data-mod-id");
+    const id = `${changeKey}-${SystemUtils.GetEventDatum(event, "data-mod-id")}`;
 
     if (this.rollData.mods.some((m) => m.id === id)) {
       this.rollData.removeMod(id);

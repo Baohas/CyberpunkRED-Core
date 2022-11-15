@@ -840,6 +840,14 @@ export default function registerHandlebarsHelpers() {
   /**
    * Get the transient bonus value applied to skills applied from Active Effects
    */
+  Handlebars.registerHelper("cprGetEffectChangeId", (changeKey, effectId) => {
+    LOGGER.trace("cprGetSkillBonus | handlebarsHelper | Called.");
+    return `${changeKey}-${effectId}`;
+  });
+
+  /**
+   * Get the transient bonus value applied to skills applied from Active Effects
+   */
   Handlebars.registerHelper("cprGetSkillBonus", (skillName, actor) => {
     LOGGER.trace("cprGetSkillBonus | handlebarsHelper | Called.");
     return actor.getSkillMod(skillName);

@@ -118,7 +118,7 @@
           {{/if}}
         </div>
         <div class="item flexrow setting-value text-nowrap item-end">
-          <input {{checked (cprObjectListContains ../../rollData.mods "id" effect.id)}} name="{{change.key}}" class="active-effect-checkbox" type="checkbox" data-value="{{change.value}}" data-source="{{effect.label}}" data-mod-id="{{effect.id}}" data-dtype="Checkbox">
+          <input {{checked (cprObjectListContains ../../rollData.mods "id" (cprGetEffectChangeId change.key effect.id))}} name="{{change.key}}" class="active-effect-checkbox" type="checkbox" data-value="{{change.value}}" data-source="{{effect.label}}" data-mod-id="{{effect.id}}" data-dtype="Checkbox">
         </div>
       </li>
       {{/if}}
