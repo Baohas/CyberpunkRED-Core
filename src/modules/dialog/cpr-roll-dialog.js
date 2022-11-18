@@ -151,7 +151,7 @@ export class CPRRollDialog extends CPRDialog {
     if (this.rollData.mods.some((m) => m.id === id)) {
       this.rollData.removeMod(id);
     } else {
-      this.rollData.addMod(value, source, id);
+      this.rollData.addMod({ value, source, id });
     }
 
     this.render();

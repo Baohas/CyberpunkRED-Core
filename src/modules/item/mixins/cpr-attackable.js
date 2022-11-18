@@ -1,8 +1,9 @@
-/* global game */
+/* global game duplicate */
 
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import Rules from "../../utils/cpr-rules.js";
+import CPRMod from "../../rolls/cpr-modifiers.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 /**
@@ -86,7 +87,7 @@ const Attackable = function Attackable() {
     const skillName = skillItem.name;
     // total up bonuses from skills and stats
     const skillValue = actor.getSkillLevel(skillName);
-    const skillMod = actor.getSkillMod(skillName);
+    // const skillMod = actor.getSkillMod(skillName);
     let cprRoll;
     let statName;
     if (cprWeaponData.isRanged && cprWeaponData.weaponType !== "thrownWeapon") {
@@ -130,57 +131,55 @@ const Attackable = function Attackable() {
     universalBonusAttack += actor.bonuses.universalAttack;
 
     const effects = actor.effects.contents;
-    const modChanges = [];
+    const allMods = CPRMod.getAllModifiers(effects);
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
-    effects.forEach((e) => {
-      if (!e.disabled) {
-        const { id } = e;
-        e.changes.forEach((c, v) => {
-          c.isSituational = e.flags[`${game.system.id}`].changes.situational[v].isSituational;
-          c.onByDefault = e.flags[`${game.system.id}`].changes.situational[v].onByDefault;
-          c.id = `${c.key}-${id}`;
-          modChanges.push(c);
-        });
-      }
-    });
+    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName), "AeBonus");
+
+    const aimedShotMods = CPRMod.getRelevantMods(filteredMods, "aimedShot", "AeBonus");
+    const rangedMods = CPRMod.getRelevantMods(filteredMods, "ranged", "AeBonus");
+    const meleeMods = CPRMod.getRelevantMods(filteredMods, "melee", "AeBonus");
+    const autofireMods = CPRMod.getRelevantMods(filteredMods, "autofire", "AeBonus");
+    const suppressiveMods = CPRMod.getRelevantMods(filteredMods, "suppressive", "AeBonus");
+    const singleShotMods = CPRMod.getRelevantMods(filteredMods, "singleShot", "AeBonus");
 
     switch (type) {
       case CPRRolls.rollTypes.AIMED: {
         cprRoll = new CPRRolls.CPRAimedAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
-        cprRoll.addMod(actor.bonuses.aimedShot, "Aimed Shot Bonus");
+        cprRoll.addMod(aimedShotMods);
         if (cprWeaponData.isRanged) {
-          cprRoll.addMod(actor.bonuses.ranged, "Ranged Bonus");
+          cprRoll.addMod(rangedMods);
         } else {
-          cprRoll.addMod(actor.bonuses.melee, "Melee Bonus");
+          cprRoll.addMod(meleeMods);
         }
         break;
       }
       case CPRRolls.rollTypes.AUTOFIRE: {
         cprRoll = new CPRRolls.CPRAutofireRoll(weaponName, niceStatName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
-        cprRoll.addMod(actor.bonuses.autofire, "Autofire Bonus");
-        cprRoll.addMod(actor.bonuses.ranged, "Ranged Bonus");
+        cprRoll.addMod(autofireMods);
+        cprRoll.addMod(rangedMods);
         break;
       }
       case CPRRolls.rollTypes.SUPPRESSIVE: {
         cprRoll = new CPRRolls.CPRSuppressiveFireRoll(weaponName, niceStatName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
-        cprRoll.addMod(actor.bonuses.suppressive, "Supressive Fire Bonus");
-        cprRoll.addMod(actor.bonuses.ranged, "Ranged Bonus");
+        cprRoll.addMod(suppressiveMods);
+        cprRoll.addMod(rangedMods);
         break;
       }
       default:
         cprRoll = new CPRRolls.CPRAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
         if (cprWeaponData.isRanged) {
-          cprRoll.addMod(actor.bonuses.singleShot, "Single Shot Bonus");
-          cprRoll.addMod(actor.bonuses.ranged, "Ranged Bonus");
+          cprRoll.addMod(singleShotMods);
+          cprRoll.addMod(rangedMods);
         } else {
-          cprRoll.addMod(actor.bonuses.melee, "Melee Bonus");
+          cprRoll.addMod(meleeMods);
         }
     }
 
     // apply other known mods
-    cprRoll.addMod(actor.getArmorPenaltyMods(statName), `${statName} Penalty`);
-    cprRoll.addMod(actor.getWoundStateMods(), "Wound State Penalty");
-    cprRoll.addMod(skillMod, `${skillName} Bonus`);
+    cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: `${statName} Penalty` }]);
+    cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
+    cprRoll.addMod(skillMods);
     const upgradeValue = this.getAllUpgradesFor("attackmod");
     const upgradeType = this.getUpgradeTypeFor("attackmod");
     let upgradeResult = cprWeaponData.attackmod;
@@ -195,7 +194,7 @@ const Attackable = function Attackable() {
         upgradeResult += upgradeValue;
       }
     }
-    cprRoll.addMod(upgradeResult, "Upgrade Mod");
+    cprRoll.addMod({ value: upgradeResult, source: "Upgrade Mod" });
 
     if (cprRoll instanceof CPRRolls.CPRAttackRoll && cprWeaponData.isRanged) {
       Rules.lawyer(this.hasAmmo(cprRoll), "CPR.messages.weaponAttackOutOfBullets");

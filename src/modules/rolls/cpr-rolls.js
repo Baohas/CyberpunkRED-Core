@@ -86,14 +86,43 @@ export class CPRRoll {
   /**
    * Apply a mod to the roll.
    *
-   * @param {Number} value - the mod to apply to the roll (value)
-   * @param {String} source - where it came from
-   * @param {String} id - a unique identifier (comes from parent effect)
+   * @param {CPRMod} mod - CPRMod object containing information for the modifier, including the following:
+   * @param {Number} mod.value - the mod to apply to the roll (value)
+   * @param {String} mod.source - where it came from
+   * @param {String} mod.id - a unique identifier (comes from parent effect)
    */
-  addMod(value, source, id) {
+  addMod(mod) {
     LOGGER.trace("addMod | CPRRoll | Called.");
-    const mod = { value, source, id };
-    if (mod && mod.value !== 0) this.mods.push(mod);
+    const foo = mod.toString();
+    if (Array.isArray(mod)) {
+      mod.forEach((m) => {
+        if (m && m.value !== 0) this.mods.push(m);
+      });
+    } else {
+      switch (typeof mod) {
+        case "object":
+          if (mod.value !== 0) this.mods.push(mod);
+          break;
+        case "number": {
+          const modObj = {
+            value: mod,
+            source: "Unknown Source",
+          };
+          if (modObj.value !== 0) this.mods.push(modObj);
+          break;
+        }
+        case "string": {
+          const modObj = {
+            value: Number.parseInt(mod, 10),
+            source: "Unknown Source",
+          };
+          if (modObj.value !== 0) this.mods.push(modObj);
+        }
+          break;
+        default:
+          break;
+      }
+    }
   }
 
   /**
