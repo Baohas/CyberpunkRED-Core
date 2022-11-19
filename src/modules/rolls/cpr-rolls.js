@@ -535,7 +535,7 @@ export class CPRAimedAttackRoll extends CPRAttackRoll {
     super(weaponName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
     this.rollTitle = `${weaponName}`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-aimed-attack-rollcard.hbs`;
-    this.addMod(-8, "Aimed Shot Penalty");
+    this.addMod([{ value: -8, source: "Aimed Shot Penalty" }]);
     this.location = "head";
   }
 }

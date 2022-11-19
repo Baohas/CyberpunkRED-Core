@@ -98,30 +98,31 @@ export default class CPRRoleItem extends CPRItem {
     // some role abilities modify skills too, so we account for that here
     let roleName;
     let roleValue = 0;
-    const roleSkillBonuses = this.system.bonuses.filter((b) => b.name === skillName);
-    if (roleSkillBonuses.length > 0) {
-      roleValue += Math.floor(this.system.rank / this.system.bonusRatio);
+    const roleSkillBonusArray = [];
+    const roleSkillBonus = this.system.bonuses.find((b) => b.name === skillName);
+    if (roleSkillBonus) {
+      roleValue = Math.floor(this.system.rank / this.system.bonusRatio);
       roleName = this.system.mainRoleAbility;
+      roleSkillBonusArray.push({
+        source: roleName,
+        value: roleValue,
+        key: `bonuses.${SystemUtils.slugify(skillName)}`,
+        category: "skill",
+      });
     }
     // check whether a sub-ability of a role has the bonuses property. They might affect skills.
-    const subroleSkillBonuses = [];
     this.system.abilities.forEach((a) => {
-      if ("bonuses" in a) {
-        a.bonuses.forEach((b) => {
-          if (b.name === skillName) subroleSkillBonuses.push(a);
+      if (a.bonuses?.find((b) => b.name === skillName)) {
+        roleName = a.name;
+        roleValue = Math.floor(a.rank / a.bonusRatio);
+        roleSkillBonusArray.push({
+          source: roleName,
+          value: roleValue,
+          key: `bonuses.${SystemUtils.slugify(skillName)}`,
+          category: "skill",
         });
       }
     });
-    if (subroleSkillBonuses.length > 0) {
-      subroleSkillBonuses.forEach((b, index) => {
-        if (roleName) {
-          roleName += `, ${b.name}`;
-        } else if (index === 0) {
-          roleName = b.name;
-        }
-        roleValue += Math.floor(b.rank / b.bonusRatio);
-      });
-    }
-    return [roleName, roleValue];
+    return roleSkillBonusArray;
   }
 }

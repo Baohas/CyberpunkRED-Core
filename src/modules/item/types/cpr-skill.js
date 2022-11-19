@@ -3,6 +3,7 @@ import CPR from "../../system/config.js";
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPRMod from "../../rolls/cpr-modifiers.js";
 
 /**
  * Extend the base CPRItem object with things specific to actor skills.
@@ -34,27 +35,29 @@ export default class CPRSkillItem extends CPRItem {
     const statValue = actor.getStat(statName);
     const skillName = this.name;
     const skillLevel = cprItemData.level;
+
+    const effects = actor.effects.contents;
+    const allMods = CPRMod.getAllModifiers(effects);
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName), "AeBonus");
+
     let roleName;
     let roleValue = 0;
 
+    let roleSkillMods = [];
     actor.itemTypes.role.forEach((r) => {
-      const [rn, rv] = r.getSkillBonuses(skillName);
-      if (rn) {
-        if (roleName) {
-          roleName += `, ${rn}`;
-        } else {
-          roleName = rn;
-        }
-        roleValue += rv;
-      }
+      const foo = r.getSkillBonuses(skillName);
+      roleSkillMods = roleSkillMods.concat(foo);
     });
 
     const cprRoll = new CPRRolls.CPRSkillRoll(niceStatName, statValue, skillName, skillLevel, roleName, roleValue);
-    cprRoll.addMod(actor.getArmorPenaltyMods(statName));
-    cprRoll.addMod(actor.getWoundStateMods());
-    cprRoll.addMod(actor.getUpgradeMods(statName));
-    cprRoll.addMod(actor.getUpgradeMods(skillName));
-    cprRoll.addMod(actor.bonuses[SystemUtils.slugify(skillName)]); // active effects
+    cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: `Armor Penalty (${statName})` }]);
+    cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
+    cprRoll.addMod(roleSkillMods);
+    cprRoll.addMod([{ value: actor.getUpgradeMods(statName), source: "Upgrade Stat Mod" }]);
+    cprRoll.addMod([{ value: actor.getUpgradeMods(skillName), source: "Upgrade Skill Mod"}]);
+    cprRoll.addMod(skillMods); // active effects
     return cprRoll;
   }
 }

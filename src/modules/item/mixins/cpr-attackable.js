@@ -101,16 +101,10 @@ const Attackable = function Attackable() {
     const statValue = actor.getStat(statName);
     let roleName;
     let roleValue = 0;
+    let roleSkillMods = [];
     actor.itemTypes.role.forEach((r) => {
-      const [rn, rv] = r.getSkillBonuses(skillName);
-      if (rn) {
-        if (roleName) {
-          roleName += `, ${rn}`;
-        } else {
-          roleName = rn;
-        }
-        roleValue += rv;
-      }
+      const foo = r.getSkillBonuses(skillName);
+      roleSkillMods = roleSkillMods.concat(foo);
     });
 
     // total up attack bonuses directly from role abilities (not indirectly from skills)
@@ -177,9 +171,10 @@ const Attackable = function Attackable() {
     }
 
     // apply other known mods
-    cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: `${statName} Penalty` }]);
+    cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: `Armor Penalty (${statName})` }]);
     cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
     cprRoll.addMod(skillMods);
+    cprRoll.addMod(roleSkillMods);
     const upgradeValue = this.getAllUpgradesFor("attackmod");
     const upgradeType = this.getUpgradeTypeFor("attackmod");
     let upgradeResult = cprWeaponData.attackmod;
