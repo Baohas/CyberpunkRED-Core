@@ -7,6 +7,7 @@ export default class CPRMod {
   constructor(effect, change, index) {
     LOGGER.trace("constructor | CPRMod | Called.");
     this.change = change;
+    this.category = effect.flags[`${game.system.id}`].changes.cats[index];
     this.isSituational = effect.flags[`${game.system.id}`].changes.situational[index].isSituational;
     this.onByDefault = effect.flags[`${game.system.id}`].changes.situational[index].onByDefault;
     this.id = `${change.key}-${effect.id}`;

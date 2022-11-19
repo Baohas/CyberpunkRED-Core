@@ -1,5 +1,6 @@
 /* eslint-disable max-classes-per-file */
 /* global duplicate game */
+import CPRMod from "../rolls/cpr-modifiers.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";
@@ -46,59 +47,32 @@ export class CPRRollDialog extends CPRDialog {
 
     // Get effects relevant to the roll.
     const effects = this.actor.effects.contents;
-    const filteredEffects = [];
+    const allMods = CPRMod.getAllModifiers(effects);
+    let filteredMods = [];
 
     if (this.prototypeChain.includes("CPRDamageRoll")) {
-      const damageEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.bonuses.universalDamage`));
-      damageEffects.forEach((e) => filteredEffects.push(e));
+      const damageMods = allMods.filter((m) => m.key === `system.stats.bonuses.universalDamage`);
+      filteredMods = filteredMods.concat(damageMods);
     }
 
     if (this.prototypeChain.includes("CPRAttackRoll")) {
-      const attackEffects = effects.filter((e) => e.changes.some((c) => c.key === `bonuses.ranged`));
-      attackEffects.forEach((e) => filteredEffects.push(e));
+      const attackMods = allMods.filter((m) => m.key === `bonuses.ranged`);
+      filteredMods = filteredMods.concat(attackMods);
     }
 
     // Stat Effects. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
     if ((this.prototypeChain.includes("CPRStatRoll") || this.prototypeChain.includes("CPRRoleRoll")) && !this.prototypeChain.includes("CPRCyberdeckRoll")) {
-      const statEffects = effects.filter((e) => e.changes.some((c) => c.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`));
-      statEffects.forEach((e) => {
-        e.changes.forEach((c, v) => {
-          c.isSituational = e.flags[`${game.system.id}`].changes.situational[v].isSituational;
-        });
-
-        const updatedEffect = {};
-        updatedEffect.changes = e.changes.filter((c) => c.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`);
-        updatedEffect.flags = e.flags;
-        updatedEffect.id = e.id;
-        updatedEffect.label = e.label;
-
-        filteredEffects.push(updatedEffect);
-      });
+      const statMods = allMods.filter((m) => m.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`);
+      filteredMods = filteredMods.concat(statMods);
     }
 
     // Skill Effects.
     if ((this.prototypeChain.includes("CPRSkillRoll") || this.prototypeChain.includes("CPRRoleRoll")) && !this.prototypeChain.includes("CPRCyberdeckRoll")) {
-      const skillEffects = effects.filter((e) => e.changes.some((c) => c.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`));
-      skillEffects.forEach((e) => {
-        e.changes.forEach((c, v) => {
-          c.isSituational = e.flags[`${game.system.id}`].changes.situational[v].isSituational;
-        });
-
-        const updatedEffect = {};
-        updatedEffect.changes = e.changes.filter((c) => c.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`);
-        updatedEffect.flags = e.flags;
-        updatedEffect.id = e.id;
-        updatedEffect.label = e.label;
-
-        filteredEffects.push(updatedEffect);
-      });
+      const skillMods = allMods.filter((m) => m.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}` && m.isSituational);
+      filteredMods = filteredMods.concat(skillMods);
     }
 
-    filteredEffects.filter((e) => {
-      const flag = this.actor.getFlag("cyberpunk-red-core", `isSituational-${e.id}`);
-      return flag;
-    });
-    data.activeEffects = filteredEffects;
+    data.filteredMods = filteredMods;
     return data;
   }
 
@@ -151,7 +125,7 @@ export class CPRRollDialog extends CPRDialog {
     if (this.rollData.mods.some((m) => m.id === id)) {
       this.rollData.removeMod(id);
     } else {
-      this.rollData.addMod({ value, source, id });
+      this.rollData.addMod({ value, source, id, key: changeKey });
     }
 
     this.render();

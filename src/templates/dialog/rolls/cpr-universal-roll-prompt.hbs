@@ -55,7 +55,7 @@
             </div>
             <div class="item flexrow setting-value text-nowrap item-end" data-tooltip="
                 {{#each rollData.mods}}
-                  {{this.source}}: {{this.value}}
+                  {{this.source}} {{#if this.key}}({{localize (cprFindConfigValue "activeEffectKeys" this.category this.key)}}){{/if}}: {{this.value}}
                   <br>
                 {{/each}}
               ">
@@ -99,33 +99,26 @@
         {{/if}}
     </ol>
 
+    {{#if (cprCompare filteredMods.length ">" 0)}}
     <hr>
-
     <ol class="items-list">
-      {{#each activeEffects as |effect|}}
-      {{#each effect.changes as |change|}}
-      {{#if change.isSituational}}
+      {{#each filteredMods as |mod|}}
       <li class="item flexrow">
         <div class="item flexrow setting-name text-nowrap text-bold">
-            {{effect.label}}:
+            {{mod.source}}:
         </div>
         <div class="item flexrow setting-value text-nowrap">
-          {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes.cats @index) change.key}}
-          {{#if change.value}}
-              {{cprEffectModMode change.mode change.value}}
-          {{else}}
-              0
-          {{/if}}
+          {{localize (cprFindConfigValue "activeEffectKeys" mod.category mod.key)}}
+          {{cprEffectModMode mod.change.mode mod.value}}
         </div>
         <div class="item flexrow setting-value text-nowrap item-end">
-          <input {{checked (cprObjectListContains ../../rollData.mods "id" (cprGetEffectChangeId change.key effect.id))}} name="{{change.key}}" class="active-effect-checkbox" type="checkbox" data-value="{{change.value}}" data-source="{{effect.label}}" data-mod-id="{{effect.id}}" data-dtype="Checkbox">
+          <input {{checked (cprObjectListContains ../../rollData.mods "id" mod.id)}} name="{{mod.key}}" class="active-effect-checkbox" type="checkbox" data-value="{{mod.value}}" data-source="{{mod.source}}" data-mod-id="{{mod.id}}" data-dtype="Checkbox">
         </div>
       </li>
-      {{/if}}
       {{/each}}
       <br>
-      {{/each}}
     </ol>
+    {{/if}}
 
 {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 

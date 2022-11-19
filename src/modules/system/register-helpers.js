@@ -221,10 +221,13 @@ export default function registerHandlebarsHelpers() {
   /**
    * Get a config mapping from config.js by name and key
    */
-  Handlebars.registerHelper("cprFindConfigValue", (obj, key) => {
+  Handlebars.registerHelper("cprFindConfigValue", (obj, key1, key2) => {
     LOGGER.trace("cprFindConfigValue | handlebarsHelper | Called.");
     if (obj in CPR) {
-      return CPR[obj][key];
+      if (typeof key2 === "string") {
+        return CPR[obj][key1][key2];
+      }
+      return CPR[obj][key1];
     }
     return "INVALID_KEY";
   });
@@ -838,7 +841,7 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Get the transient bonus value applied to skills applied from Active Effects
+   * Get uniquely identifying change ID (we create this by appending the effect ID to the change key)
    */
   Handlebars.registerHelper("cprGetEffectChangeId", (changeKey, effectId) => {
     LOGGER.trace("cprGetSkillBonus | handlebarsHelper | Called.");
