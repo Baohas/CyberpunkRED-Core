@@ -394,21 +394,16 @@ export class CPRSkillRoll extends CPRStatRoll {
    * @param {Number} statValue - value of the stat
    * @param {String} skillName - name of the skill for the roll
    * @param {Number} skillValue - value of the skill level
-   * @param {String} roleName - name of a role that affects the roll
-   * @param {Number} roleValue - value of said role
    * @param {String} universalBonusAttack - a blanket mod bestowed by certain abilities or items
    */
-  constructor(statName, statValue, skillName, skillValue, roleName, roleValue, universalBonusAttack) {
+  constructor(statName, statValue, skillName, skillValue) {
     LOGGER.trace("constructor | CPRSkillRoll | Called.");
     super(skillName, statValue);
     this.statName = statName;
     this.skillName = skillName;
     this.skillValue = skillValue;
-    this.roleName = roleName;
-    this.roleValue = roleValue;
     this.rollTitle = SystemUtils.Localize(`CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`) === `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`
       ? skillName : SystemUtils.Localize(`CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`);
-    this.universalBonusAttack = universalBonusAttack;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-skill-rollcard.hbs`;
   }
 
@@ -421,10 +416,7 @@ export class CPRSkillRoll extends CPRStatRoll {
    */
   _computeBase() {
     LOGGER.trace("_computeBase | CPRSkillRoll | Called.");
-    if (this.universalBonusAttack) {
-      return this.initialRoll + this.totalMods() + this.statValue + this.skillValue + this.roleValue + this.luck + this.universalBonusAttack;
-    }
-    return this.initialRoll + this.totalMods() + this.statValue + this.skillValue + this.roleValue + this.luck;
+    return this.initialRoll + this.totalMods() + this.statValue + this.skillValue + this.luck;
   }
 }
 
@@ -484,17 +476,16 @@ export class CPRAttackRoll extends CPRSkillRoll {
    * @param {Number} statValue - value of said stat
    * @param {String} skillName - name for the skill to be considered
    * @param {Number} skillValue - value of said skill
-   * @param {String} roleName - name of the role if applicable
-   * @param {Number} roleValue - value of said role
    * @param {String} weaponType - type of the weapon which is embedded in links to damage rolls in the roll card
    * @param {Number} universalBonusAttack - high level bonus provided by some role abilities and items
    */
-  constructor(attackName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack) {
+  constructor(attackName, statName, statValue, skillName, skillValue, weaponType, universalBonusAttack) {
     LOGGER.trace("constructor | CPRAttackRoll | Called.");
-    super(statName, statValue, skillName, skillValue, roleName, roleValue, universalBonusAttack);
+    super(statName, statValue, skillName, skillValue, universalBonusAttack);
     this.rollTitle = `${attackName}`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-attack-rollcard.hbs`;
     this.weaponType = weaponType;
+    this.universalBonusAttack = universalBonusAttack;
     this.location = "body";
   }
 
@@ -525,14 +516,12 @@ export class CPRAimedAttackRoll extends CPRAttackRoll {
    * @param {Number} statValue - value of said stat
    * @param {String} skillName - name for the skill to be considered
    * @param {Number} skillValue - value of said skill
-   * @param {String} roleName - name of the role if applicable
-   * @param {Number} roleValue - value of said role
    * @param {String} weaponType - type of the weapon which is embedded in links to damage rolls in the roll card
    * @param {Number} universalBonusAttack - high level bonus provided by some role abilities and items
    */
-  constructor(weaponName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack) {
+  constructor(weaponName, statName, statValue, skillName, skillValue, weaponType, universalBonusAttack) {
     LOGGER.trace("constructor | CPRAimedAttackRoll | Called.");
-    super(weaponName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
+    super(weaponName, statName, statValue, skillName, skillValue, weaponType, universalBonusAttack);
     this.rollTitle = `${weaponName}`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-aimed-attack-rollcard.hbs`;
     this.addMod([{ value: -8, source: "Aimed Shot Penalty" }]);
@@ -551,14 +540,12 @@ export class CPRAutofireRoll extends CPRAttackRoll {
    * @param {Number} statValue - value of said stat
    * @param {String} skillName - name for the skill to be considered
    * @param {Number} skillValue - value of said skill
-   * @param {String} roleName - name of the role if applicable
-   * @param {Number} roleValue - value of said role
    * @param {String} weaponType - type of the weapon which is embedded in links to damage rolls in the roll card
    * @param {Number} universalBonusAttack - high level bonus provided by some role abilities and items
    */
-  constructor(weaponName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack) {
+  constructor(weaponName, statName, statValue, skillName, skillValue, weaponType, universalBonusAttack) {
     LOGGER.trace("constructor | CPRAutofireRoll | Called.");
-    super(weaponName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
+    super(weaponName, statName, statValue, skillName, skillValue, weaponType, universalBonusAttack);
     this.rollTitle = `${weaponName}`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-autofire-rollcard.hbs`;
   }
@@ -575,14 +562,12 @@ export class CPRSuppressiveFireRoll extends CPRAttackRoll {
    * @param {Number} statValue - value of said stat
    * @param {String} skillName - name for the skill to be considered
    * @param {Number} skillValue - value of said skill
-   * @param {String} roleName - name of the role if applicable
-   * @param {Number} roleValue - value of said role
    * @param {String} weaponType - type of the weapon which is embedded in links to damage rolls in the roll card
    * @param {Number} universalBonusAttack - high level bonus provided by some role abilities and items
    */
-  constructor(weaponName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack) {
+  constructor(weaponName, statName, statValue, skillName, skillValue, weaponType, universalBonusAttack) {
     LOGGER.trace("constructor | CPRSuppressiveFireRoll | Called.");
-    super(weaponName, statName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
+    super(weaponName, statName, statValue, skillName, skillValue, weaponType, universalBonusAttack);
     this.rollTitle = `${weaponName}`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-suppressive-fire-rollcard.hbs`;
   }
@@ -590,7 +575,6 @@ export class CPRSuppressiveFireRoll extends CPRAttackRoll {
 
 /**
  * RoleRolls are rolls for role abilities. I hope this is easier to say in other languages.
- * TODO: we can probably remove this once roles are items
  */
 export class CPRRoleRoll extends CPRRoll {
   /**

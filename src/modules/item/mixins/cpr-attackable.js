@@ -99,8 +99,6 @@ const Attackable = function Attackable() {
     // total up skill bonuses from role abilities and subRole abilities
     const niceStatName = SystemUtils.Localize(`CPR.global.stats.${statName}`);
     const statValue = actor.getStat(statName);
-    let roleName;
-    let roleValue = 0;
     let roleSkillMods = [];
     actor.itemTypes.role.forEach((r) => {
       const foo = r.getSkillBonuses(skillName);
@@ -139,7 +137,7 @@ const Attackable = function Attackable() {
 
     switch (type) {
       case CPRRolls.rollTypes.AIMED: {
-        cprRoll = new CPRRolls.CPRAimedAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
+        cprRoll = new CPRRolls.CPRAimedAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType, universalBonusAttack);
         cprRoll.addMod(aimedShotMods);
         if (cprWeaponData.isRanged) {
           cprRoll.addMod(rangedMods);
@@ -149,19 +147,19 @@ const Attackable = function Attackable() {
         break;
       }
       case CPRRolls.rollTypes.AUTOFIRE: {
-        cprRoll = new CPRRolls.CPRAutofireRoll(weaponName, niceStatName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
+        cprRoll = new CPRRolls.CPRAutofireRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType, universalBonusAttack);
         cprRoll.addMod(autofireMods);
         cprRoll.addMod(rangedMods);
         break;
       }
       case CPRRolls.rollTypes.SUPPRESSIVE: {
-        cprRoll = new CPRRolls.CPRSuppressiveFireRoll(weaponName, niceStatName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
+        cprRoll = new CPRRolls.CPRSuppressiveFireRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType, universalBonusAttack);
         cprRoll.addMod(suppressiveMods);
         cprRoll.addMod(rangedMods);
         break;
       }
       default:
-        cprRoll = new CPRRolls.CPRAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
+        cprRoll = new CPRRolls.CPRAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType, universalBonusAttack);
         if (cprWeaponData.isRanged) {
           cprRoll.addMod(singleShotMods);
           cprRoll.addMod(rangedMods);
