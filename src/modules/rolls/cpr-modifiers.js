@@ -12,7 +12,7 @@ export default class CPRMod {
     this.onByDefault = effect.flags[`${game.system.id}`].changes.situational[index].onByDefault;
     this.id = `${change.key}-${effect.id}`;
     this.source = effect.label;
-    this.value = change.value;
+    this.value = Number.parseInt(change.value, 10);
     this.key = change.key;
   }
 

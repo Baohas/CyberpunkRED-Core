@@ -93,7 +93,6 @@ export class CPRRoll {
    */
   addMod(mod) {
     LOGGER.trace("addMod | CPRRoll | Called.");
-    const foo = mod.toString();
     if (Array.isArray(mod)) {
       mod.forEach((m) => {
         if (m && m.value !== 0) this.mods.push(m);

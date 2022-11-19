@@ -112,7 +112,7 @@
           {{cprEffectModMode mod.change.mode mod.value}}
         </div>
         <div class="item flexrow setting-value text-nowrap item-end">
-          <input {{checked (cprObjectListContains ../../rollData.mods "id" mod.id)}} name="{{mod.key}}" class="active-effect-checkbox" type="checkbox" data-value="{{mod.value}}" data-source="{{mod.source}}" data-mod-id="{{mod.id}}" data-dtype="Checkbox">
+          <input {{checked (cprObjectListContains ../rollData.mods "id" mod.id)}} class="active-effect-checkbox" type="checkbox" data-mod-id="{{mod.id}}" data-dtype="Checkbox">
         </div>
       </li>
       {{/each}}

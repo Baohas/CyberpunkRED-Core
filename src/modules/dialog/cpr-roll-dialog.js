@@ -47,32 +47,51 @@ export class CPRRollDialog extends CPRDialog {
 
     // Get effects relevant to the roll.
     const effects = this.actor.effects.contents;
-    const allMods = CPRMod.getAllModifiers(effects);
+    const allSituationalMods = CPRMod.getAllModifiers(effects).filter((m) => m.isSituational);
     let filteredMods = [];
 
     if (this.prototypeChain.includes("CPRDamageRoll")) {
-      const damageMods = allMods.filter((m) => m.key === `system.stats.bonuses.universalDamage`);
+      const damageMods = allSituationalMods.filter((m) => m.key === `system.stats.bonuses.universalDamage`);
       filteredMods = filteredMods.concat(damageMods);
     }
 
-    if (this.prototypeChain.includes("CPRAttackRoll")) {
-      const attackMods = allMods.filter((m) => m.key === `bonuses.ranged`);
+    if (this.prototypeChain.includes("CPRAttackRoll") && !this.prototypeChain.includes("CPRProgramAttackRoll")) {
+      const attackRollBonusKeys = ["bonuses.universalAttack"];
+
+      if (this.item.system.isRanged) {
+        attackRollBonusKeys.push("bonuses.ranged");
+      } else {
+        attackRollBonusKeys.push("bonuses.melee");
+      }
+
+      if (this.prototypeChain[0] === "CPRAttackRoll") {
+        attackRollBonusKeys.push("bonuses.singleShot");
+      } else if (this.prototypeChain.includes("CPRAimedAttackRoll")) {
+        attackRollBonusKeys.push("bonuses.aimedShot");
+      } else if (this.prototypeChain.includes("CPRAutofireRoll")) {
+        attackRollBonusKeys.push("bonuses.autofire");
+      } else if (this.prototypeChain.includes("CPRSuppressiveFireRoll")) {
+        attackRollBonusKeys.push("bonuses.suppressive");
+      }
+
+      const attackMods = allSituationalMods.filter((m) => attackRollBonusKeys.includes(m.key));
       filteredMods = filteredMods.concat(attackMods);
     }
 
     // Stat Effects. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
     if ((this.prototypeChain.includes("CPRStatRoll") || this.prototypeChain.includes("CPRRoleRoll")) && !this.prototypeChain.includes("CPRCyberdeckRoll")) {
-      const statMods = allMods.filter((m) => m.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`);
+      const statMods = allSituationalMods.filter((m) => m.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`);
       filteredMods = filteredMods.concat(statMods);
     }
 
     // Skill Effects.
     if ((this.prototypeChain.includes("CPRSkillRoll") || this.prototypeChain.includes("CPRRoleRoll")) && !this.prototypeChain.includes("CPRCyberdeckRoll")) {
-      const skillMods = allMods.filter((m) => m.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}` && m.isSituational);
+      const skillMods = allSituationalMods.filter((m) => m.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`);
       filteredMods = filteredMods.concat(skillMods);
     }
 
     data.filteredMods = filteredMods;
+    this.filteredMods = filteredMods;
     return data;
   }
 
@@ -97,7 +116,7 @@ export class CPRRollDialog extends CPRDialog {
    * Promise is returned before the form is resubmitted. So, if a user toggles aimed shot but doesn't change any
    * other data before pressing OK, the location is still set to "body". This function sets `cprRoll.location` to
    * head when the toggle is checked and back to body when the toggle is unchecked, fixing the above issue (until
-   * I can figure out how to resolve the Promise after the form is submitted.)
+   * someone can figure out how to resolve the Promise after the form is submitted.)
    *
    * @param {*} event
    */
@@ -117,15 +136,13 @@ export class CPRRollDialog extends CPRDialog {
    */
   _activeEffectToggle(event) {
     LOGGER.trace("_activeEffectToggle | CPRRollDialog | Called.");
-    const changeKey = SystemUtils.GetEventDatum(event, "name");
-    const value = parseInt(SystemUtils.GetEventDatum(event, "data-value"), 10);
-    const source = SystemUtils.GetEventDatum(event, "data-source");
-    const id = `${changeKey}-${SystemUtils.GetEventDatum(event, "data-mod-id")}`;
+    const id = SystemUtils.GetEventDatum(event, "data-mod-id");
+    const mod = this.filteredMods.find((m) => m.id === id);
 
     if (this.rollData.mods.some((m) => m.id === id)) {
       this.rollData.removeMod(id);
     } else {
-      this.rollData.addMod({ value, source, id, key: changeKey });
+      this.rollData.addMod([mod]);
     }
 
     this.render();
