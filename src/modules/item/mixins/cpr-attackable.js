@@ -101,26 +101,34 @@ const Attackable = function Attackable() {
     const statValue = actor.getStat(statName);
     let roleSkillMods = [];
     actor.itemTypes.role.forEach((r) => {
-      const foo = r.getSkillBonuses(skillName);
-      roleSkillMods = roleSkillMods.concat(foo);
+      roleSkillMods = roleSkillMods.concat(r.getSkillBonuses(skillName));
     });
 
-    // total up attack bonuses directly from role abilities (not indirectly from skills)
-    let universalBonusAttack = 0;
-    this.actor.itemTypes.role.forEach((r) => {
+    // total up universal attack bonuses directly from role abilities (not indirectly from skills)
+    const roleAttackMods = [];
+    actor.itemTypes.role.forEach((r) => {
       if (r.system.universalBonuses.includes("attack")) {
-        universalBonusAttack += Math.floor(r.system.rank / r.system.bonusRatio);
-      }
-      const subroleUniversalBonuses = r.system.abilities.filter((a) => a.universalBonuses.includes("attack"));
-      if (subroleUniversalBonuses.length > 0) {
-        subroleUniversalBonuses.forEach((b) => {
-          universalBonusAttack += Math.floor(b.rank / b.bonusRatio);
+        const value = Math.floor(r.system.rank / r.system.bonusRatio);
+        roleAttackMods.push({
+          value,
+          source: r.system.mainRoleAbility,
+          key: "bonuses.universalAttack",
+          category: "combat",
         });
       }
+      r.system.abilities.forEach((a) => {
+        if (a.universalBonuses?.includes("attack")) {
+          const source = a.name;
+          const value = Math.floor(a.rank / a.bonusRatio);
+          roleAttackMods.push({
+            value,
+            source,
+            key: `bonuses.universalAttack`,
+            category: "combat",
+          });
+        }
+      });
     });
-
-    // finally, total up active effects improving attacks
-    universalBonusAttack += actor.bonuses.universalAttack;
 
     const effects = actor.effects.contents;
     const allMods = CPRMod.getAllModifiers(effects);
@@ -137,7 +145,7 @@ const Attackable = function Attackable() {
 
     switch (type) {
       case CPRRolls.rollTypes.AIMED: {
-        cprRoll = new CPRRolls.CPRAimedAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType, universalBonusAttack);
+        cprRoll = new CPRRolls.CPRAimedAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
         cprRoll.addMod(aimedShotMods);
         if (cprWeaponData.isRanged) {
           cprRoll.addMod(rangedMods);
@@ -147,19 +155,19 @@ const Attackable = function Attackable() {
         break;
       }
       case CPRRolls.rollTypes.AUTOFIRE: {
-        cprRoll = new CPRRolls.CPRAutofireRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType, universalBonusAttack);
+        cprRoll = new CPRRolls.CPRAutofireRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
         cprRoll.addMod(autofireMods);
         cprRoll.addMod(rangedMods);
         break;
       }
       case CPRRolls.rollTypes.SUPPRESSIVE: {
-        cprRoll = new CPRRolls.CPRSuppressiveFireRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType, universalBonusAttack);
+        cprRoll = new CPRRolls.CPRSuppressiveFireRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
         cprRoll.addMod(suppressiveMods);
         cprRoll.addMod(rangedMods);
         break;
       }
       default:
-        cprRoll = new CPRRolls.CPRAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType, universalBonusAttack);
+        cprRoll = new CPRRolls.CPRAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
         if (cprWeaponData.isRanged) {
           cprRoll.addMod(singleShotMods);
           cprRoll.addMod(rangedMods);
@@ -173,6 +181,7 @@ const Attackable = function Attackable() {
     cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
     cprRoll.addMod(skillMods);
     cprRoll.addMod(roleSkillMods);
+    cprRoll.addMod(roleAttackMods);
     const upgradeValue = this.getAllUpgradesFor("attackmod");
     const upgradeType = this.getUpgradeTypeFor("attackmod");
     let upgradeResult = cprWeaponData.attackmod;

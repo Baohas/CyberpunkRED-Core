@@ -96,16 +96,14 @@ export default class CPRRoleItem extends CPRItem {
   getSkillBonuses(skillName) {
     LOGGER.trace("getSkillBonuses | CPRRoleItem | Called.");
     // some role abilities modify skills too, so we account for that here
-    let roleName;
-    let roleValue = 0;
     const roleSkillBonusArray = [];
     const roleSkillBonus = this.system.bonuses.find((b) => b.name === skillName);
     if (roleSkillBonus) {
-      roleValue = Math.floor(this.system.rank / this.system.bonusRatio);
-      roleName = this.system.mainRoleAbility;
+      const value = Math.floor(this.system.rank / this.system.bonusRatio);
+      const source = this.system.mainRoleAbility;
       roleSkillBonusArray.push({
-        source: roleName,
-        value: roleValue,
+        value,
+        source,
         key: `bonuses.${SystemUtils.slugify(skillName)}`,
         category: "skill",
       });
@@ -113,11 +111,11 @@ export default class CPRRoleItem extends CPRItem {
     // check whether a sub-ability of a role has the bonuses property. They might affect skills.
     this.system.abilities.forEach((a) => {
       if (a.bonuses?.find((b) => b.name === skillName)) {
-        roleName = a.name;
-        roleValue = Math.floor(a.rank / a.bonusRatio);
+        const value = Math.floor(a.rank / a.bonusRatio);
+        const source = a.name;
         roleSkillBonusArray.push({
-          source: roleName,
-          value: roleValue,
+          value,
+          source,
           key: `bonuses.${SystemUtils.slugify(skillName)}`,
           category: "skill",
         });
