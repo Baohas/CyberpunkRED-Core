@@ -74,8 +74,10 @@ export class CPRRollDialog extends CPRDialog {
         attackRollBonusKeys.push("bonuses.suppressive");
       }
 
+      const upgradeMods = this.item.getAllUpgradeMods("attackmod").filter((m) => m.isSituational);
+
       const attackMods = allSituationalMods.filter((m) => attackRollBonusKeys.includes(m.key));
-      filteredMods = filteredMods.concat(attackMods);
+      filteredMods = filteredMods.concat(attackMods).concat(upgradeMods);
     }
 
     // Stat Effects. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)

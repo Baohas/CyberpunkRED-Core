@@ -14,6 +14,7 @@ export default class CPRMod {
     this.source = effect.label;
     this.value = Number.parseInt(change.value, 10);
     this.key = change.key;
+    this.changeMode = change.mode;
   }
 
   static getAllModifiers(effects) {

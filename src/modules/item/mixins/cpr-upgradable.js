@@ -208,19 +208,21 @@ const Upgradable = function Upgradable() {
       if (overrides.length > 0) {
         overrides.sort((a, b) => b.system.modifiers[dataPoint].value - a.system.modifiers[dataPoint].value);
         const mod = overrides[0].system.modifiers[dataPoint];
-        mod.id = randomID();
+        mod.id = `${overrides[0].name}-${key}-0`;
         mod.source = overrides[0].name;
         mod.key = key;
         mod.category = category;
+        mod.changeMode = 2;
         relevantUpgrades.push(mod);
       } else {
-        installedUpgrades.forEach((u) => {
+        installedUpgrades.forEach((u, index) => {
           if (u.system.modifiers[dataPoint].value > 0) {
             const mod = duplicate(u.system.modifiers[dataPoint]);
-            mod.id = randomID();
+            mod.id = `${u.name}-${key}-${index}`;
             mod.source = u.name;
             mod.key = key;
             mod.category = category;
+            mod.changeMode = 2;
             relevantUpgrades.push(mod);
           }
         });

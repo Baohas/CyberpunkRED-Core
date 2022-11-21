@@ -1,4 +1,4 @@
-/* global game duplicate */
+/* global */
 
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LOGGER from "../../utils/cpr-logger.js";
@@ -183,17 +183,19 @@ const Attackable = function Attackable() {
     cprRoll.addMod(roleSkillMods);
     cprRoll.addMod(roleAttackMods);
 
-    // Mod from weapon attackmod.
-    cprRoll.addMod({
-      value: cprWeaponData.attackmod,
-      source: this.name,
-      category: "combat",
-      key: "bonuses.universalAttack",
-    });
-
     // Mod from item upgrades that affect attackmod.
-    const relevantUpgradeMods = this.getAllUpgradeMods("attackmod");
+    const relevantUpgradeMods = this.getAllUpgradeMods("attackmod").filter((m) => (m.isSituational && m.onByDefault) || !m.isSituational);
     cprRoll.addMod(relevantUpgradeMods);
+
+    // Mod from weapon attackmod. We will only add it if there are no upgrade mods that override this value.
+    if (relevantUpgradeMods.some((m) => !(m.type === "override"))) {
+      cprRoll.addMod({
+        value: cprWeaponData.attackmod,
+        source: this.name,
+        category: "combat",
+        key: "bonuses.universalAttack",
+      });
+    }
 
     if (cprRoll instanceof CPRRolls.CPRAttackRoll && cprWeaponData.isRanged) {
       Rules.lawyer(this.hasAmmo(cprRoll), "CPR.messages.weaponAttackOutOfBullets");

@@ -86,7 +86,7 @@
         </div>
         <div class="item flexrow setting-value text-nowrap">
           {{localize (cprFindConfigValue "activeEffectKeys" mod.category mod.key)}}
-          {{cprEffectModMode mod.change.mode mod.value}}
+          {{cprEffectModMode mod.changeMode mod.value}}
         </div>
         <div class="item flexrow setting-value text-nowrap item-end">
           <input {{checked (cprObjectListContains ../rollData.mods "id" mod.id)}} class="active-effect-checkbox" type="checkbox" data-mod-id="{{mod.id}}" data-dtype="Checkbox">
