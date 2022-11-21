@@ -751,7 +751,7 @@ export default class CPRItemSheet extends ItemSheet {
     // we need to calculate the amount of slots available on the Cyberdeck for programs
 
     // Start with getting the total number of slot available
-    const upgradeValue = cyberdeck.getAllUpgradesFor("slots");
+    const upgradeValue = cyberdeck.getTotalUpgradeValues("slots");
     const upgradeType = cyberdeck.getUpgradeTypeFor("slots");
 
     let cyberdeckSlots = (upgradeType === "override") ? upgradeValue : cyberdeck.system.slots + upgradeValue;

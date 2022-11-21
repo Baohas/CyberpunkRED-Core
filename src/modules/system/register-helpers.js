@@ -258,7 +258,7 @@ export default function registerHandlebarsHelpers() {
       LOGGER.trace(`hasOptionalSlots is 0`);
     }
     if (obj.type === "cyberdeck") {
-      const upgradeValue = obj.getAllUpgradesFor("slots");
+      const upgradeValue = obj.getTotalUpgradeValues("slots");
       const upgradeType = obj.getUpgradeTypeFor("slots");
       const totalSlots = (upgradeType === "override") ? upgradeValue : obj.system.slots + upgradeValue;
       const usedSlots = obj.system.upgrades.length + obj.system.programs.installed.length;
@@ -671,7 +671,7 @@ export default function registerHandlebarsHelpers() {
     const itemType = obj.type;
     let upgradeText = "";
     if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
-      const upgradeValue = obj.getAllUpgradesFor(dataPoint);
+      const upgradeValue = obj.getTotalUpgradeValues(dataPoint);
       if (upgradeValue !== 0 && upgradeValue !== "") {
         const modType = obj.getUpgradeTypeFor(dataPoint);
         const modSource = (itemType === "weapon") ? SystemUtils.Localize("CPR.itemSheet.weapon.attachments") : SystemUtils.Localize("CPR.itemSheet.common.upgrades");
@@ -694,7 +694,7 @@ export default function registerHandlebarsHelpers() {
       upgradeResult = baseValue;
     }
     if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
-      const upgradeValue = obj.getAllUpgradesFor(dataPoint);
+      const upgradeValue = obj.getTotalUpgradeValues(dataPoint);
       const upgradeType = obj.getUpgradeTypeFor(dataPoint);
       if (upgradeValue !== "" && upgradeValue !== 0) {
         if (upgradeType === "override") {

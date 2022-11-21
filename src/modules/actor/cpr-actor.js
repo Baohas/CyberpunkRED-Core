@@ -569,7 +569,7 @@ export default class CPRActor extends Actor {
     itemTypes.forEach((itemType) => {
       const itemList = this.itemTypes[itemType].filter((i) => i.system.equipped === "equipped" && i.system.isUpgraded);
       itemList.forEach((i) => {
-        const upgradeValue = i.getAllUpgradesFor(baseName);
+        const upgradeValue = i.getTotalUpgradeValues(baseName);
         const upgradeType = i.getUpgradeTypeFor(baseName);
         if (modType === "override") {
           if (upgradeType === "override" && upgradeValue > modValue) {
@@ -1277,7 +1277,7 @@ export default class CPRActor extends Actor {
       case "head": {
         armorList.forEach((a) => {
           const cprArmorData = a.system;
-          const upgradeValue = a.getAllUpgradesFor("headSp");
+          const upgradeValue = a.getTotalUpgradeValues("headSp");
           const upgradeType = a.getUpgradeTypeFor("headSp");
           cprArmorData.headLocation.sp = Number(cprArmorData.headLocation.sp);
           cprArmorData.headLocation.ablation = Number(cprArmorData.headLocation.ablation);
@@ -1300,7 +1300,7 @@ export default class CPRActor extends Actor {
           const cprArmorData = a.system;
           cprArmorData.bodyLocation.sp = Number(cprArmorData.bodyLocation.sp);
           cprArmorData.bodyLocation.ablation = Number(cprArmorData.bodyLocation.ablation);
-          const upgradeValue = a.getAllUpgradesFor("bodySp");
+          const upgradeValue = a.getTotalUpgradeValues("bodySp");
           const upgradeType = a.getUpgradeTypeFor("bodySp");
           const armorSp = (upgradeType === "override") ? upgradeValue : cprArmorData.bodyLocation.sp + upgradeValue;
           cprArmorData.bodyLocation.ablation = ablation < 0

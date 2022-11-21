@@ -219,7 +219,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   _repairArmor(event) {
     LOGGER.trace("_repairArmor | CPRCharacterActorSheet | Called.");
     const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
-    const upgradeValue = item.getAllUpgradesFor("shieldHp");
+    const upgradeValue = item.getTotalUpgradeValues("shieldHp");
     const upgradeType = item.getUpgradeTypeFor("shieldHp");
     const currentArmorBodyValue = item.system.bodyLocation.sp;
     const currentArmorHeadValue = item.system.headLocation.sp;

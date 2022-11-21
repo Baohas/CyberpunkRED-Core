@@ -29,7 +29,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     LOGGER.trace("availableSlots | CPRCyberdeckItem | Called.");
     const cprItemData = duplicate(this.system);
     let unusedSlots = 0;
-    const upgradeValue = this.getAllUpgradesFor("slots");
+    const upgradeValue = this.getTotalUpgradeValues("slots");
     const upgradeType = this.getUpgradeTypeFor("slots");
     unusedSlots = (upgradeType === "override") ? upgradeValue : cprItemData.slots + upgradeValue;
     cprItemData.programs.installed.forEach((program) => {

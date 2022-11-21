@@ -183,23 +183,17 @@ const Attackable = function Attackable() {
     cprRoll.addMod(roleSkillMods);
     cprRoll.addMod(roleAttackMods);
 
-    const weaponAttackMod = this._getAttackMod();
-
-    const relevantUpgrades = [];
-    cprWeaponData.upgrades.forEach((u) => {
-      if (u.system.modifiers.attackmod.value > 0) {
-        relevantUpgrades.push(u.name);
-      }
+    // Mod from weapon attackmod.
+    cprRoll.addMod({
+      value: cprWeaponData.attackmod,
+      source: this.name,
+      category: "combat",
+      key: "bonuses.universalAttack",
     });
 
-    let upgradeName = "";
-    if (relevantUpgrades.length > 1) {
-      upgradeName = " (Mult. Upgrades)";
-    } else if (relevantUpgrades.length === 1) {
-      upgradeName = ` (${relevantUpgrades[0]})`;
-    }
-
-    cprRoll.addMod({ value: weaponAttackMod, source: `Weapon Attack Bonus${upgradeName}` });
+    // Mod from item upgrades that affect attackmod.
+    const relevantUpgradeMods = this.getAllUpgradeMods("attackmod");
+    cprRoll.addMod(relevantUpgradeMods);
 
     if (cprRoll instanceof CPRRolls.CPRAttackRoll && cprWeaponData.isRanged) {
       Rules.lawyer(this.hasAmmo(cprRoll), "CPR.messages.weaponAttackOutOfBullets");
@@ -301,7 +295,7 @@ const Attackable = function Attackable() {
       cprRoll.rollCardExtraArgs.ignoreHalfArmor = true;
     }
     const upgradeType = this.getUpgradeTypeFor("damage");
-    const upgradeValue = this.getAllUpgradesFor("damage");
+    const upgradeValue = this.getTotalUpgradeValues("damage");
     if (upgradeType === "override") {
       cprRoll.formula = "0d6";
     }
@@ -326,7 +320,7 @@ const Attackable = function Attackable() {
     if (typeof cprWeaponData.attackmod !== "undefined") {
       returnValue = cprWeaponData.attackmod;
     }
-    const upgradeValue = this.getAllUpgradesFor("attackmod");
+    const upgradeValue = this.getTotalUpgradeValues("attackmod");
     const upgradeType = this.getUpgradeTypeFor("attackmod");
     returnValue = (upgradeType === "override") ? upgradeValue : returnValue + upgradeValue;
     return returnValue;

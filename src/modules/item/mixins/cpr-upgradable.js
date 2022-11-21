@@ -1,4 +1,4 @@
-/* global duplicate */
+/* global duplicate randomID */
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 
@@ -28,7 +28,7 @@ const Upgradable = function Upgradable() {
 
     if (this.type === "weapon" && this.system.isRanged) {
       const magazineData = this.system.magazine;
-      const upgradeValue = this.getAllUpgradesFor("magazine");
+      const upgradeValue = this.getTotalUpgradeValues("magazine");
       const upgradeType = this.getUpgradeTypeFor("magazine");
       const magazineSize = (upgradeType === "override") ? upgradeValue : magazineData.max + upgradeValue;
       const extraBullets = magazineData.value - magazineSize;
@@ -151,8 +151,8 @@ const Upgradable = function Upgradable() {
    * @param {} dataPoint - a stat/property/value that this upgrade modifies on the parent item
    * @returns
    */
-  this.getAllUpgradesFor = function getAllUpgradesFor(dataPoint) {
-    LOGGER.trace("getAllUpgradesFor | Upgradable | Called.");
+  this.getTotalUpgradeValues = function getTotalUpgradeValues(dataPoint) {
+    LOGGER.trace("getTotalUpgradeValues | Upgradable | Called.");
     let upgradeNumber = 0;
     let baseOverride = -100000;
     if (this.actor && typeof this.system.isUpgraded === "boolean" && this.system.isUpgraded) {
@@ -179,22 +179,49 @@ const Upgradable = function Upgradable() {
    * Given a data point, return an array of all modifications being applied to it. If one of the modifier types is
    * set to "override", use that value and ignore others (favoring the largest override).
    *
+   * Note: We structure each object in the array similar to a CPRMod so that we can add these mods to rolls.
+   *
    * @param {} dataPoint - a stat/property/value that this upgrade modifies on the parent item
    * @returns
    */
-  this.getAllUpgradesFor2 = function getAllUpgradesFor2(dataPoint) {
-    LOGGER.trace("getAllUpgradesFor2 | Upgradable | Called.");
+  this.getAllUpgradeMods = function getAllUpgradeMods(dataPoint) {
+    LOGGER.trace("getAllUpgradeMods | Upgradable | Called.");
     const relevantUpgrades = [];
     if ((this.actor && typeof this.system.isUpgraded === "boolean" && this.system.isUpgraded)) {
       const installedUpgrades = this.system.upgrades;
       const overrides = installedUpgrades.filter((u) => u.system.modifiers[dataPoint].type === "override");
+
+      let key; let category;
+      switch (dataPoint) {
+        case "attackmod":
+          key = "bonuses.universalAttack";
+          category = "combat";
+          break;
+        case "damage":
+          key = "bonuses.universalDamage";
+          category = "combat";
+          break;
+        default:
+          break;
+      }
+
       if (overrides.length > 0) {
-        overrides.sort((a, b) => a - b);
-        relevantUpgrades.push(overrides[0]);
+        overrides.sort((a, b) => b.system.modifiers[dataPoint].value - a.system.modifiers[dataPoint].value);
+        const mod = overrides[0].system.modifiers[dataPoint];
+        mod.id = randomID();
+        mod.source = overrides[0].name;
+        mod.key = key;
+        mod.category = category;
+        relevantUpgrades.push(mod);
       } else {
         installedUpgrades.forEach((u) => {
           if (u.system.modifiers[dataPoint].value > 0) {
-            relevantUpgrades.push(u);
+            const mod = duplicate(u.system.modifiers[dataPoint]);
+            mod.id = randomID();
+            mod.source = u.name;
+            mod.key = key;
+            mod.category = category;
+            relevantUpgrades.push(mod);
           }
         });
       }

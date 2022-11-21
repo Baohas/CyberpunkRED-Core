@@ -132,7 +132,7 @@ const Loadable = function Loadable() {
 
         // By the time we reach here, we know the weapon and ammo we are loading
         // Let's find out how much space is in the gun.
-        const upgradeValue = this.getAllUpgradesFor("magazine");
+        const upgradeValue = this.getTotalUpgradeValues("magazine");
         const upgradeType = this.getUpgradeTypeFor("magazine");
         const magazineSpace = (upgradeType === "override") ? upgradeValue - magazineData.value : magazineData.max - magazineData.value + upgradeValue;
 
