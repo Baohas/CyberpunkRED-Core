@@ -176,6 +176,33 @@ const Upgradable = function Upgradable() {
   };
 
   /**
+   * Given a data point, return an array of all modifications being applied to it. If one of the modifier types is
+   * set to "override", use that value and ignore others (favoring the largest override).
+   *
+   * @param {} dataPoint - a stat/property/value that this upgrade modifies on the parent item
+   * @returns
+   */
+  this.getAllUpgradesFor2 = function getAllUpgradesFor2(dataPoint) {
+    LOGGER.trace("getAllUpgradesFor2 | Upgradable | Called.");
+    const relevantUpgrades = [];
+    if ((this.actor && typeof this.system.isUpgraded === "boolean" && this.system.isUpgraded)) {
+      const installedUpgrades = this.system.upgrades;
+      const overrides = installedUpgrades.filter((u) => u.system.modifiers[dataPoint].type === "override");
+      if (overrides.length > 0) {
+        overrides.sort((a, b) => a - b);
+        relevantUpgrades.push(overrides[0]);
+      } else {
+        installedUpgrades.forEach((u) => {
+          if (u.system.modifiers[dataPoint].value > 0) {
+            relevantUpgrades.push(u);
+          }
+        });
+      }
+    }
+    return relevantUpgrades;
+  };
+
+  /**
    * Dynamically calculates the number of free upgrade slots on the item
    * by starting with the number of slots this item has and substacting
    * the slot size of each of the upgrades.

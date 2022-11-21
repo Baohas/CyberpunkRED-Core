@@ -452,6 +452,8 @@ CPR.upgradableDataPoints = {
     damage: {
       type: "modifier",
       value: 0,
+      isSituational: false,
+      onByDefault: false,
       localization: "CPR.global.generic.damage",
     },
     rof: {
@@ -462,6 +464,8 @@ CPR.upgradableDataPoints = {
     attackmod: {
       type: "modifier",
       value: 0,
+      isSituational: false,
+      onByDefault: false,
       localization: "CPR.itemSheet.weapon.attackMod",
     },
     magazine: {
@@ -527,11 +531,15 @@ CPR.upgradableDataPoints = {
     "Wardrobe & Style": {
       type: "modifier",
       value: 0,
+      isSituational: false,
+      onByDefault: false,
       localization: "CPR.global.itemType.skill.wardrobeAndStyle",
     },
     cool: {
       type: "modifier",
       value: 0,
+      isSituational: false,
+      onByDefault: false,
       localization: "CPR.global.stats.cool",
     },
   },

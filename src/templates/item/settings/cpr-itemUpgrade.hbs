@@ -40,7 +40,7 @@
             {{/if}}
         </div>
     </li>
-    {{#if item.system.modifiers.secondaryWeapon.configured}}
+    {{#if (cprCompare item.system.modifiers.secondaryWeapon.configured "===" "true")}}
       {{> "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-attackable.hbs" this}}
     {{/if}}
 {{/if}}
@@ -75,6 +75,12 @@
         <div class="item flexrow setting-value text-nowrap item-end">
             {{localize "CPR.itemSheet.itemUpgrade.modifierValue"}}
         </div>
+        <div class="item flexrow setting-value text-nowrap item-end">
+            {{localize "Situational?"}}
+        </div>
+        <div class="item flexrow setting-value text-nowrap item-end">
+            {{localize "Default On?"}}
+        </div>
     </li>
 
     {{#each (cprFindConfigValue "upgradableDataPoints" item.system.type) as |dataPoint dp|}}
@@ -100,6 +106,12 @@
                     {{else}}
                         <span class="text-flex-end">{{cprGetProp (cprGetProp ../item.system.modifiers dp) "value"}}</span>
                     {{/if}}
+                </div>
+                <div class="item flexrow setting-value text-nowrap item-end">
+                  <input {{#unless (cprCompare dataPoint.isSituational "!==" undefined)}}disabled{{/unless}} name="system.modifiers.{{dp}}.isSituational" class="" type="checkbox" {{checked (cprGetProp (cprGetProp ../item.system.modifiers dp) "isSituational")}}>
+                </div>
+                <div class="item flexrow setting-value text-nowrap item-end">
+                  <input {{#unless (cprGetProp (cprGetProp ../item.system.modifiers dp) "isSituational")}}disabled{{/unless}} name="system.modifiers.{{dp}}.onByDefault" class="" type="checkbox" {{checked (cprGetProp (cprGetProp ../item.system.modifiers dp) "onByDefault")}}>
                 </div>
             </li>
         {{/if}}

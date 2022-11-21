@@ -32,7 +32,7 @@
             </div>
             <div class="item flexrow setting-value text-nowrap item-end" data-tooltip="
                 {{#each rollData.mods}}
-                  {{this.source}} {{#if this.key}}({{localize (cprFindConfigValue "activeEffectKeys" this.category this.key)}}){{/if}}: {{this.value}}
+                  {{this.source}} {{~#if this.key}}&nbsp;({{localize (cprFindConfigValue "activeEffectKeys" this.category this.key)}}){{~/if}}: {{this.value}}
                   <br>
                 {{/each}}
               ">
