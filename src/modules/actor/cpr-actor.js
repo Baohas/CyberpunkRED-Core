@@ -552,40 +552,6 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Get all mods provided by equippable and upgradeable items for a specific thing
-   *
-   * @param {String} baseName - name of the thing (e.g. stat) getting mods
-   * @returns {Number}
-   */
-  getUpgradeMods(baseName) {
-    LOGGER.trace("getUpgradeMods | CPRActor | Called.");
-    let modValue = 0;
-    // See if we have any items which upgrade our stat, and if so, upgrade the stat base
-    const equippableItemTypes = SystemUtils.GetTemplateItemTypes("equippable");
-    const upgradableItemTypes = SystemUtils.GetTemplateItemTypes("upgradable");
-    const itemTypes = equippableItemTypes.filter((value) => upgradableItemTypes.includes(value));
-    let modType = "modifier";
-
-    itemTypes.forEach((itemType) => {
-      const itemList = this.itemTypes[itemType].filter((i) => i.system.equipped === "equipped" && i.system.isUpgraded);
-      itemList.forEach((i) => {
-        const upgradeValue = i.getTotalUpgradeValues(baseName);
-        const upgradeType = i.getUpgradeTypeFor(baseName);
-        if (modType === "override") {
-          if (upgradeType === "override" && upgradeValue > modValue) {
-            modValue = upgradeValue;
-          }
-        } else {
-          modValue = (upgradeType === "override") ? upgradeValue : modValue + upgradeValue;
-          modType = upgradeType;
-        }
-      });
-    });
-
-    return modValue;
-  }
-
-  /**
    * Given a property name on the actor model, wipe out all records in the corresponding ledger
    * for it. Effectively this sets it back to [].
    *
@@ -864,9 +830,8 @@ export default class CPRActor extends Actor {
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
     const cprRoll = new CPRRolls.CPRStatRoll(niceStatName, statValue);
-    cprRoll.addMod(this.getArmorPenaltyMods(statName));
-    cprRoll.addMod(this.getWoundStateMods());
-    cprRoll.addMod(this.getUpgradeMods(statName));
+    cprRoll.addMod([{ value: this.getArmorPenaltyMods(statName), source: `Armor Penalty (${niceStatName})` }]);
+    cprRoll.addMod([{ value: this.getWoundStateMods(), source: "Wound State Penalty" }]);
     return cprRoll;
   }
 

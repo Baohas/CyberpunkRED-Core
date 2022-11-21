@@ -44,16 +44,13 @@ export default class CPRSkillItem extends CPRItem {
 
     let roleSkillMods = [];
     actor.itemTypes.role.forEach((r) => {
-      const foo = r.getSkillBonuses(skillName);
-      roleSkillMods = roleSkillMods.concat(foo);
+      roleSkillMods = roleSkillMods.concat(r.getSkillBonuses(skillName));
     });
 
     const cprRoll = new CPRRolls.CPRSkillRoll(niceStatName, statValue, skillName, skillLevel);
-    cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: `Armor Penalty (${statName})` }]);
+    cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: `Armor Penalty (${niceStatName})` }]);
     cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
     cprRoll.addMod(roleSkillMods);
-    cprRoll.addMod([{ value: actor.getUpgradeMods(statName), source: "Upgrade Stat Mod" }]);
-    cprRoll.addMod([{ value: actor.getUpgradeMods(skillName), source: "Upgrade Skill Mod" }]);
     cprRoll.addMod(skillMods); // active effects
     return cprRoll;
   }

@@ -2,6 +2,7 @@ import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPRMod from "../../rolls/cpr-modifiers.js";
 
 /**
  * Extend the CPRSkillItem object with things specific to character roles.
@@ -29,7 +30,7 @@ export default class CPRRoleItem extends CPRItem {
     let skillValue = 0;
     if (rollInfo.rollSubType === "mainRoleAbility") {
       if (cprItemData.addRoleAbilityRank) {
-        roleValue = cprItemData.rank;
+        roleValue = Number.parseInt(cprItemData.rank, 10);
       }
       if (cprItemData.stat !== "--") {
         statName = cprItemData.stat;
@@ -56,7 +57,7 @@ export default class CPRRoleItem extends CPRItem {
     if (rollInfo.rollSubType === "subRoleAbility") {
       const subRoleAbility = cprItemData.abilities.find((a) => a.name === rollInfo.subRoleName);
       roleName = subRoleAbility.name;
-      roleValue = subRoleAbility.rank;
+      roleValue = Number.parseInt(subRoleAbility.rank, 10);
       if (subRoleAbility.stat !== "--") {
         statName = subRoleAbility.stat;
         statValue = actor.getStat(statName);
@@ -79,10 +80,17 @@ export default class CPRRoleItem extends CPRItem {
       }
     }
 
+    const effects = actor.effects.contents;
+    const allMods = CPRMod.getAllModifiers(effects);
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName), "AeBonus");
+    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName), "AeBonus");
+
     const cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, skillName, skillValue, statName, statValue, skillList);
-    cprRoll.addMod(actor.bonuses[SystemUtils.slugify(skillName)]); // add skill bonuses from Active Effects
-    cprRoll.addMod(actor.bonuses[SystemUtils.slugify(roleName)]); // add role bonuses from Active Effects
-    cprRoll.addMod(actor.getWoundStateMods());
+    cprRoll.addMod(skillMods); // add skill bonuses from Active Effects
+    cprRoll.addMod(roleMods); // add role bonuses from Active Effects
+    cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
     return cprRoll;
   }
 

@@ -178,7 +178,7 @@ const Attackable = function Attackable() {
     }
 
     // apply other known mods
-    cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: `Armor Penalty (${statName})` }]);
+    cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: `Armor Penalty (${niceStatName})` }]);
     cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
     cprRoll.addMod(skillMods);
     cprRoll.addMod(attackMods);

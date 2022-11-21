@@ -92,6 +92,12 @@ export class CPRRollDialog extends CPRDialog {
       filteredMods = filteredMods.concat(skillMods);
     }
 
+    // Role Effects.
+    if (this.prototypeChain.includes("CPRRoleRoll")) {
+      const roleMods = allSituationalMods.filter((m) => m.key === `bonuses.${SystemUtils.slugify(this.rollData.roleName)}`);
+      filteredMods = filteredMods.concat(roleMods);
+    }
+
     data.filteredMods = filteredMods;
     this.filteredMods = filteredMods;
     return data;

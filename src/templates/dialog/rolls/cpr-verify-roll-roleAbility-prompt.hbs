@@ -66,8 +66,13 @@
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.rolls.mods"}}:
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="mods" class="" type="text" data-dtype="String" value={{rollData.mods}}>
+            <div class="item flexrow setting-value text-nowrap item-end" data-tooltip="
+                {{#each rollData.mods}}
+                  {{this.source}} {{~#if this.key}}&nbsp;({{localize (cprFindConfigValue "activeEffectKeys" this.category this.key)}}){{~/if}}: {{this.value}}
+                  <br>
+                {{/each}}
+              ">
+              <input disabled name="mods" class="" type="text" data-dtype="String" value="{{#each rollData.mods}}{{this.value}}{{#unless @last}}, {{/unless}}{{/each}}">
             </div>
         </li>
 
@@ -88,6 +93,28 @@
                 <input name="calculateCritical" class="" type="checkbox" data-dtype="Checkbox" checked>
             </div>
         </li>
+    </ol>
+
+    {{#if (cprCompare filteredMods.length ">" 0)}}
+    <hr>
+    <ol class="items-list">
+      {{#each filteredMods as |mod|}}
+      <li class="item flexrow">
+        <div class="item flexrow setting-name text-nowrap text-bold">
+            {{mod.source}}:
+        </div>
+        <div class="item flexrow setting-value text-nowrap">
+          {{localize (cprFindConfigValue "activeEffectKeys" mod.category mod.key)}}
+          {{cprEffectModMode mod.changeMode mod.value}}
+        </div>
+        <div class="item flexrow setting-value text-nowrap item-end">
+          <input {{checked (cprObjectListContains ../rollData.mods "id" mod.id)}} class="active-effect-checkbox" type="checkbox" data-mod-id="{{mod.id}}" data-dtype="Checkbox">
+        </div>
+      </li>
+      {{/each}}
+      <br>
+    </ol>
+    {{/if}}
 
   {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 
