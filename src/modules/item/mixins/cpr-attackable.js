@@ -136,6 +136,7 @@ const Attackable = function Attackable() {
 
     const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName), "AeBonus");
 
+    const attackMods = CPRMod.getRelevantMods(filteredMods, "universalAttack", "AeBonus");
     const aimedShotMods = CPRMod.getRelevantMods(filteredMods, "aimedShot", "AeBonus");
     const rangedMods = CPRMod.getRelevantMods(filteredMods, "ranged", "AeBonus");
     const meleeMods = CPRMod.getRelevantMods(filteredMods, "melee", "AeBonus");
@@ -180,6 +181,7 @@ const Attackable = function Attackable() {
     cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: `Armor Penalty (${statName})` }]);
     cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
     cprRoll.addMod(skillMods);
+    cprRoll.addMod(attackMods);
     cprRoll.addMod(roleSkillMods);
     cprRoll.addMod(roleAttackMods);
 
