@@ -20,7 +20,7 @@
               {{localize "CPR.global.generic.stat"}} - {{localize (cprFindConfigValue "statList" rollData.statName)}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
+                <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}} {{#if isVarying}}disabled{{/if}}>
             </div>
         </li>
         {{/if}}
@@ -44,16 +44,13 @@
                 {{localize "CPR.global.generic.skill"}} - {{#if (cprCompare rollData.skillName "===" "varying")}}{{localize "CPR.global.generic.varying"}}{{else}}{{rollData.skillName}}{{/if}}
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="dummySkillValue" class="" type="number" data-dtype="Number" value={{rollData.skillValue}} {{#if (cprCompare rollData.skillName "===" "varying")}}disabled{{/if}}>
+                <input name="skillValue" class="" type="number" data-dtype="Number" value={{rollData.skillValue}} {{#if isVarying}}disabled{{/if}}>
             </div>
         </li>
         {{else}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.global.generic.skill"}} - {{localize (cprGetLocalizedlNameKey rollData.skillName "skill")}}
-{{!--                 {{#if (cprCompare roleName "===" "operator")}} {{localize "CPR.trading"}}:{{/if}}
-                {{#if (cprCompare roleName "===" "medtechPharma")}} {{localize "CPR.medicaltechcryooperation"}}:{{/if}}
-                {{#if (cprCompare roleName "===" "medtechCryo")}} {{localize "CPR.medicaltechpharmaceuticals"}}:{{/if}} --}}
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
                 <input name="skillValue" class="" type="number" data-dtype="Number" value={{rollData.skillValue}}>

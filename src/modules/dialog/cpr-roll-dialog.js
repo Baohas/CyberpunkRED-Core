@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-/* global duplicate game */
+/* global duplicate */
 import CPRMod from "../rolls/cpr-modifiers.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -169,9 +169,15 @@ export class CPRRoleRollDialog extends CPRRollDialog {
       || this.item.system.abilities.find((a) => a.name === this.rollData.roleName)?.skill === "varying";
 
     if (skillIsVarying) {
-      data.isVarying = true;
+      data.isVarying = true; // Used as a condition to display drop-down menu in dialog.
       if (this.rollData.skillName === "varying") {
-        data.rollData.skillName = this.rollData.skillList.sort((a, b) => (a.name > b.name ? 1 : -1))[0].name;
+        // If the skill is varying, assign data from the first skill in the dropdown menu, so all form data are consistent with the dropdown menu.
+        // Note, this will only happen when the dialog is first opened, which is by design.
+        const firstSkill = this.rollData.skillList.sort((a, b) => (a.name > b.name ? 1 : -1))[0];
+        data.rollData.skillName = firstSkill.name;
+        data.rollData.skillValue = firstSkill.system.level;
+        data.rollData.statName = firstSkill.system.stat;
+        data.rollData.statValue = this.actor.getStat(this.rollData.statName);
       }
     }
 
@@ -185,29 +191,53 @@ export class CPRRoleRollDialog extends CPRRollDialog {
   }
 
   /**
-   * Updates the skill value when the varied skill is changed.
+   * Updates the skill value when the varied skill is changed. Also adds/removes the modifier for each skill
+   * as it is changed.
    *
    * @param {*} event
    */
   _updateSkillValue(event) {
     LOGGER.trace("_updateSkillValue | CPRRoleRollDialog | called.");
     const skill = this.rollData.skillList.find((s) => s.name === event.currentTarget.value);
-    this.rollData.skillValue = skill.system.level;
-  }
 
-  /**
-   * Updates the skill value when the varied skill is changed.
-   *
-   * @param {*} options
-   * @param {Object} formData - Updated dialog data to be merged with the original object.
-   */
-  _updateObject(event, formData) {
-    LOGGER.trace("_updateObject | CPRRoleRollDialog | called.");
-    const fd = duplicate(formData);
-    if (formData.dummySkillValue) {
-      fd.skillValue = formData.dummySkillValue;
+    // Set skill level.
+    this.rollData.skillValue = skill.system.level;
+
+    // Set stat level.
+    this.rollData.statName = skill.system.stat;
+    this.rollData.statValue = this.actor.getStat(this.rollData.statName);
+
+    const effects = this.actor.effects.contents;
+    const allMods = CPRMod.getAllModifiers(effects);
+    const newSkillMods = CPRMod.getRelevantMods(allMods, SystemUtils.slugify(event.currentTarget.value), "AeBonus"); // Mods for the skill we are changing to.
+    const previousSkillMods = CPRMod.getRelevantMods(allMods, SystemUtils.slugify(this.rollData.skillName), "AeBonus"); // Mods for the skill we are changing away from.
+
+    // Apply mods appropriately for the newly selected skill.
+    if (newSkillMods) {
+      newSkillMods.forEach((m) => {
+        if (!m.isSituational) {
+          this.rollData.addMod([m]);
+        } else if (m.isSituational && m.onByDefault) {
+          this.rollData.addMod([m]);
+          this.filteredMods.push(m);
+        } else {
+          this.filteredMods.push(m);
+        }
+      });
     }
 
-    super._updateObject(event, fd);
+    // Remove mods appropriately for the deselected skill.
+    if (previousSkillMods) {
+      previousSkillMods.forEach((previousMod) => {
+        if (this.rollData.mods.some((currentMod) => previousMod.id === currentMod.id)) {
+          this.rollData.removeMod(previousMod.id);
+        }
+
+        if (this.filteredMods.some((currentMod) => previousMod.id === currentMod.id)) {
+          const modIndex = this.filteredMods.findIndex((currentMod) => previousMod.id === currentMod.id);
+          this.filteredMods.splice(modIndex, 1);
+        }
+      });
+    }
   }
 }
