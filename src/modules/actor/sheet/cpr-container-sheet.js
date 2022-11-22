@@ -25,7 +25,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRContainerActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
-      template: "systems/cyberpunk-red-core/templates/actor/cpr-container-sheet.hbs",
+      template: `systems/${game.system.id}/templates/actor/cpr-container-sheet.hbs`,
       width: 750,
       height: 496,
     });
@@ -189,7 +189,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (event.ctrlKey) {
       CPRChat.RenderItemCard(item);
     } else {
-      const playersCanModify = getProperty(this.actor, "flags.cyberpunk-red-core.players-modify");
+      const playersCanModify = getProperty(this.actor, `flags.${game.system.id}.players-modify`);
       if (playersCanModify || game.user.isGM) {
         item.sheet.render(true, { editable: true });
       } else {
@@ -258,7 +258,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       cost *= (typeof item.system.amount !== "undefined") ? parseInt(item.system.amount, 10) : 1;
     }
     const tradePartnerActor = game.actors.get(this.tradePartnerId);
-    if (!getProperty(this.actor, "flags.cyberpunk-red-core.items-free")) {
+    if (!getProperty(this.actor, `flags.${game.system.id}.items-free`)) {
       if (tradePartnerActor.system.wealth.value < cost) {
         SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradePriceWarn"));
         return;
@@ -292,7 +292,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (tradePartnerActor.automaticallyStackItems(new CPRItem(transferredItemData))) {
       await tradePartnerActor.createEmbeddedDocuments("Item", [transferredItemData]);
     }
-    if (!getProperty(this.actor, "flags.cyberpunk-red-core.infinite-stock")) {
+    if (!getProperty(this.actor, `flags.${game.system.id}.infinite-stock`)) {
       if (all) {
         await this._deleteOwnedItem(item, true);
       } else {
@@ -397,7 +397,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       });
       deleteItems.push(item._id);
 
-      const infiniteStock = getProperty(this.actor, "flags.cyberpunk-red-core.infinite-stock");
+      const infiniteStock = getProperty(this.actor, `flags.${game.system.id}.infinite-stock`);
 
       if (infiniteStock) {
         const itemList = createItems;
@@ -510,12 +510,12 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   async _onDrop(event) {
     LOGGER.trace("_onDrop | CPRContainerSheet | Called.");
-    const containerType = getProperty(this.actor, "flags.cyberpunk-red-core.container-type");
+    const containerType = getProperty(this.actor, `flags.${game.system.id}.container-type`);
     if (!containerType) {
       await this.actor.setContainerType("shop");
     }
-    const playersCanCreate = getProperty(this.actor, "flags.cyberpunk-red-core.players-create");
-    const playersCanSell = getProperty(this.actor, "flags.cyberpunk-red-core.players-sell");
+    const playersCanCreate = getProperty(this.actor, `flags.${game.system.id}.players-create`);
+    const playersCanSell = getProperty(this.actor, `flags.${game.system.id}.players-sell`);
     if (game.user.isGM || playersCanCreate || playersCanSell) {
       if (!game.user.isGM && !playersCanCreate) {
         const dragData = TextEditor.getDragEventData(event);

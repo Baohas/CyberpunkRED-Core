@@ -1,9 +1,12 @@
 {{cprTrace "START ACTOR CONTAINER CPR-ITEM-CONTENT.HBS"}}
 <li class="item flexrow" data-item-id="{{item.id}}" data-item-category="{{item.type}}" draggable="true">
   <div class="item-name text-nowrap">
-    <a class="name item-edit" title="{{item.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{item.name}}</a>&nbsp;
+    <a class="name item-edit flex-center" title="{{item.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
+      <img src="{{item.img}}">
+      {{item.name}}
+    </a>
   </div>
-  <div class="item-detail text-nowrap">
+  <div class="item-detail text-center text-nowrap">
     {{#if (cprIsNumber (cprNumberFormat item.system.amount))}}
     {{cprNumberFormat item.system.amount}}
     {{else}}
@@ -13,15 +16,15 @@
   <div class="item-name gear-data text-nowrap">
     {{#if (cprCompare item.system.amount ">" "1")}}
       {{#if (cprCompare (cprCompare item.type "===" "ammo") "&&" (cprCompare (cprCompare item.system.variety "!==" "grenade") "&&" (cprCompare item.system.variety "!==" "rocket")))}}
-        {{localize "CPR.containerSheet.items.priceListingSingleAll" price=(cprMath "product" item.system.price.market "0.1") category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") item.system.price.category)) priceAll=(cprNumberFormat (cprMath "product" item.system.price.market item.system.amount "0.1"))}}
+        {{localize "CPR.containerSheet.items.priceListingSingleAll" price=(cprMath "product" item.system.price.market "0.1") category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") (cprGetPriceCategory item.system.price.market))) priceAll=(cprNumberFormat (cprMath "product" item.system.price.market item.system.amount "0.1"))}}
       {{else}}
-        {{localize "CPR.containerSheet.items.priceListingSingleAll" price=item.system.price.market category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") item.system.price.category)) priceAll=(cprMath "product" item.system.price.market item.system.amount)}}
+        {{localize "CPR.containerSheet.items.priceListingSingleAll" price=item.system.price.market category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") (cprGetPriceCategory item.system.price.market))) priceAll=(cprMath "product" item.system.price.market item.system.amount)}}
       {{/if}}
     {{else}}
       {{#if (cprCompare (cprCompare item.type "===" "ammo") "&&" (cprCompare (cprCompare item.system.variety "!==" "grenade") "&&" (cprCompare item.system.variety "!==" "rocket")))}}
-        {{localize "CPR.containerSheet.items.priceListingSingle" price=(cprMath "product" item.system.price.market "0.1") category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") item.system.price.category))}}
+        {{localize "CPR.containerSheet.items.priceListingSingle" price=(cprMath "product" item.system.price.market "0.1") category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") (cprGetPriceCategory item.system.price.market)))}}
       {{else}}
-        {{localize "CPR.containerSheet.items.priceListingSingle" price=item.system.price.market category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") item.system.price.category))}}
+        {{localize "CPR.containerSheet.items.priceListingSingle" price=item.system.price.market category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") (cprGetPriceCategory item.system.price.market)))}}
       {{/if}}
     {{/if}}
   </div>

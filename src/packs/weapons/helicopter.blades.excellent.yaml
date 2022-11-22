@@ -1,0 +1,63 @@
+_id: 9alzkarjimr2QXmn
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053167
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053167
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/weapons/HelicopterBlade_excellent.svg
+name: Helicopter Blades (Excellent)
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  attachmentSlots: 3
+  attackmod: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 4d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Taken from a derelict aircraft, these blades are capable of slicing
+      most things easily.  +1 to Attack.</p>
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  isConcealed: false
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: veryExpensive
+    market: 1000
+  quality: excellent
+  revealed: true
+  rof: 1
+  slots: 0
+  source: pg. 340
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: vHeavyMelee
+type: weapon

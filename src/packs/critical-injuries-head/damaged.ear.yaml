@@ -1,0 +1,65 @@
+_id: qRkCxq0KTuBnw2wj
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831359669
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831359669
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: Z1UtRgahC2BAOxh5
+    changes:
+      - key: bonuses.perception
+        mode: 2
+        priority: null
+        value: '-2'
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_ear.svg
+    label: Damaged Ear
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_ear.svg
+name: Damaged Ear
+ownership:
+  default: 0
+sort: 0
+system:
+  deathSaveIncrease: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>If move more than 4m/yds in a Turn, cannot move next turn. -2 to
+      hearing based Perception.</p>
+  effects: ''
+  favorite: false
+  location: head
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 13
+    type: paramedic
+  revealed: true
+  source: ''
+  tags: []
+  treatment:
+    dvParamedic: 0
+    dvSurgery: 13
+    type: surgery
+  usage: always
+type: criticalInjury

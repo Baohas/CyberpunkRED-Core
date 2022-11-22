@@ -1,0 +1,109 @@
+_id: CyYpPh89G7IYyryM
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830977239
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830977239
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: maW3KSp6yjC85oUn
+    changes:
+      - key: system.stats.ref.value
+        mode: 2
+        priority: null
+        value: '1'
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': stat
+    icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke.svg
+    label: Synthcoke Primary
+    tint: null
+    transfer: true
+  - _id: 9fYAbvg99knLYj9T
+    changes:
+      - key: system.stats.ref.value
+        mode: 2
+        priority: null
+        value: '-2'
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': stat
+    icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
+    label: Synthcoke Addiction
+    tint: null
+    transfer: true
+  - _id: rw9YMhZaP2AQcYJw
+    changes:
+      - key: system.stats.ref.value
+        mode: 2
+        priority: null
+        value: '3'
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': stat
+    icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
+    label: Synthcoke Addicted Primary
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/synthcoke.svg
+name: Synthcoke
+ownership:
+  default: 0
+sort: 0
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Dose lasts 4 hours.<br />The user has increased REF by 1 point for the
+      duration. The user feels paranoid occasionally.<br /><br />Secondary DV:
+      15.<br />When the dose wears off, the user rolls WILL + Resist
+      Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the
+      secondary effect as noted in the core rule book.&nbsp;</p>
+  favorite: false
+  price:
+    category: everyday
+    market: 20
+  revealed: true
+  source: pg. 357
+  tags: []
+  usage: toggled
+type: drug

@@ -303,8 +303,7 @@
       },
       "valuable": {
         "price": {
-          "market": 100,
-          "category": "premium"
+          "market": 100
         }
       }
     },
@@ -398,6 +397,7 @@
       "templates": [
         "common",
         "effects",
+        "equippable",
         "physical",
         "stackable",
         "valuable"

@@ -1,0 +1,96 @@
+_id: UX79WfUt7Yungbx7
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963827
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963827
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: MPX4bqIlawLKgHIC
+    changes:
+      - key: bonuses.initiative
+        mode: 2
+        priority: null
+        value: '3'
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': combat
+    icon: systems/cyberpunk-red-core/icons/compendium/cyberware/sandevistan.svg
+    label: Sandevistan
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/sandevistan.svg
+name: Sandevistan
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Speedware. +3 to Initiative for 1 min. 1hr cooldown.</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
+  humanityLoss:
+    roll: 2d6
+    static: '7'
+  install: clinic
+  installedOptionSlots: 0
+  isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: 0
+  optionalIds: []
+  price:
+    category: expensive
+    market: 500
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  slots: 3
+  source: pg. 359
+  tags: []
+  type: neuralWare
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

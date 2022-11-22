@@ -1,20 +1,20 @@
 /* eslint-disable no-shadow */
-/* global renderTemplate FormDataExtended Dialog foundry */
+/* global game renderTemplate FormDataExtended Dialog foundry */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 export default class SelectCompatibleAmmo {
   static async RenderPrompt(data) {
     LOGGER.trace("RenderPrompt | SelectCompatibleAmmo | called.");
-    const template = "systems/cyberpunk-red-core/templates/dialog/cpr-select-compatible-ammo-prompt.hbs";
+    const template = `systems/${game.system.id}/templates/dialog/cpr-select-compatible-ammo-prompt.hbs`;
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {
-          LOGGER.trace("_onCancel | Dialog SelectRolesPrompt | called.");
+          LOGGER.trace("_onCancel | Dialog SelectCompatibleAmmoPrompt | called.");
           reject(new Error("Promise rejected: Window Closed"));
         };
         const _onConfirm = (html) => {
-          LOGGER.trace("_onConfirm | Dialog SelectRolesPrompt | called.");
+          LOGGER.trace("_onConfirm | Dialog SelectCompatibleAmmoPrompt | called.");
           const ammoList = html.find("[name=\"selectedAmmo\"");
           const selectedAmmo = [];
           const fd = new FormDataExtended(html.find("form")[0]);
@@ -43,7 +43,7 @@ export default class SelectCompatibleAmmo {
             },
           },
           default: "confirm",
-          render: LOGGER.trace("confirm | Dialog SelectRolesPrompt | called."),
+          render: LOGGER.trace("confirm | Dialog SelectCompatibleAmmoPrompt | called."),
           close: () => {
             reject(new Error("Promise rejected: Window Closed"));
           },

@@ -21,13 +21,13 @@
     <ol class="items-list">
 
         {{#each (cprSortCoreSkills (cprFilter actor.itemTypes.skill "system.category" category) ) as |skill s|}}
-        {{#if (cprSheetContentFilter ../this.sheet.options.cprContentFilter skill.translatedName)}}
+        {{#if (cprSheetContentFilter ../this.sheet.options.cprContentFilter skill.name)}}
         <li class="item skill-name flexrow{{#if skill.system.favorite}} favorite{{else}}{{#if (cprListContains ../sheet.options.collapsedSections (cprGeneratePartial "skillTab-VAR" ../category))}} hide{{/if}}{{/if}}" data-item-id="{{skill._id}}"
             data-skill-category="{{skill.system.category}}" draggable="true">
             <div class="item-name text-nowrap">
                 <a class="rollable {{#if skill.system.basic}}text-bold{{/if}}" data-roll-type="skill"
                     data-roll-title="{{skill.name}}">
-                    {{#if skill.system.core}}{{localize (cprSplitJoinCoreSkills skill)}}{{else}}{{skill.name}}{{/if}} {{#if (cprCompare skill.system.difficulty "===" "difficult")}}(x2) {{/if}}<strong>({{localize
+                    {{localize (cprGetLocalizedlNameKey skill)}} {{#if (cprCompare skill.system.difficulty "===" "difficult")}}(x2) {{/if}}<strong>({{localize
                         (cprFindConfigValue
                         "statList" skill.system.stat)}})</strong>
                 </a>

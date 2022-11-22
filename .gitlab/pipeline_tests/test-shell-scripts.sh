@@ -2,17 +2,21 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-echo "Checking Shell Scripts..."
+ERRORS=0
 
-scripts=$(find . -type f -iname '*.sh' -print)
+mapfile -t SCRIPTS < <(
+  find . \
+    -not \( -path "./dist" -prune \) \
+    -not \( -path "./node_modules" -prune \) \
+    -iname "*.sh"
+)
 
-if [[ -z "${scripts}" ]]; then
+if [[ -z "${SCRIPTS[*]}" ]]; then
   echo "❌ Unable to find any scripts in the repo"
   exit 1
 fi
 
-errors=0
-for script in ${scripts}; do
+for script in "${SCRIPTS[@]}"; do
   # Test we have a portable shebang and are strictmode compliant
   # http://redsymbol.net/articles/unofficial-bash-strict-mode/
   #
@@ -22,30 +26,30 @@ for script in ${scripts}; do
   first=$(sed -n '1p' "${script}")
   second=$(sed -n '2p' "${script}")
   third=$(sed -n '3p' "${script}")
-  i=0
 
+  strictmode_errors=0
   # Check we have a prtable shebang
   if [[ "${first}" != '#!/usr/bin/env bash' ]]; then
     echo "❌ ${script##*/} does not use '#!/usr/bin/env bash'"
-    ((i+=1))
+    ((strictmode_errors += 1))
   fi
 
   # Check we are setting '-euo pipefail'
   if [[ "${second}" != 'set -euo pipefail' ]]; then
     echo "❌ ${script##*/} does not set '-euo pipefail'"
-    ((i+=1))
+    ((strictmode_errors += 1))
   fi
 
   # Check we are setting 'IFS' corectly
   if [[ "${third}" != 'IFS=$'\''\n\t'\''' ]]; then
     # shellcheck disable=SC2028
     echo "❌ ${script##*/} does not set 'IFS=\$'\n\t'"
-    ((i+=1))
+    ((strictmode_errors += 1))
   fi
 
   # If any of the above fail add to the error count
-  if [[ "${i}" -gt 0 ]]; then
-    ((errors+=1))
+  if [[ "${strictmode_errors}" -gt 0 ]]; then
+    ((ERRORS = ERRORS + 1))
     echo "❌ ${script##*/} is not strictmode compliant."
   else
     echo "✅ ${script##*/} is strictmode compliant!"
@@ -54,15 +58,22 @@ for script in ${scripts}; do
   # Check we pass shellcheck
   if ! shellcheck "${script}"; then
     echo "❌ ${script##*/} does not validate with shellcheck"
-    ((errors+=1))
+    ((ERRORS = ERRORS + 1))
   else
     echo "✅ ${script##*/} passed shellcheck!"
   fi
+
+  if ! shfmt -d "${script}" &>/dev/null; then
+    echo "❌ ${script##*/} does not validate with shfmt"
+    ((ERRORS = ERRORS + 1))
+  else
+    echo "✅ ${script##*/} passed shfmt!"
+  fi
 done
 
-if [[ "${errors}" -gt 0 ]]; then
-  echo "❌ ${errors} files have errors please check the output above for more details"
+if [[ "${ERRORS}" -gt 0 ]]; then
+  echo "❌ ${ERRORS} files have errors please check the output above for more details"
   exit 1
 else
-  echo "✅ All good!"
+  echo "🎉 All good!"
 fi

@@ -1,7 +1,7 @@
 /* global canvas */
 import HudPrompt from "../dialog/cpr-hud-prompt.js";
-import DvUtils from "../utils/cpr-dvUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
+import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
  * We implemented a tool in the hud interface to measure ranged attack DVs. To figure out the right
@@ -18,7 +18,7 @@ export default class HudInterface {
    */
   static async SetDvTable(tokenData) {
     LOGGER.trace("SetDvTable | HudInterface | Called.");
-    const dvTables = DvUtils.GetDvTables();
+    const dvTables = await SystemUtils.GetDvTables();
     const formData = await HudPrompt.RenderPrompt("dv", dvTables).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
@@ -29,6 +29,6 @@ export default class HudInterface {
     const { controlled } = canvas.tokens;
     const index = controlled.findIndex((x) => x.id === tokenData._id);
     const token = controlled[index];
-    token.document.update({ "flags.cprDvTable": formData.dvTable });
+    await SystemUtils.SetDvTable(token, formData.dvTable);
   }
 }

@@ -2,7 +2,6 @@
 import CPRActorSheet from "./cpr-actor-sheet.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import Rules from "../../utils/cpr-rules.js";
-import SelectRolePrompt from "../../dialog/cpr-select-role-prompt.js";
 import SetLifepathPrompt from "../../dialog/cpr-set-lifepath-prompt.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import LedgerEditPrompt from "../../dialog/cpr-ledger-edit-prompt.js";
@@ -42,7 +41,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRCharacterActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
-      template: "systems/cyberpunk-red-core/templates/actor/cpr-character-sheet.hbs",
+      template: `systems/${game.system.id}/templates/actor/cpr-character-sheet.hbs`,
       tabs: [{ navSelector: ".navtabs-right", contentSelector: ".right-content-section", initial: "skills" },
         { navSelector: ".navtabs-bottom", contentSelector: ".bottom-content-section", initial: "fight" }],
     });
@@ -74,9 +73,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     // Install Cyberware
     html.find(".install-remove-cyberware").click((event) => this._installRemoveCyberwareAction(event));
 
-    // Select Roles for Character
-    html.find(".select-roles").click(() => this._selectRoles());
-
     // Set Lifepath for Character
     html.find(".set-lifepath").click(() => this._setLifepath());
 
@@ -94,7 +90,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     html.find(".skill-input").click((event) => event.target.select()).change((event) => this._updateSkill(event));
 
     // update the ammount of an item in the gear tab
-    html.find(".amount-input").click((event) => event.target.select()).change((event) => this._updateAmount(event));
+    html.find(".gear-amount-input").click((event) => event.target.select()).change((event) => this._updateAmount(event));
 
     // update a role ability
     html.find(".ability-input").click((event) => event.target.select()).change(
@@ -267,30 +263,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     } else {
       this.actor.addCyberware(itemId);
     }
-  }
-
-  /**
-   * Pops up the role selection dialog box and persists the form data (answers) to the actor.
-   *
-   * @async
-   * @callback
-   * @private
-   * @returns {null}
-   */
-  async _selectRoles() {
-    LOGGER.trace("_selectRoles | CPRCharacterActorSheet | Called.");
-    if (this.actor.itemTypes.role.length === 0) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.characterSheet.bottomPane.role.noRolesWarning"));
-      return;
-    }
-    let formData = {
-      roles: this.actor.itemTypes.role,
-    };
-    formData = await SelectRolePrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
-      return;
-    }
-    this.actor.update({ "system.roleInfo.activeRole": formData.activeRole, "system.roleInfo.activeNetRole": formData.activeNetRole });
   }
 
   /**
@@ -610,7 +582,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   _toggleFightState(event) {
     LOGGER.trace("_toggleFightState | CPRCharacterSheet | Called.");
     const fightState = SystemUtils.GetEventDatum(event, "data-state");
-    this.actor.setFlag("cyberpunk-red-core", "fightState", fightState);
+    this.actor.setFlag(game.system.id, "fightState", fightState);
   }
 
   /**

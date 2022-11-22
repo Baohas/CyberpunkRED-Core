@@ -107,7 +107,7 @@ export default class CPRCyberdeckItem extends CPRItem {
       if (program.system.class === "blackice" && this.isRezzed(program)) {
         const rezzedIndex = this.system.programs.rezzed.findIndex((p) => p._id === program.id);
         const programData = this.system.programs.rezzed[rezzedIndex];
-        const cprFlags = programData.flags["cyberpunk-red-core"];
+        const cprFlags = programData.flags[game.system.id];
         if (cprFlags.biTokenId) {
           tokenList.push(cprFlags.biTokenId);
         }
@@ -231,6 +231,7 @@ export default class CPRCyberdeckItem extends CPRItem {
           "program",
         );
         cprRoll.rollCardExtraArgs.program = program;
+        cprRoll.rollCardExtraArgs.cyberdeck = this;
         break;
       }
       case "damage": {
@@ -243,8 +244,12 @@ export default class CPRCyberdeckItem extends CPRItem {
       default:
     }
     cprRoll.setNetCombat(pgmName);
-    if (roleName !== "blackice") cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
-    cprRoll.addMod(actor.getWoundStateMods());
+
+    // Bonuses from roles, active effects, and wound state should not modify damage rolls.
+    if (executionType !== "damage") {
+      if (roleName !== "blackice") cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
+      cprRoll.addMod(actor.getWoundStateMods());
+    }
     return cprRoll;
   }
 
@@ -274,17 +279,45 @@ export default class CPRCyberdeckItem extends CPRItem {
         rollTitle = SystemUtils.Localize(CPR.interfaceAbilities[interfaceAbility]);
       }
     }
-    const cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, "--", 0, "--", 0, null);
-    cprRoll.setNetCombat(rollTitle);
-    // consider active effects
-    if (interfaceAbility === "perception") {
-      // hack because "perception" is already used for the skill
-      cprRoll.addMod(this.actor.bonuses.perception_net);
+
+    // If interfaceAbiltiy is Zap, we will handle roll either as a Damage Roll or an Attack Roll.
+    // If interfaceAbility is anything else, we will handle roll as as a Role Roll.
+    let cprRoll;
+    if (interfaceAbility === "zap") {
+      if (rollInfo.executionType === "damage") {
+        cprRoll = new CPRRolls.CPRDamageRoll(SystemUtils.Localize("CPR.global.role.netrunner.interfaceAbility.zap"), "1d6", "program");
+      } else {
+        cprRoll = new CPRRolls.CPRAttackRoll(
+          "zap",
+          rollTitle,
+          0,
+          "",
+          0,
+          roleName,
+          roleValue,
+          "program",
+        );
+        cprRoll.rollCardExtraArgs.cyberdeck = this;
+        cprRoll.rollCardExtraArgs.isZap = true;
+      }
     } else {
-      cprRoll.addMod(this.actor.bonuses[interfaceAbility]);
+      cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, "--", 0, "--", 0, null);
     }
-    cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
-    cprRoll.addMod(this.actor.getWoundStateMods());
+
+    cprRoll.setNetCombat(rollTitle);
+
+    // Bonuses from roles, active effects, and wound state should not modify damage rolls.
+    if (rollInfo.executionType !== "damage") {
+      // consider active effects
+      if (interfaceAbility === "perception") {
+        // hack because "perception" is already used for the skill
+        cprRoll.addMod(this.actor.bonuses.perception_net);
+      } else {
+        cprRoll.addMod(this.actor.bonuses[interfaceAbility]);
+      }
+      cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
+      cprRoll.addMod(this.actor.getWoundStateMods());
+    }
     return cprRoll;
   }
 
@@ -340,7 +373,7 @@ export default class CPRCyberdeckItem extends CPRItem {
           name: blackIceName,
           type: "blackIce",
           folder: dynamicFolder,
-          img: "systems/cyberpunk-red-core/icons/netrunning/Black_Ice.png",
+          img: `systems/${game.system.id}/icons/netrunning/Black_Ice.png`,
         });
         // Configure the Actor based on the Black ICE Program Stats.
         blackIce.programmaticallyUpdate(
@@ -376,7 +409,7 @@ export default class CPRCyberdeckItem extends CPRItem {
       img: blackIce.img,
       x: netrunnerToken.x + 75,
       y: netrunnerToken.y,
-      flags: { "cyberpunk-red-core": tokenFlags },
+      flags: { [game.system.id]: tokenFlags },
     }];
     try {
       const biTokenList = await scene.createEmbeddedDocuments("Token", tokenData);
@@ -392,12 +425,12 @@ export default class CPRCyberdeckItem extends CPRItem {
           programData.rez,
           programData.rez,
         );
-        const cprFlags = (typeof programData.flags["cyberpunk-red-core"] !== "undefined") ? programData.flags["cyberpunk-red-core"] : {};
+        const cprFlags = (typeof programData.flags[game.system.id] !== "undefined") ? programData.flags[game.system.id] : {};
         cprFlags.biTokenId = biToken.id;
         cprFlags.sceneId = scene.id;
         // Passed by reference
         // eslint-disable-next-line no-param-reassign
-        programData.flags["cyberpunk-red-core"] = cprFlags;
+        programData.flags[game.system.id] = cprFlags;
       }
     } catch (error) {
       LOGGER.error(`_rezBlackIceToken | CPRItem | Attempting to create a Black ICE Token failed. Error: ${error}`);
@@ -436,8 +469,8 @@ export default class CPRCyberdeckItem extends CPRItem {
    */
   static async _derezBlackIceToken(programData) {
     LOGGER.trace("_derezBlackIceToken | CPRCyberdeckItem | Called.");
-    if (typeof programData.flags["cyberpunk-red-core"] !== "undefined") {
-      const cprFlags = programData.flags["cyberpunk-red-core"];
+    if (typeof programData.flags[game.system.id] !== "undefined") {
+      const cprFlags = programData.flags[game.system.id];
       const { biTokenId } = cprFlags;
       const { sceneId } = cprFlags;
       if (typeof biTokenId !== "undefined" && typeof sceneId !== "undefined") {
@@ -491,8 +524,8 @@ export default class CPRCyberdeckItem extends CPRItem {
     const newRez = Math.max(programState.rez - reduceAmount, 0);
     programState.rez = newRez;
     this.system.programs.rezzed[rezzedIndex] = programState;
-    if (programState.class === "blackice" && typeof programState.flags["cyberpunk-red-core"] !== "undefined") {
-      const cprFlags = programState.flags["cyberpunk-red-core"];
+    if (programState.class === "blackice" && typeof programState.flags[game.system.id] !== "undefined") {
+      const cprFlags = programState.flags[game.system.id];
       if (typeof cprFlags.biTokenId !== "undefined") {
         const { biTokenId } = cprFlags;
         const tokenList = canvas.scene.tokens.map((tokenDoc) => tokenDoc.actor.token).filter((token) => token).filter((t) => t.id === biTokenId);

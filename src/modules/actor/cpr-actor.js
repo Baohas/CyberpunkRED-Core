@@ -101,12 +101,14 @@ export default class CPRActor extends Actor {
     this.bonuses.maxHumanity = 0;
     this.bonuses.universalAttack = 0;
     this.bonuses.universalDamage = 0;
+    this.bonuses.universalDamageReduction = 0;
     // netrunning things
     this.bonuses.speed = 0;
     this.bonuses.perception_net = 0; // beware of hacks because "perception" is also a skill
     this.bonuses.attack = 0;
     this.bonuses.defense = 0;
     this.bonuses.rez = 0;
+    this.bonuses.brainDamageReduction = 0;
     // combat-related rolls
     this.bonuses.aimedShot = 0;
     this.bonuses.melee = 0;
@@ -1016,41 +1018,6 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * TODO: Delete this method after the March 2022 release.
-   * This method was created to facilitate homebrew critical injuries with a macro.
-   * It is not used anywhere else, and likely belongs in its own file to be exposed in
-   * a sanctioned API. (_rollCriticalInjury() largely replaces this functionality.)
-   *
-   * @returns {Object}
-   */
-  addCriticalInjury(location, name, effect, quickFixType, quickFixDV, treatmentType, treatmentDV, deathSaveIncrease = false) {
-    LOGGER.trace("addCriticalInjury | CPRActor | Called.");
-    SystemUtils.Format("CPR.system.message.toBeDeprecated", { functionName: "actor.addCriticalInjury" });
-    const itemData = {
-      type: "criticalInjury",
-      name,
-      data: {
-        location,
-        description: {
-          value: effect,
-          chat: "",
-          unidentified: "",
-        },
-        quickFix: {
-          type: quickFixType,
-          dv: quickFixDV,
-        },
-        treatment: {
-          type: treatmentType,
-          dv: treatmentDV,
-        },
-        deathSaveIncrease,
-      },
-    };
-    return this.createEmbeddedEntity("Item", itemData, { force: true });
-  }
-
-  /**
    * automaticallyStackItems searches for an identical item on the actor
    * and if found increments the amount and price for the item on the actor
    * instead of adding it as a new item.
@@ -1089,22 +1056,71 @@ export default class CPRActor extends Actor {
    * @param {int} bonusDamage - value of the bonus damage
    * @param {string} location - location of the damage
    * @param {int} ablation - value of the ablation
+   * @param {string} ammoVariety - type of ammo used
    * @param {boolean} ignoreHalfArmor - if half of the armor should be ignored
    * @param {boolean} damageLethal - if this damage can cause HP <= 0
+   * @param {object} formData - contains booleans about whether to apply shields and other damage reducing effects
    */
-  async _applyDamage(damage, bonusDamage, location, ablation, ignoreHalfArmor, damageLethal) {
+  async _applyDamage(damage, bonusDamage, location, ablation, ammoVariety, ignoreHalfArmor, damageLethal, formData) {
     LOGGER.trace("_applyDamage | CPRActor | Called.");
     let totalDamageDealt = 0;
+    let totalDamageReduction = 0;
+    let takenDamage = 0;
+    const armors = location === "brain" ? [] : this.getEquippedArmors(location);
+    const armorData = {
+      value: 0,
+      equipped: armors.length > 0,
+    };
+
+    // If user chooses, calculate damage reduction from role abilities and active effects.
+    if (formData.damageReductionRole) {
+      // Apply damage reduction from role abilities.
+      let universalBonusDamageReduction = 0;
+      this.itemTypes.role.forEach((r) => {
+        if (r.system.universalBonuses.includes("damageReduction")) {
+          universalBonusDamageReduction += Math.floor(r.system.rank / r.system.bonusRatio);
+        }
+        const subroleUniversalBonuses = r.system.abilities.filter((a) => a.universalBonuses.includes("damageReduction"));
+        if (subroleUniversalBonuses.length > 0) {
+          subroleUniversalBonuses.forEach((b) => {
+            universalBonusDamageReduction += Math.floor(b.rank / b.bonusRatio);
+          });
+        }
+      });
+      totalDamageReduction += universalBonusDamageReduction;
+    }
+
+    if (formData.damageReductionAE) {
+      // Apply damage reduction from active effects
+      totalDamageReduction += this.bonuses.universalDamageReduction;
+    }
+
     if (location === "brain") {
       // This is damage done in a netrun, which completely ignores armor
       const currentHp = this.system.derivedStats.hp.value;
-      await this.update({ "system.derivedStats.hp.value": currentHp - damage - bonusDamage });
-      CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: damage + bonusDamage, brainDamage: true });
+      totalDamageDealt = damage + bonusDamage;
+      if (formData.brainDamageReduction) {
+        totalDamageReduction += this.bonuses.brainDamageReduction;
+      }
+      takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
+      await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
+      CPRChat.RenderDamageApplicationCard({
+        actor: this,
+        damage,
+        bonusDamage,
+        hpReduction: takenDamage,
+        totalDamageDealt,
+        location,
+        totalDamageReduction,
+        armorData,
+        brainDamage: true,
+      });
       return;
     }
-    const armors = this.getEquippedArmors(location);
+
+    // const armors = this.getEquippedArmors(location);
+    const shields = this.getEquippedArmors("shield");
     // Determine the highest value of all the equipped armors in the specific location
-    let armorValue = 0;
     armors.forEach((a) => {
       let newValue;
       if (location === "head") {
@@ -1112,44 +1128,138 @@ export default class CPRActor extends Actor {
       } else {
         newValue = a.system.bodyLocation.sp - a.system.bodyLocation.ablation;
       }
-      if (newValue > armorValue) {
-        armorValue = newValue;
+      if (newValue > armorData.value) {
+        armorData.value = newValue;
       }
     });
     if (ignoreHalfArmor) {
-      armorValue = Math.ceil(armorValue / 2);
+      armorData.value = Math.ceil(armorData.value / 2);
     }
-    // Apply the bonusDamage, which penetrates the armor
-    if (bonusDamage !== 0) {
+
+    // Deal damage to shield, if used, first.
+    let shieldAblation = 0;
+    if (shields.length > 0) {
+      // get equipped shield with highest HP;
+      const shield = shields.sort((a, b) => (a.system.shieldHitPoints.value > b.system.shieldHitPoints.value ? 1 : -1)).reverse()[0];
+      // if useShield is checked in dialog, and shield has HP, ablate shield and potentially resolve chat card;
+      if (formData.useShield && shield.system.shieldHitPoints.value > 0) {
+        shieldAblation = Math.min((damage + bonusDamage), shield.system.shieldHitPoints.value);
+        await this._ablateArmor("shield", shieldAblation);
+        if (ammoVariety !== "grenade" && ammoVariety !== "rocket") { // if ammo isn't explosive, resolve chat card with no damage to token;
+          CPRChat.RenderDamageApplicationCard({
+            actor: this,
+            damage,
+            bonusDamage,
+            hpReduction: 0,
+            totalDamageDealt,
+            location,
+            armorData,
+            ablation: 0,
+            shieldAblation,
+          });
+          return;
+        }
+        if (shield.system.shieldHitPoints.value > 0) { // if ammo is explosive and shield is still standing, resolve chat card with no damage to token;
+          CPRChat.RenderDamageApplicationCard({
+            actor: this,
+            damage,
+            bonusDamage,
+            hpReduction: 0,
+            totalDamageDealt,
+            location,
+            armorData,
+            ablation: 0,
+            shieldAblation,
+          });
+          return;
+        }
+      }
+    }
+
+    // Deal the bonusDamage, if any.
+    totalDamageDealt += bonusDamage;
+
+    // If damage did not penetrate armor, then only the bonus damage (if any) is applied, minus any damage reduction.
+    if (damage <= armorData.value) {
+      takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
       const currentHp = this.system.derivedStats.hp.value;
-      await this.update({ "system.derivedStats.hp.value": currentHp - bonusDamage });
-      totalDamageDealt += bonusDamage;
-    }
-    if (damage <= armorValue) {
-      // Damage did not penetrate armor, thus only the bonus damage is applied.
-      CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: totalDamageDealt, ablation: 0 });
+      await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
+      CPRChat.RenderDamageApplicationCard({
+        actor: this,
+        damage,
+        bonusDamage,
+        hpReduction: takenDamage,
+        totalDamageDealt,
+        location,
+        totalDamageReduction,
+        armorData,
+        ablation: 0,
+        shieldAblation,
+      });
       return;
     }
-    // Take the regular damage.
-    let takenDamage = damage - armorValue;
+
+    // If damage did penetrate armor, deal the regular damage.
     if (location === "head") {
       // Damage taken against the head is doubled.
-      takenDamage *= 2;
+      totalDamageDealt += 2 * (damage - armorData.value);
+    } else {
+      totalDamageDealt += damage - armorData.value;
     }
+
+    // Tally up takenDamage. If takenDamage is negative from damageReduction, make 0. This way negative takenDamage doesn't heal.
+    takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
+
+    // If damage isn't lethal and exceeds currentHp, then damage done is one less than currentHp.
     const currentHp = this.system.derivedStats.hp.value;
     if (takenDamage >= currentHp && !damageLethal) {
       takenDamage = currentHp - 1;
+      if (currentHp <= 0) {
+        takenDamage = 0;
+      }
     }
+
     await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
-    totalDamageDealt += takenDamage;
 
     // Ablate the armor correctly if there's armor equipped
     if (armors.length > 0) {
       await this._ablateArmor(location, ablation);
     }
-
     const cardDisplayAblation = (armors.length > 0) ? ablation : 0;
-    CPRChat.RenderDamageApplicationCard({ name: this.name, hpReduction: totalDamageDealt, ablation: cardDisplayAblation });
+    CPRChat.RenderDamageApplicationCard({
+      actor: this,
+      damage,
+      bonusDamage,
+      hpReduction: takenDamage,
+      totalDamageDealt,
+      location,
+      totalDamageReduction,
+      armorData,
+      ablation: cardDisplayAblation,
+      shieldAblation,
+      damageLethal,
+    });
+  }
+
+  /**
+   * Reverse damage and armor/shield ablation to the actor, in case someone made a mistake applying it.
+   *
+   * @param {int} hpReduction - value of the damage taken
+   * @param {string} location - location of the damage
+   * @param {int} ablation - value of the armor ablation
+   * @param {int} shieldAblation - value of the shield ablation
+   */
+  async _reverseDamage(hpReduction, location, ablation, shieldAblation) {
+    LOGGER.trace("_reverseDamage | CPRActor | Called.");
+    const currentHp = this.system.derivedStats.hp.value;
+    const maxHp = this.system.derivedStats.hp.max;
+    if (maxHp > currentHp + hpReduction) {
+      await this.update({ "system.derivedStats.hp.value": currentHp + hpReduction });
+    } else {
+      await this.update({ "system.derivedStats.hp.value": maxHp });
+    }
+    await this._ablateArmor(location, -ablation);
+    await this._ablateArmor("shield", -shieldAblation);
   }
 
   /**
@@ -1172,12 +1282,16 @@ export default class CPRActor extends Actor {
           cprArmorData.headLocation.sp = Number(cprArmorData.headLocation.sp);
           cprArmorData.headLocation.ablation = Number(cprArmorData.headLocation.ablation);
           const armorSp = (upgradeType === "override") ? upgradeValue : cprArmorData.headLocation.sp + upgradeValue;
-          cprArmorData.headLocation.ablation = Math.min((cprArmorData.headLocation.ablation + ablation), armorSp);
+          cprArmorData.headLocation.ablation = ablation < 0
+            ? Math.max((cprArmorData.headLocation.ablation + ablation), 0)
+            : Math.min((cprArmorData.headLocation.ablation + ablation), armorSp);
           updateList.push({ _id: a.id, system: cprArmorData });
         });
         await this.updateEmbeddedDocuments("Item", updateList);
         // Update actor external data as head armor is ablated:
-        currentArmorValue = Math.max((this.system.externalData.currentArmorHead.value - ablation), 0);
+        currentArmorValue = ablation < 0
+          ? Math.min((this.system.externalData.currentArmorHead.value - ablation), this.system.externalData.currentArmorHead.max)
+          : Math.max((this.system.externalData.currentArmorHead.value - ablation), 0);
         await this.update({ "system.externalData.currentArmorHead.value": currentArmorValue });
         break;
       }
@@ -1189,12 +1303,16 @@ export default class CPRActor extends Actor {
           const upgradeValue = a.getAllUpgradesFor("bodySp");
           const upgradeType = a.getUpgradeTypeFor("bodySp");
           const armorSp = (upgradeType === "override") ? upgradeValue : cprArmorData.bodyLocation.sp + upgradeValue;
-          cprArmorData.bodyLocation.ablation = Math.min((cprArmorData.bodyLocation.ablation + ablation), armorSp);
+          cprArmorData.bodyLocation.ablation = ablation < 0
+            ? Math.max((cprArmorData.bodyLocation.ablation + ablation), 0)
+            : Math.min((cprArmorData.bodyLocation.ablation + ablation), armorSp);
           updateList.push({ _id: a.id, system: cprArmorData });
         });
         await this.updateEmbeddedDocuments("Item", updateList);
         // Update actor external data as body armor is ablated:
-        currentArmorValue = Math.max((this.system.externalData.currentArmorBody.value - ablation), 0);
+        currentArmorValue = ablation < 0
+          ? Math.min((this.system.externalData.currentArmorBody.value - ablation), this.system.externalData.currentArmorBody.max)
+          : Math.max((this.system.externalData.currentArmorBody.value - ablation), 0);
         await this.update({ "system.externalData.currentArmorBody.value": currentArmorValue });
         break;
       }
@@ -1203,12 +1321,16 @@ export default class CPRActor extends Actor {
           const cprArmorData = a.system;
           cprArmorData.shieldHitPoints.value = Number(cprArmorData.shieldHitPoints.value);
           cprArmorData.shieldHitPoints.max = Number(cprArmorData.shieldHitPoints.max);
-          cprArmorData.shieldHitPoints.value = Math.max((a.system.shieldHitPoints.value - ablation), 0);
+          cprArmorData.shieldHitPoints.value = ablation < 0
+            ? Math.min((a.system.shieldHitPoints.value - ablation), a.system.shieldHitPoints.max)
+            : Math.max((a.system.shieldHitPoints.value - ablation), 0);
           updateList.push({ _id: a.id, system: cprArmorData });
         });
         await this.updateEmbeddedDocuments("Item", updateList);
         // Update actor external data as shield is damaged:
-        currentArmorValue = Math.max((this.system.externalData.currentArmorShield.value - ablation), 0);
+        currentArmorValue = ablation < 0
+          ? Math.min((this.system.externalData.currentArmorShield.value - ablation), this.system.externalData.currentArmorShield.max)
+          : Math.max((this.system.externalData.currentArmorShield.value - ablation), 0);
         await this.update({ "system.externalData.currentArmorShield.value": currentArmorValue });
         break;
       }
@@ -1240,7 +1362,7 @@ export default class CPRActor extends Actor {
    */
   static async deleteEffect(effect) {
     LOGGER.trace("deleteEffect | CPRCharacterActor | Called.");
-    const setting = game.settings.get("cyberpunk-red-core", "deleteItemConfirmation");
+    const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     if (setting) {
       const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${effect.system.label}?`;
       const confirmDelete = await ConfirmPrompt.RenderPrompt(

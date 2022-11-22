@@ -1,0 +1,38 @@
+name: Sacred Herbs
+type: gear
+system:
+  tags: []
+  description:
+    value: ''
+    chat: ''
+    unidentified: ''
+  source: ''
+  favorite: false
+  revealed: true
+  usage: toggled
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  amount: 1
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 50
+    category: premium
+img: icons/consumables/plants/herb-tied-bundle-dried-yellow.webp
+effects: []
+flags: {}
+_stats:
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+  coreVersion: '10.288'
+  createdTime: 1667821753327
+  modifiedTime: 1667822030606
+  lastModifiedBy: 00CPRCBuildBot00
+_id: zDjspn0R9fgRILpv
+folder: null
+sort: 0
+ownership:
+  default: 0

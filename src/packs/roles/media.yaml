@@ -1,0 +1,38 @@
+_id: Ek251OMdphcqzWPP
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831204020
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831204020
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
+name: Media
+ownership:
+  default: 0
+sort: 0
+system:
+  abilities: []
+  addRoleAbilityRank: true
+  bonusRatio: 1
+  bonuses: []
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Newspeople, influencers, and cultural phenomena, they are ready to
+      expose the truth by any means necessary.</p>
+  favorite: false
+  hasRoll: true
+  mainRoleAbility: Credibility
+  rank: 4
+  skill: '--'
+  source: Pg. 151
+  stat: '--'
+  tags: []
+  universalBonuses: []
+type: role

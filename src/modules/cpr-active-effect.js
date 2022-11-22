@@ -1,4 +1,4 @@
-/* global ActiveEffect */
+/* global ActiveEffect game */
 import CPRActor from "./actor/cpr-actor.js";
 import LOGGER from "./utils/cpr-logger.js";
 
@@ -86,7 +86,7 @@ export default class CPRActiveEffect extends ActiveEffect {
    */
   async setModKeyCategory(num, category) {
     LOGGER.trace("setModKeyCategory | CPRActiveEffect | Called.");
-    this.setFlag("cyberpunk-red-core", `changes.${num}`, category);
+    this.setFlag(game.system.id, `changes.${num}`, category);
   }
 
   /**

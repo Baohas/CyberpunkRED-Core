@@ -1,0 +1,128 @@
+_id: 2EvWIW0HXwoBK6xq
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963825
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963825
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: tVc7bM54Ej63Yv2E
+    changes:
+      - key: bonuses.airVehicleTech
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.basicTech
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.cybertech
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.electronicsAndSecurityTech
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.landVehicleTech
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.seaVehicleTech
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.weaponstech
+        mode: 2
+        priority: null
+        value: '2'
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
+          '1': skill
+          '2': skill
+          '3': skill
+          '4': skill
+          '5': skill
+          '6': skill
+    icon: systems/cyberpunk-red-core/icons/compendium/cyberware/techscanner.svg
+    label: Techscanner
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/techscanner.svg
+name: Techscanner
+ownership:
+  default: 0
+sort: 0
+system:
+  ammoVariety: []
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Contains a variety of built-in gadgets and tools. Provides a +2 bonus
+      to multiple skill checks. </p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
+  humanityLoss:
+    roll: 2d6
+    static: '7'
+  install: clinic
+  installedOptionSlots: 0
+  isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: 0
+  optionalIds: []
+  price:
+    category: expensive
+    market: 500
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 2
+  slots: 3
+  source: pg. 366
+  tags: []
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

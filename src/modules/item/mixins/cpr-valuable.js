@@ -1,4 +1,5 @@
 import LOGGER from "../../utils/cpr-logger.js";
+import CPR from "../../system/config.js";
 
 /**
  * Valuable Items have a price and a price category. This might belong in "common" if we agree
@@ -16,19 +17,7 @@ const Valuable = function Valuable() {
   this.calcPrice = function calcPrice(category) {
     LOGGER.trace("calcPrice | Valuable | Called.");
     // Note: since we use "const", this map is not persisted on the Item object the mixin is added to
-    const PRICE_CATEGORY_MAPPINGS = {
-      free: 0,
-      cheap: 5,
-      everyday: 20,
-      costly: 50,
-      premium: 100,
-      expensive: 500,
-      veryExpensive: 1000,
-      luxury: 5000,
-      superLuxury: 10000,
-    };
-
-    let price = PRICE_CATEGORY_MAPPINGS[category];
+    let price = CPR.itemPriceCategoryMap[category];
     const cprItemData = this.system;
     if (this.type === "ammo") {
       if (cprItemData.variety !== "grenade" && cprItemData.variety !== "rocket") price /= 10;
@@ -43,16 +32,20 @@ const Valuable = function Valuable() {
    * @returns {String}
    */
   this.getPriceCategory = function getPriceCategory(price) {
-    if (price === 0) return "free";
-    if (price > 0 && price <= 5) return "cheap";
-    if (price > 5 && price <= 20) return "everyday";
-    if (price > 20 && price <= 50) return "costly";
-    if (price > 50 && price <= 100) return "premium";
-    if (price > 100 && price <= 500) return "expensive";
-    if (price > 500 && price <= 1000) return "veryExpensive";
-    if (price > 1000 && price <= 5000) return "luxury";
-    if (price > 5000 && price <= 10000) return "superLuxury";
-    return "extravagant";
+    let priceCategory = "free";
+    const PRICE_CATEGORY_MAPPINGS = {};
+    let priceTiers = [];
+    for (const key of Object.keys(CPR.itemPriceCategoryMap)) {
+      const integerValue = parseInt(CPR.itemPriceCategoryMap[key], 10);
+      PRICE_CATEGORY_MAPPINGS[integerValue] = key;
+      priceTiers.push(integerValue);
+    }
+    priceTiers = priceTiers.sort((a, b) => a - b);
+    for (const priceTier of priceTiers) {
+      priceCategory = (priceTier <= price) ? PRICE_CATEGORY_MAPPINGS[priceTier] : priceCategory;
+      priceCategory = (priceCategory === "free" && price > 0) ? PRICE_CATEGORY_MAPPINGS[priceTier] : priceCategory;
+    }
+    return priceCategory;
   };
 };
 

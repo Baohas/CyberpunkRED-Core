@@ -38,7 +38,7 @@ const Attackable = function Attackable() {
         this._loadItem(this.system.magazine.ammoId);
         break;
       case "measure-dv":
-        this._measureDv(actor, this.system.dvTable);
+        await this._setDvTable(actor, this.system.dvTable);
         break;
       default:
     }
@@ -166,7 +166,21 @@ const Attackable = function Attackable() {
     cprRoll.addMod(actor.getArmorPenaltyMods(statName));
     cprRoll.addMod(actor.getWoundStateMods());
     cprRoll.addMod(skillMod);
-    cprRoll.addMod(cprWeaponData.attackmod);
+    const upgradeValue = this.getAllUpgradesFor("attackmod");
+    const upgradeType = this.getUpgradeTypeFor("attackmod");
+    let upgradeResult = cprWeaponData.attackmod;
+    if (upgradeValue !== "" && upgradeValue !== 0) {
+      if (upgradeType === "override") {
+        upgradeResult = upgradeValue;
+      } else if (typeof upgradeResult !== "number" || typeof upgradeValue !== "number") {
+        if (upgradeValue !== 0 && upgradeValue !== "") {
+          upgradeResult = `${upgradeResult} + ${upgradeValue}`;
+        }
+      } else {
+        upgradeResult += upgradeValue;
+      }
+    }
+    cprRoll.addMod(upgradeResult);
 
     if (cprRoll instanceof CPRRolls.CPRAttackRoll && cprWeaponData.isRanged) {
       Rules.lawyer(this.hasAmmo(cprRoll), "CPR.messages.weaponAttackOutOfBullets");
@@ -243,12 +257,19 @@ const Attackable = function Attackable() {
       }
       default:
     }
+
+    // Feed ammo type and variety into the rollCard arguments for the damage application button.
     if (cprWeaponData.isRanged) {
       const ammoType = this._getLoadedAmmoType();
+      const ammoVariety = this._getLoadedAmmoVariety();
       if (ammoType !== "undefined") {
         cprRoll.rollCardExtraArgs.ammoType = ammoType;
       }
+      if (ammoVariety !== "undefined") {
+        cprRoll.rollCardExtraArgs.ammoVariety = ammoVariety;
+      }
     }
+
     const halfArmorAttacks = [
       "lightMelee",
       "medMelee",

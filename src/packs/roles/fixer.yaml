@@ -1,0 +1,73 @@
+_id: fR6KBqJgywWfhI2n
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831204019
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831204019
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
+name: Fixer
+ownership:
+  default: 0
+sort: 0
+system:
+  abilities:
+    - bonusRatio: 1
+      description: ''
+      hasRoll: true
+      index: 0
+      multiplier: '1'
+      name: Haggle
+      rank: 4
+      skill:
+        _id: Y4RvJmUnCREbIP4N
+        data:
+          basic: false
+          category: socialSkills
+          core: true
+          description: ''
+          difficulty: typical
+          favorite: false
+          level: 0
+          skillmod: 0
+          source: ''
+          stat: cool
+          tags: []
+        effects: []
+        flags: {}
+        folder: null
+        img: icons/svg/item-bag.svg
+        name: Trading
+        permission:
+          default: 0
+          pcvDIRHcQv6CtHpF: 3
+        sort: 0
+        type: skill
+      bonuses: []
+      stat: cool
+      universalBonuses: []
+  addRoleAbilityRank: true
+  bonusRatio: 1
+  bonuses: []
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>They can get anyone anything, as long as the price is right. Using
+      their charm and skills of trade, they make the deals that keep the economy
+      of the Dark Future flowing.</p>
+  favorite: false
+  hasRoll: false
+  mainRoleAbility: Operator
+  rank: 4
+  skill: '--'
+  source: Pg. 159
+  stat: '--'
+  tags: []
+  universalBonuses: []
+type: role
