@@ -88,6 +88,7 @@ async function buildChangelog() {
 
     fs.writeFileSync(path.join(destFolder, "lang/release-notes/", `${SYSTEM_VERSION}.en`), result, { mode: 0o644 });
   }
+}
 
 async function propagateLangs() {
   const enFile = fs.readFileSync(path.resolve(srcFolder, "lang/en.json"));
