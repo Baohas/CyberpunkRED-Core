@@ -675,7 +675,7 @@ export class CPRDamageRoll extends CPRRoll {
    * @param {String} weaponType - the weapon type is considered when displaying alt fire modes in the UI
    * @param {Number} universalBonusDamage - a high level mod bestowed by some role abilities and items
    */
-  constructor(rollTitle, formula, weaponType, universalBonusDamage) {
+  constructor(rollTitle, formula, weaponType) {
     LOGGER.trace("constructor | CPRDamageRoll | Called.");
     // we assume always d6s
     super(rollTitle, formula);
@@ -683,7 +683,6 @@ export class CPRDamageRoll extends CPRRoll {
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-damage-rollcard.hbs`;
     // criticals just add 5 damage, they do not need more dice rolled
     this.calculateCritical = false;
-    this.universalBonusDamage = universalBonusDamage;
     this.bonusDamage = 5;
     // are we aiming at something?
     this.isAimed = false;
@@ -708,9 +707,6 @@ export class CPRDamageRoll extends CPRRoll {
     LOGGER.trace("_computeBase | CPRDamageRoll | Called.");
     this.autofireMultiplier = Math.min(this.autofireMultiplier, this.autofireMultiplierMax);
     const damageMultiplier = (this.isAutofire) ? this.autofireMultiplier : 1;
-    if (this.universalBonusDamage) {
-      return ((this.initialRoll + this.totalMods()) * damageMultiplier) + this.universalBonusDamage;
-    }
     return ((this.initialRoll + this.totalMods()) * damageMultiplier);
   }
 

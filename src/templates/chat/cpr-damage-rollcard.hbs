@@ -70,11 +70,15 @@
                         {{bonusDamage}}</div>
                     {{/if}}
                     <div class="d6-data-details hide">
-                      {{#if universalBonusDamage}}
-                        <div class="text-normal text-bold">{{localize "CPR.universalBonuses.damage"}}: +{{universalBonusDamage}}
-                      {{/if}}
-                      {{#if (cprCompare mods.length ">" 0)}}
-                        <div class="text-normal text-bold">{{localize "CPR.rolls.mods"}}: {{totalMods}}</div>
+                      {{#if mods}}
+                      <div class="text-normal text-bold text-nowrap" data-tooltip="
+                        {{#each mods}}
+                          {{this.source}} {{#if this.key}}({{localize (cprFindConfigValue "activeEffectKeys" this.category this.key)}}){{/if}}: {{this.value}}
+                          <br>
+                        {{/each}}
+                      ">
+                        {{localize "CPR.rolls.mods"}} {{localize "CPR.rolls.total"}}: {{totalMods}}
+                      </div>
                       {{/if}}
                     </div>
                 </div>

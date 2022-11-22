@@ -51,8 +51,9 @@ export class CPRRollDialog extends CPRDialog {
     let filteredMods = [];
 
     if (this.prototypeChain.includes("CPRDamageRoll")) {
-      const damageMods = allSituationalMods.filter((m) => m.key === `system.stats.bonuses.universalDamage`);
-      filteredMods = filteredMods.concat(damageMods);
+      const damageMods = allSituationalMods.filter((m) => m.key === `bonuses.universalDamage`);
+      const upgradeMods = this.item.getAllUpgradeMods("damage").filter((m) => m.isSituational);
+      filteredMods = filteredMods.concat(damageMods).concat(upgradeMods);
     }
 
     if (this.prototypeChain.includes("CPRAttackRoll") && !this.prototypeChain.includes("CPRProgramAttackRoll")) {

@@ -282,7 +282,7 @@ export default class CPRItem extends Item {
       }
       case CPRRolls.rollTypes.DAMAGE: {
         const damageType = extraData.damageType ? extraData.damageType : type;
-        return this._createDamageRoll(damageType);
+        return this._createDamageRoll(damageType, actor);
       }
       case CPRRolls.rollTypes.CYBERDECKPROGRAM: {
         return this._createCyberdeckRoll(type, actor, extraData);

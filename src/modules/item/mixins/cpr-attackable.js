@@ -190,7 +190,7 @@ const Attackable = function Attackable() {
     cprRoll.addMod(relevantUpgradeMods);
 
     // Mod from weapon attackmod. We will only add it if there are no upgrade mods that override this value.
-    if (relevantUpgradeMods.some((m) => !(m.type === "override"))) {
+    if (relevantUpgradeMods.length === 0 || relevantUpgradeMods.some((m) => !(m.type === "override"))) {
       cprRoll.addMod({
         value: cprWeaponData.attackmod,
         source: this.name,
@@ -211,13 +211,12 @@ const Attackable = function Attackable() {
    * @param {String} type - type of attack (autofire, etc)
    * @returns {CPRDamageRoll}
    */
-  this._createDamageRoll = function _createDamageRoll(type) {
+  this._createDamageRoll = function _createDamageRoll(type, actor) {
     LOGGER.trace("_createDamageRoll | Attackable | Called.");
     const cprWeaponData = this.system;
     const rollName = this.name;
     const { weaponType } = cprWeaponData;
     let { damage } = this.system;
-    let universalBonusDamage = 0;
     if ((weaponType === "unarmed" || weaponType === "martialArts") && cprWeaponData.unarmedAutomaticCalculation) {
       // calculate damage based on BODY stat
       const cprActorData = this.actor.system;
@@ -239,23 +238,7 @@ const Attackable = function Attackable() {
       }
     }
 
-    // consider damage bonuses coming from role abilties
-    this.actor.itemTypes.role.forEach((r) => {
-      if (r.system.universalBonuses.includes("damage")) {
-        universalBonusDamage += Math.floor(r.system.rank / r.system.bonusRatio);
-      }
-      const subroleUniversalBonuses = r.system.abilities.filter((a) => a.universalBonuses.includes("damage"));
-      if (subroleUniversalBonuses.length > 0) {
-        subroleUniversalBonuses.forEach((b) => {
-          universalBonusDamage += Math.floor(b.rank / b.bonusRatio);
-        });
-      }
-    });
-
-    // finally, total up active effects improving attacks
-    universalBonusDamage += this.actor.bonuses.universalDamage;
-
-    const cprRoll = new CPRRolls.CPRDamageRoll(rollName, damage, weaponType, universalBonusDamage);
+    const cprRoll = new CPRRolls.CPRDamageRoll(rollName, damage, weaponType);
     if (cprWeaponData.fireModes.autoFire === 0 && (
       (cprWeaponData.weaponType === "smg" || cprWeaponData.weaponType === "heavySmg" || cprWeaponData.weaponType === "assaultRifle"))) {
       cprWeaponData.fireModes.autoFire = cprWeaponData.weaponType === "assaultRifle" ? 4 : 3;
@@ -298,13 +281,51 @@ const Attackable = function Attackable() {
     if (halfArmorAttacks.includes(weaponType)) {
       cprRoll.rollCardExtraArgs.ignoreHalfArmor = true;
     }
-    const upgradeType = this.getUpgradeTypeFor("damage");
-    const upgradeValue = this.getTotalUpgradeValues("damage");
-    if (upgradeType === "override") {
-      cprRoll.formula = "0d6";
-    }
-    cprRoll.addMod(upgradeValue);
 
+    // total up universal attack bonuses directly from role abilities (not indirectly from skills)
+    const roleDamageMods = [];
+    this.actor.itemTypes.role.forEach((r) => {
+      if (r.system.universalBonuses.includes("damage")) {
+        const value = Math.floor(r.system.rank / r.system.bonusRatio);
+        roleDamageMods.push({
+          value,
+          source: r.system.mainRoleAbility,
+          key: "bonuses.universalDamage",
+          category: "combat",
+        });
+      }
+      r.system.abilities.forEach((a) => {
+        if (a.universalBonuses?.includes("damage")) {
+          const source = a.name;
+          const value = Math.floor(a.rank / a.bonusRatio);
+          roleDamageMods.push({
+            value,
+            source,
+            key: `bonuses.universalDamage`,
+            category: "combat",
+          });
+        }
+      });
+    });
+    cprRoll.addMod(roleDamageMods);
+
+    // Mod from item upgrades that affect damage.
+    const relevantUpgradeMods = this.getAllUpgradeMods("damage").filter((m) => (m.isSituational && m.onByDefault) || !m.isSituational);
+
+    // If there are no mods of type "override", add the mods. Otherwise, set roll formula appropriately.
+    if (relevantUpgradeMods.length > 0) {
+      if (relevantUpgradeMods.some((m) => !(m.type === "override"))) {
+        cprRoll.addMod(relevantUpgradeMods);
+      } else {
+        cprRoll.formula = "0d6";
+      }
+    }
+
+    const effects = actor.effects.contents;
+    const allMods = CPRMod.getAllModifiers(effects);
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+    const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage", "AeBonus");
+    cprRoll.addMod(damageMods);
     return cprRoll;
   };
 
