@@ -23,6 +23,13 @@ async function cleanDist() {
   }
 }
 
+function getLangs() {
+  const systemRaw = fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE));
+  const system = JSON.parse(systemRaw);
+  const langs = system.languages;
+  return langs;
+}
+
 async function compileLess() {
   createDist();
   return gulp.src(path.resolve(srcFolder, "less/main.less"))
@@ -58,6 +65,43 @@ async function buildManifest() {
   fs.writeFileSync(path.resolve(destFolder, SYSTEM_FILE), JSON.stringify(system, null, 2));
 }
 
+async function propagateLangs() {
+  const enFile = fs.readFileSync(path.resolve(srcFolder, "lang/en.json"));
+  const enStrings = JSON.parse(enFile);
+  const allLangs = getLangs();
+  // Remove en from the languages
+  const langs = allLangs.filter((item) => item.lang !== "en");
+
+  // Loop over each language file in `src/lang` except `en.json`
+  langs.forEach((lang) => {
+    const langFile = path.resolve(srcFolder, lang.path);
+    const langData = JSON.parse(fs.readFileSync(path.resolve(langFile)));
+    const data = {};
+
+    // Loop over `enStrings` and check they are in the current lang file
+    // If it does not exist, add the en key/value to the file.
+    Object.entries(enStrings).forEach(([key, value]) => {
+      if (!(key in langData)) {
+        data[key] = value;
+      }
+    });
+
+    // Get a list of language strings, loop over and check if they exist in
+    // en.json if not delete the key/value from the langiage file.
+    Object.entries(langData).forEach(([key]) => {
+      if (!(key in enStrings)) {
+        delete langData[key];
+      }
+    });
+
+    // Merge the new strings and the (trimmed) language strings
+    const newData = { ...data, ...langData };
+    // Write the new files out, sort by JSON key to ensure clean diffs
+    fs.writeFileSync(langFile, JSON.stringify(newData, Object.keys(newData)
+      .sort(), 2));
+  });
+}
+
 async function watchSrc() {
   // Helper - watch the pattern, copy the output on change
   function watcher(pattern, out) {
@@ -68,7 +112,8 @@ async function watchSrc() {
 
   sourceFiles.forEach((file) => watcher(file.from, file.to));
   sourceFolders.forEach((folder) => watcher(folder.from, folder.to));
-  gulp.watch("src/**/*.less").on("change", () => compileLess());
+  gulp.watch("src/**/*.less").on("all", () => compileLess());
+  gulp.watch("src/lang/*.json").on("all", () => propagateLangs());
 }
 
 export {
@@ -77,4 +122,5 @@ export {
   copyAssets,
   compileLess,
   watchSrc,
+  propagateLangs,
 };
