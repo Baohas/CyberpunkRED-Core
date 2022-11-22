@@ -1,10 +1,16 @@
 import fs from "fs-extra";
-import path from "path";
 import gulp from "gulp";
 import less from "gulp-less";
+import path from "path";
+import MarkdownIt from "markdown-it";
 
 import * as config from "./config.mjs";
-import { SYSTEM_FILE, SYSTEM_TITLE } from "./constants.mjs";
+import {
+  CHANGELOG_FILE,
+  SYSTEM_FILE,
+  SYSTEM_TITLE,
+  SYSTEM_VERSION,
+} from "./constants.mjs";
 
 const destFolder = path.resolve(config.dataPath);
 const srcFolder = "src";
@@ -50,7 +56,7 @@ async function buildManifest() {
   const systemRaw = fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE));
   const system = JSON.parse(systemRaw);
   // If we're in CI use $VERSION as the version, else use a dummy version
-  const version = process.env.CI ? process.env.VERSION : "0.0.0";
+  const version = SYSTEM_VERSION;
   // Construct some URLs
   const repoUrl = process.env.CI ? process.env.REPO_URL : "http://example.com";
   const zipFile = process.env.CI ? process.env.ZIP_FILE : "cpr.zip";
@@ -63,6 +69,25 @@ async function buildManifest() {
   system.title = SYSTEM_TITLE;
 
   fs.writeFileSync(path.resolve(destFolder, SYSTEM_FILE), JSON.stringify(system, null, 2));
+}
+
+// Create the release notes for the version and put it in the distDir
+async function buildChangelog() {
+  // Check if the target dir is created
+  if (!fs.existsSync(path.join(destFolder, "lang/release-notes/"))) {
+    fs.mkdirpSync(path.join(destFolder, "lang/release-notes/"));
+  }
+
+  // If we don't have a manually created file then generate one
+  if (!fs.existsSync(path.join(srcFolder, "lang/release-notes", `${SYSTEM_VERSION}.en`))) {
+    const changelog = fs.readFileSync(path.resolve(CHANGELOG_FILE), "utf-8");
+    const regex = /(?:^|\n)##\s[^\n]*\n(.*?)(?=\n##?\s|$)/gs;
+    const release = regex.exec(changelog)[0];
+    const md = new MarkdownIt();
+    const result = md.render(release);
+
+    fs.writeFileSync(path.join(destFolder, "lang/release-notes/", `${SYSTEM_VERSION}.en`), result, { mode: 0o644 });
+  }
 }
 
 async function propagateLangs() {
@@ -118,6 +143,7 @@ async function watchSrc() {
 
 export {
   buildManifest,
+  buildChangelog,
   cleanDist,
   copyAssets,
   compileLess,
