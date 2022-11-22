@@ -1,7 +1,21 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
-## Version 0.84.0 | Date: WIP
+## Version DEV | Date: TBD
+
+### New Features
+
+### Changes
+
+### Bug Fixes
+
+## Version 0.84.0 | Date: 2022-11-22
+
+### Release Specific Instructions
+
+In this release we read Critical Injuries and DV Tables directly from the system compendia. As such if you are using the Critical Injuries unmodified from the RED Corebook you can delete the previously imported "Critical Injuries (Head)" and "Critical Injuries (Body)" items as well as the "Critical Injury Tables" and "DV Rolltables" Roll Table
+
+If you are using modified Critical Injuries please check out [this](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/help-articles/criticalInjury#configuring-home-brew-injuries) Wiki article on how to use Homebrew Injuries. The same process can also be used with Homebrew DV Tables.
 
 ### New Features
 

@@ -1,11 +1,11 @@
 _id: n7IlIvMfg7yW1OoE
 _stats:
-  coreVersion: '10.276'
+  coreVersion: '10.286'
   createdTime: 1659831952433
   lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831952433
+  modifiedTime: 1669046426717
   systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
+  systemVersion: 0.0.0
 description: ''
 displayRoll: true
 flags:
@@ -20,8 +20,8 @@ ownership:
 replacement: true
 results:
   - _id: ZieosouBln5Il2tk
-    documentCollection: Item
-    documentId: E2gAzsBbCwciFDz3
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: 9N6yHeVwiGg2MkeL
     drawn: false
     flags: {}
     img: >-
@@ -30,11 +30,11 @@ results:
       - 2
       - 2
     text: Dismembered Arm
-    type: 1
+    type: 2
     weight: 1
   - _id: odZ5Yyt3WOrNSKzV
-    documentCollection: Item
-    documentId: DOF9TaLpoW2J52UU
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: xmlFB3X2q2NAklfn
     drawn: false
     flags: {}
     img: >-
@@ -43,11 +43,11 @@ results:
       - 3
       - 3
     text: Dismembered Hand
-    type: 1
+    type: 2
     weight: 1
   - _id: TGVSxOE3pxFV34Sm
-    documentCollection: Item
-    documentId: XpJK6F1d53ayEl8y
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: RAZcouFe0FS1VN1o
     drawn: false
     flags: {}
     img: >-
@@ -56,11 +56,11 @@ results:
       - 4
       - 4
     text: Collapsed Lung
-    type: 1
+    type: 2
     weight: 1
   - _id: unBMWAiXQKK6GY0M
-    documentCollection: Item
-    documentId: QP8COkM9Pgv1gnkx
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: MQpiPgEtPaIe6MJ6
     drawn: false
     flags: {}
     img: >-
@@ -69,11 +69,11 @@ results:
       - 5
       - 5
     text: Broken Ribs
-    type: 1
+    type: 2
     weight: 1
   - _id: O1dQcS4a7PmVCp5J
-    documentCollection: Item
-    documentId: DqHKJu4c6PpY4Nze
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: Y65igO9rtakP4qSs
     drawn: false
     flags: {}
     img: >-
@@ -82,11 +82,11 @@ results:
       - 6
       - 6
     text: Broken Arm
-    type: 1
+    type: 2
     weight: 1
   - _id: RCLUsZLr404b5IcV
-    documentCollection: Item
-    documentId: gffxgAiT6jxfMMKL
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: xTQ2T50UGNY8DrHl
     drawn: false
     flags: {}
     img: >-
@@ -95,11 +95,11 @@ results:
       - 7
       - 7
     text: Foreign Object
-    type: 1
+    type: 2
     weight: 1
   - _id: QGtmPYrCvP88rKzC
-    documentCollection: Item
-    documentId: u5d1Vb704P0fJ2AG
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: yBy9rlhgZeaWGtHh
     drawn: false
     flags: {}
     img: >-
@@ -108,11 +108,11 @@ results:
       - 8
       - 8
     text: Broken Leg
-    type: 1
+    type: 2
     weight: 1
   - _id: dpYAJWeQ1uDXPo0S
-    documentCollection: Item
-    documentId: jR1rGX4ZWyt6V43y
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: Z3iVuSFtma3Bx7SX
     drawn: false
     flags: {}
     img: >-
@@ -121,11 +121,11 @@ results:
       - 9
       - 9
     text: Torn Muscle
-    type: 1
+    type: 2
     weight: 1
   - _id: juZQlAH6geJgCHw4
-    documentCollection: Item
-    documentId: fB50SpxLOM8rnKh7
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: pQ2F7FsQvZJyZGXe
     drawn: false
     flags: {}
     img: >-
@@ -134,11 +134,11 @@ results:
       - 10
       - 10
     text: Spinal Injury
-    type: 1
+    type: 2
     weight: 1
   - _id: YhW9mFW9i6vzKbBU
-    documentCollection: Item
-    documentId: 5ZutR21uOx4X928c
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: IKKcCgHU1lBJ4wVd
     drawn: false
     flags: {}
     img: >-
@@ -147,11 +147,11 @@ results:
       - 11
       - 11
     text: Crushed Fingers
-    type: 1
+    type: 2
     weight: 1
   - _id: ysFKhaP2wS8HHg8A
-    documentCollection: Item
-    documentId: sUXGuvihicIkZjX6
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: vRhxMWgOHYROHeHm
     drawn: false
     flags: {}
     img: >-
@@ -160,6 +160,6 @@ results:
       - 12
       - 12
     text: Dismembered Leg
-    type: 1
+    type: 2
     weight: 1
 sort: 0
