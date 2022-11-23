@@ -15,6 +15,7 @@
 ### Changes
 
 ### Bug Fixes
+- Align the second column on the gear tab so it is not all over the place.
 
 ## Version 0.84.0 | Date: 2022-11-22
 
@@ -26,32 +27,31 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ### New Features
 
-- Revamped automatic damage application.
+- Revamped automatic damage application:
   - Shields are taken into account
-  - Damage reduction active effects and role effects are taken into account.
-  - Zap now counts as an "attack" and you can roll damage from the chat card.
-  - Roll damage from program attack cards.
+  - Damage reduction active effects and role effects are taken into account
+  - Zap now counts as an "attack" and you can roll damage from the chat card
+  - Roll damage from program attack cards
 
 ### Changes
 
 - #434 - users no longer need to import compendia to use DV measurements or roll critical injuries
-- Drugs can now be equipped, owned, or carried.
-- Moved created migrationFolder management on CPRMigration and moved backupOwnedItem to CPRMigration as it will probably become
-  necessary if we have more ActiveEffect changes in the future.
-- UI Improvements
-  - The gear tab of the character sheet now displays icons and is more readable/clear.
-  - Better spacing to multiple headers in the character sheet.
-  - Added icons to the container inventory.
-  - Removed action label on container sheets since it was poorly aligned and the buttons are self-explanatory.
+- Drugs can now be equipped, owned, or carried
+- Moved created migrationFolder management on CPRMigration and moved backupOwnedItem to CPRMigration as it will probably become necessary if we have more ActiveEffect changes in the future
+- UI Improvements:
+  - The gear tab of the character sheet now displays icons and is more readable/clear
+  - Better spacing to multiple headers in the character sheet
+  - Added icons to the container inventory
+  - Removed action label on container sheets since it was poorly aligned and the buttons are self-explanatory
   - Add Slot details to Item Upgrade Dialogue
-- Add ROF to weapons in the fight tab (#593)
+- Add ROF to weapons in the fight tab (#539)
 - Hide/Show `Used Upgrade Slots` if an item has slots
 - #555 Create Elflines Online Compendium as a Compendium not a macro
 - The Role block in the left pane of the character sheet is now just a simple text box. Active Net Role is now set from the Net section of the Fight tab. This should be a lot clearer to users and require less maintenance.
 
 ### Bug Fixes
 
-- #553 - Macros can be dragged to the hotbar.
+- #553 - Macros can be dragged to the hotbar
 - #546 - Techscanner now properly gives bonuses to Cybertech and Weaponstech
 - #547 - Fixed the code so upgrades to attackmod are now taken into consideration
 - #554 - Introduced new price category `Dirt Cheap`. Changed the code to store Price Categories as config data (`config.js`) and altered code
@@ -63,9 +63,9 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - #471 - On a Macbook, the `Command` key can now be used in lieu of the `Control` key to skip roll dialogs
 - #557 - Fix the variety of Shotgun Smart Slugs
 - #559 - Fix multiple areas where the skill names were not being translated properly
-- #560 - Fixed `Initiative Reaction` to apply to initiative rolls.
-- Fixed issued where the image on a sheet would overflow onto the sheet data.
-- Fixed issue where item images were no longer displaying on the item sheets.
+- #560 - Fixed `Initiative Reaction` to apply to initiative rolls
+- Fixed issued where the image on a sheet would overflow onto the sheet data
+- Fixed issue where item images were no longer displaying on the item sheets
 
 ## Version 0.83.1 (Hotfix) | Date: 2022-10-23
 
@@ -73,8 +73,8 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - #529 - Fix non-shop containers having the wrong button
 - #536 - Spelling mistake: "Ememies" (English)
-- #495 - Ability to use UUID links in Character sheets or Item sheets.
-- Fixed location of Lifestyle Data for Tragic Love Affairs and Affectations.
+- #495 - Ability to use UUID links in Character sheets or Item sheets
+- Fixed location of Lifestyle Data for Tragic Love Affairs and Affectations
 - Fix rolling initiative before combat has started
 - Fix weapon upgrades that are secondary weapons to work correctly
 - Fix cyberdeck program installation where it was adding the item._id under item.system
@@ -98,21 +98,21 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ### Changes
 
-- Automatic babele folder configuration, so that it does not have to be set by the user.
+- Automatic babele folder configuration, so that it does not have to be set by the user
 - Mook portrait is always shown
 - A few minor UI improvements to the Mook sheet
 
 ### Bug Fixes
 
 - #476 - Vehicles cost can now be edited
-- Cyberware & Upgrade templates still had some references to .data causing the shim to fire.
+- Cyberware & Upgrade templates still had some references to .data causing the shim to fire
 - #469 - Fixed icon display for Foreign Object Critical in Rollable Tables
 - #507 - Black ICE Class does not appear to save
 - #520 - Splitting items works again
 
 ## Version 0.82.1 (Hotfix) | Date: 2022-09-23
 
-- Fix an issue where the mook sheet notes were not writable
+- Fix an issue where the mook sheet notes were not writeable
 - #494 - Cyberware weapons were corrupting data points
 
 ## Version 0.82.0 | Date: 2022-09-22
@@ -159,7 +159,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - When installing cyberware and selecting `None` for the Humanity Loss, the maximum humanity was not being decremented forcing one to re-calculate it using the calculator.
 - Corrected  an issue with Compendium Migration where `Scene` type Compendia was not properly being migrated.
-- #437 - Chat Card shows armor ablation even if target has no Armor
+- #437 - Chat Card shows armor ablation even if target has no armor
 - #419 - Invert function of CTRL Rolls creates an issue with Primary Role Abilities
 
 ## Version 0.81.2 (Hotfix) | Date: 2022-08-02
@@ -214,13 +214,13 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ### Changes
 
-- Feature Request #352: Removed the fixed height CSS for the "Player Notes" section in the lifepath tab for a better writing/reading experience.
-- Consolidated gain, lose and set ledger functions for EB, IP and Reputation to make it more manageable.
+- Feature Request #352: Removed the fixed height CSS for the "Player Notes" section in the lifepath tab for a better writing/reading experience
+- Consolidated gain, lose and set ledger functions for EB, IP and Reputation to make it more manageable
 - #244 - Remove unused data points in the template
 - Substanial refactoring of the item code to support Active Effects and improve maintainability.
 - Added possibility to describe a "/red" roll with a description, e.g. "/red 1d10 # This is my roll!". The description of individual dice is not possible
 - Feature Request #378: Add ability to share actor artwork to players from the character sheet by right clicking on the Actor's image.
-- Feature Request #379: Added ability to populate a NET architecture with the help of rolltables. It also rolls for the number of floors (3d6) and how many branches there should be. (see p. 210 in the book)
+- Feature Request #379: Added ability to populate a NET architecture with the help of rolltables. It also rolls for the number of floors (3d6) and how many branches there should be (see p. 210 in the book)
 - Even more icons!
   - Icons for each street drug
   - Icons for each pharmaceutical
@@ -248,19 +248,18 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Adjusted wording for several critical injuries to reduce ambiguities
 - Adjusted the formatting of issues templates for easier filling out
 - Set upgrade slots to 0 on melee, cyberware, and exotic weapons in the compendium
-- Re-wording of Bows/Crossbows descriptin in compendium
+- Re-wording of Bows/Crossbows description in compendium
 - Fix Item Sheet upgrade display count to correctly show upgrade usage
 - Greeter text (the post-migration pop-up window) is displayed as HTML rather than plain text
 - Changed migration status to use a status bar instead of flooding the screen with status messages
-- Ammo can be concealed, and can no longer be "upgraded." Different ammo types (rubber, toxic, etc) are still intact.
-- A few changes to your world may have been made as part of migration activities.
+- Ammo can be concealed, and can no longer be "upgraded". Different ammo types (rubber, toxic, etc) are still intact
+- A few changes to your world may have been made as part of migration activities:
   - Some fields on items were given defaults if they are empty. For example a null price or price category is set to something befitting the
   item type. It is still a guess, but now there is possibly correct data instead of definitely wrong or useless data.
-  - Clothing and gear upgrades were converted to active effects.
-  - Armor, programs, netarch, vehicles, and weapons cannot be stacked any more. Duplicate items may have been created (up to 50) in players' inventories.
-  - The *quality* field has been removed from items (weapons, cyberdecks and vehicles) to avoid confusion about whether to change values in other fields.
-    You can still use the name and other fields (such at attack modifier) to express excellent quality items.
-  - Some item types (weapons, vehicles) no longer "stack." They do not have an amount field any more.
+  - Clothing and gear upgrades were converted to active effects
+  - Armor, programs, netarch, vehicles, and weapons cannot be stacked any more. Duplicate items may have been created (up to 50) in players' inventories
+  - The *quality* field has been removed from items (weapons, cyberdecks and vehicles) to avoid confusion about whether to change values in other fields. You can still use the name and other fields (such at attack modifier) to express excellent quality items
+  - Some item types (weapons, vehicles) no longer "stack." They do not have an amount field any more
 
 ### Bug Fixes
 
@@ -287,7 +286,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 ### Maintenance Items
 
 - Moved preCreateItem hook from actor.js to item.js and combined the code of createItem hook from both actor.js and item.js into item.js
-- Added a warning popup if a macro is using actor.addCriticalInjury() alerting a user to the eventual deprecation of the method.  [Please see the updated API Wiki for details on the new way to create a Critical Injury from a Macro.](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/API/addCriticalInjury)
+- Added a warning popup if a macro is using actor.addCriticalInjury() alerting a user to the eventual deprecation of the method. [Please see the updated API Wiki for details on the new way to create a Critical Injury from a Macro.](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/API/addCriticalInjury)
 - Removed shading from the "Cancel" button on dialogs which may have inadvertently made people believe it was the default
 - Renamed method _favoriteVisibility to_toggleSectionVisibility and CSS tag toggle-favorite-visibility to toggle-section-visibility as it accurately describes what happens
 - Updated the prompt naming for the cyberware installation to be consistent with code
@@ -297,8 +296,8 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ### Changes
 
-- Addressed #352: Removed the fixed height CSS for the "Player Notes" section in the lifepath tab for a better writing/reading experience.
-- Fixed #354 - Item Upgrades should be removable again and additional upgrades can be installed.
+- Addressed #352: Removed the fixed height CSS for the "Player Notes" section in the lifepath tab for a better writing/reading experience
+- Fixed #354 - Item Upgrades should be removable again and additional upgrades can be installed
 - Fixed #355 - Drag and drop to hotbar restored
 - Corrected many French translation strings
 
