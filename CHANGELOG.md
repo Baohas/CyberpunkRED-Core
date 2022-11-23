@@ -8,6 +8,7 @@
 ### Changes
 
 ### Bug Fixes
+- Align the second column on the gear tab so it is not all over the place.
 
 ## Version 0.84.0 | Date: 2022-11-22
 
