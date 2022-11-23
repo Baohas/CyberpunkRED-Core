@@ -1,4 +1,4 @@
-/* globals FormApplication mergeObject $ duplicate getProperty setProperty hasProperty */
+/* globals game FormApplication mergeObject $ duplicate getProperty setProperty hasProperty */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
@@ -21,7 +21,7 @@ export default class CPRDialog extends FormApplication {
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRDialog | called.");
     return mergeObject(super.defaultOptions, {
-      template: "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-universal-roll-prompt.hbs",
+      template: `systems/${game.system.id}/templates/dialog/rolls/cpr-universal-roll-prompt.hbs`,
       width: "auto",
       height: "auto",
       closeOnSubmit: false,
