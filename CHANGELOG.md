@@ -6,15 +6,14 @@
 ### New Features
 
 ### Changes
+
 - Renamed `cpr-actor.js:_getOwnedItem()` to `cpr-actor.js:getOwnedItem()` and marked the function as public since it is actually called from several other objects.
 - Changed `cpr-actor.js:getOwnedItem()` to take either an item's `_id` or `uuid` to find the owned item.
 - When changing the data model, going forward, ensure we update the default setting for `dataModelVersion` in settings.js to match the new data model version.
   This will prevent migration from on newly created worlds where it is not needed.
-### Bug Fixes
-
-### Changes
 
 ### Bug Fixes
+
 - Align the second column on the gear tab so it is not all over the place.
 
 ## Version 0.84.0 | Date: 2022-11-22
