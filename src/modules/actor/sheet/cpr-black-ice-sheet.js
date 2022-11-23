@@ -96,7 +96,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
   async _configureFromProgram() {
     LOGGER.trace("_configureFromProgram | CPRBlackIceActorSheet | Called.");
     const biPrograms = game.items.filter((i) => i.type === "program" && i.system.class === "blackice");
-    const linkedProgramUUID = (this.actor.isToken) ? this.actor.token.getFlag("cyberpunk-red-core", "programUUID") : null;
+    const linkedProgramUUID = (this.actor.isToken) ? this.actor.token.getFlag(game.system.id, "programUUID") : null;
     if (linkedProgramUUID === null) {
       SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.linkBlackIceWithoutToken"));
       return;
@@ -108,7 +108,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     }
     const { programUUID } = formData;
     if (programUUID === "unlink") {
-      await this.actor.token.unsetFlag("cyberpunk-red-core", "programUUID");
+      await this.actor.token.unsetFlag(game.system.id, "programUUID");
     } else {
       const program = (biPrograms.filter((p) => p.uuid === formData.programUUID))[0];
       const cprProgramData = duplicate(program.system);
@@ -124,7 +124,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       if (this.actor.isToken) {
         this.actor.token.name = program.name;
         this.actor.name = program.name;
-        await this.actor.token.setFlag("cyberpunk-red-core", "programUUID", program.uuid);
+        await this.actor.token.setFlag(game.system.id, "programUUID", program.uuid);
       }
     }
     this.render(true, { renderData: this.actor.system });
