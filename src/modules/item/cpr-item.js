@@ -270,7 +270,7 @@ export default class CPRItem extends Item {
         return this._createSkillRoll(actor);
       }
       case CPRRolls.rollTypes.INTERFACEABILITY:
-        return this._createInterfaceRoll(extraData);
+        return this._createInterfaceRoll(actor, extraData);
       case CPRRolls.rollTypes.ROLEABILITY: {
         return this._createRoleRoll(type, actor, extraData);
       }

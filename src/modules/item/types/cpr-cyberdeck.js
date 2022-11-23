@@ -5,6 +5,7 @@ import CPRItem from "../cpr-item.js";
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPRMod from "../../rolls/cpr-modifiers.js";
 
 /**
  * Extend the base CPRItem object with things specific to cyberdecks.
@@ -260,12 +261,12 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @param {Object} rollInfo - magic object with more role configuration data
    * @returns {CPRRoll}
    */
-  _createInterfaceRoll(rollInfo) {
+  _createInterfaceRoll(actor, rollInfo) {
     LOGGER.trace("_createInterfaceRoll | CPRCyberdeckItem | Called.");
     let rollTitle;
     const roleName = rollInfo.netRoleItem.system.mainRoleAbility;
     const roleValue = rollInfo.netRoleItem.system.rank;
-    const { interfaceAbility } = rollInfo;
+    const interfaceAbility = rollInfo.interfaceAbility === "perception" ? "perception_net" : rollInfo.interfaceAbility;
     switch (interfaceAbility) {
       case "speed": {
         rollTitle = SystemUtils.Localize("CPR.global.generic.speed");
@@ -301,7 +302,7 @@ export default class CPRCyberdeckItem extends CPRItem {
         cprRoll.rollCardExtraArgs.isZap = true;
       }
     } else {
-      cprRoll = new CPRRolls.CPRCyberdeckRoll(roleName, roleValue);
+      cprRoll = new CPRRolls.CPRInterfaceRoll(roleName, roleValue);
     }
 
     // Set the roll title to the name of the interface action.
@@ -309,15 +310,16 @@ export default class CPRCyberdeckItem extends CPRItem {
 
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.
     if (rollInfo.executionType !== "damage") {
-      // consider active effects
-      if (interfaceAbility === "perception") {
-        // hack because "perception" is already used for the skill
-        cprRoll.addMod(this.actor.bonuses.perception_net);
-      } else {
-        cprRoll.addMod(this.actor.bonuses[interfaceAbility]);
-      }
-      cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
-      cprRoll.addMod(this.actor.getWoundStateMods());
+      const effects = actor.effects.contents;
+      const allMods = CPRMod.getAllModifiers(effects);
+      const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+      const netrunnerMods = CPRMod.getRelevantMods(filteredMods, interfaceAbility, "AeBonus");
+      const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName), "AeBonus");
+
+      cprRoll.addMod(netrunnerMods);
+      cprRoll.addMod(roleMods);
+      cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
     }
     return cprRoll;
   }

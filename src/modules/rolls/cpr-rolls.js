@@ -598,14 +598,14 @@ export class CPRRoleRoll extends CPRRoll {
   }
 }
 
-export class CPRCyberdeckRoll extends CPRRoleRoll {
+export class CPRInterfaceRoll extends CPRRoleRoll {
   /**
    * @constructor
    * @param {String} roleName - role ability name
    * @param {Number} roleValue - role value
    */
   constructor(roleName, roleValue) {
-    LOGGER.trace("constructor | CPRCyberdeckRoll | Called.");
+    LOGGER.trace("constructor | CPRInterfaceRoll | Called.");
     super(roleName, roleValue);
     this.roleName = roleName;
     this.roleValue = roleValue;
@@ -614,7 +614,7 @@ export class CPRCyberdeckRoll extends CPRRoleRoll {
   }
 
   _computeBase() {
-    LOGGER.trace("_computeBase | CPRCyberdeckRoll | Called.");
+    LOGGER.trace("_computeBase | CPRInterfaceRoll | Called.");
     return this.initialRoll + this.totalMods() + this.roleValue + this.luck;
   }
 }
