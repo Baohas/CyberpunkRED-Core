@@ -1,0 +1,66 @@
+_id: VwuC5ZtcKsqtFHms
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053154
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053154
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/mediumPistol.svg
+name: Medium Pistol
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety:
+    - medPistol
+  attackmod: 0
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 2d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>A concealable, medium-sized pistol. </p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 12
+    value: 0
+  price:
+    category: costly
+    market: 50
+  quality: standard
+  revealed: true
+  rof: 2
+  source: pg. 341
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: medPistol
+type: weapon

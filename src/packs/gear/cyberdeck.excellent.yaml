@@ -1,0 +1,49 @@
+_id: AUMkHYqfODTjgtMD
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830994294
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830994294
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/cyberdeck_excellent.svg
+name: Cyberdeck (Excellent)
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+      - program
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 9
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p><span style="color: #191813; font-family: 'Audimat Mono';
+      background-color: #eaeaea;">Netrunner deck. 9 slots.</span></p>
+  equipped: owned
+  favorite: false
+  isUpgraded: false
+  price:
+    category: veryExpensive
+    market: 1000
+  programs:
+    installed: []
+    rezzed: []
+  source: pg. 353
+  tags: []
+  upgrades: []
+type: cyberdeck

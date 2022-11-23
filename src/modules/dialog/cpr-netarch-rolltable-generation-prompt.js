@@ -1,12 +1,12 @@
 /* eslint-disable no-shadow */
-/* global Dialog renderTemplate FormDataExtended foundry */
+/* global game Dialog renderTemplate FormDataExtended foundry */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 export default class NetarchRolltableGenerationPrompt {
   static async RenderPrompt() {
     LOGGER.trace("RenderPrompt | NetarchRolltableGenerationPrompt | called.");
-    const template = "systems/cyberpunk-red-core/templates/dialog/cpr-netarch-rolltable-generation-prompt.hbs";
+    const template = `systems/${game.system.id}/templates/dialog/cpr-netarch-rolltable-generation-prompt.hbs`;
     return new Promise((resolve, reject) => {
       renderTemplate(template).then((html) => {
         const _onCancel = () => {

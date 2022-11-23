@@ -1,0 +1,162 @@
+_id: QiwaqQtocypL0FXG
+_stats:
+  coreVersion: '10.286'
+  createdTime: 1659831952430
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669046703412
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+description: ''
+displayRoll: true
+flags:
+  core: {}
+folder: null
+formula: 2d6
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/default/Default_Critical_Injury.svg
+name: Critical Injuries (Head)
+ownership:
+  default: 0
+replacement: true
+results:
+  - _id: YtJ6jwE0F5OXIMOa
+    documentCollection: cyberpunk-red-core.criticalInjuriesHead
+    documentId: vysFvuTpuG2aDDIz
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_eye.svg
+    range:
+      - 2
+      - 2
+    text: Lost Eye
+    type: 2
+    weight: 1
+  - _id: WbmtU83pd9dhGCdC
+    documentCollection: cyberpunk-red-core.criticalInjuriesHead
+    documentId: oi3MEn9Y8zdbooNe
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/brain_injury.svg
+    range:
+      - 3
+      - 3
+    text: Brain Injury
+    type: 2
+    weight: 1
+  - _id: FcXqYiz6hwIg7kRx
+    documentCollection: cyberpunk-red-core.criticalInjuriesHead
+    documentId: qoegLCfpEOQifeZq
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg
+    range:
+      - 4
+      - 4
+    text: Damaged Eye
+    type: 2
+    weight: 1
+  - _id: 3s2OYRZT5hkvMrQa
+    documentCollection: cyberpunk-red-core.criticalInjuriesHead
+    documentId: yyVVirrpH1O0DMYB
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/concussion.svg
+    range:
+      - 5
+      - 5
+    text: Concussion
+    type: 2
+    weight: 1
+  - _id: Ft1FYPiSpu2Jzdys
+    documentCollection: cyberpunk-red-core.criticalInjuriesHead
+    documentId: VWmTqmsW6S5v51FO
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_jaw.svg
+    range:
+      - 6
+      - 6
+    text: Broken Jaw
+    type: 2
+    weight: 1
+  - _id: bYx3Y66nMHXcoq3P
+    documentCollection: cyberpunk-red-core.criticalInjuriesHead
+    documentId: xfzYp9N5c6jEKiBR
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/foreign_object_head.svg
+    range:
+      - 7
+      - 7
+    text: Foreign Object (H)
+    type: 2
+    weight: 1
+  - _id: Lz3o6eFK75xOgjU7
+    documentCollection: cyberpunk-red-core.criticalInjuriesHead
+    documentId: e5wyX6r4Tem6bNwQ
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/whiplash.svg
+    range:
+      - 8
+      - 8
+    text: Whiplash
+    type: 2
+    weight: 1
+  - _id: H9esuRsYtSHCwxKy
+    documentCollection: cyberpunk-red-core.criticalInjuriesHead
+    documentId: jcOCxBFrKo5oBmOy
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/cracked_skull.svg
+    range:
+      - 9
+      - 9
+    text: Cracked Skull
+    type: 2
+    weight: 1
+  - _id: 0xKBKE6t5ATy3T6Y
+    documentCollection: cyberpunk-red-core.criticalInjuriesHead
+    documentId: qRkCxq0KTuBnw2wj
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_ear.svg
+    range:
+      - 10
+      - 10
+    text: Damaged Ear
+    type: 2
+    weight: 1
+  - _id: XjXBUzVoeLi39Zjn
+    documentCollection: cyberpunk-red-core.criticalInjuriesHead
+    documentId: mVE8ovTniNKFs9Y7
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_windpipe.svg
+    range:
+      - 11
+      - 11
+    text: Crushed Windpipe
+    type: 2
+    weight: 1
+  - _id: P3mRnto1pVz4bs9R
+    documentCollection: cyberpunk-red-core.criticalInjuriesHead
+    documentId: q7yxRKUMzOf9o5qO
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
+    range:
+      - 12
+      - 12
+    text: Lost Ear
+    type: 2
+    weight: 1
+sort: 0

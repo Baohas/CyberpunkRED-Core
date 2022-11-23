@@ -1,0 +1,46 @@
+_id: NYxdMQPHdjnpYNLE
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830994292
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830994292
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/gear/auto_leveldampeningear_protectors.svg
+name: Auto Level Dampening Ear Protectors
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Wearer is immune to loud sounds.</p>
+  equipped: owned
+  favorite: false
+  isUpgraded: false
+  price:
+    category: veryExpensive
+    market: 1000
+  revealed: true
+  source: pg. 352
+  tags: []
+  upgrades: []
+  usage: toggled
+type: gear

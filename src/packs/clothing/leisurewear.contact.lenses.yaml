@@ -1,0 +1,49 @@
+_id: CWjTYdVe0wQmVcaT
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830947654
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830947654
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/clothing/generic_contact_lenses.svg
+name: Leisurewear Contact Lenses
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: ''
+  equipped: owned
+  favorite: false
+  isUpgraded: false
+  price:
+    category: everyday
+    market: 20
+  quality: standard
+  revealed: true
+  source: ''
+  style: leisurewear
+  tags: []
+  type: contactLenses
+  upgrades: []
+  usage: equipped
+type: clothing

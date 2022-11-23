@@ -1,0 +1,49 @@
+_id: 6cciJXompBeXxMma
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831043777
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831043777
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+name: Cabin Cruiser
+permission:
+  Xqm436pL6P6n9SaN: 3
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>A very fast speedboat. Requires a minimum of two rooms. The price is
+      for each room below deck. </p>
+  favorite: false
+  isUpgraded: false
+  price:
+    category: superLuxury
+    market: 30000
+  sdp: 60
+  seats: 2
+  source: pg. 190
+  speedCombat: 10
+  speedNarrative: 15 MPH / 24 KPH
+  tags: ''
+  upgrade: ''
+  upgrades: []
+type: vehicle

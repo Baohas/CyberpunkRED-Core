@@ -1,0 +1,53 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659830519745
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030605
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/equipment/head/helm-barbute-rounded-steel.webp
+name: Full Plate Armor (Head)
+system:
+  tags: []
+  description:
+    value: >-
+      <p>Metal plated armor to resist the most powerful hits to your head. -4 to
+      REF, DEX, and MOVE.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 350
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  isUpgraded: false
+  price:
+    market: 500
+    category: expensive
+  isHeadLocation: true
+  headLocation:
+    sp: 15
+    ablation: 0
+  isBodyLocation: false
+  bodyLocation:
+    sp: 0
+    ablation: 0
+  isShield: false
+  shieldHitPoints:
+    value: 0
+    max: 0
+  penalty: -4
+  upgrade: ''
+type: armor
+_id: 6w3JLFVB9VIOmCmI
+folder: null
+sort: 0
+ownership:
+  default: 0

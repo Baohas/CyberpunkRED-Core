@@ -1,0 +1,48 @@
+_id: sFmW1uCXb2hsP7Dy
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831043777
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831043777
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+name: Super Groundcar
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>An expensive, exotic CHOOH2 powered sportscar. It is capable of very
+      high speeds. </p>
+  favorite: false
+  isUpgraded: false
+  price:
+    category: superLuxury
+    market: 100000
+  sdp: 50
+  seats: 2
+  source: pg. 190
+  speedCombat: 60
+  speedNarrative: 300 MPH / 483 KPH
+  tags: ''
+  upgrade: ''
+  upgrades: []
+type: vehicle

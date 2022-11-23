@@ -25,7 +25,7 @@
               <div class="item-name mook-weapon-name text-pad-right text-nowrap">
                 <a class="name item-edit deletable changeable" tabindex="0" data-item-id="{{weapon.id}}" title="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
                   {{weapon.name}}
-                  {{#if weapon.system.isUpgraded}}<sup><i class="fab fa-uniregistry"></sup></i>{{/if}}
+                  {{#if weapon.system.isUpgraded}}<sup><i class="text-super fa-solid fa-square-up"></i></sup>{{/if}}
                 </a>
                 <br>
                 {{#if weapon.system.isRanged}}
@@ -34,6 +34,8 @@
                   {{else}}
                     ({{localize "CPR.mookSheet.items.unloaded"}})
                   {{/if}}
+                <br>
+                  ROF: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                   {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                   {{>"systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
                   <!-- Use the if check for if the weapon is upgradable. If true, show the upgrade glpyh -->
@@ -47,7 +49,7 @@
                     {{/if}}
                   {{/if}}
                   {{else}}
-                  ({{localize "CPR.global.skills.meleeWeapon"}})
+                  ROF: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                 {{/if}}
               </div>
               <div class="mook-weapon-mode">
@@ -115,7 +117,7 @@
                             {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                             {{>"systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
                             {{else}}
-                            ({{localize "CPR.global.skills.meleeWeapon"}})
+                            ({{localize "CPR.global.itemType.skill.meleeWeapon"}})
                           {{/if}}
                         </div>
                         <div class="mook-weapon-mode">
@@ -174,7 +176,7 @@
               <div class="item-name mook-weapon-name text-pad-right text-nowrap">
                 <a class="name item-edit deletable changeable" tabindex="0" data-item-id="{{weapon.id}}" title="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
                   {{weapon.name}}
-                  {{#if weapon.system.isUpgraded}}<sup><i class="fab fa-uniregistry"></sup></i>{{/if}}
+                  {{#if weapon.system.isUpgraded}}<sup><i class="text-super fa-solid fa-square-up"></i></sup>{{/if}}
                 </a>
                 <br>
                 {{#if weapon.system.isRanged}}
@@ -196,7 +198,7 @@
                     {{/if}}
                   {{/if}}
                   {{else}}
-                  ({{localize "CPR.global.skills.meleeWeapon"}})
+                  ({{localize "CPR.global.itemType.skill.meleeWeapon"}})
                 {{/if}}
               </div>
               <div class="mook-weapon-mode">
@@ -264,7 +266,7 @@
                             {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                             {{>"systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
                             {{else}}
-                            ({{localize "CPR.global.skills.meleeWeapon"}})
+                            ({{localize "CPR.global.itemType.skill.meleeWeapon"}})
                           {{/if}}
                         </div>
                         <div class="mook-weapon-mode">

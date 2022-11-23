@@ -1,0 +1,48 @@
+_id: Q3Cd7mARIdnaDH6o
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830947638
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830947638
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_mirrorshades.svg
+name: Gang Colors Mirrorshades
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: ''
+  equipped: owned
+  favorite: false
+  isUpgraded: false
+  price:
+    category: everyday
+    market: 20
+  quality: standard
+  revealed: true
+  source: ''
+  style: gangColors
+  tags: []
+  type: mirrorshades
+  upgrades: []
+  usage: equipped
+type: clothing

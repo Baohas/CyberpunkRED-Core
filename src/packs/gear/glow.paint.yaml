@@ -1,0 +1,45 @@
+_id: 3HWLPHE0VHMGgv48
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830994295
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830994295
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/glow_paint.svg
+name: Glow Paint
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Spraypaint with glow-in-the-dark effect.</p>
+  equipped: owned
+  favorite: false
+  isUpgraded: false
+  price:
+    category: everyday
+    market: 20
+  revealed: true
+  source: pg. 353
+  tags: []
+  upgrades: []
+  usage: toggled
+type: gear

@@ -1,0 +1,76 @@
+_id: kDp9hnguyLJK93iW
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830994301
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830994301
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/clothing/generic_contact_lenses.svg
+name: Smart Lens
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 1
+  ammoVariety: []
+  amount: 1
+  attackmod: 0
+  charges:
+    max: 0
+    value: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Eyewear with one options slot for a cybereye option.</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: '0'
+    static: '0'
+  install: mall
+  isConcealed: false
+  isFoundational: true
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: 'false'
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: expensive
+    market: 500
+  revealed: true
+  rof: 1
+  size: 1
+  source: Microchrome
+  tags: []
+  type: cyberEye
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: ''
+  weaponType: ''
+type: cyberware

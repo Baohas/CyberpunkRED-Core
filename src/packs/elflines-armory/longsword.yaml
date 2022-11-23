@@ -1,0 +1,60 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659831053172
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030606
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/weapons/swords/greatsword-crossguard-steel.webp
+name: Longsword
+system:
+  weaponType: heavyMelee
+  weaponSkill: Melee Weapon
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 3d6
+  rof: 2
+  dvTable: ''
+  isRanged: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: >-
+      <p>A hollow cylinder, typically made of metal or fiberglass. It may have
+      conveyed fluids once. </p>
+    chat: ''
+    unidentified: ''
+  source: pg. 340
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  isUpgraded: false
+  price:
+    market: 100
+    category: premium
+  handsReq: 2
+  isConcealed: false
+  quality: standard
+  upgrade: ''
+type: weapon
+_id: 9ZQqizz1ulgcqnec
+folder: null
+sort: 0
+ownership:
+  default: 0

@@ -1,0 +1,106 @@
+_id: 5PWjp9rOnZuhYPPu
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963829
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963829
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: teuelimTBgI5OKAx
+    changes:
+      - key: bonuses.humanPerception
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.interrogation
+        mode: 2
+        priority: null
+        value: '2'
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
+          '1': skill
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/cyberware/voice_stress_analyzer.svg
+    label: Voice Stress Analyzer
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/cyberware/voice_stress_analyzer.svg
+name: Voice Stress Analyzer
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: false
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  amount: 1
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Provides +2 to Human Perception and Interrogation checks. Can activate
+      a special lie-detecting mode. </p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 1d6
+    static: '3'
+  install: mall
+  isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: premium
+    market: 100
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  source: pg. 362
+  tags: []
+  type: cyberAudioSuite
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

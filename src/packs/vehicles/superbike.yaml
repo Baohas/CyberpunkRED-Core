@@ -1,0 +1,47 @@
+_id: p4jR9nv6Ob90axwL
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831043777
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831043777
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+name: Superbike
+permission:
+  Xqm436pL6P6n9SaN: 3
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>A beefed-up version of a roadbike, capable of very high speeds. </p>
+  favorite: false
+  isUpgraded: false
+  price:
+    category: superLuxury
+    market: 100000
+  sdp: 35
+  seats: 2
+  source: pg. 190
+  speedCombat: 60
+  speedNarrative: 300 MPH / 483 KPH
+  tags: ''
+  upgrade: ''
+  upgrades: []
+type: vehicle

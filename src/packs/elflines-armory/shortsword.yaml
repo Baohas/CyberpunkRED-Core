@@ -1,0 +1,60 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659831053154
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030607
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/weapons/swords/shortsword-guard-gold.webp
+name: Shortsword
+system:
+  weaponType: medMelee
+  weaponSkill: Melee Weapon
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 2d6
+  rof: 2
+  dvTable: ''
+  isRanged: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: >-
+      <p>Useful as both a tool and a weapon. A rod of iron with split wedges on
+      the ends. </p>
+    chat: ''
+    unidentified: ''
+  source: pg. 340
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  isUpgraded: false
+  price:
+    market: 50
+    category: costly
+  handsReq: 2
+  isConcealed: false
+  quality: standard
+  upgrade: ''
+type: weapon
+_id: qYcmlmhYCE63uZlr
+folder: null
+sort: 0
+ownership:
+  default: 0

@@ -1,0 +1,58 @@
+_id: Bg1YEeF25HhfrzOG
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830519746
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830519746
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+name: Bullet Proof Shield
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  bodyLocation:
+    ablation: 0
+    sp: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Requires an arm and has HP that is reduced by damage.</p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 0
+  isBodyLocation: false
+  isHeadLocation: false
+  isShield: true
+  isUpgraded: false
+  penalty: 0
+  price:
+    category: premium
+    market: 100
+  revealed: true
+  shieldHitPoints:
+    max: 10
+    value: 10
+  source: pg. 351
+  tags: []
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+type: armor

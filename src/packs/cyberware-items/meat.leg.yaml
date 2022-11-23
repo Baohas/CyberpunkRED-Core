@@ -1,0 +1,77 @@
+_id: gDN0U6mp3axrm9KQ
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963854
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963854
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/meatleg.svg
+name: Meat Leg
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+      - cyberware
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  amount: 1
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>A regular leg. This can support attachments like a Standard Foot or
+      weapons such as the Talon Foot.</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: '0'
+    static: '0'
+  install: notApplicable
+  isConcealed: false
+  isFoundational: true
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: expensive
+    market: 0
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 0
+  source: pg. 364
+  tags: []
+  type: cyberLeg
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

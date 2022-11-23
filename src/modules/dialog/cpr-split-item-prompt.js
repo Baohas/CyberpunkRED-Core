@@ -1,4 +1,4 @@
-/* global renderTemplate, FormDataExtended, Dialog foundry */
+/* global renderTemplate, FormDataExtended, Dialog foundry game */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 
@@ -6,7 +6,7 @@ export default class SplitItemPrompt {
   static async RenderPrompt(itemText) {
     LOGGER.trace("RenderPrompt | SplitItemPrompt | called.");
     return new Promise((resolve, reject) => {
-      renderTemplate("systems/cyberpunk-red-core/templates/dialog/cpr-split-item-prompt.hbs", itemText).then((html) => {
+      renderTemplate(`systems/${game.system.id}/templates/dialog/cpr-split-item-prompt.hbs`, itemText).then((html) => {
         const _onCancel = () => {
           LOGGER.trace("_onCancel | Dialog SplitItemPrompt | called.");
           reject(new Error("Promise rejected: Window Closed"));

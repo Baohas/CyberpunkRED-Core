@@ -1,0 +1,63 @@
+_id: 2LP7AhaMCAZnVvD4
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659833175976
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659833175976
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+active: true
+background:
+  offsetX: -2
+  offsetY: 1
+  rotation: 0
+  scaleX: 1
+  scaleY: 1
+  src: systems/cyberpunk-red-core/tiles/netarch/S0L-BlankNetMap-4k.JPG
+  tint: null
+backgroundColor: '#999999'
+darkness: 0
+drawings: []
+flags:
+  core: {}
+fogExploration: true
+fogExploredColor: null
+fogOverlay: null
+fogReset: 1659831837776
+fogUnexploredColor: null
+folder: null
+foreground: null
+foregroundElevation: null
+globalLight: false
+globalLightThreshold: null
+grid:
+  alpha: 0.2
+  color: '#000000'
+  distance: 8
+  size: 110
+  type: 1
+  units: bit
+height: 2160
+initial: {}
+journal: null
+lights: []
+name: NetarchTemplate
+navName: ''
+navOrder: 0
+navigation: false
+notes: []
+ownership:
+  default: 0
+padding: 0
+playlist: null
+playlistSound: null
+sort: 0
+sounds: []
+templates: []
+thumb: systems/cyberpunk-red-core/assets/scenes/2LP7AhaMCAZnVvD4-thumb.webp
+tiles: []
+tokenVision: true
+tokens: []
+walls: []
+weather: ''
+width: 3840

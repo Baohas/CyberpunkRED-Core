@@ -1,0 +1,109 @@
+_id: YRR8D6hUfq55KnoR
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963825
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963825
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: tWHTQ0n84oq6mENt
+    changes:
+      - key: bonuses.lipReading
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.concealOrRevealObject
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.perception
+        mode: 2
+        priority: null
+        value: '2'
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
+          '1': skill
+          '2': skill
+    icon: systems/cyberpunk-red-core/icons/compendium/cyberware/image_enhance.svg
+    label: Image Enhance
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/image_enhance.svg
+name: Image Enhance
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: false
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  amount: 1
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Must be paired. +2 Perception and Lip Reading and Conceal/Reveal Object
+      when using sight.</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 1d6
+    static: '3'
+  install: mall
+  isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: expensive
+    market: 500
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  source: pg. 360
+  tags: []
+  type: cyberEye
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

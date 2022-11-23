@@ -1,4 +1,4 @@
-/* global ActiveEffectConfig CONST mergeObject */
+/* global ActiveEffectConfig CONST game mergeObject */
 /* eslint-env jquery */
 import LOGGER from "./utils/cpr-logger.js";
 
@@ -17,7 +17,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     const defaultWidth = 700;
     const defaultHeight = 280;
     return mergeObject(super.defaultOptions, {
-      template: "systems/cyberpunk-red-core/templates/effects/cpr-active-effect-sheet.hbs",
+      template: `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
       defaultWidth,
       defaultHeight,
       width: defaultWidth,
@@ -101,7 +101,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
           value: "",
         },
         // we set the default "key category" here
-        [`flags.cyberpunk-red-core.changes.${idx}`]: "skill",
+        [`flags.${game.system.id}.changes.${idx}`]: "skill",
       },
     });
   }
@@ -119,7 +119,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     button.closest(".effect-change").remove();
     // remove the Flag tracking the key category
     // XXX: this doesn't work well if a mod in the middle of the list is deleted
-    effect.unsetFlag("cyberpunk-red-core", `changes.${button.dataset.index}`);
+    effect.unsetFlag(game.system.id, `changes.${button.dataset.index}`);
     return this.submit({ preventClose: true }).then(() => this.render());
   }
 

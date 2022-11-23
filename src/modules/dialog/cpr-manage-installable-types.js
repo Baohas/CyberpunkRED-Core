@@ -1,12 +1,12 @@
 /* eslint-disable no-shadow */
-/* global renderTemplate FormDataExtended Dialog foundry */
+/* global renderTemplate FormDataExtended Dialog foundry game */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 export default class ManageInstallableTypes {
   static async RenderPrompt(data) {
-    LOGGER.trace("RenderPrompt | ManageInstallableTypes | called.");
-    const template = "systems/cyberpunk-red-core/templates/dialog/cpr-manage-installable-types-prompt.hbs";
+    LOGGER.trace("RenderPrompt | SelectItemUpgradePrompt | called.");
+    const template = `systems/${game.system.id}/templates/dialog/cpr-select-item-upgrade-prompt.hbs`;
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {

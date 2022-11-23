@@ -1,0 +1,60 @@
+_id: mSF1y5Kfye57SmWf
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830519745
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830519745
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+name: Flak (Head)
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  bodyLocation:
+    ablation: 0
+    sp: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Metal plated armor to resist the most powerful hits to your head. -4 to
+      REF, DEX, and MOVE.</p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 15
+  isBodyLocation: false
+  isHeadLocation: true
+  isShield: false
+  isUpgraded: false
+  penalty: -4
+  price:
+    category: expensive
+    market: 500
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  source: pg. 350
+  tags: []
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+type: armor

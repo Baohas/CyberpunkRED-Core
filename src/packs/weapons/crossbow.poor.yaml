@@ -1,0 +1,69 @@
+_id: iIWzx4Ae6eUZmqcQ
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053172
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053172
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Crossbow_poor.svg
+name: Crossbow (Poor)
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety:
+    - arrow
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 4d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>A crossbow which must be reloaded after every attack.  If you roll 1 on
+      Attack (Crit fail) the gun jams and requires using an action to clear.
+      </p>
+  dvTable: DV Bows & Crossbows
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 1
+    value: 0
+  price:
+    category: costly
+    market: 50
+  quality: poor
+  revealed: true
+  rof: 1
+  source: pg. 341
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: bow
+type: weapon

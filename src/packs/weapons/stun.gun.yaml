@@ -1,0 +1,68 @@
+_id: yJ8sMz4BMgQ7ZH3K
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053166
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053166
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/stun_gun.svg
+name: Stun Gun
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety:
+    - battery
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 3d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt
+      would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate
+      armor. Refer to the full item description on pg. 349.</p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 8
+    value: 0
+  price:
+    category: premium
+    market: 100
+  quality: standard
+  revealed: true
+  rof: 2
+  source: pg. 349
+  tags: []
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: heavyPistol
+type: weapon

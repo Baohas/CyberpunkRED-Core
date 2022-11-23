@@ -273,7 +273,7 @@ export default class ActiveEffectsMigration extends CPRMigration {
         // the key category is saved as a flag on the AE document for the UI to pull later
         for (const [category, entries] of Object.entries(CPR.activeEffectKeys)) {
           if (typeof entries[change.key] !== "undefined") {
-            newData[`flags.cyberpunk-red-core.changes.${index}`] = category;
+            newData[`flags.${game.system.id}.changes.${index}`] = category;
             break;
           }
         }
@@ -281,7 +281,7 @@ export default class ActiveEffectsMigration extends CPRMigration {
       });
     } else {
       changes.forEach(() => {
-        newData[`flags.cyberpunk-red-core.changes.${index}`] = cats[index];
+        newData[`flags.${game.system.id}.changes.${index}`] = cats[index];
         index += 1;
       });
     }
@@ -358,13 +358,8 @@ export default class ActiveEffectsMigration extends CPRMigration {
     LOGGER.trace("setPriceData | 1-activeEffects Migration");
     const updateData = {};
     // here we assume both values were never touched, and useless defaults still exist
-    if (item.system.price.market === 0 && item.system.price.category === "") {
+    if (item.system.price.market === 0 && typeof item.system.price.category !== "undefined" && item.system.price.category === "") {
       updateData["system.price.market"] = price;
-      updateData["system.price.category"] = item.getPriceCategory(price);
-    }
-    // here we assume the price was updated but not the category, so we update to match
-    if (item.system.price.market !== 0 && item.system.price.category === "") {
-      updateData["system.price.category"] = item.getPriceCategory(item.system.price.market);
     }
     return updateData;
   }

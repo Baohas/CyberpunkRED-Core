@@ -1,0 +1,68 @@
+_id: glDRehQyz40desZo
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053163
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053163
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/CombatKnife_poor.svg
+name: Combat Knife (Poor)
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  attackmod: 0
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>A knife fit for the streets. If you roll 1 on Attack (Crit Fail) the
+      weapon fails in some way and requires an action to be made usable
+      again.</p>
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  isConcealed: false
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: everyday
+    market: 20
+  quality: poor
+  revealed: true
+  rof: 2
+  source: pg. 340
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: lightMelee
+type: weapon

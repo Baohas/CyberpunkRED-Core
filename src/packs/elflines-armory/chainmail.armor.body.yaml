@@ -1,0 +1,51 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659830519749
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030603
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/equipment/chest/breastplate-scale-grey.webp
+name: Chainmail Armor (Body)
+system:
+  tags: []
+  description:
+    value: <p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 350
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  isUpgraded: false
+  price:
+    market: 100
+    category: premium
+  isHeadLocation: false
+  headLocation:
+    sp: 0
+    ablation: 0
+  isBodyLocation: true
+  bodyLocation:
+    sp: 12
+    ablation: 0
+  isShield: false
+  shieldHitPoints:
+    value: 0
+    max: 0
+  penalty: -2
+  upgrade: ''
+type: armor
+_id: N0XtKbgIohJmwa5R
+folder: null
+sort: 0
+ownership:
+  default: 0

@@ -37,12 +37,12 @@
     <div class="item flexrow setting-value text-nowrap item-end">
         <select name="system.weaponSkill" data-dtype="{{item.system.weaponSkill}}">
             {{#select item.system.weaponSkill}}
-                {{#each (cprSort (cprGetProp item.system 'relativeSkills') "name") as |skillOption| }}
+                {{#each (cprSortCoreSkills item.system.relativeSkills) as |skillOption| }}
                     {{#if (cprListContains "Athletics" skillOption.name)}}
-                        <option value="{{skillOption.name}}">{{skillOption.name}}</option>
+                        <option value="{{skillOption.name}}">{{localize (cprGetLocalizedlNameKey skillOption)}}</option>
                     {{/if}}
                     {{#if (cprListContains "rangedweaponSkills,fightingSkills" skillOption.system.category)}}
-                        <option value="{{skillOption.name}}">{{skillOption.name}}</option>
+                        <option value="{{skillOption.name}}">{{localize (cprGetLocalizedlNameKey skillOption)}}</option>
                     {{/if}}
                 {{/each}}
             {{/select}}
@@ -159,7 +159,7 @@
     {{!- Ranged Weapon - Alternate Fire Modes Settings --}}
     <li class="item flexrow">
         <div class="item flexrow setting-name text-nowrap">
-            {{localize "CPR.global.skills.autofire"}} {{localize "CPR.itemSheet.common.maximum"}} {{localize "CPR.global.generic.multiplier"}}
+            {{localize "CPR.global.itemType.skill.autofire"}} {{localize "CPR.itemSheet.common.maximum"}} {{localize "CPR.global.generic.multiplier"}}
         </div>
         <div class="item flexrow setting-value text-nowrap item-end">
             {{#if this.editable}}

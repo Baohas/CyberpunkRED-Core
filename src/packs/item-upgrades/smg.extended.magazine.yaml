@@ -1,0 +1,77 @@
+_id: M3I9ySdmNIxcuT7T
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831027214
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831027214
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg
+name: SMG Extended Magazine
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: ''
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  install: mall
+  isInstalled: false
+  isRanged: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  modifiers:
+    attackmod:
+      type: modifier
+      value: null
+    damage:
+      type: modifier
+      value: null
+    magazine:
+      type: modifier
+      value: 10
+    rof:
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: 'false'
+  price:
+    category: premium
+    market: 100
+  rof: 1
+  size: 1
+  source: pg. 343
+  tags: []
+  type: weapon
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: ''
+  weaponType: ''
+type: itemUpgrade

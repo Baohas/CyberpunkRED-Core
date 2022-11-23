@@ -1,0 +1,87 @@
+_id: uFrp6fXRYfuorIwk
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831027211
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831027211
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/item_upgrades/hardened_circuitry.svg
+name: Hardened Circuitry
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Cyberdeck cannot be disabled or destroyed by EMP effects.&nbsp;</p>
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  install: mall
+  isInstalled: false
+  isRanged: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  modifiers:
+    Wardrobe & Style:
+      type: modifier
+      value: null
+    attackmod:
+      type: modifier
+      value: null
+    cool:
+      type: modifier
+      value: null
+    damage:
+      type: modifier
+      value: null
+    magazine:
+      type: modifier
+      value: null
+    rof:
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: 'false'
+    slots:
+      type: modifier
+      value: null
+  price:
+    category: premium
+    market: 100
+  rof: 1
+  size: 1
+  source: pg. 368
+  tags: []
+  type: cyberdeck
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: ''
+  weaponType: ''
+type: itemUpgrade

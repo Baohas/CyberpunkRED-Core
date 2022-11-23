@@ -1,0 +1,165 @@
+_id: n7IlIvMfg7yW1OoE
+_stats:
+  coreVersion: '10.286'
+  createdTime: 1659831952433
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669046426717
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+description: ''
+displayRoll: true
+flags:
+  core: {}
+folder: null
+formula: 2d6
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/default/Default_Critical_Injury.svg
+name: Critical Injuries (Body)
+ownership:
+  default: 0
+replacement: true
+results:
+  - _id: ZieosouBln5Il2tk
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: 9N6yHeVwiGg2MkeL
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/dismembered_arm.svg
+    range:
+      - 2
+      - 2
+    text: Dismembered Arm
+    type: 2
+    weight: 1
+  - _id: odZ5Yyt3WOrNSKzV
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: xmlFB3X2q2NAklfn
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/dismembered_hand.svg
+    range:
+      - 3
+      - 3
+    text: Dismembered Hand
+    type: 2
+    weight: 1
+  - _id: TGVSxOE3pxFV34Sm
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: RAZcouFe0FS1VN1o
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/collapsed_lung.svg
+    range:
+      - 4
+      - 4
+    text: Collapsed Lung
+    type: 2
+    weight: 1
+  - _id: unBMWAiXQKK6GY0M
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: MQpiPgEtPaIe6MJ6
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_ribs.svg
+    range:
+      - 5
+      - 5
+    text: Broken Ribs
+    type: 2
+    weight: 1
+  - _id: O1dQcS4a7PmVCp5J
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: Y65igO9rtakP4qSs
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_arm.svg
+    range:
+      - 6
+      - 6
+    text: Broken Arm
+    type: 2
+    weight: 1
+  - _id: RCLUsZLr404b5IcV
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: xTQ2T50UGNY8DrHl
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/foreign_object_body.svg
+    range:
+      - 7
+      - 7
+    text: Foreign Object
+    type: 2
+    weight: 1
+  - _id: QGtmPYrCvP88rKzC
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: yBy9rlhgZeaWGtHh
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_leg.svg
+    range:
+      - 8
+      - 8
+    text: Broken Leg
+    type: 2
+    weight: 1
+  - _id: dpYAJWeQ1uDXPo0S
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: Z3iVuSFtma3Bx7SX
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/torn_muscle.svg
+    range:
+      - 9
+      - 9
+    text: Torn Muscle
+    type: 2
+    weight: 1
+  - _id: juZQlAH6geJgCHw4
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: pQ2F7FsQvZJyZGXe
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/spinal_injury.svg
+    range:
+      - 10
+      - 10
+    text: Spinal Injury
+    type: 2
+    weight: 1
+  - _id: YhW9mFW9i6vzKbBU
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: IKKcCgHU1lBJ4wVd
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_fingers.svg
+    range:
+      - 11
+      - 11
+    text: Crushed Fingers
+    type: 2
+    weight: 1
+  - _id: ysFKhaP2wS8HHg8A
+    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentId: vRhxMWgOHYROHeHm
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/dismembered_leg.svg
+    range:
+      - 12
+      - 12
+    text: Dismembered Leg
+    type: 2
+    weight: 1
+sort: 0

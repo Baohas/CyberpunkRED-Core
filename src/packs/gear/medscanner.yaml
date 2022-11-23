@@ -1,0 +1,73 @@
+_id: xW4PlIcWJ82QSfSh
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830994298
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830994298
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: bkUvyHxyT3K8vq1c
+    changes:
+      - key: bonuses.firstAid
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.paramedic
+        mode: 2
+        priority: null
+        value: '2'
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
+          '1': skill
+    icon: systems/cyberpunk-red-core/icons/compendium/gear/medscanner.svg
+    label: Medscanner
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/medscanner.svg
+name: Medscanner
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>+2 First Aid or Paramedic checks.</p>
+  equipped: owned
+  favorite: false
+  isUpgraded: false
+  price:
+    category: veryExpensive
+    market: 1000
+  revealed: true
+  source: pg. 354
+  tags: []
+  upgrades: []
+  usage: equipped
+type: gear

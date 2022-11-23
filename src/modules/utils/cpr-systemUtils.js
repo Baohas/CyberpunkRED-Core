@@ -1,4 +1,4 @@
-/* global game ui Folder */
+/* global game ui Folder canvas duplicate */
 /* eslint-env jquery */
 
 import LOGGER from "./cpr-logger.js";
@@ -7,6 +7,65 @@ import LOGGER from "./cpr-logger.js";
  * CPR-C utilities that are meant to have broad application across the whole system module.
  */
 export default class CPRSystemUtils {
+  /* COMPENDIA AND FOLDER UTILS */
+
+  static GetWorldCompendia(ctype = null) {
+    LOGGER.trace("GetWorldCompendia | CPRSystemUtils | Called.");
+    if (!game.packs) return [];
+    const packs = game.packs.filter((p) => p.metadata.packageType === "world");
+    if (ctype) {
+      return packs.filter((p) => p.metadata.type === ctype);
+    }
+    return packs;
+  }
+
+  /**
+   * Retrieve a specific document in a compendium
+   *
+   * @async
+   * @static
+   * @param {String} cname - compendium name (which is not the human readable thing, that's the "label")
+   * @param {String} dname - document name to look for
+   * @returns {Document}
+   */
+  static async GetCompendiumDoc(cname, dname) {
+    LOGGER.trace("GetCompendiumDoc | CPRSystemUtils | Called.");
+    const comp = game.packs.get(cname);
+    return comp.getDocument(comp.index.contents.filter((i) => i.name === dname)[0]._id);
+  }
+
+  /**
+   * Given a compendium label, return its ID. If multiple compendia have the same label, this will
+   * return the first one encountered and throw a warning.
+   *
+   * @static
+   * @param {String} name - name to look up by
+   */
+  static GetCompendiumIdByLabel(label) {
+    LOGGER.trace("GetCompendiumIdByLabel | CPRSystemUtils | Called.");
+    const comps = game.packs.filter((p) => p.metadata.label === label);
+    if (comps.length > 1) {
+      this.DisplayMessage("warn", `${this.Localize("CPR.messages.duplicateCompendiumLabel")} "${label}"`);
+    } else if (comps.length === 0) {
+      this.DisplayMessage("error", `${this.Localize("CPR.messages.noCompendiumLabel")} "${label}"`);
+      return null;
+    }
+    return comps[0].metadata.id;
+  }
+
+  /**
+   * Retrieve the documents packed up in a compendium (aka a pack)
+   *
+   * @async
+   * @static
+   * @param {String} cname - name of the compendium to retrieve (which is not the human readable thing, that's the "label")
+   * @returns {Array}
+   */
+  static async GetCompendiumDocs(cname) {
+    LOGGER.trace("GetCompendiumDocs | CPRSystemUtils | Called.");
+    return game.packs.get(cname).getDocuments();
+  }
+
   /**
    * Return an array of "core" skills that are defined in the rules, and all characters
    * start with them defined.
@@ -15,11 +74,7 @@ export default class CPRSystemUtils {
    */
   static async GetCoreSkills() {
     LOGGER.trace("GetCoreSkills | CPRSystemUtils | Called.");
-    // grab basic skills from compendium
-    const pack = game.packs.get("cyberpunk-red-core.skills");
-    // put into basickSills array
-    const content = await pack.getDocuments();
-    return content;
+    return CPRSystemUtils.GetCompendiumDocs(`${game.system.id}.skills`);
   }
 
   /**
@@ -30,15 +85,45 @@ export default class CPRSystemUtils {
    */
   static async GetCoreCyberware() {
     LOGGER.trace("GetCoreCyberware | CPRSystemUtils | Called.");
-    // grab basic cyberware from compendium
-    const pack = game.packs.get("cyberpunk-red-core.cyberware");
-    // put into basicCyberware array
-    const content = await pack.getDocuments();
-    return content;
+    return CPRSystemUtils.GetCompendiumDocs(`${game.system.id}.cyberware`);
   }
 
   /**
-   * Get rollable tables by name, optionally by searching with a regexp
+   * Get DV tables that map DVs to distances when using a ranged weapon
+   * @returns {Array} - array of tables
+   */
+  static async GetDvTables() {
+    LOGGER.trace("GetDvTables | CPRSystemUtils | called.");
+    const tableList = await CPRSystemUtils.GetCompendiumDocs(game.settings.get(game.system.id, "dvRollTableCompendium"));
+    tableList.sort((a, b) => ((a.name > b.name) ? 1 : -1));
+    return tableList;
+  }
+
+  static async SetDvTable(token, tableName) {
+    LOGGER.trace("SetDvTable | CPRSystemUtils | called.");
+    const dvTables = await CPRSystemUtils.GetDvTables();
+    const [selectedTable] = dvTables.filter((table) => table.name === tableName);
+    const dvSetting = selectedTable ? { name: selectedTable.name, table: {} } : null;
+    if (selectedTable) {
+      for (const result of selectedTable.results) {
+        // Rolltable entry of type is a Text entry
+        if (result.type === 0) {
+          const { range } = result;
+          const key = `${range[0]}_${range[1]}`;
+          const dv = result.text;
+          dvSetting.table[key.toString()] = dv;
+        }
+      }
+    }
+    // Because we're setting a flag to an object, Foundry will try to merge it if we
+    // just call setFlag. We unset it first.
+    await token.document.unsetFlag(game.system.id, "cprDvTable");
+    await token.document.setFlag(game.system.id, "cprDvTable", dvSetting);
+  }
+
+  /**
+   * Get rollable tables by name, optionally by searching with a regexp. Note this is not meant for
+   * compendia, but rather rolltables created in the world.
    *
    * @param {String} tableName
    * @param {RegExp} useRegExp
@@ -55,6 +140,24 @@ export default class CPRSystemUtils {
     }
     return tableList;
   }
+
+  /**
+   * Some actions users can take in this system will produce a bunch of documents are entities, and
+   * we group them up in a dynamically created folder. This is where that magic happens.
+   *
+   * @param {String} type - the entity type the folder should group together
+   * @param {String} name - a name for the folder
+   * @param {String} parent - (optional) folder ID to create this in, or null for a top-level folder
+   * @returns {Folder} - the referenced folder or a newly created one
+   */
+  static async GetFolder(type, name, parent = null) {
+    LOGGER.trace("GetFolder | CPRSystemUtils | Called.");
+    const folderList = game.folders.filter((folder) => folder.name === name && folder.type === type);
+    // If the folder does not exist, we create it.
+    return (folderList.length === 1) ? folderList[0] : Folder.create({ name, type, parent });
+  }
+
+  /* MESSAGE AND STRING UTILS */
 
   /**
    * Display user-visible message. (blue, yellow, or red background)
@@ -93,10 +196,81 @@ export default class CPRSystemUtils {
   }
 
   /**
+   * We use temporary objects with keys derived from skill names elsewhere in the code base.
+   * We need to be able to programmatically produce those keys from the name, and that is
+   * what this method does. It takes a string and converts it to camelcase.
+   *
+   * These are used as parts of translation string identifies too. Examples:
+   *  "CPR.global.itemType.skill.languageStreetslang"               "CPR.global.itemType.skill.athleticsAndContortionist"
+   *  "CPR.global.itemType.skill.basicTechAndWeaponstech"           "CPR.global.itemType.skill.compositionAndEducation"
+   *  "CPR.global.itemType.skill.enduranceAndResistTortureAndDrugs" "CPR.global.itemType.skill.persuasionAndTrading"
+   *  "CPR.global.itemType.skill.evasionAndDance"                   "CPR.global.itemType.skill.pickLockAndPickPocket"
+   *  "CPR.global.itemType.skill.firstAidAndParamedicAndSurgery"
+   *
+   * NOTE: The strings above are used for Elfines characters, and not used in the code base anywhere. We
+   *       have CI that checks all translation strings are used, so to avoid making that fail, please
+   *       keep the examples here.
+   *
+   * TODO: not sure returning something based on the name will work with localization
+   *
+   * @returns {String}
+   */
+  static slugify(name) {
+    LOGGER.trace("slugify | CPRSkillItem | Called.");
+    const slug = name;
+    const initialSplit = slug.split(" ").join("");
+    const orCaseSplit = initialSplit.split("/").join("Or");
+    const parenCaseSplit = initialSplit.split("(").join("").split(")").join("");
+    const andCaseSplit = initialSplit.split("/").join("And").split("&").join("And");
+    if (slug === "Conceal/Reveal Object" || slug === "Paint/Draw/Sculpt" || slug === "Resist Torture/Drugs") {
+      return orCaseSplit.charAt(0).toLowerCase() + orCaseSplit.slice(1);
+    }
+    if (slug === "Language (Streetslang)") {
+      return parenCaseSplit.charAt(0).toLowerCase() + parenCaseSplit.slice(1);
+    }
+    return andCaseSplit.charAt(0).toLowerCase() + andCaseSplit.slice(1);
+  }
+
+  static SortItemListByName(itemList) {
+    LOGGER.trace("SortItemListByName | CPRSystemUtils | Called.");
+    const itemDataList = itemList.map((o) => ({ name: o.name, uuid: o.uuid, type: o.type }));
+    const sortedList = itemDataList.length > 0 ? [] : itemList;
+    if (sortedList.length === 0) {
+      const sortedDataList = [];
+      itemDataList.forEach((itemData) => {
+        const newItemData = duplicate(itemData);
+        const localizedValue = `CPR.global.itemType.${newItemData.type}.`.concat(this.slugify(newItemData.name));
+        if (this.Localize(localizedValue) !== localizedValue) {
+          newItemData.name = this.Localize(localizedValue);
+        }
+        sortedDataList.push(newItemData);
+      });
+
+      sortedDataList.sort((a, b) => {
+        let comparator = 0;
+        if (a.name > b.name) {
+          comparator = 1;
+        } else if (b.name > a.name) {
+          comparator = -1;
+        }
+        return comparator;
+      });
+
+      for (const itemData of sortedDataList) {
+        const [item] = itemList.filter((i) => i.uuid === itemData.uuid);
+        sortedList.push(item);
+      }
+    }
+    return sortedList;
+  }
+
+  /* USER SETTING UTILS */
+
+  /**
    * For settings like favorite items or skills, and opening or closing categories, we save the user's
    * preferences in a hidden system setting.
    *
-   * To Do: Flags may be a better implementation.
+   * To Do: Flags are a better implementation.
    *
    * @param {String} type - indicate whether this is a sheetConfig setting or something else
    * @param {String} name - name for the setting
@@ -105,7 +279,7 @@ export default class CPRSystemUtils {
    */
   static SetUserSetting(type, name, value, extraSettings) {
     LOGGER.trace("SetUserSetting | CPRSystemUtils | Called.");
-    const userSettings = game.settings.get("cyberpunk-red-core", "userSettings") ? game.settings.get("cyberpunk-red-core", "userSettings") : {};
+    const userSettings = game.settings.get(game.system.id, "userSettings") ? game.settings.get(game.system.id, "userSettings") : {};
     switch (type) {
       case "sheetConfig": {
         // If this is a sheetConfig setting, our user may have settings for different sheets, so
@@ -132,7 +306,7 @@ export default class CPRSystemUtils {
       }
     }
     // Update the userSettings object
-    game.settings.set("cyberpunk-red-core", "userSettings", userSettings);
+    game.settings.set(game.system.id, "userSettings", userSettings);
   }
 
   /**
@@ -145,7 +319,7 @@ export default class CPRSystemUtils {
    */
   static GetUserSetting(type, name, extraSettings) {
     LOGGER.trace("GetUserSetting | CPRSystemUtils | Called.");
-    const userSettings = game.settings.get("cyberpunk-red-core", "userSettings") ? game.settings.get("cyberpunk-red-core", "userSettings") : {};
+    const userSettings = game.settings.get(game.system.id, "userSettings") ? game.settings.get(game.system.id, "userSettings") : {};
     let requestedValue;
     switch (type) {
       case "sheetConfig": {
@@ -177,103 +351,89 @@ export default class CPRSystemUtils {
     if (foundryObject === "Item") {
       switch (objectType) {
         case "ammo": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Ammo.svg`;
           break;
         }
         case "armor": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Armor.svg`;
           break;
         }
         case "clothing": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Clothing.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Clothing.svg`;
           break;
         }
         case "criticalInjury": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Critical_Injury.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Critical_Injury.svg`;
           break;
         }
         case "cyberdeck": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Cyberdeck.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Cyberdeck.svg`;
           break;
         }
         case "cyberware": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Cyberware.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Cyberware.svg`;
           break;
         }
         case "gear": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Gear.svg`;
           break;
         }
         case "netarch": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Net_Architecture.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Net_Architecture.svg`;
           break;
         }
         case "program": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Program.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Program.svg`;
           break;
         }
         case "role": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Role.svg`;
           break;
         }
         case "skill": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Skill.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Skill.svg`;
           break;
         }
         case "vehicle": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Vehicle.svg`;
           break;
         }
         case "weapon": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/weapons/heavyPistol.svg`;
           break;
         }
         default: {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Gear.svg`;
           break;
         }
       }
     } else if (foundryObject === "Actor") {
       switch (objectType) {
         case "blackIce": {
-          imageLink = "systems/cyberpunk-red-core/icons/netrunning/Black_Ice.png";
+          imageLink = `systems/${game.system.id}/icons/netrunning/Black_Ice.png`;
           break;
         }
         case "container": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Container.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Container.svg`;
           break;
         }
         case "demon": {
-          imageLink = "systems/cyberpunk-red-core/icons/netrunning/Demon.png";
+          imageLink = `systems/${game.system.id}/icons/netrunning/Demon.png`;
           break;
         }
         case "mook": {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_Mook.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Mook.svg`;
           break;
         }
         default: {
-          imageLink = "systems/cyberpunk-red-core/icons/compendium/default/Default_CPR_Mystery_Man.svg";
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_CPR_Mystery_Man.svg`;
         }
       }
     }
     return imageLink;
   }
 
-  /**
-   * Some actions users can take in this system will produce a bunch of documents are entities, and
-   * we group them up in a dynamically created folder. This is where that magic happens.
-   *
-   * @param {String} type - the entity type the folder should group together
-   * @param {String} name - a name for the folder
-   * @param {String} parent - (optional) folder ID to create this in, or null for a top-level folder
-   * @returns {Folder} - the referenced folder or a newly created one
-   */
-  static async GetFolder(type, name, parent = null) {
-    LOGGER.trace("GetFolder | CPRSystemUtils | Called.");
-    const folderList = game.folders.filter((folder) => folder.name === name && folder.type === type);
-    // If the folder does not exist, we create it.
-    return (folderList.length === 1) ? folderList[0] : Folder.create({ name, type, parent });
-  }
+  /* DATA TEMPLATE UTILS */
 
   /**
    * Given a data model template name, return the array of item types it is applied to
@@ -292,64 +452,6 @@ export default class CPRSystemUtils {
       }
     });
     return itemTypes;
-  }
-
-  /**
-   * Inspect an event object for passed-in field specific to the target (link) that was clicked.
-   * This code will initially look at the current target, and if the field is not found, it will
-   * climb up the parents of the target until one is found, or print an error and return undefined.
-   *
-   * @param {Object} event - event data from jquery
-   * @param {String} datum - the field we are interested in getting
-   * @returns {String} - the value of the field passed in the event data
-   */
-  static GetEventDatum(event, datum) {
-    LOGGER.trace("GetEventDatum | CPRSystemUtils | Called.");
-    let id = $(event.currentTarget).attr(datum);
-    if (typeof id === "undefined") {
-      LOGGER.debug(`Could not find ${datum} in currentTarget trying .item parents`);
-      id = $(event.currentTarget).parents(".item").attr(datum);
-      if (typeof id === "undefined") {
-        LOGGER.warn(`Could not find ${datum} in the event data!`);
-      }
-    }
-    return id;
-  }
-
-  /**
-   * We use temporary objects with keys derived from skill names elsewhere in the code base.
-   * We need to be able to programmatically produce those keys from the name, and that is
-   * what this method does. It takes a string and converts it to camelcase.
-   *
-   * These are used as parts of translation string identifies too. Examples:
-   *  "CPR.global.skills.languageStreetslang"               "CPR.global.skills.athleticsAndContortionist"
-   *  "CPR.global.skills.basicTechAndWeaponstech"           "CPR.global.skills.compositionAndEducation"
-   *  "CPR.global.skills.enduranceAndResistTortureAndDrugs" "CPR.global.skills.persuasionAndTrading"
-   *  "CPR.global.skills.evasionAndDance"                   "CPR.global.skills.pickLockAndPickPocket"
-   *  "CPR.global.skills.firstAidAndParamedicAndSurgery"
-   *
-   * NOTE: The strings above are used for Elfines characters, and not used in the code base anywhere. We
-   *       have CI that checks all translation strings are used, so to avoid making that fail, please
-   *       keep the examples here.
-   *
-   * TODO: not sure returning something based on the name will work with localization
-   *
-   * @returns {String}
-   */
-  static slugify(name) {
-    LOGGER.trace("slugify | CPRSkillItem | Called.");
-    const slug = name;
-    const initialSplit = slug.split(" ").join("");
-    const orCaseSplit = initialSplit.split("/").join("Or");
-    const parenCaseSplit = initialSplit.split("(").join("").split(")").join("");
-    const andCaseSplit = initialSplit.split("/").join("And").split("&").join("And");
-    if (slug === "Conceal/Reveal Object" || slug === "Paint/Draw/Sculpt" || slug === "Resist Torture/Drugs") {
-      return orCaseSplit.charAt(0).toLowerCase() + orCaseSplit.slice(1);
-    }
-    if (slug === "Language (Streetslang)") {
-      return parenCaseSplit.charAt(0).toLowerCase() + parenCaseSplit.slice(1);
-    }
-    return andCaseSplit.charAt(0).toLowerCase() + andCaseSplit.slice(1);
   }
 
   /**
@@ -372,57 +474,14 @@ export default class CPRSystemUtils {
     return CPRSystemUtils.getDataModelTemplates(itemType).includes(template);
   }
 
-  /**
-   * Return the list of actions that can be taken with this item. Used by the actor sheet.
-   * Note that "pin" is left out, it is hardcoded in the sheet code.
-   * This is not used anywhere right now, but will be useful when associating actions with mixins.
-   *
-   * V10 WARNING - I do not know the intent of this, but with V10, the item data model changed which would
-   *               break the original code.  This has been updated but when used, you need to pass item, not item.data
-   *
-   * @param {ItemData} item - the item we will be inspecting
-   * @returns {String[]} - array of actions that can be taken
-   */
-  static getActions(item) {
-    LOGGER.trace("getActions | CPRItem | Called.");
-    const mixins = CPRSystemUtils.getDataModelTemplates(item.type);
-    const actions = ["delete"];
-    for (let m = 0; m < mixins.length; m += 1) {
-      switch (mixins[m]) {
-        case "drug": {
-          if (item.system.amount > 0) actions.push("snort");
-          break;
-        }
-        case "equippable": {
-          actions.push("equip");
-          break;
-        }
-        case "installable": {
-          if (!item.system.isInstalled) actions.push("install");
-          else actions.push("uninstall");
-          break;
-        }
-        case "loadable": {
-          actions.push("reload");
-          actions.push("changeAmmo");
-          break;
-        }
-        case "physical": {
-          if (item.system.concealable.concealable) actions.push("conceal");
-          break;
-        }
-        case "spawner": {
-          actions.push("rez");
-          break;
-        }
-        case "stackable": {
-          if (item.system.amount > 1) actions.push("split");
-          break;
-        }
-        default:
-      }
-    }
-    return actions;
+  /* MIGRATION UTILS */
+
+  static getUserTargetedOrSelected(targetedOrSelected) {
+    LOGGER.trace("getUserTargetedOrSelected | CPRSystemUtils | Called.");
+    const targets = new Set(game.user.targets);
+    const tokens = targetedOrSelected === "selected" ? canvas.tokens.controlled : Array.from(targets);
+    tokens.sort((a, b) => (a.name > b.name ? 1 : -1));
+    return tokens;
   }
 
   /**
@@ -477,5 +536,27 @@ export default class CPRSystemUtils {
         $(migrating).fadeOut(2000);
       }
     }
+  }
+
+  /**
+   * Inspect an event object for passed-in field specific to the target (link) that was clicked.
+   * This code will initially look at the current target, and if the field is not found, it will
+   * climb up the parents of the target until one is found, or print an error and return undefined.
+   *
+   * @param {Object} event - event data from jquery
+   * @param {String} datum - the field we are interested in getting
+   * @returns {String} - the value of the field passed in the event data
+   */
+  static GetEventDatum(event, datum) {
+    LOGGER.trace("GetEventDatum | CPRSystemUtils | Called.");
+    let id = $(event.currentTarget).attr(datum);
+    if (typeof id === "undefined") {
+      LOGGER.debug(`Could not find ${datum} in currentTarget trying .item parents`);
+      id = $(event.currentTarget).parents(".item").attr(datum);
+      if (typeof id === "undefined") {
+        LOGGER.warn(`Could not find ${datum} in the event data!`);
+      }
+    }
+    return id;
   }
 }

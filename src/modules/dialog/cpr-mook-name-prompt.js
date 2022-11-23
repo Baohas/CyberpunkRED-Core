@@ -1,4 +1,4 @@
-/* global renderTemplate, FormDataExtended, Dialog foundry */
+/* global game renderTemplate, FormDataExtended, Dialog foundry */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 
@@ -6,7 +6,7 @@ export default class MookNamePrompt {
   static async RenderPrompt(mookName) {
     LOGGER.trace("RenderPrompt | MookNamePrompt | called.");
     return new Promise((resolve, reject) => {
-      renderTemplate("systems/cyberpunk-red-core/templates/dialog/cpr-mook-name-prompt.hbs", mookName).then((html) => {
+      renderTemplate(`systems/${game.system.id}/templates/dialog/cpr-mook-name-prompt.hbs`, mookName).then((html) => {
         const _onCancel = () => {
           LOGGER.trace("_onCancel | Dialog MookNamePrompt | called.");
           reject(new Error("Promise rejected: Window Closed"));

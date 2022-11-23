@@ -1,18 +1,25 @@
 {{cprTrace "START DIALOG ROLLS CPR-VERIFY-PROGRAM-DAMAGE-PROMPT.HBS"}}
 <form>
     <div>
-        {{localize "CPR.rolls.roll"}} {{localize "CPR.rolls.damageFor"}} "{{rollCardExtraArgs.program.name}} ({{localize (cprFindConfigValue "programClassList" rollCardExtraArgs.program.system.class)}})", Choomba!
+        {{localize "CPR.rolls.roll"}} {{localize "CPR.rolls.damageFor"}}
+        {{#if rollCardExtraArgs.program.name}}
+          "{{rollCardExtraArgs.program.name}} ({{localize (cprFindConfigValue "programClassList" rollCardExtraArgs.program.class)}})", Choomba!
+        {{else if (cprCompare rollCardExtraArgs.program.class "===" "blackice")}}
+          "{{localize "CPR.global.programClass.blackice"}}"
+        {{else}}
+          "{{localize "CPR.global.role.netrunner.interfaceAbility.zap"}}"
+        {{/if}}
     </div>
     <ol class="items-list">
-      {{#if (cprCompare (cprCompare rollCardExtraArgs.program.system.class "===" "antiprogramattacker") "&&" (cprCompare rollCardExtraArgs.program.system.damage.blackIce "!==" "")) }}
+      {{#if (cprCompare (cprCompare rollCardExtraArgs.pgmClass "===" "antiprogramattacker") "&&" (cprCompare rollCardExtraArgs.pgmDamage.blackIce "!==" "")) }}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.rolls.selectTarget"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
               <select name="formula">
-                    <option selected value="{{rollCardExtraArgs.program.system.damage.standard}}">{{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.itemSheet.program.nonBlackIce"}} ({{rollCardExtraArgs.program.system.damage.standard}})</option>
-                    <option value="{{rollCardExtraArgs.program.system.damage.blackIce}}">{{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.global.programClass.blackice"}} ({{rollCardExtraArgs.program.system.damage.blackIce}})</option>
+                    <option selected value="{{rollCardExtraArgs.pgmDamage.standard}}">{{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.itemSheet.program.nonBlackIce"}} ({{rollCardExtraArgs.pgmDamage.standard}})</option>
+                    <option value="{{rollCardExtraArgs.pgmDamage.blackIce}}">{{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.global.programClass.blackice"}} ({{rollCardExtraArgs.pgmDamage.blackIce}})</option>
                 </select>
             </div>
         </li>

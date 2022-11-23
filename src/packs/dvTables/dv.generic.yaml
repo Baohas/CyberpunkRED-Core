@@ -1,0 +1,133 @@
+_id: O5RYs09mbnfgI5Ws
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831962238
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831962238
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+description: >-
+  ***READ THIS WHEN CREATING CUSTOM ROLL TABLES***
+
+  This is a generic DV table.  For a DV table to work, it should be configured
+  as follows:
+
+  - The Table Name name must begin with "DV ".
+
+  - Roll Table Formula should be blank & both boxes unchecked
+
+  - The "Result Type" must be Text
+
+  - The DV should be in "Result Details"
+
+  - The weight should be "1"
+
+  - The Range should be the start distance to end distance, inclusive, in m/yds
+displayRoll: false
+flags:
+  core: {}
+folder: null
+formula: ''
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+name: DV Generic
+ownership:
+  default: 0
+replacement: false
+results:
+  - _id: 3OZE79eSMEk8LMAT
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 0
+      - 6
+    text: ''
+    type: 0
+    weight: 1
+  - _id: B22LqLs9QV9ctkux
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 7
+      - 12
+    text: ''
+    type: 0
+    weight: 1
+  - _id: xt9H0qAmGT6U6V4x
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 13
+      - 25
+    text: ''
+    type: 0
+    weight: 1
+  - _id: 1D3I02oIbd6LIgy3
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 26
+      - 50
+    text: ''
+    type: 0
+    weight: 1
+  - _id: f29GxuqCNRfU63i3
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 51
+      - 100
+    text: ''
+    type: 0
+    weight: 1
+  - _id: UlBPdgDePsnVfmpo
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 101
+      - 200
+    text: ''
+    type: 0
+    weight: 1
+  - _id: dVm8nesdC80bSOxq
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 201
+      - 400
+    text: ''
+    type: 0
+    weight: 1
+  - _id: Cm7iqBVMUe2wgll7
+    documentCollection: ''
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+    range:
+      - 401
+      - 800
+    text: ''
+    type: 0
+    weight: 1
+sort: 0

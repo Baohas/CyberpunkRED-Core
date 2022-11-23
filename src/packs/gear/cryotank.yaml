@@ -1,0 +1,45 @@
+_id: NXYo2GCb0CtmIcYW
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830994292
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830994292
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/cryotank.svg
+name: Cryotank
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Holds a fully-sized human, heals injuries faster than normal. </p>
+  equipped: owned
+  favorite: false
+  isUpgraded: false
+  price:
+    category: luxury
+    market: 5000
+  revealed: true
+  source: pg. 353
+  tags: []
+  upgrades: []
+  usage: toggled
+type: gear

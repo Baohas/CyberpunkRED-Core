@@ -1,12 +1,12 @@
 /* eslint-disable no-shadow */
-/* global renderTemplate Dialog FormDataExtended foundry */
+/* global game renderTemplate Dialog FormDataExtended foundry */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 export default class InstallItemsPrompt {
   static async RenderPrompt(data) {
-    LOGGER.trace("RenderPrompt | InstallItemsPrompt | called.");
-    const template = "systems/cyberpunk-red-core/templates/dialog/cpr-select-install-items-prompt.hbs";
+    LOGGER.trace("RenderPrompt | InstallProgramsPrompt | called.");
+    const template = `systems/${game.system.id}/templates/dialog/cpr-select-install-items-prompt.hbs`;
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {

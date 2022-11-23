@@ -1,0 +1,69 @@
+_id: Gky7qJb3lawgiq1u
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053173
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053173
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher_poor.svg
+name: Rocket Launcher (Poor)
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety:
+    - rocket
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 8d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Bring out the big guns. This rocket launcher will do some damage.  If
+      you roll 1 on Attack (Crit fail) the gun jams and requires using an action
+      to clear. </p>
+  dvTable: DV Rocket Launcher
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 1
+    value: 0
+  price:
+    category: premium
+    market: 100
+  quality: poor
+  revealed: true
+  rof: 1
+  source: pg. 341
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: rocketLauncher
+type: weapon

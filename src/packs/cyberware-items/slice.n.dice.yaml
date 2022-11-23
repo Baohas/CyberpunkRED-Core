@@ -1,0 +1,76 @@
+_id: u1TSFrsDP5i0KzFe
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963855
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963855
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/slice_n_dice.svg
+name: Slice 'N Dice
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: false
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  amount: 1
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 2d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Monofilament wiring which is a Medium Melee Weapon. Can be concealed.
+      </p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 1d6
+    static: '3'
+  install: clinic
+  isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: true
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: expensive
+    market: 500
+  quality: standard
+  revealed: true
+  rof: 2
+  size: 1
+  source: pg. 366
+  tags: []
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: medMelee
+type: cyberware

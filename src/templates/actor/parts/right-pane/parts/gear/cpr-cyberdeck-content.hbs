@@ -2,7 +2,9 @@
 <li class="item flexrow{{#if item.system.favorite}} favorite{{else}}{{#if (cprListContains sheet.options.collapsedSections "gearTab-gear")}} hide{{/if}}{{/if}}" data-item-id="{{item._id}}"
     data-item-category="{{item.type}}" draggable="true">
     <div class="item-name gear-name text-nowrap">
-        <a class="name item-edit" title="{{item.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{item.name}}{{#if item.system.isUpgraded}}<sup><i class="fab fa-uniregistry"></i></sup>{{/if}}</a>
+        <a class="name item-edit flex-center">
+          <img src="{{item.img}}">
+          {{item.name}}{{#if item.system.isUpgraded}}<sup><i class="text-super fa-solid fa-square-up"></i></sup>{{/if}}</a>
         {{#if item.system.isInstalled}}
           <a class="item-view" data-item-id="{{item.system.installedIn}}"><span title="{{localize "CPR.characterSheet.rightPane.cyber.installedIn"}} {{cprGetProp (cprGetOwnedItem actor item.system.installedIn) "name"}}"><sup><i class="fa-solid fa-circle-info"></i></sup></span></a>
         {{/if}}

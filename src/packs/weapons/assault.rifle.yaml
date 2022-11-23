@@ -1,0 +1,66 @@
+_id: QrQNdHTuEDxrfIxS
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053169
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053169
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
+name: Assault Rifle
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety:
+    - rifle
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 5d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>A standard-issue assault rifle. </p>
+  dvTable: DV Assault Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 4
+    suppressiveFire: true
+  handsReq: 2
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 25
+    value: 0
+  price:
+    category: expensive
+    market: 500
+  quality: standard
+  revealed: true
+  rof: 1
+  source: pg. 341
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: assaultRifle
+type: weapon

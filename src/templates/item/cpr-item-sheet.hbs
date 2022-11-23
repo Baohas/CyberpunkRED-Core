@@ -9,8 +9,8 @@
     <div class="item-header-section items-list flexcol">
       <li class="item flexrow">
         <div class="item-name text-large text-bold text-left text-padding-left">
-          {{item.name}}{{#if (cprIsUpgradable item.type)}}{{#if item.system.isUpgraded}}<sup><i title="{{localize "
-              CPR.upgraded"}}" class="fab fa-uniregistry"></sup></i>{{/if}}{{/if}}
+          {{localize (cprGetLocalizedlNameKey item)}}{{#if (cprIsUpgradable item.type)}}{{#if item.system.isUpgraded}}<sup><i title="{{localize "
+              CPR.upgraded"}}" class="text-super fa-solid fa-square-up"></i></sup>{{/if}}{{/if}}
         </div>
         <div class="item-detail text-right text-padding-right">
           {{#if (cprIsDebug)}}({{item.id}}){{/if}}

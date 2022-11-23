@@ -1,0 +1,36 @@
+_id: jmia1vHSv6bdQEVP
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831195836
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831195836
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_basic.png
+name: Basic Heavy Pistol
+ownership:
+  default: 0
+sort: 0
+system:
+  amount: '10'
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Basic ammo, nothing special.</p>
+  favorite: false
+  price:
+    category: cheap
+    market: 10
+  source: pg. 345
+  tags: []
+  type: basic
+  upgrade: ''
+  variety: heavyPistol
+type: ammo

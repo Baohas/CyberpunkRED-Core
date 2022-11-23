@@ -1,0 +1,68 @@
+_id: eBiYEY7wwTGQeE1g
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053158
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053158
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/SMG_poor.svg
+name: SMG (Poor)
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety:
+    - medPistol
+  attackmod: 0
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 2d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>A concealable SMG.  If you roll 1 on Attack (Crit fail) the gun jams
+      and requires using an action to clear. </p>
+  dvTable: DV SMG
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 3
+    suppressiveFire: true
+  handsReq: 1
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 30
+    value: 0
+  price:
+    category: costly
+    market: 50
+  quality: poor
+  revealed: true
+  rof: 1
+  source: pg. 341
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: smg
+type: weapon

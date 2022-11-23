@@ -1,0 +1,67 @@
+_id: PJhu6eY766OegZBo
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053156
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053156
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun.svg
+name: Shotgun
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety:
+    - shotgunShell
+    - shotgunSlug
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 5d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>An all-purpose shotgun. </p>
+  dvTable: DV Shotgun (Slug)
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 4
+    value: 0
+  price:
+    category: expensive
+    market: 500
+  quality: standard
+  revealed: true
+  rof: 1
+  source: pg. 341
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
+type: weapon

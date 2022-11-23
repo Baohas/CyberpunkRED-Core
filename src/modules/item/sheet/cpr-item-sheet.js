@@ -11,7 +11,6 @@ import RoleAbilityPrompt from "../../dialog/cpr-role-ability-prompt.js";
 import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import SelectInstallItemsPrompt from "../../dialog/cpr-select-install-items-prompt.js";
 import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
-import DvUtils from "../../utils/cpr-dvUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import ManageInstallableTypes from "../../dialog/cpr-manage-installable-types.js";
 
@@ -49,7 +48,7 @@ export default class CPRItemSheet extends ItemSheet {
   // eslint-disable-next-line class-methods-use-this
   get template() {
     LOGGER.trace("template | CPRItemSheet | Called.");
-    return `systems/cyberpunk-red-core/templates/item/cpr-item-sheet.hbs`;
+    return `systems/${game.system.id}/templates/item/cpr-item-sheet.hbs`;
   }
 
   get classes() {
@@ -85,7 +84,12 @@ export default class CPRItemSheet extends ItemSheet {
       }
     }
 
-    cprData.dvTableNames = DvUtils.GetDvTables();
+    // if (["cyberdeck", "weapon", "armor", "cyberware", "clothing"].indexOf(data.item.type) > -1) {
+    //   data.system.availableSlots = this.object.availableSlots();
+    // }
+    const dvTables = await SystemUtils.GetDvTables();
+    cprData.dvTableNames = [];
+    for (const table of dvTables) cprData.dvTableNames.push(table.name);
     foundryData.item.system = cprData;
     return foundryData;
   }
@@ -215,14 +219,14 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("ItemSheet | _selectRoleBonuses | Called.");
     const cprItemData = this.item.system;
     const roleType = "mainRole";
-    const pack = game.packs.get("cyberpunk-red-core.skills");
-    const coreSkills = await pack.getDocuments();
+    const coreSkills = await SystemUtils.GetCoreSkills();
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
     const allSkillsData = [];
-    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core }));
-    let formData = { skillList: allSkillsData, roleType, system: cprItemData };
+    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
+    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
+    let formData = { skillList: sortedAllSkills, roleType, system: cprItemData };
     formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
@@ -252,16 +256,16 @@ export default class CPRItemSheet extends ItemSheet {
     const cprItemData = duplicate(this.item.system);
     const roleType = "subRole";
     const subRole = cprItemData.abilities.find((a) => a.name === subRoleName);
-    const pack = game.packs.get("cyberpunk-red-core.skills");
-    const coreSkills = await pack.getDocuments();
+    const coreSkills = await SystemUtils.GetCoreSkills();
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
     const allSkillsData = [];
-    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core }));
+    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
+    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
 
     let formData = {
-      skillList: allSkillsData, roleType, subRole, system: cprItemData,
+      skillList: sortedAllSkills, roleType, subRole, system: cprItemData,
     };
     formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
@@ -288,7 +292,7 @@ export default class CPRItemSheet extends ItemSheet {
 
   _automaticResize() {
     LOGGER.trace("_automaticResize | CPRItemSheet | Called.");
-    const setting = game.settings.get("cyberpunk-red-core", "automaticallyResizeSheets");
+    const setting = game.settings.get(game.system.id, "automaticallyResizeSheets");
     if (setting && this.rendered && !this._minimized) {
       // It seems that the size of the content does not change immediately upon updating the content
       setTimeout(() => {
@@ -304,10 +308,9 @@ export default class CPRItemSheet extends ItemSheet {
     if (formData === undefined) {
       return;
     }
-    const packName = "cyberpunk-red-core.net-rolltables";
-    const packIndex = await game.packs.get(packName).getIndex();
-    const lobby = await game.packs.get(packName).getDocument(packIndex.contents.filter((i) => i.name === "First Two Floors (The Lobby)")[0]._id);
-    const other = await game.packs.get(packName).getDocument(packIndex.contents.filter((i) => i.name === "All Other Floors (".concat(formData.difficulty, ")"))[0]._id);
+    const tableSetting = game.settings.get(game.system.id, "netArchRollTableCompendium");
+    const lobby = await SystemUtils.GetCompendiumDoc(tableSetting, "First Two Floors (The Lobby)");
+    const other = await SystemUtils.GetCompendiumDoc(tableSetting, "All Other Floors (".concat(formData.difficulty, ")"));
     const numberOfFloorsRoll = new CPRRoll(SystemUtils.Localize("CPR.rolls.roll"), "3d6");
     await numberOfFloorsRoll.roll();
     const numberOfFloors = numberOfFloorsRoll.resultTotal;
@@ -446,7 +449,7 @@ export default class CPRItemSheet extends ItemSheet {
     const cprItemData = duplicate(this.item.system);
 
     if (action === "delete") {
-      const setting = game.settings.get("cyberpunk-red-core", "deleteItemConfirmation");
+      const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
       if (setting) {
         const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${SystemUtils.Localize("CPR.netArchitecture.floor.deleteConfirmation")}?`;
         const confirmDelete = await ConfirmPrompt.RenderPrompt(
@@ -723,8 +726,7 @@ export default class CPRItemSheet extends ItemSheet {
     const target = Number(SystemUtils.GetEventDatum(event, "data-action-target"));
     const action = SystemUtils.GetEventDatum(event, "data-action-type");
     const cprItemData = duplicate(this.item.system);
-    const pack = game.packs.get("cyberpunk-red-core.skills");
-    const coreSkills = await pack.getDocuments();
+    const coreSkills = await SystemUtils.GetCoreSkills();
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -788,7 +790,7 @@ export default class CPRItemSheet extends ItemSheet {
     }
 
     if (action === "delete") {
-      const setting = game.settings.get("cyberpunk-red-core", "deleteItemConfirmation");
+      const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
       if (setting) {
         const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${SystemUtils.Localize("CPR.itemSheet.role.deleteConfirmation")}?`;
         const confirmDelete = await ConfirmPrompt.RenderPrompt(

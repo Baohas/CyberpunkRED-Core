@@ -5,6 +5,6 @@
 </div>
 <div class="item-summary-line">
     <span class="text-bold summary-name">{{localize "CPR.itemSheet.physical.price.category"}}:</span>
-    <span class="summary-value">{{localize (cprFindConfigValue "itemPriceCategory" item.system.price.category)}}</span>
+    <span class="summary-value">{{localize (cprFindConfigValue "itemPriceCategory" (cprGetPriceCategory item.system.price.market))}}</span>
 </div>
 {{cprTrace "END CPR-VALUABLE.HBS"}}

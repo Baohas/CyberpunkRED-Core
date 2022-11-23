@@ -53,10 +53,10 @@
       </div>
     </li>
 
-    {{#each (cprSort skillList "name") as |skill s|}}
+    {{#each skillList as |skill|}}
     <li class="item flexrow">
       <div class="item flexrow setting-name text-nowrap">
-        {{#if skill.core}}{{localize skill.name}}{{else}}{{skill.name}}{{/if}}
+        {{localize (cprGetLocalizedlNameKey skill.name "skill")}}
       </div>
       {{#if (cprCompare ../roleType "===" "mainRole")}}
       <div class="item flexrow setting-value text-nowrap text-space-around">

@@ -1,0 +1,74 @@
+_id: WDAHvqIooCSGWnCz
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963831
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963831
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/hidden_holster.svg
+name: Hidden Holster
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: false
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  amount: 1
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Holster that is hidden inside you.</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: '7'
+  install: clinic
+  isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: expensive
+    market: 500
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  source: pg. 364
+  tags: []
+  type: cyberwareExternal
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

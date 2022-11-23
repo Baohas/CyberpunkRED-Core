@@ -1,7 +1,5 @@
-/* global getProperty */
-
+/* global game getProperty */
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
-import DvUtils from "../../utils/cpr-dvUtils.js";
 import LoadAmmoPrompt from "../../dialog/cpr-load-ammo-prompt.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
@@ -34,22 +32,14 @@ const Loadable = function Loadable() {
    * whether the item is set to autofire or not.
    *
    * @async
-   * @param {*} actor - actor associated with the token
-   * @param {*} dvTable - which dvTable to use, overridden if autofire is set.
+   * @param {CPRActor} actor - actor associated with the token
+   * @param {String} dvTable - which dvTable to use, overridden if autofire is set.
    */
-  this._measureDv = async function _measureDv(actor, dvTable) {
-    LOGGER.trace("_measureDv | Loadable | Called.");
-    let newDvTable = dvTable;
-    if (actor.sheet.token !== null) {
-      const flag = getProperty(actor, `flags.cyberpunk-red-core.firetype-${this._id}`);
-      if (flag === "autofire") {
-        const afTable = (DvUtils.GetDvTables()).filter((name) => name.includes(dvTable) && name.includes("Autofire"));
-        if (afTable.length > 0) {
-          [newDvTable] = afTable;
-        }
-      }
-      actor.sheet.token.update({ "flags.cprDvTable": newDvTable });
-    }
+  this._setDvTable = async function _setDvTable(actor, dvTable) {
+    LOGGER.trace("_setDvTable | Loadable | Called.");
+    const flag = getProperty(actor, `flags.${game.system.id}.firetype-${this._id}`);
+    const activeTable = (flag === "autofire") ? `${dvTable} (Autofire)` : dvTable;
+    if (actor.sheet.token !== null) await SystemUtils.SetDvTable(actor.sheet.token.object, activeTable);
   };
 
   /**
@@ -214,6 +204,22 @@ const Loadable = function Loadable() {
       const ammo = this.actor.items.find((i) => i._id === this.system.magazine.ammoId);
       if (ammo) {
         return ammo.system.type;
+      }
+    }
+    return undefined;
+  };
+
+  /**
+   * Get the variety of ammo loaded in this item.
+   *
+   * @returns {String}
+   */
+  this._getLoadedAmmoVariety = function _getLoadedAmmoVariety() {
+    LOGGER.trace("_getLoadedAmmoVariety | Loadable | Called.");
+    if (this.actor) {
+      const ammo = this.actor.items.find((i) => i._id === this.system.magazine.ammoId);
+      if (ammo) {
+        return ammo.system.variety;
       }
     }
     return undefined;

@@ -1,0 +1,47 @@
+_id: xH9lmDC4oWAt9l4P
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830994302
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830994302
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_beta.svg
+name: Linear Frame β (Beta)
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Exoskeleton. Requires 2 Interface Plugs. Increases BODY to 14 while
+      plugged in. No changes to your HP or Deathsave. </p>
+  equipped: owned
+  favorite: false
+  isUpgraded: false
+  price:
+    category: luxury
+    market: 5000
+  revealed: true
+  source: pg. 351
+  tags: []
+  upgrades: []
+  usage: toggled
+type: gear

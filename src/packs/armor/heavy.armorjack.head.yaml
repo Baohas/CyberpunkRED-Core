@@ -1,0 +1,60 @@
+_id: qLQYAFps9PrqMzUk
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830519747
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830519747
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+name: Heavy Armorjack (Head)
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  bodyLocation:
+    ablation: 0
+    sp: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Heavier version of an Armorjack for your head. -2 to REF, DEX, and
+      MOVE.</p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 13
+  isBodyLocation: false
+  isHeadLocation: true
+  isShield: false
+  isUpgraded: false
+  penalty: -2
+  price:
+    category: expensive
+    market: 500
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  source: pg. 350
+  tags: []
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+type: armor

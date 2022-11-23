@@ -1,0 +1,60 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659831053161
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030605
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/weapons/axes/axe-double-black.webp
+name: Greataxe
+system:
+  weaponType: vHeavyMelee
+  weaponSkill: Melee Weapon
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 4d6
+  rof: 1
+  dvTable: ''
+  isRanged: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: >-
+      <p>A japanese wooden pole with a curved blade on one side. Favoured by
+      Arasaka tactical teams for close engagements. </p>
+    chat: ''
+    unidentified: ''
+  source: pg. 340
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  isUpgraded: false
+  price:
+    market: 500
+    category: expensive
+  handsReq: 2
+  isConcealed: false
+  quality: standard
+  upgrade: ''
+type: weapon
+_id: syV8GagEmOsAOMkj
+folder: null
+sort: 0
+ownership:
+  default: 0

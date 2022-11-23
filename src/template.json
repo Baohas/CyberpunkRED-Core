@@ -317,8 +317,7 @@
       },
       "valuable": {
         "price": {
-          "market": 100,
-          "category": "premium"
+          "market": 100
         }
       }
     },

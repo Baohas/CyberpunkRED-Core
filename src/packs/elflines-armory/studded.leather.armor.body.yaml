@@ -1,0 +1,51 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659830519749
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030607
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/equipment/chest/breastplate-layered-leather-studded-black.webp
+name: Studded Leather Armor (Body)
+system:
+  tags: []
+  description:
+    value: <p>Standard Kevlar clothing. No armor penalty.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 350
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  isUpgraded: false
+  price:
+    market: 50
+    category: costly
+  isHeadLocation: false
+  headLocation:
+    sp: 0
+    ablation: 0
+  isBodyLocation: true
+  bodyLocation:
+    sp: 7
+    ablation: 0
+  isShield: false
+  shieldHitPoints:
+    value: 0
+    max: 0
+  penalty: 0
+  upgrade: ''
+type: armor
+_id: W0WjuvkDFdAsjFUq
+folder: null
+sort: 0
+ownership:
+  default: 0

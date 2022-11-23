@@ -1,0 +1,76 @@
+_id: 1GPXBuKIodbM3O0I
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963845
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963845
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/quick_change_mount.svg
+name: Quick Change Mount
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: false
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  amount: 1
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Your cyberarm can be detached and re-attached (and swapped) using your
+      open socket. Keep an arm for every occasion. </p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: '7'
+  install: clinic
+  isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: premium
+    market: 100
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  source: pg. 365
+  tags: []
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

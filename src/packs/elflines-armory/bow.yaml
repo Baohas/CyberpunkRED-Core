@@ -1,0 +1,59 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659831053175
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030603
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/weapons/bows/shortbow-recurve-red.webp
+name: Bow
+system:
+  weaponType: bow
+  weaponSkill: Archery
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 4d6
+  rof: 1
+  dvTable: DV Bows & Crossbows
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: <p>A revitalized bow, reloaded as part of an Attack Action.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 341
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 1
+    ammoId: ''
+  ammoVariety:
+    - arrow
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  isUpgraded: false
+  price:
+    market: 100
+    category: premium
+  handsReq: 2
+  isConcealed: false
+  quality: standard
+  upgrade: ''
+type: weapon
+_id: 6iTkyK9JSQHM2IqU
+folder: null
+sort: 0
+ownership:
+  default: 0

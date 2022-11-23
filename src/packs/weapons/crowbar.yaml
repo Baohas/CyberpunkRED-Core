@@ -1,0 +1,67 @@
+_id: 37MMJ9HlsL6mCt2D
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053154
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053154
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Crowbar.svg
+name: Crowbar
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 2d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Useful as both a tool and a weapon. A rod of iron with split wedges on
+      the ends. </p>
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  isConcealed: false
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: costly
+    market: 50
+  quality: standard
+  revealed: true
+  rof: 2
+  source: pg. 340
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: medMelee
+type: weapon

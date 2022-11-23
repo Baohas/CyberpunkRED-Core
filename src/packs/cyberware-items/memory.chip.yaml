@@ -1,0 +1,76 @@
+_id: gAfBLrpJzkKVtr8o
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963838
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963838
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/memory_chip.svg
+name: Memory Chip
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: false
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  amount: 1
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Chipware. Data Storage. Like a flash drive for your brain. Eject
+      safely. </p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: '0'
+    static: '0'
+  install: notApplicable
+  isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: cheap
+    market: 10
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  source: pg. 359
+  tags: []
+  type: neuralWare
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

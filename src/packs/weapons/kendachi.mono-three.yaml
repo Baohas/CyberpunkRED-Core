@@ -1,0 +1,67 @@
+_id: 8ZDEswdFk7K839Dn
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659831053163
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659831053163
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Naginata_excellent.svg
+name: Kendachi Mono-Three
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 4d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It
+      appears as a high-tech katana, able to ignore any armor below SP11. Refer
+      to the full item description on pg. 348.</p>
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  isConcealed: false
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: luxury
+    market: 5000
+  quality: excellent
+  revealed: true
+  rof: 1
+  source: pg. 348
+  tags: []
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: vHeavyMelee
+type: weapon

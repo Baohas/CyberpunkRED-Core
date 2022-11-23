@@ -18,7 +18,6 @@ const SOURCE_FOLDERS = [
   { from: "src/lang/**/*", to: "lang" },
   { from: "src/maps/**/*", to: "maps" },
   { from: "src/modules/**/*", to: "modules" },
-  { from: "src/packs/**/*", to: "packs" },
   { from: "src/templates/**/*", to: "templates" },
   { from: "src/tiles/**/*", to: "tiles" },
 ];

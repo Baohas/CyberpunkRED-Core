@@ -1,0 +1,53 @@
+_stats:
+  coreVersion: '10.288'
+  createdTime: 1659830519747
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1667822030604
+  systemId: cyberpunk-red-core
+  systemVersion: 0.0.0
+effects: []
+flags:
+  core: {}
+img: icons/equipment/head/cap-steel.webp
+name: Chainmail Armor (Head)
+system:
+  tags: []
+  description:
+    value: >-
+      <p>Medium version of an Armorjack for your head. -2 to REF, DEX, and
+      MOVE.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 350
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  isUpgraded: false
+  price:
+    market: 100
+    category: premium
+  isHeadLocation: true
+  headLocation:
+    sp: 12
+    ablation: 0
+  isBodyLocation: false
+  bodyLocation:
+    sp: 0
+    ablation: 0
+  isShield: false
+  shieldHitPoints:
+    value: 0
+    max: 0
+  penalty: -2
+  upgrade: ''
+type: armor
+_id: kZy1Hr5L1oUdY3k8
+folder: null
+sort: 0
+ownership:
+  default: 0

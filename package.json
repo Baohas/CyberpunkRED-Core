@@ -30,8 +30,14 @@
     "fs-extra": "^10.1.0",
     "gulp": "^4.0.2",
     "gulp-less": "^5.0.0",
+    "js-yaml": "^4.1.0",
+    "jsonlint-mod": "^1.7.6",
     "lint": "^1.1.2",
+    "markdown-it": "^13.0.1",
+    "markdownlint-cli": "^0.32.2",
     "minimatch": "^5.1.0",
+    "nedb": "^1.8.0",
+    "sanitize-filename": "^1.6.3",
     "vinyl-fs": "^3.0.3"
   }
 }

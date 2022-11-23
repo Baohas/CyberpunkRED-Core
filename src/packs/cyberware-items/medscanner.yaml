@@ -1,0 +1,104 @@
+_id: B59L6Lf0RtqTDUw7
+_stats:
+  coreVersion: '10.276'
+  createdTime: 1659830963829
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1659830963829
+  systemId: cyberpunk-red-core
+  systemVersion: 0.82.0
+effects:
+  - _id: 1UxCurX6zaToNbUY
+    changes:
+      - key: bonuses.firstAid
+        mode: 2
+        priority: null
+        value: '2'
+      - key: bonuses.paramedic
+        mode: 2
+        priority: null
+        value: '2'
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
+          '1': skill
+    icon: systems/cyberpunk-red-core/icons/compendium/cyberware/medscanner.svg
+    label: Medscanner
+    tint: null
+    transfer: true
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/medscanner.svg
+name: Medscanner
+ownership:
+  default: 0
+sort: 0
+system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: false
+    list: []
+    usedSlots: 0
+    slots: 3
+  ammoVariety: []
+  amount: 1
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Built-in medscanner which allows for quick assessment of injuries.
+      Provides +2 to First Aid and Paramedic skill checks.</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: '7'
+  install: clinic
+  isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  price:
+    category: expensive
+    market: 500
+  quality: ''
+  revealed: true
+  rof: 1
+  size: 2
+  source: pg. 365
+  tags: []
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware
