@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-/* global duplicate */
+/* global */
 import CPRMod from "../rolls/cpr-modifiers.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -49,6 +49,11 @@ export class CPRRollDialog extends CPRDialog {
     const effects = this.actor.effects.contents;
     const allSituationalMods = CPRMod.getAllModifiers(effects).filter((m) => m.isSituational);
     let filteredMods = [];
+
+    if (this.prototypeChain.includes("CPRInitiative")) {
+      const initiativeMods = allSituationalMods.filter((m) => m.key === `bonuses.initiative`);
+      filteredMods = filteredMods.concat(initiativeMods);
+    }
 
     if (this.prototypeChain.includes("CPRDamageRoll")) {
       const damageMods = allSituationalMods.filter((m) => m.key === `bonuses.universalDamage`);

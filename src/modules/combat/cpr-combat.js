@@ -4,7 +4,6 @@ import LOGGER from "../utils/cpr-logger.js";
 import CombatUtils from "../utils/cpr-combatUtils.js";
 import CPRChat from "../chat/cpr-chat.js";
 import DiceSoNice from "../extern/cpr-dice-so-nice.js";
-import SelectInitiativeType from "../dialog/cpr-initiative-type-prompt.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
@@ -61,56 +60,23 @@ export default class CPRCombat extends Combat {
     // Iterate over Combatants, performing an initiative roll for each
     const updates = [];
     const rolls = [];
-    let initiativeType;
     for (const [i, id] of combatantIds.entries()) {
       // Get Combatant data (non-strictly)
       const combatant = this.combatants.get(id);
       if (!combatant?.isOwner) return;
-
-      // See what type of initiative for characters & mooks if they have an equipped cyberdeck
       const { actor } = combatant.token;
-      switch (actor.type) {
-        case "character":
-        case "mook": {
-          if (actor.hasItemTypeEquipped("cyberdeck")) {
-            if (typeof initiativeType === "undefined") {
-              // Check if this is a meat initiative roll or net initiative roll
-              let formData = { title: SystemUtils.Format("CPR.dialog.initiativeType.initiativeType"), initiativeType: "meat" };
-              formData = await SelectInitiativeType.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
-              if (formData === undefined) {
-                return;
-              }
-              initiativeType = formData.initiativeType;
-            }
-          } else {
-            initiativeType = "meat";
-          }
-          break;
-        }
-        case "blackIce":
-        case "demon": {
-          initiativeType = "net";
-          break;
-        }
-        case "container": {
-          initiativeType = "none";
-          break;
-        }
-        default:
-          initiativeType = "meat";
-      }
 
-      if (initiativeType !== "none") {
-        // Produce an initiative roll for the Combatant
-        const cprRoll = (await combatant.getInitiativeRoll(CPRCombat._getInitiativeFormula(combatant), initiativeType));
+      // Produce an initiative roll for the Combatant
+      if (actor.constructor.name === "CPRContainerActor") {
+        const warningMessage = `${SystemUtils.Localize("CPR.messages.invalidCombatantType")}: ${actor.name} (${actor.type})`;
+        SystemUtils.DisplayMessage("warn", warningMessage);
+      } else {
+        const cprRoll = (await combatant.getInitiativeRoll(CPRCombat._getInitiativeFormula(combatant)));
 
         updates.push({ _id: id, initiative: cprRoll.resultTotal });
 
         cprRoll.entityData = { actor: combatant.actor?.id, token: combatant.token?.id };
         rolls.push(cprRoll);
-      } else {
-        const warningMessage = `${SystemUtils.Localize("CPR.messages.invalidCombatantType")}: ${actor.name} (${actor.type})`;
-        SystemUtils.DisplayMessage("warn", warningMessage);
       }
     }
 

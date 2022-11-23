@@ -74,7 +74,7 @@ export class CPRRoll {
       const modArray = rollMods.split(" ");
       modArray.forEach((mod) => {
         if (mod !== "") {
-          this.addMod(Number(mod));
+          this.addMod([{ value: Number(mod), source: "Roll Formula" }]);
         }
       });
     }
@@ -297,7 +297,7 @@ export class CPRRoll {
  * modifiers.
  */
 export class CPRInitiative extends CPRRoll {
-  constructor(initiativeType, combatant, formula, base, mod = 0) {
+  constructor(combatant, formula, statName, statValue) {
     LOGGER.trace("constructor | CPRStatRoll | Called.");
     const die = /d[0-9][0-9]*/;
     if (formula.match(die)) {
@@ -307,26 +307,17 @@ export class CPRInitiative extends CPRRoll {
       super(SystemUtils.Localize("CPR.chat.initiative"), "1d10");
       this.formula = formula;
     }
-    if (initiativeType === "meat") {
-      this.statName = SystemUtils.Localize("CPR.global.stats.ref");
-    } else if (combatant === "blackIce") {
-      this.statName = SystemUtils.Localize("CPR.global.generic.speed");
-    } else if (combatant === "demon") {
-      this.statName = SystemUtils.Localize("CPR.global.role.netrunner.ability.interface");
-    } else {
-      this.statName = SystemUtils.Localize("CPR.global.role.netrunner.ability.interface");
-    }
-    this.statValue = base;
-    if (mod > 0) {
-      this.addMod(mod);
-    }
+
+    this.combatant = combatant;
+    this.statName = statName;
+    this.statValue = statValue;
+
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-initiative-rollcard.hbs`;
     this.calculateCritical = game.settings.get(game.system.id, "criticalInitiative");
   }
 
   _computeBase() {
     LOGGER.trace("_computeBase | CPRStatRoll | Called.");
-    // TODO: there is not currently a way for players to enter LUCK for initiative rolls
     return this.initialRoll + this.totalMods() + this.statValue + this.luck;
   }
 }

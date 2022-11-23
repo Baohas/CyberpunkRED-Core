@@ -1,5 +1,8 @@
 {{cprTrace "START DIALOG ROLLS CPR-UNIVERSAL-ROLL-PROMPT.HBS"}}
 <form>
+    <div class="text-bold">
+        {{#if (cprListContains prototypeChain "CPRInitiative")}} {{rollData.combatant}} {{/if}}
+    </div>
     <div>
         {{localize "CPR.rolls.rollingFor"}} "{{rollData.rollTitle}}", Choomba!
     </div>

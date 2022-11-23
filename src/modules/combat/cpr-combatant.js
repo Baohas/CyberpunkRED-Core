@@ -1,6 +1,8 @@
 /* global Combatant */
 import LOGGER from "../utils/cpr-logger.js";
+import SystemUtils from "../utils/cpr-systemUtils.js";
 import * as CPRRolls from "../rolls/cpr-rolls.js";
+import CPRMod from "../rolls/cpr-modifiers.js";
 
 /**
  * A custom class so we can override initiative behaviors for Black-ICE and Demons.
@@ -16,59 +18,83 @@ export default class CPRCombatant extends Combatant {
  * Create an initiative roll for this combatant
  *
  * @param {String} formula - Roll formula to use for initiative
- * @param {String} initiativeType - Expecting either "meat" or "net"
  * @returns {Roll}
  */
-  async getInitiativeRoll(formula, initiativeType) {
+  async getInitiativeRoll(formula) {
     LOGGER.trace("getInitiativeRoll | CPRCombatant | Called.");
     let cprInitiative;
     const { actor } = this.token;
-    let universalBonusInitiative = 0;
+    let statName = ""; let statValue = 0;
     switch (actor.type) {
       case "character":
       case "mook": {
-        if (initiativeType === "meat") {
-          cprInitiative = new CPRRolls.CPRInitiative(initiativeType, actor.type, formula, actor.getStat("ref"));
-          actor.itemTypes.role.forEach((r) => {
-            if (r.system.universalBonuses.includes("initiative")) {
-              universalBonusInitiative += Math.floor(r.system.rank / r.system.bonusRatio);
-            }
-            const subroleUniversalBonuses = r.system.abilities.filter((a) => a.universalBonuses.includes("initiative"));
-            if (subroleUniversalBonuses.length > 0) {
-              subroleUniversalBonuses.forEach((b) => {
-                universalBonusInitiative += Math.floor(b.rank / b.bonusRatio);
-              });
-            }
-          });
-        } else {
-          const netSpeed = actor.bonuses.speed; // active effects for speed, note "initiative" AEs come later
-          // Filter for the Netrunner role on the actor then assign `netrunnerRank` the proper value
-          const netrunnerRole = (actor.itemTypes.role.filter((d) => d.name === "Netrunner"))[0];
-          const netrunnerRank = netrunnerRole.system.rank;
-          cprInitiative = new CPRRolls.CPRInitiative(initiativeType, actor.type, formula, netrunnerRank, netSpeed);
-        }
+        statName = SystemUtils.Localize("CPR.global.stats.ref");
+        statValue = actor.getStat("ref");
+        cprInitiative = new CPRRolls.CPRInitiative(actor.name, formula, statName, statValue);
         break;
       }
       case "demon": {
-        cprInitiative = new CPRRolls.CPRInitiative("net", actor.type, formula, actor.getStat("interface"));
+        statName = SystemUtils.Localize("CPR.global.role.netrunner.ability.interface");
+        statValue = actor.getStat("interface");
+        cprInitiative = new CPRRolls.CPRInitiative(actor.name, formula, statName, statValue);
         break;
       }
       case "blackIce": {
-        cprInitiative = new CPRRolls.CPRInitiative("net", actor.type, formula, actor.getStat("spd"));
+        statName = SystemUtils.Localize("CPR.global.generic.speed");
+        statValue = actor.getStat("spd");
+        cprInitiative = new CPRRolls.CPRInitiative(actor.name, formula, statName, statValue);
         break;
       }
       default:
         // The only way we get here is if someone tries to roll initiative for something that
         // should not have an initiative roll (container?), so we will just roll whatever formula is passed with
         // no base value
-        cprInitiative = new CPRRolls.CPRInitiative("meat", actor.type, formula, 0);
+        cprInitiative = new CPRRolls.CPRInitiative(actor.name, formula, statName, statValue);
         break;
     }
     // Demons and Black ICE do not have initiative bonuses.
     if (actor.type !== "demon" && actor.type !== "blackIce") {
-      cprInitiative.addMod(actor.bonuses.initiative); // consider any active effects
-      cprInitiative.addMod(universalBonusInitiative); // add bonus from role abilities and subabilities
+      const effects = actor.effects.contents;
+      const allMods = CPRMod.getAllModifiers(effects);
+      const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+      const initiativeMods = CPRMod.getRelevantMods(filteredMods, "initiative", "AeBonus");
+
+      cprInitiative.addMod(initiativeMods); // consider any active effects
+
+      // total up universal attack bonuses directly from role abilities (not indirectly from skills)
+      const roleInitiativeMods = [];
+      actor.itemTypes.role.forEach((r) => {
+        if (r.system.universalBonuses.includes("initiative")) {
+          const value = Math.floor(r.system.rank / r.system.bonusRatio);
+          roleInitiativeMods.push({
+            value,
+            source: r.system.mainRoleAbility,
+            key: "bonuses.universalInitiative",
+            category: "combat",
+          });
+        }
+        r.system.abilities.forEach((a) => {
+          if (a.universalBonuses?.includes("initiative")) {
+            const source = a.name;
+            const value = Math.floor(a.rank / a.bonusRatio);
+            roleInitiativeMods.push({
+              value,
+              source,
+              key: `bonuses.universalInitiative`,
+              category: "combat",
+            });
+          }
+        });
+      });
+
+      cprInitiative.addMod(roleInitiativeMods); // add bonus from role abilities and subabilities
+
+      if (allMods.some((m) => m.key === "bonuses.initiative" && m.isSituational)) {
+        const keepRolling = await cprInitiative.handleRollDialog({}, this.actor);
+      }
     }
+
     await cprInitiative.roll();
     return cprInitiative;
   }
