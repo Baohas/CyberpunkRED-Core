@@ -1,12 +1,12 @@
 /* eslint-disable no-shadow */
-/* global renderTemplate Dialog */
+/* global renderTemplate Dialog game */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 export default class SelectRolesPrompt {
   static async RenderPrompt(data) {
     LOGGER.trace("RenderPrompt | SelectRolesPrompt | called.");
-    const template = "systems/cyberpunk-red-core/templates/dialog/cpr-select-roles-prompt.hbs";
+    const template = `systems/${game.system.id}/templates/dialog/cpr-select-roles-prompt.hbs`;
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {

@@ -111,7 +111,7 @@ const actorHooks = () => {
 
       const netrunnerTokenId = biToken.getFlag(game.system.id, "netrunnerTokenId");
       const cyberdeckId = biToken.getFlag(game.system.id, "sourceCyberdeckId");
-      const programId = biToken.getFlag(game.system.id, "programId");
+      const programUUID = biToken.getFlag(game.system.id, "programUUID");
       const sceneId = biToken.getFlag(game.system.id, "sceneId");
       const sceneList = game.scenes.filter((s) => s.id === sceneId);
       if (sceneList.length === 1) {
