@@ -281,7 +281,7 @@ export class CPRRoll {
           break;
       }
 
-      const dialog = await CPRDialog.showDialog(DialogClass, this, actor, item);
+      const dialog = await CPRDialog.showDialog(DialogClass, this, actor, item).catch((err) => LOGGER.debug(err));
       if (dialog === undefined) {
         // returns false if the dialog was closed
         return false;

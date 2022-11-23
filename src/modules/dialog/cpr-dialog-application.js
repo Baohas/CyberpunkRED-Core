@@ -50,7 +50,8 @@ export default class CPRDialog extends FormApplication {
     // generic listeners
     // html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
     html.find(".confirm-roll").click((event) => this.confirmDialog(event));
-    html.find(".cancel-roll").click(() => this.close());
+    html.find(".cancel-roll").click((event) => this.closeDialog(event));
+    this.element.find(".header-button.close").click((event) => this.closeDialog(event));
   }
 
   _itemCheckboxToggle(event) {
@@ -85,15 +86,29 @@ export default class CPRDialog extends FormApplication {
   }
 
   /**
+   * This will cancel/close the roll and reject the Promise originally created when CPRDialog.showDialog is called.
+   *
+   * @param {Object} options - potential options to pass to this.close; currently unused;
+   */
+  async closeDialog(event, options) {
+    LOGGER.trace("confirmDialog | CPRDialog | Called.");
+    this.options.closeDialog();
+    return this.close(options);
+  }
+
+
+
+  /**
    * Creates a promise to be resolved when the dialog is confirmed. One can also override default options here.
    *
    * @param {Object} - Some object to be modified by the dialog.
    */
   static async showDialog(Cls, ...args) {
     LOGGER.trace("showDialog | CPRDialog | Called.");
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const dialog = new Cls(...args, {
         confirmDialog: () => resolve(args[0]),
+        closeDialog: () => reject(args[0]),
       });
       dialog.render(true);
     });

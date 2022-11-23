@@ -58,47 +58,39 @@ export default class CPRCombat extends Combat {
     const currentId = this.combatant ? this.combatant.id : null;
 
     // Iterate over Combatants, performing an initiative roll for each
-    const updates = [];
-    const rolls = [];
+    let update;
     for (const [i, id] of combatantIds.entries()) {
       // Get Combatant data (non-strictly)
       const combatant = this.combatants.get(id);
       if (!combatant?.isOwner) return;
       const { actor } = combatant.token;
-
+      let cprRoll;
       // Produce an initiative roll for the Combatant
       if (actor.constructor.name === "CPRContainerActor") {
         const warningMessage = `${SystemUtils.Localize("CPR.messages.invalidCombatantType")}: ${actor.name} (${actor.type})`;
         SystemUtils.DisplayMessage("warn", warningMessage);
+        // eslint-disable-next-line no-continue
+        continue; // Skip one iteration so that the rest doesn't happen.
       } else {
-        const cprRoll = (await combatant.getInitiativeRoll(CPRCombat._getInitiativeFormula(combatant)));
+        cprRoll = (await combatant.getInitiativeRoll(CPRCombat._getInitiativeFormula(combatant)));
 
-        updates.push({ _id: id, initiative: cprRoll.resultTotal });
-
+        update = { _id: id, initiative: cprRoll.resultTotal };
         cprRoll.entityData = { actor: combatant.actor?.id, token: combatant.token?.id };
-        rolls.push(cprRoll);
       }
+
+      const rollCriticals = game.settings.get(game.system.id, "criticalInitiative");
+
+      const roll = DiceSoNice.ShowDiceSoNice(cprRoll._roll);
+      let critRoll;
+      if (rollCriticals && cprRoll.wasCritical()) {
+        critRoll = DiceSoNice.ShowDiceSoNice(cprRoll._critRoll);
+      }
+      await Promise.all([roll, critRoll]);
+
+      CPRChat.RenderRollCard(cprRoll);
+
+      await this.updateEmbeddedDocuments("Combatant", [update]);
     }
-
-    const rollCriticals = game.settings.get(game.system.id, "criticalInitiative");
-    const dsnPromises = [];
-    rolls.forEach((d) => {
-      dsnPromises.push(DiceSoNice.ShowDiceSoNice(d._roll));
-      if (rollCriticals && d.wasCritical()) {
-        dsnPromises.push(DiceSoNice.ShowDiceSoNice(d._critRoll));
-      }
-    });
-
-    await Promise.all(dsnPromises);
-
-    rolls.forEach((d) => {
-      CPRChat.RenderRollCard(d);
-    });
-
-    if (!updates.length) return;
-
-    // Update multiple combatants
-    await this.updateEmbeddedDocuments("Combatant", updates);
 
     // Ensure the turn order remains with the same combatant if the combat already started
     if (updateTurn && currentId) {

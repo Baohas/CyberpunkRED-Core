@@ -70,7 +70,7 @@ export default class CPRCombatant extends Combatant {
           roleInitiativeMods.push({
             value,
             source: r.system.mainRoleAbility,
-            key: "bonuses.universalInitiative",
+            key: "bonuses.initiative",
             category: "combat",
           });
         }
@@ -81,7 +81,7 @@ export default class CPRCombatant extends Combatant {
             roleInitiativeMods.push({
               value,
               source,
-              key: `bonuses.universalInitiative`,
+              key: `bonuses.initiative`,
               category: "combat",
             });
           }
@@ -91,7 +91,7 @@ export default class CPRCombatant extends Combatant {
       cprInitiative.addMod(roleInitiativeMods); // add bonus from role abilities and subabilities
 
       if (allMods.some((m) => m.key === "bonuses.initiative" && m.isSituational)) {
-        const keepRolling = await cprInitiative.handleRollDialog({}, this.actor);
+        await cprInitiative.handleRollDialog({}, this.actor);
       }
     }
 
