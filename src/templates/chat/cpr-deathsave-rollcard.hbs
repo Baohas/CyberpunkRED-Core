@@ -31,10 +31,11 @@
             <span class="text-normal text-nowrap">{{localize "CPR.global.generic.deathPenalty"}}: {{penalty}}</span>
             {{/if}}
             {{#if (cprCompare basePenalty "!==" 0)}}
-            <span class="text-normal text-nowrap">{{localize "CPR.characterSheet.rightPanke.skills.base"}} {{localize "CPR.global.generic.deathPenalty"}}: {{penalty}}</span>
+            <span class="text-normal text-nowrap">{{localize "CPR.characterSheet.rightPanke.skills.base"}} {{localize "CPR.global.generic.deathPenalty"}}: {{basePenalty}}</span>
             {{/if}}
-            <div class="text-normal text-bold text-nowrap">{{localize "CPR.rolls.mods"}} {{localize "CPR.rolls.total"}}:
-              {{totalMods}}</div>
+            {{#if mods}}
+              {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
+            {{/if}}
             <div class="text-massive text-center fg-{{#if (cprCompare saveResult "===" (localize "CPR.rolls.success"))}}green{{else}}red{{/if}}">{{saveResult}}</div>
           </div>
         </div>

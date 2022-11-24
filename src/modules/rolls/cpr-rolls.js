@@ -643,14 +643,9 @@ export class CPRDeathSaveRoll extends CPRRoll {
     this.saveResult = null;
   }
 
-  /**
-   * Override to automatically stack up the penalties as modifiers
-   * @override
-   * @returns {Number}
-   */
-  totalMods() {
-    LOGGER.trace("totalMods | CPRDeathSaveRoll | Called.");
-    return this.penalty + this.basePenalty;
+  _computeBase() {
+    LOGGER.trace("_computeBase | CPRDeathSaveRoll | Called.");
+    return this.initialRoll + this.basePenalty + this.penalty + this.totalMods();
   }
 }
 

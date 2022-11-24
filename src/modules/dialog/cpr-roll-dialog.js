@@ -123,6 +123,11 @@ export class CPRRollDialog extends CPRDialog {
       filteredMods = filteredMods.concat(netrunnerMods);
     }
 
+    if (this.prototypeChain.includes("CPRDeathSaveRoll")) {
+      const deathSavePenaltyMods = allSituationalMods.filter((m) => m.key === "bonuses.deathSavePenalty");
+      filteredMods = filteredMods.concat(deathSavePenaltyMods);
+    }
+
     data.filteredMods = filteredMods;
     this.filteredMods = filteredMods;
     return data;

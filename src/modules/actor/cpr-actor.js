@@ -8,6 +8,7 @@ import InstallCyberwarePrompt from "../dialog/cpr-install-cyberware-prompt.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import CPRMod from "../rolls/cpr-modifiers.js";
 
 /**
  * CPRActor contains common code between mooks and characters (NPCs and players).
@@ -191,7 +192,7 @@ export default class CPRActor extends Actor {
     derivedStats.currentWoundState = this.system.derivedStats.currentWoundState;
 
     // Death save
-    let basePenalty = this.bonuses.deathSavePenalty; // 0 + active effects
+    let basePenalty = 0; // 0 + active effects
     const critInjury = this.itemTypes.criticalInjury;
     critInjury.forEach((criticalInjury) => {
       const { deathSaveIncrease } = criticalInjury.system;
@@ -862,7 +863,15 @@ export default class CPRActor extends Actor {
     const deathSavePenalty = this.system.derivedStats.deathSave.penalty;
     const deathSaveBasePenalty = this.system.derivedStats.deathSave.basePenalty;
     const bodyStat = this.system.stats.body.value;
-    return new CPRRolls.CPRDeathSaveRoll(deathSavePenalty, deathSaveBasePenalty, bodyStat);
+    const cprRoll = new CPRRolls.CPRDeathSaveRoll(deathSavePenalty, deathSaveBasePenalty, bodyStat);
+
+    const effects = this.effects.contents;
+    const allMods = CPRMod.getAllModifiers(effects);
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+    const deathSavePenaltyMods = CPRMod.getRelevantMods(filteredMods, "deathSavePenalty", "AeBonus");
+    cprRoll.addMod(deathSavePenaltyMods);
+    return cprRoll;
   }
 
   // We need a way to unload a specific ammo from all of the weapons

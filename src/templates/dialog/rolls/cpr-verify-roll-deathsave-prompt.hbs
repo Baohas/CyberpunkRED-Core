@@ -21,7 +21,15 @@
                 <input name="basePenalty" class="" type="number" data-dtype="Number" value={{rollData.basePenalty}}>
             </div>
         </li>
+
+        {{!-- All applied modifier list partial --}}
+        {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
     </ol>
+
+    {{!-- Situational modifier list partial --}}
+    {{#if (cprCompare filteredMods.length ">" 0)}}
+      {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-situational-modifiers.hbs" this}}
+    {{/if}}
 
   {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 
