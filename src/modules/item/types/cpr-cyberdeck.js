@@ -196,39 +196,29 @@ export default class CPRCyberdeckItem extends CPRItem {
     LOGGER.trace("_createCyberdeckRoll | CPRCyberdeckItem | Called.");
     let cprRoll;
     const { programId } = extraData;
-    const programData = this.getInstalledPrograms().filter((iProgram) => iProgram._id === programId);
-    let program = (programData.length > 0) ? programData[0] : null;
-    let damageFormula = (program === null) ? "1d6" : program.damage.standard;
-    if (program.class === "blackice") {
-      const rezzedList = this.getRezzedPrograms().filter((rProgram) => rProgram._id === programId);
-      program = (rezzedList.length > 0) ? rezzedList[0] : null;
-      if (program.blackIceType === "antiprogram") {
-        damageFormula = program.damage.blackIce;
-      }
-    }
-    if (program === null) {
+    const program = this.getInstalledPrograms().find((iProgram) => iProgram._id === programId);
+    if (!program) {
       LOGGER.error(`_createCyberdeckRoll | CPRCyberdeckItem | Unable to locate program ${programId}.`);
       return CPRRolls.CPRRoll("Unknown Program", "1d10");
     }
-    const skillName = "";
-    const skillValue = 0;
-    const roleName = (program.class === "blackice") ? "Black ICE" : extraData.netRoleItem.system.mainRoleAbility;
-    const roleValue = (program.class === "blackice") ? 0 : extraData.netRoleItem.system.rank;
-    const atkValue = (program === null) ? 0 : program.atk;
-    const pgmName = (program === null) ? "Program" : program.name;
+
+    const roleName = extraData.netRoleItem.system.mainRoleAbility;
+    const roleValue = Number.parseInt(extraData.netRoleItem.system.rank, 10);
+    const pgmName = program.name;
     const { executionType } = extraData;
+    const atkValue = executionType === "attack" ? program.atk : program.def;
+
+    const damageFormula = program.damage.standard;
     switch (executionType) {
-      case "atk":
-      case "def": {
+      case "attack":
+      case "defense": {
         const niceName = executionType.toUpperCase();
-        cprRoll = (program.class === "blackice") ? new CPRRolls.CPRStatRoll(niceName, program[executionType]) : new CPRRolls.CPRAttackRoll(
+        cprRoll = new CPRRolls.CPRAttackRoll(
           pgmName,
           niceName,
           atkValue,
-          skillName,
-          skillValue,
-          roleName,
-          roleValue,
+          roleName, // We substitute 'skillName' with 'roleName' here, since CPRAttackRoll has no role arguments.
+          roleValue, // See comment above.
           "program",
         );
         cprRoll.rollCardExtraArgs.program = program;
@@ -248,8 +238,16 @@ export default class CPRCyberdeckItem extends CPRItem {
 
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.
     if (executionType !== "damage") {
-      if (roleName !== "blackice") cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
-      cprRoll.addMod(actor.getWoundStateMods());
+      const effects = actor.effects.contents;
+      const allMods = CPRMod.getAllModifiers(effects);
+      const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+      const netrunnerMods = CPRMod.getRelevantMods(filteredMods, executionType, "AeBonus");
+      const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName), "AeBonus");
+
+      cprRoll.addMod(netrunnerMods);
+      cprRoll.addMod(roleMods);
+      cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
     }
     return cprRoll;
   }
@@ -282,7 +280,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     }
 
     // If interfaceAbiltiy is Zap, we will handle roll either as a Damage Roll or an Attack Roll.
-    // If interfaceAbility is anything else, we will handle roll as as a Role Roll.
+    // If interfaceAbility is anything else, we will handle roll as as an Interface Roll.
     let cprRoll;
     if (interfaceAbility === "zap") {
       if (rollInfo.executionType === "damage") {
@@ -290,15 +288,15 @@ export default class CPRCyberdeckItem extends CPRItem {
       } else {
         cprRoll = new CPRRolls.CPRAttackRoll(
           "zap",
-          "",
-          0,
-          roleName,
-          roleValue,
+          "", // No statName
+          0, // No statValue
+          roleName, // We substitute 'skillName' with 'roleName' here, since CPRAttackRoll has no role arguments.
+          roleValue, // See comment above.
           "program",
         );
         cprRoll.rollCardExtraArgs.cyberdeck = this;
         cprRoll.rollCardExtraArgs.isZap = true;
-        cprRoll.setNetCombat(rollTitle);
+        cprRoll.setNetCombat(rollTitle); // Set net combat to change the rollcard and prompt.
       }
     } else {
       cprRoll = new CPRRolls.CPRInterfaceRoll(roleName, roleValue);

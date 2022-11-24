@@ -458,7 +458,6 @@ export class CPRHumanityLossRoll extends CPRRoll {
  */
 export class CPRAttackRoll extends CPRSkillRoll {
   /**
-   * TODO: 9 arguments is a lot
    *
    * @constructor
    * @param {String} attackName - a name for the attack. Used in the roll card (chat message)

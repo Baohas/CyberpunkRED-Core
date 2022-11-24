@@ -643,9 +643,9 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         }
         break;
       }
-      case "atk":
+      case "attack":
       case "damage":
-      case "def": {
+      case "defense": {
         await this._onRoll(event);
         break;
       }

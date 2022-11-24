@@ -4,7 +4,7 @@
     <div class="cpr-block chat-rollTitle-stat">
       <div class="text-center text-padding-top text-normal">{{rollTitle}}</div>
       <div class="rollcard-subtitle">
-        <div class="rollcard-subtitle-center text-small">{{localize "CPR.rolls.attack"}}</div>
+        <div class="rollcard-subtitle-center text-small">{{#if (cprCompare statName "===" "DEFENSE")}}{{localize "CPR.global.generic.defense"}}{{else}}{{localize "CPR.rolls.attack"}}{{/if}}</div>
         <div class="rollcard-subtitle-right">
           {{#if rollCardExtraArgs.isZap}}
             <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
@@ -12,10 +12,13 @@
               <i class="fas fa-tint red-fg" title="Damage"></i>
             </a>
           {{else}}
+            {{log rollCardExtraArgs.program}}
+            {{#unless (cprListContains "booster,defender,blackice" rollCardExtraArgs.program.class)}}
             <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
               data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="{{rollCardExtraArgs.program._id}}">
               <i class="fas fa-tint red-fg" title="Damage"></i>
             </a>
+            {{/unless}}
           {{/if}}
         </div>
         <div class="rollcard-subtitle-2-center text-small">{{#if (cprCompare rollCardExtraArgs.program.system.class "===" "blackice")}}{{localize (cprFindConfigValue "blackIceType" rollCardExtraArgs.program.system.blackIceType)}} {{/if}}{{localize (cprFindConfigValue "programClassList" rollCardExtraArgs.program.system.class)}}</div>

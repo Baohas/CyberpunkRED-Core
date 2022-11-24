@@ -5,6 +5,7 @@ import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";
 import CPR from "../system/config.js";
+import { CPRRoll } from "../rolls/cpr-rolls.js";
 
 export class CPRRollDialog extends CPRDialog {
   constructor(rollData, actor, item, options) {
@@ -73,6 +74,8 @@ export class CPRRollDialog extends CPRDialog {
 
       if (this.item.type === "cyberdeck") {
         attackRollBonusKeys.push("bonuses.zap");
+        attackRollBonusKeys.push("bonuses.attack"); // TODO: remove this from defense rolls.
+        attackRollBonusKeys.push("bonuses.defense");
       } else {
         if (this.item.system.isRanged) {
           attackRollBonusKeys.push("bonuses.ranged");
@@ -113,7 +116,10 @@ export class CPRRollDialog extends CPRDialog {
 
     // Netrunner Effects.
     if (this.prototypeChain.includes("CPRInterfaceRoll")) {
-      const netrunnerRollBonusKeys = Object.keys(CPR.activeEffectKeys.netrun).filter((k) => k !== "bonuses.brainDamageReduction");
+      const netrunnerRollBonusKeys = Object.keys(CPR.activeEffectKeys.netrun).filter((k) => {
+        if (k === "bonuses.brainDamageReduction" || k === "bonuses.rez") return false;
+        return true;
+      });
       const netrunnerMods = allSituationalMods.filter((m) => netrunnerRollBonusKeys.includes(m.key));
       filteredMods = filteredMods.concat(netrunnerMods);
     }

@@ -7,9 +7,10 @@ export default class CPRMod {
   constructor(effect, change, index) {
     LOGGER.trace("constructor | CPRMod | Called.");
     this.change = change;
-    this.category = effect.flags[`${game.system.id}`].changes.cats[index];
-    this.isSituational = effect.flags[`${game.system.id}`].changes.situational[index].isSituational;
-    this.onByDefault = effect.flags[`${game.system.id}`].changes.situational[index].onByDefault;
+    this.category = effect.flags[game.system.id].changes.cats[index];
+    // We do optional chaining on the next two because some items may not have flags.cyberpunk-red-core.situational defined.
+    this.isSituational = effect.flags[game.system.id].changes.situational?.[index].isSituational;
+    this.onByDefault = effect.flags[game.system.id].changes.situational?.[index].onByDefault;
     this.id = `${change.key}-${effect.id}`;
     this.source = effect.label;
     this.value = Number.parseInt(change.value, 10);
