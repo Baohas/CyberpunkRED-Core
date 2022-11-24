@@ -221,13 +221,10 @@ export default function registerHandlebarsHelpers() {
   /**
    * Get a config mapping from config.js by name and key
    */
-  Handlebars.registerHelper("cprFindConfigValue", (obj, key1, key2) => {
+  Handlebars.registerHelper("cprFindConfigValue", (obj, key) => {
     LOGGER.trace("cprFindConfigValue | handlebarsHelper | Called.");
     if (obj in CPR) {
-      if (typeof key2 === "string") {
-        return CPR[obj][key1][key2];
-      }
-      return CPR[obj][key1];
+      return CPR[obj][key];
     }
     return "INVALID_KEY";
   });
@@ -822,7 +819,13 @@ export default function registerHandlebarsHelpers() {
       LOGGER.error("Undefined change category! No idea what this effect changes!");
       return "???";
     }
+
     if (cat === "custom") return key;
+
+    if (!doc) {
+      return SystemUtils.Localize(CPR.activeEffectKeys[cat][key]);
+    }
+
     const sourceDoc = (doc instanceof CPRActiveEffect) ? doc.getEffectParent() : doc;
     if (cat === "skill") {
       const skillMap = CPR.activeEffectKeys.skill;

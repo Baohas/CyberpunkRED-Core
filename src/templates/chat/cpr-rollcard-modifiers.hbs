@@ -1,0 +1,8 @@
+<div class="text-normal text-bold text-nowrap" data-tooltip="
+  {{#each mods}}
+    {{this.source}} {{#if this.key}}({{cprGetChangeNameByKey false this.category this.key}}){{/if}}: {{this.value}}
+    <br>
+  {{/each}}
+">
+  {{localize "CPR.rolls.mods"}} {{localize "CPR.rolls.total"}}: {{totalMods}}
+</div>

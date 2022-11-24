@@ -265,7 +265,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     LOGGER.trace("_createInterfaceRoll | CPRCyberdeckItem | Called.");
     let rollTitle;
     const roleName = rollInfo.netRoleItem.system.mainRoleAbility;
-    const roleValue = rollInfo.netRoleItem.system.rank;
+    const roleValue = Number.parseInt(rollInfo.netRoleItem.system.rank, 10);
     const interfaceAbility = rollInfo.interfaceAbility === "perception" ? "perception_net" : rollInfo.interfaceAbility;
     switch (interfaceAbility) {
       case "speed": {
