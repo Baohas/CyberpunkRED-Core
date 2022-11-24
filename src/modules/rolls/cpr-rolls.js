@@ -485,6 +485,8 @@ export class CPRAttackRoll extends CPRSkillRoll {
   setNetCombat(rollTitle) {
     LOGGER.trace("setNetCombat | CPRAttackRoll | Called.");
     this.rollTitle = rollTitle;
+    this.roleName = this.skillName;
+    this.roleValue = this.skillValue;
     this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-attack-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-attack-rollcard.hbs`;
   }
@@ -659,7 +661,6 @@ export class CPRDamageRoll extends CPRRoll {
    * @param {String} rollTitle - a name for the roll, used in the roll card (chat message)
    * @param {String} formula - of the form Xd6[+Y]
    * @param {String} weaponType - the weapon type is considered when displaying alt fire modes in the UI
-   * @param {Number} universalBonusDamage - a high level mod bestowed by some role abilities and items
    */
   constructor(rollTitle, formula, weaponType) {
     LOGGER.trace("constructor | CPRDamageRoll | Called.");

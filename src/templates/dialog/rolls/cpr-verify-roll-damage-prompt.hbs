@@ -60,18 +60,6 @@
         </li>
         {{/if}}
 
-        {{#if rollData.universalBonusDamage}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.universalBonuses.damage"}}:
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="universalBonusDamage" class="" type="number" data-dtype="Number" value={{rollData.universalBonusDamage}}>
-            </div>
-        </li>
-        {{/if}}
-
-
         {{!-- All applied modifier list partial --}}
         {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
     </ol>

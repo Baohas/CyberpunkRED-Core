@@ -5,6 +5,8 @@
     </div>
 
     <ol class="items-list">
+      {{!-- Dont show stat row unless this is an  --}}
+      {{#unless rollData.rollCardExtraArgs.isZap}}
       {{#unless (cprListContains prototypeChain "CPRRoleRoll")}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
@@ -14,6 +16,7 @@
                 <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
             </div>
         </li>
+      {{/unless}}
       {{/unless}}
 
         {{#if rollData.roleName}}
@@ -27,19 +30,8 @@
         </li>
         {{/if}}
 
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.rolls.mods"}}:
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end" data-tooltip="
-                {{#each rollData.mods}}
-                  {{this.source}} {{~#if this.key}}&nbsp;({{localize (cprFindConfigValue "activeEffectKeys" this.category this.key)}}){{~/if}}: {{this.value}}
-                  <br>
-                {{/each}}
-              ">
-              <input disabled name="mods" class="" type="text" data-dtype="String" value="{{#each rollData.mods}}{{this.value}}{{#unless @last}}, {{/unless}}{{/each}}">
-            </div>
-        </li>
+        {{!-- All applied modifier list partial --}}
+        {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
 
         {{#if (cprCompare (cprCompare rollData.rollCardExtraArgs.program.class "!==" "blackice") "&&" (cprCompare rollData.rollCardExtraArgs.program.class "!==" "demon"))}}
         <li class="item flexrow">
@@ -61,6 +53,11 @@
             </div>
         </li>
     </ol>
+
+    {{!-- Situational modifier list partial --}}
+    {{#if (cprCompare filteredMods.length ">" 0)}}
+      {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-situational-modifiers.hbs" this}}
+    {{/if}}
 
   {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 

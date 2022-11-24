@@ -45,7 +45,7 @@
                 {{localize "CPR.rolls.shouldRollCriticals"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="calculateCritical" class="item-checkbox" type="checkbox" data-target = "calculateCritical" data-dtype="Checkbox" {{#if rollData.calculateCritical}} checked {{/if}}>
+                <input name="calculateCritical" class="item-checkbox" type="checkbox" data-target = "calculateCritical" data-dtype="Checkbox" {{checked rollData.calculateCritical}}>
             </div>
         </li>
 

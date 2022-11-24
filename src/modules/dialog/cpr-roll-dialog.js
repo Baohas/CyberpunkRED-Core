@@ -4,6 +4,7 @@ import CPRMod from "../rolls/cpr-modifiers.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";
+import CPR from "../system/config.js";
 
 export class CPRRollDialog extends CPRDialog {
   constructor(rollData, actor, item, options) {
@@ -70,27 +71,32 @@ export class CPRRollDialog extends CPRDialog {
     if (this.prototypeChain.includes("CPRAttackRoll") && !this.prototypeChain.includes("CPRProgramAttackRoll")) {
       const attackRollBonusKeys = ["bonuses.universalAttack"];
 
-      if (this.item.system.isRanged) {
-        attackRollBonusKeys.push("bonuses.ranged");
+      if (this.item.type === "cyberdeck") {
+        attackRollBonusKeys.push("bonuses.zap");
       } else {
-        attackRollBonusKeys.push("bonuses.melee");
-      }
+        if (this.item.system.isRanged) {
+          attackRollBonusKeys.push("bonuses.ranged");
+        } else {
+          attackRollBonusKeys.push("bonuses.melee");
+        }
 
-      if (this.prototypeChain[0] === "CPRAttackRoll") {
-        attackRollBonusKeys.push("bonuses.singleShot");
-      } else if (this.prototypeChain.includes("CPRAimedAttackRoll")) {
-        attackRollBonusKeys.push("bonuses.singleShot");
-        attackRollBonusKeys.push("bonuses.aimedShot");
-      } else if (this.prototypeChain.includes("CPRAutofireRoll")) {
-        attackRollBonusKeys.push("bonuses.autofire");
-      } else if (this.prototypeChain.includes("CPRSuppressiveFireRoll")) {
-        attackRollBonusKeys.push("bonuses.suppressive");
-      }
+        if (this.prototypeChain[0] === "CPRAttackRoll") {
+          attackRollBonusKeys.push("bonuses.singleShot");
+        } else if (this.prototypeChain.includes("CPRAimedAttackRoll")) {
+          attackRollBonusKeys.push("bonuses.singleShot");
+          attackRollBonusKeys.push("bonuses.aimedShot");
+        } else if (this.prototypeChain.includes("CPRAutofireRoll")) {
+          attackRollBonusKeys.push("bonuses.autofire");
+        } else if (this.prototypeChain.includes("CPRSuppressiveFireRoll")) {
+          attackRollBonusKeys.push("bonuses.suppressive");
+        }
 
-      const upgradeMods = this.item.getAllUpgradeMods("attackmod").filter((m) => m.isSituational);
+        const upgradeMods = this.item.getAllUpgradeMods("attackmod").filter((m) => m.isSituational);
+        filteredMods.concat(upgradeMods);
+      }
 
       const attackMods = allSituationalMods.filter((m) => attackRollBonusKeys.includes(m.key));
-      filteredMods = filteredMods.concat(attackMods).concat(upgradeMods);
+      filteredMods = filteredMods.concat(attackMods);
     }
 
     if (this.prototypeChain.includes("CPRDamageRoll") && !this.prototypeChain.includes("CPRProgramDamageRoll")) {
@@ -107,18 +113,7 @@ export class CPRRollDialog extends CPRDialog {
 
     // Netrunner Effects.
     if (this.prototypeChain.includes("CPRInterfaceRoll")) {
-      const netrunnerRollBonusKeys = ["bonuses.universalAttack"];
-
-      if (this.prototypeChain[0] === "CPRAttackRoll") {
-        netrunnerRollBonusKeys.push("bonuses.singleShot");
-      } else if (this.prototypeChain.includes("CPRAimedAttackRoll")) {
-        netrunnerRollBonusKeys.push("bonuses.aimedShot");
-      } else if (this.prototypeChain.includes("CPRAutofireRoll")) {
-        netrunnerRollBonusKeys.push("bonuses.autofire");
-      } else if (this.prototypeChain.includes("CPRSuppressiveFireRoll")) {
-        netrunnerRollBonusKeys.push("bonuses.suppressive");
-      }
-
+      const netrunnerRollBonusKeys = Object.keys(CPR.activeEffectKeys.netrun).filter((k) => k !== "bonuses.brainDamageReduction");
       const netrunnerMods = allSituationalMods.filter((m) => netrunnerRollBonusKeys.includes(m.key));
       filteredMods = filteredMods.concat(netrunnerMods);
     }

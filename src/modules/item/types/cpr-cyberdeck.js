@@ -290,8 +290,6 @@ export default class CPRCyberdeckItem extends CPRItem {
       } else {
         cprRoll = new CPRRolls.CPRAttackRoll(
           "zap",
-          rollTitle,
-          0,
           "",
           0,
           roleName,
@@ -300,6 +298,7 @@ export default class CPRCyberdeckItem extends CPRItem {
         );
         cprRoll.rollCardExtraArgs.cyberdeck = this;
         cprRoll.rollCardExtraArgs.isZap = true;
+        cprRoll.setNetCombat(rollTitle);
       }
     } else {
       cprRoll = new CPRRolls.CPRInterfaceRoll(roleName, roleValue);

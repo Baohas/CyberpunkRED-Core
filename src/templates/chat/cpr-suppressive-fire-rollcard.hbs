@@ -46,14 +46,11 @@
             {{#if roleValue}}
               <div class="text-normal text-bold">{{localize roleName}} + {{roleValue}}</div>
             {{/if}}
-            {{#if universalBonusAttack}}
-              <div class="text-normal text-bold">{{localize "CPR.universalBonuses.attack"}} + {{universalBonusAttack}}
-            {{/if}}
 
             {{#if mods}}
               {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
-
             {{/if}}
+
             {{#if luck}}
             <div class="text-normal text-bold text-nowrap">{{localize "CPR.global.stats.luck"}}: {{luck}}</div>
             {{/if}}
