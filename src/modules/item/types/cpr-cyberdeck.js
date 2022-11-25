@@ -232,15 +232,18 @@ export default class CPRCyberdeckItem extends CPRItem {
     }
     cprRoll.rollTitle = pgmName;
 
+    const effects = actor.effects.contents;
+    const allMods = CPRMod.getAllModifiers(effects);
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+    const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage", "AeBonus");
+    const netrunnerMods = CPRMod.getRelevantMods(filteredMods, executionType, "AeBonus");
+    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName), "AeBonus");
+
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.
-    if (executionType !== "damage") {
-      const effects = actor.effects.contents;
-      const allMods = CPRMod.getAllModifiers(effects);
-      const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
-
-      const netrunnerMods = CPRMod.getRelevantMods(filteredMods, executionType, "AeBonus");
-      const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName), "AeBonus");
-
+    if (executionType === "damage") {
+      cprRoll.addMod(damageMods);
+    } else {
       cprRoll.addMod(netrunnerMods);
       cprRoll.addMod(roleMods);
       cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
@@ -291,15 +294,19 @@ export default class CPRCyberdeckItem extends CPRItem {
     // Set the roll title to the name of the interface action.
     cprRoll.rollTitle = rollTitle;
 
+    // Figure out all applicable modifiers.
+    const effects = actor.effects.contents;
+    const allMods = CPRMod.getAllModifiers(effects);
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+    const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage", "AeBonus");
+    const netrunnerMods = CPRMod.getRelevantMods(filteredMods, interfaceAbility, "AeBonus");
+    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName), "AeBonus");
+
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.
-    if (rollInfo.executionType !== "damage") {
-      const effects = actor.effects.contents;
-      const allMods = CPRMod.getAllModifiers(effects);
-      const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
-
-      const netrunnerMods = CPRMod.getRelevantMods(filteredMods, interfaceAbility, "AeBonus");
-      const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName), "AeBonus");
-
+    if (rollInfo.executionType === "damage") {
+      cprRoll.addMod(damageMods);
+    } else {
       cprRoll.addMod(netrunnerMods);
       cprRoll.addMod(roleMods);
       cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
