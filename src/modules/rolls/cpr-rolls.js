@@ -47,7 +47,7 @@ export class CPRRoll {
     // the complete result of the roll after applying everything
     this.resultTotal = 0;
     // path to the right dialog box to pop up before rolling
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-universal-roll-prompt.hbs`;
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-base-verify-roll-prompt.hbs`;
     // path to the roll card template for chat
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-base-rollcard.hbs`;
     // Any additional data we want to pass to the roll card
