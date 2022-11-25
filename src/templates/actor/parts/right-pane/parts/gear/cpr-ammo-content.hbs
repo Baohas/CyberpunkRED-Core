@@ -17,8 +17,8 @@
               value="{{cprNumberFormat item.system.amount}}"></div>
   </div>
   <div class="item-detail gear-data text-nowrap"
-    data-tooltip="{{{item.system.description.value}}}">
-   {{cprStripHtml item.system.description.value}}
+    data-tooltip="{{{cprStripSpan item.system.description.value}}}">
+    {{{cprStripHtml item.system.description.value}}}
   </div>
   <div class="item-detail gear-actions text-nowrap">
     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-actions.hbs" item}}

@@ -875,10 +875,18 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Truncate HTML to a specified length and add … to the end
+   * Strip all <span> tags from a string
+   */
+  Handlebars.registerHelper("cprStripSpan", (string) => {
+    const text = string.replace(/(<span[^>]*>?|<[^>]span*>?)/gm, "");
+    return text;
+  });
+
+  /**
+   * Strip all html tags from a string
    */
   Handlebars.registerHelper("cprStripHtml", (string) => {
-    const text = string.replace(/<[^>]+>/g, '');
+    const text = string.replace(/<[^>]*>?/gm, "");
     return text;
   });
 }
