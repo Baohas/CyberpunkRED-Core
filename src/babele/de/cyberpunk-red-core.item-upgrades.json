@@ -1,0 +1,133 @@
+{
+	"label": "Verbesserungen",
+	"entries": {
+		"Assault Rifle Drum Magazine": {
+			"name": "Trommelmagazin für Sturmgewehr",
+			"description": ""
+		},
+		"Assault Rifle Extended Magazine": {
+			"name": "Erweitertes Magazin für Sturmgewehr",
+			"description": ""
+		},
+		"Backup Drive": {
+			"name": "Datensicherungslaufwerk",
+			"description": "<p>Speichert Programme, die kein Schwarzes ICE sind, bevor sie zerstört werden. Diese Programme können von einem Netrunner als Fleisch-Aktion wieder installiert werden.</p>"
+		},
+		"Bayonet": {
+			"name": "Bajonett",
+			"description": ""
+		},
+		"DNA Lock": {
+			"name": "DNS-Schloss",
+			"description": "<p>Ein Cyberdeck mit einem DNS-Schloss. Ein verschlossenes Cyberdeck kann nur mit dem biometrischen Schlüssel oder einer Probe auf Elektronik/Sicherheitstechnik gegen SG 17 geöffnet werden.</p>"
+		},
+		"Grenade Launcher Drum Magazine": {
+			"name": "Trommelmagazin für Granatwerfer",
+			"description": ""
+		},
+		"Grenade Launcher Extended Magazine": {
+			"name": "Erweitertes Magazin für Granatwerfer",
+			"description": ""
+		},
+		"Grenade Launcher Underbarrel": {
+			"name": "Granatwerferunterlauf",
+			"description": ""
+		},
+		"Hardened Circuitry": {
+			"name": "Schaltkreisabschirmung",
+			"description": "<p>Ein Cyberdeck mit Schaltkreisabschirmung kann durch EMP-Effekte, wie Mikrowellenimpulse, oder die Effekte von Nicht-Schwarzes-ICE-Programmen nicht zeitweise abgeschaltet, außer Betrieb gesetzt oder zerstört werden.</p>"
+		},
+		"Heavy Pistol Drum Magazine": {
+			"name": "Trommelmagazin für Schwere Pistole",
+			"description": ""
+		},
+		"Heavy Pistol Extended Magazine": {
+			"name": "Erweitertes Magazin für Schwere Pistole",
+			"description": ""
+		},
+		"Heavy SMG Drum Magazine": {
+			"name": "Trommelmagazin für Schwere MP",
+			"description": ""
+		},
+		"Heavy SMG Extended Magazine": {
+			"name": "Erweitertes Magazin für Schwere MP",
+			"description": ""
+		},
+		"Infrared Nightvision Scope": {
+			"name": "Infrarot-Nachtsicht-Zielfernrohr",
+			"description": "<p>Reduziert die Mali auf 0, denen du üblicherweise unterliegst wenn du auf ein Ziel schießt, das teilweise durch Dunkelheit, Rauch, Nebel und so weiter verdeckt ist.</p>"
+		},
+		"Insulated Wiring": {
+			"name": "Kabelisolierung",
+			"description": "<p>Ein Cyberdeck mit Kabelisolierung kann als Folge eines Programmeffektes kein Feuer fangen oder die Kleidung des Anwenders in Brand stecken.</p>"
+		},
+		"KRASH Barrier": {
+			"name": "KRASH-Barriere",
+			"description": "<p>Ein Cyberdeck mit einer KRASH-Barriere ist immun gegenüber sämtlichen Programmeffekten, die einen Netrunner zwingen, sich sicher oder unsicher auszuklinken.</p>"
+		},
+		"Medium Pistol Drum Magazine": {
+			"name": "Trommelmagazin für Mittelschwere Pistole",
+			"description": ""
+		},
+		"Medium Pistol Extended Magazine": {
+			"name": "Erweitertes Magazin für Mittelschwere Pistole",
+			"description": ""
+		},
+		"Range Upgrade": {
+			"name": "Reichweitenverbesserung",
+			"description": "<p>Ein Cyberdeck mit einer Reichweitenaufrüstung kann sich mit einem Zugangspunkt verbinden, der bis zu 8 Meter entfernt ist.</p>"
+		},
+		"Rocket Launcher Drum Magazine": {
+			"name": "Trommelmagazin für Raketenwerfer",
+			"description": ""
+		},
+		"Rocket Launcher Extended Magazine": {
+			"name": "Erweitertes Magazin für Raketenwerfer",
+			"description": ""
+		},
+		"SMG Drum Magazine": {
+			"name": "Trommelmagazin für MP",
+			"description": ""
+		},
+		"SMG Extended Magazine": {
+			"name": "Erweitertes Magazin für MP",
+			"description": ""
+		},
+		"Shotgun Drum Magazine": {
+			"name": "Trommelmagazin für Flinte",
+			"description": ""
+		},
+		"Shotgun Extended Magazine": {
+			"name": "Erweitertes Magazin für Flinte",
+			"description": ""
+		},
+		"Shotgun Underbarrel": {
+			"name": "Flintenunterlauf",
+			"description": ""
+		},
+		"Smartgun Link": {
+			"name": "Smartgun-Verbindung",
+			"description": "<p>Verwandelt die Waffe in eine \"Smartgun\". Beachte alle Regeln auf S. 344, bevor du sie benutzt.</p>"
+		},
+		"Sniper Rifle Drum Magazine": {
+			"name": "Trommelmagazin für Schwarfschützengewehr",
+			"description": ""
+		},
+		"Sniper Rifle Extended Magazine": {
+			"name": "Erweitertes Magazin für Scharfschützengewehr",
+			"description": ""
+		},
+		"Sniping Scope": {
+			"name": "Scharfschützen-Zielfernrohr",
+			"description": "<p>Wenn du durch dieses Zielfernrohr zielst, kannst du Einzelheiten auf bis zu 800 Meter erkennen. Wenn du ein Ziel auf eine Entfernung von 51 Metern oder höher angreifst, kannst du mit dem Einzelschussmodus der Waffe oder mit einem Gezielten Schuss deinem Wurf +1 hinzuaddieren.</p>"
+		},
+		"Very Heavy Pistol Drum Magazine": {
+			"name": "Trommelmagazin für Sehr Schwere Pistole",
+			"description": ""
+		},
+		"Very Heavy Pistol Extended Magazine": {
+			"name": "Erweitertes Magazin für Sehr Schwere Pistole",
+			"description": ""
+		}
+	}
+}
