@@ -1,0 +1,381 @@
+{
+    "entries": {
+        "Air Pistol": {
+            "description": "<p>An Exotic Medium Pistol. Fires Paintballs. Refer to the full item description on pg. 347.&nbsp;</p>",
+            "name": "Air Pistol"
+        },
+        "Assault Rifle": {
+            "description": "<p>A standard-issue assault rifle. </p>",
+            "name": "Assault Rifle"
+        },
+        "Assault Rifle (Excellent)": {
+            "description": "<p>A standard-issue assault rifle. +1 to Attack.</p>",
+            "name": "Assault Rifle (Excellent)"
+        },
+        "Assault Rifle (Poor)": {
+            "description": "<p>A standard-issue assault rifle.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+            "name": "Assault Rifle (Poor)"
+        },
+        "Baseball Bat": {
+            "description": "<p>A firmly weighted bat. A favourite weapon of the Baseball Furies. </p>",
+            "name": "Baseball Bat"
+        },
+        "Baseball Bat (Excellent)": {
+            "description": "<p>A firmly weighted bat. A favourite weapon of the Baseball Furies. +1 to Attack.</p>",
+            "name": "Baseball Bat (Excellent)"
+        },
+        "Baseball Bat (Poor)": {
+            "description": "<p>A firmly weighted bat. A favourite weapon of the Baseball Furies.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Baseball Bat (Poor)"
+        },
+        "Big Knucks": {
+            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
+            "name": "Big Knucks"
+        },
+        "Bow": {
+            "description": "<p>A revitalized bow that must be reloaded after every attack. </p>",
+            "name": "Bow"
+        },
+        "Bow (Excellent)": {
+            "description": "<p>A revitalized bow that must be reloaded after every attack. +1 to Attack.</p>",
+            "name": "Bow (Excellent)"
+        },
+        "Bow (Poor)": {
+            "description": "<p>A revitalized bow that must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+            "name": "Bow (Poor)"
+        },
+        "Chainsaw": {
+            "description": "<p>A portable, refuelable saw that runs on CHOOH2. Lasts about 2-3 hours on one tank. </p>",
+            "name": "Chainsaw"
+        },
+        "Chainsaw (Excellent)": {
+            "description": "<p>A portable, refuelable saw that runs on CHOOH2. Lasts about 2-3 hours on one tank.  +1 to Attack.</p>",
+            "name": "Chainsaw (Excellent)"
+        },
+        "Chainsaw (Poor)": {
+            "description": "<p>A portable, refuelable saw that runs on CHOOH2. Lasts about 2-3 hours on one tank.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Chainsaw (Poor)"
+        },
+        "Combat Knife": {
+            "description": "<p>A knife fit for the streets.</p>",
+            "name": "Combat Knife"
+        },
+        "Combat Knife (Excellent)": {
+            "description": "<p>A knife fit for the streets. +1 to Attack.</p>",
+            "name": "Combat Knife (Excellent)"
+        },
+        "Combat Knife (Poor)": {
+            "description": "<p>A knife fit for the streets. If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Combat Knife (Poor)"
+        },
+        "Constitution Arms Hurricane Assault Weapon": {
+            "description": "<p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or higher (unless mounted). Refer to the full item description on pg. 348.</p>",
+            "name": "Constitution Arms Hurricane Assault Weapon"
+        },
+        "Crossbow": {
+            "description": "<p>A crossbow which must be reloaded after every attack. </p>",
+            "name": "Crossbow"
+        },
+        "Crossbow (Excellent)": {
+            "description": "<p>A crossbow which must be reloaded after every attack. +1 to Attack.</p>",
+            "name": "Crossbow (Excellent)"
+        },
+        "Crossbow (Poor)": {
+            "description": "<p>A crossbow which must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+            "name": "Crossbow (Poor)"
+        },
+        "Crowbar": {
+            "description": "<p>Useful as both a tool and a weapon. A rod of iron with split wedges on the ends. </p>",
+            "name": "Crowbar"
+        },
+        "Crowbar (Excellent)": {
+            "description": "<p>Useful as both a tool and a weapon. A rod of iron with split wedges on the ends.  +1 to Attack.</p>",
+            "name": "Crowbar (Excellent)"
+        },
+        "Crowbar (Poor)": {
+            "description": "<p>Useful as both a tool and a weapon. A rod of iron with split wedges on the ends.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Crowbar (Poor)"
+        },
+        "Cybersnake": {
+            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
+            "name": "Cybersnake"
+        },
+        "Dartgun": {
+            "description": "<p>An Exotic Very Heavy Pistol. Refer to the full item description on pg. 348.</p>",
+            "name": "Dartgun"
+        },
+        "Flamethrower": {
+            "description": "<p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full item description on pg. 348.&nbsp;</p>",
+            "name": "Flamethrower"
+        },
+        "Grenade Launcher": {
+            "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. </p>",
+            "name": "Grenade Launcher"
+        },
+        "Grenade Launcher (Excellent)": {
+            "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. +1 to Attack.</p>",
+            "name": "Grenade Launcher (Excellent)"
+        },
+        "Grenade Launcher (Poor)": {
+            "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+            "name": "Grenade Launcher (Poor)"
+        },
+        "Heavy Pistol": {
+            "description": "<p>A concealable, heavy pistol. </p>",
+            "name": "Heavy Pistol"
+        },
+        "Heavy Pistol (Excellent)": {
+            "description": "<p>A concealable, heavy pistol. +1 to Attack.</p>",
+            "name": "Heavy Pistol (Excellent)"
+        },
+        "Heavy Pistol (Poor)": {
+            "description": "<p>A concealable, heavy pistol.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+            "name": "Heavy Pistol (Poor)"
+        },
+        "Heavy SMG": {
+            "description": "<p>A heavy SMG. Due to its size it can't be concealed. </p>",
+            "name": "Heavy SMG"
+        },
+        "Heavy SMG (Excellent)": {
+            "description": "<p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>",
+            "name": "Heavy SMG (Excellent)"
+        },
+        "Heavy SMG (Poor)": {
+            "description": "<p>A heavy SMG. Due to its size it can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+            "name": "Heavy SMG (Poor)"
+        },
+        "Helicopter Blades": {
+            "description": "<p>Taken from a derelict aircraft, these blades are capable of slicing most things easily. </p>",
+            "name": "Helicopter Blades"
+        },
+        "Helicopter Blades (Excellent)": {
+            "description": "<p>Taken from a derelict aircraft, these blades are capable of slicing most things easily.  +1 to Attack.</p>",
+            "name": "Helicopter Blades (Excellent)"
+        },
+        "Helicopter Blades (Poor)": {
+            "description": "<p>Taken from a derelict aircraft, these blades are capable of slicing most things easily.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Helicopter Blades (Poor)"
+        },
+        "Kendachi Mono-Three": {
+            "description": "<p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears as a high-tech katana. Refer to the full item description on pg. 348.</p>",
+            "name": "Kendachi Mono-Three"
+        },
+        "Lead Pipe": {
+            "description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once. </p>",
+            "name": "Lead Pipe"
+        },
+        "Lead Pipe (Excellent)": {
+            "description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once.  +1 to Attack.</p>",
+            "name": "Lead Pipe (Excellent)"
+        },
+        "Lead Pipe (Poor)": {
+            "description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Lead Pipe (Poor)"
+        },
+        "Machete": {
+            "description": "<p>A long-bladed knife with a variety of uses. Known to be a favourite to some gangs of Night City. </p>",
+            "name": "Machete"
+        },
+        "Machete (Excellent)": {
+            "description": "<p>A long-bladed knife with a variety of uses. Known to be a favourite to some gangs  of Night City.  +1 to Attack.</p>",
+            "name": "Machete (Excellent)"
+        },
+        "Machete (Poor)": {
+            "description": "<p>A long-bladed knife with a variety of uses. Known to be a favourite to some gangs  of Night City.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Machete (Poor)"
+        },
+        "Malorian Arms 3516": {
+            "description": "<p>An Exotic, Excellent Quality Very Heavy Pistol. You must connect to this device with a Smartgun Link. Refer to the full item description on pg. 348.</p>",
+            "name": "Malorian Arms 3516"
+        },
+        "Martial Arts": {
+            "description": "<p>Throwing hands, does ignore half armor.</p>",
+            "name": "Martial Arts"
+        },
+        "Medium Pistol": {
+            "description": "<p>A concealable, medium-sized pistol. </p>",
+            "name": "Medium Pistol"
+        },
+        "Medium Pistol (Excellent)": {
+            "description": "<p>A concealable, medium-sized pistol. +1 to Attack.</p>",
+            "name": "Medium Pistol (Excellent)"
+        },
+        "Medium Pistol (Poor)": {
+            "description": "<p>A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+            "name": "Medium Pistol (Poor)"
+        },
+        "Microwaver": {
+            "description": "<p>An Exotic Very Heavy Pistol. Can cause cyberware or electrical components to be rendered inoperable for a minute. Refer to the full item description on pg. 348.</p>",
+            "name": "Microwaver"
+        },
+        "Militech \"Cowboy\" U-56 Grenade Launcher": {
+            "description": "<p>An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>",
+            "name": "Militech \"Cowboy\" U-56 Grenade Launcher"
+        },
+        "Naginata": {
+            "description": "<p>A japanese wooden pole with a curved blade on one side. Favoured by Arasaka tactical teams for close engagements. </p>",
+            "name": "Naginata"
+        },
+        "Naginata (Excellent)": {
+            "description": "<p>A japanese wooden pole with a curved blade on one side. Favoured by Arasaka tactical teams for close engagements.  +1 to Attack.</p>",
+            "name": "Naginata (Excellent)"
+        },
+        "Naginata (Poor)": {
+            "description": "<p>A japanese wooden pole with a curved blade on one side. Favoured by Arasaka tactical teams for close engagements.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Naginata (Poor)"
+        },
+        "Rhinemetall EMG-86 Railgun": {
+            "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.&nbsp;</p>",
+            "name": "Rhinemetall EMG-86 Railgun"
+        },
+        "Rippers": {
+            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
+            "name": "Rippers"
+        },
+        "Rocket Launcher": {
+            "description": "<p>Bring out the big guns. This rocket launcher will do some damage. </p>",
+            "name": "Rocket Launcher"
+        },
+        "Rocket Launcher (Excellent)": {
+            "description": "<p>Bring out the big guns. This rocket launcher will do some damage. +1 to Attack.</p>",
+            "name": "Rocket Launcher (Excellent)"
+        },
+        "Rocket Launcher (Poor)": {
+            "description": "<p>Bring out the big guns. This rocket launcher will do some damage.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+            "name": "Rocket Launcher (Poor)"
+        },
+        "SMG": {
+            "description": "<p>A concealable SMG. </p>",
+            "name": "SMG"
+        },
+        "SMG (Excellent)": {
+            "description": "<p>A concealable SMG. +1 to Attack.</p>",
+            "name": "SMG (Excellent)"
+        },
+        "SMG (Poor)": {
+            "description": "<p>A concealable SMG.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+            "name": "SMG (Poor)"
+        },
+        "Shotgun": {
+            "description": "<p>An all-purpose shotgun. </p>",
+            "name": "Shotgun"
+        },
+        "Shotgun (Excellent)": {
+            "description": "<p>An all-purpose shotgun. +1 to Attack.</p>",
+            "name": "Shotgun (Excellent)"
+        },
+        "Shotgun (Poor)": {
+            "description": "<p>An all-purpose shotgun.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+            "name": "Shotgun (Poor)"
+        },
+        "Shrieker": {
+            "description": "<p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear critical injuries. The target must beat a DV15 Resist Torture/Drugs Check or suffer the critical injury. Refer to the full item description on pg. 349.</p>",
+            "name": "Shrieker"
+        },
+        "Sledgehammer": {
+            "description": "<p>A large mallet-like object with a flat metal head which distributes impacted force over a wide area. </p>",
+            "name": "Sledgehammer"
+        },
+        "Sledgehammer (Excellent)": {
+            "description": "<p>A large mallet-like object with a flat metal head which distributes impacted force over a wide area.  +1 to Attack.</p>",
+            "name": "Sledgehammer (Excellent)"
+        },
+        "Sledgehammer (Poor)": {
+            "description": "<p>A large mallet-like object with a flat metal head which distributes impacted force over a wide area.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Sledgehammer (Poor)"
+        },
+        "Slice N' Dice": {
+            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
+            "name": "Slice N' Dice"
+        },
+        "Sniper Rifle": {
+            "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. </p>",
+            "name": "Sniper Rifle"
+        },
+        "Sniper Rifle (Excellent)": {
+            "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.</p>",
+            "name": "Sniper Rifle (Excellent)"
+        },
+        "Sniper Rifle (Poor)": {
+            "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+            "name": "Sniper Rifle (Poor)"
+        },
+        "Spiked Bat": {
+            "description": "<p>An advancement over a regular bat. A number of nails have been hammered through towards the tip. </p>",
+            "name": "Spiked Bat"
+        },
+        "Spiked Bat (Excellent)": {
+            "description": "<p>An advancement over a regular bat. A number of nails have been hammered through towards the tip.  +1 to Attack.</p>",
+            "name": "Spiked Bat (Excellent)"
+        },
+        "Spiked Bat (Poor)": {
+            "description": "<p>An advancement over a regular bat. A number of nails have been hammered through towards the tip.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Spiked Bat (Poor)"
+        },
+        "Stun Baton": {
+            "description": "<p>An Exotic, One-handed Medium Melee Weapon. Target is knocked unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor. Refer to the full item description on pg. 349.</p>",
+            "name": "Stun Baton"
+        },
+        "Stun Gun": {
+            "description": "<p>An Exotic Heavy Pistol.&nbsp; Target is knocked unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor. Refer to the full item description on pg. 349.</p>",
+            "name": "Stun Gun"
+        },
+        "Sword": {
+            "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting. </p>",
+            "name": "Sword"
+        },
+        "Sword (Excellent)": {
+            "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting.  +1 to Attack.</p>",
+            "name": "Sword (Excellent)"
+        },
+        "Sword (Poor)": {
+            "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Sword (Poor)"
+        },
+        "Talon Foot": {
+            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
+            "name": "Talon Foot"
+        },
+        "Tomahawk": {
+            "description": "<p>A light axe that can be thrown. </p>",
+            "name": "Tomahawk"
+        },
+        "Tomahawk (Excellent)": {
+            "description": "<p>A light axe that can be thrown. +1 to Attack.</p>",
+            "name": "Tomahawk (Excellent)"
+        },
+        "Tomahawk (Poor)": {
+            "description": "<p>A light axe that can be thrown.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Tomahawk (Poor)"
+        },
+        "Tsunami Arms Helix": {
+            "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.&nbsp;</p>",
+            "name": "Tsunami Arms Helix"
+        },
+        "Unarmed": {
+            "description": "<p>Throwing hands, does not ignore half armor.</p>",
+            "name": "Unarmed"
+        },
+        "Vampyres": {
+            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
+            "name": "Vampyres"
+        },
+        "Very Heavy Pistol": {
+            "description": "<p>A very heavy pistol. It can't be concealed. </p>",
+            "name": "Very Heavy Pistol"
+        },
+        "Very Heavy Pistol (Excellent)": {
+            "description": "<p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>",
+            "name": "Very Heavy Pistol (Excellent)"
+        },
+        "Very Heavy Pistol (Poor)": {
+            "description": "<p>A very heavy pistol. It can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+            "name": "Very Heavy Pistol (Poor)"
+        },
+        "Wolvers": {
+            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
+            "name": "Wolvers"
+        }
+    },
+    "label": "Weapons"
+}
