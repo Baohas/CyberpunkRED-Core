@@ -1,0 +1,133 @@
+{
+	"label": "Улучшения",
+	"entries": {
+		"Assault Rifle Drum Magazine": {
+			"name": "Барабанный магазин для штурмовой винтовки",
+			"description": ""
+		},
+		"Assault Rifle Extended Magazine": {
+			"name": "Увеличенный магазин для штурмовой винтовки",
+			"description": ""
+		},
+		"Backup Drive": {
+			"name": "Диск с бэкапом",
+			"description": "<p>Защищает программы, не являющуюся чёрным льдом, от уничтожения. После срабатывания программы можно переустановить мясным действием.&nbsp;</p>"
+		},
+		"Bayonet": {
+			"name": "Штык-нож",
+			"description": ""
+		},
+		"DNA Lock": {
+			"name": "Блокировка на ДНК",
+			"description": "<p>Биометрическая защита для кибердеки. Для взлома необходима проверка знания электроники/безопасности СЛ17.&nbsp;</p>"
+		},
+		"Grenade Launcher Drum Magazine": {
+			"name": "Барабанный магазин для гранатомёта",
+			"description": ""
+		},
+		"Grenade Launcher Extended Magazine": {
+			"name": "Увеличенный магазин для гранатомёта",
+			"description": ""
+		},
+		"Grenade Launcher Underbarrel": {
+			"name": "Подствольный гранатомёт",
+			"description": ""
+		},
+		"Hardened Circuitry": {
+			"name": "Защищённые схемы",
+			"description": "<p>ЭМИ не может отключить или уничтожить кибердеку.&nbsp;</p>"
+		},
+		"Heavy Pistol Drum Magazine": {
+			"name": "Барабанный магазин для тяжёлого пистолета",
+			"description": ""
+		},
+		"Heavy Pistol Extended Magazine": {
+			"name": "Увеличенный магазин для тяжёлого пистолета",
+			"description": ""
+		},
+		"Heavy SMG Drum Magazine": {
+			"name": "Барабанный магазин для тяжёлого ПП",
+			"description": ""
+		},
+		"Heavy SMG Extended Magazine": {
+			"name": "Увеличенный магазин для тяжёлого ПП",
+			"description": ""
+		},
+		"Infrared Nightvision Scope": {
+			"name": "ИК прицел ночного видения",
+			"description": "<p>Снижает штрафы от стрельбы по целям в темноте, дыму/тумане до нуля.</p>"
+		},
+		"Insulated Wiring": {
+			"name": "Изолированная проводка",
+			"description": "<p>Кибердека и одежда носителя не могут загореться.&nbsp;</p>"
+		},
+		"KRASH Barrier": {
+			"name": "Барьер KRASH",
+			"description": "<p>Кибердека имеет имунитет к эффектам, что вынуждают нетраннера покинуть сеть (безопасно или нет).</p>"
+		},
+		"Medium Pistol Drum Magazine": {
+			"name": "Барабанный магазин для среднего пистолета",
+			"description": ""
+		},
+		"Medium Pistol Extended Magazine": {
+			"name": "Увеличенный магазин для среднего пистолета",
+			"description": ""
+		},
+		"Range Upgrade": {
+			"name": "Улучшение дальности",
+			"description": "<p>Кибердека может подключаться к точкам доступа с 8м/ярд (а не 6м/ярд).</p>"
+		},
+		"Rocket Launcher Drum Magazine": {
+			"name": "Барабанный магазин для ракетницы",
+			"description": ""
+		},
+		"Rocket Launcher Extended Magazine": {
+			"name": "Увеличенный магазин для ракетницы",
+			"description": ""
+		},
+		"SMG Drum Magazine": {
+			"name": "Барабанный магазин для ПП",
+			"description": ""
+		},
+		"SMG Extended Magazine": {
+			"name": "Увеличенный магазин для ПП",
+			"description": ""
+		},
+		"Shotgun Drum Magazine": {
+			"name": "Барабанный магазин для дробовика",
+			"description": ""
+		},
+		"Shotgun Extended Magazine": {
+			"name": "Увеличенный магазин для дробовика",
+			"description": ""
+		},
+		"Shotgun Underbarrel": {
+			"name": "Подствольный дробовик",
+			"description": ""
+		},
+		"Smartgun Link": {
+			"name": "Смартлинк",
+			"description": "<p>Делает оружие \"умным\". Прочитайте правила на стр. 344 Core Book'а перед использованием.&nbsp;</p>"
+		},
+		"Sniper Rifle Drum Magazine": {
+			"name": "Барабанный магазин для снайперской винтовки",
+			"description": ""
+		},
+		"Sniper Rifle Extended Magazine": {
+			"name": "Увеличенный магазин для снайперской винтовки",
+			"description": ""
+		},
+		"Sniping Scope": {
+			"name": "Снайперский прицел",
+			"description": "<p>Позволяет видеть детальную картину на дистанциях до 800м/ярд. +1 к одиночному или прицельному выстрелу по целям на дистанции свыше 51м/ярд.&nbsp;</p>"
+		},
+		"Very Heavy Pistol Drum Magazine": {
+			"name": "Барабанный магазин для очень тяжёлого пистолета",
+			"description": ""
+		},
+		"Very Heavy Pistol Extended Magazine": {
+			"name": "Увеличенный магазин для очень тяжёлого пистолета",
+			"description": ""
+		}
+	}
+}
