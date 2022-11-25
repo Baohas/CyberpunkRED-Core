@@ -1,0 +1,245 @@
+{
+	"label": "Ausrüstung",
+	"entries": {
+		"Agent": {
+			"name": "Agent",
+			"description": "<p>Von selbstadaptiver KI betriebenes Smartphone. +2 für Datensuche. +2 für Garderobe und Stil unter bestimmten Umständen. Weitere Informationen auf Seite 352.</p>"
+		},
+		"Airhypo": {
+			"name": "Lufthypo",
+			"description": "<p>Für leichte Arzneimitteleinnahme.</p>"
+		},
+		"Anti-Smog Breathing Mask": {
+			"name": "Anti-Smog-Atemmaske",
+			"description": "<p>Nützlich zum Herausfiltern von aerogenen Toxinen.</p>"
+		},
+		"Audio Recorder": {
+			"name": "Audiorekorder",
+			"description": "<p>Speichert bis zu 24 Stunden Klangaufnahmen auf einen einzigen Speicherchip.</p>"
+		},
+		"Auto Level Dampening Ear Protectors": {
+			"name": "Automatische Lärmdämmung",
+			"description": "<p>Kompakter Hörschutz. Macht den Anwender immun gegenüber Effekten durch gefährlich laute Geräusche.</p>"
+		},
+		"Binoculars": {
+			"name": "Feldstecher",
+			"description": "<p>Gut fürs den Blick in die Ferne. Vergrößerung x2 oder x3.</p>"
+		},
+		"Black Lace": {
+			"name": "Schwarze Spitze",
+			"description": "<p>Hält 24 Stunden an.<br />\nAnwender verliert nach der Einnahme einer Dosis 2W6 Menschlichkeit, die wiedergewonnen wird, sofern die Nebenwirkung der Schwarzen Spitze den Anwender nicht beeinträchtigt.<br />\nWährend der Hauptwirkungsdauer ignoriert der Anwender die Effekte des Verwundungszustands Schwer Verwundet.<br /><br />\nNebenwirkung (SG 17):<br />\nWenn der Effekt nachlässt, würfelt der Anwender auf Folter/Drogen widerstehen gegen den SG der Nebenwirkung. Bei Scheitern tritt die Nebenwirkung, welche im Regelwerk zu finden ist, ein.</p>"
+		},
+		"Blue Glass": {
+			"name": "Blauglas",
+			"description": "<p>Hält 4 Stunden an.<br />\nWährend die Hauptwirkungsdauer anhält, wird der SL dir gelegentlich sagen, dass du „geflasht“ wirst, was heißt, dass du in kurzen, starken Schüben Halluzinationen von bunten Farben bekommst. Solange du dich in diesem Zustand befindest,\nkannst du in einem Zug keine Aktion durchführen.<br /><br />\nNebenwirkung (SG 15)<br />\nWenn der Effekt nachlässt, würfelt der Anwender auf Folter/Drogen widerstehen gegen den SG der Nebenwirkung. Bei Scheitern tritt die Nebenwirkung, welche im Regelwerk zu finden ist, ein.</p>"
+		},
+		"Boost": {
+			"name": "Boost",
+			"description": "<p>Hält 24 Stunden an.<br />\nWährend der Hauptwirkungsdauer steigt die INT des Anwenders um 2 Punkte. Dadurch kann deine INT über 8 steigen.<br /><br />\nNebenwirkung (SG 17):<br />\nWenn der Effekt nachlässt, würfelt der Anwender auf Folter/Drogen widerstehen gegen den SG der Nebenwirkung. Bei Scheitern tritt die Nebenwirkung, welche im Regelwerk zu finden ist, ein.</p>"
+		},
+		"Braindance Viewer": {
+			"name": "Braindance-Viewer",
+			"description": "<p>Erlaubt Betrachtern die Braindance-Erfahrung.</p>"
+		},
+		"Bug Detector": {
+			"name": "Wanzen­­finder",
+			"description": "<p>Piepst im 2m-Umkreis um ein Abhörgerät.</p>"
+		},
+		"Carryall": {
+			"name": "Reisetasche",
+			"description": "<p>Tasche zum Tragen von Zeug.</p>"
+		},
+		"Chemical Analyzer": {
+			"name": "Chemisches Analysegerät",
+			"description": "<p>Kann chemische Stoffzusammensetzungen mit einer Probendatenbank abgleichen.</p>"
+		},
+		"Computer": {
+			"name": "Computer",
+			"description": "<p>Laptop oder Desktop-Computer.</p>"
+		},
+		"Cryopump": {
+			"name": "Cryopumpe",
+			"description": "<p>Eine Cryopumpe ist ein aktenkoffergroßes Werkzeug, das einen mit einer leistungsstarken Pumpe verbundenen Leichensack enthält. Sobald ein freiwilliges/unfreiwilliges Ziel als Aktion in den Sack gepackt und mit der Pumpe verbunden worden ist, treibt die Pumpe eine hyperkalte chemische Flüssigkeit in den Sack, wobei das Ziel in Stasis versetzt wird.</p>"
+		},
+		"Cryotank": {
+			"name": "Cryotank",
+			"description": "<p>Ein Cryotank ist ein menschengroßer Behälter, der einen voll entwickelten Erwachsenen fassen kann. Während die Person im Cryotank liegt, heilt er mit der doppelten normalen Geschwindigkeit.</p>"
+		},
+		"Cyberdeck": {
+			"name": "Cyberdeck",
+			"description": "<p>Einfaches Deck fürs Netrunning. 7 Slots. Weitere Informationen auf Seite 353.</p>"
+		},
+		"Disposable Cell Phone": {
+			"name": "Wegwerfhandy",
+			"description": "<p>Für Anrufe. Kann man wegwerfen, wenn es sein muss.</p>"
+		},
+		"Drum Synthesizer": {
+			"name": "Synth-Schlagzeug",
+			"description": "<p>Kann fast jede Art von Schlagzeug simulieren. Benötigt Verstärker.</p>"
+		},
+		"Duct Tape": {
+			"name": "Klebeband",
+			"description": "<p>Erhältlich in vielen Farben, einschließlich der Nachtleuchtenden.</p>"
+		},
+		"Electric Guitar/Other Instrument": {
+			"name": "Elektrische Gitarre/Anderes Instrument",
+			"description": "<p>Gut fürs Musikmachen. Elektrische Versionen benötigen einen Verstärker.</p>"
+		},
+		"Excellent Quality Cyberdeck": {
+			"name": "Cyberdeck von Aus­gezeichneter Qualität",
+			"description": "<p>Excellentes Deck fürs Netrunning. 9 Slots. Weitere Informationen auf Seite 353.</p>"
+		},
+		"Flashlight": {
+			"name": "Taschenlampe",
+			"description": "<p>100 m weiter Lichtstrahl. Hält nach Aufladung 10 Stunden.</p>"
+		},
+		"Food Stick": {
+			"name": "Kaustange",
+			"description": "<p>Eine furchtbare Mahlzeit in Riegelform.</p>"
+		},
+		"Glow Paint": {
+			"name": "Leuchtfarbe",
+			"description": "<p>Sprühfarbe, die im Dunkeln leuchtet.</p>"
+		},
+		"Glow Stick": {
+			"name": "Leuchtstab",
+			"description": "<p>Beleuchtet bis zu 4 m. Hält 10 Stunden.</p>"
+		},
+		"Grapple Gun": {
+			"name": "Halteseilkanone",
+			"description": "<p>Verschießt ein Halteseil bis zu 30 m. Kann nicht als Waffe eingesetzt werden.</p>"
+		},
+		"Handcuffs": {
+			"name": "Handschellen",
+			"description": "<p>Fesseln. Benötigt KRA >10, um sie zu zerreißen.</p>"
+		},
+		"Homing Tracer": {
+			"name": "Peilsucher",
+			"description": "<p>Kann einer verbundenen Markierung auf 1,5 km folgen.</p>"
+		},
+		"Inflatable Bed & Sleep-bag": {
+			"name": "Luftbett und\nSchlafsack",
+			"description": "<p>Selbstaufblasbare Matratze mit Schlafsack.</p>"
+		},
+		"Kibble Pack": {
+			"name": "Kibble-Packung",
+			"description": "<p>Eine Portion Kibble.</p>"
+		},
+		"Linear Frame β (Beta)": {
+			"name": "Lineartragwerk β (Beta)",
+			"description": "<p>Motorisch betriebenes Exo­­skelett, das dem Anwender außergewöhnliche Stärke verleiht.<br/>\nWährend er ins Tragwerk eingeklinkt ist, erhöht sich die KRA des Anwenders auf 14. Diese erhöhte KRA erhöht nicht die TP des Anwenders und hat keinen Einfluss auf die Traumaprobe. Benötigt 1 Installation von Interface-Buchsen für die Anwendung.</p>"
+		},
+		"Linear Frame ∑ (Sigma)": {
+			"name": "Lineartragwerk (Sigma)",
+			"description": "<p>Motorisch betriebenes Exo­­skelett, das dem Anwender außergewöhnliche Stärke verleiht.<br/>\nWährend er ins Tragwerk eingeklinkt ist, erhöht sich die KRA des Anwenders auf 12. Diese erhöhte KRA erhöht nicht die TP des Anwenders und hat keinen Einfluss auf die Traumaprobe. Benötigt 1 Installation von Interface-Buchsen für die Anwendung.</p>"
+		},
+		"Lock Picking Set": {
+			"name": "Satz Dietriche",
+			"description": "<p>Zum Knacken mechanischer Schlösser.</p>"
+		},
+		"MRE": {
+			"name": "EPA",
+			"description": "<p>Selbsterwärmende Essensration in einem Plastikfolienbeutel.</p>"
+		},
+		"Medscanner": {
+			"name": "MediScanner",
+			"description": "<p>Der Anwender addiert +2 zur Fertigkeit Erste Hilfe und Notfallmedizin hinzu. Dieser Bonus ist nicht kumulativ mit sich selbst.</p>"
+		},
+		"Medtech Bag": {
+			"name": "MediTech-Tasche",
+			"description": "<p>Vollständiger medizinischer Werkzeugsatz in einer Tasche.</p>"
+		},
+		"Memory Chip": {
+			"name": "Memory Chip",
+			"description": "<p>Standarddatenspeicher.</p>"
+		},
+		"Personal CarePak": {
+			"name": "Persönliches CarePak",
+			"description": "<p>Alles, was du brauchst, um dich zu waschen.</p>"
+		},
+		"Pocket Amplifier": {
+			"name": "Taschenverstärker",
+			"description": "<p>Kann bis zu zwei Instrumente unterstützen. Hält 6 Stunden pro Aufladung.</p>"
+		},
+		"Poor Quality Cyberdeck": {
+			"name": "Cyberdeck von Schlechter Qualität",
+			"description": "<p>Schlechtes Deck fürs Netrunning. 5 Slots. Weitere Informationen auf Seite 353.</p>"
+		},
+		"Radar Detector": {
+			"name": "Radar­ detektor",
+			"description": "<p>Piepst im 100m-Umkreis um einen Radarstrahl.</p>"
+		},
+		"Radiation Suit": {
+			"name": "Strahlenschutzanzug",
+			"description": "<p>Schützt vor Strahlung.</p>"
+		},
+		"Radio Communicator": {
+			"name": "Funk­kom­munikator",
+			"description": "<p>Ohrhörer. Reichweite: 1,5 km.</p>"
+		},
+		"Radio Scanner/Music Player": {
+			"name": "Sendersucher/Musik­ wiedergabe",
+			"description": "<p>Spiele die heißeste Musik ab und schalte auf einen Radiosender im Umkreis von 1,5 km.</p>"
+		},
+		"Road Flare": {
+			"name": "Straßenleuchtfackel",
+			"description": "<p>Beleuchtet einen Bereich von 100 m für 1 Stunde.</p>"
+		},
+		"Rope (60m/yd)": {
+			"name": "Seil (60 m)",
+			"description": "<p>Nylonseil.</p>"
+		},
+		"Scrambler/Descrambler": {
+			"name": "Störer/Entstörer",
+			"description": "<p>Stört/entstört Kommunikationstechnik.</p>"
+		},
+		"Smart Glasses": {
+			"name": "Smart-Brille",
+			"description": "<p>Technologisch verbesserte Brille. Hat 2 Slots für Cyberoptik-Optionen.</p>"
+		},
+		"Smash": {
+			"name": "Smash",
+			"description": "<p>Hält 4 Stunden an.<br />\nWährend der Hauptwirkungsdauer fühlt sich der Anwender euphorisch, locker, glücklich und bereit für eine Party. Der Anwender erhält +2 auf die folgenden Fertigkeiten: Tanzen, Kontorsionist, Konversation, Menschenkenntnis, Überreden und Schauspiel.<br /><br />\nNebenwirkung (SG 15)<br />\nWenn der Effekt nachlässt, würfelt der Anwender auf Folter/Drogen widerstehen gegen den SG der Nebenwirkung. Bei Scheitern tritt die Nebenwirkung, welche im Regelwerk zu finden ist, ein.</p>"
+		},
+		"Synthcoke": {
+			"name": "Synthcoke",
+			"description": "<p>Hält 4 Stunden an.<br />\nWährend der Hauptwirkungsdauer steigen die REF des Anwenders um 1 Punkt. Dadurch können deine REF über 8 steigen. Darüber hinaus bist du anfällig für paranoide Gedanken.<br /><br />\nNebenwirkung (SG 15):<br />\nWenn der Effekt nachlässt, würfelt der Anwender auf Folter/Drogen widerstehen gegen den SG der Nebenwirkung. Bei Scheitern tritt die Nebenwirkung, welche im Regelwerk zu finden ist, ein.</p>"
+		},
+		"Tech Bag": {
+			"name": "Tech-Tasche",
+			"description": "<p>Kleine Tasche mit Werkzeuge zum Reparieren von Sachen.</p>"
+		},
+		"Techscanner": {
+			"name": "TechScanner",
+			"description": "<p>Hilft bei der Diagnose kaputter Technologie. +2 für mehrere TCH-basierte Fertigkeiten.</p>"
+		},
+		"Techtool": {
+			"name": "Techwerkzeug",
+			"description": "<p>Ein Multifunktionswerkzeug mit allem Drum und Dran.</p>"
+		},
+		"Tent and Camping Equipment": {
+			"name": "Zelt und Campingausrüstung",
+			"description": "<p>Ausrüstung für eine Person zum Zelten.</p>"
+		},
+		"Tracer Button": {
+			"name": "Peilsender",
+			"description": "<p>Mit einem Peilsucher kann sie aus bis zu 1,5 Kilometer Entfernung geortet werden.</p>"
+		},
+		"Vial of Biotoxin": {
+			"name": "Flasche mit Biotoxin",
+			"description": "<p>Richtet 3W6 Schaden an. Widerstand durch Folter/Drogen widerstehen. Nicht durch Panzerung beeinträchtigt.</p>"
+		},
+		"Vial of Poison": {
+			"name": "Flasche mit Gift",
+			"description": "<p>Richtet 2W6 Schaden an. Widerstand durch Folter/Drogen widerstehen. Nicht durch Panzerung beeinträchtigt.</p>"
+		},
+		"Video Camera": {
+			"name": "Videokamera",
+			"description": "<p>Speichert bis zu 12 Stunden Audio und Video auf einem einzigen Speicherchip.</p>"
+		},
+		"Virtuality Goggles": {
+			"name": "Virtuality-Brille",
+			"description": "<p>Projiziert Cyberspace-Bilder auf die Realansicht.</p>"
+		}
+	}
+}
