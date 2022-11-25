@@ -34,31 +34,31 @@
 			"description": "<p>Doppia ablazione all'armatura. </p>"
 		},
 		"Basic Arrow": {
-			"name": "Frecce di base",
+			"name": "Freccia Base",
 			"description": "<p>Munizioni di base, niente di speciale.</p>"
 		},
 		"Basic Heavy Pistol": {
-			"name": "Pistola Pesante",
+			"name": "Pistola Pesante Base",
 			"description": "<p>Munizioni di base, niente di speciale.</p>"
 		},
 		"Basic Medium Pistol": {
-			"name": "Pistola Media",
+			"name": "Pistola Media Base",
 			"description": "<p>Munizioni di base, niente di speciale.</p>"
 		},
 		"Basic Rifle": {
-			"name": "Fucile",
+			"name": "Fucile Base",
 			"description": "<p>Munizioni di base, niente di speciale.</p>"
 		},
 		"Basic Shotgun Shell": {
-			"name": "Cartucce a Pallini",
+			"name": "Cartuccia a Pallini Base",
 			"description": "<p>Munizioni di base, niente di speciale.</p>"
 		},
 		"Basic Shotgun Slug": {
-			"name": "Shotgun Slug",
+			"name": "Cartuccia Slug Base",
 			"description": "<p>Munizioni di base, niente di speciale.</p>"
 		},
 		"Basic Very Heavy Pistol": {
-			"name": "Pistola Molto Pesante",
+			"name": "Pistola Molto Pesante Base",
 			"description": "<p>Munizioni di base, niente di speciale.</p>"
 		},
 		"Battery Pack": {
@@ -194,7 +194,7 @@
 			"description": "<p>Richiede Cyberware Mirino, altrimenti non sparerà. Se un attacco fallisce di 4 o meno sulla Prova d’Attacco in modalità Colpo Singolo, si può tentare immediatamente il secondo attacco ma con VD 1d10+10 (il +10 sostituisce la stat normale). Puoi aggiungere FOR. Il bersaglio può schivare il secondo colpo come normale se è in grado di farlo. </p>"
 		},
 		"Smart Rocket": {
-			"name": "Proiettile Smart - Razzo",
+			"name": "Razzo Smart",
 			"description": "<p>Richiede Cyberware Mirino, altrimenti non sparerà. Se un attacco fallisce di 4 o meno sulla Prova d’Attacco in modalità Colpo Singolo, si può tentare immediatamente il secondo attacco ma con VD 1d10+10 (il +10 sostituisce la stat normale). Puoi aggiungere FOR. Il bersaglio può schivare il secondo colpo come normale se è in grado di farlo. </p>"
 		},
 		"Smart Shotgun Slug": {
