@@ -1,0 +1,381 @@
+{
+    "entries": {
+        "Air Pistol": {
+            "description": "<p>Eine Exotische Mittelschwere Pistole. Feuert Farbkugeln ab. Siehe die vollständige Gegenstandsbeschreibung auf Seite 347.&nbsp;</p>",
+            "name": "Luftpistole"
+        },
+        "Assault Rifle": {
+            "description": "<p>Ein Standard-Sturmgewehr.</p>",
+            "name": "Sturmgewehr"
+        },
+        "Assault Rifle (Excellent)": {
+            "description": "<p>Sturmgewehr von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Sturmgewehr (Hervorragende Qualität)"
+        },
+        "Assault Rifle (Poor)": {
+            "description": "<p>Ein Sturmgewehr von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Sturmgewehr (Schlechte Qualität)"
+        },
+        "Baseball Bat": {
+            "description": "<p>Ein Baseballschläger. Eine Lieblingswaffe der Baseball-Furien.</p>",
+            "name": "Baseballschläger"
+        },
+        "Baseball Bat (Excellent)": {
+            "description": "<p>Baseballschläger von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Baseballschläger (Hervorragende Qualität)"
+        },
+        "Baseball Bat (Poor)": {
+            "description": "<p>Ein Baseballschläger von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Baseballschläger (Schlechte Qualität)"
+        },
+        "Big Knucks": {
+            "description": "<p>Cyberware-Waffe. Du musst die entsprechende Cyberware installiert haben.</p>",
+            "name": "Stahl­knöchel"
+        },
+        "Bow": {
+            "description": "<p>Ein Bogen, der nach jedem Angriff nachgeladen werden muss.</p>",
+            "name": "Bogen"
+        },
+        "Bow (Excellent)": {
+            "description": "<p>Bogen von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Bogen (Hervorragende Qualität)"
+        },
+        "Bow (Poor)": {
+            "description": "<p>Ein Bogen von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Bogen (Schlechte Qualität)"
+        },
+        "Chainsaw": {
+            "description": "<p>Eine tragbare, auftankbare Säge, die mit CHOOH2 betrieben wird. Hält etwa 2-3 Stunden mit einer Tankfüllung.</p>",
+            "name": "Kettensäge"
+        },
+        "Chainsaw (Excellent)": {
+            "description": "<p>Kettensäge von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Kettensäge (Hervorragende Qualität)"
+        },
+        "Chainsaw (Poor)": {
+            "description": "<p>Eine Kettensäge von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Kettensäge (Schlechte Qualität)"
+        },
+        "Combat Knife": {
+            "description": "<p>Ein Messer für die Straße.</p>",
+            "name": "Kampfmesser"
+        },
+        "Combat Knife (Excellent)": {
+            "description": "<p>Messer von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Kampfmesser (Hervorragende Qualität)"
+        },
+        "Combat Knife (Poor)": {
+            "description": "<p>Ein Messer von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Kampfmesser (Schlechte Qualität)"
+        },
+        "Constitution Arms Hurricane Assault Weapon": {
+            "description": "<p>Eine Exotische AF2-Flinte. Kann keine gezielten Schüsse abgeben. Das Abfeuern dieser Waffe erfordert KRA 11 oder höher, wenn sie nicht aufmontiert ist. Siehe die vollständige Gegenstandsbeschreibung auf S. 348.</p>",
+            "name": "Constitution Arms Hurricane Sturmflinte"
+        },
+        "Crossbow": {
+            "description": "<p>Eine Armbrust, die nach jedem Angriff nachgeladen werden muss.</p>",
+            "name": "Armbrust"
+        },
+        "Crossbow (Excellent)": {
+            "description": "<p>Armbrust von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Armbrust (Hervorragende Qualität)"
+        },
+        "Crossbow (Poor)": {
+            "description": "<p>Eine Armbrust von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Armbrust (Schlechte Qualität)"
+        },
+        "Crowbar": {
+            "description": "<p>Nutzbar sowohl als Werkzeug als auch als Waffe. Eine Eisenstange mit gespaltenen Keilen an den Enden.</p>",
+            "name": "Brecheisen"
+        },
+        "Crowbar (Excellent)": {
+            "description": "<p>Brecheisen von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Brecheisen (Hervorragende Qualität)"
+        },
+        "Crowbar (Poor)": {
+            "description": "<p>Ein Brecheisen von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Brecheisen (Schlechte Qualität)"
+        },
+        "Cybersnake": {
+            "description": "<p>Cyberware-Waffe. Du musst die entsprechende Cyberware installiert haben.</p>",
+            "name": "Cyber­schlange"
+        },
+        "Dartgun": {
+            "description": "<p>Eine Exotische Sehr Schwere Pistole. Siehe die vollständige Gegenstandsbeschreibung auf S. 348.</p>",
+            "name": "Pfeilschuss­pistole"
+        },
+        "Flamethrower": {
+            "description": "<p>Eine Exotische Flinte, die mit der Fertigkeit Schwere Waffen abgefeuert wird. Siehe die vollständige Artikelbeschreibung auf S. 348.&nbsp;</p>",
+            "name": "Flammenwerfer"
+        },
+        "Grenade Launcher": {
+            "description": "<p>Ein hochwirksamer Granatwerfer. Mit ihm können Sie eine Vielzahl von Granaten verwenden.</p>",
+            "name": "Granatwerfer"
+        },
+        "Grenade Launcher (Excellent)": {
+            "description": "<p>Granatwerfer von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Granatwerfer (Hervorragende Qualität)"
+        },
+        "Grenade Launcher (Poor)": {
+            "description": "<p>Ein Granatwerfer von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Granatwerfer (Schlechte Qualität)"
+        },
+        "Heavy Pistol": {
+            "description": "<p>Eine versteckbare, schwere Pistole.</p>",
+            "name": "Schwere Pistole"
+        },
+        "Heavy Pistol (Excellent)": {
+            "description": "<p>Schwere Pistole von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Schwere Pistole (Hervorragende Qualität)"
+        },
+        "Heavy Pistol (Poor)": {
+            "description": "<p>Eine schwere Pistole von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Schwere Pistole (Schlechte Qualität)"
+        },
+        "Heavy SMG": {
+            "description": "<p>Eine schwere MP. Aufgrund seiner Größe kann es nicht versteckt werden.<br />\nIm deutschen Regelwerk falsch übersetzt mit MG.\n</p>",
+            "name": "Schwere MP"
+        },
+        "Heavy SMG (Excellent)": {
+            "description": "<p>Schwere MP von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu. <br/>\nIm Regelwerk wird es fälschlicherweise mit MG übersetzt</p>",
+            "name": "Schwere MP (Hervorragende Qualität)"
+        },
+        "Heavy SMG (Poor)": {
+            "description": "<p>Eine schwere MP von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst. <br/>\nIm Regelwerk wird es fälschlicherweise mit MG übersetzt</p>",
+            "name": "Schwere MP (Schlechte Qualität)"
+        },
+        "Helicopter Blades": {
+            "description": "<p>Diese Klingen stammen aus einem ausrangierten Flugzeug.</p>",
+            "name": "Rotorblätter"
+        },
+        "Helicopter Blades (Excellent)": {
+            "description": "<p>Rotorblatt von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Rotorblatt (Hervorragende Qualität)"
+        },
+        "Helicopter Blades (Poor)": {
+            "description": "<p>Ein Rotorblatt von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Rotorblatt (Schlechte Qualität)"
+        },
+        "Kendachi Mono-Three": {
+            "description": "<p>Eine Beidhändige Exotische Sehr Schwere Nahkampfwaffe von Hervorragender Qualität. Sie sieht aus wie ein Hightech-Katana. Siehe die vollständige Gegenstandsbeschreibung auf S. 348.</p>",
+            "name": "Kendachi Mono-Drei"
+        },
+        "Lead Pipe": {
+            "description": "<p>Ein Hohlzylinder, typischerweise aus Metall, der einst Flüssigkeiten transportiert hat.</p>",
+            "name": "Bleirohr"
+        },
+        "Lead Pipe (Excellent)": {
+            "description": "<p>Bleirohr von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Bleirohr (Hervorragende Qualität)"
+        },
+        "Lead Pipe (Poor)": {
+            "description": "<p>Ein Bleirohr von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Bleirohr (Schlechte Qualität)"
+        },
+        "Machete": {
+            "description": "<p>Ein Messer mit langer Klinge und einer Vielzahl von Verwendungsmöglichkeiten. Es ist dafür bekannt, dass es bei einigen Gangs in Night City beliebt ist.</p>",
+            "name": "Machete"
+        },
+        "Machete (Excellent)": {
+            "description": "<p>Machete von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Machete (Hervorragende Qualität)"
+        },
+        "Machete (Poor)": {
+            "description": "<p>Eine Machete von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Machete (Schlechte Qualität)"
+        },
+        "Malorian Arms 3516": {
+            "description": "<p>Eine Exotische Sehr Schwere Pistole von Hervorragender Qualität. Du musst dieses Gerät mit einem Smartgun Link verbinden. Siehe die vollständige Gegenstandsbeschreibung auf S. 348.</p>",
+            "name": "Malorian Arms 3516"
+        },
+        "Martial Arts": {
+            "description": "<p>Der Kampf mit jahrhundertealten überlieferten Kampfkünsten, ignoriert die halbe Panzerung (aufgerundet)</p>",
+            "name": "Kampfkunst"
+        },
+        "Medium Pistol": {
+            "description": "<p>Eine verdeckbare, mittelschwere Pistole.</p>",
+            "name": "Mittelschwere Pistole"
+        },
+        "Medium Pistol (Excellent)": {
+            "description": "<p>Mittelschwere Pistole von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Mittelschwere Pistole (Hervorragende Qualität)"
+        },
+        "Medium Pistol (Poor)": {
+            "description": "<p>Eine mittelschwere Pistole von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Mittelschwere Pistole (Schlechte Qualität)"
+        },
+        "Microwaver": {
+            "description": "<p>Eine exotische, Sehr Schwere Pistole. Kann bewirken, dass Cyberware oder elektrische Komponenten für eine Minute außer Betrieb gesetzt werden. Siehe die vollständige Gegenstandsbeschreibung auf S. 348.</p>",
+            "name": "Mikrowellenstrahler"
+        },
+        "Militech \"Cowboy\" U-56 Grenade Launcher": {
+            "description": "<p>Ein exotischer Granatwerfer mit AF2. Fasst vier Granaten. Erfordert KRA 11 oder höher (sofern nicht montiert). Siehe die vollständige Gegenstandsbeschreibung auf S. 349.</p>",
+            "name": "Militech „Cowboy“ U-56 Granatwerfer"
+        },
+        "Naginata": {
+            "description": "<p>Ein japanischer Holzstab mit einer gebogenen Klinge an einer Seite. Bevorzugt von taktischen Arasaka-Teams für Nahkämpfe.</p>",
+            "name": "Naginata"
+        },
+        "Naginata (Excellent)": {
+            "description": "<p>Eine japanische Waffe, ein Stab mit einer gebogenen Klinge am Ende und von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Naginata (Hervorragende Qualität)"
+        },
+        "Naginata (Poor)": {
+            "description": "<p>Eine japanische Waffe, ein Stab mit einer gebogenen Klinge am Ende und von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Naginata (Schlechte Qualität)"
+        },
+        "Rhinemetall EMG-86 Railgun": {
+            "description": "<p>Ein exotisches Sturmgewehr. Es kann keine gezielten oder automatischen Schüsse abfeuern. Erfordert KRA 11 oder höher (sofern nicht montiert). Siehe die vollständige Gegenstandsbeschreibung auf S. 349.</p>",
+            "name": "Rheinmetall EMG-86 Schienengewehr"
+        },
+        "Rippers": {
+            "description": "<p>Cyberware-Waffe. Du musst die entsprechende Cyberware installiert haben.</p>",
+            "name": "Krallen"
+        },
+        "Rocket Launcher": {
+            "description": "<p>Fahre die großen Geschütze auf. Dieser Raketenwerfer wird einigen Schaden anrichten.</p>",
+            "name": "Raketenwerfer"
+        },
+        "Rocket Launcher (Excellent)": {
+            "description": "<p>Raketenwerfer von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Raketenwerfer (Hervorragende Qualität)"
+        },
+        "Rocket Launcher (Poor)": {
+            "description": "<p>Ein Raketenwerfer von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Raketenwerfer (Schlechte Qualität)"
+        },
+        "SMG": {
+            "description": "<p>Eine MP die verdeckt getragen werden kann<br />\nIm deutschen Regelwerk falsch übersetzt mit MG.\n</p>",
+            "name": "MP"
+        },
+        "SMG (Excellent)": {
+            "description": "<p>MP von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu. <br/>\nIm Regelwerk wird es fälschlicherweise mit MG übersetzt</p>",
+            "name": "MP (Hervorragende Qualität)"
+        },
+        "SMG (Poor)": {
+            "description": "<p>Eine MP von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst. <br/>\nIm Regelwerk wird es fälschlicherweise mit MG übersetzt</p>",
+            "name": "MP (Schlechte Qualität)"
+        },
+        "Shotgun": {
+            "description": "<p>Eine Flinte. Oft auch als Schrotflinte bekannt.</p>",
+            "name": "Flinte"
+        },
+        "Shotgun (Excellent)": {
+            "description": "<p>Flinte von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Flinte (Hervorragende Qualität)"
+        },
+        "Shotgun (Poor)": {
+            "description": "<p>Eine Flinte von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Flinte (Schlechte Qualität)"
+        },
+        "Shrieker": {
+            "description": "<p>Eine exotische, Sehr Schwere Pistole. Erfordert einen Gehörschutz, um kritische Verletzungen an den Ohren zu verhindern. Das Ziel muss einen DV15-Folter-/Drogenwiderstandscheck bestehen oder erleidet es die Kritische Verletzung Ohrenschaden. Siehe die vollständige Gegenstandsbeschreibung auf S. 349.</p>",
+            "name": "Kreischer"
+        },
+        "Sledgehammer": {
+            "description": "<p>Ein großer hammerähnlicher Gegenstand mit einem flachen Metallkopf, der die auftreffende Kraft über einen großen Bereich verteilt.</p>",
+            "name": "Vorschlaghammer"
+        },
+        "Sledgehammer (Excellent)": {
+            "description": "<p>Vorschlaghammer von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Vorschlaghammer (Hervorragende Qualität)"
+        },
+        "Sledgehammer (Poor)": {
+            "description": "<p>Ein Vorschlaghammer von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Vorschlaghammer (Schlechte Qualität)"
+        },
+        "Slice N' Dice": {
+            "description": "<p>Cyberware-Waffe. Du musst die entsprechende Cyberware installiert haben.</p>",
+            "name": "Monofaden"
+        },
+        "Sniper Rifle": {
+            "description": "<p>Ein Scharfschützengewehr für große Entfernungen. Fasst 4 Kugeln in einem Magazin.</p>",
+            "name": "Scharfschützengewehr"
+        },
+        "Sniper Rifle (Excellent)": {
+            "description": "<p>Scharfschützengewehr von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Schwarfschützengewehr (Hervorragende Qualität)"
+        },
+        "Sniper Rifle (Poor)": {
+            "description": "<p>Ein Scharfschützengewehr von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Schwarfschützengewehr (Schlechte Qualität)"
+        },
+        "Spiked Bat": {
+            "description": "<p>Zur Spitze hin sind einige Nägel durchgeschlagen worden.</p>",
+            "name": "Nagelbrett"
+        },
+        "Spiked Bat (Excellent)": {
+            "description": "<p>Nagelbrett von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Nagelbrett (Hervorragende Qualität)"
+        },
+        "Spiked Bat (Poor)": {
+            "description": "<p>Ein Nagelbrett von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Nagelbrett (Schlechte Qualität)"
+        },
+        "Stun Baton": {
+            "description": "<p>Eine Einhändige Exotische Mittelschwere Nahkampfwaffe. Wenn der angerichtete Schaden die TP eines Ziels unter 1 senken würde, wird das Ziel stattdessen mit TP 1 Bewusstlos. Der mit dieser Waffe angerichtete Schaden verursacht keine Kritischen Verletzungen und trägt keine Panzerung ab. Siehe die vollständige Gegenstandsbeschreibung auf S. 349.</p>",
+            "name": "Betäubungsstock"
+        },
+        "Stun Gun": {
+            "description": "<p>Eine Exotische Schwere Pistole. Wenn der angerichtete Schaden die TP eines Ziels unter 1 senken würde, wird das Ziel stattdessen mit TP 1 Bewusstlos. Der mit dieser Waffe angerichtete Schaden verursacht keine Kritischen Verletzungen und trägt keine Panzerung ab. Siehe die vollständige Gegenstandsbeschreibung auf S. 349.</p>",
+            "name": "Betäubungspistole"
+        },
+        "Sword": {
+            "description": "<p>Ein Schwert. Speziell zum Schneiden oder Stechen entwickelt. </p>",
+            "name": "Schwert"
+        },
+        "Sword (Excellent)": {
+            "description": "<p>Schwert von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Schwert (Hervorragende Qualität)"
+        },
+        "Sword (Poor)": {
+            "description": "<p>Ein Schwert von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Schwert (Schlechte Qualität)"
+        },
+        "Talon Foot": {
+            "description": "<p>Cyberware-Waffe. Du musst die entsprechende Cyberware installiert haben.</p>",
+            "name": "Klauenfuß"
+        },
+        "Tomahawk": {
+            "description": "<p>Eine leichte Axt.</p>",
+            "name": "Tomahawk"
+        },
+        "Tomahawk (Excellent)": {
+            "description": "<p>Tomahawk von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Tomahawk (Hervorragende Qualität)"
+        },
+        "Tomahawk (Poor)": {
+            "description": "<p>Ein Tomahawk von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Tomahawk (Schlechte Qualität)"
+        },
+        "Tsunami Arms Helix": {
+            "description": "<p>Ein Exotisches Sturmgewehr. Es kann nur Automatisches Feuer abgeben und weder Gezielte Schüsse noch Einzelschüsse abgeben und verbraucht mit jedem Angriff 20 Geschosse. Das Abfeuern dieser Waffe erfordert KRA 11 oder höher, wenn sie nicht aufmontiert ist. Siehe die vollständige Artikelbeschreibung auf S. 349.</p>",
+            "name": "Tsunami Arms Helix"
+        },
+        "Unarmed": {
+            "description": "<p>Wenn rohe Gewalt auf Körper trifft, ignoriert die halbe Panzerung nicht!</p>",
+            "name": "Faustkampf"
+        },
+        "Vampyres": {
+            "description": "<p>Cyberware-Waffe. Du musst die entsprechende Cyberware installiert haben.</p>",
+            "name": "Vampir­zähne"
+        },
+        "Very Heavy Pistol": {
+            "description": "<p>Eine Sehr Schwere Pistole. Sie kann nicht versteckt werden.</p>",
+            "name": "Sehr Schwere Pistole"
+        },
+        "Very Heavy Pistol (Excellent)": {
+            "description": "<p>Sehr schwere Pistole von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+            "name": "Sehr schwere Pistole (Hervorragende Qualität)"
+        },
+        "Very Heavy Pistol (Poor)": {
+            "description": "<p>Eine schwere Pistole von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+            "name": "Sehr schwere Pistole (Schlechte Qualität)"
+        },
+        "Wolvers": {
+            "description": "<p>Cyberware-Waffe. Du musst die entsprechende Cyberware installiert haben.</p>",
+            "name": "Klauen"
+        }
+    },
+    "label": "Waffen"
+}
