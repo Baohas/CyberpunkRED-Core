@@ -206,35 +206,31 @@ export default class CPRCyberdeckItem extends CPRItem {
     const roleValue = Number.parseInt(extraData.netRoleItem.system.rank, 10);
     const pgmName = program.name;
     const { executionType } = extraData;
-    const atkValue = executionType === "attack" ? program.atk : program.def;
+    const statValue = program[executionType];
+    const statName = SystemUtils.Localize(`CPR.global.blackIce.stats.${executionType}`);
 
     const damageFormula = program.damage.standard;
     switch (executionType) {
-      case "attack":
-      case "defense": {
-        const niceName = executionType.toUpperCase();
-        cprRoll = new CPRRolls.CPRAttackRoll(
-          pgmName,
-          niceName,
-          atkValue,
-          roleName, // We substitute 'skillName' with 'roleName' here, since CPRAttackRoll has no role arguments.
-          roleValue, // See comment above.
-          "program",
-        );
+      case "atk": {
+        cprRoll = new CPRRolls.CPRInterfaceRoll("attack", roleName, roleValue, statName, statValue);
         cprRoll.rollCardExtraArgs.program = program;
         cprRoll.rollCardExtraArgs.cyberdeck = this;
         break;
       }
+      case "def": {
+        cprRoll = new CPRRolls.CPRInterfaceRoll("defense", roleName, roleValue, statName, statValue);
+        break;
+      }
       case "damage": {
-        cprRoll = new CPRRolls.CPRDamageRoll(program.name, damageFormula, "program");
-        cprRoll.rollCardExtraArgs.pgmClass = program.class;
-        cprRoll.rollCardExtraArgs.pgmDamage = program.damage;
+        cprRoll = new CPRRolls.CPRDamageRoll(pgmName, damageFormula, "program");
         cprRoll.rollCardExtraArgs.program = program;
+        cprRoll.setNetCombat(pgmName);
         break;
       }
       default:
+        break;
     }
-    cprRoll.setNetCombat(pgmName);
+    cprRoll.rollTitle = pgmName;
 
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.
     if (executionType !== "damage") {
@@ -265,6 +261,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     const roleName = rollInfo.netRoleItem.system.mainRoleAbility;
     const roleValue = Number.parseInt(rollInfo.netRoleItem.system.rank, 10);
     const interfaceAbility = rollInfo.interfaceAbility === "perception" ? "perception_net" : rollInfo.interfaceAbility;
+    let rollType = "action";
     switch (interfaceAbility) {
       case "speed": {
         rollTitle = SystemUtils.Localize("CPR.global.generic.speed");
@@ -282,24 +279,13 @@ export default class CPRCyberdeckItem extends CPRItem {
     // If interfaceAbiltiy is Zap, we will handle roll either as a Damage Roll or an Attack Roll.
     // If interfaceAbility is anything else, we will handle roll as as an Interface Roll.
     let cprRoll;
-    if (interfaceAbility === "zap") {
-      if (rollInfo.executionType === "damage") {
-        cprRoll = new CPRRolls.CPRDamageRoll(SystemUtils.Localize("CPR.global.role.netrunner.interfaceAbility.zap"), "1d6", "program");
-      } else {
-        cprRoll = new CPRRolls.CPRAttackRoll(
-          "zap",
-          "", // No statName
-          0, // No statValue
-          roleName, // We substitute 'skillName' with 'roleName' here, since CPRAttackRoll has no role arguments.
-          roleValue, // See comment above.
-          "program",
-        );
-        cprRoll.rollCardExtraArgs.cyberdeck = this;
-        cprRoll.rollCardExtraArgs.isZap = true;
-        cprRoll.setNetCombat(rollTitle); // Set net combat to change the rollcard and prompt.
-      }
+
+    if (rollInfo.executionType === "damage") {
+      cprRoll = new CPRRolls.CPRDamageRoll(SystemUtils.Localize("CPR.global.role.netrunner.interfaceAbility.zap"), "1d6", "program");
     } else {
-      cprRoll = new CPRRolls.CPRInterfaceRoll(roleName, roleValue);
+      if (interfaceAbility === "zap") rollType = "attack";
+      cprRoll = new CPRRolls.CPRInterfaceRoll(rollType, roleName, roleValue);
+      cprRoll.rollCardExtraArgs.cyberdeck = this;
     }
 
     // Set the roll title to the name of the interface action.

@@ -522,7 +522,7 @@
                             <div class="installed-program-attack-and-damage">
                               {{#if (cprCompare pc "!==" "blackice")}}
                                 <div class="installed-program-defense">
-                                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="defense" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}"><i class="fas fa-shield red-fg" title="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}" ></i></a>
+                                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="def" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}"><i class="fas fa-shield red-fg" title="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}" ></i></a>
                                 </div>
                               {{/if}}
                                 <a class="program-execution" data-execution-type="{{#if program.isRezzed}}de{{/if}}rez" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}">{{#if program.isRezzed}}<i class="far fa-arrow-alt-circle-down" title="{{localize "CPR.characterSheet.bottomPane.fight.clickToDeactivateProgram"}}">{{else}}<i class="far fa-arrow-alt-circle-up" title="{{localize "CPR.characterSheet.bottomPane.fight.clickToActivateProgram"}}">{{/if}}</i></a>
@@ -537,7 +537,7 @@
                             </div>
                             <div class="installed-program-attack-and-damage">
                                 <div class="installed-program-attack">
-                                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="attack" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}"><i class="fas fa-fist-raised red-fg" title="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}" ></i></a>
+                                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="atk" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}"><i class="fas fa-fist-raised red-fg" title="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}" ></i></a>
                                 </div>
                                 {{#if (cprCompare program.damage.standard "!==" "")}}
                                 <div class="installed-program-damage">

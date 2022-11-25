@@ -1,23 +1,20 @@
-{{cprTrace "START DIALOG ROLLS CPR-VERIFY-PROGRAM-ATTACK-PROMPT.HBS"}}
+{{cprTrace "START DIALOG ROLLS CPR-VERIFY-NET-ROLL-PROMPT.HBS"}}
 <form>
     <div>
         {{localize "CPR.rolls.rollingFor"}} "{{rollData.rollTitle}}", Choomba!
     </div>
 
     <ol class="items-list">
-      {{!-- Dont show stat row unless this is an  --}}
-      {{#unless rollData.rollCardExtraArgs.isZap}}
-      {{#unless (cprListContains prototypeChain "CPRRoleRoll")}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.global.generic.stat"}} {{localize "CPR.global.generic.value"}} ({{localize rollData.statName}})
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
-            </div>
-        </li>
-      {{/unless}}
-      {{/unless}}
+        {{#if rollData.statName}}
+          <li class="item flexrow">
+              <div class="item flexrow setting-name text-nowrap">
+                  {{localize "CPR.global.generic.stat"}} {{localize "CPR.global.generic.value"}} ({{localize rollData.statName}})
+              </div>
+              <div class="item flexrow setting-value text-nowrap item-end">
+                  <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
+              </div>
+          </li>
+        {{/if}}
 
         {{#if rollData.roleName}}
         <li class="item flexrow">
@@ -49,7 +46,7 @@
                 {{localize "CPR.rolls.shouldRollCriticals"}}:
             </div>
             <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="calculateCritical" class="" type="checkbox" data-dtype="Checkbox" checked>
+                <input name="calculateCritical" class="" type="checkbox" data-dtype="Checkbox" {{checked rollData.calculateCritical}}>
             </div>
         </li>
     </ol>
@@ -62,4 +59,4 @@
   {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 
 </form>
-{{cprTrace "END CPR-VERIFY-PROGRAM-ATTACK-PROMPT.HBS"}}
+{{cprTrace "END CPR-VERIFY-NET-ROLL-PROMPT.HBS"}}

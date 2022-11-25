@@ -3,15 +3,15 @@
     <div>
         {{localize "CPR.rolls.roll"}} {{localize "CPR.rolls.damageFor"}}
         {{#if rollData.rollCardExtraArgs.program.name}}
-          "{{rollData.rollCardExtraArgs.program.name}} ({{localize (cprFindConfigValue "programClassList" rollData.rollCardExtraArgs.pgmClass)}})", Choomba!
-        {{else if (cprCompare rollCardExtraArgs.pgmClass "===" "blackice")}}
+          "{{rollData.rollCardExtraArgs.program.name}} ({{localize (cprFindConfigValue "programClassList" rollData.rollCardExtraArgs.program.class)}})", Choomba!
+        {{else if (cprCompare rollCardExtraArgs.program.class "===" "blackice")}}
           "{{localize "CPR.global.programClass.blackice"}}"
         {{else}}
           "{{localize "CPR.global.role.netrunner.interfaceAbility.zap"}}"
         {{/if}}
     </div>
     <ol class="items-list">
-      {{#if (cprCompare (cprCompare rollData.rollCardExtraArgs.pgmClass "===" "antiprogramattacker") "&&" (cprCompare rollData.rollCardExtraArgs.pgmDamage.blackIce "!==" "")) }}
+      {{#if (cprCompare (cprCompare rollData.rollCardExtraArgs.program.class "===" "antiprogramattacker") "&&" (cprCompare rollData.rollCardExtraArgs.program.damage.blackIce "!==" "")) }}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.rolls.selectTarget"}}:
@@ -19,28 +19,22 @@
             <div class="item flexrow setting-value text-nowrap item-end">
               <select name="formula">
                 {{#select rollData.formula}}
-                <option value="{{rollData.rollCardExtraArgs.pgmDamage.standard}}">{{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.itemSheet.program.nonBlackIce"}} ({{rollData.rollCardExtraArgs.pgmDamage.standard}})</option>
-                <option value="{{rollData.rollCardExtraArgs.pgmDamage.blackIce}}">{{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.global.programClass.blackice"}} ({{rollData.rollCardExtraArgs.pgmDamage.blackIce}})</option>
+                <option value="{{rollData.rollCardExtraArgs.program.damage.standard}}">{{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.itemSheet.program.nonBlackIce"}} ({{rollData.rollCardExtraArgs.program.damage.standard}})</option>
+                <option value="{{rollData.rollCardExtraArgs.program.damage.blackIce}}">{{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.global.programClass.blackice"}} ({{rollData.rollCardExtraArgs.program.damage.blackIce}})</option>
                 {{/select}}
               </select>
             </div>
         </li>
         {{/if}}
 
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.rolls.mods"}}:
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end" data-tooltip="
-                {{#each rollData.mods}}
-                  {{this.source}} {{~#if this.key}}&nbsp;({{localize (cprFindConfigValue "activeEffectKeys" this.category this.key)}}){{~/if}}: {{this.value}}
-                  <br>
-                {{/each}}
-              ">
-              <input disabled name="mods" class="" type="text" data-dtype="String" value="{{#each rollData.mods}}{{this.value}}{{#unless @last}}, {{/unless}}{{/each}}">
-            </div>
-        </li>
+        {{!-- All applied modifier list partial --}}
+        {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
     </ol>
+
+    {{!-- Situational modifier list partial --}}
+    {{#if (cprCompare filteredMods.length ">" 0)}}
+      {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-situational-modifiers.hbs" this}}
+    {{/if}}
 
   {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 

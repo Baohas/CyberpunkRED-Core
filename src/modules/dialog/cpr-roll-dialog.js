@@ -5,7 +5,6 @@ import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";
 import CPR from "../system/config.js";
-import { CPRRoll } from "../rolls/cpr-rolls.js";
 
 export class CPRRollDialog extends CPRDialog {
   constructor(rollData, actor, item, options) {

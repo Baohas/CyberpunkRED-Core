@@ -356,7 +356,7 @@ export class CPRProgramStatRoll extends CPRStatRoll {
     super(name, value);
     this.statName = name;
     this.statValue = value;
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-attack-prompt.hbs`;
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-net-roll-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-stat-rollcard.hbs`;
   }
 
@@ -486,7 +486,7 @@ export class CPRAttackRoll extends CPRSkillRoll {
     this.rollTitle = rollTitle;
     this.roleName = this.skillName;
     this.roleValue = this.skillValue;
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-attack-prompt.hbs`;
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-net-roll-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-attack-rollcard.hbs`;
   }
 }
@@ -599,24 +599,35 @@ export class CPRRoleRoll extends CPRRoll {
   }
 }
 
+/**
+ * Interface Rolls are for most rolls made from the Net section of the Fight tab.
+ * This includes regular interface actions like Pathfinder or Slide, but also
+ * applies to attacks like Zap or from loaded programs. The only rolls this doesn't cover
+ * are damage rolls from loaded programs (or zap).
+ */
 export class CPRInterfaceRoll extends CPRRoleRoll {
   /**
    * @constructor
+   * @param {String} rollType - "action", "attack", or "defense"
    * @param {String} roleName - role ability name
    * @param {Number} roleValue - role value
+   * @param {String} statName - Loaded program stat name (ATK or DEF)
+   * @param {Number} statValue - Loaded program stat value
    */
-  constructor(roleName, roleValue) {
+  constructor(rollType, roleName, roleValue, statName, statValue) {
     LOGGER.trace("constructor | CPRInterfaceRoll | Called.");
     super(roleName, roleValue);
-    this.roleName = roleName;
-    this.roleValue = roleValue;
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-attack-prompt.hbs`;
+    this.rollType = rollType;
+    this.statName = statName;
+    this.statValue = statValue ?? 0;
+
+    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-net-roll-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-cyberdeck-rollcard.hbs`;
   }
 
   _computeBase() {
     LOGGER.trace("_computeBase | CPRInterfaceRoll | Called.");
-    return this.initialRoll + this.totalMods() + this.roleValue + this.luck;
+    return this.initialRoll + this.totalMods() + this.roleValue + this.statValue + this.luck;
   }
 }
 

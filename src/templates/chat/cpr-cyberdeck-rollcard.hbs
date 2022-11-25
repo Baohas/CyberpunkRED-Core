@@ -2,10 +2,29 @@
 <div class="rollcard">
   <div class="rollcard-top">
     <div class="cpr-block chat-rollTitle-stat">
-      <div class="text-center text-padding-top text-normal">
-          {{rollTitle}}
+      <div class="text-center text-padding-top text-normal"> {{rollTitle}} </div>
+      <div class="rollcard-subtitle">
+
+        <div class="rollcard-subtitle-center text-small">
+          {{#if (cprCompare rollType "===" "attack")}}
+            {{localize "CPR.rolls.attack"}}
+          {{else if (cprCompare rollType "===" "defense")}}
+            {{localize "CPR.rolls.defense"}}
+          {{else}}
+            {{roleName}} {{localize "CPR.rolls.roleAbility"}}
+          {{/if}}
+        </div>
+
+        <div class="rollcard-subtitle-right">
+          {{#if (cprCompare rollType "===" "attack")}}
+            <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
+              data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="zap">
+              <i class="fas fa-tint red-fg" title="CPR.actorSheets.commonActions.rollDamage"></i>
+            </a>
+          {{/if}}
+        </div>
+
       </div>
-      <div class="text-center text-small">{{roleName}} {{localize "CPR.rolls.roleAbility"}}</div>
     </div>
   </div>
   <div class="rollcard-bottom">
@@ -31,14 +50,10 @@
         </div>
         <div class="d10-data-div">
           <div class="d10-data-details hide">
-            <div class="text-normal text-nowrap">{{localize "CPR.rolls.abilityRank"}}: {{roleValue}}</div>
+            <div class="text-normal text-nowrap">{{roleName}}: {{roleValue}}</div>
 
-            {{#if statValue}}
-            <div class="text-normal text-nowrap">{{localize (cprFindConfigValue "statList" statName)}}: {{statValue}}</div>
-            {{/if}}
-
-            {{#if skillValue}}
-            <div class="text-normal text-nowrap">{{skillName}}: {{skillValue}}</div>
+            {{#if statName}}
+            <div class="text-normal text-nowrap">{{statName}}: {{statValue}}</div>
             {{/if}}
 
             {{#if mods}}
