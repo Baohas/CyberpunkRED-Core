@@ -1,0 +1,217 @@
+{
+	"label": "Munición",
+	"entries": {
+		"Armor Piercing Arrow": {
+			"name": "Flecha Perforadora",
+			"description": "<p>Doble ablación a la armadura. </p>"
+		},
+		"Armor Piercing Grenade": {
+			"name": "Granada Perforadora de Armaduras",
+			"description": "<p>Doble ablación a la armadura. </p>"
+		},
+		"Armor Piercing Heavy Pistol": {
+			"name": "Pistola Pesada Perforadora de Armaduras",
+			"description": "<p>Doble ablación a la armadura. </p>"
+		},
+		"Armor Piercing Medium Pistol": {
+			"name": "Pistola Media Perforadora de Armadura",
+			"description": "<p>Doble ablación a la armadura. </p>"
+		},
+		"Armor Piercing Rifle": {
+			"name": "Rifle Perforador de Armadura",
+			"description": "<p>Doble ablación a la armadura. </p>"
+		},
+		"Armor Piercing Rocket": {
+			"name": "Cohete Perforador de Armadura",
+			"description": "<p>Doble ablación a la armadura. </p>"
+		},
+		"Armor Piercing Shotgun Slug": {
+			"name": "Cartucho de Escopeta Perforadora de Armadura",
+			"description": "<p>Doble ablación a la armadura. </p>"
+		},
+		"Armor Piercing Very Heavy Pistol": {
+			"name": "Pistola Muy Pesada Perforadora de Armadura",
+			"description": "<p>Doble ablación a la armadura. </p>"
+		},
+		"Basic Arrow": {
+			"name": "Flechas básicas",
+			"description": "<p>Munición básica, nada especial.</p>"
+		},
+		"Basic Heavy Pistol": {
+			"name": "Pistola Pesada Básica",
+			"description": "<p>Munición básica, nada especial.</p>"
+		},
+		"Basic Medium Pistol": {
+			"name": "Perla Media Básica",
+			"description": "<p>Munición básica, nada especial.</p>"
+		},
+		"Basic Rifle": {
+			"name": "Rifle Básico",
+			"description": "<p>Munición básica, nada especial.</p>"
+		},
+		"Basic Shotgun Shell": {
+			"name": "Proyectil de Escopeta Básica",
+			"description": "<p>Munición básica, nada especial.</p>"
+		},
+		"Basic Shotgun Slug": {
+			"name": "Cartucho de Escopeta Básica",
+			"description": "<p>Munición básica, nada especial.</p>"
+		},
+		"Basic Very Heavy Pistol": {
+			"name": "Pistola Muy Pesada Básica",
+			"description": "<p>Munición básica, nada especial.</p>"
+		},
+		"Battery Pack": {
+			"name": "Paquete de Baterías",
+			"description": "<p>Un paquete de batería recargable (1 hora) usado comúnmente con armas exóticas. Contiene 8 tiros y puede ser recargado.&nbsp;</p>"
+		},
+		"Biotoxin Arrow": {
+			"name": "Flecha de Biotoxina",
+			"description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra DV15. Al fallar 3d6 de daño al HP sin Ablación. </p>"
+		},
+		"Biotoxin Grenade": {
+			"name": "Granada de Biotoxina",
+			"description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra DV15. Al fallar 3d6 de daño a HP sin Ablación. </p>"
+		},
+		"EMP Grenade": {
+			"name": "Granada PEM",
+			"description": "<p>Si pega debe superar una tirada de Cybertecnología DV15. Si falla, 2 piezas de Cyberware o electrónica cargada (elección de GM) deja de funcionar por 1 minuto. Los cybermiembros se cuelgan sueltamente como un brazo de carne desmembrado ver pg. 187.</p>"
+		},
+		"Expansive Arrow": {
+			"name": "Flecha expansiva",
+			"description": "<p>Si tira el critico Objeto Extraño (ver pg. 187), la víctima obtiene un segundo (diferente) daño crítico. La segunda lesión no inflige daño extra.</p>"
+		},
+		"Expansive Heavy Pistol": {
+			"name": "Pistola Pesada Expaniva",
+			"description": "<p>Si tira el critico Objeto Extraño (ver pg. 187), la víctima obtiene un segundo (diferente) daño crítico. La segunda lesión no inflige daño extra.</p>"
+		},
+		"Expansive Medium Pistol": {
+			"name": "Pistola Media Expaniva",
+			"description": "<p>Si tira el critico Objeto Extraño (ver pg. 187), la víctima obtiene un segundo (diferente) daño crítico. La segunda lesión no inflige daño extra.</p>"
+		},
+		"Expansive Rifle": {
+			"name": "Rifle Expansiva",
+			"description": "<p>Si tira el critico Objeto Extraño (ver pg. 187), la víctima obtiene un segundo (diferente) daño crítico. La segunda lesión no inflige daño extra.</p>"
+		},
+		"Expansive Shotgun Slug": {
+			"name": "Cartucho de Escopeta Expansiva",
+			"description": "<p>Si tira el critico Objeto Extraño (ver pg. 187), la víctima obtiene un segundo (diferente) daño crítico. La segunda lesión no inflige daño extra.</p>"
+		},
+		"Expansive Very Heavy Pistol": {
+			"name": "Pistola Muy Pesada Expaniva",
+			"description": "<p>Si tira el critico Objeto Extraño (ver pg. 187), la víctima obtiene un segundo (diferente) daño crítico. La segunda lesión no inflige daño extra.</p>"
+		},
+		"Flashbang Grenade": {
+			"name": "Granada Aturdidora/Cegadora",
+			"description": "<p>No inflige daño. Si golpea, tira Resiste la Torture/Drogas contra DV15. Si falla, toma las heridas críticas Ojo Dañado y Oído Dañado (ver pg. 188) durante 1 minuto. No inflige daño crítico. </p>"
+		},
+		"Incendiary Arrow": {
+			"name": "Flecha Incendiaria",
+			"description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno a menos que utilice acción para extinguir llamas. No se acumula. </p>"
+		},
+		"Incendiary Grenade": {
+			"name": "Granada Incendiaria",
+			"description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno a menos que utilice acción para extinguir llamas. No se acumula. </p>"
+		},
+		"Incendiary Heavy Pistol": {
+			"name": "Pistola Pesada Incendiaria",
+			"description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno a menos que utilice acción para extinguir llamas. No se acumula. </p>"
+		},
+		"Incendiary Medium Pistol": {
+			"name": "Pistola Media Incendiaria",
+			"description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno a menos que utilice acción para extinguir llamas. No se acumula. </p>"
+		},
+		"Incendiary Rifle": {
+			"name": "Rifle Incendiaria",
+			"description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno a menos que utilice acción para extinguir llamas. No se acumula. </p>"
+		},
+		"Incendiary Shotgun Shell": {
+			"name": "Cartucho de Escopeta Incendiaria",
+			"description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno a menos que utilice acción para extinguir llamas. No se acumula. </p>"
+		},
+		"Incendiary Shotgun Slug": {
+			"name": "Posta de Escopeta Incendiaria",
+			"description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno a menos que utilice acción para extinguir llamas. No se acumula. </p>"
+		},
+		"Incendiary Very Heavy Pistol": {
+			"name": "Pistola Muy Pesada Incendiaria",
+			"description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno a menos que utilice acción para extinguir llamas. No se acumula. </p>"
+		},
+		"Poison Arrow": {
+			"name": "Flecha Venenosa",
+			"description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra DV13. Al fallar 2d6 de daño a HP sin ablación. </p>"
+		},
+		"Poison Grenade": {
+			"name": "Granada Venenosa",
+			"description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra DV13. Al fallar 2d6 de daño a HP sin ablación. </p>"
+		},
+		"Rubber Arrow": {
+			"name": "Flecha de Goma",
+			"description": "<p>No causa lesiones críticas ni produce ablación. No puede dejar al objetivo con menos de 1HP. Cuenta como munición básica para armas exóticas</p>"
+		},
+		"Rubber Heavy Pistol": {
+			"name": "Pistola Pesada de Goma",
+			"description": "<p>No causa lesiones críticas ni produce ablación. No puede dejar al objetivo con menos de 1HP. Cuenta como munición básica para armas exóticas</p>"
+		},
+		"Rubber Medium Pistol": {
+			"name": "Pistola Media de Goma",
+			"description": "<p>No causa lesiones críticas ni produce ablación. No puede dejar al objetivo con menos de 1HP. Cuenta como munición básica para armas exóticas</p>"
+		},
+		"Rubber Rifle": {
+			"name": "Rifle de Goma",
+			"description": "<p>No causa lesiones críticas ni produce ablación. No puede dejar al objetivo con menos de 1HP. Cuenta como munición básica para armas exóticas</p>"
+		},
+		"Rubber Shotgun Slug": {
+			"name": "Escopeta Posta de Goma",
+			"description": "<p>No causa lesiones críticas ni produce ablación. No puede dejar al objetivo con menos de 1HP. Cuenta como munición básica para armas exóticas</p>"
+		},
+		"Rubber Very Heavy Pistol": {
+			"name": "Pistola Muy Pesada de Goma",
+			"description": "<p>No causa lesiones críticas ni produce ablación. No puede dejar al objetivo con menos de 1HP. Cuenta como munición básica para armas exóticas</p>"
+		},
+		"Sleep Arrow": {
+			"name": "Flecha de Sueño",
+			"description": "<p>No inflige daño. Si golpea al objetivo y pasa la armadura tira Resiste la Torture/Drogas contra DV13. Al fallar cae inconciente (ver pg. 169) durante 1 minuto. Puede despertarse por daño u otra persona usando una acción para tocarlos/sacudirlos.</p>"
+		},
+		"Sleep Grenade": {
+			"name": "Granada de Sueño",
+			"description": "<p>No inflige daño. Si golpea al objetivo y pasa la armadura tira Resiste la Torture/Drogas contra DV13. Al fallar cae inconciente (ver pg. 169) durante 1 minuto. Puede despertarse por daño u otra persona usando una acción para tocarlos/sacudirlos.</p>"
+		},
+		"Smart Arrow": {
+			"name": "Flecha Inteligente",
+			"description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+		},
+		"Smart Heavy Pistol": {
+			"name": "Pistola Pesada Inteligente",
+			"description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+		},
+		"Smart Medium Pistol": {
+			"name": "Pistola Inteligente Media",
+			"description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+		},
+		"Smart Rifle": {
+			"name": "Rifle Inteligente",
+			"description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+		},
+		"Smart Rocket": {
+			"name": "Cohete Inteligente",
+			"description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+		},
+		"Smart Shotgun Slug": {
+			"name": "Cartucho de Escopeta Inteligente",
+			"description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+		},
+		"Smart Very Heavy Pistol": {
+			"name": "Pistola Muy Pesada Inteligente",
+			"description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+		},
+		"Smoke Grenade": {
+			"name": "Granada de Humo",
+			"description": "<p>No inflige daño. Llena 10m/yd x 10m/yd con humo durante 1 minuto. Las tareas oscurecidas por humo tienen una penalidad de -4.</p>"
+		},
+		"Teargas Grenade": {
+			"name": "Granada de Gas Lacrimoso",
+			"description": "<p>No inflige daño. Golpea los ojos si están descubiertos. Tira para resistir la tortura/drogas contra DV13. Si falla, sufre lesiones críticas Ojo Dañado (ver página 188) durante 1 minuto. No inflige daño adicional crítico.</p>"
+		}
+	}
+}
