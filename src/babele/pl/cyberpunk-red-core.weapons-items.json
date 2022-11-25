@@ -1,0 +1,381 @@
+{
+    "entries": {
+        "Air Pistol": {
+            "description": "<p>Egzotyczny średni pistolet. Strzela kulkami z farbą. Pełny opis przedmiotu na stronie 347.&nbsp;</p>",
+            "name": "Pistolet pneumatyczny"
+        },
+        "Assault Rifle": {
+            "description": "<p>Standardowy karabin szturmowy. </p>",
+            "name": "Karabin szturmowy"
+        },
+        "Assault Rifle (Excellent)": {
+            "description": "<p>Standardowy karabin szturmowy. +1 do ataku.</p>",
+            "name": "Karabin szturmowy (doskonałej jakości)"
+        },
+        "Assault Rifle (Poor)": {
+            "description": "<p>Standardowy karabin szturmowy. Przy krytycznej porażce broń zacina się i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Karabin szturmowy (słabej jakości)"
+        },
+        "Baseball Bat": {
+            "description": "<p>Obciążony kij. Ulubiona broń Baseball Furies.</p>",
+            "name": "Kij bejsbolowy"
+        },
+        "Baseball Bat (Excellent)": {
+            "description": "<p>Obciążony kij. Ulubiona broń Baseball Furies. +1 do ataku.</p>",
+            "name": "Kij bejsbolowy (doskonałej jakości)"
+        },
+        "Baseball Bat (Poor)": {
+            "description": "<p>Obciążony kij. Ulubiona broń Baseball Furies. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Kij bejsbolowy (słabej jakości)"
+        },
+        "Big Knucks": {
+            "description": "<p>Cyberbroń. Musisz mieć zainstalowaną odpowiednią cyborgizację.</p>",
+            "name": "Jebkłykcie"
+        },
+        "Bow": {
+            "description": "<p>Nowoczesny łuk, który musi być przeładowany po każdym ataku.</p>",
+            "name": "Łuk"
+        },
+        "Bow (Excellent)": {
+            "description": "<p>Nowoczesny łuk, który musi być przeładowany po każdym ataku. +1 do ataku.</p>",
+            "name": "Łuk (doskonałej jakości)"
+        },
+        "Bow (Poor)": {
+            "description": "<p>Nowoczesny łuk, który musi być przeładowany po każdym ataku. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Łuk (słabej jakości)"
+        },
+        "Chainsaw": {
+            "description": "<p>Przenośna piła na CHOOH2. Cały zbiornik wystarcza na 2-3 godziny.</p>",
+            "name": "Piła łańcuchowa"
+        },
+        "Chainsaw (Excellent)": {
+            "description": "<p>Przenośna piła na CHOOH2. Cały zbiornik wystarcza na 2-3 godziny. +1 do ataku.</p>",
+            "name": "Piła łańcuchowa (doskonałej jakości)"
+        },
+        "Chainsaw (Poor)": {
+            "description": "<p>Przenośna piła na CHOOH2. Cały zbiornik wystarcza na 2-3 godziny. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Piła łańcuchowa (słabej jakości)"
+        },
+        "Combat Knife": {
+            "description": "<p>Nóż pasujący na ulicę.</p>",
+            "name": "Nóż bojowy"
+        },
+        "Combat Knife (Excellent)": {
+            "description": "<p>Nóż pasujący na ulicę. +1 do ataku.</p>",
+            "name": "Nóż bojowy (doskonałej jakości)"
+        },
+        "Combat Knife (Poor)": {
+            "description": "<p>Nóż pasujący na ulicę. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Nóż bojowy (słabej jakości)"
+        },
+        "Constitution Arms Hurricane Assault Weapon": {
+            "description": "<p>Ezotyczna strzelba z LA 2. Nie można z niej przycelować i wymaga BC 11 lub większej (chyba że jest zamontowana). Zobacz pełny opis przedmiotu na stronie 348.</p>",
+            "name": "Constitution Arms Hurricane Assault Weapon"
+        },
+        "Crossbow": {
+            "description": "<p>Kusza, którą trzeba przeładować po każdym ataku.</p>",
+            "name": "Kusza"
+        },
+        "Crossbow (Excellent)": {
+            "description": "<p>Kusza, którą trzeba przeładować po każdym ataku. +1 do ataku.</p>",
+            "name": "Kusza (doskonałej jakości)"
+        },
+        "Crossbow (Poor)": {
+            "description": "<p>Kusza, którą trzeba przeładować po każdym ataku. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Kusza (słabej jakości)"
+        },
+        "Crowbar": {
+            "description": "<p>Użyteczny jako narzędzie jak i broń. Stalowy pręt z rozdwojonymi klinami na końcach.</p>",
+            "name": "Łom"
+        },
+        "Crowbar (Excellent)": {
+            "description": "<p>Użyteczny jako narzędzie jak i broń. Stalowy pręt z rozdwojonymi klinami na końcach. +1 do ataku.</p>",
+            "name": "Łom (doskonałej jakości)"
+        },
+        "Crowbar (Poor)": {
+            "description": "<p>Użyteczny jako narzędzie jak i broń. Stalowy pręt z rozdwojonymi klinami na końcach. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Łom (słabej jakości)"
+        },
+        "Cybersnake": {
+            "description": "<p>Cyberbroń. Musisz mieć zainstalowaną odpowiednią cyborgizację.</p>",
+            "name": "Cyberwąż"
+        },
+        "Dartgun": {
+            "description": "<p>Egzotyczny bardzo ciężki pistolet. Pełny opis przedmiotu na stronie 348.</p>",
+            "name": "Pistolet strzałkowy"
+        },
+        "Flamethrower": {
+            "description": "<p>Egzotyczna strzelba wykorzystująca Broń Ciężką do strzelania. Pełny opis przedmiotu na stronie 348.&nbsp;</p>",
+            "name": "Miotacz ognia"
+        },
+        "Grenade Launcher": {
+            "description": "<p>Granatnik o dużym zasięgu działania. Można wystrzelić dużą różnorodność granatów.</p>",
+            "name": "Granatnik"
+        },
+        "Grenade Launcher (Excellent)": {
+            "description": "<p>Granatnik o dużym zasięgu działania. Można wystrzelić dużą różnorodność granatów. +1 do ataku.</p>",
+            "name": "Granatnik (doskonałej jakości)"
+        },
+        "Grenade Launcher (Poor)": {
+            "description": "<p>Granatnik o dużym zasięgu działania. Można wystrzelić dużą różnorodność granatów. Przy krytycznej porażce broń zacina się i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Granatnik (słabej jakości)"
+        },
+        "Heavy Pistol": {
+            "description": "<p>Ciężki pistolet. Nadający się do ukrycia.</p>",
+            "name": "Ciężki pistolet"
+        },
+        "Heavy Pistol (Excellent)": {
+            "description": "<p>Ciężki pistolet. Nadający się do ukrycia. +1 do ataku.</p>",
+            "name": "Ciężki pistolet (doskonałej jakości)"
+        },
+        "Heavy Pistol (Poor)": {
+            "description": "<p>Ciężki pistolet. Nadający się do ukrycia. Przy krytycznej porażce broń zacina się i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Ciężki pistolet (słabej jakości)"
+        },
+        "Heavy SMG": {
+            "description": "<p>Ciężki pistolet maszynowy. Ze względu na jego rozmiar nie można go ukryć. </p>",
+            "name": "Ciężki pistolet maszynowy"
+        },
+        "Heavy SMG (Excellent)": {
+            "description": "<p>Ciężki pistolet maszynowy. Ze względu na jego rozmiar nie można go ukryć. +1 do ataku.</p>",
+            "name": "Ciężki pistolet maszynowy (doskonałej jakości)"
+        },
+        "Heavy SMG (Poor)": {
+            "description": "<p>Ciężki pistolet maszynowy. Ze względu na jego rozmiar nie można go ukryć. Przy krytycznej porażce broń zacina się i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Ciężki pistolet maszynowy (słabej jakości)"
+        },
+        "Helicopter Blades": {
+            "description": "<p>Część starego helikoptera. Te łopaty przetną się przez większość rzeczy jak przez masło.</p>",
+            "name": "Łopata helikoptera"
+        },
+        "Helicopter Blades (Excellent)": {
+            "description": "<p>Część starego helikoptera. Te łopaty przetną się przez większość rzeczy jak przez masło. +1 do ataku.</p>",
+            "name": "Łopata helikoptera (doskonałej jakości)"
+        },
+        "Helicopter Blades (Poor)": {
+            "description": "<p>Część starego helikoptera. Te łopaty przetną się przez większość rzeczy jak przez masło. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Łopata helikoptera (słabej jakości)"
+        },
+        "Kendachi Mono-Three": {
+            "description": "<p>Egzotyczna, doskonałej jakości, dwuręczna bardzo ciężka broń biała. Wygląda na wysoce zaawansowaną technologicznie. Pełny opis przedmiotu na stronie 348.</p>",
+            "name": "Kendachi Mono-Three"
+        },
+        "Lead Pipe": {
+            "description": "<p>Pusta rurka, przeważnie z metalu lub włókna szklanego.</p>",
+            "name": "Gazrurka"
+        },
+        "Lead Pipe (Excellent)": {
+            "description": "<p>Pusta rurka, przeważnie z metalu lub włókna szklanego. +1 do ataku.</p>",
+            "name": "Gazrurka (doskonałej jakości)"
+        },
+        "Lead Pipe (Poor)": {
+            "description": "<p>Pusta rurka, przeważnie z metalu lub włókna szklanego. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Gazrurka (słabej jakości)"
+        },
+        "Machete": {
+            "description": "<p>Nóż o wyjątkowo długim ostrzu o wielu zastosowaniach. Ulubienica niektórych gangów Night City.</p>",
+            "name": "Maczeta"
+        },
+        "Machete (Excellent)": {
+            "description": "<p>Nóż o wyjątkowo długim ostrzu o wielu zastosowaniach. Ulubienica niektórych gangów Night City. +1 do ataku.</p>",
+            "name": "Maczeta (doskonałej jakości)"
+        },
+        "Machete (Poor)": {
+            "description": "<p>Nóż o wyjątkowo długim ostrzu o wielu zastosowaniach. Ulubienica niektórych gangów Night City. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Maczeta (słabej jakości)"
+        },
+        "Malorian Arms 3516": {
+            "description": "<p>Egzotyczny, doskonałej jakości bardzo ciężki pistolet. Wymaga połączenia smartguna. Pełny opis przedmiotu na stronie 348.</p>",
+            "name": "Malorian Arms 3516"
+        },
+        "Martial Arts": {
+            "description": "<p>Puste łapy. Nie ignoruje połowy pancerza.</p>",
+            "name": "Sztuki walki"
+        },
+        "Medium Pistol": {
+            "description": "<p>Średni pistolet. Nadający się do ukrycia.</p>",
+            "name": "Średni pistolet"
+        },
+        "Medium Pistol (Excellent)": {
+            "description": "<p>Średni pistolet. Nadający się do ukrycia. +1 do ataku.</p>",
+            "name": "Średni pistolet (doskonałej jakości)"
+        },
+        "Medium Pistol (Poor)": {
+            "description": "<p>Średni pistolet. Nadający się do ukrycia. Przy krytycznej porażce broń zacina się i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Średni pistolet (słabej jakości)"
+        },
+        "Microwaver": {
+            "description": "<p>Egzotyczny bardzo ciężki pistolet. Może wyłączyć cyborgizacje lub elektroniczne części na minutę. Pełny opis przedmiotu na stronie 348.</p>",
+            "name": "Pistolet mikrofalowy"
+        },
+        "Militech \"Cowboy\" U-56 Grenade Launcher": {
+            "description": "<p>Egzotyczny granatnik z LA 2. Magazynek na 4 granaty. Wymaga BC 11 lub większej (chyba że jest zamontowany). Pełny opis przedmiotu na stronie 349.</p>",
+            "name": "Granatnik Militech \"Cowboy\" U-56"
+        },
+        "Naginata": {
+            "description": "<p>Japońska broń drzewcowa zakończona zagiętym ostrzem z jednej strony. Ulubiona broń do starć na bliskim zasięgu drużyn taktycznych Arasaki.</p>",
+            "name": "Naginata"
+        },
+        "Naginata (Excellent)": {
+            "description": "<p>Japońska broń drzewcowa zakończona zagiętym ostrzem z jednej strony. Ulubiona broń do starć na bliskim zasięgu drużyn taktycznych Arasaki. +1 do ataku.</p>",
+            "name": "Naginata (doskonałej jakości)"
+        },
+        "Naginata (Poor)": {
+            "description": "<p>Japońska broń drzewcowa zakończona zagiętym ostrzem z jednej strony. Ulubiona broń do starć na bliskim zasięgu drużyn taktycznych Arasaki. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Naginata (słabej jakości)"
+        },
+        "Rhinemetall EMG-86 Railgun": {
+            "description": "<p>Egzotyczny karabin szturmowy. Nie można strzelać z przycelowania ani ogniem ciągłym. Wymaga BC 11 lub większej (chyba że jest zamontowany). Pełny opis przedmiotu na stronie 349.&nbsp;</p>",
+            "name": "Karabin elektromagnetyczny Rhinemetall EMG-86"
+        },
+        "Rippers": {
+            "description": "<p>Cyberbroń. Musisz mieć zainstalowaną odpowiednią cyborgizację.</p>",
+            "name": "Rozpruwacze"
+        },
+        "Rocket Launcher": {
+            "description": "<p>Wytoczyć duże działa. Ta wyrzutnia rakiet zada trochę obrażeń.</p>",
+            "name": "Wyrzutnia rakiet"
+        },
+        "Rocket Launcher (Excellent)": {
+            "description": "<p>Wytoczyć duże działa. Ta wyrzutnia rakiet zada trochę obrażeń. +1 do ataku.</p>",
+            "name": "Wyrzutnia rakiet (doskonałej jakości)"
+        },
+        "Rocket Launcher (Poor)": {
+            "description": "<p>Wytoczyć duże działa. Ta wyrzutnia rakiet zada trochę obrażeń. Przy krytycznej porażce broń zacina się i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Wyrzutnia rakiet (słabej jakości)"
+        },
+        "SMG": {
+            "description": "<p>Pistolet maszynowy możliwy do ukrycia.</p>",
+            "name": "Pistolet maszynowy"
+        },
+        "SMG (Excellent)": {
+            "description": "<p>Pistolet maszynowy możliwy do ukrycia. +1 do ataku.</p>",
+            "name": "Pistolet maszynowy (doskonałej jakości)"
+        },
+        "SMG (Poor)": {
+            "description": "<p>Pistolet maszynowy możliwy do ukrycia. Przy krytycznej porażce broń zacina się i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Pistolet maszynowy (słabej jakości)"
+        },
+        "Shotgun": {
+            "description": "<p>Wielozadaniowa strzelba.</p>",
+            "name": "Strzelba"
+        },
+        "Shotgun (Excellent)": {
+            "description": "<p>Wielozadaniowa strzelba. +1 do ataku.</p>",
+            "name": "Strzelba (doskonałej jakości)"
+        },
+        "Shotgun (Poor)": {
+            "description": "<p>Wielozadaniowa strzelba. Przy krytycznej porażce broń zacina się i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Strzelba (słabej jakości)"
+        },
+        "Shrieker": {
+            "description": "<p>Egzotyczny bardzo ciężki pistolet. Wymaga ochrony uszu, aby zapobiec krytycznej ranie Uraz Ucha. Cel musi zdać test na Odporność na tortury/narkotyki PT15, albo otrzymuje ranę krytyczną. Pełny opis przedmiotu na stronie 349.</p>",
+            "name": "Wrzaskun"
+        },
+        "Sledgehammer": {
+            "description": "<p>Duży młot. Nic skomplikowanego.</p>",
+            "name": "Młot"
+        },
+        "Sledgehammer (Excellent)": {
+            "description": "<p>Duży młot. Nic skomplikowanego. +1 do ataku.</p>",
+            "name": "Młot (doskonałej jakości)"
+        },
+        "Sledgehammer (Poor)": {
+            "description": "<p>Duży młot. Nic skomplikowanego. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Młot (słabej jakości)"
+        },
+        "Slice N' Dice": {
+            "description": "<p>Cyberbroń. Musisz mieć zainstalowaną odpowiednią cyborgizację.</p>",
+            "name": "Szatkownica"
+        },
+        "Sniper Rifle": {
+            "description": "<p>Daleko zasięgowy karabin snajperski. 4 naboje w magazynku.</p>",
+            "name": "Karabin snajperski"
+        },
+        "Sniper Rifle (Excellent)": {
+            "description": "<p>Daleko zasięgowy karabin snajperski. 4 naboje w magazynku. +1 do ataku.</p>",
+            "name": "Karabin snajperski (doskonałej jakości)"
+        },
+        "Sniper Rifle (Poor)": {
+            "description": "<p>Daleko zasięgowy karabin snajperski. 4 naboje w magazynku. Przy krytycznej porażce broń zacina się i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Karabin snajperski (słabej jakości)"
+        },
+        "Spiked Bat": {
+            "description": "<p>Ulepszony kij bejsbolowy. Wiele wystających gwoździ na końcu kija.</p>",
+            "name": "Nabijana kolcami pała"
+        },
+        "Spiked Bat (Excellent)": {
+            "description": "<p>Ulepszony kij bejsbolowy. Wiele wystających gwoździ na końcu kija. +1 do ataku.</p>",
+            "name": "Nabijana kolcami pała (doskonałej jakości)"
+        },
+        "Spiked Bat (Poor)": {
+            "description": "<p>Ulepszony kij bejsbolowy. Wiele wystających gwoździ na końcu kija. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Nabijana kolcami pała (słabej jakości)"
+        },
+        "Stun Baton": {
+            "description": "<p>Egzotyczna, jednoręczna średnia broń biała. Cel traci przytomność jeśli obrażenia zredukują jego PW poniżej 1. Nie powoduje ran krytycznych ani nie uszkadza pancerza. Pełny opis przedmiotu na stronie 349.</p>",
+            "name": "Pałka ogłuszająca"
+        },
+        "Stun Gun": {
+            "description": "<p>Egzotyczny ciężki pistolet.&nbsp; Cel traci przytomność jeśli obrażenia zredukują jego PW poniżej 1. Nie powoduje ran krytycznych ani nie uszkadza pancerza. Pełny opis przedmiotu na stronie 349.</p>",
+            "name": "Pistolet ogłuszający"
+        },
+        "Sword": {
+            "description": "<p>Standardowy miecz.</p>",
+            "name": "Miecz"
+        },
+        "Sword (Excellent)": {
+            "description": "<p>Standardowy miecz. +1 do ataku.</p>",
+            "name": "Miecz (doskonałej jakości)"
+        },
+        "Sword (Poor)": {
+            "description": "<p>Standardowy miecz. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Miecz (słabej jakości)"
+        },
+        "Talon Foot": {
+            "description": "<p>Cyberbroń. Musisz mieć zainstalowaną odpowiednią cyborgizację.</p>",
+            "name": "Stopa-szpon"
+        },
+        "Tomahawk": {
+            "description": "<p>Lekki toporek do rzucania.</p>",
+            "name": "Tomahawk"
+        },
+        "Tomahawk (Excellent)": {
+            "description": "<p>Lekki toporek do rzucania. +1 do ataku.</p>",
+            "name": "Tomahawk (doskonałej jakości)"
+        },
+        "Tomahawk (Poor)": {
+            "description": "<p>Lekki toporek do rzucania. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.\n</p>",
+            "name": "Tomahawk (słabej jakości)"
+        },
+        "Tsunami Arms Helix": {
+            "description": "<p>Egzotyczny karabin szturmowy, który strzela tylko ogniem automatycznym. 40 naboi w magazynki, zużywa 20 z każdym atakiem. Wykorzystuje ogień ciągły z maksymalnym mnożnikiem x5. Wymaga BC 11 lub większej (chyba że jest zamontowany). Pełny opis przedmiotu na stronie 349.&nbsp;</p>",
+            "name": "Tsunami Arms Helix"
+        },
+        "Unarmed": {
+            "description": "<p>Puste łapy. Nie ignoruje połowy pancerza.</p>",
+            "name": "Gołe pięści"
+        },
+        "Vampyres": {
+            "description": "<p>Cyberbroń. Musisz mieć zainstalowaną odpowiednią cyborgizację.</p>",
+            "name": "Wampirki"
+        },
+        "Very Heavy Pistol": {
+            "description": "<p>Bardzo ciężki pistolet. Nie można go ukryć. </p>",
+            "name": "Bardzo ciężki pistolet"
+        },
+        "Very Heavy Pistol (Excellent)": {
+            "description": "<p>Bardzo ciężki pistolet. Nie można go ukryć. +1 do ataku.</p>",
+            "name": "Bardzo ciężki pistolet (doskonałej jakości)"
+        },
+        "Very Heavy Pistol (Poor)": {
+            "description": "<p>Bardzo ciężki pistolet. Nie można go ukryć. Przy krytycznej porażce broń zacina się i wymaga akcji do usunięcia usterki.</p>",
+            "name": "Bardzo ciężki pistolet (słabej jakości)"
+        },
+        "Wolvers": {
+            "description": "<p>Cyberbroń. Musisz mieć zainstalowaną odpowiednią cyborgizację.</p>",
+            "name": "Rosomaki"
+        }
+    },
+    "label": "Bronie"
+}
