@@ -1,0 +1,365 @@
+{
+	"label": "Одежда",
+	"entries": {
+		"Asia Pop Bottoms": {
+			"name": "Низ (Азия Поп)",
+			"description": ""
+		},
+		"Asia Pop Contact Lenses": {
+			"name": "Контактные линзы (Азия Поп)",
+			"description": ""
+		},
+		"Asia Pop Footwear": {
+			"name": "Обувь (Азия Поп)",
+			"description": ""
+		},
+		"Asia Pop Glasses": {
+			"name": "Очки (Азия Поп)",
+			"description": ""
+		},
+		"Asia Pop Hat": {
+			"name": "Головной убор (Азия Поп)",
+			"description": ""
+		},
+		"Asia Pop Jacket": {
+			"name": "Верхняя одежда (Азия Поп)",
+			"description": ""
+		},
+		"Asia Pop Jewelry": {
+			"name": "Украшение (Азия Поп)",
+			"description": ""
+		},
+		"Asia Pop Mirrorshades": {
+			"name": "Зеркальные очки (Азия Поп)",
+			"description": null
+		},
+		"Asia Pop Top": {
+			"name": "Верх (Азия Поп)",
+			"description": ""
+		},
+		"Bag Lady Chic Bottoms": {
+			"name": "Низ (Чика с подворотни)",
+			"description": ""
+		},
+		"Bag Lady Chic Contact Lenses": {
+			"name": "Контактные линзы (Чика с подворотни)",
+			"description": ""
+		},
+		"Bag Lady Chic Footwear": {
+			"name": "Обувь (Чика с подворотни)",
+			"description": ""
+		},
+		"Bag Lady Chic Glasses": {
+			"name": "Очки (Чика с подворотни)",
+			"description": null
+		},
+		"Bag Lady Chic Hat": {
+			"name": "Головной убор (Чика с подворотни)",
+			"description": ""
+		},
+		"Bag Lady Chic Jacket": {
+			"name": "Верхняя одежда (Чика с подворотни)",
+			"description": ""
+		},
+		"Bag Lady Chic Jewelry": {
+			"name": "Украшение (Чика с подворотни)",
+			"description": ""
+		},
+		"Bag Lady Chic Mirrorshades": {
+			"name": "Зеркальные очки (Чика с подворотни)",
+			"description": ""
+		},
+		"Bag Lady Chic Top": {
+			"name": "Верх (Чика с подворотни)",
+			"description": ""
+		},
+		"Bohemian Bottoms": {
+			"name": "Низ (Богемский)",
+			"description": ""
+		},
+		"Bohemian Contact Lenses": {
+			"name": "Контактные линзы (Богемский)",
+			"description": ""
+		},
+		"Bohemian Footwear": {
+			"name": "Обувь (Богемский)",
+			"description": ""
+		},
+		"Bohemian Glasses": {
+			"name": "Очки (Богемский)",
+			"description": ""
+		},
+		"Bohemian Hat": {
+			"name": "Головной убор (Богемский)",
+			"description": ""
+		},
+		"Bohemian Jacket": {
+			"name": "Верхняя одежда (Богемский)",
+			"description": ""
+		},
+		"Bohemian Jewelry": {
+			"name": "Украшение (Богемский)",
+			"description": ""
+		},
+		"Bohemian Mirrorshades": {
+			"name": "Зеркальные очки (Богемский)",
+			"description": ""
+		},
+		"Bohemian Top": {
+			"name": "Верх (Богемский)",
+			"description": ""
+		},
+		"Businesswear Bottoms": {
+			"name": "Низ (Бизнес)",
+			"description": ""
+		},
+		"Businesswear Contact Lenses": {
+			"name": "Контактные линзы (Бизнес)",
+			"description": ""
+		},
+		"Businesswear Footwear": {
+			"name": "Обувь (Бизнес)",
+			"description": ""
+		},
+		"Businesswear Glasses": {
+			"name": "Очки (Бизнес)",
+			"description": ""
+		},
+		"Businesswear Hat": {
+			"name": "Головной убор (Бизнес)",
+			"description": ""
+		},
+		"Businesswear Jacket": {
+			"name": "Верхняя одежда (Бизнес)",
+			"description": ""
+		},
+		"Businesswear Jewelry": {
+			"name": "Украшение (Бизнес)",
+			"description": ""
+		},
+		"Businesswear Mirrorshades": {
+			"name": "Зеркальные очки (Бизнес)",
+			"description": ""
+		},
+		"Businesswear Top": {
+			"name": "Верх (Бизнес)",
+			"description": ""
+		},
+		"Gang Colors Bottoms": {
+			"name": "Низ (Бандитский)",
+			"description": ""
+		},
+		"Gang Colors Contact Lenses": {
+			"name": "Контактные линзы (Бандитский)",
+			"description": ""
+		},
+		"Gang Colors Footwear": {
+			"name": "Обувь (Бандитский)",
+			"description": ""
+		},
+		"Gang Colors Glasses": {
+			"name": "Очки (Бандитский)",
+			"description": ""
+		},
+		"Gang Colors Hat": {
+			"name": "Головной убор (Бандитский)",
+			"description": ""
+		},
+		"Gang Colors Jacket": {
+			"name": "Верхняя одежда (Бандитский)",
+			"description": ""
+		},
+		"Gang Colors Jewelry": {
+			"name": "Украшение (Бандитский)",
+			"description": ""
+		},
+		"Gang Colors Mirrorshades": {
+			"name": "Зеркальные очки (Бандитский)",
+			"description": ""
+		},
+		"Gang Colors Top": {
+			"name": "Верх (Бандитский)",
+			"description": ""
+		},
+		"Generic Chic Bottoms": {
+			"name": "Низ (Обычная чика)",
+			"description": ""
+		},
+		"Generic Chic Contact Lenses": {
+			"name": "Контактыне линзы (Обычная чика)",
+			"description": ""
+		},
+		"Generic Chic Footwear": {
+			"name": "Обувь (Обычная чика)",
+			"description": ""
+		},
+		"Generic Chic Glasses": {
+			"name": "Очки (Обычная чика)",
+			"description": ""
+		},
+		"Generic Chic Hat": {
+			"name": "Головной убор (Обычная чика)",
+			"description": ""
+		},
+		"Generic Chic Jacket": {
+			"name": "Верхняя одежда (Обычная чика)",
+			"description": ""
+		},
+		"Generic Chic Jewelry": {
+			"name": "Украшение (Обычная чика)",
+			"description": ""
+		},
+		"Generic Chic Mirrorshades": {
+			"name": "Зеркальные очки (Обычная чика)",
+			"description": ""
+		},
+		"Generic Chic Top": {
+			"name": "Верх (Обычная чика)",
+			"description": ""
+		},
+		"High Fashion Bottoms": {
+			"name": "Низ (Высокая мода)",
+			"description": ""
+		},
+		"High Fashion Contact Lenses": {
+			"name": "Контактные линзы (Высокая мода)",
+			"description": ""
+		},
+		"High Fashion Footwear": {
+			"name": "Обувь (Высокая мода)",
+			"description": ""
+		},
+		"High Fashion Glasses": {
+			"name": "Очки (Высокая мода)",
+			"description": ""
+		},
+		"High Fashion Hat": {
+			"name": "Головной убор (Высокая мода)",
+			"description": ""
+		},
+		"High Fashion Jacket": {
+			"name": "Верхняя одежда (Высокая мода)",
+			"description": ""
+		},
+		"High Fashion Jewelry": {
+			"name": "Украшение (Высокая мода)",
+			"description": ""
+		},
+		"High Fashion Mirrorshades": {
+			"name": "Зеркальные очки (Высокая мода)",
+			"description": ""
+		},
+		"High Fashion Top": {
+			"name": "Верх (Высокая мода)",
+			"description": ""
+		},
+		"Leisurewear Bottoms": {
+			"name": "Низ (Спортивки)",
+			"description": ""
+		},
+		"Leisurewear Contact Lenses": {
+			"name": "Контактные линзы (Спортивки)",
+			"description": ""
+		},
+		"Leisurewear Footwear": {
+			"name": "Обувь (Спортивки)",
+			"description": ""
+		},
+		"Leisurewear Glasses": {
+			"name": "Очки (Спортивки)",
+			"description": ""
+		},
+		"Leisurewear Hat": {
+			"name": "Головной убор (Спортивки)",
+			"description": ""
+		},
+		"Leisurewear Jacket": {
+			"name": "Верхняя одежда (Спортивки)",
+			"description": ""
+		},
+		"Leisurewear Jewelry": {
+			"name": "Украшение (Спортивки)",
+			"description": ""
+		},
+		"Leisurewear Mirrorshades": {
+			"name": "Зеркальные очки (Спортивки)",
+			"description": ""
+		},
+		"Leisurewear Top": {
+			"name": "Верх (Спортивки)",
+			"description": ""
+		},
+		"Nomad Leathers Bottoms": {
+			"name": "Низ (Одеяния кочевников)",
+			"description": ""
+		},
+		"Nomad Leathers Contact Lenses": {
+			"name": "Контактные линзы (Одеяния кочевников)",
+			"description": ""
+		},
+		"Nomad Leathers Footwear": {
+			"name": "Обувь (Одеяния кочевников)",
+			"description": ""
+		},
+		"Nomad Leathers Glasses": {
+			"name": "Очки (Одеяния кочевников)",
+			"description": ""
+		},
+		"Nomad Leathers Hat": {
+			"name": "Головной убор (Одеяния кочевников)",
+			"description": ""
+		},
+		"Nomad Leathers Jacket": {
+			"name": "Верхняя одежда (Одеяния кочевников)",
+			"description": ""
+		},
+		"Nomad Leathers Jewelry": {
+			"name": "Украшение (Одеяния кочевников)",
+			"description": ""
+		},
+		"Nomad Leathers Mirrorshades": {
+			"name": "Зеркальные очки (Одеяния кочевников)",
+			"description": ""
+		},
+		"Nomad Leathers Top": {
+			"name": "Верх (Одеяния кочевников)",
+			"description": ""
+		},
+		"Urban Flash Bottoms": {
+			"name": "Низ (Городской)",
+			"description": ""
+		},
+		"Urban Flash Contact Lenses": {
+			"name": "Контактные линзы (Городской)",
+			"description": ""
+		},
+		"Urban Flash Footwear": {
+			"name": "Обувь (Городской)",
+			"description": ""
+		},
+		"Urban Flash Glasses": {
+			"name": "Очки (Городской)",
+			"description": ""
+		},
+		"Urban Flash Hat": {
+			"name": "Головной убор (Городской)",
+			"description": ""
+		},
+		"Urban Flash Jacket": {
+			"name": "Верхняя одежда (Городской)",
+			"description": ""
+		},
+		"Urban Flash Jewelry": {
+			"name": "Украшение (Городской)",
+			"description": ""
+		},
+		"Urban Flash Mirrorshades": {
+			"name": "Зеркальные очки (Городской)",
+			"description": ""
+		},
+		"Urban Flash Top": {
+			"name": "Верх (Городской)",
+			"description": ""
+		}
+	}
+}
