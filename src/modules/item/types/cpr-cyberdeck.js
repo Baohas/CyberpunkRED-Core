@@ -215,10 +215,12 @@ export default class CPRCyberdeckItem extends CPRItem {
         cprRoll = new CPRRolls.CPRInterfaceRoll("attack", roleName, roleValue, statName, statValue);
         cprRoll.rollCardExtraArgs.program = program;
         cprRoll.rollCardExtraArgs.cyberdeck = this;
+        cprRoll.ability = "attack";
         break;
       }
       case "def": {
         cprRoll = new CPRRolls.CPRInterfaceRoll("defense", roleName, roleValue, statName, statValue);
+        cprRoll.ability = "defense";
         break;
       }
       case "damage": {
@@ -288,6 +290,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     } else {
       if (interfaceAbility === "zap") rollType = "attack";
       cprRoll = new CPRRolls.CPRInterfaceRoll(rollType, roleName, roleValue);
+      cprRoll.ability = interfaceAbility;
       cprRoll.rollCardExtraArgs.cyberdeck = this;
     }
 

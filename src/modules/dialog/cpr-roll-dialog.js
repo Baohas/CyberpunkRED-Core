@@ -51,57 +51,54 @@ export class CPRRollDialog extends CPRDialog {
     const allSituationalMods = CPRMod.getAllModifiers(effects).filter((m) => m.isSituational);
     let filteredMods = [];
 
-    // Stat Effects. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
+    // Stat mods. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
     if ((this.prototypeChain.includes("CPRStatRoll") || this.prototypeChain.includes("CPRRoleRoll")) && !this.prototypeChain.includes("CPRInterfaceRoll")) {
       const statMods = allSituationalMods.filter((m) => m.key === `system.stats.${this.rollData.statName.toLowerCase()}.value`);
       filteredMods = filteredMods.concat(statMods);
     }
 
-    // Skill Effects.
+    // Skill mods.
     if ((this.prototypeChain.includes("CPRSkillRoll") || this.prototypeChain.includes("CPRRoleRoll")) && !this.prototypeChain.includes("CPRInterfaceRoll")) {
       const skillMods = allSituationalMods.filter((m) => m.key === `bonuses.${SystemUtils.slugify(this.rollData.skillName)}`);
       filteredMods = filteredMods.concat(skillMods);
     }
 
+    // Initiative Mods.
     if (this.prototypeChain.includes("CPRInitiative")) {
       const initiativeMods = allSituationalMods.filter((m) => m.key === `bonuses.initiative`);
       filteredMods = filteredMods.concat(initiativeMods);
     }
 
-    if (this.prototypeChain.includes("CPRAttackRoll") && !this.prototypeChain.includes("CPRProgramAttackRoll")) {
+    // Attack mods.
+    if (this.prototypeChain.includes("CPRAttackRoll")) {
       const attackRollBonusKeys = ["bonuses.universalAttack"];
 
-      if (this.item.type === "cyberdeck") {
-        attackRollBonusKeys.push("bonuses.zap");
-        attackRollBonusKeys.push("bonuses.attack"); // TODO: remove this from defense rolls.
-        attackRollBonusKeys.push("bonuses.defense");
+      if (this.item.system.isRanged) {
+        attackRollBonusKeys.push("bonuses.ranged");
       } else {
-        if (this.item.system.isRanged) {
-          attackRollBonusKeys.push("bonuses.ranged");
-        } else {
-          attackRollBonusKeys.push("bonuses.melee");
-        }
-
-        if (this.prototypeChain[0] === "CPRAttackRoll") {
-          attackRollBonusKeys.push("bonuses.singleShot");
-        } else if (this.prototypeChain.includes("CPRAimedAttackRoll")) {
-          attackRollBonusKeys.push("bonuses.singleShot");
-          attackRollBonusKeys.push("bonuses.aimedShot");
-        } else if (this.prototypeChain.includes("CPRAutofireRoll")) {
-          attackRollBonusKeys.push("bonuses.autofire");
-        } else if (this.prototypeChain.includes("CPRSuppressiveFireRoll")) {
-          attackRollBonusKeys.push("bonuses.suppressive");
-        }
-
-        const upgradeMods = this.item.getAllUpgradeMods("attackmod").filter((m) => m.isSituational);
-        filteredMods.concat(upgradeMods);
+        attackRollBonusKeys.push("bonuses.melee");
       }
+
+      if (this.prototypeChain[0] === "CPRAttackRoll") {
+        attackRollBonusKeys.push("bonuses.singleShot");
+      } else if (this.prototypeChain.includes("CPRAimedAttackRoll")) {
+        attackRollBonusKeys.push("bonuses.singleShot");
+        attackRollBonusKeys.push("bonuses.aimedShot");
+      } else if (this.prototypeChain.includes("CPRAutofireRoll")) {
+        attackRollBonusKeys.push("bonuses.autofire");
+      } else if (this.prototypeChain.includes("CPRSuppressiveFireRoll")) {
+        attackRollBonusKeys.push("bonuses.suppressive");
+      }
+
+      const upgradeMods = this.item.getAllUpgradeMods("attackmod").filter((m) => m.isSituational);
+      filteredMods.concat(upgradeMods);
 
       const attackMods = allSituationalMods.filter((m) => attackRollBonusKeys.includes(m.key));
       filteredMods = filteredMods.concat(attackMods);
     }
 
-    if (this.prototypeChain.includes("CPRDamageRoll") && !this.prototypeChain.includes("CPRProgramDamageRoll")) {
+    // Damage effects.
+    if (this.prototypeChain.includes("CPRDamageRoll")) {
       const damageMods = allSituationalMods.filter((m) => m.key === `bonuses.universalDamage`);
       const upgradeMods = this.item.getAllUpgradeMods("damage").filter((m) => m.isSituational);
       filteredMods = filteredMods.concat(damageMods).concat(upgradeMods);
@@ -115,14 +112,20 @@ export class CPRRollDialog extends CPRDialog {
 
     // Netrunner Effects.
     if (this.prototypeChain.includes("CPRInterfaceRoll")) {
-      const netrunnerRollBonusKeys = Object.keys(CPR.activeEffectKeys.netrun).filter((k) => {
-        if (k === "bonuses.brainDamageReduction" || k === "bonuses.rez") return false;
-        return true;
-      });
-      const netrunnerMods = allSituationalMods.filter((m) => netrunnerRollBonusKeys.includes(m.key));
+      let netrunnerMods = allSituationalMods.filter((m) => m.key === `bonuses.${this.rollData.ability}`);
+
+      if (this.rollData.ability === "zap") {
+        netrunnerMods = netrunnerMods.concat(allSituationalMods.filter((m) => m.key === "bonuses.attack" || m.key === "bonuses.universalAttack"));
+      }
+
+      if (this.rollData.ability === "attack") {
+        netrunnerMods = netrunnerMods.concat(allSituationalMods.filter((m) => m.key === "bonuses.universalAttack"));
+      }
+
       filteredMods = filteredMods.concat(netrunnerMods);
     }
 
+    // Death Save Effects.
     if (this.prototypeChain.includes("CPRDeathSaveRoll")) {
       const deathSavePenaltyMods = allSituationalMods.filter((m) => m.key === "bonuses.deathSavePenalty");
       filteredMods = filteredMods.concat(deathSavePenaltyMods);
