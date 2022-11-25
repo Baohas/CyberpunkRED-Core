@@ -1,0 +1,365 @@
+{
+	"label": "Ubrania",
+	"entries": {
+		"Asia Pop Bottoms": {
+			"name": "Azjatycki Pop Spodnie",
+			"description": ""
+		},
+		"Asia Pop Contact Lenses": {
+			"name": "Azjatycki Pop Soczewki Kontaktowe",
+			"description": ""
+		},
+		"Asia Pop Footwear": {
+			"name": "Azjatycki Pop Buty",
+			"description": ""
+		},
+		"Asia Pop Glasses": {
+			"name": "Azjatycki Pop Okulary",
+			"description": ""
+		},
+		"Asia Pop Hat": {
+			"name": "Azjatycki Pop Czapka",
+			"description": ""
+		},
+		"Asia Pop Jacket": {
+			"name": "Azjatycki Pop Kurtka",
+			"description": ""
+		},
+		"Asia Pop Jewelry": {
+			"name": "Azjatycki Pop Biżuteria",
+			"description": ""
+		},
+		"Asia Pop Mirrorshades": {
+			"name": "Azjatycki Pop Lustrzanki",
+			"description": null
+		},
+		"Asia Pop Top": {
+			"name": "Azjatycki Pop Podkoszulek",
+			"description": ""
+		},
+		"Bag Lady Chic Bottoms": {
+			"name": "Moda Kloszardowa Spodnie",
+			"description": ""
+		},
+		"Bag Lady Chic Contact Lenses": {
+			"name": "Moda Kloszardowa Soczewki Kontaktowe",
+			"description": ""
+		},
+		"Bag Lady Chic Footwear": {
+			"name": "Moda Kloszardowa Buty",
+			"description": ""
+		},
+		"Bag Lady Chic Glasses": {
+			"name": "Moda Kloszardowa Okulary",
+			"description": null
+		},
+		"Bag Lady Chic Hat": {
+			"name": "Moda Kloszardowa Czapka",
+			"description": ""
+		},
+		"Bag Lady Chic Jacket": {
+			"name": "Moda Kloszardowa Kurtka",
+			"description": ""
+		},
+		"Bag Lady Chic Jewelry": {
+			"name": "Moda Kloszardowa Biżuteria",
+			"description": ""
+		},
+		"Bag Lady Chic Mirrorshades": {
+			"name": "Moda Kloszardowa Lustrzanki",
+			"description": ""
+		},
+		"Bag Lady Chic Top": {
+			"name": "Moda Kloszardowa Podkoszulek",
+			"description": ""
+		},
+		"Bohemian Bottoms": {
+			"name": "Artystyczne Spodnie",
+			"description": ""
+		},
+		"Bohemian Contact Lenses": {
+			"name": "Artystyczne Soczewki Kontaktowe",
+			"description": ""
+		},
+		"Bohemian Footwear": {
+			"name": "Artystyczne Buty",
+			"description": ""
+		},
+		"Bohemian Glasses": {
+			"name": "Artystyczne Okulary",
+			"description": ""
+		},
+		"Bohemian Hat": {
+			"name": "Artystyczna Czapka",
+			"description": ""
+		},
+		"Bohemian Jacket": {
+			"name": "Artystyczna Kurtka",
+			"description": ""
+		},
+		"Bohemian Jewelry": {
+			"name": "Artystyczna Biżuteria",
+			"description": ""
+		},
+		"Bohemian Mirrorshades": {
+			"name": "Artystyczne Lustrzanki",
+			"description": ""
+		},
+		"Bohemian Top": {
+			"name": "Artystyczna Koszulka",
+			"description": ""
+		},
+		"Businesswear Bottoms": {
+			"name": "Biznesowe Spodnie",
+			"description": ""
+		},
+		"Businesswear Contact Lenses": {
+			"name": "Biznesowe Soczewki Kontaktowe",
+			"description": ""
+		},
+		"Businesswear Footwear": {
+			"name": "Biznesowe Buty",
+			"description": ""
+		},
+		"Businesswear Glasses": {
+			"name": "Biznesowe Okulary",
+			"description": ""
+		},
+		"Businesswear Hat": {
+			"name": "Biznesowy Kapelusz",
+			"description": ""
+		},
+		"Businesswear Jacket": {
+			"name": "Biznesowa Kurtka",
+			"description": ""
+		},
+		"Businesswear Jewelry": {
+			"name": "Biznesowa Biżuteria",
+			"description": ""
+		},
+		"Businesswear Mirrorshades": {
+			"name": "Biznesowe Lustrzanki",
+			"description": ""
+		},
+		"Businesswear Top": {
+			"name": "Biznesowa Koszula",
+			"description": ""
+		},
+		"Gang Colors Bottoms": {
+			"name": "Kolory Gangu Spodnie",
+			"description": ""
+		},
+		"Gang Colors Contact Lenses": {
+			"name": "Kolory Gangu Soczewki Kontaktowe",
+			"description": ""
+		},
+		"Gang Colors Footwear": {
+			"name": "Kolory Gangu Buty",
+			"description": ""
+		},
+		"Gang Colors Glasses": {
+			"name": "Kolory Gangu Okulary",
+			"description": ""
+		},
+		"Gang Colors Hat": {
+			"name": "Kolory Gangu Czapka",
+			"description": ""
+		},
+		"Gang Colors Jacket": {
+			"name": "Kolory Gangu Kurtka",
+			"description": ""
+		},
+		"Gang Colors Jewelry": {
+			"name": "Kolory Gangu Biżuteria",
+			"description": ""
+		},
+		"Gang Colors Mirrorshades": {
+			"name": "Kolory Gangu Lustrzanki",
+			"description": ""
+		},
+		"Gang Colors Top": {
+			"name": "Kolory Gangu Koszulka",
+			"description": ""
+		},
+		"Generic Chic Bottoms": {
+			"name": "Typowe Eleganckie Spodnie",
+			"description": ""
+		},
+		"Generic Chic Contact Lenses": {
+			"name": "Typowe Eleganckie Soczewki Kontaktowe",
+			"description": ""
+		},
+		"Generic Chic Footwear": {
+			"name": "Typowe Eleganckie Buty",
+			"description": ""
+		},
+		"Generic Chic Glasses": {
+			"name": "Typowe Eleganckie Okulary",
+			"description": ""
+		},
+		"Generic Chic Hat": {
+			"name": "Typowy Elegancki Kapelusz",
+			"description": ""
+		},
+		"Generic Chic Jacket": {
+			"name": "Typowa Elegancka Kurtka",
+			"description": ""
+		},
+		"Generic Chic Jewelry": {
+			"name": "Typowa Elegancka Biżuteria",
+			"description": ""
+		},
+		"Generic Chic Mirrorshades": {
+			"name": "Typowe Eleganckie Lustrzanki",
+			"description": ""
+		},
+		"Generic Chic Top": {
+			"name": "Typowa Elegancka Koszula",
+			"description": ""
+		},
+		"High Fashion Bottoms": {
+			"name": "Krzyk Mody Spodnie",
+			"description": ""
+		},
+		"High Fashion Contact Lenses": {
+			"name": "Krzyk Mody Soczewki Kontaktowe",
+			"description": ""
+		},
+		"High Fashion Footwear": {
+			"name": "Krzyk Mody Buty",
+			"description": ""
+		},
+		"High Fashion Glasses": {
+			"name": "Krzyk Mody Okulary",
+			"description": ""
+		},
+		"High Fashion Hat": {
+			"name": "Krzyk Mody Czapka",
+			"description": ""
+		},
+		"High Fashion Jacket": {
+			"name": "Krzyk Mody Kurtka",
+			"description": ""
+		},
+		"High Fashion Jewelry": {
+			"name": "Krzyk Mody Biżuteria",
+			"description": ""
+		},
+		"High Fashion Mirrorshades": {
+			"name": "Krzyk Mody Lustrzanki",
+			"description": ""
+		},
+		"High Fashion Top": {
+			"name": "Krzyk Mody Koszulka",
+			"description": ""
+		},
+		"Leisurewear Bottoms": {
+			"name": "Sportowe Spodnie",
+			"description": ""
+		},
+		"Leisurewear Contact Lenses": {
+			"name": "Sportowe Soczewki Kontaktowe",
+			"description": ""
+		},
+		"Leisurewear Footwear": {
+			"name": "Sportowe Buty",
+			"description": ""
+		},
+		"Leisurewear Glasses": {
+			"name": "Sportowe Okulary",
+			"description": ""
+		},
+		"Leisurewear Hat": {
+			"name": "Sportowa Czapka",
+			"description": ""
+		},
+		"Leisurewear Jacket": {
+			"name": "Sportowa Kurtka",
+			"description": ""
+		},
+		"Leisurewear Jewelry": {
+			"name": "Sportowa Biżuteria",
+			"description": ""
+		},
+		"Leisurewear Mirrorshades": {
+			"name": "Sportowe Lustrzanki",
+			"description": ""
+		},
+		"Leisurewear Top": {
+			"name": "Sportowa Koszulka",
+			"description": ""
+		},
+		"Nomad Leathers Bottoms": {
+			"name": "Skóry Nomady Spodnie",
+			"description": ""
+		},
+		"Nomad Leathers Contact Lenses": {
+			"name": "Skóry Nomady Soczewki Kontaktowe",
+			"description": ""
+		},
+		"Nomad Leathers Footwear": {
+			"name": "Skóry Nomady Buty",
+			"description": ""
+		},
+		"Nomad Leathers Glasses": {
+			"name": "Skóry Nomady Okulary",
+			"description": ""
+		},
+		"Nomad Leathers Hat": {
+			"name": "Skóry Nomady Czapka",
+			"description": ""
+		},
+		"Nomad Leathers Jacket": {
+			"name": "Skóry Nomady Kurtka",
+			"description": ""
+		},
+		"Nomad Leathers Jewelry": {
+			"name": "Skóry Nomady Biżuteria",
+			"description": ""
+		},
+		"Nomad Leathers Mirrorshades": {
+			"name": "Skóry Nomady Lustrzanki",
+			"description": ""
+		},
+		"Nomad Leathers Top": {
+			"name": "Skóry Nomady Koszulka",
+			"description": ""
+		},
+		"Urban Flash Bottoms": {
+			"name": "Styl Miejski Spodnie",
+			"description": ""
+		},
+		"Urban Flash Contact Lenses": {
+			"name": "Styl Miejski Soczewki Kontaktowe",
+			"description": ""
+		},
+		"Urban Flash Footwear": {
+			"name": "Styl Miejski Buty",
+			"description": ""
+		},
+		"Urban Flash Glasses": {
+			"name": "Styl Miejski Okulary",
+			"description": ""
+		},
+		"Urban Flash Hat": {
+			"name": "Styl Miejski Czapka",
+			"description": ""
+		},
+		"Urban Flash Jacket": {
+			"name": "Styl Miejski Kurtka",
+			"description": ""
+		},
+		"Urban Flash Jewelry": {
+			"name": "Styl Miejski Biżuteria",
+			"description": ""
+		},
+		"Urban Flash Mirrorshades": {
+			"name": "Styl Miejski Lustrzanki",
+			"description": ""
+		},
+		"Urban Flash Top": {
+			"name": "Styl Miejski Koszulka",
+			"description": ""
+		}
+	}
+}
