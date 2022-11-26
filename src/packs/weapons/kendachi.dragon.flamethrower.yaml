@@ -1,0 +1,63 @@
+_stats:
+  coreVersion: '10.290'
+  createdTime: 1659831053156
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669505231449
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun.svg
+name: Kendachi Dragon Flamethrower
+system:
+  weaponType: shotgun
+  weaponSkill: Heavy Weapons
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 3d6
+  rof: 1
+  dvTable: ''
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: >-
+      <p>Fire at your finger tips. Can only fire Incendiary Shotgun Shells, but
+      targets ignited by this weapon burn for 4HP a turn.</p>
+    chat: ''
+    unidentified: ''
+  source: 12DoG
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 2
+    ammoId: ''
+  ammoVariety:
+    - shotgunShell
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 1000
+    category: expensive
+  handsReq: 2
+  attachmentSlots: 3
+  isConcealed: false
+  quality: standard
+  upgrade: ''
+type: weapon
+_id: kKWg7W7ySbQGl5eT
+folder: null
+sort: 0
+ownership:
+  default: 0

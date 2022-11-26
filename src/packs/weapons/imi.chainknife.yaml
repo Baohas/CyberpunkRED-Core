@@ -1,0 +1,58 @@
+_stats:
+  coreVersion: '10.290'
+  createdTime: 1659831053165
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669505231449
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Chainsaw_excellent.svg
+name: IMI Chainknife
+system:
+  weaponType: vHeavyMelee
+  weaponSkill: Melee Weapon
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 4d6
+  rof: 1
+  dvTable: ''
+  isRanged: false
+  unarmedAutomaticCalculation: true
+  attackmod: 1
+  tags: []
+  description:
+    value: >-
+      <p>Takes an action to rev up, but once reved is a powerful melee
+      weapon.</p>
+    chat: ''
+    unidentified: ''
+  source: 12DoG
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 0
+  isUpgraded: false
+  price:
+    market: 500
+    category: veryExpensive
+  handsReq: 1
+type: weapon
+_id: 2dYYGb00Ve96CBpS
+folder: null
+sort: 0
+ownership:
+  default: 0

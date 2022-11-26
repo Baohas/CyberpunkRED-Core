@@ -1,0 +1,64 @@
+_stats:
+  coreVersion: '10.290'
+  createdTime: 1659831053167
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669505231450
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle_poor.svg
+name: Stolbovoy ST-5 Assault Rifle
+system:
+  weaponType: assaultRifle
+  weaponSkill: Shoulder Arms
+  fireModes:
+    autoFire: 4
+    suppressiveFire: true
+  damage: 5d6
+  rof: 1
+  dvTable: DV Assault Rifle
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: >-
+      <p>A - relatively - reliable gun. If you roll 1 on Attack (Crit fail) you
+      must then toss a coin; if you win the gun fires as normal, while if you
+      lose the gun jams and requires using an action to clear.</p>
+    chat: ''
+    unidentified: ''
+  source: 12DoG
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 20
+    ammoId: ''
+  ammoVariety:
+    - rifle
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 100
+    category: premium
+  handsReq: 2
+  attachmentSlots: 3
+  isConcealed: false
+  quality: poor
+  upgrade: ''
+type: weapon
+_id: poMp4coxB8SORzvi
+folder: null
+sort: 0
+ownership:
+  default: 0
