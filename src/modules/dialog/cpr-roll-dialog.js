@@ -15,7 +15,8 @@ export class CPRRollDialog extends CPRDialog {
     this.options.title = rollData.rollTitle;
     this.rollData = rollData;
 
-    // Get the whole prototype chain so we know what kind of roll this is, and what its parent classes are.
+    // Get the whole prototype chain as an array so we know what kind of roll this is, and what its parent classes are.
+    // Important for sheet data and determining which modifiers apply to the rolls.
     // Adapted from this comment: https://stackoverflow.com/a/70089208
     const prototypeChain = [];
     let currentPrototype = rollData;
@@ -33,6 +34,10 @@ export class CPRRollDialog extends CPRDialog {
 
     this.actor = actor;
     this.item = item;
+
+    // Situational modifiers from pg. 130
+    this.defaultSituationalMods = CPRMod.getDefaultSituationalMods();
+    this.showDefaultMods = false;
   }
 
   /**
@@ -130,6 +135,13 @@ export class CPRRollDialog extends CPRDialog {
       filteredMods = filteredMods.concat(deathSavePenaltyMods);
     }
 
+    // Default situational mods form core book. These modifiers would not apply to Death Save rolls.
+    if (!this.prototypeChain.includes("CPRDeathSaveRoll")) {
+      data.defaultSituationalMods = this.defaultSituationalMods;
+    }
+
+    data.showDefaultMods = this.showDefaultMods;
+
     data.filteredMods = filteredMods;
     this.filteredMods = filteredMods;
     return data;
@@ -145,9 +157,9 @@ export class CPRRollDialog extends CPRDialog {
     super.activateListeners(html);
     if (!this.options.editable) return;
 
-    // html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
-    html.find(".active-effect-checkbox").click((event) => this._activeEffectToggle(event));
-    html.find(".aimed-checkbox").click((event) => this._aimedToggle(event));
+    html.find(".toggle-situational-mod").click((event) => this._toggleSituationalMod(event));
+    html.find(".aimed-checkbox").click(() => this._aimedToggle());
+    html.find(".toggle-default-mods").click(() => this._toggleDefaultModsVisibility());
   }
 
   /**
@@ -158,9 +170,8 @@ export class CPRRollDialog extends CPRDialog {
    * head when the toggle is checked and back to body when the toggle is unchecked, fixing the above issue (until
    * someone can figure out how to resolve the Promise after the form is submitted.)
    *
-   * @param {*} event
    */
-  _aimedToggle(event) {
+  _aimedToggle() {
     LOGGER.trace("_aimedToggle | CPRRollDialog | Called.");
     if (this.rollData.isAimed) {
       this.rollData.location = "body";
@@ -174,10 +185,10 @@ export class CPRRollDialog extends CPRDialog {
    *
    * @param {*} event
    */
-  _activeEffectToggle(event) {
-    LOGGER.trace("_activeEffectToggle | CPRRollDialog | Called.");
+  _toggleSituationalMod(event) {
+    LOGGER.trace("_toggleSituationalMod | CPRRollDialog | Called.");
     const id = SystemUtils.GetEventDatum(event, "data-mod-id");
-    const mod = this.filteredMods.find((m) => m.id === id);
+    const mod = this.filteredMods.find((m) => m.id === id) || this.defaultSituationalMods.find((m) => m.id === id);
 
     if (this.rollData.mods.some((m) => m.id === id)) {
       this.rollData.removeMod(id);
@@ -185,6 +196,16 @@ export class CPRRollDialog extends CPRDialog {
       this.rollData.addMod([mod]);
     }
 
+    this.render();
+  }
+
+  /**
+   * Toggle show/hide the default situational modifiers from the core rule book (pg 130).
+   *
+   */
+  _toggleDefaultModsVisibility() {
+    LOGGER.trace("_toggleDefaultModsVisibility | CPRRollDialog | Called.");
+    this.showDefaultMods = !this.showDefaultMods;
     this.render();
   }
 }
@@ -216,6 +237,11 @@ export class CPRRoleRollDialog extends CPRRollDialog {
     return data;
   }
 
+  /**
+   *
+   * @param {*} html
+   * @override
+   */
   activateListeners(html) {
     LOGGER.trace("activateListeners | CPRRollRoleDialog | Called.");
     super.activateListeners(html);

@@ -4,7 +4,7 @@
     </div>
     <div class="item flexrow setting-value text-nowrap item-end" data-tooltip="
         {{#each rollData.mods}}
-          {{this.source}} {{~#if this.key}}&nbsp;({{cprGetChangeNameByKey false this.category this.key}}){{~/if}}: {{this.value}}
+          {{localize this.source}} {{~#if this.key}}&nbsp;({{cprGetChangeNameByKey false this.category this.key}}){{~/if}}: {{this.value}}
           <br>
         {{/each}}
       ">

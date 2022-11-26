@@ -1,3 +1,4 @@
+{{#if (cprCompare filteredMods.length ">" 0)}}
 <hr>
 <ol class="items-list">
   {{#each filteredMods as |mod|}}
@@ -10,9 +11,38 @@
       {{cprEffectModMode mod.changeMode mod.value}}
     </div>
     <div class="item flexrow setting-value text-nowrap item-end">
-      <input {{checked (cprObjectListContains ../rollData.mods "id" mod.id)}} class="active-effect-checkbox" type="checkbox" data-mod-id="{{mod.id}}" data-dtype="Checkbox">
+      <input {{checked (cprObjectListContains ../rollData.mods "id" mod.id)}} class="toggle-situational-mod" type="checkbox" data-mod-id="{{mod.id}}" data-dtype="Checkbox">
+    </div>
+  </li>
+  {{/each}}
+</ol>
+{{/if}}
+
+{{#if (cprCompare defaultSituationalMods.length ">" 0)}}
+<hr>
+<div class="toggle-default-mods red-fg" style="text-align:center;">
+  {{#if showDefaultMods}}
+    {{localize "CPR.rolls.defaultMods.situationalHide"}} <i class="fas fa-square-caret-down"></i>
+  {{else}}
+    {{localize "CPR.rolls.defaultMods.situationalShow"}} <i class="fas fa-square-caret-right"></i>
+  {{/if}}
+</div>
+{{#if showDefaultMods}}
+<ol id="default-mods" class="items-list">
+  {{#each defaultSituationalMods as |mod|}}
+  <li class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap text-bold">
+        {{localize mod.source}}:
+    </div>
+    <div class="item flexrow setting-value text-nowrap">
+      {{#if (cprCompare mod.value ">" 0)}}+{{/if}}{{mod.value}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+      <input {{checked (cprObjectListContains ../rollData.mods "id" mod.id)}} class="toggle-situational-mod" type="checkbox" data-mod-id="{{mod.id}}" data-dtype="Checkbox">
     </div>
   </li>
   {{/each}}
   <br>
 </ol>
+{{/if}}
+{{/if}}

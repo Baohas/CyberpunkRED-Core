@@ -690,4 +690,67 @@ CPR.activeEffectKeys = {
   },
 };
 
+CPR.defaultSituationalMods = {
+  complimentarySkill: {
+    value: 1,
+    source: "CPR.rolls.defaultMods.complimentarySkill",
+    id: "complimentarySkill-coreBook",
+  },
+  extraTime: {
+    value: 1,
+    source: "CPR.rolls.defaultMods.extraTime",
+    id: "extraTime-coreBook",
+  },
+  lowLight: {
+    value: -1,
+    source: "CPR.rolls.defaultMods.lowLight",
+    id: "lowLight-coreBook",
+  },
+  firstTime: {
+    value: -1,
+    source: "CPR.rolls.defaultMods.firstTime",
+    id: "firstTime-coreBook",
+  },
+  complexTask: {
+    value: -2,
+    source: "CPR.rolls.defaultMods.complexTask",
+    id: "complexTask-coreBook",
+  },
+  wrongTools: {
+    value: -2,
+    source: "CPR.rolls.defaultMods.wrongTools",
+    id: "wrongTools-coreBook",
+  },
+  badSleep: {
+    value: -2,
+    source: "CPR.rolls.defaultMods.badSleep",
+    id: "badSleep-coreBook",
+  },
+  extremeStress: {
+    value: -2,
+    source: "CPR.rolls.defaultMods.extremeStress",
+    id: "extremeStress-coreBook",
+  },
+  exhausted: {
+    value: -4,
+    source: "CPR.rolls.defaultMods.exhausted",
+    id: "exhausted-coreBook",
+  },
+  drunkSedated: {
+    value: -4,
+    source: "CPR.rolls.defaultMods.drunkSedated",
+    id: "drunkSedated-coreBook",
+  },
+  sneakily: {
+    value: -4,
+    source: "CPR.rolls.defaultMods.sneakily",
+    id: "sneakily-coreBook",
+  },
+  heavilyObscured: {
+    value: -4,
+    source: "CPR.rolls.defaultMods.heavilyObscured",
+    id: "heavilyObscured-coreBook",
+  },
+};
+
 export default CPR;

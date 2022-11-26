@@ -2,6 +2,7 @@
 /* global game */
 
 import LOGGER from "../utils/cpr-logger.js";
+import CPR from "../system/config.js";
 
 export default class CPRMod {
   constructor(effect, change, index) {
@@ -48,5 +49,10 @@ export default class CPRMod {
         break;
     }
     return relevantMods.length > 0 ? relevantMods : false;
+  }
+
+  static getDefaultSituationalMods() {
+    LOGGER.trace("getDefaultSituationalMods | CPRMod | Called.");
+    return Object.values(CPR.defaultSituationalMods);
   }
 }
