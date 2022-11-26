@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_expansive.png
-name: Expansive Medium Pistol
+name: Medium Pistol (Expansive)
 ownership:
   default: 0
 sort: 0

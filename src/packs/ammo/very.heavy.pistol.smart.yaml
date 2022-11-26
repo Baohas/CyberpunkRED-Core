@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolveryheavy_smart.png
-name: Smart Very Heavy Pistol
+name: Very Heavy Pistol (Smart)
 ownership:
   default: 0
 sort: 0

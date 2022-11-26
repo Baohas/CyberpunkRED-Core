@@ -12,7 +12,7 @@ flags:
 folder: null
 img: >-
   systems/cyberpunk-red-core/icons/compendium/ammo/pistolveryheavy_armorpiercing.png
-name: Armor Piercing Very Heavy Pistol
+name: Very Heavy Pistol (Armor Piercing)
 ownership:
   default: 0
 sort: 0

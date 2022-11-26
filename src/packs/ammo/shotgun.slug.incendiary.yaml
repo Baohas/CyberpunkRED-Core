@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_shell_incendiary.png
-name: Incendiary Shotgun Slug
+name: Shotgun Slug (Incendiary)
 ownership:
   default: 0
 sort: 0

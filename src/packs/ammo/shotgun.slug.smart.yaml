@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_slug_smart.png
-name: Smart Shotgun Slug
+name: Shotgun Slug (Smart)
 ownership:
   default: 0
 sort: 0

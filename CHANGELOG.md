@@ -7,6 +7,8 @@
 
 ### Changes
 
+- #585 - renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes 
+
 ### Bug Fixes
 
 - Align the second column on the gear tab so it is not all over the place

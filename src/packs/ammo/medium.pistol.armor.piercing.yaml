@@ -12,7 +12,7 @@ flags:
 folder: null
 img: >-
   systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_armorpiercing.png
-name: Armor Piercing Medium Pistol
+name: Medium Pistol (Armor Piercing)
 ownership:
   default: 0
 sort: 0

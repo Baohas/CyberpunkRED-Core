@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/rocket_smart.png
-name: Smart Rocket
+name: Rocket (Smart)
 ownership:
   default: 0
 sort: 0

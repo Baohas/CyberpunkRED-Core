@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_smart.png
-name: Smart Medium Pistol
+name: Medium Pistol (Smart)
 ownership:
   default: 0
 sort: 0

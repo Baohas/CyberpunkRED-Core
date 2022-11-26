@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolveryheavy_rubber.png
-name: Rubber Very Heavy Pistol
+name: Very Heavy Pistol (Rubber)
 ownership:
   default: 0
 sort: 0

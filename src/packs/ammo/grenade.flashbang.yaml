@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_flashbang.png
-name: Flashbang Grenade
+name: Grenade (Flashbang)
 ownership:
   default: 0
 sort: 0

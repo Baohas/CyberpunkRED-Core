@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_basic.png
-name: Basic Medium Pistol
+name: Medium Pistol (Basic)
 ownership:
   default: 0
 sort: 0

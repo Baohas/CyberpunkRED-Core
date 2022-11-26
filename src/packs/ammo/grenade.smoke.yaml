@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_smoke.png
-name: Smoke Grenade
+name: Grenade (Smoke)
 ownership:
   default: 0
 sort: 0

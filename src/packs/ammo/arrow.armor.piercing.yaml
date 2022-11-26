@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/bow_armorpiercing.png
-name: Armor Piercing Arrow
+name: Piercing Arrow (Armor)
 ownership:
   default: 0
 sort: 0

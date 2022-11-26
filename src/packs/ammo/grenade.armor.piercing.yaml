@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_armorpiercing.png
-name: Armor Piercing Grenade
+name: Grenade (Armor Piercing)
 ownership:
   default: 0
 sort: 0

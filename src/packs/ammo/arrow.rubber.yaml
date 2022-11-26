@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/bow_rubber.png
-name: Rubber Arrow
+name: Arrow (Rubber)
 ownership:
   default: 0
 sort: 0

@@ -12,7 +12,7 @@ flags:
 folder: null
 img: >-
   systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_slug_armorpiercing.png
-name: Armor Piercing Shotgun Slug
+name: Shotgun Slug (Armor Piercing)
 ownership:
   default: 0
 sort: 0

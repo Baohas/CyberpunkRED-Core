@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_armorpiercing.png
-name: Armor Piercing Rifle
+name: Rifle (Armor Piercing)
 ownership:
   default: 0
 sort: 0

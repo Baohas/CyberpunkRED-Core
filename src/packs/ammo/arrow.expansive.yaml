@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/bow_expansive.png
-name: Expansive Arrow
+name: Arrow (Expansive)
 ownership:
   default: 0
 sort: 0

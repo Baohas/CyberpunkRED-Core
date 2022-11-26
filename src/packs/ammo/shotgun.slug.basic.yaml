@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_slug_basic.png
-name: Basic Shotgun Slug
+name: Shotgun Slug (Basic)
 ownership:
   default: 0
 sort: 0
