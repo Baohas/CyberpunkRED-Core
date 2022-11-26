@@ -41,7 +41,7 @@ height: 2160
 initial: {}
 journal: null
 lights: []
-name: NetarchTemplate-animated
+name: Netarch Template - Animated
 navName: ''
 navOrder: 0
 navigation: false
@@ -54,7 +54,7 @@ playlistSound: null
 sort: 0
 sounds: []
 templates: []
-thumb: systems/cyberpunk-red-core/assets/scenes/6ubX3xSJvgYxPKsW-thumb.webp
+thumb: systems/cyberpunk-red-core/assets/scenes/Netarch_Template_Animated_thumb.webp
 tiles: []
 tokenVision: true
 tokens: []
