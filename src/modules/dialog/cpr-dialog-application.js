@@ -91,22 +91,20 @@ export default class CPRDialog extends FormApplication {
    * @param {Object} options - potential options to pass to this.close; currently unused;
    */
   async closeDialog(event, options) {
-    LOGGER.trace("confirmDialog | CPRDialog | Called.");
+    LOGGER.trace("closeDialog | CPRDialog | Called.");
     this.options.closeDialog();
     return this.close(options);
   }
-
-
 
   /**
    * Creates a promise to be resolved when the dialog is confirmed. One can also override default options here.
    *
    * @param {Object} - Some object to be modified by the dialog.
    */
-  static async showDialog(Cls, ...args) {
+  static async showDialog(...args) {
     LOGGER.trace("showDialog | CPRDialog | Called.");
     return new Promise((resolve, reject) => {
-      const dialog = new Cls(...args, {
+      const dialog = new this(...args, {
         confirmDialog: () => resolve(args[0]),
         closeDialog: () => reject(args[0]),
       });
