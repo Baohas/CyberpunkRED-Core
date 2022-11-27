@@ -68,14 +68,6 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Weapons",
-      "type": "Item",
-      "name": "weapons-items",
-      "path": "packs/weapons.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
       "label": "Armor",
       "type": "Item",
       "name": "armor-items",
@@ -184,6 +176,22 @@
       "type": "Item",
       "name": "elflines-armory",
       "path": "packs/elflines-armory.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Weapons",
+      "type": "Item",
+      "name": "weapons-items",
+      "path": "packs/weapons.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "The 12 Days of Gunmas",
+      "type": "Item",
+      "name": "the-12-days-of-gunmas-items",
+      "path": "packs/the-12-days-of-gunmas.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     }
