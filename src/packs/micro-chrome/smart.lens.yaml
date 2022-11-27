@@ -8,7 +8,7 @@ _stats:
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/lowlight_ir_uv.svg
+img: systems/cyberpunk-red-core/icons/compendium/micro_chrome/smart_lens.svg
 name: Smart Lens
 system:
   weaponType: assaultRifle
