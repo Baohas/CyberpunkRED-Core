@@ -831,8 +831,8 @@ export default class CPRActor extends Actor {
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
     const cprRoll = new CPRRolls.CPRStatRoll(niceStatName, statValue);
-    cprRoll.addMod([{ value: this.getArmorPenaltyMods(statName), source: `Armor Penalty (${niceStatName})` }]);
-    cprRoll.addMod([{ value: this.getWoundStateMods(), source: "Wound State Penalty" }]);
+    cprRoll.addMod([{ value: this.getArmorPenaltyMods(statName), source: SystemUtils.Format("CPR.rolls.modifiers.sources.armorPenalty", { stat: niceStatName }) }]);
+    cprRoll.addMod([{ value: this.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
     return cprRoll;
   }
 

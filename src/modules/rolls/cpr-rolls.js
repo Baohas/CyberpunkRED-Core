@@ -24,7 +24,7 @@ export class CPRRoll {
     this._roll = null;
     // (private) the resulting Roll() object from Foundry for critical roll
     this._critRoll = null;
-    // (private) a stack of mods to apply to the roll
+    // (private) a stack of mod objects to apply to the roll
     this.mods = [];
     // a name for the roll, used in the UI
     this.rollTitle = rollTitle || this.template;
@@ -73,7 +73,7 @@ export class CPRRoll {
       const modArray = rollMods.split(" ");
       modArray.forEach((mod) => {
         if (mod !== "") {
-          this.addMod([{ value: Number(mod), source: "Roll Formula" }]);
+          this.addMod([{ value: Number(mod), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.rollFormula") }]);
         }
       });
     }
@@ -83,7 +83,7 @@ export class CPRRoll {
   }
 
   /**
-   * Apply a mod to the roll.
+   * Apply a mod object to the roll. Any mod object needs to be composed of at least two entires: value and source.
    *
    * @param {CPRMod} mod - CPRMod object containing information for the modifier, including the following:
    * @param {Number} mod.value - the mod to apply to the roll (value)

@@ -90,7 +90,7 @@ export default class CPRRoleItem extends CPRItem {
     const cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, skillName, skillValue, statName, statValue, skillList);
     cprRoll.addMod(skillMods); // add skill bonuses from Active Effects
     cprRoll.addMod(roleMods); // add role bonuses from Active Effects
-    cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
+    cprRoll.addMod([{ value: actor.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
     return cprRoll;
   }
 

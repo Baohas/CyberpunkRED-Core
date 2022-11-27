@@ -48,8 +48,8 @@ export default class CPRSkillItem extends CPRItem {
     });
 
     const cprRoll = new CPRRolls.CPRSkillRoll(niceStatName, statValue, skillName, skillLevel);
-    cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: `Armor Penalty (${niceStatName})` }]);
-    cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
+    cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: SystemUtils.Format("CPR.rolls.modifiers.sources.armorPenalty", { stat: niceStatName }) }]);
+    cprRoll.addMod([{ value: actor.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
     cprRoll.addMod(roleSkillMods);
     cprRoll.addMod(skillMods); // active effects
     return cprRoll;

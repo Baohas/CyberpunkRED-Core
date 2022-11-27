@@ -248,7 +248,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     } else {
       cprRoll.addMod(netrunnerMods);
       cprRoll.addMod(roleMods);
-      cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
+      cprRoll.addMod([{ value: actor.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
     }
     return cprRoll;
   }
@@ -312,7 +312,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     } else {
       cprRoll.addMod(netrunnerMods);
       cprRoll.addMod(roleMods);
-      cprRoll.addMod([{ value: actor.getWoundStateMods(), source: "Wound State Penalty" }]);
+      cprRoll.addMod([{ value: actor.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
     }
     return cprRoll;
   }
