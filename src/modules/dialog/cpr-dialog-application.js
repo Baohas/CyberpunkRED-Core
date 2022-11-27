@@ -47,7 +47,7 @@ export default class CPRDialog extends FormApplication {
     $("input[type=text]").focusin(() => $(this).select());
     $("input[type=number]").focusin(() => $(this).select());
 
-    // html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
+    html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
     html.find(".confirm-roll").click((event) => this.confirmDialog(event));
     html.find(".cancel-roll").click((event) => this.closeDialog(event));
     this.element.find(".header-button.close").click((event) => this.closeDialog(event));
@@ -55,7 +55,7 @@ export default class CPRDialog extends FormApplication {
 
   _itemCheckboxToggle(event) {
     LOGGER.trace("_itemCheckboxToggle | CPRDialog | Called.");
-    const { dialogData } = this;
+    const dialogData = this.object;
     const target = SystemUtils.GetEventDatum(event, "data-target");
     const value = !getProperty(dialogData, target);
     if (hasProperty(dialogData, target)) {

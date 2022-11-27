@@ -58,7 +58,7 @@ export default class CPRCombatant extends Combatant {
       const allMods = CPRMod.getAllModifiers(effects);
       const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
-      const initiativeMods = CPRMod.getRelevantMods(filteredMods, "initiative", "AeBonus");
+      const initiativeMods = CPRMod.getRelevantMods(filteredMods, "initiative");
 
       cprInitiative.addMod(initiativeMods); // consider any active effects
 

@@ -84,8 +84,8 @@ export default class CPRRoleItem extends CPRItem {
     const allMods = CPRMod.getAllModifiers(effects);
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
-    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName), "AeBonus");
-    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName), "AeBonus");
+    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName));
+    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName));
 
     const cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, skillName, skillValue, statName, statValue, skillList);
     cprRoll.addMod(skillMods); // add skill bonuses from Active Effects

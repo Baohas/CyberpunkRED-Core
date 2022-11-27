@@ -21,7 +21,7 @@ export default class CPRMod {
   }
 
   /**
-   * Convert each Change on each Effect into a CPRMod and then return a list of those CPRMod objects.
+   * Convert each Change on each (non-disabled) Effect into a CPRMod and then return a list of those CPRMod objects.
    *
    * @param {Array<ActiveEffect>} effects - An array of ActiveEffects
    * @return {Array<CPRMod>}
@@ -45,24 +45,11 @@ export default class CPRMod {
    *
    * @param {Array<CPRMod>} modifiers - An array of CPRMods.
    * @param {String} key - String with an effect key to filter the array.
-   * @param {String} bonusType - String to specify which type of bonus we are filtering for.
    * @return {Array<CPRMod>} - Array of mods filtered for a specific key.
    */
-  static getRelevantMods(modifiers, key, bonusType) {
+  static getRelevantMods(modifiers, key) {
     LOGGER.trace("getRelevantMods | CPRMod | Called.");
-    let relevantMods = [];
-    switch (bonusType) {
-      case "AeBonus": {
-        relevantMods = modifiers.filter((m) => m.key === `bonuses.${key}`);
-        break;
-      }
-      case "statBonus": {
-        relevantMods = modifiers.filter((m) => m.key === `system.stats.${key}.value`);
-        break;
-      }
-      default:
-        break;
-    }
+    const relevantMods = modifiers.filter((m) => m.key === `bonuses.${key}`);
     return relevantMods;
   }
 

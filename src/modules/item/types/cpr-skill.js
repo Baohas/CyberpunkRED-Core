@@ -40,7 +40,7 @@ export default class CPRSkillItem extends CPRItem {
     const allMods = CPRMod.getAllModifiers(effects);
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
-    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName), "AeBonus");
+    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName));
 
     let roleSkillMods = [];
     actor.itemTypes.role.forEach((r) => {

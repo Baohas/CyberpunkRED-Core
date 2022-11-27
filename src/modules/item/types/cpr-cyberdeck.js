@@ -238,9 +238,9 @@ export default class CPRCyberdeckItem extends CPRItem {
     const allMods = CPRMod.getAllModifiers(effects);
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
-    const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage", "AeBonus");
-    const netrunnerMods = CPRMod.getRelevantMods(filteredMods, executionType, "AeBonus");
-    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName), "AeBonus");
+    const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
+    const netrunnerMods = CPRMod.getRelevantMods(filteredMods, executionType);
+    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName));
 
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.
     if (executionType === "damage") {
@@ -302,9 +302,9 @@ export default class CPRCyberdeckItem extends CPRItem {
     const allMods = CPRMod.getAllModifiers(effects);
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
-    const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage", "AeBonus");
-    const netrunnerMods = CPRMod.getRelevantMods(filteredMods, interfaceAbility, "AeBonus");
-    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName), "AeBonus");
+    const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
+    const netrunnerMods = CPRMod.getRelevantMods(filteredMods, interfaceAbility);
+    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName));
 
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.
     if (rollInfo.executionType === "damage") {

@@ -872,7 +872,7 @@ export default class CPRActor extends Actor {
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
-    const deathSavePenaltyMods = CPRMod.getRelevantMods(filteredMods, "deathSavePenalty", "AeBonus");
+    const deathSavePenaltyMods = CPRMod.getRelevantMods(filteredMods, "deathSavePenalty");
     cprRoll.addMod(deathSavePenaltyMods);
     return cprRoll;
   }

@@ -133,15 +133,15 @@ const Attackable = function Attackable() {
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
-    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName), "AeBonus");
+    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName));
 
-    const attackMods = CPRMod.getRelevantMods(filteredMods, "universalAttack", "AeBonus");
-    const aimedShotMods = CPRMod.getRelevantMods(filteredMods, "aimedShot", "AeBonus");
-    const rangedMods = CPRMod.getRelevantMods(filteredMods, "ranged", "AeBonus");
-    const meleeMods = CPRMod.getRelevantMods(filteredMods, "melee", "AeBonus");
-    const autofireMods = CPRMod.getRelevantMods(filteredMods, "autofire", "AeBonus");
-    const suppressiveMods = CPRMod.getRelevantMods(filteredMods, "suppressive", "AeBonus");
-    const singleShotMods = CPRMod.getRelevantMods(filteredMods, "singleShot", "AeBonus");
+    const attackMods = CPRMod.getRelevantMods(filteredMods, "universalAttack");
+    const aimedShotMods = CPRMod.getRelevantMods(filteredMods, "aimedShot");
+    const rangedMods = CPRMod.getRelevantMods(filteredMods, "ranged");
+    const meleeMods = CPRMod.getRelevantMods(filteredMods, "melee");
+    const autofireMods = CPRMod.getRelevantMods(filteredMods, "autofire");
+    const suppressiveMods = CPRMod.getRelevantMods(filteredMods, "suppressive");
+    const singleShotMods = CPRMod.getRelevantMods(filteredMods, "singleShot");
 
     let cprRoll;
     // Create the roll based on the type and apply relevant mods to it.
@@ -327,7 +327,7 @@ const Attackable = function Attackable() {
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
-    const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage", "AeBonus");
+    const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
     cprRoll.addMod(damageMods);
     return cprRoll;
   };
