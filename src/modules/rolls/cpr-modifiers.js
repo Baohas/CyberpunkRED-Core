@@ -3,6 +3,7 @@
 
 import LOGGER from "../utils/cpr-logger.js";
 import CPR from "../system/config.js";
+import SystemUtils from "../utils/cpr-systemUtils.js";
 
 export default class CPRMod {
   constructor(effect, change, index) {
@@ -19,6 +20,12 @@ export default class CPRMod {
     this.changeMode = change.mode;
   }
 
+  /**
+   * Convert each Change on each Effect into a CPRMod and then return a list of those CPRMod objects.
+   *
+   * @param {Array<ActiveEffect>} effects - An array of ActiveEffects
+   * @return {Array<CPRMod>}
+   */
   static getAllModifiers(effects) {
     LOGGER.trace("getAllModifiers | CPRMod | Called.");
     const allModifiers = [];
@@ -33,9 +40,17 @@ export default class CPRMod {
     return allModifiers;
   }
 
+  /**
+   * Convert each Change on each Effect into a CPRMod and then return a list of those CPRMod objects.
+   *
+   * @param {Array<CPRMod>} modifiers - An array of CPRMods.
+   * @param {String} key - String with an effect key to filter the array.
+   * @param {String} bonusType - String to specify which type of bonus we are filtering for.
+   * @return {Array<CPRMod>} - Array of mods filtered for a specific key.
+   */
   static getRelevantMods(modifiers, key, bonusType) {
     LOGGER.trace("getRelevantMods | CPRMod | Called.");
-    let relevantMods;
+    let relevantMods = [];
     switch (bonusType) {
       case "AeBonus": {
         relevantMods = modifiers.filter((m) => m.key === `bonuses.${key}`);
@@ -48,9 +63,113 @@ export default class CPRMod {
       default:
         break;
     }
-    return relevantMods.length > 0 ? relevantMods : false;
+    return relevantMods;
   }
 
+  /**
+   * Get all mods that are situational for the roll dialog.
+   *
+   * @param {CPRRoll} rollData - CPRRoll object
+   * @param {Array<ActiveEffect>} effects - An array of ActiveEffects on the actor that triggered the roll.
+   * @param {CPRItem} item - CPRItem that the roll came from.
+   * @return {Array<CPRMod>} - Array of mods filtered to be applicable for a specific type of roll.
+   */
+  static getSituationalRollMods(rollData, effects, item) {
+    LOGGER.trace("getSituationalRollMods | CPRMod | Called.");
+    const prototypeChain = SystemUtils.getPrototypeChain(rollData);
+
+    // Get effects relevant to the roll.
+    const allSituationalMods = CPRMod.getAllModifiers(effects).filter((m) => m.isSituational);
+    let filteredMods = [];
+
+    // Stat mods. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
+    if ((prototypeChain.includes("CPRStatRoll") || prototypeChain.includes("CPRRoleRoll")) && !prototypeChain.includes("CPRInterfaceRoll")) {
+      const statMods = allSituationalMods.filter((m) => m.key === `system.stats.${rollData.statName.toLowerCase()}.value`);
+      filteredMods = filteredMods.concat(statMods);
+    }
+
+    // Skill mods.
+    if ((prototypeChain.includes("CPRSkillRoll") || prototypeChain.includes("CPRRoleRoll")) && !prototypeChain.includes("CPRInterfaceRoll")) {
+      const skillMods = allSituationalMods.filter((m) => m.key === `bonuses.${SystemUtils.slugify(rollData.skillName)}`);
+      filteredMods = filteredMods.concat(skillMods);
+    }
+
+    // Initiative Mods.
+    if (prototypeChain.includes("CPRInitiative")) {
+      const initiativeMods = allSituationalMods.filter((m) => m.key === `bonuses.initiative`);
+      filteredMods = filteredMods.concat(initiativeMods);
+    }
+
+    // Attack mods.
+    if (prototypeChain.includes("CPRAttackRoll")) {
+      const attackRollBonusKeys = ["bonuses.universalAttack"];
+
+      if (item.system.isRanged) {
+        attackRollBonusKeys.push("bonuses.ranged");
+      } else {
+        attackRollBonusKeys.push("bonuses.melee");
+      }
+
+      if (prototypeChain[0] === "CPRAttackRoll") {
+        attackRollBonusKeys.push("bonuses.singleShot");
+      } else if (prototypeChain.includes("CPRAimedAttackRoll")) {
+        attackRollBonusKeys.push("bonuses.singleShot");
+        attackRollBonusKeys.push("bonuses.aimedShot");
+      } else if (prototypeChain.includes("CPRAutofireRoll")) {
+        attackRollBonusKeys.push("bonuses.autofire");
+      } else if (prototypeChain.includes("CPRSuppressiveFireRoll")) {
+        attackRollBonusKeys.push("bonuses.suppressive");
+      }
+      const attackMods = allSituationalMods.filter((m) => attackRollBonusKeys.includes(m.key));
+
+      // Attack mods from upgrades.
+      const upgradeMods = item.getAllUpgradeMods("attackmod").filter((m) => m.isSituational);
+      filteredMods = filteredMods.concat(attackMods).concat(upgradeMods);
+    }
+
+    // Damage Mods.
+    if (prototypeChain.includes("CPRDamageRoll")) {
+      const damageMods = allSituationalMods.filter((m) => m.key === `bonuses.universalDamage`);
+      // Damage mods from upgrades.
+      const upgradeMods = item.getAllUpgradeMods("damage").filter((m) => m.isSituational);
+      filteredMods = filteredMods.concat(damageMods).concat(upgradeMods);
+    }
+
+    // Role Mods.
+    if (prototypeChain.includes("CPRRoleRoll")) {
+      const roleMods = allSituationalMods.filter((m) => m.key === `bonuses.${SystemUtils.slugify(rollData.roleName)}`);
+      filteredMods = filteredMods.concat(roleMods);
+    }
+
+    // Netrunner Mods.
+    if (prototypeChain.includes("CPRInterfaceRoll")) {
+      let netrunnerMods = allSituationalMods.filter((m) => m.key === `bonuses.${rollData.ability}`);
+
+      if (rollData.ability === "zap") {
+        netrunnerMods = netrunnerMods.concat(allSituationalMods.filter((m) => m.key === "bonuses.attack" || m.key === "bonuses.universalAttack"));
+      }
+
+      if (rollData.ability === "attack") {
+        netrunnerMods = netrunnerMods.concat(allSituationalMods.filter((m) => m.key === "bonuses.universalAttack"));
+      }
+
+      filteredMods = filteredMods.concat(netrunnerMods);
+    }
+
+    // Death Save Mods.
+    if (prototypeChain.includes("CPRDeathSaveRoll")) {
+      const deathSavePenaltyMods = allSituationalMods.filter((m) => m.key === "bonuses.deathSavePenalty");
+      filteredMods = filteredMods.concat(deathSavePenaltyMods);
+    }
+
+    return filteredMods;
+  }
+
+  /**
+   * Get default situational mods which appear in the core rule book on page 130.
+   *
+   * @return {Array<CPRMod-like-objects>} - Array of mods from config.js.
+   */
   static getDefaultSituationalMods() {
     LOGGER.trace("getDefaultSituationalMods | CPRMod | Called.");
     return Object.values(CPR.defaultSituationalMods);

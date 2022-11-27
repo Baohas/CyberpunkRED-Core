@@ -85,26 +85,24 @@ const Attackable = function Attackable() {
       }
     }
     const skillName = skillItem.name;
-    // total up bonuses from skills and stats
     const skillValue = actor.getSkillLevel(skillName);
-    // const skillMod = actor.getSkillMod(skillName);
-    let cprRoll;
+
     let statName;
     if (cprWeaponData.isRanged && cprWeaponData.weaponType !== "thrownWeapon") {
       statName = "ref";
     } else {
       statName = "dex";
     }
-
-    // total up skill bonuses from role abilities and subRole abilities
     const niceStatName = SystemUtils.Localize(`CPR.global.stats.${statName}`);
     const statValue = actor.getStat(statName);
+
+    // Get all mods for skills from role abilities and subRole abilities
     let roleSkillMods = [];
     actor.itemTypes.role.forEach((r) => {
       roleSkillMods = roleSkillMods.concat(r.getSkillBonuses(skillName));
     });
 
-    // total up universal attack bonuses directly from role abilities (not indirectly from skills)
+    // Get all mods for attack bonuses directly from role abilities (not indirectly from skills)
     const roleAttackMods = [];
     actor.itemTypes.role.forEach((r) => {
       if (r.system.universalBonuses.includes("attack")) {
@@ -130,8 +128,9 @@ const Attackable = function Attackable() {
       });
     });
 
-    const effects = actor.effects.contents;
-    const allMods = CPRMod.getAllModifiers(effects);
+    const effects = actor.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
     const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName), "AeBonus");
@@ -144,6 +143,8 @@ const Attackable = function Attackable() {
     const suppressiveMods = CPRMod.getRelevantMods(filteredMods, "suppressive", "AeBonus");
     const singleShotMods = CPRMod.getRelevantMods(filteredMods, "singleShot", "AeBonus");
 
+    let cprRoll;
+    // Create the roll based on the type and apply relevant mods to it.
     switch (type) {
       case CPRRolls.rollTypes.AIMED: {
         cprRoll = new CPRRolls.CPRAimedAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
@@ -282,7 +283,7 @@ const Attackable = function Attackable() {
       cprRoll.rollCardExtraArgs.ignoreHalfArmor = true;
     }
 
-    // total up universal attack bonuses directly from role abilities (not indirectly from skills)
+    // Get all mods for universal damage bonuses from role abilities.
     const roleDamageMods = [];
     this.actor.itemTypes.role.forEach((r) => {
       if (r.system.universalBonuses.includes("damage")) {
@@ -321,9 +322,11 @@ const Attackable = function Attackable() {
       }
     }
 
-    const effects = actor.effects.contents;
-    const allMods = CPRMod.getAllModifiers(effects);
+    const effects = actor.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
     const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage", "AeBonus");
     cprRoll.addMod(damageMods);
     return cprRoll;

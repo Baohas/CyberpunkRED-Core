@@ -1,6 +1,6 @@
 <div class="text-normal text-bold text-nowrap" data-tooltip="
   {{#each mods as |mod|}}
-    {{localize mod.source}} {{#if mod.key}}({{cprGetChangeNameByKey false mod.category mod.key}}){{/if}}: {{mod.value}}
+    {{localize mod.source}} {{#if mod.key}}({{cprGetChangeNameByKey false mod.category mod.key}}){{/if}}: {{numberFormat mod.value sign=true}}
     <br>
   {{/each}}
   {{#if additionalMods}}

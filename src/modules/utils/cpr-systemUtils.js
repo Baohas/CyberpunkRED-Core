@@ -433,6 +433,41 @@ export default class CPRSystemUtils {
     return imageLink;
   }
 
+  /**
+   * Get the whole prototype chain as an array so we know what kind of roll this is, and what its parent classes are.
+   * Used in roll-dialog.js sheet data and determining which modifiers apply to the rolls.
+   * Adapted from this comment: https://stackoverflow.com/a/70089208
+   *
+   * @param {Object} objectData - some object with a class
+   * @return {Array.<string>} - array of parent class names; strings.
+   */
+  static getPrototypeChain(objectData) {
+    LOGGER.trace("getPrototypeChain | CPRSystemUtils | Called.");
+    const prototypeChain = [];
+    let currentPrototype = objectData;
+    while (currentPrototype) {
+      currentPrototype = Object.getPrototypeOf(currentPrototype);
+      if (currentPrototype && currentPrototype.constructor.name !== "Object") {
+        prototypeChain.push(currentPrototype?.constructor.name);
+      }
+    }
+    return prototypeChain;
+  }
+
+  /**
+   * Get targeted or selected tokens.
+   *
+   * @param {String} targetedOrSelected - either "targeted" or "selected"
+   * @return {Array} - Targeted or selected tokens.
+   */
+  static getUserTargetedOrSelected(targetedOrSelected) {
+    LOGGER.trace("getUserTargetedOrSelected | CPRSystemUtils | Called.");
+    const targets = new Set(game.user.targets);
+    const tokens = targetedOrSelected === "selected" ? canvas.tokens.controlled : Array.from(targets);
+    tokens.sort((a, b) => (a.name > b.name ? 1 : -1));
+    return tokens;
+  }
+
   /* DATA TEMPLATE UTILS */
 
   /**
@@ -475,14 +510,6 @@ export default class CPRSystemUtils {
   }
 
   /* MIGRATION UTILS */
-
-  static getUserTargetedOrSelected(targetedOrSelected) {
-    LOGGER.trace("getUserTargetedOrSelected | CPRSystemUtils | Called.");
-    const targets = new Set(game.user.targets);
-    const tokens = targetedOrSelected === "selected" ? canvas.tokens.controlled : Array.from(targets);
-    tokens.sort((a, b) => (a.name > b.name ? 1 : -1));
-    return tokens;
-  }
 
   /**
    * Updates the migration bar at the top of the page.

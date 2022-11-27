@@ -47,7 +47,6 @@ export default class CPRDialog extends FormApplication {
     $("input[type=text]").focusin(() => $(this).select());
     $("input[type=number]").focusin(() => $(this).select());
 
-    // generic listeners
     // html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
     html.find(".confirm-roll").click((event) => this.confirmDialog(event));
     html.find(".cancel-roll").click((event) => this.closeDialog(event));
@@ -72,15 +71,7 @@ export default class CPRDialog extends FormApplication {
    */
   async confirmDialog(event, options) {
     LOGGER.trace("confirmDialog | CPRDialog | Called.");
-    /** Taken from Starfinder: Fire callback, then delete, as it would get called again by Dialog#close. '
-       * Do I need to do this though, since it does not have the same name? Seems like it works without it.
-       */
-
-    // if (this.options.confirmRoll) {
-    //   this.options.confirmRoll();
-    //   delete this.options.confirmRoll;
-    // }
-    // await this._updateObject(event, this.rollData);
+    // Taken from Starfinder: Fire callback that resolves original promise.
     this.options.confirmDialog();
     return this.close(options);
   }

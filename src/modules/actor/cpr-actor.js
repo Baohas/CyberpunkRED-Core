@@ -831,6 +831,8 @@ export default class CPRActor extends Actor {
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
     const cprRoll = new CPRRolls.CPRStatRoll(niceStatName, statValue);
+
+    // Add relevant mods.
     cprRoll.addMod([{ value: this.getArmorPenaltyMods(statName), source: SystemUtils.Format("CPR.rolls.modifiers.sources.armorPenalty", { stat: niceStatName }) }]);
     cprRoll.addMod([{ value: this.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
     return cprRoll;
@@ -865,8 +867,9 @@ export default class CPRActor extends Actor {
     const bodyStat = this.system.stats.body.value;
     const cprRoll = new CPRRolls.CPRDeathSaveRoll(deathSavePenalty, deathSaveBasePenalty, bodyStat);
 
-    const effects = this.effects.contents;
-    const allMods = CPRMod.getAllModifiers(effects);
+    const effects = this.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
     const deathSavePenaltyMods = CPRMod.getRelevantMods(filteredMods, "deathSavePenalty", "AeBonus");

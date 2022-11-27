@@ -87,10 +87,9 @@ export class CPRRoll {
   /**
    * Apply a mod object to the roll. Any mod object needs to be composed of at least two entires: value and source.
    *
-   * @param {CPRMod} mod - CPRMod object containing information for the modifier, including the following:
-   * @param {Number} mod.value - the mod to apply to the roll (value)
-   * @param {String} mod.source - where it came from
-   * @param {String} mod.id - a unique identifier (comes from parent effect)
+   * @param {Array<CPRMod-like-object> | CPRMod-like-object | String | Number} mod - CPRMod object containing information for the modifier.
+   * CPRMods are constructed a specific way, but at minimum, a mod to be added here needs to be an object with the following
+   * entries: { value: number, source: "string" }
    */
   addMod(mod) {
     LOGGER.trace("addMod | CPRRoll | Called.");
