@@ -8,7 +8,7 @@ _stats:
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg
+img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/grenade_launcher_underbarrel.svg
 name: Grenade Launcher Underbarrel (Poor)
 system:
   weaponType: grenadeLauncher

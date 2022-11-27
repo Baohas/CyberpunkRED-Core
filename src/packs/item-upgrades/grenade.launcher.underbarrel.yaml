@@ -10,7 +10,7 @@ effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg
+img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/grenade_launcher_underbarrel.svg
 name: Grenade Launcher Underbarrel
 ownership:
   default: 0
