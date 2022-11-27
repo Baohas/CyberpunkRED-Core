@@ -58,7 +58,7 @@
         },
         "Combat Knife": {
             "description": "<p>Un coltello adatto per le strade.</p>",
-            "name": "Coltello da combattimento"
+            "name": "Coltello da Combattimento"
         },
         "Combat Knife (Excellent)": {
             "description": "<p>Un coltello adatto per la strada. +1 all'Attacco.</p>",
@@ -86,7 +86,7 @@
         },
         "Crowbar": {
             "description": "<p>Utile sia come strumento che come arma. Una barra di ferro con cunei divisi alle estremità. </p>",
-            "name": "Piede di porco"
+            "name": "Piede di Porco"
         },
         "Crowbar (Excellent)": {
             "description": "<p>Utile sia come strumento che come arma. Una barra di ferro con cunei divisi alle estremità. +1 all'Attacco.</p>",
@@ -162,7 +162,7 @@
         },
         "Lead Pipe": {
             "description": "<p>Un tubo, tipicamente in metallo o vetroresina. Può aver trasportato fluidi in passato. </p>",
-            "name": "Tubo di piombo"
+            "name": "Tubo di Piombo"
         },
         "Lead Pipe (Excellent)": {
             "description": "<p>Un tubo, tipicamente in metallo o vetroresina. Può aver trasportato fluidi in passato. +1 all'Attacco.</p>",
@@ -274,7 +274,7 @@
         },
         "Sledgehammer": {
             "description": "<p>Un grande martello con la testa di metallo piatto che distribuisce la forza colpita su una vasta area. </p>",
-            "name": "Martello da demolizione"
+            "name": "Martello da Demolizione"
         },
         "Sledgehammer (Excellent)": {
             "description": "<p>Un grande martello con la testa di metallo piatto che distribuisce la forza colpita su una vasta area. +1 all'Attacco.</p>",
@@ -302,7 +302,7 @@
         },
         "Spiked Bat": {
             "description": "<p>Un progresso da una mazza regolare. Una manciata di chiodi sono stati martellati dalla punta. </p>",
-            "name": "Mazza Chiodata"
+            "name": "Randello Chiodato"
         },
         "Spiked Bat (Excellent)": {
             "description": "<p>Una mazza regolare chiodata. +1 all'Attacco.</p>",

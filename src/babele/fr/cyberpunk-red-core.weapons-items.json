@@ -322,7 +322,7 @@
         },
         "Sword": {
             "description": "<p>Une arme avec une lame et une poignée.</p>",
-            "name": "Épée"
+            "name": "Sabre"
         },
         "Sword (Excellent)": {
             "description": "<p>Une arme avec une lame et une poignée. Conçue pour couper. +1 au jet d'attaque.</p>",
