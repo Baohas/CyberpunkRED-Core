@@ -16,7 +16,8 @@
 
 ### Changes
 
-- #585 - renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes 
+- #585 - renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes
+- Changed the Extended Magazine and Drum Magazine upgrades to use the Ammo icon instead of the default icon
 
 ### Bug Fixes
 

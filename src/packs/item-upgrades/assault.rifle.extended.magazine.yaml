@@ -10,7 +10,7 @@ effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
 name: Assault Rifle Extended Magazine
 ownership:
   default: 0
