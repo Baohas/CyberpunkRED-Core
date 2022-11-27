@@ -24,8 +24,10 @@ export class CPRRoll {
     this._roll = null;
     // (private) the resulting Roll() object from Foundry for critical roll
     this._critRoll = null;
-    // (private) a stack of mod objects to apply to the roll
+    // (private) an array of mod objects to apply to the roll. The mod objects contain useful information about the mods themselves.
     this.mods = [];
+    // User inputted mods that can be added in the roll dialogs just before the roll.
+    this.additionalMods = [];
     // a name for the roll, used in the UI
     this.rollTitle = rollTitle || this.template;
     // Store the die type and it can be used when displaying on the rollcard
@@ -142,10 +144,17 @@ export class CPRRoll {
   totalMods() {
     LOGGER.trace("totalMods | CPRRoll | Called.");
     let modTotal = 0;
+    // Total up regular mods.
     this.mods.forEach((mod) => {
       modTotal += mod.value;
     });
-    return this.mods.length > 0 ? modTotal : 0;
+
+    // Total up additional mods inputted by the user.
+    this.additionalMods.forEach((value) => {
+      const valueInt = value ? Number.parseInt(value, 10) : 0;
+      modTotal += valueInt;
+    });
+    return this.mods.length > 0 || this.additionalMods.length > 0 ? modTotal : 0;
   }
 
   /**

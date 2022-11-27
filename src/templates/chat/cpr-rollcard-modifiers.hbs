@@ -3,6 +3,7 @@
     {{localize this.source}} {{#if this.key}}({{cprGetChangeNameByKey false this.category this.key}}){{/if}}: {{this.value}}
     <br>
   {{/each}}
+  {{#if additionalMods}} {{localize "CPR.rolls.modifiers.additionalMods"}}: {{additionalMods}} {{/if}}
 ">
-  {{localize "CPR.rolls.mods"}} {{localize "CPR.rolls.total"}}: {{totalMods}}
+  {{localize "CPR.rolls.modifiers.modsTotal"}}: {{totalMods}}
 </div>

@@ -978,6 +978,11 @@
   "CPR.rolls.failed": "Failed",
   "CPR.rolls.location": "Location",
   "CPR.rolls.luck": "Spend LUCK",
+  "CPR.rolls.modifiers.additionalMods": "Additional Mods",
+  "CPR.rolls.modifiers.additionalModWarning": "The additional mod field only accepts numbers separated by commas or spaces.",
+
+  "CPR.rolls.modifiers.modsTotal": "Total Mods",
+
   "CPR.rolls.modifiers.sources.armorPenalty": "Armor Penalty ({stat})",
   "CPR.rolls.modifiers.sources.woundStatePenalty": "Wound State Penalty",
   "CPR.rolls.modifiers.sources.rollFormula": "Roll Formula",

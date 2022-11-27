@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-/* global */
+/* global duplicate */
 import CPRMod from "../rolls/cpr-modifiers.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -207,6 +207,42 @@ export class CPRRollDialog extends CPRDialog {
     LOGGER.trace("_toggleDefaultModsVisibility | CPRRollDialog | Called.");
     this.showDefaultMods = !this.showDefaultMods;
     this.render();
+  }
+
+  /**
+   * We ovverride this function to process additional mods added by the user in the dialog.
+   *
+   * @param {*} event
+   * @param {Object} formData - Updated dialog data to be merged with the original object.
+   * @override
+   */
+  async _updateObject(event, formData) {
+    LOGGER.trace("_updateObject | CPRDialog | Called.");
+    const fd = duplicate(formData);
+    if (formData.additionalMods) {
+      // Replace all spaces/commas and then split into an array at each comma.
+      fd.additionalMods = fd.additionalMods.replace(/ +/g, ",");
+      fd.additionalMods = fd.additionalMods.replace(/,+/g, ",");
+      fd.additionalMods = fd.additionalMods.split(",");
+
+      // Sanitize data input by checking if anything inputted is not a number. Warn user if so.
+      // eslint-disable-next-line no-restricted-globals
+      if (fd.additionalMods.some((m) => isNaN(m))) {
+        SystemUtils.DisplayMessage("warn", "CPR.rolls.modifiers.additionalModWarning");
+      }
+      fd.additionalMods.forEach((m, i) => {
+        // eslint-disable-next-line no-restricted-globals
+        if (isNaN(m)) {
+          fd.additionalMods.splice(i, 1);
+        }
+      });
+
+      // Convert each additional mod into a number
+      fd.additionalMods = fd.additionalMods.map(Number);
+    } else {
+      fd.additionalMods = [];
+    }
+    super._updateObject(event, fd);
   }
 }
 
