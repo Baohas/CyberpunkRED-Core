@@ -24,8 +24,8 @@ system:
     chat: ''
     unidentified: ''
     value: >-
-      <p>A rechargeable (1 hour) battery pack, commonly used with Exotic weapons.
-      Contains 8 shots and can be recharged.&nbsp;</p>
+      <p>A rechargeable (1 hour) battery pack, commonly used with Exotic
+      weapons. Contains 8 shots and can be recharged.&nbsp;</p>
   favorite: false
   price:
     category: costly
