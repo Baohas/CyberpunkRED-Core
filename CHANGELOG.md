@@ -7,6 +7,7 @@
 
 - Added all 12 new guns from The 12 Days of Gunmas. Some special features require manual application at this stage
 - Added all 12 new guns from Woodchipper’s Garage. Some special features require manual application at this stage
+- Added the 2 new cyberware, 1 new gun, and 1 new clothing from Micro Chrome
 - Added Acid ammo type
 - Added Paintballs and Special Ammo varieties
 - Added Basic, Acid, Biotoxin, and Poison paintballs

@@ -1,0 +1,2010 @@
+_stats:
+  coreVersion: '10.290'
+  createdTime: 1659830963857
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669556186343
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/chyron.svg
+name: Chipware Compartment
+system:
+  weaponType: assaultRifle
+  weaponSkill: Archery
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 1d6
+  rof: 1
+  dvTable: ''
+  isRanged: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>Lets you conceal up to four pieces of chipware, no Check required.
+      Retrial is done by spending an action to spin the eye in its socket.</p>
+    chat: ''
+    unidentified: ''
+  source: MC
+  favorite: false
+  revealed: true
+  usage: toggled
+  install: clinic
+  isInstalled: false
+  size: 3
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: true
+    isConcealed: false
+  upgrades: []
+  slots: 0
+  isUpgraded: false
+  price:
+    market: 100
+    category: premium
+  type: cyberEye
+  isWeapon: false
+  isFoundational: false
+  hasOptionalSlots: false
+  optionSlots: 0
+  core: false
+  installedOptionSlots: 0
+  optionalIds: []
+  humanityLoss:
+    static: '3'
+    roll: 1d6
+  amount: 1
+  attachmentSlots: 0
+  isConcealed: false
+  quality: ''
+  upgrade: ''
+  allowedUsage:
+    - always
+    - toggled
+    - installed
+  availableSlots: 0
+  isGM: true
+  isOwned: null
+  relativeSkills:
+    - _id: 13raQA8s0uaE9Pmq
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911124
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911124
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Basic Tech
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: 2YDWLi0oPsH3c7B6
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911106
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911106
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Melee Weapon
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: dex
+        category: fightingSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: 2cEhxWWDwDYepIuJ
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911110
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911110
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Athletics
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: dex
+        category: bodySkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: 3QXtTqLRdD1lZYsI
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911119
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911119
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Trading
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: cool
+        category: socialSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: 4TnbLnA1TqSFnXtq
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911123
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911123
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Electronics/Security Tech
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: difficult
+        core: true
+        basic: false
+      type: skill
+    - _id: 4mmnxQPl7tWbMweF
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911123
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911123
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Animal Handling
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: 4nZAn6M44PYI8CU2
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911116
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911116
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Resist Torture/Drugs
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: will
+        category: bodySkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: 7cjWFTjwgwm4Pamn
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911111
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911111
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Martial Arts
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: dex
+        category: fightingSkills
+        difficulty: difficult
+        core: true
+        basic: false
+      type: skill
+    - _id: 8yxaK6GbNu59yxKH
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911114
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911114
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: First Aid
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: tech
+        category: techniqueSkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: 9CW2f27aYBUsNDXS
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911107
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911107
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Paint/Draw/Sculpt
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: 9Cn1HeCuzQZ27iJ7
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911110
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911110
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Bureaucracy
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: AAQhR9XKhEFDhne7
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911108
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911108
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Riding
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: ref
+        category: controlSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: AZiaiaTsX7p69VeW
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911118
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911118
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Gamble
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: CzaAkwAjPDplz4nn
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911118
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911118
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Evasion
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: dex
+        category: fightingSkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: DlYHwCapjvfyYgKh
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911124
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911124
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Conversation
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: emp
+        category: socialSkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: E6ZW9X4H8tjX294j
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911126
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911126
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Local Expert
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: ENrWOKuCjjpJjCtl
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911117
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911117
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Land Vehicle Tech
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: EkO3gpmabPfeGZeU
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911113
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911113
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Streetwise
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: cool
+        category: socialSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: F4QWNMT1koSiw4HL
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911113
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911113
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Contortionist
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: dex
+        category: bodySkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: FxviNlk84J78vEhV
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911109
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911109
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Human Perception
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: emp
+        category: socialSkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: HbUTj5xqErBhyiN4
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911127
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911127
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Criminology
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: L4tVCWCpkCW7OYhE
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911114
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911114
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Composition
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: LWy8XHIR3JKL1R0i
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911121
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911121
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Cybertech
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: LsFm00AIool6DVwl
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911127
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911127
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Language (Streetslang)
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: MRodaB3wlDzSQJl8
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911119
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911119
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Photography/Film
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: NafrVs2glkn6Ud82
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911122
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911122
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Accounting
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: ON66k91XPD6e3uby
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911125
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911125
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Sea Vehicle Tech
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: P9WIrQR7Nrxxq682
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911106
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911106
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Wardrobe & Style
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: cool
+        category: socialSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: RI5M0MhWRVNFwUKm
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911118
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911118
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Cryptography
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: RkNmXeJttYnBdgTK
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911128
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911128
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Deduction
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: TM1yunkgm8iUAsFZ
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911107
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911107
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Pilot Sea Vehicle
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: ref
+        category: controlSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: TNA0LGN1MAYoA60l
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911111
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911111
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Heavy Weapons
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: ref
+        category: rangedweaponSkills
+        difficulty: difficult
+        core: true
+        basic: false
+      type: skill
+    - _id: UZspAWJSJ2Gdb7NI
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911119
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911119
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Drive Land Vehicle
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: ref
+        category: controlSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: VdvSW102ytvqRgfx
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911124
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911124
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Shoulder Arms
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: ref
+        category: rangedweaponSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: Xbk6aAKKUQtXRunw
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911119
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911119
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Autofire
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: ref
+        category: rangedweaponSkills
+        difficulty: difficult
+        core: true
+        basic: false
+      type: skill
+    - _id: Z41spNxYQPCAPXoC
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911109
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911109
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Weaponstech
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: bBSVyMIWcWtEt4nC
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911115
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911115
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Interrogation
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: cool
+        category: socialSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: bkDDCt1Gb3xWXEEw
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911113
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911113
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Tracking
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: awarenessSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: cUIOleVPNLHP9y3i
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911115
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911115
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Library Search
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: cjOJUX2Wlc5jpuYU
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911122
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911122
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Pick Pocket
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: cwwOn3YucT9CqJBN
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911106
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911106
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Persuasion
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: cool
+        category: socialSkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: dZ6CPPQLCGfFULo5
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911115
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911115
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Archery
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: ref
+        category: rangedweaponSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: dai7lskmxzohcpZS
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911108
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911108
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Endurance
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: will
+        category: bodySkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: f319Qi6jITQMATyG
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911128
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911128
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Concentration
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: will
+        category: awarenessSkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: fIq8FZsb8QgBN0sG
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911114
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911114
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Personal Grooming
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: cool
+        category: socialSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: fPnx3mKaMiRgGavI
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911124
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911124
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Brawling
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: dex
+        category: fightingSkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: hCZpo57MoOlMYfrL
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911110
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911110
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Demolitions
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: difficult
+        core: true
+        basic: false
+      type: skill
+    - _id: iiYgc3iNOIzMG0fO
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911111
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911111
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Business
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: jFdPv4BuD0tLj7su
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911108
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911108
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Wilderness Survival
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: l7gW0F5MaWg9I7tC
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911115
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911115
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Handgun
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: ref
+        category: rangedweaponSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: m6zHqBrjzEGAs3c0
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911125
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911125
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Education
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: nPVwsGDzkjaGu6mZ
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911113
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911113
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Perception
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: int
+        category: awarenessSkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: oNkNlAveEaFmztRb
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911110
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911110
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Lip Reading
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: awarenessSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: pd1WswOLTjK2yjEc
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911117
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911117
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Bribery
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: cool
+        category: socialSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: piZ6Ooq8uNwzlNuJ
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911110
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911110
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Science
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: puWDSgyEiCY5qwVp
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911118
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911118
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Pick Lock
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: rIU0OZRG7RavocVV
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911113
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911113
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Conceal/Reveal Object
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: awarenessSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: rWMTfz2YfmPPetNd
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911118
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911118
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Acting
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: cool
+        category: performanceSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: sAQCgDP3EyJMIKP3
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911128
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911128
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Air Vehicle Tech
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: wQZ4N3RJXfcAY5hR
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911122
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911122
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Pilot Air Vehicle
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: ref
+        category: controlSkills
+        difficulty: difficult
+        core: true
+        basic: false
+      type: skill
+    - _id: wmZyf1oHTlWwE8HQ
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911127
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911127
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Play Instrument
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: performanceSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: wpHLZDqfC7wE00Vw
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911107
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911107
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Forgery
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: xT6Lp6hhlWRaTs0n
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911117
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911117
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Tactics
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: int
+        category: educationSkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+    - _id: y2oyHHPllOLVxiNJ
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911107
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911107
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Stealth
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 2
+        stat: dex
+        category: bodySkills
+        difficulty: typical
+        core: true
+        basic: true
+      type: skill
+    - _id: zJA3lYQ47dmm55fd
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911122
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911122
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Paramedic
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: tech
+        category: techniqueSkills
+        difficulty: difficult
+        core: true
+        basic: false
+      type: skill
+    - _id: zSBy9rWNSEVySygE
+      _stats:
+        coreVersion: '10.276'
+        createdTime: 1659832911112
+        lastModifiedBy: 00CPRCBuildBot00
+        modifiedTime: 1659832911112
+        systemId: cyberpunk-red-core
+        systemVersion: 0.82.0
+      effects: []
+      flags:
+        core: {}
+      folder: null
+      img: icons/svg/item-bag.svg
+      name: Dance
+      ownership:
+        default: 0
+      sort: 0
+      system:
+        tags: []
+        description: ''
+        source: ''
+        favorite: false
+        level: 0
+        stat: dex
+        category: bodySkills
+        difficulty: typical
+        core: true
+        basic: false
+      type: skill
+  dvTableNames:
+    - DV Assault Rifle
+    - DV Assault Rifle (Autofire)
+    - DV Bows & Crossbows
+    - DV Generic
+    - DV Grenade Launcher
+    - DV Pistol
+    - DV Rocket Launcher
+    - DV SMG
+    - DV SMG (Autofire)
+    - DV Shotgun (Slug)
+    - DV Sniper Rifle
+    - DV Thrown Weapon
+type: cyberware
+_id: jcaBaa81CJiRktcu
+folder: null
+sort: 0
+ownership:
+  default: 0

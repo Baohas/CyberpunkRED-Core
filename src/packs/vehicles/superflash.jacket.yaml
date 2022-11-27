@@ -1,0 +1,46 @@
+_stats:
+  coreVersion: '10.290'
+  createdTime: 1659830947644
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669556186344
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jacket.svg
+name: Superflash Jacket
+system:
+  tags: []
+  description:
+    value: >-
+      <p>A nice jacket carrying a surpise; using an action anyone wearing this
+      jacket can consume a battery to let off a blinding light. Treat as a
+      Flashbang Grenade without the Damaged Ear Critical Injury, centered on the
+      wearer.</p>
+    chat: ''
+    unidentified: ''
+  source: MC
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  amount: 1
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 500
+    category: premium
+  type: jacket
+  style: urbanFlash
+  quality: standard
+type: clothing
+_id: CJB0sTptAOnLoEfu
+folder: null
+sort: 0
+ownership:
+  default: 0
