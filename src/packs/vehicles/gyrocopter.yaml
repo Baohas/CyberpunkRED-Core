@@ -10,7 +10,7 @@ effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+img: systems/cyberpunk-red-core/icons/compendium/vehicle/helicopter.svg
 name: Gyrocopter
 permission:
   Xqm436pL6P6n9SaN: 3

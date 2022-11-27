@@ -16,6 +16,7 @@
 - Added icons for the Underbarrel Grenade Launcher and Underbarrel Shotgun
 - Added an new icon for Paintballs
 - Added new icons for Chipware Compartment and Smart Lens
+- Add 7 new vehicle icons
 
 ### Changes
 
