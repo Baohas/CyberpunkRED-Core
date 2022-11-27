@@ -2,13 +2,9 @@
 
 - This System Implementation is the product of the CPR System Dev Team!
 
-## Art
+## Legal Stuff
 
-- Pause overlay image: [Olena Panasovska](https://thenounproject.com/term/cyberpunk/1797860/) (CCBY)
-- Netarchitecture tiles, Dystopian City Streets, Dystopian City Junction scenes and and background picture created by [SolutionMaps](https://www.patreon.com/solutionmaps)
-- Netrunning icons provided by Verasunrise and Hyriu33
-- Program/Black ICE icon usage inspired by [Verfasst von Tim](https://charzinski.wordpress.com/2021/01/10/cyberpunk-red-netrunner-cards/)
-- Status & Critical Injury icons inspired by by [evr-](https://old.reddit.com/r/cyberpunkred/comments/lpicdf/roll20_custom_status_icons_for_cyberpunk_red/)
+This game system (including items provided in the compendium) contains unofficial content provided under the Homebrew Content Policy of R. Talsorian Games and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
 
 ## Code
 
@@ -18,11 +14,22 @@
 
 Audimat Typeface by [SMeltery](http://www.smeltery.net)
 
-## Icons
+## Art
+
+- Pause overlay image: [Olena Panasovska](https://thenounproject.com/term/cyberpunk/1797860/) (CCBY)
+- Netarchitecture tiles, Dystopian City Streets, Dystopian City Junction scenes and and background picture created by [SolutionMaps](https://www.patreon.com/solutionmaps)
+- Netrunning icons provided by Verasunrise and Hyriu33
+- Program/Black ICE icon usage inspired by [Verfasst von Tim](https://charzinski.wordpress.com/2021/01/10/cyberpunk-red-netrunner-cards/)
+- Status & Critical Injury icons inspired by by [evr-](https://old.reddit.com/r/cyberpunkred/comments/lpicdf/roll20_custom_status_icons_for_cyberpunk_red/)
+
+## General Icons
 
 - Icons, Art, Design, and Styling: [Flintwyrm](https://twitter.com/Flintwyrm)
 - Default icons for compendia provided by Lorc, Delapouite, Skoll, sbed, and John Colburn [Game Icons](https://game-icons.net) under the [CC-BY license](https://creativecommons.org/licenses/by/3.0/)
 - Ammo Icons by [Mirradin](https://old.reddit.com/user/Mirrandin)
+
+## Specific Icons
+
 - `icons/compendium/blackice/kraken.{svg,webp}` from [Mode Standard Kraken](https://www.svgrepo.com/svg/355417/mode-standard-kraken)
 - `icons/compendium/clothing/generic_bottoms.svg` from [Trousers Pants](https://www.svgrepo.com/svg/275007/trousers-pants)
 - `icons/compendium/clothing/generic_contact-lenses.svg` from [Contact Lens](https://www.svgrepo.com/svg/160924/contact-lens)
@@ -196,7 +203,3 @@ Audimat Typeface by [SMeltery](http://www.smeltery.net)
 - `icons/compendium/weapons/microwaver.svg` remixed from [Canister](https://game-icons.net/1x1/lorc/cannister.html) and [Tec 9](https://game-icons.net/1x1/skoll/tec-9.html)
 - `icons/compendium/weapons/shrieker.svg` remixed from [CZ Scorpion](https://game-icons.net/1x1/skoll/cz-skorpion.html)
 - `icons/compendium/weapons/stun_gun.svg` remixed from [Mac 10](https://game-icons.net/1x1/skoll/mac-10.html)
-
-## Legal Stuff
-
-This game system (including items provided in the compendium) contains unofficial content provided under the Homebrew Content Policy of R. Talsorian Games and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
