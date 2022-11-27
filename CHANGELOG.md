@@ -14,6 +14,7 @@
 - Added the Exotic Poor Quality Underbarrel Grenade Launcher
 - Added special used by the Malorian Arms Sub-Flechette Gun, the Nova Model 757 Cityhunter, and the Sternmeyer M-02 Heavy Rifle
 - Added icons for the Underbarrel Grenade Launcher and Underbarrel Shotgun
+- Added an new icon for Paintballs
 
 ### Changes
 
