@@ -202,6 +202,14 @@
       "path": "packs/woodchippers-garage.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Micro Chrome",
+      "type": "Item",
+      "name": "micro-chrome-items",
+      "path": "packs/micro-chrome.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
     }
   ],
   "languages": [
