@@ -6,6 +6,7 @@
 ### New Features
 
 - Added all 12 new guns from The 12 Days of Gunmas. Some special features require manual application at this stage
+- Added all 12 new guns from Woodchipper’s Garage. Some special features require manual application at this stage
 
 ### Changes
 

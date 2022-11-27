@@ -194,6 +194,14 @@
       "path": "packs/the-12-days-of-gunmas.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Woodchipper’s Garage",
+      "type": "Item",
+      "name": "woodchippers-garage-items",
+      "path": "packs/woodchippers-garage.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
     }
   ],
   "languages": [
