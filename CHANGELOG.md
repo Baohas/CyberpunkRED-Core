@@ -18,6 +18,7 @@
 - Added new icons for Chipware Compartment and Smart Lens
 - Add 7 new vehicle icons
 - Added a new icon for the Bulletproof Shield
+- Added a new icon for the Poor Quality Underbarrel Grenade Launcher
 
 ### Changes
 
