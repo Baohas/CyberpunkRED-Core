@@ -16,6 +16,7 @@
 - Align the second column on the gear tab so it is not all over the place
 - Fixed missing thumbnail image for the included Dystopian City Junction map
 - Corrected the name format of the included maps
+- Corrected a typo in the name of the Excellent Heavy SMG
 
 ## Version 0.84.0 | Date: 2022-11-22
 
