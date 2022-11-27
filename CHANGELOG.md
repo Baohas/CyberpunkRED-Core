@@ -4,12 +4,14 @@
 ## Version DEV | Date: TBD
 
 ### New Features
+- We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
 
 ### Changes
+- The Babele module should no longer require renaming files or directories to make it work.(#482)
 
 ### Bug Fixes
-
 - Align the second column on the gear tab so it is not all over the place.
+
 
 ## Version 0.84.0 | Date: 2022-11-22
 
