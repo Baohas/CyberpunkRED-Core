@@ -2,7 +2,7 @@ _stats:
   coreVersion: '10.290'
   createdTime: 1659831053156
   lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1669545811238
+  modifiedTime: 1669554021390
   systemId: cyberpunk-red-core
   systemVersion: v0.0.0dev
 effects: []
@@ -18,7 +18,7 @@ system:
     suppressiveFire: false
   damage: 5d6
   rof: 1
-  dvTable: DV Shotgun (Slug)
+  dvTable: ''
   isRanged: true
   unarmedAutomaticCalculation: true
   attackmod: 0
@@ -42,8 +42,7 @@ system:
     max: 1
     ammoId: ''
   ammoVariety:
-    - shotgunShell
-    - shotgunSlug
+    - paintball
   concealable:
     concealable: false
     isConcealed: false

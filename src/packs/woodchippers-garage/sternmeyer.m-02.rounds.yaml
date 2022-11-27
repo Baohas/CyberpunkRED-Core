@@ -1,0 +1,38 @@
+_stats:
+  coreVersion: '10.290'
+  createdTime: 1659831195844
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669554443778
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_armorpiercing.png
+name: Sternmeyer M-02 Rounds
+system:
+  tags: []
+  description:
+    value: >-
+      <p>Special Armor Piercing rounds for use only in the Sternmeyer M-02 Heavy
+      Rifle. Comes in a drum of 80.</p>
+    chat: ''
+    unidentified: ''
+  source: WG
+  favorite: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  amount: 80
+  price:
+    market: 500
+    category: premium
+  variety: special
+  type: armorPiercing
+  upgrade: ''
+type: ammo
+_id: TTn8GdqM6rnjHSCX
+folder: null
+sort: 0
+ownership:
+  default: 0

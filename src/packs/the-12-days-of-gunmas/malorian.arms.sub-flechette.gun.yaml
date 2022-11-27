@@ -2,7 +2,7 @@ _stats:
   coreVersion: '10.290'
   createdTime: 1659831053153
   lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1669505231449
+  modifiedTime: 1669553704395
   systemId: cyberpunk-red-core
   systemVersion: v0.0.0dev
 effects: []
@@ -44,7 +44,7 @@ system:
     max: 25
     ammoId: ''
   ammoVariety:
-    - heavyPistol
+    - special
   concealable:
     concealable: false
     isConcealed: false

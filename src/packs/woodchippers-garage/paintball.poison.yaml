@@ -1,0 +1,38 @@
+_stats:
+  coreVersion: '10.290'
+  createdTime: 1659831195847
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669554443778
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_basic.png
+name: Paintball (Poison)
+system:
+  tags: []
+  description:
+    value: >-
+      <p>Little more than 3 Vials of Poison strapped togther. Deals no direct
+      damage on hit.</p>
+    chat: ''
+    unidentified: ''
+  source: WG
+  favorite: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  amount: 10
+  price:
+    market: 300
+    category: cheap
+  variety: paintball
+  type: poison
+  upgrade: ''
+type: ammo
+_id: frnQaR6QRCqmSUZk
+folder: null
+sort: 0
+ownership:
+  default: 0

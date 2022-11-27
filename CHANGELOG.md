@@ -9,6 +9,9 @@
 - Added all 12 new guns from Woodchipper’s Garage. Some special features require manual application at this stage
 - Added Acid ammo type
 - Added Paintballs and Special Ammo varieties
+- Added Basic, Acid, Biotoxin, and Poison paintballs
+- Added the Exotic Poor Quality Underbarrel Grenade Launcher
+- Added special used by the Malorian Arms Sub-Flechette Gun, the Nova Model 757 Cityhunter, and the Sternmeyer M-02 Heavy Rifle
 
 ### Changes
 
