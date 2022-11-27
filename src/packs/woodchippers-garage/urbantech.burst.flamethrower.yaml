@@ -26,9 +26,9 @@ system:
   description:
     value: >-
       <p>Can only fire Incendiary Shotgun Shells, but targets ignited by this
-      weapon burn for 4HP a turn.<br><br>Additionally, this weapon can consum
-      all it's remaining ammo to shoot a fireball, which explodes in a similer
-      fasion to an incendiary grenade. The user of the weapon is also consumed
+      weapon burn for 4HP a turn.<br><br>Additionally, this weapon can consume
+      all it's remaining ammo to shoot a fireball, which explodes in a similar
+      fashion to an incendiary grenade. The user of the weapon is also consumed
       by the fireball, getting Deadly on Fire.&nbsp;</p>
     chat: ''
     unidentified: ''

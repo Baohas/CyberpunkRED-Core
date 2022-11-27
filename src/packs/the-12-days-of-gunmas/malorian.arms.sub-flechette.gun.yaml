@@ -26,10 +26,10 @@ system:
   description:
     value: >-
       <p>This SMG can only fire it's own custom Armor-Piercing Ammunition,
-      however that ammo ablates by 4 when deadling damage. Comes with a Smartgun
+      however that ammo ablates by 4 when dealing damage. Comes with a Smartgun
       Link*.</p>
 
-      <p><em>*Smartgun Link must be manually added after aquiring the
+      <p><em>*Smartgun Link must be manually added after acquiring the
       weapon</em></p>
     chat: ''
     unidentified: ''

@@ -26,7 +26,7 @@ system:
   description:
     value: >-
       <p>A very heavy pistol capable of loading up to five different ammo types
-      at onces, with the user able to pick between them before firing.</p>
+      at once, with the user able to pick between them before firing.</p>
     chat: ''
     unidentified: ''
   source: 12DoG

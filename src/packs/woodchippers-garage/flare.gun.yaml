@@ -25,7 +25,7 @@ system:
   tags: ''
   description:
     value: >-
-      <p>As well as normal Grenade Ammunation, this weapon can fire road flares.
+      <p>As well as normal Grenade Ammunition, this weapon can fire road flares.
       They don't deal any damage, but if fired into the air can be seen from 3
       miles. You cannot install this weapon in Pop-up Cyberware.</p>
     chat: ''
