@@ -142,7 +142,7 @@ Audimat Typeface by [SMeltery](http://www.smeltery.net)
 - `icons/compendium/cyberware/voice_stress_analyzer.svg` remixed from [Ear](https://www.svgrepo.com/svg/58400/ear) and [User Voice](https://www.svgrepo.com/svg/334346/user-voice)
 - `icons/compendium/cyberware/web_foot.svg` remixed from [Leg](https://game-icons.net/1x1/delapouite/leg.html) and [Duck Prints](https://www.svgrepo.com/svg/32836/duck-prints)
 - `icons/compendium/cyberware/wolvers.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette), [Wolverine Claws](https://game-icons.net/1x1/delapouite/wolverine-claws.html)
-- `icons/compendium/default/Default_Armor_Head.svg` - remixed from [helmet](https:// www.svgrepo.com/svg/213639/helmet)
+- `icons/compendium/default/Default_Armor_Head.svg` - remixed from [helmet](https://www.svgrepo.com/svg/213639/helmet)
 - `icons/compendium/gear/air_hypo.svg` remixed from [monkeywrench](https://game-icons.net/1x1/delapouite/monkey-wrench.html), [Thermometer Scale](https://game-icons.net/1x1/lorc/thermometer-scale.html), and [Valve](https://game-icons.net/1x1/delapouite/valve.html) from game-icons.net
 - `icons/compendium/gear/antismok_breathing_mask.svg` remixed from [Surgical Mask](https://www.svgrepo.com/svg/346425/surgical-mask-fill) and [Edit Mask](https://www.svgrepo.com/svg/333033/edit-mask)
 - `icons/compendium/gear/audio_recorder.svg` from [Recorder](https://www.svgrepo.com/svg/66755/recorder)
