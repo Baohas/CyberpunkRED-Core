@@ -25,6 +25,7 @@
 - Corrected the name format of the included maps
 - Corrected a typo in the name of the Excellent Heavy SMG
 - Corrected a typo in the Battery Pack ammo description
+- Fixed the Incendiary Shotgun Slug showing the wrong image
 
 ## Version 0.84.0 | Date: 2022-11-22
 
