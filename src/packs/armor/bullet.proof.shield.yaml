@@ -10,7 +10,7 @@ effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+img: systems/cyberpunk-red-core/icons/compendium/armor/bullet_proof_shield.svg
 name: Bullet Proof Shield
 ownership:
   default: 0
