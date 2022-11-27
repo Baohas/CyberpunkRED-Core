@@ -33,7 +33,7 @@
             {{#if (cprCompare basePenalty "!==" 0)}}
             <span class="text-normal text-nowrap">{{localize "CPR.characterSheet.rightPanke.skills.base"}} {{localize "CPR.global.generic.deathPenalty"}}: {{basePenalty}}</span>
             {{/if}}
-            {{#if mods}}
+            {{#if (cprCompare mods.length "||" additionalMods.length)}}
               {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
             {{/if}}
             <div class="text-massive text-center fg-{{#if (cprCompare saveResult "===" (localize "CPR.rolls.success"))}}green{{else}}red{{/if}}">{{saveResult}}</div>

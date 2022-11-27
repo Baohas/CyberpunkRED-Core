@@ -47,15 +47,14 @@
                         src="systems/cyberpunk-red-core/icons/dice/black/d6_{{dieFace}}.svg">
                     {{/if}}
                     {{/each}}
-
+{{log this}}
                 </div>
                 <div class="d6-number-div">
-                  {{log this}}
-                    {{#if (cprCompare mods.length ">" 0)}}
+                    {{#if (cprCompare mods.length "||" additionalMods.length)}}
                     <a>
                     {{/if}}
                     <span class="clickable{{#if criticalCard}} fg-red text-bold{{/if}}" data-action="toggleVisibility" data-visible-element="d6-data-details">{{resultTotal}}</span>
-                    {{#if (cprCompare mods.length ">" 0)}}
+                    {{#if (cprCompare mods.length "||" additionalMods.length)}}
                     </a>
                     {{/if}}
                 </div>
@@ -72,8 +71,8 @@
                         {{bonusDamage}}</div>
                     {{/if}}
                     <div class="d6-data-details hide">
-                        {{#if (cprCompare mods.length ">" 0)}}
-                        <div class="text-normal text-bold">{{localize "CPR.rolls.mods"}}: {{totalMods}}</div>
+                        {{#if (cprCompare mods.length "||" additionalMods.length)}}
+                          {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
                         {{/if}}
                     </div>
                 </div>

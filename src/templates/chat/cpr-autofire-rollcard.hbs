@@ -47,7 +47,7 @@
               <div class="text-normal text-bold">{{localize roleName}} + {{roleValue}}</div>
             {{/if}}
 
-            {{#if mods}}
+            {{#if (cprCompare mods.length "||" additionalMods.length)}}
               {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
             {{/if}}
 

@@ -1,9 +1,11 @@
 <div class="text-normal text-bold text-nowrap" data-tooltip="
-  {{#each mods}}
-    {{localize this.source}} {{#if this.key}}({{cprGetChangeNameByKey false this.category this.key}}){{/if}}: {{this.value}}
+  {{#each mods as |mod|}}
+    {{localize mod.source}} {{#if mod.key}}({{cprGetChangeNameByKey false mod.category mod.key}}){{/if}}: {{mod.value}}
     <br>
   {{/each}}
-  {{#if additionalMods}} {{localize "CPR.rolls.modifiers.additionalMods"}}: {{additionalMods}} {{/if}}
+  {{#if additionalMods}}
+    {{localize "CPR.rolls.modifiers.additionalMods"}}:{{#each additionalMods as |mod|}}&nbsp;{{numberFormat mod sign=true}}{{#unless @last}},{{/unless}}{{/each}}
+  {{/if}}
 ">
   {{localize "CPR.rolls.modifiers.modsTotal"}}: {{totalMods}}
 </div>

@@ -29,7 +29,7 @@
         <div class="d10-data-div">
           <div class="d10-data-details hide">
             <div class="text-normal text-bold">{{localize statName}} + {{statValue}}</div>
-            {{#if mods}}
+            {{#if (cprCompare mods.length "||" additionalMods.length)}}
               {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
 
             {{/if}}

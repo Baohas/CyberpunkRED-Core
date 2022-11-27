@@ -41,7 +41,7 @@
             <div class="text-normal">{{localize (cprGetLocalizedlNameKey skillName "skill")}}: {{skillValue}}</div>
             {{/if}}
 
-            {{#if mods}}
+            {{#if (cprCompare mods.length "||" additionalMods.length)}}
               {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
             {{/if}}
 

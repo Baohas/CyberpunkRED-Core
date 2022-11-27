@@ -25,12 +25,12 @@
           {{/each}}
         </div>
         <div class="{{die}}-number-div">
-          <a><span class="{{#if mods}}clickable{{/if}}{{#if criticalCard}} fg-red text-bold{{/if}}"
+          <a><span class="{{#if (cprCompare mods.length "||" additionalMods.length)}}clickable{{/if}}{{#if criticalCard}} fg-red text-bold{{/if}}"
               data-action="toggleVisibility" data-visible-element="{{die}}-data-details">{{resultTotal}}</span></a>
         </div>
         <div class="{{die}}-data-div">
           <div class="{{die}}-data-details hide">
-            {{#if mods}}
+            {{#if (cprCompare mods.length "||" additionalMods.length)}}
             <span class="text-normal text-nowrap">{{localize "CPR.rolls.rollMods"}}: {{mods}}</span>
             <div class="text-normal text-bold text-nowrap">{{localize "CPR.rolls.mods"}} {{localize "CPR.rolls.total"}}:
               {{totalMods}}</div>
