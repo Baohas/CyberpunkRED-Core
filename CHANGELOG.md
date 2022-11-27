@@ -12,13 +12,12 @@
 - Added Paintballs and Special Ammo varieties
 - Added Basic, Acid, Biotoxin, and Poison paintballs
 - Added the Exotic Poor Quality Underbarrel Grenade Launcher
-- Added special used by the Malorian Arms Sub-Flechette Gun, the Nova Model 757 Cityhunter, and the Sternmeyer M-02 Heavy Rifle
-- Added icons for the Underbarrel Grenade Launcher and Underbarrel Shotgun
-- Added an new icon for Paintballs
+- Added special ammo used by the Malorian Arms Sub-Flechette Gun, the Nova Model 757 Cityhunter, and the Sternmeyer M-02 Heavy Rifle
+- Added icons for the Underbarrel Shotgun, Underbarrel Grenade Launcher and Poor Quality Underbarrel Grenade Launcher
+- Added a new icon for Paintballs
 - Added new icons for Chipware Compartment and Smart Lens
 - Add 7 new vehicle icons
-- Added a new icon for the Bulletproof Shield
-- Added a new icon for the Poor Quality Underbarrel Grenade Launcher
+- Added new icons for the Bodyweight Suit, the Bulletproof Shield, and generic head armor
 
 ### Changes
 

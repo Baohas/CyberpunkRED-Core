@@ -10,7 +10,7 @@ effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor_Head.svg
 name: Kevlar (Head)
 ownership:
   default: 0

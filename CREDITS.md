@@ -30,6 +30,8 @@ Audimat Typeface by [SMeltery](http://www.smeltery.net)
 
 ## Specific Icons
 
+- `icons/compendium/armor/bodyweightsuit.svg` - remixed from [wetsuit](https://www.svgrepo.com/svg/20767/wetsuit)
+- `icons/compendium/armor/bulletproofshield.svg` - remixed from [shield-defense](https://www.svgrepo.com/svg/288878/shield-defense)
 - `icons/compendium/blackice/kraken.{svg,webp}` from [Mode Standard Kraken](https://www.svgrepo.com/svg/355417/mode-standard-kraken)
 - `icons/compendium/clothing/generic_bottoms.svg` from [Trousers Pants](https://www.svgrepo.com/svg/275007/trousers-pants)
 - `icons/compendium/clothing/generic_contact-lenses.svg` from [Contact Lens](https://www.svgrepo.com/svg/160924/contact-lens)
@@ -140,6 +142,7 @@ Audimat Typeface by [SMeltery](http://www.smeltery.net)
 - `icons/compendium/cyberware/voice_stress_analyzer.svg` remixed from [Ear](https://www.svgrepo.com/svg/58400/ear) and [User Voice](https://www.svgrepo.com/svg/334346/user-voice)
 - `icons/compendium/cyberware/web_foot.svg` remixed from [Leg](https://game-icons.net/1x1/delapouite/leg.html) and [Duck Prints](https://www.svgrepo.com/svg/32836/duck-prints)
 - `icons/compendium/cyberware/wolvers.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette), [Wolverine Claws](https://game-icons.net/1x1/delapouite/wolverine-claws.html)
+- `icons/compendium/default/Default_Armor_Head.svg` - remixed from [helmet](https:// www.svgrepo.com/svg/213639/helmet)
 - `icons/compendium/gear/air_hypo.svg` remixed from [monkeywrench](https://game-icons.net/1x1/delapouite/monkey-wrench.html), [Thermometer Scale](https://game-icons.net/1x1/lorc/thermometer-scale.html), and [Valve](https://game-icons.net/1x1/delapouite/valve.html) from game-icons.net
 - `icons/compendium/gear/antismok_breathing_mask.svg` remixed from [Surgical Mask](https://www.svgrepo.com/svg/346425/surgical-mask-fill) and [Edit Mask](https://www.svgrepo.com/svg/333033/edit-mask)
 - `icons/compendium/gear/audio_recorder.svg` from [Recorder](https://www.svgrepo.com/svg/66755/recorder)
