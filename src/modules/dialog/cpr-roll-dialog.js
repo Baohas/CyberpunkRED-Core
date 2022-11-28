@@ -8,10 +8,10 @@ import CPRDialog from "./cpr-dialog-application.js";
 export class CPRRollDialog extends CPRDialog {
   /**
    *
-   * @param {CPRRoll} rollData
-   * @param {CPRActor} actor
-   * @param {CPRItem} item
-   * @param {Object} options
+   * @param {CPRRoll} rollData - cprRoll data
+   * @param {CPRActor} actor - actor that the roll came from
+   * @param {CPRItem} item - item that the roll may have come from
+   * @param {Object} options - options to change the nature of the dialog
    * @constructor
    */
   constructor(rollData, actor, item, options) {

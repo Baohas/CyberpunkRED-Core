@@ -31,8 +31,8 @@ export default class LOGGER {
     }
   }
 
-  static error(msg) {
-    console.error(`CPR ERR | ${msg}`);
+  static error(msg, obj) {
+    console.error(`CPR ERR | ${msg}`, obj);
   }
 
   static credits() {

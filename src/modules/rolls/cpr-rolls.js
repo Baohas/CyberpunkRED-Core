@@ -87,40 +87,20 @@ export class CPRRoll {
   /**
    * Apply a mod object to the roll. Any mod object needs to be composed of at least two entires: value and source.
    *
-   * @param {Array<CPRMod-like-object> | CPRMod-like-object | String | Number} mod - CPRMod object containing information for the modifier.
-   * CPRMods are constructed a specific way, but at minimum, a mod to be added here needs to be an object with the following
-   * entries: { value: number, source: "string" }
+   * @param {Array<CPRMod-like-object>} modArray -
+   *    - Array of CPRMod-like objects containing information for the modifier.
+   *      - At minimum, a mod to be added here needs to be an object with
+   *        the following entries: { value: number, source: "string" }.
+   *      - CPRMods have the above information and more (see cpr-modifiers.js).
    */
-  addMod(mod) {
+  addMod(modArray) {
     LOGGER.trace("addMod | CPRRoll | Called.");
-    if (Array.isArray(mod)) {
-      mod.forEach((m) => {
+    if (Array.isArray(modArray)) {
+      modArray.forEach((m) => {
         if (m && m.value !== 0) this.mods.push(m);
       });
     } else {
-      switch (typeof mod) {
-        case "object":
-          if (mod.value !== 0) this.mods.push(mod);
-          break;
-        case "number": {
-          const modObj = {
-            value: mod,
-            source: "Unknown Source",
-          };
-          if (modObj.value !== 0) this.mods.push(modObj);
-          break;
-        }
-        case "string": {
-          const modObj = {
-            value: Number.parseInt(mod, 10),
-            source: "Unknown Source",
-          };
-          if (modObj.value !== 0) this.mods.push(modObj);
-        }
-          break;
-        default:
-          break;
-      }
+      LOGGER.error("Arg for addMod must be an Array of CPRMod-like objects. See argument:", modArray);
     }
   }
 
@@ -153,6 +133,7 @@ export class CPRRoll {
       const valueInt = value ? Number.parseInt(value, 10) : 0;
       modTotal += valueInt;
     });
+
     return this.mods.length > 0 || this.additionalMods.length > 0 ? modTotal : 0;
   }
 
@@ -274,8 +255,9 @@ export class CPRRoll {
     }
 
     if (!skipDialog) {
-      // const formData = await VerifyRoll.RenderPrompt(this).catch((err) => LOGGER.debug(err));
-
+      // We want to call the dialog from the right place.
+      // There are two roll dialogs: RoleDialog and RoleRollDialog.
+      // Depending on the type of the roll, we will choose one or the other.
       let DialogClass;
       switch (this.constructor) {
         // eslint-disable-next-line no-use-before-define
@@ -288,12 +270,13 @@ export class CPRRoll {
           break;
       }
 
-      const dialog = await DialogClass.showDialog(this, actor, item).catch((err) => LOGGER.debug(err));
-      if (dialog === undefined) {
+      // Call the dialog. Catch and throw an error if the promise is not returned.
+      const dialogData = await DialogClass.showDialog(this, actor, item).catch((err) => LOGGER.debug(err));
+      if (dialogData === undefined) {
         // returns false if the dialog was closed
         return false;
       }
-      mergeObject(this, dialog, { overwrite: true });
+      mergeObject(this, dialogData, { overwrite: true });
     }
     return true;
   }

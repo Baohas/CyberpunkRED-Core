@@ -1,4 +1,4 @@
-/* global duplicate */
+/* global duplicate CONST */
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 
@@ -188,9 +188,14 @@ const Upgradable = function Upgradable() {
     LOGGER.trace("getAllUpgradeMods | Upgradable | Called.");
     const relevantUpgrades = [];
     if ((this.actor && typeof this.system.isUpgraded === "boolean" && this.system.isUpgraded)) {
+      // Get all installed upgrades.
       const installedUpgrades = this.system.upgrades;
+
+      // Get all installed upgrades of type override.
       const overrides = installedUpgrades.filter((u) => u.system.modifiers[dataPoint].type === "override");
 
+      // Key and category are used to display what the bonus upgrades.
+      // Currently the only applicable category is combat, but conceivably there could be others.
       let key; let category;
       switch (dataPoint) {
         case "attackmod":
@@ -205,24 +210,27 @@ const Upgradable = function Upgradable() {
           break;
       }
 
+      // If there is an override, create an CPRMod-like object out of the highest one.
+      // Because upgrades can provide situational bonuses, we must add all of the following
+      // information (id, source, key, category, changemode) for everything to look/function correctly in a roll dialog.
       if (overrides.length > 0) {
         overrides.sort((a, b) => b.system.modifiers[dataPoint].value - a.system.modifiers[dataPoint].value);
         const mod = overrides[0].system.modifiers[dataPoint];
-        mod.id = `${overrides[0].name}-${key}-0`;
-        mod.source = overrides[0].name;
-        mod.key = key;
-        mod.category = category;
-        mod.changeMode = 2;
+        mod.id = `${overrides[0].name}-${key}-0`; // This should create a unique ID for the mod.
+        mod.source = overrides[0].name; // Where the upgrade comes from.
+        mod.key = key; // Datapoint being upgraded.
+        mod.category = category; // Category of above key.
+        mod.changeMode = CONST.ACTIVE_EFFECT_MODES.ADD; // const = 2. This comes from foundry.
         relevantUpgrades.push(mod);
       } else {
         installedUpgrades.forEach((u, index) => {
           if (u.system.modifiers[dataPoint].value > 0) {
             const mod = duplicate(u.system.modifiers[dataPoint]);
-            mod.id = `${u.name}-${key}-${index}`;
-            mod.source = u.name;
-            mod.key = key;
-            mod.category = category;
-            mod.changeMode = 2;
+            mod.id = `${u.name}-${key}-${index}`; // This should create a unique ID for the mod.
+            mod.source = u.name; // Where the upgrade comes from.
+            mod.key = key; // Datapoint being upgraded.
+            mod.category = category; // Category of above key.
+            mod.changeMode = CONST.ACTIVE_EFFECT_MODES.ADD; // const = 2. This comes from foundry.
             relevantUpgrades.push(mod);
           }
         });

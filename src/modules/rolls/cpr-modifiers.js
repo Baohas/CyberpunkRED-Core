@@ -6,18 +6,26 @@ import CPR from "../system/config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 export default class CPRMod {
-  constructor(effect, change, index) {
+  /**
+   *
+   * @param {ActiveEffect} effect - Active Effect from an actor directly, or indirectly from an item.
+   * @param {Object} change - individual change (read: modifier) on above Active Effect.
+   * @constructor
+   */
+  constructor(effect, change) {
     LOGGER.trace("constructor | CPRMod | Called.");
-    this.change = change;
-    this.category = effect.flags[game.system.id].changes.cats[index];
-    // We do optional chaining on the next two because some items may not have flags.cyberpunk-red-core.situational defined.
+    const index = effect.changes.indexOf(change); // Index of change on the effect.
+    // We do optional chaining on the next few because some items may not have flags.cyberpunk-red-core.situational or .cats defined.
+    this.category = effect.flags[game.system.id].changes.cats?.[index]; // Category of the change. This comes from Zyzyx's work.
+    // New flag to determine if the mod is situational or permanent. If it's situational, should it be on by default?
     this.isSituational = effect.flags[game.system.id].changes.situational?.[index].isSituational;
-    this.onByDefault = effect.flags[game.system.id].changes.situational?.[index].onByDefault;
-    this.id = `${change.key}-${effect.id}`;
+    // If it's situational, should it be on by default?
+    this.onByDefault = effect.flags[game.system.id].changes.situational?.[index].onByDefault; // S
+    this.id = `${change.key}-${effect.id}`; // We enforce one change key per effect, so this should always be a unique ID.
     this.source = effect.label;
     this.value = Number.parseInt(change.value, 10);
     this.key = change.key;
-    this.changeMode = change.mode;
+    this.changeMode = change.mode; // Right now, only ADD (const = 2) is supported. Change modes come from Foundry)
   }
 
   /**

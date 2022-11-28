@@ -192,12 +192,13 @@ const Attackable = function Attackable() {
 
     // Mod from weapon attackmod. We will only add it if there are no upgrade mods that override this value.
     if (relevantUpgradeMods.length === 0 || relevantUpgradeMods.some((m) => !(m.type === "override"))) {
-      cprRoll.addMod({
+      // CPRMod-like object.
+      cprRoll.addMod([{
         value: cprWeaponData.attackmod,
         source: this.name,
         category: "combat",
         key: "bonuses.universalAttack",
-      });
+      }]);
     }
 
     if (cprRoll instanceof CPRRolls.CPRAttackRoll && cprWeaponData.isRanged) {
