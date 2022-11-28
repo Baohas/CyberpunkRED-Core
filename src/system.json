@@ -142,8 +142,8 @@
     {
       "label": "Upgrades",
       "type": "Item",
-      "name": "item-upgrades",
-      "path": "packs/item-upgrades.db",
+      "name": "upgrade-items",
+      "path": "packs/upgrades.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
