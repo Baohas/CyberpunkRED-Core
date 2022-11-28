@@ -2,13 +2,14 @@
 <hr>
 <ol class="items-list">
   {{#each filteredMods as |mod|}}
-  <li class="item flexrow">
+  <li class="item flexrow" style="border-style: outset; border-color: rgba(110, 42, 42, 0.5); border-width: 2px; border-radius: 5px; margin: 2px 0px 2px 0px;
+      {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}background-color: lightgrey;{{/if}}">
     <div class="item flexrow setting-name text-nowrap text-bold">
         {{mod.source}} -
     </div>
     <div class="item flexrow setting-value text-nowrap">
       {{cprGetChangeNameByKey false mod.category mod.key}}
-      {{cprEffectModMode mod.changeMode mod.value}}
+      {{cprEffectModMode mod.changeMode mod.value}}:
     </div>
     <div class="item flexrow setting-value text-nowrap item-end">
       {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}
@@ -23,17 +24,18 @@
 {{/if}}
 
 <hr>
-<div class="toggle-default-mods red-fg" style="text-align:center;">
+<div style="text-align:center;"><a class="toggle-default-mods">
   {{#if showDefaultMods}}
     {{localize "CPR.rolls.defaultMods.situationalHide"}} <i class="fas fa-square-caret-down"></i>
   {{else}}
     {{localize "CPR.rolls.defaultMods.situationalShow"}} <i class="fas fa-square-caret-right"></i>
   {{/if}}
-</div>
+</a></div>
 {{#if showDefaultMods}}
 <ol id="default-mods" class="items-list">
   {{#each defaultSituationalMods as |mod|}}
-  <li class="item flexrow">
+  <li class="item flexrow" style="border-style: outset; border-color: rgba(110, 42, 42, 0.5); border-width: 2px; border-radius: 5px; margin: 2px 0px 2px 0px;
+      {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}background-color: lightgrey;{{/if}}">
     <div class="item flexrow setting-name text-nowrap text-bold">
         {{localize mod.source}}:
     </div>
@@ -52,3 +54,4 @@
   <br>
 </ol>
 {{/if}}
+<hr>
