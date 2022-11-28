@@ -6,6 +6,14 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";
 
 export class CPRRollDialog extends CPRDialog {
+  /**
+   *
+   * @param {CPRRoll} rollData
+   * @param {CPRActor} actor
+   * @param {CPRItem} item
+   * @param {Object} options
+   * @constructor
+   */
   constructor(rollData, actor, item, options) {
     LOGGER.trace("constructor | CPRRollDialog | Called.");
 
@@ -15,17 +23,20 @@ export class CPRRollDialog extends CPRDialog {
     this.options.title = rollData.rollTitle;
     this.rollData = rollData;
 
-    // Get prototype chain (an array of class name strings).
+    // Get prototype chain (an array of class name strings) for the rollData.
     this.prototypeChain = SystemUtils.getPrototypeChain(rollData);
 
     // Set template.
     this.options.template = rollData.rollPrompt;
 
+    // Set actor and items.
     this.actor = actor;
     this.item = item;
 
     // Situational modifiers from pg. 130
     this.defaultSituationalMods = CPRMod.getDefaultSituationalMods();
+
+    // Hide default mods, user can then toggle them on.
     this.showDefaultMods = false;
   }
 
@@ -84,12 +95,13 @@ export class CPRRollDialog extends CPRDialog {
   }
 
   /**
-   * Add/remove mods from active effects.
+   * Add/remove mods from active effects. Also adds and removes the default situtational mods.
    *
    * @param {*} event
    */
   _toggleSituationalMod(event) {
     LOGGER.trace("_toggleSituationalMod | CPRRollDialog | Called.");
+    // Every situational mod should have an ID so that it can be added and deleted.
     const id = SystemUtils.GetEventDatum(event, "data-mod-id");
     const mod = this.filteredMods.find((m) => m.id === id) || this.defaultSituationalMods.find((m) => m.id === id);
 
@@ -103,7 +115,7 @@ export class CPRRollDialog extends CPRDialog {
   }
 
   /**
-   * Toggle show/hide the default situational modifiers from the core rule book (pg 130).
+   * Toggle showing/hiding the default situational modifiers from the core rule book (pg 130).
    *
    */
   _toggleDefaultModsVisibility() {
@@ -113,7 +125,7 @@ export class CPRRollDialog extends CPRDialog {
   }
 
   /**
-   * We ovverride this function to process additional mods added by the user in the dialog.
+   * We ovverride this function to process Additional Mods added by the user in the dialog.
    *
    * @param {*} event
    * @param {Object} formData - Updated dialog data to be merged with the original object.
@@ -163,7 +175,8 @@ export class CPRRoleRollDialog extends CPRRollDialog {
     if (skillIsVarying) {
       data.isVarying = true; // Used as a condition to display drop-down menu in dialog.
       if (this.rollData.skillName === "varying") {
-        // If the skill is varying, assign data from the first skill in the dropdown menu, so all form data are consistent with the dropdown menu.
+        // If the skill is varying, assign data from the first skill in the dropdown menu,
+        // so all form data are consistent with the what the dropdown menu displays by default.
         // Note, this will only happen when the dialog is first opened, which is by design.
         const firstSkill = this.rollData.skillList.sort((a, b) => (a.name > b.name ? 1 : -1))[0];
         data.rollData.skillName = firstSkill.name;

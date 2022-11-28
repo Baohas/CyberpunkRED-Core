@@ -47,12 +47,19 @@ export default class CPRDialog extends FormApplication {
     $("input[type=text]").focusin(() => $(this).select());
     $("input[type=number]").focusin(() => $(this).select());
 
-    html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
+    html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event)); // Currently unused, see below.
     html.find(".confirm-roll").click((event) => this.confirmDialog(event));
     html.find(".cancel-roll").click((event) => this.closeDialog(event));
     this.element.find(".header-button.close").click((event) => this.closeDialog(event));
   }
 
+  /**
+   * Currently unused. This will work in the same way it does on the item sheets.
+   * It can turn anything into a pseudo checkbox, which look nicer than the default ones.
+   * This code may need slight adjustments to make it work properly, as it was copied from cpr-item-sheet.js and was only changed slightly.
+   *
+   * @param {*} event - potential options to pass to this.close; currently unused;
+   */
   _itemCheckboxToggle(event) {
     LOGGER.trace("_itemCheckboxToggle | CPRDialog | Called.");
     const dialogData = this.object;
@@ -60,7 +67,6 @@ export default class CPRDialog extends FormApplication {
     const value = !getProperty(dialogData, target);
     if (hasProperty(dialogData, target)) {
       setProperty(dialogData, target, value);
-      // this._automaticResize(); // Resize the sheet as length of settings list might have changed
     }
   }
 

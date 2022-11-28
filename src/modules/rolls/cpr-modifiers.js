@@ -41,7 +41,7 @@ export default class CPRMod {
   }
 
   /**
-   * Convert each Change on each Effect into a CPRMod and then return a list of those CPRMod objects.
+   * Get a list of relevant mods to a specific roll, based on a bonus's key.
    *
    * @param {Array<CPRMod>} modifiers - An array of CPRMods.
    * @param {String} key - String with an effect key to filter the array.
@@ -132,10 +132,12 @@ export default class CPRMod {
     if (prototypeChain.includes("CPRInterfaceRoll")) {
       let netrunnerMods = allSituationalMods.filter((m) => m.key === `bonuses.${rollData.ability}`);
 
+      // Zap is an attack, so we need to add relevant attack bonuses to it.
       if (rollData.ability === "zap") {
         netrunnerMods = netrunnerMods.concat(allSituationalMods.filter((m) => m.key === "bonuses.attack" || m.key === "bonuses.universalAttack"));
       }
 
+      // Bonus to all attacks, meat or net.
       if (rollData.ability === "attack") {
         netrunnerMods = netrunnerMods.concat(allSituationalMods.filter((m) => m.key === "bonuses.universalAttack"));
       }
