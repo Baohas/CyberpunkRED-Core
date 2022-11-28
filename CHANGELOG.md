@@ -6,6 +6,7 @@
 ### Bug Fixes
 
 - Fix HTML Stripping in item descriptions on character sheets
+- Fix Create/Edit Role Ability dialog not submitting.
 
 ## Version 0.84.0 | Date: 2022-11-22
 
