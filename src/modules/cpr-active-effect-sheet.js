@@ -15,7 +15,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRActiveEffectSheet | Called.");
-    const defaultWidth = 700;
+    const defaultWidth = 800;
     const defaultHeight = 280;
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
@@ -111,6 +111,13 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     return null;
   }
 
+  /**
+   * Toggles the change as situational or not.
+   *
+   * @callback
+   * @private
+   * @param {Object} event - mouse click event
+   */
   async _toggleSituational(event) {
     LOGGER.trace("_toggleSituational | CPRActiveEffectSheet | Called.");
     const effect = this.object;
@@ -124,6 +131,13 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     });
   }
 
+  /**
+   * If the change is situational, toggle whether it should be on by default.
+   *
+   * @callback
+   * @private
+   * @param {Object} event - mouse click event
+   */
   async _toggleOnByDefault(event) {
     LOGGER.trace("_toggleOnByDefault | CPRActiveEffectSheet | Called.");
     const effect = this.object;
@@ -155,7 +169,8 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
           mode: CONST.ACTIVE_EFFECT_MODES.ADD,
           value: "",
         },
-        // we set the default "key category" here
+        // we set the default "key category" here.
+        // we also give it a "situational" flag.
         [`flags.${game.system.id}.changes.cats.${idx}`]: "skill",
         [`flags.${game.system.id}.changes.situational.${idx}`]: {
           isSituational: false,

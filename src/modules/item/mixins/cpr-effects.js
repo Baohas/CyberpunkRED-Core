@@ -59,18 +59,20 @@ const Effects = function Effects() {
    *
    * @returns {ActiveEffect} - the newly created document
    */
-  this.createEffect = function createEffect() {
+  this.createEffect = async function createEffect() {
     LOGGER.trace("createEffect | Effects | Called.");
     if (this.isOwned) {
       SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning"));
       return null;
     }
-    return this.createEmbeddedDocuments("ActiveEffect", [{
+    const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [{
       label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
       icon: "icons/svg/aura.svg",
       origin: this.uuid,
       disabled: false,
     }]);
+
+    return effectDoc[0].sheet.render(true);
   };
 
   /**

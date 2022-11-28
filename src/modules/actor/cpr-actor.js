@@ -1321,14 +1321,16 @@ export default class CPRActor extends Actor {
    *
    * @returns {CPRActiveEffect} the new document
    */
-  createEffect() {
+  async createEffect() {
     LOGGER.trace("createEffect | CPRCharacterActor | Called.");
-    return this.createEmbeddedDocuments("ActiveEffect", [{
+    const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [{
       label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
       icon: "icons/svg/aura.svg",
       origin: this.uuid,
       disabled: false,
     }]);
+
+    return effectDoc[0].sheet.render(true);
   }
 
   /**

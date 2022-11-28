@@ -37,9 +37,9 @@
                             {{~/if}}
                             {{!-- <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-location-dot"></i> --}}
                             {{#if (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational @index "onByDefault")}}
-                              <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-link"></i>{{~#unless @last}},{{/unless}}
+                              <i title="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}" class="fas fa-link"></i>{{~#unless @last}},{{/unless}}
                             {{else}}
-                              <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-link-slash"></i>{{~#unless @last}},{{/unless}}
+                              <i title="{{localize "CPR.characterSheet.rightPane.effects.situationalOffByDefault"}}" class="fas fa-link-slash"></i>{{~#unless @last}},{{/unless}}
                             {{/if}}
                           {{/if}}
                         {{/unless}}
