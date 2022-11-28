@@ -67,11 +67,15 @@ const Container = function Container() {
       while (uuidList.length > 0) {
         for (const uuid of uuidList) {
           const item = fromUuidSync(uuid);
-          installedItems.push(item);
+          if (!item.isOwned) {
+            item.system.isInstalled = true;
+            item.system.installedIn = this.uuid;
+          }
           uuidList = uuidList.filter((itemUUID) => itemUUID !== item.uuid);
           if (containerTypes.includes(item.type)) {
             uuidList = uuidList.concat(item.system.installedItems.list);
           }
+          installedItems.push(item);
         }
       }
     }
@@ -171,6 +175,7 @@ const Container = function Container() {
       return Promise.reject(new Error(`CPRItem.installItems argument is not an array: ${itemList}`));
     }
 
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     const actor = (this.isOwned) ? this.actor : false;
 
     const installedItems = duplicate(this.system.installedItems);
@@ -181,7 +186,7 @@ const Container = function Container() {
     for (const item of itemList) {
       installedItems.list = installedItems.list.filter((uuid) => item.uuid !== uuid);
       installedItems.usedSlots = installedItems.usedSlots < item.system.size ? 0 : installedItems.usedSlots - item.system.size;
-      if (recursive) {
+      if (recursive && containerTypes.includes(item.type)) {
         let embeddedItemList = item.getInstalledItems();
 
         while (embeddedItemList.length > 0) {
@@ -189,7 +194,7 @@ const Container = function Container() {
           embeddedItemList = [];
           for (const embeddedItem of embeddedItems) {
             uninstallList.push(embeddedItem);
-            if (embeddedItem.system.installedItems.list.length > 0) {
+            if (containerTypes.includes(embeddedItem.type) && embeddedItem.system.installedItems.list.length > 0) {
               embeddedItemList = embeddedItemList.concat(embeddedItem.getInstalledItems());
             }
           }

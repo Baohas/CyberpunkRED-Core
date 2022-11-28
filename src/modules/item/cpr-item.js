@@ -72,9 +72,6 @@ export default class CPRItem extends Item {
     let newData = data;
     const cprMigrationRunning = options.isMigrating || false;
     if (!cprMigrationRunning) {
-      if (SystemUtils.hasDataModelTemplate(data.type, "upgradable")) {
-        newData = this.clearUpgrades(newData);
-      }
       if (SystemUtils.hasDataModelTemplate(data.type, "loadable")) {
         newData = this.clearAmmo(newData);
       }

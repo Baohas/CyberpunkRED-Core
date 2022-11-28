@@ -1082,20 +1082,20 @@ export default class CPRActorSheet extends ActorSheet {
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
     const upgradabeTypes = SystemUtils.GetTemplateItemTypes("upgradable");
+    const equippableTypes = SystemUtils.GetTemplateItemTypes("equippable");
 
     const [newItem] = await super._onDrop(event);
 
-    if (newItem && containerTypes.includes(sourceItem.type)) {
-      const objectMap = {};
+    // If we created a new item and the sourceItem is a container type and has installed items, we need to dupe/move them
+    // and configure the new item.
+    if (newItem && containerTypes.includes(sourceItem.type) && sourceItem.system.installedItems.list.length > 0) {
       const creationList = [];
       const replicationSourceList = sourceItem.recursiveGetAllInstalledItems();
       for (const oldItem of replicationSourceList) {
         const newItemData = oldItem.toObject();
+        newItemData.system.isInstalled = true;
+        newItemData.system.installedIn = oldItem.system.installedIn;
         newItemData.system.cprOldUUID = oldItem.uuid;
-        if (newItem.system.installedItems.list.includes(oldItem.uuid)) {
-          newItemData.system.isInstalled = true;
-          newItemData.system.installedIn = newItem.uuid;
-        }
         creationList.push(newItemData);
         deleteList.push(oldItem._id);
       }
@@ -1103,17 +1103,10 @@ export default class CPRActorSheet extends ActorSheet {
       const replicationDestinationList = await this.actor.createEmbeddedDocuments("Item", creationList);
       const updateList = [];
 
+      const objectMap = {};
+      objectMap[sourceItem.uuid] = newItem.uuid;
       for (const item of replicationDestinationList) {
         objectMap[item.system.cprOldUUID] = item.uuid;
-      }
-
-      let newList = [];
-      for (const oldUUID of newItem.system.installedItems.list) {
-        newList.push(objectMap[oldUUID]);
-      }
-
-      if (newList.length > 0) {
-        updateList.push({ _id: newItem._id, "system.installedItems.list": newList });
       }
 
       for (const item of replicationDestinationList) {
@@ -1123,16 +1116,37 @@ export default class CPRActorSheet extends ActorSheet {
         };
 
         if (containerTypes.includes(item.type) && item.system.installedItems.list.length > 0) {
-          newList = [];
-          for (const oldUUID of item.system.installedItems.list) {
-            newList.push(objectMap[oldUUID]);
+          const newList = [];
+          for (const installedUUID of item.system.installedItems.list) {
+            newList.push(objectMap[installedUUID]);
           }
           updateData["system.installedItems.list"] = newList;
         }
 
-        if (installableTypes.includes(item.type) && item.isInstalled) {
+        if (installableTypes.includes(item.type) && item.system.isInstalled) {
           updateData["system.installedIn"] = objectMap[item.system.installedIn];
         }
+        updateList.push(updateData);
+      }
+
+      const updateData = {
+        _id: newItem._id,
+      };
+
+      const newList = [];
+      for (const oldUUID of newItem.system.installedItems.list) {
+        newList.push(objectMap[oldUUID]);
+      }
+
+      if (newList.length > 0) {
+        updateData["system.installedItems.list"] = newList;
+      }
+
+      if (equippableTypes.includes(newItem.type)) {
+        updateData["system.equipped"] = "carried";
+      }
+
+      if (Object.keys(updateData).length > 1) {
         updateList.push(updateData);
       }
 
