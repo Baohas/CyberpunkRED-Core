@@ -9,7 +9,7 @@
     "verified": 10,
     "maximum": 10
   },
-  "templateVersion": 3,
+  "templateVersion": 2,
   "authors": [
     {
       "name": "The Project Red Team",
@@ -36,7 +36,7 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "DV Rolltables",
+      "label": "DV Rolltables - IMPORT ME",
       "type": "RollTable",
       "name": "dvTables",
       "path": "packs/dvTables.db",
@@ -44,7 +44,7 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Critical Injuries (Body)",
+      "label": "Critical Injuries (Body) - IMPORT ME",
       "type": "Item",
       "name": "criticalInjuriesBody",
       "path": "packs/critical-injuries-body.db",
@@ -52,7 +52,7 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Critical Injuries (Head)",
+      "label": "Critical Injuries (Head) - IMPORT ME",
       "type": "Item",
       "name": "criticalInjuriesHead",
       "path": "packs/critical-injuries-head.db",
@@ -60,7 +60,7 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Critical Injury Tables",
+      "label": "Critical Injury Tables - IMPORT ME",
       "type": "RollTable",
       "name": "criticalInjuryTables",
       "path": "packs/critical-injury-tables.db",
@@ -178,14 +178,6 @@
       "path": "packs/drugs.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
-    },
-    {
-      "label": "Elflines Online Armory",
-      "type": "Item",
-      "name": "elflines-armory",
-      "path": "packs/elflines-armory.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
     }
   ],
   "languages": [
@@ -238,6 +230,6 @@
   "background" : "systems/cyberpunk-red-core/images/Header.jpg",
   "url": "https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core",
   "manifest": "https://gitlab.com/api/v4/projects/22820629/packages/generic/fvtt-cyberpunk-red-core/latest/system.json",
-  "download": "DUMMY_VALUE",
+  "download": "https://gitlab.com/api/v4/projects/22820629/packages/generic/fvtt-cyberpunk-red-core/v0.83.0/fvtt-cyberpunk-red-core-v0.83.0.zip",
   "license": "GPL v3"
 }

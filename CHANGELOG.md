@@ -5,12 +5,18 @@
 
 ### New Features
 
+- We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
+
 ### Changes
 
+<<<<<<< HEAD
 - Renamed `cpr-actor.js:_getOwnedItem()` to `cpr-actor.js:getOwnedItem()` and marked the function as public since it is actually called from several other objects.
 - Changed `cpr-actor.js:getOwnedItem()` to take either an item's `_id` or `uuid` to find the owned item.
 - When changing the data model, going forward, ensure we update the default setting for `dataModelVersion` in settings.js to match the new data model version.
   This will prevent migration from on newly created worlds where it is not needed.
+=======
+- The Babele module should no longer require renaming files or directories to make it work.(#482)
+>>>>>>> dev
 
 ### Bug Fixes
 
