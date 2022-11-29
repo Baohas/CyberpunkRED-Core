@@ -186,6 +186,7 @@ export default class CPRContainerActor extends Actor {
   recordTransaction(value, reason, seller = null) {
     LOGGER.trace("recordTransaction | CPRContainerActor | Called.");
     // update "value"; it may be negative
+    // If Containers ever get Active Effects, this code will be a problem. See Issue #583.
     const cprData = duplicate(this.system);
     let newValue = getProperty(cprData, "wealth.value") || 0;
     let transactionSentence;

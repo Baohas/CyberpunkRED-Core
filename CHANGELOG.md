@@ -1,12 +1,13 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
-## Version 0.84.1 | Date: TBA
+## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
 ### Bug Fixes
 
 - Fix HTML Stripping in item descriptions on character sheets
 - Fix Create/Edit Role Ability dialog not submitting.
+- #583 - Using ledger re-applies all Active Effects
 
 ## Version 0.84.0 | Date: 2022-11-22
 
