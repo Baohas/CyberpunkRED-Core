@@ -1,4 +1,4 @@
-/* globals Actor, game, getProperty, setProperty, hasProperty, duplicate */
+/* globals Actor, game, getProperty, hasProperty */
 import ConfirmPrompt from "../dialog/cpr-confirmation-prompt.js";
 import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";
@@ -597,10 +597,10 @@ export default class CPRActor extends Actor {
     if (this.isLedgerProperty(prop)) {
       const valProp = `system.${prop}.value`;
       const ledgerProp = `system.${prop}.transactions`;
-      const cprData = duplicate(this.system);
-      setProperty(cprData, valProp, 0);
-      setProperty(cprData, ledgerProp, []);
-      this.update(cprData);
+      this.update({
+        [valProp]: 0,
+        [ledgerProp]: [],
+      });
       return getProperty(this.system, prop);
     }
     return null;
@@ -619,14 +619,12 @@ export default class CPRActor extends Actor {
     LOGGER.trace("deltaLedgerProperty | CPRActor | Called.");
     if (this.isLedgerProperty(prop)) {
       // update "value"; it may be negative
-      const valProp = `${prop}.value`;
-      const cprData = duplicate(this.system);
-      let newValue = getProperty(cprData, valProp);
+      const valProp = `system.${prop}.value`;
+      let newValue = getProperty(this, valProp);
       newValue += value;
-      setProperty(cprData, valProp, newValue);
       // update the ledger with the change
-      const ledgerProp = `${prop}.transactions`;
-      const ledger = getProperty(cprData, ledgerProp);
+      const ledgerProp = `system.${prop}.transactions`;
+      const ledger = getProperty(this, ledgerProp);
       if (value > 0) {
         ledger.push([
           SystemUtils.Format("CPR.ledger.increaseSentence", { property: prop, amount: value, total: newValue }),
@@ -636,9 +634,11 @@ export default class CPRActor extends Actor {
           SystemUtils.Format("CPR.ledger.decreaseSentence", { property: prop, amount: (-1 * value), total: newValue }),
           reason]);
       }
-      setProperty(cprData, ledgerProp, ledger);
       // update the actor and return the modified property
-      this.update({ system: cprData });
+      this.update({
+        [valProp]: newValue,
+        [ledgerProp]: ledger,
+      });
       return getProperty(this.system, prop);
     }
     return null;
@@ -656,14 +656,14 @@ export default class CPRActor extends Actor {
   setLedgerProperty(prop, value, reason) {
     LOGGER.trace("setLedgerProperty | CPRActor | Called.");
     if (this.isLedgerProperty(prop)) {
-      const valProp = `${prop}.value`;
-      const ledgerProp = `${prop}.transactions`;
-      const cprData = duplicate(this.system);
-      setProperty(cprData, valProp, value);
-      const ledger = getProperty(cprData, ledgerProp);
+      const valProp = `system.${prop}.value`;
+      const ledgerProp = `system.${prop}.transactions`;
+      const ledger = getProperty(this, ledgerProp);
       ledger.push([SystemUtils.Format("CPR.ledger.setSentence", { property: prop, total: value }), reason]);
-      setProperty(cprData, ledgerProp, ledger);
-      this.update({ system: cprData });
+      this.update({
+        [valProp]: value,
+        [ledgerProp]: ledger,
+      });
       return getProperty(this.system, prop);
     }
     return null;
