@@ -32,13 +32,15 @@ export default class CPRMod {
    * Convert each Change on each (non-disabled) Effect into a CPRMod and then return a list of those CPRMod objects.
    *
    * @param {Array<ActiveEffect>} effects - An array of ActiveEffects
+   * @param {Boolean} getDisabled - Boolean whether or not to consider disabled effects. Default false.
    * @return {Array<CPRMod>}
    */
-  static getAllModifiers(effects) {
+  static getAllModifiers(effects, getDisabled = false) {
     LOGGER.trace("getAllModifiers | CPRMod | Called.");
     const allModifiers = [];
     effects.forEach((effect) => {
-      if (!effect.disabled) {
+      // Ignore disabled effects, unless getDisabled = true. In that case, get all.
+      if (!effect.disabled || getDisabled) {
         effect.changes.forEach((change, index) => {
           const mod = new CPRMod(effect, change, index);
           allModifiers.push(mod);

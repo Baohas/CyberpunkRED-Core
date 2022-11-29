@@ -11,6 +11,7 @@ import SplitItemPrompt from "../../dialog/cpr-split-item-prompt.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import LedgerEditPrompt from "../../dialog/cpr-ledger-edit-prompt.js";
+import CPRMod from "../../rolls/cpr-modifiers.js";
 
 /**
  * Extend the basic ActorSheet, which comes from Foundry. Not all sheets used in
@@ -87,7 +88,7 @@ export default class CPRActorSheet extends ActorSheet {
       if (fightState === "Netspace") {
         cprActorData.cyberdeck = this.actor.getEquippedCyberdeck();
       }
-      cprActorData.filteredEffects = this.prepareActiveEffectCategories();
+      cprActorData.filteredEffects = await this.prepareActiveEffectCategories();
       foundryData.data.system = cprActorData;
     }
     // This appears to have been removed in V10?
@@ -127,17 +128,12 @@ export default class CPRActorSheet extends ActorSheet {
    *
    * @returns {Object}                  Data for rendering
    */
-  prepareActiveEffectCategories() {
+  async prepareActiveEffectCategories() {
     LOGGER.trace("prepareActiveEffectCategories | CPRActorSheet | Called.");
     const categories = {
-      active: {
-        type: "active",
-        label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.active"),
-        effects: [],
-      },
-      inactive: {
-        type: "inactive",
-        label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.inactive"),
+      permanent: {
+        type: "permanent",
+        label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.permanent"),
         effects: [],
       },
       situational: {
@@ -145,25 +141,60 @@ export default class CPRActorSheet extends ActorSheet {
         label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.situational"),
         effects: [],
       },
+      inactive: {
+        type: "inactive",
+        label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.inactive"),
+        effects: [],
+      },
     };
 
     const setting = game.settings.get(game.system.id, "displayStatusAsActiveEffects");
     // Iterate over active effects, classifying them into categories
     for (const e of this.actor.effects) {
-      e._getSourceName(); // Trigger a lookup for the source name
+      // eslint-disable-next-line no-await-in-loop
+      await e._getSourceName(); // Trigger a lookup for the source name
+
+      // We want to create a "simplified effect" for two reasons:
+      //    1. To make accessing information via handlebars easier.
+      //    2. We want to only feed the changes that are relevant to each section.
+      // We do this by first giving our new object important info from the original effect.
+      // Then, we create CPRMods (which have a simplified data structure) from each effect.changes,
+      // Then, put the CPRMods relevant to each category (permanent, situational, inactive)
+      // into our simplified effect's changes. Then just push that to the effects in each relevant category.
+      const simplifiedEffect = {
+        label: e.label,
+        sourceName: e.sourceName,
+        id: e.id,
+        icon: e.icon,
+        usage: e.usage,
+        system: {
+          isSuppressed: e.isSuppressed,
+        },
+        disabled: e.disabled,
+      };
       if (!(typeof e.flags.core !== "undefined" && typeof e.flags.core.statusId !== "undefined") || setting) {
-        let situationalList = [];
-        // This will make sure that if the flag doesn't exist, we can still open the sheet.
-        try {
-          const flagObj = e.flags[`${game.system.id}`].changes.situational;
-          situationalList = Object.values(flagObj);
-        } catch {
-          // continue regardless of error
+        // Get situational, non-disabled effects.
+        if (!e.disabled && !e.system.isSuppressed) {
+          const situationalMods = CPRMod.getAllModifiers([e]).filter((m) => m.isSituational);
+          // To avoid repeats, duplicate simplifiedEffect to situationalEffect, and push that.
+          const situationalEffect = duplicate(simplifiedEffect);
+          situationalEffect.changes = situationalMods;
+          if (situationalEffect.changes.length > 0) {
+            categories.situational.effects.push(situationalEffect);
+          }
         }
 
-        if (situationalList.some((c) => c.isSituational) && !e.disabled) categories.situational.effects.push(e);
-        if (e.disabled || e.system.isSuppressed) categories.inactive.effects.push(e);
-        else categories.active.effects.push(e);
+        // Get inactive effects.
+        if (e.disabled || e.system.isSuppressed) {
+          // The second argument in the following function is set to true, so that it gets disabled modifiers.
+          simplifiedEffect.changes = CPRMod.getAllModifiers([e], true);
+          categories.inactive.effects.push(simplifiedEffect);
+        // Get permanent effects.
+        } else {
+          const permanentMods = CPRMod.getAllModifiers([e]).filter((m) => !m.isSituational);
+          simplifiedEffect.changes = permanentMods;
+          categories.permanent.effects.push(simplifiedEffect);
+        }
       }
     }
 

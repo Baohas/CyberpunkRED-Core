@@ -14,36 +14,22 @@
                 <div class="effect-name flexrow">
                     <img class="effect-image" src="{{effect.icon}}"/>
                     <h4><strong>{{effect.label}}</strong><br/>
+                    {{#if effect.changes.length}}
                         {{#each effect.changes as |change|}}
-                        {{#unless (cprCompare @../../index "===" 2)}}
-                          {{#unless (cprArrayLikeObjectByIndex effect.flags.cyberpunk-red-core.changes.situational @index "isSituational")}}
                             {{!-- "this" is now an individual mod for the AE object --}}
-                            {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes.cats @index) change.key}}
+                            {{cprGetChangeNameByKey ../this change.category change.key}}
                             {{#if change.value}}
-                                {{cprEffectModMode change.mode change.value}}
-                            {{else}}
-                                0
-                            {{~/if}}
-                            {{~#unless @last}},{{~/unless}}
-                          {{~/unless}}
-                        {{else}}
-                          {{#if (cprArrayLikeObjectByIndex effect.flags.cyberpunk-red-core.changes.situational @index "isSituational")}}
-                            {{!-- "this" is now an individual mod for the AE object --}}
-                            {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes.cats @index) change.key}}
-                            {{#if change.value}}
-                                {{cprEffectModMode change.mode change.value}}
+                                {{cprEffectModMode change.changeMode change.value}}
                             {{~else}}
                                 0
                             {{~/if}}
-                            {{!-- <i title="{{localize "CPR.global.generic.situational"}}" class="fas fa-location-dot"></i> --}}
-                            {{#if (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational @index "onByDefault")}}
-                              <i title="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}" class="fas fa-link"></i>{{~#unless @last}},{{/unless}}
-                            {{else}}
-                              <i title="{{localize "CPR.characterSheet.rightPane.effects.situationalOffByDefault"}}" class="fas fa-link-slash"></i>{{~#unless @last}},{{/unless}}
+                            {{#if change.isSituational}}
+                              <i title="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}" class="fas fa-link{{#if change.onByDefault}}-slash{{/if}}"></i>{{~#unless @last}},{{/unless}}
                             {{/if}}
-                          {{/if}}
-                        {{/unless}}
                         {{/each}}
+                    {{else}}
+                      {{localize "(This effect has no changes in this category)"}}
+                    {{/if}}
                     </h4>
                 </div>
                 <div class="effect-source">
@@ -53,7 +39,8 @@
                     {{/if}}
                 </div>
                 <div class="effect-actions text-padding-right">
-                  {{#unless (cprCompare @../index "===" 2)}}
+                  {{log section}}
+                  {{#unless (cprCompare section.type "===" "situational")}}
                     {{#if (cprShowEffectToggle effect ../../actor.name)}}
                         <a class="effect-control" data-action="toggle" title="{{localize 'CPR.characterSheet.rightPane.effects.toggle'}}">
                             <i class="far {{#if effect.disabled}}fa-circle{{else}}fa-check-circle{{/if}}"></i>
