@@ -11,3 +11,6 @@ export const SYSTEM_FILE = process.env.SYSTEM_FILE
 export const SYSTEM_TITLE = process.env.SYSTEM_TITLE
   ? process.env.SYSTEM_TITLE
   : "Cyberpunk RED - CORE";
+export const SYSTEM_VERSION = process.env.SYSTEM_VERSION
+  ? process.env.SYSTEM_VERSION
+  : "v0.0.0dev";
