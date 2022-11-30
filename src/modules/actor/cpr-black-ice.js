@@ -122,6 +122,7 @@ export default class CPRBlackIceActor extends Actor {
    */
   programmaticallyUpdate(type, per, spd, atk, def, rezValue, rezMax = null, effect = null) {
     LOGGER.trace("programmaticallyUpdate | CPRBlackIceActor | called.");
+    // If BlackICE ever gets Active Effects, this code will be a problem. See Issue #583.
     const cprData = duplicate(this.system);
     setProperty(cprData, "class", type);
     setProperty(cprData, "stats.per", per);
