@@ -24,8 +24,13 @@
                                 0
                             {{~/if}}
                             {{#if change.isSituational}}
-                              <i title="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}" class="fas fa-link{{#if change.onByDefault}}-slash{{/if}}"></i>{{~#unless @last}},{{/unless}}
-                            {{/if}}
+                              {{#if change.onByDefault}}
+                                <i title="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}" class="fas fa-circle-dot"></i>
+                              {{else}}
+                                <i title="{{localize "CPR.characterSheet.rightPane.effects.situationalOffByDefault"}}" class="far fa-circle"></i>
+                              {{~/if}}
+                            {{~/if}}
+                            {{~#unless @last}},{{/unless}}
                         {{/each}}
                     {{else}}
                       {{localize "(This effect has no changes in this category)"}}
@@ -39,7 +44,6 @@
                     {{/if}}
                 </div>
                 <div class="effect-actions text-padding-right">
-                  {{log section}}
                   {{#unless (cprCompare section.type "===" "situational")}}
                     {{#if (cprShowEffectToggle effect ../../actor.name)}}
                         <a class="effect-control" data-action="toggle" title="{{localize 'CPR.characterSheet.rightPane.effects.toggle'}}">

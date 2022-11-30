@@ -844,14 +844,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Get uniquely identifying change ID (we create this by appending the effect ID to the change key)
-   */
-  Handlebars.registerHelper("cprGetEffectChangeId", (changeKey, effectId) => {
-    LOGGER.trace("cprGetSkillBonus | handlebarsHelper | Called.");
-    return `${changeKey}-${effectId}`;
-  });
-
-  /**
    * Get the transient bonus value applied to skills applied from Active Effects
    */
   Handlebars.registerHelper("cprGetSkillBonus", (skillName, actor) => {
