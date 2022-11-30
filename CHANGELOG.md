@@ -5,6 +5,8 @@
 
 ### Bug Fixes
 
+- Fix HTML Stripping in item descriptions on character sheets
+- Fix Create/Edit Role Ability dialog not submitting.
 - #583 - Using ledger re-applies all Active Effects
 
 ## Version 0.84.0 | Date: 2022-11-22

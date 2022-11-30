@@ -1,4 +1,5 @@
-/* global Handlebars game getProperty duplicate */
+/* global Handlebars game getProperty */
+/* eslint-env jquery */
 import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -875,10 +876,10 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Truncate HTML to a specified length and add … to the end
+   * Strip all <html> tags from a string
    */
   Handlebars.registerHelper("cprStripHtml", (string) => {
-    const text = string.replace(/<[^>]+>/g, '');
-    return text;
+    LOGGER.trace("cprStripHtml | handlebarsHelper | Called.");
+    return $(string).text();
   });
 }
