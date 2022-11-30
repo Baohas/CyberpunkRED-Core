@@ -1080,87 +1080,18 @@ export default class CPRActorSheet extends ActorSheet {
 
     const deleteList = (transferItem) ? [sourceItem._id] : [];
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
     const upgradabeTypes = SystemUtils.GetTemplateItemTypes("upgradable");
-    const equippableTypes = SystemUtils.GetTemplateItemTypes("equippable");
 
     const [newItem] = await super._onDrop(event);
 
     // If we created a new item and the sourceItem is a container type and has installed items, we need to dupe/move them
     // and configure the new item.
+    console.log("_cprOnItemDrop | CPRActorSheet | called.");
     if (newItem && containerTypes.includes(sourceItem.type) && sourceItem.system.installedItems.list.length > 0) {
-      const creationList = [];
-      const replicationSourceList = sourceItem.recursiveGetAllInstalledItems();
-      for (const oldItem of replicationSourceList) {
-        const newItemData = oldItem.toObject();
-        newItemData.system.isInstalled = true;
-        newItemData.system.installedIn = oldItem.system.installedIn;
-        newItemData.system.cprOldUUID = oldItem.uuid;
-        creationList.push(newItemData);
-        deleteList.push(oldItem._id);
+      const deleteItemList = sourceItem.recursiveGetAllInstalledItems();
+      for (const item of deleteItemList) {
+        deleteList.push(item._id);
       }
-
-      const replicationDestinationList = await this.actor.createEmbeddedDocuments("Item", creationList);
-      const updateList = [];
-
-      const objectMap = {};
-      objectMap[sourceItem.uuid] = newItem.uuid;
-      for (const item of replicationDestinationList) {
-        objectMap[item.system.cprOldUUID] = item.uuid;
-      }
-
-      for (const item of replicationDestinationList) {
-        const updateData = {
-          _id: item._id,
-          "system.-=cprOldUUID": null,
-        };
-
-        if (containerTypes.includes(item.type) && item.system.installedItems.list.length > 0) {
-          const newList = [];
-          for (const installedUUID of item.system.installedItems.list) {
-            newList.push(objectMap[installedUUID]);
-          }
-          updateData["system.installedItems.list"] = newList;
-        }
-
-        if (installableTypes.includes(item.type) && item.system.isInstalled) {
-          updateData["system.installedIn"] = objectMap[item.system.installedIn];
-        }
-        updateList.push(updateData);
-      }
-
-      const updateData = {
-        _id: newItem._id,
-      };
-
-      const newList = [];
-      for (const oldUUID of newItem.system.installedItems.list) {
-        newList.push(objectMap[oldUUID]);
-      }
-
-      if (newList.length > 0) {
-        updateData["system.installedItems.list"] = newList;
-      }
-
-      if (equippableTypes.includes(newItem.type)) {
-        updateData["system.equipped"] = "carried";
-      }
-
-      if (Object.keys(updateData).length > 1) {
-        updateList.push(updateData);
-      }
-
-      if (updateList.length > 0) {
-        await this.actor.updateEmbeddedDocuments("Item", updateList);
-      }
-    }
-
-    if (newItem.type === "cyberdeck") {
-      newItem.syncPrograms();
-    }
-
-    if (upgradabeTypes.includes(newItem.type)) {
-      newItem.syncUpgrades();
     }
 
     if (newItem && transferItem) {

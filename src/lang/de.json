@@ -1003,6 +1003,7 @@
   "CPR.settings.enablePauseAnimation.name": "Pauseanimation einschalten",
   "CPR.settings.enableSheetContentFilter.hint": "Erzeugt ein Textfeld unterhalb von Fähigkeiten, Ausrüstung und Cyberware, damit Sie die Listen schnell filtern können, um das zu finden, wonach Sie suchen",
   "CPR.settings.enableSheetContentFilter.name": "Charakterbogen Suchbox aktivieren",
+  "CPR.settings.installedItemsFolder": "CPR-Core Installed Items",
   "CPR.settings.invertRollCtrlFunction.hint": "Wenn aktiviert, werden Würfel-Dialoge standardmäßig übersprungen und nur aktiviert, wenn STRG gedrückt wird",
   "CPR.settings.invertRollCtrlFunction.name": "Funktion von STRG beim Würfenn umkehren",
   "CPR.settings.mookSheetSkillDisplay.base": "Basis",

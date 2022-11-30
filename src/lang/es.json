@@ -1003,6 +1003,7 @@
   "CPR.settings.enablePauseAnimation.name": "Activar Animación de Pausa",
   "CPR.settings.enableSheetContentFilter.hint": "Activa un cuadro de texto debajo de habilidades, equipo y Cyberware para permitirte filtrar rápidamente las listas para encontrar lo que estás buscando",
   "CPR.settings.enableSheetContentFilter.name": "Activar Filtro de Contenido de Hoja",
+  "CPR.settings.installedItemsFolder": "CPR-Core Installed Items",
   "CPR.settings.invertRollCtrlFunction.hint": "Cuando está habilitado, los diálogos de tiradas se omiten por defecto y se activan cuando se mantiene presionado CTRL",
   "CPR.settings.invertRollCtrlFunction.name": "Invertir función de CTRL en Tiradas",
   "CPR.settings.mookSheetSkillDisplay.base": "Base",

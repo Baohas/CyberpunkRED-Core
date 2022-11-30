@@ -1003,6 +1003,7 @@
   "CPR.settings.enablePauseAnimation.name": "Włącz Animację Pauzy",
   "CPR.settings.enableSheetContentFilter.hint": "Włącza pole tekstowe poniżej Umiejętności, Ekwipunku i Wszczepów aby umożliwić szybkie filtrowanie list, żebyś szybko znalazł to czego szukasz",
   "CPR.settings.enableSheetContentFilter.name": "Włącz Filtr Zawartości Karty",
+  "CPR.settings.installedItemsFolder": "CPR-Core Installed Items",
   "CPR.settings.invertRollCtrlFunction.hint": "Kiedy opcja jest włączona, okna dialogowe rzutów są domyślnie pomijane i włączone kiedy trzymasz CTRL",
   "CPR.settings.invertRollCtrlFunction.name": "Odwróc funkcję CTRL podczas rzutów",
   "CPR.settings.mookSheetSkillDisplay.base": "Baza",

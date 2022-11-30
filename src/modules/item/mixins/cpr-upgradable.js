@@ -1,4 +1,4 @@
-/* global duplicate */
+/* global duplicate fromUuidSync */
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
@@ -36,7 +36,7 @@ const Upgradable = function Upgradable() {
     // as an upgraded data point
     const newUpgrades = [];
     installedItems.list.forEach((uuid) => {
-      const installedItem = actor.getOwnedItem(uuid);
+      const installedItem = fromUuidSync(uuid);
       if (installedItem.type === "itemUpgrade" && installedUpgrades.filter((upgrade) => upgrade.uuid === uuid).length === 0) {
         newUpgrades.push(installedItem);
       }

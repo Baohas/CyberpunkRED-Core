@@ -69,14 +69,7 @@ export default class CPRItem extends Item {
    */
   _onCreate(data, options, userId) {
     LOGGER.trace("_onCreate | CPRItem | Called.");
-    let newData = data;
-    const cprMigrationRunning = options.isMigrating || false;
-    if (!cprMigrationRunning) {
-      if (SystemUtils.hasDataModelTemplate(data.type, "loadable")) {
-        newData = this.clearAmmo(newData);
-      }
-    }
-    super._onCreate(newData, options, userId);
+    super._onCreate(data, options, userId);
   }
 
   /**

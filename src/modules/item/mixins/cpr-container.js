@@ -1,4 +1,5 @@
-/* global duplicate fromUuidSync */
+/* eslint-disable no-await-in-loop */
+/* global duplicate fromUuidSync Item game Folder */
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
@@ -36,12 +37,10 @@ const Container = function Container() {
   this.getInstalledItems = function getInstalledItems(type = false) {
     LOGGER.trace("getInstalledItems | Container | Called.");
 
-    const actor = (this.isOwned) ? this.actor : false;
-
     const installedItems = [];
 
     this.system.installedItems.list.forEach((uuid) => {
-      const item = (!actor) ? fromUuidSync(uuid) : actor.getOwnedItem(uuid);
+      const item = fromUuidSync(uuid);
       if (!type || (item.type === type)) {
         installedItems.push(item);
       }
@@ -93,7 +92,7 @@ const Container = function Container() {
    * @returns {Boolean} - Whether this item can install all objects passed to it
    */
   this.canInstallItems = function canInstallItems(itemList) {
-    LOGGER.trace("canInstallItems | CPRItem | Called.");
+    LOGGER.trace("canInstallItems | Container | Called.");
     if (!Array.isArray(itemList)) {
       LOGGER.debug(`CPRActor.canInstallItems argument is not an array: ${itemList}`);
       return false;
@@ -125,7 +124,7 @@ const Container = function Container() {
    * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
    */
   this.installItems = async function installItems(itemList) {
-    LOGGER.trace("_installItems | CPRItem | Called.");
+    LOGGER.trace("_installItems | Container | Called.");
     if (!Array.isArray(itemList)) {
       return Promise.reject(new Error(`CPRItem.installItems argument is not an array: ${itemList}`));
     }
@@ -170,9 +169,9 @@ const Container = function Container() {
    * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
    */
   this.uninstallItems = async function uninstallItems(itemList, recursive = false) {
-    LOGGER.trace("uninstallItems | CPRItem | Called.");
+    LOGGER.trace("uninstallItems | Container | Called.");
     if (!Array.isArray(itemList)) {
-      return Promise.reject(new Error(`CPRItem.installItems argument is not an array: ${itemList}`));
+      return Promise.reject(new Error(`Container.installItems argument is not an array: ${itemList}`));
     }
 
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
@@ -217,6 +216,70 @@ const Container = function Container() {
 
     updateList.push({ _id: this.id, "system.installedItems": installedItems });
     return (!actor) ? this.update({ "system.installedItems": installedItems }) : actor.updateEmbeddedDocuments("Item", updateList);
+  };
+
+  this.createInstalledItems = async function createInstalledItems() {
+    LOGGER.trace("createInstalledItems | Container | Called.");
+    const actor = (this.isOwned) ? this.actor : false;
+    const equipTypes = SystemUtils.GetTemplateItemTypes("equippable");
+    const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
+    const creationList = [];
+    for (const installedUUID of this.system.installedItems.list) {
+      const installedItem = fromUuidSync(installedUUID);
+      if (installedItem.actor !== actor) {
+        const newItemData = installedItem.toObject();
+        if (equipTypes.includes(installedItem.type)) {
+          newItemData.system.equipped = "carried";
+        }
+        newItemData.system.isInstalled = !!(actor);
+        newItemData.system.installedIn = (actor) ? this.uuid : "";
+        creationList.push(newItemData);
+      }
+    }
+
+    const newInstalledList = [];
+
+    if (creationList.length > 0) {
+      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+      let createdItems = [];
+      if (actor) {
+        createdItems = await actor.createEmbeddedDocuments("Item", creationList);
+      } else {
+        const folderName = SystemUtils.Localize("CPR.settings.installedItemsFolder");
+        const folderList = game.folders.filter((folder) => folder.name === folderName && folder.type === "Item");
+        const workingFolder = (folderList.length === 1) ? folderList[0] : await Folder.create({ name: folderName, type: "Item" });
+        for (const item of creationList) {
+          const newItem = await Item.create({
+            name: item.name,
+            type: item.type,
+            system: item.system,
+            img: item.img,
+            folder: workingFolder,
+          });
+          createdItems.push(newItem);
+        }
+      }
+      for (const item of createdItems) {
+        newInstalledList.push(item.uuid);
+        if (containerTypes.includes(item.type) && item.system.installedItems.list.length > 0) {
+          await item.createInstalledItems();
+        }
+      }
+    }
+
+    this.system.installedItems.list = newInstalledList;
+
+    if (this.type === "cyberdeck") {
+      this.syncPrograms();
+    }
+
+    if (upgradableTypes.includes(this.type)) {
+      this.syncUpgrades();
+    }
+
+    return (!actor)
+      ? this.update({ "system.installedItems.list": newInstalledList })
+      : actor.updateEmbeddedDocuments("Item", [{ _id: this._id, "system.installedItems.list": newInstalledList }]);
   };
 };
 

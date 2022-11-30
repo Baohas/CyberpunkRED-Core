@@ -65,7 +65,17 @@ const itemHooks = () => {
    * @param {string} userId               The ID of the requesting user, always game.user.id
    */
   Hooks.on("createItem", (doc, _, userId) => {
-    LOGGER.trace("createItem | actorHooks | Called.");
+    LOGGER.trace("createItem | itemHooks | Called.");
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
+    if (containerTypes.includes(doc.type) && doc.system.installedItems.list.length > 0) {
+      doc.createInstalledItems();
+    }
+
+    if (loadableTypes.includes(doc.type) && doc.system.magazine.ammoId !== "") {
+      doc.createAmmoItems();
+    }
+
     const actor = doc.parent;
     if (actor !== null) {
       if (doc.type === "role") {

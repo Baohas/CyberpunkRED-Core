@@ -1003,6 +1003,7 @@
   "CPR.settings.enablePauseAnimation.name": "Ativar Animação de Pausar",
   "CPR.settings.enableSheetContentFilter.hint": "Habilita uma caixa de texto abaixo de habilidades, equipamentos e cibernéticas para filtrar rapidamente as listas da ficha.",
   "CPR.settings.enableSheetContentFilter.name": "Habilitar Filtro de Conteúdo da Ficha",
+  "CPR.settings.installedItemsFolder": "CPR-Core Installed Items",
   "CPR.settings.invertRollCtrlFunction.hint": "Quando ativado, as caixas de diálogo de rolagem são ignoradas por padrão e habilitadas quando se segura a CTRL",
   "CPR.settings.invertRollCtrlFunction.name": "Inverter a função de CTRL em rolagens",
   "CPR.settings.mookSheetSkillDisplay.base": "Base",

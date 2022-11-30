@@ -17,7 +17,7 @@ export default class UniversalInstallMigration extends CPRMigration {
    * Executed before the migration takes place, see run() in the base migration class.
    */
   async preMigrate() {
-    LOGGER.trace("preMigrate | 4-universalInstall Migration");
+    LOGGER.trace("preMigrate | 5-universalInstall Migration");
     LOGGER.log(`Starting migration: ${this.name}`);
   }
 
@@ -25,7 +25,7 @@ export default class UniversalInstallMigration extends CPRMigration {
    * Takes place after the data migration completes.
    */
   async postMigrate() {
-    LOGGER.trace("postMigrate | 4-universalInstall Migration");
+    LOGGER.trace("postMigrate | 5-universalInstall Migration");
     LOGGER.log(`Finishing migration: ${this.name}`);
   }
 
@@ -39,7 +39,7 @@ export default class UniversalInstallMigration extends CPRMigration {
    * @param {CPRActor} actor
    */
   async migrateActor(actor) {
-    LOGGER.trace("migrateActor | 4-universalInstall Migration");
+    LOGGER.trace("migrateActor | 5-universalInstall Migration");
     const installedItems = typeof actor.system.installedItems === "object"
       ? duplicate(actor.system.installedItems)
       : {
@@ -50,6 +50,7 @@ export default class UniversalInstallMigration extends CPRMigration {
 
     let updatedItemList = [];
     const upgradableTypes = CPRSystemUtils.GetTemplateItemTypes("upgradable");
+    const loadableTypes = CPRSystemUtils.GetTemplateItemTypes("loadable");
 
     for (const item of actor.items) {
       let itemUpdates = {
@@ -105,6 +106,11 @@ export default class UniversalInstallMigration extends CPRMigration {
         itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "optionSlots") };
         itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "installedOptionSlots") };
         itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "optionalIds") };
+      }
+
+      if (loadableTypes.includes(item.type) && item.system.magazine.ammoId !== "") {
+        const ammoItem = actor.getOwnedItem(item.system.magazine.ammoId);
+        itemUpdates.system.magazine.ammoId = ammoItem.uuid;
       }
 
       if (upgradableTypes.includes(item.type)) {
@@ -174,7 +180,7 @@ export default class UniversalInstallMigration extends CPRMigration {
    * @param {CPRItem} item
    */
   static async migrateItem(item) {
-    LOGGER.trace("migrateItem | 4-universalInstall Migration");
+    LOGGER.trace("migrateItem | 5-universalInstall Migration");
 
     const systemChanges = UniversalInstallMigration.scrubItem(item);
 
@@ -188,7 +194,7 @@ export default class UniversalInstallMigration extends CPRMigration {
    * @param {CPRItem} item
    */
   static scrubItem(item) {
-    LOGGER.trace("scrubItem | 4-universalInstall Migration");
+    LOGGER.trace("scrubItem | 5-universalInstall Migration");
     let systemChanges = {};
 
     const removedProperties = ["hasOptionalSlots", "optionSlots", "installedOptionSlots", "optionalIds", "slots"];

@@ -813,7 +813,8 @@
     "CPR.macro.invalidRollType": "You have specified and invalid roll type for your macro:",
     "CPR.macro.itemMissing": "Ensure you have the actor selected which has an item/skill named:",
     "CPR.messages.ammoDeleteWarning": "Before deleting this ammo, you must unload it from weapon",
-    "CPR.messages.ammoMissingFromGear": "The ammo item you are trying to reload from no longer exists in your inventory. Change ammo instead of reload.",
+    "CPR.messages.ammoReloadMissingFromGear": "The ammo item you are trying to reload from no longer exists in your inventory. Change ammo instead of reload.",
+    "CPR.messages.ammoMissingFromGear": "The ammo item loaded no longer exists in your inventory. Loaded ammo has been lost.",
     "CPR.messages.amountNotNumber": "Error: The amount entered could not be converted to a number!",
     "CPR.messages.cannotDeleteCoreCyberware": "You cannot delete core Cyberware. Just remove the options and it will be hidden.",
     "CPR.messages.cannotDropInstalledCyberware": "You cannot drop or transfer installed Cyberware. You must uninstall it first.",
@@ -1003,6 +1004,7 @@
     "CPR.settings.enablePauseAnimation.name": "Enable Pause Animation",
     "CPR.settings.enableSheetContentFilter.hint": "Enables a text box below Skills, Gear and Cyberware to allow you to quickly filter the lists to find what you're looking for",
     "CPR.settings.enableSheetContentFilter.name": "Enable Sheet Content Filter",
+    "CPR.settings.installedItemsFolder": "CPR-Core Installed Items"
     "CPR.settings.invertRollCtrlFunction.hint": "When enabled, roll dialogs are skipped by default and enabled when holding CTRL",
     "CPR.settings.invertRollCtrlFunction.name": "Invert function of CTRL on Rolls",
     "CPR.settings.mookSheetSkillDisplay.base": "Base",

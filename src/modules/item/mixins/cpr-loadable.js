@@ -1,4 +1,4 @@
-/* global game getProperty */
+/* global game getProperty fromUuidSync Item */
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LoadAmmoPrompt from "../../dialog/cpr-load-ammo-prompt.js";
 import LOGGER from "../../utils/cpr-logger.js";
@@ -54,14 +54,16 @@ const Loadable = function Loadable() {
       // recover the ammo to the right object
       const { ammoId } = this.system.magazine;
       if (ammoId) {
-        const ammo = this.actor.items.find((i) => i._id === ammoId);
+        const ammo = this.actor.getOwnedItem(ammoId);
 
-        if (ammo !== null) {
+        if (typeof ammo === "object") {
           if (this.system.magazine.value > 0) {
             if (ammoId) {
               await ammo._ammoIncrement(this.system.magazine.value);
             }
           }
+        } else {
+          SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.ammoMissingFromGear")));
         }
       }
       this.system.magazine.value = 0;
@@ -120,9 +122,9 @@ const Loadable = function Loadable() {
         const magazineData = this.system.magazine;
         magazineData.ammoId = selectedAmmoId;
         loadUpdate.push({ _id: this._id, "system.magazine.ammoId": selectedAmmoId });
-        const ammo = this.actor.items.find((i) => i._id === selectedAmmoId);
+        const ammo = this.actor.getOwnedItem(selectedAmmoId);
         if (ammo === null) {
-          SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.ammoMissingFromGear")));
+          SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.ammoReloadMissingFromGear")));
           return;
         }
         if (ammo.getRollData().amount === 0) {
@@ -201,7 +203,7 @@ const Loadable = function Loadable() {
   this._getLoadedAmmoType = function _getLoadedAmmoType() {
     LOGGER.trace("_getLoadedAmmoType | Loadable | Called.");
     if (this.actor) {
-      const ammo = this.actor.items.find((i) => i._id === this.system.magazine.ammoId);
+      const ammo = this.actor.getOwnedItem(this.system.magazine.ammoId);
       if (ammo) {
         return ammo.system.type;
       }
@@ -217,7 +219,7 @@ const Loadable = function Loadable() {
   this._getLoadedAmmoVariety = function _getLoadedAmmoVariety() {
     LOGGER.trace("_getLoadedAmmoVariety | Loadable | Called.");
     if (this.actor) {
-      const ammo = this.actor.items.find((i) => i._id === this.system.magazine.ammoId);
+      const ammo = this.actor.getOwnedItem(this.system.magazine.ammoId);
       if (ammo) {
         return ammo.system.variety;
       }
@@ -261,6 +263,41 @@ const Loadable = function Loadable() {
       }
     }
     return updateData;
+  };
+
+  this.createAmmoItems = async function createAmmoItems() {
+    LOGGER.trace("createAmmoItems | Loadable | Called.");
+    const actor = (this.isOwned) ? this.actor : false;
+    let ammoId ="";
+    if (this.system.magazine.ammoId !== "") {
+      const ammo = fromUuidSync(this.system.magazine.ammoId);
+      const newItemData = ammo.toObject();
+      newItemData.system.amount = 0;
+      if (actor) {
+        const itemMatch = actor.items.find((i) => i.type === ammo.type && i.name === ammo.name);
+        if (itemMatch) {
+          ammoId = itemMatch.uuid;
+        } else {
+          const createdItems = await actor.createEmbeddedDocuments("Item", [newItemData]);
+          ammoId = createdItems[0].uuid;
+        }
+      } else {
+        const folderName = SystemUtils.Localize("CPR.settings.installedItemsFolder");
+        const folderList = game.folders.filter((folder) => folder.name === folderName && folder.type === "Item");
+        const workingFolder = (folderList.length === 1) ? folderList[0] : await Folder.create({ name: folderName, type: "Item" });
+        const newItem = await Item.create({
+          name: ammo.name,
+          type: ammo.type,
+          system: newItemData.system,
+          img: ammo.img,
+          folder: workingFolder,
+        });
+        ammoId = newItem.uuid;
+      }
+    }
+    return (!actor)
+      ? this.update({ "system.magazine.ammoId": ammoId })
+      : actor.updateEmbeddedDocuments("Item", [{ _id: this._id, "system.magazine.ammoId": ammoId }]);
   };
 };
 

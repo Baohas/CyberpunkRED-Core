@@ -1003,6 +1003,7 @@
   "CPR.settings.enablePauseAnimation.name": "Включить анимированный текст паузы",
   "CPR.settings.enableSheetContentFilter.hint": "Включает поле под навыками, снаряжением и киберимплантами, чтобы быстро фильтровать списки",
   "CPR.settings.enableSheetContentFilter.name": "Включить фильтр контента в листе персонажа",
+  "CPR.settings.installedItemsFolder": "CPR-Core Installed Items",
   "CPR.settings.invertRollCtrlFunction.hint": "When enabled, roll dialogs are skipped by default and enabled when holding CTRL (or COMMAND for MacOS)",
   "CPR.settings.invertRollCtrlFunction.name": "Invert function of CTRL (or COMMAND for MacOS) on Rolls",
   "CPR.settings.mookSheetSkillDisplay.base": "База",

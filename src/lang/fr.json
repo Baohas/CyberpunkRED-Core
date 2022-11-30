@@ -1003,6 +1003,7 @@
   "CPR.settings.enablePauseAnimation.name": "Activer l'animation de Pause",
   "CPR.settings.enableSheetContentFilter.hint": "Active une zone de texte sous les Compétences, Objet et Cybermatériel pour vous permettre de filtrer rapidement afin de trouver ce que vous cherchez",
   "CPR.settings.enableSheetContentFilter.name": "Activer le filtrage de contenu",
+  "CPR.settings.installedItemsFolder": "CPR-Core Installed Items",
   "CPR.settings.invertRollCtrlFunction.hint": "Quand activé, les fenêtres de jets sont masqué par défaut et peuvent réapparaître en maintenant CTRL",
   "CPR.settings.invertRollCtrlFunction.name": "Inverser la fonction de CTRL sur les Jets",
   "CPR.settings.mookSheetSkillDisplay.base": "Base",

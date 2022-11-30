@@ -1003,6 +1003,7 @@
   "CPR.settings.enablePauseAnimation.name": "Abilita Animazione della Pausa",
   "CPR.settings.enableSheetContentFilter.hint": "Abilita una area di testo sotto Abilità, Equipaggiamento e Cyberware per consentire di filtrare rapidamente le liste per trovare quello che stai cercando",
   "CPR.settings.enableSheetContentFilter.name": "Abilita Filtro Contenuto Scheda",
+  "CPR.settings.installedItemsFolder": "CPR-Core Installed Items",
   "CPR.settings.invertRollCtrlFunction.hint": "Se abilitato le finestre di dialogo per i tiri verranno saltate e appariranno solo tenento premuto CTRL",
   "CPR.settings.invertRollCtrlFunction.name": "Inverti la funzione del tasto CTRL sui Tiri di Dado",
   "CPR.settings.mookSheetSkillDisplay.base": "Base",
