@@ -54,7 +54,7 @@ playlistSound: null
 sort: 0
 sounds: []
 templates: []
-thumb: systems/cyberpunk-red-core/assets/scenes/Netarch_Template_Animated_thumb.webp
+thumb: systems/cyberpunk-red-core/assets/scenes/Netarch_Template_thumb.webp
 tiles: []
 tokenVision: true
 tokens: []

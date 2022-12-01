@@ -19,6 +19,7 @@
 - Add 7 new vehicle icons
 - Added new icons for the Bodyweight Suit, the Bulletproof Shield, and generic head armor
 - Added new icons for the Body and Head Injury Tables
+- Improved the visibility of the thumbnail image for the included NET Architecture scenes
 
 ### Changes
 
