@@ -156,7 +156,7 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "NET architecture Rolltables",
+      "label": "NET Architecture Rolltables",
       "type": "RollTable",
       "name": "net-rolltables",
       "path": "packs/net-rolltables.db",
