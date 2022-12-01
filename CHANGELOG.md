@@ -18,6 +18,7 @@
 - Added new icons for Chipware Compartment and Smart Lens
 - Add 7 new vehicle icons
 - Added new icons for the Bodyweight Suit, the Bulletproof Shield, and generic head armor
+- Added new icons for the Body and Head Injury Tables
 
 ### Changes
 
