@@ -8,14 +8,14 @@ _stats:
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+img: systems/cyberpunk-red-core/icons/compendium/spinning_your_wheels/bicycle.svg
 name: Bicycle
 system:
   tags: ''
   description:
     value: >-
       <p>A simple bicycle. It's speed increases to 10 MOVE + 20 MPH/32 KPH if
-      the user has 4 to 7 BODY, and inreases to 15 MOVE + 30 MPH/48 KPH if the
+      the user has 4 to 7 BODY, and increases to 15 MOVE + 30 MPH/48 KPH if the
       user has 8+ BODY.</p>
     chat: ''
     unidentified: ''

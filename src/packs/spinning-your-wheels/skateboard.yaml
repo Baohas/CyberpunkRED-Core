@@ -8,14 +8,14 @@ _stats:
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/gear/binoculars.svg
+img: systems/cyberpunk-red-core/icons/compendium/spinning_your_wheels/skateboard.svg
 name: Skateboard
 system:
   tags: []
   description:
     value: >-
       <p>The coolest wheels around. Increases moment by 4 m/yds when using the
-      Run Action on level or downwards ground. May cause physical tasts to be
+      Run Action on level or downwards ground. May cause physical tasks to be
       done at -2.</p>
     chat: ''
     unidentified: ''

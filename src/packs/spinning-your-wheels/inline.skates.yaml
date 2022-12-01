@@ -8,15 +8,15 @@ _stats:
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/gear/binoculars.svg
+img: systems/cyberpunk-red-core/icons/compendium/spinning_your_wheels/inline_skates.svg
 name: Inline Skates
 system:
   tags: []
   description:
     value: >-
       <p>They're roller skates baby! Increases moment by 4 m/yds when using the
-      Run Action, though stoping the use of any options in the user's legs. May
-      cause physical tasts to be done at -2.</p>
+      Run Action, though stopping the use of any options in the user's legs. May
+      cause physical tasks to be done at -2.</p>
     chat: ''
     unidentified: ''
   source: SYW

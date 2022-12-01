@@ -211,6 +211,7 @@
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
+    {
       "label": "Spinning Your Wheels",
       "type": "Item",
       "name": "spinning-your-wheels-items",
