@@ -210,6 +210,13 @@
       "path": "packs/micro-chrome.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
+    },
+      "label": "Spinning Your Wheels",
+      "type": "Item",
+      "name": "spinning-your-wheels-items",
+      "path": "packs/spinning-your-wheels.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
     }
   ],
   "languages": [
