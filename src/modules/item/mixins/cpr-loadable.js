@@ -1,4 +1,4 @@
-/* global game getProperty fromUuidSync Item */
+/* global game getProperty fromUuidSync Item Folder */
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LoadAmmoPrompt from "../../dialog/cpr-load-ammo-prompt.js";
 import LOGGER from "../../utils/cpr-logger.js";
@@ -52,22 +52,17 @@ const Loadable = function Loadable() {
     LOGGER.trace("_unloadItem | Loadable | Called.");
     if (this.actor) {
       // recover the ammo to the right object
-      const { ammoId } = this.system.magazine;
-      if (ammoId) {
-        const ammo = this.actor.getOwnedItem(ammoId);
+      let ammo = this.actor.getOwnedItem(this.system.magazine.ammoData.uuid);
+      if (typeof ammo !== "object") {
+        await this.createAmmoItems();
+        ammo = this.actor.getOwnedItem(this.system.magazine.ammoData.uuid);
+      }
 
-        if (typeof ammo === "object") {
-          if (this.system.magazine.value > 0) {
-            if (ammoId) {
-              await ammo._ammoIncrement(this.system.magazine.value);
-            }
-          }
-        } else {
-          SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.ammoMissingFromGear")));
-        }
+      if (this.system.magazine.value > 0) {
+        await ammo._ammoIncrement(this.system.magazine.value);
       }
       this.system.magazine.value = 0;
-      this.system.magazine.ammoId = "";
+      this.system.magazine.ammoData = { name: "", uuid: "" };
       return this.actor.updateEmbeddedDocuments("Item", [{ _id: this.id, system: this.system }]);
     }
     return null;
@@ -113,20 +108,18 @@ const Loadable = function Loadable() {
         selectedAmmoId = formData.selectedAmmo;
       }
 
-      const loadedAmmo = this.system.magazine.ammoId;
+      const loadedAmmo = this.system.magazine.ammoData.uuid;
       if (loadedAmmo !== "" && loadedAmmo !== selectedAmmoId) {
         await this._unloadItem();
       }
 
       if (selectedAmmoId) {
         const magazineData = this.system.magazine;
-        magazineData.ammoId = selectedAmmoId;
-        loadUpdate.push({ _id: this._id, "system.magazine.ammoId": selectedAmmoId });
         const ammo = this.actor.getOwnedItem(selectedAmmoId);
-        if (ammo === null) {
-          SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.ammoReloadMissingFromGear")));
-          return;
-        }
+        magazineData.ammoData.uuid = ammo.uuid;
+        magazineData.ammoData.name = ammo.name;
+        loadUpdate.push({ _id: this._id, "system.magazine.ammoData.uuid": ammo.uuid, "system.magazine.ammoData.name": ammo.name });
+
         if (ammo.getRollData().amount === 0) {
           SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.reloadOutOfAmmo")));
           return;
@@ -203,7 +196,7 @@ const Loadable = function Loadable() {
   this._getLoadedAmmoType = function _getLoadedAmmoType() {
     LOGGER.trace("_getLoadedAmmoType | Loadable | Called.");
     if (this.actor) {
-      const ammo = this.actor.getOwnedItem(this.system.magazine.ammoId);
+      const ammo = this.actor.getOwnedItem(this.system.magazine.AmmoData.uuid);
       if (ammo) {
         return ammo.system.type;
       }
@@ -219,7 +212,7 @@ const Loadable = function Loadable() {
   this._getLoadedAmmoVariety = function _getLoadedAmmoVariety() {
     LOGGER.trace("_getLoadedAmmoVariety | Loadable | Called.");
     if (this.actor) {
-      const ammo = this.actor.getOwnedItem(this.system.magazine.ammoId);
+      const ammo = this.actor.getOwnedItem(this.system.magazine.ammoData.uuid);
       if (ammo) {
         return ammo.system.variety;
       }
@@ -236,14 +229,14 @@ const Loadable = function Loadable() {
   this.clearAmmo = function clearAmmo(data) {
     LOGGER.trace("clearAmmo | Loadable | Called.");
     const newData = data;
-    newData.system.magazine.ammoId = "";
+    newData.system.magazine.ammoData = { name: "", uuid: "" };
     newData.system.magazine.value = 0;
     return newData;
   };
 
   /**
-   * Whenever a new loadable item is created, we automatically clear the ammo associated with it.
-   * Otherwise, a copied Item will contain references to ammo used in the original item.
+   * When a loadable item has an upgrade removed we need to sync the magazine data
+   * in case the magazine size decreased, we need to remove the extra bullets.
    *
    * @param {Object} data - the data the item is being created from
    */
@@ -256,7 +249,7 @@ const Loadable = function Loadable() {
     if (magazineSize < magazineData.value) {
       const overage = magazineData.value - magazineSize;
       updateData.push({ _id: this._id, "system.magazine.value": magazineSize });
-      const ammoItem = actor.getOwnedItem(magazineData.ammoId);
+      const ammoItem = actor.getOwnedItem(magazineData.ammoData.uuid);
       if (ammoItem) {
         const newAmmoAmount = ammoItem.system.amount + overage;
         updateData.push({ _id: ammoItem._id, "system.amount": newAmmoAmount });
@@ -268,36 +261,55 @@ const Loadable = function Loadable() {
   this.createAmmoItems = async function createAmmoItems() {
     LOGGER.trace("createAmmoItems | Loadable | Called.");
     const actor = (this.isOwned) ? this.actor : false;
-    let ammoId ="";
-    if (this.system.magazine.ammoId !== "") {
-      const ammo = fromUuidSync(this.system.magazine.ammoId);
-      const newItemData = ammo.toObject();
-      newItemData.system.amount = 0;
-      if (actor) {
-        const itemMatch = actor.items.find((i) => i.type === ammo.type && i.name === ammo.name);
-        if (itemMatch) {
-          ammoId = itemMatch.uuid;
-        } else {
-          const createdItems = await actor.createEmbeddedDocuments("Item", [newItemData]);
-          ammoId = createdItems[0].uuid;
-        }
+    const magazineData = this.system.magazine;
+    const ammoData = { name: "", uuid: "" };
+    if (this.system.magazine.ammoData.uuid !== "") {
+      if (!actor) {
+        const warningMessage = `${SystemUtils.Format(
+          "CPR.messages.creatingLoadedWeaponWorldItemsNotSupported",
+          {
+            ammoName: this.system.magazine.ammoData.name,
+          },
+        )}`;
+        SystemUtils.DisplayMessage("warn", warningMessage);
+        magazineData.value = 0;
       } else {
-        const folderName = SystemUtils.Localize("CPR.settings.installedItemsFolder");
-        const folderList = game.folders.filter((folder) => folder.name === folderName && folder.type === "Item");
-        const workingFolder = (folderList.length === 1) ? folderList[0] : await Folder.create({ name: folderName, type: "Item" });
-        const newItem = await Item.create({
-          name: ammo.name,
-          type: ammo.type,
-          system: newItemData.system,
-          img: ammo.img,
-          folder: workingFolder,
-        });
-        ammoId = newItem.uuid;
+        // First we need to identify the source ammo to model after in the
+        // event we do need to create the ammo on the actor. This may or may not exist
+        // on the actor who owns this weapon, so we search for it by UUID.
+        let ammo = fromUuidSync(this.system.magazine.ammoData.uuid);
+        if (!ammo) {
+          // In this instance, we have a UUID that does not exist in the world. We will see if we have a name match
+          // first on the actor and then secondly in the world.
+          ammo = actor.items.find((i) => i.type === "ammo" && i.name === this.system.magazine.ammoData.name)
+            ? actor.items.find((i) => i.type === "ammo" && i.name === this.system.magazine.ammoData.name)
+            : game.items.find((i) => i.type === "ammo" && i.name === this.system.magazine.ammoData.name);
+        }
+
+        if (typeof ammo === "object") {
+          // We have a source ammo to model from
+          const newItemData = ammo.toObject();
+          newItemData.system.amount = 0;
+          const itemMatch = actor.items.find((i) => i.type === ammo.type && i.name === ammo.name);
+          if (itemMatch) {
+            ammoData.name = itemMatch.name;
+            ammoData.uuid = itemMatch.uuid;
+          } else {
+            const createdItems = await actor.createEmbeddedDocuments("Item", [newItemData]);
+            ammoData.name = createdItems[0].name;
+            ammoData.uuid = createdItems[0].uuid;
+          }
+        } else {
+          // Unable to find ammo to model after and therefore can not create any new ammo. Throw error
+          // and clear ammo from weapon.
+          SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.ammoMissingFromGear"));
+        }
       }
     }
+    magazineData.ammoData = ammoData;
     return (!actor)
-      ? this.update({ "system.magazine.ammoId": ammoId })
-      : actor.updateEmbeddedDocuments("Item", [{ _id: this._id, "system.magazine.ammoId": ammoId }]);
+      ? this.update({ "system.magazine": magazineData })
+      : actor.updateEmbeddedDocuments("Item", [{ _id: this._id, "system.magazine": magazineData }]);
   };
 };
 

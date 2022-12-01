@@ -44,7 +44,9 @@ system:
   isInstalled: false
   isRanged: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 0
     value: 0
   modifiers:

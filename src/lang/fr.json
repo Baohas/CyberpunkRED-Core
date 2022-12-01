@@ -814,6 +814,7 @@
   "CPR.macro.itemMissing": "Assurez-vous d'avoir un acteur sélectionné qui a un(e) objet/compétence nommé :",
   "CPR.messages.ammoDeleteWarning": "Avant de supprimer ces munitions, vous devez les décharger de vos armes",
   "CPR.messages.ammoMissingFromGear": "Les munitions que vous essayez de charger n'existent plus dans votre inventaire. Changez de munitions au lieu de recharger.",
+  "CPR.messages.ammoReloadMissingFromGear": "The ammo item you are trying to reload from no longer exists in your inventory. Change ammo instead of reload.",
   "CPR.messages.amountNotNumber": "Erreur : La quantité entrée ne peut pas être converti en nombre !",
   "CPR.messages.cannotDeleteCoreCyberware": "Vous ne pouvez pas supprimer de Cyberimplants essentiels. Enlevez simplement les options pour qu'il soit caché.",
   "CPR.messages.cannotDropInstalledCyberware": "Vous ne pouvez supprimer ou transférer le Cyberimplant. Vous devez d'abord le désinstaller.",

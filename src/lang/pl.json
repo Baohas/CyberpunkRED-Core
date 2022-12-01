@@ -814,6 +814,7 @@
   "CPR.macro.itemMissing": "Upewnij się, że masz wybranego aktora, który ma przedmiot/umiejętność o nazwie:",
   "CPR.messages.ammoDeleteWarning": "Przed usunięciem tej amunicji musisz ją rozładować z broni",
   "CPR.messages.ammoMissingFromGear": "Amunicja, którą próbujesz przeładować nie istnieje już w twoim ekwipunku. Zmień amunicję zamiast przeładowania.",
+  "CPR.messages.ammoReloadMissingFromGear": "The ammo item you are trying to reload from no longer exists in your inventory. Change ammo instead of reload.",
   "CPR.messages.amountNotNumber": "Error: The amount entered could not be converted to a number!",
   "CPR.messages.cannotDeleteCoreCyberware": "Nie możesz usunąć bazowej cyborgizacji. Usuń wszystkie opcję z gniazd i zostanie ona ukryta.",
   "CPR.messages.cannotDropInstalledCyberware": "Nie możesz upuścić lub przenieść zainstalowanej cyborgizacji. Musisz ją najpierw odinstalować.",

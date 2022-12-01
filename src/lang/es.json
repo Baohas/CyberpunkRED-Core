@@ -814,6 +814,7 @@
   "CPR.macro.itemMissing": "Asegúrate de que el actor seleccionado tiene un objeto o habilidad nombrado:",
   "CPR.messages.ammoDeleteWarning": "Antes de eliminar esta munición, debes descargarla del arma",
   "CPR.messages.ammoMissingFromGear": "El objeto de munición desde el que intentas recargar ya no existe en tu inventario. Cambia la munición en lugar de la recarga.",
+  "CPR.messages.ammoReloadMissingFromGear": "The ammo item you are trying to reload from no longer exists in your inventory. Change ammo instead of reload.",
   "CPR.messages.amountNotNumber": "Error: ¡La cantidad introducida no puede ser convertida a un número!",
   "CPR.messages.cannotDeleteCoreCyberware": "No puedes eliminar el Cyberware central. Solo elimina las opciones y se ocultará.",
   "CPR.messages.cannotDropInstalledCyberware": "No puede eliminar o transferir Cyberware instalado. Debe desinstalarlo primero.",

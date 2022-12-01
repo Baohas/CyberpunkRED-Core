@@ -72,7 +72,7 @@ const itemHooks = () => {
       doc.createInstalledItems();
     }
 
-    if (loadableTypes.includes(doc.type) && doc.system.magazine.ammoId !== "") {
+    if (loadableTypes.includes(doc.type) && doc.system.magazine.ammoData.uuid !== "") {
       doc.createAmmoItems();
     }
 

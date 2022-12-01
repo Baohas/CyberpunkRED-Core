@@ -85,7 +85,7 @@ const Upgradable = function Upgradable() {
     this.system.isUpgraded = upgradeStatus;
     this.system.upgrades = installedUpgrades;
 
-    if (this.type === "weapon" && this.system.isRanged && this.system.magazine.ammoId !== "") {
+    if (this.type === "weapon" && this.system.isRanged && this.system.magazine.ammoData.uuid !== "") {
       const additionalUpdates = await this.syncMagazine();
       if (additionalUpdates.length > 0) {
         upgradeData = upgradeData.concat(additionalUpdates);

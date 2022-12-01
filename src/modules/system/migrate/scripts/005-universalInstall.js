@@ -108,9 +108,20 @@ export default class UniversalInstallMigration extends CPRMigration {
         itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "optionalIds") };
       }
 
-      if (loadableTypes.includes(item.type) && item.system.magazine.ammoId !== "") {
-        const ammoItem = actor.getOwnedItem(item.system.magazine.ammoId);
-        itemUpdates.system.magazine.ammoId = ammoItem.uuid;
+      if (loadableTypes.includes(item.type) && typeof item.system.magazine.ammoId !== "undefined") {
+        const { ammoId } = item.system.magazine;
+        let ammoName = "";
+        let ammoUuid = "";
+        if ((typeof ammoId === "string" || ammoId instanceof String) && ammoId.length > 0) {
+          const ammoItem = actor.getOwnedItem(item.system.magazine.ammoId);
+          ammoName = ammoItem.name;
+          ammoUuid = ammoItem.uuid;
+        }
+        itemUpdates.system.magazine.ammoData = {
+          name: ammoName,
+          uuid: ammoUuid,
+        };
+        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "magazine.ammoId") };
       }
 
       if (upgradableTypes.includes(item.type)) {
@@ -181,6 +192,9 @@ export default class UniversalInstallMigration extends CPRMigration {
    */
   static async migrateItem(item) {
     LOGGER.trace("migrateItem | 5-universalInstall Migration");
+
+
+    // TODO
 
     const systemChanges = UniversalInstallMigration.scrubItem(item);
 

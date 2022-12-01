@@ -814,6 +814,7 @@
   "CPR.macro.itemMissing": "Stelle sicher, dass du einen Akteur ausgewählt hast, welcher einen Gegenstand oder eine Fähigkeit mit folgendem Namen besitzt:",
   "CPR.messages.ammoDeleteWarning": "Bevor du diese Munition löschst, musst du sie aus der Waffe entladen",
   "CPR.messages.ammoMissingFromGear": "Der Munitionsgegenstand, welchen du nachzuladen versuchst, existiert in deinem Inventar nicht mehr. Wechsel die Munition anstatt nachzuladen.",
+  "CPR.messages.ammoReloadMissingFromGear": "The ammo item you are trying to reload from no longer exists in your inventory. Change ammo instead of reload.",
   "CPR.messages.amountNotNumber": "Fehler: Der eingegebene Betrag konnte nicht in eine Zahl umgewandelt werden!",
   "CPR.messages.cannotDeleteCoreCyberware": "Du kannst Basis-Cyberware nicht löschen. Entferne einfach alle Optionen und es wird ausgeblendet.",
   "CPR.messages.cannotDropInstalledCyberware": "Du kannst die installierte Cyberware nicht fallen lassen oder übertragen. Du musst sie zuerst deinstallieren.",

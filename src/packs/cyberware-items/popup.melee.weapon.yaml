@@ -53,7 +53,9 @@ system:
   isUpgraded: false
   isWeapon: true
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 0
     value: 0
   price:

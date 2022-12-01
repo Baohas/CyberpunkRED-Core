@@ -814,6 +814,7 @@
   "CPR.macro.itemMissing": "Убедись, что выбранная кукла имеет предмет/навык:",
   "CPR.messages.ammoDeleteWarning": "Перед тем как удалить боеприпас, ты должен разредить оружие",
   "CPR.messages.ammoMissingFromGear": "Боеприпасы, что ты пытаешься зарядить, больше не имеются у тебя в инвентаре. Смени боеприпасы, а не перезаряжайся.",
+  "CPR.messages.ammoReloadMissingFromGear": "The ammo item you are trying to reload from no longer exists in your inventory. Change ammo instead of reload.",
   "CPR.messages.amountNotNumber": "Ошибка: Введённое количество не может быть приведено к числу!",
   "CPR.messages.cannotDeleteCoreCyberware": "Ты не можешь удалить основной киберимплант. Просто удали опциональные и он будет скрыт.",
   "CPR.messages.cannotDropInstalledCyberware": "Ты не можешь сбрасывать или передавать установленный киберимплант. Сначала сними его.",

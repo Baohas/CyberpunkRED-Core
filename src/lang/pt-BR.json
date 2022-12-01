@@ -814,6 +814,7 @@
   "CPR.macro.itemMissing": "Ensure you have the actor selected which has an item/skill named:",
   "CPR.messages.ammoDeleteWarning": "Antes de apagar esta munição, você deve descarregá-la da arma",
   "CPR.messages.ammoMissingFromGear": "O item de munição que você está tentando recarregar não existe mais em seu inventário. Altere a munição ao invés de recarregar.",
+  "CPR.messages.ammoReloadMissingFromGear": "The ammo item you are trying to reload from no longer exists in your inventory. Change ammo instead of reload.",
   "CPR.messages.amountNotNumber": "Erro: A quantidade inserida não pode ser convertida para um número!",
   "CPR.messages.cannotDeleteCoreCyberware": "Não é possível excluir a Cibernética Base. Basta remover as expansões que a base será ocultada.",
   "CPR.messages.cannotDropInstalledCyberware": "Você não pode soltar ou transferir o Cibernética instalado. É necessário desinstalá-lo primeiro.",

@@ -332,14 +332,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
 
     let cost = 0;
 
-    if (item.type === "weapon") {
-      const { ammoId } = cprItemData.magazine;
-      if (ammoId !== "") {
-        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradeLoadedWeaponWarn"));
-        return;
-      }
-    }
-
     if (item.type === "ammo" && cprItemData.variety !== "grenade" && cprItemData.variety !== "rocket") {
       // Ammunition, which is neither grenades nor rockets, are prices are for 10 of them (pg. 344)
       cost = parseInt(parseInt(cprItemData.price.market, 10) / 10, 10);

@@ -35,7 +35,7 @@ const Attackable = function Attackable() {
         this._loadItem();
         break;
       case "reload-ammo":
-        this._loadItem(this.system.magazine.ammoId);
+        this._loadItem(this.system.magazine.ammoData.uuid);
         break;
       case "measure-dv":
         await this._setDvTable(actor, this.system.dvTable);

@@ -814,6 +814,7 @@
   "CPR.macro.itemMissing": "Assicurati di avere selezionato il token che ha un oggetto/abilità nominato/a:",
   "CPR.messages.ammoDeleteWarning": "Prima di eliminare questa munizione, è necessario scaricarla dall'arma",
   "CPR.messages.ammoMissingFromGear": "L'oggetto munizioni che stai cercando di ricaricare non esiste più nel tuo inventario. Cambia munizioni invece di ricaricare.",
+  "CPR.messages.ammoReloadMissingFromGear": "The ammo item you are trying to reload from no longer exists in your inventory. Change ammo instead of reload.",
   "CPR.messages.amountNotNumber": "Errore: l'importo inserito non può essere convertito in un numero!",
   "CPR.messages.cannotDeleteCoreCyberware": "Non puoi eliminare il Cyberware Base. Rimuovi le opzioni e verrà nascosto.",
   "CPR.messages.cannotDropInstalledCyberware": "Non puoi rilasciare o trasferire il Cyberware installato. Devi prima disinstallarlo.",

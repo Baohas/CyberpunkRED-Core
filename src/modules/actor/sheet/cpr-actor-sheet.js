@@ -640,24 +640,7 @@ export default class CPRActorSheet extends ActorSheet {
         return;
       }
     }
-    if (item.type === "ammo") {
-      const weapons = this.actor.itemTypes.weapon;
-      let ammoIsLoaded = false;
-      weapons.forEach((weapon) => {
-        const weaponData = weapon.system;
-        if (weaponData.isRanged) {
-          if (weaponData.magazine.ammoId === item.id) {
-            const warningMessage = `${SystemUtils.Localize("CPR.messages.ammoDeleteWarning")}: ${weapon.name}`;
-            SystemUtils.DisplayMessage("warn", warningMessage);
-            ammoIsLoaded = true;
-          }
-        }
-      });
 
-      if (ammoIsLoaded) {
-        return;
-      }
-    }
     if (item.type === "cyberdeck") {
       // Set all of the owned programs that were installed on
       // this cyberdeck to uninstalled.

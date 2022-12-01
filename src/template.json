@@ -283,7 +283,10 @@
         "magazine": {
           "value": 0,
           "max": 0,
-          "ammoId": ""
+          "ammoData": {
+            "name": "",
+            "uuid": ""
+          }
         },
         "ammoVariety": []
       },

@@ -975,7 +975,7 @@ export default class CPRActor extends Actor {
     weapons.forEach((weapon) => {
       const cprWeaponData = weapon.system;
       if (cprWeaponData.isRanged) {
-        if (cprWeaponData.magazine.ammoId === ammoId) {
+        if (cprWeaponData.magazine.ammoData.uuid === ammoId) {
           weapon._unloadItem();
         }
       }

@@ -146,7 +146,7 @@
                                     <a class="name item-edit" title="{{weapon.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{weapon.name}}</a>
                                     {{#if (cprCompare (cprApplyUpgrade weapon weapon.system.attackmod "attackmod") ">" "0")}}(+{{cprApplyUpgrade weapon weapon.system.attackmod "attackmod"}}){{/if}}
                                     {{#if (cprCompare (cprApplyUpgrade weapon weapon.system.attackmod "attackmod") "<" "0")}}({{cprApplyUpgrade weapon weapon.system.attackmod "attackmod"}}){{/if}}
-                                    {{#if weapon.system.magazine.ammoId}}
+                                    {{#if weapon.system.magazine.ammoData.uuid}}
                                         <br>
                                         ({{localize "CPR.global.itemTypes.ammo"}}:<input name = "system.magazine.value" class = "number weapon-input" style = "width:30px;text-align:right;" type = "text" data-item-prop = "system.magazine.value" value = "{{weapon.system.magazine.value}}">/{{cprApplyUpgrade weapon weapon.system.magazine.max "magazine"}})
                                     {{/if}}
@@ -225,7 +225,7 @@
                                                 <a class="name item-view" title="{{weapon.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{../../this.name}} {{localize "CPR.characterSheet.bottomPane.fight.attachment"}}: {{weapon.name}}</a>
                                                 {{#if (cprCompare weapon.system.attackmod ">" "0")}}(+{{weapon.system.attackmod}}){{/if}}
                                                 {{#if (cprCompare weapon.system.attackmod "<" "0")}}({{weapon.system.attackmod}}){{/if}}
-                                                {{#if weapon.system.magazine.ammoId}}
+                                                {{#if weapon.system.magazine.ammoData.uuid}}
                                                     <br>
                                                     ({{localize "CPR.global.itemTypes.ammo"}}:<input name = "system.magazine.value" class = "number weapon-input" style = "width:30px;text-align:right;" type = "text" data-item-prop = "system.magazine.value" value = "{{weapon.system.magazine.value}}">/{{cprApplyUpgrade weapon weapon.system.magazine.max "magazine"}})
                                                 {{/if}}
@@ -314,7 +314,7 @@
                                     <a class="name item-edit" title="{{weapon.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{weapon.name}}</a>
                                     {{#if (cprCompare weapon.system.attackmod ">" "0")}}(+{{weapon.system.attackmod}}){{/if}}
                                     {{#if (cprCompare weapon.system.attackmod "<" "0")}}({{weapon.system.attackmod}}){{/if}}
-                                    {{#if weapon.system.magazine.ammoId}}
+                                    {{#if weapon.system.magazine.ammoData.uuid}}
                                         <br>
                                         ({{localize "CPR.global.itemTypes.ammo"}}:<input name = "system.magazine.value" class = "number weapon-input" style = "width:30px;text-align:right;" type = "text" data-item-prop = "system.magazine.value" value = "{{weapon.system.magazine.value}}">/{{cprApplyUpgrade weapon weapon.system.magazine.max "magazine"}})
                                     {{/if}}
@@ -393,7 +393,7 @@
                                                 <a class="name item-view" title="{{weapon.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{../../this.name}} {{localize "CPR.characterSheet.bottomPane.fight.attachment"}}: {{weapon.name}}</a>
                                                 {{#if (cprCompare weapon.system.attackmod ">" "0")}}(+{{weapon.system.attackmod}}){{/if}}
                                                 {{#if (cprCompare weapon.system.attackmod "<" "0")}}({{weapon.system.attackmod}}){{/if}}
-                                                {{#if weapon.system.magazine.ammoId}}
+                                                {{#if weapon.system.magazine.ammoData.uuid}}
                                                     <br>
                                                     ({{localize "CPR.global.itemTypes.ammo"}}:<input name = "system.magazine.value" class = "number weapon-input" style = "width:30px;text-align:right;" type = "text" data-item-prop = "system.magazine.value" value = "{{weapon.system.magazine.value}}">/{{weapon.system.magazine.max}})
                                                 {{/if}}

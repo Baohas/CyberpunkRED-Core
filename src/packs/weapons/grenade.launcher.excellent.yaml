@@ -48,7 +48,9 @@ system:
   isRanged: true
   isUpgraded: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 2
     value: 0
   price:
