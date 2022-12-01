@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* global duplicate */
+/* global duplicate mergeObject */
 
 import CPRMigration from "../cpr-migration.js";
 import LOGGER from "../../../utils/cpr-logger.js";
@@ -185,20 +185,49 @@ export default class UniversalInstallMigration extends CPRMigration {
   }
 
   /**
-   * The Foundry object migration handles most of the changes here.  The things that we are doing here
-   * is cleaning up stale data points which somehow slipped through the cracks during previous migrations.
+   * The Foundry object migration handles most of the changes here.  The things that we are doing here:
+   *
+   * Updating existing objects data model points:
+   * - moving slots to the appropriate places
+   * - configuring appropriate allowableTypes for container types
+   *
+   * Cleaning up stale data points which somehow slipped through the cracks during previous migrations.
    *
    * @param {CPRItem} item
    */
   static async migrateItem(item) {
     LOGGER.trace("migrateItem | 5-universalInstall Migration");
 
+    const systemChanges = {};
+    const containerTypes = CPRSystemUtils.GetTemplateItemTypes("container");
 
-    // TODO
+    if (containerTypes.includes(item.type)) {
+      if (typeof item.system.installedItems === "object") {
+        systemChanges.installedItems = duplicate(item.system.installedItems);
+      } else {
+        systemChanges.installedItems = {
+          allowedTypes: ["itemUpgrade"],
+          allowed: true,
+          list: [],
+          usedSlots: 0,
+          slots: 3,
+        };
+      }
 
-    const systemChanges = UniversalInstallMigration.scrubItem(item);
+      if (item.type === "cyberdeck") {
+        systemChanges.installedItems.allowedTypes.push("programs");
+        systemChanges.installedItems.slots = Math.max(systemChanges.installedItems.slots, parseInt(item.system.slots, 10));
+      }
 
-    await item.update({ system: systemChanges }, { CPRmigration: true, mergeDeletes: true });
+      if (item.type === "cyberware") {
+        systemChanges.installedItems.allowedTypes.push("programs");
+        systemChanges.installedItems.slots = Math.max(systemChanges.installedItems.slots, parseInt(item.system.optionSlots, 10));
+      }
+    }
+
+    const updatedSystem = mergeObject(UniversalInstallMigration.scrubItem(item), systemChanges);
+
+    await item.update({ system: updatedSystem }, { CPRmigration: true, mergeDeletes: true });
   }
 
   /**

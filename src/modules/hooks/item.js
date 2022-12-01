@@ -5,6 +5,7 @@ import CPRCharacterActorSheet from "../actor/sheet/cpr-character-sheet.js";
 import CPRContainerActorSheet from "../actor/sheet/cpr-container-sheet.js";
 import CPRMookActorSheet from "../actor/sheet/cpr-mook-sheet.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import ConfirmPrompt from "../dialog/cpr-confirmation-prompt.js";
 
 /**
  * Hooks have a set of args that are passed to them from Foundry. Even if we do not use them here,
@@ -55,8 +56,50 @@ const itemHooks = () => {
   });
 
   /**
+   * The preDeleteItem Hook is provided by Foundry and triggered here. When an Item is deleted, this hook is called just
+   * prior to creation. This hook provides the following functionality:
+   *
+   * - If the item is a World Item and it is installed in another World Item, a dialog is displayed stating that it
+   *   can not be deleted and it lists the items that it is installed in and their corresponding Folder (if needed)
+   *
+   * @public
+   * @memberof hookEvents
+   * @param {Document} doc          The Item document which is requested for deletion
+   * @param {object} options        Additional options which modify the deletion request
+   * @param {string} userId         The ID of the requesting user, always game.user.id
+   */
+  Hooks.on("preDeleteItem", (doc, options, userId) => {
+    LOGGER.trace("preDeleteItem | itemHooks | Called.");
+    let deleteItem = true;
+    if (!doc.isOwned) {
+      const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
+      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+      if (installableTypes.includes(doc.type)) {
+        const worldContainerItems = game.items.filter((i) => containerTypes.includes(i.type));
+        const installedList = worldContainerItems.filter((i) => i.system.installedItems.list.includes(doc.uuid));
+        if (installedList.length > 0) {
+          const dialogTitle = SystemUtils.Localize("CPR.dialog.deleteInstalledWorldItem.title");
+          let dialogMessage = `${SystemUtils.Format("CPR.dialog.deleteInstalledWorldItem.text", { itemName: doc.name })}`;
+          dialogMessage = dialogMessage.concat('<br><br>');
+          for (const item of installedList) {
+            const folderName = (item.folder === null) ? "" : `(World Folder: ${item.folder.name})`;
+            dialogMessage = dialogMessage.concat(`<center>${item.name} ${folderName}</center><br>`);
+          }
+          ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
+          deleteItem = false;
+        }
+      }
+    }
+    return deleteItem;
+  });
+
+  /**
    * The createItem Hook is provided by Foundry and triggered here. When an Item is created, this hook is called during
-   * creation. This hook handles items dragged on the mook sheet to automatically equip or install them.
+   * creation. This hook handles:
+   * - Items which have installed items, it calls a creation method to create the installed items at the
+   *   location of the created Item (ie Actor or World)
+   * - Weapons which have ammo, it calls a creation method to create the installed ammo on the actor.
+   * - items dragged on the mook sheet to automatically equip or install them.
    *
    * @public
    * @memberof hookEvents

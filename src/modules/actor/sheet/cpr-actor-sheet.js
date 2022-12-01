@@ -1063,13 +1063,12 @@ export default class CPRActorSheet extends ActorSheet {
 
     const deleteList = (transferItem) ? [sourceItem._id] : [];
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    const upgradabeTypes = SystemUtils.GetTemplateItemTypes("upgradable");
 
     const [newItem] = await super._onDrop(event);
 
-    // If we created a new item and the sourceItem is a container type and has installed items, we need to dupe/move them
-    // and configure the new item.
-    console.log("_cprOnItemDrop | CPRActorSheet | called.");
+    // If we created a new item and the sourceItem is a container type the createItem hook ensures all of the
+    // installed items are also created on the target actor. We need to ensure that those items are
+    // deleted from the source actor.
     if (newItem && containerTypes.includes(sourceItem.type) && sourceItem.system.installedItems.list.length > 0) {
       const deleteItemList = sourceItem.recursiveGetAllInstalledItems();
       for (const item of deleteItemList) {

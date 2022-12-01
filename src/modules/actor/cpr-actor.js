@@ -1,4 +1,4 @@
-/* globals Actor, game, getProperty, hasProperty */
+/* globals Actor, game, getProperty, hasProperty, duplicate */
 import ConfirmPrompt from "../dialog/cpr-confirmation-prompt.js";
 import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";

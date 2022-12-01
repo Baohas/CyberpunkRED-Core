@@ -56,6 +56,9 @@ const Loadable = function Loadable() {
       if (typeof ammo !== "object") {
         await this.createAmmoItems();
         ammo = this.actor.getOwnedItem(this.system.magazine.ammoData.uuid);
+        if (!ammo) {
+          return null;
+        }
       }
 
       if (this.system.magazine.value > 0) {
@@ -221,20 +224,6 @@ const Loadable = function Loadable() {
   };
 
   /**
-   * Whenever a new loadable item is created, we automatically clear the ammo associated with it.
-   * Otherwise, a copied Item will contain references to ammo used in the original item.
-   *
-   * @param {Object} data - the data the item is being created from
-   */
-  this.clearAmmo = function clearAmmo(data) {
-    LOGGER.trace("clearAmmo | Loadable | Called.");
-    const newData = data;
-    newData.system.magazine.ammoData = { name: "", uuid: "" };
-    newData.system.magazine.value = 0;
-    return newData;
-  };
-
-  /**
    * When a loadable item has an upgrade removed we need to sync the magazine data
    * in case the magazine size decreased, we need to remove the extra bullets.
    *
@@ -258,6 +247,17 @@ const Loadable = function Loadable() {
     return updateData;
   };
 
+  /**
+   * When a loadable item has ammo installed in it, it needs to be associated with
+   * an ammo item in the actor's inventory so that it can be unloaded/reloaded.
+   * This function is called when a loaded weapon is created. Depending on where it
+   * is created:
+   * - Created in actor: Attempts to create associated ammunition objects on actor
+   *                     to use for unload/reload.
+   * - Created in world: Ammo is zeroed/reset on the weapon & warning is displayed.
+   *
+   * @returns {Promise}- the updated item document
+   */
   this.createAmmoItems = async function createAmmoItems() {
     LOGGER.trace("createAmmoItems | Loadable | Called.");
     const actor = (this.isOwned) ? this.actor : false;

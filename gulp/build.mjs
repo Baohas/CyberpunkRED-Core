@@ -104,6 +104,7 @@ async function propagateLangs() {
     const langFile = path.resolve(srcFolder, lang.path);
     const langData = JSON.parse(fs.readFileSync(path.resolve(langFile)));
     const data = {};
+    console.log(langFile);
 
     // Loop over `enStrings` and check they are in the current lang file
     // If it does not exist, add the en key/value to the file.
@@ -143,7 +144,7 @@ async function processSvgs() {
       .pipe(svgmin({
         multipass: true,
         plugins: [
-          "removeDimensions",
+ //         "removeDimensions",
           "convertStyleToAttrs",
         ],
       }))
@@ -166,7 +167,7 @@ async function watchSrc() {
   sourceFiles.forEach((file) => watcher(file.from, file.to));
   sourceFolders.forEach((folder) => watcher(folder.from, folder.to));
   gulp.watch("src/**/*.less").on("all", () => compileLess());
-  gulp.watch("src/lang/*.json").on("all", () => propagateLangs());
+  //gulp.watch("src/lang/*.json").on("all", () => propagateLangs());
   gulp.watch("src/**/*.{jpeg,jpg,png,webp,webm}").on("all", () => processImages());
   gulp.watch("src/**/*.svg").on("all", () => processSvgs());
 }

@@ -6,6 +6,9 @@
 ### New Features
 
 - We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
+- Upgraded items can now be traded/transferred between Actors!
+- World items can now be upgraded by other World Items!
+- Careful, Choom! Loaded weapons can now be traded/transferred between Actors!
 
 ### Changes
 

@@ -1,6 +1,5 @@
 /* eslint-disable no-await-in-loop */
 /* global duplicate fromUuidSync Item game Folder */
-import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
@@ -218,6 +217,19 @@ const Container = function Container() {
     return (!actor) ? this.update({ "system.installedItems": installedItems }) : actor.updateEmbeddedDocuments("Item", updateList);
   };
 
+  /**
+   * This function is called from the createItem hook and it will create any items that are
+   * installed in this container object at the location of this container object. In other words:
+   *
+   * If this object is created on an actor, the installed items are created on the same actor
+   * If this object is created in the world, the installed items are created as world items
+   *
+   * World items that are created, are created in in a folder defined by the localized variable:
+   *
+   *  "CPR.settings.installedItemsFolder".
+   *
+   * @returns {Promise} - Promise of updated document
+   */
   this.createInstalledItems = async function createInstalledItems() {
     LOGGER.trace("createInstalledItems | Container | Called.");
     const actor = (this.isOwned) ? this.actor : false;
