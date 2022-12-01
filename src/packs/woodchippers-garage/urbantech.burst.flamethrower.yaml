@@ -8,7 +8,7 @@ _stats:
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun.svg
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Flamethrower.svg
 name: UrbanTech Burst Flamethrower
 system:
   weaponType: shotgun
