@@ -7,7 +7,7 @@
         <span class="text-bold text-nowrap">{{localize "CPR.dialog.selectRoleBonuses.bonusRatio"}}</span>
       </div>
       <div class="item flexrow setting-value">
-        1:<input class="text-right" name="bonusRatio" type="number" value={{#if (cprCompare roleType "===" "mainRole")}}{{system.bonusRatio}}{{else}}{{subRole.bonusRatio}}{{/if}} />
+        1:<input class="text-right" name="bonusRatio" type="number" value={{#if (cprCompare roleType "===" "mainRole")}}{{roleData.system.bonusRatio}}{{else}}{{roleData.subRole.bonusRatio}}{{/if}} />
       </div>
     </li>
     <hr>
@@ -26,7 +26,7 @@
       </div>
       {{#if (cprCompare ../roleType "===" "mainRole")}}
       <div class="item flexrow setting-value text-nowrap text-space-around">
-        {{#if (cprListContains ../system.universalBonuses u)}}
+        {{#if (cprListContains ../roleData.system.universalBonuses u)}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}" checked></span>
         {{else}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}"></span>
@@ -34,7 +34,7 @@
       </div>
       {{else}}
       <div class="item flexrow setting-value text-nowrap text-space-around">
-        {{#if (cprListContains ../subRole.universalBonuses u)}}
+        {{#if (cprListContains ../roleData.subRole.universalBonuses u)}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}" checked></span>
         {{else}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}"></span>
@@ -60,7 +60,7 @@
       </div>
       {{#if (cprCompare ../roleType "===" "mainRole")}}
       <div class="item flexrow setting-value text-nowrap text-space-around">
-        {{#if (cprObjectListContains ../system.bonuses "name" skill.name)}}
+        {{#if (cprObjectListContains ../roleData.system.bonuses "name" skill.name)}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked></span>
         {{else}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}"></span>
@@ -68,7 +68,7 @@
       </div>
       {{else}}
       <div class="item flexrow setting-value text-nowrap text-space-around">
-        {{#if (cprObjectListContains ../subRole.bonuses "name" skill.name)}}
+        {{#if (cprObjectListContains ../roleData.subRole.bonuses "name" skill.name)}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked></span>
         {{else}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}"></span>
@@ -78,5 +78,7 @@
     </li>
     {{/each}}
   </ol>
+
+{{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 </form>
 {{cprTrace "END CPR-SELECT-ROLE-BONUSES-PROMPT.HBS"}}

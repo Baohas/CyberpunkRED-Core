@@ -480,7 +480,9 @@
       "bonuses": [],
       "universalBonuses": [],
       "bonusRatio": 1,
-      "abilities": []
+      "abilities": [],
+      "isSituational": false,
+      "onByDefault": false
     },
     "criticalInjury": {
       "templates": [

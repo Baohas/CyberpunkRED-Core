@@ -1,9 +1,41 @@
+/* eslint-disable max-classes-per-file */
 /* eslint-disable no-shadow */
-/* global game renderTemplate FormDataExtended Dialog foundry */
+/* global game renderTemplate FormDataExtended Dialog foundry duplicate mergeObject */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import CPRDialog from "./cpr-dialog-application.js";
 
-export default class SelectRoleBonuses {
+export default class SelectRoleBonuses extends CPRDialog {
+  constructor(dialogData, formData, options) {
+    LOGGER.trace("constructor | CPRSelectRoleBonuses | Called.");
+    super(dialogData, options);
+    this.skillList = formData.skillList;
+    this.roleType = formData.roleType;
+    this.options.template = `systems/${game.system.id}/templates/dialog/cpr-select-role-bonuses-prompt.hbs`;
+  }
+
+  getData() {
+    LOGGER.trace("getData | CPRSelectRoleBonuses | called.");
+    const data = super.getData();
+    data.skillList = this.skillList;
+    data.roleType = this.roleType;
+    data.roleData = this.object;
+    return data;
+  }
+
+  async _updateObject(event, formData) {
+    LOGGER.trace("_updateObject | CPRDialog | Called.");
+    const fd = duplicate(formData);
+    fd.system = {
+      bonuses: formData.selectedSkills.filter((s) => s),
+      universalBonuses: formData.universalBonuses.filter((b) => b),
+    };
+    mergeObject(this.object, fd);
+    this.render(true); // rerenders the FormApp with the new data.
+  }
+}
+
+export class SelectRoleBonuses2 {
   static async RenderPrompt(data) {
     LOGGER.trace("RenderPrompt | SelectRoleBonuses | called.");
     const template = `systems/${game.system.id}/templates/dialog/cpr-select-role-bonuses-prompt.hbs`;
