@@ -27,7 +27,7 @@ system:
   price:
     market: 500
     category: premium
-  variety: special
+  variety: custom
   type: armorPiercing
   upgrade: ''
 type: ammo

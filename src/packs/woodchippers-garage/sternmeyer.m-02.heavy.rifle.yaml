@@ -40,7 +40,7 @@ system:
     max: 80
     ammoId: ''
   ammoVariety:
-    - special
+    - custom
   concealable:
     concealable: false
     isConcealed: false

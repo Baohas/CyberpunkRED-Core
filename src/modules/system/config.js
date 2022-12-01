@@ -171,7 +171,7 @@ CPR.weaponTypeList = {
   vHeavyPistol: "CPR.global.weaponType.veryHeavyPistol",
 };
 
-// Sorted A-Z, with special at the end
+// Sorted A-Z, with custom at the end
 CPR.ammoVariety = {
   arrow: "CPR.global.ammo.variety.arrow",
   battery: "CPR.global.ammo.variety.battery",
@@ -184,10 +184,10 @@ CPR.ammoVariety = {
   shotgunShell: "CPR.global.ammo.variety.shell",
   shotgunSlug: "CPR.global.ammo.variety.slug",
   vHeavyPistol: "CPR.global.ammo.variety.veryHeavyPistol",
-  special: "CPR.global.ammo.variety.special",
+  custom: "CPR.global.ammo.variety.custom",
 };
 
-// Sorted A-Z, with basic at the start
+// Sorted A-Z, with basic at the start and special at the end
 CPR.ammoType = {
   basic: "CPR.global.ammo.type.basic",
   acid: "CPR.global.ammo.type.acid",
@@ -203,6 +203,7 @@ CPR.ammoType = {
   smart: "CPR.global.ammo.type.smart",
   smoke: "CPR.global.ammo.type.smoke",
   teargas: "CPR.global.ammo.type.tearGas",
+  special: "CPR.global.ammo.type.special",
 };
 
 CPR.inventoryCategories = {

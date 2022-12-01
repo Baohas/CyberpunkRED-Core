@@ -34,7 +34,7 @@ system:
   price:
     market: 500
     category: expensive
-  variety: special
+  variety: custom
   type: smart
   upgrade: ''
 type: ammo
