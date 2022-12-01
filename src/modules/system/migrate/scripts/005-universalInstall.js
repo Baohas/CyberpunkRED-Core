@@ -51,22 +51,26 @@ export default class UniversalInstallMigration extends CPRMigration {
     let updatedItemList = [];
     const upgradableTypes = CPRSystemUtils.GetTemplateItemTypes("upgradable");
     const loadableTypes = CPRSystemUtils.GetTemplateItemTypes("loadable");
+    const containerTypes = CPRSystemUtils.GetTemplateItemTypes("container");
 
     for (const item of actor.items) {
       let itemUpdates = {
         _id: item._id,
         system: {},
       };
-      if (typeof item.system.installedItems === "object") {
-        itemUpdates.system.installedItems = duplicate(item.system.installedItems);
-      } else {
-        itemUpdates.system.installedItems = {
-          allowedTypes: ["itemUpgrade"],
-          allowed: true,
-          list: [],
-          usedSlots: 0,
-          slots: 3,
-        };
+
+      if (containerTypes.includes(item.type)) {
+        if (typeof item.system.installedItems === "object") {
+          itemUpdates.system.installedItems = duplicate(item.system.installedItems);
+        } else {
+          itemUpdates.system.installedItems = {
+            allowedTypes: ["itemUpgrade"],
+            allowed: true,
+            list: [],
+            usedSlots: 0,
+            slots: 3,
+          };
+        }
       }
 
       if (item.type === "cyberware" && item.system.isFoundational && item.system.isInstalled) {
@@ -86,12 +90,14 @@ export default class UniversalInstallMigration extends CPRMigration {
             itemUpdates.system.installedItems.usedSlots += optionalItem.system.size;
             optionalItemUpdates.system.installedIn = item.uuid;
             optionalItemUpdates.system.isInstalled = true;
+            const optionalItemAllowsInstall = optionalItem.hasOptionalSlots;
+            const optionalItemSlots = optionalItemAllowsInstall ? parseInt(optionalItem.system.optionSlots, 10) : 0;
             optionalItemUpdates.system.installedItems = {
               allowedTypes: ["itemUpgrade"],
-              allowed: false,
+              allowed: optionalItemAllowsInstall,
               list: [],
               usedSlots: 0,
-              slots: 3,
+              slots: optionalItemSlots,
             };
             optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "hasOptionalSlots") };
             optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionSlots") };
@@ -109,7 +115,8 @@ export default class UniversalInstallMigration extends CPRMigration {
       }
 
       if (loadableTypes.includes(item.type) && typeof item.system.magazine.ammoId !== "undefined") {
-        const { ammoId } = item.system.magazine;
+        const magazineData = item.system.magazine;
+        let { ammoId } = magazineData;
         let ammoName = "";
         let ammoUuid = "";
         if ((typeof ammoId === "string" || ammoId instanceof String) && ammoId.length > 0) {
@@ -117,10 +124,9 @@ export default class UniversalInstallMigration extends CPRMigration {
           ammoName = ammoItem.name;
           ammoUuid = ammoItem.uuid;
         }
-        itemUpdates.system.magazine.ammoData = {
-          name: ammoName,
-          uuid: ammoUuid,
-        };
+        ammoId = { name: ammoName, uuid: ammoUuid };
+        magazineData.ammoData = ammoId;
+        itemUpdates.system.magazine = magazineData;
         itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "magazine.ammoId") };
       }
 
@@ -185,7 +191,8 @@ export default class UniversalInstallMigration extends CPRMigration {
   }
 
   /**
-   * The Foundry object migration handles most of the changes here.  The things that we are doing here:
+   * The Foundry object migration handles most of the changes here.  This is only run against world items.
+   * The things that we are doing here:
    *
    * Updating existing objects data model points:
    * - moving slots to the appropriate places
