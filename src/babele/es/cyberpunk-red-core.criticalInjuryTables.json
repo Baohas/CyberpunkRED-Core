@@ -1,0 +1,39 @@
+{
+	"label": "Critical Injury Tables",
+	"entries": [
+		{
+			"id": "Heridas Críticas (Cuerpo)",
+			"name": "Heridas Críticas (Cuerpo)",
+			"results": {
+        "2-2": "Brazo Roto",
+        "3-3": "Pierna Rota",
+        "4-4": "Costillas Rotas",
+        "5-5": "Pulmón Colapsado",
+        "6-6": "Dedos Triturados",
+        "7-7": "Brazo Desmembrado",
+        "8-8": "Mano Desmembrada",
+        "9-9": "Pierna Desmembrada",
+        "10-10": "Objeto Extraño",
+        "11-11": "Lesión Espinal",
+        "12-12": "Músculo Desgarrado"
+			}
+		},
+		{
+			"id": "Heridas Críticas (Cabeza)",
+			"name": "Heridas Críticas (Cabeza)",
+			"results": {
+        "2-2": "Lesión Cerebral",
+        "3-3": "Mandíbula Rota",
+        "4-4": "Concusión",
+        "5-5": "Cráneo Partido",
+        "6-6": "Traquea Aplastada",
+        "7-7": "Oído Dañado",
+        "8-8": "Ojo Dañado",
+        "9-9": "Objeto Extraño (H)",
+        "10-10": "Oído Perdido",
+        "11-11": "Ojo Perdido",
+        "12-12": "Latigazo"
+			}
+		}
+	]
+}

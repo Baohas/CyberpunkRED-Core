@@ -1,0 +1,49 @@
+{
+	"label": "Blessures critiques (Tête)",
+	"entries": {
+		"Brain Injury": {
+			"name": "Liaison cérébrale",
+			"description": "<p>-2 à toutes les actions. La pénalité au jet de sauvegarde contre la mort de base augmente de 1.</p>"
+		},
+		"Broken Jaw": {
+			"name": "Mâchoire cassée",
+			"description": "<p>-4 à toutes les actions impliquant de parler.</p>"
+		},
+		"Concussion": {
+			"name": "Commotion cérébrale",
+			"description": "<p>-2 à toutes les actions.</p>"
+		},
+		"Cracked Skull": {
+			"name": "Fracture du crâne",
+			"description": "<p>Les attaques visant la tête multiplient les dégats qui traversent les PA par 3 et non par 2. La pénalité au jet de sauvegarde contre la mort de base augmente de 1.</p>"
+		},
+		"Crushed Windpipe": {
+			"name": "Trachée écrasée",
+			"description": "<p>Impossible de parler. La pénalité au jet de sauvegarde contre la mort de base augmente de 1.</p>"
+		},
+		"Damaged Ear": {
+			"name": "Oreille endommagée",
+			"description": "<p>Si vous déplacez de plus de 4 m à bien lors d'un Tour, vous ne pouvez pas effectuer d'action de mouvement lors de votre prochain tour. De plus, vous subissez -2 aux jets de Perception impliquant l'ouïe.</p>"
+		},
+		"Damaged Eye": {
+			"name": "Œil endommagé",
+			"description": "<p>-2 aux attaques à Distance et aux jets de Perception impliquant la vue.</p>"
+		},
+		"Foreign Object (H)": {
+			"name": "Plaie avec corps étranger",
+			"description": "<p>A la fin de chaque tour lors duquel vous vous déplacez de plus de 4m à pied, vous subissez de nouveau les dégâts bonus de cette blessure critique.</p>"
+		},
+		"Lost Ear": {
+			"name": "Oreille arrachée",
+			"description": "<p>L'oreille arrachée est perdu. A la fin de chaque tour lors duquel vous vous déplacez de plus de 4m à pied, vous ne pouvez pas effectuer d'action de mouvement lors de votre prochain tour. De plus, vous subissez -4 aux jets de Perception impliquant l'ouïe. La pénalité au jet de sauvegarde contre la mort de base augmente de 1.</p>"
+		},
+		"Lost Eye": {
+			"name": "Œil crevé",
+			"description": "<p>L'œil crevé est perdu. -4 aux attaques à distance et aux jets de Perception impliquant la vue. La pénalité au jet de sauvegarde contre la mort de base augmente de 1.</p>"
+		},
+		"Whiplash": {
+			"name": "Coup du lapin",
+			"description": null
+		}
+	}
+}

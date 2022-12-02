@@ -1,0 +1,381 @@
+{
+    "entries": {
+        "Air Pistol": {
+            "description": "<p>Uma pistola média exótica. Dispara Paintballs. Consulte a descrição completa do item na pág. 347.</p>",
+            "name": "Pistola de ar"
+        },
+        "Assault Rifle": {
+            "description": "<p>Um fuzil de assalto padrão.</p>",
+            "name": "Rifle de Assalto"
+        },
+        "Assault Rifle (Excellent)": {
+            "description": "<p>Um fuzil de assalto padrão. +1 para Ataque.</p>",
+            "name": "Rifle de Assalto (Excelente)"
+        },
+        "Assault Rifle (Poor)": {
+            "description": "<p>Um fuzil de assalto padrão. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Rifle de Assalto (Pobre)"
+        },
+        "Baseball Bat": {
+            "description": "<p>Um bastão com peso firme. Uma arma favorita das Fúrias do Beisebol.</p>",
+            "name": "Taco de beisebol"
+        },
+        "Baseball Bat (Excellent)": {
+            "description": "<p>Um bastão com peso firme. Uma arma favorita das Fúrias do Beisebol. +1 para Ataque.</p>",
+            "name": "Taco de beisebol (excelente)"
+        },
+        "Baseball Bat (Poor)": {
+            "description": "<p>Um bastão com peso firme. Uma arma favorita das Fúrias do Beisebol. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Taco de beisebol (ruim)"
+        },
+        "Big Knucks": {
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Patinhos Grandes"
+        },
+        "Bow": {
+            "description": "<p>Um arco revitalizado que deve ser recarregado após cada ataque.</p>",
+            "name": "Arco"
+        },
+        "Bow (Excellent)": {
+            "description": "<p>Um arco revitalizado que deve ser recarregado após cada ataque. +1 para Ataque.</p>",
+            "name": "Arco (Excelente)"
+        },
+        "Bow (Poor)": {
+            "description": "<p>Um arco revitalizado que deve ser recarregado após cada ataque. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Arco (pobre)"
+        },
+        "Chainsaw": {
+            "description": "<p>Uma serra portátil e recarregável que funciona com CHOOH2. Dura cerca de 2-3 horas em um tanque.</p>",
+            "name": "Motosserra"
+        },
+        "Chainsaw (Excellent)": {
+            "description": "<p>Uma serra portátil e recarregável que funciona com CHOOH2. Dura cerca de 2-3 horas em um tanque. +1 para Ataque.</p>",
+            "name": "Motosserra (Excelente)"
+        },
+        "Chainsaw (Poor)": {
+            "description": "<p>Uma serra portátil e recarregável que funciona com CHOOH2. Dura cerca de 2-3 horas em um tanque. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Motosserra (ruim)"
+        },
+        "Combat Knife": {
+            "description": "<p>Uma faca digna das ruas.</p>",
+            "name": "Faca de Combate"
+        },
+        "Combat Knife (Excellent)": {
+            "description": "<p>Uma faca digna das ruas. +1 para Ataque.</p>",
+            "name": "Faca de Combate (Excelente)"
+        },
+        "Combat Knife (Poor)": {
+            "description": "<p>Uma faca digna das ruas. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Faca de Combate (ruim)"
+        },
+        "Constitution Arms Hurricane Assault Weapon": {
+            "description": "<p>Uma espingarda exótica com 2 ROF. Não pode fazer tiros direcionados e precisa de CORPO 11 ou superior (a menos que esteja montado). Consulte a descrição completa do item na pág. 348.</p>",
+            "name": "Constituição Arma Arma de Assalto Furacão"
+        },
+        "Crossbow": {
+            "description": "<p>Uma besta que deve ser recarregada após cada ataque.</p>",
+            "name": "Besta"
+        },
+        "Crossbow (Excellent)": {
+            "description": "<p>Uma besta que deve ser recarregada após cada ataque. +1 para Ataque.</p>",
+            "name": "Besta (Excelente)"
+        },
+        "Crossbow (Poor)": {
+            "description": "<p>Uma besta que deve ser recarregada após cada ataque. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Besta (pobre)"
+        },
+        "Crowbar": {
+            "description": "<p>Útil como uma ferramenta e uma arma. Uma haste de ferro com cunhas divididas nas extremidades.</p>",
+            "name": "Pé de cabra"
+        },
+        "Crowbar (Excellent)": {
+            "description": "<p>Útil como uma ferramenta e uma arma. Uma haste de ferro com cunhas divididas nas extremidades. +1 para Ataque.</p>",
+            "name": "Pé de cabra (excelente)"
+        },
+        "Crowbar (Poor)": {
+            "description": "<p>Útil como uma ferramenta e uma arma. Uma haste de ferro com cunhas divididas nas extremidades. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Pé de cabra (pobre)"
+        },
+        "Cybersnake": {
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Cobra Virtual"
+        },
+        "Dartgun": {
+            "description": "<p>Uma Pistola Exótica Muito Pesada. Consulte a descrição completa do item na pág. 348.</p>",
+            "name": "Dartgun"
+        },
+        "Flamethrower": {
+            "description": "<p>Uma espingarda exótica que usa a habilidade de armas pesadas. Consulte a descrição completa do item na pág. 348.</p>",
+            "name": "Lança-chamas"
+        },
+        "Grenade Launcher": {
+            "description": "<p>Um lançador de granadas de alto impacto. Você pode usar uma variedade de granadas com isso.</p>",
+            "name": "Lançador de granada"
+        },
+        "Grenade Launcher (Excellent)": {
+            "description": "<p>Um lançador de granadas de alto impacto. Você pode usar uma variedade de granadas com isso. +1 para Ataque.</p>",
+            "name": "Lança-granadas (Excelente)"
+        },
+        "Grenade Launcher (Poor)": {
+            "description": "<p>Um lançador de granadas de alto impacto. Você pode usar uma variedade de granadas com isso. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Lança-granadas (ruim)"
+        },
+        "Heavy Pistol": {
+            "description": "<p>Uma pistola pesada e ocultável.</p>",
+            "name": "Pistola Pesada"
+        },
+        "Heavy Pistol (Excellent)": {
+            "description": "<p>Uma pistola pesada e ocultável. +1 para Ataque.</p>",
+            "name": "Pistola Pesada (Excelente)"
+        },
+        "Heavy Pistol (Poor)": {
+            "description": "<p>Uma pistola pesada e ocultável. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Pistola Pesada (Pobre)"
+        },
+        "Heavy SMG": {
+            "description": "<p>Uma SMG pesada. Devido ao seu tamanho não pode ser escondido.</p>",
+            "name": "SMG Pesado"
+        },
+        "Heavy SMG (Excellent)": {
+            "description": "<p>Uma SMG pesada. Devido ao seu tamanho não pode ser escondido. +1 para Ataque.</p>",
+            "name": "SMG Pesado (Excelente)"
+        },
+        "Heavy SMG (Poor)": {
+            "description": "<p>Uma SMG pesada. Devido ao seu tamanho não pode ser escondido. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "SMG Pesado (Pobre)"
+        },
+        "Helicopter Blades": {
+            "description": "<p>Tiradas de uma aeronave abandonada, essas lâminas são capazes de cortar a maioria das coisas facilmente.</p>",
+            "name": "Lâminas de Helicóptero"
+        },
+        "Helicopter Blades (Excellent)": {
+            "description": "<p>Tiradas de uma aeronave abandonada, essas lâminas são capazes de cortar a maioria das coisas facilmente. +1 para Ataque.</p>",
+            "name": "Lâminas de Helicóptero (Excelente)"
+        },
+        "Helicopter Blades (Poor)": {
+            "description": "<p>Tiradas de uma aeronave abandonada, essas lâminas são capazes de cortar a maioria das coisas facilmente. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Lâminas de helicóptero (ruim)"
+        },
+        "Kendachi Mono-Three": {
+            "description": "<p>Uma arma corpo a corpo muito pesada de duas mãos, exótica e de excelente qualidade. Aparece como uma katana de alta tecnologia. Consulte a descrição completa do item na pág. 348.</p>",
+            "name": "Kendachi Mono-Três"
+        },
+        "Lead Pipe": {
+            "description": "<p>Um cilindro oco, normalmente feito de metal ou fibra de vidro. Pode ter transportado fluidos uma vez.</p>",
+            "name": "Tubo de chumbo"
+        },
+        "Lead Pipe (Excellent)": {
+            "description": "<p>Um cilindro oco, normalmente feito de metal ou fibra de vidro. Pode ter transportado fluidos uma vez. +1 para Ataque.</p>",
+            "name": "Tubo de chumbo (excelente)"
+        },
+        "Lead Pipe (Poor)": {
+            "description": "<p>Um cilindro oco, normalmente feito de metal ou fibra de vidro. Pode ter transportado fluidos uma vez. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Tubo de chumbo (ruim)"
+        },
+        "Machete": {
+            "description": "<p>Uma faca de lâmina longa com uma variedade de usos. Conhecido por ser o favorito de algumas gangues de Night City.</p>",
+            "name": "Machete"
+        },
+        "Machete (Excellent)": {
+            "description": "<p>Uma faca de lâmina longa com uma variedade de usos. Conhecido por ser o favorito de algumas gangues de Night City. +1 para Ataque.</p>",
+            "name": "Machado (Excelente)"
+        },
+        "Machete (Poor)": {
+            "description": "<p>Uma faca de lâmina longa com uma variedade de usos. Conhecido por ser o favorito de algumas gangues de Night City. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Machete (pobre)"
+        },
+        "Malorian Arms 3516": {
+            "description": "<p>Uma pistola muito pesada exótica e de excelente qualidade. Você deve se conectar a este dispositivo com um Smartgun Link. Consulte a descrição completa do item na pág. 348.</p>",
+            "name": "Armas malorianas 3516"
+        },
+        "Martial Arts": {
+            "description": "<p>Mãos de arremesso, ignora meia armadura.</p>",
+            "name": "Artes marciais"
+        },
+        "Medium Pistol": {
+            "description": "<p>Uma pistola ocultável de tamanho médio.</p>",
+            "name": "Pistola Média"
+        },
+        "Medium Pistol (Excellent)": {
+            "description": "<p>Uma pistola ocultável de tamanho médio. +1 para Ataque.</p>",
+            "name": "Pistola Média (Excelente)"
+        },
+        "Medium Pistol (Poor)": {
+            "description": "<p>Uma pistola ocultável de tamanho médio. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Pistola Média (Ruim)"
+        },
+        "Microwaver": {
+            "description": "<p>Uma Pistola Exótica Muito Pesada. Pode fazer com que o cyberware ou os componentes elétricos fiquem inoperantes por um minuto. Consulte a descrição completa do item na pág. 348.</p>",
+            "name": "Microondas"
+        },
+        "Militech \"Cowboy\" U-56 Grenade Launcher": {
+            "description": "<p>Um lançador de granadas exótico com 2 ROF. Detém quatro granadas. Requer BODY 11 ou superior (a menos que montado). Consulte a descrição completa do item na pág. 349.</p>",
+            "name": "Militech \"Cowboy\" U-56 lançador de granadas"
+        },
+        "Naginata": {
+            "description": "<p>Um poste de madeira japonês com uma lâmina curva de um lado. Favorecido pelas equipes táticas Arasaka para combates próximos.</p>",
+            "name": "Naginata"
+        },
+        "Naginata (Excellent)": {
+            "description": "<p>Um poste de madeira japonês com uma lâmina curva de um lado. Favorecido pelas equipes táticas Arasaka para combates próximos. +1 para Ataque.</p>",
+            "name": "Naginata (Excelente)"
+        },
+        "Naginata (Poor)": {
+            "description": "<p>Um poste de madeira japonês com uma lâmina curva de um lado. Favorecido pelas equipes táticas Arasaka para combates próximos. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Naginata (pobre)"
+        },
+        "Rhinemetall EMG-86 Railgun": {
+            "description": "<p>Um rifle de assalto exótico. Não pode fazer tiros direcionados ou disparos automáticos. Requer BODY 11 ou superior (a menos que montado). Consulte a descrição completa do item na pág. 349.</p>",
+            "name": "Canhão elétrico Rhinemetall EMG-86"
+        },
+        "Rippers": {
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Estripadores"
+        },
+        "Rocket Launcher": {
+            "description": "<p>Tragam as grandes armas. Este lançador de foguetes causará algum dano.</p>",
+            "name": "Lança-foguetes"
+        },
+        "Rocket Launcher (Excellent)": {
+            "description": "<p>Tragam as grandes armas. Este lançador de foguetes causará algum dano. +1 para Ataque.</p>",
+            "name": "Lança-foguetes (Excelente)"
+        },
+        "Rocket Launcher (Poor)": {
+            "description": "<p>Tragam as grandes armas. Este lançador de foguetes causará algum dano. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Lança-foguetes (ruim)"
+        },
+        "SMG": {
+            "description": "<p>Uma SMG ocultável.</p>",
+            "name": "SMG"
+        },
+        "SMG (Excellent)": {
+            "description": "<p>Uma SMG ocultável. +1 para Ataque.</p>",
+            "name": "SMG (Excelente)"
+        },
+        "SMG (Poor)": {
+            "description": "<p>Uma SMG ocultável. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "SMG (pobre)"
+        },
+        "Shotgun": {
+            "description": "<p>Uma espingarda para todos os fins.</p>",
+            "name": "Espingarda"
+        },
+        "Shotgun (Excellent)": {
+            "description": "<p>Uma espingarda para todos os fins. +1 para Ataque.</p>",
+            "name": "Espingarda (Excelente)"
+        },
+        "Shotgun (Poor)": {
+            "description": "<p>Uma espingarda para todos os fins. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Espingarda (ruim)"
+        },
+        "Shrieker": {
+            "description": "<p>Uma Pistola Exótica Muito Pesada. Requer proteção auricular para evitar lesões críticas no ouvido danificado. O alvo deve vencer um DV15 Resist Torture/Drug Check ou sofrer a lesão crítica. Consulte a descrição completa do item na pág. 349.</p>",
+            "name": "Gritador"
+        },
+        "Sledgehammer": {
+            "description": "<p>Um grande objeto semelhante a um martelo com uma cabeça de metal plana que distribui a força impactada por uma ampla área.</p>",
+            "name": "Marreta"
+        },
+        "Sledgehammer (Excellent)": {
+            "description": "<p>Um grande objeto semelhante a um martelo com uma cabeça de metal plana que distribui a força impactada por uma ampla área. +1 para Ataque.</p>",
+            "name": "Marreta (Excelente)"
+        },
+        "Sledgehammer (Poor)": {
+            "description": "<p>Um grande objeto semelhante a um martelo com uma cabeça de metal plana que distribui a força impactada por uma ampla área. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Marreta (pobre)"
+        },
+        "Slice N' Dice": {
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Fatia N' Dados"
+        },
+        "Sniper Rifle": {
+            "description": "<p>Um rifle sniper de longa distância. Detém 4 balas em uma revista.</p>",
+            "name": "Rifle de Precisão"
+        },
+        "Sniper Rifle (Excellent)": {
+            "description": "<p>Um rifle sniper de longa distância. Detém 4 balas em uma revista. +1 para Ataque.</p>",
+            "name": "Rifle de Precisão (Excelente)"
+        },
+        "Sniper Rifle (Poor)": {
+            "description": "<p>Um rifle sniper de longa distância. Detém 4 balas em uma revista. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Rifle de precisão (pobre)"
+        },
+        "Spiked Bat": {
+            "description": "<p>Um avanço sobre um bastão regular. Vários pregos foram martelados em direção à ponta.</p>",
+            "name": "Morcego cravado"
+        },
+        "Spiked Bat (Excellent)": {
+            "description": "<p>Um avanço sobre um bastão regular. Vários pregos foram martelados em direção à ponta. +1 para Ataque.</p>",
+            "name": "Morcego cravado (excelente)"
+        },
+        "Spiked Bat (Poor)": {
+            "description": "<p>Um avanço sobre um bastão regular. Vários pregos foram martelados em direção à ponta. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Morcego cravado (pobre)"
+        },
+        "Stun Baton": {
+            "description": "<p>Uma arma corpo-a-corpo média exótica de uma mão. O alvo fica inconsciente se o dano causado reduzi-lo a menos de 1 HP. Não causa Lesões Críticas ou ablação de armadura. Consulte a descrição completa do item na pág. 349.</p>",
+            "name": "Bastão de Atordoamento"
+        },
+        "Stun Gun": {
+            "description": "<p>Uma pistola pesada exótica. O alvo fica inconsciente se o dano causado reduzi-lo a menos de 1 HP. Não causa Lesões Críticas ou ablação de armadura. Consulte a descrição completa do item na pág. 349.</p>",
+            "name": "Arma de choque"
+        },
+        "Sword": {
+            "description": "<p>Uma arma com lâmina e punho. Projetado especificamente para cortar ou empurrar.</p>",
+            "name": "Espada"
+        },
+        "Sword (Excellent)": {
+            "description": "<p>Uma arma com lâmina e punho. Projetado especificamente para cortar ou empurrar. +1 para Ataque.</p>",
+            "name": "Espada (Excelente)"
+        },
+        "Sword (Poor)": {
+            "description": "<p>Uma arma com lâmina e punho. Projetado especificamente para cortar ou empurrar. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Espada (pobre)"
+        },
+        "Talon Foot": {
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Pé de Garra"
+        },
+        "Tomahawk": {
+            "description": "<p>Um machado leve que pode ser arremessado.</p>",
+            "name": "Malhawk"
+        },
+        "Tomahawk (Excellent)": {
+            "description": "<p>Um machado leve que pode ser arremessado. +1 para Ataque.</p>",
+            "name": "Tomahawk (Excelente)"
+        },
+        "Tomahawk (Poor)": {
+            "description": "<p>Um machado leve que pode ser arremessado. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Tomahawk (pobre)"
+        },
+        "Tsunami Arms Helix": {
+            "description": "<p>Um rifle de assalto exótico que usa apenas Autofire. Detém 40 balas, usando 20 balas com cada ataque. Usa regras Autofire com uma multiplicação até um máximo de 5. Requer BODY 11 ou superior (a menos que montado). Consulte a descrição completa do item na pág. 349.</p>",
+            "name": "Hélice de Armas do Tsunami"
+        },
+        "Unarmed": {
+            "description": "<p>Jogando as mãos, não ignora meia armadura.</p>",
+            "name": "Desarmado"
+        },
+        "Vampyres": {
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Vampyres"
+        },
+        "Very Heavy Pistol": {
+            "description": "<p>Uma pistola muito pesada. Não pode ser escondido.</p>",
+            "name": "Pistola muito pesada"
+        },
+        "Very Heavy Pistol (Excellent)": {
+            "description": "<p>Uma pistola muito pesada. Não pode ser escondido. +1 para Ataque.</p>",
+            "name": "Pistola muito pesada (excelente)"
+        },
+        "Very Heavy Pistol (Poor)": {
+            "description": "<p>Uma pistola muito pesada. Não pode ser escondido. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Pistola muito pesada (pobre)"
+        },
+        "Wolvers": {
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Lobadores"
+        }
+    },
+    "label": "Armas"
+}
