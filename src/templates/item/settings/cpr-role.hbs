@@ -88,7 +88,7 @@
       </li>
       {{/if}}
       <div class="item flexrow setting-name text-nowrap">
-          <a class="select-role-bonuses text-bold">{{localize "CPR.itemSheet.role.configureRollBonuses"}}<i class="text-smallest text-super fas fa-wrench"></i></a>
+          <a class="select-role-bonuses text-bold" data-role-type="mainRole">{{localize "CPR.itemSheet.role.configureRollBonuses"}}<i class="text-smallest text-super fas fa-wrench"></i></a>
           {{#if (cprCompare item.system.bonusRatio "!==" 1)}}{{localize "CPR.itemSheet.role.bonusRatio"}} - 1:{{item.system.bonusRatio}}{{/if}}
       </div>
       <div class="compatible-ammo">
@@ -148,7 +148,7 @@
               {{/if}}
             </div>
             <div class="item-detail role-bonuses text-nowrap">
-              <a class="select-subrole-bonuses" data-item-name="{{ability.name}}" title="{{localize "CPR.itemSheet.role.configureRollBonuses"}}"><i class="fas fa-wrench"></i></a>
+              <a class="select-role-bonuses" data-role-type="subRole" data-ability-name="{{ability.name}}" title="{{localize "CPR.itemSheet.role.configureRollBonuses"}}"><i class="fas fa-wrench"></i></a>
             </div>
             <div class="item-detail role-actions text-nowrap">
               <a class="role-ability-action" data-action-type="edit" data-action-target="{{ability.index}}"><i class="fas fa-edit fg-black" title={{localize "CPR.itemSheet.role.editRoleAbility"}}></i></a>

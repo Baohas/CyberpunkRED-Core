@@ -120,8 +120,6 @@ export default class CPRItemSheet extends ItemSheet {
 
     html.find(".select-role-bonuses").click((event) => this._selectRoleBonuses(event));
 
-    html.find(".select-subrole-bonuses").click((event) => this._selectSubroleBonuses(event));
-
     html.find(".select-installed-programs").click(() => this._cyberdeckSelectInstalledPrograms());
 
     html.find(".program-uninstall").click((event) => this._cyberdeckProgramUninstall(event));
@@ -216,39 +214,10 @@ export default class CPRItemSheet extends ItemSheet {
     }
   }
 
-  async _selectRoleBonuses() {
+  async _selectRoleBonuses(event) {
     LOGGER.trace("ItemSheet | _selectRoleBonuses | Called.");
-    const cprItemData = this.item.system;
-    const roleType = "mainRole";
-    const coreSkills = await SystemUtils.GetCoreSkills();
-    const customSkills = game.items.filter((i) => i.type === "skill");
-    const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
-      : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
-    const allSkillsData = [];
-    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
-    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
-    let formData = {
-      skillList: sortedAllSkills,
-      roleType,
-      roleData: {
-        bonusRatio: cprItemData.bonusRatio,
-        bonuses: cprItemData.bonuses,
-        universalBonuses: cprItemData.universalBonuses,
-      },
-    };
-    formData = await SelectRoleBonuses.showDialog(formData).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
-      return;
-    }
-    this.item.update({ system: formData.roleData });
-  }
-
-  async _selectSubroleBonuses(event) {
-    LOGGER.trace("ItemSheet | _selectSubroleBonuses | Called.");
-    const subRoleName = SystemUtils.GetEventDatum(event, "data-item-name");
     const cprItemData = duplicate(this.item.system);
-    const roleType = "subRole";
-    const subRole = cprItemData.abilities.find((a) => a.name === subRoleName);
+    const roleType = SystemUtils.GetEventDatum(event, "data-role-type");
     const coreSkills = await SystemUtils.GetCoreSkills();
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
@@ -256,6 +225,9 @@ export default class CPRItemSheet extends ItemSheet {
     const allSkillsData = [];
     allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
     const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
+
+    const subRoleName = SystemUtils.GetEventDatum(event, "data-ability-name");
+    const subRole = cprItemData.abilities.find((a) => a.name === subRoleName);
 
     let formData = {
       skillList: sortedAllSkills,
@@ -272,8 +244,12 @@ export default class CPRItemSheet extends ItemSheet {
       return;
     }
 
-    mergeObject(cprItemData.abilities.find((a) => a.name === subRole.name), formData.subRole);
-    this.item.update({ "system.abilities": cprItemData.abilities });
+    if (roleType === "mainRole") {
+      this.item.update({ system: formData.roleData });
+    } else {
+      mergeObject(cprItemData.abilities.find((a) => a.name === subRole.name), formData.subRole);
+      this.item.update({ "system.abilities": cprItemData.abilities });
+    }
   }
 
   _automaticResize() {
