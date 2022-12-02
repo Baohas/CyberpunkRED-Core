@@ -1,6 +1,6 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-shadow */
-/* global game renderTemplate FormDataExtended Dialog foundry duplicate mergeObject */
+/* global game duplicate mergeObject */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";
@@ -36,8 +36,6 @@ export default class SelectRoleBonuses extends CPRDialog {
     });
     const updatedData = {
       bonusRatio: formData.bonusRatio,
-      isSituational: formData.isSituational,
-      onByDefault: formData.onByDefault,
       bonuses,
       universalBonuses: formData.universalBonuses.filter((b) => b),
     };

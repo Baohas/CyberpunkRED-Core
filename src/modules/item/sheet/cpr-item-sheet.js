@@ -807,6 +807,8 @@ export default class CPRItemSheet extends ItemSheet {
           bonuses: [],
           universalBonuses: [],
           bonusRatio: 1,
+          isSituational: false,
+          onByDefault: false,
           hasRoll: formData.hasRoll,
         });
         setProperty(cprItemData, "abilities", prop);
@@ -823,6 +825,8 @@ export default class CPRItemSheet extends ItemSheet {
           bonuses: [],
           universalBonuses: [],
           bonusRatio: 1,
+          isSituational: false,
+          onByDefault: false,
           hasRoll: formData.hasRoll,
         }];
         setProperty(cprItemData, "abilities", prop);
@@ -890,6 +894,8 @@ export default class CPRItemSheet extends ItemSheet {
           bonuses: editElement.bonuses,
           universalBonuses: editElement.universalBonuses,
           bonusRatio: editElement.bonusRatio,
+          isSituational: editElement.isSituational,
+          onByDefault: editElement.onByDefault,
           hasRoll: formData.hasRoll,
         });
         setProperty(cprItemData, "abilities", prop);

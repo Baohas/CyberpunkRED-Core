@@ -22,6 +22,7 @@
         {{/if}}
       </div>
     </li>
+    {{#if (cprCompare (cprCompare (cprCompare roleType "===" "mainRole") "&&" roleData.isSituational) "||" (cprCompare (cprCompare roleType "===" "subRole") "&&" subRole.isSituational))}}
     <li class="item flexrow">
       <div class="item flexrow setting-name">
         <span class="text-bold text-nowrap">{{localize "CPR.effectSheet.header.onByDefault"}}</span>
@@ -34,6 +35,7 @@
         {{/if}}
       </div>
     </li>
+    {{/if}}
     <hr>
     <li class="item flexrow">
       <div class="item flexrow setting-name">
