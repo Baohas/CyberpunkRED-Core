@@ -59,7 +59,7 @@ export default class CPRDialog extends FormApplication {
    * It can turn anything into a pseudo checkbox, which look nicer than the default ones.
    * This code may need slight adjustments to make it work properly, as it was copied from cpr-item-sheet.js and was only changed slightly.
    *
-   * @param {*} event - potential options to pass to this.close; currently unused;
+   * @param {*} event
    */
   _itemCheckboxToggle(event) {
     LOGGER.trace("_itemCheckboxToggle | CPRDialog | Called.");
