@@ -5,26 +5,26 @@
 
 ### New Features
 
-- Added all 12 new guns from The 12 Days of Gunmas. Some special features require manual application at this stage
-- Added all 12 new guns from Woodchipper’s Garage. Some special features require manual application at this stage
-- Added the 2 new cyberware, 1 new gun, and 1 new clothing from Micro Chrome
-- Added Acid ammo type
-- Added Paintballs and Special Ammo varieties
+- Added 12 new guns from The 12 Days of Gunmas
+- Added 12 new guns and 1 new attachment from Woodchipper’s Garage
+- Added 2 new cyberware, 1 new gun, and 1 new clothing from Micro Chrome
+- Added 1 new vehicle and 2 new items from Spinning Your Wheels
+- Added 'Paintballs' and 'Custom' ammo varieties
+- Added 'Acid' and 'Special' ammo types
 - Added Basic, Acid, Biotoxin, and Poison paintballs
-- Added the Exotic Poor Quality Underbarrel Grenade Launcher
-- Added special ammo used by the Malorian Arms Sub-Flechette Gun, the Nova Model 757 Cityhunter, and the Sternmeyer M-02 Heavy Rifle
-- Added icons for the Underbarrel Shotgun, Underbarrel Grenade Launcher and Poor Quality Underbarrel Grenade Launcher
-- Added a new icon for Paintballs
-- Added new icons for Chipware Compartment and Smart Lens
-- Add 7 new vehicle icons
+- Added custom ammo used by the Malorian Arms Sub-Flechette Gun, the Nova Model 757 Cityhunter, and the Sternmeyer M-02 Heavy Rifle
+- Added icons for the Underbarrel Shotgun, the Underbarrel Grenade Launcher and the (new) Poor Quality Underbarrel Grenade Launcher
+- Added an icon for Paintballs
+- Added new icons for the Chipware Compartment, the Smart Lens, the Inline Skates, and the Skateboard
+- Added 8 new vehicle icons
 - Added new icons for the Bodyweight Suit, the Bulletproof Shield, and generic head armor
 - Added new icons for the Body and Head Injury Tables
-- Improved the visibility of the thumbnail image for the included NET Architecture scenes
 
 ### Changes
 
 - #585 - renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes
 - Changed the Extended Magazine and Drum Magazine upgrades to use the Ammo icon instead of the default icon
+- Improved the visibility of the thumbnail image for the included NET Architecture scenes
 
 ### Bug Fixes
 
