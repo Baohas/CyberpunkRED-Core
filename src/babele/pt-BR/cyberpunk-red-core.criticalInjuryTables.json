@@ -2,37 +2,37 @@
 	"label": "Critical Injury Tables",
 	"entries": [
 		{
-			"id": "Ferimento Crítico (Corpo)",
-			"name": "Ferimento Crítico (Corpo)",
+			"id": "Critical Injuries (Body)",
+			"name": "Critical Injuries (Body)",
 			"results": {
-        "2-2": "Braço Quebrado",
-        "3-3": "Perna Quebrada",
-        "4-4": "Costelas Quebradas",
-        "5-5": "Pulmão Comprometido",
-        "6-6": "Dedos Esmagados",
-        "7-7": "Braço Desmembrado",
-        "8-8": "Mão Desmembrada",
-        "9-9": "Perna Desmembrada",
-        "10-10": "Objeto Estranho",
-        "11-11": "Lesão na Espinha",
-        "12-12": "Músculo Rasgado"
+				"2-2": "Dismembered Arm",
+				"3-3": "Dismembered Hand",
+				"4-4": "Collapsed Lung",
+				"5-5": "Broken Ribs",
+				"6-6": "Broken Arm",
+				"7-7": "Foreign Object",
+				"8-8": "Broken Leg",
+				"9-9": "Torn Muscle",
+				"10-10": "Spinal Injury",
+				"11-11": "Crushed Fingers",
+				"12-12": "Dismembered Leg"
 			}
 		},
 		{
-			"id": "Ferimento Crítico (Cabeça)",
-			"name": "Ferimento Crítico (Cabeça)",
+			"id": "Critical Injuries (Head)",
+			"name": "Critical Injuries (Head)",
 			"results": {
-        "2-2": "Lesão no cérebro",
-        "3-3": "Geleia Quebrada",
-        "4-4": "Concussão",
-        "5-5": "Crânio Rachado",
-        "6-6": "Pipe de Vento Esmagado",
-        "7-7": "Orelha Danificada",
-        "8-8": "Olho Danificado",
-        "9-9": "Objeto Estrangeiro (H)",
-        "10-10": "Orelha Perdida",
-        "11-11": "Olho Perdido",
-        "12-12": "Chicote"
+				"2-2": "Lost Eye",
+				"3-3": "Brain Injury",
+				"4-4": "Damaged Eye",
+				"5-5": "Concussion",
+				"6-6": "Broken Jaw",
+				"7-7": "Foreign Object (H)",
+				"8-8": "Whiplash",
+				"9-9": "Cracked Skull",
+				"10-10": "Damaged Ear",
+				"11-11": "Crushed Windpipe",
+				"12-12": "Lost Ear"
 			}
 		}
 	]
