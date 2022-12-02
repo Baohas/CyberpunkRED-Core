@@ -227,29 +227,20 @@ export default class CPRItemSheet extends ItemSheet {
     const allSkillsData = [];
     allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
     const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
-    let formData = { skillList: sortedAllSkills, roleType, system: cprItemData };
-    // formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
-    formData = await SelectRoleBonuses.showDialog(this.item, formData).catch((err) => LOGGER.debug(err));
+    let formData = {
+      skillList: sortedAllSkills,
+      roleType,
+      roleData: {
+        bonusRatio: cprItemData.bonusRatio,
+        bonuses: cprItemData.bonuses,
+        universalBonuses: cprItemData.universalBonuses,
+      },
+    };
+    formData = await SelectRoleBonuses.showDialog(formData).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
-    if (formData.selectedSkills) {
-      const skillBonusObjects = [];
-      const universalBonusesList = [];
-      formData.selectedSkills.forEach((s) => {
-        skillBonusObjects.push(allSkills.find((a) => a.name === s));
-      });
-      formData.selectedUniversalBonuses.forEach((b) => {
-        universalBonusesList.push(b);
-      });
-      const { bonusRatio } = formData;
-      this.item.update({
-        "data.bonuses": skillBonusObjects,
-        "data.universalBonuses": universalBonusesList,
-        "data.bonusRatio": bonusRatio,
-      });
-      this._automaticResize(); // Resize the sheet as length of ammo list might have changed
-    }
+    this.item.update({ system: formData.roleData });
   }
 
   async _selectSubroleBonuses(event) {
@@ -267,29 +258,22 @@ export default class CPRItemSheet extends ItemSheet {
     const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
 
     let formData = {
-      skillList: sortedAllSkills, roleType, subRole, system: cprItemData,
+      skillList: sortedAllSkills,
+      roleType,
+      subRole,
+      roleData: {
+        bonusRatio: cprItemData.bonusRatio,
+        bonuses: cprItemData.bonuses,
+        universalBonuses: cprItemData.universalBonuses,
+      },
     };
-    formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+    formData = await SelectRoleBonuses.showDialog(formData).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
-    if (formData.selectedSkills) {
-      const skillBonusObjects = [];
-      const universalBonusesList = [];
-      formData.selectedSkills.forEach((s) => {
-        skillBonusObjects.push(allSkills.find((a) => a.name === s));
-      });
-      formData.selectedUniversalBonuses.forEach((b) => {
-        universalBonusesList.push(b);
-      });
-      setProperty(subRole, "bonuses", skillBonusObjects);
-      setProperty(subRole, "universalBonuses", universalBonusesList);
-      setProperty(subRole, "bonusRatio", formData.bonusRatio);
-      this.item.update({ system: cprItemData });
-      if (this.actor) {
-        await this.actor.updateEmbeddedDocuments("Item", [{ _id: this.item.id, system: cprItemData }]);
-      }
-    }
+
+    mergeObject(cprItemData.abilities.find((a) => a.name === subRole.name), formData.subRole);
+    this.item.update({ "system.abilities": cprItemData.abilities });
   }
 
   _automaticResize() {

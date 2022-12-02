@@ -7,7 +7,7 @@
         <span class="text-bold text-nowrap">{{localize "CPR.dialog.selectRoleBonuses.bonusRatio"}}</span>
       </div>
       <div class="item flexrow setting-value">
-        1:<input class="text-right" name="bonusRatio" type="number" value={{#if (cprCompare roleType "===" "mainRole")}}{{roleData.system.bonusRatio}}{{else}}{{roleData.subRole.bonusRatio}}{{/if}} />
+        1:<input class="text-right" name="bonusRatio" type="number" value={{#if (cprCompare roleType "===" "mainRole")}}{{roleData.bonusRatio}}{{else}}{{subRole.bonusRatio}}{{/if}} />
       </div>
     </li>
     <hr>
@@ -26,7 +26,7 @@
       </div>
       {{#if (cprCompare ../roleType "===" "mainRole")}}
       <div class="item flexrow setting-value text-nowrap text-space-around">
-        {{#if (cprListContains ../roleData.system.universalBonuses u)}}
+        {{#if (cprListContains ../roleData.universalBonuses u)}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}" checked></span>
         {{else}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}"></span>
@@ -34,7 +34,7 @@
       </div>
       {{else}}
       <div class="item flexrow setting-value text-nowrap text-space-around">
-        {{#if (cprListContains ../roleData.subRole.universalBonuses u)}}
+        {{#if (cprListContains ../subRole.universalBonuses u)}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}" checked></span>
         {{else}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}"></span>
@@ -52,7 +52,6 @@
         <span class="text-bold text-nowrap text-center text-space-around">{{localize "CPR.dialog.common.select"}}</span>
       </div>
     </li>
-
     {{#each skillList as |skill|}}
     <li class="item flexrow">
       <div class="item flexrow setting-name text-nowrap">
@@ -60,18 +59,18 @@
       </div>
       {{#if (cprCompare ../roleType "===" "mainRole")}}
       <div class="item flexrow setting-value text-nowrap text-space-around">
-        {{#if (cprObjectListContains ../roleData.system.bonuses "name" skill.name)}}
-        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked></span>
+        {{#if (cprObjectListContains ../roleData.bonuses "name" skill.name)}}
+          <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked></span>
         {{else}}
-        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}"></span>
+          <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}"></span>
         {{/if}}
       </div>
       {{else}}
       <div class="item flexrow setting-value text-nowrap text-space-around">
-        {{#if (cprObjectListContains ../roleData.subRole.bonuses "name" skill.name)}}
-        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked></span>
+        {{#if (cprObjectListContains ../subRole.bonuses "name" skill.name)}}
+          <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked></span>
         {{else}}
-        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}"></span>
+          <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}"></span>
         {{/if}}
       </div>
       {{/if}}
