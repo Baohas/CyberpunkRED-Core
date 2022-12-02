@@ -2,23 +2,21 @@
 <hr>
 <ol class="items-list">
   {{#each filteredMods as |mod|}}
+  <a class="toggle-situational-mod" data-mod-id="{{mod.id}}">
   <li class="item flexrow" style="border-style: outset; border-color: rgba(110, 42, 42, 0.5); border-width: 2px; border-radius: 5px; margin: 2px 0px 2px 0px;
       {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}background-color: lightgrey;{{/if}}">
     <div class="item flexrow setting-name text-nowrap text-bold">
-        {{mod.source}} -
+        {{mod.source}}
     </div>
     <div class="item flexrow setting-value text-nowrap">
-      {{cprGetChangeNameByKey false mod.category mod.key}}
-      {{cprEffectModMode mod.changeMode mod.value}}:
+      ({{cprGetChangeNameByKey false mod.category mod.key}})
+      {{cprEffectModMode mod.changeMode mod.value}}
     </div>
     <div class="item flexrow setting-value text-nowrap item-end">
-      {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}
-          <a class="toggle-situational-mod" data-mod-id="{{mod.id}}"><i class="far fa-check-circle"></i></a>
-      {{else}}
-          <a class="toggle-situational-mod" data-mod-id="{{mod.id}}"><i class="far fa-circle"></i></a>
-      {{/if}}
+      <i class="far fa{{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}-check{{/if}}-circle"></i>
     </div>
   </li>
+  </a>
   {{/each}}
 </ol>
 {{/if}}
@@ -34,6 +32,7 @@
 {{#if showDefaultMods}}
 <ol id="default-mods" class="items-list">
   {{#each defaultSituationalMods as |mod|}}
+  <a class="toggle-situational-mod" data-mod-id="{{mod.id}}">
   <li class="item flexrow" style="border-style: outset; border-color: rgba(110, 42, 42, 0.5); border-width: 2px; border-radius: 5px; margin: 2px 0px 2px 0px;
       {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}background-color: lightgrey;{{/if}}">
     <div class="item flexrow setting-name text-nowrap text-bold">
@@ -43,13 +42,10 @@
       {{#if (cprCompare mod.value ">" 0)}}+{{/if}}{{mod.value}}
     </div>
     <div class="item flexrow setting-value text-nowrap item-end">
-      {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}
-          <a class="toggle-situational-mod" data-mod-id="{{mod.id}}"><i class="far fa-check-circle"></i></a>
-      {{else}}
-          <a class="toggle-situational-mod" data-mod-id="{{mod.id}}"><i class="far fa-circle"></i></a>
-      {{/if}}
+      <i class="far fa{{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}-check{{/if}}-circle"></i>
     </div>
   </li>
+  </a>
   {{/each}}
   <br>
 </ol>

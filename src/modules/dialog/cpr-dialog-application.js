@@ -9,6 +9,7 @@ export default class CPRDialog extends FormApplication {
   constructor(dialogData, options) {
     LOGGER.trace("constructor | CPRDialog | Called.");
     super(dialogData, options);
+    this.objectData = dialogData.object;
   }
 
   /**

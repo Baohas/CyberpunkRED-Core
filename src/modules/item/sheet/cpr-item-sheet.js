@@ -228,7 +228,8 @@ export default class CPRItemSheet extends ItemSheet {
     allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
     const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
     let formData = { skillList: sortedAllSkills, roleType, system: cprItemData };
-    formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+    // formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+    formData = await SelectRoleBonuses.showDialog(this.item, formData).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
