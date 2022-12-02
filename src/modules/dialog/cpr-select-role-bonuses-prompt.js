@@ -34,18 +34,16 @@ export default class SelectRoleBonuses extends CPRDialog {
     formData.selectedSkills.forEach((s) => {
       if (s) bonuses.push(this.skillList.find((a) => a.name === s));
     });
+    const updatedData = {
+      // isSituational: this.roleData.isSituational,
+      bonusRatio: formData.bonusRatio,
+      bonuses,
+      universalBonuses: formData.universalBonuses.filter((b) => b),
+    };
     if (this.roleType === "mainRole") {
-      fd.roleData = {
-        bonusRatio: formData.bonusRatio,
-        bonuses,
-        universalBonuses: formData.universalBonuses.filter((b) => b),
-      };
+      fd.roleData = updatedData;
     } else {
-      fd.subRole = {
-        bonusRatio: formData.bonusRatio,
-        bonuses,
-        universalBonuses: formData.universalBonuses.filter((b) => b),
-      };
+      fd.subRole = updatedData;
     }
     mergeObject(this.object, fd);
     this.render(true); // rerenders the FormApp with the new data.

@@ -234,6 +234,8 @@ export default class CPRItemSheet extends ItemSheet {
       roleType,
       subRole,
       roleData: {
+        isSituational: cprItemData.isSituational,
+        onByDefault: cprItemData.onByDefault,
         bonusRatio: cprItemData.bonusRatio,
         bonuses: cprItemData.bonuses,
         universalBonuses: cprItemData.universalBonuses,
