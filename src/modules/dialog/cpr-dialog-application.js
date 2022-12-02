@@ -31,6 +31,11 @@ export default class CPRDialog extends FormApplication {
     });
   }
 
+  /**
+   * Prepares data for roll dialog sheet.
+   *
+   * @override
+   */
   getData() {
     LOGGER.trace("getData | CPRDialog | called.");
     const data = super.getData();
@@ -55,9 +60,8 @@ export default class CPRDialog extends FormApplication {
   }
 
   /**
-   * Currently unused. This will work in the same way it does on the item sheets.
+   * This works in the same way it does on the item sheets.
    * It can turn anything into a pseudo checkbox, which look nicer than the default ones.
-   * This code may need slight adjustments to make it work properly, as it was copied from cpr-item-sheet.js and was only changed slightly.
    *
    * @param {*} event
    */

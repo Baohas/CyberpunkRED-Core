@@ -7,7 +7,7 @@
         <span class="text-bold text-nowrap">{{localize "CPR.dialog.selectRoleBonuses.bonusRatio"}}</span>
       </div>
       <div class="item flexrow setting-value">
-        1:<input class="text-right" name="bonusRatio" type="number" value={{#if (cprCompare roleType "===" "mainRole")}}{{roleData.bonusRatio}}{{else}}{{subRole.bonusRatio}}{{/if}} />
+        1:<input class="text-right" name="bonusRatio" type="number" value={{roleData.bonusRatio}} />
       </div>
     </li>
     <li class="item flexrow">
@@ -15,24 +15,16 @@
         <span class="text-bold text-nowrap">{{localize "CPR.effectSheet.header.situational"}}</span>
       </div>
       <div class="item flexrow setting-value">
-        {{#if (cprCompare roleType "===" "mainRole")}}
           <a class="item-checkbox" data-target="roleData.isSituational"><i class="far fa{{#if roleData.isSituational}}-check{{/if}}-circle"></i></a>
-        {{else}}
-          <a class="item-checkbox" data-target="subRole.isSituational"><i class="far fa{{#if subRole.isSituational}}-check{{/if}}-circle"></i></a>
-        {{/if}}
       </div>
     </li>
-    {{#if (cprCompare (cprCompare (cprCompare roleType "===" "mainRole") "&&" roleData.isSituational) "||" (cprCompare (cprCompare roleType "===" "subRole") "&&" subRole.isSituational))}}
+    {{#if roleData.isSituational}}
     <li class="item flexrow">
       <div class="item flexrow setting-name">
         <span class="text-bold text-nowrap">{{localize "CPR.effectSheet.header.onByDefault"}}</span>
       </div>
       <div class="item flexrow setting-value">
-        {{#if (cprCompare roleType "===" "mainRole")}}
           <a class="item-checkbox" data-target="roleData.onByDefault"><i class="far fa{{#if roleData.onByDefault}}-check{{/if}}-circle"></i></a>
-        {{else}}
-          <a class="item-checkbox" data-target="subRole.onByDefault"><i class="far fa{{#if subRole.onByDefault}}-check{{/if}}-circle"></i></a>
-        {{/if}}
       </div>
     </li>
     {{/if}}
@@ -50,7 +42,6 @@
       <div class="item flexrow setting-name text-nowrap">
         {{localize universalBonus}}
       </div>
-      {{#if (cprCompare ../roleType "===" "mainRole")}}
       <div class="item flexrow setting-value text-nowrap text-space-around">
         {{#if (cprListContains ../roleData.universalBonuses u)}}
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}" checked></span>
@@ -58,15 +49,6 @@
         <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}"></span>
         {{/if}}
       </div>
-      {{else}}
-      <div class="item flexrow setting-value text-nowrap text-space-around">
-        {{#if (cprListContains ../subRole.universalBonuses u)}}
-        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}" checked></span>
-        {{else}}
-        <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="universalBonuses" value="{{u}}"></span>
-        {{/if}}
-      </div>
-      {{/if}}
     </li>
     {{/each}}
     <hr>
@@ -83,7 +65,6 @@
       <div class="item flexrow setting-name text-nowrap">
         {{localize (cprGetLocalizedlNameKey skill.name "skill")}}
       </div>
-      {{#if (cprCompare ../roleType "===" "mainRole")}}
       <div class="item flexrow setting-value text-nowrap text-space-around">
         {{#if (cprObjectListContains ../roleData.bonuses "name" skill.name)}}
           <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked></span>
@@ -91,15 +72,6 @@
           <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}"></span>
         {{/if}}
       </div>
-      {{else}}
-      <div class="item flexrow setting-value text-nowrap text-space-around">
-        {{#if (cprObjectListContains ../subRole.bonuses "name" skill.name)}}
-          <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked></span>
-        {{else}}
-          <span class="text-bold text-nowrap text-center text-space-around"><input type="checkbox" name="selectedSkills" value="{{skill.name}}"></span>
-        {{/if}}
-      </div>
-      {{/if}}
     </li>
     {{/each}}
   </ol>

@@ -42,6 +42,8 @@ export class CPRRollDialog extends CPRDialog {
 
   /**
    * Prepares data for roll dialog sheet.
+   *
+   * @override
    */
   getData() {
     LOGGER.trace("getData | CPRRollDialog | called.");

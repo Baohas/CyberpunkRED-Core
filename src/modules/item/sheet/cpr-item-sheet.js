@@ -214,43 +214,51 @@ export default class CPRItemSheet extends ItemSheet {
     }
   }
 
+  /**
+   * This function creates and processes the dialog to apply bonuses from roles.
+   *
+   * @param {*} event
+   */
   async _selectRoleBonuses(event) {
     LOGGER.trace("ItemSheet | _selectRoleBonuses | Called.");
-    const cprItemData = duplicate(this.item.system);
-    const roleType = SystemUtils.GetEventDatum(event, "data-role-type");
-    const coreSkills = await SystemUtils.GetCoreSkills();
-    const customSkills = game.items.filter((i) => i.type === "skill");
+    const cprRoleData = duplicate(this.item.system);
+    const roleType = SystemUtils.GetEventDatum(event, "data-role-type"); // Either "mainRole" or "subRole".
+    const coreSkills = await SystemUtils.GetCoreSkills(); // Get core skills.
+    const customSkills = game.items.filter((i) => i.type === "skill"); // Get any custom skills.
+    // If object is owned, get all skills on actor. If not, get all skills in system.
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
-    const allSkillsData = [];
-    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
-    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
+    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills); // Sort these skills by name.
 
+    // If we are editing a subability, get name from event data. Then, get the subrole from the name.
     const subRoleName = SystemUtils.GetEventDatum(event, "data-ability-name");
-    const subRole = cprItemData.abilities.find((a) => a.name === subRoleName);
+    const subRole = cprRoleData.abilities.find((a) => a.name === subRoleName);
 
-    let formData = {
+    // The ability data is either item.system or item.system.someSubAbility.
+    let abilityData = cprRoleData;
+    if (subRole) {
+      abilityData = subRole;
+    }
+
+    // Prepare relevant data for the dialog to use.
+    let dialogData = {
       skillList: sortedAllSkills,
-      roleType,
-      subRole,
-      roleData: {
-        isSituational: cprItemData.isSituational,
-        onByDefault: cprItemData.onByDefault,
-        bonusRatio: cprItemData.bonusRatio,
-        bonuses: cprItemData.bonuses,
-        universalBonuses: cprItemData.universalBonuses,
-      },
+      roleData: abilityData,
     };
-    formData = await SelectRoleBonuses.showDialog(formData).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+
+    // Call dialog and await results. Return if dialog is cancelled.
+    dialogData = await SelectRoleBonuses.showDialog(dialogData).catch((err) => LOGGER.debug(err));
+    if (dialogData === undefined) {
       return;
     }
 
+    // If we are updating the main role ability, we can update item.system.
+    // Else, find the correct subability and update that.
     if (roleType === "mainRole") {
-      this.item.update({ system: formData.roleData });
+      this.item.update({ system: dialogData.roleData });
     } else {
-      mergeObject(cprItemData.abilities.find((a) => a.name === subRole.name), formData.subRole);
-      this.item.update({ "system.abilities": cprItemData.abilities });
+      mergeObject(cprRoleData.abilities.find((a) => a.name === subRole.name), dialogData.subRole);
+      this.item.update({ "system.abilities": cprRoleData.abilities });
     }
   }
 
