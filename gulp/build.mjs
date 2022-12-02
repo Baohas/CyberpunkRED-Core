@@ -1,7 +1,9 @@
 import fs from "fs-extra";
+import log from "fancy-log";
 import gulp from "gulp";
 import less from "gulp-less";
 import path from "path";
+import svgmin from "gulp-svgmin";
 import MarkdownIt from "markdown-it";
 
 import * as config from "./config.mjs";
@@ -127,6 +129,32 @@ async function propagateLangs() {
   });
 }
 
+async function processImages(cb) {
+  gulp.src("src/**/*.{jpg,jpeg,png,webp,webm}", { base: srcFolder })
+    .pipe(gulp.dest(destFolder));
+
+  cb();
+}
+
+async function processSvgs() {
+  return new Promise((cb) => {
+    log("Processing SVGs...");
+    gulp.src("src/**/*.svg", { base: srcFolder })
+      .pipe(svgmin({
+        multipass: true,
+        plugins: [
+          "removeDimensions",
+          "convertStyleToAttrs",
+        ],
+      }))
+      .pipe(gulp.dest(destFolder))
+      .on("finish", () => {
+        log("Finished Processing SVGs.");
+        cb();
+      });
+  });
+}
+
 async function watchSrc() {
   // Helper - watch the pattern, copy the output on change
   function watcher(pattern, out) {
@@ -138,7 +166,10 @@ async function watchSrc() {
   sourceFiles.forEach((file) => watcher(file.from, file.to));
   sourceFolders.forEach((folder) => watcher(folder.from, folder.to));
   gulp.watch("src/**/*.less").on("all", () => compileLess());
-  gulp.watch("src/lang/*.json").on("all", () => propagateLangs());
+  // disabling while we fix Crowdin
+  // gulp.watch("src/lang/*.json").on("all", () => propagateLangs());
+  gulp.watch("src/**/*.{jpeg,jpg,png,webp,webm}").on("all", () => processImages());
+  gulp.watch("src/**/*.svg").on("all", () => processSvgs());
 }
 
 export {
@@ -149,4 +180,6 @@ export {
   compileLess,
   watchSrc,
   propagateLangs,
+  processImages,
+  processSvgs,
 };
