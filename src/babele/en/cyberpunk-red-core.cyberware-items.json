@@ -189,6 +189,14 @@
 			"name": "Meat Leg",
 			"description": "<p>A regular leg. This can support attachments like a Standard Foot or weapons such as the Talon Foot.</p>"
 		},
+		"Medical Grade CyberArm": {
+			"name": "Medical Grade CyberArm",
+			"description": "<p>A medical grade cyberarm. Does not allow options to be installed.</p>"
+		},
+		"Medical Grade CyberLeg": {
+			"name": "Medical Grade CyberLeg",
+			"description": "<p>A medical grade cyberleg. Does not allow options to be installed.</p>"
+		},
 		"Medscanner": {
 			"name": "Medscanner",
 			"description": "<p>Built-in medscanner which allows for quick assessment of injuries. Provides +2 to First Aid and Paramedic skill checks.</p>"

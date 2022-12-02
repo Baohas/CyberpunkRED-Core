@@ -21,6 +21,10 @@
 			"name": "Auto Level Dampening Ear Protectors",
 			"description": "<p>Wearer is immune to loud sounds.</p>"
 		},
+		"Battleglove": {
+			"name": "Battleglove",
+			"description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>"
+		},
 		"Binoculars": {
 			"name": "Binoculars",
 			"description": "<p>Magnification: x2 or x3.</p>"
@@ -67,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Cyberdeck",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Netrunner deck. 7 slots.</span></p>"
+			"description": "<p>Netrunner deck. 7 slots.</p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Disposable Cell Phone",
@@ -87,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Excellent Quality Cyberdeck",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Netrunner deck. 9 slots.</span></p>"
+			"description": "<p>Netrunner deck. 9 slots.</p>"
 		},
 		"Flashlight": {
 			"name": "Flashlight",
@@ -163,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Poor Quality Cyberdeck",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Netrunner deck. 5 slots.</span></p>"
+			"description": "<p>Netrunner deck. 5 slots.</p>"
 		},
 		"Radar Detector": {
 			"name": "Radar Detector",
