@@ -41,6 +41,7 @@
     "minimatch": "^5.1.0",
     "nedb": "^1.8.0",
     "sanitize-filename": "^1.6.3",
-    "vinyl-fs": "^3.0.3"
+    "vinyl-fs": "^3.0.3",
+    "yargs": "^17.6.2"
   }
 }
