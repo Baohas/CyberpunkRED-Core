@@ -10,16 +10,11 @@ const SOURCE_FILES = [
 ];
 
 const SOURCE_FOLDERS = [
-  { from: "src/assets/**/*", to: "assets" },
   { from: "src/babele/**/*", to: "babele" },
   { from: "src/fonts/**/*", to: "fonts" },
-  { from: "src/icons/**/*", to: "icons" },
-  { from: "src/images/**/*", to: "images" },
   { from: "src/lang/**/*", to: "lang" },
-  { from: "src/maps/**/*", to: "maps" },
   { from: "src/modules/**/*", to: "modules" },
   { from: "src/templates/**/*", to: "templates" },
-  { from: "src/tiles/**/*", to: "tiles" },
 ];
 
 // Read foundryconfig.json if it exists, else use default vaules

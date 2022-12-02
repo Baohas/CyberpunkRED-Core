@@ -1,381 +1,381 @@
 {
     "entries": {
         "Air Pistol": {
-            "description": "<p>An Exotic Medium Pistol. Fires Paintballs. Refer to the full item description on pg. 347.&nbsp;</p>",
-            "name": "Air Pistol"
+            "description": "<p>Uma pistola média exótica. Dispara Paintballs. Consulte a descrição completa do item na pág. 347.</p>",
+            "name": "Pistola de ar"
         },
         "Assault Rifle": {
-            "description": "<p>A standard-issue assault rifle. </p>",
-            "name": "Assault Rifle"
+            "description": "<p>Um fuzil de assalto padrão.</p>",
+            "name": "Rifle de Assalto"
         },
         "Assault Rifle (Excellent)": {
-            "description": "<p>A standard-issue assault rifle. +1 to Attack.</p>",
-            "name": "Assault Rifle (Excellent)"
+            "description": "<p>Um fuzil de assalto padrão. +1 para Ataque.</p>",
+            "name": "Rifle de Assalto (Excelente)"
         },
         "Assault Rifle (Poor)": {
-            "description": "<p>A standard-issue assault rifle.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-            "name": "Assault Rifle (Poor)"
+            "description": "<p>Um fuzil de assalto padrão. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Rifle de Assalto (Pobre)"
         },
         "Baseball Bat": {
-            "description": "<p>A firmly weighted bat. A favourite weapon of the Baseball Furies. </p>",
-            "name": "Baseball Bat"
+            "description": "<p>Um bastão com peso firme. Uma arma favorita das Fúrias do Beisebol.</p>",
+            "name": "Taco de beisebol"
         },
         "Baseball Bat (Excellent)": {
-            "description": "<p>A firmly weighted bat. A favourite weapon of the Baseball Furies. +1 to Attack.</p>",
-            "name": "Baseball Bat (Excellent)"
+            "description": "<p>Um bastão com peso firme. Uma arma favorita das Fúrias do Beisebol. +1 para Ataque.</p>",
+            "name": "Taco de beisebol (excelente)"
         },
         "Baseball Bat (Poor)": {
-            "description": "<p>A firmly weighted bat. A favourite weapon of the Baseball Furies.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Baseball Bat (Poor)"
+            "description": "<p>Um bastão com peso firme. Uma arma favorita das Fúrias do Beisebol. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Taco de beisebol (ruim)"
         },
         "Big Knucks": {
-            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
-            "name": "Big Knucks"
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Patinhos Grandes"
         },
         "Bow": {
-            "description": "<p>A revitalized bow that must be reloaded after every attack. </p>",
-            "name": "Bow"
+            "description": "<p>Um arco revitalizado que deve ser recarregado após cada ataque.</p>",
+            "name": "Arco"
         },
         "Bow (Excellent)": {
-            "description": "<p>A revitalized bow that must be reloaded after every attack. +1 to Attack.</p>",
-            "name": "Bow (Excellent)"
+            "description": "<p>Um arco revitalizado que deve ser recarregado após cada ataque. +1 para Ataque.</p>",
+            "name": "Arco (Excelente)"
         },
         "Bow (Poor)": {
-            "description": "<p>A revitalized bow that must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-            "name": "Bow (Poor)"
+            "description": "<p>Um arco revitalizado que deve ser recarregado após cada ataque. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Arco (pobre)"
         },
         "Chainsaw": {
-            "description": "<p>A portable, refuelable saw that runs on CHOOH2. Lasts about 2-3 hours on one tank. </p>",
-            "name": "Chainsaw"
+            "description": "<p>Uma serra portátil e recarregável que funciona com CHOOH2. Dura cerca de 2-3 horas em um tanque.</p>",
+            "name": "Motosserra"
         },
         "Chainsaw (Excellent)": {
-            "description": "<p>A portable, refuelable saw that runs on CHOOH2. Lasts about 2-3 hours on one tank.  +1 to Attack.</p>",
-            "name": "Chainsaw (Excellent)"
+            "description": "<p>Uma serra portátil e recarregável que funciona com CHOOH2. Dura cerca de 2-3 horas em um tanque. +1 para Ataque.</p>",
+            "name": "Motosserra (Excelente)"
         },
         "Chainsaw (Poor)": {
-            "description": "<p>A portable, refuelable saw that runs on CHOOH2. Lasts about 2-3 hours on one tank.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Chainsaw (Poor)"
+            "description": "<p>Uma serra portátil e recarregável que funciona com CHOOH2. Dura cerca de 2-3 horas em um tanque. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Motosserra (ruim)"
         },
         "Combat Knife": {
-            "description": "<p>A knife fit for the streets.</p>",
-            "name": "Combat Knife"
+            "description": "<p>Uma faca digna das ruas.</p>",
+            "name": "Faca de Combate"
         },
         "Combat Knife (Excellent)": {
-            "description": "<p>A knife fit for the streets. +1 to Attack.</p>",
-            "name": "Combat Knife (Excellent)"
+            "description": "<p>Uma faca digna das ruas. +1 para Ataque.</p>",
+            "name": "Faca de Combate (Excelente)"
         },
         "Combat Knife (Poor)": {
-            "description": "<p>A knife fit for the streets. If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Combat Knife (Poor)"
+            "description": "<p>Uma faca digna das ruas. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Faca de Combate (ruim)"
         },
         "Constitution Arms Hurricane Assault Weapon": {
-            "description": "<p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or higher (unless mounted). Refer to the full item description on pg. 348.</p>",
-            "name": "Constitution Arms Hurricane Assault Weapon"
+            "description": "<p>Uma espingarda exótica com 2 ROF. Não pode fazer tiros direcionados e precisa de CORPO 11 ou superior (a menos que esteja montado). Consulte a descrição completa do item na pág. 348.</p>",
+            "name": "Constituição Arma Arma de Assalto Furacão"
         },
         "Crossbow": {
-            "description": "<p>A crossbow which must be reloaded after every attack. </p>",
-            "name": "Crossbow"
+            "description": "<p>Uma besta que deve ser recarregada após cada ataque.</p>",
+            "name": "Besta"
         },
         "Crossbow (Excellent)": {
-            "description": "<p>A crossbow which must be reloaded after every attack. +1 to Attack.</p>",
-            "name": "Crossbow (Excellent)"
+            "description": "<p>Uma besta que deve ser recarregada após cada ataque. +1 para Ataque.</p>",
+            "name": "Besta (Excelente)"
         },
         "Crossbow (Poor)": {
-            "description": "<p>A crossbow which must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-            "name": "Crossbow (Poor)"
+            "description": "<p>Uma besta que deve ser recarregada após cada ataque. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Besta (pobre)"
         },
         "Crowbar": {
-            "description": "<p>Useful as both a tool and a weapon. A rod of iron with split wedges on the ends. </p>",
-            "name": "Crowbar"
+            "description": "<p>Útil como uma ferramenta e uma arma. Uma haste de ferro com cunhas divididas nas extremidades.</p>",
+            "name": "Pé de cabra"
         },
         "Crowbar (Excellent)": {
-            "description": "<p>Useful as both a tool and a weapon. A rod of iron with split wedges on the ends.  +1 to Attack.</p>",
-            "name": "Crowbar (Excellent)"
+            "description": "<p>Útil como uma ferramenta e uma arma. Uma haste de ferro com cunhas divididas nas extremidades. +1 para Ataque.</p>",
+            "name": "Pé de cabra (excelente)"
         },
         "Crowbar (Poor)": {
-            "description": "<p>Useful as both a tool and a weapon. A rod of iron with split wedges on the ends.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Crowbar (Poor)"
+            "description": "<p>Útil como uma ferramenta e uma arma. Uma haste de ferro com cunhas divididas nas extremidades. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Pé de cabra (pobre)"
         },
         "Cybersnake": {
-            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
-            "name": "Cybersnake"
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Cobra Virtual"
         },
         "Dartgun": {
-            "description": "<p>An Exotic Very Heavy Pistol. Refer to the full item description on pg. 348.</p>",
+            "description": "<p>Uma Pistola Exótica Muito Pesada. Consulte a descrição completa do item na pág. 348.</p>",
             "name": "Dartgun"
         },
         "Flamethrower": {
-            "description": "<p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full item description on pg. 348.&nbsp;</p>",
-            "name": "Flamethrower"
+            "description": "<p>Uma espingarda exótica que usa a habilidade de armas pesadas. Consulte a descrição completa do item na pág. 348.</p>",
+            "name": "Lança-chamas"
         },
         "Grenade Launcher": {
-            "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. </p>",
-            "name": "Grenade Launcher"
+            "description": "<p>Um lançador de granadas de alto impacto. Você pode usar uma variedade de granadas com isso.</p>",
+            "name": "Lançador de granada"
         },
         "Grenade Launcher (Excellent)": {
-            "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. +1 to Attack.</p>",
-            "name": "Grenade Launcher (Excellent)"
+            "description": "<p>Um lançador de granadas de alto impacto. Você pode usar uma variedade de granadas com isso. +1 para Ataque.</p>",
+            "name": "Lança-granadas (Excelente)"
         },
         "Grenade Launcher (Poor)": {
-            "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-            "name": "Grenade Launcher (Poor)"
+            "description": "<p>Um lançador de granadas de alto impacto. Você pode usar uma variedade de granadas com isso. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Lança-granadas (ruim)"
         },
         "Heavy Pistol": {
-            "description": "<p>A concealable, heavy pistol. </p>",
-            "name": "Heavy Pistol"
+            "description": "<p>Uma pistola pesada e ocultável.</p>",
+            "name": "Pistola Pesada"
         },
         "Heavy Pistol (Excellent)": {
-            "description": "<p>A concealable, heavy pistol. +1 to Attack.</p>",
-            "name": "Heavy Pistol (Excellent)"
+            "description": "<p>Uma pistola pesada e ocultável. +1 para Ataque.</p>",
+            "name": "Pistola Pesada (Excelente)"
         },
         "Heavy Pistol (Poor)": {
-            "description": "<p>A concealable, heavy pistol.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-            "name": "Heavy Pistol (Poor)"
+            "description": "<p>Uma pistola pesada e ocultável. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Pistola Pesada (Pobre)"
         },
         "Heavy SMG": {
-            "description": "<p>A heavy SMG. Due to its size it can't be concealed. </p>",
-            "name": "Heavy SMG"
+            "description": "<p>Uma SMG pesada. Devido ao seu tamanho não pode ser escondido.</p>",
+            "name": "SMG Pesado"
         },
         "Heavy SMG (Excellent)": {
-            "description": "<p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>",
-            "name": "Heavy SMG (Excellent)"
+            "description": "<p>Uma SMG pesada. Devido ao seu tamanho não pode ser escondido. +1 para Ataque.</p>",
+            "name": "SMG Pesado (Excelente)"
         },
         "Heavy SMG (Poor)": {
-            "description": "<p>A heavy SMG. Due to its size it can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-            "name": "Heavy SMG (Poor)"
+            "description": "<p>Uma SMG pesada. Devido ao seu tamanho não pode ser escondido. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "SMG Pesado (Pobre)"
         },
         "Helicopter Blades": {
-            "description": "<p>Taken from a derelict aircraft, these blades are capable of slicing most things easily. </p>",
-            "name": "Helicopter Blades"
+            "description": "<p>Tiradas de uma aeronave abandonada, essas lâminas são capazes de cortar a maioria das coisas facilmente.</p>",
+            "name": "Lâminas de Helicóptero"
         },
         "Helicopter Blades (Excellent)": {
-            "description": "<p>Taken from a derelict aircraft, these blades are capable of slicing most things easily.  +1 to Attack.</p>",
-            "name": "Helicopter Blades (Excellent)"
+            "description": "<p>Tiradas de uma aeronave abandonada, essas lâminas são capazes de cortar a maioria das coisas facilmente. +1 para Ataque.</p>",
+            "name": "Lâminas de Helicóptero (Excelente)"
         },
         "Helicopter Blades (Poor)": {
-            "description": "<p>Taken from a derelict aircraft, these blades are capable of slicing most things easily.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Helicopter Blades (Poor)"
+            "description": "<p>Tiradas de uma aeronave abandonada, essas lâminas são capazes de cortar a maioria das coisas facilmente. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Lâminas de helicóptero (ruim)"
         },
         "Kendachi Mono-Three": {
-            "description": "<p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears as a high-tech katana. Refer to the full item description on pg. 348.</p>",
-            "name": "Kendachi Mono-Three"
+            "description": "<p>Uma arma corpo a corpo muito pesada de duas mãos, exótica e de excelente qualidade. Aparece como uma katana de alta tecnologia. Consulte a descrição completa do item na pág. 348.</p>",
+            "name": "Kendachi Mono-Três"
         },
         "Lead Pipe": {
-            "description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once. </p>",
-            "name": "Lead Pipe"
+            "description": "<p>Um cilindro oco, normalmente feito de metal ou fibra de vidro. Pode ter transportado fluidos uma vez.</p>",
+            "name": "Tubo de chumbo"
         },
         "Lead Pipe (Excellent)": {
-            "description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once.  +1 to Attack.</p>",
-            "name": "Lead Pipe (Excellent)"
+            "description": "<p>Um cilindro oco, normalmente feito de metal ou fibra de vidro. Pode ter transportado fluidos uma vez. +1 para Ataque.</p>",
+            "name": "Tubo de chumbo (excelente)"
         },
         "Lead Pipe (Poor)": {
-            "description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Lead Pipe (Poor)"
+            "description": "<p>Um cilindro oco, normalmente feito de metal ou fibra de vidro. Pode ter transportado fluidos uma vez. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Tubo de chumbo (ruim)"
         },
         "Machete": {
-            "description": "<p>A long-bladed knife with a variety of uses. Known to be a favourite to some gangs of Night City. </p>",
+            "description": "<p>Uma faca de lâmina longa com uma variedade de usos. Conhecido por ser o favorito de algumas gangues de Night City.</p>",
             "name": "Machete"
         },
         "Machete (Excellent)": {
-            "description": "<p>A long-bladed knife with a variety of uses. Known to be a favourite to some gangs  of Night City.  +1 to Attack.</p>",
-            "name": "Machete (Excellent)"
+            "description": "<p>Uma faca de lâmina longa com uma variedade de usos. Conhecido por ser o favorito de algumas gangues de Night City. +1 para Ataque.</p>",
+            "name": "Machado (Excelente)"
         },
         "Machete (Poor)": {
-            "description": "<p>A long-bladed knife with a variety of uses. Known to be a favourite to some gangs  of Night City.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Machete (Poor)"
+            "description": "<p>Uma faca de lâmina longa com uma variedade de usos. Conhecido por ser o favorito de algumas gangues de Night City. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Machete (pobre)"
         },
         "Malorian Arms 3516": {
-            "description": "<p>An Exotic, Excellent Quality Very Heavy Pistol. You must connect to this device with a Smartgun Link. Refer to the full item description on pg. 348.</p>",
-            "name": "Malorian Arms 3516"
+            "description": "<p>Uma pistola muito pesada exótica e de excelente qualidade. Você deve se conectar a este dispositivo com um Smartgun Link. Consulte a descrição completa do item na pág. 348.</p>",
+            "name": "Armas malorianas 3516"
         },
         "Martial Arts": {
-            "description": "<p>Throwing hands, does ignore half armor.</p>",
-            "name": "Martial Arts"
+            "description": "<p>Mãos de arremesso, ignora meia armadura.</p>",
+            "name": "Artes marciais"
         },
         "Medium Pistol": {
-            "description": "<p>A concealable, medium-sized pistol. </p>",
-            "name": "Medium Pistol"
+            "description": "<p>Uma pistola ocultável de tamanho médio.</p>",
+            "name": "Pistola Média"
         },
         "Medium Pistol (Excellent)": {
-            "description": "<p>A concealable, medium-sized pistol. +1 to Attack.</p>",
-            "name": "Medium Pistol (Excellent)"
+            "description": "<p>Uma pistola ocultável de tamanho médio. +1 para Ataque.</p>",
+            "name": "Pistola Média (Excelente)"
         },
         "Medium Pistol (Poor)": {
-            "description": "<p>A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-            "name": "Medium Pistol (Poor)"
+            "description": "<p>Uma pistola ocultável de tamanho médio. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Pistola Média (Ruim)"
         },
         "Microwaver": {
-            "description": "<p>An Exotic Very Heavy Pistol. Can cause cyberware or electrical components to be rendered inoperable for a minute. Refer to the full item description on pg. 348.</p>",
-            "name": "Microwaver"
+            "description": "<p>Uma Pistola Exótica Muito Pesada. Pode fazer com que o cyberware ou os componentes elétricos fiquem inoperantes por um minuto. Consulte a descrição completa do item na pág. 348.</p>",
+            "name": "Microondas"
         },
         "Militech \"Cowboy\" U-56 Grenade Launcher": {
-            "description": "<p>An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>",
-            "name": "Militech \"Cowboy\" U-56 Grenade Launcher"
+            "description": "<p>Um lançador de granadas exótico com 2 ROF. Detém quatro granadas. Requer BODY 11 ou superior (a menos que montado). Consulte a descrição completa do item na pág. 349.</p>",
+            "name": "Militech \"Cowboy\" U-56 lançador de granadas"
         },
         "Naginata": {
-            "description": "<p>A japanese wooden pole with a curved blade on one side. Favoured by Arasaka tactical teams for close engagements. </p>",
+            "description": "<p>Um poste de madeira japonês com uma lâmina curva de um lado. Favorecido pelas equipes táticas Arasaka para combates próximos.</p>",
             "name": "Naginata"
         },
         "Naginata (Excellent)": {
-            "description": "<p>A japanese wooden pole with a curved blade on one side. Favoured by Arasaka tactical teams for close engagements.  +1 to Attack.</p>",
-            "name": "Naginata (Excellent)"
+            "description": "<p>Um poste de madeira japonês com uma lâmina curva de um lado. Favorecido pelas equipes táticas Arasaka para combates próximos. +1 para Ataque.</p>",
+            "name": "Naginata (Excelente)"
         },
         "Naginata (Poor)": {
-            "description": "<p>A japanese wooden pole with a curved blade on one side. Favoured by Arasaka tactical teams for close engagements.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Naginata (Poor)"
+            "description": "<p>Um poste de madeira japonês com uma lâmina curva de um lado. Favorecido pelas equipes táticas Arasaka para combates próximos. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Naginata (pobre)"
         },
         "Rhinemetall EMG-86 Railgun": {
-            "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.&nbsp;</p>",
-            "name": "Rhinemetall EMG-86 Railgun"
+            "description": "<p>Um rifle de assalto exótico. Não pode fazer tiros direcionados ou disparos automáticos. Requer BODY 11 ou superior (a menos que montado). Consulte a descrição completa do item na pág. 349.</p>",
+            "name": "Canhão elétrico Rhinemetall EMG-86"
         },
         "Rippers": {
-            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
-            "name": "Rippers"
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Estripadores"
         },
         "Rocket Launcher": {
-            "description": "<p>Bring out the big guns. This rocket launcher will do some damage. </p>",
-            "name": "Rocket Launcher"
+            "description": "<p>Tragam as grandes armas. Este lançador de foguetes causará algum dano.</p>",
+            "name": "Lança-foguetes"
         },
         "Rocket Launcher (Excellent)": {
-            "description": "<p>Bring out the big guns. This rocket launcher will do some damage. +1 to Attack.</p>",
-            "name": "Rocket Launcher (Excellent)"
+            "description": "<p>Tragam as grandes armas. Este lançador de foguetes causará algum dano. +1 para Ataque.</p>",
+            "name": "Lança-foguetes (Excelente)"
         },
         "Rocket Launcher (Poor)": {
-            "description": "<p>Bring out the big guns. This rocket launcher will do some damage.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-            "name": "Rocket Launcher (Poor)"
+            "description": "<p>Tragam as grandes armas. Este lançador de foguetes causará algum dano. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Lança-foguetes (ruim)"
         },
         "SMG": {
-            "description": "<p>A concealable SMG. </p>",
+            "description": "<p>Uma SMG ocultável.</p>",
             "name": "SMG"
         },
         "SMG (Excellent)": {
-            "description": "<p>A concealable SMG. +1 to Attack.</p>",
-            "name": "SMG (Excellent)"
+            "description": "<p>Uma SMG ocultável. +1 para Ataque.</p>",
+            "name": "SMG (Excelente)"
         },
         "SMG (Poor)": {
-            "description": "<p>A concealable SMG.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-            "name": "SMG (Poor)"
+            "description": "<p>Uma SMG ocultável. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "SMG (pobre)"
         },
         "Shotgun": {
-            "description": "<p>An all-purpose shotgun. </p>",
-            "name": "Shotgun"
+            "description": "<p>Uma espingarda para todos os fins.</p>",
+            "name": "Espingarda"
         },
         "Shotgun (Excellent)": {
-            "description": "<p>An all-purpose shotgun. +1 to Attack.</p>",
-            "name": "Shotgun (Excellent)"
+            "description": "<p>Uma espingarda para todos os fins. +1 para Ataque.</p>",
+            "name": "Espingarda (Excelente)"
         },
         "Shotgun (Poor)": {
-            "description": "<p>An all-purpose shotgun.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-            "name": "Shotgun (Poor)"
+            "description": "<p>Uma espingarda para todos os fins. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Espingarda (ruim)"
         },
         "Shrieker": {
-            "description": "<p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear critical injuries. The target must beat a DV15 Resist Torture/Drugs Check or suffer the critical injury. Refer to the full item description on pg. 349.</p>",
-            "name": "Shrieker"
+            "description": "<p>Uma Pistola Exótica Muito Pesada. Requer proteção auricular para evitar lesões críticas no ouvido danificado. O alvo deve vencer um DV15 Resist Torture/Drug Check ou sofrer a lesão crítica. Consulte a descrição completa do item na pág. 349.</p>",
+            "name": "Gritador"
         },
         "Sledgehammer": {
-            "description": "<p>A large mallet-like object with a flat metal head which distributes impacted force over a wide area. </p>",
-            "name": "Sledgehammer"
+            "description": "<p>Um grande objeto semelhante a um martelo com uma cabeça de metal plana que distribui a força impactada por uma ampla área.</p>",
+            "name": "Marreta"
         },
         "Sledgehammer (Excellent)": {
-            "description": "<p>A large mallet-like object with a flat metal head which distributes impacted force over a wide area.  +1 to Attack.</p>",
-            "name": "Sledgehammer (Excellent)"
+            "description": "<p>Um grande objeto semelhante a um martelo com uma cabeça de metal plana que distribui a força impactada por uma ampla área. +1 para Ataque.</p>",
+            "name": "Marreta (Excelente)"
         },
         "Sledgehammer (Poor)": {
-            "description": "<p>A large mallet-like object with a flat metal head which distributes impacted force over a wide area.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Sledgehammer (Poor)"
+            "description": "<p>Um grande objeto semelhante a um martelo com uma cabeça de metal plana que distribui a força impactada por uma ampla área. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Marreta (pobre)"
         },
         "Slice N' Dice": {
-            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
-            "name": "Slice N' Dice"
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Fatia N' Dados"
         },
         "Sniper Rifle": {
-            "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. </p>",
-            "name": "Sniper Rifle"
+            "description": "<p>Um rifle sniper de longa distância. Detém 4 balas em uma revista.</p>",
+            "name": "Rifle de Precisão"
         },
         "Sniper Rifle (Excellent)": {
-            "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.</p>",
-            "name": "Sniper Rifle (Excellent)"
+            "description": "<p>Um rifle sniper de longa distância. Detém 4 balas em uma revista. +1 para Ataque.</p>",
+            "name": "Rifle de Precisão (Excelente)"
         },
         "Sniper Rifle (Poor)": {
-            "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-            "name": "Sniper Rifle (Poor)"
+            "description": "<p>Um rifle sniper de longa distância. Detém 4 balas em uma revista. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Rifle de precisão (pobre)"
         },
         "Spiked Bat": {
-            "description": "<p>An advancement over a regular bat. A number of nails have been hammered through towards the tip. </p>",
-            "name": "Spiked Bat"
+            "description": "<p>Um avanço sobre um bastão regular. Vários pregos foram martelados em direção à ponta.</p>",
+            "name": "Morcego cravado"
         },
         "Spiked Bat (Excellent)": {
-            "description": "<p>An advancement over a regular bat. A number of nails have been hammered through towards the tip.  +1 to Attack.</p>",
-            "name": "Spiked Bat (Excellent)"
+            "description": "<p>Um avanço sobre um bastão regular. Vários pregos foram martelados em direção à ponta. +1 para Ataque.</p>",
+            "name": "Morcego cravado (excelente)"
         },
         "Spiked Bat (Poor)": {
-            "description": "<p>An advancement over a regular bat. A number of nails have been hammered through towards the tip.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Spiked Bat (Poor)"
+            "description": "<p>Um avanço sobre um bastão regular. Vários pregos foram martelados em direção à ponta. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Morcego cravado (pobre)"
         },
         "Stun Baton": {
-            "description": "<p>An Exotic, One-handed Medium Melee Weapon. Target is knocked unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor. Refer to the full item description on pg. 349.</p>",
-            "name": "Stun Baton"
+            "description": "<p>Uma arma corpo-a-corpo média exótica de uma mão. O alvo fica inconsciente se o dano causado reduzi-lo a menos de 1 HP. Não causa Lesões Críticas ou ablação de armadura. Consulte a descrição completa do item na pág. 349.</p>",
+            "name": "Bastão de Atordoamento"
         },
         "Stun Gun": {
-            "description": "<p>An Exotic Heavy Pistol.&nbsp; Target is knocked unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor. Refer to the full item description on pg. 349.</p>",
-            "name": "Stun Gun"
+            "description": "<p>Uma pistola pesada exótica. O alvo fica inconsciente se o dano causado reduzi-lo a menos de 1 HP. Não causa Lesões Críticas ou ablação de armadura. Consulte a descrição completa do item na pág. 349.</p>",
+            "name": "Arma de choque"
         },
         "Sword": {
-            "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting. </p>",
-            "name": "Sword"
+            "description": "<p>Uma arma com lâmina e punho. Projetado especificamente para cortar ou empurrar.</p>",
+            "name": "Espada"
         },
         "Sword (Excellent)": {
-            "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting.  +1 to Attack.</p>",
-            "name": "Sword (Excellent)"
+            "description": "<p>Uma arma com lâmina e punho. Projetado especificamente para cortar ou empurrar. +1 para Ataque.</p>",
+            "name": "Espada (Excelente)"
         },
         "Sword (Poor)": {
-            "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Sword (Poor)"
+            "description": "<p>Uma arma com lâmina e punho. Projetado especificamente para cortar ou empurrar. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Espada (pobre)"
         },
         "Talon Foot": {
-            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
-            "name": "Talon Foot"
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Pé de Garra"
         },
         "Tomahawk": {
-            "description": "<p>A light axe that can be thrown. </p>",
-            "name": "Tomahawk"
+            "description": "<p>Um machado leve que pode ser arremessado.</p>",
+            "name": "Malhawk"
         },
         "Tomahawk (Excellent)": {
-            "description": "<p>A light axe that can be thrown. +1 to Attack.</p>",
-            "name": "Tomahawk (Excellent)"
+            "description": "<p>Um machado leve que pode ser arremessado. +1 para Ataque.</p>",
+            "name": "Tomahawk (Excelente)"
         },
         "Tomahawk (Poor)": {
-            "description": "<p>A light axe that can be thrown.  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Tomahawk (Poor)"
+            "description": "<p>Um machado leve que pode ser arremessado. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
+            "name": "Tomahawk (pobre)"
         },
         "Tsunami Arms Helix": {
-            "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.&nbsp;</p>",
-            "name": "Tsunami Arms Helix"
+            "description": "<p>Um rifle de assalto exótico que usa apenas Autofire. Detém 40 balas, usando 20 balas com cada ataque. Usa regras Autofire com uma multiplicação até um máximo de 5. Requer BODY 11 ou superior (a menos que montado). Consulte a descrição completa do item na pág. 349.</p>",
+            "name": "Hélice de Armas do Tsunami"
         },
         "Unarmed": {
-            "description": "<p>Throwing hands, does not ignore half armor.</p>",
-            "name": "Unarmed"
+            "description": "<p>Jogando as mãos, não ignora meia armadura.</p>",
+            "name": "Desarmado"
         },
         "Vampyres": {
-            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
             "name": "Vampyres"
         },
         "Very Heavy Pistol": {
-            "description": "<p>A very heavy pistol. It can't be concealed. </p>",
-            "name": "Very Heavy Pistol"
+            "description": "<p>Uma pistola muito pesada. Não pode ser escondido.</p>",
+            "name": "Pistola muito pesada"
         },
         "Very Heavy Pistol (Excellent)": {
-            "description": "<p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>",
-            "name": "Very Heavy Pistol (Excellent)"
+            "description": "<p>Uma pistola muito pesada. Não pode ser escondido. +1 para Ataque.</p>",
+            "name": "Pistola muito pesada (excelente)"
         },
         "Very Heavy Pistol (Poor)": {
-            "description": "<p>A very heavy pistol. It can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-            "name": "Very Heavy Pistol (Poor)"
+            "description": "<p>Uma pistola muito pesada. Não pode ser escondido. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+            "name": "Pistola muito pesada (pobre)"
         },
         "Wolvers": {
-            "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>",
-            "name": "Wolvers"
+            "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
+            "name": "Lobadores"
         }
     },
-    "label": "Weapons"
+    "label": "Armas"
 }

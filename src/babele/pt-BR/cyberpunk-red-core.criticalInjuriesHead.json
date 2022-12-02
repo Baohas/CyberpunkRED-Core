@@ -2,47 +2,47 @@
 	"label": "Ferimento Crítico (Cabeça)",
 	"entries": {
 		"Brain Injury": {
-			"name": "Brain Injury",
-			"description": "<p>-2 to actions.</p>"
+			"name": "Lesão no cérebro",
+			"description": "<p>-2 para ações.</p>"
 		},
 		"Broken Jaw": {
-			"name": "Broken Jaw",
-			"description": "<p>-4 to Speech Actions.</p>"
+			"name": "Geleia Quebrada",
+			"description": "<p>-4 a fala das ações.</p>"
 		},
 		"Concussion": {
-			"name": "Concussion",
-			"description": "<p>-2 to actions.</p>"
+			"name": "Concussão",
+			"description": "<p>-2 para ações.</p>"
 		},
 		"Cracked Skull": {
-			"name": "Cracked Skull",
+			"name": "Crânio Rachado",
 			"description": "<p>Recebe o triplo de dano em ataques mirados na cabeça.</p>"
 		},
 		"Crushed Windpipe": {
-			"name": "Crushed Windpipe",
-			"description": "<p>Cannot speak.</p>"
+			"name": "Pipe de Vento Esmagado",
+			"description": "<p>Não fala.</p>"
 		},
 		"Damaged Ear": {
 			"name": "Orelha Danificada",
-			"description": "<p>If move more than 4m/yds in a Turn, cannot move next turn. -2 to Perception (hearing).</p>"
+			"description": "<p>Se se mover mais de 4m/yds em um turno, não pode se mover na próxima vez. -2 para Percepção (audição).</p>"
 		},
 		"Damaged Eye": {
-			"name": "Damaged Eye",
-			"description": "<p>-2 to Ranged and Perception (vision).</p>"
+			"name": "Olho Danificado",
+			"description": "<p>-2 a Distância e Percepção (visão).</p>"
 		},
 		"Foreign Object (H)": {
-			"name": "Foreign Object (H)",
-			"description": "<p>Suffer Crit damage at end of turn if move more than 4m/yrds on foot.</p>"
+			"name": "Objeto Estrangeiro (H)",
+			"description": "<p>Recebe dano crítico no final do turno se andou mais de 4m/jardas.</p>"
 		},
 		"Lost Ear": {
-			"name": "Lost Ear",
-			"description": "<p>Ear is removed. If move more than 4m/yds in a Turn, cannot move next turn. -4 to Perception (hearing).</p>"
+			"name": "Orelha Perdida",
+			"description": "<p>A orelha é removida. Se mover mais de 4m/yds em um turn, não será possível mover o próximo turno. -4 para a Percepção (audição).</p>"
 		},
 		"Lost Eye": {
-			"name": "Lost Eye",
-			"description": "<p>Eye is removed. -4 to Ranged and Perception (vision).</p>"
+			"name": "Olho Perdido",
+			"description": "<p>Olho foi removido. -4 a Distância e Percepção (visão).</p>"
 		},
 		"Whiplash": {
-			"name": "Whiplash",
+			"name": "Chicote",
 			"description": null
 		}
 	}

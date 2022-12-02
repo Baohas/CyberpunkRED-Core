@@ -22,6 +22,7 @@
 
 ### Changes
 
+- The Babele module should no longer require renaming files or directories to make it work.(#482)
 - #585 - renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes
 - Changed the Extended Magazine and Drum Magazine upgrades to use the Ammo icon instead of the default icon
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
@@ -34,6 +35,16 @@
 - Corrected a typo in the name of the Excellent Heavy SMG
 - Corrected a typo in the Battery Pack ammo description
 - Fixed the Incendiary Shotgun Slug showing the wrong image
+- We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
+- #453 - Fixed strings that could not be translated properly
+
+## Version 0.84.1 (Hotfix) | Date: 2022-11-30
+
+### Bug Fixes
+
+- Fix HTML Stripping in item descriptions on character sheets
+- Fix Create/Edit Role Ability dialog not submitting.
+- #583 - Using ledger re-applies all Active Effects
 
 ## Version 0.84.0 | Date: 2022-11-22
 

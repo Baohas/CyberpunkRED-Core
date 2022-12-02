@@ -1,0 +1,39 @@
+{
+	"label": "Critical Injury Tables",
+	"entries": [
+		{
+			"id": "Ferimento Crítico (Corpo)",
+			"name": "Ferimento Crítico (Corpo)",
+			"results": {
+        "2-2": "Braço Quebrado",
+        "3-3": "Perna Quebrada",
+        "4-4": "Costelas Quebradas",
+        "5-5": "Pulmão Comprometido",
+        "6-6": "Dedos Esmagados",
+        "7-7": "Braço Desmembrado",
+        "8-8": "Mão Desmembrada",
+        "9-9": "Perna Desmembrada",
+        "10-10": "Objeto Estranho",
+        "11-11": "Lesão na Espinha",
+        "12-12": "Músculo Rasgado"
+			}
+		},
+		{
+			"id": "Ferimento Crítico (Cabeça)",
+			"name": "Ferimento Crítico (Cabeça)",
+			"results": {
+        "2-2": "Lesão no cérebro",
+        "3-3": "Geleia Quebrada",
+        "4-4": "Concussão",
+        "5-5": "Crânio Rachado",
+        "6-6": "Pipe de Vento Esmagado",
+        "7-7": "Orelha Danificada",
+        "8-8": "Olho Danificado",
+        "9-9": "Objeto Estrangeiro (H)",
+        "10-10": "Orelha Perdida",
+        "11-11": "Olho Perdido",
+        "12-12": "Chicote"
+			}
+		}
+	]
+}
