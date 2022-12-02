@@ -35,8 +35,9 @@ export default class SelectRoleBonuses extends CPRDialog {
       if (s) bonuses.push(this.skillList.find((a) => a.name === s));
     });
     const updatedData = {
-      // isSituational: this.roleData.isSituational,
       bonusRatio: formData.bonusRatio,
+      isSituational: formData.isSituational,
+      onByDefault: formData.onByDefault,
       bonuses,
       universalBonuses: formData.universalBonuses.filter((b) => b),
     };
