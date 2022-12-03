@@ -1,0 +1,44 @@
+{
+	"label": "DV Rolltables",
+	"entries": [
+		{
+			"id": "DV Assault Rifle",
+			"name": "DV Fucile d'Assalto"
+		}, {
+			"id": "DV Assault Rifle (Autofire)",
+			"name": "DV Fucile d'Assalto (Autom)"
+		}, {
+			"id": "DV Bows & Crossbows",
+			"name": "DV Arco e Balestra"
+		}, {
+			"id": "DV Generic",
+			"name": "DV Generico"
+		}, {
+			"id": "DV Grenade Launcher",
+			"name": "DV Lancia Granate"
+		}, {
+			"id": "DV Pistol",
+			"name": "DV Pistola"
+		}, {
+			"id": "DV Rocket Launcher",
+			"name": "DV Lanciarazzi"
+		}, {
+			"id": "DV Shotgun (Slug)",
+			"name": "DV Fucile (Cartucce a Pallettoni)"
+		}, {
+			"id": "DV SMG",
+			"name": "DV Mitra"
+		}, {
+			"id": "DV SMG (Autofire)",
+			"name": "DV Mitra (Autom)"
+		}, {
+			"id": "DV Sniper Rifle",
+			"name": "DV Fucile da Cecchino"
+		}, {
+			"id": "DV Thrown Weapon",
+			"name": "DV Arma da Lancio"
+		}
+	]
+}
+
+  

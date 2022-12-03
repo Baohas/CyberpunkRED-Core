@@ -1,0 +1,44 @@
+{
+	"label": "DV Rolltables",
+	"entries": [
+		{
+			"id": "DV Assault Rifle",
+			"name": "DV Rifle de Asalto"
+		}, {
+			"id": "DV Assault Rifle (Autofire)",
+			"name": "DV Rifle de Asalto (Automático)"
+		}, {
+			"id": "DV Bows & Crossbows",
+			"name": "DV Arcos y Ballestas"
+		}, {
+			"id": "DV Generic",
+			"name": "DV Genérico"
+		}, {
+			"id": "DV Grenade Launcher",
+			"name": "DV Lanzagranadas"
+		}, {
+			"id": "DV Pistol",
+			"name": "DV Pistola"
+		}, {
+			"id": "DV Rocket Launcher",
+			"name": "DV Lanzacohetes"
+		}, {
+			"id": "DV Shotgun (Slug)",
+			"name": "DV Escopeta (Perdigones de escopeta)"
+		}, {
+			"id": "DV SMG",
+			"name": "DV SMG"
+		}, {
+			"id": "DV SMG (Autofire)",
+			"name": "DV SMG (Automático)"
+		}, {
+			"id": "DV Sniper Rifle",
+			"name": "DV Rifle de Francotirador"
+		}, {
+			"id": "DV Thrown Weapon",
+			"name": "DV Armas arrojadizas"
+		}
+	]
+}
+
+  
