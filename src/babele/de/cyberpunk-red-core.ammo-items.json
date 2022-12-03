@@ -1,0 +1,217 @@
+{
+	"label": "Munition",
+	"entries": {
+		"Armor Piercing Arrow": {
+			"name": "Panzerbrechend - Pfeil",
+			"description": "<p>Doppelte Abtragung der Rüstung.</p>"
+		},
+		"Armor Piercing Grenade": {
+			"name": "Panzerbrechend - Granate",
+			"description": "<p>Doppelte Abtragung der Rüstung.</p>"
+		},
+		"Armor Piercing Heavy Pistol": {
+			"name": "Panzerbrechend - Schwere Pistole",
+			"description": "<p>Doppelte Abtragung der Rüstung.</p>"
+		},
+		"Armor Piercing Medium Pistol": {
+			"name": "Panzerbrechend - Mittelschwere Pistole",
+			"description": "<p>Doppelte Abtragung der Rüstung.</p>"
+		},
+		"Armor Piercing Rifle": {
+			"name": "Panzerbrechend - Sturmgewehr",
+			"description": "<p>Doppelte Abtragung der Rüstung.</p>"
+		},
+		"Armor Piercing Rocket": {
+			"name": "Panzerbrechend - Rakete",
+			"description": "<p>Doppelte Abtragung der Rüstung.</p>"
+		},
+		"Armor Piercing Shotgun Slug": {
+			"name": "Panzerbrechend - Flintenpatrone",
+			"description": "<p>Doppelte Abtragung der Rüstung.</p>"
+		},
+		"Armor Piercing Very Heavy Pistol": {
+			"name": "Panzerbrechend - Sehr Schwere Pistole",
+			"description": "<p>Doppelte Abtragung der Rüstung.</p>"
+		},
+		"Basic Arrow": {
+			"name": "Basismunition - Pfeil",
+			"description": "<p>Standardmunition, keine Besonderheiten.</p>"
+		},
+		"Basic Heavy Pistol": {
+			"name": "Basismunition - Schwere Pistole",
+			"description": "<p>Standardmunition, keine Besonderheiten.</p>"
+		},
+		"Basic Medium Pistol": {
+			"name": "Basismunition - Mittelschwere Pistole",
+			"description": "<p>Standardmunition, keine Besonderheiten.</p>"
+		},
+		"Basic Rifle": {
+			"name": "Basismunition - Sturmgewehr",
+			"description": "<p>Standardmunition, keine Besonderheiten.</p>"
+		},
+		"Basic Shotgun Shell": {
+			"name": "Basismunition - Schrotpatrone",
+			"description": "<p>Standardmunition, keine Besonderheiten.</p>"
+		},
+		"Basic Shotgun Slug": {
+			"name": "Basismunition - Flintenpatrone",
+			"description": "<p>Standardmunition, keine Besonderheiten.</p>"
+		},
+		"Basic Very Heavy Pistol": {
+			"name": "Basismunition - Sehr Schwere Pistole",
+			"description": "<p>Standardmunition, keine Besonderheiten.</p>"
+		},
+		"Battery Pack": {
+			"name": "Batteriepack",
+			"description": "<p>Die Munition ist gratis, da sie leicht wieder aufladbare Batteriepacks (Ladezeit 1 Stunde) erfordert, die nach 8 Schüssen ersetzt werden müssen.&nbsp;</p>"
+		},
+		"Biotoxin Arrow": {
+			"name": "Biotoxin - Pfeil",
+			"description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen, mit SG 15 abzulegen. Scheitert die Probe, erleidet das Ziel 3W6 direkten Schaden an seinen TP. Panzerung wird nicht abgetragen.</p>"
+		},
+		"Biotoxin Grenade": {
+			"name": "Biotoxin - Granate",
+			"description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen, mit SG 15 abzulegen. Scheitert die Probe, erleidet das Ziel 3W6 direkten Schaden an seinen TP. Panzerung wird nicht abgetragen.</p>"
+		},
+		"EMP Grenade": {
+			"name": "EMP - Granate",
+			"description": "<p>Richtest keinen Schaden an. Stattdessen müssen alle eine Probe auf Cybertech mit SG 15 ablegen. Wenn sie scheitern, dann wählt der SL 2 Teile an Cyberware oder getragener Elektronik aus, die 1 Minute lang außer Betrieb gesetzt werden. Cybergliedmaßen, die außer Betrieb gesetzt sind, reagieren wie ihre fleischlichen Pendants, wenn diese abgetrennt werden, hängen allerdings nur lose herunter. Siehe Kritische Verletzungen ab Seite 187.</p>"
+		},
+		"Expansive Arrow": {
+			"name": "Ausdehnungsmunition - Pfeil",
+			"description": "<p>Wenn du die Kritische Verletzung Fremdkörper anrichtest, würfel solange auf die Tabelle „Kritische Verletzungen“ (ab Seite 187), bis es eine Kritische Verletzung erzielt, die nicht Fremdkörper ist. Das Opfer erleidet dann zusätzlich diese Kritische Verletzung. Die zweite Verletzung richtet keinen Bonusschaden an.</p>"
+		},
+		"Expansive Heavy Pistol": {
+			"name": "Ausdehnungsmunition - Schwere Pistole",
+			"description": "<p>Wenn du die Kritische Verletzung Fremdkörper anrichtest, würfel solange auf die Tabelle „Kritische Verletzungen“ (ab Seite 187), bis es eine Kritische Verletzung erzielt, die nicht Fremdkörper ist. Das Opfer erleidet dann zusätzlich diese Kritische Verletzung. Die zweite Verletzung richtet keinen Bonusschaden an.</p>"
+		},
+		"Expansive Medium Pistol": {
+			"name": "Ausdehnungsmunition - Mittelschwere Pistole",
+			"description": "<p>Wenn du die Kritische Verletzung Fremdkörper anrichtest, würfel solange auf die Tabelle „Kritische Verletzungen“ (ab Seite 187), bis es eine Kritische Verletzung erzielt, die nicht Fremdkörper ist. Das Opfer erleidet dann zusätzlich diese Kritische Verletzung. Die zweite Verletzung richtet keinen Bonusschaden an.</p>"
+		},
+		"Expansive Rifle": {
+			"name": "Ausdehnungsmunition - Sturmgewehr",
+			"description": "<p>Wenn du die Kritische Verletzung Fremdkörper anrichtest, würfel solange auf die Tabelle „Kritische Verletzungen“ (ab Seite 187), bis es eine Kritische Verletzung erzielt, die nicht Fremdkörper ist. Das Opfer erleidet dann zusätzlich diese Kritische Verletzung. Die zweite Verletzung richtet keinen Bonusschaden an.</p>"
+		},
+		"Expansive Shotgun Slug": {
+			"name": "Ausdehnungsmunition - Flintenpatrone",
+			"description": "<p>Wenn du die Kritische Verletzung Fremdkörper anrichtest, würfel solange auf die Tabelle „Kritische Verletzungen“ (ab Seite 187), bis es eine Kritische Verletzung erzielt, die nicht Fremdkörper ist. Das Opfer erleidet dann zusätzlich diese Kritische Verletzung. Die zweite Verletzung richtet keinen Bonusschaden an.</p>"
+		},
+		"Expansive Very Heavy Pistol": {
+			"name": "Ausdehnungsmunition - Sehr Schwere Pistole",
+			"description": "<p>Wenn du die Kritische Verletzung Fremdkörper anrichtest, würfel solange auf die Tabelle „Kritische Verletzungen“ (ab Seite 187), bis es eine Kritische Verletzung erzielt, die nicht Fremdkörper ist. Das Opfer erleidet dann zusätzlich diese Kritische Verletzung. Die zweite Verletzung richtet keinen Bonusschaden an.</p>"
+		},
+		"Flashbang Grenade": {
+			"name": "Blendmunition - Granate",
+			"description": "<p>Der Angriff richtet keinen Schaden an. Stattdessen müssen alle eine Probe auf Folter/Drogen widerstehen mit SG 15 ablegen. Wer scheitert, erleidet für die nächste Minute die Kritischen Verletzungen Augenschaden und Ohrenschaden (siehe Seite 188). Diese Kritischen Verletzungen richten keinen Bonusschaden an.</p>"
+		},
+		"Incendiary Arrow": {
+			"name": "Brandmunition - Pfeil",
+			"description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+		},
+		"Incendiary Grenade": {
+			"name": "Brandmunition - Granate",
+			"description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+		},
+		"Incendiary Heavy Pistol": {
+			"name": "Brandmunition - Schwere Pistole",
+			"description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+		},
+		"Incendiary Medium Pistol": {
+			"name": "Brandmunition - Mittelschwere Pistole",
+			"description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+		},
+		"Incendiary Rifle": {
+			"name": "Brandmunition - Sturmgewehr",
+			"description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+		},
+		"Incendiary Shotgun Shell": {
+			"name": "Brandmunition - Schrotpatrone",
+			"description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+		},
+		"Incendiary Shotgun Slug": {
+			"name": "Brandmunition - Flintenpatrone",
+			"description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+		},
+		"Incendiary Very Heavy Pistol": {
+			"name": "Brandmunition - Sehr Schwere Pistole",
+			"description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
+		},
+		"Poison Arrow": {
+			"name": "Giftmunition - Pfeil",
+			"description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen, mit SG 13 abzulegen. Scheitert die Probe, erleidet das Ziel 2W6 direkten Schaden an seinen TP. Panzerung wird nicht abgetragen.</p>"
+		},
+		"Poison Grenade": {
+			"name": "Giftmunition - Granate",
+			"description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen, mit SG 13 abzulegen. Scheitert die Probe, erleidet das Ziel 2W6 direkten Schaden an seinen TP. Panzerung wird nicht abgetragen.</p>"
+		},
+		"Rubber Arrow": {
+			"name": "Gummimunition - Pfeil",
+			"description": "<p>Schaden führt nicht zu kritischen Verletzungen. Kann keine Panzerung abtragen. Diese Munition kann die TP eines Ziels nicht von 1 auf 0 senken. Bei Exotischen Waffen gilt Gummimunition als Basismunition.</p>"
+		},
+		"Rubber Heavy Pistol": {
+			"name": "Gummimunition - Schwere Pistole",
+			"description": "<p>Schaden führt nicht zu kritischen Verletzungen. Kann keine Panzerung abtragen. Diese Munition kann die TP eines Ziels nicht von 1 auf 0 senken. Bei Exotischen Waffen gilt Gummimunition als Basismunition.</p>"
+		},
+		"Rubber Medium Pistol": {
+			"name": "Gummimunition - Mittelschwere Pistole",
+			"description": "<p>Schaden führt nicht zu kritischen Verletzungen. Kann keine Panzerung abtragen. Diese Munition kann die TP eines Ziels nicht von 1 auf 0 senken. Bei Exotischen Waffen gilt Gummimunition als Basismunition.</p>"
+		},
+		"Rubber Rifle": {
+			"name": "Gummimunition - Sturmgewehr",
+			"description": "<p>Schaden führt nicht zu kritischen Verletzungen. Kann keine Panzerung abtragen. Diese Munition kann die TP eines Ziels nicht von 1 auf 0 senken. Bei Exotischen Waffen gilt Gummimunition als Basismunition.</p>"
+		},
+		"Rubber Shotgun Slug": {
+			"name": "Gummimunition - Flintenpatrone",
+			"description": "<p>Schaden führt nicht zu kritischen Verletzungen. Kann keine Panzerung abtragen. Diese Munition kann die TP eines Ziels nicht von 1 auf 0 senken. Bei Exotischen Waffen gilt Gummimunition als Basismunition.</p>"
+		},
+		"Rubber Very Heavy Pistol": {
+			"name": "Gummimunition - Sehr Schwere Pistole",
+			"description": "<p>Schaden führt nicht zu kritischen Verletzungen. Kann keine Panzerung abtragen. Diese Munition kann die TP eines Ziels nicht von 1 auf 0 senken. Bei Exotischen Waffen gilt Gummimunition als Basismunition.</p>"
+		},
+		"Sleep Arrow": {
+			"name": "Schlafmunition - Pfeil",
+			"description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen, mit SG 13 abzulegen. Scheitert die Probe, erleidet das Ziel die Zustände Liegend (siehe Seite 169) und Bewusstlos, die 1 Minute lang anhalten, es sei denn, das Ziel wird durch Schaden oder dadurch geweckt, dass jemand eine Aktion aufwendet, um es zu berühren.</p>"
+		},
+		"Sleep Grenade": {
+			"name": "Schlafmunition - Granate",
+			"description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen, mit SG 13 abzulegen. Scheitert die Probe, erleidet das Ziel die Zustände Liegend (siehe Seite 169) und Bewusstlos, die 1 Minute lang anhalten, es sei denn, das Ziel wird durch Schaden oder dadurch geweckt, dass jemand eine Aktion aufwendet, um es zu berühren.</p>"
+		},
+		"Smart Arrow": {
+			"name": "Smart - Pfeil",
+			"description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+		},
+		"Smart Heavy Pistol": {
+			"name": "Smart - Schwere Pistole",
+			"description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+		},
+		"Smart Medium Pistol": {
+			"name": "Smart - Mittelschwere Pistole",
+			"description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+		},
+		"Smart Rifle": {
+			"name": "Smart - Sturmgewehr",
+			"description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+		},
+		"Smart Rocket": {
+			"name": "Smart - Rakete",
+			"description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+		},
+		"Smart Shotgun Slug": {
+			"name": "Smart - Flintenpatrone",
+			"description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+		},
+		"Smart Very Heavy Pistol": {
+			"name": "Smart - Sehr Schwere Pistole",
+			"description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
+		},
+		"Smoke Grenade": {
+			"name": "Rauchmunition - Granate",
+			"description": "<p>Der Angriff richtet keinen Schaden an. Erfüllt für eine Minute nach dem Aufprall ein Gebiet von 10 x 10 Metern mit Rauch. Der normale Malus für den Versuch, eine Aufgabe zu erfüllen, liegt bei –4.</p>"
+		},
+		"Teargas Grenade": {
+			"name": "Tränengas - Granate",
+			"description": "<p>Der Angriff richtet keinen Schaden an. Stattdessen muss jeder mit Fleischaugen eine Probe auf Folter/Drogen widerstehen mit SG 13 ablegen. Wer scheitert, erleidet in der nächsten Minute die Kritische Verletzung Augenschaden (siehe Seite 188). Diese Kritische Verletzung richtet keinen Bonusschaden an.</p>"
+		}
+	}
+}
