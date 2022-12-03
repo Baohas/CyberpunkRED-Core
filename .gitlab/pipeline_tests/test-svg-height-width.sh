@@ -21,9 +21,19 @@ if [[ -z "${ALL_FILES}" ]]; then
 fi
 
 for file in ${ALL_FILES}; do
-  SVG_HEADER=$(awk '/<svg/,/>/' ${file})
-  if [[ -z "$(echo ${SVG_HEADER} | grep ' height=')" || -z "$(echo ${SVG_HEADER} | grep ' width=')" ]]; then
-      echo "❌ 'height=""' and/or 'width=""' missing in the svg tag in ${file}"
+  SVG_HEADER=$(awk '/<svg/,/>/' "${file}")
+  MISSING_TAGS=0
+  if ! echo "${SVG_HEADER}" | grep -q " height="; then
+    echo "❌ 'height=""' missing in the svg tag in ${file}"
+    ((MISSING_TAGS = MISSING_TAGS + 1))
+  fi
+
+  if ! echo "${SVG_HEADER}" | grep -q " width="; then
+    echo "❌ 'width=""' missing in the svg tag in ${file}"
+    ((MISSING_TAGS = MISSING_TAGS + 1))
+  fi
+
+  if [[ "${MISSING_TAGS}" -gt 0 ]]; then
       ((ERRORS = ERRORS + 1))
   fi
 done
