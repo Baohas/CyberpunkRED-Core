@@ -69,9 +69,10 @@ export default class CPRMod {
    * @param {CPRRoll} rollData - CPRRoll object
    * @param {Array<ActiveEffect>} effects - An array of ActiveEffects on the actor that triggered the roll.
    * @param {CPRItem} item - CPRItem that the roll came from.
+   * @param {CPRActor} actor - CPRActor that the roll came from.
    * @return {Array<CPRMod>} - Array of mods filtered to be applicable for a specific type of roll.
    */
-  static getSituationalRollMods(rollData, effects, item) {
+  static getSituationalRollMods(rollData, effects, item, actor) {
     LOGGER.trace("getSituationalRollMods | CPRMod | Called.");
     const prototypeChain = SystemUtils.getPrototypeChain(rollData);
 
@@ -89,12 +90,28 @@ export default class CPRMod {
     if ((prototypeChain.includes("CPRSkillRoll") || prototypeChain.includes("CPRRoleRoll")) && !prototypeChain.includes("CPRInterfaceRoll")) {
       const skillMods = allSituationalMods.filter((m) => m.key === `bonuses.${SystemUtils.slugify(rollData.skillName)}`);
       filteredMods = filteredMods.concat(skillMods);
+
+      // Skill mods from role bonuses.
+      let roleMods = [];
+      actor.itemTypes.role.forEach((r) => {
+        roleMods = roleMods.concat(r.getRoleMods(rollData.skillName));
+      });
+      roleMods = roleMods.filter((m) => m.isSituational);
+      filteredMods = filteredMods.concat(roleMods);
     }
 
     // Initiative Mods.
     if (prototypeChain.includes("CPRInitiative")) {
       const initiativeMods = allSituationalMods.filter((m) => m.key === `bonuses.initiative`);
       filteredMods = filteredMods.concat(initiativeMods);
+
+      // Initiative mods from role bonuses.
+      let roleMods = [];
+      actor.itemTypes.role.forEach((r) => {
+        roleMods = roleMods.concat(r.getRoleMods("initiative", true));
+      });
+      roleMods = roleMods.filter((m) => m.isSituational);
+      filteredMods = filteredMods.concat(roleMods);
     }
 
     // Attack mods.
@@ -122,6 +139,14 @@ export default class CPRMod {
       // Attack mods from upgrades.
       const upgradeMods = item.getAllUpgradeMods("attackmod").filter((m) => m.isSituational);
       filteredMods = filteredMods.concat(attackMods).concat(upgradeMods);
+
+      // Attack mods from role bonuses.
+      let roleMods = [];
+      actor.itemTypes.role.forEach((r) => {
+        roleMods = roleMods.concat(r.getRoleMods("attack", true));
+      });
+      roleMods = roleMods.filter((m) => m.isSituational);
+      filteredMods = filteredMods.concat(roleMods);
     }
 
     // Damage Mods.
@@ -130,6 +155,14 @@ export default class CPRMod {
       // Damage mods from upgrades.
       const upgradeMods = item.getAllUpgradeMods("damage").filter((m) => m.isSituational);
       filteredMods = filteredMods.concat(damageMods).concat(upgradeMods);
+
+      // Damage mods from role bonuses.
+      let roleMods = [];
+      actor.itemTypes.role.forEach((r) => {
+        roleMods = roleMods.concat(r.getRoleMods("damage", true));
+      });
+      roleMods = roleMods.filter((m) => m.isSituational);
+      filteredMods = filteredMods.concat(roleMods);
     }
 
     // Role Mods.

@@ -96,37 +96,16 @@ const Attackable = function Attackable() {
     const niceStatName = SystemUtils.Localize(`CPR.global.stats.${statName}`);
     const statValue = actor.getStat(statName);
 
+    let roleMods = [];
     // Get all mods for skills from role abilities and subRole abilities
-    let roleSkillMods = [];
     actor.itemTypes.role.forEach((r) => {
-      roleSkillMods = roleSkillMods.concat(r.getSkillBonuses(skillName));
+      roleMods = roleMods.concat(r.getRoleMods(skillName));
     });
-
     // Get all mods for attack bonuses directly from role abilities (not indirectly from skills)
-    const roleAttackMods = [];
     actor.itemTypes.role.forEach((r) => {
-      if (r.system.universalBonuses.includes("attack")) {
-        const value = Math.floor(r.system.rank / r.system.bonusRatio);
-        roleAttackMods.push({
-          value,
-          source: r.system.mainRoleAbility,
-          key: "bonuses.universalAttack",
-          category: "combat",
-        });
-      }
-      r.system.abilities.forEach((a) => {
-        if (a.universalBonuses?.includes("attack")) {
-          const source = a.name;
-          const value = Math.floor(a.rank / a.bonusRatio);
-          roleAttackMods.push({
-            value,
-            source,
-            key: `bonuses.universalAttack`,
-            category: "combat",
-          });
-        }
-      });
+      roleMods = roleMods.concat(r.getRoleMods("attack", true));
     });
+    roleMods = roleMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
     const effects = actor.effects.contents; // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
@@ -183,8 +162,7 @@ const Attackable = function Attackable() {
     cprRoll.addMod([{ value: actor.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
     cprRoll.addMod(skillMods);
     cprRoll.addMod(attackMods);
-    cprRoll.addMod(roleSkillMods);
-    cprRoll.addMod(roleAttackMods);
+    cprRoll.addMod(roleMods);
 
     // Mod from item upgrades that affect attackmod.
     const relevantUpgradeMods = this.getAllUpgradeMods("attackmod").filter((m) => (m.isSituational && m.onByDefault) || !m.isSituational);
@@ -285,31 +263,12 @@ const Attackable = function Attackable() {
     }
 
     // Get all mods for universal damage bonuses from role abilities.
-    const roleDamageMods = [];
-    this.actor.itemTypes.role.forEach((r) => {
-      if (r.system.universalBonuses.includes("damage")) {
-        const value = Math.floor(r.system.rank / r.system.bonusRatio);
-        roleDamageMods.push({
-          value,
-          source: r.system.mainRoleAbility,
-          key: "bonuses.universalDamage",
-          category: "combat",
-        });
-      }
-      r.system.abilities.forEach((a) => {
-        if (a.universalBonuses?.includes("damage")) {
-          const source = a.name;
-          const value = Math.floor(a.rank / a.bonusRatio);
-          roleDamageMods.push({
-            value,
-            source,
-            key: `bonuses.universalDamage`,
-            category: "combat",
-          });
-        }
-      });
+    let roleMods = [];
+    actor.itemTypes.role.forEach((r) => {
+      roleMods = roleMods.concat(r.getRoleMods("damage", true));
     });
-    cprRoll.addMod(roleDamageMods);
+    roleMods = roleMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+    cprRoll.addMod(roleMods);
 
     // Mod from item upgrades that affect damage.
     const relevantUpgradeMods = this.getAllUpgradeMods("damage").filter((m) => (m.isSituational && m.onByDefault) || !m.isSituational);

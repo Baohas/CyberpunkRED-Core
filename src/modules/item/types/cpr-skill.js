@@ -36,16 +36,19 @@ export default class CPRSkillItem extends CPRItem {
     const skillName = this.name;
     const skillLevel = cprItemData.level;
 
-    const effects = actor.effects.contents;
-    const allMods = CPRMod.getAllModifiers(effects);
+    const effects = actor.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
     const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName));
 
+    // Get all mods for skills from role abilities and subRole abilities.
     let roleSkillMods = [];
     actor.itemTypes.role.forEach((r) => {
-      roleSkillMods = roleSkillMods.concat(r.getSkillBonuses(skillName));
+      roleSkillMods = roleSkillMods.concat(r.getRoleMods(skillName));
     });
+    roleSkillMods = roleSkillMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
     const cprRoll = new CPRRolls.CPRSkillRoll(niceStatName, statValue, skillName, skillLevel);
     cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: SystemUtils.Format("CPR.rolls.modifiers.sources.armorPenalty", { stat: niceStatName }) }]);

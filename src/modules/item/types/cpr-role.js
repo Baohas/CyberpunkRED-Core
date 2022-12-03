@@ -1,3 +1,5 @@
+/* global CONST */
+
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";
@@ -95,40 +97,69 @@ export default class CPRRoleItem extends CPRItem {
   }
 
   /**
-   * Given the name of a skill, look up the role and subRole bonuses and see if any should
-   * be applied to the skill. If they do, sum them up and return the bonus.
+   * Given the name of a bonus, look up the role and subRole bonuses and see if any should
+   * be applied to the roll.
    *
-   * @param {String} skillName - name of the skill to look for
-   * @return {Array} - a tuple, the first is a list of related role abilities, the second being total bonuses
+   * @param {String} bonusName - name of the bonus to look for. Either a combat bonus or a skill bonus.
+   * @param {Boolean} isUniversalBonus - differentiate between a skill bonus and a universal bonus (default false, meaning skill bonus).
+   * @return {Array} - Array of CPRMod-like-objects for feeding into cprRoll.addMod().
    */
-  getSkillBonuses(skillName) {
-    LOGGER.trace("getSkillBonuses | CPRRoleItem | Called.");
-    // some role abilities modify skills too, so we account for that here
-    const roleSkillBonusArray = [];
-    const roleSkillBonus = this.system.bonuses.find((b) => b.name === skillName);
-    if (roleSkillBonus) {
+  getRoleMods(bonusName, isUniversalBonus = false) {
+    LOGGER.trace("getRoleMods | CPRRoleItem | Called.");
+    // Assign correct key and category for skill bonuses.
+    let key = `bonuses.${SystemUtils.slugify(bonusName)}`;
+    let category = "skill";
+    // If universal bonus, reassign key/category for universal bonuses.
+    if (isUniversalBonus) {
+      category = "combat";
+      if (bonusName !== "initiative") {
+        const capitalizedBonus = bonusName.charAt(0).toUpperCase() + bonusName.slice(1);
+        key = `bonuses.universal${capitalizedBonus}`;
+      }
+    }
+
+    // Key to use for lookup on the role object. Not to be confused with the key for the mod itself.
+    const roleBonusKey = isUniversalBonus ? "universalBonuses" : "bonuses";
+
+    const roleBonusArray = [];
+    // Check whether the main ability has the applicable bonus/universal bonus.
+    if (this.system[roleBonusKey].some((b) => b.name === bonusName || b === bonusName)) {
+      const id = `${this.name}-${key}-${this.id}-main`; // Unique ID
       const value = Math.floor(this.system.rank / this.system.bonusRatio);
       const source = this.system.mainRoleAbility;
-      roleSkillBonusArray.push({
+      const { isSituational } = this.system;
+      const { onByDefault } = this.system;
+      roleBonusArray.push({
+        id,
         value,
         source,
-        key: `bonuses.${SystemUtils.slugify(skillName)}`,
-        category: "skill",
+        key,
+        category,
+        isSituational,
+        onByDefault,
+        changeMode: CONST.ACTIVE_EFFECT_MODES.ADD, // const = 2. This comes from foundry.
       });
     }
-    // check whether a sub-ability of a role has the bonuses property. They might affect skills.
-    this.system.abilities.forEach((a) => {
-      if (a.bonuses?.find((b) => b.name === skillName)) {
+    // Check whether each sub ability has the applicable bonus/universal bonus.
+    this.system.abilities.forEach((a, index) => {
+      if (a?.[roleBonusKey].some((b) => b.name === bonusName || b === bonusName)) {
+        const id = `${a.name}-${key}-${this.id}-${index}`;
         const value = Math.floor(a.rank / a.bonusRatio);
         const source = a.name;
-        roleSkillBonusArray.push({
+        const { isSituational } = a;
+        const { onByDefault } = a;
+        roleBonusArray.push({
+          id,
           value,
           source,
-          key: `bonuses.${SystemUtils.slugify(skillName)}`,
-          category: "skill",
+          key,
+          category,
+          isSituational,
+          onByDefault,
+          changeMode: CONST.ACTIVE_EFFECT_MODES.ADD, // const = 2. This comes from foundry.
         });
       }
     });
-    return roleSkillBonusArray;
+    return roleBonusArray;
   }
 }

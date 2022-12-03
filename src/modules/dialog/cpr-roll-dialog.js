@@ -58,7 +58,8 @@ export class CPRRollDialog extends CPRDialog {
     }
     data.showDefaultMods = this.showDefaultMods;
 
-    data.filteredMods = CPRMod.getSituationalRollMods(this.rollData, this.actor.effects.contents, this.item);
+    // Get filtered situational mods. These currently come from effects, role abilities, or item upgrades.
+    data.filteredMods = CPRMod.getSituationalRollMods(this.rollData, this.actor.effects.contents, this.item, this.actor);
     this.filteredMods = data.filteredMods;
     return data;
   }
