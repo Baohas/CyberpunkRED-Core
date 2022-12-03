@@ -7,6 +7,8 @@
    x="0px"
    y="0px"
    viewBox="0 0 512 512"
+   height="512"
+   width="512"
    style="enable-background:new 0 0 512 512;"
    xml:space="preserve"
    sodipodi:docname="biomonitor.svg"
@@ -225,6 +227,6 @@
 	<g
    id="g16"
    style="fill:#e64539;fill-opacity:1">
-		
+
 	</g>
 </g></svg>
