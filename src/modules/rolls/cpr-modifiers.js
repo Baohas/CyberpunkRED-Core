@@ -81,10 +81,10 @@ export default class CPRMod {
     let filteredMods = [];
 
     // Stat mods. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
-    if ((prototypeChain.includes("CPRStatRoll") || prototypeChain.includes("CPRRoleRoll")) && !prototypeChain.includes("CPRInterfaceRoll")) {
+    /*     if ((prototypeChain.includes("CPRStatRoll") || prototypeChain.includes("CPRRoleRoll")) && !prototypeChain.includes("CPRInterfaceRoll")) {
       const statMods = allSituationalMods.filter((m) => m.key === `system.stats.${rollData.statName.toLowerCase()}.value`);
       filteredMods = filteredMods.concat(statMods);
-    }
+    } */
 
     // Skill mods.
     if ((prototypeChain.includes("CPRSkillRoll") || prototypeChain.includes("CPRRoleRoll")) && !prototypeChain.includes("CPRInterfaceRoll")) {
