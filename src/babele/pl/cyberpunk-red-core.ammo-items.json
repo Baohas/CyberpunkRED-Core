@@ -1,0 +1,217 @@
+{
+	"label": "Amunicja",
+	"entries": {
+		"Armor Piercing Arrow": {
+			"name": "Przebijająca Strzała",
+			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
+		},
+		"Armor Piercing Grenade": {
+			"name": "Granat Przeciwpancerny",
+			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
+		},
+		"Armor Piercing Heavy Pistol": {
+			"name": "Pistoletowa Ciężka PPanc.",
+			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
+		},
+		"Armor Piercing Medium Pistol": {
+			"name": "Średnia Pistoletowa PPanc.",
+			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
+		},
+		"Armor Piercing Rifle": {
+			"name": "Karabinowa PPanc.",
+			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
+		},
+		"Armor Piercing Rocket": {
+			"name": "Rakieta PPanc.",
+			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
+		},
+		"Armor Piercing Shotgun Slug": {
+			"name": "Breneka PPanc.",
+			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
+		},
+		"Armor Piercing Very Heavy Pistol": {
+			"name": "Pistoletowa B. Ciężka PPanc.",
+			"description": "<p>Podwójne uszkodzenia pancerza.</p>"
+		},
+		"Basic Arrow": {
+			"name": "Zwykła Strzała",
+			"description": "<p>Amunicja podstawowa, nic specjalnego.</p>"
+		},
+		"Basic Heavy Pistol": {
+			"name": "Pistoletowa Ciężka Zwykła",
+			"description": "<p>Amunicja podstawowa, nic specjalnego.</p>"
+		},
+		"Basic Medium Pistol": {
+			"name": "Pistoletowa Średnia Zwykła",
+			"description": "<p>Amunicja podstawowa, nic specjalnego.</p>"
+		},
+		"Basic Rifle": {
+			"name": "Karabinowa Zwykła",
+			"description": "<p>Amunicja podstawowa, nic specjalnego.</p>"
+		},
+		"Basic Shotgun Shell": {
+			"name": "Loftka Zwykła",
+			"description": "<p>Amunicja podstawowa, nic specjalnego.</p>"
+		},
+		"Basic Shotgun Slug": {
+			"name": "Breneka Zwykła",
+			"description": "<p>Amunicja podstawowa, nic specjalnego.</p>"
+		},
+		"Basic Very Heavy Pistol": {
+			"name": "Pistoletowa B. Ciężka Zwykła",
+			"description": "<p>Amunicja podstawowa, nic specjalnego.</p>"
+		},
+		"Battery Pack": {
+			"name": "Pakiet Baterii",
+			"description": "<p>Ładowalny (1 godzina) pakiet baterii, powszechnie używany z egzotyczną bronią. Pozwala na 8 strzełów i może być ponownie naładowany.&nbsp;</p>"
+		},
+		"Biotoxin Arrow": {
+			"name": "Strzała Biotoksynowa",
+			"description": "<p>Brak natychmiastowych obrażeń. Przy trafieniu cel rzuca PT15 Odporność na tortury/narkotyki. Przy niepowodzeniu 3k6 obrażeń do PW. Bez uszkodzenia pancerza.</p>"
+		},
+		"Biotoxin Grenade": {
+			"name": "Granat Biotoksynowy",
+			"description": "<p>Brak natychmiastowych obrażeń. Przy trafieniu cel rzuca PT15 Odporność na tortury/narkotyki. Przy niepowodzeniu 3k6 obrażeń do PW. Bez uszkodzenia pancerza.</p>"
+		},
+		"EMP Grenade": {
+			"name": "Granat EMP",
+			"description": "<p>Przy trafieniu cel rzuca PT15 na Cyberinżynierię. Przy porażce, 2 elementy cyborgizacji lub niesionych urządzeń elektronicznych (wybór MG) przestają działać na 1 minutę. Cyberkończyny luźno wiszą podobnie do odciętych mięsnych kończyn (s. 187).</p>"
+		},
+		"Expansive Arrow": {
+			"name": "Strzała Dum-Dum",
+			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
+		},
+		"Expansive Heavy Pistol": {
+			"name": "Pistoletowa Ciężka Dum-Dum",
+			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
+		},
+		"Expansive Medium Pistol": {
+			"name": "Pistoletowa Średnia Dum-Dum",
+			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
+		},
+		"Expansive Rifle": {
+			"name": "Karabinowa Dum-Dum",
+			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
+		},
+		"Expansive Shotgun Slug": {
+			"name": "Breneka Dum-Dum",
+			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
+		},
+		"Expansive Very Heavy Pistol": {
+			"name": "Pistoletowa B. Ciężka Dum-Dum",
+			"description": "<p>Jeśli wyrzucisz Ciało Obce jako ranę krytyczną (s. 187), cel rzuca na drugą (inną) ranę krytyczną. Druga rana nie zadaje dodatkowych obrażeń.</p>"
+		},
+		"Flashbang Grenade": {
+			"name": "Granat Ogłuszający",
+			"description": "<p>Nie zadaje obrażeń. Przy trafieniu cel rzuca PT15 na Odporność na tortury/narkotyki. Przy porażce, cel otrzymuje rany krytyczne Zranione Oko oraz Zranione Ucho (s. 188) na 1 minutę. Nie zadaje obrażeń krytycznych.</p>"
+		},
+		"Incendiary Arrow": {
+			"name": "Strzała Zapalająca",
+			"description": "<p>Jeśli cel otrzymał obrażenia, zostaje podpalony. Cel otrzymuje 2 obrażenia do PW na koniec każdej swojej tury, dopóki nie wykona akcji ugaszenia płomieni. Efekty nie nakładają się.</p>"
+		},
+		"Incendiary Grenade": {
+			"name": "Granat Zapalający",
+			"description": "<p>Jeśli cel otrzymał obrażenia, zostaje podpalony. Cel otrzymuje 2 obrażenia do PW na koniec każdej swojej tury, dopóki nie wykona akcji ugaszenia płomieni. Efekty nie nakładają się.</p>"
+		},
+		"Incendiary Heavy Pistol": {
+			"name": "Pistoletowa Ciężka Zapalająca",
+			"description": "<p>Jeśli cel otrzymał obrażenia, zostaje podpalony. Cel otrzymuje 2 obrażenia do PW na koniec każdej swojej tury, dopóki nie wykona akcji ugaszenia płomieni. Efekty nie nakładają się.</p>"
+		},
+		"Incendiary Medium Pistol": {
+			"name": "Pistoletowa Średnia Zapalająca",
+			"description": "<p>Jeśli cel otrzymał obrażenia, zostaje podpalony. Cel otrzymuje 2 obrażenia do PW na koniec każdej swojej tury, dopóki nie wykona akcji ugaszenia płomieni. Efekty nie nakładają się.</p>"
+		},
+		"Incendiary Rifle": {
+			"name": "Karabinowa Zapalająca",
+			"description": "<p>Jeśli cel otrzymał obrażenia, zostaje podpalony. Cel otrzymuje 2 obrażenia do PW na koniec każdej swojej tury, dopóki nie wykona akcji ugaszenia płomieni. Efekty nie nakładają się.</p>"
+		},
+		"Incendiary Shotgun Shell": {
+			"name": "Loftka Zapalająca",
+			"description": "<p>Jeśli cel otrzymał obrażenia, zostaje podpalony. Cel otrzymuje 2 obrażenia do PW na koniec każdej swojej tury, dopóki nie wykona akcji ugaszenia płomieni. Efekty nie nakładają się.</p>"
+		},
+		"Incendiary Shotgun Slug": {
+			"name": "Breneka Zapalająca",
+			"description": "<p>Jeśli cel otrzymał obrażenia, zostaje podpalony. Cel otrzymuje 2 obrażenia do PW na koniec każdej swojej tury, dopóki nie wykona akcji ugaszenia płomieni. Efekty nie nakładają się.</p>"
+		},
+		"Incendiary Very Heavy Pistol": {
+			"name": "Pistoletowa B. Ciężka Zapalająca",
+			"description": "<p>Jeśli cel otrzymał obrażenia, zostaje podpalony. Cel otrzymuje 2 obrażenia do PW na koniec każdej swojej tury, dopóki nie wykona akcji ugaszenia płomieni. Efekty nie nakładają się.</p>"
+		},
+		"Poison Arrow": {
+			"name": "Strzała Trująca",
+			"description": "<p>Brak natychmiastowych obrażeń. Przy trafieniu cel rzuca PT13 Odporność na tortury/narkotyki. Przy niepowodzeniu 2k6 obrażeń do PW. Bez uszkodzenia pancerza.</p>"
+		},
+		"Poison Grenade": {
+			"name": "Granat Trujący",
+			"description": "<p>Brak natychmiastowych obrażeń. Przy trafieniu cel rzuca PT13 Odporność na tortury/narkotyki. Przy niepowodzeniu 2k6 obrażeń do PW. Bez uszkodzenia pancerza.</p>"
+		},
+		"Rubber Arrow": {
+			"name": "Strzała Gumowa",
+			"description": "<p>Nie powoduje ran krytycznych. Nie niszczy pancerza. Nie obniża PW celu poniżej 1. Zalicza się jako zwykła amunicja dla broni egzotycznych.</p>"
+		},
+		"Rubber Heavy Pistol": {
+			"name": "Pistoletowa Ciężka Gumowa",
+			"description": "<p>Nie powoduje ran krytycznych. Nie niszczy pancerza. Nie obniża PW celu poniżej 1. Zalicza się jako zwykła amunicja dla broni egzotycznych.</p>"
+		},
+		"Rubber Medium Pistol": {
+			"name": "Pistoletowa Średnia Gumowa",
+			"description": "<p>Nie powoduje ran krytycznych. Nie niszczy pancerza. Nie obniża PW celu poniżej 1. Zalicza się jako zwykła amunicja dla broni egzotycznych.</p>"
+		},
+		"Rubber Rifle": {
+			"name": "Karabinowa Gumowa",
+			"description": "<p>Nie powoduje ran krytycznych. Nie niszczy pancerza. Nie obniża PW celu poniżej 1. Zalicza się jako zwykła amunicja dla broni egzotycznych.</p>"
+		},
+		"Rubber Shotgun Slug": {
+			"name": "Breneka Gumowa",
+			"description": "<p>Nie powoduje ran krytycznych. Nie niszczy pancerza. Nie obniża PW celu poniżej 1. Zalicza się jako zwykła amunicja dla broni egzotycznych.</p>"
+		},
+		"Rubber Very Heavy Pistol": {
+			"name": "Pistoletowa B. Ciężka Gumowa",
+			"description": "<p>Nie powoduje ran krytycznych. Nie niszczy pancerza. Nie obniża PW celu poniżej 1. Zalicza się jako zwykła amunicja dla broni egzotycznych.</p>"
+		},
+		"Sleep Arrow": {
+			"name": "Strzała Usypiająca",
+			"description": "<p>Nie zadaje obrażeń. Przy trafieniu biologiczny cel rzuca PT13 Odporność na tortury/narkotyki. Jeśli niezdany, cel zostaje przewrócony (s. 169) i jest nieprzytomny przez 1 minutę. Może zostać obudzony poprzez otrzymanie obrażeń lub inną osobę używającej akcji aby dotknąć/potrząsnąć celem.</p>"
+		},
+		"Sleep Grenade": {
+			"name": "Granat Usypiający",
+			"description": "<p>Nie zadaje obrażeń. Przy trafieniu biologiczny cel rzuca PT13 Odporność na tortury/narkotyki. Jeśli niezdany, cel zostaje przewrócony (s. 169) i jest nieprzytomny przez 1 minutę. Może zostać obudzony poprzez otrzymanie obrażeń lub inną osobę używającej akcji aby dotknąć/potrząsnąć celem.</p>"
+		},
+		"Smart Arrow": {
+			"name": "Strzała Inteligentna",
+			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
+		},
+		"Smart Heavy Pistol": {
+			"name": "Pistoletowa Ciężka Inteligentna",
+			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
+		},
+		"Smart Medium Pistol": {
+			"name": "Pistoletowa Średnia Inteligentna",
+			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
+		},
+		"Smart Rifle": {
+			"name": "Karabinowa Inteligentna",
+			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
+		},
+		"Smart Rocket": {
+			"name": "Rakieta Inteligentna",
+			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
+		},
+		"Smart Shotgun Slug": {
+			"name": "Breneka Inteligentna",
+			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
+		},
+		"Smart Very Heavy Pistol": {
+			"name": "Pistoletowa B. Ciężka Inteligentna",
+			"description": "<p>Wymaga Cyborgizacji Celownik Optyczny, w innym wypadku nie wystrzeli. Jeśli spudłuje pojedynczy atak o 4 lub mniej, rzuć jeszcze raz na ten sam PT 1k10+10 (nie z atrybutu). Można dodać szczęście. Cel może uniknąć drugiego rzutu jak zwykle, jeśli jest w stanie to zrobić.</p>"
+		},
+		"Smoke Grenade": {
+			"name": "Granat Dymny",
+			"description": "<p>Nie zadaje obrażeń. Wypełnia przestrzeń 10m/yd x 10m/yd dymem na 1 minutę. Zadania ukryte przez dym powodują karę -4 do rzutów.</p>"
+		},
+		"Teargas Grenade": {
+			"name": "Granat Łzawiący",
+			"description": "<p>Nie zadaje obrażeń. Trafione cele z biologicznymi oczami rzucają PT13 Odporność na tortury/narkotyki. Przy porażce otrzymują Ranę Krytyczną Uraz Oka (s. 188) na 1 minutę. Nie zadaje dodatkowych obrażeń krytycznych.</p>"
+		}
+	}
+}
