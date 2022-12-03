@@ -1,0 +1,133 @@
+{
+	"label": "Actualizaciones",
+	"entries": {
+		"Assault Rifle Drum Magazine": {
+			"name": "Cargador de tambor de rifle de asalto",
+			"description": "Cargador de Tambor de Rifle de Asalto"
+		},
+		"Assault Rifle Extended Magazine": {
+			"name": "Cargador extendido de Rifle de Asalto",
+			"description": "Cargador de Extendido de Rifle de Asalto"
+		},
+		"Backup Drive": {
+			"name": "Copia de seguridad",
+			"description": "<p>Guarda programas no Hielo Negro cuando se destruyen. Estos programas pueden ser reinstalados por un Netrunner como una acción de carne.&nbsp;</p>"
+		},
+		"Bayonet": {
+			"name": "Bayoneta",
+			"description": "Bayoneta"
+		},
+		"DNA Lock": {
+			"name": "Bloqueo de ADN",
+			"description": "<p>Utiliza los biométricos para bloquear el Cyberterminal. Requiere verificación electrónica/técnica de seguridad DV17 para crackear.&nbsp;</p>"
+		},
+		"Grenade Launcher Drum Magazine": {
+			"name": "Cargador de tambor de lanzagranadas",
+			"description": "Cargador de Tambor de Lanzagranadas"
+		},
+		"Grenade Launcher Extended Magazine": {
+			"name": "Cargador extendido de lanzagranadas",
+			"description": "Cargador de Extendido de Lanzagranadas"
+		},
+		"Grenade Launcher Underbarrel": {
+			"name": "Lanzagranadas Sub Barril",
+			"description": "Lanzagranadas Sub Barril"
+		},
+		"Hardened Circuitry": {
+			"name": "Circuitos Endurecidos",
+			"description": "<p>Los efectos EMP no pueden deshabilitar o destruir Cyberterminal.&nbsp;</p>"
+		},
+		"Heavy Pistol Drum Magazine": {
+			"name": "Cargador de Tambor de Pistola Pesada",
+			"description": "Cargador de Tambor de Pistola Pesada"
+		},
+		"Heavy Pistol Extended Magazine": {
+			"name": "Cargador extendido de Pistola Pesada",
+			"description": "Cargador de Extendido de Pistola Pesada"
+		},
+		"Heavy SMG Drum Magazine": {
+			"name": "Cargador de Tambor de SMG",
+			"description": "Cargador de Tambor de SMG"
+		},
+		"Heavy SMG Extended Magazine": {
+			"name": "Cargador extendido de SMG",
+			"description": "Cargador de Extendido de SMG"
+		},
+		"Infrared Nightvision Scope": {
+			"name": "Mira de visión nocturna e infrarroja",
+			"description": "<p>Reduce las penalizaciones contra los objetivos en la oscuridad, humo/niebla a 0.</p>"
+		},
+		"Insulated Wiring": {
+			"name": "Cableado Aislante",
+			"description": "<p>La ropa de usuario y Cyberterminal no se pueden prender fuego.&nbsp;</p>"
+		},
+		"KRASH Barrier": {
+			"name": "Barrera KRASH",
+			"description": "<p>La Cyberterminal es inmune a los efectos que obligan al Netrunner a salir (de forma segura o insegura)</p>"
+		},
+		"Medium Pistol Drum Magazine": {
+			"name": "Cargador de Tambor de Pistola Media",
+			"description": "Cargador de Tambor de Pistola Media"
+		},
+		"Medium Pistol Extended Magazine": {
+			"name": "Cargador extendido de Pistola Media",
+			"description": "Cargador de Extendido de Pistola Media"
+		},
+		"Range Upgrade": {
+			"name": "Mejora de distancia",
+			"description": "<p>La Cyberterminal puede conectarse a puntos de acceso hasta 8 m/yd (en lugar de 6 m/yds).</p>"
+		},
+		"Rocket Launcher Drum Magazine": {
+			"name": "Cargador de tambor de lanzacohetes",
+			"description": "Cargador de Tambor de Lanzacohetes"
+		},
+		"Rocket Launcher Extended Magazine": {
+			"name": "Cargador extendido de lanzacohetes",
+			"description": "Cargador de Extendido de Lanzacohetes"
+		},
+		"SMG Drum Magazine": {
+			"name": "Cargador de Tambor de SMG",
+			"description": "Cargador de Tambor de SMG"
+		},
+		"SMG Extended Magazine": {
+			"name": "Cargador extendido de SMG",
+			"description": "Cargador de Extendido de SMG"
+		},
+		"Shotgun Drum Magazine": {
+			"name": "Cargador de Tambor de escopeta",
+			"description": "Cargador de Tambor de Escopeta"
+		},
+		"Shotgun Extended Magazine": {
+			"name": "Cargador extendido de escopeta",
+			"description": "Cargador de Extendido de Escopeta"
+		},
+		"Shotgun Underbarrel": {
+			"name": "Escopeta Sub Barril",
+			"description": "Escopeta Sub Barril"
+		},
+		"Smartgun Link": {
+			"name": "Enlace de Smartgun",
+			"description": "<p>Convierte arma en un \"Smartgun\". Consulta todas las reglas especificadas en el pg. 344 antes de usar.&nbsp;</p>"
+		},
+		"Sniper Rifle Drum Magazine": {
+			"name": "Cargador de Tambor de Rifle de Francotirador",
+			"description": "Cargador de Tambor de Rifle de Francotirador"
+		},
+		"Sniper Rifle Extended Magazine": {
+			"name": "Cargador de Extendido de Rifle de Francotirador",
+			"description": "Cargador de Extendido de Rifle de Francotirador"
+		},
+		"Sniping Scope": {
+			"name": "Mira de Francotirador",
+			"description": "<p>Te permite ver detalles de hasta 800m/yds. +1 a Disparo Individual/Dirigido para objetivos a más de 51m/yds.&nbsp;</p>"
+		},
+		"Very Heavy Pistol Drum Magazine": {
+			"name": "Cargador de Tambor de Pistola Muy Pesada",
+			"description": "Cargador de Tambor de Pistola Muy Pesada"
+		},
+		"Very Heavy Pistol Extended Magazine": {
+			"name": "Cargador extendido de Pistola Muy Pesada",
+			"description": "Cargador de Extendido de Pistola Muy Pesada"
+		}
+	}
+}
