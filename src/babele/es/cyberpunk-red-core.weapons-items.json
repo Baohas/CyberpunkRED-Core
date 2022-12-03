@@ -120,6 +120,18 @@
             "description": "<p>Un lanzador de granadas de alto impacto. Puedes usar una variedad de granadas con esto. Si tira 1 en el ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>",
             "name": "Lanzagranadas (Pobre)"
         },
+        "Heavy Melee": {
+            "description": "<p>Arma Cuerpo a Cuerpo Pesada Genérica</p>",
+            "name": "Arma Cuerpo a Cuerpo Pesada"
+        },
+        "Heavy Melee (Excellent)": {
+            "description": "<p>Arma cuerpo a cuerpo pesada de excelente calidad Genérica.<br />+1 para atacar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Pesada (Excelente)"
+        },
+        "Heavy Melee (Poor)": {
+            "description": "<p>Arma cuerpo a cuerpo pesada de mala calidad genérica.<br />Si tira 1 en Ataque (fallo crítico) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Pesada (Pobre)"
+        },
         "Heavy Pistol": {
             "description": "<p>Una pistola pesada y ocultable.</p>",
             "name": "Pistola Pesada"
@@ -172,6 +184,18 @@
             "description": "<p>Un cilindro hueco, generalmente hecho de metal o fibra de vidrio. Puede haber transportado fluidos una vez. Si tira 1 en el ataque (pifia) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>",
             "name": "Tubería de Plomo (Pobre)"
         },
+        "Light Melee": {
+            "description": "<p>Arma Cuerpo a Cuerpo Ligera Genérica</p>",
+            "name": "Arma Cuerpo a Cuerpo Ligera"
+        },
+        "Light Melee (Excellent)": {
+            "description": "<p>Arma Cuerpo a Cuerpo Ligera de excelente calidad Genérica.<br />+1 para atacar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Ligera (Excelente)"
+        },
+        "Light Melee (Poor)": {
+            "description": "<p>Arma Cuerpo a Cuerpo Ligera de mala calidad genérica.<br />Si tira 1 en Ataque (fallo crítico) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Ligera (Pobre)"
+        },
         "Machete": {
             "description": "<p>Un cuchillo largo con una gran variedad de usos. Conocido como el favorito de algunas pandillas de Night City. </p>",
             "name": "Machete"
@@ -191,6 +215,18 @@
         "Martial Arts": {
             "description": "<p>A mano limpia, ignora la mitad de la armadura.</p>",
             "name": "Artes Marciales"
+        },
+        "Medium Melee": {
+            "description": "<p>Arma Cuerpo a Cuerpo Mediana Genérica</p>",
+            "name": "Arma Cuerpo a Cuerpo Mediana"
+        },
+        "Medium Melee (Excellent)": {
+            "description": "<p>Arma Cuerpo a Cuerpo Mediana de excelente calidad Genérica.<br />+1 para atacar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Mediana (Excelente)"
+        },
+        "Medium Melee (Poor)": {
+            "description": "<p>Arma Cuerpo a Cuerpo Mediana de mala calidad genérica.<br />Si tira 1 en Ataque (fallo crítico) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Mediana (Pobre)"
         },
         "Medium Pistol": {
             "description": "<p>Una pistola media y ocultable.</p>",
@@ -359,6 +395,18 @@
         "Vampyres": {
             "description": "<p>Arma ciberware. Debe tener instalado el ciberware apropiado. </p>",
             "name": "Vampiros"
+        },
+        "Very Heavy Melee": {
+            "description": "<p>Arma Cuerpo a Cuerpo Muy Pesada Genérica</p>",
+            "name": "Arma Cuerpo a Cuerpo Muy Pesada"
+        },
+        "Very Heavy Melee (Excellent)": {
+            "description": "<p>Arma Cuerpo a Cuerpo Muy Pesada de excelente calidad Genérica.<br />+1 para atacar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Muy Pesada (Excelente)"
+        },
+        "Very Heavy Melee (Poor)": {
+            "description": "<p>Arma Cuerpo a Cuerpo Muy Pesada de mala calidad genérica.<br />Si tira 1 en Ataque (fallo crítico) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Muy Pesada (Pobre)"
         },
         "Very Heavy Pistol": {
             "description": "<p>Una pistola muy pesada. No puede ser ocultada. </p>",

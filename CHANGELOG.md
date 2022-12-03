@@ -21,6 +21,7 @@
 ### Bug Fixes
 
 - Align the second column on the gear tab so it is not all over the place.
+- #453 - Fixed strings that could not be translated properly
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 

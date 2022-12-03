@@ -17,7 +17,8 @@
 				"11-11": "Crushed Fingers",
 				"12-12": "Dismembered Leg"
 			}
-		}, {
+		},
+		{
 			"id": "Critical Injuries (Head)",
 			"name": "Critical Injuries (Head)",
 			"results": {
@@ -36,5 +37,3 @@
 		}
 	]
 }
-
-  

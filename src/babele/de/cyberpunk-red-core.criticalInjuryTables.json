@@ -1,9 +1,9 @@
 {
-	"label": "Critical Injury Tables",
+	"label": "Kritische Verletzungstabellen",
 	"entries": [
 		{
-			"id": "Critical Injuries (Body)",
-			"name": "Kritische Verletzungen am Körper",
+			"id": "Kritische Verletzungen (Körper)",
+			"name": "Kritische Verletzungen (Körper)",
 			"results": {
 				"2-2": "Abgetrennter Arm",
 				"3-3": "Abgetrennte Hand",
@@ -17,9 +17,10 @@
 				"11-11": "Fingerfraktur",
 				"12-12": "Abgetrenntes Bein"
 			}
-		}, {
-			"id": "Critical Injuries (Head)",
-			"name": "Kritische Verletzungen am Kopf",
+		},
+		{
+			"id": "Kritische Verletzungen (Kopf)",
+			"name": "Kritische Verletzungen (Kopf)",
 			"results": {
 				"2-2": "Verlorenes Auge",
 				"3-3": "Hirntrauma",
@@ -36,5 +37,3 @@
 		}
 	]
 }
-
-  

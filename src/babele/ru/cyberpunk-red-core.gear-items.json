@@ -21,6 +21,10 @@
 			"name": "Активные наушники",
 			"description": "<p>Носитель невосприимчив к громким звукам.</p>"
 		},
+		"Battleglove": {
+			"name": "Боевая перчатка",
+			"description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>"
+		},
 		"Binoculars": {
 			"name": "Бинокль",
 			"description": "<p>Двух- и трёхкратное приближение.</p>"
@@ -67,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Кибердека",
-			"description": "<p>Дека нетраннера на 7 слотов.</p>"
+			"description": "<p>Netrunner deck. 7 slots.</p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Одноразовая мобила",
@@ -87,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Кибердека отличного качества",
-			"description": "<p>Дека нетраннера на 9 слотов.</p>"
+			"description": "<p>Netrunner deck. 9 slots.</p>"
 		},
 		"Flashlight": {
 			"name": "Фонарик",
@@ -163,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Кибердека плохого качества",
-			"description": "<p>Дека нетраннера на 5 слотов.</p>"
+			"description": "<p>Netrunner deck. 5 slots.</p>"
 		},
 		"Radar Detector": {
 			"name": "Система обнаружения излучения",

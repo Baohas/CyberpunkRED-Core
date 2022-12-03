@@ -21,6 +21,10 @@
 			"name": "Automatyczne słuchawki wygłuszające",
 			"description": "<p>Użytkownik jest niewrażliwy na głośne dźwięki.</p>"
 		},
+		"Battleglove": {
+			"name": "Rękawica bojowa",
+			"description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>"
+		},
 		"Binoculars": {
 			"name": "Lornetka",
 			"description": "<p>Powiększenie: x2 lub x3.</p>"
@@ -67,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Cyberdek",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Dek netrunnera. 7 gniazd.</span></p>"
+			"description": "<p>Netrunner deck. 7 slots.</p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Jednorazowy telefon komórkowy",
@@ -87,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Cyberdek (doskonałej jakości)",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Dek netrunnera. 9 gniazd.</span></p>"
+			"description": "<p>Netrunner deck. 9 slots.</p>"
 		},
 		"Flashlight": {
 			"name": "Latarka",
@@ -163,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Cyberdek (słabej jakości)",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Dek netrunnera. 5 gniazd.</span></p>"
+			"description": "<p>Netrunner deck. 5 slots.</p>"
 		},
 		"Radar Detector": {
 			"name": "Wykrywacz radaru",

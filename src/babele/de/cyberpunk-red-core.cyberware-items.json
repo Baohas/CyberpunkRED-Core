@@ -189,6 +189,14 @@
 			"name": "Fleischliches-Bein",
 			"description": "<p>Ein normales Bein. Erlaubt den Einbau von Klauenfuß.</p>"
 		},
+		"Medical Grade CyberArm": {
+			"name": "Medical Grade CyberArm",
+			"description": "<p>A medical grade cyberarm. Does not allow options to be installed.</p>"
+		},
+		"Medical Grade CyberLeg": {
+			"name": "Medical Grade CyberLeg",
+			"description": "<p>A medical grade cyberleg. Does not allow options to be installed.</p>"
+		},
 		"Medscanner": {
 			"name": "MediScanner",
 			"description": "<p>Scanner mit externen Sonden und Kontakten zum Diagnostizieren von Verletzungen und Krankheiten, unterstützt den Anwender bei medizinischen Notfällen, für die kein Eingriff nötig ist. Der Anwender addiert +2 zur Fertigkeit Erste Hilfe und Notfallmedizin hinzu.</p>"

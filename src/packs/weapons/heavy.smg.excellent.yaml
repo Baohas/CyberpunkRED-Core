@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/heavySMG_excellent.svg
-name: Heavy SMG (Excelent)
+name: Heavy SMG (Excellent)
 ownership:
   default: 0
 sort: 0

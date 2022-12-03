@@ -6,10 +6,12 @@ import * as packs from "./gulp/packs.mjs";
 export const clean = gulp.series(bld.cleanDist);
 export const system = gulp.series(bld.buildManifest);
 export const less = gulp.series(bld.compileLess);
-export const assets = gulp.series(bld.propagateLangs, bld.copyAssets);
+export const assets = gulp.series(bld.copyAssets);
+// disable while we fix crowdin
+// export const assets = gulp.series(bld.propagateLangs, bld.copyAssets);
 export const extractPacks = gulp.series(packs.extPacks);
 export const generatePacks = gulp.series(packs.genPacks);
-export const generateChangelog = gulp.series(bld.buildChangelog);
+export const releaseNotes = gulp.series(bld.buildChangelog);
 export const images = gulp.series(bld.processImages, bld.processSvgs);
 
 export const build = gulp.series(
@@ -17,10 +19,9 @@ export const build = gulp.series(
   assets,
   system,
   less,
-  images,
   generatePacks,
-  generateChangelog,
-
+  images,
+  releaseNotes,
 );
 
 // Don't just call `build` & `bld.watch` because `build` cleans the directory
@@ -31,6 +32,6 @@ export const watch = gulp.series(
   system,
   less,
   images,
-  generateChangelog,
+  releaseNotes,
   bld.watchSrc,
 );

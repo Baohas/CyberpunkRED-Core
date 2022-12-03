@@ -21,6 +21,10 @@
 			"name": "Automatische Lärmdämmung",
 			"description": "<p>Kompakter Hörschutz. Macht den Anwender immun gegenüber Effekten durch gefährlich laute Geräusche.</p>"
 		},
+		"Battleglove": {
+			"name": "Kampfhandschuh",
+			"description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>"
+		},
 		"Binoculars": {
 			"name": "Feldstecher",
 			"description": "<p>Gut fürs den Blick in die Ferne. Vergrößerung x2 oder x3.</p>"
@@ -67,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Cyberdeck",
-			"description": "<p>Einfaches Deck fürs Netrunning. 7 Slots. Weitere Informationen auf Seite 353.</p>"
+			"description": "<p>Netrunner deck. 7 slots.</p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Wegwerfhandy",
@@ -87,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Cyberdeck von Aus­gezeichneter Qualität",
-			"description": "<p>Excellentes Deck fürs Netrunning. 9 Slots. Weitere Informationen auf Seite 353.</p>"
+			"description": "<p>Netrunner deck. 9 slots.</p>"
 		},
 		"Flashlight": {
 			"name": "Taschenlampe",
@@ -163,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Cyberdeck von Schlechter Qualität",
-			"description": "<p>Schlechtes Deck fürs Netrunning. 5 Slots. Weitere Informationen auf Seite 353.</p>"
+			"description": "<p>Netrunner deck. 5 slots.</p>"
 		},
 		"Radar Detector": {
 			"name": "Radar­ detektor",

@@ -32,8 +32,7 @@ system:
     chat: ''
     unidentified: ''
     value: >-
-      <p><span style="color: #191813; font-family: 'Audimat Mono';
-      background-color: #eaeaea;">Netrunner deck. 5 slots.</span></p>
+      <p>Netrunner deck. 5 slots.</p>
   equipped: owned
   favorite: false
   isUpgraded: false

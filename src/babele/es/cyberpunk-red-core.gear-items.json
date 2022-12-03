@@ -21,6 +21,10 @@
 			"name": "Protectores auditivos de nivel automático",
 			"description": "<p>El portador es inmune a sonidos fuertes.</p>"
 		},
+		"Battleglove": {
+			"name": "Guante de Batalla",
+			"description": "<p>Un Guantelete pesado exótico que cubre la mano y el antebrazo. Proporciona tres ranuras de opciones. Consulte la descripción completa del artículo en el pg. 347.</p>"
+		},
 		"Binoculars": {
 			"name": "Binoculares",
 			"description": "<p>Aumento: x2 o x3.</p>"
@@ -67,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Cyberterminal",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Terminal de Netrunner. 7 ranuras.</span></p>"
+			"description": "<p>Terminal de Netrunner. 7 ranuras.</p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Teléfono móvil desechable",
@@ -87,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Cyberterminal de calidad excelente",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Terminal de Netrunner. 9 ranuras.</span></p>"
+			"description": "<p>Terminal de Netrunner. 9 ranuras.</p>"
 		},
 		"Flashlight": {
 			"name": "Linterna",
@@ -163,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Cyberterminal de baja calidad",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Terminal de Netrunner. 5 ranuras.</span></p>"
+			"description": "<p>Terminal de Netrunner. 5 ranuras.</p>"
 		},
 		"Radar Detector": {
 			"name": "Detector de Radar",

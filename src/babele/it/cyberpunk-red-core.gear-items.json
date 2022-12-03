@@ -21,6 +21,10 @@
 			"name": "Protezione Auricolare Autolivellante",
 			"description": "<p>L'utente è immune ai suoni rumorosi.</p>"
 		},
+		"Battleglove": {
+			"name": "Guanto da Battaglia",
+			"description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>"
+		},
 		"Binoculars": {
 			"name": "Binocolo",
 			"description": "<p>Utile per bersagli lontani. Ingrandimento: x2 o x3.</p>"
@@ -67,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Cyberdeck",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Piattaforma Netrunner. 7 slot.</span></p>"
+			"description": "<p>Netrunner deck. 7 slots.</p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Cellulare Usa-e-Getta",
@@ -87,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Cyberdeck di Alta Qualità",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Piattaforma Netrunner. 9 slot.</span></p>"
+			"description": "<p>Netrunner deck. 9 slots.</p>"
 		},
 		"Flashlight": {
 			"name": "Torcia Elettrica",
@@ -163,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Cyberdeck di Bassa Qualità",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Piattaforma Netrunner. 5 slot.</span></p>"
+			"description": "<p>Netrunner deck. 5 slots.</p>"
 		},
 		"Radar Detector": {
 			"name": "Rivelatore Radar",

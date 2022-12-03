@@ -189,6 +189,14 @@
 			"name": "Pierna de Carne y Hueso",
 			"description": "<p>Una pierna regular. Esto puede soportar implantes como un Pie Estándar o armas como el Talón Claveteado.</p>"
 		},
+		"Medical Grade CyberArm": {
+			"name": "Ciberbrazo de la escala médica",
+			"description": "<p>Ciberbrazo de la escala médica. No permite la instalación de opciones.</p>"
+		},
+		"Medical Grade CyberLeg": {
+			"name": "Ciberpierna de la escala médica",
+			"description": "<p>Ciberpierna de la escala médica. No permite la instalación de opciones.</p>"
+		},
 		"Medscanner": {
 			"name": "Escáner Médico",
 			"description": "<p>Analizador integrado que permite evaluar rápidamente las heridas. Proporciona +2 a las habilidades de Primeros Auxilios y Paramédico.</p>"
