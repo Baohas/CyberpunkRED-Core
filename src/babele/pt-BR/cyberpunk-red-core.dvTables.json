@@ -3,42 +3,51 @@
 	"entries": [
 		{
 			"id": "DV Assault Rifle",
-			"name": "DV Rifle de Assalto"
-		}, {
+			"name": "DV Assault Rifle"
+		},
+		{
 			"id": "DV Assault Rifle (Autofire)",
-			"name": "DV Rifle de Assalto (Auto)"
-		}, {
+			"name": "DV Assault Rifle (Autofire)"
+		},
+		{
 			"id": "DV Bows & Crossbows",
-			"name": "DV Arcos e Balestras"
-		}, {
+			"name": "DV Bows & Crossbows"
+		},
+		{
 			"id": "DV Generic",
-			"name": "DV Básica"
-		}, {
+			"name": "DV Generic"
+		},
+		{
 			"id": "DV Grenade Launcher",
-			"name": "DV Lançador de Granadas"
-		}, {
+			"name": "DV Grenade Launcher"
+		},
+		{
 			"id": "DV Pistol",
-			"name": "DV Pistola"
-		}, {
+			"name": "DV Pistol"
+		},
+		{
 			"id": "DV Rocket Launcher",
-			"name": "DV Lança-foguetes"
-		}, {
+			"name": "DV Rocket Launcher"
+		},
+		{
 			"id": "DV Shotgun (Slug)",
-			"name": "DV Espingarda (Cartuchos de Espingarda)"
-		}, {
+			"name": "DV Shotgun (Slug)"
+		},
+		{
 			"id": "DV SMG",
 			"name": "DV SMG"
-		}, {
+		},
+		{
 			"id": "DV SMG (Autofire)",
-			"name": "DV SMG (Auto)"
-		}, {
+			"name": "DV SMG (Autofire)"
+		},
+		{
 			"id": "DV Sniper Rifle",
-			"name": "DV Fuzil de Precisão"
-		}, {
+			"name": "DV Sniper Rifle"
+		},
+		{
 			"id": "DV Thrown Weapon",
-			"name": "DV Arma de Arremesso"
+			"name": "DV Thrown Weapon"
 		}
 	]
 }
-
-  
