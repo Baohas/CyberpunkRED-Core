@@ -285,7 +285,7 @@ export default class CPRItem extends Item {
         return this._createDamageRoll(damageType, actor);
       }
       case CPRRolls.rollTypes.CYBERDECKPROGRAM: {
-        return this._createCyberdeckRoll(type, actor, extraData);
+        return this._createCyberdeckRoll(actor, extraData);
       }
       default:
     }

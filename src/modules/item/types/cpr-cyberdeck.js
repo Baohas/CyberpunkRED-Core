@@ -192,7 +192,14 @@ export default class CPRCyberdeckItem extends CPRItem {
     this.system.programs.rezzed.push(programState);
   }
 
-  _createCyberdeckRoll(rollType, actor, extraData = {}) {
+  /**
+   * Create a roll object appropriate for rolling for programs located on a cyberdeck.
+   *
+   * @param {CPRCharacterActor} actor - the actor associated with this cyberdeck item
+   * @param {Object} extraData - more roll configuration data
+   * @returns {CPRRoll}
+   */
+  _createCyberdeckRoll(actor, extraData = {}) {
     LOGGER.trace("_createCyberdeckRoll | CPRCyberdeckItem | Called.");
     let cprRoll;
     const { programId } = extraData;
@@ -210,6 +217,8 @@ export default class CPRCyberdeckItem extends CPRItem {
     const statName = SystemUtils.Localize(`CPR.global.blackIce.stats.${executionType}`);
 
     const damageFormula = program.damage.standard;
+    // Attack and defense rolls from programs are treated as Interface Rolls.
+    // Damage rolls from programs are treated as normal Damage Rolls.
     switch (executionType) {
       case "atk": {
         cprRoll = new CPRRolls.CPRInterfaceRoll("attack", roleName, roleValue, statName, statValue);
@@ -234,8 +243,9 @@ export default class CPRCyberdeckItem extends CPRItem {
     }
     cprRoll.rollTitle = pgmName;
 
-    const effects = actor.effects.contents;
-    const allMods = CPRMod.getAllModifiers(effects);
+    const effects = actor.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
     const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
@@ -254,10 +264,10 @@ export default class CPRCyberdeckItem extends CPRItem {
   }
 
   /**
-   * Create a roll object appropriate for rolling an ability associated with Interfaces
+   * Create a roll object appropriate for rolling Interface actions.
    *
-   * @param {CPRCharacterActor} actor - the actor associated with this role item
-   * @param {Object} rollInfo - magic object with more role configuration data
+   * @param {CPRCharacterActor} actor - the actor associated with this cyberdeck item
+   * @param {Object} rollInfo - more roll configuration data
    * @returns {CPRRoll}
    */
   _createInterfaceRoll(actor, rollInfo) {
@@ -280,11 +290,11 @@ export default class CPRCyberdeckItem extends CPRItem {
         rollTitle = SystemUtils.Localize(CPR.interfaceAbilities[interfaceAbility]);
       }
     }
+    // Declare the roll;
+    let cprRoll;
 
     // If interfaceAbiltiy is Zap, we will handle roll either as a Damage Roll or an Attack Roll.
     // If interfaceAbility is anything else, we will handle roll as as an Interface Roll.
-    let cprRoll;
-
     if (rollInfo.executionType === "damage") {
       cprRoll = new CPRRolls.CPRDamageRoll(SystemUtils.Localize("CPR.global.role.netrunner.interfaceAbility.zap"), "1d6", "program");
     } else {
@@ -298,8 +308,9 @@ export default class CPRCyberdeckItem extends CPRItem {
     cprRoll.rollTitle = rollTitle;
 
     // Figure out all applicable modifiers.
-    const effects = actor.effects.contents;
-    const allMods = CPRMod.getAllModifiers(effects);
+    const effects = actor.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
     const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
