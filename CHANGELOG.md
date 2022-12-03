@@ -15,6 +15,7 @@
 
 - Align the second column on the gear tab so it is not all over the place.
 - #453 - Fixed strings that could not be translated properly
+- Fix item images in the item sheets for a number of compendium items
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
