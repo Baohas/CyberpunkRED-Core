@@ -1,0 +1,44 @@
+{
+	"label": "DV Rolltables",
+	"entries": [
+		{
+			"id": "DV Assault Rifle",
+			"name": "DV Ein Standard-Sturmgewehr"
+		}, {
+			"id": "DV Assault Rifle (Autofire)",
+			"name": "DV Ein Standard-Sturmgewehr (Automatisch)"
+		}, {
+			"id": "DV Bows & Crossbows",
+			"name": "DV Bögen und Armbrüste"
+		}, {
+			"id": "DV Generic",
+			"name": "DV Generisch"
+		}, {
+			"id": "DV Grenade Launcher",
+			"name": "DV Granatwerfer"
+		}, {
+			"id": "DV Pistol",
+			"name": "DV Pistole"
+		}, {
+			"id": "DV Rocket Launcher",
+			"name": "DV Raketenwerfer"
+		}, {
+			"id": "DV Shotgun (Slug)",
+			"name": "DV Flinte (Flintenpatrone)"
+		}, {
+			"id": "DV SMG",
+			"name": "DV MP"
+		}, {
+			"id": "DV SMG (Autofire)",
+			"name": "DV MP (Automatisch)"
+		}, {
+			"id": "DV Sniper Rifle",
+			"name": "DV Scharfschützengewehr"
+		}, {
+			"id": "DV Thrown Weapon",
+			"name": "DV Wurfwaffe"
+		}
+	]
+}
+
+  

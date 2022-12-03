@@ -1,0 +1,44 @@
+{
+	"label": "DV Rolltables",
+	"entries": [
+		{
+			"id": "DV Assault Rifle",
+			"name": "DV Штурмовая винтовка"
+		}, {
+			"id": "DV Assault Rifle (Autofire)",
+			"name": "DV Штурмовая винтовка (Авто)"
+		}, {
+			"id": "DV Bows & Crossbows",
+			"name": "DV Луки и арбалеты"
+		}, {
+			"id": "DV Generic",
+			"name": "DV Generic"
+		}, {
+			"id": "DV Grenade Launcher",
+			"name": "DV Гранатомет"
+		}, {
+			"id": "DV Pistol",
+			"name": "DV пистолет"
+		}, {
+			"id": "DV Rocket Launcher",
+			"name": "DV Ракетница"
+		}, {
+			"id": "DV Shotgun (Slug)",
+			"name": "DV Дробовик (Пулевые)"
+		}, {
+			"id": "DV SMG",
+			"name": "DV ПП"
+		}, {
+			"id": "DV SMG (Autofire)",
+			"name": "DV ПП (Авто)"
+		}, {
+			"id": "DV Sniper Rifle",
+			"name": "DV Снайперская винтовка"
+		}, {
+			"id": "DV Thrown Weapon",
+			"name": "DV Метательное оружие"
+		}
+	]
+}
+
+  
