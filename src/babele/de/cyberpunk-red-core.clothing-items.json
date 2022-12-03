@@ -1,0 +1,365 @@
+{
+	"label": "Kleidung",
+	"entries": {
+		"Asia Pop Bottoms": {
+			"name": "Asia Pop Beinkleidung",
+			"description": ""
+		},
+		"Asia Pop Contact Lenses": {
+			"name": "Asia Pop Kontaktlinsen",
+			"description": ""
+		},
+		"Asia Pop Footwear": {
+			"name": "Asia Pop Fuß­be­kleidung",
+			"description": ""
+		},
+		"Asia Pop Glasses": {
+			"name": "Asia Pop Brille",
+			"description": ""
+		},
+		"Asia Pop Hat": {
+			"name": "Asia Pop Kopfbedeckung",
+			"description": ""
+		},
+		"Asia Pop Jacket": {
+			"name": "Asia Pop Jacke",
+			"description": ""
+		},
+		"Asia Pop Jewelry": {
+			"name": "Asia Pop Schmuck",
+			"description": ""
+		},
+		"Asia Pop Mirrorshades": {
+			"name": "Asia Pop Verspiegelte Sonnenbrille",
+			"description": null
+		},
+		"Asia Pop Top": {
+			"name": "Asia Pop Oberbekleidung",
+			"description": ""
+		},
+		"Bag Lady Chic Bottoms": {
+			"name": "Stadt­-s­treicher-Chic Beinkleidung",
+			"description": ""
+		},
+		"Bag Lady Chic Contact Lenses": {
+			"name": "Stadt­-s­treicher-Chic Kontaktlinsen",
+			"description": ""
+		},
+		"Bag Lady Chic Footwear": {
+			"name": "Stadt­-s­treicher-Chic Fuß­be­kleidung",
+			"description": ""
+		},
+		"Bag Lady Chic Glasses": {
+			"name": "Stadt­-s­treicher-Chic Brille",
+			"description": null
+		},
+		"Bag Lady Chic Hat": {
+			"name": "Stadt­-s­treicher-Chic Kopfbedeckung",
+			"description": ""
+		},
+		"Bag Lady Chic Jacket": {
+			"name": "Stadt­-s­treicher-Chic Jacke",
+			"description": ""
+		},
+		"Bag Lady Chic Jewelry": {
+			"name": "Stadt­-s­treicher-Chic Schmuck",
+			"description": ""
+		},
+		"Bag Lady Chic Mirrorshades": {
+			"name": "Stadt­-s­treicher-Chic Verspiegelte Sonnenbrille",
+			"description": ""
+		},
+		"Bag Lady Chic Top": {
+			"name": "Stadt­-s­treicher-Chic Oberbekleidung",
+			"description": ""
+		},
+		"Bohemian Bottoms": {
+			"name": "Ausgefallen Beinkleidung",
+			"description": ""
+		},
+		"Bohemian Contact Lenses": {
+			"name": "Ausgefallen Kontaktlinsen",
+			"description": ""
+		},
+		"Bohemian Footwear": {
+			"name": "Ausgefallen Fuß­be­kleidung",
+			"description": ""
+		},
+		"Bohemian Glasses": {
+			"name": "Ausgefallen Brille",
+			"description": ""
+		},
+		"Bohemian Hat": {
+			"name": "Ausgefallen Kopfbedeckung",
+			"description": ""
+		},
+		"Bohemian Jacket": {
+			"name": "Ausgefallen Jacke",
+			"description": ""
+		},
+		"Bohemian Jewelry": {
+			"name": "Ausgefallen Schmuck",
+			"description": ""
+		},
+		"Bohemian Mirrorshades": {
+			"name": "Ausgefallen Verspiegelte Sonnenbrille",
+			"description": ""
+		},
+		"Bohemian Top": {
+			"name": "Ausgefallen Oberbekleidung",
+			"description": ""
+		},
+		"Businesswear Bottoms": {
+			"name": "Geschäftlich Beinkleidung",
+			"description": ""
+		},
+		"Businesswear Contact Lenses": {
+			"name": "Geschäftlich Kontaktlinsen",
+			"description": ""
+		},
+		"Businesswear Footwear": {
+			"name": "Geschäftlich Fuß­be­kleidung",
+			"description": ""
+		},
+		"Businesswear Glasses": {
+			"name": "Geschäftlich Brille",
+			"description": ""
+		},
+		"Businesswear Hat": {
+			"name": "Geschäftlich Kopfbedeckung",
+			"description": ""
+		},
+		"Businesswear Jacket": {
+			"name": "Geschäftlich Jacke",
+			"description": ""
+		},
+		"Businesswear Jewelry": {
+			"name": "Geschäftlich Schmuck",
+			"description": ""
+		},
+		"Businesswear Mirrorshades": {
+			"name": "Geschäftlich Verspiegelte Sonnenbrille",
+			"description": ""
+		},
+		"Businesswear Top": {
+			"name": "Geschäftlich Oberbekleidung",
+			"description": ""
+		},
+		"Gang Colors Bottoms": {
+			"name": "Gangfarben Beinkleidung",
+			"description": ""
+		},
+		"Gang Colors Contact Lenses": {
+			"name": "Gangfarben Kontaktlinsen",
+			"description": ""
+		},
+		"Gang Colors Footwear": {
+			"name": "Gangfarben Fuß­be­kleidung",
+			"description": ""
+		},
+		"Gang Colors Glasses": {
+			"name": "Gangfarben Brille",
+			"description": ""
+		},
+		"Gang Colors Hat": {
+			"name": "Gangfarben Kopfbedeckung",
+			"description": ""
+		},
+		"Gang Colors Jacket": {
+			"name": "Gangfarben Jacke",
+			"description": ""
+		},
+		"Gang Colors Jewelry": {
+			"name": "Gangfarben Schmuck",
+			"description": ""
+		},
+		"Gang Colors Mirrorshades": {
+			"name": "Gangfarben Verspiegelte Sonnenbrille",
+			"description": ""
+		},
+		"Gang Colors Top": {
+			"name": "Gangfarben Oberbekleidung",
+			"description": ""
+		},
+		"Generic Chic Bottoms": {
+			"name": "Generisch-Mondän Beinkleidung",
+			"description": ""
+		},
+		"Generic Chic Contact Lenses": {
+			"name": "Generisch-Mondän Kontaktlinsen",
+			"description": ""
+		},
+		"Generic Chic Footwear": {
+			"name": "Generisch-Mondän Fuß­be­kleidung",
+			"description": ""
+		},
+		"Generic Chic Glasses": {
+			"name": "Generisch-Mondän Brille",
+			"description": ""
+		},
+		"Generic Chic Hat": {
+			"name": "Generisch-Mondän Kopfbedeckung",
+			"description": ""
+		},
+		"Generic Chic Jacket": {
+			"name": "Generisch-Mondän Jacke",
+			"description": ""
+		},
+		"Generic Chic Jewelry": {
+			"name": "Generisch-Mondän Schmuck",
+			"description": ""
+		},
+		"Generic Chic Mirrorshades": {
+			"name": "Generisch-Mondän Verspiegelte Sonnenbrille",
+			"description": ""
+		},
+		"Generic Chic Top": {
+			"name": "Generisch-Mondän Oberbekleidung",
+			"description": ""
+		},
+		"High Fashion Bottoms": {
+			"name": "Topmodisch Beinkleidung",
+			"description": ""
+		},
+		"High Fashion Contact Lenses": {
+			"name": "Topmodisch Kontaktlinsen",
+			"description": ""
+		},
+		"High Fashion Footwear": {
+			"name": "Topmodisch Fuß­be­kleidung",
+			"description": ""
+		},
+		"High Fashion Glasses": {
+			"name": "Topmodisch Brille",
+			"description": ""
+		},
+		"High Fashion Hat": {
+			"name": "Topmodisch Kopfbedeckung",
+			"description": ""
+		},
+		"High Fashion Jacket": {
+			"name": "Topmodisch Jacke",
+			"description": ""
+		},
+		"High Fashion Jewelry": {
+			"name": "Topmodisch Schmuck",
+			"description": ""
+		},
+		"High Fashion Mirrorshades": {
+			"name": "Topmodisch Verspiegelte Sonnenbrille",
+			"description": ""
+		},
+		"High Fashion Top": {
+			"name": "Topmodisch Oberbekleidung",
+			"description": ""
+		},
+		"Leisurewear Bottoms": {
+			"name": "Freizeit Beinkleidung",
+			"description": ""
+		},
+		"Leisurewear Contact Lenses": {
+			"name": "Freizeit Kontaktlinsen",
+			"description": ""
+		},
+		"Leisurewear Footwear": {
+			"name": "Freizeit Fuß­be­kleidung",
+			"description": ""
+		},
+		"Leisurewear Glasses": {
+			"name": "Freizeit Brille",
+			"description": ""
+		},
+		"Leisurewear Hat": {
+			"name": "Freizeit Kopfbedeckung",
+			"description": ""
+		},
+		"Leisurewear Jacket": {
+			"name": "Freizeit Jacke",
+			"description": ""
+		},
+		"Leisurewear Jewelry": {
+			"name": "Freizeit Schmuck",
+			"description": ""
+		},
+		"Leisurewear Mirrorshades": {
+			"name": "Freizeit Verspiegelte Sonnenbrille",
+			"description": ""
+		},
+		"Leisurewear Top": {
+			"name": "Freizeit Oberbekleidung",
+			"description": ""
+		},
+		"Nomad Leathers Bottoms": {
+			"name": "Nomaden-Lederkluft Beinkleidung",
+			"description": ""
+		},
+		"Nomad Leathers Contact Lenses": {
+			"name": "Nomaden-Lederkluft Kontaktlinsen",
+			"description": ""
+		},
+		"Nomad Leathers Footwear": {
+			"name": "Nomaden-Lederkluft Fuß­be­kleidung",
+			"description": ""
+		},
+		"Nomad Leathers Glasses": {
+			"name": "Nomaden-Lederkluft Brille",
+			"description": ""
+		},
+		"Nomad Leathers Hat": {
+			"name": "Nomaden-Lederkluft Kopfbedeckung",
+			"description": ""
+		},
+		"Nomad Leathers Jacket": {
+			"name": "Nomaden-Lederkluft Jacke",
+			"description": ""
+		},
+		"Nomad Leathers Jewelry": {
+			"name": "Nomaden-Lederkluft Schmuck",
+			"description": ""
+		},
+		"Nomad Leathers Mirrorshades": {
+			"name": "Nomaden-Lederkluft Verspiegelte Sonnenbrille",
+			"description": ""
+		},
+		"Nomad Leathers Top": {
+			"name": "Nomaden-Lederkluft Oberbekleidung",
+			"description": ""
+		},
+		"Urban Flash Bottoms": {
+			"name": "Stadtprotz Beinkleidung",
+			"description": ""
+		},
+		"Urban Flash Contact Lenses": {
+			"name": "Stadtprotz Kontaktlinsen",
+			"description": ""
+		},
+		"Urban Flash Footwear": {
+			"name": "Stadtprotz Fuß­be­kleidung",
+			"description": ""
+		},
+		"Urban Flash Glasses": {
+			"name": "Stadtprotz Brille",
+			"description": ""
+		},
+		"Urban Flash Hat": {
+			"name": "Stadtprotz Kopfbedeckung",
+			"description": ""
+		},
+		"Urban Flash Jacket": {
+			"name": "Stadtprotz Jacke",
+			"description": ""
+		},
+		"Urban Flash Jewelry": {
+			"name": "Stadtprotz Schmuck",
+			"description": ""
+		},
+		"Urban Flash Mirrorshades": {
+			"name": "Stadtprotz Verspiegelte Sonnenbrille",
+			"description": ""
+		},
+		"Urban Flash Top": {
+			"name": "Stadtprotz Oberbekleidung",
+			"description": ""
+		}
+	}
+}
