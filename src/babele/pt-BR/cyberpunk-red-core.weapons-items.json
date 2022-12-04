@@ -120,6 +120,18 @@
             "description": "<p>Um lançador de granadas de alto impacto. Você pode usar uma variedade de granadas com isso. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
             "name": "Lança-granadas (ruim)"
         },
+        "Heavy Melee": {
+            "description": "<p>Generic Heavy Melee Weapon</p>",
+            "name": "Heavy Melee"
+        },
+        "Heavy Melee (Excellent)": {
+            "description": "<p>Generic Excellent Quality Heavy Melee Weapon.<br />+1 to Attack.</p>",
+            "name": "Heavy Melee (Excellent)"
+        },
+        "Heavy Melee (Poor)": {
+            "description": "<p>Generic Poor Quality Heavy Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Heavy Melee (Poor)"
+        },
         "Heavy Pistol": {
             "description": "<p>Uma pistola pesada e ocultável.</p>",
             "name": "Pistola Pesada"
@@ -172,6 +184,18 @@
             "description": "<p>Um cilindro oco, normalmente feito de metal ou fibra de vidro. Pode ter transportado fluidos uma vez. Se você rolar 1 no Ataque (Falha Crítica), a arma falha de alguma forma e requer uma ação para ser usada novamente.</p>",
             "name": "Tubo de chumbo (ruim)"
         },
+        "Light Melee": {
+            "description": "<p>Generic Light Melee Weapon</p>",
+            "name": "Light Melee"
+        },
+        "Light Melee (Excellent)": {
+            "description": "<p>Generic Excellent Quality Light Melee Weapon.<br />+1 to Attack.</p>",
+            "name": "Light Melee (Excellent)"
+        },
+        "Light Melee (Poor)": {
+            "description": "<p>Generic Poor Quality Light Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Light Melee (Poor)"
+        },
         "Machete": {
             "description": "<p>Uma faca de lâmina longa com uma variedade de usos. Conhecido por ser o favorito de algumas gangues de Night City.</p>",
             "name": "Machete"
@@ -191,6 +215,18 @@
         "Martial Arts": {
             "description": "<p>Mãos de arremesso, ignora meia armadura.</p>",
             "name": "Artes marciais"
+        },
+        "Medium Melee": {
+            "description": "<p>Generic Medium Melee Weapon</p>",
+            "name": "Medium Melee"
+        },
+        "Medium Melee (Excellent)": {
+            "description": "<p>Generic Excellent Quality Medium Melee Weapon.<br />+1 to Attack.</p>",
+            "name": "Medium Melee (Excellent)"
+        },
+        "Medium Melee (Poor)": {
+            "description": "<p>Generic Poor Quality Medium Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Medium Melee (Poor)"
         },
         "Medium Pistol": {
             "description": "<p>Uma pistola ocultável de tamanho médio.</p>",
@@ -359,6 +395,18 @@
         "Vampyres": {
             "description": "<p>Arma cibernética. Você deve ter o cyberware apropriado instalado.</p>",
             "name": "Vampyres"
+        },
+        "Very Heavy Melee": {
+            "description": "<p>Generic Very Heavy Melee Weapon</p>",
+            "name": "Very Heavy Melee"
+        },
+        "Very Heavy Melee (Excellent)": {
+            "description": "<p>Generic Excellent Quality Very Heavy Melee Weapon.<br />+1 to Attack.</p>",
+            "name": "Very Heavy Melee (Excellent)"
+        },
+        "Very Heavy Melee (Poor)": {
+            "description": "<p>Generic Poor Quality Very Heavy Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Very Heavy Melee (Poor)"
         },
         "Very Heavy Pistol": {
             "description": "<p>Uma pistola muito pesada. Não pode ser escondido.</p>",

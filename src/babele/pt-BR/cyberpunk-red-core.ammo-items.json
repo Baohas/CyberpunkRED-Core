@@ -1,0 +1,217 @@
+{
+	"label": "Munição",
+	"entries": {
+		"Armor Piercing Arrow": {
+			"name": "Flecha Perfurante",
+			"description": "<p>Avaria em dobro armaduras.</p>"
+		},
+		"Armor Piercing Grenade": {
+			"name": "Granada Perfurante",
+			"description": "<p>Avaria em dobro armaduras.</p>"
+		},
+		"Armor Piercing Heavy Pistol": {
+			"name": "Munição Perfurante de Pistola Pesada",
+			"description": "<p>Avaria em dobro armaduras.</p>"
+		},
+		"Armor Piercing Medium Pistol": {
+			"name": "Munição Perfurante de Pistola Média",
+			"description": "<p>Avaria em dobro armaduras.</p>"
+		},
+		"Armor Piercing Rifle": {
+			"name": "Munição Perfurante de Rifle",
+			"description": "<p>Avaria em dobro armaduras.</p>"
+		},
+		"Armor Piercing Rocket": {
+			"name": "Foguete Perfurante",
+			"description": "<p>Avaria em dobro armaduras.</p>"
+		},
+		"Armor Piercing Shotgun Slug": {
+			"name": "Cartucho Perfurante",
+			"description": "<p>Avaria em dobro armaduras.</p>"
+		},
+		"Armor Piercing Very Heavy Pistol": {
+			"name": "Munição Perfurante de Pistola Muito Pesada",
+			"description": "<p>Avaria em dobro armaduras.</p>"
+		},
+		"Basic Arrow": {
+			"name": "Flecha",
+			"description": "<p>Munição básica, nada de especial.</p>"
+		},
+		"Basic Heavy Pistol": {
+			"name": "Munição de Pistola Pesada",
+			"description": "<p>Munição básica, nada de especial.</p>"
+		},
+		"Basic Medium Pistol": {
+			"name": "Munição de Pistola Média",
+			"description": "<p>Munição básica, nada de especial.</p>"
+		},
+		"Basic Rifle": {
+			"name": "Munição de Rifle",
+			"description": "<p>Munição básica, nada de especial.</p>"
+		},
+		"Basic Shotgun Shell": {
+			"name": "Balote",
+			"description": "<p>Munição básica, nada de especial.</p>"
+		},
+		"Basic Shotgun Slug": {
+			"name": "Cartucho",
+			"description": "<p>Munição básica, nada de especial.</p>"
+		},
+		"Basic Very Heavy Pistol": {
+			"name": "Munição de Pistola Muito Pesada",
+			"description": "<p>Munição básica, nada de especial.</p>"
+		},
+		"Battery Pack": {
+			"name": "Pacote de Bateria",
+			"description": "<p>Um pacote de bateria recarregável (1 hora), comumente usado em armas Exóticas. Contém 8 disparos e pode ser recarregado.&nbsp;</p>"
+		},
+		"Biotoxin Arrow": {
+			"name": "Flecha de Biotoxina",
+			"description": "<p>Sem danos imediatos. Faça um teste de Resistência à Tortura/Drogas de VD15, se falhar toma 3d6 de dano direto. Sem ablação.</p>"
+		},
+		"Biotoxin Grenade": {
+			"name": "Granada de Biotoxina",
+			"description": "<p>Sem danos imediatos. Faça um teste de Resistência à Tortura/Drogas de VD15, se falhar toma 3d6 de dano direto. Sem ablação.</p>"
+		},
+		"EMP Grenade": {
+			"name": "Granada de PEM",
+			"description": "<p>Role Cibertech DV15, se falhar, 2 cibernéticas ou eletrônicos (escolha do GM) param de funcionar por 1 minuto. Braços e armas ficam soltos e sofrem o mesmo efeito de \"Braço Desmembrado\", largando qualquer item na mão (Veja pg. 187).</p>"
+		},
+		"Expansive Arrow": {
+			"name": "Flecha Expansiva",
+			"description": "<p>Se rolar um ferimento \"Objeto Estranho\" (veja pg. 187), o alvo rola mais um Ferimento Crítico. O segundo ferimento não aplica o dano bônus.</p>"
+		},
+		"Expansive Heavy Pistol": {
+			"name": "Munição Expansiva de Pistola Pesada",
+			"description": "<p>Se rolar um ferimento \"Objeto Estranho\" (veja pg. 187), o alvo rola mais um Ferimento Crítico. O segundo ferimento não aplica o dano bônus.</p>"
+		},
+		"Expansive Medium Pistol": {
+			"name": "Munição Expansiva de Pistola Média",
+			"description": "<p>Se rolar um ferimento \"Objeto Estranho\" (veja pg. 187), o alvo rola mais um Ferimento Crítico. O segundo ferimento não aplica o dano bônus.</p>"
+		},
+		"Expansive Rifle": {
+			"name": "Munição Expansiva de Rifle",
+			"description": "<p>Se rolar um ferimento \"Objeto Estranho\" (veja pg. 187), o alvo rola mais um Ferimento Crítico. O segundo ferimento não aplica o dano bônus.</p>"
+		},
+		"Expansive Shotgun Slug": {
+			"name": "Cartucho Expansível",
+			"description": "<p>Se rolar um ferimento \"Objeto Estranho\" (veja pg. 187), o alvo rola mais um Ferimento Crítico. O segundo ferimento não aplica o dano bônus.</p>"
+		},
+		"Expansive Very Heavy Pistol": {
+			"name": "Munição Expansiva de Pistola Muito Pesada",
+			"description": "<p>Se rolar um ferimento \"Objeto Estranho\" (veja pg. 187), o alvo rola mais um Ferimento Crítico. O segundo ferimento não aplica o dano bônus.</p>"
+		},
+		"Flashbang Grenade": {
+			"name": "Granada de Flash",
+			"description": "<p>Não causa dano. Role Resistência à Tortura/Drogas de VD15, se falhar recebe o ferimento \"Olho danificado\" e \"Audição Danificada\" por 1 minuto (veja pg. 188, somente efeito e não dano).</p>"
+		},
+		"Incendiary Arrow": {
+			"name": "Flecha Incendiária",
+			"description": "<p>Se o alvo receber dano, o alvo pega fogo e a cada final de turno do alvo recebe 2 de dano direto no PV. É necessário gastar uma ação para extinguir as chamas. Não acumula.</p>"
+		},
+		"Incendiary Grenade": {
+			"name": "Granada Incendiária",
+			"description": "<p>Se o alvo receber dano, o alvo pega fogo e a cada final de turno do alvo recebe 2 de dano direto no PV. É necessário gastar uma ação para extinguir as chamas. Não acumula.</p>"
+		},
+		"Incendiary Heavy Pistol": {
+			"name": "Munição Incendiária de Pistola Pesada",
+			"description": "<p>Se o alvo receber dano, o alvo pega fogo e a cada final de turno do alvo recebe 2 de dano direto no PV. É necessário gastar uma ação para extinguir as chamas. Não acumula.</p>"
+		},
+		"Incendiary Medium Pistol": {
+			"name": "Munição Incendiária de Pistola Média",
+			"description": "<p>Se o alvo receber dano, o alvo pega fogo e a cada final de turno do alvo recebe 2 de dano direto no PV. É necessário gastar uma ação para extinguir as chamas. Não acumula.</p>"
+		},
+		"Incendiary Rifle": {
+			"name": "Munição Incendiária de Rifle",
+			"description": "<p>Se o alvo receber dano, o alvo pega fogo e a cada final de turno do alvo recebe 2 de dano direto no PV. É necessário gastar uma ação para extinguir as chamas. Não acumula.</p>"
+		},
+		"Incendiary Shotgun Shell": {
+			"name": "Balote Incendiário",
+			"description": "<p>Se o alvo receber dano, o alvo pega fogo e a cada final de turno do alvo recebe 2 de dano direto no PV. É necessário gastar uma ação para extinguir as chamas. Não acumula.</p>"
+		},
+		"Incendiary Shotgun Slug": {
+			"name": "Cartucho Incendiário",
+			"description": "<p>Se o alvo receber dano, o alvo pega fogo e a cada final de turno do alvo recebe 2 de dano direto no PV. É necessário gastar uma ação para extinguir as chamas. Não acumula.</p>"
+		},
+		"Incendiary Very Heavy Pistol": {
+			"name": "Munição Incendiária de Pistola Muito Pesada",
+			"description": "<p>Se o alvo receber dano, o alvo pega fogo e a cada final de turno do alvo recebe 2 de dano direto no PV. É necessário gastar uma ação para extinguir as chamas. Não acumula.</p>"
+		},
+		"Poison Arrow": {
+			"name": "Flecha Venenosa",
+			"description": "<p>Sem danos imediatos. Faça um teste de Resistência à Tortura/Drogas de VD13, se falhar toma 3d6 de dano direto. Sem ablação.</p>"
+		},
+		"Poison Grenade": {
+			"name": "Granada de Veneno",
+			"description": "<p>Sem danos imediatos. Faça um teste de Resistência à Tortura/Drogas de VD13, se falhar toma 3d6 de dano direto. Sem ablação.</p>"
+		},
+		"Rubber Arrow": {
+			"name": "Flecha de Borracha",
+			"description": "<p>Não causa ferimento crítico e nem avarias. Deixa o alvo com no mínimo 1 VP. Conta como munição básica em armas exóticas.</p>"
+		},
+		"Rubber Heavy Pistol": {
+			"name": "Munição de Borracha de Pistola Pesada",
+			"description": "<p>Não causa ferimento crítico e nem avarias. Deixa o alvo com no mínimo 1 VP. Conta como munição básica em armas exóticas.</p>"
+		},
+		"Rubber Medium Pistol": {
+			"name": "Munição de Borracha de Pistola Média",
+			"description": "<p>Não causa ferimento crítico e nem avarias. Deixa o alvo com no mínimo 1 VP. Conta como munição básica em armas exóticas.</p>"
+		},
+		"Rubber Rifle": {
+			"name": "Munição de Borracha de Rifle",
+			"description": "<p>Não causa ferimento crítico e nem avarias. Deixa o alvo com no mínimo 1 VP. Conta como munição básica em armas exóticas.</p>"
+		},
+		"Rubber Shotgun Slug": {
+			"name": "Cartucho de Borracha",
+			"description": "<p>Não causa ferimento crítico e nem avarias. Deixa o alvo com no mínimo 1 VP. Conta como munição básica em armas exóticas.</p>"
+		},
+		"Rubber Very Heavy Pistol": {
+			"name": "Munição de Borracha de Pistola Muito Pesada",
+			"description": "<p>Não causa ferimento crítico e nem avarias. Deixa o alvo com no mínimo 1 VP. Conta como munição básica em armas exóticas.</p>"
+		},
+		"Sleep Arrow": {
+			"name": "Flecha de Sono",
+			"description": "<p>Não causa dano. Role Resistência à Tortura/Drogas VD13, se falhar, você está Deitado (pg. 169) e inconsciente por 1 minuto. Pode ser acordado por dano ou como uma ação de outra pessoa.</p>"
+		},
+		"Sleep Grenade": {
+			"name": "Granada de Sono",
+			"description": "<p>Não causa dano. Role Resistência à Tortura/Drogas VD13, se falhar, você está Deitado (pg. 169) e inconsciente por 1 minuto. Pode ser acordado por dano ou como uma ação de outra pessoa.</p>"
+		},
+		"Smart Arrow": {
+			"name": "Flecha Inteligente",
+			"description": "<p>Requer Cibernética \"Mira de Rastreamento\", caso contrário, não disparará. Ao errar o ataque, se a diferença entre a rolagem e VD for igual ou menor a 4, role um segundo ataque com o mesmo VD contra 1d10+10 (não aplique nenhum outro bônus, exceto sorte). O alvo pode desviar do segundo ataque normalmente.</p>"
+		},
+		"Smart Heavy Pistol": {
+			"name": "Munição Inteligente de Pistola Pesada",
+			"description": "<p>Requer Cibernética \"Mira de Rastreamento\", caso contrário, não disparará. Ao errar o ataque, se a diferença entre a rolagem e VD for igual ou menor a 4, role um segundo ataque com o mesmo VD contra 1d10+10 (não aplique nenhum outro bônus, exceto sorte). O alvo pode desviar do segundo ataque normalmente.</p>"
+		},
+		"Smart Medium Pistol": {
+			"name": "Munição Inteligente de Pistola Média",
+			"description": "<p>Requer Cibernética \"Mira de Rastreamento\", caso contrário, não disparará. Ao errar o ataque, se a diferença entre a rolagem e VD for igual ou menor a 4, role um segundo ataque com o mesmo VD contra 1d10+10 (não aplique nenhum outro bônus, exceto sorte). O alvo pode desviar do segundo ataque normalmente.</p>"
+		},
+		"Smart Rifle": {
+			"name": "Munição Inteligente de Rifle",
+			"description": "<p>Requer Cibernética \"Mira de Rastreamento\", caso contrário, não disparará. Ao errar o ataque, se a diferença entre a rolagem e VD for igual ou menor a 4, role um segundo ataque com o mesmo VD contra 1d10+10 (não aplique nenhum outro bônus, exceto sorte). O alvo pode desviar do segundo ataque normalmente.</p>"
+		},
+		"Smart Rocket": {
+			"name": "Foguete Inteligente",
+			"description": "<p>Requer Cibernética \"Mira de Rastreamento\", caso contrário, não disparará. Ao errar o ataque, se a diferença entre a rolagem e VD for igual ou menor a 4, role um segundo ataque com o mesmo VD contra 1d10+10 (não aplique nenhum outro bônus, exceto sorte). O alvo pode desviar do segundo ataque normalmente.</p>"
+		},
+		"Smart Shotgun Slug": {
+			"name": "Cartucho Inteligente",
+			"description": "<p>Requer Cibernética \"Mira de Rastreamento\", caso contrário, não disparará. Ao errar o ataque, se a diferença entre a rolagem e VD for igual ou menor a 4, role um segundo ataque com o mesmo VD contra 1d10+10 (não aplique nenhum outro bônus, exceto sorte). O alvo pode desviar do segundo ataque normalmente.</p>"
+		},
+		"Smart Very Heavy Pistol": {
+			"name": "Munição Inteligente de Pistola Muito Pesada",
+			"description": "<p>Requer Cibernética \"Mira de Rastreamento\", caso contrário, não disparará. Ao errar o ataque, se a diferença entre a rolagem e VD for igual ou menor a 4, role um segundo ataque com o mesmo VD contra 1d10+10 (não aplique nenhum outro bônus, exceto sorte). O alvo pode desviar do segundo ataque normalmente.</p>"
+		},
+		"Smoke Grenade": {
+			"name": "Granada de Fumaça",
+			"description": "<p>Não causa dano. Enche de fumaça uma área de 10x10 (metros/jardas) por 1 minuto. -4 em todas as ações dentro da fumaça.</p>"
+		},
+		"Teargas Grenade": {
+			"name": "Granada de Lacrimogênio",
+			"description": "<p>Não causa dano. Para cada alvo com olhos de carne, role Resistência à Tortura/Drogas de VD13, se falhar recebe o ferimento \"Olho danificado\" por 1 minuto (veja pg. 188, somente efeito e não dano).</p>"
+		}
+	}
+}

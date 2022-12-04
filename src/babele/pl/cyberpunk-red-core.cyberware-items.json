@@ -189,6 +189,14 @@
 			"name": "Biologiczna noga",
 			"description": "<p>Zwykła noga. Może obsługiwać dodatki takie jak standardowa noga lub bronie takie jak Stopa-szpon.</p>"
 		},
+		"Medical Grade CyberArm": {
+			"name": "Medical Grade CyberArm",
+			"description": "<p>A medical grade cyberarm. Does not allow options to be installed.</p>"
+		},
+		"Medical Grade CyberLeg": {
+			"name": "Medical Grade CyberLeg",
+			"description": "<p>A medical grade cyberleg. Does not allow options to be installed.</p>"
+		},
 		"Medscanner": {
 			"name": "Skaner medyczny",
 			"description": "<p>Wbudowany medskaner pozwalający na szybką ocenę ran. Zapewnia +2 do testów Pierwszej pomocy i Ratownictwa medycznego.</p>"
@@ -210,8 +218,8 @@
 			"description": "<p>Można prać w pralce. 60 stopni. Nie używać detergentów. Nie używać wybielacza.</p>"
 		},
 		"Mr. Studd Sexual Implant": {
-			"name": "Mr. Drąg implant seksualny",
-			"description": "<p>Ten konar zawsze płonie.</p>"
+			"name": "Mr. Studd Sexual Implant",
+			"description": "<p>Ready when you are.</p>"
 		},
 		"MultiOptic Mount": {
 			"name": "Stelaż multioptyki",

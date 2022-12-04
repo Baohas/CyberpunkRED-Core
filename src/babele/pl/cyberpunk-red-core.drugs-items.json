@@ -1,0 +1,45 @@
+{
+	"label": "Drugs",
+	"entries": {
+		"Antibiotic": {
+			"name": "Antibiotic",
+			"description": "<p>If a target has started the natural healing process injecting them with Antibiotic will cause them to heal an additional 2 Hit Points per day for a week. This effect does not stack.</p>"
+		},
+		"Black Lace": {
+			"name": "Czarna szpryca",
+			"description": "<p>Dose lasts 24 hours.<br />The user rolls 2d6 Humanity Loss and loses this temporarily while affected. The user ignores Seriously Wounded wound states for the duration.<br /><br />Secondary DV:17.<br />When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the secondary effect as noted in the core rule book.</p>"
+		},
+		"Blue Glass": {
+			"name": "Błękitne szkło",
+			"description": "<p>Dose lasts 4 hours.<br />The GM may occasionally tell the user that they are seeing swirls of colours. When this happens the user loses their action on a single turn.<br /><br />Secondary DV: 15.<br />When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the secondary effect as noted in the core rule book. </p>"
+		},
+		"Boost": {
+			"name": "Dopalacz",
+			"description": "<p>Dose lasts 24 hours.<br />The user has increased INT by 2 points for the duration.<br /><br />Secondary DV: 17.<br />When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the secondary effect as noted in the core rule book. </p>"
+		},
+		"Rapidetox": {
+			"name": "Rapidetox",
+			"description": "<p>Injecting a target with Rapidetox will eliminate the effects of any drugs, poisons, or intoxicants they are currently affected by.</p>"
+		},
+		"Smash": {
+			"name": "Grzmot",
+			"description": "<p>Dose lasts 4 hours.<br />The user feels happy and satisfied, receiving a temporary modifier of +2 to: Dance/Contortionist/Conversation/Human Perception/Persuasion/Acting.<br /><br />Secondary DV: 15.<br />When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the secondary effect as noted in the core rule book. </p>"
+		},
+		"Speedheal": {
+			"name": "Speedheal",
+			"description": "<p>Injecting a target with Speedheal immediately causes them to heal HP equal to their BODY plus their WILL. This effect does not work on Mortally Wounded targets, and can only be used on a target once per day.</p>"
+		},
+		"Stim": {
+			"name": "Stim",
+			"description": "<p>Injecting a target with Stim causes them to ignore all penalties from being Seriously Wounded for one hour. It can only be used on a target once per day.</p>"
+		},
+		"Surge": {
+			"name": "Surge",
+			"description": "<p>Injecting a target with Surge causes them to be immune to sleep deprivation for 24 hours. It can only be used on a target once per week.</p>"
+		},
+		"Synthcoke": {
+			"name": "Syntkoka",
+			"description": "<p>Dose lasts 4 hours.<br />The user has increased REF by 1 point for the duration. The user feels paranoid occasionally.<br /><br />Secondary DV: 15.<br />When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the secondary effect as noted in the core rule book.</p>"
+		}
+	}
+}

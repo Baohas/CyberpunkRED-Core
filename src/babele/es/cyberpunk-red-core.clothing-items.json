@@ -1,0 +1,365 @@
+{
+	"label": "Vestimenta",
+	"entries": {
+		"Asia Pop Bottoms": {
+			"name": "Pantalones Asia Pop",
+			"description": "Pantalones de Asia Pop"
+		},
+		"Asia Pop Contact Lenses": {
+			"name": "Lentes de contacto de Asia Pop",
+			"description": "Lentes de Contacto de Asia Pop"
+		},
+		"Asia Pop Footwear": {
+			"name": "Calzado de Asia Pop",
+			"description": "Calzado de Asia Pop"
+		},
+		"Asia Pop Glasses": {
+			"name": "Gafas de Asia Pop",
+			"description": "Gafas de Asia Pop"
+		},
+		"Asia Pop Hat": {
+			"name": "Sombrero de Asia Pop",
+			"description": "Sombrero de Asia Pop"
+		},
+		"Asia Pop Jacket": {
+			"name": "Chaqueta de Asia Pop",
+			"description": "Chaqueta de Asia Pop"
+		},
+		"Asia Pop Jewelry": {
+			"name": "Joyería de Asia Pop",
+			"description": "Joyería de Asia Pop"
+		},
+		"Asia Pop Mirrorshades": {
+			"name": "Lentes Espejados de Asia Pop",
+			"description": null
+		},
+		"Asia Pop Top": {
+			"name": "Remera de Asia Pop",
+			"description": "Remera de Asia Pop"
+		},
+		"Bag Lady Chic Bottoms": {
+			"name": "Pantalones de Bag Lady Chic",
+			"description": "Pantalones de Bag Lady Chic"
+		},
+		"Bag Lady Chic Contact Lenses": {
+			"name": "Lentes de Contacto de Bag Lady Chic",
+			"description": "Lentes de Contacto de Bag Lady Chic"
+		},
+		"Bag Lady Chic Footwear": {
+			"name": "Calzado de Bag Lady Chic",
+			"description": "Calzado de Bag Lady Chic"
+		},
+		"Bag Lady Chic Glasses": {
+			"name": "Gafas de Bag Lady Chic",
+			"description": null
+		},
+		"Bag Lady Chic Hat": {
+			"name": "Sombrero de Bag Lady Chic",
+			"description": "Sombrero de Bag Lady Chic"
+		},
+		"Bag Lady Chic Jacket": {
+			"name": "Chaqueta de Bag Lady Chic",
+			"description": "Chaqueta de Bag Lady Chic"
+		},
+		"Bag Lady Chic Jewelry": {
+			"name": "Joyeria de Bag Lady Chic",
+			"description": "Joyería de Bag Lady Chic"
+		},
+		"Bag Lady Chic Mirrorshades": {
+			"name": "Lentes Espejados de Bag Lady Chic",
+			"description": "Lentes Espejadas de Bag Lady Chic"
+		},
+		"Bag Lady Chic Top": {
+			"name": "Remera de Bag Lady Chic",
+			"description": "Remera de Bag Lady Chic"
+		},
+		"Bohemian Bottoms": {
+			"name": "Pantalones de Bohemios",
+			"description": "Pantalones de Bohemio"
+		},
+		"Bohemian Contact Lenses": {
+			"name": "Lentes de Contacto de Bohemios",
+			"description": "Lentes de Contacto de Bohemio"
+		},
+		"Bohemian Footwear": {
+			"name": "Calzado de Bohemios",
+			"description": "Calzado de Bohemio"
+		},
+		"Bohemian Glasses": {
+			"name": "Gafas de Bohemios",
+			"description": "Gafas de Bohemio"
+		},
+		"Bohemian Hat": {
+			"name": "Sombrero de Bohemios",
+			"description": "Sombrero de Bohemio"
+		},
+		"Bohemian Jacket": {
+			"name": "Chaqueta de Bohemios",
+			"description": "Chaqueta de Bohemio"
+		},
+		"Bohemian Jewelry": {
+			"name": "Joyería de Bohemios",
+			"description": "Joyería de Bohemio"
+		},
+		"Bohemian Mirrorshades": {
+			"name": "Lentes Espejados de Bohemios",
+			"description": "Lentes Espejadas de Bohemio"
+		},
+		"Bohemian Top": {
+			"name": "Remera de Bohemios",
+			"description": "Remera de Bohemio"
+		},
+		"Businesswear Bottoms": {
+			"name": "Pantalones de Vestir de Negocios",
+			"description": "Pantalones de Vestir de Negocios"
+		},
+		"Businesswear Contact Lenses": {
+			"name": "Lentes de Contacto de Vestir de Negocios",
+			"description": "Lentes de Contacto de Vestir de Negocios"
+		},
+		"Businesswear Footwear": {
+			"name": "Calzado de Vestir de Negocios",
+			"description": "Calzado de Vestir de Negocios"
+		},
+		"Businesswear Glasses": {
+			"name": "Gafas de Vestir de Negocios",
+			"description": "Gafas de Vestir de Negocios"
+		},
+		"Businesswear Hat": {
+			"name": "Sombrero de Vestir de Negocios",
+			"description": "Sombrero de Vestir de Negocios"
+		},
+		"Businesswear Jacket": {
+			"name": "Chaqueta de Vestir de Negocios",
+			"description": "Chaqueta de Vestir de Negocios"
+		},
+		"Businesswear Jewelry": {
+			"name": "Joyería de Vestir de Negocios",
+			"description": "Joyería de Vestir de Negocios"
+		},
+		"Businesswear Mirrorshades": {
+			"name": "Lentes Espejadas de Vestir de Negocios",
+			"description": "Lentes Espejados de Vestir de Negocios"
+		},
+		"Businesswear Top": {
+			"name": "Camisa de Vestir de Negocios",
+			"description": "Camisa de Vestir de Negocios"
+		},
+		"Gang Colors Bottoms": {
+			"name": "Pantalones de Pandilleros",
+			"description": "Pantalones de Pandillero"
+		},
+		"Gang Colors Contact Lenses": {
+			"name": "Lentes de Contacto de Pandilleros",
+			"description": "Lentes de Contacto de Pandillero"
+		},
+		"Gang Colors Footwear": {
+			"name": "Calzado de Pandilleros",
+			"description": "Calzado de Pandillero"
+		},
+		"Gang Colors Glasses": {
+			"name": "Gafas de Pandilleros",
+			"description": "Gafas de Pandillero"
+		},
+		"Gang Colors Hat": {
+			"name": "Sombrero de Pandilleros",
+			"description": "Sombrero de Pandillero"
+		},
+		"Gang Colors Jacket": {
+			"name": "Chaqueta de Pandilleros",
+			"description": "Chaqueta de Pandillero"
+		},
+		"Gang Colors Jewelry": {
+			"name": "Joyería de Pandilleros",
+			"description": "Joyería de Pandillero"
+		},
+		"Gang Colors Mirrorshades": {
+			"name": "Lentes Espejadas de Pandilleros",
+			"description": "Lentes Espejadas de Pandillero"
+		},
+		"Gang Colors Top": {
+			"name": "Remera de Pandilleros",
+			"description": "Remera de Pandillero"
+		},
+		"Generic Chic Bottoms": {
+			"name": "Pantalones Chic Genéricos",
+			"description": "Pantalones Chic Genéricos"
+		},
+		"Generic Chic Contact Lenses": {
+			"name": "Lentes de Contacto Chic Genéricos",
+			"description": "Lentes de Contacto de Chic Genéricos"
+		},
+		"Generic Chic Footwear": {
+			"name": "Calzado Chic Genérico",
+			"description": "Calzado Chic Genéricos"
+		},
+		"Generic Chic Glasses": {
+			"name": "Gafas Chic Genéricas",
+			"description": "Gafas Chic Genéricas"
+		},
+		"Generic Chic Hat": {
+			"name": "Sombrero Chic Genérico",
+			"description": "Sombrero Chic Genérico"
+		},
+		"Generic Chic Jacket": {
+			"name": "Chaqueta Chic Genérica",
+			"description": "Chaqueta Chic Genérica"
+		},
+		"Generic Chic Jewelry": {
+			"name": "Joyería Chic Genérica",
+			"description": "Joyería Chic Genérica"
+		},
+		"Generic Chic Mirrorshades": {
+			"name": "Lentes Espejadas Chic Genéricas",
+			"description": "Lentes Espejadas Chic Genéricas"
+		},
+		"Generic Chic Top": {
+			"name": "Remera Chic Genérica",
+			"description": "Sombrero Chic Genérico"
+		},
+		"High Fashion Bottoms": {
+			"name": "Pantalones de Última Moda",
+			"description": "Pantalones de Última Moda"
+		},
+		"High Fashion Contact Lenses": {
+			"name": "Lentes de Contacto de Última Moda",
+			"description": "Lentes de Contacto de Última Moda"
+		},
+		"High Fashion Footwear": {
+			"name": "Calzado de Última Moda",
+			"description": "Calzado de Última Moda"
+		},
+		"High Fashion Glasses": {
+			"name": "Gafas de Última Moda",
+			"description": "Gafas de Última Moda"
+		},
+		"High Fashion Hat": {
+			"name": "Sombrero de Última Moda",
+			"description": "Sombrero de Última Moda"
+		},
+		"High Fashion Jacket": {
+			"name": "Chaqueta de Última Moda",
+			"description": "Chaqueta de Última Moda"
+		},
+		"High Fashion Jewelry": {
+			"name": "Joyería de Última Moda",
+			"description": "Joyería de Última Moda"
+		},
+		"High Fashion Mirrorshades": {
+			"name": "Lentes Espejadas de Última Moda",
+			"description": "Lentes Espejadas de Última Moda"
+		},
+		"High Fashion Top": {
+			"name": "Remera de Última Moda",
+			"description": "Remera de Última Moda"
+		},
+		"Leisurewear Bottoms": {
+			"name": "Pantalones Informales",
+			"description": "Pantalones Informales"
+		},
+		"Leisurewear Contact Lenses": {
+			"name": "Lentes de Contacto Informales",
+			"description": "Lentes de Contacto Informales"
+		},
+		"Leisurewear Footwear": {
+			"name": "Calzado Informal",
+			"description": "Calzado Informal"
+		},
+		"Leisurewear Glasses": {
+			"name": "Gafas Informales",
+			"description": "Gafas Informales"
+		},
+		"Leisurewear Hat": {
+			"name": "Sombrero Informal",
+			"description": "Sombrero Informal"
+		},
+		"Leisurewear Jacket": {
+			"name": "Chaqueta Informal",
+			"description": "Chaqueta Informal"
+		},
+		"Leisurewear Jewelry": {
+			"name": "Joyería Informal",
+			"description": "Joyería Informal"
+		},
+		"Leisurewear Mirrorshades": {
+			"name": "Lentes Espejadas Informales",
+			"description": "Lentes Espejadas Informales"
+		},
+		"Leisurewear Top": {
+			"name": "Remera Informal",
+			"description": "Remera Informal"
+		},
+		"Nomad Leathers Bottoms": {
+			"name": "Pantalones de Cuero Nómadas",
+			"description": "Pantalones de Cuero Nómadas"
+		},
+		"Nomad Leathers Contact Lenses": {
+			"name": "Lentes de Contacto Nómades",
+			"description": "Lentes de Contacto Nómadas"
+		},
+		"Nomad Leathers Footwear": {
+			"name": "Calzado de Cuero Nómadas",
+			"description": "Calzado de Cuero Nómadas"
+		},
+		"Nomad Leathers Glasses": {
+			"name": "Gafas Nómadas",
+			"description": "Gafas Nómadas"
+		},
+		"Nomad Leathers Hat": {
+			"name": "Sombrero de Cuero Nómadas",
+			"description": "Sombrero de Cuero Nómadas"
+		},
+		"Nomad Leathers Jacket": {
+			"name": "Chaqueta de Cuero Nómada",
+			"description": "Chaqueta de Cuero Nómada"
+		},
+		"Nomad Leathers Jewelry": {
+			"name": "Joyería de Nómadas",
+			"description": "Joyería Nómada"
+		},
+		"Nomad Leathers Mirrorshades": {
+			"name": "Lentes Espejadas Nómades",
+			"description": "Lentes Espejadas Nómadas"
+		},
+		"Nomad Leathers Top": {
+			"name": "Remera de Nómades",
+			"description": "Remera Nómada"
+		},
+		"Urban Flash Bottoms": {
+			"name": "Pantalones de Flash Urbano",
+			"description": "Pantalones de Flash Urbano"
+		},
+		"Urban Flash Contact Lenses": {
+			"name": "Lentes de Contacto de Flash Urbano",
+			"description": "Lentes de Contacto de Flash Urbano"
+		},
+		"Urban Flash Footwear": {
+			"name": "Calzado de Flash Urbano",
+			"description": "Calzado de Flash Urbano"
+		},
+		"Urban Flash Glasses": {
+			"name": "Gafas de Flash Urbano",
+			"description": "Gafas de Flash Urbano"
+		},
+		"Urban Flash Hat": {
+			"name": "Sombrero de Flash Urbano",
+			"description": "Sombrero de Flash Urbano"
+		},
+		"Urban Flash Jacket": {
+			"name": "Chaqueta de Flash Urbano",
+			"description": "Chaqueta de Flash Urbano"
+		},
+		"Urban Flash Jewelry": {
+			"name": "Joyería de Flash Urbano",
+			"description": "Joyería de Flash Urbano"
+		},
+		"Urban Flash Mirrorshades": {
+			"name": "Lentes Espejadas de Flash Urbano",
+			"description": "Lentes Espejadas de Flash Urbano"
+		},
+		"Urban Flash Top": {
+			"name": "Remeras de Flash Urbano",
+			"description": "Remera de Flash Urbano"
+		}
+	}
+}

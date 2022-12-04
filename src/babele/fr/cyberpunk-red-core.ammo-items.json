@@ -1,0 +1,217 @@
+{
+	"label": "Munitions",
+	"entries": {
+		"Armor Piercing Arrow": {
+			"name": "Flèche perforante",
+			"description": "<p>Quand vous utilisez ces munitions, chaque fois que vous perforez une protection, vous la perforez de 2 au lieu de 1</p>"
+		},
+		"Armor Piercing Grenade": {
+			"name": "Grenade perforante",
+			"description": "<p>Quand vous utilisez ces munitions, chaque fois que vous perforez une protection, vous la perforez de 2 au lieu de 1</p>"
+		},
+		"Armor Piercing Heavy Pistol": {
+			"name": "Pistolet lourd perforant",
+			"description": "<p>Quand vous utilisez ces munitions, chaque fois que vous perforez une protection, vous la perforez de 2 au lieu de 1</p>"
+		},
+		"Armor Piercing Medium Pistol": {
+			"name": "Pistolet moyen perforant",
+			"description": "<p>Quand vous utilisez ces munitions, chaque fois que vous perforez une protection, vous la perforez de 2 au lieu de 1</p>"
+		},
+		"Armor Piercing Rifle": {
+			"name": "Fusil d'assaut perforant",
+			"description": "<p>Quand vous utilisez ces munitions, chaque fois que vous perforez une protection, vous la perforez de 2 au lieu de 1</p>"
+		},
+		"Armor Piercing Rocket": {
+			"name": "Roquette perforante",
+			"description": "<p>Quand vous utilisez ces munitions, chaque fois que vous perforez une protection, vous la perforez de 2 au lieu de 1</p>"
+		},
+		"Armor Piercing Shotgun Slug": {
+			"name": "Slug de fusil à pompe perforant",
+			"description": "<p>Quand vous utilisez ces munitions, chaque fois que vous perforez une protection, vous la perforez de 2 au lieu de 1</p>"
+		},
+		"Armor Piercing Very Heavy Pistol": {
+			"name": "Pistolet très lourd perforant",
+			"description": "<p>Quand vous utilisez ces munitions, chaque fois que vous perforez une protection, vous la perforez de 2 au lieu de 1</p>"
+		},
+		"Basic Arrow": {
+			"name": "Flèche standard",
+			"description": "<p>Munition standard, rien de spécial.</p>"
+		},
+		"Basic Heavy Pistol": {
+			"name": "Pistolet lourd standard",
+			"description": "<p>Munition standard, rien de spécial.</p>"
+		},
+		"Basic Medium Pistol": {
+			"name": "Pistolet moyen standard",
+			"description": "<p>Munition standard, rien de spécial.</p>"
+		},
+		"Basic Rifle": {
+			"name": "Fusil d'assaut standard",
+			"description": "<p>Munition standard, rien de spécial.</p>"
+		},
+		"Basic Shotgun Shell": {
+			"name": "Chevrotine standard pour fusil à pompe",
+			"description": "<p>Munition standard, rien de spécial.</p>"
+		},
+		"Basic Shotgun Slug": {
+			"name": "Slug de fusil à pompe standard",
+			"description": "<p>Munition standard, rien de spécial.</p>"
+		},
+		"Basic Very Heavy Pistol": {
+			"name": "Pistolet très lourd standard",
+			"description": "<p>Munition standard, rien de spécial.</p>"
+		},
+		"Battery Pack": {
+			"name": "Batterie",
+			"description": "<p>Batterie rechargeable (1 heure), communément utilisé avec des armes exotiques. De quoi effectuer 8 tirs.</p>"
+		},
+		"Biotoxin Arrow": {
+			"name": "Flèche à biotoxine",
+			"description": "<p>Quand vous utilisez ces munitions, votre attaque n'inflige aucun dégât. Tout être de chair touché par votre attaque doit à la place effectuer un jet de Résistance à la torture/aux drogues contre SD 15. Quiconque échoue subit 3d6 points de dégâts qui s'appliquent directement à ses points de santé. L'armure de la cible n'est pas perforée.</p>"
+		},
+		"Biotoxin Grenade": {
+			"name": "Grenade à biotoxine",
+			"description": "<p>Quand vous utilisez ces munitions, votre attaque n'inflige aucun dégât. Tout être de chair touché par votre attaque doit à la place effectuer un jet de Résistance à la torture/aux drogues contre SD 15. Quiconque échoue subit 3d6 points de dégâts qui s'appliquent directement à ses points de santé. L'armure de la cible n'est pas perforée.</p>"
+		},
+		"EMP Grenade": {
+			"name": "Grenade IEM",
+			"description": "<p>Votre attaque n'inflige aucun dégât. Quiconque est touché par votre attaque doit effectuer un jet de Cybertech contre SD 15. En cas d'échec, le MJ choisit 2 éléments de cybermateriel ou d'électronique que transporte la cible : ces appareils cessent de fonctionner pendant 1 minute. Les cybermembres désactivés de la sorte pendent, inanimés, comme des membres de chair inertes CF pg 187.</p>"
+		},
+		"Expansive Arrow": {
+			"name": "Flèche expansive",
+			"description": "<p>Si vous infligez la blessure critique \"plaie avec corps étranger\", la victime tire de nouveau sur la table des blessures critiques (CF PAGE 187).</p>"
+		},
+		"Expansive Heavy Pistol": {
+			"name": "Pistolet lourd expansif",
+			"description": "<p>Si vous infligez la blessure critique \"plaie avec corps étranger\", la victime tire de nouveau sur la table des blessures critiques (CF PAGE 187).</p>"
+		},
+		"Expansive Medium Pistol": {
+			"name": "Pistolet moyen expansif",
+			"description": "<p>Si vous infligez la blessure critique \"plaie avec corps étranger\", la victime tire de nouveau sur la table des blessures critiques (CF PAGE 187).</p>"
+		},
+		"Expansive Rifle": {
+			"name": "Fusil d'assaut expansif",
+			"description": "<p>Si vous infligez la blessure critique \"plaie avec corps étranger\", la victime tire de nouveau sur la table des blessures critiques (CF PAGE 187).</p>"
+		},
+		"Expansive Shotgun Slug": {
+			"name": "Slug de fusil à pompe expansif",
+			"description": "<p>Si vous infligez la blessure critique \"plaie avec corps étranger\", la victime tire de nouveau sur la table des blessures critiques (CF PAGE 187).</p>"
+		},
+		"Expansive Very Heavy Pistol": {
+			"name": "Pistolet très lourd expansif",
+			"description": "<p>Si vous infligez la blessure critique \"plaie avec corps étranger\", la victime tire de nouveau sur la table des blessures critiques (CF PAGE 187).</p>"
+		},
+		"Flashbang Grenade": {
+			"name": "Grenade étourdissante",
+			"description": "<p>N'inflige pas de dégâts. Quiconque est touché par votre attaque doit à la place faire effectuer un jet de Résistance à la torture/drogues contre un SD 15. En cas d'échec, la victime subit les blessures critiques \"Œil endommagé\" et \"Oreille endommagée\" pendant 1 minute (CF PAGE 188). Les dégâts bonus de ces blessures critiques ne sont toutefois pas appliqués.</p>"
+		},
+		"Incendiary Arrow": {
+			"name": "Flèche incendiaire",
+			"description": "<p>Quand vous touchez votre cible et que vous perforez son armure, la cible prend feu. Elle subit 2 points de dégâts directement appliqués aux PS dès qu'elle termine son tour (et tant que la cible n'a pas dépensé une action pour s'éteindre).</p>"
+		},
+		"Incendiary Grenade": {
+			"name": "Grenade incendiaire",
+			"description": "<p>Quand vous touchez votre cible et que vous perforez son armure, la cible prend feu. Elle subit 2 points de dégâts directement appliqués aux PS dès qu'elle termine son tour (et tant que la cible n'a pas dépensé une action pour s'éteindre).</p>"
+		},
+		"Incendiary Heavy Pistol": {
+			"name": "Pistolet lourd incendiaire",
+			"description": "<p>Quand vous touchez votre cible et que vous perforez son armure, la cible prend feu. Elle subit 2 points de dégâts directement appliqués aux PS dès qu'elle termine son tour (et tant que la cible n'a pas dépensé une action pour s'éteindre).</p>"
+		},
+		"Incendiary Medium Pistol": {
+			"name": "Pistolet moyen incendiaire",
+			"description": "<p>Quand vous touchez votre cible et que vous perforez son armure, la cible prend feu. Elle subit 2 points de dégâts directement appliqués aux PS dès qu'elle termine son tour (et tant que la cible n'a pas dépensé une action pour s'éteindre).</p>"
+		},
+		"Incendiary Rifle": {
+			"name": "Fusil d'assaut incendiaire",
+			"description": "<p>Quand vous touchez votre cible et que vous perforez son armure, la cible prend feu. Elle subit 2 points de dégâts directement appliqués aux PS dès qu'elle termine son tour (et tant que la cible n'a pas dépensé une action pour s'éteindre).</p>"
+		},
+		"Incendiary Shotgun Shell": {
+			"name": "Chevrotine incendiaire pour fusil à pompe",
+			"description": "<p>Si des dégâts sont infligés à la cible, ils sont mis à l'écoute. La cible subit 2 dégâts aux PV à la fin de son tour sauf si elle utilise une action pour éteindre les flammes. Ne se cumule pas. </p>"
+		},
+		"Incendiary Shotgun Slug": {
+			"name": "Slug incendiaire de fusil à pompe",
+			"description": "<p>Quand vous touchez votre cible et que vous perforez son armure, la cible prend feu. Elle subit 2 points de dégâts directement appliqués aux PS dès qu'elle termine son tour (et tant que la cible n'a pas dépensé une action pour s'éteindre).</p>"
+		},
+		"Incendiary Very Heavy Pistol": {
+			"name": "Pistolet très lourd incendiaire",
+			"description": "<p>Quand vous touchez votre cible et que vous perforez son armure, la cible prend feu. Elle subit 2 points de dégâts directement appliqués aux PS dès qu'elle termine son tour (et tant que la cible n'a pas dépensé une action pour s'éteindre).</p>"
+		},
+		"Poison Arrow": {
+			"name": "Flèche empoisonnée",
+			"description": "<p>L'attaque n'inflige aucun dégât. Quiconque est touché par l'attaque doit à la place effectuer un jet de Résistance à la torture/aux drogues contre un SD 13. En cas d'échec 2d6 points de dégâts aux PS. L'armure de la cible n'est pas perforée.</p>"
+		},
+		"Poison Grenade": {
+			"name": "Grenade empoisonnée",
+			"description": "<p>L'attaque n'inflige aucun dégât. Quiconque est touché par l'attaque doit à la place effectuer un jet de Résistance à la torture/aux drogues contre un SD 13. En cas d'échec 2d6 points de dégâts aux PS. L'armure de la cible n'est pas perforée.</p>"
+		},
+		"Rubber Arrow": {
+			"name": "Flèche en caoutchouc",
+			"description": "<p>Ne cause pas de blessure critique et ne peut perforer une armure. Les dégâts laissent la cible à au moins 1 PS. Elle compte comme une munition standard lorsqu'elle est utilisée avec une arme exotique</p>"
+		},
+		"Rubber Heavy Pistol": {
+			"name": "Pistolet lourd en caoutchouc",
+			"description": "<p>Ne cause pas de blessure critique et ne peut perforer une armure. Les dégâts laissent la cible à au moins 1 PS. Elle compte comme une munition standard lorsqu'elle est utilisée avec une arme exotique</p>"
+		},
+		"Rubber Medium Pistol": {
+			"name": "Pistolet moyen en caoutchouc",
+			"description": "<p>Ne cause pas de blessure critique et ne peut perforer une armure. Les dégâts laissent la cible à au moins 1 PS. Elle compte comme une munition standard lorsqu'elle est utilisée avec une arme exotique</p>"
+		},
+		"Rubber Rifle": {
+			"name": "Fusil d'assaut en caoutchouc",
+			"description": "<p>Ne cause pas de blessure critique et ne peut perforer une armure. Les dégâts laissent la cible à au moins 1 PS. Elle compte comme une munition standard lorsqu'elle est utilisée avec une arme exotique</p>"
+		},
+		"Rubber Shotgun Slug": {
+			"name": "Slug de fusil à pompe en caoutchouc",
+			"description": "<p>Ne cause pas de blessure critique et ne peut perforer une armure. Les dégâts laissent la cible à au moins 1 PS. Elle compte comme une munition standard lorsqu'elle est utilisée avec une arme exotique</p>"
+		},
+		"Rubber Very Heavy Pistol": {
+			"name": "Pistolet très lourd en caoutchouc",
+			"description": "<p>Ne cause pas de blessure critique et ne peut perforer une armure. Les dégâts laissent la cible à au moins 1 PS. Elle compte comme une munition standard lorsqu'elle est utilisée avec une arme exotique</p>"
+		},
+		"Sleep Arrow": {
+			"name": "Flèche soporifique",
+			"description": "<p>N'inflige pas de dégâts. Quiconque est touché par l'attaque doit à la place effectuer un jet de Résistance à la torture/aux drogues SD 13. En cas d'échec, la victime se trouve au sol (CF PAGE 169) et inconsciente pendant 1 minute. La cible peut être réveillée par des dégâts ou par une autre personne en utilisant une action pour la toucher/secouer.</p>"
+		},
+		"Sleep Grenade": {
+			"name": "Grenade soporifique",
+			"description": "<p>N'inflige pas de dégâts. Quiconque est touché par l'attaque doit à la place effectuer un jet de Résistance à la torture/aux drogues SD 13. En cas d'échec, la victime se trouve au sol (CF PAGE 169) et inconsciente pendant 1 minute. La cible peut être réveillée par des dégâts ou par une autre personne en utilisant une action pour la toucher/secouer.</p>"
+		},
+		"Smart Arrow": {
+			"name": "Flèche intelligente",
+			"description": "<p>Il faut disposer d'une lunette de visée pour utiliser des munitions intelligentes. Sinon l'arme ne tire pas. Si vous ratez votre tir de 4 points ou moins (en coup par coup), vous pouvez refaire votre jet tout en gardant le même SD une seconde fois, de plus vous ajoutez un modificateur de +10 à votre d10. La cible peut tenter d'esquiver cette attaque normalement. (Si elle en est capable)</p>"
+		},
+		"Smart Heavy Pistol": {
+			"name": "Pistolet lourd intelligent",
+			"description": "<p>Il faut disposer d'une lunette de visée pour utiliser des munitions intelligentes. Sinon l'arme ne tire pas. Si vous ratez votre tir de 4 points ou moins (en coup par coup), vous pouvez refaire votre jet tout en gardant le même SD une seconde fois, de plus vous ajoutez un modificateur de +10 à votre d10. La cible peut tenter d'esquiver cette attaque normalement. (Si elle en est capable)</p>"
+		},
+		"Smart Medium Pistol": {
+			"name": "Pistolet moyen intelligent",
+			"description": "<p>Il faut disposer d'une lunette de visée pour utiliser des munitions intelligentes. Sinon l'arme ne tire pas. Si vous ratez votre tir de 4 points ou moins (en coup par coup), vous pouvez refaire votre jet tout en gardant le même SD une seconde fois, de plus vous ajoutez un modificateur de +10 à votre d10. La cible peut tenter d'esquiver cette attaque normalement. (Si elle en est capable)</p>"
+		},
+		"Smart Rifle": {
+			"name": "Fusil d'assaut intelligent",
+			"description": "<p>Il faut disposer d'une lunette de visée pour utiliser des munitions intelligentes. Sinon l'arme ne tire pas. Si vous ratez votre tir de 4 points ou moins (en coup par coup), vous pouvez refaire votre jet tout en gardant le même SD une seconde fois, de plus vous ajoutez un modificateur de +10 à votre d10. La cible peut tenter d'esquiver cette attaque normalement. (Si elle en est capable)</p>"
+		},
+		"Smart Rocket": {
+			"name": "Roquette intelligente",
+			"description": "<p>Il faut disposer d'une lunette de visée pour utiliser des munitions intelligentes. Sinon l'arme ne tire pas. Si vous ratez votre tir de 4 points ou moins (en coup par coup), vous pouvez refaire votre jet tout en gardant le même SD une seconde fois, de plus vous ajoutez un modificateur de +10 à votre d10. La cible peut tenter d'esquiver cette attaque normalement. (Si elle en est capable)</p>"
+		},
+		"Smart Shotgun Slug": {
+			"name": "Slug de fusil à pompe intelligent",
+			"description": "<p>Il faut disposer d'une lunette de visée pour utiliser des munitions intelligentes. Sinon l'arme ne tire pas. Si vous ratez votre tir de 4 points ou moins (en coup par coup), vous pouvez refaire votre jet tout en gardant le même SD une seconde fois, de plus vous ajoutez un modificateur de +10 à votre d10. La cible peut tenter d'esquiver cette attaque normalement. (Si elle en est capable)</p>"
+		},
+		"Smart Very Heavy Pistol": {
+			"name": "Pistolet très lourd intelligente",
+			"description": "<p>Il faut disposer d'une lunette de visée pour utiliser des munitions intelligentes. Sinon l'arme ne tire pas. Si vous ratez votre tir de 4 points ou moins (en coup par coup), vous pouvez refaire votre jet tout en gardant le même SD une seconde fois, de plus vous ajoutez un modificateur de +10 à votre d10. La cible peut tenter d'esquiver cette attaque normalement. (Si elle en est capable)</p>"
+		},
+		"Smoke Grenade": {
+			"name": "Grenade fumigène",
+			"description": "<p>Lorsque vous utilisez ces munitions, vos attaques n'infligent pas de dégâts. Remplit de fumée une zone\nde 10 m par 10 m pendant une minute à l’impact. Le malus ordinaire pour effectuer une action dans une\nzone voilée par la fumée est de -4.</p>"
+		},
+		"Teargas Grenade": {
+			"name": "Grenade lacrymogène",
+			"description": "<p>N'inflige pas de dégâts. Quiconque est touché par l'attaque doit à la place faire un test de résistance à la torture/aux drogues contre un SD 13. En cas d'échec, la victime subit la blessure critique Oeil endommagé (CF PAGE 188) pendant 1 minute. Les dégâts bonus de ces blessures critiques ne sont toutefois pas appliqués.</p>"
+		}
+	}
+}
