@@ -1,3 +1,4 @@
+{{cprTrace "START DIALOG ROLLS CPR-ROLLCARD-MODIFIERS.HBS"}}
 <div class="text-normal text-bold text-nowrap" data-tooltip="
   {{#each mods as |mod|}}
     {{localize mod.source}} {{#if mod.key}}({{cprGetChangeNameByKey false mod.category mod.key}}){{/if}}: {{numberFormat mod.value sign=true}}
@@ -9,3 +10,5 @@
 ">
   {{localize "CPR.rolls.modifiers.modsTotal"}}: {{totalMods}}
 </div>
+{{cprTrace "END CPR-ROLLCARD-MODIFIERS.HBS"}}
+

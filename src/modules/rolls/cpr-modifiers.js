@@ -15,7 +15,7 @@ export default class CPRMod {
   constructor(effect, change) {
     LOGGER.trace("constructor | CPRMod | Called.");
     const index = effect.changes.indexOf(change); // Index of change on the effect.
-    // We do optional chaining on the next few because some items may not have flags.cyberpunk-red-core.situational or .cats defined.
+    // We do optional chaining on the next few because some items may not have flags.${game.system.id}.situational or .cats defined.
     this.category = effect.flags[game.system.id].changes.cats?.[index]; // Category of the change. This comes from Zyzyx's work.
     // New flag to determine if the mod is situational or permanent. If it's situational, should it be on by default?
     this.isSituational = effect.flags[game.system.id].changes.situational?.[index].isSituational;
