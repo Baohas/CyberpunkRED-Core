@@ -1,0 +1,133 @@
+{
+	"label": "Améliorations",
+	"entries": {
+		"Assault Rifle Drum Magazine": {
+			"name": "Chargeur à tambour de fusil d'assaut",
+			"description": ""
+		},
+		"Assault Rifle Extended Magazine": {
+			"name": "Extension de chargeur pour fusil d'assaut",
+			"description": ""
+		},
+		"Backup Drive": {
+			"name": "Disque dur de sauvegarde",
+			"description": "<p>Sauvegarde les programmes offensifs, défensifs ou de soutien qui sont détruits en les plaçant sur le disque dur juste avant qu'ils ne disparaissent. En dépensant une action réelle, un netrunner peut réinstaller tous les programmes sauvés.</p>"
+		},
+		"Bayonet": {
+			"name": "Baïonnette",
+			"description": ""
+		},
+		"DNA Lock": {
+			"name": "Verrou biométrique",
+			"description": "<p>Utilise la biométrie pour verrouiller la cyberconsole. Impossible d'accéder à une cyberconsole verrouillée sans sa clé biométrique, à moins de réussir un jet de Sécurité électronique SD 17. </p>"
+		},
+		"Grenade Launcher Drum Magazine": {
+			"name": "Chargeur à cylindre de lance-grenades",
+			"description": ""
+		},
+		"Grenade Launcher Extended Magazine": {
+			"name": "Extension de chargeur pour lance-grenades",
+			"description": ""
+		},
+		"Grenade Launcher Underbarrel": {
+			"name": "Lance-grenades sous canon",
+			"description": ""
+		},
+		"Hardened Circuitry": {
+			"name": "Circuits renforcés",
+			"description": "<p>Une Cyberconsole aux circuits renforcés ne peut pas être désactivé ou détruit par les effets d'IEM.</p>"
+		},
+		"Heavy Pistol Drum Magazine": {
+			"name": "Chargeur à cylindre de pistolet lourd",
+			"description": ""
+		},
+		"Heavy Pistol Extended Magazine": {
+			"name": "Extension de chargeur pour pistolet lourd",
+			"description": ""
+		},
+		"Heavy SMG Drum Magazine": {
+			"name": "Chargeur à cylindre de pistolet-mitrailleur lourd",
+			"description": ""
+		},
+		"Heavy SMG Extended Magazine": {
+			"name": "Extension de chargeur pour pistolet-mitrailleur lourd",
+			"description": ""
+		},
+		"Infrared Nightvision Scope": {
+			"name": "Lunette infrarouge de vision nocturne",
+			"description": "<p>Réduit à 0 le malus imposé au tir contre une cible dissimulée par l'obscurité, la fumée, le brouillard etc...</p>"
+		},
+		"Insulated Wiring": {
+			"name": "Câblage isolé",
+			"description": "<p>Une cyberconsole dotée d'un câblage isolé ne peut ni prendre feu ni mettre le feu eux vêtements de l'utilisateur à cause de l'effet d'un programme.</p>"
+		},
+		"KRASH Barrier": {
+			"name": "Barrière anti-KRASH",
+			"description": "<p>Une cyberconsole dotée d'une Barrière anti-KRASH est immunisé contre les effets qui forcent le Netrunner à se déconnecter, que ce soit de manière sûre ou non.</p>"
+		},
+		"Medium Pistol Drum Magazine": {
+			"name": "Chargeur à cylindre de pistolet moyen",
+			"description": ""
+		},
+		"Medium Pistol Extended Magazine": {
+			"name": "Extension de chargeur pour pistolet moyen",
+			"description": ""
+		},
+		"Range Upgrade": {
+			"name": "Extension de portée",
+			"description": "<p>Une cyberconsole dotée d'une extension de portée peut se connecter à un point d'accès situé à 8 m de distance ou moins.</p>"
+		},
+		"Rocket Launcher Drum Magazine": {
+			"name": "Chargeur à cylindre de lance-roquettes",
+			"description": ""
+		},
+		"Rocket Launcher Extended Magazine": {
+			"name": "Extension de chargeur pour lance-roquettes",
+			"description": ""
+		},
+		"SMG Drum Magazine": {
+			"name": "Chargeur à cylindre de pistolet-mitrailleur",
+			"description": ""
+		},
+		"SMG Extended Magazine": {
+			"name": "Extension de chargeur pour pistolet-mitrailleur",
+			"description": ""
+		},
+		"Shotgun Drum Magazine": {
+			"name": "Chargeur à cylindre de fusil à pompe",
+			"description": ""
+		},
+		"Shotgun Extended Magazine": {
+			"name": "Extension de chargeur pour fusil à pompe",
+			"description": ""
+		},
+		"Shotgun Underbarrel": {
+			"name": "Double canon à pompe",
+			"description": ""
+		},
+		"Smartgun Link": {
+			"name": "Liaison smartgun",
+			"description": "<p>Transforme l'arme en Smartgun (CF page 344).</p>"
+		},
+		"Sniper Rifle Drum Magazine": {
+			"name": "Chargeur à cylindre de fusil de précision",
+			"description": ""
+		},
+		"Sniper Rifle Extended Magazine": {
+			"name": "Extension de chargeur pour fusil de précision",
+			"description": ""
+		},
+		"Sniping Scope": {
+			"name": "Lunette de précision",
+			"description": "<p>Permet de voir les détails jusqu'à 800m. Lorsque vous attaquez une cible située à 51 m ou plus, vous pouvez ajouter +1 à votre jet. Ne s'ajoute pas aux bonus de téléoptique.</p>"
+		},
+		"Very Heavy Pistol Drum Magazine": {
+			"name": "Chargeur à cylindre de pistolet très lourd",
+			"description": ""
+		},
+		"Very Heavy Pistol Extended Magazine": {
+			"name": "Extension de chargeur pour pistolet très lourd",
+			"description": ""
+		}
+	}
+}

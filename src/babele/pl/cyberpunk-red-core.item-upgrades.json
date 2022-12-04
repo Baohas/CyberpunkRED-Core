@@ -1,0 +1,133 @@
+{
+	"label": "Ulepszenia",
+	"entries": {
+		"Assault Rifle Drum Magazine": {
+			"name": "Magazynek Bębnowy do Karabinu Szturmowego",
+			"description": ""
+		},
+		"Assault Rifle Extended Magazine": {
+			"name": "Wydłużony Magazynek do Karabinu Szturmowego",
+			"description": ""
+		},
+		"Backup Drive": {
+			"name": "Zapasowy dysk",
+			"description": "<p>Zapisuje programy nie będące Czarnym LODem kiedy zostają zniszczone. Programy te mogą zostać przeinstalowane przez netrunnera w ramach akcji w somie.&nbsp;</p>"
+		},
+		"Bayonet": {
+			"name": "Bagnet",
+			"description": ""
+		},
+		"DNA Lock": {
+			"name": "Zamek DNA",
+			"description": "<p>Używa biometryki do zabezpieczenia cyberdeka. Wymaga testu PT17 Elektronika i zabezpieczenia aby złamać zabezpieczenie.&nbsp;</p>"
+		},
+		"Grenade Launcher Drum Magazine": {
+			"name": "Magazynek Bębnowy do Granatnika",
+			"description": ""
+		},
+		"Grenade Launcher Extended Magazine": {
+			"name": "Wydłużony Magazynek do Granatnika",
+			"description": ""
+		},
+		"Grenade Launcher Underbarrel": {
+			"name": "Granatnik Podwieszany do Granatnika",
+			"description": ""
+		},
+		"Hardened Circuitry": {
+			"name": "Wzmocnione obwody",
+			"description": "<p>Cyberdek nie może zostać wyłączony ani zniszczony przez efekty EMP.&nbsp;</p>"
+		},
+		"Heavy Pistol Drum Magazine": {
+			"name": "Magazynek Bębnowy do Ciężkiego Pistoletu",
+			"description": ""
+		},
+		"Heavy Pistol Extended Magazine": {
+			"name": "Wydłużony Magazynek do Ciężkiego Pistoletu",
+			"description": ""
+		},
+		"Heavy SMG Drum Magazine": {
+			"name": "Magazynek Bębnowy do Ciężkiego Pistoletu Maszynowego",
+			"description": ""
+		},
+		"Heavy SMG Extended Magazine": {
+			"name": "Wydłużony Magazynek do Ciężkiego Pistoletu Maszynowego",
+			"description": ""
+		},
+		"Infrared Nightvision Scope": {
+			"name": "Celownik Noktowizyjny (Podczerwień)",
+			"description": "<p>Zmniejsza kary przeciwko celom w ciemności, dymie lub mgle do 0.</p>"
+		},
+		"Insulated Wiring": {
+			"name": "Izolowane obwody",
+			"description": "<p>Cyberdek oraz odzienie użytkownika nie mogą zająć się ogniem.&nbsp;</p>"
+		},
+		"KRASH Barrier": {
+			"name": "Bariera przeciwKRASHowa",
+			"description": "<p>Cyberdek jest niewrażliwy na efekty zmuszające netrunnera to wypięcia się (bezpiecznego jak i awaryjnego).</p>"
+		},
+		"Medium Pistol Drum Magazine": {
+			"name": "Magazynek Bębnowy do Średniego Pistoletu",
+			"description": ""
+		},
+		"Medium Pistol Extended Magazine": {
+			"name": "Wydłużony Magazynek do Średniego Pistoletu",
+			"description": ""
+		},
+		"Range Upgrade": {
+			"name": "Ulepszenie zasięgu",
+			"description": "<p>Cyberdeck może podpiąć się do punktów dostępu od 8m/jardów (zamiast 6m/jardów).</p>"
+		},
+		"Rocket Launcher Drum Magazine": {
+			"name": "Magazynek Bębnowy do Wyrzutni Rakiet",
+			"description": ""
+		},
+		"Rocket Launcher Extended Magazine": {
+			"name": "Wydłużony Magazynek do Wyrzutni Rakiet",
+			"description": ""
+		},
+		"SMG Drum Magazine": {
+			"name": "Magazynek Bębnowy do Pistoletu Maszynowego",
+			"description": ""
+		},
+		"SMG Extended Magazine": {
+			"name": "Wydłużony Magazynek do Pistoletu Maszynowego",
+			"description": ""
+		},
+		"Shotgun Drum Magazine": {
+			"name": "Magazynek Bębnowy do Strzelby",
+			"description": ""
+		},
+		"Shotgun Extended Magazine": {
+			"name": "Wydłużony Magazynek do Strzelby",
+			"description": ""
+		},
+		"Shotgun Underbarrel": {
+			"name": "Podwieszany Granatnik do Strzelby",
+			"description": ""
+		},
+		"Smartgun Link": {
+			"name": "Złącze Smartguna",
+			"description": "<p>Zmienia broń w \"Smarguna\". Zapoznaj się ze wszystkimi zasadami na stronie 344 przed użyciem.&nbsp;</p>"
+		},
+		"Sniper Rifle Drum Magazine": {
+			"name": "Magazynek Bębnowy do Karabinu Snajperskiego",
+			"description": ""
+		},
+		"Sniper Rifle Extended Magazine": {
+			"name": "Wydłużony Magazynek do Karabinu Snajperskiego",
+			"description": ""
+		},
+		"Sniping Scope": {
+			"name": "Snajperska luneta celownicza",
+			"description": "<p>Pozwala Ci widzieć detale do 800m/jardów. +1 do pojedynczych strzałów/strzałow z przycelowania w cele oddalone o więcej niż 51m/jardów.&nbsp;</p>"
+		},
+		"Very Heavy Pistol Drum Magazine": {
+			"name": "Magazynek Bębnowy do B. Ciężkiego Pistoletu",
+			"description": ""
+		},
+		"Very Heavy Pistol Extended Magazine": {
+			"name": "Wydłużony Magazynek do B. Ciężkiego Pistoletu",
+			"description": ""
+		}
+	}
+}

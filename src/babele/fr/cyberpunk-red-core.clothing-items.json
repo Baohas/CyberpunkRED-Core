@@ -1,0 +1,365 @@
+{
+	"label": "Vêtements",
+	"entries": {
+		"Asia Pop Bottoms": {
+			"name": "Bas de Pop asiatique",
+			"description": ""
+		},
+		"Asia Pop Contact Lenses": {
+			"name": "Lentilles de contact de Pop asiatique",
+			"description": ""
+		},
+		"Asia Pop Footwear": {
+			"name": "Chaussures de Pop asiatique",
+			"description": ""
+		},
+		"Asia Pop Glasses": {
+			"name": "Lunettes de Pop asiatique",
+			"description": ""
+		},
+		"Asia Pop Hat": {
+			"name": "Couvre-chef de Pop asiatique",
+			"description": ""
+		},
+		"Asia Pop Jacket": {
+			"name": "Veste de Pop asiatique",
+			"description": ""
+		},
+		"Asia Pop Jewelry": {
+			"name": "Bijoux de Pop asiatique",
+			"description": ""
+		},
+		"Asia Pop Mirrorshades": {
+			"name": "Verres mirroirs de Pop asiatique",
+			"description": null
+		},
+		"Asia Pop Top": {
+			"name": "Haut de Pop asiatique",
+			"description": ""
+		},
+		"Bag Lady Chic Bottoms": {
+			"name": "Bas de Vagabond",
+			"description": ""
+		},
+		"Bag Lady Chic Contact Lenses": {
+			"name": "Lentilles de contact de Vagabond",
+			"description": ""
+		},
+		"Bag Lady Chic Footwear": {
+			"name": "Chaussures de Vagabond",
+			"description": ""
+		},
+		"Bag Lady Chic Glasses": {
+			"name": "Lunettes de Vagabond",
+			"description": null
+		},
+		"Bag Lady Chic Hat": {
+			"name": "Couvre-chef de Vagabond",
+			"description": ""
+		},
+		"Bag Lady Chic Jacket": {
+			"name": "Veste de Vagabond",
+			"description": ""
+		},
+		"Bag Lady Chic Jewelry": {
+			"name": "Bijoux de Vagabond",
+			"description": ""
+		},
+		"Bag Lady Chic Mirrorshades": {
+			"name": "Verres miroirs de Vagabond",
+			"description": ""
+		},
+		"Bag Lady Chic Top": {
+			"name": "Haut de Vagabond",
+			"description": ""
+		},
+		"Bohemian Bottoms": {
+			"name": "Bas de Bohème",
+			"description": ""
+		},
+		"Bohemian Contact Lenses": {
+			"name": "Lentilles de contact de Bohème",
+			"description": ""
+		},
+		"Bohemian Footwear": {
+			"name": "Chaussures de Bohème",
+			"description": ""
+		},
+		"Bohemian Glasses": {
+			"name": "Lunettes de Bohème",
+			"description": ""
+		},
+		"Bohemian Hat": {
+			"name": "Couvre-chef de Bohème",
+			"description": ""
+		},
+		"Bohemian Jacket": {
+			"name": "Veste de Bohème",
+			"description": ""
+		},
+		"Bohemian Jewelry": {
+			"name": "Bijoux de Bohème",
+			"description": ""
+		},
+		"Bohemian Mirrorshades": {
+			"name": "Verres miroirs de Bohème",
+			"description": ""
+		},
+		"Bohemian Top": {
+			"name": "Haut de Bohème",
+			"description": ""
+		},
+		"Businesswear Bottoms": {
+			"name": "Bas de Cadre sup",
+			"description": ""
+		},
+		"Businesswear Contact Lenses": {
+			"name": "Lentilles de contact de Cadre sup",
+			"description": ""
+		},
+		"Businesswear Footwear": {
+			"name": "Chaussures de Cadre sup",
+			"description": ""
+		},
+		"Businesswear Glasses": {
+			"name": "Lunettes de Cadre sup",
+			"description": ""
+		},
+		"Businesswear Hat": {
+			"name": "Couvre-chef de Cadre sup",
+			"description": ""
+		},
+		"Businesswear Jacket": {
+			"name": "Veste de Cadre sup",
+			"description": ""
+		},
+		"Businesswear Jewelry": {
+			"name": "Bijoux de Cadre sup",
+			"description": ""
+		},
+		"Businesswear Mirrorshades": {
+			"name": "Verres miroirs de Cadre sup",
+			"description": ""
+		},
+		"Businesswear Top": {
+			"name": "Haut de Cadre sup",
+			"description": ""
+		},
+		"Gang Colors Bottoms": {
+			"name": "Bas avec Couleurs du gang",
+			"description": ""
+		},
+		"Gang Colors Contact Lenses": {
+			"name": "Lentilles de contact avec Couleurs du gang",
+			"description": ""
+		},
+		"Gang Colors Footwear": {
+			"name": "Chaussures avec Couleurs du gang",
+			"description": ""
+		},
+		"Gang Colors Glasses": {
+			"name": "Lunettes avec Couleurs du gang",
+			"description": ""
+		},
+		"Gang Colors Hat": {
+			"name": "Couvre-chef avec Couleurs du gang",
+			"description": ""
+		},
+		"Gang Colors Jacket": {
+			"name": "Veste avec Couleurs du gang",
+			"description": ""
+		},
+		"Gang Colors Jewelry": {
+			"name": "Bijoux avec Couleurs du gang",
+			"description": ""
+		},
+		"Gang Colors Mirrorshades": {
+			"name": "Verres mirroirs avec Couleurs du gang",
+			"description": ""
+		},
+		"Gang Colors Top": {
+			"name": "Haut avec Couleurs du gang",
+			"description": ""
+		},
+		"Generic Chic Bottoms": {
+			"name": "Bas Générique",
+			"description": ""
+		},
+		"Generic Chic Contact Lenses": {
+			"name": "Lentilles de contact Générique",
+			"description": ""
+		},
+		"Generic Chic Footwear": {
+			"name": "Chaussures Générique",
+			"description": ""
+		},
+		"Generic Chic Glasses": {
+			"name": "Lunettes Générique",
+			"description": ""
+		},
+		"Generic Chic Hat": {
+			"name": "Couvre-chef Générique",
+			"description": ""
+		},
+		"Generic Chic Jacket": {
+			"name": "Veste Générique",
+			"description": ""
+		},
+		"Generic Chic Jewelry": {
+			"name": "Bijoux Générique",
+			"description": ""
+		},
+		"Generic Chic Mirrorshades": {
+			"name": "Verres miroirs Générique",
+			"description": ""
+		},
+		"Generic Chic Top": {
+			"name": "Haut Générique",
+			"description": ""
+		},
+		"High Fashion Bottoms": {
+			"name": "Bas de Haute couture",
+			"description": ""
+		},
+		"High Fashion Contact Lenses": {
+			"name": "Lentilles de contact de Haute couture",
+			"description": ""
+		},
+		"High Fashion Footwear": {
+			"name": "Chaussures de Haute couture",
+			"description": ""
+		},
+		"High Fashion Glasses": {
+			"name": "Lunettes de Haute couture",
+			"description": ""
+		},
+		"High Fashion Hat": {
+			"name": "Couvre-chef de Haute couture",
+			"description": ""
+		},
+		"High Fashion Jacket": {
+			"name": "Veste de Haute couture",
+			"description": ""
+		},
+		"High Fashion Jewelry": {
+			"name": "Bijoux de Haute couture",
+			"description": ""
+		},
+		"High Fashion Mirrorshades": {
+			"name": "Verres miroirs de Haute couture",
+			"description": ""
+		},
+		"High Fashion Top": {
+			"name": "Haut de Haute couture",
+			"description": ""
+		},
+		"Leisurewear Bottoms": {
+			"name": "Bas Décontracté",
+			"description": ""
+		},
+		"Leisurewear Contact Lenses": {
+			"name": "Lentilles de contact Décontracté",
+			"description": ""
+		},
+		"Leisurewear Footwear": {
+			"name": "Chaussures Décontracté",
+			"description": ""
+		},
+		"Leisurewear Glasses": {
+			"name": "Lunettes Décontracté",
+			"description": ""
+		},
+		"Leisurewear Hat": {
+			"name": "Couvre-chef Décontracté",
+			"description": ""
+		},
+		"Leisurewear Jacket": {
+			"name": "Veste Décontracté",
+			"description": ""
+		},
+		"Leisurewear Jewelry": {
+			"name": "Bijoux Décontracté",
+			"description": ""
+		},
+		"Leisurewear Mirrorshades": {
+			"name": "Verres miroirs Décontracté",
+			"description": ""
+		},
+		"Leisurewear Top": {
+			"name": "Haut Décontracté",
+			"description": ""
+		},
+		"Nomad Leathers Bottoms": {
+			"name": "Bas d'Âme nomade",
+			"description": ""
+		},
+		"Nomad Leathers Contact Lenses": {
+			"name": "Lentilles de contact d'Âme nomade",
+			"description": ""
+		},
+		"Nomad Leathers Footwear": {
+			"name": "Chaussures d'Âme nomade",
+			"description": ""
+		},
+		"Nomad Leathers Glasses": {
+			"name": "Lunettes d'Âme nomade",
+			"description": ""
+		},
+		"Nomad Leathers Hat": {
+			"name": "Couvre-chef d'Âme nomade",
+			"description": ""
+		},
+		"Nomad Leathers Jacket": {
+			"name": "Veste d'Âme nomade",
+			"description": ""
+		},
+		"Nomad Leathers Jewelry": {
+			"name": "Bijoux d'Âme nomade",
+			"description": ""
+		},
+		"Nomad Leathers Mirrorshades": {
+			"name": "Verres miroirs d'Âme nomade",
+			"description": ""
+		},
+		"Nomad Leathers Top": {
+			"name": "Haut d'Âme nomade",
+			"description": ""
+		},
+		"Urban Flash Bottoms": {
+			"name": "Bas Urbain flash",
+			"description": ""
+		},
+		"Urban Flash Contact Lenses": {
+			"name": "Lentilles de contact Urbain flash",
+			"description": ""
+		},
+		"Urban Flash Footwear": {
+			"name": "Chaussures Urbain flash",
+			"description": ""
+		},
+		"Urban Flash Glasses": {
+			"name": "Lunettes Urbain flash",
+			"description": ""
+		},
+		"Urban Flash Hat": {
+			"name": "Couvre-chef Urbain flash",
+			"description": ""
+		},
+		"Urban Flash Jacket": {
+			"name": "Veste Urbain flash",
+			"description": ""
+		},
+		"Urban Flash Jewelry": {
+			"name": "Bijoux Urbain flash",
+			"description": ""
+		},
+		"Urban Flash Mirrorshades": {
+			"name": "Verres miroirs Urbain flash",
+			"description": ""
+		},
+		"Urban Flash Top": {
+			"name": "Haut Urbain flash",
+			"description": ""
+		}
+	}
+}
