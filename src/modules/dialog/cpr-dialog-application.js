@@ -23,6 +23,7 @@ export default class CPRDialog extends FormApplication {
     LOGGER.trace("defaultOptions | CPRDialog | called.");
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/dialog/rolls/cpr-base-verify-roll-prompt.hbs`,
+      title: "CPR.global.generic.title",
       width: "auto",
       height: "auto",
       closeOnSubmit: false,
