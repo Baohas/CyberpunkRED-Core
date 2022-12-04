@@ -5,11 +5,24 @@
 
 ### New Features
 
+- We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
+
 ### Changes
+
+- The Babele module should no longer require renaming files or directories to make it work.(#482)
 
 ### Bug Fixes
 
 - Align the second column on the gear tab so it is not all over the place.
+- #453 - Fixed strings that could not be translated properly
+
+## Version 0.84.1 (Hotfix) | Date: 2022-11-30
+
+### Bug Fixes
+
+- Fix HTML Stripping in item descriptions on character sheets
+- Fix Create/Edit Role Ability dialog not submitting.
+- #583 - Using ledger re-applies all Active Effects
 
 ## Version 0.84.0 | Date: 2022-11-22
 

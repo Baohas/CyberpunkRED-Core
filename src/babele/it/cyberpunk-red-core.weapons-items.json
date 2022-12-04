@@ -58,7 +58,7 @@
         },
         "Combat Knife": {
             "description": "<p>Un coltello adatto per le strade.</p>",
-            "name": "Coltello da combattimento"
+            "name": "Coltello da Combattimento"
         },
         "Combat Knife (Excellent)": {
             "description": "<p>Un coltello adatto per la strada. +1 all'Attacco.</p>",
@@ -86,7 +86,7 @@
         },
         "Crowbar": {
             "description": "<p>Utile sia come strumento che come arma. Una barra di ferro con cunei divisi alle estremità. </p>",
-            "name": "Piede di porco"
+            "name": "Piede di Porco"
         },
         "Crowbar (Excellent)": {
             "description": "<p>Utile sia come strumento che come arma. Una barra di ferro con cunei divisi alle estremità. +1 all'Attacco.</p>",
@@ -119,6 +119,18 @@
         "Grenade Launcher (Poor)": {
             "description": "<p>Un lanciagranate ad alto impatto. È possibile utilizzare una varietà di granate. Se fai 1 all'Attacco (Fallimento Critico) l'arma si inceppa e richiede l'utilizzo di un'azione per sbloccarla. </p>",
             "name": "Lanciagranate (Scarso)"
+        },
+        "Heavy Melee": {
+            "description": "<p>Generic Heavy Melee Weapon</p>",
+            "name": "Heavy Melee"
+        },
+        "Heavy Melee (Excellent)": {
+            "description": "<p>Generic Excellent Quality Heavy Melee Weapon.<br />+1 to Attack.</p>",
+            "name": "Heavy Melee (Excellent)"
+        },
+        "Heavy Melee (Poor)": {
+            "description": "<p>Generic Poor Quality Heavy Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Heavy Melee (Poor)"
         },
         "Heavy Pistol": {
             "description": "<p>Una pistola pesante occultabile. </p>",
@@ -162,7 +174,7 @@
         },
         "Lead Pipe": {
             "description": "<p>Un tubo, tipicamente in metallo o vetroresina. Può aver trasportato fluidi in passato. </p>",
-            "name": "Tubo di piombo"
+            "name": "Tubo di Piombo"
         },
         "Lead Pipe (Excellent)": {
             "description": "<p>Un tubo, tipicamente in metallo o vetroresina. Può aver trasportato fluidi in passato. +1 all'Attacco.</p>",
@@ -171,6 +183,18 @@
         "Lead Pipe (Poor)": {
             "description": "<p>Un tubo tipicamente in metallo o vetroresina. Può aver trasportato fluidi. Se fai 1 all'Attacco (Fallimento Critico) l'arma fallisce in qualche modo e richiede un'azione per utilizzarla nuovamente.</p>",
             "name": "Tubo di Piombo (Scarso)"
+        },
+        "Light Melee": {
+            "description": "<p>Generic Light Melee Weapon</p>",
+            "name": "Light Melee"
+        },
+        "Light Melee (Excellent)": {
+            "description": "<p>Generic Excellent Quality Light Melee Weapon.<br />+1 to Attack.</p>",
+            "name": "Light Melee (Excellent)"
+        },
+        "Light Melee (Poor)": {
+            "description": "<p>Generic Poor Quality Light Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Light Melee (Poor)"
         },
         "Machete": {
             "description": "<p>Un coltello a lama lunga per una varietà di usi. Preferito da alcune bande di Night City. </p>",
@@ -191,6 +215,18 @@
         "Martial Arts": {
             "description": "<p>Combattere a mani nude, ignora metà armatura.</p>",
             "name": "Arti Marziali"
+        },
+        "Medium Melee": {
+            "description": "<p>Generic Medium Melee Weapon</p>",
+            "name": "Medium Melee"
+        },
+        "Medium Melee (Excellent)": {
+            "description": "<p>Generic Excellent Quality Medium Melee Weapon.<br />+1 to Attack.</p>",
+            "name": "Medium Melee (Excellent)"
+        },
+        "Medium Melee (Poor)": {
+            "description": "<p>Generic Poor Quality Medium Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Medium Melee (Poor)"
         },
         "Medium Pistol": {
             "description": "<p>Una pistola di medie dimensioni occultabile. </p>",
@@ -274,7 +310,7 @@
         },
         "Sledgehammer": {
             "description": "<p>Un grande martello con la testa di metallo piatto che distribuisce la forza colpita su una vasta area. </p>",
-            "name": "Martello da demolizione"
+            "name": "Martello da Demolizione"
         },
         "Sledgehammer (Excellent)": {
             "description": "<p>Un grande martello con la testa di metallo piatto che distribuisce la forza colpita su una vasta area. +1 all'Attacco.</p>",
@@ -302,7 +338,7 @@
         },
         "Spiked Bat": {
             "description": "<p>Un progresso da una mazza regolare. Una manciata di chiodi sono stati martellati dalla punta. </p>",
-            "name": "Mazza Chiodata"
+            "name": "Randello Chiodato"
         },
         "Spiked Bat (Excellent)": {
             "description": "<p>Una mazza regolare chiodata. +1 all'Attacco.</p>",
@@ -359,6 +395,18 @@
         "Vampyres": {
             "description": "<p>Arma Cyberware. Devi avere installato il cyberware appropriato. </p>",
             "name": "Zanne Vampiriche"
+        },
+        "Very Heavy Melee": {
+            "description": "<p>Generic Very Heavy Melee Weapon</p>",
+            "name": "Very Heavy Melee"
+        },
+        "Very Heavy Melee (Excellent)": {
+            "description": "<p>Generic Excellent Quality Very Heavy Melee Weapon.<br />+1 to Attack.</p>",
+            "name": "Very Heavy Melee (Excellent)"
+        },
+        "Very Heavy Melee (Poor)": {
+            "description": "<p>Generic Poor Quality Very Heavy Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
+            "name": "Very Heavy Melee (Poor)"
         },
         "Very Heavy Pistol": {
             "description": "<p>Una Pistola Molto Pesante. Non può essere nascosta. </p>",
