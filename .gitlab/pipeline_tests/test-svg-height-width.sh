@@ -23,18 +23,20 @@ fi
 for file in ${ALL_FILES}; do
   SVG_HEADER=$(awk '/<svg/,/>/' "${file}")
   MISSING_TAGS=0
-  if ! grep -q " height=" "${SVG_HEADER}; then
-    echo "❌ 'height=""' missing in the svg tag in ${file}"
+  if ! echo "${SVG_HEADER}" | grep -q " height="; then
+    echo "❌ 'height=\"\"' missing in the svg tag in ${file}"
     ((MISSING_TAGS = MISSING_TAGS + 1))
   fi
 
-  if ! grep -q " width=" "${SVG_HEADER}; then
-    echo "❌ 'width=""' missing in the svg tag in ${file}"
+  if ! echo "${SVG_HEADER}" | grep -q " width="; then
+    echo "❌ 'width=\"\"' missing in the svg tag in ${file}"
     ((MISSING_TAGS = MISSING_TAGS + 1))
   fi
 
   if [[ "${MISSING_TAGS}" -gt 0 ]]; then
     ((ERRORS = ERRORS + 1))
+  else
+    echo "✅ height/width found in ${file}"
   fi
 done
 
