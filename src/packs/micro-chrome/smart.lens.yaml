@@ -1,0 +1,77 @@
+_stats:
+  coreVersion: '10.290'
+  createdTime: 1659830994304
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669556186344
+  systemId: cyberpunk-red-core
+  systemVersion: v0.85.0
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/micro_chrome/smart_lens.svg
+name: Smart Lens
+system:
+  weaponType: assaultRifle
+  weaponSkill: Archery
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 1d6
+  rof: 1
+  dvTable: ''
+  isRanged: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>Gives a user a single Cybereye Option. Can use one Smart Lens per
+      eye.</p>
+    chat: ''
+    unidentified: ''
+  source: MC
+  favorite: false
+  revealed: true
+  usage: toggled
+  install: mall
+  isInstalled: false
+  size: 1
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 500
+    category: veryExpensive
+  type: cyberEye
+  isWeapon: false
+  isFoundational: true
+  hasOptionalSlots: true
+  optionSlots: '1'
+  core: false
+  installedOptionSlots: 0
+  optionalIds: []
+  humanityLoss:
+    static: '0'
+    roll: '0'
+  amount: 1
+  attachmentSlots: 0
+  charges:
+    max: 0
+    value: 0
+  isConcealed: false
+  slotSize: 1
+type: cyberware
+_id: rUSdivkoD9THJXNy
+folder: null
+sort: 0
+ownership:
+  default: 0

@@ -171,23 +171,26 @@ CPR.weaponTypeList = {
   vHeavyPistol: "CPR.global.weaponType.veryHeavyPistol",
 };
 
-// Sorted as listed in core rule book
+// Sorted A-Z, with custom at the end
 CPR.ammoVariety = {
   arrow: "CPR.global.ammo.variety.arrow",
   battery: "CPR.global.ammo.variety.battery",
   grenade: "CPR.global.ammo.variety.grenade",
   heavyPistol: "CPR.global.ammo.variety.heavyPistol",
   medPistol: "CPR.global.ammo.variety.mediumPistol",
+  paintball: "CPR.global.ammo.variety.paintball",
   rifle: "CPR.global.ammo.variety.rifle",
   rocket: "CPR.global.ammo.variety.rocket",
   shotgunShell: "CPR.global.ammo.variety.shell",
   shotgunSlug: "CPR.global.ammo.variety.slug",
   vHeavyPistol: "CPR.global.ammo.variety.veryHeavyPistol",
+  custom: "CPR.global.ammo.variety.custom",
 };
 
-// Not sorted
+// Sorted A-Z, with basic at the start and special at the end
 CPR.ammoType = {
   basic: "CPR.global.ammo.type.basic",
+  acid: "CPR.global.ammo.type.acid",
   armorPiercing: "CPR.global.ammo.type.armorPiercing",
   biotoxin: "CPR.global.ammo.type.biotoxin",
   emp: "CPR.global.ammo.type.emp",
@@ -200,6 +203,7 @@ CPR.ammoType = {
   smart: "CPR.global.ammo.type.smart",
   smoke: "CPR.global.ammo.type.smoke",
   teargas: "CPR.global.ammo.type.tearGas",
+  special: "CPR.global.ammo.type.special",
 };
 
 CPR.inventoryCategories = {
@@ -216,6 +220,7 @@ CPR.inventoryCategories = {
   itemUpgrade: "CPR.global.itemTypes.itemUpgrade",
 };
 
+// Sorted A-Z
 CPR.objectTypes = {
   ammo: "CPR.global.itemTypes.ammo",
   armor: "CPR.global.itemTypes.armor",

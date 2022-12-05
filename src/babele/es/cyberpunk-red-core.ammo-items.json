@@ -63,7 +63,7 @@
 		},
 		"Battery Pack": {
 			"name": "Paquete de Baterías",
-			"description": "<p>Un paquete de batería recargable (1 hora) usado comúnmente con armas exóticas. Contiene 8 tiros y puede ser recargado.&nbsp;</p>"
+			"description": "<p>A rechargeable (1 hour) battery pack, commonly used with Exotic weapons. Contains 8 shots and can be recharged.&nbsp;</p>"
 		},
 		"Biotoxin Arrow": {
 			"name": "Flecha de Biotoxina",

@@ -1,0 +1,42 @@
+_stats:
+  coreVersion: '10.290'
+  createdTime: 1659830994299
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669897168487
+  systemId: cyberpunk-red-core
+  systemVersion: v0.85.0
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/spinning_your_wheels/inline_skates.svg
+name: Inline Skates
+system:
+  tags: []
+  description:
+    value: >-
+      <p>They're roller skates baby! Increases moment by 4 m/yds when using the
+      Run Action, though stopping the use of any options in the user's legs. May
+      cause physical tasks to be done at -2.</p>
+    chat: ''
+    unidentified: ''
+  source: SYW
+  favorite: false
+  revealed: true
+  usage: toggled
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  amount: 1
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 50
+    category: costly
+type: gear
+_id: 1Uv3Sr204rM82du8
+folder: null
+sort: 0
+ownership:
+  default: 0

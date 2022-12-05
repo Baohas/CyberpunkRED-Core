@@ -1,45 +1,45 @@
 {
-	"label": "Drogas",
+	"label": "Drugs",
 	"entries": {
 		"Antibiotic": {
-			"name": "Antibiótico",
-			"description": "<p>Si un objetivo ha comenzado el proceso de curación natural inyectándolos con antibióticos, cura 2 puntos adicionales por semana. Este efecto no se acumula.</p>"
+			"name": "Antibiotic",
+			"description": "<p>If a target has started the natural healing process injecting them with Antibiotic will cause them to heal an additional 2 Hit Points per day for a week. This effect does not stack.</p>"
 		},
 		"Black Lace": {
 			"name": "Lazo Negro",
-			"description": "<p>La dosis dura 24 horas. <br />El usuario tira 2d6 Pérdida de Humanidad y pierde esto temporalmente mientras está afectado. El usuario ignora el estado herido seriamente durante la duración.<br /><br /> DV secundaria:17.. <br />Cuando la dosis se desgasta, el usuario tira VOL + Resistir Torturas/Drogas + 1d10 contra DVD secundario. Si esto falla, toman el efecto secundario como se indica en el libro de reglas básico. </p>"
+			"description": "<p>Dose lasts 24 hours.<br />The user rolls 2d6 Humanity Loss and loses this temporarily while affected. The user ignores Seriously Wounded wound states for the duration.<br /><br />Secondary DV:17.<br />When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the secondary effect as noted in the core rule book.</p>"
 		},
 		"Blue Glass": {
 			"name": "Cristal Azul",
-			"description": "<p>La dosis dura 4 horas. <br />El GM puede indicar ocasionalmente al usuario que está viendo remolinos de colores. Cuando esto ocurre, el usuario pierde su acción en un solo turno.<br /><br />DV secundario: 15.. <br />Cuando la dosis se desgasta, el usuario tira VOL + Resistir Torturas/Drogas + 1d10 contra DV secundario. Si esto falla, toman el efecto secundario como se indica en el libro de reglas básico. </p>"
+			"description": "<p>Dose lasts 4 hours.<br />The GM may occasionally tell the user that they are seeing swirls of colours. When this happens the user loses their action on a single turn.<br /><br />Secondary DV: 15.<br />When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the secondary effect as noted in the core rule book. </p>"
 		},
 		"Boost": {
 			"name": "Boost",
-			"description": "<p>Dose dura 24 horas. <br />El usuario ha aumentado INT por 2 puntos durante la duración. <br /><br />DV secundario: 17.. <br />Cuando la dosis se desgasta, el usuario tira VOL + Resistir Torturas/Drogas + 1d10 contra DV secundario. Si esto falla, toman el efecto secundario como se indica en el libro de reglas básico.</p>"
+			"description": "<p>Dose lasts 24 hours.<br />The user has increased INT by 2 points for the duration.<br /><br />Secondary DV: 17.<br />When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the secondary effect as noted in the core rule book. </p>"
 		},
 		"Rapidetox": {
 			"name": "Rapidetox",
-			"description": "<p>Inyectar a un objetivo con Rapidetox eliminará los efectos de cualquier fármaco, veneno o intoxicante que sufra actualmente.</p>"
+			"description": "<p>Injecting a target with Rapidetox will eliminate the effects of any drugs, poisons, or intoxicants they are currently affected by.</p>"
 		},
 		"Smash": {
 			"name": "Smash",
-			"description": "<p>Dosis dura 4 horas. <br />El usuario se siente feliz y satisfecho recibiendo un modificador temporal de +2 para: Bailar/Contorsionista/Conversación/Percepción Humana/Persuasión/Actuación. <br /><br />DV Secundaria: 15.. <br />Cuando se agota la dosis, el usuario tira VOL + Resistir Tortura/Drogas + 1d10 contra DVD secundario. Si esto falla, toman el efecto secundario como se señala en el libro de reglas basico.</p>"
+			"description": "<p>Dose lasts 4 hours.<br />The user feels happy and satisfied, receiving a temporary modifier of +2 to: Dance/Contortionist/Conversation/Human Perception/Persuasion/Acting.<br /><br />Secondary DV: 15.<br />When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the secondary effect as noted in the core rule book. </p>"
 		},
 		"Speedheal": {
 			"name": "Speedheal",
-			"description": "<p>Inyectar a un objetivo con Speedheal inmediatamente hace que cura a un HP igual a su BODY más su WILL. Este efecto no funciona en objetivos heridos morales, y solo se puede usar en un objetivo una vez al día.</p>"
+			"description": "<p>Injecting a target with Speedheal immediately causes them to heal HP equal to their BODY plus their WILL. This effect does not work on Mortally Wounded targets, and can only be used on a target once per day.</p>"
 		},
 		"Stim": {
 			"name": "Stim",
-			"description": "<p>Inyectar a un objetivo con Stim hace que ignore todas las penalizaciones por heridas serias durante una hora. Solo se puede usar en un objetivo una vez al día.</p>"
+			"description": "<p>Injecting a target with Stim causes them to ignore all penalties from being Seriously Wounded for one hour. It can only be used on a target once per day.</p>"
 		},
 		"Surge": {
 			"name": "Surge",
-			"description": "<p>Inyectar a un objetivo con Surge hace que sea inmune a la privación del sueño durante 24 horas. Solo se puede usar en un objetivo una vez por semana.</p>"
+			"description": "<p>Injecting a target with Surge causes them to be immune to sleep deprivation for 24 hours. It can only be used on a target once per week.</p>"
 		},
 		"Synthcoke": {
 			"name": "Sintecoca",
-			"description": "<p>Dosis dura 4 horas. <br />El usuario ha aumentado REF por 1 puntos durante la duración. <br /><br />DV secundario: 15.. <br />Cuando la dosis se desgasta, el usuario tira VOL + Resistir Torturas/Drogas + 1d10 contra DV secundario. Si esto falla, toman el efecto secundario como se indica en el libro de reglas básico.</p>"
+			"description": "<p>Dose lasts 4 hours.<br />The user has increased REF by 1 point for the duration. The user feels paranoid occasionally.<br /><br />Secondary DV: 15.<br />When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the secondary effect as noted in the core rule book.</p>"
 		}
 	}
 }

@@ -1,11 +1,11 @@
 _id: oSCkXo6VZXIwjWhL
 _stats:
-  coreVersion: '10.276'
+  coreVersion: '10.290'
   createdTime: 1659830963835
   lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830963835
+  modifiedTime: 1669562520317
   systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
+  systemVersion: v0.85.0
 effects:
   - _id: 74gFz2rJ7G0uBkgx
     changes:
@@ -31,8 +31,12 @@ effects:
     label: AudioVox Acting
     tint: null
     transfer: true
+    origin: null
   - _id: dqjjjMsDuHu1WoiE
-    changes: []
+    changes:
+      - key: bonuses.playInstrument
+        value: '2'
+        mode: 2
     disabled: false
     duration:
       combat: null
@@ -42,11 +46,15 @@ effects:
       startTime: null
       startTurn: null
       turns: null
-    flags: {}
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
     label: AudioVox Singing (Play Instrument)
     tint: null
     transfer: true
+    origin: null
 flags:
   core: {}
 folder: null
@@ -56,60 +64,60 @@ ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety: []
-  amount: 1
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  core: false
-  damage: 1d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: >-
-      <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument checks.
-      </p>
-  dvTable: ''
-  favorite: false
+  weaponType: assaultRifle
+  weaponSkill: Archery
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: false
-  humanityLoss:
-    roll: 1d6
-    static: '3'
-  install: clinic
-  installedOptionSlots: 0
-  isConcealed: false
-  isFoundational: false
-  isInstalled: false
-  isRanged: false
-  isUpgraded: false
-  isWeapon: false
-  magazine:
-    ammoId: ''
-    max: 0
-    value: 0
-  optionSlots: 0
-  optionalIds: []
-  price:
-    category: expensive
-    market: 500
-  quality: ''
-  revealed: true
+  damage: 1d6
   rof: 1
-  size: 1
-  slots: 3
-  source: pg. 362
-  tags: []
-  type: cyberwareInternal
+  dvTable: ''
+  isRanged: false
   unarmedAutomaticCalculation: true
-  upgrade: ''
-  upgrades: []
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument checks.
+      </p>
+    chat: ''
+    unidentified: ''
+  source: pg. 362
+  favorite: false
+  revealed: true
   usage: installed
+  install: clinic
+  isInstalled: false
+  size: 1
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 500
+    category: expensive
+  type: cyberwareInternal
+  isWeapon: false
+  isFoundational: false
+  hasOptionalSlots: false
+  optionSlots: 0
+  core: false
+  installedOptionSlots: 0
+  optionalIds: []
+  humanityLoss:
+    static: '3'
+    roll: 1d6
+  amount: 1
+  attachmentSlots: 0
+  isConcealed: false
+  quality: ''
+  upgrade: ''
 type: cyberware

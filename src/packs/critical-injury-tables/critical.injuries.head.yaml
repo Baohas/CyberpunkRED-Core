@@ -13,7 +13,7 @@ flags:
 folder: null
 formula: 2d6
 img: >-
-  systems/cyberpunk-red-core/icons/compendium/default/Default_Critical_Injury.svg
+  systems/cyberpunk-red-core/icons/compendium/critical_injuries/head_critical_injury.svg
 name: Critical Injuries (Head)
 ownership:
   default: 0
