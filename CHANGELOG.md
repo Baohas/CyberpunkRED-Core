@@ -19,6 +19,7 @@
 - Added 8 new vehicle icons
 - Added new icons for the Bodyweight Suit, the Bulletproof Shield, and generic head armor
 - Added new icons for the Body and Head Injury Tables
+- #565 - The amount an ammunition reduces SP on hit can be configured on the item. Compendium items were updated to use this too.
 
 ### Changes
 
