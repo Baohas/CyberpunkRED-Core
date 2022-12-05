@@ -71,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Console",
-			"description": "<p>Netrunner deck. 7 slots.</p>"
+			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Console de Trilha Rede. 7 espaços.</span></p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Telefone celular descartável",
@@ -91,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Console de excelente qualidade",
-			"description": "<p>Netrunner deck. 9 slots.</p>"
+			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Console de Trilha Rede. 9 espaços.</span></p>"
 		},
 		"Flashlight": {
 			"name": "Lanterna",
@@ -167,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Console de má qualidade",
-			"description": "<p>Netrunner deck. 5 slots.</p>"
+			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Console de Trilha Rede. 5 espaços.</span></p>"
 		},
 		"Radar Detector": {
 			"name": "Detector de radar",
