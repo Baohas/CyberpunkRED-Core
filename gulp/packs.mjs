@@ -27,6 +27,7 @@ function _cleanFileName(data) {
     .replace(/[&]/g, "and")
     .replace(/ /g, ".")
     .replace(/\.\./g, ".")
+    .replace(/\.-\./g, ".")
     .toLowerCase();
 }
 
