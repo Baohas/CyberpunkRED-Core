@@ -1,11 +1,4 @@
 _id: AUMkHYqfODTjgtMD
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830994294
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830994294
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -23,8 +16,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: >-
-      <p>Netrunner deck. 9 slots.</p>
+    value: <p>Netrunner deck. 9 slots.</p>
   equipped: owned
   favorite: false
   isUpgraded: false
