@@ -7,6 +7,8 @@
    x="0px"
    y="0px"
    viewBox="0 0 512 512"
+   height="512"
+   width="512"
    style="enable-background:new 0 0 512 512;"
    xml:space="preserve"
    sodipodi:docname="cyberdeck_poor.svg"
@@ -16,7 +18,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><defs
    id="defs65">
-	
+
 <filter
    style="color-interpolation-filters:sRGB;"
    inkscape:label="Drop Shadow"
@@ -162,7 +164,7 @@
 	<g
    id="g10"
    style="fill:#ffffff">
-		
+
 	</g>
 </g><g
    id="g18"
@@ -171,7 +173,7 @@
 	<g
    id="g16"
    style="fill:#ffffff">
-		
+
 	</g>
 </g><g
    id="g30"
@@ -180,7 +182,7 @@
 	<g
    id="g28"
    style="fill:#ffffff">
-		
+
 	</g>
 </g>
 <g

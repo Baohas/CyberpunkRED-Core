@@ -63,7 +63,7 @@ for script in "${SCRIPTS[@]}"; do
     echo "✅ ${script##*/} passed shellcheck!"
   fi
 
-  if ! shfmt -d "${script}" &>/dev/null; then
+  if ! shfmt -d "${script}"; then
     echo "❌ ${script##*/} does not validate with shfmt"
     ((ERRORS = ERRORS + 1))
   else
