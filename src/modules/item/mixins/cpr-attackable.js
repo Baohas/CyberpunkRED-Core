@@ -260,8 +260,8 @@ const Attackable = function Attackable() {
 
     // Feed ammo type and variety into the rollCard arguments for the damage application button.
     if (cprWeaponData.isRanged) {
-      const ammoType = this._getLoadedAmmoType();
-      const ammoVariety = this._getLoadedAmmoVariety();
+      const ammoType = this._getLoadedAmmoProp("type");
+      const ammoVariety = this._getLoadedAmmoProp("variety");
       if (ammoType !== "undefined") {
         cprRoll.rollCardExtraArgs.ammoType = ammoType;
       }
