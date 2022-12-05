@@ -1,0 +1,39 @@
+_stats:
+  coreVersion: '10.290'
+  createdTime: 1659831195850
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669554439202
+  systemId: cyberpunk-red-core
+  systemVersion: v0.85.0
+effects: []
+flags:
+  core: {}
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/ammo/pistolveryheavy_armorpiercing.png
+name: Malorian Arms Sub-Flechettes
+system:
+  tags: []
+  description:
+    value: >-
+      <p>Special ammo to only be used with the Malorian Arms Sub-Flechette Gun.
+      Ablates armor by 4 SP per hit.</p>
+    chat: ''
+    unidentified: ''
+  source: 12DoG
+  favorite: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  amount: 10
+  price:
+    market: 100
+    category: premium
+  variety: custom
+  type: armorPiercing
+  upgrade: ''
+type: ammo
+_id: V1DsAqTT45qL6ZUY
+folder: null
+sort: 0
+ownership:
+  default: 0
