@@ -47,9 +47,9 @@ function _cleanPackData(data, { clearSourceId = true } = {}) {
   if (data.label) data.label = _cleanString(data.label);
   delete data.flags?.importSource;
   delete data.flags?.exportSource;
-  if (data._stats?.lastModifiedBy) {
-    data._stats.lastModifiedBy = "00CPRCBuildBot00";
-  }
+
+  // _stats gets auto generated when foundry imports the compendia
+  if (data._stats) { delete data._stats; }
 
   // Remove empty values from system.ammoVariety
   if (data.type === "weapon") {
