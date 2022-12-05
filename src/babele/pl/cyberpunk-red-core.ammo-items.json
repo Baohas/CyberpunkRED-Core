@@ -63,7 +63,7 @@
 		},
 		"Battery Pack": {
 			"name": "Pakiet Baterii",
-			"description": "<p>Ładowalny (1 godzina) pakiet baterii, powszechnie używany z egzotyczną bronią. Pozwala na 8 strzełów i może być ponownie naładowany.&nbsp;</p>"
+			"description": "<p>A rechargeable (1 hour) battery pack, commonly used with Exotic weapons. Contains 8 shots and can be recharged.&nbsp;</p>"
 		},
 		"Biotoxin Arrow": {
 			"name": "Strzała Biotoksynowa",
