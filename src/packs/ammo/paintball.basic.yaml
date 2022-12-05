@@ -21,6 +21,7 @@ system:
   concealable:
     concealable: true
     isConcealed: false
+  ablationValue: 1
   amount: 10
   price:
     market: 10

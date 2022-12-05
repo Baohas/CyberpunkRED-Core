@@ -16,6 +16,7 @@ ownership:
   default: 0
 sort: 0
 system:
+  ablationValue: 2
   amount: '10'
   concealable:
     concealable: true
