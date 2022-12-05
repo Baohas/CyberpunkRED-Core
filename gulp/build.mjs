@@ -195,7 +195,6 @@ async function processSvgs() {
       .pipe(svgmin({
         multipass: true,
         plugins: [
-          "removeDimensions",
           "convertStyleToAttrs",
         ],
       }))
