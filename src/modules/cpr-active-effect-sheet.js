@@ -42,16 +42,38 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
 
     // QoL - Select all text when grabbing text input.
     $("input[type=text]").focusin(() => $(this).select());
+    html.find(".force-submit").change(() => this._forceSubmit());
     html.find(".effect-key-category").change((event) => this._changeModKeyCategory(event));
-    html.find(".effect-change-key").change(() => this._changeModKey());
     html.find(".effect-change-control").click((event) => this._effectChangeControl(event));
     html.find(".toggle-situational").click((event) => this._toggleSituational(event));
     html.find(".toggle-on-by-default").click((event) => this._toggleOnByDefault(event));
   }
 
   /**
+   * A function we call when we want to force form submission (to make sure that a change is properly registered).
+   *
+   * Sometimes, if you input a change on the sheet, and then make another change somewhere else on the sheet,
+   * the original change gets ovverriden, since it was not submitted. This function addresses that by
+   * making sure information passed to the sheet gets stored/submitted before another change occurs.
+   *
+   * This function also helps achieve a secondary, more specific goal: prevent duplicate change keys on the same AE. How?
+   * In the handlebars template, change keys that already exist on this AE are disabled.
+   * Submitting rerenders the sheet, disabling the correct values in the drop-down so that they cannot be selected again.
+   *
+   * @async
+   * @callback
+   * @private
+   */
+  async _forceSubmit() {
+    LOGGER.trace("_forceSubmit | CPRActiveEffectSheet | Called.");
+    this.submit({
+      preventClose: true,
+    });
+  }
+
+  /**
    * Change the key category flag on an active effect.
-   * Also submit the form to prevent duplicate change keys on the same AE. (see next function's jsdocs)
+   * Also submit the form to prevent duplicate change keys on the same AE. (see _forceSubmit's jsdocs)
    *
    * @async
    * @callback
@@ -63,27 +85,8 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     const modnum = event.currentTarget.dataset.index;
     const keyCategory = event.target.value;
 
-    this.submit({
-      preventClose: true,
-    });
+    this._forceSubmit();
     return effect.setModKeyCategory(modnum, keyCategory);
-  }
-
-  /**
-   * Submit the form when we change the key on an active effect.
-   * The goal is to prevent duplicate change keys on the same AE. How?
-   * In the handlebars template, change keys that already exist on this AE are disabled.
-   * Submitting rerenders the sheet, disabling the correct values in the drop-down so that they cannot be selected.
-   *
-   * @async
-   * @callback
-   * @private
-   */
-  async _changeModKey() {
-    LOGGER.trace("_changeModKey | CPRActiveEffectSheet | Called.");
-    this.submit({
-      preventClose: true,
-    });
   }
 
   /**
@@ -126,9 +129,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
 
     await effect.setFlag(`${game.system.id}`, `changes.situational.${modnum}.isSituational`, isSituational);
 
-    this.submit({
-      preventClose: true,
-    });
+    this._forceSubmit();
   }
 
   /**
@@ -146,9 +147,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
 
     await effect.setFlag(`${game.system.id}`, `changes.situational.${modnum}.onByDefault`, onByDefault);
 
-    this.submit({
-      preventClose: true,
-    });
+    this._forceSubmit();
   }
 
   /**

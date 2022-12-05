@@ -1343,7 +1343,7 @@ export default class CPRActor extends Actor {
     LOGGER.trace("deleteEffect | CPRCharacterActor | Called.");
     const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     if (setting) {
-      const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${effect.system.label}?`;
+      const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${effect.label}?`;
       const confirmDelete = await ConfirmPrompt.RenderPrompt(
         SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
         promptMessage,

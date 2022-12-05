@@ -77,7 +77,7 @@
                         <input type="text" name="changes.{{i}}.key" value="{{change.key}}"/>
                     {{/if}}
                     {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "skill")}}
-                        <select class="effect-change-key" name="changes.{{i}}.key" data-dtype="String">
+                        <select class="force-submit" name="changes.{{i}}.key" data-dtype="String">
                             {{#select change.key}}
                                 {{#each (cprGetSkillsForEffects ../this) as |modkeyname modkey|}}
                                     <option {{#if (cprObjectListContains ../../data.changes "key" modkey)}}disabled{{/if}} value="{{modkey}}">{{localize modkeyname}}</option>
@@ -86,7 +86,7 @@
                         </select>
                     {{/if}}
                     {{#if (cprListContains "combat,netrun,role,stat" (lookup ../data.flags.cyberpunk-red-core.changes.cats i))}}
-                        <select name="changes.{{i}}.key" data-dtype="String">
+                        <select class="force-submit" name="changes.{{i}}.key" data-dtype="String">
                             {{#select change.key}}
                                 {{#each (cprFindConfigValue "activeEffectKeys" (lookup ../data.flags.cyberpunk-red-core.changes.cats i)) as |modkeyname modkey|}}
                                     <option {{#if (cprObjectListContains ../../data.changes "key" modkey)}}disabled{{/if}} value="{{modkey}}">{{localize modkeyname}}</option>
@@ -95,10 +95,10 @@
                         </select>
                     {{/if}}
                 </div>
-                <div class="value">
+                <div class="value force-submit">
                     <input type="text" name="changes.{{i}}.value" value="{{change.value}}"/>
                 </div>
-                <div class="mode">
+                <div class="mode force-submit">
                     {{!-- Using other modes for skills means we need to make changes to actor.bonuses. Rather than 0 all values out, it
                                 needs to persist the existing value, and the mode so the math applies correctly. This has implications
                                 on how to present in the actor sheet too. --}}
