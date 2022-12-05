@@ -10,7 +10,7 @@ effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+img: systems/cyberpunk-red-core/icons/compendium/vehicle/blimp.svg
 name: Aerozep
 ownership:
   default: 0

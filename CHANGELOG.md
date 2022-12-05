@@ -5,15 +5,37 @@
 
 ### New Features
 
-- We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
+- Added 12 new guns from The 12 Days of Gunmas
+- Added 12 new guns and 1 new attachment from Woodchipper’s Garage
+- Added 2 new cyberware, 1 new gun, and 1 new clothing from Micro Chrome
+- Added 1 new vehicle and 2 new items from Spinning Your Wheels
+- Added 'Paintballs' and 'Custom' ammo varieties
+- Added 'Acid' and 'Special' ammo types
+- Added Basic, Acid, Biotoxin, and Poison paintballs
+- Added custom ammo used by the Malorian Arms Sub-Flechette Gun, the Nova Model 757 Cityhunter, and the Sternmeyer M-02 Heavy Rifle
+- Added icons for the Underbarrel Shotgun, the Underbarrel Grenade Launcher and the (new) Poor Quality Underbarrel Grenade Launcher
+- Added an icon for Paintballs
+- Added new icons for the Chipware Compartment, the Smart Lens, the Inline Skates, and the Skateboard
+- Added 8 new vehicle icons
+- Added new icons for the Bodyweight Suit, the Bulletproof Shield, and generic head armor
+- Added new icons for the Body and Head Injury Tables
 
 ### Changes
 
 - The Babele module should no longer require renaming files or directories to make it work.(#482)
+- #585 - renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes
+- Changed the Extended Magazine and Drum Magazine upgrades to use the Ammo icon instead of the default icon
+- Improved the visibility of the thumbnail image for the included NET Architecture scenes
 
 ### Bug Fixes
 
-- Align the second column on the gear tab so it is not all over the place.
+- Align the second column on the gear tab so it is not all over the place
+- Fixed missing thumbnail image for the included Dystopian City Junction map
+- Corrected the name format of the included maps
+- Corrected a typo in the name of the Excellent Heavy SMG
+- Corrected a typo in the Battery Pack ammo description
+- Fixed the Incendiary Shotgun Slug showing the wrong image
+- We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
 - #453 - Fixed strings that could not be translated properly
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30

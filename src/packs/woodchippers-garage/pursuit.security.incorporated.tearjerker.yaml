@@ -1,0 +1,62 @@
+_stats:
+  coreVersion: '10.290'
+  createdTime: 1659831053172
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669545811239
+  systemId: cyberpunk-red-core
+  systemVersion: v0.85.0
+effects: []
+flags:
+  core: {}
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher_excellent.svg
+name: Pursuit Security Incorporated TearJerker
+system:
+  weaponType: grenadeLauncher
+  weaponSkill: Heavy Weapons
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 6d6
+  rof: 1
+  dvTable: DV Grenade Launcher
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 1
+  tags: ''
+  description:
+    value: <p>This weapon can only fire Smoke or Teargas Ammunition.</p>
+    chat: ''
+    unidentified: ''
+  source: WG
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 3
+    ammoId: ''
+  ammoVariety:
+    - grenade
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 500
+    category: veryExpensive
+  handsReq: 2
+  attachmentSlots: 3
+  isConcealed: false
+  quality: excellent
+  upgrade: ''
+type: weapon
+_id: puBNVffqHLoGXXnd
+folder: null
+sort: 0
+ownership:
+  default: 0

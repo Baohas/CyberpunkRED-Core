@@ -1,0 +1,38 @@
+_stats:
+  coreVersion: '10.290'
+  createdTime: 1659831195847
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1669554253051
+  systemId: cyberpunk-red-core
+  systemVersion: v0.85.0
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/ammo/paintball.svg
+name: Paintball (Acid)
+system:
+  tags: []
+  description:
+    value: >-
+      <p>Paintballs filled with acid. Deals no damage but ablates armour by 1 SP
+      on hit.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 347
+  favorite: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  amount: 10
+  price:
+    market: 10
+    category: cheap
+  variety: paintball
+  type: acid
+  upgrade: ''
+type: ammo
+_id: CiskMOqNs2y5axDS
+folder: null
+sort: 0
+ownership:
+  default: 0
