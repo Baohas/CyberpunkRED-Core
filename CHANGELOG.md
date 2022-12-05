@@ -38,6 +38,7 @@
 - We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
 - #453 - Fixed strings that could not be translated properly
 - Fix item images in the item sheets for a number of compendium items
+- Fixed Dargun doing 8d6 instead of 4d6 damage, thanks Sryth!
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
