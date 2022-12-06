@@ -27,6 +27,7 @@
 - Changed the Extended Magazine and Drum Magazine upgrades to use the Ammo icon instead of the default icon
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
 - Standardised raw `.svg` graphics to be squares, with any rounded applied later
+- Adjusted `vial_poison.svg` to better match other gear icons
 
 ### Bug Fixes
 
