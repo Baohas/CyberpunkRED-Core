@@ -262,12 +262,19 @@ const Attackable = function Attackable() {
     if (cprWeaponData.isRanged) {
       const ammoType = this._getLoadedAmmoProp("type");
       const ammoVariety = this._getLoadedAmmoProp("variety");
+      const ablationValue = this._getLoadedAmmoProp("ablationValue");
       if (ammoType !== "undefined") {
         cprRoll.rollCardExtraArgs.ammoType = ammoType;
       }
       if (ammoVariety !== "undefined") {
         cprRoll.rollCardExtraArgs.ammoVariety = ammoVariety;
       }
+      if (ablationValue !== "undefined") {
+        cprRoll.rollCardExtraArgs.ablationValue = ablationValue;
+      }
+    } else {
+      // Assuming all melee items deal 1 ablation if they damage a target
+      cprRoll.rollCardExtraArgs.ablationValue = 1;
     }
 
     const halfArmorAttacks = [

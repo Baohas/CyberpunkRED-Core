@@ -243,7 +243,6 @@ export default class CPRItem extends Item {
         if (localCprRoll.isAutofire) {
           localCprRoll.setAutofire();
         }
-        localCprRoll.rollCardExtraArgs.ablationValue = this._getLoadedAmmoProp("ablationValue");
       }
     }
     if (itemType === "role") {
