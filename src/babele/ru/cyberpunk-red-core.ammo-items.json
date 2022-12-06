@@ -63,7 +63,7 @@
 		},
 		"Battery Pack": {
 			"name": "Батарейный блок",
-			"description": "<p>Перезаряжаемый за час батарейный блок, обычно использующийся в экзотическом оружии. Содержит 8 слотов и может быть перезаряжен.&nbsp;</p>"
+			"description": "<p>A rechargeable (1 hour) battery pack, commonly used with Exotic weapons. Contains 8 shots and can be recharged.&nbsp;</p>"
 		},
 		"Biotoxin Arrow": {
 			"name": "Стрела с биотоксином",

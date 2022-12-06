@@ -71,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Кибердека",
-			"description": "<p>Netrunner deck. 7 slots.</p>"
+			"description": "<p>Дека нетраннера на 7 слотов.</p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Одноразовая мобила",
@@ -91,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Кибердека отличного качества",
-			"description": "<p>Netrunner deck. 9 slots.</p>"
+			"description": "<p>Дека нетраннера на 9 слотов.</p>"
 		},
 		"Flashlight": {
 			"name": "Фонарик",
@@ -167,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Кибердека плохого качества",
-			"description": "<p>Netrunner deck. 5 slots.</p>"
+			"description": "<p>Дека нетраннера на 5 слотов.</p>"
 		},
 		"Radar Detector": {
 			"name": "Система обнаружения излучения",

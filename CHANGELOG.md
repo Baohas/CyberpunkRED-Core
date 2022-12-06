@@ -38,6 +38,7 @@
 - Fixed the Incendiary Shotgun Slug showing the wrong image
 - We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
 - #453 - Fixed strings that could not be translated properly
+- Fix item images in the item sheets for a number of compendium items
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
