@@ -1,11 +1,4 @@
 _id: M3I9ySdmNIxcuT7T
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831027214
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027214
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
