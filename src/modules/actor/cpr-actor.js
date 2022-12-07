@@ -489,15 +489,39 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Return the skill mod (number) for a given skill on the actor.
+   * Returns requested information about a skill mod: Either an array of all CPRMods,
+   * the total value of all the mods, or a boolean whether the mod has situational bonuses or not.
    *
    * @param {String} skillName - the skill name (e.g. from CPR.skillList) to look up
+   * @param {String} infoType - type of info being requested ("modTotal", "modList", or "hasSituational")
    * @returns {Number} - skill mod or 0 if not found
    */
-  getSkillMod(skillName) {
-    LOGGER.trace("getSkillMod | CPRActor | Called.");
+  getSkillModInfo(skillName, infoType, filterOutSituational = true) {
+    LOGGER.trace("getSkillModInfo | CPRActor | Called.");
     const skillSlug = SystemUtils.slugify(skillName);
-    return this.bonuses[skillSlug];
+    const effects = this.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    let relevantMods = CPRMod.getRelevantMods(allMods, skillSlug);
+    if (filterOutSituational) {
+      relevantMods = relevantMods.filter((m) => !m.isSituational);
+    }
+
+    let modTotal = 0;
+    relevantMods.forEach((m) => {
+      modTotal += parseInt(m.value, 10);
+    });
+
+    switch (infoType) {
+      case "modTotal":
+        return modTotal;
+      case "modList":
+        return relevantMods;
+      case "hasSituational":
+        if (relevantMods.some((m) => m.isSituational)) return true;
+        return false;
+      default:
+        return LOGGER.error("Did not pass valid string to infoType");
+    }
   }
 
   /**

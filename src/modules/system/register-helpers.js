@@ -4,6 +4,7 @@ import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRActiveEffect from "../cpr-active-effect.js";
+import CPRMod from "../rolls/cpr-modifiers.js";
 
 export default function registerHandlebarsHelpers() {
   LOGGER.log("Calling Register Handlebars Helpers");
@@ -424,7 +425,7 @@ export default function registerHandlebarsHelpers() {
     }
     switch (mathFunction) {
       case "sum":
-        return mathArgs.reduce((a, b) => a + b, 0);
+        return mathArgs.reduce((a, b) => parseInt(a, 10) + parseInt(b, 10), 0);
       case "subtract": {
         const minutend = mathArgs.shift();
         const subtrahend = mathArgs.reduce((a, b) => a + b, 0);
@@ -847,9 +848,32 @@ export default function registerHandlebarsHelpers() {
   /**
    * Get the transient bonus value applied to skills applied from Active Effects
    */
-  Handlebars.registerHelper("cprGetSkillBonus", (skillName, actor) => {
-    LOGGER.trace("cprGetSkillBonus | handlebarsHelper | Called.");
-    return actor.getSkillMod(skillName);
+  Handlebars.registerHelper("cprGetSkillModInfo", (skillName, actor, infoType, options) => {
+    LOGGER.trace("cprGetSkillModInfo | handlebarsHelper | Called.");
+    const skillSlug = SystemUtils.slugify(skillName);
+    const effects = actor.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    let relevantMods = CPRMod.getRelevantMods(allMods, skillSlug);
+    const hasSituational = relevantMods.some((m) => m.isSituational);
+    if (!options.hash.keepSituational) {
+      relevantMods = relevantMods.filter((m) => !m.isSituational);
+    }
+
+    let modTotal = 0;
+    relevantMods.forEach((m) => {
+      modTotal += parseInt(m.value, 10);
+    });
+
+    switch (infoType) {
+      case "modTotal":
+        return modTotal;
+      case "modList":
+        return relevantMods;
+      case "hasSituational":
+        return hasSituational;
+      default:
+        return LOGGER.error("Did not pass valid string to infoType");
+    }
   });
 
   /**

@@ -115,6 +115,8 @@
   "CPR.characterSheet.rightPane.eurobucks.eurobucksModifyReasonPlaceholder": "Sweet new gun",
   "CPR.characterSheet.rightPane.skills.editCustomSkill": "Delete Custom Skill",
   "CPR.characterSheet.rightPane.skills.lvl": "LVL",
+  "CPR.characterSheet.rightPane.skills.modBreakdown": "Modifier Breakdown",
+  "CPR.characterSheet.rightPane.skills.situationalModWarning": "Situational Mods are ommitted from the total.",
   "CPR.characterSheet.rightPane.skills.skillMod": "MOD",
   "CPR.characterSheet.rightPane.skills.title": "Skills",
   "CPR.characterSheet.rightPane.skills.toggleCategoryAll": "Show/Hide All",
