@@ -1,0 +1,7 @@
+<p>In this release we made it possible to set an ablation value on ammo. When a target is shot with a particular ammo, the system
+will look up that value and subtract it from the SP on the target's armor. For armor-piercing rounds this value is 2, for rubber
+rounds it is 0, and for almost everything else it is 1. This allows us to better support some DLC items too, such as the 
+Malorian Arms Sub-Flechette ammo that has an ablation value of 4.</p>
+
+<p>You should have seen a quick data migration that took care of homebrew ammo items for you, if your world had any. Justo to be
+sure, you may want to check them to be confident the ablation is still what you expect.</p>
