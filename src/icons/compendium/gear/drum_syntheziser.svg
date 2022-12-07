@@ -61,7 +61,7 @@
          result="blur"
          id="feGaussianBlur912" />
       <feOffset
-         dx="-4.0375"
+         dx="0"
          dy="-4.02735"
          result="offset"
          id="feOffset914" />
@@ -95,7 +95,7 @@
          result="blur" />
       <feOffset
          id="feOffset1606"
-         dx="-4.00062"
+         dx="0"
          dy="-4.02735"
          result="offset" />
       <feComposite
@@ -128,7 +128,7 @@
          result="blur" />
       <feOffset
          id="feOffset928"
-         dx="17.8015"
+         dx="0"
          dy="18.9355"
          result="offset" />
       <feComposite

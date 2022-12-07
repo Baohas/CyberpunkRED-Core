@@ -37,7 +37,7 @@
        stdDeviation="30"
        result="blur"
        id="feGaussianBlur939" /><feOffset
-       dx="-4"
+       dx="0"
        dy="-4"
        result="offset"
        id="feOffset941" /><feComposite

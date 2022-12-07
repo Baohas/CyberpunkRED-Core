@@ -38,7 +38,7 @@
          result="blur"
          id="feGaussianBlur901" />
       <feOffset
-         dx="-4"
+         dx="0"
          dy="-4"
          result="offset"
          id="feOffset903" />
