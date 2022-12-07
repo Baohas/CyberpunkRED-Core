@@ -1,11 +1,4 @@
 _id: u2RTSakS4YNR4a4t
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831970372
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831970372
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 description: >-
   Table for rolling for the standard floors of a NET architecture, as detailed
   on page 211.

@@ -1,11 +1,4 @@
 _id: X9Bhs1i802SIVUPP
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831970380
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831970380
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 description: >-
   Table for rolling for the advanced floors of a NET architecture, as detailed
   on page 211.
