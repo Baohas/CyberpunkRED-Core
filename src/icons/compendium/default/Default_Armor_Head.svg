@@ -33,7 +33,7 @@
        result="composite1"
        id="feComposite1188" /><feGaussianBlur
        in="composite1"
-       stdDeviation="22.9955"
+       stdDeviation="15"
        result="blur"
        id="feGaussianBlur1190" /><feOffset
        dx="0"

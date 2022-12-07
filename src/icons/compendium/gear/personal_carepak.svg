@@ -34,7 +34,7 @@
        result="composite1"
        id="feComposite951" /><feGaussianBlur
        in="composite1"
-       stdDeviation="30"
+       stdDeviation="15"
        result="blur"
        id="feGaussianBlur953" /><feOffset
        dx="0"

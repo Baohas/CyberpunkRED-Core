@@ -50,7 +50,7 @@
      result="composite1"
      id="feComposite934" /><feGaussianBlur
      in="composite1"
-     stdDeviation="30"
+     stdDeviation="15"
      result="blur"
      id="feGaussianBlur936" /><feOffset
      dx="0"

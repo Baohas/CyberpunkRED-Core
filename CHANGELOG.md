@@ -29,6 +29,7 @@
 - Standardised raw `.svg` graphics to be squares, with any rounded applied later
 - Adjusted `vial_poison.svg` to better match other gear icons
 - Standardised the x-axis and y-axis offsets of the filters applied to `.svg` graphics
+- Capped the drop shadow intensity of the `.svg` graphics at `stdDeviation="15"`. This will make some of the darker graphics easier to read
 
 ### Bug Fixes
 

@@ -36,7 +36,7 @@
          id="feComposite1448" />
       <feGaussianBlur
          in="composite1"
-         stdDeviation="30"
+         stdDeviation="15"
          result="blur"
          id="feGaussianBlur1450" />
       <feOffset
@@ -72,7 +72,7 @@
          id="feComposite3477" />
       <feGaussianBlur
          in="composite1"
-         stdDeviation="30"
+         stdDeviation="15"
          result="blur"
          id="feGaussianBlur3479" />
       <feOffset
@@ -108,7 +108,7 @@
          id="feComposite3545" />
       <feGaussianBlur
          in="composite1"
-         stdDeviation="30"
+         stdDeviation="15"
          result="blur"
          id="feGaussianBlur3547" />
       <feOffset
@@ -144,7 +144,7 @@
          id="feComposite1299" />
       <feGaussianBlur
          in="composite1"
-         stdDeviation="17.9828"
+         stdDeviation="15"
          result="blur"
          id="feGaussianBlur1301" />
       <feOffset

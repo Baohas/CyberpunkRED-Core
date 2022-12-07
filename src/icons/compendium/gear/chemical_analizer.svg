@@ -34,7 +34,7 @@
        result="composite1"
        id="feComposite910" /><feGaussianBlur
        in="composite1"
-       stdDeviation="30"
+       stdDeviation="15"
        result="blur"
        id="feGaussianBlur912" /><feOffset
        dx="0"
@@ -63,7 +63,7 @@
        result="composite1"
        id="feComposite1414" /><feGaussianBlur
        in="composite1"
-       stdDeviation="30"
+       stdDeviation="15"
        result="blur"
        id="feGaussianBlur1416" /><feOffset
        dx="0"
@@ -92,7 +92,7 @@
        result="composite1"
        id="feComposite990" /><feGaussianBlur
        in="composite1"
-       stdDeviation="30"
+       stdDeviation="15"
        result="blur"
        id="feGaussianBlur992" /><feOffset
        dx="0"
