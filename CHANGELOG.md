@@ -28,7 +28,7 @@
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
 - Standardised raw `.svg` graphics to be squares, with any rounded applied later
 - Adjusted `vial_poison.svg` to better match other gear icons
-- Standardised the x-axis offset of the filters applied to `.svg` graphics
+- Standardised the x-axis and y-axis offsets of the filters applied to `.svg` graphics
 
 ### Bug Fixes
 

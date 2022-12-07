@@ -38,7 +38,7 @@
        result="blur"
        id="feGaussianBlur939" /><feOffset
        dx="0"
-       dy="-4"
+       dy="0"
        result="offset"
        id="feOffset941" /><feComposite
        in="offset"

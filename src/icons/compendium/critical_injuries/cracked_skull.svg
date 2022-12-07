@@ -41,7 +41,7 @@
          id="feGaussianBlur888" />
       <feOffset
          dx="0"
-         dy="-4"
+         dy="0"
          result="offset"
          id="feOffset890" />
       <feComposite
@@ -77,7 +77,7 @@
          id="feGaussianBlur1450" />
       <feOffset
          dx="0"
-         dy="-4.02735"
+         dy="0"
          result="offset"
          id="feOffset1452" />
       <feComposite

@@ -38,7 +38,7 @@
        result="blur"
        id="feGaussianBlur912" /><feOffset
        dx="0"
-       dy="-4.02735"
+       dy="0"
        result="offset"
        id="feOffset914" /><feComposite
        in="offset"
@@ -67,7 +67,7 @@
        result="blur"
        id="feGaussianBlur1416" /><feOffset
        dx="0"
-       dy="-4.02735"
+       dy="0"
        result="offset"
        id="feOffset1418" /><feComposite
        in="offset"
@@ -96,7 +96,7 @@
        result="blur"
        id="feGaussianBlur992" /><feOffset
        dx="0"
-       dy="-4.02735"
+       dy="0"
        result="offset"
        id="feOffset994" /><feComposite
        in="offset"

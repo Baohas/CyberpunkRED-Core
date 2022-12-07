@@ -38,7 +38,7 @@
          id="feGaussianBlur881" />
       <feOffset
          dx="0"
-         dy="-4"
+         dy="0"
          result="offset"
          id="feOffset883" />
       <feComposite
