@@ -9,23 +9,24 @@ ownership:
   default: 0
 sort: 0
 system:
-  amount: 1
-  concealable:
-    concealable: false
-    isConcealed: false
+  tags: []
   description:
-    chat: ''
-    unidentified: ''
     value: >-
       <p>Injecting a target with Speedheal immediately causes them to heal HP
       equal to their BODY plus their WILL. This effect does not work on Mortally
       Wounded targets, and can only be used on a target once per day.</p>
-  favorite: false
-  price:
-    category: premium
-    market: 200
-  revealed: true
+    chat: ''
+    unidentified: ''
   source: pg. 150
-  tags: []
+  favorite: false
+  revealed: true
   usage: toggled
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  amount: 1
+  price:
+    market: 200
+    category: premium
 type: drug

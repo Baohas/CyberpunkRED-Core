@@ -9,24 +9,24 @@ ownership:
   default: 0
 sort: 0
 system:
-  amount: 1
+  tags: []
+  description:
+    value: <p>Record 24h of audio on a memory Chip.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 352
+  favorite: false
+  revealed: true
+  usage: toggled
+  equipped: owned
   concealable:
     concealable: false
     isConcealed: false
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>Record 24h of audio on a memory Chip.</p>
-  equipped: owned
-  favorite: false
+  amount: 1
+  upgrades: []
+  slots: 3
   isUpgraded: false
   price:
-    category: premium
     market: 100
-  revealed: true
-  slots: 3
-  source: pg. 352
-  tags: []
-  upgrades: []
-  usage: toggled
+    category: premium
 type: gear

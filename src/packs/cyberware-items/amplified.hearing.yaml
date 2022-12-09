@@ -1,91 +1,89 @@
-_id: rBXEgpTubsNxviDs
+name: Amplified Hearing
+type: cyberware
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/amplified_hearing.svg
+system:
+  weaponType: ''
+  weaponSkill: ''
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 1d6
+  rof: 1
+  dvTable: ''
+  isRanged: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: []
+  description:
+    value: <p>Provides +2 to perception checks that use hearing.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 361
+  favorite: false
+  revealed: true
+  usage: installed
+  install: mall
+  isInstalled: false
+  size: 1
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 100
+  type: cyberAudioSuite
+  isWeapon: false
+  isFoundational: false
+  hasOptionalSlots: false
+  optionSlots: 0
+  core: false
+  installedOptionSlots: 0
+  optionalIds: []
+  humanityLoss:
+    static: '3'
+    roll: 1d6
 effects:
-  - _id: pPTWFTDcOHjHyWeL
+  - label: Amplified Hearing
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/cyberware/amplified_hearing.svg
+    disabled: false
+    _id: Ff2OQuhgLa7Fy7dj
     changes:
       - key: bonuses.perception
+        value: '2'
         mode: 2
         priority: null
-        value: '2'
-    disabled: true
     duration:
+      startTime: null
+      seconds: null
       combat: null
       rounds: null
-      seconds: null
-      startRound: null
-      startTime: null
-      startTurn: null
       turns: null
+      startRound: null
+      startTurn: null
+    tint: null
+    transfer: true
     flags:
       cyberpunk-red-core:
         changes:
           cats:
             '0': skill
-    icon: >-
-      systems/cyberpunk-red-core/icons/compendium/cyberware/amplified_hearing.svg
-    label: Amplified Hearing
-    tint: null
-    transfer: true
+          situational:
+            '0':
+              isSituational: true
+              onByDefault: false
+ownership:
+  default: 0
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/amplified_hearing.svg
-name: Amplified Hearing
-ownership:
-  default: 0
 sort: 0
-system:
-  ammoVariety: []
-  amount: 1
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  core: false
-  damage: 1d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>Provides +2 to perception checks that use hearing. </p>
-  dvTable: ''
-  favorite: false
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  hasOptionalSlots: false
-  humanityLoss:
-    roll: 1d6
-    static: '3'
-  install: mall
-  installedOptionSlots: 0
-  isConcealed: false
-  isFoundational: false
-  isInstalled: false
-  isRanged: false
-  isUpgraded: false
-  isWeapon: false
-  magazine:
-    ammoId: ''
-    max: 0
-    value: 0
-  optionSlots: 0
-  optionalIds: []
-  price:
-    category: premium
-    market: 100
-  quality: ''
-  revealed: true
-  rof: 1
-  size: 1
-  slots: 3
-  source: pg. 361
-  tags: []
-  type: cyberAudioSuite
-  unarmedAutomaticCalculation: true
-  upgrade: ''
-  upgrades: []
-  usage: toggled
-  usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
-type: cyberware
+_id: 9pZMYMlVFeWDS56L

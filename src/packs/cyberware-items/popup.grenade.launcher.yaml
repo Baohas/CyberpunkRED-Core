@@ -10,61 +10,61 @@ ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety:
-    - grenade
-  amount: 1
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  core: false
-  damage: 6d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: >-
-      <p>A concealable one-shot Grenade Launcher. Can't hold anything with this
-      hand while activated. </p>
-  dvTable: null
-  favorite: false
+  weaponType: grenadeLauncher
+  weaponSkill: Heavy Weapons
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: false
-  humanityLoss:
-    roll: 2d6
-    static: '7'
-  install: clinic
-  installedOptionSlots: 0
-  isConcealed: false
-  isFoundational: false
-  isInstalled: false
-  isRanged: true
-  isUpgraded: false
-  isWeapon: true
-  magazine:
-    ammoId: ''
-    max: 1
-    value: 0
-  optionSlots: 0
-  optionalIds: []
-  price:
-    category: expensive
-    market: 500
-  quality: standard
-  revealed: true
+  damage: 6d6
   rof: 1
-  size: 2
-  slots: 3
-  source: pg. 365
-  tags: []
-  type: cyberArm
+  dvTable: ''
+  isRanged: true
   unarmedAutomaticCalculation: true
-  upgrade: ''
-  upgrades: []
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>A concealable one-shot Grenade Launcher. Can't hold anything with this
+      hand while activated. </p>
+    chat: ''
+    unidentified: ''
+  source: pg. 365
+  favorite: false
+  revealed: true
   usage: toggled
+  install: clinic
+  isInstalled: false
+  size: 2
   usesType: magazine
-  weaponSkill: Heavy Weapons
-  weaponType: grenadeLauncher
+  magazine:
+    value: 0
+    max: 1
+    ammoId: ''
+  ammoVariety:
+    - grenade
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 500
+    category: expensive
+  type: cyberArm
+  isWeapon: true
+  isFoundational: false
+  hasOptionalSlots: false
+  optionSlots: 0
+  core: false
+  installedOptionSlots: 0
+  optionalIds: []
+  humanityLoss:
+    static: '7'
+    roll: 2d6
+  amount: 1
+  attachmentSlots: 0
+  isConcealed: false
+  quality: standard
+  upgrade: ''
 type: cyberware

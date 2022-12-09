@@ -5,9 +5,11 @@ effects:
       - key: bonuses.aimedShot
         value: '1'
         mode: 2
+        priority: null
       - key: bonuses.singleShot
         value: '1'
         mode: 2
+        priority: null
     disabled: false
     duration:
       combat: null

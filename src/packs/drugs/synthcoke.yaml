@@ -24,6 +24,7 @@ effects:
     label: Synthcoke Primary
     tint: null
     transfer: true
+    origin: null
   - _id: 9fYAbvg99knLYj9T
     changes:
       - key: system.stats.ref.value
@@ -48,6 +49,7 @@ effects:
     label: Synthcoke Addiction
     tint: null
     transfer: true
+    origin: null
   - _id: rw9YMhZaP2AQcYJw
     changes:
       - key: system.stats.ref.value
@@ -72,6 +74,7 @@ effects:
     label: Synthcoke Addicted Primary
     tint: null
     transfer: true
+    origin: null
 flags:
   core: {}
 folder: null
@@ -81,25 +84,43 @@ ownership:
   default: 0
 sort: 0
 system:
-  amount: 1
+  tags: []
+  description:
+    value: >-
+      <p><strong>Primary Effect</strong></p>
+
+      <p>Dose lasts 4 hours.</p>
+
+      <ul>
+
+      <li>+1 REF by 1 point for the duration</li>
+
+      <li>The user feels paranoid occasionally</li>
+
+      </ul>
+
+      <p><strong>Secondary Effect (DV15)</strong></p>
+
+      <ul>
+
+      <li>-2 REF unless under ther Primary Effect</li>
+
+      <li>GM will tell you when when you crave mor Synthcoke. Roleplay
+      Acordingly</li>
+
+      </ul>
+    chat: ''
+    unidentified: ''
+  source: pg. 357
+  favorite: false
+  revealed: true
+  usage: toggled
+  equipped: owned
   concealable:
     concealable: false
     isConcealed: false
-  description:
-    chat: ''
-    unidentified: ''
-    value: >-
-      <p>Dose lasts 4 hours.<br />The user has increased REF by 1 point for the
-      duration. The user feels paranoid occasionally.<br /><br />Secondary DV:
-      15.<br />When the dose wears off, the user rolls WILL + Resist
-      Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the
-      secondary effect as noted in the core rule book.&nbsp;</p>
-  favorite: false
+  amount: 1
   price:
-    category: everyday
     market: 20
-  revealed: true
-  source: pg. 357
-  tags: []
-  usage: toggled
+    category: everyday
 type: drug

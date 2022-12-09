@@ -1,27 +1,4 @@
 _id: xfzYp9N5c6jEKiBR
-data:
-  deathSaveIncrease: false
-  description:
-    chat: ''
-    unidentified: ''
-    value: >-
-      <p>Suffer Crit damage at end of turn if move more than 4m/yrds on
-      foot.</p>
-  effects: ''
-  favorite: false
-  location: head
-  quickFix:
-    dvFirstAid: 13
-    dvParamedic: 13
-    type: firstAidParamedic
-  revealed: true
-  source: ''
-  tags: []
-  treatment:
-    dvParamedic: 0
-    dvSurgery: 0
-    type: quickFix
-  usage: toggled
 effects: []
 flags:
   core: {}
@@ -33,3 +10,26 @@ ownership:
   default: 0
 sort: 0
 type: criticalInjury
+system:
+  tags: []
+  description:
+    value: >-
+      <p>Suffer Crit damage at end of turn if move more than 4m/yrds on
+      foot.</p>
+    chat: ''
+    unidentified: ''
+  source: ''
+  favorite: false
+  revealed: true
+  usage: toggled
+  location: head
+  quickFix:
+    type: firstAidParamedic
+    dvFirstAid: 13
+    dvParamedic: 13
+  treatment:
+    type: quickFix
+    dvParamedic: 0
+    dvSurgery: 0
+  deathSaveIncrease: false
+  effects: ''

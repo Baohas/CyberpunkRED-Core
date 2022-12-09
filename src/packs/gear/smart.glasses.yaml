@@ -9,60 +9,60 @@ ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety: []
-  amount: 1
-  attachmentSlots: 0
-  attackmod: 0
-  charges:
-    max: 0
-    value: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  core: false
-  damage: 1d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>Eyewear with two options slots for cybereye options.</p>
-  dvTable: ''
-  favorite: false
+  weaponType: assaultRifle
+  weaponSkill: Archery
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: true
-  humanityLoss:
-    roll: '0'
-    static: '0'
-  install: mall
-  installedOptionSlots: 0
-  isConcealed: false
-  isFoundational: true
-  isInstalled: false
+  damage: 1d6
+  rof: 1
+  dvTable: ''
   isRanged: false
-  isUpgraded: false
-  isWeapon: 'false'
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: []
+  description:
+    value: <p>Eyewear with two options slots for cybereye options.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 354
+  favorite: false
+  revealed: true
+  usage: toggled
+  install: mall
+  isInstalled: false
+  size: 1
+  usesType: magazine
   magazine:
+    value: 0
+    max: 0
     ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 500
+    category: expensive
+  type: cyberEye
+  isWeapon: 'false'
+  isFoundational: true
+  hasOptionalSlots: true
+  optionSlots: '2'
+  core: false
+  installedOptionSlots: 0
+  optionalIds: []
+  humanityLoss:
+    static: '0'
+    roll: '0'
+  amount: 1
+  attachmentSlots: 0
+  charges:
     max: 0
     value: 0
-  optionSlots: '2'
-  optionalIds: []
-  price:
-    category: expensive
-    market: 500
-  revealed: true
-  rof: 1
-  size: 1
+  isConcealed: false
   slotSize: 1
-  slots: 3
-  source: pg. 354
-  tags: []
-  type: cyberEye
-  unarmedAutomaticCalculation: true
-  upgrades: []
-  usage: toggled
-  usesType: magazine
-  weaponSkill: ''
-  weaponType: ''
 type: cyberware

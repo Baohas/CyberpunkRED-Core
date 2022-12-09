@@ -3,17 +3,14 @@ effects:
   - _id: tWHTQ0n84oq6mENt
     changes:
       - key: bonuses.lipReading
-        mode: 2
-        priority: null
         value: '2'
+        mode: 2
       - key: bonuses.concealOrRevealObject
-        mode: 2
-        priority: null
         value: '2'
+        mode: 2
       - key: bonuses.perception
-        mode: 2
-        priority: null
         value: '2'
+        mode: 2
     disabled: false
     duration:
       combat: null
@@ -30,6 +27,16 @@ effects:
             '0': skill
             '1': skill
             '2': skill
+          situational:
+            '0':
+              isSituational: true
+              onByDefault: false
+            '1':
+              isSituational: true
+              onByDefault: false
+            '2':
+              isSituational: true
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/image_enhance.svg
     label: Image Enhance
     tint: null
@@ -65,7 +72,7 @@ system:
   source: pg. 360
   favorite: false
   revealed: true
-  usage: toggled
+  usage: installed
   install: mall
   isInstalled: false
   size: 1

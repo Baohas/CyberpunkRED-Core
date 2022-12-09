@@ -1,5 +1,33 @@
 _id: 0begTrdCOQcRyLMN
-effects: []
+effects:
+  - label: Linear Frame Sigma
+    icon: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_sigma.svg
+    disabled: false
+    _id: tdnkWa1CRu3vQO0N
+    changes:
+      - key: system.stats.body.value
+        value: '12'
+        mode: 5
+        priority: null
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    tint: null
+    transfer: true
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            '0': stat
+          situational:
+            '0':
+              isSituational: false
+              onByDefault: false
 flags:
   core: {}
 folder: null
@@ -9,26 +37,26 @@ ownership:
   default: 0
 sort: 0
 system:
-  amount: 1
-  concealable:
-    concealable: false
-    isConcealed: false
+  tags: []
   description:
-    chat: ''
-    unidentified: ''
     value: >-
       <p>Exoskeleton. Requires 1 Interface Plug. Increases BODY to 12 while
       plugged in. No changes to your HP or Deathsave. </p>
-  equipped: owned
+    chat: ''
+    unidentified: ''
+  source: pg. 351
   favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  amount: 1
+  upgrades: []
+  slots: 3
   isUpgraded: false
   price:
+    market: 1000
     category: veryExpensive
-    market: '1000'
-  revealed: true
-  slots: 3
-  source: pg. 351
-  tags: []
-  upgrades: []
-  usage: toggled
 type: gear

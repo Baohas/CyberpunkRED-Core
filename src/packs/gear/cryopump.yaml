@@ -9,26 +9,26 @@ ownership:
   default: 0
 sort: 0
 system:
-  amount: 1
-  concealable:
-    concealable: false
-    isConcealed: false
+  tags: []
   description:
-    chat: ''
-    unidentified: ''
     value: >-
       <p>Briefcase used for hooking up a wounded person. Places them in stasis.
       </p>
-  equipped: owned
+    chat: ''
+    unidentified: ''
+  source: pg. 353
   favorite: false
+  revealed: true
+  usage: toggled
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  amount: 1
+  upgrades: []
+  slots: 3
   isUpgraded: false
   price:
-    category: luxury
     market: 5000
-  revealed: true
-  slots: 3
-  source: pg. 353
-  tags: []
-  upgrades: []
-  usage: toggled
+    category: luxury
 type: gear

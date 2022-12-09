@@ -43,6 +43,8 @@ effects:
       cyberpunk-red-core:
         changes:
           '0': skill
+          cats:
+            '0': skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
     label: AudioVox Singing (Play Instrument)
     tint: null

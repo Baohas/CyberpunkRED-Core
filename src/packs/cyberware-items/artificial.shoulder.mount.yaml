@@ -25,6 +25,7 @@ effects:
     label: Artificial Shoulder Mount
     tint: null
     transfer: true
+    origin: null
 flags:
   core: {}
 folder: null
@@ -35,58 +36,58 @@ ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety: []
-  amount: 1
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  core: false
-  damage: 1d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>Allows you to install an extra pair of cyberarms. </p>
-  dvTable: ''
-  favorite: false
+  weaponType: ''
+  weaponSkill: ''
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: false
-  humanityLoss:
-    roll: 4d6
-    static: '14'
-  install: hospital
-  installedOptionSlots: 0
-  isConcealed: false
-  isFoundational: true
-  isInstalled: false
-  isRanged: false
-  isUpgraded: false
-  isWeapon: false
-  magazine:
-    ammoId: ''
-    max: 0
-    value: 0
-  optionSlots: 0
-  optionalIds: []
-  price:
-    category: veryExpensive
-    market: 1000
-  quality: ''
-  revealed: true
+  damage: 1d6
   rof: 1
-  size: 0
-  slots: 3
-  source: pg. 367
-  tags: []
-  type: borgware
+  dvTable: ''
+  isRanged: false
   unarmedAutomaticCalculation: true
-  upgrade: ''
-  upgrades: []
+  attackmod: 0
+  tags: []
+  description:
+    value: <p>Allows you to install an extra pair of cyberarms. </p>
+    chat: ''
+    unidentified: ''
+  source: pg. 367
+  favorite: false
+  revealed: true
   usage: toggled
+  install: hospital
+  isInstalled: false
+  size: 0
   usesType: magazine
-  weaponSkill: ''
-  weaponType: ''
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 1000
+    category: veryExpensive
+  type: borgware
+  isWeapon: false
+  isFoundational: true
+  hasOptionalSlots: false
+  optionSlots: 0
+  core: false
+  installedOptionSlots: 0
+  optionalIds: []
+  humanityLoss:
+    static: '14'
+    roll: 4d6
+  amount: 1
+  attachmentSlots: 0
+  isConcealed: false
+  quality: ''
+  upgrade: ''
 type: cyberware

@@ -1,25 +1,4 @@
 _id: mVE8ovTniNKFs9Y7
-data:
-  deathSaveIncrease: true
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>Cannot speak.</p>
-  effects: ''
-  favorite: false
-  location: head
-  quickFix:
-    dvFirstAid: 0
-    dvParamedic: 0
-    type: notApplicable
-  revealed: true
-  source: ''
-  tags: []
-  treatment:
-    dvParamedic: 0
-    dvSurgery: 15
-    type: surgery
-  usage: toggled
 effects: []
 flags:
   core: {}
@@ -31,3 +10,24 @@ ownership:
   default: 0
 sort: 0
 type: criticalInjury
+system:
+  tags: []
+  description:
+    value: <p>Cannot speak.</p>
+    chat: ''
+    unidentified: ''
+  source: ''
+  favorite: false
+  revealed: true
+  usage: toggled
+  location: head
+  quickFix:
+    type: notApplicable
+    dvFirstAid: 0
+    dvParamedic: 0
+  treatment:
+    type: surgery
+    dvParamedic: 0
+    dvSurgery: 15
+  deathSaveIncrease: true
+  effects: ''
