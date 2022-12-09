@@ -1,51 +1,28 @@
 _id: VWmTqmsW6S5v51FO
-data:
-  deathSaveIncrease: false
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>-4 to Speech Actions.</p>
-  effects: ''
-  favorite: false
-  location: head
-  quickFix:
-    dvFirstAid: 0
-    dvParamedic: 13
-    type: paramedic
-  revealed: true
-  source: ''
-  tags: []
-  treatment:
-    dvParamedic: 13
-    dvSurgery: 13
-    type: paramedicSurgery
-  usage: always
 effects:
   - _id: fuvMhn0ZVMzPG1d8
     changes:
       - key: bonuses.acting
-        mode: 2
         value: '-4'
+        mode: 2
       - key: bonuses.conversation
-        mode: 2
         value: '-4'
+        mode: 2
       - key: bonuses.language
-        mode: 2
         value: '-4'
+        mode: 2
       - key: bonuses.trading
-        mode: 2
         value: '-4'
-    data:
-      flags:
-        cyberpunk-red-core:
-          changes:
-            '0': skill
-            '1': skill
-            '2': skill
-            '3': skill
+        mode: 2
     disabled: false
     duration:
       startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
     flags:
       cyberpunk-red-core:
         changes:
@@ -54,11 +31,25 @@ effects:
             '1': skill
             '2': skill
             '3': skill
+          situational:
+            '0':
+              isSituational: false
+              onByDefault: true
+            '1':
+              isSituational: false
+              onByDefault: true
+            '2':
+              isSituational: false
+              onByDefault: true
+            '3':
+              isSituational: false
+              onByDefault: true
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_jaw.svg
     label: Broken Jaw
     tint: null
     transfer: true
+    origin: null
 flags:
   core: {}
 folder: null
@@ -68,3 +59,24 @@ ownership:
   default: 0
 sort: 0
 type: criticalInjury
+system:
+  tags: []
+  description:
+    value: <p>-4 to Speech Actions.</p>
+    chat: ''
+    unidentified: ''
+  source: ''
+  favorite: false
+  revealed: true
+  usage: always
+  location: head
+  quickFix:
+    type: paramedic
+    dvFirstAid: 0
+    dvParamedic: 13
+  treatment:
+    type: paramedicSurgery
+    dvParamedic: 13
+    dvSurgery: 13
+  deathSaveIncrease: false
+  effects: ''

@@ -9,24 +9,24 @@ ownership:
   default: 0
 sort: 0
 system:
-  deathSaveIncrease: false
+  tags: []
   description:
+    value: <p>-2 to every action.</p>
     chat: ''
     unidentified: ''
-    value: <p>-2 to every action.</p>
-  effects: ''
+  source: ''
   favorite: false
+  revealed: true
+  usage: toggled
   location: head
   quickFix:
+    type: firstAidParamedic
     dvFirstAid: 13
     dvParamedic: 13
-    type: firstAidParamedic
-  revealed: true
-  source: ''
-  tags: []
   treatment:
+    type: quickFix
     dvParamedic: 0
     dvSurgery: 0
-    type: quickFix
-  usage: toggled
+  deathSaveIncrease: false
+  effects: ''
 type: criticalInjury

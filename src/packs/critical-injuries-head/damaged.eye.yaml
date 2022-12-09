@@ -1,74 +1,42 @@
 _id: qoegLCfpEOQifeZq
-data:
-  deathSaveIncrease: false
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>-2 to Ranged and Perception (vision).</p>
-  effects: ''
-  favorite: false
-  location: head
-  quickFix:
-    dvFirstAid: 0
-    dvParamedic: 15
-    type: paramedic
-  revealed: true
-  source: ''
-  tags: []
-  treatment:
-    dvParamedic: 0
-    dvSurgery: 13
-    type: surgery
-  usage: always
 effects:
-  - _id: 4X5NAVowBcmDkhkm
-    changes:
-      - key: bonuses.perception
-        mode: 2
-        value: '-2'
-      - key: bonuses.archery
-        mode: 2
-        value: '-2'
-      - key: bonuses.autofire
-        mode: 2
-        value: '-2'
-      - key: bonuses.handgun
-        mode: 2
-        value: '-2'
-      - key: bonuses.heavyWeapons
-        mode: 2
-        value: '-2'
-      - key: bonuses.shoulderArms
-        mode: 2
-        value: '-2'
-    data:
-      flags:
-        cyberpunk-red-core:
-          changes:
-            '0': skill
-            '1': skill
-            '2': skill
-            '3': skill
-            '4': skill
-            '5': skill
+  - label: Damaged Eye
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg
     disabled: false
+    _id: exv56SDpa0UW3rxp
+    changes:
+      - key: bonuses.ranged
+        value: '-2'
+        mode: 2
+        priority: null
+      - key: bonuses.perception
+        value: '-2'
+        mode: 2
+        priority: null
     duration:
       startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    tint: null
+    transfer: true
     flags:
       cyberpunk-red-core:
         changes:
           cats:
-            '0': skill
+            '0': combat
             '1': skill
-            '2': skill
-            '3': skill
-            '4': skill
-            '5': skill
-    icon: >-
-      systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg
-    label: Damaged Eye
-    tint: null
-    transfer: true
+          situational:
+            '0':
+              isSituational: false
+              onByDefault: false
+            '1':
+              isSituational: false
+              onByDefault: false
 flags:
   core: {}
 folder: null
@@ -78,3 +46,24 @@ ownership:
   default: 0
 sort: 0
 type: criticalInjury
+system:
+  tags: []
+  description:
+    value: <p>-2 to Ranged and Perception (vision).</p>
+    chat: ''
+    unidentified: ''
+  source: ''
+  favorite: false
+  revealed: true
+  usage: always
+  location: head
+  quickFix:
+    type: paramedic
+    dvFirstAid: 0
+    dvParamedic: 15
+  treatment:
+    type: surgery
+    dvParamedic: 0
+    dvSurgery: 13
+  deathSaveIncrease: false
+  effects: ''
