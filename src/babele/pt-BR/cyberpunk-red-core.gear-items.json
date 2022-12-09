@@ -71,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Console",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Console de Trilha Rede. 7 espaços.</span></p>"
+			"description": "<p>Console de Trilha Rede. 7 espaços.</p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Telefone celular descartável",
@@ -91,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Console de excelente qualidade",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Console de Trilha Rede. 9 espaços.</span></p>"
+			"description": "<p>Console de Trilha Rede. 9 espaços.</p>"
 		},
 		"Flashlight": {
 			"name": "Lanterna",
@@ -167,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Console de má qualidade",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Console de Trilha Rede. 5 espaços.</span></p>"
+			"description": "<p>Console de Trilha Rede. 5 espaços.</p>"
 		},
 		"Radar Detector": {
 			"name": "Detector de radar",
