@@ -9,24 +9,24 @@ ownership:
   default: 0
 sort: 0
 system:
-  amount: 1
+  tags: []
+  description:
+    value: <p>Braindance viewing device.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 352
+  favorite: false
+  revealed: true
+  usage: toggled
+  equipped: owned
   concealable:
     concealable: false
     isConcealed: false
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>Braindance viewing device.</p>
-  equipped: owned
-  favorite: false
+  amount: 1
+  upgrades: []
+  slots: 3
   isUpgraded: false
   price:
-    category: veryExpensive
     market: 1000
-  revealed: true
-  slots: 3
-  source: pg. 352
-  tags: []
-  upgrades: []
-  usage: toggled
+    category: veryExpensive
 type: gear

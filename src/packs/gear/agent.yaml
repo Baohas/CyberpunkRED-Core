@@ -1,34 +1,41 @@
 _id: GqYz689ddSKQHMen
 effects:
-  - _id: NVm2e26fprlysF2t
+  - label: Agent
+    icon: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
+    disabled: false
+    _id: OnONUXyMY8mOquf7
     changes:
       - key: bonuses.librarySearch
+        value: '2'
         mode: 2
         priority: null
-        value: '2'
       - key: bonuses.wardrobeAndStyle
+        value: '2'
         mode: 2
         priority: null
-        value: '2'
-    disabled: false
     duration:
+      startTime: null
+      seconds: null
       combat: null
       rounds: null
-      seconds: null
-      startRound: null
-      startTime: null
-      startTurn: null
       turns: null
+      startRound: null
+      startTurn: null
+    tint: null
+    transfer: true
     flags:
       cyberpunk-red-core:
         changes:
           cats:
             '0': skill
             '1': skill
-    icon: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
-    label: Agent
-    tint: null
-    transfer: true
+          situational:
+            '0':
+              isSituational: false
+              onByDefault: false
+            '1':
+              isSituational: true
+              onByDefault: false
 flags:
   core: {}
 folder: null
@@ -38,26 +45,26 @@ ownership:
   default: 0
 sort: 0
 system:
-  amount: 1
-  concealable:
-    concealable: false
-    isConcealed: false
+  tags: []
   description:
-    chat: ''
-    unidentified: ''
     value: >-
       <p>AI Smartphone. +2 Library Search, +2 Wardrobe & Style depending on
       circumstance.</p>
-  equipped: owned
+    chat: ''
+    unidentified: ''
+  source: pg. 352
   favorite: false
+  revealed: true
+  usage: carried
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  amount: 1
+  upgrades: []
+  slots: 3
   isUpgraded: false
   price:
-    category: premium
     market: 100
-  revealed: true
-  slots: 3
-  source: pg. 352
-  tags: []
-  upgrades: []
-  usage: carried
+    category: premium
 type: gear
