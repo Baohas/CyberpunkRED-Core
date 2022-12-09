@@ -9,60 +9,60 @@ ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety: []
-  amount: 1
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  core: false
-  damage: 1d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: >-
-      <p>Chipware. Data Storage. Like a flash drive for your brain. Eject
-      safely. </p>
-  dvTable: ''
-  favorite: false
+  weaponType: assaultRifle
+  weaponSkill: Archery
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: false
-  humanityLoss:
-    roll: '0'
-    static: '0'
-  install: notApplicable
-  installedOptionSlots: 0
-  isConcealed: false
-  isFoundational: false
-  isInstalled: false
-  isRanged: false
-  isUpgraded: false
-  isWeapon: false
-  magazine:
-    ammoId: ''
-    max: 0
-    value: 0
-  optionSlots: 0
-  optionalIds: []
-  price:
-    category: cheap
-    market: 10
-  quality: ''
-  revealed: true
+  damage: 1d6
   rof: 1
-  size: 0
-  slots: 3
-  source: pg. 359
-  tags: []
-  type: neuralWare
+  dvTable: ''
+  isRanged: false
   unarmedAutomaticCalculation: true
-  upgrade: ''
-  upgrades: []
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>Chipware. Data Storage. Like a flash drive for your brain. Eject
+      safely. </p>
+    chat: ''
+    unidentified: ''
+  source: pg. 359
+  favorite: false
+  revealed: true
   usage: toggled
+  install: notApplicable
+  isInstalled: false
+  size: 0
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 10
+    category: cheap
+  type: neuralWare
+  isWeapon: false
+  isFoundational: false
+  hasOptionalSlots: false
+  optionSlots: 0
+  core: false
+  installedOptionSlots: 0
+  optionalIds: []
+  humanityLoss:
+    static: '0'
+    roll: '0'
+  amount: 1
+  attachmentSlots: 0
+  isConcealed: false
+  quality: ''
+  upgrade: ''
 type: cyberware

@@ -9,60 +9,60 @@ ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety: []
-  amount: 1
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  core: false
-  damage: 1d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: >-
-      <p>Sharp fingernails which are a Light Melee Weapon. Can be concealed.
-      </p>
-  dvTable: ''
-  favorite: false
+  weaponType: lightMelee
+  weaponSkill: Melee Weapon
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: false
-  humanityLoss:
-    roll: 1d3
-    static: '2'
-  install: mall
-  installedOptionSlots: 0
-  isConcealed: false
-  isFoundational: false
-  isInstalled: false
-  isRanged: false
-  isUpgraded: false
-  isWeapon: true
-  magazine:
-    ammoId: ''
-    max: 0
-    value: 0
-  optionSlots: 0
-  optionalIds: []
-  price:
-    category: premium
-    market: 100
-  quality: standard
-  revealed: true
+  damage: 1d6
   rof: 2
-  size: 1
-  slots: 3
-  source: pg. 366
-  tags: []
-  type: cyberArm
+  dvTable: ''
+  isRanged: false
   unarmedAutomaticCalculation: true
-  upgrade: ''
-  upgrades: []
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>Sharp fingernails which are a Light Melee Weapon. Can be concealed.
+      </p>
+    chat: ''
+    unidentified: ''
+  source: pg. 366
+  favorite: false
+  revealed: true
   usage: toggled
+  install: mall
+  isInstalled: false
+  size: 1
   usesType: magazine
-  weaponSkill: Melee Weapon
-  weaponType: lightMelee
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 100
+    category: premium
+  type: cyberArm
+  isWeapon: true
+  isFoundational: false
+  hasOptionalSlots: false
+  optionSlots: 0
+  core: false
+  installedOptionSlots: 0
+  optionalIds: []
+  humanityLoss:
+    static: '2'
+    roll: 1d3
+  amount: 1
+  attachmentSlots: 0
+  isConcealed: false
+  quality: standard
+  upgrade: ''
 type: cyberware

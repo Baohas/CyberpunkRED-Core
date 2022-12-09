@@ -3,9 +3,8 @@ effects:
   - _id: JoQ7dlYgAuJCSQr5
     changes:
       - key: system.stats.body.value
-        mode: 2
-        priority: null
         value: '2'
+        mode: 2
     disabled: false
     duration:
       combat: null
@@ -25,6 +24,7 @@ effects:
     label: Grafted Muscle & Bone Lace
     tint: null
     transfer: true
+    origin: null
 flags:
   core: {}
 folder: null
@@ -35,58 +35,58 @@ ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety: []
-  amount: 1
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  core: false
-  damage: 1d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>Increase Body by 2 (and related stats). Stacks. Max at 10 Body.</p>
-  dvTable: ''
-  favorite: false
+  weaponType: assaultRifle
+  weaponSkill: Archery
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: false
-  humanityLoss:
-    roll: 4d6
-    static: '14'
-  install: hospital
-  installedOptionSlots: 0
-  isConcealed: false
-  isFoundational: false
-  isInstalled: false
-  isRanged: false
-  isUpgraded: false
-  isWeapon: false
-  magazine:
-    ammoId: ''
-    max: 0
-    value: 0
-  optionSlots: 0
-  optionalIds: []
-  price:
-    category: veryExpensive
-    market: 1000
-  quality: ''
-  revealed: true
+  damage: 1d6
   rof: 1
-  size: 1
-  slots: 3
-  source: pg. 363
-  tags: []
-  type: cyberwareInternal
+  dvTable: ''
+  isRanged: false
   unarmedAutomaticCalculation: true
-  upgrade: ''
-  upgrades: []
+  attackmod: 0
+  tags: []
+  description:
+    value: <p>Increase Body by 2 (and related stats). Stacks. Max at 10 Body.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 363
+  favorite: false
+  revealed: true
   usage: installed
+  install: hospital
+  isInstalled: false
+  size: 1
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  magazine:
+    value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 1000
+    category: veryExpensive
+  type: cyberwareInternal
+  isWeapon: false
+  isFoundational: false
+  hasOptionalSlots: false
+  optionSlots: 0
+  core: false
+  installedOptionSlots: 0
+  optionalIds: []
+  humanityLoss:
+    static: '14'
+    roll: 4d6
+  amount: 1
+  attachmentSlots: 0
+  isConcealed: false
+  quality: ''
+  upgrade: ''
 type: cyberware
