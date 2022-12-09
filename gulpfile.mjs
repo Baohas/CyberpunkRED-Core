@@ -16,7 +16,7 @@ export const assets = gulp.parallel(
   bld.buildChangelog,
   bld.copyAssets,
 
-)
+);
 
 // Export packs from Foundry to src/packs
 export const extractPacks = gulp.series(packs.extPacks);
