@@ -1,45 +1,9 @@
-_id: rBXEgpTubsNxviDs
-effects:
-  - _id: pPTWFTDcOHjHyWeL
-    changes:
-      - key: bonuses.perception
-        value: '2'
-        mode: 2
-    disabled: true
-    duration:
-      combat: null
-      rounds: null
-      seconds: null
-      startRound: null
-      startTime: null
-      startTurn: null
-      turns: null
-    flags:
-      cyberpunk-red-core:
-        changes:
-          cats:
-            '0': skill
-          situational:
-            '0':
-              isSituational: true
-              onByDefault: true
-    icon: >-
-      systems/cyberpunk-red-core/icons/compendium/cyberware/amplified_hearing.svg
-    label: Amplified Hearing
-    tint: null
-    transfer: true
-    origin: null
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/amplified_hearing.svg
 name: Amplified Hearing
-ownership:
-  default: 0
-sort: 0
+type: cyberware
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/amplified_hearing.svg
 system:
-  weaponType: assaultRifle
-  weaponSkill: Archery
+  weaponType: ''
+  weaponSkill: ''
   fireModes:
     autoFire: 0
     suppressiveFire: false
@@ -51,7 +15,7 @@ system:
   attackmod: 0
   tags: []
   description:
-    value: <p>Provides +2 to perception checks that use hearing. </p>
+    value: <p>Provides +2 to perception checks that use hearing.</p>
     chat: ''
     unidentified: ''
   source: pg. 361
@@ -75,7 +39,6 @@ system:
   isUpgraded: false
   price:
     market: 100
-    category: premium
   type: cyberAudioSuite
   isWeapon: false
   isFoundational: false
@@ -87,9 +50,40 @@ system:
   humanityLoss:
     static: '3'
     roll: 1d6
-  amount: 1
-  attachmentSlots: 0
-  isConcealed: false
-  quality: ''
-  upgrade: ''
-type: cyberware
+effects:
+  - label: Amplified Hearing
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/cyberware/amplified_hearing.svg
+    disabled: false
+    _id: Ff2OQuhgLa7Fy7dj
+    changes:
+      - key: bonuses.perception
+        value: '2'
+        mode: 2
+        priority: null
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    tint: null
+    transfer: true
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            '0': skill
+          situational:
+            '0':
+              isSituational: true
+              onByDefault: false
+ownership:
+  default: 0
+flags:
+  core: {}
+folder: null
+sort: 0
+_id: 9pZMYMlVFeWDS56L
