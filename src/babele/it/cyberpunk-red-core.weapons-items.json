@@ -121,16 +121,16 @@
             "name": "Lanciagranate (Scarso)"
         },
         "Heavy Melee": {
-            "description": "<p>Generic Heavy Melee Weapon</p>",
-            "name": "Heavy Melee"
+            "description": "<p>Arma da Mischia Pesante Generica</p>",
+            "name": "Arma da Mischia Pesante"
         },
         "Heavy Melee (Excellent)": {
-            "description": "<p>Generic Excellent Quality Heavy Melee Weapon.<br />+1 to Attack.</p>",
-            "name": "Heavy Melee (Excellent)"
+            "description": "<p>Arma Generica da Mischia Pesante di Eccellente Qualità.<br />+1 all'Attacco.</p>",
+            "name": "Arma da Mischia Pesante (Eccellente)"
         },
         "Heavy Melee (Poor)": {
-            "description": "<p>Generic Poor Quality Heavy Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Heavy Melee (Poor)"
+            "description": "<p>Arma da Mischia Pesante Generica di Bassa Qualità.<br />Se fai 1 sul tiro per colpire (Fallimento Critico) l'arma fallisce in qualche modo e richiede un'azione per utilizzarla nuovamente</p>",
+            "name": "Arma da Mischia Pesante (Scarsa)"
         },
         "Heavy Pistol": {
             "description": "<p>Una pistola pesante occultabile. </p>",
@@ -185,16 +185,16 @@
             "name": "Tubo di Piombo (Scarso)"
         },
         "Light Melee": {
-            "description": "<p>Generic Light Melee Weapon</p>",
-            "name": "Light Melee"
+            "description": "<p>Arma da Mischia Leggera Generica</p>",
+            "name": "Arma da Mischia Leggera"
         },
         "Light Melee (Excellent)": {
-            "description": "<p>Generic Excellent Quality Light Melee Weapon.<br />+1 to Attack.</p>",
-            "name": "Light Melee (Excellent)"
+            "description": "<p>Arma da Mischia Leggera Generica di Eccellente Qualità.<br />+1 all'attacco.</p>",
+            "name": "Arma da Mischia Leggera (Eccellente)"
         },
         "Light Melee (Poor)": {
-            "description": "<p>Generic Poor Quality Light Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Light Melee (Poor)"
+            "description": "<p>Un'Arma da Mischia Leggera di Bassa Qualità.<br /> Se fai 1 all'Attacco (Fallimento Critico) l'arma fallisce in qualche modo e richiede un'azione per utilizzarla nuovamente.</p>",
+            "name": "Arma da Mischia Leggera (Scarsa)"
         },
         "Machete": {
             "description": "<p>Un coltello a lama lunga per una varietà di usi. Preferito da alcune bande di Night City. </p>",
@@ -217,16 +217,16 @@
             "name": "Arti Marziali"
         },
         "Medium Melee": {
-            "description": "<p>Generic Medium Melee Weapon</p>",
-            "name": "Medium Melee"
+            "description": "<p>Arma da Mischia Media Generica</p>",
+            "name": "Arma da Mischia Media"
         },
         "Medium Melee (Excellent)": {
-            "description": "<p>Generic Excellent Quality Medium Melee Weapon.<br />+1 to Attack.</p>",
-            "name": "Medium Melee (Excellent)"
+            "description": "<p>Arma da Mischia Media Generica di Eccellente Qualità.<br />+1 all'Attacco.</p>",
+            "name": "Arma da Mischia Media (Eccellente)"
         },
         "Medium Melee (Poor)": {
-            "description": "<p>Generic Poor Quality Medium Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Medium Melee (Poor)"
+            "description": "<p>Arma da Mischia Media Generica di Bassa Qualità.<br />Se fai 1 sul tiro per colpire (Fallimento Critico) l'arma fallisce in qualche modo e richiede un'azione per utilizzarla nuovamente</p>",
+            "name": "Arma da Mischia Media (Scarsa)"
         },
         "Medium Pistol": {
             "description": "<p>Una pistola di medie dimensioni occultabile. </p>",
@@ -397,16 +397,16 @@
             "name": "Zanne Vampiriche"
         },
         "Very Heavy Melee": {
-            "description": "<p>Generic Very Heavy Melee Weapon</p>",
-            "name": "Very Heavy Melee"
+            "description": "<p>Arma da Mischia Molto Pesante Generica</p>",
+            "name": "Arma da Mischia Molto Pesante"
         },
         "Very Heavy Melee (Excellent)": {
-            "description": "<p>Generic Excellent Quality Very Heavy Melee Weapon.<br />+1 to Attack.</p>",
-            "name": "Very Heavy Melee (Excellent)"
+            "description": "<p>Arma da Mischia Molto Pesante Generica di Eccellente Qualità.<br />+1 all'Attacco.</p>",
+            "name": "Arma da Mischia Molto Pesante (Eccellente)"
         },
         "Very Heavy Melee (Poor)": {
-            "description": "<p>Generic Poor Quality Very Heavy Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Very Heavy Melee (Poor)"
+            "description": "<p>Arma da Mischia Molto Pesante Generica di Bassa Qualità.<br />Se fai 1 sul tiro per colpire (Fallimento Critico) l'arma fallisce in qualche modo e richiede un'azione per utilizzarla nuovamente</p>",
+            "name": "Arma da Mischia Molto Pesante (Scarsa)"
         },
         "Very Heavy Pistol": {
             "description": "<p>Una Pistola Molto Pesante. Non può essere nascosta. </p>",
