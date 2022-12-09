@@ -175,7 +175,7 @@ export default class CPRActorSheet extends ActorSheet {
       if (!(typeof e.flags.core !== "undefined" && typeof e.flags.core.statusId !== "undefined") || setting) {
         // Get effects with no changes and display in the Permanent Effects category.
         // This is a rare case where a user makes an effect but doesn't add any changes.
-        if (e.changes.length === 0) {
+        if (e.changes.length === 0 && !e.disabled && !e.system.isSuppressed) {
           categories.permanent.effects.push(simplifiedEffect);
         }
 
