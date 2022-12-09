@@ -415,8 +415,6 @@ build-artifacts:
     - job: lint-json
     - job: lint-yaml
     - job: lint-markdown
-    - job: lint-files
-      optional: true
     - job: unit-test
     - job: test-shell-scripts
       optional: true
