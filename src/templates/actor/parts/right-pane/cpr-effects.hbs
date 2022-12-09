@@ -33,7 +33,7 @@
                             {{~#unless @last}},{{/unless}}
                         {{/each}}
                     {{else}}
-                      {{localize "(This effect has no changes in this category)"}}
+                      ({{localize "CPR.characterSheet.rightPane.effects.noBonusesConfigured"}})
                     {{/if}}
                     </h4>
                 </div>
@@ -44,13 +44,11 @@
                     {{/if}}
                 </div>
                 <div class="effect-actions text-padding-right">
-                  {{#unless (cprCompare section.type "===" "situational")}}
                     {{#if (cprShowEffectToggle effect ../../actor.name)}}
                         <a class="effect-control" data-action="toggle" title="{{localize 'CPR.characterSheet.rightPane.effects.toggle'}}">
                             <i class="far {{#if effect.disabled}}fa-circle{{else}}fa-check-circle{{/if}}"></i>
                         </a>
                     {{/if}}
-                  {{/unless}}
                     {{#if (cprCompare effect.sourceName "===" ../../actor.name)}}
                         <a class="effect-control" data-action="edit" title="{{localize 'CPR.characterSheet.rightPane.effects.edit'}}">
                             <i class="fas fa-edit"></i>
