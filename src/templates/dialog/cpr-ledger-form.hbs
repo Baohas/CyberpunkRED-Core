@@ -23,7 +23,7 @@
           </div>
           {{#if ../isGM}}
             <div class="ledger-delete">
-              <a class="delete-ledger-line" data-line="{{cprMath "subtract" ../contents.length @index 1}}"><i class="fas fa-trash-alt fg-red" title="{{localize "CPR.dialog.ledgerForm.delete"}}"></i></a>
+              <a class="delete-ledger-line" data-line="{{cprMath "subtract" ../contents.length @index 1}}"><i class="fas fa-trash-alt fg-red" data-tooltip="{{localize "CPR.dialog.ledgerForm.delete"}}"></i></a>
             </div>
           {{/if}}
         </li>

@@ -19,7 +19,7 @@
         {{#each (cprFindConfigObj "demonStatList") as |stat s|}}
           <div>
             {{#unless (cprListContains "rez,netactions" s)}}
-              <a class="rollable" data-roll-title="{{s}}" title="{{localize "CPR.actorSheets.rolling.clickToRollThisStat"}}">
+              <a class="rollable" data-roll-title="{{s}}" data-tooltip="{{localize "CPR.actorSheets.rolling.clickToRollThisStat"}}">
             {{/unless}}
             {{localize stat}}
             {{#unless (cprListContains "rez,netactions" s)}}
@@ -49,7 +49,7 @@
     </div>
     <div class="demon-details bg-red pad-thin">
       <div class="demon-icon">
-        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" data-tooltip="{{actor.name}}"/>
       </div>
       <div class="demon-notes pad-thin fg-white bg-red">
         <div class="demon-edit-section fg-black text-padding-left">
