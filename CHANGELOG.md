@@ -28,6 +28,7 @@
 - Changed the Extended Magazine and Drum Magazine upgrades to use the Ammo icon instead of the default icon
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
 - Rename the `Free` price category to `No Price`
+- Updated Drug Item descriptions to describe secondary effects
 
 ### Bug Fixes
 
