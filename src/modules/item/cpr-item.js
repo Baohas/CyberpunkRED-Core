@@ -232,7 +232,7 @@ export default class CPRItem extends Item {
       if (localCprRoll instanceof CPRRolls.CPRAttackRoll) {
         if (cprItemData.isRanged) {
           this.dischargeItem(localCprRoll);
-          const ammoType = this._getLoadedAmmoType();
+          const ammoType = this._getLoadedAmmoProp("type");
           if (ammoType !== "undefined") {
             localCprRoll.rollCardExtraArgs.ammoType = ammoType;
           }

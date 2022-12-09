@@ -19,6 +19,7 @@
 - Added 8 new vehicle icons
 - Added new icons for the Bodyweight Suit, the Bulletproof Shield, and generic head armor
 - Added new icons for the Body and Head Injury Tables
+- #565 - The amount an ammunition reduces SP on hit can be configured on the item. Compendium items were updated to use this too.
 
 ### Changes
 
@@ -26,6 +27,7 @@
 - #585 - renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes
 - Changed the Extended Magazine and Drum Magazine upgrades to use the Ammo icon instead of the default icon
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
+- Rename the `Free` price category to `No Price`
 
 ### Bug Fixes
 

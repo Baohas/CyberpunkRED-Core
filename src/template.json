@@ -315,7 +315,8 @@
         "valuable"
       ],
       "variety": "heavyPistol",
-      "type": "basic"
+      "type": "basic",
+      "ablationValue": 1
     },
     "armor": {
       "templates": [

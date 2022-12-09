@@ -241,14 +241,21 @@ const Attackable = function Attackable() {
 
     // Feed ammo type and variety into the rollCard arguments for the damage application button.
     if (cprWeaponData.isRanged) {
-      const ammoType = this._getLoadedAmmoType();
-      const ammoVariety = this._getLoadedAmmoVariety();
+      const ammoType = this._getLoadedAmmoProp("type");
+      const ammoVariety = this._getLoadedAmmoProp("variety");
+      const ablationValue = this._getLoadedAmmoProp("ablationValue");
       if (ammoType !== "undefined") {
         cprRoll.rollCardExtraArgs.ammoType = ammoType;
       }
       if (ammoVariety !== "undefined") {
         cprRoll.rollCardExtraArgs.ammoVariety = ammoVariety;
       }
+      if (ablationValue !== "undefined") {
+        cprRoll.rollCardExtraArgs.ablationValue = ablationValue;
+      }
+    } else {
+      // Assuming all melee items deal 1 ablation if they damage a target
+      cprRoll.rollCardExtraArgs.ablationValue = 1;
     }
 
     const halfArmorAttacks = [
