@@ -4,7 +4,7 @@
 
 ## Legal Stuff
 
-This game system (including items provided in the compendium) contains unofficial content provided under the Homebrew Content Policy of R. Talsorian Games and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
+- This game system (including items provided in the compendium) contains unofficial content provided under the Homebrew Content Policy of R. Talsorian Games and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
 
 ## Code
 
@@ -12,7 +12,7 @@ This game system (including items provided in the compendium) contains unofficia
 
 ## Fonts
 
-Audimat Typeface by [SMeltery](http://www.smeltery.net)
+- Audimat Typeface by [SMeltery](http://www.smeltery.net)
 
 ## Art
 
