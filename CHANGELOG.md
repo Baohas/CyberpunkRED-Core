@@ -32,6 +32,7 @@
 - Adjusted `vial_poison.svg` to better match other icons
 - Standardised the x-axis and y-axis offsets of the filters applied to `.svg` graphics
 - Capped the drop shadow intensity of the `.svg` graphics at `stdDeviation="15"`. This will make some of the darker graphics easier to read
+- Adjusted the formatting of the credits to enable easier reading
 
 ### Bug Fixes
 
