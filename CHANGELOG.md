@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
-## Version DEV | Date: TBD
+## Version 0.85.0 | Date: 2022-12-11
 
 ### New Features
 
@@ -28,6 +28,7 @@
 - Changed the Extended Magazine and Drum Magazine upgrades to use the Ammo icon instead of the default icon
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
 - Rename the `Free` price category to `No Price`
+- Use Foundry tooltips instead of browser tooltips
 - Updated Drug Item descriptions to describe secondary effects
 
 ### Bug Fixes
@@ -41,6 +42,7 @@
 - We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
 - #453 - Fixed strings that could not be translated properly
 - Fix item images in the item sheets for a number of compendium items
+- #601 - Rolled critical injuries do not apply active effects
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 

@@ -23,7 +23,7 @@
 		},
 		"Battleglove": {
 			"name": "Guanto da Battaglia",
-			"description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>"
+			"description": "<p>Un guanto pesante esotico, che copre la mano e l'avambraccio. Fornisce 3 slot di opzione da Cyberbraccio o Cyberarto. (Vedi pg. 347)</p>"
 		},
 		"Binoculars": {
 			"name": "Binocolo",
@@ -71,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Cyberdeck",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Piattaforma Netrunner. 7 slot.</span></p>"
+			"description": "<p>Piattaforma Netrunner. 7 slot.</p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Cellulare Usa-e-Getta",
@@ -91,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Cyberdeck di Alta Qualità",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Piattaforma Netrunner. 9 slot.</span></p>"
+			"description": "<p>Piattaforma Netrunner. 9 slot.</p>"
 		},
 		"Flashlight": {
 			"name": "Torcia Elettrica",
@@ -167,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Cyberdeck di Bassa Qualità",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Piattaforma Netrunner. 5 slot.</span></p>"
+			"description": "<p>Piattaforma Netrunner. 5 slot.</p>"
 		},
 		"Radar Detector": {
 			"name": "Rivelatore Radar",

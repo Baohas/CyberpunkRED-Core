@@ -36,19 +36,19 @@
                         </h4>
                         <span class="effect-actions text-padding-right effect-controls">
                             {{#if ../item.isOwned}}
-                                <i class="fas fa-question-circle" title="{{localize "CPR.itemSheet.effects.editOwnedWarning"}}"></i>
+                                <i class="fas fa-question-circle" data-tooltip="{{localize "CPR.itemSheet.effects.editOwnedWarning"}}"></i>
                             {{else}}
                                 {{#if (cprCompare ../item.system.usage "===" "toggled")}}
                                 <a class="effect-control" data-action="toggle" data-effect-id="{{item._id}}"
-                                    title="{{localize "CPR.itemSheet.effects.toggleEffectDesc"}}">
+                                    data-tooltip="{{localize "CPR.itemSheet.effects.toggleEffectDesc"}}">
                                     <i class="far {{#if item.system.disabled}}fa-circle{{else}}fa-check-circle{{/if}}"></i>
                                 </a>
                                 {{/if}}
-                                <a class="effect-control" data-action="edit" data-effect-id="{{this._id}}" title="{{localize "CPR.itemSheet.effects.editEffectDesc"}}">
+                                <a class="effect-control" data-action="edit" data-effect-id="{{this._id}}" data-tooltip="{{localize "CPR.itemSheet.effects.editEffectDesc"}}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <a class="effect-control" data-action="delete" data-effect-id="{{this._id}}"
-                                    title="{{localize " CPR.itemSheet.effects.deleteEffectDesc"}}">
+                                    data-tooltip="{{localize " CPR.itemSheet.effects.deleteEffectDesc"}}">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             {{/if}}
@@ -59,7 +59,7 @@
                     <br>
                     <div class="item-controls effect-controls">
                         <a class="effect-control" data-action="create"
-                            title="{{localize 'CPR.itemSheet.effects.createEffectDesc'}}">
+                            data-tooltip="{{localize 'CPR.itemSheet.effects.createEffectDesc'}}">
                             <i class="fas fa-plus"></i> {{localize "CPR.itemSheet.effects.createEffect"}}
                         </a>
                     </div>

@@ -8,7 +8,7 @@
         <div class="rollcard-subtitle-right">
           <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="{{location}}"
             data-token-id="{{entityData.token}}" data-item-id="{{entityData.item}}">
-            <i class="fas fa-tint red-fg" title="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
+            <i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
           </a>
         </div>
         {{#if rollCardExtraArgs.ammoType}}
