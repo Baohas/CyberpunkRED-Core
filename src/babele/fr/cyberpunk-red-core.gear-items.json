@@ -21,6 +21,10 @@
 			"name": "Protection auditive active",
 			"description": "<p>Le porteur est immunisé contre la surdité et les effets issus des sons dangereux, comme ceux produis par des munitions étourdissantes.</p>"
 		},
+		"Battleglove": {
+			"name": "Gantelet de combat",
+			"description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>"
+		},
 		"Binoculars": {
 			"name": "Jumelles",
 			"description": "<p>Vous regardez au travers et elles doublent ou triplent la taille de ce que vous voyez.</p>"

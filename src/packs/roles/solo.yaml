@@ -1,11 +1,4 @@
 _id: I4qtphsiVa4rj9U8
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831204019
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831204019
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -38,7 +31,8 @@ system:
       skill: '--'
       bonuses: []
       stat: '--'
-      universalBonuses: ['initiative']
+      universalBonuses:
+        - initiative
     - bonusRatio: 3
       description: ''
       hasRoll: false
@@ -107,7 +101,8 @@ system:
       skill: '--'
       bonuses: []
       stat: '--'
-      universalBonuses: ["damageReduction"]
+      universalBonuses:
+        - damageReduction
   addRoleAbilityRank: true
   bonusRatio: 1
   bonuses: []

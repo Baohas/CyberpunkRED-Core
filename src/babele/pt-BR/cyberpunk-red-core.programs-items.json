@@ -1,13 +1,13 @@
 {
-	"label": "Programs",
+	"label": "Programas",
 	"entries": {
 		"Armor": {
-			"name": "Armor",
-			"description": "<p>Reduce brain damage by 4 while Rezzed. Only 1 copy Rezzed at a time. Each copy has 1 use per Netrun.</p>"
+			"name": "Armadura",
+			"description": "<p>Reduz o dano cerebral em 4 enquanto Carregado. Limite de 1 cópia Carregada por vez. Cada cópia tem 1 uso por Invasão.</p>"
 		},
 		"Banhammer": {
 			"name": "Banhammer",
-			"description": "<p>Deals 3d6 REZ to non-Black ICE or 2d6 Rez damage to Black ICE. </p>"
+			"description": "<p>Causa 3d6 REZ a dano não-Preto ou 2d6 Rez ao Elixir Negro. </p>"
 		},
 		"DeckKRASH": {
 			"name": "DeckKRASH",
@@ -15,7 +15,7 @@
 		},
 		"Eraser": {
 			"name": "Eraser",
-			"description": "<p>+2 to Cloak Checks while Rezzed.</p>"
+			"description": "<p>+2 para Capa verificações enquanto Rezzed.</p>"
 		},
 		"Flak": {
 			"name": "Armadura",
@@ -30,36 +30,36 @@
 			"description": "<p>Por 1 hora, diminui o INT, REF e DES por 1d6 (min. 1).</p>"
 		},
 		"Poison Flatline": {
-			"name": "Poison Flatline",
+			"name": "Alinhamento Venenoso",
 			"description": "<p>Destrui um gelo fora do preto no baralho inimigo aleAtoriamente.</p>"
 		},
 		"See Ya": {
 			"name": "See Ya",
-			"description": "<p>+2 to Pathfinder Checks while Rezzed.</p>"
+			"description": "<p>+2 para os Verificadores de Descobridor enquanto Rezido.</p>"
 		},
 		"Shield": {
-			"name": "Shield",
-			"description": "<p>The first successful brain damage attack from a Non-Black ICE Program is stopped. Only 1 copy may be Rezzed at a time. Each copy has 1 use per Netrun.</p>"
+			"name": "Escudos",
+			"description": "<p>O primeiro ataque ao cérebro de um Programa ICE não Negro é interrompido. Apenas 1 cópia pode ser Rezada de cada vez. Cada cópia tem 1 uso por Invasão.</p>"
 		},
 		"Speedy Gonzalvez": {
-			"name": "Speedy Gonzalvez",
-			"description": "<p>+2 to Speed while Rezzed.</p>"
+			"name": "Veloz Gonzalvez",
+			"description": "<p>+2 a Velocidade enquanto Rezido.</p>"
 		},
 		"Superglue": {
-			"name": "Superglue",
+			"name": "Super-cola",
 			"description": "<p>O Trilha Rede não pode continuar a descer na REDE local ou Desconectar com segurança por 1d6 turnos. Uso limitado de 1 por Invasão.</p>"
 		},
 		"Sword": {
-			"name": "Sword",
-			"description": "<p>Deals 3d6 REZ to Black ICE or 2d6 Rez damage to non-Black ICE. </p>"
+			"name": "Espada",
+			"description": "<p>Causa dano 3d6 REZ ao Elixir Negro ou 2d6 Rez ao Elixir não-Negro. </p>"
 		},
 		"Vrizzbolt": {
 			"name": "Vrizzbolt",
 			"description": "<p>1d6 de dano direto ao cérebro do Trilha Rede. Abaixa o total de ações na REDE em 1 até o próximo turno. (mínimo de ações de REDE é 2)</p>"
 		},
 		"Worm": {
-			"name": "Worm",
-			"description": "<p>+2 to Backdoor Checks while Rezzed.</p>"
+			"name": "Minhoca",
+			"description": "<p>+2 para as verificações da porta de trás enquanto Quebrado.</p>"
 		}
 	}
 }

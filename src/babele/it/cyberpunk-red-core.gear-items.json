@@ -21,6 +21,10 @@
 			"name": "Protezione Auricolare Autolivellante",
 			"description": "<p>L'utente è immune ai suoni rumorosi.</p>"
 		},
+		"Battleglove": {
+			"name": "Guanto da Battaglia",
+			"description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>"
+		},
 		"Binoculars": {
 			"name": "Binocolo",
 			"description": "<p>Utile per bersagli lontani. Ingrandimento: x2 o x3.</p>"

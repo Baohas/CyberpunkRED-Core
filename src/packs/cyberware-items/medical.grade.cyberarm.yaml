@@ -1,11 +1,4 @@
 _id: 2Y63wKxk8P94YQUP
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830963856
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830963856
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -28,7 +21,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: <p>A medical grace cyberarm. Does not allow options to be installed.</p>
+    value: <p>A medical grade cyberarm. Does not allow options to be installed.</p>
   dvTable: ''
   favorite: false
   fireModes:

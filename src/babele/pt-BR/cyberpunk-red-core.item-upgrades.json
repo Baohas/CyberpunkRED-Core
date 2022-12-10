@@ -1,132 +1,132 @@
 {
-	"label": "Upgrades",
+	"label": "Melhorias",
 	"entries": {
 		"Assault Rifle Drum Magazine": {
-			"name": "Assault Rifle Drum Magazine",
+			"name": "Cartucho de Rifle de Assalto",
 			"description": ""
 		},
 		"Assault Rifle Extended Magazine": {
-			"name": "Assault Rifle Extended Magazine",
+			"name": "Rifle de Assalto Estendido",
 			"description": ""
 		},
 		"Backup Drive": {
-			"name": "Backup Drive",
+			"name": "Unidade de backup",
 			"description": "<p>Grava programas não Black ICE quando são destruídos. Esses programas podem ser reinstalados por um Trilha Rede usando uma ação de Carne.&nbsp;</p>"
 		},
 		"Bayonet": {
-			"name": "Bayonet",
+			"name": "Baioneta",
 			"description": ""
 		},
 		"DNA Lock": {
-			"name": "DNA Lock",
+			"name": "Fechadura de DNA",
 			"description": "<p>Utiliza dados biométricos para bloquear o deck cibernético. Requer a verificação VD17 de Eletrônicos/Segurança para decifrar.&nbsp;</p>"
 		},
 		"Grenade Launcher Drum Magazine": {
-			"name": "Grenade Launcher Drum Magazine",
+			"name": "Revista de Tambor de Lança Granada",
 			"description": ""
 		},
 		"Grenade Launcher Extended Magazine": {
-			"name": "Grenade Launcher Extended Magazine",
+			"name": "Revista Estendida do Lançador de Granadas",
 			"description": ""
 		},
 		"Grenade Launcher Underbarrel": {
-			"name": "Grenade Launcher Underbarrel",
+			"name": "Lançador de Granadas",
 			"description": ""
 		},
 		"Hardened Circuitry": {
-			"name": "Hardened Circuitry",
+			"name": "Circuito Endurecido",
 			"description": "<p>O Console não pode ser desativado ou destruído pelos efeitos de EMP.&nbsp;</p>"
 		},
 		"Heavy Pistol Drum Magazine": {
-			"name": "Heavy Pistol Drum Magazine",
+			"name": "Revista Pesada de Tambor de Pistola",
 			"description": ""
 		},
 		"Heavy Pistol Extended Magazine": {
-			"name": "Heavy Pistol Extended Magazine",
+			"name": "Pistola Pesada Estendida",
 			"description": ""
 		},
 		"Heavy SMG Drum Magazine": {
-			"name": "Heavy SMG Drum Magazine",
+			"name": "Munição de Drum Pesada",
 			"description": ""
 		},
 		"Heavy SMG Extended Magazine": {
-			"name": "Heavy SMG Extended Magazine",
+			"name": "Munição de SMG estendida",
 			"description": ""
 		},
 		"Infrared Nightvision Scope": {
-			"name": "Infrared Nightvision Scope",
-			"description": "<p>Reduces penalties against targets in darkness, smoke/fog to 0.</p>"
+			"name": "Escopo Infravermelho de Noite",
+			"description": "<p>Reduz as penalizações contra alvos na escuridão, fumaça/nevoa para 0.</p>"
 		},
 		"Insulated Wiring": {
-			"name": "Insulated Wiring",
-			"description": "<p>Cyberdeck and user clothing cannot catch fire.&nbsp;</p>"
+			"name": "Fiação Isolada",
+			"description": "<p>Baralho virtual e roupas de usuário não podem pegar o fogo.&nbsp;</p>"
 		},
 		"KRASH Barrier": {
-			"name": "KRASH Barrier",
+			"name": "Barreira KRASH",
 			"description": "<p>O Console é imune a efeitos que forçam o Trilha Rede a Desconectar (de forma segura ou insegura)</p>"
 		},
 		"Medium Pistol Drum Magazine": {
-			"name": "Medium Pistol Drum Magazine",
+			"name": "Revista Média de Drum Pistola",
 			"description": ""
 		},
 		"Medium Pistol Extended Magazine": {
-			"name": "Medium Pistol Extended Magazine",
+			"name": "Munição Estendida de Pistola Média",
 			"description": ""
 		},
 		"Range Upgrade": {
-			"name": "Range Upgrade",
+			"name": "Melhoria de Alcance",
 			"description": "<p>O Console pode se conectar a pontos de até 8m/yds de distância (em vez de 6m/yds).</p>"
 		},
 		"Rocket Launcher Drum Magazine": {
-			"name": "Rocket Launcher Drum Magazine",
+			"name": "Munição de Tambor de Lança-foguetes",
 			"description": ""
 		},
 		"Rocket Launcher Extended Magazine": {
-			"name": "Rocket Launcher Extended Magazine",
+			"name": "Cartucho Estendido de Lança-foguetes",
 			"description": ""
 		},
 		"SMG Drum Magazine": {
-			"name": "SMG Drum Magazine",
+			"name": "SMG Drum Cartucho",
 			"description": ""
 		},
 		"SMG Extended Magazine": {
-			"name": "SMG Extended Magazine",
+			"name": "SMG Revista Estendida",
 			"description": ""
 		},
 		"Shotgun Drum Magazine": {
-			"name": "Shotgun Drum Magazine",
+			"name": "Cartucho de Escopeta",
 			"description": ""
 		},
 		"Shotgun Extended Magazine": {
-			"name": "Shotgun Extended Magazine",
+			"name": "Cartucho de Espingarda Estendida",
 			"description": ""
 		},
 		"Shotgun Underbarrel": {
-			"name": "Shotgun Underbarrel",
+			"name": "Escopeta de barro",
 			"description": ""
 		},
 		"Smartgun Link": {
-			"name": "Smartgun Link",
-			"description": "<p>Turns weapon into a \"Smartgun\". Refer to all rules specified on pg. 344 before using.&nbsp;</p>"
+			"name": "Link Smartgun",
+			"description": "<p>Transforma arma em \"Smartgun\". Consulte todas as regras especificadas na configuração por exemplo. 344 antes de usar.&nbsp;</p>"
 		},
 		"Sniper Rifle Drum Magazine": {
-			"name": "Sniper Rifle Drum Magazine",
+			"name": "Munição de Tambor Atirador",
 			"description": ""
 		},
 		"Sniper Rifle Extended Magazine": {
-			"name": "Sniper Rifle Extended Magazine",
+			"name": "Cartucho Estendido de Rifle Atirador",
 			"description": ""
 		},
 		"Sniping Scope": {
-			"name": "Sniping Scope",
-			"description": "<p>Allows you to see detail up to 800m/yds. +1 to Single Shot/Aimed Shots for targets greater than 51m/yds.&nbsp;</p>"
+			"name": "Escopo Sniping",
+			"description": "<p>Permite a você ver detalhes de até 800 m/yds. +1 a Tiros Único/Aimado por alvos maiores que 51 m/yds.&nbsp;</p>"
 		},
 		"Very Heavy Pistol Drum Magazine": {
-			"name": "Very Heavy Pistol Drum Magazine",
+			"name": "Cartucho de tambor de pistola muito pesado",
 			"description": ""
 		},
 		"Very Heavy Pistol Extended Magazine": {
-			"name": "Very Heavy Pistol Extended Magazine",
+			"name": "Revista Estendida de Pistola Muito Pesada",
 			"description": ""
 		}
 	}

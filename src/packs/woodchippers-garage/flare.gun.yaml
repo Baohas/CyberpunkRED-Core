@@ -1,0 +1,57 @@
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher.svg
+name: Flare Gun
+system:
+  weaponType: grenadeLauncher
+  weaponSkill: Heavy Weapons
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 6d6
+  rof: 1
+  dvTable: DV Grenade Launcher
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: >-
+      <p>As well as normal Grenade Ammunition, this weapon can fire road flares.
+      They don't deal any damage, but if fired into the air can be seen from 3
+      miles. You cannot install this weapon in Pop-up Cyberware.</p>
+    chat: ''
+    unidentified: ''
+  source: WG
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 1
+    ammoId: ''
+  ammoVariety:
+    - grenade
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 100
+    category: expensive
+  handsReq: 2
+  attachmentSlots: 3
+  isConcealed: false
+  quality: standard
+  upgrade: ''
+type: weapon
+_id: moqJ5beR4WqWCpZM
+folder: null
+sort: 0
+ownership:
+  default: 0

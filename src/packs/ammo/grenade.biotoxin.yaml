@@ -1,0 +1,32 @@
+_id: TOftCgogDvWvXV1z
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_biotoxin.png
+name: Grenade (Biotoxin)
+ownership:
+  default: 0
+sort: 0
+system:
+  ablationValue: 0
+  amount: '1'
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>No immediate damage. If hit DV15 Resist Torture/Drugs Check. On a fail
+      3d6 damage to HP. No Ablation. </p>
+  favorite: false
+  price:
+    category: expensive
+    market: 500
+  source: pg. 345
+  tags: []
+  type: biotoxin
+  upgrade: ''
+  variety: grenade
+type: ammo

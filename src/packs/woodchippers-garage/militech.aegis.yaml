@@ -1,0 +1,57 @@
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun_poor.svg
+name: Militech Aegis
+system:
+  weaponType: shotgun
+  weaponSkill: Heavy Weapons
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 4d6
+  rof: 1
+  dvTable: ''
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: >-
+      <p>This weapon can't cause Critical Injuries, can't ablate armor, and if
+      it would reduce a target to under 1 HP it instead leaves them Unconscious
+      on 1 HP.</p>
+    chat: ''
+    unidentified: ''
+  source: WG
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 4
+    ammoId: ''
+  ammoVariety:
+    - battery
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 1000
+    category: premium
+  handsReq: 2
+  attachmentSlots: 3
+  isConcealed: false
+  quality: poor
+  upgrade: ''
+type: weapon
+_id: Z8YmmVuwRRD2Xa4H
+folder: null
+sort: 0
+ownership:
+  default: 0

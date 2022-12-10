@@ -3,19 +3,28 @@ import gulp from "gulp";
 import * as bld from "./gulp/build.mjs";
 import * as packs from "./gulp/packs.mjs";
 
+// Cleans the target dir. MUST Be run on it's own in series
 export const clean = gulp.series(bld.cleanDist);
-export const assets = gulp.series(bld.copyAssets);
-export const system = gulp.series(bld.buildManifest);
-export const less = gulp.series(bld.compileLess);
-export const extractPacks = gulp.series(packs.extPacks);
-export const generatePacks = gulp.series(packs.genPacks);
 
+// Functions that can run in parallel
+export const assets = gulp.parallel(
+  bld.compileLess,
+  packs.genPacks,
+  bld.processSvgs,
+  bld.processImages,
+  bld.buildManifest,
+  bld.buildChangelog,
+  bld.copyAssets,
+
+);
+
+// Export packs from Foundry to src/packs
+export const extractPacks = gulp.series(packs.extPacks);
+
+//
 export const build = gulp.series(
   clean,
   assets,
-  system,
-  less,
-  generatePacks,
 );
 
 // Don't just call `build` & `bld.watch` because `build` cleans the directory
@@ -23,7 +32,5 @@ export const build = gulp.series(
 // the file descriptors to the packs change which it does not like.
 export const watch = gulp.series(
   assets,
-  system,
-  less,
   bld.watchSrc,
 );

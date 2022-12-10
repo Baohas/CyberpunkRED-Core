@@ -1,16 +1,10 @@
 _id: aFg1nXhz37e1C2YP
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831027213
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027213
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/item_upgrades/shotgun_underbarrel.svg
 name: Shotgun Underbarrel
 ownership:
   default: 0

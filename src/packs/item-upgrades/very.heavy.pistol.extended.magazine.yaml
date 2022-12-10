@@ -1,16 +1,9 @@
 _id: utFnYSEQcCxYgwAE
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831027213
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027213
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
 name: Very Heavy Pistol Extended Magazine
 ownership:
   default: 0

@@ -189,6 +189,14 @@
 			"name": "Gamba Di Carne",
 			"description": "<p>Una gamba regolare. Questo può supportare allegati come un Piede Standard o armi come il Piede Pattino.</p>"
 		},
+		"Medical Grade CyberArm": {
+			"name": "Medical Grade CyberArm",
+			"description": "<p>A medical grade cyberarm. Does not allow options to be installed.</p>"
+		},
+		"Medical Grade CyberLeg": {
+			"name": "Medical Grade CyberLeg",
+			"description": "<p>A medical grade cyberleg. Does not allow options to be installed.</p>"
+		},
 		"Medscanner": {
 			"name": "Medscanner",
 			"description": "<p>Medscanner installato nel braccio. Aiuta a diagnosticare ferite e malattie. +2 a Pronto Soccorso e Paramedico.</p>"

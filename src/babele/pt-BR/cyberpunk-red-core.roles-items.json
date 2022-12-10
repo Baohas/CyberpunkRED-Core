@@ -1,25 +1,25 @@
 {
-	"label": "Roles",
+	"label": "Papéis",
 	"entries": {
 		"Exec": {
-			"name": "Exec",
-			"description": "<p>Business executives and fat-cat defenders ready to risk it all to rise the corporate ladder and realize the New American dream.</p>"
+			"name": "Sec",
+			"description": "<p>Executivos empresariais e defensores de fat-cat prontos para arriscar tudo para elevar a escada corporativa e realizar o novo sonho americano.</p>"
 		},
 		"Fixer": {
-			"name": "Fixer",
-			"description": "<p>They can get anyone anything, as long as the price is right. Using their charm and skills of trade, they make the deals that keep the economy of the Dark Future flowing.</p>"
+			"name": "Reparador",
+			"description": "<p>Eles podem obter qualquer coisa, desde que o preço esteja certo. Usando seu charme e suas habilidades de comércio, eles fazem os negócios que mantêm a economia do futuro das Trevas fluindo.</p>"
 		},
 		"Lawman": {
-			"name": "Lawman",
-			"description": "<p>Renegade defenders, corporate strike teams, or the last remnants of a government police force, they patrol the streets to enforce some order in an otherwise lawless world.</p>"
+			"name": "Advogado",
+			"description": "<p>Embaixadores Renegados, equipes de ataque corporativo, ou os últimos vestígios de uma força policial do governo, patrulham as ruas para impor alguma ordem num mundo sem lei de outra forma.</p>"
 		},
 		"Media": {
-			"name": "Media",
-			"description": "<p>Newspeople, influencers, and cultural phenomena, they are ready to expose the truth by any means necessary.</p>"
+			"name": "Multimídia",
+			"description": "<p>Newspeople, influentes e fenômenos culturais, eles estão prontos para expor a verdade de qualquer forma necessário.</p>"
 		},
 		"Medtech": {
 			"name": "Medtech",
-			"description": "<p>Backalley doctors and mechanics of cyberware, using their skills to keep fellow edgerunners in good shape and cybered up, often at a price.</p>"
+			"description": "<p>Médicos cobertos e mecânicas de ciberware, usando suas habilidades para manter os colegas edgeruneiros em boa forma e cilindrados, muitas vezes com um preço.</p>"
 		},
 		"Netrunner": {
 			"name": "Trilha Rede",
@@ -27,19 +27,19 @@
 		},
 		"Nomad": {
 			"name": "Nomad",
-			"description": "<p>Car people, truckers, transportation afficionados, air-pirates, they are the sole carriers of product across the world, maintaining the transport and supply chains in the time of the Red.</p>"
+			"description": "<p>Rostos, caminhões, transportadores afficionados, air-pirates, São as únicas transportadoras de produtos de todo o mundo, mantendo os transportes e as cadeias de abastecimento no tempo do Reno.</p>"
 		},
 		"Rockerboy": {
 			"name": "Rockerboy",
-			"description": "<p>Rebellious performance artists who use their craft to influence fans/crowds and fight back.</p>"
+			"description": "<p>Artistas de desempenho rebeldes que usam seu artesanato para influenciar fãs/multidões e retorno</p>"
 		},
 		"Solo": {
 			"name": "Solo",
-			"description": "<p>Experts in combat who use their fighting prowess to dominate in the lawless time of the Red.</p>"
+			"description": "<p>Especialistas em combate que usam sua capacidade de luta para dominar em tempos sem lei do Red.</p>"
 		},
 		"Tech": {
-			"name": "Tech",
-			"description": "<p>Superior understanding of all-things tech allow them to invent, upgrade, and repair to keep the Dark Future functioning.</p>"
+			"name": "Tecnologia",
+			"description": "<p>Compreensão superior de tudo o que é tecnologia permite que eles inventem, melhorem e reparem para manter o Dark Future functioning.</p>"
 		}
 	}
 }

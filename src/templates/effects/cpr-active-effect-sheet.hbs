@@ -118,7 +118,7 @@
                           Being an array creats a problem when a change in the middle of the list is deleted.
                            <a class="effect-change-control" data-action="delete" data-index={{i}}><i class="fas fa-trash"></i></a>  --}}
                     {{#unless (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "stat")}}
-                        <i class="fas fa-question-circle" title="{{localize "CPR.effectSheet.info.deleteAndModesComing"}}"></i>
+                        <i class="fas fa-question-circle" data-tooltip="{{localize "CPR.effectSheet.info.deleteAndModesComing"}}"></i>
                     {{/unless}}
                 </div>
             </li>
