@@ -37,24 +37,31 @@
                 <a class="item-action skill-custom" title="{{localize "CPR.characterSheet.rightPane.skills.editCustomSkill"}}" data-action-type="delete"><i class="fas fa-trash-alt"></i></a>
                 {{/if}}
             </div>
-            <div class="item-detail skill-mod-value text-nowrap {{#if (cprCompare (cprGetSkillModInfo skill.name ../actor "modTotal") "===" 0)}} zero-not-visible {{/if}}">
+
+            {{!-- MOD --}}
+            {{!-- Don't show MOD unless its non-zero or has situational modifiers --}}
+            <div class="item-detail skill-mod-value text-nowrap
+              {{#unless (cprGetSkillModInfo skill.name ../actor "modTotal")}}
+              {{#unless (cprGetSkillModInfo skill.name ../actor "hasSituational")}}
+                zero-not-visible
+              {{/unless}}{{/unless}}
+            ">
                 <span
                   {{#if (cprGetSkillModInfo skill.name ../actor "hasSituational")}}
                     class="text-italics"
                   {{/if}}
-                  {{#if (cprGetSkillModInfo skill.name ../actor "modList")}}
+                  {{#if (cprGetSkillModInfo skill.name ../actor "modList" keepSituational=true)}}
                     data-tooltip="
-                      {{localize "CPR.characterSheet.rightPane.skills.modBreakdown"}}:
-                      <hr>
                       {{#each (cprGetSkillModInfo skill.name ../actor "modList" keepSituational=true) as |mod|}}
                         {{mod.source}}
                         ({{cprGetChangeNameByKey false mod.category mod.key}}):
                         {{cprEffectModMode mod.changeMode mod.value}}
+                        {{~#if mod.isSituational}}*{{/if}}
                         {{#unless @last}}<br>{{/unless}}
                       {{/each}}
                       {{#if (cprGetSkillModInfo skill.name ../actor "hasSituational")}}
                         <hr>
-                        {{localize "CPR.characterSheet.rightPane.skills.situationalModWarning"}}
+                        *{{localize "CPR.characterSheet.rightPane.skills.situationalModWarning"}}
                       {{/if}}
                     "
                   {{/if}}
