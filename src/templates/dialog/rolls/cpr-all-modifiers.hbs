@@ -1,7 +1,7 @@
 {{cprTrace "START DIALOG ROLLS CPR-ALL-MODIFIERS.HBS"}}
 <li class="item flexrow">
     <div class="item flexrow setting-name text-nowrap">
-        {{localize "CPR.rolls.mods"}}:
+        {{localize "CPR.rolls.modifiers.modsTotal"}}:
     </div>
     <div class="item flexrow setting-value text-nowrap item-end" {{#if (cprCompare rollData.mods.length "||" rollData.additionalMods.length)}} data-tooltip="
         {{#each rollData.mods as |mod|}}
@@ -12,7 +12,7 @@
             {{localize "CPR.rolls.modifiers.additionalMods"}}:{{#each rollData.additionalMods as |mod|}}&nbsp;{{numberFormat mod sign=true}}{{#unless @last}},{{/unless}}{{/each}}
           {{/if}}
       ">{{/if}}
-      <input disabled name="mods" class="" type="text" data-dtype="String" value="{{#each rollData.mods as |mod|}}{{numberFormat mod.value sign=true}}{{#unless @last}}, {{/unless}}{{/each}}">
+      <span>{{numberFormat totalMods sign=true}}</span>
     </div>
 </li>
 {{cprTrace "END CPR-ALL-MODIFIERS.HBS"}}
