@@ -21,6 +21,11 @@
                         {{localize "CPR.global.generic.amount"}}
                       </span>
                     {{/if}}
+                    {{#if (cprListContains "armor" c)}}
+                      <span class="item-detail gear-amount bg-black gear-section-header text-nowrap">
+                        {{localize "CPR.global.generic.stats"}}
+                      </span>
+                    {{/if}}
                     {{#if (cprListContains "weapon" c)}}
                       <span class="item-detail gear-amount bg-black gear-section-header text-nowrap">
                         {{localize "CPR.global.itemTypes.ammo"}}
