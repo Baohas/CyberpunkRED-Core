@@ -846,7 +846,16 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Get the transient bonus value applied to skills applied from Active Effects
+   * Returns requested information about a skill mod: Either an array of all CPRMods,
+   * the total value of all the mods, or a boolean whether the mod has situational bonuses or not.
+   *
+   * @param {String} skillName - the skill name (e.g. from CPR.skillList) to look up
+   * @param {Object} actor - the actor whom the skill belongs to.
+   * @param {String} infoType - type of info being requested ("modTotal", "modList", or "hasSituational")
+   * @param {Object} options - Contains Hash Argument from Handlebars. In this case, the only option is
+   *                           keepSituational, which is a Boolean to filter out situational mods or not.
+   *                           See: https://handlebarsjs.com/guide/block-helpers.html#hash-arguments
+   * @returns {Number|Array<object>|Boolean} - see above description.
    */
   Handlebars.registerHelper("cprGetSkillModInfo", (skillName, actor, infoType, options) => {
     LOGGER.trace("cprGetSkillModInfo | handlebarsHelper | Called.");
