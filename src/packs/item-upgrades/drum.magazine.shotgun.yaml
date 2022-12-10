@@ -1,9 +1,9 @@
-_id: RMNHcBUByOmZ8uEo
+_id: I7Uv0EmzaDAmdFeV
 _stats:
   coreVersion: '10.276'
-  createdTime: 1659831027205
+  createdTime: 1659831027208
   lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027205
+  modifiedTime: 1659831027208
   systemId: cyberpunk-red-core
   systemVersion: 0.82.0
 effects: []
@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Heavy SMG Drum Magazine
+name: Drum Magazine (Shotgun)
 ownership:
   default: 0
 sort: 0
@@ -50,7 +50,7 @@ system:
       value: null
     magazine:
       type: modifier
-      value: 20
+      value: 12
     rof:
       type: modifier
       value: null

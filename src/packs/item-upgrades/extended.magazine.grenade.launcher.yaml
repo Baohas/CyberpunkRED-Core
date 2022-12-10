@@ -1,9 +1,9 @@
-_id: seI3exdDPXajjFFz
+_id: P4XioOHNf343JNm9
 _stats:
   coreVersion: '10.276'
-  createdTime: 1659831027211
+  createdTime: 1659831027205
   lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027211
+  modifiedTime: 1659831027205
   systemId: cyberpunk-red-core
   systemVersion: 0.82.0
 effects: []
@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Sniper Rifle Extended Magazine
+name: Extended Magazine (Grenade Launcher)
 ownership:
   default: 0
 sort: 0
@@ -50,7 +50,7 @@ system:
       value: null
     magazine:
       type: modifier
-      value: 4
+      value: 2
     rof:
       type: modifier
       value: null

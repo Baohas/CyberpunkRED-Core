@@ -1,9 +1,9 @@
-_id: 3z654ef9UlgH8o1o
+_id: eGEFGoNkBzbqv8jh
 _stats:
   coreVersion: '10.276'
-  createdTime: 1659831027208
+  createdTime: 1659831027213
   lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027208
+  modifiedTime: 1659831027213
   systemId: cyberpunk-red-core
   systemVersion: 0.82.0
 effects: []
@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: SMG Drum Magazine
+name: Extended Magazine (Heavy Pistol)
 ownership:
   default: 0
 sort: 0
@@ -50,15 +50,15 @@ system:
       value: null
     magazine:
       type: modifier
-      value: 20
+      value: 6
     rof:
       type: modifier
       value: null
     secondaryWeapon:
       configured: 'false'
   price:
-    category: expensive
-    market: 500
+    category: premium
+    market: 100
   rof: 1
   size: 1
   source: pg. 343

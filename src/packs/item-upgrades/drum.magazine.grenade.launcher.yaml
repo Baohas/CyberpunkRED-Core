@@ -1,9 +1,9 @@
-_id: mtYBtYyjuFKOMngN
+_id: J51qZjmuEheNiamo
 _stats:
   coreVersion: '10.276'
-  createdTime: 1659831027213
+  createdTime: 1659831027205
   lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027213
+  modifiedTime: 1659831027205
   systemId: cyberpunk-red-core
   systemVersion: 0.82.0
 effects: []
@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Assault Rifle Drum Magazine
+name: Drum Magazine (Grenade Launcher)
 ownership:
   default: 0
 sort: 0
@@ -50,7 +50,7 @@ system:
       value: null
     magazine:
       type: modifier
-      value: 20
+      value: 4
     rof:
       type: modifier
       value: null

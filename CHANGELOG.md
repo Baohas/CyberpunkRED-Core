@@ -25,6 +25,7 @@
 
 - The Babele module should no longer require renaming files or directories to make it work (#482)
 - #585 - renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes
+- Renamed the Extended Magazine and Drum Magazine upgrades (`SMG Drum Magazine` -> `Drum Magazine (SMG)`) to enable easier browsing and consistency with other naming schemes
 - Changed the Extended Magazine and Drum Magazine upgrades to use the Ammo icon instead of the default icon
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
 - Standardised raw `.svg` graphics to be squares, with any rounded applied later

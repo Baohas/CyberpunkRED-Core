@@ -1,4 +1,4 @@
-_id: I7Uv0EmzaDAmdFeV
+_id: 3z654ef9UlgH8o1o
 _stats:
   coreVersion: '10.276'
   createdTime: 1659831027208
@@ -11,7 +11,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Shotgun Drum Magazine
+name: Drum Magazine (SMG)
 ownership:
   default: 0
 sort: 0
@@ -50,7 +50,7 @@ system:
       value: null
     magazine:
       type: modifier
-      value: 12
+      value: 20
     rof:
       type: modifier
       value: null
