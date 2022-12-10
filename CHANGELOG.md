@@ -9,6 +9,7 @@
 - Added 12 new guns and 1 new attachment from Woodchipper’s Garage
 - Added 2 new cyberware, 1 new gun, and 1 new clothing from Micro Chrome
 - Added 1 new vehicle and 2 new items from Spinning Your Wheels
+- Added 2 new items from Cyberchairs
 - Added 'Paintballs' and 'Custom' ammo varieties
 - Added 'Acid' and 'Special' ammo types
 - Added Basic, Acid, Biotoxin, and Poison paintballs
