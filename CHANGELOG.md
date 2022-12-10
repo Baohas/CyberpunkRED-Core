@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
-## Version DEV | Date: TBD
+## Version 0.85.0 | Date: 2022-12-11
 
 ### New Features
 
@@ -41,6 +41,7 @@
 - We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
 - #453 - Fixed strings that could not be translated properly
 - Fix item images in the item sheets for a number of compendium items
+- #601 - Rolled critical injuries do not apply active effects
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
