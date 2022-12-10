@@ -251,6 +251,25 @@ changelog-has-changed:
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
+tooltips:
+  stage: test
+  script:
+    - echo "Checking if we are using 'data-toolip' for tooltips..."
+    - ./.gitlab/pipeline_tests/test-handlebars-tooltips.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
 trace-statements:
   stage: test
   script:
@@ -415,8 +434,6 @@ build-artifacts:
     - job: lint-json
     - job: lint-yaml
     - job: lint-markdown
-    - job: lint-files
-      optional: true
     - job: unit-test
     - job: test-shell-scripts
       optional: true
@@ -429,6 +446,7 @@ build-artifacts:
     - job: trace-statements
     - job: code-localization
     - job: handlebars-helpers
+    - job: tooltips
     - job: test-build
       optional: true
   rules:

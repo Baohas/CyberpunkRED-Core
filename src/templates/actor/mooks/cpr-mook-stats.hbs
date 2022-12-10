@@ -3,7 +3,7 @@
 {{#each actor.system.stats as |stat s|}}
   <div class="mook-{{s}}-stat">
     <div>
-      <a class="rollable" data-roll-type="stat" data-roll-title="{{s}}" title="{{localize CPR.clicktorollthisstat}}">
+      <a class="rollable" data-roll-type="stat" data-roll-title="{{s}}" data-tooltip="{{localize CPR.clicktorollthisstat}}">
         {{localize (cprFindConfigValue "statList" s)}}
       </a>
     </div>

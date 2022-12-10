@@ -11,7 +11,7 @@
             <li class="item items-header flexrow" data-item-id="{{role._id}}">
               <span class="item-name role-name bg-black text-nowrap text-padding-left" id="roleTab-{{role}}">
                 <a class="item-edit">{{localize (cprGetLocalizedlNameKey role)}} {{localize "CPR.characterSheet.bottomPane.role.abilities"}}&nbsp;</a>
-                <a class="item-action" data-action-type="delete"><i class="fas fa-trash-alt fg-red" title="{{localize "CPR.actorSheets.commonActions.deleteItem"}}"></i></a>
+                <a class="item-action" data-action-type="delete"><i class="fas fa-trash-alt fg-red" data-tooltip="{{localize "CPR.actorSheets.commonActions.deleteItem"}}"></i></a>
               </span>
               <span class="item-detail role-rank bg-black text-nowrap">{{localize "CPR.characterSheet.rightPane.skills.skillMod"}}</span>
               <span class="item-detail role-rank bg-black text-nowrap text-right">{{localize "CPR.characterSheet.bottomPane.role.rank"}}</span>
