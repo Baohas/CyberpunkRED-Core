@@ -9,11 +9,13 @@
     background-color: @chrome-white;
 
     .items-header {
+        font-size: @font-small;
+        font-weight: 500;
         align-items     : center;
         background-color: @flint-black;
         color           : @chrome-white;
         span {
-          padding: 3px;
+          padding: 2px;
         }
     }
 
@@ -86,11 +88,12 @@
     background-color: @chrome-white;
 
     .effects-header {
+      font-weight: 500;
         padding         : 0;
         background-color: @flint-black;
         color           : @chrome-white;
         div {
-          padding: 3px;
+          padding: 2px;
         }
     }
 
@@ -145,7 +148,10 @@
 
     .skill-level,
     .skill-base,
-    .skill-mod-value,
+    .skill-mod-value{
+        flex: 0 0 38px;
+     }
+
     .skill-favorite {
         flex: 0 0 37px;
         text-align: center;
