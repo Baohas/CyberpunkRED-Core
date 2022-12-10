@@ -1,6 +1,12 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+## Version 0.86 | Date: TBA
+
+## Changes
+
+- Update Character sheet to show more information for items
+
 ## Version 0.85.0 | Date: 2022-12-11
 
 ### New Features
