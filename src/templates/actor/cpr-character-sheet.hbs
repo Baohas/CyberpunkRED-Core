@@ -41,7 +41,7 @@
       {{#if (cprSystemConfig "enableSheetContentFilter")}}
       <div class="sheet-cprFilter-section">
           <input class="filter-contents" value="{{options.cprContentFilter}}" type="string" placeholder="Search for skills, items and others...">
-          <a><i class="fas fa-xmark fg-red reset-content-filter" title="{{localize "CPR.actorSheets.clearFilter"}}"></i></a>
+          <a><i class="fas fa-xmark fg-red reset-content-filter" data-tooltip="{{localize "CPR.actorSheets.clearFilter"}}"></i></a>
       </div>
       {{/if}}
       <div class="right-content-section">
@@ -77,7 +77,7 @@
                 {{/if}}
               {{/if}}
               {{#if (cprCompare actor.system.fightState "===" "Meatspace")}}
-               &nbsp;<a class="rollable" title="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}" data-roll-type="facedown" data-roll-title="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}"><i class="far fa-angry"></i></a>
+               &nbsp;<a class="rollable" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}" data-roll-type="facedown" data-roll-title="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}"><i class="far fa-angry"></i></a>
               {{/if}}
             </div>
           </div>

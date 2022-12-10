@@ -1,7 +1,7 @@
 {{cprTrace "START ACTOR CONTAINER CPR-ITEM-CONTENT.HBS"}}
 <li class="item flexrow" data-item-id="{{item.id}}" data-item-category="{{item.type}}" draggable="true">
   <div class="item-name text-nowrap">
-    <a class="name item-edit flex-center" title="{{item.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
+    <a class="name item-edit flex-center" data-tooltip="{{item.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
       <img src="{{item.img}}">
       {{item.name}}
     </a>

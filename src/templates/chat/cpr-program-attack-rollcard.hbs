@@ -9,12 +9,12 @@
           {{#if rollCardExtraArgs.isZap}}
             <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
               data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="zap">
-              <i class="fas fa-tint red-fg" title="Damage"></i>
+              <i class="fas fa-tint red-fg" data-tooltip="Damage"></i>
             </a>
           {{else}}
             <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
               data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="{{rollCardExtraArgs.program._id}}">
-              <i class="fas fa-tint red-fg" title="Damage"></i>
+              <i class="fas fa-tint red-fg" data-tooltip="Damage"></i>
             </a>
           {{/if}}
         </div>
