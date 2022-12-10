@@ -190,12 +190,12 @@
 			"description": "<p>Una pierna regular. Esto puede soportar implantes como un Pie Estándar o armas como el Talón Claveteado.</p>"
 		},
 		"Medical Grade CyberArm": {
-			"name": "Medical Grade CyberArm",
-			"description": "<p>A medical grade cyberarm. Does not allow options to be installed.</p>"
+			"name": "Ciberbrazo de la escala médica",
+			"description": "<p>Ciberbrazo de la escala médica. No permite la instalación de opciones.</p>"
 		},
 		"Medical Grade CyberLeg": {
-			"name": "Medical Grade CyberLeg",
-			"description": "<p>A medical grade cyberleg. Does not allow options to be installed.</p>"
+			"name": "Ciberpierna de la escala médica",
+			"description": "<p>Ciberpierna de la escala médica. No permite la instalación de opciones.</p>"
 		},
 		"Medscanner": {
 			"name": "Escáner Médico",

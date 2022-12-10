@@ -71,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Cyberdek",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Dek netrunnera. 7 gniazd.</span></p>"
+			"description": "<p>Dek netrunnera. 7 gniazd.</p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Jednorazowy telefon komórkowy",
@@ -91,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Cyberdek (doskonałej jakości)",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Dek netrunnera. 9 gniazd.</span></p>"
+			"description": "<p>Dek netrunnera. 9 gniazd.</p>"
 		},
 		"Flashlight": {
 			"name": "Latarka",
@@ -167,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Cyberdek (słabej jakości)",
-			"description": "<p><span style=\"color: #191813; font-family: 'Audimat Mono'; background-color: #eaeaea;\">Dek netrunnera. 5 gniazd.</span></p>"
+			"description": "<p>Dek netrunnera. 5 gniazd.</p>"
 		},
 		"Radar Detector": {
 			"name": "Wykrywacz radaru",

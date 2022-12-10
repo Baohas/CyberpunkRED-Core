@@ -121,16 +121,16 @@
             "name": "Lanzagranadas (Pobre)"
         },
         "Heavy Melee": {
-            "description": "<p>Generic Heavy Melee Weapon</p>",
-            "name": "Heavy Melee"
+            "description": "<p>Arma Cuerpo a Cuerpo Pesada Genérica</p>",
+            "name": "Arma Cuerpo a Cuerpo Pesada"
         },
         "Heavy Melee (Excellent)": {
-            "description": "<p>Generic Excellent Quality Heavy Melee Weapon.<br />+1 to Attack.</p>",
-            "name": "Heavy Melee (Excellent)"
+            "description": "<p>Arma cuerpo a cuerpo pesada de excelente calidad Genérica.<br />+1 para atacar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Pesada (Excelente)"
         },
         "Heavy Melee (Poor)": {
-            "description": "<p>Generic Poor Quality Heavy Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Heavy Melee (Poor)"
+            "description": "<p>Arma cuerpo a cuerpo pesada de mala calidad genérica.<br />Si tira 1 en Ataque (fallo crítico) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Pesada (Pobre)"
         },
         "Heavy Pistol": {
             "description": "<p>Una pistola pesada y ocultable.</p>",
@@ -185,16 +185,16 @@
             "name": "Tubería de Plomo (Pobre)"
         },
         "Light Melee": {
-            "description": "<p>Generic Light Melee Weapon</p>",
-            "name": "Light Melee"
+            "description": "<p>Arma Cuerpo a Cuerpo Ligera Genérica</p>",
+            "name": "Arma Cuerpo a Cuerpo Ligera"
         },
         "Light Melee (Excellent)": {
-            "description": "<p>Generic Excellent Quality Light Melee Weapon.<br />+1 to Attack.</p>",
-            "name": "Light Melee (Excellent)"
+            "description": "<p>Arma Cuerpo a Cuerpo Ligera de excelente calidad Genérica.<br />+1 para atacar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Ligera (Excelente)"
         },
         "Light Melee (Poor)": {
-            "description": "<p>Generic Poor Quality Light Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Light Melee (Poor)"
+            "description": "<p>Arma Cuerpo a Cuerpo Ligera de mala calidad genérica.<br />Si tira 1 en Ataque (fallo crítico) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Ligera (Pobre)"
         },
         "Machete": {
             "description": "<p>Un cuchillo largo con una gran variedad de usos. Conocido como el favorito de algunas pandillas de Night City. </p>",
@@ -217,16 +217,16 @@
             "name": "Artes Marciales"
         },
         "Medium Melee": {
-            "description": "<p>Generic Medium Melee Weapon</p>",
-            "name": "Medium Melee"
+            "description": "<p>Arma Cuerpo a Cuerpo Mediana Genérica</p>",
+            "name": "Arma Cuerpo a Cuerpo Mediana"
         },
         "Medium Melee (Excellent)": {
-            "description": "<p>Generic Excellent Quality Medium Melee Weapon.<br />+1 to Attack.</p>",
-            "name": "Medium Melee (Excellent)"
+            "description": "<p>Arma Cuerpo a Cuerpo Mediana de excelente calidad Genérica.<br />+1 para atacar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Mediana (Excelente)"
         },
         "Medium Melee (Poor)": {
-            "description": "<p>Generic Poor Quality Medium Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Medium Melee (Poor)"
+            "description": "<p>Arma Cuerpo a Cuerpo Mediana de mala calidad genérica.<br />Si tira 1 en Ataque (fallo crítico) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Mediana (Pobre)"
         },
         "Medium Pistol": {
             "description": "<p>Una pistola media y ocultable.</p>",
@@ -397,16 +397,16 @@
             "name": "Vampiros"
         },
         "Very Heavy Melee": {
-            "description": "<p>Generic Very Heavy Melee Weapon</p>",
-            "name": "Very Heavy Melee"
+            "description": "<p>Arma Cuerpo a Cuerpo Muy Pesada Genérica</p>",
+            "name": "Arma Cuerpo a Cuerpo Muy Pesada"
         },
         "Very Heavy Melee (Excellent)": {
-            "description": "<p>Generic Excellent Quality Very Heavy Melee Weapon.<br />+1 to Attack.</p>",
-            "name": "Very Heavy Melee (Excellent)"
+            "description": "<p>Arma Cuerpo a Cuerpo Muy Pesada de excelente calidad Genérica.<br />+1 para atacar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Muy Pesada (Excelente)"
         },
         "Very Heavy Melee (Poor)": {
-            "description": "<p>Generic Poor Quality Very Heavy Melee Weapon.<br />If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>",
-            "name": "Very Heavy Melee (Poor)"
+            "description": "<p>Arma Cuerpo a Cuerpo Muy Pesada de mala calidad genérica.<br />Si tira 1 en Ataque (fallo crítico) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>",
+            "name": "Arma Cuerpo a Cuerpo Muy Pesada (Pobre)"
         },
         "Very Heavy Pistol": {
             "description": "<p>Una pistola muy pesada. No puede ser ocultada. </p>",
