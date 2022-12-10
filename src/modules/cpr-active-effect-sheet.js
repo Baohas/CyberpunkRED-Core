@@ -85,8 +85,15 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     const modnum = event.currentTarget.dataset.index;
     const keyCategory = event.target.value;
 
-    this._forceSubmit();
-    return effect.setModKeyCategory(modnum, keyCategory);
+    await effect.setModKeyCategory(modnum, keyCategory);
+
+    // Stats cannot currently be situational. This bit of code sets situational flags to false when the
+    // Stat category is selected in the active effects dialog.
+    if (effect.getFlag(game.system.id, `changes.cats.${modnum}`) === "stat") {
+      await effect.setFlag(game.system.id, `changes.situational.${modnum}.isSituational`, false);
+      await effect.setFlag(game.system.id, `changes.situational.${modnum}.onByDefault`, false);
+    }
+    return this._forceSubmit();
   }
 
   /**
