@@ -22,12 +22,12 @@
 
 ### Changes
 
-- The Babele module should no longer require renaming files or directories to make it work.(#482)
+- The Babele module should no longer require renaming files or directories to make it work (#482)
 - #585 - renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes
 - Changed the Extended Magazine and Drum Magazine upgrades to use the Ammo icon instead of the default icon
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
 - Standardised raw `.svg` graphics to be squares, with any rounded applied later
-- Adjusted `vial_poison.svg` to better match other gear icons
+- Adjusted `vial_poison.svg` to better match other icons
 - Standardised the x-axis and y-axis offsets of the filters applied to `.svg` graphics
 - Capped the drop shadow intensity of the `.svg` graphics at `stdDeviation="15"`. This will make some of the darker graphics easier to read
 
