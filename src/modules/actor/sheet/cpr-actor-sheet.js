@@ -873,7 +873,6 @@ export default class CPRActorSheet extends ActorSheet {
         img: injury.img,
         system: duplicate(injury.system),
         effects: duplicate(injury.effects),
-
       };
       const result = await this.actor.createEmbeddedDocuments("Item", [cprItemData]);
       const cprRoll = new CPRRolls.CPRTableRoll(

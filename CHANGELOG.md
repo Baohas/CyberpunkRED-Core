@@ -1,6 +1,12 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+## Version 0.84.2 (Hotfix) | Date: 2022-12-19
+
+### Bug Fixes
+
+- #601 - Rolled critical injuries do not apply active effects
+
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
 ### Bug Fixes
