@@ -46,7 +46,7 @@ system:
     dvParamedic: 13
     type: paramedic
   revealed: true
-  source: ''
+  source: Pg. 187
   tags: []
   treatment:
     dvParamedic: 15

@@ -24,6 +24,7 @@
 - #565 - The amount ammo reduces SP on hit can now be configured in the item, and compendium items have been updated to make use of this
 - Added support for choosing any skill for use with a weapon, covering DLC and potential future source books
 - Added descriptions to various upgrades that were missing them
+- Added page references to all clothing items and critical injuries
 
 ### Changes
 
