@@ -8,7 +8,7 @@ _stats:
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/ammo/paintball.svg
+img: systems/cyberpunk-red-core/icons/compendium/woodchippers_garage/paintball_poison.png
 name: Paintball (Poison)
 system:
   tags: []

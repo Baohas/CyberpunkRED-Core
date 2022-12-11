@@ -13,6 +13,7 @@
 - Added 'Paintballs' and 'Custom' ammo varieties
 - Added 'Acid' and 'Special' ammo types
 - Added Basic, Acid, Biotoxin, and Poison paintballs
+- Added new icons for the Basic, Acid, Biotoxin, and Poison paintballs. Thanks Mirrandin!
 - Added custom ammo used by the Malorian Arms Sub-Flechette Gun, the Nova Model 757 Cityhunter, and the Sternmeyer M-02 Heavy Rifle
 - Added icons for the Underbarrel Shotgun, the Underbarrel Grenade Launcher and the (new) Poor Quality Underbarrel Grenade Launcher
 - Added an icon for Paintballs
