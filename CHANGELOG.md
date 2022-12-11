@@ -21,7 +21,7 @@
 - Added 8 new vehicle icons
 - Added new icons for the Bodyweight Suit, the Bulletproof Shield, and generic head armor
 - Added new icons for the Body and Head Injury Tables
-- #565 - The amount an ammunition reduces SP on hit can be configured on the item. Compendium items were updated to use this too.
+- #565 - The amount ammo reduces SP on hit can now be configured in the item, and compendium items have been updated to make use of this
 
 ### Changes
 
@@ -30,7 +30,7 @@
 - Renamed the Extended Magazine and Drum Magazine upgrades (`SMG Drum Magazine` -> `Drum Magazine (SMG)`) to enable easier browsing and consistency with other naming schemes
 - Changed the Extended Magazine and Drum Magazine upgrades to use the Ammo icon instead of the default icon
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
-- Rename the `Free` price category to `No Price`
+- Renamed the `Free` price category to `No Price`
 - Use Foundry tooltips instead of browser tooltips
 - Standardised raw `.svg` graphics to be squares, with any rounded applied later
 - Adjusted `vial_poison.svg` to better match other icons
@@ -41,15 +41,15 @@
 
 ### Bug Fixes
 
-- Align the second column on the gear tab so it is not all over the place
+- Aligned the second column on the gear tab so it is not all over the place
 - Fixed missing thumbnail image for the included Dystopian City Junction map
 - Corrected the name format of the included maps
 - Corrected a typo in the name of the Excellent Heavy SMG
 - Corrected a typo in the Battery Pack ammo description
 - Fixed the Incendiary Shotgun Slug showing the wrong image
-- We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
+- #444 - We now support Russian! Thank you to our translators @openmanv and @kurigohan
 - #453 - Fixed strings that could not be translated properly
-- Fix item images in the item sheets for a number of compendium items
+- Fixed item images in the item sheets for a number of compendium items
 - #601 - Rolled critical injuries do not apply active effects
 - Fixed Dargun doing 8d6 instead of 4d6 damage, thanks Sryth!
 - Fixed incorrect grouping in several `.svg` graphics which caused filters to not be applied correctly
