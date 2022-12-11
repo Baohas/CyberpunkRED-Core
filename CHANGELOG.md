@@ -22,6 +22,7 @@
 - Added new icons for the Bodyweight Suit, the Bulletproof Shield, and generic head armor
 - Added new icons for the Body and Head Injury Tables
 - #565 - The amount ammo reduces SP on hit can now be configured in the item, and compendium items have been updated to make use of this
+- Added descriptions to various upgrades that were missing them
 
 ### Changes
 
@@ -38,6 +39,7 @@
 - Capped the drop shadow intensity of the `.svg` graphics at `stdDeviation="15"`. This will make some of the darker graphics easier to read
 - Adjusted the formatting of the credits to enable easier reading
 - Where weapon features aren't currently supported, a note has been added to that weapons description
+- Changed the magazine upgrades to use `override` instead of `modifier`
 
 ### Bug Fixes
 
