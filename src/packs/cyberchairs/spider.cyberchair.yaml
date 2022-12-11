@@ -1,0 +1,53 @@
+name: Spider Cyberchair
+type: gear
+img: systems/cyberpunk-red-core/icons/compendium/cyberchairs/cyberchair.svg
+system:
+  tags: []
+  description:
+    value: >-
+      <p>An impressively affordable cyberchair. While using it the operator's
+      base MOVE becomes 5, with all regular movement options remaining
+      available.</p>
+
+      <p>Additionally, this cyberchair has room for 4 cyberlimp options. Any
+      options installed always count as being paired.</p>
+
+      <p>Operation of the cyberchair requires either a free hand, or interface
+      plugs.</p>
+
+      <p>If the operator suffers a critical injury that reduces their MOVE, the
+      MOVE of the cyberchair is instead effected.</p>
+
+      <p>The cyberchair cannot be targeted specifically, nor can it be disabled
+      via EMP effects.</p>
+    chat: ''
+    unidentified: ''
+  source: CC
+  favorite: false
+  revealed: true
+  usage: toggled
+  equipped: owned
+  concealable:
+    concealable: false
+    isConcealed: false
+  amount: 1
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 1000
+effects: []
+flags:
+  core: {}
+_stats:
+  systemId: cyberpunk-red-core
+  systemVersion: v0.85.0
+  coreVersion: '10.291'
+  createdTime: 1670699395693
+  modifiedTime: 1670700416501
+  lastModifiedBy: 00CPRCBuildBot00
+_id: YM2dXOMEhmYn3LKy
+folder: null
+sort: 0
+ownership:
+  default: 0
