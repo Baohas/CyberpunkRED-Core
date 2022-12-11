@@ -73,6 +73,8 @@ export default class CPRDialog extends FormApplication {
     const value = !getProperty(dialogData, target);
     if (hasProperty(dialogData, target)) {
       setProperty(dialogData, target, value);
+    } else {
+      LOGGER.error(`The target (${target}) does not exist in the dialogData.`, dialogData);
     }
     this.render();
   }
