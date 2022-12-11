@@ -1,10 +1,10 @@
 # Credits
 
-- This System Implementation is the product of the CPR System Dev Team!
+- This game system is the product of the CPR System Dev Team, made possible by the amazing community surrounding us
 
 ## Legal Stuff
 
-- This game system (including items provided in the compendium) contains unofficial content provided under the Homebrew Content Policy of R. Talsorian Games and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.
+- This game system (including items provided in the compendium) contains unofficial content provided under the Homebrew Content Policy of R. Talsorian Games and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees
 
 ## Code
 
