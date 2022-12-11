@@ -1,8 +1,8 @@
 _stats:
-  coreVersion: '10.290'
+  coreVersion: '10.291'
   createdTime: 1659831053152
   lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1669556186344
+  modifiedTime: 1670759445016
   systemId: cyberpunk-red-core
   systemVersion: v0.85.0
 effects: []
@@ -28,7 +28,8 @@ system:
       <p>Using an action the user can enable HypurrburstTM mode. HypurrburstTM
       mode increases the weapons damage to 4d6, but drains all remaining shots
       when fired. Requires at least 4 rounds remaining to enable. The weapon
-      purrs while in HypurrburstTM mode.</p>
+      purrs while in HypurrburstTM mode*.<br><em>Special fire mode not currently
+      supported; will need to be manually applied</em></p>
     chat: ''
     unidentified: ''
   source: MC

@@ -1,8 +1,8 @@
 _stats:
-  coreVersion: '10.290'
+  coreVersion: '10.291'
   createdTime: 1659831053156
   lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1669545811240
+  modifiedTime: 1670759476817
   systemId: cyberpunk-red-core
   systemVersion: v0.85.0
 effects: []
@@ -29,7 +29,10 @@ system:
       weapon burn for 4HP a turn.<br><br>Additionally, this weapon can consume
       all it's remaining ammo to shoot a fireball, which explodes in a similar
       fashion to an incendiary grenade. The user of the weapon is also consumed
-      by the fireball, getting Deadly on Fire.&nbsp;</p>
+      by the fireball, getting Deadly on Fire*.</p>
+
+      <p><em>*Special fire mode not currently supported; will need to be
+      manually applied</em></p>
     chat: ''
     unidentified: ''
   source: WG

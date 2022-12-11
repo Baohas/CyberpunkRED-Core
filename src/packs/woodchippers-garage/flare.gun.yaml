@@ -1,8 +1,8 @@
 _stats:
-  coreVersion: '10.290'
+  coreVersion: '10.291'
   createdTime: 1659831053174
   lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1669545811238
+  modifiedTime: 1670759341056
   systemId: cyberpunk-red-core
   systemVersion: v0.85.0
 effects: []
@@ -25,9 +25,12 @@ system:
   tags: ''
   description:
     value: >-
-      <p>As well as normal Grenade Ammunition, this weapon can fire road flares.
-      They don't deal any damage, but if fired into the air can be seen from 3
-      miles. You cannot install this weapon in Pop-up Cyberware.</p>
+      <p>As well as normal Grenade Ammunition, this weapon can fire road
+      flares*. They don't deal any damage, but if fired into the air can be seen
+      from 3 miles. You cannot install this weapon in Pop-up Cyberware.</p>
+
+      <p><em>*Currently not supported so will need to manually delete a road
+      flare from actors inventory after firing</em></p>
     chat: ''
     unidentified: ''
   source: WG

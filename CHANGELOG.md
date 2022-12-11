@@ -34,6 +34,7 @@
 - Standardised the x-axis and y-axis offsets of the filters applied to `.svg` graphics
 - Capped the drop shadow intensity of the `.svg` graphics at `stdDeviation="15"`. This will make some of the darker graphics easier to read
 - Adjusted the formatting of the credits to enable easier reading
+- Where weapon features aren't currently supported, a note has been added to that weapons description
 
 ### Bug Fixes
 
