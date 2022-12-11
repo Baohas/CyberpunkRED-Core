@@ -10,39 +10,52 @@ ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety:
-    - grenade
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  damage: 6d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: ''
-  dvTable: DV Grenade Launcher
-  equipped: owned
-  favorite: false
+  weaponType: grenadeLauncher
+  weaponSkill: Heavy Weapons
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  handsReq: 0
+  damage: 6d6
+  rof: 1
+  dvTable: DV Grenade Launcher
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: []
+  description:
+    value: ''
+    chat: ''
+    unidentified: ''
+  source: pg. 343
+  favorite: false
+  concealable:
+    concealable: false
+    isConcealed: false
   install: mall
   isInstalled: false
-  isRanged: true
+  size: 2
+  usesType: magazine
   magazine:
-    ammoId: ''
-    max: 1
     value: 0
+    max: 1
+    ammoId: ''
+  ammoVariety:
+    - grenade
+  price:
+    market: 500
+    category: expensive
+  handsReq: 0
+  type: weapon
   modifiers:
+    secondaryWeapon:
+      configured: 'true'
     Wardrobe & Style:
       type: modifier
       value: null
     attackmod:
       type: modifier
       value: null
+      isSituational: false
     body:
       type: modifier
       value: null
@@ -55,6 +68,7 @@ system:
     damage:
       type: modifier
       value: null
+      isSituational: false
     dex:
       type: modifier
       value: null
@@ -88,8 +102,6 @@ system:
     seats:
       type: modifier
       value: null
-    secondaryWeapon:
-      configured: 'true'
     shieldHp:
       type: modifier
       value: null
@@ -105,16 +117,6 @@ system:
     will:
       type: modifier
       value: null
-  price:
-    category: expensive
-    market: 500
-  rof: 1
-  size: 2
-  source: pg. 343
-  tags: []
-  type: weapon
-  unarmedAutomaticCalculation: true
-  usesType: magazine
-  weaponSkill: Heavy Weapons
-  weaponType: grenadeLauncher
+  attachmentSlots: 0
+  equipped: owned
 type: itemUpgrade

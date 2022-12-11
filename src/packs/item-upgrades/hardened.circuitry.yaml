@@ -10,32 +10,44 @@ ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety: []
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  damage: 1d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>Cyberdeck cannot be disabled or destroyed by EMP effects.&nbsp;</p>
-  dvTable: ''
-  equipped: owned
-  favorite: false
+  weaponType: ''
+  weaponSkill: ''
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  handsReq: 0
+  damage: 1d6
+  rof: 1
+  dvTable: ''
+  isRanged: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: []
+  description:
+    value: <p>Cyberdeck cannot be disabled or destroyed by EMP effects.&nbsp;</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 368
+  favorite: false
+  concealable:
+    concealable: false
+    isConcealed: false
   install: mall
   isInstalled: false
-  isRanged: false
+  size: 1
+  usesType: magazine
   magazine:
-    ammoId: ''
-    max: 0
     value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  price:
+    market: 100
+    category: premium
+  handsReq: 0
+  type: cyberdeck
   modifiers:
+    secondaryWeapon:
+      configured: 'false'
     Wardrobe & Style:
       type: modifier
       value: null
@@ -54,21 +66,9 @@ system:
     rof:
       type: modifier
       value: null
-    secondaryWeapon:
-      configured: 'false'
     slots:
       type: modifier
       value: null
-  price:
-    category: premium
-    market: 100
-  rof: 1
-  size: 1
-  source: pg. 368
-  tags: []
-  type: cyberdeck
-  unarmedAutomaticCalculation: true
-  usesType: magazine
-  weaponSkill: ''
-  weaponType: ''
+  attachmentSlots: 0
+  equipped: owned
 type: itemUpgrade
