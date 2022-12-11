@@ -25,9 +25,9 @@
                             {{~/if}}
                             {{#if change.isSituational}}
                               {{#if change.onByDefault}}
-                                <i title="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}" class="fas fa-circle-dot"></i>
+                                <i data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}" class="fas fa-circle-dot"></i>
                               {{else}}
-                                <i title="{{localize "CPR.characterSheet.rightPane.effects.situationalOffByDefault"}}" class="far fa-circle"></i>
+                                <i data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.situationalOffByDefault"}}" class="far fa-circle"></i>
                               {{~/if}}
                             {{~/if}}
                             {{~#unless @last}},{{/unless}}

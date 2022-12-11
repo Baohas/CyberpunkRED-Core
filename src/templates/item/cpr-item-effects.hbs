@@ -26,9 +26,9 @@
                                 {{~/if}}
                                 {{~#if (cprArrayLikeObjectByIndex effect.flags.cyberpunk-red-core.changes.situational @index "isSituational")}}
                                     {{~#if (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational @index "onByDefault")}}
-                                      <i title="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}" class="fas fa-circle-dot"></i>
+                                      <i data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}" class="fas fa-circle-dot"></i>
                                     {{~else}}
-                                      <i title="{{localize "CPR.characterSheet.rightPane.effects.situationalOffByDefault"}}" class="far fa-circle"></i>
+                                      <i data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.situationalOffByDefault"}}" class="far fa-circle"></i>
                                     {{~/if}}
                                 {{~/if}}
                                 {{~#unless @last}},{{/unless}}
