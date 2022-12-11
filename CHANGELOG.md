@@ -53,6 +53,7 @@
 - #601 - Rolled critical injuries do not apply active effects
 - Fixed Dargun doing 8d6 instead of 4d6 damage, thanks Sryth!
 - Fixed incorrect grouping in several `.svg` graphics which caused filters to not be applied correctly
+- Adjusted the size, spacing, and formatting of the ammo icons. This fixed a few minor GFX bugs, and made them look more cohesive. Thanks Mirrandin!
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
