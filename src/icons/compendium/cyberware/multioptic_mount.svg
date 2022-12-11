@@ -33,12 +33,12 @@
          id="feComposite882" />
       <feGaussianBlur
          in="composite1"
-         stdDeviation="30"
+         stdDeviation="15"
          result="blur"
          id="feGaussianBlur884" />
       <feOffset
-         dx="-4.0375"
-         dy="-4.02735"
+         dx="0"
+         dy="0"
          result="offset"
          id="feOffset886" />
       <feComposite
@@ -69,12 +69,12 @@
          id="feComposite1035" />
       <feGaussianBlur
          in="composite1"
-         stdDeviation="30"
+         stdDeviation="15"
          result="blur"
          id="feGaussianBlur1037" />
       <feOffset
-         dx="-4.0375"
-         dy="-4.02735"
+         dx="0"
+         dy="0"
          result="offset"
          id="feOffset1039" />
       <feComposite
@@ -105,12 +105,12 @@
          id="feComposite867" />
       <feGaussianBlur
          in="composite1"
-         stdDeviation="30"
+         stdDeviation="15"
          result="blur"
          id="feGaussianBlur869" />
       <feOffset
-         dx="-4.0375"
-         dy="-4.02735"
+         dx="0"
+         dy="0"
          result="offset"
          id="feOffset871" />
       <feComposite
@@ -141,12 +141,12 @@
          id="feComposite884" />
       <feGaussianBlur
          in="composite1"
-         stdDeviation="30"
+         stdDeviation="15"
          result="blur"
          id="feGaussianBlur886" />
       <feOffset
-         dx="-4.0375"
-         dy="-4.02735"
+         dx="0"
+         dy="0"
          result="offset"
          id="feOffset888" />
       <feComposite
