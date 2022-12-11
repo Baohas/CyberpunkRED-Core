@@ -16,7 +16,6 @@
 - Added new icons for the Basic, Acid, Biotoxin, and Poison paintballs. Thanks Mirrandin!
 - Added custom ammo used by the Malorian Arms Sub-Flechette Gun, the Nova Model 757 Cityhunter, and the Sternmeyer M-02 Heavy Rifle
 - Added icons for the Underbarrel Shotgun, the Underbarrel Grenade Launcher and the (new) Poor Quality Underbarrel Grenade Launcher
-- Added an icon for Paintballs
 - Added new icons for the Chipware Compartment, the Smart Lens, the Inline Skates, and the Skateboard
 - Added 8 new vehicle icons
 - Added new icons for the Bodyweight Suit, the Bulletproof Shield, and generic head armor
@@ -25,6 +24,7 @@
 - Added support for choosing any skill for use with a weapon, covering DLC and potential future source books
 - Added descriptions to various upgrades that were missing them
 - Added page references to all clothing items and critical injuries
+- #444 - We now support Russian! Thank you to our translators @openmanv and @kurigohan
 
 ### Changes
 
@@ -35,11 +35,11 @@
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
 - Renamed the `Free` price category to `No Price`
 - Use Foundry tooltips instead of browser tooltips
-- Standardised raw `.svg` graphics to be squares, with any rounded applied later
+- Standardised raw `.svg` graphics to be squares, with any rounding applied later
 - Adjusted `vial_poison.svg` to better match other icons
 - Standardised the x-axis and y-axis offsets of the filters applied to `.svg` graphics
 - Capped the drop shadow intensity of the `.svg` graphics at `stdDeviation="15"`. This will make some of the darker graphics easier to read
-- Adjusted the formatting of the credits to enable easier reading
+- Adjusted the formatting of the credits to improve readability
 - Where weapon features aren't currently supported, a note has been added to that weapons description
 - Changed the magazine upgrades to use `override` instead of `modifier`
 
@@ -50,14 +50,13 @@
 - Corrected the name format of the included maps
 - Corrected a typo in the name of the Excellent Heavy SMG
 - Corrected a typo in the Battery Pack ammo description
-- Fixed the Incendiary Shotgun Slug showing the wrong image
-- #444 - We now support Russian! Thank you to our translators @openmanv and @kurigohan
+- Fixed the Incendiary Shotgun Slug using the wrong icon
 - #453 - Fixed strings that could not be translated properly
-- Fixed item images in the item sheets for a number of compendium items
+- Fixed images in the item sheets for a number of compendium items
 - #601 - Rolled critical injuries do not apply active effects
 - Fixed Dargun doing 8d6 instead of 4d6 damage, thanks Sryth!
 - Fixed incorrect grouping in several `.svg` graphics which caused filters to not be applied correctly
-- Fixed the W I D E Wound State heart displaying properly on the actor sheet
+- Fixed the W I D E Wound State heart not displaying properly on the actor sheet
 - #592 - Fixed some `.svg` icons not showing up properly in the UI
 - Adjusted the size, spacing, and formatting of the ammo icons. This fixed a few minor GFX bugs, and made them look more cohesive. Thanks Mirrandin!
 
