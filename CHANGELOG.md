@@ -6,7 +6,7 @@
 ### New Features
 
 - Added 12 new guns from The 12 Days of Gunmas
-- Added 11 new guns and 1 new attachment from Woodchipper’s Garage (The Militech Archimedes will come soon)
+- Added 12 new guns and 1 new attachment from Woodchipper’s Garage
 - Added 2 new cyberware, 1 new gun, and 1 new clothing from Micro Chrome
 - Added 1 new vehicle and 2 new items from Spinning Your Wheels
 - Added 'Paintballs' and 'Custom' ammo varieties
