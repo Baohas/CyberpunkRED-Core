@@ -65,15 +65,14 @@
           <div class="tab-pink-underlay">
             <a class="tab-label text-bold tab-indent" data-tab="role">{{localize "CPR.global.role.role"}}</a>
           </div>
-          {{!-- <a class="navtab center-text bold white-fg" data-tab="role">{{localize "CPR.global.role.role"}}</a> --}}
           <div class="tab-pink-underlay">
             <div class="tab-label text-bold tab-indent" data-tab="fight">
               <a data-tab="fight">{{localize "CPR.characterSheet.bottomPane.fight.title"}}</a>
               {{#if (cprCompare actor.system.fightOptions "===" "both")}}
                 {{#if (cprCompare actor.system.fightState "===" "Meatspace")}}
-                  (<span class="fg-yellow">{{localize "CPR.characterSheet.bottomPane.fight.meat"}}</span>|<a class="toggle-fight-state" data-state="Netspace">{{localize "CPR.characterSheet.bottomPane.fight.net"}}</a>)
+                  &nbsp;(<span class="fg-yellow">{{localize "CPR.characterSheet.bottomPane.fight.meat"}}</span>|<a class="toggle-fight-state" data-state="Netspace">{{localize "CPR.characterSheet.bottomPane.fight.net"}}</a>)
                 {{else}}
-                  (<a class="toggle-fight-state" data-state="Meatspace">{{localize "CPR.characterSheet.bottomPane.fight.meat"}}</a>|<span class="fg-yellow">{{localize "CPR.characterSheet.bottomPane.fight.net"}}</span>)
+                  &nbsp;(<a class="toggle-fight-state" data-state="Meatspace">{{localize "CPR.characterSheet.bottomPane.fight.meat"}}</a>|<span class="fg-yellow">{{localize "CPR.characterSheet.bottomPane.fight.net"}}</span>)
                 {{/if}}
               {{/if}}
               {{#if (cprCompare actor.system.fightState "===" "Meatspace")}}
