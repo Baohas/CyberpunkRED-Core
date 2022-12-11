@@ -63,7 +63,7 @@
        result="composite1"
        id="feComposite1239" /><feGaussianBlur
        in="composite1"
-       stdDeviation="10.5093"
+       stdDeviation="15"
        result="blur"
        id="feGaussianBlur1241" /><feOffset
        dx="0"
@@ -92,7 +92,7 @@
        result="composite1"
        id="feComposite1191" /><feGaussianBlur
        in="composite1"
-       stdDeviation="4.24443"
+       stdDeviation="5"
        result="blur"
        id="feGaussianBlur1193" /><feOffset
        dx="0"
