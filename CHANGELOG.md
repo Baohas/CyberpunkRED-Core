@@ -43,8 +43,8 @@
 - #453 - Fixed strings that could not be translated properly
 - Fix item images in the item sheets for a number of compendium items
 - #601 - Rolled critical injuries do not apply active effects
-- Fix the W I D E Wound State heart displaying on the actor sheet
-- Fix some icons not displaying on Item Sheets
+- Fixed the W I D E Wound State heart displaying properly on the actor sheet
+- #592 - Fixed some `.svg` icons not showing up properly in the UI
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
