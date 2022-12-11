@@ -72,6 +72,19 @@ CPR.skillCategories = {
   techniqueSkills: "CPR.global.skillCategories.techniqueSkills",
 };
 
+// Sorted for weapon skill selection (most common categories at the top).
+CPR.skillCategoriesForWeapons = {
+  fightingSkills: "CPR.global.skillCategories.fightingSkills",
+  rangedweaponSkills: "CPR.global.skillCategories.rangedWeaponSkills",
+  bodySkills: "CPR.global.skillCategories.bodySkills",
+  controlSkills: "CPR.global.skillCategories.controlSkills",
+  awarenessSkills: "CPR.global.skillCategories.awarenessSkills",
+  educationSkills: "CPR.global.skillCategories.educationSkills",
+  performanceSkills: "CPR.global.skillCategories.performanceSkills",
+  socialSkills: "CPR.global.skillCategories.socialSkills",
+  techniqueSkills: "CPR.global.skillCategories.techniqueSkills",
+};
+
 // Sorted A-Z
 CPR.skillList = {
   athletics: "CPR.global.itemType.skill.athletics",
