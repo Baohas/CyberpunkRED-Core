@@ -6,7 +6,7 @@ img: >-
 name: Militech Archimedes
 system:
   weaponType: rocketLauncher
-  weaponSkill: Heavy Weapons
+  weaponSkill: Pilot Air Vehicle
   fireModes:
     autoFire: 0
     suppressiveFire: false

@@ -22,7 +22,7 @@
 - Added new icons for the Bodyweight Suit, the Bulletproof Shield, and generic head armor
 - Added new icons for the Body and Head Injury Tables
 - #565 - The amount ammo reduces SP on hit can now be configured in the item, and compendium items have been updated to make use of this
-- To support DLC and potential future source books, user can now choose any skill for a weapon.
+- Added support for choosing any skill for use with a weapon, covering DLC and potential future source books
 - Added descriptions to various upgrades that were missing them
 
 ### Changes
