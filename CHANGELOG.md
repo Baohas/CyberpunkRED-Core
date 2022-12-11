@@ -46,6 +46,7 @@
 - #453 - Fixed strings that could not be translated properly
 - Fix item images in the item sheets for a number of compendium items
 - Fixed Dargun doing 8d6 instead of 4d6 damage, thanks Sryth!
+- Fixed incorrect grouping in several `.svg` graphics which caused filters to not be applied correctly
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
