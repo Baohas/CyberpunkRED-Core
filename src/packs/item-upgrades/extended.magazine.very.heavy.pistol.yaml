@@ -1,10 +1,10 @@
-_id: WNk0YpCbxFa6iLTH
+_id: utFnYSEQcCxYgwAE
 effects: []
 flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Heavy Pistol Drum Magazine
+name: Extended Magazine (Very Heavy Pistol)
 ownership:
   default: 0
 sort: 0
@@ -43,15 +43,15 @@ system:
       value: null
     magazine:
       type: modifier
-      value: 20
+      value: 6
     rof:
       type: modifier
       value: null
     secondaryWeapon:
       configured: 'false'
   price:
-    category: expensive
-    market: 500
+    category: premium
+    market: 100
   rof: 1
   size: 1
   source: pg. 343

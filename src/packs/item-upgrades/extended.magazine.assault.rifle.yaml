@@ -1,10 +1,10 @@
-_id: aKLcUoQt8I4Adxwg
+_id: s3oETYXA2wnTnrk1
 effects: []
 flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Rocket Launcher Extended Magazine
+name: Extended Magazine (Assault Rifle)
 ownership:
   default: 0
 sort: 0
@@ -43,7 +43,7 @@ system:
       value: null
     magazine:
       type: modifier
-      value: 1
+      value: 10
     rof:
       type: modifier
       value: null

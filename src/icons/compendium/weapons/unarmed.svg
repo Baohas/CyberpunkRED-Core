@@ -35,11 +35,11 @@
        result="composite1"
        id="feComposite919" /><feGaussianBlur
        in="composite1"
-       stdDeviation="30"
+       stdDeviation="15"
        result="blur"
        id="feGaussianBlur921" /><feOffset
-       dx="-4"
-       dy="-4"
+       dx="0"
+       dy="0"
        result="offset"
        id="feOffset923" /><feComposite
        in="offset"

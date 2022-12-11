@@ -1,10 +1,10 @@
-_id: J51qZjmuEheNiamo
+_id: seI3exdDPXajjFFz
 effects: []
 flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Grenade Launcher Drum Magazine
+name: Extended Magazine (Sniper Rifle)
 ownership:
   default: 0
 sort: 0
@@ -50,8 +50,8 @@ system:
     secondaryWeapon:
       configured: 'false'
   price:
-    category: expensive
-    market: 500
+    category: premium
+    market: 100
   rof: 1
   size: 1
   source: pg. 343

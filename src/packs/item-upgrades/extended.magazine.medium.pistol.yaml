@@ -1,10 +1,10 @@
-_id: M3I9ySdmNIxcuT7T
+_id: nV0EYctCZSP41Cp0
 effects: []
 flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: SMG Extended Magazine
+name: Extended Magazine (Medium Pistol)
 ownership:
   default: 0
 sort: 0
@@ -43,7 +43,7 @@ system:
       value: null
     magazine:
       type: modifier
-      value: 10
+      value: 6
     rof:
       type: modifier
       value: null

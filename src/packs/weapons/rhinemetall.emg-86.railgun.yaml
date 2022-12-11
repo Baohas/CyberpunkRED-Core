@@ -1,4 +1,7 @@
 _id: DXVvTnvnQKLp9Uky
+  coreVersion: '10.291'
+  modifiedTime: 1670759696626
+  systemVersion: v0.85.0
 effects: []
 flags:
   core: {}
@@ -9,48 +12,51 @@ ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety:
-    - rifle
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  damage: 5d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: >-
-      <p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots.
-      Requires BODY 11 or higher (unless mounted). Refer to the full item
-      description on pg. 349.</p>
-  dvTable: DV Assault Rifle
-  equipped: owned
-  favorite: false
+  weaponType: assaultRifle
+  weaponSkill: Heavy Weapons
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  handsReq: 2
-  isConcealed: false
-  isRanged: true
-  isUpgraded: false
-  magazine:
-    ammoId: ''
-    max: 4
-    value: 0
-  price:
-    category: luxury
-    market: 5000
-  quality: standard
-  revealed: true
+  damage: 5d6
   rof: 1
-  slots: 0
-  source: pg. 349
-  tags: []
+  dvTable: DV Assault Rifle
+  isRanged: true
   unarmedAutomaticCalculation: true
-  upgrades: []
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots.
+      Requires BODY 11 or higher (unless mounted). Ignores any armor below
+      SP11*. Refer to the full item description on pg. 349.</p>
+
+      <p><em>*Not currently supported to will need to manually apply damage to
+      armoured targets</em></p>
+    chat: ''
+    unidentified: ''
+  source: pg. 349
+  favorite: false
+  revealed: true
   usage: equipped
+  equipped: owned
   usesType: magazine
-  weaponSkill: Heavy Weapons
-  weaponType: assaultRifle
+  magazine:
+    value: 0
+    max: 4
+    ammoId: ''
+  ammoVariety:
+    - rifle
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 0
+  isUpgraded: false
+  price:
+    market: 5000
+    category: luxury
+  handsReq: 2
+  attachmentSlots: 0
+  isConcealed: false
+  quality: standard
 type: weapon

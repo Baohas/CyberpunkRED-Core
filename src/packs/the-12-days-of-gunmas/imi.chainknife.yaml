@@ -1,3 +1,6 @@
+
+  coreVersion: '10.291'
+  modifiedTime: 1670759593517
 effects: []
 flags:
   core: {}
@@ -18,8 +21,11 @@ system:
   tags: []
   description:
     value: >-
-      <p>Takes an action to rev up, but once revved is a powerful melee
-      weapon.</p>
+      <p>Takes an action to rev up, but once revved is a powerful melee weapon.
+      When not reved deals 2d6 damage*.</p>
+
+      <p><em>*Not reved mode not currently supported, so will need to manually
+      reduce damage</em></p>
     chat: ''
     unidentified: ''
   source: 12DoG

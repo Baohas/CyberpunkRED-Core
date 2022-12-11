@@ -1,10 +1,10 @@
-_id: 3z654ef9UlgH8o1o
+_id: J51qZjmuEheNiamo
 effects: []
 flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: SMG Drum Magazine
+name: Drum Magazine (Grenade Launcher)
 ownership:
   default: 0
 sort: 0
@@ -43,7 +43,7 @@ system:
       value: null
     magazine:
       type: modifier
-      value: 20
+      value: 4
     rof:
       type: modifier
       value: null

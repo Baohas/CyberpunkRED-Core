@@ -1,10 +1,10 @@
-_id: mUUjgdfV04q6T2VS
+_id: v2DXDjMY1NlGWdFZ
 effects: []
 flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Sniper Rifle Drum Magazine
+name: Drum Magazine (Very Heavy Pistol)
 ownership:
   default: 0
 sort: 0
@@ -43,7 +43,7 @@ system:
       value: null
     magazine:
       type: modifier
-      value: 8
+      value: 20
     rof:
       type: modifier
       value: null

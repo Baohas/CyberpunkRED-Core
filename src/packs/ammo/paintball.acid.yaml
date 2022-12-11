@@ -1,14 +1,20 @@
+
+  coreVersion: '10.291'
+  modifiedTime: 1670759631925
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/ammo/paintball.svg
+img: systems/cyberpunk-red-core/icons/compendium/ammo/paintball_acid.png
 name: Paintball (Acid)
 system:
   tags: []
   description:
     value: >-
       <p>Paintballs filled with acid. Deals no damage but ablates armour by 1 SP
-      on hit.</p>
+      on hit*.</p>
+
+      <p><em>*Not currently supported so will need to manually reduce armour on
+      hit</em></p>
     chat: ''
     unidentified: ''
   source: pg. 347

@@ -1,10 +1,10 @@
-_id: tB66LtMSiBlZhB2W
+_id: I7Uv0EmzaDAmdFeV
 effects: []
 flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Heavy SMG Extended Magazine
+name: Drum Magazine (Shotgun)
 ownership:
   default: 0
 sort: 0
@@ -43,15 +43,15 @@ system:
       value: null
     magazine:
       type: modifier
-      value: 10
+      value: 12
     rof:
       type: modifier
       value: null
     secondaryWeapon:
       configured: 'false'
   price:
-    category: premium
-    market: 100
+    category: expensive
+    market: 500
   rof: 1
   size: 1
   source: pg. 343

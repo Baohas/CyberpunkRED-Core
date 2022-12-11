@@ -1,10 +1,10 @@
-_id: hGIBWetPmu8kxHwr
+_id: y9HobxZQBhVEN5Ne
 effects: []
 flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Shotgun Extended Magazine
+name: Drum Magazine (Rocket Launcher)
 ownership:
   default: 0
 sort: 0
@@ -43,15 +43,15 @@ system:
       value: null
     magazine:
       type: modifier
-      value: 4
+      value: 2
     rof:
       type: modifier
       value: null
     secondaryWeapon:
       configured: 'false'
   price:
-    category: premium
-    market: 100
+    category: expensive
+    market: 500
   rof: 1
   size: 1
   source: pg. 343
