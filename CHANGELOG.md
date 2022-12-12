@@ -129,7 +129,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
 - Renamed the `Free` price category to `No Price`
 - Use Foundry tooltips instead of browser tooltips
-- Standardised raw `.svg` graphics to be squares, with any rounding applied later
+- #600 - Standardised raw `.svg` graphics to be squares, with any rounding applied later
 - Adjusted `vial_poison.svg` to better match other icons
 - Standardised the x-axis and y-axis offsets of the filters applied to `.svg` graphics
 - Capped the drop shadow intensity of the `.svg` graphics at `stdDeviation="15"`. This will make some of the darker graphics easier to read
