@@ -24,16 +24,16 @@
       {{/if}}
     {{else}}
       <!-- If Foundational Cyberware is present and has options installed, show the foundational cyberware -->
-      <b><a class="name item installable changeable item-view" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.shiftClickToInstallorUninstall"}}" data-item-id="{{foundation._id}}">
+      <b><a class="name item installable changeable item-view" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.shiftClickToInstallorUninstall"}}" data-item-id="{{foundation._id}}">
         {{~foundation.name~}}{{~#unless (cprCompare optionals.length ">" 0)~}}{{~#unless @last~}},{{~/unless~}}{{~/unless~}}
       </a></b>
     {{~/if}}
     <!-- For each optional cyberware, display it in a selection -->
-    {{~#if (cprCompare optionals.length ">" 0)~}}&nbsp;({{/if~}}
+    {{~#if (cprCompare optionals.length ">" 0)~}}({{/if~}}
     {{~#each optionals as |optional o|~}}
-      <b><a class="name item installable changeable item-view" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.shiftClickToInstallorUninstall"}}" data-item-id="{{optional._id}}" data-foundational-id="{{../foundation.id}}">
+      <a class="name item installable changeable item-view" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.shiftClickToInstallorUninstall"}}" data-item-id="{{optional._id}}" data-foundational-id="{{../foundation.id}}">
         {{~optional.name}}{{#unless @last}},&nbsp;{{/unless~}}
-      </a></b>
+      </a>
     {{~/each}}
     {{~#if (cprCompare optionals.length ">" 0)~}}
       ){{~#unless @last}},{{~/unless}}
@@ -45,7 +45,7 @@
     {{~#if (cprListContains "ammo,clothing,cyberdeck,drug,gear" itemType)}}
       {{~#each (cprSort items "name") as |item i|}}
         {{~#unless @first}},{{~/unless}}
-        <a class="name item deletable changeable item-edit" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}" data-item-id="{{item.id}}">
+        <a class="name item deletable changeable item-edit" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.pressDeleteToDelete"}}" data-item-id="{{item.id}}">
           {{~item.name~}}
         </a>
         {{~#if (cprCompare item.type "===" "drug")}}
