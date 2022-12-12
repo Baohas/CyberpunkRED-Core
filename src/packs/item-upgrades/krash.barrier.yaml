@@ -21,7 +21,7 @@ system:
     unidentified: ''
     value: >-
       <p>Cyberdeck is immune to effects that force the Netrunner to Jack Out
-      (safely or unsafely)</p>
+      (safely or unsafely).</p>
   dvTable: ''
   equipped: owned
   favorite: false
