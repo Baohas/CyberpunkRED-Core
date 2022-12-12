@@ -2,7 +2,11 @@
 <div class="deathsave-block main-block">
   <div class="block-label text-small flex-space-between">
     <span class="text-padding-left">{{localize "CPR.characterSheet.leftPane.woundState"}}</span>
-    <span class="text-padding-right" data-tooltip="{{localize "CPR.characterSheet.leftPane.deathSave.roll"}}"><a class="rollable"  data-roll-title="{{localize "CPR.characterSheet.leftPane.deathSave.title"}}" data-roll-type="deathsave">{{localize "CPR.characterSheet.leftPane.deathSave.title"}}</a></span>
+    <span class="text-padding-right" data-tooltip="{{localize "CPR.characterSheet.leftPane.deathSave.roll"}}">
+      <a class="rollable" data-roll-title="{{localize "CPR.characterSheet.leftPane.deathSave.title"}}" data-roll-type="deathsave">
+        {{localize "CPR.characterSheet.leftPane.deathSave.title"}}
+      </a>
+    </span>
   </div>
   <div class="block-data flex-space-between">
     <div class="width-full">
@@ -23,9 +27,13 @@
     </div>
     <div class="width-full">
       <span class="width-half" data-tooltip="{{localize "CPR.characterSheet.leftPane.deathSave.reset"}}
-      {{localize "CPR.global.generic.deathPenalty"}}: {{actor.system.derivedStats.deathSave.penalty}}
-      {{localize "CPR.characterSheet.leftPane.deathSave.hoverCriticalInjuryPenalty"}}: {{actor.system.derivedStats.deathSave.basePenalty}}"><a class="reset-deathsave-value text-bold">{{actor.system.derivedStats.deathSave.value}}</a></span>
-      <a class="increase-deathsave-value"><i class="far fa-arrow-alt-circle-up text-smaller" data-tooltip="{{localize "CPR.characterSheet.leftPane.deathSave.increase"}}"></i></a>
+        </br>
+        {{localize "CPR.global.generic.deathPenalty"}}: {{actor.system.derivedStats.deathSave.penalty}}
+        </br>
+        {{localize "CPR.characterSheet.leftPane.deathSave.hoverCriticalInjuryPenalty"}}: {{actor.system.derivedStats.deathSave.basePenalty}}"><a class="reset-deathsave-value text-bold">{{actor.system.derivedStats.deathSave.value}}</a></span>
+      <a class="increase-deathsave-value">
+        <i class="far fa-arrow-alt-circle-up text-smaller" data-tooltip="{{localize "CPR.characterSheet.leftPane.deathSave.increase"}}"></i>
+      </a>
     </div>
   </div>
 </div>
