@@ -1,6 +1,13 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+## Version 0.86.0 | Date: TBD
+
+## Changes
+
+- Change the Crit Injury icon for head injuries
+- Change the Crit Injury icons to display before name
+
 ## Version 0.85.0 | Date: 2022-12-11
 
 ### New Features

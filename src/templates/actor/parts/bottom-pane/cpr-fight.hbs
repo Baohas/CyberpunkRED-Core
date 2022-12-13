@@ -14,16 +14,14 @@
             <ol class="items-list critical-injury-list">
               {{#each (cprSort actor.itemTypes.criticalInjury "name") as |criticalInjury| }}
               <li class="flex-space-between item flexrow" data-item-id="{{criticalInjury.id}}" data-item-category="{{criticalInjury.type}}" draggable="true">
-                <div>
-                  <a class="name item-edit text-nowrap {{#if criticalInjury.system.deathSaveIncrease}}text-bold{{/if}}"
-                     data-tooltip="{{criticalInjury.name}}</br>{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}</br>{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
-                      {{criticalInjury.name}}
-                      {{#if (cprCompare criticalInjury.system.location "===" "body")}}
-                        <i class="fas fa-user-injured text-padding-left"></i>
-                      {{/if}}
-                      {{#if (cprCompare criticalInjury.system.location "===" "head")}}
-                        <i class="fas fa-tired text-padding-left"></i>
-                      {{/if}}
+                <div><a class="name item-edit text-nowrap {{#if criticalInjury.system.deathSaveIncrease}}text-bold{{/if}}" data-tooltip="{{criticalInjury.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
+                    {{#if (cprCompare criticalInjury.system.location "===" "body")}}
+                      <i class="fas fa-user-injured text-padding-left"></i>
+                    {{/if}}
+                    {{#if (cprCompare criticalInjury.system.location "===" "head")}}
+                      <i class="fa-regular fa-face-head-bandage"></i>
+                    {{/if}}
+                    {{criticalInjury.name}}
                   </a>
                 </div>
                 <div class="item-detail gear-actions text-nowrap">
