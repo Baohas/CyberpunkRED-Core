@@ -36,8 +36,8 @@
         </div>
       </div>
       <div class="bice-val flexrow pad-thin">
-        <div class="block-data width-long bg-white fg-black">
-          <input name="name" type="text" value="{{actor.name}}"/>
+        <div class="block-data width-long text-normal">
+          <input name="system.name" type="text" value="{{actor.name}}"/>
         </div>
         <div class="width-long width-full">
           <select name="system.class">
@@ -56,23 +56,31 @@
               <input class="text-center" name="system.stats.rez.max" type="number" value="{{this.max}}" />
             </div>
           {{else}}
-            <div class="block-data text-large">
+            <div class="block-data text-normal">
               <input name="system.stats.{{s}}" type="number" value="{{this}}"/>
             </div>
           {{/if}}
         {{/each}}
-        <div class="block-data text-large">
+        <div class="block-data text-normal">
           <input name="system.cost" type="number" value="{{actor.system.cost}}"/>
         </div>
 
-        <div class="block-data text-large">
+        <div class="block-data text-normal">
           {{#if actor.token.flags.cyberpunk-red-core.programId}}
-          {{#if (cprCompare actor.system.class "!==" "other")}}
-            <a class="rollable" data-roll-type="damage"  data-program-id="{{actor.token.flags.cyberpunk-red-core.programId}}" data-netrunner-id="{{actor.token.flags.cyberpunk-red-core.netrunnerTokenId}}" data-scene-id="{{actor.token.flags.cyberpunk-red-core.sceneId}}"><i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}" ></i></a>
-          {{/if}}
+            {{#if (cprCompare actor.system.class "!==" "other")}}
+              <a class="rollable"
+                 data-roll-type="damage"
+                 data-program-id="{{actor.token.flags.cyberpunk-red-core.programId}}"
+                 data-netrunner-id="{{actor.token.flags.cyberpunk-red-core.netrunnerTokenId}}"
+                 data-scene-id="{{actor.token.flags.cyberpunk-red-core.sceneId}}">
+                <i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}" ></i>
+              </a>
+            {{/if}}
           {{/if}}
           {{#unless actor.token.flags.cyberpunk-red-core.netrunnerTokenId}}
-          <a class="configure-from-program"><i class="fas fa-wrench red-fg" data-tooltip="{{localize "CPR.blackIceSheet.configureFromProgram"}}" ></i></a>
+            <a class="configure-from-program">
+              <i class="fas fa-wrench red-fg" data-tooltip="{{localize "CPR.blackIceSheet.configureFromProgram"}}" ></i>
+            </a>
           {{/unless}}
         </div>
 
@@ -84,11 +92,11 @@
       </div>
       <div class="bice-effects">
         <div class="flexrow bg-red pad-thin text-padding-left">
-          <span class="fg-white text-center text-vert-center">{{localize "CPR.blackIceSheet.effects"}}:</span>
+          <span class="fg-white text-right text-vert-center">{{localize "CPR.blackIceSheet.effects"}}:</span>
           <input class="bg-white fg-black width-longer" name="system.effect" type="text" value="{{actor.system.effect}}"/>
         </div>
         <div class="flexrow bg-red pad-thin text-padding-left">
-          <span class="fg-white text-center text-vert-center">{{localize "CPR.global.generic.notes"}}:</span>
+          <span class="fg-white text-right text-vert-center">{{localize "CPR.global.generic.notes"}}:</span>
           <input class="bg-white fg-black width-longer" name="system.notes" type="text" value="{{actor.system.notes}}"/>
         </div>
       </div>
