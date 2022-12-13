@@ -1,7 +1,7 @@
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/ammo/paintball.svg
+img: systems/cyberpunk-red-core/icons/compendium/ammo/paintball_basic.png
 name: Paintball (Basic)
 system:
   tags: []

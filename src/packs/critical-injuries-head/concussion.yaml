@@ -22,7 +22,7 @@ system:
     dvParamedic: 13
     type: firstAidParamedic
   revealed: true
-  source: ''
+  source: Pg. 188
   tags: []
   treatment:
     dvParamedic: 0

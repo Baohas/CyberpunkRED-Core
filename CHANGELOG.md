@@ -1,53 +1,76 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
-## Version 0.86 | Date: TBA
+## Version 0.86.0 | Date: TBD
 
-## Changes
+### New Features
 
+### Changes
+
+- Change the Crit Injury icon for head injuries
+- Change the Crit Injury icons to display before name
 - Update Character sheet to show more information for items
+
+### Bug Fixes
 
 ## Version 0.85.0 | Date: 2022-12-11
 
 ### New Features
 
 - Added 12 new guns from The 12 Days of Gunmas
-- Added 11 new guns and 1 new attachment from Woodchipper’s Garage (The Militech Archimedes will come soon)
+- Added 12 new guns and 1 new attachment from Woodchipper’s Garage
 - Added 2 new cyberware, 1 new gun, and 1 new clothing from Micro Chrome
 - Added 1 new vehicle and 2 new items from Spinning Your Wheels
+- Added 2 new items from Cyberchairs
 - Added 'Paintballs' and 'Custom' ammo varieties
 - Added 'Acid' and 'Special' ammo types
 - Added Basic, Acid, Biotoxin, and Poison paintballs
+- Added new icons for the Basic, Acid, Biotoxin, and Poison paintballs. Thanks Mirrandin!
 - Added custom ammo used by the Malorian Arms Sub-Flechette Gun, the Nova Model 757 Cityhunter, and the Sternmeyer M-02 Heavy Rifle
 - Added icons for the Underbarrel Shotgun, the Underbarrel Grenade Launcher and the (new) Poor Quality Underbarrel Grenade Launcher
-- Added an icon for Paintballs
 - Added new icons for the Chipware Compartment, the Smart Lens, the Inline Skates, and the Skateboard
 - Added 8 new vehicle icons
 - Added new icons for the Bodyweight Suit, the Bulletproof Shield, and generic head armor
 - Added new icons for the Body and Head Injury Tables
-- #565 - The amount an ammunition reduces SP on hit can be configured on the item. Compendium items were updated to use this too.
+- #565 - The amount ammo reduces SP on hit can now be configured in the item, and compendium items have been updated to make use of this
+- Added support for choosing any skill for use with a weapon, covering DLC and potential future source books
+- Added descriptions to various upgrades that were missing them
+- Added page references to all clothing items and critical injuries
+- #444 - We now support Russian! Thank you to our translators @openmanv and @kurigohan
 
 ### Changes
 
-- The Babele module should no longer require renaming files or directories to make it work.(#482)
-- #585 - renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes
+- #482 - The Babele module should no longer require renaming files or directories to make it work
+- #585 - Renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes
+- Renamed the Extended Magazine and Drum Magazine upgrades (`SMG Drum Magazine` -> `Drum Magazine (SMG)`) to enable easier browsing and consistency with other naming schemes
 - Changed the Extended Magazine and Drum Magazine upgrades to use the Ammo icon instead of the default icon
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
-- Rename the `Free` price category to `No Price`
+- Renamed the `Free` price category to `No Price`
 - Use Foundry tooltips instead of browser tooltips
+- Standardised raw `.svg` graphics to be squares, with any rounding applied later
+- Adjusted `vial_poison.svg` to better match other icons
+- Standardised the x-axis and y-axis offsets of the filters applied to `.svg` graphics
+- Capped the drop shadow intensity of the `.svg` graphics at `stdDeviation="15"`. This will make some of the darker graphics easier to read
+- Adjusted the formatting of the credits to improve readability
+- Where weapon features aren't currently supported, a note has been added to that weapons description
+- Changed the magazine upgrades to use `override` instead of `modifier`
 
 ### Bug Fixes
 
-- Align the second column on the gear tab so it is not all over the place
+- Aligned the second column on the gear tab so it is not all over the place
 - Fixed missing thumbnail image for the included Dystopian City Junction map
 - Corrected the name format of the included maps
 - Corrected a typo in the name of the Excellent Heavy SMG
 - Corrected a typo in the Battery Pack ammo description
-- Fixed the Incendiary Shotgun Slug showing the wrong image
-- We now support Russian! (#444) Thank you to our translators @openmanv and @kurigohan!
+- Fixed the Incendiary Shotgun Slug using the wrong icon
 - #453 - Fixed strings that could not be translated properly
-- Fix item images in the item sheets for a number of compendium items
+- Fixed images in the item sheets for a number of compendium items
 - #601 - Rolled critical injuries do not apply active effects
+- Fixed Dargun doing 8d6 instead of 4d6 damage, thanks Sryth!
+- Fixed incorrect grouping in several `.svg` graphics which caused filters to not be applied correctly
+- Fixed the W I D E Wound State heart not displaying properly on the actor sheet
+- #592 - Fixed some `.svg` icons not showing up properly in the UI
+- Adjusted the size, spacing, and formatting of the ammo icons. This fixed a few minor GFX bugs, and made them look more cohesive. Thanks Mirrandin!
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
@@ -75,7 +98,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ### Changes
 
-- #434 - users no longer need to import compendia to use DV measurements or roll critical injuries
+- #434 - Users no longer need to import compendia to use DV measurements or roll critical injuries
 - Drugs can now be equipped, owned, or carried
 - Moved created migrationFolder management on CPRMigration and moved backupOwnedItem to CPRMigration as it will probably become necessary if we have more ActiveEffect changes in the future
 - UI Improvements:
@@ -84,9 +107,9 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - Added icons to the container inventory
   - Removed action label on container sheets since it was poorly aligned and the buttons are self-explanatory
   - Add Slot details to Item Upgrade Dialogue
-- Add ROF to weapons in the fight tab (#539)
+- #539 - Add ROF to weapons in the fight tab
 - Hide/Show `Used Upgrade Slots` if an item has slots
-- #555 Create Elflines Online Compendium as a Compendium not a macro
+- #555 - Create Elflines Online Compendium as a Compendium not a macro
 - The Role block in the left pane of the character sheet is now just a simple text box. Active Net Role is now set from the Net section of the Fight tab. This should be a lot clearer to users and require less maintenance.
 
 ### Bug Fixes
@@ -161,10 +184,6 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - Foundry V10 Compatibility
 - Spanish translation! Thank you ZRAAA78!
-
-### Changes
-
-- Nothing worth noting
 
 ### Bug Fixes
 

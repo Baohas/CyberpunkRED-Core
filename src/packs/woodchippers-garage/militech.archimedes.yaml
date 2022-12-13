@@ -1,0 +1,59 @@
+effects: []
+flags:
+  core: {}
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher_excellent.svg
+name: Militech Archimedes
+system:
+  weaponType: rocketLauncher
+  weaponSkill: Pilot Air Vehicle
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 8d6
+  rof: 1
+  dvTable: DV Rocket Launcher
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 1
+  tags: ''
+  description:
+    value: >-
+      <p>Uses the Pilot Air Vehicle Skill instead of the Heavy Weapons Skill to
+      fire, requires the has Targeting Scope Cyberware, and can only use Smart
+      Rockets. It does come with one Smart Rocket included however. How
+      nice.</p>
+    chat: ''
+    unidentified: ''
+  source: WG
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 1
+    ammoId: ''
+  ammoVariety:
+    - rocket
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 5000
+    category: veryExpensive
+  handsReq: 2
+  attachmentSlots: 3
+  isConcealed: false
+  quality: excellent
+  upgrade: ''
+type: weapon
+_id: xuffoWmepDctyMhs
+folder: null
+sort: 0
+ownership:
+  default: 0

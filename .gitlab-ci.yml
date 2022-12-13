@@ -383,24 +383,24 @@ compendia-use:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
-lint-files:
-  stage: test
-  script:
-    - echo "Making sure files follow editorconfig..."
-    - npx editorconfig-checker
-  allow_failure: true
-  needs:
-    - job: init
-  rules:
-    # Don't run if we're in the cleanup-dev schedule
-    - if: $CPR_SCHEDULE == "cleanup-dev"
-      when: never
-    # Run on MRs
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
-    - if: $CI_COMMIT_BRANCH == "dev"
-    # Run on git tag
-    - if: $CI_COMMIT_TAG
+#lint-files:
+#  stage: test
+#  script:
+#    - echo "Making sure files follow editorconfig..."
+#    - npx editorconfig-checker
+#  allow_failure: true
+#  needs:
+#    - job: init
+#  rules:
+#    # Don't run if we're in the cleanup-dev schedule
+#    - if: $CPR_SCHEDULE == "cleanup-dev"
+#      when: never
+#    # Run on MRs
+#    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+#    # Run on merge to 'dev'
+#    - if: $CI_COMMIT_BRANCH == "dev"
+#    # Run on git tag
+#    - if: $CI_COMMIT_TAG
 
 # Build without artifacts when not tagging a release
 test-build:

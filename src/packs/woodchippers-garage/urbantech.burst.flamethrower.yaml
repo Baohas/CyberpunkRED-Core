@@ -22,7 +22,10 @@ system:
       weapon burn for 4HP a turn.<br><br>Additionally, this weapon can consume
       all it's remaining ammo to shoot a fireball, which explodes in a similar
       fashion to an incendiary grenade. The user of the weapon is also consumed
-      by the fireball, getting Deadly on Fire.&nbsp;</p>
+      by the fireball, getting Deadly on Fire*.</p>
+
+      <p><em>*Special fire mode not currently supported; will need to be
+      manually applied</em></p>
     chat: ''
     unidentified: ''
   source: WG
