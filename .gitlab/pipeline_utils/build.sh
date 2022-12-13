@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # The following vars are set during the 'init' CI job.
-# RELEASE_NAME REPO_URL SYSTEM_FILE VERSION ZIP_FILE
+# RELEASE_NAME REPO_URL SYSTEM_FILE SYSTEM_VERSION ZIP_FILE
 
 # Then stick them in an array so we can loop over them later
 declare -a UPLOAD_FILES
@@ -53,7 +53,7 @@ for file in "${UPLOAD_FILES[@]}"; do
     curl \
       --silent \
       --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
-      --upload-file "${file}" "${REPO_URL}/${VERSION}/${file}"
+      --upload-file "${file}" "${REPO_URL}/${SYSTEM_VERSION}/${file}"
   )
 
   # Check the response
