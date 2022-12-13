@@ -45,7 +45,7 @@ CHANGELOG_FILE="CHANGELOG.md"
 # Variables that rarely change, can be overwritten later.
 
 # Set the version number to the CI_COMMIT_TAG
-VERSION="${CI_COMMIT_TAG}"
+SYSTEM_VERSION="${CI_COMMIT_TAG}"
 
 # Base URL for the project
 PROJECT_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}"
@@ -62,7 +62,7 @@ REPO_URL="${PROJECT_URL}/packages/generic/fvtt-${SYSTEM_NAME}"
 # overwite the defaults. Used in the build stages.
 if [[ -z "${CI_COMMIT_TAG}" ]]; then
   # Use the date/time as a version number
-  VERSION="v$(date +%Y%m%d.%H%M)"
+  SYSTEM_VERSION="v$(date +%Y%m%d.%H%M)"
   # Set the system title to inclue DEV to make identifying it easier in Foundry
   SYSTEM_TITLE="Cyberpunk RED - CORE - DEV"
   # Append "-dev" to the package repo name
@@ -75,7 +75,7 @@ fi
 # Mostly static variables that rely on Dynamic Variables before being set.
 
 # Full name of the release including version
-RELEASE_NAME="fvtt-${SYSTEM_NAME}-${VERSION}"
+RELEASE_NAME="fvtt-${SYSTEM_NAME}-${SYSTEM_VERSION}"
 
 # Set the ZIP name we'll publigh later
 ZIP_FILE="${RELEASE_NAME}.zip"
@@ -93,6 +93,6 @@ ZIP_FILE="${RELEASE_NAME}.zip"
   echo "SYSTEM_FILE=${SYSTEM_FILE}"
   echo "SYSTEM_NAME=${SYSTEM_NAME}"
   echo "SYSTEM_TITLE=${SYSTEM_TITLE}"
-  echo "VERSION=${VERSION}"
+  echo "SYSTEM_VERSION=${SYSTEM_VERSION}"
   echo "ZIP_FILE=${ZIP_FILE}"
 } >vars.env
