@@ -3,10 +3,15 @@
 
 ## Version 0.86.0 | Date: TBD
 
-## Changes
+### New Features
+
+### Changes
 
 - Change the Crit Injury icon for head injuries
 - Change the Crit Injury icons to display before name
+- Update Character sheet to show more information for items
+
+### Bug Fixes
 
 ## Version 0.85.0 | Date: 2022-12-11
 
