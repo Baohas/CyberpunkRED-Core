@@ -10,48 +10,50 @@ ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety:
-    - vHeavyPistol
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  damage: 5d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: >-
-      <p>An Exotic, Excellent Quality Very Heavy Pistol. You must connect to
-      this device with a Smartgun Link. Refer to the full item description on
-      pg. 348.</p>
-  dvTable: DV Pistol
-  equipped: owned
-  favorite: false
+  weaponType: vHeavyPistol
+  weaponSkill: Handgun
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  handsReq: 1
-  isConcealed: false
-  isRanged: true
-  isUpgraded: false
-  magazine:
-    ammoId: ''
-    max: 8
-    value: 0
-  price:
-    category: superLuxury
-    market: 10000
-  quality: excellent
-  revealed: true
+  damage: 5d6
   rof: 1
-  slots: 0
-  source: pg. 348
-  tags: []
+  dvTable: DV Pistol
+  isRanged: true
   unarmedAutomaticCalculation: true
-  upgrades: []
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun
+      Link* that must be used. Refer to the full item description on pg.
+      348.</p>
+
+      <p><em>*Must be manually added after acquiring the weapon</em></p>
+    chat: ''
+    unidentified: ''
+  source: pg. 348
+  favorite: false
+  revealed: true
   usage: equipped
+  equipped: owned
   usesType: magazine
-  weaponSkill: Handgun
-  weaponType: vHeavyPistol
+  magazine:
+    value: 0
+    max: 8
+    ammoId: ''
+  ammoVariety:
+    - vHeavyPistol
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 0
+  isUpgraded: false
+  price:
+    market: 10000
+    category: superLuxury
+  handsReq: 1
+  attachmentSlots: 0
+  isConcealed: false
+  quality: excellent
 type: weapon

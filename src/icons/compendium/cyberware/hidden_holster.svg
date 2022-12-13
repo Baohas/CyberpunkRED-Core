@@ -36,12 +36,12 @@
          id="feComposite1142" />
       <feGaussianBlur
          in="composite1"
-         stdDeviation="30"
+         stdDeviation="15"
          result="blur"
          id="feGaussianBlur1144" />
       <feOffset
-         dx="-4.0375"
-         dy="-4.02735"
+         dx="0"
+         dy="0"
          result="offset"
          id="feOffset1146" />
       <feComposite
