@@ -28,7 +28,7 @@
         grid-gap  : 5px;
         padding: 5px;
 
-        grid-template-rows: 200px 28px 28px 16px auto;
+        grid-template-rows: 200px 30px 30px 27px auto;
         grid-template-areas:
             "image"
             "name"
@@ -54,11 +54,13 @@
           .trade-with-label {
             display: flex;
             align-items: center;
+            padding: 5px;
           }
 
           .trade-with-dropdown {
-            width: 110px;
+            width: 105px;
             float: right;
+            padding-right: 5px;
           }
         }
 
@@ -68,20 +70,37 @@
           .container-type-label {
             display: flex;
             align-items: center;
+            padding: 5px;
           }
 
           .container-type-dropdown {
             width: 150px;
             float: right;
+            padding-right: 5px;
           }
 
           .eurobucks-modify-reason-label {
+            padding: 5px;
             max-width: fit-content;
+          }
+
+          .container-type-settings {
+            padding: 5px;
+          }
+
+          .container-shop-settings {
+            padding: 5px;
+          }
+
+          .container-eurobucks-ledger {
+            padding: 5px;
           }
         }
 
         .eurobucks-section {
           grid-area: eurobucks;
+          padding: 5px;
+          height: 27px;
 
           .eurobucks-label {
             display: flex;
@@ -95,7 +114,7 @@
         grid-area: pane-right;
 
         display  : flex;
-        height   : 450px;
+        height   : auto;
         width    : 100%;
 
         border-color: @wyrm-red;
