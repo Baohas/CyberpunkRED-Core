@@ -1,11 +1,4 @@
 _id: OdeOEmoocJix2BbC
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830947649
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830947649
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -34,7 +27,7 @@ system:
   quality: standard
   revealed: true
   slots: 3
-  source: ''
+  source: Pg. 356
   style: bagLadyChic
   tags: []
   type: contactLenses

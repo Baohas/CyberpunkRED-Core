@@ -13,7 +13,7 @@ data:
     dvParamedic: 13
     type: paramedic
   revealed: true
-  source: ''
+  source: Pg. 188
   tags: []
   treatment:
     dvParamedic: 13

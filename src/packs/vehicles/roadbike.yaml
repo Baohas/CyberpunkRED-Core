@@ -1,16 +1,9 @@
 _id: jQAAGVWOKKhzEIMK
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831043778
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831043778
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+img: systems/cyberpunk-red-core/icons/compendium/vehicle/motorbike.svg
 name: Roadbike
 ownership:
   default: 0

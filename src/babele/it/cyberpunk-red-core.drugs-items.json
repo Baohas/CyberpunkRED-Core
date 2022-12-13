@@ -1,0 +1,45 @@
+{
+	"label": "Droghe",
+	"entries": {
+		"Antibiotic": {
+			"name": "Antibiotico",
+			"description": "<p>Se un bersaglio ha iniziato il processo di guarigione naturale iniettandole l'Antibiotico, li farà guarire altri 2 Punti Ferita al giorno per una settimana. Questo effetto non si accumula.</p>"
+		},
+		"Black Lace": {
+			"name": "Black Lace",
+			"description": "<p>Dura 24 ore.<br />Il Personaggio perde 2d6 Umanità quando la assume, che recupera se resiste all’Effetto Secondario. Per la durata dell’Effetto Primario, il Personaggio ignora le conseguenze della Soglia Ferito Gravemente.<br /><br />Effetto Secondario (VD 17).<br />L’umanità persa a causa dell’Effetto Primario non viene recuperata. Il Personaggio, se non era già dipendente dal Black Lace, lo diventa. Finché resta dipendente i suoi RIF sono ridotti di 2 quando non è sotto l’Effetto Primario della droga.</p>"
+		},
+		"Blue Glass": {
+			"name": "Blue Glass",
+			"description": "<p>Dose dura 4 ore. <br />Per la durata dell’Effetto Primario, il GM comunicherà al Personaggio quando sta “flashando”, ossia sperimentando brevi ma potenti allucinazioni dai colori vorticosi e vibranti. Quando ciò accade si perde la capacità di effettuare un’Azione nel proprio Turno.<br /><br />Effetto secondario (VD 15) <br />Il Personaggio, se non era già dipendente dal Blue Glass, lo diventa. Finché resta dipendente, il GM comunicherà al Personaggio quando sta “flashando”, ossia sperimentando brevi ma potenti allucinazioni dai colori vorticosi e vibranti. Quando ciò accade si perde la capacità di effettuare un’Azione nel proprio Turno. Di solito, un drogato di Blue Glass “flasha” una volta all’ora, ma questo varia da persona a persona. Per chi è dipendente l’Effetto Primario cambia. Invece di causare “flash”, li sopprime: adesso bisogna drogarsi per restare lucidi.</p>"
+		},
+		"Boost": {
+			"name": "Boost",
+			"description": "<p>Dose dura 24 ore. <br />Per la durata dell’Effetto Primario, l’INT del Personaggio aumenta di 2. Questo effetto può\nportarla oltre 8. <br /><br />Effetto Secondario (VD 17) <br />Il Personaggio, se non era già dipendente dal Boost, lo diventa. Finché resta tale la sua INT è ridotta di 2. </p>"
+		},
+		"Rapidetox": {
+			"name": "Rapidetox",
+			"description": "<p>Iniettando un paziente con Rapidetox eliminerà tutti gli effetti di qualsiasi droga, veleni o intossicanti attualmente in corso.</p>"
+		},
+		"Smash": {
+			"name": "Smash",
+			"description": "<p>Dose dura 4 ore. <br />Liquido giallo e schiumoso in lattina, venduto ovunque. Per la durata dell’Effetto Primario, il personaggio è euforico, rilassato, felice e pronto a far festa. Ciò gli conferisce +2 alle seguenti Abilità: Contorsionismo, Conversazione, Danzare, Persuasione, Recitare e Sensibilità<br /><br />Effetto Secondario (VD 15.) <br />Il Personaggio, se non era già dipendente dallo Smash, lo diventa. Finché resta tale prova un generale disinteresse per le attività piacevoli, subendo -2 alle seguenti Abilità: Contorsionismo, Conversazione, Persuasione, Recitare e Sensibilità. Ogni tanto, il GM comunicherà al Giocatore che ha voglia di altro Smash e questi dovrebbe fare del proprio meglio per interpretare tale desiderio.</p>"
+		},
+		"Speedheal": {
+			"name": "Speedheal",
+			"description": "<p>Un paziente che non sia Morente recupera subito un numero di Punti Ferita pari alla somma di FIS+VOL. Si può\nricevere una sola dose al giorno.</p>"
+		},
+		"Stim": {
+			"name": "Stim",
+			"description": "<p>Per un’ora, il paziente ignora le penalità dello Soglia Ferito Gravemente. Si può riceve una sola dose al giorno.</p>"
+		},
+		"Surge": {
+			"name": "Surge",
+			"description": "<p>Il paziente può agire senza penalità per la mancanza di sonno per un giorno. Si può riceverne una sola dose\na settimana.</p>"
+		},
+		"Synthcoke": {
+			"name": "Synthcoke",
+			"description": "<p>Dose dura 4 ore. <br />Per la durata dell’Effetto Primario, i RIF del Personaggio aumentano di 1. Questo può portarli oltre 8. Tuttavia diventa anche paranoico. Ogni tanto, entro la durata, il GM comunicherà al Giocatore che sta avendo un attacco di paranoia e questi dovrebbe fare del proprio meglio per interpretarlo <br /><br />Effetto Secondario (VD 15.) <br />Il personaggio, se non era già dipendente dalla Synthcoke, lo diventa. Finché lo resta i suoi RIF calano di 2, a meno che sia sotto l’Effetto Primario della droga. Ogni tanto, il GM comunicherà al Giocatore che ha voglia di altra Synthcoke e questi dovrebbe fare del proprio meglio per interpretare tale desiderio.\n</p>"
+		}
+	}
+}

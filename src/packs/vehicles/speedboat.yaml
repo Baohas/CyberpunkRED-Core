@@ -1,16 +1,9 @@
 _id: eKqDVQo3mzD16pCc
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831043776
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831043776
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+img: systems/cyberpunk-red-core/icons/compendium/vehicle/speed_boat.svg
 name: Speedboat
 ownership:
   default: 0

@@ -1,16 +1,9 @@
 _id: r5x9bz7XA12gIiRY
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831043777
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831043777
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+img: systems/cyberpunk-red-core/icons/compendium/vehicle/helicopter.svg
 name: Helicopter
 ownership:
   default: 0

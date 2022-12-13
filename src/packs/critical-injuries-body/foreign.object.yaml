@@ -1,11 +1,4 @@
 _id: xTQ2T50UGNY8DrHl
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831351787
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831351787
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -32,7 +25,7 @@ system:
     dvParamedic: 13
     type: firstAidParamedic
   revealed: true
-  source: ''
+  source: Pg. 187
   tags: []
   treatment:
     dvParamedic: 0

@@ -1,11 +1,4 @@
 _id: b5wJC5AY37YLCGds
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830947645
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830947645
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -33,7 +26,7 @@ system:
   quality: standard
   revealed: true
   slots: 3
-  source: ''
+  source: Pg. 356
   style: asiaPop
   tags: []
   type: hats

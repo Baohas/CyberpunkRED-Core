@@ -3,7 +3,7 @@
     <li class="items-header flexrow collapsible">
 
         <span class="item-name skill-name bg-black text-nowrap text-padding-left expand-button"
-            id="skillTab-{{category}}" title="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
+            id="skillTab-{{category}}" data-tooltip="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
             {{localize (cprFindConfigValue "skillCategories" category)}}&nbsp;
             {{#if (cprListContains sheet.options.collapsedSections (cprGeneratePartial "skillTab-VAR" category))}}
             <i class="fas fa-plus bg-black collapse-icon"></i>
@@ -16,7 +16,7 @@
         <span class="item-detail skill-mod-value bg-black text-nowrap">{{localize "CPR.characterSheet.rightPane.skills.skillMod"}}</span>
         <span class="item-detail skill-level bg-black text-nowrap">{{localize "CPR.characterSheet.rightPane.skills.lvl"}}</span>
         <span class="item-detail skill-base bg-black text-nowrap">{{localize "CPR.characterSheet.rightPanke.skills.base"}}</span>
-        <span class="item-detail skill-favorite bg-black text-nowrap toggle-section-visibility" id="skillTab-{{category}}-showFavorites" title="{{localize "CPR.characterSheet.rightPane.skills.toggleCategoryAll"}}"><i class="far fa-eye show-favorites"></i><i class="far fa-eye-slash hide-favorites hide"></i></span>
+        <span class="item-detail skill-favorite bg-black text-nowrap toggle-section-visibility" id="skillTab-{{category}}-showFavorites" data-tooltip="{{localize "CPR.characterSheet.rightPane.skills.toggleCategoryAll"}}"><i class="far fa-eye show-favorites"></i><i class="far fa-eye-slash hide-favorites hide"></i></span>
     </li>
     <ol class="items-list">
 
@@ -33,8 +33,8 @@
                 </a>
 
                 {{#if (cprCompare skill.system.core "===" false)}}
-                <a class="item-edit skill-custom" title="{{localize "CPR.actorSheets.commonActions.editCustomSkill"}}"><i class="fas fa-edit"></i></a>
-                <a class="item-action skill-custom" title="{{localize "CPR.characterSheet.rightPane.skills.editCustomSkill"}}" data-action-type="delete"><i class="fas fa-trash-alt"></i></a>
+                <a class="item-edit skill-custom" data-tooltip="{{localize "CPR.actorSheets.commonActions.editCustomSkill"}}"><i class="fas fa-edit"></i></a>
+                <a class="item-action skill-custom" data-tooltip="{{localize "CPR.characterSheet.rightPane.skills.editCustomSkill"}}" data-action-type="delete"><i class="fas fa-trash-alt"></i></a>
                 {{/if}}
             </div>
             <div class="item-detail skill-mod-value text-nowrap {{#if (cprCompare (cprGetSkillBonus skill.name ../actor) "===" 0)}} zero-not-visible {{/if}}">
@@ -48,7 +48,7 @@
                 {{cprMath "sum" skill.system.level (cprGetSkillBonus skill.name ../actor) (lookup (cprGetProp ../actor.system.stats skill.system.stat) 'value')}}
             </div>
             <div class="item-detail skill-favorite text-nowrap">
-                <a class="item-action" data-action-type="favorite" title="{{localize "CPR.actorSheets.commonActions.togglePin"}}">
+                <a class="item-action" data-action-type="favorite" data-tooltip="{{localize "CPR.actorSheets.commonActions.togglePin"}}">
                     {{#if skill.system.favorite}}
                     <i class="fas fa-thumbtack fg-black favorite"></i>
                     {{else}}

@@ -1,16 +1,9 @@
 _id: JDA2y7WMXXmAiB4f
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830947635
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830947635
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewllery.svg
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
 name: Bag Lady Chic Jewelry
 ownership:
   default: 0
@@ -33,7 +26,7 @@ system:
   quality: standard
   revealed: true
   slots: 3
-  source: ''
+  source: Pg. 356
   style: bagLadyChic
   tags: []
   type: jewelry

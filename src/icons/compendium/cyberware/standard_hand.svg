@@ -7,6 +7,8 @@
    x="0px"
    y="0px"
    viewBox="0 0 512 512"
+   height="512"
+   width="512"
    style="enable-background:new 0 0 512 512;"
    xml:space="preserve"
    sodipodi:docname="standard_hand.svg"
@@ -33,11 +35,11 @@
        result="composite1"
        id="feComposite897" /><feGaussianBlur
        in="composite1"
-       stdDeviation="30"
+       stdDeviation="15"
        result="blur"
        id="feGaussianBlur899" /><feOffset
-       dx="-4.0375"
-       dy="-4.02735"
+       dx="0"
+       dy="0"
        result="offset"
        id="feOffset901" /><feComposite
        in="offset"
@@ -181,9 +183,9 @@
        id="g8-6"
        style="fill:#1b1f21;fill-opacity:1"
        transform="matrix(0.79325675,0,0,0.79325675,52.926272,52.926272)">
-	
-	
-	
+
+
+
 </g><g
        id="g10-3"
        style="fill:#1b1f21;fill-opacity:1">

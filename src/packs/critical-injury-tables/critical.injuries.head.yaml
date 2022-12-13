@@ -1,11 +1,4 @@
 _id: QiwaqQtocypL0FXG
-_stats:
-  coreVersion: '10.286'
-  createdTime: 1659831952430
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1669046703412
-  systemId: cyberpunk-red-core
-  systemVersion: 0.0.0
 description: ''
 displayRoll: true
 flags:
@@ -13,7 +6,7 @@ flags:
 folder: null
 formula: 2d6
 img: >-
-  systems/cyberpunk-red-core/icons/compendium/default/Default_Critical_Injury.svg
+  systems/cyberpunk-red-core/icons/compendium/critical_injuries/head_critical_injury.svg
 name: Critical Injuries (Head)
 ownership:
   default: 0

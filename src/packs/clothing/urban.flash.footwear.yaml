@@ -1,11 +1,4 @@
 _id: qwQVhWkGL2hJ2H1q
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830947650
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830947650
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -33,7 +26,7 @@ system:
   quality: standard
   revealed: true
   slots: 3
-  source: ''
+  source: Pg. 356
   style: urbanFlash
   tags: []
   type: footwear

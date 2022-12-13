@@ -1,0 +1,63 @@
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Flamethrower.svg
+name: UrbanTech Burst Flamethrower
+system:
+  weaponType: shotgun
+  weaponSkill: Heavy Weapons
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 5d6
+  rof: 1
+  dvTable: DV Shotgun (Slug)
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: >-
+      <p>Can only fire Incendiary Shotgun Shells, but targets ignited by this
+      weapon burn for 4HP a turn.<br><br>Additionally, this weapon can consume
+      all it's remaining ammo to shoot a fireball, which explodes in a similar
+      fashion to an incendiary grenade. The user of the weapon is also consumed
+      by the fireball, getting Deadly on Fire*.</p>
+
+      <p><em>*Special fire mode not currently supported; will need to be
+      manually applied</em></p>
+    chat: ''
+    unidentified: ''
+  source: WG
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 4
+    ammoId: ''
+  ammoVariety:
+    - shotgunShell
+    - shotgunSlug
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 1000
+    category: expensive
+  handsReq: 2
+  attachmentSlots: 3
+  isConcealed: false
+  quality: standard
+  upgrade: ''
+type: weapon
+_id: ZvjhbBWnWQQduup0
+folder: null
+sort: 0
+ownership:
+  default: 0

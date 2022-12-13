@@ -57,12 +57,12 @@
          id="feComposite910" />
       <feGaussianBlur
          in="composite1"
-         stdDeviation="30"
+         stdDeviation="15"
          result="blur"
          id="feGaussianBlur912" />
       <feOffset
-         dx="-4.0375"
-         dy="-4.02735"
+         dx="0"
+         dy="0"
          result="offset"
          id="feOffset914" />
       <feComposite
@@ -95,8 +95,8 @@
          result="blur" />
       <feOffset
          id="feOffset1606"
-         dx="-4.00062"
-         dy="-4.02735"
+         dx="0"
+         dy="0"
          result="offset" />
       <feComposite
          in2="fbSourceGraphic"
@@ -128,8 +128,8 @@
          result="blur" />
       <feOffset
          id="feOffset928"
-         dx="17.8015"
-         dy="18.9355"
+         dx="0"
+         dy="0"
          result="offset" />
       <feComposite
          in2="fbSourceGraphic"

@@ -6,7 +6,7 @@
       <div class="image-block">
         <img src="{{actor.img}}"
           data-edit="img"
-          title="{{actor.name}}"
+          data-tooltip="{{actor.name}}"
         />
       </div>
       {{!-- Name --}}
@@ -44,7 +44,7 @@
               <div class="item-name text-nowrap eurobucks-label">{{localize "CPR.containerSheet.settings.eurobucks.label"}}:</div>
               <div class="item-end eurobucks-value">{{cprNumberFormat actor.system.wealth.value}}</div>
               {{#if isGM}}
-              <a class="eurobucks-open-ledger" title="{{localize "CPR.ledger.ledgerOpen"}}"><i class="fas fa-sticky-note"></i></a>
+              <a class="eurobucks-open-ledger" data-tooltip="{{localize "CPR.ledger.ledgerOpen"}}"><i class="fas fa-sticky-note"></i></a>
               {{/if}}
             </li>
         </div>
@@ -184,9 +184,9 @@
             <div class="item-name text-nowrap container-type-label">{{localize "CPR.global.generic.amount"}}:</div>
             <div class="item-detail"><input class="number eurobucks-input eurobucks-modify-input" placeholder="0" type="number" id="eurobucks"></div>
             <div class="eurobucks-modify-buttons item-end">
-              <a class="eurobucks-input-button" title="{{localize "CPR.global.generic.add"}} {{localize "CPR.characterSheet.rightPane.eurobucks.eurobucks"}}" data-action="add"><i class="fas fa-plus-circle"></i></a>
-              <a class="eurobucks-input-button" title="{{localize "CPR.global.generic.subtract"}} {{localize "CPR.characterSheet.rightPane.eurobucks.eurobucks"}}" data-action="subtract"><i class="fas fa-minus-circle"></i></a>
-              <a class="eurobucks-input-button" title="{{localize "CPR.global.generic.set"}} {{localize "CPR.characterSheet.rightPane.eurobucks.eurobucks"}}" data-action="set"><i class="fas fa-chevron-circle-right"></i></a>
+              <a class="eurobucks-input-button" data-tooltip="{{localize "CPR.global.generic.add"}} {{localize "CPR.characterSheet.rightPane.eurobucks.eurobucks"}}" data-action="add"><i class="fas fa-plus-circle"></i></a>
+              <a class="eurobucks-input-button" data-tooltip="{{localize "CPR.global.generic.subtract"}} {{localize "CPR.characterSheet.rightPane.eurobucks.eurobucks"}}" data-action="subtract"><i class="fas fa-minus-circle"></i></a>
+              <a class="eurobucks-input-button" data-tooltip="{{localize "CPR.global.generic.set"}} {{localize "CPR.characterSheet.rightPane.eurobucks.eurobucks"}}" data-action="set"><i class="fas fa-chevron-circle-right"></i></a>
             </div>
           </li>
           <li class="item flexrow">
@@ -204,7 +204,7 @@
           {{#each (cprFindConfigObj "inventoryCategories") as |category c|}}
           <div class="collapsible">
             <li class="items-header flexrow collapsible">
-              <span class="item-name bg-black text-nowrap expand-button" id="gearTab-{{c}}" title="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
+              <span class="item-name bg-black text-nowrap expand-button" id="gearTab-{{c}}" data-tooltip="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
                 {{localize category}}&nbsp;
                 {{#if (cprListContains ../this.options.collapsedSections (cprGeneratePartial "gearTab-VAR" c))}}
                 <i class="fas fa-plus bg-black collapse-icon"></i>
@@ -222,7 +222,7 @@
               </span>
               <span class="item-end bg-black text-nowrap">
                 {{#if (cprCompare ../isGM "||" ../actor.flags.cyberpunk-red-core.players-create)}}
-                  <a class="item-create" title="{{localize "CPR.actorSheets.commonActions.createNewItem"}}" data-item-type="{{c}}">
+                  <a class="item-create" data-tooltip="{{localize "CPR.actorSheets.commonActions.createNewItem"}}" data-item-type="{{c}}">
                     <i class="fas fa-plus-circle text-padding-right" style="color: dimgrey;"></i>
                   </a>
                 {{/if}}

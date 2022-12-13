@@ -1,11 +1,4 @@
 _id: cmgqzHg3KxyJx7LP
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830947639
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830947639
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -34,7 +27,7 @@ system:
   quality: standard
   revealed: true
   slots: 3
-  source: ''
+  source: Pg. 356
   style: nomadLeathers
   tags: []
   type: contactLenses

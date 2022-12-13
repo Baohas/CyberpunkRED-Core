@@ -1,48 +1,57 @@
 _id: x6mYA3IJZaNK00nv
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831027210
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027210
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/item_upgrades/grenade_launcher_underbarrel.svg
 name: Grenade Launcher Underbarrel
 ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety:
-    - grenade
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  damage: 6d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: ''
-  dvTable: DV Grenade Launcher
-  equipped: owned
-  favorite: false
+  weaponType: grenadeLauncher
+  weaponSkill: Heavy Weapons
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  handsReq: 0
+  damage: 6d6
+  rof: 1
+  dvTable: DV Grenade Launcher
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>Functions like a standard grenade launcher, but with a magazine size of
+      1. Requires 2 hands to use, and takes up 2 attachment slots. While
+      attached, the weapon can't be concealed under clothing.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 343
+  favorite: false
+  concealable:
+    concealable: false
+    isConcealed: false
   install: mall
   isInstalled: false
-  isRanged: true
+  size: 2
+  usesType: magazine
   magazine:
-    ammoId: ''
-    max: 1
     value: 0
+    max: 1
+    ammoId: ''
+  ammoVariety:
+    - grenade
+  price:
+    market: 500
+    category: expensive
+  handsReq: 0
+  type: weapon
   modifiers:
+    secondaryWeapon:
+      configured: 'true'
     Wardrobe & Style:
       type: modifier
       value: null
@@ -94,8 +103,6 @@ system:
     seats:
       type: modifier
       value: null
-    secondaryWeapon:
-      configured: 'true'
     shieldHp:
       type: modifier
       value: null
@@ -111,16 +118,6 @@ system:
     will:
       type: modifier
       value: null
-  price:
-    category: expensive
-    market: 500
-  rof: 1
-  size: 2
-  source: pg. 343
-  tags: []
-  type: weapon
-  unarmedAutomaticCalculation: true
-  usesType: magazine
-  weaponSkill: Heavy Weapons
-  weaponType: grenadeLauncher
+  attachmentSlots: 0
+  equipped: owned
 type: itemUpgrade

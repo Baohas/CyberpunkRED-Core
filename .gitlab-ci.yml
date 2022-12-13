@@ -196,7 +196,31 @@ language-exists:
     - apt-get install jq --yes
   script:
     - echo "Checking if all the language files specified in system.json exist..."
-    - ./.gitlab/pipeline_tests/test-lang-existence.sh
+    # disabling while we fix Crowdin
+    # -./.gitlab/pipeline_tests/test-lang-existence.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
+language-strings:
+  stage: test
+  before_script:
+    - apt-get update
+    - apt-get install jq --yes
+  script:
+    - echo "Checking if translation strings exist where they should..."
+    # disabling while we fix Crowdin
+    # - ./.gitlab/pipeline_tests/test-lang-strings.sh
   needs:
     - job: init
       artifacts: true
@@ -226,6 +250,25 @@ changelog-has-changed:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+tooltips:
+  stage: test
+  script:
+    - echo "Checking if we are using 'data-toolip' for tooltips..."
+    - ./.gitlab/pipeline_tests/test-handlebars-tooltips.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 trace-statements:
   stage: test
@@ -284,6 +327,25 @@ handlebars-helpers:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
+svg-dimension:
+  stage: test
+  script:
+  - echo "Checking SVGs have height/width tags..."
+  - ./.gitlab/pipeline_tests/test-svg-dimensions.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
 game-id:
   stage: test
   script:
@@ -320,6 +382,25 @@ compendia-use:
     - if: $CI_COMMIT_BRANCH == "dev"
     # Run on git tag
     - if: $CI_COMMIT_TAG
+
+#lint-files:
+#  stage: test
+#  script:
+#    - echo "Making sure files follow editorconfig..."
+#    - npx editorconfig-checker
+#  allow_failure: true
+#  needs:
+#    - job: init
+#  rules:
+#    # Don't run if we're in the cleanup-dev schedule
+#    - if: $CPR_SCHEDULE == "cleanup-dev"
+#      when: never
+#    # Run on MRs
+#    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+#    # Run on merge to 'dev'
+#    - if: $CI_COMMIT_BRANCH == "dev"
+#    # Run on git tag
+#    - if: $CI_COMMIT_TAG
 
 # Build without artifacts when not tagging a release
 test-build:
@@ -365,6 +446,7 @@ build-artifacts:
     - job: trace-statements
     - job: code-localization
     - job: handlebars-helpers
+    - job: tooltips
     - job: test-build
       optional: true
   rules:

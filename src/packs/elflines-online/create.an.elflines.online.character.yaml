@@ -1,11 +1,4 @@
 _id: YI3MVPWwjfWK4Woa
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659832329367
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659832329367
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 author: RHHKVzg3SHTeyLev
 command: >-
   // Set the following to the name of your character to be created

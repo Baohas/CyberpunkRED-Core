@@ -13,8 +13,7 @@
     {{else}}
     <div class="min-of-max-container">
       {{#if (cprCompare this.value ">" 9)}}
-      <div class="fg-red tooltip">
-        <span class="tooltiptext">{{s}} {{localize 'CPR.tooltip.valueOf'}} {{this.value}} {{localize 'CPR.tooltip.isTooLargeForThisField'}}.</span>
+      <div class="fg-red tooltip" data-tooltip="{{s}} {{localize 'CPR.tooltip.valueOf'}} {{this.value}} {{localize 'CPR.tooltip.isTooLargeForThisField'}}">
         <input class="" name="system.stats.{{s}}.value" type="number" value="{{this.value}}" />
       </div>
       {{else}}
@@ -22,8 +21,7 @@
       {{/if}}
 
       {{#if (cprCompare (cprCompare this.value ">" 9) "||" (cprCompare this.max ">" 9))}}
-      <div class="tooltip">
-        <span class="tooltiptext">{{s}} {{localize 'CPR.tooltip.fieldsHaveNumbersTooLargeToDisplay'}}.</span>
+      <div class="fg-red tooltip" data-tooltip="{{s}} {{localize 'CPR.tooltip.fieldsHaveNumbersTooLargeToDisplay'}}">
         <div class="of-stat bg-red fg-white text-normal text-bold">of</div>
       </div>
       {{else}}
@@ -31,8 +29,7 @@
       {{/if}}
 
       {{#if (cprCompare this.max ">" 9)}}
-      <div class="fg-red tooltip">
-        <span class="tooltiptext">{{s}} {{localize 'CPR.tooltip.maxOf'}} {{this.max}} {{localize 'CPR.tooltip.isTooLargeForThisField'}}.</span>
+      <div class="fg-red tooltip" data-tooltip="{{s}} {{localize 'CPR.tooltip.maxOf'}} {{this.max}} {{localize 'CPR.tooltip.isTooLargeForThisField'}}">
         <input class="" name="system.stats.{{s}}.max" type="number" value="{{this.max}}" />
       </div>
       {{else}}

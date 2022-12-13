@@ -1,11 +1,4 @@
 _id: kDGBW4aA2wJ9KjUF
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831027209
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027209
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -28,7 +21,7 @@ system:
     unidentified: ''
     value: >-
       <p>Cyberdeck is immune to effects that force the Netrunner to Jack Out
-      (safely or unsafely)</p>
+      (safely or unsafely).</p>
   dvTable: ''
   equipped: owned
   favorite: false

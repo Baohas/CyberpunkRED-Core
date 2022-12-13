@@ -1,0 +1,53 @@
+{
+	"label": "VD Rolltables",
+	"entries": [
+		{
+			"id": "VD Fucile d'Assalto",
+			"name": "VD Fucile d'Assalto"
+		},
+		{
+			"id": "VD Fucile d'Assalto (Autom)",
+			"name": "VD Fucile d'Assalto (Autom)"
+		},
+		{
+			"id": "VD Archi & Balestre",
+			"name": "VD Archi e balestre"
+		},
+		{
+			"id": "VD Generico",
+			"name": "VD Generico"
+		},
+		{
+			"id": "VD Lancia Granate",
+			"name": "VD Lancia Granate"
+		},
+		{
+			"id": "VD Pistola",
+			"name": "VD Pistola"
+		},
+		{
+			"id": "VD Lanciarazzi",
+			"name": "VD Lanciarazzi"
+		},
+		{
+			"id": "VD Shotgun (Slug)",
+			"name": "VD Shotgun (Slug)"
+		},
+		{
+			"id": "VD Mitra",
+			"name": "VD Mitra"
+		},
+		{
+			"id": "VD Mitra (Autom)",
+			"name": "VD Mitra (Autom)"
+		},
+		{
+			"id": "VD Fucile da Cecchino",
+			"name": "VD Fucile da Cecchino"
+		},
+		{
+			"id": "VD Arma Lanciata",
+			"name": "VD Arma Lanciata"
+		}
+	]
+}

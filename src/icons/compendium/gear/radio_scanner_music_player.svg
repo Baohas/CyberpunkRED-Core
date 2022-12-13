@@ -7,6 +7,8 @@
    x="0px"
    y="0px"
    viewBox="0 0 512 512"
+   height="512"
+   width="512"
    style="enable-background:new 0 0 512 512;"
    xml:space="preserve"
    sodipodi:docname="radio_scanner_music_player.svg"
@@ -33,11 +35,11 @@
        result="composite1"
        id="feComposite911" /><feGaussianBlur
        in="composite1"
-       stdDeviation="30"
+       stdDeviation="15"
        result="blur"
        id="feGaussianBlur913" /><feOffset
-       dx="-4"
-       dy="-4"
+       dx="0"
+       dy="0"
        result="offset"
        id="feOffset915" /><feComposite
        in="offset"

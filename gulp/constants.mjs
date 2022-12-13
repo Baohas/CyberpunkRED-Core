@@ -1,3 +1,9 @@
+import yargs from "yargs";
+
+const _argv = yargs(process.argv).argv;
+
+// Exports
+export const DEBUG = _argv.debug !== undefined;
 export const DEFAULT_DESTINATION_FOLDER = "dist";
 export const CHANGELOG_FILE = process.env.CHANGELOG_FILE
   ? process.env.CHANGELOG_FILE
@@ -11,3 +17,6 @@ export const SYSTEM_FILE = process.env.SYSTEM_FILE
 export const SYSTEM_TITLE = process.env.SYSTEM_TITLE
   ? process.env.SYSTEM_TITLE
   : "Cyberpunk RED - CORE";
+export const SYSTEM_VERSION = process.env.SYSTEM_VERSION
+  ? process.env.SYSTEM_VERSION
+  : "v0.0.0dev";

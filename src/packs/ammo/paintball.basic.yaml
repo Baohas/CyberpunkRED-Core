@@ -1,0 +1,30 @@
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/ammo/paintball_basic.png
+name: Paintball (Basic)
+system:
+  tags: []
+  description:
+    value: <p>Regular paintballs that don't do any damage. Annoying though.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 347
+  favorite: false
+  concealable:
+    concealable: true
+    isConcealed: false
+  ablationValue: 1
+  amount: 10
+  price:
+    market: 10
+    category: cheap
+  variety: paintball
+  type: basic
+  upgrade: ''
+type: ammo
+_id: XrmjWt5BvX6meuUs
+folder: null
+sort: 0
+ownership:
+  default: 0

@@ -1,11 +1,4 @@
 _id: DsO5c0MS5tZ0bh1B
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830994293
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830994293
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -23,9 +16,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: >-
-      <p><span style="color: #191813; font-family: 'Audimat Mono';
-      background-color: #eaeaea;">Netrunner deck. 5 slots.</span></p>
+    value: <p>Netrunner deck. 5 slots.</p>
   equipped: owned
   favorite: false
   isUpgraded: false

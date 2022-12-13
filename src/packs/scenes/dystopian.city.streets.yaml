@@ -1,11 +1,4 @@
 _id: sG2H0phlu5j7iQYl
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659833161509
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659833161509
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 active: false
 background:
   offsetX: 0
@@ -54,7 +47,7 @@ playlistSound: null
 sort: 0
 sounds: []
 templates: []
-thumb: systems/cyberpunk-red-core/assets/scenes/sG2H0phlu5j7iQYl-thumb.webp
+thumb: systems/cyberpunk-red-core/assets/scenes/Dystopian_City_Streets_thumb.webp
 tiles: []
 tokenVision: true
 tokens: []

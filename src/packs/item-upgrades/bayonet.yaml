@@ -1,11 +1,4 @@
 _id: xRA275R527XLwaBJ
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831027214
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027214
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -16,32 +9,47 @@ ownership:
   default: 0
 sort: 0
 system:
-  ammoVariety: []
-  attachmentSlots: 0
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  damage: 1d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: ''
-  dvTable: ''
-  equipped: owned
-  favorite: false
+  weaponType: lightMelee
+  weaponSkill: Melee Weapon
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  handsReq: 0
+  damage: 1d6
+  rof: 1
+  dvTable: ''
+  isRanged: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>An old idea that still works just as good; lets you use your gun as a
+      light melee weapon. While attached, the weapon can't be concealed under
+      clothing.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 343
+  favorite: false
+  concealable:
+    concealable: false
+    isConcealed: false
   install: mall
   isInstalled: false
-  isRanged: false
+  size: 1
+  usesType: magazine
   magazine:
-    ammoId: ''
-    max: 0
     value: 0
+    max: 0
+    ammoId: ''
+  ammoVariety: []
+  price:
+    market: 100
+    category: premium
+  handsReq: 0
+  type: weapon
   modifiers:
+    secondaryWeapon:
+      configured: 'true'
     Wardrobe & Style:
       type: modifier
       value: null
@@ -93,8 +101,6 @@ system:
     seats:
       type: modifier
       value: null
-    secondaryWeapon:
-      configured: 'true'
     shieldHp:
       type: modifier
       value: null
@@ -110,16 +116,6 @@ system:
     will:
       type: modifier
       value: null
-  price:
-    category: premium
-    market: 100
-  rof: 1
-  size: 1
-  source: pg. 343
-  tags: []
-  type: weapon
-  unarmedAutomaticCalculation: true
-  usesType: magazine
-  weaponSkill: Melee Weapon
-  weaponType: lightMelee
+  attachmentSlots: 0
+  equipped: owned
 type: itemUpgrade

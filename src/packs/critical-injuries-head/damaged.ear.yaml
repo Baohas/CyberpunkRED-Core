@@ -1,11 +1,4 @@
 _id: qRkCxq0KTuBnw2wj
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831359669
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831359669
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects:
   - _id: Z1UtRgahC2BAOxh5
     changes:
@@ -55,7 +48,7 @@ system:
     dvParamedic: 13
     type: paramedic
   revealed: true
-  source: ''
+  source: Pg. 188
   tags: []
   treatment:
     dvParamedic: 0

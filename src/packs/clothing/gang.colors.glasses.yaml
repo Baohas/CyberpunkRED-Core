@@ -1,11 +1,4 @@
 _id: PGK96hSYe39toOam
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830947655
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830947655
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -33,7 +26,7 @@ system:
   quality: standard
   revealed: true
   slots: 3
-  source: ''
+  source: Pg. 356
   style: gangColors
   tags: []
   type: glasses

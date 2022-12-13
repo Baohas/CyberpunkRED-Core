@@ -7,6 +7,8 @@
    x="0px"
    y="0px"
    viewBox="0 0 512 512"
+   height="512"
+   width="512"
    style="enable-background:new 0 0 512 512;"
    xml:space="preserve"
    sodipodi:docname="cyberdeck.svg"
@@ -33,11 +35,11 @@
        result="composite1"
        id="feComposite931" /><feGaussianBlur
        in="composite1"
-       stdDeviation="30"
+       stdDeviation="15"
        result="blur"
        id="feGaussianBlur933" /><feOffset
-       dx="-4.0375"
-       dy="-4.02735"
+       dx="0"
+       dy="0"
        result="offset"
        id="feOffset935" /><feComposite
        in="offset"
@@ -160,7 +162,7 @@
 	<g
    id="g10"
    style="fill:#ffffff">
-		
+
 	</g>
 </g><g
    id="g18"
@@ -169,7 +171,7 @@
 	<g
    id="g16"
    style="fill:#ffffff">
-		
+
 	</g>
 </g><g
    id="g24"
@@ -178,7 +180,7 @@
 	<g
    id="g22"
    style="fill:#ffffff">
-		
+
 	</g>
 </g><g
    id="g30"
@@ -187,7 +189,7 @@
 	<g
    id="g28"
    style="fill:#ffffff">
-		
+
 	</g>
 </g>
 <g
