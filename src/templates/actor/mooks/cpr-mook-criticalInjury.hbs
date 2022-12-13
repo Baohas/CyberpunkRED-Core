@@ -6,7 +6,7 @@
 </div>
 <div class="bg-white fg-black text-padding-left">
 {{#each actor.itemTypes.criticalInjury as |item i|}}
-    <a class="name item-edit deletable changeable {{#if item.system.deathSaveIncrease}}text-bold{{/if}}" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}" tabindex="0" data-item-id="{{item.id}}">
+    <a class="name item-edit deletable changeable {{#if item.system.deathSaveIncrease}}text-bold{{/if}}" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.pressDeleteToDelete"}}" tabindex="0" data-item-id="{{item.id}}">
       {{item.name}}{{#if (cprCompare item.system.location "===" "body")}}<i class="fas fa-user-injured text-padding-left"></i>{{/if}}{{#if (cprCompare item.system.location "===" "head")}}<i class="fas fa-tired text-padding-left"></i>{{/if}}{{#unless @last}},{{/unless}}
     </a>
 {{/each}}
