@@ -13,6 +13,9 @@
 
 ### Bug Fixes
 
+- Add ROF to Cyberware Weapons and Weapon Upgrade Weapons on Mook sheet
+- ROF now uses localized strings
+
 ## Version 0.85.0 | Date: 2022-12-11
 
 ### New Features

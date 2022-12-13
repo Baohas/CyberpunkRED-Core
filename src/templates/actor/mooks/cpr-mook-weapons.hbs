@@ -35,7 +35,7 @@
                     ({{localize "CPR.mookSheet.items.unloaded"}})
                   {{/if}}
                 <br>
-                  ROF: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
+                  {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                   {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                   {{>"systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
                   <!-- Use the if check for if the weapon is upgradable. If true, show the upgrade glpyh -->
@@ -49,7 +49,7 @@
                     {{/if}}
                   {{/if}}
                   {{else}}
-                  ROF: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
+                  {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                 {{/if}}
               </div>
               <div class="mook-weapon-mode">
@@ -108,6 +108,7 @@
                             {{weapon.name}}
                           </a>
                           <br>
+                          {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                           {{#if weapon.system.isRanged}}
                             {{#if weapon.system.magazine.ammoId}}
                               ({{localize "CPR.global.itemTypes.ammo"}}: {{weapon.system.magazine.value}}/{{weapon.system.magazine.max}})
@@ -179,6 +180,7 @@
                   {{#if weapon.system.isUpgraded}}<sup><i class="fa-solid fa-square-up"></sup></i>{{/if}}
                 </a>
                 <br>
+                {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                 {{#if weapon.system.isRanged}}
                   {{#if weapon.system.magazine.ammoId}}
                     ({{localize "CPR.global.itemTypes.ammo"}}: {{weapon.system.magazine.value}}/{{weapon.system.magazine.max}})
