@@ -14,8 +14,10 @@ system:
       description: ''
       hasRoll: true
       index: 0
+      isSituational: false
       multiplier: '0.5'
       name: Surgery
+      onByDefault: false
       rank: 0
       skill: '--'
       bonuses: []
@@ -25,8 +27,10 @@ system:
       description: ''
       hasRoll: false
       index: 2
+      isSituational: false
       multiplier: '1'
       name: Medical Tech (Pharmaceuticals)
+      onByDefault: false
       rank: 0
       skill: '--'
       bonuses: []
@@ -36,8 +40,10 @@ system:
       description: ''
       hasRoll: false
       index: 3
+      isSituational: false
       multiplier: '1'
       name: Medical Tech (Cryosystem Operation)
+      onByDefault: false
       rank: 0
       skill: '--'
       bonuses: []
@@ -47,8 +53,10 @@ system:
       description: ''
       hasRoll: true
       index: 1
+      isSituational: false
       multiplier: '--'
       name: Medical Tech
+      onByDefault: false
       rank: 0
       skill: '--'
       bonuses: []
@@ -66,7 +74,9 @@ system:
       price.</p>
   favorite: false
   hasRoll: false
+  isSituational: false
   mainRoleAbility: Medicine
+  onByDefault: false
   rank: 4
   skill: '--'
   source: Pg. 149

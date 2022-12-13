@@ -21,7 +21,9 @@ system:
       expose the truth by any means necessary.</p>
   favorite: false
   hasRoll: true
+  isSituational: false
   mainRoleAbility: Credibility
+  onByDefault: false
   rank: 4
   skill: '--'
   source: Pg. 151

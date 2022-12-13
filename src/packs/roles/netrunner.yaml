@@ -21,7 +21,9 @@ system:
       to download secrets and infiltrate networks.</p>
   favorite: false
   hasRoll: true
+  isSituational: false
   mainRoleAbility: Interface
+  onByDefault: false
   rank: 4
   skill: '--'
   source: Pg. 147

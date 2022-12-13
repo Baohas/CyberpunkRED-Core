@@ -160,7 +160,9 @@ system:
       transport and supply chains in the time of the Red.</p>
   favorite: false
   hasRoll: false
+  isSituational: false
   mainRoleAbility: Moto
+  onByDefault: false
   rank: 4
   skill: '--'
   source: Pg. 161
