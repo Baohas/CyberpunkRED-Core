@@ -21,7 +21,7 @@ system:
       <p>A very heavy pistol capable of loading up to five different ammo types
       at once*, with the user able to pick between them before firing.</p>
 
-      <p><em>*Currenly not supported, so users have to manually change ammo
+      <p><em>*Currently not supported, so users have to manually change ammo
       types</em></p>
     chat: ''
     unidentified: ''
