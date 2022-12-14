@@ -2,51 +2,51 @@
 	"label": "VD Rolltables",
 	"entries": [
 		{
-			"id": "VD Fucile d'Assalto",
+			"id": "DV Assault Rifle",
 			"name": "VD Fucile d'Assalto"
 		},
 		{
-			"id": "VD Fucile d'Assalto (Autom)",
+			"id": "DV Assault Rifle (Autofire)",
 			"name": "VD Fucile d'Assalto (Autom)"
 		},
 		{
-			"id": "VD Archi & Balestre",
+			"id": "DV Bows & Crossbows",
 			"name": "VD Archi e balestre"
 		},
 		{
-			"id": "VD Generico",
+			"id": "DV Generic",
 			"name": "VD Generico"
 		},
 		{
-			"id": "VD Lancia Granate",
+			"id": "DV Grenade Launcher",
 			"name": "VD Lancia Granate"
 		},
 		{
-			"id": "VD Pistola",
+			"id": "DV Pistol",
 			"name": "VD Pistola"
 		},
 		{
-			"id": "VD Lanciarazzi",
+			"id": "DV Rocket Launcher",
 			"name": "VD Lanciarazzi"
 		},
 		{
-			"id": "VD Shotgun (Slug)",
+			"id": "DV Shotgun (Slug)",
 			"name": "VD Shotgun (Slug)"
 		},
 		{
-			"id": "VD Mitra",
+			"id": "DV SMG",
 			"name": "VD Mitra"
 		},
 		{
-			"id": "VD Mitra (Autom)",
+			"id": "DV SMG (Autofire)",
 			"name": "VD Mitra (Autom)"
 		},
 		{
-			"id": "VD Fucile da Cecchino",
+			"id": "DV Sniper Rifle",
 			"name": "VD Fucile da Cecchino"
 		},
 		{
-			"id": "VD Arma Lanciata",
+			"id": "DV Thrown Weapon",
 			"name": "VD Arma Lanciata"
 		}
 	]
