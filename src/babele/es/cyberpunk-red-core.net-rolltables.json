@@ -2,7 +2,7 @@
 	"label": "Tabla de Tiradas de Arquitectura de Red",
 	"entries": [
 		{
-			"id": "Todos los otros Pisos (Avanzado)",
+			"id": "All Other Floors (Advanced)",
 			"name": "Todos los otros Pisos (Avanzado)",
 			"results": {
 				"3-3": "Can Infernal x3",
@@ -24,7 +24,7 @@
 			}
 		},
 		{
-			"id": "Todos los Otros Pisos (Básico)",
+			"id": "All Other Floors (Basic)",
 			"name": "Todos los otros Pisos (Básico)",
 			"results": {
 				"3-3": "Can Infernal",
@@ -46,7 +46,7 @@
 			}
 		},
 		{
-			"id": "Todos los Otros Pisos (Estándar)",
+			"id": "All Other Floors (Standard)",
 			"name": "Todos los Otros Pisos (Estándar)",
 			"results": {
 				"3-3": "Can Infernal x2",
@@ -68,7 +68,7 @@
 			}
 		},
 		{
-			"id": "Todos los Otros Pisos (poco común)",
+			"id": "All Other Floors (Uncommon)",
 			"name": "Todos los Otros Pisos (poco común)",
 			"results": {
 				"3-3": "Kraken",
@@ -90,7 +90,7 @@
 			}
 		},
 		{
-			"id": "Primeros dos Pisos (El Lobby)",
+			"id": "First Two Floors (The Lobby)",
 			"name": "Primeros dos Pisos (El Lobby)",
 			"results": {
 				"1-1": "Archivo DV6",
