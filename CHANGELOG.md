@@ -13,8 +13,9 @@
 
 ### Bug Fixes
 
-- Add ROF to Cyberware Weapons and Weapon Upgrade Weapons on Mook sheet
+- #621 - Add ROF to Cyberware Weapons and Weapon Upgrade Weapons on Mook sheet
 - ROF now uses localized strings
+- Corrected a capitalisation error that was causing the included Dystopian City Streets map to disappear. Thanks to Latcher for spotting this!
 
 ## Version 0.85.0 | Date: 2022-12-11
 
