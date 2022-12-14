@@ -30,7 +30,7 @@
 - Added support for choosing any skill for use with a weapon, covering DLC and potential future source books
 - Added descriptions to various upgrades that were missing them
 - Added page references to all clothing items and critical injuries
-- #444 - Added support for Russian, with thanks to our translators @openmanv and @kurigohan
+- #444 - Russian Localization Added. Thanks to our translators @openmanv and @kurigohan.
 
 ### Changes
 
