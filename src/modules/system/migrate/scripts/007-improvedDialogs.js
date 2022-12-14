@@ -4,8 +4,11 @@
 import CPRMigration from "../cpr-migration.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 import LOGGER from "../../../utils/cpr-logger.js";
+import actorSheetHooks from "../../../hooks/actor-sheet.js";
 
 /**
+ * This migration will rearrange and introduce new flags on effects that exist on items/actors.
+ * It will also give a couple new data points to roles and their subabilities.
  *
  */
 export default class ImprovedDialogMigration extends CPRMigration {
@@ -40,31 +43,28 @@ export default class ImprovedDialogMigration extends CPRMigration {
    */
   static async migrateItem(item) {
     LOGGER.trace(`migrateItem | ${this.version}-${this.name}`);
-    // const updateData = (item.isOwned) ? { _id: item._id } : {};
     const updateData = duplicate(item);
-    updateData.effects.forEach(async (e) => {
-      e.changes.forEach(async (c, i) => {
-        const newFlag = e.flags[game.system.id].changes[i];
-        e.flags[`${game.system.id}.changes.cats.${i}`] = newFlag;
-        e.flags[`${game.system.id}.changes.situational.${i}.isSituational`] = false;
-        e.flags[`${game.system.id}.changes.situational.${i}.onByDefault`] = false;
-        e.flags[`${game.system.id}.changes.-=${i}`] = null;
+    if (updateData.effects.length > 0) {
+      updateData.effects.forEach(async (e) => {
+        e.changes.forEach(async (c, i) => {
+          const newFlag = e.flags[game.system.id].changes[i];
+          e.flags[`${game.system.id}.changes.cats.${i}`] = newFlag;
+          e.flags[`${game.system.id}.changes.situational.${i}.isSituational`] = false;
+          e.flags[`${game.system.id}.changes.situational.${i}.onByDefault`] = false;
+          e.flags[`${game.system.id}.changes.-=${i}`] = null;
+        });
       });
-    });
-    return (item.isOwned) ? updateData : item.update(updateData);
+    }
+    if (item.type === "role") {
+      updateData.system.isSituational = false;
+      updateData.system.onByDefault = false;
+      updateData.system.abilities.forEach((a) => {
+        a.isSituational = false;
+        a.onByDefault = false;
+      });
+    }
 
-    /*     if (item.type === "ammo") {
-      const updateData = (item.isOwned) ? { _id: item._id } : {};
-      if (item.system.type === "rubber") {
-        updateData["system.ablationValue"] = 0;
-        return (item.isOwned) ? updateData : item.update(updateData);
-      }
-      if (item.system.type === "armorPiercing") {
-        updateData["system.ablationValue"] = 2;
-        return (item.isOwned) ? updateData : item.update(updateData);
-      }
-    } */
-    // return null;
+    return (item.isOwned) ? updateData : item.update(updateData);
   }
 
   /**
@@ -74,6 +74,21 @@ export default class ImprovedDialogMigration extends CPRMigration {
    */
   async migrateActor(actor) {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
+    const updateData = [];
+    if (actor.effects.contents.length > 0) {
+      actor.effects.contents.forEach(async (e) => {
+        e.changes.forEach(async (c, i) => {
+          const newFlag = e.flags[game.system.id].changes[i];
+          e.flags[`${game.system.id}.changes.cats.${i}`] = newFlag;
+          e.flags[`${game.system.id}.changes.situational.${i}.isSituational`] = false;
+          e.flags[`${game.system.id}.changes.situational.${i}.onByDefault`] = false;
+          e.flags[`${game.system.id}.changes.-=${i}`] = null;
+        });
+        updateData.push(e);
+      });
+    }
+
+    actor.updateEmbeddedDocuments("ActiveEffect", updateData);
   /*     const itemUpdates = [];
     for (const item of actor.items) {
       // eslint-disable-next-line no-await-in-loop
