@@ -6,6 +6,7 @@
 ### Bug Fixes
 
 - Corrected a capitalisation error that was causing the included Dystopian City Streets map to disappear. Thanks to Latcher for spotting this!
+- Fixed #624 - Net architecture sheet can't click generation button
 
 ## Version 0.85.0 | Date: 2022-12-11
 
