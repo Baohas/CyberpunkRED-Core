@@ -1,6 +1,12 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+## Version 0.85.1 (Hotfix) | Date: 2022-12-14
+
+### Bug Fixes
+
+- Corrected a capitalisation error that was causing the included Dystopian City Streets map to disappear. Thanks to Latcher for spotting this!
+
 ## Version 0.85.0 | Date: 2022-12-11
 
 ### New Features
@@ -24,7 +30,7 @@
 - Added support for choosing any skill for use with a weapon, covering DLC and potential future source books
 - Added descriptions to various upgrades that were missing them
 - Added page references to all clothing items and critical injuries
-- #444 - We now support Russian! Thank you to our translators @openmanv and @kurigohan
+- #444 - Added support for Russian, with thanks to our translators @openmanv and @kurigohan
 
 ### Changes
 
