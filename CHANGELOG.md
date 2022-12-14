@@ -10,6 +10,7 @@
 - Change the Crit Injury icon for head injuries
 - Change the Crit Injury icons to display before name
 - Update Character sheet to show more information for items
+- Update wording for Failed rolls
 
 ### Bug Fixes
 
