@@ -19,7 +19,6 @@ system:
     unidentified: ''
   source: ''
   favorite: false
-  revealed: true
   usage: toggled
   location: head
   quickFix:

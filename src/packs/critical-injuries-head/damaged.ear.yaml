@@ -47,7 +47,6 @@ system:
     unidentified: ''
   source: ''
   favorite: false
-  revealed: true
   usage: always
   location: head
   quickFix:
