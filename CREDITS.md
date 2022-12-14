@@ -1,6 +1,6 @@
 # Credits
 
-- This System Implementation is the product of the CPR System Dev Team!
+This game system is the product of the CPR System Dev Team, made possible by this amazing community!
 
 ## Legal Stuff
 
@@ -12,23 +12,25 @@ This game system (including items provided in the compendium) contains unofficia
 
 ## Fonts
 
-Audimat Typeface by [SMeltery](http://www.smeltery.net)
+- Audimat Typeface by [SMeltery](http://www.smeltery.net)
 
 ## Art
 
-- Pause overlay image: [Olena Panasovska](https://thenounproject.com/term/cyberpunk/1797860/) (CCBY)
-- Netarchitecture tiles, Dystopian City Streets, Dystopian City Junction scenes and and background picture created by [SolutionMaps](https://www.patreon.com/solutionmaps)
+### General
+
+- Pause overlay image by [Olena Panasovska](https://thenounproject.com/term/cyberpunk/1797860/) (CCBY)
+- Netarchitecture tiles, Dystopian City Streets, Dystopian City Junction scenes, and background picture created by [SolutionMaps](https://www.patreon.com/solutionmaps)
+- Icons, Art, Design, and Styling by [Flintwyrm](https://twitter.com/Flintwyrm)
+
+### Icons
+
+- Default icons for compendia provided by Lorc, Delapouite, Skoll, sbed, and John Colburn [Game Icons](https://game-icons.net) under the [CC-BY license](https://creativecommons.org/licenses/by/3.0/)
+- Ammo Icons by [Mirradin](https://reddit.com/user/Mirrandin)
 - Netrunning icons provided by Verasunrise and Hyriu33
 - Program/Black ICE icon usage inspired by [Verfasst von Tim](https://charzinski.wordpress.com/2021/01/10/cyberpunk-red-netrunner-cards/)
-- Status & Critical Injury icons inspired by by [evr-](https://old.reddit.com/r/cyberpunkred/comments/lpicdf/roll20_custom_status_icons_for_cyberpunk_red/)
+- Status & Critical Injury icons inspired by by [evr-](https://reddit.com/r/cyberpunkred/comments/lpicdf/roll20_custom_status_icons_for_cyberpunk_red/)
 
-## General Icons
-
-- Icons, Art, Design, and Styling: [Flintwyrm](https://twitter.com/Flintwyrm)
-- Default icons for compendia provided by Lorc, Delapouite, Skoll, sbed, and John Colburn [Game Icons](https://game-icons.net) under the [CC-BY license](https://creativecommons.org/licenses/by/3.0/)
-- Ammo Icons by [Mirradin](https://old.reddit.com/user/Mirrandin)
-
-## Specific Icons
+### Specific Assets
 
 - `icons/compendium/armor/bodyweightsuit.svg` - remixed from [wetsuit](https://www.svgrepo.com/svg/20767/wetsuit)
 - `icons/compendium/armor/bulletproofshield.svg` - remixed from [shield-defense](https://www.svgrepo.com/svg/288878/shield-defense)

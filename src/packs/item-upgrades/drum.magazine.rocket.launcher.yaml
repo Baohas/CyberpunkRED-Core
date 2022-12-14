@@ -1,16 +1,16 @@
-_id: v2DXDjMY1NlGWdFZ
+_id: y9HobxZQBhVEN5Ne
 effects: []
 flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Very Heavy Pistol Drum Magazine
+name: Drum Magazine (Rocket Launcher)
 ownership:
   default: 0
 sort: 0
 system:
-  weaponType: ''
-  weaponSkill: ''
+  weaponType: assaultRifle
+  weaponSkill: Archery
   fireModes:
     autoFire: 0
     suppressiveFire: false
@@ -22,7 +22,9 @@ system:
   attackmod: 0
   tags: []
   description:
-    value: ''
+    value: >-
+      <p>Increases magazine size to a massive 3 rockets. That's a lot of
+      boom.</p>
     chat: ''
     unidentified: ''
   source: pg. 343
@@ -50,14 +52,12 @@ system:
     attackmod:
       type: modifier
       value: null
-      isSituational: false
     damage:
       type: modifier
       value: null
-      isSituational: false
     magazine:
-      type: modifier
-      value: 20
+      type: override
+      value: 3
     rof:
       type: modifier
       value: null

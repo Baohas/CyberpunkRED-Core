@@ -1,16 +1,16 @@
-_id: 3z654ef9UlgH8o1o
+_id: seI3exdDPXajjFFz
 effects: []
 flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: SMG Drum Magazine
+name: Extended Magazine (Sniper Rifle)
 ownership:
   default: 0
 sort: 0
 system:
-  weaponType: ''
-  weaponSkill: ''
+  weaponType: assaultRifle
+  weaponSkill: Archery
   fireModes:
     autoFire: 0
     suppressiveFire: false
@@ -22,7 +22,7 @@ system:
   attackmod: 0
   tags: []
   description:
-    value: ''
+    value: <p>Increases magazine size to a hefty 8 bullets.</p>
     chat: ''
     unidentified: ''
   source: pg. 343
@@ -40,8 +40,8 @@ system:
     ammoId: ''
   ammoVariety: []
   price:
-    market: 500
-    category: expensive
+    market: 100
+    category: premium
   handsReq: 0
   type: weapon
   modifiers:
@@ -50,14 +50,12 @@ system:
     attackmod:
       type: modifier
       value: null
-      isSituational: false
     damage:
       type: modifier
       value: null
-      isSituational: false
     magazine:
-      type: modifier
-      value: 20
+      type: override
+      value: 8
     rof:
       type: modifier
       value: null

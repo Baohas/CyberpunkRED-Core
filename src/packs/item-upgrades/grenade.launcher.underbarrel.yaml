@@ -23,7 +23,10 @@ system:
   attackmod: 0
   tags: []
   description:
-    value: ''
+    value: >-
+      <p>Functions like a standard grenade launcher, but with a magazine size of
+      1. Requires 2 hands to use, and takes up 2 attachment slots. While
+      attached, the weapon can't be concealed under clothing.</p>
     chat: ''
     unidentified: ''
   source: pg. 343

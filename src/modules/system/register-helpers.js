@@ -202,25 +202,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Calculate the price of a stack of items. This is amount * price with
-   * a few exceptions.
-   */
-  Handlebars.registerHelper("cprCalculateStackValue", (item) => {
-    LOGGER.trace("cprCalculateStackValue | handlebarsHelper | Called.");
-    const { type } = item;
-    const price = item.system.price.market;
-    const { amount } = item.system;
-    let totalPrice = amount * price;
-    if (type === "ammo") {
-      const { variety } = item.system;
-      if (!(variety === "grenade" || variety === "rocket")) {
-        totalPrice = (amount / 10) * price;
-      }
-    }
-    return totalPrice;
-  });
-
-  /**
    * Get a config mapping from config.js by name and key
    */
   Handlebars.registerHelper("cprFindConfigValue", (obj, key) => {

@@ -1,16 +1,16 @@
-_id: nV0EYctCZSP41Cp0
+_id: s3oETYXA2wnTnrk1
 effects: []
 flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Medium Pistol Extended Magazine
+name: Extended Magazine (Assault Rifle)
 ownership:
   default: 0
 sort: 0
 system:
-  weaponType: ''
-  weaponSkill: ''
+  weaponType: assaultRifle
+  weaponSkill: Archery
   fireModes:
     autoFire: 0
     suppressiveFire: false
@@ -22,7 +22,7 @@ system:
   attackmod: 0
   tags: []
   description:
-    value: ''
+    value: <p>Increases magazine size to a hefty 35 bullets.</p>
     chat: ''
     unidentified: ''
   source: pg. 343
@@ -50,14 +50,12 @@ system:
     attackmod:
       type: modifier
       value: null
-      isSituational: false
     damage:
       type: modifier
       value: null
-      isSituational: false
     magazine:
-      type: modifier
-      value: 6
+      type: override
+      value: 35
     rof:
       type: modifier
       value: null

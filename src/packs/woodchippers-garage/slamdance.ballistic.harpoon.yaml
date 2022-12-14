@@ -20,7 +20,9 @@ system:
     value: >-
       <p>This harpoon can either be used as a Two Handed Very Heavy Melee
       Weapon, or fired from it's housing as a ranged weapon. When fired it still
-      ignores half of the defender&rsquo;s armor.</p>
+      ignores half of the defender's armor*.<br><em>*Armor calculations
+      don't currently support this reduction, nor is switching to using it as a
+      melee weapon supported</em></p>
     chat: ''
     unidentified: ''
   source: WG

@@ -22,7 +22,10 @@ system:
   attackmod: 0
   tags: []
   description:
-    value: ''
+    value: >-
+      <p>An old idea that still works just as good; lets you use your gun as a
+      light melee weapon. While attached, the weapon can't be concealed under
+      clothing.</p>
     chat: ''
     unidentified: ''
   source: pg. 343

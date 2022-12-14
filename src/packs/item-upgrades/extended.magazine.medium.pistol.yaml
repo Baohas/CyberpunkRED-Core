@@ -1,16 +1,16 @@
-_id: tB66LtMSiBlZhB2W
+_id: nV0EYctCZSP41Cp0
 effects: []
 flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
-name: Heavy SMG Extended Magazine
+name: Extended Magazine (Medium Pistol)
 ownership:
   default: 0
 sort: 0
 system:
-  weaponType: ''
-  weaponSkill: ''
+  weaponType: assaultRifle
+  weaponSkill: Archery
   fireModes:
     autoFire: 0
     suppressiveFire: false
@@ -22,7 +22,7 @@ system:
   attackmod: 0
   tags: []
   description:
-    value: ''
+    value: <p>Increases magazine size to a hefty 18 bullets.</p>
     chat: ''
     unidentified: ''
   source: pg. 343
@@ -50,14 +50,12 @@ system:
     attackmod:
       type: modifier
       value: null
-      isSituational: false
     damage:
       type: modifier
       value: null
-      isSituational: false
     magazine:
-      type: modifier
-      value: 10
+      type: override
+      value: 18
     rof:
       type: modifier
       value: null

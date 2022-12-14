@@ -7,8 +7,11 @@
             {{item.name}}{{#if item.system.isUpgraded}}<i class="fa-solid fa-square-up"></i>{{/if}}
         </a>
     </div>
-    <div class="item-detail gear-data text-nowrap">
-        {{localize "CPR.global.generic.slots"}}: {{item.system.slots}} | {{localize "CPR.global.generic.price"}}: {{item.system.price.market}}
+    <div class="item-detail gear-amount">
+      {{item.system.slots}}
+    </div>
+    <div class="item-detail gear-data text-nowrap" data-tooltip="{{cprStripHtml item.system.description.value}}">
+      {{cprStripHtml item.system.description.value}}
     </div>
     <div class="item-detail gear-actions text-nowrap">
         {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-actions.hbs" item}}

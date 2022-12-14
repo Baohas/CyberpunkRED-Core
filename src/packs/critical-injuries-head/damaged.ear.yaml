@@ -54,6 +54,10 @@ system:
     type: paramedic
     dvFirstAid: 0
     dvParamedic: 13
+    type: paramedic
+  revealed: true
+  source: Pg. 188
+  tags: []
   treatment:
     type: surgery
     dvParamedic: 0

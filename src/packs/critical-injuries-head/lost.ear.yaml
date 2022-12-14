@@ -44,7 +44,7 @@ system:
       turn. -4 to hearing based Perception.</p>
     chat: ''
     unidentified: ''
-  source: ''
+  source: 'Pg. 188'
   favorite: false
   revealed: true
   usage: always

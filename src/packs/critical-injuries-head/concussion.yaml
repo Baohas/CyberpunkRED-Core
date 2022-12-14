@@ -23,6 +23,10 @@ system:
     type: firstAidParamedic
     dvFirstAid: 13
     dvParamedic: 13
+    type: firstAidParamedic
+  revealed: true
+  source: Pg. 188
+  tags: []
   treatment:
     type: quickFix
     dvParamedic: 0

@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # The following vars are set during the 'init' CI job.
-# CHANGELOG_FILE PROJECT_URL RELEASE_NAME REPO_URL SYSTEM_FILE VERSION ZIP_FILE
+# CHANGELOG_FILE PROJECT_URL RELEASE_NAME REPO_URL SYSTEM_FILE SYSTEM_VERSION ZIP_FILE
 
 # Create error counter
 errors=0
@@ -14,7 +14,7 @@ RELEASE=$(
     --silent \
     --location \
     "https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/releases" |
-    jq '.[] | select(.name=="'"${VERSION}"'")'
+    jq '.[] | select(.name=="'"${SYSTEM_VERSION}"'")'
 )
 
 # Get the system.json download link
@@ -37,7 +37,7 @@ else
 fi
 
 # Check the versioned system.json url is what we expect
-if [[ "${RELEASE_MANIFEST}" != "${REPO_URL}/${VERSION}/${SYSTEM_FILE}" ]]; then
+if [[ "${RELEASE_MANIFEST}" != "${REPO_URL}/${SYSTEM_VERSION}/${SYSTEM_FILE}" ]]; then
   echo "❌ ${SYSTEM_FILE} download is incorrect"
   ((errors += 1))
 else
@@ -45,7 +45,7 @@ else
 fi
 
 # Check the versioned system url is what we expect
-if [[ "${RELEASE_DOWNLOAD}" != "${REPO_URL}/${VERSION}/${ZIP_FILE}" ]]; then
+if [[ "${RELEASE_DOWNLOAD}" != "${REPO_URL}/${SYSTEM_VERSION}/${ZIP_FILE}" ]]; then
   echo "❌ ${ZIP_FILE} download url is incorect."
   ((errors += 1))
 else
@@ -75,7 +75,7 @@ local_download=$(jq -r .download "${SYSTEM_FILE}")
 local_title=$(jq -r .title "${SYSTEM_FILE}")
 
 # Check the `version` is correct in systm.json
-if [[ "${local_version}" != "${VERSION}" ]]; then
+if [[ "${local_version}" != "${SYSTEM_VERSION}" ]]; then
   ((errors += 1))
   echo "❌ Version in ${SYSTEM_FILE} is incorrect"
 else
@@ -91,7 +91,7 @@ else
 fi
 
 # Check the `download` url is corect
-if [[ "${local_download}" != "${REPO_URL}/${VERSION}/${ZIP_FILE}" ]]; then
+if [[ "${local_download}" != "${REPO_URL}/${SYSTEM_VERSION}/${ZIP_FILE}" ]]; then
   ((errors += 1))
   echo "❌ The 'download' url is incorrect in ${SYSTEM_FILE}"
 else
