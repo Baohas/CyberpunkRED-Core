@@ -959,7 +959,7 @@
   "CPR.rolls.criticalDamage": "Критический урон",
   "CPR.rolls.damageFor": "Урон по",
   "CPR.rolls.deathSave.title": "Спасбросок",
-  "CPR.rolls.failed": "Провал",
+  "CPR.rolls.failed": "Failure",
   "CPR.rolls.location": "Расположение",
   "CPR.rolls.luck": "Потратить УДЧ",
   "CPR.rolls.mods": "Модификаторы",
