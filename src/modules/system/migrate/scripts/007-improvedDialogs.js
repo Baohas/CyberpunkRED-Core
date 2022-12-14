@@ -68,27 +68,28 @@ export default class ImprovedDialogMigration extends CPRMigration {
   }
 
   /**
-   * Simply make sure owned items are updated too.
+   * Update effects created directly on the actor.
    *
    * @param {CPRActor} actor
    */
   async migrateActor(actor) {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
-    const updateData = [];
+    const updateList = [];
     if (actor.effects.contents.length > 0) {
       actor.effects.contents.forEach(async (e) => {
+        const effectData = duplicate(e);
         e.changes.forEach(async (c, i) => {
           const newFlag = e.flags[game.system.id].changes[i];
-          e.flags[`${game.system.id}.changes.cats.${i}`] = newFlag;
-          e.flags[`${game.system.id}.changes.situational.${i}.isSituational`] = false;
-          e.flags[`${game.system.id}.changes.situational.${i}.onByDefault`] = false;
-          e.flags[`${game.system.id}.changes.-=${i}`] = null;
+          effectData.flags[`${game.system.id}.changes.cats.${i}`] = newFlag;
+          effectData.flags[`${game.system.id}.changes.situational.${i}.isSituational`] = false;
+          effectData.flags[`${game.system.id}.changes.situational.${i}.onByDefault`] = false;
+          effectData.flags[`${game.system.id}.changes.-=${i}`] = null;
         });
-        updateData.push(e);
+        updateList.push(effectData);
       });
     }
 
-    actor.updateEmbeddedDocuments("ActiveEffect", updateData);
+    await actor.updateEmbeddedDocuments("ActiveEffect", updateList);
   /*     const itemUpdates = [];
     for (const item of actor.items) {
       // eslint-disable-next-line no-await-in-loop
