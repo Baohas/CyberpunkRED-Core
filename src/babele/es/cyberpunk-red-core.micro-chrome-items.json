@@ -1,21 +1,21 @@
 {
-	"label": "Micro Chrome",
+	"label": "MicroCromo",
 	"entries": {
 		"Chipware Compartment": {
-			"name": "Chipware Compartment",
-			"description": "<p>Lets you conceal up to four pieces of chipware, no Check required. Retrieval is done by spending an action to spin the eye in its socket.</p>"
+			"name": "Compartimiento de Chipware",
+			"description": "<p>Te permite ocultar hasta cuatro piezas de chipware, no se requiere Chequeo. La recuperación se hace gastando una acción para girar el ojo en su socket</p>"
 		},
 		"MicroCutie by Hello Cutie": {
-			"name": "MicroCutie by Hello Cutie",
-			"description": "<p>Using an action the user can enable HypurrburstTM mode. HypurrburstTM mode increases the weapons damage to 4d6, but drains all remaining shots when fired. Requires at least 4 rounds remaining to enable. The weapon purrs while in HypurrburstTM mode*.<br><em>Special fire mode not currently supported; will need to be manually applied</em></p>"
+			"name": "MicroCutie por Hola Cutie",
+			"description": "<p>Utilizando una acción el usuario puede habilitar el modo HypurrburstM. El modo HypurrburstTM aumenta el daño de las armas a 4d6, pero drena todos los disparos restantes cuando se dispara. Requiere al menos 4 rondas para habilitar. El arma hace un ruido de ronroneo en modo HypurrburstM*.<br><em>Modo de fuego especial no soportado actualmente; tendrá que aplicarse manualmente</em></p>"
 		},
 		"Smart Lens": {
-			"name": "Smart Lens",
-			"description": "<p>Gives a user a single Cybereye Option. Can use one Smart Lens per eye.</p>"
+			"name": "Lente Inteligente",
+			"description": "<p>Da a un usuario una única opción de ciberóptico. Puede usar una lente inteligente por ojo.</p>"
 		},
 		"Superflash Jacket": {
-			"name": "Superflash Jacket",
-			"description": "<p>A nice jacket carrying a surpise; using an action anyone wearing this jacket can consume a battery to let off a blinding light. Treat as a Flashbang Grenade without the Damaged Ear Critical Injury, centered on the wearer.</p>"
+			"name": "Chaqueta Superflash",
+			"description": "<p>Una bonita chaqueta portando un sorpresa; con una acción, cualquier persona que use este chaqueta puede consumir una batería para encender una luz cegadora. Trata como una granada de Flashbang sin la lesión de oido crítica, centrada en el portador.</p>"
 		}
 	}
 }
