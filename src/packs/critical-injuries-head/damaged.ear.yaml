@@ -38,19 +38,16 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
   description:
     value: >-
       <p>If move more than 4m/yds in a Turn, cannot move next turn. -2 to
       hearing based Perception.</p>
     chat: ''
     unidentified: ''
-  source: ''
   favorite: false
   usage: always
   location: head
   quickFix:
-    type: paramedic
     dvFirstAid: 0
     dvParamedic: 13
     type: paramedic

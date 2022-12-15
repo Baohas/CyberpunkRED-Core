@@ -9,19 +9,16 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
   description:
     value: >-
       <p>No other effects beyond increasing the base Death Save Penalty by
       1.</p>
     chat: ''
     unidentified: ''
-  source: ''
   favorite: false
   usage: toggled
   location: head
   quickFix:
-    type: paramedic
     dvFirstAid: 0
     dvParamedic: 13
     type: paramedic

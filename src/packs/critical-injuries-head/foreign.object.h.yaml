@@ -11,19 +11,16 @@ ownership:
 sort: 0
 type: criticalInjury
 system:
-  tags: []
   description:
     value: >-
       <p>Suffer Crit damage at end of turn if move more than 4m/yrds on
       foot.</p>
     chat: ''
     unidentified: ''
-  source: ''
   favorite: false
   usage: toggled
   location: head
   quickFix:
-    type: firstAidParamedic
     dvFirstAid: 13
     dvParamedic: 13
     type: firstAidParamedic

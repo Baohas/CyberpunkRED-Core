@@ -11,12 +11,10 @@ ownership:
 sort: 0
 type: criticalInjury
 system:
-  tags: []
   description:
     value: <p>Cannot speak.</p>
     chat: ''
     unidentified: ''
-  source: ''
   favorite: false
   usage: toggled
   location: head

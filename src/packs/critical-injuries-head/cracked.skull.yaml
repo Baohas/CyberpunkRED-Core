@@ -10,19 +10,16 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
   description:
     value: >-
       <p>Triples damage to HP on aimed headshots (rather than the normal double
       damage).</p>
     chat: ''
     unidentified: ''
-  source: ''
   favorite: false
   usage: toggled
   location: head
   quickFix:
-    type: paramedic
     dvFirstAid: 0
     dvParamedic: 15
     type: paramedic

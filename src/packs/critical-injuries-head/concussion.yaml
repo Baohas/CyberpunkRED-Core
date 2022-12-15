@@ -9,17 +9,14 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
   description:
     value: <p>-2 to every action.</p>
     chat: ''
     unidentified: ''
-  source: ''
   favorite: false
   usage: toggled
   location: head
   quickFix:
-    type: firstAidParamedic
     dvFirstAid: 13
     dvParamedic: 13
     type: firstAidParamedic
