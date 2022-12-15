@@ -8,7 +8,7 @@
     </div>
     <div class="item-header-section items-list flexcol">
       <li class="item flexrow">
-        <div class="item-name text-large text-bold text-left text-padding-left">
+        <div class="item-header-title item-name text-large text-left text-padding-left">
           {{localize (cprGetLocalizedlNameKey item)}}
             {{#if (cprIsUpgradable item.type)}}
              {{#if item.system.isUpgraded}}
@@ -35,7 +35,7 @@
   </div>
   <div class="item-bottom-pane">
     <div class="item-bottom-tabs-section">
-      <nav class="navtabs-item cpr-tabs nav" data-group="primary">
+      <nav class="navtabs-item cpr-tabs nav text-bold" data-group="primary">
         <div class="tab-pink-underlay">
           <a class="tab-label text-small tab-indent" data-tab="item-description">
             {{localize "CPR.global.generic.description"}}
