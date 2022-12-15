@@ -1,73 +1,73 @@
 {
-	"label": "Elflines Online Armory",
+	"label": "Arsenal de Elflines Online",
 	"entries": {
 		"Arrow": {
-			"name": "Arrow",
-			"description": "<p>Basic ammo, nothing special.</p>"
+			"name": "Flecha",
+			"description": "<p>Munición básica, nada especial.</p>"
 		},
 		"Bow": {
 			"name": "Arco",
-			"description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>"
+			"description": "<p>Arco revitalizado, recargado como parte de una acción de Ataque.</p>"
 		},
 		"Chainmail Armor (Body)": {
-			"name": "Chainmail Armor (Body)",
-			"description": "<p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>"
+			"name": "Armadura de cota de mallas (Cuerpo)",
+			"description": "<p>Versión media de una Armorjack. -2 a REF, DES, y MOV.</p>"
 		},
 		"Chainmail Armor (Head)": {
-			"name": "Chainmail Armor (Head)",
-			"description": "<p>Medium version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>"
+			"name": "Armadura de cota de mallas (Cabeza)",
+			"description": "<p>Versión media de un Armorjack para tu cabeza. -2 a REF, DES y MOV.</p>"
 		},
 		"Dagger": {
-			"name": "Dagger",
-			"description": "<p>A knife fit for the streets.</p>"
+			"name": "Daga",
+			"description": "<p>Un cuchillo apto para las calles.</p>"
 		},
 		"Full Plate Armor (Body)": {
-			"name": "Full Plate Armor (Body)",
-			"description": "<p>Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.</p>"
+			"name": "Armadura de placas completa (Cuerpo)",
+			"description": "<p>Armadura de metal para resistir los golpes más poderosos. -4 para REF, DES y MOV.</p>"
 		},
 		"Full Plate Armor (Head)": {
-			"name": "Full Plate Armor (Head)",
-			"description": "<p>Metal plated armor to resist the most powerful hits to your head. -4 to REF, DEX, and MOVE.</p>"
+			"name": "Armadura de placas completa (Cabeza)",
+			"description": "<p>Armadura de metal para resistir los golpes más poderosos a la cabeza. -4 a REF, DES y MOV.</p>"
 		},
 		"Greataxe": {
-			"name": "Greataxe",
-			"description": "<p>A japanese wooden pole with a curved blade on one side. Favoured by Arasaka tactical teams for close engagements. </p>"
+			"name": "Hacha Grande",
+			"description": "<p>Un poste de madera japonés con una hoja curvada de un lado. Favorito de los equipos tácticos de Arasaka para encuentros a corta distancia. </p>"
 		},
 		"Leather Armor (Body)": {
-			"name": "Leather Armor (Body)",
-			"description": "<p>Simple Leather armor. No armor penalty.</p>"
+			"name": "Armadura de cuero (Cuerpo)",
+			"description": "<p>Armadura de cuero sencilla. Sin penalización de armadura.</p>"
 		},
 		"Leather Armor (Head)": {
-			"name": "Leather Armor (Head)",
-			"description": "<p>Simple Leather armor for your head. No armor penalty.</p>"
+			"name": "Armadura de cuero (Cabeza)",
+			"description": "<p>Armadura de cuero sencilla para tu cabeza. Sin penalización de armadura.</p>"
 		},
 		"Longsword": {
-			"name": "Longsword",
-			"description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once. </p>"
+			"name": "Espada larga",
+			"description": "<p>Un cilindro hueco, normalmente de metal o fibra de vidrio. Puede haber transmitido fluidos una vez. </p>"
 		},
 		"Poison Arrow": {
 			"name": "Flecha Venenosa",
 			"description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra DV13. Al fallar 2d6 de daño a HP sin ablación. </p>"
 		},
 		"Sacred Herbs": {
-			"name": "Sacred Herbs",
+			"name": "Hierbas sagradas",
 			"description": ""
 		},
 		"Shield": {
 			"name": "Escudo",
-			"description": "<p>Requires an arm and has HP that is reduced by damage.</p>"
+			"description": "<p>Requiere un brazo y tiene vida reducida por daño.</p>"
 		},
 		"Shortsword": {
-			"name": "Shortsword",
-			"description": "<p>Useful as both a tool and a weapon. A rod of iron with split wedges on the ends. </p>"
+			"name": "Espada corta",
+			"description": "<p>Útil como herramienta y como arma. Una vara de hierro con cuñas divididas en los extremos. </p>"
 		},
 		"Studded Leather Armor (Body)": {
-			"name": "Studded Leather Armor (Body)",
-			"description": "<p>Standard Kevlar clothing. No armor penalty.</p>"
+			"name": "Armadura de cuero tachonado (Cuerpo)",
+			"description": "<p>Ropa estándar de Kevlar. Sin penalización de armadura.</p>"
 		},
 		"Studded Leather Armor (Head)": {
-			"name": "Studded Leather Armor (Head)",
-			"description": "<p>Standard Kevlar for your head. No armor penalty.</p>"
+			"name": "Armadura de cuero tachonado (Cabeza)",
+			"description": "<p>Kevlar estándar para tu cabeza. Sin penalización de armadura.</p>"
 		},
 		"Vial of Poison": {
 			"name": "Frasco de veneno",
