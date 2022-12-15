@@ -1,61 +1,61 @@
 {
-	"label": "The 12 Days of Gunmas",
+	"label": "Los 12 días de Gunmas",
 	"entries": {
 		"Arasaka WAA Bullpup Assault Weapon": {
-			"name": "Arasaka WAA Bullpup Assault Weapon",
-			"description": "<p>A bullpup rifle in operation for over two decades. Can fire non-basic ammunition and comes with a Smartgun Link*.</p><p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>"
+			"name": "Arma de Asalto Bullpup Arasaka WAA",
+			"description": "<p>Un rifle tipo bullpup en funcionamiento desde hace más de dos décadas. Puede disparar munición no básica y viene con un conector de Arma Inteligente*.</p><p><em>*El conector de Arma Inteligente debe ser añadido manualmente después de adquirir el arma</em></p>"
 		},
 		"Constitutional Arms Multiple Ammunition Pistol": {
-			"name": "Constitutional Arms Multiple Ammunition Pistol",
-			"description": "<p>A very heavy pistol capable of loading up to five different ammo types at once*, with the user able to pick between them before firing.</p><p><em>*Currently not supported, so users have to manually change ammo types</em></p>"
+			"name": "Pistola de munición múltiple de Armas Constitucionales",
+			"description": "<p>Una pistola muy pesada capaz de cargar hasta cinco tipos de munición diferentes a la vez*, con el usuario capaz de elegir entre ellos antes de disparar.</p><p><em>*Actualmente no es compatible, por lo que los usuarios tienen que cambiar manualmente los tipos de munición</em></p>"
 		},
 		"IMI Chainknife": {
-			"name": "IMI Chainknife",
-			"description": "<p>Takes an action to rev up, but once revved is a powerful melee weapon. When not revved deals 2d6 damage*.</p><p><em>*Not revved mode not currently supported, so will need to manually reduce damage</em></p>"
+			"name": "Cuchillo encadenado IMI",
+			"description": "<p>Toma una acción para recoger, pero una vez recogido es una poderosa arma cuerpo a cuerpo. Cuando no está recogido inflige 2d6 de daño*.</p><p><em>*Modo no recogido no compatible actualmente, así que tendrá que reducir manualmente el daño</em></p>"
 		},
 		"Kendachi Dragon Flamethrower": {
-			"name": "Kendachi Dragon Flamethrower",
-			"description": "<p>Fire at your finger tips. Can only fire Incendiary Shotgun Shells, but targets ignited by this weapon burn for 4HP a turn.</p>"
+			"name": "Lanzallamas de Dragón de Kendachi",
+			"description": "<p>Fuego en la punta de tus dedos. Solo puedes disparar proyectiles de escopeta incendiaria, pero objetivos encendidos por esta arma queman por 4 PV por turno.</p>"
 		},
 		"Magnum Opus Hellbringer": {
 			"name": "Magnum Opus Hellbringer",
-			"description": "<p>When this things shoots, you know about it. If fired by someone with less than 10 BODY, this pistol jams. An action is required to unjam it.</p>"
+			"description": "<p>Cuando esto dispara, lo sabrás. Si alguien con menos de TCO 10 dispara esta pistola, se atasca. Se requiere una acción para desatascarla.</p>"
 		},
 		"Malorian Arms Sub-Flechette Gun": {
-			"name": "Malorian Arms Sub-Flechette Gun",
-			"description": "<p>This SMG can only fire it's own custom Armor-Piercing Ammunition, however that ammo ablates by 4 when dealing damage. Comes with a Smartgun Link*.</p><p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>"
+			"name": "Pistola Sub-Flechette de Malorian Arms",
+			"description": "<p>Este SMG solo puede disparar su propia munición perfora blindaje personalizada; sin embargo, esa munición activa 4 cuando inflige daño. Viene con un conector de arma inteligente*.</p><p><em>*El conector de arma inteligente debe ser añadido manualmente después de adquirir el arma</em></p>"
 		},
 		"Malorian Arms Sub-Flechettes": {
-			"name": "Malorian Arms Sub-Flechettes",
-			"description": "<p>Special ammo to only be used with the Malorian Arms Sub-Flechette Gun. Ablates armor by 4 SP per hit.</p>"
+			"name": "Sub-Flechettes de Malorian Arms",
+			"description": "<p>Munición especial para usar solo con la pistola Sub-Flechette de Malorian Arms. Ablaciona la armadura 4 SP por golpe.</p>"
 		},
 		"Militech Crusher": {
-			"name": "Militech Crusher",
-			"description": "<p>A pistol that fires shotgun slugs. What's not to love.</p>"
+			"name": "Triturador Militech",
+			"description": "<p>Una pistola que dispara cartuchos de perdigones de escopeta. Lo que no hay que amar.</p>"
 		},
 		"Mustang Arms ARS-5 Submachine Gun": {
-			"name": "Mustang Arms ARS-5 Submachine Gun",
-			"description": "<p>This heavy SMG is the complete package; it comes with a Smartgun Link, Infrared Nightvision Scope, and a Sniping Scope*.</p><p><em>*All three must be manually added after acquiring the weapon</em></p>"
+			"name": "Subfusil ARS-5 de Mustang Arms",
+			"description": "<p>Este SMG pesado es el paquete completo; viene con un conector de arma inteligente, una mira de visión de Infrarroja y una mira de francotirador*.</p><p><em>*Los tres deben ser añadidos manualmente después de adquirir el arma</em></p>"
 		},
 		"Nomad Pneumatic Bolt Gun": {
-			"name": "Nomad Pneumatic Bolt Gun",
-			"description": "<p>Capable of firing all Non-Basic ammunition, this weapon is still as versatile as when it was invented over two decades ago.</p>"
+			"name": "Cañón de perno pneumático Nomade",
+			"description": "<p>Capaz de disparar todas las municiones no básicas, esta arma sigue siendo tan versátil como cuando fue inventada hace más de dos décadas.</p>"
 		},
 		"Nova Model 757 Cityhunter": {
-			"name": "Nova Model 757 Cityhunter",
-			"description": "<p>This pistol fires it's own custom rounds bought in packs of 18, though they cost the same as a pack of 10. Comes with a Smartgun Link*.</p><p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>"
+			"name": "Nova Modelo 757 Cityhunter",
+			"description": "<p>Esta pistola dispara sus propias rondas personalizadas compradas en paquetes de 18, aunque cuestan lo mismo que un paquete de 10. Viene con un conector de arma inteligente*.</p><p><em>*El conector de arma inteligente debe ser añadido manualmente después de adquirir el arma</em></p>"
 		},
 		"Nova Model 757 Rounds": {
-			"name": "Nova Model 757 Rounds",
-			"description": "<p>For use only in the Nova Model 757 Cityhunter. Comes in packs of 18 instead of the normal 10.</p><p>&nbsp;</p><p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so.</p>"
+			"name": "Rondas del Modelo de Nova 757",
+			"description": "<p>Solo para uso en el Modelo Cityhunter 757 de Nova. Viene en paquetes de 18 en lugar de los 10 normales.</p><p>&nbsp;</p><p>Requiere implante de sistema de puntería, de lo contrario no se disparará. Si falla un ataque único por 4 o menos, tira de nuevo un segundo ataque al mismo DV 1d10+10 (sin atributo normal). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo</p>"
 		},
 		"Stolbovoy ST-5 Assault Rifle": {
-			"name": "Stolbovoy ST-5 Assault Rifle",
-			"description": "<p>A - relatively - reliable gun. If you roll 1 on Attack (Crit fail) you must then toss a coin; if you win the gun fires as normal, while if you lose the gun jams and requires using an action to clear.</p>"
+			"name": "Rifle de Asalto ST-5 de Stolbovoy",
+			"description": "<p>A - arma relativamente fiable. Si tira 1 en Ataque (fallo crítico), entonces debe tirar una moneda; si usted gana el tiro sale como de costumbre, mientras que si pierde el arma se atasca y requiere utilizar una acción para desatascar.</p>"
 		},
 		"Teen Dreem": {
 			"name": "Teen Dreem",
-			"description": "<p>This SMG can use Autofire and Suppressive Fire all the way down to it's last 2 bullets. Caution is required however, as using either firing mode well melt the gun beyond repair.</p>"
+			"description": "<p>Este SMG puede usar fuego automático y fuego supresivo hasta las últimas 2 balas. Sin embargo, es necesario tener cuidado, ya que usar cualquiera de los modos de disparo fundir la pistola más allá de la reparación.</p>"
 		}
 	}
 }
