@@ -1069,7 +1069,7 @@ export default class CPRActorSheet extends ActorSheet {
     // If we created a new item and the sourceItem is a container type the createItem hook ensures all of the
     // installed items are also created on the target actor. We need to ensure that those items are
     // deleted from the source actor.
-    if (newItem && containerTypes.includes(sourceItem.type) && sourceItem.system.installedItems.list.length > 0) {
+    if (newItem && containerTypes.includes(sourceItem.type) && sourceItem.isOwned === true && sourceItem.system.installedItems.list.length > 0) {
       const deleteItemList = sourceItem.recursiveGetAllInstalledItems();
       for (const item of deleteItemList) {
         deleteList.push(item._id);
