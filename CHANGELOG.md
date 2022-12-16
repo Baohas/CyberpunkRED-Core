@@ -1,11 +1,16 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
-## Version 0.85.1 (Hotfix) | Date: 2022-12-14
+## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
 ### Bug Fixes
 
 - Corrected a capitalisation error that was causing the included Dystopian City Streets map to disappear. Thanks to Latcher for spotting this!
+
+## Version 0.85.1 (Hotfix) | Date: 2022-12-14
+
+### Bug Fixes
+
 - Fixed #624 - Net architecture sheet can't click generation button
 
 ## Version 0.85.0 | Date: 2022-12-11
