@@ -902,6 +902,7 @@ export default class CPRItemSheet extends ItemSheet {
         type: i.type,
         system: {
           isInstalled: true,
+          size: i.system.size,
         },
       };
       if (i.type === "program") {
@@ -917,6 +918,7 @@ export default class CPRItemSheet extends ItemSheet {
         type: i.type,
         system: {
           isInstalled: false,
+          size: i.system.size,
         },
       };
       if (i.type === "program") {

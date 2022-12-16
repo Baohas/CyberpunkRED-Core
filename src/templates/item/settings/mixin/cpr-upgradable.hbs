@@ -34,7 +34,7 @@
 {{#if (cprCompare item.type "===" "weapon")}}
 <li class="item flexrow">
     <div class="item flexrow setting-name text-nowrap">
-        &nbsp;&nbsp;({{localize "CPR.itemSheet.itemUpgrade.unusedSlots"}}: {{cprMath "subtract" item.system.installedItems.slots item.system.installedItems.usedSlots}})
+        &nbsp;&nbsp;({{localize "CPR.itemSheet.itemUpgrade.unusedSlots"}}: {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}})
     </div>
 </li>
 {{/if}}
