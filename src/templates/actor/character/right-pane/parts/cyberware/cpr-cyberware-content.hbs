@@ -11,13 +11,13 @@
     <div class="item-detail cyberware-actions text-nowrap">
         {{#unless (cprListContains "fashionware,cyberwareInternal,cyberwareExternal" foundation.system.type)}}
         {{!-- INSTALL ACTION --}}
-        {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-uninstall-glyph.hbs" foundation}}
+        {{> "systems/cyberpunk-red-core/templates/actor/common/actions/cpr-uninstall-glyph.hbs" foundation}}
         {{!-- ITEM MANAGEMENT --}}
         {{#if system.isUpgraded}}
-          {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/common/actions/cpr-upgrade-glyph.hbs"}}
         {{else}}
           {{#unless (cprIsEmpty (cprFilter (cprFilter foundation.actor.itemTypes.itemUpgrade "type" "cyberware") "system.isInstalled" false))}}
-            {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
+            {{> "systems/cyberpunk-red-core/templates/actor/common/actions/cpr-upgrade-glyph.hbs"}}
           {{/unless}}
         {{/if}}
         {{/unless}}
@@ -35,13 +35,13 @@
     <div class="item-detail cyberware-actions text-nowrap">
         {{#unless (cprListContains "fashionware,cyberwareInternal,cyberwareExternal" foundation.system.type)}}
         {{!-- INSTALL ACTION --}}
-        {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-uninstall-glyph.hbs" optional}}
+        {{> "systems/cyberpunk-red-core/templates/actor/common/actions/cpr-uninstall-glyph.hbs" optional}}
         {{!-- ITEM MANAGEMENT --}}
         {{#if system.isUpgraded}}
-          {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/common/actions/cpr-upgrade-glyph.hbs"}}
         {{else}}
           {{#unless (cprIsEmpty (cprFilter (cprFilter actor.itemTypes.itemUpgrade "type" "cyberware") "system.isInstalled" false))}}
-            {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
+            {{> "systems/cyberpunk-red-core/templates/actor/common/actions/cpr-upgrade-glyph.hbs"}}
           {{/unless}}
         {{/if}}
         {{/unless}}
