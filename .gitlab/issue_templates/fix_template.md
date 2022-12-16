@@ -4,7 +4,8 @@
 
 ### Version-release number of Foundry VTT & Cyberpunk RED Core
 
-[Type text here]
+- FVTT:
+- CPRC:
 
 ### Have you been able to reproduce issue?
 

@@ -1,6 +1,23 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+## Version 0.86.0 | Date: TBD
+
+### New Features
+
+### Changes
+
+- Change the Crit Injury icon for head injuries
+- Change the Crit Injury icons to display before name
+- Update Character sheet to show more information for items
+- Update wording for Failed rolls
+- Babele translation config files added for DLC. Translations will follow later.
+
+### Bug Fixes
+
+- #621 - Add ROF to Cyberware Weapons and Weapon Upgrade Weapons on Mook sheet
+- ROF now uses localized strings
+
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
 ### Bug Fixes

@@ -19,9 +19,9 @@ system:
   description:
     value: >-
       <p>Takes an action to rev up, but once revved is a powerful melee weapon.
-      When not reved deals 2d6 damage*.</p>
+      When not revved deals 2d6 damage*.</p>
 
-      <p><em>*Not reved mode not currently supported, so will need to manually
+      <p><em>*Not revved mode not currently supported, so will need to manually
       reduce damage</em></p>
     chat: ''
     unidentified: ''
