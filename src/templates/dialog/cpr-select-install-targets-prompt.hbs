@@ -2,23 +2,50 @@
 <form>
   {{text}}, Choomba!
   <ol class="items-list">
-    {{#each this.installationTargetTypes as |itemType|}}
-        <li class="item flexrow">
-      <div class="item flexrow setting-name">
-        <span class="text-bold text-nowrap">{{localize (cprFindConfigValue "objectTypes" itemType)}}</span>
+    {{!-- Display Item Size --}}
+    <li class="item flexrow">
+      <div class="item flexrow">
+        <span class="text-bold">
+          {{localize "CPR.global.generic.size"}}: {{this.system.size}}
+        </span>
       </div>
-      <div class="item flexrow setting-value">
-        <span class="text-bold text-nowrap text-align-last-end text-space-around">{{localize "CPR.dialog.common.select"}}</span>
+    </li>
+    <hr>
+    {{#each this.installationTargetTypes as |itemType|}}
+    <li class="item flexrow">
+      <div class="item flexrow item-name">
+        <span class="text-bold text-left">
+          {{localize (cprFindConfigValue "objectTypes" itemType)}}
+        </span>
+      </div>
+      <div style="max-width: 95px" class="item flexrow item-detail">
+        <span class="text-right">
+          {{localize "CPR.dialog.install.availableSlots"}}
+        </span>
+      </div>
+      <div style="max-width: 60px" class="item flexrow item-detail">
+        <span class="text-bold text-align-last-end text-space-around" >
+          {{localize "CPR.dialog.common.select"}}
+        </span>
       </div>
     </li>
       {{#each ../this.installationTargets as |item|}}
         {{#if (cprCompare item.type "===" itemType)}}
           <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-              {{item.name}}
+            <div class="item flexrow text-nowrap item-name">
+              <span style="text-overflow: ellipsis; overflow: hidden">
+                {{item.name}}
+              </span>
             </div>
-            <div class="item flexrow setting-value text-nowrap text-space-around">
-              <span class="text-bold text-nowrap text-align-last-end text-space-around"><input type="radio" name="selectedTarget" value="{{item.uuid}}"></span>
+            <div style="max-width: 95px" class="item flexrow item-detail text-right">
+              <span class="text-right">
+                {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}}/{{cprApplyUpgrade item item.system.installedItems.slots "slots"}}
+              </span>
+            </div>
+            <div style="max-width: 60px" class="item flexrow item-detail text-bold text-align-last-end text-space-around">
+              <span>
+                <input type="radio" name="selectedTarget" value="{{item.uuid}}">
+              </span>
             </div>
           </li>
         {{/if}}

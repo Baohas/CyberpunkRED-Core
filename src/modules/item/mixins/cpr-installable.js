@@ -53,6 +53,9 @@ const Installable = function Installable() {
       text: dialogPromptText,
       installationTargetTypes,
       installationTargets,
+      system: {
+        size: this.system.size,
+      },
     };
 
     formData = await SelectInstallTargetPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
