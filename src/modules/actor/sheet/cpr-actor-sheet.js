@@ -301,7 +301,7 @@ export default class CPRActorSheet extends ActorSheet {
         const interfaceAbility = SystemUtils.GetEventDatum(event, "data-interface-ability");
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
         const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
-        const netRoleItem = this.actor.itemTypes.role.find((r) => r.name === this.actor.system.roleInfo.activeNetRole);
+        const netRoleItem = this.actor.itemTypes.role.find((r) => r.id === this.actor.system.roleInfo.activeNetRole);
         if (!netRoleItem) {
           const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
           SystemUtils.DisplayMessage("error", error);
@@ -315,7 +315,7 @@ export default class CPRActorSheet extends ActorSheet {
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
         const executionType = SystemUtils.GetEventDatum(event, "data-execution-type");
         const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
-        const netRoleItem = this.actor.itemTypes.role.find((r) => r.name === this.actor.system.roleInfo.activeNetRole);
+        const netRoleItem = this.actor.itemTypes.role.find((r) => r.id === this.actor.system.roleInfo.activeNetRole);
         if (!netRoleItem) {
           const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
           SystemUtils.DisplayMessage("error", error);
