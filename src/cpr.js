@@ -38,16 +38,31 @@ Hooks.once("init", async () => {
   LOGGER.credits();
   // Register Actor Sheet Application Classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet(game.system.id, CPRCharacterActorSheet,
-    { label: SystemUtils.Localize("CPR.sheets.characterSheet"), types: ["character", "mook"], makeDefault: true });
-  Actors.registerSheet(game.system.id, CPRBlackIceActorSheet,
-    { label: SystemUtils.Localize("CPR.sheets.blackiceSheet"), types: ["blackIce"], makeDefault: true });
-  Actors.registerSheet(game.system.id, CPRContainerActorSheet,
-    { label: SystemUtils.Localize("CPR.sheets.containerSheet"), types: ["container"], makeDefault: true });
-  Actors.registerSheet(game.system.id, CPRDemonActorSheet,
-    { label: SystemUtils.Localize("CPR.sheets.demonSheet"), types: ["demon"], makeDefault: true });
-  Actors.registerSheet(game.system.id, CPRMookActorSheet,
-    { label: SystemUtils.Localize("CPR.sheets.mookSheet"), types: ["character", "mook"] });
+  Actors.registerSheet(
+    game.system.id,
+    CPRCharacterActorSheet,
+    { label: SystemUtils.Localize("CPR.sheets.characterSheet"), types: ["character", "mook"], makeDefault: true },
+  );
+  Actors.registerSheet(
+    game.system.id,
+    CPRBlackIceActorSheet,
+    { label: SystemUtils.Localize("CPR.sheets.blackiceSheet"), types: ["blackIce"], makeDefault: true },
+  );
+  Actors.registerSheet(
+    game.system.id,
+    CPRContainerActorSheet,
+    { label: SystemUtils.Localize("CPR.sheets.containerSheet"), types: ["container"], makeDefault: true },
+  );
+  Actors.registerSheet(
+    game.system.id,
+    CPRDemonActorSheet,
+    { label: SystemUtils.Localize("CPR.sheets.demonSheet"), types: ["demon"], makeDefault: true },
+  );
+  Actors.registerSheet(
+    game.system.id,
+    CPRMookActorSheet,
+    { label: SystemUtils.Localize("CPR.sheets.mookSheet"), types: ["character", "mook"] },
+  );
 
   // Register Item Sheet Application Classes
   Items.unregisterSheet("core", ItemSheet);
@@ -123,8 +138,10 @@ Hooks.once("ready", async () => {
     LOGGER.debug(`New data model version is: ${dataModelVersion}`);
     const MR = new MigrationRunner();
     // migrateWorld expects to be passed two integer values.
-    if (await MR.migrateWorld(parseInt(dataModelVersion, 10), DATA_MODEL_VERSION)) {
+    await MR.migrateWorld(parseInt(dataModelVersion, 10), DATA_MODEL_VERSION);
+    if (game.system.version !== game.settings.get(game.system.id, "systemVersion")) {
       UpdateScreen.RenderPopup();
+      game.settings.set(game.system.id, "systemVersion", game.system.version);
     }
     // Ensure load bar is gone
     SystemUtils.fadeMigrationBar();

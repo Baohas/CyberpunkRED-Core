@@ -1,11 +1,5 @@
+---
 _id: BC8S1sdK0QGdyHNC
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831027208
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027208
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -16,13 +10,6 @@ ownership:
   default: 0
 sort: 0
 system:
-  installedItems:
-    allowedTypes:
-      - itemUpgrade
-    allowed: true
-    list: []
-    usedSlots: 0
-    slots: 3
   ammoVariety: []
   attackmod: 0
   concealable:
@@ -32,9 +19,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: >-
-      <p>Turns weapon into a "Smartgun". Refer to all rules specified on pg. 344
-      before using.&nbsp;</p>
+    value: <p>Turns weapon into a "Smartgun". Refer to all rules specified on pg. 344 before using.&nbsp;</p>
   dvTable: ''
   equipped: owned
   favorite: false
@@ -43,6 +28,13 @@ system:
     suppressiveFire: false
   handsReq: 0
   install: mall
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isInstalled: false
   isRanged: false
   magazine:

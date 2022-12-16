@@ -1,16 +1,9 @@
 _id: mSF1y5Kfye57SmWf
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830519745
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830519745
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor_Head.svg
 name: Flak (Head)
 ownership:
   default: 0

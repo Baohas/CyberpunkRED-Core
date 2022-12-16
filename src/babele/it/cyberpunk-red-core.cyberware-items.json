@@ -191,11 +191,11 @@
 		},
 		"Medical Grade CyberArm": {
 			"name": "Cyberbraccio Medico",
-			"description": "<p>Un cyberbraccio di livello medico. Non consente installazioni opzionali.</p>"
+			"description": "<p>Un cyberbraccio di livello medico. Non consente installazioni opzionali e non causa perdite di umanità.</p>"
 		},
 		"Medical Grade CyberLeg": {
 			"name": "Cybergamba Medica",
-			"description": "<p>Una cybergamba di livello medico. Non consente installazioni opzionali.</p>"
+			"description": "<p>Una cybergamba di livello medico. Non consente installazioni opzionali e non causa perdite di umanità.</p>"
 		},
 		"Medscanner": {
 			"name": "Medscanner",

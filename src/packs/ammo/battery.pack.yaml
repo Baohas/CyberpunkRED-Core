@@ -1,11 +1,4 @@
 _id: MfuoJ69NL1FiP7B8
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831195842
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831195842
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -16,6 +9,7 @@ ownership:
   default: 0
 sort: 0
 system:
+  ablationValue: 1
   amount: 8
   concealable:
     concealable: true
@@ -24,8 +18,8 @@ system:
     chat: ''
     unidentified: ''
     value: >-
-      <p>A rechargable (1 hour) battery pack, commonly used with Exotic weapons.
-      Contains 8 shots and can be recharged.&nbsp;</p>
+      <p>A rechargeable (1 hour) battery pack, commonly used with Exotic
+      weapons. Contains 8 shots and can be recharged.&nbsp;</p>
   favorite: false
   price:
     category: costly

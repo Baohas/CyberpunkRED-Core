@@ -27,7 +27,7 @@
 		},
 		"Speedheal": {
 			"name": "Speedheal",
-			"description": "<p>Inyectar a un objetivo con Speedheal inmediatamente hace que cura a un HP igual a su BODY más su WILL. Este efecto no funciona en objetivos heridos morales, y solo se puede usar en un objetivo una vez al día.</p>"
+			"description": "<p>Inyectar a un objetivo con Speedheal inmediatamente hace que cura a un PV igual a su BODY más su WILL. Este efecto no funciona en objetivos heridos morales, y solo se puede usar en un objetivo una vez al día.</p>"
 		},
 		"Stim": {
 			"name": "Stim",

@@ -68,14 +68,6 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Weapons",
-      "type": "Item",
-      "name": "weapons-items",
-      "path": "packs/weapons.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
       "label": "Armor",
       "type": "Item",
       "name": "armor-items",
@@ -164,7 +156,7 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "NET architecture Rolltables",
+      "label": "NET Architecture Rolltables",
       "type": "RollTable",
       "name": "net-rolltables",
       "path": "packs/net-rolltables.db",
@@ -184,6 +176,54 @@
       "type": "Item",
       "name": "elflines-armory",
       "path": "packs/elflines-armory.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Weapons",
+      "type": "Item",
+      "name": "weapons-items",
+      "path": "packs/weapons.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "The 12 Days of Gunmas",
+      "type": "Item",
+      "name": "the-12-days-of-gunmas-items",
+      "path": "packs/the-12-days-of-gunmas.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Woodchipper’s Garage",
+      "type": "Item",
+      "name": "woodchippers-garage-items",
+      "path": "packs/woodchippers-garage.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Micro Chrome",
+      "type": "Item",
+      "name": "micro-chrome-items",
+      "path": "packs/micro-chrome.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Spinning Your Wheels",
+      "type": "Item",
+      "name": "spinning-your-wheels-items",
+      "path": "packs/spinning-your-wheels.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Cyberchairs",
+      "type": "Item",
+      "name": "cyberchairs-items",
+      "path": "packs/cyberchairs.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     }

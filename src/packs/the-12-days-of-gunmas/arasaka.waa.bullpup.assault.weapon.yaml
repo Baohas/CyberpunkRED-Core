@@ -1,0 +1,60 @@
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
+name: Arasaka WAA Bullpup Assault Weapon
+system:
+  weaponType: assaultRifle
+  weaponSkill: Shoulder Arms
+  fireModes:
+    autoFire: 4
+    suppressiveFire: true
+  damage: 5d6
+  rof: 1
+  dvTable: DV Assault Rifle
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: >-
+      <p>A bullpup rifle in operation for over two decades. Can fire non-basic
+      ammunition and comes with a Smartgun Link*.</p>
+
+      <p><em>*Smartgun Link must be manually added after acquiring the
+      weapon</em></p>
+    chat: ''
+    unidentified: ''
+  source: 12DoG
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 30
+    ammoData:
+      name: ''
+      uuid: ''
+  ammoVariety:
+    - rifle
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 1000
+    category: expensive
+  handsReq: 2
+  isConcealed: false
+  quality: standard
+  upgrade: ''
+type: weapon
+_id: bU1k6gqkEs9Dn6T8
+folder: null
+sort: 0
+ownership:
+  default: 0

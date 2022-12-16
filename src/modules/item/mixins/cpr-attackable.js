@@ -258,15 +258,23 @@ const Attackable = function Attackable() {
       default:
     }
 
-    // Feed ammo type and variety into the rollCard arguments for the damage application button.
+    // Assume all melee weapons and ranged weapons with no ammo deal 1 ablation if they damage a target.
+    cprRoll.rollCardExtraArgs.ablationValue = 1;
+
+    // If weapon is ranged, feed ammo type and variety into the rollCard arguments for the damage application button.
+    // This will reassign the ablation value from the ammo.
     if (cprWeaponData.isRanged) {
-      const ammoType = this._getLoadedAmmoType();
-      const ammoVariety = this._getLoadedAmmoVariety();
-      if (ammoType !== "undefined") {
+      const ammoType = this._getLoadedAmmoProp("type");
+      const ammoVariety = this._getLoadedAmmoProp("variety");
+      const ablationValue = this._getLoadedAmmoProp("ablationValue");
+      if (ammoType !== undefined) {
         cprRoll.rollCardExtraArgs.ammoType = ammoType;
       }
-      if (ammoVariety !== "undefined") {
+      if (ammoVariety !== undefined) {
         cprRoll.rollCardExtraArgs.ammoVariety = ammoVariety;
+      }
+      if (ablationValue !== undefined) {
+        cprRoll.rollCardExtraArgs.ablationValue = ablationValue;
       }
     }
 

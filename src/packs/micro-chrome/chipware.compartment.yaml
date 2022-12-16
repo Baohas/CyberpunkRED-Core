@@ -1,0 +1,77 @@
+effects: []
+flags:
+  core: {}
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/micro_chrome/chipware_compartment.svg
+name: Chipware Compartment
+system:
+  weaponType: assaultRifle
+  weaponSkill: Archery
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 1d6
+  rof: 1
+  dvTable: ''
+  isRanged: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>Lets you conceal up to four pieces of chipware, no Check required.
+      Retrieval is done by spending an action to spin the eye in its socket.</p>
+    chat: ''
+    unidentified: ''
+  source: MC
+  favorite: false
+  revealed: true
+  usage: toggled
+  install: clinic
+  isInstalled: false
+  size: 3
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 0
+    ammoData:
+      name: ''
+      uuid: ''
+  ammoVariety: []
+  concealable:
+    concealable: true
+    isConcealed: false
+  upgrades: []
+  slots: 0
+  isUpgraded: false
+  price:
+    market: 100
+    category: premium
+  type: cyberEye
+  isWeapon: false
+  isFoundational: false
+  hasOptionalSlots: false
+  optionSlots: 0
+  core: false
+  installedOptionSlots: 0
+  optionalIds: []
+  humanityLoss:
+    static: '3'
+    roll: 1d6
+  amount: 1
+  isConcealed: false
+  quality: ''
+  upgrade: ''
+  allowedUsage:
+    - always
+    - toggled
+    - installed
+  availableSlots: 0
+  isGM: true
+  isOwned: null
+type: cyberware
+_id: jcaBaa81CJiRktcu
+folder: null
+sort: 0
+ownership:
+  default: 0

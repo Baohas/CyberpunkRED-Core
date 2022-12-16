@@ -1,11 +1,5 @@
+---
 _id: iSyf14qCf2US6im1
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831053176
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831053176
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -16,15 +10,8 @@ ownership:
   default: 0
 sort: 0
 system:
-  installedItems:
-    allowedTypes:
-      - itemUpgrade
-    allowed: true
-    list: []
-    usedSlots: 0
-    slots: 3
   ammoVariety:
-    - medPistol
+    - paintball
   attackmod: 0
   concealable:
     concealable: true
@@ -33,10 +20,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: >-
-      <p>An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is
-      able to ablate armor by one with each hit. Refer to the full item
-      description on pg. 347.</p>
+    value: <p>An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is able to ablate armor by one with each hit. Refer to the full item description on pg. 347.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false
@@ -44,6 +28,13 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
   isRanged: true
   isUpgraded: false
@@ -59,6 +50,7 @@ system:
   quality: standard
   revealed: true
   rof: 2
+  slots: 0
   source: pg. 347
   tags: []
   unarmedAutomaticCalculation: true

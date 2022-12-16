@@ -192,32 +192,17 @@ const Loadable = function Loadable() {
   };
 
   /**
-   * Get the type of ammo loaded in this item.
+   * Get a property of the ammo that is currently loaded in this weapon.
    *
-   * @returns {String}
+   * @param {String} - the desired property to look up and return the value of
+   * @returns {*} - value of the ammo property
    */
-  this._getLoadedAmmoType = function _getLoadedAmmoType() {
-    LOGGER.trace("_getLoadedAmmoType | Loadable | Called.");
+  this._getLoadedAmmoProp = function _getLoadedAmmoProp(prop) {
+    LOGGER.trace("_getLoadedAmmoProp | Loadable | Called.");
     if (this.actor) {
       const ammo = this.actor.getOwnedItem(this.system.magazine.AmmoData.uuid);
       if (ammo) {
-        return ammo.system.type;
-      }
-    }
-    return undefined;
-  };
-
-  /**
-   * Get the variety of ammo loaded in this item.
-   *
-   * @returns {String}
-   */
-  this._getLoadedAmmoVariety = function _getLoadedAmmoVariety() {
-    LOGGER.trace("_getLoadedAmmoVariety | Loadable | Called.");
-    if (this.actor) {
-      const ammo = this.actor.getOwnedItem(this.system.magazine.ammoData.uuid);
-      if (ammo) {
-        return ammo.system.variety;
+        return getProperty(ammo.system, prop);
       }
     }
     return undefined;

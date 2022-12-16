@@ -1,11 +1,5 @@
+---
 _id: xRA275R527XLwaBJ
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831027214
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027214
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -16,13 +10,6 @@ ownership:
   default: 0
 sort: 0
 system:
-  installedItems:
-    allowedTypes:
-      - itemUpgrade
-    allowed: true
-    list: []
-    usedSlots: 0
-    slots: 3
   ammoVariety: []
   attackmod: 0
   concealable:
@@ -32,7 +19,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: ''
+    value: <p>An old idea that still works just as good; lets you use your gun as a light melee weapon. While attached, the weapon can't be concealed under clothing.</p>
   dvTable: ''
   equipped: owned
   favorite: false
@@ -41,6 +28,13 @@ system:
     suppressiveFire: false
   handsReq: 0
   install: mall
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isInstalled: false
   isRanged: false
   magazine:

@@ -1,11 +1,4 @@
 _id: UX79WfUt7Yungbx7
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830963827
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830963827
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects:
   - _id: MPX4bqIlawLKgHIC
     changes:
@@ -30,6 +23,7 @@ effects:
     label: Sandevistan
     tint: null
     transfer: true
+    origin: null
 flags:
   core: {}
 folder: null
@@ -46,54 +40,54 @@ system:
     list: []
     usedSlots: 0
     slots: 3
-  ammoVariety: []
-  amount: 1
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  core: false
-  damage: 1d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>Speedware. +3 to Initiative for 1 min. 1hr cooldown.</p>
-  dvTable: ''
-  favorite: false
+  weaponType: assaultRifle
+  weaponSkill: Archery
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  humanityLoss:
-    roll: 2d6
-    static: '7'
-  install: clinic
-  isConcealed: false
-  isFoundational: false
-  isInstalled: false
+  damage: 1d6
+  rof: 1
+  dvTable: ''
   isRanged: false
-  isUpgraded: false
-  isWeapon: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: []
+  description:
+    value: <p>Speedware. +3 to Initiative for 1 min. 1hr cooldown.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 359
+  favorite: false
+  revealed: true
+  usage: toggled
+  install: clinic
+  isInstalled: false
+  size: 1
+  usesType: magazine
   magazine:
+    value: 0
+    max: 0
     ammoData:
       name: ''
       uuid: ''
-    max: 0
-    value: 0
-  price:
-    category: expensive
-    market: 500
-  quality: ''
-  revealed: true
-  rof: 1
-  size: 1
-  source: pg. 359
-  tags: []
-  type: neuralWare
-  unarmedAutomaticCalculation: true
-  upgrade: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
   upgrades: []
-  usage: installed
-  usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  isUpgraded: false
+  price:
+    market: 500
+    category: expensive
+  type: neuralWare
+  isWeapon: false
+  isFoundational: false
+  core: false
+  humanityLoss:
+    static: '7'
+    roll: 2d6
+  amount: 1
+  isConcealed: false
+  quality: ''
+  upgrade: ''
 type: cyberware

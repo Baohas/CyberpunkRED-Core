@@ -1,11 +1,4 @@
 _id: oSCkXo6VZXIwjWhL
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830963835
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830963835
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects:
   - _id: 74gFz2rJ7G0uBkgx
     changes:
@@ -30,8 +23,12 @@ effects:
     label: AudioVox Acting
     tint: null
     transfer: true
+    origin: null
   - _id: dqjjjMsDuHu1WoiE
-    changes: []
+    changes:
+      - key: bonuses.playInstrument
+        value: '2'
+        mode: 2
     disabled: false
     duration:
       combat: null
@@ -41,11 +38,15 @@ effects:
       startTime: null
       startTurn: null
       turns: null
-    flags: {}
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
     label: AudioVox Singing (Play Instrument)
     tint: null
     transfer: true
+    origin: null
 flags:
   core: {}
 folder: null
@@ -62,56 +63,56 @@ system:
     list: []
     usedSlots: 0
     slots: 3
-  ammoVariety: []
-  amount: 1
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  core: false
-  damage: 1d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: >-
-      <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument checks.
-      </p>
-  dvTable: ''
-  favorite: false
+  weaponType: assaultRifle
+  weaponSkill: Archery
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  humanityLoss:
-    roll: 1d6
-    static: '3'
-  install: clinic
-  isConcealed: false
-  isFoundational: false
-  isInstalled: false
+  damage: 1d6
+  rof: 1
+  dvTable: ''
   isRanged: false
-  isUpgraded: false
-  isWeapon: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument checks.
+      </p>
+    chat: ''
+    unidentified: ''
+  source: pg. 362
+  favorite: false
+  revealed: true
+  usage: installed
+  install: clinic
+  isInstalled: false
+  size: 1
+  usesType: magazine
   magazine:
+    value: 0
+    max: 0
     ammoData:
       name: ''
       uuid: ''
-    max: 0
-    value: 0
-  price:
-    category: expensive
-    market: 500
-  quality: ''
-  revealed: true
-  rof: 1
-  size: 1
-  source: pg. 362
-  tags: []
-  type: cyberwareInternal
-  unarmedAutomaticCalculation: true
-  upgrade: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
   upgrades: []
-  usage: installed
-  usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  isUpgraded: false
+  price:
+    market: 500
+    category: expensive
+  type: cyberwareInternal
+  isWeapon: false
+  isFoundational: false
+  core: false
+  humanityLoss:
+    static: '3'
+    roll: 1d6
+  amount: 1
+  isConcealed: false
+  quality: ''
+  upgrade: ''
 type: cyberware

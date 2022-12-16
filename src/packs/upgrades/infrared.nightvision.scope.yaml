@@ -1,29 +1,15 @@
+---
 _id: pEXcsIk1FYMNdbUc
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831027207
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027207
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
 folder: null
-img: >-
-  systems/cyberpunk-red-core/icons/compendium/item_upgrades/infrared_nightvision_scope.svg
+img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/infrared_nightvision_scope.svg
 name: Infrared Nightvision Scope
 ownership:
   default: 0
 sort: 0
 system:
-  installedItems:
-    allowedTypes:
-      - itemUpgrade
-    allowed: true
-    list: []
-    usedSlots: 0
-    slots: 3
   ammoVariety: []
   attackmod: 0
   concealable:
@@ -42,6 +28,13 @@ system:
     suppressiveFire: false
   handsReq: 0
   install: mall
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isInstalled: false
   isRanged: false
   magazine:

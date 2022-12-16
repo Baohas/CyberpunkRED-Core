@@ -1,0 +1,16 @@
+<p>We fixed a behavior where an active effect applied to a stat (such as +2 BODY from Grafted Muscle and Bone Lace) would continue to increase/decrease whenever the reputation or 
+Eurobucks changed on the character. This should no longer happen, but if you see the stat keep reverting to the wrong value after changing it in the sheet, follow 
+these steps:</p>
+<ol>
+<li>Disable the Active Effect in the Effects tab</li>
+<li>Edit the stat to the correct value</li>
+<li>Enable the Active Effect again</li>
+</ol>
+<p>This should resolve the issue for good on your character.</p>
+
+<h3>Bug Fixes</h3>
+<ul>
+<li>Fix HTML Stripping in item descriptions on character sheets</li>
+<li>Fix Create/Edit Role Ability dialog not submitting.</li>
+<li>#583 - Using ledger re-applies all Active Effects.</li>
+</ul>

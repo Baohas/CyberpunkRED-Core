@@ -1,11 +1,4 @@
 _id: YRR8D6hUfq55KnoR
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830963825
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830963825
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects:
   - _id: tWHTQ0n84oq6mENt
     changes:
@@ -40,6 +33,7 @@ effects:
     label: Image Enhance
     tint: null
     transfer: true
+    origin: null
 flags:
   core: {}
 folder: null
@@ -56,56 +50,56 @@ system:
     list: []
     usedSlots: 0
     slots: 3
-  ammoVariety: []
-  amount: 1
-  attackmod: 0
-  concealable:
-    concealable: false
-    isConcealed: false
-  core: false
-  damage: 1d6
-  description:
-    chat: ''
-    unidentified: ''
-    value: >-
-      <p>Must be paired. +2 Perception and Lip Reading and Conceal/Reveal Object
-      when using sight.</p>
-  dvTable: ''
-  favorite: false
+  weaponType: assaultRifle
+  weaponSkill: Archery
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  humanityLoss:
-    roll: 1d6
-    static: '3'
-  install: mall
-  isConcealed: false
-  isFoundational: false
-  isInstalled: false
+  damage: 1d6
+  rof: 1
+  dvTable: ''
   isRanged: false
-  isUpgraded: false
-  isWeapon: false
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: []
+  description:
+    value: >-
+      <p>Must be paired. +2 Perception and Lip Reading and Conceal/Reveal Object
+      when using sight.</p>
+    chat: ''
+    unidentified: ''
+  source: pg. 360
+  favorite: false
+  revealed: true
+  usage: toggled
+  install: mall
+  isInstalled: false
+  size: 1
+  usesType: magazine
   magazine:
+    value: 0
+    max: 0
     ammoData:
       name: ''
       uuid: ''
-    max: 0
-    value: 0
-  price:
-    category: expensive
-    market: 500
-  quality: ''
-  revealed: true
-  rof: 1
-  size: 1
-  source: pg. 360
-  tags: []
-  type: cyberEye
-  unarmedAutomaticCalculation: true
-  upgrade: ''
+  ammoVariety: []
+  concealable:
+    concealable: false
+    isConcealed: false
   upgrades: []
-  usage: installed
-  usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  isUpgraded: false
+  price:
+    market: 500
+    category: expensive
+  type: cyberEye
+  isWeapon: false
+  isFoundational: false
+  core: false
+  humanityLoss:
+    static: '3'
+    roll: 1d6
+  amount: 1
+  isConcealed: false
+  quality: ''
+  upgrade: ''
 type: cyberware

@@ -239,6 +239,18 @@ const registerSystemSettings = () => {
       LOGGER.log(`Changed dataModelVersion to ${value}`);
     },
   });
+
+  // Saves the previous game.system.version so we can check if we were recently updated
+  game.settings.register(game.system.id, "systemVersion", {
+    name: "System Version",
+    scope: "world",
+    config: false,
+    type: String,
+    default: "newCprWorld",
+    onChange: (value) => {
+      LOGGER.log(`System Version persisted to ${value}`);
+    },
+  });
 };
 
 export default registerSystemSettings;

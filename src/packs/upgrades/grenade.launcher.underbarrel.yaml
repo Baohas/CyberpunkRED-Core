@@ -1,28 +1,15 @@
+---
 _id: x6mYA3IJZaNK00nv
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831027210
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831027210
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg
+img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/grenade_launcher_underbarrel.svg
 name: Grenade Launcher Underbarrel
 ownership:
   default: 0
 sort: 0
 system:
-  installedItems:
-    allowedTypes:
-      - itemUpgrade
-    allowed: true
-    list: []
-    usedSlots: 0
-    slots: 3
   ammoVariety:
     - grenade
   attackmod: 0
@@ -33,7 +20,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: ''
+    value: <p>Functions like a standard grenade launcher, but with a magazine size of 1. Requires 2 hands to use, and takes up 2 attachment slots. While attached, the weapon can't be concealed under clothing.</p>
   dvTable: DV Grenade Launcher
   equipped: owned
   favorite: false
@@ -42,6 +29,13 @@ system:
     suppressiveFire: false
   handsReq: 0
   install: mall
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isInstalled: false
   isRanged: true
   magazine:

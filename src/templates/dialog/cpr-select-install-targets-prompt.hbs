@@ -1,0 +1,30 @@
+{{cprTrace "START DIALOG CPR-SELECT-INSTALL-TARGETS-PROMPT.HBS"}}
+<form>
+  {{text}}, Choomba!
+  <ol class="items-list">
+    {{#each this.installationTargetTypes as |itemType|}}
+        <li class="item flexrow">
+      <div class="item flexrow setting-name">
+        <span class="text-bold text-nowrap">{{localize (cprFindConfigValue "objectTypes" itemType)}}</span>
+      </div>
+      <div class="item flexrow setting-value">
+        <span class="text-bold text-nowrap text-align-last-end text-space-around">{{localize "CPR.dialog.common.select"}}</span>
+      </div>
+    </li>
+      {{#each ../this.installationTargets as |item|}}
+        {{#if (cprCompare item.type "===" itemType)}}
+          <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+              {{item.name}}
+            </div>
+            <div class="item flexrow setting-value text-nowrap text-space-around">
+              <span class="text-bold text-nowrap text-align-last-end text-space-around"><input type="radio" name="selectedTarget" value="{{item.uuid}}"></span>
+            </div>
+          </li>
+        {{/if}}
+      {{/each}}
+    {{/each}}
+
+  </ol>
+</form>
+{{cprTrace "END DIALOG CPR-SELECT-INSTALL-TARGETS-PROMPT.HBS"}}

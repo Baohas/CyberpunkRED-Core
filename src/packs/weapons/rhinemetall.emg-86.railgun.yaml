@@ -1,11 +1,5 @@
+---
 _id: DXVvTnvnQKLp9Uky
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831053159
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831053159
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -16,13 +10,6 @@ ownership:
   default: 0
 sort: 0
 system:
-  installedItems:
-    allowedTypes:
-      - itemUpgrade
-    allowed: true
-    list: []
-    usedSlots: 0
-    slots: 3
   ammoVariety:
     - rifle
   attackmod: 0
@@ -33,10 +20,9 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: >-
-      <p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots.
-      Requires BODY 11 or higher (unless mounted). Refer to the full item
-      description on pg. 349.</p>
+    value: |-
+      <p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>
+      <p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false
@@ -44,6 +30,13 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 2
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
   isRanged: true
   isUpgraded: false
@@ -59,6 +52,7 @@ system:
   quality: standard
   revealed: true
   rof: 1
+  slots: 0
   source: pg. 349
   tags: []
   unarmedAutomaticCalculation: true

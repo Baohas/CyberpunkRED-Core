@@ -27,14 +27,6 @@ async function _createDist() {
   }
 }
 
-// Reads `src/system.json` and gets the list of supported languages
-function _getLangs() {
-  const systemRaw = fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE));
-  const system = JSON.parse(systemRaw);
-  const langs = system.languages;
-  return langs;
-}
-
 // Blast the build directory to ensure it's fresh
 async function cleanDist() {
   if (fs.existsSync(destFolder)) {
@@ -124,48 +116,6 @@ async function buildChangelog() {
   });
 }
 
-async function propagateLangs() {
-  return new Promise((cb) => {
-    log("Processing Language Files...");
-    const enFile = fs.readFileSync(path.resolve(srcFolder, "lang/en.json"));
-    const enStrings = JSON.parse(enFile);
-    const allLangs = _getLangs();
-    // Remove en from the languages
-    const langs = allLangs.filter((item) => item.lang !== "en");
-
-    // Loop over each language file in `src/lang` except `en.json`
-    langs.forEach((lang) => {
-      const langFile = path.resolve(srcFolder, lang.path);
-      const langData = JSON.parse(fs.readFileSync(path.resolve(langFile)));
-      const data = {};
-
-      // Loop over `enStrings` and check they are in the current lang file
-      // If it does not exist, add the en key/value to the file.
-      Object.entries(enStrings).forEach(([key, value]) => {
-        if (!(key in langData)) {
-          data[key] = value;
-        }
-      });
-
-      // Get a list of language strings, loop over and check if they exist in
-      // en.json if not delete the key/value from the langiage file.
-      Object.entries(langData).forEach(([key]) => {
-        if (!(key in enStrings)) {
-          delete langData[key];
-        }
-      });
-
-      // Merge the new strings and the (trimmed) language strings
-      const newData = { ...data, ...langData };
-      // Write the new files out, sort by JSON key to ensure clean diffs
-      fs.writeFileSync(langFile, JSON.stringify(newData, Object.keys(newData)
-        .sort(), 2));
-    });
-    log("Finished Processing Language Files.");
-    cb();
-  });
-}
-
 async function processImages() {
   return new Promise((cb) => {
     log("Processing Images...");
@@ -195,7 +145,6 @@ async function processSvgs() {
       .pipe(svgmin({
         multipass: true,
         plugins: [
-          "removeDimensions",
           "convertStyleToAttrs",
         ],
       }))
@@ -231,7 +180,6 @@ export {
   copyAssets,
   compileLess,
   watchSrc,
-  propagateLangs,
   processImages,
   processSvgs,
 };

@@ -479,6 +479,14 @@ export default class CPRActorSheet extends ActorSheet {
           item.snort();
           break;
         }
+        case "install-item": {
+          item.install();
+          break;
+        }
+        case "uninstall-item": {
+          item.uninstall();
+          break;
+        }
         default: {
           item.doAction(this.actor, event.currentTarget.attributes);
         }
@@ -800,7 +808,7 @@ export default class CPRActorSheet extends ActorSheet {
       // check whether the actor has this injury already
       if (this.actor.itemTypes.criticalInjury.find((i) => i.name === injuryName)) {
         if (dupeSetting === "reroll") {
-          await this._drawCriticalInjuryTable(table, iteration + 1);
+          await this._drawCriticalInjuryTable(table, injuryCompName, iteration + 1);
           return;
         }
         if (dupeSetting === "warn") {
@@ -813,6 +821,7 @@ export default class CPRActorSheet extends ActorSheet {
         type: injury.type,
         img: injury.img,
         system: duplicate(injury.system),
+        effects: duplicate(injury.effects),
       };
       const result = await this.actor.createEmbeddedDocuments("Item", [cprItemData]);
       const cprRoll = new CPRRolls.CPRTableRoll(

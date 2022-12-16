@@ -40,8 +40,14 @@ export default class CPRCyberwareItem extends CPRItem {
    * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
    */
   // eslint-disable-next-line no-unused-vars
-  async uninstallItems(itemList, recursive = true) {
+  async uninstallItems(itemList) {
     LOGGER.trace("uninstallItems | CPRCyberwareItem | Called.");
-    return super.uninstallItems(itemList, true);
+    let recursive = false;
+    for (const item of itemList) {
+      if (item.type === "cyberware") {
+        recursive = true;
+      }
+    }
+    return super.uninstallItems(itemList, recursive);
   }
 }

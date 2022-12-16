@@ -1,0 +1,63 @@
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher_poor.svg
+name: Towa Pocket Launcher
+system:
+  weaponType: rocketLauncher
+  weaponSkill: Heavy Weapons
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 8d6
+  rof: 1
+  dvTable: DV Rocket Launcher
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: <p>While unloaded, this weapon can be concealed.</p>
+    chat: ''
+    unidentified: ''
+  source: WG
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 1
+    ammoData:
+      name: ''
+      uuid: ''
+  ammoVariety:
+    - rocket
+  concealable:
+    concealable: true
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 500
+    category: premium
+  handsReq: 2
+  isConcealed: false
+  quality: poor
+  upgrade: ''
+  allowedUsage:
+    - always
+    - toggled
+    - carried
+    - equipped
+  availableSlots: 3
+  isGM: true
+  isOwned: null
+type: weapon
+_id: mHKNifoCC2mNhT45
+folder: null
+sort: 0
+ownership:
+  default: 0

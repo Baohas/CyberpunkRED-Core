@@ -30,4 +30,13 @@
         </select>
     </div>
 </li>
+{{!-- Ablation Value --}}
+<li class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.itemSheet.ammo.ablationValue"}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+        <input name="system.ablationValue" class="" type="number" value={{item.system.ablationValue}}>
+    </div>
+</li>
 {{cprTrace "END CPR-AMMO.HBS"}}

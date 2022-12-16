@@ -71,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Cyberconsole",
-			"description": "<p>Netrunner deck. 7 slots.</p>"
+			"description": "<p>Cyberconsole du netrunner. 7 emplacements.</p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Téléphone jetable",
@@ -91,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Cyberconsole d'excellente qualité",
-			"description": "<p>Netrunner deck. 9 slots.</p>"
+			"description": "<p>Cyberconsole du netrunner. 9 emplacements.</p>"
 		},
 		"Flashlight": {
 			"name": "Lampe-torche",
@@ -167,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Cyberconsole de mauvaise qualité",
-			"description": "<p>Netrunner deck. 5 slots.</p>"
+			"description": "<p>Cyberconsole du netrunner. 5 emplacements.</p>"
 		},
 		"Radar Detector": {
 			"name": "Détecteur de radar",

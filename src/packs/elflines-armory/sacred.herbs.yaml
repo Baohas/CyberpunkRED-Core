@@ -23,13 +23,6 @@ system:
 img: icons/consumables/plants/herb-tied-bundle-dried-yellow.webp
 effects: []
 flags: {}
-_stats:
-  systemId: cyberpunk-red-core
-  systemVersion: 0.0.0
-  coreVersion: '10.288'
-  createdTime: 1667821753327
-  modifiedTime: 1667822030606
-  lastModifiedBy: 00CPRCBuildBot00
 _id: zDjspn0R9fgRILpv
 folder: null
 sort: 0

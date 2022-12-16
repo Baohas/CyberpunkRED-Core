@@ -1,0 +1,59 @@
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher_poor.svg
+name: BudgetArms Triple Treat
+system:
+  weaponType: rocketLauncher
+  weaponSkill: Heavy Weapons
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  damage: 8d6
+  rof: 1
+  dvTable: DV Rocket Launcher
+  isRanged: true
+  unarmedAutomaticCalculation: true
+  attackmod: 0
+  tags: ''
+  description:
+    value: >-
+      <p>Comes with a Poor Quality Exotic Grenade Launcher Underbarrel*. Both
+      that and the main weapon can fire non-Basic Ammunition.</p>
+
+      <p><em>*Must be manually added after acquiring the weapon</em></p>
+    chat: ''
+    unidentified: ''
+  source: WG
+  favorite: false
+  revealed: true
+  usage: equipped
+  equipped: owned
+  usesType: magazine
+  magazine:
+    value: 0
+    max: 2
+    ammoData:
+      name: ''
+      uuid: ''
+  ammoVariety:
+    - rocket
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 500
+    category: premium
+  handsReq: 2
+  isConcealed: false
+  quality: poor
+  upgrade: ''
+type: weapon
+_id: 8wVlu4VqXbhL0XKA
+folder: null
+sort: 0
+ownership:
+  default: 0

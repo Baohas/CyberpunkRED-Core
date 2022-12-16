@@ -23,7 +23,7 @@
           <li class="item flexrow" data-item-id="{{weapon.id}}">
             <div class="mook-weapon">
               <div class="item-name mook-weapon-name text-pad-right text-nowrap">
-                <a class="name item-edit deletable changeable" tabindex="0" data-item-id="{{weapon.id}}" title="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
+                <a class="name item-edit deletable changeable" tabindex="0" data-item-id="{{weapon.id}}" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
                   {{weapon.name}}
                   {{#if weapon.system.isUpgraded}}<sup><i class="text-super fa-solid fa-square-up"></i></sup>{{/if}}
                 </a>
@@ -35,11 +35,11 @@
                     ({{localize "CPR.mookSheet.items.unloaded"}})
                   {{/if}}
                 <br>
-                  ROF: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
+                  {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                   {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                   {{>"systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
                   <!-- Use the if check for if the weapon is upgradable. If true, show the upgrade glpyh -->
-                  {{#if (cprIsUpgradable type)}}
+                  {{#if (cprIsUpgradable weapon)}}
                     {{#if weapon.system.isUpgraded}}
                       {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
                     {{else}}
@@ -49,7 +49,7 @@
                     {{/if}}
                   {{/if}}
                   {{else}}
-                  ROF: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
+                  {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                 {{/if}}
               </div>
               <div class="mook-weapon-mode">
@@ -85,12 +85,12 @@
               </div>
               <div class="mook-weapon-rolls fight-weapon-attack text-nowrap text-right">
                 <a class="rollable" data-roll-type="attack" data-item-id={{weapon.id}}>
-                  <i class="fas fa-fist-raised red-fg" title="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i>
+                  <i class="fas fa-fist-raised red-fg" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i>
                 </a>
                 {{#if (cprCompare (cprFireFlag ../actor "suppressive" weapon.id) "!==" "checked")}}
                   <a class="rollable damage-roll-{{weapon.id}}" data-roll-type="damage" data-item-id={{weapon.id}}
                     data-damage="{{weapon.system.damage}}">
-                    <i class="fas fa-tint red-fg" title="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
+                    <i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
                   </a>
                 {{/if}}
               </div>
@@ -104,10 +104,11 @@
                     <li class="item flexrow">
                       <div class="mook-weapon">
                         <div class="item-name mook-weapon-name text-pad-right text-nowrap">
-                          <a class="name item-edit deletable changeable" tabindex="0" data-item-id="{{weapon.id}}" title="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
+                          <a class="name item-edit deletable changeable" tabindex="0" data-item-id="{{weapon.id}}" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
                             {{weapon.name}}
                           </a>
                           <br>
+                          {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                           {{#if weapon.system.isRanged}}
                             {{#if weapon.system.magazine.ammoData.uuid}}
                               ({{localize "CPR.global.itemTypes.ammo"}}: {{weapon.system.magazine.value}}/{{weapon.system.magazine.max}})
@@ -153,12 +154,12 @@
                         </div>
                         <div class="mook-weapon-rolls fight-weapon-attack text-nowrap text-right">
                           <a class="rollable" data-roll-type="attack" data-item-id={{weapon.id}}>
-                            <i class="fas fa-fist-raised red-fg" title="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i>
+                            <i class="fas fa-fist-raised red-fg" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i>
                           </a>
                           {{#if (cprCompare (cprFireFlag ../actor "suppressive" weapon.id) "!==" "checked")}}
                             <a class="rollable damage-roll-{{weapon.id}}" data-roll-type="damage" data-item-id={{weapon.id}}
                               data-damage="{{weapon.system.damage}}">
-                              <i class="fas fa-tint red-fg" title="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
+                              <i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
                             </a>
                           {{/if}}
                         </div>
@@ -174,11 +175,12 @@
           <li class="item flexrow">
             <div class="mook-weapon">
               <div class="item-name mook-weapon-name text-pad-right text-nowrap">
-                <a class="name item-edit deletable changeable" tabindex="0" data-item-id="{{weapon.id}}" title="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
+                <a class="name item-edit deletable changeable" tabindex="0" data-item-id="{{weapon.id}}" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
                   {{weapon.name}}
                   {{#if weapon.system.isUpgraded}}<sup><i class="text-super fa-solid fa-square-up"></i></sup>{{/if}}
                 </a>
                 <br>
+                {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                 {{#if weapon.system.isRanged}}
                   {{#if weapon.system.magazine.ammoData.uuid}}
                     ({{localize "CPR.global.itemTypes.ammo"}}: {{weapon.system.magazine.value}}/{{weapon.system.magazine.max}})
@@ -188,7 +190,7 @@
                   {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                   {{>"systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
                   <!-- Use the if check for if the weapon is upgradable. If true, show the upgrade glpyh -->
-                  {{#if (cprIsUpgradable type)}}
+                  {{#if (cprIsUpgradable weapon)}}
                     {{#if weapon.system.isUpgraded}}
                       {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
                     {{else}}
@@ -234,12 +236,12 @@
               </div>
               <div class="mook-weapon-rolls fight-weapon-attack text-nowrap text-right">
                 <a class="rollable" data-roll-type="attack" data-item-id={{weapon.id}}>
-                  <i class="fas fa-fist-raised red-fg" title="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i>
+                  <i class="fas fa-fist-raised red-fg" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i>
                 </a>
                 {{#if (cprCompare (cprFireFlag ../actor "suppressive" weapon.id) "!==" "checked")}}
                   <a class="rollable damage-roll-{{weapon.id}}" data-roll-type="damage" data-item-id={{weapon.id}}
                     data-damage="{{weapon.system.damage}}">
-                    <i class="fas fa-tint red-fg" title="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
+                    <i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
                   </a>
                 {{/if}}
               </div>
@@ -253,7 +255,7 @@
                     <li class="item flexrow">
                       <div class="mook-weapon">
                         <div class="item-name mook-weapon-name text-pad-right text-nowrap">
-                          <a class="name item-edit deletable changeable" tabindex="0" data-item-id="{{weapon.id}}" title="{{localize "CPR.mookSheet.items.clickToViewItem"}}, {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}, {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
+                          <a class="name item-edit deletable changeable" tabindex="0" data-item-id="{{weapon.id}}" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
                             {{weapon.name}}
                           </a>
                           <br>
@@ -302,12 +304,12 @@
                         </div>
                         <div class="mook-weapon-rolls fight-weapon-attack text-nowrap text-right">
                           <a class="rollable" data-roll-type="attack" data-item-id={{weapon.id}}>
-                            <i class="fas fa-fist-raised red-fg" title="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i>
+                            <i class="fas fa-fist-raised red-fg" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i>
                           </a>
                           {{#if (cprCompare (cprFireFlag ../actor "suppressive" weapon.id) "!==" "checked")}}
                             <a class="rollable damage-roll-{{weapon.id}}" data-roll-type="damage" data-item-id={{weapon.id}}
                               data-damage="{{weapon.system.damage}}">
-                              <i class="fas fa-tint red-fg" title="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
+                              <i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
                             </a>
                           {{/if}}
                         </div>

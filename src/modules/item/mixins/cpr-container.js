@@ -127,14 +127,16 @@ const Container = function Container() {
     if (!Array.isArray(itemList)) {
       return Promise.reject(new Error(`CPRItem.installItems argument is not an array: ${itemList}`));
     }
+
+    const updateList = [];
+
     if (!this.canInstallItems(itemList)) {
-      return Promise.reject(new Error("Installation failed.  One or more item types are not allowed to be installed."));
+      return updateList;
     }
 
     const actor = (this.isOwned) ? this.actor : false;
 
     const installedItems = duplicate(this.system.installedItems);
-    const updateList = [];
 
     itemList.forEach((item) => {
       if (!installedItems.list.includes(item.uuid)) {
@@ -188,14 +190,14 @@ const Container = function Container() {
         let embeddedItemList = item.getInstalledItems();
 
         while (embeddedItemList.length > 0) {
-          const embeddedItems = JSON.parse(JSON.stringify(embeddedItemList));
-          embeddedItemList = [];
-          for (const embeddedItem of embeddedItems) {
+          let updatedEmbeddedItemList = [];
+          for (const embeddedItem of embeddedItemList) {
             uninstallList.push(embeddedItem);
             if (containerTypes.includes(embeddedItem.type) && embeddedItem.system.installedItems.list.length > 0) {
-              embeddedItemList = embeddedItemList.concat(embeddedItem.getInstalledItems());
+              updatedEmbeddedItemList = updatedEmbeddedItemList.concat(embeddedItem.getInstalledItems());
             }
           }
+          embeddedItemList = updatedEmbeddedItemList;
         }
       }
     }

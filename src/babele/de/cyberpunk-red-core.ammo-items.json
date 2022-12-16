@@ -63,7 +63,7 @@
 		},
 		"Battery Pack": {
 			"name": "Batteriepack",
-			"description": "<p>Die Munition ist gratis, da sie leicht wieder aufladbare Batteriepacks (Ladezeit 1 Stunde) erfordert, die nach 8 Schüssen ersetzt werden müssen.&nbsp;</p>"
+			"description": "<p>A rechargeable (1 hour) battery pack, commonly used with Exotic weapons. Contains 8 shots and can be recharged.&nbsp;</p>"
 		},
 		"Biotoxin Arrow": {
 			"name": "Biotoxin - Pfeil",

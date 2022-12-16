@@ -5,8 +5,8 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 
 export default class ManageInstallableTypes {
   static async RenderPrompt(data) {
-    LOGGER.trace("RenderPrompt | SelectItemUpgradePrompt | called.");
-    const template = `systems/${game.system.id}/templates/dialog/cpr-select-item-upgrade-prompt.hbs`;
+    LOGGER.trace("RenderPrompt | ManageInstallableTypes | called.");
+    const template = `systems/${game.system.id}/templates/dialog/cpr-manage-installable-types-prompt.hbs`;
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {
@@ -28,7 +28,7 @@ export default class ManageInstallableTypes {
           resolve(formData);
         };
         new Dialog({
-          title: SystemUtils.Localize("CPR.dialog.selectCompatibleAmmo.title"),
+          title: SystemUtils.Localize("CPR.dialog.manageItemTypes.title"),
           content: html,
           buttons: {
             cancel: {
@@ -43,7 +43,7 @@ export default class ManageInstallableTypes {
             },
           },
           default: "confirm",
-          render: LOGGER.trace("confirm | Dialog SelectRolesPrompt | called."),
+          render: LOGGER.trace("confirm | Dialog ManageInstallableTypes | called."),
           close: () => {
             reject(new Error("Promise rejected: Window Closed"));
           },

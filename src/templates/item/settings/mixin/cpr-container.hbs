@@ -6,17 +6,21 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
       {{#if this.editable}}
+        {{#if (cprIsEmpty item.system.installedItems.list)}}
           {{#if item.system.installedItems.allowed}}
               <a class="item-checkbox" data-target="system.installedItems.allowed"><i class="far fa-check-circle"></i></a>
           {{else}}
               <a class="item-checkbox" data-target="system.installedItems.allowed"><i class="far fa-circle"></i></a>
           {{/if}}
+        {{else}}
+          <i class="far fa-check-circle" data-tooltip="{{localize "CPR.itemSheet.hasInstalledItems"}}"></i>
+        {{/if}}
       {{else}}
-          {{#if item.system.installedItems.allowed}}
-              <i class="far fa-check-circle"></i>
-          {{else}}
-              <i class="far fa-circle"></i>
-          {{/if}}
+        {{#if item.system.installedItems.allowed}}
+            <i class="far fa-check-circle"></i>
+        {{else}}
+            <i class="far fa-circle"></i>
+        {{/if}}
       {{/if}}
   </div>
 </li>
@@ -30,9 +34,11 @@
     {{/if}}
   </div>
   <div class="item flexrow setting-name text-nowrap text-padding-left">
+    <ul>
     {{#each item.system.installedItems.allowedTypes as |type| }}
-      <li>&nbsp;{{localize (cprFindConfigValue "objectTypes" type)}}</li>
+      <li>{{localize (cprFindConfigValue "objectTypes" type)}}</li>
     {{/each}}
+    </ul>
   </div>
 {{/if}}
 </li>

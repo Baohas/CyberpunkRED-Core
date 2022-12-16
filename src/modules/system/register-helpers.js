@@ -209,25 +209,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Calculate the price of a stack of items. This is amount * price with
-   * a few exceptions.
-   */
-  Handlebars.registerHelper("cprCalculateStackValue", (item) => {
-    LOGGER.trace("cprCalculateStackValue | handlebarsHelper | Called.");
-    const { type } = item;
-    const price = item.system.price.market;
-    const { amount } = item.system;
-    let totalPrice = amount * price;
-    if (type === "ammo") {
-      const { variety } = item.system;
-      if (!(variety === "grenade" || variety === "rocket")) {
-        totalPrice = (amount / 10) * price;
-      }
-    }
-    return totalPrice;
-  });
-
-  /**
    * Get a config mapping from config.js by name and key
    */
   Handlebars.registerHelper("cprFindConfigValue", (obj, key) => {
@@ -598,10 +579,16 @@ export default function registerHandlebarsHelpers() {
   /**
    * Returns true if an item type can be upgraded. This means it has the upgradable property in the data model.
    */
-  Handlebars.registerHelper("cprIsUpgradable", (itemType) => {
+  Handlebars.registerHelper("cprIsUpgradable", (item) => {
     LOGGER.trace("cprIsUpgradable | handlebarsHelper | Called.");
     const itemEntities = game.system.template.Item;
-    return itemEntities[itemType].templates.includes("upgradable");
+    let isUpgradable = false;
+    if (itemEntities[item.type].templates.includes("upgradable")
+        && item.system.installedItems.allowed
+        && item.system.installedItems.allowedTypes.includes("itemUpgrade")) {
+      isUpgradable = true;
+    }
+    return isUpgradable;
   });
 
   /**
@@ -850,8 +837,7 @@ export default function registerHandlebarsHelpers() {
     return game.settings.get(game.system.id, "debugElements");
   });
 
-  /**
-   * Emit a debug message to the dev log
+  /* Emit a debug message to the dev log
    */
   Handlebars.registerHelper("cprDebug", (msg) => {
     LOGGER.debug(msg);

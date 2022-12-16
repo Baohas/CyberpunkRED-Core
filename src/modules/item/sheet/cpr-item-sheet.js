@@ -940,15 +940,15 @@ export default class CPRItemSheet extends ItemSheet {
     const totalSlots = availableSlots + this.item.system.installedItems.usedSlots;
 
     const dialogItemType = (itemType) ? SystemUtils.Localize(CPR.objectTypes[itemType]) : SystemUtils.Localize("CPR.global.generic.item");
-    const dialogPromptTitle = `${SystemUtils.Localize(SystemUtils.Format("CPR.dialog.selectInstallableItems.title", { type: dialogItemType }))}
+    const dialogPromptTitle = `${SystemUtils.Format("CPR.dialog.selectInstallableItems.title", { type: dialogItemType })}
       | ${SystemUtils.Localize("CPR.global.generic.item")} ${SystemUtils.Localize("CPR.global.generic.slots")}: ${totalSlots}`;
-    const dialogPromptText = SystemUtils.Localize(SystemUtils.Format(
+    const dialogPromptText = (itemsList.length > 0) ? SystemUtils.Format(
       "CPR.dialog.selectInstallableItems.text",
       {
         type: dialogItemType,
         target: installTarget.name,
       },
-    ));
+    ) : `${SystemUtils.Format("CPR.dialog.selectInstallableItems.noOptions", { target: installTarget.name })}`;
 
     let formData = {
       target: installTarget,
@@ -1028,10 +1028,11 @@ export default class CPRItemSheet extends ItemSheet {
       return;
     }
     const allowedTypes = formData.selectedTypes;
-    if (!allowedTypes.includes("itemUpgrade")) {
-      allowedTypes.push("itemUpgrade");
-    }
 
+    if (allowedTypes.length === 0 && this.item.system.installedItems.list.length > 0) {
+      SystemUtils.DisplayMessage("error", "CPR.messages.hasInstalledItemsOfRemovedType");
+      return;
+    }
     await this.item.update({ "system.installedItems.allowedTypes": allowedTypes });
   }
 }

@@ -71,7 +71,7 @@
 		},
 		"Cyberdeck": {
 			"name": "Cyberdeck",
-			"description": "<p>Netrunner deck. 7 slots.</p>"
+			"description": "<p>Einfaches Deck fürs Netrunning. 7 Slots. Weitere Informationen auf Seite 353.</p>"
 		},
 		"Disposable Cell Phone": {
 			"name": "Wegwerfhandy",
@@ -91,7 +91,7 @@
 		},
 		"Excellent Quality Cyberdeck": {
 			"name": "Cyberdeck von Aus­gezeichneter Qualität",
-			"description": "<p>Netrunner deck. 9 slots.</p>"
+			"description": "<p>Excellentes Deck fürs Netrunning. 9 Slots. Weitere Informationen auf Seite 353.</p>"
 		},
 		"Flashlight": {
 			"name": "Taschenlampe",
@@ -167,7 +167,7 @@
 		},
 		"Poor Quality Cyberdeck": {
 			"name": "Cyberdeck von Schlechter Qualität",
-			"description": "<p>Netrunner deck. 5 slots.</p>"
+			"description": "<p>Schlechtes Deck fürs Netrunning. 5 Slots. Weitere Informationen auf Seite 353.</p>"
 		},
 		"Radar Detector": {
 			"name": "Radar­ detektor",

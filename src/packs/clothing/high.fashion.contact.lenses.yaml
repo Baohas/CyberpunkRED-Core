@@ -1,11 +1,4 @@
 _id: ZJJEcMX3RdfsRFMK
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830947655
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830947655
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -40,7 +33,7 @@ system:
     market: 1000
   quality: standard
   revealed: true
-  source: ''
+  source: Pg. 356
   style: highFashion
   tags: []
   type: contactLenses

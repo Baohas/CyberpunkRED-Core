@@ -1,11 +1,4 @@
 _id: 7R9YRIcp19dPV3eV
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659830947652
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659830947652
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -39,7 +32,7 @@ system:
     market: 500
   quality: standard
   revealed: true
-  source: ''
+  source: Pg. 356
   style: businesswear
   tags: []
   type: bottoms

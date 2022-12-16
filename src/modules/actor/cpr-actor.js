@@ -365,7 +365,7 @@ export default class CPRActor extends Actor {
     let confirmRemove;
     if (!skipConfirm) {
       const dialogTitle = SystemUtils.Localize("CPR.dialog.uninstallCyberware.title");
-      const dialogMessage = `${SystemUtils.Localize("CPR.dialog.uninstallCyberware.text")} ${item.name}?`;
+      const dialogMessage = `${SystemUtils.Format("CPR.dialog.uninstallCyberware.text", { item: item.name })}?`;
       confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
     } else {
       confirmRemove = true;

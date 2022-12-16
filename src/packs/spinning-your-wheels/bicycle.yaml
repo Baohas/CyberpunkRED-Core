@@ -1,0 +1,36 @@
+effects: []
+flags:
+  core: {}
+img: systems/cyberpunk-red-core/icons/compendium/spinning_your_wheels/bicycle.svg
+name: Bicycle
+system:
+  tags: ''
+  description:
+    value: >-
+      <p>A simple bicycle. It's speed increases to 10 MOVE + 20 MPH/32 KPH if
+      the user has 4 to 7 BODY, and increases to 15 MOVE + 30 MPH/48 KPH if the
+      user has 8+ BODY.</p>
+    chat: ''
+    unidentified: ''
+  source: SYW
+  favorite: false
+  concealable:
+    concealable: false
+    isConcealed: false
+  upgrades: []
+  slots: 3
+  isUpgraded: false
+  price:
+    market: 100
+    category: superLuxury
+  sdp: 15
+  seats: 1
+  speedCombat: 8
+  speedNarrative: 12 MPH / 19 KPH
+  upgrade: ''
+type: vehicle
+_id: XIDIqcWCFJtzYeRw
+folder: null
+sort: 0
+ownership:
+  default: 0

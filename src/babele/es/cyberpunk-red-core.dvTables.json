@@ -1,53 +1,53 @@
 {
-	"label": "DV Rolltables",
+	"label": "Tabla de Tiradas DV",
 	"entries": [
 		{
-			"id": "DV Assault Rifle",
-			"name": "DV Assault Rifle"
+			"id": "DV Rifle de Asalto",
+			"name": "DV Rifle de Asalto"
 		},
 		{
-			"id": "DV Assault Rifle (Autofire)",
-			"name": "DV Assault Rifle (Autofire)"
+			"id": "DV Rifle de Asalto (Automático)",
+			"name": "DV Rifle de Asalto (Automático)"
 		},
 		{
-			"id": "DV Bows & Crossbows",
-			"name": "DV Bows & Crossbows"
+			"id": "DV Arcos y Ballestas",
+			"name": "DV Arcos y Ballestas"
 		},
 		{
-			"id": "DV Generic",
-			"name": "DV Generic"
+			"id": "DV Genérico",
+			"name": "DV Genérico"
 		},
 		{
-			"id": "DV Grenade Launcher",
-			"name": "DV Grenade Launcher"
+			"id": "DV Lanzagranadas",
+			"name": "DV Lanzagranadas"
 		},
 		{
-			"id": "DV Pistol",
-			"name": "DV Pistol"
+			"id": "DV Pistola",
+			"name": "DV Pistola"
 		},
 		{
-			"id": "DV Rocket Launcher",
-			"name": "DV Rocket Launcher"
+			"id": "DV Lanzacohetes",
+			"name": "DV Lanzacohetes"
 		},
 		{
-			"id": "DV Shotgun (Slug)",
-			"name": "DV Shotgun (Slug)"
+			"id": "DV Escopeta (Perdigones de escopeta)",
+			"name": "DV Escopeta (Perdigones de escopeta)"
 		},
 		{
 			"id": "DV SMG",
 			"name": "DV SMG"
 		},
 		{
-			"id": "DV SMG (Autofire)",
-			"name": "DV SMG (Autofire)"
+			"id": "DV SMG (Automático)",
+			"name": "DV SMG (Automático)"
 		},
 		{
-			"id": "DV Sniper Rifle",
-			"name": "DV Sniper Rifle"
+			"id": "DV Rifle de Francotirador",
+			"name": "DV Rifle de Francotirador"
 		},
 		{
-			"id": "DV Thrown Weapon",
-			"name": "DV Thrown Weapon"
+			"id": "DV Armas arrojadizas",
+			"name": "DV Armas arrojadizas"
 		}
 	]
 }

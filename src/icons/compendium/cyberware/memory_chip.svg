@@ -7,6 +7,8 @@
    x="0px"
    y="0px"
    viewBox="0 0 512 512"
+   height="512"
+   width="512"
    style="enable-background:new 0 0 512 512;"
    xml:space="preserve"
    sodipodi:docname="memory_chip.svg"
@@ -33,11 +35,11 @@
        result="composite1"
        id="feComposite968" /><feGaussianBlur
        in="composite1"
-       stdDeviation="30"
+       stdDeviation="15"
        result="blur"
        id="feGaussianBlur970" /><feOffset
-       dx="-4.0375"
-       dy="-4.02735"
+       dx="0"
+       dy="0"
        result="offset"
        id="feOffset972" /><feComposite
        in="offset"
@@ -241,10 +243,10 @@
      id="g188">
 	<g
    id="g186">
-		
-		
-		
-		
+
+
+
+
 	</g>
 </g><g
      id="g190">

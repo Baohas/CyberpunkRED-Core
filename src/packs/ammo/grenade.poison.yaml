@@ -1,0 +1,32 @@
+_id: OufLzsBG6w0CUp81
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_poison.png
+name: Grenade (Poison)
+ownership:
+  default: 0
+sort: 0
+system:
+  ablationValue: 0
+  amount: '1'
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs
+      Check. On a fail 2d6 damage to HP. No Ablation. </p>
+  favorite: false
+  price:
+    category: premium
+    market: 100
+  source: pg. 346
+  tags: []
+  type: poison
+  upgrade: ''
+  variety: grenade
+type: ammo

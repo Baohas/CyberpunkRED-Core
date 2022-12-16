@@ -1,11 +1,4 @@
 _id: fSvkIl83Rsqd7O16
-_stats:
-  coreVersion: '10.276'
-  createdTime: 1659831053152
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1659831053152
-  systemId: cyberpunk-red-core
-  systemVersion: 0.82.0
 effects: []
 flags:
   core: {}
@@ -29,7 +22,7 @@ system:
   concealable:
     concealable: false
     isConcealed: false
-  damage: 8d6
+  damage: 4d6
   description:
     chat: ''
     unidentified: ''

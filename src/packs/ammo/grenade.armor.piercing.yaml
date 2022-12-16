@@ -1,0 +1,30 @@
+_id: tivSfxqoNYnBlNah
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_armorpiercing.png
+name: Grenade (Armor Piercing)
+ownership:
+  default: 0
+sort: 0
+system:
+  ablationValue: 2
+  amount: '1'
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Double ablation to armor. </p>
+  favorite: false
+  price:
+    category: premium
+    market: 100
+  source: pg. 345
+  tags: []
+  type: armorPiercing
+  upgrade: ''
+  variety: grenade
+type: ammo

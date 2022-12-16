@@ -81,6 +81,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-dv-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-equip-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-install-cyberware-glyph.hbs`,
+    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-install-item-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-install-programs-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-reload-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-repair-glyph.hbs`,
