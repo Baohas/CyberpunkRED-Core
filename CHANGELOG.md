@@ -17,7 +17,6 @@
 - Careful, Choom! Loaded weapons can now be traded/transferred between Actors!
 - The Item Upgrades pack has been renamed from `item-upgrades` to `upgrade-items` to be consistent with other pack names.
 
-
 ### Bug Fixes
 
 - #621 - Add ROF to Cyberware Weapons and Weapon Upgrade Weapons on Mook sheet
