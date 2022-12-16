@@ -344,7 +344,7 @@ export default class CPRActor extends Actor {
     const target = (item.system.isFoundational) ? this : this.getOwnedItem(formData.foundationalId);
 
     target.installItems([item]).then(async (installationSuccess) => {
-      if (installationSuccess) {
+      if (installationSuccess.length > 0) {
         await this.loseHumanityValue(item, formData);
       }
     });
