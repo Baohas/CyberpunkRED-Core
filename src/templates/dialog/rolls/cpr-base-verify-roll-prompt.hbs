@@ -12,23 +12,23 @@
     {{/if}}
   </div>
   <hr>
-    <div class="dialog-settings-grid flexcol">
-    <ol class="items-list dialog-list-content">
-        <li class="item flexrow">
-            <div class="item setting-name text-nowrap">
+    <div class="dialog-grid flexcol">
+    <ol class="dialog-list">
+        <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.global.generic.stat"}} ({{localize rollData.statName}}):
             </div>
-            <div class="item setting-value text-nowrap item-end">
+            <div class="dialog-item-value text-nowrap">
                 <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
             </div>
         </li>
 
         {{#if (cprListContains prototypeChain "CPRSkillRoll")}}
-        <li class="item flexrow">
-            <div class="item setting-name text-nowrap">
+        <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.global.itemTypes.skill"}} ({{localize rollData.skillName}}):
             </div>
-            <div class="item setting-value text-nowrap item-end">
+            <div class="dialog-item-value text-nowrap">
                 <input name="skillValue" class="" type="number" data-dtype="Number" value={{rollData.skillValue}}>
             </div>
         </li>
@@ -38,39 +38,39 @@
         {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
 
         {{!-- Additional user inputted modifiers --}}
-        <li class="item flexrow">
-            <div class="item setting-name text-nowrap">
+        <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.rolls.modifiers.additionalMods"}}:
             </div>
-            <div class="item setting-value text-nowrap item-end">
+            <div class="dialog-item-value text-nowrap">
                 <input name="additionalMods" class="" type="text" value={{rollData.additionalMods}}>
             </div>
         </li>
 
-        <li class="item flexrow">
-            <div class="item setting-name text-nowrap">
+        <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.rolls.luck"}}:
             </div>
-            <div class="item setting-value text-nowrap item-end">
+            <div class="dialog-item-value text-nowrap">
                 <input name="luck" class="" type="number" data-dtype="Number" value={{rollData.luck}}>
             </div>
         </li>
 
-        <li class="item flexrow">
-            <div class="item setting-name text-nowrap">
+        <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.rolls.shouldRollCriticals"}}:
             </div>
-            <div class="item setting-value text-nowrap item-end">
+            <div class="dialog-item-value text-nowrap">
                 <input name="calculateCritical" class="item-checkbox" type="checkbox" data-target = "calculateCritical" data-dtype="Checkbox" {{checked rollData.calculateCritical}}>
             </div>
         </li>
 
         {{#if (cprListContains prototypeChain "CPRAimedAttackRoll")}}
-        <li class="item flexrow">
-            <div class="item setting-name text-nowrap">
+        <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.rolls.aimFor"}}:
             </div>
-            <div class="item setting-value text-nowrap item-end">
+            <div class="dialog-item-value text-nowrap">
                 <select name="location">
                   {{#select rollData.location}}
                     {{#each (cprFindConfigObj "aimedLocation") as |location l|}}

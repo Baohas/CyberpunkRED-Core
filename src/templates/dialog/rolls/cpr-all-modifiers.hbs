@@ -1,9 +1,9 @@
 {{cprTrace "START DIALOG ROLLS CPR-ALL-MODIFIERS.HBS"}}
-<li class="item flexrow">
-    <div class="item flexrow setting-name text-nowrap">
+<li class="dialog-item flexrow">
+    <div class="dialog-item-name text-nowrap">
         {{localize "CPR.rolls.modifiers.modsTotal"}}:
     </div>
-    <div class="item flexrow setting-value text-nowrap item-end" {{#if (cprCompare rollData.mods.length "||" rollData.additionalMods.length)}} data-tooltip="
+    <div class="dialog-item-value text-nowrap dialog-item-end" {{#if (cprCompare rollData.mods.length "||" rollData.additionalMods.length)}} data-tooltip="
         {{#each rollData.mods as |mod|}}
           {{localize mod.source}} {{~#if mod.key}}&nbsp;({{cprGetChangeNameByKey false mod.category mod.key}}){{~/if}}: {{numberFormat mod.value sign=true}}
           <br>

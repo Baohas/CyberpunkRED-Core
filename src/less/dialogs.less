@@ -1,6 +1,8 @@
+.dialog-header {
+  flex-grow: 1;
+}
 
-
-.dialog-settings-grid {
+.dialog-grid {
     display: flex;
     width  : inherit;
     height : inherit;
@@ -8,7 +10,14 @@
     background-color: @overcast-grey;
 }
 
-.dialog-list-content {
+.dialog-list {
+  list-style      : none;
+    margin          : 0;
+    padding         : 0;
+    overflow-y      : auto;
+    scrollbar-width : thin;
+    background-color: @chrome-white;
+
   li:nth-child(even) {
       background-color: @meat-space-pink;
   }
@@ -18,14 +27,22 @@
   }
 }
 
-.setting-value {
-  select {
-    height: unset;
-    max-width: fit-content;
+.dialog-item {
+  align-items: center;
+  padding: 0 2px;
+
+  .dialog-item-name {
+    flex-grow: 3;
   }
-  input[type="text"],
-  input[type="number"] {
-    max-width: 50px;
+
+  .dialog-item-value {
+    text-align: end;
+
+    input[type="checkbox"],
+    select {
+      height: unset;
+      max-width: fit-content;
+    }
   }
 }
 
