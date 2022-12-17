@@ -448,6 +448,7 @@
   "CPR.global.generic.add": "Add",
   "CPR.global.generic.amount": "Amount",
   "CPR.global.generic.class": "Class",
+  "CPR.global.generic.combatant": "Combatant",
   "CPR.global.generic.damage": "Damage",
   "CPR.global.generic.deathPenalty": "Death Penalty",
   "CPR.global.generic.defense": "Defense",

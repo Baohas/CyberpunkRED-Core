@@ -1,0 +1,44 @@
+
+
+.dialog-settings-grid {
+    display: flex;
+    width  : inherit;
+    height : inherit;
+    flex   : 1 1 auto;
+    background-color: @overcast-grey;
+}
+
+.dialog-list-content {
+  li:nth-child(even) {
+      background-color: @meat-space-pink;
+  }
+
+  li:nth-child(odd) {
+      background-color: @chrome-white;
+  }
+}
+
+.setting-value {
+  select {
+    height: unset;
+    max-width: fit-content;
+  }
+  input[type="text"],
+  input[type="number"] {
+    max-width: 50px;
+  }
+}
+
+.situational-mods {
+  li {
+    border-style: outset;
+    border-color: rgba(110, 42, 42, 0.5);
+    border-width: 2px;
+    border-radius: 5px;
+    margin: 2px 0px 2px 0px;
+  }
+}
+
+.mod-selected {
+  background-color: lightgrey;
+}

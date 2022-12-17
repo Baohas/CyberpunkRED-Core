@@ -1,11 +1,10 @@
 {{cprTrace "START DIALOG ROLLS CPR-SITUATIONAL-MODIFIERS.HBS"}}
 {{#if (cprCompare filteredMods.length ">" 0)}}
 <hr>
-<ol class="items-list">
+<ol class="items-list situational-mods">
   {{#each filteredMods as |mod|}}
   <a class="toggle-situational-mod" data-mod-id="{{mod.id}}">
-  <li class="item flexrow" style="border-style: outset; border-color: rgba(110, 42, 42, 0.5); border-width: 2px; border-radius: 5px; margin: 2px 0px 2px 0px;
-      {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}background-color: lightgrey;{{/if}}">
+  <li class="item flexrow {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}mod-selected{{/if}}">
     <div class="item flexrow setting-name text-nowrap text-bold">
         {{mod.source}}
     </div>
@@ -31,11 +30,10 @@
   {{/if}}
 </a></div>
 {{#if showDefaultMods}}
-<ol id="default-mods" class="items-list">
+<ol id="default-mods" class="items-list situational-mods">
   {{#each defaultSituationalMods as |mod|}}
   <a class="toggle-situational-mod" data-mod-id="{{mod.id}}">
-  <li class="item flexrow" style="border-style: outset; border-color: rgba(110, 42, 42, 0.5); border-width: 2px; border-radius: 5px; margin: 2px 0px 2px 0px;
-      {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}background-color: lightgrey;{{/if}}">
+  <li class="item flexrow {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}mod-selected{{/if}}">
     <div class="item flexrow setting-name text-nowrap text-bold">
         {{localize mod.source}}:
     </div>

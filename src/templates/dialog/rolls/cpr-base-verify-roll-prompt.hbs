@@ -1,28 +1,34 @@
 {{cprTrace "START DIALOG ROLLS CPR-BASE-VERIFY-ROLL-PROMPT.HBS"}}
-<form>
-    <div class="text-bold">
-        {{#if (cprListContains prototypeChain "CPRInitiative")}} {{rollData.combatant}} {{/if}}
-    </div>
-    <div>
+<form class="dialog-sheet">
+  <div class="flexcol">
+    <div class="text-normal text-center">
         {{localize "CPR.rolls.rollingFor" rollTitle=rollData.rollTitle}}
     </div>
 
-    <ol class="items-list">
+    {{#if (cprListContains prototypeChain "CPRInitiative")}}
+      <div class="text-bold">
+        {{localize "CPR.global.generic.combatant"}}: {{rollData.combatant}}
+      </div>
+    {{/if}}
+  </div>
+  <hr>
+    <div class="dialog-settings-grid flexcol">
+    <ol class="items-list dialog-list-content">
         <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.global.generic.stat"}} {{localize "CPR.global.generic.value"}} ({{localize rollData.statName}})
+            <div class="item setting-name text-nowrap">
+                {{localize "CPR.global.generic.stat"}} ({{localize rollData.statName}}):
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
+            <div class="item setting-value text-nowrap item-end">
                 <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
             </div>
         </li>
 
         {{#if (cprListContains prototypeChain "CPRSkillRoll")}}
         <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.global.itemTypes.skill"}} {{localize "CPR.global.generic.value"}} ({{localize rollData.skillName}})
+            <div class="item setting-name text-nowrap">
+                {{localize "CPR.global.itemTypes.skill"}} ({{localize rollData.skillName}}):
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
+            <div class="item setting-value text-nowrap item-end">
                 <input name="skillValue" class="" type="number" data-dtype="Number" value={{rollData.skillValue}}>
             </div>
         </li>
@@ -33,38 +39,38 @@
 
         {{!-- Additional user inputted modifiers --}}
         <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
+            <div class="item setting-name text-nowrap">
                 {{localize "CPR.rolls.modifiers.additionalMods"}}:
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
+            <div class="item setting-value text-nowrap item-end">
                 <input name="additionalMods" class="" type="text" value={{rollData.additionalMods}}>
             </div>
         </li>
 
         <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
+            <div class="item setting-name text-nowrap">
                 {{localize "CPR.rolls.luck"}}:
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
+            <div class="item setting-value text-nowrap item-end">
                 <input name="luck" class="" type="number" data-dtype="Number" value={{rollData.luck}}>
             </div>
         </li>
 
         <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
+            <div class="item setting-name text-nowrap">
                 {{localize "CPR.rolls.shouldRollCriticals"}}:
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
+            <div class="item setting-value text-nowrap item-end">
                 <input name="calculateCritical" class="item-checkbox" type="checkbox" data-target = "calculateCritical" data-dtype="Checkbox" {{checked rollData.calculateCritical}}>
             </div>
         </li>
 
         {{#if (cprListContains prototypeChain "CPRAimedAttackRoll")}}
         <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
+            <div class="item setting-name text-nowrap">
                 {{localize "CPR.rolls.aimFor"}}:
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
+            <div class="item setting-value text-nowrap item-end">
                 <select name="location">
                   {{#select rollData.location}}
                     {{#each (cprFindConfigObj "aimedLocation") as |location l|}}
@@ -76,6 +82,7 @@
         </li>
         {{/if}}
     </ol>
+    </div>
 
     {{!-- Situational modifier list partial --}}
     {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-situational-modifiers.hbs" this}}
