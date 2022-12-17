@@ -1,4 +1,4 @@
-/* global game getProperty fromUuidSync Item Folder */
+/* global game getProperty fromUuidSync */
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LoadAmmoPrompt from "../../dialog/cpr-load-ammo-prompt.js";
 import LOGGER from "../../utils/cpr-logger.js";

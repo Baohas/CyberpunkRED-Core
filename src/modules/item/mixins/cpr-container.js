@@ -266,8 +266,9 @@ const Container = function Container() {
           const newItem = await Item.create({
             name: item.name,
             type: item.type,
-            system: item.system,
             img: item.img,
+            system: item.system,
+            effects: duplicate(item.effects),
             folder: workingFolder,
           });
           createdItems.push(newItem);
