@@ -313,17 +313,20 @@ export default class CPRActor extends Actor {
     baseCompatibleFoundationalCyberware.forEach((cyberware) => {
       compatibleTargetCyberware.push(cyberware);
       let uuidList = cyberware.system.installedItems.list;
+      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
       while (uuidList.length > 0) {
         const loopList = uuidList;
         uuidList = [];
         for (const uuid of loopList) {
           const itemLookup = this.getOwnedItem(uuid);
-          if (itemLookup.system.installedItems.allowed
-            && itemLookup.system.installedItems.allowedTypes.includes(item.type)
-            && itemLookup.availableInstallSlots() >= item.system.size) {
-            compatibleTargetCyberware.push(itemLookup);
+          if (containerTypes.includes(itemLookup.type)) {
+            if (itemLookup.system.installedItems.allowed
+              && itemLookup.system.installedItems.allowedTypes.includes(item.type)
+              && itemLookup.availableInstallSlots() >= item.system.size) {
+              compatibleTargetCyberware.push(itemLookup);
+            }
+            uuidList = uuidList.concat(itemLookup.system.installedItems.list);
           }
-          uuidList = uuidList.concat(itemLookup.system.installedItems.list);
         }
       }
     });
