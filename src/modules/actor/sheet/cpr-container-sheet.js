@@ -11,7 +11,7 @@ import PurchaseOrderPrompt from "../../dialog/cpr-container-vendor-purchase-orde
 
 /**
  * Implement the sheet for containers and shop keepers. This extends CPRActorSheet to make use
- * of owned-item management methods like _getOwnedItem and _deleteOwnedItem.
+ * of owned-item management methods like getOwnedItem and _deleteOwnedItem.
  *
  * @extends {CPRActorSheet}
  */
@@ -27,7 +27,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-container-sheet.hbs`,
       width: 750,
-      height: 496,
+      height: 565,
     });
   }
 
@@ -145,7 +145,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   async _itemAction(event) {
     LOGGER.trace("_itemAction | CPRContainerSheet | Called.");
-    const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
+    const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     const actionType = SystemUtils.GetEventDatum(event, "data-action-type");
     if (item) {
       switch (actionType) {
@@ -331,14 +331,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     const username = game.user.name;
 
     let cost = 0;
-
-    if (item.type === "weapon") {
-      const { ammoId } = cprItemData.magazine;
-      if (ammoId !== "") {
-        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradeLoadedWeaponWarn"));
-        return;
-      }
-    }
 
     if (item.type === "ammo" && cprItemData.variety !== "grenade" && cprItemData.variety !== "rocket") {
       // Ammunition, which is neither grenades nor rockets, are prices are for 10 of them (pg. 344)

@@ -29,7 +29,9 @@ system:
   magazine:
     value: 0
     max: 6
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
   ammoVariety:
     - shotgunShell
   concealable:
@@ -42,7 +44,6 @@ system:
     market: 500
     category: premium
   handsReq: 1
-  attachmentSlots: 3
   isConcealed: false
   quality: standard
   upgrade: ''

@@ -19,7 +19,10 @@ system:
   description:
     value: >-
       <p>A very heavy pistol capable of loading up to five different ammo types
-      at once, with the user able to pick between them before firing.</p>
+      at once*, with the user able to pick between them before firing.</p>
+
+      <p><em>*Currently not supported, so users have to manually change ammo
+      types</em></p>
     chat: ''
     unidentified: ''
   source: 12DoG
@@ -31,7 +34,9 @@ system:
   magazine:
     value: 0
     max: 5
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
   ammoVariety:
     - vHeavyPistol
   concealable:
@@ -44,7 +49,6 @@ system:
     market: 500
     category: premium
   handsReq: 1
-  attachmentSlots: 3
   isConcealed: false
   quality: standard
   upgrade: ''

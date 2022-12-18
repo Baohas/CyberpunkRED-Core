@@ -1,31 +1,58 @@
 {{cprTrace "START ACTOR PARTS BOTTOM-PANE CPR-FIGHT.HBS"}}
 <div class="fight-tab">
     {{#if (cprCompare actor.system.fightState "===" "Meatspace")}}
+
+   {{!-- CRITICAL INJURIES --}}
+
     <div class="injuries-section">
         <li class="items-header flexrow">
-            <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left">
+            <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left text-bold">
                 {{localize "CPR.characterSheet.bottomPane.fight.criticalInjuries"}}
-                <span class="item-detail gear-actions bg-black text-nowrap text-float-right text-padding-right"><a class="roll-critical-injury" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.criticalInjuryRoll"}}" data-item-type="criticalInjury"><i class="fas fa-dice text-padding-right"></i></a></span>
-                <span class="item-detail gear-actions bg-black text-nowrap text-float-right text-padding-right">{{#if (cprSystemConfig "playersCreateInventory")}}<a class="item-create" data-tooltip="{{localize "CPR.actorSheets.commonActions.createNewItem"}}" data-item-type="criticalInjury"><i class="fas fa-plus-circle text-padding-right"></i></a>{{/if}}</span>
+                <span class="item-detail gear-actions bg-black text-nowrap text-float-right text-padding-right">
+                  <a class="roll-critical-injury" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.criticalInjuryRoll"}}" data-item-type="criticalInjury">
+                    <i class="fas fa-dice text-padding-right"></i>
+                  </a>
+                </span>
+                <span class="item-detail gear-actions bg-black text-nowrap text-float-right text-padding-right">
+                  {{#if (cprSystemConfig "playersCreateInventory")}}
+                    <a class="item-create" data-tooltip="{{localize "CPR.actorSheets.commonActions.createNewItem"}}" data-item-type="criticalInjury">
+                      <i class="fas fa-plus-circle text-padding-right"></i>
+                    </a>
+                  {{/if}}
+                </span>
             </span>
         </li>
         <div class="critical-injury-content">
-            {{!-- Critical Injury as Item --}}
             <ol class="items-list critical-injury-list">
               {{#each (cprSort actor.itemTypes.criticalInjury "name") as |criticalInjury| }}
-              <li class="flex-space-between item flexrow" data-item-id="{{criticalInjury.id}}" data-item-category="{{criticalInjury.type}}" draggable="true">
-                <div><a class="name item-edit text-nowrap {{#if criticalInjury.system.deathSaveIncrease}}text-bold{{/if}}" data-tooltip="{{criticalInjury.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{criticalInjury.name}} {{#if (cprCompare criticalInjury.system.location "===" "body")}}<i class="fas fa-user-injured text-padding-left"></i>{{/if}}{{#if (cprCompare criticalInjury.system.location "===" "head")}}<i class="fas fa-tired text-padding-left"></i>{{/if}}</a></div>
-                <div class="item-detail gear-actions text-nowrap">
-                  <a class="item-action" data-action-type="delete"><i class="fas fa-trash-alt fg-red text-float-right text-padding-right" data-tooltip="{{localize "CPR.actorSheets.commonActions.deleteItem"}}"></i></a>
-                </div>
-              </li>
+                <li class="flex-space-between item flexrow" data-item-id="{{criticalInjury.id}}" data-item-category="{{criticalInjury.type}}" draggable="true">
+                  <div>
+                    <a class="name item-edit text-nowrap {{#if criticalInjury.system.deathSaveIncrease}}text-bold{{/if}}" data-tooltip="{{criticalInjury.name}}</br>{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}</br>{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
+                      {{#if (cprCompare criticalInjury.system.location "===" "body")}}
+                        <i class="fas fa-user-injured text-padding-left"></i>
+                      {{/if}}
+                      {{#if (cprCompare criticalInjury.system.location "===" "head")}}
+                        <i class="fa-regular fa-face-head-bandage"></i>
+                      {{/if}}
+                      {{criticalInjury.name}}
+                    </a>
+                  </div>
+                  <div class="item-detail gear-actions text-nowrap">
+                    <a class="item-action" data-action-type="delete">
+                      <i class="fas fa-trash-alt fg-red text-float-right text-padding-right" data-tooltip="{{localize "CPR.actorSheets.commonActions.deleteItem"}}"></i>
+                    </a>
+                  </div>
+                </li>
               {{/each}}
             </ol>
         </div>
     </div>
+
+    {{!-- Armor --}}
+
     <div class="armor-section">
         <li class="items-header flexrow">
-            <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left">
+            <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left text-bold">
                 {{localize "CPR.global.itemTypes.armor"}}
             </span>
         </li>
@@ -127,9 +154,12 @@
             </ol>
         </div>
     </div>
+
+    {{!-- WEAPONS --}}
+
     <div class="weapon-section">
         <li class="items-header flexrow">
-            <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left">
+            <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left text-bold">
                 {{localize "CPR.characterSheet.bottomPane.fight.weapons"}}
             </span>
         </li>
@@ -143,19 +173,19 @@
                             </div>
                             <div class="fight-weapon">
                                 <div class="item-name fight-weapon-name">
-                                    <a class="name item-edit" data-tooltip="{{weapon.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{weapon.name}}</a>
+                                    <a class="name item-edit" data-tooltip="{{weapon.name}}</br>{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}</br>{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{weapon.name}}</a>
                                     {{#if (cprCompare (cprApplyUpgrade weapon weapon.system.attackmod "attackmod") ">" "0")}}(+{{cprApplyUpgrade weapon weapon.system.attackmod "attackmod"}}){{/if}}
                                     {{#if (cprCompare (cprApplyUpgrade weapon weapon.system.attackmod "attackmod") "<" "0")}}({{cprApplyUpgrade weapon weapon.system.attackmod "attackmod"}}){{/if}}
-                                    {{#if weapon.system.magazine.ammoId}}
+                                    {{#if weapon.system.magazine.ammoData.uuid}}
                                         <br>
-                                        ({{localize "CPR.global.itemTypes.ammo"}}:<input name = "system.magazine.value" class = "number weapon-input" style = "width:30px;text-align:right;" type = "text" data-item-prop = "system.magazine.value" value = "{{weapon.system.magazine.value}}">/{{cprApplyUpgrade weapon weapon.system.magazine.max "magazine"}})
+                                        ({{localize "CPR.global.itemTypes.ammo"}}:<input name="system.magazine.value" class="number weapon-input" style="width:30px;text-align:right;" type="text" data-item-prop="system.magazine.value" value="{{weapon.system.magazine.value}}">/{{cprApplyUpgrade weapon weapon.system.magazine.max "magazine"}})
                                     {{/if}}
                                 </div>
                                 <div class="fight-weapon-actions text-nowrap">
-                                    ROF: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
+                                    {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                                     {{#if weapon.system.isRanged}}
                                     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
-                                    {{>"systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
+                                    {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
                                     {{/if}}
                                 </div>
                             </div>
@@ -222,16 +252,18 @@
                                         </div>
                                         <div class="fight-weapon">
                                             <div class="item-name fight-weapon-name">
-                                                <a class="name item-view" data-tooltip="{{weapon.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{../../this.name}} {{localize "CPR.characterSheet.bottomPane.fight.attachment"}}: {{weapon.name}}</a>
+                                                <a class="name item-view" data-tooltip="{{weapon.name}}</br>{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}</br>{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
+                                                  {{../../this.name}}: {{weapon.name}}
+                                                </a>
                                                 {{#if (cprCompare weapon.system.attackmod ">" "0")}}(+{{weapon.system.attackmod}}){{/if}}
                                                 {{#if (cprCompare weapon.system.attackmod "<" "0")}}({{weapon.system.attackmod}}){{/if}}
-                                                {{#if weapon.system.magazine.ammoId}}
+                                                {{#if weapon.system.magazine.ammoData.uuid}}
                                                     <br>
-                                                    ({{localize "CPR.global.itemTypes.ammo"}}:<input name = "system.magazine.value" class = "number weapon-input" style = "width:30px;text-align:right;" type = "text" data-item-prop = "system.magazine.value" value = "{{weapon.system.magazine.value}}">/{{cprApplyUpgrade weapon weapon.system.magazine.max "magazine"}})
+                                                    ({{localize "CPR.global.itemTypes.ammo"}}:<input name="system.magazine.value" class="number weapon-input" style="width:30px;text-align:right;" type="text" data-item-prop="system.magazine.value" value="{{weapon.system.magazine.value}}">/{{cprApplyUpgrade weapon weapon.system.magazine.max "magazine"}})
                                                 {{/if}}
                                             </div>
                                             <div class="fight-weapon-actions text-nowrap">
-                                                ROF: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
+                                                {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                                                 {{#if weapon.system.isRanged}}
                                                     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                                                     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
@@ -311,16 +343,18 @@
                             </div>
                             <div class="fight-weapon">
                                 <div class="item-name fight-weapon-name">
-                                    <a class="name item-edit" data-tooltip="{{weapon.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{weapon.name}}</a>
+                                    <a class="name item-edit" data-tooltip="{{weapon.name}}</br>{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}</br>{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
+                                      {{weapon.name}}
+                                    </a>
                                     {{#if (cprCompare weapon.system.attackmod ">" "0")}}(+{{weapon.system.attackmod}}){{/if}}
                                     {{#if (cprCompare weapon.system.attackmod "<" "0")}}({{weapon.system.attackmod}}){{/if}}
-                                    {{#if weapon.system.magazine.ammoId}}
+                                    {{#if weapon.system.magazine.ammoData.uuid}}
                                         <br>
-                                        ({{localize "CPR.global.itemTypes.ammo"}}:<input name = "system.magazine.value" class = "number weapon-input" style = "width:30px;text-align:right;" type = "text" data-item-prop = "system.magazine.value" value = "{{weapon.system.magazine.value}}">/{{cprApplyUpgrade weapon weapon.system.magazine.max "magazine"}})
+                                        ({{localize "CPR.global.itemTypes.ammo"}}:<input name="system.magazine.value" class="number weapon-input" style="width:30px;text-align:right;" type="text" data-item-prop="system.magazine.value" value="{{weapon.system.magazine.value}}">/{{cprApplyUpgrade weapon weapon.system.magazine.max "magazine"}})
                                     {{/if}}
                                 </div>
                                 <div class="fight-weapon-actions text-nowrap">
-                                    ROF: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
+                                    {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                                     {{#if weapon.system.isRanged}}
                                     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                                     {{>"systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
@@ -380,7 +414,7 @@
                                 {{/if}}
                             </div>
                         </li>
-                                            {{#if weapon.system.isUpgraded}}
+                        {{#if weapon.system.isUpgraded}}
                             {{#each weapon.system.upgrades as |upgrade|}}
                                 {{#if (cprCompare upgrade.system.modifiers.secondaryWeapon.configured "===" "true")}}
                                     {{#each (cprFilter ../actor.itemTypes.itemUpgrade "_id" upgrade._id) as |weapon|}}
@@ -390,16 +424,18 @@
                                         </div>
                                         <div class="fight-weapon">
                                             <div class="item-name fight-weapon-name">
-                                                <a class="name item-view" data-tooltip="{{weapon.name}}&#13{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}&#13{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{../../this.name}} {{localize "CPR.characterSheet.bottomPane.fight.attachment"}}: {{weapon.name}}</a>
+                                                <a class="name item-view" data-tooltip="{{weapon.name}}</br>{{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}</br>{{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
+                                                  {{../../this.name}}: {{weapon.name}}
+                                                </a>
                                                 {{#if (cprCompare weapon.system.attackmod ">" "0")}}(+{{weapon.system.attackmod}}){{/if}}
                                                 {{#if (cprCompare weapon.system.attackmod "<" "0")}}({{weapon.system.attackmod}}){{/if}}
-                                                {{#if weapon.system.magazine.ammoId}}
+                                                {{#if weapon.system.magazine.ammoData.uuid}}
                                                     <br>
-                                                    ({{localize "CPR.global.itemTypes.ammo"}}:<input name = "system.magazine.value" class = "number weapon-input" style = "width:30px;text-align:right;" type = "text" data-item-prop = "system.magazine.value" value = "{{weapon.system.magazine.value}}">/{{weapon.system.magazine.max}})
+                                                    ({{localize "CPR.global.itemTypes.ammo"}}:<input name="system.magazine.value" class="number weapon-input" style="width:30px;text-align:right;" type="text" data-item-prop="system.magazine.value" value="{{weapon.system.magazine.value}}">/{{weapon.system.magazine.max}})
                                                 {{/if}}
                                             </div>
                                             <div class="fight-weapon-actions text-nowrap">
-                                                ROF: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
+                                                {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                                                 {{#if weapon.system.isRanged}}
                                                     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                                                     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
@@ -473,9 +509,9 @@
     {{#if (cprCompare actor.system.fightState "===" "Netspace")}}
     <div class="interface-abilities-section">
         <li class="items-header item flexrow" data-item-id="{{actor.system.cyberdeck.id}}">
-            <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left">
+            <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left text-bold">
                 <a class="name item-view">{{actor.system.cyberdeck.name}}</a>
-                <select class = "select-net-role" name="system.roleInfo.activeNetRole" data-tooltip = "{{localize "CPR.characterSheet.bottomPane.fight.netRoleTooltip"}}" data-tooltip-direction="UP">
+                <select class="select-net-role" name="system.roleInfo.activeNetRole" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.netRoleTooltip"}}" data-tooltip-direction="UP">
                   {{#select actor.roleInfo.activeNetRole}}
                     {{#each actor.itemTypes.role}}
                       <option value="{{this.id}}" {{#if (cprCompare this.id "===" ../actor.system.roleInfo.activeNetRole)}}selected{{/if}}>{{this.system.mainRoleAbility}}</option>
@@ -487,22 +523,28 @@
         <div class="net-actions-content">
             {{#each (cprFindConfigObj "interfaceAbilities") as |intAbility ia|}}
             <li class="items-header flexrow">
-                <a class="rollable" data-roll-type="interfaceAbility" data-interface-ability="{{ia}}" data-cyberdeck-id="{{../actor.system.cyberdeck.id}}" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToPerformAction"}}">{{localize intAbility}}</a>
+                <a class="rollable" data-roll-type="interfaceAbility" data-interface-ability="{{ia}}" data-cyberdeck-id="{{../actor.system.cyberdeck.id}}" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToPerformAction"}}">
+                  {{localize intAbility}}
+                </a>
             </li>
             {{/each}}
             <hr>
             <li class="items-header flexrow">
-                <a class="rollable" data-roll-type="interfaceAbility" data-interface-ability="defense" data-cyberdeck-id="{{actor.system.cyberdeck.id}}" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToPerformAction"}}">{{localize "CPR.global.generic.defense"}}</a>
+                <a class="rollable" data-roll-type="interfaceAbility" data-interface-ability="defense" data-cyberdeck-id="{{actor.system.cyberdeck.id}}" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToPerformAction"}}">
+                  {{localize "CPR.global.generic.defense"}}
+                </a>
             </li>
             <li class="items-header flexrow">
-                <a class="rollable" data-roll-type="interfaceAbility" data-interface-ability="speed" data-cyberdeck-id="{{actor.system.cyberdeck.id}}" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToPerformAction"}}">{{localize "CPR.global.generic.speed"}}</a>
+                <a class="rollable" data-roll-type="interfaceAbility" data-interface-ability="speed" data-cyberdeck-id="{{actor.system.cyberdeck.id}}" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToPerformAction"}}">
+                  {{localize "CPR.global.generic.speed"}}
+                </a>
             </li>
         </div>
 
     </div>
     <div class="cyberdeck-installed-section">
         <li class="items-header flexrow">
-            <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left">
+            <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left text-bold">
                 {{localize "CPR.characterSheet.bottomPane.fight.installed"}}
             </span>
         </li>
@@ -514,17 +556,23 @@
                     </li>
                   {{#each ../actor.system.cyberdeck.system.programs.installed as |program|}}
                     {{#if (cprCompare program.class "===" pc)}}
-                    <li class="items-header item flexrow cyberdeck-installed-software-list" data-item-id="{{program._id}}">
+                    <li class="items-header item flexrow cyberdeck-installed-software-list" data-item-id="{{program.uuid}}">
                         {{#if (cprListContains "booster,defender,blackice" pc)}}
                             <div class="installed-program-name">
                                 &nbsp;<a class="name item-view{{#if program.isRezzed}} text-italics{{/if}}">{{program.name}}</a>
                             </div>
                             <div class="installed-program-attack-and-damage">
-                                <a class="program-execution" data-execution-type="{{#if program.isRezzed}}de{{/if}}rez" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}">{{#if program.isRezzed}}<i class="far fa-arrow-alt-circle-down" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToDeactivateProgram"}}">{{else}}<i class="far fa-arrow-alt-circle-up" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToActivateProgram"}}">{{/if}}</i></a>
+                                <a class="program-execution" data-execution-type="{{#if program.isRezzed}}de{{/if}}rez" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}">
+                                  {{#if program.isRezzed}}
+                                    <i class="far fa-arrow-alt-circle-down" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToDeactivateProgram"}}"></i>
+                                  {{else}}
+                                    <i class="far fa-arrow-alt-circle-up" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToActivateProgram"}}"></i>
+                                  {{/if}}
+                                </a>
                             </div>
                             <div class="installed-program-actions">
                                 &nbsp;
-                                <a class="program-uninstall" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-item-id="{{program._id}}"><i class="fas fa-folder-minus fg-red" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.eraseProgram"}}"></i></a>
+                                <a class="program-uninstall" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-item-id="{{program.uuid}}"><i class="fas fa-folder-minus fg-red" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.eraseProgram"}}"></i></a>
                             </div>
                         {{else}}
                             <div class="installed-program-name">
@@ -532,17 +580,17 @@
                             </div>
                             <div class="installed-program-attack-and-damage">
                                 <div class="installed-program-attack">
-                                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="atk" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}"><i class="fas fa-fist-raised red-fg" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}" ></i></a>
+                                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="atk" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}"><i class="fas fa-fist-raised red-fg" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}" ></i></a>
                                 </div>
                                 {{#if (cprCompare program.damage.standard "!==" "")}}
                                 <div class="installed-program-damage">
-                                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="damage" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}"><i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}" ></i></a>
+                                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="damage" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}"><i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}" ></i></a>
                                 </div>
                                 {{/if}}
                             </div>
                             <div class="installed-program-actions">
                                 &nbsp;
-                                <a class="program-uninstall" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-item-id="{{program._id}}"><i class="fas fa-folder-minus fg-red" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.eraseProgram"}}"></i></a>
+                                <a class="program-uninstall" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-item-id="{{program.uuid}}"><i class="fas fa-folder-minus fg-red" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.eraseProgram"}}"></i></a>
                             </div>
                         {{/if}}
                     </li>
@@ -551,15 +599,12 @@
                 {{/each}}
             </div>
             <div class="cyberdeck-installed-hardware">
-
-
             </div>
-
         </div>
     </div>
     <div class="cyberdeck-rezzed-section">
         <li class="items-header flexrow">
-            <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left">
+            <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left text-bold">
                 {{localize "CPR.characterSheet.bottomPane.fight.rezzed"}}
             </span>
         </li>
@@ -567,7 +612,7 @@
           <div class="cyberdeck-rezzed-software">
             {{#each (cprToArray "booster,defender" ",") as |pc|}}
               <li class="items-header flexrow cyberdeck-rezzed-software-list bg-pink">
-                <div class="rezzed-program-name text-bold bg-pink">{{pc}}</div>
+                <div class="rezzed-program-name text-bold bg-pink">{{localize (cprGetLocalizedlNameKey pc "programClass")}}</div>
                 <div class="rezzed-program-per text-bold bg-pink text-center"></div>
                 <div class="rezzed-program-spd text-bold bg-pink text-center"></div>
                 <div class="rezzed-program-atk text-bold bg-pink text-center">{{localize "CPR.global.blackIce.stats.atk"}}</div>
@@ -577,9 +622,9 @@
               </li>
               {{#each ../actor.system.cyberdeck.system.programs.rezzed as |program|}}
                 {{#if (cprCompare program.class "===" pc)}}
-                  <li class="items-header item flexrow cyberdeck-rezzed-software-list" data-item-id="{{program._id}}">
+                  <li class="items-header item flexrow cyberdeck-rezzed-software-list" data-item-id="{{program.uuid}}">
                     <div class="rezzed-program-name">
-                          &nbsp;<a class="name item-view" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToView"}}" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}">{{program.name}}</a>
+                          &nbsp;<a class="name item-view" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToView"}}" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}">{{program.name}}</a>
                     </div>
                     <div class="rezzed-program-per text-bold text-center"></div>
                     <div class="rezzed-program-spd text-bold text-center"></div>
@@ -587,9 +632,19 @@
                     <div class="rezzed-program-def text-center">{{program.def}}</div>
                     <div class="rezzed-program-rez-and-decrement text-center">
                       <div class="rezzed-program-rez text-center">{{program.rez}}</div>
-                      <div class="rezzed-program-decrement-rez text-center">{{#if (cprCompare program.rez ">" 0)}}<a class="program-execution" data-execution-type="reduce-rez" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}"><i class="far fa-minus-square" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.reduceRez"}}"></i></a>{{/if}}</div>
+                      <div class="rezzed-program-decrement-rez text-center">
+                        {{#if (cprCompare program.rez ">" 0)}}
+                          <a class="program-execution" data-execution-type="reduce-rez" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}">
+                            <i class="far fa-minus-square" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.reduceRez"}}"></i>
+                          </a>
+                        {{/if}}
+                      </div>
                     </div>
-                    <div class="rezzed-program-reset text-center"><a class="program-execution" data-execution-type="reset-rez" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}"><i class="fas fa-undo" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.resetRez"}}"></i></a></div>
+                    <div class="rezzed-program-reset text-center">
+                      <a class="program-execution" data-execution-type="reset-rez" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}">
+                        <i class="fas fa-undo" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.resetRez"}}"></i>
+                      </a>
+                    </div>
                   </li>
                 {{/if}}
               {{/each}}
@@ -604,9 +659,9 @@
             </li>
             {{#each actor.system.cyberdeck.system.programs.rezzed as |program|}}
               {{#if (cprCompare program.class "===" "blackice")}}
-                <li class="items-header item flexrow cyberdeck-rezzed-software-list" data-item-id="{{program._id}}">
+                <li class="items-header item flexrow cyberdeck-rezzed-software-list" data-item-id="{{program.uuid}}">
                   <div class="rezzed-program-name">
-                    &nbsp;<a class="name item-view" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToView"}}" data-cyberdeck-id="{{../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}">{{program.name}} ({{localize (cprFindConfigValue "blackIceType" program.blackIceType)}})</a>
+                    &nbsp;<a class="name item-view" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToView"}}" data-cyberdeck-id="{{../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}">{{program.name}} ({{localize (cprFindConfigValue "blackIceType" program.blackIceType)}})</a>
                   </div>
                   <div class="rezzed-program-per text-center">{{program.per}}</div>
                   <div class="rezzed-program-spd text-center">{{program.spd}}</div>
@@ -614,14 +669,14 @@
                   <div class="rezzed-program-def text-center">{{program.def}}</div>
                   <div class="rezzed-program-rez-and-decrement text-center">
                     <div class="rezzed-program-rez text-center">{{program.rez}}</div>
-                    <div class="rezzed-program-decrement-rez text-center">{{#if (cprCompare ../actor.system.type "===" "mook")}}{{#if (cprCompare program.rez ">" 0)}}<a class="program-execution" data-execution-type="reduce-rez" data-cyberdeck-id="{{../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}"><i class="far fa-minus-square" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.reduceRez"}}"></i></a>{{/if}}{{/if}}</div>
+                    <div class="rezzed-program-decrement-rez text-center">{{#if (cprCompare ../actor.system.type "===" "mook")}}{{#if (cprCompare program.rez ">" 0)}}<a class="program-execution" data-execution-type="reduce-rez" data-cyberdeck-id="{{../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}"><i class="far fa-minus-square" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.reduceRez"}}"></i></a>{{/if}}{{/if}}</div>
                   </div>
                   <div class="rezzed-program-reset">
                     {{#if (cprCompare ../actor.system.type "===" "mook")}}
                     &nbsp;
-                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="atk" data-cyberdeck-id="{{../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}"><i class="fas fa-fist-raised red-fg" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i></a>
-                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="damage" data-cyberdeck-id="{{../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}"><i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}" ></i></a>
-                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="def" data-cyberdeck-id="{{../actor.system.cyberdeck.id}}" data-program-id="{{program._id}}"><i class="fas fa-shield-virus red-fg" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollDefense"}}" ></i></a>
+                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="atk" data-cyberdeck-id="{{../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}"><i class="fas fa-fist-raised red-fg" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i></a>
+                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="damage" data-cyberdeck-id="{{../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}"><i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}" ></i></a>
+                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="def" data-cyberdeck-id="{{../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}"><i class="fas fa-shield-virus red-fg" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollDefense"}}" ></i></a>
                     {{/if}}
                   </div>
                   </li>

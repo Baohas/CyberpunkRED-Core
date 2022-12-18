@@ -32,7 +32,9 @@ system:
   magazine:
     value: 0
     max: 20
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
   ammoVariety:
     - rifle
   concealable:
@@ -45,7 +47,6 @@ system:
     market: 100
     category: premium
   handsReq: 2
-  attachmentSlots: 3
   isConcealed: false
   quality: poor
   upgrade: ''

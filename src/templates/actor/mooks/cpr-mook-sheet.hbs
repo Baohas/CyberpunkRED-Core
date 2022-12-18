@@ -19,7 +19,7 @@
           <div class="mook-derived-stats pad-thin fg-white bg-red">
             <div class="mook-hp">
               <span class="text-padding-left">{{localize "CPR.global.generic.hitpoints"}}</span>
-              <div class="min-of-max-container">
+              <div class="min-of-max-container text-normal">
                 <input class="text-center" name="system.derivedStats.hp.value" type="number"
                   value="{{actor.system.derivedStats.hp.value}}" data-dtype="Number" />
                 <div class="of bg-red fg-white text-normal text-bold">of</div>
@@ -29,7 +29,7 @@
             </div>
             <div class="mook-wounded">
               <span class="text-padding-left">{{localize "CPR.mookSheet.woundState"}}</span>
-              <div class="bg-white text-center text-normal text-bold fg-black">
+              <div class="bg-white text-center text-normal fg-black">
                 {{localize (cprFindConfigValue "woundState" actor.system.derivedStats.currentWoundState)}}
               </div>
             </div>
@@ -39,7 +39,11 @@
                   {{localize "CPR.mookSheet.deathSave.title"}}</a>
               </span>
               <div class="width-full bg-white text-center text-normal text-bold fg-black">
-                <span data-tooltip="{{localize "CPR.mookSheet.deathSave.reset"}}&#13{{localize "CPR.global.generic.deathPenalty" }}: {{actor.system.derivedStats.deathSave.penalty}}&#13{{localize "CPR.mookSheet.deathSave.hoverCriticalInjuryPenalty" }}: {{actor.system.derivedStats.deathSave.basePenalty}}"><a class="reset-deathsave-value text-bold">{{actor.system.derivedStats.deathSave.value}}</a></span>
+                <span data-tooltip="{{localize "CPR.mookSheet.deathSave.reset"}}<br>{{localize "CPR.global.generic.deathPenalty" }}: {{actor.system.derivedStats.deathSave.penalty}}
+                    <br>
+                    {{localize "CPR.mookSheet.deathSave.hoverCriticalInjuryPenalty" }}: {{actor.system.derivedStats.deathSave.basePenalty}}">
+                  <a class="reset-deathsave-value text-bold">{{actor.system.derivedStats.deathSave.value}}</a>
+                </span>
                 <a class="increase-deathsave-value"><i class="far fa-arrow-alt-circle-up text-smaller" data-tooltip="{{localize "CPR.mookSheet.deathSave.increase"}}"></i></a>
               </div>
             </div>
@@ -64,10 +68,10 @@
         {{> "systems/cyberpunk-red-core/templates/actor/mooks/cpr-mook-criticalInjury.hbs"}}
       </div>
       <div class="mook-notes pad-thin fg-white bg-red">
-        <div>
-          <span class="text-padding-left">{{localize "CPR.global.generic.notes"}}</span>
+        <div class="text-bold">
+          <span>{{localize "CPR.global.generic.notes"}}</span>
         </div>
-        <div class="mook-edit-section fg-black text-padding-left">
+        <div class="mook-edit-section fg-black">
           {{editor enrichedHTML.systemInformationNotes target="system.information.notes" button=true owner=owner editable=editable}}
         </div>
       </div>

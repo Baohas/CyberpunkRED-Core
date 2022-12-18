@@ -33,7 +33,9 @@ system:
   magazine:
     value: 0
     max: 0
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
   ammoVariety: []
   concealable:
     concealable: false
@@ -56,7 +58,6 @@ system:
     static: '0'
     roll: '0'
   amount: 1
-  attachmentSlots: 0
   charges:
     max: 0
     value: 0

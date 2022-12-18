@@ -108,7 +108,12 @@
           "value": 0,
           "transactions": []
         },
-        "criticalInjuries": []
+        "criticalInjuries": [],
+        "installedItems": {
+          "allowedTypes": ["cyberware"],
+          "allowed": true,
+          "list": []
+        }
       },
       "ledgerWealth": {
         "wealth": {
@@ -266,6 +271,15 @@
         "source": "",
         "favorite": false
       },
+      "container": {
+        "installedItems": {
+          "allowedTypes": ["itemUpgrade"],
+          "allowed": true,
+          "list": [],
+          "usedSlots": 0,
+          "slots": 3
+        }
+      },
       "effects": {
         "revealed": true,
         "usage": "toggled"
@@ -278,12 +292,16 @@
         "magazine": {
           "value": 0,
           "max": 0,
-          "ammoId": ""
+          "ammoData": {
+            "name": "",
+            "uuid": ""
+          }
         },
         "ammoVariety": []
       },
       "installable": {
-        "install": "mall",
+        "installLocation": "mall",
+        "installedIn": "",
         "isInstalled": false,
         "size": 1
       },
@@ -298,7 +316,6 @@
       },
       "upgradable": {
         "upgrades": [],
-        "slots": 3,
         "isUpgraded": false
       },
       "valuable": {
@@ -325,7 +342,8 @@
         "equippable",
         "physical",
         "upgradable",
-        "valuable"
+        "valuable",
+        "container"
       ],
       "isHeadLocation": false,
       "headLocation": {
@@ -352,10 +370,29 @@
         "physical",
         "stackable",
         "upgradable",
-        "valuable"
+        "valuable",
+        "container"
       ],
       "type": "jacket",
       "style": "genericChic"
+    },
+    "criticalInjury": {
+      "templates": [
+        "common",
+        "effects"
+      ],
+      "location": "body",
+      "quickFix": {
+        "type": "firstAidParamedic",
+        "dvFirstAid": 0,
+        "dvParamedic": 0
+      },
+      "treatment": {
+        "type": "paramedicSurgery",
+        "dvParamedic": 0,
+        "dvSurgery": 0
+      },
+      "deathSaveIncrease": false
     },
     "cyberware": {
       "templates": [
@@ -366,16 +403,13 @@
         "loadable",
         "physical",
         "upgradable",
-        "valuable"
+        "valuable",
+        "container"
       ],
       "type": "cyberArm",
       "isWeapon": false,
       "isFoundational": true,
-      "hasOptionalSlots": false,
-      "optionSlots": 0,
       "core": false,
-      "installedOptionSlots": 0,
-      "optionalIds": [],
       "humanityLoss": {
         "static": 3,
         "roll": "1d6"
@@ -387,7 +421,9 @@
         "physical",
         "upgradable",
         "equippable",
-        "valuable"
+        "installable",
+        "valuable",
+        "container"
       ],
       "programs": {
         "installed": [],
@@ -412,8 +448,27 @@
         "physical",
         "stackable",
         "upgradable",
-        "valuable"
+        "valuable",
+        "container"
       ]
+    },
+    "itemUpgrade": {
+      "templates": [
+        "attackable",
+        "common",
+        "physical",
+        "installable",
+        "loadable",
+        "valuable",
+        "container"
+      ],
+      "handsReq": 0,
+      "type": "weapon",
+      "modifiers": {
+        "secondaryWeapon": {
+          "configured": "false"
+        }
+      }
     },
     "netarch": {
       "templates": [
@@ -444,30 +499,6 @@
       "def": 0,
       "rez": 0
     },
-    "weapon": {
-      "templates": [
-        "attackable",
-        "common",
-        "effects",
-        "equippable",
-        "loadable",
-        "physical",
-        "upgradable",
-        "valuable"
-      ],
-      "handsReq": 1
-    },
-    "skill": {
-      "templates": [
-        "common"
-      ],
-      "level": 0,
-      "stat": "int",
-      "category": "none",
-      "difficulty": "typical",
-      "core": false,
-      "basic": false
-    },
     "role": {
       "templates": [
         "common"
@@ -483,52 +514,44 @@
       "bonusRatio": 1,
       "abilities": []
     },
-    "criticalInjury": {
+    "skill": {
       "templates": [
-        "common",
-        "effects"
+        "common"
       ],
-      "location": "body",
-      "quickFix": {
-        "type": "firstAidParamedic",
-        "dvFirstAid": 0,
-        "dvParamedic": 0
-      },
-      "treatment": {
-        "type": "paramedicSurgery",
-        "dvParamedic": 0,
-        "dvSurgery": 0
-      },
-      "deathSaveIncrease": false
+      "level": 0,
+      "stat": "int",
+      "category": "none",
+      "difficulty": "typical",
+      "core": false,
+      "basic": false
     },
     "vehicle": {
       "templates": [
         "common",
         "physical",
         "upgradable",
-        "valuable"
+        "valuable",
+        "container"
       ],
       "sdp": 0,
       "seats": 0,
       "speedCombat": 0,
       "speedNarrative": ""
     },
-    "itemUpgrade": {
+    "weapon": {
       "templates": [
         "attackable",
         "common",
-        "physical",
-        "installable",
+        "effects",
+        "equippable",
         "loadable",
-        "valuable"
+        "physical",
+        "upgradable",
+        "valuable",
+        "container"
       ],
-      "handsReq": 0,
-      "type": "weapon",
-      "modifiers": {
-        "secondaryWeapon": {
-          "configured": "false"
-        }
-      }
+      "handsReq": 1
     }
+
   }
 }

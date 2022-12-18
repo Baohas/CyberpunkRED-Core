@@ -1,5 +1,5 @@
 .item-sheet {
-    font-family: "Audimat Mono";
+    font-family: "Jost";
 
     // Cyberpunk Red Core Sheet Styling
 
@@ -61,7 +61,15 @@
             height          : 62px;
         }
 
+        .item-header-title {
+          font-weight: 500;
+        }
 
+
+    }
+
+    .tab-label {
+      height: 18px;
     }
 
     .item-bottom-pane {
@@ -120,8 +128,9 @@
         grid-area       : item-summary-pane;
         background-color: @chrome-white;
         height   : unset;
-        font-size: @font-smaller;
+        font-size: @font-small;
         min-width: 135px;
+        padding: 2px;
 
         .summary-name,
         .item-summary-line {
@@ -160,6 +169,8 @@
 
 .item-image-block {
     .item-image-block-img {
+        height: 62px;
+        width: 62px;
         clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px);
         object-fit: contain;
     }
@@ -224,6 +235,7 @@
       background-color: @chrome-white;
   }
 }
+
 
 .help-article, .help-article:link, .help-article:hover, .help-article:visited, .help-article:focus, .help-article:active {
     text-decoration: none;

@@ -17,6 +17,7 @@ export default class UpdateScreen extends Application {
     });
   }
 
+  // eslint-disable-next-line no-unused-vars
   async getData(options = {}) {
     LOGGER.trace("getData | UpdateScreen | Called.");
     const featureVideoLink = (typeof game.system.flags.featureVideoURL === "undefined") ? "" : game.system.flags.featureVideoURL;

@@ -33,6 +33,13 @@ ownership:
   default: 0
 sort: 0
 system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: false
+    list: []
+    usedSlots: 0
+    slots: 3
   weaponType: assaultRifle
   weaponSkill: Archery
   fireModes:
@@ -60,13 +67,14 @@ system:
   magazine:
     value: 0
     max: 0
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
   ammoVariety: []
   concealable:
     concealable: false
     isConcealed: false
   upgrades: []
-  slots: 3
   isUpgraded: false
   price:
     market: 500
@@ -74,16 +82,11 @@ system:
   type: neuralWare
   isWeapon: false
   isFoundational: false
-  hasOptionalSlots: false
-  optionSlots: 0
   core: false
-  installedOptionSlots: 0
-  optionalIds: []
   humanityLoss:
     static: '7'
     roll: 2d6
   amount: 1
-  attachmentSlots: 0
   isConcealed: false
   quality: ''
   upgrade: ''

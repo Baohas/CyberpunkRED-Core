@@ -16,7 +16,6 @@ system:
     isConcealed: false
   amount: 1
   upgrades: []
-  slots: 3
   isUpgraded: false
   price:
     market: 50

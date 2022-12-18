@@ -6,7 +6,7 @@ background:
   rotation: 0
   scaleX: 1
   scaleY: 1
-  src: systems/cyberpunk-red-core/maps/S0L-DCStreets-NOGRID1080.JPG
+  src: systems/cyberpunk-red-core/maps/S0L-DCStreets-NOGRID1080.jpg
   tint: null
 backgroundColor: '#999999'
 darkness: 0
