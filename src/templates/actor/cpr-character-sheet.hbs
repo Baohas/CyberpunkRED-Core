@@ -5,19 +5,19 @@
 
     <div class="left-pane bg-white">
       <div class="main-section bg-red">
-        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-image-block.hbs"}}
-        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-handle-block.hbs"}}
-        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-role-block.hbs"}}
-        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-hitpoint-block.hbs"}}
-        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-deathsave-block.hbs"}}
-        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-humanity-block.hbs"}}
+        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-image-block.hbs"}}
+        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-handle-block.hbs"}}
+        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-role-block.hbs"}}
+        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-hitpoint-block.hbs"}}
+        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-deathsave-block.hbs"}}
+        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-humanity-block.hbs"}}
         {{#if (cprCompare actor.type "===" "character")}}
-          {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-ip-block.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-ip-block.hbs"}}
         {{/if}}
 
       </div>
       <div class="stats-section bg-red">
-        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-stat-block.hbs"}}
+        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-stat-block.hbs"}}
       </div>
     </div>
 
@@ -46,16 +46,16 @@
       {{/if}}
       <div class="right-content-section">
         <div class="tab skills-tab" data-group="primary" data-tab="skills">
-          {{> "systems/cyberpunk-red-core/templates/actor/character/right-pane/cpr-skills.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/cpr-skills.hbs"}}
         </div>
         <div class="tab gear-tab" data-group="primary" data-tab="gear">
-          {{> "systems/cyberpunk-red-core/templates/actor/character/right-pane/cpr-gear.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/cpr-gear.hbs"}}
         </div>
         <div class="tab cyberware-tab" data-group="primary" data-tab="cyberware">
-          {{> "systems/cyberpunk-red-core/templates/actor/character/right-pane/cpr-cyberware.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/cpr-cyberware.hbs"}}
         </div>
         <div class="tab effects-tab" data-group="primary" data-tab="effects">
-          {{> "systems/cyberpunk-red-core/templates/actor/character/right-pane/cpr-effects.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/cpr-effects.hbs"}}
         </div>
       </div>
     </div>
@@ -87,13 +87,13 @@
       </div>
       <div class="bottom-content-section">
         <div class="tab role-tab" data-group="primary" data-tab="role">
-          {{> "systems/cyberpunk-red-core/templates/actor/character/bottom-pane/cpr-role.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/parts/bottom-pane/cpr-role.hbs"}}
         </div>
         <div class="tab fight-tab" data-group="primary" data-tab="fight">
-          {{> "systems/cyberpunk-red-core/templates/actor/character/bottom-pane/cpr-fight.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/parts/bottom-pane/cpr-fight.hbs"}}
         </div>
         <div class="tab lifepath-tab" data-group="primary" data-tab="lifepath">
-          {{> "systems/cyberpunk-red-core/templates/actor/character/bottom-pane/cpr-lifepath.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/parts/bottom-pane/cpr-lifepath.hbs"}}
         </div>
       </div>
 </form>
