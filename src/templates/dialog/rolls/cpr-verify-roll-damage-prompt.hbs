@@ -1,21 +1,25 @@
 {{cprTrace "START DIALOG ROLLS CPR-VERIFY-ROLL-DAMAGE-PROMPT.HBS"}}
-<form>
-    <div>
-        {{localize "CPR.rolls.tellThemToSayHello"}}! {{localize "CPR.rolls.roll"}} {{localize "CPR.global.generic.damage"}} {{localize "CPR.global.generic.with"}} "{{rollData.rollTitle}}", Choomba!
+<form class="dialog-sheet">
+  <div class="dialog-header flexcol">
+    <div class="text-normal text-center flexrow">
+      {{localize "CPR.rolls.roll"}} {{localize "CPR.global.generic.damage"}} {{localize "CPR.global.generic.with"}} "{{rollData.rollTitle}}", Choomba!
     </div>
-    <ol class="items-list">
+  </div>
+  <hr>
+  <div class="dialog-grid flexcol">
+    <ol class="dialog-list">
         {{#if (cprCompare (cprListContains "assaultRifle,smg,heavySmg" rollData.weaponType) "||" rollData.isAutofire)}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
+        <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.global.itemType.skill.autofire"}}?
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
+            <div class="dialog-item-input text-nowrap">
                 <input type="checkbox" id="isAutofire" name="isAutofire" {{#if rollData.isAutofire}} checked{{/if}}>
             </div>
         </li>
         {{#if rollData.isAutofire}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
+        <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.global.generic.multiplier"}}
                 {{#if (cprCompare rollData.autofireMultiplierMax ">" 0)}}
                     (1-{{rollData.autofireMultiplierMax}}):
@@ -27,31 +31,30 @@
                     {{/if}}
                 {{/if}}
             </div>
-        <div class="item flexrow setting-value text-nowrap item-end">
+        <div class="dialog-item-input text-nowrap">
             <input type="number" class="number" name="autofireMultiplier" data-dtype="Number" value=1
                 max="{{#if (cprCompare rollData.weaponType "===" "assaultRifle")}}4{{else}}3{{/if}}" min="1">
         </div>
         {{/if}}
         {{/if}}
 
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
+        <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.rolls.aimedShot"}}:
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
+            <div class="dialog-item-input text-nowrap">
 
                 <input name="isAimed" class="aimed-checkbox" type="checkbox" data-dtype="Checkbox"{{#if rollData.isAimed}} checked{{/if}}>
             </div>
         </li>
 
         {{#if rollData.isAimed}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
+        <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.rolls.aimFor"}}:
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
+            <div class="dialog-item-input text-nowrap">
                 <select name="location">
-                    {{!-- ONLY DISPLAY CYBERWARE OF SAME TYPE AS OPTIONAL --}}
                     {{#each (cprFindConfigObj "aimedLocation") as |loc l|}}
                     <option value="{{l}}" {{#if  (cprCompare ../rollData.location "===" l)}}selected{{/if}}>{{localize loc}}</option>
                     {{/each}}
@@ -60,19 +63,20 @@
         </li>
         {{/if}}
 
-        {{!-- All applied modifier list partial --}}
-        {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
-
         {{!-- Additional user inputted modifiers --}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
+        <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.rolls.modifiers.additionalMods"}}:
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="additionalMods" class="" type="text" value={{rollData.additionalMods}}>
+            <div class="dialog-item-input text-nowrap">
+                <input name="additionalMods" class="" type="text" placeholder="{{localize "CPR.rolls.modifiers.additionalModsPlaceholder"}}" value={{rollData.additionalMods}}>
             </div>
         </li>
+
+        {{!-- All applied modifier list partial --}}
+        {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
     </ol>
+  </div>
 
     {{!-- Situational modifier list partial --}}
       {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-situational-modifiers.hbs" this}}
