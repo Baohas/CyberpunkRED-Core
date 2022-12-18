@@ -33,6 +33,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-roleAbility-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-situational-modifiers.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-all-modifiers.hbs`,
+    `systems/${game.system.id}/templates/dialog/rolls/cpr-additional-modifiers.hbs`,
 
     // Base actor sheets
     `systems/${game.system.id}/templates/actor/cpr-black-ice-sheet.hbs`,

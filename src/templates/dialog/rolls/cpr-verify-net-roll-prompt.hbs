@@ -1,68 +1,66 @@
 {{cprTrace "START DIALOG ROLLS CPR-VERIFY-NET-ROLL-PROMPT.HBS"}}
-<form>
-    <div>
+<form class="dialog-sheet">
+  <div class="dialog-header flexcol">
+    <div class="text-normal text-center">
       {{localize "CPR.rolls.rollingFor" rollTitle=rollData.rollTitle}}
     </div>
+  </div>
 
-    <ol class="items-list">
-        {{#if rollData.statName}}
-          <li class="item flexrow">
-              <div class="item flexrow setting-name text-nowrap">
-                  {{localize "CPR.global.generic.stat"}} {{localize "CPR.global.generic.value"}} ({{localize rollData.statName}})
-              </div>
-              <div class="item flexrow setting-value text-nowrap item-end">
-                  <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
-              </div>
-          </li>
-        {{/if}}
-
-        {{#if rollData.roleName}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.rolls.abilityRank"}} ({{localize rollData.roleName}})
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="roleValue" class="" type="number" data-dtype="Number" value={{rollData.roleValue}}>
-            </div>
+  <hr>
+  <div class="dialog-grid flexcol">
+    <ol class="dialog-list">
+      {{#if rollData.statName}}
+        <li class="dialog-item flexrow">
+          <div class="dialog-item-name text-nowrap">
+            {{localize "CPR.global.generic.stat"}} {{localize "CPR.global.generic.value"}} ({{localize rollData.statName}})
+          </div>
+          <div class="dialog-item-input text-nowrap">
+            <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
+          </div>
         </li>
-        {{/if}}
+      {{/if}}
 
-        {{!-- All applied modifier list partial --}}
-        {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
-
-        {{!-- Additional user inputted modifiers --}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.rolls.modifiers.additionalMods"}}:
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="additionalMods" class="" type="text" value={{rollData.additionalMods}}>
-            </div>
+      {{#if rollData.roleName}}
+        <li class="dialog-item flexrow">
+          <div class="dialog-item-name text-nowrap">
+            {{localize "CPR.rolls.abilityRank"}} ({{localize rollData.roleName}})
+          </div>
+          <div class="dialog-item-input text-nowrap">
+            <input name="roleValue" class="" type="number" data-dtype="Number" value={{rollData.roleValue}}>
+          </div>
         </li>
+      {{/if}}
 
-        {{#if (cprCompare (cprCompare rollData.rollCardExtraArgs.program.class "!==" "blackice") "&&" (cprCompare rollData.rollCardExtraArgs.program.class "!==" "demon"))}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.rolls.luck"}}:
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="luck" class="" type="number" data-dtype="Number" value={{rollData.luck}}>
-            </div>
-        </li>
-        {{/if}}
+      {{!-- Additional user inputted modifiers --}}
+      {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-additional-modifiers.hbs" this}}
 
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.rolls.shouldRollCriticals"}}:
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="calculateCritical" class="" type="checkbox" data-dtype="Checkbox" {{checked rollData.calculateCritical}}>
-            </div>
+      {{#if (cprCompare (cprCompare rollData.rollCardExtraArgs.program.class "!==" "blackice") "&&" (cprCompare rollData.rollCardExtraArgs.program.class "!==" "demon"))}}
+        <li class="dialog-item flexrow">
+          <div class="dialog-item-name text-nowrap">
+            {{localize "CPR.rolls.luck"}}:
+          </div>
+          <div class="dialog-item-input text-nowrap">
+            <input name="luck" class="" type="number" data-dtype="Number" value={{rollData.luck}}>
+          </div>
         </li>
+      {{/if}}
+
+      <li class="dialog-item flexrow">
+        <div class="dialog-item-name text-nowrap">
+          {{localize "CPR.rolls.shouldRollCriticals"}}:
+        </div>
+        <div class="dialog-item-input text-nowrap">
+          <input name="calculateCritical" class="" type="checkbox" data-dtype="Checkbox" {{checked rollData.calculateCritical}}>
+        </div>
+      </li>
+
+      {{!-- All applied modifier list partial --}}
+      {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
     </ol>
+  </div>
 
-    {{!-- Situational modifier list partial --}}
-      {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-situational-modifiers.hbs" this}}
+  {{!-- Situational modifier list partial --}}
+  {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-situational-modifiers.hbs" this}}
 
   {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 

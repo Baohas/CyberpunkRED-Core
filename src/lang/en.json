@@ -997,6 +997,7 @@
   "CPR.rolls.roll": "Roll",
   "CPR.rolls.rollMods": "Roll Mods",
   "CPR.rolls.rollingFor": "Rolling for '{rollTitle}', Choomba!",
+  "CPR.rolls.rollingForDamage": "Rolling damage for '{rollTitle}', Choomba!",
   "CPR.rolls.selectTarget": "Select target",
   "CPR.rolls.shouldRollCriticals": "Should roll criticals",
   "CPR.rolls.success": "Success",
