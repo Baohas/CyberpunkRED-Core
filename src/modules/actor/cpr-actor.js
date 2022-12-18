@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 /* globals Actor, game, getProperty, hasProperty, duplicate */
 import ConfirmPrompt from "../dialog/cpr-confirmation-prompt.js";
 import CPR from "../system/config.js";
@@ -51,11 +52,45 @@ export default class CPRActor extends Actor {
       });
     }
     const actor = await super.create(createData, options);
+    const installedItems = [];
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     if (newActor) {
-      const installedItems = [];
       actor.itemTypes.cyberware.forEach((cw) => installedItems.push(cw.uuid));
-      await actor.update({ "system.installedItems.list": installedItems });
+    } else {
+      // An actor was copied, first sync all items installed in the actor (Cyberware)
+      const actorUUID = actor.uuid;
+      const updateList = [];
+      for (const sourceUUID of actor.system.installedItems.list) {
+        const sourceItemId = sourceUUID.split(".")[3];
+        const newItemId = `${actorUUID}.Item.${sourceItemId}`;
+        installedItems.push(newItemId);
+        const item = actor.getOwnedItem(newItemId);
+        updateList.push({ _id: item.id, "system.isInstalled": true, "system.installedIn": actorUUID });
+        if (containerTypes.includes(item.type) && item.system.installedItems.list.length > 0) {
+          await item.recursiveInstallSync();
+        }
+      }
+      // Sync any owned items that are containers
+      for (const itemType of Object.keys(actor.itemTypes)) {
+        if (containerTypes.includes(itemType)) {
+          for (const item of actor.itemTypes[itemType]) {
+            if (item.system.installedItems.list.length > 0) {
+              await item.recursiveInstallSync();
+            }
+          }
+        }
+      }
+      // Sync any loaded weapons
+      for (const item of actor.itemTypes.weapon) {
+        if (item.system.isRanged && item.system.magazine.ammoData.uuid.length > 0) {
+          const sourceItemId = item.system.magazine.ammoData.uuid.split(".")[3];
+          const newItemId = `${actorUUID}.Item.${sourceItemId}`;
+          updateList.push({ _id: item.id, "system.magazine.ammoData.uuid": newItemId });
+        }
+      }
+      await actor.updateEmbeddedDocuments("Item", updateList);
     }
+    await actor.update({ "system.installedItems.list": installedItems });
     return actor;
   }
 

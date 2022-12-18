@@ -296,6 +296,33 @@ const Container = function Container() {
       ? this.update({ "system.installedItems.list": newInstalledList })
       : actor.updateEmbeddedDocuments("Item", [{ _id: this._id, "system.installedItems.list": newInstalledList }]);
   };
+
+  /**
+   * This function is called when an actor is duplicated.  It ensures that the installed items of
+   * the copied actor are all now pointing to the new object on the new actor.
+   */
+  this.recursiveInstallSync = async function recursiveInstallSync() {
+    LOGGER.trace("recursiveInstallSync | Container | Called.");
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const actor = this.isOwned ? this.actor : false;
+    if (actor) {
+      const actorUUID = actor.uuid;
+      const updateList = [];
+      const installedList = [];
+      for (const installedItemUUID of this.system.installedItems.list) {
+        const sourceItemId = installedItemUUID.split(".")[3];
+        const newItemId = `${actorUUID}.Item.${sourceItemId}`;
+        installedList.push(newItemId);
+        const installedItem = actor.getOwnedItem(newItemId);
+        updateList.push({ _id: installedItem.id, "system.isInstalled": true, "system.installedIn": this.uuid });
+        if (containerTypes.includes(installedItem.type) && installedItem.system.installedItems.list.length > 0) {
+          await installedItem.recursiveInstallSync();
+        }
+      }
+      updateList.push({ _id: this.id, "system.installedItems.list": installedList });
+      await actor.updateEmbeddedDocuments("Item", updateList);
+    }
+  };
 };
 
 export default Container;
