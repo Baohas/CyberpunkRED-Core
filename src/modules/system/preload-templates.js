@@ -104,6 +104,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/mooks/cpr-mook-skills.hbs`,
     `systems/${game.system.id}/templates/actor/mooks/cpr-mook-stats.hbs`,
     `systems/${game.system.id}/templates/actor/mooks/cpr-mook-weapons.hbs`,
+    `systems/${game.system.id}/templates/actor/mooks/cpr-mook-cyberware-optional.hbs`,
 
     // Container Sheet
     `systems/${game.system.id}/templates/actor/container/cpr-container-actions.hbs`,

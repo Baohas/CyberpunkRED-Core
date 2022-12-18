@@ -527,44 +527,44 @@ export default function registerHandlebarsHelpers() {
    * Get all installed cyberware and options and return it as an array. This is
    * used in the mook sheet.
    */
-  Handlebars.registerHelper("cprGetMookCyberware", (installedCyberware) => {
+  Handlebars.registerHelper("cprGetMookCyberware", (mook) => {
     LOGGER.trace("cprGetMookCyberware | handlebarsHelper | Called.");
     const installedCyberwareList = [];
-    Object.entries(installedCyberware).forEach(([k, v]) => {
-      if (installedCyberware[k].length > 0) {
-        if (k !== "cyberwareInternal" && k !== "cyberwareExternal" && k !== "fashionware") {
-          v.forEach((a) => {
-            installedCyberwareList.push(a);
-          });
-        } else if (installedCyberware[k][0].optionals.length > 0) {
-          v.forEach((a) => {
-            installedCyberwareList.push(a);
-          });
+    for (const installedUUID of mook.system.installedItems.list) {
+      const item = mook.getOwnedItem(installedUUID);
+      if (item.type === "cyberware") {
+        const optionals = [];
+        if (item.system.installedItems.list.length > 0) {
+          for (const optionalid of item.system.installedItems.list) {
+            const optionalItem = mook.getOwnedItem(optionalid);
+            optionals.push(optionalItem);
+          }
         }
+        installedCyberwareList.push({ foundation: item, optionals });
       }
-    });
+    }
     return installedCyberwareList;
   });
 
   /**
    * Return how many installed cyberware items an actor has
    */
-  Handlebars.registerHelper("cprGetMookCyberwareLength", (installedCyberware) => {
+  Handlebars.registerHelper("cprGetMookCyberwareLength", (mook) => {
     LOGGER.trace("cprGetMookCyberwareLength | handlebarsHelper | Called.");
     const installedCyberwareList = [];
-    Object.entries(installedCyberware).forEach(([k, v]) => {
-      if (installedCyberware[k].length > 0) {
-        if (k !== "cyberwareInternal" && k !== "cyberwareExternal" && k !== "fashionware") {
-          v.forEach((a) => {
-            installedCyberwareList.push(a);
-          });
-        } else if (installedCyberware[k][0].optionals.length > 0) {
-          v.forEach((a) => {
-            installedCyberwareList.push(a);
-          });
+    const exclusionList = ["cyberwareInternal", "cyberwareExternal", "fashionware"];
+    for (const installedUUID of mook.system.installedItems.list) {
+      const item = mook.getOwnedItem(installedUUID);
+      if (item.type === "cyberware" && !exclusionList.includes(item.system.type)) {
+        installedCyberwareList.push(item);
+        if (item.system.installedItems.list.length > 0) {
+          for (const optionalid of item.system.installedItems.list) {
+            const optionalItem = mook.getOwnedItem(optionalid);
+            installedCyberwareList.push(optionalItem);
+          }
         }
       }
-    });
+    }
     return installedCyberwareList.length;
   });
 

@@ -6,7 +6,7 @@
 </div>
 <div class="bg-white fg-black text-padding-left">
   <!-- Cyberware -->
-  {{#each (cprGetMookCyberware actor.system.installedCyberware) as |type t|}}
+  {{#each (cprGetMookCyberware actor) as |type t|}}
     {{#if foundation.system.core}}
       <!-- This messy mapping is because the names of internal cyberware are not concise enough.
            Also hasOptionalSlots is false for core cyberware for an unknown reason. We have to
@@ -31,15 +31,13 @@
     <!-- For each optional cyberware, display it in a selection -->
     {{~#if (cprCompare optionals.length ">" 0)~}}({{/if~}}
     {{~#each optionals as |optional o|~}}
-      <a class="name item installable changeable item-view" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.shiftClickToInstallorUninstall"}}" data-item-id="{{optional._id}}" data-foundational-id="{{../foundation.id}}">
-        {{~optional.name}}{{#unless @last}},&nbsp;{{/unless~}}
-      </a>
+      {{> "systems/cyberpunk-red-core/templates/actor/mooks/cpr-mook-cyberware-optional.hbs" (cprMergeForPartialArg "actor,cyberware" ../../actor optional)}}
     {{~/each}}
     {{~#if (cprCompare optionals.length ">" 0)~}}
       ){{~#unless @last}},{{~/unless}}
     {{~/if}}
   {{~/each}}
-  {{~#if (cprCompare (cprCompare (cprGetMookCyberwareLength actor.system.installedCyberware) ">" 0) "&&" (cprCompare (cprCompare actor.itemTypes.ammo.length ">" 0) "||" (cprCompare actor.itemTypes.gear.length ">" 0)))}},{{~/if}}
+  {{~#if (cprCompare (cprCompare (cprGetMookCyberwareLength actor) ">" 0) "&&" (cprCompare (cprCompare actor.itemTypes.ammo.length ">" 0) "||" (cprCompare actor.itemTypes.gear.length ">" 0)))}},{{~/if}}
   <!-- Display specific item types in the Gear section -->
   {{~#each actor.itemTypes as |items itemType|}}
     {{~#if (cprListContains "ammo,clothing,cyberdeck,drug,gear" itemType)}}

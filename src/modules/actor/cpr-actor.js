@@ -1616,7 +1616,7 @@ export default class CPRActor extends Actor {
     LOGGER.trace("handleMookDraggedItem | CPRActor | Called.");
     // auto-install this cyberware
     if (item.type === "cyberware") {
-      this.addCyberware(item._id);
+      this.installCyberware(item._id);
     }
     // auto-equip this item
     if (SystemUtils.hasDataModelTemplate(item.type, "equippable")) {
