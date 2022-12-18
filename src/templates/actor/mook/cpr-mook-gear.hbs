@@ -1,0 +1,62 @@
+{{cprTrace "START ACTOR MOOKS CPR-MOOK-GEAR.HBS"}}
+<div class="items-header bg-red fg-white flexrow">
+  <span class="item-name section-name text-nowrap text-padding-left text-bold">
+    {{localize "CPR.mookSheet.items.specialGear"}}
+  </span>
+</div>
+<div class="bg-white fg-black text-padding-left mook-special-list">
+  <!-- Cyberware -->
+  {{#each (cprGetMookCyberware actor.system.installedCyberware) as |type t|}}
+    {{#if foundation.system.core}}
+      <!-- This messy mapping is because the names of internal cyberware are not concise enough.
+           Also hasOptionalSlots is false for core cyberware for an unknown reason. We have to
+           look at the length of optionals to know the truth about used slots. -->
+      {{#if (cprCompare optionals.length ">" 0)}}
+        {{#if (cprCompare foundation.name "===" "Internal (7 Option Slots)")}}
+          <b>{{localize "CPR.mookSheet.items.internalCyberware"~}}</b>
+        {{/if}}
+        {{#if (cprCompare foundation.name "===" "External (7 Option Slots)")}}
+          <b>{{localize "CPR.mookSheet.items.externalCyberware"~}}</b>
+        {{/if}}
+        {{#if (cprCompare foundation.name "===" "Fashionware (7 Option Slots)")}}
+           <b>{{localize "CPR.global.cyberwareType.fashionware"~}}</b>
+        {{/if}}
+      {{/if}}
+    {{else}}
+      <!-- If Foundational Cyberware is present and has options installed, show the foundational cyberware -->
+      <b><a class="name item installable changeable item-view" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.shiftClickToInstallorUninstall"}}" data-item-id="{{foundation._id}}">
+        {{~foundation.name~}}{{~#unless (cprCompare optionals.length ">" 0)~}}{{~#unless @last~}},{{~/unless~}}{{~/unless~}}
+      </a></b>
+    {{~/if}}
+    <!-- For each optional cyberware, display it in a selection -->
+    {{~#if (cprCompare optionals.length ">" 0)~}}({{/if~}}
+    {{~#each optionals as |optional o|~}}
+      <a class="name item installable changeable item-view" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.shiftClickToInstallorUninstall"}}" data-item-id="{{optional._id}}" data-foundational-id="{{../foundation.id}}">
+        {{~optional.name}}{{#unless @last}},&nbsp;{{/unless~}}
+      </a>
+    {{~/each}}
+    {{~#if (cprCompare optionals.length ">" 0)~}}
+      ){{~#unless @last}},{{~/unless}}
+    {{~/if}}
+  {{~/each}}
+  {{~#if (cprCompare (cprCompare (cprGetMookCyberwareLength actor.system.installedCyberware) ">" 0) "&&" (cprCompare (cprCompare actor.itemTypes.ammo.length ">" 0) "||" (cprCompare actor.itemTypes.gear.length ">" 0)))}},{{~/if}}
+  <!-- Display specific item types in the Gear section -->
+  {{~#each actor.itemTypes as |items itemType|}}
+    {{~#if (cprListContains "ammo,clothing,cyberdeck,drug,gear" itemType)}}
+      {{~#each (cprSort items "name") as |item i|}}
+        {{~#unless @first}},{{~/unless}}
+        <a class="name item deletable changeable item-edit" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.pressDeleteToDelete"}}" data-item-id="{{item.id}}">
+          {{~item.name~}}
+        </a>
+        {{~#if (cprCompare item.type "===" "drug")}}
+          <a class="item-action" data-item-id="{{item.id}}" data-action-type="snort"><i class="fas fa-pills" data-tooltip="{{localize "CPR.global.generic.snort"}}"></i></a>
+        {{~/if}}
+        {{#if (cprHasTemplate item.type "stackable")}}(x{{item.system.amount}}){{~/if}}
+      {{~/each}}
+      {{~#if (cprCompare items.length ">" 0)}}
+        {{~#unless (cprCompare itemType "===" "gear")}},{{~/unless}}
+      {{~/if}}
+    {{~/if}}
+  {{~/each}}
+</div>
+{{cprTrace "END CPR-MOOK-GEAR.HBS"}}

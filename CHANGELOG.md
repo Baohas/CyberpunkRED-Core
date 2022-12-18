@@ -12,6 +12,7 @@
 - Update Character sheet to show more information for items
 - Update wording for Failed rolls
 - Babele translation config files added for DLC. Translations will follow later.
+- Update the main system font to Jost for better readability
 
 ### Bug Fixes
 
