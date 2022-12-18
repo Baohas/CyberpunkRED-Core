@@ -292,7 +292,7 @@ export default class CPRNetArchItem extends CPRItem {
    */
   async _duplicateScene(newName) {
     LOGGER.trace("_duplicateScene | CPRNetarchUtils | Called.");
-    const sceneName = (this.animated) ? "NetarchTemplate-animated" : "NetarchTemplate";
+    const sceneName = (this.animated) ? "Netarch Template - Animated" : "Netarch Template";
     const scene = await SystemUtils.GetCompendiumDoc(`${game.system.id}.scenes`, sceneName);
     const sceneData = duplicate(scene);
     sceneData.id = null;

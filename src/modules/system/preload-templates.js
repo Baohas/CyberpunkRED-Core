@@ -92,7 +92,6 @@ export default function preloadHandlebarsTemplates() {
 
     // Debug
     `systems/${game.system.id}/templates/actor/parts/debug/cpr-item-debug.hbs`,
-    `systems/${game.system.id}/templates/actor/work-in-progress.hbs`,
 
     // Mook Sheet Partials
     `systems/${game.system.id}/templates/actor/mooks/cpr-mook-armor.hbs`,

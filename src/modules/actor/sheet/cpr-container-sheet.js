@@ -27,7 +27,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-container-sheet.hbs`,
       width: 750,
-      height: 496,
+      height: 565,
     });
   }
 

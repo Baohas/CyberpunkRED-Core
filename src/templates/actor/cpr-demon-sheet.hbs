@@ -28,19 +28,19 @@
           </div>
         {{/each}}
       </div>
-      <div class="demon-val flexrow pad-thin">
+      <div class="demon-value flexrow pad-thin">
         <div class="block-data bg-red fg-black">
           <input name="name" type="text" value="{{actor.name}}"/>
         </div>
         {{#each actor.system.stats as |stat s|}}
           {{#if (cprCompare s "===" "rez")}}
             <div class="min-of-max-container">
-              <input class="text-center" name="system.stats.rez.value" type="number" value="{{this.value}}" />
+              <input class="text-center text-normal" name="system.stats.rez.value" type="number" value="{{this.value}}" />
               <div class="of bg-red fg-white text-normal text-bold">of</div>
               <input class="text-center" name="system.stats.rez.max" type="number" value="{{this.max}}" />
             </div>
           {{else}}
-            <div class="block-data text-large">
+            <div class="block-data text-normal">
               <input name="system.stats.{{s}}" type="number" value="{{this}}"/>
             </div>
           {{/if}}
@@ -52,7 +52,7 @@
         <img class="profile-img" src="{{actor.img}}" data-edit="img" data-tooltip="{{actor.name}}"/>
       </div>
       <div class="demon-notes pad-thin fg-white bg-red">
-        <div class="demon-edit-section fg-black text-padding-left">
+        <div class="demon-edit-section fg-black">
           {{editor system.notes target="system.notes" button=true owner=owner editable=editable}}
         </div>
       </div>
