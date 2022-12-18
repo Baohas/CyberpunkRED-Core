@@ -63,6 +63,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-clothing-content.hbs`,
     `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-cyberdeck-content.hbs`,
     `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-cyberware-content.hbs`,
+    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-cyberware-content.hbs`,
     `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-drug-content.hbs`,
     `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-gear-content.hbs`,
     `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-itemUpgrade-content.hbs`,
