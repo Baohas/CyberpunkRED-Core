@@ -36,6 +36,8 @@ export class CPRRollDialog extends CPRDialog {
     // Situational modifiers from pg. 130
     this.defaultSituationalMods = CPRMod.getDefaultSituationalMods();
 
+    this.showSituationalMods = true;
+
     // Hide default mods, user can then toggle them on.
     this.showDefaultMods = false;
   }
@@ -57,6 +59,7 @@ export class CPRRollDialog extends CPRDialog {
       data.defaultSituationalMods = this.defaultSituationalMods;
     }
     data.showDefaultMods = this.showDefaultMods;
+    data.showSituationalMods = this.showSituationalMods;
 
     // Get filtered situational mods. These currently come from effects, role abilities, or item upgrades.
     data.filteredMods = CPRMod.getSituationalRollMods(this.rollData, this.actor.effects.contents, this.item, this.actor);
@@ -85,7 +88,7 @@ export class CPRRollDialog extends CPRDialog {
 
     html.find(".toggle-situational-mod").click((event) => this._toggleSituationalMod(event));
     html.find(".aimed-checkbox").click(() => this._aimedToggle());
-    html.find(".toggle-default-mods").click(() => this._toggleDefaultModsVisibility());
+    html.find(".toggle-show-mods").click((event) => this._toggleModsVisibility(event));
   }
 
   /**
@@ -127,12 +130,17 @@ export class CPRRollDialog extends CPRDialog {
   }
 
   /**
-   * Toggle showing/hiding the default situational modifiers from the core rule book (pg 130).
+   * Toggle showing/hiding the situational modifiers or the default modifiers from the core rule book (pg 130).
    *
    */
-  _toggleDefaultModsVisibility() {
-    LOGGER.trace("_toggleDefaultModsVisibility | CPRRollDialog | Called.");
-    this.showDefaultMods = !this.showDefaultMods;
+  _toggleModsVisibility(event) {
+    LOGGER.trace("_toggleModsVisibility | CPRRollDialog | Called.");
+    const target = SystemUtils.GetEventDatum(event, "data-target");
+    if (target === "situational-mods") {
+      this.showSituationalMods = !this.showSituationalMods;
+    } else {
+      this.showDefaultMods = !this.showDefaultMods;
+    }
     this.render();
   }
 

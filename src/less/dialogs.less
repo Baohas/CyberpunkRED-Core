@@ -7,7 +7,7 @@
 
   hr {
     border: 0;
-    height: 2px;
+    height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(136, 34, 34, 0.75), rgba(0, 0, 0, 0));
   }
 }
@@ -28,15 +28,14 @@
     overflow-y      : auto;
     scrollbar-width : thin;
     background-color: @chrome-white;
-    border-style    : outset;
-    border-color    : rgba(110, 42, 42, 0.5);
-    border-width    : 2px;
-    border-radius   : 5px;
-
-
 }
 
 .dialog-list {
+  border-style    : outset;
+  border-color    : rgba(110, 42, 42, 0.5);
+  border-width    : 2px;
+  border-radius   : 5px;
+
   li:nth-child(even) {
       background-color: @meat-space-pink;
   }
