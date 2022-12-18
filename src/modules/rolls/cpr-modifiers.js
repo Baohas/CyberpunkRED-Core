@@ -152,9 +152,12 @@ export default class CPRMod {
     // Damage Mods.
     if (prototypeChain.includes("CPRDamageRoll")) {
       const damageMods = allSituationalMods.filter((m) => m.key === `bonuses.universalDamage`);
+
       // Damage mods from upgrades.
-      const upgradeMods = item.getAllUpgradeMods("damage").filter((m) => m.isSituational);
-      filteredMods = filteredMods.concat(damageMods).concat(upgradeMods);
+      if (item) {
+        const upgradeMods = item.getAllUpgradeMods("damage").filter((m) => m.isSituational);
+        filteredMods = filteredMods.concat(damageMods).concat(upgradeMods);
+      }
 
       // Damage mods from role bonuses.
       let roleMods = [];
