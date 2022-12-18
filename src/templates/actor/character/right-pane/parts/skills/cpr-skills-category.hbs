@@ -13,10 +13,10 @@
             <i class="fas fa-minus bg-black expand-icon"></i>
             {{/if}}
         </span>
-        <span class="item-detail skill-mod-value bg-black text-nowrap">{{localize "CPR.characterSheet.rightPane.skills.skillMod"}}</span>
-        <span class="item-detail skill-level bg-black text-nowrap">{{localize "CPR.characterSheet.rightPane.skills.lvl"}}</span>
-        <span class="item-detail skill-base bg-black text-nowrap">{{localize "CPR.characterSheet.rightPanke.skills.base"}}</span>
-        <span class="item-detail skill-favorite bg-black text-nowrap toggle-section-visibility" id="skillTab-{{category}}-showFavorites" data-tooltip="{{localize "CPR.characterSheet.rightPane.skills.toggleCategoryAll"}}"><i class="far fa-eye show-favorites"></i><i class="far fa-eye-slash hide-favorites hide"></i></span>
+        <span class="item-detail skill-mod-value bg-black text-nowrap text-center">{{localize "CPR.characterSheet.rightPane.skills.skillMod"}}</span>
+        <span class="item-detail skill-level bg-black text-nowrap text-center">{{localize "CPR.characterSheet.rightPane.skills.lvl"}}</span>
+        <span class="item-detail skill-base bg-black text-nowrap text-center">{{localize "CPR.characterSheet.rightPanke.skills.base"}}</span>
+        <span class="item-detail skill-favorite bg-black text-nowrap text-center toggle-section-visibility" id="skillTab-{{category}}-showFavorites" data-tooltip="{{localize "CPR.characterSheet.rightPane.skills.toggleCategoryAll"}}"><i class="far fa-eye show-favorites"></i><i class="far fa-eye-slash hide-favorites hide"></i></span>
     </li>
     <ol class="items-list">
 
@@ -40,7 +40,7 @@
 
             {{!-- MOD --}}
             {{!-- Don't show MOD unless its non-zero or has situational modifiers --}}
-            <div class="item-detail skill-mod-value text-nowrap
+            <div class="item-detail skill-mod-value text-nowrap text-center
               {{#unless (cprGetSkillModInfo skill.name ../actor "modTotal")}}
               {{#unless (cprGetSkillModInfo skill.name ../actor "hasSituational")}}
                 zero-not-visible
@@ -69,14 +69,14 @@
                   {{cprGetSkillModInfo skill.name ../actor "modTotal"}}
                 </span>
             </div>
-            <div class="item-detail skill-level text-nowrap">
+            <div class="item-detail skill-level text-nowrap text-center">
                 <input class="number skill-input" value="{{skill.system.level}}" type="number"
                     data-item-prop="system.level" data-dtype="Number">
             </div>
-            <div class="item-detail skill-base text-nowrap">
+            <div class="item-detail skill-base text-nowrap text-center">
                 {{cprMath "sum" skill.system.level (cprGetSkillModInfo skill.name ../actor "modTotal") (lookup (cprGetProp ../actor.system.stats skill.system.stat) 'value')}}
             </div>
-            <div class="item-detail skill-favorite text-nowrap">
+            <div class="item-detail skill-favorite text-nowrap text-center">
                 <a class="item-action" data-action-type="favorite" data-tooltip="{{localize "CPR.actorSheets.commonActions.togglePin"}}">
                     {{#if skill.system.favorite}}
                     <i class="fas fa-thumbtack fg-black favorite"></i>

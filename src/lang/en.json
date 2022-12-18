@@ -999,7 +999,6 @@
   "CPR.rolls.shouldRollCriticals": "Should roll criticals",
   "CPR.rolls.success": "Success",
   "CPR.rolls.suppressiveFire": "Suppressive Fire",
-  "CPR.rolls.tellThemToSayHello": "Tell them to say hello to your little friend",
   "CPR.rolls.total": "Total",
   "CPR.settings.automaticallyResizeSheets.hint": "Automatically resize actor and item sheets depending on the content.",
   "CPR.settings.automaticallyResizeSheets.name": "Automatically resize sheets",
