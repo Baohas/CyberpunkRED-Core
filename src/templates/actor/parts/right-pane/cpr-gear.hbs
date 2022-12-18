@@ -50,7 +50,7 @@
                     {{#each (cprSort (cprGetProp ../actor.itemTypes c) "name") as |item i|}}
                     {{#if (cprSheetContentFilter ../../this.options.cprContentFilter item.name)}}
                     {{!-- Partial handles Name and Data columns --}}
-                    {{> (cprGeneratePartial "systems/cyberpunk-red-core/templates/actor/character/right-pane/parts/gear/cpr-VAR-content.hbs" c) (cprMergeForPartialArg "item,actor,sheet" this ../../this.actor ../../this)}}
+                    {{> (cprGeneratePartial "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/gear/cpr-VAR-content.hbs" c) (cprMergeForPartialArg "item,actor,sheet" this ../../this.actor ../../this)}}
                     {{!- Item actions column --}}
                     {{/if}}
                     {{/each}}
