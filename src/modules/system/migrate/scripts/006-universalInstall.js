@@ -121,8 +121,13 @@ export default class UniversalInstallMigration extends CPRMigration {
         let ammoUuid = "";
         if ((typeof ammoId === "string" || ammoId instanceof String) && ammoId.length > 0) {
           const ammoItem = actor.getOwnedItem(item.system.magazine.ammoId);
-          ammoName = ammoItem.name;
-          ammoUuid = ammoItem.uuid;
+          if (typeof ammoItem === "object") {
+            ammoName = ammoItem.name;
+            ammoUuid = ammoItem.uuid;
+          } else {
+            ammoName = `${item.name} Ammo`;
+            ammoUuid = `Actor.${actor._id}.Item.${ammoId}`;
+          }
         }
         ammoId = { name: ammoName, uuid: ammoUuid };
         magazineData.ammoData = ammoId;
@@ -179,7 +184,6 @@ export default class UniversalInstallMigration extends CPRMigration {
         }
         itemUpdates.system.programs = newPrograms;
       }
-
       updatedItemList = CPRMigration.addToUpdateList(updatedItemList, itemUpdates);
     }
 
