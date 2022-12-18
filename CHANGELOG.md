@@ -17,7 +17,18 @@
 
 - #621 - Add ROF to Cyberware Weapons and Weapon Upgrade Weapons on Mook sheet
 - ROF now uses localized strings
+
+## Version 0.85.2 (Hotfix) | Date: 2022-12-15
+
+### Bug Fixes
+
 - Corrected a capitalisation error that was causing the included Dystopian City Streets map to disappear. Thanks to Latcher for spotting this!
+
+## Version 0.85.1 (Hotfix) | Date: 2022-12-14
+
+### Bug Fixes
+
+- Fixed #624 - Net architecture sheet can't click generation button
 
 ## Version 0.85.0 | Date: 2022-12-11
 
@@ -42,7 +53,7 @@
 - Added support for choosing any skill for use with a weapon, covering DLC and potential future source books
 - Added descriptions to various upgrades that were missing them
 - Added page references to all clothing items and critical injuries
-- #444 - We now support Russian! Thank you to our translators @openmanv and @kurigohan
+- #444 - Russian Localization Added. Thanks to our translators @openmanv and @kurigohan.
 
 ### Changes
 
