@@ -6,6 +6,7 @@
   "ACTOR.TypeMook": "Mook (NPC)",
   "CPR.actorSheets.clearFilter": "Clear filter",
   "CPR.global.generic.size": "Size",
+  "CPR.messages.tradeDragInstalledCyberwareError": "You can't trade installed Cyberware. Uninstall the cyberware and trade it from the Gear tab.",
   "CPR.actorSheets.commonActions.changeAmmo": "Change Ammo",
   "CPR.actorSheets.commonActions.createNewItem": "Create new item on actor",
   "CPR.actorSheets.commonActions.deleteItem": "Delete item",

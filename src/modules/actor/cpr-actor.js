@@ -492,6 +492,7 @@ export default class CPRActor extends Actor {
     const updateList = [];
 
     const uninstallList = [];
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
 
     for (const item of itemList) {
       if (installedItems.list.includes(item.uuid)) {
@@ -506,7 +507,7 @@ export default class CPRActor extends Actor {
             for (const embeddedItemData of embeddedItemsData) {
               const embeddedItem = this.getOwnedItem(embeddedItemData._id);
               uninstallList.push(embeddedItem);
-              if (embeddedItem.system.installedItems.list.length > 0) {
+              if (containerTypes.includes(embeddedItem.type) && embeddedItem.system.installedItems.list.length > 0) {
                 embeddedItemList = embeddedItemList.concat(embeddedItem.getInstalledItems());
               }
             }

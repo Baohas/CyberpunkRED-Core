@@ -1012,6 +1012,10 @@ export default class CPRActorSheet extends ActorSheet {
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const item = this.actor.getEmbeddedDocument("Item", itemId);
     const tokenId = (this.token === null) ? null : this.token.id;
+    if (item.type === "cyberware" && item.system.isInstalled) {
+      SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.tradeDragInstalledCyberwareError"));
+      return;
+    }
     event.dataTransfer.setData("text/plain", JSON.stringify({
       type: "Item",
       uuid: item.uuid,
