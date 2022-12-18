@@ -1,12 +1,12 @@
 {{cprTrace "START DIALOG ROLLS CPR-BASE-VERIFY-ROLL-PROMPT.HBS"}}
 <form class="dialog-sheet">
-  <div class="flexcol">
+  <div class="dialog-header flexcol">
     <div class="text-normal text-center">
         {{localize "CPR.rolls.rollingFor" rollTitle=rollData.rollTitle}}
     </div>
 
     {{#if (cprListContains prototypeChain "CPRInitiative")}}
-      <div class="text-bold">
+      <div class="text-small text-center">
         {{localize "CPR.global.generic.combatant"}}: {{rollData.combatant}}
       </div>
     {{/if}}
@@ -18,7 +18,7 @@
             <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.global.generic.stat"}} ({{localize rollData.statName}}):
             </div>
-            <div class="dialog-item-value text-nowrap">
+            <div class="dialog-item-input text-nowrap">
                 <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
             </div>
         </li>
@@ -28,22 +28,19 @@
             <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.global.itemTypes.skill"}} ({{localize rollData.skillName}}):
             </div>
-            <div class="dialog-item-value text-nowrap">
+            <div class="dialog-item-input text-nowrap">
                 <input name="skillValue" class="" type="number" data-dtype="Number" value={{rollData.skillValue}}>
             </div>
         </li>
         {{/if}}
-
-        {{!-- All applied modifier list partial --}}
-        {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
 
         {{!-- Additional user inputted modifiers --}}
         <li class="dialog-item flexrow">
             <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.rolls.modifiers.additionalMods"}}:
             </div>
-            <div class="dialog-item-value text-nowrap">
-                <input name="additionalMods" class="" type="text" value={{rollData.additionalMods}}>
+            <div class="dialog-item-input text-nowrap">
+                <input name="additionalMods" class="" type="text" placeholder="1,-2,3" value={{rollData.additionalMods}}>
             </div>
         </li>
 
@@ -51,7 +48,7 @@
             <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.rolls.luck"}}:
             </div>
-            <div class="dialog-item-value text-nowrap">
+            <div class="dialog-item-input text-nowrap">
                 <input name="luck" class="" type="number" data-dtype="Number" value={{rollData.luck}}>
             </div>
         </li>
@@ -60,7 +57,7 @@
             <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.rolls.shouldRollCriticals"}}:
             </div>
-            <div class="dialog-item-value text-nowrap">
+            <div class="dialog-item-input text-nowrap">
                 <input name="calculateCritical" class="item-checkbox" type="checkbox" data-target = "calculateCritical" data-dtype="Checkbox" {{checked rollData.calculateCritical}}>
             </div>
         </li>
@@ -70,7 +67,7 @@
             <div class="dialog-item-name text-nowrap">
                 {{localize "CPR.rolls.aimFor"}}:
             </div>
-            <div class="dialog-item-value text-nowrap">
+            <div class="dialog-item-input text-nowrap">
                 <select name="location">
                   {{#select rollData.location}}
                     {{#each (cprFindConfigObj "aimedLocation") as |location l|}}
@@ -81,6 +78,9 @@
             </div>
         </li>
         {{/if}}
+
+        {{!-- All applied modifier list partial --}}
+        {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
     </ol>
     </div>
 

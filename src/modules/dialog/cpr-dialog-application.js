@@ -26,6 +26,7 @@ export default class CPRDialog extends FormApplication {
       title: "CPR.global.generic.title",
       width: "auto",
       height: "auto",
+      resizable: true,
       closeOnSubmit: false,
       submitOnChange: true,
       submitOnClose: false,
