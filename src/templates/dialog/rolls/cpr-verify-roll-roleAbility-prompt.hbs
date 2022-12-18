@@ -1,101 +1,105 @@
 {{cprTrace "START DIALOG ROLLS CPR-VERIFY-ROLL-ROLEABILITY-PROMPT.HBS"}}
-<form>
-    <div>
-        {{localize "CPR.rolls.rollingFor" rollTitle=rollData.roleName}}
+<form class="dialog-sheet">
+  <div class="dialog-header flexcol">
+    <div class="text-normal text-center">
+      {{localize "CPR.rolls.rollingFor" rollTitle=rollData.roleName}}
     </div>
+  </div>
 
-    <ol class="items-list">
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.rolls.abilityRank"}}:
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="roleValue" class="" type="number" data-dtype="Number" value={{rollData.roleValue}}>
-            </div>
-        </li>
+  <hr>
+  <div class="dialog-grid flexcol">
+    <ol class="dialog-list">
+      <li class="dialog-item flexrow">
+        <div class="dialog-item-name text-nowrap">
+          {{localize "CPR.rolls.abilityRank"}}:
+        </div>
+        <div class="dialog-item-input text-nowrap">
+          <input name="roleValue" class="" type="number" data-dtype="Number" value={{rollData.roleValue}}>
+        </div>
+      </li>
 
-        {{#if rollData.statValue}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-              {{localize "CPR.global.generic.stat"}} - {{localize (cprFindConfigValue "statList" rollData.statName)}}:
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}} {{#if isVarying}}disabled{{/if}}>
-            </div>
-        </li>
-        {{/if}}
-
-        {{#if (cprCompare rollData.skillName "!==" "--")}}
+      {{#if (cprCompare rollData.skillName "!==" "--")}}
         {{#if isVarying}}
-        <li class="item flexrow">
-          <div class="item flexrow setting-name text-nowrap">
-            {{localize "CPR.itemSheet.role.chooseSkill"}}
-          </div>
-          <div class="item flexrow setting-value text-nowrap item-end">
-            <select class="skill-list-select" name = "skillName">
-              {{#each (cprSortCoreSkills rollData.skillList) as |skill|}}
-                <option value = "{{skill.name}}" {{#if (cprCompare ../rollData.skillName "===" skill.name)}} selected {{/if}}>{{localize (cprGetLocalizedlNameKey skill.name "skill")}}</option>
-              {{/each}}
-            </select>
-          </div>
-        </li>
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.global.generic.skill"}} - {{#if (cprCompare rollData.skillName "===" "varying")}}{{localize "CPR.global.generic.varying"}}{{else}}{{rollData.skillName}}{{/if}}
+          <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
+              {{localize "CPR.itemSheet.role.chooseSkill"}}
             </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="skillValue" class="" type="number" data-dtype="Number" value={{rollData.skillValue}} {{#if isVarying}}disabled{{/if}}>
+            <div class="dialog-item-input text-nowrap">
+              <select class="skill-list-select" name = "skillName">
+                {{#each (cprSortCoreSkills rollData.skillList) as |skill|}}
+                  <option value = "{{skill.name}}" {{#if (cprCompare ../rollData.skillName "===" skill.name)}} selected {{/if}}>{{localize (cprGetLocalizedlNameKey skill.name "skill")}}</option>
+                {{/each}}
+              </select>
             </div>
-        </li>
-        {{else}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.global.generic.skill"}} - {{localize (cprGetLocalizedlNameKey rollData.skillName "skill")}}
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="skillValue" class="" type="number" data-dtype="Number" value={{rollData.skillValue}}>
-            </div>
-        </li>
+          </li>
         {{/if}}
-        {{/if}}
+      {{/if}}
 
-        {{!-- All applied modifier list partial --}}
-        {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
-
-        {{!-- Additional user inputted modifiers --}}
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.rolls.modifiers.additionalMods"}}:
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="additionalMods" class="" type="text" value={{rollData.additionalMods}}>
-            </div>
+      {{#if rollData.statValue}}
+        <li class="dialog-item flexrow">
+          <div class="dialog-item-name text-nowrap">
+            {{localize "CPR.global.generic.stat"}} ({{localize (cprFindConfigValue "statList" rollData.statName)}}):
+          </div>
+          <div class="dialog-item-input text-nowrap">
+            {{#unless isVarying}}
+              <input name="statValue" class="" type="number" data-dtype="Number" value={{rollData.statValue}}>
+            {{else}}
+              <span class="text-padding-right">{{rollData.statValue}}</span>
+            {{/unless}}
+          </div>
         </li>
+      {{/if}}
 
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.rolls.luck"}}:
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="luck" class="" type="number" data-dtype="Number" value={{rollData.luck}}>
-            </div>
+      {{#if (cprCompare rollData.skillName "!==" "--")}}
+        <li class="dialog-item flexrow">
+          <div class="dialog-item-name text-nowrap">
+            {{localize "CPR.global.generic.skill"}} -
+            {{#if (cprCompare rollData.skillName "===" "varying")}}
+              {{localize "CPR.global.generic.varying"}}
+            {{else}}
+              {{localize (cprGetLocalizedlNameKey rollData.skillName "skill")}}
+            {{/if}}
+          </div>
+          <div class="dialog-item-input text-nowrap">
+            {{#unless isVarying}}
+              <input name="skillValue" class="" type="number" data-dtype="Number" value={{rollData.skillValue}}>
+            {{else}}
+              <span class="text-padding-right">{{rollData.skillValue}}</span>
+            {{/unless}}
+          </div>
         </li>
+      {{/if}}
 
-        <li class="item flexrow">
-            <div class="item flexrow setting-name text-nowrap">
-                {{localize "CPR.rolls.shouldRollCriticals"}}:
-            </div>
-            <div class="item flexrow setting-value text-nowrap item-end">
-                <input name="calculateCritical" class="" type="checkbox" data-dtype="Checkbox" checked>
-            </div>
-        </li>
+      {{!-- Additional user inputted modifiers --}}
+      {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-additional-modifiers.hbs" this}}
+
+      <li class="dialog-item flexrow">
+        <div class="dialog-item-name text-nowrap">
+          {{localize "CPR.rolls.luck"}}:
+        </div>
+        <div class="dialog-item-input text-nowrap">
+          <input name="luck" class="" type="number" data-dtype="Number" value={{rollData.luck}}>
+        </div>
+      </li>
+
+      <li class="dialog-item flexrow">
+        <div class="dialog-item-name text-nowrap">
+          {{localize "CPR.rolls.shouldRollCriticals"}}:
+        </div>
+        <div class="dialog-item-input text-nowrap">
+          <input name="calculateCritical" class="" type="checkbox" data-dtype="Checkbox" {{checked rollData.calculateCritical}}>
+        </div>
+      </li>
+
+      {{!-- All applied modifier list partial --}}
+      {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-all-modifiers.hbs" this}}
     </ol>
+  </div>
 
-    {{!-- Situational modifier list partial --}}
-      {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-situational-modifiers.hbs" this}}
+  {{!-- Situational modifier list partial --}}
+  {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-situational-modifiers.hbs" this}}
 
   {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
-
 
 </form>
 {{cprTrace "END CPR-VERIFY-ROLL-ROLEABILITY-PROMPT.HBS"}}
