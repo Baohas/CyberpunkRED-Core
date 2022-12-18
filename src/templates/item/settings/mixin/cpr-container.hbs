@@ -59,7 +59,7 @@
   </div>
   <div>
     {{localize "CPR.itemSheet.container.availableSlots"}}: {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}}
-        {{#if (cprCompare (cprApplyUpgrade item item.system.installedItems.slots "slots") "!==" item.system.installedItems.slots)}}<sup><i class="text-smallest text-super text-super fa-solid fa-square-up"></i></sup>{{/if}}
+        {{#if (cprCompare (cprApplyUpgrade item item.system.installedItems.slots "slots") "!==" item.system.installedItems.slots)}}<i class="text-smallest text-super text-super fa-solid fa-square-up"></i>{{/if}}
   </div>
 </li>
 <li class="item flexrow">
