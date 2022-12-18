@@ -32,6 +32,7 @@ const Upgradable = function Upgradable() {
       }
     }
 
+    let upgradeStatus = installedUpgrades.length > 0;
     // Next identify any upgrades that are installed but not recorded
     // as an upgraded data point
     const newUpgrades = [];
@@ -43,6 +44,7 @@ const Upgradable = function Upgradable() {
     });
 
     for (const upgrade of newUpgrades) {
+      upgradeStatus = true;
       const upgradeModifiers = upgrade.system.modifiers;
       const modList = {};
       Object.keys(upgradeModifiers).forEach((index) => {
@@ -76,7 +78,6 @@ const Upgradable = function Upgradable() {
         installedUpgrades.push(upgradeData);
       }
     }
-    const upgradeStatus = (installedUpgrades.length > 0);
     let upgradeData = [{
       _id: this._id,
       "system.isUpgraded": upgradeStatus,
