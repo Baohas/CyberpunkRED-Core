@@ -200,7 +200,7 @@ const Loadable = function Loadable() {
   this._getLoadedAmmoProp = function _getLoadedAmmoProp(prop) {
     LOGGER.trace("_getLoadedAmmoProp | Loadable | Called.");
     if (this.actor) {
-      const ammo = this.actor.getOwnedItem(this.system.magazine.AmmoData.uuid);
+      const ammo = this.actor.getOwnedItem(this.system.magazine.ammoData.uuid);
       if (ammo) {
         return getProperty(ammo.system, prop);
       }
