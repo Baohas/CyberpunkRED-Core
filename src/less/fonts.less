@@ -1,88 +1,213 @@
+/* JOST* */
+
+// TODO: We probably don't need all these definitions, could probably be made
+//       into a mixin
+
+
+// Taken from https://indestructibletype.com/fonts/Jost.css
+
+/* Weights
+ * 100 = thin
+ * 200 = light
+ * 300 = book
+ * 400 = medium
+ * 500 = semi
+ * 600 = bold
+ * 700 = heavy
+ * 800 = black
+ * 900 = extrablack
+ */
+
 @font-face {
-    font-family: 'Audimat Mono';
-    src        : url('fonts/AudimatMono.woff2') format('woff2'),
-        url('fonts/AudimatMono.woff') format('woff');
-    font-weight : normal;
-    font-style  : normal;
+    font-family: "Jost";
+    src: url("fonts/Jost-100.ttf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Audimat Mono';
-    src        : url('fonts/AudimatMonoSmallCaps.woff2') format('woff2'),
-        url('fonts/AudimatMonoSmallCaps.woff') format('woff');
-    font-weight : bold;
-    font-style  : normal;
+    font-family: "Jost";
+    src: url("fonts/Jost-200.ttf") format("truetype");
+    font-weight: 200;
+    font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Audimat Mono';
-    src        : url('fonts/AudimatMonoLightOblique.woff2') format('woff2'),
-        url('fonts/AudimatMonoLightOblique.woff') format('woff');
-    font-weight : 300;
-    font-style  : italic;
+    font-family: "Jost";
+    src: url("fonts/Jost-300.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Audimat Mono';
-    src        : url('fonts/AudimatMonoSmallCapsLight.woff2') format('woff2'),
-        url('fonts/AudimatMonoSmallCapsLight.woff') format('woff');
-    font-weight : 300;
-    font-style  : normal;
+    font-family: "Jost";
+    src: url("fonts/Jost-400.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Audimat Mono';
-    src        : url('fonts/AudimatMonoLight.woff2') format('woff2'),
-        url('fonts/AudimatMonoLight.woff') format('woff');
-    font-weight : 300;
-    font-style  : normal;
+    font-family: "Jost";
+    src: url("fonts/Jost-500.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Audimat Mono';
-    src        : url('fonts/AudimatMonoBold.woff2') format('woff2'),
-        url('fonts/AudimatMonoBold.woff') format('woff');
-    font-weight : bold;
-    font-style  : normal;
+    font-family: "Jost";
+    src: url("fonts/Jost-600.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Audimat Mono';
-    src        : url('fonts/AudimatMonoBoldOblique.woff2') format('woff2'),
-        url('fonts/AudimatMonoBoldOblique.woff') format('woff');
-    font-weight : bold;
-    font-style  : normal;
+    font-family: "Jost";
+    src: url("fonts/Jost-700.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Audimat Mono';
-    src        : url('fonts/AudimatMonoSmallCapsBold.woff2') format('woff2'),
-        url('fonts/AudimatMonoSmallCapsBold.woff') format('woff');
-    font-weight : bold;
-    font-style  : normal;
+    font-family: "Jost";
+    src: url("fonts/Jost-800.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Audimat Mono';
-    src        : url('fonts/AudimatMonoOblique.woff2') format('woff2'),
-        url('fonts/AudimatMonoOblique.woff') format('woff');
-    font-weight : 900;
-    font-style  : normal;
+    font-family: "Jost";
+    src: url("fonts/Jost-900.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
     font-display: swap;
 }
 
-@font-smallest: 0.5rem;
-@font-smaller: 0.8rem;
-@font-small: 1rem;
-@font-normal: 1.2rem;
+@font-face {
+    font-family: "Jost";
+    src: url("fonts/Jost-100-italic.ttf") format("truetype");
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Jost";
+    src: url("fonts/Jost-200-italic.ttf") format("truetype");
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Jost";
+    src: url("fonts/Jost-300-italic.ttf") format("truetype");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Jost";
+    src: url("fonts/Jost-400-italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Jost";
+    src: url("fonts/Jost-500-italic.ttf") format("truetype");
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Jost";
+    src: url("fonts/Jost-600-italic.ttf") format("truetype");
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Jost";
+    src: url("fonts/Jost-700-italic.ttf") format("truetype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Jost";
+    src: url("fonts/Jost-800-italic.ttf") format("truetype");
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Jost";
+    src: url("fonts/Jost-900-italic.ttf") format("truetype");
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* Orbitron */
+
+@font-face {
+    font-family: "Orbitron";
+    src: url("fonts/Orbitron-400.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Orbitron";
+    src: url("fonts/Orbitron-500.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Orbitron";
+    src: url("fonts/Orbitron-600.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Orbitron";
+    src: url("fonts/Orbitron-700.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Orbitron";
+    src: url("fonts/Orbitron-800.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-smallest: 0.4rem;
+@font-smaller: 0.6rem;
+@font-small: 0.8rem;
+@font-normal: 1rem;
 @font-large: 1.5rem;
 @font-larger: 1.7rem;
 @font-largest: 2rem;

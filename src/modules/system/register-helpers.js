@@ -507,6 +507,11 @@ export default function registerHandlebarsHelpers() {
         }
         break;
       }
+      case "programClass": {
+        // "CPR.global.programClass.defender":
+        localizedKey = `CPR.global.programClass.${SystemUtils.slugify(name)}`;
+        break;
+      }
       default:
     }
     return (SystemUtils.Localize(localizedKey) === localizedKey) ? name : localizedKey;

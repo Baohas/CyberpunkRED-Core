@@ -8,36 +8,49 @@
     </div>
     <div class="item-header-section items-list flexcol">
       <li class="item flexrow">
-        <div class="item-name text-large text-bold text-left text-padding-left">
-          {{localize (cprGetLocalizedlNameKey item)}}{{#if (cprIsUpgradable item.type)}}{{#if item.system.isUpgraded}}<sup><i data-tooltip="{{localize "
-              CPR.upgraded"}}" class="fa-solid fa-square-up"></sup></i>{{/if}}{{/if}}
+        <div class="item-header-title item-name text-large text-left text-padding-left">
+          {{localize (cprGetLocalizedlNameKey item)}}
+            {{#if (cprIsUpgradable item.type)}}
+             {{#if item.system.isUpgraded}}
+               <sup><i data-tooltip="{{localize "CPR.upgraded"}}" class="fa-solid fa-square-up"></sup></i>
+             {{/if}}
+          {{/if}}
         </div>
         <div class="item-detail text-right text-padding-right">
           {{#if (cprIsDebug)}}({{item.id}}){{/if}}
-          {{localize (cprFindConfigValue "objectTypes" item.type)}} <a class="fas fa-question-circle help-article"
-            href="https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/help-articles/{{item.type}}"
-            data-tooltip="{{localize "CPR.global.generic.helparticle"}}"></a>{{#if (cprCompare item.system.source "!==" "")}} |
-          {{item.system.source}}{{/if}}
+            {{localize (cprFindConfigValue "objectTypes" item.type)}}
+            <a class="fas fa-question-circle help-article"
+               href="https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/help-articles/{{item.type}}"
+               data-tooltip="{{localize "CPR.global.generic.helparticle"}}">
+            </a>
+            {{#if (cprCompare item.system.source "!==" "")}} | {{item.system.source}}
+          {{/if}}
         </div>
       </li>
-      <li></li>
-      <li></li>
+      <li>
+      </li>
+      <li>
+      </li>
     </div>
   </div>
   <div class="item-bottom-pane">
     <div class="item-bottom-tabs-section">
-      <nav class="navtabs-item cpr-tabs nav" data-group="primary">
+      <nav class="navtabs-item cpr-tabs nav text-bold" data-group="primary">
         <div class="tab-pink-underlay">
-          <a class="tab-label text-small tab-indent" data-tab="item-description">{{localize
-            "CPR.global.generic.description"}}</a>
+          <a class="tab-label text-small tab-indent" data-tab="item-description">
+            {{localize "CPR.global.generic.description"}}
+          </a>
         </div>
         <div class="tab-pink-underlay">
-          <a class="tab-label text-small tab-indent" data-tab="item-settings">{{localize "CPR.settings.title"}}</a>
+          <a class="tab-label text-small tab-indent" data-tab="item-settings">
+            {{localize "CPR.settings.title"}}
+          </a>
         </div>
         {{#if (cprHasTemplate item.type "effects")}}
         <div class="tab-pink-underlay">
-          <a class="tab-label text-small tab-indent" data-tab="item-effects">{{localize
-            "CPR.itemSheet.effects.effects"}}</a>
+          <a class="tab-label text-small tab-indent" data-tab="item-effects">
+            {{localize "CPR.itemSheet.effects.effects"}}
+          </a>
         </div>
         {{/if}}
       </nav>
@@ -57,7 +70,6 @@
         {{/if}}
       </form>
     </div>
-
   </div>
 </form>
 {{cprTrace "END CPR-ITEM-SHEET.HBS"}}
