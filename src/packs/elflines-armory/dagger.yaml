@@ -29,19 +29,19 @@ system:
   magazine:
     value: 0
     max: 0
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
   ammoVariety: []
   concealable:
     concealable: true
     isConcealed: false
   upgrades: []
-  slots: 0
   isUpgraded: false
   price:
     market: 50
     category: costly
   handsReq: 1
-  attachmentSlots: 3
   isConcealed: false
   quality: standard
   upgrade: ''

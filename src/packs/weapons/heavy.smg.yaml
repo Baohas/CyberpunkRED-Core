@@ -9,9 +9,15 @@ ownership:
   default: 0
 sort: 0
 system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
   ammoVariety:
     - heavyPistol
-  attachmentSlots: 3
   attackmod: 0
   concealable:
     concealable: false
@@ -32,7 +38,9 @@ system:
   isRanged: true
   isUpgraded: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 40
     value: 0
   price:
@@ -41,7 +49,6 @@ system:
   quality: standard
   revealed: true
   rof: 1
-  slots: 3
   source: pg. 341
   tags: ''
   unarmedAutomaticCalculation: true

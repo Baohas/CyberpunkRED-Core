@@ -9,6 +9,13 @@ ownership:
   default: 0
 sort: 0
 system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
   amount: 1
   concealable:
     concealable: false
@@ -24,7 +31,6 @@ system:
     category: costly
     market: 50
   revealed: true
-  slots: 3
   source: pg. 352
   tags: []
   upgrades: []

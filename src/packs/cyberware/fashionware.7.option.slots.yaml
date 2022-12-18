@@ -23,30 +23,27 @@ system:
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: false
   humanityLoss:
     roll: ''
     static: '0'
   install: mall
-  installedOptionSlots: 0
   isFoundational: true
   isInstalled: true
   isRanged: false
   isUpgraded: false
   isWeapon: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 0
     value: 0
-  optionSlots: '7'
-  optionalIds: []
   price:
     category: ''
     market: '0'
   revealed: true
   rof: 1
   size: 1
-  slots: 3
   source: ''
   tags: []
   type: fashionware

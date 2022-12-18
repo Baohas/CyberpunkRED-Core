@@ -49,7 +49,7 @@ const actorHooks = () => {
         (itemType) => {
           if (!updatedData.system.externalData[itemType].id) {
             const itemId = doc.system.externalData[itemType].id;
-            const item = doc._getOwnedItem(itemId);
+            const item = doc.getOwnedItem(itemId);
             const currentValue = updatedData.system.externalData[itemType].value;
             if (item) {
               switch (item.type) {
@@ -111,7 +111,7 @@ const actorHooks = () => {
 
       const netrunnerTokenId = biToken.getFlag(game.system.id, "netrunnerTokenId");
       const cyberdeckId = biToken.getFlag(game.system.id, "sourceCyberdeckId");
-      const programId = biToken.getFlag(game.system.id, "programId");
+      const programUUID = biToken.getFlag(game.system.id, "programUUID");
       const sceneId = biToken.getFlag(game.system.id, "sceneId");
       const sceneList = game.scenes.filter((s) => s.id === sceneId);
       if (sceneList.length === 1) {
@@ -120,8 +120,8 @@ const actorHooks = () => {
         if (tokenList.length === 1) {
           const netrunnerToken = tokenList[0];
           const netrunner = netrunnerToken.actor;
-          const cyberdeck = netrunner._getOwnedItem(cyberdeckId);
-          cyberdeck.updateRezzedProgram(programId, updatedData.system.stats);
+          const cyberdeck = netrunner.getOwnedItem(cyberdeckId);
+          cyberdeck.updateRezzedProgram(programUUID, updatedData.system.stats);
           netrunner.updateEmbeddedDocuments("Item", [{ _id: cyberdeck.id, system: cyberdeck.system }]);
         }
       }

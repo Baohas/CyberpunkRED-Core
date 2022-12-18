@@ -9,6 +9,13 @@ ownership:
   default: 0
 sort: 0
 system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
   concealable:
     concealable: false
     isConcealed: false
@@ -25,7 +32,6 @@ system:
     market: 30000
   sdp: 100
   seats: 2
-  slots: 3
   source: pg. 191
   speedCombat: 20
   speedNarrative: 100 MPH / 161 KPH

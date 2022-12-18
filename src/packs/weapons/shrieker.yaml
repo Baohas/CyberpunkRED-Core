@@ -9,9 +9,15 @@ ownership:
   default: 0
 sort: 0
 system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
   ammoVariety:
     - battery
-  attachmentSlots: 0
   attackmod: 0
   concealable:
     concealable: false
@@ -36,7 +42,9 @@ system:
   isRanged: true
   isUpgraded: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 8
     value: 0
   price:
@@ -45,7 +53,6 @@ system:
   quality: standard
   revealed: true
   rof: 1
-  slots: 0
   source: pg. 349
   tags: []
   unarmedAutomaticCalculation: true

@@ -27,11 +27,11 @@
                           <br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}
                           <br>{{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
                   {{weapon.name}}
-                  {{#if weapon.system.isUpgraded}}<sup><i class="fa-solid fa-square-up"></sup></i>{{/if}}
+                  {{#if weapon.system.isUpgraded}}<sup><i class="text-super fa-solid fa-square-up"></i></sup>{{/if}}
                 </a>
                 <br>
                 {{#if weapon.system.isRanged}}
-                  {{#if weapon.system.magazine.ammoId}}
+                  {{#if weapon.system.magazine.ammoData.uuid}}
                     ({{localize "CPR.global.itemTypes.ammo"}}: {{weapon.system.magazine.value}}/{{cprApplyUpgrade weapon weapon.system.magazine.max "magazine"}})
                   {{else}}
                     ({{localize "CPR.mookSheet.items.unloaded"}})
@@ -41,7 +41,7 @@
                   {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                   {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
                   <!-- Use the if check for if the weapon is upgradable. If true, show the upgrade glpyh -->
-                  {{#if (cprIsUpgradable type)}}
+                  {{#if (cprIsUpgradable weapon)}}
                     {{#if weapon.system.isUpgraded}}
                       {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
                     {{else}}
@@ -114,7 +114,7 @@
                           <br>
                           {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                           {{#if weapon.system.isRanged}}
-                            {{#if weapon.system.magazine.ammoId}}
+                            {{#if weapon.system.magazine.ammoData.uuid}}
                               ({{localize "CPR.global.itemTypes.ammo"}}: {{weapon.system.magazine.value}}/{{weapon.system.magazine.max}})
                             {{else}}
                               ({{localize "CPR.mookSheet.items.unloaded"}})
@@ -183,12 +183,12 @@
                           <br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}
                           <br>{{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
                   {{weapon.name}}
-                  {{#if weapon.system.isUpgraded}}<sup><i class="fa-solid fa-square-up"></sup></i>{{/if}}
+                  {{#if weapon.system.isUpgraded}}<sup><i class="text-super fa-solid fa-square-up"></i></sup>{{/if}}
                 </a>
                 <br>
                 {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}
                 {{#if weapon.system.isRanged}}
-                  {{#if weapon.system.magazine.ammoId}}
+                  {{#if weapon.system.magazine.ammoData.uuid}}
                     ({{localize "CPR.global.itemTypes.ammo"}}: {{weapon.system.magazine.value}}/{{weapon.system.magazine.max}})
                   {{else}}
                     ({{localize "CPR.mookSheet.items.unloaded"}})
@@ -196,7 +196,7 @@
                   {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
                   {{>"systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-dv-glyph.hbs"}}
                   <!-- Use the if check for if the weapon is upgradable. If true, show the upgrade glpyh -->
-                  {{#if (cprIsUpgradable type)}}
+                  {{#if (cprIsUpgradable weapon)}}
                     {{#if weapon.system.isUpgraded}}
                       {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
                     {{else}}
@@ -268,7 +268,7 @@
                           </a>
                           <br>
                           {{#if weapon.system.isRanged}}
-                            {{#if weapon.system.magazine.ammoId}}
+                            {{#if weapon.system.magazine.ammoData.uuid}}
                               ({{localize "CPR.global.itemTypes.ammo"}}: {{weapon.system.magazine.value}}/{{weapon.system.magazine.max}})
                             {{else}}
                               ({{localize "CPR.mookSheet.items.unloaded"}})

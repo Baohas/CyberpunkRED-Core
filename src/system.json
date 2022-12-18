@@ -9,7 +9,7 @@
     "verified": 10,
     "maximum": 10
   },
-  "templateVersion": 2,
+  "templateVersion": 3,
   "authors": [
     {
       "name": "The Project Red Team",
@@ -134,8 +134,8 @@
     {
       "label": "Upgrades",
       "type": "Item",
-      "name": "item-upgrades",
-      "path": "packs/item-upgrades.db",
+      "name": "upgrade-items",
+      "path": "packs/upgrades.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },

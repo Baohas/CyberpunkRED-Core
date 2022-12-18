@@ -34,7 +34,9 @@ system:
   magazine:
     value: 0
     max: 4
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
   ammoVariety:
     - rocket
   concealable:
@@ -47,7 +49,6 @@ system:
     market: 1000
     category: expensive
   handsReq: 2
-  attachmentSlots: 3
   isConcealed: false
   quality: standard
   upgrade: ''

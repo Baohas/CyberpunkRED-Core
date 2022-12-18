@@ -37,7 +37,9 @@ system:
   magazine:
     value: 0
     max: 1
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
   ammoVariety:
     - grenade
   price:
@@ -114,7 +116,6 @@ system:
     will:
       type: modifier
       value: null
-  attachmentSlots: 0
   equipped: owned
 type: itemUpgrade
 _id: 7oPc4wadHGLRo63B

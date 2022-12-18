@@ -35,7 +35,9 @@ system:
   magazine:
     value: 0
     max: 1
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
   ammoVariety:
     - grenade
   concealable:
@@ -48,7 +50,6 @@ system:
     market: 100
     category: expensive
   handsReq: 2
-  attachmentSlots: 3
   isConcealed: false
   quality: standard
   upgrade: ''

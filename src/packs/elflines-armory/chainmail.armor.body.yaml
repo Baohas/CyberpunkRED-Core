@@ -18,7 +18,6 @@ system:
     concealable: false
     isConcealed: false
   upgrades: []
-  slots: 3
   isUpgraded: false
   price:
     market: 100

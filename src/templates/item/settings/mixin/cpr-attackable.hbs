@@ -208,7 +208,7 @@
             {{/if}}
         </div>
     </li>
-    {{#if (cprCompare item.system.magazine.ammoId "!==" "")}}
+    {{#if (cprCompare item.system.magazine.ammoData.uuid "!==" "")}}
         <li class="item flexrow">
             <div class="item flexrow setting-name text-nowrap">
                 {{localize "CPR.itemSheet.weapon.loadedAmmoQuantity"}}
@@ -222,6 +222,7 @@
             </div>
         </li>
     {{/if}}
+    {{!- Ranged Weapon - Compatible Ammo Settings --}}
     <div class="item flexrow setting-name text-nowrap text-bold">
         {{#if this.editable}}
             <a class="select-compatible-ammo" data-item-prop="select-compatible-ammo">
@@ -232,7 +233,7 @@
             </a>
         {{/if}}
     </div>
-    {{!- Ranged Weapon - Compatible Ammo Settings --}}
+
     <div class="compatible-ammo">
         {{#each (cprFindConfigObj "ammoVariety") as |ammoVariety a|}}
             {{#if (cprListContains (cprGetProp ../item.system "ammoVariety") a)}}

@@ -9,9 +9,15 @@ ownership:
   default: 0
 sort: 0
 system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: false
+    list: []
+    usedSlots: 0
+    slots: 3
   ammoVariety: []
   amount: 1
-  attachmentSlots: 0
   attackmod: 0
   concealable:
     concealable: false
@@ -27,12 +33,10 @@ system:
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: false
   humanityLoss:
     roll: 2d6
     static: '7'
   install: notApplicable
-  installedOptionSlots: 0
   isConcealed: false
   isFoundational: false
   isInstalled: false
@@ -40,19 +44,18 @@ system:
   isUpgraded: false
   isWeapon: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 0
     value: 0
-  optionSlots: 0
-  optionalIds: []
   price:
     category: premium
     market: 100
   quality: ''
   revealed: true
   rof: 1
-  size: 0
-  slots: 3
+  size: 1
   source: pg. 360
   tags: []
   type: neuralWare

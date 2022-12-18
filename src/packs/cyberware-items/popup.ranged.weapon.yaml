@@ -9,10 +9,16 @@ ownership:
   default: 0
 sort: 0
 system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: false
+    list: []
+    usedSlots: 0
+    slots: 3
   ammoVariety:
     - medPistol
   amount: 1
-  attachmentSlots: 0
   attackmod: 0
   concealable:
     concealable: false
@@ -30,12 +36,10 @@ system:
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: false
   humanityLoss:
     roll: 2d6
     static: '7'
   install: clinic
-  installedOptionSlots: 0
   isConcealed: false
   isFoundational: false
   isInstalled: false
@@ -43,11 +47,11 @@ system:
   isUpgraded: false
   isWeapon: true
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 0
     value: 0
-  optionSlots: 0
-  optionalIds: []
   price:
     category: expensive
     market: 500
@@ -55,7 +59,6 @@ system:
   revealed: true
   rof: 1
   size: 2
-  slots: 3
   source: pg. 365
   tags: []
   type: cyberArm

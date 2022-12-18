@@ -9,6 +9,13 @@ ownership:
   default: 0
 sort: 0
 system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
   amount: 1
   concealable:
     concealable: false
@@ -25,7 +32,6 @@ system:
     market: 500
   quality: standard
   revealed: true
-  slots: 3
   source: Pg. 356
   style: businesswear
   tags: []

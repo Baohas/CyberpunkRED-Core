@@ -34,7 +34,9 @@ system:
   magazine:
     value: 0
     max: 5
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
   ammoVariety:
     - vHeavyPistol
   concealable:
@@ -47,7 +49,6 @@ system:
     market: 500
     category: premium
   handsReq: 1
-  attachmentSlots: 3
   isConcealed: false
   quality: standard
   upgrade: ''

@@ -12,6 +12,10 @@
 - Update Character sheet to show more information for items
 - Update wording for Failed rolls
 - Babele translation config files added for DLC. Translations will follow later.
+- Upgraded items can now be traded/transferred between Actors!
+- World items can now be upgraded by other World Items!
+- Careful, Choom! Loaded weapons can now be traded/transferred between Actors!
+- The Item Upgrades pack has been renamed from `item-upgrades` to `upgrade-items` to be consistent with other pack names.
 - Update the main system font to Jost for better readability
 
 ### Bug Fixes

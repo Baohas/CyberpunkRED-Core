@@ -34,7 +34,9 @@ system:
   magazine:
     value: 0
     max: 0
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
   ammoVariety: []
   concealable:
     concealable: true
@@ -57,7 +59,6 @@ system:
     static: '3'
     roll: 1d6
   amount: 1
-  attachmentSlots: 0
   isConcealed: false
   quality: ''
   upgrade: ''

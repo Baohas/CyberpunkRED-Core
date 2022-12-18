@@ -9,9 +9,16 @@ ownership:
   default: 0
 sort: 0
 system:
+  installedItems:
+    allowedTypes:
+      - itemUpgrade
+      - cyberware
+    allowed: true
+    list: []
+    usedSlots: 0
+    slots: 3
   ammoVariety: []
   amount: 1
-  attachmentSlots: 0
   attackmod: 0
   concealable:
     concealable: false
@@ -29,12 +36,10 @@ system:
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: true
   humanityLoss:
     roll: '0'
     static: '0'
   install: notApplicable
-  installedOptionSlots: 0
   isConcealed: false
   isFoundational: true
   isInstalled: false
@@ -42,11 +47,11 @@ system:
   isUpgraded: false
   isWeapon: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 0
     value: 0
-  optionSlots: '1'
-  optionalIds: []
   price:
     category: expensive
     market: 0
@@ -54,7 +59,6 @@ system:
   revealed: true
   rof: 1
   size: 0
-  slots: 3
   source: pg. 364
   tags: []
   type: cyberArm
