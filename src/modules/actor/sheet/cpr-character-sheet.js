@@ -658,9 +658,10 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   async _cyberdeckProgramUninstall(event) {
     LOGGER.trace("_cyberdeckProgramUninstall | CPRCharacterActorSheet | Called.");
-    const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
+    const cyberdeckId = SystemUtils.GetEventDatum(event, "da-item-id");
     const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
 
-    return cyberdeck.sheet._cyberdeckProgramUninstall(event);
+    return cyberdeck.sheet._uninstallSingleItem(event);
   }
 }
+
