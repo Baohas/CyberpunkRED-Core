@@ -838,7 +838,7 @@
   "CPR.messages.amountNotNumber": "Error: The amount entered could not be converted to a number!",
   "CPR.messages.cannotDeleteCoreCyberware": "You cannot delete core Cyberware. Just remove the options and it will be hidden.",
   "CPR.messages.cannotDropInstalledCyberware": "You cannot drop or transfer installed Cyberware. You must uninstall it first.",
-  "CPR.messages.consumedDrug": " consumed. Effects are now active, put them to use!",
+  "CPR.messages.consumedDrug": " consumed. Remember to toggle the primary effect on!",
   "CPR.messages.containerSettingsOnToken": "Container settings should be made on the token, not the actor",
   "CPR.messages.creatingLoadedWeaponWorldItemsNotSupported": "Creating a world item that has ammo in it is not supported. Loaded ammunition '{ammoName}' has been deleted/lost.",
   "CPR.messages.criticalInjuryDuplicateAllWarning": "You already have all the possible critical injuries of that type, Choomba! Good Job!",
