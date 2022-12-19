@@ -3,7 +3,7 @@
   <div class="dialog-item-name text-nowrap">
     {{localize "CPR.rolls.modifiers.modsTotal"}}:
   </div>
-  <div class="dialog-item-input text-bold text-nowrap dialog-item-end"
+  <div class="dialog-item-input text-bold text-nowrap"
     {{#if (cprCompare rollData.mods.length "||" rollData.additionalMods.length)}}
       data-tooltip="
         {{#each rollData.mods as |mod|}}
@@ -13,9 +13,10 @@
         {{#if rollData.additionalMods}}
           {{localize "CPR.rolls.modifiers.additionalMods"}}:{{#each rollData.additionalMods as |mod|}}&nbsp;{{numberFormat mod sign=true}}{{#unless @last}},{{/unless}}{{/each}}
         {{/if}}
-      ">
+      "
     {{/if}}
-    <span class="text-padding-right">{{numberFormat totalMods sign=true}}</span>
+  >
+    <span class="total-mod-value">{{numberFormat totalMods sign=true}}</span>
   </div>
 </li>
 {{cprTrace "END CPR-ALL-MODIFIERS.HBS"}}

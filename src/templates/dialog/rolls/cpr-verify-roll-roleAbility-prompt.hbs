@@ -22,12 +22,12 @@
         {{#if isVarying}}
           <li class="dialog-item flexrow">
             <div class="dialog-item-name text-nowrap">
-              {{localize "CPR.itemSheet.role.chooseSkill"}}
+              {{localize "CPR.itemSheet.role.chooseSkill"}}:
             </div>
             <div class="dialog-item-input text-nowrap">
-              <select class="skill-list-select" name = "skillName">
+              <select class="skill-list-select" name="skillName">
                 {{#each (cprSortCoreSkills rollData.skillList) as |skill|}}
-                  <option value = "{{skill.name}}" {{#if (cprCompare ../rollData.skillName "===" skill.name)}} selected {{/if}}>{{localize (cprGetLocalizedlNameKey skill.name "skill")}}</option>
+                  <option value = "{{skill.name}}" {{#if (cprCompare ../rollData.skillName "===" skill.name)}}selected{{/if}}>{{localize (cprGetLocalizedlNameKey skill.name "skill")}}</option>
                 {{/each}}
               </select>
             </div>
@@ -53,11 +53,11 @@
       {{#if (cprCompare rollData.skillName "!==" "--")}}
         <li class="dialog-item flexrow">
           <div class="dialog-item-name text-nowrap">
-            {{localize "CPR.global.generic.skill"}} -
+            {{localize "CPR.global.generic.skill"}}
             {{#if (cprCompare rollData.skillName "===" "varying")}}
-              {{localize "CPR.global.generic.varying"}}
+              ({{localize "CPR.global.generic.varying"}}):
             {{else}}
-              {{localize (cprGetLocalizedlNameKey rollData.skillName "skill")}}
+              ({{localize (cprGetLocalizedlNameKey rollData.skillName "skill")}}):
             {{/if}}
           </div>
           <div class="dialog-item-input text-nowrap">
