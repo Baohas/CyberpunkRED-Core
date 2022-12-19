@@ -664,4 +664,3 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     return cyberdeck.sheet._uninstallSingleItem(event);
   }
 }
-
