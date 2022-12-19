@@ -1,72 +1,41 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "airbnb-base"
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["foundry-cpr"],
+  "rules": {
+    "foundry-cpr/logger-after-function-definition": "warn",
+    "no-warning-comments": [
+      "warn",
+      {
+        "terms": ["TODO"]
+      }
     ],
-    "parserOptions": {
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [ "foundry-cpr" ],
-    "rules": {
-        "foundry-cpr/logger-after-function-definition": "warn",
-        "no-warning-comments": [
-            "warn",
-            {
-                "terms": [
-                    "TODO"
-                ]
-            }
-        ],
-        "quotes": [
-            "warn",
-            "double",
-            {
-                "allowTemplateLiterals": true
-            }
-        ],
-        "no-underscore-dangle": "off",
-        "max-len": [
-            "warn",
-            {
-                "code": 170,
-                "comments": 170
-            }
-        ],
-        "no-param-reassign": [
-            "warn"
-        ],
-        "class-methods-use-this": [
-            "warn"
-        ],
-        "no-unused-vars": [
-            "warn"
-        ],
-        "no-restricted-syntax": [
-            "warn",
-            {
-                "selector": "ForInStatement",
-                "message": "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array."
-            },
-            {
-                "selector": "LabeledStatement",
-                "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
-            },
-              {
-                "selector": "WithStatement",
-                "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
-              }
-        ],
-        "linebreak-style": 0,
-        "import/extensions": ["warn", "always"]
-
-    },
-    "settings": {
-        "import/extensions": [
-            ".js"
-        ]
-    }
+    "no-underscore-dangle": "off",
+    "no-param-reassign": ["warn"],
+    "class-methods-use-this": ["warn"],
+    "no-unused-vars": ["warn"],
+    "no-nested-ternary": "off",
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "ForInStatement",
+        "message": "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array."
+      },
+      {
+        "selector": "LabeledStatement",
+        "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
+      },
+      {
+        "selector": "WithStatement",
+        "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
+      }
+    ],
+    "import/extensions": ["warn", "always"]
+  },
+  "settings": {
+    "import/extensions": [".js"]
+  }
 }
