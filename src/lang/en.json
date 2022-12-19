@@ -749,6 +749,7 @@
   "CPR.itemSheet.effects.effects": "Effects",
   "CPR.itemSheet.effects.nameAndChanges": "Name and Changes",
   "CPR.itemSheet.effects.newEffect": "New Effect",
+  "CPR.itemSheet.effects.readOnly": "This item must be imported before its effects can be changed.",
   "CPR.itemSheet.effects.toggleEffectDesc": "Turn this effect on or off",
   "CPR.itemSheet.hasInstalledItems": "Has installed items",
   "CPR.itemSheet.itemUpgrade.dataPoint": "Attribute",
