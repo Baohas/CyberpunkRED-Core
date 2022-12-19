@@ -563,7 +563,8 @@ export default class CPRSystemUtils {
   }
 
   /**
-   * Strip out html markup from a string
+   * Strip out html markup from a string. This is done with a combination of jQuery to remove the
+   * html tags, and a JavaScript built-in to remove URL codes like "&nbsp;".
    *
    * @static
    * @param {String} htmlString - the html string to convert into plain text
@@ -571,6 +572,6 @@ export default class CPRSystemUtils {
    */
   static stripHTML(htmlString) {
     LOGGER.trace("stripHTML | CPRSystemUtils | Called.");
-    return $(htmlString).text();
+    return decodeURIComponent($(htmlString).text()).trim();
   }
 }
