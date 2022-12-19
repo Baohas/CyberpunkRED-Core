@@ -50,9 +50,12 @@ export default class SelectRoleBonuses extends CPRDialog {
       if (s) bonuses.push(this.skillList.find((a) => a.name === s));
     });
 
+    // Make sure that we are not dividing by 0 or null/undefined.
+    const bonusRatio = !formData.bonusRatio || formData.bonusRatio === 0 ? 1 : formData.bonusRatio;
+
     // Collect relevant data into one object.
     const updatedData = {
-      bonusRatio: formData.bonusRatio,
+      bonusRatio,
       bonuses,
       universalBonuses: formData.universalBonuses.filter((b) => b),
     };
