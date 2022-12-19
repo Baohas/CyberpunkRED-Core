@@ -1,59 +1,59 @@
+_id: yMgSyUvci14qO9WE
 effects: []
 flags:
   core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/heavySMG.svg
 name: Mustang Arms ARS-5 Submachine Gun
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: smg
-  weaponSkill: Handgun
-  fireModes:
-    autoFire: 3
-    suppressiveFire: true
-  damage: 3d6
-  rof: 1
-  dvTable: DV SMG
-  isRanged: true
-  unarmedAutomaticCalculation: true
+  ammoVariety:
+    - heavyPistol
+  attachmentSlots: 3
   attackmod: 0
-  tags: ''
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 3d6
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>This heavy SMG is the complete package; it comes with a Smartgun Link,
       Infrared Nightvision Scope, and a Sniping Scope*.</p>
 
       <p><em>*All three must be manually added after acquiring the
       weapon</em></p>
-    chat: ''
-    unidentified: ''
-  source: 12DoG
-  favorite: false
-  revealed: true
-  usage: equipped
+  dvTable: DV SMG
   equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 40
-    ammoId: ''
-  ammoVariety:
-    - heavyPistol
-  concealable:
-    concealable: false
-    isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 1000
-    category: premium
+  favorite: false
+  fireModes:
+    autoFire: 3
+    suppressiveFire: true
   handsReq: 1
-  attachmentSlots: 3
   isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 40
+    value: 0
+  price:
+    category: premium
+    market: 1000
   quality: standard
+  revealed: true
+  rof: 1
+  slots: 3
+  source: 12DoG
+  tags: ''
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: smg
 type: weapon
-_id: yMgSyUvci14qO9WE
-folder: null
-sort: 0
-ownership:
-  default: 0

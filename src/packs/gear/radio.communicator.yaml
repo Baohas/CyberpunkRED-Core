@@ -9,24 +9,24 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
-  description:
-    value: '<p>Range: 1 mile. In-ear.</p>'
-    chat: ''
-    unidentified: ''
-  source: pg. 354
-  favorite: false
-  revealed: true
-  usage: toggled
-  equipped: owned
+  amount: 1
   concealable:
     concealable: false
     isConcealed: false
-  amount: 1
-  upgrades: []
-  slots: 3
+  description:
+    chat: ''
+    unidentified: ''
+    value: '<p>Range: 1 mile. In-ear.</p>'
+  equipped: owned
+  favorite: false
   isUpgraded: false
   price:
-    market: 100
     category: premium
+    market: 100
+  revealed: true
+  slots: 3
+  source: pg. 354
+  tags: []
+  upgrades: []
+  usage: toggled
 type: gear

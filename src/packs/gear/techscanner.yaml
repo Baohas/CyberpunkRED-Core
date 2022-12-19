@@ -52,9 +52,9 @@ effects:
             '6': skill
     icon: systems/cyberpunk-red-core/icons/compendium/gear/tech_scanner.svg
     label: Techscanner
+    origin: null
     tint: null
     transfer: true
-    origin: null
 flags:
   core: {}
 folder: null
@@ -64,24 +64,24 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
-  description:
-    value: <p>+2 to multiple TECH-based skills.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 355
-  favorite: false
-  revealed: true
-  usage: carried
-  equipped: owned
+  amount: 1
   concealable:
     concealable: false
     isConcealed: false
-  amount: 1
-  upgrades: []
-  slots: 3
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>+2 to multiple TECH-based skills.</p>
+  equipped: owned
+  favorite: false
   isUpgraded: false
   price:
-    market: 1000
     category: veryExpensive
+    market: 1000
+  revealed: true
+  slots: 3
+  source: pg. 355
+  tags: []
+  upgrades: []
+  usage: carried
 type: gear

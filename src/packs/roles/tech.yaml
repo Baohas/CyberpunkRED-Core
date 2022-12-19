@@ -11,6 +11,7 @@ sort: 0
 system:
   abilities:
     - bonusRatio: 1
+      bonuses: []
       description: ''
       hasRoll: true
       index: 0
@@ -20,10 +21,10 @@ system:
       onByDefault: false
       rank: 0
       skill: varying
-      bonuses: []
       stat: tech
       universalBonuses: []
     - bonusRatio: 1
+      bonuses: []
       description: ''
       hasRoll: true
       index: 1
@@ -33,10 +34,10 @@ system:
       onByDefault: false
       rank: 0
       skill: varying
-      bonuses: []
       stat: tech
       universalBonuses: []
     - bonusRatio: 1
+      bonuses: []
       description: ''
       hasRoll: true
       index: 2
@@ -46,10 +47,10 @@ system:
       onByDefault: false
       rank: 0
       skill: varying
-      bonuses: []
       stat: tech
       universalBonuses: []
     - bonusRatio: 1
+      bonuses: []
       description: ''
       hasRoll: true
       index: 3
@@ -59,7 +60,6 @@ system:
       onByDefault: false
       rank: 0
       skill: varying
-      bonuses: []
       stat: tech
       universalBonuses: []
   addRoleAbilityRank: true

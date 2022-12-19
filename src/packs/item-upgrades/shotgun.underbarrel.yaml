@@ -10,49 +10,37 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: shotgun
-  weaponSkill: Shoulder Arms
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 5d6
-  rof: 1
-  dvTable: DV Shotgun (Slug)
-  isRanged: true
-  unarmedAutomaticCalculation: true
+  ammoVariety:
+    - shotgunShell
+    - shotgunSlug
+  attachmentSlots: 0
   attackmod: 0
-  tags: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 5d6
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>Functions like a standard shotgun, but with a magazine size of 2.
       Requires 2 hands to use, and takes up 2 attachment slots. While attached,
       the weapon can't be concealed under clothing.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 343
+  dvTable: DV Shotgun (Slug)
+  equipped: owned
   favorite: false
-  concealable:
-    concealable: false
-    isConcealed: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
   install: mall
   isInstalled: false
-  size: 2
-  usesType: magazine
+  isRanged: true
   magazine:
-    value: 0
-    max: 2
     ammoId: ''
-  ammoVariety:
-    - shotgunShell
-    - shotgunSlug
-  price:
-    market: 500
-    category: expensive
-  handsReq: 0
-  type: weapon
+    max: 2
+    value: 0
   modifiers:
-    secondaryWeapon:
-      configured: 'true'
     Wardrobe & Style:
       type: modifier
       value: null
@@ -104,6 +92,8 @@ system:
     seats:
       type: modifier
       value: null
+    secondaryWeapon:
+      configured: 'true'
     shieldHp:
       type: modifier
       value: null
@@ -119,6 +109,16 @@ system:
     will:
       type: modifier
       value: null
-  attachmentSlots: 0
-  equipped: owned
+  price:
+    category: expensive
+    market: 500
+  rof: 1
+  size: 2
+  source: pg. 343
+  tags: []
+  type: weapon
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
 type: itemUpgrade

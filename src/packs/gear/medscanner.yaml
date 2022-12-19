@@ -27,9 +27,9 @@ effects:
             '1': skill
     icon: systems/cyberpunk-red-core/icons/compendium/gear/medscanner.svg
     label: Medscanner
+    origin: null
     tint: null
     transfer: true
-    origin: null
 flags:
   core: {}
 folder: null
@@ -39,24 +39,24 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
-  description:
-    value: <p>+2 First Aid or Paramedic checks.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 354
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
+  amount: 1
   concealable:
     concealable: false
     isConcealed: false
-  amount: 1
-  upgrades: []
-  slots: 3
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>+2 First Aid or Paramedic checks.</p>
+  equipped: owned
+  favorite: false
   isUpgraded: false
   price:
-    market: 1000
     category: veryExpensive
+    market: 1000
+  revealed: true
+  slots: 3
+  source: pg. 354
+  tags: []
+  upgrades: []
+  usage: equipped
 type: gear

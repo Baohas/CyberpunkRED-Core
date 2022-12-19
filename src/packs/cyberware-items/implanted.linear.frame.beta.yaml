@@ -3,8 +3,8 @@ effects:
   - _id: t0JjeJeKhRUf3IUz
     changes:
       - key: system.stats.body.value
-        value: '14'
         mode: 2
+        value: '14'
     disabled: false
     duration:
       combat: null
@@ -22,9 +22,9 @@ effects:
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/implanted_linearframe_beta.svg
     label: Implanted Linear Frame Beta
+    origin: null
     tint: null
     transfer: true
-    origin: null
 flags:
   core: {}
 folder: null
@@ -35,60 +35,60 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: assaultRifle
-  weaponSkill: Archery
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 1d6
-  rof: 1
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: []
-  description:
-    value: >-
-      <p>Increases your BODY stat to 14 (adjusting your HP and Wound Threshold
-      and Death Save)</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 367
-  favorite: false
-  revealed: true
-  usage: installed
-  install: hospital
-  isInstalled: false
-  size: 0
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 0
-    ammoId: ''
   ammoVariety: []
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 5000
-    category: cheap
-  type: borgware
-  isWeapon: false
-  isFoundational: true
-  hasOptionalSlots: false
-  optionSlots: 0
   core: false
-  installedOptionSlots: 0
-  optionalIds: []
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Increases your BODY stat to 14 (adjusting your HP and Wound Threshold
+      and Death Save)</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
   humanityLoss:
-    static: '14'
     roll: 4d6
-  amount: 1
-  attachmentSlots: 0
+    static: '14'
+  install: hospital
+  installedOptionSlots: 0
   isConcealed: false
+  isFoundational: true
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: 0
+  optionalIds: []
+  price:
+    category: cheap
+    market: 5000
   quality: ''
+  revealed: true
+  rof: 1
+  size: 0
+  slots: 3
+  source: pg. 367
+  tags: []
+  type: borgware
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
 type: cyberware

@@ -1,47 +1,47 @@
+_id: kZy1Hr5L1oUdY3k8
 effects: []
 flags:
   core: {}
+folder: null
 img: icons/equipment/head/cap-steel.webp
 name: Chainmail Armor (Head)
+ownership:
+  default: 0
+sort: 0
 system:
-  tags: []
-  description:
-    value: >-
-      <p>Medium version of an Armorjack for your head. -2 to REF, DEX, and
-      MOVE.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 350
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
+  bodyLocation:
+    ablation: 0
+    sp: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 100
-    category: premium
-  isHeadLocation: true
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Medium version of an Armorjack for your head. -2 to REF, DEX, and
+      MOVE.</p>
+  equipped: owned
+  favorite: false
   headLocation:
+    ablation: 0
     sp: 12
-    ablation: 0
   isBodyLocation: false
-  bodyLocation:
-    sp: 0
-    ablation: 0
+  isHeadLocation: true
   isShield: false
-  shieldHitPoints:
-    value: 0
-    max: 0
+  isUpgraded: false
   penalty: -2
+  price:
+    category: premium
+    market: 100
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  slots: 3
+  source: pg. 350
+  tags: []
   upgrade: ''
+  upgrades: []
+  usage: equipped
 type: armor
-_id: kZy1Hr5L1oUdY3k8
-folder: null
-sort: 0
-ownership:
-  default: 0

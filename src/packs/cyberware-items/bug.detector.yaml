@@ -9,58 +9,58 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: assaultRifle
-  weaponSkill: Archery
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 1d6
-  rof: 1
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: []
-  description:
-    value: <p>Notifies of bugs or taps within 2m/yds.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 361
-  favorite: false
-  revealed: true
-  usage: toggled
-  install: mall
-  isInstalled: false
-  size: 1
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 0
-    ammoId: ''
   ammoVariety: []
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 100
-    category: premium
-  type: cyberAudioSuite
-  isWeapon: false
-  isFoundational: false
-  hasOptionalSlots: false
-  optionSlots: 0
   core: false
-  installedOptionSlots: 0
-  optionalIds: []
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Notifies of bugs or taps within 2m/yds.</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
   humanityLoss:
-    static: '2'
     roll: 1d3
-  amount: 1
-  attachmentSlots: 0
+    static: '2'
+  install: mall
+  installedOptionSlots: 0
   isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: 0
+  optionalIds: []
+  price:
+    category: premium
+    market: 100
   quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  slots: 3
+  source: pg. 361
+  tags: []
+  type: cyberAudioSuite
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
 type: cyberware

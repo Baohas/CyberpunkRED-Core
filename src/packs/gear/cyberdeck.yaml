@@ -9,25 +9,25 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
-  description:
-    value: <p>Netrunner deck. 7 slots.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 353
-  favorite: false
+  amount: 1
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 7
-  isUpgraded: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Netrunner deck. 7 slots.</p>
   equipped: owned
+  favorite: false
+  isUpgraded: false
   price:
-    market: 500
     category: expensive
+    market: 500
   programs:
     installed: []
     rezzed: []
-  amount: 1
+  slots: 7
+  source: pg. 353
+  tags: []
+  upgrades: []
 type: cyberdeck

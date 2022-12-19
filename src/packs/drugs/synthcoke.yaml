@@ -22,9 +22,9 @@ effects:
             '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke.svg
     label: Synthcoke Primary
+    origin: null
     tint: null
     transfer: true
-    origin: null
   - _id: 9fYAbvg99knLYj9T
     changes:
       - key: system.stats.ref.value
@@ -47,9 +47,9 @@ effects:
             '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
     label: Synthcoke Addiction
+    origin: null
     tint: null
     transfer: true
-    origin: null
   - _id: rw9YMhZaP2AQcYJw
     changes:
       - key: system.stats.ref.value
@@ -72,9 +72,9 @@ effects:
             '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
     label: Synthcoke Addicted Primary
+    origin: null
     tint: null
     transfer: true
-    origin: null
 flags:
   core: {}
 folder: null
@@ -84,8 +84,13 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p><strong>Primary Effect</strong></p>
 
@@ -109,18 +114,13 @@ system:
       Acordingly</li>
 
       </ul>
-    chat: ''
-    unidentified: ''
-  source: pg. 357
-  favorite: false
-  revealed: true
-  usage: toggled
   equipped: owned
-  concealable:
-    concealable: false
-    isConcealed: false
-  amount: 1
+  favorite: false
   price:
-    market: 20
     category: everyday
+    market: 20
+  revealed: true
+  source: pg. 357
+  tags: []
+  usage: toggled
 type: drug

@@ -1,56 +1,56 @@
+_id: Mnf5BkWEt22EvAfK
 effects: []
 flags:
   core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle.svg
 name: Nomad Pneumatic Bolt Gun
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: sniperRifle
-  weaponSkill: Shoulder Arms
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 4d6
-  rof: 1
-  dvTable: DV Sniper Rifle
-  isRanged: true
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: ''
-  description:
-    value: >-
-      <p>Capable of firing all Non-Basic ammunition, this weapon is still as
-      versatile as when it was invented over two decades ago.</p>
-    chat: ''
-    unidentified: ''
-  source: 12DoG
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 8
-    ammoId: ''
   ammoVariety:
     - arrow
+  attachmentSlots: 3
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 500
-    category: expensive
+  damage: 4d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Capable of firing all Non-Basic ammunition, this weapon is still as
+      versatile as when it was invented over two decades ago.</p>
+  dvTable: DV Sniper Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
   handsReq: 2
-  attachmentSlots: 3
   isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 8
+    value: 0
+  price:
+    category: expensive
+    market: 500
   quality: standard
+  revealed: true
+  rof: 1
+  slots: 3
+  source: 12DoG
+  tags: ''
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: sniperRifle
 type: weapon
-_id: Mnf5BkWEt22EvAfK
-folder: null
-sort: 0
-ownership:
-  default: 0

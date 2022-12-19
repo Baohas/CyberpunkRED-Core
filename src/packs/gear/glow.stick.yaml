@@ -9,24 +9,24 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
-  description:
-    value: '<p>Duration: 10h. Range: 4m/yds.</p>'
-    chat: ''
-    unidentified: ''
-  source: pg. 353
-  favorite: false
-  revealed: true
-  usage: toggled
-  equipped: owned
+  amount: 1
   concealable:
     concealable: false
     isConcealed: false
-  amount: 1
-  upgrades: []
-  slots: 3
+  description:
+    chat: ''
+    unidentified: ''
+    value: '<p>Duration: 10h. Range: 4m/yds.</p>'
+  equipped: owned
+  favorite: false
   isUpgraded: false
   price:
-    market: 10
     category: cheap
+    market: 10
+  revealed: true
+  slots: 3
+  source: pg. 353
+  tags: []
+  upgrades: []
+  usage: toggled
 type: gear

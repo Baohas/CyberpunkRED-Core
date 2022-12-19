@@ -9,54 +9,42 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: lightMelee
-  weaponSkill: Melee Weapon
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 1d6
-  rof: 1
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
+  ammoVariety: []
+  attachmentSlots: 0
   attackmod: 0
-  tags: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 1d6
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>An old idea that still works just as good; lets you use your gun as a
       light melee weapon. While attached, the weapon can't be concealed under
       clothing.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 343
+  dvTable: ''
+  equipped: owned
   favorite: false
-  concealable:
-    concealable: false
-    isConcealed: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
   install: mall
   isInstalled: false
-  size: 1
-  usesType: magazine
+  isRanged: false
   magazine:
-    value: 0
-    max: 0
     ammoId: ''
-  ammoVariety: []
-  price:
-    market: 100
-    category: premium
-  handsReq: 0
-  type: weapon
+    max: 0
+    value: 0
   modifiers:
-    secondaryWeapon:
-      configured: 'true'
     Wardrobe & Style:
       type: modifier
       value: null
     attackmod:
+      isSituational: false
       type: modifier
       value: null
-      isSituational: false
     body:
       type: modifier
       value: null
@@ -67,9 +55,9 @@ system:
       type: modifier
       value: null
     damage:
+      isSituational: false
       type: modifier
       value: null
-      isSituational: false
     dex:
       type: modifier
       value: null
@@ -103,6 +91,8 @@ system:
     seats:
       type: modifier
       value: null
+    secondaryWeapon:
+      configured: 'true'
     shieldHp:
       type: modifier
       value: null
@@ -118,6 +108,16 @@ system:
     will:
       type: modifier
       value: null
-  attachmentSlots: 0
-  equipped: owned
+  price:
+    category: premium
+    market: 100
+  rof: 1
+  size: 1
+  source: pg. 343
+  tags: []
+  type: weapon
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: lightMelee
 type: itemUpgrade

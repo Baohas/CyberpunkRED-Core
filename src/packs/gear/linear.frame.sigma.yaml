@@ -1,24 +1,20 @@
 _id: 0begTrdCOQcRyLMN
 effects:
-  - label: Linear Frame Sigma
-    icon: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_sigma.svg
-    disabled: false
-    _id: tdnkWa1CRu3vQO0N
+  - _id: tdnkWa1CRu3vQO0N
     changes:
       - key: system.stats.body.value
-        value: '12'
         mode: 5
         priority: null
+        value: '12'
+    disabled: false
     duration:
-      startTime: null
-      seconds: null
       combat: null
       rounds: null
-      turns: null
+      seconds: null
       startRound: null
+      startTime: null
       startTurn: null
-    tint: null
-    transfer: true
+      turns: null
     flags:
       cyberpunk-red-core:
         changes:
@@ -28,6 +24,10 @@ effects:
             '0':
               isSituational: false
               onByDefault: false
+    icon: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_sigma.svg
+    label: Linear Frame Sigma
+    tint: null
+    transfer: true
 flags:
   core: {}
 folder: null
@@ -37,26 +37,26 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
-  description:
-    value: >-
-      <p>Exoskeleton. Requires 1 Interface Plug. Increases BODY to 12 while
-      plugged in. No changes to your HP or Deathsave. </p>
-    chat: ''
-    unidentified: ''
-  source: pg. 351
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
+  amount: 1
   concealable:
     concealable: false
     isConcealed: false
-  amount: 1
-  upgrades: []
-  slots: 3
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Exoskeleton. Requires 1 Interface Plug. Increases BODY to 12 while
+      plugged in. No changes to your HP or Deathsave. </p>
+  equipped: owned
+  favorite: false
   isUpgraded: false
   price:
-    market: 1000
     category: veryExpensive
+    market: 1000
+  revealed: true
+  slots: 3
+  source: pg. 351
+  tags: []
+  upgrades: []
+  usage: equipped
 type: gear

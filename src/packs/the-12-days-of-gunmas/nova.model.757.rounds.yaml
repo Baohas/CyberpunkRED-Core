@@ -1,11 +1,22 @@
+_id: Gxesk4mgq9yMNJKw
 effects: []
 flags:
   core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_smart.png
 name: Nova Model 757 Rounds
+ownership:
+  default: 0
+sort: 0
 system:
-  tags: []
+  ablationValue: 1
+  amount: 18
+  concealable:
+    concealable: true
+    isConcealed: false
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>For use only in the Nova Model 757 Cityhunter. Comes in packs of 18
       instead of the normal 10.</p>
@@ -16,24 +27,13 @@ system:
       attack by 4 or less, roll second attack at same DV 1d10+10 (not normal
       stat). Can add luck. Target can dodge the second roll as normal if able to
       do so.</p>
-    chat: ''
-    unidentified: ''
-  source: 12DoG
   favorite: false
-  concealable:
-    concealable: true
-    isConcealed: false
-  ablationValue: 1
-  amount: 18
   price:
-    market: 500
     category: expensive
-  variety: custom
+    market: 500
+  source: 12DoG
+  tags: []
   type: smart
   upgrade: ''
+  variety: custom
 type: ammo
-_id: Gxesk4mgq9yMNJKw
-folder: null
-sort: 0
-ownership:
-  default: 0

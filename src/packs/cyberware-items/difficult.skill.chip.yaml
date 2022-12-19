@@ -9,60 +9,60 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: assaultRifle
-  weaponSkill: Archery
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 1d6
-  rof: 1
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: []
-  description:
-    value: >-
-      <p>Chipware. Provides  a value of 3 to a specific (x2) skill while
-      installed (unless the skill is already 3+). </p>
-    chat: ''
-    unidentified: ''
-  source: pg. 360
-  favorite: false
-  revealed: true
-  usage: toggled
-  install: notApplicable
-  isInstalled: false
-  size: 0
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 0
-    ammoId: ''
   ammoVariety: []
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 1000
-    category: veryExpensive
-  type: neuralWare
-  isWeapon: false
-  isFoundational: false
-  hasOptionalSlots: false
-  optionSlots: 0
   core: false
-  installedOptionSlots: 0
-  optionalIds: []
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Chipware. Provides  a value of 3 to a specific (x2) skill while
+      installed (unless the skill is already 3+). </p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
   humanityLoss:
-    static: '7'
     roll: 2d6
-  amount: 1
-  attachmentSlots: 0
+    static: '7'
+  install: notApplicable
+  installedOptionSlots: 0
   isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: 0
+  optionalIds: []
+  price:
+    category: veryExpensive
+    market: 1000
   quality: ''
+  revealed: true
+  rof: 1
+  size: 0
+  slots: 3
+  source: pg. 360
+  tags: []
+  type: neuralWare
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
 type: cyberware

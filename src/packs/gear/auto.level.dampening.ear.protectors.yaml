@@ -10,24 +10,24 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
-  description:
-    value: <p>Wearer is immune to loud sounds.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 352
-  favorite: false
-  revealed: true
-  usage: toggled
-  equipped: owned
+  amount: 1
   concealable:
     concealable: false
     isConcealed: false
-  amount: 1
-  upgrades: []
-  slots: 3
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Wearer is immune to loud sounds.</p>
+  equipped: owned
+  favorite: false
   isUpgraded: false
   price:
-    market: 1000
     category: veryExpensive
+    market: 1000
+  revealed: true
+  slots: 3
+  source: pg. 352
+  tags: []
+  upgrades: []
+  usage: toggled
 type: gear

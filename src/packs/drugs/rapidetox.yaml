@@ -9,23 +9,23 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
-  description:
-    value: >-
-      <p>Injecting a target with Rapidetox will eliminate the effects of any
-      drugs, poisons, or intoxicants they are currently affected by.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 150
-  favorite: false
-  revealed: true
-  usage: toggled
-  equipped: owned
+  amount: 1
   concealable:
     concealable: false
     isConcealed: false
-  amount: 1
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Injecting a target with Rapidetox will eliminate the effects of any
+      drugs, poisons, or intoxicants they are currently affected by.</p>
+  equipped: owned
+  favorite: false
   price:
-    market: 200
     category: premium
+    market: 200
+  revealed: true
+  source: pg. 150
+  tags: []
+  usage: toggled
 type: drug

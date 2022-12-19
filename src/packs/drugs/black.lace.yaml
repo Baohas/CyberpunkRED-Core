@@ -3,8 +3,8 @@ effects:
   - _id: L4P56fOWGjVT82ES
     changes:
       - key: system.stats.ref.value
-        value: '-2'
         mode: 2
+        value: '-2'
     disabled: true
     duration:
       combat: null
@@ -26,9 +26,9 @@ effects:
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/status/black_lace_addiction.svg
     label: Black Lace Addicition
+    origin: null
     tint: null
     transfer: true
-    origin: null
 flags:
   core: {}
 folder: null
@@ -38,8 +38,13 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p><strong>Primary Effect</strong></p>
 
@@ -66,18 +71,13 @@ system:
       <li>Unless experiencing the primary effect, REF -2</li>
 
       </ul>
-    chat: ''
-    unidentified: ''
-  source: pg. 357
-  favorite: false
-  revealed: true
-  usage: toggled
   equipped: owned
-  concealable:
-    concealable: false
-    isConcealed: false
-  amount: 1
+  favorite: false
   price:
-    market: 50
     category: costly
+    market: 50
+  revealed: true
+  source: pg. 357
+  tags: []
+  usage: toggled
 type: drug

@@ -9,8 +9,13 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p><strong>Primary Effect</strong></p>
 
@@ -33,18 +38,13 @@ system:
       turn</li>
 
       </ul>
-    chat: ''
-    unidentified: ''
-  source: pg. 357
-  favorite: false
-  revealed: true
-  usage: toggled
   equipped: owned
-  concealable:
-    concealable: false
-    isConcealed: false
-  amount: 1
+  favorite: false
   price:
-    market: 20
     category: everyday
+    market: 20
+  revealed: true
+  source: pg. 357
+  tags: []
+  usage: toggled
 type: drug

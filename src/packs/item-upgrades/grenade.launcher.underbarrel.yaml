@@ -10,55 +10,43 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: grenadeLauncher
-  weaponSkill: Heavy Weapons
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 6d6
-  rof: 1
-  dvTable: DV Grenade Launcher
-  isRanged: true
-  unarmedAutomaticCalculation: true
+  ammoVariety:
+    - grenade
+  attachmentSlots: 0
   attackmod: 0
-  tags: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 6d6
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>Functions like a standard grenade launcher, but with a magazine size of
       1. Requires 2 hands to use, and takes up 2 attachment slots. While
       attached, the weapon can't be concealed under clothing.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 343
+  dvTable: DV Grenade Launcher
+  equipped: owned
   favorite: false
-  concealable:
-    concealable: false
-    isConcealed: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
   install: mall
   isInstalled: false
-  size: 2
-  usesType: magazine
+  isRanged: true
   magazine:
-    value: 0
-    max: 1
     ammoId: ''
-  ammoVariety:
-    - grenade
-  price:
-    market: 500
-    category: expensive
-  handsReq: 0
-  type: weapon
+    max: 1
+    value: 0
   modifiers:
-    secondaryWeapon:
-      configured: 'true'
     Wardrobe & Style:
       type: modifier
       value: null
     attackmod:
+      isSituational: false
       type: modifier
       value: null
-      isSituational: false
     body:
       type: modifier
       value: null
@@ -69,9 +57,9 @@ system:
       type: modifier
       value: null
     damage:
+      isSituational: false
       type: modifier
       value: null
-      isSituational: false
     dex:
       type: modifier
       value: null
@@ -105,6 +93,8 @@ system:
     seats:
       type: modifier
       value: null
+    secondaryWeapon:
+      configured: 'true'
     shieldHp:
       type: modifier
       value: null
@@ -120,6 +110,16 @@ system:
     will:
       type: modifier
       value: null
-  attachmentSlots: 0
-  equipped: owned
+  price:
+    category: expensive
+    market: 500
+  rof: 1
+  size: 2
+  source: pg. 343
+  tags: []
+  type: weapon
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: grenadeLauncher
 type: itemUpgrade

@@ -1,53 +1,46 @@
+_id: 7oPc4wadHGLRo63B
 effects: []
 flags:
   core: {}
+folder: null
 img: >-
   systems/cyberpunk-red-core/icons/compendium/woodchippers_garage/grenade_launcher_underbarrel_poor.svg
 name: Grenade Launcher Underbarrel (Poor)
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: grenadeLauncher
-  weaponSkill: Heavy Weapons
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 6d6
-  rof: 1
-  dvTable: DV Grenade Launcher
-  isRanged: true
-  unarmedAutomaticCalculation: true
+  ammoVariety:
+    - grenade
+  attachmentSlots: 0
   attackmod: 0
-  tags: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 6d6
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>An Exotic attachment, found only on the BudgetArms Triple Treat.</p>
 
       <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using
       an action to clear.</p>
-    chat: ''
-    unidentified: ''
-  source: WG
+  dvTable: DV Grenade Launcher
+  equipped: owned
   favorite: false
-  concealable:
-    concealable: false
-    isConcealed: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
   install: mall
   isInstalled: false
-  size: 2
-  usesType: magazine
+  isRanged: true
   magazine:
-    value: 0
-    max: 1
     ammoId: ''
-  ammoVariety:
-    - grenade
-  price:
-    market: 500
-    category: expensive
-  handsReq: 0
-  type: weapon
+    max: 1
+    value: 0
   modifiers:
-    secondaryWeapon:
-      configured: 'true'
     Wardrobe & Style:
       type: modifier
       value: null
@@ -99,6 +92,8 @@ system:
     seats:
       type: modifier
       value: null
+    secondaryWeapon:
+      configured: 'true'
     shieldHp:
       type: modifier
       value: null
@@ -114,11 +109,16 @@ system:
     will:
       type: modifier
       value: null
-  attachmentSlots: 0
-  equipped: owned
+  price:
+    category: expensive
+    market: 500
+  rof: 1
+  size: 2
+  source: WG
+  tags: []
+  type: weapon
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: grenadeLauncher
 type: itemUpgrade
-_id: 7oPc4wadHGLRo63B
-folder: null
-sort: 0
-ownership:
-  default: 0

@@ -9,58 +9,58 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: assaultRifle
-  weaponSkill: Archery
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 1d6
-  rof: 1
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: []
-  description:
-    value: <p>A cybernetical replacement arm. Comes with a free hand. </p>
-    chat: ''
-    unidentified: ''
-  source: pg. 364
-  favorite: false
-  revealed: true
-  usage: toggled
-  install: hospital
-  isInstalled: false
-  size: 0
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 0
-    ammoId: ''
   ammoVariety: []
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 500
-    category: expensive
-  type: cyberArm
-  isWeapon: false
-  isFoundational: true
-  hasOptionalSlots: true
-  optionSlots: '4'
   core: false
-  installedOptionSlots: 0
-  optionalIds: []
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>A cybernetical replacement arm. Comes with a free hand. </p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: true
   humanityLoss:
-    static: '7'
     roll: 2d6
-  amount: 1
-  attachmentSlots: 0
+    static: '7'
+  install: hospital
+  installedOptionSlots: 0
   isConcealed: false
+  isFoundational: true
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: '4'
+  optionalIds: []
+  price:
+    category: expensive
+    market: 500
   quality: ''
+  revealed: true
+  rof: 1
+  size: 0
+  slots: 3
+  source: pg. 364
+  tags: []
+  type: cyberArm
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
 type: cyberware

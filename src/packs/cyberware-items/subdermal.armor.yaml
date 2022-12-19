@@ -9,58 +9,58 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: assaultRifle
-  weaponSkill: Archery
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 1d6
-  rof: 1
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: []
-  description:
-    value: <p>Head and Body Armor SP11 and recovers 1SP /day. Does not stack</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 364
-  favorite: false
-  revealed: true
-  usage: toggled
-  install: hospital
-  isInstalled: false
-  size: 1
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 0
-    ammoId: ''
   ammoVariety: []
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 1000
-    category: veryExpensive
-  type: cyberwareExternal
-  isWeapon: false
-  isFoundational: false
-  hasOptionalSlots: false
-  optionSlots: 0
   core: false
-  installedOptionSlots: 0
-  optionalIds: []
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Head and Body Armor SP11 and recovers 1SP /day. Does not stack</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
   humanityLoss:
-    static: '14'
     roll: 4d6
-  amount: 1
-  attachmentSlots: 0
+    static: '14'
+  install: hospital
+  installedOptionSlots: 0
   isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: 0
+  optionalIds: []
+  price:
+    category: veryExpensive
+    market: 1000
   quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  slots: 3
+  source: pg. 364
+  tags: []
+  type: cyberwareExternal
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
 type: cyberware

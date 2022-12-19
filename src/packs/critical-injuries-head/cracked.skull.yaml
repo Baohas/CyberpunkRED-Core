@@ -10,14 +10,15 @@ ownership:
   default: 0
 sort: 0
 system:
+  deathSaveIncrease: true
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>Triples damage to HP on aimed headshots (rather than the normal double
       damage).</p>
-    chat: ''
-    unidentified: ''
+  effects: ''
   favorite: false
-  usage: toggled
   location: head
   quickFix:
     dvFirstAid: 0
@@ -27,9 +28,8 @@ system:
   source: Pg. 188
   tags: []
   treatment:
-    type: paramedicSurgery
     dvParamedic: 15
     dvSurgery: 15
-  deathSaveIncrease: true
-  effects: ''
+    type: paramedicSurgery
+  usage: toggled
 type: criticalInjury

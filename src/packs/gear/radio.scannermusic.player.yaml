@@ -10,24 +10,24 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
-  description:
-    value: '<p>Receive radio transmissions. Range: 1 mile.</p>'
-    chat: ''
-    unidentified: ''
-  source: pg. 354
-  favorite: false
-  revealed: true
-  usage: toggled
-  equipped: owned
+  amount: 1
   concealable:
     concealable: false
     isConcealed: false
-  amount: 1
-  upgrades: []
-  slots: 3
+  description:
+    chat: ''
+    unidentified: ''
+    value: '<p>Receive radio transmissions. Range: 1 mile.</p>'
+  equipped: owned
+  favorite: false
   isUpgraded: false
   price:
-    market: 50
     category: costly
+    market: 50
+  revealed: true
+  slots: 3
+  source: pg. 354
+  tags: []
+  upgrades: []
+  usage: toggled
 type: gear

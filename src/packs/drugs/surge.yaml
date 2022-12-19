@@ -9,24 +9,24 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>Injecting a target with Surge causes them to be immune to sleep
       deprivation for 24 hours. It can only be used on a target once per
       week.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 150
-  favorite: false
-  revealed: true
-  usage: toggled
   equipped: owned
-  concealable:
-    concealable: false
-    isConcealed: false
-  amount: 1
+  favorite: false
   price:
-    market: 200
     category: premium
+    market: 200
+  revealed: true
+  source: pg. 150
+  tags: []
+  usage: toggled
 type: drug

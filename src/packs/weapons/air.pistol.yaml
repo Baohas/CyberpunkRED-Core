@@ -9,48 +9,48 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: medPistol
-  weaponSkill: Handgun
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: '0'
-  rof: 2
-  dvTable: DV Pistol
-  isRanged: true
-  unarmedAutomaticCalculation: true
+  ammoVariety:
+    - paintball
+  attachmentSlots: 0
   attackmod: 0
-  tags: []
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: '0'
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is
       able to ablate armor by one with each hit. Refer to the full item
       description on pg. 347.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 347
-  favorite: false
-  revealed: true
-  usage: equipped
+  dvTable: DV Pistol
   equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 12
-    ammoId: ''
-  ammoVariety:
-    - paintball
-  concealable:
-    concealable: true
-    isConcealed: false
-  upgrades: []
-  slots: 0
-  isUpgraded: false
-  price:
-    market: 100
-    category: premium
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
   handsReq: 1
-  attachmentSlots: 0
   isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 12
+    value: 0
+  price:
+    category: premium
+    market: 100
   quality: standard
+  revealed: true
+  rof: 2
+  slots: 0
+  source: pg. 347
+  tags: []
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: medPistol
 type: weapon

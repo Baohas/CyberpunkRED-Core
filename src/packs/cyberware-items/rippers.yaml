@@ -9,60 +9,60 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: medMelee
-  weaponSkill: Melee Weapon
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 2d6
-  rof: 2
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: []
-  description:
-    value: >-
-      <p>Very sharp fingernails which are a Medium Melee Weapon. Can be
-      concealed. </p>
-    chat: ''
-    unidentified: ''
-  source: pg. 365
-  favorite: false
-  revealed: true
-  usage: toggled
-  install: clinic
-  isInstalled: false
-  size: 1
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 0
-    ammoId: ''
   ammoVariety: []
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 500
-    category: expensive
-  type: cyberArm
-  isWeapon: true
-  isFoundational: false
-  hasOptionalSlots: false
-  optionSlots: 0
   core: false
-  installedOptionSlots: 0
-  optionalIds: []
+  damage: 2d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Very sharp fingernails which are a Medium Melee Weapon. Can be
+      concealed. </p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
   humanityLoss:
-    static: '3'
     roll: 1d6
-  amount: 1
-  attachmentSlots: 0
+    static: '3'
+  install: clinic
+  installedOptionSlots: 0
   isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: true
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: 0
+  optionalIds: []
+  price:
+    category: expensive
+    market: 500
   quality: standard
+  revealed: true
+  rof: 2
+  size: 1
+  slots: 3
+  source: pg. 365
+  tags: []
+  type: cyberArm
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: medMelee
 type: cyberware

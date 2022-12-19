@@ -1,70 +1,70 @@
+_id: rUSdivkoD9THJXNy
 effects: []
 flags:
   core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/micro_chrome/smart_lens.svg
 name: Smart Lens
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: assaultRifle
-  weaponSkill: Archery
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 1d6
-  rof: 1
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: []
-  description:
-    value: >-
-      <p>Gives a user a single Cybereye Option. Can use one Smart Lens per
-      eye.</p>
-    chat: ''
-    unidentified: ''
-  source: MC
-  favorite: false
-  revealed: true
-  usage: toggled
-  install: mall
-  isInstalled: false
-  size: 1
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 0
-    ammoId: ''
   ammoVariety: []
-  concealable:
-    concealable: false
-    isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 500
-    category: veryExpensive
-  type: cyberEye
-  isWeapon: false
-  isFoundational: true
-  hasOptionalSlots: true
-  optionSlots: '1'
-  core: false
-  installedOptionSlots: 0
-  optionalIds: []
-  humanityLoss:
-    static: '0'
-    roll: '0'
   amount: 1
   attachmentSlots: 0
+  attackmod: 0
   charges:
     max: 0
     value: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Gives a user a single Cybereye Option. Can use one Smart Lens per
+      eye.</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: true
+  humanityLoss:
+    roll: '0'
+    static: '0'
+  install: mall
+  installedOptionSlots: 0
   isConcealed: false
+  isFoundational: true
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoId: ''
+    max: 0
+    value: 0
+  optionSlots: '1'
+  optionalIds: []
+  price:
+    category: veryExpensive
+    market: 500
+  revealed: true
+  rof: 1
+  size: 1
   slotSize: 1
+  slots: 3
+  source: MC
+  tags: []
+  type: cyberEye
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
 type: cyberware
-_id: rUSdivkoD9THJXNy
-folder: null
-sort: 0
-ownership:
-  default: 0

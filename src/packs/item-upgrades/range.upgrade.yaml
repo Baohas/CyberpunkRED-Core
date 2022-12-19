@@ -9,46 +9,34 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: ''
-  weaponSkill: ''
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 1d6
-  rof: 1
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
+  ammoVariety: []
+  attachmentSlots: 0
   attackmod: 0
-  tags: []
-  description:
-    value: >-
-      <p>Cyberdeck can connect to access points from up to 8m/yds away (instead
-      of 6m/yds).</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 368
-  favorite: false
   concealable:
     concealable: false
     isConcealed: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Cyberdeck can connect to access points from up to 8m/yds away (instead
+      of 6m/yds).</p>
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
   install: mall
   isInstalled: false
-  size: 1
-  usesType: magazine
+  isRanged: false
   magazine:
-    value: 0
-    max: 0
     ammoId: ''
-  ammoVariety: []
-  price:
-    market: 100
-    category: premium
-  handsReq: 0
-  type: cyberdeck
+    max: 0
+    value: 0
   modifiers:
-    secondaryWeapon:
-      configured: 'false'
     Wardrobe & Style:
       type: modifier
       value: null
@@ -67,9 +55,21 @@ system:
     rof:
       type: modifier
       value: null
+    secondaryWeapon:
+      configured: 'false'
     slots:
       type: modifier
       value: null
-  attachmentSlots: 0
-  equipped: owned
+  price:
+    category: premium
+    market: 100
+  rof: 1
+  size: 1
+  source: pg. 368
+  tags: []
+  type: cyberdeck
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: ''
+  weaponType: ''
 type: itemUpgrade

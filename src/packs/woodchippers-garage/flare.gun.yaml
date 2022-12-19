@@ -1,22 +1,25 @@
+_id: moqJ5beR4WqWCpZM
 effects: []
 flags:
   core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher.svg
 name: Flare Gun
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: grenadeLauncher
-  weaponSkill: Heavy Weapons
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 6d6
-  rof: 1
-  dvTable: DV Grenade Launcher
-  isRanged: true
-  unarmedAutomaticCalculation: true
+  ammoVariety:
+    - grenade
+  attachmentSlots: 3
   attackmod: 0
-  tags: ''
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 6d6
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>As well as normal Grenade Ammunition, this weapon can fire road
       flares*. They don't deal any damage, but if fired into the air can be seen
@@ -24,37 +27,34 @@ system:
 
       <p><em>*Currently not supported so will need to manually delete a road
       flare from actors inventory after firing</em></p>
-    chat: ''
-    unidentified: ''
-  source: WG
-  favorite: false
-  revealed: true
-  usage: equipped
+  dvTable: DV Grenade Launcher
   equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 1
-    ammoId: ''
-  ammoVariety:
-    - grenade
-  concealable:
-    concealable: false
-    isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 100
-    category: expensive
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
   handsReq: 2
-  attachmentSlots: 3
   isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoId: ''
+    max: 1
+    value: 0
+  price:
+    category: expensive
+    market: 100
   quality: standard
+  revealed: true
+  rof: 1
+  slots: 3
+  source: WG
+  tags: ''
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: grenadeLauncher
 type: weapon
-_id: moqJ5beR4WqWCpZM
-folder: null
-sort: 0
-ownership:
-  default: 0

@@ -9,16 +9,16 @@ name: Foreign Object (H)
 ownership:
   default: 0
 sort: 0
-type: criticalInjury
 system:
+  deathSaveIncrease: false
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>Suffer Crit damage at end of turn if move more than 4m/yrds on
       foot.</p>
-    chat: ''
-    unidentified: ''
+  effects: ''
   favorite: false
-  usage: toggled
   location: head
   quickFix:
     dvFirstAid: 13
@@ -28,8 +28,8 @@ system:
   source: Pg. 188
   tags: []
   treatment:
-    type: quickFix
     dvParamedic: 0
     dvSurgery: 0
-  deathSaveIncrease: false
-  effects: ''
+    type: quickFix
+  usage: toggled
+type: criticalInjury

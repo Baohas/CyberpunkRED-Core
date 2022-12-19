@@ -11,6 +11,7 @@ sort: 0
 system:
   abilities:
     - bonusRatio: 1
+      bonuses: []
       description: ''
       hasRoll: false
       index: 1
@@ -20,10 +21,10 @@ system:
       onByDefault: false
       rank: 0
       skill: '--'
-      bonuses: []
       stat: '--'
       universalBonuses: []
     - bonusRatio: 1
+      bonuses: []
       description: ''
       hasRoll: false
       index: 2
@@ -33,11 +34,11 @@ system:
       onByDefault: false
       rank: 0
       skill: '--'
-      bonuses: []
       stat: '--'
       universalBonuses:
         - initiative
     - bonusRatio: 3
+      bonuses: []
       description: ''
       hasRoll: false
       index: 3
@@ -47,11 +48,11 @@ system:
       onByDefault: false
       rank: 0
       skill: '--'
-      bonuses: []
       stat: '--'
       universalBonuses:
         - attack
     - bonusRatio: 1
+      bonuses: []
       description: ''
       hasRoll: false
       index: 4
@@ -61,20 +62,10 @@ system:
       onByDefault: true
       rank: 0
       skill: '--'
-      bonuses: []
       stat: '--'
       universalBonuses:
         - damage
     - bonusRatio: 1
-      description: ''
-      hasRoll: false
-      index: 5
-      isSituational: false
-      multiplier: '1'
-      name: Threat Detection
-      onByDefault: false
-      rank: 0
-      skill: '--'
       bonuses:
         - _id: InrW2EFk0Jvdh195
           data:
@@ -99,9 +90,19 @@ system:
             default: 0
           sort: 0
           type: skill
+      description: ''
+      hasRoll: false
+      index: 5
+      isSituational: false
+      multiplier: '1'
+      name: Threat Detection
+      onByDefault: false
+      rank: 0
+      skill: '--'
       stat: '--'
       universalBonuses: []
     - bonusRatio: 2
+      bonuses: []
       description: ''
       hasRoll: false
       index: 0
@@ -111,7 +112,6 @@ system:
       onByDefault: true
       rank: 0
       skill: '--'
-      bonuses: []
       stat: '--'
       universalBonuses:
         - damageReduction

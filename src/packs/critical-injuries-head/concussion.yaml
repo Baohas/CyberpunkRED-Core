@@ -9,12 +9,13 @@ ownership:
   default: 0
 sort: 0
 system:
+  deathSaveIncrease: false
   description:
-    value: <p>-2 to every action.</p>
     chat: ''
     unidentified: ''
+    value: <p>-2 to every action.</p>
+  effects: ''
   favorite: false
-  usage: toggled
   location: head
   quickFix:
     dvFirstAid: 13
@@ -24,9 +25,8 @@ system:
   source: Pg. 188
   tags: []
   treatment:
-    type: quickFix
     dvParamedic: 0
     dvSurgery: 0
-  deathSaveIncrease: false
-  effects: ''
+    type: quickFix
+  usage: toggled
 type: criticalInjury

@@ -9,59 +9,59 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: vHeavyPistol
-  weaponSkill: Handgun
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 4d6
-  rof: 1
-  dvTable: ''
-  isRanged: true
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: []
-  description:
-    value: <p>A single shot weapon which can be concealed. </p>
-    chat: ''
-    unidentified: ''
-  source: pg. 360
-  favorite: false
-  revealed: true
-  usage: toggled
-  install: clinic
-  isInstalled: false
-  size: 3
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 1
-    ammoId: ''
   ammoVariety:
     - arrow
+  amount: 1
+  attachmentSlots: 0
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 500
-    category: expensive
-  type: cyberEye
-  isWeapon: true
-  isFoundational: false
-  hasOptionalSlots: false
-  optionSlots: 0
   core: false
-  installedOptionSlots: 0
-  optionalIds: []
+  damage: 4d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>A single shot weapon which can be concealed. </p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  hasOptionalSlots: false
   humanityLoss:
-    static: '2'
     roll: 1d3
-  amount: 1
-  attachmentSlots: 0
+    static: '2'
+  install: clinic
+  installedOptionSlots: 0
   isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: true
+  isUpgraded: false
+  isWeapon: true
+  magazine:
+    ammoId: ''
+    max: 1
+    value: 0
+  optionSlots: 0
+  optionalIds: []
+  price:
+    category: expensive
+    market: 500
   quality: standard
+  revealed: true
+  rof: 1
+  size: 3
+  slots: 3
+  source: pg. 360
+  tags: []
+  type: cyberEye
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
 type: cyberware

@@ -9,53 +9,41 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: ''
-  weaponSkill: ''
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 1d6
-  rof: 1
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
+  ammoVariety: []
+  attachmentSlots: 0
   attackmod: 0
-  tags: []
-  description:
-    value: >-
-      <p>Turns weapon into a "Smartgun". Refer to all rules specified on pg. 344
-      before using.&nbsp;</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 344
-  favorite: false
   concealable:
     concealable: false
     isConcealed: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Turns weapon into a "Smartgun". Refer to all rules specified on pg. 344
+      before using.&nbsp;</p>
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
   install: mall
   isInstalled: false
-  size: 2
-  usesType: magazine
+  isRanged: false
   magazine:
-    value: 0
-    max: 0
     ammoId: ''
-  ammoVariety: []
-  price:
-    market: 500
-    category: expensive
-  handsReq: 0
-  type: weapon
+    max: 0
+    value: 0
   modifiers:
-    secondaryWeapon:
-      configured: 'false'
     Wardrobe & Style:
       type: modifier
       value: null
     attackmod:
+      isSituational: false
       type: modifier
       value: 1
-      isSituational: false
     body:
       type: modifier
       value: null
@@ -66,9 +54,9 @@ system:
       type: modifier
       value: null
     damage:
+      isSituational: false
       type: modifier
       value: null
-      isSituational: false
     dex:
       type: modifier
       value: null
@@ -102,6 +90,8 @@ system:
     seats:
       type: modifier
       value: null
+    secondaryWeapon:
+      configured: 'false'
     shieldHp:
       type: modifier
       value: null
@@ -117,6 +107,16 @@ system:
     will:
       type: modifier
       value: null
-  attachmentSlots: 0
-  equipped: owned
+  price:
+    category: expensive
+    market: 500
+  rof: 1
+  size: 2
+  source: pg. 344
+  tags: []
+  type: weapon
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: ''
+  weaponType: ''
 type: itemUpgrade

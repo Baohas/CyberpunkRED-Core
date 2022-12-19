@@ -1,45 +1,45 @@
+_id: PcfZoO9meC9iAMkY
 effects: []
 flags:
   core: {}
+folder: null
 img: icons/equipment/shield/buckler-wooden-boss-brown.webp
 name: Shield
+ownership:
+  default: 0
+sort: 0
 system:
-  tags: []
-  description:
-    value: <p>Requires an arm and has HP that is reduced by damage.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 351
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
+  bodyLocation:
+    ablation: 0
+    sp: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 100
-    category: premium
-  isHeadLocation: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Requires an arm and has HP that is reduced by damage.</p>
+  equipped: owned
+  favorite: false
   headLocation:
-    sp: 0
     ablation: 0
+    sp: 0
   isBodyLocation: false
-  bodyLocation:
-    sp: 0
-    ablation: 0
+  isHeadLocation: false
   isShield: true
-  shieldHitPoints:
-    value: 10
-    max: 10
+  isUpgraded: false
   penalty: 0
+  price:
+    category: premium
+    market: 100
+  revealed: true
+  shieldHitPoints:
+    max: 10
+    value: 10
+  slots: 3
+  source: pg. 351
+  tags: []
   upgrade: ''
+  upgrades: []
+  usage: equipped
 type: armor
-_id: PcfZoO9meC9iAMkY
-folder: null
-sort: 0
-ownership:
-  default: 0

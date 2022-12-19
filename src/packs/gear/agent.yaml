@@ -1,28 +1,24 @@
 _id: GqYz689ddSKQHMen
 effects:
-  - label: Agent
-    icon: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
-    disabled: false
-    _id: OnONUXyMY8mOquf7
+  - _id: OnONUXyMY8mOquf7
     changes:
       - key: bonuses.librarySearch
-        value: '2'
         mode: 2
         priority: null
+        value: '2'
       - key: bonuses.wardrobeAndStyle
-        value: '2'
         mode: 2
         priority: null
+        value: '2'
+    disabled: false
     duration:
-      startTime: null
-      seconds: null
       combat: null
       rounds: null
-      turns: null
+      seconds: null
       startRound: null
+      startTime: null
       startTurn: null
-    tint: null
-    transfer: true
+      turns: null
     flags:
       cyberpunk-red-core:
         changes:
@@ -36,6 +32,10 @@ effects:
             '1':
               isSituational: true
               onByDefault: false
+    icon: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
+    label: Agent
+    tint: null
+    transfer: true
 flags:
   core: {}
 folder: null
@@ -45,26 +45,26 @@ ownership:
   default: 0
 sort: 0
 system:
-  tags: []
-  description:
-    value: >-
-      <p>AI Smartphone. +2 Library Search, +2 Wardrobe & Style depending on
-      circumstance.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 352
-  favorite: false
-  revealed: true
-  usage: carried
-  equipped: owned
+  amount: 1
   concealable:
     concealable: false
     isConcealed: false
-  amount: 1
-  upgrades: []
-  slots: 3
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>AI Smartphone. +2 Library Search, +2 Wardrobe & Style depending on
+      circumstance.</p>
+  equipped: owned
+  favorite: false
   isUpgraded: false
   price:
-    market: 100
     category: premium
+    market: 100
+  revealed: true
+  slots: 3
+  source: pg. 352
+  tags: []
+  upgrades: []
+  usage: carried
 type: gear
