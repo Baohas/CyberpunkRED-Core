@@ -726,7 +726,7 @@ export default class CPRActorSheet extends ActorSheet {
   static async _setCriticalInjuryTable(tableSetting) {
     LOGGER.trace("_setCriticalInjuryTable | CPRActorSheet | Called.");
     const critInjuryTables = await SystemUtils.GetCompendiumDocs(tableSetting);
-    const tableNames = critInjuryTables.map((t) => t.name);
+    const tableNames = critInjuryTables.map((t) => t.name).sort();
     const formData = await RollCriticalInjuryPrompt.RenderPrompt(tableNames).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return undefined;

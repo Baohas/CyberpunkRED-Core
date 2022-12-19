@@ -18,6 +18,7 @@
 - The Item Upgrades pack has been renamed from `item-upgrades` to `upgrade-items` to be consistent with other pack names.
 - Update the main system font to Jost for better readability
 - #448 - Add the ability to "quick fix" a critical injury - resolved for now by making them all Toggled
+- #611 - default to Body table when rolling critical injuries
 
 ### Bug Fixes
 
