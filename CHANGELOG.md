@@ -17,6 +17,7 @@
 - Careful, Choom! Loaded weapons can now be traded/transferred between Actors!
 - The Item Upgrades pack has been renamed from `item-upgrades` to `upgrade-items` to be consistent with other pack names.
 - Update the main system font to Jost for better readability
+- #611 - default to Body table when rolling critical injuries
 
 ### Bug Fixes
 
