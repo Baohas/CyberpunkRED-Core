@@ -45,7 +45,6 @@ for file in ${ALL_FILES}; do
   for str in ${HELPERS}; do
     if ! grep -q "${str}" "${file}"; then
       used=1
-      echo "✅ ${str} is used!"
       break
     fi
   done
