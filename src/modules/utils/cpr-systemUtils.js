@@ -538,6 +538,8 @@ export default class CPRSystemUtils {
     }
   }
 
+  /* Everything else */
+
   /**
    * Inspect an event object for passed-in field specific to the target (link) that was clicked.
    * This code will initially look at the current target, and if the field is not found, it will
@@ -558,5 +560,17 @@ export default class CPRSystemUtils {
       }
     }
     return id;
+  }
+
+  /**
+   * Strip out html markup from a string
+   *
+   * @static
+   * @param {String} htmlString - the html string to convert into plain text
+   * @returns {String}
+   */
+  static stripHTML(htmlString) {
+    LOGGER.trace("stripHTML | CPRSystemUtils | Called.");
+    return $(htmlString).text();
   }
 }

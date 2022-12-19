@@ -451,6 +451,7 @@ export default class CPRCyberdeckItem extends CPRItem {
           programData.atk,
           programData.def,
           programData.rez,
+          programData.description.value,
           programData.rez,
         );
         const cprFlags = (typeof programData.flags[game.system.id] !== "undefined") ? programData.flags[game.system.id] : {};
@@ -568,6 +569,7 @@ export default class CPRCyberdeckItem extends CPRItem {
             programState.atk,
             programState.def,
             programState.rez,
+            programState.description.value,
           );
         }
       }
