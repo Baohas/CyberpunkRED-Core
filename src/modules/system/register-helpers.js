@@ -860,6 +860,6 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprStripHtml", (string) => {
     LOGGER.trace("cprStripHtml | handlebarsHelper | Called.");
-    return $(string).text();
+    return SystemUtils.stripHTML(string);
   });
 }

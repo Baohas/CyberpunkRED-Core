@@ -120,7 +120,7 @@ export default class CPRBlackIceActor extends Actor {
    * @param {String} effect - Text to display in the effect field of the Black ICE. Any HTML is stripped from
    *                          the string. If this is not set it will default to whatever exists on the Actor.
    */
-  programmaticallyUpdate(type, per, spd, atk, def, rezValue, rezMax = null, effect = null) {
+  programmaticallyUpdate(type, per, spd, atk, def, rezValue, effect, rezMax = null) {
     LOGGER.trace("programmaticallyUpdate | CPRBlackIceActor | called.");
     // If BlackICE ever gets Active Effects, this code will be a problem. See Issue #583.
     const cprData = duplicate(this.system);
@@ -130,14 +130,10 @@ export default class CPRBlackIceActor extends Actor {
     setProperty(cprData, "stats.atk", atk);
     setProperty(cprData, "stats.def", def);
     setProperty(cprData, "stats.rez.value", rezValue);
-    // The last 2 args would only be passed upon creation, so we have default values so we can tell if
-    // this is the Creation or Update
+    setProperty(cprData, "effect", SystemUtils.stripHTML(effect));
+    // this is only passed on Creation, never update
     if (rezMax !== null) {
       setProperty(cprData, "stats.rez.max", rezMax);
-    }
-    if (effect !== null) {
-      const effectText = effect.replace(/(<([^>]+)>)/gi, "");
-      setProperty(cprData, "effect", effectText);
     }
     this.update({ system: cprData });
   }
