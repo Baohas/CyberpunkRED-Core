@@ -29,6 +29,7 @@
   - The toggle on an unowned (world) item persists state
   - A better read-only view when viewing effects on an item in a compendium
 - #625 - Deomon actor does not display notes
+- #610 - Cannot Split Stacks of Drugs
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
