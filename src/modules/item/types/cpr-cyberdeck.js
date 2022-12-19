@@ -277,7 +277,8 @@ export default class CPRCyberdeckItem extends CPRItem {
     const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
     const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
-    const netrunnerMods = CPRMod.getRelevantMods(filteredMods, executionType);
+
+    const netrunnerMods = CPRMod.getRelevantMods(filteredMods, cprRoll.ability);
     const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName));
 
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.

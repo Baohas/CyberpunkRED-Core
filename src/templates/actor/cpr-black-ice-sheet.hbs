@@ -66,11 +66,11 @@
         </div>
 
         <div class="block-data text-normal">
-          {{#if actor.token.system.flags.cyberpunk-red-core.programUUID}}
+          {{#if actor.token.flags.cyberpunk-red-core.programUUID}}
             {{#if (cprCompare actor.system.class "!==" "other")}}
               <a class="rollable"
                  data-roll-type="damage"
-                 data-program-id="{{actor.token.flags.cyberpunk-red-core.programUUID}}"
+                 data-program-uuid="{{actor.token.flags.cyberpunk-red-core.programUUID}}"
                  data-netrunner-id="{{actor.token.flags.cyberpunk-red-core.netrunnerTokenId}}"
                  data-scene-id="{{actor.token.flags.cyberpunk-red-core.sceneId}}">
                 <i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}" ></i>

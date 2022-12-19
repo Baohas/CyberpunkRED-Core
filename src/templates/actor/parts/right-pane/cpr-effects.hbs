@@ -43,6 +43,7 @@
                         ({{localize (cprFindConfigValue "effectUses" effect.usage)}})
                     {{/if}}
                 </div>
+                {{log effect}}
                 <div class="effect-actions text-padding-right">
                     {{#if (cprShowEffectToggle effect ../../actor.name)}}
                         <a class="effect-control" data-action="toggle" data-tooltip="{{localize 'CPR.characterSheet.rightPane.effects.toggle'}}">

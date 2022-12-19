@@ -41,9 +41,7 @@
           <div class="d10-data-details hide">
             <div class="text-normal text-bold">{{localize statName}} + {{statValue}}</div>
             {{#if (cprCompare mods.length "||" additionalMods.length)}}
-            <span class="text-normal text-nowrap">{{localize "CPR.rolls.rollMods"}}: {{mods}}</span>
-            <div class="text-normal text-bold text-nowrap">{{localize "CPR.rolls.mods"}} {{localize "CPR.rolls.total"}}:
-              {{totalMods}}</div>
+              {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
             {{/if}}
           </div>
         </div>

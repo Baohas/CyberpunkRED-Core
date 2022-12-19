@@ -218,7 +218,7 @@ const Loadable = function Loadable() {
     const updateData = [];
     const { actor } = this;
     const magazineData = this.system.magazine;
-    const upgradeData = this.getAllUpgradesFor("magazine");
+    const upgradeData = this.getTotalUpgradeValues("magazine");
     const magazineSize = (upgradeData.type === "override") ? upgradeData.value : magazineData.max + upgradeData.value;
     if (magazineSize < magazineData.value) {
       const overage = magazineData.value - magazineSize;

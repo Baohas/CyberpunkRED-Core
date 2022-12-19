@@ -157,7 +157,7 @@ const Upgradable = function Upgradable() {
       const installedUpgrades = this.system.upgrades;
 
       // Get all installed upgrades of type override.
-      const overrides = installedUpgrades.filter((u) => u.system.modifiers[dataPoint].type === "override");
+      const overrides = installedUpgrades.filter((u) => u.system.modifiers[dataPoint]?.type === "override");
 
       // Key and category are used to display what the bonus upgrades.
       // Currently the only applicable category is combat, but conceivably there could be others.
@@ -189,7 +189,7 @@ const Upgradable = function Upgradable() {
         relevantUpgrades.push(mod);
       } else {
         installedUpgrades.forEach((u, index) => {
-          if (u.system.modifiers[dataPoint].value > 0) {
+          if (u.system.modifiers[dataPoint]?.value > 0) {
             const mod = duplicate(u.system.modifiers[dataPoint]);
             mod.id = `${u.name}-${key}-${index}`; // This should create a unique ID for the mod.
             mod.source = u.name; // Where the upgrade comes from.
