@@ -36,7 +36,7 @@ const Attackable = function Attackable() {
         this._loadItem();
         break;
       case "reload-ammo":
-        this._loadItem(this.system.magazine.ammoId);
+        this._loadItem(this.system.magazine.ammoData.uuid);
         break;
       case "measure-dv":
         await this._setDvTable(actor, this.system.dvTable);
@@ -316,9 +316,8 @@ const Attackable = function Attackable() {
     if (typeof cprWeaponData.attackmod !== "undefined") {
       returnValue = cprWeaponData.attackmod;
     }
-    const upgradeValue = this.getTotalUpgradeValues("attackmod");
-    const upgradeType = this.getUpgradeTypeFor("attackmod");
-    returnValue = (upgradeType === "override") ? upgradeValue : returnValue + upgradeValue;
+    const upgradeData = this.getTotalUpgradeValues("attackmod");
+    returnValue = (upgradeData.type === "override") ? upgradeData.value : returnValue + upgradeData.value;
     return returnValue;
   };
 };

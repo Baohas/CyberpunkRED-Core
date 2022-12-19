@@ -12,7 +12,6 @@ sort: 0
 system:
   ammoVariety:
     - vHeavyPistol
-  attachmentSlots: 3
   attackmod: 1
   concealable:
     concealable: false
@@ -29,11 +28,20 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
   isRanged: true
   isUpgraded: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 8
     value: 0
   price:
@@ -42,7 +50,6 @@ system:
   quality: excellent
   revealed: true
   rof: 1
-  slots: 3
   source: pg. 341
   tags: ''
   unarmedAutomaticCalculation: true

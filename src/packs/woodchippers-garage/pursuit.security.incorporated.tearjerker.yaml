@@ -12,7 +12,6 @@ sort: 0
 system:
   ammoVariety:
     - grenade
-  attachmentSlots: 3
   attackmod: 1
   concealable:
     concealable: false
@@ -33,7 +32,9 @@ system:
   isRanged: true
   isUpgraded: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 3
     value: 0
   price:

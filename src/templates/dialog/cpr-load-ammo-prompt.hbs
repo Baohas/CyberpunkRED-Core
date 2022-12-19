@@ -4,11 +4,11 @@
     <div>
         <select name="selectedAmmo">
             {{!-- ONLY DISPLAY CYBERWARE OF SAME TYPE AS OPTIONAL --}}
-            {{#if (cprCompare weapon.system.magazine.ammoId "!==" "")}}
+            {{#if (cprCompare weapon.system.magazine.ammoData.uuid "!==" "")}}
             <option value="">{{localize "CPR.dialog.loadAmmo.unload"}} {{localize "CPR.global.itemTypes.weapon"}}</option>
             {{/if}}
             {{#each this.ammoList as |ammo|}}
-            <option value="{{ammo._id}}">{{ammo.name}} ({{localize (cprFindConfigValue "ammoType"
+            <option value="{{ammo.uuid}}">{{ammo.name}} ({{localize (cprFindConfigValue "ammoType"
                 ammo.system.type)}})</option>
             {{/each}}
         </select>

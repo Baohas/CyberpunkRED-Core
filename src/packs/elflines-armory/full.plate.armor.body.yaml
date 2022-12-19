@@ -38,7 +38,6 @@ system:
   shieldHitPoints:
     max: 0
     value: 0
-  slots: 3
   source: pg. 350
   tags: []
   upgrade: ''

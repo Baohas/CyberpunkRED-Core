@@ -6,4 +6,5 @@ export { default as FoundryV10Migration } from "./002-foundryV10.js";
 export { default as HotfixEightyThreeDotOne } from "./003-hotfix-0.83.1.js";
 export { default as ReleaseEightyFourDotZero } from "./004-release-0.84.0.js";
 export { default as AblationValueMigration } from "./005-ablationValue.js";
+export { default as UniversalInstallMigration } from "./006-universalInstall.js";
 export { default as ImprovedDialogMigration } from "./007-improvedDialogs.js";

@@ -23,7 +23,6 @@ system:
     category: premium
     market: 50
   revealed: true
-  slots: 3
   source: ''
   tags: []
   upgrades: []

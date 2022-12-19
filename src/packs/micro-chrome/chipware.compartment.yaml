@@ -16,7 +16,6 @@ system:
     - installed
   ammoVariety: []
   amount: 1
-  attachmentSlots: 0
   attackmod: 0
   availableSlots: 0
   concealable:
@@ -50,7 +49,9 @@ system:
   isUpgraded: false
   isWeapon: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 0
     value: 0
   optionSlots: 0

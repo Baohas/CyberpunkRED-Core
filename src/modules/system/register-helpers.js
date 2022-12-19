@@ -1,4 +1,4 @@
-/* global Handlebars game getProperty */
+/* global Handlebars game getProperty fromUuidSync */
 /* eslint-env jquery */
 import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
@@ -61,7 +61,15 @@ export default function registerHandlebarsHelpers() {
   /**
    * Return an owned item on an actor given the ID
    */
-  Handlebars.registerHelper("cprGetOwnedItem", (actor, itemId) => actor.items.find((i) => i.id === itemId));
+  Handlebars.registerHelper("cprGetOwnedItem", (actor, itemId) => {
+    let item;
+    if (actor === null) {
+      item = fromUuidSync(itemId);
+    } else {
+      item = actor.items.find((i) => i.id === itemId) ? actor.items.find((i) => i.id === itemId) : actor.items.find((i) => i.uuid === itemId);
+    }
+    return item;
+  });
 
   /**
    * Return true if an object is defined or not
@@ -221,30 +229,6 @@ export default function registerHandlebarsHelpers() {
       return CPR[obj];
     }
     return "INVALID_LIST";
-  });
-
-  /**
-   * Show option slots on a cyberware item
-   */
-  Handlebars.registerHelper("cprShowSlotStatus", (obj) => {
-    LOGGER.trace("cprShowSlotStatus | handlebarsHelper | Called.");
-    if (obj.type === "cyberware") {
-      const { optionSlots } = obj.system;
-      if (optionSlots > 0) {
-        LOGGER.trace(`hasOptionalSlots is greater than 0`);
-        const installedOptionSlots = optionSlots - obj.availableSlots();
-        return (`- ${installedOptionSlots}/${optionSlots} ${SystemUtils.Localize("CPR.itemSheet.cyberware.optionalSlots")}`);
-      }
-      LOGGER.trace(`hasOptionalSlots is 0`);
-    }
-    if (obj.type === "cyberdeck") {
-      const upgradeValue = obj.getTotalUpgradeValues("slots");
-      const upgradeType = obj.getUpgradeTypeFor("slots");
-      const totalSlots = (upgradeType === "override") ? upgradeValue : obj.system.slots + upgradeValue;
-      const usedSlots = obj.system.upgrades.length + obj.system.programs.installed.length;
-      return (`${usedSlots}/${totalSlots}`);
-    }
-    return "";
   });
 
   /**
@@ -435,14 +419,8 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprHasCyberneticWeapons", (actor) => {
     LOGGER.trace("cprHasCyberneticWeapons | handlebarsHelper | Called.");
-    let returnValue = false;
-    const cyberware = actor.getInstalledCyberware();
-    cyberware.forEach((cw) => {
-      if (cw.system.isWeapon) {
-        returnValue = true;
-      }
-    });
-    return returnValue;
+    const cyberneticWeapons = actor.itemTypes.cyberware.filter((cw) => cw.system.isInstalled && cw.system.isWeapon);
+    return cyberneticWeapons.length > 0;
   });
 
   /**
@@ -571,44 +549,44 @@ export default function registerHandlebarsHelpers() {
    * Get all installed cyberware and options and return it as an array. This is
    * used in the mook sheet.
    */
-  Handlebars.registerHelper("cprGetMookCyberware", (installedCyberware) => {
+  Handlebars.registerHelper("cprGetMookCyberware", (mook) => {
     LOGGER.trace("cprGetMookCyberware | handlebarsHelper | Called.");
     const installedCyberwareList = [];
-    Object.entries(installedCyberware).forEach(([k, v]) => {
-      if (installedCyberware[k].length > 0) {
-        if (k !== "cyberwareInternal" && k !== "cyberwareExternal" && k !== "fashionware") {
-          v.forEach((a) => {
-            installedCyberwareList.push(a);
-          });
-        } else if (installedCyberware[k][0].optionals.length > 0) {
-          v.forEach((a) => {
-            installedCyberwareList.push(a);
-          });
+    for (const installedUUID of mook.system.installedItems.list) {
+      const item = mook.getOwnedItem(installedUUID);
+      if (item.type === "cyberware") {
+        const optionals = [];
+        if (item.system.installedItems.list.length > 0) {
+          for (const optionalid of item.system.installedItems.list) {
+            const optionalItem = mook.getOwnedItem(optionalid);
+            optionals.push(optionalItem);
+          }
         }
+        installedCyberwareList.push({ foundation: item, optionals });
       }
-    });
+    }
     return installedCyberwareList;
   });
 
   /**
    * Return how many installed cyberware items an actor has
    */
-  Handlebars.registerHelper("cprGetMookCyberwareLength", (installedCyberware) => {
+  Handlebars.registerHelper("cprGetMookCyberwareLength", (mook) => {
     LOGGER.trace("cprGetMookCyberwareLength | handlebarsHelper | Called.");
     const installedCyberwareList = [];
-    Object.entries(installedCyberware).forEach(([k, v]) => {
-      if (installedCyberware[k].length > 0) {
-        if (k !== "cyberwareInternal" && k !== "cyberwareExternal" && k !== "fashionware") {
-          v.forEach((a) => {
-            installedCyberwareList.push(a);
-          });
-        } else if (installedCyberware[k][0].optionals.length > 0) {
-          v.forEach((a) => {
-            installedCyberwareList.push(a);
-          });
+    const exclusionList = ["cyberwareInternal", "cyberwareExternal", "fashionware"];
+    for (const installedUUID of mook.system.installedItems.list) {
+      const item = mook.getOwnedItem(installedUUID);
+      if (item.type === "cyberware" && !exclusionList.includes(item.system.type)) {
+        installedCyberwareList.push(item);
+        if (item.system.installedItems.list.length > 0) {
+          for (const optionalid of item.system.installedItems.list) {
+            const optionalItem = mook.getOwnedItem(optionalid);
+            installedCyberwareList.push(optionalItem);
+          }
         }
       }
-    });
+    }
     return installedCyberwareList.length;
   });
 
@@ -623,10 +601,16 @@ export default function registerHandlebarsHelpers() {
   /**
    * Returns true if an item type can be upgraded. This means it has the upgradable property in the data model.
    */
-  Handlebars.registerHelper("cprIsUpgradable", (itemType) => {
+  Handlebars.registerHelper("cprIsUpgradable", (item) => {
     LOGGER.trace("cprIsUpgradable | handlebarsHelper | Called.");
     const itemEntities = game.system.template.Item;
-    return itemEntities[itemType].templates.includes("upgradable");
+    let isUpgradable = false;
+    if (itemEntities[item.type].templates.includes("upgradable")
+        && item.system.installedItems.allowed
+        && item.system.installedItems.allowedTypes.includes("itemUpgrade")) {
+      isUpgradable = true;
+    }
+    return isUpgradable;
   });
 
   /**
@@ -656,11 +640,10 @@ export default function registerHandlebarsHelpers() {
     const itemType = obj.type;
     let upgradeText = "";
     if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
-      const upgradeValue = obj.getTotalUpgradeValues(dataPoint);
-      if (upgradeValue !== 0 && upgradeValue !== "") {
-        const modType = obj.getUpgradeTypeFor(dataPoint);
+      const upgradeData = obj.getTotalUpgradeValues(dataPoint);
+      if (upgradeData.value !== 0 && upgradeData.value !== "") {
         const modSource = (itemType === "weapon") ? SystemUtils.Localize("CPR.itemSheet.weapon.attachments") : SystemUtils.Localize("CPR.itemSheet.common.upgrades");
-        upgradeText = `(${SystemUtils.Format("CPR.itemSheet.common.modifierChange", { modSource, modType, value: upgradeValue })})`;
+        upgradeText = `(${SystemUtils.Format("CPR.itemSheet.common.modifierChange", { modSource, modType: upgradeData.type, value: upgradeData.value })})`;
       }
     }
     return upgradeText;
@@ -679,17 +662,16 @@ export default function registerHandlebarsHelpers() {
       upgradeResult = baseValue;
     }
     if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
-      const upgradeValue = obj.getTotalUpgradeValues(dataPoint);
-      const upgradeType = obj.getUpgradeTypeFor(dataPoint);
-      if (upgradeValue !== "" && upgradeValue !== 0) {
-        if (upgradeType === "override") {
-          upgradeResult = upgradeValue;
-        } else if (typeof upgradeResult !== "number" || typeof upgradeValue !== "number") {
-          if (upgradeValue !== 0 && upgradeValue !== "") {
-            upgradeResult = `${upgradeResult} + ${upgradeValue}`;
+      const upgradeData = obj.getTotalUpgradeValues(dataPoint);
+      if (upgradeData.value !== "" && upgradeData.value !== 0) {
+        if (upgradeData.type === "override") {
+          upgradeResult = upgradeData.value;
+        } else if (typeof upgradeResult !== "number" || typeof upgradeData.value !== "number") {
+          if (upgradeData.value !== 0 && upgradeData.value !== "") {
+            upgradeResult = `${upgradeResult} + ${upgradeData.value}`;
           }
         } else {
-          upgradeResult += upgradeValue;
+          upgradeResult += upgradeData.value;
         }
       }
     }
@@ -872,6 +854,19 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Provide a way to loop in html
+   */
+  Handlebars.registerHelper("cprLoop", (n, block) => {
+    LOGGER.trace("cprLoop | handlebarsHelper | Called.");
+    let accum = "";
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < n; ++i) {
+      accum += block.fn(i);
+    }
+    return accum;
+  });
+
+  /**
    * Return true if a literal is a number
    * For whatever reason, if value is the string "NaN", Javascript thinks
    * it is a number?
@@ -902,8 +897,7 @@ export default function registerHandlebarsHelpers() {
     return game.settings.get(game.system.id, "debugElements");
   });
 
-  /**
-   * Emit a debug message to the dev log
+  /* Emit a debug message to the dev log
    */
   Handlebars.registerHelper("cprDebug", (msg) => {
     LOGGER.debug(msg);

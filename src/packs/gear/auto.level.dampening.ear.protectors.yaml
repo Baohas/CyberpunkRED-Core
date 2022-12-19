@@ -20,12 +20,18 @@ system:
     value: <p>Wearer is immune to loud sounds.</p>
   equipped: owned
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isUpgraded: false
   price:
     category: veryExpensive
     market: 1000
   revealed: true
-  slots: 3
   source: pg. 352
   tags: []
   upgrades: []

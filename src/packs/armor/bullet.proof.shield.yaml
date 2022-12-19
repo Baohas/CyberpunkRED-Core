@@ -24,6 +24,13 @@ system:
   headLocation:
     ablation: 0
     sp: 0
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isBodyLocation: false
   isHeadLocation: false
   isShield: true
@@ -36,7 +43,6 @@ system:
   shieldHitPoints:
     max: 10
     value: 10
-  slots: 3
   source: pg. 351
   tags: []
   upgrade: ''

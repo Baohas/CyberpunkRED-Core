@@ -9,7 +9,9 @@
         {{!-- "effects" is a Map, so "this" is now an Active Effects object within the #each loop! --}}
             <hr>
             {{#if effect.disabled}}
-              <span class="fg-grey">
+              {{#if ../item.isOwned}}
+                <span class="fg-grey">
+              {{/if}}
             {{/if}}
             <div class="item-summary-line">
                 <span class="text-bold summary-name">{{effect.label}}</span>

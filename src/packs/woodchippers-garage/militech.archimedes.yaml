@@ -12,7 +12,6 @@ sort: 0
 system:
   ammoVariety:
     - rocket
-  attachmentSlots: 3
   attackmod: 1
   concealable:
     concealable: false
@@ -37,7 +36,9 @@ system:
   isRanged: true
   isUpgraded: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 1
     value: 0
   price:

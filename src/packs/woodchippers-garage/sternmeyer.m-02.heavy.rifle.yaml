@@ -11,7 +11,6 @@ sort: 0
 system:
   ammoVariety:
     - custom
-  attachmentSlots: 3
   attackmod: 0
   concealable:
     concealable: false
@@ -34,7 +33,9 @@ system:
   isRanged: true
   isUpgraded: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 80
     value: 0
   price:

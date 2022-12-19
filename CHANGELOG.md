@@ -12,12 +12,23 @@
 - Update Character sheet to show more information for items
 - Update wording for Failed rolls
 - Babele translation config files added for DLC. Translations will follow later.
+- Upgraded items can now be traded/transferred between Actors!
+- World items can now be upgraded by other World Items!
+- Careful, Choom! Loaded weapons can now be traded/transferred between Actors!
+- The Item Upgrades pack has been renamed from `item-upgrades` to `upgrade-items` to be consistent with other pack names.
 - Update the main system font to Jost for better readability
+- #448 - Add the ability to "quick fix" a critical injury - resolved for now by making them all Toggled
+- #611 - default to Body table when rolling critical injuries
 
 ### Bug Fixes
 
 - #621 - Add ROF to Cyberware Weapons and Weapon Upgrade Weapons on Mook sheet
 - ROF now uses localized strings
+- Fixed a few minor active effect UI issues
+  - Effects listed on the left of the item sheet are only greyed out for disabled effects on owned items
+  - The toggle on an unowned (world) item persists state
+  - A better read-only view when viewing effects on an item in a compendium
+- #625 - Deomon actor does not display notes
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 

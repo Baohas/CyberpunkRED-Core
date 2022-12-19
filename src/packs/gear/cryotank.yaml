@@ -19,12 +19,18 @@ system:
     value: <p>Holds a fully-sized human, heals injuries faster than normal. </p>
   equipped: owned
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isUpgraded: false
   price:
     category: luxury
     market: 5000
   revealed: true
-  slots: 3
   source: pg. 353
   tags: []
   upgrades: []

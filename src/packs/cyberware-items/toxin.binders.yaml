@@ -36,7 +36,6 @@ sort: 0
 system:
   ammoVariety: []
   amount: 1
-  attachmentSlots: 0
   attackmod: 0
   concealable:
     concealable: false
@@ -52,12 +51,17 @@ system:
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: false
   humanityLoss:
     roll: 1d3
     static: '2'
   install: clinic
-  installedOptionSlots: 0
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
   isFoundational: false
   isInstalled: false
@@ -65,11 +69,11 @@ system:
   isUpgraded: false
   isWeapon: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 0
     value: 0
-  optionSlots: 0
-  optionalIds: []
   price:
     category: premium
     market: 100
@@ -77,7 +81,6 @@ system:
   revealed: true
   rof: 1
   size: 1
-  slots: 3
   source: pg. 363
   tags: []
   type: cyberwareInternal

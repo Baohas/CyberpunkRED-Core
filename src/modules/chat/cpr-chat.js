@@ -262,18 +262,19 @@ export default class CPRChat {
           if (item.type !== "cyberdeck") {
             cprRoll = item.createRoll(rollType, actor, { damageType: attackType });
           } else {
-            const programId = SystemUtils.GetEventDatum(event, "data-program-id");
+            const programUUID = SystemUtils.GetEventDatum(event, "data-program-id");
             // Warn if no damage is configured.
-            if ((!actor.items?.get(programId)?.system.damage.standard && !actor.items?.get(programId)?.system.damage.blackIce && programId !== "zap")) {
+            const program = actor.getOwnedItem(programUUID);
+            if (programUUID !== "zap" && typeof program === "object" && !program.system?.damage.standard && !program.system?.damage.blackIce) {
               SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.chat.rollDamage.warningProgramDmg"));
               return;
             }
-            rollType = programId === "zap" ? "interfaceAbility" : rollType; // reassign rollType to "interfaceAbility" if this is a Zap roll.
+            rollType = programUUID === "zap" ? "interfaceAbility" : rollType; // reassign rollType to "interfaceAbility" if this is a Zap roll.
             const netRoleItem = actor.itemTypes.role.find((r) => r.id === actor.system.roleInfo.activeNetRole);
             cprRoll = item.createRoll(rollType, actor, {
               cyberdeckId: itemId,
               interfaceAbility: "zap",
-              programId,
+              programUUID,
               executionType: "damage",
               netRoleItem,
             });

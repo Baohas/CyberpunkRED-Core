@@ -10,7 +10,6 @@ ownership:
 sort: 0
 system:
   ammoVariety: []
-  attachmentSlots: 3
   attackmod: 0
   concealable:
     concealable: false
@@ -29,11 +28,20 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
   isRanged: false
   isUpgraded: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 0
     value: 0
   price:
@@ -42,7 +50,6 @@ system:
   quality: excellent
   revealed: true
   rof: 2
-  slots: 0
   source: pg. 363
   tags: ''
   unarmedAutomaticCalculation: true

@@ -1,4 +1,4 @@
-/* global Item game */
+/* global Item game duplicate fromUuidSync */
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -13,6 +13,7 @@ import Physical from "./mixins/cpr-physical.js";
 import Stackable from "./mixins/cpr-stackable.js";
 import Upgradable from "./mixins/cpr-upgradable.js";
 import Valuable from "./mixins/cpr-valuable.js";
+import Container from "./mixins/cpr-container.js";
 
 /**
  * We extend the base Item object (document) provided by Foundry. All items in the system derive from it.
@@ -68,17 +69,7 @@ export default class CPRItem extends Item {
    */
   _onCreate(data, options, userId) {
     LOGGER.trace("_onCreate | CPRItem | Called.");
-    let newData = data;
-    const cprMigrationRunning = options.isMigrating || false;
-    if (!cprMigrationRunning) {
-      if (SystemUtils.hasDataModelTemplate(data.type, "upgradable")) {
-        newData = this.clearUpgrades(newData);
-      }
-      if (SystemUtils.hasDataModelTemplate(data.type, "loadable")) {
-        newData = this.clearAmmo(newData);
-      }
-    }
-    super._onCreate(newData, options, userId);
+    super._onCreate(data, options, userId);
   }
 
   /**
@@ -115,6 +106,10 @@ export default class CPRItem extends Item {
           Installable.call(CPRItem.prototype);
           break;
         }
+        case "container": {
+          Container.call(CPRItem.prototype);
+          break;
+        }
         case "physical": {
           Physical.call(CPRItem.prototype);
           break;
@@ -125,10 +120,6 @@ export default class CPRItem extends Item {
         }
         case "upgradable": {
           Upgradable.call(CPRItem.prototype);
-          // Dynamically calculates the number of free upgrade slots on the item
-          // by starting with the number of slots this item has and substacting
-          // the slot size of each of the upgrades.
-          this.system.availableSlots = this.availableSlots();
           break;
         }
         case "valuable": {
@@ -140,6 +131,40 @@ export default class CPRItem extends Item {
       }
       // LOGGER.debug(`Added mixin ${mixins[m]} to ${this.id}`);
     }
+  }
+
+  /**
+   * We extend this for when an item is deleted that contains other items,
+   * uninstalling them prior to deletion.
+   *
+   * @param {object} options - Any additional options
+   * @param {object} user - User initiating this deleteion
+   * @returns Promise
+   */
+  async _preDelete(options, user) {
+    LOGGER.trace("_preDelete | CPRItem | Called.");
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    if (containerTypes.includes(this.type)) {
+      if (this.system.installedItems.list.length > 0) {
+        const itemList = [];
+        for (const installedUuid of this.system.installedItems.list) {
+          const item = (this.isOwned && this.actor) ? this.actor.getOwnedItem(installedUuid) : fromUuidSync(installedUuid);
+          if (item) {
+            itemList.push(item);
+          }
+        }
+        await this.uninstallItems(itemList, true);
+      }
+    }
+
+    if (typeof this.system.isInstalled === "boolean" && this.system.isInstalled) {
+      const installLocation = (this.isOwned && this.actor) ? this.actor.getOwnedItem(this.system.installedIn) : fromUuidSync(this.system.installedIn);
+      if (containerTypes.includes(installLocation.type)) {
+        await installLocation.uninstallItems([this], false);
+      }
+    }
+
+    return super._preDelete(options, user);
   }
 
   /**

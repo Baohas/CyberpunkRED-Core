@@ -10,11 +10,11 @@
       <li class="item flexrow">
         <div class="item-header-title item-name text-large text-left text-padding-left">
           {{localize (cprGetLocalizedlNameKey item)}}
-            {{#if (cprIsUpgradable item.type)}}
-             {{#if item.system.isUpgraded}}
-               <sup><i data-tooltip="{{localize "CPR.upgraded"}}" class="fa-solid fa-square-up"></sup></i>
-             {{/if}}
-          {{/if}}
+            {{#if (cprIsUpgradable item)}}
+              {{#if item.system.isUpgraded}}
+                <sup><i data-tooltip="{{localize "CPR.upgraded"}}" class="fa-solid fa-square-up"></sup></i>
+              {{/if}}
+            {{/if}}
         </div>
         <div class="item-detail text-right text-padding-right">
           {{#if (cprIsDebug)}}({{item.id}}){{/if}}
@@ -27,10 +27,8 @@
           {{/if}}
         </div>
       </li>
-      <li>
-      </li>
-      <li>
-      </li>
+      <li>{{#unless this.editable}}({{localize "CPR.itemSheet.common.readOnlyMode"}}){{/unless}}</li>
+      <li>{{#if (cprCompare item.system.installedItems.list.length ">" 0)}}<div class="text-padding-left"><i>({{localize "CPR.itemSheet.hasInstalledItems"}})</i></div>{{/if}}</li>
     </div>
   </div>
   <div class="item-bottom-pane">

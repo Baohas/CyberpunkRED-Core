@@ -25,7 +25,6 @@ system:
     category: premium
     market: 100
   revealed: true
-  slots: 3
   source: pg. 355
   tags: []
   upgrades: []

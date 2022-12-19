@@ -35,7 +35,6 @@ sort: 0
 system:
   ammoVariety: []
   amount: 1
-  attachmentSlots: 0
   attackmod: 0
   concealable:
     concealable: false
@@ -51,12 +50,17 @@ system:
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: false
   humanityLoss:
     roll: '0'
     static: '0'
   install: mall
-  installedOptionSlots: 0
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
   isFoundational: false
   isInstalled: false
@@ -64,11 +68,11 @@ system:
   isUpgraded: false
   isWeapon: false
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 0
     value: 0
-  optionSlots: 0
-  optionalIds: []
   price:
     category: premium
     market: 100
@@ -76,7 +80,6 @@ system:
   revealed: true
   rof: 1
   size: 1
-  slots: 3
   source: pg. 358
   tags: []
   type: fashionware

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* global Actors ActorSheet CONFIG Hooks Items ItemSheet game isNewerVersion DocumentSheetConfig */
 // Object imports
 import CPRActiveEffect from "./modules/cpr-active-effect.js";

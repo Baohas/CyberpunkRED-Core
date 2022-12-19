@@ -78,5 +78,5 @@ system:
     dvParamedic: 13
     dvSurgery: 13
     type: paramedicSurgery
-  usage: always
+  usage: toggled
 type: criticalInjury

@@ -581,7 +581,7 @@ export default class CPRSystemUtils {
       LOGGER.debug(`Could not find ${datum} in currentTarget trying .item parents`);
       id = $(event.currentTarget).parents(".item").attr(datum);
       if (typeof id === "undefined") {
-        LOGGER.warn(`Could not find ${datum} in the event data!`);
+        LOGGER.debug(`Could not find ${datum} in the event data!`);
       }
     }
     return id;

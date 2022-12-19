@@ -12,7 +12,6 @@ sort: 0
 system:
   ammoVariety:
     - grenade
-  attachmentSlots: 0
   attackmod: 0
   concealable:
     concealable: false
@@ -37,7 +36,9 @@ system:
   isInstalled: false
   isRanged: true
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 1
     value: 0
   modifiers:

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-await-in-loop */
 /* global game, duplicate, mergeObject */
 
@@ -16,7 +17,7 @@ export default class FoundryV10Migration extends CPRMigration {
    * Executed before the migration takes place, see run() in the base migration class.
    */
   async preMigrate() {
-    LOGGER.trace("preMigrate | 1-activeEffects Migration");
+    LOGGER.trace("preMigrate | 2-foundryV10 Migration");
     LOGGER.log(`Starting migration: ${this.name}`);
   }
 
@@ -24,7 +25,7 @@ export default class FoundryV10Migration extends CPRMigration {
    * Takes place after the data migration completes.
    */
   async postMigrate() {
-    LOGGER.trace("postMigrate | 1-activeEffects Migration");
+    LOGGER.trace("postMigrate | 2-foundryV10 Migration");
     LOGGER.log(`Finishing migration: ${this.name}`);
   }
 
@@ -39,7 +40,7 @@ export default class FoundryV10Migration extends CPRMigration {
    */
   async migrateActor(actor) {
     LOGGER.trace("migrateActor | 2-foundryV10 Migration");
-    const updatedItemList = [];
+    let updatedItemList = [];
     for (const item of actor.items) {
       const systemChanges = FoundryV10Migration.scrubItem(item);
 
@@ -57,10 +58,7 @@ export default class FoundryV10Migration extends CPRMigration {
       }
 
       if (Object.keys(systemChanges).length !== 0) {
-        updatedItemList.push({
-          _id: item.id,
-          system: systemChanges,
-        });
+        updatedItemList = CPRMigration.addToUpdateList(updatedItemList, { _id: item.id, system: systemChanges });
       }
     }
 
@@ -86,12 +84,7 @@ export default class FoundryV10Migration extends CPRMigration {
         systemChanges.rezzed = newRezzed;
       }
       if (Object.keys(systemChanges).length !== 0) {
-        updatedItemList.push({
-          _id: item.id,
-          system: {
-            programs: systemChanges,
-          },
-        });
+        updatedItemList = CPRMigration.addToUpdateList(updatedItemList, { _id: item.id, system: systemChanges });
       }
     }
 

@@ -1,4 +1,5 @@
-/* globals Actor, game, getProperty, hasProperty */
+/* eslint-disable no-await-in-loop */
+/* globals Actor, game, getProperty, hasProperty, duplicate */
 import ConfirmPrompt from "../dialog/cpr-confirmation-prompt.js";
 import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";
@@ -30,21 +31,68 @@ export default class CPRActor extends Actor {
   static async create(data, options) {
     LOGGER.trace("create | CPRCharacterActor | called.");
     const createData = data;
-    if (typeof data.system === "undefined") {
+    const newActor = typeof data.system === "undefined";
+    if (newActor) {
       LOGGER.trace("create | New Actor | CPRCharacterActor | called.");
       createData.items = [];
       const tmpItems = data.items.concat(await SystemUtils.GetCoreSkills(), await SystemUtils.GetCoreCyberware());
+      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
       tmpItems.forEach((item) => {
+        const updatedSystem = duplicate(item.system);
+        if (containerTypes.includes(item.type)) {
+          updatedSystem.installedItems.slots = 7;
+          updatedSystem.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
+        }
         const cprItem = {
           name: item.name,
           img: item.img,
           type: item.type,
-          system: item.system,
+          system: updatedSystem,
         };
         createData.items.push(cprItem);
       });
     }
-    super.create(createData, options);
+    const actor = await super.create(createData, options);
+    const installedItems = [];
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    if (newActor) {
+      actor.itemTypes.cyberware.forEach((cw) => installedItems.push(cw.uuid));
+    } else {
+      // An actor was copied, first sync all items installed in the actor (Cyberware)
+      const actorUUID = actor.uuid;
+      const updateList = [];
+      for (const sourceUUID of actor.system.installedItems.list) {
+        const sourceItemId = sourceUUID.split(".")[3];
+        const newItemId = `${actorUUID}.Item.${sourceItemId}`;
+        installedItems.push(newItemId);
+        const item = actor.getOwnedItem(newItemId);
+        updateList.push({ _id: item.id, "system.isInstalled": true, "system.installedIn": actorUUID });
+        if (containerTypes.includes(item.type) && item.system.installedItems.list.length > 0) {
+          await item.recursiveInstallSync();
+        }
+      }
+      // Sync any owned items that are containers
+      for (const itemType of Object.keys(actor.itemTypes)) {
+        if (containerTypes.includes(itemType)) {
+          for (const item of actor.itemTypes[itemType]) {
+            if (item.system.installedItems.list.length > 0) {
+              await item.recursiveInstallSync();
+            }
+          }
+        }
+      }
+      // Sync any loaded weapons
+      for (const item of actor.itemTypes.weapon) {
+        if (item.system.isRanged && item.system.magazine.ammoData.uuid.length > 0) {
+          const sourceItemId = item.system.magazine.ammoData.uuid.split(".")[3];
+          const newItemId = `${actorUUID}.Item.${sourceItemId}`;
+          updateList.push({ _id: item.id, "system.magazine.ammoData.uuid": newItemId });
+        }
+      }
+      await actor.updateEmbeddedDocuments("Item", updateList);
+    }
+    await actor.update({ "system.installedItems.list": installedItems });
+    return actor;
   }
 
   /**
@@ -272,204 +320,263 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Returns an array of installed cyberware items
-   *
-   * @returns {Array} - installed Cyberware Items
-   */
-  getInstalledCyberware() {
-    LOGGER.trace("getInstalledCyberware | CPRActor | Called.");
-    return this.itemTypes.cyberware.filter((item) => item.system.isInstalled);
-  }
-
-  /**
-   * Return an Array of cyberware matching the provided type and is installed.
-   *
-   * @param {string} type uses the type of a cyberware item to return a list of
-   *                      compatiable foundational cyberware installed.
-   * @return {Array} - Foundational Cyberware matching the type and is installed
-   */
-  getInstalledFoundationalCyberware(type) {
-    LOGGER.trace("getInstalledFoundationalCyberware | CPRActor | Called.");
-    if (type) {
-      if (type in CPR.cyberwareTypeList) {
-        return this.itemTypes.cyberware.filter(
-          (item) => item.system.isInstalled
-            && item.system.isFoundational
-            && item.system.type === type,
-        );
-      }
-      SystemUtils.DisplayMessage("error", "Invalid cyberware type!");
-    }
-    return this.itemTypes.cyberware.filter(
-      (item) => item.system.isInstalled && item.system.isFoundational,
-    );
-  }
-
-  /**
-   * Top-level method to add (install) cyberware owned by an actor.
+   * Method to install cyberware owned by an actor.
    * This will handle making sure it is going into the right foundational cyberware, if applicable.
+   * Additionally, if there is optional cyberware installed under a foundational cyberware which
+   * allows cyberware to be installed into it (ie Chipware Socket) and it has capacity, it will
+   * also be listed as an installation target.
    *
    * @async
    * @param {String} itemId - the ItemId of the cyberware to be added
    * @returns {null}
    */
-  async addCyberware(itemId) {
-    LOGGER.trace("addCyberware | CPRActor | Called.");
-    const item = this._getOwnedItem(itemId);
-    const compatibleFoundationalCyberware = this.getInstalledFoundationalCyberware(item.system.type);
+  async installCyberware(itemId) {
+    LOGGER.trace("installCyberware | CPRActor | Called.");
+    const item = this.getOwnedItem(itemId);
 
-    if (compatibleFoundationalCyberware.length < 1 && !item.system.isFoundational) {
+    const baseCompatibleFoundationalCyberware = this.itemTypes.cyberware.filter((cw) => cw.system.isInstalled
+        && cw.system.isFoundational
+        && cw.system.type === item.system.type);
+
+    if (baseCompatibleFoundationalCyberware.length < 1 && !item.system.isFoundational) {
       Rules.lawyer(false, "CPR.messages.warnNoFoundationalCyberwareOfCorrectType");
       return;
     }
-    let formData;
-    if (item.system.isFoundational) {
-      formData = await InstallCyberwarePrompt.RenderPrompt({ item }).catch((err) => LOGGER.debug(err));
-      if (formData === undefined) {
-        return;
+
+    // For each Foundational Cyberware of the item.system.type that is installed
+    // Gather a list of all of the currently installed cyberware
+    const compatibleTargetCyberware = [];
+    baseCompatibleFoundationalCyberware.forEach((cyberware) => {
+      compatibleTargetCyberware.push(cyberware);
+      let uuidList = cyberware.system.installedItems.list;
+      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+      while (uuidList.length > 0) {
+        const loopList = uuidList;
+        uuidList = [];
+        for (const uuid of loopList) {
+          const itemLookup = this.getOwnedItem(uuid);
+          if (containerTypes.includes(itemLookup.type)) {
+            if (itemLookup.system.installedItems.allowed
+              && itemLookup.system.installedItems.allowedTypes.includes(item.type)
+              && itemLookup.availableInstallSlots() >= item.system.size) {
+              compatibleTargetCyberware.push(itemLookup);
+            }
+            uuidList = uuidList.concat(itemLookup.system.installedItems.list);
+          }
+        }
       }
-      await this._addFoundationalCyberware(item, formData);
-    } else {
-      formData = await InstallCyberwarePrompt.RenderPrompt({
-        item,
-        foundationalCyberware: compatibleFoundationalCyberware,
-      }).catch((err) => LOGGER.debug(err));
-      if (formData === undefined) {
-        return;
-      }
-      await this._addOptionalCyberware(item, formData);
+    });
+
+    const formData = await InstallCyberwarePrompt.RenderPrompt({
+      item,
+      foundationalCyberware: compatibleTargetCyberware,
+    }).catch((err) => LOGGER.debug(err));
+    if (formData === undefined) {
+      return;
     }
-    await this.loseHumanityValue(item, formData);
+
+    if (!item.system.isFoundational && !formData.foundationalId) {
+      Rules.lawyer(false, "CPR.messages.warnNoFoundationalCyberwareOfCorrectType");
+      return;
+    }
+
+    const target = (item.system.isFoundational) ? this : this.getOwnedItem(formData.foundationalId);
+
+    target.installItems([item]).then(async (installationSuccess) => {
+      if (installationSuccess.length > 0) {
+        await this.loseHumanityValue(item, formData);
+      }
+    });
   }
 
   /**
-   * Add (install) foundational cyberware, which includes losing Humanity.
-   *
-   * @private
-   * @param {CPRItem} item - the Cyberware item to install
-   * @returns {Object}
-   */
-  _addFoundationalCyberware(item) {
-    LOGGER.debug("_addFoundationalCyberware | CPRActor | Applying foundational cyberware.");
-    return this.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.isInstalled": true }]);
-  }
-
-  /**
-   * Add (install) optional cyberware, including the loss of Humanity
-   *
-   * @private
-   * @param {CPRItem} item - the Cyberware item to install
-   * @param {Object} formData - an object representing answers from the installation dialog box
-   * @returns {Object}
-   */
-  async _addOptionalCyberware(item, formData) {
-    LOGGER.trace("_addOptionalCyberware | CPRActor | Called.");
-    const tmpItem = item;
-    LOGGER.trace(`_addOptionalCyberware | CPRActor | applying optional cyberware to item ${formData.foundationalId}.`);
-    const foundationalCyberware = this._getOwnedItem(formData.foundationalId);
-    const newOptionalIds = foundationalCyberware.system.optionalIds.concat(item._id);
-    const newInstalledOptionSlots = foundationalCyberware.system.installedOptionSlots + item.system.size;
-    tmpItem.system.isInstalled = true;
-    const allowedSlots = Number(foundationalCyberware.availableSlots());
-    Rules.lawyer((item.system.size <= allowedSlots), "CPR.messages.tooManyOptionalCyberwareInstalled");
-    return this.updateEmbeddedDocuments("Item", [
-      { _id: item.id, "system.isInstalled": true }, {
-        _id: foundationalCyberware.id,
-        "system.optionalIds": newOptionalIds,
-        "system.installedOptionSlots": newInstalledOptionSlots,
-      },
-    ]);
-  }
-
-  /**
-   * Remove (uninstall) Cyberware from an actor. Like addCyberware, this is the top-level entry method.
+   * Remove (uninstall) Cyberware from an actor. Like installCyberware, this is the top-level entry method.
    *
    * @async
    * @param {String} itemId - the Cyberware item ID to uninstall
    * @param {String} foundationalId - the foundational Cyberware Id to uninstall from
    * @param {Boolean} skipConfirm - a boolean to indicate whether the confirmation dialog should be displayed
-   * @returns {Object}
+   * @returns {Promise} - Returns the promise from calling this.update()
    */
-  async removeCyberware(itemId, foundationalId, skipConfirm = false) {
-    LOGGER.trace("removeCyberware | CPRActor | Called.");
-    const item = this._getOwnedItem(itemId);
+  async uninstallCyberware(itemId, foundationalId, skipConfirm = false) {
+    LOGGER.trace("uninstallCyberware | CPRActor | Called.");
+    const item = this.getOwnedItem(itemId);
     let confirmRemove;
     if (!skipConfirm) {
-      const dialogTitle = SystemUtils.Localize("CPR.dialog.removeCyberware.title");
-      const dialogMessage = `${SystemUtils.Localize("CPR.dialog.removeCyberware.text")} ${item.name}?`;
+      const dialogTitle = SystemUtils.Localize("CPR.dialog.uninstallCyberware.title");
+      const dialogMessage = `${SystemUtils.Format("CPR.dialog.uninstallCyberware.text", { item: item.name })}?`;
       confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
     } else {
       confirmRemove = true;
     }
     if (confirmRemove) {
-      if (item.system.isFoundational) {
-        await this._removeFoundationalCyberware(item);
-      } else {
-        await this._removeOptionalCyberware(item, foundationalId);
+      const target = (this.uuid === item.system.installedIn) ? this : this.getOwnedItem(item.system.installedIn);
+      const uninstallList = await target.uninstallItems([item]);
+      for (const ui of uninstallList) {
+        if (SystemUtils.GetTemplateItemTypes("upgradable").includes(ui.type)) {
+          // eslint-disable-next-line no-await-in-loop
+          await ui.syncUpgrades();
+        }
+        if (ui.type === "cyberdeck") {
+          // eslint-disable-next-line no-await-in-loop
+          await ui.syncPrograms();
+        }
       }
-      await this.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.isInstalled": false }]);
-      return this.setMaxHumanity();
     }
-    return this.updateEmbeddedDocuments("Item", []);
+    return this.setMaxHumanity();
   }
 
   /**
-   * Remove (uninstall) optional cyberware
+   * Get an array of the objects installed in this Item. An optional
+   * string parameter may be passed to filter the return list by a
+   * specific Item type.
    *
-   * @private
-   * @param {CPRItem} item - optional cyberware item to uninstall
-   * @param {String} foundationalId - The foundational cybeware Id to uninstall the cybeware from
-   * @returns {Object}
+   * @param {String} type - Optionally return a list of a specific item type
+   * @returns {Array} - Array of objects that are installed
    */
-  _removeOptionalCyberware(item, foundationalId) {
-    LOGGER.trace("_removeOptionalCyberware | CPRActor | Called.");
-    // If the cyberware item was not installed, don't process the removal from a non-existent foundational slot.
-    if (item.system.isInstalled) {
-      const foundationalCyberware = this._getOwnedItem(foundationalId);
-      const newInstalledOptionSlots = foundationalCyberware.system.installedOptionSlots - item.system.size;
-      const newOptionalIds = foundationalCyberware.system.optionalIds.filter(
-        (optionId) => optionId !== item._id,
-      );
-      return this.updateEmbeddedDocuments("Item", [{
-        _id: foundationalCyberware.id,
-        "system.optionalIds": newOptionalIds,
-        "system.installedOptionSlots": newInstalledOptionSlots,
-      }]);
-    }
-    return null;
-  }
+  getInstalledItems(type = false) {
+    LOGGER.trace("getInstalledItems | CPRActor | Called.");
+    const installedItems = [];
 
-  /**
-   * Remove (uninstall) foundational cyberware
-   *
-   * @private
-   * @param {CPRItem} item - foundational cyberware item to uninstall
-   * @returns {Object}
-   */
-  _removeFoundationalCyberware(item) {
-    LOGGER.trace("_removeFoundationalCyberware | CPRActor | Called.");
-    const updateList = [];
-    if (item.system.optionalIds) {
-      item.system.optionalIds.forEach(async (optionalId) => {
-        const optional = this._getOwnedItem(optionalId);
-        updateList.push({ _id: optional.id, "system.isInstalled": false });
+    if (this.system.installedItems.list.length > 0) {
+      this.system.installedItems.list.forEach((uuid) => {
+        const installedItem = this.getOwnedItem(uuid);
+        if (installedItem && (!type || (type && installedItem.type === type))) {
+          installedItems.push(installedItem);
+        }
       });
-      updateList.push({ _id: item.id, "system.optionalIds": [], "system.installedOptionSlots": 0 });
-      return this.updateEmbeddedDocuments("Item", updateList);
     }
-    return PromiseRejectionEvent();
+    return installedItems;
+  }
+
+  /**
+   * Determine if a set of objects can be installed into this Item. Checks for
+   * the following criteria:
+   *  - Items are allowed to be installed
+   *  - Item in itemLists are all in the allowedTypes of this item
+   *
+   * @param {Array} itemList - Array of objects to wanting to be installed
+   * @returns {Boolean} - Whether this item can install all objects passed to it
+   */
+  canInstallItems(itemList) {
+    LOGGER.trace("canInstallItems | CPRActor | Called.");
+    if (!Array.isArray(itemList)) {
+      LOGGER.debug(`CPRActor.canInstallItems argument is not an array: ${itemList}`);
+      return false;
+    }
+    let result = true;
+    itemList.forEach((item) => {
+      if (!this.system.installedItems.allowedTypes.includes(item.type) || !(SystemUtils.getDataModelTemplates(item.type).includes("installable"))) {
+        result = false;
+      }
+    });
+    return (this.system.installedItems.allowed && result);
+  }
+
+  /**
+   * This will install items into this Actor.
+   * @param {Array} itemList - Array of Item Objects to be installed
+   * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
+   */
+  async installItems(itemList) {
+    LOGGER.trace("installItems | CPRActor | Called.");
+    if (!Array.isArray(itemList)) {
+      return Promise.reject(new Error(`CPRActor.installItems argument is not an array: ${itemList}`));
+    }
+    if (!this.canInstallItems(itemList)) {
+      return Promise.reject(new Error("Installation failed.  One or more item types are not allowed to be installed."));
+    }
+    const installedItems = duplicate(this.system.installedItems);
+    const updateList = [];
+
+    itemList.forEach((item) => {
+      if (!installedItems.list.includes(item.uuid)) {
+        installedItems.list.push(item.uuid);
+      }
+      updateList.push({ _id: item.id, "system.isInstalled": true, "system.installedIn": this.uuid });
+    });
+
+    await this.update({ "system.installedItems": installedItems });
+    return this.updateEmbeddedDocuments("Item", updateList);
+  }
+
+  /**
+   * This will uninstall all items in itemList from this Actor.  By default, any installed items
+   * which also have installed items WILL have those items removed from it.
+   *  Example 1:
+   *    Uninstall a CyberArm which has a Big Knucks will also remove the Big Knucks from the CyberArm
+   *  Example 2:
+   *    Uninstall a CyberArm which has a Cyberdeck in it, all programs and upgrades from the
+   *    Cyberdeck are also uninstalled. (Not preferrable, see TODO)
+   *
+   * TODO: Determine if we should stop recursiveness on an item type change.  IE, if this
+   *       is a cyberware item, only remove all embedded cyberware items and if something else
+   *       is installed, like a cyberdeck, don't uninstall whatever it has installed.
+   * @param {Array} itemList - Array of objects to uninstall
+   * @param {Boolean} recursive  - Boolean stating if the uninstallation should be recursive
+   *                               in that each item uninstalled should also have it's own
+   *                               installed items removed.  This is needed for Cyberware uninstallations.
+   * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
+   */
+  async uninstallItems(itemList, recursive = true) {
+    LOGGER.trace("uninstallItems | CPRActor | Called.");
+    if (!Array.isArray(itemList)) {
+      return Promise.reject(new Error(`CPRActor.uninstallItems argument is not an array: ${itemList}`));
+    }
+
+    const installedItems = duplicate(this.system.installedItems);
+    const updateList = [];
+
+    const uninstallList = [];
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+
+    for (const item of itemList) {
+      if (installedItems.list.includes(item.uuid)) {
+        installedItems.list = installedItems.list.filter((uuid) => item.uuid !== uuid);
+        uninstallList.push(item);
+        if (recursive) {
+          let embeddedItemList = item.getInstalledItems();
+
+          while (embeddedItemList.length > 0) {
+            const embeddedItemsData = JSON.parse(JSON.stringify(embeddedItemList));
+            embeddedItemList = [];
+            for (const embeddedItemData of embeddedItemsData) {
+              const embeddedItem = this.getOwnedItem(embeddedItemData._id);
+              uninstallList.push(embeddedItem);
+              if (containerTypes.includes(embeddedItem.type) && embeddedItem.system.installedItems.list.length > 0) {
+                embeddedItemList = embeddedItemList.concat(embeddedItem.getInstalledItems());
+              }
+            }
+          }
+        }
+      }
+    }
+
+    uninstallList.forEach((item) => {
+      updateList.push({
+        _id: item._id,
+        "system.isInstalled": false,
+        "system.installedIn": "",
+        "system.installedItems.list": [],
+        "system.installedItems.usedSlots": 0,
+      });
+    });
+
+    await this.update({ "system.installedItems": installedItems });
+    return this.updateEmbeddedDocuments("Item", updateList);
   }
 
   /**
    * Return the Item object given an Id
    *
-   * @private
-   * @param {String} itemId - Id of the item to get
+   * @public
+   * @param {String} itemId - Id or UUID of the item to get
    * @returns {CPRItem}
    */
-  _getOwnedItem(itemId) {
-    LOGGER.trace("_getOwnedItem | CPRActor | Called.");
-    return this.items.find((i) => i._id === itemId);
+  getOwnedItem(itemId) {
+    LOGGER.trace("getOwnedItem | CPRActor | Called.");
+    const item = (this.items.find((i) => i._id === itemId)) ? this.items.find((i) => i._id === itemId) : this.items.find((i) => i.uuid === itemId);
+    return item;
   }
 
   /**
@@ -538,6 +645,39 @@ export default class CPRActor extends Actor {
   getStat(statName) {
     LOGGER.trace("getStat | CPRActor | Called.");
     return parseInt(this.system.stats[statName].value, 10);
+  }
+
+  /**
+   * Get all mods provided by equippable and upgradeable items for a specific thing
+   *
+   * @param {String} baseName - name of the thing (e.g. stat) getting mods
+   * @returns {Number}
+   */
+  getUpgradeMods(baseName) {
+    LOGGER.trace("getUpgradeMods | CPRActor | Called.");
+    let modValue = 0;
+    // See if we have any items which upgrade our stat, and if so, upgrade the stat base
+    const equippableItemTypes = SystemUtils.GetTemplateItemTypes("equippable");
+    const upgradableItemTypes = SystemUtils.GetTemplateItemTypes("upgradable");
+    const itemTypes = equippableItemTypes.filter((value) => upgradableItemTypes.includes(value));
+    let modType = "modifier";
+
+    itemTypes.forEach((itemType) => {
+      const itemList = this.itemTypes[itemType].filter((i) => i.system.equipped === "equipped" && i.system.isUpgraded);
+      itemList.forEach((i) => {
+        const upgradeData = i.getTotalUpgradeValues(baseName);
+        if (modType === "override") {
+          if (upgradeData.type === "override" && upgradeData.value > modValue) {
+            modValue = upgradeData.value;
+          }
+        } else {
+          modValue = (upgradeData.type === "override") ? upgradeData.value : modValue + upgradeData.value;
+          modType = upgradeData.type;
+        }
+      });
+    });
+
+    return modValue;
   }
 
   /**
@@ -752,7 +892,7 @@ export default class CPRActor extends Actor {
    */
   makeThisArmorCurrent(location, id) {
     LOGGER.trace("makeThisArmorCurrent | CPRActor | Called.");
-    const currentArmor = this._getOwnedItem(id);
+    const currentArmor = this.getOwnedItem(id);
     if (location === "body") {
       const currentArmorValue = currentArmor.system.bodyLocation.sp - currentArmor.system.bodyLocation.ablation;
       const currentArmorMax = currentArmor.system.bodyLocation.sp;
@@ -873,7 +1013,7 @@ export default class CPRActor extends Actor {
     weapons.forEach((weapon) => {
       const cprWeaponData = weapon.system;
       if (cprWeaponData.isRanged) {
-        if (cprWeaponData.magazine.ammoId === ammoId) {
+        if (cprWeaponData.magazine.ammoData.uuid === ammoId) {
           weapon._unloadItem();
         }
       }
@@ -1242,11 +1382,10 @@ export default class CPRActor extends Actor {
       case "head": {
         armorList.forEach((a) => {
           const cprArmorData = a.system;
-          const upgradeValue = a.getTotalUpgradeValues("headSp");
-          const upgradeType = a.getUpgradeTypeFor("headSp");
+          const upgradeData = a.getTotalUpgradeValues("headSp");
           cprArmorData.headLocation.sp = Number(cprArmorData.headLocation.sp);
           cprArmorData.headLocation.ablation = Number(cprArmorData.headLocation.ablation);
-          const armorSp = (upgradeType === "override") ? upgradeValue : cprArmorData.headLocation.sp + upgradeValue;
+          const armorSp = (upgradeData.type === "override") ? upgradeData.value : cprArmorData.headLocation.sp + upgradeData.value;
           cprArmorData.headLocation.ablation = ablation < 0
             ? Math.max((cprArmorData.headLocation.ablation + ablation), 0)
             : Math.min((cprArmorData.headLocation.ablation + ablation), armorSp);
@@ -1265,9 +1404,8 @@ export default class CPRActor extends Actor {
           const cprArmorData = a.system;
           cprArmorData.bodyLocation.sp = Number(cprArmorData.bodyLocation.sp);
           cprArmorData.bodyLocation.ablation = Number(cprArmorData.bodyLocation.ablation);
-          const upgradeValue = a.getTotalUpgradeValues("bodySp");
-          const upgradeType = a.getUpgradeTypeFor("bodySp");
-          const armorSp = (upgradeType === "override") ? upgradeValue : cprArmorData.bodyLocation.sp + upgradeValue;
+          const upgradeData = a.getTotalUpgradeValues("bodySp");
+          const armorSp = (upgradeData.type === "override") ? upgradeData.value : cprArmorData.bodyLocation.sp + upgradeData.value;
           cprArmorData.bodyLocation.ablation = ablation < 0
             ? Math.max((cprArmorData.bodyLocation.ablation + ablation), 0)
             : Math.min((cprArmorData.bodyLocation.ablation + ablation), armorSp);
@@ -1376,7 +1514,8 @@ export default class CPRActor extends Actor {
     const cprData = this.system;
     const { stats } = cprData;
     let cyberwarePenalty = 0;
-    this.getInstalledCyberware().forEach((cyberware) => {
+    const installedCyberware = this.itemTypes.cyberware.filter((cw) => cw.system.isInstalled);
+    installedCyberware.forEach((cyberware) => {
       if (cyberware.system.type === "borgware") {
         cyberwarePenalty += 4;
       } else if (parseInt(cyberware.system.humanityLoss.static, 10) > 0) {
@@ -1482,7 +1621,7 @@ export default class CPRActor extends Actor {
     LOGGER.trace("handleMookDraggedItem | CPRActor | Called.");
     // auto-install this cyberware
     if (item.type === "cyberware") {
-      this.addCyberware(item._id);
+      this.installCyberware(item._id);
     }
     // auto-equip this item
     if (SystemUtils.hasDataModelTemplate(item.type, "equippable")) {
