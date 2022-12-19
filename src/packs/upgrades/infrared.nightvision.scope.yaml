@@ -1,10 +1,10 @@
----
 _id: pEXcsIk1FYMNdbUc
 effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/infrared_nightvision_scope.svg
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/item_upgrades/infrared_nightvision_scope.svg
 name: Infrared Nightvision Scope
 ownership:
   default: 0

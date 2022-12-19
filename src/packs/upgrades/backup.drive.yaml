@@ -1,4 +1,3 @@
----
 _id: DWfusJuwJXXt59bA
 effects: []
 flags:
@@ -19,7 +18,9 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: <p>Saves Non-Black IE programs when destroyed. These programs can be re-installed by a Netrunner as a meat action.&nbsp;</p>
+    value: >-
+      <p>Saves Non-Black IE programs when destroyed. These programs can be
+      re-installed by a Netrunner as a meat action.&nbsp;</p>
   dvTable: ''
   equipped: owned
   favorite: false

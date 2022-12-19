@@ -9,14 +9,6 @@ ownership:
   default: 0
 sort: 0
 system:
-  installedItems:
-    allowedTypes:
-      - itemUpgrade
-      - cyberdeck
-    allowed: true
-    list: []
-    usedSlots: 0
-    slots: 1
   ammoVariety: []
   amount: 1
   attackmod: 0
@@ -38,6 +30,14 @@ system:
     roll: 1d6
     static: '3'
   install: clinic
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - cyberdeck
+    list: []
+    slots: 1
+    usedSlots: 0
   isConcealed: false
   isFoundational: false
   isInstalled: false

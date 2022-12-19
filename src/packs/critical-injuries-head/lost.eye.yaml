@@ -1,25 +1,4 @@
 _id: vysFvuTpuG2aDDIz
-data:
-  deathSaveIncrease: true
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>
-  effects: ''
-  favorite: false
-  location: head
-  quickFix:
-    dvFirstAid: 0
-    dvParamedic: 0
-    type: notApplicable
-  revealed: true
-  source: Pg. 188
-  tags: []
-  treatment:
-    dvParamedic: 0
-    dvSurgery: 17
-    type: surgery
-  usage: toggled
 effects:
   - _id: LvleoaWBehypiscm
     changes:
@@ -75,4 +54,25 @@ name: Lost Eye
 ownership:
   default: 0
 sort: 0
+system:
+  deathSaveIncrease: true
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>
+  effects: ''
+  favorite: false
+  location: head
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 0
+    type: notApplicable
+  revealed: true
+  source: Pg. 188
+  tags: []
+  treatment:
+    dvParamedic: 0
+    dvSurgery: 17
+    type: surgery
+  usage: toggled
 type: criticalInjury

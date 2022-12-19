@@ -1,55 +1,55 @@
+_id: 9ZQqizz1ulgcqnec
 effects: []
 flags:
   core: {}
+folder: null
 img: icons/weapons/swords/greatsword-crossguard-steel.webp
 name: Longsword
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: heavyMelee
-  weaponSkill: Melee Weapon
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 3d6
-  rof: 2
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: ''
-  description:
-    value: >-
-      <p>A hollow cylinder, typically made of metal or fiberglass. It may have
-      conveyed fluids once. </p>
-    chat: ''
-    unidentified: ''
-  source: pg. 340
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 0
-    ammoData:
-      name: ''
-      uuid: ''
   ammoVariety: []
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  isUpgraded: false
-  price:
-    market: 100
-    category: premium
+  damage: 3d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>A hollow cylinder, typically made of metal or fiberglass. It may have
+      conveyed fluids once. </p>
+  dvTable: ''
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
   handsReq: 2
   isConcealed: false
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ''
+      uuid: ''
+    max: 0
+    value: 0
+  price:
+    category: premium
+    market: 100
   quality: standard
+  revealed: true
+  rof: 2
+  source: pg. 340
+  tags: ''
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: heavyMelee
 type: weapon
-_id: 9ZQqizz1ulgcqnec
-folder: null
-sort: 0
-ownership:
-  default: 0

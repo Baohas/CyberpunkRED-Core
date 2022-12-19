@@ -1,5 +1,15 @@
 _id: xfzYp9N5c6jEKiBR
-data:
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/critical_injuries/foreign_object_head.svg
+name: Foreign Object (H)
+ownership:
+  default: 0
+sort: 0
+system:
   deathSaveIncrease: false
   description:
     chat: ''
@@ -22,14 +32,4 @@ data:
     dvSurgery: 0
     type: quickFix
   usage: toggled
-effects: []
-flags:
-  core: {}
-folder: null
-img: >-
-  systems/cyberpunk-red-core/icons/compendium/critical_injuries/foreign_object_head.svg
-name: Foreign Object (H)
-ownership:
-  default: 0
-sort: 0
 type: criticalInjury

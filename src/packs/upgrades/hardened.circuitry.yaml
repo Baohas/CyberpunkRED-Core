@@ -1,10 +1,10 @@
----
 _id: uFrp6fXRYfuorIwk
 effects: []
 flags:
   core: {}
 folder: null
-img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/hardened_circuitry.svg
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/item_upgrades/hardened_circuitry.svg
 name: Hardened Circuitry
 ownership:
   default: 0

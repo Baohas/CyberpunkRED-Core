@@ -1,32 +1,33 @@
+_id: oZCZLAUVwbWZnHgj
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/woodchippers_garage/paintball_biotoxin.png
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/woodchippers_garage/paintball_biotoxin.png
 name: Paintball (Biotoxin)
+ownership:
+  default: 0
+sort: 0
 system:
-  tags: []
-  description:
-    value: >-
-      <p>Little more than 3 Vials of Biotoxin strapped together. Deals no direct
-      damage on hit.</p>
-    chat: ''
-    unidentified: ''
-  source: WG
-  favorite: false
+  ablationValue: 0
+  amount: 10
   concealable:
     concealable: true
     isConcealed: false
-  ablationValue: 0
-  amount: 10
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Little more than 3 Vials of Biotoxin strapped together. Deals no direct
+      damage on hit.</p>
+  favorite: false
   price:
-    market: 1500
     category: cheap
-  variety: paintball
+    market: 1500
+  source: WG
+  tags: []
   type: biotoxin
   upgrade: ''
+  variety: paintball
 type: ammo
-_id: oZCZLAUVwbWZnHgj
-folder: null
-sort: 0
-ownership:
-  default: 0

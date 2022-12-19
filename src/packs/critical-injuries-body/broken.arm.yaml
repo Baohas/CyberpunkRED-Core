@@ -1,5 +1,14 @@
 _id: Y65igO9rtakP4qSs
-data:
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_arm.svg
+name: Broken Arm
+ownership:
+  default: 0
+sort: 0
+system:
   deathSaveIncrease: false
   description:
     chat: ''
@@ -20,13 +29,4 @@ data:
     dvSurgery: 13
     type: paramedicSurgery
   usage: toggled
-effects: []
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_arm.svg
-name: Broken Arm
-ownership:
-  default: 0
-sort: 0
 type: criticalInjury

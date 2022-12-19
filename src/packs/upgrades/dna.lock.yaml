@@ -1,4 +1,3 @@
----
 _id: jz7lnKQ3dKd5GCbY
 effects: []
 flags:
@@ -19,7 +18,9 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: <p>Uses biometrics to lock the cyberdeck. Requires DV17 Electronics/Security Tech Check to crack.&nbsp;</p>
+    value: >-
+      <p>Uses biometrics to lock the cyberdeck. Requires DV17
+      Electronics/Security Tech Check to crack.&nbsp;</p>
   dvTable: ''
   equipped: owned
   favorite: false

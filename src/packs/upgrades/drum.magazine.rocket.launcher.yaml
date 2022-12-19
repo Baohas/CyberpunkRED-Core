@@ -1,4 +1,3 @@
----
 _id: y9HobxZQBhVEN5Ne
 effects: []
 flags:
@@ -19,7 +18,9 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: <p>Increases magazine size to a massive 3 rockets. That's a lot of boom.</p>
+    value: >-
+      <p>Increases magazine size to a massive 3 rockets. That's a lot of
+      boom.</p>
   dvTable: ''
   equipped: owned
   favorite: false

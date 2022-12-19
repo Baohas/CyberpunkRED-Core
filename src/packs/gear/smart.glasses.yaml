@@ -9,13 +9,6 @@ ownership:
   default: 0
 sort: 0
 system:
-  installedItems:
-    allowedTypes:
-      - itemUpgrade
-    allowed: true
-    list: []
-    usedSlots: 0
-    slots: 2
   ammoVariety: []
   amount: 1
   attackmod: 0
@@ -40,6 +33,13 @@ system:
     roll: '0'
     static: '0'
   install: mall
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 2
+    usedSlots: 0
   isConcealed: false
   isFoundational: true
   isInstalled: false

@@ -9,14 +9,6 @@ ownership:
   default: 0
 sort: 0
 system:
-  installedItems:
-    allowedTypes:
-      - itemUpgrade
-      - program
-    allowed: true
-    list: []
-    usedSlots: 0
-    slots: 9
   amount: 1
   concealable:
     concealable: false
@@ -27,6 +19,14 @@ system:
     value: <p>Netrunner deck. 9 slots.</p>
   equipped: owned
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - program
+    list: []
+    slots: 9
+    usedSlots: 0
   isUpgraded: false
   price:
     category: veryExpensive
