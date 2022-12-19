@@ -24,8 +24,6 @@ for doc in "${DOCS[@]}"; do
   if ! yamllint "${doc}"; then
     echo "❌ ${doc} does not validate with yaml-lint"
     ((ERRORS = ERRORS + 1))
-  else
-    echo "✅ ${doc} passed yaml-lint"
   fi
 done
 

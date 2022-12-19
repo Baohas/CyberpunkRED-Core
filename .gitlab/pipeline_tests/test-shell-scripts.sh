@@ -51,23 +51,17 @@ for script in "${SCRIPTS[@]}"; do
   if [[ "${strictmode_errors}" -gt 0 ]]; then
     ((ERRORS = ERRORS + 1))
     echo "❌ ${script##*/} is not strictmode compliant."
-  else
-    echo "✅ ${script##*/} is strictmode compliant!"
   fi
 
   # Check we pass shellcheck
   if ! shellcheck "${script}"; then
     echo "❌ ${script##*/} does not validate with shellcheck"
     ((ERRORS = ERRORS + 1))
-  else
-    echo "✅ ${script##*/} passed shellcheck!"
   fi
 
   if ! shfmt -d "${script}"; then
     echo "❌ ${script##*/} does not validate with shfmt"
     ((ERRORS = ERRORS + 1))
-  else
-    echo "✅ ${script##*/} passed shfmt!"
   fi
 done
 

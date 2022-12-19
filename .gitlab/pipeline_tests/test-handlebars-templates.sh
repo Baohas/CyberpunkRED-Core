@@ -19,8 +19,6 @@ for hbs_file in ${HBS_FILES}; do
   if ! grep -rq "${hbs_file}" "${CODE_DIR}"; then
     echo "❌ ${hbs_file} is not used in the code base! Please remove it."
     ((ERRORS += 1))
-  else
-    echo "✅ ${hbs_file} is used"
   fi
 done
 

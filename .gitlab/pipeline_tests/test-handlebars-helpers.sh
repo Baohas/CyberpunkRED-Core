@@ -9,8 +9,6 @@ ERRORS=0
 if [[ ! -f "${HELPERFILE}" ]]; then
   echo "❌ ${HELPERFILE} not found"
   exit 1
-else
-  echo "✅ ${HELPERFILE} found!"
 fi
 
 # Check if the helper file contains helpers
@@ -20,8 +18,6 @@ HELPERS=$(grep registerHelper "${HELPERFILE}" | awk -F "\"" '{print $2}' || true
 if [[ -z "${HELPERS}" ]]; then
   echo "❌ No helpers found in ${HELPERFILE}"
   exit 1
-else
-  echo "✅ Helpers found in ${HELPERFILE}"
 fi
 
 # Check if helpers are used and start with cpr
@@ -31,14 +27,10 @@ for helper in ${HELPERS}; do
     if [[ ! "${helper}" == "cprDebug" || "${helper}" == "cprIsDebug" ]]; then
       echo "❌ Handlebars helper not used: ${helper}"
       ((ERRORS = ERRORS + 1))
-    else
-      echo "✅ ${helper} Handlebars helper found!"
     fi
   elif [[ ! "${helper}" =~ ^cpr.* ]]; then
     echo "❌ Handbars helpers must start with 'cpr', ${helper} does not."
     ((ERRORS = ERRORS + 1))
-  else
-    echo "✅ ${helper} Handlebars helper starts with 'cpr'!"
   fi
 done
 
