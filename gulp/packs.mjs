@@ -172,7 +172,10 @@ async function genPacks() {
         // Sort the pack
         data.sort((lhs, rhs) => (lhs._id > rhs._id ? 1 : -1));
         // Write each entry to the pack
-        data.forEach((entry) => db.write(`${JSON.stringify(entry)}\n`));
+        for (const entry of data) {
+          db.write(`${JSON.stringify(entry)}\n`);
+        }
+        db.end();
       } else {
         throw Error(`${path.join(fragmentDir, packName)} does not exist`);
       }
