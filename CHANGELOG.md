@@ -29,7 +29,6 @@
   - The toggle on an unowned (world) item persists state
   - A better read-only view when viewing effects on an item in a compendium
 - #625 - Deomon actor does not display notes
-- #623 - Populating Black Ice does not copy description
 - #610 - Cannot Split Stacks of Drugs
 - #623 - Populating Black Ice does not copy description
 
