@@ -1,9 +1,21 @@
-name: Mercurius Cyberchair
-type: gear
+_id: XbKkA6CrI42pvdcz
+effects: []
+flags:
+  core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/cyberchairs/cyberchair.svg
+name: Mercurius Cyberchair
+ownership:
+  default: 0
+sort: 0
 system:
-  tags: []
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>An impressively affordable cyberchair. While using it the operator's
       base MOVE becomes 5, with all regular movement options remaining
@@ -17,34 +29,15 @@ system:
 
       <p>The cyberchair cannot be targeted specifically, nor can it be disabled
       via EMP effects.</p>
-    chat: ''
-    unidentified: ''
-  source: CC
-  favorite: false
-  revealed: true
-  usage: toggled
   equipped: owned
-  concealable:
-    concealable: false
-    isConcealed: false
-  amount: 1
-  upgrades: []
-  slots: 3
+  favorite: false
   isUpgraded: false
   price:
     market: 100
-effects: []
-flags:
-  core: {}
-_stats:
-  systemId: cyberpunk-red-core
-  systemVersion: v0.85.0
-  coreVersion: '10.291'
-  createdTime: 1670699395693
-  modifiedTime: 1670700416501
-  lastModifiedBy: 00CPRCBuildBot00
-_id: XbKkA6CrI42pvdcz
-folder: null
-sort: 0
-ownership:
-  default: 0
+  revealed: true
+  slots: 3
+  source: CC
+  tags: []
+  upgrades: []
+  usage: toggled
+type: gear

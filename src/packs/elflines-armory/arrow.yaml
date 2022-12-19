@@ -1,29 +1,29 @@
+_id: qQO7cw9BbGNNken1
 effects: []
 flags:
   core: {}
+folder: null
 img: icons/weapons/ammunition/arrow-broadhead.webp
 name: Arrow
+ownership:
+  default: 0
+sort: 0
 system:
-  tags: []
-  description:
-    value: <p>Basic ammo, nothing special.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 345
-  favorite: false
+  amount: '10'
   concealable:
     concealable: true
     isConcealed: false
-  amount: '10'
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Basic ammo, nothing special.</p>
+  favorite: false
   price:
-    market: 1
     category: cheap
-  variety: arrow
+    market: 1
+  source: pg. 345
+  tags: []
   type: basic
   upgrade: ''
+  variety: arrow
 type: ammo
-_id: qQO7cw9BbGNNken1
-folder: null
-sort: 0
-ownership:
-  default: 0

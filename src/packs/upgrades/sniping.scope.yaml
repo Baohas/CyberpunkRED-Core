@@ -1,4 +1,3 @@
----
 _id: Ryex0KHeeDzPQwmN
 effects: []
 flags:
@@ -19,7 +18,9 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: <p>Allows you to see detail up to 800m/yds. +1 to Single Shot/Aimed Shots for targets greater than 51m/yds.&nbsp;</p>
+    value: >-
+      <p>Allows you to see detail up to 800m/yds. +1 to Single Shot/Aimed Shots
+      for targets greater than 51m/yds.&nbsp;</p>
   dvTable: ''
   equipped: owned
   favorite: false

@@ -1,4 +1,3 @@
----
 _id: xRA275R527XLwaBJ
 effects: []
 flags:
@@ -19,7 +18,10 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: <p>An old idea that still works just as good; lets you use your gun as a light melee weapon. While attached, the weapon can't be concealed under clothing.</p>
+    value: >-
+      <p>An old idea that still works just as good; lets you use your gun as a
+      light melee weapon. While attached, the weapon can't be concealed under
+      clothing.</p>
   dvTable: ''
   equipped: owned
   favorite: false

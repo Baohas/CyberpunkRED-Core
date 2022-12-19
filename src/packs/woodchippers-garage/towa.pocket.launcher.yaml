@@ -1,63 +1,63 @@
+_id: mHKNifoCC2mNhT45
 effects: []
 flags:
   core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher_poor.svg
 name: Towa Pocket Launcher
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: rocketLauncher
-  weaponSkill: Heavy Weapons
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 8d6
-  rof: 1
-  dvTable: DV Rocket Launcher
-  isRanged: true
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: ''
-  description:
-    value: <p>While unloaded, this weapon can be concealed.</p>
-    chat: ''
-    unidentified: ''
-  source: WG
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 1
-    ammoData:
-      name: ''
-      uuid: ''
-  ammoVariety:
-    - rocket
-  concealable:
-    concealable: true
-    isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 500
-    category: premium
-  handsReq: 2
-  isConcealed: false
-  quality: poor
-  upgrade: ''
   allowedUsage:
     - always
     - toggled
     - carried
     - equipped
+  ammoVariety:
+    - rocket
+  attackmod: 0
   availableSlots: 3
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 8d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>While unloaded, this weapon can be concealed.</p>
+  dvTable: DV Rocket Launcher
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  isConcealed: false
   isGM: true
   isOwned: null
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ''
+      uuid: ''
+    max: 1
+    value: 0
+  price:
+    category: premium
+    market: 500
+  quality: poor
+  revealed: true
+  rof: 1
+  slots: 3
+  source: WG
+  tags: ''
+  unarmedAutomaticCalculation: true
+  upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: rocketLauncher
 type: weapon
-_id: mHKNifoCC2mNhT45
-folder: null
-sort: 0
-ownership:
-  default: 0

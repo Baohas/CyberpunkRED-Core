@@ -1,4 +1,3 @@
----
 _id: Ut1OZZP1KFC8o6IB
 effects: []
 flags:
@@ -19,7 +18,9 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: <p>Cyberdeck can connect to access points from up to 8m/yds away (instead of 6m/yds).</p>
+    value: >-
+      <p>Cyberdeck can connect to access points from up to 8m/yds away (instead
+      of 6m/yds).</p>
   dvTable: ''
   equipped: owned
   favorite: false

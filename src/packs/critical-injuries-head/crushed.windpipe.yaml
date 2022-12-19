@@ -1,5 +1,15 @@
 _id: mVE8ovTniNKFs9Y7
-data:
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_windpipe.svg
+name: Crushed Windpipe
+ownership:
+  default: 0
+sort: 0
+system:
   deathSaveIncrease: true
   description:
     chat: ''
@@ -20,14 +30,4 @@ data:
     dvSurgery: 15
     type: surgery
   usage: toggled
-effects: []
-flags:
-  core: {}
-folder: null
-img: >-
-  systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_windpipe.svg
-name: Crushed Windpipe
-ownership:
-  default: 0
-sort: 0
 type: criticalInjury

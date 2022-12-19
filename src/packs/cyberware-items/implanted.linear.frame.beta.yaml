@@ -34,14 +34,6 @@ ownership:
   default: 0
 sort: 0
 system:
-  installedItems:
-    allowedTypes:
-      - itemUpgrade
-      - cyberware
-    allowed: true
-    list: []
-    usedSlots: 0
-    slots: 3
   ammoVariety: []
   amount: 1
   attackmod: 0
@@ -65,6 +57,14 @@ system:
     roll: 4d6
     static: '14'
   install: hospital
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - cyberware
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
   isFoundational: true
   isInstalled: false

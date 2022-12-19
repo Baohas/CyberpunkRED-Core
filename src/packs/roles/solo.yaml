@@ -11,6 +11,7 @@ sort: 0
 system:
   abilities:
     - bonusRatio: 1
+      bonuses: []
       description: ''
       hasRoll: false
       index: 1
@@ -18,10 +19,10 @@ system:
       name: Fumble Recovery
       rank: 0
       skill: '--'
-      bonuses: []
       stat: '--'
       universalBonuses: []
     - bonusRatio: 1
+      bonuses: []
       description: ''
       hasRoll: false
       index: 2
@@ -29,11 +30,11 @@ system:
       name: Initiative Reaction
       rank: 0
       skill: '--'
-      bonuses: []
       stat: '--'
       universalBonuses:
         - initiative
     - bonusRatio: 3
+      bonuses: []
       description: ''
       hasRoll: false
       index: 3
@@ -41,11 +42,11 @@ system:
       name: Precision Attack
       rank: 0
       skill: '--'
-      bonuses: []
       stat: '--'
       universalBonuses:
         - attack
     - bonusRatio: 1
+      bonuses: []
       description: ''
       hasRoll: false
       index: 4
@@ -53,18 +54,10 @@ system:
       name: Spot Weakness
       rank: 0
       skill: '--'
-      bonuses: []
       stat: '--'
       universalBonuses:
         - damage
     - bonusRatio: 1
-      description: ''
-      hasRoll: false
-      index: 5
-      multiplier: '1'
-      name: Threat Detection
-      rank: 0
-      skill: '--'
       bonuses:
         - _id: InrW2EFk0Jvdh195
           data:
@@ -89,9 +82,17 @@ system:
             default: 0
           sort: 0
           type: skill
+      description: ''
+      hasRoll: false
+      index: 5
+      multiplier: '1'
+      name: Threat Detection
+      rank: 0
+      skill: '--'
       stat: '--'
       universalBonuses: []
     - bonusRatio: 2
+      bonuses: []
       description: ''
       hasRoll: false
       index: 0
@@ -99,7 +100,6 @@ system:
       name: Damage Deflection
       rank: 0
       skill: '--'
-      bonuses: []
       stat: '--'
       universalBonuses:
         - damageReduction

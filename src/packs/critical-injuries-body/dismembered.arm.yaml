@@ -1,5 +1,15 @@
 _id: 9N6yHeVwiGg2MkeL
-data:
+effects: []
+flags:
+  core: {}
+folder: null
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/critical_injuries/dismembered_arm.svg
+name: Dismembered Arm
+ownership:
+  default: 0
+sort: 0
+system:
   deathSaveIncrease: true
   description:
     chat: ''
@@ -20,14 +30,4 @@ data:
     dvSurgery: 17
     type: surgery
   usage: toggled
-effects: []
-flags:
-  core: {}
-folder: null
-img: >-
-  systems/cyberpunk-red-core/icons/compendium/critical_injuries/dismembered_arm.svg
-name: Dismembered Arm
-ownership:
-  default: 0
-sort: 0
 type: criticalInjury
