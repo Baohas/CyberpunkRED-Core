@@ -24,6 +24,10 @@
 
 - #621 - Add ROF to Cyberware Weapons and Weapon Upgrade Weapons on Mook sheet
 - ROF now uses localized strings
+- Fixed a few minor active effect UI issues
+  - Effects listed on the left of the item sheet are only greyed out for disabled effects on owned items
+  - The toggle on an unowned (world) item persists state
+  - A better read-only view when viewing effects on an item in a compendium
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 

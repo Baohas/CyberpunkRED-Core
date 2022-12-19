@@ -10,7 +10,7 @@
       <li class="item flexrow">
         <div class="item-header-title item-name text-large text-left text-padding-left">
           {{localize (cprGetLocalizedlNameKey item)}}
-            {{#if (cprIsUpgradable item.type)}}
+            {{#if (cprIsUpgradable item)}}
               {{#if item.system.isUpgraded}}
                 <sup><i data-tooltip="{{localize "CPR.upgraded"}}" class="fa-solid fa-square-up"></sup></i>
               {{/if}}
