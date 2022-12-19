@@ -21,14 +21,14 @@ effects:
           '0': skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
     label: AudioVox Acting
+    origin: null
     tint: null
     transfer: true
-    origin: null
   - _id: dqjjjMsDuHu1WoiE
     changes:
       - key: bonuses.playInstrument
-        value: '2'
         mode: 2
+        value: '2'
     disabled: false
     duration:
       combat: null
@@ -44,9 +44,9 @@ effects:
           '0': skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
     label: AudioVox Singing (Play Instrument)
+    origin: null
     tint: null
     transfer: true
-    origin: null
 flags:
   core: {}
 folder: null
@@ -56,63 +56,63 @@ ownership:
   default: 0
 sort: 0
 system:
-  installedItems:
-    allowedTypes:
-      - itemUpgrade
-    allowed: false
-    list: []
-    usedSlots: 0
-    slots: 3
-  weaponType: assaultRifle
-  weaponSkill: Archery
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 1d6
-  rof: 1
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: []
-  description:
-    value: >-
-      <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument checks.
-      </p>
-    chat: ''
-    unidentified: ''
-  source: pg. 362
-  favorite: false
-  revealed: true
-  usage: installed
-  install: clinic
-  isInstalled: false
-  size: 1
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 0
-    ammoData:
-      name: ''
-      uuid: ''
   ammoVariety: []
+  amount: 1
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  isUpgraded: false
-  price:
-    market: 500
-    category: expensive
-  type: cyberwareInternal
-  isWeapon: false
-  isFoundational: false
   core: false
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument checks.
+      </p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
   humanityLoss:
-    static: '3'
     roll: 1d6
-  amount: 1
+    static: '3'
+  install: clinic
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      name: ''
+      uuid: ''
+    max: 0
+    value: 0
+  price:
+    category: expensive
+    market: 500
   quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  source: pg. 362
+  tags: []
+  type: cyberwareInternal
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
 type: cyberware

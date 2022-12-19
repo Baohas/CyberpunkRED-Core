@@ -1,25 +1,4 @@
 _id: VWmTqmsW6S5v51FO
-data:
-  deathSaveIncrease: false
-  description:
-    chat: ''
-    unidentified: ''
-    value: <p>-4 to Speech Actions.</p>
-  effects: ''
-  favorite: false
-  location: head
-  quickFix:
-    dvFirstAid: 0
-    dvParamedic: 13
-    type: paramedic
-  revealed: true
-  source: Pg. 188
-  tags: []
-  treatment:
-    dvParamedic: 13
-    dvSurgery: 13
-    type: paramedicSurgery
-  usage: toggled
 effects:
   - _id: fuvMhn0ZVMzPG1d8
     changes:
@@ -66,4 +45,25 @@ name: Broken Jaw
 ownership:
   default: 0
 sort: 0
+system:
+  deathSaveIncrease: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>-4 to Speech Actions.</p>
+  effects: ''
+  favorite: false
+  location: head
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 13
+    type: paramedic
+  revealed: true
+  source: Pg. 188
+  tags: []
+  treatment:
+    dvParamedic: 13
+    dvSurgery: 13
+    type: paramedicSurgery
+  usage: toggled
 type: criticalInjury

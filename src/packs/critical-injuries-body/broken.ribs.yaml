@@ -1,5 +1,14 @@
 _id: MQpiPgEtPaIe6MJ6
-data:
+effects: []
+flags:
+  core: {}
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_ribs.svg
+name: Broken Ribs
+ownership:
+  default: 0
+sort: 0
+system:
   deathSaveIncrease: false
   description:
     chat: ''
@@ -22,13 +31,4 @@ data:
     dvSurgery: 13
     type: paramedicSurgery
   usage: toggled
-effects: []
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_ribs.svg
-name: Broken Ribs
-ownership:
-  default: 0
-sort: 0
 type: criticalInjury

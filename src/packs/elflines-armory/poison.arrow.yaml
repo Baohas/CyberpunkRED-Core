@@ -1,31 +1,31 @@
+_id: IZwINpYpfLLAq5zb
 effects: []
 flags:
   core: {}
+folder: null
 img: icons/weapons/ammunition/arrow-broadhead-green.webp
 name: Poison Arrow
+ownership:
+  default: 0
+sort: 0
 system:
-  tags: []
-  description:
-    value: >-
-      <p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs
-      Check. On a fail 2d6 damage to HP. No Ablation. </p>
-    chat: ''
-    unidentified: ''
-  source: pg. 346
-  favorite: false
+  amount: '10'
   concealable:
     concealable: true
     isConcealed: false
-  amount: '10'
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs
+      Check. On a fail 2d6 damage to HP. No Ablation. </p>
+  favorite: false
   price:
-    market: 10
     category: premium
-  variety: arrow
+    market: 10
+  source: pg. 346
+  tags: []
   type: poison
   upgrade: ''
+  variety: arrow
 type: ammo
-_id: IZwINpYpfLLAq5zb
-folder: null
-sort: 0
-ownership:
-  default: 0

@@ -112,7 +112,7 @@ async function extPacks() {
                 log(`Processing ${itemName}`);
               }
               const data = _cleanPackData(entry);
-              const output = YAML.dump(data, null, 2);
+              const output = YAML.dump(data, { sortKeys: true }, 2);
               fs.writeFileSync(path.join(fragmentDir, packName, `${itemName}.yaml`), output, { mode: 0o644 });
             });
           });

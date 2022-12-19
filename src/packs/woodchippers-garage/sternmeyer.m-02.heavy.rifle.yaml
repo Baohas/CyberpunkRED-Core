@@ -1,57 +1,57 @@
+_id: qqNh3sElWPyVT4Qq
 effects: []
 flags:
   core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
 name: Sternmeyer M-02 Heavy Rifle
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: assaultRifle
-  weaponSkill: Heavy Weapons
-  fireModes:
-    autoFire: 4
-    suppressiveFire: true
-  damage: 5d6
-  rof: 1
-  dvTable: DV Assault Rifle
-  isRanged: true
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: ''
-  description:
-    value: >-
-      <p>This weapon fires it's own custom ammunition, priced at 500eb
-      (Expensive) for 80 rounds of Armor Piercing ammo.</p>
-    chat: ''
-    unidentified: ''
-  source: WG
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 80
-    ammoData:
-      name: ''
-      uuid: ''
   ammoVariety:
     - custom
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 1000
-    category: expensive
+  damage: 5d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>This weapon fires it's own custom ammunition, priced at 500eb
+      (Expensive) for 80 rounds of Armor Piercing ammo.</p>
+  dvTable: DV Assault Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 4
+    suppressiveFire: true
   handsReq: 2
   isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ''
+      uuid: ''
+    max: 80
+    value: 0
+  price:
+    category: expensive
+    market: 1000
   quality: standard
+  revealed: true
+  rof: 1
+  slots: 3
+  source: WG
+  tags: ''
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: assaultRifle
 type: weapon
-_id: qqNh3sElWPyVT4Qq
-folder: null
-sort: 0
-ownership:
-  default: 0

@@ -13,8 +13,6 @@ EXCLUSION_LIST=(
 if [[ ! -f "${LANGFILE}" ]]; then
   echo "❌ Unable to find ${LANGFILE}"
   exit 1
-else
-  echo "✅ Found ${LANGFILE}!"
 fi
 
 # Load all localization identifiers from the English language file
@@ -36,11 +34,7 @@ for string in ${STRINGS}; do
 
       echo "❌ String not used: ${string}"
       ((ERRORS = ERRORS + 1))
-    else
-      echo "✅ ${string} used!"
     fi
-  else
-    echo "✅ ${string} is in exclusion list."
   fi
 done
 

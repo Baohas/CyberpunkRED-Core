@@ -9,13 +9,6 @@ ownership:
   default: 0
 sort: 0
 system:
-  installedItems:
-    allowedTypes:
-      - itemUpgrade
-    allowed: false
-    list: []
-    usedSlots: 0
-    slots: 3
   ammoVariety:
     - medPistol
   amount: 1
@@ -40,6 +33,13 @@ system:
     roll: 2d6
     static: '7'
   install: clinic
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
   isFoundational: false
   isInstalled: false

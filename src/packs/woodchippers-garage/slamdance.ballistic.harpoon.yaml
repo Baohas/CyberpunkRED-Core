@@ -1,59 +1,59 @@
+_id: TCdrW2Qh5gXWywlP
 effects: []
 flags:
   core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Machete.svg
 name: SlamDance Ballistic Harpoon
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: bow
-  weaponSkill: Archery
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 4d6
-  rof: 1
-  dvTable: DV Bows & Crossbows
-  isRanged: true
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: ''
-  description:
-    value: >-
-      <p>This harpoon can either be used as a Two Handed Very Heavy Melee
-      Weapon, or fired from it's housing as a ranged weapon. When fired it still
-      ignores half of the defender's armor*.<br><em>*Armor calculations
-      don't currently support this reduction, nor is switching to using it as a
-      melee weapon supported</em></p>
-    chat: ''
-    unidentified: ''
-  source: WG
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 1
-    ammoData:
-      name: ''
-      uuid: ''
   ammoVariety: []
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 1000
-    category: premium
+  damage: 4d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>This harpoon can either be used as a Two Handed Very Heavy Melee
+      Weapon, or fired from it's housing as a ranged weapon. When fired it still
+      ignores half of the defender's armor*.<br><em>*Armor calculations don't
+      currently support this reduction, nor is switching to using it as a melee
+      weapon supported</em></p>
+  dvTable: DV Bows & Crossbows
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
   handsReq: 2
   isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ''
+      uuid: ''
+    max: 1
+    value: 0
+  price:
+    category: premium
+    market: 1000
   quality: standard
+  revealed: true
+  rof: 1
+  slots: 3
+  source: WG
+  tags: ''
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: bow
 type: weapon
-_id: TCdrW2Qh5gXWywlP
-folder: null
-sort: 0
-ownership:
-  default: 0

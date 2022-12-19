@@ -1,58 +1,58 @@
+_id: YHhTX03AJFe0cS5N
 effects: []
 flags:
   core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
 name: Magnum Opus Hellbringer
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: vHeavyPistol
-  weaponSkill: Handgun
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 5d6
-  rof: 1
-  dvTable: DV Pistol
-  isRanged: true
-  unarmedAutomaticCalculation: true
+  ammoVariety:
+    - vHeavyPistol
   attackmod: 0
-  tags: ''
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 5d6
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>When this things shoots, you know about it. If fired by someone with
       less than 10 BODY, this pistol jams. An action is required to unjam
       it.</p>
-    chat: ''
-    unidentified: ''
-  source: 12DoG
-  favorite: false
-  revealed: true
-  usage: equipped
+  dvTable: DV Pistol
   equipped: owned
-  usesType: magazine
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  isConcealed: false
+  isRanged: true
+  isUpgraded: false
   magazine:
-    value: 0
-    max: 3
     ammoData:
       name: ''
       uuid: ''
-  ammoVariety:
-    - vHeavyPistol
-  concealable:
-    concealable: false
-    isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
+    max: 3
+    value: 0
   price:
-    market: 1000
     category: premium
-  handsReq: 1
-  isConcealed: false
+    market: 1000
   quality: standard
+  revealed: true
+  rof: 1
+  slots: 3
+  source: 12DoG
+  tags: ''
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
 type: weapon
-_id: YHhTX03AJFe0cS5N
-folder: null
-sort: 0
-ownership:
-  default: 0

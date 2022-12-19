@@ -26,8 +26,6 @@ for doc in "${DOCS[@]}"; do
   if ! npx jsonlint --quiet "${doc}"; then
     echo "❌ ${doc} does not validate with jsonlint"
     ((ERRORS += 1))
-  else
-    echo "✅ ${doc} passed jsonlint"
   fi
 done
 

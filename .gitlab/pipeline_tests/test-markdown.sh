@@ -29,8 +29,6 @@ for doc in "${DOCS[@]}"; do
 
     echo "❌ ${doc} does not validate with markdownlint"
     ((ERRORS = ERRORS + 1))
-  else
-    echo "✅ ${doc} passed markdownlint!"
   fi
 done
 

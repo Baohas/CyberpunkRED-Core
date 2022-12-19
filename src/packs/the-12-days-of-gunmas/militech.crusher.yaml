@@ -1,55 +1,55 @@
+_id: cUgtpdroFgBBJGam
 effects: []
 flags:
   core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
 name: Militech Crusher
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: vHeavyPistol
-  weaponSkill: Handgun
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 4d6
-  rof: 1
-  dvTable: DV Pistol
-  isRanged: true
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: ''
-  description:
-    value: <p>A pistol that fires shotgun slugs. What's not to love.</p>
-    chat: ''
-    unidentified: ''
-  source: 12DoG
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 6
-    ammoData:
-      name: ''
-      uuid: ''
   ammoVariety:
     - shotgunShell
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 500
-    category: premium
+  damage: 4d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>A pistol that fires shotgun slugs. What's not to love.</p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
   handsReq: 1
   isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ''
+      uuid: ''
+    max: 6
+    value: 0
+  price:
+    category: premium
+    market: 500
   quality: standard
+  revealed: true
+  rof: 1
+  slots: 3
+  source: 12DoG
+  tags: ''
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
 type: weapon
-_id: cUgtpdroFgBBJGam
-folder: null
-sort: 0
-ownership:
-  default: 0

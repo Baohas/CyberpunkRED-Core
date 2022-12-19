@@ -1,4 +1,3 @@
----
 _id: BC8S1sdK0QGdyHNC
 effects: []
 flags:
@@ -19,7 +18,9 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: <p>Turns weapon into a "Smartgun". Refer to all rules specified on pg. 344 before using.&nbsp;</p>
+    value: >-
+      <p>Turns weapon into a "Smartgun". Refer to all rules specified on pg. 344
+      before using.&nbsp;</p>
   dvTable: ''
   equipped: owned
   favorite: false

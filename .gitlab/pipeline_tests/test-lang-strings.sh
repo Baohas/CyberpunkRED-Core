@@ -39,8 +39,6 @@ for lang in "${LANGUAGES[@]}"; do
     if ! grep -rq "${en_string}" "src/${lang}"; then
       echo "❌ ${en_string} not in src/${lang}"
       ((ERRORS += 1))
-    else
-      echo "✅ ${en_string} in src/${lang}!"
     fi
   done
   # Extract strings from each language and check if it exists in en.json
@@ -55,8 +53,6 @@ for lang in "${LANGUAGES[@]}"; do
     if ! grep -rq "${lang_string}" "${LANG_FILE}"; then
       echo "❌ ${lang_string} not in ${LANG_FILE}"
       ((ERRORS += 1))
-    else
-      echo "✅ ${lang_string} in ${LANG_FILE}!"
     fi
   done
 done
