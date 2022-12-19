@@ -19,7 +19,7 @@ data:
     dvParamedic: 13
     dvSurgery: 13
     type: paramedicSurgery
-  usage: always
+  usage: toggled
 effects:
   - _id: fuvMhn0ZVMzPG1d8
     changes:
