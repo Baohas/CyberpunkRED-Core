@@ -231,7 +231,6 @@
             <li class="items-header flexrow collapsible">
               <span class="item-name bg-black text-nowrap expand-button" id="gearTab-{{c}}" data-tooltip="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
                 {{localize category}}&nbsp;
-                {{log ../this}}
                 {{#if (cprListContains ../this.options.collapsedSections (cprGeneratePartial "gearTab-VAR" c))}}
                 <i class="fas fa-plus bg-black collapse-icon"></i>
                 <i class="fas fa-minus bg-black expand-icon hide"></i>
@@ -257,9 +256,7 @@
             <ol class="items-list">
               {{#each (cprSort (cprGetProp ../actor.itemTypes c) "name") as |item i|}}
                 {{!-- Row for individual item --}}
-                {{#if (cprSheetContentFilter ../../this.options.cprContentFilter item.name)}}
-                  {{> "systems/cyberpunk-red-core/templates/actor/container/cpr-item-content.hbs" (cprMergeForPartialArg "item,actor,isGM" item ../../actor ../../isGM)}}
-                {{/if}}
+                {{> "systems/cyberpunk-red-core/templates/actor/container/cpr-item-content.hbs" (cprMergeForPartialArg "item,actor,isGM,collapsed" item ../../actor ../../isGM ../../this.options.collapsedSections)}}
               {{/each}}
             </ol>
           </div>
