@@ -1,6 +1,6 @@
 {
   "version": "DUMMY_VALUE",
-  "flags": { "featureVideoURL": "https://www.youtube.com/watch?v=OHK6czoghhU" },
+  "flags": { "featureVideoURL": "" },
   "id": "cyberpunk-red-core",
   "title": "Cyberpunk RED - CORE",
   "description": "Implementation of the Cyberpunk RED, Core Rules, for FVTT",
