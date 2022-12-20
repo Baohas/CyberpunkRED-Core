@@ -31,6 +31,7 @@
 - #625 - Deomon actor does not display notes
 - #610 - Cannot Split Stacks of Drugs
 - #623 - Populating Black Ice does not copy description
+- Black-ICE can be renamed again
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
