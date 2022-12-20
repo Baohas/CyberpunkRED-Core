@@ -240,7 +240,9 @@
                 {{/if}}
               </span>
               <span class="item-detail bg-black text-nowrap text-center">
-                {{localize "CPR.global.generic.amount"}}
+                {{#if (cprHasTemplate c "stackable")}}
+                  {{localize "CPR.global.generic.amount"}}
+                {{/if}}
               </span>
               <span class="item-name bg-black text-nowrap">
                 {{localize "CPR.global.generic.price"}}
