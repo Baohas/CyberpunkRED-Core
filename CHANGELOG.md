@@ -19,6 +19,7 @@
 - Update the main system font to Jost for better readability
 - #448 - Add the ability to "quick fix" a critical injury - resolved for now by making them all Toggled
 - #611 - default to Body table when rolling critical injuries
+- #633 - uninstall of programs from fight tab is failing
 
 ### Bug Fixes
 
