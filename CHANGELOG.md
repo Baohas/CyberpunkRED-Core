@@ -119,7 +119,7 @@
 
 In this release we read Critical Injuries and DV Tables directly from the system compendia. As such if you are using the Critical Injuries unmodified from the RED Corebook you can delete the previously imported "Critical Injuries (Head)" and "Critical Injuries (Body)" items as well as the "Critical Injury Tables" and "DV Rolltables" Roll Table
 
-If you are using modified Critical Injuries please check out [this](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/help-articles/criticalInjury#configuring-home-brew-injuries) Wiki article on how to use Homebrew Injuries. The same process can also be used with Homebrew DV Tables.
+If you are using modified Critical Injuries please check out [this](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/help-articles/criticalInjury#configuring-home-brew-injuries) Wiki article on how to use Homebrew Injuries. The same process can also be used with Homebrew DV Tables.
 
 ### New Features
 
@@ -378,7 +378,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 ### Maintenance Items
 
 - Moved preCreateItem hook from actor.js to item.js and combined the code of createItem hook from both actor.js and item.js into item.js
-- Added a warning popup if a macro is using actor.addCriticalInjury() alerting a user to the eventual deprecation of the method. [Please see the updated API Wiki for details on the new way to create a Critical Injury from a Macro.](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/API/addCriticalInjury)
+- Added a warning popup if a macro is using actor.addCriticalInjury() alerting a user to the eventual deprecation of the method. [Please see the updated API Wiki for details on the new way to create a Critical Injury from a Macro.](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/API/addCriticalInjury)
 - Removed shading from the "Cancel" button on dialogs which may have inadvertently made people believe it was the default
 - Renamed method _favoriteVisibility to_toggleSectionVisibility and CSS tag toggle-favorite-visibility to toggle-section-visibility as it accurately describes what happens
 - Updated the prompt naming for the cyberware installation to be consistent with code
@@ -600,7 +600,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
     - Players can delete items? - Allows players to delete items with the trash can symbol. (On for Stahl, else Off)
     - Players can modify items? - Allows modification of the items. If enabled the item sheets render in an editable way, otherwise they render in a non-editable way. (On for Stash, else Off)
   - Players are not allowed to drag an item out of the container actor to their character sheet. This is only enabled for the GM, as otherwise the players could "steal" items from the container. Players have to use the take/purchase button for that.
-  - **KNOWN ISSUE:** Currently, there is a [bug](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/issues/261) affecting unlinked container actors therefore we recommend to workaround this bug, when you create a new container actor, change the Prototype Token to Link Actor Data.  This bug will be addressed in a future release.
+  - **KNOWN ISSUE:** Currently, there is a [bug](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/issues/261) affecting unlinked container actors therefore we recommend to workaround this bug, when you create a new container actor, change the Prototype Token to Link Actor Data.  This bug will be addressed in a future release.
 - We now support an Italian translation! (thank you Misthero!)
 - Netrunning Initial Implementation
   - Introduction of the Item Object: Cyberdeck
@@ -754,7 +754,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version: 0.75.3 (Hotfix) | Date: 2021-05-02
 
-- Role ability settings were lost when changing other data on the sheet. [issue #203](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/issues/203)
+- Role ability settings were lost when changing other data on the sheet. [issue #203](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/issues/203)
 
 ## Version: 0.74.1 (Hotfix) | Date: 2021-04-25
 
@@ -777,7 +777,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - Even better, once you have critical injury tables, you can roll right from the character sheet and it will automatically add a randomized critical injury.
 - Wound State penalties automatically apply as mods on the roll (e.g. if the token is Seriously Wounded all actions will automatically have a -2 penalty)
 - You can now change the amount of ammo in a weapon's clip right from the fight tab. In addition, you can type "+X" or "-Y" (where X and Y are numbers) into the input and it will perform the math.
-- Mook sheet introduced. Please use [issue #181](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/issues/181) to suggest improvements or point out rough edges.
+- Mook sheet introduced. Please use [issue #181](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/issues/181) to suggest improvements or point out rough edges.
 - Added "Source" field to item sheets to keep track of where items came from (e.g. Core Rules Pg. 351)
 - "Thrown Weapon" is now a weapon type and "Athletics" is now a weapon skill for throwing grenades, etc. Weapons that use the athletics skill also use DEX as the stat, which is consistent with the rules.
 - Weapon section of the Fight Tab has been slightly redesigned.

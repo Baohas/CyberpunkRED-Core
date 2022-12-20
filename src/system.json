@@ -13,7 +13,7 @@
   "authors": [
     {
       "name": "The Project Red Team",
-      "url":"https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core"
+      "url":"https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core"
     }
   ],
   "esmodules": ["cpr.js"],
@@ -276,7 +276,7 @@
   "primaryTokenAttribute": "derivedStats.hp",
   "secondaryTokenAttribute": null,
   "background" : "systems/cyberpunk-red-core/images/Header.jpg",
-  "url": "https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core",
+  "url": "https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core",
   "manifest": "https://gitlab.com/api/v4/projects/22820629/packages/generic/fvtt-cyberpunk-red-core/latest/system.json",
   "download": "DUMMY_VALUE",
   "license": "GPL v3"
