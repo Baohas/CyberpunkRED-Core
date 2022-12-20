@@ -19,6 +19,25 @@ import LedgerEditPrompt from "../../dialog/cpr-ledger-edit-prompt.js";
  */
 export default class CPRActorSheet extends ActorSheet {
   /**
+   * We extend the constructor to initialize data structures used for tracking parts of the sheet
+   * being collapsed or opened, such as skill categories. These structures are later loaded from
+   * User Settings if they exist.
+   *
+   * @constructor
+   * @param {*} actor - the actor object associated with this sheet
+   * @param {*} options - entity options passed up the chain
+   */
+  constructor(actor, options) {
+    LOGGER.trace("constructor | CPRCharacterActorSheet | Called.");
+    super(actor, options);
+    this.options.collapsedSections = [];
+    const collapsedSections = SystemUtils.GetUserSetting("sheetConfig", "sheetCollapsedSections", this.id);
+    if (collapsedSections) {
+      this.options.collapsedSections = collapsedSections;
+    }
+  }
+
+  /**
    * We extend ActorSheet._render to enable automatic window resizing.
    * Only resize the sheet with default size, as render option is called on several differnt update events.
    * Should one still desire resizing the sheet afterwards, please call _automaticResize explicitly.
@@ -193,6 +212,9 @@ export default class CPRActorSheet extends ActorSheet {
     // Reset content filter
     html.find(".reset-content-filter").click(() => this._clearContentFilter());
 
+    // toggle the expand/collapse buttons for skill and item categories
+    html.find(".expand-button").click((event) => this._expandButton(event));
+
     // Show edit and delete buttons
     html.find(".row.item").hover(
       (event) => {
@@ -240,6 +262,37 @@ export default class CPRActorSheet extends ActorSheet {
     html.find(".reputation-open-ledger").click(() => this.showLedger("reputation"));
 
     super.activateListeners(html);
+  }
+
+  /**
+   * This is the + or - glyph on the skill and gear tab that hides whole categories of items.
+   * It does not hide favorited items.
+   *
+   * @callback
+   * @private
+   * @param {*} event - object with details of the event
+   */
+  _expandButton(event) {
+    LOGGER.trace("_expandButton | CPRCharacterActorSheet | Called.");
+    const collapsibleElement = $(event.currentTarget).parents(".collapsible");
+    $(collapsibleElement).find(".collapse-icon").toggleClass("hide");
+    $(collapsibleElement).find(".expand-icon").toggleClass("hide");
+    const itemOrderedList = $(collapsibleElement).children("ol");
+    const itemList = $(itemOrderedList).children("li");
+    itemList.each((lineIndex) => {
+      const lineItem = itemList[lineIndex];
+      if ($(lineItem).hasClass("item") && !$(lineItem).hasClass("favorite")) {
+        $(lineItem).toggleClass("hide");
+      }
+    });
+
+    if (this.options.collapsedSections.includes(event.currentTarget.id)) {
+      this.options.collapsedSections = this.options.collapsedSections.filter(
+        (sectionName) => sectionName !== event.currentTarget.id,
+      );
+    } else {
+      this.options.collapsedSections.push(event.currentTarget.id);
+    }
   }
 
   /**
