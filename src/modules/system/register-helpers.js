@@ -665,7 +665,7 @@ export default function registerHandlebarsHelpers() {
    * Return true if a bit of text matches a filter value. If the filter is not set, everything matches.
    */
   Handlebars.registerHelper("cprSheetContentFilter", (filterValue, applyToText) => {
-    LOGGER.trace("cprFilter | handlebarsHelper | Called.");
+    LOGGER.trace("cprSheetContentFilter | handlebarsHelper | Called.");
     if (typeof filterValue === "undefined" || filterValue === "" || !game.settings.get(game.system.id, "enableSheetContentFilter")) {
       return true;
     }

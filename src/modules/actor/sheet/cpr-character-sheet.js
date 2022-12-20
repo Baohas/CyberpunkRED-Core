@@ -12,25 +12,6 @@ import LedgerEditPrompt from "../../dialog/cpr-ledger-edit-prompt.js";
  */
 export default class CPRCharacterActorSheet extends CPRActorSheet {
   /**
-   * We extend the constructor to initialize data structures used for tracking parts of the sheet
-   * being collapsed or opened, such as skill categories. These structures are later loaded from
-   * User Settings if they exist.
-   *
-   * @constructor
-   * @param {*} actor - the actor object associated with this sheet
-   * @param {*} options - entity options passed up the chain
-   */
-  constructor(actor, options) {
-    LOGGER.trace("constructor | CPRCharacterActorSheet | Called.");
-    super(actor, options);
-    this.options.collapsedSections = [];
-    const collapsedSections = SystemUtils.GetUserSetting("sheetConfig", "sheetCollapsedSections", this.id);
-    if (collapsedSections) {
-      this.options.collapsedSections = collapsedSections;
-    }
-  }
-
-  /**
    * Set default options for character sheets, which include making sure vertical scrollbars do not
    * get reset when re-rendering.
    * See https://foundryvtt.com/api/Application.html for the complete list of options available.
@@ -78,9 +59,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
 
     // toggle "favorite" skills and items
     html.find(".toggle-section-visibility").click((event) => this._toggleSectionVisibility(event));
-
-    // toggle the expand/collapse buttons for skill and item categories
-    html.find(".expand-button").click((event) => this._expandButton(event));
 
     if (!this.options.editable) return;
     // Listeners for editable fields under go here. Fields might not be editable because
@@ -312,37 +290,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         (sectionName) => sectionName !== event.currentTarget.id,
       );
       $(categoryTarget).click();
-    }
-  }
-
-  /**
-   * This is the + or - glyph on the skil and gear tab that hides whole categories of items.
-   * It does not hide favorited items.
-   *
-   * @callback
-   * @private
-   * @param {*} event - object with details of the event
-   */
-  _expandButton(event) {
-    LOGGER.trace("_expandButton | CPRCharacterActorSheet | Called.");
-    const collapsibleElement = $(event.currentTarget).parents(".collapsible");
-    $(collapsibleElement).find(".collapse-icon").toggleClass("hide");
-    $(collapsibleElement).find(".expand-icon").toggleClass("hide");
-    const itemOrderedList = $(collapsibleElement).children("ol");
-    const itemList = $(itemOrderedList).children("li");
-    itemList.each((lineIndex) => {
-      const lineItem = itemList[lineIndex];
-      if ($(lineItem).hasClass("item") && !$(lineItem).hasClass("favorite")) {
-        $(lineItem).toggleClass("hide");
-      }
-    });
-
-    if (this.options.collapsedSections.includes(event.currentTarget.id)) {
-      this.options.collapsedSections = this.options.collapsedSections.filter(
-        (sectionName) => sectionName !== event.currentTarget.id,
-      );
-    } else {
-      this.options.collapsedSections.push(event.currentTarget.id);
     }
   }
 
