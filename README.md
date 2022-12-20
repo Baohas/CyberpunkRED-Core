@@ -18,7 +18,7 @@ This project is under heavy development to get a working experience together, so
 
 ## Getting Started
 
-If you are a game master or player and curious about how Cyberpunk runs in Foundry VTT, [why not check out our extensive wiki articles](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/home), or this [YouTube playlist showcasing updates and walkthroughs.](https://www.youtube.com/playlist?list=PL4-W5wKEr1fm57F9qnF8a7opYJ1pBt36X) If you want to contribute to developing the system, read on!
+If you are a game master or player and curious about how Cyberpunk runs in Foundry VTT, [why not check out our extensive wiki articles](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/home), or this [YouTube playlist showcasing updates and walkthroughs.](https://www.youtube.com/playlist?list=PL4-W5wKEr1fm57F9qnF8a7opYJ1pBt36X) If you want to contribute to developing the system, read on!
 
 ## Installing
 
@@ -29,12 +29,12 @@ Manifest: https://gitlab.com/api/v4/projects/22820629/packages/generic/fvtt-cybe
 
 ## Release Notes
 
-See [CHANGELOG.md](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/blob/master/CHANGELOG.md)
+See [CHANGELOG.md](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/blob/master/CHANGELOG.md)
 
 ## Join the team!
 
 Chat with us on [Discord](https://discord.gg/hpyz2nf6Vk)!
 
-If you're interested in helping out, we would love to hear from you! Even if you're not a coder we can help you get started. Never too late to start a new hobby! Look over the [project wiki](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/home).
+If you're interested in helping out, we would love to hear from you! Even if you're not a coder we can help you get started. Never too late to start a new hobby! Look over the [project wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/home).
 
-To get a sense of the project's direction, the tools we use, and how we're organized please read the Development Documentation on the [Wiki](https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/home#development-documentation).
+To get a sense of the project's direction, the tools we use, and how we're organized please read the Development Documentation on the [Wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/home#development-documentation).

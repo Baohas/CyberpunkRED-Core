@@ -4,7 +4,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/"
+    "url": "https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/"
   },
   "license": "UNLICENSED",
   "scripts": {
