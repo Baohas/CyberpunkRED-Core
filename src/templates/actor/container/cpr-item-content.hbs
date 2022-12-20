@@ -1,5 +1,5 @@
 {{cprTrace "START ACTOR CONTAINER CPR-ITEM-CONTENT.HBS"}}
-<li class="item flexrow" data-item-id="{{item.id}}" data-item-category="{{item.type}}" draggable="true">
+<li class="item flexrow {{#if (cprListContains collapsed (cprGeneratePartial "gearTab-VAR" item.type))}} hide{{/if}}" data-item-id="{{item.id}}" data-item-category="{{item.type}}" draggable="true">
   <div class="item-name text-nowrap">
     <a class="name item-edit flex-center" data-tooltip="{{item.system.description.value}}">
       <img src="{{item.img}}">
