@@ -234,4 +234,17 @@ export default class CPRContainerActor extends Actor {
     this.update({ system: cprData });
     return getProperty(this.system, "wealth");
   }
+
+  /**
+   * Return the Item object given an Id
+   *
+   * @public
+   * @param {String} itemId - Id or UUID of the item to get
+   * @returns {CPRItem}
+   */
+  getOwnedItem(itemId) {
+    LOGGER.trace("getOwnedItem | CPRActor | Called.");
+    const item = (this.items.find((i) => i._id === itemId)) ? this.items.find((i) => i._id === itemId) : this.items.find((i) => i.uuid === itemId);
+    return item;
+  }
 }

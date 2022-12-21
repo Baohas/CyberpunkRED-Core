@@ -145,7 +145,8 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   async _itemAction(event) {
     LOGGER.trace("_itemAction | CPRContainerSheet | Called.");
-    const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
+    const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
+    const item = this.actor.getOwnedItem(itemId);
     const actionType = SystemUtils.GetEventDatum(event, "data-action-type");
     if (item) {
       switch (actionType) {
