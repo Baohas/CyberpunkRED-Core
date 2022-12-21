@@ -109,7 +109,9 @@ async function extPacks() {
           // Find each entry and output to YAML file in `src/packs`
           db.find({}, (err, entries) => {
             entries.forEach((entry) => {
-              const itemName = _cleanFileName(entry.name);
+              const itemName = (typeof entry.type !== 'string')
+                ? _cleanFileName(entry.name)
+                : `${_cleanFileName(entry.type)}.${_cleanFileName(entry.name)}`;
               if (DEBUG) {
                 log(`Processing ${itemName}`);
               }
