@@ -85,6 +85,22 @@
                     {{/if}}
                 </div>
             </li>
+            {{#if (cprCompare item.system.usage "===" "snorted")}}
+                <li class="item flexrow">
+                    <div class="item flexrow setting-name text-nowrap">
+                        {{localize "CPR.itemSheet.effects.primaryEffect"}}
+                    </div>
+                    <div class="item flexrow setting-value text-nowrap item-end">
+                        <select name="system.primaryEffect" data-dtype="{{item.system.primaryEffect}}">
+                            {{#select item.system.primaryEffect}}
+                                {{#each item.system.effectNames}}
+                                    <option value="{{this}}">{{this}}</option>
+                                {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                </li>
+            {{/if}}
         {{/if}}
     </div>
 </div>

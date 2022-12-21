@@ -56,10 +56,6 @@ export default class CPRItemSheet extends ItemSheet {
     return super.defaultOptions.classes.concat(["sheet", "item", `${this.item.type}`]);
   }
 
-  /* --------------------------------------------
-  Had to make this async to get await to work on the GetCoreSkills?  Not
-  sure if that is the right way to do this?
-  */
   /** @override */
   async getData() {
     LOGGER.trace("getData | CPRItemSheet | Called.");
@@ -82,6 +78,10 @@ export default class CPRItemSheet extends ItemSheet {
         const worldSkills = game.items.filter((i) => i.type === "skill");
         cprData.relativeSkills = coreSkills.concat(worldSkills);
       }
+    }
+    if (mixins.includes("effects")) {
+      cprData.effectNames = this.item.getEffectNames();
+      cprData.effectNames.push(SystemUtils.Localize("CPR.itemSheet.effects.none"));
     }
 
     // if (["cyberdeck", "weapon", "armor", "cyberware", "clothing"].indexOf(data.item.type) > -1) {

@@ -123,6 +123,27 @@ const Effects = function Effects() {
   };
 
   /**
+   * Return an active effect matching the give name ("label" is the AE property).
+   *
+   * @param {String} label - the name to search by
+   * @returns {ActiveEffect}
+   */
+  this.getEffectByName = function getEffectByName(label) {
+    LOGGER.trace("getEffectByName | Effects | Called.");
+    return this.effects.find((e) => e.label === label);
+  };
+
+  /**
+   * Return an array of all effect names on this item.
+   *
+   * @returns {Array:ActiveEffect}
+   */
+
+  this.getEffectNames = function getEffectNames() {
+    return this.effects.map((e) => e.label);
+  };
+
+  /**
    * Enable or disable the mods on an active effect on this item.
    *
    * @param {String} eid - active effect ID
