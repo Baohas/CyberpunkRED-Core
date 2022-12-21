@@ -20,3 +20,7 @@ foundryconfig.json
 
 # Build
 dist/
+
+# Ryan's temp files
+**/foo*
+**/bar*
