@@ -29,16 +29,16 @@ export default class CPRDrugItem extends CPRItem {
       const originItem = `Item.${this.id}`;
       const effectUpdates = [];
       const { primaryEffect } = this.system;
-      if (primaryEffect) {
-        const aeObj = this.getEffectByName(primaryEffect);
-        const [actorEffect] = this.actor.effects.filter((ae) => ae.origin.endsWith(originItem) && ae.label === aeObj.label);
-        effectUpdates.push({ _id: actorEffect.id, disabled: false });
-      } else {
+      if (primaryEffect === SystemUtils.Localize("CPR.itemSheet.effects.none") || primaryEffect === "") {
         // no primary was specified, so we enable all of them
         const actorEffects = this.actor.effects.filter((ae) => ae.origin.endsWith(originItem));
         actorEffects.forEach((ae) => {
           effectUpdates.push({ _id: ae.id, disabled: false });
         });
+      } else {
+        const aeObj = this.getEffectByName(primaryEffect);
+        const [actorEffect] = this.actor.effects.filter((ae) => ae.origin.endsWith(originItem) && ae.label === aeObj.label);
+        effectUpdates.push({ _id: actorEffect.id, disabled: false });
       }
       this.actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates); // update AEs
       this.actor.updateEmbeddedDocuments("Item", [{ _id: this.id, system: this.system }]); // update the amount
@@ -60,27 +60,5 @@ export default class CPRDrugItem extends CPRItem {
       SystemUtils.Localize("CPR.dialog.snortConfirmation.title"),
       promptMessage,
     ).catch((err) => LOGGER.debug(err));
-  }
-
-  /**
-   * Returns the active effect defined as the "primary" effect for consuming a drug.
-   *
-   * @returns {ActiveEffect}
-   */
-  get primary() {
-    LOGGER.trace("get primary | CPRDrugItem | called.");
-    let prim = this.system.primaryEffect;
-    if (prim === SystemUtils.Localize("CPR.itemSheet.effects.none")) {
-      prim = null;
-    }
-    return prim;
-  }
-
-  /**
-   * Set the primary active effect for this drug. It will be activated when it is consumed.
-   */
-  set primary(effectName) {
-    LOGGER.trace("set primary | CPRDrugItem | called.");
-    this.update({ "system.primary": effectName });
   }
 }

@@ -23,6 +23,7 @@ system:
   price:
     category: premium
     market: 200
+  primaryEffect: ''
   revealed: true
   source: pg. 150
   tags: []

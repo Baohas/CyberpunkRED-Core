@@ -91,13 +91,17 @@
                         {{localize "CPR.itemSheet.effects.primaryEffect"}}
                     </div>
                     <div class="item flexrow setting-value text-nowrap item-end">
-                        <select name="system.primaryEffect" data-dtype="{{item.system.primaryEffect}}">
-                            {{#select item.system.primaryEffect}}
-                                {{#each item.system.effectNames}}
-                                    <option value="{{this}}">{{this}}</option>
-                                {{/each}}
-                            {{/select}}
-                        </select>
+                        {{#if this.editable}}
+                            <select name="system.primaryEffect" data-dtype="{{item.system.primaryEffect}}">
+                                {{#select item.system.primaryEffect}}
+                                    {{#each item.system.effectNames}}
+                                        <option value="{{this}}">{{this}}</option>
+                                    {{/each}}
+                                {{/select}}
+                            </select>
+                        {{else}}
+                            <span class="text-flex-end">{{item.system.primaryEffect}}</span>
+                        {{/if}}
                     </div>
                 </li>
             {{/if}}
