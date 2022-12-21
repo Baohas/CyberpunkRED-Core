@@ -77,7 +77,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     LOGGER.trace("activateListeners | CPRContainerSheet | Called.");
 
     // Selection of trade partner
-    html.find(".trade-with-dropdown").change((event) => this._setTradePartner(event));
+    html.find("select[name=\"trade-with-dropdown\"").change((event) => this._setTradePartner(event));
     // Create item in inventory
     html.find(".item-create").click((event) => this._createInventoryItem(event));
     //
@@ -209,6 +209,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   _setTradePartner(event) {
     LOGGER.trace("_setTradePartner | CPRContainerSheet | Called.");
+    const tradePartnerId = $(event.currentTarget).val();
     this.tradePartnerId = $(event.currentTarget).val();
   }
 
@@ -222,9 +223,14 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   async _purchaseItem(item, all) {
     LOGGER.trace("_purchaseItem | CPRContainerSheet | Called.");
-    if (this.tradePartnerId === undefined || this.tradePartnerId === "") {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradeWithWarn"));
-      return;
+    let { tradePartnerId } = this;
+    if (tradePartnerId === undefined || tradePartnerId === "") {
+      if (!game.user.isGM && game.user.character) {
+        tradePartnerId = game.user.character._id;
+      } else {
+        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradeWithWarn"));
+        return;
+      }
     }
 
     // Players must have Owned permission on Containers for them to function properly
@@ -258,7 +264,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     } else {
       cost *= (typeof item.system.amount !== "undefined") ? parseInt(item.system.amount, 10) : 1;
     }
-    const tradePartnerActor = game.actors.get(this.tradePartnerId);
+    const tradePartnerActor = game.actors.get(tradePartnerId);
     if (!getProperty(this.actor, `flags.${game.system.id}.items-free`)) {
       if (tradePartnerActor.system.wealth.value < cost) {
         SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradePriceWarn"));
@@ -295,7 +301,15 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     }
     if (!getProperty(this.actor, `flags.${game.system.id}.infinite-stock`)) {
       if (all) {
-        await this._deleteOwnedItem(item, true);
+        const deleteList = [item._id];
+        const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+        if (containerTypes.includes(item.type) && item.isOwned === true && item.system.installedItems.list.length > 0) {
+          const deleteItemList = item.recursiveGetAllInstalledItems();
+          for (const installedItem of deleteItemList) {
+            deleteList.push(installedItem._id);
+          }
+        }
+        await this.actor.deleteEmbeddedDocuments("Item", deleteList);
       } else {
         const keepAmount = item.system.amount - transferredItemData.system.amount;
         await this.actor.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.amount": keepAmount }]);

@@ -24,10 +24,10 @@
               {{localize "CPR.containerSheet.action.tradeWith"}}:
             </div>
             <div class="item-end trade-with-dropdown">
-              <select class="item-end trade-with-dropdown">
+              <select name="trade-with-dropdown" class="item-end trade-with-dropdown">
                 {{#select actor.system.tradePartnerId}}
                   {{#each actor.system.userOwnedActors}}
-                    <option value="{{this.id}}">{{this.name}}</option>
+                    <option name="trade-with-dropdown" value="{{this.id}}">{{this.name}}</option>
                   {{/each}}
                 {{/select}}
               </select>

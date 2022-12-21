@@ -597,6 +597,33 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Returns true if an item has installed items.
+   */
+  Handlebars.registerHelper("cprHasInstalledItems", (item) => {
+    LOGGER.trace("cprHasInstalledItems | handlebarsHelper | Called.");
+    const itemList = (typeof item.system.installedItems === "object") ? item.system.installedItems.list : [];
+    return itemList.length > 0;
+  });
+
+  /**
+   * List installed items.
+   */
+  Handlebars.registerHelper("cprListInstalledItems", (item, delimiter = " ") => {
+    LOGGER.trace("cprListInstalledItems | handlebarsHelper | Called.");
+    const { actor } = item;
+    const itemList = (typeof item.system.installedItems === "object") ? item.system.installedItems.list : [];
+    let returnString = "";
+    if (actor) {
+      for (const itemId of itemList) {
+        const installedItem = actor.getOwnedItem(itemId);
+        const itemType = SystemUtils.Localize(CPR.objectTypes[installedItem.type]);
+        returnString = returnString.concat(`${installedItem.name} (${itemType})`, delimiter);
+      }
+    }
+    return returnString;
+  });
+
+  /**
    * Returns true if an item type has a particular template applied in the data model
    * To Do: isUpgradeable should use this instead
    */
