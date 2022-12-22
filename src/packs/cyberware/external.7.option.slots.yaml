@@ -1,4 +1,3 @@
----
 _id: 1MHNGPfuWR5ROPiB
 effects: []
 flags:
@@ -27,14 +26,6 @@ system:
     roll: ''
     static: '0'
   install: hospital
-  installedItems:
-    allowed: true
-    allowedTypes:
-      - itemUpgrade
-      - cyberware
-    list: []
-    slots: 7
-    usedSlots: 0
   isFoundational: true
   isInstalled: true
   isRanged: false
