@@ -6,6 +6,7 @@
 ### New Features
  - Universal Installation System replaces the back end code for installing Cyberware in Actors, Programs in Cyberdecks and Upgrades in other owned Items.  This new system provides the following new features:
    - World Items (aka unowned items) can now be upgraded by World Upgrades to allow GMs to create pre-upgraded weapons, armors, etc.
+     - World Items can only be upgraded by other World Items, so ensure you import any upgrades you want to install into the world.
      - `Hint`: Import an item & upgrade to the world, open item sheet & click on Installed Items to select upgrade to install.
    - Upgraded items and Loaded weapons can now be drag/transferred between Actors.
      - If the destination actor does not have an ammo of the same type, an ammo item is created in their inventory with a quantity of 0.
@@ -17,6 +18,7 @@
      - `Hint`: When installng Chipware, drop down the installation icon and select `Chipware Socket`.
    - Vendors now sum the value of the item they are selling + all installed items (upgrades, programs, etc) to determine the total value of the item they are selling.
      - Hovering over an item which has items installed in it will display a tool-tip with what is installed.
+   - Attempting to delete a World Item installed in another World Item will result in a dialog preventing the deletion and telling you where that item is installed.
 
 ### Changes
 

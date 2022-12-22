@@ -78,12 +78,31 @@ const itemHooks = () => {
         const worldContainerItems = game.items.filter((i) => containerTypes.includes(i.type));
         const installedList = worldContainerItems.filter((i) => i.system.installedItems.list.includes(doc.uuid));
         if (installedList.length > 0) {
+          const debugMode = game.settings.get(game.system.id, "debugElements");
           const dialogTitle = SystemUtils.Localize("CPR.dialog.deleteInstalledWorldItem.title");
           let dialogMessage = `${SystemUtils.Format("CPR.dialog.deleteInstalledWorldItem.text", { itemName: doc.name })}`;
           dialogMessage = dialogMessage.concat('<br><br>');
           for (const item of installedList) {
-            const folderName = (item.folder === null) ? "" : `(World Folder: ${item.folder.name})`;
-            dialogMessage = dialogMessage.concat(`<center>${item.name} ${folderName}</center><br>`);
+            let itemName = item.name;
+            if (debugMode) {
+              itemName = `${item.name} [${item.uuid}]`;
+            }
+            let folderName = `(${SystemUtils.Localize("CPR.global.generic.worldFolder")}: ${SystemUtils.Localize("CPR.global.generic.notApplicable")})`;
+            if (item.folder !== null) {
+              let folderStructure = item.folder.name;
+              let { folder } = item.folder;
+              const folderId = item.folder.uuid;
+              while (folder !== null) {
+                folderStructure = `${folder.name}/${folderStructure}`;
+                folder = folder.folder;
+              }
+              folderName = `(${SystemUtils.Localize("CPR.global.generic.worldFolder")}: /${folderStructure})`;
+              if (debugMode) {
+                folderName = `${folderName} [${folderId}]`;
+              }
+            }
+
+            dialogMessage = dialogMessage.concat(`<center>${itemName} ${folderName}</center><br>`);
           }
           ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
           deleteItem = false;
