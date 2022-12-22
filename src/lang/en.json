@@ -4,6 +4,8 @@
   "ACTOR.TypeContainer": "Container",
   "ACTOR.TypeDemon": "Demon",
   "ACTOR.TypeMook": "Mook (NPC)",
+  "CPR.dialog.deleteInstalledWorldItem.text": "The world item `{itemName}' can not be deleted as it is installed in the following world items:",
+  "CPR.dialog.deleteInstalledWorldItem.title": "Error: Can not delete world item",
   "CPR.actorSheets.clearFilter": "Clear filter",
   "CPR.actorSheets.commonActions.changeAmmo": "Change Ammo",
   "CPR.actorSheets.commonActions.createNewItem": "Create new item on actor",

@@ -211,8 +211,6 @@
   "CPR.dialog.createEditRoleAbility.title": "Neue Rollen-Fähigkeit erstellen/bearbeiten",
   "CPR.dialog.deleteConfirmation.message": "Möchtest du wirklich mit dem löschen fortfahren",
   "CPR.dialog.deleteConfirmation.title": "Löschen bestätigen",
-  "CPR.dialog.deleteInstalledWorldItem.text": "The world item `{itemName}' can not be deleted as it is installed in the following world items:",
-  "CPR.dialog.deleteInstalledWorldItem.title": "Error: Can not delete world item",
   "CPR.dialog.dv.hudPromptTitle": "HUD-Konfiguration",
   "CPR.dialog.dv.selectDvTable": "Wähle die SG-Tabelle aus, welche auf die Messungen angewendet wird",
   "CPR.dialog.facedown.title": "Willensduell",

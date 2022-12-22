@@ -211,8 +211,6 @@
   "CPR.dialog.createEditRoleAbility.title": "Настройка способности",
   "CPR.dialog.deleteConfirmation.message": "Ты действительно хочешь удалить",
   "CPR.dialog.deleteConfirmation.title": "Удаление",
-  "CPR.dialog.deleteInstalledWorldItem.text": "The world item `{itemName}' can not be deleted as it is installed in the following world items:",
-  "CPR.dialog.deleteInstalledWorldItem.title": "Error: Can not delete world item",
   "CPR.dialog.dv.hudPromptTitle": "Настройки HUD",
   "CPR.dialog.dv.selectDvTable": "Выбери таблицу СЛ, чтобы применить к линейке",
   "CPR.dialog.facedown.title": "Поединок взглядов",

@@ -211,8 +211,6 @@
   "CPR.dialog.createEditRoleAbility.title": "Crear/Editar Nueva Habilidad de Rol",
   "CPR.dialog.deleteConfirmation.message": "¿Estás seguro de que deseas eliminarlo?",
   "CPR.dialog.deleteConfirmation.title": "Confirmar eliminación",
-  "CPR.dialog.deleteInstalledWorldItem.text": "The world item `{itemName}' can not be deleted as it is installed in the following world items:",
-  "CPR.dialog.deleteInstalledWorldItem.title": "Error: Can not delete world item",
   "CPR.dialog.dv.hudPromptTitle": "Configuración de HUD",
   "CPR.dialog.dv.selectDvTable": "Seleccione la tabla DV para aplicar a las mediciones",
   "CPR.dialog.facedown.title": "Boca abajo",
