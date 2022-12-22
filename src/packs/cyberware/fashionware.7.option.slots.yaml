@@ -1,3 +1,4 @@
+---
 _id: rW0qJ4pY3g4gK7yP
 effects: []
 flags:
@@ -27,6 +28,14 @@ system:
     roll: ''
     static: '0'
   install: mall
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - cyberware
+    list: []
+    slots: 7
+    usedSlots: 0
   isFoundational: true
   isInstalled: true
   isRanged: false

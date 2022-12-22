@@ -1,3 +1,4 @@
+---
 _id: ju5Rq9rOe2lpDKKl
 effects: []
 flags:
@@ -36,7 +37,7 @@ system:
       - itemUpgrade
       - cyberware
     list: []
-    slots: 3
+    slots: 5
     usedSlots: 0
   isConcealed: false
   isFoundational: true
