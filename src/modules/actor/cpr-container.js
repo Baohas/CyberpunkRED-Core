@@ -23,7 +23,8 @@ export default class CPRContainerActor extends Actor {
       };
       createData.ownership = { default: 3 };
     }
-    super.create(createData, options);
+    const newContainerActor = await super.create(createData, options);
+    newContainerActor.setContainerType("shop");
   }
 
   /**
