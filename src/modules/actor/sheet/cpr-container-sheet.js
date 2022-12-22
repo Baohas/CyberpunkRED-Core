@@ -347,7 +347,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
 
     const item = fromUuidSync(dragData.uuid);
     const cprItemData = item.system;
-    const cprItemName = item.name;
+    let cprItemName = item.name;
     const amount = cprItemData.amount ? parseInt(cprItemData.amount, 10) : 1;
     const vendorData = this.actor.system;
     const vendorConfig = vendorData.vendor;
@@ -377,12 +377,16 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     let vendorOffer = parseInt(((amount * cost * percent) / 100), 10);
     vendorOffer = Math.min(vendorOffer, vendorData.wealth.value);
 
+    if (cprItemData.isUpgraded) {
+      cprItemName = `${SystemUtils.Localize("CPR.global.generic.upgraded")} ${cprItemName}`;
+    }
+
     const offerMessage = `${SystemUtils.Format(
       "CPR.dialog.container.vendor.offerToBuy",
       {
-        vendorName: tradePartnerActor.name,
+        vendorName: this.actor.name,
         vendorOffer,
-        cprItemName,
+        itemName: cprItemName,
         percent,
       },
     )}`;
@@ -399,7 +403,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       const deleteItems = [];
 
       createItems.push({
-        name: cprItemName,
+        name: item.name,
         system: cprItemData,
         type: item.type,
         img: item.img,
