@@ -863,13 +863,6 @@ export default class CPRItemSheet extends ItemSheet {
 
     const actor = (installTarget.isOwned) ? installTarget.actor : false;
 
-    /*
-    if (!actor || (actor.type !== "character" && actor.type !== "mook")) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.ownedItemOnlyError"));
-      return {};
-    }
-    */
-
     // First get all items that are installed in this.
     const installedItems = itemType ? installTarget.getInstalledItems(itemType) : installTarget.getInstalledItems();
 
@@ -890,7 +883,7 @@ export default class CPRItemSheet extends ItemSheet {
 
     if (!actor) {
       for (const installedItem of installedItems) {
-        uninstalledItems = uninstalledItems.filter((i) => i.uuid !== installedItem.uuid);
+        uninstalledItems = uninstalledItems.filter((i) => i.uuid !== installedItem.uuid && i.name !== installedItem.name);
       }
     }
     let itemsList = [];
