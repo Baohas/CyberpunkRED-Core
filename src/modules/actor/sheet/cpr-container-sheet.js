@@ -347,7 +347,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
 
     const item = fromUuidSync(dragData.uuid);
     const cprItemData = item.system;
-    let cprItemName = item.name;
+    const cprItemName = item.name;
     const amount = cprItemData.amount ? parseInt(cprItemData.amount, 10) : 1;
     const vendorData = this.actor.system;
     const vendorConfig = vendorData.vendor;
@@ -371,10 +371,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
         if (installedItem) {
           cost += installedItem.system.price.market;
         }
-      })
-    }
-    if (cprItemData.isUpgraded) {
-      cprItemName = `${SystemUtils.Localize("CPR.global.generic.upgraded")} ${cprItemName}`;
+      });
     }
 
     let vendorOffer = parseInt(((amount * cost * percent) / 100), 10);
