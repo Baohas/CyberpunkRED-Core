@@ -38,8 +38,8 @@
         }}
       {{else}}
         {{localize "CPR.containerSheet.items.priceListingSingle"
-          price=item.system.price.market
-          category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") (cprGetPriceCategory item.system.price.market)))
+          price=(cprGetItemValue item)
+          category=(localize (cprGetProp (cprFindConfigObj "itemPriceCategory") (cprGetPriceCategory (cprGetItemValue item))))
         }}
       {{/if}}
     {{/if}}

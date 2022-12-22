@@ -615,12 +615,28 @@ export default function registerHandlebarsHelpers() {
     let returnString = "";
     if (actor) {
       for (const itemId of itemList) {
-        const installedItem = actor.getOwnedItem(itemId);
-        const itemType = SystemUtils.Localize(CPR.objectTypes[installedItem.type]);
-        returnString = returnString.concat(`${installedItem.name} (${itemType})`, delimiter);
+        const installedItem = fromUuidSync(itemId);
+        if (installedItem) {
+          const itemType = SystemUtils.Localize(CPR.objectTypes[installedItem.type]);
+          returnString = returnString.concat(`${installedItem.name} (${itemType})`, delimiter);
+        }
       }
     }
     return returnString;
+  });
+
+  Handlebars.registerHelper("cprGetItemValue", (item) => {
+    LOGGER.trace("cprGetItemValue | handlebarsHelper | Called.");
+    const valuableTypes = SystemUtils.GetTemplateItemTypes("valuable");
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    let totalValue = valuableTypes.includes(item.type) ? item.system.price.market : 0;
+    if (containerTypes.includes(item.type)) {
+      const installedItems = item.recursiveGetAllInstalledItems();
+      installedItems.forEach((installedItem) => {
+        totalValue += (valuableTypes.includes(installedItem.type)) ? installedItem.system.price.market : 0;
+      });
+    }
+    return totalValue;
   });
 
   /**

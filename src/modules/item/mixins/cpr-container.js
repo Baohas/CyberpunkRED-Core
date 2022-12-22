@@ -65,15 +65,17 @@ const Container = function Container() {
       while (uuidList.length > 0) {
         for (const uuid of uuidList) {
           const item = fromUuidSync(uuid);
-          if (!item.isOwned) {
-            item.system.isInstalled = true;
-            item.system.installedIn = this.uuid;
+          if (item !== null) {
+            if (!item?.isOwned) {
+              item.system.isInstalled = true;
+              item.system.installedIn = this.uuid;
+            }
+            if (containerTypes.includes(item.type)) {
+              uuidList = uuidList.concat(item.system.installedItems.list);
+            }
+            installedItems.push(item);
           }
-          uuidList = uuidList.filter((itemUUID) => itemUUID !== item.uuid);
-          if (containerTypes.includes(item.type)) {
-            uuidList = uuidList.concat(item.system.installedItems.list);
-          }
-          installedItems.push(item);
+          uuidList = uuidList.filter((itemUUID) => itemUUID !== uuid);
         }
       }
     }
@@ -235,19 +237,26 @@ const Container = function Container() {
   this.createInstalledItems = async function createInstalledItems() {
     LOGGER.trace("createInstalledItems | Container | Called.");
     const actor = (this.isOwned) ? this.actor : false;
+
     const equipTypes = SystemUtils.GetTemplateItemTypes("equippable");
     const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
     const creationList = [];
     for (const installedUUID of this.system.installedItems.list) {
       const installedItem = fromUuidSync(installedUUID);
-      if (installedItem.actor !== actor) {
+      if (installedItem?.actor._id !== actor._id) {
         const newItemData = installedItem.toObject();
         if (equipTypes.includes(installedItem.type)) {
           newItemData.system.equipped = "carried";
         }
         newItemData.system.isInstalled = !!(actor);
         newItemData.system.installedIn = (actor) ? this.uuid : "";
-        creationList.push(newItemData);
+        creationList.push({
+          name: newItemData.name,
+          img: newItemData.img,
+          type: newItemData.type,
+          system: newItemData.system,
+          effects: duplicate(newItemData.effects),
+        });
       }
     }
 
@@ -285,11 +294,11 @@ const Container = function Container() {
     this.system.installedItems.list = newInstalledList;
 
     if (this.type === "cyberdeck") {
-      this.syncPrograms();
+      await this.syncPrograms();
     }
 
     if (upgradableTypes.includes(this.type)) {
-      this.syncUpgrades();
+      await this.syncUpgrades();
     }
 
     return (!actor)
