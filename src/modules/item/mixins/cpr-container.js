@@ -243,7 +243,7 @@ const Container = function Container() {
     const creationList = [];
     for (const installedUUID of this.system.installedItems.list) {
       const installedItem = fromUuidSync(installedUUID);
-      if (installedItem?.actor._id !== actor._id) {
+      if (installedItem?.actor?._id !== actor._id) {
         const newItemData = installedItem.toObject();
         if (equipTypes.includes(installedItem.type)) {
           newItemData.system.equipped = "carried";
