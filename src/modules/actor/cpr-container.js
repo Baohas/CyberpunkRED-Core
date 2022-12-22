@@ -28,18 +28,6 @@ export default class CPRContainerActor extends Actor {
   }
 
   /**
-   * prepareData is called before the actor is vendored to clients, so we can filter
-   * or streamline the data for convenience.
-   */
-  prepareData() {
-    LOGGER.trace("prepareData | CPRContainerActor | Called.");
-    super.prepareData();
-    if (this.compendium === null || this.compendium === undefined) {
-      const cprData = this.system;
-    }
-  }
-
-  /**
    * automaticallyStackItems searches for an identical item on the actor
    * and if found increments the amount and price for the item on the actor
    * instead of adding it as a new item.
@@ -52,18 +40,24 @@ export default class CPRContainerActor extends Actor {
     LOGGER.trace("automaticallyStackItems | CPRActor | Called.");
     const itemTemplates = SystemUtils.getDataModelTemplates(newItem.type);
     if (itemTemplates.includes("stackable")) {
-      const itemMatch = this.items.find((i) => i.type === newItem.type && i.name === newItem.name && i.system.upgrades.length === 0);
-      if (itemMatch) {
-        const canStack = !(itemTemplates.includes("upgradable") && itemMatch.system.upgrades.length === 0);
-        if (canStack) {
-          let oldAmount = parseInt(itemMatch.system.amount, 10);
-          let addedAmount = parseInt(newItem.system.amount, 10);
-          if (Number.isNaN(oldAmount)) { oldAmount = 1; }
-          if (Number.isNaN(addedAmount)) { addedAmount = 1; }
-          const newAmount = oldAmount + addedAmount;
-          this.updateEmbeddedDocuments("Item", [{ _id: itemMatch._id, "system.amount": newAmount }]);
-          return false;
+      const itemMatch = this.items.find((i) => {
+        if (i.type === newItem.type && i.name === newItem.name) {
+          if (itemTemplates.includes("upgradable") && i.system.upgrades.length !== 0) {
+            return false;
+          }
+          return i;
         }
+        return false;
+      });
+
+      if (itemMatch) {
+        let oldAmount = parseInt(itemMatch.system.amount, 10);
+        let addedAmount = parseInt(newItem.system.amount, 10);
+        if (Number.isNaN(oldAmount)) { oldAmount = 1; }
+        if (Number.isNaN(addedAmount)) { addedAmount = 1; }
+        const newAmount = oldAmount + addedAmount;
+        this.updateEmbeddedDocuments("Item", [{ _id: itemMatch._id, "system.amount": newAmount }]);
+        return false;
       }
     }
     // If not stackable, then return true to continue adding the item.

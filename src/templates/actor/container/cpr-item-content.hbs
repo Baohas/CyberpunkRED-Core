@@ -9,10 +9,8 @@
     </a>
   </div>
   <div class="item-detail text-center text-nowrap">
-    {{#if (cprIsNumber (cprNumberFormat item.system.amount))}}
+    {{#if (cprHasTemplate item.type "stackable")}}
       {{cprNumberFormat item.system.amount}}
-    {{else}}
-      1
     {{/if}}
   </div>
   <div class="item-name gear-data text-nowrap">
