@@ -5,7 +5,7 @@
     <a class="name item-edit flex-center"
        data-tooltip="{{item.system.description.value}}{{#if (cprHasInstalledItems item)}}{{localize "CPR.itemSheet.common.installedItems"}}:</br>{{cprListInstalledItems item "</br></a>"}}{{/if}}">
       <img src="{{item.img}}">
-      {{#if item.system.isUpgraded}}{{localize "CPR.global.generic.upgraded"}} {{/if}}{{item.name}}{{#if (cprHasInstalledItems item)}}<sup><i class="text-super fa-solid fa-circle-info"></i></sup>{{/if}}
+      {{item.name}}{{#if item.system.isUpgraded}}<sup><i class="text-super fa-solid fa-square-up"></i></sup>{{/if}}{{#if (cprHasInstalledItems item)}}<sup><i class="text-super fa-solid fa-circle-info"></i></sup>{{/if}}
     </a>
   </div>
   <div class="item-detail text-center text-nowrap">
