@@ -72,7 +72,7 @@ system:
   price:
     category: costly
     market: 50
-  primaryEffect: 'Boost Primary'
+  consumed: 'Boost Primary'
   revealed: true
   source: pg. 357
   tags: []

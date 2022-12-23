@@ -51,7 +51,7 @@ system:
   price:
     category: costly
     market: 50
-  primaryEffect: ''    
+  consumed: 'None'    
   revealed: true
   source: pg. 357
   tags: []

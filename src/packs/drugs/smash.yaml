@@ -123,7 +123,7 @@ system:
   price:
     category: cheap
     market: 10
-  primaryEffect: 'Smash Primary'
+  consumed: 'Smash Primary'
   revealed: true
   source: pg. 357
   tags: []

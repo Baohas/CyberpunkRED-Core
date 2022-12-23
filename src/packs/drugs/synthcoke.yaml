@@ -95,7 +95,7 @@ system:
   price:
     category: everyday
     market: 20
-  primaryEffect: 'Synthcoke Primary'
+  consumed: 'Synthcoke Primary'
   revealed: true
   source: pg. 357
   tags: []

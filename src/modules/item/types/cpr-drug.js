@@ -26,21 +26,24 @@ export default class CPRDrugItem extends CPRItem {
     if (!await this._confirmSnort()) return;
     this.system.amount = Math.max(0, this.system.amount - 1);
     if (this.actor) {
-      const originItem = `Item.${this.id}`;
-      const effectUpdates = [];
-      const { primaryEffect } = this.system;
-      if (primaryEffect === SystemUtils.Localize("CPR.itemSheet.effects.none") || primaryEffect === "") {
-        // no primary was specified, so we enable all of them
-        const actorEffects = this.actor.effects.filter((ae) => ae.origin.endsWith(originItem));
-        actorEffects.forEach((ae) => {
-          effectUpdates.push({ _id: ae.id, disabled: false });
-        });
-      } else {
-        const aeObj = this.getEffectByName(primaryEffect);
-        const [actorEffect] = this.actor.effects.filter((ae) => ae.origin.endsWith(originItem) && ae.label === aeObj.label);
-        effectUpdates.push({ _id: actorEffect.id, disabled: false });
+      if (this.effects.size > 0) {
+        // item has active effects to consider activating
+        const originItem = `Item.${this.id}`;
+        const effectUpdates = [];
+        const { consumed } = this.system;
+        if (consumed === SystemUtils.Localize("CPR.itemSheet.effects.none") || consumed === "None") {
+          // no primary was specified, so we enable all of them
+          const actorEffects = this.actor.effects.filter((ae) => ae.origin.endsWith(originItem));
+          actorEffects.forEach((ae) => {
+            effectUpdates.push({ _id: ae.id, disabled: false });
+          });
+        } else {
+          const aeObj = this.getEffectByName(consumed);
+          const [actorEffect] = this.actor.effects.filter((ae) => ae.origin.endsWith(originItem) && ae.label === aeObj.label);
+          effectUpdates.push({ _id: actorEffect.id, disabled: false });
+        }
+        this.actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates); // update AEs
       }
-      this.actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates); // update AEs
       this.actor.updateEmbeddedDocuments("Item", [{ _id: this.id, system: this.system }]); // update the amount
     }
     SystemUtils.DisplayMessage("notify", `${this.name} ${SystemUtils.Localize("CPR.messages.consumedDrug")}`);

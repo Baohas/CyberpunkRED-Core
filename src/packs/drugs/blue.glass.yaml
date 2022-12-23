@@ -27,7 +27,7 @@ system:
   price:
     category: everyday
     market: 20
-  primaryEffect: ''
+  consumed: 'None'
   revealed: true
   source: pg. 357
   tags: []

@@ -92,15 +92,15 @@
                     </div>
                     <div class="item flexrow setting-value text-nowrap item-end">
                         {{#if this.editable}}
-                            <select name="system.primaryEffect" data-dtype="{{item.system.primaryEffect}}">
-                                {{#select item.system.primaryEffect}}
+                            <select name="system.consumed" data-dtype="{{item.system.consumed}}">
+                                {{#select item.system.consumed}}
                                     {{#each item.system.effectNames}}
                                         <option value="{{this}}">{{this}}</option>
                                     {{/each}}
                                 {{/select}}
                             </select>
                         {{else}}
-                            <span class="text-flex-end">{{item.system.primaryEffect}}</span>
+                            <span class="text-flex-end">{{item.system.consumed}}</span>
                         {{/if}}
                     </div>
                 </li>

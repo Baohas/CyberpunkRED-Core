@@ -65,11 +65,13 @@ const Effects = function Effects() {
       SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning"));
       return null;
     }
+    let disabled = false;
+    if (this.system.usage === "toggled" || this.system.usage === "snorted") disabled = true;
     return this.createEmbeddedDocuments("ActiveEffect", [{
       label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
       icon: "icons/svg/aura.svg",
       origin: this.uuid,
-      disabled: false,
+      disabled,
     }]);
   };
 
