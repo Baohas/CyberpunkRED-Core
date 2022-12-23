@@ -26,20 +26,19 @@ export default class CPRDrugItem extends CPRItem {
     if (!await this._confirmSnort()) return;
     this.system.amount = Math.max(0, this.system.amount - 1);
     if (this.actor) {
-      if (this.effects.size > 0) {
+      if (this.effects.size > 0 && this.system.usage === "snorted") {
         // item has active effects to consider activating
-        const originItem = `Item.${this.id}`;
         const effectUpdates = [];
         const { consumed } = this.system;
         if (consumed === SystemUtils.Localize("CPR.itemSheet.effects.none") || consumed === "None") {
           // no primary was specified, so we enable all of them
-          const actorEffects = this.actor.effects.filter((ae) => ae.origin.endsWith(originItem));
+          const actorEffects = this.getMyEffectsOnActor();
           actorEffects.forEach((ae) => {
             effectUpdates.push({ _id: ae.id, disabled: false });
           });
         } else {
           const aeObj = this.getEffectByName(consumed);
-          const [actorEffect] = this.actor.effects.filter((ae) => ae.origin.endsWith(originItem) && ae.label === aeObj.label);
+          const [actorEffect] = this.getMyEffectsOnActor().filter((ae) => ae.label === aeObj.label);
           effectUpdates.push({ _id: actorEffect.id, disabled: false });
         }
         this.actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates); // update AEs

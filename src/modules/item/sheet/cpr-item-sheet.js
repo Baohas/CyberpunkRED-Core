@@ -159,6 +159,9 @@ export default class CPRItemSheet extends ItemSheet {
     // Sheet resizing
     html.find(".tab-label").click(() => this._automaticResize());
 
+    // Change things when the "usage" for active effects changes
+    html.find(".set-usage").change((event) => this._setUsage(event));
+
     // Set up right click context menu when clicking on Item's image
     this._createItemImageContextMenu(html);
   }
@@ -1036,5 +1039,15 @@ export default class CPRItemSheet extends ItemSheet {
       return;
     }
     await this.item.update({ "system.installedItems.allowedTypes": allowedTypes });
+  }
+
+  /**
+   * See item._setUsage for details
+   *
+   * @param {Object} event
+   */
+  async _setUsage(event) {
+    LOGGER.trace("_setUsage | CPRItemSheet | Called.");
+    this.item._setUsage(event.target.value);
   }
 }
