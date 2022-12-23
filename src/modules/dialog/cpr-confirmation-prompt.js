@@ -36,7 +36,7 @@ export default class ConfirmationPrompt {
             },
           },
           default: "cancel",
-          render: LOGGER.trace("confirm | Dialog VerifyRollPrompt | called."),
+          render: LOGGER.trace("confirm | Dialog ConfirmationPrompt | called."),
           close: () => {
             // Closing the window can be interpreded as pressing cancel, thus it also resoles to false
             resolve(false);
