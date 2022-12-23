@@ -191,6 +191,7 @@
   "CPR.dialog.common.cancel": "Cancel",
   "CPR.dialog.common.confirm": "Confirm",
   "CPR.dialog.common.no": "No",
+  "CPR.dialog.common.ok": "OK",
   "CPR.dialog.common.select": "Select",
   "CPR.dialog.configureBlackIceActorFromProgram.title": "Link Black ICE Actor to Black ICE Program",
   "CPR.dialog.configureBlackIceActorFromProgram.unlinkBlackIceFromProgram": "Unlink Black ICE Actor from any Black ICE Program",

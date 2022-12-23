@@ -5,7 +5,7 @@ import CPRCharacterActorSheet from "../actor/sheet/cpr-character-sheet.js";
 import CPRContainerActorSheet from "../actor/sheet/cpr-container-sheet.js";
 import CPRMookActorSheet from "../actor/sheet/cpr-mook-sheet.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
-import ConfirmPrompt from "../dialog/cpr-confirmation-prompt.js";
+import NotificationPrompt from "../dialog/cpr-notification-prompt.js";
 
 /**
  * Hooks have a set of args that are passed to them from Foundry. Even if we do not use them here,
@@ -104,7 +104,7 @@ const itemHooks = () => {
 
             dialogMessage = dialogMessage.concat(`<center>${itemName} ${folderName}</center><br>`);
           }
-          ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
+          NotificationPrompt.RenderPrompt(dialogTitle, dialogMessage);
           deleteItem = false;
         }
       }
