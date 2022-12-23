@@ -1445,9 +1445,10 @@ export default class CPRActor extends Actor {
    * Create an active effect on this actor. This method belongs here so migration scripts can
    * dynamically generate effects based on custom mods already on the actor from earlier versions.
    *
+   * @param {Boolean} render - Render the effect's sheet or not. Default true.
    * @returns {CPRActiveEffect} the new document
    */
-  async createEffect() {
+  async createEffect(render = true) {
     LOGGER.trace("createEffect | CPRCharacterActor | Called.");
     const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [{
       label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
@@ -1456,7 +1457,7 @@ export default class CPRActor extends Actor {
       disabled: false,
     }]);
 
-    return effectDoc[0].sheet.render(true);
+    return effectDoc[0].sheet.render(render);
   }
 
   /**

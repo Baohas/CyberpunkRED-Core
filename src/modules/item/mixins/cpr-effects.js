@@ -57,9 +57,10 @@ const Effects = function Effects() {
    * Note: It would be nice to add custom properties, but they seem to be ignored by Foundry.
    * This is why we provide a custom CPRActiveEffect object elsewhere in the code base.
    *
+   * @param {Boolean} render - Render the effect's sheet or not. Default true.
    * @returns {ActiveEffect} - the newly created document
    */
-  this.createEffect = async function createEffect() {
+  this.createEffect = async function createEffect(render = true) {
     LOGGER.trace("createEffect | Effects | Called.");
     if (this.isOwned) {
       SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning"));
@@ -72,7 +73,7 @@ const Effects = function Effects() {
       disabled: false,
     }]);
 
-    return effectDoc[0].sheet.render(true);
+    return effectDoc[0].sheet.render(render);
   };
 
   /**

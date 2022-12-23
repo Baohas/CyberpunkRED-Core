@@ -370,7 +370,7 @@ export default class CPRMigration {
 
     if (item.effects.size > 0) {
       for (const sourceEffect of item.effects) {
-        const [effect] = await newItem.createEffect();
+        const [effect] = await newItem.createEffect(false);
         const newData = {
           _id: effect.id,
           label: sourceEffect.name,
