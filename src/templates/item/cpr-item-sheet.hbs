@@ -20,7 +20,7 @@
           {{#if (cprIsDebug)}}({{item.id}}){{/if}}
             {{localize (cprFindConfigValue "objectTypes" item.type)}}
             <a class="fas fa-question-circle help-article"
-               href="https://gitlab.com/JasonAlanTerry/fvtt-cyberpunk-red-core/-/wikis/help-articles/{{item.type}}"
+               href="https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/help-articles/{{item.type}}"
                data-tooltip="{{localize "CPR.global.generic.helparticle"}}">
             </a>
             {{#if (cprCompare item.system.source "!==" "")}} | {{item.system.source}}

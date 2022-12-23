@@ -240,7 +240,9 @@
                 {{/if}}
               </span>
               <span class="item-detail bg-black text-nowrap text-center">
-                {{localize "CPR.global.generic.amount"}}
+                {{#if (cprHasTemplate c "stackable")}}
+                  {{localize "CPR.global.generic.amount"}}
+                {{/if}}
               </span>
               <span class="item-name bg-black text-nowrap">
                 {{localize "CPR.global.generic.price"}}
@@ -254,9 +256,9 @@
               </span>
             </li>
             <ol class="items-list">
-              {{#each (cprSort (cprGetProp ../actor.itemTypes c) "name")}}
-              {{!-- Row for individual item --}}
-              {{> "systems/cyberpunk-red-core/templates/actor/container/cpr-item-content.hbs" (cprMergeForPartialArg "item,actor,isGM" this ../../actor ../../isGM)}}
+              {{#each (cprSort (cprGetProp ../actor.itemTypes c) "name") as |item i|}}
+                {{!-- Row for individual item --}}
+                {{> "systems/cyberpunk-red-core/templates/actor/container/cpr-item-content.hbs" (cprMergeForPartialArg "item,actor,isGM,collapsed" item ../../actor ../../isGM ../../this.options.collapsedSections)}}
               {{/each}}
             </ol>
           </div>

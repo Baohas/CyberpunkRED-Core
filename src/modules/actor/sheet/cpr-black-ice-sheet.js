@@ -119,6 +119,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
         cprProgramData.atk,
         cprProgramData.def,
         cprProgramData.rez,
+        cprProgramData.description.value,
         cprProgramData.rez,
       );
       if (this.actor.isToken) {

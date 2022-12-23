@@ -9,7 +9,7 @@ export default class UniversalInstallMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | 6-universalInstall Migration");
     super();
-    this.version = 5;
+    this.version = 6;
     this.name = "Universal Install Migration";
   }
 
