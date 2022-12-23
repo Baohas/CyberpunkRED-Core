@@ -110,7 +110,7 @@ export default class ImprovedDialogMigration extends CPRMigration {
     for (const ownedItem of ownedItems) {
       // We cannot add AEs to owned items, that's a Foundry limitation. If an owned item might get an AE
       // as a result of this migration, we must make an unowned copy first, and then copy that back to
-      // the actor. Not all item types require this, and skills are filtered out earlier.
+      // the actor. Not all item types require this, and skills/core cyberware are filtered out earlier.
       let newItem = ownedItem;
       if (ownedItem.effects.size > 0) {
         newItem = await CPRMigration.backupOwnedItem(ownedItem);

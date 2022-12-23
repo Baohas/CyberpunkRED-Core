@@ -370,17 +370,17 @@ export default class CPRMigration {
 
     if (item.effects.size > 0) {
       for (const sourceEffect of item.effects) {
-        const [effect] = await newItem.createEffect(false);
+        // const [effect] = await newItem.createEffect(false);
         const newData = {
-          _id: effect.id,
-          label: sourceEffect.name,
+          // _id: effect.id,
+          label: sourceEffect.label,
           icon: sourceEffect.icon,
           system: sourceEffect.system,
           changes: sourceEffect.changes,
           flags: sourceEffect.flags,
           disabled: sourceEffect.disabled,
         };
-        await newItem.updateEmbeddedDocuments("ActiveEffect", [newData]);
+        await newItem.createEmbeddedDocuments("ActiveEffect", [newData]);
       }
     }
     return newItem;
