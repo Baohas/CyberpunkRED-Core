@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+IFS=$'\n\t'
 
 ERRORS=0
 # Check hbs_location exits
@@ -19,17 +20,17 @@ if [[ -z "${ALL_FILES}" ]]; then
 fi
 
 for FILE in ${ALL_FILES}; do
-  OPEN_DIV=$(grep -Eo '<div' ${FILE} | wc -l | awk '{print $1}')
-  CLOSE_DIV=$(grep -Eo '</div' ${FILE} | wc -l | awk '{print $1}')
+  OPEN_DIV=$(grep -Eo '<div' "${FILE}" | wc -l | awk '{print $1}')
+  CLOSE_DIV=$(grep -Eo '</div' "${FILE}" | wc -l | awk '{print $1}')
   if [[ ${OPEN_DIV} -ne ${CLOSE_DIV} ]]; then
     echo "❌ Mismatch of '<div' (${OPEN_DIV}) and '</div' (${CLOSE_DIV}) in ${FILE}"
-    ERRORS=$(( ${ERRORS} + 1 ))
+    ((ERRORS += 1))
   fi
 done
 
 # If some trace messages are missing or incorrect fail this job
 if [[ "${ERRORS}" -gt 0 ]]; then
-  echo "❌ There are ${ERRORS} hbs files with mismatched <div and </div statements.
+  echo "❌ There are ${ERRORS} hbs files with mismatched <div and </div statements."
   echo "Each HBS file should have an opened '<div' and a matching closing '</div' statement".
   echo "Please add or correct this issue."
   exit 1
