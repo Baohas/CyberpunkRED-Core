@@ -20,7 +20,7 @@ effects:
         changes:
           '0': custom
     icon: systems/cyberpunk-red-core/icons/compendium/gear/roadflare.svg
-    label: Illumination
+    label: Road Flare
     tint: null
     transfer: true
 flags:

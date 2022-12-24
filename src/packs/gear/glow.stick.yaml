@@ -1,6 +1,6 @@
 _id: im5VJlsJv37KsyrE
 effects:
-  - _id: NVm2e26fprlysF2t
+  - _id: AGKnpiEshwvZDOrK
     changes:
       - key: ATL.light.bright
         mode: 2
@@ -20,7 +20,7 @@ effects:
         changes:
           '0': custom
     icon: systems/cyberpunk-red-core/icons/compendium/gear/glowstick.svg
-    label: Illumination
+    label: Glow Stick
     tint: null
     transfer: true
 flags:

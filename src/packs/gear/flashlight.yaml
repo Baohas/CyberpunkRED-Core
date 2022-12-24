@@ -1,6 +1,6 @@
 _id: spgehgLv94vrH4Zo
 effects:
-  - _id: NVm2e26fprlysF2t
+  - _id: WtdgeCRYXV3Mslji
     changes:
       - key: ATL.light.bright
         mode: 2
@@ -20,7 +20,7 @@ effects:
         changes:
           '0': custom
     icon: systems/cyberpunk-red-core/icons/compendium/gear/flashlight.svg
-    label: Illumination
+    label: Flashlight
     tint: null
     transfer: true
 flags:
