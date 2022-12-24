@@ -79,7 +79,7 @@
                 <div class="item flexrow setting-name text-nowrap text-vert-center">
                     {{localize "CPR.effectSheet.uses.usage"}}:
                 </div>
-                <div class="item flexrow setting-value text-nowrap item-end">
+                <div class="item flexrow set-usage setting-value text-nowrap item-end">
                     {{#if this.editable}}
                         <select name="system.usage" data-dtype="{{item.system.usage}}">
                             {{#select item.system.usage}}
@@ -93,6 +93,26 @@
                     {{/if}}
                 </div>
             </li>
+            {{#if (cprCompare item.system.usage "===" "snorted")}}
+                <li class="item flexrow">
+                    <div class="item flexrow setting-name text-nowrap">
+                        {{localize "CPR.itemSheet.effects.primaryEffect"}}
+                    </div>
+                    <div class="item flexrow setting-value text-nowrap item-end">
+                        {{#if this.editable}}
+                            <select name="system.consumed" data-dtype="{{item.system.consumed}}">
+                                {{#select item.system.consumed}}
+                                    {{#each item.system.effectNames}}
+                                        <option value="{{this}}">{{this}}</option>
+                                    {{/each}}
+                                {{/select}}
+                            </select>
+                        {{else}}
+                            <span class="text-flex-end">{{item.system.consumed}}</span>
+                        {{/if}}
+                    </div>
+                </li>
+            {{/if}}
         {{/if}}
     </div>
 </div>

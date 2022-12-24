@@ -5,6 +5,23 @@
 
 ### New Features
 
+- Universal Installation System replaces the back end code for installing Cyberware in Actors, Programs in Cyberdecks and Upgrades in other owned Items.  This new system provides the following new features:
+  - World Items (aka unowned items) can now be upgraded by World Upgrades to allow GMs to create pre-upgraded weapons, armors, etc.
+    - World Items can only be upgraded by other World Items, so ensure you import any upgrades you want to install into the world.
+    - `Hint`: Import an item & upgrade to the world, open item sheet & click on Installed Items to select upgrade to install.
+  - Upgraded items and Loaded weapons can now be drag/transferred between Actors.
+    - If the destination actor does not have an ammo of the same type, an ammo item is created in their inventory with a quantity of 0.
+  - Upgraded items can now be dragged out to the Item Sidebar creating a World Upgraded Item that can then be dragged to other Actors.
+    - A folder is created to store copies of the installed items.  You can not delete a world item which is installed in another item.  You must uninstall it first.
+  - You can now install that Cyberdeck into the `Cyberdeck (Hardwired)` Cyberware Item and it is displayed in the `Cyber` tab as such.
+    - `Hint`: Click the `Install into` arrow next to the Cyberdeck item in the Actor inventory
+  - You can now install Chipware into a Chipware Socket and it is displayed in the `Cyber` tab as such.
+    - `Hint`: When installng Chipware, drop down the installation icon and select `Chipware Socket`.
+  - Vendors now sum the value of the item they are selling + all installed items (upgrades, programs, etc) to determine the total value of the item they are selling.
+    - Hovering over an item which has items installed in it will display a tool-tip with what is installed.
+  - Attempting to delete a World Item installed in another World Item will result in a dialog preventing the deletion and telling you where that item is installed.
+- #442 - Implement a "Smart Snort" feature for drugs which will auto-activate only specific effects when consumed.
+
 ### Changes
 
 - Change the Crit Injury icon for head injuries
@@ -12,11 +29,9 @@
 - Update Character sheet to show more information for items
 - Update wording for Failed rolls
 - Babele translation config files added for DLC. Translations will follow later.
-- Upgraded items can now be traded/transferred between Actors!
-- World items can now be upgraded by other World Items!
-- Careful, Choom! Loaded weapons can now be traded/transferred between Actors!
 - The Item Upgrades pack has been renamed from `item-upgrades` to `upgrade-items` to be consistent with other pack names.
 - Update the main system font to Jost for better readability
+- Prior to this release, selling an upgraded item to a vendor renamed the item, pre-pending the word `Upgraded` to the name. Items are no longer renamed and instead, `Upgraded` is displayed inline if the item is upgraded without changing the item name.
 - #448 - Add the ability to "quick fix" a critical injury - resolved for now by making them all Toggled
 - #611 - default to Body table when rolling critical injuries
 - #633 - uninstall of programs from fight tab is failing
@@ -29,11 +44,12 @@
   - Effects listed on the left of the item sheet are only greyed out for disabled effects on owned items
   - The toggle on an unowned (world) item persists state
   - A better read-only view when viewing effects on an item in a compendium
-- #625 - Deomon actor does not display notes
+- #625 - Daemon actor does not display notes
 - #610 - Cannot Split Stacks of Drugs
 - #623 - Populating Black Ice does not copy description
 - #604 - Container tabs not collapsing
 - #602 - Items not stacking vendors
+- #652 - Damage icon missing from Black Ice Sheet:
 - Black-ICE can be renamed again
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15

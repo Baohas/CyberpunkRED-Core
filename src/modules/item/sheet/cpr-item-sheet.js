@@ -56,10 +56,6 @@ export default class CPRItemSheet extends ItemSheet {
     return super.defaultOptions.classes.concat(["sheet", "item", `${this.item.type}`]);
   }
 
-  /* --------------------------------------------
-  Had to make this async to get await to work on the GetCoreSkills?  Not
-  sure if that is the right way to do this?
-  */
   /** @override */
   async getData() {
     LOGGER.trace("getData | CPRItemSheet | Called.");
@@ -82,6 +78,10 @@ export default class CPRItemSheet extends ItemSheet {
         const worldSkills = game.items.filter((i) => i.type === "skill");
         cprData.relativeSkills = coreSkills.concat(worldSkills);
       }
+    }
+    if (mixins.includes("effects")) {
+      cprData.effectNames = this.item.getEffectNames();
+      cprData.effectNames.push(SystemUtils.Localize("CPR.itemSheet.effects.none"));
     }
 
     // if (["cyberdeck", "weapon", "armor", "cyberware", "clothing"].indexOf(data.item.type) > -1) {
@@ -156,6 +156,9 @@ export default class CPRItemSheet extends ItemSheet {
 
     // Sheet resizing
     html.find(".tab-label").click(() => this._automaticResize());
+
+    // Change things when the "usage" for active effects changes
+    html.find(".set-usage").change((event) => this._setUsage(event));
 
     // Set up right click context menu when clicking on Item's image
     this._createItemImageContextMenu(html);
@@ -840,13 +843,6 @@ export default class CPRItemSheet extends ItemSheet {
 
     const actor = (installTarget.isOwned) ? installTarget.actor : false;
 
-    /*
-    if (!actor || (actor.type !== "character" && actor.type !== "mook")) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.ownedItemOnlyError"));
-      return {};
-    }
-    */
-
     // First get all items that are installed in this.
     const installedItems = itemType ? installTarget.getInstalledItems(itemType) : installTarget.getInstalledItems();
 
@@ -867,7 +863,7 @@ export default class CPRItemSheet extends ItemSheet {
 
     if (!actor) {
       for (const installedItem of installedItems) {
-        uninstalledItems = uninstalledItems.filter((i) => i.uuid !== installedItem.uuid);
+        uninstalledItems = uninstalledItems.filter((i) => i.uuid !== installedItem.uuid && i.name !== installedItem.name);
       }
     }
     let itemsList = [];
@@ -1013,5 +1009,15 @@ export default class CPRItemSheet extends ItemSheet {
       return;
     }
     await this.item.update({ "system.installedItems.allowedTypes": allowedTypes });
+  }
+
+  /**
+   * See item._setUsage for details
+   *
+   * @param {Object} event
+   */
+  async _setUsage(event) {
+    LOGGER.trace("_setUsage | CPRItemSheet | Called.");
+    this.item._setUsage(event.target.value);
   }
 }

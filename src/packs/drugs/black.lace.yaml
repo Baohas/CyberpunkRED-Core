@@ -76,6 +76,7 @@ system:
   price:
     category: costly
     market: 50
+  consumed: 'None'    
   revealed: true
   source: pg. 357
   tags: []

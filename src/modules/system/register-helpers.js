@@ -614,6 +614,49 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Returns true if an item has installed items.
+   */
+  Handlebars.registerHelper("cprHasInstalledItems", (item) => {
+    LOGGER.trace("cprHasInstalledItems | handlebarsHelper | Called.");
+    const itemList = (typeof item.system.installedItems === "object") ? item.system.installedItems.list : [];
+    return itemList.length > 0;
+  });
+
+  /**
+   * List installed items.
+   */
+  Handlebars.registerHelper("cprListInstalledItems", (item, delimiter = " ") => {
+    LOGGER.trace("cprListInstalledItems | handlebarsHelper | Called.");
+    const { actor } = item;
+    const itemList = (typeof item.system.installedItems === "object") ? item.system.installedItems.list : [];
+    let returnString = "";
+    if (actor) {
+      for (const itemId of itemList) {
+        const installedItem = fromUuidSync(itemId);
+        if (installedItem) {
+          const itemType = SystemUtils.Localize(CPR.objectTypes[installedItem.type]);
+          returnString = returnString.concat(`${installedItem.name} (${itemType})`, delimiter);
+        }
+      }
+    }
+    return returnString;
+  });
+
+  Handlebars.registerHelper("cprGetItemValue", (item) => {
+    LOGGER.trace("cprGetItemValue | handlebarsHelper | Called.");
+    const valuableTypes = SystemUtils.GetTemplateItemTypes("valuable");
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    let totalValue = valuableTypes.includes(item.type) ? item.system.price.market : 0;
+    if (containerTypes.includes(item.type)) {
+      const installedItems = item.recursiveGetAllInstalledItems();
+      installedItems.forEach((installedItem) => {
+        totalValue += (valuableTypes.includes(installedItem.type)) ? installedItem.system.price.market : 0;
+      });
+    }
+    return totalValue;
+  });
+
+  /**
    * Returns true if an item type has a particular template applied in the data model
    * To Do: isUpgradeable should use this instead
    */
@@ -797,6 +840,7 @@ export default function registerHandlebarsHelpers() {
     }
 
     const sourceDoc = (doc instanceof CPRActiveEffect) ? doc.getEffectParent() : doc;
+    if (!sourceDoc) return "???"; // a recently deleted item will sometimes do this
     if (cat === "skill") {
       const skillMap = CPR.activeEffectKeys.skill;
       let skillList = [];

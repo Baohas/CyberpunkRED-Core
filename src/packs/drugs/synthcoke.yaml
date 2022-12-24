@@ -119,8 +119,9 @@ system:
   price:
     category: everyday
     market: 20
+  consumed: 'Synthcoke Primary'
   revealed: true
   source: pg. 357
   tags: []
-  usage: toggled
+  usage: snorted
 type: drug
