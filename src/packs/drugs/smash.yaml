@@ -123,8 +123,9 @@ system:
   price:
     category: cheap
     market: 10
+  consumed: 'Smash Primary'
   revealed: true
   source: pg. 357
   tags: []
-  usage: toggled
+  usage: snorted
 type: drug

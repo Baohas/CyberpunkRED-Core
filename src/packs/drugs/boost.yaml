@@ -72,8 +72,9 @@ system:
   price:
     category: costly
     market: 50
+  consumed: 'Boost Primary'
   revealed: true
   source: pg. 357
   tags: []
-  usage: toggled
+  usage: snorted
 type: drug

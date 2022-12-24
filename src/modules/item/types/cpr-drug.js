@@ -26,13 +26,23 @@ export default class CPRDrugItem extends CPRItem {
     if (!await this._confirmSnort()) return;
     this.system.amount = Math.max(0, this.system.amount - 1);
     if (this.actor) {
-      const originItem = `Item.${this.id}`;
-      const actorEffects = this.actor.effects.filter((ae) => ae.origin.endsWith(originItem) && ae.usage === "snorted");
-      const effectUpdates = [];
-      actorEffects.forEach((ae) => {
-        effectUpdates.push({ _id: ae.id, disabled: false });
-      });
-      this.actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates); // update AEs
+      if (this.effects.size > 0 && this.system.usage === "snorted") {
+        // item has active effects to consider activating
+        const effectUpdates = [];
+        const { consumed } = this.system;
+        if (consumed === SystemUtils.Localize("CPR.itemSheet.effects.none") || consumed === "None") {
+          // no primary was specified, so we enable all of them
+          const actorEffects = this.getMyEffectsOnActor();
+          actorEffects.forEach((ae) => {
+            effectUpdates.push({ _id: ae.id, disabled: false });
+          });
+        } else {
+          const aeObj = this.getEffectByName(consumed);
+          const [actorEffect] = this.getMyEffectsOnActor().filter((ae) => ae.label === aeObj.label);
+          effectUpdates.push({ _id: actorEffect.id, disabled: false });
+        }
+        this.actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates); // update AEs
+      }
       this.actor.updateEmbeddedDocuments("Item", [{ _id: this.id, system: this.system }]); // update the amount
     }
     SystemUtils.DisplayMessage("notify", `${this.name} ${SystemUtils.Localize("CPR.messages.consumedDrug")}`);
@@ -42,6 +52,7 @@ export default class CPRDrugItem extends CPRItem {
    * pops up a confirmation to consume a drug (yes/no)
    *
    * @async
+   * @private
    * @returns a promise
    */
   async _confirmSnort() {

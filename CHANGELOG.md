@@ -5,6 +5,8 @@
 
 ### New Features
 
+- #442 - Implement a "Smart Snort" feature which will auto-activate only specific effects when consumed.
+
 ### Changes
 
 - Change the Crit Injury icon for head injuries
