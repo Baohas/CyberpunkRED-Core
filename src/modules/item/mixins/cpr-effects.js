@@ -1,3 +1,5 @@
+/* global duplicate */
+
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
@@ -65,11 +67,13 @@ const Effects = function Effects() {
       SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning"));
       return null;
     }
+    let disabled = false;
+    if (this.system.usage === "toggled" || this.system.usage === "snorted") disabled = true;
     return this.createEmbeddedDocuments("ActiveEffect", [{
       label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
       icon: "icons/svg/aura.svg",
       origin: this.uuid,
-      disabled: false,
+      disabled,
     }]);
   };
 
@@ -120,6 +124,27 @@ const Effects = function Effects() {
       return null;
     }
     return effect;
+  };
+
+  /**
+   * Return an active effect matching the give name ("label" is the AE property).
+   *
+   * @param {String} label - the name to search by
+   * @returns {ActiveEffect}
+   */
+  this.getEffectByName = function getEffectByName(label) {
+    LOGGER.trace("getEffectByName | Effects | Called.");
+    return this.effects.find((e) => e.label === label);
+  };
+
+  /**
+   * Return an array of all effect names on this item.
+   *
+   * @returns {Array:ActiveEffect}
+   */
+
+  this.getEffectNames = function getEffectNames() {
+    return this.effects.map((e) => e.label);
   };
 
   /**
@@ -189,6 +214,45 @@ const Effects = function Effects() {
         return !this.system.isRezzed;
       default:
         return false;
+    }
+  };
+
+  /**
+   * Return all active effects on an actor that is coming from this item. You may think this
+   * is the same list that is on this item, but it is not. The actor AEs have completely
+   * different IDs and potentially data (e.g. "disabled").
+   *
+   * @return {Array:CPRActiveEffect}
+   */
+  this.getMyEffectsOnActor = function getMyEffectsOnActor() {
+    LOGGER.trace("getActorItemEffects | Effects | Called.");
+    if (!this.isOwned || !this.actor) return [];
+    return this.actor.effects.filter((ae) => ae.origin.endsWith(`Item.${this.id}`));
+  };
+
+  /**
+   * There are cases where changing the usage should trigger other behaviors, like setting all AEs
+   * to disabled when setting it to snorted. Players should not gain their effects merely by touching
+   * the drugs (i.e. putting them in their inventory).
+   *
+   * @async
+   * @callback - (no need to call update() this this happens already)
+   * @private
+   * @param {String} usage - the value to set usage to
+   */
+  this._setUsage = function _setUsage(usage) {
+    LOGGER.trace("_setUsage | Effects | Called.");
+    if (usage === "snorted") {
+      const aeUpdates = [];
+      if (this.isOwned) {
+        // if the item is owned, we change the AEs on the actor
+        this.getMyEffectsOnActor().forEach((ae) => aeUpdates.push({ _id: ae.id, disabled: true }));
+        this.actor.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
+      } else {
+        // if unowned, then we can change the AEs on the item itself
+        this.effects.forEach((ae) => aeUpdates.push({ _id: ae.id, disabled: true }));
+        this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
+      }
     }
   };
 };
