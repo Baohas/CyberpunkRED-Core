@@ -44,7 +44,7 @@
   - Effects listed on the left of the item sheet are only greyed out for disabled effects on owned items
   - The toggle on an unowned (world) item persists state
   - A better read-only view when viewing effects on an item in a compendium
-- #625 - Deomon actor does not display notes
+- #625 - Daemon actor does not display notes
 - #610 - Cannot Split Stacks of Drugs
 - #623 - Populating Black Ice does not copy description
 - #604 - Container tabs not collapsing
