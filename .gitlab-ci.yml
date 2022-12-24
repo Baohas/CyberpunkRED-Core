@@ -289,6 +289,25 @@ trace-statements:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
+div-statements:
+  stage: test
+  script:
+    - echo "Checking if there are matched <div and </div statements in all hbs files..."
+    - ./.gitlab/pipeline_tests/test-handlebars-divs.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
 code-localization:
   stage: test
   script:
@@ -444,6 +463,7 @@ build-artifacts:
     - job: game-id
     - job: compendia-use
     - job: trace-statements
+    - job: div-statements
     - job: code-localization
     - job: handlebars-helpers
     - job: tooltips
