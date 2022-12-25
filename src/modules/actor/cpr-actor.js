@@ -1445,13 +1445,19 @@ export default class CPRActor extends Actor {
    * @returns {CPRActiveEffect} the new document
    */
   createEffect() {
-    LOGGER.trace("createEffect | CPRCharacterActor | Called.");
+    LOGGER.trace("createEffect | CPRActor | Called.");
     return this.createEmbeddedDocuments("ActiveEffect", [{
       label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
       icon: "icons/svg/aura.svg",
       origin: this.uuid,
       disabled: false,
     }]);
+  }
+
+  copyEffect(effect) {
+    LOGGER.trace("copyEffect | CPRActor | Called.");
+    const newEffect = duplicate(effect);
+    return this.createEmbeddedDocuments("ActiveEffect", [newEffect]);
   }
 
   /**
@@ -1461,7 +1467,7 @@ export default class CPRActor extends Actor {
    * @returns null
    */
   static async deleteEffect(effect) {
-    LOGGER.trace("deleteEffect | CPRCharacterActor | Called.");
+    LOGGER.trace("deleteEffect | CPRActor | Called.");
     const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     if (setting) {
       const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${effect.system.label}?`;
