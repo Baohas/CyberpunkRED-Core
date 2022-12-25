@@ -20,8 +20,9 @@ if [[ -z "${ALL_FILES}" ]]; then
 fi
 
 for FILE in ${ALL_FILES}; do
-  OPEN_DIV=$(grep -Eo '<div' "${FILE}" | wc -l | awk '{print $1}')
-  CLOSE_DIV=$(grep -Eo '</div' "${FILE}" | wc -l | awk '{print $1}')
+  # Sort circuit here as grep will error if we don't find any results in a file
+  OPEN_DIV=$(grep -Eo '<div' "${FILE}" | wc -l || true)
+  CLOSE_DIV=$(grep -Eo '</div' "${FILE}" | wc -l || true)
   if [[ ${OPEN_DIV} -ne ${CLOSE_DIV} ]]; then
     echo "❌ Mismatch of '<div' (${OPEN_DIV}) and '</div' (${CLOSE_DIV}) in ${FILE}"
     ((ERRORS += 1))
