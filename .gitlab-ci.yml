@@ -289,11 +289,11 @@ trace-statements:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
-div-statements:
+tag-statements:
   stage: test
   script:
-    - echo "Checking if there are matched <div and </div statements in all hbs files..."
-    - ./.gitlab/pipeline_tests/test-handlebars-divs.sh
+    - echo "Checking if there are matched html tags in all hbs files..."
+    - ./.gitlab/pipeline_tests/test-handlebars-tags.sh
   needs:
     - job: init
       artifacts: true
@@ -463,7 +463,7 @@ build-artifacts:
     - job: game-id
     - job: compendia-use
     - job: trace-statements
-    - job: div-statements
+    - job: tag-statements
     - job: code-localization
     - job: handlebars-helpers
     - job: tooltips
