@@ -21,6 +21,7 @@
     - Hovering over an item which has items installed in it will display a tool-tip with what is installed.
   - Attempting to delete a World Item installed in another World Item will result in a dialog preventing the deletion and telling you where that item is installed.
 - #442 - Implement a "Smart Snort" feature for drugs which will auto-activate only specific effects when consumed.
+- #412 - Duplicate AEs in the Item Sheet (and Actor sheet)
 
 ### Changes
 
