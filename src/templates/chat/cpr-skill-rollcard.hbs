@@ -31,17 +31,18 @@
           <div class="d10-data-details hide">
             <div class="text-normal text-bold">{{localize statName}} + {{statValue}}</div>
             <div class="text-normal text-bold">{{localize (cprGetLocalizedlNameKey skillName "skill")}} + {{skillValue}}</div>
-            {{#if roleValue}}
-              <div class="text-normal text-bold">{{localize roleName}} + {{roleValue}}</div>
-            {{/if}}
-            {{#if mods}}
-              <span class="text-normal text-nowrap">{{localize "CPR.rolls.rollMods"}}: {{mods}}</span>
-              <div class="text-normal text-bold text-nowrap">{{localize "CPR.rolls.mods"}} {{localize "CPR.rolls.total"}}:
+              {{#if roleValue}}
+                <div class="text-normal text-bold">{{localize roleName}} + {{roleValue}}</div>
+              {{/if}}
+              {{#if mods}}
+                <span class="text-normal text-nowrap">{{localize "CPR.rolls.rollMods"}}: {{mods}}</span>
+                <div class="text-normal text-bold text-nowrap">{{localize "CPR.rolls.mods"}} {{localize "CPR.rolls.total"}}:
                 {{totalMods}}</div>
-            {{/if}}
-            {{#if luck}}
-            <div class="text-normal text-bold text-nowrap">{{localize "CPR.global.stats.luck"}}: {{luck}}</div>
-            {{/if}}
+              {{/if}}
+              {{#if luck}}
+                <div class="text-normal text-bold text-nowrap">{{localize "CPR.global.stats.luck"}}: {{luck}}</div>
+              {{/if}}
+          </div>
         </div>
       </div>
     </div>

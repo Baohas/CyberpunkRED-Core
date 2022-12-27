@@ -2,7 +2,6 @@
 {{cprTrace "START ACTOR CPR-CHARACTER-SHEET.HBS"}}
 <form>
   <div class="actor-sheet character">
-
     <div class="left-pane bg-white">
       <div class="main-section bg-red">
         {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-image-block.hbs"}}
@@ -14,7 +13,6 @@
         {{#if (cprCompare actor.type "===" "character")}}
           {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-ip-block.hbs"}}
         {{/if}}
-
       </div>
       <div class="stats-section bg-red">
         {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-stat-block.hbs"}}
@@ -40,8 +38,8 @@
       </div>
       {{#if (cprSystemConfig "enableSheetContentFilter")}}
       <div class="sheet-cprFilter-section">
-          <input class="filter-contents" value="{{options.cprContentFilter}}" type="string" placeholder="Search for skills, items and others...">
-          <a><i class="fas fa-xmark fg-red reset-content-filter" data-tooltip="{{localize "CPR.actorSheets.clearFilter"}}"></i></a>
+        <input class="filter-contents" value="{{options.cprContentFilter}}" type="string" placeholder="Search for skills, items and others...">
+        <a><i class="fas fa-xmark fg-red reset-content-filter" data-tooltip="{{localize "CPR.actorSheets.clearFilter"}}"></i></a>
       </div>
       {{/if}}
       <div class="right-content-section">
@@ -76,7 +74,7 @@
                 {{/if}}
               {{/if}}
               {{#if (cprCompare actor.system.fightState "===" "Meatspace")}}
-               &nbsp;<a class="rollable" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}" data-roll-type="facedown" data-roll-title="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}"><i class="far fa-angry"></i></a>
+                &nbsp;<a class="rollable" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}" data-roll-type="facedown" data-roll-title="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}"><i class="far fa-angry"></i></a>
               {{/if}}
             </div>
           </div>
@@ -96,5 +94,7 @@
           {{> "systems/cyberpunk-red-core/templates/actor/parts/bottom-pane/cpr-lifepath.hbs"}}
         </div>
       </div>
+    </div>
+  </div>
 </form>
 {{cprTrace "END CPR-CHARACTER-SHEET.HBS"}}
