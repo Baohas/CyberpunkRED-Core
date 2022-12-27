@@ -7,7 +7,7 @@ ERRORS=0
 HBS_LOCATION="src/templates"
 
 # HTML Tags to check
-TAG_LIST=( "div" "li" "ul" "ol" )
+TAG_LIST=("div" "li" "ul" "ol")
 
 # Check the HBS_LOCATION exists
 if [[ ! -d "${HBS_LOCATION}" ]]; then
