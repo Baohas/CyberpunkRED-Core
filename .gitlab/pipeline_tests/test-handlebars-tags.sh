@@ -23,7 +23,7 @@ if [[ -z "${ALL_FILES}" ]]; then
 fi
 
 for FILE in ${ALL_FILES}; do
-  for TAG in ${TAG_LIST[@]}; do
+  for TAG in "${TAG_LIST[@]}"; do
     # Sort circuit here as grep will error if we don't find any results in a file
     OPEN_TAG=$(grep -Eo "<${TAG}" "${FILE}" | wc -l || true)
     CLOSE_TAG=$(grep -Eo "</${TAG}" "${FILE}" | wc -l || true)
@@ -38,7 +38,7 @@ done
 if [[ "${ERRORS}" -gt 0 ]]; then
   echo "❌ There are ${ERRORS} hbs files with unbalanced open/close tags."
   echo "Each HBS file should have a matching closing tag to every open tag."
-  echo "Tags tested: ${TAG_LIST[@]}"
+  echo "Tags tested: " + "${TAG_LIST[@]}"
   echo "Please correct these issues."
   exit 1
 else
