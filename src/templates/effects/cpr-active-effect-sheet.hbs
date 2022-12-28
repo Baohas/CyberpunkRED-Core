@@ -1,5 +1,6 @@
 {{cprTrace "START EFFECTS CPR-ACTIVE-EFFECT-SHEET.HBS"}}
 {{!-- taken from Foundry code in resources/app/templates/sheets/active-effect-config.html --}}
+{{!-- We are assuming this sheet is never shown for effects on owned items, since they cannot be changed --}}
 <form>
     <!-- Effect Header -->
     <header class="sheet-header">
@@ -114,9 +115,7 @@
                     {{/if}}
                 </div>
                 <div class="effect-controls">
-                    {{!-- Deleting a change is possible, but the changes Flag on the actor should be a map rather than an array.
-                          Being an array creats a problem when a change in the middle of the list is deleted.
-                           <a class="effect-change-control" data-action="delete" data-index={{i}}><i class="fas fa-trash"></i></a>  --}}
+                        <a class="effect-change-control" data-action="delete" data-index={{i}}><i class="fas fa-trash-alt fg-red"></i></a>
                     {{#unless (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "stat")}}
                         <i class="fas fa-question-circle" data-tooltip="{{localize "CPR.effectSheet.info.deleteAndModesComing"}}"></i>
                     {{/unless}}
