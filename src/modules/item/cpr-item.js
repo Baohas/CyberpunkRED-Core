@@ -159,7 +159,7 @@ export default class CPRItem extends Item {
 
     if (typeof this.system.isInstalled === "boolean" && this.system.isInstalled) {
       const installLocation = (this.isOwned && this.actor) ? this.actor.getOwnedItem(this.system.installedIn) : fromUuidSync(this.system.installedIn);
-      if (containerTypes.includes(installLocation.type)) {
+      if (installLocation && containerTypes.includes(installLocation.type)) {
         await installLocation.uninstallItems([this], false);
       }
     }

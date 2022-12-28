@@ -124,6 +124,12 @@ export default class ImprovedDialogMigration extends CPRMigration {
         const newData = duplicate(newItem.data);
         const createdItem = await actor.createEmbeddedDocuments("Item", [newData], { isMigrating: true });
         remappedItems[ownedItem._id] = createdItem[0]._id;
+        // It may seem silly to update right before we delete, but we do the following to avoid some messiness.
+        // Because we override preDelete in cpr-item.js, and our override queries system.isInstalled,
+        // we set system.isInstalled to false because we do not want it to pass into the if statement on line 160 of cpr-item.js.
+        // That block is only relevant to owned items, and causes errors if it is performed on non-owned items.
+        // TODO: This may be a bit of a workaround and so i will talk with Darin about proper fixes (he wrote the relevant functions).
+        await newItem.update({ "system.isInstalled": false });
         await newItem.delete();
         deleteItems.push(ownedItem._id);
       }
