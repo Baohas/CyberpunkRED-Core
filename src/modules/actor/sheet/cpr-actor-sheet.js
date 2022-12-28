@@ -142,7 +142,7 @@ export default class CPRActorSheet extends ActorSheet {
    * Prepare the data structure for Active Effects which are currently applied to this actor.
    * This came from the DND5E active-effect.js code.
    *
-   * @returns {Object}                  Data for rendering
+   * @returns {Object} - Data for rendering
    */
   async prepareActiveEffectCategories() {
     LOGGER.trace("prepareActiveEffectCategories | CPRActorSheet | Called.");
@@ -184,7 +184,7 @@ export default class CPRActorSheet extends ActorSheet {
         icon: e.icon,
         usage: e.usage,
         system: {
-          isSuppressed: e.isSuppressed,
+          isSuppressed: e.system.isSuppressed,
         },
         disabled: e.disabled,
       };
