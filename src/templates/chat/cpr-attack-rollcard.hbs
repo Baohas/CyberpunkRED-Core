@@ -7,53 +7,54 @@
         <div class="rollcard-subtitle-center text-small">{{localize "CPR.rolls.attack"}}</div>
         <div class="rollcard-subtitle-right">
           <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="{{location}}"
-            data-token-id="{{entityData.token}}" data-item-id="{{entityData.item}}">
-            <i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
+          data-token-id="{{entityData.token}}" data-item-id="{{entityData.item}}">
+          <i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
           </a>
         </div>
         {{#if rollCardExtraArgs.ammoType}}
-        <div class="rollcard-subtitle-2-center text-small">{{localize (cprFindConfigValue "ammoType" rollCardExtraArgs.ammoType)}}</div>
+          <div class="rollcard-subtitle-2-center text-small">{{localize (cprFindConfigValue "ammoType" rollCardExtraArgs.ammoType)}}</div>
         {{/if}}
+        </div>
       </div>
     </div>
-  </div>
-  <div class="rollcard-bottom">
-    <div class="cpr-block">
-      <div class="d10-rollcard-data">
-        <div class="d10-dice-div">
+    <div class="rollcard-bottom">
+      <div class="cpr-block">
+        <div class="d10-rollcard-data">
+          <div class="d10-dice-div">
           {{!-- die image for initialRoll --}}
-          {{#if criticalCard}}
-          {{#if wasCritSuccess}}
-          <img class="d10" src="systems/cyberpunk-red-core/icons/dice/red/d10_{{initialRoll}}_preem.svg">
-          <i class="fas fa-plus"></i>
-          {{else}}
-          <img class="d10" src="systems/cyberpunk-red-core/icons/dice/red/d10_{{initialRoll}}_fail.svg">
-          <i class="fas fa-minus"></i>
-          {{/if}}
-          <img class="d10" src="systems/cyberpunk-red-core/icons/dice/red/d10_{{cprMath "abs" criticalRoll}}.svg">
-          {{else}}
-          <img class="d10" src="systems/cyberpunk-red-core/icons/dice/black/d10_{{initialRoll}}.svg">
-          {{/if}}
-        </div>
-        <div class="d10-number-div">
-          <a><span class="clickable{{#if criticalCard}} fg-red text-bold{{/if}}" data-action="toggleVisibility"
-              data-visible-element="d10-data-details">{{resultTotal}}</span></a>
-        </div>
-        <div class="d10-data-div">
-          <div class="d10-data-details hide">
-            <div class="text-normal text-bold">{{localize statName}} + {{statValue}}</div>
-            <div class="text-normal text-bold">{{localize skillName}} + {{skillValue}}</div>
-            {{#if roleValue}}
-              <div class="text-normal text-bold">{{localize roleName}} + {{roleValue}}</div>
+            {{#if criticalCard}}
+              {{#if wasCritSuccess}}
+                <img class="d10" src="systems/cyberpunk-red-core/icons/dice/red/d10_{{initialRoll}}_preem.svg">
+                <i class="fas fa-plus"></i>
+              {{else}}
+                <img class="d10" src="systems/cyberpunk-red-core/icons/dice/red/d10_{{initialRoll}}_fail.svg">
+                <i class="fas fa-minus"></i>
+              {{/if}}
+            <img class="d10" src="systems/cyberpunk-red-core/icons/dice/red/d10_{{cprMath "abs" criticalRoll}}.svg">
+            {{else}}
+              <img class="d10" src="systems/cyberpunk-red-core/icons/dice/black/d10_{{initialRoll}}.svg">
             {{/if}}
+          </div>
+          <div class="d10-number-div">
+            <a><span class="clickable{{#if criticalCard}} fg-red text-bold{{/if}}" data-action="toggleVisibility"
+            data-visible-element="d10-data-details">{{resultTotal}}</span></a>
+          </div>
+          <div class="d10-data-div">
+            <div class="d10-data-details hide">
+              <div class="text-normal text-bold">{{localize statName}} + {{statValue}}</div>
+              <div class="text-normal text-bold">{{localize skillName}} + {{skillValue}}</div>
+              {{#if roleValue}}
+                <div class="text-normal text-bold">{{localize roleName}} + {{roleValue}}</div>
+              {{/if}}
 
-            {{#if (cprCompare mods.length "||" additionalMods.length)}}
-              {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
-            {{/if}}
+              {{#if (cprCompare mods.length "||" additionalMods.length)}}
+                {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
+              {{/if}}
 
-            {{#if luck}}
-            <div class="text-normal text-bold text-nowrap">{{localize "CPR.global.stats.luck"}}: {{luck}}</div>
-            {{/if}}
+              {{#if luck}}
+                <div class="text-normal text-bold text-nowrap">{{localize "CPR.global.stats.luck"}}: {{luck}}</div>
+              {{/if}}
+            </div>
           </div>
         </div>
       </div>

@@ -1449,7 +1449,7 @@ export default class CPRActor extends Actor {
    * @returns {CPRActiveEffect} the new document
    */
   async createEffect(render = true) {
-    LOGGER.trace("createEffect | CPRCharacterActor | Called.");
+    LOGGER.trace("createEffect | CPRActor | Called.");
     const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [{
       label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
       icon: "icons/svg/aura.svg",
@@ -1460,6 +1460,12 @@ export default class CPRActor extends Actor {
     return effectDoc[0].sheet.render(render);
   }
 
+  copyEffect(effect) {
+    LOGGER.trace("copyEffect | CPRActor | Called.");
+    const newEffect = duplicate(effect);
+    return this.createEmbeddedDocuments("ActiveEffect", [newEffect]);
+  }
+
   /**
    * Delete the desired effect from this actor. Pops up a confirmation box if permitted.
    *
@@ -1467,7 +1473,7 @@ export default class CPRActor extends Actor {
    * @returns null
    */
   static async deleteEffect(effect) {
-    LOGGER.trace("deleteEffect | CPRCharacterActor | Called.");
+    LOGGER.trace("deleteEffect | CPRActor | Called.");
     const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     if (setting) {
       const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${effect.label}?`;

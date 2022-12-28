@@ -399,6 +399,8 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         return this.actor.createEffect();
       case "edit":
         return effect.sheet.render(true);
+      case "copy":
+        return this.actor.copyEffect(effect);
       case "delete":
         return this.actor.constructor.deleteEffect(effect);
       case "toggle":

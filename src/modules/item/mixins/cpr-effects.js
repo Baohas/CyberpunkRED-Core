@@ -40,6 +40,10 @@ const Effects = function Effects() {
         const effectId = SystemUtils.GetEventDatum(event, "data-effect-id");
         return this.editEffect(effectId);
       }
+      case "copy": {
+        const effectId = SystemUtils.GetEventDatum(event, "data-effect-id");
+        return this.copyEffect(effectId);
+      }
       case "delete": {
         const effectId = SystemUtils.GetEventDatum(event, "data-effect-id");
         return this.deleteEffect(effectId);
@@ -78,6 +82,16 @@ const Effects = function Effects() {
     }]);
 
     return effectDoc[0].sheet.render(render);
+  };
+
+  this.copyEffect = function copyEffect(eid) {
+    LOGGER.trace("copyEffect | Effects | Called.");
+    if (this.isOwned) {
+      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning"));
+      return null;
+    }
+    const effect = duplicate(this.getEffect(eid));
+    return this.createEmbeddedDocuments("ActiveEffect", [effect]);
   };
 
   /**

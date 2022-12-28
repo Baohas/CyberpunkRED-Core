@@ -18,23 +18,24 @@
           </div>
         </li>
         {{#if rollData.isAutofire}}
-        <li class="dialog-item flexrow">
-          <div class="dialog-item-name text-nowrap">
-            {{localize "CPR.global.generic.multiplier"}}
-            {{#if (cprCompare rollData.autofireMultiplierMax ">" 0)}}
-              (1-{{rollData.autofireMultiplierMax}}):
-            {{else}}
-              {{#if (cprListContains "assaultRifle,smg,heavySmg" rollData.weaponType)}}
-                (1-{{#if (cprCompare rollData.weaponType "===" "assaultRifle")}}4{{else}}3{{/if}}):
+          <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
+              {{localize "CPR.global.generic.multiplier"}}
+              {{#if (cprCompare rollData.autofireMultiplierMax ">" 0)}}
+                (1-{{rollData.autofireMultiplierMax}}):
               {{else}}
-                ({{localize "CPR.rolls.noAutfireMaxConfig"}})
+                {{#if (cprListContains "assaultRifle,smg,heavySmg" rollData.weaponType)}}
+                  (1-{{#if (cprCompare rollData.weaponType "===" "assaultRifle")}}4{{else}}3{{/if}}):
+                {{else}}
+                  ({{localize "CPR.rolls.noAutfireMaxConfig"}})
+                {{/if}}
               {{/if}}
-            {{/if}}
-          </div>
-        <div class="dialog-item-input text-nowrap">
-          <input type="number" class="number" name="autofireMultiplier" data-dtype="Number" value=1
-            max="{{#if (cprCompare rollData.weaponType "===" "assaultRifle")}}4{{else}}3{{/if}}" min="1">
-        </div>
+            </div>
+            <div class="dialog-item-input text-nowrap">
+              <input type="number" class="number" name="autofireMultiplier" data-dtype="Number" value=1
+                max="{{#if (cprCompare rollData.weaponType "===" "assaultRifle")}}4{{else}}3{{/if}}" min="1">
+            </div>
+          </li>
         {{/if}}
       {{/if}}
 

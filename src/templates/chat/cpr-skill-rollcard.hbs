@@ -36,11 +36,11 @@
             {{/if}}
             {{#if (cprCompare mods.length "||" additionalMods.length)}}
               {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
-
             {{/if}}
             {{#if luck}}
-            <div class="text-normal text-bold text-nowrap">{{localize "CPR.global.stats.luck"}}: {{luck}}</div>
+              <div class="text-normal text-bold text-nowrap">{{localize "CPR.global.stats.luck"}}: {{luck}}</div>
             {{/if}}
+          </div>
         </div>
       </div>
     </div>
