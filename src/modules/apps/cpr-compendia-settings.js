@@ -22,7 +22,7 @@ export default class CPRCompendiaSettings extends FormApplication {
       title: SystemUtils.Localize("CPR.settings.compendiumMenu.title"),
       id: "injury-config",
       template: `systems/${game.system.id}/templates/apps/compendia-settings.hbs`,
-      width: "400",
+      width: "auto",
       height: "auto",
       closeOnSubmit: true,
     });

@@ -9,7 +9,7 @@ import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
  * Implement the Black-ICE sheet, which extends ActorSheet directly from Foundry. This does
  * not extend CPRActor, as there is very little overlap between Black-ICE and mooks/characters.
  *
- * @extends {CPRActorSheet}
+ * @extends {ActorSheet}
  */
 export default class CPRBlackIceActorSheet extends ActorSheet {
   /**
@@ -23,8 +23,9 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     LOGGER.trace("defaultOptions | CPRBlackIceActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-black-ice-sheet.hbs`,
-      width: 745,
-      height: 200,
+      width: "auto",
+      height: "auto",
+      resizable: true,
     });
   }
 

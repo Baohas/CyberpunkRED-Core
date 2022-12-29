@@ -14,14 +14,11 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRActiveEffectSheet | Called.");
-    const defaultWidth = 700;
-    const defaultHeight = 280;
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
-      defaultWidth,
-      defaultHeight,
-      width: defaultWidth,
-      height: defaultHeight,
+      defaultWidth: "auto",
+      defaultHeight: "auto",
+      resizable: true,
     });
   }
 

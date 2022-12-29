@@ -26,8 +26,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     LOGGER.trace("defaultOptions | CPRContainerActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-container-sheet.hbs`,
-      width: 750,
-      height: 565,
     });
   }
 
@@ -91,46 +89,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     html.find(".vendor-configure-sell-to").click(() => this._configureSellTo());
 
     super.activateListeners(html);
-  }
-
-  /**
-   * We extend CPRContainerSheet._render to enable automatic fitting of the content to the window size.
-   *
-   * @override
-   * @private
-   * @param {Boolean} force - for this to be rendered. We don't use this, but the parent class does.
-   * @param {Object} options - rendering options that are passed up the chain to the parent
-   */
-  async _render(force = false, options = {}) {
-    LOGGER.trace("_render | CPRContainerSheet | Called.");
-    await super._render(force, options);
-    this._automaticContentResize();
-  }
-
-  /**
-   * We extend CPRContainerSheet._onRezize to enable automatic fitting of the content to the window size.
-   *
-   * @override
-   * @private
-   * @param {event} event - object capruting evene t data
-   */
-  _onResize(event) {
-    LOGGER.trace("_onResize | CPRContainerSheet | Called.");
-    this._automaticContentResize();
-    super._onResize(event);
-  }
-
-  /**
-   * Automatically resize the content such that it fills the window.
-   *
-   * @private
-   */
-  _automaticContentResize() {
-    LOGGER.trace("_automaticContentResize | CPRContainerSheet | Called.");
-    if (this.form !== null) {
-      const newHeight = this.position.height - 46;
-      this.form.children[0].children[1].setAttribute("style", `height:${newHeight}px`);
-    }
   }
 
   /**
