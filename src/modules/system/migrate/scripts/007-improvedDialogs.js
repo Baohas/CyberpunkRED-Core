@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* global game duplicate */
+/* global game duplicate fromUuidSync */
 /* eslint-disable foundry-cpr/logger-after-function-definition */
 
 import CPRMigration from "../cpr-migration.js";
@@ -106,34 +106,76 @@ export default class ImprovedDialogMigration extends CPRMigration {
 
     const deleteItems = [];
     const remappedItems = {};
+    const containerItems = [];
 
     for (const ownedItem of ownedItems) {
       // We cannot add AEs to owned items, that's a Foundry limitation. If an owned item might get an AE
       // as a result of this migration, we must make an unowned copy first, and then copy that back to
       // the actor. Not all item types require this, and skills/core cyberware are filtered out earlier.
-      let newItem = ownedItem;
+      let newWorldItem = ownedItem;
       if (ownedItem.effects.size > 0) {
-        newItem = await CPRMigration.backupOwnedItem(ownedItem);
+        newWorldItem = await CPRMigration.backupOwnedItem(ownedItem);
       }
       try {
-        await ImprovedDialogMigration.migrateItem(newItem);
+        await ImprovedDialogMigration.migrateItem(newWorldItem);
       } catch (err) {
         throw new Error(`${ownedItem.name} (${ownedItem._id}) had a migration error: ${err.message}`);
       }
+      let newOwnedItem = newWorldItem;
       if (ownedItem.effects.size > 0) {
-        const newData = duplicate(newItem.data);
-        const createdItem = await actor.createEmbeddedDocuments("Item", [newData], { isMigrating: true });
-        remappedItems[ownedItem._id] = createdItem[0]._id;
+        const newData = duplicate(newWorldItem);
+        [newOwnedItem] = await actor.createEmbeddedDocuments("Item", [newData], { isMigrating: true });
+        remappedItems[ownedItem._id] = newOwnedItem._id;
+        remappedItems[ownedItem.uuid] = newOwnedItem.uuid;
         // It may seem silly to update right before we delete, but we do the following to avoid some messiness.
         // Because we override preDelete in cpr-item.js, and our override queries system.isInstalled,
         // we set system.isInstalled to false because we do not want it to pass into the if statement on line 160 of cpr-item.js.
         // That block is only relevant to owned items, and causes errors if it is performed on non-owned items.
         // TODO: This may be a bit of a workaround and so i will talk with Darin about proper fixes (he wrote the relevant functions).
-        await newItem.update({ "system.isInstalled": false });
-        await newItem.delete();
+        await newWorldItem.update({ "system.isInstalled": false });
+        await newWorldItem.delete();
         deleteItems.push(ownedItem._id);
       }
+      if (ownedItem.system.installedItems?.list.length > 0) {
+        containerItems.push(newOwnedItem);
+      }
     }
+
+    containerItems.forEach(async (container) => {
+      const installedItems = [];
+      const uninstalledItems = [];
+      const installedPrograms = [];
+      const uninstalledPrograms = [];
+      container.system.installedItems.list.forEach(async (entry) => {
+        const installedItem = fromUuidSync(remappedItems[entry]);
+        const uninstalledItem = fromUuidSync(entry);
+        installedItems.push(installedItem);
+        uninstalledItems.push(uninstalledItem);
+        if (container.type === "cyberdeck" && installedItem.type === "program") {
+          installedPrograms.push(installedItem);
+          uninstalledPrograms.push(uninstalledItem);
+          if (uninstalledItem.system.isRezzed) {
+            container.derezProgram(uninstalledItem);
+          }
+          const allowedTypeList = container.system.installedItems.allowedTypes;
+          if (!allowedTypeList.includes("program")) {
+            allowedTypeList.push("program");
+            await container.update({ "system.installedItems.allowedTypes": allowedTypeList });
+          }
+        }
+      });
+      if (container.type === "cyberdeck") {
+        // await container.update({ "system.programs.installed": [] });
+        container.uninstallPrograms(uninstalledPrograms);
+        container.installPrograms(installedPrograms);
+        installedPrograms.forEach((p) => {
+          if (p.system.isRezzed) container.rezProgram(p);
+        });
+      }
+      // await container.update({ "system.installedItems.list": [] });
+      await container.uninstallItems(uninstalledItems);
+      await container.installItems(installedItems);
+    });
 
     // delete all of the owned items we have replaced with items that have AEs
     const deleteList = [];
