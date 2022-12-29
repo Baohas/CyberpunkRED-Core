@@ -23,7 +23,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     LOGGER.trace("defaultOptions | CPRBlackIceActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-black-ice-sheet.hbs`,
-      width: "auto",
+      width: 745,
       height: "auto",
       resizable: true,
     });

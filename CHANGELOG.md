@@ -37,6 +37,7 @@
 - #448 - Add the ability to "quick fix" a critical injury - resolved for now by making them all Toggled
 - #611 - default to Body table when rolling critical injuries
 - #633 - uninstall of programs from fight tab is failing
+- Resizing sheets is now handled by Foundry, removing our custom code to manage it.
 
 ### Bug Fixes
 
