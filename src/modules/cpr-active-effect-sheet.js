@@ -1,4 +1,4 @@
-/* global ActiveEffectConfig CONST game mergeObject */
+/* global ActiveEffectConfig CONST getProperty game mergeObject */
 /* eslint-env jquery */
 import LOGGER from "./utils/cpr-logger.js";
 
@@ -58,7 +58,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
   }
 
   /**
-   * Dispatcher that does thing to the "changes" array of an Active Effect. There is
+   * Dispatcher that does thing to the "changes" array of an Active Effect. That is
    * where the mods are managed.
    *
    * @callback
@@ -73,9 +73,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       case "add":
         return this._addEffectChange();
       case "delete":
-        // XXX: this is never actually called because deleting a mod means we need to
-        // reorder the flags that come after the deleted mod. The "changes" flag should
-        // really be an array.
         return this._deleteEffectChange(event);
       default:
     }
@@ -83,7 +80,8 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
   }
 
   /**
-   * Handle adding a new change (read: mod) to the changes array.
+   * Handle adding a new change (read: mod) to the changes array. A new
+   * changes is always added to the end of the array, never in the middle.
    *
    * @async
    * @private
@@ -107,19 +105,43 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
   }
 
   /**
-   * Delete a change (read: mod) provided by an active effect.
+   * Delete a change (read: mod) provided by an active effect. If the deleted change is in the
+   * middle of the list, we need to collapse all of the flags beyond it down one "element".
+   * (regenerating from scratch is actually hard because you cannot reverse look up what the
+   * values should be due to AEs and custom skills)
+   *
+   * We play a few games with casting between Number and String to avoid writing migration code.
    *
    * @param {*} event - Mouse click event (someone clicked a trashcan)
    * @returns - whether re-rendering the sheet was successful
    */
   async _deleteEffectChange(event) {
     LOGGER.trace("_deleteEffectChange | CPRActiveEffectSheet | Called.");
-    const button = event.currentTarget;
-    const effect = this.object;
-    button.closest(".effect-change").remove();
-    // remove the Flag tracking the key category
-    // XXX: this doesn't work well if a mod in the middle of the list is deleted
-    effect.unsetFlag(game.system.id, `changes.${button.dataset.index}`);
+    const modnum = parseInt(event.currentTarget.dataset.index, 10);
+    // First, delete the change itself in the AE
+    const { changes } = this.object;
+    changes.splice(modnum, 1);
+    // Second, remove the corresponding flag for the deleted change
+    const changeFlags = getProperty(this.object, `flags.${game.system.id}.changes`);
+    const newFlags = {};
+    const flagArray = Object.entries(changeFlags);
+    flagArray.sort(); // explicitly sort to guarantee we iterate in numerical order
+    flagArray.forEach((chg) => {
+      const index = Number(chg[0]);
+      const skill = chg[1];
+      if (index < modnum) {
+        newFlags[String(index)] = skill;
+      // we deliberately skip idx === modnum, that's the deleted change
+      } else if (index > modnum) {
+        newFlags[String(index - 1)] = skill;
+      }
+    });
+    // Finally, update the underlying AE
+    const prop = `flags.${game.system.id}.changes`;
+    await this.object.update({
+      changes,
+      [prop]: newFlags,
+    });
     return this.submit({ preventClose: true }).then(() => this.render());
   }
 
