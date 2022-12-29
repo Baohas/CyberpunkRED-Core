@@ -42,19 +42,19 @@
 
     <!-- Effects Tab -->
     <section class="tab" data-tab="effects">
-        <header class="effect-change effects-header flexrow">
-            <div class="key">{{ localize "EFFECT.ChangeKey" }}</div>
-            <div class="value">{{ localize "EFFECT.ChangeValue" }}</div>
-            <div class="mode">{{ localize "EFFECT.ChangeMode" }}</div>
-            <div class="effect-controls">
-                <a class="effect-change-control" data-action="add"><i class="far fa-plus-square"></i></a>
-            </div>
-        </header>
         <ol class="changes-list">
+            <header class="change-header flexrow">
+                <div class="change-key">{{ localize "EFFECT.ChangeKey" }}</div>
+                <div class="change-value">{{ localize "EFFECT.ChangeValue" }}</div>
+                <div class="change-mode">{{ localize "EFFECT.ChangeMode" }}</div>
+                <div class="effect-controls">
+                    <a class="effect-change-control" data-action="add"><i class="far fa-plus-square"></i></a>
+                </div>
+            </header>
             {{#each data.changes as |change i|}}
             {{!-- "this" is now an element in the changes array of the effect --}}
-            <li class="effect-change flexrow">
-                <div class="key" data-index="{{i}}">
+            <li class="flexrow">
+                <div class="change-key" data-index="{{i}}">
                     <span class="form-fields effect-key-category" data-index="{{i}}">
                         <select name="flags.cyberpunk-red-core.changes.{{i}}" data-dtype="String">
                             {{#select (lookup ../data.flags.cyberpunk-red-core.changes i)}}
@@ -94,10 +94,10 @@
                         </select>
                     {{/if}}
                 </div>
-                <div class="value">
+                <div class="change-value">
                     <input type="text" name="changes.{{i}}.value" value="{{change.value}}"/>
                 </div>
-                <div class="mode">
+                <div class="change-mode">
                     {{!-- Using other modes for skills means we need to make changes to actor.bonuses. Rather than 0 all values out, it
                                 needs to persist the existing value, and the mode so the math applies correctly. This has implications
                                 on how to present in the actor sheet too. --}}
@@ -111,14 +111,11 @@
                         </select>
                     {{else}}
                         <input type="hidden" name="changes.{{i}}.mode" data-dtype="Number" value="2">
-                        <span>{{localize "CPR.effectSheet.modifiers.addSubtract"}}</option>
+                        <span>{{localize "CPR.effectSheet.modifiers.addSubtract"}} <i class="fas fa-question-circle" data-tooltip="{{localize "CPR.effectSheet.info.deleteAndModesComing"}}"></i></span>
                     {{/if}}
                 </div>
-                <div class="effect-controls">
-                        <a class="effect-change-control" data-action="delete" data-index={{i}}><i class="fas fa-trash-alt fg-red"></i></a>
-                    {{#unless (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "stat")}}
-                        <i class="fas fa-question-circle" data-tooltip="{{localize "CPR.effectSheet.info.deleteAndModesComing"}}"></i>
-                    {{/unless}}
+                <div class="change-actions">
+                    <a class="effect-change-control" data-action="delete" data-index={{i}}><i class="fas fa-trash-alt fg-red"></i></a>
                 </div>
             </li>
             {{/each}}
