@@ -336,7 +336,7 @@
   "CPR.effectSheet.combat.stats.universalDamage": "Бонус урона",
   "CPR.effectSheet.combat.stats.universalDamageReduction": "Damage Reduction",
   "CPR.effectSheet.combat.stats.walkSpeed": "Скорость шага",
-  "CPR.effectSheet.info.deleteAndModesComing": "Удаление изменений и дополнительные режимы активных эффектов для навыков и боя будут добавлены в будущих версиях",
+  "CPR.effectSheet.info.deleteAndModesComing": "Additional Active Effect modes for skills and combat abilities will be enabled in a future version",
   "CPR.effectSheet.keyCategory.combat": "Бой",
   "CPR.effectSheet.keyCategory.custom": "Свой ключ",
   "CPR.effectSheet.keyCategory.netrun": "Нетраннинг",
