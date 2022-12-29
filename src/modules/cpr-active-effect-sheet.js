@@ -16,8 +16,8 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     LOGGER.trace("defaultOptions | CPRActiveEffectSheet | Called.");
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
-      defaultWidth: "auto",
-      defaultHeight: "auto",
+      width: "auto",
+      height: "auto",
       resizable: true,
     });
   }
