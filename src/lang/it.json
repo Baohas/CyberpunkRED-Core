@@ -336,7 +336,7 @@
   "CPR.effectSheet.combat.stats.universalDamage": "Danno bonus",
   "CPR.effectSheet.combat.stats.universalDamageReduction": "Riduzione del Danno",
   "CPR.effectSheet.combat.stats.walkSpeed": "Velocità Camminare",
-  "CPR.effectSheet.info.deleteAndModesComing": "Eliminare modifiche e ulteriori modalità Effetto Attivo per le abilità e abilità di combattimento saranno possibili in una versione futura",
+  "CPR.effectSheet.info.deleteAndModesComing": "Additional Active Effect modes for skills and combat abilities will be enabled in a future version",
   "CPR.effectSheet.keyCategory.combat": "Combat",
   "CPR.effectSheet.keyCategory.custom": "Tasto Personalizzato",
   "CPR.effectSheet.keyCategory.netrun": "Netrunning",
