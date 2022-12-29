@@ -336,7 +336,7 @@
   "CPR.effectSheet.combat.stats.universalDamage": "Bonus do Obrażeń",
   "CPR.effectSheet.combat.stats.universalDamageReduction": "Redukcja Obrażeń",
   "CPR.effectSheet.combat.stats.walkSpeed": "Prędkość chodu",
-  "CPR.effectSheet.info.deleteAndModesComing": "Usuwanie zmian i dodatkowy tryby Aktywnych Efektów dla umiejętności oraz zdolności bitewnych zostaną włączone w przyszłej wersji",
+  "CPR.effectSheet.info.deleteAndModesComing": "Additional Active Effect modes for skills and combat abilities will be enabled in a future version",
   "CPR.effectSheet.keyCategory.combat": "Walka",
   "CPR.effectSheet.keyCategory.custom": "Własny Klucz",
   "CPR.effectSheet.keyCategory.netrun": "Netrunning",
