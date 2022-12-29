@@ -137,7 +137,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       }
     });
     // Finally, update the underlying AE
-    event.currentTarget.closest(".effect-change").remove(); // remove the deleted UI entry
     const prop = `flags.${game.system.id}.changes`;
     await this.object.update({
       changes,
@@ -151,43 +150,5 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     const data = super.getData();
     data.effectParent = this.document.getEffectParent();
     return data;
-  }
-
-  /**
-   * Automatically resize the actor sheet to dimensions that will fit all revealed elements, assuming the
-   * user has this set to happen in their settings. (copied from the CPRActor sheet)
-   *
-   * @private
-   */
-  _automaticResize() {
-    LOGGER.trace("_automaticResize | CPRActiveEffectSheet | Called.");
-    const setting = game.settings.get(game.system.id, "automaticallyResizeSheets");
-    if (setting && this.rendered && !this._minimized) {
-      // It seems that the size of the content does not change immediately upon updating the content
-      setTimeout(() => {
-        // Make sheet small, so this.form.offsetHeight does not include whitespace
-        this.setPosition({ width: this.position.width, height: 35 });
-        // 30px for the header and 8px top margin 8px bottom margin
-        this.setPosition({ width: this.position.width, height: this.form.offsetHeight + 46 });
-      }, 10);
-    }
-  }
-
-  /**
-   * We extend ActorSheet._render to enable automatic window resizing.
-   * Only resize the sheet with default size, as render option is called on several differnt update events.
-   * Should one still desire resizing the sheet afterwards, please call _automaticResize explicitly.
-   *
-   * @override
-   * @private
-   * @param {Boolean} force - for this to be rendered. We don't use this, but the parent class does.
-   * @param {Object} options - rendering options that are passed up the chain to the parent
-   */
-  async _render(force = false, options = {}) {
-    LOGGER.trace("_render | CPRActiveEffectSheet | Called.");
-    await super._render(force, options);
-    if (this.position.width === this.options.defaultWidth && this.position.height === this.options.defaultHeight) {
-      this._automaticResize();
-    }
   }
 }
