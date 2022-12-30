@@ -18,7 +18,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       template: `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
       width: "auto",
       height: "auto",
-      resizable: true,
     });
   }
 

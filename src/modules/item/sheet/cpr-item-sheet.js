@@ -28,7 +28,6 @@ export default class CPRItemSheet extends ItemSheet {
       tabs: [{ navSelector: ".navtabs-item", contentSelector: ".item-bottom-content-section", initial: "item-description" }],
       width: "auto",
       height: "auto",
-      resizable: true,
     });
   }
 
