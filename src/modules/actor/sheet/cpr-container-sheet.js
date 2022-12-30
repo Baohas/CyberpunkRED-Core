@@ -17,7 +17,7 @@ import PurchaseOrderPrompt from "../../dialog/cpr-container-vendor-purchase-orde
  */
 export default class CPRContainerActorSheet extends CPRActorSheet {
   /**
-   * Set the template, width and height of the window.
+   * See https://foundryvtt.com/api/Application.html for the complete list of options available.
    *
    * @override
    * @returns - sheet options merged with default options in ActorSheet

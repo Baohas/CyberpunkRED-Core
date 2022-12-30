@@ -38,8 +38,7 @@ export default class CPRActorSheet extends ActorSheet {
   }
 
   /**
-   * Set the default width and height so auto-resizing of the window works. Child classes will
-   * merge additional default options with this object. The scrollY option identifies elements where the
+   * The scrollY option identifies elements where the
    * vertical position should be preserved during a re-render.
    *
    * See https://foundryvtt.com/api/Application.html for the complete list of options available.
@@ -51,10 +50,9 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("defaultOptions | CPRActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
       classes: super.defaultOptions.classes.concat(["sheet", "actor"]),
+      scrollY: [".right-content-section", ".top-pane-gear"],
       width: "auto",
       height: "auto",
-      scrollY: [".right-content-section", ".top-pane-gear"],
-      resizable: true,
     });
   }
 
