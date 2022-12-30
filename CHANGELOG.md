@@ -37,6 +37,8 @@
 - #448 - Add the ability to "quick fix" a critical injury - resolved for now by making them all Toggled
 - #611 - default to Body table when rolling critical injuries
 - #633 - uninstall of programs from fight tab is failing
+- Updated the design of the character Effects tab
+- Updated the design of the Effect tab in the active effects sheet
 
 ### Bug Fixes
 
