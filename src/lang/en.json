@@ -158,7 +158,7 @@
   "CPR.chat.whisper": "Whisper",
   "CPR.combatUtils.noCombatSelected": "No combat encounter selected!",
   "CPR.combatUtils.noCombatantsFound": "No combatants found in current combat encounter!",
-  "CPR.combatUtils.nobodyRolledInitiative": "No previously rolled initiatives, setting Black-ICE to 30",
+  "CPR.combatUtils.nobodyRolledInitiative": "No previously rolled initiatives to compare against, so starting at 30 (+ mods).",
   "CPR.containerSheet.action.purchaseItemAll": "Purchase all Items",
   "CPR.containerSheet.action.purchaseItemPart": "Purchase some Items",
   "CPR.containerSheet.action.takeItemAll": "Take all Items",

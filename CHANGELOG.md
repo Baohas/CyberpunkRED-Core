@@ -53,6 +53,7 @@
 - #602 - Items not stacking vendors
 - #652 - Damage icon missing from Black Ice Sheet:
 - Black-ICE can be renamed again
+- #632 - Black Ice and Daemons cannot roll initiative
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
