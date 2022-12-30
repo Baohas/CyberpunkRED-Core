@@ -323,7 +323,6 @@
   "CPR.effectSheet.actions": "Actions",
   "CPR.effectSheet.createMod": "Create Mod",
   "CPR.effectSheet.createModDesc": "Create a Modifier for this Active Effect",
-  "CPR.effectSheet.effects.createEffectDesc": "Add an effect to this item",
   "CPR.effectSheet.combat.stats.aimedShot": "Aimed Shot",
   "CPR.effectSheet.combat.stats.autofire": "Autofire",
   "CPR.effectSheet.combat.stats.deathPenalty": "Death Penalty",
