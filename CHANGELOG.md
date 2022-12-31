@@ -21,7 +21,8 @@
     - Hovering over an item which has items installed in it will display a tool-tip with what is installed.
   - Attempting to delete a World Item installed in another World Item will result in a dialog preventing the deletion and telling you where that item is installed.
 - #442 - Implement a "Smart Snort" feature for drugs which will auto-activate only specific effects when consumed.
-- #412 - Duplicate AEs in the Item Sheet (and Actor sheet)
+- #412 - Duplicate Active Effects in the Item Sheet (and Actor sheet)
+- #655 - Enable deleting changes in an Active Effect
 
 ### Changes
 
@@ -36,6 +37,8 @@
 - #448 - Add the ability to "quick fix" a critical injury - resolved for now by making them all Toggled
 - #611 - default to Body table when rolling critical injuries
 - #633 - uninstall of programs from fight tab is failing
+- Updated the design of the character Effects tab
+- Updated the design of the Effect tab in the active effects sheet
 
 ### Bug Fixes
 
@@ -52,6 +55,7 @@
 - #602 - Items not stacking vendors
 - #652 - Damage icon missing from Black Ice Sheet:
 - Black-ICE can be renamed again
+- #632 - Black Ice and Daemons cannot roll initiative
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
