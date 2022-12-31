@@ -175,6 +175,7 @@ export default class CPRMigration {
       try {
         return await classRef.migrateItem(item);
       } catch (err) {
+        LOGGER.error(err);
         throw new Error(`${this.name}: ${item.name} had a migration error: ${err.message}`);
       }
     });
@@ -207,6 +208,7 @@ export default class CPRMigration {
       try {
         return await this.migrateActor(actor);
       } catch (err) {
+        LOGGER.error(err);
         throw new Error(`${this.name}: ${actor.name} had a migration error: ${err.message}`);
       }
     });
@@ -238,6 +240,7 @@ export default class CPRMigration {
       try {
         return await this.migrateScene(scene);
       } catch (err) {
+        LOGGER.error(err);
         throw new Error(`${this.name}: ${scene.name} had a migration error: ${err.message}`);
       }
     });
@@ -274,6 +277,7 @@ export default class CPRMigration {
       try {
         return await this.migrateActor(token.actor);
       } catch (err) {
+        LOGGER.error(err);
         throw new Error(`${this.name}: ${token.actor.name} token had a migration error: ${err.message}`);
       }
     });
