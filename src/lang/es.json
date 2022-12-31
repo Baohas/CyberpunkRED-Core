@@ -158,7 +158,7 @@
   "CPR.chat.whisper": "Susurrar",
   "CPR.combatUtils.noCombatSelected": "¡Ningún encuentro de combate seleccionado!",
   "CPR.combatUtils.noCombatantsFound": "¡No se ha encontrado ningún combatiente en el encuentro de combate actual!",
-  "CPR.combatUtils.nobodyRolledInitiative": "No hay iniciativas lanzadas previamente, estableciendo Hielo Negro a 30",
+  "CPR.combatUtils.nobodyRolledInitiative": "No previously rolled initiatives to compare against, so starting at 30 (+ mods).",
   "CPR.containerSheet.action.purchaseItemAll": "Comprar todos los artículos",
   "CPR.containerSheet.action.purchaseItemPart": "Compra algunos artículos",
   "CPR.containerSheet.action.takeItemAll": "Tomar todos los artículos",
