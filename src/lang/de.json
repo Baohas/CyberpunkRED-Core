@@ -158,7 +158,7 @@
   "CPR.chat.whisper": "Flüstern",
   "CPR.combatUtils.noCombatSelected": "Keine Kampfbegegnung ausgewählt!",
   "CPR.combatUtils.noCombatantsFound": "Keine Kämpfer in der aktuellen Kampfbegegnung gefunden!",
-  "CPR.combatUtils.nobodyRolledInitiative": "Keine zuvor gerollten Initiativen, setze Schwarzes-ICE auf 30",
+  "CPR.combatUtils.nobodyRolledInitiative": "No previously rolled initiatives to compare against, so starting at 30 (+ mods).",
   "CPR.containerSheet.action.purchaseItemAll": "Alle Gegenstände kaufen",
   "CPR.containerSheet.action.purchaseItemPart": "Einige Gegenstände kaufen",
   "CPR.containerSheet.action.takeItemAll": "Alle Gegenstände nehmen",
