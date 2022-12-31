@@ -910,6 +910,7 @@
   "CPR.migration.status.itemErrors": "Errors during Item migration, aborting",
   "CPR.migration.status.items": "Items",
   "CPR.migration.status.migrationsComplete": "Migrations complete!",
+  "CPR.migration.status.migrationsFailed": "Migrations failed! Check console for errors!",
   "CPR.migration.status.scenes": "Scenes",
   "CPR.migration.status.start": "Migration running. Migrating",
   "CPR.migration.status.tokenErrors": "Errors during Token migration, aborting",
