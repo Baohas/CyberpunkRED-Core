@@ -2,6 +2,7 @@
 {{!-- taken from Foundry code in resources/app/templates/sheets/active-effect-config.html --}}
 {{!-- We are assuming this sheet is never shown for effects on owned items, since they cannot be changed --}}
 <form>
+<div class="active-effects-sheet">
     <!-- Effect Header -->
     <header class="sheet-header">
         <img class="effect-icon" src="{{effect.icon}}" data-edit="icon">
@@ -130,5 +131,6 @@
     <footer class="sheet-footer">
         <button type="submit"><i class="fas fa-save"></i> {{localize submitText}}</button>
     </footer>
+</div>
 </form>
 {{cprTrace "END CPR-ACTIVE-EFFECT-SHEET.HBS"}}

@@ -1,4 +1,4 @@
-/* global game mergeObject, $, duplicate */
+/* global game $, duplicate */
 import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
 import CPRActorSheet from "./cpr-actor-sheet.js";
 import ModMookSkillPrompt from "../../dialog/cpr-mod-mook-skill-prompt.js";
@@ -17,23 +17,6 @@ import MookNamePrompt from "../../dialog/cpr-mook-name-prompt.js";
  */
 export default class CPRMookActorSheet extends CPRActorSheet {
   /**
-   * getter that controls the sheet sizing
-   *
-   * @override
-   */
-  static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRMookActorSheet | Called.");
-    const defaultWidth = 750;
-    const defaultHeight = 500;
-    return mergeObject(super.defaultOptions, {
-      defaultWidth,
-      defaultHeight,
-      width: defaultWidth,
-      height: defaultHeight,
-    });
-  }
-
-  /**
    * Mooks have a separate template when a user only has a "limited" permission level for it.
    * This is how details are obscured from those players, we simply do not render them.
    * Yes, they can still find this information in game.actors and the Foundry development
@@ -51,24 +34,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       return `systems/${game.system.id}/templates/actor/mooks/cpr-mook-sheet-limited.hbs`;
     }
     return `systems/${game.system.id}/templates/actor/mooks/cpr-mook-sheet.hbs`;
-  }
-
-  /**
-   * We extend CPRActorSheet._render to handle the different height/width of the limited vs. full template.
-   * Automatic resizing is not called here, since the parent does that already.
-   *
-   * @override
-   * @private
-   * @param {Boolean} force - for this to be rendered. We don't use this, but the parent class does.
-   * @param {Object} options - rendering options that are passed up the chain to the parent
-   */
-  async _render(force = false, options = {}) {
-    LOGGER.trace("_render | CPRMookActorSheet | Called.");
-    if (!game.user.isGM && this.actor.limited) {
-      await super._render(force, mergeObject(options, { width: 670, height: 210 }));
-    } else {
-      await super._render(force, options);
-    }
   }
 
   /**

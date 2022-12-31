@@ -26,23 +26,9 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("defaultOptions | CPRItemSheet | Called.");
     return mergeObject(super.defaultOptions, {
       tabs: [{ navSelector: ".navtabs-item", contentSelector: ".item-bottom-content-section", initial: "item-description" }],
-      width: 610,
-      height: 450,
+      width: "auto",
+      height: "auto",
     });
-  }
-
-  async _render(force = false, options = {}) {
-    LOGGER.trace("_render | CPRItemSheet | Called.");
-
-    await super._render(force, options);
-    if (!Object.keys(options).some((k) => ((k === "action") && (options[k] === "update")))) {
-      // In case of updating a value on an item sheet the resizing should not happen.
-      // If a value is updated the _render function is called with options = { action: "update" }
-      // Should one still desire resizing the sheet afterwards, please call _automaticResize explicitly.
-      // Additionally if one item owned by an actor is updated, all items, which were opened before
-      // are called with options = { action: "update" }.
-      this._automaticResize();
-    }
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -156,9 +142,6 @@ export default class CPRItemSheet extends ItemSheet {
     // Active Effects listener
     html.find(".effect-control").click((event) => this.item.manageEffects(event));
 
-    // Sheet resizing
-    html.find(".tab-label").click(() => this._automaticResize());
-
     // Change things when the "usage" for active effects changes
     html.find(".set-usage").change((event) => this._setUsage(event));
 
@@ -181,7 +164,6 @@ export default class CPRItemSheet extends ItemSheet {
       setProperty(cprItem, target, value);
       this.item.update(cprItem);
       LOGGER.log(`Item ${this.item.id} ${target} set to ${value}`);
-      this._automaticResize(); // Resize the sheet as length of settings list might have changed
     }
   }
 
@@ -200,7 +182,6 @@ export default class CPRItemSheet extends ItemSheet {
       }
       setProperty(cprItem, target, prop);
       this.item.update(cprItem);
-      this._automaticResize(); // Resize the sheet as length of settings list might have changed
     }
   }
 
@@ -214,7 +195,6 @@ export default class CPRItemSheet extends ItemSheet {
     }
     if (formData.selectedAmmo) {
       await this.item.setCompatibleAmmo(formData.selectedAmmo);
-      this._automaticResize(); // Resize the sheet as length of ammo list might have changed
     }
   }
 
@@ -249,7 +229,6 @@ export default class CPRItemSheet extends ItemSheet {
         "data.universalBonuses": universalBonusesList,
         "data.bonusRatio": bonusRatio,
       });
-      this._automaticResize(); // Resize the sheet as length of ammo list might have changed
     }
   }
 
@@ -290,18 +269,6 @@ export default class CPRItemSheet extends ItemSheet {
       if (this.actor) {
         await this.actor.updateEmbeddedDocuments("Item", [{ _id: this.item.id, system: cprItemData }]);
       }
-    }
-  }
-
-  _automaticResize() {
-    LOGGER.trace("_automaticResize | CPRItemSheet | Called.");
-    const setting = game.settings.get(game.system.id, "automaticallyResizeSheets");
-    if (setting && this.rendered && !this._minimized) {
-      // It seems that the size of the content does not change immediately upon updating the content
-      setTimeout(() => {
-        this.setPosition({ width: this.position.width, height: 35 }); // Make sheet small, so this.form.offsetHeight does not include whitespace
-        this.setPosition({ width: this.position.width, height: this.form.offsetHeight + 46 }); // 30px for the header and 8px top margin 8px bottom margin
-      }, 10);
     }
   }
 
@@ -418,7 +385,6 @@ export default class CPRItemSheet extends ItemSheet {
     const cprItemData = duplicate(this.item.system);
     setProperty(cprItemData, "floors", prop);
     this.item.update({ system: cprItemData });
-    this._automaticResize(); // Resize the sheet as length of settings list might have changed
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -470,7 +436,6 @@ export default class CPRItemSheet extends ItemSheet {
         prop.splice(prop.indexOf(deleteElement), 1);
         setProperty(cprItemData, "floors", prop);
         this.item.update({ system: cprItemData });
-        this._automaticResize(); // Resize the sheet as length of settings list might have changed
       }
     }
 
@@ -563,7 +528,6 @@ export default class CPRItemSheet extends ItemSheet {
         });
         setProperty(cprItemData, "floors", prop);
         this.item.update({ system: cprItemData });
-        this._automaticResize(); // Resize the sheet as length of settings list might have changed
       } else {
         const prop = [{
           index: 0,
@@ -576,7 +540,6 @@ export default class CPRItemSheet extends ItemSheet {
         }];
         setProperty(cprItemData, "floors", prop);
         this.item.update({ system: cprItemData });
-        this._automaticResize(); // Resize the sheet as length of settings list might have changed
       }
     }
 
@@ -634,7 +597,6 @@ export default class CPRItemSheet extends ItemSheet {
         });
         setProperty(cprItemData, "floors", prop);
         this.item.update({ system: cprItemData });
-        this._automaticResize(); // Resize the sheet as length of settings list might have changed
       }
     }
   }
@@ -772,7 +734,6 @@ export default class CPRItemSheet extends ItemSheet {
         });
         setProperty(cprItemData, "abilities", prop);
         this.item.update({ system: cprItemData });
-        this._automaticResize(); // Resize the sheet as length of settings list might have changed
       } else {
         const prop = [{
           index: 0,
@@ -788,7 +749,6 @@ export default class CPRItemSheet extends ItemSheet {
         }];
         setProperty(cprItemData, "abilities", prop);
         this.item.update({ system: cprItemData });
-        this._automaticResize(); // Resize the sheet as length of settings list might have changed
       }
     }
 
@@ -811,7 +771,6 @@ export default class CPRItemSheet extends ItemSheet {
         prop.splice(prop.indexOf(deleteElement), 1);
         setProperty(cprItemData, "abilities", prop);
         this.item.update({ system: cprItemData });
-        this._automaticResize(); // Resize the sheet as length of settings list might have changed
       }
     }
 
@@ -855,7 +814,6 @@ export default class CPRItemSheet extends ItemSheet {
         });
         setProperty(cprItemData, "abilities", prop);
         this.item.update({ system: cprItemData });
-        this._automaticResize(); // Resize the sheet as length of settings list might have changed
       }
     }
   }

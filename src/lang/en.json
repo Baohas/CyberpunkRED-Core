@@ -1008,8 +1008,6 @@
   "CPR.rolls.suppressiveFire": "Suppressive Fire",
   "CPR.rolls.tellThemToSayHello": "Tell them to say hello to your little friend",
   "CPR.rolls.total": "Total",
-  "CPR.settings.automaticallyResizeSheets.hint": "Automatically resize actor and item sheets depending on the content.",
-  "CPR.settings.automaticallyResizeSheets.name": "Automatically resize sheets",
   "CPR.settings.compendiumMenu.button": "Configure Compendia",
   "CPR.settings.compendiumMenu.desc": "Using your own compendia for system automations requires that they use specific naming and structure. Click the question marks to see the documentation.",
   "CPR.settings.compendiumMenu.hint": "Choose compendia the system will use for various automations like critical injuries and generating net architectures.",
