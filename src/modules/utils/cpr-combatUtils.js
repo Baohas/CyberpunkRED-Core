@@ -13,7 +13,7 @@ export default class CPRCombatUtils {
       SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.combatUtils.noCombatSelected"));
       return null;
     }
-    const { combatants } = combat.combatants;
+    const { combatants } = combat;
     if (combatants.length === 0) {
       // a combat encounter is viewed but devoid of combatants
       SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.combatUtils.noCombatantsFound"));

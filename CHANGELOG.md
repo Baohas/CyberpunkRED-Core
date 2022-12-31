@@ -38,6 +38,8 @@
 - #611 - default to Body table when rolling critical injuries
 - #633 - uninstall of programs from fight tab is failing
 - Resizing sheets is now handled by Foundry, removing our custom code to manage it.
+- Updated the design of the character Effects tab
+- Updated the design of the Effect tab in the active effects sheet
 
 ### Bug Fixes
 
@@ -54,6 +56,7 @@
 - #602 - Items not stacking vendors
 - #652 - Damage icon missing from Black Ice Sheet:
 - Black-ICE can be renamed again
+- #632 - Black Ice and Daemons cannot roll initiative
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 

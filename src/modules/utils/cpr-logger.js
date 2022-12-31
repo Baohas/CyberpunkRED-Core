@@ -32,7 +32,11 @@ export default class LOGGER {
   }
 
   static error(msg) {
-    console.error(`CPR ERR | ${msg}`);
+    if (typeof msg === "object") {
+      console.error(msg);
+    } else {
+      console.error(`CPR ERR | ${msg}`);
+    }
   }
 
   static credits() {

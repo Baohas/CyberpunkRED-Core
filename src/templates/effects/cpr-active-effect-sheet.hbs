@@ -45,19 +45,17 @@
     <section class="tab" data-tab="effects">
         <ol class="changes-list">
             <header class="change-header flexrow">
-                <div class="change-key">{{ localize "EFFECT.ChangeKey" }}</div>
-                <div class="change-value">{{ localize "EFFECT.ChangeValue" }}</div>
-                <div class="change-mode">{{ localize "EFFECT.ChangeMode" }}</div>
-                <div class="effect-controls">
-                    <a class="effect-change-control" data-action="add"><i class="far fa-plus-square"></i></a>
-                </div>
+                <div class="change-key bg-black">{{ localize "EFFECT.ChangeKey" }}</div>
+                <div class="change-value bg-black">{{ localize "EFFECT.ChangeValue" }}</div>
+                <div class="change-mode bg-black">{{ localize "EFFECT.ChangeMode" }}</div>
+                <div class="effect-controls bg-black"> {{ localize "CPR.effectSheet.actions" }}</div>
             </header>
             {{#each data.changes as |change i|}}
             {{!-- "this" is now an element in the changes array of the effect --}}
             <li class="flexrow">
                 <div class="change-key" data-index="{{i}}">
                     <span class="form-fields effect-key-category" data-index="{{i}}">
-                        <select name="flags.cyberpunk-red-core.changes.{{i}}" data-dtype="String">
+                        <select class="key-cat" name="flags.cyberpunk-red-core.changes.{{i}}" data-dtype="String">
                             {{#select (lookup ../data.flags.cyberpunk-red-core.changes i)}}
                                 {{#each (cprFindConfigObj "activeEffectKeys" ) as |effectCategory ec|}}
                                 {{!-- Dynamically create the various effect keys. Added here to pass language pipeline:
@@ -74,10 +72,10 @@
                         </select>
                     </span>
                     {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "custom")}}
-                        <input type="text" name="changes.{{i}}.key" value="{{change.key}}"/>
+                        <input class="key-input" type="text" name="changes.{{i}}.key" value="{{change.key}}"/>
                     {{/if}}
                     {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "skill")}}
-                        <select name="changes.{{i}}.key" data-dtype="String">
+                        <select class="key-key" name="changes.{{i}}.key" data-dtype="String">
                             {{#select change.key}}
                                     {{#each (cprGetSkillsForEffects ../this) as |modkeyname modkey|}}
                                         <option value="{{modkey}}">{{localize modkeyname}}</option>
@@ -86,7 +84,7 @@
                             </select>
                     {{/if}}
                     {{#if (cprListContains "combat,netrun,role,stat" (lookup ../data.flags.cyberpunk-red-core.changes i))}}
-                        <select name="changes.{{i}}.key" data-dtype="String">
+                        <select class="key-key" name="changes.{{i}}.key" data-dtype="String">
                             {{#select change.key}}
                                 {{#each (cprFindConfigValue "activeEffectKeys" (lookup ../data.flags.cyberpunk-red-core.changes i)) as |modkeyname modkey|}}
                                     <option value="{{modkey}}">{{localize modkeyname}}</option>
@@ -121,6 +119,13 @@
             </li>
             {{/each}}
         </ol>
+        <br>
+        <div class="item-controls effect-controls">
+            <a class="effect-change-control" data-action="add" data-tooltip="{{localize "CPR.effectSheet.createModDesc"}}">
+                <i class="far fa-plus-square"></i> {{localize "CPR.effectSheet.createMod"}}
+            </a>
+        </div>
+        <br>
     </section>
 
     <footer class="sheet-footer">
