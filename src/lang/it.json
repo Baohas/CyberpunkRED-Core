@@ -158,7 +158,7 @@
   "CPR.chat.whisper": "Privato",
   "CPR.combatUtils.noCombatSelected": "Nessun incontro di combattimento selezionato!",
   "CPR.combatUtils.noCombatantsFound": "Nessun combattente trovato nell'incontro di combattimento corrente!",
-  "CPR.combatUtils.nobodyRolledInitiative": "Nessuna iniziativa precedentemente tirata, Black-ICE settato a 30",
+  "CPR.combatUtils.nobodyRolledInitiative": "No previously rolled initiatives to compare against, so starting at 30 (+ mods).",
   "CPR.containerSheet.action.purchaseItemAll": "Acquista tutti gli oggetti",
   "CPR.containerSheet.action.purchaseItemPart": "Acquista alcuni oggetti",
   "CPR.containerSheet.action.takeItemAll": "Prendi tutti gli oggetti",
