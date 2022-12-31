@@ -158,7 +158,7 @@
   "CPR.chat.whisper": "Шёпот",
   "CPR.combatUtils.noCombatSelected": "Сражение не выбрано!",
   "CPR.combatUtils.noCombatantsFound": "Нет участников в текущем сражении!",
-  "CPR.combatUtils.nobodyRolledInitiative": "Не было бросков на инициативу, значение Чёрного Льда устанавливается на 30",
+  "CPR.combatUtils.nobodyRolledInitiative": "No previously rolled initiatives to compare against, so starting at 30 (+ mods).",
   "CPR.containerSheet.action.purchaseItemAll": "Купить всё",
   "CPR.containerSheet.action.purchaseItemPart": "Купить часть",
   "CPR.containerSheet.action.takeItemAll": "Взять всё",
