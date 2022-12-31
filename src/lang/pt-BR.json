@@ -158,7 +158,7 @@
   "CPR.chat.whisper": "Sussurro",
   "CPR.combatUtils.noCombatSelected": "Nenhum encontro de combate selecionado!",
   "CPR.combatUtils.noCombatantsFound": "Nenhum combatente encontrado no Encontro de Combate atual!",
-  "CPR.combatUtils.nobodyRolledInitiative": "Sem iniciativas roladas, definindo o Black ICE para 30",
+  "CPR.combatUtils.nobodyRolledInitiative": "No previously rolled initiatives to compare against, so starting at 30 (+ mods).",
   "CPR.containerSheet.action.purchaseItemAll": "Comprar todos os itens",
   "CPR.containerSheet.action.purchaseItemPart": "Comprar alguns itens",
   "CPR.containerSheet.action.takeItemAll": "Pegar todos os itens",
