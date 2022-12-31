@@ -158,7 +158,7 @@
   "CPR.chat.whisper": "Szept",
   "CPR.combatUtils.noCombatSelected": "Nie wybrano żadnej walki!",
   "CPR.combatUtils.noCombatantsFound": "Nie znaleziono żadnych walczących w obecnej walce!",
-  "CPR.combatUtils.nobodyRolledInitiative": "Brak wylosowanej inicjatywy, ustawiam Czarny LOD na 30",
+  "CPR.combatUtils.nobodyRolledInitiative": "No previously rolled initiatives to compare against, so starting at 30 (+ mods).",
   "CPR.containerSheet.action.purchaseItemAll": "Kup wszystkie przedmioty",
   "CPR.containerSheet.action.purchaseItemPart": "Kup parę przedmiotów",
   "CPR.containerSheet.action.takeItemAll": "Weź wszystkie przedmioty",
