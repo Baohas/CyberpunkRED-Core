@@ -131,6 +131,7 @@ Hooks.once("ready", async () => {
   let dataModelVersion = (game.settings.get(game.system.id, "dataModelVersion")) ? game.settings.get(game.system.id, "dataModelVersion") : "0.0";
 
   if (dataModelVersion === "newCprWorld") {
+    UpdateScreen.RenderPopup();
     await game.settings.set(game.system.id, "dataModelVersion", DATA_MODEL_VERSION);
   } else {
     LOGGER.debug(`Data model before comparison: ${dataModelVersion}`);
@@ -141,11 +142,11 @@ Hooks.once("ready", async () => {
     await MR.migrateWorld(parseInt(dataModelVersion, 10), DATA_MODEL_VERSION);
     if (game.system.version !== game.settings.get(game.system.id, "systemVersion")) {
       UpdateScreen.RenderPopup();
-      game.settings.set(game.system.id, "systemVersion", game.system.version);
     }
     // Ensure load bar is gone
     SystemUtils.fadeMigrationBar();
   }
+  await game.settings.set(game.system.id, "systemVersion", game.system.version);
 });
 
 registerHooks();

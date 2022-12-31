@@ -222,7 +222,7 @@ const registerSystemSettings = () => {
     scope: "world",
     config: true,
     type: String,
-    default: "6",
+    default: "newCprWorld",
     onChange: (value) => {
       LOGGER.log(`Changed dataModelVersion to ${value}`);
     },
