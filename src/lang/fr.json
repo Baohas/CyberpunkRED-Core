@@ -158,7 +158,7 @@
   "CPR.chat.whisper": "Chuchoter",
   "CPR.combatUtils.noCombatSelected": "Aucune rencontre de combat sélectionnée!",
   "CPR.combatUtils.noCombatantsFound": "Aucun combattant trouvé dans la rencontre actuelle !",
-  "CPR.combatUtils.nobodyRolledInitiative": "Aucun jet d'initiative lancée, configuration de GLACE Noir à 30",
+  "CPR.combatUtils.nobodyRolledInitiative": "No previously rolled initiatives to compare against, so starting at 30 (+ mods).",
   "CPR.containerSheet.action.purchaseItemAll": "Acheter tous les objets",
   "CPR.containerSheet.action.purchaseItemPart": "Acheter des objets",
   "CPR.containerSheet.action.takeItemAll": "Prendre tous les objets",
