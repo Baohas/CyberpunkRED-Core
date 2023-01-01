@@ -108,6 +108,7 @@ export default class ImprovedDialogMigration extends CPRMigration {
     const remappedItems = {};
     const containerItems = [];
     const installedItems = [];
+    const upgradedItems = [];
 
     for (const ownedItem of ownedItems) {
       // We cannot add AEs to owned items, that's a Foundry limitation. If an owned item might get an AE
@@ -128,6 +129,11 @@ export default class ImprovedDialogMigration extends CPRMigration {
         [newOwnedItem] = await actor.createEmbeddedDocuments("Item", [newData], { isMigrating: true });
         remappedItems[ownedItem._id] = newOwnedItem._id;
         remappedItems[ownedItem.uuid] = newOwnedItem.uuid;
+
+        // Remap actor's installed item list.
+        const newList = actor.system.installedItems.list.map((entry) => remappedItems[entry] || entry);
+        // await actor.update({ "system.installedItems.list": newList });
+
         // It may seem silly to update right before we delete, but we do the following to avoid some messiness.
         // Because we override preDelete in cpr-item.js, and our override queries system.isInstalled,
         // we set system.isInstalled to false because we do not want it to pass into the if statement on line 160 of cpr-item.js.
@@ -141,6 +147,11 @@ export default class ImprovedDialogMigration extends CPRMigration {
       // Get all container items, regardless of whether or not they have effects.
       if (ownedItem.system.installedItems?.list.length > 0) {
         containerItems.push(newOwnedItem);
+      }
+
+      // Get all upgraded items, regardless of whether or not they have effects.
+      if (ownedItem.system.upgrades?.length > 0) {
+        upgradedItems.push(newOwnedItem);
       }
 
       // Get all items installed in other items, regardless of whether or not they have effects.
@@ -179,53 +190,23 @@ export default class ImprovedDialogMigration extends CPRMigration {
       await container.update({ system: updateData });
     }
 
+    for (const upgradedItem of upgradedItems) {
+      const oldUpgrades = upgradedItem.system.upgrades;
+      const newUpgrades = [];
+      for (const oldUpgradeData of oldUpgrades) {
+        const newUpgradeData = duplicate(oldUpgradeData);
+        newUpgradeData.uuid = remappedItems[oldUpgradeData.uuid] || oldUpgradeData.uuid;
+        newUpgrades.push(newUpgradeData);
+      }
+      await upgradedItem.update({ "system.upgrades": newUpgrades });
+    }
+
     for (const installedItem of installedItems) {
       // Map the UUID in the old installed item's `installedIn` field to the UUID of the new item it should install into.
       // If the UUID doesn't exist in remappedItems, the item this UUID refers to was not duplicated, and thus should be set back to itself.
       const newUuid = remappedItems[installedItem.system.installedIn] || installedItem.system.installedIn;
       await installedItem.update({ "system.installedIn": newUuid });
     }
-
-    /*     // Get installedItemsList correct
-    containerItems.forEach(async (container) => {
-      const installedItems = [];
-      const uninstalledItems = [];
-      const installedPrograms = [];
-      const uninstalledPrograms = [];
-      const newList = [];
-      container.system.installedItems.list.forEach(async (entry) => {
-        newList.push(remappedItems[entry]);
-        // Do this, then for cyberdecks do programSync and for upgraded items do upgradeSync
-
-        const installedItem = fromUuidSync(remappedItems[entry]);
-        const uninstalledItem = fromUuidSync(entry);
-        installedItems.push(installedItem);
-        uninstalledItems.push(uninstalledItem);
-        if (container.type === "cyberdeck" && installedItem.type === "program") {
-          installedPrograms.push(installedItem);
-          uninstalledPrograms.push(uninstalledItem);
-          if (uninstalledItem.system.isRezzed) {
-            container.derezProgram(uninstalledItem);
-          }
-          const allowedTypeList = container.system.installedItems.allowedTypes;
-          if (!allowedTypeList.includes("program")) {
-            allowedTypeList.push("program");
-            await container.update({ "system.installedItems.allowedTypes": allowedTypeList });
-          }
-        }
-      });
-      if (container.type === "cyberdeck") {
-        // await container.update({ "system.programs.installed": [] });
-        container.uninstallPrograms(uninstalledPrograms);
-        container.installPrograms(installedPrograms);
-        installedPrograms.forEach((p) => {
-          if (p.system.isRezzed) container.rezProgram(p);
-        });
-      }
-      // await container.update({ "system.installedItems.list": [] });
-      await container.uninstallItems(uninstalledItems);
-      await container.installItems(installedItems);
-    }); */
 
     // delete all of the owned items we have replaced with items that have AEs
     const deleteList = [];
@@ -238,13 +219,5 @@ export default class ImprovedDialogMigration extends CPRMigration {
     if (deleteList.length > 0) {
       await actor.deleteEmbeddedDocuments("Item", deleteList);
     }
-
-  /*     const itemUpdates = [];
-    for (const item of actor.items) {
-      // eslint-disable-next-line no-await-in-loop
-      const updateData = await ImprovedDialogMigration.migrateItem(item);
-      if (updateData !== null) itemUpdates.push(updateData);
-    }
-    return actor.updateEmbeddedDocuments("Item", itemUpdates); */
   }
 }
