@@ -409,6 +409,7 @@ export default class CPRMigration {
       LOGGER.error(`Attempting to restore item (${item.name}) however new item creation failed on actor ${actor.name}.`);
       return;
     }
+
     const newOwnedItem = resultArray[0];
     const originalUuid = oldOwnedItem.uuid;
 
@@ -416,6 +417,12 @@ export default class CPRMigration {
     const containerTypes = CPRSystemUtils.GetTemplateItemTypes("container");
     const upgradableTypes = CPRSystemUtils.GetTemplateItemTypes("upgradable");
     const loadableTypes = CPRSystemUtils.GetTemplateItemTypes("loadable");
+
+    if (installableTypes.includes(item.type) && actor.system.installedItems.list.includes(originalUuid)) {
+      const newInstalledItems = actor.system.installedItems.list;
+      newInstalledItems.push(newOwnedItem.uuid);
+      await actor.update({ "system.installedItems.list": newInstalledItems });
+    }
 
     const ownedItems = actor.items.filter((i) => {
       if (containerTypes.includes(i.type) && i.system.installedItems.list.includes(originalUuid)) return true;
@@ -425,6 +432,10 @@ export default class CPRMigration {
     });
 
     const updateList = [];
+
+    if (containerTypes.includes(oldOwnedItem.type)) {
+      updateList.push({ _id: newOwnedItem._id, "system.installedItems": oldOwnedItem.system.installedItems });
+    }
 
     for (const ownedItem of ownedItems) {
       const itemUpdates = {

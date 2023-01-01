@@ -143,27 +143,28 @@ export default class CPRItem extends Item {
    */
   async _preDelete(options, user) {
     LOGGER.trace("_preDelete | CPRItem | Called.");
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    if (containerTypes.includes(this.type)) {
-      if (this.system.installedItems.list.length > 0) {
-        const itemList = [];
-        for (const installedUuid of this.system.installedItems.list) {
-          const item = (this.isOwned && this.actor) ? this.actor.getOwnedItem(installedUuid) : fromUuidSync(installedUuid);
-          if (item) {
-            itemList.push(item);
+    if (!options.cprIsMigrating) {
+      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+      if (containerTypes.includes(this.type)) {
+        if (this.system.installedItems.list.length > 0) {
+          const itemList = [];
+          for (const installedUuid of this.system.installedItems.list) {
+            const item = (this.isOwned && this.actor) ? this.actor.getOwnedItem(installedUuid) : fromUuidSync(installedUuid);
+            if (item) {
+              itemList.push(item);
+            }
           }
+          await this.uninstallItems(itemList, true);
         }
-        await this.uninstallItems(itemList, true);
+      }
+
+      if (typeof this.system.isInstalled === "boolean" && this.system.isInstalled && this.system.installedIn !== "") {
+        const installLocation = (this.isOwned && this.actor) ? this.actor.getOwnedItem(this.system.installedIn) : fromUuidSync(this.system.installedIn);
+        if (installLocation && containerTypes.includes(installLocation.type)) {
+          await installLocation.uninstallItems([this], false);
+        }
       }
     }
-
-    if (typeof this.system.isInstalled === "boolean" && this.system.isInstalled && this.system.installedIn !== "") {
-      const installLocation = (this.isOwned && this.actor) ? this.actor.getOwnedItem(this.system.installedIn) : fromUuidSync(this.system.installedIn);
-      if (installLocation && containerTypes.includes(installLocation.type)) {
-        await installLocation.uninstallItems([this], false);
-      }
-    }
-
     return super._preDelete(options, user);
   }
 

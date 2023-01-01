@@ -124,7 +124,7 @@ export default class ImprovedDialogMigration extends CPRMigration {
     }
 
     if (deleteItems.length > 0) {
-      await actor.deleteEmbeddedDocuments("Item", deleteItems);
+      await actor.deleteEmbeddedDocuments("Item", deleteItems, { cprIsMigrating: true });
     }
   }
 }
