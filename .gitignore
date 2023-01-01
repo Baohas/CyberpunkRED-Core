@@ -1,6 +1,7 @@
 # IDE
 .idea/
 .vscode/
+!.vscode/extensions.json
 node_modules
 **/*.pdf
 **/*.bak
@@ -10,7 +11,9 @@ node_modules
 # MacOS clutter
 **/.DS_Store
 
-!.vscode/extensions.json
+# Local ci
+.gitlab-ci-local/
+vars.env
 
 # Local config
 foundryconfig.json
