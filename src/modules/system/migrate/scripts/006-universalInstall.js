@@ -99,19 +99,19 @@ export default class UniversalInstallMigration extends CPRMigration {
               usedSlots: 0,
               slots: optionalItemSlots,
             };
-            optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "hasOptionalSlots") };
-            optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionSlots") };
-            optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "installedOptionSlots") };
-            optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "optionalIds") };
+            optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "system.hasOptionalSlots") };
+            optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "system.optionSlots") };
+            optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "system.installedOptionSlots") };
+            optionalItemUpdates = { ...optionalItemUpdates, ...CPRMigration.safeDelete(optionalItem, "system.optionalIds") };
             updatedItemList = CPRMigration.addToUpdateList(updatedItemList, optionalItemUpdates);
           }
         }
         itemUpdates.system.installedIn = actor.uuid;
         itemUpdates.system.isInstalled = true;
-        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "hasOptionalSlots") };
-        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "optionSlots") };
-        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "installedOptionSlots") };
-        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "optionalIds") };
+        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "system.hasOptionalSlots") };
+        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "system.optionSlots") };
+        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "system.installedOptionSlots") };
+        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "system.optionalIds") };
       }
 
       if (loadableTypes.includes(item.type) && typeof item.system.magazine.ammoId !== "undefined") {
@@ -132,7 +132,7 @@ export default class UniversalInstallMigration extends CPRMigration {
         ammoId = { name: ammoName, uuid: ammoUuid };
         magazineData.ammoData = ammoId;
         itemUpdates.system.magazine = magazineData;
-        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "magazine.ammoId") };
+        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "system.magazine.ammoId") };
       }
 
       if (upgradableTypes.includes(item.type)) {
@@ -152,7 +152,7 @@ export default class UniversalInstallMigration extends CPRMigration {
           }
           itemUpdates.system.upgrades = newUpgrades;
         }
-        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "slots") };
+        itemUpdates = { ...itemUpdates, ...CPRMigration.safeDelete(item, "system.slots") };
       }
 
       if (item.type === "cyberdeck") {
