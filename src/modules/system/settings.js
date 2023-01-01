@@ -183,18 +183,6 @@ const registerSystemSettings = () => {
     type: CPRCompendiaSettings,
   });
 
-  game.settings.register(game.system.id, "automaticallyResizeSheets", {
-    name: "CPR.settings.automaticallyResizeSheets.name",
-    hint: "CPR.settings.automaticallyResizeSheets.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed automaticallyResizeSheets to ${value}`);
-    },
-  });
-
   game.settings.register(game.system.id, "criticalInitiative", {
     name: "CPR.settings.criticalInitiative.name",
     hint: "CPR.settings.criticalInitiative.hint",
@@ -234,7 +222,7 @@ const registerSystemSettings = () => {
     scope: "world",
     config: true,
     type: String,
-    default: "7",
+    default: "newCprWorld",
     onChange: (value) => {
       LOGGER.log(`Changed dataModelVersion to ${value}`);
     },

@@ -3,15 +3,15 @@
 	"entries": [
 		{
 			"id": "DV Assault Rifle",
-			"name": "DV Assault Rifle"
+			"name": "PT Karabiny szturmowe"
 		},
 		{
 			"id": "DV Assault Rifle (Autofire)",
-			"name": "DV Assault Rifle (Autofire)"
+			"name": "PT Karabiny szturmowe (Ogień ciągły)"
 		},
 		{
 			"id": "DV Bows & Crossbows",
-			"name": "DV Bows & Crossbows"
+			"name": "PT Kusze i łuki"
 		},
 		{
 			"id": "DV Generic",
@@ -19,35 +19,35 @@
 		},
 		{
 			"id": "DV Grenade Launcher",
-			"name": "DV Grenade Launcher"
+			"name": "PT Granatniki"
 		},
 		{
 			"id": "DV Pistol",
-			"name": "DV Pistol"
+			"name": "PT Pistolety"
 		},
 		{
 			"id": "DV Rocket Launcher",
-			"name": "DV Rocket Launcher"
+			"name": "PT Wyrzutnie rakiet"
 		},
 		{
 			"id": "DV Shotgun (Slug)",
-			"name": "DV Shotgun (Slug)"
+			"name": "PT Strzelba (Pocisk)"
 		},
 		{
 			"id": "DV SMG",
-			"name": "DV SMG"
+			"name": "PT PM-y"
 		},
 		{
 			"id": "DV SMG (Autofire)",
-			"name": "DV SMG (Autofire)"
+			"name": "PT PM-y (Ogień ciągły)"
 		},
 		{
 			"id": "DV Sniper Rifle",
-			"name": "DV Sniper Rifle"
+			"name": "PT Karabiny snajperskie"
 		},
 		{
 			"id": "DV Thrown Weapon",
-			"name": "DV Thrown Weapon"
+			"name": "PT Broń rzucana"
 		}
 	]
 }

@@ -39,26 +39,7 @@ export default class CPRActorSheet extends ActorSheet {
   }
 
   /**
-   * We extend ActorSheet._render to enable automatic window resizing.
-   * Only resize the sheet with default size, as render option is called on several differnt update events.
-   * Should one still desire resizing the sheet afterwards, please call _automaticResize explicitly.
-   *
-   * @override
-   * @private
-   * @param {Boolean} force - for this to be rendered. We don't use this, but the parent class does.
-   * @param {Object} options - rendering options that are passed up the chain to the parent
-   */
-  async _render(force = false, options = {}) {
-    LOGGER.trace("_render | CPRActorSheet | Called.");
-    await super._render(force, options);
-    if (this.position.width === this.options.defaultWidth && this.position.height === this.options.defaultHeight) {
-      this._automaticResize();
-    }
-  }
-
-  /**
-   * Set the default width and height so auto-resizing of the window works. Child classes will
-   * merge additional default options with this object. The scrollY option identifies elements where the
+   * The scrollY option identifies elements where the
    * vertical position should be preserved during a re-render.
    *
    * See https://foundryvtt.com/api/Application.html for the complete list of options available.
@@ -68,15 +49,11 @@ export default class CPRActorSheet extends ActorSheet {
    */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRActorSheet | Called.");
-    const defaultWidth = 966;
-    const defaultHeight = 590;
     return mergeObject(super.defaultOptions, {
       classes: super.defaultOptions.classes.concat(["sheet", "actor"]),
-      defaultWidth,
-      defaultHeight,
-      width: defaultWidth,
-      height: defaultHeight,
       scrollY: [".right-content-section", ".top-pane-gear"],
+      width: "auto",
+      height: "auto",
     });
   }
 
@@ -303,11 +280,6 @@ export default class CPRActorSheet extends ActorSheet {
 
     // set/unset "checkboxes" used with fire modes
     html.find(".fire-checkbox").click((event) => this._fireCheckboxToggle(event));
-
-    // Sheet resizing
-    html.find(".tab-label:not(.skills-tab):not(.gear-tab):not(.cyberware-tab)").click(
-      () => this._automaticResize(),
-    );
 
     // Reputation related listeners
     html.find(".reputation-edit-button").click(() => this._updateReputation());
@@ -858,7 +830,6 @@ export default class CPRActorSheet extends ActorSheet {
     const rollTable = await SystemUtils.GetCompendiumDoc(tableSetting, tableName);
     const injuryCompName = SystemUtils.GetCompendiumIdByLabel(tableName);
     this._drawCriticalInjuryTable(rollTable, injuryCompName, 0);
-    this._automaticResize();
   }
 
   /**
@@ -946,26 +917,6 @@ export default class CPRActorSheet extends ActorSheet {
       }
       CPRChat.RenderRollCard(cprRoll);
     });
-  }
-
-  /**
-   * Automatically resize the actor sheet to dimensions that will fit all revealed elements, assuming the
-   * user has this set to happen in their settings.
-   *
-   * @private
-   */
-  _automaticResize() {
-    LOGGER.trace("_automaticResize | CPRActorSheet | Called.");
-    const setting = game.settings.get(game.system.id, "automaticallyResizeSheets");
-    if (setting && this.rendered && !this._minimized) {
-      // It seems that the size of the content does not change immediately upon updating the content
-      setTimeout(() => {
-        // Make sheet small, so this.form.offsetHeight does not include whitespace
-        this.setPosition({ width: this.position.width, height: 35 });
-        // 30px for the header and 8px top margin 8px bottom margin
-        this.setPosition({ width: this.position.width, height: this.form.offsetHeight + 46 });
-      }, 10);
-    }
   }
 
   /**

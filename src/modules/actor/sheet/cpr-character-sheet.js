@@ -178,7 +178,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         break;
       }
     }
-    this._automaticResize();
   }
 
   /**

@@ -8,7 +8,7 @@ import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
  * Implement the Demon sheet, which extends ActorSheet directly from Foundry. This does
  * not extend CPRActor, as there is very little overlap between Demons and mooks/characters.
  *
- * @extends {CPRActorSheet}
+ * @extends {ActorSheet}
  */
 export default class CPRDemonActorSheet extends ActorSheet {
   /** @override */
@@ -16,8 +16,8 @@ export default class CPRDemonActorSheet extends ActorSheet {
     LOGGER.trace("defaultOptions | CPRDemonActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-demon-sheet.hbs`,
-      width: 630,
-      height: 205,
+      width: "auto",
+      height: "auto",
     });
   }
 

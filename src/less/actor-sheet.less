@@ -73,6 +73,7 @@
     .right-pane {
         grid-area: pane-right;
 
+        width: auto;
         display              : grid;
         grid-template-columns: auto;
         grid-template-rows   : auto auto;
@@ -80,7 +81,7 @@
             "tabs-right"
             "content-right"
             "sheet-filter";
-        //max-height: 425px;
+
 
         .right-tabs-section {
 
@@ -93,8 +94,8 @@
         .right-content-section {
             grid-area: content-right;
             display  : flex;
-            height   : 454px;
             width    : 100%;
+            height   : 454px;
 
             border-color: @wyrm-red;
             border-style: solid;
@@ -186,6 +187,7 @@
         grid-area       : gear-top;
         overflow-y      : scroll;
         background-color: @chrome-white;
+        scrollbar-width: thin;
     }
 
     .bottom-pane-gear {

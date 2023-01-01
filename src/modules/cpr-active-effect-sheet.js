@@ -15,14 +15,10 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRActiveEffectSheet | Called.");
-    const defaultWidth = 800;
-    const defaultHeight = 280;
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
-      defaultWidth,
-      defaultHeight,
-      width: defaultWidth,
-      height: defaultHeight,
+      width: "auto",
+      height: "auto",
       // Submit on close to prevent an edge case where a user adds and active effect, but doesn't change anything.
       // If they closed the dialog (without submitting) then there was just a blank AE on their sheet. This setting prevents that.
       submitOnClose: true,
