@@ -403,8 +403,14 @@ export default class CPRMigration {
     }
 
     const actor = fromUuidSync(originalData.actor);
-    const newOwnedItem = await actor.createEmbeddedDocuments("Item", [item.toObject()]);
-    const originalUuid = originalData.item;
+    const oldOwnedItem = fromUuidSync(originalData.item);
+    const resultArray = await actor.createEmbeddedDocuments("Item", [item.toObject()]);
+    if (resultArray.length === 0) {
+      LOGGER.error(`Attempting to restore item (${item.name}) however new item creation failed on actor ${actor.name}.`);
+      return;
+    }
+    const newOwnedItem = resultArray[0];
+    const originalUuid = oldOwnedItem.uuid;
 
     const installableTypes = CPRSystemUtils.GetTemplateItemTypes("installable");
     const containerTypes = CPRSystemUtils.GetTemplateItemTypes("container");
@@ -473,6 +479,10 @@ export default class CPRMigration {
           newPrograms.rezzed.push(programData);
         }
         itemUpdates.system.programs = newPrograms;
+      }
+
+      if (ownedItem.type === "role" && originalUuid.includes(actor.system.roleInfo.activeNetRole)) {
+        await actor.update({ "system.roleInfo.activeNetRole": newOwnedItem._id });
       }
 
       if (Object.keys(itemUpdates.system).length > 0) {
