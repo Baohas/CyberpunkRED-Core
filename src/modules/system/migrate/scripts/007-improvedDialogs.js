@@ -83,9 +83,9 @@ export default class ImprovedDialogMigration extends CPRMigration {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
     const updateList = [];
     if (actor.effects.contents.length > 0) {
-      actor.effects.contents.forEach(async (e) => {
+      actor.effects.contents.forEach((e) => {
         const effectData = duplicate(e);
-        e.changes.forEach(async (c, i) => {
+        e.changes.forEach((c, i) => {
           const newFlag = e.flags[game.system.id].changes[i];
           effectData.flags[`${game.system.id}.changes.cats.${i}`] = newFlag;
           effectData.flags[`${game.system.id}.changes.situational.${i}.isSituational`] = false;
@@ -107,6 +107,7 @@ export default class ImprovedDialogMigration extends CPRMigration {
     const deleteItems = [];
     const remappedItems = {};
     const containerItems = [];
+    const installedItems = [];
 
     for (const ownedItem of ownedItems) {
       // We cannot add AEs to owned items, that's a Foundry limitation. If an owned item might get an AE
@@ -136,17 +137,66 @@ export default class ImprovedDialogMigration extends CPRMigration {
         await newWorldItem.delete();
         deleteItems.push(ownedItem._id);
       }
+
+      // Get all container items, regardless of whether or not they have effects.
       if (ownedItem.system.installedItems?.list.length > 0) {
         containerItems.push(newOwnedItem);
       }
+
+      // Get all items installed in other items, regardless of whether or not they have effects.
+      if (ownedItem.system.isInstalled) {
+        installedItems.push(newOwnedItem);
+      }
     }
 
+    for (const container of containerItems) {
+      // Map the UUIDs in the old container item's list to the UUIDs of the new items it should contain.
+      // If the entry doesn't exist in remappedItems, the item this UUID refers to was not duplicated, and thus should map to itself.
+      const newList = container.system.installedItems.list.map((entry) => remappedItems[entry] || entry);
+      const updateData = container.system;
+      updateData.installedItems.list = newList;
+
+      if (container.type === "cyberdeck") {
+        const oldPrograms = container.system.programs;
+        const newPrograms = {
+          installed: [],
+          rezzed: [],
+        };
+
+        for (const oldProgramData of oldPrograms.installed) {
+          const program = actor.getOwnedItem(remappedItems[oldProgramData.uuid]);
+          if (typeof program === "object") {
+            const newProgramData = duplicate(oldProgramData);
+            newProgramData.uuid = remappedItems[oldProgramData.uuid] || oldProgramData.uuid;
+            if (oldProgramData.isRezzed) {
+              newPrograms.rezzed.push(newProgramData);
+            }
+            newPrograms.installed.push(newProgramData);
+          }
+        }
+        updateData.programs = newPrograms;
+      }
+      await container.update({ system: updateData });
+    }
+
+    for (const installedItem of installedItems) {
+      // Map the UUID in the old installed item's `installedIn` field to the UUID of the new item it should install into.
+      // If the UUID doesn't exist in remappedItems, the item this UUID refers to was not duplicated, and thus should be set back to itself.
+      const newUuid = remappedItems[installedItem.system.installedIn] || installedItem.system.installedIn;
+      await installedItem.update({ "system.installedIn": newUuid });
+    }
+
+    /*     // Get installedItemsList correct
     containerItems.forEach(async (container) => {
       const installedItems = [];
       const uninstalledItems = [];
       const installedPrograms = [];
       const uninstalledPrograms = [];
+      const newList = [];
       container.system.installedItems.list.forEach(async (entry) => {
+        newList.push(remappedItems[entry]);
+        // Do this, then for cyberdecks do programSync and for upgraded items do upgradeSync
+
         const installedItem = fromUuidSync(remappedItems[entry]);
         const uninstalledItem = fromUuidSync(entry);
         installedItems.push(installedItem);
@@ -175,7 +225,7 @@ export default class ImprovedDialogMigration extends CPRMigration {
       // await container.update({ "system.installedItems.list": [] });
       await container.uninstallItems(uninstalledItems);
       await container.installItems(installedItems);
-    });
+    }); */
 
     // delete all of the owned items we have replaced with items that have AEs
     const deleteList = [];
