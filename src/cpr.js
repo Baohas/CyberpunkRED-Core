@@ -144,7 +144,7 @@ Hooks.once("ready", async () => {
   if (migrationSuccess) {
     await game.settings.set(game.system.id, "dataModelVersion", DATA_MODEL_VERSION);
   } else {
-    SystemUtils.DisplayMessage("error", CPRSystemUtils.Localize("CPR.migration.status.migrationsFailed"));
+    SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.migration.status.migrationsFailed"));
   }
   if (game.system.version !== game.settings.get(game.system.id, "systemVersion")) {
     await game.settings.set(game.system.id, "systemVersion", game.system.version);
