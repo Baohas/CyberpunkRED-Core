@@ -6,6 +6,7 @@
 <div align="center">
 
 ![Release](https://img.shields.io/gitlab/v/tag/22820629?label=Latest%20Release)
+![GitLab contributors](https://img.shields.io/gitlab/contributors/22820629?logo=GitLab)
 
 <!-- markdownlint-disable-next-line MD033 -->
 </div>
