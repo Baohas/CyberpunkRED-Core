@@ -34,7 +34,8 @@ if [[ -n ${MR_IID} ]]; then
       "${PROJECT_URL}/merge_requests/${MR_IID}" |
       jq '.description' |
       grep -oE '#[0-9]{1,10}' |
-      tr -d '#'
+      tr -d '#' |
+      sort -u
   )
 else
   ISSUES=()
