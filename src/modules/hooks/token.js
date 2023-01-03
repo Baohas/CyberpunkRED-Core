@@ -154,7 +154,7 @@ const tokenHooks = () => {
           };
 
           for (const programData of oldPrograms.installed) {
-            const programId =  programData.uuid.split(".").pop();
+            const programId = programData.uuid.split(".").pop();
             const programItem = tokenDocument.actor.getOwnedItem(programId);
             if (programItem) {
               programData.uuid = programItem.uuid;
