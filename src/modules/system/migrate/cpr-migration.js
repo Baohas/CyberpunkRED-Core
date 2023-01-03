@@ -427,7 +427,7 @@ export default class CPRMigration {
     const ownedItems = actor.items.filter((i) => {
       if (containerTypes.includes(i.type) && i.system.installedItems.list.includes(originalUuid)) return true;
       if (installableTypes.includes(i.type) && i.system.isInstalled && i.system.installedIn === originalUuid) return true;
-      if (loadableTypes.includes(i.type) && i.system.magazine.ammoId === originalUuid) return true;
+      if (loadableTypes.includes(i.type) && i.system.magazine.ammoData.uuid === originalUuid) return true;
       return false;
     });
 
@@ -465,8 +465,8 @@ export default class CPRMigration {
         itemUpdates.system.upgrades = newUpgrades;
       }
 
-      if (loadableTypes.includes(ownedItem.type) && ownedItem.system.magazine.ammoId === originalUuid) {
-        itemUpdates.system.magazine.ammoId = newOwnedItem.uuid;
+      if (loadableTypes.includes(ownedItem.type) && ownedItem.system.magazine.ammoData.uuid === originalUuid) {
+        itemUpdates.system.magazine = { ammoData: { name: newOwnedItem.name, uuid: newOwnedItem.uuid } };
       }
 
       if (ownedItem.type === "cyberdeck" && ownedItem.system.programs.installed.filter((p) => p.uuid === originalUuid).length > 0) {
