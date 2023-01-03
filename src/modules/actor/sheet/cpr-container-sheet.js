@@ -167,7 +167,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   _setTradePartner(event) {
     LOGGER.trace("_setTradePartner | CPRContainerSheet | Called.");
-    const tradePartnerId = $(event.currentTarget).val();
     this.tradePartnerId = $(event.currentTarget).val();
   }
 
