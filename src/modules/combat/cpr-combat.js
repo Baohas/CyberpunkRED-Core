@@ -52,6 +52,7 @@ export default class CPRCombat extends Combat {
    * @param {object} [options.messageOptions={}]    Additional options with which to customize created Chat Messages
    * @return {Promise<Combat>}        A promise which resolves to the updated Combat entity once updates are complete.
    */
+  // eslint-disable-next-line no-unused-vars
   async rollInitiative(ids, { formula = null, updateTurn = true, messageOptions = {} } = {}) {
     LOGGER.trace("rollInitiative | CPRCombat | Called.");
     // Structure input data
@@ -62,7 +63,7 @@ export default class CPRCombat extends Combat {
     const updates = [];
     const rolls = [];
     let initiativeType;
-    for (const [i, id] of combatantIds.entries()) {
+    for (const id of combatantIds) {
       // Get Combatant data (non-strictly)
       const combatant = this.combatants.get(id);
       if (!combatant?.isOwner) return;
