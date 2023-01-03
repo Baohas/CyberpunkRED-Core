@@ -68,6 +68,7 @@ const itemHooks = () => {
    * @param {object} options        Additional options which modify the deletion request
    * @param {string} userId         The ID of the requesting user, always game.user.id
    */
+  // eslint-disable-next-line no-unused-vars
   Hooks.on("preDeleteItem", (doc, options, userId) => {
     LOGGER.trace("preDeleteItem | itemHooks | Called.");
     let deleteItem = true;
@@ -81,7 +82,7 @@ const itemHooks = () => {
           const debugMode = game.settings.get(game.system.id, "debugElements");
           const dialogTitle = SystemUtils.Localize("CPR.dialog.deleteInstalledWorldItem.title");
           let dialogMessage = `${SystemUtils.Format("CPR.dialog.deleteInstalledWorldItem.text", { itemName: doc.name })}`;
-          dialogMessage = dialogMessage.concat('<br><br>');
+          dialogMessage = dialogMessage.concat("<br><br>");
           for (const item of installedList) {
             let itemName = item.name;
             if (debugMode) {
