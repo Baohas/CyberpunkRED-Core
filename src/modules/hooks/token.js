@@ -146,6 +146,35 @@ const tokenHooks = () => {
           }
         }
 
+        if (item.type === "cyberdeck" && item.system.programs.installed.length > 0) {
+          const oldPrograms = item.system.programs;
+          const newPrograms = {
+            installed: [],
+            rezzed: [],
+          };
+
+          for (const programData of oldPrograms.installed) {
+            const programId =  programData.uuid.split(".").pop();
+            const programItem = tokenDocument.actor.getOwnedItem(programId);
+            if (programItem) {
+              programData.uuid = programItem.uuid;
+              programData._id = programItem._id;
+            }
+            newPrograms.installed.push(programData);
+          }
+
+          for (const programData of oldPrograms.rezzed) {
+            const programId = programData.uuid.split(".").pop();
+            const programItem = tokenDocument.actor.getOwnedItem(programId);
+            if (programItem) {
+              programData.uuid = programItem.uuid;
+              programData._id = programItem._id;
+            }
+            newPrograms.rezzed.push(programData);
+          }
+          itemUpdates.system.programs = newPrograms;
+        }
+
         if (Object.keys(itemUpdates.system).length > 0) {
           updateList.push(itemUpdates);
         }
