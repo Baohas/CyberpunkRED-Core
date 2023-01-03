@@ -15,18 +15,18 @@ const tokenHooks = () => {
    *
    * @public
    * @memberof hookEvents
-   * @param {Token} token           The token object being updated
+   * @param {tokenDocument} tokenDocument           The tokenDocument object being updated
    * @param {object} data           A trimmed object with the data being updated
    * @param {object} (unused)       Additional options which modify the update request
    * @param {string} (unused)       The ID of the requesting user, always game.user.id
    */
-  Hooks.on("preUpdateToken", (token, data) => {
+  Hooks.on("preUpdateToken", (tokenDocument, data) => {
     LOGGER.trace("preUpdateToken | tokenHooks | Called.");
-    if (token.actor.type === "container" && !game.user.isGM) {
+    if (tokenDocument.actor.type === "container" && !game.user.isGM) {
       // Defined x and/or y properties indicate the token is attempting to move to a new coordinate location.
       // this indicates a moved token, so we check the permissions.
       if (typeof data.x !== "undefined" || typeof data.y !== "undefined") {
-        if (typeof token.actor.getFlag(game.system.id, "players-move") === "undefined") {
+        if (typeof tokenDocument.actor.getFlag(game.system.id, "players-move") === "undefined") {
           SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.insufficientPermissions"));
           return false;
         }
@@ -58,6 +58,99 @@ const tokenHooks = () => {
           window.close();
         }
       });
+    }
+  });
+
+  /**
+   * The createToken Hook is provided by Foundry and triggered here. When a token is created, this hook is called
+   * just after. This hook is for unlinked tokens being created.  When an unlinked token is created, the actor data
+   * becomes a synthetic actor and only differential data is stored to the token. With the Universal Install system,
+   * without this hook, all installed items and items that have installed items would have references back to the
+   * original actor that was used to create this token.  This hook updates all owned items which have references to
+   * other owned items.
+   *
+   * @public
+   * @memberof hookEvents
+   * @param {TokenDocument} tokenDocument  The token object created
+   * @param {object} (unused)              Additional options passed by Foundry which modify the create request
+   * @param {string} (unused)              The ID of the requesting user, always game.user.id
+   */
+  Hooks.on('createToken', (tokenDocument, options, user) => {
+    LOGGER.trace("createToken | tokenHooks | Called.");
+    if (!tokenDocument.isLinked) {
+      // Update items installed in the actor
+      const actorInstallList = [];
+      const updateList = [];
+      for (const oldUuid of tokenDocument.actor.system.installedItems.list) {
+        const itemId = oldUuid.split('.').pop();
+        const item = tokenDocument.actor.getOwnedItem(itemId);
+        actorInstallList.push(item.uuid);
+        updateList.push({ _id: item._id, "system.installedIn": tokenDocument.uuid });
+      }
+      tokenDocument.modifyActorDocument({ "system.installedItems.list": actorInstallList });
+
+      const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
+      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+      const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
+      const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
+
+      const ownedItems = tokenDocument.actor.items.filter((i) => {
+        if (containerTypes.includes(i.type) && i.system.installedItems.list.length > 0) return true;
+        if (installableTypes.includes(i.type) && i.system.isInstalled) return true;
+        if (loadableTypes.includes(i.type) && i.system.magazine.ammoData.uuid !== "") return true;
+        return false;
+      });
+
+      for (const item of ownedItems) {
+        const itemUpdates = {
+          _id: item._id,
+          system: {},
+        };
+
+        if (containerTypes.includes(item.type)) {
+          itemUpdates.system.installedItems = { list: [] };
+          for (const oldUuid of item.system.installedItems.list) {
+            const itemId = oldUuid.split(".").pop();
+            const installedItem = tokenDocument.actor.getOwnedItem(itemId);
+            itemUpdates.system.installedItems.list.push(installedItem.uuid);
+          }
+        }
+
+        if (installableTypes.includes(item.type)) {
+          const installedInId = item.system.installedIn.split(".").pop();
+          const installedInItem = tokenDocument.actor.getOwnedItem(installedInId);
+          if (installedInItem) {
+            itemUpdates.system.installedIn = installedInItem.uuid;
+          }
+        }
+
+        if (upgradableTypes.includes(item.type)) {
+          const newUpgrades = [];
+          for (const upgradeData of item.system.upgrades) {
+            const upgradeId = upgradeData.uuid.split(".").pop();
+            const upgradeItem = tokenDocument.actor.getOwnedItem(upgradeId);
+            if (upgradeItem) {
+              upgradeData.uuid = upgradeItem.uuid;
+            }
+            newUpgrades.push(upgradeData);
+          }
+          itemUpdates.system.upgrades = newUpgrades;
+        }
+
+        if (loadableTypes.includes(item.type)) {
+          const ammoId = item.system.magazine.ammoData.uuid.split(".").pop();
+          const ammoItem = tokenDocument.actor.getOwnedItem(ammoId);
+          if (ammoItem) {
+            itemUpdates.system.magazine = { ammoData: { name: "", uuid: "" } };
+            itemUpdates.system.magazine.ammoData = { name: ammoItem.name, uuid: ammoItem.uuid };
+          }
+        }
+
+        if (Object.keys(itemUpdates.system).length > 0) {
+          updateList.push(itemUpdates);
+        }
+      }
+      tokenDocument.updateActorEmbeddedDocuments("Item", updateList, {});
     }
   });
 };
