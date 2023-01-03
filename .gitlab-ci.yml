@@ -38,18 +38,25 @@ init:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
-label-issues-on-merge:
+manage-issues-on-merge:
   stage: merge
   image: mvdan/shfmt:latest-alpine
   before_script:
     - apk update
-    - apk add bash jq
+    - apk add bash jq curl
   script:
-    - echo "Tagging Issues..."
-    - ./.gitlab/pipeline_utils/label-issues-on-merge.sh
+    - echo "Managing Issues..."
+    - bash -x ./.gitlab/pipeline_utils/manage-issues-on-merge.sh
   rules:
-    # Only run when merging to dev from an approved MR
-    - if: $CI_MERGE_REQUEST_APPROVED && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "dev"
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Only run when merging to dev
+    # This will run on all pushes to `dev`, however there is logic in the
+    # script to ensure it only runs if it's related to an MR.
+    # This is because GitLab CI doesn't expose the MR variables when merging
+    # from an MR for some reason
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 delete-packages-dev:
   stage: cleanup

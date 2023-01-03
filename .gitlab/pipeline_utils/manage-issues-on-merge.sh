@@ -6,21 +6,39 @@ IFS=$'\n\t'
 # GitLab Variables
 ##################
 # Variables that are set by GitLab CI environment
-# CI_API_V4_URL, CI_PROJECT_ID, CI_MERGE_REQUEST_IID
+# CI_API_V4_URL, CI_PROJECT_ID, CHOOM_BOT_API
 
 # URL to use as the base for out API calls
 PROJECT_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}"
 
-# Parse the mentioned issues from the MR description and create an array
-mapfile -t ISSUES < <(
-  curl \
-    --silent \
-    --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
-    "${PROJECT_URL}/merge_requests/${CI_MERGE_REQUEST_IID}" |
-    jq '.description' |
-    grep -oE '#[0-9]{1,10}' |
-    tr -d '#'
+# This is insane, GitLab doesn't pass the MR IID to a 'push' event in any
+# ENVARS as you would expect but it does put spmething along the lines of
+# 'See merge request cyberpunk-red-team/ci-testing!5' in `env`?! so we can
+# grep for this and extract the MR IID.
+MR_IID=$(
+  env |
+    grep 'See merge request' |
+    grep -Eom 1 '[0-9]{1,10}' || echo ""
 )
+
+# However if the source of the pipeline is 'push' this also applies to direct
+# pushes to the branch, so they won't have the text so we need to set ISSUES
+# to an empty array so we can skip the labelling if it's just a standard push
+# to `dev` not from an MR.
+
+if [[ -n ${MR_IID} ]]; then
+  mapfile -t ISSUES < <(
+    curl \
+      --silent \
+      --header "PRIVATE-TOKEN: ${CHOOM_BOT_API}" \
+      "${PROJECT_URL}/merge_requests/${MR_IID}" |
+      jq '.description' |
+      grep -oE '#[0-9]{1,10}' |
+      tr -d '#'
+  )
+else
+  ISSUES=()
+fi
 
 # Labels to add to the Issues in ISSUES
 # Case sensitive
@@ -36,7 +54,7 @@ LABELS_TO_CLOSE=(
 )
 
 # Note to add to each issue mentioned in the MR
-NOTE="We have just merged !${CI_MERGE_REQUEST_IID} into \`dev\`.
+NOTE="We have just merged !${MR_IID} into \`dev\`.
 
 This means it's on track to be in the next release but it needs testing first.
 
@@ -52,7 +70,7 @@ function check_issue() {
   response=$(
     curl \
       --silent \
-      --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+      --header "PRIVATE-TOKEN: ${CHOOM_BOT_API}" \
       "${PROJECT_URL}/issues/$1"
   )
 
@@ -79,7 +97,7 @@ function close_issue() {
     --data-urlencode "state_event=close" \
     --request PUT \
     --silent \
-    --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+    --header "PRIVATE-TOKEN: ${CHOOM_BOT_API}" \
     "${PROJECT_URL}/issues/$1" >/dev/null
 }
 
@@ -93,7 +111,7 @@ function add_labels() {
     )" \
     --request PUT \
     --silent \
-    --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+    --header "PRIVATE-TOKEN: ${CHOOM_BOT_API}" \
     "${PROJECT_URL}/issues/$1" >/dev/null
 }
 
@@ -104,7 +122,7 @@ function add_note() {
     --data-urlencode "body=${NOTE}" \
     --request POST \
     --silent \
-    --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+    --header "PRIVATE-TOKEN: ${CHOOM_BOT_API}" \
     "${PROJECT_URL}/issues/$1/notes" >/dev/null
 }
 
@@ -117,7 +135,7 @@ function main() {
       mapfile -t labels < <(
         curl \
           --silent \
-          --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+          --header "PRIVATE-TOKEN: ${CHOOM_BOT_API}" \
           "${PROJECT_URL}/issues/${issue}" |
           jq --raw-output '.labels[]'
       )
