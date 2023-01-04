@@ -57,7 +57,7 @@ const itemHooks = () => {
 
   /**
    * The preDeleteItem Hook is provided by Foundry and triggered here. When an Item is deleted, this hook is called just
-   * prior to creation. This hook provides the following functionality:
+   * prior to deletion. This hook provides the following functionality:
    *
    * - If the item is a World Item and it is installed in another World Item, a dialog is displayed stating that it
    *   can not be deleted and it lists the items that it is installed in and their corresponding Folder (if needed)
