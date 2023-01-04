@@ -95,7 +95,6 @@ export default class CPRMacro {
         }
       }
     });
-    LOGGER.debugObject(effects);
     actor.updateSource({ effects });
   }
 }
