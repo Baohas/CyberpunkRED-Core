@@ -40,6 +40,7 @@
 - Resizing sheets is now handled by Foundry, removing our custom code to manage it.
 - Updated the design of the character Effects tab
 - Updated the design of the Effect tab in the active effects sheet
+- #658 - Unlinked tokens created from actors that had installed items were not updated to point to the token items
 
 ### Bug Fixes
 

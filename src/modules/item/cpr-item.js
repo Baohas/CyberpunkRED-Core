@@ -134,40 +134,6 @@ export default class CPRItem extends Item {
   }
 
   /**
-   * We extend this for when an item is deleted that contains other items,
-   * uninstalling them prior to deletion.
-   *
-   * @param {object} options - Any additional options
-   * @param {object} user - User initiating this deleteion
-   * @returns Promise
-   */
-  async _preDelete(options, user) {
-    LOGGER.trace("_preDelete | CPRItem | Called.");
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    if (containerTypes.includes(this.type)) {
-      if (this.system.installedItems.list.length > 0) {
-        const itemList = [];
-        for (const installedUuid of this.system.installedItems.list) {
-          const item = (this.isOwned && this.actor) ? this.actor.getOwnedItem(installedUuid) : fromUuidSync(installedUuid);
-          if (item) {
-            itemList.push(item);
-          }
-        }
-        await this.uninstallItems(itemList, true);
-      }
-    }
-
-    if (typeof this.system.isInstalled === "boolean" && this.system.isInstalled && this.system.installedIn !== "") {
-      const installLocation = (this.isOwned && this.actor) ? this.actor.getOwnedItem(this.system.installedIn) : fromUuidSync(this.system.installedIn);
-      if (containerTypes.includes(installLocation.type)) {
-        await installLocation.uninstallItems([this], false);
-      }
-    }
-
-    return super._preDelete(options, user);
-  }
-
-  /**
    * Whenever an item is created or updated this method is called by Foundry. We use it
    * to add in the "mixins" enabled for this item type.
    *
