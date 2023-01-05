@@ -3,6 +3,10 @@
 
 ## Version 0.86.0 | Date: TBD
 
+### Release Specific Notes
+
+We have added the ability for all types of Cyberware to be weapons. This means we have removed the Weapons that duplicated this functionality from the Weapons Compendium. This should not affect already made characters but if you want to streamline your Character/Mook Sheets you can remove the old Cyberware and Weapon items and replace with the new ones to access the new functionality.
+
 ### New Features
 
 - Universal Installation System replaces the back end code for installing Cyberware in Actors, Programs in Cyberdecks and Upgrades in other owned Items.  This new system provides the following new features:
@@ -23,6 +27,7 @@
 - #442 - Implement a "Smart Snort" feature for drugs which will auto-activate only specific effects when consumed.
 - #412 - Duplicate Active Effects in the Item Sheet (and Actor sheet)
 - #655 - Enable deleting changes in an Active Effect
+- All Cyberware can now be a weapon
 
 ### Changes
 
