@@ -273,10 +273,13 @@ language-strings:
 
 changelog-has-changed:
   stage: test
+  image: mvdan/shfmt:latest-alpine
+  before_script:
+    - apk update
+    - apk add bash jq curl git
   script:
     - echo "Checking if the CHANGELOG.md changed..."
     - ./.gitlab/pipeline_tests/test-changelog-dev-changed.sh
-  allow_failure: true
   needs:
     - job: init
       artifacts: true
@@ -495,7 +498,6 @@ build-artifacts:
     - job: language-unused-strings
     - job: language-exists
     - job: changelog-has-changed
-      optional: true
     - job: game-id
     - job: compendia-use
     - job: trace-statements
