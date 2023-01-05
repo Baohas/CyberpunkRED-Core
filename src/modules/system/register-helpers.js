@@ -812,8 +812,15 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprGetChangeNameByKey", (doc, cat, key) => {
     if (!cat) {
-      LOGGER.error("Undefined change category! No idea what this effect changes!");
-      return "???";
+      // There's a split second when this is updating that the sheet may refresh showing ??? and throwing a console
+      // error when these are being updated with the delete method.
+      let returnString = "(updating)";
+      const flag = doc.getFlag(game.system.id, "changes") ? doc.getFlag(game.system.id, "changes") : [];
+      if (doc.changes.length === flag.length) {
+        returnString = "???";
+        LOGGER.error("Undefined change category! No idea what this effect changes!");
+      }
+      return returnString;
     }
     if (cat === "custom") return key;
     const sourceDoc = (doc instanceof CPRActiveEffect) ? doc.getEffectParent() : doc;
