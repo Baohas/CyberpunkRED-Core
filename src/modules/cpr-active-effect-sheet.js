@@ -133,6 +133,8 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       }
     });
     // Finally, update the underlying AE
+    await this.object.unsetFlag(game.system.id, "changes");
+
     const prop = `flags.${game.system.id}.changes`;
     await this.object.update({
       changes,
