@@ -467,6 +467,7 @@
   "CPR.global.generic.amount": "Cantidad",
   "CPR.global.generic.class": "Clase",
   "CPR.global.generic.damage": "Daño",
+  "CPR.global.generic.copy": "Copy",
   "CPR.global.generic.deathPenalty": "Penalidad de Muerte",
   "CPR.global.generic.defense": "Defensa",
   "CPR.global.generic.description": "Descripción",
