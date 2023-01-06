@@ -58,7 +58,7 @@ system:
       type: modifier
       value: null
     secondaryWeapon:
-      configured: 'false'
+      configured: false
   price:
     category: expensive
     market: 500
