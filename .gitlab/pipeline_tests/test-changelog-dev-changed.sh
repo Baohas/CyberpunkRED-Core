@@ -32,10 +32,16 @@ else
 fi
 
 # Issue lables to not run the test on
+# We don't need to run on all Issues
+# We ignore `Bug::Dev` as this is used for bugs on dev which don't usually
+# need changelog changes as these are following a Feature merge.
 LABELS_TO_TEST=(
-  "Feature"
-  "Bug"
+  "Bug::Confirmed"
+  "Bug::New"
+  "Bug::Regression"
+  "Bug::Unconfirmed"
   "Compendium"
+  "Feature"
 )
 
 # Run checks on an issue
