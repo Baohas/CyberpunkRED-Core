@@ -4,6 +4,7 @@ import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRActiveEffect from "../cpr-active-effect.js";
+import DamageApplicationPrompt from "../dialog/cpr-damage-application-prompt.js";
 
 export default function registerHandlebarsHelpers() {
   LOGGER.log("Calling Register Handlebars Helpers");
@@ -883,6 +884,20 @@ export default function registerHandlebarsHelpers() {
       priceCategory = (priceCategory === "free" && price > 0) ? PRICE_CATEGORY_MAPPINGS[priceTier] : priceCategory;
     }
     return priceCategory;
+  });
+
+  /**
+   * Return true if the program has damage defined for either standard or blackIce
+   */
+  Handlebars.registerHelper("cprProgramHasDamageRoll", (program) => {
+    LOGGER.trace("cprProgramHasDamageRoll | handlebarsHelper | Called.");
+    let returnCode = false;
+    if (typeof program === "object") {
+      if (program?.damage.standard !== "" || program?.damage.blackIce !== "") {
+        returnCode = true;
+      }
+    }
+    return returnCode;
   });
 
   /**

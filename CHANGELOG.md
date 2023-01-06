@@ -49,6 +49,7 @@ We have added the ability for all types of Cyberware to be weapons. This means w
 - Updated the design of the Effect tab in the active effects sheet
 - #658 - Unlinked tokens created from actors that had installed items were not updated to point to the token items
 - DV now shows before the DV Table name of the ruler label when measuring
+- #628 - Rollcard for programs without damage should not show the damage icon in the Rollcard
 
 ### Bug Fixes
 
