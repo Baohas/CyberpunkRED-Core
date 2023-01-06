@@ -497,7 +497,6 @@ build-artifacts:
       optional: true
     - job: language-unused-strings
     - job: language-exists
-    - job: changelog-has-changed
     - job: game-id
     - job: compendia-use
     - job: trace-statements
