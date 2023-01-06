@@ -142,29 +142,29 @@
             </div>
         </li>
     {{/if}}
-    {{!- Is A Weapon Settings --}}
-    <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap">
-            {{localize "CPR.itemSheet.common.isAWeapon"}}
-        </div>
-        <div class="item flexrow setting-value text-nowrap item-end">
-            {{#if this.editable}}
-                {{#if item.system.isWeapon}}
-                    <a class="item-checkbox" data-target="system.isWeapon"><i class="far fa-check-circle"></i></a>
-                {{else}}
-                    <a class="item-checkbox" data-target="system.isWeapon"><i class="far fa-circle"></i></a>
-                {{/if}}
-            {{else}}
-                {{#if item.system.isWeapon}}
-                    <i class="far fa-check-circle"></i>
-                {{else}}
-                    <i class="far fa-circle"></i>
-                {{/if}}
-            {{/if}}
-        </div>
-    </li>
-    {{#if item.system.isWeapon}}
-      {{> "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-attackable.hbs" this}}
-    {{/if}}
 {{/unless}}
+  {{!- Is A Weapon Settings --}}
+  <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+          {{localize "CPR.itemSheet.common.isAWeapon"}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap item-end">
+          {{#if this.editable}}
+              {{#if item.system.isWeapon}}
+                  <a class="item-checkbox" data-target="system.isWeapon"><i class="far fa-check-circle"></i></a>
+              {{else}}
+                  <a class="item-checkbox" data-target="system.isWeapon"><i class="far fa-circle"></i></a>
+              {{/if}}
+          {{else}}
+              {{#if item.system.isWeapon}}
+                  <i class="far fa-check-circle"></i>
+              {{else}}
+                  <i class="far fa-circle"></i>
+              {{/if}}
+          {{/if}}
+      </div>
+  </li>
+  {{#if item.system.isWeapon}}
+    {{> "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-attackable.hbs" this}}
+  {{/if}}
 {{cprTrace "END CPR-CYBERWARE.HBS"}}
