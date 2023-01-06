@@ -29,14 +29,26 @@
         </div>
         <div class="item flexrow setting-value text-nowrap item-end">
             {{#if this.editable}}
-                <select name="system.modifiers.secondaryWeapon.configured" data-dtype="text">
-                    {{#select item.system.modifiers.secondaryWeapon.configured}}
-                        <option value="false">{{localize "CPR.global.generic.false"}}</option>
-                        <option value="true">{{localize "CPR.global.generic.true"}}</option>
-                    {{/select}}
-                </select>
+              {{#if item.system.modifiers.secondaryWeapon.configured}}
+                <a class="item-checkbox" data-target="system.modifiers.secondaryWeapon.configured">
+                  <i class="far fa-check-circle"></i>
+                </a>
+                {{else}}
+                <a class="item-checkbox" data-target="system.modifiers.secondaryWeapon.configured">
+                  <i class="far fa-circle"></i>
+                </a>
+              {{/if}}
             {{else}}
-                <span class="text-flex-end">{{system.modifiers.secondaryWeapon.configured}}</span>
+              {{#if item.system.modifiers.secondaryWeapon.configured}}
+                  <span>
+                    <i class="far fa-check-circle"></i>
+                  </span>
+                {{else}}
+                  <span>
+                    <i class="far fa-circle"></i>
+                  </span>
+                </a>
+              {{/if}}
             {{/if}}
         </div>
     </li>
