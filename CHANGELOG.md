@@ -5,6 +5,8 @@
 
 ### Release Specific Notes
 
+If you're a GM and you linked Black-ICE items to tokens on the canvas, you might have noticed that the description would not transfer. We fixed this for new linkages created (issue #623), but for any created since the last release, you'll have to copy the description over if you want it.
+
 We have added the ability for all types of Cyberware to be weapons. This means we have removed the Weapons that duplicated this functionality from the Weapons Compendium. This should not affect already made characters but if you want to streamline your Character/Mook Sheets you can remove the old Cyberware and Weapon items and replace with the new ones to access the new functionality.
 
 ### New Features
