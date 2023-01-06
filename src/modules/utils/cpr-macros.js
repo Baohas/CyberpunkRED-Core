@@ -1,6 +1,4 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-undef */
-/* global game */
+/* global duplicate game */
 import CPRChat from "../chat/cpr-chat.js";
 import SystemUtils from "./cpr-systemUtils.js";
 import LOGGER from "./cpr-logger.js";
@@ -8,7 +6,7 @@ import LOGGER from "./cpr-logger.js";
 export default class CPRMacro {
   static async rollItemMacro(itemName, extraRollArgs = { skipPrompt: false, rollType: "attack" }) {
     LOGGER.trace("rollItemMacro | CPRMacro | called.");
-    const speaker = ChatMessage.getSpeaker();
+    const speaker = CPRChat.getSpeaker();
     const extraData = extraRollArgs;
     let actor;
     if (speaker.token) actor = game.actors.tokens[speaker.token];
@@ -75,5 +73,28 @@ export default class CPRMacro {
 
     // Need to figure out what we did here since this is gone??
     // actor.setPreviousRoll(cprRoll);
+  }
+
+  /**
+   * This is called from hooks/actor.js::createActor(). See the comments there for details.
+   *
+   * @param {Document} actor
+   */
+  static async FixActorIdsInEffects(actor) {
+    LOGGER.trace("FixActorIdsInEffects | CPRMacro | Called.");
+    const effects = duplicate(actor.effects);
+    const actorOrigin = `Actor.${actor._id}`;
+    effects.forEach((e) => {
+      if (e.origin.startsWith("Actor")) {
+        if (e.origin.includes("Item")) {
+          const bits = e.origin.split(".");
+          e.origin = `${actorOrigin}.${bits.slice(2).join(".")}`;
+        } else {
+          e.origin = actorOrigin;
+          e._sourceName = actor.name;
+        }
+      }
+    });
+    actor.updateSource({ effects });
   }
 }
