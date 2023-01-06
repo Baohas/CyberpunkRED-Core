@@ -41,6 +41,7 @@
 - Updated the design of the character Effects tab
 - Updated the design of the Effect tab in the active effects sheet
 - #658 - Unlinked tokens created from actors that had installed items were not updated to point to the token items
+- DV now shows before the DV Table name of the ruler label when measuring
 
 ### Bug Fixes
 
