@@ -31,16 +31,6 @@ export default class LedgerDeletionPrompt {
           title,
           content: html,
           buttons: {
-            cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
-              label: SystemUtils.Localize("CPR.dialog.common.cancel"),
-              callback: () => _onCancel(),
-            },
-            no: {
-              icon: "<i class=\"fas fa-times\"></i>",
-              label: SystemUtils.Localize("CPR.dialog.common.no"),
-              callback: () => _onNo(),
-            },
             yesAdd: {
               icon: "<i class=\"fas fa-check\"></i>",
               label: SystemUtils.Localize("CPR.dialog.ledgerDeletion.yesAdd"),
@@ -50,6 +40,16 @@ export default class LedgerDeletionPrompt {
               icon: "<i class=\"fas fa-check\"></i>",
               label: SystemUtils.Localize("CPR.dialog.ledgerDeletion.yesSubtract"),
               callback: () => _onYesSubtract(),
+            },
+            no: {
+              icon: "<i class=\"fas fa-times\"></i>",
+              label: SystemUtils.Localize("CPR.dialog.common.no"),
+              callback: () => _onNo(),
+            },
+            cancel: {
+              icon: "<i class=\"fas fa-times\"></i>",
+              label: SystemUtils.Localize("CPR.dialog.common.cancel"),
+              callback: () => _onCancel(),
             },
           },
           default: "cancel",

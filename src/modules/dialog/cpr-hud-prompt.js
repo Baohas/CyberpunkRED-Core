@@ -24,18 +24,18 @@ export default class HudPrompt {
           title: SystemUtils.Localize("CPR.dialog.dv.hudPromptTitle"),
           content: html,
           buttons: {
-            cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
-              label: SystemUtils.Localize("CPR.dialog.common.cancel"),
-              /* eslint-disable no-shadow */
-              callback: (html) => _onCancel(html),
-              /* eslint-enable no-shadow */
-            },
             confirm: {
               icon: "<i class=\"fas fa-check\"></i>",
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               /* eslint-disable no-shadow */
               callback: (html) => _onConfirm(html),
+              /* eslint-enable no-shadow */
+            },
+            cancel: {
+              icon: "<i class=\"fas fa-times\"></i>",
+              label: SystemUtils.Localize("CPR.dialog.common.cancel"),
+              /* eslint-disable no-shadow */
+              callback: (html) => _onCancel(html),
               /* eslint-enable no-shadow */
             },
           },

@@ -23,15 +23,15 @@ export default class InstallTargetsPrompt {
           title: data.title,
           content: html,
           buttons: {
-            cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
-              label: SystemUtils.Localize("CPR.dialog.common.cancel"),
-              callback: (html) => _onCancel(html),
-            },
             confirm: {
               icon: "<i class=\"fas fa-check\"></i>",
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               callback: (html) => _onConfirm(html),
+            },
+            cancel: {
+              icon: "<i class=\"fas fa-times\"></i>",
+              label: SystemUtils.Localize("CPR.dialog.common.cancel"),
+              callback: (html) => _onCancel(html),
             },
           },
           default: "confirm",

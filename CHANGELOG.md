@@ -50,6 +50,7 @@ We have added the ability for all types of Cyberware to be weapons. This means w
 - #658 - Unlinked tokens created from actors that had installed items were not updated to point to the token items
 - DV now shows before the DV Table name of the ruler label when measuring
 - #628 - Rollcard for programs without damage should not show the damage icon in the Rollcard
+- Dialog Affirmations now follow Foundry (`Confirm`, `Cancel`)
 
 ### Bug Fixes
 
