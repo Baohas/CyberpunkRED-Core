@@ -587,7 +587,7 @@
                                 <div class="installed-program-attack">
                                     <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="atk" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}"><i class="fas fa-fist-raised red-fg" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}" ></i></a>
                                 </div>
-                                {{#if (cprCompare program.damage.standard "!==" "")}}
+                                {{#if (cprProgramHasDamageRoll program)}}
                                 <div class="installed-program-damage">
                                     <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="damage" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}"><i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}" ></i></a>
                                 </div>

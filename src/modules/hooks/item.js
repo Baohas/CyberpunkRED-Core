@@ -57,7 +57,7 @@ const itemHooks = () => {
 
   /**
    * The preDeleteItem Hook is provided by Foundry and triggered here. When an Item is deleted, this hook is called just
-   * prior to creation. This hook provides the following functionality:
+   * prior to deletion. This hook provides the following functionality:
    *
    * - If the item is a World Item and it is installed in another World Item, a dialog is displayed stating that it
    *   can not be deleted and it lists the items that it is installed in and their corresponding Folder (if needed)
@@ -68,6 +68,7 @@ const itemHooks = () => {
    * @param {object} options        Additional options which modify the deletion request
    * @param {string} userId         The ID of the requesting user, always game.user.id
    */
+  // eslint-disable-next-line no-unused-vars
   Hooks.on("preDeleteItem", (doc, options, userId) => {
     LOGGER.trace("preDeleteItem | itemHooks | Called.");
     let deleteItem = true;
@@ -81,7 +82,7 @@ const itemHooks = () => {
           const debugMode = game.settings.get(game.system.id, "debugElements");
           const dialogTitle = SystemUtils.Localize("CPR.dialog.deleteInstalledWorldItem.title");
           let dialogMessage = `${SystemUtils.Format("CPR.dialog.deleteInstalledWorldItem.text", { itemName: doc.name })}`;
-          dialogMessage = dialogMessage.concat('<br><br>');
+          dialogMessage = dialogMessage.concat("<br><br>");
           for (const item of installedList) {
             let itemName = item.name;
             if (debugMode) {

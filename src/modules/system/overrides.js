@@ -21,7 +21,7 @@ export default function overrideRulerFunctions() {
               }
             }
             if (DV > 0) {
-              returnLabel = `${returnLabel}\n${displayTable} DV: ${DV}`;
+              returnLabel = `${returnLabel}\nDV: ${DV} ${displayTable}`;
             }
           }
         }

@@ -829,10 +829,16 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprGetChangeNameByKey", (doc, cat, key) => {
     if (!cat) {
-      LOGGER.error("Undefined change category! No idea what this effect changes!");
-      return "???";
+      // There's a split second when this is updating that the sheet may refresh showing ??? and throwing a console
+      // error when these are being updated with the delete method.
+      let returnString = "(updating)";
+      const flag = doc.getFlag(game.system.id, "changes") ? doc.getFlag(game.system.id, "changes") : [];
+      if (doc.changes.length === flag.length) {
+        returnString = "???";
+        LOGGER.error("Undefined change category! No idea what this effect changes!");
+      }
+      return returnString;
     }
-
     if (cat === "custom") return key;
 
     if (!doc) {
@@ -931,6 +937,20 @@ export default function registerHandlebarsHelpers() {
       priceCategory = (priceCategory === "free" && price > 0) ? PRICE_CATEGORY_MAPPINGS[priceTier] : priceCategory;
     }
     return priceCategory;
+  });
+
+  /**
+   * Return true if the program has damage defined for either standard or blackIce
+   */
+  Handlebars.registerHelper("cprProgramHasDamageRoll", (program) => {
+    LOGGER.trace("cprProgramHasDamageRoll | handlebarsHelper | Called.");
+    let returnCode = false;
+    if (typeof program === "object") {
+      if (program?.damage.standard !== "" || program?.damage.blackIce !== "") {
+        returnCode = true;
+      }
+    }
+    return returnCode;
   });
 
   /**

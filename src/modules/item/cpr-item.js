@@ -1,4 +1,4 @@
-/* global Item game duplicate fromUuidSync */
+/* global Item game fromUuidSync */
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -131,41 +131,6 @@ export default class CPRItem extends Item {
       }
       // LOGGER.debug(`Added mixin ${mixins[m]} to ${this.id}`);
     }
-  }
-
-  /**
-   * We extend this for when an item is deleted that contains other items,
-   * uninstalling them prior to deletion.
-   *
-   * @param {object} options - Any additional options
-   * @param {object} user - User initiating this deleteion
-   * @returns Promise
-   */
-  async _preDelete(options, user) {
-    LOGGER.trace("_preDelete | CPRItem | Called.");
-    if (!options.cprIsMigrating) {
-      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-      if (containerTypes.includes(this.type)) {
-        if (this.system.installedItems.list.length > 0) {
-          const itemList = [];
-          for (const installedUuid of this.system.installedItems.list) {
-            const item = (this.isOwned && this.actor) ? this.actor.getOwnedItem(installedUuid) : fromUuidSync(installedUuid);
-            if (item) {
-              itemList.push(item);
-            }
-          }
-          await this.uninstallItems(itemList, true);
-        }
-      }
-
-      if (typeof this.system.isInstalled === "boolean" && this.system.isInstalled && this.system.installedIn !== "") {
-        const installLocation = (this.isOwned && this.actor) ? this.actor.getOwnedItem(this.system.installedIn) : fromUuidSync(this.system.installedIn);
-        if (installLocation && containerTypes.includes(installLocation.type)) {
-          await installLocation.uninstallItems([this], false);
-        }
-      }
-    }
-    return super._preDelete(options, user);
   }
 
   /**

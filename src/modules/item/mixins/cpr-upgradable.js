@@ -1,7 +1,6 @@
 /* global duplicate CONST fromUuidSync */
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
-import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 /**
  * If an item can ACCEPT upgrades (i.e. it has slots), then it should include this

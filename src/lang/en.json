@@ -473,6 +473,7 @@
   "CPR.global.generic.class": "Class",
   "CPR.global.generic.combatant": "Combatant",
   "CPR.global.generic.damage": "Damage",
+  "CPR.global.generic.copy": "Copy",
   "CPR.global.generic.deathPenalty": "Death Penalty",
   "CPR.global.generic.defense": "Defense",
   "CPR.global.generic.description": "Description",

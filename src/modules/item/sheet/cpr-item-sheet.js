@@ -591,11 +591,6 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("_manageInstalledItems | CPRItemSheet | Called.");
     const { item } = this;
 
-    // We only support upgraded items that are owned by an actor
-    // Get the actor that owns this item (if owned)
-
-    const actor = (item.isOwned) ? item.actor : false;
-
     /*
     if (!actor || (actor.type !== "character" && actor.type !== "mook")) {
       SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.ownedItemOnlyError"));

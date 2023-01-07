@@ -3,6 +3,12 @@
 
 ## Version 0.86.0 | Date: TBD
 
+### Release Specific Notes
+
+If you're a GM and you linked Black-ICE items to tokens on the canvas, you might have noticed that the description would not transfer. We fixed this for new linkages created (issue #623), but for any created since the last release, you'll have to copy the description over if you want it.
+
+We have added the ability for all types of Cyberware to be weapons. This means we have removed the Weapons that duplicated this functionality from the Weapons Compendium. This should not affect already made characters but if you want to streamline your Character/Mook Sheets you can remove the old Cyberware and Weapon items and replace with the new ones to access the new functionality.
+
 ### New Features
 
 - Universal Installation System replaces the back end code for installing Cyberware in Actors, Programs in Cyberdecks and Upgrades in other owned Items.  This new system provides the following new features:
@@ -23,6 +29,7 @@
 - #442 - Implement a "Smart Snort" feature for drugs which will auto-activate only specific effects when consumed.
 - #412 - Duplicate Active Effects in the Item Sheet (and Actor sheet)
 - #655 - Enable deleting changes in an Active Effect
+- All Cyberware can now be a weapon
 
 ### Changes
 
@@ -40,6 +47,10 @@
 - Resizing sheets is now handled by Foundry, removing our custom code to manage it.
 - Updated the design of the character Effects tab
 - Updated the design of the Effect tab in the active effects sheet
+- #658 - Unlinked tokens created from actors that had installed items were not updated to point to the token items
+- DV now shows before the DV Table name of the ruler label when measuring
+- #628 - Rollcard for programs without damage should not show the damage icon in the Rollcard
+- Dialog Affirmations now follow Foundry (`Confirm`, `Cancel`)
 
 ### Bug Fixes
 
@@ -57,6 +68,7 @@
 - #652 - Damage icon missing from Black Ice Sheet:
 - Black-ICE can be renamed again
 - #632 - Black Ice and Daemons cannot roll initiative
+- #656 - Cannot Delete Items From Duplicated Sheet
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 

@@ -181,15 +181,17 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * The only reason we extend this code right now is to handle an edge case for migrations.
+   * The two reasons we extend this code are:
+   *  - handle an edge case for migrations.
+   *  - handle creating items on unlinked tokens
    *
    * @override
    * @param {String} embeddedName - document name, usually a category like Item
-   * @param {Object} data - Array of documents to consider
+   * @param {Object} ids - Array of documents to consider
    * @param {Object} context - an object tracking the context in which the method is being called
    * @returns {null}
    */
-  async createEmbeddedDocuments(embeddedName, data, context) {
+  async createEmbeddedDocuments(embeddedName, ids, context = {}) {
     LOGGER.trace("createEmbeddedDocuments | CPRActor | called.");
     // If migration is calling this, we definitely want to
     // create the Embedded Documents.
@@ -197,7 +199,7 @@ export default class CPRActor extends Actor {
     if (!isMigration) {
       if (embeddedName === "Item") {
         let containsCoreItem = false;
-        data.forEach((document) => {
+        ids.forEach((document) => {
           if (document.system && document.system.core) {
             containsCoreItem = true;
           }
@@ -208,8 +210,72 @@ export default class CPRActor extends Actor {
         }
       }
     }
-    // Standard embedded entity creation
-    return super.createEmbeddedDocuments(embeddedName, data, context);
+    // Call appropriate create method depending on if it is an unlinked token actor
+    if (this.isToken && !this.token.isLinked) {
+      return this.token.createActorEmbeddedDocuments(embeddedName, ids, context);
+    }
+    return super.createEmbeddedDocuments(embeddedName, ids, context);
+  }
+
+  /**
+   * This is extended to handle updating items on unlinked tokens
+   *
+   * @override
+   * @param {String} embeddedName - document name, usually a category like Item
+   * @param {Object} updates - Array of documents to consider
+   * @param {Object} options - an object tracking the context in which the method is being called
+   * @returns {null}
+   */
+  async updateEmbeddedDocuments(embeddedName, updates, options = {}) {
+    LOGGER.trace("updateEmbeddedDocuments | CPRActor | called.");
+    // Call appropriate update method depending on if it is an unlinked token actor
+    if (this.isToken && !this.token.isLinked) {
+      return this.token.updateActorEmbeddedDocuments(embeddedName, updates, options);
+    }
+    return super.updateEmbeddedDocuments(embeddedName, updates, options);
+  }
+
+  /**
+   * This is extended to handle :
+   * - items installed in other items
+   * - updating items on unlinked tokens
+   *
+   * @override
+   * @param {String} embeddedName - document name, usually a category like Item
+   * @param {Object} ids - Array of documents to consider
+   * @param {Object} context - an object tracking the context in which the method is being called
+   * @returns {null}
+   */
+  async deleteEmbeddedDocuments(embeddedName, ids, context = {}) {
+    LOGGER.trace("deleteEmbeddedDocuments | CPRActor | called.");
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
+    for (const itemId of ids) {
+      const item = this.getOwnedItem(itemId);
+      if (containerTypes.includes(item.type) && item.system.installedItems.list.length > 0) {
+        const itemList = [];
+        for (const installedUuid of item.system.installedItems.list) {
+          const installedItem = this.getOwnedItem(installedUuid);
+          if (installedItem) {
+            itemList.push(installedItem);
+          }
+        }
+        await item.uninstallItems(itemList, true);
+      }
+
+      if (installableTypes.includes(item.type) && item.system.isInstalled && item.system.installedIn !== "") {
+        const installLocation = this.getOwnedItem(item.system.installedIn);
+        if (containerTypes.includes(installLocation.type)) {
+          await installLocation.uninstallItems([item], false);
+        }
+      }
+    }
+
+    // Call appropriate delete method depending on if it is an unlinked token actor
+    if (this.isToken && !this.token.isLinked) {
+      return this.token.deleteActorEmbeddedDocuments(embeddedName, ids, context);
+    }
+    return super.deleteEmbeddedDocuments(embeddedName, ids, context);
   }
 
   /**

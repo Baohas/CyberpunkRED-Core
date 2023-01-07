@@ -23,15 +23,15 @@ export default class NetarchLevelPrompt {
           title: SystemUtils.Localize("CPR.dialog.netArchitectureNewFloor.title"),
           content: html,
           buttons: {
-            cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
-              label: "Cancel",
-              callback: (html) => _onCancel(html),
-            },
             confirm: {
               icon: "<i class=\"fas fa-check\"></i>",
               label: "Confirm",
               callback: (html) => _onConfirm(html),
+            },
+            cancel: {
+              icon: "<i class=\"fas fa-times\"></i>",
+              label: "Cancel",
+              callback: (html) => _onCancel(html),
             },
           },
           default: "confirm",

@@ -1,3 +1,0 @@
-<p>If you're a GM and you linked Black-ICE items to tokens on the canvas, you might have noticed that
-the description would not transfer. We fixed this for new linkages created (issue #623), but for any
-created since the last release, you'll have to copy the description over if you want it.</p>

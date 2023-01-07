@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */
 /* global game, hasProperty, duplicate, mergeObject, Item fromUuidSync */
 import * as Migrations from "./scripts/index.js";
