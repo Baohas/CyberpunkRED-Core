@@ -69,6 +69,7 @@ We have added the ability for all types of Cyberware to be weapons. This means w
 - Black-ICE can be renamed again
 - #632 - Black Ice and Daemons cannot roll initiative
 - #656 - Cannot Delete Items From Duplicated Sheet
+- Weapon Fields Should be Hidden for Non-weapons in Upgrade Item Settings
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 

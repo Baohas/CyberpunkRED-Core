@@ -467,7 +467,7 @@
       "type": "weapon",
       "modifiers": {
         "secondaryWeapon": {
-          "configured": "false"
+          "configured": false
         }
       }
     },

@@ -81,7 +81,7 @@ system:
       type: modifier
       value: null
     secondaryWeapon:
-      configured: 'false'
+      configured: false
     tech:
       type: modifier
       value: null
