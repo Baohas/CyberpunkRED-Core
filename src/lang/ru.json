@@ -467,6 +467,7 @@
   "CPR.global.generic.amount": "Количество",
   "CPR.global.generic.class": "Класс",
   "CPR.global.generic.damage": "Урон",
+  "CPR.global.generic.copy": "Copy",
   "CPR.global.generic.deathPenalty": "Штраф на спасбросок от смерти",
   "CPR.global.generic.defense": "Защита",
   "CPR.global.generic.description": "Описание",

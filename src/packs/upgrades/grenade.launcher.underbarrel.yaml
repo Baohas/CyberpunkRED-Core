@@ -102,7 +102,7 @@ system:
       type: modifier
       value: null
     secondaryWeapon:
-      configured: 'true'
+      configured: true
     shieldHp:
       type: modifier
       value: null

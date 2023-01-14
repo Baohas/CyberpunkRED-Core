@@ -62,7 +62,7 @@ system:
       type: modifier
       value: null
     secondaryWeapon:
-      configured: 'false'
+      configured: false
     slots:
       type: modifier
       value: null
