@@ -81,14 +81,13 @@ export default class UniversalInstallMigration extends CPRMigration {
       }
 
       if (item.type === "cyberware") {
+        if (item.system.type === "cyberArm" && item.system.isFoundational) {
+          itemUpdates.system.installedItems.slots = 4;
+        }
         switch (item.name) {
           case "Chipware Socket": {
             itemUpdates.system.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
             itemUpdates.system.installedItems.slots = 1;
-            break;
-          }
-          case "Cyberarm": {
-            itemUpdates.system.installedItems.slots = 4;
             break;
           }
           case "Neural Link": {
