@@ -29,6 +29,7 @@ We have added the ability for all types of Cyberware to be weapons. This means w
 - #442 - Implement a "Smart Snort" feature for drugs which will auto-activate only specific effects when consumed.
 - #412 - Duplicate Active Effects in the Item Sheet (and Actor sheet)
 - #655 - Enable deleting changes in an Active Effect
+- #678 - Migrated cyberdecks did not have "program" as a valid installation type
 - All Cyberware can now be a weapon
 
 ### Changes

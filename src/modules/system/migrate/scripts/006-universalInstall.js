@@ -80,6 +80,35 @@ export default class UniversalInstallMigration extends CPRMigration {
         }
       }
 
+      if (item.type === "cyberware") {
+        switch (item.name) {
+          case "Chipware Socket": {
+            itemUpdates.system.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
+            itemUpdates.system.installedItems.slots = 1;
+            break;
+          }
+          case "Cyberarm": {
+            itemUpdates.system.installedItems.slots = 4;
+            break;
+          }
+          case "Neural Link": {
+            itemUpdates.system.installedItems.slots = 5;
+            break;
+          }
+          case "Standard Foot":
+          case "Standard Hand": {
+            itemUpdates.system.size = 0;
+            break;
+          }
+          case "Skill Chip":
+          case "Memory Chip": {
+            itemUpdates.system.size = 1;
+            break;
+          }
+          default:
+        }
+      }
+
       if (item.type === "cyberware" && item.system.isInstalled) {
         itemUpdates.system.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
         itemUpdates.system.installedItems.slots = (typeof item.system.optionSlots !== "undefined")
@@ -197,6 +226,7 @@ export default class UniversalInstallMigration extends CPRMigration {
       }
 
       if (item.type === "cyberdeck") {
+        itemUpdates.system.installedItems.allowedTypes = ["program", "itemUpgrade"];
         itemUpdates.system.installedItems.slots = (typeof item.system.slots !== "undefined")
           ? Math.max(itemUpdates.system.installedItems.slots, parseInt(item.system.slots, 10))
           : itemUpdates.system.installedItems.slots;
@@ -226,6 +256,17 @@ export default class UniversalInstallMigration extends CPRMigration {
           }
         }
         itemUpdates.system.programs = newPrograms;
+      }
+
+      if (containerTypes.includes(item.type) && itemUpdates.system.installedItems.usedSlots > itemUpdates.system.installedItems.slots) {
+        CPRSystemUtils.DisplayMessage("warn", CPRSystemUtils.Format("CPR.migration.warning.tooManyInstalledItems", {
+          ActorName: actor.name,
+          ActorUuid: actor.uuid,
+          ItemName: item.name,
+          ItemUuid: item.uuid,
+          InstallCount: itemUpdates.system.installedItems.usedSlots,
+          SlotCount: itemUpdates.system.installedItems.slots,
+        }));
       }
 
       updatedItemList = CPRMigration.addToUpdateList(updatedItemList, itemUpdates);
