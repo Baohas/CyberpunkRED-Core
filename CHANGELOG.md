@@ -9,6 +9,17 @@ If you're a GM and you linked Black-ICE items to tokens on the canvas, you might
 
 We have added the ability for all types of Cyberware to be weapons. This means we have removed the Weapons that duplicated this functionality from the Weapons Compendium. This should not affect already made characters but if you want to streamline your Character/Mook Sheets you can remove the old Cyberware and Weapon items and replace with the new ones to access the new functionality.
 
+In this release we revamped the underlying code which allowed the installation of items (Cyberware, Programs, Upgrades) into a more universal system.  In doing this, it removed the previous limitation that only owned items can be upgraded. This now allows GM's to pre-create custom upgraded items in the world and use them as needed in their games. More details of the new system and these expanded capabilities can be seen in the CHANGELOG.
+
+If you have any of these items in your world and you changed the name to be something other than what is in the Compendium (ie changed a `Skill Chip` name to be `Perception Skill Chip`), you will need to manually update these items to ensure they are accurate per Rules as Written:
+
+- Any `Memory chips` and `Skill chips` should have their size set to 1 (was 0 for the previous system)
+- Any renamed `Chipware Socket` should allow both `Upgrades` and `Cyberware` to be installed into them and their slot count should be set to 1.
+
+In testing the new system, it occurred to us that under the previous system, it was possible to accidentally install too many items into another item.  For instance, an actor may have too many Fashionware items installed (more than 7). If your world contains items/actors that have too many items installed, a warning banner will be displayed during migration to notify you and there will also be a message in the Console providing the same information.  Those items will not allow you to install anything additional into them. You can correct these by accessing the item in your world and uninstalling some of the items.
+
+We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check the console to ensure you did not miss any important messages about your world. Additional details can be found [here](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/migrations)
+
 ### New Features
 
 - Universal Installation System replaces the back end code for installing Cyberware in Actors, Programs in Cyberdecks and Upgrades in other owned Items.  This new system provides the following new features:
@@ -29,6 +40,7 @@ We have added the ability for all types of Cyberware to be weapons. This means w
 - #442 - Implement a "Smart Snort" feature for drugs which will auto-activate only specific effects when consumed.
 - #412 - Duplicate Active Effects in the Item Sheet (and Actor sheet)
 - #655 - Enable deleting changes in an Active Effect
+- #678 - Migrated cyberdecks did not have "program" as a valid installation type
 - All Cyberware can now be a weapon
 
 ### Changes
