@@ -42,6 +42,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - #655 - Enable deleting changes in an Active Effect
 - #678 - Migrated cyberdecks did not have "program" as a valid installation type
 - All Cyberware can now be a weapon
+- Added a note making it more clear how under barrel weapons work
 
 ### Changes
 
@@ -63,6 +64,8 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - DV now shows before the DV Table name of the ruler label when measuring
 - #628 - Rollcard for programs without damage should not show the damage icon in the Rollcard
 - Dialog Affirmations now follow Foundry (`Confirm`, `Cancel`)
+- Set the price of several unpurchasable items to 0
+- Removed the poor quality underbarrel grenade launcher, as it isn't actually a distinct item from the regular underbarrel grenade launcher
 
 ### Bug Fixes
 
