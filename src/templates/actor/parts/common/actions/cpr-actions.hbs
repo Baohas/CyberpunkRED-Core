@@ -18,14 +18,17 @@
 {{#if (cprCompare type "===" "drug")}}
 {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-snort-glyph.hbs"}}
 {{/if}}
-{{#if (cprCompare (cprListContains "ammo,gear,clothing" type) "&&" (cprCompare system.amount ">" "1"))}}
+{{#if (cprCompare (cprHasTemplate type "stackable") "&&" (cprCompare system.amount ">" "1"))}}
 {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-split-item.hbs"}}
 {{/if}}
-{{#if (cprListContains "weapon,armor,gear,clothing,cyberdeck,drug" type)}}
+{{#if (cprHasTemplate type "equippable")}}
 {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-equip-glyph.hbs"}}
 {{/if}}
+{{#if (cprListContains "itemUpgrade,cyberdeck" type)}}
+{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-install-item-glyph.hbs"}}
+{{/if}}
 {{!-- UPGRADE MANAGEMENT --}}
-{{#if (cprIsUpgradable type)}}
+{{#if (cprIsUpgradable this)}}
   {{#if system.isUpgraded}}
     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
   {{else}}

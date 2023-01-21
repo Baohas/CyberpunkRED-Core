@@ -9,7 +9,7 @@ import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
  * Implement the Black-ICE sheet, which extends ActorSheet directly from Foundry. This does
  * not extend CPRActor, as there is very little overlap between Black-ICE and mooks/characters.
  *
- * @extends {CPRActorSheet}
+ * @extends {ActorSheet}
  */
 export default class CPRBlackIceActorSheet extends ActorSheet {
   /**
@@ -23,8 +23,8 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     LOGGER.trace("defaultOptions | CPRBlackIceActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-black-ice-sheet.hbs`,
-      width: 745,
-      height: 200,
+      width: "auto",
+      height: "auto",
     });
   }
 
@@ -63,10 +63,10 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
         break;
       }
       case "damage": {
-        const programId = SystemUtils.GetEventDatum(event, "data-program-id");
+        const programUUID = SystemUtils.GetEventDatum(event, "data-program-uuid");
         const netrunnerTokenId = SystemUtils.GetEventDatum(event, "data-netrunner-id");
         const sceneId = SystemUtils.GetEventDatum(event, "data-scene-id");
-        cprRoll = this.actor.createDamageRoll(programId, netrunnerTokenId, sceneId);
+        cprRoll = this.actor.createDamageRoll(programUUID, netrunnerTokenId, sceneId);
         break;
       }
       default:
@@ -96,21 +96,21 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
   async _configureFromProgram() {
     LOGGER.trace("_configureFromProgram | CPRBlackIceActorSheet | Called.");
     const biPrograms = game.items.filter((i) => i.type === "program" && i.system.class === "blackice");
-    const linkedProgramId = (this.actor.isToken) ? this.actor.token.getFlag(game.system.id, "programId") : null;
-    if (linkedProgramId === null) {
+    const linkedProgramUUID = (this.actor.isToken) ? this.actor.token.getFlag(game.system.id, "programUUID") : null;
+    if (linkedProgramUUID === null) {
       SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.linkBlackIceWithoutToken"));
       return;
     }
-    let formData = { biProgramList: biPrograms, linkedProgramId };
+    let formData = { biProgramList: biPrograms, linkedProgramUUID };
     formData = await ConfigureBIActorFromProgramPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
-    const { programId } = formData;
-    if (programId === "unlink") {
-      await this.actor.token.unsetFlag(game.system.id, "programId");
+    const { programUUID } = formData;
+    if (programUUID === "unlink") {
+      await this.actor.token.unsetFlag(game.system.id, "programUUID");
     } else {
-      const program = (biPrograms.filter((p) => p.id === formData.programId))[0];
+      const program = (biPrograms.filter((p) => p.uuid === formData.programUUID))[0];
       const cprProgramData = duplicate(program.system);
       this.actor.programmaticallyUpdate(
         cprProgramData.blackIceType,
@@ -119,12 +119,13 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
         cprProgramData.atk,
         cprProgramData.def,
         cprProgramData.rez,
+        cprProgramData.description.value,
         cprProgramData.rez,
       );
       if (this.actor.isToken) {
         this.actor.token.name = program.name;
         this.actor.name = program.name;
-        await this.actor.token.setFlag(game.system.id, "programId", program._id);
+        await this.actor.token.setFlag(game.system.id, "programUUID", program.uuid);
       }
     }
     this.render(true, { renderData: this.actor.system });

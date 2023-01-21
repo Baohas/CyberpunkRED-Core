@@ -22,16 +22,16 @@ export default class MookNamePrompt {
           title: "Change a Mook's Name",
           content: html,
           buttons: {
-            cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
-              label: SystemUtils.Localize("CPR.dialog.common.cancel"),
-              callback: () => _onCancel(html),
-            },
             confirm: {
               icon: "<i class=\"fas fa-check\"></i>",
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               // eslint-disable-next-line no-shadow
               callback: (html) => _onConfirm(html),
+            },
+            cancel: {
+              icon: "<i class=\"fas fa-times\"></i>",
+              label: SystemUtils.Localize("CPR.dialog.common.cancel"),
+              callback: () => _onCancel(html),
             },
           },
           default: "confirm",

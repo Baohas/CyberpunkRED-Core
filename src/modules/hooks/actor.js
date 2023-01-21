@@ -1,10 +1,13 @@
 /* global Hooks game */
+import CPRMacros from "../utils/cpr-macros.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
  * Hooks have a set of args that are passed to them from Foundry. Even if we do not use them here,
  * we document them all for clarity's sake and to make future development/debugging easier.
+ *
+ * Hooks are documented here: https://foundryvtt.com/api/modules/hookEvents.html
  */
 const actorHooks = () => {
   /**
@@ -49,7 +52,7 @@ const actorHooks = () => {
         (itemType) => {
           if (!updatedData.system.externalData[itemType].id) {
             const itemId = doc.system.externalData[itemType].id;
-            const item = doc._getOwnedItem(itemId);
+            const item = doc.getOwnedItem(itemId);
             const currentValue = updatedData.system.externalData[itemType].value;
             if (item) {
               switch (item.type) {
@@ -111,7 +114,7 @@ const actorHooks = () => {
 
       const netrunnerTokenId = biToken.getFlag(game.system.id, "netrunnerTokenId");
       const cyberdeckId = biToken.getFlag(game.system.id, "sourceCyberdeckId");
-      const programId = biToken.getFlag(game.system.id, "programId");
+      const programUUID = biToken.getFlag(game.system.id, "programUUID");
       const sceneId = biToken.getFlag(game.system.id, "sceneId");
       const sceneList = game.scenes.filter((s) => s.id === sceneId);
       if (sceneList.length === 1) {
@@ -120,8 +123,8 @@ const actorHooks = () => {
         if (tokenList.length === 1) {
           const netrunnerToken = tokenList[0];
           const netrunner = netrunnerToken.actor;
-          const cyberdeck = netrunner._getOwnedItem(cyberdeckId);
-          cyberdeck.updateRezzedProgram(programId, updatedData.system.stats);
+          const cyberdeck = netrunner.getOwnedItem(cyberdeckId);
+          cyberdeck.updateRezzedProgram(programUUID, updatedData.system.stats);
           netrunner.updateEmbeddedDocuments("Item", [{ _id: cyberdeck.id, system: cyberdeck.system }]);
         }
       }
@@ -136,6 +139,35 @@ const actorHooks = () => {
       if (updatedMax && Number(updatedMax) > 9) {
         SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.doubleDigitStatMaxWarn"));
       }
+    }
+  });
+
+  /**
+   * createActor executes after an actor has been created. We look for the case where an actor was duplicated,
+   * and update the origins on all of the (duplicated) active effects to make them use the new actor's ID.
+   * Note that it is critically important that CPR.global.generic.copy is set for the Foundry translation of
+   * the word "Copy", because we look that up in the actor name to identify this particular use case.
+   *
+   * Example of what is being replaced in origin (more info in cpr-active-effect::getEffectParent())
+   *   Original: Actor.RETihWzz2Zr96VqV.Item.WHUcPfH5Pj0onVNh
+   *   New:      Actor.abcdefg123456789.Item.WHUcPfH5Pj0onVNh
+   *                   ^^^^^^^^^^^^^^^^
+   *
+   * This hook was implemented to address #656. The code doing the work is in cpr-macros so that it can be
+   * called directly by users to fix this problem on existing actors. The hook itself only addresses new ones.
+   *
+   * @public
+   * @memberof hookEvents
+   * @param {Document} doc    - The actor document that was just created
+   * @param {Object} (unused) - Additional options that modified the creation context
+   * @param {String} (unused) - User Id that created the actor
+   * @returns null
+   */
+  Hooks.on("createActor", (doc) => {
+    LOGGER.trace("createActor | actorHooks | Called.");
+    if (doc.name.endsWith(`(${SystemUtils.Localize("CPR.global.generic.copy")})`)) {
+      // an actor is being duplicated
+      CPRMacros.FixActorIdsInEffects(doc);
     }
   });
 };

@@ -27,6 +27,7 @@ system:
   price:
     category: everyday
     market: 20
+  consumed: 'None'
   revealed: true
   source: pg. 357
   tags: []

@@ -3,20 +3,20 @@
   <div class="rollcard-top">
     <div class="cpr-block chat-rollTitle-stat">
       <div class="text-center text-padding-top text-normal">{{rollTitle}}</div>
-      <div class="rollcard-subtitle">
-        <div class="rollcard-subtitle-center text-small">{{localize "CPR.global.itemType.skill.autofire"}}</div>
-        <div class="rollcard-subtitle-right">
-          <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="{{location}}"
-           data-token-id="{{entityData.token}}" data-attack-type="autofire" data-item-id="{{entityData.item}}">
+        <div class="rollcard-subtitle">
+          <div class="rollcard-subtitle-center text-small">{{localize "CPR.global.itemType.skill.autofire"}}</div>
+          <div class="rollcard-subtitle-right">
+            <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="{{location}}"
+            data-token-id="{{entityData.token}}" data-attack-type="autofire" data-item-id="{{entityData.item}}">
             <i class="fas fa-tint red-fg" data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
-          </a>
+            </a>
+          </div>
+          {{#if rollCardExtraArgs.ammoType}}
+          <div class="rollcard-subtitle-2-center text-small">{{localize (cprFindConfigValue "ammoType" rollCardExtraArgs.ammoType)}}</div>
+          {{/if}}
         </div>
-         {{#if rollCardExtraArgs.ammoType}}
-        <div class="rollcard-subtitle-2-center text-small">{{localize (cprFindConfigValue "ammoType" rollCardExtraArgs.ammoType)}}</div>
-        {{/if}}
       </div>
     </div>
-  </div>
   <div class="rollcard-bottom">
     <div class="cpr-block">
       <div class="d10-rollcard-data">
@@ -37,22 +37,22 @@
         </div>
         <div class="d10-number-div">
           <a><span class="clickable{{#if criticalCard}} fg-red text-bold{{/if}}" data-action="toggleVisibility"
-              data-visible-element="d10-data-details">{{resultTotal}}</span></a>
+          data-visible-element="d10-data-details">{{resultTotal}}</span></a>
         </div>
         <div class="d10-data-div">
           <div class="d10-data-details hide">
             <div class="text-normal text-bold">{{localize statName}} + {{statValue}}</div>
             <div class="text-normal text-bold">{{localize skillName}} + {{skillValue}}</div>
             {{#if roleValue}}
-              <div class="text-normal text-bold">{{localize roleName}} + {{roleValue}}</div>
+            <div class="text-normal text-bold">{{localize roleName}} + {{roleValue}}</div>
             {{/if}}
             {{#if universalBonusAttack}}
-              <div class="text-normal text-bold">{{localize "CPR.universalBonuses.attack"}} + {{universalBonusAttack}}
+            <div class="text-normal text-bold">{{localize "CPR.universalBonuses.attack"}} + {{universalBonusAttack}}</div>
             {{/if}}
             {{#if mods}}
             <span class="text-normal text-nowrap">{{localize "CPR.rolls.rollMods"}}: {{mods}}</span>
             <div class="text-normal text-bold text-nowrap">{{localize "CPR.rolls.mods"}} {{localize "CPR.rolls.total"}}:
-              {{totalMods}}</div>
+            {{totalMods}}</div>
             {{/if}}
             {{#if luck}}
             <div class="text-normal text-bold text-nowrap">{{localize "CPR.global.stats.luck"}}: {{luck}}</div>

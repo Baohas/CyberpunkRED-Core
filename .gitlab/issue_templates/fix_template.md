@@ -4,7 +4,8 @@
 
 ### Version-release number of Foundry VTT & Cyberpunk RED Core
 
-[Type text here]
+- FVTT:
+- CPRC:
 
 ### Have you been able to reproduce issue?
 
@@ -39,4 +40,4 @@ If the modules IS listed on the Manage Modules screen of CPR and not functioning
 2. Detailed description of what the module is supposed to do
 3. What you attempted to do in CPR, what you expected to happen, what actually happened
 
-/label ~"Unconfirmed" ~"Bug"
+/label ~"Bug::Unconfirmed"

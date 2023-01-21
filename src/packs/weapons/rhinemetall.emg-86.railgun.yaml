@@ -9,19 +9,16 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: assaultRifle
-  weaponSkill: Heavy Weapons
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 5d6
-  rof: 1
-  dvTable: DV Assault Rifle
-  isRanged: true
-  unarmedAutomaticCalculation: true
+  ammoVariety:
+    - rifle
   attackmod: 0
-  tags: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 5d6
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots.
       Requires BODY 11 or higher (unless mounted). Ignores any armor below
@@ -29,31 +26,42 @@ system:
 
       <p><em>*Not currently supported to will need to manually apply damage to
       armoured targets</em></p>
-    chat: ''
-    unidentified: ''
-  source: pg. 349
-  favorite: false
-  revealed: true
-  usage: equipped
+  dvTable: DV Assault Rifle
   equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 4
-    ammoId: ''
-  ammoVariety:
-    - rifle
-  concealable:
-    concealable: false
-    isConcealed: false
-  upgrades: []
-  slots: 0
-  isUpgraded: false
-  price:
-    market: 5000
-    category: luxury
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
   handsReq: 2
-  attachmentSlots: 0
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ''
+      uuid: ''
+    max: 4
+    value: 0
+  price:
+    category: luxury
+    market: 5000
   quality: standard
+  revealed: true
+  rof: 1
+  slots: 0
+  source: pg. 349
+  tags: []
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: assaultRifle
 type: weapon

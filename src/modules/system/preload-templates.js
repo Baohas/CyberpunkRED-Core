@@ -74,13 +74,15 @@ export default function preloadHandlebarsTemplates() {
 
     // Cyberware Tab Partials
     `systems/${game.system.id}/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-header.hbs`,
+    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-foundational-content.hbs`,
+    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-optional-content.hbs`,
 
     // Common Partials - Actions
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-actions.hbs`,
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-dv-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-equip-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-install-cyberware-glyph.hbs`,
+    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-install-item-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-install-programs-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-reload-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-repair-glyph.hbs`,
@@ -91,7 +93,6 @@ export default function preloadHandlebarsTemplates() {
 
     // Debug
     `systems/${game.system.id}/templates/actor/parts/debug/cpr-item-debug.hbs`,
-    `systems/${game.system.id}/templates/actor/work-in-progress.hbs`,
 
     // Mook Sheet Partials
     `systems/${game.system.id}/templates/actor/mooks/cpr-mook-armor.hbs`,
@@ -103,6 +104,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/mooks/cpr-mook-skills.hbs`,
     `systems/${game.system.id}/templates/actor/mooks/cpr-mook-stats.hbs`,
     `systems/${game.system.id}/templates/actor/mooks/cpr-mook-weapons.hbs`,
+    `systems/${game.system.id}/templates/actor/mooks/cpr-mook-cyberware-optional.hbs`,
 
     // Container Sheet
     `systems/${game.system.id}/templates/actor/container/cpr-container-actions.hbs`,
@@ -126,6 +128,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/item/description/mixin/cpr-stackable.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-upgradable.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-valuable.hbs`,
+    `systems/${game.system.id}/templates/item/description/mixin/cpr-container.hbs`,
 
     // Description Types
     `systems/${game.system.id}/templates/item/description/cpr-ammo.hbs`,
@@ -154,6 +157,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/item/settings/mixin/cpr-stackable.hbs`,
     `systems/${game.system.id}/templates/item/settings/mixin/cpr-upgradable.hbs`,
     `systems/${game.system.id}/templates/item/settings/mixin/cpr-valuable.hbs`,
+    `systems/${game.system.id}/templates/item/settings/mixin/cpr-container.hbs`,
 
     // Setting Types
     `systems/${game.system.id}/templates/item/settings/cpr-ammo.hbs`,

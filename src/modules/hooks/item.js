@@ -5,6 +5,7 @@ import CPRCharacterActorSheet from "../actor/sheet/cpr-character-sheet.js";
 import CPRContainerActorSheet from "../actor/sheet/cpr-container-sheet.js";
 import CPRMookActorSheet from "../actor/sheet/cpr-mook-sheet.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import NotificationPrompt from "../dialog/cpr-notification-prompt.js";
 
 /**
  * Hooks have a set of args that are passed to them from Foundry. Even if we do not use them here,
@@ -55,8 +56,70 @@ const itemHooks = () => {
   });
 
   /**
+   * The preDeleteItem Hook is provided by Foundry and triggered here. When an Item is deleted, this hook is called just
+   * prior to deletion. This hook provides the following functionality:
+   *
+   * - If the item is a World Item and it is installed in another World Item, a dialog is displayed stating that it
+   *   can not be deleted and it lists the items that it is installed in and their corresponding Folder (if needed)
+   *
+   * @public
+   * @memberof hookEvents
+   * @param {Document} doc          The Item document which is requested for deletion
+   * @param {object} options        Additional options which modify the deletion request
+   * @param {string} userId         The ID of the requesting user, always game.user.id
+   */
+  // eslint-disable-next-line no-unused-vars
+  Hooks.on("preDeleteItem", (doc, options, userId) => {
+    LOGGER.trace("preDeleteItem | itemHooks | Called.");
+    let deleteItem = true;
+    if (!doc.isOwned) {
+      const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
+      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+      if (installableTypes.includes(doc.type)) {
+        const worldContainerItems = game.items.filter((i) => containerTypes.includes(i.type));
+        const installedList = worldContainerItems.filter((i) => i.system.installedItems.list.includes(doc.uuid));
+        if (installedList.length > 0) {
+          const debugMode = game.settings.get(game.system.id, "debugElements");
+          const dialogTitle = SystemUtils.Localize("CPR.dialog.deleteInstalledWorldItem.title");
+          let dialogMessage = `${SystemUtils.Format("CPR.dialog.deleteInstalledWorldItem.text", { itemName: doc.name })}`;
+          dialogMessage = dialogMessage.concat("<br><br>");
+          for (const item of installedList) {
+            let itemName = item.name;
+            if (debugMode) {
+              itemName = `${item.name} [${item.uuid}]`;
+            }
+            let folderName = `(${SystemUtils.Localize("CPR.global.generic.worldFolder")}: ${SystemUtils.Localize("CPR.global.generic.notApplicable")})`;
+            if (item.folder !== null) {
+              let folderStructure = item.folder.name;
+              let { folder } = item.folder;
+              const folderId = item.folder.uuid;
+              while (folder !== null) {
+                folderStructure = `${folder.name}/${folderStructure}`;
+                folder = folder.folder;
+              }
+              folderName = `(${SystemUtils.Localize("CPR.global.generic.worldFolder")}: /${folderStructure})`;
+              if (debugMode) {
+                folderName = `${folderName} [${folderId}]`;
+              }
+            }
+
+            dialogMessage = dialogMessage.concat(`<center>${itemName} ${folderName}</center><br>`);
+          }
+          NotificationPrompt.RenderPrompt(dialogTitle, dialogMessage);
+          deleteItem = false;
+        }
+      }
+    }
+    return deleteItem;
+  });
+
+  /**
    * The createItem Hook is provided by Foundry and triggered here. When an Item is created, this hook is called during
-   * creation. This hook handles items dragged on the mook sheet to automatically equip or install them.
+   * creation. This hook handles:
+   * - Items which have installed items, it calls a creation method to create the installed items at the
+   *   location of the created Item (ie Actor or World)
+   * - Weapons which have ammo, it calls a creation method to create the installed ammo on the actor.
+   * - items dragged on the mook sheet to automatically equip or install them.
    *
    * @public
    * @memberof hookEvents
@@ -65,7 +128,17 @@ const itemHooks = () => {
    * @param {string} userId               The ID of the requesting user, always game.user.id
    */
   Hooks.on("createItem", (doc, _, userId) => {
-    LOGGER.trace("createItem | actorHooks | Called.");
+    LOGGER.trace("createItem | itemHooks | Called.");
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
+    if (containerTypes.includes(doc.type) && doc.system.installedItems.list.length > 0) {
+      doc.createInstalledItems();
+    }
+
+    if (loadableTypes.includes(doc.type) && doc.system.magazine.ammoData.uuid !== "") {
+      doc.createAmmoItems();
+    }
+
     const actor = doc.parent;
     if (actor !== null) {
       if (doc.type === "role") {

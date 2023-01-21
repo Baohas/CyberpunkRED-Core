@@ -19,6 +19,14 @@ system:
     value: <p>Netrunner deck. 5 slots.</p>
   equipped: owned
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - program
+    list: []
+    slots: 5
+    usedSlots: 0
   isUpgraded: false
   price:
     category: premium
@@ -26,7 +34,6 @@ system:
   programs:
     installed: []
     rezzed: []
-  slots: 5
   source: pg. 353
   tags: []
   upgrades: []

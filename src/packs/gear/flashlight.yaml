@@ -1,5 +1,28 @@
 _id: spgehgLv94vrH4Zo
-effects: []
+effects:
+  - _id: WtdgeCRYXV3Mslji
+    changes:
+      - key: ATL.light.bright
+        mode: 2
+        priority: null
+        value: '50'
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': custom
+    icon: systems/cyberpunk-red-core/icons/compendium/gear/flashlight.svg
+    label: Flashlight
+    tint: null
+    transfer: true
 flags:
   core: {}
 folder: null
@@ -19,12 +42,18 @@ system:
     value: <p>10h of light on a single charge. 100m/yd range.</p>
   equipped: owned
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isUpgraded: false
   price:
     category: everyday
     market: 20
   revealed: true
-  slots: 3
   source: pg. 353
   tags: []
   upgrades: []

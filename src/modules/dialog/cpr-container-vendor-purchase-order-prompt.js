@@ -20,16 +20,16 @@ export default class ContainerVendorSellToPrompt {
           title: SystemUtils.Localize("CPR.dialog.container.vendor.purchaseOrderTitle"),
           content: html,
           buttons: {
-            cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
-              label: SystemUtils.Localize("CPR.dialog.container.vendor.decline"),
-              callback: () => _onCancel(),
-            },
             confirm: {
               icon: "<i class=\"fas fa-check\"></i>",
               label: SystemUtils.Localize("CPR.dialog.container.vendor.accept"),
               // eslint-disable-next-line no-shadow
               callback: () => _onConfirm(),
+            },
+            cancel: {
+              icon: "<i class=\"fas fa-times\"></i>",
+              label: SystemUtils.Localize("CPR.dialog.container.vendor.decline"),
+              callback: () => _onCancel(),
             },
           },
           default: "confirm",

@@ -127,7 +127,7 @@ async function processImages() {
       })
       .pipe(gulp.dest(destFolder))
       .on("finish", () => {
-        log("Finsihed Processing Images.");
+        log("Finished Processing Images.");
         cb();
       });
   });

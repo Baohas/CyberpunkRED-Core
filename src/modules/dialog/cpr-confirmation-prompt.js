@@ -24,19 +24,19 @@ export default class ConfirmationPrompt {
           title,
           content: html,
           buttons: {
-            cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
-              label: SystemUtils.Localize("CPR.dialog.common.cancel"),
-              callback: () => _onCancel(),
-            },
             confirm: {
               icon: "<i class=\"fas fa-check\"></i>",
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               callback: () => _onConfirm(),
             },
+            cancel: {
+              icon: "<i class=\"fas fa-times\"></i>",
+              label: SystemUtils.Localize("CPR.dialog.common.cancel"),
+              callback: () => _onCancel(),
+            },
           },
-          default: "cancel",
-          render: LOGGER.trace("confirm | Dialog VerifyRollPrompt | called."),
+          default: "confirm",
+          render: LOGGER.trace("confirm | Dialog ConfirmationPrompt | called."),
           close: () => {
             // Closing the window can be interpreded as pressing cancel, thus it also resoles to false
             resolve(false);

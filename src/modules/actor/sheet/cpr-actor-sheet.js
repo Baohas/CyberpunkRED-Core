@@ -1,7 +1,6 @@
-/* global ActorSheet, $, setProperty, game, getProperty, mergeObject duplicate, TextEditor */
+/* global ActorSheet, $, setProperty, game, getProperty, mergeObject duplicate, TextEditor, fromUuidSync */
 import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
-import CPR from "../../system/config.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRLedger from "../../dialog/cpr-ledger-form.js";
 import LOGGER from "../../utils/cpr-logger.js";
@@ -20,26 +19,26 @@ import LedgerEditPrompt from "../../dialog/cpr-ledger-edit-prompt.js";
  */
 export default class CPRActorSheet extends ActorSheet {
   /**
-   * We extend ActorSheet._render to enable automatic window resizing.
-   * Only resize the sheet with default size, as render option is called on several differnt update events.
-   * Should one still desire resizing the sheet afterwards, please call _automaticResize explicitly.
+   * We extend the constructor to initialize data structures used for tracking parts of the sheet
+   * being collapsed or opened, such as skill categories. These structures are later loaded from
+   * User Settings if they exist.
    *
-   * @override
-   * @private
-   * @param {Boolean} force - for this to be rendered. We don't use this, but the parent class does.
-   * @param {Object} options - rendering options that are passed up the chain to the parent
+   * @constructor
+   * @param {*} actor - the actor object associated with this sheet
+   * @param {*} options - entity options passed up the chain
    */
-  async _render(force = false, options = {}) {
-    LOGGER.trace("_render | CPRActorSheet | Called.");
-    await super._render(force, options);
-    if (this.position.width === this.options.defaultWidth && this.position.height === this.options.defaultHeight) {
-      this._automaticResize();
+  constructor(actor, options) {
+    LOGGER.trace("constructor | CPRCharacterActorSheet | Called.");
+    super(actor, options);
+    this.options.collapsedSections = [];
+    const collapsedSections = SystemUtils.GetUserSetting("sheetConfig", "sheetCollapsedSections", this.id);
+    if (collapsedSections) {
+      this.options.collapsedSections = collapsedSections;
     }
   }
 
   /**
-   * Set the default width and height so auto-resizing of the window works. Child classes will
-   * merge additional default options with this object. The scrollY option identifies elements where the
+   * The scrollY option identifies elements where the
    * vertical position should be preserved during a re-render.
    *
    * See https://foundryvtt.com/api/Application.html for the complete list of options available.
@@ -49,15 +48,11 @@ export default class CPRActorSheet extends ActorSheet {
    */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRActorSheet | Called.");
-    const defaultWidth = 966;
-    const defaultHeight = 590;
     return mergeObject(super.defaultOptions, {
       classes: super.defaultOptions.classes.concat(["sheet", "actor"]),
-      defaultWidth,
-      defaultHeight,
-      width: defaultWidth,
-      height: defaultHeight,
       scrollY: [".right-content-section", ".top-pane-gear"],
+      width: "auto",
+      height: "auto",
     });
   }
 
@@ -75,8 +70,6 @@ export default class CPRActorSheet extends ActorSheet {
     const foundryData = super.getData();
     const cprActorData = foundryData.actor.system;
     if (this.actor.type === "mook" || this.actor.type === "character") {
-      cprActorData.installedCyberware = this._getSortedInstalledCyberware();
-
       cprActorData.fightOptions = (this.actor.hasItemTypeEquipped("cyberdeck")) ? "both" : "";
       let fightState = this.actor.getFlag(game.system.id, "fightState");
       if (!fightState || cprActorData.fightOptions !== "both") {
@@ -156,34 +149,6 @@ export default class CPRActorSheet extends ActorSheet {
   }
 
   /**
-   * Used in getData to turn installable Cyberware data into an organized structure
-   *
-   * @private
-   * @returns - object data about Cyberware
-   */
-  _getSortedInstalledCyberware() {
-    LOGGER.trace("_getSortedInstalledCyberware | CPRActorSheet | Called.");
-    // Get all Installed Cyberware first...
-    const installedCyberware = this.actor.getInstalledCyberware();
-    const installedFoundationalCyberware = installedCyberware.filter((c) => c.system.isFoundational === true);
-
-    // Now sort allInstalledCybere by type, and only get foundational
-    const sortedInstalledCyberware = {};
-    for (const [type] of Object.entries(CPR.cyberwareTypeList)) {
-      sortedInstalledCyberware[type] = installedFoundationalCyberware.filter(
-        (cyberware) => cyberware.system.type === type,
-      );
-      sortedInstalledCyberware[type] = sortedInstalledCyberware[type].map(
-        (cyberware) => ({ foundation: cyberware, optionals: [] }),
-      );
-      sortedInstalledCyberware[type].forEach((entry) => {
-        entry.foundation.system.optionalIds.forEach((id) => entry.optionals.push(this._getOwnedItem(id)));
-      });
-    }
-    return sortedInstalledCyberware;
-  }
-
-  /**
    * Activate listeners for the sheet. This should be only common listeners across Mook and Character sheets.
    * This has to call super at the end for Foundry to process events properly and get built-in functionality
    * like dragging items to sheets.
@@ -224,6 +189,9 @@ export default class CPRActorSheet extends ActorSheet {
     // Reset content filter
     html.find(".reset-content-filter").click(() => this._clearContentFilter());
 
+    // toggle the expand/collapse buttons for skill and item categories
+    html.find(".expand-button").click((event) => this._expandButton(event));
+
     // Show edit and delete buttons
     html.find(".row.item").hover(
       (event) => {
@@ -261,16 +229,42 @@ export default class CPRActorSheet extends ActorSheet {
     // set/unset "checkboxes" used with fire modes
     html.find(".fire-checkbox").click((event) => this._fireCheckboxToggle(event));
 
-    // Sheet resizing
-    html.find(".tab-label:not(.skills-tab):not(.gear-tab):not(.cyberware-tab)").click(
-      () => this._automaticResize(),
-    );
-
     // Reputation related listeners
     html.find(".reputation-edit-button").click(() => this._updateReputation());
     html.find(".reputation-open-ledger").click(() => this.showLedger("reputation"));
 
     super.activateListeners(html);
+  }
+
+  /**
+   * This is the + or - glyph on the skill and gear tab that hides whole categories of items.
+   * It does not hide favorited items.
+   *
+   * @callback
+   * @private
+   * @param {*} event - object with details of the event
+   */
+  _expandButton(event) {
+    LOGGER.trace("_expandButton | CPRCharacterActorSheet | Called.");
+    const collapsibleElement = $(event.currentTarget).parents(".collapsible");
+    $(collapsibleElement).find(".collapse-icon").toggleClass("hide");
+    $(collapsibleElement).find(".expand-icon").toggleClass("hide");
+    const itemOrderedList = $(collapsibleElement).children("ol");
+    const itemList = $(itemOrderedList).children("li");
+    itemList.each((lineIndex) => {
+      const lineItem = itemList[lineIndex];
+      if ($(lineItem).hasClass("item") && !$(lineItem).hasClass("favorite")) {
+        $(lineItem).toggleClass("hide");
+      }
+    });
+
+    if (this.options.collapsedSections.includes(event.currentTarget.id)) {
+      this.options.collapsedSections = this.options.collapsedSections.filter(
+        (sectionName) => sectionName !== event.currentTarget.id,
+      );
+    } else {
+      this.options.collapsedSections.push(event.currentTarget.id);
+    }
   }
 
   /**
@@ -301,19 +295,19 @@ export default class CPRActorSheet extends ActorSheet {
           rollSubType,
           subRoleName,
         };
-        item = this._getOwnedItem(itemId);
+        item = this.actor.getOwnedItem(itemId);
         cprRoll = item.createRoll(rollType, this.actor, rollInfo);
         break;
       }
       case CPRRolls.rollTypes.SKILL: {
         const itemId = CPRActorSheet._getItemId(event);
-        item = this._getOwnedItem(itemId);
+        item = this.actor.getOwnedItem(itemId);
         cprRoll = item.createRoll(rollType, this.actor);
         break;
       }
       case CPRRolls.rollTypes.DAMAGE: {
         const itemId = CPRActorSheet._getItemId(event);
-        item = this._getOwnedItem(itemId);
+        item = this.actor.getOwnedItem(itemId);
         const damageType = this._getFireCheckbox(event);
         cprRoll = item.createRoll(rollType, this.actor, { damageType });
         if (rollType === CPRRolls.rollTypes.AIMED) {
@@ -323,7 +317,7 @@ export default class CPRActorSheet extends ActorSheet {
       }
       case CPRRolls.rollTypes.ATTACK: {
         const itemId = CPRActorSheet._getItemId(event);
-        item = this._getOwnedItem(itemId);
+        item = this.actor.getOwnedItem(itemId);
         rollType = this._getFireCheckbox(event);
         cprRoll = item.createRoll(rollType, this.actor);
         break;
@@ -331,7 +325,7 @@ export default class CPRActorSheet extends ActorSheet {
       case CPRRolls.rollTypes.INTERFACEABILITY: {
         const interfaceAbility = SystemUtils.GetEventDatum(event, "data-interface-ability");
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
-        const cyberdeck = this._getOwnedItem(cyberdeckId);
+        const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
         const netRoleItem = this.actor.itemTypes.role.find((r) => r.id === this.actor.system.roleInfo.activeNetRole);
         if (!netRoleItem) {
           const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
@@ -342,10 +336,10 @@ export default class CPRActorSheet extends ActorSheet {
         break;
       }
       case CPRRolls.rollTypes.CYBERDECKPROGRAM: {
-        const programId = SystemUtils.GetEventDatum(event, "data-program-id");
+        const programUUID = SystemUtils.GetEventDatum(event, "data-program-uuid");
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
         const executionType = SystemUtils.GetEventDatum(event, "data-execution-type");
-        const cyberdeck = this._getOwnedItem(cyberdeckId);
+        const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
         const netRoleItem = this.actor.itemTypes.role.find((r) => r.id === this.actor.system.roleInfo.activeNetRole);
         if (!netRoleItem) {
           const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
@@ -354,7 +348,7 @@ export default class CPRActorSheet extends ActorSheet {
         }
         const extraData = {
           cyberdeckId,
-          programId,
+          programUUID,
           executionType,
           netRoleItem,
         };
@@ -477,7 +471,7 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _itemAction(event) {
     LOGGER.trace("_itemAction | CPRActorSheet | Called.");
-    const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
+    const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     const actionType = SystemUtils.GetEventDatum(event, "data-action-type");
     if (item) {
       switch (actionType) {
@@ -493,12 +487,12 @@ export default class CPRActorSheet extends ActorSheet {
           item.toggleFavorite();
           break;
         }
-        case "upgrade": {
-          await item.sheet._selectItemUpgrades(event);
+        case "manage-upgrades": {
+          await item.sheet._manageInstalledItems("itemUpgrade");
           break;
         }
-        case "remove-upgrade": {
-          await item.sheet._removeItemUpgrade(event);
+        case "manage-programs": {
+          await item.sheet._manageInstalledItems("program");
           break;
         }
         case "split": {
@@ -508,6 +502,14 @@ export default class CPRActorSheet extends ActorSheet {
         case "snort": {
           // consume a drug
           item.snort();
+          break;
+        }
+        case "install-item": {
+          item.install();
+          break;
+        }
+        case "uninstall-item": {
+          item.uninstall();
           break;
         }
         default: {
@@ -576,7 +578,7 @@ export default class CPRActorSheet extends ActorSheet {
   _renderItemCard(event) {
     LOGGER.trace("_renderItemCard | CPRActorSheet | Called.");
     const itemId = CPRActorSheet._getItemId(event);
-    const item = this.actor.items.find((i) => i._id === itemId);
+    const item = this.actor.getOwnedItem(itemId);
     if (event.ctrlKey) {
       CPRChat.RenderItemCard(item);
       return;
@@ -596,7 +598,7 @@ export default class CPRActorSheet extends ActorSheet {
   _renderReadOnlyItemCard(event) {
     LOGGER.trace("_renderReadOnlyItemCard | CPRActorSheet | Called.");
     const itemId = CPRActorSheet._getItemId(event);
-    const item = this.actor.items.find((i) => i._id === itemId);
+    const item = this.actor.getOwnedItem(itemId);
     if (event.ctrlKey) {
       CPRChat.RenderItemCard(item);
       return;
@@ -622,18 +624,6 @@ export default class CPRActorSheet extends ActorSheet {
       id = SystemUtils.GetEventDatum(event, "data-item-id");
     }
     return id;
-  }
-
-  /**
-   * Return an owned Item object given the desired ID
-   *
-   * @private
-   * @param {String} itemId - the Id of the owned item to retrieve
-   * @returns the Item object matching the given Id
-   */
-  _getOwnedItem(itemId) {
-    LOGGER.trace("_getOwnedItem | CPRActorSheet | Called.");
-    return this.actor.items.find((i) => i._id === itemId);
   }
 
   /**
@@ -683,31 +673,15 @@ export default class CPRActorSheet extends ActorSheet {
         return;
       }
     }
-    if (item.type === "ammo") {
-      const weapons = this.actor.itemTypes.weapon;
-      let ammoIsLoaded = false;
-      weapons.forEach((weapon) => {
-        const weaponData = weapon.system;
-        if (weaponData.isRanged) {
-          if (weaponData.magazine.ammoId === item.id) {
-            const warningMessage = `${SystemUtils.Localize("CPR.messages.ammoDeleteWarning")}: ${weapon.name}`;
-            SystemUtils.DisplayMessage("warn", warningMessage);
-            ammoIsLoaded = true;
-          }
-        }
-      });
 
-      if (ammoIsLoaded) {
-        return;
-      }
-    }
     if (item.type === "cyberdeck") {
       // Set all of the owned programs that were installed on
       // this cyberdeck to uninstalled.
       const programs = item.getInstalledPrograms();
       const updateList = [];
       programs.forEach((p) => {
-        updateList.push({ _id: p._id, "system.isInstalled": false });
+        const program = this.actor.getOwnedItem(p.uuid);
+        updateList.push({ _id: program._id, "system.isInstalled": false });
       });
       await this.actor.updateEmbeddedDocuments("Item", updateList);
     }
@@ -746,7 +720,7 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.debug(`weaponID is ${weaponID}`);
     LOGGER.debug(`flag is ${flag}`);
     if (this.token !== null && firemode === "autofire") {
-      const weaponDvTable = (this._getOwnedItem(weaponID)).system.dvTable;
+      const weaponDvTable = (this.actor.getOwnedItem(weaponID)).system.dvTable;
       const currentDvTable = (weaponDvTable === "") ? getProperty(this.token, "flags.cprDvTable") : weaponDvTable;
       if (typeof currentDvTable !== "undefined") {
         const dvTable = currentDvTable.replace(" (Autofire)", "");
@@ -777,7 +751,7 @@ export default class CPRActorSheet extends ActorSheet {
   static async _setCriticalInjuryTable(tableSetting) {
     LOGGER.trace("_setCriticalInjuryTable | CPRActorSheet | Called.");
     const critInjuryTables = await SystemUtils.GetCompendiumDocs(tableSetting);
-    const tableNames = critInjuryTables.map((t) => t.name);
+    const tableNames = critInjuryTables.map((t) => t.name).sort();
     const formData = await RollCriticalInjuryPrompt.RenderPrompt(tableNames).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return undefined;
@@ -802,7 +776,6 @@ export default class CPRActorSheet extends ActorSheet {
     const rollTable = await SystemUtils.GetCompendiumDoc(tableSetting, tableName);
     const injuryCompName = SystemUtils.GetCompendiumIdByLabel(tableName);
     this._drawCriticalInjuryTable(rollTable, injuryCompName, 0);
-    this._automaticResize();
   }
 
   /**
@@ -890,26 +863,6 @@ export default class CPRActorSheet extends ActorSheet {
       }
       CPRChat.RenderRollCard(cprRoll);
     });
-  }
-
-  /**
-   * Automatically resize the actor sheet to dimensions that will fit all revealed elements, assuming the
-   * user has this set to happen in their settings.
-   *
-   * @private
-   */
-  _automaticResize() {
-    LOGGER.trace("_automaticResize | CPRActorSheet | Called.");
-    const setting = game.settings.get(game.system.id, "automaticallyResizeSheets");
-    if (setting && this.rendered && !this._minimized) {
-      // It seems that the size of the content does not change immediately upon updating the content
-      setTimeout(() => {
-        // Make sheet small, so this.form.offsetHeight does not include whitespace
-        this.setPosition({ width: this.position.width, height: 35 });
-        // 30px for the header and 8px top margin 8px bottom margin
-        this.setPosition({ width: this.position.width, height: this.form.offsetHeight + 46 });
-      }, 10);
-    }
   }
 
   /**
@@ -1063,6 +1016,10 @@ export default class CPRActorSheet extends ActorSheet {
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const item = this.actor.getEmbeddedDocument("Item", itemId);
     const tokenId = (this.token === null) ? null : this.token.id;
+    if (item.type === "cyberware" && item.system.isInstalled) {
+      SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.tradeDragInstalledCyberwareError"));
+      return;
+    }
     event.dataTransfer.setData("text/plain", JSON.stringify({
       type: "Item",
       uuid: item.uuid,
@@ -1089,37 +1046,55 @@ export default class CPRActorSheet extends ActorSheet {
   async _onDrop(event) {
     LOGGER.trace("_onDrop | CPRActorSheet | called.");
     const dragData = TextEditor.getDragEventData(event);
-    if (dragData.system && dragData.system.actorId !== undefined) {
+    return (dragData.type === "Item") ? this._cprOnItemDrop(event) : super._onDrop(event);
+  }
+
+  async _cprOnItemDrop(event) {
+    LOGGER.trace("_cprOnItemDrop | CPRActorSheet | called.");
+    const dragData = TextEditor.getDragEventData(event);
+    let sourceActor;
+    const sourceItem = fromUuidSync(dragData.uuid);
+    const transferItem = dragData.system && dragData.system.actorId !== undefined;
+    if (transferItem) {
       // Transfer ownership from one player to another
-      const actor = (Object.keys(game.actors.tokens).includes(dragData.system.tokenId))
+      sourceActor = (Object.keys(game.actors.tokens).includes(dragData.system.tokenId))
         ? game.actors.tokens[dragData.system.tokenId]
         : game.actors.find((a) => a.id === dragData.system.actorId);
-      if (actor.type === "container" && !game.user.isGM) {
+      if (sourceActor.type === "container" && !game.user.isGM) {
         SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradeDragOutWarn"));
         return;
       }
-      if (actor) {
+      if (sourceActor) {
         // Do not move if the data is moved to itself
-        if (actor._id === this.actor._id) {
+        if (sourceActor._id === this.actor._id) {
           return;
         }
-        const item = dragData.system.data;
-        const cprData = item.system;
+
         // If the cyberware is marked as core, or is installed, throw an error message.
-        if (cprData.core === true || (cprData.type === "cyberware" && cprData.isInstalled)) {
+        if (sourceItem.system.core === true || (sourceItem.system.type === "cyberware" && sourceItem.system.isInstalled)) {
           SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.cannotDropInstalledCyberware"));
           return;
         }
-        if (cprData.isUpgraded) {
-          SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradedragupgradewarn"));
-          return;
-        }
-        if (await super._onDrop(event)) {
-          await actor.deleteEmbeddedDocuments("Item", [item._id]);
-        }
       }
-    } else {
-      await super._onDrop(event);
+    }
+
+    const deleteList = (transferItem) ? [sourceItem._id] : [];
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+
+    const [newItem] = await super._onDrop(event);
+
+    // If we created a new item and the sourceItem is a container type the createItem hook ensures all of the
+    // installed items are also created on the target actor. We need to ensure that those items are
+    // deleted from the source actor.
+    if (newItem && containerTypes.includes(sourceItem.type) && sourceItem.isOwned === true && sourceItem.system.installedItems.list.length > 0) {
+      const deleteItemList = sourceItem.recursiveGetAllInstalledItems();
+      for (const item of deleteItemList) {
+        deleteList.push(item._id);
+      }
+    }
+
+    if (newItem && transferItem) {
+      await sourceActor.deleteEmbeddedDocuments("Item", deleteList);
     }
   }
 

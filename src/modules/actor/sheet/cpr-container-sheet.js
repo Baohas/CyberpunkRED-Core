@@ -1,4 +1,4 @@
-/* global mergeObject game getProperty duplicate setProperty TextEditor Item */
+/* global mergeObject game getProperty duplicate setProperty TextEditor Item fromUuidSync */
 /* eslint-env jquery */
 import CPRActorSheet from "./cpr-actor-sheet.js";
 import LOGGER from "../../utils/cpr-logger.js";
@@ -11,13 +11,13 @@ import PurchaseOrderPrompt from "../../dialog/cpr-container-vendor-purchase-orde
 
 /**
  * Implement the sheet for containers and shop keepers. This extends CPRActorSheet to make use
- * of owned-item management methods like _getOwnedItem and _deleteOwnedItem.
+ * of owned-item management methods like getOwnedItem and _deleteOwnedItem.
  *
  * @extends {CPRActorSheet}
  */
 export default class CPRContainerActorSheet extends CPRActorSheet {
   /**
-   * Set the template, width and height of the window.
+   * See https://foundryvtt.com/api/Application.html for the complete list of options available.
    *
    * @override
    * @returns - sheet options merged with default options in ActorSheet
@@ -26,8 +26,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     LOGGER.trace("defaultOptions | CPRContainerActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-container-sheet.hbs`,
-      width: 750,
-      height: 496,
     });
   }
 
@@ -77,7 +75,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     LOGGER.trace("activateListeners | CPRContainerSheet | Called.");
 
     // Selection of trade partner
-    html.find(".trade-with-dropdown").change((event) => this._setTradePartner(event));
+    html.find("select[name=\"trade-with-dropdown\"").change((event) => this._setTradePartner(event));
     // Create item in inventory
     html.find(".item-create").click((event) => this._createInventoryItem(event));
     //
@@ -94,46 +92,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
   }
 
   /**
-   * We extend CPRContainerSheet._render to enable automatic fitting of the content to the window size.
-   *
-   * @override
-   * @private
-   * @param {Boolean} force - for this to be rendered. We don't use this, but the parent class does.
-   * @param {Object} options - rendering options that are passed up the chain to the parent
-   */
-  async _render(force = false, options = {}) {
-    LOGGER.trace("_render | CPRContainerSheet | Called.");
-    await super._render(force, options);
-    this._automaticContentResize();
-  }
-
-  /**
-   * We extend CPRContainerSheet._onRezize to enable automatic fitting of the content to the window size.
-   *
-   * @override
-   * @private
-   * @param {event} event - object capruting evene t data
-   */
-  _onResize(event) {
-    LOGGER.trace("_onResize | CPRContainerSheet | Called.");
-    this._automaticContentResize();
-    super._onResize(event);
-  }
-
-  /**
-   * Automatically resize the content such that it fills the window.
-   *
-   * @private
-   */
-  _automaticContentResize() {
-    LOGGER.trace("_automaticContentResize | CPRContainerSheet | Called.");
-    if (this.form !== null) {
-      const newHeight = this.position.height - 46;
-      this.form.children[0].children[1].setAttribute("style", `height:${newHeight}px`);
-    }
-  }
-
-  /**
    * Override the _itemAction() of the CPRActorSheet to add "purchase" action
    * and remove non needed other action types.
    *
@@ -145,7 +103,8 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   async _itemAction(event) {
     LOGGER.trace("_itemAction | CPRContainerSheet | Called.");
-    const item = this._getOwnedItem(CPRActorSheet._getItemId(event));
+    const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
+    const item = this.actor.getOwnedItem(itemId);
     const actionType = SystemUtils.GetEventDatum(event, "data-action-type");
     if (item) {
       switch (actionType) {
@@ -221,9 +180,14 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   async _purchaseItem(item, all) {
     LOGGER.trace("_purchaseItem | CPRContainerSheet | Called.");
-    if (this.tradePartnerId === undefined || this.tradePartnerId === "") {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradeWithWarn"));
-      return;
+    let { tradePartnerId } = this;
+    if (tradePartnerId === undefined || tradePartnerId === "") {
+      if (!game.user.isGM && game.user.character) {
+        tradePartnerId = game.user.character._id;
+      } else {
+        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradeWithWarn"));
+        return;
+      }
     }
 
     // Players must have Owned permission on Containers for them to function properly
@@ -231,6 +195,8 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.insufficientPermissions"));
       return;
     }
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const valuableTypes = SystemUtils.GetTemplateItemTypes("valuable");
 
     const transferredItemData = duplicate(item);
     let cost = 0;
@@ -238,7 +204,13 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       // Ammunition, which is neither grenades nor rockets, are prices are for 10 of them (pg. 344)
       cost = item.system.price.market / 10;
     } else {
-      cost = item.system.price.market;
+      cost = valuableTypes.includes(item.type) ? item.system.price.market : 0;
+      if (containerTypes.includes(item.type)) {
+        const installedItems = item.recursiveGetAllInstalledItems();
+        installedItems.forEach((installedItem) => {
+          cost += (valuableTypes.includes(installedItem.type)) ? installedItem.system.price.market : 0;
+        });
+      }
     }
     if (!all) {
       const itemText = SystemUtils.Format("CPR.dialog.purchasePart.text", { itemName: item.name });
@@ -257,7 +229,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     } else {
       cost *= (typeof item.system.amount !== "undefined") ? parseInt(item.system.amount, 10) : 1;
     }
-    const tradePartnerActor = game.actors.get(this.tradePartnerId);
+    const tradePartnerActor = game.actors.get(tradePartnerId);
     if (!getProperty(this.actor, `flags.${game.system.id}.items-free`)) {
       if (tradePartnerActor.system.wealth.value < cost) {
         SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradePriceWarn"));
@@ -294,7 +266,15 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     }
     if (!getProperty(this.actor, `flags.${game.system.id}.infinite-stock`)) {
       if (all) {
-        await this._deleteOwnedItem(item, true);
+        const deleteList = [item._id];
+
+        if (containerTypes.includes(item.type) && item.isOwned === true && item.system.installedItems.list.length > 0) {
+          const deleteItemList = item.recursiveGetAllInstalledItems();
+          for (const installedItem of deleteItemList) {
+            deleteList.push(installedItem._id);
+          }
+        }
+        await this.actor.deleteEmbeddedDocuments("Item", deleteList);
       } else {
         const keepAmount = item.system.amount - transferredItemData.system.amount;
         await this.actor.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.amount": keepAmount }]);
@@ -322,23 +302,15 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
 
     const tradePartnerActor = game.actors.get(dragData.system.actorId);
 
-    const item = duplicate(dragData.system.data);
+    const item = fromUuidSync(dragData.uuid);
     const cprItemData = item.system;
-    let cprItemName = dragData.system.name;
+    let cprItemName = item.name;
     const amount = cprItemData.amount ? parseInt(cprItemData.amount, 10) : 1;
     const vendorData = this.actor.system;
     const vendorConfig = vendorData.vendor;
     const username = game.user.name;
 
     let cost = 0;
-
-    if (item.type === "weapon") {
-      const { ammoId } = cprItemData.magazine;
-      if (ammoId !== "") {
-        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradeLoadedWeaponWarn"));
-        return;
-      }
-    }
 
     if (item.type === "ammo" && cprItemData.variety !== "grenade" && cprItemData.variety !== "rocket") {
       // Ammunition, which is neither grenades nor rockets, are prices are for 10 of them (pg. 344)
@@ -348,54 +320,59 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     }
     const percent = parseInt(vendorConfig.itemTypes[item.type].purchasePercentage, 10);
 
-    if (cprItemData.isUpgraded) {
-      cprItemData.upgrades.forEach((upgrade) => {
-        const upgradeItem = tradePartnerActor.items.find((i) => i._id === upgrade._id);
-        if (upgradeItem) {
-          cost += upgradeItem.system.price.market;
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+
+    if (containerTypes.includes(item.type) && cprItemData.installedItems.list.length > 0) {
+      cprItemData.installedItems.list.forEach((installedUUID) => {
+        const installedItem = fromUuidSync(installedUUID);
+        if (installedItem) {
+          cost += installedItem.system.price.market;
         }
       });
-      cprItemName = `${SystemUtils.Localize("CPR.global.generic.upgraded")} ${cprItemName}`;
     }
 
     let vendorOffer = parseInt(((amount * cost * percent) / 100), 10);
     vendorOffer = Math.min(vendorOffer, vendorData.wealth.value);
 
+    if (cprItemData.isUpgraded) {
+      cprItemName = `${SystemUtils.Localize("CPR.global.generic.upgraded")} ${cprItemName}`;
+    }
+
     const offerMessage = `${SystemUtils.Format(
       "CPR.dialog.container.vendor.offerToBuy",
       {
-        vendorName: tradePartnerActor.name,
+        vendorName: this.actor.name,
         vendorOffer,
-        cprItemName,
+        itemName: cprItemName,
         percent,
       },
     )}`;
     const formData = await PurchaseOrderPrompt.RenderPrompt(offerMessage).catch((err) => LOGGER.debug(err));
 
     if (formData !== undefined) {
+      const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
+      if (loadableTypes.includes(item.type) && item.system.magazine.ammoData.uuid !== "") {
+        await item._unloadItem();
+        cprItemData.magazine.ammoData = { uuid: "", name: "" };
+        cprItemData.magazine.value = 0;
+      }
       let createItems = [];
       const deleteItems = [];
-      if (cprItemData.isUpgraded) {
-        cprItemData.upgrades.forEach(async (upgrade) => {
-          const upgradeItem = tradePartnerActor.items.find((i) => i._id === upgrade._id);
-          if (upgradeItem) {
-            const newItem = duplicate(upgradeItem);
-            newItem.system.isInstalled = false;
-            newItem.system.install = "";
-            createItems.push(newItem);
-            deleteItems.push(upgradeItem._id);
-          }
-        });
-        cprItemData.isUpgraded = false;
-        cprItemData.upgrades = [];
-      }
 
       createItems.push({
         name: item.name,
         system: cprItemData,
         type: item.type,
+        img: item.img,
+        effects: duplicate(item.effects),
       });
       deleteItems.push(item._id);
+      if (containerTypes.includes(item.type) && item.system.installedItems.list.length > 0) {
+        const deleteItemList = item.recursiveGetAllInstalledItems();
+        for (const installedItem of deleteItemList) {
+          deleteItems.push(installedItem._id);
+        }
+      }
 
       const infiniteStock = getProperty(this.actor, `flags.${game.system.id}.infinite-stock`);
 
@@ -409,38 +386,43 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       }
 
       if (createItems.length > 0) {
-        await this.actor.createEmbeddedDocuments("Item", createItems);
+        this.actor.createEmbeddedDocuments("Item", createItems).then(async (creationSuccess) => {
+          if (creationSuccess.length > 0) {
+            tradePartnerActor.deleteEmbeddedDocuments("Item", deleteItems).then(async (deletionSuccess) => {
+              if (deletionSuccess.length > 0) {
+                let reason = "";
+                if (amount > 1) {
+                  reason = `${SystemUtils.Format(
+                    "CPR.containerSheet.tradeLog.multipleSold",
+                    {
+                      amount,
+                      name: item.name,
+                      price: vendorOffer,
+                      vendor: this.actor.name,
+                    },
+                  )} - ${username}`;
+                } else {
+                  reason = `${SystemUtils.Format(
+                    "CPR.containerSheet.tradeLog.singleSold",
+                    { name: item.name, price: vendorOffer, vendor: this.actor.name },
+                  )} - ${username}`;
+                }
+                const vendorReason = `${SystemUtils.Format(
+                  "CPR.containerSheet.tradeLog.vendorPurchased",
+                  {
+                    name: item.name,
+                    quantity: cprItemData.amount,
+                    seller: tradePartnerActor.name,
+                    price: vendorOffer,
+                  },
+                )} - ${username}`;
+                await tradePartnerActor.deltaLedgerProperty("wealth", vendorOffer, reason);
+                await this.actor.recordTransaction(vendorOffer, vendorReason, tradePartnerActor);
+              }
+            });
+          }
+        });
       }
-      await tradePartnerActor.deleteEmbeddedDocuments("Item", deleteItems);
-
-      let reason = "";
-      if (amount > 1) {
-        reason = `${SystemUtils.Format(
-          "CPR.containerSheet.tradeLog.multipleSold",
-          {
-            amount,
-            name: item.name,
-            price: vendorOffer,
-            vendor: this.actor.name,
-          },
-        )} - ${username}`;
-      } else {
-        reason = `${SystemUtils.Format(
-          "CPR.containerSheet.tradeLog.singleSold",
-          { name: item.name, price: vendorOffer, vendor: this.actor.name },
-        )} - ${username}`;
-      }
-      const vendorReason = `${SystemUtils.Format(
-        "CPR.containerSheet.tradeLog.vendorPurchased",
-        {
-          name: item.name,
-          quantity: cprItemData.amount,
-          seller: tradePartnerActor.name,
-          price: vendorOffer,
-        },
-      )} - ${username}`;
-      await tradePartnerActor.deltaLedgerProperty("wealth", vendorOffer, reason);
-      await this.actor.recordTransaction(vendorOffer, vendorReason, tradePartnerActor);
     }
   }
 

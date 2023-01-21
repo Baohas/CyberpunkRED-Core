@@ -1,4 +1,4 @@
-/* global duplicate game randomID Actor Scene canvas */
+/* global duplicate game randomID Actor Scene canvas fromUuidSync */
 
 import CPR from "../../system/config.js";
 import CPRItem from "../cpr-item.js";
@@ -17,28 +17,57 @@ export default class CPRCyberdeckItem extends CPRItem {
    * The methods below apply to the CPRItem.type = "cyberdeck"
   */
 
-  /**
-   * Dynamically calculates the number of free slots on the Cyberdeck
-   * by starting with the number of slots this cyberdeck has and substacting
-   * the slot size of each of the installed programs.
-   *
-   * @override
-   * @public
-   */
-  availableSlots() {
-    LOGGER.trace("availableSlots | CPRCyberdeckItem | Called.");
-    const cprItemData = duplicate(this.system);
-    let unusedSlots = 0;
-    const upgradeValue = this.getAllUpgradesFor("slots");
-    const upgradeType = this.getUpgradeTypeFor("slots");
-    unusedSlots = (upgradeType === "override") ? upgradeValue : cprItemData.slots + upgradeValue;
-    cprItemData.programs.installed.forEach((program) => {
-      unusedSlots -= program.size;
-    });
-    cprItemData.upgrades.forEach((u) => {
-      unusedSlots -= u.system.size;
-    });
-    return unusedSlots;
+  async syncPrograms() {
+    LOGGER.trace("syncPrograms | CPRCyberdeckItem | Called.");
+
+    const actor = (this.isOwned) ? this.actor : false;
+
+    /*
+    if (!actor) {
+      return Promise.reject(new Error("Can not install upgrades in unowned objects."));
+    }
+    */
+
+    const installedItems = duplicate(this.system.installedItems);
+
+    const uninstallList = [];
+    for (const program of this.system.programs.installed) {
+      if (!installedItems.list.includes(program.uuid)) {
+        const item = (!actor) ? fromUuidSync(program.uuid) : actor.getOwnedItem(program.uuid);
+        if (item) {
+          uninstallList.push(item);
+        } else {
+          uninstallList.push({ uuid: program.uuid, system: program });
+        }
+      }
+    }
+
+    const installList = [];
+    for (const uuid of installedItems.list) {
+      const item = (!actor) ? fromUuidSync(uuid) : actor.getOwnedItem(uuid);
+      if (item && item.type === "program") {
+        if (this.system.programs.installed.filter((p) => p.uuid === uuid).length === 0) {
+          installList.push(item);
+        }
+      }
+    }
+    if (uninstallList.length > 0) {
+      await this.uninstallPrograms(uninstallList);
+    }
+
+    if (installList.length > 0) {
+      await this.installPrograms(installList);
+    }
+
+    const allUpdates = installList.concat(uninstallList);
+    const updateList = [];
+    for (const item of allUpdates) {
+      if (typeof item._id !== "undefined") {
+        updateList.push({ _id: item._id, system: item.system });
+      }
+    }
+    updateList.push({ _id: this._id, system: this.system });
+    return (!actor) ? this.update({ system: this.system }) : actor.updateEmbeddedDocuments("Item", updateList);
   }
 
   /**
@@ -77,15 +106,17 @@ export default class CPRCyberdeckItem extends CPRItem {
     LOGGER.trace("installPrograms | CPRCyberdeckItem | Called.");
     const { installed } = this.system.programs;
     programs.forEach((p) => {
-      const onDeck = installed.filter((iProgram) => iProgram._id === p._id);
+      const onDeck = installed.filter((iProgram) => iProgram.uuid === p.uuid);
       if (onDeck.length === 0) {
         const programInstallation = duplicate(p.system);
         programInstallation.isRezzed = false;
-        programInstallation._id = p._id;
+        programInstallation.uuid = p.uuid;
         programInstallation.name = p.name;
         programInstallation.flags = p.flags;
         installed.push(programInstallation);
-        p.setInstalled();
+        if (p.isOwned) {
+          p.setInstalled();
+        }
       }
     });
     this.system.programs.installed = installed;
@@ -105,7 +136,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     let sceneId;
     programs.forEach(async (program) => {
       if (program.system.class === "blackice" && this.isRezzed(program)) {
-        const rezzedIndex = this.system.programs.rezzed.findIndex((p) => p._id === program.id);
+        const rezzedIndex = this.system.programs.rezzed.findIndex((p) => p.uuid === program.uuid);
         const programData = this.system.programs.rezzed[rezzedIndex];
         const cprFlags = programData.flags[game.system.id];
         if (cprFlags.biTokenId) {
@@ -115,11 +146,8 @@ export default class CPRCyberdeckItem extends CPRItem {
           sceneId = cprFlags.sceneId;
         }
       }
-      installed = installed.filter((p) => p._id !== program.id);
-      rezzed = rezzed.filter((p) => p._id !== program.id);
-      if ((typeof program.unsetInstalled === "function")) {
-        program.unsetInstalled();
-      }
+      installed = installed.filter((p) => p.uuid !== program.uuid);
+      rezzed = rezzed.filter((p) => p.uuid !== program.uuid);
     });
     this.system.programs.installed = installed;
     this.system.programs.rezzed = rezzed;
@@ -142,9 +170,9 @@ export default class CPRCyberdeckItem extends CPRItem {
    */
   isRezzed(program) {
     LOGGER.trace("isRezzed | CPRCyberdeckItem | Called.");
-    const rezzedPrograms = this.system.programs.rezzed.filter((p) => p._id === program.id);
+    const rezzedPrograms = this.system.programs.rezzed.filter((p) => p.uuid === program.uuid);
     const { installed } = this.system.programs;
-    const installIndex = installed.findIndex((p) => p._id === program._id);
+    const installIndex = installed.findIndex((p) => p.uuid === program.uuid);
     const programState = installed[installIndex];
     programState.isRezzed = (rezzedPrograms.length > 0);
     installed[installIndex] = programState;
@@ -166,7 +194,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     LOGGER.trace("rezProgram | CPRCyberdeckItem | Called.");
     const programData = duplicate(program.system);
     const { installed } = this.system.programs;
-    const installIndex = installed.findIndex((p) => p._id === program._id);
+    const installIndex = installed.findIndex((p) => p.uuid === program.uuid);
     const programState = installed[installIndex];
 
     // This instance ID is being added pro-actively because the rulebook
@@ -194,19 +222,19 @@ export default class CPRCyberdeckItem extends CPRItem {
   _createCyberdeckRoll(rollType, actor, extraData = {}) {
     LOGGER.trace("_createCyberdeckRoll | CPRCyberdeckItem | Called.");
     let cprRoll;
-    const { programId } = extraData;
-    const programData = this.getInstalledPrograms().filter((iProgram) => iProgram._id === programId);
+    const { programUUID } = extraData;
+    const programData = this.getInstalledPrograms().filter((iProgram) => iProgram.uuid === programUUID);
     let program = (programData.length > 0) ? programData[0] : null;
     let damageFormula = (program === null) ? "1d6" : program.damage.standard;
     if (program.class === "blackice") {
-      const rezzedList = this.getRezzedPrograms().filter((rProgram) => rProgram._id === programId);
+      const rezzedList = this.getRezzedPrograms().filter((rProgram) => rProgram.uuid === programUUID);
       program = (rezzedList.length > 0) ? rezzedList[0] : null;
       if (program.blackIceType === "antiprogram") {
         damageFormula = program.damage.blackIce;
       }
     }
     if (program === null) {
-      LOGGER.error(`_createCyberdeckRoll | CPRCyberdeckItem | Unable to locate program ${programId}.`);
+      LOGGER.error(`_createCyberdeckRoll | CPRCyberdeckItem | Unable to locate program ${programUUID}.`);
       return CPRRolls.CPRRoll("Unknown Program", "1d10");
     }
     const skillName = "";
@@ -398,7 +426,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     const tokenFlags = {
       netrunnerTokenId: netrunnerToken.id,
       sourceCyberdeckId: this.id,
-      programId: programData._id,
+      programUUID: programData.uuid,
       sceneId: scene.id,
     };
     const tokenData = [{
@@ -423,6 +451,7 @@ export default class CPRCyberdeckItem extends CPRItem {
           programData.atk,
           programData.def,
           programData.rez,
+          programData.description.value,
           programData.rez,
         );
         const cprFlags = (typeof programData.flags[game.system.id] !== "undefined") ? programData.flags[game.system.id] : {};
@@ -445,19 +474,21 @@ export default class CPRCyberdeckItem extends CPRItem {
    */
   async derezProgram(program) {
     LOGGER.trace("derezProgram | CPRCyberdeckItem | Called.");
-    const { installed } = this.system.programs;
-    const installIndex = installed.findIndex((p) => p._id === program.id);
-    const programState = installed[installIndex];
     const { rezzed } = this.system.programs;
-    const rezzedIndex = rezzed.findIndex((p) => p._id === program.id);
-    const programData = rezzed[rezzedIndex];
-    programState.isRezzed = false;
+    const rezzedIndex = rezzed.findIndex((p) => p.uuid === program.uuid);
+    const { installed } = this.system.programs;
+    const installIndex = installed.findIndex((p) => p.uuid === program.uuid);
+    const programState = (installIndex >= 0) ? installed[installIndex] : null;
+    const programData = (rezzedIndex >= 0) ? rezzed[rezzedIndex] : null;
     program.unsetRezzed();
-    installed[installIndex] = programState;
+    if (programState !== null) {
+      programState.isRezzed = false;
+      installed[installIndex] = programState;
+    }
     if (program.system.class === "blackice") {
       await CPRCyberdeckItem._derezBlackIceToken(programData);
     }
-    const newRezzed = this.system.programs.rezzed.filter((p) => p._id !== program.id);
+    const newRezzed = this.system.programs.rezzed.filter((p) => p.uuid !== program.uuid);
     this.system.programs.rezzed = newRezzed;
   }
 
@@ -538,6 +569,7 @@ export default class CPRCyberdeckItem extends CPRItem {
             programState.atk,
             programState.def,
             programState.rez,
+            programState.description.value,
           );
         }
       }
@@ -547,13 +579,13 @@ export default class CPRCyberdeckItem extends CPRItem {
   /**
    * Update a rezzed program with updated data
    *
-   * @param {String} programId - the _id of the program to be updated
+   * @param {String} programUUID - the _id of the program to be updated
    * @param {Object} updatedData - object data of the program to update with
    */
-  updateRezzedProgram(programId, updatedData) {
+  updateRezzedProgram(programUUID, updatedData) {
     LOGGER.trace("updateRezzedProgram | CPRCyberdeckItem | Called.");
     const { rezzed } = this.system.programs;
-    const rezzedIndex = rezzed.findIndex((p) => p._id === programId);
+    const rezzedIndex = rezzed.findIndex((p) => p.uuid === programUUID);
     const programState = rezzed[rezzedIndex];
     const dataPoints = Object.keys(updatedData);
     dataPoints.forEach((attribute) => {

@@ -1,9 +1,10 @@
-/* global Handlebars game getProperty */
+/* global Handlebars game getProperty fromUuidSync */
 /* eslint-env jquery */
 import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRActiveEffect from "../cpr-active-effect.js";
+import DamageApplicationPrompt from "../dialog/cpr-damage-application-prompt.js";
 
 export default function registerHandlebarsHelpers() {
   LOGGER.log("Calling Register Handlebars Helpers");
@@ -60,7 +61,15 @@ export default function registerHandlebarsHelpers() {
   /**
    * Return an owned item on an actor given the ID
    */
-  Handlebars.registerHelper("cprGetOwnedItem", (actor, itemId) => actor.items.find((i) => i.id === itemId));
+  Handlebars.registerHelper("cprGetOwnedItem", (actor, itemId) => {
+    let item;
+    if (actor === null) {
+      item = fromUuidSync(itemId);
+    } else {
+      item = actor.items.find((i) => i.id === itemId) ? actor.items.find((i) => i.id === itemId) : actor.items.find((i) => i.uuid === itemId);
+    }
+    return item;
+  });
 
   /**
    * Return true if an object is defined or not
@@ -201,25 +210,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Calculate the price of a stack of items. This is amount * price with
-   * a few exceptions.
-   */
-  Handlebars.registerHelper("cprCalculateStackValue", (item) => {
-    LOGGER.trace("cprCalculateStackValue | handlebarsHelper | Called.");
-    const { type } = item;
-    const price = item.system.price.market;
-    const { amount } = item.system;
-    let totalPrice = amount * price;
-    if (type === "ammo") {
-      const { variety } = item.system;
-      if (!(variety === "grenade" || variety === "rocket")) {
-        totalPrice = (amount / 10) * price;
-      }
-    }
-    return totalPrice;
-  });
-
-  /**
    * Get a config mapping from config.js by name and key
    */
   Handlebars.registerHelper("cprFindConfigValue", (obj, key) => {
@@ -239,30 +229,6 @@ export default function registerHandlebarsHelpers() {
       return CPR[obj];
     }
     return "INVALID_LIST";
-  });
-
-  /**
-   * Show option slots on a cyberware item
-   */
-  Handlebars.registerHelper("cprShowSlotStatus", (obj) => {
-    LOGGER.trace("cprShowSlotStatus | handlebarsHelper | Called.");
-    if (obj.type === "cyberware") {
-      const { optionSlots } = obj.system;
-      if (optionSlots > 0) {
-        LOGGER.trace(`hasOptionalSlots is greater than 0`);
-        const installedOptionSlots = optionSlots - obj.availableSlots();
-        return (`- ${installedOptionSlots}/${optionSlots} ${SystemUtils.Localize("CPR.itemSheet.cyberware.optionalSlots")}`);
-      }
-      LOGGER.trace(`hasOptionalSlots is 0`);
-    }
-    if (obj.type === "cyberdeck") {
-      const upgradeValue = obj.getAllUpgradesFor("slots");
-      const upgradeType = obj.getUpgradeTypeFor("slots");
-      const totalSlots = (upgradeType === "override") ? upgradeValue : obj.system.slots + upgradeValue;
-      const usedSlots = obj.system.upgrades.length + obj.system.programs.installed.length;
-      return (`${usedSlots}/${totalSlots}`);
-    }
-    return "";
   });
 
   /**
@@ -437,14 +403,8 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprHasCyberneticWeapons", (actor) => {
     LOGGER.trace("cprHasCyberneticWeapons | handlebarsHelper | Called.");
-    let returnValue = false;
-    const cyberware = actor.getInstalledCyberware();
-    cyberware.forEach((cw) => {
-      if (cw.system.isWeapon) {
-        returnValue = true;
-      }
-    });
-    return returnValue;
+    const cyberneticWeapons = actor.itemTypes.cyberware.filter((cw) => cw.system.isInstalled && cw.system.isWeapon);
+    return cyberneticWeapons.length > 0;
   });
 
   /**
@@ -509,6 +469,11 @@ export default function registerHandlebarsHelpers() {
         }
         break;
       }
+      case "programClass": {
+        // "CPR.global.programClass.defender":
+        localizedKey = `CPR.global.programClass.${SystemUtils.slugify(name)}`;
+        break;
+      }
       default:
     }
     return (SystemUtils.Localize(localizedKey) === localizedKey) ? name : localizedKey;
@@ -568,44 +533,44 @@ export default function registerHandlebarsHelpers() {
    * Get all installed cyberware and options and return it as an array. This is
    * used in the mook sheet.
    */
-  Handlebars.registerHelper("cprGetMookCyberware", (installedCyberware) => {
+  Handlebars.registerHelper("cprGetMookCyberware", (mook) => {
     LOGGER.trace("cprGetMookCyberware | handlebarsHelper | Called.");
     const installedCyberwareList = [];
-    Object.entries(installedCyberware).forEach(([k, v]) => {
-      if (installedCyberware[k].length > 0) {
-        if (k !== "cyberwareInternal" && k !== "cyberwareExternal" && k !== "fashionware") {
-          v.forEach((a) => {
-            installedCyberwareList.push(a);
-          });
-        } else if (installedCyberware[k][0].optionals.length > 0) {
-          v.forEach((a) => {
-            installedCyberwareList.push(a);
-          });
+    for (const installedUUID of mook.system.installedItems.list) {
+      const item = mook.getOwnedItem(installedUUID);
+      if (item.type === "cyberware") {
+        const optionals = [];
+        if (item.system.installedItems.list.length > 0) {
+          for (const optionalid of item.system.installedItems.list) {
+            const optionalItem = mook.getOwnedItem(optionalid);
+            optionals.push(optionalItem);
+          }
         }
+        installedCyberwareList.push({ foundation: item, optionals });
       }
-    });
+    }
     return installedCyberwareList;
   });
 
   /**
    * Return how many installed cyberware items an actor has
    */
-  Handlebars.registerHelper("cprGetMookCyberwareLength", (installedCyberware) => {
+  Handlebars.registerHelper("cprGetMookCyberwareLength", (mook) => {
     LOGGER.trace("cprGetMookCyberwareLength | handlebarsHelper | Called.");
     const installedCyberwareList = [];
-    Object.entries(installedCyberware).forEach(([k, v]) => {
-      if (installedCyberware[k].length > 0) {
-        if (k !== "cyberwareInternal" && k !== "cyberwareExternal" && k !== "fashionware") {
-          v.forEach((a) => {
-            installedCyberwareList.push(a);
-          });
-        } else if (installedCyberware[k][0].optionals.length > 0) {
-          v.forEach((a) => {
-            installedCyberwareList.push(a);
-          });
+    const exclusionList = ["cyberwareInternal", "cyberwareExternal", "fashionware"];
+    for (const installedUUID of mook.system.installedItems.list) {
+      const item = mook.getOwnedItem(installedUUID);
+      if (item.type === "cyberware" && !exclusionList.includes(item.system.type)) {
+        installedCyberwareList.push(item);
+        if (item.system.installedItems.list.length > 0) {
+          for (const optionalid of item.system.installedItems.list) {
+            const optionalItem = mook.getOwnedItem(optionalid);
+            installedCyberwareList.push(optionalItem);
+          }
         }
       }
-    });
+    }
     return installedCyberwareList.length;
   });
 
@@ -620,10 +585,59 @@ export default function registerHandlebarsHelpers() {
   /**
    * Returns true if an item type can be upgraded. This means it has the upgradable property in the data model.
    */
-  Handlebars.registerHelper("cprIsUpgradable", (itemType) => {
+  Handlebars.registerHelper("cprIsUpgradable", (item) => {
     LOGGER.trace("cprIsUpgradable | handlebarsHelper | Called.");
     const itemEntities = game.system.template.Item;
-    return itemEntities[itemType].templates.includes("upgradable");
+    let isUpgradable = false;
+    if (itemEntities[item.type].templates.includes("upgradable")
+        && item.system.installedItems.allowed
+        && item.system.installedItems.allowedTypes.includes("itemUpgrade")) {
+      isUpgradable = true;
+    }
+    return isUpgradable;
+  });
+
+  /**
+   * Returns true if an item has installed items.
+   */
+  Handlebars.registerHelper("cprHasInstalledItems", (item) => {
+    LOGGER.trace("cprHasInstalledItems | handlebarsHelper | Called.");
+    const itemList = (typeof item.system.installedItems === "object") ? item.system.installedItems.list : [];
+    return itemList.length > 0;
+  });
+
+  /**
+   * List installed items.
+   */
+  Handlebars.registerHelper("cprListInstalledItems", (item, delimiter = " ") => {
+    LOGGER.trace("cprListInstalledItems | handlebarsHelper | Called.");
+    const { actor } = item;
+    const itemList = (typeof item.system.installedItems === "object") ? item.system.installedItems.list : [];
+    let returnString = "";
+    if (actor) {
+      for (const itemId of itemList) {
+        const installedItem = fromUuidSync(itemId);
+        if (installedItem) {
+          const itemType = SystemUtils.Localize(CPR.objectTypes[installedItem.type]);
+          returnString = returnString.concat(`${installedItem.name} (${itemType})`, delimiter);
+        }
+      }
+    }
+    return returnString;
+  });
+
+  Handlebars.registerHelper("cprGetItemValue", (item) => {
+    LOGGER.trace("cprGetItemValue | handlebarsHelper | Called.");
+    const valuableTypes = SystemUtils.GetTemplateItemTypes("valuable");
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    let totalValue = valuableTypes.includes(item.type) ? item.system.price.market : 0;
+    if (containerTypes.includes(item.type)) {
+      const installedItems = item.recursiveGetAllInstalledItems();
+      installedItems.forEach((installedItem) => {
+        totalValue += (valuableTypes.includes(installedItem.type)) ? installedItem.system.price.market : 0;
+      });
+    }
+    return totalValue;
   });
 
   /**
@@ -653,11 +667,10 @@ export default function registerHandlebarsHelpers() {
     const itemType = obj.type;
     let upgradeText = "";
     if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
-      const upgradeValue = obj.getAllUpgradesFor(dataPoint);
-      if (upgradeValue !== 0 && upgradeValue !== "") {
-        const modType = obj.getUpgradeTypeFor(dataPoint);
+      const upgradeData = obj.getAllUpgradesFor(dataPoint);
+      if (upgradeData.value !== 0 && upgradeData.value !== "") {
         const modSource = (itemType === "weapon") ? SystemUtils.Localize("CPR.itemSheet.weapon.attachments") : SystemUtils.Localize("CPR.itemSheet.common.upgrades");
-        upgradeText = `(${SystemUtils.Format("CPR.itemSheet.common.modifierChange", { modSource, modType, value: upgradeValue })})`;
+        upgradeText = `(${SystemUtils.Format("CPR.itemSheet.common.modifierChange", { modSource, modType: upgradeData.type, value: upgradeData.value })})`;
       }
     }
     return upgradeText;
@@ -676,17 +689,16 @@ export default function registerHandlebarsHelpers() {
       upgradeResult = baseValue;
     }
     if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
-      const upgradeValue = obj.getAllUpgradesFor(dataPoint);
-      const upgradeType = obj.getUpgradeTypeFor(dataPoint);
-      if (upgradeValue !== "" && upgradeValue !== 0) {
-        if (upgradeType === "override") {
-          upgradeResult = upgradeValue;
-        } else if (typeof upgradeResult !== "number" || typeof upgradeValue !== "number") {
-          if (upgradeValue !== 0 && upgradeValue !== "") {
-            upgradeResult = `${upgradeResult} + ${upgradeValue}`;
+      const upgradeData = obj.getAllUpgradesFor(dataPoint);
+      if (upgradeData.value !== "" && upgradeData.value !== 0) {
+        if (upgradeData.type === "override") {
+          upgradeResult = upgradeData.value;
+        } else if (typeof upgradeResult !== "number" || typeof upgradeData.value !== "number") {
+          if (upgradeData.value !== 0 && upgradeData.value !== "") {
+            upgradeResult = `${upgradeResult} + ${upgradeData.value}`;
           }
         } else {
-          upgradeResult += upgradeValue;
+          upgradeResult += upgradeData.value;
         }
       }
     }
@@ -697,7 +709,7 @@ export default function registerHandlebarsHelpers() {
    * Return true if a bit of text matches a filter value. If the filter is not set, everything matches.
    */
   Handlebars.registerHelper("cprSheetContentFilter", (filterValue, applyToText) => {
-    LOGGER.trace("cprFilter | handlebarsHelper | Called.");
+    LOGGER.trace("cprSheetContentFilter | handlebarsHelper | Called.");
     if (typeof filterValue === "undefined" || filterValue === "" || !game.settings.get(game.system.id, "enableSheetContentFilter")) {
       return true;
     }
@@ -801,11 +813,19 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprGetChangeNameByKey", (doc, cat, key) => {
     if (!cat) {
-      LOGGER.error("Undefined change category! No idea what this effect changes!");
-      return "???";
+      // There's a split second when this is updating that the sheet may refresh showing ??? and throwing a console
+      // error when these are being updated with the delete method.
+      let returnString = "(updating)";
+      const flag = doc.getFlag(game.system.id, "changes") ? doc.getFlag(game.system.id, "changes") : [];
+      if (doc.changes.length === flag.length) {
+        returnString = "???";
+        LOGGER.error("Undefined change category! No idea what this effect changes!");
+      }
+      return returnString;
     }
     if (cat === "custom") return key;
     const sourceDoc = (doc instanceof CPRActiveEffect) ? doc.getEffectParent() : doc;
+    if (!sourceDoc) return "???"; // a recently deleted item will sometimes do this
     if (cat === "skill") {
       const skillMap = CPR.activeEffectKeys.skill;
       let skillList = [];
@@ -828,6 +848,19 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprGetSkillBonus", (skillName, actor) => {
     LOGGER.trace("cprGetSkillBonus | handlebarsHelper | Called.");
     return actor.getSkillMod(skillName);
+  });
+
+  /**
+   * Provide a way to loop in html
+   */
+  Handlebars.registerHelper("cprLoop", (n, block) => {
+    LOGGER.trace("cprLoop | handlebarsHelper | Called.");
+    let accum = "";
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < n; ++i) {
+      accum += block.fn(i);
+    }
+    return accum;
   });
 
   /**
@@ -854,6 +887,20 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Return true if the program has damage defined for either standard or blackIce
+   */
+  Handlebars.registerHelper("cprProgramHasDamageRoll", (program) => {
+    LOGGER.trace("cprProgramHasDamageRoll | handlebarsHelper | Called.");
+    let returnCode = false;
+    if (typeof program === "object") {
+      if (program?.damage.standard !== "" || program?.damage.blackIce !== "") {
+        returnCode = true;
+      }
+    }
+    return returnCode;
+  });
+
+  /**
    * Return true/false depending on whether debugElements setting in the game is enabled
    */
   Handlebars.registerHelper("cprIsDebug", () => {
@@ -861,8 +908,7 @@ export default function registerHandlebarsHelpers() {
     return game.settings.get(game.system.id, "debugElements");
   });
 
-  /**
-   * Emit a debug message to the dev log
+  /* Emit a debug message to the dev log
    */
   Handlebars.registerHelper("cprDebug", (msg) => {
     LOGGER.debug(msg);
@@ -880,6 +926,6 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprStripHtml", (string) => {
     LOGGER.trace("cprStripHtml | handlebarsHelper | Called.");
-    return $(string).text();
+    return SystemUtils.stripHTML(string);
   });
 }

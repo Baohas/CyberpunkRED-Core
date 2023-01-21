@@ -72,12 +72,18 @@ system:
     value: <p>+2 to multiple TECH-based skills.</p>
   equipped: owned
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isUpgraded: false
   price:
     category: veryExpensive
     market: 1000
   revealed: true
-  slots: 3
   source: pg. 355
   tags: []
   upgrades: []

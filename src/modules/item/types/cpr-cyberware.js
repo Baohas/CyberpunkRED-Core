@@ -1,5 +1,3 @@
-/* global duplicate */
-
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";
 
@@ -9,24 +7,6 @@ import LOGGER from "../../utils/cpr-logger.js";
  */
 export default class CPRCyberwareItem extends CPRItem {
   /**
-   * Dynamically calculates the number of free slots on the cyberware
-   * by starting with the number of slots this cyberware has and substacting
-   * the slot size of each of the installed options.
-   *
-   * @override
-   * @public
-   */
-  availableSlots() {
-    LOGGER.trace("availableSlots | CPRCyberwareItem | Called.");
-    const cprItemData = duplicate(this.system);
-    let unusedSlots = cprItemData.optionSlots - cprItemData.installedOptionSlots;
-    cprItemData.upgrades.forEach((mod) => {
-      unusedSlots -= mod.system.size;
-    });
-    return unusedSlots;
-  }
-
-  /**
    * Perform a cyberware-specific action. Most of these map to attackable (mixin) calls
    * for cyberware that is an embedded weapon. This assumes the Item is also attackable.
    *
@@ -35,7 +15,7 @@ export default class CPRCyberwareItem extends CPRItem {
    * @returns null for invalid actions
    */
   _cyberwareAction(actor, actionAttributes) {
-    LOGGER.trace("_cyberwareAction | CPRItem | Called.");
+    LOGGER.trace("_cyberwareAction | CPRCyberwareItem | Called.");
     const actionData = actionAttributes["data-action"].nodeValue;
     switch (actionData) {
       case "select-ammo":
@@ -48,5 +28,26 @@ export default class CPRCyberwareItem extends CPRItem {
       default:
     }
     return null;
+  }
+
+  /**
+   * This overrides the uninstallItems function, forcing a
+   * recursive uninstall
+   * @param {Array} itemList - Array of objects to uninstall
+   * @param {Boolean} recursive  - Boolean stating if the uninstallation should be recursive
+   *                               in that each item uninstalled should also have it's own
+   *                               installed items removed.  This is needed for Cyberware uninstallations.
+   * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
+   */
+  // eslint-disable-next-line no-unused-vars
+  async uninstallItems(itemList) {
+    LOGGER.trace("uninstallItems | CPRCyberwareItem | Called.");
+    let recursive = false;
+    for (const item of itemList) {
+      if (item.type === "cyberware") {
+        recursive = true;
+      }
+    }
+    return super.uninstallItems(itemList, recursive);
   }
 }

@@ -1,0 +1,21 @@
+{
+	"label": "Micro Chrome",
+	"entries": {
+		"Chipware Compartment": {
+			"name": "Chipware Compartment",
+			"description": "<p>Lets you conceal up to four pieces of chipware, no Check required. Retrieval is done by spending an action to spin the eye in its socket.</p>"
+		},
+		"MicroCutie by Hello Cutie": {
+			"name": "MicroCutie by Hello Cutie",
+			"description": "<p>Using an action the user can enable HypurrburstTM mode. HypurrburstTM mode increases the weapons damage to 4d6, but drains all remaining shots when fired. Requires at least 4 rounds remaining to enable. The weapon purrs while in HypurrburstTM mode*.<br><em>Special fire mode not currently supported; will need to be manually applied</em></p>"
+		},
+		"Smart Lens": {
+			"name": "Smart Lens",
+			"description": "<p>Gives a user a single Cybereye Option. Can use one Smart Lens per eye.</p>"
+		},
+		"Superflash Jacket": {
+			"name": "Superflash Jacket",
+			"description": "<p>A nice jacket carrying a surpise; using an action anyone wearing this jacket can consume a battery to let off a blinding light. Treat as a Flashbang Grenade without the Damaged Ear Critical Injury, centered on the wearer.</p>"
+		}
+	}
+}

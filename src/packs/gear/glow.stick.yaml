@@ -1,5 +1,28 @@
 _id: im5VJlsJv37KsyrE
-effects: []
+effects:
+  - _id: AGKnpiEshwvZDOrK
+    changes:
+      - key: ATL.light.bright
+        mode: 2
+        priority: null
+        value: '2'
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          '0': custom
+    icon: systems/cyberpunk-red-core/icons/compendium/gear/glowstick.svg
+    label: Glow Stick
+    tint: null
+    transfer: true
 flags:
   core: {}
 folder: null
@@ -19,12 +42,18 @@ system:
     value: '<p>Duration: 10h. Range: 4m/yds.</p>'
   equipped: owned
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isUpgraded: false
   price:
     category: cheap
     market: 10
   revealed: true
-  slots: 3
   source: pg. 353
   tags: []
   upgrades: []

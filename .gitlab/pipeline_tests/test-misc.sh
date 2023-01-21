@@ -29,8 +29,6 @@ COUNT=$(
 if [[ "${COUNT}" != 0 ]]; then
   echo "❌ There are ${COUNT} cases, where 'game.i18n' was used instead of our own localization."
   ((ERRORS = ERRORS + 1))
-else
-  echo "✅ Found no instances of 'game.i18n'!"
 fi
 
 # Count instances of "ui.notifications" in modules
@@ -51,8 +49,6 @@ COUNT=$(
 if [[ "${COUNT}" != 0 ]]; then
   echo "❌ There are ${COUNT} cases, where ui.notifications was used instead of our own SystemUtils.DisplayMessage."
   ((ERRORS = ERRORS + 1))
-else
-  echo "✅ Found no instances of 'ui.notifications'!"
 fi
 
 # Check if any test above failed and fail or succed the job accordingly.

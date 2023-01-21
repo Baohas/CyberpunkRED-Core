@@ -20,8 +20,6 @@ LANGFILES=$(jq -r '.languages | .[] | .path' "${SYSFILE}")
 if [[ -z "${LANGFILES}" ]]; then
   echo "❌ Unable to find any language files in ${SYSFILE}"
   exit 1
-else
-  echo "✅ found language files in ${SYSFILE}"
 fi
 
 # Check language files in system.json exist
@@ -29,8 +27,6 @@ for lang in ${LANGFILES}; do
   if [[ ! -f "src/${lang}" ]]; then
     echo "❌ Unable to find src/${lang}"
     ((ERRORS = ERRORS + 1))
-  else
-    echo "✅ ${lang} found!"
   fi
 done
 

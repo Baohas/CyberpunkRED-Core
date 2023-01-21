@@ -1,59 +1,60 @@
+_id: maC7pXPwRqULiTPF
 effects: []
 flags:
   core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/mediumPistol_excellent.svg
 name: MicroCutie by Hello Cutie
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: medPistol
-  weaponSkill: Handgun
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 2d6
-  rof: 2
-  dvTable: DV Pistol
-  isRanged: true
-  unarmedAutomaticCalculation: true
+  ammoVariety:
+    - medPistol
   attackmod: 1
-  tags: ''
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 2d6
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>Using an action the user can enable HypurrburstTM mode. HypurrburstTM
       mode increases the weapons damage to 4d6, but drains all remaining shots
       when fired. Requires at least 4 rounds remaining to enable. The weapon
       purrs while in HypurrburstTM mode*.<br><em>Special fire mode not currently
       supported; will need to be manually applied</em></p>
-    chat: ''
-    unidentified: ''
-  source: MC
-  favorite: false
-  revealed: true
-  usage: equipped
+  dvTable: DV Pistol
   equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 10
-    ammoId: ''
-  ammoVariety:
-    - medPistol
-  concealable:
-    concealable: true
-    isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 1000
-    category: premium
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
   handsReq: 1
-  attachmentSlots: 3
   isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ''
+      uuid: ''
+    max: 10
+    value: 0
+  price:
+    category: premium
+    market: 1000
   quality: excellent
+  revealed: true
+  rof: 2
+  slots: 3
+  source: MC
+  tags: ''
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: medPistol
 type: weapon
-_id: maC7pXPwRqULiTPF
-folder: null
-sort: 0
-ownership:
-  default: 0

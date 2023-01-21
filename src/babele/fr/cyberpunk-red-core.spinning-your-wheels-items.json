@@ -1,0 +1,17 @@
+{
+	"label": "Spinning Your Wheels",
+	"entries": {
+		"Bicycle": {
+			"name": "Bicycle",
+			"description": "<p>A simple bicycle. It's speed increases to 10 MOVE + 20 MPH/32 KPH if the user has 4 to 7 BODY, and increases to 15 MOVE + 30 MPH/48 KPH if the user has 8+ BODY.</p>"
+		},
+		"Inline Skates": {
+			"name": "Inline Skates",
+			"description": "<p>They're roller skates baby! Increases moment by 4 m/yds when using the Run Action, though stopping the use of any options in the user's legs. May cause physical tasks to be done at -2.</p>"
+		},
+		"Skateboard": {
+			"name": "Skateboard",
+			"description": "<p>The coolest wheels around. Increases moment by 4 m/yds when using the Run Action on level or downwards ground. May cause physical tasks to be done at -2.</p>"
+		}
+	}
+}

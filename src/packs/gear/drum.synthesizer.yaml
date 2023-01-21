@@ -19,12 +19,18 @@ system:
     value: <p>Makes drum sounds when connected to amplifier.</p>
   equipped: owned
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isUpgraded: false
   price:
     category: expensive
     market: 500
   revealed: true
-  slots: 3
   source: pg. 353
   tags: []
   upgrades: []

@@ -19,12 +19,18 @@ system:
     value: <p>12hr per memory chip.</p>
   equipped: owned
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isUpgraded: false
   price:
     category: premium
     market: 100
   revealed: true
-  slots: 3
   source: pg. 355
   tags: []
   upgrades: []

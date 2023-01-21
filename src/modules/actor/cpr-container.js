@@ -21,20 +21,10 @@ export default class CPRContainerActor extends Actor {
       createData.token = {
         disposition: 0,
       };
+      createData.ownership = { default: 3 };
     }
-    super.create(createData, options);
-  }
-
-  /**
-   * prepareData is called before the actor is vendored to clients, so we can filter
-   * or streamline the data for convenience.
-   */
-  prepareData() {
-    LOGGER.trace("prepareData | CPRContainerActor | Called.");
-    super.prepareData();
-    if (this.compendium === null || this.compendium === undefined) {
-      const cprData = this.system;
-    }
+    const newContainerActor = await super.create(createData, options);
+    newContainerActor.setContainerType("shop");
   }
 
   /**
@@ -50,18 +40,24 @@ export default class CPRContainerActor extends Actor {
     LOGGER.trace("automaticallyStackItems | CPRActor | Called.");
     const itemTemplates = SystemUtils.getDataModelTemplates(newItem.type);
     if (itemTemplates.includes("stackable")) {
-      const itemMatch = this.items.find((i) => i.type === newItem.type && i.name === newItem.name && i.system.upgrades.length === 0);
-      if (itemMatch) {
-        const canStack = !(itemTemplates.includes("upgradable") && itemMatch.system.upgrades.length === 0);
-        if (canStack) {
-          let oldAmount = parseInt(itemMatch.system.amount, 10);
-          let addedAmount = parseInt(newItem.system.amount, 10);
-          if (Number.isNaN(oldAmount)) { oldAmount = 1; }
-          if (Number.isNaN(addedAmount)) { addedAmount = 1; }
-          const newAmount = oldAmount + addedAmount;
-          this.updateEmbeddedDocuments("Item", [{ _id: itemMatch._id, "system.amount": newAmount }]);
-          return false;
+      const itemMatch = this.items.find((i) => {
+        if (i.type === newItem.type && i.name === newItem.name) {
+          if (itemTemplates.includes("upgradable") && i.system.upgrades.length !== 0) {
+            return false;
+          }
+          return i;
         }
+        return false;
+      });
+
+      if (itemMatch) {
+        let oldAmount = parseInt(itemMatch.system.amount, 10);
+        let addedAmount = parseInt(newItem.system.amount, 10);
+        if (Number.isNaN(oldAmount)) { oldAmount = 1; }
+        if (Number.isNaN(addedAmount)) { addedAmount = 1; }
+        const newAmount = oldAmount + addedAmount;
+        this.updateEmbeddedDocuments("Item", [{ _id: itemMatch._id, "system.amount": newAmount }]);
+        return false;
       }
     }
     // If not stackable, then return true to continue adding the item.
@@ -232,5 +228,18 @@ export default class CPRContainerActor extends Actor {
     // update the actor and return the modified property
     this.update({ system: cprData });
     return getProperty(this.system, "wealth");
+  }
+
+  /**
+   * Return the Item object given an Id
+   *
+   * @public
+   * @param {String} itemId - Id or UUID of the item to get
+   * @returns {CPRItem}
+   */
+  getOwnedItem(itemId) {
+    LOGGER.trace("getOwnedItem | CPRActor | Called.");
+    const item = (this.items.find((i) => i._id === itemId)) ? this.items.find((i) => i._id === itemId) : this.items.find((i) => i.uuid === itemId);
+    return item;
   }
 }

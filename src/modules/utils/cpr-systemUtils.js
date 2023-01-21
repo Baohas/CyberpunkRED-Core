@@ -538,6 +538,8 @@ export default class CPRSystemUtils {
     }
   }
 
+  /* Everything else */
+
   /**
    * Inspect an event object for passed-in field specific to the target (link) that was clicked.
    * This code will initially look at the current target, and if the field is not found, it will
@@ -554,9 +556,22 @@ export default class CPRSystemUtils {
       LOGGER.debug(`Could not find ${datum} in currentTarget trying .item parents`);
       id = $(event.currentTarget).parents(".item").attr(datum);
       if (typeof id === "undefined") {
-        LOGGER.warn(`Could not find ${datum} in the event data!`);
+        LOGGER.debug(`Could not find ${datum} in the event data!`);
       }
     }
     return id;
+  }
+
+  /**
+   * Strip out html markup from a string. This is done with a combination of jQuery to remove the
+   * html tags, and a JavaScript built-in to remove URL codes like "&nbsp;".
+   *
+   * @static
+   * @param {String} htmlString - the html string to convert into plain text
+   * @returns {String}
+   */
+  static stripHTML(htmlString) {
+    LOGGER.trace("stripHTML | CPRSystemUtils | Called.");
+    return decodeURIComponent($(htmlString).text()).trim();
   }
 }

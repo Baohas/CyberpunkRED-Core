@@ -17,13 +17,19 @@ system:
     unidentified: ''
     value: <p>A common CHOOH2-powered roadbike seen during the time of the Red.</p>
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isUpgraded: false
   price:
     category: superLuxury
     market: 20000
   sdp: 35
   seats: 2
-  slots: 3
   source: pg. 190
   speedCombat: 20
   speedNarrative: 100 MPH / 161 KPH

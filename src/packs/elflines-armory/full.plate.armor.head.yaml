@@ -1,47 +1,46 @@
+_id: 6w3JLFVB9VIOmCmI
 effects: []
 flags:
   core: {}
+folder: null
 img: icons/equipment/head/helm-barbute-rounded-steel.webp
 name: Full Plate Armor (Head)
+ownership:
+  default: 0
+sort: 0
 system:
-  tags: []
-  description:
-    value: >-
-      <p>Metal plated armor to resist the most powerful hits to your head. -4 to
-      REF, DEX, and MOVE.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 350
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
+  bodyLocation:
+    ablation: 0
+    sp: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 500
-    category: expensive
-  isHeadLocation: true
+  description:
+    chat: ''
+    unidentified: ''
+    value: >-
+      <p>Metal plated armor to resist the most powerful hits to your head. -4 to
+      REF, DEX, and MOVE.</p>
+  equipped: owned
+  favorite: false
   headLocation:
+    ablation: 0
     sp: 15
-    ablation: 0
   isBodyLocation: false
-  bodyLocation:
-    sp: 0
-    ablation: 0
+  isHeadLocation: true
   isShield: false
-  shieldHitPoints:
-    value: 0
-    max: 0
+  isUpgraded: false
   penalty: -4
+  price:
+    category: expensive
+    market: 500
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  source: pg. 350
+  tags: []
   upgrade: ''
+  upgrades: []
+  usage: equipped
 type: armor
-_id: 6w3JLFVB9VIOmCmI
-folder: null
-sort: 0
-ownership:
-  default: 0

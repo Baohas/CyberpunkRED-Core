@@ -2,12 +2,12 @@
 <ol class="effects-list">
 {{!-- derived from DND5E's active-effects.html --}}
 {{#each actor.system.filteredEffects as |section sid|}}
-    <li class="effects-header flexrow" data-effect-type="{{section.type}}">
-        <div class="effect-name flexrow">{{localize section.label}}</div>
-        <div class="effect-source">{{localize "CPR.characterSheet.rightPane.effects.source"}}</div>
-        <div class="effect-actions text-padding-right">
+    <li class="effects-category flexrow" data-effect-type="{{section.type}}">
+        <span class="effect-name bg-black">{{localize section.label}}</span>
+        <span class="effect-source bg-black ">{{localize "CPR.characterSheet.rightPane.effects.source"}}</span>
+        <span class="effect-actions bg-black text-padding-right">
             {{localize "CPR.characterSheet.rightPane.effects.actions"}}
-        </div>
+        </span>
     </li>
         {{#each section.effects as |effect|}}
             <li class="item effect flexrow" data-effect-id="{{effect.id}}">
@@ -40,6 +40,9 @@
                     {{#if (cprCompare effect.sourceName "===" ../../actor.name)}}
                         <a class="effect-control" data-action="edit" data-tooltip="{{localize 'CPR.characterSheet.rightPane.effects.edit'}}">
                             <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="effect-control" data-action="copy" data-tooltip="{{localize 'CPR.characterSheet.rightPane.effects.duplicate'}}">
+                            <i class="fa-regular fa-copy"></i>
                         </a>
                         <a class="effect-control" data-action="delete" data-tooltip="{{localize 'CPR.characterSheet.rightPane.effects.delete'}}">
                             <i class="fas fa-trash-alt fg-red"></i>

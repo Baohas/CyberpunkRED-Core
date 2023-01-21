@@ -19,12 +19,18 @@ system:
     value: <p>Can be tracked from up to a mile away with a homing tracer.</p>
   equipped: owned
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isUpgraded: false
   price:
     category: costly
     market: 50
   revealed: true
-  slots: 3
   source: pg. 354
   tags: []
   upgrades: []

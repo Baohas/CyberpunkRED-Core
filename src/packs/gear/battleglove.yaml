@@ -11,7 +11,6 @@ sort: 0
 system:
   ammoVariety: []
   amount: 1
-  attachmentSlots: 0
   attackmod: 0
   charges:
     max: 0
@@ -33,12 +32,17 @@ system:
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: true
   humanityLoss:
     roll: '0'
     static: '0'
   install: mall
-  installedOptionSlots: 0
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
   isFoundational: true
   isInstalled: false
@@ -46,19 +50,17 @@ system:
   isUpgraded: false
   isWeapon: 'false'
   magazine:
-    ammoId: ''
+    ammoData:
+      name: ''
+      uuid: ''
     max: 0
     value: 0
-  optionSlots: '3'
-  optionalIds: []
   price:
     category: veryExpensive
     market: 1000
   revealed: true
   rof: 1
   size: 1
-  slotSize: 1
-  slots: 3
   source: pg. 347
   tags: []
   type: cyberArm

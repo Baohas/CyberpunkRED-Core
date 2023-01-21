@@ -9,11 +9,13 @@
     background-color: @chrome-white;
 
     .items-header {
+        font-size: @font-small;
+        font-weight: 500;
         align-items     : center;
         background-color: @flint-black;
         color           : @chrome-white;
         span {
-          padding: 3px;
+          padding: 2px;
         }
     }
 
@@ -85,13 +87,22 @@
     scrollbar-width : thin;
     background-color: @chrome-white;
 
-    .effects-header {
-        padding         : 0;
+    .effects-category {
+        font-weight: 500;
         background-color: @flint-black;
-        color           : @chrome-white;
-        div {
-          padding: 3px;
+        padding: 0;
+        color: @chrome-white;
+        span {
+          padding: 2px;
         }
+    }
+
+    li:nth-child(even) {
+        background-color: @meat-space-pink;
+    }
+
+    li:nth-child(odd) {
+        background-color: @chrome-white;
     }
 
     .item.effect {
@@ -109,7 +120,7 @@
     }
 
     .effect-name {
-        flex       : 0 0 70%;
+        flex       : 0 0 65%;
         margin     : 0;
         overflow   : hidden;
         text-align : left;
@@ -128,8 +139,70 @@
     }
 
     .effect-actions {
-        flex: 10%;
-        text-align: end;
+        flex: 0 0 15%;
+        text-align: center;
+        align-self: center;
+        padding-right: 5px;
+    }
+}
+
+.changes-list {
+    list-style      : none;
+    margin          : 2;
+    padding         : 0;
+    overflow-y      : auto;
+    scrollbar-width : thin;
+    background-color: @chrome-white;
+    div {
+        padding: 2px;
+    }
+
+    li:nth-child(even) {
+        background-color: @meat-space-pink;
+    }
+
+    li:nth-child(odd) {
+        background-color: @chrome-white;
+    }
+
+    .change-header {
+        font-weight: 500;
+        padding         : 0;
+        background-color: @flint-black;
+        color           : @chrome-white;
+        div {
+            padding: 2px;
+        }
+    }
+
+    .change-key {
+        flex: 0 0 58%;
+
+        .key-input {
+            width: 68%;
+        }
+        .key-cat {
+            width: 30%;
+        }
+        .key-key {
+            width: 68%;
+        }
+    }
+
+    .change-value {
+        flex: 0 0 12%;
+
+    }
+
+    .change-mode {
+        flex: 0 0 22%;
+        align-self: center;
+    }
+
+    .change-actions {
+        text-align: right;
+        padding-right: 5px;
+        flex: 0 0 8%;
         align-self: center;
     }
 }
@@ -145,7 +218,10 @@
 
     .skill-level,
     .skill-base,
-    .skill-mod-value,
+    .skill-mod-value{
+        flex: 0 0 38px;
+     }
+
     .skill-favorite {
         flex: 0 0 37px;
         text-align: center;
@@ -153,6 +229,14 @@
 
     .skill-custom {
         flex: none;
+    }
+
+    .skill-basic {
+      font-weight: 600;
+    }
+
+    .skill-stat {
+      font-weight: 500;
     }
 }
 
@@ -236,6 +320,7 @@
             background-color: @meat-space-pink;
             margin-left     : 2px;
             margin-right    : 2px;
+            padding: 0 5px;
         }
 
         .armor-piece {

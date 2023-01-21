@@ -1,4 +1,6 @@
 {{cprTrace "START CHAT CPR-PROGRAM-ATTACK-ROLLCARD.HBS"}}
+{{log "START CHAT CPR-PROGRAM-ATTACK-ROLLCARD.HBS"}}
+{{log this}}
 <div class="rollcard">
   <div class="rollcard-top">
     <div class="cpr-block chat-rollTitle-stat">
@@ -6,17 +8,19 @@
       <div class="rollcard-subtitle">
         <div class="rollcard-subtitle-center text-small">{{localize "CPR.rolls.attack"}}</div>
         <div class="rollcard-subtitle-right">
-          {{#if rollCardExtraArgs.isZap}}
-            <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
-              data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="zap">
-              <i class="fas fa-tint red-fg" data-tooltip="Damage"></i>
-            </a>
-          {{else}}
-            <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
-              data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="{{rollCardExtraArgs.program._id}}">
-              <i class="fas fa-tint red-fg" data-tooltip="Damage"></i>
-            </a>
-          {{/if}}
+            {{#if rollCardExtraArgs.isZap}}
+              <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
+                data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="zap">
+                <i class="fas fa-tint red-fg" data-tooltip="Damage"></i>
+              </a>
+            {{else}}
+              {{#if (cprProgramHasDamageRoll rollCardExtraArgs.program)}}
+                <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
+                  data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="{{rollCardExtraArgs.program.uuid}}">
+                  <i class="fas fa-tint red-fg" data-tooltip="Damage"></i>
+                </a>
+              {{/if}}
+            {{/if}}
         </div>
         <div class="rollcard-subtitle-2-center text-small">{{#if (cprCompare rollCardExtraArgs.program.system.class "===" "blackice")}}{{localize (cprFindConfigValue "blackIceType" rollCardExtraArgs.program.system.blackIceType)}} {{/if}}{{localize (cprFindConfigValue "programClassList" rollCardExtraArgs.program.system.class)}}</div>
       </div>

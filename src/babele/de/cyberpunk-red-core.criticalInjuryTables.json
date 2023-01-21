@@ -2,7 +2,7 @@
 	"label": "Kritische Verletzungstabellen",
 	"entries": [
 		{
-			"id": "Kritische Verletzungen (Körper)",
+			"id": "Critical Injuries (Body)",
 			"name": "Kritische Verletzungen (Körper)",
 			"results": {
 				"2-2": "Abgetrennter Arm",
@@ -19,7 +19,7 @@
 			}
 		},
 		{
-			"id": "Kritische Verletzungen (Kopf)",
+			"id": "Critical Injuries (Head)",
 			"name": "Kritische Verletzungen (Kopf)",
 			"results": {
 				"2-2": "Verlorenes Auge",

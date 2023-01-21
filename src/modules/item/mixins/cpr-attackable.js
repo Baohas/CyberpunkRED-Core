@@ -35,7 +35,7 @@ const Attackable = function Attackable() {
         this._loadItem();
         break;
       case "reload-ammo":
-        this._loadItem(this.system.magazine.ammoId);
+        this._loadItem(this.system.magazine.ammoData.uuid);
         break;
       case "measure-dv":
         await this._setDvTable(actor, this.system.dvTable);
@@ -166,18 +166,17 @@ const Attackable = function Attackable() {
     cprRoll.addMod(actor.getArmorPenaltyMods(statName));
     cprRoll.addMod(actor.getWoundStateMods());
     cprRoll.addMod(skillMod);
-    const upgradeValue = this.getAllUpgradesFor("attackmod");
-    const upgradeType = this.getUpgradeTypeFor("attackmod");
+    const upgradeData = this.getAllUpgradesFor("attackmod");
     let upgradeResult = cprWeaponData.attackmod;
-    if (upgradeValue !== "" && upgradeValue !== 0) {
-      if (upgradeType === "override") {
-        upgradeResult = upgradeValue;
-      } else if (typeof upgradeResult !== "number" || typeof upgradeValue !== "number") {
-        if (upgradeValue !== 0 && upgradeValue !== "") {
-          upgradeResult = `${upgradeResult} + ${upgradeValue}`;
+    if (upgradeData.value !== "" && upgradeData.value !== 0) {
+      if (upgradeData.type === "override") {
+        upgradeResult = upgradeData.value;
+      } else if (typeof upgradeResult !== "number" || typeof upgradeData.value !== "number") {
+        if (upgradeData.value !== 0 && upgradeData.value !== "") {
+          upgradeResult = `${upgradeResult} + ${upgradeData.value}`;
         }
       } else {
-        upgradeResult += upgradeValue;
+        upgradeResult += upgradeData.value;
       }
     }
     cprRoll.addMod(upgradeResult);
@@ -288,12 +287,11 @@ const Attackable = function Attackable() {
     if (halfArmorAttacks.includes(weaponType)) {
       cprRoll.rollCardExtraArgs.ignoreHalfArmor = true;
     }
-    const upgradeType = this.getUpgradeTypeFor("damage");
-    const upgradeValue = this.getAllUpgradesFor("damage");
-    if (upgradeType === "override") {
+    const upgradeData = this.getAllUpgradesFor("damage");
+    if (upgradeData.type === "override") {
       cprRoll.formula = "0d6";
     }
-    cprRoll.addMod(upgradeValue);
+    cprRoll.addMod(upgradeData.value);
 
     return cprRoll;
   };
@@ -314,9 +312,8 @@ const Attackable = function Attackable() {
     if (typeof cprWeaponData.attackmod !== "undefined") {
       returnValue = cprWeaponData.attackmod;
     }
-    const upgradeValue = this.getAllUpgradesFor("attackmod");
-    const upgradeType = this.getUpgradeTypeFor("attackmod");
-    returnValue = (upgradeType === "override") ? upgradeValue : returnValue + upgradeValue;
+    const upgradeData = this.getAllUpgradesFor("attackmod");
+    returnValue = (upgradeData.type === "override") ? upgradeData.value : returnValue + upgradeData.value;
     return returnValue;
   };
 };

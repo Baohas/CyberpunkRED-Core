@@ -1,45 +1,44 @@
+_id: djhqRvyLhzXexgoS
 effects: []
 flags:
   core: {}
+folder: null
 img: icons/equipment/head/cap-simple-leather-brown.webp
 name: Leather Armor (Head)
+ownership:
+  default: 0
+sort: 0
 system:
-  tags: []
-  description:
-    value: <p>Simple Leather armor for your head. No armor penalty.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 350
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
+  bodyLocation:
+    ablation: 0
+    sp: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 20
-    category: everyday
-  isHeadLocation: true
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Simple Leather armor for your head. No armor penalty.</p>
+  equipped: owned
+  favorite: false
   headLocation:
+    ablation: 0
     sp: 4
-    ablation: 0
   isBodyLocation: false
-  bodyLocation:
-    sp: 0
-    ablation: 0
+  isHeadLocation: true
   isShield: false
-  shieldHitPoints:
-    value: 0
-    max: 0
+  isUpgraded: false
   penalty: 0
+  price:
+    category: everyday
+    market: 20
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  source: pg. 350
+  tags: []
   upgrade: ''
+  upgrades: []
+  usage: equipped
 type: armor
-_id: djhqRvyLhzXexgoS
-folder: null
-sort: 0
-ownership:
-  default: 0

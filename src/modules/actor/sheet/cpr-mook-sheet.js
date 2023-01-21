@@ -1,4 +1,4 @@
-/* global game mergeObject, $, duplicate */
+/* global game $, duplicate */
 import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
 import CPRActorSheet from "./cpr-actor-sheet.js";
 import ModMookSkillPrompt from "../../dialog/cpr-mod-mook-skill-prompt.js";
@@ -16,23 +16,6 @@ import MookNamePrompt from "../../dialog/cpr-mook-name-prompt.js";
  * @extends {CPRActorSheet}
  */
 export default class CPRMookActorSheet extends CPRActorSheet {
-  /**
-   * getter that controls the sheet sizing
-   *
-   * @override
-   */
-  static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRMookActorSheet | Called.");
-    const defaultWidth = 750;
-    const defaultHeight = 500;
-    return mergeObject(super.defaultOptions, {
-      defaultWidth,
-      defaultHeight,
-      width: defaultWidth,
-      height: defaultHeight,
-    });
-  }
-
   /**
    * Mooks have a separate template when a user only has a "limited" permission level for it.
    * This is how details are obscured from those players, we simply do not render them.
@@ -54,24 +37,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   }
 
   /**
-   * We extend CPRActorSheet._render to handle the different height/width of the limited vs. full template.
-   * Automatic resizing is not called here, since the parent does that already.
-   *
-   * @override
-   * @private
-   * @param {Boolean} force - for this to be rendered. We don't use this, but the parent class does.
-   * @param {Object} options - rendering options that are passed up the chain to the parent
-   */
-  async _render(force = false, options = {}) {
-    LOGGER.trace("_render | CPRMookActorSheet | Called.");
-    if (!game.user.isGM && this.actor.limited) {
-      await super._render(force, mergeObject(options, { width: 670, height: 210 }));
-    } else {
-      await super._render(force, options);
-    }
-  }
-
-  /**
    * The Mook sheet goes a little further than actor.getData by tracking whether any armor
    * or weapons (including cyberware weapons) are equipped on the mook.
    *
@@ -84,7 +49,8 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     const cprActorData = foundryData.actor.system;
     cprActorData.equippedArmor = this.actor.itemTypes.armor.filter((item) => item.system.equipped === "equipped");
     cprActorData.equippedWeapons = this.actor.itemTypes.weapon.filter((item) => item.system.equipped === "equipped");
-    const installedCyberware = this.actor.getInstalledCyberware();
+
+    const installedCyberware = this.actor.itemTypes.cyberware.filter((cw) => cw.system.isInstalled);
     const installedWeapons = installedCyberware.filter((c) => c.system.isWeapon === true);
     cprActorData.equippedWeapons = cprActorData.equippedWeapons.concat(installedWeapons);
     foundryData.data.system = cprActorData;
@@ -231,7 +197,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     if (event.keyCode === 46) {
       LOGGER.debug("DEL key was pressed");
       const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
-      const item = this._getOwnedItem(itemId);
+      const item = this.actor.getOwnedItem(itemId);
       switch (item.type) {
         case "skill": {
           item.setSkillLevel(0);
@@ -247,7 +213,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
             const dialogMessage = `${SystemUtils.Localize("CPR.dialog.removeCyberware.text")} ${item.name}?`;
             const confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
             if (confirmRemove) {
-              await this.actor.removeCyberware(itemId, foundationalId, true);
+              await this.actor.uninstallCyberware(itemId, foundationalId, true);
               this._deleteOwnedItem(item, true);
             }
           }
@@ -275,20 +241,20 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   async _handleInstallAction(event) {
     LOGGER.trace("_handleInstallAction | CPRMookActorSheet | Called.");
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
-    const item = this._getOwnedItem(itemId);
+    const item = this.actor.getOwnedItem(itemId);
     if (event.shiftKey) {
       if (item.type === "cyberware") {
         if (item.system.core === true) {
           SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware"));
         } else if (item.system.isInstalled === false) {
-          this.actor.addCyberware(itemId);
+          await this.actor.installCyberware(itemId);
         } else {
           const foundationalId = SystemUtils.GetEventDatum(event, "data-foundational-id");
           const dialogTitle = SystemUtils.Localize("CPR.dialog.removeCyberware.title");
           const dialogMessage = `${SystemUtils.Localize("CPR.dialog.removeCyberware.text")} ${item.name}?`;
           const confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
           if (confirmRemove) {
-            await this.actor.removeCyberware(itemId, foundationalId, true);
+            await this.actor.uninstallCyberware(itemId, foundationalId, true);
           }
         }
       }

@@ -1,0 +1,14 @@
+{{cprTrace "START ACTOR MOOKS CPR-MOOK-CYBERWARE-OPTIONAL.HBS"}}
+<a class="name item installable changeable item-view" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.shiftClickToInstallorUninstall"}}" data-item-id="{{cyberware._id}}" data-foundational-id="{{cyberware.system.installedIn}}">
+  {{~cyberware.name}}{{#unless @last}},&nbsp;{{/unless~}}
+</a>
+{{~#if (cprCompare cyberware.type "===" "cyberware")}}
+  {{~#if (cprCompare cyberware.system.installedItems.list.length ">" 0)~}}({{/if~}}
+  {{~#each cyberware.system.installedItems.list as |UUID|~}}
+    {{> "systems/cyberpunk-red-core/templates/actor/mooks/cpr-mook-cyberware-optional.hbs" (cprMergeForPartialArg "actor,cyberware" ../actor (cprGetOwnedItem ../actor UUID))}}
+  {{~/each}}
+  {{~#if (cprCompare cyberware.system.installedItems.list.length ">" 0)~}}
+  ){{~#unless @last}},{{~/unless}}
+{{~/if}}
+{{/if}}
+{{cprTrace "END ACTOR MOOKS CPR-MOOK-CYBERWARE-OPTIONAL.HBS"}}

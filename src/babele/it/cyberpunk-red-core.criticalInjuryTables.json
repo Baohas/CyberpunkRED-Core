@@ -2,7 +2,7 @@
 	"label": "Tabelle Ferite Critiche",
 	"entries": [
 		{
-			"id": "Ferite Critiche (Corpo)",
+			"id": "Critical Injuries (Body)",
 			"name": "Ferite Critiche (Corpo)",
 			"results": {
 				"2-2": "Braccio Smembrato",
@@ -19,7 +19,7 @@
 			}
 		},
 		{
-			"id": "Ferite Critiche (Testa)",
+			"id": "Critical Injuries (Head)",
 			"name": "Ferite Critiche (Testa)",
 			"results": {
 				"2-2": "Occhio Perso",

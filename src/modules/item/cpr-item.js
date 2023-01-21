@@ -1,4 +1,4 @@
-/* global Item game */
+/* global Item game fromUuidSync */
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -13,6 +13,7 @@ import Physical from "./mixins/cpr-physical.js";
 import Stackable from "./mixins/cpr-stackable.js";
 import Upgradable from "./mixins/cpr-upgradable.js";
 import Valuable from "./mixins/cpr-valuable.js";
+import Container from "./mixins/cpr-container.js";
 
 /**
  * We extend the base Item object (document) provided by Foundry. All items in the system derive from it.
@@ -68,17 +69,7 @@ export default class CPRItem extends Item {
    */
   _onCreate(data, options, userId) {
     LOGGER.trace("_onCreate | CPRItem | Called.");
-    let newData = data;
-    const cprMigrationRunning = options.isMigrating || false;
-    if (!cprMigrationRunning) {
-      if (SystemUtils.hasDataModelTemplate(data.type, "upgradable")) {
-        newData = this.clearUpgrades(newData);
-      }
-      if (SystemUtils.hasDataModelTemplate(data.type, "loadable")) {
-        newData = this.clearAmmo(newData);
-      }
-    }
-    super._onCreate(newData, options, userId);
+    super._onCreate(data, options, userId);
   }
 
   /**
@@ -115,6 +106,10 @@ export default class CPRItem extends Item {
           Installable.call(CPRItem.prototype);
           break;
         }
+        case "container": {
+          Container.call(CPRItem.prototype);
+          break;
+        }
         case "physical": {
           Physical.call(CPRItem.prototype);
           break;
@@ -125,10 +120,6 @@ export default class CPRItem extends Item {
         }
         case "upgradable": {
           Upgradable.call(CPRItem.prototype);
-          // Dynamically calculates the number of free upgrade slots on the item
-          // by starting with the number of slots this item has and substacting
-          // the slot size of each of the upgrades.
-          this.system.availableSlots = this.availableSlots();
           break;
         }
         case "valuable": {

@@ -2,7 +2,7 @@
 	"label": "Tabla de Heridas Críticas",
 	"entries": [
 		{
-			"id": "Heridas Críticas (Cuerpo)",
+			"id": "Critical Injuries (Body)",
 			"name": "Heridas Críticas (Cuerpo)",
 			"results": {
 				"2-2": "Brazo Desmembrado",
@@ -19,7 +19,7 @@
 			}
 		},
 		{
-			"id": "Heridas Críticas (Cabeza)",
+			"id": "Critical Injuries (Head)",
 			"name": "Heridas Críticas (Cabeza)",
 			"results": {
 				"2-2": "Ojo Perdido",

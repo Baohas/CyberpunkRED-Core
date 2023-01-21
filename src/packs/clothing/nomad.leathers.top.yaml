@@ -19,13 +19,19 @@ system:
     value: ''
   equipped: owned
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isUpgraded: false
   price:
     category: everyday
     market: 20
   quality: standard
   revealed: true
-  slots: 3
   source: Pg. 356
   style: nomadLeathers
   tags: []

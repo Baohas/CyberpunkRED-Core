@@ -21,6 +21,16 @@
                         {{localize "CPR.global.generic.amount"}}
                       </span>
                     {{/if}}
+                    {{#if (cprListContains "armor" c)}}
+                      <span class="item-detail gear-amount bg-black gear-section-header text-nowrap">
+                        {{localize "CPR.global.generic.stats"}}
+                      </span>
+                    {{/if}}
+                    {{#if (cprListContains "cyberdeck" c)}}
+                      <span class="item-detail gear-amount bg-black gear-section-header text-nowrap">
+                        {{localize "CPR.global.generic.slots"}}
+                      </span>
+                    {{/if}}
                     {{#if (cprListContains "weapon" c)}}
                       <span class="item-detail gear-amount bg-black gear-section-header text-nowrap">
                         {{localize "CPR.global.itemTypes.ammo"}}
@@ -38,11 +48,11 @@
                 </li>
                 <ol class="items-list">
                     {{#each (cprSort (cprGetProp ../actor.itemTypes c) "name") as |item i|}}
-                    {{#if (cprSheetContentFilter ../../this.options.cprContentFilter item.name)}}
-                    {{!-- Partial handles Name and Data columns --}}
-                    {{> (cprGeneratePartial "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/gear/cpr-VAR-content.hbs" c) (cprMergeForPartialArg "item,actor,sheet" this ../../this.actor ../../this)}}
-                    {{!- Item actions column --}}
-                    {{/if}}
+                      {{#if (cprSheetContentFilter ../../this.options.cprContentFilter item.name)}}
+                        {{!-- Partial handles Name and Data columns --}}
+                        {{> (cprGeneratePartial "systems/cyberpunk-red-core/templates/actor/parts/right-pane/parts/gear/cpr-VAR-content.hbs" c) (cprMergeForPartialArg "item,actor,sheet" this ../../this.actor ../../this)}}
+                        {{!- Item actions column --}}
+                      {{/if}}
                     {{/each}}
                 </ol>
             </div>

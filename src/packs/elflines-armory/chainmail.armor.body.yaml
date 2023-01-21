@@ -1,45 +1,44 @@
+_id: N0XtKbgIohJmwa5R
 effects: []
 flags:
   core: {}
+folder: null
 img: icons/equipment/chest/breastplate-scale-grey.webp
 name: Chainmail Armor (Body)
+ownership:
+  default: 0
+sort: 0
 system:
-  tags: []
-  description:
-    value: <p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 350
-  favorite: false
-  revealed: true
-  usage: equipped
-  equipped: owned
+  bodyLocation:
+    ablation: 0
+    sp: 12
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 100
-    category: premium
-  isHeadLocation: false
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>
+  equipped: owned
+  favorite: false
   headLocation:
+    ablation: 0
     sp: 0
-    ablation: 0
   isBodyLocation: true
-  bodyLocation:
-    sp: 12
-    ablation: 0
+  isHeadLocation: false
   isShield: false
-  shieldHitPoints:
-    value: 0
-    max: 0
+  isUpgraded: false
   penalty: -2
+  price:
+    category: premium
+    market: 100
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  source: pg. 350
+  tags: []
   upgrade: ''
+  upgrades: []
+  usage: equipped
 type: armor
-_id: N0XtKbgIohJmwa5R
-folder: null
-sort: 0
-ownership:
-  default: 0

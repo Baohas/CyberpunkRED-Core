@@ -112,7 +112,7 @@ async function extPacks() {
                 log(`Processing ${itemName}`);
               }
               const data = _cleanPackData(entry);
-              const output = YAML.dump(data, null, 2);
+              const output = YAML.dump(data, { sortKeys: true }, 2);
               fs.writeFileSync(path.join(fragmentDir, packName, `${itemName}.yaml`), output, { mode: 0o644 });
             });
           });
@@ -172,7 +172,10 @@ async function genPacks() {
         // Sort the pack
         data.sort((lhs, rhs) => (lhs._id > rhs._id ? 1 : -1));
         // Write each entry to the pack
-        data.forEach((entry) => db.write(`${JSON.stringify(entry)}\n`));
+        for (const entry of data) {
+          db.write(`${JSON.stringify(entry)}\n`);
+        }
+        db.end();
       } else {
         throw Error(`${path.join(fragmentDir, packName)} does not exist`);
       }

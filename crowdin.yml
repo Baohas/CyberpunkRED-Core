@@ -2,8 +2,7 @@ base_path: .
 base_url: 'https://api.crowdin.com'
 pull_request_title: Localization update
 pull_request_labels:
-  - crowdin
-  - localization
+  - Localization
 commit_message: '[ci skip]'
 preserve_hierarchy: true
 files:

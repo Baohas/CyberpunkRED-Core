@@ -21,9 +21,9 @@ effects:
           '0': combat
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/sandevistan.svg
     label: Sandevistan
+    origin: null
     tint: null
     transfer: true
-    origin: null
 flags:
   core: {}
 folder: null
@@ -33,58 +33,61 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: assaultRifle
-  weaponSkill: Archery
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 1d6
-  rof: 1
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
-  attackmod: 0
-  tags: []
-  description:
-    value: <p>Speedware. +3 to Initiative for 1 min. 1hr cooldown.</p>
-    chat: ''
-    unidentified: ''
-  source: pg. 359
-  favorite: false
-  revealed: true
-  usage: toggled
-  install: clinic
-  isInstalled: false
-  size: 1
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 0
-    ammoId: ''
   ammoVariety: []
+  amount: 1
+  attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 500
-    category: expensive
-  type: neuralWare
-  isWeapon: false
-  isFoundational: false
-  hasOptionalSlots: false
-  optionSlots: 0
   core: false
-  installedOptionSlots: 0
-  optionalIds: []
+  damage: 1d6
+  description:
+    chat: ''
+    unidentified: ''
+    value: <p>Speedware. +3 to Initiative for 1 min. 1hr cooldown.</p>
+  dvTable: ''
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
   humanityLoss:
-    static: '7'
     roll: 2d6
-  amount: 1
-  attachmentSlots: 0
+    static: '7'
+  install: clinic
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      name: ''
+      uuid: ''
+    max: 0
+    value: 0
+  price:
+    category: expensive
+    market: 500
   quality: ''
+  revealed: true
+  rof: 1
+  size: 1
+  source: pg. 359
+  tags: []
+  type: neuralWare
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
 type: cyberware

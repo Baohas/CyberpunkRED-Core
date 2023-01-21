@@ -19,6 +19,14 @@ system:
     value: <p>Netrunner deck. 7 slots.</p>
   equipped: owned
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - program
+    list: []
+    slots: 7
+    usedSlots: 0
   isUpgraded: false
   price:
     category: expensive
@@ -26,7 +34,6 @@ system:
   programs:
     installed: []
     rezzed: []
-  slots: 7
   source: pg. 353
   tags: []
   upgrades: []

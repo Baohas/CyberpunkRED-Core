@@ -9,19 +9,15 @@ ownership:
   default: 0
 sort: 0
 system:
-  weaponType: vHeavyMelee
-  weaponSkill: Melee Weapon
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 4d6
-  rof: 1
-  dvTable: ''
-  isRanged: false
-  unarmedAutomaticCalculation: true
+  ammoVariety: []
   attackmod: 0
-  tags: []
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 4d6
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It
       appears as a high-tech katana, able to ignore any armor below SP11*. Refer
@@ -29,30 +25,42 @@ system:
 
       <p><em>*Not currently supported to will need to manually apply damage to
       armoured targets</em></p>
-    chat: ''
-    unidentified: ''
-  source: pg. 348
-  favorite: false
-  revealed: true
-  usage: equipped
+  dvTable: ''
   equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 0
-    ammoId: ''
-  ammoVariety: []
-  concealable:
-    concealable: false
-    isConcealed: false
-  upgrades: []
-  slots: 0
-  isUpgraded: false
-  price:
-    market: 5000
-    category: luxury
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
   handsReq: 2
-  attachmentSlots: 0
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isConcealed: false
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ''
+      uuid: ''
+    max: 0
+    value: 0
+  price:
+    category: luxury
+    market: 5000
   quality: excellent
+  revealed: true
+  rof: 1
+  slots: 0
+  source: pg. 348
+  tags: []
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: vHeavyMelee
 type: weapon

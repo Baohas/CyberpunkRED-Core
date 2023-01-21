@@ -1,7 +1,7 @@
 {{cprTrace "START ACTOR MOOKS CPR-MOOK-ARMOR.HBS"}}
 <div class="armor-section">
   <div class="bg-red fg-white">
-    <span class="item-name section-name text-nowrap text-padding-left">
+    <span class="item-name text-bold section-name text-nowrap text-padding-left">
       {{localize "CPR.global.itemTypes.armor"}}
     </span>
   </div>
@@ -21,7 +21,7 @@
                 <div class="text-center">
                   {{localize "CPR.global.location.head"}}
                 </div>
-                <div class="text-right">
+                <div class="text-center">
                   {{#if (cprCompare armor.system.headLocation.ablation ">" 0)}}
                     <span class="fg-red">
                   {{/if}}
@@ -46,7 +46,7 @@
                 <div class="text-center">
                   {{localize "CPR.global.location.body"}}
                 </div>
-                <div class="text-right">
+                <div class="text-center">
                   {{#if (cprCompare armor.system.bodyLocation.ablation ">" 0)}}
                     <span class="fg-red">
                   {{/if}}
@@ -68,10 +68,10 @@
                 </div>
               {{/if}}
               {{#if armor.system.isShield}}
-                <div class="text-right">
+                <div class="text-center">
                   {{localize "CPR.global.generic.shield"}}
                 </div>
-                <div class="text-right">
+                <div class="text-center">
                   {{#if (cprCompare armor.system.shieldHitPoints.value "<" armor.system.shieldHitPoints.max)}}
                     <span class="fg-red">
                   {{/if}}

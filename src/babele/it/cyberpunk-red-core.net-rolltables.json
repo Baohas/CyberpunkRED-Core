@@ -2,7 +2,7 @@
 	"label": "Rolltables Architettura di Rete",
 	"entries": [
 		{
-			"id": "Tutti Gli Altri Piani (Avanzate)",
+			"id": "All Other Floors (Advanced)",
 			"name": "Tutti Gli Altri Piani (Avanzate)",
 			"results": {
 				"3-3": "Cerbero x3",
@@ -24,7 +24,7 @@
 			}
 		},
 		{
-			"id": "Tutti Gli Altri Piani (Base)",
+			"id": "All Other Floors (Basic)",
 			"name": "Tutti Gli Altri Piani (Base)",
 			"results": {
 				"3-3": "Cerbero",
@@ -46,7 +46,7 @@
 			}
 		},
 		{
-			"id": "Tutti gli altri Piani (Standard)",
+			"id": "All Other Floors (Standard)",
 			"name": "Tutti gli altri Piani (Standard)",
 			"results": {
 				"3-3": "Cerbero x2",
@@ -68,7 +68,7 @@
 			}
 		},
 		{
-			"id": "Tutti gli altri Piani (Non Comune)",
+			"id": "All Other Floors (Uncommon)",
 			"name": "Tutti gli altri Piani (Non Comune)",
 			"results": {
 				"3-3": "Kraken",
@@ -90,7 +90,7 @@
 			}
 		},
 		{
-			"id": "Primi Due Piani (La Lobby)",
+			"id": "First Two Floors (The Lobby)",
 			"name": "Primi Due Piani (La Lobby)",
 			"results": {
 				"1-1": "File VD6",

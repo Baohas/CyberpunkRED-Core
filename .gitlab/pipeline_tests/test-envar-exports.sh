@@ -19,8 +19,6 @@ for envar in "${ENVARS[@]}"; do
   if ! grep -q "  echo \"${envar}=\${${envar}}" "${ENVAR_FILE}"; then
     echo "❌ ${envar} is not exported in ${ENVAR_FILE##*/}"
     ((ERRORS = ERRORS + 1))
-  else
-    echo "✅ ${envar} is exported in ${ENVAR_FILE##*/}"
   fi
 done
 

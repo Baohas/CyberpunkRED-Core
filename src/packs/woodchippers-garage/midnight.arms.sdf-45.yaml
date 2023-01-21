@@ -1,59 +1,60 @@
+_id: tk2g10vp4EdMXLPK
 effects: []
 flags:
   core: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher.svg
 name: Midnight Arms SDF-45
+ownership:
+  default: 0
+sort: 0
 system:
-  weaponType: rocketLauncher
-  weaponSkill: Heavy Weapons
-  fireModes:
-    autoFire: 0
-    suppressiveFire: false
-  damage: 8d6
-  rof: 2
-  dvTable: DV Rocket Launcher
-  isRanged: true
-  unarmedAutomaticCalculation: true
+  ammoVariety:
+    - rocket
   attackmod: 0
-  tags: ''
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 8d6
   description:
+    chat: ''
+    unidentified: ''
     value: >-
       <p>This rocket launcher can only load Armor Piercing rockets, and has a
       maximum range of 400 m/yds. When fired one rocket at a time, the GM
       chooses where they rockets land. When fired two rockets at a time, the GM
       chooses where the rockets land but this time up to 50 m/yds away from the
       target, and with each rocket more than 10 m/yds from each other.</p>
-    chat: ''
-    unidentified: ''
-  source: WG
-  favorite: false
-  revealed: true
-  usage: equipped
+  dvTable: DV Rocket Launcher
   equipped: owned
-  usesType: magazine
-  magazine:
-    value: 0
-    max: 4
-    ammoId: ''
-  ammoVariety:
-    - rocket
-  concealable:
-    concealable: false
-    isConcealed: false
-  upgrades: []
-  slots: 3
-  isUpgraded: false
-  price:
-    market: 1000
-    category: expensive
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
   handsReq: 2
-  attachmentSlots: 3
   isConcealed: false
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ''
+      uuid: ''
+    max: 4
+    value: 0
+  price:
+    category: expensive
+    market: 1000
   quality: standard
+  revealed: true
+  rof: 2
+  slots: 3
+  source: WG
+  tags: ''
+  unarmedAutomaticCalculation: true
   upgrade: ''
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: rocketLauncher
 type: weapon
-_id: tk2g10vp4EdMXLPK
-folder: null
-sort: 0
-ownership:
-  default: 0

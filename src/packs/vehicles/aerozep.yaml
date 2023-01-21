@@ -19,13 +19,19 @@ system:
       <p>A modern-day cargo blimp. Requires a minimum of two rooms. The price is
       for each room below deck. </p>
   favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
   isUpgraded: false
   price:
     category: superLuxury
     market: 30000
   sdp: 100
   seats: 2
-  slots: 3
   source: pg. 191
   speedCombat: 20
   speedNarrative: 100 MPH / 161 KPH

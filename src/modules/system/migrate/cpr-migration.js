@@ -1,5 +1,7 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */
-/* global game hasProperty Item */
+/* global game, hasProperty, duplicate, mergeObject, Item */
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
@@ -142,6 +144,29 @@ export default class CPRMigration {
   }
 
   /**
+   * Takes in an array of object changes (updateList) and a requested object change (itemUpdateData)
+   * and if the object is in the array, it will merge the changes to that object in the array, otherwise
+   * it appends to the array.
+   * Returns an updated array.
+   * @param {Array} updateList - Array of objects to be passed to actor.*EmbeddedDocuments()
+   * @param {Object} itemUpdateData  - Object with at least _id: set and changes for the object
+   * @returns {Array} - Updated updateList including itemUpdateData
+   */
+  static addToUpdateList(updateList, itemUpdateData) {
+    LOGGER.trace("addToUpdateList | CPRMigration");
+    let newList = duplicate(updateList);
+    const inList = updateList.filter((i) => i._id === itemUpdateData._id);
+    if (inList.length > 0) {
+      const updatedData = mergeObject(itemUpdateData, inList[0]);
+      newList = newList.filter((i) => i._id !== itemUpdateData._id);
+      newList.push(updatedData);
+    } else {
+      newList.push(itemUpdateData);
+    }
+    return newList;
+  }
+
+  /**
    * Migrate unowned Items
    */
   static async migrateItems(classRef) {
@@ -152,6 +177,7 @@ export default class CPRMigration {
       try {
         return await classRef.migrateItem(item);
       } catch (err) {
+        LOGGER.error(err);
         throw new Error(`${this.name}: ${item.name} had a migration error: ${err.message}`);
       }
     });
@@ -184,6 +210,7 @@ export default class CPRMigration {
       try {
         return await this.migrateActor(actor);
       } catch (err) {
+        LOGGER.error(err);
         throw new Error(`${this.name}: ${actor.name} had a migration error: ${err.message}`);
       }
     });
@@ -215,6 +242,7 @@ export default class CPRMigration {
       try {
         return await this.migrateScene(scene);
       } catch (err) {
+        LOGGER.error(err);
         throw new Error(`${this.name}: ${scene.name} had a migration error: ${err.message}`);
       }
     });
@@ -251,6 +279,7 @@ export default class CPRMigration {
       try {
         return await this.migrateActor(token.actor);
       } catch (err) {
+        LOGGER.error(err);
         throw new Error(`${this.name}: ${token.actor.name} token had a migration error: ${err.message}`);
       }
     });
