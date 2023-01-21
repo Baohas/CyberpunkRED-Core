@@ -1,7 +1,18 @@
 <!-- markdownlint-disable MD024 -->
+
 # Changelog
 
-## Version 0.86.0 | Date: TBD
+## Version 0.87.0 | Date: TBD
+
+### Release Specific Notes
+
+### New Features
+
+### Changes
+
+### Bug Fixes
+
+## Version 0.86.0 | Date: 2023-01-21
 
 ### Release Specific Notes
 
