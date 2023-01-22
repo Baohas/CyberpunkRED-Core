@@ -19,12 +19,12 @@ system:
     chat: ''
     unidentified: ''
     value: >-
-      <p>Little more than 3 Vials of Biotoxin strapped together. Deals no direct
+      <p>Created from 3 Vials of Biotoxin strapped together. Deals no direct
       damage on hit.</p>
   favorite: false
   price:
     category: cheap
-    market: 1500
+    market: 0
   source: WG
   tags: []
   type: biotoxin

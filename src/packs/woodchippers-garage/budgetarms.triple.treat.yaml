@@ -20,8 +20,9 @@ system:
     chat: ''
     unidentified: ''
     value: >-
-      <p>Comes with a Poor Quality Exotic Grenade Launcher Underbarrel*. Both
-      that and the main weapon can fire non-Basic Ammunition.</p>
+      <p>Comes with an Exotic Grenade Launcher Underbarrel* which - as the main
+      gun is poor quality - funcations as a poor quality weapon. It can't be
+      removed. Both that and the main weapon can fire non-Basic Ammunition.</p>
 
       <p><em>*Must be manually added after acquiring the weapon</em></p>
   dvTable: DV Rocket Launcher

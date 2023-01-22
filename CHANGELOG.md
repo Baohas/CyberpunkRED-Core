@@ -1,7 +1,18 @@
 <!-- markdownlint-disable MD024 -->
+
 # Changelog
 
-## Version 0.86.0 | Date: TBD
+## Version 0.87.0 | Date: TBD
+
+### Release Specific Notes
+
+### New Features
+
+### Changes
+
+### Bug Fixes
+
+## Version 0.86.0 | Date: 2023-01-21
 
 ### Release Specific Notes
 
@@ -9,27 +20,41 @@ If you're a GM and you linked Black-ICE items to tokens on the canvas, you might
 
 We have added the ability for all types of Cyberware to be weapons. This means we have removed the Weapons that duplicated this functionality from the Weapons Compendium. This should not affect already made characters but if you want to streamline your Character/Mook Sheets you can remove the old Cyberware and Weapon items and replace with the new ones to access the new functionality.
 
+In this release we revamped the underlying code which allowed the installation of items (Cyberware, Programs, Upgrades) into a more universal system. In doing this, it removed the previous limitation that only owned items can be upgraded. This now allows GM's to pre-create custom upgraded items in the world and use them as needed in their games. More details of the new system and these expanded capabilities can be seen in the CHANGELOG.
+In this release we revamped the underlying code which allowed the installation of items (Cyberware, Programs, Upgrades) into a more universal system. In doing this, it removed the previous limitation that only owned items can be upgraded. This now allows GM's to pre-create custom upgraded items in the world and use them as needed in their games. More details of the new system and these expanded capabilities can be seen in the CHANGELOG.
+
+If you have any of these items in your world and you changed the name to be something other than what is in the Compendium (ie changed a `Skill Chip` name to be `Perception Skill Chip`), you will need to manually update these items to ensure they are accurate per Rules as Written:
+
+- Any `Memory chips` and `Skill chips` should have their size set to 1 (was 0 for the previous system)
+- Any renamed `Chipware Socket` should allow both `Upgrades` and `Cyberware` to be installed into them and their slot count should be set to 1
+
+In testing the new system, it occurred to us that under the previous system, it was possible to accidentally install too many items into another item. For instance, an actor may have too many Fashionware items installed (more than 7). If your world contains items/actors that have too many items installed, a warning banner will be displayed during migration to notify you and there will also be a message in the Console providing the same information. Those items will not allow you to install anything additional into them. You can correct these by accessing the item in your world and uninstalling some of the items.
+
+We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check the console to ensure you did not miss any important messages about your world. Additional details can be found [here](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/migrations)
+
 ### New Features
 
 - Universal Installation System replaces the back end code for installing Cyberware in Actors, Programs in Cyberdecks and Upgrades in other owned Items.  This new system provides the following new features:
-  - World Items (aka unowned items) can now be upgraded by World Upgrades to allow GMs to create pre-upgraded weapons, armors, etc.
-    - World Items can only be upgraded by other World Items, so ensure you import any upgrades you want to install into the world.
-    - `Hint`: Import an item & upgrade to the world, open item sheet & click on Installed Items to select upgrade to install.
-  - Upgraded items and Loaded weapons can now be drag/transferred between Actors.
-    - If the destination actor does not have an ammo of the same type, an ammo item is created in their inventory with a quantity of 0.
-  - Upgraded items can now be dragged out to the Item Sidebar creating a World Upgraded Item that can then be dragged to other Actors.
-    - A folder is created to store copies of the installed items.  You can not delete a world item which is installed in another item.  You must uninstall it first.
-  - You can now install that Cyberdeck into the `Cyberdeck (Hardwired)` Cyberware Item and it is displayed in the `Cyber` tab as such.
+  - World Items (aka unowned items) can now be upgraded by World Upgrades to allow GMs to create pre-upgraded weapons, armors, etc
+    - World Items can only be upgraded by other World Items, so ensure you import any upgrades you want to install into the world
+    - `Hint`: Import an item & upgrade to the world, open item sheet & click on Installed Items to select upgrade to install
+  - Upgraded items and Loaded weapons can now be drag/transferred between Actors
+    - If the destination actor does not have an ammo of the same type, an ammo item is created in their inventory with a quantity of 0
+  - Upgraded items can now be dragged out to the Item Sidebar creating a World Upgraded Item that can then be dragged to other Actors
+    - A folder is created to store copies of the installed items.  You can not delete a world item which is installed in another item.  You must uninstall it first
+  - You can now install that Cyberdeck into the `Cyberdeck (Hardwired)` Cyberware Item and it is displayed in the `Cyber` tab as such
     - `Hint`: Click the `Install into` arrow next to the Cyberdeck item in the Actor inventory
-  - You can now install Chipware into a Chipware Socket and it is displayed in the `Cyber` tab as such.
-    - `Hint`: When installng Chipware, drop down the installation icon and select `Chipware Socket`.
-  - Vendors now sum the value of the item they are selling + all installed items (upgrades, programs, etc) to determine the total value of the item they are selling.
-    - Hovering over an item which has items installed in it will display a tool-tip with what is installed.
-  - Attempting to delete a World Item installed in another World Item will result in a dialog preventing the deletion and telling you where that item is installed.
-- #442 - Implement a "Smart Snort" feature for drugs which will auto-activate only specific effects when consumed.
+  - You can now install Chipware into a Chipware Socket and it is displayed in the `Cyber` tab as such
+    - `Hint`: When installng Chipware, drop down the installation icon and select `Chipware Socket`
+  - Vendors now sum the value of the item they are selling + all installed items (upgrades, programs, etc) to determine the total value of the item they are selling
+    - Hovering over an item which has items installed in it will display a tool-tip with what is installed
+  - Attempting to delete a World Item installed in another World Item will result in a dialog preventing the deletion and telling you where that item is installed
+- #442 - Implement a "Smart Snort" feature for drugs which will auto-activate only specific effects when consumed
 - #412 - Duplicate Active Effects in the Item Sheet (and Actor sheet)
 - #655 - Enable deleting changes in an Active Effect
+- #678 - Migrated cyberdecks did not have "program" as a valid installation type
 - All Cyberware can now be a weapon
+- Added a note making it more clear how under barrel weapons work
 
 ### Changes
 
@@ -37,20 +62,22 @@ We have added the ability for all types of Cyberware to be weapons. This means w
 - Change the Crit Injury icons to display before name
 - Update Character sheet to show more information for items
 - Update wording for Failed rolls
-- Babele translation config files added for DLC. Translations will follow later.
-- The Item Upgrades pack has been renamed from `item-upgrades` to `upgrade-items` to be consistent with other pack names.
+- Babele translation config files added for DLC. Translations will follow later
+- The Item Upgrades pack has been renamed from `item-upgrades` to `upgrade-items` to be consistent with other pack names
 - Update the main system font to Jost for better readability
 - Prior to this release, selling an upgraded item to a vendor renamed the item, pre-pending the word `Upgraded` to the name. Items are no longer renamed and instead, `Upgraded` is displayed inline if the item is upgraded without changing the item name.
 - #448 - Add the ability to "quick fix" a critical injury - resolved for now by making them all Toggled
 - #611 - default to Body table when rolling critical injuries
 - #633 - uninstall of programs from fight tab is failing
-- Resizing sheets is now handled by Foundry, removing our custom code to manage it.
+- Resizing sheets is now handled by Foundry, removing our custom code to manage it
 - Updated the design of the character Effects tab
 - Updated the design of the Effect tab in the active effects sheet
 - #658 - Unlinked tokens created from actors that had installed items were not updated to point to the token items
 - DV now shows before the DV Table name of the ruler label when measuring
 - #628 - Rollcard for programs without damage should not show the damage icon in the Rollcard
 - Dialog Affirmations now follow Foundry (`Confirm`, `Cancel`)
+- Set the price of several unpurchasable items to 0
+- Removed the poor quality underbarrel grenade launcher, as it isn't actually a distinct item from the regular underbarrel grenade launcher
 
 ### Bug Fixes
 
@@ -117,7 +144,7 @@ We have added the ability for all types of Cyberware to be weapons. This means w
 - Improved the visibility of the thumbnail image for the included NET Architecture scenes
 - Renamed the `Free` price category to `No Price`
 - Use Foundry tooltips instead of browser tooltips
-- Standardised raw `.svg` graphics to be squares, with any rounding applied later
+- #600 - Standardised raw `.svg` graphics to be squares, with any rounding applied later
 - Adjusted `vial_poison.svg` to better match other icons
 - Standardised the x-axis and y-axis offsets of the filters applied to `.svg` graphics
 - Capped the drop shadow intensity of the `.svg` graphics at `stdDeviation="15"`. This will make some of the darker graphics easier to read
@@ -187,11 +214,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - #553 - Macros can be dragged to the hotbar
 - #546 - Techscanner now properly gives bonuses to Cybertech and Weaponstech
 - #547 - Fixed the code so upgrades to attackmod are now taken into consideration
-- #554 - Introduced new price category `Dirt Cheap`. Changed the code to store Price Categories as config data (`config.js`) and altered code
-         to dynamically display the price categories based on the price passed `cprGetPriceCategory`. The `Valueable` mixin code was also adjusted
-         to utilize this single location of Price Categories.  Any item priced > 0 or < the second category will be lumped into the lowest category
-         tier. Example, while `Dirt Cheap` is not supposed to start until `5 eb`, there's no category for `0-4 eb` so instead of it being in the `free`
-         category, it is in the `Dirt Cheap` category.
+- #554 - Introduced new price category `Dirt Cheap`. Changed the code to store Price Categories as config data (`config.js`) and altered code to dynamically display the price categories based on the price passed `cprGetPriceCategory`. The `Valueable` mixin code was also adjusted to utilize this single location of Price Categories.  Any item priced > 0 or < the second category will be lumped into the lowest category tier. Example, while `Dirt Cheap` is not supposed to start until `5 eb`, there's no category for `0-4 eb` so instead of it being in the `free` category, it is in the `Dirt Cheap` category.
 - #549 - stop reordering items from the role list of abilities after adding points to them (ex: Tech and Solo)
 - #471 - On a Macbook, the `Command` key can now be used in lieu of the `Control` key to skip roll dialogs
 - #557 - Fix the variety of Shotgun Smart Slugs
@@ -214,12 +237,8 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Fixed regression where filteredItems was re-introduced back into the system. This was replaced with actor.itemTypes in 0.82.0
 - Fixed an issue where attempting to delete a ledger line would throw an error
 - Fixed a couple migration issues:
-  - When a migration failed for any reason, on the next run through it could corrupt
-    upgraded items
-  - When running migration through multiple levels of migration, it was possible that
-    the world data model version would be set incorrectly because the code did not await
-    the update of the world data model version.  This would cause migration to execute a
-    second time which may cause problems.
+  - When a migration failed for any reason, on the next run through it could corrupt upgraded items
+  - When running migration through multiple levels of migration, it was possible that the world data model version would be set incorrectly because the code did not await the update of the world data model version. This would cause migration to execute a second time which may cause problems.
 
 ## Version 0.83.0 | Date: 2022-10-02
 
@@ -258,7 +277,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 ### Bug Fixes
 
 - #473 - Fashionware foundational item not migrated to v10
-- #472 - EMP & Luck Values/Max greater than 9 mess with the formatting.  If a user enters a value > 9, a warning banner is shown letting them know there will be formatting issues and the formatting changes to make it more obvious something is amiss.
+- #472 - EMP & Luck Values/Max greater than 9 mess with the formatting. If a user enters a value > 9, a warning banner is shown letting them know there will be formatting issues and the formatting changes to make it more obvious something is amiss.
 - #468 - Actor image goes outside border over text fixed (overflow hidden).
 - #474 - Replaced `filteredItems` on `Item` types with scoped, relative properties called `relativeSkills` and `relativeAmmo` for specific items which require these data points.
 - Replaced all instances of filteredItems with actor.itemTypes (native to Foundry). This addressed an issue causing very slow loading times of the resources tab in the token configuration dialog.
@@ -313,23 +332,15 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - #225 - Active effects for Items
   - Active Effects are a Foundry feature that allow items to apply modifications to stats and skills of characters in the game. Active Effects can also be added to Characters arbitrarily without associating to an item.
-  - An Effects tab on the actor sheet has been added to summarize where active effects are coming from. From there character-level effects can be
-    managed. (create/toggle/edit/delete). Effects from Items cannot be edited or deleted from this tab. Mooks do not yet enjoy Active Effects.
-  - An Active Effect has a "usage" associated with it on an item. This affects when the effect will be applied. Examples are when carried, when equipped,
-    toggling it on/off yourself or always on. Some specialized ones exist too: Cyberware allows for "when installed." More may be added in the future.
-  - The following item types can have Active Effects added to them: armor, clothing, drugs (more on that next), gear, cyberware, weapons, and
-    injuries (see #290).
-  - Active effects can be applied to stats, skills, role abilities, a handful of derived stats (like HP), or custom keys in a manner similar to what 5E
-    expects. Only plain addition or subtraction modes are supported.
-  - A MOD column has been added to the Role tab in a manner similar to what we have for skills already. Like skills, this makes it clear which abilities
-    are being affected by an Active Effect.
-  - Arbitrary skill mods on characters cannot be set in the character sheet any more, that column shows mods coming from active effects now. You can
-    still create skill mods with active effects using the Effects tab.
-  - Active effects can affect skills on a character, even custom skills. Note that there is a known issue where a custom skill does not always show up
-    the first time any character is opened. (see issue #440 for details) Closing an reopening the sheet fixes it for the rest of that session.
+  - An Effects tab on the actor sheet has been added to summarize where active effects are coming from. From there character-level effects can be managed. (create/toggle/edit/delete). Effects from Items cannot be edited or deleted from this tab. Mooks do not yet enjoy Active Effects.
+  - An Active Effect has a "usage" associated with it on an item. This affects when the effect will be applied. Examples are when carried, when equipped, toggling it on/off yourself or always on. Some specialized ones exist too: Cyberware allows for "when installed." More may be added in the future.
+  - The following item types can have Active Effects added to them: armor, clothing, drugs (more on that next), gear, cyberware, weapons, and injuries (see #290).
+  - Active effects can be applied to stats, skills, role abilities, a handful of derived stats (like HP), or custom keys in a manner similar to what 5E expects. Only plain addition or subtraction modes are supported.
+  - A MOD column has been added to the Role tab in a manner similar to what we have for skills already. Like skills, this makes it clear which abilities are being affected by an Active Effect.
+  - Arbitrary skill mods on characters cannot be set in the character sheet any more, that column shows mods coming from active effects now. You can still create skill mods with active effects using the Effects tab.
+  - Active effects can affect skills on a character, even custom skills. Note that there is a known issue where a custom skill does not always show up the first time any character is opened. (see issue #440 for details) Closing an reopening the sheet fixes it for the rest of that session.
 - #305 - Drugs and Consumables
-  - The Drug item type has been added and has a unique action and usage. This is meant to model consumables, meaning items that stack and can be consumed
-    to enjoy some stat or skill benefit.
+  - The Drug item type has been added and has a unique action and usage. This is meant to model consumables, meaning items that stack and can be consumed to enjoy some stat or skill benefit.
   - Consuming a drug will reduce the amount by 1 and enable any active effects with the "when consumed" usage set.
   - If you implemented drugs with a different item type before you may want to re-create them with the new type.
 - Feature Request #295: EB Ledger for Shop Container Actors
@@ -346,7 +357,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Feature Request #352: Removed the fixed height CSS for the "Player Notes" section in the lifepath tab for a better writing/reading experience
 - Consolidated gain, lose and set ledger functions for EB, IP and Reputation to make it more manageable
 - #244 - Remove unused data points in the template
-- Substanial refactoring of the item code to support Active Effects and improve maintainability.
+- Substantial refactoring of the item code to support Active Effects and improve maintainability.
 - Added possibility to describe a "/red" roll with a description, e.g. "/red 1d10 # This is my roll!". The description of individual dice is not possible
 - Feature Request #378: Add ability to share actor artwork to players from the character sheet by right clicking on the Actor's image.
 - Feature Request #379: Added ability to populate a NET architecture with the help of rolltables. It also rolls for the number of floors (3d6) and how many branches there should be (see p. 210 in the book)
@@ -383,8 +394,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Changed migration status to use a status bar instead of flooding the screen with status messages
 - Ammo can be concealed, and can no longer be "upgraded". Different ammo types (rubber, toxic, etc) are still intact
 - A few changes to your world may have been made as part of migration activities:
-  - Some fields on items were given defaults if they are empty. For example a null price or price category is set to something befitting the
-  item type. It is still a guess, but now there is possibly correct data instead of definitely wrong or useless data.
+  - Some fields on items were given defaults if they are empty. For example a null price or price category is set to something befitting the item type. It is still a guess, but now there is possibly correct data instead of definitely wrong or useless data.
   - Clothing and gear upgrades were converted to active effects
   - Armor, programs, netarch, vehicles, and weapons cannot be stacked any more. Duplicate items may have been created (up to 50) in players' inventories
   - The *quality* field has been removed from items (weapons, cyberdecks and vehicles) to avoid confusion about whether to change values in other fields. You can still use the name and other fields (such at attack modifier) to express excellent quality items

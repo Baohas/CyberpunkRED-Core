@@ -24,6 +24,9 @@ system:
       <p>Functions like a standard grenade launcher, but with a magazine size of
       1. Requires 2 hands to use, and takes up 2 attachment slots. While
       attached, the weapon can't be concealed under clothing.</p>
+
+      <p>Note that the weapon inherits any modifiers from the gun it is
+      attached to, such as other attachment and quality.</p>
   dvTable: DV Grenade Launcher
   equipped: owned
   favorite: false
