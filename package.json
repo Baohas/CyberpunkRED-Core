@@ -29,6 +29,7 @@
     "fancy-log": "^2.0.0",
     "fancylog": "^4.0.5",
     "fs-extra": "^10.1.0",
+    "gitlab-ci-local": "^4.36.1",
     "gulp": "^4.0.2",
     "gulp-less": "^5.0.0",
     "gulp-svgmin": "^4.1.0",
