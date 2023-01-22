@@ -1,181 +1,173 @@
 .item-sheet {
-    font-family: "Jost";
+  font-family: "Jost";
 
-    // Cyberpunk Red Core Sheet Styling
+  // Cyberpunk Red Core Sheet Styling
 
-    // The basic sheet should be white
-    background-color: @chrome-white;
+  // The basic sheet should be white
+  background-color: @chrome-white;
 
-    // Utilize grid for element placement on the sheet
+  // Utilize grid for element placement on the sheet
+  display: grid;
+
+  // We want white borders between each element
+  grid-gap: 5px;
+
+  // At a top level, we will have 2x2 grid
+  // +------------------------------------------+
+  // | main & stats | tabs: skills, cyber, gear |
+  // |------------------------------------------+
+  // | tabs: Role, Combat, Lifepath             |
+  // +------------------------------------------+
+  //
+  // Originally we tried to just size this using auto and letting
+  // the sub-elements dictate the size. The problem was that when
+  // a sub-element didn't take up all of the space,
+  // it split the space 50/50.
+  // dictated by the elements contained in each grid
+  grid-template-columns: auto;
+  grid-template-rows: 72px auto;
+
+  grid-template-areas:
+    "item-top-pane"
+    "item-bottom-pane";
+
+  .item-top-pane {
+    grid-area: item-top-pane;
+
     display: grid;
+    background-color: @wyrm-red;
+    padding: 5px;
+    height: 72px;
 
-    // We want white borders between each element
-    grid-gap: 5px;
+    grid-template-columns: 67px auto;
+    grid-template-rows: auto;
+    grid-template-areas: "item-image item-header";
 
-    // At a top level, we will have 2x2 grid
-    // +------------------------------------------+
-    // | main & stats | tabs: skills, cyber, gear |
-    // |------------------------------------------+
-    // | tabs: Role, Combat, Lifepath             |
-    // +------------------------------------------+
-    //
-    // Originally we tried to just size this using auto and letting
-    // the sub-elements dictate the size. The problem was that when
-    // a sub-element didn't take up all of the space,
-    // it split the space 50/50.
-    // dictated by the elements contained in each grid
+    .item-image-section {
+      grid-area: item-image;
+      display: flex;
+      background-color: @wyrm-red;
+      height: 62px;
+      width: 62px;
+      overflow: hidden;
+    }
+
+    .item-header-section {
+      grid-area: item-header;
+      display: flex;
+      background-color: @chrome-white;
+      height: 62px;
+    }
+
+    .item-header-title {
+      font-weight: 500;
+    }
+  }
+
+  .tab-label {
+    height: 18px;
+  }
+
+  .item-bottom-pane {
+    display: grid;
+    grid-area: item-bottom-pane;
+
     grid-template-columns: auto;
-    grid-template-rows   : 72px auto;
-
+    grid-template-rows: 18px auto;
     grid-template-areas:
-        "item-top-pane"
-        "item-bottom-pane";
+      "item-bottom-tabs"
+      "item-bottom-content";
 
-    .item-top-pane {
-        grid-area: item-top-pane;
+    height: fit-content;
+    overflow-y: hidden;
 
-        display         : grid;
-        background-color: @wyrm-red;
-        padding         : 5px;
-        height          : 72px;
-
-        grid-template-columns: 67px auto;
-        grid-template-rows   : auto;
-        grid-template-areas  :
-            "item-image item-header";
-
-        .item-image-section {
-            grid-area       : item-image;
-            display         : flex;
-            background-color: @wyrm-red;
-            height          : 62px;
-            width           : 62px;
-            overflow: hidden;
-
-        }
-
-        .item-header-section {
-            grid-area       : item-header;
-            display         : flex;
-            background-color: @chrome-white;
-            height          : 62px;
-        }
-
-        .item-header-title {
-          font-weight: 500;
-        }
-
-
+    .item-bottom-tabs-section {
+      grid-area: item-bottom-tabs;
     }
 
-    .tab-label {
-      height: 18px;
+    .item-bottom-content-section {
+      grid-area: item-bottom-content;
+      display: flex;
+
+      border-color: @wyrm-red;
+      border-style: solid;
+      border-width: 5px;
+      overflow-y: hidden;
+      flex-wrap: wrap;
     }
-
-    .item-bottom-pane {
-        display  : grid;
-        grid-area: item-bottom-pane;
-
-        grid-template-columns: auto;
-        grid-template-rows   : 18px auto;
-        grid-template-areas  :
-            "item-bottom-tabs"
-            "item-bottom-content";
-
-        height    : fit-content;
-        overflow-y: hidden;
-
-        .item-bottom-tabs-section {
-            grid-area: item-bottom-tabs;
-        }
-
-        .item-bottom-content-section {
-            grid-area: item-bottom-content;
-            display  : flex;
-
-            border-color: @wyrm-red;
-            border-style: solid;
-            border-width: 5px;
-            overflow-y  : hidden;
-            flex-wrap   : wrap;
-        }
-    }
+  }
 }
 
 .item-description-grid,
 .item-settings-grid,
 .item-effects-grid {
-    display: flex;
-    width  : inherit;
-    height : inherit;
-    flex   : 1 1 auto;
+  display: flex;
+  width: inherit;
+  height: inherit;
+  flex: 1 1 auto;
 }
 
 .item-description-tab {
-    display              : grid;
-    grid-template-columns: 135px auto;
-    grid-template-rows   : auto;
-    grid-template-areas  :
-        "item-summary-pane item-description-pane";
+  display: grid;
+  grid-template-columns: 135px auto;
+  grid-template-rows: auto;
+  grid-template-areas: "item-summary-pane item-description-pane";
 
-    flex            : 1 0 auto;
-    min-height      : 150px;
-    grid-gap        : 5px;
-    background-color: @wyrm-red;
-    width           : inherit;
+  flex: 1 0 auto;
+  min-height: 150px;
+  grid-gap: 5px;
+  background-color: @wyrm-red;
+  width: inherit;
 
-    .item-summary-section {
-        grid-area       : item-summary-pane;
-        background-color: @chrome-white;
-        height   : unset;
-        font-size: @font-small;
-        min-width: 135px;
-        padding: 2px;
+  .item-summary-section {
+    grid-area: item-summary-pane;
+    background-color: @chrome-white;
+    height: unset;
+    font-size: @font-small;
+    min-width: 135px;
+    padding: 2px;
 
-        .summary-name,
-        .item-summary-line {
-            display: flex;
-            justify-content: space-between;
-        }
-        .summary-value {
-            align-self: center;
-        }
+    .summary-name,
+    .item-summary-line {
+      display: flex;
+      justify-content: space-between;
     }
-
-    .item-description-section {
-        grid-area       : item-description-pane;
-        display         : flex;
-        flex            : 1 0 auto;
-        background-color: @chrome-white;
-        flex-wrap       : wrap;
-        height          : unset;
+    .summary-value {
+      align-self: center;
     }
+  }
+
+  .item-description-section {
+    grid-area: item-description-pane;
+    display: flex;
+    flex: 1 0 auto;
+    background-color: @chrome-white;
+    flex-wrap: wrap;
+    height: unset;
+  }
 }
-
 
 .item-settings-tab,
 .item-effects-tab {
-    display         : flex;
-    width           : auto;
-    flex            : 1;
-    background-color: @chrome-white;
-    .item-settings-section,
-    .item-effects-section {
-        display: list-item;
-        flex   : 1;
-    }
+  display: flex;
+  width: auto;
+  flex: 1;
+  background-color: @chrome-white;
+  .item-settings-section,
+  .item-effects-section {
+    display: list-item;
+    flex: 1;
+  }
 }
-
 
 .item-image-block {
-    .item-image-block-img {
-        height: 62px;
-        width: 62px;
-        clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px);
-        object-fit: contain;
-    }
+  .item-image-block-img {
+    height: 62px;
+    width: 62px;
+    clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px);
+    object-fit: contain;
+  }
 }
-
 
 .item-netarch-section {
   background-color: @wyrm-red;
@@ -183,16 +175,16 @@
 }
 
 .item-netarch-grid {
-    display: grid;
-    grid-template-columns: 30px 30px 1fr 80px;
-    grid-template-areas: "netarch-level netarch-dv netarch-content netarch-actions";
-    gap: 4px 4px;
+  display: grid;
+  grid-template-columns: 30px 30px 1fr 80px;
+  grid-template-areas: "netarch-level netarch-dv netarch-content netarch-actions";
+  gap: 4px 4px;
 }
 
 .netarch-level {
-    grid-area: netarch-level;
-    flex: 0 0 30px;
-    text-align: center;
+  grid-area: netarch-level;
+  flex: 0 0 30px;
+  text-align: center;
 }
 
 .netarch-dv {
@@ -213,11 +205,11 @@
 
 .netarch-list-content {
   li:nth-child(even) {
-      background-color: @meat-space-pink;
+    background-color: @meat-space-pink;
   }
 
   li:nth-child(odd) {
-      background-color: @chrome-white;
+    background-color: @chrome-white;
   }
 }
 
@@ -228,17 +220,21 @@
 
 .role-list-content {
   li:nth-child(even) {
-      background-color: @meat-space-pink;
+    background-color: @meat-space-pink;
   }
 
   li:nth-child(odd) {
-      background-color: @chrome-white;
+    background-color: @chrome-white;
   }
 }
 
-
-.help-article, .help-article:link, .help-article:hover, .help-article:visited, .help-article:focus, .help-article:active {
-    text-decoration: none;
-    color: inherit;
-    cursor: auto;
+.help-article,
+.help-article:link,
+.help-article:hover,
+.help-article:visited,
+.help-article:focus,
+.help-article:active {
+  text-decoration: none;
+  color: inherit;
+  cursor: auto;
 }

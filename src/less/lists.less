@@ -1,395 +1,392 @@
 // All lists use this
 
 .items-list {
-    list-style      : none;
-    margin          : 0;
-    padding         : 0;
-    overflow-y      : auto;
-    scrollbar-width : thin;
-    background-color: @chrome-white;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  background-color: @chrome-white;
 
-    .items-header {
-        font-size: @font-small;
-        font-weight: 500;
-        align-items     : center;
-        background-color: @flint-black;
-        color           : @chrome-white;
-        span {
-          padding: 2px;
-        }
+  .items-header {
+    font-size: @font-small;
+    font-weight: 500;
+    align-items: center;
+    background-color: @flint-black;
+    color: @chrome-white;
+    span {
+      padding: 2px;
     }
+  }
 
-    .item {
-        align-items: center;
-        padding: 0 2px;
+  .item {
+    align-items: center;
+    padding: 0 2px;
+  }
+
+  .item-name {
+    flex: 2;
+    margin: 0;
+    overflow: hidden;
+    text-align: left;
+    align-items: center;
+    text-overflow: ellipsis;
+
+    img {
+      width: 28px;
+      height: 28px;
+      margin: 3px 3px 3px 1px;
     }
+  }
 
-    .item-name {
-        flex       : 2;
-        margin     : 0;
-        overflow   : hidden;
-        text-align : left;
-        align-items: center;
-        text-overflow: ellipsis;
+  .item-image {
+    flex: 0 0 30px;
+    border: none;
+    margin-right: 5px;
+  }
 
-        img {
-          width: 28px;
-          height: 28px;
-          margin: 3px 3px 3px 1px;
-        }
-    }
+  .item-detail {
+    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-    .item-image {
-        flex        : 0 0 30px;
-        border      : none;
-        margin-right: 5px;
-    }
+  // Hide a row in the list
+  .hide {
+    display: none;
+  }
 
-    .item-detail {
-        word-break : break-word;
-        white-space: nowrap;
-        overflow   : hidden;
-        text-overflow: ellipsis;
-    }
+  .inline-block {
+    display: inline-block;
+    zoom: 1;
+  }
 
-    // Hide a row in the list
-    .hide {
-        display: none;
-    }
-
-    .inline-block {
-        display: inline-block;
-        zoom   : 1;
-    }
-
-    .item-end {
-        text-align: end;
-    }
+  .item-end {
+    text-align: end;
+  }
 }
 
 .mook-skills-list {
-    max-height      : 700px;
-    overflow-y      : auto;
-    li:nth-child(even) {
-        background-color: @meat-space-pink;
-    }
+  max-height: 700px;
+  overflow-y: auto;
+  li:nth-child(even) {
+    background-color: @meat-space-pink;
+  }
 
-    li:nth-child(odd) {
-        background-color: @chrome-white;
-    }
+  li:nth-child(odd) {
+    background-color: @chrome-white;
+  }
 }
 
 .effects-list {
-    list-style      : none;
-    margin          : 0;
-    padding         : 0;
-    overflow-y      : auto;
-    scrollbar-width : thin;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  background-color: @chrome-white;
+
+  .effects-category {
+    font-weight: 500;
+    background-color: @flint-black;
+    padding: 0;
+    color: @chrome-white;
+    span {
+      padding: 2px;
+    }
+  }
+
+  li:nth-child(even) {
+    background-color: @meat-space-pink;
+  }
+
+  li:nth-child(odd) {
     background-color: @chrome-white;
+  }
 
-    .effects-category {
-        font-weight: 500;
-        background-color: @flint-black;
-        padding: 0;
-        color: @chrome-white;
-        span {
-          padding: 2px;
-        }
+  .item.effect {
+    div {
+      padding: 3px;
     }
+  }
 
-    li:nth-child(even) {
-        background-color: @meat-space-pink;
-    }
+  .effect-image {
+    flex: 0 0 30px;
+    border: none;
+    margin-right: 5px;
+    margin-left: 0;
+    width: 32px;
+  }
 
-    li:nth-child(odd) {
-        background-color: @chrome-white;
-    }
+  .effect-name {
+    flex: 0 0 65%;
+    margin: 0;
+    overflow: hidden;
+    text-align: left;
+    align-items: center;
+    text-overflow: ellipsis;
+  }
 
-    .item.effect {
-      div {
-        padding: 3px;
-      }
-    }
+  .effect-source {
+    flex: 0 0 20%;
+    text-align: left;
+    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    align-self: center;
+    text-overflow: ellipsis;
+  }
 
-    .effect-image {
-        flex        : 0 0 30px;
-        border      : none;
-        margin-right: 5px;
-        margin-left: 0;
-        width: 32px;
-    }
-
-    .effect-name {
-        flex       : 0 0 65%;
-        margin     : 0;
-        overflow   : hidden;
-        text-align : left;
-        align-items: center;
-        text-overflow: ellipsis;
-    }
-
-    .effect-source {
-        flex      : 0 0 20%;
-        text-align : left;
-        word-break : break-word;
-        white-space: nowrap;
-        overflow   : hidden;
-        align-self: center;
-        text-overflow: ellipsis;
-    }
-
-    .effect-actions {
-        flex: 0 0 15%;
-        text-align: center;
-        align-self: center;
-        padding-right: 5px;
-    }
+  .effect-actions {
+    flex: 0 0 15%;
+    text-align: center;
+    align-self: center;
+    padding-right: 5px;
+  }
 }
 
 .changes-list {
-    list-style      : none;
-    margin          : 2;
-    padding         : 0;
-    overflow-y      : auto;
-    scrollbar-width : thin;
+  list-style: none;
+  margin: 2;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  background-color: @chrome-white;
+  div {
+    padding: 2px;
+  }
+
+  li:nth-child(even) {
+    background-color: @meat-space-pink;
+  }
+
+  li:nth-child(odd) {
     background-color: @chrome-white;
+  }
+
+  .change-header {
+    font-weight: 500;
+    padding: 0;
+    background-color: @flint-black;
+    color: @chrome-white;
     div {
-        padding: 2px;
+      padding: 2px;
     }
+  }
 
-    li:nth-child(even) {
-        background-color: @meat-space-pink;
+  .change-key {
+    flex: 0 0 40%;
+
+    .key-input {
+      width: 68%;
     }
-
-    li:nth-child(odd) {
-        background-color: @chrome-white;
+    .key-cat {
+      width: 30%;
     }
-
-    .change-header {
-        font-weight: 500;
-        padding         : 0;
-        background-color: @flint-black;
-        color           : @chrome-white;
-        div {
-            padding: 2px;
-        }
+    .key-key {
+      width: 68%;
     }
+  }
 
-    .change-key {
-        flex: 0 0 40%;
+  .change-value {
+    flex: 0 0 12%;
+  }
 
-        .key-input {
-            width: 68%;
-        }
-        .key-cat {
-            width: 30%;
-        }
-        .key-key {
-            width: 68%;
-        }
-    }
+  .change-mode {
+    flex: 0 0 16%;
+    align-self: center;
+  }
 
-    .change-value {
-        flex: 0 0 12%;
+  .situational {
+    flex: 0 0 12%;
+  }
 
-    }
+  .on-by-default {
+    flex: 0 0 12%;
+  }
 
-    .change-mode {
-        flex: 0 0 16%;
-        align-self: center;
-    }
-
-    .situational {
-        flex: 0 0 12%
-    }
-
-    .on-by-default {
-        flex: 0 0 12%
-    }
-
-    .change-actions {
-        text-align: right;
-        padding-right: 5px;
-        flex: 0 0 8%;
-        align-self: center;
-    }
+  .change-actions {
+    text-align: right;
+    padding-right: 5px;
+    flex: 0 0 8%;
+    align-self: center;
+  }
 }
 
 .skills-tab {
-    li:nth-child(even) {
-        background-color: @meat-space-pink;
-    }
+  li:nth-child(even) {
+    background-color: @meat-space-pink;
+  }
 
-    li:nth-child(odd) {
-        background-color: @chrome-white;
-    }
+  li:nth-child(odd) {
+    background-color: @chrome-white;
+  }
 
-    .skill-level,
-    .skill-base,
-    .skill-mod-value{
-        flex: 0 0 38px;
-     }
+  .skill-level,
+  .skill-base,
+  .skill-mod-value {
+    flex: 0 0 38px;
+  }
 
-    .skill-favorite {
-        flex: 0 0 37px;
-        text-align: center;
-    }
+  .skill-favorite {
+    flex: 0 0 37px;
+    text-align: center;
+  }
 
-    .skill-custom {
-        flex: none;
-    }
+  .skill-custom {
+    flex: none;
+  }
 
-    .skill-basic {
-      font-weight: 600;
-    }
+  .skill-basic {
+    font-weight: 600;
+  }
 
-    .skill-stat {
-      font-weight: 500;
-    }
+  .skill-stat {
+    font-weight: 500;
+  }
 }
 
 .gear-tab {
-    li:nth-child(even) {
-        background-color: @meat-space-pink;
-    }
+  li:nth-child(even) {
+    background-color: @meat-space-pink;
+  }
 
-    li:nth-child(odd) {
-        background-color: @chrome-white;
-    }
+  li:nth-child(odd) {
+    background-color: @chrome-white;
+  }
 
-    .gear-section-header {
-        padding: 5px;
-    }
+  .gear-section-header {
+    padding: 5px;
+  }
 
-    .gear-name {
-        text-overflow: ellipsis;
-        flex: 0 0 33%;
-    }
+  .gear-name {
+    text-overflow: ellipsis;
+    flex: 0 0 33%;
+  }
 
-    .name.item-edit > sup {
-        margin-left: 5px;
-    }
+  .name.item-edit > sup {
+    margin-left: 5px;
+  }
 
-    .gear-amount {
-      max-width: 60px;
-      margin: 0;
+  .gear-amount {
+    max-width: 60px;
+    margin: 0;
 
-      .gear-amount-value {
-        max-width: 100%;
-        padding: 3px;
+    .gear-amount-value {
+      max-width: 100%;
+      padding: 3px;
 
-        .gear-amount-input {
-          width: 30px;
-        }
+      .gear-amount-input {
+        width: 30px;
       }
     }
+  }
 
-    .gear-data {
-        text-align: left;
-        flex: 0 0 40%;
-        padding-left: 2px;
-    }
+  .gear-data {
+    text-align: left;
+    flex: 0 0 40%;
+    padding-left: 2px;
+  }
 
-    .gear-actions {
-        text-align: end;
-        min-width: 115px;
-    }
+  .gear-actions {
+    text-align: end;
+    min-width: 115px;
+  }
 }
 
 .role-tab {
-    width: 100%;
+  width: 100%;
 
-    .role-tab-content {
+  .role-tab-content {
+    .role-item {
+      .role-name,
+      .ability-name {
+        flex: 1 1 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
-        .role-item {
-            .role-name,
-            .ability-name {
-                flex: 1 1 200px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            .role-rank,
-            .ability-rank {
-                flex: 0 0 90px;
-                text-align   : center;
-                padding-right: 5px;
-            }
-        }
+      .role-rank,
+      .ability-rank {
+        flex: 0 0 90px;
+        text-align: center;
+        padding-right: 5px;
+      }
     }
+  }
 }
 
 .fight-tab {
-    .armor-content {
-        background-color: @chrome-white;
+  .armor-content {
+    background-color: @chrome-white;
 
-        li {
-            display         : flex;
-            background-color: @meat-space-pink;
-            margin-left     : 2px;
-            margin-right    : 2px;
-            padding: 0 5px;
-        }
-
-        .armor-piece {
-            margin: 2px;
-        }
+    li {
+      display: flex;
+      background-color: @meat-space-pink;
+      margin-left: 2px;
+      margin-right: 2px;
+      padding: 0 5px;
     }
 
-    .critical-injury-content {
-        li:nth-child(even) {
-            background-color: @meat-space-pink;
-        }
+    .armor-piece {
+      margin: 2px;
+    }
+  }
 
-        li:nth-child(odd) {
-            background-color: @chrome-white;
-        }
+  .critical-injury-content {
+    li:nth-child(even) {
+      background-color: @meat-space-pink;
     }
 
-    .weapon-content {
-        li:nth-child(even) {
-            background-color: @meat-space-pink;
-        }
+    li:nth-child(odd) {
+      background-color: @chrome-white;
+    }
+  }
 
-        li:nth-child(odd) {
-            background-color: @chrome-white;
-        }
+  .weapon-content {
+    li:nth-child(even) {
+      background-color: @meat-space-pink;
     }
 
-    .weapon-name {
-        flex: 0 0 25%;
+    li:nth-child(odd) {
+      background-color: @chrome-white;
     }
+  }
 
-    .weapon-measure,
-    .weapon-attack,
-    .weapon-damage {
-        flex      : 0 0 20px;
-        text-align: center;
-    }
-    .weapon-reload {
-        flex      : 0 0 40px;
-        text-align: center;
-    }
+  .weapon-name {
+    flex: 0 0 25%;
+  }
 
+  .weapon-measure,
+  .weapon-attack,
+  .weapon-damage {
+    flex: 0 0 20px;
+    text-align: center;
+  }
+  .weapon-reload {
+    flex: 0 0 40px;
+    text-align: center;
+  }
 }
 
 ul,
 ol {
-    margin : 0.5em 0;
-    padding: 0 0 0 1.5em;
+  margin: 0.5em 0;
+  padding: 0 0 0 1.5em;
 }
 
 .compatible-ammo {
-    li:nth-child(even) {
-        background-color: @meat-space-pink;
-    }
+  li:nth-child(even) {
+    background-color: @meat-space-pink;
+  }
 
-    li:nth-child(odd) {
-        background-color: @chrome-white;
-    }
+  li:nth-child(odd) {
+    background-color: @chrome-white;
+  }
 }
 
 .zero-not-visible:not(:hover):not(:focus-within) {
   opacity: 0;
-  transition: opacity .2s ease;
+  transition: opacity 0.2s ease;
 }

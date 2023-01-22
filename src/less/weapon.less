@@ -1,77 +1,76 @@
 .weapon-grid {
-    display: grid;
-    grid-template-columns: 52px 1fr 64px 92px;
-    gap: 2px 4px;
-    grid-template-areas:
-      "fight-weapon-icon fight-weapon fight-weapon-firetype fight-weapon-attack";
+  display: grid;
+  grid-template-columns: 52px 1fr 64px 92px;
+  gap: 2px 4px;
+  grid-template-areas: "fight-weapon-icon fight-weapon fight-weapon-firetype fight-weapon-attack";
 }
 
 .fight-weapon-icon {
-    grid-area: fight-weapon-icon;
-    width: 52px;
-    height: 52px;
+  grid-area: fight-weapon-icon;
+  width: 52px;
+  height: 52px;
 }
 
 .fight-weapon-icon-img {
-    width: 52px;
-    height: 52px;
-    object-fit: contain;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
 }
 
 .fight-weapon {
-    display: grid;
-    gap: 0px 0px;
-    grid-template-areas:
-      "fight-weapon-name"
-      "fight-weapon-actions";
-    grid-area: fight-weapon;
+  display: grid;
+  gap: 0px 0px;
+  grid-template-areas:
+    "fight-weapon-name"
+    "fight-weapon-actions";
+  grid-area: fight-weapon;
 }
 
 .fight-weapon-name {
-    grid-area: fight-weapon-name;
+  grid-area: fight-weapon-name;
 }
 
 .fight-weapon-actions {
-    grid-area: fight-weapon-actions;
+  grid-area: fight-weapon-actions;
 }
 
 .fight-weapon-firetype {
-    display: grid;
-    gap: 0px 0px;
-    grid-template-areas:
-      "fight-weapon-aim fight-weapon-aim-box"
-      "fight-weapon-auto fight-weapon-auto-box"
-      "fight-weapon-suppress fight-weapon-supress-box";
-    grid-area: fight-weapon-firetype;
+  display: grid;
+  gap: 0px 0px;
+  grid-template-areas:
+    "fight-weapon-aim fight-weapon-aim-box"
+    "fight-weapon-auto fight-weapon-auto-box"
+    "fight-weapon-suppress fight-weapon-supress-box";
+  grid-area: fight-weapon-firetype;
 }
 
 .fight-weapon-aim {
-    align-self: center;
-    grid-area: fight-weapon-aim;
+  align-self: center;
+  grid-area: fight-weapon-aim;
 }
 
 .fight-weapon-auto {
-    align-self: center;
-    grid-area: fight-weapon-auto;
+  align-self: center;
+  grid-area: fight-weapon-auto;
 }
 
 .fight-weapon-suppress {
-    align-self: center;
-    grid-area: fight-weapon-suppress;
+  align-self: center;
+  grid-area: fight-weapon-suppress;
 }
 
 .fight-weapon-aim-box {
-    grid-area: fight-weapon-aim-box;
+  grid-area: fight-weapon-aim-box;
 }
 
 .fight-weapon-auto-box {
-    grid-area: fight-weapon-auto-box;
+  grid-area: fight-weapon-auto-box;
 }
 
 .fight-weapon-supress-box {
-    grid-area: fight-weapon-supress-box;
+  grid-area: fight-weapon-supress-box;
 }
 
 .fight-weapon-attack {
-    grid-area: fight-weapon-attack;
+  grid-area: fight-weapon-attack;
 }
