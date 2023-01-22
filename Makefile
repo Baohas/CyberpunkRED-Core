@@ -23,6 +23,10 @@ ci:
 	@if [[ "$(CI_JOBS)" == "none" ]]; then \
 		echo "Please install node dependencies with 'make install'"; \
 	else \
-		npx gitlab-ci-local --variable CI_COMMIT_BRANCH=$(CI_COMMIT_BRANCH) --needs $(CI_JOBS); \
+		npx gitlab-ci-local \
+		  --variable \
+		    CI_COMMIT_BRANCH=$(CI_COMMIT_BRANCH) \
+		    CI_DEFAULT_BRANCH=$(CI_COMMIT_BRANCH) \
+		  --needs $(CI_JOBS); \
 		rm -rf vars.env; \
 	fi
