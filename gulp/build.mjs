@@ -39,7 +39,8 @@ async function compileLess() {
   return new Promise((cb) => {
     log("Building CSS...");
     _createDist();
-    gulp.src(path.resolve(srcFolder, "less/main.less"))
+    gulp
+      .src(path.resolve(srcFolder, "less/main.less"))
       .pipe(less({ javascriptEnabled: true }))
       .pipe(gulp.dest(path.resolve(destFolder)))
       .on("finish", () => {
@@ -76,7 +77,9 @@ async function buildManifest() {
     // If we're in CI use $VERSION as the version, else use a dummy version
     const version = SYSTEM_VERSION;
     // Construct some URLs
-    const repoUrl = process.env.CI ? process.env.REPO_URL : "http://example.com";
+    const repoUrl = process.env.CI
+      ? process.env.REPO_URL
+      : "http://example.com";
     const zipFile = process.env.CI ? process.env.ZIP_FILE : "cpr.zip";
     const manifestUrl = `${repoUrl}/latest/${SYSTEM_FILE}`;
     const downloadUrl = `${repoUrl}/${version}/${zipFile}`;
@@ -86,7 +89,10 @@ async function buildManifest() {
     system.download = downloadUrl;
     system.title = SYSTEM_TITLE;
 
-    fs.writeFileSync(path.resolve(destFolder, SYSTEM_FILE), JSON.stringify(system, null, 2));
+    fs.writeFileSync(
+      path.resolve(destFolder, SYSTEM_FILE),
+      JSON.stringify(system, null, 2)
+    );
     log(`Finished building ${SYSTEM_FILE}.`);
     cb();
   });
@@ -102,14 +108,22 @@ async function buildChangelog() {
     }
 
     // If we don't have a manually created file then generate one
-    if (!fs.existsSync(path.join(srcFolder, "lang/release-notes", `${SYSTEM_VERSION}.en`))) {
+    if (
+      !fs.existsSync(
+        path.join(srcFolder, "lang/release-notes", `${SYSTEM_VERSION}.en`)
+      )
+    ) {
       const changelog = fs.readFileSync(path.resolve(CHANGELOG_FILE), "utf-8");
       const regex = /(?:^|\n)##\s[^\n]*\n(.*?)(?=\n##?\s|$)/gs;
       const release = regex.exec(changelog)[0];
       const md = new MarkdownIt();
       const result = md.render(release);
 
-      fs.writeFileSync(path.join(destFolder, "lang/release-notes/", `${SYSTEM_VERSION}.en`), result, { mode: 0o644 });
+      fs.writeFileSync(
+        path.join(destFolder, "lang/release-notes/", `${SYSTEM_VERSION}.en`),
+        result,
+        { mode: 0o644 }
+      );
     }
     log("Finished Generating Release Notes.");
     cb();
@@ -119,10 +133,16 @@ async function buildChangelog() {
 async function processImages() {
   return new Promise((cb) => {
     log("Processing Images...");
-    gulp.src("src/**/*.{jpg,jpeg,png,webp,webm}", { base: srcFolder })
+    gulp
+      .src("src/**/*.{jpg,jpeg,png,webp,webm}", { base: srcFolder })
       .on("data", (file) => {
         if (DEBUG) {
-          log(`DEBUG: Processing Image: ${path.relative(process.cwd(), file.path)}`);
+          log(
+            `DEBUG: Processing Image: ${path.relative(
+              process.cwd(),
+              file.path
+            )}`
+          );
         }
       })
       .pipe(gulp.dest(destFolder))
@@ -136,18 +156,21 @@ async function processImages() {
 async function processSvgs() {
   return new Promise((cb) => {
     log("Processing SVGs...");
-    gulp.src("src/**/*.svg", { base: srcFolder })
+    gulp
+      .src("src/**/*.svg", { base: srcFolder })
       .on("data", (file) => {
         if (DEBUG) {
-          log(`DEBUG: Processing SVG: ${path.relative(process.cwd(), file.path)}`);
+          log(
+            `DEBUG: Processing SVG: ${path.relative(process.cwd(), file.path)}`
+          );
         }
       })
-      .pipe(svgmin({
-        multipass: true,
-        plugins: [
-          "convertStyleToAttrs",
-        ],
-      }))
+      .pipe(
+        svgmin({
+          multipass: true,
+          plugins: ["convertStyleToAttrs"],
+        })
+      )
       .pipe(gulp.dest(destFolder))
       .on("finish", () => {
         log("Finished Processing SVGs.");
@@ -159,9 +182,11 @@ async function processSvgs() {
 async function watchSrc() {
   // Helper - watch the pattern, copy the output on change
   function watcher(pattern, out) {
-    gulp.watch(pattern)
-      .on("all", () => gulp.src(pattern)
-        .pipe(gulp.dest(path.resolve(destFolder, out))));
+    gulp
+      .watch(pattern)
+      .on("all", () =>
+        gulp.src(pattern).pipe(gulp.dest(path.resolve(destFolder, out)))
+      );
   }
 
   sourceFiles.forEach((file) => watcher(file.from, file.to));
@@ -169,7 +194,9 @@ async function watchSrc() {
   gulp.watch("src/**/*.less").on("all", () => compileLess());
   // disabling while we fix Crowdin
   // gulp.watch("src/lang/*.json").on("all", () => propagateLangs());
-  gulp.watch("src/**/*.{jpeg,jpg,png,webp,webm}").on("all", () => processImages());
+  gulp
+    .watch("src/**/*.{jpeg,jpg,png,webp,webm}")
+    .on("all", () => processImages());
   gulp.watch("src/**/*.svg").on("all", () => processSvgs());
 }
 

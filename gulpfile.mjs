@@ -14,23 +14,16 @@ export const assets = gulp.parallel(
   bld.processImages,
   bld.buildManifest,
   bld.buildChangelog,
-  bld.copyAssets,
-
+  bld.copyAssets
 );
 
 // Export packs from Foundry to src/packs
 export const extractPacks = gulp.series(packs.extPacks);
 
 //
-export const build = gulp.series(
-  clean,
-  assets,
-);
+export const build = gulp.series(clean, assets);
 
 // Don't just call `build` & `bld.watch` because `build` cleans the directory
 // so we have a clean build, but if we clean the directory foundry dies because
 // the file descriptors to the packs change which it does not like.
-export const watch = gulp.series(
-  assets,
-  bld.watchSrc,
-);
+export const watch = gulp.series(assets, bld.watchSrc);

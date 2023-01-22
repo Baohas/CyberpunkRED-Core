@@ -27,19 +27,21 @@ function resolveDestinationDir() {
   if (localConfigExists) {
     const localDataPath = fs.readJSONSync(localConfigPath).dataPath;
     const dataPath = path.resolve(
-      path.join(localDataPath, "Data", "systems", SYSTEM_NAME),
+      path.join(localDataPath, "Data", "systems", SYSTEM_NAME)
     );
     if (fs.existsSync(path.join(dataPath, ".git"))) {
       // Check if a .git directoy exists in the dataPath. This will hopefully
       // prevent people blasting their repo if they stored it in their
       // Foundry datapath previously.
-      throw Error(`'dataPath' appears to contain a '.git' directory.\n\n`
-             + `Please check your foundryconfig.json and update 'dataPath' `
-             + `If you have previously \n`
-             + `cloned the git repo to `
-             + `'${dataPath}'\n`
-             + `please check CONTRIBUTING.md and clone the repo to another `
-             + `location.`);
+      throw Error(
+        `'dataPath' appears to contain a '.git' directory.\n\n` +
+          `Please check your foundryconfig.json and update 'dataPath' ` +
+          `If you have previously \n` +
+          `cloned the git repo to ` +
+          `'${dataPath}'\n` +
+          `please check CONTRIBUTING.md and clone the repo to another ` +
+          `location.`
+      );
     } else {
       return dataPath;
     }

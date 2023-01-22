@@ -36,7 +36,7 @@ function _cleanString(str) {
   return str
     .replace(/\u2060/gu, "")
     .replace(/[‘’]/gu, "'")
-    .replace(/[“”]/gu, "\"");
+    .replace(/[“”]/gu, '"');
 }
 
 // Remove unwanted flags, permission, and other data
@@ -50,7 +50,9 @@ function _cleanPackData(data, { clearSourceId = true } = {}) {
   delete data.flags?.exportSource;
 
   // _stats gets auto generated when foundry imports the compendia
-  if (data._stats) { delete data._stats; }
+  if (data._stats) {
+    delete data._stats;
+  }
 
   // Remove empty values from system.ammoVariety
   if (data.type === "weapon") {
@@ -79,7 +81,7 @@ async function extPacks() {
     const fragmentDir = path.resolve(srcFolder, "packs");
     const packsDir = path.resolve(destFolder, "packs");
     const sysFile = JSON.parse(
-      fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE)),
+      fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE))
     );
     const { packs } = sysFile;
 
@@ -113,7 +115,11 @@ async function extPacks() {
               }
               const data = _cleanPackData(entry);
               const output = YAML.dump(data, { sortKeys: true }, 2);
-              fs.writeFileSync(path.join(fragmentDir, packName, `${itemName}.yaml`), output, { mode: 0o644 });
+              fs.writeFileSync(
+                path.join(fragmentDir, packName, `${itemName}.yaml`),
+                output,
+                { mode: 0o644 }
+              );
             });
           });
         } else {
@@ -134,7 +140,7 @@ async function genPacks() {
     const fragmentDir = path.resolve(srcFolder, "packs");
     const packsDir = path.resolve(destFolder, "packs");
     const sysFile = JSON.parse(
-      fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE)),
+      fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE))
     );
     const { packs } = sysFile;
 
