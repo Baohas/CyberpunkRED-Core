@@ -15,48 +15,73 @@ import CPRMod from "../rolls/cpr-modifiers.js";
  */
 export default class CPRCombatant extends Combatant {
   /**
- * Create an initiative roll for this combatant
- *
- * @param {String} formula - Roll formula to use for initiative
- * @returns {Roll}
- */
+   * Create an initiative roll for this combatant
+   *
+   * @param {String} formula - Roll formula to use for initiative
+   * @returns {Roll}
+   */
   async getInitiativeRoll(formula) {
     LOGGER.trace("getInitiativeRoll | CPRCombatant | Called.");
     let cprInitiative;
     const { actor } = this.token;
-    let statName = ""; let statValue = 0;
+    let statName = "";
+    let statValue = 0;
     switch (actor.type) {
       case "character":
       case "mook": {
         statName = SystemUtils.Localize("CPR.global.stats.ref");
         statValue = actor.getStat("ref");
-        cprInitiative = new CPRRolls.CPRInitiative(actor.name, formula, statName, statValue);
+        cprInitiative = new CPRRolls.CPRInitiative(
+          actor.name,
+          formula,
+          statName,
+          statValue
+        );
         break;
       }
       case "demon": {
-        statName = SystemUtils.Localize("CPR.global.role.netrunner.ability.interface");
+        statName = SystemUtils.Localize(
+          "CPR.global.role.netrunner.ability.interface"
+        );
         statValue = actor.getStat("interface");
-        cprInitiative = new CPRRolls.CPRInitiative(actor.name, formula, statName, statValue);
+        cprInitiative = new CPRRolls.CPRInitiative(
+          actor.name,
+          formula,
+          statName,
+          statValue
+        );
         break;
       }
       case "blackIce": {
         statName = SystemUtils.Localize("CPR.global.generic.speed");
         statValue = actor.getStat("spd");
-        cprInitiative = new CPRRolls.CPRInitiative(actor.name, formula, statName, statValue);
+        cprInitiative = new CPRRolls.CPRInitiative(
+          actor.name,
+          formula,
+          statName,
+          statValue
+        );
         break;
       }
       default:
         // The only way we get here is if someone tries to roll initiative for something that
         // should not have an initiative roll (container?), so we will just roll whatever formula is passed with
         // no base value
-        cprInitiative = new CPRRolls.CPRInitiative(actor.name, formula, statName, statValue);
+        cprInitiative = new CPRRolls.CPRInitiative(
+          actor.name,
+          formula,
+          statName,
+          statValue
+        );
         break;
     }
     // Demons and Black ICE do not have initiative bonuses.
     if (actor.type !== "demon" && actor.type !== "blackIce") {
       const effects = actor.effects.contents;
       const allMods = CPRMod.getAllModifiers(effects);
-      const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+      const filteredMods = allMods.filter(
+        (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+      );
 
       const initiativeMods = CPRMod.getRelevantMods(filteredMods, "initiative");
 
@@ -67,11 +92,15 @@ export default class CPRCombatant extends Combatant {
       actor.itemTypes.role.forEach((r) => {
         roleMods = roleMods.concat(r.getRoleMods("initiative", true));
       });
-      roleMods = roleMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+      roleMods = roleMods.filter(
+        (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+      );
 
       cprInitiative.addMod(roleMods); // add bonus from role abilities and subabilities
 
-      if (allMods.some((m) => m.key === "bonuses.initiative" && m.isSituational)) {
+      if (
+        allMods.some((m) => m.key === "bonuses.initiative" && m.isSituational)
+      ) {
         await cprInitiative.handleRollDialog({}, this.actor);
       }
     }

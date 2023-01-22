@@ -10,32 +10,40 @@ export default class NetarchRolltableGenerationPrompt {
     return new Promise((resolve, reject) => {
       renderTemplate(template).then((html) => {
         const _onCancel = () => {
-          LOGGER.trace("_onCancel | Dialog NetarchRolltableGenerationPrompt | called.");
+          LOGGER.trace(
+            "_onCancel | Dialog NetarchRolltableGenerationPrompt | called."
+          );
           reject(new Error("Promise rejected: Window Closed"));
         };
         const _onConfirm = (html) => {
-          LOGGER.trace("_onConfirm | Dialog NetarchRolltableGenerationPrompt | called.");
+          LOGGER.trace(
+            "_onConfirm | Dialog NetarchRolltableGenerationPrompt | called."
+          );
           const fd = new FormDataExtended(html.find("form")[0]);
           const formData = foundry.utils.expandObject(fd.object);
           resolve(formData);
         };
         new Dialog({
-          title: SystemUtils.Localize("CPR.dialog.netArchitectureRolltableSelection.title"),
+          title: SystemUtils.Localize(
+            "CPR.dialog.netArchitectureRolltableSelection.title"
+          ),
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: (html) => _onCancel(html),
             },
           },
           default: "confirm",
-          render: LOGGER.trace("confirm | Dialog NetarchRolltableGenerationPrompt | called."),
+          render: LOGGER.trace(
+            "confirm | Dialog NetarchRolltableGenerationPrompt | called."
+          ),
           close: () => {
             reject(new Error("Promise rejected: Window Closed"));
           },

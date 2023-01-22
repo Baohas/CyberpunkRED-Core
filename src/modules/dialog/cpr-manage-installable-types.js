@@ -15,7 +15,7 @@ export default class ManageInstallableTypes {
         };
         const _onConfirm = (html) => {
           LOGGER.trace("_onConfirm | Dialog ManageInstallableTypes | called.");
-          const typeList = html.find("[name=\"selectedTypes\"");
+          const typeList = html.find('[name="selectedTypes"');
           const selectedTypes = [];
           const fd = new FormDataExtended(html.find("form")[0]);
           const formData = foundry.utils.expandObject(fd.object);
@@ -32,18 +32,20 @@ export default class ManageInstallableTypes {
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: (html) => _onCancel(html),
             },
           },
           default: "confirm",
-          render: LOGGER.trace("confirm | Dialog ManageInstallableTypes | called."),
+          render: LOGGER.trace(
+            "confirm | Dialog ManageInstallableTypes | called."
+          ),
           close: () => {
             reject(new Error("Promise rejected: Window Closed"));
           },

@@ -23,7 +23,7 @@ const actorHooks = () => {
    */
   Hooks.on("preCreateActor", (doc, createData) => {
     LOGGER.trace("preCreateActor | actorHooks | Called.");
-    if ((typeof createData.img === "undefined")) {
+    if (typeof createData.img === "undefined") {
       const actorImage = SystemUtils.GetDefaultImage("Actor", createData.type);
       doc.updateSource({ img: actorImage });
     }
@@ -48,71 +48,91 @@ const actorHooks = () => {
   Hooks.on("preUpdateActor", (doc, updatedData) => {
     LOGGER.trace("preUpdateActor | actorHooks | Called.");
     if (updatedData.system && updatedData.system.externalData) {
-      Object.keys(updatedData.system.externalData).forEach(
-        (itemType) => {
-          if (!updatedData.system.externalData[itemType].id) {
-            const itemId = doc.system.externalData[itemType].id;
-            const item = doc.getOwnedItem(itemId);
-            const currentValue = updatedData.system.externalData[itemType].value;
-            if (item) {
-              switch (item.type) {
-                case "armor": {
-                  if (itemType === "currentArmorBody") {
-                    const armorList = doc.getEquippedArmors("body");
-                    const updateList = [];
-                    const diff = item.system.bodyLocation.sp - item.system.bodyLocation.ablation - currentValue;
-                    armorList.forEach((a) => {
-                      const armorData = a.system;
-                      if (diff > 0) {
-                        armorData.bodyLocation.ablation = Math.min(
-                          armorData.bodyLocation.ablation + diff,
-                          armorData.bodyLocation.sp,
-                        );
-                      }
-                      if (diff < 0 && item._id === a._id) {
-                        armorData.bodyLocation.ablation = Math.max(armorData.bodyLocation.ablation + diff, 0);
-                      }
-                      updateList.push({ _id: a.id, system: armorData });
-                    });
-                    doc.updateEmbeddedDocuments("Item", updateList);
-                  }
-                  if (itemType === "currentArmorHead") {
-                    const armorList = doc.getEquippedArmors("head");
-                    const updateList = [];
-                    const diff = item.system.headLocation.sp - item.system.headLocation.ablation - currentValue;
-                    armorList.forEach((a) => {
-                      const armorData = a.system;
-                      if (diff > 0) {
-                        armorData.headLocation.ablation = Math.min(
-                          armorData.headLocation.ablation + diff,
-                          armorData.headLocation.sp,
-                        );
-                      }
-                      if (diff < 0 && item._id === a._id) {
-                        armorData.headLocation.ablation = Math.max(armorData.headLocation.ablation + diff, 0);
-                      }
-                      updateList.push({ _id: a.id, system: armorData });
-                    });
-                    doc.updateEmbeddedDocuments("Item", updateList);
-                  }
-                  if (itemType === "currentArmorShield") {
-                    item.system.shieldHitPoints.value = currentValue;
-                    doc.updateEmbeddedDocuments("Item", [{ _id: item.id, system: item.system }]);
-                  }
-                  break;
+      Object.keys(updatedData.system.externalData).forEach((itemType) => {
+        if (!updatedData.system.externalData[itemType].id) {
+          const itemId = doc.system.externalData[itemType].id;
+          const item = doc.getOwnedItem(itemId);
+          const currentValue = updatedData.system.externalData[itemType].value;
+          if (item) {
+            switch (item.type) {
+              case "armor": {
+                if (itemType === "currentArmorBody") {
+                  const armorList = doc.getEquippedArmors("body");
+                  const updateList = [];
+                  const diff =
+                    item.system.bodyLocation.sp -
+                    item.system.bodyLocation.ablation -
+                    currentValue;
+                  armorList.forEach((a) => {
+                    const armorData = a.system;
+                    if (diff > 0) {
+                      armorData.bodyLocation.ablation = Math.min(
+                        armorData.bodyLocation.ablation + diff,
+                        armorData.bodyLocation.sp
+                      );
+                    }
+                    if (diff < 0 && item._id === a._id) {
+                      armorData.bodyLocation.ablation = Math.max(
+                        armorData.bodyLocation.ablation + diff,
+                        0
+                      );
+                    }
+                    updateList.push({ _id: a.id, system: armorData });
+                  });
+                  doc.updateEmbeddedDocuments("Item", updateList);
                 }
-                default:
+                if (itemType === "currentArmorHead") {
+                  const armorList = doc.getEquippedArmors("head");
+                  const updateList = [];
+                  const diff =
+                    item.system.headLocation.sp -
+                    item.system.headLocation.ablation -
+                    currentValue;
+                  armorList.forEach((a) => {
+                    const armorData = a.system;
+                    if (diff > 0) {
+                      armorData.headLocation.ablation = Math.min(
+                        armorData.headLocation.ablation + diff,
+                        armorData.headLocation.sp
+                      );
+                    }
+                    if (diff < 0 && item._id === a._id) {
+                      armorData.headLocation.ablation = Math.max(
+                        armorData.headLocation.ablation + diff,
+                        0
+                      );
+                    }
+                    updateList.push({ _id: a.id, system: armorData });
+                  });
+                  doc.updateEmbeddedDocuments("Item", updateList);
+                }
+                if (itemType === "currentArmorShield") {
+                  item.system.shieldHitPoints.value = currentValue;
+                  doc.updateEmbeddedDocuments("Item", [
+                    { _id: item.id, system: item.system },
+                  ]);
+                }
+                break;
               }
+              default:
             }
           }
-        },
-      );
+        }
+      });
     }
 
-    if (doc.type === "blackIce" && doc.isToken && updatedData.system && updatedData.system.stats) {
+    if (
+      doc.type === "blackIce" &&
+      doc.isToken &&
+      updatedData.system &&
+      updatedData.system.stats
+    ) {
       const biToken = doc.token;
 
-      const netrunnerTokenId = biToken.getFlag(game.system.id, "netrunnerTokenId");
+      const netrunnerTokenId = biToken.getFlag(
+        game.system.id,
+        "netrunnerTokenId"
+      );
       const cyberdeckId = biToken.getFlag(game.system.id, "sourceCyberdeckId");
       const programUUID = biToken.getFlag(game.system.id, "programUUID");
       const sceneId = biToken.getFlag(game.system.id, "sceneId");
@@ -125,19 +145,35 @@ const actorHooks = () => {
           const netrunner = netrunnerToken.actor;
           const cyberdeck = netrunner.getOwnedItem(cyberdeckId);
           cyberdeck.updateRezzedProgram(programUUID, updatedData.system.stats);
-          netrunner.updateEmbeddedDocuments("Item", [{ _id: cyberdeck.id, system: cyberdeck.system }]);
+          netrunner.updateEmbeddedDocuments("Item", [
+            { _id: cyberdeck.id, system: cyberdeck.system },
+          ]);
         }
       }
     }
 
-    if (updatedData.system && updatedData.system.stats && (updatedData.system.stats.emp || updatedData.system.stats.luck)) {
-      const updatedValue = (updatedData.system.stats.emp) ? updatedData.system.stats.emp.value : updatedData.system.stats.luck.value;
-      const updatedMax = (updatedData.system.stats.emp) ? updatedData.system.stats.emp.max : updatedData.system.stats.luck.max;
+    if (
+      updatedData.system &&
+      updatedData.system.stats &&
+      (updatedData.system.stats.emp || updatedData.system.stats.luck)
+    ) {
+      const updatedValue = updatedData.system.stats.emp
+        ? updatedData.system.stats.emp.value
+        : updatedData.system.stats.luck.value;
+      const updatedMax = updatedData.system.stats.emp
+        ? updatedData.system.stats.emp.max
+        : updatedData.system.stats.luck.max;
       if (updatedValue && Number(updatedValue) > 9) {
-        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.doubleDigitStatValueWarn"));
+        SystemUtils.DisplayMessage(
+          "warn",
+          SystemUtils.Localize("CPR.messages.doubleDigitStatValueWarn")
+        );
       }
       if (updatedMax && Number(updatedMax) > 9) {
-        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.doubleDigitStatMaxWarn"));
+        SystemUtils.DisplayMessage(
+          "warn",
+          SystemUtils.Localize("CPR.messages.doubleDigitStatMaxWarn")
+        );
       }
     }
   });
@@ -165,7 +201,9 @@ const actorHooks = () => {
    */
   Hooks.on("createActor", (doc) => {
     LOGGER.trace("createActor | actorHooks | Called.");
-    if (doc.name.endsWith(`(${SystemUtils.Localize("CPR.global.generic.copy")})`)) {
+    if (
+      doc.name.endsWith(`(${SystemUtils.Localize("CPR.global.generic.copy")})`)
+    ) {
       // an actor is being duplicated
       CPRMacros.FixActorIdsInEffects(doc);
     }

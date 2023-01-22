@@ -39,10 +39,18 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     // QoL - Select all text when grabbing text input.
     $("input[type=text]").focusin(() => $(this).select());
     html.find(".force-submit").change(() => this._forceSubmit());
-    html.find(".effect-key-category").change((event) => this._changeModKeyCategory(event));
-    html.find(".effect-change-control").click((event) => this._effectChangeControl(event));
-    html.find(".toggle-situational").click((event) => this._toggleSituational(event));
-    html.find(".toggle-on-by-default").click((event) => this._toggleOnByDefault(event));
+    html
+      .find(".effect-key-category")
+      .change((event) => this._changeModKeyCategory(event));
+    html
+      .find(".effect-change-control")
+      .click((event) => this._effectChangeControl(event));
+    html
+      .find(".toggle-situational")
+      .click((event) => this._toggleSituational(event));
+    html
+      .find(".toggle-on-by-default")
+      .click((event) => this._toggleOnByDefault(event));
   }
 
   /**
@@ -86,8 +94,16 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     // Stats cannot currently be situational. This bit of code sets situational flags to false when the
     // Stat category is selected in the active effects dialog.
     if (effect.getFlag(game.system.id, `changes.cats.${modnum}`) === "stat") {
-      await effect.setFlag(game.system.id, `changes.situational.${modnum}.isSituational`, false);
-      await effect.setFlag(game.system.id, `changes.situational.${modnum}.onByDefault`, false);
+      await effect.setFlag(
+        game.system.id,
+        `changes.situational.${modnum}.isSituational`,
+        false
+      );
+      await effect.setFlag(
+        game.system.id,
+        `changes.situational.${modnum}.onByDefault`,
+        false
+      );
     }
     return this._forceSubmit();
   }
@@ -127,7 +143,11 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     const modnum = SystemUtils.GetEventDatum(event, "data-index");
     const isSituational = event.target.checked;
 
-    await effect.setFlag(`${game.system.id}`, `changes.situational.${modnum}.isSituational`, isSituational);
+    await effect.setFlag(
+      `${game.system.id}`,
+      `changes.situational.${modnum}.isSituational`,
+      isSituational
+    );
 
     this._forceSubmit();
   }
@@ -145,7 +165,11 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     const modnum = SystemUtils.GetEventDatum(event, "data-index");
     const onByDefault = event.target.checked;
 
-    await effect.setFlag(`${game.system.id}`, `changes.situational.${modnum}.onByDefault`, onByDefault);
+    await effect.setFlag(
+      `${game.system.id}`,
+      `changes.situational.${modnum}.onByDefault`,
+      onByDefault
+    );
 
     this._forceSubmit();
   }
@@ -198,7 +222,10 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     const { changes } = this.object;
     changes.splice(modnum, 1);
     // Second, remove the corresponding flag for the deleted change
-    const changeFlags = getProperty(this.object, `flags.${game.system.id}.changes`);
+    const changeFlags = getProperty(
+      this.object,
+      `flags.${game.system.id}.changes`
+    );
     const newFlags = {};
     const flagArray = Object.entries(changeFlags);
     flagArray.sort(); // explicitly sort to guarantee we iterate in numerical order
@@ -207,7 +234,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       const skill = chg[1];
       if (index < modnum) {
         newFlags[String(index)] = skill;
-      // we deliberately skip idx === modnum, that's the deleted change
+        // we deliberately skip idx === modnum, that's the deleted change
       } else if (index > modnum) {
         newFlags[String(index - 1)] = skill;
       }

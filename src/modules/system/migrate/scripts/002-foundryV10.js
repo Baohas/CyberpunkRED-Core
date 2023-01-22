@@ -59,7 +59,10 @@ export default class FoundryV10Migration extends CPRMigration {
       }
 
       if (Object.keys(systemChanges).length !== 0) {
-        updatedItemList = CPRMigration.addToUpdateList(updatedItemList, { _id: item.id, system: systemChanges });
+        updatedItemList = CPRMigration.addToUpdateList(updatedItemList, {
+          _id: item.id,
+          system: systemChanges,
+        });
       }
     }
 
@@ -69,7 +72,10 @@ export default class FoundryV10Migration extends CPRMigration {
       if (item.system.programs.installed.length > 0) {
         const newInstalled = [];
         for (const program of item.system.programs.installed) {
-          const programData = (typeof program.data === "undefined") ? duplicate(program) : duplicate(program.data);
+          const programData =
+            typeof program.data === "undefined"
+              ? duplicate(program)
+              : duplicate(program.data);
           delete program.data;
           newInstalled.push(mergeObject(program, programData));
         }
@@ -78,14 +84,20 @@ export default class FoundryV10Migration extends CPRMigration {
       if (item.system.programs.rezzed.length > 0) {
         const newRezzed = [];
         for (const program of item.system.programs.rezzed) {
-          const programData = (typeof program.data === "undefined") ? duplicate(program) : duplicate(program.data);
+          const programData =
+            typeof program.data === "undefined"
+              ? duplicate(program)
+              : duplicate(program.data);
           delete program.data;
           newRezzed.push(mergeObject(program, programData));
         }
         systemChanges.rezzed = newRezzed;
       }
       if (Object.keys(systemChanges).length !== 0) {
-        updatedItemList = CPRMigration.addToUpdateList(updatedItemList, { _id: item.id, system: systemChanges });
+        updatedItemList = CPRMigration.addToUpdateList(updatedItemList, {
+          _id: item.id,
+          system: systemChanges,
+        });
       }
     }
 
@@ -105,7 +117,10 @@ export default class FoundryV10Migration extends CPRMigration {
 
     const systemChanges = FoundryV10Migration.scrubItem(item);
 
-    await item.update({ system: systemChanges }, { CPRmigration: true, mergeDeletes: true });
+    await item.update(
+      { system: systemChanges },
+      { CPRmigration: true, mergeDeletes: true }
+    );
   }
 
   /**
@@ -118,23 +133,41 @@ export default class FoundryV10Migration extends CPRMigration {
     LOGGER.trace("scrubItem | 2-foundryV10 Migration");
     let systemChanges = {};
     if (typeof item.system.attachmentSlots !== "undefined") {
-      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "system.attachmentSlots") };
+      systemChanges = {
+        ...systemChanges,
+        ...CPRMigration.safeDelete(item, "system.attachmentSlots"),
+      };
     }
 
-    if (game.system.template.Item[item.type].templates.includes("physical") && typeof item.system.concealable !== "object") {
+    if (
+      game.system.template.Item[item.type].templates.includes("physical") &&
+      typeof item.system.concealable !== "object"
+    ) {
       systemChanges.concealable = {
         concealable: item.system.concealable,
         isConcealed: item.system.isConcealed,
       };
-      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "system.isConcealed") };
+      systemChanges = {
+        ...systemChanges,
+        ...CPRMigration.safeDelete(item, "system.isConcealed"),
+      };
     }
 
-    if (!game.system.template.Item[item.type].templates.includes("stackable") && (typeof item.system.amount !== "undefined")) {
-      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "system.amount") };
+    if (
+      !game.system.template.Item[item.type].templates.includes("stackable") &&
+      typeof item.system.amount !== "undefined"
+    ) {
+      systemChanges = {
+        ...systemChanges,
+        ...CPRMigration.safeDelete(item, "system.amount"),
+      };
     }
 
     if (typeof item.system.upgrade !== "undefined") {
-      systemChanges = { ...systemChanges, ...CPRMigration.safeDelete(item, "system.upgrade") };
+      systemChanges = {
+        ...systemChanges,
+        ...CPRMigration.safeDelete(item, "system.upgrade"),
+      };
     }
     return systemChanges;
   }

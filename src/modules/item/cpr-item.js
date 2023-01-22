@@ -32,17 +32,25 @@ export default class CPRItem extends Item {
   update(data, options = {}) {
     LOGGER.trace("update | CPRItem | Called.");
     const cprData = data;
-    if (data["system.type"] === "cyberwareInternal" || data["system.type"] === "cyberwareExternal" || data["system.type"] === "fashionware") {
+    if (
+      data["system.type"] === "cyberwareInternal" ||
+      data["system.type"] === "cyberwareExternal" ||
+      data["system.type"] === "fashionware"
+    ) {
       cprData["system.isFoundational"] = false;
     }
     if (this.type === "weapon") {
-      cprData["system.dvTable"] = data["system.dvTable"] === null ? "" : data["system.dvTable"];
+      cprData["system.dvTable"] =
+        data["system.dvTable"] === null ? "" : data["system.dvTable"];
     }
 
     // If an AE has a usage !== "toggled", then any active effects should not be disabled
     // (ie: Always On, Installed, etc) otherwise the disabled flag takes presentence when
     // determining if the effect is suppressed or not
-    if (data["system.usage"] !== "undefined" && data["system.usage"] !== this.system.usage) {
+    if (
+      data["system.usage"] !== "undefined" &&
+      data["system.usage"] !== this.system.usage
+    ) {
       if (data["system.usage"] !== "toggled") {
         this.effects.forEach((e) => {
           if (e.system.disabled) {

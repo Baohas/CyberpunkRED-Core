@@ -31,7 +31,9 @@ export default class CPRSystemUtils {
   static async GetCompendiumDoc(cname, dname) {
     LOGGER.trace("GetCompendiumDoc | CPRSystemUtils | Called.");
     const comp = game.packs.get(cname);
-    return comp.getDocument(comp.index.contents.filter((i) => i.name === dname)[0]._id);
+    return comp.getDocument(
+      comp.index.contents.filter((i) => i.name === dname)[0]._id
+    );
   }
 
   /**
@@ -45,9 +47,15 @@ export default class CPRSystemUtils {
     LOGGER.trace("GetCompendiumIdByLabel | CPRSystemUtils | Called.");
     const comps = game.packs.filter((p) => p.metadata.label === label);
     if (comps.length > 1) {
-      this.DisplayMessage("warn", `${this.Localize("CPR.messages.duplicateCompendiumLabel")} "${label}"`);
+      this.DisplayMessage(
+        "warn",
+        `${this.Localize("CPR.messages.duplicateCompendiumLabel")} "${label}"`
+      );
     } else if (comps.length === 0) {
-      this.DisplayMessage("error", `${this.Localize("CPR.messages.noCompendiumLabel")} "${label}"`);
+      this.DisplayMessage(
+        "error",
+        `${this.Localize("CPR.messages.noCompendiumLabel")} "${label}"`
+      );
       return null;
     }
     return comps[0].metadata.id;
@@ -94,16 +102,22 @@ export default class CPRSystemUtils {
    */
   static async GetDvTables() {
     LOGGER.trace("GetDvTables | CPRSystemUtils | called.");
-    const tableList = await CPRSystemUtils.GetCompendiumDocs(game.settings.get(game.system.id, "dvRollTableCompendium"));
-    tableList.sort((a, b) => ((a.name > b.name) ? 1 : -1));
+    const tableList = await CPRSystemUtils.GetCompendiumDocs(
+      game.settings.get(game.system.id, "dvRollTableCompendium")
+    );
+    tableList.sort((a, b) => (a.name > b.name ? 1 : -1));
     return tableList;
   }
 
   static async SetDvTable(token, tableName) {
     LOGGER.trace("SetDvTable | CPRSystemUtils | called.");
     const dvTables = await CPRSystemUtils.GetDvTables();
-    const [selectedTable] = dvTables.filter((table) => table.name === tableName);
-    const dvSetting = selectedTable ? { name: selectedTable.name, table: {} } : null;
+    const [selectedTable] = dvTables.filter(
+      (table) => table.name === tableName
+    );
+    const dvSetting = selectedTable
+      ? { name: selectedTable.name, table: {} }
+      : null;
     if (selectedTable) {
       for (const result of selectedTable.results) {
         // Rolltable entry of type is a Text entry
@@ -152,9 +166,13 @@ export default class CPRSystemUtils {
    */
   static async GetFolder(type, name, parent = null) {
     LOGGER.trace("GetFolder | CPRSystemUtils | Called.");
-    const folderList = game.folders.filter((folder) => folder.name === name && folder.type === type);
+    const folderList = game.folders.filter(
+      (folder) => folder.name === name && folder.type === type
+    );
     // If the folder does not exist, we create it.
-    return (folderList.length === 1) ? folderList[0] : Folder.create({ name, type, parent });
+    return folderList.length === 1
+      ? folderList[0]
+      : Folder.create({ name, type, parent });
   }
 
   /* MESSAGE AND STRING UTILS */
@@ -221,8 +239,16 @@ export default class CPRSystemUtils {
     const initialSplit = slug.split(" ").join("");
     const orCaseSplit = initialSplit.split("/").join("Or");
     const parenCaseSplit = initialSplit.split("(").join("").split(")").join("");
-    const andCaseSplit = initialSplit.split("/").join("And").split("&").join("And");
-    if (slug === "Conceal/Reveal Object" || slug === "Paint/Draw/Sculpt" || slug === "Resist Torture/Drugs") {
+    const andCaseSplit = initialSplit
+      .split("/")
+      .join("And")
+      .split("&")
+      .join("And");
+    if (
+      slug === "Conceal/Reveal Object" ||
+      slug === "Paint/Draw/Sculpt" ||
+      slug === "Resist Torture/Drugs"
+    ) {
       return orCaseSplit.charAt(0).toLowerCase() + orCaseSplit.slice(1);
     }
     if (slug === "Language (Streetslang)") {
@@ -233,13 +259,20 @@ export default class CPRSystemUtils {
 
   static SortItemListByName(itemList) {
     LOGGER.trace("SortItemListByName | CPRSystemUtils | Called.");
-    const itemDataList = itemList.map((o) => ({ name: o.name, uuid: o.uuid, type: o.type }));
+    const itemDataList = itemList.map((o) => ({
+      name: o.name,
+      uuid: o.uuid,
+      type: o.type,
+    }));
     const sortedList = itemDataList.length > 0 ? [] : itemList;
     if (sortedList.length === 0) {
       const sortedDataList = [];
       itemDataList.forEach((itemData) => {
         const newItemData = duplicate(itemData);
-        const localizedValue = `CPR.global.itemType.${newItemData.type}.`.concat(this.slugify(newItemData.name));
+        const localizedValue =
+          `CPR.global.itemType.${newItemData.type}.`.concat(
+            this.slugify(newItemData.name)
+          );
         if (this.Localize(localizedValue) !== localizedValue) {
           newItemData.name = this.Localize(localizedValue);
         }
@@ -279,7 +312,9 @@ export default class CPRSystemUtils {
    */
   static SetUserSetting(type, name, value, extraSettings) {
     LOGGER.trace("SetUserSetting | CPRSystemUtils | Called.");
-    const userSettings = game.settings.get(game.system.id, "userSettings") ? game.settings.get(game.system.id, "userSettings") : {};
+    const userSettings = game.settings.get(game.system.id, "userSettings")
+      ? game.settings.get(game.system.id, "userSettings")
+      : {};
     switch (type) {
       case "sheetConfig": {
         // If this is a sheetConfig setting, our user may have settings for different sheets, so
@@ -319,7 +354,9 @@ export default class CPRSystemUtils {
    */
   static GetUserSetting(type, name, extraSettings) {
     LOGGER.trace("GetUserSetting | CPRSystemUtils | Called.");
-    const userSettings = game.settings.get(game.system.id, "userSettings") ? game.settings.get(game.system.id, "userSettings") : {};
+    const userSettings = game.settings.get(game.system.id, "userSettings")
+      ? game.settings.get(game.system.id, "userSettings")
+      : {};
     let requestedValue;
     switch (type) {
       case "sheetConfig": {
@@ -463,7 +500,10 @@ export default class CPRSystemUtils {
   static getUserTargetedOrSelected(targetedOrSelected) {
     LOGGER.trace("getUserTargetedOrSelected | CPRSystemUtils | Called.");
     const targets = new Set(game.user.targets);
-    const tokens = targetedOrSelected === "selected" ? canvas.tokens.controlled : Array.from(targets);
+    const tokens =
+      targetedOrSelected === "selected"
+        ? canvas.tokens.controlled
+        : Array.from(targets);
     tokens.sort((a, b) => (a.name > b.name ? 1 : -1));
     return tokens;
   }
@@ -498,7 +538,9 @@ export default class CPRSystemUtils {
    */
   static getDataModelTemplates(itemType) {
     LOGGER.trace("getDataModelTemplates | CPRSystemUtils | Called.");
-    return game.system.template.Item[itemType].templates.filter((t) => t !== "common");
+    return game.system.template.Item[itemType].templates.filter(
+      (t) => t !== "common"
+    );
   }
 
   /**
@@ -549,7 +591,7 @@ export default class CPRSystemUtils {
       migrating.style.display = "block";
     }
 
-    if ((percent === 100) && !migrating.hidden) $(migrating).fadeOut(2000);
+    if (percent === 100 && !migrating.hidden) $(migrating).fadeOut(2000);
   }
 
   /**
@@ -580,7 +622,9 @@ export default class CPRSystemUtils {
     LOGGER.trace("GetEventDatum | CPRSystemUtils | Called.");
     let id = $(event.currentTarget).attr(datum);
     if (typeof id === "undefined") {
-      LOGGER.debug(`Could not find ${datum} in currentTarget trying .item parents`);
+      LOGGER.debug(
+        `Could not find ${datum} in currentTarget trying .item parents`
+      );
       id = $(event.currentTarget).parents(".item").attr(datum);
       if (typeof id === "undefined") {
         LOGGER.debug(`Could not find ${datum} in the event data!`);

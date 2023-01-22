@@ -12,7 +12,7 @@ export default class CPRProgramItem extends CPRItem {
    * Program Code
    *
    * The methods below apply to the CPRItem.type = "program"
-  */
+   */
 
   /**
    * Sets a program to uninstalled.

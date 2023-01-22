@@ -23,7 +23,10 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
    */
   async preMigrate() {
     LOGGER.trace(`preMigrate | ${this.version}-${this.name}`);
-    CPRSystemUtils.DisplayMessage("notify", CPRSystemUtils.Localize("CPR.migration.effects.beginMigration"));
+    CPRSystemUtils.DisplayMessage(
+      "notify",
+      CPRSystemUtils.Localize("CPR.migration.effects.beginMigration")
+    );
     CPRMigration.createMigrationFolder();
     LOGGER.log(`Starting migration: ${this.name}`);
   }
@@ -48,7 +51,10 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
     const itemDeletions = [];
     const itemCreations = [];
     for (const item of actor.items) {
-      if (typeof item.system.price !== "undefined" || typeof item.changes !== "undefined") {
+      if (
+        typeof item.system.price !== "undefined" ||
+        typeof item.changes !== "undefined"
+      ) {
         const updatedItem = ReleaseEightyFourDotZero.migrateItem(item);
         if (Object.keys(updatedItem).length > 1) {
           itemUpdates.push(updatedItem);
@@ -58,7 +64,9 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
 
     for (const activeEffect of actor.effects) {
       // Using this to see if there's any updates to the ActiveEffect
-      const aeChanges = await ReleaseEightyFourDotZero.updateActiveEffect(activeEffect);
+      const aeChanges = await ReleaseEightyFourDotZero.updateActiveEffect(
+        activeEffect
+      );
       if (aeChanges) {
         const aeSource = fromUuidSync(activeEffect.origin);
         if (aeSource instanceof Item) {
@@ -73,13 +81,17 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
     }
 
     // Update activeNetRole to use ID instead of Name.
-    const netRoleItem = actor.itemTypes.role.find((r) => r.name === actor.system.roleInfo.activeNetRole);
+    const netRoleItem = actor.itemTypes.role.find(
+      (r) => r.name === actor.system.roleInfo.activeNetRole
+    );
     if (netRoleItem) {
       // If activeNetRole is set and has an item with the same name, set it to the ID of that item.
       actor.update({ "system.roleInfo.activeNetRole": netRoleItem.id });
     } else if (actor.itemTypes.role.length > 0) {
       // If there is no netRoleItem, assign activeNetRole the ID of the first role in the list.
-      actor.update({ "system.roleInfo.activeNetRole": actor.itemTypes.role[0].id });
+      actor.update({
+        "system.roleInfo.activeNetRole": actor.itemTypes.role[0].id,
+      });
     } else {
       // If there are no roles on the actor, set activeNetRole to "".
       actor.update({ "system.roleInfo.activeNetRole": "" });
@@ -93,7 +105,9 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
       await actor.createEmbeddedDocuments("Item", itemCreations);
     }
 
-    return (itemUpdates.length > 0) ? actor.updateEmbeddedDocuments("Item", itemUpdates) : Promise.resolve();
+    return itemUpdates.length > 0
+      ? actor.updateEmbeddedDocuments("Item", itemUpdates)
+      : Promise.resolve();
   }
 
   /**
@@ -104,22 +118,29 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
    */
   static async migrateItem(item) {
     LOGGER.trace(`migrateItem | ${this.version}-${this.name}`);
-    let updateData = (item.isOwned) ? { _id: item._id } : {};
+    let updateData = item.isOwned ? { _id: item._id } : {};
     // Migration code for Issue #546
     // Only fix AE on unowned items here, owned item AE's fixed as part of Actor Migration
     if (!item.isOwned) {
       for (const activeEffect of item.effects) {
-        const aeChanges = await ReleaseEightyFourDotZero.updateActiveEffect(activeEffect);
+        const aeChanges = await ReleaseEightyFourDotZero.updateActiveEffect(
+          activeEffect
+        );
         if (aeChanges) {
-          await item.updateEmbeddedDocuments("ActiveEffect", [{ _id: activeEffect._id, changes: aeChanges }]);
+          await item.updateEmbeddedDocuments("ActiveEffect", [
+            { _id: activeEffect._id, changes: aeChanges },
+          ]);
         }
       }
     }
 
     // Migration code for Issue #554
-    updateData = { ...updateData, ...CPRMigration.safeDelete(item, "system.price.category") };
+    updateData = {
+      ...updateData,
+      ...CPRMigration.safeDelete(item, "system.price.category"),
+    };
 
-    return (item.isOwned) ? updateData : item.update(updateData);
+    return item.isOwned ? updateData : item.update(updateData);
   }
 
   static async updateActiveEffect(effect) {
@@ -143,6 +164,6 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
         newChanges.push(change);
       }
     }
-    return (needsUpdate) ? Promise.resolve(newChanges) : Promise.resolve();
+    return needsUpdate ? Promise.resolve(newChanges) : Promise.resolve();
   }
 }

@@ -42,7 +42,10 @@ export default class CPRContainerActor extends Actor {
     if (itemTemplates.includes("stackable")) {
       const itemMatch = this.items.find((i) => {
         if (i.type === newItem.type && i.name === newItem.name) {
-          if (itemTemplates.includes("upgradable") && i.system.upgrades.length !== 0) {
+          if (
+            itemTemplates.includes("upgradable") &&
+            i.system.upgrades.length !== 0
+          ) {
             return false;
           }
           return i;
@@ -53,10 +56,16 @@ export default class CPRContainerActor extends Actor {
       if (itemMatch) {
         let oldAmount = parseInt(itemMatch.system.amount, 10);
         let addedAmount = parseInt(newItem.system.amount, 10);
-        if (Number.isNaN(oldAmount)) { oldAmount = 1; }
-        if (Number.isNaN(addedAmount)) { addedAmount = 1; }
+        if (Number.isNaN(oldAmount)) {
+          oldAmount = 1;
+        }
+        if (Number.isNaN(addedAmount)) {
+          addedAmount = 1;
+        }
         const newAmount = oldAmount + addedAmount;
-        this.updateEmbeddedDocuments("Item", [{ _id: itemMatch._id, "system.amount": newAmount }]);
+        this.updateEmbeddedDocuments("Item", [
+          { _id: itemMatch._id, "system.amount": newAmount },
+        ]);
         return false;
       }
     }
@@ -161,11 +170,19 @@ export default class CPRContainerActor extends Actor {
     LOGGER.trace("isLedgerProperty | CPRContainerActor | Called.");
     const ledgerData = getProperty(this.system, prop);
     if (!hasProperty(ledgerData, "value")) {
-      SystemUtils.DisplayMessage("error", SystemUtils.Format("CPR.ledger.errorMessage.missingValue", { prop }));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Format("CPR.ledger.errorMessage.missingValue", { prop })
+      );
       return false;
     }
     if (!hasProperty(ledgerData, "transactions")) {
-      SystemUtils.DisplayMessage("error", SystemUtils.Format("CPR.ledger.errorMessage.missingTransactions", { prop }));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Format("CPR.ledger.errorMessage.missingTransactions", {
+          prop,
+        })
+      );
       return false;
     }
     return true;
@@ -222,8 +239,13 @@ export default class CPRContainerActor extends Actor {
     // update the ledger with the change
     const ledger = getProperty(cprData, "wealth.transactions");
     ledger.push([
-      SystemUtils.Format(transactionSentence, { property: "wealth", amount: value, total: newValue }),
-      reason]);
+      SystemUtils.Format(transactionSentence, {
+        property: "wealth",
+        amount: value,
+        total: newValue,
+      }),
+      reason,
+    ]);
     setProperty(cprData, "wealth.transactions", ledger);
     // update the actor and return the modified property
     this.update({ system: cprData });
@@ -239,7 +261,9 @@ export default class CPRContainerActor extends Actor {
    */
   getOwnedItem(itemId) {
     LOGGER.trace("getOwnedItem | CPRActor | Called.");
-    const item = (this.items.find((i) => i._id === itemId)) ? this.items.find((i) => i._id === itemId) : this.items.find((i) => i.uuid === itemId);
+    const item = this.items.find((i) => i._id === itemId)
+      ? this.items.find((i) => i._id === itemId)
+      : this.items.find((i) => i.uuid === itemId);
     return item;
   }
 }

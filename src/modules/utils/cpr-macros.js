@@ -4,7 +4,10 @@ import SystemUtils from "./cpr-systemUtils.js";
 import LOGGER from "./cpr-logger.js";
 
 export default class CPRMacro {
-  static async rollItemMacro(itemName, extraRollArgs = { skipPrompt: false, rollType: "attack" }) {
+  static async rollItemMacro(
+    itemName,
+    extraRollArgs = { skipPrompt: false, rollType: "attack" }
+  ) {
     LOGGER.trace("rollItemMacro | CPRMacro | called.");
     const speaker = CPRChat.getSpeaker();
     const extraData = extraRollArgs;
@@ -12,18 +15,33 @@ export default class CPRMacro {
     if (speaker.token) actor = game.actors.tokens[speaker.token];
     if (!actor) actor = game.actors.get(speaker.actor);
     if (!actor) {
-      SystemUtils.DisplayMessage("warn", `${SystemUtils.Localize("CPR.macro.itemMissing")} ${itemName}`);
+      SystemUtils.DisplayMessage(
+        "warn",
+        `${SystemUtils.Localize("CPR.macro.itemMissing")} ${itemName}`
+      );
       return;
     }
     const item = actor ? actor.items.find((i) => i.name === itemName) : null;
 
     const displayName = actor === null ? "ERROR" : actor.name;
     if (!item) {
-      SystemUtils.DisplayMessage("warn", `[${displayName}] ${SystemUtils.Localize("CPR.macro.itemMissing")} ${itemName}`);
+      SystemUtils.DisplayMessage(
+        "warn",
+        `[${displayName}] ${SystemUtils.Localize(
+          "CPR.macro.itemMissing"
+        )} ${itemName}`
+      );
       return;
     }
 
-    const validRollTypes = ["skill", "attack", "damage", "aimed", "autofire", "suppressive"];
+    const validRollTypes = [
+      "skill",
+      "attack",
+      "damage",
+      "aimed",
+      "autofire",
+      "suppressive",
+    ];
     let rollType;
     switch (item.type) {
       case "weapon":
@@ -39,12 +57,20 @@ export default class CPRMacro {
     }
 
     if (!validRollTypes.includes(rollType)) {
-      SystemUtils.DisplayMessage("warn", `[${displayName}] ${SystemUtils.Localize("CPR.macro.invalidRollType")} ${rollType}`);
+      SystemUtils.DisplayMessage(
+        "warn",
+        `[${displayName}] ${SystemUtils.Localize(
+          "CPR.macro.invalidRollType"
+        )} ${rollType}`
+      );
       return;
     }
 
     if (rollType === "damage") {
-      extraData.damageType = actor.getFlag(game.system.id, `firetype-${item._id}`);
+      extraData.damageType = actor.getFlag(
+        game.system.id,
+        `firetype-${item._id}`
+      );
     }
 
     let cprRoll = item.createRoll(rollType, actor, extraData);

@@ -24,8 +24,14 @@ export default class ImprovedDialogMigration extends CPRMigration {
    */
   async preMigrate() {
     LOGGER.trace(`preMigrate | ${this.version}-${this.name}`);
-    CPRSystemUtils.DisplayMessage("notify", CPRSystemUtils.Localize("CPR.migration.effects.beginMigration"));
-    this.migrationFolder = await CPRSystemUtils.GetFolder("Item", "Improved-Dialog-Migration Workspace");
+    CPRSystemUtils.DisplayMessage(
+      "notify",
+      CPRSystemUtils.Localize("CPR.migration.effects.beginMigration")
+    );
+    this.migrationFolder = await CPRSystemUtils.GetFolder(
+      "Item",
+      "Improved-Dialog-Migration Workspace"
+    );
     LOGGER.log(`Starting migration: ${this.name}`);
   }
 
@@ -55,8 +61,12 @@ export default class ImprovedDialogMigration extends CPRMigration {
         e.changes.forEach(async (c, i) => {
           const newFlag = e.flags[game.system.id].changes[i];
           e.flags[`${game.system.id}.changes.cats.${i}`] = newFlag;
-          e.flags[`${game.system.id}.changes.situational.${i}.isSituational`] = false;
-          e.flags[`${game.system.id}.changes.situational.${i}.onByDefault`] = false;
+          e.flags[
+            `${game.system.id}.changes.situational.${i}.isSituational`
+          ] = false;
+          e.flags[
+            `${game.system.id}.changes.situational.${i}.onByDefault`
+          ] = false;
           e.flags[`${game.system.id}.changes.-=${i}`] = null;
         });
       });
@@ -70,7 +80,7 @@ export default class ImprovedDialogMigration extends CPRMigration {
       });
     }
 
-    return (item.isOwned) ? updateData : item.update(updateData);
+    return item.isOwned ? updateData : item.update(updateData);
   }
 
   /**
@@ -88,8 +98,12 @@ export default class ImprovedDialogMigration extends CPRMigration {
         e.changes.forEach((c, i) => {
           const newFlag = e.flags[game.system.id].changes[i];
           effectData.flags[`${game.system.id}.changes.cats.${i}`] = newFlag;
-          effectData.flags[`${game.system.id}.changes.situational.${i}.isSituational`] = false;
-          effectData.flags[`${game.system.id}.changes.situational.${i}.onByDefault`] = false;
+          effectData.flags[
+            `${game.system.id}.changes.situational.${i}.isSituational`
+          ] = false;
+          effectData.flags[
+            `${game.system.id}.changes.situational.${i}.onByDefault`
+          ] = false;
           effectData.flags[`${game.system.id}.changes.-=${i}`] = null;
         });
         updateList.push(effectData);
@@ -116,7 +130,9 @@ export default class ImprovedDialogMigration extends CPRMigration {
       try {
         await ImprovedDialogMigration.migrateItem(newWorldItem);
       } catch (err) {
-        throw new Error(`${ownedItem.name} (${ownedItem._id}) had a migration error: ${err.message}`);
+        throw new Error(
+          `${ownedItem.name} (${ownedItem._id}) had a migration error: ${err.message}`
+        );
       }
 
       await CPRMigration.restoreOwnedItem(newWorldItem);
@@ -124,7 +140,9 @@ export default class ImprovedDialogMigration extends CPRMigration {
     }
 
     if (deleteItems.length > 0) {
-      await actor.deleteEmbeddedDocuments("Item", deleteItems, { cprIsMigrating: true });
+      await actor.deleteEmbeddedDocuments("Item", deleteItems, {
+        cprIsMigrating: true,
+      });
     }
   }
 }

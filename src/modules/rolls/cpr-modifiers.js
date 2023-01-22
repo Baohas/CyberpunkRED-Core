@@ -18,9 +18,11 @@ export default class CPRMod {
     // We do optional chaining on the next few because some items may not have flags.${game.system.id}.situational or .cats defined.
     this.category = effect.flags[game.system.id].changes.cats?.[index]; // Category of the change. This comes from Zyzyx's work.
     // New flag to determine if the mod is situational or permanent. If it's situational, should it be on by default?
-    this.isSituational = effect.flags[game.system.id].changes.situational?.[index].isSituational;
+    this.isSituational =
+      effect.flags[game.system.id].changes.situational?.[index].isSituational;
     // If it's situational, should it be on by default?
-    this.onByDefault = effect.flags[game.system.id].changes.situational?.[index].onByDefault; // S
+    this.onByDefault =
+      effect.flags[game.system.id].changes.situational?.[index].onByDefault; // S
     this.id = `${change.key}-${effect.id}`; // We enforce one change key per effect, so this should always be a unique ID.
     this.source = effect.label;
     this.value = Number.parseInt(change.value, 10);
@@ -77,7 +79,9 @@ export default class CPRMod {
     const prototypeChain = SystemUtils.getPrototypeChain(rollData);
 
     // Get effects relevant to the roll.
-    const allSituationalMods = CPRMod.getAllModifiers(effects).filter((m) => m.isSituational);
+    const allSituationalMods = CPRMod.getAllModifiers(effects).filter(
+      (m) => m.isSituational
+    );
     let filteredMods = [];
 
     // Stat mods. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
@@ -87,8 +91,14 @@ export default class CPRMod {
     } */
 
     // Skill mods.
-    if ((prototypeChain.includes("CPRSkillRoll") || prototypeChain.includes("CPRRoleRoll")) && !prototypeChain.includes("CPRInterfaceRoll")) {
-      const skillMods = allSituationalMods.filter((m) => m.key === `bonuses.${SystemUtils.slugify(rollData.skillName)}`);
+    if (
+      (prototypeChain.includes("CPRSkillRoll") ||
+        prototypeChain.includes("CPRRoleRoll")) &&
+      !prototypeChain.includes("CPRInterfaceRoll")
+    ) {
+      const skillMods = allSituationalMods.filter(
+        (m) => m.key === `bonuses.${SystemUtils.slugify(rollData.skillName)}`
+      );
       filteredMods = filteredMods.concat(skillMods);
 
       // Skill mods from role bonuses.
@@ -102,7 +112,9 @@ export default class CPRMod {
 
     // Initiative Mods.
     if (prototypeChain.includes("CPRInitiative")) {
-      const initiativeMods = allSituationalMods.filter((m) => m.key === `bonuses.initiative`);
+      const initiativeMods = allSituationalMods.filter(
+        (m) => m.key === `bonuses.initiative`
+      );
       filteredMods = filteredMods.concat(initiativeMods);
 
       // Initiative mods from role bonuses.
@@ -134,10 +146,14 @@ export default class CPRMod {
       } else if (prototypeChain.includes("CPRSuppressiveFireRoll")) {
         attackRollBonusKeys.push("bonuses.suppressive");
       }
-      const attackMods = allSituationalMods.filter((m) => attackRollBonusKeys.includes(m.key));
+      const attackMods = allSituationalMods.filter((m) =>
+        attackRollBonusKeys.includes(m.key)
+      );
 
       // Attack mods from upgrades.
-      const upgradeMods = item.getAllUpgradeMods("attackmod").filter((m) => m.isSituational);
+      const upgradeMods = item
+        .getAllUpgradeMods("attackmod")
+        .filter((m) => m.isSituational);
       filteredMods = filteredMods.concat(attackMods).concat(upgradeMods);
 
       // Attack mods from role bonuses.
@@ -151,11 +167,15 @@ export default class CPRMod {
 
     // Damage Mods.
     if (prototypeChain.includes("CPRDamageRoll")) {
-      const damageMods = allSituationalMods.filter((m) => m.key === `bonuses.universalDamage`);
+      const damageMods = allSituationalMods.filter(
+        (m) => m.key === `bonuses.universalDamage`
+      );
 
       // Damage mods from upgrades.
       if (item) {
-        const upgradeMods = item.getAllUpgradeMods("damage").filter((m) => m.isSituational);
+        const upgradeMods = item
+          .getAllUpgradeMods("damage")
+          .filter((m) => m.isSituational);
         filteredMods = filteredMods.concat(damageMods).concat(upgradeMods);
       }
 
@@ -170,22 +190,33 @@ export default class CPRMod {
 
     // Role Mods.
     if (prototypeChain.includes("CPRRoleRoll")) {
-      const roleMods = allSituationalMods.filter((m) => m.key === `bonuses.${SystemUtils.slugify(rollData.roleName)}`);
+      const roleMods = allSituationalMods.filter(
+        (m) => m.key === `bonuses.${SystemUtils.slugify(rollData.roleName)}`
+      );
       filteredMods = filteredMods.concat(roleMods);
     }
 
     // Netrunner Mods.
     if (prototypeChain.includes("CPRInterfaceRoll")) {
-      let netrunnerMods = allSituationalMods.filter((m) => m.key === `bonuses.${rollData.ability}`);
+      let netrunnerMods = allSituationalMods.filter(
+        (m) => m.key === `bonuses.${rollData.ability}`
+      );
 
       // Zap is an attack, so we need to add relevant attack bonuses to it.
       if (rollData.ability === "zap") {
-        netrunnerMods = netrunnerMods.concat(allSituationalMods.filter((m) => m.key === "bonuses.attack" || m.key === "bonuses.universalAttack"));
+        netrunnerMods = netrunnerMods.concat(
+          allSituationalMods.filter(
+            (m) =>
+              m.key === "bonuses.attack" || m.key === "bonuses.universalAttack"
+          )
+        );
       }
 
       // Bonus to all attacks, meat or net.
       if (rollData.ability === "attack") {
-        netrunnerMods = netrunnerMods.concat(allSituationalMods.filter((m) => m.key === "bonuses.universalAttack"));
+        netrunnerMods = netrunnerMods.concat(
+          allSituationalMods.filter((m) => m.key === "bonuses.universalAttack")
+        );
       }
 
       filteredMods = filteredMods.concat(netrunnerMods);
@@ -193,7 +224,9 @@ export default class CPRMod {
 
     // Death Save Mods.
     if (prototypeChain.includes("CPRDeathSaveRoll")) {
-      const deathSavePenaltyMods = allSituationalMods.filter((m) => m.key === "bonuses.deathSavePenalty");
+      const deathSavePenaltyMods = allSituationalMods.filter(
+        (m) => m.key === "bonuses.deathSavePenalty"
+      );
       filteredMods = filteredMods.concat(deathSavePenaltyMods);
     }
 

@@ -23,8 +23,18 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     LOGGER.trace("defaultOptions | CPRCharacterActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-character-sheet.hbs`,
-      tabs: [{ navSelector: ".navtabs-right", contentSelector: ".right-content-section", initial: "skills" },
-        { navSelector: ".navtabs-bottom", contentSelector: ".bottom-content-section", initial: "fight" }],
+      tabs: [
+        {
+          navSelector: ".navtabs-right",
+          contentSelector: ".right-content-section",
+          initial: "skills",
+        },
+        {
+          navSelector: ".navtabs-bottom",
+          contentSelector: ".bottom-content-section",
+          initial: "fight",
+        },
+      ],
     });
   }
 
@@ -52,53 +62,79 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     html.find(".repair").click((event) => this._repairArmor(event));
 
     // Install Cyberware
-    html.find(".install-remove-cyberware").click((event) => this._installUninstallCyberwareAction(event));
+    html
+      .find(".install-remove-cyberware")
+      .click((event) => this._installUninstallCyberwareAction(event));
 
     // Set Lifepath for Character
     html.find(".set-lifepath").click(() => this._setLifepath());
 
     // toggle "favorite" skills and items
-    html.find(".toggle-section-visibility").click((event) => this._toggleSectionVisibility(event));
+    html
+      .find(".toggle-section-visibility")
+      .click((event) => this._toggleSectionVisibility(event));
 
     if (!this.options.editable) return;
     // Listeners for editable fields under go here. Fields might not be editable because
     // the user viewing the sheet might not have permission to. They may not be the owner.
 
     // update a skill level
-    html.find(".skill-input").click((event) => event.target.select()).change((event) => this._updateSkill(event));
+    html
+      .find(".skill-input")
+      .click((event) => event.target.select())
+      .change((event) => this._updateSkill(event));
 
     // update the ammount of an item in the gear tab
-    html.find(".gear-amount-input").click((event) => event.target.select()).change((event) => this._updateAmount(event));
+    html
+      .find(".gear-amount-input")
+      .click((event) => event.target.select())
+      .change((event) => this._updateAmount(event));
 
     // update a role ability
-    html.find(".ability-input").click((event) => event.target.select()).change(
-      (event) => this._updateRoleAbility(event),
-    );
+    html
+      .find(".ability-input")
+      .click((event) => event.target.select())
+      .change((event) => this._updateRoleAbility(event));
 
     // IP related listeners
     html.find(".improvement-points-edit-button").click(() => this._updateIp());
-    html.find(".improvement-points-open-ledger").click(() => this.showLedger("improvementPoints"));
+    html
+      .find(".improvement-points-open-ledger")
+      .click(() => this.showLedger("improvementPoints"));
 
     // Listeners for eurobucks (in gear tab)
-    html.find(".eurobucks-input-button").click((event) => this._updateEurobucks(event));
+    html
+      .find(".eurobucks-input-button")
+      .click((event) => this._updateEurobucks(event));
     html.find(".eurobucks-open-ledger").click(() => this.showLedger("wealth"));
 
     // Create item in inventory
-    html.find(".item-create").click((event) => this._createInventoryItem(event));
+    html
+      .find(".item-create")
+      .click((event) => this._createInventoryItem(event));
 
     // Fight tab listeners
 
     // update the amount of loaded ammo in the Fight tab
-    html.find(".weapon-input").click((event) => event.target.select()).change((event) => this._updateWeaponAmmo(event));
+    html
+      .find(".weapon-input")
+      .click((event) => event.target.select())
+      .change((event) => this._updateWeaponAmmo(event));
 
     // Switch between meat and net fight states
-    html.find(".toggle-fight-state").click((event) => this._toggleFightState(event));
+    html
+      .find(".toggle-fight-state")
+      .click((event) => this._toggleFightState(event));
 
     // Execute a program on a Cyberdeck
-    html.find(".program-execution").click((event) => this._cyberdeckProgramExecution(event));
+    html
+      .find(".program-execution")
+      .click((event) => this._cyberdeckProgramExecution(event));
 
     // Uninstall a program on a Cyberdeck
-    html.find(".program-uninstall").click((event) => this._cyberdeckProgramUninstall(event));
+    html
+      .find(".program-uninstall")
+      .click((event) => this._cyberdeckProgramUninstall(event));
 
     // Effects tab listeners
     // Create Active Effect
@@ -157,7 +193,10 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       }
       case "carried": {
         if (item.type === "weapon") {
-          Rules.lawyer(this.actor.canHoldWeapon(item), "CPR.messages.warningTooManyHands");
+          Rules.lawyer(
+            this.actor.canHoldWeapon(item),
+            "CPR.messages.warningTooManyHands"
+          );
         }
         if (item.type === "cyberdeck") {
           if (this.actor.hasItemTypeEquipped(item.type)) {
@@ -194,23 +233,39 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     const upgradeData = item.getTotalUpgradeValues("shieldHp");
     const currentArmorBodyValue = item.system.bodyLocation.sp;
     const currentArmorHeadValue = item.system.headLocation.sp;
-    const currentArmorShieldValue = (upgradeData.type === "override") ? upgradeData.value : item.system.shieldHitPoints.max + upgradeData.value;
+    const currentArmorShieldValue =
+      upgradeData.type === "override"
+        ? upgradeData.value
+        : item.system.shieldHitPoints.max + upgradeData.value;
     // XXX: cannot use _getObjProp since we need to update 2 props
     this._updateOwnedItemProp(item, "system.headLocation.ablation", 0);
     this._updateOwnedItemProp(item, "system.bodyLocation.ablation", 0);
-    this._updateOwnedItemProp(item, "system.shieldHitPoints.value", currentArmorShieldValue);
+    this._updateOwnedItemProp(
+      item,
+      "system.shieldHitPoints.value",
+      currentArmorShieldValue
+    );
     // Update actor external data when armor is repaired:
-    if (CPRActorSheet._getItemId(event) === this.actor.system.externalData.currentArmorBody.id) {
+    if (
+      CPRActorSheet._getItemId(event) ===
+      this.actor.system.externalData.currentArmorBody.id
+    ) {
       this.actor.update({
         "system.externalData.currentArmorBody.value": currentArmorBodyValue,
       });
     }
-    if (CPRActorSheet._getItemId(event) === this.actor.system.externalData.currentArmorHead.id) {
+    if (
+      CPRActorSheet._getItemId(event) ===
+      this.actor.system.externalData.currentArmorHead.id
+    ) {
       this.actor.update({
         "system.externalData.currentArmorHead.value": currentArmorHeadValue,
       });
     }
-    if (CPRActorSheet._getItemId(event) === this.actor.system.externalData.currentArmorShield.id) {
+    if (
+      CPRActorSheet._getItemId(event) ===
+      this.actor.system.externalData.currentArmorShield.id
+    ) {
       this.actor.update({
         "system.externalData.currentArmorShield.value": currentArmorShieldValue,
       });
@@ -227,11 +282,16 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} event - object with details of the event
    */
   async _installUninstallCyberwareAction(event) {
-    LOGGER.trace("_installUninstallCyberwareAction | CPRCharacterActorSheet | Called.");
+    LOGGER.trace(
+      "_installUninstallCyberwareAction | CPRCharacterActorSheet | Called."
+    );
     const itemId = CPRActorSheet._getItemId(event);
     const item = this.actor.getOwnedItem(itemId);
     if (item.system.isInstalled) {
-      const foundationalId = SystemUtils.GetEventDatum(event, "data-installation-id");
+      const foundationalId = SystemUtils.GetEventDatum(
+        event,
+        "data-installation-id"
+      );
       await this.actor.uninstallCyberware(itemId, foundationalId);
     } else {
       await this.actor.installCyberware(itemId);
@@ -247,7 +307,9 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   async _setLifepath() {
     LOGGER.trace("_setLifepath | CPRCharacterActorSheet | Called.");
-    const formData = await SetLifepathPrompt.RenderPrompt(this.actor.system).catch((err) => LOGGER.debug(err));
+    const formData = await SetLifepathPrompt.RenderPrompt(
+      this.actor.system
+    ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
@@ -286,7 +348,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       }
     } else {
       this.options.collapsedSections = this.options.collapsedSections.filter(
-        (sectionName) => sectionName !== event.currentTarget.id,
+        (sectionName) => sectionName !== event.currentTarget.id
       );
       $(categoryTarget).click();
     }
@@ -322,7 +384,10 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       if (!Number.isNaN(parseInt(event.target.value, 10))) {
         item.setWeaponAmmo(event.target.value);
       } else {
-        SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.amountnotnumber"));
+        SystemUtils.DisplayMessage(
+          "error",
+          SystemUtils.Localize("CPR.amountnotnumber")
+        );
       }
     }
     this._updateOwnedItem(item);
@@ -341,7 +406,10 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     if (!Number.isNaN(parseInt(event.target.value, 10))) {
       item.setItemAmount(event.target.value);
     } else {
-      SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.amountNotNumber"));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Localize("CPR.messages.amountNotNumber")
+      );
     }
     this._updateOwnedItem(item);
   }
@@ -355,7 +423,9 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} event - object with details of the event
    */
   async _updateRoleAbility(event) {
-    LOGGER.trace("ActorID _updateRoleAbility | CPRCharacterActorSheet | Called.");
+    LOGGER.trace(
+      "ActorID _updateRoleAbility | CPRCharacterActorSheet | Called."
+    );
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     const cprItemData = duplicate(item.system);
     const subskill = SystemUtils.GetEventDatum(event, "data-subskill-name");
@@ -363,11 +433,18 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     if (!Number.isNaN(value)) {
       if (hasProperty(cprItemData, "rank")) {
         if (subskill) {
-          const updateSubskill = cprItemData.abilities.filter((a) => a.name === subskill);
+          const updateSubskill = cprItemData.abilities.filter(
+            (a) => a.name === subskill
+          );
           if (updateSubskill.length === 1) {
             updateSubskill[0].rank = value;
           } else {
-            SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.multipleAbilitiesWithTheSameName"));
+            SystemUtils.DisplayMessage(
+              "error",
+              SystemUtils.Localize(
+                "CPR.messages.multipleAbilitiesWithTheSameName"
+              )
+            );
           }
         } else {
           cprItemData.rank = value;
@@ -375,7 +452,10 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         await item.update({ system: cprItemData });
       }
     } else {
-      SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.amountNotNumber"));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Localize("CPR.messages.amountNotNumber")
+      );
     }
   }
 
@@ -419,7 +499,9 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   async _updateIp() {
     LOGGER.trace("_updateIp | CPRCharacterActorSheet | Called.");
-    const formData = await LedgerEditPrompt.RenderPrompt("CPR.characterSheet.leftPane.improvementPointsEdit").catch((err) => LOGGER.debug(err));
+    const formData = await LedgerEditPrompt.RenderPrompt(
+      "CPR.characterSheet.leftPane.improvementPointsEdit"
+    ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       // Prompt was closed
       return;
@@ -427,24 +509,44 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     if (formData.changeValue !== null && formData.changeValue !== "") {
       switch (formData.action) {
         case "add": {
-          this._gainLedger("improvementPoints", parseInt(formData.changeValue, 10), `${formData.changeReason} - ${game.user.name}`);
+          this._gainLedger(
+            "improvementPoints",
+            parseInt(formData.changeValue, 10),
+            `${formData.changeReason} - ${game.user.name}`
+          );
           break;
         }
         case "subtract": {
-          this._loseLedger("improvementPoints", parseInt(formData.changeValue, 10), `${formData.changeReason} - ${game.user.name}`);
+          this._loseLedger(
+            "improvementPoints",
+            parseInt(formData.changeValue, 10),
+            `${formData.changeReason} - ${game.user.name}`
+          );
           break;
         }
         case "set": {
-          this._setLedger("improvementPoints", parseInt(formData.changeValue, 10), `${formData.changeReason} - ${game.user.name}`);
+          this._setLedger(
+            "improvementPoints",
+            parseInt(formData.changeValue, 10),
+            `${formData.changeReason} - ${game.user.name}`
+          );
           break;
         }
         default: {
-          SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.improvementPointsEditInvalidAction"));
+          SystemUtils.DisplayMessage(
+            "error",
+            SystemUtils.Localize(
+              "CPR.messages.improvementPointsEditInvalidAction"
+            )
+          );
           break;
         }
       }
     } else {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.improvementPointsEditWarn"));
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.messages.improvementPointsEditWarn")
+      );
     }
   }
 
@@ -459,7 +561,9 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   _updateEurobucks(event) {
     LOGGER.trace("_updateEurobucks | CPRCharacterActorSheet | Called.");
     let { value } = event.currentTarget.parentElement.parentElement.children[1];
-    const reason = event.currentTarget.parentElement.parentElement.nextElementSibling.lastElementChild.value;
+    const reason =
+      event.currentTarget.parentElement.parentElement.nextElementSibling
+        .lastElementChild.value;
     let action = SystemUtils.GetEventDatum(event, "data-action");
     if (value !== "") {
       value = parseInt(value, 10);
@@ -480,12 +584,18 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
           break;
         }
         default: {
-          SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.eurobucksModifyInvalidAction"));
+          SystemUtils.DisplayMessage(
+            "error",
+            SystemUtils.Localize("CPR.messages.eurobucksModifyInvalidAction")
+          );
           break;
         }
       }
     } else {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.eurobucksModifyWarn"));
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.messages.eurobucksModifyWarn")
+      );
     }
   }
 
@@ -538,8 +648,13 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @private
    */
   async _cyberdeckProgramExecution(event) {
-    LOGGER.trace("_cyberdeckProgramExecution | CPRCharacterActorSheet | Called.");
-    const executionType = SystemUtils.GetEventDatum(event, "data-execution-type");
+    LOGGER.trace(
+      "_cyberdeckProgramExecution | CPRCharacterActorSheet | Called."
+    );
+    const executionType = SystemUtils.GetEventDatum(
+      event,
+      "data-execution-type"
+    );
     const programUUID = SystemUtils.GetEventDatum(event, "data-program-uuid");
     const program = this.actor.getOwnedItem(programUUID);
     const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
@@ -605,7 +720,9 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @returns {null}
    */
   async _cyberdeckProgramUninstall(event) {
-    LOGGER.trace("_cyberdeckProgramUninstall | CPRCharacterActorSheet | Called.");
+    LOGGER.trace(
+      "_cyberdeckProgramUninstall | CPRCharacterActorSheet | Called."
+    );
     const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
     const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
 

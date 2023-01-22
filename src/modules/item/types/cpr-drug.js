@@ -22,15 +22,21 @@ export default class CPRDrugItem extends CPRItem {
    */
   async snort() {
     LOGGER.trace("snort | CPRDrugItem | called.");
-    Rules.lawyer(this.system.amount > 0, SystemUtils.Localize("CPR.messages.notEnoughDrugs"));
-    if (!await this._confirmSnort()) return;
+    Rules.lawyer(
+      this.system.amount > 0,
+      SystemUtils.Localize("CPR.messages.notEnoughDrugs")
+    );
+    if (!(await this._confirmSnort())) return;
     this.system.amount = Math.max(0, this.system.amount - 1);
     if (this.actor) {
       if (this.effects.size > 0 && this.system.usage === "snorted") {
         // item has active effects to consider activating
         const effectUpdates = [];
         const { consumed } = this.system;
-        if (consumed === SystemUtils.Localize("CPR.itemSheet.effects.none") || consumed === "None") {
+        if (
+          consumed === SystemUtils.Localize("CPR.itemSheet.effects.none") ||
+          consumed === "None"
+        ) {
           // no primary was specified, so we enable all of them
           const actorEffects = this.getMyEffectsOnActor();
           actorEffects.forEach((ae) => {
@@ -38,14 +44,21 @@ export default class CPRDrugItem extends CPRItem {
           });
         } else {
           const aeObj = this.getEffectByName(consumed);
-          const [actorEffect] = this.getMyEffectsOnActor().filter((ae) => ae.label === aeObj.label);
+          const [actorEffect] = this.getMyEffectsOnActor().filter(
+            (ae) => ae.label === aeObj.label
+          );
           effectUpdates.push({ _id: actorEffect.id, disabled: false });
         }
         this.actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates); // update AEs
       }
-      this.actor.updateEmbeddedDocuments("Item", [{ _id: this.id, system: this.system }]); // update the amount
+      this.actor.updateEmbeddedDocuments("Item", [
+        { _id: this.id, system: this.system },
+      ]); // update the amount
     }
-    SystemUtils.DisplayMessage("notify", `${this.name} ${SystemUtils.Localize("CPR.messages.consumedDrug")}`);
+    SystemUtils.DisplayMessage(
+      "notify",
+      `${this.name} ${SystemUtils.Localize("CPR.messages.consumedDrug")}`
+    );
   }
 
   /**
@@ -57,10 +70,12 @@ export default class CPRDrugItem extends CPRItem {
    */
   async _confirmSnort() {
     LOGGER.trace("_confirmSnort | CPRDrugItem | called.");
-    const promptMessage = `${SystemUtils.Localize("CPR.dialog.snortConfirmation.message")} ${this.name}?`;
+    const promptMessage = `${SystemUtils.Localize(
+      "CPR.dialog.snortConfirmation.message"
+    )} ${this.name}?`;
     return ConfirmPrompt.RenderPrompt(
       SystemUtils.Localize("CPR.dialog.snortConfirmation.title"),
-      promptMessage,
+      promptMessage
     ).catch((err) => LOGGER.debug(err));
   }
 }

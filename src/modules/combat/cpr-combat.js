@@ -30,7 +30,10 @@ export default class CPRCombat extends Combat {
    */
   static _getInitiativeFormula(combatant) {
     LOGGER.trace("_getInitiativeFormula | CPRCombat | Called.");
-    if (combatant.actor.type === "blackIce" || combatant.actor.type === "demon") {
+    if (
+      combatant.actor.type === "blackIce" ||
+      combatant.actor.type === "demon"
+    ) {
       const bestInit = CombatUtils.GetBestInit();
       if (!bestInit) return "30";
       if (bestInit !== combatant.initiative) {
@@ -52,7 +55,10 @@ export default class CPRCombat extends Combat {
    * @return {Promise<Combat>}        A promise which resolves to the updated Combat entity once updates are complete.
    */
   // eslint-disable-next-line no-unused-vars
-  async rollInitiative(ids, { formula = null, updateTurn = true, messageOptions = {} } = {}) {
+  async rollInitiative(
+    ids,
+    { formula = null, updateTurn = true, messageOptions = {} } = {}
+  ) {
     LOGGER.trace("rollInitiative | CPRCombat | Called.");
     // Structure input data
     const combatantIds = typeof ids === "string" ? [ids] : ids;
@@ -68,18 +74,28 @@ export default class CPRCombat extends Combat {
       let cprRoll;
       // Produce an initiative roll for the Combatant
       if (actor.constructor.name === "CPRContainerActor") {
-        const warningMessage = `${SystemUtils.Localize("CPR.messages.invalidCombatantType")}: ${actor.name} (${actor.type})`;
+        const warningMessage = `${SystemUtils.Localize(
+          "CPR.messages.invalidCombatantType"
+        )}: ${actor.name} (${actor.type})`;
         SystemUtils.DisplayMessage("warn", warningMessage);
         // eslint-disable-next-line no-continue
         continue; // Skip one iteration so that the rest doesn't happen.
       } else {
-        cprRoll = (await combatant.getInitiativeRoll(CPRCombat._getInitiativeFormula(combatant)));
+        cprRoll = await combatant.getInitiativeRoll(
+          CPRCombat._getInitiativeFormula(combatant)
+        );
 
         update = { _id: id, initiative: cprRoll.resultTotal };
-        cprRoll.entityData = { actor: combatant.actor?.id, token: combatant.token?.id };
+        cprRoll.entityData = {
+          actor: combatant.actor?.id,
+          token: combatant.token?.id,
+        };
       }
 
-      const rollCriticals = game.settings.get(game.system.id, "criticalInitiative");
+      const rollCriticals = game.settings.get(
+        game.system.id,
+        "criticalInitiative"
+      );
 
       const roll = DiceSoNice.ShowDiceSoNice(cprRoll._roll);
       let critRoll;
@@ -95,7 +111,9 @@ export default class CPRCombat extends Combat {
 
     // Ensure the turn order remains with the same combatant if the combat already started
     if (updateTurn && currentId) {
-      await this.update({ turn: this.turns.findIndex((t) => t.id === currentId) });
+      await this.update({
+        turn: this.turns.findIndex((t) => t.id === currentId),
+      });
     }
   }
 }

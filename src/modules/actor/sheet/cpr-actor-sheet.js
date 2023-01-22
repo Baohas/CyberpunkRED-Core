@@ -32,7 +32,11 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("constructor | CPRCharacterActorSheet | Called.");
     super(actor, options);
     this.options.collapsedSections = [];
-    const collapsedSections = SystemUtils.GetUserSetting("sheetConfig", "sheetCollapsedSections", this.id);
+    const collapsedSections = SystemUtils.GetUserSetting(
+      "sheetConfig",
+      "sheetCollapsedSections",
+      this.id
+    );
     if (collapsedSections) {
       this.options.collapsedSections = collapsedSections;
     }
@@ -71,7 +75,9 @@ export default class CPRActorSheet extends ActorSheet {
     const foundryData = super.getData();
     const cprActorData = foundryData.actor.system;
     if (this.actor.type === "mook" || this.actor.type === "character") {
-      cprActorData.fightOptions = (this.actor.hasItemTypeEquipped("cyberdeck")) ? "both" : "";
+      cprActorData.fightOptions = this.actor.hasItemTypeEquipped("cyberdeck")
+        ? "both"
+        : "";
       let fightState = this.actor.getFlag(game.system.id, "fightState");
       if (!fightState || cprActorData.fightOptions !== "both") {
         fightState = "Meatspace";
@@ -89,27 +95,88 @@ export default class CPRActorSheet extends ActorSheet {
 
     foundryData.enrichedHTML = [];
     if (this.actor.type !== "container") {
-      foundryData.enrichedHTML.systemInformationNotes = await TextEditor.enrichHTML(this.actor.system.information.notes, { async: true });
+      foundryData.enrichedHTML.systemInformationNotes =
+        await TextEditor.enrichHTML(this.actor.system.information.notes, {
+          async: true,
+        });
     }
     if (this.actor.type === "character") {
-      foundryData.enrichedHTML.systemLifepathCulturalOrigin = await TextEditor.enrichHTML(this.actor.system.lifepath.culturalOrigin, { async: true });
-      foundryData.enrichedHTML.systemLifepathLanguages = await TextEditor.enrichHTML(this.actor.system.lifepath.languages, { async: true });
-      foundryData.enrichedHTML.systemLifepathPersonality = await TextEditor.enrichHTML(this.actor.system.lifepath.personality, { async: true });
-      foundryData.enrichedHTML.systemLifepathClothingStyle = await TextEditor.enrichHTML(this.actor.system.lifepath.clothingStyle, { async: true });
-      foundryData.enrichedHTML.systemLifepathHairStyle = await TextEditor.enrichHTML(this.actor.system.lifepath.hairStyle, { async: true });
-      foundryData.enrichedHTML.systemLifepathAffectations = await TextEditor.enrichHTML(this.actor.system.lifepath.affectations, { async: true });
-      foundryData.enrichedHTML.systemLifepathValueMost = await TextEditor.enrichHTML(this.actor.system.lifepath.valueMost, { async: true });
-      foundryData.enrichedHTML.systemLifepathAboutPeople = await TextEditor.enrichHTML(this.actor.system.lifepath.aboutPeople, { async: true });
-      foundryData.enrichedHTML.systemLifepathValuedPerson = await TextEditor.enrichHTML(this.actor.system.lifepath.valuedPerson, { async: true });
-      foundryData.enrichedHTML.systemLifepathValuedPossession = await TextEditor.enrichHTML(this.actor.system.lifepath.valuedPossession, { async: true });
-      foundryData.enrichedHTML.systemLifepathFamilyBackground = await TextEditor.enrichHTML(this.actor.system.lifepath.familyBackground, { async: true });
-      foundryData.enrichedHTML.systemLifepathChildhoodEnvironment = await TextEditor.enrichHTML(this.actor.system.lifepath.childhoodEnvironment, { async: true });
-      foundryData.enrichedHTML.systemLifepathFamilyCrisis = await TextEditor.enrichHTML(this.actor.system.lifepath.familyCrisis, { async: true });
-      foundryData.enrichedHTML.systemLifepathLifeGoals = await TextEditor.enrichHTML(this.actor.system.lifepath.lifeGoals, { async: true });
-      foundryData.enrichedHTML.systemLifepathRoleLifepath = await TextEditor.enrichHTML(this.actor.system.lifepath.roleLifepath, { async: true });
-      foundryData.enrichedHTML.systemLifepathFriends = await TextEditor.enrichHTML(this.actor.system.lifepath.friends, { async: true });
-      foundryData.enrichedHTML.systemLifepathTragicLoveAffairs = await TextEditor.enrichHTML(this.actor.system.lifepath.tragicLoveAffairs, { async: true });
-      foundryData.enrichedHTML.systemLifepathEnemies = await TextEditor.enrichHTML(this.actor.system.lifepath.enemies, { async: true });
+      foundryData.enrichedHTML.systemLifepathCulturalOrigin =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.culturalOrigin, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathLanguages =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.languages, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathPersonality =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.personality, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathClothingStyle =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.clothingStyle, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathHairStyle =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.hairStyle, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathAffectations =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.affectations, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathValueMost =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.valueMost, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathAboutPeople =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.aboutPeople, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathValuedPerson =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.valuedPerson, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathValuedPossession =
+        await TextEditor.enrichHTML(
+          this.actor.system.lifepath.valuedPossession,
+          { async: true }
+        );
+      foundryData.enrichedHTML.systemLifepathFamilyBackground =
+        await TextEditor.enrichHTML(
+          this.actor.system.lifepath.familyBackground,
+          { async: true }
+        );
+      foundryData.enrichedHTML.systemLifepathChildhoodEnvironment =
+        await TextEditor.enrichHTML(
+          this.actor.system.lifepath.childhoodEnvironment,
+          { async: true }
+        );
+      foundryData.enrichedHTML.systemLifepathFamilyCrisis =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.familyCrisis, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathLifeGoals =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.lifeGoals, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathRoleLifepath =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.roleLifepath, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathFriends =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.friends, {
+          async: true,
+        });
+      foundryData.enrichedHTML.systemLifepathTragicLoveAffairs =
+        await TextEditor.enrichHTML(
+          this.actor.system.lifepath.tragicLoveAffairs,
+          { async: true }
+        );
+      foundryData.enrichedHTML.systemLifepathEnemies =
+        await TextEditor.enrichHTML(this.actor.system.lifepath.enemies, {
+          async: true,
+        });
     }
 
     return foundryData;
@@ -126,22 +193,31 @@ export default class CPRActorSheet extends ActorSheet {
     const categories = {
       permanent: {
         type: "permanent",
-        label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.permanent"),
+        label: SystemUtils.Localize(
+          "CPR.characterSheet.rightPane.effects.permanent"
+        ),
         effects: [],
       },
       situational: {
         type: "situational",
-        label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.situational"),
+        label: SystemUtils.Localize(
+          "CPR.characterSheet.rightPane.effects.situational"
+        ),
         effects: [],
       },
       inactive: {
         type: "inactive",
-        label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.inactive"),
+        label: SystemUtils.Localize(
+          "CPR.characterSheet.rightPane.effects.inactive"
+        ),
         effects: [],
       },
     };
 
-    const setting = game.settings.get(game.system.id, "displayStatusAsActiveEffects");
+    const setting = game.settings.get(
+      game.system.id,
+      "displayStatusAsActiveEffects"
+    );
     // Iterate over active effects, classifying them into categories
     for (const e of this.actor.effects) {
       // eslint-disable-next-line no-await-in-loop
@@ -165,7 +241,13 @@ export default class CPRActorSheet extends ActorSheet {
         },
         disabled: e.disabled,
       };
-      if (!(typeof e.flags.core !== "undefined" && typeof e.flags.core.statusId !== "undefined") || setting) {
+      if (
+        !(
+          typeof e.flags.core !== "undefined" &&
+          typeof e.flags.core.statusId !== "undefined"
+        ) ||
+        setting
+      ) {
         // Get effects with no changes and display in the Permanent Effects category.
         // This is a rare case where a user makes an effect but doesn't add any changes.
         if (e.changes.length === 0 && !e.disabled && !e.system.isSuppressed) {
@@ -174,7 +256,9 @@ export default class CPRActorSheet extends ActorSheet {
 
         // Get situational, non-disabled effects.
         if (!e.disabled && !e.system.isSuppressed) {
-          const situationalMods = CPRMod.getAllModifiers([e]).filter((m) => m.isSituational);
+          const situationalMods = CPRMod.getAllModifiers([e]).filter(
+            (m) => m.isSituational
+          );
           // To avoid repeats, duplicate simplifiedEffect to situationalEffect, and push that.
           const situationalEffect = duplicate(simplifiedEffect);
           situationalEffect.changes = situationalMods;
@@ -188,9 +272,11 @@ export default class CPRActorSheet extends ActorSheet {
           // The second argument in the following function is set to true, so that it gets disabled modifiers.
           simplifiedEffect.changes = CPRMod.getAllModifiers([e], true);
           categories.inactive.effects.push(simplifiedEffect);
-        // Get permanent, non-disabled effects.
+          // Get permanent, non-disabled effects.
         } else if (CPRMod.getAllModifiers([e]).some((m) => !m.isSituational)) {
-          const permanentMods = CPRMod.getAllModifiers([e]).filter((m) => !m.isSituational);
+          const permanentMods = CPRMod.getAllModifiers([e]).filter(
+            (m) => !m.isSituational
+          );
           simplifiedEffect.changes = permanentMods;
           categories.permanent.effects.push(simplifiedEffect);
         }
@@ -227,16 +313,22 @@ export default class CPRActorSheet extends ActorSheet {
     html.find(".item-action").click((event) => this._itemAction(event));
 
     // bring up read-only versions of the item card (sheet), used with installed cyberware
-    html.find(".item-view").click((event) => this._renderReadOnlyItemCard(event));
+    html
+      .find(".item-view")
+      .click((event) => this._renderReadOnlyItemCard(event));
 
     // Reset Death Penalty
     html.find(".reset-deathsave-value").click(() => this._resetDeathSave());
 
     // Increase Death Penalty
-    html.find(".increase-deathsave-value").click(() => this._increaseDeathSave());
+    html
+      .find(".increase-deathsave-value")
+      .click(() => this._increaseDeathSave());
 
     // Filter contents of skills or gear
-    html.find(".filter-contents").change((event) => this._applyContentFilter(event));
+    html
+      .find(".filter-contents")
+      .change((event) => this._applyContentFilter(event));
 
     // Reset content filter
     html.find(".reset-content-filter").click(() => this._clearContentFilter());
@@ -253,7 +345,7 @@ export default class CPRActorSheet extends ActorSheet {
       (event) => {
         // hide edit and delete buttons
         $(event.currentTarget).contents().contents().removeClass("show");
-      },
+      }
     );
 
     // Item Dragging
@@ -279,11 +371,15 @@ export default class CPRActorSheet extends ActorSheet {
     html.find(".roll-critical-injury").click(() => this._rollCriticalInjury());
 
     // set/unset "checkboxes" used with fire modes
-    html.find(".fire-checkbox").click((event) => this._fireCheckboxToggle(event));
+    html
+      .find(".fire-checkbox")
+      .click((event) => this._fireCheckboxToggle(event));
 
     // Reputation related listeners
     html.find(".reputation-edit-button").click(() => this._updateReputation());
-    html.find(".reputation-open-ledger").click(() => this.showLedger("reputation"));
+    html
+      .find(".reputation-open-ledger")
+      .click(() => this.showLedger("reputation"));
 
     super.activateListeners(html);
   }
@@ -312,7 +408,7 @@ export default class CPRActorSheet extends ActorSheet {
 
     if (this.options.collapsedSections.includes(event.currentTarget.id)) {
       this.options.collapsedSections = this.options.collapsedSections.filter(
-        (sectionName) => sectionName !== event.currentTarget.id,
+        (sectionName) => sectionName !== event.currentTarget.id
       );
     } else {
       this.options.collapsedSections.push(event.currentTarget.id);
@@ -341,7 +437,10 @@ export default class CPRActorSheet extends ActorSheet {
       }
       case CPRRolls.rollTypes.ROLEABILITY: {
         const itemId = CPRActorSheet._getItemId(event);
-        const rollSubType = SystemUtils.GetEventDatum(event, "data-roll-subtype");
+        const rollSubType = SystemUtils.GetEventDatum(
+          event,
+          "data-roll-subtype"
+        );
         const subRoleName = SystemUtils.GetEventDatum(event, "data-roll-title");
         const rollInfo = {
           rollSubType,
@@ -363,7 +462,8 @@ export default class CPRActorSheet extends ActorSheet {
         const damageType = this._getFireCheckbox(event);
         cprRoll = item.createRoll(rollType, this.actor, { damageType });
         if (rollType === CPRRolls.rollTypes.AIMED) {
-          cprRoll.location = this.actor.getFlag(game.system.id, "aimedLocation") || "body";
+          cprRoll.location =
+            this.actor.getFlag(game.system.id, "aimedLocation") || "body";
         }
         break;
       }
@@ -375,28 +475,55 @@ export default class CPRActorSheet extends ActorSheet {
         break;
       }
       case CPRRolls.rollTypes.INTERFACEABILITY: {
-        const interfaceAbility = SystemUtils.GetEventDatum(event, "data-interface-ability");
-        const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
+        const interfaceAbility = SystemUtils.GetEventDatum(
+          event,
+          "data-interface-ability"
+        );
+        const cyberdeckId = SystemUtils.GetEventDatum(
+          event,
+          "data-cyberdeck-id"
+        );
         const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
         item = cyberdeck;
-        const netRoleItem = this.actor.itemTypes.role.find((r) => r.id === this.actor.system.roleInfo.activeNetRole);
+        const netRoleItem = this.actor.itemTypes.role.find(
+          (r) => r.id === this.actor.system.roleInfo.activeNetRole
+        );
         if (!netRoleItem) {
-          const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
+          const error = SystemUtils.Localize(
+            "CPR.messages.noNetrunningRoleConfigured"
+          );
           SystemUtils.DisplayMessage("error", error);
           return;
         }
-        cprRoll = cyberdeck.createRoll(rollType, this.actor, { interfaceAbility, cyberdeck, netRoleItem });
+        cprRoll = cyberdeck.createRoll(rollType, this.actor, {
+          interfaceAbility,
+          cyberdeck,
+          netRoleItem,
+        });
         break;
       }
       case CPRRolls.rollTypes.CYBERDECKPROGRAM: {
-        const programUUID = SystemUtils.GetEventDatum(event, "data-program-uuid");
-        const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
-        const executionType = SystemUtils.GetEventDatum(event, "data-execution-type");
+        const programUUID = SystemUtils.GetEventDatum(
+          event,
+          "data-program-uuid"
+        );
+        const cyberdeckId = SystemUtils.GetEventDatum(
+          event,
+          "data-cyberdeck-id"
+        );
+        const executionType = SystemUtils.GetEventDatum(
+          event,
+          "data-execution-type"
+        );
         const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
         item = cyberdeck;
-        const netRoleItem = this.actor.itemTypes.role.find((r) => r.id === this.actor.system.roleInfo.activeNetRole);
+        const netRoleItem = this.actor.itemTypes.role.find(
+          (r) => r.id === this.actor.system.roleInfo.activeNetRole
+        );
         if (!netRoleItem) {
-          const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
+          const error = SystemUtils.Localize(
+            "CPR.messages.noNetrunningRoleConfigured"
+          );
           SystemUtils.DisplayMessage("error", error);
           return;
         }
@@ -413,7 +540,10 @@ export default class CPRActorSheet extends ActorSheet {
     }
     const targetedTokens = SystemUtils.getUserTargetedOrSelected("targeted"); // get user targeted tokens for output to chat
     if (rollType === CPRRolls.rollTypes.DAMAGE && targetedTokens.length === 0) {
-      SystemUtils.DisplayMessage("warn", "CPR.chat.damageApplication.noTokenTargeted");
+      SystemUtils.DisplayMessage(
+        "warn",
+        "CPR.chat.damageApplication.noTokenTargeted"
+      );
     }
 
     // note: for aimed shots this is where location is set
@@ -439,14 +569,19 @@ export default class CPRActorSheet extends ActorSheet {
     if (Number.isInteger(cprRoll.luck) > 0) {
       const luckStat = this.actor.system.stats.luck.value;
       this.actor.update({
-        "system.stats.luck.value": luckStat - ((cprRoll.luck > luckStat) ? luckStat : cprRoll.luck),
+        "system.stats.luck.value":
+          luckStat - (cprRoll.luck > luckStat ? luckStat : cprRoll.luck),
       });
     }
 
     // output to chat
     const token = this.token === null ? null : this.token._id;
 
-    cprRoll.entityData = { actor: this.actor.id, token, tokens: targetedTokens };
+    cprRoll.entityData = {
+      actor: this.actor.id,
+      token,
+      tokens: targetedTokens,
+    };
     if (item) {
       cprRoll.entityData.item = item.id;
     }
@@ -572,7 +707,9 @@ export default class CPRActorSheet extends ActorSheet {
       }
       // Only update if we aren't deleting the item.  Item deletion is handled in this._deleteOwnedItem()
       if (actionType !== "delete") {
-        this.actor.updateEmbeddedDocuments("Item", [{ _id: item.id, system: item.system }]);
+        this.actor.updateEmbeddedDocuments("Item", [
+          { _id: item.id, system: item.system },
+        ]);
       }
     }
   }
@@ -617,7 +754,9 @@ export default class CPRActorSheet extends ActorSheet {
    */
   _updateOwnedItem(item) {
     LOGGER.trace("_updateOwnedItem | CPRActorSheet | Called.");
-    return this.actor.updateEmbeddedDocuments("Item", [{ _id: item.id, system: item.system }]);
+    return this.actor.updateEmbeddedDocuments("Item", [
+      { _id: item.id, system: item.system },
+    ]);
   }
 
   /**
@@ -636,7 +775,8 @@ export default class CPRActorSheet extends ActorSheet {
     if (event.ctrlKey) {
       CPRChat.RenderItemCard(item);
       return;
-    } if (!event.shiftKey) {
+    }
+    if (!event.shiftKey) {
       item.sheet.render(true, { editable: true });
     }
   }
@@ -656,7 +796,8 @@ export default class CPRActorSheet extends ActorSheet {
     if (event.ctrlKey) {
       CPRChat.RenderItemCard(item);
       return;
-    } if (!event.shiftKey) {
+    }
+    if (!event.shiftKey) {
       item.sheet.render(true, { editable: false });
     }
   }
@@ -674,7 +815,9 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("_getItemId | CPRActorSheet | Called.");
     let id = SystemUtils.GetEventDatum(event, "data-item-id");
     if (typeof id === "undefined") {
-      LOGGER.debug("Could not find itemId in parent elements, trying currentTarget");
+      LOGGER.debug(
+        "Could not find itemId in parent elements, trying currentTarget"
+      );
       id = SystemUtils.GetEventDatum(event, "data-item-id");
     }
     return id;
@@ -715,10 +858,12 @@ export default class CPRActorSheet extends ActorSheet {
     const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     // Only show the delete confirmation if the setting is on, and internally we do not want to skip it.
     if (setting && !skipConfirm) {
-      const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${item.name}?`;
+      const promptMessage = `${SystemUtils.Localize(
+        "CPR.dialog.deleteConfirmation.message"
+      )} ${item.name}?`;
       const confirmDelete = await ConfirmPrompt.RenderPrompt(
         SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
-        promptMessage,
+        promptMessage
       ).catch((err) => LOGGER.debug(err));
       if (confirmDelete === undefined) {
         return;
@@ -741,7 +886,10 @@ export default class CPRActorSheet extends ActorSheet {
     }
     if (item.type === "cyberware") {
       if (item.system.isInstalled) {
-        SystemUtils.DisplayMessage("warn", "CPR.messages.cyberwareDeleteWarning");
+        SystemUtils.DisplayMessage(
+          "warn",
+          "CPR.messages.cyberwareDeleteWarning"
+        );
         return;
       }
     }
@@ -769,20 +917,29 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("_fireCheckboxToggle | CPRActorSheet | Called.");
     const weaponID = SystemUtils.GetEventDatum(event, "data-item-id");
     const firemode = SystemUtils.GetEventDatum(event, "data-fire-mode");
-    const flag = getProperty(this.actor, `flags.${game.system.id}.firetype-${weaponID}`);
+    const flag = getProperty(
+      this.actor,
+      `flags.${game.system.id}.firetype-${weaponID}`
+    );
     LOGGER.debug(`firemode is ${firemode}`);
     LOGGER.debug(`weaponID is ${weaponID}`);
     LOGGER.debug(`flag is ${flag}`);
     if (this.token !== null && firemode === "autofire") {
-      const weaponDvTable = (this.actor.getOwnedItem(weaponID)).system.dvTable;
-      const currentDvTable = (weaponDvTable === "") ? getProperty(this.token, "flags.cprDvTable") : weaponDvTable;
+      const weaponDvTable = this.actor.getOwnedItem(weaponID).system.dvTable;
+      const currentDvTable =
+        weaponDvTable === ""
+          ? getProperty(this.token, "flags.cprDvTable")
+          : weaponDvTable;
       if (typeof currentDvTable !== "undefined") {
         const dvTable = currentDvTable.replace(" (Autofire)", "");
         const dvTables = await SystemUtils.GetDvTables();
-        const afTable = (dvTables).filter((table) => table.name.includes(dvTable) && table.name.includes("Autofire"));
+        const afTable = dvTables.filter(
+          (table) =>
+            table.name.includes(dvTable) && table.name.includes("Autofire")
+        );
         let newDvTable = currentDvTable;
         if (afTable.length > 0) {
-          newDvTable = (flag === firemode) ? dvTable : afTable[0];
+          newDvTable = flag === firemode ? dvTable : afTable[0];
         }
         await this.token.update({ "flags.cprDvTable": newDvTable });
       }
@@ -791,7 +948,11 @@ export default class CPRActorSheet extends ActorSheet {
       // if the flag was already set to firemode, that means we unchecked a box
       await this.actor.unsetFlag(game.system.id, `firetype-${weaponID}`);
     } else {
-      await this.actor.setFlag(game.system.id, `firetype-${weaponID}`, firemode);
+      await this.actor.setFlag(
+        game.system.id,
+        `firetype-${weaponID}`,
+        firemode
+      );
     }
   }
 
@@ -806,7 +967,9 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("_setCriticalInjuryTable | CPRActorSheet | Called.");
     const critInjuryTables = await SystemUtils.GetCompendiumDocs(tableSetting);
     const tableNames = critInjuryTables.map((t) => t.name).sort();
-    const formData = await RollCriticalInjuryPrompt.RenderPrompt(tableNames).catch((err) => LOGGER.debug(err));
+    const formData = await RollCriticalInjuryPrompt.RenderPrompt(
+      tableNames
+    ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return undefined;
     }
@@ -822,12 +985,18 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _rollCriticalInjury() {
     LOGGER.trace("_rollCriticalInjury | CPRActorSheet | Called.");
-    const tableSetting = game.settings.get(game.system.id, "criticalInjuryRollTableCompendium");
+    const tableSetting = game.settings.get(
+      game.system.id,
+      "criticalInjuryRollTableCompendium"
+    );
     const tableName = await CPRActorSheet._setCriticalInjuryTable(tableSetting);
     if (tableName === undefined) {
       return;
     }
-    const rollTable = await SystemUtils.GetCompendiumDoc(tableSetting, tableName);
+    const rollTable = await SystemUtils.GetCompendiumDoc(
+      tableSetting,
+      tableName
+    );
     const injuryCompName = SystemUtils.GetCompendiumIdByLabel(tableName);
     this._drawCriticalInjuryTable(rollTable, injuryCompName, 0);
   }
@@ -846,18 +1015,28 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _drawCriticalInjuryTable(table, injuryCompName, iteration) {
     LOGGER.trace("_drawCriticalInjuryTable | CPRActorSheet | Called.");
-    const dupeSetting = game.settings.get(game.system.id, "preventDuplicateCriticalInjuries");
+    const dupeSetting = game.settings.get(
+      game.system.id,
+      "preventDuplicateCriticalInjuries"
+    );
 
     // check how many times we've been rolling. If this gets excessive maybe something is wrong with the table.
     if (iteration > 1000) {
-      SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateLoopWarning"));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateLoopWarning")
+      );
       return;
     }
 
     // check that the table has critical injuries that could still be applied
     let hurts = 0;
     for (const injury of table.results) {
-      if (this.actor.itemTypes.criticalInjury.filter((i) => i.name === injury.text).length > 0) {
+      if (
+        this.actor.itemTypes.criticalInjury.filter(
+          (i) => i.name === injury.text
+        ).length > 0
+      ) {
         hurts += 1;
       } else {
         // there is at least 1 injury on this table the actor does not have yet
@@ -866,7 +1045,10 @@ export default class CPRActorSheet extends ActorSheet {
     }
     if (hurts === table.results.size && dupeSetting === "reroll") {
       // actor has every injury already, we cannot reroll for more
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateAllWarning"));
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateAllWarning")
+      );
       return;
     }
 
@@ -879,18 +1061,32 @@ export default class CPRActorSheet extends ActorSheet {
       const injuryName = res.results[0].text;
       injury = await SystemUtils.GetCompendiumDoc(injuryCompName, injuryName);
       if (!injury) {
-        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning"));
+        SystemUtils.DisplayMessage(
+          "warn",
+          SystemUtils.Localize(
+            "CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning"
+          )
+        );
         return;
       }
 
       // check whether the actor has this injury already
-      if (this.actor.itemTypes.criticalInjury.find((i) => i.name === injuryName)) {
+      if (
+        this.actor.itemTypes.criticalInjury.find((i) => i.name === injuryName)
+      ) {
         if (dupeSetting === "reroll") {
-          await this._drawCriticalInjuryTable(table, injuryCompName, iteration + 1);
+          await this._drawCriticalInjuryTable(
+            table,
+            injuryCompName,
+            iteration + 1
+          );
           return;
         }
         if (dupeSetting === "warn") {
-          SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateWarning"));
+          SystemUtils.DisplayMessage(
+            "warn",
+            SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateWarning")
+          );
         }
       }
 
@@ -901,17 +1097,23 @@ export default class CPRActorSheet extends ActorSheet {
         system: duplicate(injury.system),
         effects: duplicate(injury.effects),
       };
-      const result = await this.actor.createEmbeddedDocuments("Item", [cprItemData]);
+      const result = await this.actor.createEmbeddedDocuments("Item", [
+        cprItemData,
+      ]);
       const cprRoll = new CPRRolls.CPRTableRoll(
         injury.name,
         res.roll,
-        `systems/${game.system.id}/templates/chat/cpr-critical-injury-rollcard.hbs`,
+        `systems/${game.system.id}/templates/chat/cpr-critical-injury-rollcard.hbs`
       );
       cprRoll.rollCardExtraArgs.tableName = table.name;
       cprRoll.rollCardExtraArgs.itemName = result[0].name;
       cprRoll.rollCardExtraArgs.itemImg = result[0].img;
       if (this.token) {
-        cprRoll.entityData = { actor: this.actor.id, token: this.token.id, item: result[0].id };
+        cprRoll.entityData = {
+          actor: this.actor.id,
+          token: this.token.id,
+          item: result[0].id,
+        };
       } else {
         cprRoll.entityData = { actor: this.actor.id, item: result[0].id };
       }
@@ -1013,7 +1215,11 @@ export default class CPRActorSheet extends ActorSheet {
       tempVal = -tempVal;
     }
 
-    const ledgerProp = this.actor.deltaLedgerProperty(ledgerName, tempVal, reason);
+    const ledgerProp = this.actor.deltaLedgerProperty(
+      ledgerName,
+      tempVal,
+      reason
+    );
     return ledgerProp;
   }
 
@@ -1030,7 +1236,10 @@ export default class CPRActorSheet extends ActorSheet {
       led.setLedgerContent(prop, this.actor.listRecords(prop));
       led.render(true);
     } else {
-      SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.ledgerErrorIsNoLedger"));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Localize("CPR.messages.ledgerErrorIsNoLedger")
+      );
     }
   }
 
@@ -1069,21 +1278,27 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("_onDragItemStart | CPRActorSheet | called.");
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const item = this.actor.getEmbeddedDocument("Item", itemId);
-    const tokenId = (this.token === null) ? null : this.token.id;
+    const tokenId = this.token === null ? null : this.token.id;
     if (item.type === "cyberware" && item.system.isInstalled) {
-      SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.tradeDragInstalledCyberwareError"));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Localize("CPR.messages.tradeDragInstalledCyberwareError")
+      );
       return;
     }
-    event.dataTransfer.setData("text/plain", JSON.stringify({
-      type: "Item",
-      uuid: item.uuid,
-      system: {
-        actorId: this.actor._id,
-        tokenId,
-        data: item,
-        root: SystemUtils.GetEventDatum(event, "root"),
-      },
-    }));
+    event.dataTransfer.setData(
+      "text/plain",
+      JSON.stringify({
+        type: "Item",
+        uuid: item.uuid,
+        system: {
+          actorId: this.actor._id,
+          tokenId,
+          data: item,
+          root: SystemUtils.GetEventDatum(event, "root"),
+        },
+      })
+    );
   }
 
   /**
@@ -1100,7 +1315,9 @@ export default class CPRActorSheet extends ActorSheet {
   async _onDrop(event) {
     LOGGER.trace("_onDrop | CPRActorSheet | called.");
     const dragData = TextEditor.getDragEventData(event);
-    return (dragData.type === "Item") ? this._cprOnItemDrop(event) : super._onDrop(event);
+    return dragData.type === "Item"
+      ? this._cprOnItemDrop(event)
+      : super._onDrop(event);
   }
 
   async _cprOnItemDrop(event) {
@@ -1108,14 +1325,20 @@ export default class CPRActorSheet extends ActorSheet {
     const dragData = TextEditor.getDragEventData(event);
     let sourceActor;
     const sourceItem = fromUuidSync(dragData.uuid);
-    const transferItem = dragData.system && dragData.system.actorId !== undefined;
+    const transferItem =
+      dragData.system && dragData.system.actorId !== undefined;
     if (transferItem) {
       // Transfer ownership from one player to another
-      sourceActor = (Object.keys(game.actors.tokens).includes(dragData.system.tokenId))
+      sourceActor = Object.keys(game.actors.tokens).includes(
+        dragData.system.tokenId
+      )
         ? game.actors.tokens[dragData.system.tokenId]
         : game.actors.find((a) => a.id === dragData.system.actorId);
       if (sourceActor.type === "container" && !game.user.isGM) {
-        SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.tradeDragOutWarn"));
+        SystemUtils.DisplayMessage(
+          "warn",
+          SystemUtils.Localize("CPR.messages.tradeDragOutWarn")
+        );
         return;
       }
       if (sourceActor) {
@@ -1125,14 +1348,21 @@ export default class CPRActorSheet extends ActorSheet {
         }
 
         // If the cyberware is marked as core, or is installed, throw an error message.
-        if (sourceItem.system.core === true || (sourceItem.system.type === "cyberware" && sourceItem.system.isInstalled)) {
-          SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.cannotDropInstalledCyberware"));
+        if (
+          sourceItem.system.core === true ||
+          (sourceItem.system.type === "cyberware" &&
+            sourceItem.system.isInstalled)
+        ) {
+          SystemUtils.DisplayMessage(
+            "error",
+            SystemUtils.Localize("CPR.messages.cannotDropInstalledCyberware")
+          );
           return;
         }
       }
     }
 
-    const deleteList = (transferItem) ? [sourceItem._id] : [];
+    const deleteList = transferItem ? [sourceItem._id] : [];
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
 
     const [newItem] = await super._onDrop(event);
@@ -1140,7 +1370,12 @@ export default class CPRActorSheet extends ActorSheet {
     // If we created a new item and the sourceItem is a container type the createItem hook ensures all of the
     // installed items are also created on the target actor. We need to ensure that those items are
     // deleted from the source actor.
-    if (newItem && containerTypes.includes(sourceItem.type) && sourceItem.isOwned === true && sourceItem.system.installedItems.list.length > 0) {
+    if (
+      newItem &&
+      containerTypes.includes(sourceItem.type) &&
+      sourceItem.isOwned === true &&
+      sourceItem.system.installedItems.list.length > 0
+    ) {
       const deleteItemList = sourceItem.recursiveGetAllInstalledItems();
       for (const item of deleteItemList) {
         deleteList.push(item._id);
@@ -1162,13 +1397,18 @@ export default class CPRActorSheet extends ActorSheet {
   async _splitItem(item) {
     LOGGER.trace("_splitItem | CPRActorSheet | called.");
     if (item.system.upgrades && item.system.upgrades.length !== 0) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Format("CPR.dialog.splitItem.warningUpgrade"));
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Format("CPR.dialog.splitItem.warningUpgrade")
+      );
     }
-    const itemText = SystemUtils.Format(
-      "CPR.dialog.splitItem.text",
-      { amount: item.system.amount, itemName: item.name },
+    const itemText = SystemUtils.Format("CPR.dialog.splitItem.text", {
+      amount: item.system.amount,
+      itemName: item.name,
+    });
+    const formData = await SplitItemPrompt.RenderPrompt(itemText).catch((err) =>
+      LOGGER.debug(err)
     );
-    const formData = await SplitItemPrompt.RenderPrompt(itemText).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
@@ -1176,7 +1416,11 @@ export default class CPRActorSheet extends ActorSheet {
     if (formData.splitAmount <= 0 || formData.splitAmount >= oldAmount) {
       const warningMessage = SystemUtils.Format(
         "CPR.dialog.splitItem.warningAmount",
-        { amountSplit: formData.splitAmount, amountOld: oldAmount, itemName: item.name },
+        {
+          amountSplit: formData.splitAmount,
+          amountOld: oldAmount,
+          itemName: item.name,
+        }
       );
       SystemUtils.DisplayMessage("warn", warningMessage);
       return;
@@ -1185,13 +1429,21 @@ export default class CPRActorSheet extends ActorSheet {
     const cprNewItemData = duplicate(item.system);
     cprNewItemData.amount = formData.splitAmount;
     delete cprNewItemData._id;
-    await this.actor.updateEmbeddedDocuments("Item", [{ _id: item.id, "system.amount": newAmount }]);
-    await this.actor.createEmbeddedDocuments("Item", [{
-      name: item.name,
-      type: item.type,
-      img: item.img,
-      system: cprNewItemData,
-    }], { CPRsplitStack: true });
+    await this.actor.updateEmbeddedDocuments("Item", [
+      { _id: item.id, "system.amount": newAmount },
+    ]);
+    await this.actor.createEmbeddedDocuments(
+      "Item",
+      [
+        {
+          name: item.name,
+          type: item.type,
+          img: item.img,
+          system: cprNewItemData,
+        },
+      ],
+      { CPRsplitStack: true }
+    );
   }
 
   /**
@@ -1229,7 +1481,10 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _clearContentFilter() {
     LOGGER.trace("_clearContentFilter | CPRActorSheet | called.");
-    if (typeof this.options.cprContentFilter !== "undefined" && this.options.cprContentFilter !== "") {
+    if (
+      typeof this.options.cprContentFilter !== "undefined" &&
+      this.options.cprContentFilter !== ""
+    ) {
       this.options.cprContentFilter = "";
       this._render();
     }
@@ -1245,7 +1500,9 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _updateReputation() {
     LOGGER.trace("_updateReputation | CPRCharacterActorSheet | Called.");
-    const formData = await LedgerEditPrompt.RenderPrompt("CPR.characterSheet.bottomPane.reputationEdit").catch((err) => LOGGER.debug(err));
+    const formData = await LedgerEditPrompt.RenderPrompt(
+      "CPR.characterSheet.bottomPane.reputationEdit"
+    ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       // Prompt was closed
       return;
@@ -1253,24 +1510,42 @@ export default class CPRActorSheet extends ActorSheet {
     if (formData.changeValue !== null && formData.changeValue !== "") {
       switch (formData.action) {
         case "add": {
-          this._gainLedger("reputation", parseInt(formData.changeValue, 10), `${formData.changeReason} - ${game.user.name}`);
+          this._gainLedger(
+            "reputation",
+            parseInt(formData.changeValue, 10),
+            `${formData.changeReason} - ${game.user.name}`
+          );
           break;
         }
         case "subtract": {
-          this._loseLedger("reputation", parseInt(formData.changeValue, 10), `${formData.changeReason} - ${game.user.name}`);
+          this._loseLedger(
+            "reputation",
+            parseInt(formData.changeValue, 10),
+            `${formData.changeReason} - ${game.user.name}`
+          );
           break;
         }
         case "set": {
-          this._setLedger("reputation", parseInt(formData.changeValue, 10), `${formData.changeReason} - ${game.user.name}`);
+          this._setLedger(
+            "reputation",
+            parseInt(formData.changeValue, 10),
+            `${formData.changeReason} - ${game.user.name}`
+          );
           break;
         }
         default: {
-          SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.reputationEditInvalidAction"));
+          SystemUtils.DisplayMessage(
+            "error",
+            SystemUtils.Localize("CPR.messages.reputationEditInvalidAction")
+          );
           break;
         }
       }
     } else {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.reputationEditWarn"));
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.messages.reputationEditWarn")
+      );
     }
   }
 }

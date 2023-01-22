@@ -20,16 +20,18 @@ export default class NetarchLevelPrompt {
           resolve(formData);
         };
         new Dialog({
-          title: SystemUtils.Localize("CPR.dialog.netArchitectureNewFloor.title"),
+          title: SystemUtils.Localize(
+            "CPR.dialog.netArchitectureNewFloor.title"
+          ),
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: "Confirm",
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: "Cancel",
               callback: (html) => _onCancel(html),
             },

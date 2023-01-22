@@ -25,12 +25,12 @@ export default class ConfirmationPrompt {
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               callback: () => _onConfirm(),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: () => _onCancel(),
             },

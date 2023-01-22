@@ -47,12 +47,21 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     LOGGER.trace("getData | CPRMookActorSheet | Called.");
     const foundryData = await super.getData();
     const cprActorData = foundryData.actor.system;
-    cprActorData.equippedArmor = this.actor.itemTypes.armor.filter((item) => item.system.equipped === "equipped");
-    cprActorData.equippedWeapons = this.actor.itemTypes.weapon.filter((item) => item.system.equipped === "equipped");
+    cprActorData.equippedArmor = this.actor.itemTypes.armor.filter(
+      (item) => item.system.equipped === "equipped"
+    );
+    cprActorData.equippedWeapons = this.actor.itemTypes.weapon.filter(
+      (item) => item.system.equipped === "equipped"
+    );
 
-    const installedCyberware = this.actor.itemTypes.cyberware.filter((cw) => cw.system.isInstalled);
-    const installedWeapons = installedCyberware.filter((c) => c.system.isWeapon === true);
-    cprActorData.equippedWeapons = cprActorData.equippedWeapons.concat(installedWeapons);
+    const installedCyberware = this.actor.itemTypes.cyberware.filter(
+      (cw) => cw.system.isInstalled
+    );
+    const installedWeapons = installedCyberware.filter(
+      (c) => c.system.isWeapon === true
+    );
+    cprActorData.equippedWeapons =
+      cprActorData.equippedWeapons.concat(installedWeapons);
     foundryData.data.system = cprActorData;
     return foundryData;
   }
@@ -69,14 +78,18 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     super.activateListeners(html);
     html.find(".mod-mook-skill").click(() => this._modMookSkills());
     html.find(".change-mook-name").click(() => this._changeMookName());
-    html.find(".mook-image-toggle").click((event) => this._expandMookImage(event));
+    html
+      .find(".mook-image-toggle")
+      .click((event) => this._expandMookImage(event));
 
     // If the element is "changeable", check for a keydown action and handle the key press.
     html.find(".changeable").hover((event) => $(event.currentTarget).focus());
     html.find(".changeable").keydown((event) => this._handleKeyPress(event));
 
     // If the element is "installable", await mouse click and process the event
-    html.find(".installable").click((event) => this._handleInstallAction(event));
+    html
+      .find(".installable")
+      .click((event) => this._handleInstallAction(event));
   }
 
   /**
@@ -101,11 +114,13 @@ export default class CPRMookActorSheet extends CPRActorSheet {
         mod: this.actor.bonuses[SystemUtils.slugify(s.name)],
       };
       skillList.push(skillRef);
-      return skillList.sort((a, b) => ((a.name > b.name) ? 1 : -1));
+      return skillList.sort((a, b) => (a.name > b.name ? 1 : -1));
     });
 
     // pop up the form with embedded skill details
-    const formData = await ModMookSkillPrompt.RenderPrompt({ skillList }).catch((err) => LOGGER.debug(err));
+    const formData = await ModMookSkillPrompt.RenderPrompt({ skillList }).catch(
+      (err) => LOGGER.debug(err)
+    );
     if (formData === undefined) {
       return;
     }
@@ -114,8 +129,14 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     const updatedSkills = [];
     for (const skill of skillList) {
       if (formData[skill.name] !== skill.level) {
-        LOGGER.debug(`you changed ${skill.name} from ${skill.level} to ${formData[skill.name]}`);
-        const [updatedSkill] = this.actor.itemTypes.skill.filter((s) => skill.name === s.name);
+        LOGGER.debug(
+          `you changed ${skill.name} from ${skill.level} to ${
+            formData[skill.name]
+          }`
+        );
+        const [updatedSkill] = this.actor.itemTypes.skill.filter(
+          (s) => skill.name === s.name
+        );
         updatedSkill.setSkillLevel(formData[skill.name]);
         updatedSkills.push({
           _id: updatedSkill._id,
@@ -129,7 +150,12 @@ export default class CPRMookActorSheet extends CPRActorSheet {
 
     // finally, update the skill objects
     this.actor.updateEmbeddedDocuments("Item", updatedSkills);
-    SystemUtils.DisplayMessage("notify", `${updatedSkills.length} ${SystemUtils.Localize("CPR.mookSheet.skills.updated")}`);
+    SystemUtils.DisplayMessage(
+      "notify",
+      `${updatedSkills.length} ${SystemUtils.Localize(
+        "CPR.mookSheet.skills.updated"
+      )}`
+    );
   }
 
   /**
@@ -142,7 +168,9 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    */
   async _changeMookName() {
     LOGGER.trace("_changeMookName | CPRMookActorSheet | Called.");
-    const formData = await MookNamePrompt.RenderPrompt(this.actor.name).catch((err) => LOGGER.debug(err));
+    const formData = await MookNamePrompt.RenderPrompt(this.actor.name).catch(
+      (err) => LOGGER.debug(err)
+    );
     if (formData === undefined) {
       return;
     }
@@ -163,14 +191,25 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   _expandMookImage(event) {
     LOGGER.trace("_expandMookImage | CPRMookActorSheet | Called.");
     const mookImageArea = $(event.currentTarget).parents(".mook-image");
-    const mookImageImg = $(event.currentTarget).parents(".mook-image").children(".mook-image-block");
+    const mookImageImg = $(event.currentTarget)
+      .parents(".mook-image")
+      .children(".mook-image-block");
     const mookImageToggle = $(event.currentTarget);
     let collapsedImage = null;
-    if (mookImageToggle.attr("data-text") === SystemUtils.Localize("CPR.mookSheet.image.collapse")) {
-      mookImageToggle.attr("data-text", SystemUtils.Localize("CPR.mookSheet.image.expand"));
+    if (
+      mookImageToggle.attr("data-text") ===
+      SystemUtils.Localize("CPR.mookSheet.image.collapse")
+    ) {
+      mookImageToggle.attr(
+        "data-text",
+        SystemUtils.Localize("CPR.mookSheet.image.expand")
+      );
       collapsedImage = true;
     } else {
-      mookImageToggle.attr("data-text", SystemUtils.Localize("CPR.mookSheet.image.collapse"));
+      mookImageToggle.attr(
+        "data-text",
+        SystemUtils.Localize("CPR.mookSheet.image.collapse")
+      );
       collapsedImage = false;
     }
     mookImageArea.toggleClass("mook-image-small-toggle");
@@ -206,12 +245,25 @@ export default class CPRMookActorSheet extends CPRActorSheet {
         }
         case "cyberware": {
           if (item.system.core === true) {
-            SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware"));
+            SystemUtils.DisplayMessage(
+              "error",
+              SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware")
+            );
           } else {
-            const foundationalId = SystemUtils.GetEventDatum(event, "data-foundational-id");
-            const dialogTitle = SystemUtils.Localize("CPR.dialog.removeCyberware.title");
-            const dialogMessage = `${SystemUtils.Localize("CPR.dialog.removeCyberware.text")} ${item.name}?`;
-            const confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
+            const foundationalId = SystemUtils.GetEventDatum(
+              event,
+              "data-foundational-id"
+            );
+            const dialogTitle = SystemUtils.Localize(
+              "CPR.dialog.removeCyberware.title"
+            );
+            const dialogMessage = `${SystemUtils.Localize(
+              "CPR.dialog.removeCyberware.text"
+            )} ${item.name}?`;
+            const confirmRemove = await ConfirmPrompt.RenderPrompt(
+              dialogTitle,
+              dialogMessage
+            );
             if (confirmRemove) {
               await this.actor.uninstallCyberware(itemId, foundationalId, true);
               this._deleteOwnedItem(item, true);
@@ -245,14 +297,27 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     if (event.shiftKey) {
       if (item.type === "cyberware") {
         if (item.system.core === true) {
-          SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware"));
+          SystemUtils.DisplayMessage(
+            "error",
+            SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware")
+          );
         } else if (item.system.isInstalled === false) {
           await this.actor.installCyberware(itemId);
         } else {
-          const foundationalId = SystemUtils.GetEventDatum(event, "data-foundational-id");
-          const dialogTitle = SystemUtils.Localize("CPR.dialog.removeCyberware.title");
-          const dialogMessage = `${SystemUtils.Localize("CPR.dialog.removeCyberware.text")} ${item.name}?`;
-          const confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
+          const foundationalId = SystemUtils.GetEventDatum(
+            event,
+            "data-foundational-id"
+          );
+          const dialogTitle = SystemUtils.Localize(
+            "CPR.dialog.removeCyberware.title"
+          );
+          const dialogMessage = `${SystemUtils.Localize(
+            "CPR.dialog.removeCyberware.text"
+          )} ${item.name}?`;
+          const confirmRemove = await ConfirmPrompt.RenderPrompt(
+            dialogTitle,
+            dialogMessage
+          );
           if (confirmRemove) {
             await this.actor.uninstallCyberware(itemId, foundationalId, true);
           }
