@@ -8,6 +8,8 @@
 
 ### New Features
 
+- Improved Dialogue and Roll Mods (@jalen to fill in later)
+
 ### Changes
 
 ### Bug Fixes
