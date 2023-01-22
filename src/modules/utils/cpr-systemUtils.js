@@ -1,4 +1,4 @@
-/* global game ui Folder canvas duplicate */
+/* global document game ui Folder canvas duplicate */
 /* eslint-env jquery */
 
 import LOGGER from "./cpr-logger.js";
@@ -448,7 +448,7 @@ export default class CPRSystemUtils {
     while (currentPrototype) {
       currentPrototype = Object.getPrototypeOf(currentPrototype);
       if (currentPrototype && currentPrototype.constructor.name !== "Object") {
-        prototypeChain.push(currentPrototype?.constructor.name);
+        prototypeChain.push(currentPrototype.constructor.name);
       }
     }
     return prototypeChain;
