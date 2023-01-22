@@ -30,7 +30,7 @@ import registerSystemSettings from "./modules/system/settings.js";
 
 // This defines the version of the Data Model for this release.  We should
 // only update this when the Data Model Changes.
-const DATA_MODEL_VERSION = 7;
+const DATA_MODEL_VERSION = 8;
 export default DATA_MODEL_VERSION;
 
 Hooks.once("init", async () => {

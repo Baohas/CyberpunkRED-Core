@@ -8,4 +8,4 @@ export { default as ReleaseEightyFourDotZero } from "./004-release-0.84.0.js";
 export { default as AblationValueMigration } from "./005-ablationValue.js";
 export { default as UniversalInstallMigration } from "./006-universalInstall.js";
 export { default as ItemSecondaryWeaponMigration } from "./007-itemUpgrades-secondaryWeapon.js";
-export { default as ImprovedDialogMigration } from "./007-improvedDialogs.js";
+export { default as ImprovedDialogMigration } from "./008-improvedDialogs.js";
