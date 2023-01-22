@@ -38,14 +38,16 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
-          '1': skill
-          '2': skill
-          '3': skill
-          '4': skill
-          '5': skill
+          cats:
+            '0': skill
+            '1': skill
+            '2': skill
+            '3': skill
+            '4': skill
+            '5': skill
     icon: systems/cyberpunk-red-core/icons/compendium/status/smash.svg
     label: Smash Primary
+    origin: null
     tint: null
     transfer: true
   - _id: R7hdY2qZux5j9oVJ
@@ -86,14 +88,16 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
-          '1': skill
-          '2': skill
-          '3': skill
-          '4': skill
-          '5': skill
+          cats:
+            '0': skill
+            '1': skill
+            '2': skill
+            '3': skill
+            '4': skill
+            '5': skill
     icon: systems/cyberpunk-red-core/icons/compendium/status/smash_addiciton.svg
     label: Smash Addiction
+    origin: null
     tint: null
     transfer: true
 flags:
@@ -113,12 +117,31 @@ system:
     chat: ''
     unidentified: ''
     value: >-
-      <p>Dose lasts 4 hours.<br />The user feels happy and satisfied, receiving
-      a temporary modifier of +2 to: Dance/Contortionist/Conversation/Human
-      Perception/Persuasion/Acting.<br /><br />Secondary DV: 15.<br />When the
-      dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against
-      Secondary DV. If this fails, they take the secondary effect as noted in
-      the core rule book.&nbsp;</p>
+      <p><strong>Primary Effect</strong></p>
+
+      <p>Dose lasts 4 hours.</p>
+
+      <ul>
+
+      <li>The user feels happy and satisfied</li>
+
+      <li>+2 to Dance / Contortionist / Conversation / Human Perception /
+      Persuasion / Acting</li>
+
+      </ul>
+
+      <p><strong>Secondary Effect (DV15)</strong></p>
+
+      <ul>
+
+      <li>-2 to Dance / Contortionist / Conversation / Human Perception /
+      Persuasion / Acting</li>
+
+      <li>GM will tell your when you crave more Smash. Roleplay
+      accordingly.</li>
+
+      </ul>
+  equipped: owned
   favorite: false
   price:
     category: cheap

@@ -1,5 +1,33 @@
 _id: xH9lmDC4oWAt9l4P
-effects: []
+effects:
+  - _id: fby6eAZaHGBFcK1v
+    changes:
+      - key: system.stats.body.value
+        mode: 2
+        priority: null
+        value: '14'
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            '0': stat
+          situational:
+            '0':
+              isSituational: false
+              onByDefault: false
+    icon: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_beta.svg
+    label: Linear Frame Beta
+    tint: null
+    transfer: true
 flags:
   core: {}
 folder: null
@@ -36,5 +64,5 @@ system:
   source: pg. 351
   tags: []
   upgrades: []
-  usage: toggled
+  usage: equipped
 type: gear

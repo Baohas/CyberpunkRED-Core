@@ -10,6 +10,7 @@ import SplitItemPrompt from "../../dialog/cpr-split-item-prompt.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import LedgerEditPrompt from "../../dialog/cpr-ledger-edit-prompt.js";
+import CPRMod from "../../rolls/cpr-modifiers.js";
 
 /**
  * Extend the basic ActorSheet, which comes from Foundry. Not all sheets used in
@@ -80,7 +81,7 @@ export default class CPRActorSheet extends ActorSheet {
       if (fightState === "Netspace") {
         cprActorData.cyberdeck = this.actor.getEquippedCyberdeck();
       }
-      cprActorData.filteredEffects = this.prepareActiveEffectCategories();
+      cprActorData.filteredEffects = await this.prepareActiveEffectCategories();
       foundryData.data.system = cprActorData;
     }
     // This appears to have been removed in V10?
@@ -118,14 +119,19 @@ export default class CPRActorSheet extends ActorSheet {
    * Prepare the data structure for Active Effects which are currently applied to this actor.
    * This came from the DND5E active-effect.js code.
    *
-   * @returns {Object}                  Data for rendering
+   * @returns {Object} - Data for rendering
    */
-  prepareActiveEffectCategories() {
+  async prepareActiveEffectCategories() {
     LOGGER.trace("prepareActiveEffectCategories | CPRActorSheet | Called.");
     const categories = {
-      active: {
-        type: "active",
-        label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.active"),
+      permanent: {
+        type: "permanent",
+        label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.permanent"),
+        effects: [],
+      },
+      situational: {
+        type: "situational",
+        label: SystemUtils.Localize("CPR.characterSheet.rightPane.effects.situational"),
         effects: [],
       },
       inactive: {
@@ -138,10 +144,56 @@ export default class CPRActorSheet extends ActorSheet {
     const setting = game.settings.get(game.system.id, "displayStatusAsActiveEffects");
     // Iterate over active effects, classifying them into categories
     for (const e of this.actor.effects) {
-      e._getSourceName(); // Trigger a lookup for the source name
+      // eslint-disable-next-line no-await-in-loop
+      await e._getSourceName(); // Trigger a lookup for the source name
+
+      // We want to create a "simplified effect" for two reasons:
+      //    1. To make accessing information via handlebars easier.
+      //    2. We want to only feed the changes that are relevant to each section.
+      // We do this by first giving our new object important info from the original effect.
+      // Then, we create CPRMods (which have a simplified data structure) from each effect.changes,
+      // Then, put the CPRMods relevant to each category (permanent, situational, inactive)
+      // into our simplified effect's changes. Then just push that to the effects in each relevant category.
+      const simplifiedEffect = {
+        label: e.label,
+        sourceName: e.sourceName,
+        id: e.id,
+        icon: e.icon,
+        usage: e.usage,
+        system: {
+          isSuppressed: e.system.isSuppressed,
+        },
+        disabled: e.disabled,
+      };
       if (!(typeof e.flags.core !== "undefined" && typeof e.flags.core.statusId !== "undefined") || setting) {
-        if (e.disabled || e.system.isSuppressed) categories.inactive.effects.push(e);
-        else categories.active.effects.push(e);
+        // Get effects with no changes and display in the Permanent Effects category.
+        // This is a rare case where a user makes an effect but doesn't add any changes.
+        if (e.changes.length === 0 && !e.disabled && !e.system.isSuppressed) {
+          categories.permanent.effects.push(simplifiedEffect);
+        }
+
+        // Get situational, non-disabled effects.
+        if (!e.disabled && !e.system.isSuppressed) {
+          const situationalMods = CPRMod.getAllModifiers([e]).filter((m) => m.isSituational);
+          // To avoid repeats, duplicate simplifiedEffect to situationalEffect, and push that.
+          const situationalEffect = duplicate(simplifiedEffect);
+          situationalEffect.changes = situationalMods;
+          if (situationalEffect.changes.length > 0) {
+            categories.situational.effects.push(situationalEffect);
+          }
+        }
+
+        // Get inactive (disabled or suppressed) effects.
+        if (e.disabled || e.system.isSuppressed) {
+          // The second argument in the following function is set to true, so that it gets disabled modifiers.
+          simplifiedEffect.changes = CPRMod.getAllModifiers([e], true);
+          categories.inactive.effects.push(simplifiedEffect);
+        // Get permanent, non-disabled effects.
+        } else if (CPRMod.getAllModifiers([e]).some((m) => !m.isSituational)) {
+          const permanentMods = CPRMod.getAllModifiers([e]).filter((m) => !m.isSituational);
+          simplifiedEffect.changes = permanentMods;
+          categories.permanent.effects.push(simplifiedEffect);
+        }
       }
     }
 
@@ -326,6 +378,7 @@ export default class CPRActorSheet extends ActorSheet {
         const interfaceAbility = SystemUtils.GetEventDatum(event, "data-interface-ability");
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
         const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
+        item = cyberdeck;
         const netRoleItem = this.actor.itemTypes.role.find((r) => r.id === this.actor.system.roleInfo.activeNetRole);
         if (!netRoleItem) {
           const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
@@ -340,6 +393,7 @@ export default class CPRActorSheet extends ActorSheet {
         const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
         const executionType = SystemUtils.GetEventDatum(event, "data-execution-type");
         const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
+        item = cyberdeck;
         const netRoleItem = this.actor.itemTypes.role.find((r) => r.id === this.actor.system.roleInfo.activeNetRole);
         if (!netRoleItem) {
           const error = SystemUtils.Localize("CPR.messages.noNetrunningRoleConfigured");
@@ -363,7 +417,7 @@ export default class CPRActorSheet extends ActorSheet {
     }
 
     // note: for aimed shots this is where location is set
-    const keepRolling = await cprRoll.handleRollDialog(event);
+    const keepRolling = await cprRoll.handleRollDialog(event, this.actor, item);
     if (!keepRolling) {
       return;
     }

@@ -1,7 +1,10 @@
+/* global CONST */
+
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPRMod from "../../rolls/cpr-modifiers.js";
 
 /**
  * Extend the CPRSkillItem object with things specific to character roles.
@@ -29,7 +32,7 @@ export default class CPRRoleItem extends CPRItem {
     let skillValue = 0;
     if (rollInfo.rollSubType === "mainRoleAbility") {
       if (cprItemData.addRoleAbilityRank) {
-        roleValue = cprItemData.rank;
+        roleValue = Number.parseInt(cprItemData.rank, 10);
       }
       if (cprItemData.stat !== "--") {
         statName = cprItemData.stat;
@@ -56,7 +59,7 @@ export default class CPRRoleItem extends CPRItem {
     if (rollInfo.rollSubType === "subRoleAbility") {
       const subRoleAbility = cprItemData.abilities.find((a) => a.name === rollInfo.subRoleName);
       roleName = subRoleAbility.name;
-      roleValue = subRoleAbility.rank;
+      roleValue = Number.parseInt(subRoleAbility.rank, 10);
       if (subRoleAbility.stat !== "--") {
         statName = subRoleAbility.stat;
         statValue = actor.getStat(statName);
@@ -79,49 +82,84 @@ export default class CPRRoleItem extends CPRItem {
       }
     }
 
+    const effects = actor.effects.contents;
+    const allMods = CPRMod.getAllModifiers(effects);
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName));
+    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName));
+
     const cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, skillName, skillValue, statName, statValue, skillList);
-    cprRoll.addMod(actor.bonuses[SystemUtils.slugify(skillName)]); // add skill bonuses from Active Effects
-    cprRoll.addMod(actor.bonuses[SystemUtils.slugify(roleName)]); // add role bonuses from Active Effects
-    cprRoll.addMod(actor.getWoundStateMods());
+    cprRoll.addMod(skillMods); // add skill bonuses from Active Effects
+    cprRoll.addMod(roleMods); // add role bonuses from Active Effects
+    cprRoll.addMod([{ value: actor.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
     return cprRoll;
   }
 
   /**
-   * Given the name of a skill, look up the role and subRole bonuses and see if any should
-   * be applied to the skill. If they do, sum them up and return the bonus.
+   * Given the name of a bonus, look up the role and subRole bonuses and see if any should
+   * be applied to the roll.
    *
-   * @param {String} skillName - name of the skill to look for
-   * @return {Array} - a tuple, the first is a list of related role abilities, the second being total bonuses
+   * @param {String} bonusName - name of the bonus to look for. Either a combat bonus or a skill bonus.
+   * @param {Boolean} isUniversalBonus - differentiate between a skill bonus and a universal bonus (default false, meaning skill bonus).
+   * @return {Array} - Array of CPRMod-like-objects for feeding into cprRoll.addMod().
    */
-  getSkillBonuses(skillName) {
-    LOGGER.trace("getSkillBonuses | CPRRoleItem | Called.");
-    // some role abilities modify skills too, so we account for that here
-    let roleName;
-    let roleValue = 0;
-    const roleSkillBonuses = this.system.bonuses.filter((b) => b.name === skillName);
-    if (roleSkillBonuses.length > 0) {
-      roleValue += Math.floor(this.system.rank / this.system.bonusRatio);
-      roleName = this.system.mainRoleAbility;
+  getRoleMods(bonusName, isUniversalBonus = false) {
+    LOGGER.trace("getRoleMods | CPRRoleItem | Called.");
+    // Assign correct key and category for skill bonuses.
+    let key = `bonuses.${SystemUtils.slugify(bonusName)}`;
+    let category = "skill";
+    // If universal bonus, reassign key/category for universal bonuses.
+    if (isUniversalBonus) {
+      category = "combat";
+      if (bonusName !== "initiative") {
+        const capitalizedBonus = bonusName.charAt(0).toUpperCase() + bonusName.slice(1);
+        key = `bonuses.universal${capitalizedBonus}`;
+      }
     }
-    // check whether a sub-ability of a role has the bonuses property. They might affect skills.
-    const subroleSkillBonuses = [];
-    this.system.abilities.forEach((a) => {
-      if ("bonuses" in a) {
-        a.bonuses.forEach((b) => {
-          if (b.name === skillName) subroleSkillBonuses.push(a);
+
+    // Key to use for lookup on the role object. Not to be confused with the key for the mod itself.
+    const roleBonusKey = isUniversalBonus ? "universalBonuses" : "bonuses";
+
+    const roleBonusArray = [];
+    // Check whether the main ability has the applicable bonus/universal bonus.
+    if (this.system[roleBonusKey].some((b) => b.name === bonusName || b === bonusName)) {
+      const id = `${this.name}-${key}-${this.id}-main`; // Unique ID
+      const value = Math.floor(this.system.rank / this.system.bonusRatio);
+      const source = this.system.mainRoleAbility;
+      const { isSituational } = this.system;
+      const { onByDefault } = this.system;
+      roleBonusArray.push({
+        id,
+        value,
+        source,
+        key,
+        category,
+        isSituational,
+        onByDefault,
+        changeMode: CONST.ACTIVE_EFFECT_MODES.ADD, // const = 2. This comes from foundry.
+      });
+    }
+    // Check whether each sub ability has the applicable bonus/universal bonus.
+    this.system.abilities.forEach((a, index) => {
+      if (a?.[roleBonusKey].some((b) => b.name === bonusName || b === bonusName)) {
+        const id = `${a.name}-${key}-${this.id}-${index}`;
+        const value = Math.floor(a.rank / a.bonusRatio);
+        const source = a.name;
+        const { isSituational } = a;
+        const { onByDefault } = a;
+        roleBonusArray.push({
+          id,
+          value,
+          source,
+          key,
+          category,
+          isSituational,
+          onByDefault,
+          changeMode: CONST.ACTIVE_EFFECT_MODES.ADD, // const = 2. This comes from foundry.
         });
       }
     });
-    if (subroleSkillBonuses.length > 0) {
-      subroleSkillBonuses.forEach((b, index) => {
-        if (roleName) {
-          roleName += `, ${b.name}`;
-        } else if (index === 0) {
-          roleName = b.name;
-        }
-        roleValue += Math.floor(b.rank / b.bonusRatio);
-      });
-    }
-    return [roleName, roleValue];
+    return roleBonusArray;
   }
 }

@@ -1,0 +1,103 @@
+.dialog-sheet {
+  min-width: 330px;
+
+  .dialog-header {
+    width: 330px;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(136, 34, 34, 0.75), rgba(0, 0, 0, 0));
+  }
+}
+
+
+.dialog-grid {
+    display: flex;
+    width  : inherit;
+    height : inherit;
+    flex   : 1 1 auto;
+}
+
+.situational-mod-list,
+.dialog-list {
+  list-style      : none;
+    margin          : 0;
+    padding         : 0;
+    overflow-y      : auto;
+    scrollbar-width : thin;
+    background-color: @chrome-white;
+}
+
+.dialog-list {
+  border-style    : outset;
+  border-color    : rgba(110, 42, 42, 0.5);
+  border-width    : 2px;
+  border-radius   : 5px;
+
+  li:nth-child(even) {
+      background-color: @meat-space-pink;
+  }
+
+  li:nth-child(odd) {
+      background-color: @chrome-white;
+  }
+}
+
+.dialog-item-header {
+  background-color: #2d2f2fff !important;
+  color: #eaeaeaff;
+}
+
+.situational-mod-item,
+.dialog-item {
+  align-items: center;
+  padding: 1px 2px 1px 2px;
+
+  .situational-mod-name,
+  .dialog-item-name {
+    flex-grow: 3;
+    overflow   : hidden;
+    text-overflow: ellipsis;
+  }
+
+  .situational-mod-value {
+    text-align: center;
+  }
+
+  .situational-mod-input,
+  .dialog-item-input {
+    text-align: end;
+
+    input[type="checkbox"],
+    select {
+      height: unset;
+      max-width: fit-content;
+    }
+  }
+}
+
+.situational-mods {
+  li {
+    border-style: outset;
+    border-color: rgba(110, 42, 42, 0.5);
+    border-width: 2px;
+    border-radius: 5px;
+    margin: 2px 0px 2px 0px;
+  }
+}
+
+.mod-selected {
+  background-color: lightgrey;
+}
+
+.total-mods {
+  border-style: outset;
+  border-color: rgba(110, 42, 42, 0.5);
+  border-width: 2px 0px 0px 0px;
+
+  .total-mod-value {
+    padding: 1px 3px;
+  }
+}

@@ -21,8 +21,8 @@
                 <div class="item-name role-name flexrow  text-nowrap">
                   {{#if role.system.hasRoll}}<a class="rollable ability-name text-bold" data-roll-type="roleAbility" data-roll-subtype = "mainRoleAbility" data-roll-title="{{role.system.mainRoleAbility}}">&diams;{{/if}}<span class="text-bold ability-name">{{localize (cprGetLocalizedlNameKey role.system.mainRoleAbility "roleAbility")}}:</span>{{#if role.system.hasRoll}}</a>{{/if}}
                 </div>
-                <div class="item-detail ability-rank text-nowrap {{#if (cprCompare (cprGetSkillBonus role.system.mainRoleAbility ../actor) "===" 0)}} zero-not-visible {{/if}}">
-                  {{cprGetSkillBonus role.system.mainRoleAbility ../actor}}
+                <div class="item-detail ability-rank text-nowrap {{#if (cprCompare (cprGetSkillModInfo role.system.mainRoleAbility ../actor "modTotal") "===" 0)}} zero-not-visible {{/if}}">
+                  {{cprGetSkillModInfo role.system.mainRoleAbility ../actor "modTotal"}}
                 </div>
                 <div class="item-detail ability-rank text-nowrap">
                   <input class="number ability-input" value="{{role.system.rank}}" data-role-name="{{role.name}}" data-ability-name="{{role.system.mainRoleAbility}}" type="number">
@@ -33,8 +33,8 @@
                 <div class="item-name role-name flexrow  text-nowrap">
                   {{#if ability.hasRoll}}<a class="rollable ability-name subskill" data-roll-type="roleAbility" data-roll-subtype = "subRoleAbility" data-roll-title="{{ability.name}}">&nbsp;&diams;{{else}}<span class="ability-name">&nbsp;{{/if}}{{localize (cprGetLocalizedlNameKey ability.name "roleAbility")}}:{{#if ability.hasRoll}}</a>{{else}}</span>{{/if}}
                 </div>
-                <div class="item-detail ability-rank text-nowrap {{#if (cprCompare (cprGetSkillBonus ability.name ../actor) "===" 0)}} zero-not-visible {{/if}}">
-                  {{cprGetSkillBonus ability.name ../actor}}
+                <div class="item-detail ability-rank text-nowrap {{#if (cprCompare (cprGetSkillModInfo ability.name ../actor "modTotal") "===" 0)}} zero-not-visible {{/if}}">
+                  {{cprGetSkillModInfo ability.name ../actor "modTotal"}}
                 </div>
                 <div class="item-detail ability-rank text-nowrap">
                   <input class="number ability-input" value="{{ability.rank}}" data-role-name="{{role}}" data-ability-name="{{role.system.mainRoleAbility}}" data-subskill-name="{{ability.name}}" type="number">

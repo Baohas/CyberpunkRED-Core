@@ -58,7 +58,7 @@ export default class CPRMacro {
     }
 
     if (!extraData.skipPrompt) {
-      const keepRolling = await cprRoll.handleRollDialog(event);
+      const keepRolling = await cprRoll.handleRollDialog(event, actor, item);
       if (!keepRolling) {
         return;
       }

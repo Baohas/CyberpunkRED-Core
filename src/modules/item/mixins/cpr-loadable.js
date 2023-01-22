@@ -130,7 +130,7 @@ const Loadable = function Loadable() {
 
         // By the time we reach here, we know the weapon and ammo we are loading
         // Let's find out how much space is in the gun.
-        const upgradeData = this.getAllUpgradesFor("magazine");
+        const upgradeData = this.getTotalUpgradeValues("magazine");
         const magazineSpace = (upgradeData.type === "override") ? upgradeData.value - magazineData.value : magazineData.max - magazineData.value + upgradeData.value;
 
         if (magazineSpace > 0) {
@@ -218,7 +218,7 @@ const Loadable = function Loadable() {
     const updateData = [];
     const { actor } = this;
     const magazineData = this.system.magazine;
-    const upgradeData = this.getAllUpgradesFor("magazine");
+    const upgradeData = this.getTotalUpgradeValues("magazine");
     const magazineSize = (upgradeData.type === "override") ? upgradeData.value : magazineData.max + upgradeData.value;
     if (magazineSize < magazineData.value) {
       const overage = magazineData.value - magazineSize;

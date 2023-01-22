@@ -470,6 +470,8 @@ CPR.upgradableDataPoints = {
     damage: {
       type: "modifier",
       value: 0,
+      isSituational: false,
+      onByDefault: false,
       localization: "CPR.global.generic.damage",
     },
     rof: {
@@ -480,6 +482,8 @@ CPR.upgradableDataPoints = {
     attackmod: {
       type: "modifier",
       value: 0,
+      isSituational: false,
+      onByDefault: false,
       localization: "CPR.itemSheet.weapon.attackMod",
     },
     magazine: {
@@ -545,11 +549,15 @@ CPR.upgradableDataPoints = {
     "Wardrobe & Style": {
       type: "modifier",
       value: 0,
+      isSituational: false,
+      onByDefault: false,
       localization: "CPR.global.itemType.skill.wardrobeAndStyle",
     },
     cool: {
       type: "modifier",
       value: 0,
+      isSituational: false,
+      onByDefault: false,
       localization: "CPR.global.stats.cool",
     },
   },
@@ -696,6 +704,69 @@ CPR.activeEffectKeys = {
     "system.stats.move.value": "CPR.global.stats.move",
     "system.stats.body.value": "CPR.global.stats.body",
     "system.stats.emp.max": "CPR.global.stats.empMax",
+  },
+};
+
+CPR.defaultSituationalMods = {
+  complimentarySkill: {
+    value: 1,
+    source: "CPR.rolls.defaultMods.complimentarySkill",
+    id: "complimentarySkill-coreBook",
+  },
+  extraTime: {
+    value: 1,
+    source: "CPR.rolls.defaultMods.extraTime",
+    id: "extraTime-coreBook",
+  },
+  lowLight: {
+    value: -1,
+    source: "CPR.rolls.defaultMods.lowLight",
+    id: "lowLight-coreBook",
+  },
+  firstTime: {
+    value: -1,
+    source: "CPR.rolls.defaultMods.firstTime",
+    id: "firstTime-coreBook",
+  },
+  complexTask: {
+    value: -2,
+    source: "CPR.rolls.defaultMods.complexTask",
+    id: "complexTask-coreBook",
+  },
+  wrongTools: {
+    value: -2,
+    source: "CPR.rolls.defaultMods.wrongTools",
+    id: "wrongTools-coreBook",
+  },
+  badSleep: {
+    value: -2,
+    source: "CPR.rolls.defaultMods.badSleep",
+    id: "badSleep-coreBook",
+  },
+  extremeStress: {
+    value: -2,
+    source: "CPR.rolls.defaultMods.extremeStress",
+    id: "extremeStress-coreBook",
+  },
+  exhausted: {
+    value: -4,
+    source: "CPR.rolls.defaultMods.exhausted",
+    id: "exhausted-coreBook",
+  },
+  drunkSedated: {
+    value: -4,
+    source: "CPR.rolls.defaultMods.drunkSedated",
+    id: "drunkSedated-coreBook",
+  },
+  sneakily: {
+    value: -4,
+    source: "CPR.rolls.defaultMods.sneakily",
+    id: "sneakily-coreBook",
+  },
+  heavilyObscured: {
+    value: -4,
+    source: "CPR.rolls.defaultMods.heavilyObscured",
+    id: "heavilyObscured-coreBook",
   },
 };
 

@@ -73,7 +73,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     }
     cprRoll.setNetCombat(this.actor.name);
 
-    const keepRolling = await cprRoll.handleRollDialog(event);
+    const keepRolling = await cprRoll.handleRollDialog(event, this.actor);
     if (!keepRolling) {
       return;
     }

@@ -15,8 +15,10 @@ system:
       description: ''
       hasRoll: false
       index: 1
+      isSituational: false
       multiplier: '1'
       name: Fumble Recovery
+      onByDefault: false
       rank: 0
       skill: '--'
       stat: '--'
@@ -26,8 +28,10 @@ system:
       description: ''
       hasRoll: false
       index: 2
+      isSituational: false
       multiplier: '1'
       name: Initiative Reaction
+      onByDefault: false
       rank: 0
       skill: '--'
       stat: '--'
@@ -38,8 +42,10 @@ system:
       description: ''
       hasRoll: false
       index: 3
+      isSituational: false
       multiplier: '1'
       name: Precision Attack
+      onByDefault: false
       rank: 0
       skill: '--'
       stat: '--'
@@ -50,8 +56,10 @@ system:
       description: ''
       hasRoll: false
       index: 4
+      isSituational: true
       multiplier: '1'
       name: Spot Weakness
+      onByDefault: true
       rank: 0
       skill: '--'
       stat: '--'
@@ -85,8 +93,10 @@ system:
       description: ''
       hasRoll: false
       index: 5
+      isSituational: false
       multiplier: '1'
       name: Threat Detection
+      onByDefault: false
       rank: 0
       skill: '--'
       stat: '--'
@@ -96,8 +106,10 @@ system:
       description: ''
       hasRoll: false
       index: 0
+      isSituational: true
       multiplier: '1'
       name: Damage Deflection
+      onByDefault: true
       rank: 0
       skill: '--'
       stat: '--'
@@ -114,7 +126,9 @@ system:
       lawless time of the Red.</p>
   favorite: false
   hasRoll: false
+  isSituational: false
   mainRoleAbility: Combat Awareness
+  onByDefault: false
   rank: 4
   skill: '--'
   source: Pg. 146

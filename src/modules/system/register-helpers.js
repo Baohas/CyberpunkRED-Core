@@ -4,7 +4,7 @@ import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRActiveEffect from "../cpr-active-effect.js";
-import DamageApplicationPrompt from "../dialog/cpr-damage-application-prompt.js";
+import CPRMod from "../rolls/cpr-modifiers.js";
 
 export default function registerHandlebarsHelpers() {
   LOGGER.log("Calling Register Handlebars Helpers");
@@ -270,6 +270,22 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Returns true if an array contains a desired element
+   */
+  Handlebars.registerHelper("cprArrayLikeObjectByIndex", (arrayLikeObject, index, val) => {
+    LOGGER.trace("cprArrayLikeObjectByIndex | handlebarsHelper | Called.");
+    // Return false if arrayLikeObject is not an object, so that we avoid sheet-breaking errors.
+    if (!(typeof arrayLikeObject === "object")) return false;
+
+    const array = Object.values(arrayLikeObject);
+    if (array) {
+      return array[index][val];
+    }
+
+    return false;
+  });
+
+  /**
    * Accepts a string and replaces VAR with the desired value. Usually used to dynamically
    * produce file names for partial templates.
    */
@@ -374,7 +390,7 @@ export default function registerHandlebarsHelpers() {
     }
     switch (mathFunction) {
       case "sum":
-        return mathArgs.reduce((a, b) => a + b, 0);
+        return mathArgs.reduce((a, b) => parseInt(a, 10) + parseInt(b, 10), 0);
       case "subtract": {
         const minutend = mathArgs.shift();
         const subtrahend = mathArgs.reduce((a, b) => a + b, 0);
@@ -667,7 +683,7 @@ export default function registerHandlebarsHelpers() {
     const itemType = obj.type;
     let upgradeText = "";
     if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
-      const upgradeData = obj.getAllUpgradesFor(dataPoint);
+      const upgradeData = obj.getTotalUpgradeValues(dataPoint);
       if (upgradeData.value !== 0 && upgradeData.value !== "") {
         const modSource = (itemType === "weapon") ? SystemUtils.Localize("CPR.itemSheet.weapon.attachments") : SystemUtils.Localize("CPR.itemSheet.common.upgrades");
         upgradeText = `(${SystemUtils.Format("CPR.itemSheet.common.modifierChange", { modSource, modType: upgradeData.type, value: upgradeData.value })})`;
@@ -689,7 +705,7 @@ export default function registerHandlebarsHelpers() {
       upgradeResult = baseValue;
     }
     if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
-      const upgradeData = obj.getAllUpgradesFor(dataPoint);
+      const upgradeData = obj.getTotalUpgradeValues(dataPoint);
       if (upgradeData.value !== "" && upgradeData.value !== 0) {
         if (upgradeData.type === "override") {
           upgradeResult = upgradeData.value;
@@ -824,6 +840,11 @@ export default function registerHandlebarsHelpers() {
       return returnString;
     }
     if (cat === "custom") return key;
+
+    if (!doc) {
+      return SystemUtils.Localize(CPR.activeEffectKeys[cat][key]);
+    }
+
     const sourceDoc = (doc instanceof CPRActiveEffect) ? doc.getEffectParent() : doc;
     if (!sourceDoc) return "???"; // a recently deleted item will sometimes do this
     if (cat === "skill") {
@@ -843,11 +864,43 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Get the transient bonus value applied to skills applied from Active Effects
+   * Returns requested information about a skill mod: Either an array of all CPRMods,
+   * the total value of all the mods, or a boolean whether the mod has situational bonuses or not.
+   *
+   * @param {String} skillName - the skill name (e.g. from CPR.skillList) to look up
+   * @param {Object} actor - the actor whom the skill belongs to.
+   * @param {String} infoType - type of info being requested ("modTotal", "modList", or "hasSituational")
+   * @param {Object} options - Contains Hash Argument from Handlebars. In this case, the only option is
+   *                           keepSituational, which is a Boolean to filter out situational mods or not.
+   *                           See: https://handlebarsjs.com/guide/block-helpers.html#hash-arguments
+   * @returns {Number|Array<object>|Boolean} - see above description.
    */
-  Handlebars.registerHelper("cprGetSkillBonus", (skillName, actor) => {
-    LOGGER.trace("cprGetSkillBonus | handlebarsHelper | Called.");
-    return actor.getSkillMod(skillName);
+  Handlebars.registerHelper("cprGetSkillModInfo", (skillName, actor, infoType, options) => {
+    LOGGER.trace("cprGetSkillModInfo | handlebarsHelper | Called.");
+    const skillSlug = SystemUtils.slugify(skillName);
+    const effects = actor.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    let relevantMods = CPRMod.getRelevantMods(allMods, skillSlug);
+    const hasSituational = relevantMods.some((m) => m.isSituational);
+    if (!options.hash.keepSituational) {
+      relevantMods = relevantMods.filter((m) => !m.isSituational);
+    }
+
+    let modTotal = 0;
+    relevantMods.forEach((m) => {
+      modTotal += parseInt(m.value, 10);
+    });
+
+    switch (infoType) {
+      case "modTotal":
+        return modTotal;
+      case "modList":
+        return relevantMods;
+      case "hasSituational":
+        return hasSituational;
+      default:
+        return LOGGER.error("Did not pass valid string to infoType");
+    }
   });
 
   /**

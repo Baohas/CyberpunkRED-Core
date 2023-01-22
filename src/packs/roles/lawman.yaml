@@ -22,7 +22,9 @@ system:
       an otherwise lawless world.</p>
   favorite: false
   hasRoll: false
+  isSituational: false
   mainRoleAbility: Backup
+  onByDefault: false
   rank: 4
   skill: '--'
   source: Pg. 158

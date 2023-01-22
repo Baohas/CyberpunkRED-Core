@@ -15,8 +15,10 @@ system:
       description: ''
       hasRoll: true
       index: 0
+      isSituational: false
       multiplier: '0.5'
       name: Field Expertise
+      onByDefault: false
       rank: 0
       skill: varying
       stat: tech
@@ -26,8 +28,10 @@ system:
       description: ''
       hasRoll: true
       index: 1
+      isSituational: false
       multiplier: '0.5'
       name: Upgrade Expertise
+      onByDefault: false
       rank: 0
       skill: varying
       stat: tech
@@ -37,8 +41,10 @@ system:
       description: ''
       hasRoll: true
       index: 2
+      isSituational: false
       multiplier: '0.5'
       name: Fabrication Expertise
+      onByDefault: false
       rank: 0
       skill: varying
       stat: tech
@@ -48,8 +54,10 @@ system:
       description: ''
       hasRoll: true
       index: 3
+      isSituational: false
       multiplier: '0.5'
       name: Invention Expertise
+      onByDefault: false
       rank: 0
       skill: varying
       stat: tech
@@ -65,7 +73,9 @@ system:
       upgrade, and repair to keep the Dark Future functioning.</p>
   favorite: false
   hasRoll: false
+  isSituational: false
   mainRoleAbility: Maker
+  onByDefault: false
   rank: 4
   skill: '--'
   source: Pg. 147

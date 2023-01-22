@@ -5,6 +5,7 @@ import CPRItem from "../cpr-item.js";
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPRMod from "../../rolls/cpr-modifiers.js";
 
 /**
  * Extend the base CPRItem object with things specific to cyberdecks.
@@ -219,81 +220,92 @@ export default class CPRCyberdeckItem extends CPRItem {
     this.system.programs.rezzed.push(programState);
   }
 
-  _createCyberdeckRoll(rollType, actor, extraData = {}) {
+  /**
+   * Create a roll object appropriate for rolling for programs located on a cyberdeck.
+   *
+   * @param {CPRCharacterActor} actor - the actor associated with this cyberdeck item
+   * @param {Object} extraData - more roll configuration data
+   * @returns {CPRRoll}
+   */
+  _createCyberdeckRoll(actor, extraData = {}) {
     LOGGER.trace("_createCyberdeckRoll | CPRCyberdeckItem | Called.");
     let cprRoll;
     const { programUUID } = extraData;
-    const programData = this.getInstalledPrograms().filter((iProgram) => iProgram.uuid === programUUID);
-    let program = (programData.length > 0) ? programData[0] : null;
-    let damageFormula = (program === null) ? "1d6" : program.damage.standard;
-    if (program.class === "blackice") {
-      const rezzedList = this.getRezzedPrograms().filter((rProgram) => rProgram.uuid === programUUID);
-      program = (rezzedList.length > 0) ? rezzedList[0] : null;
-      if (program.blackIceType === "antiprogram") {
-        damageFormula = program.damage.blackIce;
-      }
-    }
-    if (program === null) {
+    const program = this.getInstalledPrograms().find((iProgram) => iProgram.uuid === programUUID);
+    if (!program) {
       LOGGER.error(`_createCyberdeckRoll | CPRCyberdeckItem | Unable to locate program ${programUUID}.`);
       return CPRRolls.CPRRoll("Unknown Program", "1d10");
     }
-    const skillName = "";
-    const skillValue = 0;
-    const roleName = (program.class === "blackice") ? "Black ICE" : extraData.netRoleItem.system.mainRoleAbility;
-    const roleValue = (program.class === "blackice") ? 0 : extraData.netRoleItem.system.rank;
-    const atkValue = (program === null) ? 0 : program.atk;
-    const pgmName = (program === null) ? "Program" : program.name;
+
+    const roleName = extraData.netRoleItem.system.mainRoleAbility;
+    const roleValue = Number.parseInt(extraData.netRoleItem.system.rank, 10);
+    const pgmName = program.name;
     const { executionType } = extraData;
+    const statValue = program[executionType];
+    const statName = SystemUtils.Localize(`CPR.global.blackIce.stats.${executionType}`);
+
+    const damageFormula = program.damage.standard;
+    // Attack and defense rolls from programs are treated as Interface Rolls.
+    // Damage rolls from programs are treated as normal Damage Rolls.
     switch (executionType) {
-      case "atk":
-      case "def": {
-        const niceName = executionType.toUpperCase();
-        cprRoll = (program.class === "blackice") ? new CPRRolls.CPRStatRoll(niceName, program[executionType]) : new CPRRolls.CPRAttackRoll(
-          pgmName,
-          niceName,
-          atkValue,
-          skillName,
-          skillValue,
-          roleName,
-          roleValue,
-          "program",
-        );
+      case "atk": {
+        cprRoll = new CPRRolls.CPRInterfaceRoll("attack", roleName, roleValue, statName, statValue);
         cprRoll.rollCardExtraArgs.program = program;
         cprRoll.rollCardExtraArgs.cyberdeck = this;
+        cprRoll.ability = "attack";
+        break;
+      }
+      case "def": {
+        cprRoll = new CPRRolls.CPRInterfaceRoll("defense", roleName, roleValue, statName, statValue);
+        cprRoll.ability = "defense";
         break;
       }
       case "damage": {
-        cprRoll = new CPRRolls.CPRDamageRoll(program.name, damageFormula, "program");
-        cprRoll.rollCardExtraArgs.pgmClass = program.class;
-        cprRoll.rollCardExtraArgs.pgmDamage = program.damage;
+        cprRoll = new CPRRolls.CPRDamageRoll(pgmName, damageFormula, "program");
         cprRoll.rollCardExtraArgs.program = program;
+        cprRoll.setNetCombat(pgmName);
         break;
       }
       default:
+        break;
     }
-    cprRoll.setNetCombat(pgmName);
+    cprRoll.rollTitle = pgmName;
+
+    const effects = actor.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+    const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
+
+    const netrunnerMods = CPRMod.getRelevantMods(filteredMods, cprRoll.ability);
+    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName));
 
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.
-    if (executionType !== "damage") {
-      if (roleName !== "blackice") cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
-      cprRoll.addMod(actor.getWoundStateMods());
+    if (executionType === "damage") {
+      cprRoll.addMod(damageMods);
+    } else {
+      cprRoll.addMod(netrunnerMods);
+      cprRoll.addMod(roleMods);
+      cprRoll.addMod([{ value: actor.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
     }
     return cprRoll;
   }
 
   /**
-   * Create a roll object appropriate for rolling an ability associated with Interfaces
+   * Create a roll object appropriate for rolling Interface actions.
    *
-   * @param {CPRCharacterActor} actor - the actor associated with this role item
-   * @param {Object} rollInfo - magic object with more role configuration data
+   * @param {CPRCharacterActor} actor - the actor associated with this cyberdeck item
+   * @param {Object} rollInfo - more roll configuration data
    * @returns {CPRRoll}
    */
-  _createInterfaceRoll(rollInfo) {
+  _createInterfaceRoll(actor, rollInfo) {
     LOGGER.trace("_createInterfaceRoll | CPRCyberdeckItem | Called.");
     let rollTitle;
     const roleName = rollInfo.netRoleItem.system.mainRoleAbility;
-    const roleValue = rollInfo.netRoleItem.system.rank;
-    const { interfaceAbility } = rollInfo;
+    const roleValue = Number.parseInt(rollInfo.netRoleItem.system.rank, 10);
+    const interfaceAbility = rollInfo.interfaceAbility === "perception" ? "perception_net" : rollInfo.interfaceAbility;
+    let rollType = "action";
     switch (interfaceAbility) {
       case "speed": {
         rollTitle = SystemUtils.Localize("CPR.global.generic.speed");
@@ -307,44 +319,40 @@ export default class CPRCyberdeckItem extends CPRItem {
         rollTitle = SystemUtils.Localize(CPR.interfaceAbilities[interfaceAbility]);
       }
     }
+    // Declare the roll;
+    let cprRoll;
 
     // If interfaceAbiltiy is Zap, we will handle roll either as a Damage Roll or an Attack Roll.
-    // If interfaceAbility is anything else, we will handle roll as as a Role Roll.
-    let cprRoll;
-    if (interfaceAbility === "zap") {
-      if (rollInfo.executionType === "damage") {
-        cprRoll = new CPRRolls.CPRDamageRoll(SystemUtils.Localize("CPR.global.role.netrunner.interfaceAbility.zap"), "1d6", "program");
-      } else {
-        cprRoll = new CPRRolls.CPRAttackRoll(
-          "zap",
-          rollTitle,
-          0,
-          "",
-          0,
-          roleName,
-          roleValue,
-          "program",
-        );
-        cprRoll.rollCardExtraArgs.cyberdeck = this;
-        cprRoll.rollCardExtraArgs.isZap = true;
-      }
+    // If interfaceAbility is anything else, we will handle roll as as an Interface Roll.
+    if (rollInfo.executionType === "damage") {
+      cprRoll = new CPRRolls.CPRDamageRoll(SystemUtils.Localize("CPR.global.role.netrunner.interfaceAbility.zap"), "1d6", "program");
     } else {
-      cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, "--", 0, "--", 0, null);
+      if (interfaceAbility === "zap") rollType = "attack";
+      cprRoll = new CPRRolls.CPRInterfaceRoll(rollType, roleName, roleValue);
+      cprRoll.ability = interfaceAbility;
+      cprRoll.rollCardExtraArgs.cyberdeck = this;
     }
 
-    cprRoll.setNetCombat(rollTitle);
+    // Set the roll title to the name of the interface action.
+    cprRoll.rollTitle = rollTitle;
+
+    // Figure out all applicable modifiers.
+    const effects = actor.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+    const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
+    const netrunnerMods = CPRMod.getRelevantMods(filteredMods, interfaceAbility);
+    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName));
 
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.
-    if (rollInfo.executionType !== "damage") {
-      // consider active effects
-      if (interfaceAbility === "perception") {
-        // hack because "perception" is already used for the skill
-        cprRoll.addMod(this.actor.bonuses.perception_net);
-      } else {
-        cprRoll.addMod(this.actor.bonuses[interfaceAbility]);
-      }
-      cprRoll.addMod(this.actor.bonuses[SystemUtils.slugify(roleName)]);
-      cprRoll.addMod(this.actor.getWoundStateMods());
+    if (rollInfo.executionType === "damage") {
+      cprRoll.addMod(damageMods);
+    } else {
+      cprRoll.addMod(netrunnerMods);
+      cprRoll.addMod(roleMods);
+      cprRoll.addMod([{ value: actor.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
     }
     return cprRoll;
   }

@@ -14,15 +14,27 @@
                 <div class="effect-name flexrow">
                     <img class="effect-image" src="{{effect.icon}}"/>
                     <h4><strong>{{effect.label}}</strong><br/>
+                    {{#if effect.changes.length}}
                         {{#each effect.changes as |change|}}
                             {{!-- "this" is now an individual mod for the AE object --}}
-                            {{cprGetChangeNameByKey ../this (lookup effect.flags.cyberpunk-red-core.changes @index) change.key}}
+                            {{cprGetChangeNameByKey ../this change.category change.key}}
                             {{#if change.value}}
-                                {{cprEffectModMode change.mode change.value}}{{#unless @last}},{{/unless}}
-                            {{else}}
-                                0{{#unless @last}},{{/unless}}
-                            {{/if}}
+                                {{cprEffectModMode change.changeMode change.value}}
+                            {{~else}}
+                                0
+                            {{~/if}}
+                            {{#if change.isSituational}}
+                              {{#if change.onByDefault}}
+                                <i data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}" class="fas fa-circle-dot"></i>
+                              {{else}}
+                                <i data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.situationalOffByDefault"}}" class="far fa-circle"></i>
+                              {{~/if}}
+                            {{~/if}}
+                            {{~#unless @last}},{{/unless}}
                         {{/each}}
+                    {{else}}
+                      ({{localize "CPR.characterSheet.rightPane.effects.noBonusesConfigured"}})
+                    {{/if}}
                     </h4>
                 </div>
                 <div class="effect-source">

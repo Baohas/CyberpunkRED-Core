@@ -50,6 +50,7 @@ system:
       type: modifier
       value: null
     attackmod:
+      isSituational: false
       type: modifier
       value: null
     body:
@@ -62,6 +63,7 @@ system:
       type: modifier
       value: null
     damage:
+      isSituational: false
       type: modifier
       value: null
     dex:

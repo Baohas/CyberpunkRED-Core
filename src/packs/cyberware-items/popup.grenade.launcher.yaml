@@ -25,7 +25,7 @@ system:
     value: >-
       <p>A concealable one-shot Grenade Launcher. Can't hold anything with this
       hand while activated. </p>
-  dvTable: null
+  dvTable: ''
   favorite: false
   fireModes:
     autoFire: 0

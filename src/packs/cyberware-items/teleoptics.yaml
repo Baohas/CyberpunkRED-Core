@@ -20,8 +20,9 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': combat
-          '1': combat
+          cats:
+            '0': combat
+            '1': combat
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/teleoptics.svg
     label: TeleOptics
     origin: null

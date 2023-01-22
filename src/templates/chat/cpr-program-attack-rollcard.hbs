@@ -6,21 +6,14 @@
     <div class="cpr-block chat-rollTitle-stat">
       <div class="text-center text-padding-top text-normal">{{rollTitle}}</div>
       <div class="rollcard-subtitle">
-        <div class="rollcard-subtitle-center text-small">{{localize "CPR.rolls.attack"}}</div>
+        <div class="rollcard-subtitle-center text-small">{{#if (cprCompare statName "===" "DEFENSE")}}{{localize "CPR.global.generic.defense"}}{{else}}{{localize "CPR.rolls.attack"}}{{/if}}</div>
         <div class="rollcard-subtitle-right">
-            {{#if rollCardExtraArgs.isZap}}
-              <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
-                data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="zap">
-                <i class="fas fa-tint red-fg" data-tooltip="Damage"></i>
-              </a>
-            {{else}}
-              {{#if (cprProgramHasDamageRoll rollCardExtraArgs.program)}}
-                <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
-                  data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="{{rollCardExtraArgs.program.uuid}}">
-                  <i class="fas fa-tint red-fg" data-tooltip="Damage"></i>
-                </a>
-              {{/if}}
-            {{/if}}
+          {{#if (cprProgramHasDamageRoll rollCardExtraArgs.program)}}
+            <a class="clickable" data-action="rollDamage" data-actor-id="{{entityData.actor}}" data-damage-location="brain"
+              data-token-id="{{entityData.token}}" data-item-id="{{rollCardExtraArgs.cyberdeck.id}}" data-program-id="{{rollCardExtraArgs.program.uuid}}">
+              <i class="fas fa-tint red-fg" data-tooltip="CPR.actorSheets.commonActions.rollDamage"></i>
+            </a>
+          {{/if}}
         </div>
         <div class="rollcard-subtitle-2-center text-small">{{#if (cprCompare rollCardExtraArgs.program.system.class "===" "blackice")}}{{localize (cprFindConfigValue "blackIceType" rollCardExtraArgs.program.system.blackIceType)}} {{/if}}{{localize (cprFindConfigValue "programClassList" rollCardExtraArgs.program.system.class)}}</div>
       </div>
@@ -53,11 +46,11 @@
             {{#if statValue}}
               <div class="text-normal text-bold">{{localize statName}} + {{statValue}}</div>
             {{/if}}
+            {{#if roleValue}}
             <div class="text-normal text-bold">{{localize roleName}} + {{roleValue}}</div>
-            {{#if mods}}
-            <span class="text-normal text-nowrap">{{localize "CPR.rolls.rollMods"}}: {{mods}}</span>
-            <div class="text-normal text-bold text-nowrap">{{localize "CPR.rolls.mods"}} {{localize "CPR.rolls.total"}}:
-              {{totalMods}}</div>
+            {{/if}}
+            {{#if (cprCompare mods.length "||" additionalMods.length)}}
+              {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
             {{/if}}
             {{#if luck}}
             <div class="text-normal text-bold text-nowrap">{{localize "CPR.global.stats.luck"}}: {{luck}}</div>

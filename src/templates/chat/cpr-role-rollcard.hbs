@@ -41,15 +41,12 @@
             <div class="text-normal">{{localize (cprGetLocalizedlNameKey skillName "skill")}}: {{skillValue}}</div>
             {{/if}}
 
-            {{#if mods}}
-            <div class="text-normal text-nowrap">{{localize "CPR.rolls.rollMods"}}: {{mods}}</div>
-            <div class="text-normal text-bold text-nowrap">{{localize "CPR.rolls.mods"}} {{localize "CPR.rolls.total"}}:
-              {{totalMods}}</div>
+            {{#if (cprCompare mods.length "||" additionalMods.length)}}
+              {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
             {{/if}}
-            {{#if (cprCompare (cprCompare roleName "===" "Interface") "||" (cprCompare roleName "===" "Charismatic Impact"))}}
+
             {{#if luck}}
             <div class="text-normal text-bold text-nowrap">{{localize "CPR.global.stats.luck"}}: {{luck}}</div>
-            {{/if}}
             {{/if}}
           </div>
         </div>

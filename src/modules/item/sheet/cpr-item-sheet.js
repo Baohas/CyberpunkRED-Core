@@ -105,8 +105,6 @@ export default class CPRItemSheet extends ItemSheet {
 
     html.find(".select-role-bonuses").click((event) => this._selectRoleBonuses(event));
 
-    html.find(".select-subrole-bonuses").click((event) => this._selectSubroleBonuses(event));
-
     html.find(".manage-installed-programs").click(() => this._manageInstalledItems("program"));
 
     html.find(".manage-installed-upgrades").click(() => this._manageInstalledItems("itemUpgrade"));
@@ -198,77 +196,51 @@ export default class CPRItemSheet extends ItemSheet {
     }
   }
 
-  async _selectRoleBonuses() {
+  /**
+   * This function creates and processes the dialog to apply bonuses from roles.
+   *
+   * @param {*} event
+   */
+  async _selectRoleBonuses(event) {
     LOGGER.trace("ItemSheet | _selectRoleBonuses | Called.");
-    const cprItemData = this.item.system;
-    const roleType = "mainRole";
-    const coreSkills = await SystemUtils.GetCoreSkills();
-    const customSkills = game.items.filter((i) => i.type === "skill");
+    const cprRoleData = duplicate(this.item.system);
+    const roleType = SystemUtils.GetEventDatum(event, "data-role-type"); // Either "mainRole" or "subRole".
+    const coreSkills = await SystemUtils.GetCoreSkills(); // Get core skills.
+    const customSkills = game.items.filter((i) => i.type === "skill"); // Get any custom skills.
+    // If object is owned, get all skills on actor. If not, get all skills in system.
     const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
       : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
-    const allSkillsData = [];
-    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
-    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
-    let formData = { skillList: sortedAllSkills, roleType, system: cprItemData };
-    formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
-      return;
-    }
-    if (formData.selectedSkills) {
-      const skillBonusObjects = [];
-      const universalBonusesList = [];
-      formData.selectedSkills.forEach((s) => {
-        skillBonusObjects.push(allSkills.find((a) => a.name === s));
-      });
-      formData.selectedUniversalBonuses.forEach((b) => {
-        universalBonusesList.push(b);
-      });
-      const { bonusRatio } = formData;
-      this.item.update({
-        "data.bonuses": skillBonusObjects,
-        "data.universalBonuses": universalBonusesList,
-        "data.bonusRatio": bonusRatio,
-      });
-    }
-  }
+    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills); // Sort these skills by name.
 
-  async _selectSubroleBonuses(event) {
-    LOGGER.trace("ItemSheet | _selectSubroleBonuses | Called.");
-    const subRoleName = SystemUtils.GetEventDatum(event, "data-item-name");
-    const cprItemData = duplicate(this.item.system);
-    const roleType = "subRole";
-    const subRole = cprItemData.abilities.find((a) => a.name === subRoleName);
-    const coreSkills = await SystemUtils.GetCoreSkills();
-    const customSkills = game.items.filter((i) => i.type === "skill");
-    const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
-      : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
-    const allSkillsData = [];
-    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
-    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
+    // If we are editing a subability, get name from event data. Then, get the subrole from the name.
+    const subRoleName = SystemUtils.GetEventDatum(event, "data-ability-name");
+    const subRole = cprRoleData.abilities.find((a) => a.name === subRoleName);
 
-    let formData = {
-      skillList: sortedAllSkills, roleType, subRole, system: cprItemData,
+    // The ability data is either item.system or item.system.someSubAbility.
+    let abilityData = cprRoleData;
+    if (subRole) {
+      abilityData = subRole;
+    }
+
+    // Prepare relevant data for the dialog to use.
+    let dialogData = {
+      skillList: sortedAllSkills,
+      roleData: abilityData,
     };
-    formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+
+    // Call dialog and await results. Return if dialog is cancelled.
+    dialogData = await SelectRoleBonuses.showDialog(dialogData).catch((err) => LOGGER.debug(err));
+    if (dialogData === undefined) {
       return;
     }
-    if (formData.selectedSkills) {
-      const skillBonusObjects = [];
-      const universalBonusesList = [];
-      formData.selectedSkills.forEach((s) => {
-        skillBonusObjects.push(allSkills.find((a) => a.name === s));
-      });
-      formData.selectedUniversalBonuses.forEach((b) => {
-        universalBonusesList.push(b);
-      });
-      setProperty(subRole, "bonuses", skillBonusObjects);
-      setProperty(subRole, "universalBonuses", universalBonusesList);
-      setProperty(subRole, "bonusRatio", formData.bonusRatio);
-      this.item.update({ system: cprItemData });
-      if (this.actor) {
-        await this.actor.updateEmbeddedDocuments("Item", [{ _id: this.item.id, system: cprItemData }]);
-      }
+
+    // If we are updating the main role ability, we can update item.system.
+    // Else, find the correct subability and update that.
+    if (roleType === "mainRole") {
+      this.item.update({ system: dialogData.roleData });
+    } else {
+      mergeObject(cprRoleData.abilities.find((a) => a.name === subRole.name), dialogData.subRole);
+      this.item.update({ "system.abilities": cprRoleData.abilities });
     }
   }
 
@@ -725,6 +697,8 @@ export default class CPRItemSheet extends ItemSheet {
           bonuses: [],
           universalBonuses: [],
           bonusRatio: 1,
+          isSituational: false,
+          onByDefault: false,
           hasRoll: formData.hasRoll,
         });
         setProperty(cprItemData, "abilities", prop);
@@ -740,6 +714,8 @@ export default class CPRItemSheet extends ItemSheet {
           bonuses: [],
           universalBonuses: [],
           bonusRatio: 1,
+          isSituational: false,
+          onByDefault: false,
           hasRoll: formData.hasRoll,
         }];
         setProperty(cprItemData, "abilities", prop);
@@ -805,6 +781,8 @@ export default class CPRItemSheet extends ItemSheet {
           bonuses: editElement.bonuses,
           universalBonuses: editElement.universalBonuses,
           bonusRatio: editElement.bonusRatio,
+          isSituational: editElement.isSituational,
+          onByDefault: editElement.onByDefault,
           hasRoll: formData.hasRoll,
         });
         setProperty(cprItemData, "abilities", prop);

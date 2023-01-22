@@ -4,7 +4,6 @@ effects:
     changes:
       - key: bonuses.perception
         mode: 2
-        priority: null
         value: '-2'
     disabled: false
     duration:
@@ -18,10 +17,16 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
+          cats:
+            '0': skill
+          situational:
+            '0':
+              isSituational: true
+              onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_ear.svg
     label: Damaged Ear
+    origin: null
     tint: null
     transfer: true
 flags:

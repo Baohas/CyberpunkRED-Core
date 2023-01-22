@@ -25,7 +25,7 @@
             ({{cprEffectModMode 2 (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor))}}){{#unless @last}},{{/unless}}
           {{/if}}
           {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "total")}}
-            ({{cprEffectModMode 2 (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor) (cprGetSkillBonus skill.name ../actor))}}){{#unless @last}},{{/unless}}
+            ({{cprEffectModMode 2 (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor) (cprGetSkillModInfo skill.name ../actor "modTotal"))}}){{#unless @last}},{{/unless}}
           {{/if}}
       </a>
       {{#if (cprCompare skill.system.core "===" false)}}

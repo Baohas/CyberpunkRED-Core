@@ -289,7 +289,7 @@ export default class CPRChat {
             SystemUtils.DisplayMessage("warn", "CPR.chat.damageApplication.noTokenTargeted");
           }
 
-          const keepRolling = await cprRoll.handleRollDialog(event);
+          const keepRolling = await cprRoll.handleRollDialog(event, actor, item);
           if (!keepRolling) {
             return;
           }

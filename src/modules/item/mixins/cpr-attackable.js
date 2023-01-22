@@ -3,6 +3,7 @@
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import Rules from "../../utils/cpr-rules.js";
+import CPRMod from "../../rolls/cpr-modifiers.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 /**
@@ -84,102 +85,99 @@ const Attackable = function Attackable() {
       }
     }
     const skillName = skillItem.name;
-    // total up bonuses from skills and stats
     const skillValue = actor.getSkillLevel(skillName);
-    const skillMod = actor.getSkillMod(skillName);
-    let cprRoll;
+
     let statName;
     if (cprWeaponData.isRanged && cprWeaponData.weaponType !== "thrownWeapon") {
       statName = "ref";
     } else {
       statName = "dex";
     }
-
-    // total up skill bonuses from role abilities and subRole abilities
     const niceStatName = SystemUtils.Localize(`CPR.global.stats.${statName}`);
     const statValue = actor.getStat(statName);
-    let roleName;
-    let roleValue = 0;
+
+    let roleMods = [];
+    // Get all mods for skills from role abilities and subRole abilities
     actor.itemTypes.role.forEach((r) => {
-      const [rn, rv] = r.getSkillBonuses(skillName);
-      if (rn) {
-        if (roleName) {
-          roleName += `, ${rn}`;
-        } else {
-          roleName = rn;
-        }
-        roleValue += rv;
-      }
+      roleMods = roleMods.concat(r.getRoleMods(skillName));
     });
-
-    // total up attack bonuses directly from role abilities (not indirectly from skills)
-    let universalBonusAttack = 0;
-    this.actor.itemTypes.role.forEach((r) => {
-      if (r.system.universalBonuses.includes("attack")) {
-        universalBonusAttack += Math.floor(r.system.rank / r.system.bonusRatio);
-      }
-      const subroleUniversalBonuses = r.system.abilities.filter((a) => a.universalBonuses.includes("attack"));
-      if (subroleUniversalBonuses.length > 0) {
-        subroleUniversalBonuses.forEach((b) => {
-          universalBonusAttack += Math.floor(b.rank / b.bonusRatio);
-        });
-      }
+    // Get all mods for attack bonuses directly from role abilities (not indirectly from skills)
+    actor.itemTypes.role.forEach((r) => {
+      roleMods = roleMods.concat(r.getRoleMods("attack", true));
     });
+    roleMods = roleMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
-    // finally, total up active effects improving attacks
-    universalBonusAttack += actor.bonuses.universalAttack;
+    const effects = actor.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
 
+    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName));
+
+    const attackMods = CPRMod.getRelevantMods(filteredMods, "universalAttack");
+    const aimedShotMods = CPRMod.getRelevantMods(filteredMods, "aimedShot");
+    const rangedMods = CPRMod.getRelevantMods(filteredMods, "ranged");
+    const meleeMods = CPRMod.getRelevantMods(filteredMods, "melee");
+    const autofireMods = CPRMod.getRelevantMods(filteredMods, "autofire");
+    const suppressiveMods = CPRMod.getRelevantMods(filteredMods, "suppressive");
+    const singleShotMods = CPRMod.getRelevantMods(filteredMods, "singleShot");
+
+    let cprRoll;
+    // Create the roll based on the type and apply relevant mods to it.
     switch (type) {
       case CPRRolls.rollTypes.AIMED: {
-        cprRoll = new CPRRolls.CPRAimedAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
-        cprRoll.addMod(actor.bonuses.aimedShot);
+        cprRoll = new CPRRolls.CPRAimedAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
+        cprRoll.addMod(aimedShotMods);
         if (cprWeaponData.isRanged) {
-          cprRoll.addMod(actor.bonuses.ranged);
+          cprRoll.addMod(rangedMods);
         } else {
-          cprRoll.addMod(actor.bonuses.melee);
+          cprRoll.addMod(meleeMods);
         }
         break;
       }
       case CPRRolls.rollTypes.AUTOFIRE: {
-        cprRoll = new CPRRolls.CPRAutofireRoll(weaponName, niceStatName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
-        cprRoll.addMod(actor.bonuses.autofire);
-        cprRoll.addMod(actor.bonuses.ranged);
+        cprRoll = new CPRRolls.CPRAutofireRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
+        cprRoll.addMod(autofireMods);
+        cprRoll.addMod(rangedMods);
         break;
       }
       case CPRRolls.rollTypes.SUPPRESSIVE: {
-        cprRoll = new CPRRolls.CPRSuppressiveFireRoll(weaponName, niceStatName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
-        cprRoll.addMod(actor.bonuses.suppressive);
-        cprRoll.addMod(actor.bonuses.ranged);
+        cprRoll = new CPRRolls.CPRSuppressiveFireRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
+        cprRoll.addMod(suppressiveMods);
+        cprRoll.addMod(rangedMods);
         break;
       }
       default:
-        cprRoll = new CPRRolls.CPRAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, roleName, roleValue, weaponType, universalBonusAttack);
+        cprRoll = new CPRRolls.CPRAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
         if (cprWeaponData.isRanged) {
-          cprRoll.addMod(actor.bonuses.singleShot);
-          cprRoll.addMod(actor.bonuses.ranged);
+          cprRoll.addMod(singleShotMods);
+          cprRoll.addMod(rangedMods);
         } else {
-          cprRoll.addMod(actor.bonuses.melee);
+          cprRoll.addMod(meleeMods);
         }
     }
 
     // apply other known mods
-    cprRoll.addMod(actor.getArmorPenaltyMods(statName));
-    cprRoll.addMod(actor.getWoundStateMods());
-    cprRoll.addMod(skillMod);
-    const upgradeData = this.getAllUpgradesFor("attackmod");
-    let upgradeResult = cprWeaponData.attackmod;
-    if (upgradeData.value !== "" && upgradeData.value !== 0) {
-      if (upgradeData.type === "override") {
-        upgradeResult = upgradeData.value;
-      } else if (typeof upgradeResult !== "number" || typeof upgradeData.value !== "number") {
-        if (upgradeData.value !== 0 && upgradeData.value !== "") {
-          upgradeResult = `${upgradeResult} + ${upgradeData.value}`;
-        }
-      } else {
-        upgradeResult += upgradeData.value;
-      }
+    cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: SystemUtils.Format("CPR.rolls.modifiers.sources.armorPenalty", { stat: niceStatName }) }]);
+    cprRoll.addMod([{ value: actor.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
+    cprRoll.addMod(skillMods);
+    cprRoll.addMod(attackMods);
+    cprRoll.addMod(roleMods);
+
+    // Mod from item upgrades that affect attackmod.
+    const relevantUpgradeMods = this.getAllUpgradeMods("attackmod").filter((m) => (m.isSituational && m.onByDefault) || !m.isSituational);
+    cprRoll.addMod(relevantUpgradeMods);
+
+    // Mod from weapon attackmod. We will only add it if there are no upgrade mods that override this value.
+    if (relevantUpgradeMods.length === 0 || relevantUpgradeMods.some((m) => !(m.type === "override"))) {
+      // CPRMod-like object.
+      cprRoll.addMod([{
+        value: cprWeaponData.attackmod,
+        source: this.name,
+        category: "combat",
+        key: "bonuses.universalAttack",
+      }]);
     }
-    cprRoll.addMod(upgradeResult);
 
     if (cprRoll instanceof CPRRolls.CPRAttackRoll && cprWeaponData.isRanged) {
       Rules.lawyer(this.hasAmmo(cprRoll), "CPR.messages.weaponAttackOutOfBullets");
@@ -193,13 +191,12 @@ const Attackable = function Attackable() {
    * @param {String} type - type of attack (autofire, etc)
    * @returns {CPRDamageRoll}
    */
-  this._createDamageRoll = function _createDamageRoll(type) {
+  this._createDamageRoll = function _createDamageRoll(type, actor) {
     LOGGER.trace("_createDamageRoll | Attackable | Called.");
     const cprWeaponData = this.system;
     const rollName = this.name;
     const { weaponType } = cprWeaponData;
     let { damage } = this.system;
-    let universalBonusDamage = 0;
     if ((weaponType === "unarmed" || weaponType === "martialArts") && cprWeaponData.unarmedAutomaticCalculation) {
       // calculate damage based on BODY stat
       const cprActorData = this.actor.system;
@@ -221,23 +218,7 @@ const Attackable = function Attackable() {
       }
     }
 
-    // consider damage bonuses coming from role abilties
-    this.actor.itemTypes.role.forEach((r) => {
-      if (r.system.universalBonuses.includes("damage")) {
-        universalBonusDamage += Math.floor(r.system.rank / r.system.bonusRatio);
-      }
-      const subroleUniversalBonuses = r.system.abilities.filter((a) => a.universalBonuses.includes("damage"));
-      if (subroleUniversalBonuses.length > 0) {
-        subroleUniversalBonuses.forEach((b) => {
-          universalBonusDamage += Math.floor(b.rank / b.bonusRatio);
-        });
-      }
-    });
-
-    // finally, total up active effects improving attacks
-    universalBonusDamage += this.actor.bonuses.universalDamage;
-
-    const cprRoll = new CPRRolls.CPRDamageRoll(rollName, damage, weaponType, universalBonusDamage);
+    const cprRoll = new CPRRolls.CPRDamageRoll(rollName, damage, weaponType);
     if (cprWeaponData.fireModes.autoFire === 0 && (
       (cprWeaponData.weaponType === "smg" || cprWeaponData.weaponType === "heavySmg" || cprWeaponData.weaponType === "assaultRifle"))) {
       cprWeaponData.fireModes.autoFire = cprWeaponData.weaponType === "assaultRifle" ? 4 : 3;
@@ -248,6 +229,7 @@ const Attackable = function Attackable() {
     switch (type) {
       case CPRRolls.rollTypes.AIMED: {
         cprRoll.isAimed = true;
+        cprRoll.location = "head";
         break;
       }
       case CPRRolls.rollTypes.AUTOFIRE: {
@@ -287,12 +269,34 @@ const Attackable = function Attackable() {
     if (halfArmorAttacks.includes(weaponType)) {
       cprRoll.rollCardExtraArgs.ignoreHalfArmor = true;
     }
-    const upgradeData = this.getAllUpgradesFor("damage");
-    if (upgradeData.type === "override") {
-      cprRoll.formula = "0d6";
-    }
-    cprRoll.addMod(upgradeData.value);
 
+    // Get all mods for universal damage bonuses from role abilities.
+    let roleMods = [];
+    actor.itemTypes.role.forEach((r) => {
+      roleMods = roleMods.concat(r.getRoleMods("damage", true));
+    });
+    roleMods = roleMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+    cprRoll.addMod(roleMods);
+
+    // Mod from item upgrades that affect damage.
+    const relevantUpgradeMods = this.getAllUpgradeMods("damage").filter((m) => (m.isSituational && m.onByDefault) || !m.isSituational);
+
+    // If there are no mods of type "override", add the mods. Otherwise, set roll formula appropriately.
+    if (relevantUpgradeMods.length > 0) {
+      if (relevantUpgradeMods.some((m) => !(m.type === "override"))) {
+        cprRoll.addMod(relevantUpgradeMods);
+      } else {
+        cprRoll.formula = "0d6";
+      }
+    }
+
+    const effects = actor.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+    const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
+    cprRoll.addMod(damageMods);
     return cprRoll;
   };
 
@@ -312,7 +316,7 @@ const Attackable = function Attackable() {
     if (typeof cprWeaponData.attackmod !== "undefined") {
       returnValue = cprWeaponData.attackmod;
     }
-    const upgradeData = this.getAllUpgradesFor("attackmod");
+    const upgradeData = this.getTotalUpgradeValues("attackmod");
     returnValue = (upgradeData.type === "override") ? upgradeData.value : returnValue + upgradeData.value;
     return returnValue;
   };

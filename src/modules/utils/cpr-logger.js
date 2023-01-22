@@ -31,11 +31,11 @@ export default class LOGGER {
     }
   }
 
-  static error(msg) {
+  static error(msg, ...extraInfo) {
     if (typeof msg === "object") {
-      console.error(msg);
+      console.error(msg, ...extraInfo);
     } else {
-      console.error(`CPR ERR | ${msg}`);
+      console.error(`CPR ERR | ${msg}`, ...extraInfo);
     }
   }
 

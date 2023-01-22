@@ -3,8 +3,7 @@ effects:
   - _id: t0JjeJeKhRUf3IUz
     changes:
       - key: system.stats.body.value
-        mode: 5
-        priority: null
+        mode: 2
         value: '14'
     disabled: false
     duration:
@@ -18,10 +17,12 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/implanted_linearframe_beta.svg
     label: Implanted Linear Frame Beta
+    origin: null
     tint: null
     transfer: true
 flags:

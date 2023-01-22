@@ -21,7 +21,9 @@ system:
       fans/crowds and fight back.</p>
   favorite: false
   hasRoll: true
+  isSituational: false
   mainRoleAbility: Charismatic Impact
+  onByDefault: false
   rank: 4
   skill: '--'
   source: Pg. 144

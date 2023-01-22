@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */
-/* global game, hasProperty, duplicate, mergeObject, Item */
+/* global game, hasProperty, duplicate, mergeObject, Item fromUuidSync */
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
@@ -27,6 +27,7 @@ export default class CPRMigration {
     this.name = "Base CPRMigration Class";
     this.foundryMajorVersion = parseInt(game.version, 10);
     this.migrationFolder = false;
+    this.itemMapping = {};
   }
 
   /**
@@ -376,20 +377,135 @@ export default class CPRMigration {
 
     if (item.effects.size > 0) {
       for (const sourceEffect of item.effects) {
-        const [effect] = await newItem.createEffect();
+        // const [effect] = await newItem.createEffect(false);
         const newData = {
-          _id: effect.id,
-          label: sourceEffect.name,
+          // _id: effect.id,
+          label: sourceEffect.label,
           icon: sourceEffect.icon,
           system: sourceEffect.system,
           changes: sourceEffect.changes,
           flags: sourceEffect.flags,
           disabled: sourceEffect.disabled,
         };
-        await newItem.updateEmbeddedDocuments("ActiveEffect", [newData]);
+        await newItem.createEmbeddedDocuments("ActiveEffect", [newData]);
       }
     }
+    if (!this.itemMapping) this.itemMapping = {};
+    this.itemMapping[newItem.uuid] = { item: item.uuid, actor: item.actor.uuid };
     return newItem;
+  }
+
+  static async restoreOwnedItem(item) {
+    LOGGER.trace("restoreOwnedItems | CPRMigration");
+    const originalData = this.itemMapping[item.uuid];
+
+    if (!originalData) {
+      LOGGER.error(`Attempting to restore item (${item.name}) however source data does not exist.`);
+      return;
+    }
+
+    const actor = fromUuidSync(originalData.actor);
+    const oldOwnedItem = fromUuidSync(originalData.item);
+    const resultArray = await actor.createEmbeddedDocuments("Item", [item.toObject()]);
+    if (resultArray.length === 0) {
+      LOGGER.error(`Attempting to restore item (${item.name}) however new item creation failed on actor ${actor.name}.`);
+      return;
+    }
+
+    const newOwnedItem = resultArray[0];
+    const originalUuid = oldOwnedItem.uuid;
+
+    const installableTypes = CPRSystemUtils.GetTemplateItemTypes("installable");
+    const containerTypes = CPRSystemUtils.GetTemplateItemTypes("container");
+    const upgradableTypes = CPRSystemUtils.GetTemplateItemTypes("upgradable");
+    const loadableTypes = CPRSystemUtils.GetTemplateItemTypes("loadable");
+
+    if (installableTypes.includes(item.type) && actor.system.installedItems.list.includes(originalUuid)) {
+      const newInstalledItems = actor.system.installedItems.list;
+      newInstalledItems.push(newOwnedItem.uuid);
+      await actor.update({ "system.installedItems.list": newInstalledItems });
+    }
+
+    const ownedItems = actor.items.filter((i) => {
+      if (containerTypes.includes(i.type) && i.system.installedItems.list.includes(originalUuid)) return true;
+      if (installableTypes.includes(i.type) && i.system.isInstalled && i.system.installedIn === originalUuid) return true;
+      if (loadableTypes.includes(i.type) && i.system.magazine.ammoData.uuid === originalUuid) return true;
+      return false;
+    });
+
+    const updateList = [];
+
+    if (containerTypes.includes(oldOwnedItem.type)) {
+      updateList.push({ _id: newOwnedItem._id, "system.installedItems": oldOwnedItem.system.installedItems });
+    }
+
+    for (const ownedItem of ownedItems) {
+      const itemUpdates = {
+        _id: ownedItem._id,
+        system: {},
+      };
+
+      if (containerTypes.includes(ownedItem.type) && ownedItem.system.installedItems.list.includes(originalUuid)) {
+        const newInstallList = ownedItem.system.installedItems.list.filter((u) => u !== originalUuid);
+        newInstallList.push(newOwnedItem.uuid);
+        itemUpdates.system.installedItems = { list: newInstallList };
+      }
+
+      if (installableTypes.includes(ownedItem.type) && ownedItem.system.installedIn === originalUuid) {
+        itemUpdates.system.installedIn = newOwnedItem.uuid;
+      }
+
+      if (upgradableTypes.includes(ownedItem.type) && ownedItem.system.upgrades.length > 0
+          && ownedItem.system.upgrades.filter((u) => u.uuid === originalUuid).length > 0) {
+        const newUpgrades = [];
+        for (const upgradeData of ownedItem.system.upgrades) {
+          if (upgradeData.uuid === originalUuid) {
+            upgradeData.uuid = newOwnedItem.uuid;
+          }
+          newUpgrades.push(upgradeData);
+        }
+        itemUpdates.system.upgrades = newUpgrades;
+      }
+
+      if (loadableTypes.includes(ownedItem.type) && ownedItem.system.magazine.ammoData.uuid === originalUuid) {
+        itemUpdates.system.magazine = { ammoData: { name: newOwnedItem.name, uuid: newOwnedItem.uuid } };
+      }
+
+      if (ownedItem.type === "cyberdeck" && ownedItem.system.programs.installed.filter((p) => p.uuid === originalUuid).length > 0) {
+        const oldPrograms = ownedItem.system.programs;
+        const newPrograms = {
+          installed: [],
+          rezzed: [],
+        };
+
+        for (const programData of oldPrograms.installed) {
+          if (programData.uuid === originalUuid) {
+            programData.uuid = newOwnedItem.uuid;
+          }
+          newPrograms.installed.push(programData);
+        }
+
+        for (const programData of oldPrograms.rezzed) {
+          if (programData.uuid === originalUuid) {
+            programData.uuid = newOwnedItem.uuid;
+          }
+          newPrograms.rezzed.push(programData);
+        }
+        itemUpdates.system.programs = newPrograms;
+      }
+
+      if (ownedItem.type === "role" && originalUuid.includes(actor.system.roleInfo.activeNetRole)) {
+        await actor.update({ "system.roleInfo.activeNetRole": newOwnedItem._id });
+      }
+
+      if (Object.keys(itemUpdates.system).length > 0) {
+        updateList.push(itemUpdates);
+      }
+    }
+
+    if (updateList.length > 0) {
+      await actor.updateEmbeddedDocuments("Item", updateList);
+    }
   }
   /**
    * This block of abstract methods breaks down how each document type is migrated. If there

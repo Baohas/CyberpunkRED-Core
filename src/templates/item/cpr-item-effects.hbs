@@ -18,12 +18,20 @@
                         <h4 class="effect-name"><strong>{{effect.label}}</strong><br />
                             {{#each effect.changes as |change|}}
                                 {{!-- "this" is now an individual "change" for the AE object --}}
-                                {{cprGetChangeNameByKey ../../item (lookup effect.flags.cyberpunk-red-core.changes @index) change.key}}
+                                {{cprGetChangeNameByKey ../../item (lookup effect.flags.cyberpunk-red-core.changes.cats @index) change.key}}
                                 {{#if change.value}}
-                                    {{cprEffectModMode change.mode change.value}}{{#unless @last}},{{/unless}}
+                                    {{cprEffectModMode change.mode change.value}}
                                 {{else}}
-                                    0{{#unless @last}},{{/unless}}
-                                {{/if}}
+                                    0
+                                {{~/if}}
+                                {{~#if (cprArrayLikeObjectByIndex effect.flags.cyberpunk-red-core.changes.situational @index "isSituational")}}
+                                    {{~#if (cprArrayLikeObjectByIndex ../system.flags.cyberpunk-red-core.changes.situational @index "onByDefault")}}
+                                      <i data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}" class="fas fa-circle-dot"></i>
+                                    {{~else}}
+                                      <i data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.situationalOffByDefault"}}" class="far fa-circle"></i>
+                                    {{~/if}}
+                                {{~/if}}
+                                {{~#unless @last}},{{/unless}}
                             {{/each}}
                         </h4>
                         <span class="effect-actions text-padding-right effect-controls">

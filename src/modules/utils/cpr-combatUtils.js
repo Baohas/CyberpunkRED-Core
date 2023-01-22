@@ -14,7 +14,7 @@ export default class CPRCombatUtils {
       return null;
     }
     const { combatants } = combat;
-    if (combatants.length === 0) {
+    if (combatants.contents.length === 0) {
       // a combat encounter is viewed but devoid of combatants
       SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.combatUtils.noCombatantsFound"));
       return null;

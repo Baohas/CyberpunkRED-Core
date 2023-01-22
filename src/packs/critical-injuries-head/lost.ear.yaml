@@ -5,20 +5,26 @@ effects:
       - key: bonuses.perception
         mode: 2
         value: '-4'
-    data:
-      flags:
-        cyberpunk-red-core:
-          changes:
-            '0': skill
     disabled: false
     duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
       startTime: null
+      startTurn: null
+      turns: null
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
+          cats:
+            '0': skill
+          situational:
+            '0':
+              isSituational: true
     icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
     label: Lost Ear
+    origin: null
     tint: null
     transfer: true
 flags:

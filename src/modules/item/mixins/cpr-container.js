@@ -19,7 +19,7 @@ const Container = function Container() {
     const itemTemplates = SystemUtils.GetTemplateItemTypes("upgradable");
     let totalSlots = this.system.installedItems.slots;
     if (itemTemplates.includes(this.type)) {
-      const upgradeData = this.getAllUpgradesFor("slots");
+      const upgradeData = this.getTotalUpgradeValues("slots");
       totalSlots = (upgradeData.type === "override") ? upgradeData.value : totalSlots + upgradeData.value;
     }
     return parseInt(totalSlots - this.system.installedItems.usedSlots, 10);

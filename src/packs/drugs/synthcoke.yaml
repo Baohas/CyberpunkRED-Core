@@ -18,9 +18,11 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke.svg
     label: Synthcoke Primary
+    origin: null
     tint: null
     transfer: true
   - _id: 9fYAbvg99knLYj9T
@@ -41,9 +43,11 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
     label: Synthcoke Addiction
+    origin: null
     tint: null
     transfer: true
   - _id: rw9YMhZaP2AQcYJw
@@ -64,9 +68,11 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
     label: Synthcoke Addicted Primary
+    origin: null
     tint: null
     transfer: true
 flags:
@@ -86,11 +92,29 @@ system:
     chat: ''
     unidentified: ''
     value: >-
-      <p>Dose lasts 4 hours.<br />The user has increased REF by 1 point for the
-      duration. The user feels paranoid occasionally.<br /><br />Secondary DV:
-      15.<br />When the dose wears off, the user rolls WILL + Resist
-      Torture/Drugs + 1d10 against Secondary DV. If this fails, they take the
-      secondary effect as noted in the core rule book.&nbsp;</p>
+      <p><strong>Primary Effect</strong></p>
+
+      <p>Dose lasts 4 hours.</p>
+
+      <ul>
+
+      <li>+1 REF by 1 point for the duration</li>
+
+      <li>The user feels paranoid occasionally</li>
+
+      </ul>
+
+      <p><strong>Secondary Effect (DV15)</strong></p>
+
+      <ul>
+
+      <li>-2 REF unless under ther Primary Effect</li>
+
+      <li>GM will tell you when when you crave mor Synthcoke. Roleplay
+      Acordingly</li>
+
+      </ul>
+  equipped: owned
   favorite: false
   price:
     category: everyday

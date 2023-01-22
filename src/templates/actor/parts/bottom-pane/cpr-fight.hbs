@@ -562,6 +562,11 @@
                                 &nbsp;<a class="name item-view{{#if program.isRezzed}} text-italics{{/if}}">{{program.name}}</a>
                             </div>
                             <div class="installed-program-attack-and-damage">
+                              {{#if (cprCompare pc "!==" "blackice")}}
+                                <div class="installed-program-defense">
+                                    <a class="program-execution" data-roll-type="cyberdeckProgram" data-execution-type="def" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}"><i class="fas fa-shield red-fg" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollDefense"}}" ></i></a>
+                                </div>
+                              {{/if}}
                                 <a class="program-execution" data-execution-type="{{#if program.isRezzed}}de{{/if}}rez" data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}" data-program-uuid="{{program.uuid}}">
                                   {{#if program.isRezzed}}
                                     <i class="far fa-arrow-alt-circle-down" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToDeactivateProgram"}}"></i>

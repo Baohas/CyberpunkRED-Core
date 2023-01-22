@@ -9,6 +9,7 @@ import InstallCyberwarePrompt from "../dialog/cpr-install-cyberware-prompt.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import CPRMod from "../rolls/cpr-modifiers.js";
 
 /**
  * CPRActor contains common code between mooks and characters (NPCs and players).
@@ -305,7 +306,7 @@ export default class CPRActor extends Actor {
     derivedStats.currentWoundState = this.system.derivedStats.currentWoundState;
 
     // Death save
-    let basePenalty = this.bonuses.deathSavePenalty; // 0 + active effects
+    let basePenalty = 0; // 0 + active effects
     const critInjury = this.itemTypes.criticalInjury;
     critInjury.forEach((criticalInjury) => {
       const { deathSaveIncrease } = criticalInjury.system;
@@ -661,18 +662,6 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Return the skill mod (number) for a given skill on the actor.
-   *
-   * @param {String} skillName - the skill name (e.g. from CPR.skillList) to look up
-   * @returns {Number} - skill mod or 0 if not found
-   */
-  getSkillMod(skillName) {
-    LOGGER.trace("getSkillMod | CPRActor | Called.");
-    const skillSlug = SystemUtils.slugify(skillName);
-    return this.bonuses[skillSlug];
-  }
-
-  /**
    * After a death save is rolled, process the results: assess pass/fail, and persist data to the actor
    * model. Remember when a save is passed, the next one gets harder.
    *
@@ -742,7 +731,7 @@ export default class CPRActor extends Actor {
     itemTypes.forEach((itemType) => {
       const itemList = this.itemTypes[itemType].filter((i) => i.system.equipped === "equipped" && i.system.isUpgraded);
       itemList.forEach((i) => {
-        const upgradeData = i.getAllUpgradesFor(baseName);
+        const upgradeData = i.getTotalUpgradeValues(baseName);
         if (modType === "override") {
           if (upgradeData.type === "override" && upgradeData.value > modValue) {
             modValue = upgradeData.value;
@@ -1036,9 +1025,10 @@ export default class CPRActor extends Actor {
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
     const cprRoll = new CPRRolls.CPRStatRoll(niceStatName, statValue);
-    cprRoll.addMod(this.getArmorPenaltyMods(statName));
-    cprRoll.addMod(this.getWoundStateMods());
-    cprRoll.addMod(this.getUpgradeMods(statName));
+
+    // Add relevant mods.
+    cprRoll.addMod([{ value: this.getArmorPenaltyMods(statName), source: SystemUtils.Format("CPR.rolls.modifiers.sources.armorPenalty", { stat: niceStatName }) }]);
+    cprRoll.addMod([{ value: this.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
     return cprRoll;
   }
 
@@ -1053,8 +1043,8 @@ export default class CPRActor extends Actor {
     const statName = "cool";
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
-    const cprRoll = new CPRRolls.CPRFacedownRoll(niceStatName, statValue);
-    cprRoll.addMod(this.system.reputation.value);
+    const repValue = this.system.reputation.value;
+    const cprRoll = new CPRRolls.CPRFacedownRoll(niceStatName, statValue, repValue);
     return cprRoll;
   }
 
@@ -1069,7 +1059,16 @@ export default class CPRActor extends Actor {
     const deathSavePenalty = this.system.derivedStats.deathSave.penalty;
     const deathSaveBasePenalty = this.system.derivedStats.deathSave.basePenalty;
     const bodyStat = this.system.stats.body.value;
-    return new CPRRolls.CPRDeathSaveRoll(deathSavePenalty, deathSaveBasePenalty, bodyStat);
+    const cprRoll = new CPRRolls.CPRDeathSaveRoll(deathSavePenalty, deathSaveBasePenalty, bodyStat);
+
+    const effects = this.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
+    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+
+    const deathSavePenaltyMods = CPRMod.getRelevantMods(filteredMods, "deathSavePenalty");
+    cprRoll.addMod(deathSavePenaltyMods);
+    return cprRoll;
   }
 
   // We need a way to unload a specific ammo from all of the weapons
@@ -1449,11 +1448,13 @@ export default class CPRActor extends Actor {
       case "head": {
         armorList.forEach((a) => {
           const cprArmorData = a.system;
-          const upgradeData = a.getAllUpgradesFor("headSp");
+          const upgradeData = a.getTotalUpgradeValues("headSp");
           cprArmorData.headLocation.sp = Number(cprArmorData.headLocation.sp);
           cprArmorData.headLocation.ablation = Number(cprArmorData.headLocation.ablation);
           const armorSp = (upgradeData.type === "override") ? upgradeData.value : cprArmorData.headLocation.sp + upgradeData.value;
-          cprArmorData.headLocation.ablation = Math.min((cprArmorData.headLocation.ablation + ablation), armorSp);
+          cprArmorData.headLocation.ablation = ablation < 0
+            ? Math.max((cprArmorData.headLocation.ablation + ablation), 0)
+            : Math.min((cprArmorData.headLocation.ablation + ablation), armorSp);
           updateList.push({ _id: a.id, system: cprArmorData });
         });
         await this.updateEmbeddedDocuments("Item", updateList);
@@ -1469,9 +1470,11 @@ export default class CPRActor extends Actor {
           const cprArmorData = a.system;
           cprArmorData.bodyLocation.sp = Number(cprArmorData.bodyLocation.sp);
           cprArmorData.bodyLocation.ablation = Number(cprArmorData.bodyLocation.ablation);
-          const upgradeData = a.getAllUpgradesFor("bodySp");
+          const upgradeData = a.getTotalUpgradeValues("bodySp");
           const armorSp = (upgradeData.type === "override") ? upgradeData.value : cprArmorData.bodyLocation.sp + upgradeData.value;
-          cprArmorData.bodyLocation.ablation = Math.min((cprArmorData.bodyLocation.ablation + ablation), armorSp);
+          cprArmorData.bodyLocation.ablation = ablation < 0
+            ? Math.max((cprArmorData.bodyLocation.ablation + ablation), 0)
+            : Math.min((cprArmorData.bodyLocation.ablation + ablation), armorSp);
           updateList.push({ _id: a.id, system: cprArmorData });
         });
         await this.updateEmbeddedDocuments("Item", updateList);
@@ -1508,16 +1511,19 @@ export default class CPRActor extends Actor {
    * Create an active effect on this actor. This method belongs here so migration scripts can
    * dynamically generate effects based on custom mods already on the actor from earlier versions.
    *
+   * @param {Boolean} render - Render the effect's sheet or not. Default true.
    * @returns {CPRActiveEffect} the new document
    */
-  createEffect() {
+  async createEffect(render = true) {
     LOGGER.trace("createEffect | CPRActor | Called.");
-    return this.createEmbeddedDocuments("ActiveEffect", [{
+    const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [{
       label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
       icon: "icons/svg/aura.svg",
       origin: this.uuid,
       disabled: false,
     }]);
+
+    return effectDoc[0].sheet.render(render);
   }
 
   copyEffect(effect) {
@@ -1536,7 +1542,7 @@ export default class CPRActor extends Actor {
     LOGGER.trace("deleteEffect | CPRActor | Called.");
     const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     if (setting) {
-      const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${effect.system.label}?`;
+      const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${effect.label}?`;
       const confirmDelete = await ConfirmPrompt.RenderPrompt(
         SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
         promptMessage,

@@ -20,7 +20,7 @@ system:
     unidentified: ''
     value: >-
       <p>Allows you to see detail up to 800m/yds. +1 to Single Shot/Aimed Shots
-      for targets greater than 51m/yds.&nbsp;</p>
+      for targets greater than 50m/yds.&nbsp;</p>
   dvTable: ''
   equipped: owned
   favorite: false
@@ -46,8 +46,10 @@ system:
     value: 0
   modifiers:
     attackmod:
+      isSituational: true
+      onByDefault: false
       type: modifier
-      value: null
+      value: 1
     body:
       type: modifier
       value: null
@@ -55,6 +57,7 @@ system:
       type: modifier
       value: null
     damage:
+      isSituational: false
       type: modifier
       value: null
     dex:

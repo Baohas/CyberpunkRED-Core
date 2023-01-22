@@ -191,7 +191,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   _repairArmor(event) {
     LOGGER.trace("_repairArmor | CPRCharacterActorSheet | Called.");
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
-    const upgradeData = item.getAllUpgradesFor("shieldHp");
+    const upgradeData = item.getTotalUpgradeValues("shieldHp");
     const currentArmorBodyValue = item.system.bodyLocation.sp;
     const currentArmorHeadValue = item.system.headLocation.sp;
     const currentArmorShieldValue = (upgradeData.type === "override") ? upgradeData.value : item.system.shieldHitPoints.max + upgradeData.value;
@@ -575,8 +575,8 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         break;
       }
       case "atk":
-      case "damage":
-      case "def": {
+      case "def":
+      case "damage": {
         await this._onRoll(event);
         break;
       }

@@ -48,15 +48,17 @@
                 <div class="change-key bg-black">{{ localize "EFFECT.ChangeKey" }}</div>
                 <div class="change-value bg-black">{{ localize "EFFECT.ChangeValue" }}</div>
                 <div class="change-mode bg-black">{{ localize "EFFECT.ChangeMode" }}</div>
-                <div class="effect-controls bg-black"> {{ localize "CPR.effectSheet.actions" }}</div>
+                <div class="situational bg-black">{{ localize "CPR.effectSheet.header.situational" }}</div>
+                <div class="on-by-default bg-black">{{ localize "CPR.effectSheet.header.onByDefault" }}</div>
+                <div class="change-actions bg-black"> {{ localize "CPR.effectSheet.actions" }}</div>
             </header>
             {{#each data.changes as |change i|}}
             {{!-- "this" is now an element in the changes array of the effect --}}
             <li class="flexrow">
                 <div class="change-key" data-index="{{i}}">
                     <span class="form-fields effect-key-category" data-index="{{i}}">
-                        <select class="key-cat" name="flags.cyberpunk-red-core.changes.{{i}}" data-dtype="String">
-                            {{#select (lookup ../data.flags.cyberpunk-red-core.changes i)}}
+                        <select class="key-cat" name="flags.cyberpunk-red-core.changes.cats.{{i}}" data-dtype="String">
+                            {{#select (lookup ../data.flags.cyberpunk-red-core.changes.cats i)}}
                                 {{#each (cprFindConfigObj "activeEffectKeys" ) as |effectCategory ec|}}
                                 {{!-- Dynamically create the various effect keys. Added here to pass language pipeline:
                                     CPR.effectSheet.keyCategory.combat
@@ -71,36 +73,36 @@
                             {{/select}}
                         </select>
                     </span>
-                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "custom")}}
+                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "custom")}}
                         <input class="key-input" type="text" name="changes.{{i}}.key" value="{{change.key}}"/>
                     {{/if}}
-                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "skill")}}
-                        <select class="key-key" name="changes.{{i}}.key" data-dtype="String">
+                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "skill")}}
+                        <select class="key-key force-submit" name="changes.{{i}}.key" data-dtype="String">
                             {{#select change.key}}
-                                    {{#each (cprGetSkillsForEffects ../this) as |modkeyname modkey|}}
-                                        <option value="{{modkey}}">{{localize modkeyname}}</option>
-                                    {{/each}}
-                                {{/select}}
-                            </select>
+                                {{#each (cprGetSkillsForEffects ../this) as |modkeyname modkey|}}
+                                    <option {{#if (cprObjectListContains ../../data.changes "key" modkey)}}disabled{{/if}} value="{{modkey}}">{{localize modkeyname}}</option>
+                                {{/each}}
+                            {{/select}}
+                        </select>
                     {{/if}}
-                    {{#if (cprListContains "combat,netrun,role,stat" (lookup ../data.flags.cyberpunk-red-core.changes i))}}
-                        <select class="key-key" name="changes.{{i}}.key" data-dtype="String">
+                    {{#if (cprListContains "combat,netrun,role,stat" (lookup ../data.flags.cyberpunk-red-core.changes.cats i))}}
+                        <select class="key-key force-submit" name="changes.{{i}}.key" data-dtype="String">
                             {{#select change.key}}
-                                {{#each (cprFindConfigValue "activeEffectKeys" (lookup ../data.flags.cyberpunk-red-core.changes i)) as |modkeyname modkey|}}
-                                    <option value="{{modkey}}">{{localize modkeyname}}</option>
+                                {{#each (cprFindConfigValue "activeEffectKeys" (lookup ../data.flags.cyberpunk-red-core.changes.cats i)) as |modkeyname modkey|}}
+                                    <option {{#if (cprObjectListContains ../../data.changes "key" modkey)}}disabled{{/if}} value="{{modkey}}">{{localize modkeyname}}</option>
                                 {{/each}}
                             {{/select}}
                         </select>
                     {{/if}}
                 </div>
-                <div class="change-value">
+                <div class="change-value force-submit">
                     <input type="text" name="changes.{{i}}.value" value="{{change.value}}"/>
                 </div>
-                <div class="change-mode">
+                <div class="change-mode force-submit">
                     {{!-- Using other modes for skills means we need to make changes to actor.bonuses. Rather than 0 all values out, it
                                 needs to persist the existing value, and the mode so the math applies correctly. This has implications
                                 on how to present in the actor sheet too. --}}
-                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes i) "===" "stat")}}
+                    {{#if (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "stat")}}
                         <select name="changes.{{i}}.mode" data-dtype="Number">
                             {{#select change.mode}}
                                 {{#each (cprFindConfigObj "effectModifierModes") as |modename modenum|}}
@@ -113,8 +115,19 @@
                         <span>{{localize "CPR.effectSheet.modifiers.addSubtract"}} <i class="fas fa-question-circle" data-tooltip="{{localize "CPR.effectSheet.info.deleteAndModesComing"}}"></i></span>
                     {{/if}}
                 </div>
+                <div class="situational">
+                  <input name="isSituational" class="toggle-situational" type="checkbox" data-index={{i}}
+                    {{checked (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational i "isSituational")}}
+                    {{disabled (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "stat")}}>
+                </div>
+                <div class="on-by-default">
+                    <input {{#unless (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational i "isSituational")}}disabled{{/unless}}
+                      name="onByDefault" class="toggle-on-by-default" type="checkbox" data-index={{i}}
+                      {{checked (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational i "onByDefault")}}
+                      {{disabled (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "stat")}}>
+                </div>
                 <div class="change-actions">
-                    <a class="effect-change-control" data-action="delete" data-index={{i}}><i class="fas fa-trash-alt fg-red"></i></a>
+                  <a class="effect-change-control" data-action="delete" data-index={{i}}><i class="fas fa-trash"></i></a>
                 </div>
             </li>
             {{/each}}

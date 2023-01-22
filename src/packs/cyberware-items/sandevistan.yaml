@@ -4,7 +4,6 @@ effects:
     changes:
       - key: bonuses.initiative
         mode: 2
-        priority: null
         value: '3'
     disabled: false
     duration:
@@ -18,7 +17,12 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': combat
+          cats:
+            '0': combat
+          situational:
+            '0':
+              isSituational: true
+              onByDefault: true
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/sandevistan.svg
     label: Sandevistan
     origin: null

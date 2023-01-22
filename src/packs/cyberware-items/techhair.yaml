@@ -18,9 +18,11 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
+          cats:
+            '0': skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/chemskin.svg
     label: Chemskin & Techhair
+    origin: null
     tint: null
     transfer: true
 flags:

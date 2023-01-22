@@ -63,9 +63,10 @@ const Effects = function Effects() {
    * Note: It would be nice to add custom properties, but they seem to be ignored by Foundry.
    * This is why we provide a custom CPRActiveEffect object elsewhere in the code base.
    *
+   * @param {Boolean} render - Render the effect's sheet or not. Default true.
    * @returns {ActiveEffect} - the newly created document
    */
-  this.createEffect = function createEffect() {
+  this.createEffect = async function createEffect(render = true) {
     LOGGER.trace("createEffect | Effects | Called.");
     if (this.isOwned) {
       SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning"));
@@ -73,12 +74,14 @@ const Effects = function Effects() {
     }
     let disabled = false;
     if (this.system.usage === "toggled" || this.system.usage === "snorted") disabled = true;
-    return this.createEmbeddedDocuments("ActiveEffect", [{
+    const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [{
       label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
       icon: "icons/svg/aura.svg",
       origin: this.uuid,
       disabled,
     }]);
+
+    return effectDoc[0].sheet.render(render);
   };
 
   this.copyEffect = function copyEffect(eid) {
