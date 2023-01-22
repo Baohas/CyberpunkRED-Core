@@ -15,7 +15,7 @@ export default class ImprovedDialogMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | ImprovedDialog Migration");
     super();
-    this.version = 7;
+    this.version = 8;
     this.name = "Improved Dialog Migration";
   }
 
