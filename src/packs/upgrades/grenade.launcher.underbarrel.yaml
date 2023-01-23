@@ -26,7 +26,7 @@ system:
       attached, the weapon can't be concealed under clothing.</p>
 
       <p>Note that the weapon inherits any modifiers from the gun it is
-      attached to, such as other attachment and quality.</p>
+      attached to, such as other attachments and quality.</p>
   dvTable: DV Grenade Launcher
   equipped: owned
   favorite: false

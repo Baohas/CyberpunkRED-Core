@@ -17,6 +17,7 @@
 - Fixed a capitlaisation issue in the medical grade cyber limbs. Thanks ButchAmy!
 - Fixed incorrect page referance numbers for medical grade cyber limbs
 - Fixed medical grade cyber limbs incorrectly accepting upgrades
+- Fixed a typo in the underbarrel grenade launcher description
 
 ## Version 0.86.0 | Date: 2023-01-21
 
