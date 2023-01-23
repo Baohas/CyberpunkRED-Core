@@ -18,6 +18,7 @@
 - Fixed incorrect page referance numbers for medical grade cyber limbs
 - Fixed medical grade cyber limbs incorrectly accepting upgrades
 - Fixed a typo in the underbarrel grenade launcher description
+- Added back the underbarrel shotgun that was accidentally deleted
 
 ## Version 0.86.0 | Date: 2023-01-21
 
