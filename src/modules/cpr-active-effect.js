@@ -46,17 +46,23 @@ export default class CPRActiveEffect extends ActiveEffect {
     LOGGER.trace("getEffectParent | CPRActiveEffect | Called.");
     if (!this.origin) return null;
     // eslint-disable-next-line no-unused-vars
-    const [parentType, parentId, documentType, documentId, childType, childId] = this.origin?.split(".") ?? [];
+    const [parentType, parentId, documentType, documentId, childType, childId] =
+      this.origin?.split(".") ?? [];
     if (parentType === "Actor" && !documentType) return this.parent;
     if (parentType === "Compendium") return null;
-    if (parentType === "Scene" && documentType === "Token" && !childType) return this.parent;
+    if (parentType === "Scene" && documentType === "Token" && !childType)
+      return this.parent;
     if (parentType === "Item") return this.parent;
     if (parentType === "Actor" && documentType === "Item") {
       const item = this.parent.items.get(documentId);
       if (!item) return null;
       return item;
     }
-    if (parentType === "Scene" && documentType === "Token" && childType === "Item") {
+    if (
+      parentType === "Scene" &&
+      documentType === "Token" &&
+      childType === "Item"
+    ) {
       const item = this.parent.items.get(childId);
       if (!item) return null;
       return item;
@@ -116,7 +122,7 @@ export default class CPRActiveEffect extends ActiveEffect {
   determineSuppression() {
     LOGGER.trace("determineSuppression | CPRActiveEffect | Called.");
     this.system.isSuppressed = false;
-    if (this.system.disabled || (this.parent.documentName !== "Actor")) return;
+    if (this.system.disabled || this.parent.documentName !== "Actor") return;
     const doc = this.getEffectParent();
     if (!doc) return; // happens on item delete
     if (doc instanceof CPRActor) return; // we never suppress actor effects

@@ -40,16 +40,23 @@ export default class CPRRoleItem extends CPRItem {
       }
       if (cprItemData.skill !== "--" && cprItemData.skill !== "varying") {
         skillName = cprItemData.skill;
-        const skillObject = actor.itemTypes.skill.find((i) => skillName === i.name);
+        const skillObject = actor.itemTypes.skill.find(
+          (i) => skillName === i.name
+        );
         if (skillObject !== undefined) {
           skillValue = skillObject.system.level;
         } else {
-          SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.noskillbythatname"));
+          SystemUtils.DisplayMessage(
+            "error",
+            SystemUtils.Localize("CPR.noskillbythatname")
+          );
         }
       } else if (cprItemData.skill === "varying") {
         skillName = "varying";
         if (cprItemData.stat !== "--") {
-          skillList = actor.itemTypes.skill.filter((s) => s.system.stat === cprItemData.stat);
+          skillList = actor.itemTypes.skill.filter(
+            (s) => s.system.stat === cprItemData.stat
+          );
         } else {
           skillList = actor.itemTypes.skill;
         }
@@ -57,7 +64,9 @@ export default class CPRRoleItem extends CPRItem {
     }
 
     if (rollInfo.rollSubType === "subRoleAbility") {
-      const subRoleAbility = cprItemData.abilities.find((a) => a.name === rollInfo.subRoleName);
+      const subRoleAbility = cprItemData.abilities.find(
+        (a) => a.name === rollInfo.subRoleName
+      );
       roleName = subRoleAbility.name;
       roleValue = Number.parseInt(subRoleAbility.rank, 10);
       if (subRoleAbility.stat !== "--") {
@@ -66,16 +75,23 @@ export default class CPRRoleItem extends CPRItem {
       }
       if (subRoleAbility.skill !== "--" && subRoleAbility.skill !== "varying") {
         skillName = subRoleAbility.skill.name;
-        const skillObject = actor.itemTypes.skill.find((i) => skillName === i.name);
+        const skillObject = actor.itemTypes.skill.find(
+          (i) => skillName === i.name
+        );
         if (skillObject !== undefined) {
           skillValue = skillObject.system.level;
         } else {
-          SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.noskillbythatname"));
+          SystemUtils.DisplayMessage(
+            "error",
+            SystemUtils.Localize("CPR.noskillbythatname")
+          );
         }
       } else if (subRoleAbility.skill === "varying") {
         skillName = "varying";
         if (subRoleAbility.stat !== "--") {
-          skillList = actor.itemTypes.skill.filter((s) => s.system.stat === subRoleAbility.stat);
+          skillList = actor.itemTypes.skill.filter(
+            (s) => s.system.stat === subRoleAbility.stat
+          );
         } else {
           skillList = actor.itemTypes.skill;
         }
@@ -84,15 +100,38 @@ export default class CPRRoleItem extends CPRItem {
 
     const effects = actor.effects.contents;
     const allMods = CPRMod.getAllModifiers(effects);
-    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+    const filteredMods = allMods.filter(
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+    );
 
-    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName));
-    const roleMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(roleName));
+    const skillMods = CPRMod.getRelevantMods(
+      filteredMods,
+      SystemUtils.slugify(skillName)
+    );
+    const roleMods = CPRMod.getRelevantMods(
+      filteredMods,
+      SystemUtils.slugify(roleName)
+    );
 
-    const cprRoll = new CPRRolls.CPRRoleRoll(roleName, roleValue, skillName, skillValue, statName, statValue, skillList);
+    const cprRoll = new CPRRolls.CPRRoleRoll(
+      roleName,
+      roleValue,
+      skillName,
+      skillValue,
+      statName,
+      statValue,
+      skillList
+    );
     cprRoll.addMod(skillMods); // add skill bonuses from Active Effects
     cprRoll.addMod(roleMods); // add role bonuses from Active Effects
-    cprRoll.addMod([{ value: actor.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
+    cprRoll.addMod([
+      {
+        value: actor.getWoundStateMods(),
+        source: SystemUtils.Localize(
+          "CPR.rolls.modifiers.sources.woundStatePenalty"
+        ),
+      },
+    ]);
     return cprRoll;
   }
 
@@ -113,7 +152,8 @@ export default class CPRRoleItem extends CPRItem {
     if (isUniversalBonus) {
       category = "combat";
       if (bonusName !== "initiative") {
-        const capitalizedBonus = bonusName.charAt(0).toUpperCase() + bonusName.slice(1);
+        const capitalizedBonus =
+          bonusName.charAt(0).toUpperCase() + bonusName.slice(1);
         key = `bonuses.universal${capitalizedBonus}`;
       }
     }
@@ -123,7 +163,11 @@ export default class CPRRoleItem extends CPRItem {
 
     const roleBonusArray = [];
     // Check whether the main ability has the applicable bonus/universal bonus.
-    if (this.system[roleBonusKey].some((b) => b.name === bonusName || b === bonusName)) {
+    if (
+      this.system[roleBonusKey].some(
+        (b) => b.name === bonusName || b === bonusName
+      )
+    ) {
       const id = `${this.name}-${key}-${this.id}-main`; // Unique ID
       const value = Math.floor(this.system.rank / this.system.bonusRatio);
       const source = this.system.mainRoleAbility;
@@ -142,7 +186,9 @@ export default class CPRRoleItem extends CPRItem {
     }
     // Check whether each sub ability has the applicable bonus/universal bonus.
     this.system.abilities.forEach((a, index) => {
-      if (a?.[roleBonusKey].some((b) => b.name === bonusName || b === bonusName)) {
+      if (
+        a?.[roleBonusKey].some((b) => b.name === bonusName || b === bonusName)
+      ) {
         const id = `${a.name}-${key}-${this.id}-${index}`;
         const value = Math.floor(a.rank / a.bonusRatio);
         const source = a.name;

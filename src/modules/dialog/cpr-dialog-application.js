@@ -55,10 +55,14 @@ export default class CPRDialog extends FormApplication {
     $("input[type=text]").focusin(() => $(this).select());
     $("input[type=number]").focusin(() => $(this).select());
 
-    html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event)); // Currently unused, see below.
+    html
+      .find(".item-checkbox")
+      .click((event) => this._itemCheckboxToggle(event)); // Currently unused, see below.
     html.find(".confirm-roll").click((event) => this.confirmDialog(event));
     html.find(".cancel-roll").click((event) => this.closeDialog(event));
-    this.element.find(".header-button.close").click((event) => this.closeDialog(event));
+    this.element
+      .find(".header-button.close")
+      .click((event) => this.closeDialog(event));
   }
 
   /**
@@ -75,7 +79,10 @@ export default class CPRDialog extends FormApplication {
     if (hasProperty(dialogData, target)) {
       setProperty(dialogData, target, value);
     } else {
-      LOGGER.error(`The target (${target}) does not exist in the dialogData.`, dialogData);
+      LOGGER.error(
+        `The target (${target}) does not exist in the dialogData.`,
+        dialogData
+      );
     }
     this.render();
   }

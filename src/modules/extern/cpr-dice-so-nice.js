@@ -10,16 +10,22 @@ import LOGGER from "../utils/cpr-logger.js";
 export default class DiceSoNice {
   static async ShowDiceSoNice(roll, rollModeOverride) {
     LOGGER.trace("ShowDiceSoNice | DiceSoNice | called.");
-    if (game.modules.get("dice-so-nice") && game.modules.get("dice-so-nice").active) {
+    if (
+      game.modules.get("dice-so-nice") &&
+      game.modules.get("dice-so-nice").active
+    ) {
       let whisper = null;
       let blind = false;
-      const rollMode = rollModeOverride || game.settings.get("core", "rollMode");
+      const rollMode =
+        rollModeOverride || game.settings.get("core", "rollMode");
       switch (rollMode) {
-        case "blindroll": { // GM only
+        case "blindroll": {
+          // GM only
           blind = true;
           break;
         }
-        case "gmroll": { // GM + rolling player
+        case "gmroll": {
+          // GM + rolling player
           const gmList = game.users.filter((user) => user.isGM);
           const gmIDList = [];
           gmList.forEach((gm) => gmIDList.push(gm._id));
@@ -30,7 +36,8 @@ export default class DiceSoNice {
           whisper = [game.user.id];
           break;
         }
-        case "roll": { // everybody
+        case "roll": {
+          // everybody
           const userList = game.users.filter((user) => user.active);
           const userIDList = [];
           userList.forEach((user) => userIDList.push(user._id));

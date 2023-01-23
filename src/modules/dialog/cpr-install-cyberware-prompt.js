@@ -25,18 +25,20 @@ export default class InstallCyberwarePrompt {
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.global.generic.install"),
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: (html) => _onCancel(html),
             },
           },
           default: "confirm",
-          render: LOGGER.trace("render | Dialog InstallCyberwarePrompt | Called."),
+          render: LOGGER.trace(
+            "render | Dialog InstallCyberwarePrompt | Called."
+          ),
           close: () => {
             reject(new Error("Promise rejected: Window Closed"));
           },

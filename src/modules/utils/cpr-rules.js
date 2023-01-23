@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import SystemUtils from "./cpr-systemUtils.js";
 import LOGGER from "./cpr-logger.js";
 

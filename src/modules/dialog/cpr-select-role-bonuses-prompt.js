@@ -18,7 +18,9 @@ export default class SelectRoleBonuses extends CPRDialog {
     this.skillList = dialogData.skillList;
     this.roleData = dialogData.roleData;
     this.options.template = `systems/${game.system.id}/templates/dialog/cpr-select-role-bonuses-prompt.hbs`;
-    this.options.title = SystemUtils.Localize("CPR.dialog.selectRoleBonuses.title");
+    this.options.title = SystemUtils.Localize(
+      "CPR.dialog.selectRoleBonuses.title"
+    );
   }
 
   /**
@@ -51,7 +53,10 @@ export default class SelectRoleBonuses extends CPRDialog {
     });
 
     // Make sure that we are not dividing by 0 or null/undefined.
-    const bonusRatio = !formData.bonusRatio || formData.bonusRatio === 0 ? 1 : formData.bonusRatio;
+    const bonusRatio =
+      !formData.bonusRatio || formData.bonusRatio === 0
+        ? 1
+        : formData.bonusRatio;
 
     // Collect relevant data into one object.
     const updatedData = {

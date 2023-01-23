@@ -1,129 +1,128 @@
 // Container Sheet Layout
 .container-sheet {
-    font-family: "Jost";
+  font-family: "Jost";
 
-    // The basic sheet should be white
-    background-color: @chrome-white;
+  // The basic sheet should be white
+  background-color: @chrome-white;
 
-    // Utilize grid for element placement on the sheet
+  // Utilize grid for element placement on the sheet
+  display: grid;
+
+  // We want white borders between each element
+  grid-gap: 5px;
+
+  // At a top level, we will have 2x1 grid
+  // +-----------------------------+
+  // | img, name       | inventory |
+  // | settings, money | content   |
+  // +-----------------------------+
+  grid-template-columns: 210px auto;
+  grid-template-areas: "pane-left pane-right";
+
+  // Pane for main and stats
+  .left-pane {
+    grid-area: pane-left;
     display: grid;
 
-    // We want white borders between each element
+    max-width: 210px;
     grid-gap: 5px;
+    padding: 5px;
 
-    // At a top level, we will have 2x1 grid
-    // +-----------------------------+
-    // | img, name       | inventory |
-    // | settings, money | content   |
-    // +-----------------------------+
-    grid-template-columns: 210px auto;
-    grid-template-areas: "pane-left pane-right";
+    grid-template-rows: 200px 30px 30px 27px auto;
+    grid-template-areas:
+      "image"
+      "name"
+      "settings"
+      "eurobucks"
+      "settingsgm";
 
-    // Pane for main and stats
-    .left-pane {
-        grid-area: pane-left;
-        display  : grid;
+    .image-block {
+      grid-area: image;
+      width: 200px;
+      height: 200px;
+      background-color: @wyrm-red;
+      overflow: hidden;
+    }
 
-        max-width : 210px;
-        grid-gap  : 5px;
+    .name-section {
+      grid-area: name;
+    }
+
+    .settings-section {
+      grid-area: settings;
+
+      .trade-with-label {
+        display: flex;
+        align-items: center;
         padding: 5px;
+      }
 
-        grid-template-rows: 200px 30px 30px 27px auto;
-        grid-template-areas:
-            "image"
-            "name"
-            "settings"
-            "eurobucks"
-            "settingsgm";
-
-        .image-block {
-            grid-area       : image;
-            width           : 200px;
-            height          : 200px;
-            background-color: @wyrm-red;
-            overflow: hidden;
-        }
-
-        .name-section {
-            grid-area: name;
-        }
-
-        .settings-section {
-          grid-area: settings;
-
-          .trade-with-label {
-            display: flex;
-            align-items: center;
-            padding: 5px;
-          }
-
-          .trade-with-dropdown {
-            width: 105px;
-            float: right;
-            padding-right: 5px;
-          }
-        }
-
-        .settings-gm-section {
-          grid-area: settingsgm;
-
-          .container-type-label {
-            display: flex;
-            align-items: center;
-            padding: 5px;
-          }
-
-          .container-type-dropdown {
-            width: 150px;
-            float: right;
-            padding-right: 5px;
-          }
-
-          .eurobucks-modify-reason-label {
-            padding: 5px;
-            max-width: fit-content;
-          }
-
-          .container-type-settings {
-            padding: 5px;
-          }
-
-          .container-shop-settings {
-            padding: 5px;
-          }
-
-          .container-eurobucks-ledger {
-            padding: 5px;
-          }
-        }
-
-        .eurobucks-section {
-          grid-area: eurobucks;
-          padding: 5px;
-          height: 27px;
-
-          .eurobucks-label {
-            display: flex;
-            align-items: center;
-          }
-        }
-
+      .trade-with-dropdown {
+        width: 105px;
+        float: right;
+        padding-right: 5px;
+      }
     }
 
-    .right-pane {
-        grid-area: pane-right;
+    .settings-gm-section {
+      grid-area: settingsgm;
 
-        display  : flex;
-        height   : auto;
+      .container-type-label {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+      }
 
-        border-color: @wyrm-red;
-        border-style: solid;
-        border-width: 5px;
+      .container-type-dropdown {
+        width: 150px;
+        float: right;
+        padding-right: 5px;
+      }
 
-        .right-content {
-          min-width: 750px;
-          width: 100%;
-          overflow-y: scroll;
-        }
+      .eurobucks-modify-reason-label {
+        padding: 5px;
+        max-width: fit-content;
+      }
+
+      .container-type-settings {
+        padding: 5px;
+      }
+
+      .container-shop-settings {
+        padding: 5px;
+      }
+
+      .container-eurobucks-ledger {
+        padding: 5px;
+      }
     }
+
+    .eurobucks-section {
+      grid-area: eurobucks;
+      padding: 5px;
+      height: 27px;
+
+      .eurobucks-label {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .right-pane {
+    grid-area: pane-right;
+
+    display: flex;
+    height: auto;
+
+    border-color: @wyrm-red;
+    border-style: solid;
+    border-width: 5px;
+
+    .right-content {
+      min-width: 750px;
+      width: 100%;
+      overflow-y: scroll;
+    }
+  }
 }

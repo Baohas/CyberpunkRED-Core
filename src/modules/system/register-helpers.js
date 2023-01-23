@@ -66,7 +66,9 @@ export default function registerHandlebarsHelpers() {
     if (actor === null) {
       item = fromUuidSync(itemId);
     } else {
-      item = actor.items.find((i) => i.id === itemId) ? actor.items.find((i) => i.id === itemId) : actor.items.find((i) => i.uuid === itemId);
+      item = actor.items.find((i) => i.id === itemId)
+        ? actor.items.find((i) => i.id === itemId)
+        : actor.items.find((i) => i.uuid === itemId);
     }
     return item;
   });
@@ -159,7 +161,10 @@ export default function registerHandlebarsHelpers() {
     const val = parseFloat(value);
     const re = `\\d(?=(\\d{3})+${dl > 0 ? "\\D" : "$"})`;
     const num = val.toFixed(Math.max(0, Math.floor(dl)));
-    return (ds ? num.replace(".", ds) : num).replace(new RegExp(re, "g"), `$&${ts}`);
+    return (ds ? num.replace(".", ds) : num).replace(
+      new RegExp(re, "g"),
+      `$&${ts}`
+    );
   });
 
   /**
@@ -186,8 +191,11 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprFilter", (objList, key, value) => {
     LOGGER.trace("cprFilter | handlebarsHelper | Called.");
     if (objList === undefined) {
-      const warnText = "Improper use of the filter helper. This should not occur. Always provide an object list and not an undefined value.";
-      LOGGER.warn(`${warnText} The following arguments were passed: objList = ${objList}, key = ${key}, value = ${value}`);
+      const warnText =
+        "Improper use of the filter helper. This should not occur. Always provide an object list and not an undefined value.";
+      LOGGER.warn(
+        `${warnText} The following arguments were passed: objList = ${objList}, key = ${key}, value = ${value}`
+      );
       return [];
     }
     const filteredList = objList.filter((obj) => {
@@ -260,30 +268,36 @@ export default function registerHandlebarsHelpers() {
   /**
    * Returns true if an array contains a desired element
    */
-  Handlebars.registerHelper("cprObjectListContains", (objectList, data, val) => {
-    LOGGER.trace("cprObjectListContains | handlebarsHelper | Called.");
-    const array = objectList;
-    if (array) {
-      return array.some((o) => o[data] === val);
+  Handlebars.registerHelper(
+    "cprObjectListContains",
+    (objectList, data, val) => {
+      LOGGER.trace("cprObjectListContains | handlebarsHelper | Called.");
+      const array = objectList;
+      if (array) {
+        return array.some((o) => o[data] === val);
+      }
+      return false;
     }
-    return false;
-  });
+  );
 
   /**
    * Returns true if an array contains a desired element
    */
-  Handlebars.registerHelper("cprArrayLikeObjectByIndex", (arrayLikeObject, index, val) => {
-    LOGGER.trace("cprArrayLikeObjectByIndex | handlebarsHelper | Called.");
-    // Return false if arrayLikeObject is not an object, so that we avoid sheet-breaking errors.
-    if (!(typeof arrayLikeObject === "object")) return false;
+  Handlebars.registerHelper(
+    "cprArrayLikeObjectByIndex",
+    (arrayLikeObject, index, val) => {
+      LOGGER.trace("cprArrayLikeObjectByIndex | handlebarsHelper | Called.");
+      // Return false if arrayLikeObject is not an object, so that we avoid sheet-breaking errors.
+      if (!(typeof arrayLikeObject === "object")) return false;
 
-    const array = Object.values(arrayLikeObject);
-    if (array) {
-      return array[index][val];
+      const array = Object.values(arrayLikeObject);
+      if (array) {
+        return array[index][val];
+      }
+
+      return false;
     }
-
-    return false;
-  });
+  );
 
   /**
    * Accepts a string and replaces VAR with the desired value. Usually used to dynamically
@@ -419,7 +433,9 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprHasCyberneticWeapons", (actor) => {
     LOGGER.trace("cprHasCyberneticWeapons | handlebarsHelper | Called.");
-    const cyberneticWeapons = actor.itemTypes.cyberware.filter((cw) => cw.system.isInstalled && cw.system.isWeapon);
+    const cyberneticWeapons = actor.itemTypes.cyberware.filter(
+      (cw) => cw.system.isInstalled && cw.system.isWeapon
+    );
     return cyberneticWeapons.length > 0;
   });
 
@@ -429,7 +445,10 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprFireMode", (actor, firemode, weaponID) => {
     LOGGER.trace("cprFireMode | handlebarsHelper | Called.");
-    const flag = getProperty(actor, `flags.${game.system.id}.firetype-${weaponID}`);
+    const flag = getProperty(
+      actor,
+      `flags.${game.system.id}.firetype-${weaponID}`
+    );
     if (flag === firemode) {
       return true;
     }
@@ -441,7 +460,10 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprFireFlag", (actor, firetype, weaponID) => {
     LOGGER.trace("cprFireFlag | handlebarsHelper | Called.");
-    const flag = getProperty(actor, `flags.${game.system.id}.firetype-${weaponID}`);
+    const flag = getProperty(
+      actor,
+      `flags.${game.system.id}.firetype-${weaponID}`
+    );
     if (flag === firetype) {
       return "checked";
     }
@@ -451,7 +473,9 @@ export default function registerHandlebarsHelpers() {
   /**
    * Return a system setting value given the name
    */
-  Handlebars.registerHelper("cprSystemConfig", (settingName) => game.settings.get(game.system.id, settingName));
+  Handlebars.registerHelper("cprSystemConfig", (settingName) =>
+    game.settings.get(game.system.id, settingName)
+  );
 
   /**
    * Some skills and roles have spaces and/or parantheses in their name. When substituting in translated strings,
@@ -459,41 +483,50 @@ export default function registerHandlebarsHelpers() {
    *
    * Example: Resist Torture/Drugs -> Resist Torture Or Drugs
    */
-  Handlebars.registerHelper("cprGetLocalizedlNameKey", (object, type = false) => {
-    LOGGER.trace("cprGetLocalizedlNameKey | handlebarsHelper | Called.");
-    const objectType = (typeof object === "string") ? type : object.type;
-    const name = (typeof object === "string") ? object : object.name;
-    let localizedKey = "";
-    switch (objectType) {
-      case "skill": {
-        // "CPR.global.itemType.skill.cybertech"
-        localizedKey = `CPR.global.itemType.skill.${SystemUtils.slugify(name)}`;
-        break;
-      }
-      case "role": {
-        // "CPR.global.role.tech.name"
-        localizedKey = `CPR.global.role.${SystemUtils.slugify(name)}.name`;
-        break;
-      }
-      case "roleAbility": {
-        // "CPR.global.role.tech.ability.fabricationExpertise":
-        for (const role of Object.keys(CPR.roleList)) {
-          const localizedRoleKey = `CPR.global.role.${role}.ability.${SystemUtils.slugify(name)}`;
-          if (SystemUtils.Localize(localizedRoleKey) !== localizedRoleKey) {
-            localizedKey = localizedRoleKey;
-          }
+  Handlebars.registerHelper(
+    "cprGetLocalizedlNameKey",
+    (object, type = false) => {
+      LOGGER.trace("cprGetLocalizedlNameKey | handlebarsHelper | Called.");
+      const objectType = typeof object === "string" ? type : object.type;
+      const name = typeof object === "string" ? object : object.name;
+      let localizedKey = "";
+      switch (objectType) {
+        case "skill": {
+          // "CPR.global.itemType.skill.cybertech"
+          localizedKey = `CPR.global.itemType.skill.${SystemUtils.slugify(
+            name
+          )}`;
+          break;
         }
-        break;
+        case "role": {
+          // "CPR.global.role.tech.name"
+          localizedKey = `CPR.global.role.${SystemUtils.slugify(name)}.name`;
+          break;
+        }
+        case "roleAbility": {
+          // "CPR.global.role.tech.ability.fabricationExpertise":
+          for (const role of Object.keys(CPR.roleList)) {
+            const localizedRoleKey = `CPR.global.role.${role}.ability.${SystemUtils.slugify(
+              name
+            )}`;
+            if (SystemUtils.Localize(localizedRoleKey) !== localizedRoleKey) {
+              localizedKey = localizedRoleKey;
+            }
+          }
+          break;
+        }
+        case "programClass": {
+          // "CPR.global.programClass.defender":
+          localizedKey = `CPR.global.programClass.${SystemUtils.slugify(name)}`;
+          break;
+        }
+        default:
       }
-      case "programClass": {
-        // "CPR.global.programClass.defender":
-        localizedKey = `CPR.global.programClass.${SystemUtils.slugify(name)}`;
-        break;
-      }
-      default:
+      return SystemUtils.Localize(localizedKey) === localizedKey
+        ? name
+        : localizedKey;
     }
-    return (SystemUtils.Localize(localizedKey) === localizedKey) ? name : localizedKey;
-  });
+  );
 
   /**
    * Sort core skills, returning a new array. This goes a step further and considers unicode normalization form for
@@ -509,7 +542,9 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprItemIdFromName", (itemName, itemType) => {
     LOGGER.trace("cprItemIdFromName | handlebarsHelper | Called.");
-    const item = game.items.find((i) => i.name === itemName && i.type === itemType);
+    const item = game.items.find(
+      (i) => i.name === itemName && i.type === itemType
+    );
     if (item !== undefined) {
       return item._id;
     }
@@ -519,7 +554,9 @@ export default function registerHandlebarsHelpers() {
   /**
    * Convert a string with a delimiter (such as a comma or space) to an Array of elements
    */
-  Handlebars.registerHelper("cprToArray", (string, delimiter) => string.split(delimiter));
+  Handlebars.registerHelper("cprToArray", (string, delimiter) =>
+    string.split(delimiter)
+  );
 
   /**
    * Concatenate 1 object to another with the concat method.
@@ -574,10 +611,17 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprGetMookCyberwareLength", (mook) => {
     LOGGER.trace("cprGetMookCyberwareLength | handlebarsHelper | Called.");
     const installedCyberwareList = [];
-    const exclusionList = ["cyberwareInternal", "cyberwareExternal", "fashionware"];
+    const exclusionList = [
+      "cyberwareInternal",
+      "cyberwareExternal",
+      "fashionware",
+    ];
     for (const installedUUID of mook.system.installedItems.list) {
       const item = mook.getOwnedItem(installedUUID);
-      if (item.type === "cyberware" && !exclusionList.includes(item.system.type)) {
+      if (
+        item.type === "cyberware" &&
+        !exclusionList.includes(item.system.type)
+      ) {
         installedCyberwareList.push(item);
         if (item.system.installedItems.list.length > 0) {
           for (const optionalid of item.system.installedItems.list) {
@@ -595,7 +639,9 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprEntityTypes", (entityType) => {
     LOGGER.trace("cprEntityTypes | handlebarsHelper | Called.");
-    return typeof game.system.documentTypes[entityType] === "object" ? game.system.documentTypes[entityType] : {};
+    return typeof game.system.documentTypes[entityType] === "object"
+      ? game.system.documentTypes[entityType]
+      : {};
   });
 
   /**
@@ -605,9 +651,11 @@ export default function registerHandlebarsHelpers() {
     LOGGER.trace("cprIsUpgradable | handlebarsHelper | Called.");
     const itemEntities = game.system.template.Item;
     let isUpgradable = false;
-    if (itemEntities[item.type].templates.includes("upgradable")
-        && item.system.installedItems.allowed
-        && item.system.installedItems.allowedTypes.includes("itemUpgrade")) {
+    if (
+      itemEntities[item.type].templates.includes("upgradable") &&
+      item.system.installedItems.allowed &&
+      item.system.installedItems.allowedTypes.includes("itemUpgrade")
+    ) {
       isUpgradable = true;
     }
     return isUpgradable;
@@ -618,39 +666,57 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprHasInstalledItems", (item) => {
     LOGGER.trace("cprHasInstalledItems | handlebarsHelper | Called.");
-    const itemList = (typeof item.system.installedItems === "object") ? item.system.installedItems.list : [];
+    const itemList =
+      typeof item.system.installedItems === "object"
+        ? item.system.installedItems.list
+        : [];
     return itemList.length > 0;
   });
 
   /**
    * List installed items.
    */
-  Handlebars.registerHelper("cprListInstalledItems", (item, delimiter = " ") => {
-    LOGGER.trace("cprListInstalledItems | handlebarsHelper | Called.");
-    const { actor } = item;
-    const itemList = (typeof item.system.installedItems === "object") ? item.system.installedItems.list : [];
-    let returnString = "";
-    if (actor) {
-      for (const itemId of itemList) {
-        const installedItem = fromUuidSync(itemId);
-        if (installedItem) {
-          const itemType = SystemUtils.Localize(CPR.objectTypes[installedItem.type]);
-          returnString = returnString.concat(`${installedItem.name} (${itemType})`, delimiter);
+  Handlebars.registerHelper(
+    "cprListInstalledItems",
+    (item, delimiter = " ") => {
+      LOGGER.trace("cprListInstalledItems | handlebarsHelper | Called.");
+      const { actor } = item;
+      const itemList =
+        typeof item.system.installedItems === "object"
+          ? item.system.installedItems.list
+          : [];
+      let returnString = "";
+      if (actor) {
+        for (const itemId of itemList) {
+          const installedItem = fromUuidSync(itemId);
+          if (installedItem) {
+            const itemType = SystemUtils.Localize(
+              CPR.objectTypes[installedItem.type]
+            );
+            returnString = returnString.concat(
+              `${installedItem.name} (${itemType})`,
+              delimiter
+            );
+          }
         }
       }
+      return returnString;
     }
-    return returnString;
-  });
+  );
 
   Handlebars.registerHelper("cprGetItemValue", (item) => {
     LOGGER.trace("cprGetItemValue | handlebarsHelper | Called.");
     const valuableTypes = SystemUtils.GetTemplateItemTypes("valuable");
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    let totalValue = valuableTypes.includes(item.type) ? item.system.price.market : 0;
+    let totalValue = valuableTypes.includes(item.type)
+      ? item.system.price.market
+      : 0;
     if (containerTypes.includes(item.type)) {
       const installedItems = item.recursiveGetAllInstalledItems();
       installedItems.forEach((installedItem) => {
-        totalValue += (valuableTypes.includes(installedItem.type)) ? installedItem.system.price.market : 0;
+        totalValue += valuableTypes.includes(installedItem.type)
+          ? installedItem.system.price.market
+          : 0;
       });
     }
     return totalValue;
@@ -682,11 +748,20 @@ export default function registerHandlebarsHelpers() {
     const itemEntities = game.system.template.Item;
     const itemType = obj.type;
     let upgradeText = "";
-    if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
+    if (
+      itemEntities[itemType].templates.includes("upgradable") &&
+      obj.system.isUpgraded
+    ) {
       const upgradeData = obj.getTotalUpgradeValues(dataPoint);
       if (upgradeData.value !== 0 && upgradeData.value !== "") {
-        const modSource = (itemType === "weapon") ? SystemUtils.Localize("CPR.itemSheet.weapon.attachments") : SystemUtils.Localize("CPR.itemSheet.common.upgrades");
-        upgradeText = `(${SystemUtils.Format("CPR.itemSheet.common.modifierChange", { modSource, modType: upgradeData.type, value: upgradeData.value })})`;
+        const modSource =
+          itemType === "weapon"
+            ? SystemUtils.Localize("CPR.itemSheet.weapon.attachments")
+            : SystemUtils.Localize("CPR.itemSheet.common.upgrades");
+        upgradeText = `(${SystemUtils.Format(
+          "CPR.itemSheet.common.modifierChange",
+          { modSource, modType: upgradeData.type, value: upgradeData.value }
+        )})`;
       }
     }
     return upgradeText;
@@ -704,12 +779,18 @@ export default function registerHandlebarsHelpers() {
     if (Number.isNaN(upgradeResult)) {
       upgradeResult = baseValue;
     }
-    if (itemEntities[itemType].templates.includes("upgradable") && obj.system.isUpgraded) {
+    if (
+      itemEntities[itemType].templates.includes("upgradable") &&
+      obj.system.isUpgraded
+    ) {
       const upgradeData = obj.getTotalUpgradeValues(dataPoint);
       if (upgradeData.value !== "" && upgradeData.value !== 0) {
         if (upgradeData.type === "override") {
           upgradeResult = upgradeData.value;
-        } else if (typeof upgradeResult !== "number" || typeof upgradeData.value !== "number") {
+        } else if (
+          typeof upgradeResult !== "number" ||
+          typeof upgradeData.value !== "number"
+        ) {
           if (upgradeData.value !== 0 && upgradeData.value !== "") {
             upgradeResult = `${upgradeResult} + ${upgradeData.value}`;
           }
@@ -724,13 +805,22 @@ export default function registerHandlebarsHelpers() {
   /**
    * Return true if a bit of text matches a filter value. If the filter is not set, everything matches.
    */
-  Handlebars.registerHelper("cprSheetContentFilter", (filterValue, applyToText) => {
-    LOGGER.trace("cprSheetContentFilter | handlebarsHelper | Called.");
-    if (typeof filterValue === "undefined" || filterValue === "" || !game.settings.get(game.system.id, "enableSheetContentFilter")) {
-      return true;
+  Handlebars.registerHelper(
+    "cprSheetContentFilter",
+    (filterValue, applyToText) => {
+      LOGGER.trace("cprSheetContentFilter | handlebarsHelper | Called.");
+      if (
+        typeof filterValue === "undefined" ||
+        filterValue === "" ||
+        !game.settings.get(game.system.id, "enableSheetContentFilter")
+      ) {
+        return true;
+      }
+      return (
+        applyToText.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
+      );
     }
-    return applyToText.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1;
-  });
+  );
 
   /**
    * For readability's sake return (a translated) "Yes" or "No" based on whether something is true or false
@@ -811,11 +901,13 @@ export default function registerHandlebarsHelpers() {
       skillMap["bonuses.".concat(SystemUtils.slugify(skill.name))] = skill.name;
     }
     // "sort" the skillMap properties before passing it back
-    return Object.keys(skillMap).sort().reduce((result, key) => {
-      // eslint-disable-next-line no-param-reassign
-      result[key] = skillMap[key];
-      return result;
-    }, {});
+    return Object.keys(skillMap)
+      .sort()
+      .reduce((result, key) => {
+        // eslint-disable-next-line no-param-reassign
+        result[key] = skillMap[key];
+        return result;
+      }, {});
   });
 
   /**
@@ -832,10 +924,14 @@ export default function registerHandlebarsHelpers() {
       // There's a split second when this is updating that the sheet may refresh showing ??? and throwing a console
       // error when these are being updated with the delete method.
       let returnString = "(updating)";
-      const flag = doc.getFlag(game.system.id, "changes") ? doc.getFlag(game.system.id, "changes") : [];
+      const flag = doc.getFlag(game.system.id, "changes")
+        ? doc.getFlag(game.system.id, "changes")
+        : [];
       if (doc.changes.length === flag.length) {
         returnString = "???";
-        LOGGER.error("Undefined change category! No idea what this effect changes!");
+        LOGGER.error(
+          "Undefined change category! No idea what this effect changes!"
+        );
       }
       return returnString;
     }
@@ -845,7 +941,8 @@ export default function registerHandlebarsHelpers() {
       return SystemUtils.Localize(CPR.activeEffectKeys[cat][key]);
     }
 
-    const sourceDoc = (doc instanceof CPRActiveEffect) ? doc.getEffectParent() : doc;
+    const sourceDoc =
+      doc instanceof CPRActiveEffect ? doc.getEffectParent() : doc;
     if (!sourceDoc) return "???"; // a recently deleted item will sometimes do this
     if (cat === "skill") {
       const skillMap = CPR.activeEffectKeys.skill;
@@ -856,7 +953,8 @@ export default function registerHandlebarsHelpers() {
         skillList = game.items.filter((i) => i.type === "skill");
       }
       for (const skill of skillList) {
-        skillMap["bonuses.".concat(SystemUtils.slugify(skill.name))] = skill.name;
+        skillMap["bonuses.".concat(SystemUtils.slugify(skill.name))] =
+          skill.name;
       }
       return SystemUtils.Localize(skillMap[key]);
     }
@@ -875,33 +973,36 @@ export default function registerHandlebarsHelpers() {
    *                           See: https://handlebarsjs.com/guide/block-helpers.html#hash-arguments
    * @returns {Number|Array<object>|Boolean} - see above description.
    */
-  Handlebars.registerHelper("cprGetSkillModInfo", (skillName, actor, infoType, options) => {
-    LOGGER.trace("cprGetSkillModInfo | handlebarsHelper | Called.");
-    const skillSlug = SystemUtils.slugify(skillName);
-    const effects = actor.effects.contents; // Active effects on the actor.
-    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
-    let relevantMods = CPRMod.getRelevantMods(allMods, skillSlug);
-    const hasSituational = relevantMods.some((m) => m.isSituational);
-    if (!options.hash.keepSituational) {
-      relevantMods = relevantMods.filter((m) => !m.isSituational);
-    }
+  Handlebars.registerHelper(
+    "cprGetSkillModInfo",
+    (skillName, actor, infoType, options) => {
+      LOGGER.trace("cprGetSkillModInfo | handlebarsHelper | Called.");
+      const skillSlug = SystemUtils.slugify(skillName);
+      const effects = actor.effects.contents; // Active effects on the actor.
+      const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+      let relevantMods = CPRMod.getRelevantMods(allMods, skillSlug);
+      const hasSituational = relevantMods.some((m) => m.isSituational);
+      if (!options.hash.keepSituational) {
+        relevantMods = relevantMods.filter((m) => !m.isSituational);
+      }
 
-    let modTotal = 0;
-    relevantMods.forEach((m) => {
-      modTotal += parseInt(m.value, 10);
-    });
+      let modTotal = 0;
+      relevantMods.forEach((m) => {
+        modTotal += parseInt(m.value, 10);
+      });
 
-    switch (infoType) {
-      case "modTotal":
-        return modTotal;
-      case "modList":
-        return relevantMods;
-      case "hasSituational":
-        return hasSituational;
-      default:
-        return LOGGER.error("Did not pass valid string to infoType");
+      switch (infoType) {
+        case "modTotal":
+          return modTotal;
+        case "modList":
+          return relevantMods;
+        case "hasSituational":
+          return hasSituational;
+        default:
+          return LOGGER.error("Did not pass valid string to infoType");
+      }
     }
-  });
+  );
 
   /**
    * Provide a way to loop in html
@@ -933,8 +1034,12 @@ export default function registerHandlebarsHelpers() {
     }
     priceTiers = priceTiers.sort((a, b) => a - b);
     for (const priceTier of priceTiers) {
-      priceCategory = (priceTier <= price) ? PRICE_CATEGORY_MAPPINGS[priceTier] : priceCategory;
-      priceCategory = (priceCategory === "free" && price > 0) ? PRICE_CATEGORY_MAPPINGS[priceTier] : priceCategory;
+      priceCategory =
+        priceTier <= price ? PRICE_CATEGORY_MAPPINGS[priceTier] : priceCategory;
+      priceCategory =
+        priceCategory === "free" && price > 0
+          ? PRICE_CATEGORY_MAPPINGS[priceTier]
+          : priceCategory;
     }
     return priceCategory;
   });

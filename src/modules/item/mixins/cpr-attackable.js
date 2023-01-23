@@ -44,7 +44,9 @@ const Attackable = function Attackable() {
       default:
     }
     if (this.actor) {
-      this.actor.updateEmbeddedDocuments("Item", [{ _id: this.id, system: this.system }]);
+      this.actor.updateEmbeddedDocuments("Item", [
+        { _id: this.id, system: this.system },
+      ]);
     }
   };
 
@@ -58,8 +60,13 @@ const Attackable = function Attackable() {
     const discharged = this.bulletConsumption(cprRoll);
     LOGGER.debug(discharged);
     // don't go negative
-    this.system.magazine.value = Math.max(this.system.magazine.value - discharged, 0);
-    return this.actor.updateEmbeddedDocuments("Item", [{ _id: this.id, system: this.system }]);
+    this.system.magazine.value = Math.max(
+      this.system.magazine.value - discharged,
+      0
+    );
+    return this.actor.updateEmbeddedDocuments("Item", [
+      { _id: this.id, system: this.system },
+    ]);
   };
 
   /**
@@ -74,12 +81,21 @@ const Attackable = function Attackable() {
     const cprWeaponData = this.system;
     const weaponName = this.name;
     const { weaponType } = cprWeaponData;
-    let skillItem = actor.items.find((i) => i.name === cprWeaponData.weaponSkill);
+    let skillItem = actor.items.find(
+      (i) => i.name === cprWeaponData.weaponSkill
+    );
 
-    if (type === CPRRolls.rollTypes.SUPPRESSIVE || type === CPRRolls.rollTypes.AUTOFIRE) {
+    if (
+      type === CPRRolls.rollTypes.SUPPRESSIVE ||
+      type === CPRRolls.rollTypes.AUTOFIRE
+    ) {
       skillItem = actor.items.find((i) => i.name === "Autofire");
       if (!cprWeaponData.fireModes.suppressiveFire) {
-        if (cprWeaponData.weaponType !== "smg" && cprWeaponData.weaponType !== "heavySmg" && cprWeaponData.weaponType !== "assaultRifle") {
+        if (
+          cprWeaponData.weaponType !== "smg" &&
+          cprWeaponData.weaponType !== "heavySmg" &&
+          cprWeaponData.weaponType !== "assaultRifle"
+        ) {
           Rules.lawyer(false, "CPR.messages.weaponDoesntSupportAltMode");
         }
       }
@@ -105,14 +121,21 @@ const Attackable = function Attackable() {
     actor.itemTypes.role.forEach((r) => {
       roleMods = roleMods.concat(r.getRoleMods("attack", true));
     });
-    roleMods = roleMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+    roleMods = roleMods.filter(
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+    );
 
     const effects = actor.effects.contents; // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
-    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+    const filteredMods = allMods.filter(
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+    );
 
-    const skillMods = CPRMod.getRelevantMods(filteredMods, SystemUtils.slugify(skillName));
+    const skillMods = CPRMod.getRelevantMods(
+      filteredMods,
+      SystemUtils.slugify(skillName)
+    );
 
     const attackMods = CPRMod.getRelevantMods(filteredMods, "universalAttack");
     const aimedShotMods = CPRMod.getRelevantMods(filteredMods, "aimedShot");
@@ -126,7 +149,14 @@ const Attackable = function Attackable() {
     // Create the roll based on the type and apply relevant mods to it.
     switch (type) {
       case CPRRolls.rollTypes.AIMED: {
-        cprRoll = new CPRRolls.CPRAimedAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
+        cprRoll = new CPRRolls.CPRAimedAttackRoll(
+          weaponName,
+          niceStatName,
+          statValue,
+          skillName,
+          skillValue,
+          weaponType
+        );
         cprRoll.addMod(aimedShotMods);
         if (cprWeaponData.isRanged) {
           cprRoll.addMod(rangedMods);
@@ -136,19 +166,40 @@ const Attackable = function Attackable() {
         break;
       }
       case CPRRolls.rollTypes.AUTOFIRE: {
-        cprRoll = new CPRRolls.CPRAutofireRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
+        cprRoll = new CPRRolls.CPRAutofireRoll(
+          weaponName,
+          niceStatName,
+          statValue,
+          skillName,
+          skillValue,
+          weaponType
+        );
         cprRoll.addMod(autofireMods);
         cprRoll.addMod(rangedMods);
         break;
       }
       case CPRRolls.rollTypes.SUPPRESSIVE: {
-        cprRoll = new CPRRolls.CPRSuppressiveFireRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
+        cprRoll = new CPRRolls.CPRSuppressiveFireRoll(
+          weaponName,
+          niceStatName,
+          statValue,
+          skillName,
+          skillValue,
+          weaponType
+        );
         cprRoll.addMod(suppressiveMods);
         cprRoll.addMod(rangedMods);
         break;
       }
       default:
-        cprRoll = new CPRRolls.CPRAttackRoll(weaponName, niceStatName, statValue, skillName, skillValue, weaponType);
+        cprRoll = new CPRRolls.CPRAttackRoll(
+          weaponName,
+          niceStatName,
+          statValue,
+          skillName,
+          skillValue,
+          weaponType
+        );
         if (cprWeaponData.isRanged) {
           cprRoll.addMod(singleShotMods);
           cprRoll.addMod(rangedMods);
@@ -158,29 +209,53 @@ const Attackable = function Attackable() {
     }
 
     // apply other known mods
-    cprRoll.addMod([{ value: actor.getArmorPenaltyMods(statName), source: SystemUtils.Format("CPR.rolls.modifiers.sources.armorPenalty", { stat: niceStatName }) }]);
-    cprRoll.addMod([{ value: actor.getWoundStateMods(), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.woundStatePenalty") }]);
+    cprRoll.addMod([
+      {
+        value: actor.getArmorPenaltyMods(statName),
+        source: SystemUtils.Format("CPR.rolls.modifiers.sources.armorPenalty", {
+          stat: niceStatName,
+        }),
+      },
+    ]);
+    cprRoll.addMod([
+      {
+        value: actor.getWoundStateMods(),
+        source: SystemUtils.Localize(
+          "CPR.rolls.modifiers.sources.woundStatePenalty"
+        ),
+      },
+    ]);
     cprRoll.addMod(skillMods);
     cprRoll.addMod(attackMods);
     cprRoll.addMod(roleMods);
 
     // Mod from item upgrades that affect attackmod.
-    const relevantUpgradeMods = this.getAllUpgradeMods("attackmod").filter((m) => (m.isSituational && m.onByDefault) || !m.isSituational);
+    const relevantUpgradeMods = this.getAllUpgradeMods("attackmod").filter(
+      (m) => (m.isSituational && m.onByDefault) || !m.isSituational
+    );
     cprRoll.addMod(relevantUpgradeMods);
 
     // Mod from weapon attackmod. We will only add it if there are no upgrade mods that override this value.
-    if (relevantUpgradeMods.length === 0 || relevantUpgradeMods.some((m) => !(m.type === "override"))) {
+    if (
+      relevantUpgradeMods.length === 0 ||
+      relevantUpgradeMods.some((m) => !(m.type === "override"))
+    ) {
       // CPRMod-like object.
-      cprRoll.addMod([{
-        value: cprWeaponData.attackmod,
-        source: this.name,
-        category: "combat",
-        key: "bonuses.universalAttack",
-      }]);
+      cprRoll.addMod([
+        {
+          value: cprWeaponData.attackmod,
+          source: this.name,
+          category: "combat",
+          key: "bonuses.universalAttack",
+        },
+      ]);
     }
 
     if (cprRoll instanceof CPRRolls.CPRAttackRoll && cprWeaponData.isRanged) {
-      Rules.lawyer(this.hasAmmo(cprRoll), "CPR.messages.weaponAttackOutOfBullets");
+      Rules.lawyer(
+        this.hasAmmo(cprRoll),
+        "CPR.messages.weaponAttackOutOfBullets"
+      );
     }
     return cprRoll;
   };
@@ -197,13 +272,23 @@ const Attackable = function Attackable() {
     const rollName = this.name;
     const { weaponType } = cprWeaponData;
     let { damage } = this.system;
-    if ((weaponType === "unarmed" || weaponType === "martialArts") && cprWeaponData.unarmedAutomaticCalculation) {
+    if (
+      (weaponType === "unarmed" || weaponType === "martialArts") &&
+      cprWeaponData.unarmedAutomaticCalculation
+    ) {
       // calculate damage based on BODY stat
       const cprActorData = this.actor.system;
       const actorBodyStat = cprActorData.stats.body.value;
       if (actorBodyStat <= 4) {
-        if (weaponType === "unarmed" && this.actor.itemTypes.cyberware.some((c) => (
-          (c.system.type === "cyberArm") && (c.system.isInstalled === true) && (c.system.isFoundational === true)))) {
+        if (
+          weaponType === "unarmed" &&
+          this.actor.itemTypes.cyberware.some(
+            (c) =>
+              c.system.type === "cyberArm" &&
+              c.system.isInstalled === true &&
+              c.system.isFoundational === true
+          )
+        ) {
           // If the user has an installed Cyberarm, which is a foundational. This is only for unarmed damage, not martial arts damage.
           damage = "2d6";
         } else {
@@ -219,9 +304,14 @@ const Attackable = function Attackable() {
     }
 
     const cprRoll = new CPRRolls.CPRDamageRoll(rollName, damage, weaponType);
-    if (cprWeaponData.fireModes.autoFire === 0 && (
-      (cprWeaponData.weaponType === "smg" || cprWeaponData.weaponType === "heavySmg" || cprWeaponData.weaponType === "assaultRifle"))) {
-      cprWeaponData.fireModes.autoFire = cprWeaponData.weaponType === "assaultRifle" ? 4 : 3;
+    if (
+      cprWeaponData.fireModes.autoFire === 0 &&
+      (cprWeaponData.weaponType === "smg" ||
+        cprWeaponData.weaponType === "heavySmg" ||
+        cprWeaponData.weaponType === "assaultRifle")
+    ) {
+      cprWeaponData.fireModes.autoFire =
+        cprWeaponData.weaponType === "assaultRifle" ? 4 : 3;
     }
 
     cprRoll.configureAutofire(1, cprWeaponData.fireModes.autoFire);
@@ -275,11 +365,15 @@ const Attackable = function Attackable() {
     actor.itemTypes.role.forEach((r) => {
       roleMods = roleMods.concat(r.getRoleMods("damage", true));
     });
-    roleMods = roleMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+    roleMods = roleMods.filter(
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+    );
     cprRoll.addMod(roleMods);
 
     // Mod from item upgrades that affect damage.
-    const relevantUpgradeMods = this.getAllUpgradeMods("damage").filter((m) => (m.isSituational && m.onByDefault) || !m.isSituational);
+    const relevantUpgradeMods = this.getAllUpgradeMods("damage").filter(
+      (m) => (m.isSituational && m.onByDefault) || !m.isSituational
+    );
 
     // If there are no mods of type "override", add the mods. Otherwise, set roll formula appropriately.
     if (relevantUpgradeMods.length > 0) {
@@ -293,7 +387,9 @@ const Attackable = function Attackable() {
     const effects = actor.effects.contents; // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
-    const filteredMods = allMods.filter((m) => !m.isSituational || (m.isSituational && m.onByDefault));
+    const filteredMods = allMods.filter(
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+    );
 
     const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
     cprRoll.addMod(damageMods);
@@ -317,7 +413,10 @@ const Attackable = function Attackable() {
       returnValue = cprWeaponData.attackmod;
     }
     const upgradeData = this.getTotalUpgradeValues("attackmod");
-    returnValue = (upgradeData.type === "override") ? upgradeData.value : returnValue + upgradeData.value;
+    returnValue =
+      upgradeData.type === "override"
+        ? upgradeData.value
+        : returnValue + upgradeData.value;
     return returnValue;
   };
 };

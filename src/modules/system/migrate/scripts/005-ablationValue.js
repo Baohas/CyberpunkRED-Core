@@ -22,7 +22,10 @@ export default class AblationValueMigration extends CPRMigration {
    */
   async preMigrate() {
     LOGGER.trace(`preMigrate | ${this.version}-${this.name}`);
-    CPRSystemUtils.DisplayMessage("notify", CPRSystemUtils.Localize("CPR.migration.effects.beginMigration"));
+    CPRSystemUtils.DisplayMessage(
+      "notify",
+      CPRSystemUtils.Localize("CPR.migration.effects.beginMigration")
+    );
     LOGGER.log(`Starting migration: ${this.name}`);
   }
 
@@ -42,14 +45,14 @@ export default class AblationValueMigration extends CPRMigration {
   static async migrateItem(item) {
     LOGGER.trace(`migrateItem | ${this.version}-${this.name}`);
     if (item.type === "ammo") {
-      const updateData = (item.isOwned) ? { _id: item._id } : {};
+      const updateData = item.isOwned ? { _id: item._id } : {};
       if (item.system.type === "rubber") {
         updateData["system.ablationValue"] = 0;
-        return (item.isOwned) ? updateData : item.update(updateData);
+        return item.isOwned ? updateData : item.update(updateData);
       }
       if (item.system.type === "armorPiercing") {
         updateData["system.ablationValue"] = 2;
-        return (item.isOwned) ? updateData : item.update(updateData);
+        return item.isOwned ? updateData : item.update(updateData);
       }
     }
     return null;

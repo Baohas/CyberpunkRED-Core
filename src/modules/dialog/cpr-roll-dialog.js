@@ -62,7 +62,12 @@ export class CPRRollDialog extends CPRDialog {
     data.showSituationalMods = this.showSituationalMods;
 
     // Get filtered situational mods. These currently come from effects, role abilities, or item upgrades.
-    data.filteredMods = CPRMod.getSituationalRollMods(this.rollData, this.actor.effects.contents, this.item, this.actor);
+    data.filteredMods = CPRMod.getSituationalRollMods(
+      this.rollData,
+      this.actor.effects.contents,
+      this.item,
+      this.actor
+    );
     this.filteredMods = data.filteredMods;
 
     let totalMods = 0;
@@ -86,9 +91,13 @@ export class CPRRollDialog extends CPRDialog {
     super.activateListeners(html);
     if (!this.options.editable) return;
 
-    html.find(".toggle-situational-mod").click((event) => this._toggleSituationalMod(event));
+    html
+      .find(".toggle-situational-mod")
+      .click((event) => this._toggleSituationalMod(event));
     html.find(".aimed-checkbox").click(() => this._aimedToggle());
-    html.find(".toggle-show-mods").click((event) => this._toggleModsVisibility(event));
+    html
+      .find(".toggle-show-mods")
+      .click((event) => this._toggleModsVisibility(event));
   }
 
   /**
@@ -118,7 +127,9 @@ export class CPRRollDialog extends CPRDialog {
     LOGGER.trace("_toggleSituationalMod | CPRRollDialog | Called.");
     // Every situational mod should have an ID so that it can be added and deleted.
     const id = SystemUtils.GetEventDatum(event, "data-mod-id");
-    const mod = this.filteredMods.find((m) => m.id === id) || this.defaultSituationalMods.find((m) => m.id === id);
+    const mod =
+      this.filteredMods.find((m) => m.id === id) ||
+      this.defaultSituationalMods.find((m) => m.id === id);
 
     if (this.rollData.mods.some((m) => m.id === id)) {
       this.rollData.removeMod(id);
@@ -163,7 +174,10 @@ export class CPRRollDialog extends CPRDialog {
       // Sanitize data input by checking if anything inputted is not a number. Warn user if so.
       // eslint-disable-next-line no-restricted-globals
       if (fd.additionalMods.some((m) => isNaN(m))) {
-        SystemUtils.DisplayMessage("warn", "CPR.rolls.modifiers.additionalModWarning");
+        SystemUtils.DisplayMessage(
+          "warn",
+          "CPR.rolls.modifiers.additionalModWarning"
+        );
       }
       fd.additionalMods.forEach((m, i) => {
         // eslint-disable-next-line no-restricted-globals
@@ -189,8 +203,10 @@ export class CPRRoleRollDialog extends CPRRollDialog {
     LOGGER.trace("getData | CPRRoleRollDialog | called.");
     const data = super.getData();
 
-    const skillIsVarying = this.item.system.skill === "varying"
-      || this.item.system.abilities.find((a) => a.name === this.rollData.roleName)?.skill === "varying";
+    const skillIsVarying =
+      this.item.system.skill === "varying" ||
+      this.item.system.abilities.find((a) => a.name === this.rollData.roleName)
+        ?.skill === "varying";
 
     if (skillIsVarying) {
       data.isVarying = true; // Used as a condition to display drop-down menu in dialog.
@@ -198,7 +214,9 @@ export class CPRRoleRollDialog extends CPRRollDialog {
         // If the skill is varying, assign data from the first skill in the dropdown menu,
         // so all form data are consistent with the what the dropdown menu displays by default.
         // Note, this will only happen when the dialog is first opened, which is by design.
-        const firstSkill = this.rollData.skillList.sort((a, b) => (a.name > b.name ? 1 : -1))[0];
+        const firstSkill = this.rollData.skillList.sort((a, b) =>
+          a.name > b.name ? 1 : -1
+        )[0];
         data.rollData.skillName = firstSkill.name;
         data.rollData.skillValue = firstSkill.system.level;
         data.rollData.statName = firstSkill.system.stat;
@@ -217,7 +235,9 @@ export class CPRRoleRollDialog extends CPRRollDialog {
   activateListeners(html) {
     LOGGER.trace("activateListeners | CPRRollRoleDialog | Called.");
     super.activateListeners(html);
-    html.find(".skill-list-select").change((event) => this._updateSkillValue(event));
+    html
+      .find(".skill-list-select")
+      .change((event) => this._updateSkillValue(event));
   }
 
   /**
@@ -228,7 +248,9 @@ export class CPRRoleRollDialog extends CPRRollDialog {
    */
   _updateSkillValue(event) {
     LOGGER.trace("_updateSkillValue | CPRRoleRollDialog | called.");
-    const skill = this.rollData.skillList.find((s) => s.name === event.currentTarget.value);
+    const skill = this.rollData.skillList.find(
+      (s) => s.name === event.currentTarget.value
+    );
 
     // Set skill level.
     this.rollData.skillValue = skill.system.level;
@@ -239,8 +261,14 @@ export class CPRRoleRollDialog extends CPRRollDialog {
 
     const effects = this.actor.effects.contents;
     const allMods = CPRMod.getAllModifiers(effects);
-    const newSkillMods = CPRMod.getRelevantMods(allMods, SystemUtils.slugify(event.currentTarget.value)); // Mods for the skill we are changing to.
-    const previousSkillMods = CPRMod.getRelevantMods(allMods, SystemUtils.slugify(this.rollData.skillName)); // Mods for the skill we are changing away from.
+    const newSkillMods = CPRMod.getRelevantMods(
+      allMods,
+      SystemUtils.slugify(event.currentTarget.value)
+    ); // Mods for the skill we are changing to.
+    const previousSkillMods = CPRMod.getRelevantMods(
+      allMods,
+      SystemUtils.slugify(this.rollData.skillName)
+    ); // Mods for the skill we are changing away from.
 
     // Apply mods appropriately for the newly selected skill.
     if (newSkillMods) {
@@ -259,12 +287,22 @@ export class CPRRoleRollDialog extends CPRRollDialog {
     // Remove mods appropriately for the deselected skill.
     if (previousSkillMods) {
       previousSkillMods.forEach((previousMod) => {
-        if (this.rollData.mods.some((currentMod) => previousMod.id === currentMod.id)) {
+        if (
+          this.rollData.mods.some(
+            (currentMod) => previousMod.id === currentMod.id
+          )
+        ) {
           this.rollData.removeMod(previousMod.id);
         }
 
-        if (this.filteredMods.some((currentMod) => previousMod.id === currentMod.id)) {
-          const modIndex = this.filteredMods.findIndex((currentMod) => previousMod.id === currentMod.id);
+        if (
+          this.filteredMods.some(
+            (currentMod) => previousMod.id === currentMod.id
+          )
+        ) {
+          const modIndex = this.filteredMods.findIndex(
+            (currentMod) => previousMod.id === currentMod.id
+          );
           this.filteredMods.splice(modIndex, 1);
         }
       });

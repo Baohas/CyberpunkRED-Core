@@ -14,28 +14,34 @@ export default class SetRollCriticalInjuryPrompt {
           reject(new Error("Promise rejected: Window Closed"));
         };
         const _onConfirm = (html) => {
-          LOGGER.trace("_onConfirm | Dialog RollCriticalInjuryPrompt | called.");
+          LOGGER.trace(
+            "_onConfirm | Dialog RollCriticalInjuryPrompt | called."
+          );
           const fd = new FormDataExtended(html.find("form")[0]);
           const formData = foundry.utils.expandObject(fd.object);
           resolve(formData);
         };
         new Dialog({
-          title: SystemUtils.Localize("CPR.dialog.rollCriticalInjury.criticalinjurytitleprompt"),
+          title: SystemUtils.Localize(
+            "CPR.dialog.rollCriticalInjury.criticalinjurytitleprompt"
+          ),
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: (html) => _onCancel(html),
             },
           },
           default: "confirm",
-          render: LOGGER.trace("confirm | Dialog RollCriticalInjuryPrompt | called."),
+          render: LOGGER.trace(
+            "confirm | Dialog RollCriticalInjuryPrompt | called."
+          ),
           close: () => {
             reject(new Error("Promise rejected: Window Closed"));
           },

@@ -31,7 +31,9 @@ export default class CPRLedger extends FormApplication {
   activateListeners(html) {
     LOGGER.trace("activateListeners | CPRLedger | called.");
 
-    html.find(".delete-ledger-line").click((event) => this._deleteLedgerLine(event));
+    html
+      .find(".delete-ledger-line")
+      .click((event) => this._deleteLedgerLine(event));
 
     super.activateListeners(html);
   }
@@ -112,7 +114,7 @@ export default class CPRLedger extends FormApplication {
     // Check if value should also be changed.
     const confirmDelete = await LedgerDeletionPrompt.RenderPrompt(
       SystemUtils.Localize("CPR.dialog.ledgerDeletion.title"),
-      promptContent,
+      promptContent
     ).catch((err) => LOGGER.debug(err));
     if (confirmDelete === undefined) {
       return;
@@ -125,7 +127,11 @@ export default class CPRLedger extends FormApplication {
     if (confirmDelete.action && numbers[0] !== "NaN") {
       const dataPointValue = `system.${this.name}.value`;
       const value = getProperty(cprActorData, dataPointValue);
-      setProperty(cprActorData, dataPointValue, value + (confirmDelete.sign * numbers[0]));
+      setProperty(
+        cprActorData,
+        dataPointValue,
+        value + confirmDelete.sign * numbers[0]
+      );
     }
     await this.actor.update(cprActorData);
     this._makeLedgerReadable(this.name);

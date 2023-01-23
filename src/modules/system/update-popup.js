@@ -7,7 +7,10 @@ export default class UpdateScreen extends Application {
     LOGGER.trace("defaultOptions | UpdateScreen | Called.");
     const systemTitle = game.system.title;
     const { version } = game.system;
-    const title = SystemUtils.Format("CPR.system.update.popupTitle", { systemTitle, version });
+    const title = SystemUtils.Format("CPR.system.update.popupTitle", {
+      systemTitle,
+      version,
+    });
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/dialog/cpr-update-announcement.hbs`,
       resizable: true,
@@ -20,7 +23,10 @@ export default class UpdateScreen extends Application {
   // eslint-disable-next-line no-unused-vars
   async getData(options = {}) {
     LOGGER.trace("getData | UpdateScreen | Called.");
-    const featureVideoLink = (typeof game.system.flags.featureVideoURL === "undefined") ? "" : game.system.flags.featureVideoURL;
+    const featureVideoLink =
+      typeof game.system.flags.featureVideoURL === "undefined"
+        ? ""
+        : game.system.flags.featureVideoURL;
 
     // Check if we have release notes in a localised language if not default
     // to English. Then if English dosn't exist return an empty string
@@ -33,16 +39,22 @@ export default class UpdateScreen extends Application {
       response = await fetch(`${releaseNotesFile}.en`);
     }
 
-    const releaseNotes = (response.status === 200) ? await response.text() : "";
+    const releaseNotes = response.status === 200 ? await response.text() : "";
 
     // TODO: releaseNotes is external html, should Handlebars.SafeString be
     // called? It seems to always returns nothing though.
     const data = {
-      updateBanner: SystemUtils.Format("CPR.system.update.welcomeToSystem", { system: game.system.title }),
+      updateBanner: SystemUtils.Format("CPR.system.update.welcomeToSystem", {
+        system: game.system.title,
+      }),
       releaseVersion: game.system.version,
       releaseNotes,
-      featureVideoTitle: SystemUtils.Format("CPR.system.update.videoInformationTitle"),
-      featureVideoInformation: SystemUtils.Format("CPR.system.update.videoInformation"),
+      featureVideoTitle: SystemUtils.Format(
+        "CPR.system.update.videoInformationTitle"
+      ),
+      featureVideoInformation: SystemUtils.Format(
+        "CPR.system.update.videoInformation"
+      ),
       featureVideoLink,
       HERE: SystemUtils.Format("CPR.system.update.here"),
     };

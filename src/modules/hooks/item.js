@@ -39,15 +39,22 @@ const itemHooks = () => {
 
     const actor = doc.parent;
     let returnValue = true;
-    if ((typeof createData.img === "undefined") && actor === null) {
+    if (typeof createData.img === "undefined" && actor === null) {
       const itemImage = SystemUtils.GetDefaultImage("Item", createData.type);
       doc.updateSource({ img: itemImage });
     }
 
     if (actor != null) {
-      if (Object.values(actor.apps).some((app) => app instanceof CPRCharacterActorSheet
-          || app instanceof CPRMookActorSheet
-          || app instanceof CPRContainerActorSheet) && userId === game.user._id && !options.CPRsplitStack) {
+      if (
+        Object.values(actor.apps).some(
+          (app) =>
+            app instanceof CPRCharacterActorSheet ||
+            app instanceof CPRMookActorSheet ||
+            app instanceof CPRContainerActorSheet
+        ) &&
+        userId === game.user._id &&
+        !options.CPRsplitStack
+      ) {
         LOGGER.debug("Attempting to stack items on a container sheet");
         returnValue = actor.automaticallyStackItems(doc);
       }
@@ -76,19 +83,30 @@ const itemHooks = () => {
       const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
       const containerTypes = SystemUtils.GetTemplateItemTypes("container");
       if (installableTypes.includes(doc.type)) {
-        const worldContainerItems = game.items.filter((i) => containerTypes.includes(i.type));
-        const installedList = worldContainerItems.filter((i) => i.system.installedItems.list.includes(doc.uuid));
+        const worldContainerItems = game.items.filter((i) =>
+          containerTypes.includes(i.type)
+        );
+        const installedList = worldContainerItems.filter((i) =>
+          i.system.installedItems.list.includes(doc.uuid)
+        );
         if (installedList.length > 0) {
           const debugMode = game.settings.get(game.system.id, "debugElements");
-          const dialogTitle = SystemUtils.Localize("CPR.dialog.deleteInstalledWorldItem.title");
-          let dialogMessage = `${SystemUtils.Format("CPR.dialog.deleteInstalledWorldItem.text", { itemName: doc.name })}`;
+          const dialogTitle = SystemUtils.Localize(
+            "CPR.dialog.deleteInstalledWorldItem.title"
+          );
+          let dialogMessage = `${SystemUtils.Format(
+            "CPR.dialog.deleteInstalledWorldItem.text",
+            { itemName: doc.name }
+          )}`;
           dialogMessage = dialogMessage.concat("<br><br>");
           for (const item of installedList) {
             let itemName = item.name;
             if (debugMode) {
               itemName = `${item.name} [${item.uuid}]`;
             }
-            let folderName = `(${SystemUtils.Localize("CPR.global.generic.worldFolder")}: ${SystemUtils.Localize("CPR.global.generic.notApplicable")})`;
+            let folderName = `(${SystemUtils.Localize(
+              "CPR.global.generic.worldFolder"
+            )}: ${SystemUtils.Localize("CPR.global.generic.notApplicable")})`;
             if (item.folder !== null) {
               let folderStructure = item.folder.name;
               let { folder } = item.folder;
@@ -97,13 +115,17 @@ const itemHooks = () => {
                 folderStructure = `${folder.name}/${folderStructure}`;
                 folder = folder.folder;
               }
-              folderName = `(${SystemUtils.Localize("CPR.global.generic.worldFolder")}: /${folderStructure})`;
+              folderName = `(${SystemUtils.Localize(
+                "CPR.global.generic.worldFolder"
+              )}: /${folderStructure})`;
               if (debugMode) {
                 folderName = `${folderName} [${folderId}]`;
               }
             }
 
-            dialogMessage = dialogMessage.concat(`<center>${itemName} ${folderName}</center><br>`);
+            dialogMessage = dialogMessage.concat(
+              `<center>${itemName} ${folderName}</center><br>`
+            );
           }
           NotificationPrompt.RenderPrompt(dialogTitle, dialogMessage);
           deleteItem = false;
@@ -131,11 +153,17 @@ const itemHooks = () => {
     LOGGER.trace("createItem | itemHooks | Called.");
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
-    if (containerTypes.includes(doc.type) && doc.system.installedItems.list.length > 0) {
+    if (
+      containerTypes.includes(doc.type) &&
+      doc.system.installedItems.list.length > 0
+    ) {
       doc.createInstalledItems();
     }
 
-    if (loadableTypes.includes(doc.type) && doc.system.magazine.ammoData.uuid !== "") {
+    if (
+      loadableTypes.includes(doc.type) &&
+      doc.system.magazine.ammoData.uuid !== ""
+    ) {
       doc.createAmmoItems();
     }
 
@@ -145,14 +173,23 @@ const itemHooks = () => {
         if (actor.system.roleInfo.activeRole === "") {
           actor.update({ "system.roleInfo.activeRole": doc.name });
         }
-        if (!actor.itemTypes.role.some((r) => r.id === actor.system.roleInfo.activeNetRole)) {
+        if (
+          !actor.itemTypes.role.some(
+            (r) => r.id === actor.system.roleInfo.activeNetRole
+          )
+        ) {
           // If no roles are designated as activeNetRole, OR if an activeNetRole has been set,
           // but that role has since been deleted, set activeNetRole.
           actor.update({ "system.roleInfo.activeNetRole": doc.id });
         }
       }
       // when a new item is created (dragged) on a mook sheet, perform a couple changes like auto-equip
-      if (Object.values(actor.apps).some((app) => app instanceof CPRMookActorSheet) && userId === game.user._id) {
+      if (
+        Object.values(actor.apps).some(
+          (app) => app instanceof CPRMookActorSheet
+        ) &&
+        userId === game.user._id
+      ) {
         LOGGER.debug("handling a dragged item to the mook sheet");
         actor.handleMookDraggedItem(doc);
       }
@@ -175,20 +212,29 @@ const itemHooks = () => {
     LOGGER.trace("deleteItem | itemHooks | Called.");
     const actor = doc.parent;
     if (actor !== null) {
-      if (doc.type === "role" && actor.system.roleInfo.activeRole === doc.name) {
-        const actorRoles = actor.itemTypes.role.sort((a, b) => (a.name > b.name ? 1 : -1));
+      if (
+        doc.type === "role" &&
+        actor.system.roleInfo.activeRole === doc.name
+      ) {
+        const actorRoles = actor.itemTypes.role.sort((a, b) =>
+          a.name > b.name ? 1 : -1
+        );
         if (actorRoles.length >= 1) {
           // The actor has other roles besides the one being deleted
           // First, we look for one with the same name. This covers a degenerate case where an actor has 2 or more roles
           // of the same name configured, and a case where role items on an actor get replaced during a data migration.
           let newRole;
-          const sameNameRoles = actorRoles.filter((r) => r.name === actor.system.roleInfo.activeRole);
+          const sameNameRoles = actorRoles.filter(
+            (r) => r.name === actor.system.roleInfo.activeRole
+          );
           if (sameNameRoles.length >= 1) {
             newRole = sameNameRoles.find((r) => r.id !== doc.id);
           } else {
             // no other roles with the same name, pick the next in the list
             [newRole] = actorRoles;
-            const warning = `${SystemUtils.Localize("CPR.messages.warnDeleteActiveRole")} ${newRole.name}`;
+            const warning = `${SystemUtils.Localize(
+              "CPR.messages.warnDeleteActiveRole"
+            )} ${newRole.name}`;
             SystemUtils.DisplayMessage("warn", warning);
           }
           actor.update({
@@ -200,7 +246,12 @@ const itemHooks = () => {
             "system.roleInfo.activeRole": "",
             "system.roleInfo.activeNetRole": "",
           });
-          SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.characterSheet.bottomPane.role.noRolesWarning"));
+          SystemUtils.DisplayMessage(
+            "warn",
+            SystemUtils.Localize(
+              "CPR.characterSheet.bottomPane.role.noRolesWarning"
+            )
+          );
         }
       }
     }
@@ -225,7 +276,7 @@ const itemHooks = () => {
       let subRolesValue = 0;
       doc.system.abilities.forEach((a) => {
         if (a.multiplier !== "--") {
-          subRolesValue += (a.rank * a.multiplier);
+          subRolesValue += a.rank * a.multiplier;
         }
       });
       if (subRolesValue > roleRank) {

@@ -20,7 +20,9 @@ export default class LedgerDeletionPrompt {
           resolve({ action: true, sign: 1 });
         };
         const _onYesSubtract = () => {
-          LOGGER.trace("_onYesSubtract | Dialog LedgerDeletionPrompt | called.");
+          LOGGER.trace(
+            "_onYesSubtract | Dialog LedgerDeletionPrompt | called."
+          );
           resolve({ action: true, sign: -1 });
         };
         const _onNo = () => {
@@ -32,28 +34,32 @@ export default class LedgerDeletionPrompt {
           content: html,
           buttons: {
             yesAdd: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.ledgerDeletion.yesAdd"),
               callback: () => _onYesAdd(),
             },
             yesSubtract: {
-              icon: "<i class=\"fas fa-check\"></i>",
-              label: SystemUtils.Localize("CPR.dialog.ledgerDeletion.yesSubtract"),
+              icon: '<i class="fas fa-check"></i>',
+              label: SystemUtils.Localize(
+                "CPR.dialog.ledgerDeletion.yesSubtract"
+              ),
               callback: () => _onYesSubtract(),
             },
             no: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.no"),
               callback: () => _onNo(),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: () => _onCancel(),
             },
           },
           default: "cancel",
-          render: LOGGER.trace("confirm | Dialog LedgerDeletionPrompt | called."),
+          render: LOGGER.trace(
+            "confirm | Dialog LedgerDeletionPrompt | called."
+          ),
           close: () => {
             // Closing the window can be interpreded as pressing cancel.
             _onCancel();

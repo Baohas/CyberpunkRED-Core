@@ -6,15 +6,22 @@ export default class ContainerVendorSellToPrompt {
   static async RenderPrompt(data) {
     LOGGER.trace("RenderPrompt | ContainerVendorSellToPrompt | called.");
     return new Promise((resolve, reject) => {
-      renderTemplate(`systems/${game.system.id}/templates/dialog/cpr-container-configure-sell-to-prompt.hbs`, data).then((html) => {
+      renderTemplate(
+        `systems/${game.system.id}/templates/dialog/cpr-container-configure-sell-to-prompt.hbs`,
+        data
+      ).then((html) => {
         const _onCancel = () => {
-          LOGGER.trace("_onCancel | Dialog ContainerVendorSellToPrompt | called.");
+          LOGGER.trace(
+            "_onCancel | Dialog ContainerVendorSellToPrompt | called."
+          );
           reject(new Error("Promise rejected: Window Closed"));
         };
         // eslint-disable-next-line no-shadow
         const _onConfirm = (html) => {
-          LOGGER.trace("_onConfirm | Dialog ContainerVendorSellToPrompt | called.");
-          const purchasingItems = html.find("[name=\"buying\"");
+          LOGGER.trace(
+            "_onConfirm | Dialog ContainerVendorSellToPrompt | called."
+          );
+          const purchasingItems = html.find('[name="buying"');
           const purchasingItemsList = [];
           const fd = new FormDataExtended(html.find("form")[0]);
           const formData = foundry.utils.expandObject(fd.object);
@@ -27,23 +34,27 @@ export default class ContainerVendorSellToPrompt {
           resolve(formData);
         };
         new Dialog({
-          title: SystemUtils.Localize("CPR.dialog.container.vendor.sellToTitle"),
+          title: SystemUtils.Localize(
+            "CPR.dialog.container.vendor.sellToTitle"
+          ),
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               // eslint-disable-next-line no-shadow
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: () => _onCancel(html),
             },
           },
           default: "confirm",
-          render: LOGGER.trace("confirm | Dialog ContainerVendorSellToPrompt | called."),
+          render: LOGGER.trace(
+            "confirm | Dialog ContainerVendorSellToPrompt | called."
+          ),
           close: () => {
             reject(new Error("Promise rejected: Window Closed"));
           },

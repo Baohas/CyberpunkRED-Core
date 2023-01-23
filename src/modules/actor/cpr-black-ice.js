@@ -45,7 +45,10 @@ export default class CPRBlackIceActor extends Actor {
     const niceStatName = SystemUtils.Localize(CPR.blackIceStatList[statName]);
     const statValue = parseInt(this.system.stats[statName], 10);
     const cprRoll = new CPRRolls.CPRProgramStatRoll(niceStatName, statValue);
-    if (this.isToken && typeof this.token.flags[game.system.id] !== "undefined") {
+    if (
+      this.isToken &&
+      typeof this.token.flags[game.system.id] !== "undefined"
+    ) {
       const cprFlags = this.token.flags[game.system.id];
       if (typeof cprFlags.program !== "undefined") {
         cprRoll.rollCardExtraArgs.program = duplicate(cprFlags.program);
@@ -73,7 +76,9 @@ export default class CPRBlackIceActor extends Actor {
     LOGGER.trace("createDamageRoll | CPRBlackIceActor | called.");
     let program;
     if (netrunnerTokenId) {
-      const sceneList = (sceneId) ? game.scenes.filter((s) => s.id === sceneId) : game.scenes;
+      const sceneList = sceneId
+        ? game.scenes.filter((s) => s.id === sceneId)
+        : game.scenes;
       let netrunnerToken;
       sceneList.forEach((scene) => {
         const tokenList = scene.tokens.filter((t) => t.id === netrunnerTokenId);
@@ -95,12 +100,19 @@ export default class CPRBlackIceActor extends Actor {
     let programName = this.name;
     let programData = {};
     if (program) {
-      damageFormula = (this.system.class === "antiprogram") ? program.system.damage.blackIce : program.system.damage.standard;
+      damageFormula =
+        this.system.class === "antiprogram"
+          ? program.system.damage.blackIce
+          : program.system.damage.standard;
       programName = program.name;
       programData = program.system;
     }
 
-    const cprRoll = new CPRRolls.CPRDamageRoll(programName, damageFormula, "program");
+    const cprRoll = new CPRRolls.CPRDamageRoll(
+      programName,
+      damageFormula,
+      "program"
+    );
     cprRoll.rollCardExtraArgs.program = programData;
     return cprRoll;
   }
@@ -120,7 +132,16 @@ export default class CPRBlackIceActor extends Actor {
    * @param {String} effect - Text to display in the effect field of the Black ICE. Any HTML is stripped from
    *                          the string. If this is not set it will default to whatever exists on the Actor.
    */
-  programmaticallyUpdate(type, per, spd, atk, def, rezValue, effect, rezMax = null) {
+  programmaticallyUpdate(
+    type,
+    per,
+    spd,
+    atk,
+    def,
+    rezValue,
+    effect,
+    rezMax = null
+  ) {
     LOGGER.trace("programmaticallyUpdate | CPRBlackIceActor | called.");
     // If BlackICE ever gets Active Effects, this code will be a problem. See Issue #583.
     const cprData = duplicate(this.system);
@@ -147,7 +168,9 @@ export default class CPRBlackIceActor extends Actor {
     LOGGER.trace("_applyDamage | CPRBlackIceActor | Called.");
     // As a Black ICE does not have any armor, the damage will be simply subtracted from the REZ.
     const currentRez = this.system.stats.rez.value;
-    await this.update({ "system.stats.rez.value": currentRez - damage - bonusDamage });
+    await this.update({
+      "system.stats.rez.value": currentRez - damage - bonusDamage,
+    });
     CPRChat.RenderDamageApplicationCard({
       actor: this,
       hpReduction: damage + bonusDamage,
@@ -163,7 +186,10 @@ export default class CPRBlackIceActor extends Actor {
   async _reverseDamage(rezReduction) {
     LOGGER.trace("_reverseDamage | CPRBlackIceActor | Called.");
     const currentRez = this.system.stats.rez.value;
-    const updatedRez = Math.min(currentRez + rezReduction, this.system.stats.rez.max);
+    const updatedRez = Math.min(
+      currentRez + rezReduction,
+      this.system.stats.rez.max
+    );
     await this.update({ "system.stats.rez.value": updatedRez });
   }
 
@@ -172,10 +198,13 @@ export default class CPRBlackIceActor extends Actor {
    *
    * @param {String} statName - name (from CPR.statList) of the stat to retrieve
    * @returns {Number}
-  */
+   */
   getStat(statName) {
     LOGGER.trace("getStat | CPRBlackIceActor | Called.");
-    const statValue = (statName === "rez") ? this.system.stats[statName].value : this.system.stats[statName];
+    const statValue =
+      statName === "rez"
+        ? this.system.stats[statName].value
+        : this.system.stats[statName];
     return parseInt(statValue, 10);
   }
 }

@@ -10,32 +10,40 @@ export default class ConfigureBIActorFromProgramPrompt {
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {
-          LOGGER.trace("_onCancel | Dialog ConfigureBIActorFromProgramPrompt | called.");
+          LOGGER.trace(
+            "_onCancel | Dialog ConfigureBIActorFromProgramPrompt | called."
+          );
           reject(new Error("Promise rejected: Window Closed"));
         };
         const _onConfirm = (html) => {
-          LOGGER.trace("_onConfirm | Dialog ConfigureBIActorFromProgramPrompt | called.");
+          LOGGER.trace(
+            "_onConfirm | Dialog ConfigureBIActorFromProgramPrompt | called."
+          );
           const fd = new FormDataExtended(html.find("form")[0]);
           const formData = foundry.utils.expandObject(fd.object);
           resolve(formData);
         };
         new Dialog({
-          title: SystemUtils.Localize("CPR.dialog.configureBlackIceActorFromProgram.title"),
+          title: SystemUtils.Localize(
+            "CPR.dialog.configureBlackIceActorFromProgram.title"
+          ),
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: (html) => _onCancel(html),
             },
           },
           default: "confirm",
-          render: LOGGER.trace("confirm | Dialog ConfigureBIActorFromProgramPrompt | called."),
+          render: LOGGER.trace(
+            "confirm | Dialog ConfigureBIActorFromProgramPrompt | called."
+          ),
           close: () => {
             reject(new Error("Promise rejected: Window Closed"));
           },

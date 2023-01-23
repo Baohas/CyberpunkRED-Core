@@ -62,7 +62,9 @@ export default class CPRDemonActor extends Actor {
     LOGGER.trace("_applyDamage | CPRDemonActor | Called.");
     // As a Demon does not have any armor, the damage will be simply subtracted from the REZ.
     const currentRez = this.system.stats.rez.value;
-    await this.update({ "system.stats.rez.value": currentRez - damage - bonusDamage });
+    await this.update({
+      "system.stats.rez.value": currentRez - damage - bonusDamage,
+    });
     CPRChat.RenderDamageApplicationCard({
       actor: this,
       hpReduction: damage + bonusDamage,
@@ -78,7 +80,10 @@ export default class CPRDemonActor extends Actor {
   async _reverseDamage(rezReduction) {
     LOGGER.trace("_reverseDamage | CPRDemonActor | Called.");
     const currentRez = this.system.stats.rez.value;
-    const updatedRez = Math.min(currentRez + rezReduction, this.system.stats.rez.max);
+    const updatedRez = Math.min(
+      currentRez + rezReduction,
+      this.system.stats.rez.max
+    );
     await this.update({ "system.stats.rez.value": updatedRez });
   }
 
@@ -87,10 +92,13 @@ export default class CPRDemonActor extends Actor {
    *
    * @param {String} statName - name (from CPR.statList) of the stat to retrieve
    * @returns {Number}
-  */
+   */
   getStat(statName) {
     LOGGER.trace("getStat | CPRDemonActor | Called.");
-    const statValue = (statName === "rez") ? this.system.stats[statName].value : this.system.stats[statName];
+    const statValue =
+      statName === "rez"
+        ? this.system.stats[statName].value
+        : this.system.stats[statName];
     return parseInt(statValue, 10);
   }
 }

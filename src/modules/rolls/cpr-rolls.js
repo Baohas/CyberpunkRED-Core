@@ -75,7 +75,14 @@ export class CPRRoll {
       const modArray = rollMods.split(" ");
       modArray.forEach((mod) => {
         if (mod !== "") {
-          this.addMod([{ value: Number(mod), source: SystemUtils.Localize("CPR.rolls.modifiers.sources.rollFormula") }]);
+          this.addMod([
+            {
+              value: Number(mod),
+              source: SystemUtils.Localize(
+                "CPR.rolls.modifiers.sources.rollFormula"
+              ),
+            },
+          ]);
         }
       });
     }
@@ -100,7 +107,10 @@ export class CPRRoll {
         if (m && m.value !== 0) this.mods.push(m);
       });
     } else {
-      LOGGER.error("Arg for addMod must be an Array of CPRMod-like objects. See argument:", modArray);
+      LOGGER.error(
+        "Arg for addMod must be an Array of CPRMod-like objects. See argument:",
+        modArray
+      );
     }
   }
 
@@ -134,7 +144,9 @@ export class CPRRoll {
       modTotal += valueInt;
     });
 
-    return this.mods.length > 0 || this.additionalMods.length > 0 ? modTotal : 0;
+    return this.mods.length > 0 || this.additionalMods.length > 0
+      ? modTotal
+      : 0;
   }
 
   /**
@@ -250,7 +262,10 @@ export class CPRRoll {
     // Handle skipping of the user verification step
     let skipDialog = event.ctrlKey || event.metaKey;
     if (event.type === "click") {
-      const ctrlSetting = game.settings.get(game.system.id, "invertRollCtrlFunction");
+      const ctrlSetting = game.settings.get(
+        game.system.id,
+        "invertRollCtrlFunction"
+      );
       skipDialog = ctrlSetting ? !skipDialog : skipDialog;
     }
 
@@ -271,7 +286,9 @@ export class CPRRoll {
       }
 
       // Call the dialog. Catch and throw an error if the promise is not returned.
-      const dialogData = await DialogClass.showDialog(this, actor, item).catch((err) => LOGGER.debug(err));
+      const dialogData = await DialogClass.showDialog(this, actor, item).catch(
+        (err) => LOGGER.debug(err)
+      );
       if (dialogData === undefined) {
         // returns false if the dialog was closed
         return false;
@@ -303,7 +320,10 @@ export class CPRInitiative extends CPRRoll {
     this.statValue = statValue;
 
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-initiative-rollcard.hbs`;
-    this.calculateCritical = game.settings.get(game.system.id, "criticalInitiative");
+    this.calculateCritical = game.settings.get(
+      game.system.id,
+      "criticalInitiative"
+    );
   }
 
   _computeBase() {
@@ -382,8 +402,14 @@ export class CPRSkillRoll extends CPRStatRoll {
     this.statName = statName;
     this.skillName = skillName;
     this.skillValue = skillValue;
-    this.rollTitle = SystemUtils.Localize(`CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`) === `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`
-      ? skillName : SystemUtils.Localize(`CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`);
+    this.rollTitle =
+      SystemUtils.Localize(
+        `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`
+      ) === `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`
+        ? skillName
+        : SystemUtils.Localize(
+            `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`
+          );
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-skill-rollcard.hbs`;
   }
 
@@ -396,7 +422,13 @@ export class CPRSkillRoll extends CPRStatRoll {
    */
   _computeBase() {
     LOGGER.trace("_computeBase | CPRSkillRoll | Called.");
-    return this.initialRoll + this.totalMods() + this.statValue + this.skillValue + this.luck;
+    return (
+      this.initialRoll +
+      this.totalMods() +
+      this.statValue +
+      this.skillValue +
+      this.luck
+    );
   }
 }
 
@@ -430,7 +462,9 @@ export class CPRHumanityLossRoll extends CPRRoll {
     LOGGER.debug(`humanityLoss is ${humanityLoss}`);
     super(name, humanityLoss);
     LOGGER.debug(`formula is ${this.formula}`);
-    this.rollTitle = SystemUtils.Localize("CPR.dialog.installCyberware.humanityLoss");
+    this.rollTitle = SystemUtils.Localize(
+      "CPR.dialog.installCyberware.humanityLoss"
+    );
     this.calculateCritical = false;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-humanity-loss-rollcard.hbs`;
     this.cyberwareName = name;
@@ -457,7 +491,14 @@ export class CPRAttackRoll extends CPRSkillRoll {
    * @param {Number} skillValue - value of said skill
    * @param {String} weaponType - type of the weapon which is embedded in links to damage rolls in the roll card
    */
-  constructor(attackName, statName, statValue, skillName, skillValue, weaponType) {
+  constructor(
+    attackName,
+    statName,
+    statValue,
+    skillName,
+    skillValue,
+    weaponType
+  ) {
     LOGGER.trace("constructor | CPRAttackRoll | Called.");
     super(statName, statValue, skillName, skillValue);
     this.rollTitle = `${attackName}`;
@@ -497,7 +538,14 @@ export class CPRAimedAttackRoll extends CPRAttackRoll {
    * @param {Number} skillValue - value of said skill
    * @param {String} weaponType - type of the weapon which is embedded in links to damage rolls in the roll card
    */
-  constructor(weaponName, statName, statValue, skillName, skillValue, weaponType) {
+  constructor(
+    weaponName,
+    statName,
+    statValue,
+    skillName,
+    skillValue,
+    weaponType
+  ) {
     LOGGER.trace("constructor | CPRAimedAttackRoll | Called.");
     super(weaponName, statName, statValue, skillName, skillValue, weaponType);
     this.rollTitle = `${weaponName}`;
@@ -520,7 +568,14 @@ export class CPRAutofireRoll extends CPRAttackRoll {
    * @param {Number} skillValue - value of said skill
    * @param {String} weaponType - type of the weapon which is embedded in links to damage rolls in the roll card
    */
-  constructor(weaponName, statName, statValue, skillName, skillValue, weaponType) {
+  constructor(
+    weaponName,
+    statName,
+    statValue,
+    skillName,
+    skillValue,
+    weaponType
+  ) {
     LOGGER.trace("constructor | CPRAutofireRoll | Called.");
     super(weaponName, statName, statValue, skillName, skillValue, weaponType);
     this.rollTitle = `${weaponName}`;
@@ -541,7 +596,14 @@ export class CPRSuppressiveFireRoll extends CPRAttackRoll {
    * @param {Number} skillValue - value of said skill
    * @param {String} weaponType - type of the weapon which is embedded in links to damage rolls in the roll card
    */
-  constructor(weaponName, statName, statValue, skillName, skillValue, weaponType) {
+  constructor(
+    weaponName,
+    statName,
+    statValue,
+    skillName,
+    skillValue,
+    weaponType
+  ) {
     LOGGER.trace("constructor | CPRSuppressiveFireRoll | Called.");
     super(weaponName, statName, statValue, skillName, skillValue, weaponType);
     this.rollTitle = `${weaponName}`;
@@ -563,7 +625,15 @@ export class CPRRoleRoll extends CPRRoll {
    * @param {Number} statValue - stat value
    * @param {Array} skillList
    */
-  constructor(roleName, roleValue, skillName, skillValue, statName, statValue, skillList) {
+  constructor(
+    roleName,
+    roleValue,
+    skillName,
+    skillValue,
+    statName,
+    statValue,
+    skillList
+  ) {
     LOGGER.trace("constructor | CPRRoleRoll | Called.");
     super(roleName, "1d10");
     this.skillList = skillList;
@@ -585,7 +655,14 @@ export class CPRRoleRoll extends CPRRoll {
    */
   _computeBase() {
     LOGGER.trace("_computeBase | CPRRoleRoll | Called.");
-    return this.initialRoll + this.totalMods() + this.roleValue + this.skillValue + this.statValue + this.luck;
+    return (
+      this.initialRoll +
+      this.totalMods() +
+      this.roleValue +
+      this.skillValue +
+      this.statValue +
+      this.luck
+    );
   }
 }
 
@@ -617,7 +694,13 @@ export class CPRInterfaceRoll extends CPRRoleRoll {
 
   _computeBase() {
     LOGGER.trace("_computeBase | CPRInterfaceRoll | Called.");
-    return this.initialRoll + this.totalMods() + this.roleValue + this.statValue + this.luck;
+    return (
+      this.initialRoll +
+      this.totalMods() +
+      this.roleValue +
+      this.statValue +
+      this.luck
+    );
   }
 }
 
@@ -647,7 +730,9 @@ export class CPRDeathSaveRoll extends CPRRoll {
 
   _computeBase() {
     LOGGER.trace("_computeBase | CPRDeathSaveRoll | Called.");
-    return this.initialRoll + this.basePenalty + this.penalty + this.totalMods();
+    return (
+      this.initialRoll + this.basePenalty + this.penalty + this.totalMods()
+    );
   }
 }
 
@@ -692,9 +777,12 @@ export class CPRDamageRoll extends CPRRoll {
    */
   _computeBase() {
     LOGGER.trace("_computeBase | CPRDamageRoll | Called.");
-    this.autofireMultiplier = Math.min(this.autofireMultiplier, this.autofireMultiplierMax);
-    const damageMultiplier = (this.isAutofire) ? this.autofireMultiplier : 1;
-    return ((this.initialRoll + this.totalMods()) * damageMultiplier);
+    this.autofireMultiplier = Math.min(
+      this.autofireMultiplier,
+      this.autofireMultiplierMax
+    );
+    const damageMultiplier = this.isAutofire ? this.autofireMultiplier : 1;
+    return (this.initialRoll + this.totalMods()) * damageMultiplier;
   }
 
   /**
@@ -789,7 +877,7 @@ export class CPRTableRoll extends CPRRoll {
     const formula = tableRoll._formula;
     super(rollTitle, formula);
     this.rollCard = rollCard;
-    (tableRoll.terms[0].results).forEach((die) => {
+    tableRoll.terms[0].results.forEach((die) => {
       this.faces.push(die.result);
     });
     this.resultTotal = tableRoll.result;

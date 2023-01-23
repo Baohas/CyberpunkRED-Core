@@ -10,20 +10,26 @@ import SystemUtils from "./cpr-systemUtils.js";
  * @param {string} contextMenuTargetSelector - The selector for the element that will open the ContextMenu when right clicked
  * @param {{name: string, img: string}} data - The created ContextMenu
  */
-export default function createImageContextMenu(html, contextMenuTargetSelector, data) {
+export default function createImageContextMenu(
+  html,
+  contextMenuTargetSelector,
+  data
+) {
   LOGGER.trace("createImageContextMenu | Called.");
 
-  const menuItems = [{
-    name: SystemUtils.Format("CPR.sheets.image.showPlayers"),
-    icon: "<i class=\"fas fa-eye\"></i>",
-    callback: () => {
-      const popout = new ImagePopout(data.img, {
-        title: data.name,
-        shareable: true,
-      });
-      popout.render(true);
-      popout.shareImage(true);
+  const menuItems = [
+    {
+      name: SystemUtils.Format("CPR.sheets.image.showPlayers"),
+      icon: '<i class="fas fa-eye"></i>',
+      callback: () => {
+        const popout = new ImagePopout(data.img, {
+          title: data.name,
+          shareable: true,
+        });
+        popout.render(true);
+        popout.shareImage(true);
+      },
     },
-  }];
+  ];
   return new ContextMenu(html, contextMenuTargetSelector, menuItems);
 }

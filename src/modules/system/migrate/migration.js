@@ -18,17 +18,29 @@ export default class MigrationRunner {
   async migrateWorld(currDataModelVersion, newDataModelVersion) {
     LOGGER.trace("migrateWorld | MigrationRunner");
     this.allMigrations = Migrations;
-    this.migrationsToDo = MigrationRunner._getMigrations(currDataModelVersion, newDataModelVersion);
+    this.migrationsToDo = MigrationRunner._getMigrations(
+      currDataModelVersion,
+      newDataModelVersion
+    );
 
     // No migration needed, return true
     if (this.migrationsToDo.length === 0) {
       return true;
     }
 
-    CPRSystemUtils.DisplayMessage("notify", `Beginning Migrations of Cyberpunk Red Core from Data Model ${currDataModelVersion} to ${newDataModelVersion}.`);
-    CPRSystemUtils.DisplayMessage("warn", CPRSystemUtils.Localize("CPR.migration.status.waitForEnd"));
+    CPRSystemUtils.DisplayMessage(
+      "notify",
+      `Beginning Migrations of Cyberpunk Red Core from Data Model ${currDataModelVersion} to ${newDataModelVersion}.`
+    );
+    CPRSystemUtils.DisplayMessage(
+      "warn",
+      CPRSystemUtils.Localize("CPR.migration.status.waitForEnd")
+    );
     if (await MigrationRunner.runMigrations(this.migrationsToDo)) {
-      CPRSystemUtils.DisplayMessage("notify", CPRSystemUtils.Localize("CPR.migration.status.migrationsComplete"));
+      CPRSystemUtils.DisplayMessage(
+        "notify",
+        CPRSystemUtils.Localize("CPR.migration.status.migrationsComplete")
+      );
       return true;
     }
 
@@ -50,11 +62,17 @@ export default class MigrationRunner {
         const result = await migration.run();
         if (!result) return false;
       } catch (err) {
-        CPRSystemUtils.DisplayMessage("error", `Fatal error while migrating to ${migration.version}: ${err.message}`);
+        CPRSystemUtils.DisplayMessage(
+          "error",
+          `Fatal error while migrating to ${migration.version}: ${err.message}`
+        );
         return false;
       }
       if (migration.flush) {
-        CPRSystemUtils.DisplayMessage("notify", `Migration to data model ${migration.version} complete, please refresh your browser tab to continue.`);
+        CPRSystemUtils.DisplayMessage(
+          "notify",
+          `Migration to data model ${migration.version} complete, please refresh your browser tab to continue.`
+        );
         return false;
       }
     }
@@ -71,7 +89,11 @@ export default class MigrationRunner {
   static _getMigrations(currDataModelVersion, newDataModelVersion) {
     LOGGER.trace("_getMigrations | MigrationRunner");
     const migrations = Object.values(Migrations).map((M) => new M());
-    return migrations.filter((m) => m.version > currDataModelVersion && m.version <= newDataModelVersion)
+    return migrations
+      .filter(
+        (m) =>
+          m.version > currDataModelVersion && m.version <= newDataModelVersion
+      )
       .sort((a, b) => (a.version > b.version ? 1 : -1));
   }
 }

@@ -25,9 +25,11 @@ const Installable = function Installable() {
 
     for (const containerType of containerTypes) {
       for (const item of actor.itemTypes[containerType]) {
-        if (item.system.installedItems.allowed
-          && item.system.installedItems.allowedTypes.includes(installationType)
-          && item.availableInstallSlots() >= this.system.size) {
+        if (
+          item.system.installedItems.allowed &&
+          item.system.installedItems.allowedTypes.includes(installationType) &&
+          item.availableInstallSlots() >= this.system.size
+        ) {
           if (installationType === "itemUpgrade") {
             if (item.type === this.system.type) {
               installationTargets.push(item);
@@ -35,19 +37,26 @@ const Installable = function Installable() {
           } else {
             installationTargets.push(item);
           }
-          if (installationTargets.includes(item) && !installationTargetTypes.includes(item.type)) {
+          if (
+            installationTargets.includes(item) &&
+            !installationTargetTypes.includes(item.type)
+          ) {
             installationTargetTypes.push(item.type);
           }
         }
       }
     }
-    const dialogPromptText = installationTargets.length > 0 ? SystemUtils.Format(
-      "CPR.dialog.selectInstallTarget.text",
-      {
-        installable: this.name,
-      },
-    ) : SystemUtils.Format("CPR.dialog.selectInstallTarget.noOptions", { target: this.name });
-    const dialogPromptTitle = SystemUtils.Localize("CPR.dialog.selectInstallTarget.title");
+    const dialogPromptText =
+      installationTargets.length > 0
+        ? SystemUtils.Format("CPR.dialog.selectInstallTarget.text", {
+            installable: this.name,
+          })
+        : SystemUtils.Format("CPR.dialog.selectInstallTarget.noOptions", {
+            target: this.name,
+          });
+    const dialogPromptTitle = SystemUtils.Localize(
+      "CPR.dialog.selectInstallTarget.title"
+    );
     let formData = {
       title: dialogPromptTitle,
       text: dialogPromptText,
@@ -58,7 +67,9 @@ const Installable = function Installable() {
       },
     };
 
-    formData = await SelectInstallTargetPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+    formData = await SelectInstallTargetPrompt.RenderPrompt(formData).catch(
+      (err) => LOGGER.debug(err)
+    );
     if (formData === undefined || formData.selectedTarget === null) {
       return;
     }
