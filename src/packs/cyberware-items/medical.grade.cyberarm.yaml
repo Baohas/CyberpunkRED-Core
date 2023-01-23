@@ -4,7 +4,7 @@ flags:
   core: {}
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/cyberarm.svg
-name: Medical Grade CyberArm
+name: Medical Grade Cyberarm
 ownership:
   default: 0
 sort: 0
@@ -31,12 +31,12 @@ system:
     static: '0'
   install: notApplicable
   installedItems:
-    allowed: true
+    allowed: false
     allowedTypes:
       - itemUpgrade
       - cyberware
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isConcealed: false
   isFoundational: true
@@ -57,7 +57,7 @@ system:
   revealed: true
   rof: 1
   size: 0
-  source: pg. 364
+  source: pg. 226
   tags: []
   type: cyberArm
   unarmedAutomaticCalculation: true

@@ -1,33 +1,34 @@
-_id: x6mYA3IJZaNK00nv
+_id: aFg1nXhz37e1C2YP
 effects: []
 flags:
   core: {}
 folder: null
 img: >-
-  systems/cyberpunk-red-core/icons/compendium/item_upgrades/grenade_launcher_underbarrel.svg
-name: Grenade Launcher Underbarrel
+  systems/cyberpunk-red-core/icons/compendium/item_upgrades/shotgun_underbarrel.svg
+name: Shotgun Underbarrel
 ownership:
   default: 0
 sort: 0
 system:
   ammoVariety:
-    - grenade
+    - shotgunShell
+    - shotgunSlug
   attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  damage: 6d6
+  damage: 5d6
   description:
     chat: ''
     unidentified: ''
     value: >-
-      <p>Functions like a standard grenade launcher, but with a magazine size of
-      1. Requires 2 hands to use, and takes up 2 attachment slots. While
-      attached, the weapon can't be concealed under clothing.</p>
+      <p>Functions like a standard shotgun, but with a magazine size of 2.
+      Requires 2 hands to use, and takes up 2 attachment slots. While attached,
+      the weapon can't be concealed under clothing.</p>
 
       <p>Note that the weapon inherits any modifiers from the gun it is attached
       to, such as other attachments and quality.</p>
-  dvTable: DV Grenade Launcher
+  dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false
   fireModes:
@@ -48,7 +49,7 @@ system:
     ammoData:
       name: ''
       uuid: ''
-    max: 1
+    max: 2
     value: 0
   modifiers:
     Wardrobe & Style:
@@ -131,6 +132,6 @@ system:
   type: weapon
   unarmedAutomaticCalculation: true
   usesType: magazine
-  weaponSkill: Heavy Weapons
-  weaponType: grenadeLauncher
+  weaponSkill: Shoulder Arms
+  weaponType: shotgun
 type: itemUpgrade
