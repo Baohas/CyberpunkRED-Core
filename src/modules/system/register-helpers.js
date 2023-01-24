@@ -14,25 +14,35 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprCompare", (v1, operator, v2) => {
     LOGGER.trace("cprCompare | handlebarsHelper | Called.");
+    let variable1 = v1;
+    let variable2 = v2;
+    if (typeof v1 === "boolean" && typeof v2 !== "boolean") {
+      variable2 = (v2 === "true");
+    }
+
+    if (typeof v1 !== "boolean" && typeof v2 === "boolean") {
+      variable1 = (v1 === "true");
+    }
+
     switch (operator) {
       case "==":
-        return v1 == v2; // eslint-disable-line eqeqeq
+        return variable1 == variable2; // eslint-disable-line eqeqeq
       case "===":
-        return v1 === v2;
+        return variable1 === variable2;
       case "!==":
-        return v1 !== v2;
+        return variable1 !== variable2;
       case "<":
-        return v1 < v2;
+        return variable1 < variable2;
       case "<=":
-        return v1 <= v2;
+        return variable1 <= variable2;
       case ">":
-        return v1 > v2;
+        return variable1 > variable2;
       case ">=":
-        return v1 >= v2;
+        return variable1 >= variable2;
       case "&&":
-        return v1 && v2;
+        return variable1 && variable2;
       case "||":
-        return v1 || v2;
+        return variable1 || variable2;
       default:
         return false;
     }

@@ -4,10 +4,13 @@
 ## Version 0.86.1 | Date: TBD
 
 ### Bug Fixes
+
 - #683 - Dragging a World Item which has another World Items installed in it and THAT item also has another world item installed in it (Cyberarm->Cyberdeck (Hardwired)->Cyberdeck) results in two cyberdecks being created on the actor.  This would exponentiate every level of installation if there were more.
 - Add text for missing localized string `CPR.messages.installInvalidType`
+- #686 - Installing a secondary weapon as a weapon upgrade does not show that upgrade in the Fight Tab
 
 ### Changes
+
 - When `Debug Elements in UI` is enabled on an item with other installed items in it, the installed items will have their UUID's displayed to help troubleshooting.
 -
 ## Version 0.86.0 | Date: 2023-01-21
