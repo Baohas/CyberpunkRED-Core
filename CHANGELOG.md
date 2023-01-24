@@ -12,7 +12,7 @@
 ### Changes
 
 - When `Debug Elements in UI` is enabled on an item with other installed items in it, the installed items will have their UUID's displayed to help troubleshooting.
--
+
 ## Version 0.86.0 | Date: 2023-01-21
 
 ### Release Specific Notes
