@@ -285,9 +285,6 @@ const Container = function Container() {
       }
       for (const item of createdItems) {
         newInstalledList.push(item.uuid);
-        if (containerTypes.includes(item.type) && item.system.installedItems.list.length > 0) {
-          await item.createInstalledItems();
-        }
       }
     }
 
