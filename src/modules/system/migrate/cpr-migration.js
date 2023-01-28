@@ -302,7 +302,7 @@ export default class CPRMigration {
   async migrateCompendia(classRef) {
     LOGGER.trace("migrateCompendia | CPRMigration");
     let good = true;
-    for (const pack of game.packs.filter((p) => p.metadata.package === "world" && ["Actor", "Item", "Scene"].includes(p.metadata.type) && !p.locked)) {
+    for (const pack of game.packs.filter((p) => p.metadata.packageType === "world" && ["Actor", "Item", "Scene"].includes(p.metadata.type) && !p.locked)) {
       // Perform Foundry server-side migration of the pack data model
       await pack.migrate();
       // Iterate over compendium entries - applying fine-tuned migration functions
