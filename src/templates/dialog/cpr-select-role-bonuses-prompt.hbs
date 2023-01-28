@@ -5,7 +5,8 @@
       {{localize "CPR.dialog.selectRoleBonuses.message"}}
     </div>
   </div>
-  <hr/>
+
+  <hr>
   <div class="dialog-grid flexcol">
     <ol class="dialog-list">
       <li class="dialog-item dialog-item-header flexrow">
@@ -21,7 +22,7 @@
           {{localize "CPR.dialog.selectRoleBonuses.bonusRatio"}}
         </div>
         <div class="dialog-item-input text-nowrap flexrow">
-          <span class="dialog-item-input">1 :</span><input class="text-right" name="bonusRatio" type="number" value={{roleData.bonusRatio}}/>
+          <span class="dialog-item-input">1 :</span><input class="text-right" name="bonusRatio" type="number" value={{roleData.bonusRatio}}>
         </div>
       </li>
       <li class="dialog-item flexrow">
@@ -29,16 +30,16 @@
           {{localize "CPR.effectSheet.header.situational"}}
         </div>
         <div class="dialog-item-input text-nowrap">
-          <a class="item-checkbox" data-target="roleData.isSituational"><i class="far fa{{#if roleData.isSituational }}-check{{/if }}-circle"></i></a>
+          <a class="item-checkbox" data-target="roleData.isSituational"><i class="far fa{{#if roleData.isSituational}}-check{{/if}}-circle"></i></a>
         </div>
       </li>
-      {{#if roleData.isSituational }}
+      {{#if roleData.isSituational}}
         <li class="dialog-item flexrow">
           <div class="dialog-item-name text-nowrap text-bold">
             {{localize "CPR.effectSheet.header.onByDefault"}}
           </div>
           <div class="dialog-item-input text-nowrap">
-            <a class="item-checkbox" data-target="roleData.onByDefault"><i class="far fa{{#if roleData.onByDefault }}-check{{/if }}-circle"></i></a>
+            <a class="item-checkbox" data-target="roleData.onByDefault"><i class="far fa{{#if roleData.onByDefault}}-check{{/if}}-circle"></i></a>
           </div>
         </li>
       {{/if}}
@@ -50,16 +51,16 @@
           {{localize "CPR.dialog.common.select"}}
         </div>
       </li>
-      {{#each (cprFindConfigObj "universalBonuses") as |universalBonus u| }}
+      {{#each (cprFindConfigObj "universalBonuses") as |universalBonus u|}}
         <li class="dialog-item flexrow">
           <div class="dialog-item-name text-nowrap text-nowrap">
             {{localize universalBonus}}
           </div>
           <div class="dialog-item-input text-nowrap text-nowrap text-bold text-space-around">
-            {{#if (cprListContains ../roleData.universalBonuses u) }}
-              <input type="checkbox" name="universalBonuses" value="{{u}}" checked/>
+            {{#if (cprListContains ../roleData.universalBonuses u)}}
+              <input type="checkbox" name="universalBonuses" value="{{u}}" checked>
             {{else}}
-              <input type="checkbox" name="universalBonuses" value="{{u}}"/>
+              <input type="checkbox" name="universalBonuses" value="{{u}}">
             {{/if}}
           </div>
         </li>
@@ -72,23 +73,23 @@
           {{localize "CPR.dialog.common.select"}}
         </div>
       </li>
-      {{#each skillList as |skill| }}
+      {{#each skillList as |skill|}}
         <li class="dialog-item flexrow">
           <div class="dialog-item-name text-nowrap">
             {{localize (cprGetLocalizedlNameKey skill.name "skill")}}
           </div>
           <div class="dialog-item-input text-nowrap text-bold text-space-around">
-            {{#if (cprObjectListContains ../roleData.bonuses "name" skill.name) }}
-              <input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked/>
+            {{#if (cprObjectListContains ../roleData.bonuses "name" skill.name)}}
+              <input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked>
             {{else}}
-              <input type="checkbox" name="selectedSkills" value="{{skill.name}}"/>
+              <input type="checkbox" name="selectedSkills" value="{{skill.name}}">
             {{/if}}
           </div>
         </li>
       {{/each}}
     </ol>
   </div>
-  <hr/>
-  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
+<hr>
+{{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 </form>
 {{cprTrace "END CPR-SELECT-ROLE-BONUSES-PROMPT.HBS"}}

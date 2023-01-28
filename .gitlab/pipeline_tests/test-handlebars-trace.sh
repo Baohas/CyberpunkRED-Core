@@ -53,8 +53,8 @@ for file in ${ALL_FILES}; do
     # Extract the name of the file and convert it to allcaps
     base=$(basename "${file}" | tr '[:lower:]' '[:upper:]')
     # Create the expected trace statements
-    first="cprTrace \"START"
-    last="cprTrace \"END"
+    first="{{cprTrace \"START"
+    last="{{cprTrace \"END"
     # Look for the starting trace messages in the file
     if [[ "$(grep "${first}" "${file}" | grep "${base}" -c)" != 1 ]]; then
       echo "❌ ${first} missing/incorrect at the beginning of ${file}"

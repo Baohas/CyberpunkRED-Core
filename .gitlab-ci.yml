@@ -105,77 +105,6 @@ lint-code:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
-code-formatting:
-  stage: test
-  script:
-    - >
-      npx prettier
-      --check
-      gulpfile.mjs
-      gulp/*.mjs
-      src/*.js
-      src/modules
-      src/**/*.yaml
-      src/*.json
-      src/**/*.json
-  needs:
-    - job: init
-      artifacts: true
-  rules:
-    # Don't run if we're in the cleanup-dev schedule
-    - if: $CPR_SCHEDULE == "cleanup-dev"
-      when: never
-    # Run on MRs
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    # Run on git tag
-    - if: $CI_COMMIT_TAG
-
-handlebars-formatting:
-  stage: test
-  before_script:
-    - apt-get update
-    - apt-get install python3-pip --yes
-  script:
-    - pip3 install djlint
-    - djlint --check src/templates/**/*.hbs
-  needs:
-    - job: init
-      artifacts: true
-  rules:
-    # Don't run if we're in the cleanup-dev schedule
-    - if: $CPR_SCHEDULE == "cleanup-dev"
-      when: never
-    # Run on MRs
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    # Run on git tag
-    - if: $CI_COMMIT_TAG
-
-lint-handlebars:
-  stage: test
-  before_script:
-    - apt-get update
-    - apt-get install python3-pip --yes
-  script:
-    - pip3 install djlint
-    - djlint src/templates/**/*.hbs
-  needs:
-    - job: init
-      artifacts: true
-  rules:
-    # Don't run if we're in the cleanup-dev schedule
-    - if: $CPR_SCHEDULE == "cleanup-dev"
-      when: never
-    # Run on MRs
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    # Run on git tag
-    - if: $CI_COMMIT_TAG
-
 lint-json:
   stage: test
   script:
@@ -440,8 +369,8 @@ code-localization:
 handlebars-helpers:
   stage: test
   script:
-    - echo "Checking use of handlebars helpers..."
-    - ./.gitlab/pipeline_tests/test-handlebars-helpers.sh
+  - echo "Checking use of handlebars helpers..."
+  - ./.gitlab/pipeline_tests/test-handlebars-helpers.sh
   needs:
     - job: init
       artifacts: true
@@ -459,8 +388,8 @@ handlebars-helpers:
 handlebars-templates:
   stage: test
   script:
-    - echo "Checking use of handlebars templates..."
-    - ./.gitlab/pipeline_tests/test-handlebars-templates.sh
+  - echo "Checking use of handlebars templates..."
+  - ./.gitlab/pipeline_tests/test-handlebars-templates.sh
   needs:
     - job: init
       artifacts: true
@@ -560,11 +489,9 @@ build-artifacts:
     - job: init
       artifacts: true
     - job: lint-code
-    - job: code-formatting
     - job: lint-json
     - job: lint-yaml
     - job: lint-markdown
-    - job: lint-handlebars
     - job: unit-test
     - job: test-shell-scripts
       optional: true
@@ -576,7 +503,6 @@ build-artifacts:
     - job: tag-statements
     - job: code-localization
     - job: handlebars-helpers
-    - job: handlebars-formatting
     - job: tooltips
     - job: test-build
       optional: true

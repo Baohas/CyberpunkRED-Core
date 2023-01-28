@@ -3,9 +3,10 @@
   <div class="mook-sheet">
     <div class="mook-name side-banner">
       <div class="bg-red fg-white text-largest">
-        <a class="change-mook-name">{{actor.name}}</a>
+        <a class = "change-mook-name">{{actor.name}}</a>
       </div>
     </div>
+
     <div class="mook-details">
       <div class="mook-img-and-stats">
         <div class="mook-image bg-red">
@@ -19,17 +20,11 @@
             <div class="mook-hp">
               <span class="text-padding-left">{{localize "CPR.global.generic.hitpoints"}}</span>
               <div class="min-of-max-container text-normal">
-                <input class="text-center"
-                       name="system.derivedStats.hp.value"
-                       type="number"
-                       value="{{actor.system.derivedStats.hp.value}}"
-                       data-dtype="Number"/>
+                <input class="text-center" name="system.derivedStats.hp.value" type="number"
+                  value="{{actor.system.derivedStats.hp.value}}" data-dtype="Number" />
                 <div class="of bg-red fg-white text-normal text-bold">of</div>
-                <input class="text-center"
-                       name="system.derivedStats.hp.max"
-                       type="number"
-                       value="{{actor.system.derivedStats.hp.max}}"
-                       data-dtype="Number"/>
+                <input class="text-center" name="system.derivedStats.hp.max" type="number"
+                  value="{{actor.system.derivedStats.hp.max}}" data-dtype="Number" />
               </div>
             </div>
             <div class="mook-wounded">
@@ -39,23 +34,17 @@
               </div>
             </div>
             <div class="mook-deathsave">
-              <span class="text-padding-right"
-                    data-tooltip="{{localize "CPR.mookSheet.deathSave.roll"}}">
-                <a class="rollable"
-                   data-roll-title="{{localize "CPR.mookSheet.deathSave.title"}}"
-                   data-roll-type="deathsave">
-                {{localize "CPR.mookSheet.deathSave.title"}}</a>
+              <span class="text-padding-right" data-tooltip="{{localize "CPR.mookSheet.deathSave.roll"}}">
+                <a class="rollable" data-roll-title="{{localize "CPR.mookSheet.deathSave.title"}}" data-roll-type="deathsave">
+                  {{localize "CPR.mookSheet.deathSave.title"}}</a>
               </span>
               <div class="width-full bg-white text-center text-normal text-bold fg-black">
-                <span data-tooltip="{{localize "CPR.mookSheet.deathSave.reset"}}
-                  <br>
-                  {{localize "CPR.global.generic.deathPenalty" }}: {{actor.system.derivedStats.deathSave.penalty}}
-                  <br>
-                  {{localize "CPR.mookSheet.deathSave.hoverCriticalInjuryPenalty" }}: {{actor.system.derivedStats.deathSave.basePenalty}}">
+                <span data-tooltip="{{localize "CPR.mookSheet.deathSave.reset"}}<br>{{localize "CPR.global.generic.deathPenalty" }}: {{actor.system.derivedStats.deathSave.penalty}}
+                    <br>
+                    {{localize "CPR.mookSheet.deathSave.hoverCriticalInjuryPenalty" }}: {{actor.system.derivedStats.deathSave.basePenalty}}">
                   <a class="reset-deathsave-value text-bold">{{actor.system.derivedStats.deathSave.value}}</a>
                 </span>
-                <a class="increase-deathsave-value"><i class="far fa-arrow-alt-circle-up text-smaller"
-   data-tooltip="{{localize "CPR.mookSheet.deathSave.increase"}}"></i></a>
+                <a class="increase-deathsave-value"><i class="far fa-arrow-alt-circle-up text-smaller" data-tooltip="{{localize "CPR.mookSheet.deathSave.increase"}}"></i></a>
               </div>
             </div>
           </div>

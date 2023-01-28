@@ -1,6 +1,8 @@
 {{cprTrace "START DIALOG CPR-SPLIT-ITEM-PROMPT.HBS"}}
 <form>
-  <div>{{localize this}}</div>
+  <div>
+    {{localize this}}
+  </div>
   <div>
     <ol class="items-list">
       <li class="item flexrow">
@@ -8,14 +10,11 @@
           {{localize "CPR.dialog.splitItem.amountSplit"}}:
         </div>
         <div class="item flexrow setting-value text-nowrap item-end">
-          <input class="text-right"
-                 name="splitAmount"
-                 type="number"
-                 value=""
-                 placeholder="0"/>
+          <input class="text-right" name="splitAmount" type="number" value="" placeholder="0" />
         </div>
       </li>
     </ol>
   </div>
 </form>
 {{cprTrace "END CPR-SPLIT-ITEM-PROMPT.HBS"}}
+
