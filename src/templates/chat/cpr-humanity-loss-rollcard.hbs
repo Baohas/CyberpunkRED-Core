@@ -11,16 +11,18 @@
       <div class="d6-rollcard-data">
         <div class="d6-dice-div">
           {{!-- die image for initialRoll --}}
-          {{#each faces as |dieFace| }}
-            <img class="{{cprDiceSizeImageClass ../formula}}"
-                 src="systems/cyberpunk-red-core/icons/dice/black/d6_{{dieFace}}.svg"/>
+
+          {{#each faces as |dieFace|}}
+            <img class="{{cprDiceSizeImageClass ../formula}}" src="systems/cyberpunk-red-core/icons/dice/black/d6_{{dieFace}}.svg">
           {{/each}}
+
         </div>
         <div class="d6-number-div">
-          <span class="{{#if criticalCard }}fg-red text-bold{{/if }}">{{resultTotal }}</span>
+          <span class="{{#if criticalCard}}fg-red text-bold{{/if}}">{{resultTotal}}</span>
         </div>
         <div class="d6-data-div">
-          <div class="d6-data-details"></div>
+          <div class="d6-data-details">
+          </div>
         </div>
       </div>
     </div>

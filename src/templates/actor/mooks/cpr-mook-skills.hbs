@@ -7,43 +7,31 @@
     </a>
   </span>
   <span class="text-right text-bold">
-    <a class="rollable"
-       data-tooltip="{{localize "CPR.global.generic.facedown"}}"
-       data-roll-type="facedown"
-       data-roll-title="{{localize "CPR.global.generic.           facedown"}}">
-      {{localize "CPR.characterSheet.bottomPane.reputation"}}: {{actor.system.reputation.value}}
+    <a class="rollable" data-tooltip="{{localize "CPR.global.generic.facedown"}}"    data-roll-type="facedown" data-roll-title="{{localize "CPR.global.generic.           facedown"}}">
+    {{localize "CPR.characterSheet.bottomPane.reputation"}}: {{actor.system.reputation.value}}
     </a>
-    <a class="reputation-edit-button"
-       data-tooltip="{{localize "CPR.characterSheet.bottomPane.reputationEdit"}}"><i class="fas fa-edit"></i></a> <a class="reputation-open-ledger"
-    data-tooltip="{{localize "CPR.ledger.ledgerOpen"}}"><i class="fas fa-sticky-note"></i></a>
+    <a class="reputation-edit-button" data-tooltip="{{localize "CPR.characterSheet.bottomPane.reputationEdit"}}"><i class="fas fa-edit"></i></a> <a class="reputation-open-ledger" data-tooltip="{{localize "CPR.ledger.ledgerOpen"}}"><i class="fas fa-sticky-note"></i></a>
   </span>
 </div>
 <div class="bg-white fg-black text-padding-left">
-  {{#each (cprSort (cprGetMookSkills actor.itemTypes.skill) "name") as |skill s| }}
-    <span class="item deletable changeable"
-          data-item-id="{{skill.id}}"
-          tabindex="0">
-      <a class="rollable"
-         data-roll-type="skill"
-         data-roll-title="{{skill.name}}"
-         data-tooltip="{{localize "CPR.mookSheet.skills.clickToRollThisSkill"}}, {{localize "CPR.mookSheet.skills.pressDeleteToReset"}}">
-        {{#if skill.system.core }}
-        {{localize (cprGetLocalizedlNameKey skill)}}{{else}}{{skill.name}}{{/if}}
-          {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "level") }}
+  {{#each (cprSort (cprGetMookSkills actor.itemTypes.skill) "name") as |skill s|}}
+    <span class="item deletable changeable" data-item-id="{{skill.id}}" tabindex="0">
+      <a class="rollable"  data-roll-type="skill" data-roll-title="{{skill.name}}" data-tooltip="{{localize "CPR.mookSheet.skills.clickToRollThisSkill"}}, {{localize "CPR.mookSheet.skills.pressDeleteToReset"}}">
+        {{#if skill.system.core}}{{localize (cprGetLocalizedlNameKey skill)}}{{else}}{{skill.name}}{{/if}}
+          {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "level")}}
             ({{cprEffectModMode 2 skill.system.level}}){{#unless @last}},{{/unless}}
           {{/if}}
-          {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "base") }}
+          {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "base")}}
             ({{cprEffectModMode 2 (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor))}}){{#unless @last}},{{/unless}}
           {{/if}}
-          {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "total") }}
+          {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "total")}}
             ({{cprEffectModMode 2 (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor) (cprGetSkillModInfo skill.name ../actor "modTotal"))}}){{#unless @last}},{{/unless}}
           {{/if}}
-        </a>
-        {{#if (cprCompare skill.system.core "===" false) }}
-          <a class="item-edit skill-custom"
-             data-tooltip="{{localize "CPR.actorSheets.commonActions.editCustomSkill"}}"><i class="fas fa-edit"></i></a>
-        {{/if}}
-      </span>
-    {{/each}}
-  </div>
-  {{cprTrace "END CPR-MOOK-SKILLS.HBS"}}
+      </a>
+      {{#if (cprCompare skill.system.core "===" false)}}
+        <a class="item-edit skill-custom" data-tooltip="{{localize "CPR.actorSheets.commonActions.editCustomSkill"}}"><i class="fas fa-edit"></i></a>
+      {{/if}}
+    </span>
+  {{/each}}
+</div>
+{{cprTrace "END CPR-MOOK-SKILLS.HBS"}}

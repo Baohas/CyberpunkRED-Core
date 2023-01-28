@@ -7,107 +7,88 @@
   </div>
   <div class="armor-content fg-black">
     <ol class="items-list fight-armor-list">
-      {{#if (cprCompare this.data.system.equippedArmor.length "===" 0) }}
+      {{#if (cprCompare this.data.system.equippedArmor.length "===" 0)}}
         {{localize "CPR.mookSheet.noArmorEquipped"}}
       {{/if}}
       {{#each (cprSort actor.itemTypes.armor "name") as |armor| }}
-        {{#if (cprCompare armor.system.equipped "===" "equipped") }}
+        {{#if (cprCompare armor.system.equipped "===" "equipped")}}
           <li class="item armor-piece">
             <li class="flex-space-between item flexrow" data-item-id="{{armor.id}}">
               <div class="item-name armor-name text-nowrap">
-                <a class="name deletable changeable item-edit" tabindex="0" data-item-id="{{armor.id}}" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}
-                  <br>
-                  {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}
-                  <br>
-                {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">{{armor.name}}</a>
+                <a class="name deletable changeable item-edit" tabindex="0" data-item-id="{{armor.id}}" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}<br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}<br>{{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">{{armor.name}}</a>
               </div>
-              {{#if armor.system.isHeadLocation }}
-                <div class="text-center">{{localize "CPR.global.location.head"}}</div>
+              {{#if armor.system.isHeadLocation}}
                 <div class="text-center">
-                  {{#if (cprCompare armor.system.headLocation.ablation ">" 0) }}
+                  {{localize "CPR.global.location.head"}}
+                </div>
+                <div class="text-center">
+                  {{#if (cprCompare armor.system.headLocation.ablation ">" 0)}}
                     <span class="fg-red">
-                    {{/if}}
-                    {{cprMath "subtract" armor.system.headLocation.sp armor.system.headLocation.ablation}}
-                    {{#if (cprCompare armor.system.headLocation.ablation ">" 0) }}
+                  {{/if}}
+                  {{cprMath "subtract" armor.system.headLocation.sp armor.system.headLocation.ablation}}
+                  {{#if (cprCompare armor.system.headLocation.ablation ">" 0)}}
                     </span>
                   {{/if}}
                   /{{armor.system.headLocation.sp}}
                   <a class="ablate" data-location="head">
-                    <i class="far fa-arrow-alt-circle-down"
-                       data-tooltip="{{localize "CPR.mookSheet.items.armor.ablateArmor"}}"></i>
+                    <i class="far fa-arrow-alt-circle-down" data-tooltip="{{localize "CPR.mookSheet.items.armor.ablateArmor"}}"></i>
                   </a>
-                  {{#if (cprCompare armor.id "===" ../actor.system.externalData.currentArmorHead.id) }}
-                    <a class="armor-current"
-                       data-location="head"
-                       data-item-id="{{armor.id}}">
-                      <i class="fas fa-star"
-                         data-tooltip="{{localize "CPR.actorSheets.commonActions.resyncHeadArmor"}}"></i></a>
+                  {{#if (cprCompare armor.id "===" ../actor.system.externalData.currentArmorHead.id)}}
+                    <a class="armor-current" data-location="head" data-item-id="{{armor.id}}">
+                    <i class="fas fa-star" data-tooltip="{{localize "CPR.actorSheets.commonActions.resyncHeadArmor"}}"></i></a>
                   {{else}}
-                    <a class="armor-current"
-                       data-location="head"
-                       data-item-id="{{armor.id}}">
-                      <i class="far fa-star"
-                         data-tooltip="{{localize "CPR.actorSheets.commonActions.makeHeadArmorActive"}}"></i></a>
+                    <a class="armor-current" data-location="head" data-item-id="{{armor.id}}">
+                    <i class="far fa-star" data-tooltip="{{localize "CPR.actorSheets.commonActions.makeHeadArmorActive"}}"></i></a>
                   {{/if}}
                 </div>
               {{/if}}
-              {{#if armor.system.isBodyLocation }}
-                <div class="text-center">{{localize "CPR.global.location.body"}}</div>
+              {{#if armor.system.isBodyLocation}}
                 <div class="text-center">
-                  {{#if (cprCompare armor.system.bodyLocation.ablation ">" 0) }}
+                  {{localize "CPR.global.location.body"}}
+                </div>
+                <div class="text-center">
+                  {{#if (cprCompare armor.system.bodyLocation.ablation ">" 0)}}
                     <span class="fg-red">
-                    {{/if}}
-                    {{cprMath "subtract" armor.system.bodyLocation.sp armor.system.bodyLocation.ablation}}
-                    {{#if (cprCompare armor.system.bodyLocation.ablation ">" 0) }}
+                  {{/if}}
+                  {{cprMath "subtract" armor.system.bodyLocation.sp armor.system.bodyLocation.ablation}}
+                  {{#if (cprCompare armor.system.bodyLocation.ablation ">" 0)}}
                     </span>
                   {{/if}}
                   /{{armor.system.bodyLocation.sp}}
                   <a class="ablate" data-location="body">
-                    <i class="far fa-arrow-alt-circle-down"
-                       data-tooltip="{{localize "CPR.mookSheet.items.armor.ablateArmor"}}"></i>
+                    <i class="far fa-arrow-alt-circle-down" data-tooltip="{{localize "CPR.mookSheet.items.armor.ablateArmor"}}"></i>
                   </a>
-                  {{#if (cprCompare armor.id "===" ../actor.system.externalData.currentArmorBody.id) }}
-                    <a class="armor-current"
-                       data-location="body"
-                       data-item-id="{{armor.id}}">
-                      <i class="fas fa-star"
-                         data-tooltip="{{localize "CPR.actorSheets.commonActions.resyncBodyArmor"}}"></i></a>
+                  {{#if (cprCompare armor.id "===" ../actor.system.externalData.currentArmorBody.id)}}
+                    <a class="armor-current" data-location="body" data-item-id="{{armor.id}}">
+                    <i class="fas fa-star" data-tooltip="{{localize "CPR.actorSheets.commonActions.resyncBodyArmor"}}"></i></a>
                   {{else}}
-                    <a class="armor-current"
-                       data-location="body"
-                       data-item-id="{{armor.id}}">
-                      <i class="far fa-star"
-                         data-tooltip="{{localize "CPR.actorSheets.commonActions.makeBodyArmorActive"}}"></i></a>
+                    <a class="armor-current" data-location="body" data-item-id="{{armor.id}}">
+                    <i class="far fa-star" data-tooltip="{{localize "CPR.actorSheets.commonActions.makeBodyArmorActive"}}"></i></a>
                   {{/if}}
                 </div>
               {{/if}}
-              {{#if armor.system.isShield }}
-                <div class="text-center">{{localize "CPR.global.generic.shield"}}</div>
+              {{#if armor.system.isShield}}
                 <div class="text-center">
-                  {{#if (cprCompare armor.system.shieldHitPoints.value "<" armor.system.shieldHitPoints.max) }}
+                  {{localize "CPR.global.generic.shield"}}
+                </div>
+                <div class="text-center">
+                  {{#if (cprCompare armor.system.shieldHitPoints.value "<" armor.system.shieldHitPoints.max)}}
                     <span class="fg-red">
-                    {{/if}}
-                    {{armor.system.shieldHitPoints.value}}
-                    {{#if (cprCompare armor.system.shieldHitPoints.value "<" armor.system.shieldHitPoints.max) }}
+                  {{/if}}
+                  {{armor.system.shieldHitPoints.value}}
+                  {{#if (cprCompare armor.system.shieldHitPoints.value "<" armor.system.shieldHitPoints.max)}}
                     </span>
                   {{/if}}
                   /{{armor.system.shieldHitPoints.max}}
                   <a class="ablate" data-location="shield">
-                    <i class="far fa-arrow-alt-circle-down"
-                       data-tooltip="{{localize "CPR.mookSheet.damageShield"}}"></i>
+                    <i class="far fa-arrow-alt-circle-down" data-tooltip="{{localize "CPR.mookSheet.damageShield"}}"></i>
                   </a>
-                  {{#if (cprCompare armor.id "===" ../actor.system.externalData.currentArmorShield.id) }}
-                    <a class="armor-current"
-                       data-location="shield"
-                       data-item-id="{{armor.id}}">
-                      <i class="fas fa-star"
-                         data-tooltip="{{localize "CPR.actorSheets.commonActions.resyncShield"}}"></i></a>
+                  {{#if (cprCompare armor.id "===" ../actor.system.externalData.currentArmorShield.id)}}
+                    <a class="armor-current" data-location="shield" data-item-id="{{armor.id}}">
+                    <i class="fas fa-star" data-tooltip="{{localize "CPR.actorSheets.commonActions.resyncShield"}}"></i></a>
                   {{else}}
-                    <a class="armor-current"
-                       data-location="shield"
-                       data-item-id="{{armor.id}}">
-                      <i class="far fa-star"
-                         data-tooltip="{{localize "CPR.actorSheets.commonActions.makeShieldActive"}}"></i></a>
+                    <a class="armor-current" data-location="shield" data-item-id="{{armor.id}}">
+                    <i class="far fa-star" data-tooltip="{{localize "CPR.actorSheets.commonActions.makeShieldActive"}}"></i></a>
                   {{/if}}
                 </div>
               {{/if}}
