@@ -325,7 +325,29 @@ const Container = function Container() {
           await installedItem.recursiveInstallSync();
         }
       }
-      updateList.push({ _id: this.id, "system.installedItems.list": installedList });
+
+      if (this.type === "cyberdeck") {
+        const oldPrograms = this.system.programs;
+        const newPrograms = {
+          installed: [],
+          rezzed: [],
+        };
+
+        for (const programData of oldPrograms.installed) {
+          const originalProgramID = programData.uuid.split(".").pop();
+          programData.uuid = `${actorUUID}.Item.${originalProgramID}`;
+          newPrograms.installed.push(programData);
+        }
+
+        for (const programData of oldPrograms.rezzed) {
+          const originalProgramID = programData.uuid.split(".").pop();
+          programData.uuid = `${actorUUID}.Item.${originalProgramID}`;
+          newPrograms.rezzed.push(programData);
+        }
+        updateList.push({ _id: this.id, "system.installedItems.list": installedList, "system.programs": newPrograms });
+      } else {
+        updateList.push({ _id: this.id, "system.installedItems.list": installedList });
+      }
       await actor.updateEmbeddedDocuments("Item", updateList);
     }
   };

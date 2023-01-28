@@ -9,6 +9,7 @@
 - Add text for missing localized string `CPR.messages.installInvalidType`
 - #686 - Installing a secondary weapon as a weapon upgrade does not show that upgrade in the Fight Tab
 - #693 - The stripHTML() Handlebar helper fails if the passed HTML contains a percentage sign.
+- #691 - Actors stored in compendiums and dragged out into worlds were losing information on any items that were installed.
 
 ### Changes
 
