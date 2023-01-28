@@ -316,7 +316,7 @@ const Container = function Container() {
       const updateList = [];
       const installedList = [];
       for (const installedItemUUID of this.system.installedItems.list) {
-        const sourceItemId = installedItemUUID.split(".")[3];
+        const sourceItemId = installedItemUUID.split(".").pop();
         const newItemId = `${actorUUID}.Item.${sourceItemId}`;
         installedList.push(newItemId);
         const installedItem = actor.getOwnedItem(newItemId);
