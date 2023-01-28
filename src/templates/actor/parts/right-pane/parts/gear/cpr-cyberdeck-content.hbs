@@ -1,24 +1,32 @@
 {{cprTrace "START ACTOR PARTS RIGHT-PANE PARTS GEAR CPR-CYBERDECK-CONTENT.HBS"}}
-<li class="item flexrow{{#if item.system.favorite}} favorite{{else}}{{#if (cprListContains sheet.options.collapsedSections "gearTab-gear")}} hide{{/if}}{{/if}}" data-item-id="{{item._id}}"
-    data-item-category="{{item.type}}" draggable="true">
-    <div class="item-name gear-name text-nowrap">
-      <div class="name flex-center">
-        <a class="item-edit flex-center">
-          <img src="{{item.img}}">{{item.name}}</a>
-        {{#if item.system.isUpgraded}}<sup><i class="text-super fa-solid fa-square-up"></i></sup>{{/if}}
-        {{#if item.system.isInstalled}}
-          <a class="item-view" data-item-id="{{item.system.installedIn}}" data-tooltip="{{localize "CPR.characterSheet.rightPane.cyber.installedIn"}} {{cprGetProp (cprGetOwnedItem actor item.system.installedIn) "name"}}"><sup><i class="fa-solid fa-circle-info"></i></sup></a>
-        {{/if}}
-        </div>
+<li class="item flexrow{{#if item.system.favorite }} favorite{{else }}{{#if (cprListContains sheet.options.collapsedSections "gearTab-gear") }} hide{{/if }}{{/if }}"
+    data-item-id="{{item._id}}"
+    data-item-category="{{item.type}}"
+    draggable="true">
+<div class="item-name gear-name text-nowrap">
+  <div class="name flex-center">
+    <a class="item-edit flex-center">
+      <img src="{{item.img}}"/>
+    {{item.name}}</a>
+    {{#if item.system.isUpgraded }}
+      <sup><i class="text-super fa-solid fa-square-up"></i></sup>{{/if}}
+      {{#if item.system.isInstalled }}
+        <a class="item-view"
+           data-item-id="{{item.system.installedIn}}"
+           data-tooltip="{{localize "CPR.characterSheet.rightPane.cyber.installedIn"}} {{cprGetProp (cprGetOwnedItem actor item.system.installedIn) "name"}}"><sup><i class="fa-solid fa-circle-info"></i></sup></a>
+      {{/if}}
     </div>
-    <div class="item-detail gear-amount" data-tooltip="{{localize "CPR.characterSheet.rightPane.container.availableSlots"}}: {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}}">
-      {{cprApplyUpgrade item item.system.installedItems.slots "slots"}}
-    </div>
-    <div class="item-detail gear-data text-nowrap" data-tooltip="{{cprStripHtml item.system.description.value}}">
-      {{cprStripHtml item.system.description.value}}
-    </div>
-    <div class="item-detail gear-actions text-nowrap">
-        {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-actions.hbs" item}}
-    </div>
+  </div>
+  <div class="item-detail gear-amount"
+       data-tooltip="{{localize "CPR.characterSheet.rightPane.container.availableSlots"}}: {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}}">
+    {{cprApplyUpgrade item item.system.installedItems.slots "slots"}}
+  </div>
+  <div class="item-detail gear-data text-nowrap"
+       data-tooltip="{{cprStripHtml item.system.description.value}}">
+    {{cprStripHtml item.system.description.value}}
+  </div>
+  <div class="item-detail gear-actions text-nowrap">
+    {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-actions.hbs" item}}
+  </div>
 </li>
 {{cprTrace "END CPR-CYBERDECK-CONTENT.HBS"}}

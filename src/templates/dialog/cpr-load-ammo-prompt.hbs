@@ -1,17 +1,21 @@
 {{cprTrace "START DIALOG CPR-LOAD-AMMO-PROMPT.HBS"}}
 <form>
-    {{localize "CPR.dialog.loadAmmo.selectAmmoToLoadInto"}} {{this.weapon.name}}:
-    <div>
-        <select name="selectedAmmo">
-            {{!-- ONLY DISPLAY CYBERWARE OF SAME TYPE AS OPTIONAL --}}
-            {{#if (cprCompare weapon.system.magazine.ammoData.uuid "!==" "")}}
-            <option value="">{{localize "CPR.dialog.loadAmmo.unload"}} {{localize "CPR.global.itemTypes.weapon"}}</option>
-            {{/if}}
-            {{#each this.ammoList as |ammo|}}
-            <option value="{{ammo.uuid}}">{{ammo.name}} ({{localize (cprFindConfigValue "ammoType"
-                ammo.system.type)}})</option>
-            {{/each}}
-        </select>
-    </div>
+  {{localize "CPR.dialog.loadAmmo.selectAmmoToLoadInto"}} {{this.weapon.name}}:
+  <div>
+    <select name="selectedAmmo">
+      {{!-- ONLY DISPLAY CYBERWARE OF SAME TYPE AS OPTIONAL --}}
+      {{#if (cprCompare weapon.system.magazine.ammoData.uuid "!==" "") }}
+        <option value="">
+          {{localize "CPR.dialog.loadAmmo.unload"}} {{localize "CPR.global.itemTypes.weapon"}}
+        </option>
+      {{/if}}
+      {{#each this.ammoList as |ammo| }}
+        <option value="{{ammo.uuid}}">
+          {{ammo.name}} ({{localize (cprFindConfigValue "ammoType"
+          ammo.system.type)}})
+        </option>
+      {{/each}}
+    </select>
+  </div>
 </form>
 {{cprTrace "END CPR-LOAD-AMMO-PROMPT.HBS"}}

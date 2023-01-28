@@ -1,20 +1,20 @@
 {{cprTrace "START DIALOG ROLLS CPR-SITUATIONAL-MODIFIERS.HBS"}}
-{{#if (cprCompare filteredMods.length ">" 0)}}
-  <hr>
+{{#if (cprCompare filteredMods.length ">" 0) }}
+  <hr/>
   <div class="text-center">
     <a class="toggle-show-mods" data-target="situational-mods">
-      {{#if showSituationalMods}}
+      {{#if showSituationalMods }}
         {{localize "CPR.rolls.modifiers.situationalHide"}} <i class="fas fa-square-caret-down"></i>
       {{else}}
         {{localize "CPR.rolls.modifiers.situationalShow"}} <i class="fas fa-square-caret-right"></i>
       {{/if}}
     </a>
   </div>
-  {{#if showSituationalMods}}
+  {{#if showSituationalMods }}
     <ol class="situational-mod-list situational-mods">
-      {{#each filteredMods as |mod|}}
+      {{#each filteredMods as |mod| }}
         <a class="toggle-situational-mod" data-mod-id="{{mod.id}}">
-          <li class="situational-mod-item flexrow {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}mod-selected{{/if}}">
+          <li class="situational-mod-item flexrow {{#if (cprObjectListContains ../rollData.mods "id" mod.id) }}mod-selected{{/if }}">
             <div class="situational-mod-name text-nowrap text-bold">
               {{mod.source}} ({{cprGetChangeNameByKey false mod.category mod.key}}):
             </div>
@@ -22,7 +22,7 @@
               {{cprEffectModMode mod.changeMode mod.value}}
             </div>
             <div class="situational-mod-input text-nowrap">
-              <i class="far fa{{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}-check{{/if}}-circle"></i>
+              <i class="far fa{{#if (cprObjectListContains ../rollData.mods "id" mod.id) }}-check{{/if }}-circle"></i>
             </div>
           </li>
         </a>
@@ -30,31 +30,31 @@
     </ol>
   {{/if}}
 {{/if}}
-
 {{#unless (cprListContains prototypeChain "CPRDeathSaveRoll")}}
-  <hr>
-  <div class="text-center">
-    <a class="toggle-show-mods" data-target="default-mods">
-      {{#if showDefaultMods}}
-        {{localize "CPR.rolls.defaultMods.situationalHide"}} <i class="fas fa-square-caret-down"></i>
-      {{else}}
-        {{localize "CPR.rolls.defaultMods.situationalShow"}} <i class="fas fa-square-caret-right"></i>
-      {{/if}}
-    </a>
-  </div>
-  {{#if showDefaultMods}}
-    <ol id="default-mods" class="situational-mod-list situational-mods">
-      {{#each defaultSituationalMods as |mod|}}
-        <a class="toggle-situational-mod" data-mod-id="{{mod.id}}">
-          <li class="dialog-item flexrow {{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}mod-selected{{/if}}">
-            <div class="situational-mod-name text-nowrap text-bold">
-              {{localize mod.source}}:
-            </div>
-            <div class="situational-mod-value text-nowrap">
-              {{#if (cprCompare mod.value ">" 0)}}+{{/if}}{{mod.value}}
+<hr/>
+<div class="text-center">
+  <a class="toggle-show-mods" data-target="default-mods">
+    {{#if showDefaultMods }}
+      {{localize "CPR.rolls.defaultMods.situationalHide"}} <i class="fas fa-square-caret-down"></i>
+    {{else}}
+      {{localize "CPR.rolls.defaultMods.situationalShow"}} <i class="fas fa-square-caret-right"></i>
+    {{/if}}
+  </a>
+</div>
+{{#if showDefaultMods }}
+  <ol id="default-mods" class="situational-mod-list situational-mods">
+    {{#each defaultSituationalMods as |mod| }}
+      <a class="toggle-situational-mod" data-mod-id="{{mod.id}}">
+        <li class="dialog-item flexrow {{#if (cprObjectListContains ../rollData.mods "id" mod.id) }}mod-selected{{/if }}">
+          <div class="situational-mod-name text-nowrap text-bold">
+            {{localize mod.source}}:
+          </div>
+          <div class="situational-mod-value text-nowrap">
+            {{#if (cprCompare mod.value ">" 0) }}
+              +{{/if}}{{mod.value}}
             </div>
             <div class="situational-mod-input text-nowrap">
-              <i class="far fa{{#if (cprObjectListContains ../rollData.mods "id" mod.id)}}-check{{/if}}-circle"></i>
+              <i class="far fa{{#if (cprObjectListContains ../rollData.mods "id" mod.id) }}-check{{/if }}-circle"></i>
             </div>
           </li>
         </a>
@@ -62,5 +62,5 @@
     </ol>
   {{/if}}
 {{/unless}}
-<hr>
+<hr/>
 {{cprTrace "END CPR-SITUATIONAL-MODIFIERS.HBS"}}

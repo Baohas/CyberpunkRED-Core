@@ -1,48 +1,50 @@
 {{cprTrace "START ACTOR PARTS COMMON ACTIONS CPR-ACTIONS.HBS"}}
-{{#if (cprCompare type "===" "weapon")}}
-{{!-- LOAD/RELOAD ACTION --}}
-{{#if system.isRanged}}
-{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
+{{#if (cprCompare type "===" "weapon") }}
+  {{!-- LOAD/RELOAD ACTION --}}
+  {{#if system.isRanged }}
+    {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-reload-glyph.hbs"}}
+  {{/if}}
 {{/if}}
-
+{{#if (cprCompare type "===" "cyberware") }}
+  {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-install-cyberware-glyph.hbs"}}
 {{/if}}
-{{#if (cprCompare type "===" "cyberware")}}
-{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-install-cyberware-glyph.hbs"}}
+{{#if (cprCompare type "===" "cyberdeck") }}
+  {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-install-programs-glyph.hbs"}}
 {{/if}}
-{{#if (cprCompare type "===" "cyberdeck")}}
-{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-install-programs-glyph.hbs"}}
+{{#if (cprCompare type "===" "armor") }}
+  {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-repair-glyph.hbs"}}
 {{/if}}
-{{#if (cprCompare type "===" "armor")}}
-{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-repair-glyph.hbs"}}
+{{#if (cprCompare type "===" "drug") }}
+  {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-snort-glyph.hbs"}}
 {{/if}}
-{{#if (cprCompare type "===" "drug")}}
-{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-snort-glyph.hbs"}}
+{{#if (cprCompare (cprHasTemplate type "stackable") "&&" (cprCompare system.amount ">" "1")) }}
+  {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-split-item.hbs"}}
 {{/if}}
-{{#if (cprCompare (cprHasTemplate type "stackable") "&&" (cprCompare system.amount ">" "1"))}}
-{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-split-item.hbs"}}
+{{#if (cprHasTemplate type "equippable") }}
+  {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-equip-glyph.hbs"}}
 {{/if}}
-{{#if (cprHasTemplate type "equippable")}}
-{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-equip-glyph.hbs"}}
-{{/if}}
-{{#if (cprListContains "itemUpgrade,cyberdeck" type)}}
-{{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-install-item-glyph.hbs"}}
+{{#if (cprListContains "itemUpgrade,cyberdeck" type) }}
+  {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-install-item-glyph.hbs"}}
 {{/if}}
 {{!-- UPGRADE MANAGEMENT --}}
-{{#if (cprIsUpgradable this)}}
-  {{#if system.isUpgraded}}
+{{#if (cprIsUpgradable this) }}
+  {{#if system.isUpgraded }}
     {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
   {{else}}
     {{#unless (cprIsEmpty (cprFilter (cprFilter actor.itemTypes.itemUpgrade "system.type" type) "system.isInstalled" false))}}
-      {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
-    {{/unless}}
-  {{/if}}
+    {{> "systems/cyberpunk-red-core/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs"}}
+  {{/unless}}
 {{/if}}
-<a class="item-action" data-action-type="favorite" data-tooltip="{{localize "CPR.actorSheets.commonActions.togglePin"}}">
-    {{#if system.favorite}}
+{{/if}}
+<a class="item-action"
+   data-action-type="favorite"
+   data-tooltip="{{localize "CPR.actorSheets.commonActions.togglePin"}}">
+  {{#if system.favorite }}
     <i class="fas fa-thumbtack fg-black favorite"></i>
-    {{else}}
+  {{else}}
     <i class="fas fa-thumbtack fg-grey"></i>
-    {{/if}}
+  {{/if}}
 </a>
-<a class="item-action" data-action-type="delete"><i class="fas fa-trash-alt fg-red" data-tooltip="{{localize "CPR.actorSheets.commonActions.deleteItem"}}"></i></a>
+<a class="item-action" data-action-type="delete"><i class="fas fa-trash-alt fg-red"
+   data-tooltip="{{localize "CPR.actorSheets.commonActions.deleteItem"}}"></i></a>
 {{cprTrace "END CPR-ACTIONS.HBS"}}
