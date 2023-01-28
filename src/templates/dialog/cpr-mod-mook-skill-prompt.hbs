@@ -7,18 +7,17 @@
       <span class="item-detail skill-level bg-black text-nowrap">{{localize "CPR.mookSheet.skills.level"}}</span>
       <span class="item-detail skill-mod-value bg-black text-nowrap">{{localize "CPR.mookSheet.skills.mod"}}</span>
     </li>
-    <br>
+    <br/>
     <ol class="items-list">
-      {{#each skillList as |skill|}}
+      {{#each skillList as |skill| }}
         <li class="item skill-name flexrow">
-          <div class="item-name text-nowrap">
-            {{skill.name}}
-          </div>
-          <div class="item-detail skill-base text-nowrap">
-            +{{skill.stat}}
-          </div>
+          <div class="item-name text-nowrap">{{skill.name}}</div>
+          <div class="item-detail skill-base text-nowrap">+{{skill.stat}}</div>
           <div class="item-detail skill-level text-nowrap">
-            <input class="number skill-input" name="{{skill.name}}" type="number" value="{{skill.level}}" />
+            <input class="number skill-input"
+                   name="{{skill.name}}"
+                   type="number"
+                   value="{{skill.level}}"/>
           </div>
           <div class="item-detail skill-mod-value text-nowrap">
             {{!-- we only support mode 2 (add/subtract) for skills --}}
@@ -27,8 +26,7 @@
         </li>
       {{/each}}
     </ol>
-    <br>
+    <br/>
   </div>
 </form>
 {{cprTrace "END CPR-MOD-MOOK-SKILL-PROMPT.HBS"}}
-
