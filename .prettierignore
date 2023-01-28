@@ -20,5 +20,5 @@
 **/src/maps/*
 **/src/tiles/*
 
-# Ignore templates, prettier can't handle handlebars partials
+# We use DJlint for handbars files as prettier can't handle handlebars partials
 **/src/templates/*

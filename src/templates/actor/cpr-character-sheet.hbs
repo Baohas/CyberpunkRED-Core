@@ -10,7 +10,7 @@
         {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-hitpoint-block.hbs"}}
         {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-deathsave-block.hbs"}}
         {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-humanity-block.hbs"}}
-        {{#if (cprCompare actor.type "===" "character")}}
+        {{#if (cprCompare actor.type "===" "character") }}
           {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-ip-block.hbs"}}
         {{/if}}
       </div>
@@ -18,7 +18,6 @@
         {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-stat-block.hbs"}}
       </div>
     </div>
-
     <div class="right-pane">
       <div class="right-tabs-section">
         <nav class="navtabs-right cpr-tabs nav" data-group="primary">
@@ -29,18 +28,23 @@
             <a class="gear-tab tab-label text-bold tab-indent" data-tab="gear">{{localize "CPR.global.itemTypes.gear"}}</a>
           </div>
           <div class="tab-pink-underlay">
-            <a class="cyberware-tab tab-label text-bold tab-indent" data-tab="cyberware">{{localize "CPR.characterSheet.rightPane.cyber.title"}}</a>
+            <a class="cyberware-tab tab-label text-bold tab-indent"
+               data-tab="cyberware">{{localize "CPR.characterSheet.rightPane.cyber.title"}}</a>
           </div>
           <div class="tab-pink-underlay">
             <a class="effects-tab tab-label text-bold tab-indent" data-tab="effects">{{localize "CPR.characterSheet.rightPane.effects.title"}}</a>
           </div>
         </nav>
       </div>
-      {{#if (cprSystemConfig "enableSheetContentFilter")}}
-      <div class="sheet-cprFilter-section">
-        <input class="filter-contents" value="{{options.cprContentFilter}}" type="string" placeholder="Search for skills, items and others...">
-        <a><i class="fas fa-xmark fg-red reset-content-filter" data-tooltip="{{localize "CPR.actorSheets.clearFilter"}}"></i></a>
-      </div>
+      {{#if (cprSystemConfig "enableSheetContentFilter") }}
+        <div class="sheet-cprFilter-section">
+          <input class="filter-contents"
+                 value="{{options.cprContentFilter}}"
+                 type="string"
+                 placeholder="Search for skills, items and others..."/>
+          <a><i class="fas fa-xmark fg-red reset-content-filter"
+   data-tooltip="{{localize "CPR.actorSheets.clearFilter"}}"></i></a>
+        </div>
       {{/if}}
       <div class="right-content-section">
         <div class="tab skills-tab" data-group="primary" data-tab="skills">
@@ -66,15 +70,18 @@
           <div class="tab-pink-underlay">
             <div class="tab-label text-bold tab-indent" data-tab="fight">
               <a data-tab="fight">{{localize "CPR.characterSheet.bottomPane.fight.title"}}</a>
-              {{#if (cprCompare actor.system.fightOptions "===" "both")}}
-                {{#if (cprCompare actor.system.fightState "===" "Meatspace")}}
+              {{#if (cprCompare actor.system.fightOptions "===" "both") }}
+                {{#if (cprCompare actor.system.fightState "===" "Meatspace") }}
                   &nbsp;(<span class="fg-yellow">{{localize "CPR.characterSheet.bottomPane.fight.meat"}}</span>|<a class="toggle-fight-state" data-state="Netspace">{{localize "CPR.characterSheet.bottomPane.fight.net"}}</a>)
                 {{else}}
                   &nbsp;(<a class="toggle-fight-state" data-state="Meatspace">{{localize "CPR.characterSheet.bottomPane.fight.meat"}}</a>|<span class="fg-yellow">{{localize "CPR.characterSheet.bottomPane.fight.net"}}</span>)
                 {{/if}}
               {{/if}}
-              {{#if (cprCompare actor.system.fightState "===" "Meatspace")}}
-                &nbsp;<a class="rollable" data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}" data-roll-type="facedown" data-roll-title="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}"><i class="far fa-angry"></i></a>
+              {{#if (cprCompare actor.system.fightState "===" "Meatspace") }}
+                &nbsp;<a class="rollable"
+   data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}"
+   data-roll-type="facedown"
+   data-roll-title="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}"><i class="far fa-angry"></i></a>
               {{/if}}
             </div>
           </div>
