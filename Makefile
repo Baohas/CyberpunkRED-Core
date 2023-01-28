@@ -39,6 +39,11 @@ lint:
 		  --variable \
 		    CI_COMMIT_BRANCH=$(CI_COMMIT_BRANCH) \
 		    CI_DEFAULT_BRANCH=$(CI_COMMIT_BRANCH) \
-		  --needs init lint-code; \
+		  --needs \
+		    init \
+			lint-code \
+			code-formatting \
+			handlebars-formatting \
+			lint-handlebars; \
 		rm -rf vars.env; \
 	fi
