@@ -2,26 +2,29 @@
 <div class="items-header bg-red fg-white flexrow">
   <span class="item-name section-name text-nowrap text-padding-left">
     {{localize "CPR.mookSheet.criticalInjuries"}}
-    <a class="roll-critical-injury" data-tooltip="{{localize "CPR.mookSheet.criticalInjuryRoll"}}" data-item-type="criticalInjury">
+    <a class="roll-critical-injury"
+       data-tooltip="{{localize "CPR.mookSheet.criticalInjuryRoll"}}"
+       data-item-type="criticalInjury">
       <i class="fas fa-dice text-padding-right"></i>
     </a>
   </span>
 </div>
 <div class="bg-white fg-black text-padding-left mook-crit-list">
-{{#each actor.itemTypes.criticalInjury as |item i|}}
-    <a class="name item-edit deletable changeable {{#if item.system.deathSaveIncrease}}text-bold{{/if}}" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}
-              <br>{{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}
-              <br>{{localize "CPR.mookSheet.items.pressDeleteToDelete"}}"
-       tabindex="0" data-item-id="{{item.id}}">
-      {{#if (cprCompare item.system.location "===" "body")}}
+  {{#each actor.itemTypes.criticalInjury as |item i| }}
+    <a class="name item-edit deletable changeable {{#if item.system.deathSaveIncrease }}text-bold{{/if }}" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}
+      <br>
+      {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}
+      <br>
+      {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}" tabindex="0" data-item-id="{{item.id}}">
+      {{#if (cprCompare item.system.location "===" "body") }}
         <i class="fas fa-user-injured text-padding-left"></i>
       {{/if}}
-      {{#if (cprCompare item.system.location "===" "head")}}
+      {{#if (cprCompare item.system.location "===" "head") }}
         <i class="fa-regular fa-face-head-bandage"></i>
       {{/if}}
       {{item.name}}
       {{#unless @last}},{{/unless}}
     </a>
-{{/each}}
+  {{/each}}
 </div>
 {{cprTrace "END CPR-MOOK-CRITICALINJURY.HBS"}}

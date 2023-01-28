@@ -10,25 +10,36 @@
       <li class="item flexrow">
         <div class="item-header-title item-name text-large text-left text-padding-left">
           {{localize (cprGetLocalizedlNameKey item)}}
-            {{#if (cprIsUpgradable item)}}
-              {{#if item.system.isUpgraded}}
-                <sup><i data-tooltip="{{localize "CPR.global.generic.upgraded"}}" class="fa-solid fa-square-up"></sup></i>
-              {{/if}}
-            {{/if}}
-        </div>
-        <div class="item-detail text-right text-padding-right">
-          {{#if (cprIsDebug)}}({{item.id}}){{/if}}
-            {{localize (cprFindConfigValue "objectTypes" item.type)}}
-            <a class="fas fa-question-circle help-article"
-               href="https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/help-articles/{{item.type}}"
-               data-tooltip="{{localize "CPR.global.generic.helparticle"}}">
-            </a>
-            {{#if (cprCompare item.system.source "!==" "")}} | {{item.system.source}}
+          {{#if (cprIsUpgradable item) }}
+            {{#if item.system.isUpgraded }}
+              <sup><i data-tooltip="{{localize "CPR.global.generic.upgraded"}}"
+   class="fa-solid fa-square-up"></sup></i>
+          {{/if}}
+        {{/if}}
+      </div>
+      <div class="item-detail text-right text-padding-right">
+        {{#if (cprIsDebug) }}
+          ({{item.id}}){{/if}}
+          {{localize (cprFindConfigValue "objectTypes" item.type)}}
+          <a class="fas fa-question-circle help-article"
+             href="https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/help-articles/{{item.type}}"
+             data-tooltip="{{localize "CPR.global.generic.helparticle"}}">
+          </a>
+          {{#if (cprCompare item.system.source "!==" "") }}
+            | {{item.system.source}}
           {{/if}}
         </div>
       </li>
-      <li>{{#unless this.editable}}({{localize "CPR.itemSheet.common.readOnlyMode"}}){{/unless}}</li>
-      <li>{{#if (cprCompare item.system.installedItems.list.length ">" 0)}}<div class="text-padding-left"><i>({{localize "CPR.itemSheet.hasInstalledItems"}})</i></div>{{/if}}</li>
+      <li>
+        {{#unless this.editable}}({{localize "CPR.itemSheet.common.readOnlyMode"}}){{/unless}}
+      </li>
+      <li>
+        {{#if (cprCompare item.system.installedItems.list.length ">" 0) }}
+          <div class="text-padding-left">
+            <i>({{localize "CPR.itemSheet.hasInstalledItems"}})</i>
+          </div>
+        {{/if}}
+      </li>
     </div>
   </div>
   <div class="item-bottom-pane">
@@ -44,27 +55,33 @@
             {{localize "CPR.settings.title"}}
           </a>
         </div>
-        {{#if (cprHasTemplate item.type "effects")}}
-        <div class="tab-pink-underlay">
-          <a class="tab-label text-small tab-indent" data-tab="item-effects">
-            {{localize "CPR.itemSheet.effects.effects"}}
-          </a>
-        </div>
+        {{#if (cprHasTemplate item.type "effects") }}
+          <div class="tab-pink-underlay">
+            <a class="tab-label text-small tab-indent" data-tab="item-effects">
+              {{localize "CPR.itemSheet.effects.effects"}}
+            </a>
+          </div>
         {{/if}}
       </nav>
     </div>
     <div class="item-bottom-content-section">
-      <div class="tab item-description-grid" data-group="primary" data-tab="item-description">
+      <div class="tab item-description-grid"
+           data-group="primary"
+           data-tab="item-description">
         {{> "systems/cyberpunk-red-core/templates/item/cpr-item-description.hbs" this}}
       </div>
       <form>
-        <div class="tab item-settings-grid" data-group="primary" data-tab="item-settings">
+        <div class="tab item-settings-grid"
+             data-group="primary"
+             data-tab="item-settings">
           {{> "systems/cyberpunk-red-core/templates/item/cpr-item-settings.hbs" this}}
         </div>
-        {{#if (cprHasTemplate item.type "effects")}}
-        <div class="tab item-effects-grid" data-group="primary" data-tab="item-effects">
-          {{> "systems/cyberpunk-red-core/templates/item/cpr-item-effects.hbs" this}}
-        </div>
+        {{#if (cprHasTemplate item.type "effects") }}
+          <div class="tab item-effects-grid"
+               data-group="primary"
+               data-tab="item-effects">
+            {{> "systems/cyberpunk-red-core/templates/item/cpr-item-effects.hbs" this}}
+          </div>
         {{/if}}
       </form>
     </div>
