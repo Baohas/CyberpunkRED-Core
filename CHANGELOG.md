@@ -8,6 +8,7 @@
 - #683 - Dragging a World Item which has another World Items installed in it and THAT item also has another world item installed in it (Cyberarm->Cyberdeck (Hardwired)->Cyberdeck) results in two cyberdecks being created on the actor.  This would exponentiate every level of installation if there were more.
 - Add text for missing localized string `CPR.messages.installInvalidType`
 - #686 - Installing a secondary weapon as a weapon upgrade does not show that upgrade in the Fight Tab
+- #693 - The stripHTML() Handlebar helper fails if the passed HTML contains a percentage sign.
 
 ### Changes
 
