@@ -226,19 +226,36 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       this.object,
       `flags.${game.system.id}.changes`
     );
-    const newFlags = {};
-    const flagArray = Object.entries(changeFlags);
-    flagArray.sort(); // explicitly sort to guarantee we iterate in numerical order
-    flagArray.forEach((chg) => {
+    const newFlags = { cats: {}, situational: {} };
+    const flagArrayCats = Object.entries(changeFlags.cats);
+    const flagArraySituational = Object.entries(changeFlags.situational);
+
+    // First, sort and reorder the flags for the effect's category.
+    flagArrayCats.sort(); // explicitly sort to guarantee we iterate in numerical order
+    flagArrayCats.forEach((chg) => {
       const index = Number(chg[0]);
-      const skill = chg[1];
+      const category = chg[1];
       if (index < modnum) {
-        newFlags[String(index)] = skill;
+        newFlags.cats[String(index)] = category;
         // we deliberately skip idx === modnum, that's the deleted change
       } else if (index > modnum) {
-        newFlags[String(index - 1)] = skill;
+        newFlags.cats[String(index - 1)] = category;
       }
     });
+
+    // Then, sort and reorder the flags for the effect's situational settings.
+    flagArraySituational.sort(); // explicitly sort to guarantee we iterate in numerical order
+    flagArraySituational.forEach((chg) => {
+      const index = Number(chg[0]);
+      const situationalSettings = chg[1];
+      if (index < modnum) {
+        newFlags.situational[String(index)] = situationalSettings;
+        // we deliberately skip idx === modnum, that's the deleted change
+      } else if (index > modnum) {
+        newFlags.situational[String(index - 1)] = situationalSettings;
+      }
+    });
+
     // Finally, update the underlying AE
     await this.object.unsetFlag(game.system.id, "changes");
 
