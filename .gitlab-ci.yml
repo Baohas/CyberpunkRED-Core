@@ -132,50 +132,6 @@ code-formatting:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
-handlebars-formatting:
-  stage: test
-  before_script:
-    - apt-get update
-    - apt-get install python3-pip --yes
-  script:
-    - pip3 install djlint
-    - djlint src/templates/ --check
-  needs:
-    - job: init
-      artifacts: true
-  rules:
-    # Don't run if we're in the cleanup-dev schedule
-    - if: $CPR_SCHEDULE == "cleanup-dev"
-      when: never
-    # Run on MRs
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    # Run on git tag
-    - if: $CI_COMMIT_TAG
-
-lint-handlebars:
-  stage: test
-  before_script:
-    - apt-get update
-    - apt-get install python3-pip --yes
-  script:
-    - pip3 install djlint
-    - djlint src/templates/
-  needs:
-    - job: init
-      artifacts: true
-  rules:
-    # Don't run if we're in the cleanup-dev schedule
-    - if: $CPR_SCHEDULE == "cleanup-dev"
-      when: never
-    # Run on MRs
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    # Run on git tag
-    - if: $CI_COMMIT_TAG
-
 lint-json:
   stage: test
   script:
@@ -561,8 +517,6 @@ build-artifacts:
       artifacts: true
     - job: lint-code
     - job: code-formatting
-    - job: lint-handlebars
-    - job: handlebars-formatting
     - job: lint-json
     - job: lint-yaml
     - job: lint-markdown
