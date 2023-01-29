@@ -1,17 +1,17 @@
 {{cprTrace "START ITEM CPR-ITEM-EFFECTS.HBS"}}
 <div class="item-effects-tab">
   <div class="item-effects-section">
-    <div class="effects-list">
+    <ol class="effects-list">
       {{#if (cprCompare item.isOwned "&&" (cprCompare item.system.effects.size "===" 0)) }}
         {{localize "CPR.itemSheet.effects.editOwnedWarning"}}
       {{else}}
-        <div class="effects-category flexrow">
-          <span class="effect-name-item">{{localize "CPR.itemSheet.effects.nameAndChanges"}}</span>
-          <span class="effect-actions text-padding-right">{{localize "CPR.itemSheet.effects.actions"}}</span>
-        </div>
+        <li class="effects-category flexrow">
+          <span class="effect-name-item bg-black">{{localize "CPR.itemSheet.effects.nameAndChanges"}}</span>
+          <span class="effect-actions text-padding-right bg-black">{{localize "CPR.itemSheet.effects.actions"}}</span>
+        </li>
         {{#each item.effects as |effect| }}
           {{!-- "effects" is a Map, so "this" is now an Active Effects object within the #each loop! --}}
-          <div class="effects-list flexrow">
+          <li class="effects-list flexrow">
             <div class="effect-name-item flexrow">
               <img class="effect-image" src="{{effect.icon}}" />
               <h4>
@@ -42,7 +42,7 @@
                 {{/if}}
               </h4>
             </div>
-            <div class="effect-actions text-padding-right effect-controls">
+            <div class="effect-actions effect-controls">
               {{#if ../item.isOwned }}
                 <i class="fas fa-question-circle"
                    data-tooltip="{{localize "CPR.itemSheet.effects.editOwnedWarning"}}"></i>
@@ -81,7 +81,7 @@
                 {{/if}}
               {{/if}}
             </div>
-          </div>
+          </li>
         {{/each}}
         {{#unless item.isOwned}}
           {{#if this.editable }}
@@ -96,51 +96,52 @@
           {{/if}}
         {{/unless}}
       {{/if}}
-    </div>
-    <br />
+    </ol>
     {{#if (cprCompare item.effects.size ">" 0) }}
-      <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap text-vert-center">
-          {{localize "CPR.effectSheet.uses.usage"}}:
-        </div>
-        <div class="item flexrow set-usage setting-value text-nowrap item-end">
-          {{#if this.editable }}
-            <select name="system.usage" data-dtype="{{item.system.usage}}">
-              {{#select item.system.usage}}
-                {{#each item.system.allowedUsage as |use| }}
-                  <option value="{{use}}">
-                    {{localize (cprFindConfigValue "effectUses" use)}}
-                  </option>
-                {{/each}}
-              {{/select}}
-            </select>
-          {{else}}
-            <span class="text-flex-end">{{localize (cprFindConfigValue "effectUses" item.system.usage)}}</span>
-          {{/if}}
-        </div>
-      </li>
-      {{#if (cprCompare item.system.usage "===" "snorted") }}
+      <ol>
         <li class="item flexrow">
-          <div class="item flexrow setting-name text-nowrap">
-            {{localize "CPR.itemSheet.effects.primaryEffect"}}
+          <div class="item flexrow setting-name text-nowrap text-vert-center">
+            {{localize "CPR.effectSheet.uses.usage"}}:
           </div>
-          <div class="item flexrow setting-value text-nowrap item-end">
+          <div class="item flexrow set-usage setting-value text-nowrap item-end">
             {{#if this.editable }}
-              <select name="system.consumed" data-dtype="{{item.system.consumed}}">
-                {{#select item.system.consumed}}
-                  {{#each item.system.effectNames }}
-                    <option value="{{this}}">
-                      {{this}}
+              <select name="system.usage" data-dtype="{{item.system.usage}}">
+                {{#select item.system.usage}}
+                  {{#each item.system.allowedUsage as |use| }}
+                    <option value="{{use}}">
+                      {{localize (cprFindConfigValue "effectUses" use)}}
                     </option>
                   {{/each}}
                 {{/select}}
               </select>
             {{else}}
-              <span class="text-flex-end">{{item.system.consumed}}</span>
+              <span class="text-flex-end">{{localize (cprFindConfigValue "effectUses" item.system.usage)}}</span>
             {{/if}}
           </div>
         </li>
-      {{/if}}
+        {{#if (cprCompare item.system.usage "===" "snorted") }}
+          <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+              {{localize "CPR.itemSheet.effects.primaryEffect"}}
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+              {{#if this.editable }}
+                <select name="system.consumed" data-dtype="{{item.system.consumed}}">
+                  {{#select item.system.consumed}}
+                    {{#each item.system.effectNames }}
+                      <option value="{{this}}">
+                        {{this}}
+                      </option>
+                    {{/each}}
+                  {{/select}}
+                </select>
+              {{else}}
+                <span class="text-flex-end">{{item.system.consumed}}</span>
+              {{/if}}
+            </div>
+          </li>
+        {{/if}}
+      </ol>
     {{/if}}
   </div>
 </div>
