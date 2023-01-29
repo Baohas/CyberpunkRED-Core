@@ -11,7 +11,7 @@
         </li>
         {{#each item.effects as |effect| }}
           {{!-- "effects" is a Map, so "this" is now an Active Effects object within the #each loop! --}}
-          <li class="effects-list flexrow">
+          <li class="item effect flexrow">
             <div class="effect-name-item flexrow">
               <img class="effect-image" src="{{effect.icon}}" />
               <h4>
