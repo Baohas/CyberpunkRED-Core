@@ -35,8 +35,32 @@
                       </a>
                     {{/if}}
                   </div>
-                  <div class="item-detail ability-rank text-nowrap {{#if (cprCompare (cprGetSkillModInfo role.system.mainRoleAbility ../actor "modTotal") "===" 0) }} zero-not-visible {{/if }}">
+                  <div class="item-detail ability-rank text-nowrap
+                        {{#if (cprCompare (cprGetSkillModInfo role.system.mainRoleAbility ../actor "modTotal") "===" 0) }}
+                          {{#unless (cprGetSkillModInfo role.system.mainRoleAbility ../actor "hasSituational")}}
+                            zero-not-visible
+                          {{/unless}}
+                        {{/if }}">
+                  <span
+                    {{#if (cprGetSkillModInfo role.system.mainRoleAbility ../actor "hasSituational") }}
+                      class="text-italics"
+                    {{/if }}
+                    {{log (cprGetSkillModInfo role.system.mainRoleAbility ../actor "modList" keepSituational=true)}}
+                    {{#if (cprGetSkillModInfo role.system.mainRoleAbility ../actor "modList" keepSituational=true) }}
+                      data-tooltip="
+                        {{#each (cprGetSkillModInfo role.system.mainRoleAbility ../actor "modList" keepSituational=true) as |mod| }}
+                          {{mod.source }} ({{cprGetChangeNameByKey false mod.category mod.key }}): {{cprEffectModMode mod.changeMode mod.value }} {{~#if mod.isSituational }}*{{/if}}
+                          {{#unless @last }}
+                            <br/>
+                          {{/unless}}
+                        {{/each}}
+                        {{#if (cprGetSkillModInfo role.system.mainRoleAbility ../actor "hasSituational") }}
+                          <hr/>
+                          *{{localize "CPR.characterSheet.rightPane.skills.situationalModWarning"}}
+                        {{/if}}"
+                    {{/if}}>
                     {{cprGetSkillModInfo role.system.mainRoleAbility ../actor "modTotal"}}
+                  </span>
                   </div>
                   <div class="item-detail ability-rank text-nowrap">
                     <input class="number ability-input"
@@ -63,8 +87,31 @@
                           {{#if ability.hasRoll }}
                           </a>{{else}}</span>{{/if}}
                         </div>
-                        <div class="item-detail ability-rank text-nowrap {{#if (cprCompare (cprGetSkillModInfo ability.name ../actor "modTotal") "===" 0) }} zero-not-visible {{/if }}">
-                          {{cprGetSkillModInfo ability.name ../actor "modTotal"}}
+                        <div class="item-detail ability-rank text-nowrap
+                              {{#if (cprCompare (cprGetSkillModInfo ability.name ../actor "modTotal") "===" 0) }}
+                                {{#unless (cprGetSkillModInfo ability.name ../actor "hasSituational")}}
+                                  zero-not-visible
+                                {{/unless}}
+                              {{/if }}">
+                          <span
+                            {{#if (cprGetSkillModInfo ability.name ../actor "hasSituational") }}
+                              class="text-italics"
+                            {{/if }}
+                            {{#if (cprGetSkillModInfo ability.name ../actor "modList" keepSituational=true) }}
+                              data-tooltip="
+                                {{#each (cprGetSkillModInfo ability.name ../actor "modList" keepSituational=true) as |mod| }}
+                                  {{mod.source }} ({{cprGetChangeNameByKey false mod.category mod.key }}): {{cprEffectModMode mod.changeMode mod.value }} {{~#if mod.isSituational }}*{{/if}}
+                                  {{#unless @last }}
+                                    <br/>
+                                  {{/unless}}
+                                {{/each}}
+                                {{#if (cprGetSkillModInfo ability.name ../actor "hasSituational") }}
+                                  <hr/>
+                                  *{{localize "CPR.characterSheet.rightPane.skills.situationalModWarning"}}
+                                {{/if}}"
+                            {{/if}}>
+                            {{cprGetSkillModInfo ability.name ../actor "modTotal"}}
+                          </span>
                         </div>
                         <div class="item-detail ability-rank text-nowrap">
                           <input class="number ability-input"
