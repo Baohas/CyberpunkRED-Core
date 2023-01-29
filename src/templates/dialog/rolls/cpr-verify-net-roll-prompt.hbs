@@ -14,7 +14,7 @@
             {{localize "CPR.global.generic.stat"}} {{localize "CPR.global.generic.value"}} ({{localize rollData.statName}})
           </div>
           <div class="dialog-item-input text-nowrap">
-            <input name="statValue" type="number" data-dtype="Number" value={{rollData.statValue}}/>
+            <input name="statValue" type="number" data-dtype="Number" value="{{rollData.statValue}}"/>
           </div>
         </li>
       {{/if}}
@@ -24,7 +24,7 @@
             {{localize "CPR.rolls.abilityRank"}} ({{localize rollData.roleName}})
           </div>
           <div class="dialog-item-input text-nowrap">
-            <input name="roleValue" type="number" data-dtype="Number" value={{rollData.roleValue}}/>
+            <input name="roleValue" type="number" data-dtype="Number" value="{{rollData.roleValue}}"/>
           </div>
         </li>
       {{/if}}
@@ -34,7 +34,7 @@
         <li class="dialog-item flexrow">
           <div class="dialog-item-name text-nowrap">{{localize "CPR.rolls.luck"}}:</div>
           <div class="dialog-item-input text-nowrap">
-            <input name="luck" type="number" data-dtype="Number" value={{rollData.luck}}/>
+            <input name="luck" type="number" data-dtype="Number" value="{{rollData.luck}}"/>
           </div>
         </li>
       {{/if}}

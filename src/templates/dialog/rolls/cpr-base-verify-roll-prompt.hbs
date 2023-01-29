@@ -18,7 +18,7 @@
           {{localize "CPR.global.generic.stat"}} ({{localize rollData.statName}}):
         </div>
         <div class="dialog-item-input text-nowrap">
-          <input name="statValue" type="number" data-dtype="Number" value={{rollData.statValue}}/>
+          <input name="statValue" type="number" data-dtype="Number" value="{{rollData.statValue}}"/>
         </div>
       </li>
       {{#if (cprListContains prototypeChain "CPRSkillRoll") }}
@@ -27,7 +27,7 @@
             {{localize "CPR.global.itemTypes.skill"}} ({{localize rollData.skillName}}):
           </div>
           <div class="dialog-item-input text-nowrap">
-            <input name="skillValue" type="number" data-dtype="Number" value={{rollData.skillValue}}/>
+            <input name="skillValue" type="number" data-dtype="Number" value="{{rollData.skillValue}}"/>
           </div>
         </li>
       {{/if}}
@@ -36,7 +36,7 @@
       <li class="dialog-item flexrow">
         <div class="dialog-item-name text-nowrap">{{localize "CPR.rolls.luck"}}:</div>
         <div class="dialog-item-input text-nowrap">
-          <input name="luck" type="number" data-dtype="Number" value={{rollData.luck}}/>
+          <input name="luck" type="number" data-dtype="Number" value="{{rollData.luck}}"/>
         </div>
       </li>
       <li class="dialog-item flexrow">
