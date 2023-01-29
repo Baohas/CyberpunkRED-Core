@@ -10,6 +10,7 @@
 - #686 - Installing a secondary weapon as a weapon upgrade does not show that upgrade in the Fight Tab
 - #693 - The stripHTML() Handlebar helper fails if the passed HTML contains a percentage sign.
 - #691 - Actors stored in compendiums and dragged out into worlds were losing information on any items that were installed.
+- Fixed the ability to decrement REZ of a running program in the Net tab
 
 ### Changes
 
