@@ -11,6 +11,7 @@
 - #693 - The stripHTML() Handlebar helper fails if the passed HTML contains a percentage sign.
 - #691 - Actors stored in compendiums and dragged out into worlds were losing information on any items that were installed.
 - Fixed the ability to decrement REZ of a running program in the Net tab
+- #692 - Code accidentally added `programs` instead of `cyberware` for owned cyberware on existing actors.  This fix adds `cyberware` as it should hav been however we can't know if `programs` was a valid entry for a world, so we are not removing that.  It does not impact anything and a GM can manually remove `programs` from an owned piece of cyberware via the item settings if needed.
 
 ### Changes
 
