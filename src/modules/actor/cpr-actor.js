@@ -1961,9 +1961,9 @@ export default class CPRActor extends Actor {
    * @param {Object} formData  - an object of answers provided by the user in a form
    * @returns {Object}
    */
-  setLifepath(formData) {
+  setLifepath(lifepathData) {
     LOGGER.trace("setLifepath | CPRActor | Called.");
-    return this.update(formData);
+    return this.update({ "system.lifepath": lifepathData });
   }
 
   /** MOOK SPECIFIC CODE */
