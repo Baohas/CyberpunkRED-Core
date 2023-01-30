@@ -30,12 +30,14 @@ system:
     slots: 3
     usedSlots: 0
   isBodyLocation: true
+  isElectronic: false
   isHeadLocation: false
   isShield: false
   isUpgraded: false
   penalty: -4
   price:
     market: 500
+  providesHardening: false
   revealed: true
   shieldHitPoints:
     max: 0

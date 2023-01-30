@@ -46,9 +46,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: true
   isUpgraded: false
   price:
     market: 20
+  providesHardening: false
   revealed: true
   source: pg. 353
   upgrades: []

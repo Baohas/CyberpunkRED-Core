@@ -13,7 +13,7 @@ system:
     value: <p>Netrunner deck. 7 slots.</p>
   equipped: owned
   favorite: false
-  installLocation: notApplicable
+  installLocation: mall
   installedIn: ""
   installedItems:
     allowed: true
@@ -23,10 +23,12 @@ system:
     list: []
     slots: 7
     usedSlots: 0
+  isElectronic: false
   isInstalled: false
   isUpgraded: false
   price:
     market: 500
+  providesHardening: false
   programs:
     installed: []
     rezzed: []

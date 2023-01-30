@@ -30,6 +30,7 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: true
   isInstalled: false
   isRanged: false
   magazine:
@@ -87,6 +88,7 @@ system:
       value: null
   price:
     market: 500
+  providesHardening: false
   rof: 1
   size: 1
   source: pg. 343

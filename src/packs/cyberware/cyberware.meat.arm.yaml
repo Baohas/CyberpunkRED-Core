@@ -36,6 +36,7 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isFoundational: true
   isInstalled: false
   isRanged: false
@@ -49,6 +50,7 @@ system:
     value: 0
   price:
     market: 0
+  providesHardening: false
   revealed: true
   rof: 1
   size: 0

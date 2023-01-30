@@ -47,6 +47,7 @@ system:
     value: 0
   price:
     market: 1000
+  providesHardening: false
   revealed: true
   rof: 1
   size: 1

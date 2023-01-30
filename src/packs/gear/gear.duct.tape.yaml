@@ -20,11 +20,13 @@ system:
     allowedTypes:
       - itemUpgrade
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 20
+  providesHardening: false
   revealed: true
   source: pg. 353
   upgrades: []
