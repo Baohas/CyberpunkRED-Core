@@ -118,10 +118,9 @@ export default class CPRDialog extends FormApplication {
   static async showDialog(...args) {
     LOGGER.trace("showDialog | CPRDialog | Called.");
     return new Promise((resolve, reject) => {
-      const dialog = new this(...args, {
-        confirmDialog: () => resolve(args[0]),
-        closeDialog: () => reject(args[0]),
-      });
+      const dialog = new this(...args);
+      dialog.options.confirmDialog = () => resolve(args[0]);
+      dialog.options.closeDialog = () => reject(args[0]);
       dialog.render(true);
     });
   }

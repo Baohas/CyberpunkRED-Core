@@ -2,9 +2,9 @@
 import CPRActorSheet from "./cpr-actor-sheet.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import Rules from "../../utils/cpr-rules.js";
-import SetLifepathPrompt from "../../dialog/cpr-set-lifepath-prompt.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import LedgerEditPrompt from "../../dialog/cpr-ledger-edit-prompt.js";
+import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
  * Extend the basic CPRActorSheet with Character specific functionality.
@@ -307,13 +307,17 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   async _setLifepath() {
     LOGGER.trace("_setLifepath | CPRCharacterActorSheet | Called.");
-    const formData = await SetLifepathPrompt.RenderPrompt(
-      this.actor.system
-    ).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+    const dialogData = await CPRDialog.showDialog(this.actor.system.lifepath, {
+      // Set the options for the dialog.
+      title: SystemUtils.Localize("CPR.dialog.setLifepath.title"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-set-lifepath-prompt.hbs`,
+      submitOnChange: false,
+      submitOnClose: true,
+    }).catch((err) => LOGGER.debug(err));
+    if (dialogData === undefined) {
       return;
     }
-    await this.actor.setLifepath(formData);
+    await this.actor.setLifepath(dialogData);
   }
 
   /**
