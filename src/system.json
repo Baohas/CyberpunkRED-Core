@@ -1,6 +1,8 @@
 {
   "version": "DUMMY_VALUE",
-  "flags": { "featureVideoURL": "" },
+  "flags": {
+    "featureVideoURL": ""
+  },
   "id": "cyberpunk-red-core",
   "title": "Cyberpunk RED - CORE",
   "description": "Implementation of the Cyberpunk RED, Core Rules, for FVTT",
@@ -72,6 +74,14 @@
       "type": "Item",
       "name": "cyberchairs",
       "path": "packs/cyberchairs.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Cyberpunk RED Core Macros",
+      "type": "Macro",
+      "name": "cyberpunk-red-core-macros",
+      "path": "packs/cyberpunk-red-core-macros.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },

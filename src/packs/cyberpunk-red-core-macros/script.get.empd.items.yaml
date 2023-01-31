@@ -14,41 +14,8 @@ command: |-
    */
 
   /*
-   * User Editable Values
-   *
-   * If you have homebrew cyberware or upgrades which should not be
-   * effected by an EMP or negate EMP effects add them to the below
-   * variables to make sure they are not added to the candidate list.
-   *
-   * Both Match using `startWith` so you don't need the full name.
-   * Case sensitive
-   */
-
-  // Array of ignored Cyberware
-  const ignoredCyberware = [
-    "Hardened",
-    "Meat",
-  ];
-
-  // If an item contains any of the following upgrades it is ignored
-  const ignoredUpgrades = [
-    "Hardened",
-  ];
-
-
-  /*
-   * Here be Cyberpsychos!
-   * Don't edit below here unless you know what you're doing!
-   */
-
-  /*
    * Helper functions
    */
-
-  // Check if a string `startsWtih` in an array
-  function checkIfStringStartsWith(str, substrs) {
-    return substrs.some(substr => str.startsWith(substr));
-  }
 
   // Shuffle an array's items
   function shuffle(array) {
@@ -70,75 +37,44 @@ command: |-
    * Main logic
    */
 
-  allTokens.forEach(token => {
+  allTokens.forEach((token) => {
     console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name}`);
-    let actor = game.actors.filter((a) => a.name === token.name)[0] || token.actor;
+    let actor =
+      game.actors.filter((a) => a.name === token.name)[0] || token.actor;
     let items = actor.items;
 
     // Create a blank array of items
-    let empableItems = []
+    let empableItems = [];
 
-    items.forEach(item => {
-      var hasIgnoredCyberware = 0;
-      var hasIgnoredUpgrades = 0;
+    items.forEach((item) => {
+      var hasHardening = 0;
 
-      // Check for Cyberware
-      // Make sure it's installed and not `core` Cyberware
-      if ((item.type == "cyberware") && (item.system.isInstalled) && (!item.system.core)) {
-        console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name} | Item: ${item.name}`);
-        if ('installedItems' in item.system) {
-          let installedItems = item.system.installedItems.list;
-
-          // Check if we have anything installed which makes the Cyberware immune to EMP
-          installedItems.forEach(installed => {
-            let installedItem = fromUuidSync(installed);
-
-            if (checkIfStringStartsWith(installedItem.name, ignoredCyberware)) {
-              console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name} | Ignoring: ${item.name}`);
-              hasIgnoredCyberware++;
-            }
-          });
-        }
-        // Check if we have no `ignoredCyberware` installed and we are not in `ignoredCyberware`
-        if ((hasIgnoredCyberware === 0) && (!checkIfStringStartsWith(item.name, ignoredCyberware))) {
-          console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name} | Adding: ${item.name}`);
-          empableItems.push(item.name);
-        }
-      }
-
-      // Check for Cyberdecks, if they don't have any `ignoredUpgrades` add it to the array if equipped or carried
-      if ((item.type == "cyberdeck") && ((item.system.equipped === "carried") || (item.system.equipped === "equipped"))) {
-        console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name} | Item: ${item.name}`);
-        if ('installedItems' in item.system) {
-          let installedItems = item.system.installedItems.list;
-
-          // Check if we have anything installed which makes the Cyberdeck immune to EMP
-          installedItems.forEach(installed => {
-            let installedItem = fromUuidSync(installed);
-
-            if (checkIfStringStartsWith(installedItem.name, ignoredUpgrades)) {
-              console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name} | Ignoring: ${item.name}`);
-              hasIgnoredUpgrades++;
-            }
-          });
-        }
-
-        // If we have no ignored upgrades, add to array
-        if ((hasIgnoredUpgrades === 0) && (!checkIfStringStartsWith(item.name, ignoredUpgrades))) {
-          console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name} | Adding: ${item.name}`);
-          empableItems.push(item.name);
-        }
-      }
-
-      // Check for Gear, if it has `isElectronic = true`, add it to the array if equipped or carried
-      if ((item.type == "gear") && ((item.system.equipped === "carried") || (item.system.equipped === "equipped"))) {
-        console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name} | Item: ${item.name}`);
+      if ("isElectronic" in item.system) {
         if (item.system.isElectronic) {
-          console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name} | Ignoring: ${item.name}`);
-          empableItems.push(item.name);
+          if (item.system.equipped === "carried" || item.system.equipped === "equipped" || item.system.isInstalled) {
+            console.debug(`CPR MACRO | Get EMP'd Items | Token ${token.name} | Processing: ${item.name}`);
+
+            if ("installedItems" in item.system) {
+              let installedItems = item.system.installedItems.list;
+
+              installedItems.forEach((installed) => {
+                let installedItem = fromUuidSync(installed);
+
+                if (installedItem.system.providesHardening) {
+                  console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name} | Ignoring: ${item.name}`);
+                  hasHardening++;
+                }
+              });
+            }
+            if (hasHardening === 0) {
+              console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name} | Adding: ${item.name}`);
+              empableItems.push(item.name);
+            }
+          }
         }
       }
     });
+
 
     console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name} | Potential EMPable Items: ${empableItems}`);
 
