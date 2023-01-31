@@ -28,9 +28,9 @@
             ({{cprEffectModMode 2 (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor) (cprGetSkillBonus skill.name ../actor))}}){{#unless @last}},{{/unless}}
           {{/if}}
       </a>
-      {{#if (cprCompare skill.system.core "===" false)}}
+      {{#unless cprCompare skill.system.core}}
         <a class="item-edit skill-custom" data-tooltip="{{localize "CPR.actorSheets.commonActions.editCustomSkill"}}"><i class="fas fa-edit"></i></a>
-      {{/if}}
+      {{/unless}}
     </span>
   {{/each}}
 </div>
