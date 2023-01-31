@@ -244,7 +244,7 @@
                         </li>
                         {{#if weapon.system.isUpgraded}}
                             {{#each weapon.system.upgrades as |upgrade|}}
-                                {{#if (cprCompare upgrade.system.modifiers.secondaryWeapon.configured "===" "true")}}
+                                {{#if upgrade.system.modifiers.secondaryWeapon.configured}}
                                     {{#each (cprFilter ../actor.itemTypes.itemUpgrade "_id" upgrade._id) as |weapon|}}
                                     <li class="weapon-grid item flexrow" data-item-id="{{weapon.id}}">
                                         <div class="fight-weapon-icon">
@@ -336,7 +336,7 @@
                         </span>
                     </li>
                 {{#each (cprSort (cprFilter actor.itemTypes.cyberware "system.isInstalled" true) "name") as |weapon|}}
-                {{#if (cprCompare system.isWeapon "===" true)}}
+                {{#if system.isWeapon}}
                         <li class="weapon-grid item flexrow" data-item-id="{{weapon.id}}">
                             <div class="fight-weapon-icon">
                                 <img class="fight-weapon-icon-img" src="{{img}}"/>
@@ -416,7 +416,7 @@
                         </li>
                         {{#if weapon.system.isUpgraded}}
                             {{#each weapon.system.upgrades as |upgrade|}}
-                                {{#if (cprCompare upgrade.system.modifiers.secondaryWeapon.configured "===" "true")}}
+                                {{#if upgrade.system.modifiers.secondaryWeapon.configured}}
                                     {{#each (cprFilter ../actor.itemTypes.itemUpgrade "_id" upgrade._id) as |weapon|}}
                                     <li class="weapon-grid item flexrow" data-item-id="{{weapon.id}}">
                                         <div class="fight-weapon-icon">
