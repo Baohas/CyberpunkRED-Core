@@ -270,6 +270,10 @@
         "revealed": true,
         "usage": "toggled"
       },
+      "electronic": {
+        "isElectronic": false,
+        "providesHardening": false
+      },
       "equippable": {
         "equipped": "owned"
       },
@@ -320,6 +324,7 @@
       "templates": [
         "common",
         "effects",
+        "electronic",
         "equippable",
         "physical",
         "upgradable",
@@ -377,6 +382,7 @@
         "attackable",
         "common",
         "effects",
+        "electronic",
         "installable",
         "loadable",
         "physical",
@@ -396,6 +402,7 @@
     "cyberdeck": {
       "templates": [
         "common",
+        "electronic",
         "physical",
         "upgradable",
         "equippable",
@@ -423,6 +430,7 @@
       "templates": [
         "common",
         "effects",
+        "electronic",
         "equippable",
         "physical",
         "stackable",
@@ -435,6 +443,7 @@
       "templates": [
         "attackable",
         "common",
+        "electronic",
         "physical",
         "installable",
         "loadable",

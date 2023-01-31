@@ -8,6 +8,8 @@
 
 - The project Discord has changed! Please visit our [Wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/home#project-red-cast-of-characters) for the new link!
 - NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. See New Features -> Roll Modifiers section of Changelog for more details.
+- Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. See New Features -> Roll Modifiers section of Changelog for more details.
+- We have migrated all Gear items provided by our Compendia to support `isElectronic` but you will need to update any Homebre/Custom items manually if you want them to support this new data point.
 
 ### New Features
 
@@ -33,6 +35,10 @@
   - Known Issues / Future Work:
     - It is a known issue that Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
 - Add check for core.photosensitivityMode when rendering pause animation
+- Add a `isElectronic` data point to Gear items
+  - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (EG: A macro to select which items to disable with an EMP)
+- Add `Get EMP'd Items` macro
+  - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (wihout sheilding), carried (electroinc) Gear items, or Cyberdecks and outputs the results to chat
 
 ### Changes
 

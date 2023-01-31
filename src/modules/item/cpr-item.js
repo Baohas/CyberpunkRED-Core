@@ -6,6 +6,7 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 // Item mixins
 import Attackable from "./mixins/cpr-attackable.js";
 import Effects from "./mixins/cpr-effects.js";
+import Electronic from "./mixins/cpr-electronic.js";
 import Equippable from "./mixins/cpr-equippable.js";
 import Loadable from "./mixins/cpr-loadable.js";
 import Installable from "./mixins/cpr-installable.js";
@@ -100,6 +101,10 @@ export default class CPRItem extends Item {
           Effects.call(CPRItem.prototype);
           cprItemData.allowedUsage = this.getAllowedUsage();
           // To Do: we could toggle on/off if there's exactly 1 effect enforced...
+          break;
+        }
+        case "electronic": {
+          Electronic.call(CPRItem.prototype);
           break;
         }
         case "equippable": {
