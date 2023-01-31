@@ -31,8 +31,9 @@
         </div>
         <div class="d10-number-div">
           <a><span class="clickable{{#if criticalCard }} fg-red text-bold{{/if }}"
-      data-action="toggleVisibility"
-      data-visible-element="d10-data-details">{{resultTotal}}</span></a>
+                   data-action="toggleVisibility"
+                   data-visible-element="d10-data-details">
+          {{resultTotal}}</span></a>
         </div>
         <div class="d10-data-div">
           <div class="d10-data-details hide">
@@ -42,6 +43,9 @@
             <div class="text-normal text-nowrap">
               {{localize "CPR.rolls.reputation"}}: {{repValue}}
             </div>
+            {{#if (cprCompare mods.length "||" additionalMods.length) }}
+              {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
+            {{/if}}
           </div>
         </div>
       </div>

@@ -6,9 +6,27 @@
 
 ### Release Specific Notes
 
+- NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. See New Features -> Roll Modifiers section of Changelog for more details.
+
 ### New Features
 
-- Improved Dialogue and Roll Mods (@jalen to fill in later)
+- Improved Roll Dialogues:
+  - The UI for roll dialogs has been improved and brought more in-line with the style of our system.
+  - Dialogs are now responsive sheets and can change depending on inputs.
+  - No more detective work: A tool tip (both in dialogs and on roll cards) displays where every bonus/penalty on your roll comes from.
+  - Toggle situational modifiers from active effects, upgrades, and roles right from the dialog.
+  - Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu.
+  - Add any additional modifiers to the roll as needed.
+  - Future work:
+    - Change every dialog over to the improved UI.
+- Roll Modifiers:
+  - Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
+    - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogs with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
+  - Modifiers to rolls from Role Abilities also have Situational (and On By Default) options.
+  - Modifiers to rolls from item Upgrades also have Situational (and On By Default) options.
+  - NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. Sorry!
+  - Known Issues / Future Work:
+    - It is a known issue that Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
 
 ### Changes
 

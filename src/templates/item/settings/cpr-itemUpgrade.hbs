@@ -76,30 +76,30 @@
 <hr/>
 {{!-- Cyberware has no upgradable data points, but could have a weapon attachment --}}
 {{#if (cprCompare system.type "!==" "cyberware") }}
-  <li class="item flexrow">
-    <div class="item flexrow setting-name text-nowrap">
+  <li class="item items-header flexrow">
+    <div class="setting-name text-nowrap">
       {{localize "CPR.itemSheet.itemUpgrade.dataPoint"}}
     </div>
-    <div class="item flexrow setting-type text-nowrap">
+    <div class="setting-type text-nowrap">
       {{localize "CPR.itemSheet.itemUpgrade.modifierType"}}
     </div>
-    <div class="item flexrow setting-value text-nowrap item-end">
+    <div class="setting-value text-nowrap text-center">
       {{localize "CPR.itemSheet.itemUpgrade.modifierValue"}}
     </div>
-    <div class="item flexrow setting-value text-nowrap item-end">
+    <div class="setting-value text-nowrap text-center">
       {{localize "Situational?"}}
     </div>
-    <div class="item flexrow setting-value text-nowrap item-end">
+    <div class="setting-value text-nowrap text-center">
       {{localize "Default On?"}}
     </div>
   </li>
   {{#each (cprFindConfigValue "upgradableDataPoints" item.system.type) as |dataPoint dp| }}
     {{#if (cprListContains (cprGetProp (cprFindConfigValue "upgradableDataPoints" "upgradeConfig") "configurableTypes") dataPoint.type) }}
       <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap">
+        <div class="setting-name text-nowrap">
           {{localize dataPoint.localization}}
         </div>
-        <div class="item flexrow setting-type text-nowrap">
+        <div class="setting-type text-nowrap">
           <select name="system.modifiers.{{dp}}.type"
                   data-dtype="{{cprGetProp (cprGetProp ../item.system.modifiers dp) "type"}}">
             {{#select (cprGetProp (cprGetProp ../item.system.modifiers dp) "type")}}
@@ -113,19 +113,20 @@
         {{/select}}
       </select>
     </div>
-    <div class="item flexrow setting-value text-nowrap item-end">
+    <div class="setting-value text-nowrap text-center">
       {{#if ../this.editable }}
         <input name="system.modifiers.{{dp}}.value"
                type="number"
-               value="{{cprGetProp (cprGetProp ../item.system.modifiers dp) "value"}}"/>
+               value="{{cprGetProp (cprGetProp ../item.system.modifiers dp) "value"}}"
+               placeholder="0"/>
       {{else}}
         <span class="text-flex-end">{{cprGetProp (cprGetProp ../item.system.modifiers dp) "value"}}</span>
       {{/if}}
     </div>
-    <div class="item flexrow setting-value text-nowrap item-end">
+    <div class="setting-value text-nowrap text-center">
       <input {{#unless (cprCompare dataPoint.isSituational "!==" undefined)}}disabled{{/unless}} name="system.modifiers.{{dp}}.isSituational" type="checkbox" {{checked (cprGetProp (cprGetProp ../item.system.modifiers dp) "isSituational")}}/>
     </div>
-    <div class="item flexrow setting-value text-nowrap item-end">
+    <div class="setting-value text-nowrap text-center">
       <input {{#unless (cprGetProp (cprGetProp ../item.system.modifiers dp) "isSituational")}}disabled{{/unless}} name="system.modifiers.{{dp}}.onByDefault" type="checkbox" {{checked (cprGetProp (cprGetProp ../item.system.modifiers dp) "onByDefault")}}/>
     </div>
   </li>
