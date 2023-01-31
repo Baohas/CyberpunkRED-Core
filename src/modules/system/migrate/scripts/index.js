@@ -10,3 +10,4 @@ export { default as UniversalInstallMigration } from "./006-universalInstall.js"
 export { default as ItemSecondaryWeaponMigration } from "./007-itemUpgrades-secondaryWeapon.js";
 export { default as ImprovedDialogMigration } from "./008-improvedDialogs.js";
 export { default as PackIconMigration } from "./009-packIconsMigration.js";
+export { default as ItemIsElectronicMigration } from "./009-isElectronic.js";
