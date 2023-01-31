@@ -726,6 +726,10 @@ CPR.activeEffectKeys = {
     "system.stats.body.value": "CPR.global.stats.body",
     "system.stats.emp.max": "CPR.global.stats.empMax",
   },
+  multiple: {
+    "bonuses.allSkills": "CPR.effectSheet.multiple.allSkills",
+    "bonuses.allActions": "CPR.effectSheet.multiple.allActions",
+  }
 };
 
 CPR.defaultSituationalMods = {

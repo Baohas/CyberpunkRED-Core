@@ -48,6 +48,11 @@ export default class CPRSkillItem extends CPRItem {
       SystemUtils.slugify(skillName)
     );
 
+    const allSkillsMods = CPRMod.getRelevantMods(
+      filteredMods,
+      "allSkills"
+    );
+
     // Get all mods for skills from role abilities and subRole abilities.
     let roleSkillMods = [];
     actor.itemTypes.role.forEach((r) => {
@@ -81,6 +86,7 @@ export default class CPRSkillItem extends CPRItem {
     ]);
     cprRoll.addMod(roleSkillMods);
     cprRoll.addMod(skillMods); // active effects
+    cprRoll.addMod(allSkillsMods); // Mods that affect all skill rolls, no matter the skill.
     return cprRoll;
   }
 }

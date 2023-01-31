@@ -144,6 +144,7 @@ const Attackable = function Attackable() {
     const autofireMods = CPRMod.getRelevantMods(filteredMods, "autofire");
     const suppressiveMods = CPRMod.getRelevantMods(filteredMods, "suppressive");
     const singleShotMods = CPRMod.getRelevantMods(filteredMods, "singleShot");
+    const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions"); // Mods that affect all actions.
 
     let cprRoll;
     // Create the roll based on the type and apply relevant mods to it.
@@ -228,6 +229,7 @@ const Attackable = function Attackable() {
     cprRoll.addMod(skillMods);
     cprRoll.addMod(attackMods);
     cprRoll.addMod(roleMods);
+    cprRoll.addMod(allActionsMods);
 
     // Mod from item upgrades that affect attackmod.
     const relevantUpgradeMods = this.getAllUpgradeMods("attackmod").filter(

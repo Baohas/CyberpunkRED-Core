@@ -73,6 +73,7 @@
                     CPR.effectSheet.keyCategory.role
                     CPR.effectSheet.keyCategory.skill
                     CPR.effectSheet.keyCategory.stat
+                    CPR.effectSheet.keyCategory.multiple
                     --}}
                     <option value="{{ec}}">
                       {{localize (cprObjConcat "CPR.effectSheet.keyCategory." ec)}}
@@ -102,7 +103,7 @@
               {{/select}}
             </select>
           {{/if}}
-          {{#if (cprListContains "combat,netrun,role,stat" (lookup ../data.flags.cyberpunk-red-core.changes.cats i)) }}
+          {{#if (cprListContains "combat,netrun,role,stat,multiple" (lookup ../data.flags.cyberpunk-red-core.changes.cats i)) }}
             <select class="key-key force-submit"
                     name="changes.{{i}}.key"
                     data-dtype="String">
