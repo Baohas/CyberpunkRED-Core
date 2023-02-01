@@ -185,7 +185,7 @@ export default class CPRActor extends Actor {
     this.bonuses.autofire = 0;
     this.bonuses.suppressive = 0;
     this.bonuses.singleShot = 0;
-    // bonuses that affect many rolls (not specifically combat)
+    // Miscellaneous bonuses.
     this.bonuses.allSkills = 0;
     this.bonuses.allActions = 0;
   }

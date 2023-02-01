@@ -641,6 +641,7 @@ CPR.activeEffectKeys = {
   },
   skill: {
     // Note this listing is expanded in register-helpers (cprGetSkillsForEffects), it is not used as-is
+    "bonuses.allSkills": "CPR.effectSheet.misc.allSkills",
     "bonuses.accounting": "CPR.global.itemType.skill.accounting",
     "bonuses.acting": "CPR.global.itemType.skill.acting",
     "bonuses.airVehicleTech": "CPR.global.itemType.skill.airVehicleTech",
@@ -726,10 +727,9 @@ CPR.activeEffectKeys = {
     "system.stats.body.value": "CPR.global.stats.body",
     "system.stats.emp.max": "CPR.global.stats.empMax",
   },
-  multiple: {
-    "bonuses.allSkills": "CPR.effectSheet.multiple.allSkills",
-    "bonuses.allActions": "CPR.effectSheet.multiple.allActions",
-  }
+  misc: {
+    "bonuses.allActions": "CPR.effectSheet.misc.allActions",
+  },
 };
 
 CPR.defaultSituationalMods = {
