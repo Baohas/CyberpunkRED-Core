@@ -1184,7 +1184,16 @@ export default class CPRActor extends Actor {
     const statValue = this.getStat(statName);
     const cprRoll = new CPRRolls.CPRStatRoll(niceStatName, statValue);
 
+    const effects = this.effects.contents;
+    const allMods = CPRMod.getAllModifiers(effects);
+    const filteredMods = allMods.filter(
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+    );
+
+    const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions"); // Mods that affect all actions.
+
     // Add relevant mods.
+    cprRoll.addMod(allActionsMods);
     cprRoll.addMod([
       {
         value: this.getArmorPenaltyMods(statName),
@@ -1221,6 +1230,19 @@ export default class CPRActor extends Actor {
       statValue,
       repValue
     );
+
+    // Figure out all applicable modifiers.
+    const effects = this.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
+    const filteredMods = allMods.filter(
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+    );
+
+    const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions"); // Mods that affect all actions.
+
+    cprRoll.addMod(allActionsMods);
+
     return cprRoll;
   }
 

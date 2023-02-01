@@ -113,6 +113,8 @@ export default class CPRRoleItem extends CPRItem {
       SystemUtils.slugify(roleName)
     );
 
+    const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions"); // Mods that affect all actions.
+
     const cprRoll = new CPRRolls.CPRRoleRoll(
       roleName,
       roleValue,
@@ -124,6 +126,7 @@ export default class CPRRoleItem extends CPRItem {
     );
     cprRoll.addMod(skillMods); // add skill bonuses from Active Effects
     cprRoll.addMod(roleMods); // add role bonuses from Active Effects
+    cprRoll.addMod(allActionsMods);
     cprRoll.addMod([
       {
         value: actor.getWoundStateMods(),
