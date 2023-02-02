@@ -1,9 +1,9 @@
 /* global ActorSheet mergeObject game duplicate */
 import CPRChat from "../../chat/cpr-chat.js";
 import LOGGER from "../../utils/cpr-logger.js";
-import ConfigureBIActorFromProgramPrompt from "../../dialog/cpr-configure-bi-actor-from-program.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
+import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
  * Implement the Black-ICE sheet, which extends ActorSheet directly from Foundry. This does
@@ -120,19 +120,23 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       );
       return;
     }
-    let formData = { biProgramList: biPrograms, linkedProgramUUID };
-    formData = await ConfigureBIActorFromProgramPrompt.RenderPrompt(
-      formData
-    ).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+    let dialogData = { biProgramList: biPrograms, linkedProgramUUID };
+    dialogData = await CPRDialog.showDialog(dialogData, {
+      // Set the options for the dialog.
+      title: SystemUtils.Localize(
+        "CPR.dialog.configureBlackIceActorFromProgram.title"
+      ),
+      template: `systems/${game.system.id}/templates/dialog/cpr-configure-bi-actor-from-program-prompt.hbs`,
+    }).catch((err) => LOGGER.debug(err));
+    if (dialogData === undefined) {
       return;
     }
-    const { programUUID } = formData;
+    const { programUUID } = dialogData;
     if (programUUID === "unlink") {
       await this.actor.token.unsetFlag(game.system.id, "programUUID");
     } else {
       const program = biPrograms.filter(
-        (p) => p.uuid === formData.programUUID
+        (p) => p.uuid === dialogData.programUUID
       )[0];
       const cprProgramData = duplicate(program.system);
       this.actor.programmaticallyUpdate(
