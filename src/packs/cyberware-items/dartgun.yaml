@@ -22,7 +22,7 @@ system:
     chat: ''
     unidentified: ''
     value: <p>A single shot weapon which can be concealed. </p>
-  dvTable: null
+  dvTable: ''
   favorite: false
   fireModes:
     autoFire: 0

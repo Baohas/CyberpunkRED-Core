@@ -15,10 +15,12 @@ export default class DamageApplicationPrompt {
         };
         const _onConfirm = (html) => {
           LOGGER.trace("_onConfirm | Dialog DamageApplicationPrompt | called.");
-          const damageReductionRole = html.find("[name=\"damageReductionRole\"");
-          const damageReductionAE = html.find("[name=\"damageReductionAE\"");
-          const useShield = html.find("[name=\"useShield\"");
-          const brainDamageReduction = html.find("[name=\"brainDamageReduction\"");
+          const damageReductionRole = html.find('[name="damageReductionRole"');
+          const damageReductionAE = html.find('[name="damageReductionAE"');
+          const useShield = html.find('[name="useShield"');
+          const brainDamageReduction = html.find(
+            '[name="brainDamageReduction"'
+          );
           const fd = new FormDataExtended(html.find("form")[0]);
           const formData = foundry.utils.expandObject(fd.object);
           if (useShield.checked) {
@@ -40,18 +42,20 @@ export default class DamageApplicationPrompt {
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: (html) => _onCancel(html),
             },
           },
           default: "cancel",
-          render: LOGGER.trace("confirm | Dialog DamageApplicationPrompt | called."),
+          render: LOGGER.trace(
+            "confirm | Dialog DamageApplicationPrompt | called."
+          ),
           close: () => {
             // Closing the window can be interpreded as pressing cancel, thus it also resoles to false
             resolve(false);

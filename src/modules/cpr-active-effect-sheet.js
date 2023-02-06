@@ -1,6 +1,7 @@
 /* global ActiveEffectConfig CONST getProperty game mergeObject */
 /* eslint-env jquery */
 import LOGGER from "./utils/cpr-logger.js";
+import SystemUtils from "./utils/cpr-systemUtils.js";
 
 /**
  * Extend the base ActiveEffect class to implement system-specific logic.
@@ -18,6 +19,9 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       template: `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
       width: "auto",
       height: "auto",
+      // Submit on close to prevent an edge case where a user adds and active effect, but doesn't change anything.
+      // If they closed the dialog (without submitting) then there was just a blank AE on their sheet. This setting prevents that.
+      submitOnClose: true,
     });
   }
 
@@ -34,12 +38,46 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
 
     // QoL - Select all text when grabbing text input.
     $("input[type=text]").focusin(() => $(this).select());
-    html.find(".effect-key-category").change((event) => this._changeModKeyCategory(event));
-    html.find(".effect-change-control").click((event) => this._effectChangeControl(event));
+    html.find(".force-submit").change(() => this._forceSubmit());
+    html
+      .find(".effect-key-category")
+      .change((event) => this._changeModKeyCategory(event));
+    html
+      .find(".effect-change-control")
+      .click((event) => this._effectChangeControl(event));
+    html
+      .find(".toggle-situational")
+      .click((event) => this._toggleSituational(event));
+    html
+      .find(".toggle-on-by-default")
+      .click((event) => this._toggleOnByDefault(event));
+  }
+
+  /**
+   * A function we call when we want to force form submission (to make sure that a change is properly registered).
+   *
+   * Sometimes, if you input a change on the sheet, and then make another change somewhere else on the sheet,
+   * the original change gets ovverriden, since it was not submitted. This function addresses that by
+   * making sure information passed to the sheet gets stored/submitted before another change occurs.
+   *
+   * This function also helps achieve a secondary, more specific goal: prevent duplicate change keys on the same AE. How?
+   * In the handlebars template, change keys that already exist on this AE are disabled.
+   * Submitting rerenders the sheet, disabling the correct values in the drop-down so that they cannot be selected again.
+   *
+   * @async
+   * @callback
+   * @private
+   */
+  async _forceSubmit() {
+    LOGGER.trace("_forceSubmit | CPRActiveEffectSheet | Called.");
+    this.submit({
+      preventClose: true,
+    });
   }
 
   /**
    * Change the key category flag on an active effect.
+   * Also submit the form to prevent duplicate change keys on the same AE. (see _forceSubmit's jsdocs)
    *
    * @async
    * @callback
@@ -50,7 +88,24 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     const effect = this.object;
     const modnum = event.currentTarget.dataset.index;
     const keyCategory = event.target.value;
-    return effect.setModKeyCategory(modnum, keyCategory);
+
+    await effect.setModKeyCategory(modnum, keyCategory);
+
+    // Stats cannot currently be situational. This bit of code sets situational flags to false when the
+    // Stat category is selected in the active effects dialog.
+    if (effect.getFlag(game.system.id, `changes.cats.${modnum}`) === "stat") {
+      await effect.setFlag(
+        game.system.id,
+        `changes.situational.${modnum}.isSituational`,
+        false
+      );
+      await effect.setFlag(
+        game.system.id,
+        `changes.situational.${modnum}.onByDefault`,
+        false
+      );
+    }
+    return this._forceSubmit();
   }
 
   /**
@@ -76,6 +131,50 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
   }
 
   /**
+   * Toggles the change as situational or not.
+   *
+   * @callback
+   * @private
+   * @param {Object} event - mouse click event
+   */
+  async _toggleSituational(event) {
+    LOGGER.trace("_toggleSituational | CPRActiveEffectSheet | Called.");
+    const effect = this.object;
+    const modnum = SystemUtils.GetEventDatum(event, "data-index");
+    const isSituational = event.target.checked;
+
+    await effect.setFlag(
+      `${game.system.id}`,
+      `changes.situational.${modnum}.isSituational`,
+      isSituational
+    );
+
+    this._forceSubmit();
+  }
+
+  /**
+   * If the change is situational, toggle whether it should be on by default.
+   *
+   * @callback
+   * @private
+   * @param {Object} event - mouse click event
+   */
+  async _toggleOnByDefault(event) {
+    LOGGER.trace("_toggleOnByDefault | CPRActiveEffectSheet | Called.");
+    const effect = this.object;
+    const modnum = SystemUtils.GetEventDatum(event, "data-index");
+    const onByDefault = event.target.checked;
+
+    await effect.setFlag(
+      `${game.system.id}`,
+      `changes.situational.${modnum}.onByDefault`,
+      onByDefault
+    );
+
+    this._forceSubmit();
+  }
+
+  /**
    * Handle adding a new change (read: mod) to the changes array. A new
    * changes is always added to the end of the array, never in the middle.
    *
@@ -90,12 +189,17 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       preventClose: true,
       updateData: {
         [`changes.${idx}`]: {
-          key: "bonuses.perception",
+          key: "",
           mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-          value: "",
+          value: "0",
         },
-        // we set the default "key category" here
-        [`flags.${game.system.id}.changes.${idx}`]: "skill",
+        // we set the default "key category" here.
+        // we also give it a "situational" flag.
+        [`flags.${game.system.id}.changes.cats.${idx}`]: "skill",
+        [`flags.${game.system.id}.changes.situational.${idx}`]: {
+          isSituational: false,
+          onByDefault: false,
+        },
       },
     });
   }
@@ -118,20 +222,40 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     const { changes } = this.object;
     changes.splice(modnum, 1);
     // Second, remove the corresponding flag for the deleted change
-    const changeFlags = getProperty(this.object, `flags.${game.system.id}.changes`);
-    const newFlags = {};
-    const flagArray = Object.entries(changeFlags);
-    flagArray.sort(); // explicitly sort to guarantee we iterate in numerical order
-    flagArray.forEach((chg) => {
+    const changeFlags = getProperty(
+      this.object,
+      `flags.${game.system.id}.changes`
+    );
+    const newFlags = { cats: {}, situational: {} };
+    const flagArrayCats = Object.entries(changeFlags.cats);
+    const flagArraySituational = Object.entries(changeFlags.situational);
+
+    // First, sort and reorder the flags for the effect's category.
+    flagArrayCats.sort(); // explicitly sort to guarantee we iterate in numerical order
+    flagArrayCats.forEach((chg) => {
       const index = Number(chg[0]);
-      const skill = chg[1];
+      const category = chg[1];
       if (index < modnum) {
-        newFlags[String(index)] = skill;
-      // we deliberately skip idx === modnum, that's the deleted change
+        newFlags.cats[String(index)] = category;
+        // we deliberately skip idx === modnum, that's the deleted change
       } else if (index > modnum) {
-        newFlags[String(index - 1)] = skill;
+        newFlags.cats[String(index - 1)] = category;
       }
     });
+
+    // Then, sort and reorder the flags for the effect's situational settings.
+    flagArraySituational.sort(); // explicitly sort to guarantee we iterate in numerical order
+    flagArraySituational.forEach((chg) => {
+      const index = Number(chg[0]);
+      const situationalSettings = chg[1];
+      if (index < modnum) {
+        newFlags.situational[String(index)] = situationalSettings;
+        // we deliberately skip idx === modnum, that's the deleted change
+      } else if (index > modnum) {
+        newFlags.situational[String(index - 1)] = situationalSettings;
+      }
+    });
+
     // Finally, update the underlying AE
     await this.object.unsetFlag(game.system.id, "changes");
 

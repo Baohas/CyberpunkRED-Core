@@ -26,8 +26,14 @@ const tokenHooks = () => {
       // Defined x and/or y properties indicate the token is attempting to move to a new coordinate location.
       // this indicates a moved token, so we check the permissions.
       if (typeof data.x !== "undefined" || typeof data.y !== "undefined") {
-        if (typeof tokenDocument.actor.getFlag(game.system.id, "players-move") === "undefined") {
-          SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.insufficientPermissions"));
+        if (
+          typeof tokenDocument.actor.getFlag(game.system.id, "players-move") ===
+          "undefined"
+        ) {
+          SystemUtils.DisplayMessage(
+            "warn",
+            SystemUtils.Localize("CPR.messages.insufficientPermissions")
+          );
           return false;
         }
       }
@@ -75,19 +81,24 @@ const tokenHooks = () => {
    * @param {object} (unused)              Additional options passed by Foundry which modify the create request
    * @param {string} (unused)              The ID of the requesting user, always game.user.id
    */
-  Hooks.on('createToken', (tokenDocument, options, user) => {
+  Hooks.on("createToken", (tokenDocument, options, user) => {
     LOGGER.trace("createToken | tokenHooks | Called.");
     if (!tokenDocument.isLinked) {
       // Update items installed in the actor
       const actorInstallList = [];
       const updateList = [];
       for (const oldUuid of tokenDocument.actor.system.installedItems.list) {
-        const itemId = oldUuid.split('.').pop();
+        const itemId = oldUuid.split(".").pop();
         const item = tokenDocument.actor.getOwnedItem(itemId);
         actorInstallList.push(item.uuid);
-        updateList.push({ _id: item._id, "system.installedIn": tokenDocument.uuid });
+        updateList.push({
+          _id: item._id,
+          "system.installedIn": tokenDocument.uuid,
+        });
       }
-      tokenDocument.modifyActorDocument({ "system.installedItems.list": actorInstallList });
+      tokenDocument.modifyActorDocument({
+        "system.installedItems.list": actorInstallList,
+      });
 
       const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
       const containerTypes = SystemUtils.GetTemplateItemTypes("container");
@@ -95,9 +106,18 @@ const tokenHooks = () => {
       const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
 
       const ownedItems = tokenDocument.actor.items.filter((i) => {
-        if (containerTypes.includes(i.type) && i.system.installedItems.list.length > 0) return true;
-        if (installableTypes.includes(i.type) && i.system.isInstalled) return true;
-        if (loadableTypes.includes(i.type) && i.system.magazine.ammoData.uuid !== "") return true;
+        if (
+          containerTypes.includes(i.type) &&
+          i.system.installedItems.list.length > 0
+        )
+          return true;
+        if (installableTypes.includes(i.type) && i.system.isInstalled)
+          return true;
+        if (
+          loadableTypes.includes(i.type) &&
+          i.system.magazine.ammoData.uuid !== ""
+        )
+          return true;
         return false;
       });
 
@@ -118,7 +138,8 @@ const tokenHooks = () => {
 
         if (installableTypes.includes(item.type)) {
           const installedInId = item.system.installedIn.split(".").pop();
-          const installedInItem = tokenDocument.actor.getOwnedItem(installedInId);
+          const installedInItem =
+            tokenDocument.actor.getOwnedItem(installedInId);
           if (installedInItem) {
             itemUpdates.system.installedIn = installedInItem.uuid;
           }
@@ -142,11 +163,17 @@ const tokenHooks = () => {
           const ammoItem = tokenDocument.actor.getOwnedItem(ammoId);
           if (ammoItem) {
             itemUpdates.system.magazine = { ammoData: { name: "", uuid: "" } };
-            itemUpdates.system.magazine.ammoData = { name: ammoItem.name, uuid: ammoItem.uuid };
+            itemUpdates.system.magazine.ammoData = {
+              name: ammoItem.name,
+              uuid: ammoItem.uuid,
+            };
           }
         }
 
-        if (item.type === "cyberdeck" && item.system.programs.installed.length > 0) {
+        if (
+          item.type === "cyberdeck" &&
+          item.system.programs.installed.length > 0
+        ) {
           const oldPrograms = item.system.programs;
           const newPrograms = {
             installed: [],

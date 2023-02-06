@@ -9,18 +9,21 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
  */
 const Container = function Container() {
   /*
-  ** Return the number of available slots, taking into
-  * considerations any upgrades which may change the number
-  * of slots
-  * @returns Integer - Total number of available slots
-  */
+   ** Return the number of available slots, taking into
+   * considerations any upgrades which may change the number
+   * of slots
+   * @returns Integer - Total number of available slots
+   */
   this.availableInstallSlots = function availableInstallSlots() {
     LOGGER.trace("availableInstallSlots | Container | Called.");
     const itemTemplates = SystemUtils.GetTemplateItemTypes("upgradable");
     let totalSlots = this.system.installedItems.slots;
     if (itemTemplates.includes(this.type)) {
-      const upgradeData = this.getAllUpgradesFor("slots");
-      totalSlots = (upgradeData.type === "override") ? upgradeData.value : totalSlots + upgradeData.value;
+      const upgradeData = this.getTotalUpgradeValues("slots");
+      totalSlots =
+        upgradeData.type === "override"
+          ? upgradeData.value
+          : totalSlots + upgradeData.value;
     }
     return parseInt(totalSlots - this.system.installedItems.usedSlots, 10);
   };
@@ -40,7 +43,7 @@ const Container = function Container() {
 
     this.system.installedItems.list.forEach((uuid) => {
       const item = fromUuidSync(uuid);
-      if (!type || (item.type === type)) {
+      if (!type || item.type === type) {
         installedItems.push(item);
       }
     });
@@ -54,33 +57,34 @@ const Container = function Container() {
    *
    * @returns {Array} - Array of objects that are installed
    */
-  this.recursiveGetAllInstalledItems = function recursiveGetAllInstalledItems() {
-    LOGGER.trace("recursiveGetAllInstalledItems | Container | Called.");
+  this.recursiveGetAllInstalledItems =
+    function recursiveGetAllInstalledItems() {
+      LOGGER.trace("recursiveGetAllInstalledItems | Container | Called.");
 
-    const installedItems = [];
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+      const installedItems = [];
+      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
 
-    if (this.system.installedItems.list.length > 0) {
-      let uuidList = this.system.installedItems.list;
-      while (uuidList.length > 0) {
-        for (const uuid of uuidList) {
-          const item = fromUuidSync(uuid);
-          if (item !== null) {
-            if (!item?.isOwned) {
-              item.system.isInstalled = true;
-              item.system.installedIn = this.uuid;
+      if (this.system.installedItems.list.length > 0) {
+        let uuidList = this.system.installedItems.list;
+        while (uuidList.length > 0) {
+          for (const uuid of uuidList) {
+            const item = fromUuidSync(uuid);
+            if (item !== null) {
+              if (!item?.isOwned) {
+                item.system.isInstalled = true;
+                item.system.installedIn = this.uuid;
+              }
+              if (containerTypes.includes(item.type)) {
+                uuidList = uuidList.concat(item.system.installedItems.list);
+              }
+              installedItems.push(item);
             }
-            if (containerTypes.includes(item.type)) {
-              uuidList = uuidList.concat(item.system.installedItems.list);
-            }
-            installedItems.push(item);
+            uuidList = uuidList.filter((itemUUID) => itemUUID !== uuid);
           }
-          uuidList = uuidList.filter((itemUUID) => itemUUID !== uuid);
         }
       }
-    }
-    return installedItems;
-  };
+      return installedItems;
+    };
 
   /**
    * Determine if a set of objects can be installed into this Item. Checks for
@@ -95,7 +99,9 @@ const Container = function Container() {
   this.canInstallItems = function canInstallItems(itemList) {
     LOGGER.trace("canInstallItems | Container | Called.");
     if (!Array.isArray(itemList)) {
-      LOGGER.debug(`CPRActor.canInstallItems argument is not an array: ${itemList}`);
+      LOGGER.debug(
+        `CPRActor.canInstallItems argument is not an array: ${itemList}`
+      );
       return false;
     }
 
@@ -103,17 +109,31 @@ const Container = function Container() {
 
     let totalInstallationSize = 0;
     itemList.forEach((item) => {
-      if (this.system.installedItems.allowedTypes.includes(item.type) && (SystemUtils.getDataModelTemplates(item.type).includes("installable"))) {
+      if (
+        this.system.installedItems.allowedTypes.includes(item.type) &&
+        SystemUtils.getDataModelTemplates(item.type).includes("installable")
+      ) {
         totalInstallationSize += item.system.size;
       } else {
-        SystemUtils.DisplayMessage("error", SystemUtils.Format("CPR.messages.installInvalidType", { target: this.name, item: item.name }));
+        SystemUtils.DisplayMessage(
+          "error",
+          SystemUtils.Format("CPR.messages.installInvalidType", {
+            target: this.name,
+            item: item.name,
+          })
+        );
         result = false;
       }
     });
 
     const availableSlots = this.availableInstallSlots();
     if (totalInstallationSize > availableSlots) {
-      SystemUtils.DisplayMessage("error", SystemUtils.Format("CPR.messages.installInsufficientSlots", { item: this.name }));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Format("CPR.messages.installInsufficientSlots", {
+          item: this.name,
+        })
+      );
       result = false;
     }
     return result;
@@ -127,7 +147,9 @@ const Container = function Container() {
   this.installItems = async function installItems(itemList) {
     LOGGER.trace("_installItems | Container | Called.");
     if (!Array.isArray(itemList)) {
-      return Promise.reject(new Error(`CPRItem.installItems argument is not an array: ${itemList}`));
+      return Promise.reject(
+        new Error(`CPRItem.installItems argument is not an array: ${itemList}`)
+      );
     }
 
     const updateList = [];
@@ -136,7 +158,7 @@ const Container = function Container() {
       return updateList;
     }
 
-    const actor = (this.isOwned) ? this.actor : false;
+    const actor = this.isOwned ? this.actor : false;
 
     const installedItems = duplicate(this.system.installedItems);
 
@@ -145,11 +167,17 @@ const Container = function Container() {
         installedItems.list.push(item.uuid);
       }
       installedItems.usedSlots += item.system.size;
-      updateList.push({ _id: item.id, "system.isInstalled": true, "system.installedIn": this.uuid });
+      updateList.push({
+        _id: item.id,
+        "system.isInstalled": true,
+        "system.installedIn": this.uuid,
+      });
     });
     updateList.push({ _id: this.id, "system.installedItems": installedItems });
 
-    return (!actor) ? this.update({ "system.installedItems": installedItems }) : actor.updateEmbeddedDocuments("Item", updateList);
+    return !actor
+      ? this.update({ "system.installedItems": installedItems })
+      : actor.updateEmbeddedDocuments("Item", updateList);
   };
 
   /**
@@ -171,14 +199,21 @@ const Container = function Container() {
    *                               installed items removed.  This is needed for Cyberware uninstallations.
    * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
    */
-  this.uninstallItems = async function uninstallItems(itemList, recursive = false) {
+  this.uninstallItems = async function uninstallItems(
+    itemList,
+    recursive = false
+  ) {
     LOGGER.trace("uninstallItems | Container | Called.");
     if (!Array.isArray(itemList)) {
-      return Promise.reject(new Error(`Container.installItems argument is not an array: ${itemList}`));
+      return Promise.reject(
+        new Error(
+          `Container.installItems argument is not an array: ${itemList}`
+        )
+      );
     }
 
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    const actor = (this.isOwned) ? this.actor : false;
+    const actor = this.isOwned ? this.actor : false;
 
     const installedItems = duplicate(this.system.installedItems);
     const updateList = [];
@@ -186,8 +221,13 @@ const Container = function Container() {
     const uninstallList = JSON.parse(JSON.stringify(itemList));
 
     for (const item of itemList) {
-      installedItems.list = installedItems.list.filter((uuid) => item.uuid !== uuid);
-      installedItems.usedSlots = installedItems.usedSlots < item.system.size ? 0 : installedItems.usedSlots - item.system.size;
+      installedItems.list = installedItems.list.filter(
+        (uuid) => item.uuid !== uuid
+      );
+      installedItems.usedSlots =
+        installedItems.usedSlots < item.system.size
+          ? 0
+          : installedItems.usedSlots - item.system.size;
       if (recursive && containerTypes.includes(item.type)) {
         let embeddedItemList = item.getInstalledItems();
 
@@ -195,8 +235,13 @@ const Container = function Container() {
           let updatedEmbeddedItemList = [];
           for (const embeddedItem of embeddedItemList) {
             uninstallList.push(embeddedItem);
-            if (containerTypes.includes(embeddedItem.type) && embeddedItem.system.installedItems.list.length > 0) {
-              updatedEmbeddedItemList = updatedEmbeddedItemList.concat(embeddedItem.getInstalledItems());
+            if (
+              containerTypes.includes(embeddedItem.type) &&
+              embeddedItem.system.installedItems.list.length > 0
+            ) {
+              updatedEmbeddedItemList = updatedEmbeddedItemList.concat(
+                embeddedItem.getInstalledItems()
+              );
             }
           }
           embeddedItemList = updatedEmbeddedItemList;
@@ -218,7 +263,9 @@ const Container = function Container() {
     });
 
     updateList.push({ _id: this.id, "system.installedItems": installedItems });
-    return (!actor) ? this.update({ "system.installedItems": installedItems }) : actor.updateEmbeddedDocuments("Item", updateList);
+    return !actor
+      ? this.update({ "system.installedItems": installedItems })
+      : actor.updateEmbeddedDocuments("Item", updateList);
   };
 
   /**
@@ -236,7 +283,7 @@ const Container = function Container() {
    */
   this.createInstalledItems = async function createInstalledItems() {
     LOGGER.trace("createInstalledItems | Container | Called.");
-    const actor = (this.isOwned) ? this.actor : false;
+    const actor = this.isOwned ? this.actor : false;
 
     const equipTypes = SystemUtils.GetTemplateItemTypes("equippable");
     const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
@@ -248,8 +295,8 @@ const Container = function Container() {
         if (equipTypes.includes(installedItem.type)) {
           newItemData.system.equipped = "carried";
         }
-        newItemData.system.isInstalled = !!(actor);
-        newItemData.system.installedIn = (actor) ? this.uuid : "";
+        newItemData.system.isInstalled = !!actor;
+        newItemData.system.installedIn = actor ? this.uuid : "";
         creationList.push({
           name: newItemData.name,
           img: newItemData.img,
@@ -266,11 +313,21 @@ const Container = function Container() {
       const containerTypes = SystemUtils.GetTemplateItemTypes("container");
       let createdItems = [];
       if (actor) {
-        createdItems = await actor.createEmbeddedDocuments("Item", creationList);
+        createdItems = await actor.createEmbeddedDocuments(
+          "Item",
+          creationList
+        );
       } else {
-        const folderName = SystemUtils.Localize("CPR.settings.installedItemsFolder");
-        const folderList = game.folders.filter((folder) => folder.name === folderName && folder.type === "Item");
-        const workingFolder = (folderList.length === 1) ? folderList[0] : await Folder.create({ name: folderName, type: "Item" });
+        const folderName = SystemUtils.Localize(
+          "CPR.settings.installedItemsFolder"
+        );
+        const folderList = game.folders.filter(
+          (folder) => folder.name === folderName && folder.type === "Item"
+        );
+        const workingFolder =
+          folderList.length === 1
+            ? folderList[0]
+            : await Folder.create({ name: folderName, type: "Item" });
         for (const item of creationList) {
           const newItem = await Item.create({
             name: item.name,
@@ -298,9 +355,11 @@ const Container = function Container() {
       await this.syncUpgrades();
     }
 
-    return (!actor)
+    return !actor
       ? this.update({ "system.installedItems.list": newInstalledList })
-      : actor.updateEmbeddedDocuments("Item", [{ _id: this._id, "system.installedItems.list": newInstalledList }]);
+      : actor.updateEmbeddedDocuments("Item", [
+          { _id: this._id, "system.installedItems.list": newInstalledList },
+        ]);
   };
 
   /**
@@ -320,8 +379,15 @@ const Container = function Container() {
         const newItemId = `${actorUUID}.Item.${sourceItemId}`;
         installedList.push(newItemId);
         const installedItem = actor.getOwnedItem(newItemId);
-        updateList.push({ _id: installedItem.id, "system.isInstalled": true, "system.installedIn": this.uuid });
-        if (containerTypes.includes(installedItem.type) && installedItem.system.installedItems.list.length > 0) {
+        updateList.push({
+          _id: installedItem.id,
+          "system.isInstalled": true,
+          "system.installedIn": this.uuid,
+        });
+        if (
+          containerTypes.includes(installedItem.type) &&
+          installedItem.system.installedItems.list.length > 0
+        ) {
           await installedItem.recursiveInstallSync();
         }
       }
@@ -344,9 +410,16 @@ const Container = function Container() {
           programData.uuid = `${actorUUID}.Item.${originalProgramID}`;
           newPrograms.rezzed.push(programData);
         }
-        updateList.push({ _id: this.id, "system.installedItems.list": installedList, "system.programs": newPrograms });
+        updateList.push({
+          _id: this.id,
+          "system.installedItems.list": installedList,
+          "system.programs": newPrograms,
+        });
       } else {
-        updateList.push({ _id: this.id, "system.installedItems.list": installedList });
+        updateList.push({
+          _id: this.id,
+          "system.installedItems.list": installedList,
+        });
       }
       await actor.updateEmbeddedDocuments("Item", updateList);
     }

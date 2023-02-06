@@ -88,20 +88,31 @@ export default class CPRNetArchItem extends CPRItem {
 
     const floorData = duplicate(this.system.floors);
     if (floorData.length === 0) {
-      SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.netArchitecture.generation.noFloorError"));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Localize("CPR.netArchitecture.generation.noFloorError")
+      );
       return;
     }
     if (this.options.sceneName === null) {
       if (this.animated) {
-        if (game.scenes.find((f) => f.name === `${this.name} (animated)`) === null
-        || game.scenes.find((f) => f.name === `${this.name} (animated)`) === undefined) {
+        if (
+          game.scenes.find((f) => f.name === `${this.name} (animated)`) ===
+            null ||
+          game.scenes.find((f) => f.name === `${this.name} (animated)`) ===
+            undefined
+        ) {
           await this._duplicateScene(`${this.name} (animated)`);
         } else {
-          this.scene = game.scenes.find((f) => f.name === `${this.name} (animated)`);
+          this.scene = game.scenes.find(
+            (f) => f.name === `${this.name} (animated)`
+          );
           await this._removeAllTiles();
         }
-      } else if (game.scenes.find((f) => f.name === this.name) === null
-                 || game.scenes.find((f) => f.name === this.name) === undefined) {
+      } else if (
+        game.scenes.find((f) => f.name === this.name) === null ||
+        game.scenes.find((f) => f.name === this.name) === undefined
+      ) {
         await this._duplicateScene(`${this.name}`);
       } else {
         this.scene = game.scenes.find((f) => f.name === this.name);
@@ -110,7 +121,10 @@ export default class CPRNetArchItem extends CPRItem {
     } else {
       this.scene = game.scenes.find((f) => f.name === this.options.sceneName);
       if (this.scene === null) {
-        SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.netArchitecture.generation.noSceneError"));
+        SystemUtils.DisplayMessage(
+          "error",
+          SystemUtils.Localize("CPR.netArchitecture.generation.noSceneError")
+        );
         return;
       }
       await this._removeAllTiles();
@@ -123,19 +137,36 @@ export default class CPRNetArchItem extends CPRItem {
       const dv = CPRNetArchItem._checkDV(floor.dv);
       const content = this._checkFloorType(floor);
       if (level === null) {
-        SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.netArchitecture.generation.floorFormattingError"));
+        SystemUtils.DisplayMessage(
+          "error",
+          SystemUtils.Localize(
+            "CPR.netArchitecture.generation.floorFormattingError"
+          )
+        );
         return;
       }
       levelList.push([level, branch]);
       const newLevel = duplicate(this.tileData.level);
-      newLevel.x = this.options.gridSize * (this.options.cornerOffsetX + (this.options.levelWidth + this.options.connectorWidth) * (level - 1));
+      newLevel.x =
+        this.options.gridSize *
+        (this.options.cornerOffsetX +
+          (this.options.levelWidth + this.options.connectorWidth) *
+            (level - 1));
       if (branch === null) {
         newLevel.y = this.options.gridSize * this.options.cornerOffsetY;
       } else {
-        newLevel.y = this.options.gridSize * (this.options.cornerOffsetY + (this.options.levelHeight + this.options.connectorHeight) * (branch.charCodeAt(0) - 97));
+        newLevel.y =
+          this.options.gridSize *
+          (this.options.cornerOffsetY +
+            (this.options.levelHeight + this.options.connectorHeight) *
+              (branch.charCodeAt(0) - 97));
       }
       if (content !== null) {
-        if (content === "Password" || content === "File" || content === "ControlNode") {
+        if (
+          content === "Password" ||
+          content === "File" ||
+          content === "ControlNode"
+        ) {
           if ([6, 8, 10, 12].includes(dv)) {
             newLevel.img = `${this.options.filePath}${content}DV${dv}.${this.options.fileExtension}`;
           } else {
@@ -147,18 +178,24 @@ export default class CPRNetArchItem extends CPRItem {
       }
       newTiles.push(newLevel);
       const newArrow = duplicate(this.tileData.arrow);
-      newArrow.x = this.options.gridSize
-                   * (this.options.cornerOffsetX - this.options.connectorWidth
-                   + (this.options.levelWidth + this.options.connectorWidth)
-                   * (level - 1));
+      newArrow.x =
+        this.options.gridSize *
+        (this.options.cornerOffsetX -
+          this.options.connectorWidth +
+          (this.options.levelWidth + this.options.connectorWidth) *
+            (level - 1));
       if (branch === null) {
-        newArrow.y = this.options.gridSize * (this.options.cornerOffsetY + (this.options.levelHeight - this.options.connectorHeight) / 2);
+        newArrow.y =
+          this.options.gridSize *
+          (this.options.cornerOffsetY +
+            (this.options.levelHeight - this.options.connectorHeight) / 2);
       } else {
-        newArrow.y = this.options.gridSize
-                     * (this.options.cornerOffsetY
-                     + (this.options.levelHeight - this.options.connectorHeight) / 2
-                     + (this.options.levelHeight + this.options.connectorHeight)
-                     * (branch.charCodeAt(0) - 97));
+        newArrow.y =
+          this.options.gridSize *
+          (this.options.cornerOffsetY +
+            (this.options.levelHeight - this.options.connectorHeight) / 2 +
+            (this.options.levelHeight + this.options.connectorHeight) *
+              (branch.charCodeAt(0) - 97));
       }
       newTiles.push(newArrow);
     });
@@ -169,29 +206,37 @@ export default class CPRNetArchItem extends CPRItem {
         if (!branchCounter.includes(level[1])) {
           branchCounter.push(duplicate(level[1]));
           const newArrow = duplicate(this.tileData.arrow);
-          let deltaHeight = (this.options.connectorHeight + (this.options.levelHeight - this.options.connectorHeight) / 2);
-          let deltaWidth = (this.options.levelWidth + this.options.connectorHeight) / 2;
+          let deltaHeight =
+            this.options.connectorHeight +
+            (this.options.levelHeight - this.options.connectorHeight) / 2;
+          let deltaWidth =
+            (this.options.levelWidth + this.options.connectorHeight) / 2;
           if (this.options.connectorHeight >= this.options.connectorWidth) {
             newArrow.rotation = 90;
             while (deltaHeight >= this.options.connectorWidth) {
-              newArrow.x = this.options.gridSize
-                           * (this.options.cornerOffsetX
-                           + (this.options.levelWidth + this.options.connectorWidth)
-                           * (level[0] - 2)
-                           + (this.options.levelWidth - this.options.connectorWidth)
-                           / 2);
-              newArrow.y = this.options.gridSize
-                           * (this.options.cornerOffsetY
-                           + (this.options.levelHeight - this.options.connectorHeight)
-                           / 2
-                           + (this.options.levelHeight + this.options.connectorHeight)
-                           * (level[1].charCodeAt(0) - 97)
-                           - deltaHeight
-                           + (this.options.connectorWidth - this.options.connectorHeight)
-                           / 2);
+              newArrow.x =
+                this.options.gridSize *
+                (this.options.cornerOffsetX +
+                  (this.options.levelWidth + this.options.connectorWidth) *
+                    (level[0] - 2) +
+                  (this.options.levelWidth - this.options.connectorWidth) / 2);
+              newArrow.y =
+                this.options.gridSize *
+                (this.options.cornerOffsetY +
+                  (this.options.levelHeight - this.options.connectorHeight) /
+                    2 +
+                  (this.options.levelHeight + this.options.connectorHeight) *
+                    (level[1].charCodeAt(0) - 97) -
+                  deltaHeight +
+                  (this.options.connectorWidth - this.options.connectorHeight) /
+                    2);
               if (deltaHeight < 2 * this.options.connectorWidth) {
-                newArrow.x -= (newArrow.width / 2) * (deltaHeight / this.options.connectorWidth - 1);
-                newArrow.y += (newArrow.width / 2) * (deltaHeight / this.options.connectorWidth - 1);
+                newArrow.x -=
+                  (newArrow.width / 2) *
+                  (deltaHeight / this.options.connectorWidth - 1);
+                newArrow.y +=
+                  (newArrow.width / 2) *
+                  (deltaHeight / this.options.connectorWidth - 1);
                 newArrow.width *= deltaHeight / this.options.connectorWidth;
                 deltaHeight = 0;
               }
@@ -201,22 +246,25 @@ export default class CPRNetArchItem extends CPRItem {
             newArrow.rotation = 0;
             newArrow.width = this.tileData.arrow.width;
             while (deltaWidth >= this.options.connectorWidth) {
-              newArrow.x = this.options.gridSize
-                           * (this.options.cornerOffsetX
-                           + (this.options.levelWidth + this.options.connectorWidth)
-                           * (level[0] - 2)
-                           + (this.options.levelWidth - this.options.connectorHeight)
-                           / 2
-                           + deltaWidth
-                           - this.options.connectorWidth);
-              newArrow.y = this.options.gridSize
-                           * (this.options.cornerOffsetY
-                           + (this.options.levelHeight - this.options.connectorHeight)
-                           / 2
-                           + (this.options.levelHeight + this.options.connectorHeight)
-                           * (level[1].charCodeAt(0) - 97));
+              newArrow.x =
+                this.options.gridSize *
+                (this.options.cornerOffsetX +
+                  (this.options.levelWidth + this.options.connectorWidth) *
+                    (level[0] - 2) +
+                  (this.options.levelWidth - this.options.connectorHeight) / 2 +
+                  deltaWidth -
+                  this.options.connectorWidth);
+              newArrow.y =
+                this.options.gridSize *
+                (this.options.cornerOffsetY +
+                  (this.options.levelHeight - this.options.connectorHeight) /
+                    2 +
+                  (this.options.levelHeight + this.options.connectorHeight) *
+                    (level[1].charCodeAt(0) - 97));
               if (deltaWidth < 2 * this.options.connectorWidth) {
-                newArrow.x -= newArrow.width * (deltaWidth / this.options.connectorWidth - 1);
+                newArrow.x -=
+                  newArrow.width *
+                  (deltaWidth / this.options.connectorWidth - 1);
                 newArrow.width *= deltaWidth / this.options.connectorWidth;
                 deltaWidth = 0;
               }
@@ -226,24 +274,29 @@ export default class CPRNetArchItem extends CPRItem {
           } else {
             newArrow.rotation = 90;
             while (deltaHeight >= this.options.connectorWidth) {
-              newArrow.x = this.options.gridSize
-                           * (this.options.cornerOffsetX
-                           + (this.options.levelWidth + this.options.connectorWidth)
-                           * (level[0] - 2)
-                           + (this.options.levelWidth - this.options.connectorWidth)
-                           / 2);
-              newArrow.y = this.options.gridSize
-                           * (this.options.cornerOffsetY
-                           + (this.options.levelHeight - this.options.connectorHeight)
-                           / 2
-                           + (this.options.levelHeight + this.options.connectorHeight)
-                           * (level[1].charCodeAt(0) - 97)
-                           - deltaHeight
-                           + (this.options.connectorWidth - this.options.connectorHeight)
-                           / 2);
+              newArrow.x =
+                this.options.gridSize *
+                (this.options.cornerOffsetX +
+                  (this.options.levelWidth + this.options.connectorWidth) *
+                    (level[0] - 2) +
+                  (this.options.levelWidth - this.options.connectorWidth) / 2);
+              newArrow.y =
+                this.options.gridSize *
+                (this.options.cornerOffsetY +
+                  (this.options.levelHeight - this.options.connectorHeight) /
+                    2 +
+                  (this.options.levelHeight + this.options.connectorHeight) *
+                    (level[1].charCodeAt(0) - 97) -
+                  deltaHeight +
+                  (this.options.connectorWidth - this.options.connectorHeight) /
+                    2);
               if (deltaHeight < 2 * this.options.connectorWidth) {
-                newArrow.x -= (newArrow.width / 2) * (deltaHeight / this.options.connectorWidth - 1);
-                newArrow.y += (newArrow.width / 2) * (deltaHeight / this.options.connectorWidth - 1);
+                newArrow.x -=
+                  (newArrow.width / 2) *
+                  (deltaHeight / this.options.connectorWidth - 1);
+                newArrow.y +=
+                  (newArrow.width / 2) *
+                  (deltaHeight / this.options.connectorWidth - 1);
                 newArrow.width *= deltaHeight / this.options.connectorWidth;
                 deltaHeight = 0;
               }
@@ -253,22 +306,25 @@ export default class CPRNetArchItem extends CPRItem {
             newArrow.rotation = 0;
             newArrow.width = this.tileData.arrow.width;
             while (deltaWidth >= this.options.connectorWidth) {
-              newArrow.x = this.options.gridSize
-                           * (this.options.cornerOffsetX
-                           + (this.options.levelWidth + this.options.connectorWidth)
-                           * (level[0] - 2)
-                           + (this.options.levelWidth - this.options.connectorHeight)
-                           / 2
-                           + deltaWidth
-                           - this.options.connectorWidth);
-              newArrow.y = this.options.gridSize
-                           * (this.options.cornerOffsetY
-                           + (this.options.levelHeight - this.options.connectorHeight)
-                           / 2
-                           + (this.options.levelHeight + this.options.connectorHeight)
-                           * (level[1].charCodeAt(0) - 97));
+              newArrow.x =
+                this.options.gridSize *
+                (this.options.cornerOffsetX +
+                  (this.options.levelWidth + this.options.connectorWidth) *
+                    (level[0] - 2) +
+                  (this.options.levelWidth - this.options.connectorHeight) / 2 +
+                  deltaWidth -
+                  this.options.connectorWidth);
+              newArrow.y =
+                this.options.gridSize *
+                (this.options.cornerOffsetY +
+                  (this.options.levelHeight - this.options.connectorHeight) /
+                    2 +
+                  (this.options.levelHeight + this.options.connectorHeight) *
+                    (level[1].charCodeAt(0) - 97));
               if (deltaWidth < 2 * this.options.connectorWidth) {
-                newArrow.x -= newArrow.width * (deltaWidth / this.options.connectorWidth - 1);
+                newArrow.x -=
+                  newArrow.width *
+                  (deltaWidth / this.options.connectorWidth - 1);
                 newArrow.width *= deltaWidth / this.options.connectorWidth;
                 deltaWidth = 0;
               }
@@ -281,7 +337,10 @@ export default class CPRNetArchItem extends CPRItem {
     });
     await this._addTilesToScene(newTiles);
     await this.scene.view();
-    SystemUtils.DisplayMessage("notify", SystemUtils.Localize("CPR.netArchitecture.generation.done"));
+    SystemUtils.DisplayMessage(
+      "notify",
+      SystemUtils.Localize("CPR.netArchitecture.generation.done")
+    );
   }
 
   /**
@@ -292,8 +351,13 @@ export default class CPRNetArchItem extends CPRItem {
    */
   async _duplicateScene(newName) {
     LOGGER.trace("_duplicateScene | CPRNetarchUtils | Called.");
-    const sceneName = (this.animated) ? "Netarch Template - Animated" : "Netarch Template";
-    const scene = await SystemUtils.GetCompendiumDoc(`${game.system.id}.scenes`, sceneName);
+    const sceneName = this.animated
+      ? "Netarch Template - Animated"
+      : "Netarch Template";
+    const scene = await SystemUtils.GetCompendiumDoc(
+      `${game.system.id}.scenes`,
+      sceneName
+    );
     const sceneData = duplicate(scene);
     sceneData.id = null;
     sceneData.name = newName;
@@ -324,7 +388,9 @@ export default class CPRNetArchItem extends CPRItem {
   async _removeAllTiles() {
     LOGGER.trace("_removeAllTiles | CPRNetarchUtils | Called.");
     const tileIds = [];
-    this.scene.tiles.forEach((t) => { tileIds.push(t.id); });
+    this.scene.tiles.forEach((t) => {
+      tileIds.push(t.id);
+    });
     await this.scene.deleteEmbeddedDocuments("Tile", tileIds);
   }
 
@@ -351,7 +417,10 @@ export default class CPRNetArchItem extends CPRItem {
    */
   _checkFloorType(floor) {
     LOGGER.trace("_checkFloorType | CPRNetarchUtils | called.");
-    if (floor.content === "CPR.global.programClass.blackice" && floor.blackice !== "--") {
+    if (
+      floor.content === "CPR.global.programClass.blackice" &&
+      floor.blackice !== "--"
+    ) {
       return this.floorDict[floor.blackice];
     }
     return this.floorDict[floor.content];
@@ -379,7 +448,9 @@ export default class CPRNetArchItem extends CPRItem {
       cornerOffsetY: 2,
       returnType: "string",
     };
-    formData = await NetarchSceneGenerationPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+    formData = await NetarchSceneGenerationPrompt.RenderPrompt(formData).catch(
+      (err) => LOGGER.debug(err)
+    );
     if (formData === undefined) {
       return;
     }

@@ -1,12 +1,12 @@
-_id: rBXEgpTubsNxviDs
+_id: 9pZMYMlVFeWDS56L
 effects:
-  - _id: pPTWFTDcOHjHyWeL
+  - _id: Ff2OQuhgLa7Fy7dj
     changes:
       - key: bonuses.perception
         mode: 2
         priority: null
         value: '2'
-    disabled: true
+    disabled: false
     duration:
       combat: null
       rounds: null
@@ -18,7 +18,12 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
+          cats:
+            '0': skill
+          situational:
+            '0':
+              isSituational: true
+              onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/amplified_hearing.svg
     label: Amplified Hearing
@@ -44,7 +49,7 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: <p>Provides +2 to perception checks that use hearing. </p>
+    value: <p>Provides +2 to perception checks that use hearing.</p>
   dvTable: ''
   favorite: false
   fireModes:
@@ -74,9 +79,7 @@ system:
     max: 0
     value: 0
   price:
-    category: premium
     market: 100
-  quality: ''
   revealed: true
   rof: 1
   size: 1
@@ -84,10 +87,9 @@ system:
   tags: []
   type: cyberAudioSuite
   unarmedAutomaticCalculation: true
-  upgrade: ''
   upgrades: []
-  usage: toggled
+  usage: installed
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  weaponSkill: ''
+  weaponType: ''
 type: cyberware

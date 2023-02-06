@@ -1,71 +1,77 @@
 // Cyberpunk Red Core Black-ICE Sheet Styling
 // Overall Sheet Layout
 .bice-sheet {
-    font-family: "Jost";
-    background-color: @chrome-white;
+  font-family: "Jost";
+  background-color: @chrome-white;
+  display: grid;
+  min-width: 700px;
+  width: 715px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "bice-stats"
+    "bice-details";
+
+  .bice-stats {
     display: grid;
-    min-width: 700px;
-    width: 715px;
-    grid-template-rows: auto;
+    grid-area: bice-stats;
+    grid-template-rows: 10px 20px;
     grid-template-areas:
-        "bice-stats"
-        "bice-details";
+      "bice-top"
+      "bice-head"
+      "bice-value";
 
-    .bice-stats {
-        display: grid;
-        grid-area: bice-stats;
-        grid-template-rows: 10px 20px;
-        grid-template-areas:
-            "bice-top"
-            "bice-head"
-            "bice-value";
-
-        .bice-top {
-            grid-area: bice-top;
-            align-self: center;
-        }
-        .bice-head {
-            grid-area: bice-head;
-        }
-        .bice-value {
-            grid-area: bice-value;
-        }
+    .bice-top {
+      grid-area: bice-top;
+      align-self: center;
     }
-
-    .bice-details {
-        display: grid;
-        grid-area: bice-details;
-        grid-template-columns: 72px 1fr;
-        grid-template-areas:
-            "bice-icon bice-effects";
-
-        .bice-icon {
-            gap: 5px;
-            height: 72px;
-            width: 72px;
-            display: block;
-            grid-area: bice-icon;
-            overflow: hidden;
-        }
-        .bice-effects {
-            gap: 5px;
-            display: block;
-            grid-area: bice-effects;
-        }
+    .bice-head {
+      grid-area: bice-head;
     }
-
-    .bice-label-corner-both {
-      clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%, 0 10px);
-      height:13px;
+    .bice-value {
+      grid-area: bice-value;
     }
+  }
 
-    .bice-label-corner-left {
-      clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
-      height:13px;
-    }
+  .bice-details {
+    display: grid;
+    grid-area: bice-details;
+    grid-template-columns: 72px 1fr;
+    grid-template-areas: "bice-icon bice-effects";
 
-    .bice-label-corner-right {
-      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
-      height:13px;
+    .bice-icon {
+      gap: 5px;
+      height: 72px;
+      width: 72px;
+      display: block;
+      grid-area: bice-icon;
+      overflow: hidden;
     }
+    .bice-effects {
+      gap: 5px;
+      display: block;
+      grid-area: bice-effects;
+    }
+  }
+
+  .bice-label-corner-both {
+    clip-path: polygon(
+      10px 0,
+      calc(100% - 10px) 0,
+      100% 10px,
+      100% 100%,
+      0 100%,
+      0 10px
+    );
+    height: 13px;
+  }
+
+  .bice-label-corner-left {
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+    height: 13px;
+  }
+
+  .bice-label-corner-right {
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+    height: 13px;
+  }
 }

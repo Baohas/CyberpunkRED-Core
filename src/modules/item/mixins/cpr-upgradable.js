@@ -1,4 +1,4 @@
-/* global duplicate fromUuidSync */
+/* global duplicate CONST fromUuidSync */
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 
@@ -19,7 +19,7 @@ const Upgradable = function Upgradable() {
   this.syncUpgrades = async function syncUpgrades() {
     LOGGER.trace("syncUpgrades | Upgradable | Called.");
 
-    const actor = (this.isOwned) ? this.actor : false;
+    const actor = this.isOwned ? this.actor : false;
 
     const installedItems = duplicate(this.system.installedItems);
     let installedUpgrades = duplicate(this.system.upgrades);
@@ -27,7 +27,9 @@ const Upgradable = function Upgradable() {
     // First, remove any upgrades that were uninstalled
     for (const upgrade of this.system.upgrades) {
       if (!installedItems.list.includes(upgrade.uuid)) {
-        installedUpgrades = installedUpgrades.filter((u) => u.uuid !== upgrade.uuid);
+        installedUpgrades = installedUpgrades.filter(
+          (u) => u.uuid !== upgrade.uuid
+        );
       }
     }
 
@@ -37,7 +39,11 @@ const Upgradable = function Upgradable() {
     const newUpgrades = [];
     installedItems.list.forEach((uuid) => {
       const installedItem = fromUuidSync(uuid);
-      if (installedItem.type === "itemUpgrade" && installedUpgrades.filter((upgrade) => upgrade.uuid === uuid).length === 0) {
+      if (
+        installedItem.type === "itemUpgrade" &&
+        installedUpgrades.filter((upgrade) => upgrade.uuid === uuid).length ===
+          0
+      ) {
         newUpgrades.push(installedItem);
       }
     });
@@ -56,9 +62,17 @@ const Upgradable = function Upgradable() {
               3. The next couple checks ensure we are only adding actual modifications, null, 0 or empty strings don't modify
                 anything, so we ignore those.
             */
-        if (typeof modifier !== "undefined" && typeof CPR.upgradableDataPoints[this.type][index] !== "undefined"
-              && modifier !== 0 && modifier !== null && modifier !== "") {
-          if (typeof modifier.value === "undefined" || modifier.value !== null) {
+        if (
+          typeof modifier !== "undefined" &&
+          typeof CPR.upgradableDataPoints[this.type][index] !== "undefined" &&
+          modifier !== 0 &&
+          modifier !== null &&
+          modifier !== ""
+        ) {
+          if (
+            typeof modifier.value === "undefined" ||
+            modifier.value !== null
+          ) {
             modList[index] = modifier;
           }
         }
@@ -77,21 +91,29 @@ const Upgradable = function Upgradable() {
         installedUpgrades.push(upgradeData);
       }
     }
-    let upgradeData = [{
-      _id: this._id,
-      "system.isUpgraded": upgradeStatus,
-      "system.upgrades": installedUpgrades,
-    }];
+    let upgradeData = [
+      {
+        _id: this._id,
+        "system.isUpgraded": upgradeStatus,
+        "system.upgrades": installedUpgrades,
+      },
+    ];
     this.system.isUpgraded = upgradeStatus;
     this.system.upgrades = installedUpgrades;
 
-    if (this.type === "weapon" && this.system.isRanged && this.system.magazine.ammoData.uuid !== "") {
+    if (
+      this.type === "weapon" &&
+      this.system.isRanged &&
+      this.system.magazine.ammoData.uuid !== ""
+    ) {
       const additionalUpdates = await this.syncMagazine();
       if (additionalUpdates.length > 0) {
         upgradeData = upgradeData.concat(additionalUpdates);
       }
     }
-    return (!actor) ? this.update({ system: this.system }) : actor.updateEmbeddedDocuments("Item", upgradeData);
+    return !actor
+      ? this.update({ system: this.system })
+      : actor.updateEmbeddedDocuments("Item", upgradeData);
   };
 
   /**
@@ -105,15 +127,19 @@ const Upgradable = function Upgradable() {
    * @returns {Object} upgradeData - an object with a key for "type" and "value" of the upgrade
    *
    */
-  this.getAllUpgradesFor = function getAllUpgradesFor(dataPoint) {
-    LOGGER.trace("getAllUpgradesFor | Upgradable | Called.");
+  this.getTotalUpgradeValues = function getTotalUpgradeValues(dataPoint) {
+    LOGGER.trace("getTotalUpgradeValues | Upgradable | Called.");
     let upgradeNumber = 0;
     let baseOverride = -100000;
     const upgradeData = {
       type: "modifier",
       value: 0,
     };
-    if (this.actor && typeof this.system.isUpgraded === "boolean" && this.system.isUpgraded) {
+    if (
+      this.actor &&
+      typeof this.system.isUpgraded === "boolean" &&
+      this.system.isUpgraded
+    ) {
       const installedUpgrades = this.system.upgrades;
       installedUpgrades.forEach((upgrade) => {
         if (typeof upgrade.system.modifiers[dataPoint] !== "undefined") {
@@ -121,7 +147,7 @@ const Upgradable = function Upgradable() {
           const modValue = upgrade.system.modifiers[dataPoint].value;
           if (typeof modValue === "number" && modValue !== 0) {
             if (modType === "override") {
-              baseOverride = (modValue > baseOverride) ? modValue : baseOverride;
+              baseOverride = modValue > baseOverride ? modValue : baseOverride;
             } else {
               upgradeNumber += modValue;
             }
@@ -137,6 +163,81 @@ const Upgradable = function Upgradable() {
       }
     }
     return upgradeData;
+  };
+
+  /**
+   * Given a data point, return an array of all modifications being applied to it. If one of the modifier types is
+   * set to "override", use that value and ignore others (favoring the largest override).
+   *
+   * Note: We structure each object in the array similar to a CPRMod so that we can add these mods to rolls.
+   *
+   * @param {} dataPoint - a stat/property/value that this upgrade modifies on the parent item
+   * @returns
+   */
+  this.getAllUpgradeMods = function getAllUpgradeMods(dataPoint) {
+    LOGGER.trace("getAllUpgradeMods | Upgradable | Called.");
+    const relevantUpgrades = [];
+    if (
+      this.actor &&
+      typeof this.system.isUpgraded === "boolean" &&
+      this.system.isUpgraded
+    ) {
+      // Get all installed upgrades.
+      const installedUpgrades = this.system.upgrades;
+
+      // Get all installed upgrades of type override.
+      const overrides = installedUpgrades.filter(
+        (u) => u.system.modifiers[dataPoint]?.type === "override"
+      );
+
+      // Key and category are used to display what the bonus upgrades.
+      // Currently the only applicable category is combat, but conceivably there could be others.
+      let key;
+      let category;
+      switch (dataPoint) {
+        case "attackmod":
+          key = "bonuses.universalAttack";
+          category = "combat";
+          break;
+        case "damage":
+          key = "bonuses.universalDamage";
+          category = "combat";
+          break;
+        default:
+          break;
+      }
+
+      // If there is an override, create an CPRMod-like object out of the highest one.
+      // Because upgrades can provide situational bonuses, we must add all of the following
+      // information (id, source, key, category, changemode) for everything to look/function correctly in a roll dialog.
+      if (overrides.length > 0) {
+        overrides.sort(
+          (a, b) =>
+            b.system.modifiers[dataPoint].value -
+            a.system.modifiers[dataPoint].value
+        );
+        const mod = overrides[0].system.modifiers[dataPoint];
+        mod.id = `${overrides[0].name}-${key}-0`; // This should create a unique ID for the mod.
+        mod.source = overrides[0].name; // Where the upgrade comes from.
+        mod.key = key; // Datapoint being upgraded.
+        mod.category = category; // Category of above key.
+        mod.changeMode = CONST.ACTIVE_EFFECT_MODES.ADD; // const = 2. This comes from foundry.
+        relevantUpgrades.push(mod);
+      } else {
+        installedUpgrades.forEach((u, index) => {
+          if (u.system.modifiers[dataPoint]?.value > 0) {
+            const mod = duplicate(u.system.modifiers[dataPoint]);
+            mod.id = `${u.name}-${key}-${index}`; // This should create a unique ID for the mod.
+            mod.source = u.name; // Where the upgrade comes from.
+            mod.key = key; // Datapoint being upgraded.
+            mod.category = category; // Category of above key.
+            mod.changeMode = CONST.ACTIVE_EFFECT_MODES.ADD; // const = 2. This comes from foundry.
+            relevantUpgrades.push(mod);
+          }
+        });
+      }
+    }
+    return relevantUpgrades;
   };
 
   /**

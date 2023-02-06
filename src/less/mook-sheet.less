@@ -1,243 +1,266 @@
 // Cyberpunk Red Core Mook Sheet Styling
 // Overall Sheet Layout
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 .mook-sheet {
-    font-family: "Jost";
-    background-color: @chrome-white;
+  font-family: "Jost";
+  background-color: @chrome-white;
+  display: grid;
+  grid-template-areas: "mook-name mook-details";
+
+  .mook-name {
+    grid-area: mook-name;
+  }
+
+  .mook-details {
     display: grid;
+    grid-template-rows: auto;
+    grid-area: mook-details;
     grid-template-areas:
-        "mook-name mook-details";
+      "mook-img-and-stats"
+      "mook-gear"
+      "mook-skills"
+      "mook-special"
+      "mook-program"
+      "mook-crit"
+      "mook-notes";
+    width: 650px;
+  }
 
-    .mook-name {
-        grid-area: mook-name;
+  .mook-img-and-stats {
+    display: grid;
+    grid-template-areas: "mook-image mook-stats-and-derived";
+  }
+
+  .mook-image {
+    grid-area: mook-image;
+    display: grid;
+    grid-template-areas: "mook-image-toggle mook-image-block";
+    width: 168px;
+    height: 160px;
+    overflow: hidden;
+    padding: 5px;
+  }
+
+  .mook-image-small-toggle {
+    width: 17px;
+  }
+
+  .mook-image-toggle {
+    grid-area: "mook-image-toggle";
+    &::after {
+      content: attr(data-text);
     }
+  }
 
-    .mook-details {
-        display: grid;
-        grid-template-rows: auto;
-        grid-area: mook-details;
-        grid-template-areas:
-            "mook-img-and-stats"
-            "mook-gear"
-            "mook-skills"
-            "mook-special"
-            "mook-program"
-            "mook-crit"
-            "mook-notes";
-        width: 650px;
+  .mook-image-block {
+    grid-area: "mook-image-block";
+    clip-path: polygon(25px 0, 100% 0, 100% 100%, 0 100%, 0 25px);
+    height: 165px;
+    width: 151px;
+  }
+
+  .mook-image-block-img {
+    width: 151px;
+    height: 155;
+    object-fit: contain;
+    border: 0;
+  }
+
+  .mook-stats-and-derived {
+    display: grid;
+    grid-template-rows: auto;
+    grid-area: mook-stats-and-derived;
+    grid-template-areas:
+      "mook-stats"
+      "mook-derived";
+    min-width: 420px;
+  }
+
+  .mook-stats {
+    display: grid;
+    grid-area: mook-stats;
+    font-weight: 500;
+    grid-template-areas:
+      "mook-int-stat mook-ref-stat mook-dex-stat mook-tech-stat mook-cool-stat"
+      "mook-will-stat mook-luck-stat mook-move-stat mook-body-stat mook-emp-stat";
+    .mook-int-stat {
+      grid-area: mook-int-stat;
     }
+    .mook-ref-stat {
+      grid-area: mook-ref-stat;
+    }
+    .mook-dex-stat {
+      grid-area: mook-dex-stat;
+    }
+    .mook-tech-stat {
+      grid-area: mook-tech-stat;
+    }
+    .mook-cool-stat {
+      grid-area: mook-cool-stat;
+    }
+    .mook-will-stat {
+      grid-area: mook-will-stat;
+    }
+    .mook-luck-stat {
+      grid-area: mook-luck-stat;
+    }
+    .mook-move-stat {
+      grid-area: mook-move-stat;
+    }
+    .mook-body-stat {
+      grid-area: mook-body-stat;
+    }
+    .mook-emp-stat {
+      grid-area: mook-emp-stat;
+    }
+  }
 
-    .mook-img-and-stats {
+  .mook-derived-stats {
+    gap: 10px;
+    display: grid;
+    font-weight: 500;
+    grid-area: mook-derived;
+    grid-template-columns: 1fr 1fr 0.5fr;
+    grid-template-areas: "mook-hp mook-wounded mook-deathsave";
+    .mook-hp {
+      grid-area: mook-hp;
+    }
+    .mook-wounded {
+      grid-area: mook-wounded;
+    }
+    .mook-deathsave {
+      grid-area: mook-deathsave;
+    }
+  }
+
+  .mook-gear {
+    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-area: mook-gear;
+    grid-template-areas: "mook-weapon-list mook-armor";
+    .mook-weapon-list {
+      grid-area: mook-weapon-list;
+      font-weight: 400;
+    }
+    .mook-armor {
+      grid-area: mook-armor;
+    }
+  }
+
+  .mook-weapon {
+    display: grid;
+    text-align: left;
+    grid-template-columns: 3fr 2fr 1fr;
+    grid-template-areas: "mook-weapon-name mook-weapon-mode mook-weapon-rolls";
+    .mook-weapon-name {
+      grid-area: mook-weapon-name;
+      padding-right: 6px;
+      text-overflow: ellipsis;
+    }
+    .mook-weapon-title {
+      font-weight: 500;
+    }
+    .mook-weapon-mode {
+      grid-area: mook-weapon-mode;
       display: grid;
-      grid-template-areas: "mook-image mook-stats-and-derived";
-    }
-
-    .mook-image {
-        grid-area: mook-image;
-        display: grid;
-        grid-template-areas:"mook-image-toggle mook-image-block";
-        width: 168px;
-        height: 160px;
-        overflow: hidden;
-        padding: 5px;
-    }
-
-    .mook-image-small-toggle {
-      width: 17px;
-    }
-
-    .mook-image-toggle {
-      grid-area: "mook-image-toggle";
-      &::after {
-          content: attr(data-text);
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas: "mook-weapon-aim mook-weapon-auto mook-weapon-supp";
+      .mook-weapon-aim {
+        grid-area: mook-weapon-aim;
+        font-weight: 500;
+      }
+      .mook-weapon-auto {
+        grid-area: mook-weapon-auto;
+        font-weight: 500;
+      }
+      .mook-weapon-supp {
+        grid-area: mook-weapon-supp;
+        font-weight: 500;
       }
     }
-
-    .mook-image-block {
-      grid-area: "mook-image-block";
-      clip-path: polygon(25px 0, 100% 0, 100% 100%, 0 100%, 0 25px);
-      height: 165px;
-      width: 151px;
+    .mook-weapon-rolls {
+      grid-area: mook-weapon-rolls;
+      font-weight: 500;
     }
+  }
 
-    .mook-image-block-img {
-      width: 151px;
-      height: 155;
-      object-fit: contain;
-      border: 0;
-    }
+  .mook-skills {
+    grid-area: mook-skills;
+  }
 
-    .mook-stats-and-derived {
-        display: grid;
-        grid-template-rows: auto;
-        grid-area: mook-stats-and-derived;
-        grid-template-areas:
-            "mook-stats"
-            "mook-derived";
-        min-width: 420px;
-    }
+  .mook-special {
+    grid-area: mook-special;
+  }
 
-    .mook-stats {
-        display: grid;
-        grid-area: mook-stats;
-        font-weight: 500;
-        grid-template-areas:
-            "mook-int-stat mook-ref-stat mook-dex-stat mook-tech-stat mook-cool-stat"
-            "mook-will-stat mook-luck-stat mook-move-stat mook-body-stat mook-emp-stat";
-        .mook-int-stat { grid-area: mook-int-stat; }
-        .mook-ref-stat { grid-area: mook-ref-stat; }
-        .mook-dex-stat { grid-area: mook-dex-stat; }
-        .mook-tech-stat { grid-area: mook-tech-stat; }
-        .mook-cool-stat { grid-area: mook-cool-stat; }
-        .mook-will-stat { grid-area: mook-will-stat; }
-        .mook-luck-stat { grid-area: mook-luck-stat; }
-        .mook-move-stat { grid-area: mook-move-stat; }
-        .mook-body-stat { grid-area: mook-body-stat; }
-        .mook-emp-stat { grid-area: mook-emp-stat; }
-    }
+  .mook-special-list {
+    min-height: 10px;
+  }
 
-    .mook-derived-stats {
-        gap: 10px;
-        display: grid;
-        font-weight: 500;
-        grid-area: mook-derived;
-        grid-template-columns: 1fr 1fr 0.5fr;
-        grid-template-areas:
-            "mook-hp mook-wounded mook-deathsave";
-        .mook-hp { grid-area: mook-hp; }
-        .mook-wounded { grid-area: mook-wounded; }
-        .mook-deathsave { grid-area: mook-deathsave; }
-    }
+  .mook-crit {
+    grid-area: mook-crit;
+  }
 
-    .mook-gear {
-        gap: 10px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-area: mook-gear;
-        grid-template-areas: "mook-weapon-list mook-armor";
-        .mook-weapon-list {
-          grid-area: mook-weapon-list;
-          font-weight: 400;
-        }
-        .mook-armor {
-          grid-area: mook-armor;
-        }
-    }
+  .mook-crit-list {
+    min-height: 10px;
+  }
 
-    .mook-weapon {
-        display: grid;
-        text-align: left;
-        grid-template-columns: 3fr 2fr 1fr;
-        grid-template-areas: "mook-weapon-name mook-weapon-mode mook-weapon-rolls";
-        .mook-weapon-name {
-            grid-area: mook-weapon-name;
-            padding-right: 6px;
-            text-overflow: ellipsis;
-        }
-        .mook-weapon-title {
-            font-weight: 500;
-        }
-        .mook-weapon-mode {
-            grid-area: mook-weapon-mode;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-areas: "mook-weapon-aim mook-weapon-auto mook-weapon-supp";
-            .mook-weapon-aim {
-              grid-area: mook-weapon-aim;
-              font-weight: 500;
-            }
-            .mook-weapon-auto {
-              grid-area: mook-weapon-auto;
-              font-weight: 500;
-            }
-            .mook-weapon-supp {
-              grid-area: mook-weapon-supp;
-              font-weight: 500;
-            }
-        }
-        .mook-weapon-rolls {
-          grid-area: mook-weapon-rolls;
-          font-weight: 500;
-        }
-    }
+  .mook-notes {
+    grid-area: mook-notes;
+    min-height: 60px;
+    min-width: 430px;
+  }
 
-    .mook-skills {
-        grid-area: mook-skills;
-    }
-
-    .mook-special {
-        grid-area: mook-special;
-    }
-
-    .mook-special-list {
-        min-height: 10px;
-      }
-
-    .mook-crit {
-      grid-area: mook-crit;
-    }
-
-    .mook-crit-list {
-      min-height: 10px;
-    }
-
-    .mook-notes {
-        grid-area: mook-notes;
-        min-height: 60px;
-        min-width: 430px;
-    }
-
-    .mook-edit-section {
-        min-height: 80px;
-        min-width: 135px;
-        height: unset;
-        display: flex;
-        flex: 1 0 auto;
-        background-color: @chrome-white;
-        flex-wrap: wrap;
-    }
+  .mook-edit-section {
+    min-height: 80px;
+    min-width: 135px;
+    height: unset;
+    display: flex;
+    flex: 1 0 auto;
+    background-color: @chrome-white;
+    flex-wrap: wrap;
+  }
 }
 
 .mook-sheet-limited {
-    font-family: "Jost";
-    display: grid;
-    grid-template-columns: 161px 32px 1fr;
-    grid-template-areas:
-        "mook-image-limited mook-name-limited mook-notes-limited";
+  font-family: "Jost";
+  display: grid;
+  grid-template-columns: 161px 32px 1fr;
+  grid-template-areas: "mook-image-limited mook-name-limited mook-notes-limited";
 
-    .mook-image-limited {
-        grid-area: mook-image-limited;
-        clip-path: polygon(30px 0, 100% 0, 100% 100%, 0 100%, 0 30px);
-        width: 151px;
-        height: 151px;
-        margin: 5px;
+  .mook-image-limited {
+    grid-area: mook-image-limited;
+    clip-path: polygon(30px 0, 100% 0, 100% 100%, 0 100%, 0 30px);
+    width: 151px;
+    height: 151px;
+    margin: 5px;
 
-        .mook-image-block-img {
-          width: 151px;
-          height: 151px;
-          object-fit: contain;
-          border: 0;
-        }
+    .mook-image-block-img {
+      width: 151px;
+      height: 151px;
+      object-fit: contain;
+      border: 0;
     }
+  }
 
-    .mook-name-limited {
-        grid-area: mook-name-limited;
-    }
+  .mook-name-limited {
+    grid-area: mook-name-limited;
+  }
 
-    .mook-notes-limited {
-        grid-area: mook-notes-limited;
-    }
+  .mook-notes-limited {
+    grid-area: mook-notes-limited;
+  }
 
-    .mook-edit-section-limited {
-        min-height: 135px;
-        min-width: 135px;
-        height: unset;
-        display: flex;
-        flex: 1 0 auto;
-        background-color: @chrome-white;
-        flex-wrap: wrap;
-    }
+  .mook-edit-section-limited {
+    min-height: 135px;
+    min-width: 135px;
+    height: unset;
+    display: flex;
+    flex: 1 0 auto;
+    background-color: @chrome-white;
+    flex-wrap: wrap;
+  }
 }

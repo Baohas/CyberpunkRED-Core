@@ -14,28 +14,34 @@ export default class BoosterAddModifierPrompt {
           reject(new Error("Promise rejected: Window Closed"));
         };
         const _onConfirm = (html) => {
-          LOGGER.trace("_onConfirm | Dialog BoosterAddModifierPrompt | called.");
+          LOGGER.trace(
+            "_onConfirm | Dialog BoosterAddModifierPrompt | called."
+          );
           const fd = new FormDataExtended(html.find("form")[0]);
           const formData = foundry.utils.expandObject(fd.object);
           resolve(formData);
         };
         new Dialog({
-          title: SystemUtils.Localize("CPR.itemSheet.cyberdeck.configureInstalledPrograms"),
+          title: SystemUtils.Localize(
+            "CPR.itemSheet.cyberdeck.configureInstalledPrograms"
+          ),
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: (html) => _onCancel(html),
             },
           },
           default: "confirm",
-          render: LOGGER.trace("confirm | Dialog BoosterAddModifierPrompt | called."),
+          render: LOGGER.trace(
+            "confirm | Dialog BoosterAddModifierPrompt | called."
+          ),
           close: () => {
             reject(new Error("Promise rejected: Window Closed"));
           },

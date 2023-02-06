@@ -47,7 +47,8 @@ function factory(entities, baseClass) {
       LOGGER.trace("object construct | factory | entity-factory.js");
       const [data, options] = args;
       const constructor = entities[data.type];
-      if (!constructor) throw new Error(`Unsupported Entity type for create(): ${data.type}`);
+      if (!constructor)
+        throw new Error(`Unsupported Entity type for create(): ${data.type}`);
       return new constructor(data, options);
     },
     get: (target, prop) => {
@@ -57,7 +58,10 @@ function factory(entities, baseClass) {
           // Calling the class' create() static function
           return (data, options) => {
             const constructor = entities[data.type];
-            if (!constructor) throw new Error(`Unsupported Entity type for create(): ${data.type}`);
+            if (!constructor)
+              throw new Error(
+                `Unsupported Entity type for create(): ${data.type}`
+              );
             return constructor.create(data, options);
           };
         case Symbol.hasInstance:

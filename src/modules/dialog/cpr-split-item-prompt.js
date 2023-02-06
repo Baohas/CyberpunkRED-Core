@@ -6,7 +6,10 @@ export default class SplitItemPrompt {
   static async RenderPrompt(itemText) {
     LOGGER.trace("RenderPrompt | SplitItemPrompt | called.");
     return new Promise((resolve, reject) => {
-      renderTemplate(`systems/${game.system.id}/templates/dialog/cpr-split-item-prompt.hbs`, itemText).then((html) => {
+      renderTemplate(
+        `systems/${game.system.id}/templates/dialog/cpr-split-item-prompt.hbs`,
+        itemText
+      ).then((html) => {
         const _onCancel = () => {
           LOGGER.trace("_onCancel | Dialog SplitItemPrompt | called.");
           reject(new Error("Promise rejected: Window Closed"));
@@ -23,13 +26,13 @@ export default class SplitItemPrompt {
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               // eslint-disable-next-line no-shadow
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: () => _onCancel(html),
             },

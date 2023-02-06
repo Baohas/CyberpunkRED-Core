@@ -38,7 +38,9 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
   activateListeners(html) {
     LOGGER.trace("activateListeners | CPRBlackIceActorSheet | Called.");
     html.find(".rollable").click((event) => this._onRoll(event));
-    html.find(".configure-from-program").click((event) => this._configureFromProgram(event));
+    html
+      .find(".configure-from-program")
+      .click((event) => this._configureFromProgram(event));
     this._createBlackIceImageContextMenu(html);
     super.activateListeners(html);
   }
@@ -63,17 +65,27 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
         break;
       }
       case "damage": {
-        const programUUID = SystemUtils.GetEventDatum(event, "data-program-uuid");
-        const netrunnerTokenId = SystemUtils.GetEventDatum(event, "data-netrunner-id");
+        const programUUID = SystemUtils.GetEventDatum(
+          event,
+          "data-program-uuid"
+        );
+        const netrunnerTokenId = SystemUtils.GetEventDatum(
+          event,
+          "data-netrunner-id"
+        );
         const sceneId = SystemUtils.GetEventDatum(event, "data-scene-id");
-        cprRoll = this.actor.createDamageRoll(programUUID, netrunnerTokenId, sceneId);
+        cprRoll = this.actor.createDamageRoll(
+          programUUID,
+          netrunnerTokenId,
+          sceneId
+        );
         break;
       }
       default:
     }
     cprRoll.setNetCombat(this.actor.name);
 
-    const keepRolling = await cprRoll.handleRollDialog(event);
+    const keepRolling = await cprRoll.handleRollDialog(event, this.actor);
     if (!keepRolling) {
       return;
     }
@@ -95,14 +107,23 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
    */
   async _configureFromProgram() {
     LOGGER.trace("_configureFromProgram | CPRBlackIceActorSheet | Called.");
-    const biPrograms = game.items.filter((i) => i.type === "program" && i.system.class === "blackice");
-    const linkedProgramUUID = (this.actor.isToken) ? this.actor.token.getFlag(game.system.id, "programUUID") : null;
+    const biPrograms = game.items.filter(
+      (i) => i.type === "program" && i.system.class === "blackice"
+    );
+    const linkedProgramUUID = this.actor.isToken
+      ? this.actor.token.getFlag(game.system.id, "programUUID")
+      : null;
     if (linkedProgramUUID === null) {
-      SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.linkBlackIceWithoutToken"));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Localize("CPR.messages.linkBlackIceWithoutToken")
+      );
       return;
     }
     let formData = { biProgramList: biPrograms, linkedProgramUUID };
-    formData = await ConfigureBIActorFromProgramPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+    formData = await ConfigureBIActorFromProgramPrompt.RenderPrompt(
+      formData
+    ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
@@ -110,7 +131,9 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     if (programUUID === "unlink") {
       await this.actor.token.unsetFlag(game.system.id, "programUUID");
     } else {
-      const program = (biPrograms.filter((p) => p.uuid === formData.programUUID))[0];
+      const program = biPrograms.filter(
+        (p) => p.uuid === formData.programUUID
+      )[0];
       const cprProgramData = duplicate(program.system);
       this.actor.programmaticallyUpdate(
         cprProgramData.blackIceType,
@@ -120,12 +143,16 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
         cprProgramData.def,
         cprProgramData.rez,
         cprProgramData.description.value,
-        cprProgramData.rez,
+        cprProgramData.rez
       );
       if (this.actor.isToken) {
         this.actor.token.name = program.name;
         this.actor.name = program.name;
-        await this.actor.token.setFlag(game.system.id, "programUUID", program.uuid);
+        await this.actor.token.setFlag(
+          game.system.id,
+          "programUUID",
+          program.uuid
+        );
       }
     }
     this.render(true, { renderData: this.actor.system });
@@ -139,7 +166,9 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
    * @returns {ContextMenu} The created ContextMenu
    */
   _createBlackIceImageContextMenu(html) {
-    LOGGER.trace("_createBlackIceImageContextMenu | CPRBlackIceActorSheet | Called.");
+    LOGGER.trace(
+      "_createBlackIceImageContextMenu | CPRBlackIceActorSheet | Called."
+    );
     return createImageContextMenu(html, ".bice-icon", this.actor);
   }
 }

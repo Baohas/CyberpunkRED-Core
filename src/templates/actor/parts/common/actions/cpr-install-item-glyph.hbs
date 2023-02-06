@@ -1,7 +1,13 @@
 {{cprTrace "START ACTOR PARTS COMMON ACTIONS CPR-INSTALL-ITEM-GLYPH.HBS"}}
-{{#if this.system.isInstalled}}
-  <a class="item-action" data-item-id="{{this._id}}" data-action-type="uninstall-item"><i class="fas fa-sign-out-alt" data-tooltip="{{localize "CPR.actorSheets.commonActions.uninstallFromItem"}}"></i></a>
+{{#if this.system.isInstalled }}
+  <a class="item-action"
+     data-item-id="{{this._id}}"
+     data-action-type="uninstall-item"><i class="fas fa-sign-out-alt"
+   data-tooltip="{{localize "CPR.actorSheets.commonActions.uninstallFromItem"}}"></i></a>
 {{else}}
- <a class="item-action" data-item-id="{{this._id}}" data-action-type="install-item"><i class="fas fa-sign-in-alt" data-tooltip="{{localize "CPR.actorSheets.commonActions.installIntoItem"}}"></i></a>
- {{/if}}
+  <a class="item-action"
+     data-item-id="{{this._id}}"
+     data-action-type="install-item"><i class="fas fa-sign-in-alt"
+   data-tooltip="{{localize "CPR.actorSheets.commonActions.installIntoItem"}}"></i></a>
+{{/if}}
 {{cprTrace "END CPR-INSTALL-ITEM-GLYPH.HBS"}}

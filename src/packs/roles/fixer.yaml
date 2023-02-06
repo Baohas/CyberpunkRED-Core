@@ -15,8 +15,10 @@ system:
       description: ''
       hasRoll: true
       index: 0
+      isSituational: false
       multiplier: '1'
       name: Haggle
+      onByDefault: false
       rank: 4
       skill:
         _id: Y4RvJmUnCREbIP4N
@@ -56,7 +58,9 @@ system:
       of the Dark Future flowing.</p>
   favorite: false
   hasRoll: false
+  isSituational: false
   mainRoleAbility: Operator
+  onByDefault: false
   rank: 4
   skill: '--'
   source: Pg. 159

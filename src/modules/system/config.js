@@ -123,7 +123,8 @@ CPR.skillList = {
   deduction: "CPR.global.itemType.skill.deduction",
   demolitions: "CPR.global.itemType.skill.demolitions",
   driveLandVehicle: "CPR.global.itemType.skill.driveLandVehicle",
-  electronicsAndSecurityTech: "CPR.global.itemType.skill.electronicsAndSecurityTech",
+  electronicsAndSecurityTech:
+    "CPR.global.itemType.skill.electronicsAndSecurityTech",
   endurance: "CPR.global.itemType.skill.endurance",
   forgery: "CPR.global.itemType.skill.forgery",
   gamble: "CPR.global.itemType.skill.gamble",
@@ -470,6 +471,8 @@ CPR.upgradableDataPoints = {
     damage: {
       type: "modifier",
       value: 0,
+      isSituational: false,
+      onByDefault: false,
       localization: "CPR.global.generic.damage",
     },
     rof: {
@@ -480,6 +483,8 @@ CPR.upgradableDataPoints = {
     attackmod: {
       type: "modifier",
       value: 0,
+      isSituational: false,
+      onByDefault: false,
       localization: "CPR.itemSheet.weapon.attackMod",
     },
     magazine: {
@@ -545,11 +550,15 @@ CPR.upgradableDataPoints = {
     "Wardrobe & Style": {
       type: "modifier",
       value: 0,
+      isSituational: false,
+      onByDefault: false,
       localization: "CPR.global.itemType.skill.wardrobeAndStyle",
     },
     cool: {
       type: "modifier",
       value: 0,
+      isSituational: false,
+      onByDefault: false,
       localization: "CPR.global.stats.cool",
     },
   },
@@ -564,7 +573,8 @@ CPR.activeEffectKeys = {
     "bonuses.deathSavePenalty": "CPR.effectSheet.combat.stats.deathPenalty",
     "bonuses.universalAttack": "CPR.effectSheet.combat.stats.universalAttack",
     "bonuses.universalDamage": "CPR.effectSheet.combat.stats.universalDamage",
-    "bonuses.universalDamageReduction": "CPR.effectSheet.combat.stats.universalDamageReduction",
+    "bonuses.universalDamageReduction":
+      "CPR.effectSheet.combat.stats.universalDamageReduction",
     "bonuses.aimedShot": "CPR.effectSheet.combat.stats.aimedShot",
     "bonuses.singleShot": "CPR.effectSheet.combat.stats.singleShot",
     "bonuses.melee": "CPR.effectSheet.combat.stats.melee",
@@ -577,7 +587,8 @@ CPR.activeEffectKeys = {
   netrun: {
     "bonuses.attack": "CPR.effectSheet.netrun.attack",
     "bonuses.defense": "CPR.effectSheet.netrun.defense",
-    "bonuses.brainDamageReduction": "CPR.effectSheet.netrun.brainDamageReduction",
+    "bonuses.brainDamageReduction":
+      "CPR.effectSheet.netrun.brainDamageReduction",
     "bonuses.perception_net": "CPR.effectSheet.netrun.perception",
     "bonuses.rez": "CPR.effectSheet.netrun.rez",
     "bonuses.speed": "CPR.effectSheet.netrun.speed",
@@ -585,7 +596,8 @@ CPR.activeEffectKeys = {
     "bonuses.cloak": "CPR.global.role.netrunner.interfaceAbility.cloak",
     "bonuses.control": "CPR.global.role.netrunner.interfaceAbility.control",
     "bonuses.eyedee": "CPR.global.role.netrunner.interfaceAbility.eyedee",
-    "bonuses.pathfinder": "CPR.global.role.netrunner.interfaceAbility.pathfinder",
+    "bonuses.pathfinder":
+      "CPR.global.role.netrunner.interfaceAbility.pathfinder",
     "bonuses.scanner": "CPR.global.role.netrunner.interfaceAbility.scanner",
     "bonuses.slide": "CPR.global.role.netrunner.interfaceAbility.slide",
     "bonuses.virus": "CPR.global.role.netrunner.interfaceAbility.virus",
@@ -596,25 +608,36 @@ CPR.activeEffectKeys = {
     "bonuses.operator": "CPR.effectSheet.roleAbility.fixer.operator",
     "bonuses.backup": "CPR.effectSheet.roleAbility.lawman.backup",
     "bonuses.credibility": "CPR.effectSheet.roleAbility.media.credibility",
-    "bonuses.medicalTechCryosystemOperation": "CPR.effectSheet.roleAbility.medtech.cryo",
-    "bonuses.medicalTechPharmaceuticals": "CPR.effectSheet.roleAbility.medtech.pharma",
+    "bonuses.medicalTechCryosystemOperation":
+      "CPR.effectSheet.roleAbility.medtech.cryo",
+    "bonuses.medicalTechPharmaceuticals":
+      "CPR.effectSheet.roleAbility.medtech.pharma",
     "bonuses.medicine": "CPR.effectSheet.roleAbility.medtech.medicine",
     "bonuses.surgery": "CPR.effectSheet.roleAbility.medtech.surgery",
     "bonuses.interface": "CPR.effectSheet.roleAbility.netrunner.interface",
     "bonuses.moto": "CPR.effectSheet.roleAbility.nomad.moto",
-    "bonuses.charismaticImpact": "CPR.effectSheet.roleAbility.rockerboy.charismaticImpact",
-    "bonuses.combatAwareness": "CPR.effectSheet.roleAbility.solo.combatAwareness",
-    "bonuses.damageDeflection": "CPR.effectSheet.roleAbility.solo.damageDeflection",
+    "bonuses.charismaticImpact":
+      "CPR.effectSheet.roleAbility.rockerboy.charismaticImpact",
+    "bonuses.combatAwareness":
+      "CPR.effectSheet.roleAbility.solo.combatAwareness",
+    "bonuses.damageDeflection":
+      "CPR.effectSheet.roleAbility.solo.damageDeflection",
     "bonuses.fumbleRecovery": "CPR.effectSheet.roleAbility.solo.fumbleRecovery",
-    "bonuses.initiativeReaction": "CPR.effectSheet.roleAbility.solo.initiativeReaction",
-    "bonuses.precisionAttack": "CPR.effectSheet.roleAbility.solo.precisionAttack",
+    "bonuses.initiativeReaction":
+      "CPR.effectSheet.roleAbility.solo.initiativeReaction",
+    "bonuses.precisionAttack":
+      "CPR.effectSheet.roleAbility.solo.precisionAttack",
     "bonuses.spotWeakness": "CPR.effectSheet.roleAbility.solo.spotWeakness",
-    "bonuses.threatDetection": "CPR.effectSheet.roleAbility.solo.threatDetection",
-    "bonuses.fabricationExpertise": "CPR.effectSheet.roleAbility.tech.fabricationExpertise",
+    "bonuses.threatDetection":
+      "CPR.effectSheet.roleAbility.solo.threatDetection",
+    "bonuses.fabricationExpertise":
+      "CPR.effectSheet.roleAbility.tech.fabricationExpertise",
     "bonuses.fieldExpertise": "CPR.effectSheet.roleAbility.tech.fieldExpertise",
-    "bonuses.inventionExpertise": "CPR.effectSheet.roleAbility.tech.inventionExpertise",
+    "bonuses.inventionExpertise":
+      "CPR.effectSheet.roleAbility.tech.inventionExpertise",
     "bonuses.maker": "CPR.effectSheet.roleAbility.tech.maker",
-    "bonuses.upgradeExpertise": "CPR.effectSheet.roleAbility.tech.upgradeExpertise",
+    "bonuses.upgradeExpertise":
+      "CPR.effectSheet.roleAbility.tech.upgradeExpertise",
   },
   skill: {
     // Note this listing is expanded in register-helpers (cprGetSkillsForEffects), it is not used as-is
@@ -631,7 +654,8 @@ CPR.activeEffectKeys = {
     "bonuses.bureaucracy": "CPR.global.itemType.skill.bureaucracy",
     "bonuses.business": "CPR.global.itemType.skill.business",
     "bonuses.composition": "CPR.global.itemType.skill.composition",
-    "bonuses.concealOrRevealObject": "CPR.global.itemType.skill.concealOrRevealObject",
+    "bonuses.concealOrRevealObject":
+      "CPR.global.itemType.skill.concealOrRevealObject",
     "bonuses.concentration": "CPR.global.itemType.skill.concentration",
     "bonuses.contortionist": "CPR.global.itemType.skill.contortionist",
     "bonuses.conversation": "CPR.global.itemType.skill.conversation",
@@ -643,7 +667,8 @@ CPR.activeEffectKeys = {
     "bonuses.demolitions": "CPR.global.itemType.skill.demolitions",
     "bonuses.driveLandVehicle": "CPR.global.itemType.skill.driveLandVehicle",
     "bonuses.education": "CPR.global.itemType.skill.education",
-    "bonuses.electronicsAndSecurityTech": "CPR.global.itemType.skill.electronicsAndSecurityTech",
+    "bonuses.electronicsAndSecurityTech":
+      "CPR.global.itemType.skill.electronicsAndSecurityTech",
     "bonuses.endurance": "CPR.global.itemType.skill.endurance",
     "bonuses.evasion": "CPR.global.itemType.skill.evasion",
     "bonuses.firstAid": "CPR.global.itemType.skill.firstAid",
@@ -660,18 +685,21 @@ CPR.activeEffectKeys = {
     "bonuses.localExpert": "CPR.global.itemType.skill.localExpert",
     "bonuses.martialArts": "CPR.global.itemType.skill.martialArts",
     "bonuses.meleeWeapon": "CPR.global.itemType.skill.meleeWeapon",
-    "bonuses.paintOrDrawOrSculpt": "CPR.global.itemType.skill.paintOrDrawOrSculpt",
+    "bonuses.paintOrDrawOrSculpt":
+      "CPR.global.itemType.skill.paintOrDrawOrSculpt",
     "bonuses.paramedic": "CPR.global.itemType.skill.paramedic",
     "bonuses.perception": "CPR.global.itemType.skill.perception",
     "bonuses.personalGrooming": "CPR.global.itemType.skill.personalGrooming",
     "bonuses.persuasion": "CPR.global.itemType.skill.persuasion",
-    "bonuses.photographyAndFilm": "CPR.global.itemType.skill.photographyAndFilm",
+    "bonuses.photographyAndFilm":
+      "CPR.global.itemType.skill.photographyAndFilm",
     "bonuses.pickLock": "CPR.global.itemType.skill.pickLock",
     "bonuses.pickPocket": "CPR.global.itemType.skill.pickPocket",
     "bonuses.pilotAirVehicle": "CPR.global.itemType.skill.pilotAirVehicle",
     "bonuses.pilotSeaVehicle": "CPR.global.itemType.skill.pilotSeaVehicle",
     "bonuses.playInstrument": "CPR.global.itemType.skill.playInstrument",
-    "bonuses.resistTortureOrDrugs": "CPR.global.itemType.skill.resistTortureOrDrugs",
+    "bonuses.resistTortureOrDrugs":
+      "CPR.global.itemType.skill.resistTortureOrDrugs",
     "bonuses.riding": "CPR.global.itemType.skill.riding",
     "bonuses.science": "CPR.global.itemType.skill.science",
     "bonuses.seaVehicleTech": "CPR.global.itemType.skill.seaVehicleTech",
@@ -683,7 +711,8 @@ CPR.activeEffectKeys = {
     "bonuses.trading": "CPR.global.itemType.skill.trading",
     "bonuses.wardrobeAndStyle": "CPR.global.itemType.skill.wardrobeAndStyle",
     "bonuses.weaponstech": "CPR.global.itemType.skill.weaponstech",
-    "bonuses.wildernessSurvival": "CPR.global.itemType.skill.wildernessSurvival",
+    "bonuses.wildernessSurvival":
+      "CPR.global.itemType.skill.wildernessSurvival",
   },
   stat: {
     "system.stats.int.value": "CPR.global.stats.int",
@@ -696,6 +725,69 @@ CPR.activeEffectKeys = {
     "system.stats.move.value": "CPR.global.stats.move",
     "system.stats.body.value": "CPR.global.stats.body",
     "system.stats.emp.max": "CPR.global.stats.empMax",
+  },
+};
+
+CPR.defaultSituationalMods = {
+  complimentarySkill: {
+    value: 1,
+    source: "CPR.rolls.defaultMods.complimentarySkill",
+    id: "complimentarySkill-coreBook",
+  },
+  extraTime: {
+    value: 1,
+    source: "CPR.rolls.defaultMods.extraTime",
+    id: "extraTime-coreBook",
+  },
+  lowLight: {
+    value: -1,
+    source: "CPR.rolls.defaultMods.lowLight",
+    id: "lowLight-coreBook",
+  },
+  firstTime: {
+    value: -1,
+    source: "CPR.rolls.defaultMods.firstTime",
+    id: "firstTime-coreBook",
+  },
+  complexTask: {
+    value: -2,
+    source: "CPR.rolls.defaultMods.complexTask",
+    id: "complexTask-coreBook",
+  },
+  wrongTools: {
+    value: -2,
+    source: "CPR.rolls.defaultMods.wrongTools",
+    id: "wrongTools-coreBook",
+  },
+  badSleep: {
+    value: -2,
+    source: "CPR.rolls.defaultMods.badSleep",
+    id: "badSleep-coreBook",
+  },
+  extremeStress: {
+    value: -2,
+    source: "CPR.rolls.defaultMods.extremeStress",
+    id: "extremeStress-coreBook",
+  },
+  exhausted: {
+    value: -4,
+    source: "CPR.rolls.defaultMods.exhausted",
+    id: "exhausted-coreBook",
+  },
+  drunkSedated: {
+    value: -4,
+    source: "CPR.rolls.defaultMods.drunkSedated",
+    id: "drunkSedated-coreBook",
+  },
+  sneakily: {
+    value: -4,
+    source: "CPR.rolls.defaultMods.sneakily",
+    id: "sneakily-coreBook",
+  },
+  heavilyObscured: {
+    value: -4,
+    source: "CPR.rolls.defaultMods.heavilyObscured",
+    id: "heavilyObscured-coreBook",
   },
 };
 

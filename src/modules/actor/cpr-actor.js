@@ -9,6 +9,7 @@ import InstallCyberwarePrompt from "../dialog/cpr-install-cyberware-prompt.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import CPRMod from "../rolls/cpr-modifiers.js";
 
 /**
  * CPRActor contains common code between mooks and characters (NPCs and players).
@@ -34,13 +35,19 @@ export default class CPRActor extends Actor {
     if (newActor) {
       LOGGER.trace("create | New Actor | CPRCharacterActor | called.");
       createData.items = [];
-      const tmpItems = data.items.concat(await SystemUtils.GetCoreSkills(), await SystemUtils.GetCoreCyberware());
+      const tmpItems = data.items.concat(
+        await SystemUtils.GetCoreSkills(),
+        await SystemUtils.GetCoreCyberware()
+      );
       const containerTypes = SystemUtils.GetTemplateItemTypes("container");
       tmpItems.forEach((item) => {
         const updatedSystem = duplicate(item.system);
         if (containerTypes.includes(item.type)) {
           updatedSystem.installedItems.slots = 7;
-          updatedSystem.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
+          updatedSystem.installedItems.allowedTypes = [
+            "itemUpgrade",
+            "cyberware",
+          ];
         }
         const cprItem = {
           name: item.name,
@@ -65,8 +72,15 @@ export default class CPRActor extends Actor {
         const newItemId = `${actorUUID}.Item.${sourceItemId}`;
         installedItems.push(newItemId);
         const item = actor.getOwnedItem(newItemId);
-        updateList.push({ _id: item.id, "system.isInstalled": true, "system.installedIn": actorUUID });
-        if (containerTypes.includes(item.type) && item.system.installedItems.list.length > 0) {
+        updateList.push({
+          _id: item.id,
+          "system.isInstalled": true,
+          "system.installedIn": actorUUID,
+        });
+        if (
+          containerTypes.includes(item.type) &&
+          item.system.installedItems.list.length > 0
+        ) {
           await item.recursiveInstallSync();
         }
       }
@@ -82,10 +96,18 @@ export default class CPRActor extends Actor {
       }
       // Sync any loaded weapons
       for (const item of actor.itemTypes.weapon) {
-        if (item.system.isRanged && item.system.magazine.ammoData.uuid.length > 0) {
-          const sourceItemId = item.system.magazine.ammoData.uuid.split(".").pop();
+        if (
+          item.system.isRanged &&
+          item.system.magazine.ammoData.uuid.length > 0
+        ) {
+          const sourceItemId = item.system.magazine.ammoData.uuid
+            .split(".")
+            .pop();
           const newItemId = `${actorUUID}.Item.${sourceItemId}`;
-          updateList.push({ _id: item.id, "system.magazine.ammoData.uuid": newItemId });
+          updateList.push({
+            _id: item.id,
+            "system.magazine.ammoData.uuid": newItemId,
+          });
         }
       }
       await actor.updateEmbeddedDocuments("Item", updateList);
@@ -194,7 +216,9 @@ export default class CPRActor extends Actor {
     LOGGER.trace("createEmbeddedDocuments | CPRActor | called.");
     // If migration is calling this, we definitely want to
     // create the Embedded Documents.
-    const isMigration = !!(((typeof context) !== "undefined" && context.CPRmigration));
+    const isMigration = !!(
+      typeof context !== "undefined" && context.CPRmigration
+    );
     if (!isMigration) {
       if (embeddedName === "Item") {
         let containsCoreItem = false;
@@ -211,7 +235,11 @@ export default class CPRActor extends Actor {
     }
     // Call appropriate create method depending on if it is an unlinked token actor
     if (this.isToken && !this.token.isLinked) {
-      return this.token.createActorEmbeddedDocuments(embeddedName, ids, context);
+      return this.token.createActorEmbeddedDocuments(
+        embeddedName,
+        ids,
+        context
+      );
     }
     return super.createEmbeddedDocuments(embeddedName, ids, context);
   }
@@ -229,7 +257,11 @@ export default class CPRActor extends Actor {
     LOGGER.trace("updateEmbeddedDocuments | CPRActor | called.");
     // Call appropriate update method depending on if it is an unlinked token actor
     if (this.isToken && !this.token.isLinked) {
-      return this.token.updateActorEmbeddedDocuments(embeddedName, updates, options);
+      return this.token.updateActorEmbeddedDocuments(
+        embeddedName,
+        updates,
+        options
+      );
     }
     return super.updateEmbeddedDocuments(embeddedName, updates, options);
   }
@@ -251,7 +283,10 @@ export default class CPRActor extends Actor {
     const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
     for (const itemId of ids) {
       const item = this.getOwnedItem(itemId);
-      if (containerTypes.includes(item.type) && item.system.installedItems.list.length > 0) {
+      if (
+        containerTypes.includes(item.type) &&
+        item.system.installedItems.list.length > 0
+      ) {
         const itemList = [];
         for (const installedUuid of item.system.installedItems.list) {
           const installedItem = this.getOwnedItem(installedUuid);
@@ -262,7 +297,11 @@ export default class CPRActor extends Actor {
         await item.uninstallItems(itemList, true);
       }
 
-      if (installableTypes.includes(item.type) && item.system.isInstalled && item.system.installedIn !== "") {
+      if (
+        installableTypes.includes(item.type) &&
+        item.system.isInstalled &&
+        item.system.installedIn !== ""
+      ) {
         const installLocation = this.getOwnedItem(item.system.installedIn);
         if (containerTypes.includes(installLocation.type)) {
           await installLocation.uninstallItems([item], false);
@@ -272,7 +311,11 @@ export default class CPRActor extends Actor {
 
     // Call appropriate delete method depending on if it is an unlinked token actor
     if (this.isToken && !this.token.isLinked) {
-      return this.token.deleteActorEmbeddedDocuments(embeddedName, ids, context);
+      return this.token.deleteActorEmbeddedDocuments(
+        embeddedName,
+        ids,
+        context
+      );
     }
     return super.deleteEmbeddedDocuments(embeddedName, ids, context);
   }
@@ -305,7 +348,7 @@ export default class CPRActor extends Actor {
     derivedStats.currentWoundState = this.system.derivedStats.currentWoundState;
 
     // Death save
-    let basePenalty = this.bonuses.deathSavePenalty; // 0 + active effects
+    let basePenalty = 0; // 0 + active effects
     const critInjury = this.itemTypes.criticalInjury;
     critInjury.forEach((criticalInjury) => {
       const { deathSaveIncrease } = criticalInjury.system;
@@ -314,7 +357,8 @@ export default class CPRActor extends Actor {
       }
     });
     derivedStats.deathSave.basePenalty = basePenalty;
-    derivedStats.deathSave.value = derivedStats.deathSave.penalty + derivedStats.deathSave.basePenalty;
+    derivedStats.deathSave.value =
+      derivedStats.deathSave.penalty + derivedStats.deathSave.basePenalty;
     this.system.derivedStats = derivedStats;
 
     if (typeof this.apps === "undefined") {
@@ -323,12 +367,16 @@ export default class CPRActor extends Actor {
       derivedStats.hp.max = 40;
       derivedStats.humanity.value = 60;
       derivedStats.humanity.max = 60;
-    } else if (Object.values(this.apps).some((app) => app instanceof CPRCharacterActorSheet)) {
+    } else if (
+      Object.values(this.apps).some(
+        (app) => app instanceof CPRCharacterActorSheet
+      )
+    ) {
       // The rest is character-specific. We only calculate hp and humanity for characters because some mooks
       // break the rules/standards.
       derivedStats.hp.value = Math.min(
         derivedStats.hp.value,
-        derivedStats.hp.max,
+        derivedStats.hp.max
       );
       if (derivedStats.humanity.value > derivedStats.humanity.max) {
         derivedStats.humanity.value = derivedStats.humanity.max;
@@ -399,12 +447,21 @@ export default class CPRActor extends Actor {
     LOGGER.trace("installCyberware | CPRActor | Called.");
     const item = this.getOwnedItem(itemId);
 
-    const baseCompatibleFoundationalCyberware = this.itemTypes.cyberware.filter((cw) => cw.system.isInstalled
-        && cw.system.isFoundational
-        && cw.system.type === item.system.type);
+    const baseCompatibleFoundationalCyberware = this.itemTypes.cyberware.filter(
+      (cw) =>
+        cw.system.isInstalled &&
+        cw.system.isFoundational &&
+        cw.system.type === item.system.type
+    );
 
-    if (baseCompatibleFoundationalCyberware.length < 1 && !item.system.isFoundational) {
-      Rules.lawyer(false, "CPR.messages.warnNoFoundationalCyberwareOfCorrectType");
+    if (
+      baseCompatibleFoundationalCyberware.length < 1 &&
+      !item.system.isFoundational
+    ) {
+      Rules.lawyer(
+        false,
+        "CPR.messages.warnNoFoundationalCyberwareOfCorrectType"
+      );
       return;
     }
 
@@ -421,9 +478,13 @@ export default class CPRActor extends Actor {
         for (const uuid of loopList) {
           const itemLookup = this.getOwnedItem(uuid);
           if (containerTypes.includes(itemLookup.type)) {
-            if (itemLookup.system.installedItems.allowed
-              && itemLookup.system.installedItems.allowedTypes.includes(item.type)
-              && itemLookup.availableInstallSlots() >= item.system.size) {
+            if (
+              itemLookup.system.installedItems.allowed &&
+              itemLookup.system.installedItems.allowedTypes.includes(
+                item.type
+              ) &&
+              itemLookup.availableInstallSlots() >= item.system.size
+            ) {
               compatibleTargetCyberware.push(itemLookup);
             }
             uuidList = uuidList.concat(itemLookup.system.installedItems.list);
@@ -441,11 +502,16 @@ export default class CPRActor extends Actor {
     }
 
     if (!item.system.isFoundational && !formData.foundationalId) {
-      Rules.lawyer(false, "CPR.messages.warnNoFoundationalCyberwareOfCorrectType");
+      Rules.lawyer(
+        false,
+        "CPR.messages.warnNoFoundationalCyberwareOfCorrectType"
+      );
       return;
     }
 
-    const target = (item.system.isFoundational) ? this : this.getOwnedItem(formData.foundationalId);
+    const target = item.system.isFoundational
+      ? this
+      : this.getOwnedItem(formData.foundationalId);
 
     target.installItems([item]).then(async (installationSuccess) => {
       if (installationSuccess.length > 0) {
@@ -468,14 +534,25 @@ export default class CPRActor extends Actor {
     const item = this.getOwnedItem(itemId);
     let confirmRemove;
     if (!skipConfirm) {
-      const dialogTitle = SystemUtils.Localize("CPR.dialog.uninstallCyberware.title");
-      const dialogMessage = `${SystemUtils.Format("CPR.dialog.uninstallCyberware.text", { item: item.name })}?`;
-      confirmRemove = await ConfirmPrompt.RenderPrompt(dialogTitle, dialogMessage);
+      const dialogTitle = SystemUtils.Localize(
+        "CPR.dialog.uninstallCyberware.title"
+      );
+      const dialogMessage = `${SystemUtils.Format(
+        "CPR.dialog.uninstallCyberware.text",
+        { item: item.name }
+      )}?`;
+      confirmRemove = await ConfirmPrompt.RenderPrompt(
+        dialogTitle,
+        dialogMessage
+      );
     } else {
       confirmRemove = true;
     }
     if (confirmRemove) {
-      const target = (this.uuid === item.system.installedIn) ? this : this.getOwnedItem(item.system.installedIn);
+      const target =
+        this.uuid === item.system.installedIn
+          ? this
+          : this.getOwnedItem(item.system.installedIn);
       const uninstallList = await target.uninstallItems([item]);
       for (const ui of uninstallList) {
         if (SystemUtils.GetTemplateItemTypes("upgradable").includes(ui.type)) {
@@ -526,16 +603,21 @@ export default class CPRActor extends Actor {
   canInstallItems(itemList) {
     LOGGER.trace("canInstallItems | CPRActor | Called.");
     if (!Array.isArray(itemList)) {
-      LOGGER.debug(`CPRActor.canInstallItems argument is not an array: ${itemList}`);
+      LOGGER.debug(
+        `CPRActor.canInstallItems argument is not an array: ${itemList}`
+      );
       return false;
     }
     let result = true;
     itemList.forEach((item) => {
-      if (!this.system.installedItems.allowedTypes.includes(item.type) || !(SystemUtils.getDataModelTemplates(item.type).includes("installable"))) {
+      if (
+        !this.system.installedItems.allowedTypes.includes(item.type) ||
+        !SystemUtils.getDataModelTemplates(item.type).includes("installable")
+      ) {
         result = false;
       }
     });
-    return (this.system.installedItems.allowed && result);
+    return this.system.installedItems.allowed && result;
   }
 
   /**
@@ -546,10 +628,16 @@ export default class CPRActor extends Actor {
   async installItems(itemList) {
     LOGGER.trace("installItems | CPRActor | Called.");
     if (!Array.isArray(itemList)) {
-      return Promise.reject(new Error(`CPRActor.installItems argument is not an array: ${itemList}`));
+      return Promise.reject(
+        new Error(`CPRActor.installItems argument is not an array: ${itemList}`)
+      );
     }
     if (!this.canInstallItems(itemList)) {
-      return Promise.reject(new Error("Installation failed.  One or more item types are not allowed to be installed."));
+      return Promise.reject(
+        new Error(
+          "Installation failed.  One or more item types are not allowed to be installed."
+        )
+      );
     }
     const installedItems = duplicate(this.system.installedItems);
     const updateList = [];
@@ -558,7 +646,11 @@ export default class CPRActor extends Actor {
       if (!installedItems.list.includes(item.uuid)) {
         installedItems.list.push(item.uuid);
       }
-      updateList.push({ _id: item.id, "system.isInstalled": true, "system.installedIn": this.uuid });
+      updateList.push({
+        _id: item.id,
+        "system.isInstalled": true,
+        "system.installedIn": this.uuid,
+      });
     });
 
     await this.update({ "system.installedItems": installedItems });
@@ -586,7 +678,11 @@ export default class CPRActor extends Actor {
   async uninstallItems(itemList, recursive = true) {
     LOGGER.trace("uninstallItems | CPRActor | Called.");
     if (!Array.isArray(itemList)) {
-      return Promise.reject(new Error(`CPRActor.uninstallItems argument is not an array: ${itemList}`));
+      return Promise.reject(
+        new Error(
+          `CPRActor.uninstallItems argument is not an array: ${itemList}`
+        )
+      );
     }
 
     const installedItems = duplicate(this.system.installedItems);
@@ -597,19 +693,28 @@ export default class CPRActor extends Actor {
 
     for (const item of itemList) {
       if (installedItems.list.includes(item.uuid)) {
-        installedItems.list = installedItems.list.filter((uuid) => item.uuid !== uuid);
+        installedItems.list = installedItems.list.filter(
+          (uuid) => item.uuid !== uuid
+        );
         uninstallList.push(item);
         if (recursive) {
           let embeddedItemList = item.getInstalledItems();
 
           while (embeddedItemList.length > 0) {
-            const embeddedItemsData = JSON.parse(JSON.stringify(embeddedItemList));
+            const embeddedItemsData = JSON.parse(
+              JSON.stringify(embeddedItemList)
+            );
             embeddedItemList = [];
             for (const embeddedItemData of embeddedItemsData) {
               const embeddedItem = this.getOwnedItem(embeddedItemData._id);
               uninstallList.push(embeddedItem);
-              if (containerTypes.includes(embeddedItem.type) && embeddedItem.system.installedItems.list.length > 0) {
-                embeddedItemList = embeddedItemList.concat(embeddedItem.getInstalledItems());
+              if (
+                containerTypes.includes(embeddedItem.type) &&
+                embeddedItem.system.installedItems.list.length > 0
+              ) {
+                embeddedItemList = embeddedItemList.concat(
+                  embeddedItem.getInstalledItems()
+                );
               }
             }
           }
@@ -640,7 +745,9 @@ export default class CPRActor extends Actor {
    */
   getOwnedItem(itemId) {
     LOGGER.trace("getOwnedItem | CPRActor | Called.");
-    const item = (this.items.find((i) => i._id === itemId)) ? this.items.find((i) => i._id === itemId) : this.items.find((i) => i.uuid === itemId);
+    const item = this.items.find((i) => i._id === itemId)
+      ? this.items.find((i) => i._id === itemId)
+      : this.items.find((i) => i.uuid === itemId);
     return item;
   }
 
@@ -652,24 +759,12 @@ export default class CPRActor extends Actor {
    */
   getSkillLevel(skillName) {
     LOGGER.trace("getSkillLevel | CPRActor | Called.");
-    const skillList = (this.itemTypes.skill).filter((s) => s.name === skillName);
+    const skillList = this.itemTypes.skill.filter((s) => s.name === skillName);
     if (skillList.length > 0) {
       const relevantSkill = skillList[0];
       return parseInt(relevantSkill.system.level, 10);
     }
     return 0;
-  }
-
-  /**
-   * Return the skill mod (number) for a given skill on the actor.
-   *
-   * @param {String} skillName - the skill name (e.g. from CPR.skillList) to look up
-   * @returns {Number} - skill mod or 0 if not found
-   */
-  getSkillMod(skillName) {
-    LOGGER.trace("getSkillMod | CPRActor | Called.");
-    const skillSlug = SystemUtils.slugify(skillName);
-    return this.bonuses[skillSlug];
   }
 
   /**
@@ -683,7 +778,8 @@ export default class CPRActor extends Actor {
     LOGGER.trace("processDeathSave | CPRActor | Called.");
     const success = SystemUtils.Localize("CPR.rolls.success");
     const failed = SystemUtils.Localize("CPR.rolls.failed");
-    let saveResult = cprRoll.resultTotal < this.system.stats.body.value ? success : failed;
+    let saveResult =
+      cprRoll.resultTotal < this.system.stats.body.value ? success : failed;
     if (cprRoll.initialRoll === 10) {
       saveResult = failed;
     }
@@ -736,19 +832,26 @@ export default class CPRActor extends Actor {
     // See if we have any items which upgrade our stat, and if so, upgrade the stat base
     const equippableItemTypes = SystemUtils.GetTemplateItemTypes("equippable");
     const upgradableItemTypes = SystemUtils.GetTemplateItemTypes("upgradable");
-    const itemTypes = equippableItemTypes.filter((value) => upgradableItemTypes.includes(value));
+    const itemTypes = equippableItemTypes.filter((value) =>
+      upgradableItemTypes.includes(value)
+    );
     let modType = "modifier";
 
     itemTypes.forEach((itemType) => {
-      const itemList = this.itemTypes[itemType].filter((i) => i.system.equipped === "equipped" && i.system.isUpgraded);
+      const itemList = this.itemTypes[itemType].filter(
+        (i) => i.system.equipped === "equipped" && i.system.isUpgraded
+      );
       itemList.forEach((i) => {
-        const upgradeData = i.getAllUpgradesFor(baseName);
+        const upgradeData = i.getTotalUpgradeValues(baseName);
         if (modType === "override") {
           if (upgradeData.type === "override" && upgradeData.value > modValue) {
             modValue = upgradeData.value;
           }
         } else {
-          modValue = (upgradeData.type === "override") ? upgradeData.value : modValue + upgradeData.value;
+          modValue =
+            upgradeData.type === "override"
+              ? upgradeData.value
+              : modValue + upgradeData.value;
           modType = upgradeData.type;
         }
       });
@@ -799,12 +902,22 @@ export default class CPRActor extends Actor {
       const ledger = getProperty(this, ledgerProp);
       if (value > 0) {
         ledger.push([
-          SystemUtils.Format("CPR.ledger.increaseSentence", { property: prop, amount: value, total: newValue }),
-          reason]);
+          SystemUtils.Format("CPR.ledger.increaseSentence", {
+            property: prop,
+            amount: value,
+            total: newValue,
+          }),
+          reason,
+        ]);
       } else {
         ledger.push([
-          SystemUtils.Format("CPR.ledger.decreaseSentence", { property: prop, amount: (-1 * value), total: newValue }),
-          reason]);
+          SystemUtils.Format("CPR.ledger.decreaseSentence", {
+            property: prop,
+            amount: -1 * value,
+            total: newValue,
+          }),
+          reason,
+        ]);
       }
       // update the actor and return the modified property
       this.update({
@@ -831,7 +944,13 @@ export default class CPRActor extends Actor {
       const valProp = `system.${prop}.value`;
       const ledgerProp = `system.${prop}.transactions`;
       const ledger = getProperty(this, ledgerProp);
-      ledger.push([SystemUtils.Format("CPR.ledger.setSentence", { property: prop, total: value }), reason]);
+      ledger.push([
+        SystemUtils.Format("CPR.ledger.setSentence", {
+          property: prop,
+          total: value,
+        }),
+        reason,
+      ]);
       this.update({
         [valProp]: value,
         [ledgerProp]: ledger,
@@ -870,11 +989,19 @@ export default class CPRActor extends Actor {
     LOGGER.trace("isLedgerProperty | CPRActor | Called.");
     const ledgerData = getProperty(this.system, prop);
     if (!hasProperty(ledgerData, "value")) {
-      SystemUtils.DisplayMessage("error", SystemUtils.Format("CPR.ledger.errorMessage.missingValue", { prop }));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Format("CPR.ledger.errorMessage.missingValue", { prop })
+      );
       return false;
     }
     if (!hasProperty(ledgerData, "transactions")) {
-      SystemUtils.DisplayMessage("error", SystemUtils.Format("CPR.ledger.errorMessage.missingTransactions", { prop }));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Format("CPR.ledger.errorMessage.missingTransactions", {
+          prop,
+        })
+      );
       return false;
     }
     return true;
@@ -947,7 +1074,9 @@ export default class CPRActor extends Actor {
   getEquippedArmors(location) {
     LOGGER.trace("getEquippedArmors | CPRActor | Called.");
     const armors = this.itemTypes.armor;
-    const equipped = armors.filter((item) => item.system.equipped === "equipped");
+    const equipped = armors.filter(
+      (item) => item.system.equipped === "equipped"
+    );
 
     if (location === "body") {
       return equipped.filter((item) => item.system.isBodyLocation);
@@ -971,7 +1100,9 @@ export default class CPRActor extends Actor {
     LOGGER.trace("makeThisArmorCurrent | CPRActor | Called.");
     const currentArmor = this.getOwnedItem(id);
     if (location === "body") {
-      const currentArmorValue = currentArmor.system.bodyLocation.sp - currentArmor.system.bodyLocation.ablation;
+      const currentArmorValue =
+        currentArmor.system.bodyLocation.sp -
+        currentArmor.system.bodyLocation.ablation;
       const currentArmorMax = currentArmor.system.bodyLocation.sp;
       return this.update({
         "system.externalData.currentArmorBody.value": currentArmorValue,
@@ -980,7 +1111,9 @@ export default class CPRActor extends Actor {
       });
     }
     if (location === "head") {
-      const currentArmorValue = currentArmor.system.headLocation.sp - currentArmor.system.headLocation.ablation;
+      const currentArmorValue =
+        currentArmor.system.headLocation.sp -
+        currentArmor.system.headLocation.ablation;
       const currentArmorMax = currentArmor.system.headLocation.sp;
       return this.update({
         "system.externalData.currentArmorHead.value": currentArmorValue,
@@ -1036,9 +1169,24 @@ export default class CPRActor extends Actor {
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
     const cprRoll = new CPRRolls.CPRStatRoll(niceStatName, statValue);
-    cprRoll.addMod(this.getArmorPenaltyMods(statName));
-    cprRoll.addMod(this.getWoundStateMods());
-    cprRoll.addMod(this.getUpgradeMods(statName));
+
+    // Add relevant mods.
+    cprRoll.addMod([
+      {
+        value: this.getArmorPenaltyMods(statName),
+        source: SystemUtils.Format("CPR.rolls.modifiers.sources.armorPenalty", {
+          stat: niceStatName,
+        }),
+      },
+    ]);
+    cprRoll.addMod([
+      {
+        value: this.getWoundStateMods(),
+        source: SystemUtils.Localize(
+          "CPR.rolls.modifiers.sources.woundStatePenalty"
+        ),
+      },
+    ]);
     return cprRoll;
   }
 
@@ -1053,8 +1201,12 @@ export default class CPRActor extends Actor {
     const statName = "cool";
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
-    const cprRoll = new CPRRolls.CPRFacedownRoll(niceStatName, statValue);
-    cprRoll.addMod(this.system.reputation.value);
+    const repValue = this.system.reputation.value;
+    const cprRoll = new CPRRolls.CPRFacedownRoll(
+      niceStatName,
+      statValue,
+      repValue
+    );
     return cprRoll;
   }
 
@@ -1069,7 +1221,25 @@ export default class CPRActor extends Actor {
     const deathSavePenalty = this.system.derivedStats.deathSave.penalty;
     const deathSaveBasePenalty = this.system.derivedStats.deathSave.basePenalty;
     const bodyStat = this.system.stats.body.value;
-    return new CPRRolls.CPRDeathSaveRoll(deathSavePenalty, deathSaveBasePenalty, bodyStat);
+    const cprRoll = new CPRRolls.CPRDeathSaveRoll(
+      deathSavePenalty,
+      deathSaveBasePenalty,
+      bodyStat
+    );
+
+    const effects = this.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
+    const filteredMods = allMods.filter(
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+    );
+
+    const deathSavePenaltyMods = CPRMod.getRelevantMods(
+      filteredMods,
+      "deathSavePenalty"
+    );
+    cprRoll.addMod(deathSavePenaltyMods);
+    return cprRoll;
   }
 
   // We need a way to unload a specific ammo from all of the weapons
@@ -1182,7 +1352,9 @@ export default class CPRActor extends Actor {
   getEquippedCyberdeck() {
     LOGGER.trace("getEquippedCyberdeck | CPRActor | Called.");
     const cyberdecks = this.itemTypes.cyberdeck;
-    const equipped = cyberdecks.filter((item) => item.system.equipped === "equipped");
+    const equipped = cyberdecks.filter(
+      (item) => item.system.equipped === "equipped"
+    );
     if (equipped) {
       return equipped[0];
     }
@@ -1202,16 +1374,27 @@ export default class CPRActor extends Actor {
     LOGGER.trace("automaticallyStackItems | CPRActor | Called.");
     const itemTemplates = SystemUtils.getDataModelTemplates(newItem.type);
     if (itemTemplates.includes("stackable")) {
-      const itemMatch = this.items.find((i) => i.type === newItem.type && i.name === newItem.name);
+      const itemMatch = this.items.find(
+        (i) => i.type === newItem.type && i.name === newItem.name
+      );
       if (itemMatch) {
-        const canStack = !(itemTemplates.includes("upgradable") && itemMatch.system.upgrades.length === 0);
+        const canStack = !(
+          itemTemplates.includes("upgradable") &&
+          itemMatch.system.upgrades.length === 0
+        );
         if (canStack) {
           let oldAmount = parseInt(itemMatch.system.amount, 10);
           let addedAmount = parseInt(newItem.system.amount, 10);
-          if (Number.isNaN(oldAmount)) { oldAmount = 1; }
-          if (Number.isNaN(addedAmount)) { addedAmount = 1; }
+          if (Number.isNaN(oldAmount)) {
+            oldAmount = 1;
+          }
+          if (Number.isNaN(addedAmount)) {
+            addedAmount = 1;
+          }
           const newAmount = oldAmount + addedAmount;
-          this.updateEmbeddedDocuments("Item", [{ _id: itemMatch.id, "system.amount": newAmount }]);
+          this.updateEmbeddedDocuments("Item", [
+            { _id: itemMatch.id, "system.amount": newAmount },
+          ]);
           return false;
         }
       }
@@ -1233,7 +1416,16 @@ export default class CPRActor extends Actor {
    * @param {boolean} damageLethal - if this damage can cause HP <= 0
    * @param {object} formData - contains booleans about whether to apply shields and other damage reducing effects
    */
-  async _applyDamage(damage, bonusDamage, location, ablation, ammoVariety, ignoreHalfArmor, damageLethal, formData) {
+  async _applyDamage(
+    damage,
+    bonusDamage,
+    location,
+    ablation,
+    ammoVariety,
+    ignoreHalfArmor,
+    damageLethal,
+    formData
+  ) {
     LOGGER.trace("_applyDamage | CPRActor | Called.");
     let totalDamageDealt = 0;
     let totalDamageReduction = 0;
@@ -1250,9 +1442,13 @@ export default class CPRActor extends Actor {
       let universalBonusDamageReduction = 0;
       this.itemTypes.role.forEach((r) => {
         if (r.system.universalBonuses.includes("damageReduction")) {
-          universalBonusDamageReduction += Math.floor(r.system.rank / r.system.bonusRatio);
+          universalBonusDamageReduction += Math.floor(
+            r.system.rank / r.system.bonusRatio
+          );
         }
-        const subroleUniversalBonuses = r.system.abilities.filter((a) => a.universalBonuses.includes("damageReduction"));
+        const subroleUniversalBonuses = r.system.abilities.filter((a) =>
+          a.universalBonuses.includes("damageReduction")
+        );
         if (subroleUniversalBonuses.length > 0) {
           subroleUniversalBonuses.forEach((b) => {
             universalBonusDamageReduction += Math.floor(b.rank / b.bonusRatio);
@@ -1275,7 +1471,9 @@ export default class CPRActor extends Actor {
         totalDamageReduction += this.bonuses.brainDamageReduction;
       }
       takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
-      await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
+      await this.update({
+        "system.derivedStats.hp.value": currentHp - takenDamage,
+      });
       CPRChat.RenderDamageApplicationCard({
         actor: this,
         damage,
@@ -1312,12 +1510,22 @@ export default class CPRActor extends Actor {
     let shieldAblation = 0;
     if (shields.length > 0) {
       // get equipped shield with highest HP;
-      const shield = shields.sort((a, b) => (a.system.shieldHitPoints.value > b.system.shieldHitPoints.value ? 1 : -1)).reverse()[0];
+      const shield = shields
+        .sort((a, b) =>
+          a.system.shieldHitPoints.value > b.system.shieldHitPoints.value
+            ? 1
+            : -1
+        )
+        .reverse()[0];
       // if useShield is checked in dialog, and shield has HP, ablate shield and potentially resolve chat card;
       if (formData.useShield && shield.system.shieldHitPoints.value > 0) {
-        shieldAblation = Math.min((damage + bonusDamage), shield.system.shieldHitPoints.value);
+        shieldAblation = Math.min(
+          damage + bonusDamage,
+          shield.system.shieldHitPoints.value
+        );
         await this._ablateArmor("shield", shieldAblation);
-        if (ammoVariety !== "grenade" && ammoVariety !== "rocket") { // if ammo isn't explosive, resolve chat card with no damage to token;
+        if (ammoVariety !== "grenade" && ammoVariety !== "rocket") {
+          // if ammo isn't explosive, resolve chat card with no damage to token;
           CPRChat.RenderDamageApplicationCard({
             actor: this,
             damage,
@@ -1331,7 +1539,8 @@ export default class CPRActor extends Actor {
           });
           return;
         }
-        if (shield.system.shieldHitPoints.value > 0) { // if ammo is explosive and shield is still standing, resolve chat card with no damage to token;
+        if (shield.system.shieldHitPoints.value > 0) {
+          // if ammo is explosive and shield is still standing, resolve chat card with no damage to token;
           CPRChat.RenderDamageApplicationCard({
             actor: this,
             damage,
@@ -1355,7 +1564,9 @@ export default class CPRActor extends Actor {
     if (damage <= armorData.value) {
       takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
       const currentHp = this.system.derivedStats.hp.value;
-      await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
+      await this.update({
+        "system.derivedStats.hp.value": currentHp - takenDamage,
+      });
       CPRChat.RenderDamageApplicationCard({
         actor: this,
         damage,
@@ -1391,13 +1602,15 @@ export default class CPRActor extends Actor {
       }
     }
 
-    await this.update({ "system.derivedStats.hp.value": currentHp - takenDamage });
+    await this.update({
+      "system.derivedStats.hp.value": currentHp - takenDamage,
+    });
 
     // Ablate the armor correctly if there's armor equipped
     if (armors.length > 0) {
       await this._ablateArmor(location, ablation);
     }
-    const cardDisplayAblation = (armors.length > 0) ? ablation : 0;
+    const cardDisplayAblation = armors.length > 0 ? ablation : 0;
     CPRChat.RenderDamageApplicationCard({
       actor: this,
       damage,
@@ -1426,7 +1639,9 @@ export default class CPRActor extends Actor {
     const currentHp = this.system.derivedStats.hp.value;
     const maxHp = this.system.derivedStats.hp.max;
     if (maxHp > currentHp + hpReduction) {
-      await this.update({ "system.derivedStats.hp.value": currentHp + hpReduction });
+      await this.update({
+        "system.derivedStats.hp.value": currentHp + hpReduction,
+      });
     } else {
       await this.update({ "system.derivedStats.hp.value": maxHp });
     }
@@ -1449,55 +1664,112 @@ export default class CPRActor extends Actor {
       case "head": {
         armorList.forEach((a) => {
           const cprArmorData = a.system;
-          const upgradeData = a.getAllUpgradesFor("headSp");
+          const upgradeData = a.getTotalUpgradeValues("headSp");
           cprArmorData.headLocation.sp = Number(cprArmorData.headLocation.sp);
-          cprArmorData.headLocation.ablation = Number(cprArmorData.headLocation.ablation);
-          const armorSp = (upgradeData.type === "override") ? upgradeData.value : cprArmorData.headLocation.sp + upgradeData.value;
-          cprArmorData.headLocation.ablation = Math.min((cprArmorData.headLocation.ablation + ablation), armorSp);
+          cprArmorData.headLocation.ablation = Number(
+            cprArmorData.headLocation.ablation
+          );
+          const armorSp =
+            upgradeData.type === "override"
+              ? upgradeData.value
+              : cprArmorData.headLocation.sp + upgradeData.value;
+          cprArmorData.headLocation.ablation =
+            ablation < 0
+              ? Math.max(cprArmorData.headLocation.ablation + ablation, 0)
+              : Math.min(
+                  cprArmorData.headLocation.ablation + ablation,
+                  armorSp
+                );
           updateList.push({ _id: a.id, system: cprArmorData });
         });
         await this.updateEmbeddedDocuments("Item", updateList);
         // Update actor external data as head armor is ablated:
-        currentArmorValue = ablation < 0
-          ? Math.min((this.system.externalData.currentArmorHead.value - ablation), this.system.externalData.currentArmorHead.max)
-          : Math.max((this.system.externalData.currentArmorHead.value - ablation), 0);
-        await this.update({ "system.externalData.currentArmorHead.value": currentArmorValue });
+        currentArmorValue =
+          ablation < 0
+            ? Math.min(
+                this.system.externalData.currentArmorHead.value - ablation,
+                this.system.externalData.currentArmorHead.max
+              )
+            : Math.max(
+                this.system.externalData.currentArmorHead.value - ablation,
+                0
+              );
+        await this.update({
+          "system.externalData.currentArmorHead.value": currentArmorValue,
+        });
         break;
       }
       case "body": {
         armorList.forEach((a) => {
           const cprArmorData = a.system;
           cprArmorData.bodyLocation.sp = Number(cprArmorData.bodyLocation.sp);
-          cprArmorData.bodyLocation.ablation = Number(cprArmorData.bodyLocation.ablation);
-          const upgradeData = a.getAllUpgradesFor("bodySp");
-          const armorSp = (upgradeData.type === "override") ? upgradeData.value : cprArmorData.bodyLocation.sp + upgradeData.value;
-          cprArmorData.bodyLocation.ablation = Math.min((cprArmorData.bodyLocation.ablation + ablation), armorSp);
+          cprArmorData.bodyLocation.ablation = Number(
+            cprArmorData.bodyLocation.ablation
+          );
+          const upgradeData = a.getTotalUpgradeValues("bodySp");
+          const armorSp =
+            upgradeData.type === "override"
+              ? upgradeData.value
+              : cprArmorData.bodyLocation.sp + upgradeData.value;
+          cprArmorData.bodyLocation.ablation =
+            ablation < 0
+              ? Math.max(cprArmorData.bodyLocation.ablation + ablation, 0)
+              : Math.min(
+                  cprArmorData.bodyLocation.ablation + ablation,
+                  armorSp
+                );
           updateList.push({ _id: a.id, system: cprArmorData });
         });
         await this.updateEmbeddedDocuments("Item", updateList);
         // Update actor external data as body armor is ablated:
-        currentArmorValue = ablation < 0
-          ? Math.min((this.system.externalData.currentArmorBody.value - ablation), this.system.externalData.currentArmorBody.max)
-          : Math.max((this.system.externalData.currentArmorBody.value - ablation), 0);
-        await this.update({ "system.externalData.currentArmorBody.value": currentArmorValue });
+        currentArmorValue =
+          ablation < 0
+            ? Math.min(
+                this.system.externalData.currentArmorBody.value - ablation,
+                this.system.externalData.currentArmorBody.max
+              )
+            : Math.max(
+                this.system.externalData.currentArmorBody.value - ablation,
+                0
+              );
+        await this.update({
+          "system.externalData.currentArmorBody.value": currentArmorValue,
+        });
         break;
       }
       case "shield": {
         armorList.forEach((a) => {
           const cprArmorData = a.system;
-          cprArmorData.shieldHitPoints.value = Number(cprArmorData.shieldHitPoints.value);
-          cprArmorData.shieldHitPoints.max = Number(cprArmorData.shieldHitPoints.max);
-          cprArmorData.shieldHitPoints.value = ablation < 0
-            ? Math.min((a.system.shieldHitPoints.value - ablation), a.system.shieldHitPoints.max)
-            : Math.max((a.system.shieldHitPoints.value - ablation), 0);
+          cprArmorData.shieldHitPoints.value = Number(
+            cprArmorData.shieldHitPoints.value
+          );
+          cprArmorData.shieldHitPoints.max = Number(
+            cprArmorData.shieldHitPoints.max
+          );
+          cprArmorData.shieldHitPoints.value =
+            ablation < 0
+              ? Math.min(
+                  a.system.shieldHitPoints.value - ablation,
+                  a.system.shieldHitPoints.max
+                )
+              : Math.max(a.system.shieldHitPoints.value - ablation, 0);
           updateList.push({ _id: a.id, system: cprArmorData });
         });
         await this.updateEmbeddedDocuments("Item", updateList);
         // Update actor external data as shield is damaged:
-        currentArmorValue = ablation < 0
-          ? Math.min((this.system.externalData.currentArmorShield.value - ablation), this.system.externalData.currentArmorShield.max)
-          : Math.max((this.system.externalData.currentArmorShield.value - ablation), 0);
-        await this.update({ "system.externalData.currentArmorShield.value": currentArmorValue });
+        currentArmorValue =
+          ablation < 0
+            ? Math.min(
+                this.system.externalData.currentArmorShield.value - ablation,
+                this.system.externalData.currentArmorShield.max
+              )
+            : Math.max(
+                this.system.externalData.currentArmorShield.value - ablation,
+                0
+              );
+        await this.update({
+          "system.externalData.currentArmorShield.value": currentArmorValue,
+        });
         break;
       }
       default:
@@ -1508,16 +1780,21 @@ export default class CPRActor extends Actor {
    * Create an active effect on this actor. This method belongs here so migration scripts can
    * dynamically generate effects based on custom mods already on the actor from earlier versions.
    *
+   * @param {Boolean} render - Render the effect's sheet or not. Default true.
    * @returns {CPRActiveEffect} the new document
    */
-  createEffect() {
+  async createEffect(render = true) {
     LOGGER.trace("createEffect | CPRActor | Called.");
-    return this.createEmbeddedDocuments("ActiveEffect", [{
-      label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
-      icon: "icons/svg/aura.svg",
-      origin: this.uuid,
-      disabled: false,
-    }]);
+    const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [
+      {
+        label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
+        icon: "icons/svg/aura.svg",
+        origin: this.uuid,
+        disabled: false,
+      },
+    ]);
+
+    return effectDoc[0].sheet.render(render);
   }
 
   copyEffect(effect) {
@@ -1536,10 +1813,12 @@ export default class CPRActor extends Actor {
     LOGGER.trace("deleteEffect | CPRActor | Called.");
     const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     if (setting) {
-      const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${effect.system.label}?`;
+      const promptMessage = `${SystemUtils.Localize(
+        "CPR.dialog.deleteConfirmation.message"
+      )} ${effect.label}?`;
       const confirmDelete = await ConfirmPrompt.RenderPrompt(
         SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
-        promptMessage,
+        promptMessage
       ).catch((err) => LOGGER.debug(err));
       if (!confirmDelete) return;
     }
@@ -1581,7 +1860,9 @@ export default class CPRActor extends Actor {
     const cprData = this.system;
     const { stats } = cprData;
     let cyberwarePenalty = 0;
-    const installedCyberware = this.itemTypes.cyberware.filter((cw) => cw.system.isInstalled);
+    const installedCyberware = this.itemTypes.cyberware.filter(
+      (cw) => cw.system.isInstalled
+    );
     installedCyberware.forEach((cyberware) => {
       if (cyberware.system.type === "borgware") {
         cyberwarePenalty += 4;
@@ -1636,22 +1917,33 @@ export default class CPRActor extends Actor {
   async loseHumanityValue(item, amount) {
     LOGGER.trace("loseHumanityValue | CPRActor | Called.");
     if (amount.humanityLoss === "None") {
-      LOGGER.trace("CPR Actor loseHumanityValue | Called. | humanityLoss was None.");
+      LOGGER.trace(
+        "CPR Actor loseHumanityValue | Called. | humanityLoss was None."
+      );
       await this.setMaxHumanity();
       return;
     }
     const { humanity } = this.system.derivedStats;
-    let value = Number.isInteger(humanity.value) ? humanity.value : humanity.max;
+    let value = Number.isInteger(humanity.value)
+      ? humanity.value
+      : humanity.max;
     if (amount.humanityLoss.match(/[0-9]+d[0-9]+/)) {
-      const humRoll = new CPRRolls.CPRHumanityLossRoll(item.name, amount.humanityLoss);
+      const humRoll = new CPRRolls.CPRHumanityLossRoll(
+        item.name,
+        amount.humanityLoss
+      );
       await humRoll.roll();
       value -= humRoll.resultTotal;
       humRoll.entityData = { actor: this.id };
       CPRChat.RenderRollCard(humRoll);
-      LOGGER.trace("CPR Actor loseHumanityValue | Called. | humanityLoss was rolled.");
+      LOGGER.trace(
+        "CPR Actor loseHumanityValue | Called. | humanityLoss was rolled."
+      );
     } else {
       value -= parseInt(amount.humanityLoss, 10);
-      LOGGER.trace("CPR Actor loseHumanityValue | Called. | humanityLoss was static.");
+      LOGGER.trace(
+        "CPR Actor loseHumanityValue | Called. | humanityLoss was static."
+      );
     }
 
     if (value <= 0) {
@@ -1692,7 +1984,9 @@ export default class CPRActor extends Actor {
     }
     // auto-equip this item
     if (SystemUtils.hasDataModelTemplate(item.type, "equippable")) {
-      this.updateEmbeddedDocuments("Item", [{ _id: item._id, "system.equipped": "equipped" }]);
+      this.updateEmbeddedDocuments("Item", [
+        { _id: item._id, "system.equipped": "equipped" },
+      ]);
     }
   }
 }

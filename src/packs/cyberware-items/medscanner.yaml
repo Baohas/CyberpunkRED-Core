@@ -4,11 +4,9 @@ effects:
     changes:
       - key: bonuses.firstAid
         mode: 2
-        priority: null
         value: '2'
       - key: bonuses.paramedic
         mode: 2
-        priority: null
         value: '2'
     disabled: false
     duration:
@@ -22,10 +20,12 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
-          '1': skill
+          cats:
+            '0': skill
+            '1': skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/medscanner.svg
     label: Medscanner
+    origin: null
     tint: null
     transfer: true
 flags:

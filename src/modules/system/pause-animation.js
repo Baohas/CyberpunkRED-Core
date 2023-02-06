@@ -3,10 +3,7 @@
 import LOGGER from "../utils/cpr-logger.js";
 
 export default function enablePauseAnimation() {
-  const setting = game.settings.get(
-    game.system.id,
-    "enablePauseAnimation",
-  );
+  const setting = game.settings.get(game.system.id, "enablePauseAnimation");
 
   if (setting) {
     LOGGER.log("Enabling pause animation");

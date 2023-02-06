@@ -49,7 +49,7 @@ export default class CPRDemonActorSheet extends ActorSheet {
     const rollName = SystemUtils.GetEventDatum(event, "data-roll-title");
     const cprRoll = this.actor.createStatRoll(rollName);
 
-    const keepRolling = await cprRoll.handleRollDialog(event);
+    const keepRolling = await cprRoll.handleRollDialog(event, this.actor);
     if (!keepRolling) {
       return;
     }

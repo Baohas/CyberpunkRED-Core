@@ -8,10 +8,12 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/chat/cpr-base-rollcard.hbs`,
     `systems/${game.system.id}/templates/chat/cpr-damage-rollcard.hbs`,
     `systems/${game.system.id}/templates/chat/cpr-damage-application-card.hbs`,
+    `systems/${game.system.id}/templates/chat/cpr-rollcard-modifiers.hbs`,
 
     // Dialog Partials
     `systems/${game.system.id}/templates/dialog/cpr-confirmation-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-damage-application-prompt.hbs`,
+    `systems/${game.system.id}/templates/dialog/cpr-dialog-buttons.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-ledger-deletion-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-ledger-edit-prompt.hbs`,
@@ -25,13 +27,13 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/dialog/cpr-select-role-bonuses-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-split-item-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-update-announcement.hbs`,
-    `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-cyberdeck-prompt.hbs`,
+    `systems/${game.system.id}/templates/dialog/rolls/cpr-base-verify-roll-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-damage-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-deathsave-prompt.hbs`,
-    `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-generic-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-roleAbility-prompt.hbs`,
-    `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-skill-prompt.hbs`,
-    `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-stat-prompt.hbs`,
+    `systems/${game.system.id}/templates/dialog/rolls/cpr-situational-modifiers.hbs`,
+    `systems/${game.system.id}/templates/dialog/rolls/cpr-all-modifiers.hbs`,
+    `systems/${game.system.id}/templates/dialog/rolls/cpr-additional-modifiers.hbs`,
 
     // Left Pane Actor Partials
     `systems/${game.system.id}/templates/actor/parts/left-pane/cpr-deathsave-block.hbs`,

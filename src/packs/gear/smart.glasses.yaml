@@ -65,6 +65,6 @@ system:
   upgrades: []
   usage: toggled
   usesType: magazine
-  weaponSkill: ''
-  weaponType: ''
+  weaponSkill: Archery
+  weaponType: assaultRifle
 type: cyberware

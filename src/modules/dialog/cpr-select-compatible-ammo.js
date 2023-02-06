@@ -10,12 +10,16 @@ export default class SelectCompatibleAmmo {
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {
-          LOGGER.trace("_onCancel | Dialog SelectCompatibleAmmoPrompt | called.");
+          LOGGER.trace(
+            "_onCancel | Dialog SelectCompatibleAmmoPrompt | called."
+          );
           reject(new Error("Promise rejected: Window Closed"));
         };
         const _onConfirm = (html) => {
-          LOGGER.trace("_onConfirm | Dialog SelectCompatibleAmmoPrompt | called.");
-          const ammoList = html.find("[name=\"selectedAmmo\"");
+          LOGGER.trace(
+            "_onConfirm | Dialog SelectCompatibleAmmoPrompt | called."
+          );
+          const ammoList = html.find('[name="selectedAmmo"');
           const selectedAmmo = [];
           const fd = new FormDataExtended(html.find("form")[0]);
           const formData = foundry.utils.expandObject(fd.object);
@@ -32,18 +36,20 @@ export default class SelectCompatibleAmmo {
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: (html) => _onCancel(html),
             },
           },
           default: "confirm",
-          render: LOGGER.trace("confirm | Dialog SelectCompatibleAmmoPrompt | called."),
+          render: LOGGER.trace(
+            "confirm | Dialog SelectCompatibleAmmoPrompt | called."
+          ),
           close: () => {
             reject(new Error("Promise rejected: Window Closed"));
           },

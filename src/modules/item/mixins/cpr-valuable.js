@@ -20,7 +20,8 @@ const Valuable = function Valuable() {
     let price = CPR.itemPriceCategoryMap[category];
     const cprItemData = this.system;
     if (this.type === "ammo") {
-      if (cprItemData.variety !== "grenade" && cprItemData.variety !== "rocket") price /= 10;
+      if (cprItemData.variety !== "grenade" && cprItemData.variety !== "rocket")
+        price /= 10;
     }
     return price;
   };
@@ -42,8 +43,12 @@ const Valuable = function Valuable() {
     }
     priceTiers = priceTiers.sort((a, b) => a - b);
     for (const priceTier of priceTiers) {
-      priceCategory = (priceTier <= price) ? PRICE_CATEGORY_MAPPINGS[priceTier] : priceCategory;
-      priceCategory = (priceCategory === "free" && price > 0) ? PRICE_CATEGORY_MAPPINGS[priceTier] : priceCategory;
+      priceCategory =
+        priceTier <= price ? PRICE_CATEGORY_MAPPINGS[priceTier] : priceCategory;
+      priceCategory =
+        priceCategory === "free" && price > 0
+          ? PRICE_CATEGORY_MAPPINGS[priceTier]
+          : priceCategory;
     }
     return priceCategory;
   };

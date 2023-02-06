@@ -1,376 +1,398 @@
 // Overall Sheet Layout
 .actor-sheet {
-    font-family: "Jost";
-    // Cyberpunk Red Core Sheet Styling
+  font-family: "Jost";
+  // Cyberpunk Red Core Sheet Styling
 
-    // The basic sheet should be white
-    background-color: @chrome-white;
+  // The basic sheet should be white
+  background-color: @chrome-white;
 
-    // Utilize grid for element placement on the sheet
+  // Utilize grid for element placement on the sheet
+  display: grid;
+
+  // We want white borders between each element
+  grid-gap: 5px;
+
+  // At a top level, we will have 2x2 grid
+  // +------------------------------------------+
+  // | main & stats | tabs: skills, cyber, gear |
+  // |------------------------------------------+
+  // | tabs: Role, Combat, Lifepath             |
+  // +------------------------------------------+
+  //
+  // Originally we tried to just size this using auto and letting
+  // the sub-elements dictate the size. The problem was that when
+  // a sub-element didn't take up all of the space,
+  // it split the space 50/50.
+  // dictated by the elements contained in each grid
+  grid-template-columns: 265px auto;
+  grid-template-rows: auto auto;
+
+  grid-template-areas:
+    "pane-left pane-right"
+    "pane-bottom pane-bottom";
+
+  // Pane for main and stats
+  .left-pane {
+    grid-area: pane-left;
     display: grid;
 
-    // We want white borders between each element
+    // main  is 200px wide
+    // stats is 60px wide
+    // plus the 5px grid-gap
+    max-width: 265px;
+    max-height: 475px;
     grid-gap: 5px;
 
-    // At a top level, we will have 2x2 grid
-    // +------------------------------------------+
-    // | main & stats | tabs: skills, cyber, gear |
-    // |------------------------------------------+
-    // | tabs: Role, Combat, Lifepath             |
-    // +------------------------------------------+
-    //
-    // Originally we tried to just size this using auto and letting
-    // the sub-elements dictate the size. The problem was that when
-    // a sub-element didn't take up all of the space,
-    // it split the space 50/50.
-    // dictated by the elements contained in each grid
-    grid-template-columns: 265px auto;
-    grid-template-rows   : auto auto;
+    grid-template-columns: auto auto;
+    grid-template-areas: "main stats";
 
-    grid-template-areas: "pane-left pane-right"
-        "pane-bottom pane-bottom";
+    .main-section {
+      grid-area: main;
+      width: 200px;
+      height: 477px;
+      background-color: @wyrm-red;
 
-    // Pane for main and stats
-    .left-pane {
-        grid-area: pane-left;
-        display  : grid;
-
-        // main  is 200px wide
-        // stats is 60px wide
-        // plus the 5px grid-gap
-        max-width : 265px;
-        max-height: 475px;
-        grid-gap  : 5px;
-
-        grid-template-columns: auto auto;
-        grid-template-areas  :
-            "main stats";
-
-        .main-section {
-            grid-area       : main;
-            width           : 200px;
-            height          : 477px;
-            background-color: @wyrm-red;
-
-            &>div {
-                margin: 5px;
-            }
-        }
-
-        .stats-section {
-            grid-area: stats;
-            width    : 58px;
-
-            grid-template-columns: 1fr;
-            grid-template-rows   : repeat(10, 1fr);
-
-            &>div {
-                margin: 5px;
-            }
-        }
+      & > div {
+        margin: 5px;
+      }
     }
 
-    .right-pane {
-        grid-area: pane-right;
+    .stats-section {
+      grid-area: stats;
+      width: 58px;
 
-        width: auto;
-        display              : grid;
-        grid-template-columns: auto;
-        grid-template-rows   : auto auto;
-        grid-template-areas  :
-            "tabs-right"
-            "content-right"
-            "sheet-filter";
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(10, 1fr);
 
+      & > div {
+        margin: 5px;
+      }
+    }
+  }
 
-        .right-tabs-section {
+  .right-pane {
+    grid-area: pane-right;
 
-            grid-area: tabs-right;
+    width: auto;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "tabs-right"
+      "content-right"
+      "sheet-filter";
 
-            width : 100%;
-            height: 23px;
-        }
+    .right-tabs-section {
+      grid-area: tabs-right;
 
-        .right-content-section {
-            grid-area: content-right;
-            display  : flex;
-            width    : 100%;
-            height   : 454px;
-
-            border-color: @wyrm-red;
-            border-style: solid;
-            border-width: 5px;
-            overflow-y  : scroll;
-        }
-
-        .sheet-filter-section {
-          grid-area: sheet-filter;
-          display: flex;
-          width: 100%;
-          align-items: center;
-          border-width: 5px;
-        }
+      width: 100%;
+      height: 23px;
     }
 
-    .bottom-pane {
-        grid-area: pane-bottom;
-        display  : grid;
+    .right-content-section {
+      grid-area: content-right;
+      display: flex;
+      width: 100%;
+      height: 454px;
 
-        grid-template-columns: auto;
-        grid-template-rows   : auto auto;
-        grid-template-areas  :
-            "tabs-bottom"
-            "content-bottom";
-
-        overflow-y: hidden;
-
-        .bottom-tabs-section {
-
-            grid-area: tabs-bottom;
-
-            width : 100%;
-            height: 23px;
-        }
-
-        .bottom-content-section {
-            grid-area: content-bottom;
-            display  : flex;
-            width    : 100%;
-
-            border-color: @wyrm-red;
-            border-style: solid;
-            border-width: 5px;
-            overflow-y  : auto;
-        }
+      border-color: @wyrm-red;
+      border-style: solid;
+      border-width: 5px;
+      overflow-y: scroll;
     }
+
+    .sheet-filter-section {
+      grid-area: sheet-filter;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      border-width: 5px;
+    }
+  }
+
+  .bottom-pane {
+    grid-area: pane-bottom;
+    display: grid;
+
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "tabs-bottom"
+      "content-bottom";
+
+    overflow-y: hidden;
+
+    .bottom-tabs-section {
+      grid-area: tabs-bottom;
+
+      width: 100%;
+      height: 23px;
+    }
+
+    .bottom-content-section {
+      grid-area: content-bottom;
+      display: flex;
+      width: 100%;
+
+      border-color: @wyrm-red;
+      border-style: solid;
+      border-width: 5px;
+      overflow-y: auto;
+    }
+  }
 }
 
 .skills-tab {
-    display              : grid;
-    grid-template-columns: auto auto;
-    grid-template-rows   : auto;
-    grid-template-areas  : "skills-left skills-right";
-    width                : inherit;
-    grid-gap             : 5px;
-    background-color     : @wyrm-red;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-template-areas: "skills-left skills-right";
+  width: inherit;
+  grid-gap: 5px;
+  background-color: @wyrm-red;
 
-    .left-pane-skills {
-        grid-area: skills-left;
-    }
+  .left-pane-skills {
+    grid-area: skills-left;
+  }
 
-    .right-pane-skills {
-        grid-area: skills-right;
-    }
+  .right-pane-skills {
+    grid-area: skills-right;
+  }
 }
 
 .effects-tab,
 .cyberware-tab,
 .gear-tab {
-    display              : grid;
-    grid-template-columns: auto;
-    grid-template-rows   : auto;
-    width                : inherit;
-    background-color     : @chrome-white;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  width: inherit;
+  background-color: @chrome-white;
 }
 
 .gear-tab-data {
-    display              : grid;
-    grid-template-columns: auto;
-    grid-template-rows   : 370px auto;
-    width                : inherit;
-    background-color     : @chrome-white;
-    grid-template-areas  :
-        "gear-top"
-        "gear-bottom";
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 370px auto;
+  width: inherit;
+  background-color: @chrome-white;
+  grid-template-areas:
+    "gear-top"
+    "gear-bottom";
 
-    .top-pane-gear {
-        grid-area       : gear-top;
-        overflow-y      : scroll;
-        background-color: @chrome-white;
-        scrollbar-width: thin;
-    }
-
-    .bottom-pane-gear {
-        grid-area       : gear-bottom;
-        background-color: @chrome-white;
-        display         : flex;
-        white-space     : nowrap;
-        border-width    : 5px;
-        border-top-color: @wyrm-red;
-        border-top-style: solid;
-
-        .eurobucks {
-          display: grid;
-          grid-template-areas:
-            "current-eurobucks"
-            "modify-eurobucks";
-
-          .current-eurobucks {
-            grid-area: current-eurobucks;
-
-            .eurobucks-text {
-              flex: 0 0 83px;
-            }
-
-            .eurobucks-value {
-              flex: 1;
-            }
-
-            .eurobucks-open-ledger {
-              flex: 0 0 15px;
-              text-align: right;
-            }
-          }
-
-          .modify-eurobucks {
-            grid-area: modify-eurobucks;
-
-            .eurobucks-modify-text {
-              flex: 0 0 80px;
-            }
-
-            .eurobucks-modify-input {
-              flex: 1 0 100px;
-            }
-
-            .eurobucks-modify-buttons {
-              flex: 1 0 50px;
-            }
-
-            .eurobucks-modify-reason {
-              flex: 1 0 150px;
-            }
-          }
-        }
-    }
-}
-
-.lifepath-tab {
-    display         : flex;
+  .top-pane-gear {
+    grid-area: gear-top;
+    overflow-y: scroll;
     background-color: @chrome-white;
-    flex-flow       : wrap;
-    justify-content : space-between;
-    flex            : 1;
+    scrollbar-width: thin;
+  }
 
+  .bottom-pane-gear {
+    grid-area: gear-bottom;
+    background-color: @chrome-white;
+    display: flex;
+    white-space: nowrap;
+    border-width: 5px;
+    border-top-color: @wyrm-red;
+    border-top-style: solid;
+
+    .eurobucks {
+      display: grid;
+      grid-template-areas:
+        "current-eurobucks"
+        "modify-eurobucks";
+
+      .current-eurobucks {
+        grid-area: current-eurobucks;
+
+        .eurobucks-text {
+          flex: 0 0 83px;
+        }
+
+        .eurobucks-value {
+          flex: 1;
+        }
+
+        .eurobucks-open-ledger {
+          flex: 0 0 15px;
+          text-align: right;
+        }
+      }
+
+      .modify-eurobucks {
+        grid-area: modify-eurobucks;
+
+        .eurobucks-modify-text {
+          flex: 0 0 80px;
+        }
+
+        .eurobucks-modify-input {
+          flex: 1 0 100px;
+        }
+
+        .eurobucks-modify-buttons {
+          flex: 1 0 50px;
+        }
+
+        .eurobucks-modify-reason {
+          flex: 1 0 150px;
+        }
+      }
+    }
+  }
 }
 
 .lifepath-tab {
+  display: flex;
+  background-color: @chrome-white;
+  flex-flow: wrap;
+  justify-content: space-between;
+  flex: 1;
+}
 
-    display              : grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows   : auto;
-    grid-template-areas  : "notes-pane lifepath-pane";
+.lifepath-tab {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  grid-template-areas: "notes-pane lifepath-pane";
 
-    .lifepath-section {
-        grid-area: lifepath-pane;
-        margin   : 5px;
+  .lifepath-section {
+    grid-area: lifepath-pane;
+    margin: 5px;
+  }
+
+  .notes-section {
+    grid-area: notes-pane;
+    margin: 5px;
+
+    .note-pad {
+      display: flex;
+      min-height: 425px;
     }
-
-    .notes-section {
-        grid-area: notes-pane;
-        margin   : 5px;
-
-        .note-pad {
-            display       : flex;
-            min-height    : 425px;
-        }
-    }
+  }
 }
 
 .fight-tab {
-    display              : grid;
-    grid-template-columns: 25% 25% auto;
-    grid-template-rows   : auto;
-    grid-template-areas  : "injuries armor weapon";
-    width                : inherit;
-    grid-gap             : 5px;
-    background-color     : @wyrm-red;
+  display: grid;
+  grid-template-columns: 25% 25% auto;
+  grid-template-rows: auto;
+  grid-template-areas: "injuries armor weapon";
+  width: inherit;
+  grid-gap: 5px;
+  background-color: @wyrm-red;
 
-    .injuries-section {
-        grid-area       : injuries;
-        background-color: @chrome-white;
-        min-height      : 35px;
-    }
+  .injuries-section {
+    grid-area: injuries;
+    background-color: @chrome-white;
+    min-height: 35px;
+  }
 
-    .armor-section {
-        grid-area       : armor;
-        background-color: @chrome-white;
-        min-height      : 35px;
-    }
+  .armor-section {
+    grid-area: armor;
+    background-color: @chrome-white;
+    min-height: 35px;
+  }
 
-    .weapon-section {
-        grid-area       : weapon;
-        background-color: @chrome-white;
-        min-height      : 35px;
-    }
+  .weapon-section {
+    grid-area: weapon;
+    background-color: @chrome-white;
+    min-height: 35px;
+  }
 
-    .interface-abilities-section {
-        grid-area       : injuries;
-        background-color: @chrome-white;
-        min-height      : 35px;
-    }
+  .interface-abilities-section {
+    grid-area: injuries;
+    background-color: @chrome-white;
+    min-height: 35px;
+  }
 
-    .select-net-role {
-      height: auto;
-      max-width: 50%;
-    }
+  .select-net-role {
+    height: auto;
+    max-width: 50%;
+  }
 
-    .cyberdeck-installed-section {
-        grid-area       : armor;
-        background-color: @chrome-white;
-        min-height      : 35px;
+  .cyberdeck-installed-section {
+    grid-area: armor;
+    background-color: @chrome-white;
+    min-height: 35px;
 
-        .cyberdeck-installed-software-list {
-            display         : grid;
-            grid-template-columns: 1fr 30px 30px;
-            grid-template-areas: "program-name program-attack-and-damage program-actions";
+    .cyberdeck-installed-software-list {
+      display: grid;
+      grid-template-columns: 1fr 30px 30px;
+      grid-template-areas: "program-name program-attack-and-damage program-actions";
 
-            .installed-program-name {grid-area: "program-name";}
+      .installed-program-name {
+        grid-area: "program-name";
+      }
 
-            .installed-program-attack-and-damage {
-                grid-area: "program-attack-and-damage";
-                display         : grid;
-                grid-template-columns: 15px 15px;
-                grid-template-areas: "program-attack program-damage";
+      .installed-program-attack-and-damage {
+        grid-area: "program-attack-and-damage";
+        display: grid;
+        grid-template-columns: 15px 15px;
+        grid-template-areas: "program-attack program-damage";
 
-                    .installed-program-attack {grid-area: "program-attack";}
-                    .installed-program-damage {grid-area: "program-damage";}
-            }
-
-            .installed-program-actions {grid-area: "program-actions";}
+        .installed-program-attack {
+          grid-area: "program-attack";
         }
-    }
+        .installed-program-defense {
+          grid-area: "program-defense";
+        }
+        .installed-program-damage {
+          grid-area: "program-damage";
+        }
+      }
 
-    .cyberdeck-rezzed-section {
-        grid-area       : weapon;
-        background-color: @chrome-white;
-        min-height      : 35px;
-
-        .cyberdeck-rezzed-software-list {
-          display         : grid;
-          grid-template-columns: 1fr 30px 30px 30px 30px 30px 70px;
-          grid-template-areas: "program-name program-per  program-spd program-atk program-def program-rez-and-decrement program-reset";
-
-          .rezzed-program-name {grid-area: "program-name";}
-
-          .rezzed-program-per {grid-area: "program-per";}
-          .rezzed-program-spd {grid-area: "program-spd";}
-          .rezzed-program-atk {grid-area: "program-atk";}
-          .rezzed-program-def {grid-area: "program-def";}
-
-          .rezzed-program-rez-and-decrement {
-              grid-area: "program-rez-and-decrement";
-              display         : grid;
-              grid-template-columns: 15px 15px;
-              grid-template-areas: "program-rez program-rez-decrement";
-
-                  .rezzed-program-rez {grid-area: "program-rez";}
-                  .rezzed-program-rez-decrement {grid-area: "program-rez-decrement";}
-          }
-
-          .rezzed-program-reset {grid-area: "program-reset";}
+      .installed-program-actions {
+        grid-area: "program-actions";
       }
     }
+  }
+
+  .cyberdeck-rezzed-section {
+    grid-area: weapon;
+    background-color: @chrome-white;
+    min-height: 35px;
+
+    .cyberdeck-rezzed-software-list {
+      display: grid;
+      grid-template-columns: 1fr 30px 30px 30px 30px 30px 70px;
+      grid-template-areas: "program-name program-per  program-spd program-atk program-def program-rez-and-decrement program-reset";
+
+      .rezzed-program-name {
+        grid-area: "program-name";
+      }
+
+      .rezzed-program-per {
+        grid-area: "program-per";
+      }
+      .rezzed-program-spd {
+        grid-area: "program-spd";
+      }
+      .rezzed-program-atk {
+        grid-area: "program-atk";
+      }
+      .rezzed-program-def {
+        grid-area: "program-def";
+      }
+
+      .rezzed-program-rez-and-decrement {
+        grid-area: "program-rez-and-decrement";
+        display: grid;
+        grid-template-columns: 15px 15px;
+        grid-template-areas: "program-rez program-rez-decrement";
+
+        .rezzed-program-rez {
+          grid-area: "program-rez";
+        }
+        .rezzed-program-rez-decrement {
+          grid-area: "program-rez-decrement";
+        }
+      }
+
+      .rezzed-program-reset {
+        grid-area: "program-reset";
+      }
+    }
+  }
 }
 
 // Section Specific CSS
@@ -380,109 +402,109 @@
 .deathsave-block,
 .humanity-block,
 .stat-block {
-    font-size       : @font-normal;
-    color           : @flint-black;
-    background-color: @chrome-white;
+  font-size: @font-normal;
+  color: @flint-black;
+  background-color: @chrome-white;
 }
 
 .image-block {
-    height: 190px;
-    width : 190px;
+  height: 190px;
+  width: 190px;
 
-    .profile-img {
-        clip-path: polygon(25px 0, 100% 0, 100% 100%, 0 100%, 0 25px);
-    }
-    overflow: hidden;
+  .profile-img {
+    clip-path: polygon(25px 0, 100% 0, 100% 100%, 0 100%, 0 25px);
+  }
+  overflow: hidden;
 }
 
 .stat-block {
-    height: 42px;
-    width : 48px;
+  height: 42px;
+  width: 48px;
 }
 
 .main-block {
-    height: 41px;
-    width : 190px;
+  height: 41px;
+  width: 190px;
 }
 
 .block-label {
-    font-weight: 600;
-    text-align : center;
+  font-weight: 600;
+  text-align: center;
 }
 
 .block-data {
-    text-align : center;
-    font-weight: 400;
+  text-align: center;
+  font-weight: 400;
 }
 
 .tab-label {
-    display         : flex;
-    justify-content : center;
-    color           : @chrome-white;
-    background-color: @flint-black;
-    text-align      : center;
-    font-size       : @font-normal;
-    min-width       : 150px;
-    //clip-path: polygon(33px 0, 100% 0%, 100% 100%, 11px 100%);
+  display: flex;
+  justify-content: center;
+  color: @chrome-white;
+  background-color: @flint-black;
+  text-align: center;
+  font-size: @font-normal;
+  min-width: 150px;
+  //clip-path: polygon(33px 0, 100% 0%, 100% 100%, 11px 100%);
 
-    &.tab-indent {
-        clip-path: polygon(33px 0, 100% 0%, 100% 100%, 11px 100%);
-    }
+  &.tab-indent {
+    clip-path: polygon(33px 0, 100% 0%, 100% 100%, 11px 100%);
+  }
 
-    &.active {
-        background-color: @wyrm-red;
-    }
+  &.active {
+    background-color: @wyrm-red;
+  }
 
-    &:hover {
-        text-shadow: none;
-    }
+  &:hover {
+    text-shadow: none;
+  }
 }
 
 .tab-pink-underlay {
-    background-color: @meat-space-pink;
-    margin-left     : 20px;
-    clip-path       : polygon(22px 0, 100% 0%, 100% 100%, 0% 100%);
+  background-color: @meat-space-pink;
+  margin-left: 20px;
+  clip-path: polygon(22px 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .cpr-tabs {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
 }
 
 .cpr-tabs > * {
-    flex: 1;
+  flex: 1;
 }
 
 .cpr-tabs > .flex0 {
-    display: block;
-    flex: 0;
+  display: block;
+  flex: 0;
 }
 
 .cpr-tabs > .flex1 {
-   flex: 1;
+  flex: 1;
 }
 
 .cpr-tabs > .flex2 {
-    flex: 2;
+  flex: 2;
 }
 
 .cpr-tabs > .flex3 {
-    flex: 3;
+  flex: 3;
 }
 
 .cpr-tabs .item {
-    text-align: center;
+  text-align: center;
 }
 
 .cpr-tabs .item.active {
-    text-shadow: 0 0 10px red;
+  text-shadow: 0 0 10px red;
 }
 
 .collapse-icon,
 .expand-icon {
-    font-size: xx-small;
+  font-size: xx-small;
 }
 
 .sheet-cprFilter-section {

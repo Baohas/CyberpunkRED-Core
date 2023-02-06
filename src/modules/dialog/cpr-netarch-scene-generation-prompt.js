@@ -10,32 +10,40 @@ export default class NetarchSceneGenerationPrompt {
     return new Promise((resolve, reject) => {
       renderTemplate(template, data).then((html) => {
         const _onCancel = () => {
-          LOGGER.trace("_onCancel | Dialog NetarchSceneGenerationPrompt | called.");
+          LOGGER.trace(
+            "_onCancel | Dialog NetarchSceneGenerationPrompt | called."
+          );
           reject(new Error("Promise rejected: Window Closed"));
         };
         const _onConfirm = (html) => {
-          LOGGER.trace("_onConfirm | Dialog NetarchSceneGenerationPrompt | called.");
+          LOGGER.trace(
+            "_onConfirm | Dialog NetarchSceneGenerationPrompt | called."
+          );
           const fd = new FormDataExtended(html.find("form")[0]);
           const formData = foundry.utils.expandObject(fd.object);
           resolve(formData);
         };
         new Dialog({
-          title: SystemUtils.Localize("CPR.dialog.netArchitectureGeneration.title"),
+          title: SystemUtils.Localize(
+            "CPR.dialog.netArchitectureGeneration.title"
+          ),
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: "Confirm",
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: "Cancel",
               callback: (html) => _onCancel(html),
             },
           },
           default: "confirm",
-          render: LOGGER.trace("confirm | Dialog NetarchSceneGenerationPrompt | called."),
+          render: LOGGER.trace(
+            "confirm | Dialog NetarchSceneGenerationPrompt | called."
+          ),
           close: () => {
             reject(new Error("Promise rejected: Window Closed"));
           },

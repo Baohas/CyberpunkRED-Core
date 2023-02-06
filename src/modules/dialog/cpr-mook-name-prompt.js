@@ -6,7 +6,10 @@ export default class MookNamePrompt {
   static async RenderPrompt(mookName) {
     LOGGER.trace("RenderPrompt | MookNamePrompt | called.");
     return new Promise((resolve, reject) => {
-      renderTemplate(`systems/${game.system.id}/templates/dialog/cpr-mook-name-prompt.hbs`, mookName).then((html) => {
+      renderTemplate(
+        `systems/${game.system.id}/templates/dialog/cpr-mook-name-prompt.hbs`,
+        mookName
+      ).then((html) => {
         const _onCancel = () => {
           LOGGER.trace("_onCancel | Dialog MookNamePrompt | called.");
           reject(new Error("Promise rejected: Window Closed"));
@@ -23,13 +26,13 @@ export default class MookNamePrompt {
           content: html,
           buttons: {
             confirm: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
               // eslint-disable-next-line no-shadow
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: "<i class=\"fas fa-times\"></i>",
+              icon: '<i class="fas fa-times"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: () => _onCancel(html),
             },

@@ -63,28 +63,40 @@ const Effects = function Effects() {
    * Note: It would be nice to add custom properties, but they seem to be ignored by Foundry.
    * This is why we provide a custom CPRActiveEffect object elsewhere in the code base.
    *
+   * @param {Boolean} render - Render the effect's sheet or not. Default true.
    * @returns {ActiveEffect} - the newly created document
    */
-  this.createEffect = function createEffect() {
+  this.createEffect = async function createEffect(render = true) {
     LOGGER.trace("createEffect | Effects | Called.");
     if (this.isOwned) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning"));
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning")
+      );
       return null;
     }
     let disabled = false;
-    if (this.system.usage === "toggled" || this.system.usage === "snorted") disabled = true;
-    return this.createEmbeddedDocuments("ActiveEffect", [{
-      label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
-      icon: "icons/svg/aura.svg",
-      origin: this.uuid,
-      disabled,
-    }]);
+    if (this.system.usage === "toggled" || this.system.usage === "snorted")
+      disabled = true;
+    const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [
+      {
+        label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
+        icon: "icons/svg/aura.svg",
+        origin: this.uuid,
+        disabled,
+      },
+    ]);
+
+    return effectDoc[0].sheet.render(render);
   };
 
   this.copyEffect = function copyEffect(eid) {
     LOGGER.trace("copyEffect | Effects | Called.");
     if (this.isOwned) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning"));
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning")
+      );
       return null;
     }
     const effect = duplicate(this.getEffect(eid));
@@ -101,7 +113,10 @@ const Effects = function Effects() {
     LOGGER.trace("deleteEffect | Effects | Called.");
     const effect = this.getEffect(eid);
     if (this.isOwned) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning"));
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning")
+      );
       return null;
     }
     return effect.delete();
@@ -116,7 +131,10 @@ const Effects = function Effects() {
   this.editEffect = function editEffect(eid) {
     LOGGER.trace("editEffect | Effects | Called.");
     if (this.isOwned) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning"));
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning")
+      );
       return null;
     }
     const effect = this.getEffect(eid);
@@ -173,7 +191,10 @@ const Effects = function Effects() {
     const value = !effect.disabled;
     LOGGER.debug(`Setting disabled on ${eid} to ${value}`);
     if (this.isOwned) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning"));
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning")
+      );
       return null;
     }
     return effect.update({ disabled: value });
@@ -241,7 +262,9 @@ const Effects = function Effects() {
   this.getMyEffectsOnActor = function getMyEffectsOnActor() {
     LOGGER.trace("getActorItemEffects | Effects | Called.");
     if (!this.isOwned || !this.actor) return [];
-    return this.actor.effects.filter((ae) => ae.origin.endsWith(`Item.${this.id}`));
+    return this.actor.effects.filter((ae) =>
+      ae.origin.endsWith(`Item.${this.id}`)
+    );
   };
 
   /**
@@ -260,11 +283,15 @@ const Effects = function Effects() {
       const aeUpdates = [];
       if (this.isOwned) {
         // if the item is owned, we change the AEs on the actor
-        this.getMyEffectsOnActor().forEach((ae) => aeUpdates.push({ _id: ae.id, disabled: true }));
+        this.getMyEffectsOnActor().forEach((ae) =>
+          aeUpdates.push({ _id: ae.id, disabled: true })
+        );
         this.actor.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
       } else {
         // if unowned, then we can change the AEs on the item itself
-        this.effects.forEach((ae) => aeUpdates.push({ _id: ae.id, disabled: true }));
+        this.effects.forEach((ae) =>
+          aeUpdates.push({ _id: ae.id, disabled: true })
+        );
         this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
       }
     }

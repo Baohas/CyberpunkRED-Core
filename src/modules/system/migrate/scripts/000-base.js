@@ -15,9 +15,11 @@ export default class BaseMigration extends CPRMigration {
 
   async run() {
     LOGGER.trace("run | 0-base Migration");
-    LOGGER.log(`Migrating to data model version ${this.version} (legacy migration script)`);
+    LOGGER.log(
+      `Migrating to data model version ${this.version} (legacy migration script)`
+    );
     let totalCount = game.items.contents.length;
-    let watermarkCount = (totalCount / 24) + 1;
+    let watermarkCount = totalCount / 24 + 1;
     let loopIndex = 0;
 
     // Migrate World Items
@@ -25,7 +27,10 @@ export default class BaseMigration extends CPRMigration {
       loopIndex += 1;
       if (loopIndex > watermarkCount) {
         this.statusPercent += 1;
-        CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
+        CPRSystemUtils.updateMigrationBar(
+          this.statusPercent,
+          this.statusMessage
+        );
         loopIndex = 0;
       }
       try {
@@ -35,13 +40,15 @@ export default class BaseMigration extends CPRMigration {
           await i.update(updateData, { diff: false });
         }
       } catch (err) {
-        LOGGER.error(`CPR MIGRATION | Failed ${game.system.id} system migration for Item ${i.name}: ${err.message}`);
+        LOGGER.error(
+          `CPR MIGRATION | Failed ${game.system.id} system migration for Item ${i.name}: ${err.message}`
+        );
         this.errors += 1;
         LOGGER.error(err);
       }
     }
     totalCount = game.actors.contents.length;
-    watermarkCount = (totalCount / 24) + 1;
+    watermarkCount = totalCount / 24 + 1;
     loopIndex = 0;
 
     // Migrate World Actors
@@ -49,7 +56,10 @@ export default class BaseMigration extends CPRMigration {
       loopIndex += 1;
       if (loopIndex > watermarkCount) {
         this.statusPercent += 1;
-        CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
+        CPRSystemUtils.updateMigrationBar(
+          this.statusPercent,
+          this.statusMessage
+        );
         loopIndex = 0;
       }
 
@@ -60,20 +70,25 @@ export default class BaseMigration extends CPRMigration {
           await BaseMigration.createActorItems(a);
         }
 
-        const updateData = (typeof a.data === "undefined") ? {} : BaseMigration.migrateActorData(a.data, "actor");
+        const updateData =
+          typeof a.data === "undefined"
+            ? {}
+            : BaseMigration.migrateActorData(a.data, "actor");
         if (!foundry.utils.isObjectEmpty(updateData)) {
           BaseMigration._migrationLog(`Migrating Actor entity ${a.name}`);
           await a.update(updateData, { enforceTypes: false });
         }
       } catch (err) {
-        LOGGER.error(`CPR MIGRATION | Failed ${game.system.id} system migration for Actor ${a.name}: ${err.message}`);
+        LOGGER.error(
+          `CPR MIGRATION | Failed ${game.system.id} system migration for Actor ${a.name}: ${err.message}`
+        );
         this.errors += 1;
         LOGGER.error(err);
       }
     }
 
     totalCount = game.packs.size;
-    watermarkCount = (totalCount / 24) + 1;
+    watermarkCount = totalCount / 24 + 1;
     loopIndex = 0;
 
     // Migrate World Compendiums
@@ -81,7 +96,10 @@ export default class BaseMigration extends CPRMigration {
       loopIndex += 1;
       if (loopIndex > watermarkCount) {
         this.statusPercent += 1;
-        CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
+        CPRSystemUtils.updateMigrationBar(
+          this.statusPercent,
+          this.statusMessage
+        );
         loopIndex = 0;
       }
 
@@ -105,7 +123,9 @@ export default class BaseMigration extends CPRMigration {
           });
         }
       } catch (err) {
-        LOGGER.error(`CPR MIGRATION | Failed ${game.system.id} system migration for Scene ${s.name}: ${err.message}`);
+        LOGGER.error(
+          `CPR MIGRATION | Failed ${game.system.id} system migration for Scene ${s.name}: ${err.message}`
+        );
         this.errors += 1;
         LOGGER.error(err);
       }
@@ -121,11 +141,15 @@ export default class BaseMigration extends CPRMigration {
   static migrateActorData(actorData, dataSource) {
     LOGGER.trace("migrateActorData | 0-base Migration");
     const foundryVersion = parseInt(game.version, 10);
-    const stub = (foundryVersion >= 10) ? "system" : "data";
+    const stub = foundryVersion >= 10 ? "system" : "data";
     const updateData = {};
 
     // Remove flags from container actors, they should be configured on token actors
-    if (actorData.type === "container" && dataSource === "actor" && !actorData.token.actorLink) {
+    if (
+      actorData.type === "container" &&
+      dataSource === "actor" &&
+      !actorData.token.actorLink
+    ) {
       updateData[`flags.${game.system.id}.-=infinite-stock`] = null;
       updateData[`flags.${game.system.id}.-=items-free`] = null;
       updateData[`flags.${game.system.id}.-=players-create`] = null;
@@ -141,7 +165,8 @@ export default class BaseMigration extends CPRMigration {
     if (actorData.items) {
       const items = actorData.items.reduce((arr, i) => {
         // Migrate the Owned Item
-        const itemData = i instanceof CONFIG.Item.documentClass ? i.toObject() : i;
+        const itemData =
+          i instanceof CONFIG.Item.documentClass ? i.toObject() : i;
         const itemUpdate = BaseMigration.migrateItemData(itemData);
 
         if (foundryVersion >= 10) {
@@ -192,85 +217,98 @@ export default class BaseMigration extends CPRMigration {
     // The following only applies to the character data model
     if (actorData.type === "character") {
       // Original Data Model had a spelling issue
-      if ((typeof actorData.data.lifepath.familyBackground) === "undefined") {
+      if (typeof actorData.data.lifepath.familyBackground === "undefined") {
         updateData[`${stub}.lifepath.familyBackground`] = "";
-        if ((typeof actorData.data.lifepath.familyBackgrond) !== "undefined") {
-          updateData[`${stub}.lifepath.familyBackground`] = actorData.data.lifepath.familyBackgrond;
+        if (typeof actorData.data.lifepath.familyBackgrond !== "undefined") {
+          updateData[`${stub}.lifepath.familyBackground`] =
+            actorData.data.lifepath.familyBackgrond;
           updateData[`${stub}.lifepath.-=familyBackgrond`] = null;
         }
       }
-      if ((typeof actorData.data.lifestyle.fashion) === "undefined") {
+      if (typeof actorData.data.lifestyle.fashion === "undefined") {
         updateData[`${stub}.lifestyle.fashion`] = "";
-        if ((typeof actorData.data.lifestyle.fasion) !== "undefined") {
-          updateData[`${stub}.lifestyle.fashion`] = actorData.data.lifestyle.fasion;
+        if (typeof actorData.data.lifestyle.fasion !== "undefined") {
+          updateData[`${stub}.lifestyle.fashion`] =
+            actorData.data.lifestyle.fasion;
           updateData[`${stub}.lifestyle.-=fasion`] = null;
         }
 
-        if ((typeof actorData.data.improvementPoints.total) !== "undefined") {
+        if (typeof actorData.data.improvementPoints.total !== "undefined") {
           updateData[`${stub}.improvementPoints.-=total`] = null;
         }
 
         // Removed in 0.72
-        if ((typeof actorData.data.hp) !== "undefined") {
+        if (typeof actorData.data.hp !== "undefined") {
           updateData[`${stub}.-=hp`] = null;
         }
       }
 
       // Lifepath migration/fixes
       // Changed in 0.72
-      if ((typeof actorData.data.lifepath.friends) === "object") {
+      if (typeof actorData.data.lifepath.friends === "object") {
         updateData[`${stub}.lifepath.friends`] = "";
       }
       // Changed in 0.72
-      if ((typeof actorData.data.lifepath.tragicLoveAffairs) === "object") {
+      if (typeof actorData.data.lifepath.tragicLoveAffairs === "object") {
         updateData[`${stub}.lifepath.tragicLoveAffairs`] = "";
       }
       // Changed in 0.72
-      if ((typeof actorData.data.lifepath.enemies) === "object") {
+      if (typeof actorData.data.lifepath.enemies === "object") {
         updateData[`${stub}.lifepath.enemies`] = "";
       }
 
       // Lifestyle migration/fixes
       // Changed in 0.72
-      if ((typeof actorData.data.lifestyle.fashion) === "string") {
+      if (typeof actorData.data.lifestyle.fashion === "string") {
         const oldData = actorData.data.lifestyle.fashion;
         updateData[`${stub}.lifestyle.fashion`] = { description: oldData };
       }
 
       // Changed in 0.72
-      if ((typeof actorData.data.lifestyle.housing) === "string") {
+      if (typeof actorData.data.lifestyle.housing === "string") {
         const oldData = actorData.data.lifestyle.housing;
-        updateData[`${stub}.lifestyle.housing`] = { description: oldData, cost: 0 };
+        updateData[`${stub}.lifestyle.housing`] = {
+          description: oldData,
+          cost: 0,
+        };
       }
       // Changed in 0.72
-      if ((typeof actorData.data.lifestyle.lifestyle) === "string") {
+      if (typeof actorData.data.lifestyle.lifestyle === "string") {
         const oldData = actorData.data.lifestyle.lifestyle;
-        updateData[`${stub}.lifestyle.lifestyle`] = { description: oldData, cost: 0 };
+        updateData[`${stub}.lifestyle.lifestyle`] = {
+          description: oldData,
+          cost: 0,
+        };
       }
 
       // Removed in 0.72
-      if ((typeof actorData.data.lifestyle.rent) !== "undefined") {
+      if (typeof actorData.data.lifestyle.rent !== "undefined") {
         updateData[`${stub}.lifestyle.-=rent`] = null;
       }
 
       // Added in 0.72
-      if ((typeof actorData.data.lifestyle.traumaTeam) === "undefined") {
-        updateData[`${stub}.lifestyle.traumaTeam`] = { description: "", cost: 0 };
+      if (typeof actorData.data.lifestyle.traumaTeam === "undefined") {
+        updateData[`${stub}.lifestyle.traumaTeam`] = {
+          description: "",
+          cost: 0,
+        };
       }
       // Added in 0.72
-      if ((typeof actorData.data.lifestyle.extras) === "undefined") {
+      if (typeof actorData.data.lifestyle.extras === "undefined") {
         updateData[`${stub}.lifestyle.extras`] = { description: "", cost: 0 };
       }
 
       // Improvement Points migration/fixes
-      if ((typeof actorData.data.improvementPoints) === "undefined") {
+      if (typeof actorData.data.improvementPoints === "undefined") {
         updateData[`${stub}.improvementPoints`] = {
           value: 0,
           transactions: [],
         };
-      } else if ((typeof actorData.data.improvementPoints.value) === "undefined") {
+      } else if (
+        typeof actorData.data.improvementPoints.value === "undefined"
+      ) {
         let ipValue = 0;
-        if ((typeof actorData.data.improvementPoints.total) !== "undefined") {
+        if (typeof actorData.data.improvementPoints.total !== "undefined") {
           ipValue = actorData.data.improvementPoints.total;
         }
         updateData[`${stub}.improvementPoints`] = {
@@ -280,14 +318,14 @@ export default class BaseMigration extends CPRMigration {
       }
 
       // Wealth/Eddies migration/fixes
-      if ((typeof actorData.data.wealth) === "undefined") {
+      if (typeof actorData.data.wealth === "undefined") {
         updateData[`${stub}.wealth`] = {
           value: 0,
           transactions: [],
         };
-      } else if ((typeof actorData.data.wealth.value) === "undefined") {
+      } else if (typeof actorData.data.wealth.value === "undefined") {
         let eddies = 0;
-        if ((typeof actorData.data.wealth.eddies) !== "undefined") {
+        if (typeof actorData.data.wealth.eddies !== "undefined") {
           eddies = actorData.data.wealth.eddies;
         }
         updateData[`${stub}.wealth`] = {
@@ -296,18 +334,18 @@ export default class BaseMigration extends CPRMigration {
         };
       }
 
-      if ((typeof actorData.data.wealth.eddies) !== "undefined") {
+      if (typeof actorData.data.wealth.eddies !== "undefined") {
         updateData[`${stub}.wealth.-=eddies`] = null;
       }
 
       // Reputation migration/fixes
-      if ((typeof actorData.data.reputation) === "undefined") {
+      if (typeof actorData.data.reputation === "undefined") {
         updateData[`${stub}.reputation`] = {
           value: 0,
           transactions: [],
         };
       }
-      if ((typeof actorData.data["reputation:"]) !== "undefined") {
+      if (typeof actorData.data["reputation:"] !== "undefined") {
         updateData[`${stub}.-=reputation:`] = null;
       }
     }
@@ -315,20 +353,26 @@ export default class BaseMigration extends CPRMigration {
     if (actorData.type === "character" || actorData.type === "mook") {
       // Applies to both characters and mooks
       // Death Save/Death Penalty migration/fixes
-      if ((typeof actorData.data.derivedStats.deathSave) === "number") {
+      if (typeof actorData.data.derivedStats.deathSave === "number") {
         const oldDeathSave = actorData.data.derivedStats.deathSave;
         let oldDeathPenalty = 0;
-        if (typeof actorData.data.derivedStats.deathSavePenlty !== "undefined") {
+        if (
+          typeof actorData.data.derivedStats.deathSavePenlty !== "undefined"
+        ) {
           oldDeathPenalty = actorData.data.derivedStats.deathSavePenlty;
         }
-        updateData[`${stub}.derivedStats.deathSave`] = { value: oldDeathSave, penalty: oldDeathPenalty, basePenalty: 0 };
+        updateData[`${stub}.derivedStats.deathSave`] = {
+          value: oldDeathSave,
+          penalty: oldDeathPenalty,
+          basePenalty: 0,
+        };
       }
 
       if (typeof actorData.data.derivedStats.deathSavePenlty !== "undefined") {
         updateData[`${stub}.derivedStats.-=deathSavePenlty`] = null;
       }
 
-      if ((typeof actorData.data.roleInfo.activeRole) === "undefined") {
+      if (typeof actorData.data.roleInfo.activeRole === "undefined") {
         let configuredRole = "solo";
         if (actorData.data.roleInfo.roles.length > 0) {
           // eslint-disable-next-line prefer-destructuring
@@ -339,7 +383,7 @@ export default class BaseMigration extends CPRMigration {
 
       // New data point needed for Roles as items implementation (0.79.1)
       if (actorData.data.roleInfo.activeNetRole === "") {
-        if ((typeof actorData.data.roleInfo.roles) !== "undefined") {
+        if (typeof actorData.data.roleInfo.roles !== "undefined") {
           if (actorData.data.roleInfo.roles.includes("netrunner")) {
             updateData[`${stub}.roleInfo.activeNetRole`] = "Netrunner";
           }
@@ -381,38 +425,39 @@ export default class BaseMigration extends CPRMigration {
         default:
       }
 
-      if ((typeof actorData.data.criticalInjuries) === "undefined") {
+      if (typeof actorData.data.criticalInjuries === "undefined") {
         updateData[`${stub}.criticalInjuries`] = [];
       }
 
       // Humanity migration/fixes
       // Moved to derivedStats in 0.72
-      if ((typeof actorData.data.humanity) !== "undefined") {
+      if (typeof actorData.data.humanity !== "undefined") {
         updateData[`${stub}.derivedStats.humanity`] = actorData.data.humanity;
       }
 
-      if ((typeof actorData.data.humanity) !== "undefined") {
+      if (typeof actorData.data.humanity !== "undefined") {
         updateData[`${stub}a.-=humanity`] = null;
       }
 
       // Wound State migration/fixes
       // Moved to derivedStats in 0.72
-      if ((typeof actorData.data.currentWoundState) !== "undefined") {
-        updateData[`${stub}.derivedStats.currentWoundState`] = actorData.data.currentWoundState;
+      if (typeof actorData.data.currentWoundState !== "undefined") {
+        updateData[`${stub}.derivedStats.currentWoundState`] =
+          actorData.data.currentWoundState;
       }
 
-      if ((typeof actorData.data.woundState) !== "undefined") {
+      if (typeof actorData.data.woundState !== "undefined") {
         updateData[`${stub}a.-=woundState`] = null;
       }
 
       // Critical Injuries migration/fixes
       // Moved to items in 0.72
-      if ((typeof actorData.data.criticalInjuries) !== "undefined") {
+      if (typeof actorData.data.criticalInjuries !== "undefined") {
         updateData[`${stub}.-=criticalInjuries`] = null;
       }
 
       // Adds external data points to actorData (e.g. for Armor SP resource bars)
-      if ((typeof actorData.data.externalData) === "undefined") {
+      if (typeof actorData.data.externalData === "undefined") {
         updateData[`${stub}.externalData`] = {
           currentArmorBody: {
             id: "",
@@ -442,14 +487,14 @@ export default class BaseMigration extends CPRMigration {
 
       // Adds universal bonuses to actorData (for current implementation of roles
       // providing bonuses to attacks and damage, and future implementation of active effects).
-      if ((typeof actorData.data.universalBonuses) === "undefined") {
+      if (typeof actorData.data.universalBonuses === "undefined") {
         updateData[`${stub}.universalBonuses`] = {
           attack: 0,
           damage: 0,
         };
       }
 
-      if ((typeof actorData.data.roleInfo.roleskills) !== "undefined") {
+      if (typeof actorData.data.roleInfo.roleskills !== "undefined") {
         updateData[`${stub}.roleInfo.-=roleskills`] = null;
       }
     }
@@ -466,7 +511,7 @@ export default class BaseMigration extends CPRMigration {
     }
 
     if (actor.type === "container") {
-      const actorFlags = (foundryVersion >= 10) ? actor.flags : actor.data.flags;
+      const actorFlags = foundryVersion >= 10 ? actor.flags : actor.data.flags;
       if (typeof actorFlags[game.system.id] === "undefined") {
         if (foundryVersion >= 10) {
           actor.flags[game.system.id] = {};
@@ -475,7 +520,10 @@ export default class BaseMigration extends CPRMigration {
         }
       }
 
-      const systemFlags = (foundryVersion >= 10) ? actor.flags[game.system.id] : actor.data.flags[game.system.id];
+      const systemFlags =
+        foundryVersion >= 10
+          ? actor.flags[game.system.id]
+          : actor.data.flags[game.system.id];
 
       if (typeof systemFlags["container-type"] === "undefined") {
         actor.setFlag(game.system.id, "container-type", "shop");
@@ -495,11 +543,13 @@ export default class BaseMigration extends CPRMigration {
     let newItems = [];
     const actorData = actorDocument.data;
     // Migrate critical injures to items
-    if ((typeof actorData.data.criticalInjuries) !== "undefined") {
+    if (typeof actorData.data.criticalInjuries !== "undefined") {
       if (actorData.data.criticalInjuries.length > 0) {
         const migratedInjuries = this.migrateCriticalInjuries(actorData);
         if (!foundry.utils.isObjectEmpty(migratedInjuries)) {
-          BaseMigration._migrationLog(`Migration critical injuries for Actor "${actorData.name}" (${actorData._id})`);
+          BaseMigration._migrationLog(
+            `Migration critical injuries for Actor "${actorData.name}" (${actorData._id})`
+          );
           newItems = migratedInjuries;
         }
       }
@@ -507,16 +557,22 @@ export default class BaseMigration extends CPRMigration {
 
     // Migrate role abilities to items and assign correct values.
     const { roleskills } = actorData.data.roleInfo;
-    if ((typeof roleskills) !== "undefined") {
-      const content = await CPRSystemUtils.GetCompendiumDocs(`${game.system.id}.roles-items`);
+    if (typeof roleskills !== "undefined") {
+      const content = await CPRSystemUtils.GetCompendiumDocs(
+        `${game.system.id}.roles-items`
+      );
       Object.entries(roleskills).forEach(([role, roleSkills]) => {
         let newRole;
         Object.entries(roleSkills).forEach(([skillName, skillValue]) => {
           if (skillName !== "subSkills") {
             if (actorData.data.roleInfo.roles.includes(role)) {
-              const hasRoleObject = actorDocument.itemTypes.role.find((r) => r.name.toLowerCase() === role);
+              const hasRoleObject = actorDocument.itemTypes.role.find(
+                (r) => r.name.toLowerCase() === role
+              );
               if (typeof hasRoleObject === "undefined") {
-                newRole = duplicate(content.find((c) => c.name.toLowerCase() === role).data);
+                newRole = duplicate(
+                  content.find((c) => c.name.toLowerCase() === role).data
+                );
                 if (typeof newRole.data !== "undefined") {
                   newRole.data.rank = skillValue;
                 }
@@ -527,39 +583,65 @@ export default class BaseMigration extends CPRMigration {
             }
           }
           if (skillName === "subSkills" && newRole) {
-            Object.entries(skillValue).forEach(([subSkillName, subSkillValue]) => {
-              const niceSubRoleName = CPRSystemUtils.Localize(`CPR.global.role.${role}.ability.${subSkillName}`);
-              if (typeof newRole.data !== "undefined") {
-                newRole.data.abilities.find((a) => a.name === niceSubRoleName).rank = subSkillValue;
+            Object.entries(skillValue).forEach(
+              ([subSkillName, subSkillValue]) => {
+                const niceSubRoleName = CPRSystemUtils.Localize(
+                  `CPR.global.role.${role}.ability.${subSkillName}`
+                );
+                if (typeof newRole.data !== "undefined") {
+                  newRole.data.abilities.find(
+                    (a) => a.name === niceSubRoleName
+                  ).rank = subSkillValue;
+                }
+                if (typeof newRole.system !== "undefined") {
+                  newRole.system.abilities.find(
+                    (a) => a.name === niceSubRoleName
+                  ).rank = subSkillValue;
+                }
               }
-              if (typeof newRole.system !== "undefined") {
-                newRole.system.abilities.find((a) => a.name === niceSubRoleName).rank = subSkillValue;
-              }
-            });
+            );
           }
         });
         if (newRole) {
           switch (role) {
             case "medtech": {
-              const medtechCryo = (typeof newRole.data !== "undefined") ? newRole.data.abilities.find((a) => a.name === "Medical Tech (Cryosystem Operation)").rank
-                : newRole.system.abilities.find((a) => a.name === "Medical Tech (Cryosystem Operation)").rank;
-              const medtechPharma = (typeof newRole.data !== "undefined") ? newRole.data.abilities.find((a) => a.name === "Medical Tech (Pharmaceuticals)").rank
-                : newRole.system.abilities.find((a) => a.name === "Medical Tech (Pharmaceuticals)").rank;
+              const medtechCryo =
+                typeof newRole.data !== "undefined"
+                  ? newRole.data.abilities.find(
+                      (a) => a.name === "Medical Tech (Cryosystem Operation)"
+                    ).rank
+                  : newRole.system.abilities.find(
+                      (a) => a.name === "Medical Tech (Cryosystem Operation)"
+                    ).rank;
+              const medtechPharma =
+                typeof newRole.data !== "undefined"
+                  ? newRole.data.abilities.find(
+                      (a) => a.name === "Medical Tech (Pharmaceuticals)"
+                    ).rank
+                  : newRole.system.abilities.find(
+                      (a) => a.name === "Medical Tech (Pharmaceuticals)"
+                    ).rank;
               if (typeof newRole.data !== "undefined") {
-                newRole.data.abilities.find((a) => a.name === "Medical Tech").rank = medtechCryo + medtechPharma;
+                newRole.data.abilities.find(
+                  (a) => a.name === "Medical Tech"
+                ).rank = medtechCryo + medtechPharma;
               }
               if (typeof newRole.system !== "undefined") {
-                newRole.system.abilities.find((a) => a.name === "Medical Tech").rank = medtechCryo + medtechPharma;
+                newRole.system.abilities.find(
+                  (a) => a.name === "Medical Tech"
+                ).rank = medtechCryo + medtechPharma;
               }
 
               break;
             }
             case "fixer": {
               if (typeof newRole.data !== "undefined") {
-                newRole.data.abilities.find((a) => a.name === "Haggle").rank = newRole.data.rank;
+                newRole.data.abilities.find((a) => a.name === "Haggle").rank =
+                  newRole.data.rank;
               }
               if (typeof newRole.system !== "undefined") {
-                newRole.system.abilities.find((a) => a.name === "Haggle").rank = newRole.system.rank;
+                newRole.system.abilities.find((a) => a.name === "Haggle").rank =
+                  newRole.system.rank;
               }
 
               break;
@@ -580,7 +662,9 @@ export default class BaseMigration extends CPRMigration {
     if (missingContent.length > 0) {
       missingContent.forEach((c) => {
         const missingItem = c.data;
-        BaseMigration._migrationLog(`Actor "${actorData.name}" (${actorData._id}) is missing "${missingItem.name}". Creating.`);
+        BaseMigration._migrationLog(
+          `Actor "${actorData.name}" (${actorData._id}) is missing "${missingItem.name}". Creating.`
+        );
         newItems.push(missingItem);
       });
     }
@@ -593,8 +677,12 @@ export default class BaseMigration extends CPRMigration {
       const itemData = p.data;
       let quantity = itemData.data.amount;
       if (quantity > 1) {
-        BaseMigration._migrationLog(`Splitting Program "${itemData.name}" (${itemData._id}) `
-          + `Quanity: ${quantity} on actor "${actorData.name}" (${actorData._id}). Net new items: ${quantity - 1}`);
+        BaseMigration._migrationLog(
+          `Splitting Program "${itemData.name}" (${itemData._id}) ` +
+            `Quanity: ${quantity} on actor "${actorData.name}" (${
+              actorData._id
+            }). Net new items: ${quantity - 1}`
+        );
         itemData.data.amount = 1;
         while (quantity > 1) {
           newItems.push(itemData);
@@ -604,20 +692,24 @@ export default class BaseMigration extends CPRMigration {
     });
 
     if (newItems.length > 0) {
-      await actorDocument.createEmbeddedDocuments("Item", newItems, { CPRmigration: true });
+      await actorDocument.createEmbeddedDocuments("Item", newItems, {
+        CPRmigration: true,
+      });
     }
   }
 
   static _validateCoreContent(actorData, content) {
     LOGGER.trace("_validateCoreContent | 0-base Migration");
 
-    const ownedCyberware = actorData.items.filter((o) => o.type === "cyberware");
+    const ownedCyberware = actorData.items.filter(
+      (o) => o.type === "cyberware"
+    );
     const installedCyberware = ownedCyberware.filter((i) => {
       let isInstalled = false;
-      if ((typeof i.data.isInstalled) !== "undefined") {
+      if (typeof i.data.isInstalled !== "undefined") {
         isInstalled = i.data.isInstalled;
       }
-      if ((typeof i.system.isInstalled) !== "undefined") {
+      if (typeof i.system.isInstalled !== "undefined") {
         isInstalled = i.system.isInstalled;
       }
       return isInstalled;
@@ -639,7 +731,9 @@ export default class BaseMigration extends CPRMigration {
     const injuryItems = [];
     criticalInjuries.forEach(async (injury) => {
       const { mods } = injury;
-      const hasPenalty = (mods.filter((mod) => mod.name === "deathSavePenalty"))[0].value;
+      const hasPenalty = mods.filter(
+        (mod) => mod.name === "deathSavePenalty"
+      )[0].value;
       const cprData = {
         location: injury.location,
         description: {
@@ -664,7 +758,7 @@ export default class BaseMigration extends CPRMigration {
         name: injury.name,
       };
       const foundryVersion = parseInt(game.version, 10);
-      const stub = (foundryVersion >= 10) ? "system" : "data";
+      const stub = foundryVersion >= 10 ? "system" : "data";
       itemData[stub] = cprData;
       injuryItems.push({ _id: injury.id, data: itemData });
     });
@@ -726,17 +820,17 @@ export default class BaseMigration extends CPRMigration {
   static _migrateWeapon(itemData, updateData) {
     LOGGER.trace("_migrateWeapon | 0-base Migration");
 
-    if ((typeof itemData.data.isConcealed) === "undefined") {
+    if (typeof itemData.data.isConcealed === "undefined") {
       updateData["data.isConcealed"] = false;
     }
-    if ((typeof itemData.data.dvTable) === "undefined") {
+    if (typeof itemData.data.dvTable === "undefined") {
       updateData["data.dvTable"] = "";
     }
-    if ((typeof itemData.data.attackMod) === "undefined") {
+    if (typeof itemData.data.attackMod === "undefined") {
       updateData["data.attackMod"] = 0;
     }
     // Added with 0.75.1
-    if ((typeof itemData.data.unarmedAutomaticCalculation) === "undefined") {
+    if (typeof itemData.data.unarmedAutomaticCalculation === "undefined") {
       updateData["data.unarmedAutomaticCalculation"] = true;
     }
     return updateData;
@@ -745,9 +839,9 @@ export default class BaseMigration extends CPRMigration {
   static _migrateArmor(itemData, updateData) {
     LOGGER.trace("_migrateArmor | 0-base Migration");
 
-    if ((typeof itemData.data.headLocation.sp) !== "number") {
+    if (typeof itemData.data.headLocation.sp !== "number") {
       let newValue = 0;
-      if ((typeof itemData.data.headLocation.sp) !== "undefined") {
+      if (typeof itemData.data.headLocation.sp !== "undefined") {
         const spValue = Number(itemData.data.headLocation.sp);
         if (typeof spValue === "number") {
           newValue = spValue;
@@ -756,9 +850,9 @@ export default class BaseMigration extends CPRMigration {
       updateData["data.headLocation.sp"] = newValue;
     }
 
-    if ((typeof itemData.data.bodyLocation.sp) !== "number") {
+    if (typeof itemData.data.bodyLocation.sp !== "number") {
       let newValue = 0;
-      if ((typeof itemData.data.bodyLocation.sp) !== "undefined") {
+      if (typeof itemData.data.bodyLocation.sp !== "undefined") {
         const spValue = Number(itemData.data.bodyLocation.sp);
         if (typeof spValue === "number") {
           newValue = spValue;
@@ -767,9 +861,9 @@ export default class BaseMigration extends CPRMigration {
       updateData["data.bodyLocation.sp"] = newValue;
     }
 
-    if ((typeof itemData.data.shieldHitPoints.max) !== "number") {
+    if (typeof itemData.data.shieldHitPoints.max !== "number") {
       let newValue = 0;
-      if ((typeof itemData.data.shieldHitPoints.max) !== "undefined") {
+      if (typeof itemData.data.shieldHitPoints.max !== "undefined") {
         const hpValue = Number(itemData.data.shieldHitPoints.max);
         if (typeof hpValue === "number") {
           newValue = hpValue;
@@ -778,9 +872,9 @@ export default class BaseMigration extends CPRMigration {
       updateData["data.shieldHitPoints.max"] = newValue;
     }
 
-    if ((typeof itemData.data.shieldHitPoints.value) !== "number") {
+    if (typeof itemData.data.shieldHitPoints.value !== "number") {
       let newValue = 0;
-      if ((typeof itemData.data.shieldHitPoints.value) !== "undefined") {
+      if (typeof itemData.data.shieldHitPoints.value !== "undefined") {
         const hpValue = Number(itemData.data.shieldHitPoints.value);
         if (typeof hpValue === "number") {
           newValue = hpValue;
@@ -795,21 +889,30 @@ export default class BaseMigration extends CPRMigration {
   static _migrateProgram(itemData, updateData) {
     LOGGER.trace("_migrateProgram | 0-base Migration");
 
-    if ((typeof itemData.data.slots) === "undefined" || itemData.data.slots === null) {
+    if (
+      typeof itemData.data.slots === "undefined" ||
+      itemData.data.slots === null
+    ) {
       updateData["data.slots"] = 1;
     }
-    if ((typeof itemData.data.install) === "undefined" || itemData.data.install === null) {
+    if (
+      typeof itemData.data.install === "undefined" ||
+      itemData.data.install === null
+    ) {
       updateData["data.install"] = "";
     }
-    if ((typeof itemData.data.isInstalled) === "undefined" || itemData.data.isInstalled === null) {
+    if (
+      typeof itemData.data.isInstalled === "undefined" ||
+      itemData.data.isInstalled === null
+    ) {
       updateData["data.isInstalled"] = false;
     }
 
-    if ((typeof itemData.data.modifiers) !== "object") {
+    if (typeof itemData.data.modifiers !== "object") {
       updateData["data.modifiers"] = {};
     }
 
-    if ((typeof itemData.data.damage) !== "object") {
+    if (typeof itemData.data.damage !== "object") {
       updateData["data.damage"] = { standard: "1d6", blackIce: "" };
     }
 
@@ -817,11 +920,17 @@ export default class BaseMigration extends CPRMigration {
       updateData["data.amount"] = 1;
     }
 
-    if ((typeof itemData.data.blackIceType) === "undefined" || itemData.data.blackIceType === null) {
+    if (
+      typeof itemData.data.blackIceType === "undefined" ||
+      itemData.data.blackIceType === null
+    ) {
       updateData["data.blackIceType"] = "antipersonnel";
     }
 
-    if ((typeof itemData.data.prototypeActor) === "undefined" || itemData.data.prototypeActor === null) {
+    if (
+      typeof itemData.data.prototypeActor === "undefined" ||
+      itemData.data.prototypeActor === null
+    ) {
       updateData["data.prototypeActor"] = "";
     }
 
@@ -911,7 +1020,10 @@ export default class BaseMigration extends CPRMigration {
       default:
     }
 
-    if ((typeof itemData.data.equipped) === "undefined" || itemData.data.equipped === null) {
+    if (
+      typeof itemData.data.equipped === "undefined" ||
+      itemData.data.equipped === null
+    ) {
       updateData["data.equipped"] = "owned";
     }
     return updateData;
@@ -920,9 +1032,9 @@ export default class BaseMigration extends CPRMigration {
   static _migrateVehicle(itemData, updateData) {
     LOGGER.trace("_migrateVehicle | 0-base Migration");
 
-    if ((typeof itemData.data.sdp) === "undefined") {
+    if (typeof itemData.data.sdp === "undefined") {
       updateData["data.sdp"] = 0;
-    } else if ((typeof itemData.data.sdp) !== "number") {
+    } else if (typeof itemData.data.sdp !== "number") {
       let newSdp = Number(itemData.data.sdp);
       if (typeof newSdp !== "number") {
         newSdp = 0;
@@ -930,7 +1042,7 @@ export default class BaseMigration extends CPRMigration {
       updateData["data.sdp"] = newSdp;
     }
 
-    if ((typeof itemData.data.spd) !== "undefined") {
+    if (typeof itemData.data.spd !== "undefined") {
       let newSdp = Number(itemData.data.spd);
       if (typeof newSdp !== "number") {
         newSdp = 0;
@@ -939,7 +1051,7 @@ export default class BaseMigration extends CPRMigration {
       updateData["data.-=spd"] = null;
     }
 
-    if ((typeof itemData.data.seats) !== "number") {
+    if (typeof itemData.data.seats !== "number") {
       let newSeats = Number(itemData.data.seats);
       if (typeof newSeats !== "number") {
         newSeats = 0;
@@ -968,7 +1080,7 @@ export default class BaseMigration extends CPRMigration {
   static _migrateGear(itemData, updateData) {
     LOGGER.trace("_migrateGear | 0-base Migration");
 
-    if ((typeof itemData.data.equipped) === "undefined") {
+    if (typeof itemData.data.equipped === "undefined") {
       updateData["data.equipped"] = "owned";
     }
 
@@ -978,7 +1090,9 @@ export default class BaseMigration extends CPRMigration {
     // in it's name will be prepended with a MIGRATE tag to let users know there's a new item type.
     if (gearName.includes("cyberdeck")) {
       const oldName = itemData.name;
-      updateData.name = `${CPRSystemUtils.Localize("CPR.migration.tag")} ${oldName}`;
+      updateData.name = `${CPRSystemUtils.Localize(
+        "CPR.migration.tag"
+      )} ${oldName}`;
     }
 
     return updateData;
@@ -991,9 +1105,13 @@ export default class BaseMigration extends CPRMigration {
       updateData["data.slotSize"] = 1;
     }
 
-    if ((itemData.data.isInstalled === true) && (itemData.data.isFoundational === true)) {
+    if (
+      itemData.data.isInstalled === true &&
+      itemData.data.isFoundational === true
+    ) {
       if (Array.isArray(itemData.data.optionalIds)) {
-        updateData["data.installedOptionSlots"] = itemData.data.optionalIds.length;
+        updateData["data.installedOptionSlots"] =
+          itemData.data.optionalIds.length;
       } else {
         updateData["data.installedOptionSlots"] = 0;
         updateData["data.optionalIds"] = [];
@@ -1017,7 +1135,7 @@ export default class BaseMigration extends CPRMigration {
   static _migrateSkill(itemData, updateData) {
     LOGGER.trace("_migrateSkill | 0-base Migration");
 
-    if ((typeof itemData.data.skillmod) !== "number") {
+    if (typeof itemData.data.skillmod !== "number") {
       updateData["data.skillmod"] = 0;
     }
 
@@ -1129,8 +1247,10 @@ export default class BaseMigration extends CPRMigration {
         // is pulling the data from?  Either way, this is technically a broken
         // token and even Foundry throws errors when you do certain things
         // with this token.
-        BaseMigration._migrationLog(`WARNING: Token "${t.name}" (${t.actorId}) on Scene "${scene.name}" (${scene._id})`
-          + `appears to be missing the source Actor and may cause Foundry issues.`);
+        BaseMigration._migrationLog(
+          `WARNING: Token "${t.name}" (${t.actorId}) on Scene "${scene.name}" (${scene._id})` +
+            `appears to be missing the source Actor and may cause Foundry issues.`
+        );
         t.actorId = null;
         t.actorData = {};
       } else if (!t.actorLink) {
@@ -1142,7 +1262,9 @@ export default class BaseMigration extends CPRMigration {
         const updateData = this.migrateTokenActor(token.actor);
         ["items", "effects"].forEach((embeddedName) => {
           if (!updateData[embeddedName]?.length) return;
-          const embeddedUpdates = new Map(updateData[embeddedName].map((u) => [u._id, u]));
+          const embeddedUpdates = new Map(
+            updateData[embeddedName].map((u) => [u._id, u])
+          );
           if (t.actorData[embeddedName]) {
             t.actorData[embeddedName].forEach((original) => {
               const updateMerge = embeddedUpdates.get(original._id);

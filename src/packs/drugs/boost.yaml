@@ -18,9 +18,11 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/boost.svg
     label: Boost Primary
+    origin: null
     tint: null
     transfer: true
   - _id: ptnwPRaryJxNVOQf
@@ -41,9 +43,11 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/boost_addiction.svg
     label: Boost Addiction
+    origin: null
     tint: null
     transfer: true
 flags:
@@ -62,12 +66,17 @@ system:
   description:
     chat: ''
     unidentified: ''
-    value: >-
-      <p>Dose lasts 24 hours.<br />The user has increased INT by 2 points for
-      the duration.<br /><br />Secondary DV: 17.<br />When the dose wears off,
-      the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV. If
-      this fails, they take the secondary effect as noted in the core rule
-      book.&nbsp;</p>
+    value: |-
+      <p><strong>Primary Effect</strong></p>
+      <p>Dose lasts 24 hours.</p>
+      <ul>
+      <li>The user has INT +2 for the duration</li>
+      </ul>
+      <p><strong>Secondary Effect (DV17)</strong></p>
+      <ul>
+      <li>INT -2</li>
+      </ul>
+  equipped: owned
   favorite: false
   price:
     category: costly

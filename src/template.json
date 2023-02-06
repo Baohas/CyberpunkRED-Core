@@ -1,12 +1,6 @@
 {
   "Actor": {
-    "types": [
-      "blackIce",
-      "character",
-      "container",
-      "demon",
-      "mook"
-    ],
+    "types": ["blackIce", "character", "container", "demon", "mook"],
     "templates": {
       "common": {
         "stats": {
@@ -123,10 +117,7 @@
       }
     },
     "character": {
-      "templates": [
-        "common",
-        "ledgerWealth"
-      ],
+      "templates": ["common", "ledgerWealth"],
       "lifepath": {
         "culturalOrigin": "",
         "personality": "",
@@ -173,9 +164,7 @@
       }
     },
     "mook": {
-      "templates": [
-        "common"
-      ]
+      "templates": ["common"]
     },
     "blackIce": {
       "class": "",
@@ -195,9 +184,7 @@
       "notes": ""
     },
     "container": {
-      "templates": [
-        "ledgerWealth"
-      ],
+      "templates": ["ledgerWealth"],
       "hp": {
         "value": 40,
         "max": 40,
@@ -325,12 +312,7 @@
       }
     },
     "ammo": {
-      "templates": [
-        "common",
-        "physical",
-        "stackable",
-        "valuable"
-      ],
+      "templates": ["common", "physical", "stackable", "valuable"],
       "variety": "heavyPistol",
       "type": "basic",
       "ablationValue": 1
@@ -377,10 +359,7 @@
       "style": "genericChic"
     },
     "criticalInjury": {
-      "templates": [
-        "common",
-        "effects"
-      ],
+      "templates": ["common", "effects"],
       "location": "body",
       "quickFix": {
         "type": "firstAidParamedic",
@@ -472,19 +451,11 @@
       }
     },
     "netarch": {
-      "templates": [
-        "common",
-        "valuable"
-      ],
+      "templates": ["common", "valuable"],
       "floors": []
     },
     "program": {
-      "templates": [
-        "common",
-        "effects",
-        "installable",
-        "valuable"
-      ],
+      "templates": ["common", "effects", "installable", "valuable"],
       "class": "defender",
       "blackIceType": "antipersonnel",
       "prototypeActor": "",
@@ -501,9 +472,7 @@
       "rez": 0
     },
     "role": {
-      "templates": [
-        "common"
-      ],
+      "templates": ["common"],
       "rank": 0,
       "mainRoleAbility": "",
       "hasRoll": true,
@@ -513,12 +482,12 @@
       "bonuses": [],
       "universalBonuses": [],
       "bonusRatio": 1,
-      "abilities": []
+      "abilities": [],
+      "isSituational": false,
+      "onByDefault": false
     },
     "skill": {
-      "templates": [
-        "common"
-      ],
+      "templates": ["common"],
       "level": 0,
       "stat": "int",
       "category": "none",
@@ -553,6 +522,5 @@
       ],
       "handsReq": 1
     }
-
   }
 }

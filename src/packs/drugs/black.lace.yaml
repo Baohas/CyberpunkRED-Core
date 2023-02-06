@@ -4,7 +4,6 @@ effects:
     changes:
       - key: system.stats.ref.value
         mode: 2
-        priority: null
         value: '-2'
     disabled: true
     duration:
@@ -18,10 +17,16 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
+          situational:
+            '0':
+              isSituational: false
+              onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/status/black_lace_addiction.svg
     label: Black Lace Addicition
+    origin: null
     tint: null
     transfer: true
 flags:
@@ -41,12 +46,32 @@ system:
     chat: ''
     unidentified: ''
     value: >-
-      <p>Dose lasts 24 hours.<br />The user rolls 2d6 Humanity Loss and loses
-      this temporarily while affected. The user ignores Seriously Wounded wound
-      states for the duration.<br /><br />Secondary DV:17.<br />When the dose
-      wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against
-      Secondary DV. If this fails, they take the secondary effect as noted in
-      the core rule book.&nbsp;</p>
+      <p><strong>Primary Effect</strong></p>
+
+      <p>Dose lasts 24 hours.</p>
+
+      <ul>
+
+      <li>The user rolls 2d6 Humanity Loss which is returned if they pass the
+      Secondary Effect save</li>
+
+      <li>The user ignores Seriously Wounded wound states for the duration</li>
+
+      </ul>
+
+      <p><br><strong>Secondary Effect (DV17)</strong></p>
+
+      <p>When the dose wears off, the user rolls WILL + Resist Torture/Drugs +
+      1d10 against Secondary DV.</p>
+
+      <ul>
+
+      <li>On Fail Humanity loss is not returned</li>
+
+      <li>Unless experiencing the primary effect, REF -2</li>
+
+      </ul>
+  equipped: owned
   favorite: false
   price:
     category: costly

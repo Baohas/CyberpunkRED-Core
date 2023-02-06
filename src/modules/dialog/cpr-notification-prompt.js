@@ -21,7 +21,7 @@ export default class NotificationPrompt {
           content: html,
           buttons: {
             ok: {
-              icon: "<i class=\"fas fa-check\"></i>",
+              icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.ok"),
               callback: () => _onOk(),
             },

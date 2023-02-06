@@ -22,7 +22,9 @@ const Loadable = function Loadable() {
     LOGGER.trace("setCompatibleAmmo | Loadable | Called.");
     this.system.ammoVariety = ammoList;
     if (this.actor) {
-      this.actor.updateEmbeddedDocuments("Item", [{ _id: this.id, system: this.system }]);
+      this.actor.updateEmbeddedDocuments("Item", [
+        { _id: this.id, system: this.system },
+      ]);
     }
     return this.update({ "system.ammoVariety": ammoList });
   };
@@ -37,9 +39,13 @@ const Loadable = function Loadable() {
    */
   this._setDvTable = async function _setDvTable(actor, dvTable) {
     LOGGER.trace("_setDvTable | Loadable | Called.");
-    const flag = getProperty(actor, `flags.${game.system.id}.firetype-${this._id}`);
-    const activeTable = (flag === "autofire") ? `${dvTable} (Autofire)` : dvTable;
-    if (actor.sheet.token !== null) await SystemUtils.SetDvTable(actor.sheet.token.object, activeTable);
+    const flag = getProperty(
+      actor,
+      `flags.${game.system.id}.firetype-${this._id}`
+    );
+    const activeTable = flag === "autofire" ? `${dvTable} (Autofire)` : dvTable;
+    if (actor.sheet.token !== null)
+      await SystemUtils.SetDvTable(actor.sheet.token.object, activeTable);
   };
 
   /**
@@ -66,7 +72,9 @@ const Loadable = function Loadable() {
       }
       this.system.magazine.value = 0;
       this.system.magazine.ammoData = { name: "", uuid: "" };
-      return this.actor.updateEmbeddedDocuments("Item", [{ _id: this.id, system: this.system }]);
+      return this.actor.updateEmbeddedDocuments("Item", [
+        { _id: this.id, system: this.system },
+      ]);
     }
     return null;
   };
@@ -89,7 +97,9 @@ const Loadable = function Loadable() {
         const validAmmo = [];
         Object.keys(ownedAmmo).forEach((index) => {
           const ammo = ownedAmmo[index];
-          if (this.getRollData().ammoVariety.includes(ammo.getRollData().variety)) {
+          if (
+            this.getRollData().ammoVariety.includes(ammo.getRollData().variety)
+          ) {
             validAmmo.push(ammo);
           }
         });
@@ -101,10 +111,15 @@ const Loadable = function Loadable() {
           returnType: "string",
         };
         if (validAmmo.length === 0) {
-          SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.noValidAmmo")));
+          SystemUtils.DisplayMessage(
+            "warn",
+            SystemUtils.Localize("CPR.messages.noValidAmmo")
+          );
           return;
         }
-        formData = await LoadAmmoPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+        formData = await LoadAmmoPrompt.RenderPrompt(formData).catch((err) =>
+          LOGGER.debug(err)
+        );
         if (formData === undefined) {
           return;
         }
@@ -121,24 +136,35 @@ const Loadable = function Loadable() {
         const ammo = this.actor.getOwnedItem(selectedAmmoId);
         magazineData.ammoData.uuid = ammo.uuid;
         magazineData.ammoData.name = ammo.name;
-        loadUpdate.push({ _id: this._id, "system.magazine.ammoData.uuid": ammo.uuid, "system.magazine.ammoData.name": ammo.name });
+        loadUpdate.push({
+          _id: this._id,
+          "system.magazine.ammoData.uuid": ammo.uuid,
+          "system.magazine.ammoData.name": ammo.name,
+        });
 
         if (ammo.getRollData().amount === 0) {
-          SystemUtils.DisplayMessage("warn", (SystemUtils.Localize("CPR.messages.reloadOutOfAmmo")));
+          SystemUtils.DisplayMessage(
+            "warn",
+            SystemUtils.Localize("CPR.messages.reloadOutOfAmmo")
+          );
           return;
         }
 
         // By the time we reach here, we know the weapon and ammo we are loading
         // Let's find out how much space is in the gun.
-        const upgradeData = this.getAllUpgradesFor("magazine");
-        const magazineSpace = (upgradeData.type === "override") ? upgradeData.value - magazineData.value : magazineData.max - magazineData.value + upgradeData.value;
+        const upgradeData = this.getTotalUpgradeValues("magazine");
+        const magazineSpace =
+          upgradeData.type === "override"
+            ? upgradeData.value - magazineData.value
+            : magazineData.max - magazineData.value + upgradeData.value;
 
         if (magazineSpace > 0) {
           if (Number(ammo.system.amount) >= magazineSpace) {
             magazineData.value += magazineSpace;
             await ammo._ammoDecrement(magazineSpace);
           } else {
-            magazineData.value = Number(this.system.magazine.value) + Number(ammo.system.amount);
+            magazineData.value =
+              Number(this.system.magazine.value) + Number(ammo.system.amount);
             await ammo._ammoDecrement(ammo.system.amount);
           }
         }
@@ -158,7 +184,10 @@ const Loadable = function Loadable() {
   this.bulletConsumption = function bulletConsumption(cprRoll) {
     LOGGER.trace("bulletConsumption | Loadable | Called.");
     let bulletCount = 1;
-    if (cprRoll instanceof CPRRolls.CPRAutofireRoll || cprRoll instanceof CPRRolls.CPRSuppressiveFireRoll) {
+    if (
+      cprRoll instanceof CPRRolls.CPRAutofireRoll ||
+      cprRoll instanceof CPRRolls.CPRSuppressiveFireRoll
+    ) {
       bulletCount = 10;
     }
     return bulletCount;
@@ -170,7 +199,7 @@ const Loadable = function Loadable() {
    */
   this.hasAmmo = function hasAmmo(cprRoll) {
     LOGGER.trace("hasAmmo | Loadable | Called.");
-    return (this.system.magazine.value - this.bulletConsumption(cprRoll)) >= 0;
+    return this.system.magazine.value - this.bulletConsumption(cprRoll) >= 0;
   };
 
   /**
@@ -184,7 +213,11 @@ const Loadable = function Loadable() {
     const maxAmmo = this.getRollData().magazine.max;
     if (this.type === "weapon") {
       if (value.charAt(0) === "+" || value.charAt(0) === "-") {
-        this.getRollData().magazine.value = Math.clamped(0, this.getRollData().magazine.value + parseInt(value, 10), maxAmmo);
+        this.getRollData().magazine.value = Math.clamped(
+          0,
+          this.getRollData().magazine.value + parseInt(value, 10),
+          maxAmmo
+        );
       } else {
         this.getRollData().magazine.value = Math.clamped(0, value, maxAmmo);
       }
@@ -218,8 +251,11 @@ const Loadable = function Loadable() {
     const updateData = [];
     const { actor } = this;
     const magazineData = this.system.magazine;
-    const upgradeData = this.getAllUpgradesFor("magazine");
-    const magazineSize = (upgradeData.type === "override") ? upgradeData.value : magazineData.max + upgradeData.value;
+    const upgradeData = this.getTotalUpgradeValues("magazine");
+    const magazineSize =
+      upgradeData.type === "override"
+        ? upgradeData.value
+        : magazineData.max + upgradeData.value;
     if (magazineSize < magazineData.value) {
       const overage = magazineData.value - magazineSize;
       updateData.push({ _id: this._id, "system.magazine.value": magazineSize });
@@ -245,7 +281,7 @@ const Loadable = function Loadable() {
    */
   this.createAmmoItems = async function createAmmoItems() {
     LOGGER.trace("createAmmoItems | Loadable | Called.");
-    const actor = (this.isOwned) ? this.actor : false;
+    const actor = this.isOwned ? this.actor : false;
     const magazineData = this.system.magazine;
     const ammoData = { name: "", uuid: "" };
     if (this.system.magazine.ammoData.uuid !== "") {
@@ -254,7 +290,7 @@ const Loadable = function Loadable() {
           "CPR.messages.creatingLoadedWeaponWorldItemsNotSupported",
           {
             ammoName: this.system.magazine.ammoData.name,
-          },
+          }
         )}`;
         SystemUtils.DisplayMessage("warn", warningMessage);
         magazineData.value = 0;
@@ -266,35 +302,55 @@ const Loadable = function Loadable() {
         if (!ammo) {
           // In this instance, we have a UUID that does not exist in the world. We will see if we have a name match
           // first on the actor and then secondly in the world.
-          ammo = actor.items.find((i) => i.type === "ammo" && i.name === this.system.magazine.ammoData.name)
-            ? actor.items.find((i) => i.type === "ammo" && i.name === this.system.magazine.ammoData.name)
-            : game.items.find((i) => i.type === "ammo" && i.name === this.system.magazine.ammoData.name);
+          ammo = actor.items.find(
+            (i) =>
+              i.type === "ammo" && i.name === this.system.magazine.ammoData.name
+          )
+            ? actor.items.find(
+                (i) =>
+                  i.type === "ammo" &&
+                  i.name === this.system.magazine.ammoData.name
+              )
+            : game.items.find(
+                (i) =>
+                  i.type === "ammo" &&
+                  i.name === this.system.magazine.ammoData.name
+              );
         }
 
         if (typeof ammo === "object") {
           // We have a source ammo to model from
           const newItemData = ammo.toObject();
           newItemData.system.amount = 0;
-          const itemMatch = actor.items.find((i) => i.type === ammo.type && i.name === ammo.name);
+          const itemMatch = actor.items.find(
+            (i) => i.type === ammo.type && i.name === ammo.name
+          );
           if (itemMatch) {
             ammoData.name = itemMatch.name;
             ammoData.uuid = itemMatch.uuid;
           } else {
-            const createdItems = await actor.createEmbeddedDocuments("Item", [newItemData]);
+            const createdItems = await actor.createEmbeddedDocuments("Item", [
+              newItemData,
+            ]);
             ammoData.name = createdItems[0].name;
             ammoData.uuid = createdItems[0].uuid;
           }
         } else {
           // Unable to find ammo to model after and therefore can not create any new ammo. Throw error
           // and clear ammo from weapon.
-          SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.messages.ammoMissingFromGear"));
+          SystemUtils.DisplayMessage(
+            "error",
+            SystemUtils.Localize("CPR.messages.ammoMissingFromGear")
+          );
         }
       }
     }
     magazineData.ammoData = ammoData;
-    return (!actor)
+    return !actor
       ? this.update({ "system.magazine": magazineData })
-      : actor.updateEmbeddedDocuments("Item", [{ _id: this._id, "system.magazine": magazineData }]);
+      : actor.updateEmbeddedDocuments("Item", [
+          { _id: this._id, "system.magazine": magazineData },
+        ]);
   };
 };
 

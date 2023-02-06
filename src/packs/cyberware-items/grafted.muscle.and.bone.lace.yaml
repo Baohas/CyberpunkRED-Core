@@ -4,7 +4,6 @@ effects:
     changes:
       - key: system.stats.body.value
         mode: 2
-        priority: null
         value: '2'
     disabled: false
     duration:
@@ -18,10 +17,12 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': stat
+          cats:
+            '0': stat
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/grafted_muscle_and_bone_lace.svg
     label: Grafted Muscle & Bone Lace
+    origin: null
     tint: null
     transfer: true
 flags:

@@ -3,6 +3,7 @@ import CPR from "../../system/config.js";
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPRMod from "../../rolls/cpr-modifiers.js";
 
 /**
  * Extend the base CPRItem object with things specific to actor skills.
@@ -34,27 +35,52 @@ export default class CPRSkillItem extends CPRItem {
     const statValue = actor.getStat(statName);
     const skillName = this.name;
     const skillLevel = cprItemData.level;
-    let roleName;
-    let roleValue = 0;
 
+    const effects = actor.effects.contents; // Active effects on the actor.
+    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
+    // Filter for mods that should always be on (not situational) or are situational but on by default.
+    const filteredMods = allMods.filter(
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+    );
+
+    const skillMods = CPRMod.getRelevantMods(
+      filteredMods,
+      SystemUtils.slugify(skillName)
+    );
+
+    // Get all mods for skills from role abilities and subRole abilities.
+    let roleSkillMods = [];
     actor.itemTypes.role.forEach((r) => {
-      const [rn, rv] = r.getSkillBonuses(skillName);
-      if (rn) {
-        if (roleName) {
-          roleName += `, ${rn}`;
-        } else {
-          roleName = rn;
-        }
-        roleValue += rv;
-      }
+      roleSkillMods = roleSkillMods.concat(r.getRoleMods(skillName));
     });
+    roleSkillMods = roleSkillMods.filter(
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+    );
 
-    const cprRoll = new CPRRolls.CPRSkillRoll(niceStatName, statValue, skillName, skillLevel, roleName, roleValue);
-    cprRoll.addMod(actor.getArmorPenaltyMods(statName));
-    cprRoll.addMod(actor.getWoundStateMods());
-    cprRoll.addMod(actor.getUpgradeMods(statName));
-    cprRoll.addMod(actor.getUpgradeMods(skillName));
-    cprRoll.addMod(actor.bonuses[SystemUtils.slugify(skillName)]); // active effects
+    const cprRoll = new CPRRolls.CPRSkillRoll(
+      niceStatName,
+      statValue,
+      skillName,
+      skillLevel
+    );
+    cprRoll.addMod([
+      {
+        value: actor.getArmorPenaltyMods(statName),
+        source: SystemUtils.Format("CPR.rolls.modifiers.sources.armorPenalty", {
+          stat: niceStatName,
+        }),
+      },
+    ]);
+    cprRoll.addMod([
+      {
+        value: actor.getWoundStateMods(),
+        source: SystemUtils.Localize(
+          "CPR.rolls.modifiers.sources.woundStatePenalty"
+        ),
+      },
+    ]);
+    cprRoll.addMod(roleSkillMods);
+    cprRoll.addMod(skillMods); // active effects
     return cprRoll;
   }
 }

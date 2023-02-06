@@ -41,12 +41,29 @@ export default class CPRCompendiaSettings extends FormApplication {
   // eslint-disable-next-line class-methods-use-this
   async getData() {
     LOGGER.trace("CPRCompendiaSettings | getData | called.");
-    const critCurr = await game.settings.get(game.system.id, "criticalInjuryRollTableCompendium");
-    const netCurr = await game.settings.get(game.system.id, "netArchRollTableCompendium");
-    const dvCurr = await game.settings.get(game.system.id, "dvRollTableCompendium");
-    const choicesCrit = { [CPR.defaultCriticalInjuryTable]: "CPR.settings.criticalInjuryRollTableCompendium.default" };
-    const choicesNet = { [CPR.defaultNetArchTable]: "CPR.settings.netArchRollTableCompendium.default" };
-    const choicesDv = { [CPR.defaultDvTable]: "CPR.settings.dvRollTableCompendium.default" };
+    const critCurr = await game.settings.get(
+      game.system.id,
+      "criticalInjuryRollTableCompendium"
+    );
+    const netCurr = await game.settings.get(
+      game.system.id,
+      "netArchRollTableCompendium"
+    );
+    const dvCurr = await game.settings.get(
+      game.system.id,
+      "dvRollTableCompendium"
+    );
+    const choicesCrit = {
+      [CPR.defaultCriticalInjuryTable]:
+        "CPR.settings.criticalInjuryRollTableCompendium.default",
+    };
+    const choicesNet = {
+      [CPR.defaultNetArchTable]:
+        "CPR.settings.netArchRollTableCompendium.default",
+    };
+    const choicesDv = {
+      [CPR.defaultDvTable]: "CPR.settings.dvRollTableCompendium.default",
+    };
     const comps = SystemUtils.GetWorldCompendia("RollTable");
     for (const comp of comps) {
       choicesCrit[`world.${comp.metadata.name}`] = comp.metadata.label;
@@ -54,7 +71,12 @@ export default class CPRCompendiaSettings extends FormApplication {
       choicesDv[`world.${comp.metadata.name}`] = comp.metadata.label;
     }
     return {
-      choicesCrit, choicesNet, choicesDv, critCurr, netCurr, dvCurr,
+      choicesCrit,
+      choicesNet,
+      choicesDv,
+      critCurr,
+      netCurr,
+      dvCurr,
     };
   }
 
@@ -70,9 +92,24 @@ export default class CPRCompendiaSettings extends FormApplication {
   // eslint-disable-next-line class-methods-use-this
   async _updateObject(event, formData) {
     LOGGER.trace("CPRCompendiaSettings | _updateObject | called.");
-    await game.settings.set(game.system.id, "criticalInjuryRollTableCompendium", formData.injuryChoice);
-    await game.settings.set(game.system.id, "netArchRollTableCompendium", formData.netArchChoice);
-    await game.settings.set(game.system.id, "dvRollTableCompendium", formData.dvChoice);
-    SystemUtils.DisplayMessage("notify", SystemUtils.Localize("CPR.settings.compendiumMenu.update"));
+    await game.settings.set(
+      game.system.id,
+      "criticalInjuryRollTableCompendium",
+      formData.injuryChoice
+    );
+    await game.settings.set(
+      game.system.id,
+      "netArchRollTableCompendium",
+      formData.netArchChoice
+    );
+    await game.settings.set(
+      game.system.id,
+      "dvRollTableCompendium",
+      formData.dvChoice
+    );
+    SystemUtils.DisplayMessage(
+      "notify",
+      SystemUtils.Localize("CPR.settings.compendiumMenu.update")
+    );
   }
 }

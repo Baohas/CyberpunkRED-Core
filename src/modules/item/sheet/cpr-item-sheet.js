@@ -25,7 +25,13 @@ export default class CPRItemSheet extends ItemSheet {
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRItemSheet | Called.");
     return mergeObject(super.defaultOptions, {
-      tabs: [{ navSelector: ".navtabs-item", contentSelector: ".item-bottom-content-section", initial: "item-description" }],
+      tabs: [
+        {
+          navSelector: ".navtabs-item",
+          contentSelector: ".item-bottom-content-section",
+          initial: "item-description",
+        },
+      ],
       width: "auto",
       height: "auto",
     });
@@ -39,7 +45,11 @@ export default class CPRItemSheet extends ItemSheet {
 
   get classes() {
     LOGGER.trace("classes | CPRItemSheet | Called.");
-    return super.defaultOptions.classes.concat(["sheet", "item", `${this.item.type}`]);
+    return super.defaultOptions.classes.concat([
+      "sheet",
+      "item",
+      `${this.item.type}`,
+    ]);
   }
 
   /** @override */
@@ -67,7 +77,9 @@ export default class CPRItemSheet extends ItemSheet {
     }
     if (mixins.includes("effects")) {
       cprData.effectNames = this.item.getEffectNames();
-      cprData.effectNames.push(SystemUtils.Localize("CPR.itemSheet.effects.none"));
+      cprData.effectNames.push(
+        SystemUtils.Localize("CPR.itemSheet.effects.none")
+      );
     }
 
     // if (["cyberdeck", "weapon", "armor", "cyberware", "clothing"].indexOf(data.item.type) > -1) {
@@ -91,41 +103,70 @@ export default class CPRItemSheet extends ItemSheet {
     $("input[type=text]").focusin(() => $(this).select());
 
     // generic listeners
-    html.find(".item-checkbox").click((event) => this._itemCheckboxToggle(event));
+    html
+      .find(".item-checkbox")
+      .click((event) => this._itemCheckboxToggle(event));
 
-    html.find(".item-multi-option").click((event) => this._itemMultiOption(event));
+    html
+      .find(".item-multi-option")
+      .click((event) => this._itemMultiOption(event));
 
-    html.find(".select-compatible-ammo").click(() => this._selectCompatibleAmmo());
+    html
+      .find(".select-compatible-ammo")
+      .click(() => this._selectCompatibleAmmo());
 
-    html.find(".netarch-level-action").click((event) => this._netarchLevelAction(event));
+    html
+      .find(".netarch-level-action")
+      .click((event) => this._netarchLevelAction(event));
 
-    html.find(".netarch-roll-level").click(() => this._netarchGenerateFromTables());
+    html
+      .find(".netarch-roll-level")
+      .click(() => this._netarchGenerateFromTables());
 
-    html.find(".role-ability-action").click((event) => this._roleAbilityAction(event));
+    html
+      .find(".role-ability-action")
+      .click((event) => this._roleAbilityAction(event));
 
-    html.find(".select-role-bonuses").click((event) => this._selectRoleBonuses(event));
+    html
+      .find(".select-role-bonuses")
+      .click((event) => this._selectRoleBonuses(event));
 
-    html.find(".select-subrole-bonuses").click((event) => this._selectSubroleBonuses(event));
+    html
+      .find(".manage-installed-programs")
+      .click(() => this._manageInstalledItems("program"));
 
-    html.find(".manage-installed-programs").click(() => this._manageInstalledItems("program"));
+    html
+      .find(".manage-installed-upgrades")
+      .click(() => this._manageInstalledItems("itemUpgrade"));
 
-    html.find(".manage-installed-upgrades").click(() => this._manageInstalledItems("itemUpgrade"));
+    html
+      .find(".manage-installed-items")
+      .click(() => this._manageInstalledItems());
 
-    html.find(".manage-installed-items").click(() => this._manageInstalledItems());
+    html
+      .find(".program-uninstall")
+      .click((event) => this._uninstallSingleItem(event));
 
-    html.find(".program-uninstall").click((event) => this._uninstallSingleItem(event));
+    html
+      .find(".remove-upgrade")
+      .click((event) => this._uninstallSingleItem(event));
 
-    html.find(".remove-upgrade").click((event) => this._uninstallSingleItem(event));
+    html
+      .find(".item-view")
+      .click((event) => this._renderReadOnlyItemCard(event));
 
-    html.find(".item-view").click((event) => this._renderReadOnlyItemCard(event));
-
-    html.find(".manage-installable-types").click((event) => this._manageInstallableTypes(event));
+    html
+      .find(".manage-installable-types")
+      .click((event) => this._manageInstallableTypes(event));
 
     html.find(".netarch-generate-auto").click(() => {
       if (game.user.isGM) {
         this.item._generateNetarchScene();
       } else {
-        SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.netArchitecture.generation.noGMError"));
+        SystemUtils.DisplayMessage(
+          "error",
+          SystemUtils.Localize("CPR.netArchitecture.generation.noGMError")
+        );
       }
     });
 
@@ -133,14 +174,21 @@ export default class CPRItemSheet extends ItemSheet {
       if (game.user.isGM) {
         this.item._customize();
       } else {
-        SystemUtils.DisplayMessage("error", SystemUtils.Localize("CPR.netArchitecture.generation.noGMError"));
+        SystemUtils.DisplayMessage(
+          "error",
+          SystemUtils.Localize("CPR.netArchitecture.generation.noGMError")
+        );
       }
     });
 
-    html.find(".netarch-item-link").click((event) => this._openItemFromId(event));
+    html
+      .find(".netarch-item-link")
+      .click((event) => this._openItemFromId(event));
 
     // Active Effects listener
-    html.find(".effect-control").click((event) => this.item.manageEffects(event));
+    html
+      .find(".effect-control")
+      .click((event) => this.item.manageEffects(event));
 
     // Change things when the "usage" for active effects changes
     html.find(".set-usage").change((event) => this._setUsage(event));
@@ -171,7 +219,9 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("_itemMultiOption | CPRItemSheet | Called.");
     const cprItem = duplicate(this.item);
     // the target the option wants to be put into
-    const target = $(event.currentTarget).parents(".item-multi-select").attr("data-target");
+    const target = $(event.currentTarget)
+      .parents(".item-multi-select")
+      .attr("data-target");
     const value = SystemUtils.GetEventDatum(event, "data-value");
     if (hasProperty(cprItem, target)) {
       const prop = getProperty(cprItem, target);
@@ -188,8 +238,14 @@ export default class CPRItemSheet extends ItemSheet {
   async _selectCompatibleAmmo() {
     LOGGER.trace("_selectCompatibleAmmo | CPRItemSheet | Called.");
     const cprItemData = this.item.system;
-    let formData = { id: this.item._id, name: this.item.name, system: cprItemData };
-    formData = await SelectCompatibleAmmo.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+    let formData = {
+      id: this.item._id,
+      name: this.item.name,
+      system: cprItemData,
+    };
+    formData = await SelectCompatibleAmmo.RenderPrompt(formData).catch((err) =>
+      LOGGER.debug(err)
+    );
     if (formData === undefined) {
       return;
     }
@@ -198,93 +254,93 @@ export default class CPRItemSheet extends ItemSheet {
     }
   }
 
-  async _selectRoleBonuses() {
+  /**
+   * This function creates and processes the dialog to apply bonuses from roles.
+   *
+   * @param {*} event
+   */
+  async _selectRoleBonuses(event) {
     LOGGER.trace("ItemSheet | _selectRoleBonuses | Called.");
-    const cprItemData = this.item.system;
-    const roleType = "mainRole";
-    const coreSkills = await SystemUtils.GetCoreSkills();
-    const customSkills = game.items.filter((i) => i.type === "skill");
-    const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
-      : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
-    const allSkillsData = [];
-    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
-    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
-    let formData = { skillList: sortedAllSkills, roleType, system: cprItemData };
-    formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
-      return;
-    }
-    if (formData.selectedSkills) {
-      const skillBonusObjects = [];
-      const universalBonusesList = [];
-      formData.selectedSkills.forEach((s) => {
-        skillBonusObjects.push(allSkills.find((a) => a.name === s));
-      });
-      formData.selectedUniversalBonuses.forEach((b) => {
-        universalBonusesList.push(b);
-      });
-      const { bonusRatio } = formData;
-      this.item.update({
-        "data.bonuses": skillBonusObjects,
-        "data.universalBonuses": universalBonusesList,
-        "data.bonusRatio": bonusRatio,
-      });
-    }
-  }
+    const cprRoleData = duplicate(this.item.system);
+    const roleType = SystemUtils.GetEventDatum(event, "data-role-type"); // Either "mainRole" or "subRole".
+    const coreSkills = await SystemUtils.GetCoreSkills(); // Get core skills.
+    const customSkills = game.items.filter((i) => i.type === "skill"); // Get any custom skills.
+    // If object is owned, get all skills on actor. If not, get all skills in system.
+    const allSkills = this.object.isOwned
+      ? this.actor.itemTypes.skill
+      : coreSkills
+          .concat(customSkills)
+          .sort((a, b) => (a.name > b.name ? 1 : -1));
+    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills); // Sort these skills by name.
 
-  async _selectSubroleBonuses(event) {
-    LOGGER.trace("ItemSheet | _selectSubroleBonuses | Called.");
-    const subRoleName = SystemUtils.GetEventDatum(event, "data-item-name");
-    const cprItemData = duplicate(this.item.system);
-    const roleType = "subRole";
-    const subRole = cprItemData.abilities.find((a) => a.name === subRoleName);
-    const coreSkills = await SystemUtils.GetCoreSkills();
-    const customSkills = game.items.filter((i) => i.type === "skill");
-    const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
-      : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
-    const allSkillsData = [];
-    allSkills.forEach((a) => allSkillsData.push({ name: a.name, core: a.system.core, type: a.type }));
-    const sortedAllSkills = SystemUtils.SortItemListByName(allSkills);
+    // If we are editing a subability, get name from event data. Then, get the subrole from the name.
+    const subRoleName = SystemUtils.GetEventDatum(event, "data-ability-name");
+    const subRole = cprRoleData.abilities.find((a) => a.name === subRoleName);
 
-    let formData = {
-      skillList: sortedAllSkills, roleType, subRole, system: cprItemData,
+    // The ability data is either item.system or item.system.someSubAbility.
+    let abilityData = cprRoleData;
+    if (subRole) {
+      abilityData = subRole;
+    }
+
+    // Prepare relevant data for the dialog to use.
+    let dialogData = {
+      skillList: sortedAllSkills,
+      roleData: abilityData,
     };
-    formData = await SelectRoleBonuses.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+
+    // Call dialog and await results. Return if dialog is cancelled.
+    dialogData = await SelectRoleBonuses.showDialog(dialogData).catch((err) =>
+      LOGGER.debug(err)
+    );
+    if (dialogData === undefined) {
       return;
     }
-    if (formData.selectedSkills) {
-      const skillBonusObjects = [];
-      const universalBonusesList = [];
-      formData.selectedSkills.forEach((s) => {
-        skillBonusObjects.push(allSkills.find((a) => a.name === s));
-      });
-      formData.selectedUniversalBonuses.forEach((b) => {
-        universalBonusesList.push(b);
-      });
-      setProperty(subRole, "bonuses", skillBonusObjects);
-      setProperty(subRole, "universalBonuses", universalBonusesList);
-      setProperty(subRole, "bonusRatio", formData.bonusRatio);
-      this.item.update({ system: cprItemData });
-      if (this.actor) {
-        await this.actor.updateEmbeddedDocuments("Item", [{ _id: this.item.id, system: cprItemData }]);
-      }
+
+    // If we are updating the main role ability, we can update item.system.
+    // Else, find the correct subability and update that.
+    if (roleType === "mainRole") {
+      this.item.update({ system: dialogData.roleData });
+    } else {
+      mergeObject(
+        cprRoleData.abilities.find((a) => a.name === subRole.name),
+        dialogData.subRole
+      );
+      this.item.update({ "system.abilities": cprRoleData.abilities });
     }
   }
 
   async _netarchGenerateFromTables() {
     LOGGER.trace("_netarchGenerateFromTables | CPRItemSheet | Called.");
-    const formData = await NetarchRolltableGenerationPrompt.RenderPrompt().catch((err) => LOGGER.debug(err));
+    const formData =
+      await NetarchRolltableGenerationPrompt.RenderPrompt().catch((err) =>
+        LOGGER.debug(err)
+      );
     if (formData === undefined) {
       return;
     }
-    const tableSetting = game.settings.get(game.system.id, "netArchRollTableCompendium");
-    const lobby = await SystemUtils.GetCompendiumDoc(tableSetting, "First Two Floors (The Lobby)");
-    const other = await SystemUtils.GetCompendiumDoc(tableSetting, "All Other Floors (".concat(formData.difficulty, ")"));
-    const numberOfFloorsRoll = new CPRRoll(SystemUtils.Localize("CPR.rolls.roll"), "3d6");
+    const tableSetting = game.settings.get(
+      game.system.id,
+      "netArchRollTableCompendium"
+    );
+    const lobby = await SystemUtils.GetCompendiumDoc(
+      tableSetting,
+      "First Two Floors (The Lobby)"
+    );
+    const other = await SystemUtils.GetCompendiumDoc(
+      tableSetting,
+      "All Other Floors (".concat(formData.difficulty, ")")
+    );
+    const numberOfFloorsRoll = new CPRRoll(
+      SystemUtils.Localize("CPR.rolls.roll"),
+      "3d6"
+    );
     await numberOfFloorsRoll.roll();
     const numberOfFloors = numberOfFloorsRoll.resultTotal;
-    const branchCheck = new CPRRoll(SystemUtils.Localize("CPR.rolls.roll"), "1d10");
+    const branchCheck = new CPRRoll(
+      SystemUtils.Localize("CPR.rolls.roll"),
+      "1d10"
+    );
     await branchCheck.roll();
     let branchCounter = 0;
     while (branchCheck.initialRoll >= 7) {
@@ -297,7 +353,9 @@ export default class CPRItemSheet extends ItemSheet {
     }
     let floors = await this._netarchDrawFromTableCustom(lobby, 2);
     if (numberOfFloors > 2) {
-      floors = floors.concat(await this._netarchDrawFromTableCustom(other, numberOfFloors - 2));
+      floors = floors.concat(
+        await this._netarchDrawFromTableCustom(other, numberOfFloors - 2)
+      );
     }
     const prop = [];
     let index = 0;
@@ -364,7 +422,12 @@ export default class CPRItemSheet extends ItemSheet {
             break;
         }
       }
-      if (branchCounter > 0 && floorIndex > minfloorIndexbranch && floorIndex > numberOfFloors / (branchCounter + 1) && index !== numberOfFloors - 1) {
+      if (
+        branchCounter > 0 &&
+        floorIndex > minfloorIndexbranch &&
+        floorIndex > numberOfFloors / (branchCounter + 1) &&
+        index !== numberOfFloors - 1
+      ) {
         floorIndex = minfloorIndexbranch;
         minfloorIndexbranch += 1;
         branch = String.fromCharCode(branch.charCodeAt() + 1);
@@ -372,12 +435,16 @@ export default class CPRItemSheet extends ItemSheet {
       }
       prop.push({
         index,
-        floor: (floorIndex).toString(),
+        floor: floorIndex.toString(),
         branch,
         dv,
         content,
         blackice,
-        description: "Roll ".concat(floor.roll.total.toString(), ": ", floor.results[0].text),
+        description: "Roll ".concat(
+          floor.roll.total.toString(),
+          ": ",
+          floor.results[0].text
+        ),
       });
       index += 1;
       floorIndex += 1;
@@ -413,17 +480,26 @@ export default class CPRItemSheet extends ItemSheet {
 
   async _netarchLevelAction(event) {
     LOGGER.trace("_netarchLevelAction | CPRItemSheet | Called.");
-    const target = Number(SystemUtils.GetEventDatum(event, "data-action-target"));
+    const target = Number(
+      SystemUtils.GetEventDatum(event, "data-action-target")
+    );
     const action = SystemUtils.GetEventDatum(event, "data-action-type");
     const cprItemData = duplicate(this.item.system);
 
     if (action === "delete") {
-      const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
+      const setting = game.settings.get(
+        game.system.id,
+        "deleteItemConfirmation"
+      );
       if (setting) {
-        const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${SystemUtils.Localize("CPR.netArchitecture.floor.deleteConfirmation")}?`;
+        const promptMessage = `${SystemUtils.Localize(
+          "CPR.dialog.deleteConfirmation.message"
+        )} ${SystemUtils.Localize(
+          "CPR.netArchitecture.floor.deleteConfirmation"
+        )}?`;
         const confirmDelete = await ConfirmPrompt.RenderPrompt(
           SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
-          promptMessage,
+          promptMessage
         );
         if (!confirmDelete) {
           return;
@@ -432,7 +508,11 @@ export default class CPRItemSheet extends ItemSheet {
       if (hasProperty(cprItemData, "floors")) {
         const prop = getProperty(cprItemData, "floors");
         let deleteElement = null;
-        prop.forEach((floor) => { if (floor.index === target) { deleteElement = floor; } });
+        prop.forEach((floor) => {
+          if (floor.index === target) {
+            deleteElement = floor;
+          }
+        });
         prop.splice(prop.indexOf(deleteElement), 1);
         setProperty(cprItemData, "floors", prop);
         this.item.update({ system: cprItemData });
@@ -443,7 +523,9 @@ export default class CPRItemSheet extends ItemSheet {
       if (hasProperty(cprItemData, "floors")) {
         const prop = getProperty(cprItemData, "floors");
         const indices = [];
-        prop.forEach((floor) => { indices.push(floor.index); });
+        prop.forEach((floor) => {
+          indices.push(floor.index);
+        });
         let swapPartner = null;
         if (action === "up") {
           swapPartner = Math.min(...indices);
@@ -452,14 +534,30 @@ export default class CPRItemSheet extends ItemSheet {
         }
         if (target !== swapPartner) {
           if (action === "up") {
-            indices.forEach((i) => { if (i < target && i > swapPartner) { swapPartner = i; } });
+            indices.forEach((i) => {
+              if (i < target && i > swapPartner) {
+                swapPartner = i;
+              }
+            });
           } else {
-            indices.forEach((i) => { if (i > target && i < swapPartner) { swapPartner = i; } });
+            indices.forEach((i) => {
+              if (i > target && i < swapPartner) {
+                swapPartner = i;
+              }
+            });
           }
           let element1 = null;
           let element2 = null;
-          prop.forEach((floor) => { if (floor.index === target) { element1 = floor; } });
-          prop.forEach((floor) => { if (floor.index === swapPartner) { element2 = floor; } });
+          prop.forEach((floor) => {
+            if (floor.index === target) {
+              element1 = floor;
+            }
+          });
+          prop.forEach((floor) => {
+            if (floor.index === swapPartner) {
+              element2 = floor;
+            }
+          });
           const newElement1 = duplicate(element1);
           const newElement2 = duplicate(element2);
           prop.splice(prop.indexOf(element1), 1);
@@ -476,39 +574,125 @@ export default class CPRItemSheet extends ItemSheet {
 
     if (action === "create") {
       let formData = {
-        floornumbers: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"],
+        floornumbers: [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+        ],
         branchlabels: ["a", "b", "c", "d", "e", "f", "g", "h"],
-        dvoptions: ["N/A", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"],
+        dvoptions: [
+          "N/A",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+        ],
         contentoptions: {
-          "CPR.netArchitecture.floor.options.password": SystemUtils.Localize("CPR.netArchitecture.floor.options.password"),
-          "CPR.netArchitecture.floor.options.file": SystemUtils.Localize("CPR.netArchitecture.floor.options.file"),
-          "CPR.netArchitecture.floor.options.controlnode": SystemUtils.Localize("CPR.netArchitecture.floor.options.controlnode"),
-          "CPR.global.programClass.blackice": SystemUtils.Localize("CPR.global.programClass.blackice"),
+          "CPR.netArchitecture.floor.options.password": SystemUtils.Localize(
+            "CPR.netArchitecture.floor.options.password"
+          ),
+          "CPR.netArchitecture.floor.options.file": SystemUtils.Localize(
+            "CPR.netArchitecture.floor.options.file"
+          ),
+          "CPR.netArchitecture.floor.options.controlnode": SystemUtils.Localize(
+            "CPR.netArchitecture.floor.options.controlnode"
+          ),
+          "CPR.global.programClass.blackice": SystemUtils.Localize(
+            "CPR.global.programClass.blackice"
+          ),
         },
         blackiceoptions: {
           "--": "--",
-          "CPR.netArchitecture.floor.options.blackIce.asp": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.asp"),
-          "CPR.netArchitecture.floor.options.blackIce.giant": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.giant"),
-          "CPR.netArchitecture.floor.options.blackIce.hellhound": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.hellhound"),
-          "CPR.netArchitecture.floor.options.blackIce.kraken": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.kraken"),
-          "CPR.netArchitecture.floor.options.blackIce.liche": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.liche"),
-          "CPR.netArchitecture.floor.options.blackIce.raven": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.raven"),
-          "CPR.netArchitecture.floor.options.blackIce.scorpion": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.scorpion"),
-          "CPR.netArchitecture.floor.options.blackIce.skunk": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.skunk"),
-          "CPR.netArchitecture.floor.options.blackIce.wisp": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.wisp"),
-          "CPR.netArchitecture.floor.options.blackIce.dragon": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.dragon"),
-          "CPR.netArchitecture.floor.options.blackIce.killer": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.killer"),
-          "CPR.netArchitecture.floor.options.blackIce.sabertooth": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.sabertooth"),
+          "CPR.netArchitecture.floor.options.blackIce.asp":
+            SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.blackIce.asp"
+            ),
+          "CPR.netArchitecture.floor.options.blackIce.giant":
+            SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.blackIce.giant"
+            ),
+          "CPR.netArchitecture.floor.options.blackIce.hellhound":
+            SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.blackIce.hellhound"
+            ),
+          "CPR.netArchitecture.floor.options.blackIce.kraken":
+            SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.blackIce.kraken"
+            ),
+          "CPR.netArchitecture.floor.options.blackIce.liche":
+            SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.blackIce.liche"
+            ),
+          "CPR.netArchitecture.floor.options.blackIce.raven":
+            SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.blackIce.raven"
+            ),
+          "CPR.netArchitecture.floor.options.blackIce.scorpion":
+            SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.blackIce.scorpion"
+            ),
+          "CPR.netArchitecture.floor.options.blackIce.skunk":
+            SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.blackIce.skunk"
+            ),
+          "CPR.netArchitecture.floor.options.blackIce.wisp":
+            SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.blackIce.wisp"
+            ),
+          "CPR.netArchitecture.floor.options.blackIce.dragon":
+            SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.blackIce.dragon"
+            ),
+          "CPR.netArchitecture.floor.options.blackIce.killer":
+            SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.blackIce.killer"
+            ),
+          "CPR.netArchitecture.floor.options.blackIce.sabertooth":
+            SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.blackIce.sabertooth"
+            ),
         },
         floor: "1",
         branch: "a",
         dv: "N/A",
-        content: SystemUtils.Localize("CPR.netArchitecture.floor.options.password"),
+        content: SystemUtils.Localize(
+          "CPR.netArchitecture.floor.options.password"
+        ),
         blackice: "--",
         description: "",
         returnType: "string",
       };
-      formData = await NetarchLevelPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+      formData = await NetarchLevelPrompt.RenderPrompt(formData).catch((err) =>
+        LOGGER.debug(err)
+      );
       if (formData === undefined) {
         return;
       }
@@ -516,7 +700,11 @@ export default class CPRItemSheet extends ItemSheet {
       if (hasProperty(cprItemData, "floors")) {
         const prop = getProperty(cprItemData, "floors");
         let maxIndex = -1;
-        prop.forEach((floor) => { if (floor.index > maxIndex) { maxIndex = floor.index; } });
+        prop.forEach((floor) => {
+          if (floor.index > maxIndex) {
+            maxIndex = floor.index;
+          }
+        });
         prop.push({
           index: maxIndex + 1,
           floor: formData.floor,
@@ -529,15 +717,17 @@ export default class CPRItemSheet extends ItemSheet {
         setProperty(cprItemData, "floors", prop);
         this.item.update({ system: cprItemData });
       } else {
-        const prop = [{
-          index: 0,
-          floor: formData.floor,
-          branch: formData.branch,
-          dv: formData.dv,
-          content: formData.content,
-          blackice: formData.blackice,
-          description: formData.description,
-        }];
+        const prop = [
+          {
+            index: 0,
+            floor: formData.floor,
+            branch: formData.branch,
+            dv: formData.dv,
+            content: formData.content,
+            blackice: formData.blackice,
+            description: formData.description,
+          },
+        ];
         setProperty(cprItemData, "floors", prop);
         this.item.update({ system: cprItemData });
       }
@@ -547,31 +737,118 @@ export default class CPRItemSheet extends ItemSheet {
       if (hasProperty(cprItemData, "floors")) {
         const prop = getProperty(cprItemData, "floors");
         let editElement = null;
-        prop.forEach((floor) => { if (floor.index === target) { editElement = floor; } });
+        prop.forEach((floor) => {
+          if (floor.index === target) {
+            editElement = floor;
+          }
+        });
         let formData = {
-          floornumbers: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"],
+          floornumbers: [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+          ],
           branchlabels: ["a", "b", "c", "d", "e", "f", "g", "h"],
-          dvoptions: ["N/A", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"],
+          dvoptions: [
+            "N/A",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+          ],
           contentoptions: {
-            "CPR.netArchitecture.floor.options.password": SystemUtils.Localize("CPR.netArchitecture.floor.options.password"),
-            "CPR.netArchitecture.floor.options.file": SystemUtils.Localize("CPR.netArchitecture.floor.options.file"),
-            "CPR.netArchitecture.floor.options.controlnode": SystemUtils.Localize("CPR.netArchitecture.floor.options.controlnode"),
-            "CPR.global.programClass.blackice": SystemUtils.Localize("CPR.global.programClass.blackice"),
+            "CPR.netArchitecture.floor.options.password": SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.password"
+            ),
+            "CPR.netArchitecture.floor.options.file": SystemUtils.Localize(
+              "CPR.netArchitecture.floor.options.file"
+            ),
+            "CPR.netArchitecture.floor.options.controlnode":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.controlnode"
+              ),
+            "CPR.global.programClass.blackice": SystemUtils.Localize(
+              "CPR.global.programClass.blackice"
+            ),
           },
           blackiceoptions: {
             "--": "--",
-            "CPR.netArchitecture.floor.options.blackIce.asp": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.asp"),
-            "CPR.netArchitecture.floor.options.blackIce.giant": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.giant"),
-            "CPR.netArchitecture.floor.options.blackIce.hellhound": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.hellhound"),
-            "CPR.netArchitecture.floor.options.blackIce.kraken": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.kraken"),
-            "CPR.netArchitecture.floor.options.blackIce.liche": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.liche"),
-            "CPR.netArchitecture.floor.options.blackIce.raven": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.raven"),
-            "CPR.netArchitecture.floor.options.blackIce.scorpion": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.scorpion"),
-            "CPR.netArchitecture.floor.options.blackIce.skunk": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.skunk"),
-            "CPR.netArchitecture.floor.options.blackIce.wisp": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.wisp"),
-            "CPR.netArchitecture.floor.options.blackIce.dragon": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.dragon"),
-            "CPR.netArchitecture.floor.options.blackIce.killer": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.killer"),
-            "CPR.netArchitecture.floor.options.blackIce.sabertooth": SystemUtils.Localize("CPR.netArchitecture.floor.options.blackIce.sabertooth"),
+            "CPR.netArchitecture.floor.options.blackIce.asp":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.blackIce.asp"
+              ),
+            "CPR.netArchitecture.floor.options.blackIce.giant":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.blackIce.giant"
+              ),
+            "CPR.netArchitecture.floor.options.blackIce.hellhound":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.blackIce.hellhound"
+              ),
+            "CPR.netArchitecture.floor.options.blackIce.kraken":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.blackIce.kraken"
+              ),
+            "CPR.netArchitecture.floor.options.blackIce.liche":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.blackIce.liche"
+              ),
+            "CPR.netArchitecture.floor.options.blackIce.raven":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.blackIce.raven"
+              ),
+            "CPR.netArchitecture.floor.options.blackIce.scorpion":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.blackIce.scorpion"
+              ),
+            "CPR.netArchitecture.floor.options.blackIce.skunk":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.blackIce.skunk"
+              ),
+            "CPR.netArchitecture.floor.options.blackIce.wisp":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.blackIce.wisp"
+              ),
+            "CPR.netArchitecture.floor.options.blackIce.dragon":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.blackIce.dragon"
+              ),
+            "CPR.netArchitecture.floor.options.blackIce.killer":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.blackIce.killer"
+              ),
+            "CPR.netArchitecture.floor.options.blackIce.sabertooth":
+              SystemUtils.Localize(
+                "CPR.netArchitecture.floor.options.blackIce.sabertooth"
+              ),
           },
           floor: editElement.floor,
           branch: editElement.branch,
@@ -581,7 +858,9 @@ export default class CPRItemSheet extends ItemSheet {
           description: editElement.description,
           returnType: "string",
         };
-        formData = await NetarchLevelPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+        formData = await NetarchLevelPrompt.RenderPrompt(formData).catch(
+          (err) => LOGGER.debug(err)
+        );
         if (formData === undefined) {
           return;
         }
@@ -609,7 +888,12 @@ export default class CPRItemSheet extends ItemSheet {
     if (itemEntity !== null) {
       itemEntity.sheet.render(true);
     } else {
-      SystemUtils.DisplayMessage("error", SystemUtils.Format("CPR.messages.itemDoesNotExistError", { itemid: itemId }));
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Format("CPR.messages.itemDoesNotExistError", {
+          itemid: itemId,
+        })
+      );
     }
   }
 
@@ -633,33 +917,51 @@ export default class CPRItemSheet extends ItemSheet {
 
     let installedItemChanges = [];
     if (promptResult.uninstallableItems.length > 0) {
-      const changeResult = await item.uninstallItems(promptResult.uninstallableItems);
+      const changeResult = await item.uninstallItems(
+        promptResult.uninstallableItems
+      );
       if (Array.isArray(changeResult)) {
         // Returned actor.updatedEmbeddedDocuments() so it is an owned item
-        installedItemChanges = installedItemChanges.concat(changeResult.filter((i) => i._id !== item._id));
+        installedItemChanges = installedItemChanges.concat(
+          changeResult.filter((i) => i._id !== item._id)
+        );
       } else {
         // Returned item.update() so it is a world item
-        installedItemChanges = installedItemChanges.concat(promptResult.uninstallableItems);
+        installedItemChanges = installedItemChanges.concat(
+          promptResult.uninstallableItems
+        );
       }
     }
 
     if (promptResult.installableItems.length > 0) {
-      const changeResult = await item.installItems(promptResult.installableItems);
+      const changeResult = await item.installItems(
+        promptResult.installableItems
+      );
       if (Array.isArray(changeResult)) {
         // Returned actor.updatedEmbeddedDocuments() so it is an owned item
-        installedItemChanges = installedItemChanges.concat(changeResult.filter((i) => i._id !== item._id));
+        installedItemChanges = installedItemChanges.concat(
+          changeResult.filter((i) => i._id !== item._id)
+        );
       } else {
         // Returned item.update() so it is a world item
-        installedItemChanges = installedItemChanges.concat(promptResult.installableItems);
+        installedItemChanges = installedItemChanges.concat(
+          promptResult.installableItems
+        );
       }
     }
 
-    if (installedItemChanges.filter((i) => i.type === "itemUpgrade").length > 0) {
-      await item.syncUpgrades(installedItemChanges.filter((i) => i.type === "itemUpgrade"));
+    if (
+      installedItemChanges.filter((i) => i.type === "itemUpgrade").length > 0
+    ) {
+      await item.syncUpgrades(
+        installedItemChanges.filter((i) => i.type === "itemUpgrade")
+      );
     }
 
     if (installedItemChanges.filter((i) => i.type === "program").length > 0) {
-      await item.syncPrograms(installedItemChanges.filter((i) => i.type === "program"));
+      await item.syncPrograms(
+        installedItemChanges.filter((i) => i.type === "program")
+      );
     }
   }
 
@@ -667,9 +969,11 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("_uninstallSingleItem | CPRItemSheet | Called.");
     const installedItemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const { item } = this;
-    const actor = (this.item.isOwned) ? this.item.actor : null;
+    const actor = this.item.isOwned ? this.item.actor : null;
 
-    const installedItem = (!actor) ? fromUuidSync(installedItemId) : actor.getOwnedItem(installedItemId);
+    const installedItem = !actor
+      ? fromUuidSync(installedItemId)
+      : actor.getOwnedItem(installedItemId);
     await item.uninstallItems([installedItem]);
 
     if (installedItem.type === "itemUpgrade") {
@@ -683,13 +987,18 @@ export default class CPRItemSheet extends ItemSheet {
 
   async _roleAbilityAction(event) {
     LOGGER.trace("ItemSheet | _roleAbilityAction | Called.");
-    const target = Number(SystemUtils.GetEventDatum(event, "data-action-target"));
+    const target = Number(
+      SystemUtils.GetEventDatum(event, "data-action-target")
+    );
     const action = SystemUtils.GetEventDatum(event, "data-action-type");
     const cprItemData = duplicate(this.item.system);
     const coreSkills = await SystemUtils.GetCoreSkills();
     const customSkills = game.items.filter((i) => i.type === "skill");
-    const allSkills = this.object.isOwned ? this.actor.itemTypes.skill
-      : coreSkills.concat(customSkills).sort((a, b) => (a.name > b.name ? 1 : -1));
+    const allSkills = this.object.isOwned
+      ? this.actor.itemTypes.skill
+      : coreSkills
+          .concat(customSkills)
+          .sort((a, b) => (a.name > b.name ? 1 : -1));
     if (action === "create") {
       let formData = {
         name: "",
@@ -703,18 +1012,27 @@ export default class CPRItemSheet extends ItemSheet {
         returnType: "array",
       };
 
-      formData = await RoleAbilityPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+      formData = await RoleAbilityPrompt.RenderPrompt(formData).catch((err) =>
+        LOGGER.debug(err)
+      );
       if (formData === undefined) {
         return;
       }
       // eslint-disable-next-line no-nested-ternary
-      const skillObject = (formData.skill !== "--") && (formData.skill !== "varying") ? allSkills.find((a) => a.name === formData.skill)
-        : (formData.skill === "varying") ? "varying"
+      const skillObject =
+        formData.skill !== "--" && formData.skill !== "varying"
+          ? allSkills.find((a) => a.name === formData.skill)
+          : formData.skill === "varying"
+          ? "varying"
           : "--";
       if (hasProperty(cprItemData, "abilities")) {
         const prop = getProperty(cprItemData, "abilities");
         let maxIndex = -1;
-        prop.forEach((ability) => { if (ability.index > maxIndex) { maxIndex = ability.index; } });
+        prop.forEach((ability) => {
+          if (ability.index > maxIndex) {
+            maxIndex = ability.index;
+          }
+        });
         prop.push({
           index: maxIndex + 1,
           name: formData.name,
@@ -725,35 +1043,46 @@ export default class CPRItemSheet extends ItemSheet {
           bonuses: [],
           universalBonuses: [],
           bonusRatio: 1,
+          isSituational: false,
+          onByDefault: false,
           hasRoll: formData.hasRoll,
         });
         setProperty(cprItemData, "abilities", prop);
         this.item.update({ system: cprItemData });
       } else {
-        const prop = [{
-          index: 0,
-          name: formData.name,
-          rank: formData.rank,
-          multiplier: formData.multiplier,
-          stat: formData.stat,
-          skill: skillObject,
-          bonuses: [],
-          universalBonuses: [],
-          bonusRatio: 1,
-          hasRoll: formData.hasRoll,
-        }];
+        const prop = [
+          {
+            index: 0,
+            name: formData.name,
+            rank: formData.rank,
+            multiplier: formData.multiplier,
+            stat: formData.stat,
+            skill: skillObject,
+            bonuses: [],
+            universalBonuses: [],
+            bonusRatio: 1,
+            isSituational: false,
+            onByDefault: false,
+            hasRoll: formData.hasRoll,
+          },
+        ];
         setProperty(cprItemData, "abilities", prop);
         this.item.update({ system: cprItemData });
       }
     }
 
     if (action === "delete") {
-      const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
+      const setting = game.settings.get(
+        game.system.id,
+        "deleteItemConfirmation"
+      );
       if (setting) {
-        const promptMessage = `${SystemUtils.Localize("CPR.dialog.deleteConfirmation.message")} ${SystemUtils.Localize("CPR.itemSheet.role.deleteConfirmation")}?`;
+        const promptMessage = `${SystemUtils.Localize(
+          "CPR.dialog.deleteConfirmation.message"
+        )} ${SystemUtils.Localize("CPR.itemSheet.role.deleteConfirmation")}?`;
         const confirmDelete = await ConfirmPrompt.RenderPrompt(
           SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
-          promptMessage,
+          promptMessage
         );
         if (!confirmDelete) {
           return;
@@ -762,7 +1091,11 @@ export default class CPRItemSheet extends ItemSheet {
       if (hasProperty(cprItemData, "abilities")) {
         const prop = getProperty(cprItemData, "abilities");
         let deleteElement = null;
-        prop.forEach((ability) => { if (ability.index === target) { deleteElement = ability; } });
+        prop.forEach((ability) => {
+          if (ability.index === target) {
+            deleteElement = ability;
+          }
+        });
         prop.splice(prop.indexOf(deleteElement), 1);
         setProperty(cprItemData, "abilities", prop);
         this.item.update({ system: cprItemData });
@@ -773,8 +1106,15 @@ export default class CPRItemSheet extends ItemSheet {
       if (hasProperty(cprItemData, "abilities")) {
         const prop = getProperty(cprItemData, "abilities");
         let editElement = null;
-        prop.forEach((ability) => { if (ability.index === target) { editElement = ability; } });
-        const editElementSkill = (editElement.skill !== "--") && (editElement.skill !== "varying") ? editElement.skill.name : editElement.skill;
+        prop.forEach((ability) => {
+          if (ability.index === target) {
+            editElement = ability;
+          }
+        });
+        const editElementSkill =
+          editElement.skill !== "--" && editElement.skill !== "varying"
+            ? editElement.skill.name
+            : editElement.skill;
         let formData = {
           name: editElement.name,
           rank: editElement.rank,
@@ -786,13 +1126,18 @@ export default class CPRItemSheet extends ItemSheet {
           hasRoll: editElement.hasRoll,
           returnType: "array",
         };
-        formData = await RoleAbilityPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+        formData = await RoleAbilityPrompt.RenderPrompt(formData).catch((err) =>
+          LOGGER.debug(err)
+        );
         if (formData === undefined) {
           return;
         }
         // eslint-disable-next-line no-nested-ternary
-        const skillObject = (formData.skill !== "--") && (formData.skill !== "varying") ? allSkills.find((a) => a.name === formData.skill)
-          : (formData.skill === "varying") ? "varying"
+        const skillObject =
+          formData.skill !== "--" && formData.skill !== "varying"
+            ? allSkills.find((a) => a.name === formData.skill)
+            : formData.skill === "varying"
+            ? "varying"
             : "--";
         prop.splice(prop.indexOf(editElement), 1);
         prop.push({
@@ -805,6 +1150,8 @@ export default class CPRItemSheet extends ItemSheet {
           bonuses: editElement.bonuses,
           universalBonuses: editElement.universalBonuses,
           bonusRatio: editElement.bonusRatio,
+          isSituational: editElement.isSituational,
+          onByDefault: editElement.onByDefault,
           hasRoll: formData.hasRoll,
         });
         setProperty(cprItemData, "abilities", prop);
@@ -817,29 +1164,49 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("_selectInstallableItems | CPRItemSheet | Called.");
     const installTarget = this.item;
 
-    const actor = (installTarget.isOwned) ? installTarget.actor : false;
+    const actor = installTarget.isOwned ? installTarget.actor : false;
 
     // First get all items that are installed in this.
-    const installedItems = itemType ? installTarget.getInstalledItems(itemType) : installTarget.getInstalledItems();
+    const installedItems = itemType
+      ? installTarget.getInstalledItems(itemType)
+      : installTarget.getInstalledItems();
 
     // Next get all uninstalled items that
-    let uninstalledItems = (!actor) ? game.items.filter((item) => this.item.system.installedItems.allowedTypes.includes(item.type)
-                                                          && item.system.isInstalled === false)
-      : actor.items.filter((item) => this.item.system.installedItems.allowedTypes.includes(item.type)
-                                      && item.system.isInstalled === false);
+    let uninstalledItems = !actor
+      ? game.items.filter(
+          (item) =>
+            this.item.system.installedItems.allowedTypes.includes(item.type) &&
+            item.system.isInstalled === false
+        )
+      : actor.items.filter(
+          (item) =>
+            this.item.system.installedItems.allowedTypes.includes(item.type) &&
+            item.system.isInstalled === false
+        );
 
     // Remove itemUpgrades that are not upgrades for this installTarget.type
-    uninstalledItems = uninstalledItems.filter((item) => item.type !== "itemUpgrade" || (item.type === "itemUpgrade" && item.system.type === installTarget.type));
+    uninstalledItems = uninstalledItems.filter(
+      (item) =>
+        item.type !== "itemUpgrade" ||
+        (item.type === "itemUpgrade" && item.system.type === installTarget.type)
+    );
 
     if (itemType) {
-      uninstalledItems = (itemType === "itemUpgrade")
-        ? uninstalledItems.filter((item) => item.type === itemType && item.system.type === installTarget.type)
-        : uninstalledItems.filter((item) => item.type === itemType);
+      uninstalledItems =
+        itemType === "itemUpgrade"
+          ? uninstalledItems.filter(
+              (item) =>
+                item.type === itemType &&
+                item.system.type === installTarget.type
+            )
+          : uninstalledItems.filter((item) => item.type === itemType);
     }
 
     if (!actor) {
       for (const installedItem of installedItems) {
-        uninstalledItems = uninstalledItems.filter((i) => i.uuid !== installedItem.uuid && i.name !== installedItem.name);
+        uninstalledItems = uninstalledItems.filter(
+          (i) => i.uuid !== installedItem.uuid && i.name !== installedItem.name
+        );
       }
     }
     let itemsList = [];
@@ -888,18 +1255,28 @@ export default class CPRItemSheet extends ItemSheet {
     typeList.sort();
 
     const availableSlots = this.item.availableInstallSlots();
-    const totalSlots = availableSlots + this.item.system.installedItems.usedSlots;
+    const totalSlots =
+      availableSlots + this.item.system.installedItems.usedSlots;
 
-    const dialogItemType = (itemType) ? SystemUtils.Localize(CPR.objectTypes[itemType]) : SystemUtils.Localize("CPR.global.generic.item");
-    const dialogPromptTitle = `${SystemUtils.Format("CPR.dialog.selectInstallableItems.title", { type: dialogItemType })}
-      | ${SystemUtils.Localize("CPR.global.generic.item")} ${SystemUtils.Localize("CPR.global.generic.slots")}: ${totalSlots}`;
-    const dialogPromptText = (itemsList.length > 0) ? SystemUtils.Format(
-      "CPR.dialog.selectInstallableItems.text",
-      {
-        type: dialogItemType,
-        target: installTarget.name,
-      },
-    ) : `${SystemUtils.Format("CPR.dialog.selectInstallableItems.noOptions", { target: installTarget.name })}`;
+    const dialogItemType = itemType
+      ? SystemUtils.Localize(CPR.objectTypes[itemType])
+      : SystemUtils.Localize("CPR.global.generic.item");
+    const dialogPromptTitle = `${SystemUtils.Format(
+      "CPR.dialog.selectInstallableItems.title",
+      { type: dialogItemType }
+    )}
+      | ${SystemUtils.Localize(
+        "CPR.global.generic.item"
+      )} ${SystemUtils.Localize("CPR.global.generic.slots")}: ${totalSlots}`;
+    const dialogPromptText =
+      itemsList.length > 0
+        ? SystemUtils.Format("CPR.dialog.selectInstallableItems.text", {
+            type: dialogItemType,
+            target: installTarget.name,
+          })
+        : `${SystemUtils.Format("CPR.dialog.selectInstallableItems.noOptions", {
+            target: installTarget.name,
+          })}`;
 
     let formData = {
       target: installTarget,
@@ -911,7 +1288,9 @@ export default class CPRItemSheet extends ItemSheet {
       returnType: "array",
     };
 
-    formData = await SelectInstallItemsPrompt.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+    formData = await SelectInstallItemsPrompt.RenderPrompt(formData).catch(
+      (err) => LOGGER.debug(err)
+    );
     if (formData === undefined) {
       return {};
     }
@@ -928,7 +1307,9 @@ export default class CPRItemSheet extends ItemSheet {
 
     formData.selectedItems.forEach((itemId) => {
       if (installedItems.filter((item) => item._id === itemId).length === 0) {
-        const installedItem = (!actor) ? fromUuidSync(itemId) : actor.getOwnedItem(itemId);
+        const installedItem = !actor
+          ? fromUuidSync(itemId)
+          : actor.getOwnedItem(itemId);
         installableItems.push(installedItem);
       }
     });
@@ -974,17 +1355,27 @@ export default class CPRItemSheet extends ItemSheet {
     let formData = {
       installableTypes,
     };
-    formData = await ManageInstallableTypes.RenderPrompt(formData).catch((err) => LOGGER.debug(err));
+    formData = await ManageInstallableTypes.RenderPrompt(formData).catch(
+      (err) => LOGGER.debug(err)
+    );
     if (formData === undefined) {
       return;
     }
     const allowedTypes = formData.selectedTypes;
 
-    if (allowedTypes.length === 0 && this.item.system.installedItems.list.length > 0) {
-      SystemUtils.DisplayMessage("error", "CPR.messages.hasInstalledItemsOfRemovedType");
+    if (
+      allowedTypes.length === 0 &&
+      this.item.system.installedItems.list.length > 0
+    ) {
+      SystemUtils.DisplayMessage(
+        "error",
+        "CPR.messages.hasInstalledItemsOfRemovedType"
+      );
       return;
     }
-    await this.item.update({ "system.installedItems.allowedTypes": allowedTypes });
+    await this.item.update({
+      "system.installedItems.allowedTypes": allowedTypes,
+    });
   }
 
   /**

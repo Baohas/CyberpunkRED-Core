@@ -22,7 +22,10 @@ export default class ItemSecondaryWeaponMigration extends CPRMigration {
    */
   async preMigrate() {
     LOGGER.trace(`preMigrate | ${this.version}-${this.name}`);
-    CPRSystemUtils.DisplayMessage("notify", CPRSystemUtils.Localize("CPR.migration.effects.beginMigration"));
+    CPRSystemUtils.DisplayMessage(
+      "notify",
+      CPRSystemUtils.Localize("CPR.migration.effects.beginMigration")
+    );
     LOGGER.log(`Starting migration: ${this.name}`);
   }
 
@@ -42,13 +45,13 @@ export default class ItemSecondaryWeaponMigration extends CPRMigration {
   static async migrateItem(item) {
     LOGGER.trace(`migrateItemUpgrade | ${this.version}-${this.name}`);
     if (item.type === "itemUpgrade") {
-      const updateData = (item.isOwned) ? { _id: item._id } : {};
+      const updateData = item.isOwned ? { _id: item._id } : {};
       if (item.system.modifiers.secondaryWeapon.configured === "true") {
         updateData["system.modifiers.secondaryWeapon.configured"] = true;
       } else {
         updateData["system.modifiers.secondaryWeapon.configured"] = false;
       }
-      return (item.isOwned) ? updateData : item.update(updateData);
+      return item.isOwned ? updateData : item.update(updateData);
     }
     return null;
   }

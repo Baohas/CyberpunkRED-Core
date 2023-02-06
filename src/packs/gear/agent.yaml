@@ -1,6 +1,6 @@
 _id: GqYz689ddSKQHMen
 effects:
-  - _id: NVm2e26fprlysF2t
+  - _id: OnONUXyMY8mOquf7
     changes:
       - key: bonuses.librarySearch
         mode: 2
@@ -22,8 +22,16 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          '0': skill
-          '1': skill
+          cats:
+            '0': skill
+            '1': skill
+          situational:
+            '0':
+              isSituational: false
+              onByDefault: false
+            '1':
+              isSituational: true
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
     label: Agent
     tint: null
