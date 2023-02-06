@@ -865,6 +865,7 @@
   "CPR.messages.improvementPointsEditInvalidAction": "Error: Invalid action while modifying Improvement Points.",
   "CPR.messages.improvementPointsEditWarn": "Please enter a number into the 'Modify by' field.",
   "CPR.messages.installInsufficientSlots": "{item} does not have enough available slots to install that",
+  "CPR.messages.installInvalidType": "The item you are trying to install into does not accept that item type as a valid install type. Check the item settings and try again.",
   "CPR.messages.insufficientPermissions": "You lack the permissions to perform this action.",
   "CPR.messages.invalidCombatantType": "Invalid combatant actor type",
   "CPR.messages.invalidRoleData": "Check your role rank abilities, they don't look right, Choomba!",

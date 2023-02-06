@@ -67,7 +67,7 @@
     <div class="item flexrow setting-name text-nowrap">
         {{#each item.system.installedItems.list as |UUID| }}
           {{#unless (cprCompare (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type") "===" "program")}}
-            &nbsp;{{cprGetProp (cprGetOwnedItem ../item.actor UUID) "name"}} ({{localize (cprFindConfigValue "objectTypes" (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type"))}})
+            &nbsp;{{cprGetProp (cprGetOwnedItem ../item.actor UUID) "name"}}{{#if (cprIsDebug)}} ({{UUID}}){{/if}} ({{localize (cprFindConfigValue "objectTypes" (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type"))}})
           {{/unless}}
         {{/each}}
     </div>

@@ -106,6 +106,9 @@ export default class UniversalInstallMigration extends CPRMigration {
           }
           default:
         }
+        if (item.system.isFoundational) {
+          itemUpdates.system.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
+        }
       }
 
       if (item.type === "cyberware" && item.system.isInstalled) {
@@ -315,7 +318,7 @@ export default class UniversalInstallMigration extends CPRMigration {
       }
 
       if (item.type === "cyberware") {
-        systemChanges.installedItems.allowedTypes.push("programs");
+        systemChanges.installedItems.allowedTypes.push("cyberware");
         systemChanges.installedItems.slots = Math.max(systemChanges.installedItems.slots, parseInt(item.system.optionSlots, 10));
       }
     }

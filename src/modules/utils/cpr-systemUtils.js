@@ -572,6 +572,6 @@ export default class CPRSystemUtils {
    */
   static stripHTML(htmlString) {
     LOGGER.trace("stripHTML | CPRSystemUtils | Called.");
-    return decodeURIComponent($(htmlString).text()).trim();
+    return decodeURIComponent($(htmlString).text().replace("%", "&#37")).trim();
   }
 }

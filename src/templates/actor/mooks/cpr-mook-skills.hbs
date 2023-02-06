@@ -19,18 +19,19 @@
       <a class="rollable"  data-roll-type="skill" data-roll-title="{{skill.name}}" data-tooltip="{{localize "CPR.mookSheet.skills.clickToRollThisSkill"}}, {{localize "CPR.mookSheet.skills.pressDeleteToReset"}}">
         {{#if skill.system.core}}{{localize (cprGetLocalizedlNameKey skill)}}{{else}}{{skill.name}}{{/if}}
           {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "level")}}
-            ({{cprEffectModMode 2 skill.system.level}}){{#unless @last}},{{/unless}}
-          {{/if}}
-          {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "base")}}
-            ({{cprEffectModMode 2 (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor))}}){{#unless @last}},{{/unless}}
-          {{/if}}
-          {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "total")}}
-            ({{cprEffectModMode 2 (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor) (cprGetSkillBonus skill.name ../actor))}}){{#unless @last}},{{/unless}}
-          {{/if}}
+            ({{~cprEffectModMode 2 skill.system.level}})
+          {{~/if}}
+          {{~#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "base")}}
+            ({{~cprEffectModMode 2 (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor))}})
+          {{~/if}}
+          {{~#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "total")}}
+            ({{~cprEffectModMode 2 (cprMath "sum" skill.system.level (cprGetSkillStat skill ../actor) (cprGetSkillBonus skill.name ../actor))}})
+          {{~/if~}}
       </a>
-      {{#if (cprCompare skill.system.core "===" false)}}
+      {{~#unless skill.system.core}}
         <a class="item-edit skill-custom" data-tooltip="{{localize "CPR.actorSheets.commonActions.editCustomSkill"}}"><i class="fas fa-edit"></i></a>
-      {{/if}}
+      {{~/unless}}
+      {{~#unless @last}},{{/unless}}
     </span>
   {{/each}}
 </div>
