@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
-## Version 0.86.1 | Date: TBD
+## Version 0.86.1 | Date: 2023-02-05
 
 ### Bug Fixes
 
