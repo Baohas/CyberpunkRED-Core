@@ -54,7 +54,7 @@
       {{/if}}
     </div>
   </li>
-  {{#if (cprCompare item.system.modifiers.secondaryWeapon.configured "===" "true") }}
+  {{#if item.system.modifiers.secondaryWeapon.configured }}
     {{> "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-attackable.hbs" this}}
   {{/if}}
 {{/if}}
