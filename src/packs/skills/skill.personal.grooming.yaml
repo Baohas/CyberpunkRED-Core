@@ -1,0 +1,17 @@
+_id: fIq8FZsb8QgBN0sG
+img: icons/svg/item-bag.svg
+name: Personal Grooming
+system:
+  basic: false
+  category: socialSkills
+  core: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  difficulty: typical
+  favorite: false
+  level: 0
+  source: ""
+  stat: cool
+type: skill

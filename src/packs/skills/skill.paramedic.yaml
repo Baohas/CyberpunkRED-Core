@@ -1,0 +1,17 @@
+_id: zJA3lYQ47dmm55fd
+img: icons/svg/item-bag.svg
+name: Paramedic
+system:
+  basic: false
+  category: techniqueSkills
+  core: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  difficulty: difficult
+  favorite: false
+  level: 0
+  source: ""
+  stat: tech
+type: skill

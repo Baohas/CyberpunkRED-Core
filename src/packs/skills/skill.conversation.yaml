@@ -1,0 +1,17 @@
+_id: DlYHwCapjvfyYgKh
+img: icons/svg/item-bag.svg
+name: Conversation
+system:
+  basic: true
+  category: socialSkills
+  core: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  difficulty: typical
+  favorite: false
+  level: 2
+  source: ""
+  stat: emp
+type: skill

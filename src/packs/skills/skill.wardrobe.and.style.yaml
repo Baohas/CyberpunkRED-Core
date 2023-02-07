@@ -1,0 +1,17 @@
+_id: P9WIrQR7Nrxxq682
+img: icons/svg/item-bag.svg
+name: Wardrobe & Style
+system:
+  basic: false
+  category: socialSkills
+  core: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  difficulty: typical
+  favorite: false
+  level: 0
+  source: ""
+  stat: cool
+type: skill

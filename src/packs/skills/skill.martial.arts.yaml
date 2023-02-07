@@ -1,0 +1,17 @@
+_id: 7cjWFTjwgwm4Pamn
+img: icons/svg/item-bag.svg
+name: Martial Arts
+system:
+  basic: false
+  category: fightingSkills
+  core: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  difficulty: difficult
+  favorite: false
+  level: 0
+  source: ""
+  stat: dex
+type: skill

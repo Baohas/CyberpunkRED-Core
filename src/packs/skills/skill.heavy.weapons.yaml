@@ -1,0 +1,17 @@
+_id: TNA0LGN1MAYoA60l
+img: icons/svg/item-bag.svg
+name: Heavy Weapons
+system:
+  basic: false
+  category: rangedweaponSkills
+  core: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  difficulty: difficult
+  favorite: false
+  level: 0
+  source: ""
+  stat: ref
+type: skill
