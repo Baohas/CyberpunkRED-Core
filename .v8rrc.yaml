@@ -43,3 +43,7 @@ customCatalog:
       description: "Schema for validating Program YAML fragments"
       fileMatch: ["src/packs/**/program.*.yaml"]
       location: "schema/program.json"
+    - name: "Roles"
+      description: "Schema for validating Role YAML fragments"
+      fileMatch: ["src/packs/**/role.*.yaml"]
+      location: "schema/role.json"
