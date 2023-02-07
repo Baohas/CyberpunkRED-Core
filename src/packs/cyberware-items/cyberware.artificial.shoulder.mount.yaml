@@ -1,0 +1,80 @@
+_id: lqyjkgvm1kvILvuw
+effects:
+  - _id: 3eNNo0rk2AzidtmS
+    changes:
+      - key: bonuses.hands
+        mode: 2
+        priority: null
+        value: "2"
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/cyberware/artificial_shoulder_mount.svg
+    label: Artificial Shoulder Mount
+    tint: null
+    transfer: true
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/cyberware/artificial_shoulder_mount.svg
+name: Artificial Shoulder Mount
+system:
+  ammoVariety: []
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Allows you to install an extra pair of cyberarms. </p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 4d6
+    static: 14
+  installLocation: hospital
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - cyberware
+    list: []
+    slots: 3
+    usedSlots: 0
+  isFoundational: true
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 1000
+  revealed: true
+  rof: 1
+  size: 0
+  source: pg. 367
+  type: borgware
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: cyberware

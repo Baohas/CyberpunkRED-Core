@@ -1,45 +1,37 @@
-_id: it4Mfyti7WPpuuYE
+_id: 1MHNGPfuWR5ROPiB
 effects: []
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/gear/smart_glasses.svg
-name: Smart Glasses
-ownership:
-  default: 0
-sort: 0
+img: icons/svg/item-bag.svg
+name: External (7 Option Slots)
 system:
   ammoVariety: []
   attackmod: 0
-  charges:
-    max: 0
-    value: 0
   concealable:
     concealable: false
     isConcealed: false
-  core: false
+  core: true
   damage: 1d6
   description:
-    chat: ''
-    unidentified: ''
-    value: <p>Eyewear with two options slots for cybereye options.</p>
-  dvTable: ''
+    chat: ""
+    unidentified: ""
+    value: ""
+  dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: '0'
-    static: '0'
-  install: mall
+    roll: "0"
+    static: 0
+  installLocation: hospital
+  installedIn: ""
   installedItems:
     allowed: true
     allowedTypes:
       - itemUpgrade
+      - cyberware
     list: []
-    slots: 2
+    slots: 7
     usedSlots: 0
-  isConcealed: false
   isFoundational: true
   isInstalled: false
   isRanged: false
@@ -47,23 +39,21 @@ system:
   isWeapon: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 0
     value: 0
   price:
-    category: expensive
-    market: 500
+    market: 0
   revealed: true
   rof: 1
   size: 1
-  source: pg. 354
-  tags: []
-  type: cyberEye
+  source: ""
+  type: cyberwareExternal
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  weaponSkill: ""
+  weaponType: ""
 type: cyberware

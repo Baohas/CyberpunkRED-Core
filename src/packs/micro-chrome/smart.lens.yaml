@@ -10,7 +10,6 @@ ownership:
 sort: 0
 system:
   ammoVariety: []
-  amount: 1
   attackmod: 0
   charges:
     max: 0

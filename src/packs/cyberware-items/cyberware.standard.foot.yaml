@@ -1,65 +1,54 @@
-_id: it4Mfyti7WPpuuYE
+_id: W7S33SRvtrZUpceP
 effects: []
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/gear/smart_glasses.svg
-name: Smart Glasses
-ownership:
-  default: 0
-sort: 0
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/standard_foot.svg
+name: Standard Foot
 system:
   ammoVariety: []
   attackmod: 0
-  charges:
-    max: 0
-    value: 0
   concealable:
     concealable: false
     isConcealed: false
   core: false
   damage: 1d6
   description:
-    chat: ''
-    unidentified: ''
-    value: <p>Eyewear with two options slots for cybereye options.</p>
-  dvTable: ''
+    chat: ""
+    unidentified: ""
+    value: <p>Looks like a normal foot for the most part. </p>
+  dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: '0'
-    static: '0'
-  install: mall
+    roll: 1d3
+    static: 2
+  installLocation: clinic
+  installedIn: ""
   installedItems:
-    allowed: true
+    allowed: false
     allowedTypes:
       - itemUpgrade
     list: []
-    slots: 2
+    slots: 3
     usedSlots: 0
-  isConcealed: false
-  isFoundational: true
+  isFoundational: false
   isInstalled: false
   isRanged: false
   isUpgraded: false
   isWeapon: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 0
     value: 0
   price:
-    category: expensive
-    market: 500
+    market: 100
   revealed: true
   rof: 1
-  size: 1
-  source: pg. 354
-  tags: []
-  type: cyberEye
+  size: 0
+  source: pg. 366
+  type: cyberLeg
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled

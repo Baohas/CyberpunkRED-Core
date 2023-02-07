@@ -1,68 +1,56 @@
-_id: aXls5W8VKJMNT2Cm
+_id: 0d2bEozOFhfPgkUP
 effects: []
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/battleglove.svg
-name: Battleglove
-ownership:
-  default: 0
-sort: 0
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/biomonitor.svg
+name: Biomonitor
 system:
   ammoVariety: []
   attackmod: 0
-  charges:
-    max: 0
-    value: 0
   concealable:
     concealable: false
     isConcealed: false
   core: false
   damage: 1d6
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
-      <p>An exotic heavy gauntlet, that covers your hand and forearm. Provides
-      three option slots. Refer to the full item description on pg.
-      347.&nbsp;</p>
-  dvTable: ''
+      <p>Provides an LED showing vitals readouts. Can be linked to your agent.
+      </p>
+  dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: '0'
-    static: '0'
-  install: mall
+    roll: "0"
+    static: 0
+  installLocation: mall
+  installedIn: ""
   installedItems:
-    allowed: true
+    allowed: false
     allowedTypes:
       - itemUpgrade
     list: []
     slots: 3
     usedSlots: 0
-  isConcealed: false
-  isFoundational: true
+  isFoundational: false
   isInstalled: false
   isRanged: false
   isUpgraded: false
   isWeapon: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 0
     value: 0
   price:
-    category: veryExpensive
-    market: 1000
+    market: 100
   revealed: true
   rof: 1
   size: 1
-  source: pg. 347
-  tags: []
-  type: cyberArm
+  source: pg. 358
+  type: fashionware
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled

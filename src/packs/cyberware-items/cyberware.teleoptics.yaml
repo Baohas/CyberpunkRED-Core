@@ -1,0 +1,81 @@
+_id: uApwuxpuIJMe47Vn
+effects:
+  - _id: CMDlHoVTmNq5MRwZ
+    changes:
+      - key: bonuses.aimedShot
+        mode: 2
+        value: "1"
+      - key: bonuses.singleShot
+        mode: 2
+        value: "1"
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    icon: systems/cyberpunk-red-core/icons/compendium/cyberware/teleoptics.svg
+    label: TeleOptics
+    tint: null
+    transfer: true
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/teleoptics.svg
+name: TeleOptics
+system:
+  ammoVariety: []
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Telescope in your eye up to 800m/yds. +1 to single shot/aimed shot if
+      greater than 50m away.</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 1d6
+    static: 3
+  installLocation: clinic
+  installedIn: ""
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 500
+  revealed: true
+  rof: 1
+  size: 1
+  source: pg. 361
+  type: cyberEye
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

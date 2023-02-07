@@ -1,69 +1,58 @@
-_id: it4Mfyti7WPpuuYE
+_id: KVn4A1c6svXPovI4
 effects: []
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/gear/smart_glasses.svg
-name: Smart Glasses
-ownership:
-  default: 0
-sort: 0
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/radar_detector.svg
+name: Radar Detector
 system:
   ammoVariety: []
   attackmod: 0
-  charges:
-    max: 0
-    value: 0
   concealable:
     concealable: false
     isConcealed: false
   core: false
   damage: 1d6
   description:
-    chat: ''
-    unidentified: ''
-    value: <p>Eyewear with two options slots for cybereye options.</p>
-  dvTable: ''
+    chat: ""
+    unidentified: ""
+    value: <p>Notifies of detected active radar within a 1 mile radius.</p>
+  dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: '0'
-    static: '0'
-  install: mall
+    roll: 1d3
+    static: 2
+  installLocation: clinic
+  installedIn: ""
   installedItems:
-    allowed: true
+    allowed: false
     allowedTypes:
       - itemUpgrade
     list: []
-    slots: 2
+    slots: 3
     usedSlots: 0
-  isConcealed: false
-  isFoundational: true
+  isFoundational: false
   isInstalled: false
   isRanged: false
   isUpgraded: false
   isWeapon: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 0
     value: 0
   price:
-    category: expensive
     market: 500
   revealed: true
   rof: 1
   size: 1
-  source: pg. 354
-  tags: []
-  type: cyberEye
+  source: pg. 362
+  type: cyberAudioSuite
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  weaponSkill: ""
+  weaponType: ""
 type: cyberware

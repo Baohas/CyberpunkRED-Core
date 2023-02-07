@@ -15,7 +15,6 @@ system:
     - toggled
     - installed
   ammoVariety: []
-  amount: 1
   attackmod: 0
   availableSlots: 0
   concealable:

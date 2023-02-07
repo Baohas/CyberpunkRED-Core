@@ -1,68 +1,56 @@
-_id: aXls5W8VKJMNT2Cm
+_id: o3lADTIXaa3eLryF
 effects: []
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/battleglove.svg
-name: Battleglove
-ownership:
-  default: 0
-sort: 0
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/homing_tracer.svg
+name: Homing Tracer
 system:
   ammoVariety: []
   attackmod: 0
-  charges:
-    max: 0
-    value: 0
   concealable:
     concealable: false
     isConcealed: false
   core: false
   damage: 1d6
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
-      <p>An exotic heavy gauntlet, that covers your hand and forearm. Provides
-      three option slots. Refer to the full item description on pg.
-      347.&nbsp;</p>
-  dvTable: ''
+      <p>Audio tracking of a tracer up to 1 mile. Replacements not included.
+      </p>
+  dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: '0'
-    static: '0'
-  install: mall
+    roll: 1d3
+    static: 2
+  installLocation: clinic
+  installedIn: ""
   installedItems:
-    allowed: true
+    allowed: false
     allowedTypes:
       - itemUpgrade
     list: []
     slots: 3
     usedSlots: 0
-  isConcealed: false
-  isFoundational: true
+  isFoundational: false
   isInstalled: false
   isRanged: false
   isUpgraded: false
   isWeapon: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 0
     value: 0
   price:
-    category: veryExpensive
-    market: 1000
+    market: 100
   revealed: true
   rof: 1
   size: 1
-  source: pg. 347
-  tags: []
-  type: cyberArm
+  source: pg. 361
+  type: cyberAudioSuite
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled
