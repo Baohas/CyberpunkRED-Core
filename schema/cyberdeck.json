@@ -59,6 +59,9 @@
         "installedItems": {
           "$ref": "./components/container/installedItems.json"
         },
+        "isElectronic": {
+          "$ref": "./components/electronic/isElectronic.json"
+        },
         "isInstalled": {
           "$ref": "./components/installable/isInstalled.json"
         },
@@ -67,6 +70,9 @@
         },
         "price": {
           "$ref": "./components/valuable/price.json"
+        },
+        "providesHardening": {
+          "$ref": "./components/electronic/providesHardening.json"
         },
         "programs": {
           "$ref": "#/definitions/Programs"

@@ -64,6 +64,9 @@
         "installedItems": {
           "$ref": "./components/container/installedItems.json"
         },
+        "isElectronic": {
+          "$ref": "./components/electronic/isElectronic.json"
+        },
         "isBodyLocation": {
           "type": "boolean"
         },
@@ -81,6 +84,9 @@
         },
         "price": {
           "$ref": "./components/valuable/price.json"
+        },
+        "providesHardening": {
+          "$ref": "./components/electronic/providesHardening.json"
         },
         "revealed": {
           "$ref": "./components/effects/revealed.json"

@@ -51,6 +51,9 @@
         "description": {
           "$ref": "./components/common/description.json"
         },
+        "isElectronic": {
+          "$ref": "./components/electronic/isElectronic.json"
+        },
         "equipped": {
           "$ref": "./components/equippable/equipped.json"
         },
@@ -65,6 +68,9 @@
         },
         "price": {
           "$ref": "./components/valuable/price.json"
+        },
+        "providesHardening": {
+          "$ref": "./components/electronic/providesHardening.json"
         },
         "revealed": {
           "$ref": "./components/effects/revealed.json"
