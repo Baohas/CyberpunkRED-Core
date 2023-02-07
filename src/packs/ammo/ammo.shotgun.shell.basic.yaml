@@ -1,0 +1,20 @@
+_id: mkI1KpjAOUz9PxRM
+img: systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_shell_basic.png
+name: Shotgun Shell (Basic)
+system:
+  ablationValue: 1
+  amount: 10
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Basic ammo, nothing special.</p>
+  favorite: false
+  price:
+    market: 10
+  source: pg. 345
+  type: basic
+  variety: shotgunShell
+type: ammo
