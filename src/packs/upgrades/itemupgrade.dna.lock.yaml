@@ -1,0 +1,68 @@
+_id: jz7lnKQ3dKd5GCbY
+img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/dna_lock.svg
+name: DNA Lock
+system:
+  ammoVariety: []
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Uses biometrics to lock the cyberdeck. Requires DV17
+      Electronics/Security Tech Check to crack.&nbsp;</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isInstalled: false
+  isRanged: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  modifiers:
+    attackmod:
+      type: modifier
+      value: null
+    damage:
+      type: modifier
+      value: null
+    magazine:
+      type: modifier
+      value: null
+    rof:
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: false
+    slots:
+      type: modifier
+      value: null
+  price:
+    market: 100
+  rof: 1
+  size: 2
+  source: pg. 368
+  type: cyberdeck
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: itemUpgrade
