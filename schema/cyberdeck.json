@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/CPRC-Cyberdeck",
+  "definitions": {
+    "CPRC-Cyberdeck": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "./components/id.json"
+        },
+        "img": {
+          "$ref": "./components/img.json"
+        },
+        "name": {
+          "$ref": "./components/name.json"
+        },
+        "type": {
+          "type": "string",
+          "const": "cyberdeck"
+        },
+        "system": {
+          "$ref": "#/definitions/System"
+        }
+      },
+      "required": [
+        "_id",
+        "img",
+        "name",
+        "system",
+        "type"
+      ]
+    },
+    "System": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "concealable": {
+          "$ref": "./components/physical/concealable.json"
+        },
+        "description": {
+          "$ref": "./components/common/description.json"
+        },
+        "equipped": {
+          "$ref": "./components/equippable/equipped.json"
+        },
+        "favorite": {
+          "$ref": "./components/common/favorite.json"
+        },
+        "installLocation": {
+          "$ref": "./components/installable/installLocation.json"
+        },
+        "installedIn": {
+          "$ref": "./components/installable/installedIn.json"
+        },
+        "installedItems": {
+          "$ref": "./components/container/installedItems.json"
+        },
+        "isInstalled": {
+          "$ref": "./components/installable/isInstalled.json"
+        },
+        "isUpgraded": {
+          "$ref": "./components/upgradable/isUpgraded.json"
+        },
+        "price": {
+          "$ref": "./components/valuable/price.json"
+        },
+        "programs": {
+          "$ref": "#/definitions/Programs"
+        },
+        "size": {
+          "$ref": "./components/installable/size.json"
+        },
+        "source": {
+          "$ref": "./components/common/source.json"
+        },
+        "upgrades": {
+          "$ref": "./components/upgradable/upgrades.json"
+        }
+      },
+      "required": [
+        "concealable",
+        "description",
+        "equipped",
+        "favorite",
+        "installLocation",
+        "installedIn",
+        "installedItems",
+        "isInstalled",
+        "isUpgraded",
+        "price",
+        "programs",
+        "size",
+        "source",
+        "upgrades"
+      ]
+    },
+    "Programs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "installed": {
+          "type": "array",
+          "items": {}
+        },
+        "rezzed": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "required": [
+        "installed",
+        "rezzed"
+      ]
+    }
+  }
+}

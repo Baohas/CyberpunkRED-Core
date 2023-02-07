@@ -23,3 +23,7 @@ customCatalog:
       description: "Schema for validating Critical Injury YAML fragments"
       fileMatch: ["src/packs/**/criticalinjury.*.yaml"]
       location: "schema/criticalInjury.json"
+    - name: "Cyberdeck"
+      description: "Schema for validating Cyberdeck YAML fragments"
+      fileMatch: ["src/packs/**/cyberdeck*.yaml"]
+      location: "schema/cyberdeck.json"
