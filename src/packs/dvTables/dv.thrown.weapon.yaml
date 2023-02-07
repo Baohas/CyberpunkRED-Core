@@ -1,18 +1,13 @@
 _id: MA08zR8NSylpddAc
 description: Core Rulebook Page 177
 displayRoll: false
-flags:
-  core: {}
-folder: null
-formula: ''
+formula: ""
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
 name: DV Thrown Weapon
-ownership:
-  default: 0
 replacement: false
 results:
   - _id: 3OZE79eSMEk8LMAT
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -20,11 +15,11 @@ results:
     range:
       - 0
       - 6
-    text: '16'
+    text: "16"
     type: 0
     weight: 1
   - _id: B22LqLs9QV9ctkux
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -32,11 +27,11 @@ results:
     range:
       - 7
       - 12
-    text: '15'
+    text: "15"
     type: 0
     weight: 1
   - _id: xt9H0qAmGT6U6V4x
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -44,11 +39,11 @@ results:
     range:
       - 13
       - 25
-    text: '15'
+    text: "15"
     type: 0
     weight: 1
   - _id: 1D3I02oIbd6LIgy3
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -60,7 +55,7 @@ results:
     type: 0
     weight: 1
   - _id: f29GxuqCNRfU63i3
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -72,7 +67,7 @@ results:
     type: 0
     weight: 1
   - _id: UlBPdgDePsnVfmpo
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -84,7 +79,7 @@ results:
     type: 0
     weight: 1
   - _id: dVm8nesdC80bSOxq
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -96,7 +91,7 @@ results:
     type: 0
     weight: 1
   - _id: Cm7iqBVMUe2wgll7
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -107,4 +102,3 @@ results:
     text: N/A
     type: 0
     weight: 1
-sort: 0

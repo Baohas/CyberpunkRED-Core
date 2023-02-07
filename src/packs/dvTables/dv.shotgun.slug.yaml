@@ -1,18 +1,13 @@
 _id: pdZvNkYoJy1QoscM
 description: Core Rulebook Page 173
 displayRoll: false
-flags:
-  core: {}
-folder: null
-formula: ''
+formula: ""
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
 name: DV Shotgun (Slug)
-ownership:
-  default: 0
 replacement: false
 results:
   - _id: Ej71Yl6Y19zCkXXb
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -20,11 +15,11 @@ results:
     range:
       - 0
       - 6
-    text: '13'
+    text: "13"
     type: 0
     weight: 1
   - _id: BnZVzyyw8VXsNwG2
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -32,11 +27,11 @@ results:
     range:
       - 7
       - 12
-    text: '15'
+    text: "15"
     type: 0
     weight: 1
   - _id: D3vFqEqtbtOJ1iZA
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -44,11 +39,11 @@ results:
     range:
       - 13
       - 25
-    text: '20'
+    text: "20"
     type: 0
     weight: 1
   - _id: 3G4TSamwdh7Rh4BN
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -56,11 +51,11 @@ results:
     range:
       - 26
       - 50
-    text: '25'
+    text: "25"
     type: 0
     weight: 1
   - _id: Fs8WH1hzms3FIMRR
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -68,11 +63,11 @@ results:
     range:
       - 51
       - 100
-    text: '30'
+    text: "30"
     type: 0
     weight: 1
   - _id: sUWQj3YR1UOtuWrb
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -80,11 +75,11 @@ results:
     range:
       - 101
       - 200
-    text: '35'
+    text: "35"
     type: 0
     weight: 1
   - _id: PjthwRTxit0CHOb8
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -96,7 +91,7 @@ results:
     type: 0
     weight: 1
   - _id: E7JnEXjxJ88yUi0X
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -107,4 +102,3 @@ results:
     text: N/A
     type: 0
     weight: 1
-sort: 0

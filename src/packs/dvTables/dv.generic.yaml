@@ -17,18 +17,13 @@ description: >-
 
   - The Range should be the start distance to end distance, inclusive, in m/yds
 displayRoll: false
-flags:
-  core: {}
-folder: null
-formula: ''
+formula: ""
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
 name: DV Generic
-ownership:
-  default: 0
 replacement: false
 results:
   - _id: 3OZE79eSMEk8LMAT
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -36,11 +31,11 @@ results:
     range:
       - 0
       - 6
-    text: ''
+    text: ""
     type: 0
     weight: 1
   - _id: B22LqLs9QV9ctkux
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -48,11 +43,11 @@ results:
     range:
       - 7
       - 12
-    text: ''
+    text: ""
     type: 0
     weight: 1
   - _id: xt9H0qAmGT6U6V4x
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -60,11 +55,11 @@ results:
     range:
       - 13
       - 25
-    text: ''
+    text: ""
     type: 0
     weight: 1
   - _id: 1D3I02oIbd6LIgy3
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -72,11 +67,11 @@ results:
     range:
       - 26
       - 50
-    text: ''
+    text: ""
     type: 0
     weight: 1
   - _id: f29GxuqCNRfU63i3
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -84,11 +79,11 @@ results:
     range:
       - 51
       - 100
-    text: ''
+    text: ""
     type: 0
     weight: 1
   - _id: UlBPdgDePsnVfmpo
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -96,11 +91,11 @@ results:
     range:
       - 101
       - 200
-    text: ''
+    text: ""
     type: 0
     weight: 1
   - _id: dVm8nesdC80bSOxq
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -108,11 +103,11 @@ results:
     range:
       - 201
       - 400
-    text: ''
+    text: ""
     type: 0
     weight: 1
   - _id: Cm7iqBVMUe2wgll7
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -120,7 +115,6 @@ results:
     range:
       - 401
       - 800
-    text: ''
+    text: ""
     type: 0
     weight: 1
-sort: 0

@@ -1,18 +1,13 @@
 _id: 9e3u59OJyL2w5TBX
 description: Core Rulebook Page 173
 displayRoll: false
-flags:
-  core: {}
-folder: null
-formula: ''
+formula: ""
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
 name: DV Assault Rifle
-ownership:
-  default: 0
 replacement: false
 results:
   - _id: zXl7UvTeYMrSRpuy
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -20,11 +15,11 @@ results:
     range:
       - 0
       - 6
-    text: '17'
+    text: "17"
     type: 0
     weight: 1
   - _id: P8NFXXM5JXKhDWGE
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -32,11 +27,11 @@ results:
     range:
       - 7
       - 12
-    text: '16'
+    text: "16"
     type: 0
     weight: 1
   - _id: NbVO3Hf5CkNOJVAO
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -44,11 +39,11 @@ results:
     range:
       - 13
       - 25
-    text: '15'
+    text: "15"
     type: 0
     weight: 1
   - _id: DabpmcLl9OHn4EV6
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -56,11 +51,11 @@ results:
     range:
       - 26
       - 50
-    text: '13'
+    text: "13"
     type: 0
     weight: 1
   - _id: MmqdSIJDKT4XQxqb
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -68,11 +63,11 @@ results:
     range:
       - 51
       - 100
-    text: '15'
+    text: "15"
     type: 0
     weight: 1
   - _id: ArhYpzsWlsl3VtYr
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -80,11 +75,11 @@ results:
     range:
       - 101
       - 200
-    text: '20'
+    text: "20"
     type: 0
     weight: 1
   - _id: 6VEl92vkELv6UApM
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -92,11 +87,11 @@ results:
     range:
       - 201
       - 400
-    text: '25'
+    text: "25"
     type: 0
     weight: 1
   - _id: hO75OehjVDMgeuHC
-    documentCollection: ''
+    documentCollection: ""
     documentId: null
     drawn: false
     flags: {}
@@ -104,7 +99,6 @@ results:
     range:
       - 401
       - 800
-    text: '30'
+    text: "30"
     type: 0
     weight: 1
-sort: 0
