@@ -1,0 +1,32 @@
+_id: WtKsSJYtOlqhoLAp
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_hat.svg
+name: Gang Colors Hat
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 10
+  revealed: true
+  source: Pg. 356
+  style: gangColors
+  type: hats
+  upgrades: []
+  usage: equipped
+type: clothing

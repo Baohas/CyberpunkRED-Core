@@ -1,0 +1,33 @@
+_id: DCKlDDJE2cSxhTzr
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/clothing/generic_contact_lenses.svg
+name: Asia Pop Contact Lenses
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 100
+  revealed: true
+  source: Pg. 356
+  style: asiaPop
+  type: contactLenses
+  upgrades: []
+  usage: equipped
+type: clothing

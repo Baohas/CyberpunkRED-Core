@@ -1,0 +1,32 @@
+_id: jkQRu6sUEHd2d5Hp
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_hat.svg
+name: Bag Lady Chic Hat
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 10
+  revealed: true
+  source: Pg. 356
+  style: bagLadyChic
+  type: hats
+  upgrades: []
+  usage: equipped
+type: clothing

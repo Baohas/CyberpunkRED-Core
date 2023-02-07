@@ -1,0 +1,32 @@
+_id: v6QgCemk6DInkpZJ
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
+name: High Fashion Jewelry
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 50000
+  revealed: true
+  source: Pg. 356
+  style: highFashion
+  type: jewelry
+  upgrades: []
+  usage: equipped
+type: clothing
