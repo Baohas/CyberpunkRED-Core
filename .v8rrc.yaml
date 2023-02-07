@@ -35,3 +35,7 @@ customCatalog:
       description: "Schema for validating Drug YAML fragments"
       fileMatch: ["src/packs/drugs/drug.*.yaml"]
       location: "schema/drugs.json"
+    - name: "Gear"
+      description: "Schema for validating Gear YAML fragments"
+      fileMatch: ["src/packs/**/gear.*.yaml"]
+      location: "schema/gear.json"
