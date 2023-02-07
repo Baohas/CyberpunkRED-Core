@@ -1,24 +1,16 @@
-_id: Wo98wgEQA6B7FnMF
-effects: []
-flags:
-  core: {}
-folder: null
+_id: 6cciJXompBeXxMma
 img: systems/cyberpunk-red-core/icons/compendium/vehicle/ship.svg
-name: Yacht
-permission:
-  Xqm436pL6P6n9SaN: 3
-  default: 0
-sort: 0
+name: Cabin Cruiser
 system:
   concealable:
     concealable: false
     isConcealed: false
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
-      <p>A luxury speedboat. Requires a minimum of two rooms. The price is for
-      each room below or above deck. </p>
+      <p>A very fast speedboat. Requires a minimum of two rooms. The price is
+      for each room below deck. </p>
   favorite: false
   installedItems:
     allowed: true
@@ -29,14 +21,11 @@ system:
     usedSlots: 0
   isUpgraded: false
   price:
-    category: superLuxury
-    market: 50000
-  sdp: 100
-  seats: 4
+    market: 30000
+  sdp: 60
+  seats: 2
   source: pg. 190
   speedCombat: 10
   speedNarrative: 15 MPH / 24 KPH
-  tags: ''
-  upgrade: ''
   upgrades: []
 type: vehicle

@@ -1,22 +1,16 @@
-_id: DreAdvzXmJsiSWyy
-effects: []
-flags:
-  core: {}
-folder: null
+_id: jR1AReHKQFieIdWD
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
-name: High Performance Groundcar
-permission:
-  Xqm436pL6P6n9SaN: 3
-  default: 0
-sort: 0
+name: Compact Groundcar
 system:
   concealable:
     concealable: false
     isConcealed: false
   description:
-    chat: ''
-    unidentified: ''
-    value: <p>A specialised groundcar designed for sports performance. </p>
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>A CHOOH2-powered groundcar. Very common with a few dozen manufacturers
+      producing similar models. </p>
   favorite: false
   installedItems:
     allowed: true
@@ -27,14 +21,11 @@ system:
     usedSlots: 0
   isUpgraded: false
   price:
-    category: superLuxury
-    market: 50000
+    market: 30000
   sdp: 50
   seats: 4
   source: pg. 190
-  speedCombat: 40
-  speedNarrative: 200 MPH / 322 KPH
-  tags: ''
-  upgrade: ''
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
   upgrades: []
 type: vehicle

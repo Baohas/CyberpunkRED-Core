@@ -1,0 +1,29 @@
+_id: DreAdvzXmJsiSWyy
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
+name: High Performance Groundcar
+system:
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>A specialised groundcar designed for sports performance. </p>
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 50000
+  sdp: 50
+  seats: 4
+  source: pg. 190
+  speedCombat: 40
+  speedNarrative: 200 MPH / 322 KPH
+  upgrades: []
+type: vehicle

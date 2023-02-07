@@ -1,22 +1,14 @@
-_id: x0E0hYFqfP3qJGPT
-effects: []
-flags:
-  core: {}
-folder: null
+_id: eKqDVQo3mzD16pCc
 img: systems/cyberpunk-red-core/icons/compendium/vehicle/speed_boat.svg
-name: Jetski
-permission:
-  Xqm436pL6P6n9SaN: 3
-  default: 0
-sort: 0
+name: Speedboat
 system:
   concealable:
     concealable: false
     isConcealed: false
   description:
-    chat: ''
-    unidentified: ''
-    value: <p>A common CHOOH2-powered jetski that can seat two people. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>A fast CHOOH2-powered speedboat. </p>
   favorite: false
   installedItems:
     allowed: true
@@ -27,14 +19,11 @@ system:
     usedSlots: 0
   isUpgraded: false
   price:
-    category: superLuxury
-    market: 20000
-  sdp: 35
-  seats: 2
+    market: 30000
+  sdp: 50
+  seats: 4
   source: pg. 190
   speedCombat: 20
   speedNarrative: 60 MPH / 97 KPH
-  tags: ''
-  upgrade: ''
   upgrades: []
 type: vehicle
