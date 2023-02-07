@@ -19,3 +19,7 @@ customCatalog:
       description: "Schema for validating Clothing YAML fragments"
       fileMatch: ["src/packs/**/clothing.*.yaml"]
       location: "schema/clothing.json"
+    - name: "Critical Injuries"
+      description: "Schema for validating Critical Injury YAML fragments"
+      fileMatch: ["src/packs/**/criticalinjury.*.yaml"]
+      location: "schema/criticalInjury.json"
