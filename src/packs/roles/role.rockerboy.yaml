@@ -1,21 +1,14 @@
 _id: ybQOwW3ICzHY7LiQ
-effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Rockerboy
-ownership:
-  default: 0
-sort: 0
 system:
   abilities: []
   addRoleAbilityRank: true
   bonusRatio: 1
   bonuses: []
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p>Rebellious performance artists who use their craft to influence
       fans/crowds and fight back.</p>
@@ -25,9 +18,8 @@ system:
   mainRoleAbility: Charismatic Impact
   onByDefault: false
   rank: 4
-  skill: '--'
+  skill: "--"
   source: Pg. 144
-  stat: '--'
-  tags: []
+  stat: "--"
   universalBonuses: []
 type: role

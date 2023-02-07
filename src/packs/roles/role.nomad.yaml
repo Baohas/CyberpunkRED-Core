@@ -1,13 +1,6 @@
 _id: E2NkaEAx8Rv4nqWQ
-effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Nomad
-ownership:
-  default: 0
-sort: 0
 system:
   abilities: []
   addRoleAbilityRank: true
@@ -18,12 +11,12 @@ system:
         basic: false
         category: techniqueSkills
         core: true
-        description: ''
+        description: ""
         difficulty: typical
         favorite: false
         level: 0
         skillmod: 0
-        source: ''
+        source: ""
         stat: tech
         tags: []
       effects: []
@@ -41,12 +34,12 @@ system:
         basic: false
         category: controlSkills
         core: true
-        description: ''
+        description: ""
         difficulty: typical
         favorite: false
         level: 0
         skillmod: 0
-        source: ''
+        source: ""
         stat: ref
         tags: []
       effects: []
@@ -64,12 +57,12 @@ system:
         basic: false
         category: techniqueSkills
         core: true
-        description: ''
+        description: ""
         difficulty: typical
         favorite: false
         level: 0
         skillmod: 0
-        source: ''
+        source: ""
         stat: tech
         tags: []
       effects: []
@@ -87,12 +80,12 @@ system:
         basic: false
         category: controlSkills
         core: true
-        description: ''
+        description: ""
         difficulty: difficult
         favorite: false
         level: 0
         skillmod: 0
-        source: ''
+        source: ""
         stat: ref
         tags: []
       effects: []
@@ -110,12 +103,12 @@ system:
         basic: false
         category: controlSkills
         core: true
-        description: ''
+        description: ""
         difficulty: typical
         favorite: false
         level: 0
         skillmod: 0
-        source: ''
+        source: ""
         stat: ref
         tags: []
       effects: []
@@ -133,12 +126,12 @@ system:
         basic: false
         category: techniqueSkills
         core: true
-        description: ''
+        description: ""
         difficulty: typical
         favorite: false
         level: 0
         skillmod: 0
-        source: ''
+        source: ""
         stat: tech
         tags: []
       effects: []
@@ -152,8 +145,8 @@ system:
       sort: 0
       type: skill
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p>Car people, truckers, transportation afficionados, air-pirates, they
       are the sole carriers of product across the world, maintaining the
@@ -164,9 +157,8 @@ system:
   mainRoleAbility: Moto
   onByDefault: false
   rank: 4
-  skill: '--'
+  skill: "--"
   source: Pg. 161
-  stat: '--'
-  tags: []
+  stat: "--"
   universalBonuses: []
 type: role

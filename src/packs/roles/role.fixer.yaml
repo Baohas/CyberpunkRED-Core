@@ -1,22 +1,15 @@
 _id: fR6KBqJgywWfhI2n
-effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Fixer
-ownership:
-  default: 0
-sort: 0
 system:
   abilities:
     - bonusRatio: 1
       bonuses: []
-      description: ''
+      description: ""
       hasRoll: true
       index: 0
       isSituational: false
-      multiplier: '1'
+      multiplier: 1
       name: Haggle
       onByDefault: false
       rank: 4
@@ -26,12 +19,12 @@ system:
           basic: false
           category: socialSkills
           core: true
-          description: ''
+          description: ""
           difficulty: typical
           favorite: false
           level: 0
           skillmod: 0
-          source: ''
+          source: ""
           stat: cool
           tags: []
         effects: []
@@ -50,8 +43,8 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p>They can get anyone anything, as long as the price is right. Using
       their charm and skills of trade, they make the deals that keep the economy
@@ -62,9 +55,8 @@ system:
   mainRoleAbility: Operator
   onByDefault: false
   rank: 4
-  skill: '--'
+  skill: "--"
   source: Pg. 159
-  stat: '--'
-  tags: []
+  stat: "--"
   universalBonuses: []
 type: role

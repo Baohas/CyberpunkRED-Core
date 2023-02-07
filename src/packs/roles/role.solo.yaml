@@ -1,68 +1,61 @@
 _id: I4qtphsiVa4rj9U8
-effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Solo
-ownership:
-  default: 0
-sort: 0
 system:
   abilities:
     - bonusRatio: 1
       bonuses: []
-      description: ''
+      description: ""
       hasRoll: false
       index: 1
       isSituational: false
-      multiplier: '1'
+      multiplier: 1
       name: Fumble Recovery
       onByDefault: false
       rank: 0
-      skill: '--'
-      stat: '--'
+      skill: "--"
+      stat: "--"
       universalBonuses: []
     - bonusRatio: 1
       bonuses: []
-      description: ''
+      description: ""
       hasRoll: false
       index: 2
       isSituational: false
-      multiplier: '1'
+      multiplier: 1
       name: Initiative Reaction
       onByDefault: false
       rank: 0
-      skill: '--'
-      stat: '--'
+      skill: "--"
+      stat: "--"
       universalBonuses:
         - initiative
     - bonusRatio: 3
       bonuses: []
-      description: ''
+      description: ""
       hasRoll: false
       index: 3
       isSituational: false
-      multiplier: '1'
+      multiplier: 1
       name: Precision Attack
       onByDefault: false
       rank: 0
-      skill: '--'
-      stat: '--'
+      skill: "--"
+      stat: "--"
       universalBonuses:
         - attack
     - bonusRatio: 1
       bonuses: []
-      description: ''
+      description: ""
       hasRoll: false
       index: 4
       isSituational: true
-      multiplier: '1'
+      multiplier: 1
       name: Spot Weakness
       onByDefault: true
       rank: 0
-      skill: '--'
-      stat: '--'
+      skill: "--"
+      stat: "--"
       universalBonuses:
         - damage
     - bonusRatio: 1
@@ -72,12 +65,12 @@ system:
             basic: true
             category: awarenessSkills
             core: true
-            description: ''
+            description: ""
             difficulty: typical
             favorite: false
             level: 2
             skillmod: 0
-            source: ''
+            source: ""
             stat: int
             tags: []
           effects: []
@@ -90,37 +83,37 @@ system:
             default: 0
           sort: 0
           type: skill
-      description: ''
+      description: ""
       hasRoll: false
       index: 5
       isSituational: false
-      multiplier: '1'
+      multiplier: 1
       name: Threat Detection
       onByDefault: false
       rank: 0
-      skill: '--'
-      stat: '--'
+      skill: "--"
+      stat: "--"
       universalBonuses: []
     - bonusRatio: 2
       bonuses: []
-      description: ''
+      description: ""
       hasRoll: false
       index: 0
       isSituational: true
-      multiplier: '1'
+      multiplier: 1
       name: Damage Deflection
       onByDefault: true
       rank: 0
-      skill: '--'
-      stat: '--'
+      skill: "--"
+      stat: "--"
       universalBonuses:
         - damageReduction
   addRoleAbilityRank: true
   bonusRatio: 1
   bonuses: []
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p>Experts in combat who use their fighting prowess to dominate in the
       lawless time of the Red.</p>
@@ -130,9 +123,8 @@ system:
   mainRoleAbility: Combat Awareness
   onByDefault: false
   rank: 4
-  skill: '--'
+  skill: "--"
   source: Pg. 146
-  stat: '--'
-  tags: []
+  stat: "--"
   universalBonuses: []
 type: role

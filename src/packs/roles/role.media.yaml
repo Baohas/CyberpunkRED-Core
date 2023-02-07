@@ -1,21 +1,14 @@
 _id: Ek251OMdphcqzWPP
-effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Media
-ownership:
-  default: 0
-sort: 0
 system:
   abilities: []
   addRoleAbilityRank: true
   bonusRatio: 1
   bonuses: []
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p>Newspeople, influencers, and cultural phenomena, they are ready to
       expose the truth by any means necessary.</p>
@@ -25,9 +18,8 @@ system:
   mainRoleAbility: Credibility
   onByDefault: false
   rank: 4
-  skill: '--'
+  skill: "--"
   source: Pg. 151
-  stat: '--'
-  tags: []
+  stat: "--"
   universalBonuses: []
 type: role
