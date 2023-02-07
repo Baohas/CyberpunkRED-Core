@@ -342,12 +342,6 @@ const Container = function Container() {
       }
       for (const item of createdItems) {
         newInstalledList.push(item.uuid);
-        if (
-          containerTypes.includes(item.type) &&
-          item.system.installedItems.list.length > 0
-        ) {
-          await item.createInstalledItems();
-        }
       }
     }
 
@@ -381,7 +375,7 @@ const Container = function Container() {
       const updateList = [];
       const installedList = [];
       for (const installedItemUUID of this.system.installedItems.list) {
-        const sourceItemId = installedItemUUID.split(".")[3];
+        const sourceItemId = installedItemUUID.split(".").pop();
         const newItemId = `${actorUUID}.Item.${sourceItemId}`;
         installedList.push(newItemId);
         const installedItem = actor.getOwnedItem(newItemId);
@@ -397,10 +391,36 @@ const Container = function Container() {
           await installedItem.recursiveInstallSync();
         }
       }
-      updateList.push({
-        _id: this.id,
-        "system.installedItems.list": installedList,
-      });
+
+      if (this.type === "cyberdeck") {
+        const oldPrograms = this.system.programs;
+        const newPrograms = {
+          installed: [],
+          rezzed: [],
+        };
+
+        for (const programData of oldPrograms.installed) {
+          const originalProgramID = programData.uuid.split(".").pop();
+          programData.uuid = `${actorUUID}.Item.${originalProgramID}`;
+          newPrograms.installed.push(programData);
+        }
+
+        for (const programData of oldPrograms.rezzed) {
+          const originalProgramID = programData.uuid.split(".").pop();
+          programData.uuid = `${actorUUID}.Item.${originalProgramID}`;
+          newPrograms.rezzed.push(programData);
+        }
+        updateList.push({
+          _id: this.id,
+          "system.installedItems.list": installedList,
+          "system.programs": newPrograms,
+        });
+      } else {
+        updateList.push({
+          _id: this.id,
+          "system.installedItems.list": installedList,
+        });
+      }
       await actor.updateEmbeddedDocuments("Item", updateList);
     }
   };

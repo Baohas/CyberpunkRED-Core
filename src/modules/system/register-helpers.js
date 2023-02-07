@@ -14,6 +14,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprCompare", (v1, operator, v2) => {
     LOGGER.trace("cprCompare | handlebarsHelper | Called.");
+
     switch (operator) {
       case "==":
         return v1 == v2; // eslint-disable-line eqeqeq

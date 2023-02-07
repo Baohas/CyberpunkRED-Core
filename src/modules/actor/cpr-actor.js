@@ -68,7 +68,7 @@ export default class CPRActor extends Actor {
       const actorUUID = actor.uuid;
       const updateList = [];
       for (const sourceUUID of actor.system.installedItems.list) {
-        const sourceItemId = sourceUUID.split(".")[3];
+        const sourceItemId = sourceUUID.split(".").pop();
         const newItemId = `${actorUUID}.Item.${sourceItemId}`;
         installedItems.push(newItemId);
         const item = actor.getOwnedItem(newItemId);
@@ -100,7 +100,9 @@ export default class CPRActor extends Actor {
           item.system.isRanged &&
           item.system.magazine.ammoData.uuid.length > 0
         ) {
-          const sourceItemId = item.system.magazine.ammoData.uuid.split(".")[3];
+          const sourceItemId = item.system.magazine.ammoData.uuid
+            .split(".")
+            .pop();
           const newItemId = `${actorUUID}.Item.${sourceItemId}`;
           updateList.push({
             _id: item.id,

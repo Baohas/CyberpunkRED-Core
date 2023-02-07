@@ -48,7 +48,7 @@ system:
   isInstalled: false
   isRanged: false
   isUpgraded: false
-  isWeapon: 'false'
+  isWeapon: false
   magazine:
     ammoData:
       name: ''

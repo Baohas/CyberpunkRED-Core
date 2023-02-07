@@ -38,6 +38,22 @@
 - Fixed a typo in the underbarrel grenade launcher description
 - #679 - Added back the underbarrel shotgun that was accidentally deleted
 
+## Version 0.86.1 | Date: 2023-02-05
+
+### Bug Fixes
+
+- #683 - Dragging a World Item which has another World Items installed in it and THAT item also has another world item installed in it (Cyberarm->Cyberdeck (Hardwired)->Cyberdeck) results in two cyberdecks being created on the actor.  This would exponentiate every level of installation if there were more.
+- Add text for missing localized string `CPR.messages.installInvalidType`
+- #686 - Installing a secondary weapon as a weapon upgrade does not show that upgrade in the Fight Tab
+- #693 - The stripHTML() Handlebar helper fails if the passed HTML contains a percentage sign.
+- #691 - Actors stored in compendiums and dragged out into worlds were losing information on any items that were installed.
+- Fixed the ability to decrement REZ of a running program in the Net tab
+- #692 - Code accidentally added `programs` instead of `cyberware` for owned cyberware on existing actors.  This fix adds `cyberware` as it should hav been however we can't know if `programs` was a valid entry for a world, so we are not removing that.  It does not impact anything and a GM can manually remove `programs` from an owned piece of cyberware via the item settings if needed.
+
+### Changes
+
+- When `Debug Elements in UI` is enabled on an item with other installed items in it, the installed items will have their UUID's displayed to help troubleshooting.
+
 ## Version 0.86.0 | Date: 2023-01-21
 
 ### Release Specific Notes

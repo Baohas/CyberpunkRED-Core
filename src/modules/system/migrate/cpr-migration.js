@@ -335,7 +335,7 @@ export default class CPRMigration {
     let good = true;
     for (const pack of game.packs.filter(
       (p) =>
-        p.metadata.package === "world" &&
+        p.metadata.packageType === "world" &&
         ["Actor", "Item", "Scene"].includes(p.metadata.type) &&
         !p.locked
     )) {

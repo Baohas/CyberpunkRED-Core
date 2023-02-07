@@ -37,13 +37,13 @@
               (cprFindConfigValue
             "statList" skill.system.stat)}})</strong>
           </a>
-          {{#if (cprCompare skill.system.core "===" false) }}
+          {{#unless skill.system.core }}
             <a class="item-edit skill-custom"
                data-tooltip="{{localize "CPR.actorSheets.commonActions.editCustomSkill"}}"><i class="fas fa-edit"></i></a>
             <a class="item-action skill-custom"
                data-tooltip="{{localize "CPR.characterSheet.rightPane.skills.editCustomSkill"}}"
                data-action-type="delete"><i class="fas fa-trash-alt"></i></a>
-          {{/if}}
+          {{/unless}}
         </div>
         {{!-- MOD --}}
         {{!-- Don't show MOD unless its non-zero or has situational modifiers --}}

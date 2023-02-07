@@ -1,4 +1,4 @@
-/* global duplicate game */
+/* global ChatMessage duplicate game */
 import CPRChat from "../chat/cpr-chat.js";
 import SystemUtils from "./cpr-systemUtils.js";
 import LOGGER from "./cpr-logger.js";
@@ -9,7 +9,7 @@ export default class CPRMacro {
     extraRollArgs = { skipPrompt: false, rollType: "attack" }
   ) {
     LOGGER.trace("rollItemMacro | CPRMacro | called.");
-    const speaker = CPRChat.getSpeaker();
+    const speaker = ChatMessage.getSpeaker();
     const extraData = extraRollArgs;
     let actor;
     if (speaker.token) actor = game.actors.tokens[speaker.token];

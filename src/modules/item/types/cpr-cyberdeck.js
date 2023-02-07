@@ -665,7 +665,7 @@ export default class CPRCyberdeckItem extends CPRItem {
   reduceRezProgram(program, reduceAmount = 1) {
     LOGGER.trace("reduceRezProgram | CPRCyberdeckItem | Called.");
     const { rezzed } = this.system.programs;
-    const rezzedIndex = rezzed.findIndex((p) => p._id === program.id);
+    const rezzedIndex = rezzed.findIndex((p) => p.uuid === program.uuid);
     const programState = rezzed[rezzedIndex];
     const newRez = Math.max(programState.rez - reduceAmount, 0);
     programState.rez = newRez;

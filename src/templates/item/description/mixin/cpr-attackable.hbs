@@ -13,7 +13,7 @@ Show this content unless one of the following is true:
 (cprCompare
 (cprCompare item.type "===" "itemUpgrade")
 "&&"
-(cprCompare (cprGetProp item.system.modifiers.secondaryWeapon "configured") "===" "false"))
+(cprCompare (cprGetProp item.system.modifiers.secondaryWeapon "configured") "===" false))
 )}}
 <div class="item-summary-line">
   <span class="text-bold summary-name">{{localize "CPR.itemSheet.weapon.rof"}}:</span>
