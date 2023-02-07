@@ -1,42 +1,37 @@
 _id: rUSdivkoD9THJXNy
 effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/micro_chrome/smart_lens.svg
 name: Smart Lens
-ownership:
-  default: 0
-sort: 0
 system:
   ammoVariety: []
   attackmod: 0
-  charges:
-    max: 0
-    value: 0
   concealable:
     concealable: false
     isConcealed: false
   core: false
   damage: 1d6
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p>Gives a user a single Cybereye Option. Can use one Smart Lens per
       eye.</p>
-  dvTable: ''
+  dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
-  hasOptionalSlots: true
   humanityLoss:
-    roll: '0'
-    static: '0'
-  install: mall
-  installedOptionSlots: 0
-  isConcealed: false
+    roll: "0"
+    static: 0
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
   isFoundational: true
   isInstalled: false
   isRanged: false
@@ -44,22 +39,16 @@ system:
   isWeapon: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 0
     value: 0
-  optionSlots: '1'
-  optionalIds: []
   price:
-    category: veryExpensive
     market: 500
   revealed: true
   rof: 1
   size: 1
-  slotSize: 1
-  slots: 3
   source: MC
-  tags: []
   type: cyberEye
   unarmedAutomaticCalculation: true
   upgrades: []
