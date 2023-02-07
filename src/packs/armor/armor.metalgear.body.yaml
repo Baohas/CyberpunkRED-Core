@@ -1,29 +1,25 @@
-_id: n4nBTZca1I6bg9rs
+_id: ANkaTbBKgBXwJy1Q
 effects: []
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor_Head.svg
-name: Kevlar (Head)
-ownership:
-  default: 0
-sort: 0
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+name: Metalgear (Body)
 system:
   bodyLocation:
     ablation: 0
-    sp: 0
+    sp: 18
   concealable:
     concealable: false
     isConcealed: false
   description:
-    chat: ''
-    unidentified: ''
-    value: <p>Standard Kevlar for your head. No armor penalty.</p>
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Heaviest and most powerful armor in circulation. -4 to REF, DEX, and
+      MOVE.</p>
   equipped: owned
   favorite: false
   headLocation:
     ablation: 0
-    sp: 7
+    sp: 0
   installedItems:
     allowed: true
     allowedTypes:
@@ -31,21 +27,18 @@ system:
     list: []
     slots: 3
     usedSlots: 0
-  isBodyLocation: false
-  isHeadLocation: true
+  isBodyLocation: true
+  isHeadLocation: false
   isShield: false
   isUpgraded: false
-  penalty: 0
+  penalty: -4
   price:
-    category: costly
-    market: 50
+    market: 5000
   revealed: true
   shieldHitPoints:
     max: 0
     value: 0
   source: pg. 350
-  tags: []
-  upgrade: ''
   upgrades: []
   usage: equipped
 type: armor

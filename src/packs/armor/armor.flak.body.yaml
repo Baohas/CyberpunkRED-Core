@@ -1,31 +1,25 @@
-_id: ReNlsir0b9jmxnPi
+_id: wQXJTKA8KeEe2V2H
 effects: []
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor_Head.svg
-name: Medium Armorjack (Head)
-ownership:
-  default: 0
-sort: 0
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+name: Flak (Body)
 system:
   bodyLocation:
     ablation: 0
-    sp: 0
+    sp: 15
   concealable:
     concealable: false
     isConcealed: false
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
-      <p>Medium version of an Armorjack for your head. -2 to REF, DEX, and
-      MOVE.</p>
+      <p>Metal plated armor to resist the most powerful hits. -4 to REF, DEX,
+      and MOVE.</p>
   equipped: owned
   favorite: false
   headLocation:
     ablation: 0
-    sp: 12
+    sp: 0
   installedItems:
     allowed: true
     allowedTypes:
@@ -33,21 +27,18 @@ system:
     list: []
     slots: 3
     usedSlots: 0
-  isBodyLocation: false
-  isHeadLocation: true
+  isBodyLocation: true
+  isHeadLocation: false
   isShield: false
   isUpgraded: false
-  penalty: -2
+  penalty: -4
   price:
-    category: premium
-    market: 100
+    market: 500
   revealed: true
   shieldHitPoints:
     max: 0
     value: 0
   source: pg. 350
-  tags: []
-  upgrade: ''
   upgrades: []
   usage: equipped
 type: armor

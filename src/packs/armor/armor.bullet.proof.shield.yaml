@@ -1,24 +1,18 @@
-_id: DXavZyl7CTtgoZ6i
+_id: Bg1YEeF25HhfrzOG
 effects: []
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/skin_weave.svg
-name: Skin Weave (Body)
-ownership:
-  default: 0
-sort: 0
+img: systems/cyberpunk-red-core/icons/compendium/armor/bullet_proof_shield.svg
+name: Bullet Proof Shield
 system:
   bodyLocation:
     ablation: 0
-    sp: 7
+    sp: 0
   concealable:
     concealable: false
     isConcealed: false
   description:
-    chat: ''
-    unidentified: ''
-    value: <p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Requires an arm and has HP that is reduced by damage.</p>
   equipped: owned
   favorite: false
   headLocation:
@@ -31,21 +25,18 @@ system:
     list: []
     slots: 3
     usedSlots: 0
-  isBodyLocation: true
+  isBodyLocation: false
   isHeadLocation: false
-  isShield: false
+  isShield: true
   isUpgraded: false
   penalty: 0
   price:
-    category: expensive
-    market: 500
+    market: 100
   revealed: true
   shieldHitPoints:
-    max: 0
-    value: 0
-  source: pg. 364
-  tags: []
-  upgrade: ''
+    max: 10
+    value: 10
+  source: pg. 351
   upgrades: []
   usage: equipped
 type: armor

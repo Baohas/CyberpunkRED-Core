@@ -1,24 +1,18 @@
-_id: 2hwEBP93U98aRz4p
+_id: DXavZyl7CTtgoZ6i
 effects: []
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
-name: Leathers (Body)
-ownership:
-  default: 0
-sort: 0
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/skin_weave.svg
+name: Skin Weave (Body)
 system:
   bodyLocation:
     ablation: 0
-    sp: 4
+    sp: 7
   concealable:
     concealable: false
     isConcealed: false
   description:
-    chat: ''
-    unidentified: ''
-    value: <p>Simple Leather armor. No armor penalty.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>
   equipped: owned
   favorite: false
   headLocation:
@@ -37,15 +31,12 @@ system:
   isUpgraded: false
   penalty: 0
   price:
-    category: everyday
-    market: 20
+    market: 500
   revealed: true
   shieldHitPoints:
     max: 0
     value: 0
-  source: pg. 350
-  tags: []
-  upgrade: ''
+  source: pg. 364
   upgrades: []
   usage: equipped
 type: armor

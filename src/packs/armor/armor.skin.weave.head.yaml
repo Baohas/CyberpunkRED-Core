@@ -1,31 +1,23 @@
-_id: wQXJTKA8KeEe2V2H
+_id: ZDTMiZ9hItuHGmFz
 effects: []
-flags:
-  core: {}
-folder: null
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
-name: Flak (Body)
-ownership:
-  default: 0
-sort: 0
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/skin_weave.svg
+name: Skin Weave (Head)
 system:
   bodyLocation:
     ablation: 0
-    sp: 15
+    sp: 0
   concealable:
     concealable: false
     isConcealed: false
   description:
-    chat: ''
-    unidentified: ''
-    value: >-
-      <p>Metal plated armor to resist the most powerful hits. -4 to REF, DEX,
-      and MOVE.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>
   equipped: owned
   favorite: false
   headLocation:
     ablation: 0
-    sp: 0
+    sp: 7
   installedItems:
     allowed: true
     allowedTypes:
@@ -33,21 +25,18 @@ system:
     list: []
     slots: 3
     usedSlots: 0
-  isBodyLocation: true
-  isHeadLocation: false
+  isBodyLocation: false
+  isHeadLocation: true
   isShield: false
   isUpgraded: false
-  penalty: -4
+  penalty: 0
   price:
-    category: expensive
     market: 500
   revealed: true
   shieldHitPoints:
     max: 0
     value: 0
-  source: pg. 350
-  tags: []
-  upgrade: ''
+  source: pg. 364
   upgrades: []
   usage: equipped
 type: armor
