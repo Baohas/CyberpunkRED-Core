@@ -1,0 +1,53 @@
+_id: zl2qzlFpS7IsJASO
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher_excellent.svg
+name: Grenade Launcher (Excellent)
+system:
+  ammoVariety:
+    - grenade
+  attackmod: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 6d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>A high-impact grenade launcher. You can use a variety of grenades with
+      this. +1 to Attack.</p>
+  dvTable: DV Grenade Launcher
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 2
+    value: 0
+  price:
+    market: 1000
+  revealed: true
+  rof: 1
+  source: pg. 341
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: grenadeLauncher
+type: weapon
