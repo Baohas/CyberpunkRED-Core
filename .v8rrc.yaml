@@ -11,3 +11,7 @@ customCatalog:
       description: "Schema for validating Ammo YAML fragments"
       fileMatch: ["src/packs/**/ammo.*.yaml"]
       location: "schema/ammo.json"
+    - name: "Armor"
+      description: "Schema for validating Armor YAML fragments"
+      fileMatch: ["src/packs/**/armor.*.yaml"]
+      location: "schema/armor.json"
