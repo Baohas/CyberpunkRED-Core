@@ -27,3 +27,7 @@ customCatalog:
       description: "Schema for validating Cyberdeck YAML fragments"
       fileMatch: ["src/packs/**/cyberdeck*.yaml"]
       location: "schema/cyberdeck.json"
+    - name: "Cyberware"
+      description: "Schema for validating Cyberware-Items YAML fragments"
+      fileMatch: ["src/packs/**/cyberware.*.yaml"]
+      location: "schema/cyberware-items.json"
