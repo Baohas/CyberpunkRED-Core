@@ -1,23 +1,16 @@
 _id: jcOCxBFrKo5oBmOy
 effects: []
-flags:
-  core: {}
-folder: null
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/cracked_skull.svg
 name: Cracked Skull
-ownership:
-  default: 0
-sort: 0
 system:
   deathSaveIncrease: true
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p>Triples damage to HP on aimed headshots (rather than the normal double
       damage).</p>
-  effects: ''
   favorite: false
   location: head
   quickFix:
@@ -26,7 +19,6 @@ system:
     type: paramedic
   revealed: true
   source: Pg. 188
-  tags: []
   treatment:
     dvParamedic: 15
     dvSurgery: 15

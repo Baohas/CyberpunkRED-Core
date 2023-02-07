@@ -1,20 +1,13 @@
 _id: oi3MEn9Y8zdbooNe
 effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/brain_injury.svg
 name: Brain Injury
-ownership:
-  default: 0
-sort: 0
 system:
   deathSaveIncrease: true
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: <p>-2 to actions.</p>
-  effects: ''
   favorite: false
   location: head
   quickFix:
@@ -23,7 +16,6 @@ system:
     type: notApplicable
   revealed: true
   source: Pg. 188
-  tags: []
   treatment:
     dvParamedic: 0
     dvSurgery: 17

@@ -1,20 +1,13 @@
 _id: Y65igO9rtakP4qSs
 effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_arm.svg
 name: Broken Arm
-ownership:
-  default: 0
-sort: 0
 system:
   deathSaveIncrease: false
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: <p>Arm unusable. Drop what it was holding</p>
-  effects: ''
   favorite: false
   location: body
   quickFix:
@@ -23,7 +16,6 @@ system:
     type: paramedic
   revealed: true
   source: Pg. 187
-  tags: []
   treatment:
     dvParamedic: 15
     dvSurgery: 13

@@ -1,15 +1,10 @@
 _id: n7IlIvMfg7yW1OoE
-description: ''
+description: ""
 displayRoll: true
-flags:
-  core: {}
-folder: null
 formula: 2d6
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/body_critical_injury.svg
 name: Critical Injuries (Body)
-ownership:
-  default: 0
 replacement: true
 results:
   - _id: ZieosouBln5Il2tk
@@ -155,4 +150,3 @@ results:
     text: Dismembered Leg
     type: 2
     weight: 1
-sort: 0

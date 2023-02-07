@@ -4,16 +4,16 @@ effects:
     changes:
       - key: bonuses.acting
         mode: 2
-        value: '-4'
+        value: "-4"
       - key: bonuses.conversation
         mode: 2
-        value: '-4'
+        value: "-4"
       - key: bonuses.language
         mode: 2
-        value: '-4'
+        value: "-4"
       - key: bonuses.trading
         mode: 2
-        value: '-4'
+        value: "-4"
     disabled: false
     duration:
       combat: null
@@ -23,48 +23,19 @@ effects:
       startTime: null
       startTurn: null
       turns: null
-    flags:
-      cyberpunk-red-core:
-        changes:
-          cats:
-            '0': skill
-            '1': skill
-            '2': skill
-            '3': skill
-          situational:
-            '0':
-              isSituational: false
-              onByDefault: true
-            '1':
-              isSituational: false
-              onByDefault: true
-            '2':
-              isSituational: false
-              onByDefault: true
-            '3':
-              isSituational: false
-              onByDefault: true
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_jaw.svg
     label: Broken Jaw
-    origin: null
     tint: null
     transfer: true
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_jaw.svg
 name: Broken Jaw
-ownership:
-  default: 0
-sort: 0
 system:
   deathSaveIncrease: false
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: <p>-4 to Speech Actions.</p>
-  effects: ''
   favorite: false
   location: head
   quickFix:
@@ -73,7 +44,6 @@ system:
     type: paramedic
   revealed: true
   source: Pg. 188
-  tags: []
   treatment:
     dvParamedic: 13
     dvSurgery: 13
