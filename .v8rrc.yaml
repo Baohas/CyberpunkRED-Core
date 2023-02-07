@@ -55,3 +55,7 @@ customCatalog:
       description: "Schema for validating Vehicle YAML fragments"
       fileMatch: ["src/packs/**/vehicle.*.yaml"]
       location: "schema/vehicle.json"
+    - name: "Weapons"
+      description: "Schema for validating Weapon YAML fragments"
+      fileMatch: ["src/packs/**/weapon.*.yaml"]
+      location: "schema/weapon.json"
