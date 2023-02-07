@@ -5,7 +5,7 @@ effects:
       - key: system.stats.ref.value
         mode: 2
         priority: null
-        value: '1'
+        value: "1"
     disabled: true
     duration:
       combat: null
@@ -15,14 +15,8 @@ effects:
       startTime: null
       startTurn: null
       turns: null
-    flags:
-      cyberpunk-red-core:
-        changes:
-          cats:
-            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke.svg
     label: Synthcoke Primary
-    origin: null
     tint: null
     transfer: true
   - _id: 9fYAbvg99knLYj9T
@@ -30,7 +24,7 @@ effects:
       - key: system.stats.ref.value
         mode: 2
         priority: null
-        value: '-2'
+        value: "-2"
     disabled: true
     duration:
       combat: null
@@ -40,14 +34,8 @@ effects:
       startTime: null
       startTurn: null
       turns: null
-    flags:
-      cyberpunk-red-core:
-        changes:
-          cats:
-            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
     label: Synthcoke Addiction
-    origin: null
     tint: null
     transfer: true
   - _id: rw9YMhZaP2AQcYJw
@@ -55,7 +43,7 @@ effects:
       - key: system.stats.ref.value
         mode: 2
         priority: null
-        value: '3'
+        value: "3"
     disabled: true
     duration:
       combat: null
@@ -65,32 +53,21 @@ effects:
       startTime: null
       startTurn: null
       turns: null
-    flags:
-      cyberpunk-red-core:
-        changes:
-          cats:
-            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
     label: Synthcoke Addicted Primary
-    origin: null
     tint: null
     transfer: true
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/gear/synthcoke.svg
 name: Synthcoke
-ownership:
-  default: 0
-sort: 0
 system:
   amount: 1
   concealable:
     concealable: false
     isConcealed: false
+  consumed: Synthcoke Primary
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p><strong>Primary Effect</strong></p>
 
@@ -117,11 +94,8 @@ system:
   equipped: owned
   favorite: false
   price:
-    category: everyday
     market: 20
-  consumed: 'Synthcoke Primary'
   revealed: true
   source: pg. 357
-  tags: []
   usage: snorted
 type: drug

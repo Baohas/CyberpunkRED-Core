@@ -4,7 +4,7 @@ effects:
     changes:
       - key: system.stats.ref.value
         mode: 2
-        value: '-2'
+        value: "-2"
     disabled: true
     duration:
       combat: null
@@ -14,37 +14,22 @@ effects:
       startTime: null
       startTurn: null
       turns: null
-    flags:
-      cyberpunk-red-core:
-        changes:
-          cats:
-            '0': stat
-          situational:
-            '0':
-              isSituational: false
-              onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/status/black_lace_addiction.svg
     label: Black Lace Addicition
-    origin: null
     tint: null
     transfer: true
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/gear/black_lace.svg
 name: Black Lace
-ownership:
-  default: 0
-sort: 0
 system:
   amount: 1
   concealable:
     concealable: false
     isConcealed: false
+  consumed: None
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p><strong>Primary Effect</strong></p>
 
@@ -74,11 +59,8 @@ system:
   equipped: owned
   favorite: false
   price:
-    category: costly
     market: 50
-  consumed: 'None'    
   revealed: true
   source: pg. 357
-  tags: []
   usage: toggled
 type: drug

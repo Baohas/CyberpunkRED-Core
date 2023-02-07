@@ -5,7 +5,7 @@ effects:
       - key: system.stats.int.value
         mode: 2
         priority: null
-        value: '2'
+        value: "2"
     disabled: true
     duration:
       combat: null
@@ -15,14 +15,8 @@ effects:
       startTime: null
       startTurn: null
       turns: null
-    flags:
-      cyberpunk-red-core:
-        changes:
-          cats:
-            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/boost.svg
     label: Boost Primary
-    origin: null
     tint: null
     transfer: true
   - _id: ptnwPRaryJxNVOQf
@@ -30,7 +24,7 @@ effects:
       - key: system.stats.int.value
         mode: 2
         priority: null
-        value: '-2'
+        value: "-2"
     disabled: true
     duration:
       combat: null
@@ -40,32 +34,21 @@ effects:
       startTime: null
       startTurn: null
       turns: null
-    flags:
-      cyberpunk-red-core:
-        changes:
-          cats:
-            '0': stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/boost_addiction.svg
     label: Boost Addiction
-    origin: null
     tint: null
     transfer: true
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/gear/boost.svg
 name: Boost
-ownership:
-  default: 0
-sort: 0
 system:
   amount: 1
   concealable:
     concealable: false
     isConcealed: false
+  consumed: Boost Primary
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: |-
       <p><strong>Primary Effect</strong></p>
       <p>Dose lasts 24 hours.</p>
@@ -79,11 +62,8 @@ system:
   equipped: owned
   favorite: false
   price:
-    category: costly
     market: 50
-  consumed: 'Boost Primary'
   revealed: true
   source: pg. 357
-  tags: []
   usage: snorted
 type: drug
