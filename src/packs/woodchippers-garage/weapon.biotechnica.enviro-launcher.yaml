@@ -1,13 +1,7 @@
 _id: aqyQqrLUiN9iTv3v
 effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher.svg
 name: Biotechnica Enviro-launcher
-ownership:
-  default: 0
-sort: 0
 system:
   ammoVariety:
     - rocket
@@ -17,8 +11,8 @@ system:
     isConcealed: false
   damage: 8d6
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p>This specially engineered rocket launcher is only capable of being
       fired once. However, once it has been fired the user can use an action to
@@ -31,26 +25,26 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 2
-  isConcealed: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
   isRanged: true
   isUpgraded: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 1
     value: 0
   price:
-    category: expensive
     market: 500
-  quality: standard
   revealed: true
   rof: 1
-  slots: 3
   source: WG
-  tags: ''
   unarmedAutomaticCalculation: true
-  upgrade: ''
   upgrades: []
   usage: equipped
   usesType: magazine

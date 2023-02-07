@@ -1,14 +1,8 @@
 _id: puBNVffqHLoGXXnd
 effects: []
-flags:
-  core: {}
-folder: null
 img: >-
   systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher_excellent.svg
 name: Pursuit Security Incorporated TearJerker
-ownership:
-  default: 0
-sort: 0
 system:
   ammoVariety:
     - grenade
@@ -18,8 +12,8 @@ system:
     isConcealed: false
   damage: 6d6
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: <p>This weapon can only fire Smoke or Teargas Ammunition.</p>
   dvTable: DV Grenade Launcher
   equipped: owned
@@ -28,26 +22,26 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 2
-  isConcealed: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
   isRanged: true
   isUpgraded: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 3
     value: 0
   price:
-    category: veryExpensive
     market: 500
-  quality: excellent
   revealed: true
   rof: 1
-  slots: 3
   source: WG
-  tags: ''
   unarmedAutomaticCalculation: true
-  upgrade: ''
   upgrades: []
   usage: equipped
   usesType: magazine

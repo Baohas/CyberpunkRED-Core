@@ -1,13 +1,7 @@
 _id: TCdrW2Qh5gXWywlP
 effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Machete.svg
 name: SlamDance Ballistic Harpoon
-ownership:
-  default: 0
-sort: 0
 system:
   ammoVariety: []
   attackmod: 0
@@ -16,8 +10,8 @@ system:
     isConcealed: false
   damage: 4d6
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p>This harpoon can either be used as a Two Handed Very Heavy Melee
       Weapon, or fired from it's housing as a ranged weapon. When fired it still
@@ -31,26 +25,26 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 2
-  isConcealed: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
   isRanged: true
   isUpgraded: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 1
     value: 0
   price:
-    category: premium
     market: 1000
-  quality: standard
   revealed: true
   rof: 1
-  slots: 3
   source: WG
-  tags: ''
   unarmedAutomaticCalculation: true
-  upgrade: ''
   upgrades: []
   usage: equipped
   usesType: magazine

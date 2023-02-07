@@ -1,13 +1,7 @@
 _id: EpnkbYJED7yNCwcy
 effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun.svg
 name: Nomad Air Cannon
-ownership:
-  default: 0
-sort: 0
 system:
   ammoVariety:
     - paintball
@@ -17,40 +11,40 @@ system:
     isConcealed: false
   damage: 5d6
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p>Rather than normal shotgun ammunition, this weapon fires whatever
       liquid is placed into it. Acid can be bought for 10eb (Cheap) that reduces
       all armour worn by the target by 1 SP. Poison or Biotoxin can also be
       loaded, though requires 3 vials per shot.</p>
-  dvTable: ''
+  dvTable: ""
   equipped: owned
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   handsReq: 2
-  isConcealed: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
   isRanged: true
   isUpgraded: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 1
     value: 0
   price:
-    category: expensive
     market: 1000
-  quality: standard
   revealed: true
   rof: 1
-  slots: 3
   source: WG
-  tags: ''
   unarmedAutomaticCalculation: true
-  upgrade: ''
   upgrades: []
   usage: equipped
   usesType: magazine

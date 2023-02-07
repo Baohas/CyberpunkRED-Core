@@ -1,13 +1,7 @@
 _id: moqJ5beR4WqWCpZM
 effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher.svg
 name: Flare Gun
-ownership:
-  default: 0
-sort: 0
 system:
   ammoVariety:
     - grenade
@@ -17,8 +11,8 @@ system:
     isConcealed: false
   damage: 6d6
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p>As well as normal Grenade Ammunition, this weapon can fire road
       flares*. They don't deal any damage, but if fired into the air can be seen
@@ -33,26 +27,26 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 2
-  isConcealed: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
   isRanged: true
   isUpgraded: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 1
     value: 0
   price:
-    category: expensive
     market: 100
-  quality: standard
   revealed: true
   rof: 1
-  slots: 3
   source: WG
-  tags: ''
   unarmedAutomaticCalculation: true
-  upgrade: ''
   upgrades: []
   usage: equipped
   usesType: magazine
