@@ -8,24 +8,21 @@ background:
   scaleY: 1
   src: systems/cyberpunk-red-core/maps/S0L-DCStreets-NOGRID1080.jpg
   tint: null
-backgroundColor: '#999999'
+backgroundColor: "#999999"
 darkness: 0
 drawings: []
-flags:
-  core: {}
 fogExploration: true
 fogExploredColor: null
 fogOverlay: null
 fogReset: 1659831837774
 fogUnexploredColor: null
-folder: null
 foreground: null
 foregroundElevation: null
 globalLight: false
 globalLightThreshold: null
 grid:
   alpha: 0.2
-  color: '#000000'
+  color: "#000000"
   distance: 2
   size: 56
   type: 1
@@ -35,16 +32,13 @@ initial: {}
 journal: null
 lights: []
 name: Dystopian City Streets
-navName: ''
+navName: ""
 navOrder: 100001
 navigation: true
 notes: []
-ownership:
-  default: 0
 padding: 0
 playlist: null
 playlistSound: null
-sort: 0
 sounds: []
 templates: []
 thumb: systems/cyberpunk-red-core/assets/scenes/Dystopian_City_Streets_thumb.webp
@@ -52,5 +46,5 @@ tiles: []
 tokenVision: true
 tokens: []
 walls: []
-weather: ''
+weather: ""
 width: 1920

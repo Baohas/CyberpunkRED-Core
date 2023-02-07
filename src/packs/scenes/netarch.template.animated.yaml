@@ -8,24 +8,21 @@ background:
   scaleY: 1
   src: systems/cyberpunk-red-core/tiles/netarch/S0L-BlankNetMap-VTT.webm
   tint: null
-backgroundColor: '#999999'
+backgroundColor: "#999999"
 darkness: 0
 drawings: []
-flags:
-  core: {}
 fogExploration: true
 fogExploredColor: null
 fogOverlay: null
 fogReset: 1659831837775
 fogUnexploredColor: null
-folder: null
 foreground: null
 foregroundElevation: null
 globalLight: false
 globalLightThreshold: null
 grid:
   alpha: 0.2
-  color: '#000000'
+  color: "#000000"
   distance: 8
   size: 110
   type: 1
@@ -35,16 +32,13 @@ initial: {}
 journal: null
 lights: []
 name: Netarch Template - Animated
-navName: ''
+navName: ""
 navOrder: 0
 navigation: false
 notes: []
-ownership:
-  default: 0
 padding: 0
 playlist: null
 playlistSound: null
-sort: 0
 sounds: []
 templates: []
 thumb: systems/cyberpunk-red-core/assets/scenes/Netarch_Template_thumb.webp
@@ -52,5 +46,5 @@ tiles: []
 tokenVision: true
 tokens: []
 walls: []
-weather: ''
+weather: ""
 width: 3840
