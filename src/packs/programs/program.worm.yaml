@@ -5,7 +5,7 @@ effects:
       - key: bonuses.backdoor
         mode: 2
         priority: null
-        value: '2'
+        value: "2"
     disabled: false
     duration:
       combat: null
@@ -15,23 +15,12 @@ effects:
       startTime: null
       startTurn: null
       turns: null
-    flags:
-      cyberpunk-red-core:
-        changes:
-          cats:
-            '0': netrun
     icon: systems/cyberpunk-red-core/icons/compendium/programs/worm.svg
     label: Worm
     tint: null
     transfer: true
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/programs/worm.svg
 name: Worm
-ownership:
-  default: 0
-sort: 0
 system:
   atk: 0
   blackIceType: antipersonnel
@@ -41,24 +30,23 @@ system:
     standard: 1d6
   def: 0
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: <p>+2 to Backdoor Checks while Rezzed.</p>
   favorite: false
-  install: mall
+  installLocation: mall
+  installedIn: ""
   interface: 0
   isInstalled: false
   isRezzed: false
   per: 0
   price:
-    category: costly
     market: 50
-  prototypeActor: ''
+  prototypeActor: ""
   revealed: true
   rez: 7
   size: 1
   source: pg. 368
   spd: 0
-  tags: []
   usage: rezzed
 type: program
