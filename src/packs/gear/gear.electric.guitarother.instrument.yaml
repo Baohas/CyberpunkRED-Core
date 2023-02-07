@@ -1,0 +1,30 @@
+_id: aiX4CSRjs0oKGIFK
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/gear/electric_guitar.svg
+name: Electric Guitar/Other Instrument
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Musical instrument. Electric instruments requires an amplifier.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 500
+  revealed: true
+  source: pg. 353
+  upgrades: []
+  usage: toggled
+type: gear
