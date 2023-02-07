@@ -31,3 +31,7 @@ customCatalog:
       description: "Schema for validating Cyberware-Items YAML fragments"
       fileMatch: ["src/packs/**/cyberware.*.yaml"]
       location: "schema/cyberware-items.json"
+    - name: "Drugs"
+      description: "Schema for validating Drug YAML fragments"
+      fileMatch: ["src/packs/drugs/drug.*.yaml"]
+      location: "schema/drugs.json"
