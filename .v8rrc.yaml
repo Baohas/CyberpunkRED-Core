@@ -1,0 +1,13 @@
+patterns:
+  - "*.json"
+  - "*.yaml"
+  - "*.yml"
+
+format: json
+
+customCatalog:
+  schemas:
+    - name: "Ammo"
+      description: "Schema for validating Ammo YAML fragments"
+      fileMatch: ["src/packs/**/ammo.*.yaml"]
+      location: "schema/ammo.json"
