@@ -1,55 +1,50 @@
-_id: 9ZQqizz1ulgcqnec
+_id: syV8GagEmOsAOMkj
 effects: []
-flags:
-  core: {}
-folder: null
-img: icons/weapons/swords/greatsword-crossguard-steel.webp
-name: Longsword
-ownership:
-  default: 0
-sort: 0
+img: icons/weapons/axes/axe-double-black.webp
+name: Greataxe
 system:
   ammoVariety: []
   attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  damage: 3d6
+  damage: 4d6
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
-      <p>A hollow cylinder, typically made of metal or fiberglass. It may have
-      conveyed fluids once. </p>
-  dvTable: ''
+      <p>A japanese wooden pole with a curved blade on one side. Favoured by
+      Arasaka tactical teams for close engagements. </p>
+  dvTable: ""
   equipped: owned
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   handsReq: 2
-  isConcealed: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
   isRanged: false
   isUpgraded: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 0
     value: 0
   price:
-    category: premium
-    market: 100
-  quality: standard
+    market: 500
   revealed: true
-  rof: 2
+  rof: 1
   source: pg. 340
-  tags: ''
   unarmedAutomaticCalculation: true
-  upgrade: ''
   upgrades: []
   usage: equipped
   usesType: magazine
   weaponSkill: Melee Weapon
-  weaponType: heavyMelee
+  weaponType: vHeavyMelee
 type: weapon

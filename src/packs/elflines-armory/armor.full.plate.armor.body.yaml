@@ -1,44 +1,43 @@
-_id: W0WjuvkDFdAsjFUq
+_id: N2bk4F8YVgALbUH7
 effects: []
-flags:
-  core: {}
-folder: null
-img: icons/equipment/chest/breastplate-layered-leather-studded-black.webp
-name: Studded Leather Armor (Body)
-ownership:
-  default: 0
-sort: 0
+img: icons/equipment/chest/breastplate-banded-steel-gold.webp
+name: Full Plate Armor (Body)
 system:
   bodyLocation:
     ablation: 0
-    sp: 7
+    sp: 15
   concealable:
     concealable: false
     isConcealed: false
   description:
-    chat: ''
-    unidentified: ''
-    value: <p>Standard Kevlar clothing. No armor penalty.</p>
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Metal plated armor to resist the most powerful hits. -4 to REF, DEX,
+      and MOVE.</p>
   equipped: owned
   favorite: false
   headLocation:
     ablation: 0
     sp: 0
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
   isBodyLocation: true
   isHeadLocation: false
   isShield: false
   isUpgraded: false
-  penalty: 0
+  penalty: -4
   price:
-    category: costly
-    market: 50
+    market: 500
   revealed: true
   shieldHitPoints:
     max: 0
     value: 0
   source: pg. 350
-  tags: []
-  upgrade: ''
   upgrades: []
   usage: equipped
 type: armor

@@ -1,13 +1,7 @@
 _id: 6iTkyK9JSQHM2IqU
 effects: []
-flags:
-  core: {}
-folder: null
 img: icons/weapons/bows/shortbow-recurve-red.webp
 name: Bow
-ownership:
-  default: 0
-sort: 0
 system:
   ammoVariety:
     - arrow
@@ -17,8 +11,8 @@ system:
     isConcealed: false
   damage: 4d6
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: <p>A revitalized bow, reloaded as part of an Attack Action.</p>
   dvTable: DV Bows & Crossbows
   equipped: owned
@@ -27,25 +21,26 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 2
-  isConcealed: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
   isRanged: true
   isUpgraded: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 1
     value: 0
   price:
-    category: premium
     market: 100
-  quality: standard
   revealed: true
   rof: 1
   source: pg. 341
-  tags: ''
   unarmedAutomaticCalculation: true
-  upgrade: ''
   upgrades: []
   usage: equipped
   usesType: magazine
