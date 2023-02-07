@@ -1,25 +1,22 @@
-_id: cUgtpdroFgBBJGam
+_id: YHhTX03AJFe0cS5N
 effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
-name: Militech Crusher
-ownership:
-  default: 0
-sort: 0
+name: Magnum Opus Hellbringer
 system:
   ammoVariety:
-    - shotgunShell
+    - vHeavyPistol
   attackmod: 0
   concealable:
     concealable: false
     isConcealed: false
-  damage: 4d6
+  damage: 5d6
   description:
-    chat: ''
-    unidentified: ''
-    value: <p>A pistol that fires shotgun slugs. What's not to love.</p>
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>When this things shoots, you know about it. If fired by someone with
+      less than 10 BODY, this pistol jams. An action is required to unjam
+      it.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false
@@ -27,26 +24,26 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 1
-  isConcealed: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
   isRanged: true
   isUpgraded: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
-    max: 6
+      name: ""
+      uuid: ""
+    max: 3
     value: 0
   price:
-    category: premium
-    market: 500
-  quality: standard
+    market: 1000
   revealed: true
   rof: 1
-  slots: 3
   source: 12DoG
-  tags: ''
   unarmedAutomaticCalculation: true
-  upgrade: ''
   upgrades: []
   usage: equipped
   usesType: magazine

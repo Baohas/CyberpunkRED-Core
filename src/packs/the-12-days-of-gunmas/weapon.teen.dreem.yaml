@@ -1,13 +1,7 @@
 _id: eZM7VjirAA4bTsni
 effects: []
-flags:
-  core: {}
-folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/SMG_poor.svg
 name: Teen Dreem
-ownership:
-  default: 0
-sort: 0
 system:
   ammoVariety:
     - medPistol
@@ -17,8 +11,8 @@ system:
     isConcealed: false
   damage: 2d6
   description:
-    chat: ''
-    unidentified: ''
+    chat: ""
+    unidentified: ""
     value: >-
       <p>This SMG can use Autofire and Suppressive Fire all the way down to it's
       last 2 bullets. Caution is required however, as using either firing mode
@@ -30,26 +24,26 @@ system:
     autoFire: 3
     suppressiveFire: true
   handsReq: 1
-  isConcealed: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
   isRanged: true
   isUpgraded: false
   magazine:
     ammoData:
-      name: ''
-      uuid: ''
+      name: ""
+      uuid: ""
     max: 10
     value: 0
   price:
-    category: costly
     market: 20
-  quality: poor
   revealed: true
   rof: 1
-  slots: 3
   source: 12DoG
-  tags: ''
   unarmedAutomaticCalculation: true
-  upgrade: ''
   upgrades: []
   usage: equipped
   usesType: magazine
