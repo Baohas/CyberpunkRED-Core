@@ -4,13 +4,90 @@ import LOGGER from "../utils/cpr-logger.js";
 export default function preloadHandlebarsTemplates() {
   LOGGER.log("Calling Preload Handlebars");
   return loadTemplates([
-    // Chat Partials
+    // Actor: Character - Left Pane
+    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-deathsave-block.hbs`,
+    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-handle-block.hbs`,
+    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-hitpoint-block.hbs`,
+    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-humanity-block.hbs`,
+    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-image-block.hbs`,
+    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-ip-block.hbs`,
+    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-role-block.hbs`,
+    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-stat-block.hbs`,
+
+    // Actor: Character - Right Pane
+    `systems/${game.system.id}/templates/actor/character/right-pane/cpr-cyberware.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/cpr-effects.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/cpr-gear.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/cpr-skills.hbs`,
+
+    // Actor: Character - Bottom Pane
+    `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-fight.hbs`,
+    `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-lifepath.hbs`,
+    `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-role.hbs`,
+
+    // Actor: Character - Skill Tab
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/skills/cpr-skills-category.hbs`,
+
+    // Actor: Character - Gear Tab
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-ammo-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-armor-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-clothing-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-cyberdeck-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-cyberware-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-cyberware-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-drug-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-gear-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-itemUpgrade-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-program-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-program-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-vehicle-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-weapon-content.hbs`,
+
+    // Actor: Character - Cyberware Tab
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/cyberware/cpr-cyberware-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/cyberware/cpr-cyberware-foundational-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/cyberware/cpr-cyberware-optional-content.hbs`,
+
+    // Actor: Character - Debug
+    `systems/${game.system.id}/templates/actor/character/debug/cpr-item-debug.hbs`,
+
+    // Actor: Mixins
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-actions.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-dv-glyph.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-equip-glyph.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-install-cyberware-glyph.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-install-item-glyph.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-install-programs-glyph.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-reload-glyph.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-repair-glyph.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-snort-glyph.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-split-item.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-uninstall-glyph.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-upgrade-glyph.hbs`,
+
+    // Actor: Mook - Sheet
+    `systems/${game.system.id}/templates/actor/mook/cpr-mook-armor.hbs`,
+    `systems/${game.system.id}/templates/actor/mook/cpr-mook-criticalInjury.hbs`,
+    `systems/${game.system.id}/templates/actor/mook/cpr-mook-cyberware-optional.hbs`,
+    `systems/${game.system.id}/templates/actor/mook/cpr-mook-gear.hbs`,
+    `systems/${game.system.id}/templates/actor/mook/cpr-mook-image.hbs`,
+    `systems/${game.system.id}/templates/actor/mook/cpr-mook-program.hbs`,
+    `systems/${game.system.id}/templates/actor/mook/cpr-mook-skills.hbs`,
+    `systems/${game.system.id}/templates/actor/mook/cpr-mook-stats.hbs`,
+    `systems/${game.system.id}/templates/actor/mook/cpr-mook-weapons.hbs`,
+
+    // Actor: Container - Sheet
+    `systems/${game.system.id}/templates/actor/container/cpr-container-actions.hbs`,
+    `systems/${game.system.id}/templates/actor/container/cpr-item-content.hbs`,
+    `systems/${game.system.id}/templates/actor/cpr-container-sheet.hbs`,
+
+    // Chat: Partials
     `systems/${game.system.id}/templates/chat/cpr-base-rollcard.hbs`,
-    `systems/${game.system.id}/templates/chat/cpr-damage-rollcard.hbs`,
     `systems/${game.system.id}/templates/chat/cpr-damage-application-card.hbs`,
+    `systems/${game.system.id}/templates/chat/cpr-damage-rollcard.hbs`,
     `systems/${game.system.id}/templates/chat/cpr-rollcard-modifiers.hbs`,
 
-    // Dialog Partials
+    // Dialog: Partials
     `systems/${game.system.id}/templates/dialog/cpr-confirmation-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-damage-application-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-dialog-buttons.hbs`,
@@ -27,112 +104,34 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/dialog/cpr-select-role-bonuses-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-split-item-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-update-announcement.hbs`,
+    `systems/${game.system.id}/templates/dialog/rolls/cpr-additional-modifiers.hbs`,
+    `systems/${game.system.id}/templates/dialog/rolls/cpr-all-modifiers.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-base-verify-roll-prompt.hbs`,
+    `systems/${game.system.id}/templates/dialog/rolls/cpr-situational-modifiers.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-damage-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-deathsave-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-roleAbility-prompt.hbs`,
-    `systems/${game.system.id}/templates/dialog/rolls/cpr-situational-modifiers.hbs`,
-    `systems/${game.system.id}/templates/dialog/rolls/cpr-all-modifiers.hbs`,
-    `systems/${game.system.id}/templates/dialog/rolls/cpr-additional-modifiers.hbs`,
 
-    // Left Pane Actor Partials
-    `systems/${game.system.id}/templates/actor/parts/left-pane/cpr-deathsave-block.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/left-pane/cpr-handle-block.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/left-pane/cpr-hitpoint-block.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/left-pane/cpr-humanity-block.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/left-pane/cpr-image-block.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/left-pane/cpr-ip-block.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/left-pane/cpr-role-block.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/left-pane/cpr-stat-block.hbs`,
-
-    // Right Pane Actor Partials
-    `systems/${game.system.id}/templates/actor/parts/right-pane/cpr-cyberware.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/cpr-effects.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/cpr-gear.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/cpr-skills.hbs`,
-
-    // Bottom Pane Actor Partials
-    `systems/${game.system.id}/templates/actor/parts/bottom-pane/cpr-fight.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/bottom-pane/cpr-lifepath.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/bottom-pane/cpr-role.hbs`,
-
-    // Skill Tab Partials
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/skills/cpr-skills-category.hbs`,
-
-    // Gear Tab Partials
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-ammo-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-armor-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-clothing-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-cyberdeck-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-cyberware-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-cyberware-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-drug-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-gear-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-itemUpgrade-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-program-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-program-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-vehicle-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/gear/cpr-weapon-content.hbs`,
-
-    // Cyberware Tab Partials
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-foundational-content.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/right-pane/parts/cyberware/cpr-cyberware-optional-content.hbs`,
-
-    // Common Partials - Actions
-    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-actions.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-dv-glyph.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-equip-glyph.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-install-cyberware-glyph.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-install-item-glyph.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-install-programs-glyph.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-reload-glyph.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-repair-glyph.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-snort-glyph.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-split-item.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-uninstall-glyph.hbs`,
-    `systems/${game.system.id}/templates/actor/parts/common/actions/cpr-upgrade-glyph.hbs`,
-
-    // Debug
-    `systems/${game.system.id}/templates/actor/parts/debug/cpr-item-debug.hbs`,
-
-    // Mook Sheet Partials
-    `systems/${game.system.id}/templates/actor/mooks/cpr-mook-armor.hbs`,
-    `systems/${game.system.id}/templates/actor/mooks/cpr-mook-criticalInjury.hbs`,
-    `systems/${game.system.id}/templates/actor/mooks/cpr-mook-gear.hbs`,
-    `systems/${game.system.id}/templates/actor/mooks/cpr-mook-image.hbs`,
-    `systems/${game.system.id}/templates/actor/mooks/cpr-mook-program.hbs`,
-    `systems/${game.system.id}/templates/actor/mooks/cpr-mook-sheet-limited.hbs`,
-    `systems/${game.system.id}/templates/actor/mooks/cpr-mook-skills.hbs`,
-    `systems/${game.system.id}/templates/actor/mooks/cpr-mook-stats.hbs`,
-    `systems/${game.system.id}/templates/actor/mooks/cpr-mook-weapons.hbs`,
-    `systems/${game.system.id}/templates/actor/mooks/cpr-mook-cyberware-optional.hbs`,
-
-    // Container Sheet
-    `systems/${game.system.id}/templates/actor/container/cpr-container-actions.hbs`,
-    `systems/${game.system.id}/templates/actor/container/cpr-item-content.hbs`,
-    `systems/${game.system.id}/templates/actor/cpr-container-sheet.hbs`,
-
-    // Item Sheet
-    `systems/${game.system.id}/templates/item/cpr-item-sheet.hbs`,
+    // Item: Sheet
     `systems/${game.system.id}/templates/item/cpr-item-description.hbs`,
-    `systems/${game.system.id}/templates/item/cpr-item-settings.hbs`,
+    `systems/${game.system.id}/templates/item/cpr-item-effects.hbs`,
     `systems/${game.system.id}/templates/item/cpr-item-name.hbs`,
+    `systems/${game.system.id}/templates/item/cpr-item-settings.hbs`,
+    `systems/${game.system.id}/templates/item/cpr-item-sheet.hbs`,
 
-    // Item Sheet Partials
-    // Description Mixins
+    // Item: Description - Mixins
     `systems/${game.system.id}/templates/item/description/mixin/cpr-attackable.hbs`,
+    `systems/${game.system.id}/templates/item/description/mixin/cpr-container.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-effects.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-equippable.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-loadable.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-installable.hbs`,
+    `systems/${game.system.id}/templates/item/description/mixin/cpr-loadable.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-physical.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-stackable.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-upgradable.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-valuable.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-container.hbs`,
 
-    // Description Types
+    // Item: Description - Types
     `systems/${game.system.id}/templates/item/description/cpr-ammo.hbs`,
     `systems/${game.system.id}/templates/item/description/cpr-armor.hbs`,
     `systems/${game.system.id}/templates/item/description/cpr-clothing.hbs`,
@@ -149,19 +148,18 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/item/description/cpr-vehicle.hbs`,
     `systems/${game.system.id}/templates/item/description/cpr-weapon.hbs`,
 
-    // Setting Mixins
+    // Item: Settings - Mixins
     `systems/${game.system.id}/templates/item/settings/mixin/cpr-attackable.hbs`,
-    `systems/${game.system.id}/templates/item/cpr-item-effects.hbs`,
+    `systems/${game.system.id}/templates/item/settings/mixin/cpr-container.hbs`,
     `systems/${game.system.id}/templates/item/settings/mixin/cpr-equippable.hbs`,
-    `systems/${game.system.id}/templates/item/settings/mixin/cpr-loadable.hbs`,
     `systems/${game.system.id}/templates/item/settings/mixin/cpr-installable.hbs`,
+    `systems/${game.system.id}/templates/item/settings/mixin/cpr-loadable.hbs`,
     `systems/${game.system.id}/templates/item/settings/mixin/cpr-physical.hbs`,
     `systems/${game.system.id}/templates/item/settings/mixin/cpr-stackable.hbs`,
     `systems/${game.system.id}/templates/item/settings/mixin/cpr-upgradable.hbs`,
     `systems/${game.system.id}/templates/item/settings/mixin/cpr-valuable.hbs`,
-    `systems/${game.system.id}/templates/item/settings/mixin/cpr-container.hbs`,
 
-    // Setting Types
+    // Items: Settings - Types
     `systems/${game.system.id}/templates/item/settings/cpr-ammo.hbs`,
     `systems/${game.system.id}/templates/item/settings/cpr-armor.hbs`,
     `systems/${game.system.id}/templates/item/settings/cpr-clothing.hbs`,

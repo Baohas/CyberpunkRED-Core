@@ -31,9 +31,9 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   get template() {
     LOGGER.trace("get template | CPRMookActorSheet | Called.");
     if (!game.user.isGM && this.actor.limited) {
-      return `systems/${game.system.id}/templates/actor/mooks/cpr-mook-sheet-limited.hbs`;
+      return `systems/${game.system.id}/templates/actor/cpr-mook-sheet-limited.hbs`;
     }
-    return `systems/${game.system.id}/templates/actor/mooks/cpr-mook-sheet.hbs`;
+    return `systems/${game.system.id}/templates/actor/cpr-mook-sheet.hbs`;
   }
 
   /**
