@@ -1,0 +1,163 @@
+{{cprTrace "START ACTOR MIXIN FIGHT NETRUNNING CPR-REZZEDPROGRAMS.HBS"}}
+
+<div class="cyberdeck-rezzed-section">
+  <li class="items-header flexrow">
+    <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left text-bold">
+      {{localize "CPR.characterSheet.bottomPane.fight.rezzed"}}
+    </span>
+  </li>
+  <div class="cyberdeck-rezzed-content">
+    <div class="cyberdeck-rezzed-software">
+      {{#each (cprToArray "booster,defender" ",") as |pc| }}
+        <li class="items-header flexrow cyberdeck-rezzed-software-list bg-pink">
+          <div class="rezzed-program-name text-bold bg-pink">
+            {{localize (cprGetLocalizedlNameKey pc "programClass")}}
+          </div>
+          <div class="rezzed-program-per text-bold bg-pink text-center"></div>
+          <div class="rezzed-program-spd text-bold bg-pink text-center"></div>
+          <div class="rezzed-program-atk text-bold bg-pink text-center">
+            {{localize "CPR.global.blackIce.stats.atk"}}
+          </div>
+          <div class="rezzed-program-def text-bold bg-pink text-center">
+            {{localize "CPR.global.blackIce.stats.def"}}
+          </div>
+          <div class="rezzed-program-rez-and-decrement text-bold bg-pink text-center">
+            {{localize "CPR.global.generic.rez"}}
+          </div>
+          <div class="rezzed-program-reset text-bold bg-pink text-center"></div>
+        </li>
+        {{#each ../actor.system.cyberdeck.system.programs.rezzed as |program| }}
+          {{#if (cprCompare program.class "===" pc) }}
+            <li class="items-header item flexrow cyberdeck-rezzed-software-list"
+                data-item-id="{{program.uuid}}">
+              <div class="rezzed-program-name">
+                <a class="name item-view"
+                   data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToView"}}"
+                   data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}"
+                   data-program-uuid="{{program.uuid}}">
+                  {{program.name}}
+                </a>
+              </div>
+              <div class="rezzed-program-per text-bold text-center"></div>
+              <div class="rezzed-program-spd text-bold text-center"></div>
+              <div class="rezzed-program-atk text-center">
+                {{program.atk}}
+              </div>
+              <div class="rezzed-program-def text-center">
+                {{program.def}}
+              </div>
+              <div class="rezzed-program-rez-and-decrement text-center">
+                <div class="rezzed-program-rez text-center">
+                  {{program.rez}}
+                </div>
+                <div class="rezzed-program-decrement-rez text-center">
+                  {{#if (cprCompare program.rez ">" 0) }}
+                    <a class="program-execution"
+                       data-execution-type="reduce-rez"
+                       data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}"
+                       data-program-uuid="{{program.uuid}}">
+                      <i class="far fa-minus-square"
+                         data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.reduceRez"}}"></i>
+                    </a>
+                  {{/if}}
+                </div>
+              </div>
+              <div class="rezzed-program-reset text-center">
+                <a class="program-execution"
+                   data-execution-type="reset-rez"
+                   data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}"
+                   data-program-uuid="{{program.uuid}}">
+                  <i class="fas fa-undo"
+                     data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.resetRez"}}"></i>
+                </a>
+              </div>
+            </li>
+          {{/if}}
+        {{/each}}
+      {{/each}}
+      <li class="items-header flexrow cyberdeck-rezzed-software-list bg-pink">
+        <div class="rezzed-program-name text-bold bg-pink">
+          {{localize "CPR.global.programClass.blackice"}}
+        </div>
+        <div class="rezzed-program-per text-bold bg-pink text-center">
+          {{localize "CPR.global.blackIce.stats.per"}}
+        </div>
+        <div class="rezzed-program-spd text-bold bg-pink text-center">
+          {{localize "CPR.global.blackIce.stats.spd"}}
+        </div>
+        <div class="rezzed-program-atk text-bold bg-pink text-center">
+          {{localize "CPR.global.blackIce.stats.atk"}}
+        </div>
+        <div class="rezzed-program-def text-bold bg-pink text-center">
+          {{localize "CPR.global.blackIce.stats.def"}}
+        </div>
+        <div class="rezzed-program-rez-and-decrement text-bold bg-pink text-center">
+          {{localize "CPR.global.generic.rez"}}
+        </div>
+      </li>
+      {{#each actor.system.cyberdeck.system.programs.rezzed as |program| }}
+        {{#if (cprCompare program.class "===" "blackice") }}
+          <li class="items-header item flexrow cyberdeck-rezzed-software-list"
+              data-item-id="{{program.uuid}}">
+            <div class="rezzed-program-name">
+              <a class="name item-view"
+   data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToView"}}"
+   data-cyberdeck-id="{{../actor.system.cyberdeck.id}}"
+   data-program-uuid="{{program.uuid}}">{{program.name}} ({{localize (cprFindConfigValue "blackIceType" program.blackIceType)}})</a>
+            </div>
+            <div class="rezzed-program-per text-center">
+              {{program.per}}
+            </div>
+            <div class="rezzed-program-spd text-center">
+              {{program.spd}}
+            </div>
+            <div class="rezzed-program-atk text-center">
+              {{program.atk}}
+            </div>
+            <div class="rezzed-program-def text-center">
+              {{program.def}}
+            </div>
+            <div class="rezzed-program-rez-and-decrement text-center">
+              <div class="rezzed-program-rez text-center">
+                {{program.rez}}
+              </div>
+              <div class="rezzed-program-decrement-rez text-center">
+                {{#if (cprCompare ../actor.system.type "===" "mook") }}
+                  {{#if (cprCompare program.rez ">" 0) }}
+                    <a class="program-execution"
+                       data-execution-type="reduce-rez"
+                       data-cyberdeck-id="{{../actor.system.cyberdeck.id}}"
+                       data-program-uuid="{{program.uuid}}"><i class="far fa-minus-square"
+   data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.reduceRez"}}"></i></a>{{/if}}{{/if}}
+                  </div>
+                </div>
+                <div class="rezzed-program-reset">
+                  {{#if (cprCompare ../actor.system.type "===" "mook") }}
+                    <a class="program-execution"
+                       data-roll-type="cyberdeckProgram"
+                       data-execution-type="atk"
+                       data-cyberdeck-id="{{../actor.system.cyberdeck.id}}"
+                       data-program-uuid="{{program.uuid}}"><i class="fas fa-fist-raised red-fg"
+   data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i></a>
+                    <a class="program-execution"
+                       data-roll-type="cyberdeckProgram"
+                       data-execution-type="damage"
+                       data-cyberdeck-id="{{../actor.system.cyberdeck.id}}"
+                       data-program-uuid="{{program.uuid}}"><i class="fas fa-tint red-fg"
+   data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i></a>
+                    <a class="program-execution"
+                       data-roll-type="cyberdeckProgram"
+                       data-execution-type="def"
+                       data-cyberdeck-id="{{../actor.system.cyberdeck.id}}"
+                       data-program-uuid="{{program.uuid}}"><i class="fas fa-shield-virus red-fg"
+   data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollDefense"}}"></i></a>
+                  {{/if}}
+                </div>
+              </li>
+            {{/if}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+{{cprTrace "END CPR-FIGHT-REZZEDPROGRAMS.HBS"}}

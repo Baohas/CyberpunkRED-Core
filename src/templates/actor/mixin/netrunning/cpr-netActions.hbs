@@ -1,0 +1,55 @@
+{{cprTrace "START ACTOR MIXIN FIGHT NETRUNNING CPR-NETACTIONS.HBS"}}
+
+<div class="interface-abilities-section">
+  <li class="items-header item flexrow"
+      data-item-id="{{actor.system.cyberdeck.id}}">
+    <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left text-bold">
+      <a class="name item-view">{{actor.system.cyberdeck.name}}</a>
+      <select class="select-net-role"
+              name="system.roleInfo.activeNetRole"
+              data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.netRoleTooltip"}}"
+              data-tooltip-direction="UP">
+        {{#select actor.roleInfo.activeNetRole}}
+          {{#each actor.itemTypes.role }}
+            <option value="{{this.id}}" {{#if (cprCompare this.id "===" ../actor.system.roleInfo.activeNetRole) }}selected{{/if }}>{{this.system.mainRoleAbility }}
+            </option>
+          {{/each}}
+        {{/select}}
+      </select>
+    </span>
+  </li>
+  <div class="net-actions-content">
+    {{#each (cprFindConfigObj "interfaceAbilities") as |intAbility ia| }}
+      <li class="items-header flexrow">
+        <a class="rollable"
+           data-roll-type="interfaceAbility"
+           data-interface-ability="{{ia}}"
+           data-cyberdeck-id="{{../actor.system.cyberdeck.id}}"
+           data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToPerformAction"}}">
+          {{localize intAbility}}
+        </a>
+      </li>
+    {{/each}}
+    <hr/>
+    <li class="items-header flexrow">
+      <a class="rollable"
+         data-roll-type="interfaceAbility"
+         data-interface-ability="defense"
+         data-cyberdeck-id="{{actor.system.cyberdeck.id}}"
+         data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToPerformAction"}}">
+        {{localize "CPR.global.generic.defense"}}
+      </a>
+    </li>
+    <li class="items-header flexrow">
+      <a class="rollable"
+         data-roll-type="interfaceAbility"
+         data-interface-ability="speed"
+         data-cyberdeck-id="{{actor.system.cyberdeck.id}}"
+         data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToPerformAction"}}">
+        {{localize "CPR.global.generic.speed"}}
+      </a>
+    </li>
+  </div>
+</div>
+
+{{cprTrace "END CPR-NETACTIONS.HBS"}}

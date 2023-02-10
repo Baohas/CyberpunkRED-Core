@@ -21,9 +21,9 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/character/right-pane/cpr-skills.hbs`,
 
     // Actor: Character - Bottom Pane
-    `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-fight.hbs`,
-    `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-lifepath.hbs`,
-    `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-role.hbs`,
+    `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-fight-tab.hbs`,
+    `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-lifepath-tab.hbs`,
+    `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-role-tab.hbs`,
 
     // Actor: Character - Skill Tab
     `systems/${game.system.id}/templates/actor/character/right-pane/tabs/skills/cpr-skills-category.hbs`,
@@ -52,6 +52,10 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/character/debug/cpr-item-debug.hbs`,
 
     // Actor: Mixins
+    `systems/${game.system.id}/templates/actor/mixin/cpr-fight.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/cpr-netrunning.hbs`,
+
+    // Actor: Mixins - Actions
     `systems/${game.system.id}/templates/actor/mixin/actions/cpr-actions.hbs`,
     `systems/${game.system.id}/templates/actor/mixin/actions/cpr-dv-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/mixin/actions/cpr-equip-glyph.hbs`,
@@ -64,6 +68,16 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/mixin/actions/cpr-split-item.hbs`,
     `systems/${game.system.id}/templates/actor/mixin/actions/cpr-uninstall-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/mixin/actions/cpr-upgrade-glyph.hbs`,
+
+    // Actor: Mixins - Fight
+    `systems/${game.system.id}/templates/actor/mixin/fight/cpr-armor.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/fight/cpr-criticalInjuries.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/fight/cpr-weapons.hbs`,
+
+    // Actor: Mixins: Netrunning
+    `systems/${game.system.id}/templates/actor/mixin/netrunning/cpr-installedPrograms.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/netrunning/cpr-netActions.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/netrunning/cpr-rezzedPrograms.hbs`,
 
     // Actor: Mook - Sheet
     `systems/${game.system.id}/templates/actor/mook/cpr-mook-armor.hbs`,
