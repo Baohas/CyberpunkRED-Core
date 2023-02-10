@@ -50,19 +50,28 @@ for file in ${ALL_FILES}; do
   done
   # If a custom handelabr is used check if there are trace statements
   if [[ "${used}" != 0 ]]; then
-    # Extract the name of the file and convert it to allcaps
-    base=$(basename "${file}" | tr '[:lower:]' '[:upper:]')
-    # Create the expected trace statements
-    first="{{cprTrace \"START"
-    last="{{cprTrace \"END"
-    # Look for the starting trace messages in the file
-    if [[ "$(grep "${first}" "${file}" | grep "${base}" -c)" != 1 ]]; then
-      echo "❌ ${first} missing/incorrect at the beginning of ${file}"
+    # Convert the filepath into UPPER with spaces instead of /
+    trace_file_start=$(
+      echo "${file}" |
+        sed 's/src\/templates\///g' |
+        sed 's/\//\ /g' |
+        tr '[:lower:]' '[:upper:]'
+    )
+    # Convert the filename to UPPER
+    trace_file_end=$(basename "${file}" | tr '[:lower:]' '[:upper:]')
+    # Build the trace statements
+    trace_start="{{cprTrace \"START ${trace_file_start}\"}}"
+    trace_end="{{cprTrace \"END ${trace_file_end}\"}}"
+
+    # Test for cprTrace START
+    if ! grep -q "${trace_start}" "${file}"; then
+      echo "❌ Filename '${trace_start}' not found in ${file}"
       ((ERRORS = ERRORS + 1))
     fi
-    # Look for the end trace message in the file
-    if [[ "$(grep "${last}" "${file}" | grep "${base}" -c)" != 1 ]]; then
-      echo "❌ ${last} missing/incorrect at the end of ${file}"
+
+    # Test for cprTrace END
+    if ! grep -q "${trace_end}" "${file}"; then
+      echo "❌ Filename '${trace_end}' not found in ${file}"
       ((ERRORS = ERRORS + 1))
     fi
   fi
