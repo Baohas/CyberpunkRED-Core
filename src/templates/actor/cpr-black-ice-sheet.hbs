@@ -14,7 +14,7 @@
         <div class="flexrow bice-label-corner-both bg-red"></div>
         <div class="flexrow bice-label-corner-left bg-red"></div>
       </div>
-      <div class="bice-head flexrow text-center block-label">
+      <div class="bice-head flexrow text-center block-label text-semi">
         <div class="width-long">{{localize "CPR.global.generic.name"}}</div>
         <div class="width-long">{{localize "CPR.global.generic.class"}}</div>
         {{#each (cprFindConfigObj "blackIceStatList") as |stat s| }}
@@ -101,15 +101,19 @@
          data-tooltip="{{actor.name}}"/>
   </div>
   <div class="bice-effects">
-    <div class="flexrow bg-red pad-thin text-padding-left-smallest">
-      <span class="fg-white text-right text-vert-center">{{localize "CPR.blackIceSheet.effects"}}:</span>
+    <div class="flexrow bg-red text-padding-right-smaller text-padding-top-smaller text-semi">
+      <span class="fg-white text-right text-vert-center">
+        {{localize "CPR.blackIceSheet.effects"}}
+      </span>
       <input class="bg-white fg-black width-longer"
              name="system.effect"
              type="text"
              value="{{actor.system.effect}}"/>
     </div>
-    <div class="flexrow bg-red pad-thin text-padding-left-smallest">
-      <span class="fg-white text-right text-vert-center">{{localize "CPR.global.generic.notes"}}:</span>
+    <div class="flexrow bg-red text-padding-right-smaller text-padding-top-smaller text-semi">
+      <span class="fg-white text-right text-vert-center">
+        {{localize "CPR.global.generic.notes"}}
+      </span>
       <input class="bg-white fg-black width-longer"
              name="system.notes"
              type="text"
