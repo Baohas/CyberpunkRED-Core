@@ -43,7 +43,7 @@
                         {{/if }}">
                   <span
                     {{#if (cprGetSkillModInfo role.system.mainRoleAbility ../actor "hasSituational") }}
-                      class="text-italics"
+                      class="text-italic"
                     {{/if }}
                     {{log (cprGetSkillModInfo role.system.mainRoleAbility ../actor "modList" keepSituational=true)}}
                     {{#if (cprGetSkillModInfo role.system.mainRoleAbility ../actor "modList" keepSituational=true) }}
@@ -95,7 +95,7 @@
                               {{/if }}">
                           <span
                             {{#if (cprGetSkillModInfo ability.name ../actor "hasSituational") }}
-                              class="text-italics"
+                              class="text-italic"
                             {{/if }}
                             {{#if (cprGetSkillModInfo ability.name ../actor "modList" keepSituational=true) }}
                               data-tooltip="

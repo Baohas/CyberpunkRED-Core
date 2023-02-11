@@ -18,7 +18,7 @@
                 data-item-id="{{program.uuid}}">
               {{#if (cprListContains "booster,defender,blackice" pc) }}
                 <div class="installed-program-name">
-                  <a class="name item-view{{#if program.isRezzed }} text-italics{{/if }}">{{program.name }}</a>
+                  <a class="name item-view{{#if program.isRezzed }} text-italic{{/if }}">{{program.name }}</a>
                 </div>
                 <div class="installed-program-attack-and-damage">
                   {{#if (cprCompare pc "!==" "blackice") }}
