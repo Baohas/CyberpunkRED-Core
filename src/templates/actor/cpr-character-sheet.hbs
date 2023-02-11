@@ -92,7 +92,7 @@
               </div>
               {{#if (cprCompare actor.system.fightOptions "===" "both") }}
                 {{#if (cprCompare actor.system.fightState "===" "Meatspace") }}
-                  <div class="text-padding-left-smallest">
+                  <div class="text-padding-left-smaller">
                     (<span class="fg-yellow">
                       {{~localize "CPR.characterSheet.bottomPane.fight.meat"}}
                     </span> | <a class="toggle-fight-state" data-state="Netspace">
@@ -100,7 +100,7 @@
                     </a>)
                   </div>
                 {{else}}
-                  <div class="text-padding-left-smallest">
+                  <div class="text-padding-left-smaller">
                     (<a class="toggle-fight-state" data-state="Meatspace">
                       {{~localize "CPR.characterSheet.bottomPane.fight.meat"}}
                     </a> | <span class="fg-yellow">
