@@ -33,8 +33,8 @@
 {{!-- listing out installed upgrades --}}
 {{#if (cprCompare item.type "===" "weapon") }}
   <li class="item flexrow">
-    <div class="item flexrow setting-name text-nowrap">
-      &nbsp;&nbsp;({{localize "CPR.itemSheet.itemUpgrade.unusedSlots"}}: {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}})
+    <div class="item flexrow setting-name text-nowrap text-padding-left-smaller">
+      ({{localize "CPR.itemSheet.itemUpgrade.unusedSlots"}}: {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}})
     </div>
   </li>
 {{/if}}

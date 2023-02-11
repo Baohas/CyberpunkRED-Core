@@ -8,7 +8,7 @@
             <span class="item-name gear-name bg-black gear-section-header text-nowrap expand-button"
                   id="gearTab-{{c}}"
                   data-tooltip="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
-              {{localize category}}&nbsp;
+              {{localize category}}
               {{#if (cprListContains ../this.options.collapsedSections (cprGeneratePartial "gearTab-VAR" c)) }}
                 <i class="fas fa-plus bg-black collapse-icon"></i>
                 <i class="fas fa-minus bg-black expand-icon hide"></i>
@@ -41,7 +41,7 @@
               {{localize "CPR.characterSheet.rightPane.data"}}
             </span>
             <span class="item-detail gear-actions bg-black gear-section-header text-nowrap">
-              {{localize "CPR.global.generic.actions"}}&nbsp;
+              {{localize "CPR.global.generic.actions"}}
               {{#if (cprSystemConfig "playersCreateInventory") }}
                 <a class="item-create"
                    data-tooltip="{{localize "CPR.actorSheets.commonActions.createNewItem"}}"

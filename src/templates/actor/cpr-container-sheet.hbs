@@ -252,7 +252,7 @@
             <span class="item-name bg-black text-nowrap expand-button"
                   id="gearTab-{{c}}"
                   data-tooltip="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
-              {{localize category}}&nbsp;
+              {{localize category}}
               {{#if (cprListContains ../this.options.collapsedSections (cprGeneratePartial "gearTab-VAR" c)) }}
                 <i class="fas fa-plus bg-black collapse-icon"></i>
                 <i class="fas fa-minus bg-black expand-icon hide"></i>
@@ -274,7 +274,7 @@
                 <a class="item-create"
                    data-tooltip="{{localize "CPR.actorSheets.commonActions.createNewItem"}}"
                    data-item-type="{{c}}">
-                  <i class="fas fa-plus-circle text-padding-right-smallest" style="color: dimgrey;"></i>
+                  <i class="fas fa-plus-circle text-padding-right-smallest"></i>
                 </a>
               {{/if}}
             </span>

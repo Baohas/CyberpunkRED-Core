@@ -15,11 +15,14 @@
             </div>
             <div class="fight-weapon">
               <div class="item-name fight-weapon-name">
-                <a class="name item-edit" data-tooltip="{{weapon.name}}
-                </br>
-                {{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}
-              </br>
-            {{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">{{weapon.name}}</a>
+                <a class="name item-edit"
+                   data-tooltip="{{weapon.name}}
+                   </br>
+                   {{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}
+                   </br>
+                   {{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
+                   {{weapon.name}}
+                </a>
             {{#if (cprCompare (cprApplyUpgrade weapon weapon.system.attackmod "attackmod") ">" "0") }}
               (+{{cprApplyUpgrade weapon weapon.system.attackmod "attackmod"}}){{/if}}
               {{#if (cprCompare (cprApplyUpgrade weapon weapon.system.attackmod "attackmod") "<" "0") }}
@@ -28,9 +31,8 @@
                   <br/>
                   ({{localize "CPR.global.itemTypes.ammo"}}:
                   <input name="system.magazine.value"
-                         class="number weapon-input"
-                         style="width:30px;
-                                text-align:right"
+                         class="number weapon-inputi text-right"
+                         style="width:30px;"
                          type="text"
                          data-item-prop="system.magazine.value"
                          value="{{weapon.system.magazine.value}}"/>
@@ -131,9 +133,8 @@
                           <br/>
                           ({{localize "CPR.global.itemTypes.ammo"}}:
                           <input name="system.magazine.value"
-                                 class="number weapon-input"
-                                 style="width:30px;
-                                        text-align:right"
+                                 class="number weapon-input text-right"
+                                 style="width:30px;"
                                  type="text"
                                  data-item-prop="system.magazine.value"
                                  value="{{weapon.system.magazine.value}}"/>
@@ -244,9 +245,8 @@
                     <br/>
                     ({{localize "CPR.global.itemTypes.ammo"}}:
                     <input name="system.magazine.value"
-                           class="number weapon-input"
-                           style="width:30px;
-                                  text-align:right"
+                           class="number weapon-input text-right"
+                           style="width:30px;"
                            type="text"
                            data-item-prop="system.magazine.value"
                            value="{{weapon.system.magazine.value}}"/>
@@ -347,9 +347,8 @@
                             <br/>
                             ({{localize "CPR.global.itemTypes.ammo"}}:
                             <input name="system.magazine.value"
-                                   class="number weapon-input"
+                                   class="number weapon-input text-right"
                                    style="width:30px;
-                                          text-align:right"
                                    type="text"
                                    data-item-prop="system.magazine.value"
                                    value="{{weapon.system.magazine.value}}"/>

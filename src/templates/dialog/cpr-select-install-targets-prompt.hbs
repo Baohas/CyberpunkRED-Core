@@ -13,17 +13,17 @@
     <hr/>
     {{#each this.installationTargetTypes as |itemType| }}
       <li class="item flexrow">
-        <div class="item flexrow item-name">
+        <div class="item flexrow flex-width-60 item-name">
           <span class="text-bold text-left">
             {{localize (cprFindConfigValue "objectTypes" itemType)}}
           </span>
         </div>
-        <div style="max-width: 95px" class="item flexrow item-detail">
+        <div class="item flexrow flex-width-25 item-detail">
           <span class="text-right">
             {{localize "CPR.dialog.install.availableSlots"}}
           </span>
         </div>
-        <div style="max-width: 60px" class="item flexrow item-detail">
+        <div class="item flexrow flex-width-15 item-detail">
           <span class="text-bold text-align-last-end text-space-around">
             {{localize "CPR.dialog.common.select"}}
           </span>

@@ -10,12 +10,14 @@
         {{item.name}}
       </a>
       {{#if item.system.isUpgraded }}
-        <sup><i class="text-super fa-solid fa-square-up"></i></sup>
+        <i class="text-super fa-solid fa-square-up"></i>
       {{/if}}
       {{#if item.system.isInstalled }}
         <a class="item-view"
            data-item-id="{{item.system.installedIn}}"
-           data-tooltip="{{localize "CPR.characterSheet.rightPane.cyber.installedIn"}} {{cprGetProp (cprGetOwnedItem actor item.system.installedIn) "name"}}"><sup><i class="fa-solid fa-circle-info"></i></sup></a>
+           data-tooltip="{{localize "CPR.characterSheet.rightPane.cyber.installedIn"}} {{cprGetProp (cprGetOwnedItem actor item.system.installedIn) "name"}}">
+          <i class="text-super fa-solid fa-circle-info"></i>
+        </a>
       {{/if}}
     </div>
   </div>

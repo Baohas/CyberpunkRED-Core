@@ -36,7 +36,8 @@
                   {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
                   {{weapon.name}}
                   {{#if weapon.system.isUpgraded }}
-                    <sup><i class="text-super fa-solid fa-square-up"></i></sup>{{/if}}
+                    <i class="text-super fa-solid fa-square-up"></i>
+                  {{/if}}
                   </a>
                   <br/>
                   {{#if weapon.system.isRanged }}
@@ -212,7 +213,8 @@
                   {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}">
                   {{weapon.name}}
                   {{#if weapon.system.isUpgraded }}
-                    <sup><i class="text-super fa-solid fa-square-up"></i></sup>{{/if}}
+                    <i class="text-super fa-solid fa-square-up"></i>
+                  {{/if}}
                   </a>
                   <br/>
                   {{localize "CPR.itemSheet.weapon.rof"}}: {{cprApplyUpgrade weapon weapon.system.rof "rof"}}

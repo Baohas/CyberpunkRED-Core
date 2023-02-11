@@ -13,16 +13,18 @@
 <div class="installed-programs"></div>
 {{#each item.system.programs.installed as |program| }}
   <li class="item flexrow">
-    <div class="item flexrow setting-name text-nowrap">
+    <div class="item flexrow setting-name text-nowrap text-padding-left-small">
       {{#if (cprListContains "speed,attack,defense" program.system.class) }}
-        &nbsp;{{program.name}} ({{localize program.system.class}}) &nbsp;
-        <a class="program-uninstall" data-item-id="{{program.uuid}}">
+        {{program.name}} ({{localize program.system.class}})
+        <a class="program-uninstall text-padding-left-normal"
+           data-item-id="{{program.uuid}}">
           <i class="fas fa-folder-minus fg-red"
              data-tooltip="{{localize "CPR.itemSheet.cyberdeck.eraseProgram"}}"></i>
         </a>
       {{else}}
-        &nbsp;{{program.name}} ({{localize (cprFindConfigValue "programClassList" program.class)}}) &nbsp;
-        <a class="program-uninstall" data-item-id="{{program.uuid}}">
+        {{program.name}} ({{localize (cprFindConfigValue "programClassList" program.class)}})
+        <a class="program-uninstall text-padding-left-smaller"
+           data-item-id="{{program.uuid}}">
           <i class="fas fa-folder-minus fg-red"
              data-tooltip="{{localize "CPR.itemSheet.cyberdeck.eraseProgram"}}"></i>
         </a>

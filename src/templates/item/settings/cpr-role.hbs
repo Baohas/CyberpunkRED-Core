@@ -5,7 +5,8 @@
   <div class="item flexrow setting-name text-nowrap"{{#if (cprCompare item.type "===" "role") }} data-tooltip="{{localize "CPR.tooltip.nameChangeWarning" }}"{{/if }}>
     {{localize "CPR.itemSheet.role.mainAbilityName"}}
     {{#if (cprCompare item.type "===" "role") }}
-      <sup><i class="text-smallest text-super fa-solid fa-triangle-exclamation"></i></sup>{{/if}}
+      <i class="text-smallest text-super fa-solid fa-triangle-exclamation"></i>
+    {{/if}}
     </div>
     <div class="item flexrow setting-value text-nowrap item-end">
       <input name="system.mainRoleAbility"
@@ -104,22 +105,23 @@
 </li>
 {{/if}}
 <div class="item flexrow setting-name text-nowrap">
-  <a class="select-role-bonuses text-semi" data-role-type="mainRole">{{localize "CPR.itemSheet.role.configureRollBonuses"}}<i class="text-smallest text-super fas fa-wrench"></i></a>
+  <a class="select-role-bonuses text-semi" data-role-type="mainRole">{{localize "CPR.itemSheet.role.configureRollBonuses"}}
+    <i class="text-smallest text-super fas fa-wrench"></i>
+  </a>
   {{#if (cprCompare item.system.bonusRatio "!==" 1) }}
     {{localize "CPR.itemSheet.role.bonusRatio"}} - 1:{{item.system.bonusRatio}}{{/if}}
   </div>
   <div class="compatible-ammo">
     {{#each item.system.universalBonuses as |bonus| }}
       <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap text-padding-left">
-          &nbsp;{{localize (cprFindConfigValue "universalBonuses" bonus)}}
+        <div class="item flexrow setting-name text-nowrap text-padding-left-smallest">
+          {{localize (cprFindConfigValue "universalBonuses" bonus)}}
         </div>
       </li>
     {{/each}}
     {{#each (cprSort item.system.bonuses "system.stat") as |bonus| }}
       <li class="item flexrow">
         <div class="item flexrow setting-name text-nowrap text-padding-left">
-          &nbsp;
           {{#if bonus.system.core }}
           {{localize bonus.name}}{{else}}{{bonus.name}}{{/if}} ({{localize (cprFindConfigValue "statList" bonus.system.stat)}})
           </div>

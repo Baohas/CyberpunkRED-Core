@@ -66,10 +66,10 @@
   </li>
   {{#if (cprCompare item.system.installedItems.list.length ">" 0) }}
     <li class="item flexrow">
-      <div class="item flexrow setting-name text-nowrap">
+      <div class="item flexrow setting-name text-nowrap text-padding-left-smaller">
         {{#each item.system.installedItems.list as |UUID| }}
           {{#unless (cprCompare (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type") "===" "program")}}
-          &nbsp;{{cprGetProp (cprGetOwnedItem ../item.actor UUID) "name"}} ({{localize (cprFindConfigValue "objectTypes" (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type"))}})
+            {{cprGetProp (cprGetOwnedItem ../item.actor UUID) "name"}} ({{localize (cprFindConfigValue "objectTypes" (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type"))}})
         {{/unless}}
       {{/each}}
     </div>

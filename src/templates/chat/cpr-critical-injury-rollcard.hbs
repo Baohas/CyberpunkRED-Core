@@ -23,15 +23,20 @@
         <div class="d6-number-div">
           <span class="clickable{{#if criticalCard }} fg-red text-bold{{/if }}"
                 data-action="toggleVisibility"
-                data-visible-element="d6-data-details">{{resultTotal}}</span>
+                data-visible-element="d6-data-details">
+            {{resultTotal}}
+          </span>
         </div>
-        <div class="rollcard-critinjury-data">
-          <img class="rollcard-critinjury-icon" src="{{rollCardExtraArgs.itemImg}}"/>
-          &nbsp;&nbsp;<a class="clickable"
-   data-action="itemEdit"
-   data-actor-id="{{entityData.actor}}"
-   data-token-id="{{entityData.token}}"
-   data-item-id="{{entityData.item}}">{{rollCardExtraArgs.itemName}}</a>
+        <div class="rollcard-critinjury-data text-padding-bottom-small">
+          <img class="rollcard-critinjury-icon"
+               src="{{rollCardExtraArgs.itemImg}}"/>
+            <a class="clickable text-padding-left-small"
+               data-action="itemEdit"
+               data-actor-id="{{entityData.actor}}"
+               data-token-id="{{entityData.token}}"
+               data-item-id="{{entityData.item}}">
+              {{rollCardExtraArgs.itemName}}
+            </a>
         </div>
       </div>
     </div>
