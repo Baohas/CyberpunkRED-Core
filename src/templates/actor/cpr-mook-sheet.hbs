@@ -12,12 +12,14 @@
           {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-image.hbs"}}
         </div>
         <div class="mook-stats-and-derived">
-          <div class="mook-stats pad-thin fg-white bg-red">
+          <div class="mook-stats pad-thin fg-white bg-red text-semi">
             {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-stats.hbs"}}
           </div>
           <div class="mook-derived-stats pad-thin fg-white bg-red">
             <div class="mook-hp">
-              <span class="text-padding-left-smallest">{{localize "CPR.global.generic.hitpoints"}}</span>
+              <span class="text-padding-left-smallest text-semi">
+                {{localize "CPR.global.generic.hitpoints"}}
+              </span>
               <div class="min-of-max-container text-normal">
                 <input class="text-center"
                        name="system.derivedStats.hp.value"
@@ -33,18 +35,21 @@
               </div>
             </div>
             <div class="mook-wounded">
-              <span class="text-padding-left-smallest">{{localize "CPR.mookSheet.woundState"}}</span>
+              <span class="text-padding-left-smallest text-semi">
+                {{localize "CPR.mookSheet.woundState"}}
+              </span>
               <div class="bg-white text-center text-normal fg-black">
                 {{localize (cprFindConfigValue "woundState" actor.system.derivedStats.currentWoundState)}}
               </div>
             </div>
             <div class="mook-deathsave">
-              <span class="text-padding-right-smallest"
+              <span class="text-padding-right-smallest text-semi"
                     data-tooltip="{{localize "CPR.mookSheet.deathSave.roll"}}">
                 <a class="rollable"
                    data-roll-title="{{localize "CPR.mookSheet.deathSave.title"}}"
                    data-roll-type="deathsave">
-                {{localize "CPR.mookSheet.deathSave.title"}}</a>
+                  {{localize "CPR.mookSheet.deathSave.title"}}
+                </a>
               </span>
               <div class="width-full bg-white text-center text-normal text-bold fg-black">
                 <span data-tooltip="{{localize "CPR.mookSheet.deathSave.reset"}}
@@ -79,7 +84,7 @@
         {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-criticalInjury.hbs"}}
       </div>
       <div class="mook-notes pad-thin fg-white bg-red">
-        <div class="text-bold">
+        <div class="text-semi">
           <span>{{localize "CPR.global.generic.notes"}}</span>
         </div>
         <div class="mook-edit-section fg-black">
