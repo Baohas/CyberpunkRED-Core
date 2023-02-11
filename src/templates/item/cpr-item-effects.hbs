@@ -14,8 +14,8 @@
           <li class="item effect flexrow">
             <div class="effect-name-item flexrow">
               <img class="effect-image" src="{{effect.icon}}" />
-              <h4>
-                <strong>{{effect.label}}</strong>
+              <div>
+                <span class="text-semi">{{effect.label}}</span>
                 <br/>
                 {{#if effect.changes.length }}
                   {{#each effect.changes as |change| }}
@@ -40,7 +40,7 @@
                 {{else}}
                   ({{localize "CPR.characterSheet.rightPane.effects.noBonusesConfigured"}})
                 {{/if}}
-              </h4>
+              </div>
             </div>
             <div class="effect-actions effect-controls">
               {{#if ../item.isOwned }}

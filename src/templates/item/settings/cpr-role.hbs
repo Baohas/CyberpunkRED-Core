@@ -104,7 +104,7 @@
 </li>
 {{/if}}
 <div class="item flexrow setting-name text-nowrap">
-  <a class="select-role-bonuses text-bold" data-role-type="mainRole">{{localize "CPR.itemSheet.role.configureRollBonuses"}}<i class="text-smallest text-super fas fa-wrench"></i></a>
+  <a class="select-role-bonuses text-semi" data-role-type="mainRole">{{localize "CPR.itemSheet.role.configureRollBonuses"}}<i class="text-smallest text-super fas fa-wrench"></i></a>
   {{#if (cprCompare item.system.bonusRatio "!==" 1) }}
     {{localize "CPR.itemSheet.role.bonusRatio"}} - 1:{{item.system.bonusRatio}}{{/if}}
   </div>

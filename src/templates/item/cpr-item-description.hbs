@@ -9,8 +9,11 @@
     {{/each}}
   </div>
   <div class="item-description-section">
-    {{editor item.system.description.value target="system.description.value" button=true owner=owner
-    editable=editable}}
+    {{editor item.system.description.value
+             target="system.description.value"
+             button=true
+             owner=owner
+             editable=editable}}
   </div>
 </div>
 {{cprTrace "END CPR-ITEM-DESCRIPTION.HBS"}}
