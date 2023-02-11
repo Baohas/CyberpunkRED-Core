@@ -2,7 +2,7 @@
 
 <div class="armor-section">
   <li class="items-header flexrow">
-    <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left">
+    <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left-smallest">
       {{localize "CPR.global.itemTypes.armor"}}
     </span>
   </li>
@@ -19,7 +19,7 @@
             </li>
             {{#if armor.system.isHeadLocation }}
               <li class="flex-space-between">
-                <div class="text-padding-left">{{localize "CPR.global.location.head"}}</div>
+                <div class="text-padding-left-smallest">{{localize "CPR.global.location.head"}}</div>
                 <div>
                   {{#if (cprCompare armor.system.headLocation.ablation ">" 0) }}
                     <span class="fg-red">

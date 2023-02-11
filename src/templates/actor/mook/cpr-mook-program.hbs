@@ -1,10 +1,10 @@
 {{cprTrace "START ACTOR MOOK CPR-MOOK-PROGRAM.HBS"}}
 <div class="items-header bg-red fg-white flexrow">
-  <span class="item-name section-name text-nowrap text-padding-left">
+  <span class="item-name section-name text-nowrap text-padding-left-smallest">
     {{localize "CPR.mookSheet.items.cyberdeckPrograms"}}
   </span>
 </div>
-<div class="bg-white fg-black text-padding-left">
+<div class="bg-white fg-black text-padding-left-smallest">
   <!-- Program -->
   {{#each actor.itemTypes.program as |item i| }}
     {{#if item.system.isInstalled }}

@@ -1,6 +1,6 @@
 {{cprTrace "START ACTOR MOOK CPR-MOOK-SKILLS.HBS"}}
 <div class="bg-red fg-white flexrow">
-  <span class="text-nowrap text-padding-left text-bold">
+  <span class="text-nowrap text-padding-left-smallest text-bold">
     {{localize "CPR.mookSheet.skills.title"}}
     <a class="mod-mook-skill">
       <i class="fas fa-edit"></i>
@@ -18,7 +18,7 @@
     data-tooltip="{{localize "CPR.ledger.ledgerOpen"}}"><i class="fas fa-sticky-note"></i></a>
   </span>
 </div>
-<div class="bg-white fg-black text-padding-left">
+<div class="bg-white fg-black text-padding-left-smallest">
   {{#each (cprSort (cprGetMookSkills actor.itemTypes.skill) "name") as |skill s| }}
     <span class="item deletable changeable"
           data-item-id="{{skill.id}}"

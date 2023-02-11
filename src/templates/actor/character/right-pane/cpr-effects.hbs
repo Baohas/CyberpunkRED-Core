@@ -9,7 +9,7 @@
       <span class="effect-source bg-black text-semi">
         {{localize "CPR.characterSheet.rightPane.effects.source"}}
       </span>
-      <span class="effect-actions bg-black text-semi text-padding-right">
+      <span class="effect-actions bg-black text-semi text-padding-right-smallest">
         {{localize "CPR.characterSheet.rightPane.effects.actions"}}
       </span>
     </li>
@@ -52,7 +52,7 @@
             ({{localize (cprFindConfigValue "effectUses" effect.usage)}})
           {{/if}}
         </div>
-        <div class="effect-actions text-padding-right">
+        <div class="effect-actions text-padding-right-smallest">
           {{#if (cprShowEffectToggle effect ../../actor.name) }}
             <a class="effect-control"
                data-action="toggle"

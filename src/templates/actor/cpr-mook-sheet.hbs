@@ -17,7 +17,7 @@
           </div>
           <div class="mook-derived-stats pad-thin fg-white bg-red">
             <div class="mook-hp">
-              <span class="text-padding-left">{{localize "CPR.global.generic.hitpoints"}}</span>
+              <span class="text-padding-left-smallest">{{localize "CPR.global.generic.hitpoints"}}</span>
               <div class="min-of-max-container text-normal">
                 <input class="text-center"
                        name="system.derivedStats.hp.value"
@@ -33,13 +33,13 @@
               </div>
             </div>
             <div class="mook-wounded">
-              <span class="text-padding-left">{{localize "CPR.mookSheet.woundState"}}</span>
+              <span class="text-padding-left-smallest">{{localize "CPR.mookSheet.woundState"}}</span>
               <div class="bg-white text-center text-normal fg-black">
                 {{localize (cprFindConfigValue "woundState" actor.system.derivedStats.currentWoundState)}}
               </div>
             </div>
             <div class="mook-deathsave">
-              <span class="text-padding-right"
+              <span class="text-padding-right-smallest"
                     data-tooltip="{{localize "CPR.mookSheet.deathSave.roll"}}">
                 <a class="rollable"
                    data-roll-title="{{localize "CPR.mookSheet.deathSave.title"}}"

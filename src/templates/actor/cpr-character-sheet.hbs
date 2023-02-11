@@ -85,14 +85,14 @@
           </div>
           <div class="tab-pink-underlay">
             <div class="tab-label text-semi tab-indent" data-tab="fight">
-              <div class="text-padding-right">
+              <div class="text-padding-right-smallest">
                 <a data-tab="fight">
                   {{localize "CPR.characterSheet.bottomPane.fight.title"}}
                 </a>
               </div>
               {{#if (cprCompare actor.system.fightOptions "===" "both") }}
                 {{#if (cprCompare actor.system.fightState "===" "Meatspace") }}
-                  <div class="text-padding-left">
+                  <div class="text-padding-left-smallest">
                     (<span class="fg-yellow">
                       {{~localize "CPR.characterSheet.bottomPane.fight.meat"}}
                     </span> | <a class="toggle-fight-state" data-state="Netspace">
@@ -100,7 +100,7 @@
                     </a>)
                   </div>
                 {{else}}
-                  <div class="text-padding-left">
+                  <div class="text-padding-left-smallest">
                     (<a class="toggle-fight-state" data-state="Meatspace">
                       {{~localize "CPR.characterSheet.bottomPane.fight.meat"}}
                     </a> | <span class="fg-yellow">
