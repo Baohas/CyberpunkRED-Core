@@ -4,14 +4,15 @@
     data-item-id="{{item._id}}"
     data-item-category="{{item.type}}"
     draggable="true">
-<div class="item-name gear-name text-nowrap"
-     data-tooltip="{{localize (cprFindConfigValue "weaponTypeList" item.system.weaponType)}}"
-     alt="{{localize (cprFindConfigValue "weaponTypeList" item.system.weaponType)}}">
-  <a class="name item-edit flex-center">
-    <img src="{{item.img}}"/>
-    {{item.name}}
-    {{#if item.system.isUpgraded }}
-      <sup><i class="fa-solid fa-square-up"></i></sup>{{/if}}
+  <div class="item-name gear-name text-nowrap"
+       data-tooltip="{{localize (cprFindConfigValue "weaponTypeList" item.system.weaponType)}}"
+       alt="{{localize (cprFindConfigValue "weaponTypeList" item.system.weaponType)}}">
+    <a class="name item-edit flex-center">
+      <img src="{{item.img}}"/>
+      {{item.name}}
+      {{#if item.system.isUpgraded }}
+        <sup><i class="fa-solid fa-square-up"></i></sup>
+      {{/if}}
     </a>
   </div>
   <div class="gear-amount" {{#if item.system.isRanged }} {{#if item.system.magazine.ammoData.uuid }} data-tooltip="{{item.system.magazine.ammoData.name }}" {{/if }} {{/if }}>

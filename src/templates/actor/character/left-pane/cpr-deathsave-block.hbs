@@ -1,16 +1,20 @@
 {{cprTrace "START ACTOR CHARACTER LEFT-PANE CPR-DEATHSAVE-BLOCK.HBS"}}
 <div class="deathsave-block main-block">
+  {{!-- Wound State / Death Save Titles --}}
   <div class="block-label text-small flex-space-between">
-    <span class="text-padding-left">{{localize "CPR.characterSheet.leftPane.woundState"}}</span>
-    <span class="text-padding-right"
+    <div class="width-full text-bold">
+      {{localize "CPR.characterSheet.leftPane.woundState"}}
+    </div>
+    <div class="width-full text-bold"
           data-tooltip="{{localize "CPR.characterSheet.leftPane.deathSave.roll"}}">
       <a class="rollable"
          data-roll-title="{{localize "CPR.characterSheet.leftPane.deathSave.title"}}"
          data-roll-type="deathsave">
         {{localize "CPR.characterSheet.leftPane.deathSave.title"}}
       </a>
-    </span>
+    </div>
   </div>
+  {{!-- Wound State Icon --}}
   <div class="block-data flex-space-between">
     <div class="width-full">
       {{#with actor.system.derivedStats.currentWoundState as |state| }}
@@ -44,17 +48,23 @@
         {{/if}}
       {{/with}}
     </div>
+    {{!-- Death Save --}}
     <div class="width-full">
-      <span class="width-half" data-tooltip="{{localize "CPR.characterSheet.leftPane.deathSave.reset"}}
-      </br>
-      {{localize "CPR.global.generic.deathPenalty"}}: {{actor.system.derivedStats.deathSave.penalty}}
-    </br>
-  {{localize "CPR.characterSheet.leftPane.deathSave.hoverCriticalInjuryPenalty"}}: {{actor.system.derivedStats.deathSave.basePenalty}}"><a class="reset-deathsave-value text-bold">{{actor.system.derivedStats.deathSave.value}}</a></span>
-  <a class="increase-deathsave-value">
-    <i class="far fa-arrow-alt-circle-up text-smaller"
-       data-tooltip="{{localize "CPR.characterSheet.leftPane.deathSave.increase"}}"></i>
-  </a>
-</div>
-</div>
+      <span class="width-half"
+            data-tooltip="{{localize "CPR.characterSheet.leftPane.deathSave.reset"}}
+            </br>
+            {{localize "CPR.global.generic.deathPenalty"}}:
+            {{actor.system.derivedStats.deathSave.penalty}}
+            </br>
+            {{localize "CPR.characterSheet.leftPane.deathSave.hoverCriticalInjuryPenalty"}}:
+            {{actor.system.derivedStats.deathSave.basePenalty}}">
+        <a class="reset-deathsave-value text-bold">{{actor.system.derivedStats.deathSave.value}}</a>
+      </span>
+      <a class="increase-deathsave-value">
+        <i class="far fa-arrow-alt-circle-up text-smaller"
+           data-tooltip="{{localize "CPR.characterSheet.leftPane.deathSave.increase"}}"></i>
+      </a>
+    </div>
+  </div>
 </div>
 {{cprTrace "END CPR-DEATHSAVE-BLOCK.HBS"}}

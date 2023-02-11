@@ -2,7 +2,7 @@
 
 <div class="injuries-section">
   <li class="items-header flexrow">
-    <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left text-bold">
+    <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left">
       {{localize "CPR.characterSheet.bottomPane.fight.criticalInjuries"}}
       <span class="item-detail gear-actions bg-black text-nowrap text-float-right text-padding-right">
         <a class="roll-critical-injury"
@@ -30,7 +30,7 @@
             data-item-category="{{criticalInjury.type}}"
             draggable="true">
           <div>
-            <a class="name item-edit text-nowrap {{#if criticalInjury.system.deathSaveIncrease }}text-bold{{/if }}" data-tooltip="{{criticalInjury.name }}
+            <a class="name item-edit text-nowrap {{#if criticalInjury.system.deathSaveIncrease }}text-semi{{/if }}" data-tooltip="{{criticalInjury.name }}
             </br>
             {{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}
           </br>

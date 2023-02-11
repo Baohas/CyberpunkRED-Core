@@ -1,10 +1,11 @@
 {{cprTrace "START ACTOR CHARACTER RIGHT-PANE TABS SKILLS CPR-SKILLS-CATEGORY.HBS"}}
 <div class="collapsible">
+  {{!-- Skill List Headers --}}
   <li class="items-header flexrow collapsible">
-    <span class="item-name skill-name bg-black text-nowrap text-padding-left expand-button"
+    <span class="item-name bg-black text-padding-left expand-button"
           id="skillTab-{{category}}"
           data-tooltip="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
-      {{localize (cprFindConfigValue "skillCategories" category)}}&nbsp;
+      {{localize (cprFindConfigValue "skillCategories" category)}}
       {{#if (cprListContains sheet.options.collapsedSections (cprGeneratePartial "skillTab-VAR" category)) }}
         <i class="fas fa-plus bg-black collapse-icon"></i>
         <i class="fas fa-minus bg-black expand-icon hide"></i>
@@ -13,29 +14,41 @@
         <i class="fas fa-minus bg-black expand-icon"></i>
       {{/if}}
     </span>
-    <span class="item-detail skill-mod-value bg-black text-nowrap text-center">{{localize "CPR.characterSheet.rightPane.skills.skillMod"}}</span>
-    <span class="item-detail skill-level bg-black text-nowrap text-center">{{localize "CPR.characterSheet.rightPane.skills.lvl"}}</span>
-    <span class="item-detail skill-base bg-black text-nowrap text-center">{{localize "CPR.characterSheet.rightPanke.skills.base"}}</span>
+    <span class="item-detail skill-mod-value bg-black text-center">
+      {{localize "CPR.characterSheet.rightPane.skills.skillMod"}}
+    </span>
+    <span class="item-detail skill-level bg-black text-center">
+      {{localize "CPR.characterSheet.rightPane.skills.lvl"}}
+    </span>
+    <span class="item-detail skill-base bg-black text-center">
+      {{localize "CPR.characterSheet.rightPanke.skills.base"}}
+    </span>
     <span class="item-detail skill-favorite bg-black text-nowrap text-center toggle-section-visibility"
           id="skillTab-{{category}}-showFavorites"
-          data-tooltip="{{localize "CPR.characterSheet.rightPane.skills.toggleCategoryAll"}}"><i class="far fa-eye show-favorites"></i><i class="far fa-eye-slash hide-favorites hide"></i></span>
+          data-tooltip="{{localize "CPR.characterSheet.rightPane.skills.toggleCategoryAll"}}">
+      <i class="far fa-eye show-favorites"></i>
+      <i class="far fa-eye-slash hide-favorites hide"></i>
+    </span>
   </li>
+  {{!-- Skill List --}}
   <ol class="items-list">
     {{#each (cprSortCoreSkills (cprFilter actor.itemTypes.skill "system.category" category) ) as |skill s| }}
       {{#if (cprSheetContentFilter ../this.sheet.options.cprContentFilter skill.name) }}
-      <li class="item skill-name flexrow{{#if skill.system.favorite }} favorite{{else }}{{#if (cprListContains ../sheet.options.collapsedSections (cprGeneratePartial "skillTab-VAR" ../category)) }} hide{{/if }}{{/if }}"
+      <li class="item flexrow{{#if skill.system.favorite }} favorite{{else }}{{#if (cprListContains ../sheet.options.collapsedSections (cprGeneratePartial "skillTab-VAR" ../category)) }} hide{{/if }}{{/if }}"
           data-item-id="{{skill._id}}"
           data-skill-category="{{skill.system.category}}"
           draggable="true">
         <div class="item-name text-nowrap">
-          <a class="rollable {{#if skill.system.basic }}text-bold{{/if }}"
+          <a class="rollable {{#if skill.system.basic }}text-semi{{/if }}"
              data-roll-type="skill"
              data-roll-title="{{skill.name}}">
             {{localize (cprGetLocalizedlNameKey skill)}}
             {{#if (cprCompare skill.system.difficulty "===" "difficult") }}
-              (x2) {{/if}}<strong>({{localize
-              (cprFindConfigValue
-            "statList" skill.system.stat)}})</strong>
+              (x2)
+            {{/if}}
+            <span class="text-semi">
+              ({{localize (cprFindConfigValue "statList" skill.system.stat)}})
+            </span>
           </a>
           {{#unless skill.system.core }}
             <a class="item-edit skill-custom"
@@ -97,6 +110,6 @@
       </li>
     {{/if}}
   {{/each}}
-</ol>
+  </ol>
 </div>
 {{cprTrace "END CPR-SKILLS-CATEGORY.HBS"}}

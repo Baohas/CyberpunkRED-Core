@@ -2,35 +2,35 @@
 
 <div class="cyberdeck-rezzed-section">
   <li class="items-header flexrow">
-    <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left text-bold">
+    <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left">
       {{localize "CPR.characterSheet.bottomPane.fight.rezzed"}}
     </span>
   </li>
   <div class="cyberdeck-rezzed-content">
     <div class="cyberdeck-rezzed-software">
       {{#each (cprToArray "booster,defender" ",") as |pc| }}
-        <li class="items-header flexrow cyberdeck-rezzed-software-list bg-pink">
-          <div class="rezzed-program-name text-bold bg-pink">
+        <li class="items-header flexrow text-padding-left cyberdeck-rezzed-software-list bg-pink">
+          <div class="rezzed-program-name text-semi bg-pink">
             {{localize (cprGetLocalizedlNameKey pc "programClass")}}
           </div>
-          <div class="rezzed-program-per text-bold bg-pink text-center"></div>
-          <div class="rezzed-program-spd text-bold bg-pink text-center"></div>
-          <div class="rezzed-program-atk text-bold bg-pink text-center">
+          <div class="rezzed-program-per text-semi bg-pink text-center"></div>
+          <div class="rezzed-program-spd text-semi bg-pink text-center"></div>
+          <div class="rezzed-program-atk text-semi bg-pink text-center">
             {{localize "CPR.global.blackIce.stats.atk"}}
           </div>
-          <div class="rezzed-program-def text-bold bg-pink text-center">
+          <div class="rezzed-program-def text-semi bg-pink text-center">
             {{localize "CPR.global.blackIce.stats.def"}}
           </div>
-          <div class="rezzed-program-rez-and-decrement text-bold bg-pink text-center">
+          <div class="rezzed-program-rez-and-decrement text-semi bg-pink text-center">
             {{localize "CPR.global.generic.rez"}}
           </div>
-          <div class="rezzed-program-reset text-bold bg-pink text-center"></div>
+          <div class="rezzed-program-reset text-semi bg-pink text-center"></div>
         </li>
         {{#each ../actor.system.cyberdeck.system.programs.rezzed as |program| }}
           {{#if (cprCompare program.class "===" pc) }}
             <li class="items-header item flexrow cyberdeck-rezzed-software-list"
                 data-item-id="{{program.uuid}}">
-              <div class="rezzed-program-name">
+              <div class="rezzed-program-name text-padding-left">
                 <a class="name item-view"
                    data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToView"}}"
                    data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}"
@@ -38,8 +38,8 @@
                   {{program.name}}
                 </a>
               </div>
-              <div class="rezzed-program-per text-bold text-center"></div>
-              <div class="rezzed-program-spd text-bold text-center"></div>
+              <div class="rezzed-program-per text-semi text-center"></div>
+              <div class="rezzed-program-spd text-semi text-center"></div>
               <div class="rezzed-program-atk text-center">
                 {{program.atk}}
               </div>
@@ -76,28 +76,28 @@
         {{/each}}
       {{/each}}
       <li class="items-header flexrow cyberdeck-rezzed-software-list bg-pink">
-        <div class="rezzed-program-name text-bold bg-pink">
+        <div class="rezzed-program-name text-semi text-padding-left bg-pink">
           {{localize "CPR.global.programClass.blackice"}}
         </div>
-        <div class="rezzed-program-per text-bold bg-pink text-center">
+        <div class="rezzed-program-per text-semi bg-pink text-center">
           {{localize "CPR.global.blackIce.stats.per"}}
         </div>
-        <div class="rezzed-program-spd text-bold bg-pink text-center">
+        <div class="rezzed-program-spd text-semi bg-pink text-center">
           {{localize "CPR.global.blackIce.stats.spd"}}
         </div>
-        <div class="rezzed-program-atk text-bold bg-pink text-center">
+        <div class="rezzed-program-atk text-semi bg-pink text-center">
           {{localize "CPR.global.blackIce.stats.atk"}}
         </div>
-        <div class="rezzed-program-def text-bold bg-pink text-center">
+        <div class="rezzed-program-def text-semi bg-pink text-center">
           {{localize "CPR.global.blackIce.stats.def"}}
         </div>
-        <div class="rezzed-program-rez-and-decrement text-bold bg-pink text-center">
+        <div class="rezzed-program-rez-and-decrement text-semi bg-pink text-center">
           {{localize "CPR.global.generic.rez"}}
         </div>
       </li>
       {{#each actor.system.cyberdeck.system.programs.rezzed as |program| }}
         {{#if (cprCompare program.class "===" "blackice") }}
-          <li class="items-header item flexrow cyberdeck-rezzed-software-list"
+          <li class="items-header item flexrow text-padding-left cyberdeck-rezzed-software-list"
               data-item-id="{{program.uuid}}">
             <div class="rezzed-program-name">
               <a class="name item-view"

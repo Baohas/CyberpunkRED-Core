@@ -3,7 +3,7 @@
 <form>
   <div class="actor-sheet character">
     <div class="left-pane bg-white">
-      <div class="main-section bg-red">
+      <div class="main-section bg-red text-normal">
         {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-image-block.hbs"}}
         {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-handle-block.hbs"}}
         {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-role-block.hbs"}}
@@ -14,25 +14,36 @@
           {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-ip-block.hbs"}}
         {{/if}}
       </div>
-      <div class="stats-section bg-red">
+      <div class="stats-section bg-red text-normal">
         {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-stat-block.hbs"}}
       </div>
     </div>
     <div class="right-pane">
-      <div class="right-tabs-section">
+      <div class="right-tabs-section text-normal">
         <nav class="navtabs-right cpr-tabs nav" data-group="primary">
           <div class="tab-pink-underlay">
-            <a class="skills-tab tab-label text-bold tab-indent" data-tab="skills">{{localize "CPR.characterSheet.rightPane.skills.title"}}</a>
+            <a class="skills-tab tab-label text-semi tab-indent"
+               data-tab="skills">
+              {{localize "CPR.characterSheet.rightPane.skills.title"}}
+            </a>
           </div>
           <div class="tab-pink-underlay">
-            <a class="gear-tab tab-label text-bold tab-indent" data-tab="gear">{{localize "CPR.global.itemTypes.gear"}}</a>
+            <a class="gear-tab tab-label text-semi tab-indent"
+               data-tab="gear">
+              {{localize "CPR.global.itemTypes.gear"}}
+            </a>
           </div>
           <div class="tab-pink-underlay">
-            <a class="cyberware-tab tab-label text-bold tab-indent"
-               data-tab="cyberware">{{localize "CPR.characterSheet.rightPane.cyber.title"}}</a>
+            <a class="cyberware-tab tab-label text-semi tab-indent"
+               data-tab="cyberware">
+              {{localize "CPR.characterSheet.rightPane.cyber.title"}}
+            </a>
           </div>
           <div class="tab-pink-underlay">
-            <a class="effects-tab tab-label text-bold tab-indent" data-tab="effects">{{localize "CPR.characterSheet.rightPane.effects.title"}}</a>
+            <a class="effects-tab tab-label text-semi tab-indent"
+               data-tab="effects">
+              {{localize "CPR.characterSheet.rightPane.effects.title"}}
+            </a>
           </div>
         </nav>
       </div>
@@ -42,8 +53,11 @@
                  value="{{options.cprContentFilter}}"
                  type="string"
                  placeholder="Search for skills, items and others..."/>
-          <a><i class="fas fa-xmark fg-red reset-content-filter"
-   data-tooltip="{{localize "CPR.actorSheets.clearFilter"}}"></i></a>
+          <a>
+            <i class="fas fa-xmark fg-red reset-content-filter"
+               data-tooltip="{{localize "CPR.actorSheets.clearFilter"}}">
+            </i>
+          </a>
         </div>
       {{/if}}
       <div class="right-content-section">
@@ -62,19 +76,23 @@
       </div>
     </div>
     <div class="bottom-pane">
-      <div class="bottom-tabs-section">
+      <div class="bottom-tabs-section text-normal">
         <nav class="navtabs-bottom cpr-tabs nav" data-group="primary">
           <div class="tab-pink-underlay">
-            <a class="tab-label text-bold tab-indent" data-tab="role">{{localize "CPR.global.role.role"}}</a>
+            <a class="tab-label text-semi tab-indent" data-tab="role">
+              {{localize "CPR.global.role.role"}}
+            </a>
           </div>
           <div class="tab-pink-underlay">
-            <div class="tab-label text-bold tab-indent" data-tab="fight">
-              <a data-tab="fight">{{localize "CPR.characterSheet.bottomPane.fight.title"}}</a>
+            <div class="tab-label text-semi tab-indent" data-tab="fight">
+              <a data-tab="fight">
+                {{localize "CPR.characterSheet.bottomPane.fight.title"}}
+              </a>
               {{#if (cprCompare actor.system.fightOptions "===" "both") }}
                 {{#if (cprCompare actor.system.fightState "===" "Meatspace") }}
-                  &nbsp;(<span class="fg-yellow">{{localize "CPR.characterSheet.bottomPane.fight.meat"}}</span>|<a class="toggle-fight-state" data-state="Netspace">{{localize "CPR.characterSheet.bottomPane.fight.net"}}</a>)
+                  (<span class="fg-yellow">{{localize "CPR.characterSheet.bottomPane.fight.meat"}}</span> | <a class="toggle-fight-state" data-state="Netspace">{{localize "CPR.characterSheet.bottomPane.fight.net"}}</a>)
                 {{else}}
-                  &nbsp;(<a class="toggle-fight-state" data-state="Meatspace">{{localize "CPR.characterSheet.bottomPane.fight.meat"}}</a>|<span class="fg-yellow">{{localize "CPR.characterSheet.bottomPane.fight.net"}}</span>)
+                  (<a class="toggle-fight-state" data-state="Meatspace">{{localize "CPR.characterSheet.bottomPane.fight.meat"}}</a>|<span class="fg-yellow">{{localize "CPR.characterSheet.bottomPane.fight.net"}}</span>)
                 {{/if}}
               {{/if}}
               {{#if (cprCompare actor.system.fightState "===" "Meatspace") }}
@@ -86,7 +104,7 @@
             </div>
           </div>
           <div class="tab-pink-underlay">
-            <a class="tab-label text-bold tab-indent" data-tab="lifepath">{{localize "CPR.characterSheet.bottomPane.lifepath.title"}}</a>
+            <a class="tab-label text-semi tab-indent" data-tab="lifepath">{{localize "CPR.characterSheet.bottomPane.lifepath.title"}}</a>
           </div>
         </nav>
       </div>
