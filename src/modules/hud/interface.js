@@ -1,5 +1,5 @@
-/* global canvas */
-import HudPrompt from "../dialog/cpr-hud-prompt.js";
+/* global canvas game */
+import CPRDialog from "../dialog/cpr-dialog-application.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
@@ -19,9 +19,16 @@ export default class HudInterface {
   static async SetDvTable(tokenData) {
     LOGGER.trace("SetDvTable | HudInterface | Called.");
     const dvTables = await SystemUtils.GetDvTables();
-    const formData = await HudPrompt.RenderPrompt("dv", dvTables).catch((err) =>
-      LOGGER.debug(err)
-    );
+    const formData = await CPRDialog.showDialog(
+      {
+        dvTables,
+        dvTable: tokenData.flags[game.system.id].cprDvTable?.name,
+      },
+      {
+        title: SystemUtils.Localize("CPR.dialog.dv.hudPromptTitle"),
+        template: `systems/${game.system.id}/templates/dialog/hud/cpr-dv-prompt.hbs`,
+      }
+    ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
