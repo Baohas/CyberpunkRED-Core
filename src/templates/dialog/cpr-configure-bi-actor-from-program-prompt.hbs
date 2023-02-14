@@ -5,20 +5,24 @@
       <li class="item flexrow">
         <div class="item flexrow">
           <select name="programUUID">
-            <option value="unlink">
-              {{localize "CPR.dialog.configureBlackIceActorFromProgram.unlinkBlackIceFromProgram"}}
-            </option>
-            {{#each biProgramList as |program| }}
-              <option value="{{program.uuid}}">
-                {{#if (cprCompare program.uuid "===" linkedProgramUUID) }}
-                  * {{/if}}{{program.name}}
+            {{#select programUUID}}
+              <option value="unlink">
+                {{localize "CPR.dialog.configureBlackIceActorFromProgram.unlinkBlackIceFromProgram"}}
+              </option>
+              {{#each biProgramList as |program| }}
+                <option value="{{program.uuid}}">
+                  {{#if (cprCompare program.uuid "===" linkedProgramUUID) }}
+                    *
+                  {{/if}}
+                  {{program.name}}
                 </option>
               {{/each}}
-            </select>
-          </div>
-        </li>
-      </ol>
-    </div>
-    {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
-  </form>
-  {{cprTrace "END CPR-CONFIGURE-BI-ACTOR-FROM-PROGRAM-PROMPT.HBS"}}
+            {{/select}}
+          </select>
+        </div>
+      </li>
+    </ol>
+  </div>
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
+</form>
+{{cprTrace "END CPR-CONFIGURE-BI-ACTOR-FROM-PROGRAM-PROMPT.HBS"}}

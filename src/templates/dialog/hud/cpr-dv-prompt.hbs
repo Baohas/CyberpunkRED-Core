@@ -1,19 +1,22 @@
 {{cprTrace "START DIALOG HUD CPR-DV-PROMPT.HBS"}}
-<form>
+<form class="dialog-sheet">
   <div class="cpr-hud-icon dv-config">
     <div>{{localize "CPR.dialog.dv.selectDvTable"}}</div>
     <div>
       <select name="dvTable">
-        <option value="">
-          N/A
-        </option>
-        {{#each this as |rollTable| }}
-          <option value="{{rollTable.name}}">
-            {{rollTable.name}}
+        {{#select dvTable}}
+          <option value="">
+            N/A
           </option>
-        {{/each}}
+          {{#each dvTables as |rollTable| }}
+            <option value="{{rollTable.name}}">
+              {{rollTable.name}}
+            </option>
+          {{/each}}
+        {{/select}}
       </select>
     </div>
   </div>
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 </form>
 {{cprTrace "END CPR-DV-PROMPT.HBS"}}
