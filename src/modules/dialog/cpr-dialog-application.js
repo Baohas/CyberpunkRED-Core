@@ -41,6 +41,9 @@ export default class CPRDialog extends FormApplication {
   getData() {
     LOGGER.trace("getData | CPRDialog | called.");
     const data = super.getData();
+    Object.entries(this.object).forEach(([key, value]) => {
+      data[key] = value;
+    });
     return data;
   }
 
