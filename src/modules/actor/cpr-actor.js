@@ -491,6 +491,7 @@ export default class CPRActor extends Actor {
       }
     });
 
+    // Show "Install Cyberware" dialog.
     const formData = await CPRDialog.showDialog(
       {
         item,

@@ -307,6 +307,8 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   async _setLifepath() {
     LOGGER.trace("_setLifepath | CPRCharacterActorSheet | Called.");
+
+    // Show "Set Lifepath" dialog.
     const dialogData = await CPRDialog.showDialog(this.actor.system.lifepath, {
       // Set the options for the dialog.
       title: SystemUtils.Localize("CPR.dialog.setLifepath.title"),
@@ -317,6 +319,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     if (dialogData === undefined) {
       return;
     }
+
     await this.actor.setLifepath(dialogData);
   }
 

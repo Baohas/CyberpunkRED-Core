@@ -120,6 +120,8 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       );
       return;
     }
+
+    // Show "Configure Black Ice Actor From Program" prompt
     let dialogData = { biProgramList: biPrograms, linkedProgramUUID };
     dialogData = await CPRDialog.showDialog(dialogData, {
       // Set the options for the dialog.
@@ -131,6 +133,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     if (dialogData === undefined) {
       return;
     }
+
     const { programUUID } = dialogData;
     if (programUUID === "unlink") {
       await this.actor.token.unsetFlag(game.system.id, "programUUID");
