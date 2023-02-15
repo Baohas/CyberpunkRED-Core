@@ -1,53 +1,57 @@
 {{cprTrace "START DIALOG CPR-INSTALL-CYBERWARE-PROMPT.HBS"}}
-<form id="installCyberware">
+<form class="dialog-sheet" id="installCyberware">
   {{!-- Select HL --}}
-  <div class="text-center">
-    {{localize "CPR.dialog.installCyberware.cyberwareHumanityLoss"}}
-    <br/>
-    <br/>
+  <div class="dialog-header flexcol">
+    <div class="text-bold text-center fg-red">
+      {{localize "CPR.dialog.installCyberware.cyberwareHumanityLoss"}}
+    </div>
   </div>
-  <ol class="items-list">
-    <li class="item flexrow">
-      <div class="item flexrow setting-name text-nowrap">
-        {{localize "CPR.dialog.installCyberware.humanityLoss"}}:
-      </div>
-      <div class="item flexrow setting-value text-nowrap item-end">
-        <select name="humanityLoss">
-          <option selected value="{{item.system.humanityLoss.roll}}">
-            {{localize "CPR.rolls.roll"}}: {{item.system.humanityLoss.roll}}
-          </option>
-          <option value="{{item.system.humanityLoss.static}}">
-            {{localize "CPR.dialog.installCyberware.static"}}: {{item.system.humanityLoss.static}}
-          </option>
-          <option value="None">
-            {{localize "CPR.dialog.installCyberware.none"}}
-          </option>
-        </select>
-      </div>
-    </li>
-    {{#unless item.system.isFoundational}}
-    {{#if (cprListContains "fashionware,cyberwareInternal,cyberwareExternal" item.type) }}
-      {{#each foundationalCyberware as |cyberware c| }}
-        <input type="hidden" name="foundationalId" value="{{cyberware._id}}"/>
-      {{/each}}
-    {{else}}
-      <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap">
-          {{localize "CPR.global.generic.foundational"}} {{localize "CPR.global.itemTypes.cyberware"}}:
+  <hr/>
+  <div class="dialog-grid flexcol">
+    <ol class="dialog-list">
+      <li class="dialog-item flexrow">
+        <div class="dialog-item-name text-nowrap">
+          {{localize "CPR.dialog.installCyberware.humanityLoss"}}:
         </div>
-        <div class="item flexrow setting-value text-nowrap item-end">
-          <select name="foundationalId">
-            {{!-- ONLY DISPLAY CYBERWARE OF SAME TYPE AS OPTIONAL --}}
-            {{#each foundationalCyberware as |cyberware c| }}
-              <option value="{{cyberware._id}}">
-                {{cyberware.name}}
-              </option>
-            {{/each}}
+        <div class="dialog-item-input item-end">
+          <select name="humanityLoss">
+            <option selected value="{{item.system.humanityLoss.roll}}">
+              {{localize "CPR.rolls.roll"}}: {{item.system.humanityLoss.roll}}
+            </option>
+            <option value="{{item.system.humanityLoss.static}}">
+              {{localize "CPR.dialog.installCyberware.static"}}: {{item.system.humanityLoss.static}}
+            </option>
+            <option value="None">
+              {{localize "CPR.dialog.installCyberware.none"}}
+            </option>
           </select>
         </div>
       </li>
-    {{/if}}
-  {{/unless}}
-</ol>
+      {{#unless item.system.isFoundational}}
+        {{#if (cprListContains "fashionware,cyberwareInternal,cyberwareExternal" item.type) }}
+          {{#each foundationalCyberware as |cyberware c| }}
+            <input type="hidden" name="foundationalId" value="{{cyberware._id}}"/>
+          {{/each}}
+        {{else}}
+          <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
+              {{localize "CPR.global.generic.foundational"}} {{localize "CPR.global.itemTypes.cyberware"}}:
+            </div>
+            <div class="dialog-item-input text-nowrap">
+              <select name="foundationalId">
+                {{!-- ONLY DISPLAY CYBERWARE OF SAME TYPE AS OPTIONAL --}}
+                {{#each foundationalCyberware as |cyberware c| }}
+                  <option value="{{cyberware._id}}">
+                    {{cyberware.name}}
+                  </option>
+                {{/each}}
+              </select>
+            </div>
+          </li>
+        {{/if}}
+      {{/unless}}
+    </ol>
+  </div>
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 </form>
 {{cprTrace "END CPR-INSTALL-CYBERWARE-PROMPT.HBS"}}
