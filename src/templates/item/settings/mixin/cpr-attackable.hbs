@@ -232,7 +232,7 @@
   </li>
 {{/if}}
 {{!- Ranged Weapon - Compatible Ammo Settings --}}
-<div class="item flexrow setting-name text-nowrap text-bold">
+<div class="item flexrow setting-name text-nowrap text-semi">
   {{#if this.editable }}
     <a class="select-compatible-ammo"
        data-item-prop="select-compatible-ammo">
@@ -248,11 +248,11 @@
     {{#if (cprListContains (cprGetProp ../item.system "ammoVariety") a) }}
       <li class="item flexrow">
         <div class="item flexrow setting-name text-nowrap text-padding-left">
-          &nbsp;{{localize ammoVariety}}
+          {{localize ammoVariety}}
           {{#if ../item.isOwned }}
             {{#if (cprIsNumber (cprMath "sum" (cprGetProp (cprFilter ../item.system.relativeAmmo "system.variety" a) "system.amount"))) }}
               <div class="text-right">
-                &nbsp;&nbsp;({{localize "CPR.itemSheet.weapon.youOwn"}} {{cprMath "sum" (cprGetProp (cprFilter ../item.system.relativeAmmo "system.variety" a) "system.amount")}} {{localize "CPR.itemSheet.weapon.rounds"}})
+                ({{localize "CPR.itemSheet.weapon.youOwn"}} {{cprMath "sum" (cprGetProp (cprFilter ../item.system.relativeAmmo "system.variety" a) "system.amount")}} {{localize "CPR.itemSheet.weapon.rounds"}})
               </div>
             {{/if}}
           {{/if}}

@@ -24,20 +24,20 @@
           <div class="netarch-content">
             {{#if (cprCompare (cprCompare floor.content "===" "CPR.global.programClass.blackice") "&&" (cprCompare floor.blackice "!==" "--")) }}
               {{#if (cprCompare (cprItemIdFromName (localize floor.blackice) "program") "!==" "DOES NOT EXIST") }}
-                <div class="text-bold">
+                <div class="text-semi">
                   <a class="netarch-item-link"
                      data-item-id="{{cprItemIdFromName (localize floor.blackice) "program"}}"
                      data-tooltip="{{localize "CPR.itemSheet.netArchitecture.clickToViewItem"}}">{{localize floor.blackice}}</a>
                 </div>
               {{else}}
-                <div class="text-bold"
+                <div class="text-semi"
                      data-tooltip="{{localize "CPR.itemSheet.netArchitecture.itemNotFound"}}">
                   {{localize floor.blackice}}
                 </div>
               {{/if}}
               <div>{{floor.description}}</div>
             {{else}}
-              <div class="text-bold">{{localize floor.content}}</div>
+              <div class="text-semi">{{localize floor.content}}</div>
               <div>{{floor.description}}</div>
             {{/if}}
           </div>

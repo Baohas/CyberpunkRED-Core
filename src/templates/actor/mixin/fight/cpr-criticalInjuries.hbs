@@ -1,0 +1,59 @@
+{{cprTrace "START ACTOR MIXIN FIGHT CPR-CRITICALINJURIES.HBS"}}
+
+<div class="injuries-section">
+  <li class="items-header flexrow">
+    <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left-smallest">
+      {{localize "CPR.characterSheet.bottomPane.fight.criticalInjuries"}}
+      <span class="item-detail gear-actions bg-black text-nowrap text-float-right text-padding-right-smallest">
+        <a class="roll-critical-injury"
+           data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.criticalInjuryRoll"}}"
+           data-item-type="criticalInjury">
+          <i class="fas fa-dice text-padding-right-smallest"></i>
+        </a>
+      </span>
+      <span class="item-detail gear-actions bg-black text-nowrap text-float-right text-padding-right-smallest">
+        {{#if (cprSystemConfig "playersCreateInventory") }}
+          <a class="item-create"
+             data-tooltip="{{localize "CPR.actorSheets.commonActions.createNewItem"}}"
+             data-item-type="criticalInjury">
+            <i class="fas fa-plus-circle text-padding-right-smallest"></i>
+          </a>
+        {{/if}}
+      </span>
+    </span>
+  </li>
+  <div class="critical-injury-content">
+    <ol class="items-list critical-injury-list">
+      {{#each (cprSort actor.itemTypes.criticalInjury "name") as |criticalInjury| }}
+        <li class="flex-space-between item flexrow"
+            data-item-id="{{criticalInjury.id}}"
+            data-item-category="{{criticalInjury.type}}"
+            draggable="true">
+          <div>
+            <a class="name item-edit text-nowrap {{#if criticalInjury.system.deathSaveIncrease }}text-semi{{/if }}" data-tooltip="{{criticalInjury.name }}
+            </br>
+            {{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}
+          </br>
+          {{localize "CPR.characterSheet.bottomPane.fight.controlClickToSendToChat"}}">
+          {{#if (cprCompare criticalInjury.system.location "===" "body") }}
+            <i class="fas fa-user-injured text-padding-left-smallest"></i>
+          {{/if}}
+          {{#if (cprCompare criticalInjury.system.location "===" "head") }}
+            <i class="fa-regular fa-face-head-bandage"></i>
+          {{/if}}
+            {{criticalInjury.name}}
+          </a>
+        </div>
+        <div class="item-detail gear-actions text-nowrap">
+          <a class="item-action" data-action-type="delete">
+            <i class="fas fa-trash-alt fg-red text-float-right text-padding-right-smallest"
+               data-tooltip="{{localize "CPR.actorSheets.commonActions.deleteItem"}}"></i>
+          </a>
+        </div>
+      </li>
+    {{/each}}
+    </ol>
+  </div>
+</div>
+
+{{cprTrace "END CPR-CRITICALINJURIES.HBS"}}

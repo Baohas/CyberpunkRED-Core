@@ -1,0 +1,129 @@
+{{cprTrace "START ACTOR MIXIN FIGHT CPR-ARMOR.HBS"}}
+
+<div class="armor-section">
+  <li class="items-header flexrow">
+    <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left-smallest">
+      {{localize "CPR.global.itemTypes.armor"}}
+    </span>
+  </li>
+  <div class="armor-content">
+    <ol class="items-list fight-armor-list">
+      {{#each (cprSort actor.itemTypes.armor "name") as |armor| }}
+        {{cprTrace armor}}
+        {{#if (cprCompare armor.system.equipped "===" "equipped") }}
+          <li class="item armor-piece">
+            <li class="flex-space-between item flexrow" data-item-id="{{armor.id}}">
+              <div class="item-name armor-name text-nowrap">
+                <a class="name item-edit">{{armor.name}}</a>
+              </div>
+            </li>
+            {{#if armor.system.isHeadLocation }}
+              <li class="flex-space-between">
+                <div class="text-padding-left-smallest">{{localize "CPR.global.location.head"}}</div>
+                <div>
+                  {{#if (cprCompare armor.system.headLocation.ablation ">" 0) }}
+                    <span class="fg-red">
+                    {{/if}}
+                    {{cprMath "subtract" (cprApplyUpgrade armor armor.system.headLocation.sp "headSp") armor.system.headLocation.ablation}}
+                    {{#if (cprCompare armor.system.headLocation.ablation ">" 0) }}
+                    </span>
+                  {{/if}}
+                  /{{cprApplyUpgrade armor armor.system.headLocation.sp "headSp"}}
+                  <a class="ablate" data-location="head">
+                    <i class="far fa-arrow-alt-circle-down"
+                       data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.ablateArmor"}}"></i>
+                  </a>
+                  {{#if (cprCompare armor.id "===" ../actor.system.externalData.currentArmorHead.id) }}
+                    <a class="armor-current"
+                       data-location="head"
+                       data-item-id="{{armor.id}}">
+                      <i class="fas fa-star"
+                         data-tooltip="{{localize "CPR.actorSheets.commonActions.resyncHeadArmor"}}"></i>
+                    </a>
+                  {{else}}
+                    <a class="armor-current"
+                       data-location="head"
+                       data-item-id="{{armor.id}}">
+                      <i class="far fa-star"
+                         data-tooltip="{{localize "CPR.actorSheets.commonActions.makeHeadArmorActive"}}"></i>
+                    </a>
+                  {{/if}}
+                </div>
+              </li>
+            {{/if}}
+            {{#if armor.system.isBodyLocation }}
+              <li class="flex-space-between">
+                <div>{{localize "CPR.global.location.body"}}</div>
+                <div>
+                  {{#if (cprCompare armor.system.bodyLocation.ablation ">" 0) }}
+                    <span class="fg-red">
+                    {{/if}}
+                    {{cprMath "subtract" (cprApplyUpgrade armor armor.system.bodyLocation.sp "bodySp") armor.system.bodyLocation.ablation}}
+                    {{#if (cprCompare armor.system.bodyLocation.ablation ">" 0) }}
+                    </span>
+                  {{/if}}
+                  /{{cprApplyUpgrade armor armor.system.bodyLocation.sp "bodySp"}}
+                  <a class="ablate" data-location="body">
+                    <i class="far fa-arrow-alt-circle-down"
+                       data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.ablateArmor"}}"></i>
+                  </a>
+                  {{#if (cprCompare armor.id "===" ../actor.system.externalData.currentArmorBody.id) }}
+                    <a class="armor-current"
+                       data-location="body"
+                       data-item-id="{{armor.id}}">
+                      <i class="fas fa-star"
+                         data-tooltip="{{localize "CPR.actorSheets.commonActions.resyncBodyArmor"}}"></i>
+                    </a>
+                  {{else}}
+                    <a class="armor-current"
+                       data-location="body"
+                       data-item-id="{{armor.id}}">
+                      <i class="far fa-star"
+                         data-tooltip="{{localize "CPR.actorSheets.commonActions.makeBodyArmorActive"}}"></i>
+                    </a>
+                  {{/if}}
+                </div>
+              </li>
+            {{/if}}
+            {{#if armor.system.isShield }}
+              <li class="flex-space-between">
+                <div>{{localize "CPR.global.generic.shield"}}</div>
+                <div>
+                  {{#if (cprCompare armor.system.shieldHitPoints.value "<" armor.system.shieldHitPoints.max) }}
+                    <span class="fg-red">
+                    {{/if}}
+                    {{armor.system.shieldHitPoints.value}}
+                    {{#if (cprCompare armor.system.shieldHitPoints.value "<" armor.system.shieldHitPoints.max) }}
+                    </span>
+                  {{/if}}
+                  /{{cprApplyUpgrade armor armor.system.shieldHitPoints.max "shieldHp"}}
+                  <a class="ablate" data-location="shield">
+                    <i class="far fa-arrow-alt-circle-down"
+                       data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.damageShield"}}"></i>
+                  </a>
+                  {{#if (cprCompare armor.id "===" ../actor.system.externalData.currentArmorShield.id) }}
+                    <a class="armor-current"
+                       data-location="shield"
+                       data-item-id="{{armor.id}}">
+                      <i class="fas fa-star"
+                         data-tooltip="{{localize "CPR.actorSheets.commonActions.resyncShield"}}"></i>
+                    </a>
+                  {{else}}
+                    <a class="armor-current"
+                       data-location="shield"
+                       data-item-id="{{armor.id}}">
+                      <i class="far fa-star"
+                         data-tooltip="{{localize "CPR.actorSheets.commonActions.makeShieldActive"}}"></i>
+                    </a>
+                  {{/if}}
+                </div>
+              </li>
+            {{/if}}
+          </li>
+        {{/if}}
+      {{/each}}
+    </ol>
+  </div>
+</div>
+
+{{cprTrace "END CPR-ARMOR.HBS"}}

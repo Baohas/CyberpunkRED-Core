@@ -1,0 +1,10 @@
+{{cprTrace "START ACTOR CHARACTER BOTTOM-PANE CPR-FIGHT-TAB.HBS"}}
+<div class="fight-tab">
+  {{#if (cprCompare actor.system.fightState "===" "Meatspace") }}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/cpr-fight.hbs" }}
+  {{/if}}
+  {{#if (cprCompare actor.system.fightState "===" "Netspace") }}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/cpr-netrunning.hbs" }}
+  {{/if}}
+</div>
+{{cprTrace "END CPR-FIGHT-TAB.HBS"}}

@@ -27,7 +27,7 @@
 </li>
 {{#if item.system.installedItems.allowed }}
   <li class="item flexrow">
-    <div class="item flexrow setting-name text-nowrap text-bold">
+    <div class="item flexrow setting-name text-nowrap text-semi">
       {{#if this.editable }}
         <a class="manage-installable-types">{{localize "CPR.itemSheet.common.installedItemTypesAllowed"}}<i class="text-smallest text-super fas fa-wrench"></i></a>
       {{else}}
@@ -45,7 +45,7 @@
 {{/if}}
 <hr/>
 <li class="item flexrow">
-  <div class="item flexrow setting-name text-nowrap text-bold">
+  <div class="item flexrow setting-name text-nowrap text-semi">
     {{#if this.editable }}
       <a class="manage-installed-items">
         {{localize "CPR.itemSheet.common.installedItems"}}
@@ -66,10 +66,10 @@
   </li>
   {{#if (cprCompare item.system.installedItems.list.length ">" 0) }}
     <li class="item flexrow">
-      <div class="item flexrow setting-name text-nowrap">
+      <div class="item flexrow setting-name text-nowrap text-padding-left-smaller">
         {{#each item.system.installedItems.list as |UUID| }}
           {{#unless (cprCompare (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type") "===" "program")}}
-          &nbsp;{{cprGetProp (cprGetOwnedItem ../item.actor UUID) "name"}} ({{localize (cprFindConfigValue "objectTypes" (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type"))}})
+            {{cprGetProp (cprGetOwnedItem ../item.actor UUID) "name"}} ({{localize (cprFindConfigValue "objectTypes" (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type"))}})
         {{/unless}}
       {{/each}}
     </div>

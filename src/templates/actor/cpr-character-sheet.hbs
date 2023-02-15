@@ -3,36 +3,47 @@
 <form>
   <div class="actor-sheet character">
     <div class="left-pane bg-white">
-      <div class="main-section bg-red">
-        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-image-block.hbs"}}
-        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-handle-block.hbs"}}
-        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-role-block.hbs"}}
-        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-hitpoint-block.hbs"}}
-        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-deathsave-block.hbs"}}
-        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-humanity-block.hbs"}}
+      <div class="main-section bg-red text-normal">
+        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-image-block.hbs"}}
+        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-handle-block.hbs"}}
+        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-role-block.hbs"}}
+        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-hitpoint-block.hbs"}}
+        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-deathsave-block.hbs"}}
+        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-humanity-block.hbs"}}
         {{#if (cprCompare actor.type "===" "character") }}
-          {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-ip-block.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-ip-block.hbs"}}
         {{/if}}
       </div>
-      <div class="stats-section bg-red">
-        {{> "systems/cyberpunk-red-core/templates/actor/parts/left-pane/cpr-stat-block.hbs"}}
+      <div class="stats-section bg-red text-normal">
+        {{> "systems/cyberpunk-red-core/templates/actor/character/left-pane/cpr-stat-block.hbs"}}
       </div>
     </div>
     <div class="right-pane">
-      <div class="right-tabs-section">
+      <div class="right-tabs-section text-normal">
         <nav class="navtabs-right cpr-tabs nav" data-group="primary">
           <div class="tab-pink-underlay">
-            <a class="skills-tab tab-label text-bold tab-indent" data-tab="skills">{{localize "CPR.characterSheet.rightPane.skills.title"}}</a>
+            <a class="skills-tab tab-label text-semi tab-indent"
+               data-tab="skills">
+              {{localize "CPR.characterSheet.rightPane.skills.title"}}
+            </a>
           </div>
           <div class="tab-pink-underlay">
-            <a class="gear-tab tab-label text-bold tab-indent" data-tab="gear">{{localize "CPR.global.itemTypes.gear"}}</a>
+            <a class="gear-tab tab-label text-semi tab-indent"
+               data-tab="gear">
+              {{localize "CPR.global.itemTypes.gear"}}
+            </a>
           </div>
           <div class="tab-pink-underlay">
-            <a class="cyberware-tab tab-label text-bold tab-indent"
-               data-tab="cyberware">{{localize "CPR.characterSheet.rightPane.cyber.title"}}</a>
+            <a class="cyberware-tab tab-label text-semi tab-indent"
+               data-tab="cyberware">
+              {{localize "CPR.characterSheet.rightPane.cyber.title"}}
+            </a>
           </div>
           <div class="tab-pink-underlay">
-            <a class="effects-tab tab-label text-bold tab-indent" data-tab="effects">{{localize "CPR.characterSheet.rightPane.effects.title"}}</a>
+            <a class="effects-tab tab-label text-semi tab-indent"
+               data-tab="effects">
+              {{localize "CPR.characterSheet.rightPane.effects.title"}}
+            </a>
           </div>
         </nav>
       </div>
@@ -42,43 +53,64 @@
                  value="{{options.cprContentFilter}}"
                  type="string"
                  placeholder="Search for skills, items and others..."/>
-          <a><i class="fas fa-xmark fg-red reset-content-filter"
-   data-tooltip="{{localize "CPR.actorSheets.clearFilter"}}"></i></a>
+          <a>
+            <i class="fas fa-xmark fg-red reset-content-filter"
+               data-tooltip="{{localize "CPR.actorSheets.clearFilter"}}">
+            </i>
+          </a>
         </div>
       {{/if}}
       <div class="right-content-section">
         <div class="tab skills-tab" data-group="primary" data-tab="skills">
-          {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/cpr-skills.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/character/right-pane/cpr-skills.hbs"}}
         </div>
         <div class="tab gear-tab" data-group="primary" data-tab="gear">
-          {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/cpr-gear.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/character/right-pane/cpr-gear.hbs"}}
         </div>
         <div class="tab cyberware-tab" data-group="primary" data-tab="cyberware">
-          {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/cpr-cyberware.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/character/right-pane/cpr-cyberware.hbs"}}
         </div>
         <div class="tab effects-tab" data-group="primary" data-tab="effects">
-          {{> "systems/cyberpunk-red-core/templates/actor/parts/right-pane/cpr-effects.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/character/right-pane/cpr-effects.hbs"}}
         </div>
       </div>
     </div>
     <div class="bottom-pane">
-      <div class="bottom-tabs-section">
+      <div class="bottom-tabs-section text-normal">
         <nav class="navtabs-bottom cpr-tabs nav" data-group="primary">
           <div class="tab-pink-underlay">
-            <a class="tab-label text-bold tab-indent" data-tab="role">{{localize "CPR.global.role.role"}}</a>
+            <a class="tab-label text-semi tab-indent" data-tab="role">
+              {{localize "CPR.global.role.role"}}
+            </a>
           </div>
           <div class="tab-pink-underlay">
-            <div class="tab-label text-bold tab-indent" data-tab="fight">
-              <a data-tab="fight">{{localize "CPR.characterSheet.bottomPane.fight.title"}}</a>
+            <div class="tab-label text-semi tab-indent" data-tab="fight">
+              <div class="text-padding-right-smallest">
+                <a data-tab="fight">
+                  {{localize "CPR.characterSheet.bottomPane.fight.title"}}
+                </a>
+              </div>
               {{#if (cprCompare actor.system.fightOptions "===" "both") }}
                 {{#if (cprCompare actor.system.fightState "===" "Meatspace") }}
-                  &nbsp;(<span class="fg-yellow">{{localize "CPR.characterSheet.bottomPane.fight.meat"}}</span>|<a class="toggle-fight-state" data-state="Netspace">{{localize "CPR.characterSheet.bottomPane.fight.net"}}</a>)
+                  <div class="text-padding-left-smaller">
+                    (<span class="fg-yellow">
+                      {{~localize "CPR.characterSheet.bottomPane.fight.meat"}}
+                    </span> | <a class="toggle-fight-state" data-state="Netspace">
+                      {{~localize "CPR.characterSheet.bottomPane.fight.net"~}}
+                    </a>)
+                  </div>
                 {{else}}
-                  &nbsp;(<a class="toggle-fight-state" data-state="Meatspace">{{localize "CPR.characterSheet.bottomPane.fight.meat"}}</a>|<span class="fg-yellow">{{localize "CPR.characterSheet.bottomPane.fight.net"}}</span>)
+                  <div class="text-padding-left-smaller">
+                    (<a class="toggle-fight-state" data-state="Meatspace">
+                      {{~localize "CPR.characterSheet.bottomPane.fight.meat"}}
+                    </a> | <span class="fg-yellow">
+                      {{~localize "CPR.characterSheet.bottomPane.fight.net"~}}
+                    </span>)
+                  </div>
                 {{/if}}
               {{/if}}
               {{#if (cprCompare actor.system.fightState "===" "Meatspace") }}
-                &nbsp;<a class="rollable"
+                <a class="rollable text-padding-left-smaller"
    data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}"
    data-roll-type="facedown"
    data-roll-title="{{localize "CPR.characterSheet.bottomPane.fight.facedown"}}"><i class="far fa-angry"></i></a>
@@ -86,19 +118,19 @@
             </div>
           </div>
           <div class="tab-pink-underlay">
-            <a class="tab-label text-bold tab-indent" data-tab="lifepath">{{localize "CPR.characterSheet.bottomPane.lifepath.title"}}</a>
+            <a class="tab-label text-semi tab-indent" data-tab="lifepath">{{localize "CPR.characterSheet.bottomPane.lifepath.title"}}</a>
           </div>
         </nav>
       </div>
       <div class="bottom-content-section">
         <div class="tab role-tab" data-group="primary" data-tab="role">
-          {{> "systems/cyberpunk-red-core/templates/actor/parts/bottom-pane/cpr-role.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/character/bottom-pane/cpr-role-tab.hbs"}}
         </div>
         <div class="tab fight-tab" data-group="primary" data-tab="fight">
-          {{> "systems/cyberpunk-red-core/templates/actor/parts/bottom-pane/cpr-fight.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/character/bottom-pane/cpr-fight-tab.hbs"}}
         </div>
         <div class="tab lifepath-tab" data-group="primary" data-tab="lifepath">
-          {{> "systems/cyberpunk-red-core/templates/actor/parts/bottom-pane/cpr-lifepath.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/character/bottom-pane/cpr-lifepath-tab.hbs"}}
         </div>
       </div>
     </div>

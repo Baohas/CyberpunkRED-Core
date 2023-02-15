@@ -6,22 +6,30 @@
     <li class="item flexrow">
       <div class="item flexrow">
         <span class="text-bold">
-          {{localize "CPR.dialog.install.availableSlots"}}: {{cprMath "subtract" (cprApplyUpgrade target target.system.installedItems.slots "slots") target.system.installedItems.usedSlots}}/{{cprApplyUpgrade target target.system.installedItems.slots "slots"}}
+          {{localize "CPR.dialog.install.availableSlots"}}:
+          {{cprMath "subtract" (
+            cprApplyUpgrade target target.system.installedItems.slots "slots")
+            target.system.installedItems.usedSlots~}}
+            /
+            {{~cprApplyUpgrade target target.system.installedItems.slots "slots"
+          }}
         </span>
       </div>
     </li>
     <hr/>
     {{#each this.typeList as |itemType| }}
       <li class="item flexrow">
-        <div class="item flexrow item-name">
+        <div class="item flexrow flex-width-75 item-name">
           <span class="text-bold text-left">
             {{localize (cprFindConfigValue "objectTypes" itemType)}}
           </span>
         </div>
-        <div style="max-width: 60px" class="item flexrow item-detail">
-          <span class="text-right">{{localize "CPR.global.generic.size"}}</span>
+        <div class="item text-bold flexrow flex-width-10 item-detail">
+          <span class="text-bold text-right">
+            {{localize "CPR.global.generic.size"}}
+          </span>
         </div>
-        <div style="max-width: 60px" class="item flexrow item-detail">
+        <div class="item flexrow flex-width-15 item-detail">
           <span class="text-bold text-align-last-end text-space-around">
             {{localize "CPR.dialog.common.select"}}
           </span>
@@ -30,20 +38,26 @@
       {{#each ../this.itemsList as |item| }}
         {{#if (cprCompare item.type "===" itemType) }}
           <li class="item flexrow">
-            <div class="item flexrow text-nowrap item-name">
-              <span class="width-full" style="text-overflow: ellipsis; overflow: hidden">
+            <div class="item flexrow flex-width-75 text-nowrap item-name">
+              <span class="text-left">
                 {{item.name}}
                 {{#if (cprCompare item.type "===" "program") }}
                   ({{localize (cprFindConfigValue "programClassList" item.system.class)}}){{/if}}
                 </span>
               </div>
-              <div style="max-width: 60px" class="item flexrow item-detail text-right">
-                <span class="text-right">{{item.system.size}}</span>
+              <div class="item flexrow flex-width-10 item-detail">
+                <span class="text-right">
+                  {{item.system.size}}
+                </span>
               </div>
-              <div style="max-width: 60px"
-                   class="item flexrow item-detail text-bold text-align-last-end text-space-around">
-                <span >
-                  <input type="checkbox" name="selectedItems" value="{{item.uuid}}"{{#if item.system.isInstalled }}checked{{/if }}/>
+              <div class="item flexrow flex-width-15 item-detail">
+                <span class="text-align-last-end text-space-around">
+                  <input type="checkbox"
+                         name="selectedItems"
+                         value="{{item.uuid}}"
+                         {{#if item.system.isInstalled }}
+                         checked
+                         {{/if }}/>
                 </span>
               </div>
             </li>
@@ -52,4 +66,4 @@
       {{/each}}
     </ol>
   </form>
-  {{cprTrace "END DIALOG CPR-SELECT-INSTALL-ITEMS-PROMPT.HBS"}}
+{{cprTrace "END CPR-SELECT-INSTALL-ITEMS-PROMPT.HBS"}}

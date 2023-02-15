@@ -82,7 +82,6 @@
   .mook-stats {
     display: grid;
     grid-area: mook-stats;
-    font-weight: 500;
     grid-template-areas:
       "mook-int-stat mook-ref-stat mook-dex-stat mook-tech-stat mook-cool-stat"
       "mook-will-stat mook-luck-stat mook-move-stat mook-body-stat mook-emp-stat";
@@ -121,7 +120,6 @@
   .mook-derived-stats {
     gap: 10px;
     display: grid;
-    font-weight: 500;
     grid-area: mook-derived;
     grid-template-columns: 1fr 1fr 0.5fr;
     grid-template-areas: "mook-hp mook-wounded mook-deathsave";
@@ -144,7 +142,6 @@
     grid-template-areas: "mook-weapon-list mook-armor";
     .mook-weapon-list {
       grid-area: mook-weapon-list;
-      font-weight: 400;
     }
     .mook-armor {
       grid-area: mook-armor;
@@ -161,9 +158,6 @@
       padding-right: 6px;
       text-overflow: ellipsis;
     }
-    .mook-weapon-title {
-      font-weight: 500;
-    }
     .mook-weapon-mode {
       grid-area: mook-weapon-mode;
       display: grid;
@@ -171,20 +165,16 @@
       grid-template-areas: "mook-weapon-aim mook-weapon-auto mook-weapon-supp";
       .mook-weapon-aim {
         grid-area: mook-weapon-aim;
-        font-weight: 500;
       }
       .mook-weapon-auto {
         grid-area: mook-weapon-auto;
-        font-weight: 500;
       }
       .mook-weapon-supp {
         grid-area: mook-weapon-supp;
-        font-weight: 500;
       }
     }
     .mook-weapon-rolls {
       grid-area: mook-weapon-rolls;
-      font-weight: 500;
     }
   }
 
