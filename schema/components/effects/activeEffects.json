@@ -1,0 +1,5 @@
+{
+  "description": "TODO: Active Effects for the item, not properly validated right now",
+  "type": "array",
+  "items": {}
+}

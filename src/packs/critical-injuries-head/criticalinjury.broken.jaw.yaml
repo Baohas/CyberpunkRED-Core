@@ -1,0 +1,52 @@
+_id: VWmTqmsW6S5v51FO
+effects:
+  - _id: fuvMhn0ZVMzPG1d8
+    changes:
+      - key: bonuses.acting
+        mode: 2
+        value: "-4"
+      - key: bonuses.conversation
+        mode: 2
+        value: "-4"
+      - key: bonuses.language
+        mode: 2
+        value: "-4"
+      - key: bonuses.trading
+        mode: 2
+        value: "-4"
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_jaw.svg
+    label: Broken Jaw
+    tint: null
+    transfer: true
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_jaw.svg
+name: Broken Jaw
+system:
+  deathSaveIncrease: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>-4 to Speech Actions.</p>
+  favorite: false
+  location: head
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 13
+    type: paramedic
+  revealed: true
+  source: Pg. 188
+  treatment:
+    dvParamedic: 13
+    dvSurgery: 13
+    type: paramedicSurgery
+  usage: toggled
+type: criticalInjury

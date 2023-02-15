@@ -19,7 +19,8 @@
     "eslint-plugin-foundry-cpr": "file:.gitlab/pipeline_tests/eslint-plugin-foundry-cpr",
     "eslint-plugin-prettier": "^4.2.1",
     "gulp-cli": "^2.3.0",
-    "prettier": "2.8.1"
+    "prettier": "2.8.1",
+    "v8r": "^0.14.0"
   },
   "engines": {
     "node": ">=15.0",

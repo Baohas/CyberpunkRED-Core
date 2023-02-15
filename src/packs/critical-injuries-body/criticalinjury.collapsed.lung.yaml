@@ -1,0 +1,45 @@
+_id: RAZcouFe0FS1VN1o
+effects:
+  - _id: K5VZo8azU8QYk46R
+    changes:
+      - key: system.stats.move.value
+        mode: 2
+        priority: null
+        value: "-2"
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/collapsed_lung.svg
+    label: Collapsed Lung
+    tint: null
+    transfer: true
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/critical_injuries/collapsed_lung.svg
+name: Collapsed Lung
+system:
+  deathSaveIncrease: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>-2 MOVE (minimum MOVE of 1).</p>
+  favorite: false
+  location: body
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 15
+    type: paramedic
+  revealed: true
+  source: Pg. 187
+  treatment:
+    dvParamedic: 0
+    dvSurgery: 15
+    type: surgery
+  usage: toggled
+type: criticalInjury

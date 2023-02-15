@@ -1,0 +1,17 @@
+_id: UZspAWJSJ2Gdb7NI
+img: icons/svg/item-bag.svg
+name: Drive Land Vehicle
+system:
+  basic: false
+  category: controlSkills
+  core: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  difficulty: typical
+  favorite: false
+  level: 0
+  source: ""
+  stat: ref
+type: skill

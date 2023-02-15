@@ -1,0 +1,45 @@
+_id: vRhxMWgOHYROHeHm
+effects:
+  - _id: U0Fa02tmBe9Gjly5
+    changes:
+      - key: system.stats.move.value
+        mode: 2
+        priority: null
+        value: "-6"
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/dismembered_leg.svg
+    label: Dismembered Leg
+    tint: null
+    transfer: true
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/critical_injuries/dismembered_leg.svg
+name: Dismembered Leg
+system:
+  deathSaveIncrease: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Leg is removed. Cannot Dodge. -6 MOVE (minimum MOVE of 1).</p>
+  favorite: false
+  location: body
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 0
+    type: notApplicable
+  revealed: true
+  source: Pg. 187
+  treatment:
+    dvParamedic: 0
+    dvSurgery: 17
+    type: surgery
+  usage: toggled
+type: criticalInjury

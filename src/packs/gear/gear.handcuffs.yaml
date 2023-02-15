@@ -1,0 +1,30 @@
+_id: uYXTKNbOO4ofu53c
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/gear/handcuffs.svg
+name: Handcuffs
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>BODY>10 can break.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 50
+  revealed: true
+  source: pg. 353
+  upgrades: []
+  usage: toggled
+type: gear

@@ -1,0 +1,34 @@
+_id: 0T5Yjy0asGttmbXP
+img: systems/cyberpunk-red-core/icons/compendium/gear/cyberdeck.svg
+name: Cyberdeck
+system:
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Netrunner deck. 7 slots.</p>
+  equipped: owned
+  favorite: false
+  installLocation: notApplicable
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - program
+    list: []
+    slots: 7
+    usedSlots: 0
+  isInstalled: false
+  isUpgraded: false
+  price:
+    market: 500
+  programs:
+    installed: []
+    rezzed: []
+  size: 1
+  source: pg. 353
+  upgrades: []
+type: cyberdeck

@@ -1,0 +1,24 @@
+_id: yyVVirrpH1O0DMYB
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/concussion.svg
+name: Concussion
+system:
+  deathSaveIncrease: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>-2 to every action.</p>
+  favorite: false
+  location: head
+  quickFix:
+    dvFirstAid: 13
+    dvParamedic: 13
+    type: firstAidParamedic
+  revealed: true
+  source: Pg. 188
+  treatment:
+    dvParamedic: 0
+    dvSurgery: 0
+    type: quickFix
+  usage: toggled
+type: criticalInjury

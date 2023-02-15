@@ -1,0 +1,66 @@
+_id: 6BM5WFyCyIM8lZib
+effects:
+  - _id: L4P56fOWGjVT82ES
+    changes:
+      - key: system.stats.ref.value
+        mode: 2
+        value: "-2"
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/status/black_lace_addiction.svg
+    label: Black Lace Addicition
+    tint: null
+    transfer: true
+img: systems/cyberpunk-red-core/icons/compendium/gear/black_lace.svg
+name: Black Lace
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  consumed: None
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p><strong>Primary Effect</strong></p>
+
+      <p>Dose lasts 24 hours.</p>
+
+      <ul>
+
+      <li>The user rolls 2d6 Humanity Loss which is returned if they pass the
+      Secondary Effect save</li>
+
+      <li>The user ignores Seriously Wounded wound states for the duration</li>
+
+      </ul>
+
+      <p><br><strong>Secondary Effect (DV17)</strong></p>
+
+      <p>When the dose wears off, the user rolls WILL + Resist Torture/Drugs +
+      1d10 against Secondary DV.</p>
+
+      <ul>
+
+      <li>On Fail Humanity loss is not returned</li>
+
+      <li>Unless experiencing the primary effect, REF -2</li>
+
+      </ul>
+  equipped: owned
+  favorite: false
+  price:
+    market: 50
+  revealed: true
+  source: pg. 357
+  usage: toggled
+type: drug

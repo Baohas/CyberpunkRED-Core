@@ -1,0 +1,23 @@
+_id: Yzo60c2pXKZ88QzM
+img: systems/cyberpunk-red-core/icons/compendium/ammo/bow_sleep.png
+name: Arrow (Sleep)
+system:
+  ablationValue: 1
+  amount: 10
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Deals no damage. If meat target hit DV13 Resist Torture/Drugs. On fail
+      falls Prone (see pg. 169) and unconscious for 1 minute. Can be woken by
+      damage or another person using an action to touch/shake them.</p>
+  favorite: false
+  price:
+    market: 500
+  source: pg. 346
+  type: sleep
+  variety: arrow
+type: ammo

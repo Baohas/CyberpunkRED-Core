@@ -1,0 +1,53 @@
+_id: CnLh2ODjGnlRrYGP
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle_poor.svg
+name: Sniper Rifle (Poor)
+system:
+  ammoVariety:
+    - rifle
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 5d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>A long-distance sniper rifle. Holds 4 bullets in a magazine.  If you
+      roll 1 on Attack (Crit fail) the gun jams and requires using an action to
+      clear. </p>
+  dvTable: DV Sniper Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 4
+    value: 0
+  price:
+    market: 100
+  revealed: true
+  rof: 1
+  source: pg. 341
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: sniperRifle
+type: weapon

@@ -1,0 +1,56 @@
+_id: DXVvTnvnQKLp9Uky
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
+name: Rhinemetall EMG-86 Railgun
+system:
+  ammoVariety:
+    - rifle
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 5d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots.
+      Requires BODY 11 or higher (unless mounted). Ignores any armor below
+      SP11*. Refer to the full item description on pg. 349.</p>
+
+      <p><em>*Not currently supported to will need to manually apply damage to
+      armoured targets</em></p>
+  dvTable: DV Assault Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 4
+    value: 0
+  price:
+    market: 5000
+  revealed: true
+  rof: 1
+  source: pg. 349
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: assaultRifle
+type: weapon

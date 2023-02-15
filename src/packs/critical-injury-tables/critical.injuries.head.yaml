@@ -1,15 +1,10 @@
 _id: QiwaqQtocypL0FXG
-description: ''
+description: ""
 displayRoll: true
-flags:
-  core: {}
-folder: null
 formula: 2d6
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/head_critical_injury.svg
 name: Critical Injuries (Head)
-ownership:
-  default: 0
 replacement: true
 results:
   - _id: YtJ6jwE0F5OXIMOa
@@ -152,4 +147,3 @@ results:
     text: Lost Ear
     type: 2
     weight: 1
-sort: 0

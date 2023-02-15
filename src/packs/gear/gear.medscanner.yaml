@@ -1,0 +1,53 @@
+_id: xW4PlIcWJ82QSfSh
+effects:
+  - _id: bkUvyHxyT3K8vq1c
+    changes:
+      - key: bonuses.firstAid
+        mode: 2
+        priority: null
+        value: "2"
+      - key: bonuses.paramedic
+        mode: 2
+        priority: null
+        value: "2"
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    icon: systems/cyberpunk-red-core/icons/compendium/gear/medscanner.svg
+    label: Medscanner
+    tint: null
+    transfer: true
+img: systems/cyberpunk-red-core/icons/compendium/gear/medscanner.svg
+name: Medscanner
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>+2 First Aid or Paramedic checks.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 1000
+  revealed: true
+  source: pg. 354
+  upgrades: []
+  usage: equipped
+type: gear

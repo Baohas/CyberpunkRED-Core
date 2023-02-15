@@ -1,0 +1,42 @@
+_id: ZDTMiZ9hItuHGmFz
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/skin_weave.svg
+name: Skin Weave (Head)
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 7
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isBodyLocation: false
+  isHeadLocation: true
+  isShield: false
+  isUpgraded: false
+  penalty: 0
+  price:
+    market: 500
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  source: pg. 364
+  upgrades: []
+  usage: equipped
+type: armor

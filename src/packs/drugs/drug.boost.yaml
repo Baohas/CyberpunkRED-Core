@@ -1,0 +1,69 @@
+_id: ut8jpew6V3q58ivX
+effects:
+  - _id: HkOd5iFmWn6v0bKK
+    changes:
+      - key: system.stats.int.value
+        mode: 2
+        priority: null
+        value: "2"
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    icon: systems/cyberpunk-red-core/icons/compendium/status/boost.svg
+    label: Boost Primary
+    tint: null
+    transfer: true
+  - _id: ptnwPRaryJxNVOQf
+    changes:
+      - key: system.stats.int.value
+        mode: 2
+        priority: null
+        value: "-2"
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    icon: systems/cyberpunk-red-core/icons/compendium/status/boost_addiction.svg
+    label: Boost Addiction
+    tint: null
+    transfer: true
+img: systems/cyberpunk-red-core/icons/compendium/gear/boost.svg
+name: Boost
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  consumed: Boost Primary
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p><strong>Primary Effect</strong></p>
+      <p>Dose lasts 24 hours.</p>
+      <ul>
+      <li>The user has INT +2 for the duration</li>
+      </ul>
+      <p><strong>Secondary Effect (DV17)</strong></p>
+      <ul>
+      <li>INT -2</li>
+      </ul>
+  equipped: owned
+  favorite: false
+  price:
+    market: 50
+  revealed: true
+  source: pg. 357
+  usage: snorted
+type: drug

@@ -1,0 +1,32 @@
+_id: KrtzKNCfYvzuV4Vm
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_footwear.svg
+name: High Fashion Footwear
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 5000
+  revealed: true
+  source: Pg. 356
+  style: highFashion
+  type: footwear
+  upgrades: []
+  usage: equipped
+type: clothing

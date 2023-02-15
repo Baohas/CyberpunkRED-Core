@@ -1,0 +1,55 @@
+_id: GqYz689ddSKQHMen
+effects:
+  - _id: OnONUXyMY8mOquf7
+    changes:
+      - key: bonuses.librarySearch
+        mode: 2
+        priority: null
+        value: "2"
+      - key: bonuses.wardrobeAndStyle
+        mode: 2
+        priority: null
+        value: "2"
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    icon: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
+    label: Agent
+    tint: null
+    transfer: true
+img: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
+name: Agent
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>AI Smartphone. +2 Library Search, +2 Wardrobe & Style depending on
+      circumstance.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 100
+  revealed: true
+  source: pg. 352
+  upgrades: []
+  usage: carried
+type: gear

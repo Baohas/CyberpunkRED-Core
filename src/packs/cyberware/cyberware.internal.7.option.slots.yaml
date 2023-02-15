@@ -1,0 +1,59 @@
+_id: xWJzecHaU1KUlawT
+effects: []
+img: icons/svg/item-bag.svg
+name: Internal (7 Option Slots)
+system:
+  ammoVariety: []
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: true
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: "0"
+    static: 0
+  installLocation: hospital
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - cyberware
+    list: []
+    slots: 7
+    usedSlots: 0
+  isFoundational: true
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 0
+  revealed: true
+  rof: 1
+  size: 1
+  source: ""
+  type: cyberwareInternal
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: cyberware

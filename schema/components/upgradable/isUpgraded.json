@@ -1,0 +1,5 @@
+{
+  "description": "Is the item upgraded?, not supported in compendia atm, should always be false",
+  "type": "boolean",
+  "const": false
+}

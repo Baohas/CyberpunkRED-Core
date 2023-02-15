@@ -1,0 +1,23 @@
+_id: frnQaR6QRCqmSUZk
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/woodchippers_garage/paintball_poison.png
+name: Paintball (Poison)
+system:
+  ablationValue: 0
+  amount: 10
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Created from 3 Vials of Poison strapped together. Deals no direct
+      damage on hit.</p>
+  favorite: false
+  price:
+    market: 0
+  source: WG
+  type: poison
+  variety: paintball
+type: ammo

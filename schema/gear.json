@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/CPRC-Gear",
+  "definitions": {
+    "CPRC-Gear": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "./components/id.json"
+        },
+        "effects": {
+          "$ref": "./components/effects/activeEffects.json"
+        },
+        "img": {
+          "$ref": "./components/img.json"
+        },
+        "name": {
+          "$ref": "./components/name.json"
+        },
+        "type": {
+          "type": "string",
+          "const": "gear"
+        },
+        "system": {
+          "$ref": "#/definitions/System"
+        }
+      },
+      "required": [
+        "_id",
+        "effects",
+        "img",
+        "name",
+        "system",
+        "type"
+      ]
+    },
+    "System": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "$ref": "./components/stackable/amount.json"
+        },
+        "concealable": {
+          "$ref": "./components/physical/concealable.json"
+        },
+        "description": {
+          "$ref": "./components/common/description.json"
+        },
+        "equipped": {
+          "$ref": "./components/equippable/equipped.json"
+        },
+        "favorite": {
+          "$ref": "./components/common/favorite.json"
+        },
+        "installedItems": {
+          "$ref": "./components/container/installedItems.json"
+        },
+        "isUpgraded": {
+          "$ref": "./components/upgradable/isUpgraded.json"
+        },
+        "price": {
+          "$ref": "./components/valuable/price.json"
+        },
+        "revealed": {
+          "$ref": "./components/effects/revealed.json"
+        },
+        "source": {
+          "$ref": "./components/common/source.json"
+        },
+        "upgrades": {
+          "$ref": "./components/upgradable/upgrades.json"
+        },
+        "usage": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "amount",
+        "concealable",
+        "description",
+        "equipped",
+        "favorite",
+        "installedItems",
+        "isUpgraded",
+        "price",
+        "revealed",
+        "source",
+        "upgrades",
+        "usage"
+      ]
+    }
+  }
+}

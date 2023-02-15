@@ -1,0 +1,124 @@
+_id: PRLDaeBVeMuBBIeO
+effects:
+  - _id: v688v2AQZUpGXV7t
+    changes:
+      - key: bonuses.acting
+        mode: 2
+        priority: null
+        value: "2"
+      - key: bonuses.contortionist
+        mode: 2
+        priority: null
+        value: "2"
+      - key: bonuses.conversation
+        mode: 2
+        priority: null
+        value: "2"
+      - key: bonuses.dance
+        mode: 2
+        priority: null
+        value: "2"
+      - key: bonuses.humanPerception
+        mode: 2
+        priority: null
+        value: "2"
+      - key: bonuses.persuasion
+        mode: 2
+        priority: null
+        value: "2"
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    icon: systems/cyberpunk-red-core/icons/compendium/status/smash.svg
+    label: Smash Primary
+    tint: null
+    transfer: true
+  - _id: R7hdY2qZux5j9oVJ
+    changes:
+      - key: bonuses.acting
+        mode: 2
+        priority: null
+        value: "-2"
+      - key: bonuses.contortionist
+        mode: 2
+        priority: null
+        value: "-2"
+      - key: bonuses.conversation
+        mode: 2
+        priority: null
+        value: "-2"
+      - key: bonuses.dance
+        mode: 2
+        priority: null
+        value: "-2"
+      - key: bonuses.humanPerception
+        mode: 2
+        priority: null
+        value: "-2"
+      - key: bonuses.persuasion
+        mode: 2
+        priority: null
+        value: "-2"
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    icon: systems/cyberpunk-red-core/icons/compendium/status/smash_addiciton.svg
+    label: Smash Addiction
+    tint: null
+    transfer: true
+img: systems/cyberpunk-red-core/icons/compendium/gear/smash.svg
+name: Smash
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  consumed: Smash Primary
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p><strong>Primary Effect</strong></p>
+
+      <p>Dose lasts 4 hours.</p>
+
+      <ul>
+
+      <li>The user feels happy and satisfied</li>
+
+      <li>+2 to Dance / Contortionist / Conversation / Human Perception /
+      Persuasion / Acting</li>
+
+      </ul>
+
+      <p><strong>Secondary Effect (DV15)</strong></p>
+
+      <ul>
+
+      <li>-2 to Dance / Contortionist / Conversation / Human Perception /
+      Persuasion / Acting</li>
+
+      <li>GM will tell your when you crave more Smash. Roleplay
+      accordingly.</li>
+
+      </ul>
+  equipped: owned
+  favorite: false
+  price:
+    market: 10
+  revealed: true
+  source: pg. 357
+  usage: snorted
+type: drug

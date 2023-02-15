@@ -1,0 +1,17 @@
+_id: wpHLZDqfC7wE00Vw
+img: icons/svg/item-bag.svg
+name: Forgery
+system:
+  basic: false
+  category: techniqueSkills
+  core: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  difficulty: typical
+  favorite: false
+  level: 0
+  source: ""
+  stat: tech
+type: skill

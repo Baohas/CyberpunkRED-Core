@@ -1,0 +1,17 @@
+_id: wmZyf1oHTlWwE8HQ
+img: icons/svg/item-bag.svg
+name: Play Instrument
+system:
+  basic: false
+  category: performanceSkills
+  core: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  difficulty: typical
+  favorite: false
+  level: 0
+  source: ""
+  stat: tech
+type: skill

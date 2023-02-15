@@ -1,0 +1,5 @@
+{
+  "description": "Is the cyberware installed? Not supported in compendia, should always be false",
+  "type": "boolean",
+  "const": false
+}
