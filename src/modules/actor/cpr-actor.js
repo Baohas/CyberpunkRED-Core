@@ -5,11 +5,11 @@ import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";
 import CPRCharacterActorSheet from "./sheet/cpr-character-sheet.js";
 import * as CPRRolls from "../rolls/cpr-rolls.js";
-import InstallCyberwarePrompt from "../dialog/cpr-install-cyberware-prompt.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
+import CPRDialog from "../dialog/cpr-dialog-application.js";
 
 /**
  * CPRActor contains common code between mooks and characters (NPCs and players).
@@ -491,10 +491,16 @@ export default class CPRActor extends Actor {
       }
     });
 
-    const formData = await InstallCyberwarePrompt.RenderPrompt({
-      item,
-      foundationalCyberware: compatibleTargetCyberware,
-    }).catch((err) => LOGGER.debug(err));
+    const formData = await CPRDialog.showDialog(
+      {
+        item,
+        foundationalCyberware: compatibleTargetCyberware,
+      },
+      {
+        title: SystemUtils.Localize("CPR.dialog.installCyberware.title"),
+        template: `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`,
+      }
+    ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }

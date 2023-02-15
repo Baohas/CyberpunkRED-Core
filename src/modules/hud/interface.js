@@ -22,7 +22,7 @@ export default class HudInterface {
     const formData = await CPRDialog.showDialog(
       {
         dvTables,
-        dvTable: tokenData.flags[game.system.id].cprDvTable?.name,
+        dvTable: tokenData.flags[game.system.id]?.cprDvTable?.name,
       },
       {
         title: SystemUtils.Localize("CPR.dialog.dv.hudPromptTitle"),
