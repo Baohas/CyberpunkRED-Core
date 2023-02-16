@@ -30,6 +30,21 @@ export default class CPRDialog extends FormApplication {
       closeOnSubmit: false,
       submitOnChange: true,
       submitOnClose: false,
+      buttons: {
+        confirm: {
+          class: "confirm-dialog",
+          icon: "fas fa-check",
+          label: SystemUtils.Localize("CPR.dialog.common.confirm"),
+          callback: () => this.confirmDialog(),
+        },
+        cancel: {
+          class: "cancel-dialog",
+          icon: "fas fa-times",
+          label: SystemUtils.Localize("CPR.dialog.common.cancel"),
+          callback: () => this.closeDialog(),
+        },
+      },
+      buttonDefault: "confirm",
     });
   }
 
@@ -61,8 +76,8 @@ export default class CPRDialog extends FormApplication {
     html
       .find(".item-checkbox")
       .click((event) => this._itemCheckboxToggle(event)); // Currently unused, see below.
-    html.find(".confirm-roll").click((event) => this.confirmDialog(event));
-    html.find(".cancel-roll").click((event) => this.closeDialog(event));
+    html.find(".confirm-dialog").click((event) => this.confirmDialog(event));
+    html.find(".cancel-dialog").click((event) => this.closeDialog(event));
     this.element
       .find(".header-button.close")
       .click((event) => this.closeDialog(event));

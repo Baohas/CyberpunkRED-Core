@@ -1,10 +1,9 @@
 {{cprTrace "START DIALOG CPR-DIALOG-BUTTONS.HBS"}}
 <div class="dialog-footer flexrow">
-  <button class="confirm-roll" type="submit" name="submit" autofocus>
-    <i class="fa fa-check"></i> {{localize "CPR.dialog.common.confirm"}}
-  </button>
-  <button class="cancel-roll" name="cancel">
-    <i class="fa fa-times"></i> {{localize "CPR.dialog.common.cancel"}}
-  </button>
+  {{#each options.buttons as |button b|}}
+    <button class="{{button.class}}" name="{{b}}" {{#if (cprCompare ../options.buttonDefault "===" b)}}autofocus{{/if}}>
+      <i class="{{button.icon}}"></i> {{button.label}}
+    </button>
+  {{/each}}
 </div>
 {{cprTrace "END CPR-DIALOG-BUTTONS.HBS"}}
