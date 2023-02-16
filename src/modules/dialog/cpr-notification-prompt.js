@@ -9,7 +9,7 @@ export default class NotificationPrompt {
   // Call to RenderPrompt should take one object as input, based on input type, prepare template and titles...
   static async RenderPrompt(title, data) {
     LOGGER.trace("RenderPrompt | NotificationPrompt | called.");
-    const template = `systems/${game.system.id}/templates/dialog/cpr-confirmation-prompt.hbs`;
+    const template = `systems/${game.system.id}/templates/dialog/cpr-default-prompt.hbs`;
     return new Promise((resolve) => {
       renderTemplate(template, data).then((html) => {
         const _onOk = () => {

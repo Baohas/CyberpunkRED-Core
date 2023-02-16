@@ -22,7 +22,7 @@ export default class CPRDialog extends FormApplication {
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRDialog | called.");
     return mergeObject(super.defaultOptions, {
-      template: `systems/${game.system.id}/templates/dialog/cpr-confirmation-prompt.hbs`,
+      template: `systems/${game.system.id}/templates/dialog/cpr-default-prompt.hbs`,
       title: "CPR.global.generic.title",
       width: "auto",
       height: "auto",

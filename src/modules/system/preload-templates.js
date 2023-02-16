@@ -102,7 +102,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/chat/cpr-rollcard-modifiers.hbs`,
 
     // Dialog: Partials
-    `systems/${game.system.id}/templates/dialog/cpr-confirmation-prompt.hbs`,
+    `systems/${game.system.id}/templates/dialog/cpr-default-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-damage-application-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-dialog-buttons.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`,

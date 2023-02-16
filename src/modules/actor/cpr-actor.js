@@ -548,7 +548,7 @@ export default class CPRActor extends Actor {
         { item: item.name }
       );
 
-      // Show default dialog.
+      // Show "Default" dialog.
       confirmRemove = await CPRDialog.showDialog(
         { dialogMessage },
         { title: dialogTitle }
@@ -1826,7 +1826,7 @@ export default class CPRActor extends Actor {
         "CPR.dialog.deleteConfirmation.message"
       )} ${effect.label}?`;
 
-      // Show default dialog.
+      // Show "Default" dialog.
       const confirmDelete = await CPRDialog.showDialog(
         { dialogMessage },
         { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") }

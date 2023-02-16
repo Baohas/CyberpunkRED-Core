@@ -1,10 +1,10 @@
 /* global game $, duplicate */
-import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
 import CPRActorSheet from "./cpr-actor-sheet.js";
 import ModMookSkillPrompt from "../../dialog/cpr-mod-mook-skill-prompt.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import MookNamePrompt from "../../dialog/cpr-mook-name-prompt.js";
+import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
  * Extend the basic CPRActorSheet. A lot of code is common between mooks and characters.
@@ -260,14 +260,16 @@ export default class CPRMookActorSheet extends CPRActorSheet {
             const dialogMessage = `${SystemUtils.Localize(
               "CPR.dialog.removeCyberware.text"
             )} ${item.name}?`;
-            const confirmRemove = await ConfirmPrompt.RenderPrompt(
-              dialogTitle,
-              dialogMessage
-            );
-            if (confirmRemove) {
-              await this.actor.uninstallCyberware(itemId, foundationalId, true);
-              this._deleteOwnedItem(item, true);
-            }
+
+            // Show "Default" dialog.
+            const confirmRemove = await CPRDialog.showDialog(
+              { dialogMessage },
+              { title: dialogTitle }
+            ).catch((err) => LOGGER.debug(err));
+            if (!confirmRemove) return;
+
+            await this.actor.uninstallCyberware(itemId, foundationalId, true);
+            this._deleteOwnedItem(item, true);
           }
           break;
         }
@@ -314,13 +316,15 @@ export default class CPRMookActorSheet extends CPRActorSheet {
           const dialogMessage = `${SystemUtils.Localize(
             "CPR.dialog.removeCyberware.text"
           )} ${item.name}?`;
-          const confirmRemove = await ConfirmPrompt.RenderPrompt(
-            dialogTitle,
-            dialogMessage
-          );
-          if (confirmRemove) {
-            await this.actor.uninstallCyberware(itemId, foundationalId, true);
-          }
+
+          // Show "Default" dialog.
+          const confirmRemove = await CPRDialog.showDialog(
+            { dialogMessage },
+            { title: dialogTitle }
+          ).catch((err) => LOGGER.debug(err));
+          if (!confirmRemove) return;
+
+          await this.actor.uninstallCyberware(itemId, foundationalId, true);
         }
       }
     }

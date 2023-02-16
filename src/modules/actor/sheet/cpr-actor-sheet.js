@@ -1,5 +1,4 @@
 /* global ActorSheet, $, setProperty, game, getProperty, mergeObject duplicate, TextEditor, fromUuidSync */
-import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRLedger from "../../dialog/cpr-ledger-form.js";
@@ -11,6 +10,7 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import LedgerEditPrompt from "../../dialog/cpr-ledger-edit-prompt.js";
 import CPRMod from "../../rolls/cpr-modifiers.js";
+import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
  * Extend the basic ActorSheet, which comes from Foundry. Not all sheets used in
@@ -858,16 +858,16 @@ export default class CPRActorSheet extends ActorSheet {
     const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     // Only show the delete confirmation if the setting is on, and internally we do not want to skip it.
     if (setting && !skipConfirm) {
-      const promptMessage = `${SystemUtils.Localize(
+      const dialogMessage = `${SystemUtils.Localize(
         "CPR.dialog.deleteConfirmation.message"
       )} ${item.name}?`;
-      const confirmDelete = await ConfirmPrompt.RenderPrompt(
-        SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
-        promptMessage
+
+      // Show "Default" dialog.
+      const confirmDelete = await CPRDialog.showDialog(
+        { dialogMessage },
+        { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") }
       ).catch((err) => LOGGER.debug(err));
-      if (confirmDelete === undefined) {
-        return;
-      }
+
       if (!confirmDelete) {
         return;
       }

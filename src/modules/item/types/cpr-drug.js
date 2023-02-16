@@ -1,8 +1,8 @@
-import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import Rules from "../../utils/cpr-rules.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
  * Extend the base CPRItem object with things specific to drugs and consumables.
@@ -70,12 +70,12 @@ export default class CPRDrugItem extends CPRItem {
    */
   async _confirmSnort() {
     LOGGER.trace("_confirmSnort | CPRDrugItem | called.");
-    const promptMessage = `${SystemUtils.Localize(
+    const dialogMessage = `${SystemUtils.Localize(
       "CPR.dialog.snortConfirmation.message"
     )} ${this.name}?`;
-    return ConfirmPrompt.RenderPrompt(
-      SystemUtils.Localize("CPR.dialog.snortConfirmation.title"),
-      promptMessage
+    return CPRDialog.showDialog(
+      { dialogMessage },
+      { title: SystemUtils.Localize("CPR.dialog.snortConfirmation.title") }
     ).catch((err) => LOGGER.debug(err));
   }
 }

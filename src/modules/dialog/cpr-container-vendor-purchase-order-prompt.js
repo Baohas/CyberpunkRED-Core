@@ -7,7 +7,7 @@ export default class ContainerVendorSellToPrompt {
     LOGGER.trace("RenderPrompt | ContainerVendorPurchaseOrderPrompt | called.");
     return new Promise((resolve, reject) => {
       renderTemplate(
-        `systems/${game.system.id}/templates/dialog/cpr-confirmation-prompt.hbs`,
+        `systems/${game.system.id}/templates/dialog/cpr-default-prompt.hbs`,
         data
       ).then((html) => {
         const _onCancel = () => {

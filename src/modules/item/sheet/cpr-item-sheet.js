@@ -10,9 +10,9 @@ import NetarchRolltableGenerationPrompt from "../../dialog/cpr-netarch-rolltable
 import RoleAbilityPrompt from "../../dialog/cpr-role-ability-prompt.js";
 import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import SelectInstallItemsPrompt from "../../dialog/cpr-select-install-items-prompt.js";
-import ConfirmPrompt from "../../dialog/cpr-confirmation-prompt.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import ManageInstallableTypes from "../../dialog/cpr-manage-installable-types.js";
+import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
  * Extend the basic ActorSheet.
@@ -492,15 +492,17 @@ export default class CPRItemSheet extends ItemSheet {
         "deleteItemConfirmation"
       );
       if (setting) {
-        const promptMessage = `${SystemUtils.Localize(
+        const dialogMessage = `${SystemUtils.Localize(
           "CPR.dialog.deleteConfirmation.message"
         )} ${SystemUtils.Localize(
           "CPR.netArchitecture.floor.deleteConfirmation"
         )}?`;
-        const confirmDelete = await ConfirmPrompt.RenderPrompt(
-          SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
-          promptMessage
-        );
+
+        // Show "Default" dialog.
+        const confirmDelete = await CPRDialog.showDialog(
+          { dialogMessage },
+          { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") }
+        ).catch((err) => LOGGER.debug(err));
         if (!confirmDelete) {
           return;
         }
@@ -1077,13 +1079,15 @@ export default class CPRItemSheet extends ItemSheet {
         "deleteItemConfirmation"
       );
       if (setting) {
-        const promptMessage = `${SystemUtils.Localize(
+        const dialogMessage = `${SystemUtils.Localize(
           "CPR.dialog.deleteConfirmation.message"
         )} ${SystemUtils.Localize("CPR.itemSheet.role.deleteConfirmation")}?`;
-        const confirmDelete = await ConfirmPrompt.RenderPrompt(
-          SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
-          promptMessage
-        );
+
+        // Show "Default" dialog.
+        const confirmDelete = await CPRDialog.showDialog(
+          { dialogMessage },
+          { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") }
+        ).catch((err) => LOGGER.debug(err));
         if (!confirmDelete) {
           return;
         }
