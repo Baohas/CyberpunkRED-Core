@@ -1085,4 +1085,12 @@ export default function registerHandlebarsHelpers() {
     LOGGER.trace("cprStripHtml | handlebarsHelper | Called.");
     return SystemUtils.stripHTML(string);
   });
+
+  /**
+   * Set a variable
+   */
+  Handlebars.registerHelper("cprVar", function (name, value) {
+    LOGGER.trace("cprVar | handlebarsHelper | Called.");
+    this[name] = value;
+  });
 }
