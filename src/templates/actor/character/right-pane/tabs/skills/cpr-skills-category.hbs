@@ -38,7 +38,10 @@
           data-item-id="{{skill._id}}"
           data-skill-category="{{skill.system.category}}"
           draggable="true">
-        <div class="item-name text-nowrap">
+        <div class="item-name text-nowrap flexrow">
+          <span class="text-pill text-semi text-smaller">
+            {{localize (cprFindConfigValue "statList" skill.system.stat)}}
+          </span>
           <a class="rollable {{#if skill.system.basic }}text-semi{{/if }}"
              data-roll-type="skill"
              data-roll-title="{{skill.name}}">
@@ -46,9 +49,6 @@
             {{#if (cprCompare skill.system.difficulty "===" "difficult") }}
               (x2)
             {{/if}}
-            <span class="text-semi">
-              ({{localize (cprFindConfigValue "statList" skill.system.stat)}})
-            </span>
           </a>
           {{#unless skill.system.core }}
             <a class="item-edit skill-custom"
