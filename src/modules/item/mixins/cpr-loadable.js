@@ -1,6 +1,6 @@
 /* global game getProperty fromUuidSync */
+import CPRDialog from "../../dialog/cpr-dialog-application.js";
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
-import LoadAmmoPrompt from "../../dialog/cpr-load-ammo-prompt.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
@@ -104,10 +104,12 @@ const Loadable = function Loadable() {
           }
         });
 
-        let formData = {
+        let dialogData = {
           weapon: this,
           ammoList: validAmmo,
-          selectedAmmo: "",
+          selectedAmmo:
+            // Use currently loaded ammo. If none, default to first in the list of valid ammo.
+            this.system.magazine.ammoData?.uuid || validAmmo[0].uuid,
           returnType: "string",
         };
         if (validAmmo.length === 0) {
@@ -117,13 +119,16 @@ const Loadable = function Loadable() {
           );
           return;
         }
-        formData = await LoadAmmoPrompt.RenderPrompt(formData).catch((err) =>
-          LOGGER.debug(err)
-        );
-        if (formData === undefined) {
+
+        // Show "Load Ammo" dialog,
+        dialogData = await CPRDialog.showDialog(dialogData, {
+          template: `systems/${game.system.id}/templates/dialog/cpr-load-ammo-prompt.hbs`,
+          title: SystemUtils.Localize("CPR.dialog.selectAmmo.title"),
+        }).catch((err) => LOGGER.debug(err));
+        if (dialogData === undefined) {
           return;
         }
-        selectedAmmoId = formData.selectedAmmo;
+        selectedAmmoId = dialogData.selectedAmmo;
       }
 
       const loadedAmmo = this.system.magazine.ammoData.uuid;

@@ -19,6 +19,8 @@ export default class HudInterface {
   static async SetDvTable(tokenData) {
     LOGGER.trace("SetDvTable | HudInterface | Called.");
     const dvTables = await SystemUtils.GetDvTables();
+
+    // Show "Set DV" dialog.
     const formData = await CPRDialog.showDialog(
       {
         dvTables,
