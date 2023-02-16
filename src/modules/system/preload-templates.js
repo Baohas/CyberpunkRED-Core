@@ -24,6 +24,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-fight-tab.hbs`,
     `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-lifepath-tab.hbs`,
     `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-role-tab.hbs`,
+    `systems/${game.system.id}/templates/actor/character/bottom-pane/fight/cpr-criticalInjuries.hbs`,
     `systems/${game.system.id}/templates/actor/character/bottom-pane/fight/cpr-weapons-list.hbs`,
     `systems/${game.system.id}/templates/actor/character/bottom-pane/fight/cpr-armor-list.hbs`,
 
@@ -70,7 +71,6 @@ export default function preloadHandlebarsTemplates() {
 
     // Actor: Mixins - Fight
     `systems/${game.system.id}/templates/actor/mixin/fight/cpr-armor.hbs`,
-    `systems/${game.system.id}/templates/actor/mixin/fight/cpr-criticalInjuries.hbs`,
     `systems/${game.system.id}/templates/actor/mixin/fight/cpr-weapon.hbs`,
 
     // Actor: Mixins: Netrunning
