@@ -1,5 +1,8 @@
 {{cprTrace "START DIALOG CPR-CONFIRMATION-PROMPT.HBS"}}
-<div >
-  <div>{{{this}}}</div>
-</div>
+<form class="dialog-sheet">
+  <div class="dialog-header flexcol">
+    <div class="text-center">{{dialogMessage}}</div>
+  </div>
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
+</form>
 {{cprTrace "END CPR-CONFIRMATION-PROMPT.HBS"}}

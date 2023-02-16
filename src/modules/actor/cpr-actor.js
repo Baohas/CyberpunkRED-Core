@@ -1,6 +1,5 @@
 /* eslint-disable no-await-in-loop */
 /* globals Actor, game, getProperty, hasProperty, duplicate */
-import ConfirmPrompt from "../dialog/cpr-confirmation-prompt.js";
 import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";
 import CPRCharacterActorSheet from "./sheet/cpr-character-sheet.js";
@@ -501,7 +500,7 @@ export default class CPRActor extends Actor {
       },
       {
         title: SystemUtils.Localize("CPR.dialog.installCyberware.title"),
-        template: `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`,
+        template: `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`,
       }
     ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
@@ -544,17 +543,20 @@ export default class CPRActor extends Actor {
       const dialogTitle = SystemUtils.Localize(
         "CPR.dialog.uninstallCyberware.title"
       );
-      const dialogMessage = `${SystemUtils.Format(
+      const dialogMessage = SystemUtils.Format(
         "CPR.dialog.uninstallCyberware.text",
         { item: item.name }
-      )}?`;
-      confirmRemove = await ConfirmPrompt.RenderPrompt(
-        dialogTitle,
-        dialogMessage
       );
+
+      // Show default dialog.
+      confirmRemove = await CPRDialog.showDialog(
+        { dialogMessage },
+        { title: dialogTitle }
+      ).catch((err) => LOGGER.debug(err));
     } else {
       confirmRemove = true;
     }
+
     if (confirmRemove) {
       const target =
         this.uuid === item.system.installedIn
@@ -1820,12 +1822,14 @@ export default class CPRActor extends Actor {
     LOGGER.trace("deleteEffect | CPRActor | Called.");
     const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     if (setting) {
-      const promptMessage = `${SystemUtils.Localize(
+      const dialogMessage = `${SystemUtils.Localize(
         "CPR.dialog.deleteConfirmation.message"
       )} ${effect.label}?`;
-      const confirmDelete = await ConfirmPrompt.RenderPrompt(
-        SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
-        promptMessage
+
+      // Show default dialog.
+      const confirmDelete = await CPRDialog.showDialog(
+        { dialogMessage },
+        { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") }
       ).catch((err) => LOGGER.debug(err));
       if (!confirmDelete) return;
     }
