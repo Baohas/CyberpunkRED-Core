@@ -25,6 +25,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-lifepath-tab.hbs`,
     `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-role-tab.hbs`,
     `systems/${game.system.id}/templates/actor/character/bottom-pane/fight/cpr-weapons-list.hbs`,
+    `systems/${game.system.id}/templates/actor/character/bottom-pane/fight/cpr-armor-list.hbs`,
 
     // Actor: Character - Skill Tab
     `systems/${game.system.id}/templates/actor/character/right-pane/tabs/skills/cpr-skills-category.hbs`,
