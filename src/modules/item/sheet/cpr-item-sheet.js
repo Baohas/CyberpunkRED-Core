@@ -501,6 +501,7 @@ export default class CPRItemSheet extends ItemSheet {
         // Show "Default" dialog.
         const confirmDelete = await CPRDialog.showDialog(
           { dialogMessage },
+          // Set the options for the dialog.
           { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") }
         ).catch((err) => LOGGER.debug(err));
         if (!confirmDelete) {
@@ -1086,6 +1087,7 @@ export default class CPRItemSheet extends ItemSheet {
         // Show "Default" dialog.
         const confirmDelete = await CPRDialog.showDialog(
           { dialogMessage },
+          // Set the options for the dialog.
           { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") }
         ).catch((err) => LOGGER.debug(err));
         if (!confirmDelete) {

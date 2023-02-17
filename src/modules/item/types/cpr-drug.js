@@ -75,6 +75,7 @@ export default class CPRDrugItem extends CPRItem {
     )} ${this.name}?`;
     return CPRDialog.showDialog(
       { dialogMessage },
+      // Set the options for the dialog.
       { title: SystemUtils.Localize("CPR.dialog.snortConfirmation.title") }
     ).catch((err) => LOGGER.debug(err));
   }

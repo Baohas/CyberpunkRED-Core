@@ -264,6 +264,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
             // Show "Default" dialog.
             const confirmRemove = await CPRDialog.showDialog(
               { dialogMessage },
+              // Set the options for the dialog.
               { title: dialogTitle }
             ).catch((err) => LOGGER.debug(err));
             if (!confirmRemove) return;
@@ -320,6 +321,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
           // Show "Default" dialog.
           const confirmRemove = await CPRDialog.showDialog(
             { dialogMessage },
+            // Set the options for the dialog.
             { title: dialogTitle }
           ).catch((err) => LOGGER.debug(err));
           if (!confirmRemove) return;

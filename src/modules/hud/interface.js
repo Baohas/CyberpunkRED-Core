@@ -26,6 +26,7 @@ export default class HudInterface {
         dvTables,
         dvTable: tokenData.flags[game.system.id]?.cprDvTable?.name,
       },
+      // Set the options for the dialog.
       {
         title: SystemUtils.Localize("CPR.dialog.dv.hudPromptTitle"),
         template: `systems/${game.system.id}/templates/dialog/hud/cpr-dv-prompt.hbs`,

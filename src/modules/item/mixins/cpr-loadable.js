@@ -122,6 +122,7 @@ const Loadable = function Loadable() {
 
         // Show "Load Ammo" dialog,
         dialogData = await CPRDialog.showDialog(dialogData, {
+          // Set the options for the dialog.
           template: `systems/${game.system.id}/templates/dialog/cpr-load-ammo-prompt.hbs`,
           title: SystemUtils.Localize("CPR.dialog.selectAmmo.title"),
         }).catch((err) => LOGGER.debug(err));

@@ -498,6 +498,7 @@ export default class CPRActor extends Actor {
         item,
         foundationalCyberware: compatibleTargetCyberware,
       },
+      // Set the options for the dialog.
       {
         title: SystemUtils.Localize("CPR.dialog.installCyberware.title"),
         template: `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`,
@@ -551,6 +552,7 @@ export default class CPRActor extends Actor {
       // Show "Default" dialog.
       confirmRemove = await CPRDialog.showDialog(
         { dialogMessage },
+        // Set the options for the dialog.
         { title: dialogTitle }
       ).catch((err) => LOGGER.debug(err));
     } else {
@@ -1829,6 +1831,7 @@ export default class CPRActor extends Actor {
       // Show "Default" dialog.
       const confirmDelete = await CPRDialog.showDialog(
         { dialogMessage },
+        // Set the options for the dialog.
         { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") }
       ).catch((err) => LOGGER.debug(err));
       if (!confirmDelete) return;
