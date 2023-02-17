@@ -32,16 +32,14 @@ export default class CPRDialog extends FormApplication {
       submitOnClose: false,
       buttons: {
         confirm: {
-          class: "confirm-dialog",
           icon: "fas fa-check",
           label: SystemUtils.Localize("CPR.dialog.common.confirm"),
-          callback: () => this.confirmDialog(),
+          callback: (dialog) => dialog.confirmDialog(),
         },
         cancel: {
-          class: "cancel-dialog",
           icon: "fas fa-times",
           label: SystemUtils.Localize("CPR.dialog.common.cancel"),
-          callback: () => this.closeDialog(),
+          callback: (dialog) => dialog.closeDialog(),
         },
       },
       buttonDefault: "confirm",
@@ -76,8 +74,13 @@ export default class CPRDialog extends FormApplication {
     html
       .find(".item-checkbox")
       .click((event) => this._itemCheckboxToggle(event)); // Currently unused, see below.
-    html.find(".confirm-dialog").click((event) => this.confirmDialog(event));
-    html.find(".cancel-dialog").click((event) => this.closeDialog(event));
+    // html.find(".confirm-dialog").click((event) => this.confirmDialog(event));
+    // html.find(".cancel-dialog").click((event) => this.closeDialog(event));
+    html.find(".cpr-dialog-button").click((event) => {
+      const buttonName = event.currentTarget.name;
+      // Execute callback function when dialog buttons are pressed.
+      this.options.buttons[buttonName].callback(this);
+    });
     this.element
       .find(".header-button.close")
       .click((event) => this.closeDialog(event));
