@@ -139,13 +139,13 @@
       {{/if}}
     </div>
     <div class="situational">
-      <input name="isSituational" class="toggle-situational" type="checkbox" data-index={{i}} {{checked (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational i "isSituational")}} {{disabled (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "stat")}}/>
+      <input name="isSituational" class="toggle-situational" type="checkbox" data-index="{{i}} {{checked (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational i "isSituational")}} {{disabled (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "stat")}}"/>
     </div>
     <div class="on-by-default">
-      <input {{#unless (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational i "isSituational")}}disabled{{/unless}} name="onByDefault" class="toggle-on-by-default" type="checkbox" data-index={{i}} {{checked (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational i "onByDefault")}} {{disabled (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "stat")}}/>
+      <input {{#unless (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational i "isSituational")}}disabled{{/unless}} name="onByDefault" class="toggle-on-by-default" type="checkbox" data-index="{{i}} {{checked (cprArrayLikeObjectByIndex ../data.flags.cyberpunk-red-core.changes.situational i "onByDefault")}} {{disabled (cprCompare (lookup ../data.flags.cyberpunk-red-core.changes.cats i) "===" "stat")}}"/>
     </div>
     <div class="change-actions">
-      <a class="effect-change-control" data-action="delete" data-index={{i}}><i class="fas fa-trash"></i></a>
+      <a class="effect-change-control" data-action="delete" data-index="{{i}}"><i class="fas fa-trash"></i></a>
     </div>
   </li>
 {{/each}}

@@ -174,6 +174,9 @@ lint-yaml:
 
 validate-packs:
   stage: test
+  before_script:
+    - apt-get update
+    - apt-get install jq --yes
   script:
     - echo "Validating pack fragments..."
     - ./.gitlab/pipeline_tests/test-packs.sh
@@ -355,7 +358,26 @@ handelbars-inlinestyles:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
-tooltips:
+handelbars-attributes:
+  stage: test
+  script:
+    - echo "Checking if HTML attributes are quoted correctly..."
+    - ./.gitlab/pipeline_tests/test-handlebars-attributes.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
+handlebars-tooltips:
   stage: test
   script:
     - echo "Checking if we are using 'data-toolip' for tooltips..."
@@ -374,7 +396,7 @@ tooltips:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
-trace-statements:
+handlebars-traces:
   stage: test
   script:
     - echo "Checking if there are proper trace statements in all hbs files..."
@@ -393,30 +415,11 @@ trace-statements:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
-tag-statements:
+handlebars-tags:
   stage: test
   script:
     - echo "Checking if there are matched html tags in all hbs files..."
     - ./.gitlab/pipeline_tests/test-handlebars-tags.sh
-  needs:
-    - job: init
-      artifacts: true
-  rules:
-    # Don't run if we're in the cleanup-dev schedule
-    - if: $CPR_SCHEDULE == "cleanup-dev"
-      when: never
-    # Run on MRs
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    # Run on git tag
-    - if: $CI_COMMIT_TAG
-
-code-localization:
-  stage: test
-  script:
-    - echo "Checking if our own localization and notification code is used..."
-    - ./.gitlab/pipeline_tests/test-misc.sh
   needs:
     - job: init
       artifacts: true
@@ -488,6 +491,25 @@ handlebars-templates:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
+code-localization:
+  stage: test
+  script:
+    - echo "Checking if our own localization and notification code is used..."
+    - ./.gitlab/pipeline_tests/test-misc.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
 game-id:
   stage: test
   script:
@@ -525,25 +547,6 @@ compendia-use:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
-#lint-files:
-#  stage: test
-#  script:
-#    - echo "Making sure files follow editorconfig..."
-#    - npx editorconfig-checker
-#  allow_failure: true
-#  needs:
-#    - job: init
-#  rules:
-#    # Don't run if we're in the cleanup-dev schedule
-#    - if: $CPR_SCHEDULE == "cleanup-dev"
-#      when: never
-#    # Run on MRs
-#    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-#    # Run on merge to 'dev'
-#    - if: $CI_COMMIT_BRANCH == "dev"
-#    # Run on git tag
-#    - if: $CI_COMMIT_TAG
-
 # Build without artifacts when not tagging a release
 test-build:
   stage: test
@@ -572,27 +575,28 @@ build-artifacts:
   needs:
     - job: init
       artifacts: true
-    - job: lint-code
     - job: code-formatting
-    - job: lint-json
-    - job: lint-yaml
-    - job: lint-markdown
-    - job: unit-test
-    - job: test-shell-scripts
-      optional: true
-    - job: language-unused-strings
-    - job: language-exists
-    - job: game-id
-    - job: compendia-use
-    - job: trace-statements
-    - job: tag-statements
     - job: code-localization
+    - job: compendia-use
+    - job: game-id
+    - job: handlebars-traces
+    - job: handlebars-tags
+    - job: handelbars-attributes
     - job: handelbars-inlinestyles
     - job: handlebars-helpers
     - job: handlebars-compare
-    - job: tooltips
+    - job: handlebars-tooltips
+    - job: language-unused-strings
+    - job: language-exists
+    - job: lint-code
+    - job: lint-json
+    - job: lint-yaml
+    - job: lint-markdown
     - job: test-build
       optional: true
+    - job: test-shell-scripts
+      optional: true
+    - job: unit-test
     - job: validate-packs
   rules:
     # Don't run if we're in the cleanup-dev schedule
