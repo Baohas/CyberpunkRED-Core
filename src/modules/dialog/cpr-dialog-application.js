@@ -9,6 +9,11 @@ export default class CPRDialog extends FormApplication {
   constructor(dialogData, options) {
     LOGGER.trace("constructor | CPRDialog | Called.");
     super(dialogData, options);
+
+    // Overwrite default buttons if indicated.
+    if (this.options.overwriteButtons) {
+      this.options.buttons = options.buttons;
+    }
     this.objectData = dialogData.object;
   }
 
@@ -43,6 +48,7 @@ export default class CPRDialog extends FormApplication {
         },
       },
       buttonDefault: "confirm",
+      overwriteButtons: false, // If calling showDialog with custom buttons, override defaults or not.
     });
   }
 
@@ -74,8 +80,8 @@ export default class CPRDialog extends FormApplication {
     html
       .find(".item-checkbox")
       .click((event) => this._itemCheckboxToggle(event)); // Currently unused, see below.
-    // html.find(".confirm-dialog").click((event) => this.confirmDialog(event));
-    // html.find(".cancel-dialog").click((event) => this.closeDialog(event));
+
+    // Handle button presses.
     html.find(".cpr-dialog-button").click((event) => {
       const buttonName = event.currentTarget.name;
       // Execute callback function when dialog buttons are pressed.
@@ -134,7 +140,10 @@ export default class CPRDialog extends FormApplication {
   /**
    * Creates a promise to be resolved when the dialog is confirmed. One can also override default options here.
    *
-   * @param {Object} - Some object to be modified by the dialog.
+   * @param {...args<Object>} - The first argument should be the object that is being changed by the dialog.
+   *                          - The final argument (optional) is options to pass to the dialog.
+   *                          - See defaultOptions for a breakdown of these options.
+   *                          - See constructors to know how many arguments each dialog class expects.
    */
   static async showDialog(...args) {
     LOGGER.trace("showDialog | CPRDialog | Called.");

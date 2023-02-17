@@ -865,6 +865,7 @@ export default class CPRActorSheet extends ActorSheet {
       // Show "Default" dialog.
       const confirmDelete = await CPRDialog.showDialog(
         { dialogMessage },
+        // Set the options for the dialog.
         { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") }
       ).catch((err) => LOGGER.debug(err));
 
