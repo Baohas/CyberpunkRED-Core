@@ -10,13 +10,13 @@
     {{#if item.system.isInstalled }}
       <a class="name item-view" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.InstalledClickToViewItemReadOnly"}}
         <br/>
-        {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}" data-item-id="{{item.id}}">
+        {{localize "CPR.actorSheets.commonActions.ctrlClickToSendToChat"}}" data-item-id="{{item.id}}">
         <span class="text-italic">{{item.name}}</span>{{#unless @last}},{{/unless}}
       </a>
     {{else}}
       <a class="name item deletable changeable item-edit" tabindex="0" data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}
         <br/>
-        {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}
+        {{localize "CPR.actorSheets.commonActions.ctrlClickToSendToChat"}}
         <br/>
         {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}" data-item-id="{{item.id}}">
         {{item.name}}{{#unless @last}},{{/unless}}
