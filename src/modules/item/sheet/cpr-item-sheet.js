@@ -693,9 +693,13 @@ export default class CPRItemSheet extends ItemSheet {
         description: "",
         returnType: "string",
       };
-      formData = await NetarchLevelPrompt.RenderPrompt(formData).catch((err) =>
-        LOGGER.debug(err)
-      );
+      // Show "NetArch Level" dialog.
+      formData = await CPRDialog.showDialog(formData, {
+        // Set the options for the dialog.
+        title: SystemUtils.Localize("CPR.dialog.netArchitectureNewFloor.title"),
+        template: `systems/${game.system.id}/templates/dialog/cpr-netarch-level-prompt.hbs`,
+        width: "330px",
+      }).catch((err) => LOGGER.debug(err));
       if (formData === undefined) {
         return;
       }
@@ -861,12 +865,19 @@ export default class CPRItemSheet extends ItemSheet {
           description: editElement.description,
           returnType: "string",
         };
-        formData = await NetarchLevelPrompt.RenderPrompt(formData).catch(
-          (err) => LOGGER.debug(err)
-        );
+
+        // Show "NetArch Level" dialog.
+        formData = await CPRDialog.showDialog(formData, {
+          // Set the options for the dialog.
+          title: SystemUtils.Localize(
+            "CPR.dialog.netArchitectureNewFloor.title"
+          ),
+          template: `systems/${game.system.id}/templates/dialog/cpr-netarch-level-prompt.hbs`,
+        }).catch((err) => LOGGER.debug(err));
         if (formData === undefined) {
           return;
         }
+
         prop.splice(prop.indexOf(editElement), 1);
         prop.push({
           index: editElement.index,

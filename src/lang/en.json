@@ -280,6 +280,7 @@
   "CPR.dialog.netArchitectureNewFloor.blackIceType": "Black ICE type",
   "CPR.dialog.netArchitectureNewFloor.contentType": "Content type",
   "CPR.dialog.netArchitectureNewFloor.floor": "NET Architecture Floor",
+  "CPR.dialog.netArchitectureNewFloor.header": "Set options for Net Architecture Floor.",
   "CPR.dialog.netArchitectureNewFloor.title": "Create Floor",
   "CPR.dialog.netArchitectureRolltableSelection.advanced": "Advanced (DV12)",
   "CPR.dialog.netArchitectureRolltableSelection.basic": "Basic (DV6)",
