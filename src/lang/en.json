@@ -317,7 +317,7 @@
   "CPR.dialog.setLifepath.title": "Set Lifepath",
   "CPR.dialog.snortConfirmation.message": "Are you sure you want to consume ",
   "CPR.dialog.snortConfirmation.title": "Confirm consumption",
-  "CPR.dialog.splitItem.amountSplit": "Amount to split of",
+  "CPR.dialog.splitItem.amountSplit": "Amount to split off",
   "CPR.dialog.splitItem.text": "You currently own {amount} of {itemName}.",
   "CPR.dialog.splitItem.title": "Split the item",
   "CPR.dialog.splitItem.warningAmount": "You cannot split {amountSplit} of {amountOld} from {itemName}.",
