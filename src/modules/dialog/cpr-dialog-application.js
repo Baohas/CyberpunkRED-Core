@@ -143,7 +143,7 @@ export default class CPRDialog extends FormApplication {
    * @param {...args<Object>} - The first argument should be the object that is being changed by the dialog.
    *                          - The final argument (optional) is options to pass to the dialog.
    *                          - See defaultOptions for a breakdown of these options.
-   *                          - See constructors to know how many arguments each dialog class expects.
+   *                          - See constructors to know how many arguments each dialog Class expects.
    */
   static async showDialog(...args) {
     LOGGER.trace("showDialog | CPRDialog | Called.");

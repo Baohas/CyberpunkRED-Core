@@ -3,7 +3,6 @@ import CPRActorSheet from "./cpr-actor-sheet.js";
 import ModMookSkillPrompt from "../../dialog/cpr-mod-mook-skill-prompt.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import MookNamePrompt from "../../dialog/cpr-mook-name-prompt.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
@@ -168,16 +167,23 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    */
   async _changeMookName() {
     LOGGER.trace("_changeMookName | CPRMookActorSheet | Called.");
-    const formData = await MookNamePrompt.RenderPrompt(this.actor.name).catch(
-      (err) => LOGGER.debug(err)
-    );
-    if (formData === undefined) {
+
+    // Show "Mook Name" dialog.
+    const dialogData = await CPRDialog.showDialog(
+      { name: this.actor.name },
+      // Set the options for the dialog.
+      {
+        title: SystemUtils.Localize("CPR.mookSheet.name"),
+        template: `systems/${game.system.id}/templates/dialog/cpr-mook-name-prompt.hbs`,
+      }
+    ).catch((err) => LOGGER.debug(err));
+    if (dialogData === undefined) {
       return;
     }
     if (!this.isToken) {
-      await this.actor.update(formData);
+      await this.actor.update(dialogData);
     } else {
-      await this.token.update(formData);
+      await this.token.update(dialogData);
     }
   }
 
