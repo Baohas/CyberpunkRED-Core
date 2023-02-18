@@ -1403,13 +1403,25 @@ export default class CPRActorSheet extends ActorSheet {
         SystemUtils.Format("CPR.dialog.splitItem.warningUpgrade")
       );
     }
-    const itemText = SystemUtils.Format("CPR.dialog.splitItem.text", {
-      amount: item.system.amount,
-      itemName: item.name,
-    });
-    const formData = await SplitItemPrompt.RenderPrompt(itemText).catch((err) =>
-      LOGGER.debug(err)
-    );
+
+    // Prepare data for dialog.
+    const dialogData = {
+      header: SystemUtils.Format("CPR.dialog.splitItem.text", {
+        amount: item.system.amount,
+        itemName: item.name,
+      }),
+      splitAmount: Math.ceil(item.system.amount / 2),
+    };
+
+    // Show "Split Item" dialog.
+    const formData = await CPRDialog.showDialog(
+      dialogData,
+      // Set options for the dialog.
+      {
+        title: SystemUtils.Localize("CPR.dialog.splitItem.title"),
+        template: `systems/${game.system.id}/templates/dialog/cpr-split-item-prompt.hbs`,
+      }
+    ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
