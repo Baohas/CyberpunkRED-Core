@@ -24,6 +24,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-fight-tab.hbs`,
     `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-lifepath-tab.hbs`,
     `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-role-tab.hbs`,
+    `systems/${game.system.id}/templates/actor/character/bottom-pane/fight/cpr-weapons-list.hbs`,
 
     // Actor: Character - Skill Tab
     `systems/${game.system.id}/templates/actor/character/right-pane/tabs/skills/cpr-skills-category.hbs`,
@@ -51,13 +52,10 @@ export default function preloadHandlebarsTemplates() {
     // Actor: Character - Debug
     `systems/${game.system.id}/templates/actor/character/debug/cpr-item-debug.hbs`,
 
-    // Actor: Mixins
-    `systems/${game.system.id}/templates/actor/mixin/cpr-fight.hbs`,
-    `systems/${game.system.id}/templates/actor/mixin/cpr-netrunning.hbs`,
-
     // Actor: Mixins - Actions
     `systems/${game.system.id}/templates/actor/mixin/actions/cpr-actions.hbs`,
     `systems/${game.system.id}/templates/actor/mixin/actions/cpr-dv-glyph.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/actions/cpr-changeAmmo-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/mixin/actions/cpr-equip-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/mixin/actions/cpr-install-cyberware-glyph.hbs`,
     `systems/${game.system.id}/templates/actor/mixin/actions/cpr-install-item-glyph.hbs`,
@@ -72,7 +70,7 @@ export default function preloadHandlebarsTemplates() {
     // Actor: Mixins - Fight
     `systems/${game.system.id}/templates/actor/mixin/fight/cpr-armor.hbs`,
     `systems/${game.system.id}/templates/actor/mixin/fight/cpr-criticalInjuries.hbs`,
-    `systems/${game.system.id}/templates/actor/mixin/fight/cpr-weapons.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/fight/cpr-weapon.hbs`,
 
     // Actor: Mixins: Netrunning
     `systems/${game.system.id}/templates/actor/mixin/netrunning/cpr-installedPrograms.hbs`,

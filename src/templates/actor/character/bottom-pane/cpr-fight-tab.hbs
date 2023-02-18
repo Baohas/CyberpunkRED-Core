@@ -1,10 +1,14 @@
 {{cprTrace "START ACTOR CHARACTER BOTTOM-PANE CPR-FIGHT-TAB.HBS"}}
 <div class="fight-tab">
   {{#if (cprCompare actor.system.fightState "===" "Meatspace") }}
-    {{> "systems/cyberpunk-red-core/templates/actor/mixin/cpr-fight.hbs" }}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-criticalInjuries.hbs" }}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-armor.hbs" }}
+    {{> "systems/cyberpunk-red-core/templates/actor/character/bottom-pane/fight/cpr-weapons-list.hbs" }}
   {{/if}}
   {{#if (cprCompare actor.system.fightState "===" "Netspace") }}
-    {{> "systems/cyberpunk-red-core/templates/actor/mixin/cpr-netrunning.hbs" }}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/netrunning/cpr-netActions.hbs" }}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/netrunning/cpr-installedPrograms.hbs" }}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/netrunning/cpr-rezzedPrograms.hbs" }}
   {{/if}}
 </div>
 {{cprTrace "END CPR-FIGHT-TAB.HBS"}}
