@@ -8,6 +8,7 @@
   font-family: "Jost";
   background-color: @chrome-white;
   display: grid;
+  grid-template-columns: 0.05fr 1fr;
   grid-template-areas: "mook-name mook-details";
 
   .mook-name {
@@ -26,7 +27,7 @@
       "mook-program"
       "mook-crit"
       "mook-notes";
-    width: 650px;
+    width: 925px;
   }
 
   .mook-img-and-stats {
@@ -137,14 +138,18 @@
   .mook-gear {
     gap: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 0.5fr;
     grid-area: mook-gear;
     grid-template-areas: "mook-weapon-list mook-armor";
     .mook-weapon-list {
       grid-area: mook-weapon-list;
+      background-color: @chrome-white;
+      color: @flint-black;
     }
     .mook-armor {
       grid-area: mook-armor;
+      background-color: @chrome-white;
+      color: @flint-black;
     }
   }
 

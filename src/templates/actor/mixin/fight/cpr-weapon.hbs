@@ -1,5 +1,12 @@
 {{cprTrace "START ACTOR MIXIN FIGHT CPR-WEAPON.HBS"}}
 {{!-- Set Variables!  --}}
+{{#if (cprCompare (cprGetProp actor "type") "===" "character")}}
+  {{cprVar "isCharacter" true}}
+  {{cprVar "isMook" false}}
+{{else}}
+  {{cprVar "isCharacter" false}}
+  {{cprVar "isMook" true}}
+{{/if}}
 
 {{!-- Get attackMod --}}
 {{#if (cprCompare (cprApplyUpgrade this this.system.attackmod "this.attackmod") "!==" "0")}}
@@ -54,11 +61,18 @@
 
   {{!-- Weapon Name --}}
   <div class="weapon-name">
-    <a class="name item-edit text-semi"
+    <a class="name item-edit text-semi{{#if isMook}} deletable changeable{{/if}}"
+       {{#if isMook}}
+         tabindex="0"
+       {{/if}}
        data-item-id="{{this.id}}"
-       data-tooltip="{{this.name}}
-         <br/>
-         {{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}">
+       data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}
+                     <br/>
+                     {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}
+                     {{#if isMook}}
+                       <br/>
+                       {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}
+                     {{/if}}">
       {{this.name}}
     </a>
   </div>

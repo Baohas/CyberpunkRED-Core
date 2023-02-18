@@ -1,4 +1,4 @@
-{{cprTrace "START ACTOR MIXIN FIGHT CPR-ARMOR.HBS"}}
+{{cprTrace "START ACTOR MIXIN FIGHT MIXIN CPR-ARMOR.HBS"}}
 {{!-- Set Variables!  --}}
 {{#if (cprCompare (cprGetProp actor "type") "===" "character")}}
   {{cprVar "isCharacter" true}}
@@ -121,11 +121,18 @@
     <img alt="{{this.name}}" src="{{this.img}}"/>
   </div>
   <div class="armor-name">
-    <a class="name item-edit text-semi"
+    <a class="name item-edit text-semi{{#if isMook}} deletable changeable{{/if}}"
+       {{#if isMook}}
+         tabindex="0"
+       {{/if}}
        data-item-id="{{this.id}}"
-       data-tooltip="{{this.name}}
-         <br/>
-         {{localize "CPR.characterSheet.bottomPane.fight.clickToViewTheItem"}}">
+       data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}
+                     <br/>
+                     {{localize "CPR.mookSheet.items.ctrlClickToSendToChat"}}
+                     {{#if isMook}}
+                       <br/>
+                       {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}
+                     {{/if}}">
       {{this.name}}
     </a>
   </div>
