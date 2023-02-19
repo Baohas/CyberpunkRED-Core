@@ -5,9 +5,9 @@ import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRItem from "../../item/cpr-item.js";
-import PurchasePartPrompt from "../../dialog/cpr-purchase-part-prompt.js";
 import ConfigureSellToPrompt from "../../dialog/cpr-container-configure-sell-to-prompt.js";
 import PurchaseOrderPrompt from "../../dialog/cpr-container-vendor-purchase-order-prompt.js";
+import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
  * Implement the sheet for containers and shop keepers. This extends CPRActorSheet to make use
@@ -240,12 +240,21 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       }
     }
     if (!all) {
-      const itemText = SystemUtils.Format("CPR.dialog.purchasePart.text", {
-        itemName: item.name,
-      });
-      const formData = await PurchasePartPrompt.RenderPrompt(itemText).catch(
-        (err) => LOGGER.debug(err)
-      );
+      // Prepare data for dialog.
+      let formData = {
+        header: SystemUtils.Format("CPR.dialog.purchasePart.text", {
+          itemName: item.name,
+        }),
+        purchaseAmount: Math.ceil(item.system.amount / 2),
+      };
+
+      // Show "Purcahse Part" dialog.
+      formData = await CPRDialog.showDialog(formData, {
+        // Set options for the dialog.
+        title: SystemUtils.Localize("CPR.dialog.purchasePart.title"),
+        template: `systems/${game.system.id}/templates/dialog/cpr-purchase-part-prompt.hbs`,
+      }).catch((err) => LOGGER.debug(err));
+
       const inventoryAmount =
         typeof item.system.amount !== "undefined"
           ? parseInt(item.system.amount, 10)
