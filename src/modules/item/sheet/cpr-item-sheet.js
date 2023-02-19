@@ -5,9 +5,7 @@ import CPR from "../../system/config.js";
 import { CPRRoll } from "../../rolls/cpr-rolls.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import SelectCompatibleAmmo from "../../dialog/cpr-select-compatible-ammo.js";
-import NetarchLevelPrompt from "../../dialog/cpr-netarch-level-prompt.js";
 import NetarchRolltableGenerationPrompt from "../../dialog/cpr-netarch-rolltable-generation-prompt.js";
-import RoleAbilityPrompt from "../../dialog/cpr-role-ability-prompt.js";
 import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import SelectInstallItemsPrompt from "../../dialog/cpr-select-install-items-prompt.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
@@ -1026,12 +1024,16 @@ export default class CPRItemSheet extends ItemSheet {
         returnType: "array",
       };
 
-      formData = await RoleAbilityPrompt.RenderPrompt(formData).catch((err) =>
-        LOGGER.debug(err)
-      );
+      // Show "Role Ability" dialog.
+      formData = await CPRDialog.showDialog(formData, {
+        // Set options for dialog.
+        title: SystemUtils.Localize("CPR.dialog.createEditRoleAbility.title"),
+        template: `systems/${game.system.id}/templates/dialog/cpr-role-ability-prompt.hbs`,
+      }).catch((err) => LOGGER.debug(err));
       if (formData === undefined) {
         return;
       }
+
       // eslint-disable-next-line no-nested-ternary
       const skillObject =
         formData.skill !== "--" && formData.skill !== "varying"
@@ -1143,12 +1145,17 @@ export default class CPRItemSheet extends ItemSheet {
           hasRoll: editElement.hasRoll,
           returnType: "array",
         };
-        formData = await RoleAbilityPrompt.RenderPrompt(formData).catch((err) =>
-          LOGGER.debug(err)
-        );
+
+        // Show "Role Ability" dialog.
+        formData = await CPRDialog.showDialog(formData, {
+          // Set options for dialog.
+          title: SystemUtils.Localize("CPR.dialog.createEditRoleAbility.title"),
+          template: `systems/${game.system.id}/templates/dialog/cpr-role-ability-prompt.hbs`,
+        }).catch((err) => LOGGER.debug(err));
         if (formData === undefined) {
           return;
         }
+
         // eslint-disable-next-line no-nested-ternary
         const skillObject =
           formData.skill !== "--" && formData.skill !== "varying"
