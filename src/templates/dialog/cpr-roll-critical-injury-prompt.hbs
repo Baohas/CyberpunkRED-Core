@@ -1,19 +1,30 @@
 {{cprTrace "START DIALOG CPR-ROLL-CRITICAL-INJURY-PROMPT.HBS"}}
-<form>
-  <div class="cpr-hud-icon roll-critical-injury-config">
-    <div>{{localize "CPR.dialog.rollCriticalInjury.criticalInjurySelect"}}</div>
-    <div>
-      {{#if this }}
-        <select name="criticalInjuryTable">
-          {{#each this as |rollTableName| }}
-            <option value="{{rollTableName}}">
-              {{rollTableName}}
-            </option>
-          {{/each}}
-        </select>
-      {{else}}{{localize "CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning"}}
-      {{/if}}
+<form class="dialog-sheet">
+  <div class="dialog-header flexcol">
+    <div class="text-normal text-center">
+      {{localize "CPR.dialog.rollCriticalInjury.criticalInjurySelect"}}
     </div>
   </div>
+  <hr/>
+  <div class="dialog-grid flexcol">
+    <ol class="dialog-list">
+      <li class="dialog-item flexrow">
+        {{#if tableNames }}
+          <select name="criticalInjuryTable">
+            {{#select criticalInjuryTable}}
+              {{#each tableNames as |rollTableName| }}
+                <option value="{{rollTableName}}">
+                  {{rollTableName}}
+                </option>
+              {{/each}}
+            {{/select}}
+          </select>
+        {{else}}
+          {{localize "CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning"}}
+        {{/if}}
+      </li>
+    </ol>
+  </div>
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 </form>
 {{cprTrace "END CPR-ROLL-CRITICAL-INJURY-PROMPT.HBS"}}
