@@ -163,16 +163,16 @@ const actorHooks = () => {
       const updatedMax = updatedData.system.stats.emp
         ? updatedData.system.stats.emp.max
         : updatedData.system.stats.luck.max;
-      if (updatedValue && Number(updatedValue) > 9) {
+      if (updatedValue && Number(updatedValue) > 99) {
         SystemUtils.DisplayMessage(
           "warn",
-          SystemUtils.Localize("CPR.messages.doubleDigitStatValueWarn")
+          SystemUtils.Localize("CPR.messages.tripleDigitStatValueWarn")
         );
       }
-      if (updatedMax && Number(updatedMax) > 9) {
+      if (updatedMax && Number(updatedMax) > 99) {
         SystemUtils.DisplayMessage(
           "warn",
-          SystemUtils.Localize("CPR.messages.doubleDigitStatMaxWarn")
+          SystemUtils.Localize("CPR.messages.tripleDigitStatMaxWarn")
         );
       }
     }

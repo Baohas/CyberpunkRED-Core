@@ -5,22 +5,20 @@ export default function preloadHandlebarsTemplates() {
   LOGGER.log("Calling Preload Handlebars");
   return loadTemplates([
     // Actor: Character - Left Pane
-    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-deathsave-block.hbs`,
-    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-handle-block.hbs`,
-    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-hitpoint-block.hbs`,
-    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-humanity-block.hbs`,
-    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-image-block.hbs`,
-    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-ip-block.hbs`,
-    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-role-block.hbs`,
-    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-stat-block.hbs`,
+    `systems/${game.system.id}/templates/actor/character/cpr-left-pane.hbs`,
+    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-left-pane-info.hbs`,
+    `systems/${game.system.id}/templates/actor/character/left-pane/cpr-left-pane-stats.hbs`,
 
     // Actor: Character - Right Pane
+    `systems/${game.system.id}/templates/actor/character/cpr-right-pane.hbs`,
     `systems/${game.system.id}/templates/actor/character/right-pane/cpr-cyberware.hbs`,
     `systems/${game.system.id}/templates/actor/character/right-pane/cpr-effects.hbs`,
     `systems/${game.system.id}/templates/actor/character/right-pane/cpr-gear.hbs`,
     `systems/${game.system.id}/templates/actor/character/right-pane/cpr-skills.hbs`,
 
     // Actor: Character - Bottom Pane
+    `systems/${game.system.id}/templates/actor/character/cpr-bottom-pane.hbs`,
+
     `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-fight-tab.hbs`,
     `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-lifepath-tab.hbs`,
     `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-role-tab.hbs`,

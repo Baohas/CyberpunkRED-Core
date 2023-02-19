@@ -1101,4 +1101,19 @@ export default function registerHandlebarsHelpers() {
     LOGGER.trace("cprVar | handlebarsHelper | Called.");
     this[name] = value;
   });
+
+  /**
+   * Transform a string to upper/lowercase
+   */
+  Handlebars.registerHelper("cprTextTransform", (string, transform) => {
+    LOGGER.trace("cprTextTransform | handlebarsHelper | Called.");
+    switch (transform) {
+      case "upper":
+        return string.toUpperCase();
+      case "lower":
+        return string.toLowerCase();
+      default:
+        return string;
+    }
+  });
 }

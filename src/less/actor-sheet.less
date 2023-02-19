@@ -1,31 +1,12 @@
 // Overall Sheet Layout
 .actor-sheet {
   font-family: "Jost";
-  // Cyberpunk Red Core Sheet Styling
 
-  // The basic sheet should be white
   background-color: @chrome-white;
-
-  // Utilize grid for element placement on the sheet
   display: grid;
-
-  // We want white borders between each element
   grid-gap: 5px;
-
-  // At a top level, we will have 2x2 grid
-  // +------------------------------------------+
-  // | main & stats | tabs: skills, cyber, gear |
-  // |------------------------------------------+
-  // | tabs: Role, Combat, Lifepath             |
-  // +------------------------------------------+
-  //
-  // Originally we tried to just size this using auto and letting
-  // the sub-elements dictate the size. The problem was that when
-  // a sub-element didn't take up all of the space,
-  // it split the space 50/50.
-  // dictated by the elements contained in each grid
-  grid-template-columns: 265px auto;
-  grid-template-rows: auto auto;
+  grid-template-columns: 17.3rem auto;
+  grid-template-rows: 34rem auto;
 
   grid-template-areas:
     "pane-left pane-right"
@@ -33,39 +14,324 @@
 
   // Pane for main and stats
   .left-pane {
-    grid-area: pane-left;
     display: grid;
+    grid-template-columns: 13rem 4rem;
+    grid-template-rows: 1fr;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 0px 5px;
+    grid-auto-flow: row;
+    grid-template-areas: "actor-details actor-stats";
+    width: 100%;
+    height: 100%;
 
-    // main  is 200px wide
-    // stats is 60px wide
-    // plus the 5px grid-gap
-    max-width: 265px;
-    max-height: 475px;
-    grid-gap: 5px;
-
-    grid-template-columns: auto auto;
-    grid-template-areas: "main stats";
-
-    .main-section {
-      grid-area: main;
-      width: 200px;
-      height: 477px;
+    .actor-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 12.4rem 2.8rem 1.5rem 3.2em 3.2rem 3.2rem 3.2rem auto;
+      gap: 0.313rem 0.313rem;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "actor-details-image actor-details-image"
+        "actor-details-handle actor-details-handle"
+        "actor-details-role actor-details-role"
+        "actor-details-hp actor-details-humanity"
+        "actor-details-wound-state actor-details-death-save"
+        "actor-details-improvement-points actor-details-reputation"
+        "actor-details-eurobucks actor-details-eurobucks"
+        "actor-details-filter actor-details-filter";
+      grid-area: actor-details;
       background-color: @wyrm-red;
-
-      & > div {
-        margin: 5px;
-      }
+      padding: 5px;
     }
 
-    .stats-section {
-      grid-area: stats;
-      width: 58px;
+    .actor-details-image {
+      clip-path: polygon(25px 0, 100% 0, 100% 100%, 0 100%, 0 25px);
+      grid-area: actor-details-image;
+      display: grid;
+    }
+
+    .actor-details-handle {
+      grid-area: actor-details-handle;
+      display: grid;
+      background-color: @chrome-white;
+    }
+
+    .actor-details-role {
+      grid-area: actor-details-role;
+      display: grid;
+      background-color: @chrome-white;
+    }
+
+    .actor-details-hp {
+      grid-area: actor-details-hp;
+      display: grid;
+      background-color: @chrome-white;
+      grid-template-columns: 1fr 0fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "actor-details-hp-title actor-details-hp-title actor-details-hp-title"
+        "actor-details-hp-current actor-details-hp-of actor-details-hp-max";
+      width: 100%;
+    }
+
+    .actor-details-hp-title {
+      grid-area: actor-details-hp-title;
+      display: grid;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+    .actor-details-hp-current {
+      grid-area: actor-details-hp-current;
+      display: grid;
+      align-items: center;
+    }
+    .actor-details-hp-of {
+      grid-area: actor-details-hp-of;
+      display: grid;
+      align-items: center;
+    }
+    .actor-details-hp-max {
+      grid-area: actor-details-hp-max;
+      display: grid;
+      align-items: center;
+    }
+
+    .actor-details-humanity {
+      grid-area: actor-details-humanity;
+      display: grid;
+      background-color: @chrome-white;
+      grid-template-columns: 1fr 0fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "actor-details-humanity-title actor-details-humanity-title actor-details-humanity-title"
+        "actor-details-humanity-current actor-details-humanity-of actor-details-humanity-max";
+    }
+
+    .actor-details-humanity-title {
+      grid-area: actor-details-humanity-title;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+    .actor-details-humanity-current {
+      grid-area: actor-details-humanity-current;
+      display: grid;
+      align-items: center;
+    }
+    .actor-details-humanity-of {
+      grid-area: actor-details-humanity-of;
+      display: grid;
+      align-items: center;
+    }
+    .actor-details-humanity-max {
+      grid-area: actor-details-humanity-max;
+      display: grid;
+      align-items: center;
+    }
+
+    .actor-details-death-save {
+      grid-area: actor-details-death-save;
+      display: grid;
+      background-color: @chrome-white;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "actor-details-death-save-title actor-details-death-save-title actor-details-death-save-title"
+        "actor-details-death-save-reset actor-details-death-save-value actor-details-death-save-actions";
+    }
+
+    .actor-details-death-save-reset {
+      grid-area: actor-details-death-save-reset;
+    }
+
+    .actor-details-death-save-title {
+      grid-area: actor-details-death-save-title;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+    .actor-details-death-save-value {
+      grid-area: actor-details-death-save-value;
+    }
+    .actor-death-save-actions {
+      grid-area: actor-details-death-save-actions;
+    }
+
+    .actor-details-wound-state {
+      grid-area: actor-details-wound-state;
+      display: grid;
+      background-color: @chrome-white;
 
       grid-template-columns: 1fr;
-      grid-template-rows: repeat(10, 1fr);
+      grid-template-rows: 1fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "actor-details-wound-state-title"
+        "actor-details-wound-state-value";
+    }
 
-      & > div {
-        margin: 5px;
+    .actor-details-wound-state-title {
+      grid-area: actor-details-wound-state-title;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+    .actor-details-wound-state-value {
+      grid-area: actor-details-wound-state-value;
+    }
+
+    .actor-details-improvement-points {
+      grid-area: actor-details-improvement-points;
+      display: grid;
+      background-color: @chrome-white;
+
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "actor-details-improvement-points-title actor-details-improvement-points-title actor-details-improvement-points-title"
+        "actor-details-wound-state-blank        actor-details-improvement-points-value actor-details-improvement-points-actions";
+    }
+
+    .actor-details-improvement-points-title {
+      grid-area: actor-details-improvement-points-title;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+    .actor-details-improvement-points-value {
+      grid-area: actor-details-improvement-points-value;
+    }
+    .actor-details-improvement-points-actions {
+      grid-area: actor-details-improvement-points-actions;
+    }
+    .actor-details-wound-statee-blank {
+      grid-area: actor-details-wound-state-blank;
+    }
+
+    .actor-details-reputation {
+      grid-area: actor-details-reputation;
+      display: grid;
+      background-color: @chrome-white;
+      grid-auto-columns: 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "actor-details-reputation-title actor-details-reputation-title actor-details-reputation-title"
+        "actor-details-reputation-facedown actor-details-reputation-value actor-details-reputation-actions";
+    }
+
+    .actor-details-reputation-title {
+      grid-area: actor-details-reputation-title;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+    .actor-details-reputation-value {
+      grid-area: actor-details-reputation-value;
+    }
+    .actor-details-reputation-actions {
+      grid-area: actor-details-reputation-actions;
+    }
+    .actor-details-reputation-facedown {
+      grid-area: actor-details-reputation-facedown;
+    }
+
+    .actor-details-eurobucks {
+      grid-area: actor-details-eurobucks;
+      display: grid;
+      background-color: @chrome-white;
+
+      grid-template-columns: 2rem 1fr 2rem;
+      grid-template-rows: 1fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "actor-details-eurobucks-title actor-details-eurobucks-title actor-details-eurobucks-title"
+        "actor-details-eurobucks-blank actor-details-eurobucks-value actor-details-eurobucks-ledger";
+    }
+
+    .actor-details-eurobucks-title {
+      grid-area: actor-details-eurobucks-title;
+      display: block;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+
+    .actor-details-eurobucks-value {
+      grid-area: actor-details-eurobucks-value;
+      display: block;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .actor-details-eurobucks-ledger {
+      grid-area: actor-details-eurobucks-ledger;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .actor-details-filter {
+      grid-area: actor-details-filter;
+      display: grid;
+      grid-template-columns: 5fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 5px 0px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "actor-details-filter-box actor-details-filter-actions";
+      background-color: @chrome-white;
+    }
+
+    .actor-details-filter-box {
+      grid-area: actor-details-filter-box;
+      display: grid;
+    }
+    .actor-details-filter-actions {
+      grid-area: actor-details-filter-actions;
+      display: grid;
+      align-items: center;
+    }
+
+    .actor-stats {
+      display: grid;
+      gap: 5px 0px;
+      background-color: @wyrm-red;
+      padding: 5px;
+
+      .actor-stats-stat {
+        background-color: @chrome-white;
+      }
+
+      .actor-stats-value {
+        background-color: @chrome-white;
+      }
+      .actor-stats-of {
+        background-color: @chrome-white;
+        .actor-stats-of-min {
+          display: flex;
+          flex-grow: 2;
+          padding-right: 0px;
+          justify-content: right;
+          input {
+            padding: 0px;
+          }
+        }
+        .actor-stats-of-sep {
+          display: flex;
+          flex-shrink: 3;
+        }
+        .actor-stats-of-max {
+          display: flex;
+          flex-grow: 2;
+          padding-left: 0px;
+          justify-content: left;
+          input {
+            padding: 0px;
+          }
+        }
       }
     }
   }
@@ -76,37 +342,27 @@
     width: auto;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto auto;
+    grid-template-rows: 1.44rem auto;
     grid-template-areas:
       "tabs-right"
-      "content-right"
-      "sheet-filter";
+      "content-right";
 
     .right-tabs-section {
       grid-area: tabs-right;
 
       width: 100%;
-      height: 23px;
     }
 
     .right-content-section {
       grid-area: content-right;
       display: flex;
       width: 100%;
-      height: 454px;
+      height: auto;
 
       border-color: @wyrm-red;
       border-style: solid;
       border-width: 5px;
       overflow-y: scroll;
-    }
-
-    .sheet-filter-section {
-      grid-area: sheet-filter;
-      display: flex;
-      width: 100%;
-      align-items: center;
-      border-width: 5px;
     }
 
     .text-pill {
@@ -174,78 +430,6 @@
   grid-template-rows: auto;
   width: inherit;
   background-color: @chrome-white;
-}
-
-.gear-tab-data {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: 370px auto;
-  width: inherit;
-  background-color: @chrome-white;
-  grid-template-areas:
-    "gear-top"
-    "gear-bottom";
-
-  .top-pane-gear {
-    grid-area: gear-top;
-    overflow-y: scroll;
-    background-color: @chrome-white;
-    scrollbar-width: thin;
-  }
-
-  .bottom-pane-gear {
-    grid-area: gear-bottom;
-    background-color: @chrome-white;
-    display: flex;
-    white-space: nowrap;
-    border-width: 5px;
-    border-top-color: @wyrm-red;
-    border-top-style: solid;
-
-    .eurobucks {
-      display: grid;
-      grid-template-areas:
-        "current-eurobucks"
-        "modify-eurobucks";
-
-      .current-eurobucks {
-        grid-area: current-eurobucks;
-
-        .eurobucks-text {
-          flex: 0 0 83px;
-        }
-
-        .eurobucks-value {
-          flex: 1;
-        }
-
-        .eurobucks-open-ledger {
-          flex: 0 0 15px;
-          text-align: right;
-        }
-      }
-
-      .modify-eurobucks {
-        grid-area: modify-eurobucks;
-
-        .eurobucks-modify-text {
-          flex: 0 0 80px;
-        }
-
-        .eurobucks-modify-input {
-          flex: 1 0 100px;
-        }
-
-        .eurobucks-modify-buttons {
-          flex: 1 0 50px;
-        }
-
-        .eurobucks-modify-reason {
-          flex: 1 0 150px;
-        }
-      }
-    }
-  }
 }
 
 .lifepath-tab {
@@ -422,16 +606,6 @@
   overflow: hidden;
 }
 
-.stat-block {
-  height: 42px;
-  width: 48px;
-}
-
-.main-block {
-  height: 41px;
-  width: 190px;
-}
-
 .block-label {
   text-align: center;
 }
@@ -510,10 +684,4 @@
 }
 
 .sheet-cprFilter-section {
-  .filter-contents {
-    margin: 5px 0;
-    border-radius: 3px;
-    border: 1px solid #333;
-    padding: 5px 10px;
-  }
 }

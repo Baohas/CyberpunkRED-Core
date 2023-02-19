@@ -69,18 +69,6 @@ const registerSystemSettings = () => {
     },
   });
 
-  game.settings.register(game.system.id, "enableSheetContentFilter", {
-    name: "CPR.settings.enableSheetContentFilter.name",
-    hint: "CPR.settings.enableSheetContentFilter.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed enableSheetContentFilter to ${value}`);
-    },
-  });
-
   game.settings.register(game.system.id, "enablePauseAnimation", {
     name: "CPR.settings.enablePauseAnimation.name",
     hint: "CPR.settings.enablePauseAnimation.hint",
