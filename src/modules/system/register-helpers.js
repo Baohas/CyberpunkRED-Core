@@ -377,8 +377,9 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprReverse", (arr) => {
     LOGGER.trace("cprReverse | handlebarsHelper | Called.");
-    arr.reverse();
-    return arr;
+    // reverse() mutates the original array, so first we create a shallow copy using the spread operator.
+    const reversed = [...arr].reverse();
+    return reversed;
   });
 
   /**

@@ -6,7 +6,6 @@ import LOGGER from "../../utils/cpr-logger.js";
 import Rules from "../../utils/cpr-rules.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
-import LedgerEditPrompt from "../../dialog/cpr-ledger-edit-prompt.js";
 import CPRMod from "../../rolls/cpr-modifiers.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
@@ -374,7 +373,6 @@ export default class CPRActorSheet extends ActorSheet {
       .click((event) => this._fireCheckboxToggle(event));
 
     // Reputation related listeners
-    html.find(".reputation-edit-button").click(() => this._updateReputation());
     html
       .find(".reputation-open-ledger")
       .click(() => this.showLedger("reputation"));
@@ -1236,13 +1234,12 @@ export default class CPRActorSheet extends ActorSheet {
    *
    * @param {String} prop - name of the property that has a ledger
    */
-  showLedger(prop) {
+  async showLedger(prop) {
     LOGGER.trace("showLedger | CPRActor | Called.");
     if (this.actor.isLedgerProperty(prop)) {
-      const led = new CPRLedger();
-      led.setActor(this.actor);
-      led.setLedgerContent(prop, this.actor.listRecords(prop));
-      led.render(true);
+      await CPRLedger.showDialog(this.actor, prop).catch((err) =>
+        LOGGER.debug(err)
+      );
     } else {
       SystemUtils.DisplayMessage(
         "error",
@@ -1507,65 +1504,6 @@ export default class CPRActorSheet extends ActorSheet {
     ) {
       this.options.cprContentFilter = "";
       this._render();
-    }
-  }
-
-  /**
-   * Called when the Reputation editing glyph is clicked. Pops up a dialog to get details about the change
-   * and a reason, and then saves those similar to IP.
-   *
-   * @callback
-   * @private
-   * @returns {null}
-   */
-  async _updateReputation() {
-    LOGGER.trace("_updateReputation | CPRCharacterActorSheet | Called.");
-    const formData = await LedgerEditPrompt.RenderPrompt(
-      "CPR.characterSheet.bottomPane.reputationEdit"
-    ).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
-      // Prompt was closed
-      return;
-    }
-    if (formData.changeValue !== null && formData.changeValue !== "") {
-      switch (formData.action) {
-        case "add": {
-          this._gainLedger(
-            "reputation",
-            parseInt(formData.changeValue, 10),
-            `${formData.changeReason} - ${game.user.name}`
-          );
-          break;
-        }
-        case "subtract": {
-          this._loseLedger(
-            "reputation",
-            parseInt(formData.changeValue, 10),
-            `${formData.changeReason} - ${game.user.name}`
-          );
-          break;
-        }
-        case "set": {
-          this._setLedger(
-            "reputation",
-            parseInt(formData.changeValue, 10),
-            `${formData.changeReason} - ${game.user.name}`
-          );
-          break;
-        }
-        default: {
-          SystemUtils.DisplayMessage(
-            "error",
-            SystemUtils.Localize("CPR.messages.reputationEditInvalidAction")
-          );
-          break;
-        }
-      }
-    } else {
-      SystemUtils.DisplayMessage(
-        "warn",
-        SystemUtils.Localize("CPR.messages.reputationEditWarn")
-      );
     }
   }
 }
