@@ -34,6 +34,40 @@
 
 ### Changes
 
+We have rewritten the Weapons & Armor section of the Character sheet and Mook sheet reducing the amount of duplicated code behind the scenes. This allows us to more easily make changes or add new features to these sections and have them shared between both Character and Actors.
+
+We have also rewritten the Character Info and Stact blocks to fix layout issues exposed by the font change in the last update and move some sheet functionality into this area. This also allows character to have LUCK and EMP STATs of > 9 without layout issues!
+
+- Character Sheet Skills now show the related STAT before the Skill name
+- Character Sheet Fight Tab
+  - Critical Injuries
+    - Add Critical Injury Image
+    - Display `Death Save +1` if an Injury increases the Death Save
+    - Display the name of any Active Effects that are applied
+  - Armor
+    - Add Armor Image
+    - Update the Layout
+  - Weapons
+    - Move Weapon actions (Reload etc.) to take up less space
+    - Show `Autofire` multiplier
+    - Only show `Autofire` or `Suppressive` if configured
+    - Show loaded Ammo Type
+    - Show weapon stats
+      - ROF
+      - Attack Modifier
+      - Damage
+      - Hand Required
+- Use the same code for Weapons/Ammo in Character & Mook Sheets
+- Character Info block
+  - Rewrite to add more functionality
+  - Move Eurobucks from Gear
+  - Move Reputation from Lifepath
+  - Move Sheet Search/Filter from right pane no mans land
+    - This removes the System Option and is displayed for all users
+  - Remove the HP/Humanity Calculator options
+    - Recalc functionality moved to Section Title
+  - Move Facedown roll from Fight tab to Reputation section
+
 ### Bug Fixes
 
 - Fixed a capitalisation issue in the medical grade cyber limbs. Thanks ButchAmy!
