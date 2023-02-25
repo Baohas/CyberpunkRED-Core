@@ -9,23 +9,23 @@
 }
 
 .rollcard-top {
-  padding-bottom: 5px;
+  padding-bottom: 0.313rem;
 }
 
 .rollcard-critinjury-icon {
-  width: 52px;
-  height: 52px;
+  width: 3.25rem;
+  height: 3.25rem;
 }
 
 .rollcard-critinjury-data {
   grid-area: d6-data;
   display: flex;
-  padding-left: 5px;
+  padding-left: 0.313rem;
   align-items: center;
 }
 .rollcard-subtitle {
   display: grid;
-  grid-template-columns: 20px auto 20px;
+  grid-template-columns: 1.25rem auto 1.25rem;
   grid-template-rows: auto;
   grid-template-areas:
     "subtitle-left subtitle-center subtitle-right"
@@ -60,14 +60,14 @@
 
 .rollcard {
   display: grid;
-  grid-template-columns: 270px;
+  grid-template-columns: 16.875rem;
   grid-template-rows: auto;
 }
 
 .generic-rollcard-data,
 .d10-rollcard-data {
   display: grid;
-  grid-template-columns: 160px auto;
+  grid-template-columns: 10rem auto;
   grid-template-rows: auto auto;
   grid-template-areas:
     "d10-dice d10-number"
@@ -80,7 +80,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding-left: 5px;
+  padding-left: 0.313rem;
 }
 
 .d10-dice-div {
@@ -94,10 +94,10 @@
 .generic-number-div,
 .d10-number-div {
   grid-area: d10-number;
-  min-height: 70px;
+  min-height: 4.375rem;
   text-align: right;
   font-size: @font-massive;
-  padding-right: 5px;
+  padding-right: 0.313rem;
 }
 
 .generic-data-div,
@@ -107,13 +107,13 @@
   flex-direction: column;
   text-align: right;
   justify-content: flex-end;
-  padding-right: 5px;
+  padding-right: 0.313rem;
 }
 
 ///
 .d6-rollcard-data {
   display: grid;
-  grid-template-columns: 175px auto;
+  grid-template-columns: 10.938rem auto;
   grid-template-rows: auto auto;
   grid-template-areas:
     "d6-dice d6-number"
@@ -130,10 +130,10 @@
 
 .d6-number-div {
   grid-area: d6-number;
-  min-height: 70px;
+  min-height: 4.375rem;
   text-align: right;
   font-size: @font-massive;
-  padding-right: 5px;
+  padding-right: 0.313rem;
 }
 
 .d6-data-div {
@@ -142,7 +142,7 @@
   flex-direction: column;
   text-align: right;
   justify-content: flex-end;
-  padding-right: 5px;
+  padding-right: 0.313rem;
 }
 
 .bottom-div {
@@ -154,18 +154,18 @@
 }
 
 .d10 {
-  height: 70px;
-  width: 70px;
+  height: 4.375rem;
+  width: 4.375rem;
   display: block;
   border: none;
   align-self: center;
   &-20 {
-    height: 20px;
-    width: 20px;
+    height: 1.25rem;
+    width: 1.25rem;
   }
   &-30 {
-    height: 30px;
-    width: 30px;
+    height: 1.875rem;
+    width: 1.875rem;
   }
 }
 
@@ -174,16 +174,16 @@
   border: none;
   align-self: center;
   &-20 {
-    height: 20px;
-    width: 20px;
+    height: 1.25rem;
+    width: 1.25rem;
   }
   &-30 {
-    height: 30px;
-    width: 30px;
+    height: 1.875rem;
+    width: 1.875rem;
   }
   &-40 {
-    height: 40px;
-    width: 40px;
+    height: 2.5rem;
+    width: 2.5rem;
   }
 }
 
@@ -193,11 +193,11 @@
 
 .chat-mode-indicator {
   display: inline-block;
-  margin: 0 3px 0 0;
-  padding: 0 3px;
+  margin: 0 0.188rem 0 0;
+  padding: 0 0.188rem;
   line-height: 1rem;
-  border: 1px solid #999;
-  border-radius: 3px;
+  border: 0.063rem solid #999;
+  border-radius: 0.188rem;
   background: rgba(0, 0, 0, 0.05);
 }
 
@@ -210,19 +210,19 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 4px;
-  clip-path: polygon(0 15px, 0 100%, 100% 100%, 100% 0, 15px 0);
+  padding: 0.25rem;
+  clip-path: polygon(0 0.938rem, 0 100%, 100% 100%, 100% 0, 0.938rem 0);
 
   &::before {
     position: absolute;
-    height: calc(100% - 8px);
-    width: calc(100% - 8px);
-    top: 4px;
-    left: 4px;
+    height: calc(100% - 0.5rem);
+    width: calc(100% - 0.5rem);
+    top: 0.25rem;
+    left: 0.25rem;
 
     content: "";
     background-color: @chrome-white;
-    clip-path: polygon(0 14px, 0 100%, 100% 100%, 100% 0, 14px 0);
+    clip-path: polygon(0 0.875rem, 0 100%, 100% 100%, 100% 0, 0.875rem 0);
     z-index: -1;
   }
 }

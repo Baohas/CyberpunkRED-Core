@@ -4,8 +4,8 @@
   font-family: "Jost";
   background-color: @chrome-white;
   display: grid;
-  min-width: 615px;
-  width: 615px;
+  min-width: 38.438rem;
+  width: 38.438rem;
   grid-template-rows: auto;
   grid-template-areas:
     "demon-stats"
@@ -14,7 +14,7 @@
   .demon-stats {
     display: grid;
     grid-area: demon-stats;
-    grid-template-rows: 10px 20px;
+    grid-template-rows: 0.625rem 1.25rem;
     grid-template-areas:
       "demon-top"
       "demon-head"
@@ -35,27 +35,27 @@
   .demon-details {
     display: grid;
     grid-area: demon-details;
-    grid-template-columns: 72px 1fr;
+    grid-template-columns: 4.5rem 1fr;
     grid-template-areas: "demon-icon demon-notes";
 
     .demon-icon {
-      gap: 5px;
-      margin-top: 5px;
-      height: 72px;
-      width: 72px;
+      gap: 0.313rem;
+      margin-top: 0.313rem;
+      height: 4.5rem;
+      width: 4.5rem;
       display: block;
       grid-area: demon-icon;
       overflow: hidden;
     }
     .demon-notes {
-      gap: 5px;
+      gap: 0.313rem;
       grid-area: demon-notes;
     }
   }
 
   .demon-edit-section {
-    min-height: 72px;
-    min-width: 135px;
+    min-height: 4.5rem;
+    min-width: 8.438rem;
     height: unset;
     display: flex;
     flex: 1 0 auto;
@@ -65,23 +65,23 @@
 
   .demon-label-corner-both {
     clip-path: polygon(
-      10px 0,
-      calc(100% - 10px) 0,
-      100% 10px,
+      0.625rem 0,
+      calc(100% - 0.625rem) 0,
+      100% 0.625rem,
       100% 100%,
       0 100%,
-      0 10px
+      0 0.625rem
     );
-    height: 14px;
+    height: 0.875rem;
   }
 
   .demon-label-corner-left {
-    clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
-    height: 14px;
+    clip-path: polygon(0.625rem 0, 100% 0, 100% 100%, 0 100%, 0 0.625rem);
+    height: 0.875rem;
   }
 
   .demon-label-corner-right {
-    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
-    height: 14px;
+    clip-path: polygon(0 0, calc(100% - 0.625rem) 0, 100% 0.625rem, 100% 100%, 0 100%);
+    height: 0.875rem;
   }
 }

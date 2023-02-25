@@ -10,7 +10,7 @@
   display: grid;
 
   // We want white borders between each element
-  grid-gap: 5px;
+  grid-gap: 0.313rem;
 
   // At a top level, we will have 2x2 grid
   // +------------------------------------------+
@@ -25,7 +25,7 @@
   // it split the space 50/50.
   // dictated by the elements contained in each grid
   grid-template-columns: auto;
-  grid-template-rows: 72px auto;
+  grid-template-rows: 4.5rem auto;
 
   grid-template-areas:
     "item-top-pane"
@@ -36,10 +36,10 @@
 
     display: grid;
     background-color: @wyrm-red;
-    padding: 5px;
-    height: 72px;
+    padding: 0.313rem;
+    height: 4.5rem;
 
-    grid-template-columns: 67px auto;
+    grid-template-columns: 4.188rem auto;
     grid-template-rows: auto;
     grid-template-areas: "item-image item-header";
 
@@ -47,8 +47,8 @@
       grid-area: item-image;
       display: flex;
       background-color: @wyrm-red;
-      height: 62px;
-      width: 62px;
+      height: 3.875rem;
+      width: 3.875rem;
       overflow: hidden;
     }
 
@@ -56,12 +56,12 @@
       grid-area: item-header;
       display: flex;
       background-color: @chrome-white;
-      height: 62px;
+      height: 3.875rem;
     }
   }
 
   .tab-label {
-    height: 18px;
+    height: 1.125rem;
   }
 
   .item-bottom-pane {
@@ -69,7 +69,7 @@
     grid-area: item-bottom-pane;
 
     grid-template-columns: auto;
-    grid-template-rows: 18px auto;
+    grid-template-rows: 1.125rem auto;
     grid-template-areas:
       "item-bottom-tabs"
       "item-bottom-content";
@@ -87,7 +87,7 @@
 
       border-color: @wyrm-red;
       border-style: solid;
-      border-width: 5px;
+      border-width: 0.313rem;
       overflow-y: hidden;
       flex-wrap: wrap;
     }
@@ -105,13 +105,13 @@
 
 .item-description-tab {
   display: grid;
-  grid-template-columns: 135px auto;
+  grid-template-columns: 8.438rem auto;
   grid-template-rows: auto;
   grid-template-areas: "item-summary-pane item-description-pane";
 
   flex: 1 0 auto;
-  min-height: 150px;
-  grid-gap: 5px;
+  min-height: 9.375rem;
+  grid-gap: 0.313rem;
   background-color: @wyrm-red;
   width: inherit;
 
@@ -119,8 +119,8 @@
     grid-area: item-summary-pane;
     background-color: @chrome-white;
     height: unset;
-    min-width: 135px;
-    padding: 2px;
+    min-width: 8.438rem;
+    padding: 0.125rem;
 
     .summary-name,
     .item-summary-line {
@@ -157,34 +157,34 @@
 
 .item-image-block {
   .item-image-block-img {
-    height: 62px;
-    width: 62px;
-    clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px);
+    height: 3.875rem;
+    width: 3.875rem;
+    clip-path: polygon(0.938rem 0, 100% 0, 100% 100%, 0 100%, 0 0.938rem);
     object-fit: contain;
   }
 }
 
 .item-netarch-section {
   background-color: @wyrm-red;
-  padding-top: 5px;
+  padding-top: 0.313rem;
 }
 
 .item-netarch-grid {
   display: grid;
-  grid-template-columns: 30px 30px 1fr 80px;
+  grid-template-columns: 1.875rem 1.875rem 1fr 5rem;
   grid-template-areas: "netarch-level netarch-dv netarch-content netarch-actions";
-  gap: 4px 4px;
+  gap: 0.25rem 0.25rem;
 }
 
 .netarch-level {
   grid-area: netarch-level;
-  flex: 0 0 30px;
+  flex: 0 0 1.875rem;
   text-align: center;
 }
 
 .netarch-dv {
   grid-area: netarch-dv;
-  flex: 0 0 30px;
+  flex: 0 0 1.875rem;
   text-align: center;
 }
 
@@ -194,7 +194,7 @@
 
 .netarch-actions {
   grid-area: netarch-actions;
-  flex: 0 0 80px;
+  flex: 0 0 5rem;
   text-align: end;
 }
 
@@ -210,7 +210,7 @@
 
 .item-role-section {
   background-color: @wyrm-red;
-  padding-top: 5px;
+  padding-top: 0.313rem;
 }
 
 .role-list-content {

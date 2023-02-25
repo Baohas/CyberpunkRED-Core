@@ -9,14 +9,14 @@
   display: grid;
 
   // We want white borders between each element
-  grid-gap: 5px;
+  grid-gap: 0.313rem;
 
   // At a top level, we will have 2x1 grid
   // +-----------------------------+
   // | img, name       | inventory |
   // | settings, money | content   |
   // +-----------------------------+
-  grid-template-columns: 210px auto;
+  grid-template-columns: 13.125rem auto;
   grid-template-areas: "pane-left pane-right";
 
   // Pane for main and stats
@@ -24,11 +24,11 @@
     grid-area: pane-left;
     display: grid;
 
-    max-width: 210px;
-    grid-gap: 5px;
-    padding: 5px;
+    max-width: 13.125rem;
+    grid-gap: 0.313rem;
+    padding: 0.313rem;
 
-    grid-template-rows: 200px 30px 30px 27px auto;
+    grid-template-rows: 12.5rem 1.875rem 1.875rem 1.688rem auto;
     grid-template-areas:
       "image"
       "name"
@@ -38,8 +38,8 @@
 
     .image-block {
       grid-area: image;
-      width: 200px;
-      height: 200px;
+      width: 12.5rem;
+      height: 12.5rem;
       background-color: @wyrm-red;
       overflow: hidden;
     }
@@ -54,13 +54,13 @@
       .trade-with-label {
         display: flex;
         align-items: center;
-        padding: 5px;
+        padding: 0.313rem;
       }
 
       .trade-with-dropdown {
-        width: 105px;
+        width: 6.563rem;
         float: right;
-        padding-right: 5px;
+        padding-right: 0.313rem;
       }
     }
 
@@ -70,37 +70,37 @@
       .container-type-label {
         display: flex;
         align-items: center;
-        padding: 5px;
+        padding: 0.313rem;
       }
 
       .container-type-dropdown {
-        width: 150px;
+        width: 9.375rem;
         float: right;
-        padding-right: 5px;
+        padding-right: 0.313rem;
       }
 
       .eurobucks-modify-reason-label {
-        padding: 5px;
+        padding: 0.313rem;
         max-width: fit-content;
       }
 
       .container-type-settings {
-        padding: 5px;
+        padding: 0.313rem;
       }
 
       .container-shop-settings {
-        padding: 5px;
+        padding: 0.313rem;
       }
 
       .container-eurobucks-ledger {
-        padding: 5px;
+        padding: 0.313rem;
       }
     }
 
     .eurobucks-section {
       grid-area: eurobucks;
-      padding: 5px;
-      height: 27px;
+      padding: 0.313rem;
+      height: 1.688rem;
 
       .eurobucks-label {
         display: flex;
@@ -117,10 +117,10 @@
 
     border-color: @wyrm-red;
     border-style: solid;
-    border-width: 5px;
+    border-width: 0.313rem;
 
     .right-content {
-      min-width: 750px;
+      min-width: 46.875rem;
       width: 100%;
       overflow-y: scroll;
     }

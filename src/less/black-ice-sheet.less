@@ -4,8 +4,8 @@
   font-family: "Jost";
   background-color: @chrome-white;
   display: grid;
-  min-width: 700px;
-  width: 715px;
+  min-width: 43.75rem;
+  width: 44.688rem;
   grid-template-rows: auto;
   grid-template-areas:
     "bice-stats"
@@ -14,7 +14,7 @@
   .bice-stats {
     display: grid;
     grid-area: bice-stats;
-    grid-template-rows: 10px 20px;
+    grid-template-rows: 0.625rem 1.25rem;
     grid-template-areas:
       "bice-top"
       "bice-head"
@@ -35,19 +35,19 @@
   .bice-details {
     display: grid;
     grid-area: bice-details;
-    grid-template-columns: 72px 1fr;
+    grid-template-columns: 4.5rem 1fr;
     grid-template-areas: "bice-icon bice-effects";
 
     .bice-icon {
-      gap: 5px;
-      height: 72px;
-      width: 72px;
+      gap: 0.313rem;
+      height: 4.5rem;
+      width: 4.5rem;
       display: block;
       grid-area: bice-icon;
       overflow: hidden;
     }
     .bice-effects {
-      gap: 5px;
+      gap: 0.313rem;
       display: block;
       grid-area: bice-effects;
     }
@@ -55,23 +55,23 @@
 
   .bice-label-corner-both {
     clip-path: polygon(
-      10px 0,
-      calc(100% - 10px) 0,
-      100% 10px,
+      0.625rem 0,
+      calc(100% - 0.625rem) 0,
+      100% 0.625rem,
       100% 100%,
       0 100%,
-      0 10px
+      0 0.625rem
     );
-    height: 13px;
+    height: 0.813rem;
   }
 
   .bice-label-corner-left {
-    clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
-    height: 13px;
+    clip-path: polygon(0.625rem 0, 100% 0, 100% 100%, 0 100%, 0 0.625rem);
+    height: 0.813rem;
   }
 
   .bice-label-corner-right {
-    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
-    height: 13px;
+    clip-path: polygon(0 0, calc(100% - 0.625rem) 0, 100% 0.625rem, 100% 100%, 0 100%);
+    height: 0.813rem;
   }
 }
