@@ -6,7 +6,6 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRItem from "../../item/cpr-item.js";
 import ConfigureSellToPrompt from "../../dialog/cpr-container-configure-sell-to-prompt.js";
-import PurchaseOrderPrompt from "../../dialog/cpr-container-vendor-purchase-order-prompt.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
@@ -418,7 +417,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       )} ${cprItemName}`;
     }
 
-    const offerMessage = `${SystemUtils.Format(
+    const dialogMessage = `${SystemUtils.Format(
       "CPR.dialog.container.vendor.offerToBuy",
       {
         vendorName: this.actor.name,
@@ -427,11 +426,18 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
         percent,
       }
     )}`;
-    const formData = await PurchaseOrderPrompt.RenderPrompt(offerMessage).catch(
-      (err) => LOGGER.debug(err)
-    );
 
-    if (formData !== undefined) {
+    // Show "Default" prompt.
+    const dialogData = await CPRDialog.showDialog(
+      { dialogMessage },
+      {
+        title: SystemUtils.Localize(
+          "CPR.dialog.container.vendor.purchaseOrderTitle"
+        ),
+      }
+    ).catch((err) => LOGGER.debug(err));
+
+    if (dialogData !== undefined) {
       const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
       if (
         loadableTypes.includes(item.type) &&
