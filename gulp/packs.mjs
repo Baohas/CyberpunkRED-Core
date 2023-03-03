@@ -7,7 +7,7 @@ import path from "path";
 import sanitize from "sanitize-filename";
 
 import * as config from "./config.mjs";
-import { DEBUG, SYSTEM_FILE } from "./constants.mjs";
+import { DEBUG, SYSTEM_FILE, SYSTEM_NAME } from "./constants.mjs";
 
 const destFolder = path.resolve(config.dataPath);
 const srcFolder = "src";
@@ -488,4 +488,91 @@ async function genPacks() {
   });
 }
 
-export { extPacks, genPacks };
+// Export from Foundry Packs to Babele files for translation
+// Loop over each pack.db in `dataDir/packs` and create babele file for
+// translation using crowdin
+async function genPacksBabele() {
+  return new Promise((cb) => {
+    log("Generating Babele Files...");
+    const fragmentDir = path.resolve(srcFolder, "packs");
+    const babeleDir = path.resolve(srcFolder, "babele", "en");
+    const sysFile = JSON.parse(
+      fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE))
+    );
+    const { packs } = sysFile;
+
+    // Create the packs dir if it doesn't exist.
+    if (!fs.existsSync(babeleDir)) {
+      fs.mkdirSync(babeleDir);
+    }
+
+    // This is a bit convoluted as our packs `name` doesn't match `path` always
+    // So we need to grab the path then split it up to get the name.
+    packs.forEach((pack) => {
+      const packName = pack.path.split("/")[1].split(".")[0];
+      const packFileName = pack.name;
+      const packLabel = pack.label;
+      const packType = pack.type;
+      const babelePath = path.resolve(
+        babeleDir,
+        `${SYSTEM_NAME}.${packFileName}.json`
+      );
+      if (DEBUG) {
+        log(`DEBUG: Processing ${packName}`);
+      }
+
+      const itemData = {
+        label: packLabel,
+        entries: {},
+      };
+
+      const rollTableData = {
+        label: packLabel,
+        entries: [],
+      };
+
+      // If the fragment dir exists, do stuff, else error
+      if (fs.existsSync(path.join(fragmentDir, packName))) {
+        const fragments = fs.readdirSync(path.join(fragmentDir, packName));
+
+        // Loop over each file
+        fragments.forEach((fragment) => {
+          if (DEBUG) {
+            log(`DEBUG: Processing ${packName}/${fragment}`);
+          }
+          const fragmentPath = path.join(fragmentDir, packName, fragment);
+          const entry = YAML.load(fs.readFileSync(fragmentPath), "UTF-8");
+
+          _cleanPackData(entry);
+
+          // Because the output for each type of compendia is different
+          // we need to construxt the items differently for each
+          if (packType === "Item") {
+            const itemName = entry.name;
+            const itemDescription = entry.system.description.value
+              ? entry.system.description.value
+              : "";
+
+            const item = {
+              name: itemName,
+              description: itemDescription,
+            };
+            itemData.entries[itemName] = item;
+          }
+
+          if (packType === "RollTable") {
+            const itemName = entry.name;
+            const itemId = entry.name;
+
+            rollTableData.entries.push({ id: itemId, name: itemName });
+          }
+        });
+        fs.writeFileSync(babelePath, JSON.stringify(itemData, null, 2));
+      }
+    });
+    log("Finished Generating Babele Files...");
+    cb();
+  });
+}
+
+export { extPacks, genPacks, genPacksBabele };
