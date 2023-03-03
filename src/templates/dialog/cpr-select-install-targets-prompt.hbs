@@ -1,55 +1,51 @@
 {{cprTrace "START DIALOG CPR-SELECT-INSTALL-TARGETS-PROMPT.HBS"}}
-<form>
-  {{text}}, Choomba!
-  <ol class="items-list">
-    {{!-- Display Item Size --}}
-    <li class="item flexrow">
-      <div class="item flexrow">
-        <span class="text-bold">
-          {{localize "CPR.global.generic.size"}}: {{this.system.size}}
-        </span>
-      </div>
-    </li>
-    <hr/>
-    {{#each this.installationTargetTypes as |itemType| }}
-      <li class="item flexrow">
-        <div class="item flexrow flex-width-60 item-name">
-          <span class="text-bold text-left">
-            {{localize (cprFindConfigValue "objectTypes" itemType)}}
-          </span>
-        </div>
-        <div class="item flexrow flex-width-25 item-detail">
-          <span class="text-right">
+<form class="dialog-sheet">
+  <div class="dialog-header flexcol">
+    <div class="text-normal text-center">
+      {{header}}
+    </div>
+    <div class="text-center">
+      {{!-- Display Item Size --}}
+      <span class="text-bold">{{localize "CPR.global.generic.size"}}: {{size}}</span>
+    </div>
+  </div>
+  <hr/>
+  <div class="dialog-grid flexcol">
+    {{#each installationTargetTypes as |itemType| }}
+      <ol class="dialog-list">
+        <li class="dialog-item dialog-item-header flexrow">
+          <div class="flex-width-55 dialog-item-name">
+            <span class="text-semi">
+              {{localize (cprFindConfigValue "objectTypes" itemType)}}
+            </span>
+          </div>
+          <div class="flex-width-30 dialog-item-detail">
             {{localize "CPR.dialog.install.availableSlots"}}
-          </span>
-        </div>
-        <div class="item flexrow flex-width-15 item-detail">
-          <span class="text-bold text-align-last-end text-space-around">
+          </div>
+          <div class="flex-width-15 dialog-item-input">
             {{localize "CPR.dialog.common.select"}}
-          </span>
-        </div>
-      </li>
-      {{#each ../this.installationTargets as |item| }}
-        {{#if (cprCompare item.type "===" itemType) }}
-          <li class="item flexrow">
-            <div class="item flexrow text-nowrap item-name">
-              <span style="text-overflow: ellipsis; overflow: hidden">{{item.name}}</span>
-            </div>
-            <div style="max-width: 95px" class="item flexrow item-detail text-right">
-              <span class="text-right">
+          </div>
+        </li>
+        {{#each ../installationTargets as |item| }}
+          {{#if (cprCompare item.type "===" itemType) }}
+            <li class="dialog-item flexrow">
+              <div class="flex-width-55 text-nowrap dialog-item-name">
+                {{item.name}}
+              </div>
+              <div class="flex-width-30 dialog-item-detail">
                 {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}}/{{cprApplyUpgrade item item.system.installedItems.slots "slots"}}
-              </span>
-            </div>
-            <div style="max-width: 60px"
-                 class="item flexrow item-detail text-bold text-align-last-end text-space-around">
-              <span>
-                <input type="radio" name="selectedTarget" value="{{item.uuid}}"/>
-              </span>
-            </div>
-          </li>
-        {{/if}}
-      {{/each}}
+              </div>
+              <div class="flex-width-15 dialog-item-input">
+                <input type="radio" name="selectedTarget" value="{{item.uuid}}" {{checked (cprCompare ../../selectedTarget "===" item.uuid)}}/>
+              </div>
+            </li>
+          {{/if}}
+        {{/each}}
+      </ol>
+      {{#unless @last}}<br>{{/unless}}
     {{/each}}
-  </ol>
+  </div>
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
+
 </form>
 {{cprTrace "END CPR-SELECT-INSTALL-TARGETS-PROMPT.HBS"}}

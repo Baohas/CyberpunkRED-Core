@@ -1,8 +1,8 @@
 /* eslint-disable no-await-in-loop */
-/* global fromUuidSync */
+/* global fromUuidSync game */
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import SelectInstallTargetPrompt from "../../dialog/cpr-select-install-targets-prompt.js";
+import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 const Installable = function Installable() {
   /**
@@ -46,35 +46,36 @@ const Installable = function Installable() {
         }
       }
     }
-    const dialogPromptText =
+    const dialogPromptHeader =
       installationTargets.length > 0
-        ? SystemUtils.Format("CPR.dialog.selectInstallTarget.text", {
+        ? SystemUtils.Format("CPR.dialog.selectInstallTarget.header", {
             installable: this.name,
           })
         : SystemUtils.Format("CPR.dialog.selectInstallTarget.noOptions", {
             target: this.name,
           });
-    const dialogPromptTitle = SystemUtils.Localize(
-      "CPR.dialog.selectInstallTarget.title"
-    );
-    let formData = {
-      title: dialogPromptTitle,
-      text: dialogPromptText,
+
+    let dialogData = {
+      header: dialogPromptHeader,
       installationTargetTypes,
       installationTargets,
-      system: {
-        size: this.system.size,
-      },
+      size: this.system.size,
     };
 
-    formData = await SelectInstallTargetPrompt.RenderPrompt(formData).catch(
-      (err) => LOGGER.debug(err)
-    );
-    if (formData === undefined || formData.selectedTarget === null) {
+    // Show "Select Intall Targets" dialog.
+    dialogData = await CPRDialog.showDialog(
+      dialogData,
+      // Set options for the dialog.
+      {
+        title: SystemUtils.Localize("CPR.dialog.selectInstallTarget.title"),
+        template: `systems/${game.system.id}/templates/dialog/cpr-select-install-targets-prompt.hbs`,
+      }
+    ).catch((err) => LOGGER.debug(err));
+    if (dialogData === undefined || dialogData.selectedTarget === null) {
       return;
     }
 
-    const targetItem = actor.getOwnedItem(formData.selectedTarget);
+    const targetItem = actor.getOwnedItem(dialogData.selectedTarget);
     await targetItem.installItems([this]);
 
     if (installationType === "itemUpgrade") {
