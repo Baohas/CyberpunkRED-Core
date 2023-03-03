@@ -472,6 +472,14 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Get document from uuid.
+   */
+  Handlebars.registerHelper("cprFromUuidSync", (uuid) => {
+    LOGGER.trace("cprFromUuidSync | handlebarsHelper | Called.");
+    return fromUuidSync(uuid);
+  });
+
+  /**
    * Return a system setting value given the name
    */
   Handlebars.registerHelper("cprSystemConfig", (settingName) =>
