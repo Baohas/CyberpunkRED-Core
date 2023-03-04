@@ -22,23 +22,28 @@
             <br/>
             {{#if effect.changes.length }}
               {{#each effect.changes as |change| }}
-                {{!-- "this" is now an individual mod for the AE object --}}
-                {{cprGetChangeNameByKey ../this change.category change.key}}
-                {{#if change.value }}
-                  {{cprEffectModMode change.changeMode change.value}}
-                {{~else}}
-                  0
-                {{~/if}}
-                {{#if change.isSituational }}
-                  {{#if change.onByDefault }}
-                    <i data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}"
-                       class="fas fa-circle-dot"></i>
-                  {{else}}
-                    <i data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.situationalOffByDefault"}}"
-                     class="far fa-circle"></i>
+                <span class="text-pill">
+                  {{!-- "this" is now an individual mod for the AE object --}}
+                  {{cprGetChangeNameByKey ../this change.category change.key}}
+                  {{#if change.value }}
+                    {{cprEffectModMode change.changeMode change.value}}
+                  {{~else}}
+                    0
                   {{~/if}}
-                {{~/if}}
-                {{~#unless @last}},{{/unless}}
+                  {{#if change.isSituational }}
+                    {{#if change.onByDefault }}
+                      <i data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.situationalOnByDefault"}}"
+                         class="fas fa-circle-question
+                                text-padding-left-smaller
+                                text-vert-center"></i>
+                    {{else}}
+                      <i data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.situationalOffByDefault"}}"
+                         class="far fa-circle-question
+                                text-padding-left-smaller
+                                text-vert-center"></i>
+                    {{~/if}}
+                  {{~/if}}
+                </span>
               {{/each}}
             {{else}}
               ({{localize "CPR.characterSheet.rightPane.effects.noBonusesConfigured"}})
