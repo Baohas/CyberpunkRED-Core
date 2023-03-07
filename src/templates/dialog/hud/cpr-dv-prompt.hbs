@@ -5,21 +5,27 @@
       {{localize "CPR.dialog.dv.selectDvTable"}}
     </div>
   </div>
+  <hr/>
   <div class="dialog-grid flexcol">
     <ol class="dialog-list">
       <li class="dialog-item flexrow">
-        <select name="dvTable">
-          {{#select dvTable}}
-            <option value="">
-                {{localize "CPR.global.generic.notApplicable"}}
-            </option>
-            {{#each dvTables as |rollTable| }}
-              <option value="{{rollTable.name}}">
-                {{rollTable.name}}
+        <div class="dialog-item-name text-nowrap">
+          {{localize "CPR.dialog.dv.dvTable"}}:
+        </div>
+        <div class="dialog-item-input text-nowrap">
+          <select name="dvTable">
+            {{#select dvTable}}
+              <option value="">
+                  {{localize "CPR.global.generic.notApplicable"}}
               </option>
-            {{/each}}
-          {{/select}}
-        </select>
+              {{#each dvTables as |rollTable| }}
+                <option value="{{rollTable.name}}">
+                  {{rollTable.name}}
+                </option>
+              {{/each}}
+            {{/select}}
+          </select>
+        </div>
       </li>
     </ol>
   </div>

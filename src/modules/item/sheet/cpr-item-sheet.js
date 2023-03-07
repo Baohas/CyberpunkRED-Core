@@ -5,7 +5,6 @@ import CPR from "../../system/config.js";
 import { CPRRoll } from "../../rolls/cpr-rolls.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import SelectCompatibleAmmo from "../../dialog/cpr-select-compatible-ammo.js";
-import NetarchRolltableGenerationPrompt from "../../dialog/cpr-netarch-rolltable-generation-prompt.js";
 import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import SelectInstallItemsPrompt from "../../dialog/cpr-select-install-items-prompt.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
@@ -310,10 +309,17 @@ export default class CPRItemSheet extends ItemSheet {
 
   async _netarchGenerateFromTables() {
     LOGGER.trace("_netarchGenerateFromTables | CPRItemSheet | Called.");
-    const formData =
-      await NetarchRolltableGenerationPrompt.RenderPrompt().catch((err) =>
-        LOGGER.debug(err)
-      );
+    // Show "Netarch Rolltable Generation" Prompt.
+    const formData = await CPRDialog.showDialog(
+      {},
+      // Set options for dialog.
+      {
+        title: SystemUtils.Localize(
+          "CPR.dialog.netArchitectureRolltableSelection.title"
+        ),
+        template: `systems/${game.system.id}/templates/dialog/cpr-netarch-rolltable-generation-prompt.hbs`,
+      }
+    ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
