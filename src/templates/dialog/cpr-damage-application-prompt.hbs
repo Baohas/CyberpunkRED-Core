@@ -14,7 +14,7 @@
       </ul>
     </div>
     {{#if (cprCompare forbiddenActors.length ">" 0) }}
-      <hr>
+    <hr/>
       <div class="text-center">
         {{localize "CPR.chat.damageApplication.prompt.forbiddenTypes"}}
       </div>
@@ -66,6 +66,7 @@
         </li>
       {{/if}}
     </ol>
-    {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
-  </form>
-  {{cprTrace "END CPR-DAMAGE-APPLICATION-PROMPT.HBS"}}
+  </div>
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
+</form>
+{{cprTrace "END CPR-DAMAGE-APPLICATION-PROMPT.HBS"}}

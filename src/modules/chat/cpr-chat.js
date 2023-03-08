@@ -523,7 +523,7 @@ export default class CPRChat {
           dialogOptions
         ).catch((err) => LOGGER.debug(err));
       }
-      if (dialogData === false) {
+      if (!dialogData) {
         return;
       }
       actor._applyDamage(
@@ -559,41 +559,20 @@ export default class CPRChat {
       allowedActors.sort((a, b) => (a.name > b.name ? 1 : -1));
       forbiddenActors.sort((a, b) => (a.name > b.name ? 1 : -1));
 
-      const brainDamageReduction = location === "brain"; // whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
-      // eslint-disable-next-line prefer-const
-      let formData = {
-        damageReductionRole: true,
-        damageReductionAE: true,
-        useShield: true,
-        brainDamageReduction, // data to feed to _applyDamage
-      };
       let count = 0;
       while (count < allowedActors.length) {
         let promptData;
         if (!event.ctrlKey) {
-          const title = SystemUtils.Localize(
-            "CPR.chat.damageApplication.prompt.title"
-          );
-          /*           const allowedTypesMessage = `${SystemUtils.Format(
-            "CPR.chat.damageApplication.prompt.allowedTypes",
-            { location }
-          )}`; */
-          const data = {
-            allowedTypesMessage,
-            allowedActors,
-            forbiddenActors,
-            count,
-            brainDamageReduction,
-          };
+          dialogData.count = count;
+          dialogData.allowedActors = allowedActors;
+          dialogData.forbiddenActors = forbiddenActors;
+
+          // Show "Damage Application" prompt.
           // eslint-disable-next-line no-await-in-loop
-          promptData = await DamageApplicationPrompt.RenderPrompt(
-            title,
-            data
-          ).catch((err) => LOGGER.debug(err)); // data to feed to formData
-          formData.damageReductionRole = promptData.damageReductionRole;
-          formData.damageReductionAE = promptData.damageReductionAE;
-          formData.useShield = promptData.useShield;
-          formData.brainDamageReduction = promptData.brainDamageReduction;
+          dialogData = await CPRDialog.showDialog(
+            dialogData,
+            dialogOptions
+          ).catch((err) => LOGGER.debug(err));
         }
         if (promptData !== false) {
           allowedActors[count]._applyDamage(
@@ -604,7 +583,7 @@ export default class CPRChat {
             ammoVariety,
             ignoreHalfArmor,
             damageLethal,
-            formData
+            dialogData
           );
         }
         count += 1;
