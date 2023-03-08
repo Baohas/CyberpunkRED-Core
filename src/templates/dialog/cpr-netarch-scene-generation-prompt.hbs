@@ -62,8 +62,11 @@
             </div>
           </span>
         </div>
-        <div class="dialog-item-input text-nowrap">
-          <span class="text-bold">
+        <div class="dialog-item-input text-nowrap flexrow">
+          <span style="flex:1;">
+            {{filePicker type="folder" target="filePath"}}
+          </span>
+          <span class="text-bold" style="flex:3">
             <input type="text" name="filePath" value="{{filePath}}"/>
           </span>
         </div>
