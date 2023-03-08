@@ -3,6 +3,7 @@ import LOGGER from "../utils/cpr-logger.js";
 import { CPRRoll, CPRDamageRoll, CPRInitiative } from "../rolls/cpr-rolls.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import DamageApplicationPrompt from "../dialog/cpr-damage-application-prompt.js";
+import CPRDialog from "../dialog/cpr-dialog-application.js";
 
 /**
  * For the sake of aesthetics, we have a class for Chat cards. It wraps around
@@ -453,6 +454,7 @@ export default class CPRChat {
    */
   static async damageApplication(event) {
     LOGGER.trace("damageApplication | CPRChat | Called.");
+    // Define a bunch of constants to be used in the rest of the function.
     const totalDamage = parseInt(
       SystemUtils.GetEventDatum(event, "data-total-damage"),
       10
@@ -476,7 +478,32 @@ export default class CPRChat {
     const ignoreHalfArmor = /true/i.test(
       SystemUtils.GetEventDatum(event, "data-ignore-half-armor")
     );
+    // Whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
+    const showBrainDamageReduction = location === "brain";
+
+    const allowedTypesMessage = `${SystemUtils.Format(
+      "CPR.chat.damageApplication.prompt.allowedTypes",
+      { location }
+    )}`;
     const scope = SystemUtils.GetEventDatum(event, "data-scope");
+
+    // Define dialog information.
+    const dialogOptions = {
+      title: SystemUtils.Localize("CPR.chat.damageApplication.prompt.title"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-damage-application-prompt.hbs`,
+    };
+
+    let dialogData = {
+      // data to feed to _applyDamage
+      damageReductionRole: true,
+      damageReductionAE: true,
+      useShield: true,
+      brainDamageReduction: true,
+      // Data for the form.
+      allowedTypesMessage,
+      allowedActors: [],
+      showBrainDamageReduction,
+    };
 
     // check if the button is on a single token (aka local; the list at the bottom of the damage Roll Card)
     // If not local, it can apply to multiple tokens (disregarding the list at the bottom of the damage Roll Card)
@@ -487,39 +514,16 @@ export default class CPRChat {
         ? game.actors.tokens[tokenId]
         : game.actors.find((a) => a.id === actorId);
 
-      const brainDamageReduction = location === "brain"; // whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
+      dialogData.allowedActors.push(actor);
       // eslint-disable-next-line prefer-const
-      let formData = {
-        // data to feed to _applyDamage
-        damageReductionRole: true,
-        damageReductionAE: true,
-        useShield: true,
-        brainDamageReduction,
-      };
-      let promptData;
       if (!event.ctrlKey) {
-        const title = SystemUtils.Localize(
-          "CPR.chat.damageApplication.prompt.title"
-        );
-        const allowedTypesMessage = `${SystemUtils.Format(
-          "CPR.chat.damageApplication.prompt.allowedTypes",
-          { location }
-        )}`;
-        const data = {
-          allowedTypesMessage,
-          allowedActors: [actor],
-          brainDamageReduction,
-        };
-        promptData = await DamageApplicationPrompt.RenderPrompt(
-          title,
-          data
-        ).catch((err) => LOGGER.debug(err)); // data to feed to formData
-        formData.damageReductionRole = promptData.damageReductionRole;
-        formData.damageReductionAE = promptData.damageReductionAE;
-        formData.useShield = promptData.useShield;
-        formData.brainDamageReduction = promptData.brainDamageReduction;
+        // Show "Damage Application" prompt.
+        dialogData = await CPRDialog.showDialog(
+          dialogData,
+          dialogOptions
+        ).catch((err) => LOGGER.debug(err));
       }
-      if (promptData === false) {
+      if (dialogData === false) {
         return;
       }
       actor._applyDamage(
@@ -530,7 +534,7 @@ export default class CPRChat {
         ammoVariety,
         ignoreHalfArmor,
         damageLethal,
-        formData
+        dialogData
       );
     } else {
       const tokens = SystemUtils.getUserTargetedOrSelected("selected"); // get user selected tokens
@@ -570,10 +574,10 @@ export default class CPRChat {
           const title = SystemUtils.Localize(
             "CPR.chat.damageApplication.prompt.title"
           );
-          const allowedTypesMessage = `${SystemUtils.Format(
+          /*           const allowedTypesMessage = `${SystemUtils.Format(
             "CPR.chat.damageApplication.prompt.allowedTypes",
             { location }
-          )}`;
+          )}`; */
           const data = {
             allowedTypesMessage,
             allowedActors,

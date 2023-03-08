@@ -153,7 +153,7 @@
   "CPR.chat.damageApplication.prompt.damageReductionAE": "Apply damage reduction from Active Effects?",
   "CPR.chat.damageApplication.prompt.damageReductionRole": "Apply damage reduction from Role Abilities?",
   "CPR.chat.damageApplication.prompt.forbiddenTypes": "The following tokens do not support automatic damage application:",
-  "CPR.chat.damageApplication.prompt.title": "Confirm the damage application.",
+  "CPR.chat.damageApplication.prompt.title": "Confirm Damage Application.",
   "CPR.chat.damageApplication.prompt.useShield": "Interpose Shield between yourself and attack?",
   "CPR.chat.damageApplication.reverseDamage": "Reverse Damage to Token.",
   "CPR.chat.damageApplication.rezReducedBy": "REZ reduced by:",
