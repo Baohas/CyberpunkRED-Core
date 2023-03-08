@@ -1,8 +1,8 @@
 /* global game, duplicate, Scene */
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";
-import NetarchSceneGenerationPrompt from "../../dialog/cpr-netarch-scene-generation-prompt.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
  * Extend the base CPRItem object with things specific to Net Architectures.
@@ -435,7 +435,7 @@ export default class CPRNetArchItem extends CPRItem {
     LOGGER.trace("_customize | CPRNetarchUtils | called.");
     let formData = {
       animated: false,
-      cusomTiles: false,
+      customTiles: false,
       filePath: `systems/${game.system.id}/tiles/netarch/PNG/`,
       fileExtension: "png",
       sceneName: "",
@@ -448,14 +448,18 @@ export default class CPRNetArchItem extends CPRItem {
       cornerOffsetY: 2,
       returnType: "string",
     };
-    formData = await NetarchSceneGenerationPrompt.RenderPrompt(formData).catch(
-      (err) => LOGGER.debug(err)
-    );
+
+    // Show "NetArch Scene Generation" prompt.
+    formData = await CPRDialog.showDialog(formData, {
+      // Set options for the dialog.
+      title: SystemUtils.Localize("CPR.dialog.netArchitectureGeneration.title"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-netarch-scene-generation-prompt.hbs`,
+    }).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
 
-    if (formData.cusomTiles) {
+    if (formData.customTiles) {
       this.options.filePath = formData.filePath;
       this.options.fileExtension = formData.fileExtension;
       this.options.gridSize = Number(formData.gridSize);
