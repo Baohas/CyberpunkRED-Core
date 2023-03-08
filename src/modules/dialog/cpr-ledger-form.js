@@ -1,7 +1,8 @@
 /* globals FormApplication mergeObject duplicate game setProperty getProperty */
-import LedgerDeletionPrompt from "./cpr-ledger-deletion-prompt.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import CPRDialog from "./cpr-dialog-application.js";
+
 /**
  * Form application to display the ledger property.
  */
@@ -111,11 +112,46 @@ export default class CPRLedger extends FormApplication {
       reason: this.contents[lineId][1],
       value: numbers[0],
     };
-    // Check if value should also be changed.
-    const confirmDelete = await LedgerDeletionPrompt.RenderPrompt(
-      SystemUtils.Localize("CPR.dialog.ledgerDeletion.title"),
-      promptContent
-    ).catch((err) => LOGGER.debug(err));
+    // Check if value should also be changed. Show "Ledger Deletion" prompt.
+    const confirmDelete = await CPRDialog.showDialog(promptContent, {
+      // Set options for dialog.
+      title: SystemUtils.Localize("CPR.dialog.ledgerDeletion.title"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-ledger-deletion-prompt.hbs`,
+      // Define custom buttons for this dialog.
+      buttons: {
+        yesAdd: {
+          icon: "fas fa-check",
+          label: SystemUtils.Localize("CPR.dialog.ledgerDeletion.yesAdd"),
+          callback: (dialog) => {
+            mergeObject(dialog.object, { action: true, sign: 1 });
+            dialog.confirmDialog();
+          },
+        },
+        yesSubtract: {
+          icon: "fas fa-check",
+          label: SystemUtils.Localize("CPR.dialog.ledgerDeletion.yesSubtract"),
+          callback: (dialog) => {
+            mergeObject(dialog.object, { action: true, sign: -1 });
+            dialog.confirmDialog();
+          },
+        },
+        no: {
+          icon: "fas fa-times",
+          label: SystemUtils.Localize("CPR.dialog.common.no"),
+          callback: (dialog) => {
+            mergeObject(dialog.object, { action: false });
+            dialog.confirmDialog();
+          },
+        },
+        cancel: {
+          icon: "fas fa-times",
+          label: SystemUtils.Localize("CPR.dialog.common.cancel"),
+          callback: (dialog) => dialog.closeDialog(),
+        },
+      },
+      buttonDefault: "cancel",
+      overwriteButtons: true,
+    }).catch((err) => LOGGER.debug(err));
     if (confirmDelete === undefined) {
       return;
     }
