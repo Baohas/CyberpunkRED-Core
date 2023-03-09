@@ -5,7 +5,6 @@ import CPR from "../../system/config.js";
 import { CPRRoll } from "../../rolls/cpr-rolls.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
-import SelectInstallItemsPrompt from "../../dialog/cpr-select-install-items-prompt.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
@@ -1245,6 +1244,7 @@ export default class CPRItemSheet extends ItemSheet {
       }
     }
     let itemsList = [];
+    const selectedItems = []; // This is so the template displays currently installed items as checked.
 
     for (const i of installedItems) {
       const itemData = {
@@ -1260,6 +1260,7 @@ export default class CPRItemSheet extends ItemSheet {
         itemData.system.class = i.system.class;
       }
       itemsList.push(itemData);
+      selectedItems.push(itemData.uuid);
     }
 
     for (const i of uninstalledItems) {
@@ -1315,32 +1316,36 @@ export default class CPRItemSheet extends ItemSheet {
 
     let formData = {
       target: installTarget,
-      title: dialogPromptTitle,
-      text: dialogPromptText,
+      header: dialogPromptText,
       typeList,
       itemsList,
+      selectedItems,
       itemType: dialogItemType,
       returnType: "array",
     };
 
-    formData = await SelectInstallItemsPrompt.RenderPrompt(formData).catch(
-      (err) => LOGGER.debug(err)
-    );
+    // Show "Select Install Items" prompt.
+    formData = await CPRDialog.showDialog(formData, {
+      title: dialogPromptTitle,
+      template: `systems/${game.system.id}/templates/dialog/cpr-select-install-items-prompt.hbs`,
+    }).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return {};
     }
 
+    const filteredSelectedItems = formData.selectedItems.filter((i) => i); // Remove null entries from list.
+
     const uninstallableItems = [];
 
     installedItems.forEach((item) => {
-      if (!formData.selectedItems.includes(item._id)) {
+      if (!filteredSelectedItems.includes(item._id)) {
         uninstallableItems.push(item);
       }
     });
 
     const installableItems = [];
 
-    formData.selectedItems.forEach((itemId) => {
+    filteredSelectedItems.forEach((itemId) => {
       if (installedItems.filter((item) => item._id === itemId).length === 0) {
         const installedItem = !actor
           ? fromUuidSync(itemId)

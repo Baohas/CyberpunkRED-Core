@@ -308,7 +308,7 @@
   "CPR.dialog.selectInstallTarget.header": "Select item to install {installable} into, Choomba.",
   "CPR.dialog.selectInstallTarget.title": "Select Install Target",
   "CPR.dialog.selectInstallableItems.noOptions": "You have no items of a type that can be installed in '{target}'. If you think this is incorrect, check '{target}' settings",
-  "CPR.dialog.selectInstallableItems.text": "Select {type}(s) to install in '{target}'",
+  "CPR.dialog.selectInstallableItems.text": "Select {type}(s) to install in '{target}', Choomba",
   "CPR.dialog.selectInstallableItems.title": "Select {type} Items",
   "CPR.dialog.selectItemUpgrades.selectItemUpgrades": "Select upgrades",
   "CPR.dialog.selectRoleBonuses.bonusRatio": "Bonus Ratio",

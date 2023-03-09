@@ -1,69 +1,65 @@
 {{cprTrace "START DIALOG CPR-SELECT-INSTALL-ITEMS-PROMPT.HBS"}}
-<form>
-  {{text}}, Choomba!
-  <ol class="items-list">
-    {{!-- Display Available Slots --}}
-    <li class="item flexrow">
-      <div class="item flexrow">
-        <span class="text-bold">
-          {{localize "CPR.dialog.install.availableSlots"}}:
-          {{cprMath "subtract" (
-            cprApplyUpgrade target target.system.installedItems.slots "slots")
-            target.system.installedItems.usedSlots~}}
-            /
-            {{~cprApplyUpgrade target target.system.installedItems.slots "slots"
-          }}
-        </span>
-      </div>
-    </li>
-    <hr/>
-    {{#each this.typeList as |itemType| }}
-      <li class="item flexrow">
-        <div class="item flexrow flex-width-75 item-name">
-          <span class="text-bold text-left">
-            {{localize (cprFindConfigValue "objectTypes" itemType)}}
-          </span>
-        </div>
-        <div class="item text-bold flexrow flex-width-10 item-detail">
-          <span class="text-bold text-right">
-            {{localize "CPR.global.generic.size"}}
-          </span>
-        </div>
-        <div class="item flexrow flex-width-15 item-detail">
-          <span class="text-bold text-align-last-end text-space-around">
-            {{localize "CPR.dialog.common.select"}}
-          </span>
-        </div>
-      </li>
-      {{#each ../this.itemsList as |item| }}
-        {{#if (cprCompare item.type "===" itemType) }}
-          <li class="item flexrow">
-            <div class="item flexrow flex-width-75 text-nowrap item-name">
-              <span class="text-left">
+<form class="dialog-sheet">
+  <div class="dialog-header flexcol">
+    <div class="text-normal text-center">
+      {{header}}
+    </div>
+    <div class="text-center text-bold">
+      {{!-- Display Available Slots --}}
+      {{localize "CPR.dialog.install.availableSlots"}}:
+      {{cprMath "subtract" (
+        cprApplyUpgrade target target.system.installedItems.slots "slots")
+        target.system.installedItems.usedSlots~}}
+        /
+        {{~cprApplyUpgrade target target.system.installedItems.slots "slots"
+      }}
+    </div>
+  </div>
+  <hr/>
+  <div class="dialog-grid flexcol">
+    <ol class="dialog-list">
+      {{#each this.typeList as |itemType| }}
+        <li class="dialog-item dialog-item-header flexrow">
+          <div class="dialog-item-name flex-width-75">
+            <span class="text-semi">
+              {{localize (cprFindConfigValue "objectTypes" itemType)}}
+            </span>
+          </div>
+          <div class="dialog-item-detail flex-width-10">
+            <span class="text-semi">
+              {{localize "CPR.global.generic.size"}}
+            </span>
+          </div>
+          <div class="dialog-item-input flexrow flex-width-15">
+            <span class="text-semi">
+              {{localize "CPR.dialog.common.select"}}
+            </span>
+          </div>
+        </li>
+        {{#each ../this.itemsList as |item| }}
+          {{#if (cprCompare item.type "===" itemType) }}
+            <li class="dialog-item flexrow">
+              <div class="dialog-item-name flex-width-75 text-nowrap">
                 {{item.name}}
                 {{#if (cprCompare item.type "===" "program") }}
-                  ({{localize (cprFindConfigValue "programClassList" item.system.class)}}){{/if}}
-                </span>
+                  ({{localize (cprFindConfigValue "programClassList" item.system.class)}})
+                {{/if}}
               </div>
-              <div class="item flexrow flex-width-10 item-detail">
-                <span class="text-right">
-                  {{item.system.size}}
-                </span>
+              <div class="dialog-item-detail flex-width-10">
+                {{item.system.size}}
               </div>
-              <div class="item flexrow flex-width-15 item-detail">
-                <span class="text-align-last-end text-space-around">
-                  <input type="checkbox"
-                         name="selectedItems"
-                         value="{{item.uuid}}"
-                         {{#if item.system.isInstalled }}
-                         checked
-                         {{/if }}/>
-                </span>
+              <div class="dialog-item-input flex-width-15">
+                <input type="checkbox"
+                      name="selectedItems"
+                      value="{{item.uuid}}"
+                      {{checked (cprListContains ../../selectedItems item.uuid) }}/>
               </div>
             </li>
           {{/if}}
         {{/each}}
       {{/each}}
     </ol>
-  </form>
+  </div>
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
+</form>
 {{cprTrace "END CPR-SELECT-INSTALL-ITEMS-PROMPT.HBS"}}
