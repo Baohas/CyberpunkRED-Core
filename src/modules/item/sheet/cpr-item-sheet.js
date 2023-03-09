@@ -7,7 +7,6 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
 import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import SelectInstallItemsPrompt from "../../dialog/cpr-select-install-items-prompt.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
-import ManageInstallableTypes from "../../dialog/cpr-manage-installable-types.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
@@ -1387,17 +1386,18 @@ export default class CPRItemSheet extends ItemSheet {
 
   async _manageInstallableTypes() {
     LOGGER.trace("_manageInstallableTypes | CPRItemSheet | Called.");
-    const installableTypes = this.item.system.installedItems.allowedTypes;
-    let formData = {
-      installableTypes,
-    };
-    formData = await ManageInstallableTypes.RenderPrompt(formData).catch(
-      (err) => LOGGER.debug(err)
-    );
+    // Show "Manage Installable Types" prompt.
+    const formData = await CPRDialog.showDialog(
+      { selectedTypes: this.item.system.installedItems.allowedTypes },
+      {
+        title: SystemUtils.Localize("CPR.dialog.manageItemTypes.title"),
+        template: `systems/${game.system.id}/templates/dialog/cpr-manage-installable-types-prompt.hbs`,
+      }
+    ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
-    const allowedTypes = formData.selectedTypes;
+    const allowedTypes = formData.selectedTypes.filter((t) => t);
 
     if (
       allowedTypes.length === 0 &&
