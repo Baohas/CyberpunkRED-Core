@@ -301,7 +301,7 @@
   "CPR.dialog.rollCriticalInjury.criticalInjurySelect": "Select Critical Injury Table:",
   "CPR.dialog.rollCriticalInjury.criticalinjurytitleprompt": "You're Injured, Choomba!",
   "CPR.dialog.selectAmmo.title": "Select Ammo",
-  "CPR.dialog.selectCompatibleAmmo.selectCompatibleAmmo": "Select ammo compatible with",
+  "CPR.dialog.selectCompatibleAmmo.selectCompatibleAmmo": "Select ammo compatible with '{name}', Choomba.",
   "CPR.dialog.selectCompatibleAmmo.title": "Select Compatible Ammo",
   "CPR.dialog.selectInstallPrograms.programs": "Programs",
   "CPR.dialog.selectInstallTarget.noOptions": "You have no items that '{target}' can be installed into, Choomba.",

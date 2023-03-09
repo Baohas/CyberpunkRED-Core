@@ -4,7 +4,6 @@ import LOGGER from "../../utils/cpr-logger.js";
 import CPR from "../../system/config.js";
 import { CPRRoll } from "../../rolls/cpr-rolls.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import SelectCompatibleAmmo from "../../dialog/cpr-select-compatible-ammo.js";
 import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import SelectInstallItemsPrompt from "../../dialog/cpr-select-install-items-prompt.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
@@ -236,18 +235,25 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("_selectCompatibleAmmo | CPRItemSheet | Called.");
     const cprItemData = this.item.system;
     let formData = {
-      id: this.item._id,
-      name: this.item.name,
-      system: cprItemData,
+      header: SystemUtils.Format(
+        "CPR.dialog.selectCompatibleAmmo.selectCompatibleAmmo",
+        {
+          name: this.item.name,
+        }
+      ),
+      selectedAmmo: cprItemData.ammoVariety,
     };
-    formData = await SelectCompatibleAmmo.RenderPrompt(formData).catch((err) =>
-      LOGGER.debug(err)
-    );
+    // Show "Select Compatible Ammo" prompt.
+    formData = await CPRDialog.showDialog(formData, {
+      title: SystemUtils.Localize("CPR.dialog.selectCompatibleAmmo.title"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-select-compatible-ammo-prompt.hbs`,
+    }).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
     if (formData.selectedAmmo) {
-      await this.item.setCompatibleAmmo(formData.selectedAmmo);
+      const filteredSelectedAmmo = formData.selectedAmmo.filter((a) => a);
+      await this.item.setCompatibleAmmo(filteredSelectedAmmo);
     }
   }
 

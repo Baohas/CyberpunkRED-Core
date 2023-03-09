@@ -1,33 +1,33 @@
 {{cprTrace "START DIALOG CPR-SELECT-COMPATIBLE-AMMO-PROMPT.HBS"}}
-<form>
-  {{localize "CPR.dialog.selectCompatibleAmmo.selectCompatibleAmmo"}} "{{name}}", Choomba!
-  <ol class="items-list">
-    <li class="item flexrow">
-      <div class="item flexrow setting-name">
-        <span class="text-bold text-nowrap">{{localize "CPR.global.itemTypes.ammo"}}</span>
-      </div>
-      <div class="item flexrow setting-value">
-        <span class="text-bold text-nowrap text-center text-space-around">{{localize "CPR.dialog.common.select"}}</span>
-      </div>
-    </li>
-    {{#each (cprFindConfigObj "ammoVariety") as |ammoVariety a| }}
-      <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap">
-          {{localize ammoVariety}}
+<form class="dialog-sheet">
+  <div class="dialog-header flexcol">
+    <div class="text-normal text-center">
+      {{header}}
+    </div>
+  </div>
+  <hr/>
+  <div class="dialog-grid flexcol">
+    <ol class="dialog-list">
+      <li class="dialog-item dialog-item-header flexrow">
+        <div class="dialog-item-name text-nowrap">
+          <span class="text-semi">{{localize "CPR.global.itemTypes.ammo"}}</span>
         </div>
-        <div class="item flexrow setting-value text-nowrap text-space-around">
-          {{#if (cprListContains ../system.ammoVariety a) }}
-            <span class="text-bold text-nowrap text-center text-space-around">
-              <input type="checkbox" name="selectedAmmo" value="{{a}}" checked/>
-            </span>
-          {{else}}
-            <span class="text-bold text-nowrap text-center text-space-around">
-              <input type="checkbox" name="selectedAmmo" value="{{a}}"/>
-            </span>
-          {{/if}}
+        <div class="dialog-item-input text-nowrap">
+          <span class="text-semi">{{localize "CPR.dialog.common.select"}}</span>
         </div>
       </li>
-    {{/each}}
-  </ol>
+      {{#each (cprFindConfigObj "ammoVariety") as |ammoVariety a| }}
+        <li class="dialog-item flexrow">
+          <div class="dialog-item-name text-nowrap">
+            {{localize ammoVariety}}
+          </div>
+          <div class="dialog-item-input text-nowrap">
+            <input type="checkbox" name="selectedAmmo" value="{{a}}" {{checked (cprListContains ../selectedAmmo a)}}/>
+          </div>
+        </li>
+      {{/each}}
+    </ol>
+  </div>
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 </form>
 {{cprTrace "END CPR-SELECT-COMPATIBLE-AMMO-PROMPT.HBS"}}
