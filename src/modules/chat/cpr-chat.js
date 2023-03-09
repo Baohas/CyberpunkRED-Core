@@ -2,7 +2,6 @@
 import LOGGER from "../utils/cpr-logger.js";
 import { CPRRoll, CPRDamageRoll, CPRInitiative } from "../rolls/cpr-rolls.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
-import DamageApplicationPrompt from "../dialog/cpr-damage-application-prompt.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
 
 /**

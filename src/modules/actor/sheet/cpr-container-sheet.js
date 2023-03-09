@@ -5,7 +5,6 @@ import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRItem from "../../item/cpr-item.js";
-import ConfigureSellToPrompt from "../../dialog/cpr-container-configure-sell-to-prompt.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
@@ -688,15 +687,17 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       }
     });
 
-    const formData = await ConfigureSellToPrompt.RenderPrompt(promptData).catch(
-      (err) => LOGGER.debug(err)
-    );
+    // Show "Configure Sell To" prompt.
+    const formData = await CPRDialog.showDialog(promptData, {
+      title: SystemUtils.Localize("CPR.dialog.container.vendor.sellToTitle"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-container-configure-sell-to-prompt.hbs`,
+    }).catch((err) => LOGGER.debug(err));
+
     if (formData !== undefined) {
       promptData.itemTypes.forEach((itemType) => {
-        const isPurchasing = formData.buying.includes(itemType);
-        const purchasePercentage = isPurchasing
-          ? formData[`pct-${itemType}`]
-          : 0;
+        const { isPurchasing } = formData.currentConfig.itemTypes[itemType];
+        const { purchasePercentage } =
+          formData.currentConfig.itemTypes[itemType];
         promptData.currentConfig.itemTypes[itemType] = {
           isPurchasing,
           purchasePercentage,
