@@ -1,11 +1,11 @@
-/* global Hooks game */
+/* global Hooks game Handlebars */
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
 import CPRCharacterActorSheet from "../actor/sheet/cpr-character-sheet.js";
 import CPRContainerActorSheet from "../actor/sheet/cpr-container-sheet.js";
 import CPRMookActorSheet from "../actor/sheet/cpr-mook-sheet.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
-import NotificationPrompt from "../dialog/cpr-notification-prompt.js";
+import CPRDialog from "../dialog/cpr-dialog-application.js";
 
 /**
  * Hooks have a set of args that are passed to them from Foundry. Even if we do not use them here,
@@ -126,8 +126,25 @@ const itemHooks = () => {
             dialogMessage = dialogMessage.concat(
               `<center>${itemName} ${folderName}</center><br>`
             );
+
+            dialogMessage = new Handlebars.SafeString(dialogMessage);
           }
-          NotificationPrompt.RenderPrompt(dialogTitle, dialogMessage);
+          // Show "Default" prompt.
+          CPRDialog.showDialog(
+            { dialogMessage },
+            {
+              title: dialogTitle,
+              buttons: {
+                ok: {
+                  icon: "fas fa-check",
+                  label: SystemUtils.Localize("CPR.dialog.common.ok"),
+                  callback: (dialog) => dialog.confirmDialog(),
+                },
+              },
+              overwriteButtons: true,
+              buttonDefault: "ok",
+            }
+          );
           deleteItem = false;
         }
       }
