@@ -4,11 +4,18 @@
       data-item-id="{{item._id}}"
       data-item-category="{{item.type}}"
       draggable="true">
-    <div class="item-name gear-name text-nowrap"
-         {{#if item.system.isFoundational}}
-           data-tooltip="{{localize (cprFindConfigValue "cyberwareTypeList" item.system.type) }} ({{localize "CPR.global.generic.foundational" }})"
-         {{else}}
-           data-tooltip="{{localize (cprFindConfigValue "cyberwareTypeList" item.system.type) }}"{{/if }}>
+    <div class="
+           item-name
+           gear-name
+           text-nowrap
+           {{#if item.system.isFoundational}}
+             text-semi
+           {{/if}}"
+           data-tooltip="
+             {{localize (cprFindConfigValue "cyberwareTypeList" item.system.type) }}
+             {{#if item.system.isFoundational}}
+               ({{localize "CPR.global.generic.foundational" }})
+             {{/if}}">
       <a class="name item-edit flex-center">
         <img src="{{item.img}}"/>
         {{item.name}}
