@@ -1,12 +1,12 @@
 ### Intent
 
-[Summarize your intentions with these changes]
+[Type text here]
 
 ---
 
 - [~] This is meant for a hotfix
 - [x] This is meant for the next release (see milestone)
-- [~] This needs more reviewers than normal, there may be controversy or high complexity
+- [~] This needs more reviewers than normal; there may be controversy or high complexity
 - [~] This intentionally introduces regressions that will be addressed later
 - [~] There is/will be documentation changes on the wiki
 - [~] Please do not send commits here without coordinating closely with the owner
@@ -18,11 +18,12 @@
 
 ### Steps to Test
 
-1.
+1. [Step 1]
 
 ### Future Work
 
-[Add next steps, if any]
+[Type text here]
 
 ### Additional Notes
 
+[Type text here]
