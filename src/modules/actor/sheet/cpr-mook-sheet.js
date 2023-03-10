@@ -1,6 +1,5 @@
 /* global game $, duplicate */
 import CPRActorSheet from "./cpr-actor-sheet.js";
-import ModMookSkillPrompt from "../../dialog/cpr-mod-mook-skill-prompt.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
@@ -116,10 +115,14 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       return skillList.sort((a, b) => (a.name > b.name ? 1 : -1));
     });
 
-    // pop up the form with embedded skill details
-    const formData = await ModMookSkillPrompt.RenderPrompt({ skillList }).catch(
-      (err) => LOGGER.debug(err)
-    );
+    // Pop up the form with embedded skill details.
+    const formData = await CPRDialog.showDialog(
+      { skillList },
+      {
+        title: "CPR.mookSheet.dialog.modSkillTitle",
+        template: `systems/${game.system.id}/templates/dialog/cpr-mod-mook-skill-prompt.hbs`,
+      }
+    ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
@@ -173,7 +176,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       { name: this.actor.name },
       // Set the options for the dialog.
       {
-        title: SystemUtils.Localize("CPR.mookSheet.name"),
+        title: SystemUtils.Localize("CPR.mookSheet.dialog.modNameTitle"),
         template: `systems/${game.system.id}/templates/dialog/cpr-mook-name-prompt.hbs`,
       }
     ).catch((err) => LOGGER.debug(err));
