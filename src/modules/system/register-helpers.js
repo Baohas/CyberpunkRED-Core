@@ -921,9 +921,20 @@ export default function registerHandlebarsHelpers() {
    * @return {String} - the name of the skill or stat being changed
    */
   Handlebars.registerHelper("cprGetChangeNameByKey", (doc, cat, key) => {
+    LOGGER.trace("cprGetChangeNameByKey | handlebarsHelper | Called");
+    LOGGER.trace(
+      `cprGetChangeNameByKey | handlebarsHelper | doc: ${JSON.stringify(
+        doc,
+        null,
+        2
+      )}`
+    );
+    LOGGER.trace(`cprGetChangeNameByKey | handlebarsHelper | cat: ${cat}`);
+    LOGGER.trace(`cprGetChangeNameByKey | handlebarsHelper | key: ${key}`);
     if (!cat) {
-      // There's a split second when this is updating that the sheet may refresh showing ??? and throwing a console
-      // error when these are being updated with the delete method.
+      // There's a split second when this is updating that the sheet may
+      // refresh showing ??? and throwing a console error when these are
+      // being updated with the delete method.
       let returnString = "(updating)";
       const flag = doc.getFlag(game.system.id, "changes")
         ? doc.getFlag(game.system.id, "changes")
