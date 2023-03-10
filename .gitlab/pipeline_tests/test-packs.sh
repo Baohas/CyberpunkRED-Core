@@ -19,16 +19,17 @@ mapfile -t ITEMS < <(
 # For each itemType run the YAML fragments through v8r
 for item in "${ITEMS[@]}"; do
   # Shortcut v84 as we're doing error handling based on the output
-  results=$(npx v8r src/packs/**/"${item}".*.yaml 2>/dev/null || true)
+  npx v8r src/packs/**/"${item}".*.yaml 2>/dev/null >results.json || true
 
   # Parse out errors from the results
   all_errors=$(
-    echo "${results}" |
-      jq 'del(.results[]
+    jq 'del(.results[]
       | select(.code == 0))
       | [.results[]
-      | {file: .fileLocation, errors: .errors, code: .code}]'
+      | {file: .fileLocation, errors: .errors, code: .code}]' results.json
   )
+
+  rm -rf results.json
 
   # Get a count of the errors
   end=$(echo "${all_errors}" | jq length)
