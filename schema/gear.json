@@ -12,6 +12,9 @@
         "effects": {
           "$ref": "./components/effects/activeEffects.json"
         },
+        "flags": {
+          "$ref": "./components/flags.json"
+        },
         "img": {
           "$ref": "./components/img.json"
         },
