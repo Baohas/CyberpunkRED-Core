@@ -1,5 +1,7 @@
 _id: 7sZiyRANkHY7yyNw
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/BaseballBat_poor.svg
 name: Very Heavy Melee (Poor)
 system:

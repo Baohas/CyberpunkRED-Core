@@ -1,5 +1,7 @@
 _id: 29p2bEfPcAWHpsTY
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Thrown_Weapon.svg
 name: Thrown Weapon
 system:

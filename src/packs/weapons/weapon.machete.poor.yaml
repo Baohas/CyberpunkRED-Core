@@ -1,5 +1,7 @@
 _id: 2wP5wan7HZmaRuh3
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Machete_poor.svg
 name: Machete (Poor)
 system:

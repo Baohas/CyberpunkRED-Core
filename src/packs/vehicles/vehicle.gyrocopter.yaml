@@ -1,4 +1,6 @@
 _id: TsyueQcA4aeBN6xU
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/vehicle/helicopter.svg
 name: Gyrocopter
 system:

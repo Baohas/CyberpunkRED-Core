@@ -1,5 +1,7 @@
 _id: wkB34RhKmRQdjsxi
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/clothing/generic_contact_lenses.svg
 name: Gang Colors Contact Lenses

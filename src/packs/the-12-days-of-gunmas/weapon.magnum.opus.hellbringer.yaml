@@ -1,5 +1,7 @@
 _id: YHhTX03AJFe0cS5N
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
 name: Magnum Opus Hellbringer
 system:

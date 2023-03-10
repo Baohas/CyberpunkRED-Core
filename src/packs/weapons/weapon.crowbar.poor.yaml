@@ -1,5 +1,7 @@
 _id: ES0FYqZpy8NcDrEZ
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Crowbar_poor.svg
 name: Crowbar (Poor)
 system:

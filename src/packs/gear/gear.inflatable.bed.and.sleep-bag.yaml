@@ -1,5 +1,7 @@
 _id: VgVcQgRkt8y5DL00
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/gear/inflatable_bed_and_sleepingbag.svg
 name: Inflatable Bed & Sleep-bag

@@ -1,5 +1,7 @@
 _id: PGK96hSYe39toOam
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_glasses.svg
 name: Gang Colors Glasses
 system:

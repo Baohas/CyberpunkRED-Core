@@ -1,4 +1,6 @@
 _id: 6ta0PBU9FFrkg97B
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolveryheavy_rubber.png
 name: Very Heavy Pistol (Rubber)
 system:

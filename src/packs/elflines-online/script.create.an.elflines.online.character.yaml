@@ -123,6 +123,8 @@ command: >-
 
 
   elfCharacter.updateEmbeddedDocuments("Item", coreSkills );
+flags:
+  core: {}
 img: icons/svg/dice-target.svg
 name: Create an Elflines Online Character
 scope: global

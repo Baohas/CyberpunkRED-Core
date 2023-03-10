@@ -1,5 +1,7 @@
 _id: jAdhAAhK6fHHTEU2
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/color_shift.svg
 name: Color Shift
 system:

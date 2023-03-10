@@ -1,4 +1,6 @@
 _id: MfuoJ69NL1FiP7B8
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/battery.png
 name: Battery Pack
 system:

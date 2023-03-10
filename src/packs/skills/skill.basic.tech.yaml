@@ -1,4 +1,6 @@
 _id: 13raQA8s0uaE9Pmq
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Basic Tech
 system:

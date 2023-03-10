@@ -1,4 +1,6 @@
 _id: y9HobxZQBhVEN5Ne
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
 name: Drum Magazine (Rocket Launcher)
 system:

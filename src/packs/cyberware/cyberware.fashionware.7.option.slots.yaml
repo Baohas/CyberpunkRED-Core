@@ -1,5 +1,7 @@
 _id: rW0qJ4pY3g4gK7yP
 effects: []
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Fashionware (7 Option Slots)
 system:

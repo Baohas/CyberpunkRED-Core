@@ -1,5 +1,7 @@
 _id: KgqUdz9Fs55747gv
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher.svg
 name: Grenade Launcher
 system:

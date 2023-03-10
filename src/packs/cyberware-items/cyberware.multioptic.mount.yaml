@@ -1,5 +1,7 @@
 _id: Iu2wDz9q6Ov0UAKo
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/multioptic_mount.svg
 name: MultiOptic Mount
 system:

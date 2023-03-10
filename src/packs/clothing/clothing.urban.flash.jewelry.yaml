@@ -1,5 +1,7 @@
 _id: iwf7yiZyvmhW3rPj
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
 name: Urban Flash Jewelry
 system:

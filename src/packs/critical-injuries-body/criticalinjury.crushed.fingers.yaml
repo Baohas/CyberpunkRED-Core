@@ -1,5 +1,7 @@
 _id: IKKcCgHU1lBJ4wVd
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_fingers.svg
 name: Crushed Fingers

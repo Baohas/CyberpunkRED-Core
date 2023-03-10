@@ -1,5 +1,7 @@
 _id: MQpiPgEtPaIe6MJ6
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_ribs.svg
 name: Broken Ribs
 system:

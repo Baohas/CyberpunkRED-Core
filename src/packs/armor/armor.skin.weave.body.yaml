@@ -1,5 +1,7 @@
 _id: DXavZyl7CTtgoZ6i
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/skin_weave.svg
 name: Skin Weave (Body)
 system:

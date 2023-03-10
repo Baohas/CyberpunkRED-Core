@@ -1,4 +1,6 @@
 _id: g5S5E8UG1QJ4yFsp
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Netrunner
 system:

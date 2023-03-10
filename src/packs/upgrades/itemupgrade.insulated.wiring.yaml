@@ -1,4 +1,6 @@
 _id: AgwuTwzg7UeI1xch
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/insulated_wiring.svg
 name: Insulated Wiring
 system:

@@ -1,5 +1,7 @@
 _id: clCxd7qkp2olsKii
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/video_camera.svg
 name: Video Camera
 system:

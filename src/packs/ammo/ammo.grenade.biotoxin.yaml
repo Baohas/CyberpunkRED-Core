@@ -1,4 +1,6 @@
 _id: TOftCgogDvWvXV1z
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_biotoxin.png
 name: Grenade (Biotoxin)
 system:

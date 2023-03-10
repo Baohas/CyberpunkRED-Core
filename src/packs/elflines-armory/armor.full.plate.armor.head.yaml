@@ -1,5 +1,7 @@
 _id: 6w3JLFVB9VIOmCmI
 effects: []
+flags:
+  core: {}
 img: icons/equipment/head/helm-barbute-rounded-steel.webp
 name: Full Plate Armor (Head)
 system:

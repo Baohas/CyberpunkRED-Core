@@ -1,5 +1,7 @@
 _id: Ya6Zu2KQ1u5SC6Xj
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
 name: Gang Colors Jewelry
 system:

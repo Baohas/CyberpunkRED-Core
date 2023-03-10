@@ -1,5 +1,7 @@
 _id: XHzLjyq4D1XSeX0f
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_glasses.svg
 name: Businesswear Glasses
 system:

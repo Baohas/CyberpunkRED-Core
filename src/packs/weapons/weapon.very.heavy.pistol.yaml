@@ -1,5 +1,7 @@
 _id: 4L05qIZxsy0uDSHz
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
 name: Very Heavy Pistol
 system:

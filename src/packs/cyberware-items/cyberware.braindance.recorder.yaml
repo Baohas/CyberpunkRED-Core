@@ -1,5 +1,7 @@
 _id: U4RT0J4GJLz7gmby
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/braindance_recorder.svg
 name: Braindance Recorder
 system:

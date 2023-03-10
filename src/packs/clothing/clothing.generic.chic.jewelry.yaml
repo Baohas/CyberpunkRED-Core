@@ -1,5 +1,7 @@
 _id: dpOkYM9UIo4oQ0iy
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
 name: Generic Chic Jewelry
 system:

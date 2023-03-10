@@ -1,4 +1,6 @@
 _id: Yzo60c2pXKZ88QzM
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/bow_sleep.png
 name: Arrow (Sleep)
 system:

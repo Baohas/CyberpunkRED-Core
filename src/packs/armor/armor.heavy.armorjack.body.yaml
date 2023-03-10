@@ -1,5 +1,7 @@
 _id: vYzDZIbfJ1RfCvi9
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
 name: Heavy Armorjack (Body)
 system:

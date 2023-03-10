@@ -1,4 +1,6 @@
 _id: DWfusJuwJXXt59bA
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/backup_drive.svg
 name: Backup Drive
 system:

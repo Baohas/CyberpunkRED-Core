@@ -1,5 +1,7 @@
 _id: TORJ5nowRNlRCeqU
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/realskin_covering.svg
 name: Realskinn Covering (Cyber Leg)
 system:

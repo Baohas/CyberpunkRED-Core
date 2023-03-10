@@ -1,4 +1,6 @@
 _id: iAEhmFnY7U26bKvN
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_emp.png
 name: Grenade (EMP)
 system:

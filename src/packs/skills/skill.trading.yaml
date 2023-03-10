@@ -1,4 +1,6 @@
 _id: 3QXtTqLRdD1lZYsI
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Trading
 system:

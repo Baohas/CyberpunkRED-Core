@@ -1,5 +1,7 @@
 _id: HLOBpJRg7sZRZWTO
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/programs/superglue.svg
 name: Superglue
 system:

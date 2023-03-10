@@ -1,4 +1,6 @@
 _id: TcVJvGcbgK30TNUJ
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_incendiary.png
 name: Heavy Pistol (Incendiary)
 system:

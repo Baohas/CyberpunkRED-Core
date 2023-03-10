@@ -1,5 +1,7 @@
 _id: rUSdivkoD9THJXNy
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/micro_chrome/smart_lens.svg
 name: Smart Lens
 system:

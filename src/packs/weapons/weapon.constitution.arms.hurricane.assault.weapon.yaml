@@ -1,5 +1,7 @@
 _id: 5DZRWppYOzCk9rgQ
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun.svg
 name: Constitution Arms Hurricane Assault Weapon
 system:

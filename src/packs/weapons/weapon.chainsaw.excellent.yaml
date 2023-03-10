@@ -1,5 +1,7 @@
 _id: TIIsI6khCIZE4iip
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Chainsaw_excellent.svg
 name: Chainsaw (Excellent)
 system:

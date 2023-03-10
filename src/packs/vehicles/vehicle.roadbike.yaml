@@ -1,4 +1,6 @@
 _id: jQAAGVWOKKhzEIMK
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/vehicle/motorbike.svg
 name: Roadbike
 system:

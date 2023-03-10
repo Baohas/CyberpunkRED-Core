@@ -1,5 +1,7 @@
 _id: H3TbPxxkfN9ir5kp
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Naginata.svg
 name: Naginata
 system:

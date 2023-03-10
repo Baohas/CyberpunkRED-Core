@@ -1,5 +1,7 @@
 _id: glDRehQyz40desZo
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/CombatKnife_poor.svg
 name: Combat Knife (Poor)
 system:

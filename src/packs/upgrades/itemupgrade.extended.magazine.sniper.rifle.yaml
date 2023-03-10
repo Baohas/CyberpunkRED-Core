@@ -1,4 +1,6 @@
 _id: seI3exdDPXajjFFz
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
 name: Extended Magazine (Sniper Rifle)
 system:

@@ -1,5 +1,7 @@
 _id: Q3Cd7mARIdnaDH6o
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_mirrorshades.svg
 name: Gang Colors Mirrorshades
 system:

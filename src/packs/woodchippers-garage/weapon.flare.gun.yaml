@@ -1,5 +1,7 @@
 _id: moqJ5beR4WqWCpZM
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher.svg
 name: Flare Gun
 system:

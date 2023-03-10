@@ -1,5 +1,7 @@
 _id: Zvx0Pnn2kyammdnL
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_footwear.svg
 name: Bag Lady Chic Footwear
 system:

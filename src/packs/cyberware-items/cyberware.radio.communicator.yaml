@@ -1,5 +1,7 @@
 _id: u0VMOMNdTt72c37W
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/radio_communicator.svg
 name: Radio Communicator
 system:

@@ -1,4 +1,6 @@
 _id: 314PiB9i0ahRqfZv
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_smart.png
 name: Heavy Pistol (Smart)
 system:

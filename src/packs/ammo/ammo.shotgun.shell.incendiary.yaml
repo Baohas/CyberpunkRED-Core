@@ -1,4 +1,6 @@
 _id: MdA5gBfCKbBuHGof
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_shell_incendiary.png
 name: Shotgun Shell (Incendiary)
 system:

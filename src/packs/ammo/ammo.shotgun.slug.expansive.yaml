@@ -1,4 +1,6 @@
 _id: WjWIkjjjMW4j5Bzp
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_slug_expansive.png
 name: Shotgun Slug (Expansive)
 system:

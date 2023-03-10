@@ -1,5 +1,7 @@
 _id: z2Gfkljp1A65Onoo
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jacket.svg
 name: High Fashion Jacket
 system:

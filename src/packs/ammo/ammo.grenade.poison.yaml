@@ -1,4 +1,6 @@
 _id: OufLzsBG6w0CUp81
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_poison.png
 name: Grenade (Poison)
 system:

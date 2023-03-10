@@ -1,4 +1,6 @@
 _id: e8gDMbdK1oPKwhqW
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_flashbang.png
 name: Grenade (Flashbang)
 system:

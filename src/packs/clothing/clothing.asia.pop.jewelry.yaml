@@ -1,5 +1,7 @@
 _id: 97AeokKQvAdkafXo
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
 name: Asia Pop Jewelry
 system:

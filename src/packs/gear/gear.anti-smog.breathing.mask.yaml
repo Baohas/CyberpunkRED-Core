@@ -1,5 +1,7 @@
 _id: LTxStSIeRegbtZpd
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/antismog_breathing_mask.svg
 name: Anti-Smog Breathing Mask
 system:

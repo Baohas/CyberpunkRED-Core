@@ -1,5 +1,7 @@
 _id: M8voGXTG2a8S1CzV
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_glasses.svg
 name: Generic Chic Glasses
 system:

@@ -3,6 +3,8 @@ description: >-
   Table for rolling for the basic floors of a NET architecture, as detailed on
   page 211.
 displayRoll: false
+flags:
+  core: {}
 formula: 3d6
 img: icons/svg/d20-grey.svg
 name: All Other Floors (Basic)

@@ -1,5 +1,7 @@
 _id: n8wOKWrJUC0ZS5jg
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Bow.svg
 name: Bow
 system:

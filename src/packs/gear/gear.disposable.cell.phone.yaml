@@ -1,5 +1,7 @@
 _id: OjMJ2SyoMr4VWmnm
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/disposable_cellphone.svg
 name: Disposable Cell Phone
 system:

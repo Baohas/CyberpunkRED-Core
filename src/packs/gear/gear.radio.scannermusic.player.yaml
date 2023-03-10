@@ -1,5 +1,7 @@
 _id: sMAZKb9ErPoQJ1vV
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/gear/radio_scanner_music_player.svg
 name: Radio Scanner/Music Player

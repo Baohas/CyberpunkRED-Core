@@ -1,4 +1,6 @@
 _id: n3AunwSvl6L44MRF
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_smart.png
 name: Rifle (Smart)
 system:

@@ -15,6 +15,11 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
     label: AudioVox Acting
     tint: null
@@ -33,10 +38,18 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          "0": skill
+          cats:
+            "0": skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
     label: AudioVox Singing (Play Instrument)
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
 name: AudioVox
 system:

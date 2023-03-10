@@ -1,5 +1,7 @@
 _id: ZJJEcMX3RdfsRFMK
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/clothing/generic_contact_lenses.svg
 name: High Fashion Contact Lenses

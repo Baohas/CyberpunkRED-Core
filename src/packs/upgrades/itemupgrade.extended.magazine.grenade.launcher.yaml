@@ -1,4 +1,6 @@
 _id: P4XioOHNf343JNm9
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
 name: Extended Magazine (Grenade Launcher)
 system:

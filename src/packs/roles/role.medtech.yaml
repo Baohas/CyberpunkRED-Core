@@ -1,4 +1,6 @@
 _id: 8wRoRsRQnpt3Je00
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Medtech
 system:

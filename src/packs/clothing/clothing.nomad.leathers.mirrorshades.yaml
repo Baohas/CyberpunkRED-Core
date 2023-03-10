@@ -1,5 +1,7 @@
 _id: VxOL6dzFySRECegA
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_mirrorshades.svg
 name: Nomad Leathers Mirrorshades
 system:

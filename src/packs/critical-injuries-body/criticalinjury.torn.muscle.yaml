@@ -13,11 +13,18 @@ effects:
     disabled: false
     duration:
       startTime: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": combat
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/torn_muscle.svg
     label: Torn Muscle
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/torn_muscle.svg
 name: Torn Muscle
 system:

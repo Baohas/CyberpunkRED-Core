@@ -1,5 +1,7 @@
 _id: CWjTYdVe0wQmVcaT
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/clothing/generic_contact_lenses.svg
 name: Leisurewear Contact Lenses

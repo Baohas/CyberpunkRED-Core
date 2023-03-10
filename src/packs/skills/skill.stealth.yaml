@@ -1,4 +1,6 @@
 _id: y2oyHHPllOLVxiNJ
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Stealth
 system:

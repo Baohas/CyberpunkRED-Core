@@ -1,5 +1,7 @@
 _id: Fa8Mse1uXrLLWIxo
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/bug_detector.svg
 name: Bug Detector
 system:

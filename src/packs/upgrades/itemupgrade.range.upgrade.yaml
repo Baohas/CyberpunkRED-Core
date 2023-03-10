@@ -1,4 +1,6 @@
 _id: Ut1OZZP1KFC8o6IB
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/range_upgrade.svg
 name: Range Upgrade
 system:

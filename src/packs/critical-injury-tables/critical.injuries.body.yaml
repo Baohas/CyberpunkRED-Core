@@ -1,6 +1,8 @@
 _id: n7IlIvMfg7yW1OoE
 description: ""
 displayRoll: true
+flags:
+  core: {}
 formula: 2d6
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/body_critical_injury.svg

@@ -1,5 +1,7 @@
 _id: TYQQDKiVA8NWE4Rp
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_mirrorshades.svg
 name: High Fashion Mirrorshades
 system:

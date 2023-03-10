@@ -1,4 +1,6 @@
 _id: 2YDWLi0oPsH3c7B6
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Melee Weapon
 system:

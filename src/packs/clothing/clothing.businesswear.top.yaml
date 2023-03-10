@@ -1,5 +1,7 @@
 _id: 0NrP4N71Kcvywx31
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_top.svg
 name: Businesswear Top
 system:

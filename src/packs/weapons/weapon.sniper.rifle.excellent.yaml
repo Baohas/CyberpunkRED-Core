@@ -1,5 +1,7 @@
 _id: g1WPHBmTgxEHTbSp
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle_excellent.svg
 name: Sniper Rifle (Excellent)
 system:

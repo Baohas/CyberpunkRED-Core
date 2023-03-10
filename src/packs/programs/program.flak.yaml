@@ -1,5 +1,7 @@
 _id: PDYabXG1H9XbpAWS
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/programs/flak.svg
 name: Flak
 system:

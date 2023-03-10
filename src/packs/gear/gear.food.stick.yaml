@@ -1,5 +1,7 @@
 _id: j71ouZVOvc7xEfke
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/foodstick.svg
 name: Food Stick
 system:

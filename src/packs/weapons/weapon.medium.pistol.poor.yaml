@@ -1,5 +1,7 @@
 _id: tCTzi4miYdNgAJVc
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/mediumPistol_poor.svg
 name: Medium Pistol (Poor)
 system:

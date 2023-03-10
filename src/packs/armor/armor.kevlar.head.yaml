@@ -1,5 +1,7 @@
 _id: n4nBTZca1I6bg9rs
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor_Head.svg
 name: Kevlar (Head)
 system:

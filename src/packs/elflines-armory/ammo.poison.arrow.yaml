@@ -1,4 +1,6 @@
 _id: IZwINpYpfLLAq5zb
+flags:
+  core: {}
 img: icons/weapons/ammunition/arrow-broadhead-green.webp
 name: Poison Arrow
 system:

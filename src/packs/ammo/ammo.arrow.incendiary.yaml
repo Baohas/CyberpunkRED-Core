@@ -1,4 +1,6 @@
 _id: eRpD2JusdqIHCN7f
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/bow_incendiary.png
 name: Arrow (Incendiary)
 system:

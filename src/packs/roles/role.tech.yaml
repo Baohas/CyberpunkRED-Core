@@ -1,4 +1,6 @@
 _id: f815HiiDpThbd7eY
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Tech
 system:

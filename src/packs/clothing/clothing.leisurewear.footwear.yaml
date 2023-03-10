@@ -1,5 +1,7 @@
 _id: 4XMXfUzsDo3y14nw
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_footwear.svg
 name: Leisurewear Footwear
 system:

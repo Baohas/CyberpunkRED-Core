@@ -1,6 +1,8 @@
 _id: MA08zR8NSylpddAc
 description: Core Rulebook Page 177
 displayRoll: false
+flags:
+  core: {}
 formula: ""
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
 name: DV Thrown Weapon

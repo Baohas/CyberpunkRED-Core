@@ -1,4 +1,6 @@
 _id: zSBy9rWNSEVySygE
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Dance
 system:

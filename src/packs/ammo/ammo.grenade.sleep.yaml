@@ -1,4 +1,6 @@
 _id: rjTyO2vXdd4T19Me
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_sleep.png
 name: Grenade (Sleep)
 system:

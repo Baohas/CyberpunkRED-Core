@@ -1,5 +1,7 @@
 _id: l0rpyL5qxjIBOYZJ
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/midnight_lady.svg
 name: Midnight Lady Sexual Implant
 system:

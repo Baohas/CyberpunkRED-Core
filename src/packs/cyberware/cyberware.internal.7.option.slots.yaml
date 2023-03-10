@@ -1,5 +1,7 @@
 _id: xWJzecHaU1KUlawT
 effects: []
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Internal (7 Option Slots)
 system:

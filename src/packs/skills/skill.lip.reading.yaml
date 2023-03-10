@@ -1,4 +1,6 @@
 _id: oNkNlAveEaFmztRb
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Lip Reading
 system:

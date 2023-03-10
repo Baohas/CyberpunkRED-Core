@@ -1,4 +1,6 @@
 _id: CiskMOqNs2y5axDS
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/paintball_acid.png
 name: Paintball (Acid)
 system:

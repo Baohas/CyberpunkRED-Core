@@ -14,10 +14,20 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: true
     icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
     label: Lost Ear
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
 name: Lost Ear
 system:

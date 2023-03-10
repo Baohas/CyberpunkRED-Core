@@ -1,4 +1,6 @@
 _id: jz7lnKQ3dKd5GCbY
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/dna_lock.svg
 name: DNA Lock
 system:

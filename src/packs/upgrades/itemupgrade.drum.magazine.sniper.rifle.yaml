@@ -1,4 +1,6 @@
 _id: mUUjgdfV04q6T2VS
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
 name: Drum Magazine (Sniper Rifle)
 system:

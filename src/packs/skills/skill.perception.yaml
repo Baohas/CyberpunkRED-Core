@@ -1,4 +1,6 @@
 _id: nPVwsGDzkjaGu6mZ
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Perception
 system:

@@ -1,5 +1,7 @@
 _id: BGTQ3MinP72azZ8C
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jacket.svg
 name: Gang Colors Jacket
 system:

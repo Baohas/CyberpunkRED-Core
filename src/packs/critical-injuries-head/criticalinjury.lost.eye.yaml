@@ -19,10 +19,25 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": combat
+            "1": skill
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+            "1":
+              isSituational: true
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_eye.svg
     label: New Effect
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_eye.svg
 name: Lost Eye
 system:

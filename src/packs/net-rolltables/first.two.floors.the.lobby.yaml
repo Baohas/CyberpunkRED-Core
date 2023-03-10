@@ -3,6 +3,8 @@ description: >-
   Table for rolling for the first two floors of a NET architecture, as detailed
   on page 211.
 displayRoll: false
+flags:
+  core: {}
 formula: 1d6
 img: icons/svg/d20-grey.svg
 name: First Two Floors (The Lobby)

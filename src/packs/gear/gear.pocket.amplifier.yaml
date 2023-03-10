@@ -1,5 +1,7 @@
 _id: Zp8YbDBMTCl7sy61
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/pocket_amplifier.svg
 name: Pocket Amplifier
 system:

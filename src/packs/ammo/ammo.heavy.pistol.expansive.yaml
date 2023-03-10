@@ -1,4 +1,6 @@
 _id: Iz3NKqODGVjxJqTY
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_expansive.png
 name: Heavy Pistol (Expansive)
 system:

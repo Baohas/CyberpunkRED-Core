@@ -39,10 +39,23 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+            "1": skill
+            "2": skill
+            "3": skill
+            "4": skill
+            "5": skill
+            "6": skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/techscanner.svg
     label: Techscanner
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/techscanner.svg
 name: Techscanner
 system:

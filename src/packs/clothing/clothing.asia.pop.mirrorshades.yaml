@@ -1,5 +1,7 @@
 _id: eUitNUdtpaMrvxgl
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_mirrorshades.svg
 name: Asia Pop Mirrorshades
 system:

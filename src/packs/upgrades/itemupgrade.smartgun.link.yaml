@@ -1,4 +1,6 @@
 _id: BC8S1sdK0QGdyHNC
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/smartgun_link.svg
 name: Smartgun Link
 system:

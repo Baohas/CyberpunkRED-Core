@@ -1,5 +1,7 @@
 _id: aQsTfMuwscY8JqcG
 effects: []
+flags:
+  core: {}
 img: icons/equipment/chest/breastplate-layered-leather-brown.webp
 name: Leather Armor (Body)
 system:

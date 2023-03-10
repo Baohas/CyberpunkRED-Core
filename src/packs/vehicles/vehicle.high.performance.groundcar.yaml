@@ -1,4 +1,6 @@
 _id: DreAdvzXmJsiSWyy
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
 name: High Performance Groundcar
 system:

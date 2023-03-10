@@ -1,5 +1,7 @@
 _id: UzJBUdhSbGW6wzA2
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/chemical_analyzer.svg
 name: Chemical Analyzer
 system:

@@ -15,6 +15,11 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/boost.svg
     label: Boost Primary
     tint: null
@@ -34,10 +39,17 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/boost_addiction.svg
     label: Boost Addiction
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/boost.svg
 name: Boost
 system:

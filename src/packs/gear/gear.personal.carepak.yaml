@@ -1,5 +1,7 @@
 _id: wbMrUpgWHROY24OC
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/personal_carepak.svg
 name: Personal CarePak
 system:

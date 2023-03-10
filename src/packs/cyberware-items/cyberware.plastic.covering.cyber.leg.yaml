@@ -1,5 +1,7 @@
 _id: DBBqtiw87n0yCJCW
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/plastic_covering.svg
 name: Plastic Covering (Cyber Leg)
 system:

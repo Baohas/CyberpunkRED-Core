@@ -1,5 +1,7 @@
 _id: grEw5oU6WDsqAOvY
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/BaseballBat_excellent.svg
 name: Medium Melee (Excellent)
 system:

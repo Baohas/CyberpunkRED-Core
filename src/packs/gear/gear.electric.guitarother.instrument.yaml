@@ -1,5 +1,7 @@
 _id: aiX4CSRjs0oKGIFK
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/electric_guitar.svg
 name: Electric Guitar/Other Instrument
 system:

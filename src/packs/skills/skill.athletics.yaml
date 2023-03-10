@@ -1,4 +1,6 @@
 _id: 2cEhxWWDwDYepIuJ
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Athletics
 system:

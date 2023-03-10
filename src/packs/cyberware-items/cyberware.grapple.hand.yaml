@@ -1,5 +1,7 @@
 _id: v69jYqL7RMbs9PW4
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/grapple_hand.svg
 name: Grapple Hand
 system:

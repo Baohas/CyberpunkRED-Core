@@ -1,5 +1,7 @@
 _id: HVP2iZPeOjhXbPrE
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_hat.svg
 name: Generic Chic Hat
 system:

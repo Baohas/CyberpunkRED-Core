@@ -1,4 +1,6 @@
 _id: LUn1NLURJhyUcta3
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/bow_smart.png
 name: Arrow (Smart)
 system:

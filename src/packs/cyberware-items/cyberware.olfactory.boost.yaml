@@ -1,5 +1,7 @@
 _id: pJmvlPM82IPK9RCG
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/olfactory_boost.svg
 name: Olfactory Boost
 system:

@@ -1,5 +1,7 @@
 _id: 9N6yHeVwiGg2MkeL
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/dismembered_arm.svg
 name: Dismembered Arm

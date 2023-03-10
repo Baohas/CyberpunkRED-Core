@@ -14,11 +14,22 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: true
+              onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_ear.svg
     label: Damaged Ear
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_ear.svg
 name: Damaged Ear
 system:

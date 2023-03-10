@@ -1,5 +1,7 @@
 _id: UlNLm2tio4pdgOgV
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/CombatKnife.svg
 name: Combat Knife
 system:

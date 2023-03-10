@@ -1,5 +1,7 @@
 _id: JwM7wAbmRZfL3Z3c
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/radar_sonar_implant.svg
 name: Radar/Sonar Implant
 system:

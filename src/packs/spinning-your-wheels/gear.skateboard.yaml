@@ -1,5 +1,7 @@
 _id: 5I7hkCleUNdrgRoI
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/spinning_your_wheels/skateboard.svg
 name: Skateboard

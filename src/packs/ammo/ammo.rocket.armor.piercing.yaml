@@ -1,4 +1,6 @@
 _id: dHHTQLHUkd0IX8GI
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/rocket_armorpiercing.png
 name: Rocket (Armor Piercing)
 system:

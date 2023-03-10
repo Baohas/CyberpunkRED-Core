@@ -1,5 +1,7 @@
 _id: QIHx5oQOirtTlAaD
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/homing_tracer.svg
 name: Homing Tracer
 system:

@@ -1,5 +1,7 @@
 _id: yU8v6k5o1hbnsQnX
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_bottoms.svg
 name: Asia Pop Bottoms
 system:

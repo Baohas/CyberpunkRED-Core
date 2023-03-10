@@ -1,4 +1,6 @@
 _id: 048cmb4eS7HiAosc
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/bow_expansive.png
 name: Arrow (Expansive)
 system:

@@ -14,11 +14,18 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": stat
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/grafted_muscle_and_bone_lace.svg
     label: Grafted Muscle & Bone Lace
     tint: null
     transfer: true
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/cyberware/grafted_muscle_and_bone_lace.svg
 name: Grafted Muscle and Bone Lace

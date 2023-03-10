@@ -1,5 +1,7 @@
 _id: cSpS0OVoCyH7Fy35
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_bottoms.svg
 name: Gang Colors Bottoms
 system:

@@ -1,5 +1,7 @@
 _id: cmgqzHg3KxyJx7LP
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/clothing/generic_contact_lenses.svg
 name: Nomad Leathers Contact Lenses

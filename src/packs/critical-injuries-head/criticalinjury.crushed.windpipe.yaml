@@ -1,5 +1,7 @@
 _id: mVE8ovTniNKFs9Y7
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_windpipe.svg
 name: Crushed Windpipe

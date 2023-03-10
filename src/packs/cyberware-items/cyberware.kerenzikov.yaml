@@ -14,10 +14,17 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": combat
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/kerenzikov.svg
     label: Kerenzikov
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/kerenzikov.svg
 name: Kerenzikov
 system:

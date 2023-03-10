@@ -1,4 +1,6 @@
 _id: cUIOleVPNLHP9y3i
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Library Search
 system:

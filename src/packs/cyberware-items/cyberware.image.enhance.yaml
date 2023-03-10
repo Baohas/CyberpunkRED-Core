@@ -20,10 +20,29 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+            "1": skill
+            "2": skill
+          situational:
+            "0":
+              isSituational: true
+              onByDefault: false
+            "1":
+              isSituational: true
+              onByDefault: false
+            "2":
+              isSituational: true
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/image_enhance.svg
     label: Image Enhance
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/image_enhance.svg
 name: Image Enhance
 system:

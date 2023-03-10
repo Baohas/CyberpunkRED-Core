@@ -19,11 +19,19 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+            "1": skill
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/voice_stress_analyzer.svg
     label: Voice Stress Analyzer
     tint: null
     transfer: true
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/cyberware/voice_stress_analyzer.svg
 name: Voice Stress Analyzer

@@ -15,11 +15,18 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": stat
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/dismembered_leg.svg
     label: Dismembered Leg
     tint: null
     transfer: true
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/dismembered_leg.svg
 name: Dismembered Leg

@@ -1,5 +1,7 @@
 _id: aqyQqrLUiN9iTv3v
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher.svg
 name: Biotechnica Enviro-launcher
 system:

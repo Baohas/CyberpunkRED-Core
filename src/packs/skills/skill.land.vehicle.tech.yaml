@@ -1,4 +1,6 @@
 _id: ENrWOKuCjjpJjCtl
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Land Vehicle Tech
 system:

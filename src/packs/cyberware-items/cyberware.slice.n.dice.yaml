@@ -1,5 +1,7 @@
 _id: u1TSFrsDP5i0KzFe
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/slice_n_dice.svg
 name: Slice 'N Dice
 system:

@@ -1,5 +1,7 @@
 _id: 6iTkyK9JSQHM2IqU
 effects: []
+flags:
+  core: {}
 img: icons/weapons/bows/shortbow-recurve-red.webp
 name: Bow
 system:

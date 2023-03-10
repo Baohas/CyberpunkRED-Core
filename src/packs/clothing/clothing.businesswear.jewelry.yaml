@@ -1,5 +1,7 @@
 _id: J0OQweZ1zPP9Izdc
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
 name: Businesswear Jewelry
 system:

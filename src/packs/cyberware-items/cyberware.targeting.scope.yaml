@@ -15,10 +15,17 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": combat
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/targeting_scope.svg
     label: Targeting Scope
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/targeting_scope.svg
 name: Targeting Scope
 system:

@@ -1,4 +1,6 @@
 _id: imYSBydexTxoHynu
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_slug_smart.png
 name: Shotgun Slug (Smart)
 system:

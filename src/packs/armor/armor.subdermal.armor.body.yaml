@@ -1,5 +1,7 @@
 _id: M96Dfx18YqvhlIgb
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_armor.svg
 name: Subdermal Armor (Body)
 system:

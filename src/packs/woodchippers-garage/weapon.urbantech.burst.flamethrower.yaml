@@ -1,5 +1,7 @@
 _id: ZvjhbBWnWQQduup0
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Flamethrower.svg
 name: UrbanTech Burst Flamethrower
 system:

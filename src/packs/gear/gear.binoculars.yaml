@@ -1,5 +1,7 @@
 _id: JL6Nf3l7hjzDmJZ5
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/binoculars.svg
 name: Binoculars
 system:

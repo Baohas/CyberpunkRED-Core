@@ -1,4 +1,6 @@
 _id: WNk0YpCbxFa6iLTH
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
 name: Drum Magazine (Heavy Pistol)
 system:

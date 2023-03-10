@@ -1,4 +1,6 @@
 _id: I7Uv0EmzaDAmdFeV
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
 name: Drum Magazine (Shotgun)
 system:

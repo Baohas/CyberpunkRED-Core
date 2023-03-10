@@ -1,5 +1,7 @@
 _id: yMgSyUvci14qO9WE
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/heavySMG.svg
 name: Mustang Arms ARS-5 Submachine Gun
 system:

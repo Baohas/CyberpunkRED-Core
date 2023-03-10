@@ -1,5 +1,7 @@
 _id: VrwVUEHuMCGjp8Fi
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/grapple_gun.svg
 name: Grapple Gun
 system:

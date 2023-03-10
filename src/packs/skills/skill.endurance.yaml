@@ -1,4 +1,6 @@
 _id: dai7lskmxzohcpZS
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Endurance
 system:

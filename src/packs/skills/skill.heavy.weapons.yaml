@@ -1,4 +1,6 @@
 _id: TNA0LGN1MAYoA60l
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Heavy Weapons
 system:

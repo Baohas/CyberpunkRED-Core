@@ -1,5 +1,7 @@
 _id: TCdrW2Qh5gXWywlP
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Machete.svg
 name: SlamDance Ballistic Harpoon
 system:

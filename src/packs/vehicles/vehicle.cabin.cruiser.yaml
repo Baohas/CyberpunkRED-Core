@@ -1,4 +1,6 @@
 _id: 6cciJXompBeXxMma
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/vehicle/ship.svg
 name: Cabin Cruiser
 system:

@@ -1,5 +1,7 @@
 _id: qqNh3sElWPyVT4Qq
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
 name: Sternmeyer M-02 Heavy Rifle
 system:

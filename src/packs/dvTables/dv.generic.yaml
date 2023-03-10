@@ -17,6 +17,8 @@ description: >-
 
   - The Range should be the start distance to end distance, inclusive, in m/yds
 displayRoll: false
+flags:
+  core: {}
 formula: ""
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
 name: DV Generic

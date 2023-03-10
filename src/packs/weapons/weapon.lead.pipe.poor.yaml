@@ -1,5 +1,7 @@
 _id: wDPkVbsM0UK9vwoW
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/LeadPipe_poor.svg
 name: Lead Pipe (Poor)
 system:

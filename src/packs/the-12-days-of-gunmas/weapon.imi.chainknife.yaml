@@ -1,5 +1,7 @@
 _id: 2dYYGb00Ve96CBpS
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Chainsaw_excellent.svg
 name: IMI Chainknife
 system:

@@ -1,5 +1,7 @@
 _id: X6VYB5awDbtURwIv
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/unarmed.svg
 name: Unarmed
 system:

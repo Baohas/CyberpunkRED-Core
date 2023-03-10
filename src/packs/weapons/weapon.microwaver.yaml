@@ -1,5 +1,7 @@
 _id: oQ4mV07fh1et5zI7
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/microwaver.svg
 name: Microwaver
 system:

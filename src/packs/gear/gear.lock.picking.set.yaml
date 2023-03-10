@@ -1,5 +1,7 @@
 _id: vlhGpguIMioeA8fe
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/lock_picking_set.svg
 name: Lock Picking Set
 system:

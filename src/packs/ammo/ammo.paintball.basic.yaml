@@ -1,4 +1,6 @@
 _id: XrmjWt5BvX6meuUs
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/paintball_basic.png
 name: Paintball (Basic)
 system:

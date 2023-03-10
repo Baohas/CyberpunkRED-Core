@@ -1,5 +1,7 @@
 _id: JkQflgLDMmgLBZbc
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/vampyres.svg
 name: Vampyres
 system:

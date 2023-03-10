@@ -1,5 +1,7 @@
 _id: bT9GZSkMTG1Flubj
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
 name: Nomad Leathers Jewelry
 system:

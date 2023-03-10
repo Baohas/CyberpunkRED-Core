@@ -1,5 +1,7 @@
 _id: gDN0U6mp3axrm9KQ
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/meatleg.svg
 name: Meat Leg
 system:

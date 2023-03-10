@@ -1,5 +1,7 @@
 _id: CcIZ23rub5QtcOHJ
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_footwear.svg
 name: Nomad Leathers Footwear
 system:

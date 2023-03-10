@@ -1,4 +1,6 @@
 _id: AUMkHYqfODTjgtMD
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/cyberdeck_excellent.svg
 name: Cyberdeck (Excellent)
 system:

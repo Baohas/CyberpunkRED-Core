@@ -1,5 +1,7 @@
 _id: aEG91CA3amfU0Q8U
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/grip_foot.svg
 name: Grip Foot
 system:

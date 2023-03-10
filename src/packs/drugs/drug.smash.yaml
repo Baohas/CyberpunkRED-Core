@@ -35,6 +35,16 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+            "1": skill
+            "2": skill
+            "3": skill
+            "4": skill
+            "5": skill
     icon: systems/cyberpunk-red-core/icons/compendium/status/smash.svg
     label: Smash Primary
     tint: null
@@ -74,10 +84,22 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+            "1": skill
+            "2": skill
+            "3": skill
+            "4": skill
+            "5": skill
     icon: systems/cyberpunk-red-core/icons/compendium/status/smash_addiciton.svg
     label: Smash Addiction
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/smash.svg
 name: Smash
 system:

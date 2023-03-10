@@ -14,11 +14,22 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": stat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/status/black_lace_addiction.svg
     label: Black Lace Addicition
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/black_lace.svg
 name: Black Lace
 system:

@@ -15,10 +15,17 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": netrun
     icon: systems/cyberpunk-red-core/icons/compendium/programs/speedy_gonzalvez.svg
     label: Speedy Gonzalves
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/programs/speedy_gonzalvez.svg
 name: Speedy Gonzalvez
 system:

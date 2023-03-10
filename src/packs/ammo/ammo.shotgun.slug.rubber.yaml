@@ -1,4 +1,6 @@
 _id: qRKLIX7yU2n83JKJ
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_slug_rubber.png
 name: Shotgun Slug (Rubber)
 system:

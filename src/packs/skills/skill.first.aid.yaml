@@ -1,4 +1,6 @@
 _id: 8yxaK6GbNu59yxKH
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: First Aid
 system:

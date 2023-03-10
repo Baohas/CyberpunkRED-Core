@@ -1,5 +1,7 @@
 _id: HOgtO363Rw42ZHMp
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol_poor.svg
 name: Heavy Pistol (Poor)
 system:

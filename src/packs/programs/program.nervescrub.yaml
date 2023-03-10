@@ -1,5 +1,7 @@
 _id: iq3V4YMib0WVSZZD
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/programs/nervescrub.svg
 name: Nervescrub
 system:

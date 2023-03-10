@@ -1,5 +1,7 @@
 _id: Ew9qfNB7omExalEu
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle_excellent.svg
 name: Assault Rifle (Excellent)
 system:

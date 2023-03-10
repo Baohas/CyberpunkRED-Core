@@ -1,4 +1,6 @@
 _id: TTn8GdqM6rnjHSCX
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_armorpiercing.png
 name: Sternmeyer M-02 Rounds
 system:

@@ -1,5 +1,7 @@
 _id: 9mLNqf0t3qWKAqXj
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/radiation_detector.svg
 name: Radiation Detector
 system:

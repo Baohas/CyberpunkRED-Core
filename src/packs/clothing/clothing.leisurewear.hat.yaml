@@ -1,5 +1,7 @@
 _id: 8wOCTUwRwIWMdbEH
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_hat.svg
 name: Leisurewear Hat
 system:

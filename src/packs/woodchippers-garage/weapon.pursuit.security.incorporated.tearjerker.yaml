@@ -1,5 +1,7 @@
 _id: puBNVffqHLoGXXnd
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher_excellent.svg
 name: Pursuit Security Incorporated TearJerker

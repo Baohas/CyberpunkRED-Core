@@ -1,4 +1,6 @@
 _id: 3z654ef9UlgH8o1o
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
 name: Drum Magazine (SMG)
 system:

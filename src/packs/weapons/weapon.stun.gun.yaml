@@ -1,5 +1,7 @@
 _id: yJ8sMz4BMgQ7ZH3K
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/stun_gun.svg
 name: Stun Gun
 system:

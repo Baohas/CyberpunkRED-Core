@@ -1,4 +1,6 @@
 _id: RkNmXeJttYnBdgTK
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Deduction
 system:

@@ -1,4 +1,6 @@
 _id: kDE2jnvcsbbz1vaL
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Lawman
 system:

@@ -1,4 +1,6 @@
 _id: U6VMjZRYgJMlMSsg
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_incendiary.png
 name: Rifle (Incendiary)
 system:

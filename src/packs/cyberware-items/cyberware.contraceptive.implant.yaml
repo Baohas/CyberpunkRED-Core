@@ -1,5 +1,7 @@
 _id: t1h3krjph5M3TwQa
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/cyberware/contraceptive_implant.svg
 name: Contraceptive Implant

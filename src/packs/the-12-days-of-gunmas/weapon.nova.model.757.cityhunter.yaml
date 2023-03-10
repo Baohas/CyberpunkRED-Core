@@ -1,5 +1,7 @@
 _id: qL9B85FSo6cYhTBL
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol.svg
 name: Nova Model 757 Cityhunter
 system:

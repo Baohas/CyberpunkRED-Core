@@ -1,5 +1,7 @@
 _id: qAqYtbD1yFgQNelR
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Flamethrower.svg
 name: Flamethrower
 system:

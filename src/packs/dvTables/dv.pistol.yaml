@@ -1,6 +1,8 @@
 _id: rdR2j9gUoxrHq5Hb
 description: Core Rulebook Page 173
 displayRoll: false
+flags:
+  core: {}
 formula: ""
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
 name: DV Pistol

@@ -1,4 +1,6 @@
 _id: l7gW0F5MaWg9I7tC
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Handgun
 system:

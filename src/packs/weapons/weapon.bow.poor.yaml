@@ -1,5 +1,7 @@
 _id: LIGE9re7IZWkvU4g
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Bow_poor.svg
 name: Bow (Poor)
 system:

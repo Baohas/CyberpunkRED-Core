@@ -1,5 +1,7 @@
 _id: poMp4coxB8SORzvi
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle_poor.svg
 name: Stolbovoy ST-5 Assault Rifle
 system:

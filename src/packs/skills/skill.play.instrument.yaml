@@ -1,4 +1,6 @@
 _id: wmZyf1oHTlWwE8HQ
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Play Instrument
 system:

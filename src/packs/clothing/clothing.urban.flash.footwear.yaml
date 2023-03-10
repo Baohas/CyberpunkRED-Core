@@ -1,5 +1,7 @@
 _id: qwQVhWkGL2hJ2H1q
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_footwear.svg
 name: Urban Flash Footwear
 system:

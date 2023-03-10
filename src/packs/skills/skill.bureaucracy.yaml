@@ -1,4 +1,6 @@
 _id: 9Cn1HeCuzQZ27iJ7
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Bureaucracy
 system:

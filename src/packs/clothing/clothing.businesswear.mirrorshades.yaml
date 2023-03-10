@@ -1,5 +1,7 @@
 _id: OaYG5oUfDQ8VAT71
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_mirrorshades.svg
 name: Businesswear Mirrorshades
 system:

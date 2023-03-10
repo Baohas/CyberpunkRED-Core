@@ -1,5 +1,7 @@
 _id: JP2GQY2TWRuIWOmw
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_glasses.svg
 name: Asia Pop Glasses
 system:

@@ -1,5 +1,7 @@
 _id: syV8GagEmOsAOMkj
 effects: []
+flags:
+  core: {}
 img: icons/weapons/axes/axe-double-black.webp
 name: Greataxe
 system:

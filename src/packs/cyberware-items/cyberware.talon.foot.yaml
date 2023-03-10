@@ -1,5 +1,7 @@
 _id: lJRnJRm5wsZRC7SK
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/talon_foot.svg
 name: Talon Foot
 system:

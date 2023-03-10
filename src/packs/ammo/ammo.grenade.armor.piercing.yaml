@@ -1,4 +1,6 @@
 _id: tivSfxqoNYnBlNah
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_armorpiercing.png
 name: Grenade (Armor Piercing)
 system:

@@ -1,4 +1,6 @@
 _id: mkI1KpjAOUz9PxRM
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_shell_basic.png
 name: Shotgun Shell (Basic)
 system:

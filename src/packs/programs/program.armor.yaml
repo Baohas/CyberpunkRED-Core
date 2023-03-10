@@ -1,5 +1,7 @@
 _id: yommG7jwlXzoyf8Z
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/programs/armor.svg
 name: Armor
 system:

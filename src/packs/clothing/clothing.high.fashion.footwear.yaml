@@ -1,5 +1,7 @@
 _id: KrtzKNCfYvzuV4Vm
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_footwear.svg
 name: High Fashion Footwear
 system:

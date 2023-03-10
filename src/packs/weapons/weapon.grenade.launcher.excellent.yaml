@@ -1,5 +1,7 @@
 _id: zl2qzlFpS7IsJASO
 effects: []
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher_excellent.svg
 name: Grenade Launcher (Excellent)

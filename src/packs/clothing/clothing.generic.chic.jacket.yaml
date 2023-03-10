@@ -1,5 +1,7 @@
 _id: YVSKLAkTxhNRnap2
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jacket.svg
 name: Generic Chic Jacket
 system:

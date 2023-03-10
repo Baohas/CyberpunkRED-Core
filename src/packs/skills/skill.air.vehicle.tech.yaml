@@ -1,4 +1,6 @@
 _id: sAQCgDP3EyJMIKP3
+flags:
+  core: {}
 img: icons/svg/item-bag.svg
 name: Air Vehicle Tech
 system:

@@ -1,4 +1,6 @@
 _id: YFnV9OetCCRru5Ky
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_slug_basic.png
 name: Shotgun Slug (Basic)
 system:

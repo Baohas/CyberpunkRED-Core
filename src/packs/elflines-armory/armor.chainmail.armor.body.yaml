@@ -1,5 +1,7 @@
 _id: N0XtKbgIohJmwa5R
 effects: []
+flags:
+  core: {}
 img: icons/equipment/chest/breastplate-scale-grey.webp
 name: Chainmail Armor (Body)
 system:

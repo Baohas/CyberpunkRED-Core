@@ -1,5 +1,7 @@
 _id: NLERUj14kVq8X2Ni
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_glasses.svg
 name: Bohemian Glasses
 system:

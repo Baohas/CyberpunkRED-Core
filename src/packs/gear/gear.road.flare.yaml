@@ -15,10 +15,16 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          "0": custom
     icon: systems/cyberpunk-red-core/icons/compendium/gear/roadflare.svg
     label: Road Flare
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/roadflare.svg
 name: Road Flare
 system:

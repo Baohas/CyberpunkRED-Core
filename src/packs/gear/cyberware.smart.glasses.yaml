@@ -1,5 +1,7 @@
 _id: it4Mfyti7WPpuuYE
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/smart_glasses.svg
 name: Smart Glasses
 system:

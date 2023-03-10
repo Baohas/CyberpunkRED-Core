@@ -17,10 +17,18 @@ effects:
       startTime: null
       startTurn: null
       turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": combat
+            "1": combat
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/teleoptics.svg
     label: TeleOptics
     tint: null
     transfer: true
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/teleoptics.svg
 name: TeleOptics
 system:

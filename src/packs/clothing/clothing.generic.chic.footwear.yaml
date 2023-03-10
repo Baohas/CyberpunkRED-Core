@@ -1,5 +1,7 @@
 _id: U0wWSqKmvGPtipyp
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_footwear.svg
 name: Generic Chic Footwear
 system:

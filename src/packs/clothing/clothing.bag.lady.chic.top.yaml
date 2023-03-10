@@ -1,5 +1,7 @@
 _id: lC8eVVZeNha8IVW3
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_top.svg
 name: Bag Lady Chic Top
 system:

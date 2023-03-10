@@ -1,4 +1,6 @@
 _id: QHpJ8EeoAnIWsFvZ
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/bow_armorpiercing.png
 name: Arrow (Armor Piercing)
 system:

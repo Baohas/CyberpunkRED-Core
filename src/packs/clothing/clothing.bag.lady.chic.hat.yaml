@@ -1,5 +1,7 @@
 _id: jkQRu6sUEHd2d5Hp
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_hat.svg
 name: Bag Lady Chic Hat
 system:

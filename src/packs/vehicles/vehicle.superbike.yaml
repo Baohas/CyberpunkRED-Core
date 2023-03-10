@@ -1,4 +1,6 @@
 _id: p4jR9nv6Ob90axwL
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/vehicle/motorbike.svg
 name: Superbike
 system:

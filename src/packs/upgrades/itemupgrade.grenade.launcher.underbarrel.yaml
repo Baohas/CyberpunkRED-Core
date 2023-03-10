@@ -1,4 +1,6 @@
 _id: x6mYA3IJZaNK00nv
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/item_upgrades/grenade_launcher_underbarrel.svg
 name: Grenade Launcher Underbarrel

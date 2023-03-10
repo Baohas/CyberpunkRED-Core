@@ -1,5 +1,7 @@
 _id: mSF1y5Kfye57SmWf
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor_Head.svg
 name: Flak (Head)
 system:

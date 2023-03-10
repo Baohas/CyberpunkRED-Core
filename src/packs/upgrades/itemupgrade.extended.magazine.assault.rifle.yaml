@@ -1,4 +1,6 @@
 _id: s3oETYXA2wnTnrk1
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
 name: Extended Magazine (Assault Rifle)
 system:

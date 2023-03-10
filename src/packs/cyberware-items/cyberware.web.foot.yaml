@@ -1,5 +1,7 @@
 _id: dMiVrdVIK0ERAUYB
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/web_foot.svg
 name: Web Foot
 system:

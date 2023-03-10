@@ -1,4 +1,6 @@
 _id: n1vIKB6Mln9XgUXL
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_rubber.png
 name: Medium Pistol (Rubber)
 system:

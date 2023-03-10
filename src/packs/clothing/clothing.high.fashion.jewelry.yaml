@@ -1,5 +1,7 @@
 _id: v6QgCemk6DInkpZJ
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
 name: High Fashion Jewelry
 system:

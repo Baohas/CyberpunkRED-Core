@@ -1,5 +1,7 @@
 _id: hsoSD662cLKvHKZJ
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/cyberaudio_suite.svg
 name: Cyberaudio Suite
 system:

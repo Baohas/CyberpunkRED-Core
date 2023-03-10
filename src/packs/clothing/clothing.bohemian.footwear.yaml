@@ -1,5 +1,7 @@
 _id: gyknELQ6i5opCrix
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_footwear.svg
 name: Bohemian Footwear
 system:

@@ -1,4 +1,6 @@
 _id: PBA9BUs49TQeLoDi
+flags:
+  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_armorpiercing.png
 name: Medium Pistol (Armor Piercing)

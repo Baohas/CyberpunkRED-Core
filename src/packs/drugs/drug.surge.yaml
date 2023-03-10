@@ -1,5 +1,7 @@
 _id: 82sXoExwFlRIWesU
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/surge.svg
 name: Surge
 system:

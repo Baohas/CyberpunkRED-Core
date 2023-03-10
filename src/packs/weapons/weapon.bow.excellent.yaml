@@ -1,5 +1,7 @@
 _id: fQkgTc2gRtpuZvtX
 effects: []
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Bow_exellent.svg
 name: Bow (Excellent)
 system:

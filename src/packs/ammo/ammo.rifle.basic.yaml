@@ -1,4 +1,6 @@
 _id: J3NfMgRdqoUwFDDs
+flags:
+  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_basic.png
 name: Rifle (Basic)
 system:
