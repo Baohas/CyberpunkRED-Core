@@ -70,9 +70,6 @@ function _cleanPackData(data) {
   if ("_stats" in data) {
     delete data._stats;
   }
-  if ("flags" in data) {
-    delete data.flags;
-  }
   if ("folder" in data) {
     delete data.folder;
   }
