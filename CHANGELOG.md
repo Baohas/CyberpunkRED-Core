@@ -30,6 +30,7 @@
   - NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. Sorry!
   - Known Issues / Future Work:
     - It is a known issue that Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
+- Add check for core.photosensitivityMode when rendering pause animation
 
 ### Changes
 

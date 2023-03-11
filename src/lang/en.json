@@ -1063,7 +1063,7 @@
   "CPR.settings.displayStatusAsActiveEffects.name": "Display Token Status as an Effect",
   "CPR.settings.dvRollTableCompendium.default": "DV System Compendium",
   "CPR.settings.dvRollTableCompendium.name": "DV Tables",
-  "CPR.settings.enablePauseAnimation.hint": "Requires full reload to take effect (Ctrl+F5)",
+  "CPR.settings.enablePauseAnimation.hint": "Requires full reload to take effect (Ctrl+F5). Ignored if Foundry Photosensitivity mode is enabled.",
   "CPR.settings.enablePauseAnimation.name": "Enable Pause Animation",
   "CPR.settings.enableSheetContentFilter.hint": "Enables a text box below Skills, Gear and Cyberware to allow you to quickly filter the lists to find what you're looking for",
   "CPR.settings.enableSheetContentFilter.name": "Enable Sheet Content Filter",
