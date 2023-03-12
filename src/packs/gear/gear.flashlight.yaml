@@ -18,7 +18,8 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          "0": custom
+          cats:
+            "0": custom
     icon: systems/cyberpunk-red-core/icons/compendium/gear/flashlight.svg
     label: Flashlight
     tint: null

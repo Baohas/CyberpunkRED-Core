@@ -4,12 +4,15 @@ effects:
     changes:
       - key: bonuses.lipReading
         mode: 2
+        priority: null
         value: "2"
       - key: bonuses.concealOrRevealObject
         mode: 2
+        priority: null
         value: "2"
       - key: bonuses.perception
         mode: 2
+        priority: null
         value: "2"
     disabled: false
     duration:

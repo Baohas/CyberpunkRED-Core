@@ -4,9 +4,11 @@ effects:
     changes:
       - key: bonuses.aimedShot
         mode: 2
+        priority: null
         value: "1"
       - key: bonuses.singleShot
         mode: 2
+        priority: null
         value: "1"
     disabled: false
     duration:

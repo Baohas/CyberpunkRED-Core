@@ -4,6 +4,7 @@ effects:
     changes:
       - key: system.stats.body.value
         mode: 5
+        priority: null
         value: "12"
     disabled: false
     duration:

@@ -4,9 +4,11 @@ effects:
     changes:
       - key: bonuses.firstAid
         mode: 2
+        priority: null
         value: "2"
       - key: bonuses.paramedic
         mode: 2
+        priority: null
         value: "2"
     disabled: false
     duration:

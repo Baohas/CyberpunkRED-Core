@@ -4,6 +4,7 @@ effects:
     changes:
       - key: bonuses.initiative
         mode: 2
+        priority: null
         value: "3"
     disabled: false
     duration:

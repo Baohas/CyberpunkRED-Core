@@ -28,6 +28,7 @@ effects:
     changes:
       - key: bonuses.playInstrument
         mode: 2
+        priority: null
         value: "2"
     disabled: false
     duration:
@@ -41,7 +42,6 @@ effects:
     flags:
       cyberpunk-red-core:
         changes:
-          "0": skill
           cats:
             "0": skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
