@@ -641,7 +641,6 @@ CPR.activeEffectKeys = {
   },
   skill: {
     // Note this listing is expanded in register-helpers (cprGetSkillsForEffects), it is not used as-is
-    "bonuses.allSkills": "CPR.effectSheet.misc.allSkills",
     "bonuses.accounting": "CPR.global.itemType.skill.accounting",
     "bonuses.acting": "CPR.global.itemType.skill.acting",
     "bonuses.airVehicleTech": "CPR.global.itemType.skill.airVehicleTech",

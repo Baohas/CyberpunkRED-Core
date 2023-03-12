@@ -186,7 +186,6 @@ export default class CPRActor extends Actor {
     this.bonuses.suppressive = 0;
     this.bonuses.singleShot = 0;
     // Miscellaneous bonuses.
-    this.bonuses.allSkills = 0;
     this.bonuses.allActions = 0;
   }
 

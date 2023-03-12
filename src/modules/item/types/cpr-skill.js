@@ -48,8 +48,6 @@ export default class CPRSkillItem extends CPRItem {
       SystemUtils.slugify(skillName)
     );
 
-    const allSkillsMods = CPRMod.getRelevantMods(filteredMods, "allSkills");
-
     const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions");
 
     // Get all mods for skills from role abilities and subRole abilities.
@@ -85,7 +83,6 @@ export default class CPRSkillItem extends CPRItem {
     ]);
     cprRoll.addMod(roleSkillMods);
     cprRoll.addMod(skillMods); // active effects
-    cprRoll.addMod(allSkillsMods); // Mods that affect all skill rolls, no matter the skill.
     cprRoll.addMod(allActionsMods); // Mods that affect all actions.
     return cprRoll;
   }
