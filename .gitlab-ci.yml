@@ -255,6 +255,25 @@ test-shell-scripts:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
+test-less-colors:
+  stage: test
+  script:
+    - echo "Testing CSS for non-variable color usage..."
+    - ./.gitlab/pipeline_tests/test-less-colors.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
 test-less-units:
   stage: test
   script:
@@ -619,6 +638,7 @@ build-artifacts:
     - job: compendia-use
     - job: game-id
     - job: test-less-units
+    - job: test-less-colors
     - job: handlebars-traces
     - job: handlebars-tags
     - job: handelbars-attributes
