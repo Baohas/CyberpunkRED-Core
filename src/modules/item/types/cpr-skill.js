@@ -48,15 +48,9 @@ export default class CPRSkillItem extends CPRItem {
       SystemUtils.slugify(skillName)
     );
 
-    const allSkillsMods = CPRMod.getRelevantMods(
-      filteredMods,
-      "allSkills"
-    );
+    const allSkillsMods = CPRMod.getRelevantMods(filteredMods, "allSkills");
 
-    const allActionsMods = CPRMod.getRelevantMods(
-      filteredMods,
-      "allActions"
-    );
+    const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions");
 
     // Get all mods for skills from role abilities and subRole abilities.
     let roleSkillMods = [];

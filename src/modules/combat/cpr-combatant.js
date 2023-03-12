@@ -84,8 +84,11 @@ export default class CPRCombatant extends Combatant {
       );
 
       const initiativeMods = CPRMod.getRelevantMods(filteredMods, "initiative");
+      const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions");
 
-      cprInitiative.addMod(initiativeMods); // consider any active effects
+      // consider any active effects
+      cprInitiative.addMod(initiativeMods);
+      cprInitiative.addMod(allActionsMods);
 
       // total up universal initiative bonuses directly from role abilities
       let roleMods = [];
@@ -99,7 +102,11 @@ export default class CPRCombatant extends Combatant {
       cprInitiative.addMod(roleMods); // add bonus from role abilities and subabilities
 
       if (
-        allMods.some((m) => m.key === "bonuses.initiative" && m.isSituational)
+        allMods.some(
+          (m) =>
+            (m.key === "bonuses.initiative" || "bonuses.allActions") &&
+            m.isSituational
+        )
       ) {
         await cprInitiative.handleRollDialog({}, this.actor);
       }

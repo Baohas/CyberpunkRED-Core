@@ -84,6 +84,17 @@ export default class CPRMod {
     );
     let filteredMods = [];
 
+    // Global mods.
+    if (
+      !prototypeChain.includes("CPRDeathSaveRoll") &&
+      !prototypeChain.includes("CPRDamageRoll")
+    ) {
+      const globalMods = allSituationalMods.filter(
+        (m) => m.key === "bonuses.allActions"
+      );
+      filteredMods = filteredMods.concat(globalMods);
+    }
+
     // Stat mods. (This should either not be included or refactored, since the bonus is already applied via the native active effects.)
     /*     if ((prototypeChain.includes("CPRStatRoll") || prototypeChain.includes("CPRRoleRoll")) && !prototypeChain.includes("CPRInterfaceRoll")) {
       const statMods = allSituationalMods.filter((m) => m.key === `system.stats.${rollData.statName.toLowerCase()}.value`);
