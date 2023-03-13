@@ -23,6 +23,7 @@
   - Future work:
     - Change every dialog over to the improved UI.
 - Roll Modifiers:
+  - New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
   - Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
     - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogs with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
   - Modifiers to rolls from Role Abilities also have Situational (and On By Default) options.
@@ -36,7 +37,7 @@
 
 We have rewritten the Weapons & Armor section of the Character sheet and Mook sheet reducing the amount of duplicated code behind the scenes. This allows us to more easily make changes or add new features to these sections and have them shared between both Character and Actors.
 
-We have also rewritten the Character Info and Stact blocks to fix layout issues exposed by the font change in the last update and move some sheet functionality into this area. This also allows character to have LUCK and EMP STATs of > 9 without layout issues!
+We have also rewritten the Character Info and Stat blocks to fix layout issues exposed by the font change in the last update and move some sheet functionality into this area. This also allows character to have LUCK and EMP STATs of > 9 without layout issues!
 
 - Character Sheet Skills now show the related STAT before the Skill name
 - Character Sheet Fight Tab
