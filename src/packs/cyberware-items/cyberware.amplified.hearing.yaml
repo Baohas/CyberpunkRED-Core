@@ -2,7 +2,7 @@ _id: 9pZMYMlVFeWDS56L
 effects:
   - _id: Ff2OQuhgLa7Fy7dj
     changes:
-      - key: bonuses.perception
+      - key: bonuses.perceptionHearing
         mode: 2
         priority: null
         value: "2"

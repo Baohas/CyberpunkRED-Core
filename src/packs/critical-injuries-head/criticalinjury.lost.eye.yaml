@@ -6,7 +6,7 @@ effects:
         mode: 2
         priority: null
         value: "-4"
-      - key: bonuses.perception
+      - key: bonuses.perceptionSight
         mode: 2
         priority: null
         value: "-4"
@@ -31,7 +31,7 @@ effects:
               onByDefault: false
             "1":
               isSituational: true
-              onByDefault: false
+              onByDefault: true
     icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_eye.svg
     label: New Effect
     tint: null

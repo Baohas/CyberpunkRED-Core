@@ -2,7 +2,7 @@ _id: qRkCxq0KTuBnw2wj
 effects:
   - _id: Z1UtRgahC2BAOxh5
     changes:
-      - key: bonuses.perception
+      - key: bonuses.perceptionHearing
         mode: 2
         value: "-2"
     disabled: false

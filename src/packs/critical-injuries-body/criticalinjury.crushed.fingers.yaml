@@ -1,5 +1,31 @@
 _id: IKKcCgHU1lBJ4wVd
-effects: []
+effects:
+  - _id: ioMOVsyk9FRbs9EI
+    changes:
+      - key: bonuses.allActionsHands
+        mode: 2
+        value: "-4"
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": misc
+          situational:
+            "0":
+              isSituational: true
+    icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_fingers.svg
+    label: Lost Ear
+    tint: null
+    transfer: true
 flags:
   core: {}
 img: >-

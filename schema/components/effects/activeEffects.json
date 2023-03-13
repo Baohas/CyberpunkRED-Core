@@ -158,6 +158,8 @@
             "bonuses.paintOrDrawOrSculpt",
             "bonuses.paramedic",
             "bonuses.perception",
+            "bonuses.perceptionHearing",
+            "bonuses.perceptionSight",
             "bonuses.personalGrooming",
             "bonuses.persuasion",
             "bonuses.photographyAndFilm",
@@ -189,6 +191,9 @@
             "system.stats.move.value",
             "system.stats.body.value",
             "system.stats.emp.max",
+            "bonuses.allActions",
+            "bonuses.allActionsHands",
+            "bonuses.allActionsSpeech",
             "ATL.light.bright"
           ]
         },
