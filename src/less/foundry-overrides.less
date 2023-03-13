@@ -2,7 +2,7 @@
 .container-sheet,
 .dialog-sheet,
 .item-sheet {
-  font-family: "Jost";
+  font-family: var(--cpr-font-primary);
 
   // Undo Foundry Base Style settings for elements
   img {
@@ -25,7 +25,6 @@
     min-width: unset;
     height: unset;
     background: unset;
-    /* padding         : 0.063rem 0.188rem; */
     margin: 0;
     color: unset;
     font-family: inherit;
@@ -56,8 +55,10 @@
 }
 
 #chat-controls {
+  color: var(--cpr-text-inv);
 
   .roll-type-select {
+    background-color: var(--cpr-background-chat-card);
   }
 }
 
@@ -72,6 +73,7 @@ button,
 .sidebar-tab .directory-header .header-search input,
 .dialog .dialog-buttons button,
 .dialog .dialog-buttons button.default {
+  background: var(--cpr-background-foundry-input);
 }
 
 /* -------------------------------------------- */
@@ -89,9 +91,9 @@ button,
   .pause-glitch {
     .glitch;
     text-transform: uppercase;
-    font-family: "Orbitron";
+    font-family: var(--cpr-font-pause);
     font-weight: 800;
-    color: #f4eded;
+    color: var(--cpr-pause-text);
 
     &::before,
     &::after {
