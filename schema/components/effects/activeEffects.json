@@ -272,7 +272,15 @@
           "type": "object",
           "additionalProperties": {
             "type": "string",
-            "enum": ["combat", "custom", "netrun", "role", "skill", "stat"]
+            "enum": [
+              "combat",
+              "custom",
+              "netrun",
+              "misc",
+              "role",
+              "skill",
+              "stat"
+            ]
           }
         },
         "situational": {
