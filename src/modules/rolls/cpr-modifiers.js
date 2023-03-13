@@ -87,7 +87,8 @@ export default class CPRMod {
     // Global mods.
     if (
       !prototypeChain.includes("CPRDeathSaveRoll") &&
-      !prototypeChain.includes("CPRDamageRoll")
+      !prototypeChain.includes("CPRDamageRoll") &&
+      !prototypeChain.includes("CPRInitiativeRoll")
     ) {
       const globalMods = allSituationalMods.filter(
         (m) => m.key === "bonuses.allActions"
