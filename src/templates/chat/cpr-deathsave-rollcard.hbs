@@ -26,25 +26,48 @@
           {{/if}}
         </div>
         <div class="d10-number-div">
-          <a><span class="clickable fg-{{#if (cprCompare saveResult "===" (localize "CPR.rolls.success")) }}green text-bold{{else }}red{{/if }}"
-      data-action="toggleVisibility"
-      data-visible-element="d10-data-details">{{resultTotal}}</span></a>
+          <a>
+            <span class="
+              clickable
+              {{#if (cprCompare saveResult '===' (localize 'CPR.rolls.success'))}}
+                roll-success
+              {{else}}
+                roll-failure
+              {{/if}}
+              text-semi"
+                  data-action="toggleVisibility"
+                  data-visible-element="d10-data-details">
+              {{resultTotal}}
+            </span>
+          </a>
         </div>
         <div class="d10-data-div">
           <div class="d10-data-details hide">
-            <div class="text-normal text-bold">
+            <div class="text-normal text-semi">
               {{localize "CPR.global.stats.body"}}: {{bodyStat}}
             </div>
             {{#if (cprCompare penalty "!==" 0) }}
-              <span class="text-normal text-nowrap">{{localize "CPR.global.generic.deathPenalty"}}: {{penalty}}</span>
+              <span class="text-normal text-nowrap text-semi">
+                {{localize "CPR.global.generic.deathPenalty"}}: {{penalty}}
+              </span>
             {{/if}}
             {{#if (cprCompare basePenalty "!==" 0) }}
-              <span class="text-normal text-nowrap">{{localize "CPR.characterSheet.rightPanke.skills.base"}} {{localize "CPR.global.generic.deathPenalty"}}: {{basePenalty}}</span>
+              <span class="text-normal text-nowrap text-semi">
+                {{localize "CPR.characterSheet.rightPanke.skills.base"}}
+                {{localize "CPR.global.generic.deathPenalty"}}: {{basePenalty}}
+              </span>
             {{/if}}
             {{#if (cprCompare mods.length "||" additionalMods.length) }}
               {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
             {{/if}}
-          <div class="text-massive text-center fg-{{#if (cprCompare saveResult "===" (localize "CPR.rolls.success")) }}green{{else }}red{{/if }}">
+          <div class="
+                 text-massive
+                 text-center
+                 {{#if (cprCompare saveResult '===' (localize 'CPR.rolls.success'))}}
+                   roll-success
+                 {{else}}
+                   roll-failure
+                 {{/if}}">
             {{saveResult}}
           </div>
         </div>

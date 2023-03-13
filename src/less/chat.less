@@ -1,7 +1,15 @@
-.chat-message.message.flexcol {
-}
+.chat-message {
+  font-family: var(--cpr-font-primary);
+  background: var(--cpr-background-chat-card);
+  color: var(--cpr-text-chat-normal);
 
-.rollcard-body {
+  .message-header {
+    color: var(--cpr-text-chat-normal) !important;
+  }
+
+  img {
+    border: none;
+  }
 }
 
 .rollcard-top {
@@ -93,6 +101,14 @@
   min-height: 4.375rem;
   text-align: right;
   padding-right: 0.313rem;
+  font-size: var(--cpr-font-massive);
+}
+
+.roll-success {
+  color: var(--cpr-text-chat-success);
+}
+.roll-failure {
+  color: var(--cpr-text-chat-failure);
 }
 
 .generic-data-div,
@@ -128,6 +144,7 @@
   min-height: 4.375rem;
   text-align: right;
   padding-right: 0.313rem;
+  font-size: var(--cpr-font-massive);
 }
 
 .d6-data-div {
@@ -190,7 +207,9 @@
   margin: 0 0.188rem 0 0;
   padding: 0 0.188rem;
   line-height: 1rem;
+  border: 0.063rem solid var(--cpr-background-chat-border);
   border-radius: 0.188rem;
+  background: var(--cpr-background-chat);
 }
 
 /*--------------------
@@ -198,6 +217,7 @@
 ---------------------*/
 
 .cpr-block {
+  background-color: var(--cpr-background-chat-card-block);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -212,6 +232,7 @@
     left: 0.25rem;
 
     content: "";
+    background-color: var(--cpr-background-chat-card-block-before);
     clip-path: polygon(0 0.875rem, 0 100%, 100% 100%, 100% 0, 0.875rem 0);
     z-index: -1;
   }
