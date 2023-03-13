@@ -61,7 +61,16 @@ export default class CPRMod {
    */
   static getRelevantMods(modifiers, key) {
     LOGGER.trace("getRelevantMods | CPRMod | Called.");
-    const relevantMods = modifiers.filter((m) => m.key === `bonuses.${key}`);
+    let relevantMods = [];
+    if (Array.isArray(key)) {
+      relevantMods = modifiers.filter((m) => {
+        const strippedKey = m.key.replace("bonuses.", "");
+        return key.includes(strippedKey);
+      });
+    } else {
+      relevantMods = modifiers.filter((m) => m.key === `bonuses.${key}`);
+    }
+
     return relevantMods;
   }
 
@@ -90,8 +99,12 @@ export default class CPRMod {
       !prototypeChain.includes("CPRDamageRoll") &&
       !prototypeChain.includes("CPRInitiativeRoll")
     ) {
-      const globalMods = allSituationalMods.filter(
-        (m) => m.key === "bonuses.allActions"
+      const globalMods = allSituationalMods.filter((m) =>
+        [
+          "bonuses.allActions",
+          "bonuses.allActionsSpeech",
+          "bonuses.allActionsHands",
+        ].includes(m.key)
       );
       filteredMods = filteredMods.concat(globalMods);
     }
@@ -108,8 +121,12 @@ export default class CPRMod {
         prototypeChain.includes("CPRRoleRoll")) &&
       !prototypeChain.includes("CPRInterfaceRoll")
     ) {
-      const skillMods = allSituationalMods.filter(
-        (m) => m.key === `bonuses.${SystemUtils.slugify(rollData.skillName)}`
+      const skillMods = allSituationalMods.filter((m) =>
+        [
+          `bonuses.${SystemUtils.slugify(rollData.skillName)}`,
+          "bonuses.perceptionHearing",
+          "bonuses.perceptionSight",
+        ].includes(m.key)
       );
       filteredMods = filteredMods.concat(skillMods);
 

@@ -689,6 +689,8 @@ CPR.activeEffectKeys = {
       "CPR.global.itemType.skill.paintOrDrawOrSculpt",
     "bonuses.paramedic": "CPR.global.itemType.skill.paramedic",
     "bonuses.perception": "CPR.global.itemType.skill.perception",
+    "bonuses.perceptionHearing": "CPR.effectSheet.skill.perceptionHearing",
+    "bonuses.perceptionSight": "CPR.effectSheet.skill.perceptionSight",
     "bonuses.personalGrooming": "CPR.global.itemType.skill.personalGrooming",
     "bonuses.persuasion": "CPR.global.itemType.skill.persuasion",
     "bonuses.photographyAndFilm":
@@ -728,6 +730,8 @@ CPR.activeEffectKeys = {
   },
   misc: {
     "bonuses.allActions": "CPR.effectSheet.misc.allActions",
+    "bonuses.allActionsHands": "CPR.effectSheet.misc.allActionsHands",
+    "bonuses.allActionsSpeech": "CPR.effectSheet.misc.allActionsSpeech",
   },
 };
 
