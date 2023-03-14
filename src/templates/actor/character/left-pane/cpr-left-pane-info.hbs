@@ -8,7 +8,7 @@
          data-tooltip="{{actor.name}}"/>
   </div>
   {{!-- Handle --}}
-  <div class="actor-details-handle text-large text-padding-sides-smallest">
+  <div class="actor-details-handle text-hero text-large text-padding-sides-smallest">
     <input name="name"
            type="text"
            value="{{actor.name}}"
@@ -88,7 +88,7 @@
     <div class="actor-details-death-save-reset">
       <a class="reset-deathsave-value"
         data-tooltip="{{localize "CPR.characterSheet.leftPane.deathSave.reset"}}">
-        <i class="fa-solid fa-arrow-rotate-left text-smaller"></i>
+        <i class="fa-solid fa-arrow-rotate-left"></i>
       </a>
     </div>
     <div class="actor-details-death-save-value"
@@ -101,7 +101,7 @@
     </div>
     <div class="actor-details-death-save-actions">
       <a class="increase-deathsave-value">
-        <i class="far fa-arrow-alt-circle-up text-smaller"
+        <i class="far fa-arrow-alt-circle-up"
            data-tooltip="{{localize "CPR.characterSheet.leftPane.deathSave.increase"}}">
         </i>
       </a>
@@ -221,7 +221,7 @@
              type="text"
              value="{{options.cprContentFilter}}"
              type="string"
-             placeholder="Search Skills, Items, etc."/>
+             placeholder="{{localize 'CPR.characterSheet.leftPane.filter.placeholder'}}"/>
     </div>
     <div class="actor-details-filter-actions">
       <a>

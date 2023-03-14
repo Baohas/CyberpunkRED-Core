@@ -21,8 +21,14 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRCharacterActorSheet | Called.");
+    const defaultWidth = 1050;
+    const defaultHeight = "auto";
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-character-sheet.hbs`,
+      width: defaultWidth,
+      height: defaultHeight,
+      resizable: true,
+      scrollY: [".right-content-section", ".top-pane-gear"],
       tabs: [
         {
           navSelector: ".navtabs-right",

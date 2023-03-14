@@ -9,6 +9,8 @@
 
   .items-header {
     align-items: center;
+    background-color: var(--cpr-background-header) !important;
+    color: var(--cpr-text-header);
     span {
       padding: 0.125rem;
     }
@@ -77,10 +79,17 @@
     }
   }
 
+  .item-header {
+    background-color: var(--cpr-background-header) !important;
+    color: var(--cpr-text-header);
+  }
+
   li:nth-child(even) {
+    background-color: var(--cpr-background-row-even);
   }
 
   li:nth-child(odd) {
+    background-color: var(--cpr-background-row-odd);
   }
 
   .item.effect {
@@ -139,9 +148,11 @@
   }
 
   li:nth-child(even) {
+    background-color: var(--cpr-background-row-odd);
   }
 
   li:nth-child(odd) {
+    background-color: var(--cpr-background-row-even);
   }
 
   .change-header {
@@ -192,9 +203,11 @@
 
 .skills-tab {
   li:nth-child(even) {
+    background-color: var(--cpr-background-row-odd);
   }
 
   li:nth-child(odd) {
+    background-color: var(--cpr-background-row-even);
   }
 
   .skill-level,
@@ -215,9 +228,11 @@
 
 .gear-tab {
   li:nth-child(even) {
+    background-color: var(--cpr-background-row-odd);
   }
 
   li:nth-child(odd) {
+    background-color: var(--cpr-background-row-even);
   }
 
   .gear-section-header {
@@ -256,6 +271,10 @@
   .gear-actions {
     text-align: end;
     min-width: 7.188rem;
+
+    .fa-trash-alt {
+      color: var(--cpr-text-icon-highlight);
+    }
   }
 }
 
@@ -264,6 +283,11 @@
 
   .role-tab-content {
     .role-item {
+
+      .fa-trash-alt {
+        color: var(--cpr-text-icon-highlight);
+      }
+
       .role-name,
       .ability-name {
         flex: 1 1 12.5rem;

@@ -826,11 +826,7 @@ export default function registerHandlebarsHelpers() {
     "cprSheetContentFilter",
     (filterValue, applyToText) => {
       LOGGER.trace("cprSheetContentFilter | handlebarsHelper | Called.");
-      if (
-        typeof filterValue === "undefined" ||
-        filterValue === "" ||
-        !game.settings.get(game.system.id, "enableSheetContentFilter")
-      ) {
+      if (typeof filterValue === "undefined" || filterValue === "") {
         return true;
       }
       return (

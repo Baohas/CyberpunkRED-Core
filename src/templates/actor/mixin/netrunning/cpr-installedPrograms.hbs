@@ -14,7 +14,7 @@
         </li>
         {{#each ../actor.system.cyberdeck.system.programs.installed as |program| }}
           {{#if (cprCompare program.class "===" pc) }}
-            <li class="items-header item flexrow text-padding-left-smallest cyberdeck-installed-software-list"
+            <li class="item flexrow text-padding-left-smallest cyberdeck-installed-software-list"
                 data-item-id="{{program.uuid}}">
               {{#if (cprListContains "booster,defender,blackice" pc) }}
                 <div class="installed-program-name">
