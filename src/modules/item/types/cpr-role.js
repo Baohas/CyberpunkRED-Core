@@ -104,16 +104,22 @@ export default class CPRRoleItem extends CPRItem {
       (m) => !m.isSituational || (m.isSituational && m.onByDefault)
     );
 
-    const skillMods = CPRMod.getRelevantMods(
-      filteredMods,
-      SystemUtils.slugify(skillName)
-    );
+    const skillMods = CPRMod.getRelevantMods(filteredMods, [
+      SystemUtils.slugify(skillName),
+      `${SystemUtils.slugify(skillName)}Hearing`,
+      `${SystemUtils.slugify(skillName)}Sight`,
+    ]);
     const roleMods = CPRMod.getRelevantMods(
       filteredMods,
       SystemUtils.slugify(roleName)
     );
 
-    const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions"); // Mods that affect all actions.
+    // Mods that affect all actions.
+    const allActionsMods = CPRMod.getRelevantMods(filteredMods, [
+      "allActions",
+      "allActionsSpeech",
+      "allActionsHands",
+    ]);
 
     const cprRoll = new CPRRolls.CPRRoleRoll(
       roleName,

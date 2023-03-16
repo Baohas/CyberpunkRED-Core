@@ -124,8 +124,8 @@ export default class CPRMod {
       const skillMods = allSituationalMods.filter((m) =>
         [
           `bonuses.${SystemUtils.slugify(rollData.skillName)}`,
-          "bonuses.perceptionHearing",
-          "bonuses.perceptionSight",
+          `bonuses.${SystemUtils.slugify(rollData.skillName)}Hearing`,
+          `bonuses.${SystemUtils.slugify(rollData.skillName)}Sight`,
         ].includes(m.key)
       );
       filteredMods = filteredMods.concat(skillMods);

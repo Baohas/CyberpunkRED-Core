@@ -1189,7 +1189,12 @@ export default class CPRActor extends Actor {
       (m) => !m.isSituational || (m.isSituational && m.onByDefault)
     );
 
-    const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions"); // Mods that affect all actions.
+    // Mods that affect all actions.
+    const allActionsMods = CPRMod.getRelevantMods(filteredMods, [
+      "allActions",
+      "allActionsSpeech",
+      "allActionsHands",
+    ]);
 
     // Add relevant mods.
     cprRoll.addMod(allActionsMods);
@@ -1238,7 +1243,12 @@ export default class CPRActor extends Actor {
       (m) => !m.isSituational || (m.isSituational && m.onByDefault)
     );
 
-    const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions"); // Mods that affect all actions.
+    // Mods that affect all actions.
+    const allActionsMods = CPRMod.getRelevantMods(filteredMods, [
+      "allActions",
+      "allActionsSpeech",
+      "allActionsHands",
+    ]);
 
     cprRoll.addMod(allActionsMods);
 

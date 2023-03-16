@@ -261,14 +261,18 @@ export class CPRRoleRollDialog extends CPRRollDialog {
 
     const effects = this.actor.effects.contents;
     const allMods = CPRMod.getAllModifiers(effects);
-    const newSkillMods = CPRMod.getRelevantMods(
-      allMods,
-      SystemUtils.slugify(event.currentTarget.value)
-    ); // Mods for the skill we are changing to.
-    const previousSkillMods = CPRMod.getRelevantMods(
-      allMods,
-      SystemUtils.slugify(this.rollData.skillName)
-    ); // Mods for the skill we are changing away from.
+    // Mods for the skill we are changing to.
+    const newSkillMods = CPRMod.getRelevantMods(allMods, [
+      SystemUtils.slugify(event.currentTarget.value),
+      `${SystemUtils.slugify(event.currentTarget.value)}Hearing`,
+      `${SystemUtils.slugify(event.currentTarget.value)}Sight`,
+    ]);
+    // Mods for the skill we are changing away from.
+    const previousSkillMods = CPRMod.getRelevantMods(allMods, [
+      SystemUtils.slugify(this.rollData.skillName),
+      `${SystemUtils.slugify(this.rollData.skillName)}Hearing`,
+      `${SystemUtils.slugify(this.rollData.skillName)}Sight`,
+    ]);
 
     // Apply mods appropriately for the newly selected skill.
     if (newSkillMods) {

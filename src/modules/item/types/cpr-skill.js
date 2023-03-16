@@ -45,8 +45,8 @@ export default class CPRSkillItem extends CPRItem {
 
     const skillMods = CPRMod.getRelevantMods(filteredMods, [
       SystemUtils.slugify(skillName),
-      "perceptionHearing",
-      "perceptionSight",
+      `${SystemUtils.slugify(skillName)}Hearing`,
+      `${SystemUtils.slugify(skillName)}Sight`,
     ]);
 
     const allActionsMods = CPRMod.getRelevantMods(filteredMods, [

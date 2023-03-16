@@ -1001,7 +1001,11 @@ export default function registerHandlebarsHelpers() {
       const skillSlug = SystemUtils.slugify(skillName);
       const effects = actor.effects.contents; // Active effects on the actor.
       const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
-      let relevantMods = CPRMod.getRelevantMods(allMods, skillSlug);
+      let relevantMods = CPRMod.getRelevantMods(allMods, [
+        skillSlug,
+        `${skillSlug}Hearing`,
+        `${skillSlug}Sight`,
+      ]);
       const hasSituational = relevantMods.some((m) => m.isSituational);
       if (!options.hash.keepSituational) {
         relevantMods = relevantMods.filter((m) => !m.isSituational);

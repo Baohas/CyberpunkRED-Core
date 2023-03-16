@@ -314,7 +314,13 @@ export default class CPRCyberdeckItem extends CPRItem {
       filteredMods,
       SystemUtils.slugify(roleName)
     );
-    const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions"); // Mods that affect all actions.
+
+    // Mods that affect all actions.
+    const allActionsMods = CPRMod.getRelevantMods(filteredMods, [
+      "allActions",
+      "allActionsSpeech",
+      "allActionsHands",
+    ]);
 
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.
     if (executionType === "damage") {
@@ -405,7 +411,13 @@ export default class CPRCyberdeckItem extends CPRItem {
       filteredMods,
       SystemUtils.slugify(roleName)
     );
-    const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions"); // Mods that affect all actions.
+
+    // Mods that affect all actions.
+    const allActionsMods = CPRMod.getRelevantMods(filteredMods, [
+      "allActions",
+      "allActionsSpeech",
+      "allActionsHands",
+    ]);
 
     // Bonuses from roles, active effects, and wound state should not modify damage rolls.
     if (rollInfo.executionType === "damage") {

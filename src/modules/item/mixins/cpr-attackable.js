@@ -132,10 +132,11 @@ const Attackable = function Attackable() {
       (m) => !m.isSituational || (m.isSituational && m.onByDefault)
     );
 
-    const skillMods = CPRMod.getRelevantMods(
-      filteredMods,
-      SystemUtils.slugify(skillName)
-    );
+    const skillMods = CPRMod.getRelevantMods(filteredMods, [
+      SystemUtils.slugify(skillName),
+      `${SystemUtils.slugify(skillName)}Hearing`,
+      `${SystemUtils.slugify(skillName)}Sight`,
+    ]);
 
     const attackMods = CPRMod.getRelevantMods(filteredMods, "universalAttack");
     const aimedShotMods = CPRMod.getRelevantMods(filteredMods, "aimedShot");
@@ -144,7 +145,12 @@ const Attackable = function Attackable() {
     const autofireMods = CPRMod.getRelevantMods(filteredMods, "autofire");
     const suppressiveMods = CPRMod.getRelevantMods(filteredMods, "suppressive");
     const singleShotMods = CPRMod.getRelevantMods(filteredMods, "singleShot");
-    const allActionsMods = CPRMod.getRelevantMods(filteredMods, "allActions"); // Mods that affect all actions.
+    // Mods that affect all actions.
+    const allActionsMods = CPRMod.getRelevantMods(filteredMods, [
+      "allActions",
+      "allActionsSpeech",
+      "allActionsHands",
+    ]);
 
     let cprRoll;
     // Create the roll based on the type and apply relevant mods to it.
