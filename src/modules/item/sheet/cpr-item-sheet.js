@@ -1,4 +1,4 @@
-/* global ItemSheet */
+/* global TextEditor ItemSheet */
 /* global mergeObject, game, $, hasProperty, getProperty, setProperty, duplicate, fromUuidSync */
 import LOGGER from "../../utils/cpr-logger.js";
 import CPR from "../../system/config.js";
@@ -83,6 +83,14 @@ export default class CPRItemSheet extends ItemSheet {
     cprData.dvTableNames = [];
     for (const table of dvTables) cprData.dvTableNames.push(table.name);
     foundryData.item.system = cprData;
+
+    // Enrich the description so that links to foundry documents in item descriptions have proper functionality.
+    foundryData.enrichedHTMLDescription = await TextEditor.enrichHTML(
+      foundryData.item.system.description.value,
+      {
+        async: true,
+      }
+    );
     return foundryData;
   }
 
