@@ -1,10 +1,10 @@
 {{cprTrace "START ACTOR MOOK CPR-MOOK-GEAR.HBS"}}
-<div class="items-header flexrow">
+<div class="mook-special-header items-header flexrow">
   <span class="item-name section-name text-nowrap text-padding-left-smallest text-semi">
     {{localize "CPR.mookSheet.items.specialGear"}}
   </span>
 </div>
-<div class="text-padding-left-smallest mook-special-list">
+<div class="mook-special-content text-padding-left-smallest mook-special-list">
   <!-- Cyberware -->
   {{#each (cprGetMookCyberware actor) as |type t| }}
     {{#if foundation.system.core }}

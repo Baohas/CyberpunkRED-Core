@@ -1,4 +1,4 @@
-/* global game $, duplicate */
+/* global game mergeObject $, duplicate */
 import CPRActorSheet from "./cpr-actor-sheet.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
@@ -14,6 +14,19 @@ import CPRDialog from "../../dialog/cpr-dialog-application.js";
  * @extends {CPRActorSheet}
  */
 export default class CPRMookActorSheet extends CPRActorSheet {
+  /**
+   * getter that controls the sheet sizing
+   *
+   * @override
+   */
+  static get defaultOptions() {
+    LOGGER.trace("defaultOptions | CPRMookActorSheet | Called.");
+    const defaultWidth = 800;
+    return mergeObject(super.defaultOptions, {
+      width: defaultWidth,
+    });
+  }
+
   /**
    * Mooks have a separate template when a user only has a "limited" permission level for it.
    * This is how details are obscured from those players, we simply do not render them.

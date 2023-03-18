@@ -1,7 +1,7 @@
 {{cprTrace "START ACTOR CPR-MOOK-SHEET.HBS"}}
 <form>
   <div class="mook-sheet">
-    <div class="mook-name side-banner">
+    <div class="mook-name text-hero side-banner">
       <div class="text-largest">
         <a class="change-mook-name">{{actor.name}}</a>
       </div>
@@ -20,7 +20,7 @@
               <span class="text-padding-left-smallest text-semi">
                 {{localize "CPR.global.generic.hitpoints"}}
               </span>
-              <div class="min-of-max-container text-normal">
+              <div class="min-of-max-container text-normal block-data">
                 <input class="text-center"
                        name="system.derivedStats.hp.value"
                        type="number"
@@ -38,7 +38,7 @@
               <span class="text-padding-left-smallest text-semi">
                 {{localize "CPR.mookSheet.woundState"}}
               </span>
-              <div class="text-center text-normal">
+              <div class="mook-wounded-stat text-center text-normal">
                 {{localize (cprFindConfigValue "woundState" actor.system.derivedStats.currentWoundState)}}
               </div>
             </div>
@@ -51,7 +51,7 @@
                   {{localize "CPR.mookSheet.deathSave.title"}}
                 </a>
               </span>
-              <div class="width-full text-center text-normal text-bold">
+              <div class="mook-deathsave-value width-full text-center text-normal text-bold">
                 <span data-tooltip="{{localize "CPR.mookSheet.deathSave.reset"}}
                   <br/>
                   {{localize "CPR.global.generic.deathPenalty" }}: {{actor.system.derivedStats.deathSave.penalty}}
@@ -68,14 +68,15 @@
       </div>
       <div class="mook-gear pad-thin">
         <div class="mook-weapon-list">
+          <span class="mook-weapon-header text-semi">
+            {{localize "CPR.characterSheet.bottomPane.fight.weapons"}}
+          </span>
           <div class="weapon-content">
           {{#each (cprSort actor.itemTypes.weapon "name") as |weapon|}}
             {{#if (cprCompare weapon.system.equipped "===" "equipped")}}
               {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-weapon.hbs" this}}
             {{/if}}
           {{/each}}
-          </div>
-          <div class="weapon-content">
           {{#each (cprSort (cprFilter actor.itemTypes.cyberware "system.isInstalled" true) "name") as |weapon| }}
             {{#if system.isWeapon }}
               {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-weapon.hbs" this}}
@@ -84,6 +85,9 @@
           </div>
         </div>
         <div class="mook-armor">
+          <span class="mook-armor-header text-semi">
+            {{localize "CPR.global.itemTypes.armor"}}
+          </span>
           {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-armor.hbs"}}
         </div>
       </div>
@@ -97,10 +101,10 @@
         {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-criticalInjury.hbs"}}
       </div>
       <div class="mook-notes pad-thin">
-        <div class="text-semi">
+        <div class="mook-notes-header text-semi">
           <span>{{localize "CPR.global.generic.notes"}}</span>
         </div>
-        <div class="mook-edit-section">
+        <div class="mook-notes-content">
           {{editor enrichedHTML.systemInformationNotes target="system.information.notes" button=true owner=owner editable=editable}}
         </div>
       </div>
