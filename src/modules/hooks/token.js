@@ -86,8 +86,12 @@ const tokenHooks = () => {
    */
   Hooks.on("createToken", (tokenDocument, options, user) => {
     LOGGER.trace("createToken | tokenHooks | Called.");
-    // Only fire if the user owns the token being created. This prevents a permissions error on the player side.
-    if (!tokenDocument.isLinked && tokenDocument.isOwner) {
+    const installableActors = ["mook", "character"]; // Define actors that can have items 'installed' into them.
+    if (
+      !tokenDocument.isLinked &&
+      tokenDocument.isOwner && // Only fire if the user owns the token being created. preventing permissions errors.
+      installableActors.includes(tokenDocument.actor.type) // Only fire for actors that can have installed items.
+    ) {
       // Update items installed in the actor
       const actorInstallList = [];
       const updateList = [];
