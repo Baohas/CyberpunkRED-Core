@@ -75,6 +75,9 @@ const tokenHooks = () => {
    * original actor that was used to create this token.  This hook updates all owned items which have references to
    * other owned items.
    *
+   * Note: When this hook is called, it is called for all users, players included. You can avoid this by checking if
+   * tokenDocument.isOwner.
+   *
    * @public
    * @memberof hookEvents
    * @param {TokenDocument} tokenDocument  The token object created
@@ -83,7 +86,8 @@ const tokenHooks = () => {
    */
   Hooks.on("createToken", (tokenDocument, options, user) => {
     LOGGER.trace("createToken | tokenHooks | Called.");
-    if (!tokenDocument.isLinked) {
+    // Only fire if the user owns the token being created. This prevents a permissions error on the player side.
+    if (!tokenDocument.isLinked && tokenDocument.isOwner) {
       // Update items installed in the actor
       const actorInstallList = [];
       const updateList = [];

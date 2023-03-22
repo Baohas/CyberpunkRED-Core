@@ -76,6 +76,8 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
 - Fixed medical grade cyber limbs incorrectly accepting upgrades
 - Fixed a typo in the underbarrel grenade launcher description
 - #679 - Added back the underbarrel shotgun that was accidentally deleted
+- Dragging document links to item descriptions links the document correctly.
+- #703 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error.
 
 ## Version 0.86.1 | Date: 2023-02-05
 
