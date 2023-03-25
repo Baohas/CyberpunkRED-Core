@@ -964,10 +964,11 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("_setCriticalInjuryTable | CPRActorSheet | Called.");
     const critInjuryTables = await SystemUtils.GetCompendiumDocs(tableSetting);
     const tableNames = critInjuryTables.map((t) => t.name).sort();
+    const currentTable = tableNames[0];
 
     // Show "Roll Critical Injury" dialog.
     const formData = await CPRDialog.showDialog(
-      { tableNames },
+      { tableNames, currentTable },
       {
         // Set options for the dialog.
         title: SystemUtils.Localize(
@@ -979,7 +980,7 @@ export default class CPRActorSheet extends ActorSheet {
     if (formData === undefined) {
       return undefined;
     }
-    return formData.criticalInjuryTable;
+    return formData.currentTable;
   }
 
   /**

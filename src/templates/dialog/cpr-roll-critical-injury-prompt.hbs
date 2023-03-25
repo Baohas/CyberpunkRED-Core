@@ -10,8 +10,11 @@
     <ol class="dialog-list">
       <li class="dialog-item flexrow">
         {{#if tableNames }}
-          <select name="criticalInjuryTable">
-            {{#select criticalInjuryTable}}
+          <div class="dialog-item-name text-nowrap">
+            {{localize "CPR.global.generic.table"}}:
+          </div>
+          <select name="currentTable">
+            {{#select currentTable}}
               {{#each tableNames as |rollTableName| }}
                 <option value="{{rollTableName}}">
                   {{rollTableName}}
