@@ -499,6 +499,7 @@ export default class CPRActor extends Actor {
       {
         item,
         foundationalCyberware: compatibleTargetCyberware,
+        foundationalId: compatibleTargetCyberware[0]._id,
       },
       // Set the options for the dialog.
       {
