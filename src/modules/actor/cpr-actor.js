@@ -61,7 +61,18 @@ export default class CPRActor extends Actor {
     const installedItems = [];
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     if (newActor) {
-      actor.itemTypes.cyberware.forEach((cw) => installedItems.push(cw.uuid));
+      // If this is a brand new actor (i.e. not a duplicate), install core cyberware.
+      const updateList = [];
+      actor.itemTypes.cyberware.forEach((cw) => {
+        installedItems.push(cw.uuid);
+        updateList.push({
+          _id: cw.id,
+          "system.isInstalled": true,
+          "system.installedIn": actor.uuid,
+        });
+      });
+      // Update the embedded core cyberware with the correct reference to the actor its installed in.
+      actor.updateEmbeddedDocuments("Item", updateList);
     } else {
       // An actor was copied, first sync all items installed in the actor (Cyberware)
       const actorUUID = actor.uuid;
