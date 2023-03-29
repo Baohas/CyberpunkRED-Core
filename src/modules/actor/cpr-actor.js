@@ -510,7 +510,8 @@ export default class CPRActor extends Actor {
       {
         item,
         foundationalCyberware: compatibleTargetCyberware,
-        foundationalId: compatibleTargetCyberware[0]._id,
+        // If the cyberware being installed is foundational, the array will be empty, thus the optional chaining.
+        foundationalId: compatibleTargetCyberware[0]?._id,
       },
       // Set the options for the dialog.
       {
