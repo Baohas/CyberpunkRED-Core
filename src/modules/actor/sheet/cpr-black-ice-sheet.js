@@ -1,4 +1,4 @@
-/* global ActorSheet mergeObject game duplicate */
+/* global ActorSheet mergeObject game duplicate TextEditor */
 import CPRChat from "../../chat/cpr-chat.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
@@ -23,9 +23,88 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     LOGGER.trace("defaultOptions | CPRBlackIceActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-black-ice-sheet.hbs`,
-      width: "auto",
+      width: 495,
       height: "auto",
     });
+  }
+
+  /**
+   * Get actor data into a more convenient organized structure.
+   * Remember, this data is on the BlackIceActorSheet object, not the CPRActor
+   * object it is tied to. (this.actor)
+   *
+   * @override
+   * @returns {Object} data - a curated structure of actorSheet data
+   */
+  async getData() {
+    LOGGER.trace("getData | CPRActorSheet | Called.");
+    const foundryData = super.getData();
+
+    foundryData.enrichedHTML = [];
+    foundryData.enrichedHTML.systemEffect = await TextEditor.enrichHTML(
+      this.actor.system.effect,
+      {
+        async: true,
+      }
+    );
+    foundryData.enrichedHTML.systemNotes = await TextEditor.enrichHTML(
+      this.actor.system.notes,
+      {
+        async: true,
+      }
+    );
+
+    // Get data for the linked program for the Black ICE.
+    // This will be helpful for displaying damage on the sheet, as it comes from the program, not the actor.
+    // It also gets relevant flags here rather than in the .hbs file, cleaning that file up.
+    const externalData = {
+      programUUID: this.actor.token?.getFlag(game.system.id, "programUUID"),
+      netrunnerTokenId: this.actor.token?.getFlag(
+        game.system.id,
+        "netrunnerTokenId"
+      ),
+      sceneId: this.actor.token?.getFlag(game.system.id, "sceneId"),
+    };
+
+    let program;
+    if (externalData.netrunnerTokenId) {
+      const sceneList = externalData.sceneId
+        ? game.scenes.filter((s) => s.id === externalData.sceneId)
+        : game.scenes;
+      let netrunnerToken;
+      sceneList.forEach((scene) => {
+        const tokenList = scene.tokens.filter(
+          (t) => t.id === externalData.netrunnerTokenId
+        );
+        if (tokenList.length === 1) {
+          [netrunnerToken] = tokenList;
+        }
+      });
+      if (netrunnerToken) {
+        program = netrunnerToken.actor.getOwnedItem(externalData.programUUID);
+      }
+    } else {
+      const programList = game.items.filter(
+        (i) => i.uuid === externalData.programUUID
+      );
+      if (programList.length === 1) {
+        [program] = programList;
+      }
+    }
+
+    let damageFormula = SystemUtils.Localize(
+      "CPR.global.generic.notApplicable"
+    );
+    if (program) {
+      damageFormula =
+        this.actor.system.class === "antiprogram"
+          ? program.system.damage.blackIce
+          : program.system.damage.standard;
+    }
+    foundryData.externalData = externalData;
+    foundryData.damageFormula = damageFormula;
+
+    return foundryData;
   }
 
   /**
@@ -158,6 +237,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       if (this.actor.isToken) {
         this.actor.token.name = program.name;
         this.actor.name = program.name;
+        this.actor.img = program.img;
         await this.actor.token.setFlag(
           game.system.id,
           "programUUID",

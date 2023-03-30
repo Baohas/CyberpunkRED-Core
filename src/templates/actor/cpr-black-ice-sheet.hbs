@@ -1,126 +1,119 @@
 {{cprTrace "START ACTOR CPR-BLACK-ICE-SHEET.HBS"}}
 <form>
-  {{#if (cprIsDebug) }}
-    actor ID: {{actor.id}}
-  {{/if}}
-  <div class="bice-sheet">
-    <div class="bice-stats text-normal">
-      <div class="bice-top flexrow">
-        <div class="flexrow width-long bice-label-corner-right"></div>
-        <div class="flexrow width-long bice-label-corner-both"></div>
-        {{#each (cprFindConfigObj "blackIceStatList") }}
-          <div class="flexrow bice-label-corner-both"></div>
-        {{/each}}
-        <div class="flexrow bice-label-corner-both"></div>
-        <div class="flexrow bice-label-corner-left"></div>
+  <div class="blackice-sheet">
+    <div class="blackice-image">
+      <img src="{{actor.img}}"
+           data-edit="img"
+           data-tooltip="{{actor.name}}"/>
+    </div>
+    <div class="blackice-info">
+      <div class="blackice-info-name text-hero text-large">
+        <input name="name" type="text" value="{{actor.name}}"/>
       </div>
-      <div class="bice-head flexrow text-center block-label text-semi">
-        <div class="width-long">{{localize "CPR.global.generic.name"}}</div>
-        <div class="width-long">{{localize "CPR.global.generic.class"}}</div>
-        {{#each (cprFindConfigObj "blackIceStatList") as |stat s| }}
-          <div>
-            {{#unless (cprCompare s "===" "rez")}}
-            <a class="rollable"
-               data-roll-type="stat"
-               data-roll-title="{{s}}"
-               data-tooltip="{{localize "CPR.actorSheets.rolling.clickToRollThisStat"}}">
-            {{/unless}}
-            {{localize stat}}
-            {{#unless (cprCompare s "===" "rez")}}
+      <div class="blackice-info-class">
+        <div class="blackice-info-class-title text-padding-right-small text-semi">
+          {{localize "CPR.global.generic.class"}}:
+        </div>
+        <div class="blackice-info-class-value">
+          <select name="system.class">
+            {{#select actor.system.class}}
+              {{#each (cprFindConfigObj "blackIceType") as |class c| }}
+                <option value="{{c}}">
+                  {{localize class}}
+                </option>
+              {{/each}}
+            {{/select}}
+          </select>
+        </div>
+      </div>
+      <div class="blackice-info-price">
+        <div class="blackice-info-price-title text-semi">
+          {{localize "CPR.blackIceSheet.cost"}}:
+        </div>
+        <div class="blackice-info-price-value">
+          <input name="system.cost" type="number" value="{{actor.system.cost}}"/>
+        </div>
+      </div>
+    </div>
+    <div class="blackice-actions text-center text-semi">
+      <div class="blackice-actions-title">
+        {{localize "CPR.global.generic.actions"}}
+      </div>
+      <div class="blackice-actions-value text-normal">
+        {{#if externalData.programUUID }}
+          {{#if (cprCompare actor.system.class "!==" "other") }}
+            <a class="rollable text-padding-right-normal"
+               data-roll-type="damage"
+               data-program-uuid="{{externalData.programUUID}}"
+               data-netrunner-id="{{externalData.netrunnerTokenId}}"
+               data-scene-id="{{externalData.sceneId}}">
+              <i class="fas fa-tint"
+                data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}">
+              </i>
+            </a>
+          {{/if}}
+        {{/if}}
+        {{#unless externalData.netrunnerTokenId}}
+          <a class="configure-from-program">
+            <i class="fas fa-wrench"
+               data-tooltip="{{localize "CPR.blackIceSheet.configureFromProgram"}}">
+            </i>
           </a>
         {{/unless}}
       </div>
-    {{/each}}
-    <div>{{localize "CPR.blackIceSheet.cost"}}</div>
-    <div>{{localize "CPR.global.generic.actions"}}</div>
-  </div>
-  <div class="bice-val flexrow pad-thin">
-    <div class="block-data width-long text-normal">
-      <input name="name" type="text" value="{{actor.name}}"/>
     </div>
-    <div class="width-long width-full">
-      <select name="system.class">
-        {{#select actor.system.class}}
-        {{#each (cprFindConfigObj "blackIceType") as |class c| }}
-          <option value="{{c}}">
-            {{localize class}}
-          </option>
-        {{/each}}
-      {{/select}}
-    </select>
-  </div>
-  {{#each actor.system.stats as |stat s| }}
-    {{#if (cprCompare s "===" "rez") }}
-      <div class="min-of-max-container">
-        <input class="text-center"
-               name="system.stats.rez.value"
-               type="number"
-               value="{{this.value}}"/>
-        <div class="of text-normal text-bold">of</div>
-        <input class="text-center"
-               name="system.stats.rez.max"
-               type="number"
-               value="{{this.max}}"/>
+    <div class="blackice-stats text-normal">
+      {{#each actor.system.stats as |stat s| }}
+        <div class="blackice-stats-{{s}}">
+          <div class="blackice-stats-{{s}}-title text-center text-semi">
+            {{#unless (cprCompare s "===" "rez")}}
+              <a class="rollable"
+                 data-roll-type="stat"
+                 data-roll-title="{{s}}"
+                 data-tooltip="{{localize "CPR.actorSheets.rolling.clickToRollThisStat"}}">
+            {{/unless}}
+              {{cprTextTransform (localize s) "upper"}}
+            {{#unless (cprCompare s "===" "rez")}}
+              </a>
+            {{/unless}}
+          </div>
+          <div class="blackice-stats-{{s}}-value">
+            {{#if (cprCompare s "===" "rez") }}
+              <div class="blackice-stats-{{s}}-value-min">
+                <input name="system.stats.rez.value"
+                       type="number"
+                       value="{{this.value}}"/>
+              </div>
+              <div class="blackice-stats-{{s}}-value-divider">
+                /
+              </div>
+              <div class="blackice-stats-{{s}}-value-min">
+                <input name="system.stats.rez.max"
+                       type="number"
+                       value="{{this.max}}"/>
+              </div>
+            {{else}}
+              <input name="system.stats.{{s}}" type="number" value="{{this}}"/>
+            {{/if}}
+          </div>
+        </div>
+      {{/each}}
+      <div class="blackice-stats-dmg">
+        <div class="blackice-stats-dmg-title text-center text-semi">
+          {{localize "CPR.global.generic.damageShort"}}
+        </div>
+        <div class="blackice-stats-dmg-value text-center"
+             data-tooltip="{{localize 'CPR.blackIceSheet.damage'}}">
+          {{damageFormula}}
+        </div>
       </div>
-    {{else}}
-      <div class="block-data text-normal">
-        <input name="system.stats.{{s}}" type="number" value="{{this}}"/>
-      </div>
-    {{/if}}
-  {{/each}}
-  <div class="block-data text-normal">
-    <input name="system.cost" type="number" value="{{actor.system.cost}}"/>
-  </div>
-  <div class="block-data text-normal">
-    {{#if actor.token.flags.cyberpunk-red-core.programUUID }}
-      {{#if (cprCompare actor.system.class "!==" "other") }}
-        <a class="rollable"
-           data-roll-type="damage"
-           data-program-uuid="{{actor.token.flags.cyberpunk-red-core.programUUID}}"
-           data-netrunner-id="{{actor.token.flags.cyberpunk-red-core.netrunnerTokenId}}"
-           data-scene-id="{{actor.token.flags.cyberpunk-red-core.sceneId}}">
-          <i class="fas fa-tint red-fg"
-             data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
-        </a>
-      {{/if}}
-    {{/if}}
-    {{#unless actor.token.flags.cyberpunk-red-core.netrunnerTokenId}}
-    <a class="configure-from-program">
-      <i class="fas fa-wrench red-fg"
-         data-tooltip="{{localize "CPR.blackIceSheet.configureFromProgram"}}"></i>
-    </a>
-  {{/unless}}
-</div>
-</div>
-</div>
-<div class="bice-details pad-thin">
-  <div class="bice-icon">
-    <img class="profile-img"
-         src="{{actor.img}}"
-         data-edit="img"
-         data-tooltip="{{actor.name}}"/>
-  </div>
-  <div class="bice-effects">
-    <div class="flexrow text-padding-right-smaller text-padding-top-smaller text-semi">
-      <span class="text-right text-vert-center">
-        {{localize "CPR.blackIceSheet.effects"}}
-      </span>
-      <input class="width-longer"
-             name="system.effect"
-             type="text"
-             value="{{actor.system.effect}}"/>
     </div>
-    <div class="flexrow text-padding-right-smaller text-padding-top-smaller text-semi">
-      <span class="text-right text-vert-center">
-        {{localize "CPR.global.generic.notes"}}
-      </span>
-      <input class="width-longer"
-             name="system.notes"
-             type="text"
-             value="{{actor.system.notes}}"/>
+    <div class="blackice-effects">
+      {{editor enrichedHTML.systemEffect target="system.effect" button=true owner=owner editable=editable}}
+    </div>
+    <div class="blackice-notes">
+      {{editor enrichedHTML.systemNotes target="system.notes" button=true owner=owner editable=editable}}
     </div>
   </div>
-</div>
-</div>
 </form>
 {{cprTrace "END CPR-BLACK-ICE-SHEET.HBS"}}

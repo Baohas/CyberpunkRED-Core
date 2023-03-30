@@ -1,76 +1,191 @@
-// Cyberpunk Red Core Black-ICE Sheet Styling
-// Overall Sheet Layout
-.bice-sheet {
-  font-family: "Jost";
+.blackice-sheet {
+  font-family: var(--cpr-font-primary);
   display: grid;
-  min-width: 43.75rem;
-  width: 44.688rem;
-  grid-template-rows: auto;
+  grid-template-columns: 3.75rem 3.75rem 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 4.5rem 3rem 1fr 1fr;
+  grid-auto-flow: row;
   grid-template-areas:
-    "bice-stats"
-    "bice-details";
+    "blackice-image blackice-image blackice-info blackice-info blackice-info blackice-info blackice-info blackice-actions"
+    "blackice-image blackice-image blackice-stats blackice-stats blackice-stats blackice-stats blackice-stats blackice-stats"
+    "blackice-effects blackice-effects blackice-effects blackice-effects blackice-effects blackice-effects blackice-effects blackice-effects"
+    "blackice-notes blackice-notes blackice-notes blackice-notes blackice-notes blackice-notes blackice-notes blackice-notes";
+  height: auto;
+  gap: 0.313rem;
+  padding: 0.313rem;
+  background-color: var(--cpr-background-border);
 
-  .bice-stats {
+  .blackice-image {
+    grid-area: blackice-image;
+    clip-path: polygon(0.938rem 0, 100% 0, 100% 100%, 0 100%, 0 0.938rem);
+  }
+
+  input {
+    border: none;
+    height: 100%;
+    color: var(--cpr-text-normal);
+    background-color: var(--cpr-background-box) !important;
+  }
+
+  .blackice-info {
     display: grid;
-    grid-area: bice-stats;
-    grid-template-rows: 0.625rem 1.25rem;
+    grid-template-columns: 11.75rem 1fr 1fr;
+    grid-template-rows: 1.2fr 0.8fr;
+    grid-auto-flow: row;
     grid-template-areas:
-      "bice-top"
-      "bice-head"
-      "bice-value";
+      "blackice-info-name blackice-info-name blackice-info-name"
+      "blackice-info-class blackice-info-class blackice-info-price";
+    grid-area: blackice-info;
+    gap: 0.313rem;
 
-    .bice-top {
-      grid-area: bice-top;
-      align-self: center;
+    .blackice-info-name {
+      grid-area: blackice-info-name;
+      background-color: var(--cpr-background-box);
+      display: grid;
+      align-content: center;
+      padding: 0.125rem;
     }
-    .bice-head {
-      grid-area: bice-head;
+
+    .blackice-info-class {
+      grid-area: blackice-info-class;
+      background-color: var(--cpr-background-box);
+      display: flex;
+      align-content: center;
+      justify-content: left;
+      padding: 0.125rem;
+
+      select {
+        width: 8.6rem;
+        height: 1.3rem;
+      }
+
+      div {
+        display: grid;
+        align-content: center;
+      }
     }
-    .bice-value {
-      grid-area: bice-value;
+
+    .blackice-info-price {
+      grid-area: blackice-info-price;
+      background-color: var(--cpr-background-box);
+      display: inline-flex;
+      align-content: center;
+      justify-content: left;
+      padding: 0.125rem;
+
+      input {
+        width: 3rem;
+      }
+
+      div {
+        display: grid;
+        align-content: center;
+      }
     }
   }
-
-  .bice-details {
+  .blackice-actions {
     display: grid;
-    grid-area: bice-details;
-    grid-template-columns: 4.5rem 1fr;
-    grid-template-areas: "bice-icon bice-effects";
+    grid-area: blackice-actions;
+    background-color: var(--cpr-background-box);
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr;
+    grid-auto-flow: column;
+    grid-template-areas:
+      "blackice-actions-title"
+      "blackice-actions-value";
+    gap: 0.313rem;
 
-    .bice-icon {
-      gap: 0.313rem;
-      height: 4.5rem;
-      width: 4.5rem;
-      display: block;
-      grid-area: bice-icon;
-      overflow: hidden;
+    .blackice-actions-title {
+      grid-area: blackice-actions-title;
     }
-    .bice-effects {
-      gap: 0.313rem;
-      display: block;
-      grid-area: bice-effects;
+
+    .blackice-actions-value {
+      grid-area: blackice-actions-value;
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: center;
+      align-content: center;
     }
   }
 
-  .bice-label-corner-both {
-    clip-path: polygon(
-      0.625rem 0,
-      calc(100% - 0.625rem) 0,
-      100% 0.625rem,
-      100% 100%,
-      0 100%,
-      0 0.625rem
-    );
-    height: 0.813rem;
+  .blackice-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-auto-flow: row;
+    grid-template-areas: "blackice-stats-per blackice-stats-spd blackice-stats-atk blackice-stats-def blackice-stats-rez blackice-stats-dmg";
+    grid-area: blackice-stats;
+    gap: 0.313rem;
+    background-color: var(--cpr-background-border);
+    align-content: center;
+    justify-content: center;
+
+    input {
+      width: 100%;
+      border: none;
+      text-align: center;
+    }
+
+    .blackice-stats-per {
+      grid-area: blackice-stats-per;
+      background-color: var(--cpr-background-box);
+    }
+
+    .blackice-stats-spd {
+      grid-area: blackice-stats-spd;
+      background-color: var(--cpr-background-box);
+    }
+
+    .blackice-stats-atk {
+      grid-area: blackice-stats-atk;
+      background-color: var(--cpr-background-box);
+    }
+
+    .blackice-stats-def {
+      grid-area: blackice-stats-def;
+      background-color: var(--cpr-background-box);
+    }
+
+    .blackice-stats-rez {
+      grid-area: blackice-stats-rez;
+      background-color: var(--cpr-background-box);
+
+      .blackice-stats-rez-value {
+        display: flex;
+
+        .blackice-stats-rez-value-min {
+          justify-content: right;
+        }
+
+        .blackice-stats-rez-value-divider {
+          justify-content: center;
+          align-content: center;
+        }
+
+        .blackice-stats-rez-value-max {
+          justify-content: left;
+        }
+      }
+    }
+
+    .blackice-stats-dmg {
+      grid-area: blackice-stats-dmg;
+      background-color: var(--cpr-background-box);
+
+      .blackice-stats-dmg-value {
+        display: grid;
+      }
+    }
   }
 
-  .bice-label-corner-left {
-    clip-path: polygon(0.625rem 0, 100% 0, 100% 100%, 0 100%, 0 0.625rem);
-    height: 0.813rem;
+  .blackice-effects {
+    grid-area: blackice-effects;
+    background-color: var(--cpr-background-box);
+    min-height: 2rem;
   }
 
-  .bice-label-corner-right {
-    clip-path: polygon(0 0, calc(100% - 0.625rem) 0, 100% 0.625rem, 100% 100%, 0 100%);
-    height: 0.813rem;
+  .blackice-notes {
+    grid-area: blackice-notes;
+    background-color: var(--cpr-background-box);
+    min-height: 2rem;
   }
 }
