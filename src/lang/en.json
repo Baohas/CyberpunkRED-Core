@@ -176,7 +176,6 @@
   "CPR.containerSheet.items.priceListingSingleAll": "Single: {price} eb ({category}) | All: {priceAll} eb",
   "CPR.containerSheet.settings.configureShop": "Configure Shop",
   "CPR.containerSheet.settings.eurobucks.label": "Eurobucks",
-  "CPR.containerSheet.settings.eurobucks.management": "Eurobucks Management",
   "CPR.containerSheet.settings.freeItems": "Are all Items free?",
   "CPR.containerSheet.settings.infiniteStock": "Infinite Stock?",
   "CPR.containerSheet.settings.playersCan": "Can players",
