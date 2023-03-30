@@ -5,69 +5,64 @@
   {{/if}}
   <div class="demon-sheet">
     <div class="demon-stats text-normal">
-      <div class="demon-top flexrow">
-        <div class="flexrow demon-label-corner-right"></div>
+      <div class="demon-title flexrow text-center text-semi">
+        <div class="demon-title-name">
+          {{localize "CPR.global.generic.name"}}
+        </div>
         {{#each (cprFindConfigObj "demonStatList") as |stat s| }}
-          {{#unless (cprCompare s "===" "combatNumber")}}
-          <div class="flexrow demon-label-corner-both"></div>
-        {{/unless}}
-      {{/each}}
-      <div class="flexrow demon-label-corner-left"></div>
-    </div>
-    <div class="demon-head flexrow text-center block-label text-semi">
-      <div>{{localize "CPR.global.generic.name"}}</div>
-      {{#each (cprFindConfigObj "demonStatList") as |stat s| }}
-        <div>
-          {{#unless (cprListContains "rez,netactions" s)}}
-          <a class="rollable"
-             data-roll-title="{{s}}"
-             data-tooltip="{{localize "CPR.actorSheets.rolling.clickToRollThisStat"}}">
-          {{/unless}}
-          {{localize stat}}
-          {{#unless (cprListContains "rez,netactions" s)}}
-        </a>
-      {{/unless}}
-    </div>
-  {{/each}}
-</div>
-<div class="demon-value flexrow pad-thin">
-  <div class="block-data">
-    <input name="name" type="text" value="{{actor.name}}"/>
-  </div>
-  {{#each actor.system.stats as |stat s| }}
-    {{#if (cprCompare s "===" "rez") }}
-      <div class="min-of-max-container">
-        <input class="text-center text-normal"
-               name="system.stats.rez.value"
-               type="number"
-               value="{{this.value}}"/>
-        <div class="of text-normal text-bold">of</div>
-        <input class="text-center"
-               name="system.stats.rez.max"
-               type="number"
-               value="{{this.max}}"/>
+          <div>
+            {{#unless (cprListContains "rez,netactions" s)}}
+              <a class="rollable"
+                 data-roll-title="{{s}}"
+                 data-tooltip="{{localize "CPR.actorSheets.rolling.clickToRollThisStat"}}">
+            {{/unless}}
+            {{localize stat}}
+            {{#unless (cprListContains "rez,netactions" s)}}
+              </a>
+            {{/unless}}
+          </div>
+        {{/each}}
       </div>
-    {{else}}
-      <div class="block-data text-normal">
-        <input name="system.stats.{{s}}" type="number" value="{{this}}"/>
+      <div class="demon-value flexrow">
+        <div class="demon-value-stat text-hero">
+          <input name="name" type="text" value="{{actor.name}}"/>
+        </div>
+        {{#each actor.system.stats as |stat s| }}
+          {{#if (cprCompare s "===" "rez") }}
+            <div class="min-of-max-container">
+              <input class="text-center text-normal"
+                     name="system.stats.rez.value"
+                     type="number"
+                     value="{{this.value}}"/>
+              <div class="of text-normal text-bold">
+                of
+              </div>
+              <input class="text-center"
+                     name="system.stats.rez.max"
+                     type="number"
+                     value="{{this.max}}"/>
+            </div>
+            {{else}}
+              <div class="demon-value-stat text-normal">
+                <input name="system.stats.{{s}}" type="number" value="{{this}}"/>
+              </div>
+            {{/if}}
+          {{/each}}
+        </div>
       </div>
-    {{/if}}
-  {{/each}}
-</div>
-</div>
-<div class="demon-details pad-thin">
-  <div class="demon-icon">
-    <img class="profile-img"
-         src="{{actor.img}}"
-         data-edit="img"
-         data-tooltip="{{actor.name}}"/>
+      <div class="demon-details">
+        <div class="demon-icon">
+          <img class="profile-img"
+               src="{{actor.img}}"
+               data-edit="img"
+               data-tooltip="{{actor.name}}"/>
+        </div>
+        <div class="demon-notes">
+          <div class="demon-edit-section">
+            {{editor actor.system.notes target="system.notes" button=true owner=owner editable=editable}}
+          </div>
+        </div>
+      </div>
   </div>
-  <div class="demon-notes pad-thin">
-    <div class="demon-edit-section">
-      {{editor actor.system.notes target="system.notes" button=true owner=owner editable=editable}}
-    </div>
-  </div>
-</div>
-</div>
 </form>
 {{cprTrace "END CPR-DEMON-SHEET.HBS"}}

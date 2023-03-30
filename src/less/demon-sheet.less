@@ -1,33 +1,61 @@
-// Cyberpunk Red Core Black-ICE Sheet Styling
-// Overall Sheet Layout
 .demon-sheet {
   font-family: "Jost";
   display: grid;
   min-width: 38.438rem;
-  width: 38.438rem;
-  grid-template-rows: auto;
   grid-template-areas:
     "demon-stats"
     "demon-details";
+  background-color: var(--cpr-background-border);
+
+  input {
+    border: none;
+    height: 100%;
+    color: var(--cpr-text-normal);
+    background-color: var(--cpr-background-box) !important;
+  }
 
   .demon-stats {
     display: grid;
     grid-area: demon-stats;
-    grid-template-rows: 0.625rem 1.25rem;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas:
-      "demon-top"
-      "demon-head"
+      "demon-title"
       "demon-value";
+    justify-content: center;
+    align-content: center;
+    height: 4rem;
 
-    .demon-top {
-      grid-area: demon-top;
-      align-self: center;
+    input {
+      border: none;
+      text-align: center;
+      text-justify: center;
     }
-    .demon-head {
-      grid-area: demon-head;
+
+    .demon-title {
+      grid-area: demon-title;
+      color: var(--cpr-text-header);
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      height: 1fr;
     }
     .demon-value {
       grid-area: demon-value;
+
+      .demon-value-stat {
+        background-color: var(--cpr-background-box);
+        margin: 0.313rem;
+      }
+
+      .min-of-max-container {
+        background-color: var(--cpr-background-border);
+        color: var(--cpr-text-header);
+        margin: 0.313rem;
+      }
+
+      .of {
+        padding: 0 0.3rem 0 0.3rem;
+      }
     }
   }
 
@@ -36,10 +64,10 @@
     grid-area: demon-details;
     grid-template-columns: 4.5rem 1fr;
     grid-template-areas: "demon-icon demon-notes";
+    gap: 0.313rem;
+    padding: 0rem 0.313rem 0.313rem 0.313rem;
 
     .demon-icon {
-      gap: 0.313rem;
-      margin-top: 0.313rem;
       height: 4.5rem;
       width: 4.5rem;
       display: block;
@@ -47,7 +75,6 @@
       overflow: hidden;
     }
     .demon-notes {
-      gap: 0.313rem;
       grid-area: demon-notes;
     }
   }
@@ -59,27 +86,6 @@
     display: flex;
     flex: 1 0 auto;
     flex-wrap: wrap;
-  }
-
-  .demon-label-corner-both {
-    clip-path: polygon(
-      0.625rem 0,
-      calc(100% - 0.625rem) 0,
-      100% 0.625rem,
-      100% 100%,
-      0 100%,
-      0 0.625rem
-    );
-    height: 0.875rem;
-  }
-
-  .demon-label-corner-left {
-    clip-path: polygon(0.625rem 0, 100% 0, 100% 100%, 0 100%, 0 0.625rem);
-    height: 0.875rem;
-  }
-
-  .demon-label-corner-right {
-    clip-path: polygon(0 0, calc(100% - 0.625rem) 0, 100% 0.625rem, 100% 100%, 0 100%);
-    height: 0.875rem;
+    background-color: var(--cpr-background-box);
   }
 }
