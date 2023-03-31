@@ -14,8 +14,10 @@
   <div class="netarch-list-content">
     <ol class="items-list">
       {{#each (cprSort item.system.floors "index") as |floor| }}
-        <li class=" item-netarch-grid item flexrow">
-          <div class="netarch-level">{{floor.floor}}{{floor.branch}}</div>
+        <li class="item item-netarch-grid flexrow">
+          <div class="netarch-level">
+            {{floor.floor}}{{floor.branch}}
+          </div>
           <div class="netarch-dv">
             {{#if (cprCompare floor.content "!==" "CPR.global.programClass.blackice") }}
               {{floor.dv}}

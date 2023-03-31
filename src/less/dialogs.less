@@ -1,14 +1,18 @@
 .dialog-sheet {
+  background-color: var(--cpr-background-box);
   min-width: 20.625rem;
 
   .dialog-header {
-    width: 20.625rem;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    padding-top: 0.313rem;
   }
 
   .dialog-footer {
     position: sticky;
     bottom: 0;
-    padding: 0rem 0.313rem 0.313rem 0.313rem;
+    padding: 0.313rem;
   }
 
   hr {
@@ -16,9 +20,9 @@
     height: 0.063rem;
     background-image: linear-gradient(
       to right,
-      rgba(0, 0, 0, 0),
-      rgba(136, 34, 34, 0.75),
-      rgba(0, 0, 0, 0)
+      var(--cpr-background-dialog-hr-gradient-start),
+      var(--cpr-background-dialog-hr-gradient-middle),
+      var(--cpr-background-dialog-hr-gradient-end)
     );
   }
 }
@@ -28,6 +32,7 @@
   width: inherit;
   height: inherit;
   flex: 1 1 auto;
+  padding: 0.313rem;
 }
 
 .situational-mod-list,
@@ -41,23 +46,40 @@
 
 .dialog-list {
   border-style: outset;
-  border-color: rgba(110, 42, 42, 0.5);
+  border-color: var(--cpr-background-dialog-border);
   border-width: 0.125rem;
   border-radius: 0.313rem;
 
+  // These are swapped due to the lack of header rows on dialogues.
+  // Normally the order is: header > even (white) > odd (pink)
+  // this makes the order: odd (white) > even (pink) so it matches
+  // the same alternating order as the rest of the sheets.
+
   li:nth-child(even) {
+    background-color: var(--cpr-background-row-odd);
   }
 
   li:nth-child(odd) {
+    background-color: var(--cpr-background-row-even);
   }
 }
 
-.dialog-item-header {
+.lifepath-list {
+  li:nth-child(even) {
+    background-color: var(--cpr-background-row-even) !important;
+  }
+
+  li:nth-child(odd) {
+    background-color: var(--cpr-background-row-even) !important;
+  }
+}
+
+.total-mods {
+  background-color: var(--cpr-background-row-even) !important;
 }
 
 .situational-mod-item,
 .dialog-item {
-  align-items: center;
   padding: 0.063rem 0.125rem 0.063rem 0.125rem;
 
   .situational-mod-name,
@@ -85,9 +107,10 @@
 }
 
 .situational-mods {
+  padding: 0.313rem;
   li {
     border-style: outset;
-    border-color: rgba(110, 42, 42, 0.5);
+    border-color: var(--cpr-background-dialog-border);
     border-width: 0.125rem;
     border-radius: 0.313rem;
     margin: 0.125rem 0rem 0.125rem 0rem;
@@ -95,12 +118,12 @@
 }
 
 .mod-selected {
-  background-color: lightgrey;
+  background-color: var(--cpr-background-dialog-selected);
 }
 
 .total-mods {
   border-style: outset;
-  border-color: rgba(110, 42, 42, 0.5);
+  border-color: var(--cpr-background-dialog-border);
   border-width: 0.125rem 0rem 0rem 0rem;
 
   .total-mod-value {

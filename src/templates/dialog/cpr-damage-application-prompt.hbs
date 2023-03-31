@@ -8,7 +8,9 @@
       <ul>
         {{#each allowedActors as |actor a| }}
           <li>
-            <span {{#if (cprCompare a "===" ../count)}}class="text-bold"{{/if}}>{{actor.name}}</span>
+            <span {{#if (cprCompare a "===" ../count)}}class="text-semi"{{/if}}>
+              {{actor.name}}
+            </span>
           </li>
         {{/each}}
       </ul>
@@ -27,7 +29,6 @@
       </div>
     {{/if}}
   </div>
-  <hr/>
   <div class="dialog-grid flexcol">
     <ol class="dialog-list">
       <li class="dialog-item flexrow">

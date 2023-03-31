@@ -29,7 +29,7 @@ export default class CPRDialog extends FormApplication {
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/dialog/cpr-default-prompt.hbs`,
       title: "CPR.global.generic.title",
-      width: "auto",
+      width: 400,
       height: "auto",
       resizable: true,
       closeOnSubmit: false,
