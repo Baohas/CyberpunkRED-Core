@@ -1,34 +1,14 @@
 .item-sheet {
   font-family: "Jost";
 
-  // Cyberpunk Red Core Sheet Styling
-
-  // The basic sheet should be white
-
-  // Utilize grid for element placement on the sheet
   display: grid;
-
-  // We want white borders between each element
-  grid-gap: 0.313rem;
-
-  // At a top level, we will have 2x2 grid
-  // +------------------------------------------+
-  // | main & stats | tabs: skills, cyber, gear |
-  // |------------------------------------------+
-  // | tabs: Role, Combat, Lifepath             |
-  // +------------------------------------------+
-  //
-  // Originally we tried to just size this using auto and letting
-  // the sub-elements dictate the size. The problem was that when
-  // a sub-element didn't take up all of the space,
-  // it split the space 50/50.
-  // dictated by the elements contained in each grid
   grid-template-columns: auto;
   grid-template-rows: 4.5rem auto;
 
   grid-template-areas:
     "item-top-pane"
     "item-bottom-pane";
+  gap: 0.313rem;
 
   .item-top-pane {
     grid-area: item-top-pane;
@@ -42,7 +22,7 @@
     grid-template-areas: "item-image item-details";
     width: auto;
     height: auto;
-    background-color: @wyrm-red;
+    background-color: var(--cpr-background-border);
 
     .item-image {
       grid-area: item-image;
@@ -59,7 +39,7 @@
         "item-details-info item-details-other";
       width: auto;
       height: auto;
-      background-color: @chrome-white;
+      background-color: var(--cpr-background-box);
 
       .item-details-name {
         grid-area: item-details-name;
@@ -125,6 +105,7 @@
 
     .item-bottom-tabs-section {
       grid-area: item-bottom-tabs;
+      background-color: var(--cpr-background-window);
     }
 
     .item-bottom-content-section {
@@ -135,7 +116,12 @@
       border-width: 0.313rem;
       overflow-y: hidden;
       flex-wrap: wrap;
+      border-color: var(--cpr-background-border);
     }
+  }
+
+  .fa-trash-alt {
+    color: var(--cpr-text-icon-highlight);
   }
 }
 
@@ -153,10 +139,11 @@
   grid-template-columns: 8.438rem auto;
   grid-template-rows: auto;
   grid-template-areas: "item-summary-pane item-description-pane";
+  gap: 0.313rem;
+  background-color: var(--cpr-background-border);
 
   flex: 1 0 auto;
   min-height: 9.375rem;
-  grid-gap: 0.313rem;
   width: inherit;
 
   .item-summary-section {
@@ -164,6 +151,7 @@
     height: unset;
     min-width: 8.438rem;
     padding: 0.125rem;
+    background-color: var(--cpr-background-box);
 
     .summary-name,
     .item-summary-line {
@@ -181,6 +169,7 @@
     flex: 1 0 auto;
     flex-wrap: wrap;
     height: unset;
+    background-color: var(--cpr-background-box);
   }
 }
 
@@ -189,6 +178,7 @@
   display: flex;
   width: auto;
   flex: 1;
+  background-color: var(--cpr-background-box);
   .item-settings-section,
   .item-effects-section {
     display: list-item;

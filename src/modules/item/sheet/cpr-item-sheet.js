@@ -26,7 +26,7 @@ export default class CPRItemSheet extends ItemSheet {
           initial: "item-description",
         },
       ],
-      width: "auto",
+      width: 640,
       height: "auto",
     });
   }
