@@ -9,6 +9,16 @@
   </div>
   <div class="rollcard-bottom">
     <div class="cpr-block">
+      <div class="
+             text-massive
+             text-center
+             {{#if (cprCompare saveResult '===' (localize 'CPR.rolls.success'))}}
+               roll-success
+             {{else}}
+               roll-failure
+             {{/if}}">
+        {{saveResult}}
+      </div>
       <div class="d10-rollcard-data">
         <div class="d10-dice-div">
           {{!-- die image for initialRoll --}}
@@ -27,14 +37,7 @@
         </div>
         <div class="d10-number-div">
           <a>
-            <span class="
-              clickable
-              {{#if (cprCompare saveResult '===' (localize 'CPR.rolls.success'))}}
-                roll-success
-              {{else}}
-                roll-failure
-              {{/if}}
-              text-semi"
+            <span class="clickable text-semi"
                   data-action="toggleVisibility"
                   data-visible-element="d10-data-details">
               {{resultTotal}}
@@ -60,16 +63,6 @@
             {{#if (cprCompare mods.length "||" additionalMods.length) }}
               {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
             {{/if}}
-          <div class="
-                 text-massive
-                 text-center
-                 {{#if (cprCompare saveResult '===' (localize 'CPR.rolls.success'))}}
-                   roll-success
-                 {{else}}
-                   roll-failure
-                 {{/if}}">
-            {{saveResult}}
-          </div>
         </div>
       </div>
     </div>
