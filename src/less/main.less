@@ -14,6 +14,7 @@
 @import "injuries-list.less";
 @import "item-card.less";
 @import "item-sheet.less";
+@import "journal.less";
 @import "layout.less";
 @import "ledger.less";
 @import "lists.less";
@@ -24,13 +25,24 @@
 @import "weapon-list.less";
 
 .window-app .window-content {
+  color: var(--cpr-text-normal);
   background: var(--cpr-background-window);
+
+  button {
+    color: var(--cpr-text-foundry-button);
+    background-color: var(--cpr-background-foundry-button);
+  }
+
+  select {
+    color: var(--cpr-text-normal);
+    background: var(--cpr-background-window);
+  }
 }
 
 .editor {
   flex: 1 0 auto;
   padding: 0 0rem;
-  height: 100%;
+  min-height: 100%;
   .tox-toolbar-overlord,
   .tox-toolbar__primary {
     background: none;
@@ -38,5 +50,5 @@
 }
 
 .editor-content {
-  padding: 0 0.313rem;
+  padding: 0.313rem;
 }

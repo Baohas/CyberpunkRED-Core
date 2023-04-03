@@ -1,13 +1,28 @@
 form {
-  input.number {
-    width: 1.875rem;
+  .notes,
+  .hint {
+    color: var(--cpr-text-foundry-hint);
+  }
+
+  input {
+    &::placeholder {
+      color: var(--cpr-text-normal);
+      opacity: 0.6;
+    }
+
+    .number {
+      width: 1.875rem;
+    }
   }
 }
 
 .actor-sheet,
+.blackice-sheet,
 .container-sheet,
+.demon-sheet,
 .dialog-sheet,
-.item-sheet {
+.item-sheet,
+.mook-sheet {
   font-family: var(--cpr-font-primary);
 
   // Undo Foundry Base Style settings for elements
@@ -19,6 +34,10 @@ form {
     list-style-type: none;
   }
 
+  a:hover {
+    text-shadow: 0 0 0.5rem var(--cpr-background-foundry-hover);
+  }
+
   input[type="text"],
   input[type="number"],
   input[type="password"],
@@ -27,44 +46,46 @@ form {
     border: none;
     outline: none;
     box-shadow: none;
-    width: calc(100% - 0.125rem);
     min-width: unset;
-    height: unset;
-    background: unset;
     margin: 0;
-    color: unset;
-    font-family: inherit;
-    font-size: inherit;
-    text-align: inherit;
     line-height: inherit;
     -webkit-user-select: text;
     -moz-user-select: text;
     -ms-user-select: text;
     user-select: text;
+    border: none;
+    height: 100%;
+    background: none;
 
     &:hover {
-      border-right: 0.063rem;
-      border-right-style: solid;
-      border-left: 0.063rem;
-      border-left-style: solid;
+      color: var(--cpr-background-foundry-hover) !important;
     }
-  }
-
-  .editor .tox-toolbar-overlord,
-  .editor .tox-toolbar__primary {
-    background: none;
   }
 }
 
-#chat-form textarea {
-  background: none;
+option, optgroup {
+  background: var(--cpr-background-window);
+}
+
+#ui-right {
+  button {
+    color: var(--cpr-text-foundry-input);
+    background-color: var(--cpr-background-foundry-input);
+  }
+}
+
+#chat-form {
+  textarea {
+    background: none;
+    color: var(--cpr-text-foundry-input);
+    background-color: var(--cpr-background-foundry-input);
+  }
 }
 
 #chat-controls {
-  color: var(--cpr-text-inv);
-
   .roll-type-select {
-    background-color: var(--cpr-background-chat-card);
+    color: var(--cpr-text-foundry-input);
+    background-color: var(--cpr-background-foundry-input);
   }
 }
 
@@ -79,7 +100,53 @@ button,
 .sidebar-tab .directory-header .header-search input,
 .dialog .dialog-buttons button,
 .dialog .dialog-buttons button.default {
+  color: var(--cpr-text-foundry-input);
   background: var(--cpr-background-foundry-input);
+}
+
+// Overide the standard editor styles
+.editor {
+  .editor-edit {
+    color: var(--cpr-text-editor-button);
+    background-color: var(--cpr-background-editor-button);
+  }
+
+  .tox-tinymce {
+    border: unset;
+    border-radius: unset;
+
+    .tox-edit-area__iframe {
+      // This must be a light backlground no matter the theme as we can't
+      // style the content of iframes
+      background: var(--cpr-color-white);
+    }
+  }
+
+  .tox {
+    .tox-tbtn {
+      color: var(--cpr-text-editor-button);
+      background-color: var(--cpr-background-editor-button);
+    }
+
+    .tox-editor-container {
+      .tox-editor-header {
+        border: unset;
+        box-shadow: unset;
+        padding: unset;
+        transition: unset;
+
+        .tox-toolbar-overlord {
+          color: var(--cpr-text-editor-header);
+          background-color: var(--cpr-background-editor-header);
+
+          .tox-toolbar__primary {
+            background: none;
+            transform: unset;
+          }
+        }
+      }
+    }
+  }
 }
 
 /* -------------------------------------------- */
