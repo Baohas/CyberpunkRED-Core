@@ -2,20 +2,20 @@
 <form>
   <div class="mook-sheet">
     <div class="mook-name side-banner">
-      <div class="bg-red fg-white text-largest">
+      <div class="text-largest">
         <a class="change-mook-name">{{actor.name}}</a>
       </div>
     </div>
     <div class="mook-details">
       <div class="mook-img-and-stats">
-        <div class="mook-image bg-red">
+        <div class="mook-image">
           {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-image.hbs"}}
         </div>
         <div class="mook-stats-and-derived">
-          <div class="mook-stats pad-thin fg-white bg-red text-semi">
+          <div class="mook-stats pad-thin text-semi">
             {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-stats.hbs"}}
           </div>
-          <div class="mook-derived-stats pad-thin fg-white bg-red">
+          <div class="mook-derived-stats pad-thin">
             <div class="mook-hp">
               <span class="text-padding-left-smallest text-semi">
                 {{localize "CPR.global.generic.hitpoints"}}
@@ -26,7 +26,7 @@
                        type="number"
                        value="{{actor.system.derivedStats.hp.value}}"
                        data-dtype="Number"/>
-                <div class="of bg-red fg-white text-normal text-bold">of</div>
+                <div class="of text-normal text-bold">of</div>
                 <input class="text-center"
                        name="system.derivedStats.hp.max"
                        type="number"
@@ -38,7 +38,7 @@
               <span class="text-padding-left-smallest text-semi">
                 {{localize "CPR.mookSheet.woundState"}}
               </span>
-              <div class="bg-white text-center text-normal fg-black">
+              <div class="text-center text-normal">
                 {{localize (cprFindConfigValue "woundState" actor.system.derivedStats.currentWoundState)}}
               </div>
             </div>
@@ -51,7 +51,7 @@
                   {{localize "CPR.mookSheet.deathSave.title"}}
                 </a>
               </span>
-              <div class="width-full bg-white text-center text-normal text-bold fg-black">
+              <div class="width-full text-center text-normal text-bold">
                 <span data-tooltip="{{localize "CPR.mookSheet.deathSave.reset"}}
                   <br/>
                   {{localize "CPR.global.generic.deathPenalty" }}: {{actor.system.derivedStats.deathSave.penalty}}
@@ -66,7 +66,7 @@
           </div>
         </div>
       </div>
-      <div class="mook-gear fg-white pad-thin bg-red">
+      <div class="mook-gear pad-thin">
         <div class="mook-weapon-list">
           <div class="weapon-content">
           {{#each (cprSort actor.itemTypes.weapon "name") as |weapon|}}
@@ -87,20 +87,20 @@
           {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-armor.hbs"}}
         </div>
       </div>
-      <div class="mook-skills pad-thin fg-white bg-red">
+      <div class="mook-skills pad-thin">
         {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-skills.hbs"}}
       </div>
-      <div class="mook-special pad-thin fg-white bg-red">
+      <div class="mook-special pad-thin">
         {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-gear.hbs"}}
       </div>
-      <div class="mook-crit pad-thin fg-white bg-red">
+      <div class="mook-crit pad-thin">
         {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-criticalInjury.hbs"}}
       </div>
-      <div class="mook-notes pad-thin fg-white bg-red">
+      <div class="mook-notes pad-thin">
         <div class="text-semi">
           <span>{{localize "CPR.global.generic.notes"}}</span>
         </div>
-        <div class="mook-edit-section fg-black">
+        <div class="mook-edit-section">
           {{editor enrichedHTML.systemInformationNotes target="system.information.notes" button=true owner=owner editable=editable}}
         </div>
       </div>

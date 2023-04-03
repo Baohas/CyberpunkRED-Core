@@ -2,28 +2,28 @@
 <div class="collapsible">
   {{!-- Skill List Headers --}}
   <li class="items-header flexrow collapsible">
-    <span class="item-name bg-black text-padding-left-smallest expand-button"
+    <span class="item-name text-padding-left-smallest expand-button"
           id="skillTab-{{category}}"
           data-tooltip="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
       {{localize (cprFindConfigValue "skillCategories" category)}}
       {{#if (cprListContains sheet.options.collapsedSections (cprGeneratePartial "skillTab-VAR" category)) }}
-        <i class="fas fa-plus bg-black collapse-icon"></i>
-        <i class="fas fa-minus bg-black expand-icon hide"></i>
+        <i class="fas fa-plus collapse-icon"></i>
+        <i class="fas fa-minus expand-icon hide"></i>
       {{else}}
-        <i class="fas fa-plus bg-black collapse-icon hide"></i>
-        <i class="fas fa-minus bg-black expand-icon"></i>
+        <i class="fas fa-plus collapse-icon hide"></i>
+        <i class="fas fa-minus expand-icon"></i>
       {{/if}}
     </span>
-    <span class="item-detail skill-mod-value bg-black text-center">
+    <span class="item-detail skill-mod-value text-center">
       {{localize "CPR.characterSheet.rightPane.skills.skillMod"}}
     </span>
-    <span class="item-detail skill-level bg-black text-center">
+    <span class="item-detail skill-level text-center">
       {{localize "CPR.characterSheet.rightPane.skills.lvl"}}
     </span>
-    <span class="item-detail skill-base bg-black text-center">
+    <span class="item-detail skill-base text-center">
       {{localize "CPR.characterSheet.rightPanke.skills.base"}}
     </span>
-    <span class="item-detail skill-favorite bg-black text-nowrap text-center toggle-section-visibility"
+    <span class="item-detail skill-favorite text-nowrap text-center toggle-section-visibility"
           id="skillTab-{{category}}-showFavorites"
           data-tooltip="{{localize "CPR.characterSheet.rightPane.skills.toggleCategoryAll"}}">
       <i class="far fa-eye show-favorites"></i>
@@ -101,7 +101,7 @@
              data-action-type="favorite"
              data-tooltip="{{localize "CPR.actorSheets.commonActions.togglePin"}}">
             {{#if skill.system.favorite }}
-              <i class="fas fa-thumbtack fg-black favorite"></i>
+              <i class="fas fa-thumbtack favorite"></i>
             {{else}}
               <i class="fas fa-thumbtack fg-grey"></i>
             {{/if}}

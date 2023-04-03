@@ -4,7 +4,6 @@
   // Cyberpunk Red Core Sheet Styling
 
   // The basic sheet should be white
-  background-color: @chrome-white;
 
   // Utilize grid for element placement on the sheet
   display: grid;
@@ -78,7 +77,7 @@
         justify-content: left;
         align-content: center;
         padding: 0rem 0.125rem;
-        margin-bottom: 0.125rem
+        margin-bottom: 0.125rem;
       }
 
       .item-details-help {
@@ -132,7 +131,6 @@
       grid-area: item-bottom-content;
       display: flex;
 
-      border-color: @wyrm-red;
       border-style: solid;
       border-width: 0.313rem;
       overflow-y: hidden;
@@ -159,12 +157,10 @@
   flex: 1 0 auto;
   min-height: 9.375rem;
   grid-gap: 0.313rem;
-  background-color: @wyrm-red;
   width: inherit;
 
   .item-summary-section {
     grid-area: item-summary-pane;
-    background-color: @chrome-white;
     height: unset;
     min-width: 8.438rem;
     padding: 0.125rem;
@@ -183,7 +179,6 @@
     grid-area: item-description-pane;
     display: flex;
     flex: 1 0 auto;
-    background-color: @chrome-white;
     flex-wrap: wrap;
     height: unset;
   }
@@ -194,7 +189,6 @@
   display: flex;
   width: auto;
   flex: 1;
-  background-color: @chrome-white;
   .item-settings-section,
   .item-effects-section {
     display: list-item;
@@ -212,7 +206,6 @@
 }
 
 .item-netarch-section {
-  background-color: @wyrm-red;
   padding-top: 0.313rem;
 }
 
@@ -247,26 +240,21 @@
 
 .netarch-list-content {
   li:nth-child(even) {
-    background-color: @meat-space-pink;
   }
 
   li:nth-child(odd) {
-    background-color: @chrome-white;
   }
 }
 
 .item-role-section {
-  background-color: @wyrm-red;
   padding-top: 0.313rem;
 }
 
 .role-list-content {
   li:nth-child(even) {
-    background-color: @meat-space-pink;
   }
 
   li:nth-child(odd) {
-    background-color: @chrome-white;
   }
 }
 

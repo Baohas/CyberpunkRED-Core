@@ -7,35 +7,39 @@
 
 .text- {
   &smallest {
-    font-size: @font-smallest;
+    font-size: var(--cpr-font-smallest);
   }
 
   &smaller {
-    font-size: @font-smaller;
+    font-size: var(--cpr-font-smaller);
   }
 
   &small {
-    font-size: @font-small;
+    font-size: var(--cpr-font-small);
   }
 
   &normal {
-    font-size: @font-normal;
+    font-size: var(--cpr-font-normal);
   }
 
   &large {
-    font-size: @font-large;
+    font-size: var(--cpr-font-large);
   }
 
   &larger {
-    font-size: @font-larger;
+    font-size: var(--cpr-font-larger);
   }
 
   &largest {
-    font-size: @font-largest;
+    font-size: var(--cpr-font-largest);
   }
 
   &massive {
-    font-size: @font-massive;
+    font-size: var(--cpr-font-massive);
+  }
+
+  &hero {
+    font-family: var(--cpr-font-hero);
   }
 
   &center {
@@ -57,8 +61,6 @@
 
   &pill {
     display: flex;
-    color: @chrome-white;
-    background-color: @flint-black;
     padding-left: 0.25rem;
     padding-right: 0.25rem;
     justify-content: center;

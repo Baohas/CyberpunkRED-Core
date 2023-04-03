@@ -1,14 +1,14 @@
 {{cprTrace "START ACTOR CPR-CONTAINER-SHEET.HBS"}}
 <form>
   <div class="container-sheet">
-    <div class="left-pane bg-red">
+    <div class="left-pane">
       {{!-- Image --}}
       <div class="image-block">
         <img src="{{actor.img}}" data-edit="img" data-tooltip="{{actor.name}}"/>
       </div>
       {{!-- Name --}}
       <div class="name-section">
-        <div class="text-center text-large text-bold bg-white">
+        <div class="text-center text-large text-bold">
           {{#if isGM }}
             <input class="text-bold text-large text-center"
                    name="name"
@@ -43,7 +43,7 @@
     </div>
     {{!-- Eurobucks --}}
     {{#if (cprCompare (cprCompare (cprCompare actor.flags.cyberpunk-red-core.container-type "===" "custom") "||" (cprCompare actor.flags.cyberpunk-red-core.container-type "===" "shop")) "||" (cprCompare actor.flags.cyberpunk-red-core.container-type "===" undefined)) }}
-      <div class="eurobucks-section bg-white">
+      <div class="eurobucks-section">
         <li class="item text-align-last-end flexrow">
           <div class="item-name text-nowrap eurobucks-label">
             {{localize "CPR.containerSheet.settings.eurobucks.label"}}:
@@ -60,7 +60,7 @@
     {{/if}}
     {{!-- GM Settings --}}
     {{#if isGM }}
-      <div class="settings-gm-section bg-white">
+      <div class="settings-gm-section">
         <li class="item flexrow">
           <div class="text-center text-bold text-normal">
             {{localize "CPR.containerSheet.settings.title"}}
@@ -249,27 +249,27 @@
       {{#each (cprFindConfigObj "inventoryCategories") as |category c| }}
         <div class="collapsible">
           <li class="items-header flexrow collapsible">
-            <span class="item-name bg-black text-nowrap expand-button"
+            <span class="item-name text-nowrap expand-button"
                   id="gearTab-{{c}}"
                   data-tooltip="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
               {{localize category}}
               {{#if (cprListContains ../this.options.collapsedSections (cprGeneratePartial "gearTab-VAR" c)) }}
-                <i class="fas fa-plus bg-black collapse-icon"></i>
-                <i class="fas fa-minus bg-black expand-icon hide"></i>
+                <i class="fas fa-plus collapse-icon"></i>
+                <i class="fas fa-minus expand-icon hide"></i>
               {{else}}
-                <i class="fas fa-plus bg-black collapse-icon hide"></i>
-                <i class="fas fa-minus bg-black expand-icon"></i>
+                <i class="fas fa-plus collapse-icon hide"></i>
+                <i class="fas fa-minus expand-icon"></i>
               {{/if}}
             </span>
-            <span class="item-detail bg-black text-nowrap text-center">
+            <span class="item-detail text-nowrap text-center">
               {{#if (cprHasTemplate c "stackable") }}
                 {{localize "CPR.global.generic.amount"}}
               {{/if}}
             </span>
-            <span class="item-name bg-black text-nowrap">
+            <span class="item-name text-nowrap">
               {{localize "CPR.global.generic.price"}}
             </span>
-            <span class="item-end bg-black text-nowrap">
+            <span class="item-end text-nowrap">
               {{#if (cprCompare ../isGM "||" ../actor.flags.cyberpunk-red-core.players-create) }}
                 <a class="item-create"
                    data-tooltip="{{localize "CPR.actorSheets.commonActions.createNewItem"}}"

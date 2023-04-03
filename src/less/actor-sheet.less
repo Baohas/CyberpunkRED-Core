@@ -1,8 +1,6 @@
 // Overall Sheet Layout
 .actor-sheet {
-  font-family: "Jost";
 
-  background-color: @chrome-white;
   display: grid;
   grid-gap: 0.313rem;
   grid-template-columns: 17.3rem auto;
@@ -41,7 +39,6 @@
         "actor-details-eurobucks actor-details-eurobucks"
         "actor-details-filter actor-details-filter";
       grid-area: actor-details;
-      background-color: @wyrm-red;
       padding: 0.313rem;
     }
 
@@ -54,19 +51,16 @@
     .actor-details-handle {
       grid-area: actor-details-handle;
       display: grid;
-      background-color: @chrome-white;
     }
 
     .actor-details-role {
       grid-area: actor-details-role;
       display: grid;
-      background-color: @chrome-white;
     }
 
     .actor-details-hp {
       grid-area: actor-details-hp;
       display: grid;
-      background-color: @chrome-white;
       grid-template-columns: 1fr 0fr 1fr;
       grid-template-rows: 1fr 1fr;
       gap: 0rem 0rem;
@@ -101,7 +95,6 @@
     .actor-details-humanity {
       grid-area: actor-details-humanity;
       display: grid;
-      background-color: @chrome-white;
       grid-template-columns: 1fr 0fr 1fr;
       grid-template-rows: 1fr 1fr;
       gap: 0rem 0rem;
@@ -134,7 +127,6 @@
     .actor-details-death-save {
       grid-area: actor-details-death-save;
       display: grid;
-      background-color: @chrome-white;
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       gap: 0rem 0rem;
@@ -162,7 +154,6 @@
     .actor-details-wound-state {
       grid-area: actor-details-wound-state;
       display: grid;
-      background-color: @chrome-white;
 
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr;
@@ -184,7 +175,6 @@
     .actor-details-improvement-points {
       grid-area: actor-details-improvement-points;
       display: grid;
-      background-color: @chrome-white;
 
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
@@ -212,7 +202,6 @@
     .actor-details-reputation {
       grid-area: actor-details-reputation;
       display: grid;
-      background-color: @chrome-white;
       grid-auto-columns: 1fr;
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
@@ -240,7 +229,6 @@
     .actor-details-eurobucks {
       grid-area: actor-details-eurobucks;
       display: grid;
-      background-color: @chrome-white;
 
       grid-template-columns: 2rem 1fr 2rem;
       grid-template-rows: 1fr 1fr;
@@ -282,7 +270,6 @@
       grid-auto-flow: row;
       grid-template-areas:
         "actor-details-filter-box actor-details-filter-actions";
-      background-color: @chrome-white;
     }
 
     .actor-details-filter-box {
@@ -298,18 +285,14 @@
     .actor-stats {
       display: grid;
       gap: 0.313rem 0rem;
-      background-color: @wyrm-red;
       padding: 0.313rem;
 
       .actor-stats-stat {
-        background-color: @chrome-white;
       }
 
       .actor-stats-value {
-        background-color: @chrome-white;
       }
       .actor-stats-of {
-        background-color: @chrome-white;
         .actor-stats-of-min {
           display: flex;
           flex-grow: 2;
@@ -359,7 +342,6 @@
       width: 100%;
       height: auto;
 
-      border-color: @wyrm-red;
       border-style: solid;
       border-width: 0.313rem;
       overflow-y: scroll;
@@ -399,7 +381,6 @@
       display: flex;
       width: 100%;
 
-      border-color: @wyrm-red;
       border-style: solid;
       border-width: 0.313rem;
       overflow-y: auto;
@@ -414,7 +395,6 @@
   grid-template-areas: "skills-left skills-right";
   width: inherit;
   grid-gap: 0.313rem;
-  background-color: @wyrm-red;
 
   .left-pane-skills {
     grid-area: skills-left;
@@ -432,12 +412,10 @@
   grid-template-columns: auto;
   grid-template-rows: auto;
   width: inherit;
-  background-color: @chrome-white;
 }
 
 .lifepath-tab {
   display: flex;
-  background-color: @chrome-white;
   flex-flow: wrap;
   justify-content: space-between;
   flex: 1;
@@ -472,29 +450,24 @@
   grid-template-areas: "injuries armor weapon";
   width: inherit;
   grid-gap: 0.313rem;
-  background-color: @wyrm-red;
 
   .injuries-section {
     grid-area: injuries;
-    background-color: @chrome-white;
     min-height: 2.188rem;
   }
 
   .armor-section {
     grid-area: armor;
-    background-color: @chrome-white;
     min-height: 2.188rem;
   }
 
   .weapon-section {
     grid-area: weapon;
-    background-color: @chrome-white;
     min-height: 2.188rem;
   }
 
   .interface-abilities-section {
     grid-area: injuries;
-    background-color: @chrome-white;
     min-height: 2.188rem;
   }
 
@@ -505,7 +478,6 @@
 
   .cyberdeck-installed-section {
     grid-area: armor;
-    background-color: @chrome-white;
     min-height: 2.188rem;
 
     .cyberdeck-installed-software-list {
@@ -542,7 +514,6 @@
 
   .cyberdeck-rezzed-section {
     grid-area: weapon;
-    background-color: @chrome-white;
     min-height: 2.188rem;
 
     .cyberdeck-rezzed-software-list {
@@ -595,8 +566,6 @@
 .deathsave-block,
 .humanity-block,
 .stat-block {
-  color: @flint-black;
-  background-color: @chrome-white;
 }
 
 .image-block {
@@ -620,8 +589,6 @@
 .tab-label {
   display: flex;
   justify-content: center;
-  color: @chrome-white;
-  background-color: @flint-black;
   text-align: center;
   min-width: 9.375rem;
   //clip-path: polygon(2.063rem 0, 100% 0%, 100% 100%, 0.688rem 100%);
@@ -631,7 +598,6 @@
   }
 
   &.active {
-    background-color: @wyrm-red;
   }
 
   &:hover {
@@ -640,7 +606,6 @@
 }
 
 .tab-pink-underlay {
-  background-color: @meat-space-pink;
   margin-left: 1.25rem;
   clip-path: polygon(1.375rem 0, 100% 0%, 100% 100%, 0% 100%);
 }

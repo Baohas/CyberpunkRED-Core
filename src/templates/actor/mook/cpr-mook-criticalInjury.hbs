@@ -1,5 +1,5 @@
 {{cprTrace "START ACTOR MOOK CPR-MOOK-CRITICALINJURY.HBS"}}
-<div class="items-header bg-red fg-white flexrow">
+<div class="items-header flexrow">
   <span class="item-name section-name text-nowrap text-padding-left-smallest text-semi">
     {{localize "CPR.mookSheet.criticalInjuries"}}
     <a class="roll-critical-injury"
@@ -9,7 +9,7 @@
     </a>
   </span>
 </div>
-<div class="bg-white fg-black text-padding-left-smallest mook-crit-list">
+<div class="text-padding-left-smallest mook-crit-list">
   {{#each actor.itemTypes.criticalInjury as |item i| }}
     <a class="name item-edit deletable changeable {{#if item.system.deathSaveIncrease }}text-semi{{/if }}"
        data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem" }}

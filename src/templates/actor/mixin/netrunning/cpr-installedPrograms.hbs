@@ -2,7 +2,7 @@
 
 <div class="cyberdeck-installed-section">
   <li class="items-header flexrow">
-    <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left-smallest">
+    <span class="item-name section-name text-nowrap text-padding-left-smallest">
       {{localize "CPR.characterSheet.bottomPane.fight.installed"}}
     </span>
   </li>
@@ -10,7 +10,7 @@
     <div class="cyberdeck-installed-software">
       {{#each (cprFindConfigObj "programClassList") as |pgmClass pc| }}
         <li class="items-header flexrow">
-          <span class="text-semi text-padding-left-smallest bg-pink">{{localize pgmClass}}</span>
+          <span class="text-semi text-padding-left-smallest">{{localize pgmClass}}</span>
         </li>
         {{#each ../actor.system.cyberdeck.system.programs.installed as |program| }}
           {{#if (cprCompare program.class "===" pc) }}
@@ -50,7 +50,7 @@
                   <a class="program-uninstall"
                      data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}"
                      data-item-id="{{program.uuid}}">
-                    <i class="fas fa-folder-minus fg-red"
+                    <i class="fas fa-folder-minus"
                        data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.eraseProgram"}}"></i>
                   </a>
                 </div>
@@ -89,7 +89,7 @@
                   <a class="program-uninstall"
                      data-cyberdeck-id="{{../../actor.system.cyberdeck.id}}"
                      data-item-id="{{program.uuid}}">
-                    <i class="fas fa-folder-minus fg-red"
+                    <i class="fas fa-folder-minus"
                        data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.eraseProgram"}}"></i>
                   </a>
                 </div>

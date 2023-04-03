@@ -4,42 +4,42 @@
     {{#each (cprFindConfigObj "inventoryCategories") as |category c| }}
       <div class="collapsible">
         <li class="items-header flexrow collapsible">
-          <span class="item-name gear-name bg-black gear-section-header text-nowrap expand-button"
+          <span class="item-name gear-name gear-section-header text-nowrap expand-button"
                 id="gearTab-{{c}}"
                 data-tooltip="{{localize "CPR.actorSheets.commonActions.toggleCategoryPinned"}}">
             {{localize category}}
             {{#if (cprListContains ../this.options.collapsedSections (cprGeneratePartial "gearTab-VAR" c)) }}
-              <i class="fas fa-plus bg-black collapse-icon"></i>
-              <i class="fas fa-minus bg-black expand-icon hide"></i>
+              <i class="fas fa-plus collapse-icon"></i>
+              <i class="fas fa-minus expand-icon hide"></i>
             {{else}}
-              <i class="fas fa-plus bg-black collapse-icon hide"></i>
-              <i class="fas fa-minus bg-black expand-icon"></i>
+              <i class="fas fa-plus collapse-icon hide"></i>
+              <i class="fas fa-minus expand-icon"></i>
             {{/if}}
           </span>
           {{#if (cprListContains "ammo,gear,clothing,drug" c) }}
-            <span class="item-detail gear-amount bg-black gear-section-header text-nowrap">
+            <span class="item-detail gear-amount gear-section-header text-nowrap">
               {{localize "CPR.global.generic.amount"}}
             </span>
           {{/if}}
           {{#if (cprListContains "armor" c) }}
-            <span class="item-detail gear-amount bg-black gear-section-header text-nowrap">
+            <span class="item-detail gear-amount gear-section-header text-nowrap">
               {{localize "CPR.global.generic.stats"}}
             </span>
           {{/if}}
           {{#if (cprListContains "cyberdeck" c) }}
-            <span class="item-detail gear-amount bg-black gear-section-header text-nowrap">
+            <span class="item-detail gear-amount gear-section-header text-nowrap">
               {{localize "CPR.global.generic.slots"}}
             </span>
           {{/if}}
           {{#if (cprListContains "weapon" c) }}
-            <span class="item-detail gear-amount bg-black gear-section-header text-nowrap">
+            <span class="item-detail gear-amount gear-section-header text-nowrap">
               {{localize "CPR.global.itemTypes.ammo"}}
             </span>
           {{/if}}
-          <span class="item-detail gear-data bg-black gear-section-header text-nowrap">
+          <span class="item-detail gear-data gear-section-header text-nowrap">
             {{localize "CPR.characterSheet.rightPane.data"}}
           </span>
-          <span class="item-detail gear-actions bg-black gear-section-header text-nowrap">
+          <span class="item-detail gear-actions gear-section-header text-nowrap">
             {{localize "CPR.global.generic.actions"}}
             {{#if (cprSystemConfig "playersCreateInventory") }}
               <a class="item-create"

@@ -14,7 +14,7 @@
       {{else}}
         <div class="actor-stats-of flexrow">
           {{#if (cprCompare this.value ">" 99)}}
-            <div class="actor-stats-of-min fg-red">
+            <div class="actor-stats-of-min">
               <input name="system.stats.{{s}}.value"
                      data-tooltip="{{cprTextTransform s "upper"}}
                        {{localize 'CPR.tooltip.valueOf'}}
@@ -34,7 +34,7 @@
             /
           </div>
           {{#if (cprCompare this.max ">" 99)}}
-            <div class="actor-stats-of-max fg-red">
+            <div class="actor-stats-of-max">
               <input name="system.stats.{{s}}.max"
                      data-tooltip="{{cprTextTransform s "upper"}}
                        {{localize 'CPR.tooltip.maxOf'}}

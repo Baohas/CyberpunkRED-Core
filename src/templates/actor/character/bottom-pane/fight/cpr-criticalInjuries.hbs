@@ -2,16 +2,16 @@
 
 <div class="injuries-section">
   <li class="items-header flexrow">
-    <span class="item-name section-name fg-white bg-black text-nowrap text-padding-left-smallest">
+    <span class="item-name section-name text-nowrap text-padding-left-smallest">
       {{localize "CPR.characterSheet.bottomPane.fight.criticalInjuries"}}
-      <span class="item-detail gear-actions bg-black text-nowrap text-float-right text-padding-right-smallest">
+      <span class="item-detail gear-actions text-nowrap text-float-right text-padding-right-smallest">
         <a class="roll-critical-injury"
            data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.criticalInjuryRoll"}}"
            data-item-type="criticalInjury">
           <i class="fas fa-dice text-padding-right-smallest"></i>
         </a>
       </span>
-      <span class="item-detail gear-actions bg-black text-nowrap text-float-right text-padding-right-smallest">
+      <span class="item-detail gear-actions text-nowrap text-float-right text-padding-right-smallest">
         {{#if (cprSystemConfig "playersCreateInventory") }}
           <a class="item-create"
              data-tooltip="{{localize "CPR.actorSheets.commonActions.createNewItem"}}"
@@ -34,7 +34,7 @@
                data-action-type="delete"
                data-item-id="{{this.id}}"
                data-item-category="{{this.type}}">
-              <i class="fas fa-trash-alt fg-red text-float-right text-padding-right"
+              <i class="fas fa-trash-alt text-float-right text-padding-right"
                  data-tooltip="{{localize "CPR.actorSheets.commonActions.deleteItem"}}">
               </i>
             </a>

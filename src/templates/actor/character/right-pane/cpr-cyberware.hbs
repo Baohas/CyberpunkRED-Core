@@ -4,14 +4,14 @@
     {{#each (cprFindConfigObj "cyberwareTypeList") as |type t| }}
       <div >
         <li class="items-header flexrow">
-          <span class="item-name gear-name bg-black expand-button"
+          <span class="item-name gear-name expand-button"
                 id="cyberwareTab-{{c}}">
             {{localize type}}
           </span>
-          <span class="item-detail gear-data bg-black">
+          <span class="item-detail gear-data">
             {{localize "CPR.characterSheet.rightPane.data"}}
           </span>
-          <span class="item-detail gear-actions bg-black">
+          <span class="item-detail gear-actions">
             {{localize "CPR.global.generic.actions"}}
           </span>
         </li>

@@ -49,30 +49,22 @@
       <li class="ledger-history-list items-header flexrow">
         <span class="item-name
                      ledger-number
-                     fg-white
-                     bg-black
                      text-nowrap">
           {{localize "CPR.dialog.ledgerForm.number"}}
         </span>
         <span class="item-name
                      ledger-transaction
-                     fg-white
-                     bg-black
                      text-nowrap">
           {{localize "CPR.dialog.ledgerForm.transaction"}}
         </span>
         <span class="item-name
                      ledger-reason
-                     fg-white
-                     bg-black
                      text-nowrap">
           {{localize "CPR.dialog.ledgerForm.reason"}}
         </span>
         {{#if isGM }}
           <span class="item-name
                        ledger-delete
-                       fg-white
-                       bg-black
                        text-nowrap">
           </span>
         {{/if}}
@@ -93,7 +85,7 @@
               <div class="ledger-delete">
                 <a class="delete-ledger-line"
                    data-line="{{cprMath "subtract" ../contents.length @index 1}}">
-                  <i class="fas fa-trash-alt fg-red"
+                  <i class="fas fa-trash-alt"
                      data-tooltip="{{localize "CPR.dialog.ledgerForm.delete"}}">
                   </i>
                 </a>

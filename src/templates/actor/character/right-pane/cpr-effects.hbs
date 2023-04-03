@@ -3,13 +3,13 @@
   {{!-- derived from DND5E's active-effects.html --}}
   {{#each actor.system.filteredEffects as |section sid| }}
     <li class="effects-category flexrow item-header" data-effect-type="{{section.type}}">
-      <span class="effect-name bg-black">
+      <span class="effect-name">
         {{localize section.label}}
       </span>
-      <span class="effect-source bg-black text-semi">
+      <span class="effect-source text-semi">
         {{localize "CPR.characterSheet.rightPane.effects.source"}}
       </span>
-      <span class="effect-actions bg-black text-semi text-padding-right-smallest">
+      <span class="effect-actions text-semi text-padding-right-smallest">
         {{localize "CPR.characterSheet.rightPane.effects.actions"}}
       </span>
     </li>
@@ -79,7 +79,7 @@
              <a class="effect-control"
                 data-action="delete"
                 data-tooltip="{{localize 'CPR.characterSheet.rightPane.effects.delete'}}">
-               <i class="fas fa-trash-alt fg-red"></i>
+               <i class="fas fa-trash-alt"></i>
              </a>
            {{else}}
              <i class="fas fa-question-circle"

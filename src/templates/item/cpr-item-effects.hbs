@@ -6,8 +6,8 @@
         {{localize "CPR.itemSheet.effects.editOwnedWarning"}}
       {{else}}
         <li class="effects-category flexrow">
-          <span class="effect-name-item bg-black">{{localize "CPR.itemSheet.effects.nameAndChanges"}}</span>
-          <span class="effect-actions text-padding-right bg-black">{{localize "CPR.itemSheet.effects.actions"}}</span>
+          <span class="effect-name-item">{{localize "CPR.itemSheet.effects.nameAndChanges"}}</span>
+          <span class="effect-actions text-padding-right">{{localize "CPR.itemSheet.effects.actions"}}</span>
         </li>
         {{#each item.effects as |effect| }}
           {{!-- "effects" is a Map, so "this" is now an Active Effects object within the #each loop! --}}
