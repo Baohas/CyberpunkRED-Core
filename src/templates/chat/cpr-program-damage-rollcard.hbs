@@ -61,7 +61,7 @@
         {{#if (cprCompare mods.length "||" additionalMods.length) }}
           <a>
           {{/if}}
-          <span class="clickable{{#if criticalCard }} text-bold{{/if }}"
+          <span class="clickable{{#if criticalCard }} text-semi{{/if }}"
                 data-action="toggleVisibility"
                 data-visible-element="d6-data-details">{{resultTotal}}</span>
           {{#if (cprCompare mods.length "||" additionalMods.length) }}
@@ -70,18 +70,18 @@
       </div>
       <div class="d6-data-div">
         {{#if isAutofire }}
-          <div class="text-normal text-bold">
+          <div class="text-normal text-semi">
             {{localize "CPR.global.itemType.skill.autofire"}}! (x{{autofireMultiplier}})
           </div>
         {{/if}}
         {{#if isAimed }}
-          <div class="text-normal text-bold">
+          <div class="text-normal text-semi">
             {{localize "CPR.rolls.location"}}: {{localize (cprFindConfigValue
             "aimedLocation" location)}}
           </div>
         {{/if}}
         {{#if criticalCard }}
-          <div class="text-normal text-bold">
+          <div class="text-normal text-semi">
             {{localize "CPR.rolls.criticalDamage"}}:
             {{bonusDamage}}
           </div>

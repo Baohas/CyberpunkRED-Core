@@ -10,7 +10,7 @@
     <ol class="dialog-list">
       <li class="dialog-item flexrow">
         <div class="dialog-item-name text-nowrap">
-          <span class="text-bold">{{localize "CPR.dialog.netArchitectureNewFloor.floor"}}</span>
+          <span class="text-semi">{{localize "CPR.dialog.netArchitectureNewFloor.floor"}}</span>
         </div>
         <div class="dialog-item-input text-nowrap">
           <select name="floor">
@@ -35,7 +35,7 @@
       </li>
       <li class="dialog-item flexrow">
         <div class="dialog-item-name text-nowrap">
-          <span class="text-bold">{{localize "CPR.dialog.netArchitectureNewFloor.contentType"}}</span>
+          <span class="text-semi">{{localize "CPR.dialog.netArchitectureNewFloor.contentType"}}</span>
         </div>
         <div class="dialog-item-input text-nowrap">
           <select class="force-submit" name="content">
@@ -52,7 +52,7 @@
       {{#unless (cprCompare content "===" "CPR.global.programClass.blackice")}}
         <li class="dialog-item flexrow">
           <div class="dialog-item-name text-nowrap">
-            <span class="text-bold">{{localize "CPR.netArchitecture.floor.dv"}}</span>
+            <span class="text-semi">{{localize "CPR.netArchitecture.floor.dv"}}</span>
           </div>
           <div class="dialog-item-input text-nowrap">
             <select name="dv">
@@ -70,7 +70,7 @@
       {{#if (cprCompare content "===" "CPR.global.programClass.blackice")}}
         <li class="dialog-item flexrow">
           <div class="dialog-item-name text-nowrap">
-            <span class="text-bold text-nowrap">{{localize "CPR.dialog.netArchitectureNewFloor.blackIceType"}}</span>
+            <span class="text-semi text-nowrap">{{localize "CPR.dialog.netArchitectureNewFloor.blackIceType"}}</span>
           </div>
           <div class="dialog-item-input text-nowrap">
             <select name="blackice">
@@ -89,7 +89,7 @@
   </div>
   <hr>
   <div class="dialog-item text-padding-sides-small">
-    <div class="text-bold">{{localize "CPR.global.generic.description"}}</div>
+    <div class="text-semi">{{localize "CPR.global.generic.description"}}</div>
     <textarea name="description">{{description}}</textarea>
   </div>
   {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}

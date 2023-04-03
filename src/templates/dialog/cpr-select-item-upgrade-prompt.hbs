@@ -5,7 +5,7 @@
     {{!-- Display Available Slots --}}
     <li class="item flexrow">
       <div class="item flexrow">
-        <span class="text-bold">
+        <span class="text-semi">
           {{localize "CPR.itemSheet.itemUpgrade.slots"}}: {{item.system.upgrades.length}}/{{item.system.slots}}
         </span>
       </div>
@@ -14,17 +14,17 @@
     {{!-- Item Upgrades Header Bar--}}
     <li class="item flexrow">
       <div class="item flexrow flex-width-75 item-name">
-        <span class="text-bold text-left">
+        <span class="text-semi text-left">
           {{localize "CPR.itemSheet.common.itemUpgrades"}}
         </span>
       </div>
       <div class="item flexrow flex-width-10 item-detail">
-        <span class="text-bold text-right">
+        <span class="text-semi text-right">
           {{localize "CPR.global.generic.slots"}}
         </span>
       </div>
       <div class="item flexrow flex-width-15 item-detail">
-        <span class="text-bold text-align-last-end text-space-around">
+        <span class="text-semi text-align-last-end text-space-around">
           {{localize "CPR.dialog.common.select"}}
         </span>
       </div>
@@ -40,7 +40,7 @@
         <div class="item flex-width-10 flexrow item-detail text-right">
           <span>{{upgrade.system.size}}</span>
         </div>
-        <div class="item flex-width-15 flexrow item-detail text-bold text-align-last-end text-space-around">
+        <div class="item flex-width-15 flexrow item-detail text-semi text-align-last-end text-space-around">
           <span >
             {{#if upgrade.system.isInstalled }}
               <input type="checkbox"

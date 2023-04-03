@@ -29,14 +29,14 @@
       <div class="d6-dice-div"></div>
       <div class="d6-number-div">
         <div class="text-center">
-          <a> <span class="clickable text-bold"
+          <a> <span class="clickable text-semi"
        data-action="toggleVisibility"
        data-visible-element="d6-data-details">{{hpReduction}}</span> </a>
         </div>
       </div>
       <!-- If location exists and it isn't "body" display it on the card. -->
       {{#if (cprCompare location "&&" (cprCompare location "!==" "body")) }}
-        <div class="text-normal text-bold">
+        <div class="text-normal text-semi">
           <div class="text-right">
             {{localize "CPR.rolls.location"}}: {{localize (cprFindConfigValue "damageLocation" location)}}
           </div>
@@ -47,29 +47,29 @@
           <!--If this affects rez, only show rez. -->
           {{#if rezReduction }}
             <div class="text-right text-normal">
-              {{localize "CPR.chat.damageApplication.rezReducedBy"}} <span class="text-bold">{{hpReduction}}</span>
+              {{localize "CPR.chat.damageApplication.rezReducedBy"}} <span class="text-semi">{{hpReduction}}</span>
             </div>
           {{else}}
             <!--If damage is affects the brain: -->
             {{#if brainDamage }}
               <div class="text-right text-normal">
-                {{localize "CPR.chat.damageApplication.damageRolled"}} <span class="text-bold">{{damage}}</span>
+                {{localize "CPR.chat.damageApplication.damageRolled"}} <span class="text-semi">{{damage}}</span>
               </div>
               {{#if bonusDamage }}
                 <div class="text-right text-normal">
-                  {{localize "CPR.chat.damageApplication.criticalDamage"}} <span class="text-bold">{{bonusDamage}}</span>
+                  {{localize "CPR.chat.damageApplication.criticalDamage"}} <span class="text-semi">{{bonusDamage}}</span>
                 </div>
               {{/if}}
               <div class="text-right text-normal">
-                {{localize "CPR.chat.damageApplication.damageDealt"}} <span class="text-bold">{{totalDamageDealt}}</span>
+                {{localize "CPR.chat.damageApplication.damageDealt"}} <span class="text-semi">{{totalDamageDealt}}</span>
               </div>
               {{#if totalDamageReduction }}
                 <div class="text-right text-normal">
-                  {{localize "CPR.chat.damageApplication.damageReduction"}} <span class="text-bold">{{totalDamageReduction}}</span>
+                  {{localize "CPR.chat.damageApplication.damageReduction"}} <span class="text-semi">{{totalDamageReduction}}</span>
                 </div>
               {{/if}}
               <div class="text-right text-normal">
-                {{localize "CPR.chat.damageApplication.healthReducedBy"}} <span class="text-bold">{{hpReduction}}</span>
+                {{localize "CPR.chat.damageApplication.healthReducedBy"}} <span class="text-semi">{{hpReduction}}</span>
               </div>
             {{else}}
               <!-- If damage did not cause hp reduction. -->
@@ -81,30 +81,30 @@
                   </div>
                   <hr/>
                   <div class="text-right text-normal">
-                    {{localize "CPR.chat.damageApplication.damageRolled"}} <span class="text-bold">{{damage}}</span>
+                    {{localize "CPR.chat.damageApplication.damageRolled"}} <span class="text-semi">{{damage}}</span>
                   </div>
                   {{#if bonusDamage }}
                     <div class="text-right text-normal">
-                      {{localize "CPR.chat.damageApplication.criticalDamage"}} <span class="text-bold">{{bonusDamage}}</span>
+                      {{localize "CPR.chat.damageApplication.criticalDamage"}} <span class="text-semi">{{bonusDamage}}</span>
                     </div>
                   {{/if}}
                   {{#if armorData.equipped }}
                     <div class="text-right text-normal">
-                      {{localize "CPR.chat.damageApplication.armorSP"}} <span class="text-bold">{{armorData.value}}</span>
+                      {{localize "CPR.chat.damageApplication.armorSP"}} <span class="text-semi">{{armorData.value}}</span>
                     </div>
                   {{/if}}
                   <div class="text-right text-normal">
-                    {{localize "CPR.chat.damageApplication.damageDealt"}} <span class="text-bold">{{totalDamageDealt}}</span>
+                    {{localize "CPR.chat.damageApplication.damageDealt"}} <span class="text-semi">{{totalDamageDealt}}</span>
                   </div>
                   <div class="text-right text-normal">
-                    {{localize "CPR.chat.damageApplication.damageReduction"}} <span class="text-bold">{{totalDamageReduction}}</span>
+                    {{localize "CPR.chat.damageApplication.damageReduction"}} <span class="text-semi">{{totalDamageReduction}}</span>
                   </div>
                   <div class="text-right text-normal">
-                    {{localize "CPR.chat.damageApplication.healthReducedBy"}} <span class="text-bold">{{hpReduction}}</span>
+                    {{localize "CPR.chat.damageApplication.healthReducedBy"}} <span class="text-semi">{{hpReduction}}</span>
                   </div>
                   {{#if (cprCompare armorData.equipped "&&" armorData.value) }}
                     <div class="text-right text-normal">
-                      {{localize "CPR.chat.damageApplication.armorAblation"}} <span class="text-bold">{{ablation}}</span>
+                      {{localize "CPR.chat.damageApplication.armorAblation"}} <span class="text-semi">{{ablation}}</span>
                     </div>
                   {{/if}}
                   {{else if (cprCompare damageLethal "===" false)}}
@@ -114,11 +114,11 @@
                   </div>
                   <hr/>
                   <div class="text-right text-normal">
-                    {{localize "CPR.chat.damageApplication.damageRolled"}} <span class="text-bold">{{damage}}</span>
+                    {{localize "CPR.chat.damageApplication.damageRolled"}} <span class="text-semi">{{damage}}</span>
                   </div>
                   {{#if bonusDamage }}
                     <div class="text-right text-normal">
-                      {{localize "CPR.chat.damageApplication.criticalDamage"}} <span class="text-bold">{{bonusDamage}}</span>
+                      {{localize "CPR.chat.damageApplication.criticalDamage"}} <span class="text-semi">{{bonusDamage}}</span>
                     </div>
                   {{/if}}
                 {{else}}
@@ -128,53 +128,53 @@
                   </div>
                   <hr/>
                   <div class="text-right text-normal">
-                    {{localize "CPR.chat.damageApplication.damageRolled"}} <span class="text-bold">{{damage}}</span>
+                    {{localize "CPR.chat.damageApplication.damageRolled"}} <span class="text-semi">{{damage}}</span>
                   </div>
                   {{#if bonusDamage }}
                     <div class="text-right text-normal">
-                      {{localize "CPR.chat.damageApplication.criticalDamage"}} <span class="text-bold">{{bonusDamage}}</span>
+                      {{localize "CPR.chat.damageApplication.criticalDamage"}} <span class="text-semi">{{bonusDamage}}</span>
                     </div>
                   {{/if}}
                 {{/if}}
                 {{#if shieldAblation }}
                   <div class="text-right text-normal">
-                    {{localize "CPR.chat.damageApplication.damageToShield"}} <span class="text-bold">{{shieldAblation}}</span>
+                    {{localize "CPR.chat.damageApplication.damageToShield"}} <span class="text-semi">{{shieldAblation}}</span>
                   </div>
                 {{/if}}
               {{else}}
                 <!-- If damage got through and caused HP reduction. -->
                 <div class="text-right text-normal">
-                  {{localize "CPR.chat.damageApplication.damageRolled"}} <span class="text-bold">{{damage}}</span>
+                  {{localize "CPR.chat.damageApplication.damageRolled"}} <span class="text-semi">{{damage}}</span>
                 </div>
                 {{#if bonusDamage }}
                   <div class="text-right text-normal">
-                    {{localize "CPR.chat.damageApplication.criticalDamage"}} <span class="text-bold">{{bonusDamage}}</span>
+                    {{localize "CPR.chat.damageApplication.criticalDamage"}} <span class="text-semi">{{bonusDamage}}</span>
                   </div>
                 {{/if}}
                 {{#if armorData.equipped }}
                   <div class="text-right text-normal">
-                    {{localize "CPR.chat.damageApplication.armorSP"}} <span class="text-bold">{{armorData.value}}</span>
+                    {{localize "CPR.chat.damageApplication.armorSP"}} <span class="text-semi">{{armorData.value}}</span>
                   </div>
                 {{/if}}
                 <div class="text-right text-normal">
-                  {{localize "CPR.chat.damageApplication.damageDealt"}} <span class="text-bold">{{totalDamageDealt}}</span>
+                  {{localize "CPR.chat.damageApplication.damageDealt"}} <span class="text-semi">{{totalDamageDealt}}</span>
                 </div>
                 {{#if totalDamageReduction }}
                   <div class="text-right text-normal">
-                    {{localize "CPR.chat.damageApplication.damageReduction"}} <span class="text-bold">{{totalDamageReduction}}</span>
+                    {{localize "CPR.chat.damageApplication.damageReduction"}} <span class="text-semi">{{totalDamageReduction}}</span>
                   </div>
                 {{/if}}
                 <div class="text-right text-normal">
-                  {{localize "CPR.chat.damageApplication.healthReducedBy"}} <span class="text-bold">{{hpReduction}}</span>
+                  {{localize "CPR.chat.damageApplication.healthReducedBy"}} <span class="text-semi">{{hpReduction}}</span>
                 </div>
                 {{#if (cprCompare armorData.equipped "&&" armorData.value) }}
                   <div class="text-right text-normal">
-                    {{localize "CPR.chat.damageApplication.armorAblation"}} <span class="text-bold">{{ablation}}</span>
+                    {{localize "CPR.chat.damageApplication.armorAblation"}} <span class="text-semi">{{ablation}}</span>
                   </div>
                 {{/if}}
                 {{#if shieldAblation }}
                   <div class="text-right text-normal">
-                    {{localize "CPR.chat.damageApplication.damageToShield"}} <span class="text-bold">{{shieldAblation}}</span>
+                    {{localize "CPR.chat.damageApplication.damageToShield"}} <span class="text-semi">{{shieldAblation}}</span>
                   </div>
                 {{/if}}
               {{/if}}

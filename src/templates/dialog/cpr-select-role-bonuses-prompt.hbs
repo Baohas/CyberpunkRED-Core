@@ -17,7 +17,7 @@
         </div>
       </li>
       <li class="dialog-item flexrow">
-        <div class="dialog-item-name text-nowrap text-bold">
+        <div class="dialog-item-name text-nowrap text-semi">
           {{localize "CPR.dialog.selectRoleBonuses.bonusRatio"}}
         </div>
         <div class="dialog-item-input text-nowrap flexrow">
@@ -25,7 +25,7 @@
         </div>
       </li>
       <li class="dialog-item flexrow">
-        <div class="dialog-item-name text-nowrap text-bold">
+        <div class="dialog-item-name text-nowrap text-semi">
           {{localize "CPR.effectSheet.header.situational"}}
         </div>
         <div class="dialog-item-input text-nowrap">
@@ -34,7 +34,7 @@
       </li>
       {{#if roleData.isSituational }}
         <li class="dialog-item flexrow">
-          <div class="dialog-item-name text-nowrap text-bold">
+          <div class="dialog-item-name text-nowrap text-semi">
             {{localize "CPR.effectSheet.header.onByDefault"}}
           </div>
           <div class="dialog-item-input text-nowrap">
@@ -55,7 +55,7 @@
           <div class="dialog-item-name text-nowrap text-nowrap">
             {{localize universalBonus}}
           </div>
-          <div class="dialog-item-input text-nowrap text-nowrap text-bold text-space-around">
+          <div class="dialog-item-input text-nowrap text-nowrap text-semi text-space-around">
             {{#if (cprListContains ../roleData.universalBonuses u) }}
               <input type="checkbox" name="universalBonuses" value="{{u}}" checked/>
             {{else}}
@@ -77,7 +77,7 @@
           <div class="dialog-item-name text-nowrap">
             {{localize (cprGetLocalizedlNameKey skill.name "skill")}}
           </div>
-          <div class="dialog-item-input text-nowrap text-bold text-space-around">
+          <div class="dialog-item-input text-nowrap text-semi text-space-around">
             {{#if (cprObjectListContains ../roleData.bonuses "name" skill.name) }}
               <input type="checkbox" name="selectedSkills" value="{{skill.name}}" checked/>
             {{else}}

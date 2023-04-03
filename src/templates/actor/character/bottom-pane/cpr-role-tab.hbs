@@ -29,13 +29,13 @@
                 <li class="item flexrow" draggable="true" data-item-id="{{role._id}}">
                   <div class="item-name role-name flexrow  text-nowrap">
                     {{#if role.system.hasRoll }}
-                      <a class="rollable ability-name text-bold"
+                      <a class="rollable ability-name text-semi"
                          data-roll-type="roleAbility"
                          data-roll-subtype="mainRoleAbility"
                          data-roll-title="{{role.system.mainRoleAbility}}">
                         <i class="fa-solid fa-diamond"></i>
                       {{/if}}
-                      <span class="text-bold ability-name">
+                      <span class="text-semi ability-name">
                         {{localize (cprGetLocalizedlNameKey role.system.mainRoleAbility "roleAbility")}}:
                       </span>
                       {{#if role.system.hasRoll }}
