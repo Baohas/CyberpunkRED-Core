@@ -2,11 +2,31 @@
 import CPR from "./config.js";
 import CPRCompendiaSettings from "../apps/cpr-compendia-settings.js";
 import LOGGER from "../utils/cpr-logger.js";
+import setTheme from "./theme.js";
 
 /**
  * This file defines user settings for the system module.
  */
 const registerSystemSettings = () => {
+  game.settings.register(game.system.id, "theme", {
+    name: "CPR.settings.theme.title",
+    hint: "CPR.settings.theme.hint",
+    scope: "client",
+    config: true,
+    type: String,
+    default: "default",
+    // This object should be generated somehow and have the ability to have
+    // modules to register new themes.
+    choices: {
+      default: "CPR.settings.theme.name.default",
+      darkmode: "CPR.settings.theme.name.darkmode",
+    },
+    onChange: (value) => {
+      LOGGER.log(`Changed theme to ${value}`);
+      setTheme();
+    },
+  });
+
   // XXX: Debug and trace logs come first because sometimes we're using them while in the
   //      early initialization of FoundryVTT.
   game.settings.register(game.system.id, "debugLogs", {

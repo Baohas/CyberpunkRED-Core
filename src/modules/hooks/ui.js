@@ -1,6 +1,7 @@
 /* global Hooks */
 import LOGGER from "../utils/cpr-logger.js";
 import enablePauseAnimation from "../system/pause-animation.js";
+import setTheme from "../system/theme.js";
 
 /**
  * Hooks have a set of args that are passed to them from Foundry. Even if we do not use them here,
@@ -18,6 +19,17 @@ const uiHooks = () => {
   Hooks.on("renderPause", () => {
     LOGGER.trace("renderPause | uiHooks | Called.");
     enablePauseAnimation();
+  });
+
+  /**
+   * Set the CSS theme on init
+   *
+   * @public
+   * @memberof hookEvents
+   */
+  Hooks.on("init", () => {
+    LOGGER.trace("setTheme | uiHooks | called");
+    setTheme();
   });
 };
 
