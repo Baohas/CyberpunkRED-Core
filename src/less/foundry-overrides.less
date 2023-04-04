@@ -1,7 +1,7 @@
 form {
   .notes,
   .hint {
-    color: var(--cpr-text-foundry-hint);
+    color: var(--cpr-text-foundry-hint) !important;
   }
 
   input {
@@ -14,6 +14,31 @@ form {
       width: 1.875rem;
     }
   }
+  .form-group {
+    label {
+      color: var(--cpr-text-window);
+    }
+  }
+  span.units {
+    color: var(--cpr-text-hint) !important;
+  }
+  .form-group.slim {
+    .form-fields {
+      label {
+        color: var(--cpr-text-hint) !important;
+      }
+    }
+  }
+  textarea:read-only {
+    color: var(--cpr-text-hint);
+  }
+  textarea {
+    color: var(--cpr-text-normal);
+  }
+}
+
+.card-control {
+  color: var(--cpr-text-hint) !important;
 }
 
 .actor-sheet,
@@ -63,8 +88,23 @@ form {
   }
 }
 
-option, optgroup {
+option,
+optgroup {
   background: var(--cpr-background-window);
+}
+
+#module-management {
+  label {
+    color: var(--cpr-text-icon-normal) !important;
+  }
+}
+
+#keybindings {
+  .binding {
+    .key.uneditable {
+      background: var(--cpr-background-row-odd);
+    }
+  }
 }
 
 #ui-right {
@@ -94,6 +134,7 @@ input[type="number"],
 input[type="password"],
 input[type="date"],
 input[type="time"],
+input[type="search"],
 input,
 select,
 button,
@@ -102,6 +143,16 @@ button,
 .dialog .dialog-buttons button.default {
   color: var(--cpr-text-foundry-input);
   background: var(--cpr-background-foundry-input);
+}
+
+input::placeholder {
+  color: var(--cpr-text-hint);
+}
+
+.header-search {
+  input {
+    background: var(--cpr-background-foundry-input) !important;
+  }
 }
 
 // Overide the standard editor styles

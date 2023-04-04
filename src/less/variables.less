@@ -25,22 +25,23 @@
   // Used for common colors within the default theme
   --cpr-color-red: #b90202;
   --cpr-color-white: #eaeaea;
-  --cpr-color-dark-grey: #2d2f2f;
+  --cpr-color-dark-grey: #0d0b0c;
   --cpr-color-light-grey: #9e9f9f;
   --cpr-color-pink: #ffc3b6;
   --cpr-color-black: #000000;
   --cpr-color-faded-black: rgba(0, 0, 0, 0.6);
+  --cpr-color-off-black: #0d0b0c;
 
   // Background Colors
   --cpr-background-window: var(--cpr-color-white);
   --cpr-background-border: var(--cpr-color-red);
   --cpr-background-box: var(--cpr-color-white);
   --cpr-background-header: var(--cpr-color-dark-grey);
-  --cpr-background-pill: var(--cpr-color-dark-grey);
+  --cpr-background-pill: var(--cpr-color-off-black);
   --cpr-background-row-even: var(--cpr-color-white);
   --cpr-background-row-odd: var(--cpr-color-pink);
   --cpr-background-tab-active: var(--cpr-color-red);
-  --cpr-background-tab-inactive: var(--cpr-color-dark-grey);
+  --cpr-background-tab-inactive: var(--cpr-color-off-black);
   --cpr-background-tab-underlay: var(--cpr-color-pink);
   --cpr-background-chat: var(--cpr-color-faded-black);
   --cpr-background-chat-card: var(--cpr-color-white);
@@ -58,6 +59,8 @@
   --cpr-background-migration-bar-border: #b2c3ff;
   --cpr-background-migration-bar-label: var(--cpr-color-faded-black);
   --cpr-background-foundry-hover: var(--cpr-color-red);
+  --cpr-background-editor-header: var(--cpr-color-white);
+  --cpr-background-editor-button: var(--cpr-color-light-grey);
 
   // UI Colors
   --cpr-pause-text: var(--cpr-color-white);
@@ -65,6 +68,7 @@
   --cpr-pause-highlight2: #8ef104;
 
   // Text Colors
+  --cpr-text-input: var(--cpr-color-black);
   --cpr-text-window: var(--cpr-color-black);
   --cpr-text-normal: var(--cpr-color-dark-grey);
   --cpr-text-pill: var(--cpr-color-white);
@@ -80,19 +84,70 @@
   --cpr-text-mook-name: var(--cpr-color-white);
   --cpr-text-mook-header: var(--cpr-color-white);
   --cpr-text-mook-normal: var(--cpr-color-dark-grey);
-}
-
-html[data-cpr-theme="default"] {
-  // intentionally blank, will just inherit the above as defaults
+  --cpr-text-foundry-input: var(--cpr-color-black);
+  --cpr-text-foundry-button: var(--cpr-color-black);
+  --cpr-text-foundry-hint: var(--cpr-color-dark-grey);
+  --cpr-text-editor-header: var(--cpr-color-black);
+  --cpr-text-editor-button: var(--cpr-color-black);
 }
 
 html[data-cpr-theme="darkmode"] {
-  --cpr-background-row-odd: #adb5bd;
-  --cpr-background-tab-underlay: #adb5bd;
-  --cpr-background-cyberdeck-section-header: #adb5bd;
-  --cpr-background-dialog-selected: #adb5bd;
-  --cpr-background-border: #495057;
-  --cpr-background-tab-active: #495057;
-  --cpr-background-dialog-border: #495057;
-  --cpr-background-foundry-hover: #343a40;
+  //--cpr-darkmode-main: #394867;
+  --cpr-darkmode-main: #52606D;
+  --cpr-darkmode-background: #232b2b;
+  --cpr-darkmode-text-main: #eaeaea;
+  --cpr-darkmode-header: #121212;
+  --cpr-darkmode-red: #c62828;
+
+  --cpr-background-window: var(--cpr-darkmode-background);
+  --cpr-background-border: var(--cpr-darkmode-main);
+  --cpr-background-box: var(--cpr-darkmode-background);
+
+  --cpr-background-header: var(--cpr-darkmode-header);
+  --cpr-background-pill: var(--cpr-darkmode-header);
+  --cpr-background-row-even: #3b444b;
+  --cpr-background-row-odd: var(--cpr-darkmode-background);
+  --cpr-background-tab-active: var(--cpr-darkmode-main);
+  --cpr-background-tab-inactive: #0e1111;
+  --cpr-background-tab-underlay: #495057;
+  --cpr-background-chat-card: var(--cpr-darkmode-background);
+  --cpr-background-chat-card-block: var(--cpr-darkmode-main);
+  --cpr-background-chat-card-block-before: #3b3b3b;
+  --cpr-background-chat-border: #999999;
+  --cpr-background-foundry-input: var(--cpr-darkmode-background);
+  --cpr-background-cyberdeck-section-header: #414a4c;
+  --cpr-background-dialog-border: var(--cpr-darkmode-main);
+  --cpr-background-dialog-selected: #414a4c;
+  --cpr-background-foundry-hover: var(--cpr-darkmode-main);
+  --cpr-background-foundry-button: var(--cpr-darkmode-background);
+  --cpr-background-dialog-hr-gradient-start: #394867;
+  --cpr-background-dialog-hr-gradient-middle: #BCCCDC;
+  --cpr-background-dialog-hr-gradient-end: #394867;
+
+  --cpr-background-editor-header: var(--cpr-darkmode-header);
+  --cpr-background-editor-button: var(--cpr-color-light-grey);
+
+  --cpr-text-editor-header: var(--cpr-darkmode-text-main);
+  --cpr-text-editor-button: var(--cpr-color-black);
+
+  // Text Colors
+  --cpr-text-normal: var(--cpr-darkmode-text-main);
+  --cpr-text-pill: var(--cpr-darkmode-text-main);
+  --cpr-text-header: var(--cpr-darkmode-text-main);
+  --cpr-text-window: var(--cpr-darkmode-text-main);
+  --cpr-text-tab-normal: var(--cpr-darkmode-text-main);
+  --cpr-text-icon-normal: #c0c0c5;
+  --cpr-text-icon-dimmed: #66666e;
+  --cpr-text-icon-highlight: var(--cpr-darkmode-red);
+  --cpr-text-chat-normal: var(--cpr-darkmode-text-main);
+  --cpr-text-chat-failure: var(--cpr-darkmode-red);
+  --cpr-text-mook-normal: var(--cpr-darkmode-text-main);
+  --cpr-text-foundry-input: var(--cpr-darkmode-text-main);
+  --cpr-text-foundry-button: var(--cpr-darkmode-text-main);
+  --cpr-text-foundry-hint: #c0c0c0;
+
+  // Override some foundry defaults to better fit the theme
+  --color-border-light-primary: #666;
+  --color-border-light-1: #666;
+  --color-shadow-primary: #BCCCDC;
 }
