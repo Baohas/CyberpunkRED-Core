@@ -34,7 +34,7 @@ See [CHANGELOG.md](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core
 
 ## Join the team!
 
-Chat with us on [Discord](https://discord.gg/TsvcZUEtbJ)!
+Feel free to reach out and chat with us! Our contact information can be found on the [Wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/home#project-red-cast-of-characters).
 
 If you're interested in helping out, we would love to hear from you! Even if you're not a coder we can help you get started. Never too late to start a new hobby! Look over the [project wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/home).
 
