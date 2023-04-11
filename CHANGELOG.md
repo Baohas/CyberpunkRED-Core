@@ -6,6 +6,7 @@
 
 ### Release Specific Notes
 
+- The project Discord has changed! Please visit our [Wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/home#project-red-cast-of-characters) for the new link!
 - NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. See New Features -> Roll Modifiers section of Changelog for more details.
 
 ### New Features
