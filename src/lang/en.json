@@ -1062,6 +1062,7 @@
   "CPR.settings.displayStatusAsActiveEffects.hint": "When enabled, token status will be displayed in the Active Effects tab of the character sheet",
   "CPR.settings.displayStatusAsActiveEffects.name": "Display Token Status as an Effect",
   "CPR.settings.dvRollTableCompendium.default": "DV System Compendium",
+  "CPR.settings.dvRollTableCompendium.help": "Click for more information on custom DV Tables",
   "CPR.settings.dvRollTableCompendium.name": "DV Tables",
   "CPR.settings.enablePauseAnimation.hint": "Requires full reload to take effect (Ctrl+F5). Ignored if Foundry Photosensitivity mode is enabled.",
   "CPR.settings.enablePauseAnimation.name": "Enable Pause Animation",
