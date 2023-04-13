@@ -70,6 +70,7 @@ export default function preloadHandlebarsTemplates() {
     // Actor: Mixins - Fight
     `systems/${game.system.id}/templates/actor/mixin/fight/cpr-armor.hbs`,
     `systems/${game.system.id}/templates/actor/mixin/fight/cpr-weapon.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/fight/mixin/cpr-armor-location.hbs`,
 
     // Actor: Mixins: Netrunning
     `systems/${game.system.id}/templates/actor/mixin/netrunning/cpr-installedPrograms.hbs`,

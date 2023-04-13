@@ -1,56 +1,4 @@
 {{cprTrace "START ACTOR MIXIN FIGHT CPR-WEAPON.HBS"}}
-{{!-- Set Variables!  --}}
-{{#if (cprCompare (cprGetProp actor "type") "===" "character")}}
-  {{cprVar "isCharacter" true}}
-  {{cprVar "isMook" false}}
-{{else}}
-  {{cprVar "isCharacter" false}}
-  {{cprVar "isMook" true}}
-{{/if}}
-
-{{!-- Get attackMod --}}
-{{#if (cprCompare (cprApplyUpgrade this this.system.attackmod "this.attackmod") "!==" "0")}}
-  {{cprVar "attackMod" (cprApplyUpgrade this this.system.attackmod "this.attackmod")}}
-{{/if}}
-
-{{!-- Check if we are a ranged weapon --}}
-{{#if this.system.isRanged}}
-  {{cprVar "isRanged" true}}
-  {{!-- Check if we have autofire --}}
-  {{#if (cprCompare this.system.fireModes.autoFire ">" 0)}}
-    {{cprVar "hasAutofire" true}}
-  {{else}}
-    {{cprVar "hasAutofire" false}}
-  {{/if}}
-  {{!-- Check if we have suppressiveFire --}}
-  {{#if this.system.fireModes.suppressiveFire}}
-    {{cprVar "hasSuppressive" true}}
-  {{else}}
-    {{cprVar "hasSuppressive" false}}
-  {{/if}}
-  {{!-- Get Magazine Stats --}}
-  {{#if this.system.magazine.ammoData.uuid}}
-    {{cprVar "ammoData" (cprFromUuidSync this.system.magazine.ammoData.uuid)}}
-    {{cprVar "isLoaded" true}}
-    {{cprVar "magValue" this.system.magazine.value}}
-    {{cprVar "magMax" (cprApplyUpgrade this this.system.magazine.max "magazine")}}
-    {{cprVar "ammoAblation" ammoData.system.ablationValue}}
-    {{cprVar "ammoType" (localize (cprFindConfigValue "ammoType" ammoData.system.type))}}
-    {{#if (cprCompare ammoType "===" "Rubber")}}
-      {{cprVar "weaponDamage" "0"}}
-    {{else if (cprCompare ammoType "===" "Paintballs")}}
-      {{cprVar "weaponDamage" "0"}}
-    {{else}}
-      {{cprVar "weaponDamage" this.system.damage}}
-    {{/if}}
-  {{else}}
-    {{cprVar "isLoaded" false}}
-  {{/if}}
-{{else}}
-  {{cprVar "isRanged" false}}
-{{/if}}
-
-{{!-- BEGIN HTML --}}
 
 <div class="weapon-grid">
 
@@ -61,18 +9,25 @@
 
   {{!-- Weapon Name --}}
   <div class="weapon-name">
-    <a class="name item-edit text-semi{{#if isMook}} deletable changeable{{/if}}"
-       {{#if isMook}}
+    <a class="name
+              item-edit
+              text-semi
+              {{#if (cprCompare (cprGetProp actor "type") '===' "mook")}}
+                deletable
+                changeable
+              {{/if}}"
+       {{#if (cprCompare (cprGetProp actor "type") '===' "mook")}}
          tabindex="0"
        {{/if}}
        data-item-id="{{this.id}}"
        data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}
-                     <br/>
-                     {{localize "CPR.actorSheets.commonActions.ctrlClickToSendToChat"}}
-                     {{#if isMook}}
-                       <br/>
-                       {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}
-                     {{/if}}">
+         <br/>
+         {{localize "CPR.actorSheets.commonActions.ctrlClickToSendToChat"}}
+         <br/>
+         {{#if (cprCompare (cprGetProp actor "type") '===' "mook")}}
+           {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}
+         {{/if}}
+       ">
       {{this.name}}
     </a>
   </div>
@@ -80,8 +35,13 @@
   {{!-- Ammo Ammo Details --}}
   <div class="weapon-ammo">
     {{#if this.system.isRanged}}
-      {{#if isLoaded}}
-        {{ammoType}}: {{magValue}}/{{magMax}}
+      {{#if this.system.magazine.ammoData.uuid}}
+        {{#with (cprFromUuidSync this.system.magazine.ammoData.uuid) as |ammoData|}}
+          {{localize (cprFindConfigValue "ammoType" ammoData.system.type)}}:
+        {{/with}}
+        {{this.system.magazine.value}}
+        /
+        {{cprApplyUpgrade this this.system.magazine.max "magazine"}}
       {{else}}
         {{localize "CPR.mookSheet.items.unloaded"}}
       {{/if}}
@@ -100,28 +60,42 @@
     </span>
 
     {{!-- Attack Modifier --}}
-    {{#if attackMod}}
+    {{#if (cprCompare (cprApplyUpgrade this this.system.attackmod "this.attackmod") ">" "0")}}
       <span class="text-pill">
-        +{{attackMod}} {{localize "CPR.actorSheets.fightWeaponStats.toAttack"}}
+        +{{cprApplyUpgrade this this.system.attackmod "this.attackmod"}}
+        {{localize "CPR.actorSheets.fightWeaponStats.toAttack"}}
+      </span>
+    {{else if (cprCompare (cprApplyUpgrade this this.system.attackmod "this.attackmod") "<" "0")}}
+      <span class="text-pill">
+        {{cprApplyUpgrade this this.system.attackmod "this.attackmod"}}
+        {{localize "CPR.actorSheets.fightWeaponStats.toAttack"}}
       </span>
     {{/if}}
 
     {{!-- Damage --}}
-    {{#if isLoaded}}
+    {{#if this.system.magazine.ammoData.uuid}}
       <span class="text-pill">
         {{localize "CPR.global.generic.damage"}}
-        {{weaponDamage}}
+        {{#if (cprCompare ammoType "===" "Rubber")}}
+          0
+        {{else if (cprCompare ammoType "===" "Paintballs")}}
+          0
+        {{else}}
+          {{this.system.damage}}
+        {{/if}}
       </span>
     {{/if}}
 
     {{!-- Ablation --}}
-    {{#if isLoaded}}
-      {{#if (cprCompare ammoAblation "!==" 1)}}
-        <span class="text-pill">
-          {{localize "CPR.global.generic.ablation"}}
-          {{ammoAblation}}
-        </span>
-      {{/if}}
+    {{#if this.system.magazine.ammoData.uuid}}
+      {{#with (cprFromUuidSync this.system.magazine.ammoData.uuid) as |ammoData|}}
+        {{#if (cprCompare ammoData.system.ablationValue "!==" 1)}}
+          <span class="text-pill">
+            {{localize "CPR.global.generic.ablation"}}
+            {{ammoData.system.ablationValue}}
+          </span>
+        {{/if}}
+      {{/with}}
     {{/if}}
 
     {{!-- Hand Required --}}
@@ -151,7 +125,7 @@
         </a>
       </li>
       {{!-- Autofire --}}
-      {{#if hasAutofire}}
+      {{#if (cprCompare this.system.fireModes.autoFire ">" 0)}}
         <li>
           <span class="text-padding-right-small">
             {{localize "CPR.actorSheets.fireModes.autoFire"}}
@@ -167,7 +141,7 @@
         </li>
       {{/if}}
       {{!-- Suppressive Fire --}}
-      {{#if hasSuppressive}}
+      {{#if this.system.fireModes.suppressiveFire}}
         <li>
           <span class="text-padding-right-small">
             {{localize "CPR.actorSheets.fireModes.suppressiveFireShort"}}
@@ -186,7 +160,7 @@
 
   {{!-- Weapon Actions --}}
   <div class="weapon-actions">
-    {{#if isRanged}}
+    {{#if this.system.isRanged}}
       <ul class="items-list">
         <li class="text-padding-sides-smaller">
           {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-dv-glyph.hbs" this}}

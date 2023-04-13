@@ -1100,14 +1100,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Set a variable
-   */
-  Handlebars.registerHelper("cprVar", function (name, value) {
-    LOGGER.trace("cprVar | handlebarsHelper | Called.");
-    this[name] = value;
-  });
-
-  /**
    * Transform a string to upper/lowercase
    */
   Handlebars.registerHelper("cprTextTransform", (string, transform) => {

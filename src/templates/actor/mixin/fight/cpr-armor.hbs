@@ -1,207 +1,105 @@
 {{cprTrace "START ACTOR MIXIN FIGHT CPR-ARMOR.HBS"}}
-{{!-- Set Variables!  --}}
-{{#if (cprCompare (cprGetProp actor "type") "===" "character")}}
-  {{cprVar "isCharacter" true}}
-  {{cprVar "isMook" false}}
-{{else}}
-  {{cprVar "isCharacter" false}}
-  {{cprVar "isMook" true}}
-{{/if}}
-
-{{!-- Get Armor/Shield values --}}
-{{#if this.system.isHeadLocation}}
-  {{cprVar "headLocationData" "head"}}
-  {{cprVar "headLocationLocal" (localize "CPR.global.location.head")}}
-  {{cprVar "headStatsMax" (cprApplyUpgrade this this.system.headLocation.sp "headSp")}}
-  {{cprVar "headStatsCur" (cprMath "subtract" (cprApplyUpgrade this this.system.headLocation.sp "headSp") this.system.headLocation.ablation)}}
-  {{cprVar "headType" (localize "CPR.global.itemType.armor.sp")}}
-  {{cprVar "headAblateTip" (localize "CPR.actorSheets.fightActions.ablateArmor")}}
-  {{cprVar "headResyncTip" (localize "CPR.actorSheets.commonActions.resyncHeadArmor")}}
-  {{cprVar "headActiveTip" (localize "CPR.actorSheets.commonActions.makeHeadArmorActive")}}
-{{/if}}
-
-{{#if this.system.isBodyLocation}}
-  {{cprVar "bodyLocationData" "body"}}
-  {{cprVar "bodyLocationLocal" (localize "CPR.global.location.body")}}
-  {{cprVar "bodyStatsMax" (cprApplyUpgrade this this.system.bodyLocation.sp "bodySp")}}
-  {{cprVar "bodyStatsCur" (cprMath "subtract" (cprApplyUpgrade this this.system.bodyLocation.sp "bodySp") this.system.bodyLocation.ablation)}}
-  {{cprVar "bodyType" (localize "CPR.global.itemType.armor.sp")}}
-  {{cprVar "bodyAblateTip" (localize "CPR.actorSheets.fightActions.ablateArmor")}}
-  {{cprVar "bodyResyncTip" (localize "CPR.actorSheets.commonActions.resyncBodyArmor")}}
-  {{cprVar "bodyActiveTip" (localize "CPR.actorSheets.commonActions.makeBodyArmorActive")}}
-{{/if}}
-
-{{#if this.system.isShield}}
-  {{cprVar "shieldLocationData" "shield"}}
-  {{cprVar "shieldLocationLocal" (localize "CPR.global.generic.shield")}}
-  {{cprVar "shieldStatsMax" (cprApplyUpgrade this this.system.shieldHitPoints.max "shieldHp")}}
-  {{cprVar "shieldStatsCur" this.system.shieldHitPoints.value}}
-  {{cprVar "shieldType" (localize "CPR.global.itemType.armor.hp")}}
-  {{cprVar "shieldAblateTip" (localize "CPR.actorSheets.fightActions.damageShield")}}
-  {{cprVar "shieldResyncTip" (localize "CPR.actorSheets.commonActions.resyncShield")}}
-  {{cprVar "shieldActiveTip" (localize "CPR.actorSheets.commonActions.makeShieldActive")}}
-{{/if}}
-
-{{!-- Get current trackes armor --}}
-{{cprVar "headCurrentArmor" actor.system.externalData.currentArmorHead.id}}
-{{cprVar "bodyCurrentArmor" actor.system.externalData.currentArmorBody.id}}
-{{cprVar "shieldCurrentArmor" actor.system.externalData.currentArmorShield.id}}
-
-{{!-- If we have full body armor --}}
-{{#if (cprCompare this.system.isHeadLocation "&&" this.system.isBodyLocation) }}
-  {{!-- Set armor*1 vars to head --}}
-  {{cprVar "armorAblateTip1" headAblateTip}}
-  {{cprVar "armorCurrent1" headCurrentArmor}}
-  {{cprVar "armorActiveTip1" headActiveTip}}
-  {{cprVar "armorLocationData1" headLocationData}}
-  {{cprVar "armorLocationLocal1" headLocationLocal}}
-  {{cprVar "armorResyncTip1" headResyncTip}}
-  {{cprVar "armorStatsCur1" headStatsCur}}
-  {{cprVar "armorStatsMax1" headStatsMax}}
-  {{cprVar "armorType1" headType}}
-  {{!-- Set armor*2 vars to body --}}
-  {{cprVar "armorAblateTip2" bodyAblateTip}}
-  {{cprVar "armorActiveTip2" bodyActiveTip}}
-  {{cprVar "armorCurrent2" bodyCurrentArmor}}
-  {{cprVar "armorLocation2" true}}
-  {{cprVar "armorLocationData2" bodyLocationData}}
-  {{cprVar "armorLocationLocal2" bodyLocationLocal}}
-  {{cprVar "armorResyncTip2" bodyResyncTip}}
-  {{cprVar "armorStatsCur2" bodyStatsCur}}
-  {{cprVar "armorStatsMax2" bodyStatsMax}}
-  {{cprVar "armorType2" bodyType}}
-{{!-- If we have head armor --}}
-{{else if this.system.isHeadLocation}}
-  {{!-- Set armor*1 to head --}}
-  {{cprVar "armorAblateTip1" headAblateTip}}
-  {{cprVar "armorActiveTip1" headActiveTip}}
-  {{cprVar "armorCurrent1" headCurrentArmor}}
-  {{cprVar "armorLocationData1" headLocationData}}
-  {{cprVar "armorLocationLocal1" headLocationLocal}}
-  {{cprVar "armorResyncTip1" headResyncTip}}
-  {{cprVar "armorStatsCur1" headStatsCur}}
-  {{cprVar "armorStatsMax1" headStatsMax}}
-  {{cprVar "armorType1" headType}}
-  {{!-- Set armor*2 to false --}}
-  {{cprVar "armorLocation2" false}}
-{{!-- If we have body armor --}}
-{{else if this.system.isBodyLocation}}
-  {{!-- Set armor*1 to body --}}
-  {{cprVar "armorAblateTip1" bodyAblateTip}}
-  {{cprVar "armorActiveTip1" bodyActiveTip}}
-  {{cprVar "armorCurrent1" bodyCurrentArmor}}
-  {{cprVar "armorLocationData1" bodyLocationData}}
-  {{cprVar "armorLocationLocal1" bodyLocationLocal}}
-  {{cprVar "armorResyncTip1" bodyResyncTip}}
-  {{cprVar "armorStatsCur1" bodyStatsCur}}
-  {{cprVar "armorStatsMax1" bodyStatsMax}}
-  {{cprVar "armorType1" bodyType}}
-  {{!-- Set armor*2 to false --}}
-  {{cprVar "armorLocation2" false}}
-{{!-- else we have a shield --}}
-{{else}}
-  {{!-- set armor*1 to shield --}}
-  {{cprVar "armorAblateTip1" shieldAblateTip}}
-  {{cprVar "armorActiveTip1" shieldActiveTip}}
-  {{cprVar "armorCurrent1" shieldCurrentArmor}}
-  {{cprVar "armorLocationData1" shieldLocationData}}
-  {{cprVar "armorLocationLocal1" shieldLocationLocal}}
-  {{cprVar "armorResyncTip1" shieldResyncTip}}
-  {{cprVar "armorStatsCur1" shieldStatsCur}}
-  {{cprVar "armorStatsMax1" shieldStatsMax}}
-  {{cprVar "armorType1" shieldType}}
-  {{!-- Set armor*2 to false --}}
-  {{cprVar "armorLocation2" false}}
-{{/if}}
-
-{{!-- BEGIN HTML --}}
-
 <div class="armor-grid">
   <div class="armor-image">
     <img alt="{{this.name}}" src="{{this.img}}"/>
   </div>
   <div class="armor-name">
     <a class="name item-edit text-semi{{#if isMook}} deletable changeable{{/if}}"
-       {{#if isMook}}
+       {{#if (cprCompare (cprGetProp actor "type") '===' "mook")}}
          tabindex="0"
        {{/if}}
        data-item-id="{{this.id}}"
        data-tooltip="{{localize "CPR.mookSheet.items.clickToViewItem"}}
-                     <br/>
-                     {{localize "CPR.actorSheets.commonActions.ctrlClickToSendToChat"}}
-                     {{#if isMook}}
-                       <br/>
-                       {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}
-                     {{/if}}">
+         <br/>
+         {{localize "CPR.actorSheets.commonActions.ctrlClickToSendToChat"}}
+         {{#if (cprCompare (cprGetProp actor "type") '===' "mook")}}
+           <br/>
+           {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}
+         {{/if}}">
       {{this.name}}
     </a>
   </div>
-  <div class="armor-1-location text-right text-padding-right-smaller">
-    {{armorLocationLocal1}}
-  </div>
-  <div class="armor-1-stats text-right">
-    {{armorStatsCur1}}/{{armorStatsMax1}}
-  </div>
-  <div class="armor-1-type text-right text-padding-right-small">
-    {{armorType1}}
-  </div>
-  <div class="armor-1-actions">
-    <a class="ablate" data-location="{{armorLocationData1}}">
-      <i class="far fa-arrow-alt-circle-down" data-tooltip="{{armorAblateTip1}}">
-      </i>
-    </a>
-    {{#if (cprCompare this.id "===" armorCurrent1)}}
-      <a class="armor-current"
-         data-location="{{armorLocationData1}}"
-         data-item-id="{{this.id}}">
-        <i class="fas fa-star" data-tooltip="{{armorResyncTip1}}"></i>
-      </a>
-    {{else}}
-      <a class="armor-current"
-         data-location="{{armorLocationData1}}"
-         data-item-id="{{this.id}}">
-        <i class="far fa-star" data-tooltip="{{armorActiveTip1}}"></i>
-      </a>
-    {{/if}}
-  </div>
-  <div class="armor-2-location text-right text-padding-right-smaller">
-    {{#if armorLocation2}}
-      {{armorLocationLocal2}}
-    {{/if}}
-  </div>
-  <div class="armor-2-stats text-right">
-    {{#if armorLocation2}}
-      {{armorStatsCur2}}/{{armorStatsMax2}}
-    {{/if}}
-  </div>
-  <div class="armor-2-type text-right text-padding-right-small">
-    {{#if armorLocation2}}
-      {{armorType2}}
-    {{/if}}
-  </div>
-  <div class="armor-2-actions">
-    {{#if armorLocation2}}
-      <div class="armor-2-actions">
-        <a class="ablate" data-location="{{armorLocationData2}}">
-          <i class="far fa-arrow-alt-circle-down" data-tooltip="{{armorAblateTip2}}">
-          </i>
-        </a>
-        {{#if (cprCompare this.id "===" armorCurrent2)}}
-          <a class="armor-current"
-             data-location="{{armorLocationData2}}"
-             data-item-id="{{this.id}}">
-            <i class="fas fa-star" data-tooltip="{{armorResyncTip2}}"></i>
-          </a>
-        {{else}}
-          <a class="armor-current"
-             data-location="{{armorLocationData2}}"
-             data-item-id="{{this.id}}">
-            <i class="far fa-star" data-tooltip="{{armorActiveTip2}}"></i>
-          </a>
-        {{/if}}
-      </div>
-    {{/if}}
-  </div>
+
+  {{!--
+    If the armor covers both locations
+      else
+    If the armor is head location
+      else
+    If the armor is body location
+      else
+    The armor is a shield
+  --}}
+
+  {{#if (cprCompare this.system.isHeadLocation "&&" this.system.isBodyLocation) }}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/mixin/cpr-armor-location.hbs"
+      cssLoc=1
+      armorId=this.id
+      armorLocation="head"
+      armorLocationLocal=(localize "CPR.global.location.head")
+      armorStatsMax=(cprApplyUpgrade this this.system.headLocation.sp "headSp")
+      armorStatsCur=(cprMath "subtract" (cprApplyUpgrade this this.system.headLocation.sp "headSp") this.system.headLocation.ablation)
+      armorType=(localize "CPR.global.itemType.armor.sp")
+      armorAblateTip=(localize "CPR.actorSheets.fightActions.ablateArmor")
+      armorResyncTip=(localize "CPR.actorSheets.commonActions.resyncHeadArmor")
+      armorActiveTip=(localize "CPR.actorSheets.commonActions.makeHeadArmorActive")
+      armorCurrent=actor.system.externalData.currentArmorHead.id
+    }}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/mixin/cpr-armor-location.hbs"
+      cssLoc="2"
+      armorId=this.id
+      armorLocation="body"
+      armorLocationLocal=(localize "CPR.global.location.body")
+      armorStatsMax=(cprApplyUpgrade this this.system.bodyLocation.sp "bodySp")
+      armorStatsCur=(cprMath "subtract" (cprApplyUpgrade this this.system.bodyLocation.sp "bodySp") this.system.bodyLocation.ablation)
+      armorType=(localize "CPR.global.itemType.armor.sp")
+      armorAblateTip=(localize "CPR.actorSheets.fightActions.ablateArmor")
+      armorResyncTip=(localize "CPR.actorSheets.commonActions.resyncBodyArmor")
+      armorActiveTip=(localize "CPR.actorSheets.commonActions.makeBodyArmorActive")
+      armorCurrent=actor.system.externalData.currentArmorBody.id
+    }}
+  {{else if this.system.isHeadLocation}}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/mixin/cpr-armor-location.hbs"
+      cssLoc="1"
+      armorId=this.id
+      armorLocation="head"
+      armorLocationLocal=(localize "CPR.global.location.head")
+      armorStatsMax=(cprApplyUpgrade this this.system.headLocation.sp "headSp")
+      armorStatsCur=(cprMath "subtract" (cprApplyUpgrade this this.system.headLocation.sp "headSp") this.system.headLocation.ablation)
+      armorType=(localize "CPR.global.itemType.armor.sp")
+      armorAblateTip=(localize "CPR.actorSheets.fightActions.ablateArmor")
+      armorResyncTip=(localize "CPR.actorSheets.commonActions.resyncHeadArmor")
+      armorActiveTip=(localize "CPR.actorSheets.commonActions.makeHeadArmorActive")
+      armorCurrent=actor.system.externalData.currentArmorHead.id
+    }}
+  {{else if this.system.isBodyLocation}}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/mixin/cpr-armor-location.hbs"
+      cssLoc="1"
+      armorId=this.id
+      armorLocation="body"
+      armorLocationLocal=(localize "CPR.global.location.body")
+      armorStatsMax=(cprApplyUpgrade this this.system.bodyLocation.sp "bodySp")
+      armorStatsCur=(cprMath "subtract" (cprApplyUpgrade this this.system.bodyLocation.sp "bodySp") this.system.bodyLocation.ablation)
+      armorType=(localize "CPR.global.itemType.armor.sp")
+      armorAblateTip=(localize "CPR.actorSheets.fightActions.ablateArmor")
+      armorResyncTip=(localize "CPR.actorSheets.commonActions.resyncBodyArmor")
+      armorActiveTip=(localize "CPR.actorSheets.commonActions.makeBodyArmorActive")
+      armorCurrent=actor.system.externalData.currentArmorBody.id
+    }}
+  {{else}}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/mixin/cpr-armor-location.hbs"
+      cssLoc="1"
+      armorId=this.id
+      armorLocation="shield"
+      armorLocationLocal=(localize "CPR.global.generic.shield")
+      armorStatsMax=(cprApplyUpgrade this this.system.shieldHitPoints.max "shieldHp")
+      armorStatsCur=this.system.shieldHitPoints.value
+      armorType=(localize "CPR.global.itemType.armor.hp")
+      armorAblateTip=(localize "CPR.actorSheets.fightActions.damageShield")
+      armorResyncTip=(localize "CPR.actorSheets.commonActions.resyncShield")
+      armorActiveTip=(localize "CPR.actorSheets.commonActions.makeShieldActive")
+      armorCurrent=actor.system.externalData.currentArmorShield.id
+    }}
+  {{/if}}
 </div>
 
 {{cprTrace "END CPR-ARMOR.HBS"}}
