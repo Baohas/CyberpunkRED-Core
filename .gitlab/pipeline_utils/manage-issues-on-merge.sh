@@ -45,16 +45,10 @@ LABELS_TO_ADD=(
   "Test Me!"
 )
 
-# Some issues we just want to close once merged like build system changes
-# Case sensitive
-LABELS_TO_CLOSE=(
-  "Type::Build System"
-)
-
 # Note to add to each issue mentioned in the MR
-NOTE="We have just merged !${MR_IID} into \`dev\`.
+NOTE="We have just merged !${MR_IID} into \`dev\` to address this issue.
 
-This means it's on track to be in the next release but it needs testing first.
+This means it's on track to be in the next release. You can track the next release on the [milestones page](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/milestones).
 
 If you want to help test this please check out the documentation on [Development Release](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/releases/Development-Releases) and how to install them."
 
@@ -130,31 +124,9 @@ function main() {
     # Only process the issue if 'check_issue' passes
     # shellcheck disable=SC2310
     if check_issue "${issue}"; then
-      mapfile -t labels < <(
-        curl \
-          --silent \
-          --header "PRIVATE-TOKEN: ${CHOOM_BOT_API}" \
-          "${PROJECT_URL}/issues/${issue}" |
-          jq --raw-output '.labels[]'
-      )
-
-      # Check if the issue's lables are in our LABELS_TO_CLOSE array
-      close=0
-      for label in "${labels[@]}"; do
-        for ltc in "${LABELS_TO_CLOSE[@]}"; do
-          if [[ "${ltc}" == "${label}" ]]; then
-            # If there is a match mark the issue to be closed
-            ((close = close + 1))
-          fi
-        done
-      done
-      # Close if in LABELS_TO_CLOSE
-      if [[ ${close} -gt 0 ]]; then
-        close_issue "${issue}"
-      else # Add the labels from LABELS_TO_ADD and add NOTE to the issue
-        add_labels "${issue}"
-        add_note "${issue}"
-      fi
+      add_labels "${issue}"
+      add_note "${issue}"
+      close_issue "${issue}"
     fi
   done
 }
