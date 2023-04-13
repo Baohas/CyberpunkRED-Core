@@ -275,7 +275,7 @@
   "gridUnits": "m",
   "primaryTokenAttribute": "derivedStats.hp",
   "secondaryTokenAttribute": null,
-  "background": "systems/cyberpunk-red-core/images/Header.jpg",
+  "background": "systems/cyberpunk-red-core/images/Foundry-Background.webp",
   "url": "https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core",
   "manifest": "https://gitlab.com/api/v4/projects/22820629/packages/generic/fvtt-cyberpunk-red-core/latest/system.json",
   "download": "DUMMY_VALUE",

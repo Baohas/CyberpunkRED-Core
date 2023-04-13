@@ -69,6 +69,7 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
   - Remove the HP/Humanity Calculator options
     - Recalc functionality moved to Section Title
   - Move Facedown roll from Fight tab to Reputation section
+- Updated the background and header images to new versions by Rayane Souizi "Wizi"
 
 ### Bug Fixes
 

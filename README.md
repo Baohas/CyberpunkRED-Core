@@ -1,6 +1,6 @@
 # Cyberpunk RED - Welcome to The Street!
 
-![Logo](src/images/Header-VTT.jpg)
+![Logo](src/images/Repo-Header.webp)
 
 <!-- markdownlint-disable-next-line MD033 -->
 <div align="center">

@@ -21,6 +21,7 @@ This game system (including items provided in the compendium) contains unofficia
 - Pause overlay image by [Olena Panasovska](https://thenounproject.com/term/cyberpunk/1797860/) (CCBY)
 - Netarchitecture tiles, Dystopian City Streets, Dystopian City Junction scenes, and background picture created by [SolutionMaps](https://www.patreon.com/solutionmaps)
 - Icons, Art, Design, and Styling by [Flintwyrm](https://twitter.com/Flintwyrm)
+- Background and header images by Rayane Souizi "Wizi"
 
 ### Icons
 
