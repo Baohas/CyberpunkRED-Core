@@ -70,6 +70,7 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
     - Recalc functionality moved to Section Title
   - Move Facedown roll from Fight tab to Reputation section
 - Updated the background and header images to new versions by Rayane Souizi "Wizi"
+- Ammo selection dropdown now shows stack size
 
 ### Bug Fixes
 
