@@ -436,7 +436,7 @@ export default class CPRSystemUtils {
           break;
         }
         case "weapon": {
-          imageLink = `systems/${game.system.id}/icons/compendium/weapons/heavyPistol.svg`;
+          imageLink = `systems/${game.system.id}/icons/compendium/default/Default_Weapon.svg`;
           break;
         }
         default: {
