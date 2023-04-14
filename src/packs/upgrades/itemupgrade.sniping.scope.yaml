@@ -1,7 +1,7 @@
 _id: Ryex0KHeeDzPQwmN
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/sniping_scope.svg
+img: systems/cyberpunk-red-core/icons/compendium/upgrades/sniping_scope.svg
 name: Sniping Scope
 system:
   ammoVariety: []

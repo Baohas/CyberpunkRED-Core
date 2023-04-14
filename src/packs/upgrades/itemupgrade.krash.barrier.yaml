@@ -1,7 +1,7 @@
 _id: kDGBW4aA2wJ9KjUF
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/krash_barrier.svg
+img: systems/cyberpunk-red-core/icons/compendium/upgrades/krash_barrier.svg
 name: KRASH Barrier
 system:
   ammoVariety: []

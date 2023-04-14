@@ -1,7 +1,7 @@
 _id: xRA275R527XLwaBJ
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/item_upgrades/bayonet.svg
+img: systems/cyberpunk-red-core/icons/compendium/upgrades/bayonet.svg
 name: Bayonet
 system:
   ammoVariety: []
