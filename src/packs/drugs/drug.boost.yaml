@@ -50,7 +50,7 @@ effects:
     transfer: true
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/gear/boost.svg
+img: systems/cyberpunk-red-core/icons/compendium/drugs/boost.svg
 name: Boost
 system:
   amount: 1

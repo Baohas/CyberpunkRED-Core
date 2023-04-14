@@ -2,7 +2,7 @@ _id: ags0aoY9ViaGvTIb
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/gear/antibiotics.svg
+img: systems/cyberpunk-red-core/icons/compendium/drugs/antibiotics.svg
 name: Antibiotic
 system:
   amount: 1

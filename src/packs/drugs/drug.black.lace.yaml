@@ -31,7 +31,7 @@ effects:
     transfer: true
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/gear/black_lace.svg
+img: systems/cyberpunk-red-core/icons/compendium/drugs/black_lace.svg
 name: Black Lace
 system:
   amount: 1

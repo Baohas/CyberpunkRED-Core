@@ -74,7 +74,7 @@ effects:
     transfer: true
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/gear/synthcoke.svg
+img: systems/cyberpunk-red-core/icons/compendium/drugs/synthcoke.svg
 name: Synthcoke
 system:
   amount: 1
