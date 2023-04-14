@@ -30,23 +30,23 @@
     {
       "label": "Cyberware (Core) - DO NOT USE",
       "type": "Item",
-      "name": "cyberware",
-      "path": "packs/cyberware.db",
+      "name": "cyberware-core",
+      "path": "packs/cyberware-core.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
     {
       "label": "DV Rolltables",
       "type": "RollTable",
-      "name": "dvTables",
-      "path": "packs/dvTables.db",
+      "name": "dv-tables",
+      "path": "packs/dv-tables.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
     {
       "label": "Critical Injuries (Body)",
       "type": "Item",
-      "name": "criticalInjuriesBody",
+      "name": "critical-injuries-body",
       "path": "packs/critical-injuries-body.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -54,7 +54,7 @@
     {
       "label": "Critical Injuries (Head)",
       "type": "Item",
-      "name": "criticalInjuriesHead",
+      "name": "critical-injuries-head",
       "path": "packs/critical-injuries-head.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -62,7 +62,7 @@
     {
       "label": "Critical Injury Tables",
       "type": "RollTable",
-      "name": "criticalInjuryTables",
+      "name": "critical-injury-tables",
       "path": "packs/critical-injury-tables.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -70,7 +70,7 @@
     {
       "label": "Armor",
       "type": "Item",
-      "name": "armor-items",
+      "name": "armor",
       "path": "packs/armor.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -78,7 +78,7 @@
     {
       "label": "Ammo",
       "type": "Item",
-      "name": "ammo-items",
+      "name": "ammo",
       "path": "packs/ammo.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -86,15 +86,15 @@
     {
       "label": "Cyberware",
       "type": "Item",
-      "name": "cyberware-items",
-      "path": "packs/cyberware-items.db",
+      "name": "cyberware",
+      "path": "packs/cyberware.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
     {
       "label": "Gear",
       "type": "Item",
-      "name": "gear-items",
+      "name": "gear",
       "path": "packs/gear.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -102,7 +102,7 @@
     {
       "label": "Programs",
       "type": "Item",
-      "name": "programs-items",
+      "name": "programs",
       "path": "packs/programs.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -110,7 +110,7 @@
     {
       "label": "Roles",
       "type": "Item",
-      "name": "roles-items",
+      "name": "roles",
       "path": "packs/roles.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -118,7 +118,7 @@
     {
       "label": "Vehicles",
       "type": "Item",
-      "name": "vehicles-items",
+      "name": "vehicles",
       "path": "packs/vehicles.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -126,7 +126,7 @@
     {
       "label": "Clothing",
       "type": "Item",
-      "name": "clothing-items",
+      "name": "clothing",
       "path": "packs/clothing.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -134,7 +134,7 @@
     {
       "label": "Upgrades",
       "type": "Item",
-      "name": "upgrade-items",
+      "name": "upgrades",
       "path": "packs/upgrades.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -166,7 +166,7 @@
     {
       "label": "Drugs",
       "type": "Item",
-      "name": "drugs-items",
+      "name": "drugs",
       "path": "packs/drugs.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -182,7 +182,7 @@
     {
       "label": "Weapons",
       "type": "Item",
-      "name": "weapons-items",
+      "name": "weapons",
       "path": "packs/weapons.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -190,7 +190,7 @@
     {
       "label": "The 12 Days of Gunmas",
       "type": "Item",
-      "name": "the-12-days-of-gunmas-items",
+      "name": "the-12-days-of-gunmas",
       "path": "packs/the-12-days-of-gunmas.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -198,7 +198,7 @@
     {
       "label": "Woodchipper’s Garage",
       "type": "Item",
-      "name": "woodchippers-garage-items",
+      "name": "woodchippers-garage",
       "path": "packs/woodchippers-garage.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -206,7 +206,7 @@
     {
       "label": "Micro Chrome",
       "type": "Item",
-      "name": "micro-chrome-items",
+      "name": "micro-chrome",
       "path": "packs/micro-chrome.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -214,7 +214,7 @@
     {
       "label": "Spinning Your Wheels",
       "type": "Item",
-      "name": "spinning-your-wheels-items",
+      "name": "spinning-your-wheels",
       "path": "packs/spinning-your-wheels.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
@@ -222,7 +222,7 @@
     {
       "label": "Cyberchairs",
       "type": "Item",
-      "name": "cyberchairs-items",
+      "name": "cyberchairs",
       "path": "packs/cyberchairs.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"

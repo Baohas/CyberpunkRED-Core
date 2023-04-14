@@ -21,10 +21,6 @@
       "name": "Smart Glasses",
       "description": "<p>Eyewear with two options slots for cybereye options.</p>"
     },
-    "Smart Lens": {
-      "name": "Smart Lens",
-      "description": "<p>Eyewear with one options slot for a cybereye option.</p>"
-    },
     "Agent": {
       "name": "Agent",
       "description": "<p>AI Smartphone. +2 Library Search, +2 Wardrobe & Style depending on circumstance.</p>"
