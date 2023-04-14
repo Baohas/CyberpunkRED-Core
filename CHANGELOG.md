@@ -95,6 +95,7 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
 - Remove duplicate Smart Lens Cyberware
 - Fixed no DV table being set for the pop-up grenade launcher. Thanks diwako!
 - Fixed some incorrect wording for Cyberchairs. Thanks VinceKun!
+- Fixed bicycles not being able to accept upgrades
 
 ## Version 0.86.1 | Date: 2023-02-05
 

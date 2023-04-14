@@ -17,9 +17,10 @@ system:
   favorite: false
   installedItems:
     allowed: true
-    allowedTypes: []
+    allowedTypes:
+      - itemUpgrade
     list: []
-    slots: 0
+    slots: 3
     usedSlots: 0
   isUpgraded: false
   price:
