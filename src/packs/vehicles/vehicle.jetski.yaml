@@ -1,7 +1,7 @@
 _id: x0E0hYFqfP3qJGPT
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/vehicle/speed_boat.svg
+img: systems/cyberpunk-red-core/icons/compendium/vehicles/speed_boat.svg
 name: Jetski
 system:
   concealable:
