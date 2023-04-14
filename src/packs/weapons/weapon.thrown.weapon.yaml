@@ -2,7 +2,7 @@ _id: 29p2bEfPcAWHpsTY
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/weapons/Thrown_Weapon.svg
+img: systems/cyberpunk-red-core/icons/compendium/weapons/thrown_weapon.svg
 name: Thrown Weapon
 system:
   ammoVariety:
