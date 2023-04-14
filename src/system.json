@@ -190,6 +190,14 @@
       "package": "cyberpunk-red-core"
     },
     {
+      "label": "Night City Tarot",
+      "type": "RollTable",
+      "name": "night-city-tarot",
+      "path": "packs/night-city-tarot.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
       "label": "Programs",
       "type": "Item",
       "name": "programs",

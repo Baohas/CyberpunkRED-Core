@@ -45,6 +45,7 @@
 - Added Spinning Your Wheels upgrades with help from Sushimatic
 - Added Must Have Cyberware Deals with help from Miklos
 - Added Midnight With The Upload with help from Miklos
+- Added Night City Tarot content with help from Hakuan Quietpaws
 
 ### Changes
 
