@@ -6,7 +6,7 @@ displayRoll: false
 flags:
   core: {}
 formula: 1d6
-img: icons/svg/d20-grey.svg
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Dice.svg
 name: First Two Floors (The Lobby)
 replacement: true
 results:
