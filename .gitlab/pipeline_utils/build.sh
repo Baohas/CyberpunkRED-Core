@@ -17,7 +17,7 @@ if ! npm run build; then
   echo "❌ Failed to build system using npm build"
   exit 1
 else
-  echo "✅ Project sucessfully built!"
+  echo "✅ Project successfully built!"
 fi
 
 # Copy the system.json so we can export it as an artifact
@@ -62,6 +62,6 @@ for file in "${UPLOAD_FILES[@]}"; do
     echo "❌ ${response}"
     exit 1
   else
-    echo "🎉 Uploaded ${file} sucesfully"
+    echo "🎉 Uploaded ${file} successfully"
   fi
 done

@@ -50,7 +50,7 @@ NOTE="We have just merged !${MR_IID} into \`dev\` to address this issue.
 
 This means it's on track to be in the next release. You can track the next release on the [milestones page](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/milestones).
 
-If you want to help test this please check out the documentation on [Development Release](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/releases/Development-Releases) and how to install them."
+If you want to help test this please check out the documentation on [Development Releases](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/Fundamentals/Development-Releases) and how to install them."
 
 # Run checks on an issue
 # $1 == issue_id
