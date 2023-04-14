@@ -85,6 +85,7 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
 - Fix missing tool-tip text in compendia settings
 - Fixed incorrect rounding on the flamethrower and thrown weapon Icons
 - Remove duplicate Smart Lens Cyberware
+- Fixed no DV table being set for the pop-up grenade launcher. Thanks diwako!
 
 ## Version 0.86.1 | Date: 2023-02-05
 
