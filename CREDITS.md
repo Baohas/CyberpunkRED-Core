@@ -216,3 +216,4 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/weapons/microwaver.svg` remixed from [Canister](https://game-icons.net/1x1/lorc/cannister.html) and [Tec 9](https://game-icons.net/1x1/skoll/tec-9.html)
 - `icons/compendium/weapons/shrieker.svg` remixed from [CZ Scorpion](https://game-icons.net/1x1/skoll/cz-skorpion.html)
 - `icons/compendium/weapons/stun_gun.svg` remixed from [Mac 10](https://game-icons.net/1x1/skoll/mac-10.html)
+- `icons/compendium/compendium/spinning_your_wheels/bottle_dynamo.svg` remixed from [Mono wheel robot icon](https://game-icons.net/1x1/delapouite/mono-wheel-robot.html)

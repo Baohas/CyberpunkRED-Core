@@ -42,6 +42,7 @@
 - Added The 12 Days of Cybermas with help from Miklos
 - Added Hornet’s Pharmacy with help from Miklos
 - Added Nomad vehicle upgrades with help from WombatCombat
+- Added Spinning Your Wheels upgrades with help from Sushimatic
 
 ### Changes
 
