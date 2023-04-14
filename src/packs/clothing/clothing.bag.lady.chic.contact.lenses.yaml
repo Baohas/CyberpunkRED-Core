@@ -13,7 +13,9 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: ""
+    value: >-
+      <p>Follow the latest dumpster diver fashion trends! Torn and worn out
+      clothes, perfect if you want that homeless look.</p>
   equipped: owned
   favorite: false
   installedItems:

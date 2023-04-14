@@ -12,7 +12,7 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: ""
+    value: <p>Show your allegiance with Gang colors!</p>
   equipped: owned
   favorite: false
   installedItems:

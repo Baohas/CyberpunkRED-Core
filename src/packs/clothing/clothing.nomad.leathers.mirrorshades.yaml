@@ -12,7 +12,9 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: ""
+    value: >-
+      <p>If you want to look like a chromed-up cowboy, this is perfect for
+      you.</p>
   equipped: owned
   favorite: false
   installedItems:

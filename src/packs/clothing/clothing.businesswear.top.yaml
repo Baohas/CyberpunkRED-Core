@@ -12,7 +12,9 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: ""
+    value: >-
+      <p>Your typical corporative clothing. Show everyone that you're here and
+      you mean business.</p>
   equipped: owned
   favorite: false
   installedItems:

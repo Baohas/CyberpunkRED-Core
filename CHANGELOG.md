@@ -78,6 +78,7 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
 - Updated the background and header images to new versions by Rayane Souizi "Wizi"
 - Ammo selection dropdown now shows stack size
 - Changed the default weapon to use the default weapon icon
+- Added clothing descriptions with help from Hakuan Quietpaws
 
 ### Bug Fixes
 

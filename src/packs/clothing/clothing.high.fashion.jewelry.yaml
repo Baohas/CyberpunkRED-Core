@@ -12,7 +12,10 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: ""
+    value: >-
+      <p>Made from the most expensive quality materials and by the most
+      exclusive producers, this is what you wear when you've made it. The kind
+      of fashion you see supermodels wearing in videos on the Citinet.</p>
   equipped: owned
   favorite: false
   installedItems:
@@ -24,7 +27,7 @@ system:
     usedSlots: 0
   isUpgraded: false
   price:
-    market: 50000
+    market: 5000
   revealed: true
   source: Pg. 356
   style: highFashion

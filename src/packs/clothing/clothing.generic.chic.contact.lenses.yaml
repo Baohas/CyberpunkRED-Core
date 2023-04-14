@@ -13,7 +13,9 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: ""
+    value: >-
+      <p>The kind of clothing you find in the Mega-Plexes of the Dark Future.
+      Perfect if you don't want to stand out from a crowd.</p>
   equipped: owned
   favorite: false
   installedItems:
