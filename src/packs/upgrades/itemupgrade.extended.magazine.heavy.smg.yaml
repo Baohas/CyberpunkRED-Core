@@ -1,7 +1,9 @@
 _id: tB66LtMSiBlZhB2W
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
+  core:
+    sourceId: Compendium.cyberpunk-red-core.upgrades.tB66LtMSiBlZhB2W
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/upgrades/generic_extended_magazine.svg
 name: Extended Magazine (Heavy SMG)
 system:
   ammoVariety: []
@@ -40,9 +42,11 @@ system:
     value: 0
   modifiers:
     attackmod:
+      isSituational: false
       type: modifier
       value: null
     damage:
+      isSituational: false
       type: modifier
       value: null
     magazine:

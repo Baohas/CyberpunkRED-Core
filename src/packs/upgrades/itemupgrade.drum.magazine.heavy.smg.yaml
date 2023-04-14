@@ -1,7 +1,8 @@
 _id: RMNHcBUByOmZ8uEo
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
+  core:
+    sourceId: Compendium.cyberpunk-red-core.upgrades.RMNHcBUByOmZ8uEo
+img: systems/cyberpunk-red-core/icons/compendium/upgrades/generic_drum_magazine.svg
 name: Drum Magazine (Heavy SMG)
 system:
   ammoVariety: []
@@ -40,9 +41,11 @@ system:
     value: 0
   modifiers:
     attackmod:
+      isSituational: false
       type: modifier
       value: null
     damage:
+      isSituational: false
       type: modifier
       value: null
     magazine:

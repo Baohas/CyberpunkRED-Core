@@ -1,7 +1,8 @@
 _id: y9HobxZQBhVEN5Ne
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Ammo.svg
+  core:
+    sourceId: Compendium.cyberpunk-red-core.upgrades.y9HobxZQBhVEN5Ne
+img: systems/cyberpunk-red-core/icons/compendium/upgrades/generic_drum_magazine.svg
 name: Drum Magazine (Rocket Launcher)
 system:
   ammoVariety: []
@@ -42,9 +43,11 @@ system:
     value: 0
   modifiers:
     attackmod:
+      isSituational: false
       type: modifier
       value: null
     damage:
+      isSituational: false
       type: modifier
       value: null
     magazine:

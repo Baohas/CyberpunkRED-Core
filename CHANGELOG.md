@@ -41,6 +41,7 @@
   - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (wihout sheilding), carried (electroinc) Gear items, or Cyberdecks and outputs the results to chat
 - Added The 12 Days of Cybermas with help from Miklos
 - Added Hornet’s Pharmacy with help from Miklos
+- Added Nomad vehicle upgrades with help from WombatCombat
 
 ### Changes
 

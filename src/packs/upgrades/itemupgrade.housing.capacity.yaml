@@ -1,0 +1,85 @@
+_id: qFItKouR0zGYlnta
+flags:
+  core:
+    sourceId: Compendium.cyberpunk-red-core.upgrades.qFItKouR0zGYlnta
+img: systems/cyberpunk-red-core/icons/compendium/upgrades/housing_capacity.svg
+name: Housing Capacity
+system:
+  ammoVariety: []
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Can be applied to Aerozep, AV-4, Cabin Cruiser, Groundcars and Yacht.
+      When installed onto a Groundcar or AV-4, it adds a sleeping area with 1
+      bed, a toilet, a shower, and a small kitchen to the vehicle. When
+      installed into a Cabin Cruiser, Yacht, or Aerozep, it adds one room to the
+      vehicle.&nbsp;</p>
+
+      <p><strong>Requires a Heavy Chassis on a Compact Groundcar and High
+      Performance Groundcar</strong>.</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: false
+  isInstalled: false
+  isRanged: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  modifiers:
+    attackmod:
+      type: modifier
+      value: null
+    damage:
+      type: modifier
+      value: null
+    magazine:
+      type: modifier
+      value: null
+    rof:
+      type: modifier
+      value: null
+    sdp:
+      type: modifier
+      value: null
+    seats:
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: false
+    speedCombat:
+      type: modifier
+      value: null
+  price:
+    market: 1000
+  providesHardening: false
+  rof: 1
+  size: 0
+  source: Pg. 165
+  type: vehicle
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: itemUpgrade

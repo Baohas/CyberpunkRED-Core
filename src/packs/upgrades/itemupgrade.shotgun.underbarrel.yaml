@@ -1,6 +1,7 @@
 _id: aFg1nXhz37e1C2YP
 flags:
-  core: {}
+  core:
+    sourceId: Compendium.cyberpunk-red-core.upgrades.aFg1nXhz37e1C2YP
 img: systems/cyberpunk-red-core/icons/compendium/upgrades/shotgun_underbarrel.svg
 name: Shotgun Underbarrel
 system:

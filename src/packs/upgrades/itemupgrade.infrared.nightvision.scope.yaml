@@ -1,6 +1,7 @@
 _id: pEXcsIk1FYMNdbUc
 flags:
-  core: {}
+  core:
+    sourceId: Compendium.cyberpunk-red-core.upgrades.pEXcsIk1FYMNdbUc
 img: >-
   systems/cyberpunk-red-core/icons/compendium/upgrades/infrared_nightvision_scope.svg
 name: Infrared Nightvision Scope
