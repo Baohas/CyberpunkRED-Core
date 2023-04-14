@@ -30,9 +30,11 @@ system:
   installedIn: ""
   installedItems:
     allowed: true
-    allowedTypes: []
+    allowedTypes:
+      - itemUpgrade
+      - cyberware
     list: []
-    slots: 0
+    slots: 1
     usedSlots: 0
   isFoundational: true
   isInstalled: false
@@ -56,6 +58,6 @@ system:
   upgrades: []
   usage: toggled
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  weaponSkill: ""
+  weaponType: ""
 type: cyberware
