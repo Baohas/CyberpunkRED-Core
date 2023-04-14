@@ -1,0 +1,100 @@
+_id: 2ea71NL50IBcCcJZ
+effects:
+  - _id: oiotWhajDFYb5QQm
+    changes:
+      - key: bonuses.acting
+        mode: 2
+        priority: null
+        value: "-5"
+      - key: bonuses.concentration
+        mode: 2
+        priority: null
+        value: "-5"
+      - key: bonuses.conversation
+        mode: 2
+        priority: null
+        value: "-5"
+      - key: bonuses.deduction
+        mode: 2
+        priority: null
+        value: "-5"
+      - key: bonuses.humanPerception
+        mode: 2
+        priority: null
+        value: "-5"
+      - key: bonuses.persuasion
+        mode: 2
+        priority: null
+        value: "-5"
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+            "1": skill
+            "2": skill
+            "3": skill
+            "4": skill
+            "5": skill
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+            "1":
+              isSituational: false
+              onByDefault: false
+            "2":
+              isSituational: false
+              onByDefault: false
+            "3":
+              isSituational: false
+              onByDefault: false
+            "4":
+              isSituational: false
+              onByDefault: false
+            "5":
+              isSituational: false
+              onByDefault: false
+    icon: systems/cyberpunk-red-core/icons/compendium/status/veritas.svg
+    label: Veritas Primary
+    tint: null
+    transfer: true
+flags:
+  core:
+    sourceId: Compendium.cyberpunk-red-core.hornets-pharmacy.2ea71NL50IBcCcJZ
+img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/veritas.svg
+name: Veritas
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  consumed: Veritas Primary
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Dose lasts 10 minutes.</p>
+
+      <p>MedTech pharmaceutical.</p>
+
+      <p>Target must make a DV17 Resist Torture/Drugs check. On failed check,
+      target suffers -5 to Acting, Concentration, Conversation, Deduction, Human
+      Perception, and Persuasion Checks</p>
+  equipped: owned
+  favorite: false
+  price:
+    market: 100
+  revealed: true
+  source: HP
+  usage: snorted
+type: drug

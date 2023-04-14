@@ -1,0 +1,43 @@
+_id: p8CaaXc2lR3nykju
+effects: []
+flags:
+  core:
+    sourceId: Compendium.cyberpunk-red-core.hornets-pharmacy.p8CaaXc2lR3nykju
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/osmosis_compound.svg
+name: Osmosis Compound
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>This additive allows a Vial of Poison or Biotoxin to be absorbed
+      through skin contact. One vial can cover 2 square feet when applied to a
+      surface and lasts for one hour. Can be neutralized by rinsing with
+      water.&nbsp;</p>
+
+      <p>The first meat target to touch the affected area with a meat body part
+      is dosed with the poison. A DV17 Perception check reveals the poison. More
+      than one dose in the same 2 square foot area has no added effect.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 50
+  providesHardening: false
+  revealed: true
+  source: HP
+  upgrades: []
+  usage: toggled
+type: gear

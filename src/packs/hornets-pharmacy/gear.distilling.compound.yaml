@@ -1,0 +1,38 @@
+_id: EDyAgDm44dFXiBKE
+effects: []
+flags:
+  core:
+    sourceId: Compendium.cyberpunk-red-core.hornets-pharmacy.EDyAgDm44dFXiBKE
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/distilling_compound.svg
+name: Distilling Compound
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>This additive increases the Resist Torture/Drugs DV of Poison or
+      Biotoxin Vials by 2. Mixing multiple Distilling Compounds does not
+      increase Resist Torture/Drugs DV beyond the initial +2.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  source: HP
+  upgrades: []
+  usage: toggled
+type: gear

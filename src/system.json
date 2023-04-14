@@ -150,6 +150,14 @@
       "package": "cyberpunk-red-core"
     },
     {
+      "label": "Hornet's Pharmacy",
+      "type": "Item",
+      "name": "hornets-pharmacy",
+      "path": "packs/hornets-pharmacy.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
       "label": "Micro Chrome",
       "type": "Item",
       "name": "micro-chrome",

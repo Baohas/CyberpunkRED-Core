@@ -1,0 +1,81 @@
+_id: lzmfwfxPjDjYE1nM
+effects:
+  - _id: eBjRKSVNnIpbuFK5
+    changes:
+      - key: bonuses.deathSavePenalty
+        mode: 2
+        priority: null
+        value: "1"
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": combat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    icon: systems/cyberpunk-red-core/icons/compendium/status/beserker_addiction.svg
+    label: Beserker Addicted
+    tint: null
+    transfer: true
+flags:
+  core:
+    sourceId: Item.lzmfwfxPjDjYE1nM
+img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/berserker.svg
+name: Berserker
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  consumed: None
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p><strong>Primary Effect</strong></p>
+
+      <p>Dose lasts for 10 Minutes.</p>
+
+      <ul>
+
+      <li>Induces a state of frenzy and increased aggression.</li>
+
+      <li>User takes no Bonus Damage for any Critical Injury.</li>
+
+      <li dir="ltr">Wound State/Facedown penalties to Skill or Stat checks are
+      halved.</li>
+
+      </ul>
+
+      <p><strong>Secondary Effect (DV17)</strong></p>
+
+      <p>When the dose wears off, the user rolls WILL + Resist Torture/Drugs +
+      1d10 against Secondary DV.</p>
+
+      <ul>
+
+      <li>-2 Humanity Loss.</li>
+
+      <li>User is now addicted to Berserker if not already addicted. +1 to Base
+      Death Save Penalty while addicted.</li>
+
+      </ul>
+  equipped: owned
+  favorite: false
+  price:
+    market: 100
+  revealed: true
+  source: HP
+  usage: toggled
+type: drug
