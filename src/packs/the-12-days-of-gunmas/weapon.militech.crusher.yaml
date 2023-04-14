@@ -15,7 +15,7 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A pistol that fires shotgun slugs. What's not to love.</p>
+    value: <p>A pistol that fires shotgun shells. What's not to love.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false
