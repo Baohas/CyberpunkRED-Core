@@ -1,9 +1,11 @@
-_id: O5GmxTYCrrs8uWAd
+_id: ViH7d2nQAg0dLQuD
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_armor.svg
-name: Subdermal Armor
+  core:
+    sourceId: Compendium.cyberpunk-red-core.must-have-cyberware-deals.ViH7d2nQAg0dLQuD
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/must_have_cyberware_deals/holo_projector_palm.svg
+name: Holo Projector Palm
 system:
   ammoVariety: []
   attackmod: 0
@@ -16,20 +18,19 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>External Body Cyberware*. Head and Body Armor SP11 and recovers
-      1SP/day. Armor does not stack.</p>
-
-      <p><em>* Cyberware Armor does not function as armor in the system, please
-      add the "Subdermal Armor" item to the character/mook to track</em></p>
+      <p>Projects a small hologram from the User&rsquo;s palm. User can interact
+      with hologram to control a linked Agent&rsquo;s functions. Can be
+      installed in meat arm if it&rsquo;s the only piece of cyberware in that
+      arm.</p>
   dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: 4d6
-    static: 14
-  installLocation: hospital
+    roll: 1d3
+    static: 2
+  installLocation: clinic
   installedIn: ""
   installedItems:
     allowed: false
@@ -39,7 +40,7 @@ system:
     slots: 3
     usedSlots: 0
   isElectronic: true
-  isFoundational: false
+  isFoundational: true
   isInstalled: false
   isRanged: false
   isUpgraded: false
@@ -51,17 +52,17 @@ system:
     max: 0
     value: 0
   price:
-    market: 1000
+    market: 100
   providesHardening: false
   revealed: true
   rof: 1
   size: 1
-  source: pg. 364
-  type: cyberwareExternal
+  source: MHCD
+  type: cyberArm
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  weaponSkill: ""
+  weaponType: ""
 type: cyberware

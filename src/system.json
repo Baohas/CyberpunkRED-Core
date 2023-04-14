@@ -166,6 +166,14 @@
       "package": "cyberpunk-red-core"
     },
     {
+      "label": "Must Have Cyberware Deals",
+      "type": "Item",
+      "name": "must-have-cyberware-deals",
+      "path": "packs/must-have-cyberware-deals.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
       "label": "NET Architecture Rolltables",
       "type": "RollTable",
       "name": "net-rolltables",

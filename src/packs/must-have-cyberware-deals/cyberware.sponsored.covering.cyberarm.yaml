@@ -1,9 +1,10 @@
-_id: O5GmxTYCrrs8uWAd
+_id: Iz2e2ZpOnShK6PBJ
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_armor.svg
-name: Subdermal Armor
+  core:
+    sourceId: Compendium.cyberpunk-red-core.must-have-cyberware-deals.Iz2e2ZpOnShK6PBJ
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Cyberware.svg
+name: Sponsored Covering (Cyberarm)
 system:
   ammoVariety: []
   attackmod: 0
@@ -16,20 +17,22 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>External Body Cyberware*. Head and Body Armor SP11 and recovers
-      1SP/day. Armor does not stack.</p>
+      <p>Earn 20eb monthly by sporting a light-up advertisement on your
+      Cyberarm. User may be responsible for paying the installation fee.
+      Corporate sponsorship may be revoked if the terms are violated, such as
+      obscuring the advertisement with clothing or engaging in
+      &ldquo;off-brand&rdquo; activities.</p>
 
-      <p><em>* Cyberware Armor does not function as armor in the system, please
-      add the "Subdermal Armor" item to the character/mook to track</em></p>
+      <p>Can not be installed in Meat arm.</p>
   dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: 4d6
-    static: 14
-  installLocation: hospital
+    roll: "0"
+    static: 0
+  installLocation: mall
   installedIn: ""
   installedItems:
     allowed: false
@@ -38,7 +41,7 @@ system:
     list: []
     slots: 3
     usedSlots: 0
-  isElectronic: true
+  isElectronic: false
   isFoundational: false
   isInstalled: false
   isRanged: false
@@ -51,17 +54,17 @@ system:
     max: 0
     value: 0
   price:
-    market: 1000
+    market: 50
   providesHardening: false
   revealed: true
   rof: 1
-  size: 1
-  source: pg. 364
-  type: cyberwareExternal
+  size: 0
+  source: MHCD
+  type: cyberArm
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  weaponSkill: ""
+  weaponType: ""
 type: cyberware

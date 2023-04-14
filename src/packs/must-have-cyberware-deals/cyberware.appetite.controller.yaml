@@ -1,9 +1,11 @@
-_id: O5GmxTYCrrs8uWAd
+_id: nFysJU3aqxEIYpwb
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_armor.svg
-name: Subdermal Armor
+  core:
+    sourceId: Compendium.cyberpunk-red-core.must-have-cyberware-deals.nFysJU3aqxEIYpwb
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/must_have_cyberware_deals/appetite_controller.svg
+name: Appetite Controller
 system:
   ammoVariety: []
   attackmod: 0
@@ -16,19 +18,20 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>External Body Cyberware*. Head and Body Armor SP11 and recovers
-      1SP/day. Armor does not stack.</p>
+      <p>Suppresses hunger response. User ignores Humanity Loss penalties from
+      starvation trauma but User can still starve. Roll a Death Save at start of
+      7th consecutive day without eating. +1 to successive Death Saves each day
+      afterwards.</p>
 
-      <p><em>* Cyberware Armor does not function as armor in the system, please
-      add the "Subdermal Armor" item to the character/mook to track</em></p>
+      <p>Requires Biomonitor.</p>
   dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: 4d6
-    static: 14
+    roll: 2d6
+    static: 7
   installLocation: hospital
   installedIn: ""
   installedItems:
@@ -51,17 +54,17 @@ system:
     max: 0
     value: 0
   price:
-    market: 1000
+    market: 500
   providesHardening: false
   revealed: true
   rof: 1
   size: 1
-  source: pg. 364
-  type: cyberwareExternal
+  source: MHCD
+  type: cyberwareInternal
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  weaponSkill: ""
+  weaponType: ""
 type: cyberware

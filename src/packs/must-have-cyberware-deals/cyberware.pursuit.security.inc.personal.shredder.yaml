@@ -1,14 +1,16 @@
-_id: O5GmxTYCrrs8uWAd
+_id: jM0d8EgkRSHrIccX
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_armor.svg
-name: Subdermal Armor
+  core:
+    sourceId: Compendium.cyberpunk-red-core.must-have-cyberware-deals.jM0d8EgkRSHrIccX
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/must_have_cyberware_deals/pursuit_security_inc_personal_shredder.svg
+name: Pursuit Security Inc. Personal Shredder
 system:
   ammoVariety: []
   attackmod: 0
   concealable:
-    concealable: false
+    concealable: true
     isConcealed: false
   core: false
   damage: 1d6
@@ -16,27 +18,24 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>External Body Cyberware*. Head and Body Armor SP11 and recovers
-      1SP/day. Armor does not stack.</p>
-
-      <p><em>* Cyberware Armor does not function as armor in the system, please
-      add the "Subdermal Armor" item to the character/mook to track</em></p>
+      <p>Heavy duty paper shredder, can be concealed. Features an internal
+      storage for paper shreds.</p>
   dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: 4d6
-    static: 14
-  installLocation: hospital
+    roll: 1d6
+    static: 3
+  installLocation: clinic
   installedIn: ""
   installedItems:
     allowed: false
     allowedTypes:
       - itemUpgrade
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isElectronic: true
   isFoundational: false
@@ -51,17 +50,17 @@ system:
     max: 0
     value: 0
   price:
-    market: 1000
+    market: 100
   providesHardening: false
   revealed: true
   rof: 1
   size: 1
-  source: pg. 364
-  type: cyberwareExternal
+  source: MHCD
+  type: cyberArm
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  weaponSkill: ""
+  weaponType: ""
 type: cyberware

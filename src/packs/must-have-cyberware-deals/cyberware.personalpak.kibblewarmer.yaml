@@ -1,9 +1,11 @@
-_id: O5GmxTYCrrs8uWAd
+_id: vBtkLoClI8oQWXLx
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_armor.svg
-name: Subdermal Armor
+  core:
+    sourceId: Compendium.cyberpunk-red-core.must-have-cyberware-deals.vBtkLoClI8oQWXLx
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/must_have_cyberware_deals/personalpak_kibble_warmer.svg
+name: PersonalPak KibbleWarmer
 system:
   ammoVariety: []
   attackmod: 0
@@ -16,27 +18,24 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>External Body Cyberware*. Head and Body Armor SP11 and recovers
-      1SP/day. Armor does not stack.</p>
-
-      <p><em>* Cyberware Armor does not function as armor in the system, please
-      add the "Subdermal Armor" item to the character/mook to track</em></p>
+      <p>Internal compartment with a high-powered heating element, ideal for
+      warming up pre-packaged meals.</p>
   dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: 4d6
-    static: 14
-  installLocation: hospital
+    roll: 1d6
+    static: 3
+  installLocation: clinic
   installedIn: ""
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isElectronic: true
   isFoundational: false
@@ -51,17 +50,17 @@ system:
     max: 0
     value: 0
   price:
-    market: 1000
+    market: 100
   providesHardening: false
   revealed: true
   rof: 1
   size: 1
-  source: pg. 364
-  type: cyberwareExternal
+  source: MHCD
+  type: cyberArm
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  weaponSkill: ""
+  weaponType: ""
 type: cyberware

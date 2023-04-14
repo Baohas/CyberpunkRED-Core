@@ -1,9 +1,11 @@
-_id: O5GmxTYCrrs8uWAd
+_id: mTL4ZsBLRd6dO7Hv
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_armor.svg
-name: Subdermal Armor
+  core:
+    sourceId: Compendium.cyberpunk-red-core.must-have-cyberware-deals.mTL4ZsBLRd6dO7Hv
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/must_have_cyberware_deals/neutongue.svg
+name: NeuTongue
 system:
   ammoVariety: []
   attackmod: 0
@@ -16,27 +18,27 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>External Body Cyberware*. Head and Body Armor SP11 and recovers
-      1SP/day. Armor does not stack.</p>
+      <p>Simulates flavor sensations. Use a linked Agent to customize flavor
+      profiles. Can be deactivated without an Action. No sense of taste when
+      deactivated.</p>
 
-      <p><em>* Cyberware Armor does not function as armor in the system, please
-      add the "Subdermal Armor" item to the character/mook to track</em></p>
+      <p>Replaces Meat tongue.</p>
   dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: 4d6
-    static: 14
+    roll: 2d6
+    static: 7
   installLocation: hospital
   installedIn: ""
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isElectronic: true
   isFoundational: false
@@ -51,17 +53,17 @@ system:
     max: 0
     value: 0
   price:
-    market: 1000
+    market: 100
   providesHardening: false
   revealed: true
   rof: 1
   size: 1
-  source: pg. 364
-  type: cyberwareExternal
+  source: MHCD
+  type: cyberwareInternal
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  weaponSkill: ""
+  weaponType: ""
 type: cyberware
