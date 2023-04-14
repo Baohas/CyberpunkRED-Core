@@ -1,0 +1,25 @@
+_id: rRM8ArZ4RlX7EnBh
+flags:
+  core:
+    sourceId: Compendium.cyberpunk-red-core.the-12-days-of-cybermas.rRM8ArZ4RlX7EnBh
+img: systems/cyberpunk-red-core/icons/compendium/ammo/battery.png
+name: MagnaSlot BatteryBrick
+system:
+  ablationValue: 0
+  amount: 32
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Battery pack that only fits the Radline Blitzkrieg Arc-Thrower
+      Cyberarm. Can be recharged in 1 hour.</p>
+  favorite: false
+  price:
+    market: 100
+  source: 12DoC
+  type: basic
+  variety: custom
+type: ammo

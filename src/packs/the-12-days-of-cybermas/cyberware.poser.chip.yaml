@@ -1,0 +1,135 @@
+_id: P19OmJOcdgjhgjLm
+effects:
+  - _id: wCVnIEpRw7zhqmZD
+    changes:
+      - key: bonuses.acting
+        mode: 2
+        priority: null
+        value: "4"
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: true
+              onByDefault: false
+    icon: systems/cyberpunk-red-core/icons/compendium/status/poser_chip.svg
+    label: Poser Chip (Impersonate)
+    tint: null
+    transfer: true
+  - _id: joudVbiOapxtTJl8
+    changes:
+      - key: bonuses.acting
+        mode: 2
+        priority: null
+        value: "5"
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: true
+              onByDefault: false
+    icon: systems/cyberpunk-red-core/icons/compendium/status/poser_chip.svg
+    label: Poser Chip (Roleplay)
+    tint: null
+    transfer: true
+flags:
+  core:
+    sourceId: Compendium.cyberpunk-red-core.the-12-days-of-cybermas.P19OmJOcdgjhgjLm
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/the_12_days_of_cybermas/poser_chip.svg
+name: Poser Chip
+system:
+  ammoVariety: []
+  attackmod: 0
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Chipware. Allows User to effortlessly mimic speech patterns and
+      mannerisms of a pre-programmed personality. Standard-issue Cyberware for
+      Poser Gangs.</p>
+
+      <ul>
+
+      <li>+4 to Acting Checks when imitating that specific personality.</li>
+
+      <li>+5 to Acting Checks with convincing Roleplay.</li>
+
+      </ul>
+
+      <p>Poser Chips programmed with countless hours of celebrity footage cost
+      500eb. More personalized Poser Chips programmed with 10+ hours of footage
+      of a private individual cost 1000eb.</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 4d6
+    static: 14
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source: 12DoC
+  type: neuralWare
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: cyberware

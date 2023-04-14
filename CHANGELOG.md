@@ -39,6 +39,7 @@
   - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (EG: A macro to select which items to disable with an EMP)
 - Add `Get EMP'd Items` macro
   - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (wihout sheilding), carried (electroinc) Gear items, or Cyberdecks and outputs the results to chat
+- Added The 12 Days of Cybermas with help from Miklos
 
 ### Changes
 

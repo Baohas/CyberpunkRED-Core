@@ -198,6 +198,14 @@
       "package": "cyberpunk-red-core"
     },
     {
+      "label": "The 12 Days of Cybermas",
+      "type": "Item",
+      "name": "the-12-days-of-cybermas",
+      "path": "packs/the-12-days-of-cybermas.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
       "label": "The 12 Days of Gunmas",
       "type": "Item",
       "name": "the-12-days-of-gunmas",
