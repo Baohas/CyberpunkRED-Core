@@ -84,6 +84,7 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
 - #700 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console.
 - Fix missing tool-tip text in compendia settings
 - Fixed incorrect rounding on the flamethrower and thrown weapon Icons
+- Remove duplicate Smart Lens Cyberware
 
 ## Version 0.86.1 | Date: 2023-02-05
 
