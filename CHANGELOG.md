@@ -46,6 +46,7 @@
 - Added Must Have Cyberware Deals with help from Miklos
 - Added Midnight With The Upload with help from Miklos
 - Added Night City Tarot content with help from Hakuan Quietpaws
+- Added All About Drones with help from Hakuan Quietpaws
 
 ### Changes
 

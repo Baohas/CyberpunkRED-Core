@@ -1,0 +1,38 @@
+_id: PfpMt2ZXlntX0VP6
+effects: []
+flags:
+  core:
+    sourceId: Compendium.cyberpunk-red-core.all-about-drones.PfpMt2ZXlntX0VP6
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/all-about-drones/my-first-graf3.svg
+name: My First GRAF3
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Personal Drone. Tiny GRAF3 that can be linked to an Agent.</p>
+      <p>Refer to the full description on page 61 of Interface Red vol. 1.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isUpgraded: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  source: IRv1 pg. 61
+  upgrades: []
+  usage: toggled
+type: gear

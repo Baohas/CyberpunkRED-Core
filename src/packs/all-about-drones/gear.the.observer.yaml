@@ -1,0 +1,37 @@
+_id: 2PlaTDusjlJvl1aD
+effects: []
+flags:
+  core:
+    sourceId: Compendium.cyberpunk-red-core.all-about-drones.2PlaTDusjlJvl1aD
+img: systems/cyberpunk-red-core/icons/compendium/all-about-drones/the-observer.svg
+name: The Observer
+system:
+  amount: 1
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Personal Drone. Flying camera that can be linked to an Agent.</p>
+      <p>Refer to the full description on page 62 of Interface Red vol. 1.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isUpgraded: false
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  source: IRv1 pg. 62
+  upgrades: []
+  usage: toggled
+type: gear

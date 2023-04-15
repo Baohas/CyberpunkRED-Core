@@ -22,6 +22,14 @@
   "styles": ["main.css"],
   "packs": [
     {
+      "label": "All About Drones",
+      "type": "Item",
+      "name": "all-about-drones",
+      "path": "packs/all-about-drones.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
       "label": "Ammo",
       "type": "Item",
       "name": "ammo",
