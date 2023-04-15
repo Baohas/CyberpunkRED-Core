@@ -93,7 +93,7 @@ export default class CPRSystemUtils {
    */
   static async GetCoreCyberware() {
     LOGGER.trace("GetCoreCyberware | CPRSystemUtils | Called.");
-    return CPRSystemUtils.GetCompendiumDocs(`${game.system.id}.cyberware`);
+    return CPRSystemUtils.GetCompendiumDocs(`${game.system.id}.cyberware-core`);
   }
 
   /**
