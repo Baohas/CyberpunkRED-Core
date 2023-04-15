@@ -47,6 +47,7 @@
 - Added Midnight With The Upload with help from Miklos
 - Added Night City Tarot content with help from Hakuan Quietpaws
 - Added All About Drones with help from Hakuan Quietpaws
+- Added Exotics of 2045 with help from Hakuan Quietpaws
 
 ### Changes
 
