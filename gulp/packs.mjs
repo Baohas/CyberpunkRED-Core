@@ -374,10 +374,8 @@ async function extPacks() {
     const { packs } = sysFile;
 
     if (fs.existsSync(packsDir)) {
-      // This is a bit convoluted as our packs `name` doesn't match `path` always
-      // So we need to grab the path then split it up to get the name.
       packs.forEach((pack) => {
-        const packName = pack.path.split("/")[1].split(".")[0];
+        const packName = pack.name;
         const packPath = path.resolve(packsDir, `${packName}.db`);
         if (DEBUG) {
           log(`DEEBUG: Processing ${packName}`);
@@ -446,10 +444,8 @@ async function genPacks() {
       fs.mkdirSync(packsDir);
     }
 
-    // This is a bit convoluted as our packs `name` doesn't match `path` always
-    // So we need to grab the path then split it up to get the name.
     packs.forEach((pack) => {
-      const packName = pack.path.split("/")[1].split(".")[0];
+      const packName = pack.name;
       const packPath = path.resolve(packsDir, `${packName}.db`);
       if (DEBUG) {
         log(`DEBUG: Processing ${packName}`);
@@ -506,11 +502,9 @@ async function genPacksBabele() {
       fs.mkdirSync(babeleDir);
     }
 
-    // This is a bit convoluted as our packs `name` doesn't match `path` always
-    // So we need to grab the path then split it up to get the name.
     packs.forEach((pack) => {
-      const packName = pack.path.split("/")[1].split(".")[0];
-      const packFileName = pack.name;
+      const packName = pack.name;
+      const packFileName = packName;
       const packLabel = pack.label;
       const packType = pack.type;
       const babelePath = path.resolve(
