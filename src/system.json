@@ -20,26 +20,26 @@
   "styles": ["main.css"],
   "packs": [
     {
-      "label": "Skills (Core) - DO NOT USE",
+      "label": "Ammo",
       "type": "Item",
-      "name": "skills",
-      "path": "packs/skills.db",
+      "name": "ammo",
+      "path": "packs/ammo.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Cyberware (Core) - DO NOT USE",
+      "label": "Armor",
       "type": "Item",
-      "name": "cyberware-core",
-      "path": "packs/cyberware-core.db",
+      "name": "armor",
+      "path": "packs/armor.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "DV Rolltables",
-      "type": "RollTable",
-      "name": "dv-tables",
-      "path": "packs/dv-tables.db",
+      "label": "Clothing",
+      "type": "Item",
+      "name": "clothing",
+      "path": "packs/clothing.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
@@ -68,18 +68,26 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Armor",
+      "label": "Cyberchairs",
       "type": "Item",
-      "name": "armor",
-      "path": "packs/armor.db",
+      "name": "cyberchairs",
+      "path": "packs/cyberchairs.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Ammo",
+      "label": "Cyberpunk RED Core Maps",
+      "type": "Scene",
+      "name": "scenes",
+      "path": "packs/scenes.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Cyberware (Core) - DO NOT USE",
       "type": "Item",
-      "name": "ammo",
-      "path": "packs/ammo.db",
+      "name": "cyberware-core",
+      "path": "packs/cyberware-core.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
@@ -92,10 +100,58 @@
       "package": "cyberpunk-red-core"
     },
     {
+      "label": "Drugs",
+      "type": "Item",
+      "name": "drugs",
+      "path": "packs/drugs.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "DV Rolltables",
+      "type": "RollTable",
+      "name": "dv-tables",
+      "path": "packs/dv-tables.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Elflines Online Armory",
+      "type": "Item",
+      "name": "elflines-armory",
+      "path": "packs/elflines-armory.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Elflines Online Macros",
+      "type": "Macro",
+      "name": "elflines-online",
+      "path": "packs/elflines-online.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
       "label": "Gear",
       "type": "Item",
       "name": "gear",
       "path": "packs/gear.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Micro Chrome",
+      "type": "Item",
+      "name": "micro-chrome",
+      "path": "packs/micro-chrome.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "NET Architecture Rolltables",
+      "type": "RollTable",
+      "name": "net-rolltables",
+      "path": "packs/net-rolltables.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
@@ -116,98 +172,10 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Vehicles",
+      "label": "Skills (Core) - DO NOT USE",
       "type": "Item",
-      "name": "vehicles",
-      "path": "packs/vehicles.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
-      "label": "Clothing",
-      "type": "Item",
-      "name": "clothing",
-      "path": "packs/clothing.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
-      "label": "Upgrades",
-      "type": "Item",
-      "name": "upgrades",
-      "path": "packs/upgrades.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
-      "label": "Cyberpunk RED Core Maps",
-      "type": "Scene",
-      "name": "scenes",
-      "path": "packs/scenes.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
-      "label": "Elflines Online Macros",
-      "type": "Macro",
-      "name": "elflines-online",
-      "path": "packs/elflines-online.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
-      "label": "NET Architecture Rolltables",
-      "type": "RollTable",
-      "name": "net-rolltables",
-      "path": "packs/net-rolltables.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
-      "label": "Drugs",
-      "type": "Item",
-      "name": "drugs",
-      "path": "packs/drugs.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
-      "label": "Elflines Online Armory",
-      "type": "Item",
-      "name": "elflines-armory",
-      "path": "packs/elflines-armory.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
-      "label": "Weapons",
-      "type": "Item",
-      "name": "weapons",
-      "path": "packs/weapons.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
-      "label": "The 12 Days of Gunmas",
-      "type": "Item",
-      "name": "the-12-days-of-gunmas",
-      "path": "packs/the-12-days-of-gunmas.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
-      "label": "Woodchipper’s Garage",
-      "type": "Item",
-      "name": "woodchippers-garage",
-      "path": "packs/woodchippers-garage.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
-      "label": "Micro Chrome",
-      "type": "Item",
-      "name": "micro-chrome",
-      "path": "packs/micro-chrome.db",
+      "name": "skills",
+      "path": "packs/skills.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
@@ -220,10 +188,42 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Cyberchairs",
+      "label": "The 12 Days of Gunmas",
       "type": "Item",
-      "name": "cyberchairs",
-      "path": "packs/cyberchairs.db",
+      "name": "the-12-days-of-gunmas",
+      "path": "packs/the-12-days-of-gunmas.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Upgrades",
+      "type": "Item",
+      "name": "upgrades",
+      "path": "packs/upgrades.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Vehicles",
+      "type": "Item",
+      "name": "vehicles",
+      "path": "packs/vehicles.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Weapons",
+      "type": "Item",
+      "name": "weapons",
+      "path": "packs/weapons.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Woodchipper’s Garage",
+      "type": "Item",
+      "name": "woodchippers-garage",
+      "path": "packs/woodchippers-garage.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     }
