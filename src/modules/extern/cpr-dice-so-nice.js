@@ -2,7 +2,7 @@
 import LOGGER from "../utils/cpr-logger.js";
 
 /**
- * We use custom chat cards for dice rolls, so we have to override the dice card behaviors
+ * We use custom chat cards for dice rolls, so we have to override the dice card behaviours
  * provided by DiceSoNice.
  *
  * See https://gitlab.com/riccisi/foundryvtt-dice-so-nice/-/wikis/API/Roll

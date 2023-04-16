@@ -117,7 +117,7 @@ If you have any of these items in your world and you changed the name to be some
 
 In testing the new system, it occurred to us that under the previous system, it was possible to accidentally install too many items into another item. For instance, an actor may have too many Fashionware items installed (more than 7). If your world contains items/actors that have too many items installed, a warning banner will be displayed during migration to notify you and there will also be a message in the Console providing the same information. Those items will not allow you to install anything additional into them. You can correct these by accessing the item in your world and uninstalling some of the items.
 
-We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check the console to ensure you did not miss any important messages about your world. Additional details can be found [here](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/migrations)
+We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check the console to ensure you did not miss any important messages about your world. Additional details can be found [here](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/Release-Information/migrations)
 
 ### New Features
 
@@ -270,7 +270,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 In this release we read Critical Injuries and DV Tables directly from the system compendia. As such if you are using the Critical Injuries unmodified from the RED Corebook you can delete the previously imported "Critical Injuries (Head)" and "Critical Injuries (Body)" items as well as the "Critical Injury Tables" and "DV Rolltables" Roll Table
 
-If you are using modified Critical Injuries please check out [this](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/help-articles/criticalInjury#configuring-home-brew-injuries) Wiki article on how to use Homebrew Injuries. The same process can also be used with Homebrew DV Tables.
+If you are using modified Critical Injuries please check out [this](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/Items/Critical-Injuries#configuring-home-brew-injuries) Wiki article on how to use Homebrew Injuries. The same process can also be used with Homebrew DV Tables following this [Wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/DV-Tables#configuring-home-brew-dv-tables) article.
 
 ### New Features
 
