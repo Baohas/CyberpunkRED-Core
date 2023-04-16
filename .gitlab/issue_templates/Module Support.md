@@ -8,9 +8,9 @@ Please make sure the module is meant to work with Cyberpunk RED and is listed on
 
 ### Versions and builds
 
-- Foundry VTT: [Version 10 Build 291]
-- Cyberpunk RED: [v0.86.1]
-- Module: [v1.12.8]
+- Foundry VTT: [For example: Version 6 Build 153]
+- Cyberpunk RED: [For example: v0.56.8]
+- Module: [For example: v1.12.8]
 
 ### Module purpose
 

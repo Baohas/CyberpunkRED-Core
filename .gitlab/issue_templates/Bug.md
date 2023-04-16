@@ -4,8 +4,8 @@
 
 ### Versions and builds
 
-- Foundry VTT: [Version 10 Build 291]
-- Cyberpunk RED: [v0.86.1]
+- Foundry VTT: [For example: Version 6 Build 153]
+- Cyberpunk RED: [For example: v0.56.8]
 
 ### Have you been able to reproduce the issue?
 
