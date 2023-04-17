@@ -1,0 +1,17 @@
+{
+  "label": "Gira tus ruedas",
+  "entries": {
+    "Inline Skates": {
+      "name": "Patines en línea",
+      "description": "<p>¡Son patines en linea! Aumenta el momento en 4 m/yds al realizar la acción de correr, deteniendo el uso de cualquier opción en las piernas del usuario. Puede causar que las tareas físicas se realicen en -2.</p>"
+    },
+    "Skateboard": {
+      "name": "Patineta",
+      "description": "<p>Las ruedas más chulas a tu alrededor. Aumenta el momento en 4 m/yd al usar la acción de correr en el suelo o en bajada. Puede causar que las tareas físicas se realicen en -2.</p>"
+    },
+    "Bicycle": {
+      "name": "Bicicleta",
+      "description": "<p>Un bicicleta simple. Aumenta la velocidad a MOV 10 + 20 MPH/32 KPH si el usuario tiene de 4 a 7 BODY, y aumenta a MOV 15 + 30 MPH/48 KPH si el usuario tiene 8+ BODY.</p>"
+    }
+  }
+}

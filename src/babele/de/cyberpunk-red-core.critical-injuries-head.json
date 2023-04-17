@@ -1,0 +1,49 @@
+{
+  "label": "Critical Injuries (Head)",
+  "entries": {
+    "Brain Injury": {
+      "name": "Hirntrauma",
+      "description": "<p>-2 auf alle Aktionen.</p>"
+    },
+    "Broken Jaw": {
+      "name": "Kieferbruch",
+      "description": "<p>-4 auf alle Aktionen mit Sprache</p>"
+    },
+    "Concussion": {
+      "name": "Gehirnerschütterung",
+      "description": "<p>-2 to every action.</p>"
+    },
+    "Cracked Skull": {
+      "name": "Schädeltrauma",
+      "description": "<p>Triples damage to HP on aimed headshots (rather than the normal double damage).</p>"
+    },
+    "Crushed Windpipe": {
+      "name": "Zerquetschte Luftröhre",
+      "description": "<p>Du kannst nicht sprechen.</p>"
+    },
+    "Damaged Ear": {
+      "name": "Ohrenschaden",
+      "description": "<p>If move more than 4m/yds in a Turn, cannot move next turn. -2 to hearing based Perception.</p>"
+    },
+    "Damaged Eye": {
+      "name": "Augenschaden",
+      "description": "<p>-2 to Ranged and Perception (Sight).</p>"
+    },
+    "Foreign Object (H)": {
+      "name": "Fremdkörper (Kopf)",
+      "description": "<p>Wenn du dich mehr als 4 Meter in einem Zug bewegst, wird am Ende des Zuges der Bonusschaden der Kritischen Verletzung direkt von deinen TP abgezogen.</p>"
+    },
+    "Lost Ear": {
+      "name": "Verlorenes Ohr",
+      "description": "<p>Ear is removed. If move more than 4m/yds in a Turn, cannot move next turn. -4 to hearing based Perception.</p>"
+    },
+    "Lost Eye": {
+      "name": "Verlorenes Auge",
+      "description": "<p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>"
+    },
+    "Whiplash": {
+      "name": "Schleudertrauma",
+      "description": "<p>No other effects beyond increasing the base Death Save Penalty by 1.</p>"
+    }
+  }
+}

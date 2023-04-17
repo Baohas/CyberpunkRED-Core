@@ -1,0 +1,365 @@
+{
+  "label": "Kleidung",
+  "entries": {
+    "Asia Pop Bottoms": {
+      "name": "Asia Pop Beinkleidung",
+      "description": "<p>Following the latest Asian fashion trends, Asia Pop is sure to catch the eye with it's bright colors and extravagant style.</p>"
+    },
+    "Asia Pop Contact Lenses": {
+      "name": "Asia Pop Kontaktlinsen",
+      "description": "<p>Following the latest Asian fashion trends, Asia Pop is sure to catch the eye with it's bright colors and extravagant style.</p>"
+    },
+    "Asia Pop Footwear": {
+      "name": "Asia Pop Fuß­be­kleidung",
+      "description": "<p>Following the latest Asian fashion trends, Asia Pop is sure to catch the eye with it's bright colors and extravagant style.</p>"
+    },
+    "Asia Pop Glasses": {
+      "name": "Asia Pop Brille",
+      "description": "<p>Following the latest Asian fashion trends, Asia Pop is sure to catch the eye with it's bright colors and extravagant style.</p>"
+    },
+    "Asia Pop Hat": {
+      "name": "Asia Pop Kopfbedeckung",
+      "description": "<p>Following the latest Asian fashion trends, Asia Pop is sure to catch the eye with it's bright colors and extravagant style.</p>"
+    },
+    "Asia Pop Jacket": {
+      "name": "Asia Pop Jacke",
+      "description": "<p>Following the latest Asian fashion trends, Asia Pop is sure to catch the eye with it's bright colors and extravagant style.</p>"
+    },
+    "Asia Pop Jewelry": {
+      "name": "Asia Pop Schmuck",
+      "description": "<p>Following the latest Asian fashion trends, Asia Pop is sure to catch the eye with it's bright colors and extravagant style.</p>"
+    },
+    "Asia Pop Mirrorshades": {
+      "name": "Asia Pop Verspiegelte Sonnenbrille",
+      "description": "<p>Following the latest Asian fashion trends, Asia Pop is sure to catch the eye with it's bright colors and extravagant style.</p>"
+    },
+    "Asia Pop Top": {
+      "name": "Asia Pop Oberbekleidung",
+      "description": "<p>Following the latest Asian fashion trends, Asia Pop is sure to catch the eye with it's bright colors and extravagant style.</p>"
+    },
+    "Bag Lady Chic Bottoms": {
+      "name": "Stadt­-s­treicher-Chic Beinkleidung",
+      "description": "<p>Follow the latest dumpster diver fashion trends! Torn and worn out clothes, perfect if you want that homeless look.</p>"
+    },
+    "Bag Lady Chic Contact Lenses": {
+      "name": "Stadt­-s­treicher-Chic Kontaktlinsen",
+      "description": "<p>Follow the latest dumpster diver fashion trends! Torn and worn out clothes, perfect if you want that homeless look.</p>"
+    },
+    "Bag Lady Chic Footwear": {
+      "name": "Stadt­-s­treicher-Chic Fuß­be­kleidung",
+      "description": "<p>Follow the latest dumpster diver fashion trends! Torn and worn out clothes, perfect if you want that homeless look.</p>"
+    },
+    "Bag Lady Chic Glasses": {
+      "name": "Stadt­-s­treicher-Chic Brille",
+      "description": "<p>Follow the latest dumpster diver fashion trends! Torn and worn out clothes, perfect if you want that homeless look.</p>"
+    },
+    "Bag Lady Chic Hat": {
+      "name": "Stadt­-s­treicher-Chic Kopfbedeckung",
+      "description": "<p>Follow the latest dumpster diver fashion trends! Torn and worn out clothes, perfect if you want that homeless look.</p>"
+    },
+    "Bag Lady Chic Jacket": {
+      "name": "Stadt­-s­treicher-Chic Jacke",
+      "description": "<p>Follow the latest dumpster diver fashion trends! Torn and worn out clothes, perfect if you want that homeless look.</p>"
+    },
+    "Bag Lady Chic Jewelry": {
+      "name": "Stadt­-s­treicher-Chic Schmuck",
+      "description": "<p>Follow the latest dumpster diver fashion trends! Torn and worn out clothes, perfect if you want that homeless look.</p>"
+    },
+    "Bag Lady Chic Mirrorshades": {
+      "name": "Stadt­-s­treicher-Chic Verspiegelte Sonnenbrille",
+      "description": "<p>Follow the latest dumpster diver fashion trends! Torn and worn out clothes, perfect if you want that homeless look.</p>"
+    },
+    "Bag Lady Chic Top": {
+      "name": "Stadt­-s­treicher-Chic Oberbekleidung",
+      "description": "<p>Follow the latest dumpster diver fashion trends! Torn and worn out clothes, perfect if you want that homeless look.</p>"
+    },
+    "Bohemian Bottoms": {
+      "name": "Ausgefallen Beinkleidung",
+      "description": "<p>Channel your inner 70s hippy! Show everyone how much of a free spirit you are with these clothes.</p>"
+    },
+    "Bohemian Contact Lenses": {
+      "name": "Ausgefallen Kontaktlinsen",
+      "description": "<p>Channel your inner 70s hippy! Show everyone how much of a free spirit you are with these clothes.</p>"
+    },
+    "Bohemian Footwear": {
+      "name": "Ausgefallen Fuß­be­kleidung",
+      "description": "<p>Channel your inner 70s hippy! Show everyone how much of a free spirit you are with these clothes.</p>"
+    },
+    "Bohemian Glasses": {
+      "name": "Ausgefallen Brille",
+      "description": "<p>Channel your inner 70s hippy! Show everyone how much of a free spirit you are with these clothes.</p>"
+    },
+    "Bohemian Hat": {
+      "name": "Ausgefallen Kopfbedeckung",
+      "description": "<p>Channel your inner 70s hippy! Show everyone how much of a free spirit you are with these clothes.</p>"
+    },
+    "Bohemian Jacket": {
+      "name": "Ausgefallen Jacke",
+      "description": "<p>Channel your inner 70s hippy! Show everyone how much of a free spirit you are with these clothes.</p>"
+    },
+    "Bohemian Jewelry": {
+      "name": "Ausgefallen Schmuck",
+      "description": "<p>Channel your inner 70s hippy! Show everyone how much of a free spirit you are with these clothes.</p>"
+    },
+    "Bohemian Mirrorshades": {
+      "name": "Ausgefallen Verspiegelte Sonnenbrille",
+      "description": "<p>Channel your inner 70s hippy! Show everyone how much of a free spirit you are with these clothes.</p>"
+    },
+    "Bohemian Top": {
+      "name": "Ausgefallen Oberbekleidung",
+      "description": "<p>Channel your inner 70s hippy! Show everyone how much of a free spirit you are with these clothes.</p>"
+    },
+    "Businesswear Bottoms": {
+      "name": "Geschäftlich Beinkleidung",
+      "description": "<p>Your typical corporative clothing. Show everyone that you're here and you mean business.</p>"
+    },
+    "Businesswear Contact Lenses": {
+      "name": "Geschäftlich Kontaktlinsen",
+      "description": "<p>Your typical corporative clothing. Show everyone that you're here and you mean business.</p>"
+    },
+    "Businesswear Footwear": {
+      "name": "Geschäftlich Fuß­be­kleidung",
+      "description": "<p>Your typical corporative clothing. Show everyone that you're here and you mean business.</p>"
+    },
+    "Businesswear Glasses": {
+      "name": "Geschäftlich Brille",
+      "description": "<p>Your typical corporative clothing. Show everyone that you're here and you mean business.</p>"
+    },
+    "Businesswear Hat": {
+      "name": "Geschäftlich Kopfbedeckung",
+      "description": "<p>Your typical corporative clothing. Show everyone that you're here and you mean business.</p>"
+    },
+    "Businesswear Jacket": {
+      "name": "Geschäftlich Jacke",
+      "description": "<p>Your typical corporative clothing. Show everyone that you're here and you mean business.</p>"
+    },
+    "Businesswear Jewelry": {
+      "name": "Geschäftlich Schmuck",
+      "description": "<p>Your typical corporative clothing. Show everyone that you're here and you mean business.</p>"
+    },
+    "Businesswear Mirrorshades": {
+      "name": "Geschäftlich Verspiegelte Sonnenbrille",
+      "description": "<p>Your typical corporative clothing. Show everyone that you're here and you mean business.</p>"
+    },
+    "Businesswear Top": {
+      "name": "Geschäftlich Oberbekleidung",
+      "description": "<p>Your typical corporative clothing. Show everyone that you're here and you mean business.</p>"
+    },
+    "Gang Colors Bottoms": {
+      "name": "Gangfarben Beinkleidung",
+      "description": "<p>Show your allegiance with Gang colors!</p>"
+    },
+    "Gang Colors Contact Lenses": {
+      "name": "Gangfarben Kontaktlinsen",
+      "description": "<p>Show your allegiance with Gang colors!</p>"
+    },
+    "Gang Colors Footwear": {
+      "name": "Gangfarben Fuß­be­kleidung",
+      "description": "<p>Show your allegiance with Gang colors!</p>"
+    },
+    "Gang Colors Glasses": {
+      "name": "Gangfarben Brille",
+      "description": "<p>Show your allegiance with Gang colors!</p>"
+    },
+    "Gang Colors Hat": {
+      "name": "Gangfarben Kopfbedeckung",
+      "description": "<p>Show your allegiance with Gang colors!</p>"
+    },
+    "Gang Colors Jacket": {
+      "name": "Gangfarben Jacke",
+      "description": "<p>Show your allegiance with Gang colors!</p>"
+    },
+    "Gang Colors Jewelry": {
+      "name": "Gangfarben Schmuck",
+      "description": "<p>Show your allegiance with Gang colors!</p>"
+    },
+    "Gang Colors Mirrorshades": {
+      "name": "Gangfarben Verspiegelte Sonnenbrille",
+      "description": "<p>Show your allegiance with Gang colors!</p>"
+    },
+    "Gang Colors Top": {
+      "name": "Gangfarben Oberbekleidung",
+      "description": "<p>Show your allegiance with Gang colors!</p>"
+    },
+    "Generic Chic Bottoms": {
+      "name": "Generisch-Mondän Beinkleidung",
+      "description": "<p>The kind of clothing you find in the Mega-Plexes of the Dark Future. Perfect if you don't want to stand out from a crowd.</p>"
+    },
+    "Generic Chic Contact Lenses": {
+      "name": "Generisch-Mondän Kontaktlinsen",
+      "description": "<p>The kind of clothing you find in the Mega-Plexes of the Dark Future. Perfect if you don't want to stand out from a crowd.</p>"
+    },
+    "Generic Chic Footwear": {
+      "name": "Generisch-Mondän Fuß­be­kleidung",
+      "description": "<p>The kind of clothing you find in the Mega-Plexes of the Dark Future. Perfect if you don't want to stand out from a crowd.</p>"
+    },
+    "Generic Chic Glasses": {
+      "name": "Generisch-Mondän Brille",
+      "description": "<p>The kind of clothing you find in the Mega-Plexes of the Dark Future. Perfect if you don't want to stand out from a crowd.</p>"
+    },
+    "Generic Chic Hat": {
+      "name": "Generisch-Mondän Kopfbedeckung",
+      "description": "<p>The kind of clothing you find in the Mega-Plexes of the Dark Future. Perfect if you don't want to stand out from a crowd.</p>"
+    },
+    "Generic Chic Jacket": {
+      "name": "Generisch-Mondän Jacke",
+      "description": "<p>The kind of clothing you find in the Mega-Plexes of the Dark Future. Perfect if you don't want to stand out from a crowd.</p>"
+    },
+    "Generic Chic Jewelry": {
+      "name": "Generisch-Mondän Schmuck",
+      "description": "<p>The kind of clothing you find in the Mega-Plexes of the Dark Future. Perfect if you don't want to stand out from a crowd.</p>"
+    },
+    "Generic Chic Mirrorshades": {
+      "name": "Generisch-Mondän Verspiegelte Sonnenbrille",
+      "description": "<p>The kind of clothing you find in the Mega-Plexes of the Dark Future. Perfect if you don't want to stand out from a crowd.</p>"
+    },
+    "Generic Chic Top": {
+      "name": "Generisch-Mondän Oberbekleidung",
+      "description": "<p>The kind of clothing you find in the Mega-Plexes of the Dark Future. Perfect if you don't want to stand out from a crowd.</p>"
+    },
+    "High Fashion Bottoms": {
+      "name": "Topmodisch Beinkleidung",
+      "description": "<p>Made from the most expensive quality materials and by the most exclusive producers, this is what you wear when you've made it. The kind of fashion you see supermodels wearing in videos on the Citinet.</p>"
+    },
+    "High Fashion Contact Lenses": {
+      "name": "Topmodisch Kontaktlinsen",
+      "description": "<p>Made from the most expensive quality materials and by the most exclusive producers, this is what you wear when you've made it. The kind of fashion you see supermodels wearing in videos on the Citinet.</p>"
+    },
+    "High Fashion Footwear": {
+      "name": "Topmodisch Fuß­be­kleidung",
+      "description": "<p>Made from the most expensive quality materials and by the most exclusive producers, this is what you wear when you've made it. The kind of fashion you see supermodels wearing in videos on the Citinet.</p>"
+    },
+    "High Fashion Glasses": {
+      "name": "Topmodisch Brille",
+      "description": "<p>Made from the most expensive quality materials and by the most exclusive producers, this is what you wear when you've made it. The kind of fashion you see supermodels wearing in videos on the Citinet.</p>"
+    },
+    "High Fashion Hat": {
+      "name": "Topmodisch Kopfbedeckung",
+      "description": "<p>Made from the most expensive quality materials and by the most exclusive producers, this is what you wear when you've made it. The kind of fashion you see supermodels wearing in videos on the Citinet.</p>"
+    },
+    "High Fashion Jacket": {
+      "name": "Topmodisch Jacke",
+      "description": "<p>Made from the most expensive quality materials and by the most exclusive producers, this is what you wear when you've made it. The kind of fashion you see supermodels wearing in videos on the Citinet.</p>"
+    },
+    "High Fashion Jewelry": {
+      "name": "Topmodisch Schmuck",
+      "description": "<p>Made from the most expensive quality materials and by the most exclusive producers, this is what you wear when you've made it. The kind of fashion you see supermodels wearing in videos on the Citinet.</p>"
+    },
+    "High Fashion Mirrorshades": {
+      "name": "Topmodisch Verspiegelte Sonnenbrille",
+      "description": "<p>Made from the most expensive quality materials and by the most exclusive producers, this is what you wear when you've made it. The kind of fashion you see supermodels wearing in videos on the Citinet.</p>"
+    },
+    "High Fashion Top": {
+      "name": "Topmodisch Oberbekleidung",
+      "description": "<p>Made from the most expensive quality materials and by the most exclusive producers, this is what you wear when you've made it. The kind of fashion you see supermodels wearing in videos on the Citinet.</p>"
+    },
+    "Leisurewear Bottoms": {
+      "name": "Freizeit Beinkleidung",
+      "description": "<p>Your run-of-the-mill athletic clothing. Perfect to go for a jog or to relax at home.</p>"
+    },
+    "Leisurewear Contact Lenses": {
+      "name": "Freizeit Kontaktlinsen",
+      "description": "<p>Your run-of-the-mill athletic clothing. Perfect to go for a jog or to relax at home.</p>"
+    },
+    "Leisurewear Footwear": {
+      "name": "Freizeit Fuß­be­kleidung",
+      "description": "<p>Your run-of-the-mill athletic clothing. Perfect to go for a jog or to relax at home.</p>"
+    },
+    "Leisurewear Glasses": {
+      "name": "Freizeit Brille",
+      "description": "<p>Your run-of-the-mill athletic clothing. Perfect to go for a jog or to relax at home.</p>"
+    },
+    "Leisurewear Hat": {
+      "name": "Freizeit Kopfbedeckung",
+      "description": "<p>Your run-of-the-mill athletic clothing. Perfect to go for a jog or to relax at home.</p>"
+    },
+    "Leisurewear Jacket": {
+      "name": "Freizeit Jacke",
+      "description": "<p>Your run-of-the-mill athletic clothing. Perfect to go for a jog or to relax at home.</p>"
+    },
+    "Leisurewear Jewelry": {
+      "name": "Freizeit Schmuck",
+      "description": "<p>Your run-of-the-mill athletic clothing. Perfect to go for a jog or to relax at home.</p>"
+    },
+    "Leisurewear Mirrorshades": {
+      "name": "Freizeit Verspiegelte Sonnenbrille",
+      "description": "<p>Your run-of-the-mill athletic clothing. Perfect to go for a jog or to relax at home.</p>"
+    },
+    "Leisurewear Top": {
+      "name": "Freizeit Oberbekleidung",
+      "description": "<p>Your run-of-the-mill athletic clothing. Perfect to go for a jog or to relax at home.</p>"
+    },
+    "Nomad Leathers Bottoms": {
+      "name": "Nomaden-Lederkluft Beinkleidung",
+      "description": "<p>If you want to look like a chromed-up cowboy, this is perfect for you.</p>"
+    },
+    "Nomad Leathers Contact Lenses": {
+      "name": "Nomaden-Lederkluft Kontaktlinsen",
+      "description": "<p>If you want to look like a chromed-up cowboy, this is perfect for you.</p>"
+    },
+    "Nomad Leathers Footwear": {
+      "name": "Nomaden-Lederkluft Fuß­be­kleidung",
+      "description": "<p>If you want to look like a chromed-up cowboy, this is perfect for you.</p>"
+    },
+    "Nomad Leathers Glasses": {
+      "name": "Nomaden-Lederkluft Brille",
+      "description": "<p>If you want to look like a chromed-up cowboy, this is perfect for you.</p>"
+    },
+    "Nomad Leathers Hat": {
+      "name": "Nomaden-Lederkluft Kopfbedeckung",
+      "description": "<p>If you want to look like a chromed-up cowboy, this is perfect for you.</p>"
+    },
+    "Nomad Leathers Jacket": {
+      "name": "Nomaden-Lederkluft Jacke",
+      "description": "<p>If you want to look like a chromed-up cowboy, this is perfect for you.</p>"
+    },
+    "Nomad Leathers Jewelry": {
+      "name": "Nomaden-Lederkluft Schmuck",
+      "description": "<p>If you want to look like a chromed-up cowboy, this is perfect for you.</p>"
+    },
+    "Nomad Leathers Mirrorshades": {
+      "name": "Nomaden-Lederkluft Verspiegelte Sonnenbrille",
+      "description": "<p>If you want to look like a chromed-up cowboy, this is perfect for you.</p>"
+    },
+    "Nomad Leathers Top": {
+      "name": "Nomaden-Lederkluft Oberbekleidung",
+      "description": "<p>If you want to look like a chromed-up cowboy, this is perfect for you.</p>"
+    },
+    "Urban Flash Bottoms": {
+      "name": "Stadtprotz Beinkleidung",
+      "description": "<p>The most technological and flashy clothing you can find in the Time of the Red.</p>"
+    },
+    "Urban Flash Contact Lenses": {
+      "name": "Stadtprotz Kontaktlinsen",
+      "description": "<p>The most technological and flashy clothing you can find in the Time of the Red.</p>"
+    },
+    "Urban Flash Footwear": {
+      "name": "Stadtprotz Fuß­be­kleidung",
+      "description": "<p>The most technological and flashy clothing you can find in the Time of the Red.</p>"
+    },
+    "Urban Flash Glasses": {
+      "name": "Stadtprotz Brille",
+      "description": "<p>The most technological and flashy clothing you can find in the Time of the Red.</p>"
+    },
+    "Urban Flash Hat": {
+      "name": "Stadtprotz Kopfbedeckung",
+      "description": "<p>The most technological and flashy clothing you can find in the Time of the Red.</p>"
+    },
+    "Urban Flash Jacket": {
+      "name": "Stadtprotz Jacke",
+      "description": "<p>The most technological and flashy clothing you can find in the Time of the Red.</p>"
+    },
+    "Urban Flash Jewelry": {
+      "name": "Stadtprotz Schmuck",
+      "description": "<p>The most technological and flashy clothing you can find in the Time of the Red.</p>"
+    },
+    "Urban Flash Mirrorshades": {
+      "name": "Stadtprotz Verspiegelte Sonnenbrille",
+      "description": "<p>The most technological and flashy clothing you can find in the Time of the Red.</p>"
+    },
+    "Urban Flash Top": {
+      "name": "Stadtprotz Oberbekleidung",
+      "description": "<p>The most technological and flashy clothing you can find in the Time of the Red.</p>"
+    }
+  }
+}

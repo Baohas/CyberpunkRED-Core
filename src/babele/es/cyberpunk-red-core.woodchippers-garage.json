@@ -1,0 +1,65 @@
+{
+  "label": "Woodchipper’s Garage",
+  "entries": {
+    "Paintball (Biotoxin)": {
+      "name": "Bola de pintura (Biotoxina)",
+      "description": "<p>Created from 3 Vials of Biotoxin strapped together. Deals no direct damage on hit.</p>"
+    },
+    "Paintball (Poison)": {
+      "name": "Bola de pintura (Veneno)",
+      "description": "<p>Created from 3 Vials of Poison strapped together. Deals no direct damage on hit.</p>"
+    },
+    "Sternmeyer M-02 Rounds": {
+      "name": "Rondas M-02 de Sternmeyer",
+      "description": "<p>Rondas de munición perforante de armadura especiales solo para uso en el Rifle Pesado de Sternmeyer M-02. Viene en un tambor de 80.</p>"
+    },
+    "Biotechnica Enviro-launcher": {
+      "name": "Enviro-lanzador de Biotechnica",
+      "description": "<p>Este lanzador de cohetes especialmente diseñado solo puede ser disparado una vez. Sin embargo, una vez que se ha disparado, el usuario puede usar una acción para romper un vial conectado al lanzador, que liberará una enzima que destruirá el lanzador totalmente en una hora.</p>"
+    },
+    "BudgetArms Triple Treat": {
+      "name": "Amenaza Triple de BudgetArms",
+      "description": "<p>Comes with an Exotic Grenade Launcher Underbarrel* which - as the main gun is poor quality - funcations as a poor quality weapon. It can't be removed. Both that and the main weapon can fire non-Basic Ammunition.</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>"
+    },
+    "Flare Gun": {
+      "name": "Pistola de Bengalas",
+      "description": "<p>As well as normal Grenade Ammunition, this weapon can fire road flares*. They don't deal any damage, but if fired into the air can be seen from 3 miles. You cannot install this weapon in Pop-up Cyberware.</p>\n<p><em>*Currently not supported so will need to manually delete a road flare from actors inventory after firing</em></p>"
+    },
+    "Midnight Arms SDF-45": {
+      "name": "SDF-45 de Armas Midnight",
+      "description": "<p>Este lanzador de cohetes solo puede cargar cohetes perforantes de armadura y tiene un rango máximo de 400 m/yds. Cuando se dispara un cohete a la vez, el GM elige dónde aterrizan. Cuando se disparan dos cohetes a la vez, el GM elige dónde aterrizan los cohetes, pero esta vez hasta 50 m/yd lejos del objetivo, y con cada cohete de más de 10 m/yds unos de otros.</p>"
+    },
+    "Militech Aegis": {
+      "name": "Militech Aegis",
+      "description": "<p>Esta arma no puede causar lesiones críticas, no produce ablación de armadura, y si reduce un objetivo a menos de 1 PV, en su lugar los deja Inconsciente en 1 PV.</p>"
+    },
+    "Militech Archimedes": {
+      "name": "Militech Archimedes",
+      "description": "<p>Usa la Habilidad de Pilotar Vehículos Aéreos en lugar de la Habilidad de Armas Pesadas para disparar, requiere que el implante de sistema de puntería para que alcance el objetivo y solo puede usar Cohetes Inteligentes. No obstante, viene con uno incluido. Qué bonito.</p>"
+    },
+    "Nomad Air Cannon": {
+      "name": "Cañón aéreo nomade",
+      "description": "<p>En lugar de las municiones normales, esta arma dispara cualquier líquido que se coloque en ella. El ácido se puede comprar por 10eb (Barato) que reduce todas las armaduras usadas por el objetivo por 1 SP. También se puede cargar veneno o biotoxina, aunque requiere 3 viales por disparo.</p>"
+    },
+    "Pursuit Security Incorporated TearJerker": {
+      "name": "TearJerker Incorporado de Pursuit Security",
+      "description": "<p>Esta arma solo puede disparar humo o gas lacrimoso</p>"
+    },
+    "SlamDance Ballistic Harpoon": {
+      "name": "Arpón balístico de SlamDance",
+      "description": "<p>Este arpón puede ser usado como arma cuerpo a cuerpo muy pesada de dos manos, o disparado desde su carcasa como arma a distancia. Cuando se dispara, aún ignora la mitad de la armadura del defensor*.<br><em>*Los cálculos de armadura no soportan actualmente esta reducción, ni soportan el cambio al usarla como arma cuerpo a cuerpo</em></p>"
+    },
+    "Sternmeyer M-02 Heavy Rifle": {
+      "name": "Rifle Pesado M-02 de Sternmeyer",
+      "description": "<p>Este arma dispara su propia munición personalizada, con un precio de 500ed (Caro) por 80 rondas de munición Perforadora de armadura.</p>"
+    },
+    "Towa Pocket Launcher": {
+      "name": "Lanzacohetes miniatura Towa",
+      "description": "<p>Mientras está descarga, esta arma puede ser ocultada.</p>"
+    },
+    "UrbanTech Burst Flamethrower": {
+      "name": "Lanzallamas explosivas UrbanTech",
+      "description": "<p>Can only fire Incendiary Shotgun Shells, but targets ignited by this weapon burn for 4HP a turn.<br><br>Additionally, this weapon can consume all it's remaining ammo to shoot a fireball, which explodes in a similar fashion to an incendiary grenade. The user of the weapon is also consumed by the fireball, getting Deadly on Fire*.</p>\n<p><em>*Special fire mode not currently supported; will need to be manually applied</em></p>"
+    }
+  }
+}

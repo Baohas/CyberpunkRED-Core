@@ -1,0 +1,21 @@
+{
+  "label": "Micro Chrome",
+  "entries": {
+    "Superflash Jacket": {
+      "name": "Veste Superflash",
+      "description": "<p>Une belle veste qui cache une surprise; en utilisant une action, toute personne portant cette veste peut consommer une batterie pour déclencher une lumière aveuglante. Elle agit comme une grenade assourdissante sans les blessures critiques aux oreilles, centrée sur le porteur de la veste</p>"
+    },
+    "Chipware Compartment": {
+      "name": "Compartiment de Puces",
+      "description": "<p>Vous permet de dissimuler jusqu'à quatre puces, sans avoir à faire de jet. La récupération se fait en dépensant une action pour faire tourner l'œil dans son compartiment.</p>"
+    },
+    "Smart Lens": {
+      "name": "Lentille intelligente",
+      "description": "<p>Donne à un utilisateur une seule option de Cyberoeil Peut utiliser une lentille intelligente par œil.</p>"
+    },
+    "MicroCutie by Hello Cutie": {
+      "name": "MicroCutie par Hello Cutie",
+      "description": "<p>En utilisant une action, l'utilisateur peut activer le mode HypurrburstMC. Le mode HypurrburstMC augmente les dégâts des armes à 4d6, mais draine tous les tirs restants lorsqu'ils sont tirés. Nécessite au moins 4 munitions restantes pour être activé. L'arme ronronne en mode HypurrburstMC*.<br><em>Mode de tir spécial non pris en charge actuellement ; devra être appliqué manuellement</em></p>"
+    }
+  }
+}

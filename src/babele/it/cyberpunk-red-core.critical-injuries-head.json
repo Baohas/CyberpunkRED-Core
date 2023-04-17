@@ -1,0 +1,49 @@
+{
+  "label": "Ferite Critiche (Testa)",
+  "entries": {
+    "Brain Injury": {
+      "name": "Commozione Celebrale",
+      "description": "<p>-2 alle azioni.</p>"
+    },
+    "Broken Jaw": {
+      "name": "Mascella Rotta",
+      "description": "<p>-4 alle azioni in cui serve parlare.</p>"
+    },
+    "Concussion": {
+      "name": "Trauma Cranico",
+      "description": "<p>-2 to every action.</p>"
+    },
+    "Cracked Skull": {
+      "name": "Teschio Incrinato",
+      "description": "<p>Triples damage to HP on aimed headshots (rather than the normal double damage).</p>"
+    },
+    "Crushed Windpipe": {
+      "name": "Laringe Schiacciata",
+      "description": "<p>Impossibile parlare. Penalità TS Morte: +1</p>"
+    },
+    "Damaged Ear": {
+      "name": "Orecchio Danneggiato",
+      "description": "<p>If move more than 4m/yds in a Turn, cannot move next turn. -2 to hearing based Perception.</p>"
+    },
+    "Damaged Eye": {
+      "name": "Occhio Danneggiato",
+      "description": "<p>-2 to Ranged and Perception (Sight).</p>"
+    },
+    "Foreign Object (H)": {
+      "name": "Corpo Estraneo",
+      "description": "<p>Subisci Danno Bonus alla fine del turno se ti muovi per più di 4m a piedi.</p>"
+    },
+    "Lost Ear": {
+      "name": "Perdita dell'Udito",
+      "description": "<p>Ear is removed. If move more than 4m/yds in a Turn, cannot move next turn. -4 to hearing based Perception.</p>"
+    },
+    "Lost Eye": {
+      "name": "Perdita dell'Occhio",
+      "description": "<p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>"
+    },
+    "Whiplash": {
+      "name": "Colpo di Frusta",
+      "description": "<p>No other effects beyond increasing the base Death Save Penalty by 1.</p>"
+    }
+  }
+}

@@ -1,77 +1,77 @@
 {
-	"label": "Elflines Online Armory",
-	"entries": {
-		"Arrow": {
-			"name": "Arrow",
-			"description": "<p>Basic ammo, nothing special.</p>"
-		},
-		"Bow": {
-			"name": "Arco",
-			"description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>"
-		},
-		"Chainmail Armor (Body)": {
-			"name": "Chainmail Armor (Body)",
-			"description": "<p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>"
-		},
-		"Chainmail Armor (Head)": {
-			"name": "Chainmail Armor (Head)",
-			"description": "<p>Medium version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>"
-		},
-		"Dagger": {
-			"name": "Dagger",
-			"description": "<p>A knife fit for the streets.</p>"
-		},
-		"Full Plate Armor (Body)": {
-			"name": "Full Plate Armor (Body)",
-			"description": "<p>Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.</p>"
-		},
-		"Full Plate Armor (Head)": {
-			"name": "Full Plate Armor (Head)",
-			"description": "<p>Metal plated armor to resist the most powerful hits to your head. -4 to REF, DEX, and MOVE.</p>"
-		},
-		"Greataxe": {
-			"name": "Greataxe",
-			"description": "<p>A japanese wooden pole with a curved blade on one side. Favoured by Arasaka tactical teams for close engagements. </p>"
-		},
-		"Leather Armor (Body)": {
-			"name": "Leather Armor (Body)",
-			"description": "<p>Simple Leather armor. No armor penalty.</p>"
-		},
-		"Leather Armor (Head)": {
-			"name": "Leather Armor (Head)",
-			"description": "<p>Simple Leather armor for your head. No armor penalty.</p>"
-		},
-		"Longsword": {
-			"name": "Longsword",
-			"description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once. </p>"
-		},
-		"Poison Arrow": {
-			"name": "Freccia Avvelenata",
-			"description": "<p>Nessun danno immediato. Se il bersaglio è colpito sulla carne, una prova di Resistere alla Tortura/Controllo delle Droghe. In caso di falliento 2d6 PF. Nessun Ablazione. </p>"
-		},
-		"Sacred Herbs": {
-			"name": "Sacred Herbs",
-			"description": ""
-		},
-		"Shield": {
-			"name": "Shield",
-			"description": "<p>Requires an arm and has HP that is reduced by damage.</p>"
-		},
-		"Shortsword": {
-			"name": "Shortsword",
-			"description": "<p>Useful as both a tool and a weapon. A rod of iron with split wedges on the ends. </p>"
-		},
-		"Studded Leather Armor (Body)": {
-			"name": "Studded Leather Armor (Body)",
-			"description": "<p>Standard Kevlar clothing. No armor penalty.</p>"
-		},
-		"Studded Leather Armor (Head)": {
-			"name": "Studded Leather Armor (Head)",
-			"description": "<p>Standard Kevlar for your head. No armor penalty.</p>"
-		},
-		"Vial of Poison": {
-			"name": "Fiala di Veleno",
-			"description": "<p>Una fiala di veleno può essere applicata su un’Arma da Mischia Leggera usando un’Azione. Per i 30 minuti seguenti, l’arma non infligge il normale danno, ma costringe chi viene colpito a effettuare una Prova di Resistere a Tortura/Droghe VD 13. Se fallisce, subisce 3d6 danni diretti ai PF. L’armatura non viene ablata, poiché non viene influenzata.</p>"
-		}
-	}
+  "label": "Elflines Online Armory",
+  "entries": {
+    "Arrow": {
+      "name": "Arrow",
+      "description": "<p>Basic ammo, nothing special.</p>"
+    },
+    "Poison Arrow": {
+      "name": "Freccia Avvelenata",
+      "description": "<p>Nessun danno immediato. Se il bersaglio è colpito sulla carne, una prova di Resistere alla Tortura/Controllo delle Droghe. In caso di falliento 2d6 PF. Nessun Ablazione. </p>"
+    },
+    "Chainmail Armor (Body)": {
+      "name": "Chainmail Armor (Body)",
+      "description": "<p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>"
+    },
+    "Chainmail Armor (Head)": {
+      "name": "Chainmail Armor (Head)",
+      "description": "<p>Medium version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>"
+    },
+    "Full Plate Armor (Body)": {
+      "name": "Full Plate Armor (Body)",
+      "description": "<p>Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.</p>"
+    },
+    "Full Plate Armor (Head)": {
+      "name": "Full Plate Armor (Head)",
+      "description": "<p>Metal plated armor to resist the most powerful hits to your head. -4 to REF, DEX, and MOVE.</p>"
+    },
+    "Leather Armor (Body)": {
+      "name": "Leather Armor (Body)",
+      "description": "<p>Simple Leather armor. No armor penalty.</p>"
+    },
+    "Leather Armor (Head)": {
+      "name": "Leather Armor (Head)",
+      "description": "<p>Simple Leather armor for your head. No armor penalty.</p>"
+    },
+    "Shield": {
+      "name": "Shield",
+      "description": "<p>Requires an arm and has HP that is reduced by damage.</p>"
+    },
+    "Studded Leather Armor (Body)": {
+      "name": "Studded Leather Armor (Body)",
+      "description": "<p>Standard Kevlar clothing. No armor penalty.</p>"
+    },
+    "Studded Leather Armor (Head)": {
+      "name": "Studded Leather Armor (Head)",
+      "description": "<p>Standard Kevlar for your head. No armor penalty.</p>"
+    },
+    "Sacred Herbs": {
+      "name": "Sacred Herbs",
+      "description": ""
+    },
+    "Vial of Poison": {
+      "name": "Fiala di Veleno",
+      "description": "<p>Una fiala di veleno può essere applicata su un’Arma da Mischia Leggera usando un’Azione. Per i 30 minuti seguenti, l’arma non infligge il normale danno, ma costringe chi viene colpito a effettuare una Prova di Resistere a Tortura/Droghe VD 13. Se fallisce, subisce 3d6 danni diretti ai PF. L’armatura non viene ablata, poiché non viene influenzata.</p>"
+    },
+    "Bow": {
+      "name": "Arco",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>"
+    },
+    "Dagger": {
+      "name": "Dagger",
+      "description": "<p>A knife fit for the streets.</p>"
+    },
+    "Greataxe": {
+      "name": "Greataxe",
+      "description": "<p>A japanese wooden pole with a curved blade on one side. Favoured by Arasaka tactical teams for close engagements. </p>"
+    },
+    "Longsword": {
+      "name": "Longsword",
+      "description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once. </p>"
+    },
+    "Shortsword": {
+      "name": "Shortsword",
+      "description": "<p>Useful as both a tool and a weapon. A rod of iron with split wedges on the ends. </p>"
+    }
+  }
 }

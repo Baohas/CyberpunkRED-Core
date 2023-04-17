@@ -1,0 +1,17 @@
+{
+  "label": "Spinning Your Wheels",
+  "entries": {
+    "Inline Skates": {
+      "name": "Rollers",
+      "description": "<p>Ce sont des patins à roulettes, ma gueule ! Augmente le mouvement de 4 m/yds lorsque vous utilisez l'Action de Course, mais empêche l'utilisation de toutes les options dans les jambes de l'utilisateur. Peut imposer aux tâches physiques un modificateur de -2.</p>"
+    },
+    "Skateboard": {
+      "name": "Skateboard",
+      "description": "<p>Les roues les plus cools dans le coin. Augmente le mouvement de 4m/yds lorsque vous utilisez l'action Courir sur terrain plat ou en descente. Peut imposer aux tâches physiques un modificateur de -2.</p>"
+    },
+    "Bicycle": {
+      "name": "Vélo",
+      "description": "<p>Une simple bicyclette. Sa vitesse passe à 10 MOUV + 20 MPH / 32 KPH si l'utilisateur a 4 à 7 COR, et passe à 15 COR + 30 MPH /48 KPH si l'utilisateur a 8+ COR.</p>"
+    }
+  }
+}

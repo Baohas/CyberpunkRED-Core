@@ -1,0 +1,49 @@
+{
+  "label": "Blessures critiques (Tête)",
+  "entries": {
+    "Brain Injury": {
+      "name": "Lésion cérébrale",
+      "description": "<p>-2 à toutes les actions. La pénalité au jet de sauvegarde contre la mort de base augmente de 1.</p>"
+    },
+    "Broken Jaw": {
+      "name": "Mâchoire cassée",
+      "description": "<p>-4 à toutes les actions impliquant de parler.</p>"
+    },
+    "Concussion": {
+      "name": "Commotion cérébrale",
+      "description": "<p>-2 to every action.</p>"
+    },
+    "Cracked Skull": {
+      "name": "Fracture du crâne",
+      "description": "<p>Triples damage to HP on aimed headshots (rather than the normal double damage).</p>"
+    },
+    "Crushed Windpipe": {
+      "name": "Trachée écrasée",
+      "description": "<p>Impossible de parler. La pénalité au jet de sauvegarde contre la mort de base augmente de 1.</p>"
+    },
+    "Damaged Ear": {
+      "name": "Oreille endommagée",
+      "description": "<p>If move more than 4m/yds in a Turn, cannot move next turn. -2 to hearing based Perception.</p>"
+    },
+    "Damaged Eye": {
+      "name": "Œil endommagé",
+      "description": "<p>-2 to Ranged and Perception (Sight).</p>"
+    },
+    "Foreign Object (H)": {
+      "name": "Plaie avec corps étranger",
+      "description": "<p>A la fin de chaque tour lors duquel vous vous déplacez de plus de 4m à pied, vous subissez de nouveau les dégâts bonus de cette blessure critique.</p>"
+    },
+    "Lost Ear": {
+      "name": "Oreille arrachée",
+      "description": "<p>Ear is removed. If move more than 4m/yds in a Turn, cannot move next turn. -4 to hearing based Perception.</p>"
+    },
+    "Lost Eye": {
+      "name": "Œil crevé",
+      "description": "<p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>"
+    },
+    "Whiplash": {
+      "name": "Coup du lapin",
+      "description": "<p>No other effects beyond increasing the base Death Save Penalty by 1.</p>"
+    }
+  }
+}

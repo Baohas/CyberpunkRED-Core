@@ -1,0 +1,133 @@
+{
+  "label": "Verbesserungen",
+  "entries": {
+    "Backup Drive": {
+      "name": "Datensicherungslaufwerk",
+      "description": "<p>Speichert Programme, die kein Schwarzes ICE sind, bevor sie zerstört werden. Diese Programme können von einem Netrunner als Fleisch-Aktion wieder installiert werden.</p>"
+    },
+    "Bayonet": {
+      "name": "Bajonett",
+      "description": "<p>An old idea that still works just as good; lets you use your gun as a light melee weapon. While attached, the weapon can't be concealed under clothing.</p>"
+    },
+    "DNA Lock": {
+      "name": "DNS-Schloss",
+      "description": "<p>Ein Cyberdeck mit einem DNS-Schloss. Ein verschlossenes Cyberdeck kann nur mit dem biometrischen Schlüssel oder einer Probe auf Elektronik/Sicherheitstechnik gegen SG 17 geöffnet werden.</p>"
+    },
+    "Drum Magazine (Assault Rifle)": {
+      "name": "Drum Magazine (Assault Rifle)",
+      "description": "<p>Increases magazine size to a massive 45 bullets.</p>"
+    },
+    "Drum Magazine (Grenade Launcher)": {
+      "name": "Drum Magazine (Grenade Launcher)",
+      "description": "<p>Increases magazine size to a massive 6 grenades.</p>"
+    },
+    "Drum Magazine (Heavy Pistol)": {
+      "name": "Drum Magazine (Heavy Pistol)",
+      "description": "<p>Increases magazine size to a massive 28 bullets.</p>"
+    },
+    "Drum Magazine (Heavy SMG)": {
+      "name": "Drum Magazine (Heavy SMG)",
+      "description": "<p>Increases magazine size to a massive 60 bullets.</p>"
+    },
+    "Drum Magazine (Medium Pistol)": {
+      "name": "Drum Magazine (Medium Pistol)",
+      "description": "<p>Increases magazine size to a massive 36 bullets.</p>"
+    },
+    "Drum Magazine (Rocket Launcher)": {
+      "name": "Drum Magazine (Rocket Launcher)",
+      "description": "<p>Increases magazine size to a massive 3 rockets. That's a lot of boom.</p>"
+    },
+    "Drum Magazine (Shotgun)": {
+      "name": "Drum Magazine (Shotgun)",
+      "description": "<p>Increases magazine size to a massive 16 rounds.</p>"
+    },
+    "Drum Magazine (SMG)": {
+      "name": "Drum Magazine (SMG)",
+      "description": "<p>Increases magazine size to a massive 50 bullets.</p>"
+    },
+    "Drum Magazine (Sniper Rifle)": {
+      "name": "Drum Magazine (Sniper Rifle)",
+      "description": "<p>Increases magazine size to a massive 12 bullets.</p>"
+    },
+    "Drum Magazine (Very Heavy Pistol)": {
+      "name": "Drum Magazine (Very Heavy Pistol)",
+      "description": "<p>Increases magazine size to a massive 28 bullets.</p>"
+    },
+    "Extended Magazine (Assault Rifle)": {
+      "name": "Extended Magazine (Assault Rifle)",
+      "description": "<p>Increases magazine size to a hefty 35 bullets.</p>"
+    },
+    "Extended Magazine (Grenade Launcher)": {
+      "name": "Extended Magazine (Grenade Launcher)",
+      "description": "<p>Increases magazine size to a hefty 4 grenades.</p>"
+    },
+    "Extended Magazine (Heavy Pistol)": {
+      "name": "Extended Magazine (Heavy Pistol)",
+      "description": "<p>Increases magazine size to a hefty 14 bullets.</p>"
+    },
+    "Extended Magazine (Heavy SMG)": {
+      "name": "Extended Magazine (Heavy SMG)",
+      "description": "<p>Increases magazine size to a hefty 50 bullets.</p>"
+    },
+    "Extended Magazine (Medium Pistol)": {
+      "name": "Extended Magazine (Medium Pistol)",
+      "description": "<p>Increases magazine size to a hefty 18 bullets.</p>"
+    },
+    "Extended Magazine (Rocket Launcher)": {
+      "name": "Extended Magazine (Rocket Launcher)",
+      "description": "<p>Increases magazine size to a hefty 2 rockets.</p>"
+    },
+    "Extended Magazine (Shotgun)": {
+      "name": "Extended Magazine (Shotgun)",
+      "description": "<p>Increases magazine size to a hefty 8 rounds.</p>"
+    },
+    "Extended Magazine (SMG)": {
+      "name": "Extended Magazine (SMG)",
+      "description": "<p>Increases magazine size to a hefty 40 bullets.</p>"
+    },
+    "Extended Magazine (Sniper Rifle)": {
+      "name": "Extended Magazine (Sniper Rifle)",
+      "description": "<p>Increases magazine size to a hefty 8 bullets.</p>"
+    },
+    "Extended Magazine (Very Heavy Pistol)": {
+      "name": "Extended Magazine (Very Heavy Pistol)",
+      "description": "<p>Increases magazine size to a hefty 14 bullets.</p>"
+    },
+    "Grenade Launcher Underbarrel": {
+      "name": "Granatwerferunterlauf",
+      "description": "<p>Functions like a standard grenade launcher, but with a magazine size of 1. Requires 2 hands to use, and takes up 2 attachment slots. While attached, the weapon can't be concealed under clothing.</p>\n<p>Note that the weapon inherits any modifiers from the gun it is attached to, such as other attachments and quality.</p>"
+    },
+    "Hardened Circuitry": {
+      "name": "Schaltkreisabschirmung",
+      "description": "<p>Ein Cyberdeck mit Schaltkreisabschirmung kann durch EMP-Effekte, wie Mikrowellenimpulse, oder die Effekte von Nicht-Schwarzes-ICE-Programmen nicht zeitweise abgeschaltet, außer Betrieb gesetzt oder zerstört werden.</p>"
+    },
+    "Infrared Nightvision Scope": {
+      "name": "Infrarot-Nachtsicht-Zielfernrohr",
+      "description": "<p>Reduziert die Mali auf 0, denen du üblicherweise unterliegst wenn du auf ein Ziel schießt, das teilweise durch Dunkelheit, Rauch, Nebel und so weiter verdeckt ist.</p>"
+    },
+    "Insulated Wiring": {
+      "name": "Kabelisolierung",
+      "description": "<p>Ein Cyberdeck mit Kabelisolierung kann als Folge eines Programmeffektes kein Feuer fangen oder die Kleidung des Anwenders in Brand stecken.</p>"
+    },
+    "KRASH Barrier": {
+      "name": "KRASH-Barriere",
+      "description": "<p>Cyberdeck is immune to effects that force the Netrunner to Jack Out (safely or unsafely).</p>"
+    },
+    "Range Upgrade": {
+      "name": "Reichweitenverbesserung",
+      "description": "<p>Ein Cyberdeck mit einer Reichweitenaufrüstung kann sich mit einem Zugangspunkt verbinden, der bis zu 8 Meter entfernt ist.</p>"
+    },
+    "Shotgun Underbarrel": {
+      "name": "Flintenunterlauf",
+      "description": "<p>Functions like a standard shotgun, but with a magazine size of 2. Requires 2 hands to use, and takes up 2 attachment slots. While attached, the weapon can't be concealed under clothing.</p>\n<p>Note that the weapon inherits any modifiers from the gun it is attached to, such as other attachments and quality.</p>"
+    },
+    "Smartgun Link": {
+      "name": "Smartgun-Verbindung",
+      "description": "<p>Verwandelt die Waffe in eine \"Smartgun\". Beachte alle Regeln auf S. 344, bevor du sie benutzt.</p>"
+    },
+    "Sniping Scope": {
+      "name": "Scharfschützen-Zielfernrohr",
+      "description": "<p>Allows you to see detail up to 800m/yds. +1 to Single Shot/Aimed Shots for targets greater than 50m/yds.&nbsp;</p>"
+    }
+  }
+}

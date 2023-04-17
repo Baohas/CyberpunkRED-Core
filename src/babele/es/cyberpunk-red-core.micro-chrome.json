@@ -1,0 +1,21 @@
+{
+  "label": "MicroCromo",
+  "entries": {
+    "Superflash Jacket": {
+      "name": "Chaqueta Superflash",
+      "description": "<p>Una bonita chaqueta portando un sorpresa; con una acción, cualquier persona que use este chaqueta puede consumir una batería para encender una luz cegadora. Trata como una granada de Flashbang sin la lesión de oido crítica, centrada en el portador.</p>"
+    },
+    "Chipware Compartment": {
+      "name": "Compartimiento de Chipware",
+      "description": "<p>Te permite ocultar hasta cuatro piezas de chipware, no se requiere Chequeo. La recuperación se hace gastando una acción para girar el ojo en su socket</p>"
+    },
+    "Smart Lens": {
+      "name": "Lente Inteligente",
+      "description": "<p>Da a un usuario una única opción de ciberóptico. Puede usar una lente inteligente por ojo.</p>"
+    },
+    "MicroCutie by Hello Cutie": {
+      "name": "MicroCutie por Hola Cutie",
+      "description": "<p>Utilizando una acción el usuario puede habilitar el modo HypurrburstM. El modo HypurrburstTM aumenta el daño de las armas a 4d6, pero drena todos los disparos restantes cuando se dispara. Requiere al menos 4 rondas para habilitar. El arma hace un ruido de ronroneo en modo HypurrburstM*.<br><em>Modo de fuego especial no soportado actualmente; tendrá que aplicarse manualmente</em></p>"
+    }
+  }
+}
