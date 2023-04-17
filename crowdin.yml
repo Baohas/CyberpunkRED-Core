@@ -16,8 +16,8 @@ files:
     type: json
     translation_replace:
       _: "-"
-  - source: CHANGELOG.md
-    translation: CHANGELOG.%locale%.md
+  - source: /CHANGELOG.md
+    translation: /CHANGELOG.%locale%.md
     type: md
     translation_replace:
       _: "-"
