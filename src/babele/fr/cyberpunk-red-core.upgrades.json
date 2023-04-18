@@ -7,91 +7,91 @@
     },
     "Bayonet": {
       "name": "Baïonnette",
-      "description": "<p>An old idea that still works just as good; lets you use your gun as a light melee weapon. While attached, the weapon can't be concealed under clothing.</p>"
+      "description": "<p>Une vieille idée qui fonctionne toujours aussi bien ; vous permet d'utiliser votre arme à feu comme une arme de mêlée légère. Lorsqu'elle est attachée, l'arme ne peut pas être cachée sous les vêtements.</p>"
     },
     "DNA Lock": {
       "name": "Verrou biométrique",
       "description": "<p>Utilise la biométrie pour verrouiller la cyberconsole. Impossible d'accéder à une cyberconsole verrouillée sans sa clé biométrique, à moins de réussir un jet de Sécurité électronique SD 17. </p>"
     },
     "Drum Magazine (Assault Rifle)": {
-      "name": "Drum Magazine (Assault Rifle)",
-      "description": "<p>Increases magazine size to a massive 45 bullets.</p>"
+      "name": "Chargeur à cylindre (Fusil d'assaut)",
+      "description": "<p>Augmente la taille du chargeur à 45 balles.</p>"
     },
     "Drum Magazine (Grenade Launcher)": {
-      "name": "Drum Magazine (Grenade Launcher)",
-      "description": "<p>Increases magazine size to a massive 6 grenades.</p>"
+      "name": "Chargeur à cylindre (Lance-grenades)",
+      "description": "<p>Augmente la taille du chargeur à 6 grenades.</p>"
     },
     "Drum Magazine (Heavy Pistol)": {
-      "name": "Drum Magazine (Heavy Pistol)",
-      "description": "<p>Increases magazine size to a massive 28 bullets.</p>"
+      "name": "Chargeur à cylindre (Pistolet lourd)",
+      "description": "<p>Augmente la taille du chargeur à 28 balles.</p>"
     },
     "Drum Magazine (Heavy SMG)": {
-      "name": "Drum Magazine (Heavy SMG)",
-      "description": "<p>Increases magazine size to a massive 60 bullets.</p>"
+      "name": "Chargeur à cylindre (Pistolet-mitrailleur lourd)",
+      "description": "<p>Augmente la taille du chargeur à 60 balles.</p>"
     },
     "Drum Magazine (Medium Pistol)": {
-      "name": "Drum Magazine (Medium Pistol)",
-      "description": "<p>Increases magazine size to a massive 36 bullets.</p>"
+      "name": "Chargeur à cylindre (Pistolet moyen)",
+      "description": "<p>Augmente la taille du chargeur à 36 balles.</p>"
     },
     "Drum Magazine (Rocket Launcher)": {
-      "name": "Drum Magazine (Rocket Launcher)",
-      "description": "<p>Increases magazine size to a massive 3 rockets. That's a lot of boom.</p>"
+      "name": "Chargeur à cylindre (Lance-roquettes)",
+      "description": "<p>Augmente la taille du chargeur à 3 roquettes.</p>"
     },
     "Drum Magazine (Shotgun)": {
-      "name": "Drum Magazine (Shotgun)",
-      "description": "<p>Increases magazine size to a massive 16 rounds.</p>"
+      "name": "Chargeur à cylindre (Fusil à pompe)",
+      "description": "<p>Augmente la taille du chargeur à 16 coups.</p>"
     },
     "Drum Magazine (SMG)": {
-      "name": "Drum Magazine (SMG)",
-      "description": "<p>Increases magazine size to a massive 50 bullets.</p>"
+      "name": "Chargeur à cylindre (Pistolet-mitrailleur)",
+      "description": "<p>Augmente la taille du chargeur à 50 balles.</p>"
     },
     "Drum Magazine (Sniper Rifle)": {
-      "name": "Drum Magazine (Sniper Rifle)",
-      "description": "<p>Increases magazine size to a massive 12 bullets.</p>"
+      "name": "Chargeur à cylindre (Fusil de précision)",
+      "description": "<p>Augmente la taille du chargeur à 12 balles.</p>"
     },
     "Drum Magazine (Very Heavy Pistol)": {
-      "name": "Drum Magazine (Very Heavy Pistol)",
-      "description": "<p>Increases magazine size to a massive 28 bullets.</p>"
+      "name": "Chargeur à cylindre (Pistolet très lourd)",
+      "description": "<p>Augmente la taille du chargeur à 28 balles.</p>"
     },
     "Extended Magazine (Assault Rifle)": {
-      "name": "Extended Magazine (Assault Rifle)",
-      "description": "<p>Increases magazine size to a hefty 35 bullets.</p>"
+      "name": "Extension de chargeur (Fusil d'assaut)",
+      "description": "<p>Augmente la taille du chargeur à 35 balles.</p>"
     },
     "Extended Magazine (Grenade Launcher)": {
-      "name": "Extended Magazine (Grenade Launcher)",
-      "description": "<p>Increases magazine size to a hefty 4 grenades.</p>"
+      "name": "Extension de chargeur (Lance-grenades)",
+      "description": "<p>Augmente la taille du chargeur à 4 grenades.</p>"
     },
     "Extended Magazine (Heavy Pistol)": {
-      "name": "Extended Magazine (Heavy Pistol)",
-      "description": "<p>Increases magazine size to a hefty 14 bullets.</p>"
+      "name": "Extension de chargeur (Pistolet lourd)",
+      "description": "<p>Augmente la taille du chargeur à 14 balles.</p>"
     },
     "Extended Magazine (Heavy SMG)": {
-      "name": "Extended Magazine (Heavy SMG)",
-      "description": "<p>Increases magazine size to a hefty 50 bullets.</p>"
+      "name": "Extension de chargeur (Pistolet-mitrailleur lourd)",
+      "description": "<p>Augmente la taille du chargeur à 50 balles.</p>"
     },
     "Extended Magazine (Medium Pistol)": {
-      "name": "Extended Magazine (Medium Pistol)",
-      "description": "<p>Increases magazine size to a hefty 18 bullets.</p>"
+      "name": "Extension de chargeur (Pistolet moyen)",
+      "description": "<p>Augmente la taille du chargeur à 18 balles.</p>"
     },
     "Extended Magazine (Rocket Launcher)": {
-      "name": "Extended Magazine (Rocket Launcher)",
-      "description": "<p>Increases magazine size to a hefty 2 rockets.</p>"
+      "name": "Extension de chargeur (Lance-roquettes)",
+      "description": "<p>Augmente la taille du chargeur à 2 roquettes.</p>"
     },
     "Extended Magazine (Shotgun)": {
-      "name": "Extended Magazine (Shotgun)",
-      "description": "<p>Increases magazine size to a hefty 8 rounds.</p>"
+      "name": "Extension de chargeur (Fusil à pompe)",
+      "description": "<p>Augmente la taille du chargeur à 8 coups.</p>"
     },
     "Extended Magazine (SMG)": {
-      "name": "Extended Magazine (SMG)",
-      "description": "<p>Increases magazine size to a hefty 40 bullets.</p>"
+      "name": "Extension de chargeur (Pistolet-mitrailleur)",
+      "description": "<p>Augmente la taille du chargeur à 40 balles.</p>"
     },
     "Extended Magazine (Sniper Rifle)": {
-      "name": "Extended Magazine (Sniper Rifle)",
-      "description": "<p>Increases magazine size to a hefty 8 bullets.</p>"
+      "name": "Extension de chargeur (Fusil de précision)",
+      "description": "<p>Augmente la taille du chargeur à 8 balles.</p>"
     },
     "Extended Magazine (Very Heavy Pistol)": {
-      "name": "Extended Magazine (Very Heavy Pistol)",
-      "description": "<p>Increases magazine size to a hefty 14 bullets.</p>"
+      "name": "Extension de chargeur (Pistolet très lourd)",
+      "description": "<p>Augmente la taille du chargeur à 14 balles.</p>"
     },
     "Grenade Launcher Underbarrel": {
       "name": "Lance-grenades sous canon",
