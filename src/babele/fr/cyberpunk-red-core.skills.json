@@ -26,27 +26,27 @@
       "description": ""
     },
     "Autofire": {
-      "name": "Autofire",
+      "name": "Tir automatique",
       "description": ""
     },
     "Basic Tech": {
-      "name": "Basic Tech",
+      "name": "Électronique",
       "description": ""
     },
     "Brawling": {
-      "name": "Brawling",
+      "name": "Bagarre",
       "description": ""
     },
     "Bribery": {
-      "name": "Bribery",
+      "name": "Corruption",
       "description": ""
     },
     "Bureaucracy": {
-      "name": "Bureaucracy",
+      "name": "Bureaucratie",
       "description": ""
     },
     "Business": {
-      "name": "Business",
+      "name": "Gestion d'affaires",
       "description": ""
     },
     "Composition": {
@@ -54,7 +54,7 @@
       "description": ""
     },
     "Conceal/Reveal Object": {
-      "name": "Conceal/Reveal Object",
+      "name": "Dissimulation/Révélation d'objet",
       "description": ""
     },
     "Concentration": {
@@ -62,7 +62,7 @@
       "description": ""
     },
     "Contortionist": {
-      "name": "Contortionist",
+      "name": "Contorsion",
       "description": ""
     },
     "Conversation": {
@@ -70,11 +70,11 @@
       "description": ""
     },
     "Criminology": {
-      "name": "Criminology",
+      "name": "Criminologie",
       "description": ""
     },
     "Cryptography": {
-      "name": "Cryptography",
+      "name": "Cryptographie",
       "description": ""
     },
     "Cybertech": {
@@ -82,27 +82,27 @@
       "description": ""
     },
     "Dance": {
-      "name": "Dance",
+      "name": "Danse",
       "description": ""
     },
     "Deduction": {
-      "name": "Deduction",
+      "name": "Déduction",
       "description": ""
     },
     "Demolitions": {
-      "name": "Demolitions",
+      "name": "Explosifs",
       "description": ""
     },
     "Drive Land Vehicle": {
-      "name": "Drive Land Vehicle",
+      "name": "Conduite de véhicule terrestre",
       "description": ""
     },
     "Education": {
-      "name": "Education",
+      "name": "Connaissance",
       "description": ""
     },
     "Electronics/Security Tech": {
-      "name": "Electronics/Security Tech",
+      "name": "Sécurité électronique",
       "description": ""
     },
     "Endurance": {
@@ -110,55 +110,55 @@
       "description": ""
     },
     "Evasion": {
-      "name": "Evasion",
+      "name": "Esquive",
       "description": ""
     },
     "First Aid": {
-      "name": "First Aid",
+      "name": "Premiers secours",
       "description": ""
     },
     "Forgery": {
-      "name": "Forgery",
+      "name": "Contrefaçon",
       "description": ""
     },
     "Gamble": {
-      "name": "Gamble",
+      "name": "Jeux de hasard",
       "description": ""
     },
     "Handgun": {
-      "name": "Handgun",
+      "name": "Pistolet",
       "description": ""
     },
     "Heavy Weapons": {
-      "name": "Heavy Weapons",
+      "name": "Armes lourdes",
       "description": ""
     },
     "Human Perception": {
-      "name": "Human Perception",
+      "name": "Psychologie",
       "description": ""
     },
     "Interrogation": {
-      "name": "Interrogation",
+      "name": "Interrogatoire",
       "description": ""
     },
     "Land Vehicle Tech": {
-      "name": "Land Vehicle Tech",
+      "name": "Terratech",
       "description": ""
     },
     "Language (Streetslang)": {
-      "name": "Language (Streetslang)",
+      "name": "Langue (Argot)",
       "description": ""
     },
     "Library Search": {
-      "name": "Library Search",
+      "name": "Bibliothèque",
       "description": ""
     },
     "Lip Reading": {
-      "name": "Lip Reading",
+      "name": "Lecture sur les lèvres",
       "description": ""
     },
     "Local Expert": {
-      "name": "Local Expert",
+      "name": "Guide local",
       "description": ""
     },
     "Martial Arts": {
@@ -166,15 +166,15 @@
       "description": ""
     },
     "Melee Weapon": {
-      "name": "Melee Weapon",
+      "name": "Arme de mêlée",
       "description": ""
     },
     "Paint/Draw/Sculpt": {
-      "name": "Paint/Draw/Sculpt",
+      "name": "Arts plastiques",
       "description": ""
     },
     "Paramedic": {
-      "name": "Paramedic",
+      "name": "Assistance médicale",
       "description": ""
     },
     "Perception": {
@@ -182,7 +182,7 @@
       "description": ""
     },
     "Personal Grooming": {
-      "name": "Personal Grooming",
+      "name": "Look",
       "description": ""
     },
     "Persuasion": {
@@ -190,35 +190,35 @@
       "description": ""
     },
     "Photography/Film": {
-      "name": "Photography/Film",
+      "name": "Photos et films",
       "description": ""
     },
     "Pick Lock": {
-      "name": "Pick Lock",
+      "name": "Crochetage",
       "description": ""
     },
     "Pick Pocket": {
-      "name": "Pick Pocket",
+      "name": "Pickpocket",
       "description": ""
     },
     "Pilot Air Vehicle": {
-      "name": "Pilot Air Vehicle",
+      "name": "Pilotage de véhicule aérien",
       "description": ""
     },
     "Pilot Sea Vehicle": {
-      "name": "Pilot Sea Vehicle",
+      "name": "Pilotage de véhicule maritime",
       "description": ""
     },
     "Play Instrument": {
-      "name": "Play Instrument",
+      "name": "Instrument",
       "description": ""
     },
     "Resist Torture/Drugs": {
-      "name": "Resist Torture/Drugs",
+      "name": "Résistance à la torture/aux drogues",
       "description": ""
     },
     "Riding": {
-      "name": "Riding",
+      "name": "Équitation",
       "description": ""
     },
     "Science": {
@@ -226,43 +226,43 @@
       "description": ""
     },
     "Sea Vehicle Tech": {
-      "name": "Sea Vehicle Tech",
+      "name": "Maritech",
       "description": ""
     },
     "Shoulder Arms": {
-      "name": "Shoulder Arms",
+      "name": "Armes d'épaule",
       "description": ""
     },
     "Stealth": {
-      "name": "Stealth",
+      "name": "Discrétion",
       "description": ""
     },
     "Streetwise": {
-      "name": "Streetwise",
+      "name": "Connaissance de la rue",
       "description": ""
     },
     "Tactics": {
-      "name": "Tactics",
+      "name": "Tactique",
       "description": ""
     },
     "Tracking": {
-      "name": "Tracking",
+      "name": "Pistage",
       "description": ""
     },
     "Trading": {
-      "name": "Trading",
+      "name": "Négoce",
       "description": ""
     },
     "Wardrobe & Style": {
-      "name": "Wardrobe & Style",
+      "name": "Habillement et style",
       "description": ""
     },
     "Weaponstech": {
-      "name": "Weaponstech",
+      "name": "Armurerie",
       "description": ""
     },
     "Wilderness Survival": {
-      "name": "Wilderness Survival",
+      "name": "Survie en milieu hostile",
       "description": ""
     }
   }
