@@ -7,7 +7,7 @@
     },
     "Broken Leg": {
       "name": "Jambe cassée",
-      "description": "<p>-4 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>-4 au MOUV (minimum 1).</p>"
     },
     "Broken Ribs": {
       "name": "Côtes cassées",
@@ -15,7 +15,7 @@
     },
     "Collapsed Lung": {
       "name": "Poumon affaissé",
-      "description": "<p>-2 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>-2 au MOUV (minimum 1).</p>"
     },
     "Crushed Fingers": {
       "name": "Doigts écrasés",
@@ -31,7 +31,7 @@
     },
     "Dismembered Leg": {
       "name": "Jambe arrachée",
-      "description": "<p>Leg is removed. Cannot Dodge. -6 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>Jambe perdue. Esquive impossible. -6 au MOUV (minimum 1).</p>"
     },
     "Foreign Object": {
       "name": "Plaie avec corps étranger",
@@ -43,7 +43,7 @@
     },
     "Torn Muscle": {
       "name": "Muscle déchiré",
-      "description": "<p>-2 to Melee Attacks.</p>"
+      "description": "<p>-2 aux attaques de mêlée.</p>"
     }
   }
 }
