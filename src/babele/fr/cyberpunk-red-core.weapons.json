@@ -359,7 +359,7 @@
     },
     "Thrown Weapon": {
       "name": "Arme de lancer",
-      "description": "<p>A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets. Melee weapons deal their base damage, but don't penetrate half SP.</p>"
+      "description": "<p>Le lancer basique d'un objet. Utilisez une action pour faire une attaque à distance à un maximum de 25 m. Les cibles peuvent choisir d'esquiver votre lancer s'ils le peuvent. Les armes de mêlée infligent leurs dégâts de base, mais ne pénètrent pas la moitié des PA.</p>"
     },
     "Tomahawk (Excellent)": {
       "name": "Tomahawk +",
@@ -375,7 +375,7 @@
     },
     "Tsunami Arms Helix": {
       "name": "Helix de Tsunami Arms",
-      "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+      "description": "<p>Un fusil d'assaut exotique qui n'utilise que le tir automatique. Contient 40 balles, tire 20 balles à chaque attaque. Utilise les règles Tir automatique avec un multiplicateur maximum de 5. Nécessite COR 11 ou supérieur (sauf s'il est monté). Reportez-vous à la description complète de l'élément sur le pg. 348.</p>"
     },
     "Unarmed": {
       "name": "Désarmé",
@@ -383,15 +383,15 @@
     },
     "Very Heavy Melee (Excellent)": {
       "name": "Arme de mêlée très lourde (Excellent)",
-      "description": "<p>Generic Excellent Quality Very Heavy Melee Weapon.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arme de mêlée très lourde générique d'excellente qualité.</p>\n<p>+1 à l'attaque.</p>"
     },
     "Very Heavy Melee (Poor)": {
       "name": "Arme de mêlée très lourde (Mauvais)",
-      "description": "<p>Generic Poor Quality Very Heavy Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
+      "description": "<p>Arme de mêlée très lourde générique de mauvaise qualité.</p>\n<p>Si vous lancez 1 lors de l'attaque (échec critique) l'arme échoue d'une manière ou d'une autre et nécessite une action pour être à nouveau utilisable.</p>"
     },
     "Very Heavy Melee": {
       "name": "Arme de mêlée très lourde",
-      "description": "<p>Generic Very Heavy Melee Weapon.</p>"
+      "description": "<p>Arme de mêlée très lourde générique.</p>"
     },
     "Very Heavy Pistol (Excellent)": {
       "name": "Pistolet très lourd +",
