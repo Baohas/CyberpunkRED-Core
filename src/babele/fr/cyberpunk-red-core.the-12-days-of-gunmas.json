@@ -7,19 +7,19 @@
     },
     "Nova Model 757 Rounds": {
       "name": "Cartouches pour Nova Model 757",
-      "description": "<p>For use only in the Nova Model 757 Cityhunter. Comes in packs of 18 instead of the normal 10.</p>\n<p>&nbsp;</p>\n<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so.</p>"
+      "description": "<p>A utiliser uniquement pour le Nova Model 757 Cityhunter. Viens en pack de 18 au lieu d'un pack de 10.</p>\n<p>&nbsp;</p>\n<p>A besoin d'un implant Dispositif de visée, ou ne tirera pas. S'il rate une Attaque de 4 ou moins, lancez une seconde attaque au même SD 1d10+10 (statistique d'attaque non normale). Ajout possible de Chance. La cible peut esquiver la second attaque normalement si elle en est capable.</p>"
     },
     "Arasaka WAA Bullpup Assault Weapon": {
       "name": "Fusil d’assaut Arasaka WAA bullpup",
-      "description": "<p>A bullpup rifle in operation for over two decades. Can fire non-basic ammunition and comes with a Smartgun Link*.</p>\n<p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>Un fusil d'assaut bullpup en service depuis plus de deux décennies. Peut tirer des munitions spéciales et livré avec une liaison smartgun*.</p><p><em>*La liaison smartgun doit être ajoutée après avoir acquis l'arme.</em></p>"
     },
     "Constitutional Arms Multiple Ammunition Pistol": {
       "name": "Revolver à munitions multiples Constitutional Arms",
-      "description": "<p>A very heavy pistol capable of loading up to five different ammo types at once*, with the user able to pick between them before firing.</p>\n<p><em>*Currently not supported, so users have to manually change ammo types</em></p>"
+      "description": "<p>Un pistolet très lourd capable de charger jusqu'à 5 types de munitions différentes en même temps*, donnant à l'utilisateur la capacité de choisir celle de son choix à chaque tir.</p>\n<p><em>*N'est pas encore supporté, les joueurs doivent changer manuellement le type de munitions.</em></p>"
     },
     "IMI Chainknife": {
       "name": "Couteau tronçonneur IMI",
-      "description": "<p>Takes an action to rev up, but once revved is a powerful melee weapon. When not revved deals 2d6 damage*.</p>\n<p><em>*Not revved mode not currently supported, so will need to manually reduce damage</em></p>"
+      "description": "<p>Prend une action pour la démarrer, mais une fois lancée c'est une arme de mêlée puissante. Quand la chaine ne tourne pas, fait 2d6 de dégâts*.</p>\n<p><em>*Le mode non actif n'est pas supporté, il faut donc réduire manuellement les dégâts.</em></p>"
     },
     "Kendachi Dragon Flamethrower": {
       "name": "Crache-feu Kendachi Dragon",
@@ -31,15 +31,15 @@
     },
     "Malorian Arms Sub-Flechette Gun": {
       "name": "Mitrailleuse à fléchettes Malorian Arms",
-      "description": "<p>This SMG can only fire it's own custom Armor-Piercing Ammunition, however that ammo ablates by 4 when dealing damage. Comes with a Smartgun Link*.</p>\n<p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>Ce pistolet-mitrailleur ne peut tirer que ses propres munitions perforantes personnalisées, cependant ces munitions perforent les armures de 4 quand elles infligent des dégâts. Livré avec une liaison smartgun*.</p><p><em>*La liaison smartgun doit être ajoutée après avoir acquis l'arme.</em></p>"
     },
     "Militech Crusher": {
       "name": "Militech Crusher",
-      "description": "<p>A pistol that fires shotgun shells. What's not to love.</p>"
+      "description": "<p>Un pistolet qui tire des chevrotines de fusil à pompe. Comment ne pas aimer ?</p>"
     },
     "Mustang Arms ARS-5 Submachine Gun": {
       "name": "Pistolet-mitrailleur ARS-5 de Mustang Arms",
-      "description": "<p>This heavy SMG is the complete package; it comes with a Smartgun Link, Infrared Nightvision Scope, and a Sniping Scope*.</p>\n<p><em>*All three must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>Ce pistolet-mitrailleur lourd a la totale : il est équipé d'une liaison smartgun, d'une lunette infrarouge de vision nocturne et d'une lunette de précision*.</p><p><em>*les trois doivent être ajoutés manuellement après avoir acquis l'arme.</em></p>"
     },
     "Nomad Pneumatic Bolt Gun": {
       "name": "Fusil à verrou pneumatique de Nomade",
@@ -47,7 +47,7 @@
     },
     "Nova Model 757 Cityhunter": {
       "name": "Nova Model 757 Cityhunter",
-      "description": "<p>This pistol fires it's own custom rounds bought in packs of 18, though they cost the same as a pack of 10. Comes with a Smartgun Link*.</p>\n<p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>Ce revolver tire ses propres munitions customisées achetées par pack de 18, même si elles coutent le même prix qu'un pack de 10 munitions. Livré avec une liaison smartgun*.</p><p><em>*La liaison smartgun doit être ajoutée après avoir acquis l'arme.</em></p>"
     },
     "Stolbovoy ST-5 Assault Rifle": {
       "name": "Fusil d’assaut Stolbovoy ST-5",
