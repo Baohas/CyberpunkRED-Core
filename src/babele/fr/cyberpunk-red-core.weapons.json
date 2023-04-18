@@ -3,7 +3,7 @@
   "entries": {
     "Air Pistol": {
       "name": "Pistolet à air comprimé",
-      "description": "<p>An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is able to ablate armor by one with each hit. Refer to the full item description on pg. 347.</p>"
+      "description": "<p>Pistolet moyen exotique. Tire des billes de peinture. Si chargé avec de l'acide, peut réduire une armure à chaque impact. Reportez-vous à la description complète de l'article p. 349.</p>"
     },
     "Assault Rifle (Excellent)": {
       "name": "Fusil d'assaut +",
@@ -31,7 +31,7 @@
     },
     "Bow (Excellent)": {
       "name": "Arc +",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Un arc revitalisé, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>"
     },
     "Bow (Poor)": {
       "name": "Arc -",
@@ -71,7 +71,7 @@
     },
     "Crossbow (Excellent)": {
       "name": "Arbalète +",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>"
     },
     "Crossbow (Poor)": {
       "name": "Arbalète -",
@@ -79,7 +79,7 @@
     },
     "Crossbow": {
       "name": "Arbalète",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>"
     },
     "Crowbar (Excellent)": {
       "name": "Pied de biche +",
@@ -99,7 +99,7 @@
     },
     "Flamethrower": {
       "name": "Crache-feu",
-      "description": "<p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full item description on pg. 348.</p>"
+      "description": "<p>Un fusil à pompe exotique qui utilise la compétence Armes lourdes. Reportez-vous à la description complète de l'objet p. 347.</p>"
     },
     "Grenade Launcher (Excellent)": {
       "name": "Lance-grenades +",
@@ -115,15 +115,15 @@
     },
     "Heavy Melee (Excellent)": {
       "name": "Arme de mêlée lourde (Excellent)",
-      "description": "<p>Generic Excellent Quality Heavy Melee Weapon.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arme de mêlée lourde de qualité excellente.</p>\n<p>+1 à l'attaque.</p>"
     },
     "Heavy Melee (Poor)": {
       "name": "Arme de mêlée Lourde (Mauvais)",
-      "description": "<p>Generic Poor Quality Heavy Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>\n<p>&nbsp;</p>"
+      "description": "<p>Arme de mêlée lourde générique de mauvaise qualité.</p>\n<p>Si vous tirez un 1 sur un jet d'attaque (échec critique) l'arme échoue d'une certaine manière et nécessite une action pour être à nouveau utilisable.<p>\n<p>&nbsp;</p>"
     },
     "Heavy Melee": {
       "name": "Arme de mêlée Lourde",
-      "description": "<p>Generic Heavy Melee Weapon.</p>"
+      "description": "<p>Arme de mêlée lourde générique</p>"
     },
     "Heavy Pistol (Excellent)": {
       "name": "Pistolet lourd +",
@@ -163,7 +163,7 @@
     },
     "Kendachi Mono-Three": {
       "name": "Kendachi Mono-trois",
-      "description": "<p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears as a high-tech katana, able to ignore any armor below SP11*. Refer to the full item description on pg. 348.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
+      "description": "<p>Arme exotique de mêlée très lourde à deux mains, excellente qualité. Katana de haute technologie, capable d'ignorer n'importe quelle armure de moins de PA11*. Référez-vous à la description complète de l'article sur p. 348.</p>\n<p><em>*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles blindées</em></p>"
     },
     "Lead Pipe (Excellent)": {
       "name": "Tuyau en plomb +",
@@ -171,7 +171,7 @@
     },
     "Lead Pipe (Poor)": {
       "name": "Tuyau en plomb -",
-      "description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once. If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
+      "description": "<p>Un cylindre creux, fait en métal ou en fibre de verre. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
     },
     "Lead Pipe": {
       "name": "Tuyau en plomb",
@@ -179,15 +179,15 @@
     },
     "Light Melee (Excellent)": {
       "name": "Arme de mêlée légère (Excellent)",
-      "description": "<p>Generic Excellent Qulaity Light Melee weapon.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arme de mêlée légère de qualité excellente.</p>\n<p>+1 à l'attaque.</p>"
     },
     "Light Melee (Poor)": {
       "name": "Arme de mêlée légère (Mauvais)",
-      "description": "<p>Generic Poor Quality Light Melee weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
+      "description": "<p>Arme de mêlée légère de mauvaise qualité.</p>\n<p>Si vous lancez 1 lors de l'attaque (échec critique) l'arme échoue d'une manière ou d'une autre et nécessite une action pour être réutilisable.</p>"
     },
     "Light Melee": {
       "name": "Arme de mêlée Légère",
-      "description": "<p>Generic Light Melee weapon.</p>"
+      "description": "<p>Arme de mêlée légère générique.</p>"
     },
     "Machete (Excellent)": {
       "name": "Machette +",
@@ -203,7 +203,7 @@
     },
     "Malorian Arms 3516": {
       "name": "3516 de Malorian Arms",
-      "description": "<p>An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link* that must be used. Refer to the full item description on pg. 348.</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>Pistolet exotique très lourd, qualité excellente. Fourni avec une liaison smartgun* qui doit être utilisée. Reportez-vous à la description complète de l'article sur pg. 347.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'arme</em></p>"
     },
     "Martial Arts": {
       "name": "Arts martiaux",
@@ -211,15 +211,15 @@
     },
     "Medium Melee (Excellent)": {
       "name": "Arme de mêlée moyenne (Excellent)",
-      "description": "<p>Generic Excellent Quality Medium Melee Weapon.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arme de mêlée intermédiaire générique d'excellente qualité.</p>\n<p>+1 à l'attaque.</p>"
     },
     "Medium Melee (Poor)": {
       "name": "Arme de mêlée moyenne (Mauvais)",
-      "description": "<p>Generic Poor Quality Medium Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
+      "description": "<p>Arme de mêlée intermédiaire générique de mauvaise qualité.</p>\n<p>Si vous lancez 1 lors de l'attaque (échec critique) l'arme échoue d'une manière ou d'une autre et nécessite une action pour être réutilisable.</p>"
     },
     "Medium Melee": {
       "name": "Arme de mêlée Moyenne",
-      "description": "<p>Generic Medium Melee Weapon.</p>"
+      "description": "<p>Arme de mêlée intermédiaire générique.</p>"
     },
     "Medium Pistol (Excellent)": {
       "name": "Pistolet moyen +",
@@ -235,7 +235,7 @@
     },
     "Microwaver": {
       "name": "Canon à ondes",
-      "description": "<p>An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be rendered inoperable for a minute unless the target passes a DV15 Cybertech Check. Refer to the full item description on pg. 348.</p>"
+      "description": "<p>Pistolet exotique très lourd. Permet de rendre inopérants les cyberimplants ou les composants électriques pendant une minute, à moins que la cible ne réussisse un jet de Cybertech SD15. Reportez-vous à la description complète de l'élément sur p. 347.</p>"
     },
     "Militech \"Cowboy\" U-56 Grenade Launcher": {
       "name": "Lance-grenades Militech \"Cowboy\" U-56",
@@ -255,7 +255,7 @@
     },
     "Rhinemetall EMG-86 Railgun": {
       "name": "Canon électrique Rhinemetall EMG-86",
-      "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
+      "description": "<p>Fusil d'assaut exotique. Il ne peut pas faire de tirs ciblés ou de tirs automatiques. Nécessite COR 11 ou plus (sauf s'il est monté). Ignore toute armure en dessous de PA11*. Reportez-vous à la description complète de l'élément sur pg. 347.</p>\n<p><em>*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles blindées</em></p>"
     },
     "Rippers": {
       "name": "Éventreurs",
@@ -287,7 +287,7 @@
     },
     "Shrieker": {
       "name": "Hurleur",
-      "description": "<p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear critical injuries. The target must beat a DV15 Resist Torture/Drugs Check or suffer the Damaged Ear critical injury. Refer to the full item description on pg. 349.</p>"
+      "description": "<p>Pistolet Exotique très lourd. Nécessite une protection auditive contre les blessures critiques, sinon réussir un jet de Résistance à la torture/aux drogues SD15 ou subir une blessure critique Oreilles endommagées. Reportez-vous à la description complète de l'article sur le p. 348.</p>"
     },
     "Sledgehammer (Excellent)": {
       "name": "Masse +",
@@ -343,7 +343,7 @@
     },
     "Stun Gun": {
       "name": "Pistolet à impulsion électrique",
-      "description": "<p>An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor. Refer to the full item description on pg. 349.</p>"
+      "description": "<p>Pistolet lourd exotique. La cible est inconsciente si les dégâts infligés la réduisent à moins d'1 PS. Ne cause pas de blessures critiques ne de perforation d'armure. Reportez-vous à la description complète de l'objet sur le pg. 349.</p>"
     },
     "Sword (Excellent)": {
       "name": "Épée +",
@@ -358,7 +358,7 @@
       "description": "<p>Une arme avec une lame et une poignée.</p>"
     },
     "Thrown Weapon": {
-      "name": "Thrown Weapon",
+      "name": "Arme de lancer",
       "description": "<p>A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets. Melee weapons deal their base damage, but don't penetrate half SP.</p>"
     },
     "Tomahawk (Excellent)": {
