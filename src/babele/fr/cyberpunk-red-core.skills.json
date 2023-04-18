@@ -1,28 +1,28 @@
 {
-  "label": "Skills (Core) - DO NOT USE",
+  "label": "Compétences (Core) - NE PAS UTILISER",
   "entries": {
     "Accounting": {
-      "name": "Accounting",
+      "name": "Comptabilité",
       "description": ""
     },
     "Acting": {
-      "name": "Acting",
+      "name": "Jeu d'acteur",
       "description": ""
     },
     "Air Vehicle Tech": {
-      "name": "Air Vehicle Tech",
+      "name": "Aérotech",
       "description": ""
     },
     "Animal Handling": {
-      "name": "Animal Handling",
+      "name": "Dressage",
       "description": ""
     },
     "Archery": {
-      "name": "Archery",
+      "name": "Tir à l'arc",
       "description": ""
     },
     "Athletics": {
-      "name": "Athletics",
+      "name": "Athlétisme",
       "description": ""
     },
     "Autofire": {
