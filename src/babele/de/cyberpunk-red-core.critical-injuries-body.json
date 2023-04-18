@@ -7,7 +7,7 @@
     },
     "Broken Leg": {
       "name": "Beinbruch",
-      "description": "<p>-4 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>-4 BEW (Minimum BEW von 1).</p>"
     },
     "Broken Ribs": {
       "name": "Rippenbruch",
@@ -15,7 +15,7 @@
     },
     "Collapsed Lung": {
       "name": "Kollabierte Lunge",
-      "description": "<p>-2 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>-2 BEW (Minimum BEW von 1).</p>"
     },
     "Crushed Fingers": {
       "name": "Fingerfraktur",
@@ -31,7 +31,7 @@
     },
     "Dismembered Leg": {
       "name": "Abgetrenntes Bein",
-      "description": "<p>Leg is removed. Cannot Dodge. -6 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>Bein ist entfernt. Kann nicht ausweichen. -6 BEW (Minimum BEW von 1).</p>"
     },
     "Foreign Object": {
       "name": "Fremdobjekt",
@@ -43,7 +43,7 @@
     },
     "Torn Muscle": {
       "name": "Muskelriss",
-      "description": "<p>-2 to Melee Attacks.</p>"
+      "description": "<p>-2 auf Nahkampfangriffe.</p>"
     }
   }
 }
