@@ -66,20 +66,20 @@
       "description": "<p>Schwerster und mächtigster Helm, den es zu kaufen gibt. -4 REF, GES, und BEW.</p>"
     },
     "Skin Weave (Body)": {
-      "name": "Skin Weave (Body)",
-      "description": "<p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>"
+      "name": "Hautverstärker (Körper)",
+      "description": "<p>Implantierte SW 7 Panzerung. Regeneriert 1SW am Tag. Kann nicht gestapelt werden.</p>"
     },
     "Skin Weave (Head)": {
-      "name": "Skin Weave (Head)",
-      "description": "<p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>"
+      "name": "Hautverstärker (Kopf)",
+      "description": "<p>Implantierte SW 7 Panzerung. Regeneriert 1SW am Tag. Kann nicht gestapelt werden.</p>"
     },
     "Subdermal Armor (Body)": {
-      "name": "Subdermal Armor (Body)",
-      "description": "<p>Inbuilt SP11 Armor that recovers 1SP /day. Does not stack.</p>"
+      "name": "Subdermale Panzerung (Körper)",
+      "description": "<p>Implantierte SW 7 Panzerung. Regeneriert 1SW am Tag. Kann nicht gestapelt werden.</p>"
     },
     "Subdermal Armor (Head)": {
-      "name": "Subdermal Armor (Head)",
-      "description": "<p>Inbuilt SP11 Armor that recovers 1SP /day. Does not stack.</p>"
+      "name": "Subdermale Panzerung (Kopf)",
+      "description": "<p>Implantierte SW 7 Panzerung. Regeneriert 1SW am Tag. Kann nicht gestapelt werden.</p>"
     }
   }
 }
