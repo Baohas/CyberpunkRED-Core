@@ -11,11 +11,11 @@
     },
     "Concussion": {
       "name": "Commotion cérébrale",
-      "description": "<p>-2 to every action.</p>"
+      "description": "<p>-2 à toutes les actions.</p>"
     },
     "Cracked Skull": {
       "name": "Fracture du crâne",
-      "description": "<p>Triples damage to HP on aimed headshots (rather than the normal double damage).</p>"
+      "description": "<p>Triple les dégâts aux PS sur les tirs à la tête (plutôt que les dégâts doubles normaux).</p>"
     },
     "Crushed Windpipe": {
       "name": "Trachée écrasée",
@@ -23,11 +23,11 @@
     },
     "Damaged Ear": {
       "name": "Oreille endommagée",
-      "description": "<p>If move more than 4m/yds in a Turn, cannot move next turn. -2 to hearing based Perception.</p>"
+      "description": "<p>Si déplacement de plus de 4m/yds en un tour, pas de mouvement le prochain tour. -2 sur jets de Perception basés sur l'ouïe.</p>"
     },
     "Damaged Eye": {
       "name": "Œil endommagé",
-      "description": "<p>-2 to Ranged and Perception (Sight).</p>"
+      "description": "<p>-2 aux attaques à distance et Perception basée sur la vue.</p>"
     },
     "Foreign Object (H)": {
       "name": "Plaie avec corps étranger",
@@ -35,15 +35,15 @@
     },
     "Lost Ear": {
       "name": "Oreille arrachée",
-      "description": "<p>Ear is removed. If move more than 4m/yds in a Turn, cannot move next turn. -4 to hearing based Perception.</p>"
+      "description": "<p>L'oreille est perdue. Si mouvement de plus de 4m/yds sur un tour, pas de mouvement au prochain tour. -4 aux jets de Perception basés sur l'ouïe.</p>"
     },
     "Lost Eye": {
       "name": "Œil crevé",
-      "description": "<p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>"
+      "description": "<p>L'oeil est perdu. -4 aux attaques à distance et à la Perception basée sur la vision.</p>"
     },
     "Whiplash": {
       "name": "Coup du lapin",
-      "description": "<p>No other effects beyond increasing the base Death Save Penalty by 1.</p>"
+      "description": "<p>Aucun autre effet au-delà de l'augmentation de 1 de la pénalité de sauvegarde contre la Mort.</p>"
     }
   }
 }
