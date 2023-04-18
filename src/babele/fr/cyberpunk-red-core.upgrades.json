@@ -95,7 +95,7 @@
     },
     "Grenade Launcher Underbarrel": {
       "name": "Lance-grenades sous canon",
-      "description": "<p>Functions like a standard grenade launcher, but with a magazine size of 1. Requires 2 hands to use, and takes up 2 attachment slots. While attached, the weapon can't be concealed under clothing.</p>\n<p>Note that the weapon inherits any modifiers from the gun it is attached to, such as other attachments and quality.</p>"
+      "description": "<p>Fonctionne comme un lance-grenades standard, mais avec un chargeur de 1. Nécessite 2 mains pour utiliser et prend 2 emplacements d'extension. Tant qu'elle est attachée, l'arme ne peut pas être dissimulée sous les vêtements.</p>\n<p>Notez que l'arme hérite de tous les modificateurs de l'arme à laquelle elle est attachée, comme d'autres accessoires et qualité.</p>"
     },
     "Hardened Circuitry": {
       "name": "Circuits renforcés",
@@ -111,7 +111,7 @@
     },
     "KRASH Barrier": {
       "name": "Barrière anti-KRASH",
-      "description": "<p>Cyberdeck is immune to effects that force the Netrunner to Jack Out (safely or unsafely).</p>"
+      "description": "<p>La cyberconsole est immunisée contre les effets qui forcent le Netrunner à se déconnecter (de façon sûre ou non).</p>"
     },
     "Range Upgrade": {
       "name": "Extension de portée",
@@ -119,7 +119,7 @@
     },
     "Shotgun Underbarrel": {
       "name": "Double canon à pompe",
-      "description": "<p>Functions like a standard shotgun, but with a magazine size of 2. Requires 2 hands to use, and takes up 2 attachment slots. While attached, the weapon can't be concealed under clothing.</p>\n<p>Note that the weapon inherits any modifiers from the gun it is attached to, such as other attachments and quality.</p>"
+      "description": "<p>Fonctionne comme un fusil à pompe standard, mais avec un chargeur de 2 coups. Nécessite 2 mains pour utiliser et prend 2 emplacements d'extension. Tant qu'elle est attachée, l'arme ne peut pas être dissimulée sous les vêtements.</p>\n<p>Notez que l'arme hérite de tous les modificateurs de l'arme à laquelle elle est attachée, comme d'autres accessoires et qualité.</p>"
     },
     "Smartgun Link": {
       "name": "Liaison smartgun",
@@ -127,7 +127,7 @@
     },
     "Sniping Scope": {
       "name": "Lunette de précision",
-      "description": "<p>Allows you to see detail up to 800m/yds. +1 to Single Shot/Aimed Shots for targets greater than 50m/yds.&nbsp;</p>"
+      "description": "<p>Vous permet de voir les détails jusqu'à 800 m. +1 au tir en coup par coup et tirs visés pour les cibles distantes de plus de 50 m.&nbsp;</p>"
     }
   }
 }
