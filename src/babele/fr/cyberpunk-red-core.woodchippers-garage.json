@@ -1,13 +1,13 @@
 {
-  "label": "Woodchipper’s Garage",
+  "label": "Le garage de Woodchipper",
   "entries": {
     "Paintball (Biotoxin)": {
       "name": "Paintball (Biotoxine)",
-      "description": "<p>Created from 3 Vials of Biotoxin strapped together. Deals no direct damage on hit.</p>"
+      "description": "<p>Créé à partir de 3 flacons de biotoxine fixées ensemble. N'inflige aucun dégât direct à l'impact.</p>"
     },
     "Paintball (Poison)": {
       "name": "Paintball (poison)",
-      "description": "<p>Created from 3 Vials of Poison strapped together. Deals no direct damage on hit.</p>"
+      "description": "<p>Créé à partir de 3 fioles de poison fixées ensemble. N'inflige aucun dégât direct à chaque impact.</p>"
     },
     "Sternmeyer M-02 Rounds": {
       "name": "Munitions de Sternmeyer M-02",
@@ -19,11 +19,11 @@
     },
     "BudgetArms Triple Treat": {
       "name": "BudgetArms Triple Treat",
-      "description": "<p>Comes with an Exotic Grenade Launcher Underbarrel* which - as the main gun is poor quality - funcations as a poor quality weapon. It can't be removed. Both that and the main weapon can fire non-Basic Ammunition.</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>Fournit avec un lance-grenades exotique* qui - comme l'arme principale est de mauvaise qualité - fonctionne comme une arme de mauvaise qualité. Il ne peut pas être supprimé. Celui-ci et l'arme principale peuvent tirer des munitions non basiques.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'arme</em></p>"
     },
     "Flare Gun": {
       "name": "Pistolet de détresse",
-      "description": "<p>As well as normal Grenade Ammunition, this weapon can fire road flares*. They don't deal any damage, but if fired into the air can be seen from 3 miles. You cannot install this weapon in Pop-up Cyberware.</p>\n<p><em>*Currently not supported so will need to manually delete a road flare from actors inventory after firing</em></p>"
+      "description": "<p>Comme les munitions de grenades normales, cette arme peut tirer des fusées éclairantes de route*. Elles n'infligent aucun dégât, mais si elles sont tirées dans les airs elles sont visibles à 5 km. Vous ne pouvez pas installer cette arme en cybernétique escamotable.</p>\n<p><em>*Actuellement non pris en charge donc supprimer manuellement une fusée éclairante de route de l'inventaire des acteurs après avoir tiré</em></p>"
     },
     "Midnight Arms SDF-45": {
       "name": "Midnight Arms SDF-45",
@@ -59,7 +59,7 @@
     },
     "UrbanTech Burst Flamethrower": {
       "name": "Lance-flammes UrbanTech",
-      "description": "<p>Can only fire Incendiary Shotgun Shells, but targets ignited by this weapon burn for 4HP a turn.<br><br>Additionally, this weapon can consume all it's remaining ammo to shoot a fireball, which explodes in a similar fashion to an incendiary grenade. The user of the weapon is also consumed by the fireball, getting Deadly on Fire*.</p>\n<p><em>*Special fire mode not currently supported; will need to be manually applied</em></p>"
+      "description": "<p>Peut seulement tirer des chevrotines de fusil à pompe incendiaire, mais les cibles enflammées par cette arme brûlent de 4 PS par tour.<br><br>De plus, cette arme peut consommer toutes ses munitions restantes pour tirer une boule de feu, qui explose de façon similaire à une grenade incendiaire. L’utilisateur de l’arme est également touché par la boule de feu, prenant feu à une intensité Mortelle*.</p>\n<p><em>*Mode de tir spécial non pris en charge actuellement ; devra être appliqué manuellement</em></p>"
     }
   }
 }
