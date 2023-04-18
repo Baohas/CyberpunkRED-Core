@@ -3,7 +3,7 @@
   "entries": {
     "Amplified Hearing": {
       "name": "Gehörverstärker",
-      "description": "<p>Provides +2 to perception checks that use hearing.</p>"
+      "description": "<p>Der Anwender addiert +2 auf die Fertigkeit Wahrnehmung für Proben mit Hören. Benötigt ein Cyberaudioset.</p>"
     },
     "Anti-Dazzle": {
       "name": "Blendschutz",
@@ -83,7 +83,7 @@
     },
     "Cybersnake": {
       "name": "Cyber­schlange",
-      "description": "<p>A throat snake which is a Very Heavy Melee weapon.</p>"
+      "description": "<p>In den Rachen eingesetzte Sehr Schwere Nahkampfwaffe (Tentakelwaffe).</p>"
     },
     "Dartgun": {
       "name": "Pfeilschuss­pistole",
@@ -186,12 +186,12 @@
       "description": "<p>Ein normales Bein. Erlaubt den Einbau von Klauenfuß.</p>"
     },
     "Medical Grade Cyberarm": {
-      "name": "Medical Grade Cyberarm",
-      "description": "<p>A medical grade cyberarm. Does not allow options to be installed.</p>"
+      "name": "Cyberarm medizinischer Klasse",
+      "description": "<p>Ein medizinischer Cyberarm. Erlaubt keine Installation von Optionen.</p>"
     },
     "Medical Grade Cyberleg": {
-      "name": "Medical Grade Cyberleg",
-      "description": "<p>A medical grade cyberleg. Does not allow options to be installed.</p>"
+      "name": "Cyberbein medizinischer Klasse",
+      "description": "<p>Ein medizinisches Cyberbein. Erlaubt keine Installation von Optionen.</p>"
     },
     "Medscanner": {
       "name": "MediScanner",
@@ -270,8 +270,8 @@
       "description": "<p>Piepst, wenn innerhalb von 100 m ein Radarstrahl aktiv ist.</p>"
     },
     "Radar/Sonar Implant": {
-      "name": "Radar/Sonar Implant",
-      "description": "<p>Scans 50m/yds around you. Doesn't work through cover. </p>"
+      "name": "Radar/Sonar­ Implantat",
+      "description": "<p>Tastet im Umkreis von 50 m um den Anwender herum ständig das Gelände (auch unter Wasser) nach Gefahren ab. Die Abtastung entdeckt nichts, was sich hinter Deckung befindet, wie der Inhalt eines Raums hinter einer geschlossenen Tür.</p>"
     },
     "Radiation Detector": {
       "name": "Strahlungs­ detektor",
@@ -331,7 +331,7 @@
     },
     "Skin Weave": {
       "name": "Hautverstärker",
-      "description": "<p>Head and Body Armor SP7 and recovers 1SP/day. Does not stack</p>"
+      "description": "<p>Oberkörper und Kopf des Anwenders werden mit SW 7 gepanzert. Regeneriert 1SW am Tag.</p>"
     },
     "Skinwatch": {
       "name": "Hautuhr",
@@ -391,7 +391,7 @@
     },
     "TeleOptics": {
       "name": "TeleOptik",
-      "description": "<p>Telescope in your eye up to 800m/yds. +1 to single shot/aimed shot if greater than 50m away.</p>"
+      "description": "<p>Der Anwender kann Einzelheiten auf bis zu 800 m Entfernung erkennen. Wenn er entweder mit dem Einzelschussmodus einer Waffe oder mit einem Gezielten Schuss ein Ziel angreift, das mehr als 50 m entfernt ist, addiert er +1 auf die Probe.</p>"
     },
     "Tool Hand": {
       "name": "Werkzeughand",
