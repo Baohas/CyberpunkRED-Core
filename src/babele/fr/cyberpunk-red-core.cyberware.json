@@ -3,7 +3,7 @@
   "entries": {
     "Amplified Hearing": {
       "name": "Amplificateur audio",
-      "description": "<p>Provides +2 to perception checks that use hearing.</p>"
+      "description": "<p>Confère +2 aux jets de Perception qui utilisent l'ouïe.</p>"
     },
     "Anti-Dazzle": {
       "name": "Anti-éblouissement",
@@ -83,7 +83,7 @@
     },
     "Cybersnake": {
       "name": "Cybercobra",
-      "description": "<p>A throat snake which is a Very Heavy Melee weapon.</p>"
+      "description": "<p>Arme de mêlée très lourde greffée à la gorge. En forme de serpent.</p>"
     },
     "Dartgun": {
       "name": "Pistolet à fléchettes",
@@ -186,12 +186,12 @@
       "description": "<p>Une jambe ordinaire.</p>"
     },
     "Medical Grade Cyberarm": {
-      "name": "Medical Grade Cyberarm",
-      "description": "<p>A medical grade cyberarm. Does not allow options to be installed.</p>"
+      "name": "Cyberbras médicalisé",
+      "description": "<p>Un cyberbras de qualité médicale. Il ne permet pas l'installation d'options.</p>"
     },
     "Medical Grade Cyberleg": {
-      "name": "Medical Grade Cyberleg",
-      "description": "<p>A medical grade cyberleg. Does not allow options to be installed.</p>"
+      "name": "Cyberjambe médicalisée",
+      "description": "<p>Une cyberjambe de qualité médicale. Elle ne permet pas l'installation d'options.</p>"
     },
     "Medscanner": {
       "name": "Médiscanner",
@@ -270,8 +270,8 @@
       "description": "<p>Bipe quand il détecte des ondes électromagnétiques émises à moins de 100 m.</p>"
     },
     "Radar/Sonar Implant": {
-      "name": "Radar/Sonar Implant",
-      "description": "<p>Scans 50m/yds around you. Doesn't work through cover. </p>"
+      "name": "Implant radar/sonar",
+      "description": "<p>Scanne sur un rayon de 50 m autour de vous. Ne passe pas à travers les murs et autres couverts.</p>"
     },
     "Radiation Detector": {
       "name": "Détecteur de radiation",
@@ -331,7 +331,7 @@
     },
     "Skin Weave": {
       "name": "Treillissage dermique",
-      "description": "<p>Head and Body Armor SP7 and recovers 1SP/day. Does not stack</p>"
+      "description": "<p>Armure PA7 de tête et corps, et récupère 1PA/jour. Ne se cumule pas</p>"
     },
     "Skinwatch": {
       "name": "Montre dermique",
@@ -391,7 +391,7 @@
     },
     "TeleOptics": {
       "name": "Téléoptique",
-      "description": "<p>Telescope in your eye up to 800m/yds. +1 to single shot/aimed shot if greater than 50m away.</p>"
+      "description": "<p>Télescope dans vos cyberoptiques jusqu'à 800 m. +1 au tir au coup par coup si cible à plus de 50 m de distance.</p>"
     },
     "Tool Hand": {
       "name": "Main outil",
