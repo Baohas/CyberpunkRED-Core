@@ -558,7 +558,6 @@ async function genPacksBabele() {
               const tableName = entry.name;
               const tableResults = {};
 
-              console.log(entry.results);
               entry.results.forEach((item) => {
                 const key = `${item.range[0]}-${item.range[1]}`;
                 tableResults[key] = item.text;
