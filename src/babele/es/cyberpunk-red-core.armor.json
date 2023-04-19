@@ -66,20 +66,20 @@
       "description": "<p>Armadura más pesada y poderosa en circulación. Protege tu cabeza -4 a REF, DES y MOV.</p>"
     },
     "Skin Weave (Body)": {
-      "name": "Skin Weave (Body)",
-      "description": "<p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>"
+      "name": "Tejido Dérmico (Cuerpo)",
+      "description": "<p>Armadura de Cuerpo CP7 y recupera 1 CP /día. No se acumula</p>"
     },
     "Skin Weave (Head)": {
-      "name": "Skin Weave (Head)",
-      "description": "<p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>"
+      "name": "Tejido Dérmico (Cabeza)",
+      "description": "<p>Armadura de Cabeza CP7 y recupera 1 CP /día. No se acumula</p>"
     },
     "Subdermal Armor (Body)": {
-      "name": "Subdermal Armor (Body)",
-      "description": "<p>Inbuilt SP11 Armor that recovers 1SP /day. Does not stack.</p>"
+      "name": "Blindaje Subcutáneo (Cuerpo)",
+      "description": "<p>Armadura de Cuerpo CP11 y recupera 1 CP /día. No se acumula</p>"
     },
     "Subdermal Armor (Head)": {
-      "name": "Subdermal Armor (Head)",
-      "description": "<p>Inbuilt SP11 Armor that recovers 1SP /day. Does not stack.</p>"
+      "name": "Blindaje Subcutáneo (Cabeza)",
+      "description": "<p>Armadura de Cabeza CP11 y recupera 1 CP /día. No se acumula</p>"
     }
   }
 }
