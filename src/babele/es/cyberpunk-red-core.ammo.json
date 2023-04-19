@@ -2,224 +2,224 @@
   "label": "Munición",
   "entries": {
     "Arrow (Armor Piercing)": {
-      "name": "Arrow (Armor Piercing)",
-      "description": "<p>Double ablation to armor.</p>"
+      "name": "Flecha (Perforación de armadura)",
+      "description": "<p>Doble ablación a la armadura. </p>"
     },
     "Arrow (Basic)": {
-      "name": "Arrow (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Flecha (Básica)",
+      "description": "<p>Munición básica, nada especial.</p>"
     },
     "Arrow (Biotoxin)": {
-      "name": "Arrow (Biotoxin)",
-      "description": "<p>No immediate damage. If hit DV15 Resist Torture/Drugs Check. On a fail 3d6 damage to HP. No Ablation. </p>"
+      "name": "Flecha (Biotoxina)",
+      "description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra DV15. Al fallar 3d6 de daño a HP sin Ablación. </p>"
     },
     "Arrow (Expansive)": {
-      "name": "Arrow (Expansive)",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "name": "Flecha (Expansiva)",
+      "description": "<p>Si tira el crítico Objeto Extraño (ver pg. 187), la víctima obtiene un segundo (diferente) daño crítico. La segunda lesión no inflige daño extra.</p>"
     },
     "Arrow (Incendiary)": {
-      "name": "Arrow (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Flecha (incendiaria)",
+      "description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno a menos que utilice acción para extinguir llamas. No se acumula. </p>"
     },
     "Arrow (Poison)": {
-      "name": "Arrow (Poison)",
-      "description": "<p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs Check. On a fail 2d6 damage to HP. No Ablation. </p>"
+      "name": "Flecha (veneno)",
+      "description": "<p>Sin daño inmediato. Si golpea al objetivo y pasa la armadura, tira Resistir Tortugas/Drogas contra DV13. Al fallar 2d6 de daño a PV sin ablación. </p>"
     },
     "Arrow (Rubber)": {
-      "name": "Arrow (Rubber)",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "name": "Flecha (Goma)",
+      "description": "<p>No causa lesiones críticas ni produce ablación. No puede dejar al objetivo con menos de 1HP. Cuenta como munición básica para armas exóticas</p>"
     },
     "Arrow (Sleep)": {
-      "name": "Arrow (Sleep)",
-      "description": "<p>Deals no damage. If meat target hit DV13 Resist Torture/Drugs. On fail falls Prone (see pg. 169) and unconscious for 1 minute. Can be woken by damage or another person using an action to touch/shake them.</p>"
+      "name": "Flecha (Dormir)",
+      "description": "<p>No inflige daño. Si golpea al objetivo y pasa la armadura tira Resiste la Torture/Drogas contra DV13. Al fallar cae inconciente (ver pg. 169) durante 1 minuto. Puede despertarse por daño u otra persona usando una acción para tocarlos/sacudirlos.</p>"
     },
     "Arrow (Smart)": {
-      "name": "Arrow (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Flecha (Inteligente)",
+      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
     "Battery Pack": {
       "name": "Paquete de Baterías",
       "description": "<p>Un paquete de batería recargable (1 hora) usado comúnmente con armas exóticas. Contiene 8 tiros y puede ser recargado.&nbsp;</p>"
     },
     "Grenade (Armor Piercing)": {
-      "name": "Grenade (Armor Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Granada (Perforación de Armadura)",
+      "description": "<p>Doble ablación a la armadura. </p>"
     },
     "Grenade (Biotoxin)": {
-      "name": "Grenade (Biotoxin)",
-      "description": "<p>No immediate damage. If hit DV15 Resist Torture/Drugs Check. On a fail 3d6 damage to HP. No Ablation. </p>"
+      "name": "Granada (Biotoxina)",
+      "description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra DV15. Al fallar 3d6 de daño a PV sin Ablación. </p>"
     },
     "Grenade (EMP)": {
-      "name": "Grenade (EMP)",
-      "description": "<p>If hit DV15 Cybertech Check. On Fail 2 pieces of Cyberware or carried electronics (GM's choice) stop working for 1 minute. Cyberlimbs hang loosely like a dismembered meat arm see pg. 187.</p>"
+      "name": "Granada (EMP por sus siglas en inglés)",
+      "description": "<p>Si pega debe superar una tirada de Cybertecnología DV15. Si falla, 2 piezas de Cyberware o electrónica cargada (elección de GM) deja de funcionar por 1 minuto. Los cybermiembros se cuelgan sueltamente como un brazo de carne desmembrado ver pg. 187.</p>"
     },
     "Grenade (Flashbang)": {
-      "name": "Grenade (Flashbang)",
-      "description": "<p>Deals no damage. If hit roll DV15 Resist Torture/Drugs. On a fail take the Damaged Eye and Damaged Ear Critical injuries (see pg. 188) for 1 minute. No Crit damage dealt. </p>"
+      "name": "Granada (FlashBang)",
+      "description": "<p>No inflige daño. Si golpea, tira Resiste la Torture/Drogas contra DV15. Si falla, toma las heridas críticas Ojo Dañado y Oído Dañado (ver pg. 188) durante 1 minuto. No inflige daño crítico. </p>"
     },
     "Grenade (Incendiary)": {
-      "name": "Grenade (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Granada (Incendiaria)",
+      "description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno, a menos que utilice acción para extinguir llamas. No se acumula. </p>"
     },
     "Grenade (Poison)": {
-      "name": "Grenade (Poison)",
-      "description": "<p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs Check. On a fail 2d6 damage to HP. No Ablation. </p>"
+      "name": "Granada (Veneno)",
+      "description": "<p>Sin daño inmediato. Si golpea al objetivo y pasa la armadura, tira Resistir Tortugas/Drogas contra DV13. Al fallar 2d6 de daño a PV sin ablación. </p>"
     },
     "Grenade (Sleep)": {
-      "name": "Grenade (Sleep)",
-      "description": "<p>Deals no damage. If meat target hit DV13 Resist Torture/Drugs. On fail falls Prone (see pg. 169) and unconscious for 1 minute. Can be woken by damage or another person using an action to touch/shake them.</p>"
+      "name": "Granada (Dormir)",
+      "description": "<p>No inflige daño. Si golpea al objetivo y pasa la armadura, tira Resiste la Torture/Drogas contra DV13. Al fallar cae inconsciente (ver pg. 169) durante 1 minuto. Puede despertarse por daño u otra persona usando una acción para tocarlos/sacudirlos.</p>"
     },
     "Grenade (Smoke)": {
-      "name": "Grenade (Smoke)",
-      "description": "<p>Deals no Damage. Fills a 10m/yd x 10m/yd with smoke for 1 minute. Tasks obscured by smoke have a -4 penalty.</p>"
+      "name": "Granada (Humo)",
+      "description": "<p>No inflige daño. Llena 10m/yd x 10m/yd con humo durante 1 minuto. Las tareas oscurecidas por humo tienen una penalidad de -4.</p>"
     },
     "Grenade (Teargas)": {
-      "name": "Grenade (Teargas)",
-      "description": "<p>Deals no Damage. Hit targets with Meat eyes roll DV13 Resist Torture/Drugs Check. On fail suffer Damaged Eye Critical Injury (See pg. 188) for 1 minute. Does not deal critical bonus damage.</p>"
+      "name": "Granada (Lacrimógena)",
+      "description": "<p>No inflige daño. Golpea los ojos si están descubiertos. Tira para resistir la tortura/drogas contra DV13. Si falla, sufre lesiones críticas Ojo Dañado (ver página 188) durante 1 minuto. No inflige daño adicional crítico.</p>"
     },
     "Heavy Pistol (Armor Piercing)": {
-      "name": "Heavy Pistol (Armor Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Pistola Pesada (Perforación de Armadura)",
+      "description": "<p>Doble ablación a la armadura. </p>"
     },
     "Heavy Pistol (Basic)": {
-      "name": "Heavy Pistol (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Pistola Pesada (Básica)",
+      "description": "<p>Munición básica, nada especial.</p>"
     },
     "Heavy Pistol (Expansive)": {
-      "name": "Heavy Pistol (Expansive)",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "name": "Pistola Pesada (Expansiva)",
+      "description": "<p>Si tira el crítico Objeto Extraño (ver pg. 187), la víctima obtiene un segundo (diferente) daño crítico. La segunda lesión no inflige daño extra.</p>"
     },
     "Heavy Pistol (Incendiary)": {
-      "name": "Heavy Pistol (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Pistola Pesada (Incendiaria)",
+      "description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno, a menos que utilice acción para extinguir llamas. No se acumula. </p>"
     },
     "Heavy Pistol (Rubber)": {
-      "name": "Heavy Pistol (Rubber)",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "name": "Pistola Pesada (Goma)",
+      "description": "<p>No causa lesiones críticas ni produce ablación. No puede dejar al objetivo con menos de 1 PV. Cuenta como munición básica para armas exóticas</p>"
     },
     "Heavy Pistol (Smart)": {
-      "name": "Heavy Pistol (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Pistola Pesada (Inteligente)",
+      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
     "Medium Pistol (Armor Piercing)": {
-      "name": "Medium Pistol (Armor Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Pistola Media (Perforación de Armadura)",
+      "description": "<p>Doble ablación a la armadura. </p>"
     },
     "Medium Pistol (Basic)": {
-      "name": "Medium Pistol (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Pistola Media (Básica)",
+      "description": "<p>Munición básica, nada especial.</p>"
     },
     "Medium Pistol (Expansive)": {
-      "name": "Medium Pistol (Expansive)",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "name": "Pistola Media (Expansiva)",
+      "description": "<p>Si tira el crítico Objeto Extraño (ver pg. 187), la víctima obtiene un segundo (diferente) daño crítico. La segunda lesión no inflige daño extra.</p>"
     },
     "Medium Pistol (Incendiary)": {
-      "name": "Medium Pistol (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Pistola Media (Incendiaria)",
+      "description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno, a menos que utilice acción para extinguir llamas. No se acumula. </p>"
     },
     "Medium Pistol (Rubber)": {
-      "name": "Medium Pistol (Rubber)",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "name": "Pistola Media (Goma)",
+      "description": "<p>No causa lesiones críticas ni produce ablación. No puede dejar al objetivo con menos de 1 PV. Cuenta como munición básica para armas exóticas</p>"
     },
     "Medium Pistol (Smart)": {
-      "name": "Medium Pistol (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Pistola Media (Inteligente)",
+      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
     "Paintball (Acid)": {
-      "name": "Paintball (Acid)",
-      "description": "<p>Paintballs filled with acid. Deals no damage but ablates armour by 1 SP on hit*.</p>\n<p><em>*Not currently supported so will need to manually reduce armour on hit</em></p>"
+      "name": "Bola de Pintura (Ácido)",
+      "description": "<p>Bolas de Pintura llenas de ácido. No inflige daño, pero produce ablación de la armadura 1 CP al golpear*.</p>\n<p><em>*Actualmente no está soportado, por lo que tendrá que reducir manualmente la armadura al golpear</em></p>"
     },
     "Paintball (Basic)": {
-      "name": "Paintball (Basic)",
-      "description": "<p>Regular paintballs that don't do any damage. Annoying though.</p>"
+      "name": "Bola de Pintura (Básica)",
+      "description": "<p>Bolas de Pintura regulares que no causan daño. Pero molestan.</p>"
     },
     "Rifle (Armor Piercing)": {
-      "name": "Rifle (Armor Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Rifle (Perforación de Armadura)",
+      "description": "<p>Doble ablación a la armadura. </p>"
     },
     "Rifle (Basic)": {
-      "name": "Rifle (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Rifle (Básica)",
+      "description": "<p>Munición básica, nada especial.</p>"
     },
     "Rifle (Expansive)": {
-      "name": "Rifle (Expansive)",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "name": "Rifle (Expansiva)",
+      "description": "<p>Si tira el crítico Objeto Extraño (ver pg. 187), la víctima obtiene un segundo (diferente) daño crítico. La segunda lesión no inflige daño extra.</p>"
     },
     "Rifle (Incendiary)": {
-      "name": "Rifle (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Rifle (Incendiaria)",
+      "description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno, a menos que utilice acción para extinguir llamas. No se acumula. </p>"
     },
     "Rifle (Rubber)": {
-      "name": "Rifle (Rubber)",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "name": "Rifle (Goma)",
+      "description": "<p>No causa lesiones críticas ni produce ablación. No puede dejar al objetivo con menos de 1 PV. Cuenta como munición básica para armas exóticas</p>"
     },
     "Rifle (Smart)": {
-      "name": "Rifle (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Rifle (Inteligente)",
+      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
     "Rocket (Armor Piercing)": {
-      "name": "Rocket (Armor Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Cohete (Perforación de Armadura)",
+      "description": "<p>Doble ablación a la armadura. </p>"
     },
     "Rocket (Smart)": {
-      "name": "Rocket (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Cohete (Inteligente)",
+      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
     "Shotgun Shell (Basic)": {
-      "name": "Shotgun Shell (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Cartuchos de Escopeta (Básicos)",
+      "description": "<p>Munición básica, nada especial.</p>"
     },
     "Shotgun Shell (Incendiary)": {
-      "name": "Shotgun Shell (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Cartuchos de Escopeta (Incendiario)",
+      "description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno, a menos que utilice acción para extinguir llamas. No se acumula. </p>"
     },
     "Shotgun Slug (Armor Piercing)": {
-      "name": "Shotgun Slug (Armor Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Posta de Escopeta (Perforación de Armadura)",
+      "description": "<p>Doble ablación a la armadura. </p>"
     },
     "Shotgun Slug (Basic)": {
-      "name": "Shotgun Slug (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Posta de Escopeta (Básica)",
+      "description": "<p>Munición básica, nada especial.</p>"
     },
     "Shotgun Slug (Expansive)": {
-      "name": "Shotgun Slug (Expansive)",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "name": "Posta de Escopeta (Expansiva)",
+      "description": "<p>Si tira el crítico Objeto Extraño (ver pg. 187), la víctima obtiene un segundo (diferente) daño crítico. La segunda lesión no inflige daño extra.</p>"
     },
     "Shotgun Slug (Incendiary)": {
-      "name": "Shotgun Slug (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Posta de Escopeta (Incendiaria)",
+      "description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno, a menos que utilice acción para extinguir llamas. No se acumula. </p>"
     },
     "Shotgun Slug (Rubber)": {
-      "name": "Shotgun Slug (Rubber)",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "name": "Posta de Escopeta (Goma)",
+      "description": "<p>No causa lesiones críticas ni produce ablación. No puede dejar al objetivo con menos de 1 PV. Cuenta como munición básica para armas exóticas</p>"
     },
     "Shotgun Slug (Smart)": {
-      "name": "Shotgun Slug (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Posta de Escopeta (Inteligente)",
+      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
     "Very Heavy Pistol (Armor Piercing)": {
-      "name": "Very Heavy Pistol (Armor Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Pistola Muy Pesada (Perforación de Armadura)",
+      "description": "<p>Doble ablación a la armadura. </p>"
     },
     "Very Heavy Pistol (Basic)": {
-      "name": "Very Heavy Pistol (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Pistola Muy Pesada (Básica)",
+      "description": "<p>Munición básica, nada especial.</p>"
     },
     "Very Heavy Pistol (Expansive)": {
-      "name": "Very Heavy Pistol (Expansive)",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "name": "Pistola Muy Pesada (Expansiva)",
+      "description": "<p>Si tira el crítico Objeto Extraño (ver pg. 187), la víctima obtiene un segundo (diferente) daño crítico. La segunda lesión no inflige daño extra.</p>"
     },
     "Very Heavy Pistol (Incendiary)": {
-      "name": "Very Heavy Pistol (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Pistola Muy Pesada (Incendiaria)",
+      "description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno, a menos que utilice acción para extinguir llamas. No se acumula. </p>"
     },
     "Very Heavy Pistol (Rubber)": {
-      "name": "Very Heavy Pistol (Rubber)",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "name": "Pistola Muy Pesada (Goma)",
+      "description": "<p>No causa lesiones críticas ni produce ablación. No puede dejar al objetivo con menos de 1 PV. Cuenta como munición básica para armas exóticas</p>"
     },
     "Very Heavy Pistol (Smart)": {
-      "name": "Very Heavy Pistol (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Pistola Muy Pesada (Inteligente)",
+      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     }
   }
 }
