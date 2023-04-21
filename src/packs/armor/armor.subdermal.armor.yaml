@@ -3,7 +3,7 @@ effects: []
 flags:
   core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_armor.svg
-name: Subdermal Armor (Armor)
+name: Subdermal Armor
 system:
   bodyLocation:
     ablation: 0

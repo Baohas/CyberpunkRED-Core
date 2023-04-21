@@ -3,7 +3,7 @@ effects: []
 flags:
   core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/skin_weave.svg
-name: Skin Weave (Armor)
+name: Skin Weave
 system:
   bodyLocation:
     ablation: 0
