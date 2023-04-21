@@ -65,21 +65,13 @@
       "name": "Metalgear (Cabeza)",
       "description": "<p>Armadura más pesada y poderosa en circulación. Protege tu cabeza -4 a REF, DES y MOV.</p>"
     },
-    "Skin Weave (Body)": {
-      "name": "Tejido Dérmico (Cuerpo)",
-      "description": "<p>Armadura de Cuerpo CP7 y recupera 1 CP /día. No se acumula</p>"
+    "Skin Weave": {
+      "name": "Tejido Dérmico",
+      "description": "<p>Armor Item for Skin Weave Cyberware.</p>"
     },
-    "Skin Weave (Head)": {
-      "name": "Tejido Dérmico (Cabeza)",
-      "description": "<p>Armadura de Cabeza CP7 y recupera 1 CP /día. No se acumula</p>"
-    },
-    "Subdermal Armor (Body)": {
-      "name": "Blindaje Subcutáneo (Cuerpo)",
-      "description": "<p>Armadura de Cuerpo CP11 y recupera 1 CP /día. No se acumula</p>"
-    },
-    "Subdermal Armor (Head)": {
-      "name": "Blindaje Subcutáneo (Cabeza)",
-      "description": "<p>Armadura de Cabeza CP11 y recupera 1 CP /día. No se acumula</p>"
+    "Subdermal Armor": {
+      "name": "Armadura Subdermal",
+      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>"
     }
   }
 }
