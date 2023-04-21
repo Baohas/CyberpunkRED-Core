@@ -3,7 +3,7 @@ effects: []
 flags:
   core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_armor.svg
-name: Subdermal Armor (Body)
+name: Subdermal Armor (Armor)
 system:
   bodyLocation:
     ablation: 0
@@ -19,22 +19,22 @@ system:
   favorite: false
   headLocation:
     ablation: 0
-    sp: 0
+    sp: 11
   installedItems:
-    allowed: true
+    allowed: false
     allowedTypes:
       - itemUpgrade
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isBodyLocation: true
   isElectronic: false
-  isHeadLocation: false
+  isHeadLocation: true
   isShield: false
   isUpgraded: false
   penalty: 0
   price:
-    market: 1000
+    market: 0
   providesHardening: false
   revealed: true
   shieldHitPoints:
@@ -42,5 +42,5 @@ system:
     value: 0
   source: pg. 364
   upgrades: []
-  usage: equipped
+  usage: toggled
 type: armor
