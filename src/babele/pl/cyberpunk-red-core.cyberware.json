@@ -331,7 +331,7 @@
     },
     "Skin Weave": {
       "name": "Splot skórny",
-      "description": "<p>Head and Body Armor SP7 and recovers 1SP/day. Does not stack</p>"
+      "description": "<p>External Body Cyberware*. Head and Body Armor SP7 and recovers 1SP/day. Armor does not stack.</p>\n<p><em>* Cyberware Armor does not function as armor in the system, please add the \"Skin Weave\" item to the character/mook to track</em></p>"
     },
     "Skinwatch": {
       "name": "Zegarek podskórny",
@@ -351,7 +351,7 @@
     },
     "Subdermal Armor": {
       "name": "Pancerz podskórny",
-      "description": "<p>OB głowy i ciała wynosi 11 i odnawia się w tempie 1 OB/dzień. Nie nakłada się.</p>"
+      "description": "<p>External Body Cyberware*. Head and Body Armor SP11 and recovers 1SP/day. Armor does not stack.</p>\n<p><em>* Cyberware Armor does not function as armor in the system, please add the \"Subdermal Armor\" item to the character/mook to track</em></p>"
     },
     "Subdermal Grip": {
       "name": "Uchwyt podskórny",
