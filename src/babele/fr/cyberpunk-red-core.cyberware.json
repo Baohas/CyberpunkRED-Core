@@ -331,7 +331,7 @@
     },
     "Skin Weave": {
       "name": "Treillissage dermique",
-      "description": "<p>Armure PA7 de tête et corps, et récupère 1PA/jour. Ne se cumule pas</p>"
+      "description": "<p>External Body Cyberware*. Head and Body Armor SP7 and recovers 1SP/day. Armor does not stack.</p>\n<p><em>* Cyberware Armor does not function as armor in the system, please add the \"Skin Weave\" item to the character/mook to track</em></p>"
     },
     "Skinwatch": {
       "name": "Montre dermique",
@@ -351,7 +351,7 @@
     },
     "Subdermal Armor": {
       "name": "Armure subdermique",
-      "description": "<p>Le corps et la tête de l'utilisateur comptent comme ayant une armure PA 11. Récupère 1 PA par jour de repos.</p>"
+      "description": "<p>External Body Cyberware*. Head and Body Armor SP11 and recovers 1SP/day. Armor does not stack.</p>\n<p><em>* Cyberware Armor does not function as armor in the system, please add the \"Subdermal Armor\" item to the character/mook to track</em></p>"
     },
     "Subdermal Grip": {
       "name": "Poignée subdermique",
