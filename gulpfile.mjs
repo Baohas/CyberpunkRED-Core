@@ -18,7 +18,7 @@ export const assets = gulp.parallel(
 );
 
 // Export packs from Foundry to src/packs
-export const extractPacks = gulp.series(packs.extPacks);
+export const extractPacks = gulp.series(packs.extPacks, packs.genPacksBabele);
 
 // Generate the Babele translation files from the YAML fragments
 export const generateBabele = gulp.series(packs.genPacksBabele);
