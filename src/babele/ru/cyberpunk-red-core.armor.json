@@ -65,21 +65,13 @@
       "name": "Металлический шлем",
       "description": "<p>Тяжелейший и самый мощный шлем по кругу. -4 к РЕА, ЛВК и СКО.</p>"
     },
-    "Skin Weave (Body)": {
-      "name": "Skin Weave (Body)",
-      "description": "<p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>"
+    "Skin Weave": {
+      "name": "Усиление кожи",
+      "description": "<p>Armor Item for Skin Weave Cyberware.</p>"
     },
-    "Skin Weave (Head)": {
-      "name": "Skin Weave (Head)",
-      "description": "<p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>"
-    },
-    "Subdermal Armor (Body)": {
-      "name": "Subdermal Armor (Body)",
-      "description": "<p>Inbuilt SP11 Armor that recovers 1SP /day. Does not stack.</p>"
-    },
-    "Subdermal Armor (Head)": {
-      "name": "Subdermal Armor (Head)",
-      "description": "<p>Inbuilt SP11 Armor that recovers 1SP /day. Does not stack.</p>"
+    "Subdermal Armor": {
+      "name": "Подкожная броня",
+      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>"
     }
   }
 }
