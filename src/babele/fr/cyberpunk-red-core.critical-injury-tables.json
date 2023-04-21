@@ -28,12 +28,12 @@
           "4-4": "Oeil endommagé",
           "5-5": "Commotion cérébrale",
           "6-6": "Mâchoire cassée",
-          "7-7": "Foreign Object (H)",
-          "8-8": "Whiplash",
-          "9-9": "Cracked Skull",
-          "10-10": "Damaged Ear",
-          "11-11": "Crushed Windpipe",
-          "12-12": "Lost Ear"
+          "7-7": "Plaie avec corps étranger (Tête)",
+          "8-8": "Coup du lapin",
+          "9-9": "Fracture du crâne",
+          "10-10": "Oreille endommagée",
+          "11-11": "Trachée écrasée",
+          "12-12": "Oreille arrachée"
         }
       ]
     }
