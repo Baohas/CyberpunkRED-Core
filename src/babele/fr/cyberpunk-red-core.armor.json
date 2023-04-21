@@ -65,21 +65,13 @@
       "name": "Metalgear (Tête)",
       "description": "<p>Du métal et des plaques de plastique sur une combinsaison en maillage, Metalgear arrête presque tous les projectiles. -4 à REF, DEX et MOUV.</p>"
     },
-    "Skin Weave (Body)": {
-      "name": "Treillissage dermique (Corps)",
-      "description": "<p>Armure PA 7 intégrée à la peau, se régénère de 1PA / jour. Ne se cumule pas.</p>"
+    "Skin Weave": {
+      "name": "Treillissage dermique",
+      "description": "<p>Armor Item for Skin Weave Cyberware.</p>"
     },
-    "Skin Weave (Head)": {
-      "name": "Treillissage dermique (Tête)",
-      "description": "<p>Armure PA 7 intégrée à la peau, se régénère de 1PA / jour. Ne se cumule pas.</p>"
-    },
-    "Subdermal Armor (Body)": {
-      "name": "Armure subdermique (Corps)",
-      "description": "<p>Armure PA 11 intégrée à la peau, se régénère de 1PA / jour. Ne se cumule pas.</p>"
-    },
-    "Subdermal Armor (Head)": {
-      "name": "Armure subdermique (Tête)",
-      "description": "<p>Armure PA 11 intégrée à la peau, se régénère de 1PA / jour. Ne se cumule pas.</p>"
+    "Subdermal Armor": {
+      "name": "Armure subdermique",
+      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>"
     }
   }
 }
