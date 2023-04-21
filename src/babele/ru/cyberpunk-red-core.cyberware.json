@@ -331,7 +331,7 @@
     },
     "Skin Weave": {
       "name": "Усиление кожи",
-      "description": "<p>Head and Body Armor SP7 and recovers 1SP/day. Does not stack</p>"
+      "description": "<p>External Body Cyberware*. Head and Body Armor SP7 and recovers 1SP/day. Armor does not stack.</p>\n<p><em>* Cyberware Armor does not function as armor in the system, please add the \"Skin Weave\" item to the character/mook to track</em></p>"
     },
     "Skinwatch": {
       "name": "Skinwatch",
@@ -351,7 +351,7 @@
     },
     "Subdermal Armor": {
       "name": "Подкожная броня",
-      "description": "<p>Броня головы и тела с ОС11. Восстанавливает 1 ОС в день. Не складывается.</p>"
+      "description": "<p>External Body Cyberware*. Head and Body Armor SP11 and recovers 1SP/day. Armor does not stack.</p>\n<p><em>* Cyberware Armor does not function as armor in the system, please add the \"Subdermal Armor\" item to the character/mook to track</em></p>"
     },
     "Subdermal Grip": {
       "name": "Подкожный хват",
