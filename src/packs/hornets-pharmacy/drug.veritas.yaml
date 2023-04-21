@@ -93,7 +93,7 @@ system:
   equipped: owned
   favorite: false
   price:
-    market: 100
+    market: 0
   revealed: true
   source: HP
   usage: snorted
