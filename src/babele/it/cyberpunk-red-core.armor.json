@@ -65,21 +65,13 @@
       "name": "Metalgear (Testa)",
       "description": "<p>Armatura più pesante e potente in circolazione. Protegge la testa con -4 a RIF, DES e VEL.</p>"
     },
-    "Skin Weave (Body)": {
-      "name": "Skin Weave (Body)",
-      "description": "<p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>"
+    "Skin Weave": {
+      "name": "Skin Weave",
+      "description": "<p>Armor Item for Skin Weave Cyberware.</p>"
     },
-    "Skin Weave (Head)": {
-      "name": "Skin Weave (Head)",
-      "description": "<p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>"
-    },
-    "Subdermal Armor (Body)": {
-      "name": "Subdermal Armor (Body)",
-      "description": "<p>Inbuilt SP11 Armor that recovers 1SP /day. Does not stack.</p>"
-    },
-    "Subdermal Armor (Head)": {
-      "name": "Subdermal Armor (Head)",
-      "description": "<p>Inbuilt SP11 Armor that recovers 1SP /day. Does not stack.</p>"
+    "Subdermal Armor": {
+      "name": "Armatura Subdermale",
+      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>"
     }
   }
 }
