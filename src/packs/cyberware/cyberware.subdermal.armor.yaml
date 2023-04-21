@@ -15,8 +15,9 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>External Body Cyberware*. Head and Body Armor SP11 and recovers 1SP/day. Armor
-      does not stack.</p>
+    value: >-
+      <p>External Body Cyberware*. Head and Body Armor SP11 and recovers
+      1SP/day. Armor does not stack.</p>
 
       <p><em>* Cyberware Armor does not function as armor in the system, please
       add the "Subdermal Armor (Armor)" item to the character/mook to

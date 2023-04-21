@@ -15,12 +15,12 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>External Body Cyberware*. Head and Body Armor SP7 and recovers 1SP/day. Armor
-      does not stack.</p>
+    value: >-
+      <p>External Body Cyberware*. Head and Body Armor SP7 and recovers 1SP/day.
+      Armor does not stack.</p>
 
       <p><em>* Cyberware Armor does not function as armor in the system, please
-      add the "Skin Weave (Armor)" item to the character/mook to
-      track</em></p>
+      add the "Skin Weave (Armor)" item to the character/mook to track</em></p>
   dvTable: ""
   favorite: false
   fireModes:

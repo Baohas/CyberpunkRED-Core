@@ -3,7 +3,7 @@ effects: []
 flags:
   core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/skin_weave.svg
-name: Skin Weave (Armour)
+name: Skin Weave (Armor)
 system:
   bodyLocation:
     ablation: 0
@@ -14,7 +14,7 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>
+    value: <p>Armor Item for Skin Weave Cyberware.</p>
   equipped: owned
   favorite: false
   headLocation:

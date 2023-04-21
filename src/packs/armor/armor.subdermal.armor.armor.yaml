@@ -14,7 +14,7 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Inbuilt SP11 Armor that recovers 1SP /day. Does not stack.</p>
+    value: <p>Armor Item for Subdermal Armor Cyberware.</p>
   equipped: owned
   favorite: false
   headLocation:

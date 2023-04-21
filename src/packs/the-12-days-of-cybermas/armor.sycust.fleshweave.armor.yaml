@@ -14,7 +14,7 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Armor Item for Sycust FleshWeave Cyberware</p>
+    value: <p>Armor Item for Sycust FleshWeave Cyberware.</p>
   equipped: owned
   favorite: false
   headLocation:

@@ -65,20 +65,12 @@
       "name": "Metalgear (Head)",
       "description": "<p>Heaviest and most powerful armor in circulation. Protects your head -4 to REF, DEX, and MOVE.</p>"
     },
-    "Skin Weave (Body)": {
-      "name": "Skin Weave (Body)",
+    "Skin Weave (Armour)": {
+      "name": "Skin Weave (Armour)",
       "description": "<p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>"
     },
-    "Skin Weave (Head)": {
-      "name": "Skin Weave (Head)",
-      "description": "<p>Inbuilt SP7 Armor that recovers 1SP /day. Does not stack.</p>"
-    },
-    "Subdermal Armor (Body)": {
-      "name": "Subdermal Armor (Body)",
-      "description": "<p>Inbuilt SP11 Armor that recovers 1SP /day. Does not stack.</p>"
-    },
-    "Subdermal Armor (Head)": {
-      "name": "Subdermal Armor (Head)",
+    "Subdermal Armor (Armor)": {
+      "name": "Subdermal Armor (Armor)",
       "description": "<p>Inbuilt SP11 Armor that recovers 1SP /day. Does not stack.</p>"
     }
   }
