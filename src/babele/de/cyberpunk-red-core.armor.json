@@ -65,21 +65,13 @@
       "name": "Metalgear (Kopf)",
       "description": "<p>Schwerster und mächtigster Helm, den es zu kaufen gibt. -4 REF, GES, und BEW.</p>"
     },
-    "Skin Weave (Body)": {
-      "name": "Hautverstärker (Körper)",
-      "description": "<p>Implantierte SW 7 Panzerung. Regeneriert 1SW am Tag. Kann nicht gestapelt werden.</p>"
+    "Skin Weave": {
+      "name": "Hautverstärker",
+      "description": "<p>Armor Item for Skin Weave Cyberware.</p>"
     },
-    "Skin Weave (Head)": {
-      "name": "Hautverstärker (Kopf)",
-      "description": "<p>Implantierte SW 7 Panzerung. Regeneriert 1SW am Tag. Kann nicht gestapelt werden.</p>"
-    },
-    "Subdermal Armor (Body)": {
-      "name": "Subdermale Panzerung (Körper)",
-      "description": "<p>Implantierte SW 7 Panzerung. Regeneriert 1SW am Tag. Kann nicht gestapelt werden.</p>"
-    },
-    "Subdermal Armor (Head)": {
-      "name": "Subdermale Panzerung (Kopf)",
-      "description": "<p>Implantierte SW 7 Panzerung. Regeneriert 1SW am Tag. Kann nicht gestapelt werden.</p>"
+    "Subdermal Armor": {
+      "name": "Subdermale Panzerung",
+      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>"
     }
   }
 }
