@@ -20,7 +20,7 @@ system:
       1SP/day. Armor does not stack.</p>
 
       <p><em>* Cyberware Armor does not function as armor in the system, please
-      add the "Subdermal Armor (Armor)" item to the character/mook to
+      add the "Subdermal Armor" item to the character/mook to
       track</em></p>
   dvTable: ""
   favorite: false

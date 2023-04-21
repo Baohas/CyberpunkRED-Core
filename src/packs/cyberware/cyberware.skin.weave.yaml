@@ -20,7 +20,7 @@ system:
       Armor does not stack.</p>
 
       <p><em>* Cyberware Armor does not function as armor in the system, please
-      add the "Skin Weave (Armor)" item to the character/mook to track</em></p>
+      add the "Skin Weave" item to the character/mook to track</em></p>
   dvTable: ""
   favorite: false
   fireModes:
