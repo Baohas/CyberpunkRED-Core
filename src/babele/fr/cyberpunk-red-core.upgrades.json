@@ -2,12 +2,12 @@
   "label": "Améliorations",
   "entries": {
     "Armored Chassis": {
-      "name": "Armored Chassis",
-      "description": "<p>Can be applied to all vehicles. Armors the vehicle to SP13. Doesn't affect the glass.</p>"
+      "name": "Châssis blindé",
+      "description": "<p>Peut être appliqué à tous les véhicules. Armure du véhicule PA13. N'affecte pas les parties vitrées.</p>"
     },
     "AV-4 Engine Upgrade": {
-      "name": "AV-4 Engine Upgrade",
-      "description": "<p>Can be applied to all land vehicles. Adds Aerodyne thrusters to the vehicle, allowing flight. While flying the vehicle has a narrative speed of 200MPH / 322KPH, and a combat speed of 40. The vehicle must be piloted using the Pilot Air Vehicle skill while mid-air.</p>"
+      "name": "Amélioration de moteur d'AV-4",
+      "description": "<p>Peut être appliqué à tous les véhicules terrestres. Ajoute des propulseurs Aérodyne au véhicule, permettant le vol. En volant le véhicule a une vitesse narrative de 200MPH / 322KPH, et une vitesse de combat de 40. Le véhicule en vol doit être piloté en utilisant la compétence de Pilotage de véhicule aérien.</p>"
     },
     "Backup Drive": {
       "name": "Disque dur de sauvegarde",
@@ -18,8 +18,8 @@
       "description": "<p>Une vieille idée qui fonctionne toujours aussi bien ; vous permet d'utiliser votre arme à feu comme une arme de mêlée légère. Lorsqu'elle est attachée, l'arme ne peut pas être cachée sous les vêtements.</p>"
     },
     "Bulletproof Glass": {
-      "name": "Bulletproof Glass",
-      "description": "<p>Can be applied to all vehicles. All glass on the vehicle is now considered cover with 15 HP. Can be taken a second time to upgrade to 30HP. All windows take damage individually.</p>"
+      "name": "Verre pare-balles",
+      "description": "<p>Peut être appliqué à tous les véhicules. Tout le verre sur le véhicule est maintenant considéré comme couvert avec 15PA. Peut être amélioré une seconde fois pour passer à 30PA. Chaque fenêtre subit des dégâts individuellement.</p>"
     },
     "Combat Plow": {
       "name": "Combat Plow",
