@@ -67,11 +67,11 @@
     },
     "Skin Weave": {
       "name": "Treillissage dermique",
-      "description": "<p>Armor Item for Skin Weave Cyberware.</p>"
+      "description": "<p>Cyberimplant peau tissée blindée</p>"
     },
     "Subdermal Armor": {
       "name": "Armure subdermique",
-      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>"
+      "description": "<p>Cyberimplant armure sous-cutanée</p>"
     }
   }
 }
