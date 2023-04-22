@@ -1,0 +1,45 @@
+_id: rkLqCqLvZ26DyYDz
+flags:
+  core:
+    sourceId: Compendium.cyberpunk-red-core.midnight-with-the-upload.rkLqCqLvZ26DyYDz
+img: systems/cyberpunk-red-core/icons/compendium/default/cyberdeck.svg
+name: Raven Microcyb Phoenix
+system:
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Never lose a Program again.</p>
+
+      <p>6 slots for Programs or Hardware.</p>
+
+      <p>Any Program destroyed in a netrunning session is restored upon a safe
+      Jack Out.</p>
+  equipped: owned
+  favorite: false
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - program
+    list: []
+    slots: 6
+    usedSlots: 0
+  isElectronic: true
+  isInstalled: false
+  isUpgraded: false
+  price:
+    market: 1000
+  programs:
+    installed: []
+    rezzed: []
+  providesHardening: false
+  size: 1
+  source: MWtU
+  upgrades: []
+type: cyberdeck

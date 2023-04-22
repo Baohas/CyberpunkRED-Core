@@ -1,0 +1,42 @@
+_id: 2XWVECWhfnVrwtQv
+flags:
+  core:
+    sourceId: Compendium.cyberpunk-red-core.midnight-with-the-upload.2XWVECWhfnVrwtQv
+img: systems/cyberpunk-red-core/icons/compendium/default/cyberdeck.svg
+name: Microtech Assault
+system:
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Relax and let your Black ICE do all the heavy lifting.</p>
+      <p>4 slots for Programs, 5 slots for Hardware.</p>
+      <p>Program slots only accept Black ICE.</p>
+  equipped: owned
+  favorite: false
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - program
+    list: []
+    slots: 9
+    usedSlots: 0
+  isElectronic: true
+  isInstalled: false
+  isUpgraded: false
+  price:
+    market: 500
+  programs:
+    installed: []
+    rezzed: []
+  providesHardening: false
+  size: 1
+  source: MWtU
+  upgrades: []
+type: cyberdeck

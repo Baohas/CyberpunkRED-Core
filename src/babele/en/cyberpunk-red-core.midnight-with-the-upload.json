@@ -3,63 +3,63 @@
   "entries": {
     "Kirama Advanced Deck": {
       "name": "Kirama Advanced Deck",
-      "description": "<p><em>Though it may not be the flashiest choice, Kirama&rsquo;s finest Cyberdeck is expertly balanced and offers some highly practical safety features.</em></p>\n<p>5 slots for Programs or Hardware. Netrunner suffers no negative effects from an Unsafe Jack Out.</p>"
+      "description": "<p>Though it may not be the flashiest choice, Kirama&rsquo;s finest Cyberdeck is expertly balanced and offers some highly practical safety features.</p>\n<p>5 slots for Programs or Hardware.</p>\n<p>Netrunner suffers no negative effects from an Unsafe Jack Out.</p>"
     },
     "Kirama Entry Deck": {
       "name": "Kirama Entry Deck",
-      "description": "<p><em>An affordable and balanced Cyberdeck for novice Netrunners. Though limited by its modest hardware specs, it retains the advanced safety features of Kirama&rsquo;s flagship Cyberdecks.</em></p>\n<p>5 slots only for Programs. Only one of each Program category can be installed at a time (Attacker, Defender, Booster, Black ICE). Netrunner suffers no negative effects from an Unsafe Jack Out.</p>\n<p>&nbsp;</p>"
+      "description": "<p>An affordable and balanced Cyberdeck for novice Netrunners. Though limited by its modest hardware specs, it retains the advanced safety features of Kirama&rsquo;s flagship Cyberdecks.</p>\n<p>5 slots only for Programs.</p>\n<p>Only one of each Program category can be installed at a time (Attacker, Defender, Booster, Black ICE). Netrunner suffers no negative effects from an Unsafe Jack Out.</p>"
     },
     "Kirama Training Deck": {
       "name": "Kirama Training Deck",
-      "description": "<p><em>The quintessential starter Cyberdeck. Bargain-bin price with bare-minimum hardware specs.</em></p>\n<p>5 slots only for Programs. Netrunner must be 2m/yds or closer to Access Point to Jack In. All brain damage from Net combat is doubled.</p>"
+      "description": "<p>The quintessential starter Cyberdeck. Bargain-bin price with bare-minimum hardware specs.</p>\n<p>5 slots only for Programs.</p>\n<p>Netrunner must be 2m/yds or closer to Access Point to Jack In. All brain damage from Net combat is doubled.</p>"
     },
     "Microtech Assault": {
       "name": "Microtech Assault",
-      "description": "<p><em>Relax and let your Black ICE do all the heavy lifting.</em></p>\n<p>4 slots for Programs, 5 slots for Hardware. Program slots only accept Black ICE.<br></p>"
+      "description": "<p>Relax and let your Black ICE do all the heavy lifting.</p>\n<p>4 slots for Programs, 5 slots for Hardware.</p>\n<p>Program slots only accept Black ICE.</p>"
     },
     "Microtech Scout": {
       "name": "Microtech Scout",
-      "description": "<p>5 slots for Programs or Hardware. Netrunner can roll Pathfinder without a NET Action right after Jacking In.</p>"
+      "description": "<p>5 slots for Programs or Hardware.</p>\n<p>Netrunner can roll Pathfinder without a NET Action right after Jacking In.</p>"
     },
     "Microtech Warrior": {
       "name": "Microtech Warrior",
-      "description": "<p>7 Slots only for Programs. Netrunner can activate one Armor Program without a NET Action right after Jacking In.</p>"
+      "description": "<p>7 Slots only for Programs.</p>\n<p>Netrunner can activate one Armor Program without a NET Action right after Jacking In.</p>"
     },
     "Raven Microcyb Hummingbird": {
       "name": "Raven Microcyb Hummingbird",
-      "description": "<p><em>No frills, just raw processing power.</em></p>\n<p>2 slots only for Hardware. +1 to Net Actions each turn.</p>"
+      "description": "<p>No frills, just raw processing power.</p>\n<p>2 slots only for Hardware</p>\n<p>+1 to Net Actions each turn.</p>"
     },
     "Raven Microcyb Kestrel 2": {
       "name": "Raven Microcyb Kestrel 2",
-      "description": "<p><em>Black ICE can&rsquo;t hit what they can&rsquo;t catch.</em><br>7 slots only for Programs. Right after Jacking In, Netrunner can activate a maximum of 2 installed Speedy Gonzalvez Programs without a NET Action.</p>"
+      "description": "<p>Black ICE can&rsquo;t hit what they can&rsquo;t catch.</p>\n<p>7 slots only for Programs.</p>\n<p>Right after Jacking In, Netrunner can activate a maximum of 2 installed Speedy Gonzalvez Programs without a NET Action.</p>"
     },
     "Raven Microcyb Phoenix": {
       "name": "Raven Microcyb Phoenix",
-      "description": "<p><em>Never lose a Program again.</em><br>6 slots for Programs or Hardware. Any Program destroyed in a netrunning session is restored upon a safe Jack Out.</p>"
+      "description": "<p>Never lose a Program again.</p>\n<p>6 slots for Programs or Hardware.</p>\n<p>Any Program destroyed in a netrunning session is restored upon a safe Jack Out.</p>"
     },
     "SGI Technologies Kerberos": {
       "name": "SGI Technologies Kerberos",
-      "description": "<p dir=\"ltr\"><em>Unleash the fires of Hell upon your rivals.</em></p>\n<p dir=\"ltr\">6 slots for Programs, 5 slots for Hardware. Program slots will only accept Hellhound Black ICE.</p>\n<p>&nbsp;</p>"
+      "description": "<p dir=\"ltr\">Unleash the fires of Hell upon your rivals.</p>\n<p dir=\"ltr\">6 slots for Programs, 5 slots for Hardware.</p>\n<p dir=\"ltr\">Program slots will only accept Hellhound Black ICE.</p>\n<p>&nbsp;</p>"
     },
     "SGI Technologies Verdant Knight": {
       "name": "SGI Technologies Verdant Knight",
-      "description": "<p>The classic sword-and-board Cyberdeck build is highly effective against Black ICE. Just don&rsquo;t plan on going toe-to-toe with a hostile Netrunner.</p>\n<p>9 slots only for Programs. Slots only accept Sword or Shield Programs.</p>"
+      "description": "<p>The classic sword-and-board Cyberdeck build is highly effective against Black ICE. Just don&rsquo;t plan on going toe-to-toe with a hostile Netrunner.</p>\n<p>9 slots only for Programs.</p>\n<p>Slots only accept Sword or Shield Programs.</p>"
     },
     "SGI Technologies Warlock's Book": {
       "name": "SGI Technologies Warlock's Book",
-      "description": "<p><em>A fantastic option for dismantling hostile Netrunners. Just hope they don&rsquo;t have any Black ICE.</em><br>6 slots for Programs or Hardware, 3 extra slots only for Flak programs.<br>Restrictions for Defender Programs and Black ICE: Only Flak and Asp can be installed in any slot.</p>"
+      "description": "<p>A fantastic option for dismantling hostile Netrunners. Just hope they don&rsquo;t have any Black ICE.</p>\n<p>6 slots for Programs or Hardware, 3 extra slots only for Flak programs.</p>\n<p>Restrictions for Defender Programs and Black ICE: Only Flak and Asp can be installed in any slot.</p>"
     },
     "Zetatech Kaliya": {
       "name": "Zetatech Kaliya",
-      "description": "<p><em>A fantastic option for dismantling hostile Netrunners. Just hope they don&rsquo;t have any Black ICE.</em><br>6 slots for Programs or Hardware, 3 extra slots only for Flak programs.<br>Restrictions for Defender Programs and Black ICE: Only Flak and Asp can be installed in any slot.</p>"
+      "description": "<p>A fantastic option for dismantling hostile Netrunners. Just hope they don&rsquo;t have any Black ICE.</p>\n<p>6 slots for Programs or Hardware, 3 extra slots only for Flak programs.</p>\n<p>Restrictions for Defender Programs and Black ICE: Only Flak and Asp can be installed in any slot.</p>"
     },
     "Zetatech MicroMate": {
       "name": "Zetatech MicroMate",
-      "description": "<p><em>Perfect for Netrunners who only know one speed: All offense, all the time. Just don't get hit, it's going to hurt. A lot.</em><br>9 slots for Programs or Hardware. Slots will not accept Defender Programs. All brain damage from NET combat is doubled.</p>"
+      "description": "<p>Perfect for Netrunners who only know one speed: All offense, all the time. Just don't get hit, it's going to hurt. A lot.</p>\n<p>9 slots for Programs or Hardware.</p>\n<p>Slots will not accept Defender Programs. All brain damage from NET combat is doubled.</p>"
     },
     "Zetatech Parraline 6000": {
       "name": "Zetatech Parraline 6000",
-      "description": "<p><em>All the Hardware options with none of the restrictions.</em><br>3 Program slots, 6 Hardware slots.</p>"
+      "description": "<p>All the Hardware options with none of the restrictions.</p>\n<p>3 Program slots, 6 Hardware slots.</p>"
     },
     "Aerie": {
       "name": "Aerie",
@@ -71,7 +71,7 @@
     },
     "Combat Recorder": {
       "name": "Combat Recorder",
-      "description": "<p><em>Real-world Combat data is invaluable for Black ICE development.</em><br>If another Netrunner in the same Net Architecture fails a Death Save, the last 5 minutes of non-self incriminating Netrun combat data is saved to the Cyberdeck. Recordings can be sold for 50eb.</p>"
+      "description": "<p>Real-world Combat data is invaluable for Black ICE development.</p>\n<p>If another Netrunner in the same Net Architecture fails a Death Save, the last 5 minutes of non-self incriminating Netrun combat data is saved to the Cyberdeck. Recordings can be sold for 50eb.</p>"
     },
     "Defense Sequencer": {
       "name": "Defense Sequencer",
@@ -91,7 +91,7 @@
     },
     "Smithy": {
       "name": "Smithy",
-      "description": "<p dir=\"ltr\"><em>Be prepared for anything. Enter a NET Architecture full of Black ICE and you don&rsquo;t have have a Sword Program handy? Swap out your useless Banhammer with the press of a button.</em></p>\n<p dir=\"ltr\">Use Meat Action to change any and all installed Sword Programs into Banhammer Programs or vice versa.</p>\n<p>&nbsp;</p>"
+      "description": "<p dir=\"ltr\">Be prepared for anything. Enter a NET Architecture full of Black ICE and you don&rsquo;t have have a Sword Program handy? Swap out your useless Banhammer with the press of a button.</p>\n<p dir=\"ltr\">Use Meat Action to change any and all installed Sword Programs into Banhammer Programs or vice versa.</p>\n<p>&nbsp;</p>"
     },
     "Snaketrap": {
       "name": "Snaketrap",
@@ -99,7 +99,7 @@
     },
     "Swamp Mist": {
       "name": "Swamp Mist",
-      "description": "<p>Wisp Black ICE deal 2d6 damage instead of 1d6.&nbsp;<br>Black ICE Program restrictions: Only Wisps can be installed.</p>"
+      "description": "<p>Wisp Black ICE deal 2d6 damage instead of 1d6.</p>\n<p>Black ICE Program restrictions: Only Wisps can be installed.</p>"
     },
     "Swifty Clean": {
       "name": "Swifty Clean",

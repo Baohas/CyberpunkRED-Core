@@ -44,6 +44,7 @@
 - Added Nomad vehicle upgrades with help from WombatCombat
 - Added Spinning Your Wheels upgrades with help from Sushimatic
 - Added Must Have Cyberware Deals with help from Miklos
+- Added Midnight With The Upload with help from Miklos
 
 ### Changes
 
