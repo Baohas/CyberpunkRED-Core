@@ -11,11 +11,11 @@
     },
     "Concussion": {
       "name": "Concusión",
-      "description": "<p>-2 to every action.</p>"
+      "description": "<p> -2 a las acciones.</p>"
     },
     "Cracked Skull": {
       "name": "Cráneo Partido",
-      "description": "<p>Triples damage to HP on aimed headshots (rather than the normal double damage).</p>"
+      "description": "<p>Triplica el daño a PV en los disparos dirigidos a la cabeza (en lugar del doble de daño normal).</p>"
     },
     "Crushed Windpipe": {
       "name": "Traquea Aplastada",
@@ -23,11 +23,11 @@
     },
     "Damaged Ear": {
       "name": "Oído Dañado",
-      "description": "<p>If move more than 4m/yds in a Turn, cannot move next turn. -2 to hearing based Perception.</p>"
+      "description": "<p>Si se mueve más de 4m/yds en un turno, no se puede mover el siguiente turno. -2 a la Percepción (oído).</p>"
     },
     "Damaged Eye": {
       "name": "Ojo Dañado",
-      "description": "<p>-2 to Ranged and Perception (Sight).</p>"
+      "description": "<p> -2 a Ataques a Distancia y Percepción (visión).</p>"
     },
     "Foreign Object (H)": {
       "name": "Objeto Extraño (H)",
@@ -35,15 +35,15 @@
     },
     "Lost Ear": {
       "name": "Oído Perdido",
-      "description": "<p>Ear is removed. If move more than 4m/yds in a Turn, cannot move next turn. -4 to hearing based Perception.</p>"
+      "description": "<p>El oído ha sido eliminado. Si se mueve más de 4m/yds en un turno, no se puede mover el siguiente turno. -4 a la Percepción (oído).</p>"
     },
     "Lost Eye": {
       "name": "Ojo Perdido",
-      "description": "<p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>"
+      "description": "<p>Se ha eliminado el ojo. -4 a los Ataques a Distancia y Percepción basada en la visión.</p>"
     },
     "Whiplash": {
       "name": "Latigazo",
-      "description": "<p>No other effects beyond increasing the base Death Save Penalty by 1.</p>"
+      "description": "<p>No hay otros efectos más allá de aumentar la pena básica de salvación contra la muerte en 1.</p>"
     }
   }
 }
