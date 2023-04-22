@@ -14,7 +14,7 @@
       "description": "<p>A dynamo on your bike's wheel for converting mechanical energy into electricity. Charges a battery pack (such as for weapons) in one hour.</p>"
     },
     "Bulletproof Glass": {
-      "name": "Bulletproof Glass",
+      "name": "Verre pare-balles",
       "description": "<p>Enclosure glass gains 7 HP.</p>\n<p>Bike first requires the Enclosure upgrade to install this upgrade.</p>"
     },
     "Cycle Armor": {
