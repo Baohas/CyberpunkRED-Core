@@ -11,15 +11,15 @@ install:
 
 # Run `npx gulp build`
 build:
-	@npx gulp build
+	@DEBUG=$(DEBUG) npx gulp build
 
 # Run `npx gulp watch`
 watch:
-	@npx gulp watch
+	@DEBUG=$(DEBUG) npx gulp watch
 
 # Run `npx gulp clean`
 clean:
-	@npx gulp clean
+	@DEBUG=$(DEBUG) npx gulp clean
 
 # Run `npx gulp clean && npx gulp watch`
 clean_watch: clean watch

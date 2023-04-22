@@ -1,9 +1,5 @@
-import yargs from "yargs";
-
-const _argv = yargs(process.argv).argv;
-
 // Exports
-export const DEBUG = _argv.debug !== undefined;
+export const DEBUG = process.env.DEBUG ? process.env.DEBUG : false;
 export const DEFAULT_DESTINATION_FOLDER = "dist";
 export const CHANGELOG_FILE = process.env.CHANGELOG_FILE
   ? process.env.CHANGELOG_FILE

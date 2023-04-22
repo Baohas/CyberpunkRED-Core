@@ -474,6 +474,9 @@ async function genPacks() {
         for (const entry of data) {
           db.write(`${JSON.stringify(entry)}\n`);
         }
+        if (DEBUG) {
+          log(`DEBUG: writing ${packPath}`);
+        }
         db.end();
       } else {
         throw Error(`${path.join(fragmentDir, packName)} does not exist`);
@@ -570,6 +573,9 @@ async function genPacksBabele() {
             }
           });
 
+          if (DEBUG) {
+            console.log(`DEBUG: writing ${babelePath}`);
+          }
           fs.writeFileSync(babelePath, JSON.stringify(packData, null, 2));
         }
       }
