@@ -22,16 +22,16 @@
       "description": "<p>Peut être appliqué à tous les véhicules. Tout le verre sur le véhicule est maintenant considéré comme couvert avec 15PA. Peut être amélioré une seconde fois pour passer à 30PA. Chaque fenêtre subit des dégâts individuellement.</p>"
     },
     "Combat Plow": {
-      "name": "Combat Plow",
-      "description": "<p>Can be applied to all land and sea vehicles, except Bikes and Jetskies. When you ram something with the front of your vehicle, your vehicle doesn't take damage and nobody inside suffers from the Whiplash critical injury. You deal 2d6 additional ramming damage if your vehicle was boosted by NOS on the turn you ram the object.&nbsp;</p>"
+      "name": "Pare-chocs de combat",
+      "description": "<p>Peut être appliqué à tous les véhicules terrestres et maritimes, à l'exception des vélos et des jet-skis. Lorsque vous percutez quelque chose à l'avant de votre véhicule, votre véhicule ne subit pas de dommages et personne à l'intérieur ne souffre de la blessure critique Coup du lapin. Vous infligez 2d6 dégâts de percussion supplémentaires si votre véhicule a été boosté par CAFAY (NOS).&nbsp;</p>"
     },
     "Communications Center": {
-      "name": "Communications Center",
-      "description": "<p>Can be applied to all vehicles. Touchscreen console that functions as an Agent, along with a storage unit containing 6 <strong>Radio Communicators</strong>, 6 <strong>Scrambler/Descramblers</strong>, a <strong>Radio Scanner/Music Player</strong>, a <strong>Homing tracer</strong> with 6 tracers, and an <strong>Audio Recorder</strong>.</p>"
+      "name": "Centre de communications",
+      "description": "<p>Peut être appliqué à tous les véhicules. Console à écran tactile qui fonctionne comme un Agent, avec une unité de stockage contenant 6 <strong>Communicateurs Radio</strong>, 6 <strong>Brouilleurs / Décrypteurs</strong>, un <strong>Récepteur radio / de musique</strong>, un <strong>récepteur traceur</strong> avec 6 traceurs, et un <strong>enregistreur audio</strong>.</p>"
     },
     "Deployable Spike Strip": {
-      "name": "Deployable Spike Strip",
-      "description": "<p>Can be applied to all groundcars. As an Action, the driver can deploy a spike strip. While deployed, any closely trailing vehicles with tires must make a DV17 Drive Land Vehicle Check. On a failure, their vehicle takes 4d6 damage as if hitting a weak point. Replacement spike strips cost 10eb.&nbsp;</p>\n<p>You may install this upgrade multiple times, each upgrade increases the amount of spike strips that can be deployed before the system requires reloading, and it cannot be reloaded while the vehicle is moving.</p>"
+      "name": "Herse déployable",
+      "description": "<p>Peut être appliqué à toutes les voitures de sol. Par une action, le conducteur peut déployer une bande de pointe. Lors du déploiement, tout véhicule avec des pneus qui suit de près doit effectuer un jet de conduite de véhicule terrestre SD17. En cas d'échec, le véhicule subit 4d6 de dégâts comme s'il touchait un point faible. Les bandes de pointes de remplacement coûtent 10eb.&nbsp;</p>\n<p>Vous pouvez installer cette amélioration plusieurs fois, chaque amélioration augmente la quantité de bandes de pointes qui peuvent être déployées avant le rechargement du système, et il ne peut pas être rechargé pendant que le véhicule se déplace.</p>"
     },
     "DNA Lock": {
       "name": "Verrou biométrique",
