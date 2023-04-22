@@ -106,6 +106,13 @@ export default class PackIconMigration extends CPRMigration {
       return item.isOwned ? updateData : item.update(updateData);
     }
 
+    // Update cyberdeck icon path
+    if (itemImage.includes("icons/compendium/gear/cyberdeck.svg")) {
+      const newPath = itemImage.replace("gear", "default");
+      updateData.img = newPath;
+      return item.isOwned ? updateData : item.update(updateData);
+    }
+
     return null;
   }
 
