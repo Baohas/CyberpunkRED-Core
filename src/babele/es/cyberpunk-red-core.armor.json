@@ -67,11 +67,11 @@
     },
     "Skin Weave": {
       "name": "Tejido Dérmico",
-      "description": "<p>Armor Item for Skin Weave Cyberware.</p>"
+      "description": "<p>Objeto de Armadura para el Cyberware de Tejido de Dérmico.</p>"
     },
     "Subdermal Armor": {
       "name": "Armadura Subdermal",
-      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>"
+      "description": "<p>Objeto de Armadura para el Cyberware de Blindaje Subcutáneo.</p>"
     }
   }
 }
