@@ -53,7 +53,9 @@ system:
   revealed: true
   rof: 1
   size: 2
-  source: pg. 361
+  source:
+    book: Core
+    page: 361
   type: cyberEye
   unarmedAutomaticCalculation: true
   upgrades: []

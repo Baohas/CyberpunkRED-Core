@@ -16,7 +16,9 @@ system:
   favorite: false
   price:
     market: 10
-  source: pg. 347
+  source:
+    book: Core
+    page: 347
   type: basic
   variety: paintball
 type: ammo

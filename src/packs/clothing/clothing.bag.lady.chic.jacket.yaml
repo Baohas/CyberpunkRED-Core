@@ -28,7 +28,9 @@ system:
   price:
     market: 20
   revealed: true
-  source: Pg. 356
+  source:
+    book: Core
+    page: 356
   style: bagLadyChic
   type: jacket
   upgrades: []

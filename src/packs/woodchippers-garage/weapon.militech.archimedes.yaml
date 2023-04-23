@@ -46,7 +46,9 @@ system:
     market: 5000
   revealed: true
   rof: 1
-  source: WG
+  source:
+    book: WG
+    page: ""
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: equipped

@@ -45,7 +45,9 @@ system:
     market: 1000
   revealed: true
   rof: 1
-  source: pg. 341
+  source:
+    book: Core
+    page: 341
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: equipped

@@ -50,7 +50,9 @@ system:
   revealed: true
   rof: 1
   size: 1
-  source: ""
+  source:
+    book: Core
+    page: ""
   type: fashionware
   unarmedAutomaticCalculation: true
   upgrades: []

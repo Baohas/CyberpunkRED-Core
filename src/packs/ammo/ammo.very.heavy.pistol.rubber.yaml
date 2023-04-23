@@ -18,7 +18,9 @@ system:
   favorite: false
   price:
     market: 10
-  source: pg. 346
+  source:
+    book: Core
+    page: 346
   type: rubber
   variety: vHeavyPistol
 type: ammo

@@ -28,7 +28,9 @@ system:
   price:
     market: 50
   revealed: true
-  source: pg. 355
+  source:
+    book: Core
+    page: 355
   upgrades: []
   usage: toggled
 type: gear

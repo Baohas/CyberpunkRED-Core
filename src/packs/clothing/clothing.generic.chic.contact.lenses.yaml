@@ -29,7 +29,9 @@ system:
   price:
     market: 10
   revealed: true
-  source: Pg. 356
+  source:
+    book: Core
+    page: 356
   style: genericChic
   type: contactLenses
   upgrades: []

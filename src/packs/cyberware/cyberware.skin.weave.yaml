@@ -56,7 +56,9 @@ system:
   revealed: true
   rof: 1
   size: 1
-  source: pg. 364
+  source:
+    book: Core
+    page: 364
   type: cyberwareExternal
   unarmedAutomaticCalculation: true
   upgrades: []

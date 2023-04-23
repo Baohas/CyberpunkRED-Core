@@ -64,7 +64,9 @@ system:
   providesHardening: false
   rof: 1
   size: 2
-  source: pg. 368
+  source:
+    book: Core
+    page: 368
   type: cyberdeck
   unarmedAutomaticCalculation: true
   usesType: magazine

@@ -57,7 +57,9 @@ system:
   revealed: true
   rof: 1
   size: 1
-  source: MHCD
+  source:
+    book: MHCD
+    page: ""
   type: fashionware
   unarmedAutomaticCalculation: true
   upgrades: []

@@ -26,7 +26,9 @@ system:
   price:
     market: 100
   revealed: true
-  source: pg. 355
+  source:
+    book: ELO
+    page: 355
   upgrades: []
   usage: toggled
 type: gear

@@ -19,7 +19,9 @@ system:
   favorite: false
   price:
     market: 100
-  source: 12DoG
+  source:
+    book: 12DoG
+    page: ""
   type: armorPiercing
   variety: custom
 type: ammo

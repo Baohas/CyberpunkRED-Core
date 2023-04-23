@@ -37,7 +37,9 @@ system:
   price:
     market: 100
   revealed: true
-  source: CC
+  source:
+    book: CC
+    page: ""
   upgrades: []
   usage: toggled
 type: gear

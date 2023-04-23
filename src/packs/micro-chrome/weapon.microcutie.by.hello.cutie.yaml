@@ -46,7 +46,9 @@ system:
     market: 1000
   revealed: true
   rof: 2
-  source: MC
+  source:
+    book: MC
+    page: ""
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: equipped

@@ -32,7 +32,9 @@ system:
     market: 500
   providesHardening: false
   revealed: true
-  source: IRv1 pg. 61
+  source:
+    book: IRv1
+    page: 61
   upgrades: []
   usage: toggled
 type: gear

@@ -33,6 +33,8 @@ system:
     rezzed: []
   providesHardening: false
   size: 1
-  source: pg. 353
+  source:
+    book: Core
+    page: 353
   upgrades: []
 type: cyberdeck

@@ -59,7 +59,9 @@ system:
   revealed: true
   rof: 1
   size: 0
-  source: MHCD
+  source:
+    book: MHCD
+    page: ""
   type: cyberArm
   unarmedAutomaticCalculation: true
   upgrades: []

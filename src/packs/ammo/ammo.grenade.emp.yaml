@@ -19,7 +19,9 @@ system:
   favorite: false
   price:
     market: 500
-  source: pg. 345
+  source:
+    book: Core
+    page: 345
   type: emp
   variety: grenade
 type: ammo

@@ -29,7 +29,9 @@ system:
     market: 1000
   providesHardening: false
   revealed: true
-  source: pg. 352
+  source:
+    book: Core
+    page: 352
   upgrades: []
   usage: toggled
 type: gear

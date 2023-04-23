@@ -54,7 +54,9 @@ system:
   revealed: true
   rof: 2
   size: 2
-  source: IRv2 pg. 72
+  source:
+    book: IRv2
+    page: 72
   type: cyberwareExternal
   unarmedAutomaticCalculation: true
   upgrades: []

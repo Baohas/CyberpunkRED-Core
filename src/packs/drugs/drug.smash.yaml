@@ -141,6 +141,8 @@ system:
   price:
     market: 10
   revealed: true
-  source: pg. 357
+  source:
+    book: Core
+    page: 357
   usage: snorted
 type: drug

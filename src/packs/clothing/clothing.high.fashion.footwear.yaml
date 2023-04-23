@@ -29,7 +29,9 @@ system:
   price:
     market: 5000
   revealed: true
-  source: Pg. 356
+  source:
+    book: Core
+    page: 356
   style: highFashion
   type: footwear
   upgrades: []

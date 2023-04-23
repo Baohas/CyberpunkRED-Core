@@ -29,7 +29,9 @@ system:
   price:
     market: 500
   revealed: true
-  source: Pg. 356
+  source:
+    book: Core
+    page: 356
   style: highFashion
   type: top
   upgrades: []

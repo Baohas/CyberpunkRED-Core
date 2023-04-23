@@ -32,7 +32,9 @@ system:
     market: 50
   providesHardening: false
   revealed: true
-  source: SYW
+  source:
+    book: SYW
+    page: ""
   upgrades: []
   usage: toggled
 type: gear

@@ -30,7 +30,9 @@ system:
   price:
     market: 1000
   revealed: true
-  source: Pg. 356
+  source:
+    book: Core
+    page: 356
   style: highFashion
   type: contactLenses
   upgrades: []

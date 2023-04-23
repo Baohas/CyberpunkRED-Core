@@ -19,7 +19,9 @@ system:
   favorite: false
   price:
     market: 100
-  source: 12DoC
+  source:
+    book: 12DoC
+    page: ""
   type: basic
   variety: custom
 type: ammo

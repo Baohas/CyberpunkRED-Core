@@ -24,7 +24,9 @@ system:
   price:
     market: 50
   revealed: true
-  source: ""
+  source:
+    book: ELO
+    page: ""
   upgrades: []
   usage: toggled
 type: gear

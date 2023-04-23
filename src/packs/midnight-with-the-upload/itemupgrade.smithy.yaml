@@ -71,7 +71,9 @@ system:
   providesHardening: false
   rof: 1
   size: 1
-  source: MWtU
+  source:
+    book: MwtU
+    page: ""
   type: cyberdeck
   unarmedAutomaticCalculation: true
   usesType: magazine

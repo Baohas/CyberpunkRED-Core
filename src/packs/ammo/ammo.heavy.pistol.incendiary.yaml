@@ -19,7 +19,9 @@ system:
   favorite: false
   price:
     market: 100
-  source: pg. 346
+  source:
+    book: Core
+    page: 346
   type: incendiary
   variety: heavyPistol
 type: ammo

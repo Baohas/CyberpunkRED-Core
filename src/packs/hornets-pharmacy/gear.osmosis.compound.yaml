@@ -37,7 +37,9 @@ system:
     market: 50
   providesHardening: false
   revealed: true
-  source: HP
+  source:
+    book: HP
+    page: ""
   upgrades: []
   usage: toggled
 type: gear

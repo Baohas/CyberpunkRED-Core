@@ -94,7 +94,9 @@ system:
   providesHardening: false
   rof: 1
   size: 1
-  source: pg. 344
+  source:
+    book: Core
+    page: 344
   type: weapon
   unarmedAutomaticCalculation: true
   usesType: magazine

@@ -58,7 +58,9 @@ system:
   onByDefault: false
   rank: 4
   skill: "--"
-  source: Pg. 159
+  source:
+    book: Core
+    page: 159
   stat: "--"
   universalBonuses: []
 type: role

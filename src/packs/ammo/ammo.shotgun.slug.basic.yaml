@@ -16,7 +16,9 @@ system:
   favorite: false
   price:
     market: 10
-  source: pg. 345
+  source:
+    book: Core
+    page: 345
   type: basic
   variety: shotgunSlug
 type: ammo

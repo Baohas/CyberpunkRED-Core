@@ -98,7 +98,9 @@ system:
     market: 100
   sdp: 15
   seats: 1
-  source: SYW
+  source:
+    book: SYW
+    page: ""
   speedCombat: 8
   speedNarrative: 12 MPH / 19 KPH
   upgrades: []

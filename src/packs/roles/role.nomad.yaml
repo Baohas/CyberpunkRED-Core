@@ -160,7 +160,9 @@ system:
   onByDefault: false
   rank: 4
   skill: "--"
-  source: Pg. 161
+  source:
+    book: Core
+    page: 161
   stat: "--"
   universalBonuses: []
 type: role

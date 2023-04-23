@@ -71,7 +71,9 @@ system:
   providesHardening: false
   rof: 1
   size: 1
-  source: SYW
+  source:
+    book: SYW
+    page: ""
   type: vehicle
   unarmedAutomaticCalculation: true
   usesType: magazine

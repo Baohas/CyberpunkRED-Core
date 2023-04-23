@@ -88,7 +88,9 @@ system:
   revealed: true
   rof: 1
   size: 1
-  source: IRv2 pg. 73
+  source:
+    book: IRv2
+    page: 73
   type: cyberArm
   unarmedAutomaticCalculation: true
   upgrades: []

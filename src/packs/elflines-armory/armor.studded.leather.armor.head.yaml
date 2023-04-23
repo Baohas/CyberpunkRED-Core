@@ -37,7 +37,9 @@ system:
   shieldHitPoints:
     max: 0
     value: 0
-  source: pg. 350
+  source:
+    book: ELO
+    page: 350
   upgrades: []
   usage: equipped
 type: armor

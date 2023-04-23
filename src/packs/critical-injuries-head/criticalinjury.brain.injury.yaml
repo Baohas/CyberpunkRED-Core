@@ -42,7 +42,9 @@ system:
     dvParamedic: 0
     type: notApplicable
   revealed: true
-  source: Pg. 188
+  source:
+    book: Core
+    page: 188
   treatment:
     dvParamedic: 0
     dvSurgery: 17

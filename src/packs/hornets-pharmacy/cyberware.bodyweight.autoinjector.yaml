@@ -57,7 +57,9 @@ system:
   revealed: true
   rof: 1
   size: 1
-  source: HP
+  source:
+    book: HP
+    page: ""
   type: cyberwareInternal
   unarmedAutomaticCalculation: true
   upgrades: []

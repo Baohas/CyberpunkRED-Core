@@ -19,7 +19,9 @@ system:
   favorite: false
   price:
     market: 0
-  source: WG
+  source:
+    book: WG
+    page: ""
   type: poison
   variety: paintball
 type: ammo

@@ -19,7 +19,9 @@ system:
   favorite: false
   price:
     market: 100
-  source: pg. 345
+  source:
+    book: Core
+    page: 345
   type: expansive
   variety: medPistol
 type: ammo

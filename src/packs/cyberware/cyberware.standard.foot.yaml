@@ -51,7 +51,9 @@ system:
   revealed: true
   rof: 1
   size: 0
-  source: pg. 366
+  source:
+    book: Core
+    page: 366
   type: cyberLeg
   unarmedAutomaticCalculation: true
   upgrades: []

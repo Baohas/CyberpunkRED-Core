@@ -1,29 +1,33 @@
-_id: qqNh3sElWPyVT4Qq
+_id: tk2g10vp4EdMXLPK
 effects: []
 flags:
   core: {}
-img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
-name: Sternmeyer M-02 Heavy Rifle
+img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher.svg
+name: SDF-45
 system:
   ammoVariety:
-    - custom
+    - rocket
   attackmod: 0
+  brand: Midnight Arms
   concealable:
     concealable: false
     isConcealed: false
-  damage: 5d6
+  damage: 8d6
   description:
     chat: ""
     unidentified: ""
     value: >-
-      <p>This weapon fires it's own custom ammunition, priced at 500eb
-      (Expensive) for 80 rounds of Armor Piercing ammo.</p>
-  dvTable: DV Assault Rifle
+      <p>This rocket launcher can only load Armor Piercing rockets, and has a
+      maximum range of 400 m/yds. When fired one rocket at a time, the GM
+      chooses where they rockets land. When fired two rockets at a time, the GM
+      chooses where the rockets land but this time up to 50 m/yds away from the
+      target, and with each rocket more than 10 m/yds from each other.</p>
+  dvTable: DV Rocket Launcher
   equipped: owned
   favorite: false
   fireModes:
-    autoFire: 4
-    suppressiveFire: true
+    autoFire: 0
+    suppressiveFire: false
   handsReq: 2
   installedItems:
     allowed: true
@@ -37,12 +41,12 @@ system:
     ammoData:
       name: ""
       uuid: ""
-    max: 80
+    max: 4
     value: 0
   price:
     market: 1000
   revealed: true
-  rof: 1
+  rof: 2
   source:
     book: WG
     page: ""
@@ -51,5 +55,5 @@ system:
   usage: equipped
   usesType: magazine
   weaponSkill: Heavy Weapons
-  weaponType: assaultRifle
+  weaponType: rocketLauncher
 type: weapon

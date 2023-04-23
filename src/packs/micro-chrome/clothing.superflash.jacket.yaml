@@ -29,7 +29,9 @@ system:
   price:
     market: 500
   revealed: true
-  source: MC
+  source:
+    book: MC
+    page: ""
   style: urbanFlash
   type: jacket
   upgrades: []

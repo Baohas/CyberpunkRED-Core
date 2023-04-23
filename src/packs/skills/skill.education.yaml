@@ -14,6 +14,8 @@ system:
   difficulty: typical
   favorite: false
   level: 2
-  source: ""
+  source:
+    book: Core
+    page: ""
   stat: int
 type: skill

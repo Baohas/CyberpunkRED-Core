@@ -40,7 +40,9 @@ system:
   shieldHitPoints:
     max: 0
     value: 0
-  source: 12DoC
+  source:
+    book: 12DoC
+    page: ""
   upgrades: []
   usage: toggled
 type: armor

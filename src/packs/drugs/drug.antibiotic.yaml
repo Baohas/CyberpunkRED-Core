@@ -22,6 +22,8 @@ system:
   price:
     market: 0
   revealed: true
-  source: pg. 150
+  source:
+    book: Core
+    page: 150
   usage: toggled
 type: drug

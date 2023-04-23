@@ -95,6 +95,8 @@ system:
   price:
     market: 0
   revealed: true
-  source: HP
+  source:
+    book: HP
+    page: ""
   usage: snorted
 type: drug

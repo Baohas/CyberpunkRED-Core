@@ -51,7 +51,9 @@ system:
   revealed: true
   rof: 1
   size: 3
-  source: MC
+  source:
+    book: MC
+    page: ""
   type: cyberEye
   unarmedAutomaticCalculation: true
   upgrades: []

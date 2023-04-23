@@ -62,7 +62,9 @@ system:
   revealed: true
   rof: 1
   size: 2
-  source: HP
+  source:
+    book: HP
+    page: ""
   type: cyberArm
   unarmedAutomaticCalculation: true
   upgrades: []

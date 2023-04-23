@@ -16,7 +16,9 @@ system:
   favorite: false
   price:
     market: 1
-  source: pg. 345
+  source:
+    book: ELO
+    page: 345
   type: basic
   variety: arrow
 type: ammo

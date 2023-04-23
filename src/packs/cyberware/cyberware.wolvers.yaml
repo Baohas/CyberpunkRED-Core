@@ -53,7 +53,9 @@ system:
   revealed: true
   rof: 2
   size: 1
-  source: pg. 366
+  source:
+    book: Core
+    page: 366
   type: cyberArm
   unarmedAutomaticCalculation: true
   upgrades: []

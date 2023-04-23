@@ -18,7 +18,9 @@ system:
     dvParamedic: 15
     type: paramedic
   revealed: true
-  source: Pg. 187
+  source:
+    book: Core
+    page: 187
   treatment:
     dvParamedic: 0
     dvSurgery: 15

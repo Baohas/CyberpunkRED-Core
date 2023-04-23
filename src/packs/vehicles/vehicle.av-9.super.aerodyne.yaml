@@ -26,7 +26,9 @@ system:
     market: 100000
   sdp: 60
   seats: 2
-  source: pg. 191
+  source:
+    book: Core
+    page: 191
   speedCombat: 60
   speedNarrative: 300 MPH / 483 KPH
   upgrades: []

@@ -19,7 +19,9 @@ system:
   favorite: false
   price:
     market: 50
-  source: pg. 347
+  source:
+    book: Core
+    page: 347
   type: teargas
   variety: grenade
 type: ammo

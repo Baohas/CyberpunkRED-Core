@@ -18,7 +18,9 @@ system:
   favorite: false
   price:
     market: 500
-  source: WG
+  source:
+    book: WG
+    page: ""
   type: armorPiercing
   variety: custom
 type: ammo

@@ -50,7 +50,7 @@ system:
       hasRoll: true
       index: 1
       isSituational: false
-      multiplier: .nan
+      multiplier: null
       name: Medical Tech
       onByDefault: false
       rank: 0
@@ -74,7 +74,9 @@ system:
   onByDefault: false
   rank: 4
   skill: "--"
-  source: Pg. 149
+  source:
+    book: Core
+    page: 149
   stat: "--"
   universalBonuses: []
 type: role

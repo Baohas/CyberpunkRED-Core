@@ -20,7 +20,9 @@ system:
   favorite: false
   price:
     market: 500
-  source: pg. 346
+  source:
+    book: Core
+    page: 346
   type: smart
   variety: arrow
 type: ammo

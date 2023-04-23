@@ -41,6 +41,8 @@ system:
     rezzed: []
   providesHardening: false
   size: 1
-  source: MWtU
+  source:
+    book: MwtU
+    page: ""
   upgrades: []
 type: cyberdeck

@@ -47,7 +47,9 @@ system:
     market: 5000
   revealed: true
   rof: 1
-  source: 12DoG
+  source:
+    book: 12DoG
+    page: ""
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: equipped

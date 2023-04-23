@@ -17,7 +17,9 @@ system:
   favorite: false
   price:
     market: 100
-  source: pg. 345
+  source:
+    book: Core
+    page: 345
   type: armorPiercing
   variety: shotgunSlug
 type: ammo

@@ -76,6 +76,8 @@ system:
   price:
     market: 100
   revealed: true
-  source: HP
+  source:
+    book: HP
+    page: ""
   usage: toggled
 type: drug

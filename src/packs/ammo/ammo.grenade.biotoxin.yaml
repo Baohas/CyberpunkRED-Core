@@ -18,7 +18,9 @@ system:
   favorite: false
   price:
     market: 500
-  source: pg. 345
+  source:
+    book: Core
+    page: 345
   type: biotoxin
   variety: grenade
 type: ammo

@@ -61,7 +61,9 @@ system:
   revealed: true
   rof: 2
   size: 1
-  source: 12DoC
+  source:
+    book: 12DoC
+    page: ""
   type: cyberLeg
   unarmedAutomaticCalculation: true
   upgrades: []

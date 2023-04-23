@@ -42,7 +42,9 @@ system:
   price:
     market: 1000
   revealed: true
-  source: CC
+  source:
+    book: CC
+    page: ""
   upgrades: []
   usage: toggled
 type: gear

@@ -58,7 +58,9 @@ system:
     market: 5000
   providesHardening: false
   revealed: true
-  source: pg. 351
+  source:
+    book: Core
+    page: 351
   upgrades: []
   usage: equipped
 type: gear
