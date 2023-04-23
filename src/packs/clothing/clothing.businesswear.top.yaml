@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_top.svg
 name: Businesswear Top
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

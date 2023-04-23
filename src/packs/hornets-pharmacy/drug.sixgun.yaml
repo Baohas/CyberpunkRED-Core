@@ -123,6 +123,7 @@ img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/sixgun.svg
 name: Sixgun
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

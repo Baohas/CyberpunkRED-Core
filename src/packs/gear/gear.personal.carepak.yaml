@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/personal_carepak.svg
 name: Personal CarePak
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

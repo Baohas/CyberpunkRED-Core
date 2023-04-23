@@ -37,6 +37,7 @@ name: DeathTrance
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

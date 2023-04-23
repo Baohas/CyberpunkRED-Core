@@ -9,6 +9,7 @@ system:
   ammoVariety:
     - vHeavyPistol
   attackmod: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

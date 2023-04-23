@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/video_camera.svg
 name: Video Camera
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

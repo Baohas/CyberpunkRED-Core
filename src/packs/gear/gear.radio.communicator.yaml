@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/radio_communicator.svg
 name: Radio Communicator
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

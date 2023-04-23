@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/chemical_analizer.svg
 name: Chemical Analyzer
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

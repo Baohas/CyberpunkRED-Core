@@ -65,6 +65,7 @@ name: Poser Chip
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

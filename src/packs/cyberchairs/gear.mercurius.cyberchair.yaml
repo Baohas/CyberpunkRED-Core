@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/cyberchairs/cyberchair.svg
 name: Mercurius Cyberchair
 system:
   amount: 1
+  brand: Rocklin Augmentics
   concealable:
     concealable: false
     isConcealed: false

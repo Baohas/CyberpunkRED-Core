@@ -7,6 +7,7 @@ name: Onboard Machine Gun
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: true
     isConcealed: false

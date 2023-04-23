@@ -7,6 +7,7 @@ name: Helicopter Blades (Poor)
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

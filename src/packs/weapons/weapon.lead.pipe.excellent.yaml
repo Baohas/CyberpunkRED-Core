@@ -7,6 +7,7 @@ name: Lead Pipe (Excellent)
 system:
   ammoVariety: []
   attackmod: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

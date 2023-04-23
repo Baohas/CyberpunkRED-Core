@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/rope.svg
 name: Rope (60m/yd)
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

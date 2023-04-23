@@ -30,6 +30,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/roadflare.svg
 name: Road Flare
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

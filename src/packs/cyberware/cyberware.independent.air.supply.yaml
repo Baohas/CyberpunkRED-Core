@@ -8,6 +8,7 @@ name: Independent Air Supply
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

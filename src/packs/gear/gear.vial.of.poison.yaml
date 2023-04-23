@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/vial_poison.svg
 name: Vial of Poison
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

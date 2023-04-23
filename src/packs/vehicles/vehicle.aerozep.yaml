@@ -4,6 +4,7 @@ flags:
 img: systems/cyberpunk-red-core/icons/compendium/vehicles/blimp.svg
 name: Aerozep
 system:
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

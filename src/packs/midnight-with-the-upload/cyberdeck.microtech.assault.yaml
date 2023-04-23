@@ -5,6 +5,7 @@ flags:
 img: systems/cyberpunk-red-core/icons/compendium/default/cyberdeck.svg
 name: Microtech Assault
 system:
+  brand: Microtech
   concealable:
     concealable: false
     isConcealed: false

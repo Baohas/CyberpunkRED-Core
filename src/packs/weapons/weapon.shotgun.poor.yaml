@@ -9,6 +9,7 @@ system:
     - shotgunShell
     - shotgunSlug
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

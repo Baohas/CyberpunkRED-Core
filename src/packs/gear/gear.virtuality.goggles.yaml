@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/virtuality_goggles.svg
 name: Virtuality Goggles
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

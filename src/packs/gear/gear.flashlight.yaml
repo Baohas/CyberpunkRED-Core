@@ -30,6 +30,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/flashlight.svg
 name: Flashlight
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/homing_tracer.svg
 name: Homing Tracer
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

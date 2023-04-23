@@ -4,6 +4,7 @@ flags:
 img: systems/cyberpunk-red-core/icons/compendium/vehicles/motorbike.svg
 name: Superbike
 system:
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

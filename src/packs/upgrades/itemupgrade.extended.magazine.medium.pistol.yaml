@@ -8,6 +8,7 @@ name: Extended Magazine (Medium Pistol)
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

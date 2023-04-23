@@ -6,6 +6,7 @@ name: Rocket (Armor Piercing)
 system:
   ablationValue: 2
   amount: 1
+  brand: ""
   concealable:
     concealable: true
     isConcealed: false

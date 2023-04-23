@@ -8,6 +8,7 @@ system:
   ammoVariety:
     - arrow
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

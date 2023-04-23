@@ -60,6 +60,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/tech_scanner.svg
 name: Techscanner
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

@@ -9,6 +9,7 @@ name: PerfectFit Cyberfoot
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

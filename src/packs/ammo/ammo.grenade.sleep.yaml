@@ -6,6 +6,7 @@ name: Grenade (Sleep)
 system:
   ablationValue: 1
   amount: 1
+  brand: ""
   concealable:
     concealable: true
     isConcealed: false

@@ -8,6 +8,7 @@ img: >-
 name: The Transporter
 system:
   amount: 1
+  brand: Concept Mechanics
   concealable:
     concealable: false
     isConcealed: false

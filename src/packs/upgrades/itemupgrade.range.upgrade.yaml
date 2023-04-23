@@ -7,6 +7,7 @@ name: Range Upgrade
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

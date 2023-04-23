@@ -8,6 +8,7 @@ img: >-
 name: Savannah Panther
 system:
   amount: 1
+  brand: Zhirafa
   concealable:
     concealable: false
     isConcealed: false

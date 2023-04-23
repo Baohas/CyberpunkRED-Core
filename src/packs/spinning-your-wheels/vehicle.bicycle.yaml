@@ -5,6 +5,7 @@ flags:
 img: systems/cyberpunk-red-core/icons/compendium/spinning_your_wheels/bicycle.svg
 name: Bicycle
 system:
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

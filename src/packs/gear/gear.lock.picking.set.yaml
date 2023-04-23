@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/lock_picking_set.svg
 name: Lock Picking Set
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

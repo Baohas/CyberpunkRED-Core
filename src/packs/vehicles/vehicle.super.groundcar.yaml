@@ -4,6 +4,7 @@ flags:
 img: systems/cyberpunk-red-core/icons/compendium/vehicles/super_car.svg
 name: Super Groundcar
 system:
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

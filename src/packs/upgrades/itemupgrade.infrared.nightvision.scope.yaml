@@ -8,6 +8,7 @@ name: Infrared Nightvision Scope
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

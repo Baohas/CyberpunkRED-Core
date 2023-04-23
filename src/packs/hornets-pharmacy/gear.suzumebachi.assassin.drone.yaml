@@ -8,6 +8,7 @@ img: >-
 name: Suzumebachi Assassin Drone
 system:
   amount: 1
+  brand: Arasaka
   concealable:
     concealable: false
     isConcealed: false

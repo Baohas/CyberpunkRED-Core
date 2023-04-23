@@ -42,6 +42,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
 name: Agent
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

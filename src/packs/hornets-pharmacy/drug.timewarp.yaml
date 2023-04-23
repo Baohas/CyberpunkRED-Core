@@ -91,6 +91,7 @@ img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/timewarp.svg
 name: Timewarp
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

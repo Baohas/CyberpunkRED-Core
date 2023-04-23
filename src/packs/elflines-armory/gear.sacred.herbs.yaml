@@ -5,6 +5,7 @@ img: icons/consumables/plants/herb-tied-bundle-dried-yellow.webp
 name: Sacred Herbs
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

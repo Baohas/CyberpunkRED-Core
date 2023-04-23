@@ -6,6 +6,7 @@ name: Nova Model 757 Rounds
 system:
   ablationValue: 1
   amount: 18
+  brand: Nova Arms
   concealable:
     concealable: true
     isConcealed: false

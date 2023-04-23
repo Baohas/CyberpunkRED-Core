@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/glow_paint.svg
 name: Glow Paint
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

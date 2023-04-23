@@ -8,6 +8,7 @@ img: >-
 name: Distilling Compound
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/kibble.svg
 name: Kibble Pack
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

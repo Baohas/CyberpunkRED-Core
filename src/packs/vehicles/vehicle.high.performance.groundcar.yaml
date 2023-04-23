@@ -4,6 +4,7 @@ flags:
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Vehicle.svg
 name: High Performance Groundcar
 system:
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

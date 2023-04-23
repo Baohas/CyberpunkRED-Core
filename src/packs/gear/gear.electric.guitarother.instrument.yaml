@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/electric_guitar.svg
 name: Electric Guitar/Other Instrument
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

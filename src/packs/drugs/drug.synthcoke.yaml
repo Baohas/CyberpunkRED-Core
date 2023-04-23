@@ -78,6 +78,7 @@ img: systems/cyberpunk-red-core/icons/compendium/drugs/synthcoke.svg
 name: Synthcoke
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

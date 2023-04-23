@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/memory_chip.svg
 name: Memory Chip
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

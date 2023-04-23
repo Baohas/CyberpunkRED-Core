@@ -7,6 +7,7 @@ img: >-
 name: Bohemian Contact Lenses
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

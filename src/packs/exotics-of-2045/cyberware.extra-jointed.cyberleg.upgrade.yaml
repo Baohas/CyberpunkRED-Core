@@ -38,6 +38,7 @@ name: Extra-Jointed Cyberleg Upgrade
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

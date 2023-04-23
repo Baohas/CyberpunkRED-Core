@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/braindance_viewer.svg
 name: Braindance Viewer
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

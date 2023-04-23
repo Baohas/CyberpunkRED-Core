@@ -34,6 +34,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_sigma.svg
 name: Linear Frame ∑ (Sigma)
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

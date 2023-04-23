@@ -6,6 +6,7 @@ name: Arrow (Armor Piercing)
 system:
   ablationValue: 2
   amount: 10
+  brand: ""
   concealable:
     concealable: true
     isConcealed: false

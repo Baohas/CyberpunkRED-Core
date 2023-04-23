@@ -51,6 +51,7 @@ name: Image Enhance
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

@@ -8,6 +8,7 @@ name: Extended Magazine (Assault Rifle)
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

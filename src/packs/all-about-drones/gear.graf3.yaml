@@ -7,6 +7,7 @@ img: systems/cyberpunk-red-core/icons/compendium/all-about-drones/graf3.svg
 name: GRAF3
 system:
   amount: 1
+  brand: Zhirafa
   concealable:
     concealable: false
     isConcealed: false

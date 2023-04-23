@@ -1,6 +1,22 @@
 {
   "label": "Midnight With the Upload",
   "entries": {
+    "Hummingbird": {
+      "name": "Hummingbird",
+      "description": "<p>No frills, just raw processing power.</p>\n<p>2 slots only for Hardware</p>\n<p>+1 to Net Actions each turn.</p>"
+    },
+    "Kaliya": {
+      "name": "Kaliya",
+      "description": "<p>A fantastic option for dismantling hostile Netrunners. Just hope they don&rsquo;t have any Black ICE.</p>\n<p>6 slots for Programs or Hardware, 3 extra slots only for Flak programs.</p>\n<p>Restrictions for Defender Programs and Black ICE: Only Flak and Asp can be installed in any slot.</p>"
+    },
+    "Kerberos": {
+      "name": "Kerberos",
+      "description": "<p dir=\"ltr\">Unleash the fires of Hell upon your rivals.</p>\n<p dir=\"ltr\">6 slots for Programs, 5 slots for Hardware.</p>\n<p dir=\"ltr\">Program slots will only accept Hellhound Black ICE.</p>\n<p>&nbsp;</p>"
+    },
+    "Kestrel 2": {
+      "name": "Kestrel 2",
+      "description": "<p>Black ICE can&rsquo;t hit what they can&rsquo;t catch.</p>\n<p>7 slots only for Programs.</p>\n<p>Right after Jacking In, Netrunner can activate a maximum of 2 installed Speedy Gonzalvez Programs without a NET Action.</p>"
+    },
     "Kirama Advanced Deck": {
       "name": "Kirama Advanced Deck",
       "description": "<p>Though it may not be the flashiest choice, Kirama&rsquo;s finest Cyberdeck is expertly balanced and offers some highly practical safety features.</p>\n<p>5 slots for Programs or Hardware.</p>\n<p>Netrunner suffers no negative effects from an Unsafe Jack Out.</p>"
@@ -12,6 +28,10 @@
     "Kirama Training Deck": {
       "name": "Kirama Training Deck",
       "description": "<p>The quintessential starter Cyberdeck. Bargain-bin price with bare-minimum hardware specs.</p>\n<p>5 slots only for Programs.</p>\n<p>Netrunner must be 2m/yds or closer to Access Point to Jack In. All brain damage from Net combat is doubled.</p>"
+    },
+    "MicroMate": {
+      "name": "MicroMate",
+      "description": "<p>Perfect for Netrunners who only know one speed: All offense, all the time. Just don't get hit, it's going to hurt. A lot.</p>\n<p>9 slots for Programs or Hardware.</p>\n<p>Slots will not accept Defender Programs. All brain damage from NET combat is doubled.</p>"
     },
     "Microtech Assault": {
       "name": "Microtech Assault",
@@ -25,41 +45,21 @@
       "name": "Microtech Warrior",
       "description": "<p>7 Slots only for Programs.</p>\n<p>Netrunner can activate one Armor Program without a NET Action right after Jacking In.</p>"
     },
-    "Raven Microcyb Hummingbird": {
-      "name": "Raven Microcyb Hummingbird",
-      "description": "<p>No frills, just raw processing power.</p>\n<p>2 slots only for Hardware</p>\n<p>+1 to Net Actions each turn.</p>"
+    "Parraline 6000": {
+      "name": "Parraline 6000",
+      "description": "<p>All the Hardware options with none of the restrictions.</p>\n<p>3 Program slots, 6 Hardware slots.</p>"
     },
-    "Raven Microcyb Kestrel 2": {
-      "name": "Raven Microcyb Kestrel 2",
-      "description": "<p>Black ICE can&rsquo;t hit what they can&rsquo;t catch.</p>\n<p>7 slots only for Programs.</p>\n<p>Right after Jacking In, Netrunner can activate a maximum of 2 installed Speedy Gonzalvez Programs without a NET Action.</p>"
-    },
-    "Raven Microcyb Phoenix": {
-      "name": "Raven Microcyb Phoenix",
+    "Phoenix": {
+      "name": "Phoenix",
       "description": "<p>Never lose a Program again.</p>\n<p>6 slots for Programs or Hardware.</p>\n<p>Any Program destroyed in a netrunning session is restored upon a safe Jack Out.</p>"
     },
-    "SGI Technologies Kerberos": {
-      "name": "SGI Technologies Kerberos",
-      "description": "<p dir=\"ltr\">Unleash the fires of Hell upon your rivals.</p>\n<p dir=\"ltr\">6 slots for Programs, 5 slots for Hardware.</p>\n<p dir=\"ltr\">Program slots will only accept Hellhound Black ICE.</p>\n<p>&nbsp;</p>"
-    },
-    "SGI Technologies Verdant Knight": {
-      "name": "SGI Technologies Verdant Knight",
+    "Verdant Knight": {
+      "name": "Verdant Knight",
       "description": "<p>The classic sword-and-board Cyberdeck build is highly effective against Black ICE. Just don&rsquo;t plan on going toe-to-toe with a hostile Netrunner.</p>\n<p>9 slots only for Programs.</p>\n<p>Slots only accept Sword or Shield Programs.</p>"
     },
-    "SGI Technologies Warlock's Book": {
-      "name": "SGI Technologies Warlock's Book",
+    "Warlock's Book": {
+      "name": "Warlock's Book",
       "description": "<p>A fantastic option for dismantling hostile Netrunners. Just hope they don&rsquo;t have any Black ICE.</p>\n<p>6 slots for Programs or Hardware, 3 extra slots only for Flak programs.</p>\n<p>Restrictions for Defender Programs and Black ICE: Only Flak and Asp can be installed in any slot.</p>"
-    },
-    "Zetatech Kaliya": {
-      "name": "Zetatech Kaliya",
-      "description": "<p>A fantastic option for dismantling hostile Netrunners. Just hope they don&rsquo;t have any Black ICE.</p>\n<p>6 slots for Programs or Hardware, 3 extra slots only for Flak programs.</p>\n<p>Restrictions for Defender Programs and Black ICE: Only Flak and Asp can be installed in any slot.</p>"
-    },
-    "Zetatech MicroMate": {
-      "name": "Zetatech MicroMate",
-      "description": "<p>Perfect for Netrunners who only know one speed: All offense, all the time. Just don't get hit, it's going to hurt. A lot.</p>\n<p>9 slots for Programs or Hardware.</p>\n<p>Slots will not accept Defender Programs. All brain damage from NET combat is doubled.</p>"
-    },
-    "Zetatech Parraline 6000": {
-      "name": "Zetatech Parraline 6000",
-      "description": "<p>All the Hardware options with none of the restrictions.</p>\n<p>3 Program slots, 6 Hardware slots.</p>"
     },
     "Aerie": {
       "name": "Aerie",

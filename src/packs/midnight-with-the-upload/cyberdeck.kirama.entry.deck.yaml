@@ -5,6 +5,7 @@ flags:
 img: systems/cyberpunk-red-core/icons/compendium/default/cyberdeck.svg
 name: Kirama Entry Deck
 system:
+  brand: Kirama
   concealable:
     concealable: false
     isConcealed: false

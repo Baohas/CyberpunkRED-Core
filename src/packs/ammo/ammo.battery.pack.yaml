@@ -6,6 +6,7 @@ name: Battery Pack
 system:
   ablationValue: 1
   amount: 8
+  brand: ""
   concealable:
     concealable: true
     isConcealed: false

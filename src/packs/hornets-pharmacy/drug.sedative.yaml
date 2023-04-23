@@ -7,6 +7,7 @@ img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/sedative.svg
 name: Sedative
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

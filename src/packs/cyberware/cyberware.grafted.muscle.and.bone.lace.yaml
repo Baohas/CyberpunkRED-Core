@@ -33,6 +33,7 @@ name: Grafted Muscle and Bone Lace
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

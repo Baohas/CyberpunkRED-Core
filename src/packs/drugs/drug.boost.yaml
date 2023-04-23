@@ -54,6 +54,7 @@ img: systems/cyberpunk-red-core/icons/compendium/drugs/boost.svg
 name: Boost
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

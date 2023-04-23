@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/audio_recorder.svg
 name: Audio Recorder
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

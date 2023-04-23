@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/duct_tape.svg
 name: Duct Tape
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

@@ -7,6 +7,7 @@ name: AV-4 Engine Upgrade
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

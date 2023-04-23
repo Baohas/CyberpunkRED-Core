@@ -6,6 +6,7 @@ name: Grenade (Teargas)
 system:
   ablationValue: 0
   amount: 1
+  brand: ""
   concealable:
     concealable: true
     isConcealed: false

@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_top.svg
 name: Bag Lady Chic Top
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

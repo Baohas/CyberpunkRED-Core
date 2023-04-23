@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/scrambler_descrambler.svg
 name: Scrambler/Descrambler
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

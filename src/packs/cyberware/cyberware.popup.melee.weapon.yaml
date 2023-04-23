@@ -7,6 +7,7 @@ name: Popup Melee Weapon
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

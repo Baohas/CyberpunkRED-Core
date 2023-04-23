@@ -4,6 +4,7 @@ flags:
 img: systems/cyberpunk-red-core/icons/compendium/vehicles/speed_boat.svg
 name: Jetski
 system:
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

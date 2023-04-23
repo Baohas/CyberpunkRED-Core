@@ -8,6 +8,7 @@ system:
   bodyLocation:
     ablation: 0
     sp: 7
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

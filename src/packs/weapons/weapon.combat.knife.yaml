@@ -7,6 +7,7 @@ name: Combat Knife
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: true
     isConcealed: false

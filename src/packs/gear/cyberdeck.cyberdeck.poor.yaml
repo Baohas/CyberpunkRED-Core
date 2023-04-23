@@ -4,6 +4,7 @@ flags:
 img: systems/cyberpunk-red-core/icons/compendium/gear/cyberdeck_poor.svg
 name: Cyberdeck (Poor)
 system:
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

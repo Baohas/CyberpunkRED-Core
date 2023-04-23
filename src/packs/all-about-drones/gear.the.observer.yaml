@@ -7,6 +7,7 @@ img: systems/cyberpunk-red-core/icons/compendium/all-about-drones/the-observer.s
 name: The Observer
 system:
   amount: 1
+  brand: Concept Mechanics
   concealable:
     concealable: false
     isConcealed: false

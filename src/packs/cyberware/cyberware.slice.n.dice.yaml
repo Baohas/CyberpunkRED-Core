@@ -7,6 +7,7 @@ name: Slice 'N Dice
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

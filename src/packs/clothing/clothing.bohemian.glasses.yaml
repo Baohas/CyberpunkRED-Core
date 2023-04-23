@@ -6,6 +6,7 @@ img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_glasses.svg
 name: Bohemian Glasses
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

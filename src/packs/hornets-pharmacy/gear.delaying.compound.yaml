@@ -8,6 +8,7 @@ img: >-
 name: Delaying Compound
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

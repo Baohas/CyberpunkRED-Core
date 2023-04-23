@@ -72,6 +72,7 @@ img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/prime_time.svg
 name: Prime Time
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

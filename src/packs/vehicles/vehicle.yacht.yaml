@@ -4,6 +4,7 @@ flags:
 img: systems/cyberpunk-red-core/icons/compendium/vehicles/ship.svg
 name: Yacht
 system:
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

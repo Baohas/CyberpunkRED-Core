@@ -7,6 +7,7 @@ img: >-
 name: Vial of Poison
 system:
   amount: 1
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false

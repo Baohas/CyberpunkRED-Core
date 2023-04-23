@@ -8,6 +8,7 @@ name: Vehicle Heavy Weapon Mount
 system:
   ammoVariety: []
   attackmod: 0
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false
