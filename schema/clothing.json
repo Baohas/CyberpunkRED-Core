@@ -45,6 +45,9 @@
         "amount": {
           "type": "integer"
         },
+        "brand": {
+          "$ref": "./components/physical/brand.json"
+        },
         "concealable": {
           "$ref": "./components/physical/concealable.json"
         },
@@ -111,6 +114,7 @@
       },
       "required": [
         "amount",
+        "brand",
         "concealable",
         "description",
         "equipped",

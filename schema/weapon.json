@@ -48,6 +48,9 @@
         "attackmod": {
           "$ref": "./components/attackable/attackMod.json"
         },
+        "brand": {
+          "$ref": "./components/physical/brand.json"
+        },
         "concealable": {
           "$ref": "./components/physical/concealable.json"
         },
@@ -118,6 +121,7 @@
       "required": [
         "ammoVariety",
         "attackmod",
+        "brand",
         "concealable",
         "damage",
         "description",

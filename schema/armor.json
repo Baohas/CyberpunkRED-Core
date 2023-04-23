@@ -43,6 +43,9 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "brand": {
+          "$ref": "./components/physical/brand.json"
+        },
         "bodyLocation": {
           "$ref": "#/definitions/Location"
         },
@@ -105,6 +108,7 @@
         }
       },
       "required": [
+        "brand",
         "bodyLocation",
         "concealable",
         "description",
