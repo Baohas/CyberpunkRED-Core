@@ -1,4 +1,37 @@
 {
-  "description": "The Source reference for the item",
-  "type": "string"
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "book": {
+      "type": "string",
+      "enum": [
+        "12DoC",
+        "12DoG",
+        "CC",
+        "Core",
+        "ELO",
+        "HP",
+        "IRv1",
+        "IRv2",
+        "MC",
+        "MHCD",
+        "MwtU",
+        "SYW",
+        "WG"
+      ]
+    },
+    "page": {
+      "description": "Page is not strictly required",
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string",
+          "enum": [""]
+        }
+      ]
+    }
+  },
+  "required": ["book", "page"]
 }
