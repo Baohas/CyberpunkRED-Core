@@ -299,7 +299,8 @@
         "concealable": {
           "concealable": false,
           "isConcealed": false
-        }
+        },
+        "brand": ""
       },
       "stackable": {
         "amount": 1

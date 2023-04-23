@@ -33,30 +33,77 @@
 
   .item-top-pane {
     grid-area: item-top-pane;
-
     display: grid;
-    background-color: @wyrm-red;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 3.875rem 1fr;
+    grid-template-rows: 3.875rem;
+    gap: 0.313rem;
     padding: 0.313rem;
-    height: 4.5rem;
+    grid-template-areas: "item-image item-details";
+    width: auto;
+    height: auto;
+    background-color: @wyrm-red;
 
-    grid-template-columns: 4.188rem auto;
-    grid-template-rows: auto;
-    grid-template-areas: "item-image item-header";
-
-    .item-image-section {
+    .item-image {
       grid-area: item-image;
-      display: flex;
-      background-color: @wyrm-red;
-      height: 3.875rem;
-      width: 3.875rem;
-      overflow: hidden;
     }
 
-    .item-header-section {
-      grid-area: item-header;
-      display: flex;
+    .item-details {
+      grid-area: item-details;
+      display: grid;
+      grid-auto-columns: auto 6.5rem;
+      grid-auto-rows: auto 1fr 1fr;
+      grid-template-areas:
+        "item-details-name item-details-help"
+        "item-details-name item-details-source"
+        "item-details-info item-details-other";
+      width: auto;
+      height: auto;
       background-color: @chrome-white;
-      height: 3.875rem;
+
+      .item-details-name {
+        grid-area: item-details-name;
+        display: grid;
+        justify-content: left;
+        align-content: start;
+        padding: 0rem 0.118rem;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .item-details-info {
+        grid-area: item-details-info;
+        display: grid;
+        justify-content: left;
+        align-content: center;
+        padding: 0rem 0.125rem;
+        margin-bottom: 0.125rem
+      }
+
+      .item-details-help {
+        grid-area: item-details-help;
+        display: flex;
+        justify-content: right;
+        align-content: center;
+        padding: 0rem 0.118rem;
+      }
+
+      .item-details-source {
+        grid-area: item-details-source;
+        display: grid;
+        justify-content: right;
+        align-content: center;
+        padding: 0rem 0.118rem;
+      }
+
+      .item-details-other {
+        grid-area: item-details-other;
+        display: grid;
+        justify-content: right;
+        align-content: center;
+        padding: 0rem 0.118rem;
+      }
     }
   }
 

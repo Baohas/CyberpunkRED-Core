@@ -11,6 +11,20 @@
     {{/if}}
   </div>
 </li>
+<li class="item flexrow">
+  <div class="item flexrow setting-name text-nowrap">
+    {{localize "CPR.global.generic.brand"}}
+  </div>
+  <div class="item flexrow setting-value text-nowrap item-end">
+    {{#if this.editable }}
+      <input name="system.brand"
+             type="text"
+             value="{{item.system.brand}}"/>
+    {{else}}
+      <span class="text-flex-end">{{item.system.brand}}</span>
+    {{/if}}
+  </div>
+</li>
 {{#if item.isOwned }}
   {{#if item.system.concealable.concealable }}
     <li class="item flexrow">
