@@ -86,6 +86,11 @@ function _cleanPackData(data) {
     delete data.permission;
   }
 
+  // Ensure system.source.page is an int
+  if (data.system?.source?.page) {
+    data.system.source.page = parseInt(data.system.source.page, 10);
+  }
+
   // If an item should have effects
   if (itemsWithEffects.includes(data.type)) {
     // system.revealed should always be true

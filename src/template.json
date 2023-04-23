@@ -254,7 +254,10 @@
           "chat": "",
           "unidentified": ""
         },
-        "source": "",
+        "source": {
+          "book": "",
+          "page": ""
+        },
         "favorite": false
       },
       "container": {

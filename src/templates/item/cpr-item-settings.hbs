@@ -10,16 +10,31 @@
         {{!-- Settings common to all items --}}
         <li class="item flexrow">
           <div class="item flexrow setting-name text-nowrap">
-            {{localize "CPR.itemSheet.common.source"}}
+            {{localize "CPR.itemSheet.common.source.book"}}
           </div>
           <div class="item flexrow setting-value text-nowrap item-end">
             {{#if this.editable }}
-              <input name="system.source"
+              <input name="system.source.book"
                      type="text"
-                     value="{{item.system.source}}"
-                     placeholder="Example: pg. 1"/>
+                     value="{{item.system.source.book}}"
+                     placeholder="MwtU"/>
             {{else}}
-              {{item.system.source}}
+              {{item.system.source.book}}
+            {{/if}}
+          </div>
+        </li>
+        <li class="item flexrow">
+          <div class="item flexrow setting-name text-nowrap">
+            {{localize "CPR.itemSheet.common.source.page"}}
+          </div>
+          <div class="item flexrow setting-value text-nowrap item-end">
+            {{#if this.editable }}
+              <input name="system.source.page"
+                     type="number"
+                     value="{{item.system.source.page}}"
+                     placeholder="123"/>
+            {{else}}
+              {{item.system.source.page}}
             {{/if}}
           </div>
         </li>

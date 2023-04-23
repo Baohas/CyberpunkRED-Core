@@ -11,3 +11,4 @@ export { default as ItemSecondaryWeaponMigration } from "./007-itemUpgrades-seco
 export { default as ImprovedDialogMigration } from "./008-improvedDialogs.js";
 export { default as PackIconMigration } from "./009-packIconsMigration.js";
 export { default as ItemIsElectronicMigration } from "./009-isElectronic.js";
+export { default as SourceMigration } from "./009-source.js";
