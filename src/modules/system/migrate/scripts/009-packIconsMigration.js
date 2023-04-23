@@ -43,7 +43,6 @@ export default class PackIconMigration extends CPRMigration {
     const updateData = item.isOwned ? { _id: item._id } : {};
     const basePath = `systems/${game.system.id}/icons/compendium`;
     const itemImage = item.img;
-    console.log(itemImage);
 
     // Update drug images
     const drugIcons = [
