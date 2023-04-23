@@ -28,10 +28,10 @@ system:
   isUpgraded: false
   price:
     market: 500
-  providesHardening: false
   programs:
     installed: []
     rezzed: []
+  providesHardening: false
   size: 1
   source: pg. 353
   upgrades: []

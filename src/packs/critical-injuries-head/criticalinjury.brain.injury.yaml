@@ -20,7 +20,8 @@ effects:
         changes:
           cats:
             "0": misc
-    icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/brain_injury.svg
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/brain_injury.svg
     label: Brain Injury
     tint: null
     transfer: true

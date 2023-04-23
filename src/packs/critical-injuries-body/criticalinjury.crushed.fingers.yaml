@@ -22,7 +22,8 @@ effects:
           situational:
             "0":
               isSituational: true
-    icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_fingers.svg
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_fingers.svg
     label: Lost Ear
     tint: null
     transfer: true

@@ -20,7 +20,8 @@ effects:
         changes:
           cats:
             "0": misc
-    icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/concussion.svg
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/critical_injuries/concussion.svg
     label: Concussion
     tint: null
     transfer: true
