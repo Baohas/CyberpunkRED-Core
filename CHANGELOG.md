@@ -39,6 +39,9 @@
   - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (EG: A macro to select which items to disable with an EMP)
 - Add `Get EMP'd Items` macro
   - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (wihout sheilding), carried (electroinc) Gear items, or Cyberdecks and outputs the results to chat
+- Add a `brand` field to physical items
+  - All compendia provided by the system have been migrated
+  - We so not provide any migrations for in world items as there are to many edge cases to reliably do this
 - Added The 12 Days of Cybermas with help from Miklos
 - Added Hornet’s Pharmacy with help from Miklos
 - Added Nomad vehicle upgrades with help from WombatCombat
@@ -88,6 +91,9 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
 - Ammo selection dropdown now shows stack size
 - Changed the default weapon to use the default weapon icon
 - Added clothing descriptions with help from Hakuan Quietpaws
+- `source` field for items has been split into 2 seperate Fields
+  - `source.book`
+  - `source.page`
 
 ### Bug Fixes
 
