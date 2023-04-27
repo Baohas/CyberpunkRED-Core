@@ -253,6 +253,106 @@ export default class CPRContainerActor extends Actor {
   }
 
   /**
+   * Given a property name on the actor model, wipe out all records in the corresponding ledger
+   * for it. Effectively this sets it back to [].
+   *
+   * @param {String} prop - name of the property that has a ledger
+   * @returns {Array} - empty or null if the property was not found
+   */
+  clearLedger(prop) {
+    LOGGER.trace("clearLedger | CPRActor | Called.");
+    if (this.isLedgerProperty(prop)) {
+      const valProp = `system.${prop}.value`;
+      const ledgerProp = `system.${prop}.transactions`;
+      this.update({
+        [valProp]: 0,
+        [ledgerProp]: [],
+      });
+      return getProperty(this.system, prop);
+    }
+    return null;
+  }
+
+  /**
+   * Change the value of a property and store a record of the change in the corresponding
+   * ledger.
+   *
+   * @param {String} prop - name of the property that has a ledger
+   * @param {Number} value - how much to increase or decrease the value by
+   * @param {String} reason - a user-provided reason for the change
+   * @returns {Number} (or null if not found)
+   */
+  deltaLedgerProperty(prop, value, reason) {
+    LOGGER.trace("deltaLedgerProperty | CPRActor | Called.");
+    if (this.isLedgerProperty(prop)) {
+      // update "value"; it may be negative
+      const valProp = `system.${prop}.value`;
+      let newValue = getProperty(this, valProp);
+      newValue += value;
+      // update the ledger with the change
+      const ledgerProp = `system.${prop}.transactions`;
+      const ledger = getProperty(this, ledgerProp);
+      if (value > 0) {
+        ledger.push([
+          SystemUtils.Format("CPR.ledger.increaseSentence", {
+            property: prop,
+            amount: value,
+            total: newValue,
+          }),
+          reason,
+        ]);
+      } else {
+        ledger.push([
+          SystemUtils.Format("CPR.ledger.decreaseSentence", {
+            property: prop,
+            amount: -1 * value,
+            total: newValue,
+          }),
+          reason,
+        ]);
+      }
+      // update the actor and return the modified property
+      this.update({
+        [valProp]: newValue,
+        [ledgerProp]: ledger,
+      });
+      return getProperty(this.system, prop);
+    }
+    return null;
+  }
+
+  /**
+   * Set the value of a property and store a record of the change in the corresponding
+   * ledger. This is different from applying a delta, here we just set the value.
+   *
+   * @param {String} prop - name of the property that has a ledger
+   * @param {Number} value - what to set the value to
+   * @param {String} reason - a user-provided reason for the change
+   * @returns {Number} (or null if not found)
+   */
+  setLedgerProperty(prop, value, reason) {
+    LOGGER.trace("setLedgerProperty | CPRActor | Called.");
+    if (this.isLedgerProperty(prop)) {
+      const valProp = `system.${prop}.value`;
+      const ledgerProp = `system.${prop}.transactions`;
+      const ledger = getProperty(this, ledgerProp);
+      ledger.push([
+        SystemUtils.Format("CPR.ledger.setSentence", {
+          property: prop,
+          total: value,
+        }),
+        reason,
+      ]);
+      this.update({
+        [valProp]: value,
+        [ledgerProp]: ledger,
+      });
+      return getProperty(this.system, prop);
+    }
+    return null;
+  }
+
+  /**
    * Return the Item object given an Id
    *
    * @public
