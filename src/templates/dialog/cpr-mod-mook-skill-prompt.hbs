@@ -8,13 +8,13 @@
         <span class="dialog-item-detail skill-level bg-black text-nowrap">{{localize "CPR.mookSheet.skills.level"}}</span>
         <span class="dialog-item-detail skill-mod-value bg-black text-nowrap">{{localize "CPR.mookSheet.skills.mod"}}</span>
       </li>
-    {{#each skillList as |skill| }}
+    {{#each (cprSort object "name") as |skill| }}
       <li class="dialog-item skill-name flexrow">
         <div class="dialog-item-name text-nowrap">{{skill.name}}</div>
         <div class="dialog-item-detail skill-base text-nowrap">+{{skill.stat}}</div>
         <div class="dialog-item-detail skill-level text-nowrap">
           <input class="number skill-input"
-                 name="{{skill.name}}"
+                 name="{{skill.id}}.level"
                  type="number"
                  value="{{skill.level}}"/>
         </div>

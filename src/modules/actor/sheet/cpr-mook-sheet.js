@@ -103,43 +103,39 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    */
   async _modMookSkills() {
     LOGGER.trace("_modMookSkills | CPRMookActorSheet | Called.");
-    const skillList = [];
-    this.actor.itemTypes.skill.map((s) => {
+    const skillObj = {};
+    this.actor.itemTypes.skill.forEach((s) => {
       const skillRef = {
+        id: s.id,
         name: s.name,
         level: s.system.level,
         stat: this.actor.system.stats[s.system.stat].value,
         mod: this.actor.bonuses[SystemUtils.slugify(s.name)],
       };
-      skillList.push(skillRef);
-      return skillList.sort((a, b) => (a.name > b.name ? 1 : -1));
+      skillObj[s.id] = skillRef;
     });
 
     // Pop up the form with embedded skill details.
-    const formData = await CPRDialog.showDialog(
-      { skillList },
-      {
-        title: "CPR.mookSheet.dialog.modSkillTitle",
-        template: `systems/${game.system.id}/templates/dialog/cpr-mod-mook-skill-prompt.hbs`,
-      }
-    ).catch((err) => LOGGER.debug(err));
+    const formData = await CPRDialog.showDialog(duplicate(skillObj), {
+      title: "CPR.mookSheet.dialog.modSkillTitle",
+      template: `systems/${game.system.id}/templates/dialog/cpr-mod-mook-skill-prompt.hbs`,
+    }).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
 
     // go over each skill and see if the value differs from the skill objects on the mook (actor)
     const updatedSkills = [];
-    for (const skill of skillList) {
-      if (formData[skill.name] !== skill.level) {
+    for (const oldSkill of Object.values(skillObj)) {
+      const newSkill = formData[oldSkill.id];
+      if (oldSkill.level !== newSkill.level) {
         LOGGER.debug(
-          `you changed ${skill.name} from ${skill.level} to ${
-            formData[skill.name]
-          }`
+          `you changed ${oldSkill.name} from ${oldSkill.level} to ${newSkill.level}`
         );
         const [updatedSkill] = this.actor.itemTypes.skill.filter(
-          (s) => skill.name === s.name
+          (s) => oldSkill.name === s.name
         );
-        updatedSkill.setSkillLevel(formData[skill.name]);
+        updatedSkill.setSkillLevel(newSkill.level);
         updatedSkills.push({
           _id: updatedSkill._id,
           system: {

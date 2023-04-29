@@ -360,7 +360,14 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprSort", (arr, property) => {
     LOGGER.trace("cprSort | handlebarsHelper | Called.");
-    arr.sort((a, b) => {
+    let array = arr;
+    // If the first argument passed is an Object made of `key: Object` pairs,
+    // turn it into an array of the Object's values, then sort by `property`.
+    if (!Array.isArray(arr)) {
+      array = Object.values(arr);
+    }
+
+    array.sort((a, b) => {
       let comparator = 0;
       if (a[property] > b[property]) {
         comparator = 1;
@@ -369,7 +376,7 @@ export default function registerHandlebarsHelpers() {
       }
       return comparator;
     });
-    return arr;
+    return array;
   });
 
   /**
