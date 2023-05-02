@@ -1,8 +1,9 @@
 _id: ReNlsir0b9jmxnPi
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor_Head.svg
+  core:
+    sourceId: Compendium.cyberpunk-red-core.armor.ReNlsir0b9jmxnPi
+img: systems/cyberpunk-red-core/icons/compendium/armor/medium-armorjack_head.svg
 name: Medium Armorjack (Head)
 system:
   bodyLocation:

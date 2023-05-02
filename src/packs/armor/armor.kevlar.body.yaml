@@ -1,8 +1,9 @@
 _id: DbASrTymPy4wHNpX
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+  core:
+    sourceId: Compendium.cyberpunk-red-core.armor.DbASrTymPy4wHNpX
+img: systems/cyberpunk-red-core/icons/compendium/armor/kevlar_body.svg
 name: Kevlar (Body)
 system:
   bodyLocation:

@@ -112,6 +112,201 @@ export default class PackIconMigration extends CPRMigration {
       return item.isOwned ? updateData : item.update(updateData);
     }
 
+    if (item.type === "armor") {
+      const armors = {
+        flakBody: {
+          img: "armor/flak_body.svg",
+          names: [
+            "Antischegge (Corpo)",
+            "Armadura (corpo)",
+            "Flakanzug (Körper)",
+            "Flak (Body)",
+            "Flak (Corps)",
+            "Flak (Cuerpo)",
+            "Ubiór kuloodporny (Ciało)",
+            "Костюм сапёра",
+          ],
+        },
+        flakHead: {
+          img: "armor/flak_head.svg",
+          names: [
+            "Antischegge (Testa)",
+            "Armadura (cabeça)",
+            "Flakanzug (Kopf)",
+            "Flak (cabeza)",
+            "Flak (Head)",
+            "Flak (Tête)",
+            "Ubiór kuloodporny (Głowa)",
+            "Шлем сапёра",
+          ],
+        },
+        heavyArmorjackBody: {
+          img: "armor/heavy-armorjack_body.svg",
+          names: [
+            "Armorjack Pesado (cuerpo)",
+            "Ciężka kurtka kuloodporna (Ciało)",
+            "Colete Pesado",
+            "Corazza Pesante (Corpo)",
+            "Heavy Armorjack (Body)",
+            "Schwerer Panzeranzug (Körper)",
+            "Tenue pare-balles lourde (Corps)",
+            "Тяжёлый бронекостюм",
+          ],
+        },
+        heavyArmorjackHead: {
+          img: "armor/heavy-armorjack_head.svg",
+          names: [
+            "Armorjack Pesado (cabeza)",
+            "Capacete Pesado",
+            "Ciężka kurtka kuloodporna (Głowa)",
+            "Corazza Pesante (Testa)",
+            "Heavy Armorjack (Head)",
+            "Schwerer Panzeranzug (Kopf)",
+            "Tenue pare-balles lourde (Tête)",
+            "Тяжёлый бронешлем",
+          ],
+        },
+        kevlarBody: {
+          img: "armor/kevlar_body.svg",
+          names: [
+            "Kevlar (Body)",
+            "Kevlar (Ciało)",
+            "Kevlar (corpo)",
+            "Kevlar (Corpo)",
+            "Kevlar (Corps)",
+            "Kevlar (Cuerpo)",
+            "Kevlar (Körper)",
+            "Кевларовый жилет",
+          ],
+        },
+        kevlarHead: {
+          img: "armor/kevlar_head.svg",
+          names: [
+            "Kevlar (cabeça)",
+            "Kevlar (Cabeza)",
+            "Kevlar (Głowa)",
+            "Kevlar (Head)",
+            "Kevlar (Kopf)",
+            "Kevlar (Testa)",
+            "Kevlar (Tête)",
+            "Кевларовый шлем",
+          ],
+        },
+        leathersBody: {
+          img: "armor/leathers_body.svg",
+          names: [
+            "Couro (Corpo)",
+            "Cueros (Cuerpo)",
+            "Cuir (Corps)",
+            "Cuoio (Corpo)",
+            "Leathers (Body)",
+            "Lederkluft (Körper)",
+            "Skóry (Ciało)",
+            "Кожанка",
+          ],
+        },
+        leathersHead: {
+          img: "armor/leathers_head.svg",
+          names: [
+            "Couros (Cabeça)",
+            "Cueros (Cabeza)",
+            "Cuir (Tête)",
+            "Cuoio (Testa)",
+            "Leathers (Head)",
+            "Lederkluft (Kopf)",
+            "Skóry (Głowa)",
+            "Кожанный шлем",
+          ],
+        },
+        lightArmorjackHead: {
+          img: "armor/light-armorjack_head.svg",
+          names: [
+            "Armorjack Ligero (Cabeza)",
+            "Capacete Leve",
+            "Corazza Leggera (Testa)",
+            "Leichter Panzeranzug (Kopf)",
+            "Lekka kurtka kuloodporna (Głowa)",
+            "Light Armorjack (Head)",
+            "Tenue pare-balles légère (Tête)",
+            "Лёгкий бронешлем",
+          ],
+        },
+        lightArmorjackBody: {
+          img: "armor/light-armorjack_body.svg",
+          names: [
+            "Armorjack Ligero (Cuerpo)",
+            "Colete Leve",
+            "Corazza Leggera (Corpo)",
+            "Leichter Panzeranzug (Körper)",
+            "Lekka kurtka kuloodporna (Ciało)",
+            "Light Armorjack (Body)",
+            "Tenue pare-balles légère (Corps)",
+            "Лёгкий бронекостюм",
+          ],
+        },
+        mediumArmorjackBody: {
+          img: "armor/medium-armorjack_body.svg",
+          names: [
+            "Armorjack Medio (Cuerpo)",
+            "Colete Médio",
+            "Corazza Media (Corpo)",
+            "Medium Armorjack (Body)",
+            "Mittelschwerer Panzeranzug (Körper)",
+            "Średnia kurtka kuloodporna (Ciało)",
+            "Tenue pare-balles moyenne(Corps)",
+            "Средний бронекостюм",
+          ],
+        },
+        mediumArmorjackHead: {
+          img: "armor/medium-armorjack_head.svg",
+          names: [
+            "Armorjack Medio (Cabeza)",
+            "Capacete Médio (cabeça)",
+            "Corazza Media (Testa)",
+            "Medium Armorjack (Head)",
+            "Mittelschwerer Panzeranzug (Kopf)",
+            "Średnia kurtka kuloodporna (Głowa)",
+            "Tenue pare-balles moyenne (Tête)",
+            "Средний бронешлем",
+          ],
+        },
+        metalgearBody: {
+          img: "armor/metalgear_body.svg",
+          names: [
+            "Exoesqueleto (Corpo)",
+            "Metalgear (Body)",
+            "Metalgear (Ciało)",
+            "Metalgear (Corpo)",
+            "Metalgear (Corps)",
+            "Metalgear (Cuerpo)",
+            "Metalgear (Körper)",
+            "Металлическая броня",
+          ],
+        },
+        metalgearHead: {
+          img: "armor/metalgear_head.svg",
+          names: [
+            "Exoesqueleto (cabeça)",
+            "MetValgear (Cabeza)",
+            "Metalgear (Głowa)",
+            "Metalgear (Head)",
+            "Metalgear (Kopf)",
+            "Metalgear (Testa)",
+            "Metalgear (Tête)",
+            "Металлический шлем",
+          ],
+        },
+      };
+      for (const [key, value] of Object.entries(armors)) {
+        const armorNames = value.names;
+        if (armorNames.includes(item.name)) {
+          const newPath = `${basePath}/${value.img}`;
+          updateData.img = newPath;
+          return item.isOwned ? updateData : item.update(updateData);
+        }
+      }
+    }
+
     return null;
   }
 

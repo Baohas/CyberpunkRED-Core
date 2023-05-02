@@ -1,8 +1,9 @@
 _id: ANkaTbBKgBXwJy1Q
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+  core:
+    sourceId: Compendium.cyberpunk-red-core.armor.ANkaTbBKgBXwJy1Q
+img: systems/cyberpunk-red-core/icons/compendium/armor/metalgear_body.svg
 name: Metalgear (Body)
 system:
   bodyLocation:

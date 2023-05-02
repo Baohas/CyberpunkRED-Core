@@ -1,8 +1,9 @@
 _id: wQXJTKA8KeEe2V2H
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+  core:
+    sourceId: Compendium.cyberpunk-red-core.armor.wQXJTKA8KeEe2V2H
+img: systems/cyberpunk-red-core/icons/compendium/armor/flak_body.svg
 name: Flak (Body)
 system:
   bodyLocation:

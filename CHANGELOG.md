@@ -97,6 +97,7 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
 - `source` field for items has been split into 2 seperate Fields
   - `source.book`
   - `source.page`
+- Update compendia icons for Armor
 
 ### Bug Fixes
 

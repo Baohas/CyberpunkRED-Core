@@ -1,8 +1,9 @@
 _id: 2hwEBP93U98aRz4p
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+  core:
+    sourceId: Compendium.cyberpunk-red-core.armor.2hwEBP93U98aRz4p
+img: systems/cyberpunk-red-core/icons/compendium/armor/leathers_body.svg
 name: Leathers (Body)
 system:
   bodyLocation:

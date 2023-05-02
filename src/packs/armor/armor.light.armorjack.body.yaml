@@ -1,8 +1,9 @@
 _id: uaN9WukkezPfcutU
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+  core:
+    sourceId: Compendium.cyberpunk-red-core.armor.uaN9WukkezPfcutU
+img: systems/cyberpunk-red-core/icons/compendium/armor/light-armorjack_body.svg
 name: Light Armorjack (Body)
 system:
   bodyLocation:

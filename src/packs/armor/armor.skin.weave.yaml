@@ -1,7 +1,8 @@
 _id: DXavZyl7CTtgoZ6i
 effects: []
 flags:
-  core: {}
+  core:
+    sourceId: Compendium.cyberpunk-red-core.armor.DXavZyl7CTtgoZ6i
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/skin_weave.svg
 name: Skin Weave
 system:

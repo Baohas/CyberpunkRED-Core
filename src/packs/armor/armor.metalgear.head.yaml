@@ -1,8 +1,9 @@
 _id: zSjQKDoHe1cfcTkp
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor_Head.svg
+  core:
+    sourceId: Compendium.cyberpunk-red-core.armor.zSjQKDoHe1cfcTkp
+img: systems/cyberpunk-red-core/icons/compendium/armor/metalgear_head.svg
 name: Metalgear (Head)
 system:
   bodyLocation:

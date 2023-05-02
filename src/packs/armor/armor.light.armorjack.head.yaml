@@ -1,8 +1,9 @@
 _id: Bsalv6m63PhmHkMm
 effects: []
 flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor_Head.svg
+  core:
+    sourceId: Compendium.cyberpunk-red-core.armor.Bsalv6m63PhmHkMm
+img: systems/cyberpunk-red-core/icons/compendium/armor/light-armorjack_head.svg
 name: Light Armorjack (Head)
 system:
   bodyLocation:
