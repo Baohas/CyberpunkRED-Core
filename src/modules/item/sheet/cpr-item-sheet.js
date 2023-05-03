@@ -1341,7 +1341,19 @@ export default class CPRItemSheet extends ItemSheet {
       return {};
     }
 
-    const filteredSelectedItems = formData.selectedItems.filter((i) => i); // Remove null entries from list.
+    // filteredSelectedItems must be an array because of the methods we use on it later.
+    // formData.selectedItems, however, is sometimes a string and sometimes null.
+    // It is a string when there is only one option, and that option is selected (installed).
+    // It is null when there is only one option, and that option is deselected (uninsatlled)
+    // The following creates an array out of formData.selectedItems, accounting for all cases (hopefully).
+    let filteredSelectedItems = []; // If formData.selectedItems is null, this variable will remain an empty array.
+    if (typeof formData.selectedItems === "string") {
+      // If formData.selectedItems is a string, put it in an array.
+      filteredSelectedItems = [formData.selectedItems]; //
+    } else if (formData.selectedItems) {
+      // Else, make sure it isn't null. If not, it's already an array -> filter against null entries.
+      filteredSelectedItems = formData.selectedItems.filter((i) => i);
+    }
 
     const uninstallableItems = [];
 
