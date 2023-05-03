@@ -41,12 +41,14 @@
             </div>
             <div class="dialog-item-input text-nowrap">
               <select name="foundationalId">
-                {{!-- ONLY DISPLAY CYBERWARE OF SAME TYPE AS OPTIONAL --}}
-                {{#each foundationalCyberware as |cyberware c| }}
-                  <option value="{{cyberware._id}}">
-                    {{cyberware.name}}
-                  </option>
-                {{/each}}
+                {{#select foundationalId}}
+                  {{!-- ONLY DISPLAY CYBERWARE OF SAME TYPE AS OPTIONAL --}}
+                  {{#each foundationalCyberware as |cyberware c| }}
+                    <option value="{{cyberware._id}}">
+                      {{cyberware.name}}
+                    </option>
+                  {{/each}}
+                {{/select}}
               </select>
             </div>
           </li>
