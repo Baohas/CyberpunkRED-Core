@@ -1074,6 +1074,24 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Returns specific property for ammo's damage override. "Override" is a boolean,
+   * whether or not to apply the override. "Value" is the damage value, e.g. "3d6".
+   *
+   * @param {String} uuid - The Uuid of the ammo item.
+   * @param {String} property - Should be "override" or "value".
+   */
+  Handlebars.registerHelper("cprAmmoDamageOverride", (uuid, property) => {
+    LOGGER.trace("cprAmmoDamageOverride | handlebarsHelper | Called.");
+    const ammoItem = fromUuidSync(uuid);
+    if (property === "override" || property === "value") {
+      return ammoItem.system.damage[property];
+    }
+    return LOGGER.error(
+      `The only valid property parameters are 'override' or 'value'. '${property}' is not valid.`
+    );
+  });
+
+  /**
    * Return true/false depending on whether debugElements setting in the game is enabled
    */
   Handlebars.registerHelper("cprIsDebug", () => {

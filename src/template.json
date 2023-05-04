@@ -322,7 +322,11 @@
       "templates": ["common", "physical", "stackable", "valuable"],
       "variety": "heavyPistol",
       "type": "basic",
-      "ablationValue": 1
+      "ablationValue": 1,
+      "damage": {
+        "override": false,
+        "value": "3d6"
+      }
     },
     "armor": {
       "templates": [

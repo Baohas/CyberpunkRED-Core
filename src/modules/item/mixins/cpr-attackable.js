@@ -311,6 +311,11 @@ const Attackable = function Attackable() {
       }
     }
 
+    const ammoDamageOverride = this._getLoadedAmmoProp("damage");
+    if (ammoDamageOverride?.override) {
+      damage = ammoDamageOverride.value;
+    }
+
     const cprRoll = new CPRRolls.CPRDamageRoll(rollName, damage, weaponType);
     if (
       cprWeaponData.fireModes.autoFire === 0 &&

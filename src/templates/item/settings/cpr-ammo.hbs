@@ -43,4 +43,30 @@
     <input name="system.ablationValue" type="number" value="{{item.system.ablationValue}}"/>
   </div>
 </li>
+
+{{!-- Damage Override Information --}}
+<li class="item flexrow">
+  <div class="item flexrow setting-name text-nowrap">
+    {{localize "CPR.itemSheet.ammo.damageOverride?"}}
+  </div>
+  <div class="item flexrow setting-value text-nowrap item-end">
+    {{#if item.system.damage.override }}
+      <a class="item-checkbox"
+         data-target="system.damage.override"><i class="far fa-check-circle"></i></a>
+    {{else}}
+      <a class="item-checkbox"
+         data-target="system.damage.override"><i class="far fa-circle"></i></a>
+    {{/if}}
+  </div>
+</li>
+{{#if item.system.damage.override }}
+<li class="item flexrow">
+  <div class="item flexrow setting-name text-nowrap">
+    {{localize "CPR.itemSheet.ammo.damageValue?"}}
+  </div>
+  <div class="item flexrow setting-value text-nowrap item-end">
+    <input name="system.damage.value" type="text" value="{{item.system.damage.value}}"/>
+  </div>
+</li>
+{{/if}}
 {{cprTrace "END CPR-AMMO.HBS"}}
