@@ -11,9 +11,6 @@
               </option>
               {{#each biProgramList as |program| }}
                 <option value="{{program.uuid}}">
-                  {{#if (cprCompare program.uuid "===" linkedProgramUUID) }}
-                    *
-                  {{/if}}
                   {{program.name}}
                 </option>
               {{/each}}

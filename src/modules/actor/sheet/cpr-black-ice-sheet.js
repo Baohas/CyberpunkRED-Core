@@ -122,7 +122,10 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     }
 
     // Show "Configure Black Ice Actor From Program" prompt
-    let dialogData = { biProgramList: biPrograms, linkedProgramUUID };
+    let dialogData = {
+      biProgramList: biPrograms,
+      programUUID: linkedProgramUUID,
+    };
     dialogData = await CPRDialog.showDialog(dialogData, {
       // Set the options for the dialog.
       title: SystemUtils.Localize(
