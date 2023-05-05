@@ -90,7 +90,7 @@ export default class CPRBlackIceActor extends Actor {
         program = netrunnerToken.actor.getOwnedItem(programUUID);
       }
     } else {
-      const programList = game.items.filter((i) => i._id === programUUID);
+      const programList = game.items.filter((i) => i.uuid === programUUID);
       if (programList.length === 1) {
         [program] = programList;
       }
