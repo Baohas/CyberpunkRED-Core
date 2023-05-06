@@ -51,8 +51,9 @@
 - Added Night City Tarot content with help from Hakuan Quietpaws
 - Added All About Drones with help from Hakuan Quietpaws
 - Added Exotics of 2045 with help from Hakuan Quietpaws
+- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
 - Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
-- Added Black Chrome Plus DLC
+- Added Night City Weather with help from Miklos
 - Added Non-Generic Weapons
 
 ### Changes

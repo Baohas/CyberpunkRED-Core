@@ -238,6 +238,14 @@
       "package": "cyberpunk-red-core"
     },
     {
+      "label": "Night City Weather",
+      "type": "Item",
+      "name": "night-city-weather",
+      "path": "packs/night-city-weather.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
       "label": "Programs",
       "type": "Item",
       "name": "programs",
