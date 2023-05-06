@@ -214,6 +214,14 @@
       "package": "cyberpunk-red-core"
     },
     {
+      "label": "Cargo Containers and Cube Hotels",
+      "type": "Item",
+      "name": "cargo-containers-and-cube-hotels",
+      "path": "packs/cargo-containers-and-cube-hotels.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
       "label": "NET Architecture Rolltables",
       "type": "RollTable",
       "name": "net-rolltables",
