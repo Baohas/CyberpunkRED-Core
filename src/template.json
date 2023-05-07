@@ -324,7 +324,7 @@
       "type": "basic",
       "ablationValue": 1,
       "damage": {
-        "override": false,
+        "override": "set",
         "value": "3d6"
       }
     },

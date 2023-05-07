@@ -279,42 +279,7 @@ const Attackable = function Attackable() {
     const cprWeaponData = this.system;
     const rollName = this.name;
     const { weaponType } = cprWeaponData;
-    let { damage } = this.system;
-    if (
-      (weaponType === "unarmed" || weaponType === "martialArts") &&
-      cprWeaponData.unarmedAutomaticCalculation
-    ) {
-      // calculate damage based on BODY stat
-      const cprActorData = this.actor.system;
-      const actorBodyStat = cprActorData.stats.body.value;
-      if (actorBodyStat <= 4) {
-        if (
-          weaponType === "unarmed" &&
-          this.actor.itemTypes.cyberware.some(
-            (c) =>
-              c.system.type === "cyberArm" &&
-              c.system.isInstalled === true &&
-              c.system.isFoundational === true
-          )
-        ) {
-          // If the user has an installed Cyberarm, which is a foundational. This is only for unarmed damage, not martial arts damage.
-          damage = "2d6";
-        } else {
-          damage = "1d6";
-        }
-      } else if (actorBodyStat <= 6) {
-        damage = "2d6";
-      } else if (actorBodyStat <= 10) {
-        damage = "3d6";
-      } else {
-        damage = "4d6";
-      }
-    }
-
-    const ammoDamageOverride = this._getLoadedAmmoProp("damage");
-    if (ammoDamageOverride?.override) {
-      damage = ammoDamageOverride.value;
-    }
+    const damage = this.getWeaponDamage();
 
     const cprRoll = new CPRRolls.CPRDamageRoll(rollName, damage, weaponType);
     if (
@@ -407,6 +372,71 @@ const Attackable = function Attackable() {
     const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
     cprRoll.addMod(damageMods);
     return cprRoll;
+  };
+
+  /**
+   * Calculates the damage for a weapon. For unarmed or martial arts damage rolls, calculate based on the body stat.
+   * For ranged weapons, factor in if the ammo overrides the weapon's base damage.
+   *
+   * @returns {String} - Damage formula in the form of `Xd6`.
+   */
+  this.getWeaponDamage = function _getWeaponDamage() {
+    let { damage } = this.system;
+    const { weaponType } = this.system;
+    if (
+      (weaponType === "unarmed" || weaponType === "martialArts") &&
+      this.system.unarmedAutomaticCalculation
+    ) {
+      // calculate damage based on BODY stat
+      const cprActorData = this.actor.system;
+      const actorBodyStat = cprActorData.stats.body.value;
+      if (actorBodyStat <= 4) {
+        if (
+          weaponType === "unarmed" &&
+          this.actor.itemTypes.cyberware.some(
+            (c) =>
+              c.system.type === "cyberArm" &&
+              c.system.isInstalled === true &&
+              c.system.isFoundational === true
+          )
+        ) {
+          // If the user has an installed Cyberarm, which is a foundational. This is only for unarmed damage, not martial arts damage.
+          damage = "2d6";
+        } else {
+          damage = "1d6";
+        }
+      } else if (actorBodyStat <= 6) {
+        damage = "2d6";
+      } else if (actorBodyStat <= 10) {
+        damage = "3d6";
+      } else {
+        damage = "4d6";
+      }
+    }
+
+    const ammoDamageOverride = this._getLoadedAmmoProp("damage"); // Get damage override information.
+    if (ammoDamageOverride?.override === "set") {
+      damage = ammoDamageOverride.value; // If mode is "set", then set the value.
+    } else if (ammoDamageOverride?.override === "modify") {
+      const modifier = ammoDamageOverride.value.match(/-*[0-9][0-9]*/);
+      if (!modifier) {
+        return SystemUtils.DisplayMessage(
+          "warn",
+          `This ammo's damage override has an invalid value (${ammoDamageOverride.value}). Check the ammo's settings.`
+        );
+      }
+      const currentDamage = damage.match(/[0-9][0-9]*/);
+      const newDamage =
+        Number.parseInt(currentDamage[0], 10) +
+        Number.parseInt(modifier[0], 10);
+      if (newDamage <= 0) {
+        damage = "1d6";
+      } else {
+        damage = `${newDamage}d6`;
+      }
+    }
+
+    return damage;
   };
 
   /**

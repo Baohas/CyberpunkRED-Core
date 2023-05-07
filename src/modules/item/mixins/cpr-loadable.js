@@ -107,6 +107,14 @@ const Loadable = function Loadable() {
           }
         });
 
+        if (validAmmo.length === 0) {
+          SystemUtils.DisplayMessage(
+            "warn",
+            SystemUtils.Localize("CPR.messages.noValidAmmo")
+          );
+          return;
+        }
+
         let dialogData = {
           weapon: this,
           ammoList: validAmmo,
@@ -115,13 +123,6 @@ const Loadable = function Loadable() {
             : "",
           returnType: "string",
         };
-        if (validAmmo.length === 0) {
-          SystemUtils.DisplayMessage(
-            "warn",
-            SystemUtils.Localize("CPR.messages.noValidAmmo")
-          );
-          return;
-        }
 
         // Show "Load Ammo" dialog,
         dialogData = await CPRDialog.showDialog(dialogData, {

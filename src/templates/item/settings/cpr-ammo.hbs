@@ -47,22 +47,24 @@
 {{!-- Damage Override Information --}}
 <li class="item flexrow">
   <div class="item flexrow setting-name text-nowrap">
-    {{localize "CPR.itemSheet.ammo.damageOverride?"}}
+    {{localize "CPR.itemSheet.ammo.damageModify"}}
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
-    {{#if item.system.damage.override }}
-      <a class="item-checkbox"
-         data-target="system.damage.override"><i class="far fa-check-circle"></i></a>
-    {{else}}
-      <a class="item-checkbox"
-         data-target="system.damage.override"><i class="far fa-circle"></i></a>
-    {{/if}}
+    <select name="system.damage.override" data-dtype="{{item.system.damage.override}}">
+      {{#select item.system.damage.override}}
+        {{#each (cprFindConfigObj "ammoDamageOverrideModes") as |mode m| }}
+          <option value="{{m}}">
+            {{localize mode}}
+          </option>
+        {{/each}}
+      {{/select}}
+    </select>
   </div>
 </li>
-{{#if item.system.damage.override }}
+{{#if (cprCompare item.system.damage.override "!==" "none")}}
 <li class="item flexrow">
   <div class="item flexrow setting-name text-nowrap">
-    {{localize "CPR.itemSheet.ammo.damageValue?"}}
+    {{localize "CPR.itemSheet.ammo.damageValue"}}
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <input name="system.damage.value" type="text" value="{{item.system.damage.value}}"/>
