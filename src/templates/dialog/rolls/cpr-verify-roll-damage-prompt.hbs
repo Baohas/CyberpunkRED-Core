@@ -4,6 +4,9 @@
     <div class="text-normal text-center">
       {{localize "CPR.rolls.rollingForDamage" rollTitle=rollData.rollTitle}}
     </div>
+    <div class="text-center">
+      <span class="text-bold">{{localize "CPR.global.generic.damage"}}:</span> {{#if isAutofire}}2d6 x{{autofireMultiplier}}{{else}}{{rollData.formula}}{{/if}}
+    </div>
   </div>
   <hr/>
   <div class="dialog-grid flexcol">
@@ -38,7 +41,7 @@
                        class="number"
                        name="autofireMultiplier"
                        data-dtype="Number"
-                       value="1"
+                       value="{{rollData.autofireMultiplier}}"
                        max="{{#if (cprCompare rollData.weaponType "===" "assaultRifle") }}4{{else }}3{{/if }}"
                        min="1"/>
               </div>
