@@ -1,0 +1,73 @@
+_id: xatc5UtvmspX6JJh
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/trauma-team-medscan.svg
+name: MedScan
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Trauma Team North America
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>An app for your agent. Medical video conferencing, helping you to
+      perfer first aid, for a price. Full rules can be found on page 14.</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: false
+  isInstalled: false
+  isRanged: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  modifiers:
+    attackmod:
+      isSituational: false
+      type: modifier
+      value: null
+    damage:
+      isSituational: false
+      type: modifier
+      value: null
+    magazine:
+      type: modifier
+      value: null
+    rof:
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: false
+  price:
+    market: 20
+  providesHardening: false
+  rof: 1
+  size: 1
+  source:
+    book: BC
+    page: 14
+  type: gear
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: itemUpgrade
