@@ -1,0 +1,50 @@
+_id: RhnvvJ4iS6D88Scz
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/mimic-clothing-kit.svg
+name: Mimic Clothing (High Fashion)
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 11
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Light Armorjack made from a Mimic Clothing Kit and "High Fashion"
+      clothing. Refer to full item description on BC pg. 33.</p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 0
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isBodyLocation: true
+  isElectronic: false
+  isHeadLocation: false
+  isShield: false
+  isUpgraded: false
+  penalty: 0
+  price:
+    market: 1100
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  source:
+    book: BC
+    page: 33
+  upgrades: []
+  usage: equipped
+type: armor
