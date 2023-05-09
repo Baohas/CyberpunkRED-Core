@@ -115,6 +115,34 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 #### Misc
 
 - Add check for `core.photosensitivityMode` when rendering pause animation
+- Add a `isElectronic` data point to Gear items
+  - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (EG: A macro to select which items to disable with an EMP)
+- Add `Get EMP'd Items` macro
+  - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (wihout sheilding), carried (electroinc) Gear items, or Cyberdecks and outputs the results to chat
+- Add a `brand` field to physical items
+  - All compendia provided by the system have been migrated
+  - We so not provide any migrations for in world items as there are to many edge cases to reliably do this
+
+#### Content / Compendia
+
+- Added The 12 Days of Cybermas with help from Miklos
+- Added Hornet’s Pharmacy with help from Miklos
+- Added Nomad vehicle upgrades with help from WombatCombat
+- Added Spinning Your Wheels upgrades with help from Sushimatic
+- Added Must Have Cyberware Deals with help from Miklos
+- Added Midnight With The Upload with help from Miklos
+- Added Night City Tarot content with help from Hakuan Quietpaws
+- Added All About Drones with help from Hakuan Quietpaws
+- Added Exotics of 2045 with help from Hakuan Quietpaws
+- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
+- Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
+- Added Night City Weather with help from Miklos
+- Added Non-Generic Weapons
+- Added Black Chrome Plus DLC
+- Added Black Chrome with help from
+  - H.P. Racha
+  - Hakuan Quietpaws
+  - Sushimatic
 
 ### Bug Fixes
 
