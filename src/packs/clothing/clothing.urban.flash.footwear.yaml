@@ -1,7 +1,5 @@
 _id: qwQVhWkGL2hJ2H1q
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_footwear.svg
 name: Urban Flash Footwear
 system:
@@ -25,9 +23,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 100
+  providesHardening: false
   revealed: true
   source:
     book: Core

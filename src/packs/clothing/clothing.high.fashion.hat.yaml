@@ -1,7 +1,5 @@
 _id: GVQ1Q3Zi4d8IOLSB
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_hat.svg
 name: High Fashion Hat
 system:
@@ -26,9 +24,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 5000
+  providesHardening: false
   revealed: true
   source:
     book: Core

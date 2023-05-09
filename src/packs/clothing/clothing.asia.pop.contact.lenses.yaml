@@ -1,7 +1,5 @@
 _id: DCKlDDJE2cSxhTzr
 effects: []
-flags:
-  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/clothing/generic_contact_lenses.svg
 name: Asia Pop Contact Lenses
@@ -26,9 +24,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 100
+  providesHardening: false
   revealed: true
   source:
     book: Core

@@ -1,7 +1,5 @@
 _id: jw1y8Cznu8PPD8Vk
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_bottoms.svg
 name: High Fashion Bottoms
 system:
@@ -26,9 +24,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 1000
+  providesHardening: false
   revealed: true
   source:
     book: Core

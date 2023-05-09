@@ -1,7 +1,5 @@
 _id: sWcT0Dw2kpW172Al
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_top.svg
 name: Gang Colors Top
 system:
@@ -23,9 +21,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 20
+  providesHardening: false
   revealed: true
   source:
     book: Core

@@ -1,7 +1,5 @@
 _id: cmgqzHg3KxyJx7LP
 effects: []
-flags:
-  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/clothing/generic_contact_lenses.svg
 name: Nomad Leathers Contact Lenses
@@ -26,9 +24,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 20
+  providesHardening: false
   revealed: true
   source:
     book: Core

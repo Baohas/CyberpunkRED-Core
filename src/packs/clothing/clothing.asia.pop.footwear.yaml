@@ -1,7 +1,5 @@
 _id: zbGmb4qw3DWOX9c5
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_footwear.svg
 name: Asia Pop Footwear
 system:
@@ -25,9 +23,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 100
+  providesHardening: false
   revealed: true
   source:
     book: Core

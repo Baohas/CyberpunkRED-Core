@@ -9,7 +9,7 @@ system:
   ammoVariety:
     - vHeavyPistol
   attackmod: 0
-  brand: Sternmeyer Waffenfabrik
+  brand: Sternmeyer
   concealable:
     concealable: false
     isConcealed: false

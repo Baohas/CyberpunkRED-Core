@@ -1,7 +1,5 @@
 _id: Yxw3WxrFc8yIz2Vh
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jacket.svg
 name: Leisurewear Jacket
 system:
@@ -25,9 +23,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 100
+  providesHardening: false
   revealed: true
   source:
     book: Core

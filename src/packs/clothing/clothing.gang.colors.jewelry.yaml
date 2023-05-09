@@ -1,7 +1,5 @@
 _id: Ya6Zu2KQ1u5SC6Xj
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
 name: Gang Colors Jewelry
 system:
@@ -23,9 +21,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 50
+  providesHardening: false
   revealed: true
   source:
     book: Core

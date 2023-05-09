@@ -1,7 +1,5 @@
 _id: z2Gfkljp1A65Onoo
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jacket.svg
 name: High Fashion Jacket
 system:
@@ -26,9 +24,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 1000
+  providesHardening: false
   revealed: true
   source:
     book: Core

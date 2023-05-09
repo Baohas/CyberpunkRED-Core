@@ -1,7 +1,5 @@
 _id: PGK96hSYe39toOam
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_glasses.svg
 name: Gang Colors Glasses
 system:
@@ -23,9 +21,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 20
+  providesHardening: false
   revealed: true
   source:
     book: Core

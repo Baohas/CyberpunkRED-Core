@@ -1,7 +1,5 @@
 _id: 2FdvqlQU1RTvefq6
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_top.svg
 name: Leisurewear Top
 system:
@@ -25,9 +23,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 20
+  providesHardening: false
   revealed: true
   source:
     book: Core

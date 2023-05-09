@@ -1,7 +1,5 @@
 _id: vTV6oSFUewadZRrZ
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_footwear.svg
 name: Gang Colors Footwear
 system:
@@ -23,9 +21,11 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 20
+  providesHardening: false
   revealed: true
   source:
     book: Core

@@ -29,14 +29,7 @@
           "$ref": "#/definitions/System"
         }
       },
-      "required": [
-        "_id",
-        "effects",
-        "img",
-        "name",
-        "system",
-        "type"
-      ]
+      "required": ["_id", "effects", "img", "name", "system", "type"]
     },
     "System": {
       "type": "object",
@@ -63,11 +56,17 @@
         "installedItems": {
           "$ref": "./components/container/installedItems.json"
         },
+        "isElectronic": {
+          "$ref": "./components/electronic/isElectronic.json"
+        },
         "isUpgraded": {
           "$ref": "./components/upgradable/isUpgraded.json"
         },
         "price": {
           "$ref": "./components/valuable/price.json"
+        },
+        "providesHardening": {
+          "$ref": "./components/electronic/providesHardening.json"
         },
         "revealed": {
           "$ref": "./components/effects/revealed.json"
@@ -120,8 +119,10 @@
         "equipped",
         "favorite",
         "installedItems",
+        "isElectronic",
         "isUpgraded",
         "price",
+        "providesHardening",
         "source",
         "style",
         "revealed",
