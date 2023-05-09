@@ -1,0 +1,66 @@
+_id: XFC4oT7IIWlWDnCI
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/reinforced-cyberleg.svg
+name: Reinforced Cyberleg Upgrade
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Requires cyberleg. The cyberleg this is installed on cannot be broken.
+      (See Black Chrome pgs. 21-22 for more details)</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 1d6
+    static: 3
+  installLocation: clinic
+  installedIn: ""
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source:
+    book: BC
+    page: 21
+  type: cyberLeg
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

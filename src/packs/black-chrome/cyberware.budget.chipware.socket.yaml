@@ -1,0 +1,68 @@
+_id: k3up6yJN3q19RqOj
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/budget-chipware-socket.svg
+name: Budget Chipware Socket
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>A cheap socket for a single installation of chipware. Damage to the
+      head sends the installed chipware 30 m/yds away, potentially breaking it
+      (see Black Chrome pg. 17 for more details).</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: 7
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - cyberware
+    list: []
+    slots: 1
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source:
+    book: BC
+    page: 17
+  type: neuralWare
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

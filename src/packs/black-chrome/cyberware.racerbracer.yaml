@@ -1,0 +1,65 @@
+_id: gR3ICJgM9CtZnGlr
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/racer-bracer.svg
+name: RacerBracer
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Rocklin Augmentics
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Internal cyberware. Grants immunity to whiplash. (See Black Chrome pg.
+      22 for more details)</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: 7
+  installLocation: hospital
+  installedIn: ""
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 1
+  source:
+    book: BC
+    page: 22
+  type: cyberwareInternal
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware
