@@ -24,8 +24,6 @@ effects:
     label: Light Tattoo
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/light_tattoo.svg
 name: Light Tattoo
 system:

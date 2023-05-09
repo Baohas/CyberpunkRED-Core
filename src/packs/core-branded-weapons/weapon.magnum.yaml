@@ -1,8 +1,5 @@
 _id: CgCHZfZHMOwXQF4P
 effects: []
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.weapons.HOgtO363Rw42ZHMp
 img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol_poor.svg
 name: Magnum
 system:

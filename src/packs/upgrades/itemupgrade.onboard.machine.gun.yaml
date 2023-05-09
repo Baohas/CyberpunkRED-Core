@@ -1,7 +1,4 @@
 _id: Ige6zeGaInYghHM1
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.upgrades.Ige6zeGaInYghHM1
 img: systems/cyberpunk-red-core/icons/compendium/upgrades/onboard_machine_gun.svg
 name: Onboard Machine Gun
 system:
@@ -24,19 +21,6 @@ system:
 
       <p>You may install this upgrade multiple times.</p>
   dvTable: ""
-  dvTableNames:
-    - DV Assault Rifle
-    - DV Assault Rifle (Autofire)
-    - DV Bows & Crossbows
-    - DV Generic
-    - DV Grenade Launcher
-    - DV Pistol
-    - DV Rocket Launcher
-    - DV SMG
-    - DV SMG (Autofire)
-    - DV Shotgun (Slug)
-    - DV Sniper Rifle
-    - DV Thrown Weapon
   favorite: false
   fireModes:
     autoFire: 0

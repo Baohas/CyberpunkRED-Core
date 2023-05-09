@@ -1,8 +1,6 @@
 _id: mfPOgdF9AABuAwWa
-flags:
-  core:
-    sourceId: Item.7dq1IbyqYsyO1uRe
-img: systems/cyberpunk-red-core/icons/compendium/night-city-weather/waterproof-jacket-lining.svg
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/night-city-weather/waterproof-jacket-lining.svg
 name: Waterproof Jacket Lining
 system:
   ammoVariety: []

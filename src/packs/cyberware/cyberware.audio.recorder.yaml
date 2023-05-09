@@ -1,7 +1,5 @@
 _id: 3LDuErXOiN3nkRl2
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/audio_recorder.svg
 name: Audio Recorder
 system:

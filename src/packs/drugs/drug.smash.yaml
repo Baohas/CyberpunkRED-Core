@@ -98,8 +98,6 @@ effects:
     label: Smash Addiction
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/drugs/smash.svg
 name: Smash
 system:

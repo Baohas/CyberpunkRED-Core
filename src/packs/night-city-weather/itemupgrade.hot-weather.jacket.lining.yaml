@@ -1,8 +1,6 @@
 _id: gIAmp0pgALSAz3c2
-flags:
-  core:
-    sourceId: Compendium.world.night-city-weather.rp5cnBxBRHNwWWki
-img: systems/cyberpunk-red-core/icons/compendium/night-city-weather/hot-weather-jacket-lining.svg
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/night-city-weather/hot-weather-jacket-lining.svg
 name: Hot-Weather Jacket Lining
 system:
   ammoVariety: []

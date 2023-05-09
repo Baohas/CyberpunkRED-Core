@@ -24,8 +24,6 @@ effects:
     label: Flashlight
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/flashlight.svg
 name: Flashlight
 system:

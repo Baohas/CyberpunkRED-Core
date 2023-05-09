@@ -24,8 +24,6 @@ effects:
     label: Worm
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/programs/worm.svg
 name: Worm
 system:

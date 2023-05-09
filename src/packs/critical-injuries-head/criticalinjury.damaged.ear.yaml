@@ -28,8 +28,6 @@ effects:
     label: Damaged Ear
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_ear.svg
 name: Damaged Ear
 system:

@@ -28,8 +28,6 @@ effects:
     label: Sandevistan
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/sandevistan.svg
 name: Sandevistan
 system:

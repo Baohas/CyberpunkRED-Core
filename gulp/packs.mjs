@@ -25,6 +25,7 @@ function _cleanFileName(data) {
     .replace(/['"]/g, "")
     .replace(/[()]/g, "")
     .replace(/[&]/g, "and")
+    .replace(/•/g, ".")
     .replace(/ /g, ".")
     .replace(/\.\./g, ".")
     .replace(/\.-\./g, ".")
@@ -53,7 +54,10 @@ function _cleanPackData(data) {
     "weapon",
   ];
 
+  //
   // Delete Foundry keys we don't need
+  //
+
   if ("_stats" in data) {
     delete data._stats;
   }
@@ -72,6 +76,44 @@ function _cleanPackData(data) {
   if ("permission" in data) {
     delete data.permission;
   }
+
+  // I have no idea where this data is coming from
+  if ("system" in data) {
+    delete data.system.allowedUsage;
+    delete data.system.dvTableNames;
+    delete data.system.isGM;
+    delete data.system.isOwned;
+    delete data.system.relativeSkills;
+    delete data.system.tags;
+  }
+
+  if ("flags" in data) {
+    if ("core" in data.flags) {
+      // We don't care about the sourceId
+      if ("sourceId" in data.flags.core) {
+        delete data.flags.core.sourceId;
+      }
+      // If the flags.core object is empty we can safely delete it
+      if (Object.keys(data.flags.core).length === 0) {
+        delete data.flags.core;
+      }
+    }
+    // and if flags object is empty we can ditch that as well
+    if (Object.keys(data.flags).length === 0) {
+      delete data.flags;
+    }
+  }
+
+  // Remove empty values from system.ammoVariety
+  if (data.type === "weapon") {
+    const ammo = data.system.ammoVariety;
+    const result = ammo.filter((i) => i !== "");
+    data.system.ammoVariety = result;
+  }
+
+  //
+  // Fix common errors in packs
+  //
 
   // Ensure system.source.page is an int
   if (data.system?.source?.page) {
@@ -108,13 +150,6 @@ function _cleanPackData(data) {
 
   if (data.system?.description?.value) {
     data.system.description.value = _cleanString(data.system.description.value);
-  }
-
-  // Remove empty values from system.ammoVariety
-  if (data.type === "weapon") {
-    const ammo = data.system.ammoVariety;
-    const result = ammo.filter((i) => i !== "");
-    data.system.ammoVariety = result;
   }
 
   // Ensure system.amount is an int

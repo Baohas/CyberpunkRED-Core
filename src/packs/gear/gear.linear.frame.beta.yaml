@@ -28,8 +28,6 @@ effects:
     label: Linear Frame Beta
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_beta.svg
 name: Linear Frame β (Beta)
 system:

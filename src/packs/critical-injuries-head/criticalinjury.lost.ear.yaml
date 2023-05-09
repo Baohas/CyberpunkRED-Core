@@ -26,8 +26,6 @@ effects:
     label: Lost Ear
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
 name: Lost Ear
 system:

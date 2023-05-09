@@ -25,8 +25,6 @@ effects:
     label: Artificial Shoulder Mount
     tint: null
     transfer: true
-flags:
-  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/cyberware/artificial_shoulder_mount.svg
 name: Artificial Shoulder Mount

@@ -68,9 +68,6 @@ effects:
     label: Veritas Primary
     tint: null
     transfer: true
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.hornets-pharmacy.2ea71NL50IBcCcJZ
 img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/veritas.svg
 name: Veritas
 system:

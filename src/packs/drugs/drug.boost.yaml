@@ -48,8 +48,6 @@ effects:
     label: Boost Addiction
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/drugs/boost.svg
 name: Boost
 system:

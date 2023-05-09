@@ -24,8 +24,6 @@ effects:
     label: Glow Stick
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/glowstick.svg
 name: Glow Stick
 system:

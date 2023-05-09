@@ -1,8 +1,5 @@
 _id: sV2rvaWBOntsxYvC
 effects: []
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.armor.sV2rvaWBOntsxYvC
 img: systems/cyberpunk-red-core/icons/compendium/armor/medium-armorjack_body.svg
 name: Medium Armorjack (Body)
 system:

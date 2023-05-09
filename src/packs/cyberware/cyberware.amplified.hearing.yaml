@@ -29,8 +29,6 @@ effects:
     label: Amplified Hearing
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/amplified_hearing.svg
 name: Amplified Hearing
 system:

@@ -29,8 +29,6 @@ effects:
     label: Black Lace Addicition
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/drugs/black_lace.svg
 name: Black Lace
 system:

@@ -24,8 +24,6 @@ effects:
     label: Kerenzikov
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/kerenzikov.svg
 name: Kerenzikov
 system:

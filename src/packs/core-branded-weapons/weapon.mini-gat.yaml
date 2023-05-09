@@ -1,8 +1,5 @@
 _id: 5E96QcUqTey2aAUB
 effects: []
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.weapons.FdWzIROFGFrpvFMj
 img: systems/cyberpunk-red-core/icons/compendium/weapons/SMG.svg
 name: Mini-Gat
 system:

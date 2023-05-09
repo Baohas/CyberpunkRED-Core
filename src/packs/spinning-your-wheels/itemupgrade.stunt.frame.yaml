@@ -1,7 +1,4 @@
 _id: QW3t9BOscyXw681t
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.spinning-your-wheels.QW3t9BOscyXw681t
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Gear.svg
 name: Stunt Frame
 system:
@@ -21,19 +18,6 @@ system:
       <p>Rider obtain a +2 bonus to Athletics skill checks when riding and doing
       maneuvers.</p>
   dvTable: ""
-  dvTableNames:
-    - DV Assault Rifle
-    - DV Assault Rifle (Autofire)
-    - DV Bows & Crossbows
-    - DV Generic
-    - DV Grenade Launcher
-    - DV Pistol
-    - DV Rocket Launcher
-    - DV SMG
-    - DV SMG (Autofire)
-    - DV Shotgun (Slug)
-    - DV Sniper Rifle
-    - DV Thrown Weapon
   favorite: false
   fireModes:
     autoFire: 0

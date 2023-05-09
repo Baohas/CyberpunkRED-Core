@@ -30,8 +30,6 @@ effects:
     label: Voice Stress Analyzer
     tint: null
     transfer: true
-flags:
-  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/cyberware/voice_stress_analyzer.svg
 name: Voice Stress Analyzer

@@ -36,8 +36,6 @@ effects:
     label: Agent
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
 name: Agent
 system:

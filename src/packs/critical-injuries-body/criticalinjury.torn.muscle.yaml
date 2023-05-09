@@ -23,8 +23,6 @@ effects:
     label: Torn Muscle
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/torn_muscle.svg
 name: Torn Muscle
 system:

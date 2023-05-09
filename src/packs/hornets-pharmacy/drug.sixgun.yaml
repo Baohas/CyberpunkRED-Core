@@ -116,9 +116,6 @@ effects:
     label: Sixgun Addiction Primary
     tint: null
     transfer: true
-flags:
-  core:
-    sourceId: Item.ka6ccQeTt7ud3pFi
 img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/sixgun.svg
 name: Sixgun
 system:

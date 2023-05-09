@@ -28,8 +28,6 @@ effects:
     label: Broken Jaw
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_jaw.svg
 name: Broken Jaw
 system:

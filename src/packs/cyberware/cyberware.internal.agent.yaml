@@ -24,8 +24,6 @@ effects:
     label: Internal Agent
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/internal_agent.svg
 name: Internal Agent
 system:

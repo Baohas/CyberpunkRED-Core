@@ -65,9 +65,6 @@ effects:
     label: Prime Time Addiction
     tint: null
     transfer: true
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.hornets-pharmacy.RZ7P9nSOB21pfiaI
 img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/prime_time.svg
 name: Prime Time
 system:

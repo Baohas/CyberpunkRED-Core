@@ -28,8 +28,6 @@ effects:
     label: Linear Frame Sigma
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_sigma.svg
 name: Linear Frame ∑ (Sigma)
 system:

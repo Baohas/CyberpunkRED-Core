@@ -44,8 +44,6 @@ effects:
     label: Image Enhance
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/image_enhance.svg
 name: Image Enhance
 system:

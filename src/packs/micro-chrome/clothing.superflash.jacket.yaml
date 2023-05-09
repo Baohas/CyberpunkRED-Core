@@ -1,7 +1,5 @@
 _id: CJB0sTptAOnLoEfu
 effects: []
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jacket.svg
 name: Superflash Jacket
 system:
@@ -28,9 +26,9 @@ system:
     usedSlots: 0
   isElectronic: false
   isUpgraded: false
-  providesHardening: false
   price:
     market: 500
+  providesHardening: false
   revealed: true
   source:
     book: MC

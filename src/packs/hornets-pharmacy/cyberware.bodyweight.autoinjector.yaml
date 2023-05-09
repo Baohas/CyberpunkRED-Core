@@ -1,8 +1,5 @@
 _id: 9rKtuQcxsOmHjKyT
 effects: []
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.hornets-pharmacy.9rKtuQcxsOmHjKyT
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Cyberware.svg
 name: Bodyweight AutoInjector
 system:

@@ -29,8 +29,6 @@ effects:
     label: Medscanner
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/medscanner.svg
 name: Medscanner
 system:

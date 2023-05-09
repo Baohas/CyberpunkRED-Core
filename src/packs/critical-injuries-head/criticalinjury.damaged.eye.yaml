@@ -37,8 +37,6 @@ effects:
     label: Damaged Eye
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg
 name: Damaged Eye
 system:

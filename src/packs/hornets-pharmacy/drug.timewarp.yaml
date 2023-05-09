@@ -84,9 +84,6 @@ effects:
     label: Timewarp Addicted Primary
     tint: null
     transfer: true
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.hornets-pharmacy.8nOTvNR4qZP54nKy
 img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/timewarp.svg
 name: Timewarp
 system:

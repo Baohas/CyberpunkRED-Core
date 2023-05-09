@@ -24,8 +24,6 @@ effects:
     label: Road Flare
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/gear/roadflare.svg
 name: Road Flare
 system:

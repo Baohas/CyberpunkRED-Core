@@ -24,8 +24,6 @@ effects:
     label: Speedy Gonzalves
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/programs/speedy_gonzalvez.svg
 name: Speedy Gonzalvez
 system:

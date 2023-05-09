@@ -24,8 +24,6 @@ effects:
     label: See Ya
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/programs/see_ya.svg
 name: See Ya
 system:

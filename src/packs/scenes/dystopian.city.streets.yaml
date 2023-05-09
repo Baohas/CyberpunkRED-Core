@@ -11,8 +11,6 @@ background:
 backgroundColor: "#999999"
 darkness: 0
 drawings: []
-flags:
-  core: {}
 fogExploration: true
 fogExploredColor: null
 fogOverlay: null

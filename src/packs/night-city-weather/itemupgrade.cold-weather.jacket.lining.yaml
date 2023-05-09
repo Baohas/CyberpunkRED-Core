@@ -1,8 +1,6 @@
 _id: ajAbsPsSmQxsBbKn
-flags:
-  core:
-    sourceId: Compendium.world.night-city-weather.4KrRvlOMijoLR8mN
-img: systems/cyberpunk-red-core/icons/compendium/night-city-weather/cold-weather-jacket-lining.svg
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/night-city-weather/cold-weather-jacket-lining.svg
 name: Cold-Weather Jacket Lining
 system:
   ammoVariety: []

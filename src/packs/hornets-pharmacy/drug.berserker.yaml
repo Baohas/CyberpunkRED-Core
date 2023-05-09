@@ -28,9 +28,6 @@ effects:
     label: Beserker Addicted
     tint: null
     transfer: true
-flags:
-  core:
-    sourceId: Item.lzmfwfxPjDjYE1nM
 img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/berserker.svg
 name: Berserker
 system:

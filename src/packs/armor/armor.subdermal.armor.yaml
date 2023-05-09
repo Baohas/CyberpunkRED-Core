@@ -1,8 +1,5 @@
 _id: M96Dfx18YqvhlIgb
 effects: []
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.armor.M96Dfx18YqvhlIgb
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_armor.svg
 name: Subdermal Armor
 system:

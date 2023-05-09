@@ -36,8 +36,6 @@ effects:
     label: New Effect
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_eye.svg
 name: Lost Eye
 system:

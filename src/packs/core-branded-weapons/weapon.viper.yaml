@@ -1,8 +1,5 @@
 _id: MKvKCHCgl6UCaj7V
 effects: []
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.weapons.nmLsegi1CElgRVD3
 img: systems/cyberpunk-red-core/icons/compendium/weapons/heavySMG_excellent.svg
 name: Viper
 system:

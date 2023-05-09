@@ -24,8 +24,6 @@ effects:
     label: Toxin Binders
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/toxin_binders.svg
 name: Toxin Binders
 system:

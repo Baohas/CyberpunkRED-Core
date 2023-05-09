@@ -27,8 +27,6 @@ effects:
     label: Lost Ear
     tint: null
     transfer: true
-flags:
-  core: {}
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_fingers.svg
 name: Crushed Fingers

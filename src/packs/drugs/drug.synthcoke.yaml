@@ -72,8 +72,6 @@ effects:
     label: Synthcoke Addicted Primary
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/drugs/synthcoke.svg
 name: Synthcoke
 system:

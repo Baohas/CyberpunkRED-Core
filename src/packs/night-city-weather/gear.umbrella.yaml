@@ -1,8 +1,5 @@
 _id: qLpYhxmPD1u2lMG8
 effects: []
-flags:
-  core:
-    sourceId: Compendium.world.night-city-weather.dibMdxHWVHgBz2h6
 img: systems/cyberpunk-red-core/icons/compendium/night-city-weather/umbrella.svg
 name: Umbrella
 system:

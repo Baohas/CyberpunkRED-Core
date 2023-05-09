@@ -1,9 +1,7 @@
 _id: pNkckh9tZBwSBxA2
 effects: []
-flags:
-  core:
-    sourceId: Item.MGfPUcGQKvrPIMJ0
-img: systems/cyberpunk-red-core/icons/compendium/night-city-weather/tactical-umbrella.svg
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/night-city-weather/tactical-umbrella.svg
 name: Tactical Umbrella
 system:
   ammoVariety:

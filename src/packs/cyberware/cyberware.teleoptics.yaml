@@ -29,8 +29,6 @@ effects:
     label: TeleOptics
     tint: null
     transfer: true
-flags:
-  core: {}
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/teleoptics.svg
 name: TeleOptics
 system:

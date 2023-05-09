@@ -1,8 +1,5 @@
 _id: dTIWOSkILQ8vxgql
 effects: []
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.weapons.VwuC5ZtcKsqtFHms
 img: systems/cyberpunk-red-core/icons/compendium/weapons/mediumPistol.svg
 name: X-9mm
 system:

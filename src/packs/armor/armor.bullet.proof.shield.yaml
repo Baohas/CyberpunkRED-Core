@@ -1,8 +1,5 @@
 _id: Bg1YEeF25HhfrzOG
 effects: []
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.armor.Bg1YEeF25HhfrzOG
 img: systems/cyberpunk-red-core/icons/compendium/armor/bullet_proof_shield.svg
 name: Bullet Proof Shield
 system:

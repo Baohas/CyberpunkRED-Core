@@ -3,8 +3,6 @@ description: >-
   Table for rolling for the advanced floors of a NET architecture, as detailed
   on page 211.
 displayRoll: false
-flags:
-  core: {}
 formula: 3d6
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Dice.svg
 name: All Other Floors (Advanced)
