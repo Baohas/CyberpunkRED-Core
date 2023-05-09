@@ -54,6 +54,14 @@
       "package": "cyberpunk-red-core"
     },
     {
+      "label": "Black Chrome",
+      "type": "Item",
+      "name": "black-chrome",
+      "path": "packs/black-chrome.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
       "label": "Clothing",
       "type": "Item",
       "name": "clothing",
