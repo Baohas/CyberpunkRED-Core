@@ -18,7 +18,7 @@ IFS=$'\n\t'
 # LANGS: The langages you want to extract
 #  EG: ("de" "es")
 
-ITEM_FILE="cyberpunk-red-core.gear-items.json"
+ITEM_FILE="cyberpunk-red-core.gear.json"
 
 ITEMS=(
   "Agent"
@@ -49,16 +49,9 @@ ITEMS=(
   "Virtuality Goggles"
 )
 
-LANGS=(
-  "cz"
-  "de"
-  "en"
-  "es"
-  "fr"
-  "it"
-  "pl"
-  "pt-BR"
-  "ru"
+mapfile -t LANGS < <(
+  find src/babele -mindepth 1 -maxdepth 1 -print -type d |
+    sed 's~src/babele/~~g'
 )
 
 all_items=()
