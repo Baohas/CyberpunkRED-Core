@@ -1,0 +1,55 @@
+_id: my1ugVO4a5VjJSuH
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/tr-4-detonator-fluid.svg
+name: TR-4 Detonator Fluid
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 6d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Must be poured into a fuel tank vehicule to explode. Full rules can be
+      found on page 90.</p>
+  dvTable: ""
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 500
+  revealed: true
+  rof: 1
+  source:
+    book: BC
+    page: 90
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Demolitions
+  weaponType: thrownWeapon
+type: weapon

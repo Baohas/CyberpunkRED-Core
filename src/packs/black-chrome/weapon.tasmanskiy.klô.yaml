@@ -1,0 +1,82 @@
+_id: Aq3Fim1KykSIjtXU
+effects:
+  - _id: uL6ZlWV5CjTzQj2N
+    changes:
+      - key: bonuses.interrogation
+        mode: 2
+        priority: null
+        value: "2"
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    icon: systems/cyberpunk-red-core/icons/compendium/cyberweapons/wolvers.svg
+    label: Tasmanskiy Klô
+    tint: null
+    transfer: true
+img: systems/cyberpunk-red-core/icons/compendium/cyberweapons/wolvers.svg
+name: Tasmanskiy Klô
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Slamdance Incorporated
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 4d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Big retractable blades in a Combat Glove.&nbsp;</p>
+      <p>Excellent Quality Exotic Very Heavy Melee Weapon.</p>
+  dvTable: ""
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 1
+    usedSlots: 0
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 5000
+  revealed: true
+  rof: 1
+  source:
+    book: BC
+    page: 99
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: vHeavyMelee
+type: weapon

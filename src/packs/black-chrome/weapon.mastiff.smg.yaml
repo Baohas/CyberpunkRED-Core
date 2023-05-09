@@ -1,0 +1,55 @@
+_id: zfpSCTCQTsEBBtVg
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/weapons/SMG.svg
+name: Mastiff SMG
+system:
+  ammoVariety:
+    - medPistol
+  attackmod: 0
+  brand: Militech
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 2d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>The Militech Mastiff SMG is an Exotic Two-Handed SMG and Shotgun. Full
+      rules can be found in Black Chrome on Page 113.</p>
+  dvTable: DV SMG
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 3
+    suppressiveFire: true
+  handsReq: 2
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 30
+    value: 0
+  price:
+    market: 1000
+  revealed: true
+  rof: 1
+  source:
+    book: BC
+    page: 113
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: smg
+type: weapon
