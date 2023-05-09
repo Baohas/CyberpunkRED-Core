@@ -119,6 +119,7 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
 - Fixed description of the Militech Crusher which confused shotgun shells and shotgun slugs
 - Fixed not being able to install the correct type of upgrades into a Smart Lens
 - Fixed #701 - Issue with Black ICE rolling the wrong damage.
+- Fix Smart Glasses / Smart Lenses not taking cybereye options
 
 ## Version 0.86.1 | Date: 2023-02-05
 
