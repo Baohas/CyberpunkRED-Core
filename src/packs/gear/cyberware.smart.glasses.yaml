@@ -30,6 +30,7 @@ system:
   installedItems:
     allowed: true
     allowedTypes:
+      - cyberware
       - itemUpgrade
     list: []
     slots: 2
