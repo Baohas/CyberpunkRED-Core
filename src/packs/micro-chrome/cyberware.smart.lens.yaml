@@ -53,7 +53,7 @@ system:
   size: 1
   source:
     book: MC
-    page: ""
+    page: 1
   type: cyberEye
   unarmedAutomaticCalculation: true
   upgrades: []

@@ -51,7 +51,7 @@ system:
   rof: 1
   source:
     book: WG
-    page: ""
+    page: 5
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: equipped

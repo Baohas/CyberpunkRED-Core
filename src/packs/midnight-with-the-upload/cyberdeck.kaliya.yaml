@@ -42,6 +42,6 @@ system:
   size: 1
   source:
     book: MwtU
-    page: ""
+    page: 4
   upgrades: []
 type: cyberdeck

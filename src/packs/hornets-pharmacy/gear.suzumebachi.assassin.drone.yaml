@@ -69,7 +69,7 @@ system:
   revealed: true
   source:
     book: HP
-    page: ""
+    page: 5
   upgrades: []
   usage: toggled
 type: gear

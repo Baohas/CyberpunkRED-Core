@@ -1,14 +1,12 @@
-_id: tk2g10vp4EdMXLPK
+_id: 8wVlu4VqXbhL0XKA
 effects: []
-flags:
-  core: {}
-img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher.svg
-name: SDF-45
+img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher_poor.svg
+name: Triple Treat
 system:
   ammoVariety:
     - rocket
   attackmod: 0
-  brand: Midnight Arms
+  brand: Budget Arms
   concealable:
     concealable: false
     isConcealed: false
@@ -17,11 +15,11 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>This rocket launcher can only load Armor Piercing rockets, and has a
-      maximum range of 400 m/yds. When fired one rocket at a time, the GM
-      chooses where they rockets land. When fired two rockets at a time, the GM
-      chooses where the rockets land but this time up to 50 m/yds away from the
-      target, and with each rocket more than 10 m/yds from each other.</p>
+      <p>Comes with an Exotic Grenade Launcher Underbarrel* which - as the main
+      gun is poor quality - funcations as a poor quality weapon. It can't be
+      removed. Both that and the main weapon can fire non-Basic Ammunition.</p>
+
+      <p><em>*Must be manually added after acquiring the weapon</em></p>
   dvTable: DV Rocket Launcher
   equipped: owned
   favorite: false
@@ -41,15 +39,15 @@ system:
     ammoData:
       name: ""
       uuid: ""
-    max: 4
+    max: 2
     value: 0
   price:
-    market: 1000
+    market: 500
   revealed: true
-  rof: 2
+  rof: 1
   source:
     book: WG
-    page: ""
+    page: 3
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: equipped

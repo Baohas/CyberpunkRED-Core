@@ -98,7 +98,7 @@ system:
   seats: 1
   source:
     book: SYW
-    page: ""
+    page: 3
   speedCombat: 8
   speedNarrative: 12 MPH / 19 KPH
   upgrades: []

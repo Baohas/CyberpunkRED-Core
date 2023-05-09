@@ -54,7 +54,7 @@ system:
   rof: 1
   source:
     book: BC+
-    page: ""
+    page: 4
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled

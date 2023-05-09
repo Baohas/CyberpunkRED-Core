@@ -57,7 +57,7 @@ system:
   size: 1
   source:
     book: HP
-    page: ""
+    page: 5
   type: cyberwareInternal
   unarmedAutomaticCalculation: true
   upgrades: []

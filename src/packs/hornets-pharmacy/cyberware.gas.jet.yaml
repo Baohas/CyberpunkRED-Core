@@ -62,7 +62,7 @@ system:
   size: 2
   source:
     book: HP
-    page: ""
+    page: 5
   type: cyberArm
   unarmedAutomaticCalculation: true
   upgrades: []

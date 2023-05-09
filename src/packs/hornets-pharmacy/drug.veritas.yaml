@@ -95,6 +95,6 @@ system:
   revealed: true
   source:
     book: HP
-    page: ""
+    page: 4
   usage: snorted
 type: drug

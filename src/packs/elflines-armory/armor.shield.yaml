@@ -38,7 +38,7 @@ system:
     value: 10
   source:
     book: ELO
-    page: 351
+    page: 3
   upgrades: []
   usage: equipped
 type: armor

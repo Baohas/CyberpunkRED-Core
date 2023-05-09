@@ -68,7 +68,7 @@ system:
   size: 1
   source:
     book: 12DoC
-    page: ""
+    page: 4
   type: cyberArm
   unarmedAutomaticCalculation: true
   upgrades: []

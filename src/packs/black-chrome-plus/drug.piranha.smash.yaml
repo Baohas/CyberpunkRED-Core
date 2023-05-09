@@ -206,6 +206,6 @@ system:
   revealed: true
   source:
     book: BC+
-    page: ""
+    page: 4
   usage: snorted
 type: drug

@@ -70,7 +70,7 @@ system:
   size: 1
   source:
     book: NCW
-    page: ""
+    page: 6
   type: clothing
   unarmedAutomaticCalculation: true
   usesType: magazine

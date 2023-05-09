@@ -14,6 +14,6 @@ system:
   level: 0
   source:
     book: Core
-    page: ""
+    page: 133
   stat: ref
 type: skill

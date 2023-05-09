@@ -44,7 +44,7 @@ system:
     value: 0
   source:
     book: BC+
-    page: ""
+    page: 4
   upgrades: []
   usage: toggled
 type: armor

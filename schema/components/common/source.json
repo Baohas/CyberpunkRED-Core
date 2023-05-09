@@ -25,16 +25,7 @@
       ]
     },
     "page": {
-      "description": "Page is not strictly required",
-      "oneOf": [
-        {
-          "type": "integer"
-        },
-        {
-          "type": "string",
-          "enum": [""]
-        }
-      ]
+      "type": "integer"
     }
   },
   "required": ["book", "page"]

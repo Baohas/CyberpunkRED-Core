@@ -28,6 +28,6 @@ system:
   revealed: true
   source:
     book: HP
-    page: ""
+    page: 4
   usage: toggled
 type: drug

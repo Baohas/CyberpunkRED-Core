@@ -88,7 +88,7 @@ system:
   size: 1
   source:
     book: 12DoC
-    page: ""
+    page: 3
   type: neuralWare
   unarmedAutomaticCalculation: true
   upgrades: []

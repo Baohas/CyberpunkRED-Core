@@ -19,7 +19,7 @@ system:
     market: 10
   source:
     book: ELO
-    page: 346
+    page: 3
   type: poison
   variety: arrow
 type: ammo

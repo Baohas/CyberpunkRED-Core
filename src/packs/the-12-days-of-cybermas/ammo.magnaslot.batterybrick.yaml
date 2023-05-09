@@ -19,7 +19,7 @@ system:
     market: 100
   source:
     book: 12DoC
-    page: ""
+    page: 4
   type: basic
   variety: custom
 type: ammo

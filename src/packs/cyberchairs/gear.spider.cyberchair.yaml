@@ -43,7 +43,7 @@ system:
   revealed: true
   source:
     book: CC
-    page: ""
+    page: 2
   upgrades: []
   usage: toggled
 type: gear

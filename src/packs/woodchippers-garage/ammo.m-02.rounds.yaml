@@ -19,7 +19,7 @@ system:
     market: 500
   source:
     book: WG
-    page: ""
+    page: 5
   type: armorPiercing
   variety: custom
 type: ammo

@@ -59,7 +59,7 @@ system:
   size: 0
   source:
     book: MHCD
-    page: ""
+    page: 5
   type: cyberLeg
   unarmedAutomaticCalculation: true
   upgrades: []

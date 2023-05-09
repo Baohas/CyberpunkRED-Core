@@ -32,7 +32,7 @@ system:
   revealed: true
   source:
     book: MC
-    page: ""
+    page: 1
   style: urbanFlash
   type: jacket
   upgrades: []

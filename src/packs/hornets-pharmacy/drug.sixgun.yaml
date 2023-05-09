@@ -167,6 +167,6 @@ system:
   revealed: true
   source:
     book: HP
-    page: ""
+    page: 3
   usage: snorted
 type: drug

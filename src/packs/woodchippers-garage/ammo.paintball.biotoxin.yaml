@@ -20,7 +20,7 @@ system:
     market: 0
   source:
     book: WG
-    page: ""
+    page: 4
   type: biotoxin
   variety: paintball
 type: ammo

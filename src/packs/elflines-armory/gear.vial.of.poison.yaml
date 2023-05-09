@@ -27,7 +27,7 @@ system:
   revealed: true
   source:
     book: ELO
-    page: 355
+    page: 3
   upgrades: []
   usage: toggled
 type: gear

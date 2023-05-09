@@ -32,7 +32,7 @@ system:
   revealed: true
   source:
     book: SYW
-    page: ""
+    page: 5
   upgrades: []
   usage: toggled
 type: gear

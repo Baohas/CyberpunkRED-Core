@@ -47,7 +47,7 @@ system:
   rof: 1
   source:
     book: 12DoG
-    page: ""
+    page: 3
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: equipped

@@ -17,7 +17,7 @@ system:
     market: 1
   source:
     book: ELO
-    page: 345
+    page: 3
   type: basic
   variety: arrow
 type: ammo

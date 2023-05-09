@@ -21,18 +21,6 @@
       "name": "Archimedes",
       "description": "<p>Uses the Pilot Air Vehicle Skill instead of the Heavy Weapons Skill to fire, requires the has Targeting Scope Cyberware, and can only use Smart Rockets. It does come with one Smart Rocket included however. How nice.</p>"
     },
-    "SDF-45": {
-      "name": "SDF-45",
-      "description": "<p>This rocket launcher can only load Armor Piercing rockets, and has a maximum range of 400 m/yds. When fired one rocket at a time, the GM chooses where they rockets land. When fired two rockets at a time, the GM chooses where the rockets land but this time up to 50 m/yds away from the target, and with each rocket more than 10 m/yds from each other.</p>"
-    },
-    "Ballistic Harpoon": {
-      "name": "Ballistic Harpoon",
-      "description": "<p>This harpoon can either be used as a Two Handed Very Heavy Melee Weapon, or fired from it's housing as a ranged weapon. When fired it still ignores half of the defender's armor*.<br><em>*Armor calculations don't currently support this reduction, nor is switching to using it as a melee weapon supported</em></p>"
-    },
-    "BudgetArms Triple Treat": {
-      "name": "BudgetArms Triple Treat",
-      "description": "<p>Comes with an Exotic Grenade Launcher Underbarrel* which - as the main gun is poor quality - funcations as a poor quality weapon. It can't be removed. Both that and the main weapon can fire non-Basic Ammunition.</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>"
-    },
     "Burst Flamethrower": {
       "name": "Burst Flamethrower",
       "description": "<p>Can only fire Incendiary Shotgun Shells, but targets ignited by this weapon burn for 4HP a turn.<br><br>Additionally, this weapon can consume all it's remaining ammo to shoot a fireball, which explodes in a similar fashion to an incendiary grenade. The user of the weapon is also consumed by the fireball, getting Deadly on Fire*.</p>\n<p><em>*Special fire mode not currently supported; will need to be manually applied</em></p>"
@@ -57,9 +45,17 @@
       "name": "Pocket Launcher",
       "description": "<p>While unloaded, this weapon can be concealed.</p>"
     },
+    "SDF-45": {
+      "name": "SDF-45",
+      "description": "<p>This rocket launcher can only load Armor Piercing rockets, and has a maximum range of 400 m/yds. When fired one rocket at a time, the GM chooses where they rockets land. When fired two rockets at a time, the GM chooses where the rockets land but this time up to 50 m/yds away from the target, and with each rocket more than 10 m/yds from each other.</p>"
+    },
     "TearJerker": {
       "name": "TearJerker",
       "description": "<p>This weapon can only fire Smoke or Teargas Ammunition.</p>"
+    },
+    "Triple Treat": {
+      "name": "Triple Treat",
+      "description": "<p>Comes with an Exotic Grenade Launcher Underbarrel* which - as the main gun is poor quality - funcations as a poor quality weapon. It can't be removed. Both that and the main weapon can fire non-Basic Ammunition.</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>"
     }
   }
 }

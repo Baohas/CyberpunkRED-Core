@@ -42,7 +42,7 @@ system:
   rof: 1
   source:
     book: ELO
-    page: 341
+    page: 3
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: equipped

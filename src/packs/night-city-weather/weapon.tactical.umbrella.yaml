@@ -51,7 +51,7 @@ system:
   rof: 2
   source:
     book: NCW
-    page: ""
+    page: 6
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled

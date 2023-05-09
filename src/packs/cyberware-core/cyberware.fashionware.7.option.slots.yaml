@@ -51,7 +51,7 @@ system:
   size: 1
   source:
     book: Core
-    page: ""
+    page: 358
   type: fashionware
   unarmedAutomaticCalculation: true
   upgrades: []

@@ -53,7 +53,7 @@ system:
   size: 1
   source:
     book: MHCD
-    page: ""
+    page: 2
   type: cyberArm
   unarmedAutomaticCalculation: true
   upgrades: []

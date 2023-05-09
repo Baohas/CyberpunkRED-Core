@@ -32,7 +32,7 @@ system:
   revealed: true
   source:
     book: HP
-    page: ""
+    page: 4
   upgrades: []
   usage: toggled
 type: gear

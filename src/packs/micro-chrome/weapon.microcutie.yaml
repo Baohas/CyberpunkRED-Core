@@ -47,7 +47,7 @@ system:
   rof: 2
   source:
     book: MC
-    page: ""
+    page: 1
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: equipped

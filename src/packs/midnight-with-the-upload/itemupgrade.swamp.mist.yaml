@@ -65,7 +65,7 @@ system:
   size: 2
   source:
     book: MwtU
-    page: ""
+    page: 6
   type: cyberdeck
   unarmedAutomaticCalculation: true
   usesType: magazine

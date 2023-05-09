@@ -17,7 +17,7 @@ system:
     market: 100
   source:
     book: BC+
-    page: ""
+    page: 3
   type: basic
   variety: custom
 type: ammo

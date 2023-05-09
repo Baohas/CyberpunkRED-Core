@@ -71,7 +71,7 @@ system:
   size: 1
   source:
     book: SYW
-    page: ""
+    page: 5
   type: vehicle
   unarmedAutomaticCalculation: true
   usesType: magazine

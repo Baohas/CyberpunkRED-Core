@@ -76,6 +76,6 @@ system:
   revealed: true
   source:
     book: HP
-    page: ""
+    page: 2
   usage: toggled
 type: drug

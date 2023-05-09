@@ -42,7 +42,7 @@ system:
     value: 0
   source:
     book: 12DoC
-    page: ""
+    page: 5
   upgrades: []
   usage: toggled
 type: armor
