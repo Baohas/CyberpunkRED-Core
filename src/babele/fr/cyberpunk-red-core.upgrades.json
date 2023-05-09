@@ -78,8 +78,8 @@
       "description": "<p>Augmente la taille du chargeur à 28 balles.</p>"
     },
     "Enhanced Interface Plug Integration": {
-      "name": "Enhanced Interface Plug Integration",
-      "description": "<p>Can be applied to all bikes. While using Interface Plugs to drive this vehicle, if you have a REF 8 or higher and you, a passenger, or your bike are the target of an attack, you can attempt to dodge as you would on foot. If you dodge for a passenger, that becomes their defence.&nbsp;</p>"
+      "name": "Intégration améliorée des ports d'interface neurale",
+      "description": "<p>Peut être appliqué à toutes les motos. Lorsque vous utilisez des prises d'interface pour conduire ce véhicule si vous avez REF 8 ou plus, et si vous, un passager, ou votre moto est la cible d'une attaque, vous pouvez essayer d'esquiver comme vous le feriez à pied. Si vous esquivez un passager, cela devient leur défense.&nbsp;</p>"
     },
     "Extended Magazine (Assault Rifle)": {
       "name": "Extension de chargeur (Fusil d'assaut)",
@@ -130,16 +130,16 @@
       "description": "<p>Une Cyberconsole aux circuits renforcés ne peut pas être désactivé ou détruit par les effets d'IEM.</p>"
     },
     "Heavy Chassis": {
-      "name": "Heavy Chassis",
-      "description": "<p>Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. Adds 20 SDP to the vehicle. This doesn't affect the glass, and vehicle can now tow up to 10 tons.&nbsp;</p>"
+      "name": "Châssis lourd",
+      "description": "<p>Peut être appliqué à tous les véhicules sauf les motos, jet-skis et gyrocoptères. Ajoute 20 PDS au véhicule. Cela n'affecte pas le verre, et le véhicule peut maintenant remorquer jusqu'à 10 tonnes.&nbsp;</p>"
     },
     "Housing Capacity": {
-      "name": "Housing Capacity",
-      "description": "<p>Can be applied to Aerozep, AV-4, Cabin Cruiser, Groundcars and Yacht. When installed onto a Groundcar or AV-4, it adds a sleeping area with 1 bed, a toilet, a shower, and a small kitchen to the vehicle. When installed into a Cabin Cruiser, Yacht, or Aerozep, it adds one room to the vehicle.&nbsp;</p>\n<p><strong>Requires a Heavy Chassis on a Compact Groundcar and High Performance Groundcar</strong>.</p>"
+      "name": "Partie habitable",
+      "description": "<p>Peut être appliqué à Aérozep, AV-4, bateau de plaisance, voiture terrestre et yacht. Lorsqu'il est installé sur une voiture ou un AV-4, il ajoute une zone de couchage avec un lit, des toilettes, une douche, et une petite cuisine au véhicule. Lorsqu'il est installé dans un bateau de plaisance, un yacht ou un aérozep, il ajoute une pièce au véhicule.&nbsp;</p>\n<p><strong>Nécessite un châssis lourd sur une voiture compacte ou une voiture à haute performance</strong>.</p>"
     },
     "Hover Upgrade": {
-      "name": "Hover Upgrade",
-      "description": "<p>Can be applied to all land vehicles. Adds fans onto the vehicle that allow it to traverse water at a narrative speed of 15 MPH/ 24KPH, and a combat speed of 10.</p>"
+      "name": "Amélioration d'aéroglisseur",
+      "description": "<p>Peut être appliqué à tous les véhicules terrestres. Ajoute des ventilateurs au véhicule qui lui permettent de se déplacer sur l’eau à une vitesse narrative de 15 MPH/ 24KPH, et une vitesse de combat de 10.</p>"
     },
     "Infrared Nightvision Scope": {
       "name": "Lunette infrarouge de vision nocturne",
@@ -154,36 +154,36 @@
       "description": "<p>La cyberconsole est immunisée contre les effets qui forcent le Netrunner à se déconnecter (de façon sûre ou non).</p>"
     },
     "NOS": {
-      "name": "NOS",
-      "description": "<p>Can be applied to all vehicles. Adds a tank of nitrous oxide to the vehicle. Allows you to use your Action to use an additional Move Action while driving.&nbsp;</p>\n<p>You may install this upgrade multiple times, each upgrade adds an additional tank and each tank may be used once per day.</p>"
+      "name": "CAFAY",
+      "description": "<p>Peut être appliqué à tous les véhicules. Ajoute un réservoir d'oxyde d'azote au véhicule. Vous permet d'utiliser votre action pour utiliser une action de mouvement supplémentaire pendant la conduite.&nbsp;</p>\n<p>Vous pouvez installer cette mise à jour plusieurs fois, chaque amélioration ajoute un réservoir supplémentaire et chaque réservoir peut être utilisé une fois par jour.</p>"
     },
     "Onboard Flamethrower": {
-      "name": "Onboard Flamethrower",
-      "description": "<p>Can be applied to all vehicles.<strong> </strong>A <strong>Flamethrower </strong>that can be mounted facing the front, side or back of the vehicle. The driver may fire it using an Action. It cannot be reloaded while driving, and cannot accept weapon attachments.</p>\n<p>You may install this upgrade multiple times.</p>"
+      "name": "Crache-feu intégré",
+      "description": "<p>Peut être appliqué à tous les véhicules.<strong> </strong>Un <strong>Crache-feu </strong>qui peut être monté vers l'avant, le côté ou l'arrière du véhicule. Le pilote peut le faire tirer en utilisant une action. Il ne peut pas être rechargé en conduisant et ne peut pas accepter les accessoires d'arme.</p>\n<p>Vous pouvez installer cette amélioration plusieurs fois.</p>"
     },
     "Onboard Machine Gun": {
-      "name": "Onboard Machine Gun",
-      "description": "<p>Can be applied to all vehicles. An <strong>Assault Rifle </strong>with a 30 round capacity and only capable of Autofire, that can be mounted facing the front of the vehicle. The driver may fire it using an Action, cannot be reloaded while driving and cannot accept weapon attachments.&nbsp;</p>\n<p>You may install this upgrade multiple times.</p>"
+      "name": "Mitrailleuse intégrée",
+      "description": "<p>Peut être appliqué à tous les véhicules. Un <strong>fusil d'assaut </strong> avec une capacité de 30 balles et uniquement capable de tir automatique, qui peut être monté vers l'avant du véhicule. Le conducteur peut le faire tirer en utilisant une action. Ne peut pas être rechargé en conduisant et ne peut pas accepter les améliorations d'arme.&nbsp;</p>\n<p>Vous pouvez installer cette mise à jour plusieurs fois.</p>"
     },
     "Onboard Melee Weapon": {
-      "name": "Onboard Melee Weapon",
-      "description": "<p>Can be applied to all land and sea vehicles. A <strong>Very Heavy Melee Weapon&nbsp;</strong>that can be mounted facing the front, side or back of the vehicle. The driver may attack with it using an Action. The weapon cannot be removed.&nbsp;</p>\n<p>You may install this upgrade multiple times.</p>"
+      "name": "Arme de mêlée intégrée",
+      "description": "<p>Peut être appliqué à tous les véhicules terrestres et maritimes. Une <strong>arme de mêlée très lourde&nbsp;</strong> qui peut être montée à l'avant, le côté ou l'arrière du véhicule. Le pilote peut attaquer avec en utilisant une action. L'arme ne peut pas être enlevée.&nbsp;</p>\n<p>Vous pouvez installer cette améliorations plusieurs fois.</p>"
     },
     "Onboard Rocket Pod": {
-      "name": "Onboard Rocket Pod",
-      "description": "<p>Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. A <strong>Rocket Launcher&nbsp;</strong>with a drum of three rockets, that can be mounted facing the front of the vehicle. The driver may fire it using an Action. It cannot be reloaded while driving, and cannot accept weapon attachments.&nbsp;</p>\n<p>You may install this upgrade multiple times. <strong>Requires Heavy Chassis</strong>.</p>"
+      "name": "Lance-roquettes intégré",
+      "description": "<p>Peut être appliqué à tous les véhicules sauf les motos, jet-skis et gyrocoptères. Un <strong>lance-roquettes&nbsp;</strong>avec un tambour de trois roquettes, qui peut être monté à l'avant du véhicule. Le conducteur peut le faire tirer en utilisant une action. Il ne peut pas être rechargé en conduisant et ne peut pas accepter les accessoires d'arme.&nbsp;</p>\n<p>Vous pouvez installer cette amélioration plusieurs fois. <strong>Nécessite un châssis lourd</strong>.</p>"
     },
     "Range Upgrade": {
       "name": "Extension de portée",
       "description": "<p>Une cyberconsole dotée d'une extension de portée peut se connecter à un point d'accès situé à 8 m de distance ou moins.</p>"
     },
     "Seating Upgrade": {
-      "name": "Seating Upgrade",
-      "description": "<p>Can be applied to all vehicles. Adds two seats to the vehicle. These can be installed as an external sidecar, they may also be installed as ejector seats with removable parachutes.</p>\n<p>Can be taken multiple times with the exception of Bikes, Jetskis and Gyrocopters.</p>"
+      "name": "Amélioration de places assises",
+      "description": "<p>Peut être appliqué à tous les véhicules. Ajoute deux sièges au véhicule. Elles peuvent être installées en tant que side-car, elles peuvent également être installées sous la forme de sièges éjecteurs avec des parachutes amovibles.</p>\n<p>Peut être pris plusieurs fois à l'exception des motos, des jet-skis et des gyrocoptères.</p>"
     },
     "Security Upgrade": {
-      "name": "Security Upgrade",
-      "description": "<p>Can be applied to all vehicles. Adds DNA Locks to the vehicle requring the correct biometrics or a DV 17 Electronics/Security Tech check to unlock. Failure to unlock the vehicle takes damage as if hit with a Stun Baton.</p>\n<p>In addition, while remaining still the vehicle is cloaked and requires a DV17 Perception check to spot. The vehicle must remain stationary for a minute before this activates.</p>"
+      "name": "Amélioration de sécurité",
+      "description": "<p>Peut être appliqué à tous les véhicules. Ajoute des verrous ADN au véhicule requérant la biométrie correcte ou un jet SD 17 Sécurité électronique pour le déverrouiller. Rater le déverrouillage du véhicule délivre des dégâts comme touché avec une matraque électrique.</p>\n<p>De plus, quand il est immobile le véhicule est camouflé et nécessite un jet de Perception SD17 pour le repérer. Le véhicule doit rester stationnaire pendant une minute avant que cela ne s'active.</p>"
     },
     "Shotgun Underbarrel": {
       "name": "Double canon à pompe",
@@ -194,16 +194,16 @@
       "description": "<p>Transforme l'arme en Smartgun (CF page 344).</p>"
     },
     "Smuggling Upgrade": {
-      "name": "Smuggling Upgrade",
-      "description": "<p>Can be applied to all vehicles. Adds two <strong>Hidden Holsters</strong> to the vehicle, and a large hidden compartment for smuggling purposes. These can be discovered with a DV17 Conceal/Reveal Object check.&nbsp;<br><br>Can be taken multiple times with the exception of Bikes, Jetskis and Gyrocopters.</p>"
+      "name": "Amélioration de contrebande",
+      "description": "<p>Peut être appliqué à tous les véhicules. Ajoute deux <strong>holsters cachés</strong> au véhicule, et un grand compartiment caché à des fins de contrebande. Ceux-ci peuvent être découverts avec une jet Dissimulation / Révélation d'objet SD17.&nbsp;<br><br>Peut être pris plusieurs fois à l'exception des motos, des jet-skis et des gyrocoptères.</p>"
     },
     "Sniping Scope": {
       "name": "Lunette de précision",
       "description": "<p>Vous permet de voir les détails jusqu'à 800 m. +1 au tir en coup par coup et tirs visés pour les cibles distantes de plus de 50 m.&nbsp;</p>"
     },
     "Vehicle Heavy Weapon Mount": {
-      "name": "Vehicle Heavy Weapon Mount",
-      "description": "<p>Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. One of the vehicles seats becomes a swivel mount for any two-handed ranged weapon. A passenger may fire the weapon using an Action. The passenger can reload the weapon. The weapon can be removed or reinstalled using an Action.&nbsp;</p>\n<p>The first time this upgrade is taken, included is a <strong>Tsunami Arms Helix</strong>,&nbsp; <strong>Rhinemetall EMG-86 Railgun</strong>, or <strong>Militech \"Cowboy\" U-56 Grenade Launcher</strong>. If the vehicle has the Bulletproof Glass upgrade, the gunner is protected by the same glass.&nbsp;</p>\n<p>You may install this upgrade multiple times if the vehicle has the Housing Capacity upgrade. <strong>Requires Heavy Chassis</strong>.</p>"
+      "name": "Support d'arme lourde pour véhicule",
+      "description": "<p>Peut être appliqué à tous les véhicules sauf les motos, jet-skis et gyrocoptèrers. Un des sièges du véhicule devient une monture pivotante pour toutes les armes à distance à deux mains. Un passager peut tirer l'arme en utilisant une action. Le passager peut recharger l'arme. L'arme peut être retirée ou réinstallée en utilisant une action.&nbsp;</p>\n<p>La première fois que cette mise à niveau est prise, elle inclus un <strong>Helix deTsunami Arms</strong>,&nbsp; un <strong>canon électrique EMG-86 Rhinemetall</strong>, ou un <strong>lance-grenades Militech \"Cowboy\" U-56</strong>. Si le véhicule dispose de l'amélioration de la vitre pare-balle, le tireur est protégé par le même verre.&nbsp;</p>\n<p>Vous pouvez installer cette amélioration plusieurs fois si le véhicule a l'amélioration Partie habitable. <strong>Nécessite un châssis lourd</strong>.</p>"
     }
   }
 }

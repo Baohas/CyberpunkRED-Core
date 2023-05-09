@@ -7,7 +7,7 @@
     },
     "Broken Leg": {
       "name": "Gamba Rotta",
-      "description": "<p>-4 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>-4 VEL (Minimo 1).</p>"
     },
     "Broken Ribs": {
       "name": "Costole Rotte",
@@ -15,7 +15,7 @@
     },
     "Collapsed Lung": {
       "name": "Polmone Collassato",
-      "description": "<p>-2 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>-2 VEL (minimo 1). La Penalità Base al Tiro della Morte aumenta di 1.</p>"
     },
     "Crushed Fingers": {
       "name": "Dita Schiacciate",
@@ -31,7 +31,7 @@
     },
     "Dismembered Leg": {
       "name": "Gamba Smembrata",
-      "description": "<p>Leg is removed. Cannot Dodge. -6 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>La gamba è distrutta. -6 VEL (minimo 1). Non si può schivare.\nLa Penalità Base al Tiro della Morte aumenta di 1. </p>"
     },
     "Foreign Object": {
       "name": "Corpo Estraneo",
@@ -43,7 +43,7 @@
     },
     "Torn Muscle": {
       "name": "Strappo Muscolare",
-      "description": "<p>-2 to Melee Attacks.</p>"
+      "description": "<p>-2 agli Attacchi in Mischia. </p>"
     }
   }
 }

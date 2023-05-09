@@ -3,7 +3,7 @@
   "entries": {
     "Amplified Hearing": {
       "name": "Escucha Amplificada",
-      "description": "<p>Provides +2 to perception checks that use hearing.</p>"
+      "description": "<p>Proporciona +2 a las tiradas de percepción que usan audición. </p>"
     },
     "Anti-Dazzle": {
       "name": "Anti-Deslumbrante",
@@ -83,7 +83,7 @@
     },
     "Cybersnake": {
       "name": "Cyberserpiente",
-      "description": "<p>A throat snake which is a Very Heavy Melee weapon.</p>"
+      "description": "<p>Una serpiente de garganta que cuenta como un arma cuerpo a cuerpo muy pesada. </p>"
     },
     "Dartgun": {
       "name": "Lanzadardos",
@@ -186,12 +186,12 @@
       "description": "<p>Una pierna regular. Esto puede soportar implantes como un Pie Estándar o armas como el Talón Claveteado.</p>"
     },
     "Medical Grade Cyberarm": {
-      "name": "Medical Grade Cyberarm",
-      "description": "<p>A medical grade cyberarm. Does not allow options to be installed.</p>"
+      "name": "Ciberbrazo de la escala médica",
+      "description": "<p>Ciberbrazo de la escala médica. No permite la instalación de opciones.</p>"
     },
     "Medical Grade Cyberleg": {
-      "name": "Medical Grade Cyberleg",
-      "description": "<p>A medical grade cyberleg. Does not allow options to be installed.</p>"
+      "name": "Ciberpierna de la escala médica",
+      "description": "<p>Ciberpierna de la escala médica. No permite la instalación de opciones.</p>"
     },
     "Medscanner": {
       "name": "Escáner Médico",
@@ -270,8 +270,8 @@
       "description": "<p>Notifica del radar detectado dentro de un radio de 1 milla.</p>"
     },
     "Radar/Sonar Implant": {
-      "name": "Radar/Sonar Implant",
-      "description": "<p>Scans 50m/yds around you. Doesn't work through cover. </p>"
+      "name": "Implante de Radar / Sonar",
+      "description": "<p>Escanea 50 m/yds a tu alrededor. No atraviesa paredes o coberturas. </p>"
     },
     "Radiation Detector": {
       "name": "Detector de Radiaciones",
@@ -331,7 +331,7 @@
     },
     "Skin Weave": {
       "name": "Tejido Dérmico",
-      "description": "<p>External Body Cyberware*. Head and Body Armor SP7 and recovers 1SP/day. Armor does not stack.</p>\n<p><em>* Cyberware Armor does not function as armor in the system, please add the \"Skin Weave\" item to the character/mook to track</em></p>"
+      "description": "<p>Cyberware corporal externo*. Cabeza y cuerpo armadura SP7 y recupera 1 CP/día. La armadura no se acumula.</p>\n<p><em>*La Armadura de Cyberware no funciona como armadura en el sistema, por favor añade el elemento \"Tejido Dérmico\" al personaje/mook para rastrear</em></p>"
     },
     "Skinwatch": {
       "name": "Reloj Subcutáneo",
@@ -351,7 +351,7 @@
     },
     "Subdermal Armor": {
       "name": "Armadura Subdermal",
-      "description": "<p>External Body Cyberware*. Head and Body Armor SP11 and recovers 1SP/day. Armor does not stack.</p>\n<p><em>* Cyberware Armor does not function as armor in the system, please add the \"Subdermal Armor\" item to the character/mook to track</em></p>"
+      "description": "<p>Cyberware corporal externo*. Cabeza y cuerpo armadura SP11 y recupera 1 CP/día. La armadura no se acumula.</p>\n<p><em>*La Armadura de Cyberware no funciona como armadura en el sistema, por favor añade el elemento \"Blindaje Subcutáneo\" al personaje/mook para rastrear</em></p>"
     },
     "Subdermal Grip": {
       "name": "Conector de Arma Inteligente Subdérmico",
@@ -391,7 +391,7 @@
     },
     "TeleOptics": {
       "name": "TeleOpticos",
-      "description": "<p>Telescope in your eye up to 800m/yds. +1 to single shot/aimed shot if greater than 50m away.</p>"
+      "description": "<p>Telescopio en tu ojo de hasta 800m/yds. +1 a un disparo apuntado si la distancia es mayor que 50m.</p>"
     },
     "Tool Hand": {
       "name": "Mano de Herramientas",

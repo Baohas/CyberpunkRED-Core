@@ -1,0 +1,29 @@
+{
+  "label": "Exotiques de 2045",
+  "entries": {
+    "Combat Jaw": {
+      "name": "Mâchoire de combat",
+      "description": "<p>Arme de mêlée très lourde implantée.</p>\n<p>Se référer à la description complète à la page 72 de lnterface Red vol. 2.</p>"
+    },
+    "Combat Tail": {
+      "name": "Queue de combat",
+      "description": "<p>Arme de mêlée lourde implantée. Nécessite un lien neural.</p>\n<p>Se référer à la description complète à la page 72 de Interface Red vol. 2.</p>"
+    },
+    "Extra-Jointed Cyberarm Upgrade": {
+      "name": "Amélioration Cyberbras Extra-articulation",
+      "description": "<ul>\n<li>+2 à compétence Contorsion</li>\n<li>Une par cyberbras</li>\n<li>Maximum de 4 bonus (+8)</li>\n</ul>\n<p>Référez-vous à la description complète à la page 73 de Interface Red vol. 2.</p>"
+    },
+    "Extra-Jointed Cyberleg Upgrade": {
+      "name": "Amélioration Cyberjambe Extra-articulation",
+      "description": "<ul>\n<li>+2 à la compétence Contorsion</li>\n<li>Une par cyberjambe</li>\n<li>Maximum de 4 bonus (+8)</li>\n</ul>\n<p>Référez-vous à la description complète à la page 73 de Interface Red vol. 2.</p>"
+    },
+    "Firebreather": {
+      "name": "Souffle de feu",
+      "description": "<p>Fusil à pompe exotique implanté. Ne peux contenir qu'une seule cartouche de fusil à pompe chevrotine incendiaire. </p>\n<p>Référez-vous à la description complète à la page 73 de Interface Red vol. 2.</p>"
+    },
+    "Heuristic Health Monitor": {
+      "name": "Moniteur Heuristique de Santé",
+      "description": "<p>Nécessite un Biomoniteur.</p>\n<p>Capteurs dans le corps pour fournir des informations sur l'état des tissus, la densité osseuse, et les gains de regroupement musculaire qui sont distillés en un chiffre de PS.</p>\n<p>Référez-vous à la description complète à la page 73 de Interface Red vol. 2.</p>"
+    }
+  }
+}

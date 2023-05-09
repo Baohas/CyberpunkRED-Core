@@ -65,10 +65,6 @@
       "name": "Couteau de Combat",
       "description": "<p>Un couteau adapté aux combats de rues.</p>"
     },
-    "Constitution Arms Hurricane Assault Weapon": {
-      "name": "Fusil à pompe Hurricane de Constitution Arms",
-      "description": "<p>Fusil à pompe exotique à 2 Att/round. Ne peut pas être utilisé pour viser. Son chargeur en cylindre contient 16 cartouches.\nRecharger cette arme nécessite deux actions, ce qui nécessite deux tours. Tirer avec le fusil d'assaut nécessite une valeur\nde Corps de 11 au moins sauf s'il est monté.</p>"
-    },
     "Crossbow (Excellent)": {
       "name": "Arbalète +",
       "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>"
@@ -96,6 +92,10 @@
     "Dartgun": {
       "name": "Pistolet à fléchettes",
       "description": "<p>Un pistolet exotique très lourd qu'on ne peut charger qu'avec des munitions de type flèche. Contrairement aux autres\narmes tirant des flèches, le pistolet à fléchettes est muni d'un chargeur spécial de 8 flèches et doit être rechargé comme\nun pistolet très lourd standard</p>"
+    },
+    "EMG-86 Railgun": {
+      "name": "Canon électrique EMG-86",
+      "description": "<p>Fusil d'assaut exotique. Il ne peut pas faire de tirs ciblés ou de tirs automatiques. Nécessite COR 11 ou plus (sauf s'il est monté). Ignore toute armure en dessous de PA11*. Reportez-vous à la description complète de l'élément en p. 347.</p>\n<p><em>*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles blindées</em></p>"
     },
     "Flamethrower": {
       "name": "Crache-feu",
@@ -161,9 +161,13 @@
       "name": "Pale d'hélicoptère",
       "description": "<p>Récupéré sur un hélicoptère délabré, ces lames sont capables de trancher presque n'importe quoi.</p>"
     },
-    "Kendachi Mono-Three": {
-      "name": "Kendachi Mono-trois",
-      "description": "<p>Arme exotique de mêlée très lourde à deux mains, excellente qualité. Katana de haute technologie, capable d'ignorer n'importe quelle armure de moins de PA11*. Référez-vous à la description complète de l'article sur p. 348.</p>\n<p><em>*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles blindées</em></p>"
+    "Helix": {
+      "name": "Helix",
+      "description": "<p>Un fusil d'assaut exotique qui n'utilise que le tir automatique. Contient 40 balles, tire 20 balles à chaque attaque. Utilise les règles Tir automatique avec un multiplicateur maximum de 5. Nécessite COR 11 ou supérieur (sauf s'il est monté). Reportez-vous à la description complète de l'élément à la p. 348.</p>"
+    },
+    "Hurricane Assault Weapon": {
+      "name": "Fusil d'assaut Hurricane",
+      "description": "<p>Fusil à pompe exotique, 2 Att/round. Ne peut pas viser. Chargeur en cylindre de 16 cartouches.\nRecharger cette arme nécessite deux tours. Tirer avec le fusil d'assaut nécessite COR de 11 ou plus (sauf s'il est monté).</p>"
     },
     "Lead Pipe (Excellent)": {
       "name": "Tuyau en plomb +",
@@ -237,9 +241,9 @@
       "name": "Canon à ondes",
       "description": "<p>Pistolet exotique très lourd. Permet de rendre inopérants les cyberimplants ou les composants électriques pendant une minute, à moins que la cible ne réussisse un jet de Cybertech SD15. Reportez-vous à la description complète de l'élément sur p. 347.</p>"
     },
-    "Militech \"Cowboy\" U-56 Grenade Launcher": {
-      "name": "Lance-grenades Militech \"Cowboy\" U-56",
-      "description": "<p>Lance-grenades exotique à 2 Att/round. Son chargeur abrite quatre grenades. Bien qu'il s'agisse d'une arme exotique,\nil est capable de lancer n'importe quelle grenade. Recharger cette arme nécessite deux actions, ce qui nécessite deux\ntours. Tirer avec le lance-grenades nécessite une valeur de Corps de 11 au moins sauf s'il est monté.</p>"
+    "Mono-Three": {
+      "name": "Mono-Trois",
+      "description": "<p>Arme exotique de mêlée très lourde à deux mains, excellente qualité. Katana de haute technologie, capable d'ignorer n'importe quelle armure de moins de PA11*. Référez-vous à la description complète de l'article en p. 348.</p>\n<p><em>*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles blindées</em></p>"
     },
     "Naginata (Excellent)": {
       "name": "Naginata +",
@@ -252,10 +256,6 @@
     "Naginata": {
       "name": "Naginata",
       "description": "<p>Arme d'origine japonaise, proche du fauchard à lame courbe. Utilisé par les équipes tactiques d'Arasaka lors des confrontations aux corps à corps.</p>"
-    },
-    "Rhinemetall EMG-86 Railgun": {
-      "name": "Canon électrique Rhinemetall EMG-86",
-      "description": "<p>Fusil d'assaut exotique. Il ne peut pas faire de tirs ciblés ou de tirs automatiques. Nécessite COR 11 ou plus (sauf s'il est monté). Ignore toute armure en dessous de PA11*. Reportez-vous à la description complète de l'élément sur pg. 347.</p>\n<p><em>*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles blindées</em></p>"
     },
     "Rippers": {
       "name": "Éventreurs",
@@ -373,9 +373,9 @@
       "name": "Tomahawk",
       "description": "<p>Une hache légère qui peut être lancée.</p>"
     },
-    "Tsunami Arms Helix": {
-      "name": "Helix de Tsunami Arms",
-      "description": "<p>Un fusil d'assaut exotique qui n'utilise que le tir automatique. Contient 40 balles, tire 20 balles à chaque attaque. Utilise les règles Tir automatique avec un multiplicateur maximum de 5. Nécessite COR 11 ou supérieur (sauf s'il est monté). Reportez-vous à la description complète de l'élément sur le pg. 348.</p>"
+    "U-56 Grenade Launcher \"Cowboy\"": {
+      "name": "Lance-Grenades \"Cowboy\" U-56",
+      "description": "<p>Lance-grenades exotique à 2 Att/round. Capacité de quatre grenades. Peut lancer n'importe quel type de grenade. Recharger cette arme demande deux tours. Tirer avec le lance-grenades nécessite COR de 11 ou plus (sauf s'il est monté).</p>"
     },
     "Unarmed": {
       "name": "Désarmé",

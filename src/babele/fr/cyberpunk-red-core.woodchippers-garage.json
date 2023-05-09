@@ -1,6 +1,10 @@
 {
   "label": "Le garage de Woodchipper",
   "entries": {
+    "M-02 Rounds": {
+      "name": "Munitions M-02",
+      "description": "<p>Munitions perforantes spéciales à utiliser uniquement pour le fusil lourd Sternmeyer M-02. Se vendent dans un tambour de 80 balles.</p>"
+    },
     "Paintball (Biotoxin)": {
       "name": "Paintball (Biotoxine)",
       "description": "<p>Créé à partir de 3 flacons de biotoxine fixées ensemble. N'inflige aucun dégât direct à l'impact.</p>"
@@ -9,57 +13,53 @@
       "name": "Paintball (poison)",
       "description": "<p>Créé à partir de 3 fioles de poison fixées ensemble. N'inflige aucun dégât direct à chaque impact.</p>"
     },
-    "Sternmeyer M-02 Rounds": {
-      "name": "Munitions de Sternmeyer M-02",
-      "description": "<p>Munitions perforantes spéciales à utiliser uniquement pour le Fusil lourd Sternmeyer M-02. Se vendent dans un tambour de 80.</p>"
+    "Aegis": {
+      "name": "Aegis",
+      "description": "<p>Cette arme ne peut pas causer de blessures critiques, ne peut pas perforer l'armure, et si elle réduisait une cible à moins de 1 PV, elle la laisserait Inconsciente avec 1 PV à la place.</p>"
     },
-    "Biotechnica Enviro-launcher": {
-      "name": "Eco-Roquette Biotechnica",
-      "description": "<p>Ce lance-roquettes est spécialement conçu pour être tiré une seule fois. Cependant, une fois qu'il a été utilisé, l'utilisateur peut utiliser une action pour briser un flacon attaché au lance-roquette qui libèrera une enzyme qui détruira complètement le lanceur en une heure.</p>"
+    "Archimedes": {
+      "name": "Archimedes",
+      "description": "<p>Utilise la compétence Pilotage de véhicule aérien au lieu de la compétence Armes lourdes pour tirer, nécessite le cyberimplant Dispositif de visée et ne peut utiliser que des roquettes intelligentes. Il est fourni avec une roquette intelligente à l'achat. Quelle gentillesse.</p>"
+    },
+    "SDF-45": {
+      "name": "SDF-45",
+      "description": "<p>Ce lance-roquettes ne peut charger que des fusées perforantes et a une portée maximale de 400 m. Quand est tirée une roquette à la fois, le MJ choisit l'endroit où elle atterrit. Quand sont tirées deux roquettes à la fois, le MJ choisit l'endroit où les roquettes atterrissent, mais cette fois jusqu'à 50 m de la cible, et avec chaque roquette séparés d'au moins 10 m.</p>"
+    },
+    "Ballistic Harpoon": {
+      "name": "Harpon balistique",
+      "description": "<p>Ce harpon peut être utilisé comme une arme de mêlée très lourde à deux mains, ou tirer de son canon comme une arme à distance. Lorsqu'il est tirée, il ignore toujours la moitié de l'armure du défenseur*. <br><em>*Ni les calculs de réduction d'armure ni le basculement à une arme de mêlée ne sont actuellement supportés, à faire manuellement donc</em></p>"
     },
     "BudgetArms Triple Treat": {
       "name": "BudgetArms Triple Treat",
       "description": "<p>Fournit avec un lance-grenades exotique* qui - comme l'arme principale est de mauvaise qualité - fonctionne comme une arme de mauvaise qualité. Il ne peut pas être supprimé. Celui-ci et l'arme principale peuvent tirer des munitions non basiques.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'arme</em></p>"
     },
+    "Burst Flamethrower": {
+      "name": "Lance-flammes à rafale",
+      "description": "<p>Peut seulement tirer des chevrotines de fusil à pompe incendiaire, mais les cibles enflammées par cette arme brûlent de 4 PS par tour.<br><br>De plus, cette arme peut consommer toutes ses munitions restantes pour tirer une boule de feu, qui explose de façon similaire à une grenade incendiaire. L’utilisateur de l’arme est également touché par la boule de feu, prenant feu à une intensité Mortelle*.</p>\n<p><em>*Mode de tir spécial non pris en charge actuellement ; devra être appliqué manuellement</em></p>"
+    },
+    "Enviro-launcher": {
+      "name": "Enviro-lanceur",
+      "description": "<p>Ce lance-roquettes est spécialement conçu pour être tiré une seule fois. Cependant, une fois qu'il a été utilisé, l'utilisateur peut utiliser une action pour briser un flacon attaché au lance-roquette qui libèrera une enzyme qui détruira complètement le lanceur en une heure.</p>"
+    },
     "Flare Gun": {
       "name": "Pistolet de détresse",
       "description": "<p>Comme les munitions de grenades normales, cette arme peut tirer des fusées éclairantes de route*. Elles n'infligent aucun dégât, mais si elles sont tirées dans les airs elles sont visibles à 5 km. Vous ne pouvez pas installer cette arme en cybernétique escamotable.</p>\n<p><em>*Actuellement non pris en charge donc supprimer manuellement une fusée éclairante de route de l'inventaire des acteurs après avoir tiré</em></p>"
     },
-    "Midnight Arms SDF-45": {
-      "name": "Midnight Arms SDF-45",
-      "description": "<p>Ce lance-roquettes ne peut charger que les fusées Perforantes et a une portée maximale de 400 m/yds. Quand est tirée une fusée à la fois, le MJ choisit l'endroit où elle atterrit. Quand sont tirées deux roquettes à la fois, le MJ choisit l'endroit où les roquettes atterrissent, mais cette fois jusqu'à 50 m/yds de la cible, et avec chaque roquette séparés d'au moins 10 m/yds.</p>"
-    },
-    "Militech Aegis": {
-      "name": "Militech Aegis",
-      "description": "<p>Cette arme ne peut pas causer de blessures critiques, ne peut pas perforer l'armure, et si elle réduisait une cible à moins de 1 PV, elle le laisserait Inconscient avec 1 PV à la place.</p>"
-    },
-    "Militech Archimedes": {
-      "name": "Militech Archimède",
-      "description": "<p>Utilise la compétence de Pilotage Véhicule Aérien au lieu de la compétence Armes Lourdes pour tirer, nécessite le Cyber-Implant Dispositif de visée et ne peut utiliser que les roquettes intelligentes. Il est fourni avec une roquette Intelligente incluse. Quelle gentillesse.</p>"
+    "M-02 Heavy Rifle": {
+      "name": "Fusil Lourd M-02",
+      "description": "<p>Cette arme tire ses propres munitions personnalisées, dont le prix est de 500ed (Onéreux) pour 80 unités de munitions perforantes.</p>"
     },
     "Nomad Air Cannon": {
       "name": "Canon à air Nomade",
       "description": "<p>Plutôt que des munitions à fusil à pompe normales, cette arme tire tout liquide qu'elle contient. L'acide peut être acheté pour 10eb (bon marché) ce qui réduit de 1 PA toutes les armures portées par la cible. Le poison ou la biotoxine peuvent également être chargés, mais nécessite 3 fioles par tir.</p>"
     },
-    "Pursuit Security Incorporated TearJerker": {
-      "name": "Pursuit Security Incorporated Lacrimo-cracheur",
+    "Pocket Launcher": {
+      "name": "Lance-roquettes de poche",
+      "description": "<p>Tant que cette arme est déchargée, elle peut être dissimulée.</p>"
+    },
+    "TearJerker": {
+      "name": "TearJerker",
       "description": "<p>Cette arme ne peut tirer que des munitions Fumigènes ou Lacrymogène.</p>"
-    },
-    "SlamDance Ballistic Harpoon": {
-      "name": "Harpon balistique SlamDance",
-      "description": "<p>Ce harpon peut être utilisé comme une arme de mêlée très lourde à deux mains, ou tirer de son canon comme une arme à distance. Lorsqu'il est tirée, il ignore toujours la moitié de l'armure du défenseur*. <br><em>*Ni les calculs de réduction d'armure ni le basculement à une arme de mêlée ne sont actuellement supportés</em></p>"
-    },
-    "Sternmeyer M-02 Heavy Rifle": {
-      "name": "Fusil lourd Sternmeyer M-02",
-      "description": "<p>Cette arme tire ses propres munitions personnalisées, dont le prix est de 500ed (Onéreux) pour 80 unités de munitions perforantes.</p>"
-    },
-    "Towa Pocket Launcher": {
-      "name": "Lance-roquette de Poche",
-      "description": "<p>Tant que déchargée, cette arme peut être cachée.</p>"
-    },
-    "UrbanTech Burst Flamethrower": {
-      "name": "Lance-flammes UrbanTech",
-      "description": "<p>Peut seulement tirer des chevrotines de fusil à pompe incendiaire, mais les cibles enflammées par cette arme brûlent de 4 PS par tour.<br><br>De plus, cette arme peut consommer toutes ses munitions restantes pour tirer une boule de feu, qui explose de façon similaire à une grenade incendiaire. L’utilisateur de l’arme est également touché par la boule de feu, prenant feu à une intensité Mortelle*.</p>\n<p><em>*Mode de tir spécial non pris en charge actuellement ; devra être appliqué manuellement</em></p>"
     }
   }
 }

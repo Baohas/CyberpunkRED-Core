@@ -10,64 +10,64 @@
       "description": "<p>Les roues les plus cools dans le coin. Augmente le mouvement de 4m/yds lorsque vous utilisez l'action Courir sur terrain plat ou en descente. Peut imposer aux tâches physiques un modificateur de -2.</p>"
     },
     "Bottle Dynamo": {
-      "name": "Bottle Dynamo",
-      "description": "<p>A dynamo on your bike's wheel for converting mechanical energy into electricity. Charges a battery pack (such as for weapons) in one hour.</p>"
+      "name": "Dynamo de roue",
+      "description": "<p>Une dynamo sur la roue de votre vélo pour convertir l'énergie mécanique en électricité. Charge une batterie (comme utilisée pour les armes) en une heure.</p>"
     },
     "Bulletproof Glass": {
       "name": "Verre pare-balles",
-      "description": "<p>Enclosure glass gains 7 HP.</p>\n<p>Bike first requires the Enclosure upgrade to install this upgrade.</p>"
+      "description": "<p>Le verre du carénage gagne 7 PS.</p>\n<p>Le vélo nécessite d'abord l'amélioration Carénage pour installer cette mise à niveau.</p>"
     },
     "Cycle Armor": {
-      "name": "Cycle Armor",
-      "description": "<p>Bicycle Armored with 7 PS.</p>\n<p>Bike first requires the Reinforced Frame upgrade to install this upgrade.</p>"
+      "name": "Blindé",
+      "description": "<p>Vélo blindé de 7 PS.</p>\n<p>Le vélo nécessite d'abord l'amélioration Cadre renforcé pour installer cette amélioration.</p>"
     },
     "Electric Pedal Assist": {
-      "name": "Electric Pedal Assist",
-      "description": "<p>Electric motorised system helping to pedal, increasing speed, lowering tiredness.</p>\n<p>Up to next BODY level speed narrative speed, or +5MPH (8KPH) if rider is already at the top tier.</p>\n<p>Rider get +4 bonus to Endurance Checks when riding.</p>"
+      "name": "Assistance pédalage électrique",
+      "description": "<p>Système motorisé électrique permettant de pédaler, d'augmenter la vitesse, de diminuer la fatigue.</p>\n<p>Augmente la vitesse narrative au niveau COR suivant, ou +5MPH (8KPH) si le pilote est déjà au niveau supérieur.</p>\n<p>Le cycliste gagne un bonus de +4 aux tests d'endurance lors de son trajet.</p>"
     },
     "Enclosure": {
-      "name": "Enclosure",
-      "description": "<p>The bike becomes a trike with a covering body of fiberglass and plastic.</p>\n<p>Can't install this Upgrade with the Folding Frame upgrade.</p>"
+      "name": "Carénage",
+      "description": "<p>Le vélo devient un trike avec un corps recouvert de fibre de verre et de plastique.</p>\n<p>Cette amélioration ne peut pas être installée avec l'amélioration Cadre pliant.</p>"
     },
     "Extended Seat": {
-      "name": "Extended Seat",
-      "description": "<p>An elogated saddle, gaining a seat for a passenger.&nbsp;</p>"
+      "name": "Selle longue",
+      "description": "<p>Une selle rallongée, faisant gagner une place pour un passager.&nbsp;</p>"
     },
     "Folding Frame": {
-      "name": "Folding Frame",
-      "description": "<p>You can now fold your bike to the size of a large suitcase for easier transport and storage.</p>\n<p>Can't install this Upgrade with Enclosure, Reinforced Frame, or Smuggling Compartment upgrades.</p>"
+      "name": "Cadre pliant",
+      "description": "<p>Vous pouvez désormais plier votre vélo à la taille d'une grande valise pour faciliter le transport et l'entreposage.</p>\n<p>Vous ne pouvez pas installer cette amélioration avec les améliorations Compartiment caché, Cadre renforcé ou Carénage.</p>"
     },
     "Gun Mount": {
-      "name": "Gun Mount",
-      "description": "<p>A system to attach an Assault Rifle, a Heavy SMG or a Shotgun on the handlebars, along with a firing button.</p>\n<p>Shoots only forwards.</p>\n<p>Mounting and detaching requires one Action.</p>"
+      "name": "Support d'arme",
+      "description": "<p>Un système pour monter un fusil d'assaut, un pistolet -mitrailleur lourd ou un fusil à pompe sur le guidon, et un bouton de tir.</p>\n<p>Tire seulement vers l'avant.</p>\n<p>Le montage et le détachement nécessitent une action.</p>"
     },
     "Neon Lightning": {
-      "name": "Neon Lightning",
-      "description": "<p>Fiber-optic lights on bike's frame and wheels.</p>\n<p>Considered as a Light Tattoo when on or near the bike (gaining +2 Wardrobe &amp; Style bonus)</p>"
+      "name": "Éclairage néon",
+      "description": "<p>Éclairages en fibre optique sur le cadre et les roues du vélo.</p>\n<p>Considéré comme un Tatouage lumineux quand on est sur ou à proximité du vélo.</p>"
     },
     "Reinforced Frame": {
-      "name": "Reinforced Frame",
-      "description": "<p>Bike is now more resistant: +5 SDP and rider can be BODY 11 or more.</p>\n<p>Can't install this Upgrade with Folding Frame Upgrade.</p>"
+      "name": "Cadre renforcé",
+      "description": "<p>Le vélo est maintenant plus résistant : +5 PDS et le cycliste peut être COR 11 ou plus.</p>\n<p>Impossible d'installer cette amélioration avec l'amélioration Cadre pliant.</p>"
     },
     "Security System": {
-      "name": "Security System",
-      "description": "<p>Linked with your Agent to electrify your bike. A thief must resist DV13 Resist Torture/Drugs or unhand the bike.</p>\n<p>Bike is registered with a Nano-VIN.</p>"
+      "name": "Système de sécurité",
+      "description": "<p>Lié à votre Agent pour électrifier votre vélo. Un voleur doit résister à un jet Résistance torture/drogues SD13 ou lâcher le vélo.</p>\n<p>Le vélo est enregistré avec d'un Nano-Numéro d'Identification de Véhicule.</p>"
     },
     "Smuggling Compartment": {
-      "name": "Smuggling Compartment",
-      "description": "<p>Adds a small hidden storage space in the frame.</p>\n<p>1 inch x 6 inches (2.54cm x 15.24cm)</p>\n<p>DV17 Conceal/Reveal Object check to discover.</p>\n<p>Can't install this Upgrade with Folding Frame.</p>"
+      "name": "Compartiment caché",
+      "description": "<p>Ajoute un petit espace de stockage caché dans le cadre.</p>\n<p>1 pouce x 6 pouces (2,54cm x 15,24cm)</p>\n<p>SD17 Dissimuler/Révéler objet pour le découvrir.</p>\n<p>Impossible d'installer cette amélioration avec Cadre pliant.</p>"
     },
     "Stunt Frame": {
-      "name": "Stunt Frame",
-      "description": "<p>The bike loses weight and gains maneuverability.</p>\n<p>Rider obtain a +2 bonus to Athletics skill checks when riding and doing maneuvers.</p>"
+      "name": "Cadre Freestyle",
+      "description": "<p>Le vélo perd du poids et gagne en manœuvrabilité.</p>\n<p>Le cycliste obtient un bonus de +2 aux tests de compétence Athlétisme lors de sa conduite et de ses manœuvres.</p>"
     },
     "Trailer": {
-      "name": "Trailer",
-      "description": "<p>Hook with a small cargo trailer.</p>\n<p>5 feet x 1.5 feet (1.5m x 0.46m).</p>\n<p>An action is needed to attach and detach the trailer.</p>"
+      "name": "Remorque",
+      "description": "<p>Crochet avec une petite remorque de chargement</p>\n<p>1,5 m x 0,46m.</p>\n<p>Une action est nécessaire pour attacher et détacher la remorque.</p>"
     },
     "Bicycle": {
       "name": "Vélo",
-      "description": "<p>A simple bicycle. It's speed is based on the riders BODY.</p>\n<table style=\"width: 100%; height: 76px;\" border=\"1\"><colgroup><col style=\"width: 14.0725%;\"><col style=\"width: 42.4307%;\"><col style=\"width: 43.4968%;\"></colgroup>\n<tbody>\n<tr style=\"height: 19px;\">\n<td style=\"height: 19px;\"><strong>Body</strong></td>\n<td style=\"height: 19px;\"><strong>&nbsp;Speed (Combat)</strong></td>\n<td style=\"height: 19px;\"><strong>Speed (Narative)</strong></td>\n</tr>\n<tr style=\"height: 19px;\">\n<td style=\"height: 19px;\">&lt;4</td>\n<td style=\"height: 19px;\">8 MOVE</td>\n<td style=\"height: 19px;\">19 KPH / 12 MPH</td>\n</tr>\n<tr style=\"height: 19px;\">\n<td style=\"height: 19px;\">4 - 7</td>\n<td style=\"height: 19px;\">10 MOVE</td>\n<td style=\"height: 19px;\">32 KPH / 20 MPH</td>\n</tr>\n<tr style=\"height: 19px;\">\n<td style=\"height: 19px;\">8+</td>\n<td style=\"height: 19px;\">15 MOVE</td>\n<td style=\"height: 19px;\">\n<p>48 KPH / 30 MPH</p>\n</td>\n</tr>\n</tbody>\n</table>\n<ul>\n<li>Riders with a BODY &gt; 10 require a Reinforced Frame Upgrade</li>\n<li>Byicles use the Athletics Skill</li>\n<li>Manual control only</li>\n<li>Getting on a bicyle does not move you to the top of the Initiative queue</li>\n<li>Ramming damage is 3d6 with the rider being thrown from the bike and suffering the Whiplash Critical Injury</li>\n<li>Defenders cannot land on the bike when dodging</li>\n</ul>"
+      "description": "<p>Un simple vélo. Sa vitesse est basée sur le COR du cycliste.</p>\n<table style=\"width: 100%; height: 76px;\" border=\"1\"><colgroup><col style=\"width: 14.0725%;\"><col style=\"width: 42.4307%;\"><col style=\"width: 43.4968%;\"></colgroup>\n<tbody>\n<tr style=\"height: 19px;\">\n<td style=\"height: 19px;\"><strong>COR</strong></td>\n<td style=\"height: 19px;\"><strong>&nbsp;Vitesse (Combat)</strong></td>\n<td style=\"height: 19px;\"><strong>Vitesse (Narative)</strong></td>\n</tr>\n<tr style=\"height: 19px;\">\n<td style=\"height: 19px;\">&lt;4</td>\n<td style=\"height: 19px;\">8 MOUV</td>\n<td style=\"height: 19px;\">19 KPH</td>\n</tr>\n<tr style=\"height: 19px;\">\n<td style=\"height: 19px;\">4 - 7</td>\n<td style=\"height: 19px;\">10 MOUV</td>\n<td style=\"height: 19px;\">32 KPH</td>\n</tr>\n<tr style=\"height: 19px;\">\n<td style=\"height: 19px;\">8+</td>\n<td style=\"height: 19px;\">15 MOUV</td>\n<td style=\"height: 19px;\">\n<p>48 KPH</p>\n</td>\n</tr>\n</tbody>\n</table>\n<ul>\n<li>Cycliste avec COR &gt; 10 nécessite l'amélioration Cadre renforcé</li>\n<li>Les vélos utilisent la compétence Athlétisme</li>\n<li>Contrôle manuel seulement</li>\n<li>Etre sur un vélo ne vous fait pas monter en haut de la file d'Initiative</li>\n<li>Les dégâts d'impact sont de 3d6 avec le cycliste éjecté du vélo et subissant la blessure critique Coup du lapin</li>\n<li>Les défenseurs ne peuvent pas atterrir sur le vélo lors d'une Esquive</li>\n</ul>"
     }
   }
 }

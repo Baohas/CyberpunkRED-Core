@@ -39,7 +39,7 @@
     },
     "Bow": {
       "name": "Arco",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>Un arco rivitalizzato, ricaricato come parte di un'azione di attacco.</p>"
     },
     "Chainsaw (Excellent)": {
       "name": "Motosega (Eccellente)",
@@ -64,10 +64,6 @@
     "Combat Knife": {
       "name": "Coltello da Combattimento",
       "description": "<p>Un coltello adatto per le strade.</p>"
-    },
-    "Constitution Arms Hurricane Assault Weapon": {
-      "name": "Constitution Arms Hurricane d’Assalto",
-      "description": "<p>Uno Shotgun Insolito con CF 2. Non è possibile effettuare Colpi Mirati e ha bisogno di FIS 11 o più (a meno che non sia montato). Fare riferimento alla descrizione completa dell'articolo su pg. 348.</p>"
     },
     "Crossbow (Excellent)": {
       "name": "Balestra (Eccellente)",
@@ -96,6 +92,10 @@
     "Dartgun": {
       "name": "Lanciadardi",
       "description": "<p>Una Pistola Insolita molto pesante. Fare riferimento alla descrizione completa dell'articolo su pg. 348.</p>"
+    },
+    "EMG-86 Railgun": {
+      "name": "EMG-86 Railgun",
+      "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
     },
     "Flamethrower": {
       "name": "Lanciafiamme",
@@ -161,9 +161,13 @@
       "name": "Pala di Elicottero",
       "description": "<p>Preso da un derelitto, queste lame sono in grado di affettare cose molto facilmente. </p>"
     },
-    "Kendachi Mono-Three": {
-      "name": "Kendachi Mono-Tre",
-      "description": "<p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears as a high-tech katana, able to ignore any armor below SP11*. Refer to the full item description on pg. 348.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
+    "Helix": {
+      "name": "Helix",
+      "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+    },
+    "Hurricane Assault Weapon": {
+      "name": "Hurricane Assault Weapon",
+      "description": "<p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or higher (unless mounted). Refer to the full item description on pg. 348.</p>"
     },
     "Lead Pipe (Excellent)": {
       "name": "Tubo di Piombo (Eccellente)",
@@ -237,9 +241,9 @@
       "name": "Microwaver",
       "description": "<p>An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be rendered inoperable for a minute unless the target passes a DV15 Cybertech Check. Refer to the full item description on pg. 348.</p>"
     },
-    "Militech \"Cowboy\" U-56 Grenade Launcher": {
-      "name": "Lanciagranate Militech \"Cowboy\" U-56",
-      "description": "<p>Un Lanciagranate Insolito con CF 2, che alloggia 4 granate nel caricatore. Pur essendo un’Arma Insolita\npuò utilizzare ogni tipo di Granata. Fare riferimento alla descrizione dell'elemento completo su pg. 349.</p>"
+    "Mono-Three": {
+      "name": "Mono-Three",
+      "description": "<p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears as a high-tech katana, able to ignore any armor below SP11*. Refer to the full item description on pg. 348.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
     },
     "Naginata (Excellent)": {
       "name": "Naginata (Eccellente)",
@@ -252,10 +256,6 @@
     "Naginata": {
       "name": "Naginata",
       "description": "<p>Un bastone di legno giapponese con una lama curva alla sua estremità. Preferito dalle squadre tattiche di Arasaka per scontri ravvicinati. + all'Attacco.</p>"
-    },
-    "Rhinemetall EMG-86 Railgun": {
-      "name": "Renemetall EMG-86 Railgun",
-      "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
     },
     "Rippers": {
       "name": "Digitolame",
@@ -373,9 +373,9 @@
       "name": "Tomahawk",
       "description": "<p>Un'ascia leggera che può essere lanciata. </p>"
     },
-    "Tsunami Arms Helix": {
-      "name": "Tsunami Arms Helix",
-      "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+    "U-56 Grenade Launcher \"Cowboy\"": {
+      "name": "U-56 Grenade Launcher \"Cowboy\"",
+      "description": "<p>An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
     },
     "Unarmed": {
       "name": "Disarmato",

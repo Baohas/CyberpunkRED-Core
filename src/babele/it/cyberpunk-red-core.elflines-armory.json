@@ -1,53 +1,53 @@
 {
-  "label": "Elflines Online Armory",
+  "label": "Armeria di Elflines Online",
   "entries": {
     "Arrow": {
-      "name": "Arrow",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Freccia",
+      "description": "<p>Munizioni di base, niente di speciale.</p>"
     },
     "Poison Arrow": {
       "name": "Freccia Avvelenata",
       "description": "<p>Nessun danno immediato. Se il bersaglio è colpito sulla carne, una prova di Resistere alla Tortura/Controllo delle Droghe. In caso di falliento 2d6 PF. Nessun Ablazione. </p>"
     },
     "Chainmail Armor (Body)": {
-      "name": "Chainmail Armor (Body)",
-      "description": "<p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>"
+      "name": "Cotta di Maglia (Corpo)",
+      "description": "<p>Versione media di una Corazza. -2 a RIF, DES e VEL.</p>"
     },
     "Chainmail Armor (Head)": {
-      "name": "Chainmail Armor (Head)",
-      "description": "<p>Medium version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>"
+      "name": "Cotta di Maglia (Testa)",
+      "description": "<p>Versione media di una Corazza per la testa. Da -2 a RIF, DES e VEL.</p>"
     },
     "Full Plate Armor (Body)": {
-      "name": "Full Plate Armor (Body)",
-      "description": "<p>Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.</p>"
+      "name": "Armatura di Piastre (Corpo)",
+      "description": "<p>Armatura placcata in metallo per resistere ai colpi più potenti. -4 a RIF, DES e VEL.</p>"
     },
     "Full Plate Armor (Head)": {
-      "name": "Full Plate Armor (Head)",
-      "description": "<p>Metal plated armor to resist the most powerful hits to your head. -4 to REF, DEX, and MOVE.</p>"
+      "name": "Armatura di Piastre (Testa)",
+      "description": "<p>Armatura placcata in metallo per resistere ai colpi più potenti sulla testa. -4 a RIF, DES e VEL.</p>"
     },
     "Leather Armor (Body)": {
-      "name": "Leather Armor (Body)",
-      "description": "<p>Simple Leather armor. No armor penalty.</p>"
+      "name": "Armatura di Cuoio (Corpo)",
+      "description": "<p>Armatura in pelle semplice. Nessuna penalità.</p>"
     },
     "Leather Armor (Head)": {
-      "name": "Leather Armor (Head)",
-      "description": "<p>Simple Leather armor for your head. No armor penalty.</p>"
+      "name": "Armatura di Cuoio (Testa)",
+      "description": "<p>Armatura in pelle semplice per la tua testa. Nessuna penalità.</p>"
     },
     "Shield": {
-      "name": "Shield",
-      "description": "<p>Requires an arm and has HP that is reduced by damage.</p>"
+      "name": "Scudo",
+      "description": "<p>Richiede l'utilizzo di un braccio e ha 10 HP ridotti dai danni subiti.</p>"
     },
     "Studded Leather Armor (Body)": {
-      "name": "Studded Leather Armor (Body)",
-      "description": "<p>Standard Kevlar clothing. No armor penalty.</p>"
+      "name": "Armatura di Cuoio Borchiato (Corpo)",
+      "description": "<p>Abbigliamento Kevlar standard. Nessuna penalità.</p>"
     },
     "Studded Leather Armor (Head)": {
-      "name": "Studded Leather Armor (Head)",
-      "description": "<p>Standard Kevlar for your head. No armor penalty.</p>"
+      "name": "Armatura di Cuoio Borchiato (Testa)",
+      "description": "<p>Abbigliamento Kevlar standard. Nessuna penalità.</p>"
     },
     "Sacred Herbs": {
-      "name": "Sacred Herbs",
-      "description": ""
+      "name": "Erbe Sacre",
+      "description": "<p>When injected with a dose of Speedheal, a target who is not in the Mortally Wounded Wound State immediately\nheals an amount of HP equal to their BODY + WILL. A person can only benefit from one use of Speedheal per\nday.</p>"
     },
     "Vial of Poison": {
       "name": "Fiala di Veleno",
@@ -55,23 +55,23 @@
     },
     "Bow": {
       "name": "Arco",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>Un arco rivitalizzato, ricaricato come parte di un'azione di attacco.</p>"
     },
     "Dagger": {
-      "name": "Dagger",
-      "description": "<p>A knife fit for the streets.</p>"
+      "name": "Pugnale",
+      "description": "<p>Un coltello adatto per le strade.</p>"
     },
     "Greataxe": {
-      "name": "Greataxe",
-      "description": "<p>A japanese wooden pole with a curved blade on one side. Favoured by Arasaka tactical teams for close engagements. </p>"
+      "name": "Ascia a Due Mani",
+      "description": "<p>Un bastone di legno giapponese con una lama curva alla sua estremità. Preferito dalle squadre tattiche di Arasaka per scontri ravvicinati.</p>"
     },
     "Longsword": {
-      "name": "Longsword",
-      "description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once. </p>"
+      "name": "Spada Lunga (Cf1 a meno di impugnarne due)",
+      "description": "<p>Un tubo, tipicamente in metallo o vetroresina. Può aver trasportato fluidi in passato. </p>"
     },
     "Shortsword": {
-      "name": "Shortsword",
-      "description": "<p>Useful as both a tool and a weapon. A rod of iron with split wedges on the ends. </p>"
+      "name": "Spada Corta",
+      "description": "<p>Utile sia come strumento che come arma. Una barra di ferro con cunei divisi alle estremità. </p>"
     }
   }
 }

@@ -1,0 +1,29 @@
+{
+  "label": "Exótica de 2045",
+  "entries": {
+    "Combat Jaw": {
+      "name": "Mandíbula de Combate",
+      "description": "<p>Arma Cuerpo a Cuerpo Muy Pesada implantada.</p>\n<p>Consulte la descripción completa de la página 72 de Interface Red vol. 2.</p>"
+    },
+    "Combat Tail": {
+      "name": "Cola de Combate",
+      "description": "<p>Arma Cuerpo a Cuerpo Pesada implantada. Requiere Interfaz Neuronal.</p>\n<p>Consulte la descripción completa de la página 72 de Interface Red vol. 2.</p>"
+    },
+    "Extra-Jointed Cyberarm Upgrade": {
+      "name": "Montura de Ciberbrazo Extra",
+      "description": "<ul>\n<li>+2 a la Habilidad Contorcionista</li>\n<li>Uno por ciberarma</li>\n<li>Máximo de 4 bonificaciones (+8)</li>\n</ul>\n<p>Consulte la descripción completa de la página 73 del vol. rojo de la interfaz. 2.</p>"
+    },
+    "Extra-Jointed Cyberleg Upgrade": {
+      "name": "Montura de Ciberpierna Extra",
+      "description": "<ul>\n<li>+2 a la Habilidad Contorcionista</li>\n<li>Uno por ciberarma</li>\n<li>Máximo de 4 bonificaciones (+8)</li>\n</ul>\n<p>Consulte la descripción completa de la página 73 del Interface Red vol. 2.</p>"
+    },
+    "Firebreather": {
+      "name": "Aliento Ígneo",
+      "description": "<p>Escopeta exótica implantada. Solo puede contener un proyectil de escopeta incendiario. </p>\n<p>Consulte la descripción completa de la página 73 del Interface Red vol. 2.</p>"
+    },
+    "Heuristic Health Monitor": {
+      "name": "Seguidor Heurístico de la Salud",
+      "description": "<p>Requiere Biomonitor.</p>\n<p>Sensores alrededor del monitor del cuerpo para proporcionar información sobre la salud del tejido aumento de densidad ósea y agrupación muscular que se destila en un número de PV.</p>\n<p>Consulte la descripción completa de la página 73 del Interface Red vol. 2.</p>"
+    }
+  }
+}

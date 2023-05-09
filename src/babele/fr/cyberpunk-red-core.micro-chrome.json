@@ -13,8 +13,8 @@
       "name": "Lentille intelligente",
       "description": "<p>Donne à un utilisateur une seule option de Cyberoeil Peut utiliser une lentille intelligente par œil.</p>"
     },
-    "MicroCutie by Hello Cutie": {
-      "name": "MicroCutie par Hello Cutie",
+    "MicroCutie": {
+      "name": "MicroCutie",
       "description": "<p>En utilisant une action, l'utilisateur peut activer le mode HypurrburstMC. Le mode HypurrburstMC augmente les dégâts des armes à 4d6, mais draine tous les tirs restants lorsqu'ils sont tirés. Nécessite au moins 4 munitions restantes pour être activé. L'arme ronronne en mode HypurrburstMC*.<br><em>Mode de tir spécial non pris en charge actuellement ; devra être appliqué manuellement</em></p>"
     }
   }

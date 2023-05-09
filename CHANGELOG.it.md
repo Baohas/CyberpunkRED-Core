@@ -39,11 +39,22 @@
   - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (EG: A macro to select which items to disable with an EMP)
 - Add `Get EMP'd Items` macro
   - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (wihout sheilding), carried (electroinc) Gear items, or Cyberdecks and outputs the results to chat
+- Add a `brand` field to physical items
+  - All compendia provided by the system have been migrated
+  - We so not provide any migrations for in world items as there are to many edge cases to reliably do this
 - Added The 12 Days of Cybermas with help from Miklos
 - Added Hornet’s Pharmacy with help from Miklos
 - Added Nomad vehicle upgrades with help from WombatCombat
 - Added Spinning Your Wheels upgrades with help from Sushimatic
 - Added Must Have Cyberware Deals with help from Miklos
+- Added Midnight With The Upload with help from Miklos
+- Added Night City Tarot content with help from Hakuan Quietpaws
+- Added All About Drones with help from Hakuan Quietpaws
+- Added Exotics of 2045 with help from Hakuan Quietpaws
+- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
+- Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
+- Added Night City Weather with help from Miklos
+- Added Non-Generic Weapons
 
 ### Changes
 
@@ -84,6 +95,10 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
 - Ammo selection dropdown now shows stack size
 - Changed the default weapon to use the default weapon icon
 - Added clothing descriptions with help from Hakuan Quietpaws
+- `source` field for items has been split into 2 seperate Fields
+  - `source.book`
+  - `source.page`
+- Update compendia icons for Armor
 
 ### Bug Fixes
 
@@ -103,6 +118,7 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
 - Fixed bicycles not being able to accept upgrades
 - Fixed description of the Militech Crusher which confused shotgun shells and shotgun slugs
 - Fixed not being able to install the correct type of upgrades into a Smart Lens
+- Fixed #701 - Issue with Black ICE rolling the wrong damage.
 
 ## Version 0.86.1 | Date: 2023-02-05
 
@@ -904,9 +920,21 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version: 0.75.4 (Hotfix) | Date: 2021-05-05
 
-- Fixed release manifest to not lock users into version 0.75.3 without possibility to update
+- Fixed release manifest to not lock users into version 0.75.2 without possibility to update
 
-## Version: 0.75.3 (Hotfix) | Date: 2021-05-02
+## Please Note
+
+- Version 0.74.2 had an error in the release manifest causing issues with updating. This was attempted to be fixed a first time but sadly that fix contain a further issue. A second attempt was made and this was successful. During this however the version numbers appear to have got confused slightly, leading to the strange jump between the version number below (0.74.2) and above (0.75.4).
+- In more specific terms:
+  - Hotfix 0.74.2 is created with the fix below. The version number in `system.json` is changed, but the manifest and download links aren't updated
+  - Another hotfix is created numbered 0.75.3. This changes the manifest and download links to be that of 0.75.3, but contains a typo in the download link
+  - The typo is then fixed, but without a bump in the version number
+  - 0.75.4 is created, with a new version agnostic manifest link but the download link from 0.75.3
+- This history was initially preserved in a branch containing the various release manifests, but in April 2023 Zankoas deleted that branch in a clean-up. In doing so this note was added to avoid losing the record entirely
+- Three commits from that branch containing the `system.json` changes between 0.74.2 and 0.75.4 hadn't been merged in, and as such were deleted
+- 0.74.2 wasn't tagged, but can be found at commit hash `1fdb27abbcfbf57152690e76992c109a464d57f7` on date `03/05/21 16:48:36`
+
+## Version: 0.74.2 (Hotfix) | Date: 2021-05-02
 
 - Role ability settings were lost when changing other data on the sheet. [issue #203](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/issues/203)
 

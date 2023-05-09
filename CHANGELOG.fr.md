@@ -1,112 +1,128 @@
 <!-- markdownlint-disable MD024 -->
 
-# Changelog
+# Journal des modifications
 
-## Version 0.87.0 | Date: TBD
+## Version 0.87.0 | Date : TBD
 
-### Release Specific Notes
+### Notes spécifiques à la publication
 
-- The project Discord has changed! Please visit our [Wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/home#project-red-cast-of-characters) for the new link!
-- NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. See New Features -> Roll Modifiers section of Changelog for more details.
-- Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. See New Features -> Roll Modifiers section of Changelog for more details.
-- We have migrated all Gear items provided by our Compendia to support `isElectronic` but you will need to update any Homebre/Custom items manually if you want them to support this new data point.
+- Le Discord du projet a changé ! Veuillez visiter notre [Wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/home#project-red-cast-of-characters) pour le nouveau lien !
+- REMARQUE : Les effets avec les modificateurs de situation ont reçu les réglages appropriés sur tous les éléments du compendium, mais vous devrez les mettre à jour manuellement sur des éléments qui existent déjà sur des acteurs. Reportez-vous à la section Nouvelles fonctionnalités -> Section Modificateurs de jets du Journal des modifications pour plus de détails.
+- Les effets avec les modificateurs de situation ont reçu les réglages appropriés sur tous les éléments du compendium, mais vous devrez les mettre à jour manuellement sur les éléments qui existent déjà sur les acteurs. Reportez-vous à la section Nouvelles fonctionnalités -> Section Modificateurs de jets du Journal des modifications pour plus de détails.
+- Nous avons migré tous les éléments Équipement fournis par notre Compendium pour prendre en charge `estElectronique` mais vous devrez mettre à jour tous les éléments faits maison/personnalisés manuellement si vous voulez qu'ils prennent en charge ce nouveau point de données.
 
-### New Features
+### Nouvelles fonctionnalités
 
-- Improved Dialogs:
-  - All dialogs have been given new styling and have been converted to a new system called CPRDialog.
-  - This will allow for more responsive dialogs with complex logic in the future. Some of this is already implemented in Roll Dialogs (see next bullet point.)
-- Improved Roll Dialogs:
-  - The UI for roll dialogs has been improved and brought more in-line with the style of our system.
-  - Dialogs are now responsive sheets and can change depending on inputs.
-  - No more detective work: A tool tip (both in dialogs and on roll cards) displays where every bonus/penalty on your roll comes from.
-  - Toggle situational modifiers from active effects, upgrades, and roles right from the dialog.
-  - Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu.
-  - Add any additional modifiers to the roll as needed.
-  - Future work:
-    - Change every dialog over to the improved UI.
-- Roll Modifiers:
-  - New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
-  - Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
-    - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogs with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
-  - Modifiers to rolls from Role Abilities also have Situational (and On By Default) options.
-  - Modifiers to rolls from item Upgrades also have Situational (and On By Default) options.
-  - NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. Sorry!
-  - Known Issues / Future Work:
-    - It is a known issue that Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
-- Add check for core.photosensitivityMode when rendering pause animation
-- Add a `isElectronic` data point to Gear items
-  - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (EG: A macro to select which items to disable with an EMP)
-- Add `Get EMP'd Items` macro
-  - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (wihout sheilding), carried (electroinc) Gear items, or Cyberdecks and outputs the results to chat
-- Added The 12 Days of Cybermas with help from Miklos
-- Added Hornet’s Pharmacy with help from Miklos
-- Added Nomad vehicle upgrades with help from WombatCombat
-- Added Spinning Your Wheels upgrades with help from Sushimatic
-- Added Must Have Cyberware Deals with help from Miklos
+- Dialogues améliorés :
+  - Toutes les boîtes de dialogue ont été remises en forme et ont été converties en un nouveau système appelé CPRDialog.
+  - Cela permettra à l'avenir une meilleure réactivité sur les boîtes de dialogues avec une logique complexe. Certains de ces éléments sont déjà implémentés dans les boîtes de dialogues déroulants (voir le point suivant.)
+- Dialogues déroulants améliorés :
+  - L'interface utilisateur pour les dialogues déroulants a été améliorée et alignée sur le style de notre système.
+  - Les dialogues sont maintenant des feuilles adaptatives et peuvent changer selon les entrées.
+  - Fini le travail de détection : un outil (à la fois dans les boîtes de dialogue et sur les cartes de jet) indique d'où vient chaque bonus/pénalité sur votre jet.
+  - Basculer les modificateurs de situation des effets actifs, des améliorations et des rôles directement depuis la boîte de dialogue.
+  - Activer/désactiver les modificateurs de situation de base à la page 130 du livre de règles de base à partir d'un menu déroulant.
+  - Ajouter des modificateurs supplémentaires au jet si nécessaire.
+  - Travail futur :
+    - Changer chaque boîte de dialogue vers l'interface utilisateur améliorée.
+- Modificateurs de jet :
+  - Nouvelle touche Effet actif : Toutes les Actions - Modifie toutes les actions avec une seule touche d'effets actifs. Trouvé dans la catégorie 'Divers' dans la fenêtre de configuration d'Effet actif.
+  - Chaque modificateur d'un effet peut être basculé comme situationnel. Les modificateurs de situation ne s'appliquent que dans certaines situations. Les modificateurs de situation peuvent également être activés par défaut.
+    - Par exemple, le cyberimplant Téléoptique ajoute +1 à certaines attaques lorsque la cible est au-delà de 51 m de distance. Puisque nous ne voulons pas que ce bonus s'applique tout le temps, il est basculé Situationnel. De cette façon, nous pouvons l'appliquer dans les boîtes de dialogue de jet en un seul clic, seulement si nécessaire. Si votre personnage est un sniper et utilise presque toujours le bonus Téléoptique, vous pouvez également basculer le modificateur situationnel comme activé par défaut. De cette façon, le modificateur est appliqué par défaut, mais il peut être désactivé pendant les quelques fois où votre personnage se rapproche de sa distance.
+  - Les modificateurs au jet à partir des capacités de rôle ont également des options situationnelles (et Activé par défaut).
+  - Les modificateurs au jet à partir des améliorations d'objets ont également des options situationnelles (et Activé par défaut).
+  - REMARQUE : Les effets avec les modificateurs de situation ont reçu les réglages appropriés sur tous les éléments du compendium, mais vous devrez les mettre à jour manuellement sur des éléments qui existent déjà sur des acteurs. Sorry!
+  - Problèmes connus / Travaux futurs :
+    - C'est un problème connu que les effets actifs sur les statistiques se comportent différemment de tous les autres. En raison de cela, les modificateurs sur les effets de statistiques ne peuvent actuellement pas être basculés Situationnels. Cela sera corrigé dans une prochaine version.
+- Ajouter une vérification pour le mode core.photosensibilité lors de l'animation de mise en pause
+- Ajouter un point de données `estElectronique` aux éléments d'équipement
+  - Bien qu'il ne soit pas utilisé par le système lui-même, il a été ajouté comme fonctionnalité de commodité pour les créateurs de modules et/ou pour l'écriture de macros (par exemple : une macro pour sélectionner quels éléments désactiver avec un IEM)
+- Ajouter une macro `Objets touchés par IEM`
+  - Une nouvelle Macro qui touche les acteurs sélectionnés dans une scène et touche 2 des éléments : cyberimplant installé (sans blindage anti-IEM), équipement porté (électronique) , ou cyberconsole et affiche les résultats dans la fenêtre de chat.
+- Ajout d'un champ de `marque` aux objets physiques
+  - Tous les compendiums fournis par le système ont été migrés
+  - Nous ne fournissons donc aucune migration dans les objets de monde car il y a de nombreux cas de retard pour le faire de façon fiable
+- Ajout du DLC des 12 jours de CyberNoël (Cybermas) avec l'aide de Miklos
+- Ajout du DLC La Pharmacie de Hornet avec l'aide de Miklos
+- Ajout des améliorations de véhicules Nomades avec l'aide de WombatCombat
+- Ajout des améliorations du DLC En Roue Libre (Spinning Your Wheels) avec l'aide de Sushimatic
+- Ajout du DLC Implants Indispensables (Must have Cyberware Deals) avec l'aide de Miklos
+- Ajout du DLC Minuit avec l'Upload (Midnight With The Upload) avec l'aide de Miklos
+- Ajout du contenu du DLC Tarot de Night City avec l'aide de Hakuan Quietpaws
+- Ajout de Tout Sur Les Drones avec l'aide de Hakuan Quietpaws
+- Ajout d'Exotiques en 2045 avec l'aide de Hakuan Quietpaws
+- Ajout du DLC Black Chrome Plus avec l'aide de H.P. Racha et Sushimatic
+- Ajout du DLC Conteneurs et Hôtels Cube avec l'aide de Hakuan Quietpaws
+- Ajout du DLC Météo de Night City avec l'aide de Miklos
+- Ajout d'armes non génériques
 
-### Changes
+### Changements
 
-We have rewritten the Weapons & Armor section of the Character sheet and Mook sheet reducing the amount of duplicated code behind the scenes. This allows us to more easily make changes or add new features to these sections and have them shared between both Character and Actors.
+Nous avons réécrit la section Armes & Armure de la feuille de personnage et de la feuille de sbire réduisant la quantité de code en double en coulisses. Cela nous permet de faire plus facilement des changements ou d'ajouter de nouvelles fonctionnalités à ces sections et de les faire partager à la fois entre personnage et acteurs.
 
-We have also rewritten the Character Info and Stat blocks to fix layout issues exposed by the font change in the last update and move some sheet functionality into this area. This also allows character to have LUCK and EMP STATs of > 9 without layout issues!
+Nous avons également réécrit les blocs Info Personnage et Statistiques pour résoudre les problèmes de mise en page exposés par le changement de police dans la dernière mise à jour et déplacé certaines fonctionnalités de feuille dans cette zone. Cela permet également aux personnages d'avoir des stats de CHA et EMP > 9 sans problèmes de mise en page !
 
-- Character Sheet Skills now show the related STAT before the Skill name
-- Character Sheet Fight Tab
-  - Critical Injuries
-    - Add Critical Injury Image
-    - Display `Death Save +1` if an Injury increases the Death Save
-    - Display the name of any Active Effects that are applied
-  - Armor
-    - Add Armor Image
-    - Update the Layout
-  - Weapons
-    - Move Weapon actions (Reload etc.) to take up less space
-    - Show `Autofire` multiplier
-    - Only show `Autofire` or `Suppressive` if configured
-    - Show loaded Ammo Type
-    - Show weapon stats
-      - ROF
-      - Attack Modifier
-      - Damage
-      - Hand Required
-- Use the same code for Weapons/Ammo in Character & Mook Sheets
-- Character Info block
-  - Rewrite to add more functionality
-  - Move Eurobucks from Gear
-  - Move Reputation from Lifepath
+- La Feuille de compétences du personnage montre maintenant la statistique associée avant le nom de la compétence
+- Onglet de combat de la feuille de personnage
+  - Blessures critiques
+    - Ajout de l'image de blessure critique
+    - Affiche `jet de sauvegarde contre la Mort +1` si une blessure augmente le jet de sauvegarde contre la Mort
+    - Affiche le nom de tous les effets actifs qui sont appliqués
+  - Armure
+    - Ajout d'une Image d'Armure
+    - Mise à jour de présentation
+  - Armes
+    - Déplacement des actions d'armes (Recharger, etc.) pour prendre moins de place
+    - Affichage du multiplicateur de `Tir automatique`
+    - N'affiche `Tir automatique` ou `Tir de Suppression` que si configuré
+    - Affiche le type de munition chargée
+    - Affiche les statistiques de l'arme
+      - Att/round
+      - Modificateur d'attaque
+      - Dégâts
+      - Main(s) requise(s)
+- Utilise le même code pour les Armes/Munitions dans les feuilles de personnage et de sbire
+- Bloc Info Personnage
+  - Réécrit pour ajouter plus de fonctionnalité
+  - Déplacement des Eurodollars de l’Équipement
+  - Déplacement de la Réputation depuis le parcours de vie
   - Move Sheet Search/Filter from right pane no mans land
-    - This removes the System Option and is displayed for all users
-  - Remove the HP/Humanity Calculator options
-    - Recalc functionality moved to Section Title
-  - Move Facedown roll from Fight tab to Reputation section
-- Updated the background and header images to new versions by Rayane Souizi "Wizi"
-- Ammo selection dropdown now shows stack size
-- Changed the default weapon to use the default weapon icon
-- Added clothing descriptions with help from Hakuan Quietpaws
+    - Cela supprime l'option Système et est affiché pour tous les utilisateurs
+  - Retrait des options de la calculatrice PS/Humanité
+    - Fonctionnalité de recalcul déplacée vers le titre de la section
+  - Déplacement de Baston de Regard de l'onglet Combat vers la section Réputation
+- Mise à jour des images d'arrière-plan et d'en-tête, nouvelles versions de Rayane Souizi "Wizi"
+- La liste déroulante de la sélection de munitions affiche maintenant la taille de la pile
+- Modification de l'Arme par défaut pour utiliser l'icône de l'arme par défaut
+- Ajout de descriptions des vêtements avec l'aide de Hakuan Quietpaws
+- Le champ `source` pour les objets a été divisé en 2 champs séparés
+  - `livre.source`
+  - `page.source`
+- Mise à jour des icônes de compendiums pour les armures
 
-### Bug Fixes
+### Corrections de bugs
 
-- Fixed a capitalisation issue in the medical grade cyber limbs. Thanks ButchAmy!
-- Fixed incorrect page reference numbers for medical grade cyber limbs
-- Fixed medical grade cyber limbs incorrectly accepting upgrades
-- Fixed a typo in the underbarrel grenade launcher description
-- #679 - Added back the underbarrel shotgun that was accidentally deleted
-- Dragging document links to item descriptions links the document correctly.
-- #703 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error.
-- #700 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console.
-- Fix missing tool-tip text in compendia settings
-- Fixed incorrect rounding on the flamethrower and thrown weapon Icons
-- Remove duplicate Smart Lens Cyberware
-- Fixed no DV table being set for the pop-up grenade launcher. Thanks diwako!
-- Fixed some incorrect wording for Cyberchairs. Thanks VinceKun!
-- Fixed bicycles not being able to accept upgrades
-- Fixed description of the Militech Crusher which confused shotgun shells and shotgun slugs
-- Fixed not being able to install the correct type of upgrades into a Smart Lens
+- Correction d'un problème de capitalisation dans les cybermembres de classe médicale. Merci ButchAmy !
+- Correction des numéros de page incorrects de référence pour les cybermembres de classe médicale
+- Correction des cybermembres de catégorie médicale acceptant incorrectement les améliorations
+- Correction d'une faute de frappe dans la description du lance-grenades sous-canon
+- #679 - Rajout du fusil à pompe sous-canon qui avait été accidentellement supprimé
+- Le glissement de liens vers les descriptions des objets relie correctement au document.
+- #703 - Correction du problème où les tokens jetés sur la scène par le MJ causaient une erreur de permissions sur le joueur.
+- #700 - Correction du problème où la création de tokens GLACE/Démon/Conteneur sur la scène provoquait une erreur dans la console.
+- Correction d'un texte d'infobulle manquant dans les paramètres de compendiums
+- Correction d'un arrondi incorrect sur les icônes du crache-feu et des d'armes de lancer
+- Suppression du doublon des SmartLens
+- Correction du manque de table SD pour le lance-grenades escamotable. Merci Diwako!
+- Correction de libellés incorrects pour les Cybersièges. Merci VinceKun!
+- Correction des vélos ne pouvant pas accepter les améliorations
+- Correction de la description du Militech Crusher qui confondait les chevrotines de fusils à pompe et les slugs de fusils à pompe
+- Correction de ne pas pouvoir installer le bon type d'améliorations dans les Smart Lens
+- Correction de #701 - Problème avec les GLACE noirs appliquant les mauvais dégâts.
 
 ## Version 0.86.1 | Date: 2023-02-05
 
-### Bug Fixes
+### Corrections de bugs
 
 - #683 - Dragging a World Item which has another World Items installed in it and THAT item also has another world item installed in it (Cyberarm->Cyberdeck (Hardwired)->Cyberdeck) results in two cyberdecks being created on the actor. This would exponentiate every level of installation if there were more.
 - Add text for missing localized string `CPR.messages.installInvalidType`
@@ -116,13 +132,13 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
 - Fixed the ability to decrement REZ of a running program in the Net tab
 - #692 - Code accidentally added `programs` instead of `cyberware` for owned cyberware on existing actors. This fix adds `cyberware` as it should hav been however we can't know if `programs` was a valid entry for a world, so we are not removing that. It does not impact anything and a GM can manually remove `programs` from an owned piece of cyberware via the item settings if needed.
 
-### Changes
+### Changements
 
 - When `Debug Elements in UI` is enabled on an item with other installed items in it, the installed items will have their UUID's displayed to help troubleshooting.
 
 ## Version 0.86.0 | Date: 2023-01-21
 
-### Release Specific Notes
+### Notes spécifiques à la publication
 
 If you're a GM and you linked Black-ICE items to tokens on the canvas, you might have noticed that the description would not transfer. We fixed this for new linkages created (issue #623), but for any created since the last release, you'll have to copy the description over if you want it.
 
@@ -139,7 +155,7 @@ In testing the new system, it occurred to us that under the previous system, it 
 
 We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check the console to ensure you did not miss any important messages about your world. Additional details can be found [here](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/Release-Information/migrations)
 
-### New Features
+### Nouvelles fonctionnalités
 
 - Universal Installation System replaces the back end code for installing Cyberware in Actors, Programs in Cyberdecks and Upgrades in other owned Items. This new system provides the following new features:
   - World Items (aka unowned items) can now be upgraded by World Upgrades to allow GMs to create pre-upgraded weapons, armors, etc
@@ -163,7 +179,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - All Cyberware can now be a weapon
 - Added a note making it more clear how under barrel weapons work
 
-### Changes
+### Changements
 
 - Change the Crit Injury icon for head injuries
 - Change the Crit Injury icons to display before name
@@ -186,7 +202,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - Set the price of several unpurchasable items to 0
 - Removed the poor quality underbarrel grenade launcher, as it isn't actually a distinct item from the regular underbarrel grenade launcher
 
-### Bug Fixes
+### Corrections de bugs
 
 - #621 - Add ROF to Cyberware Weapons and Weapon Upgrade Weapons on Mook sheet
 - ROF now uses localized strings
@@ -207,19 +223,19 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
-### Bug Fixes
+### Corrections de bugs
 
 - Corrected a capitalisation error that was causing the included Dystopian City Streets map to disappear. Thanks to Latcher for spotting this!
 
 ## Version 0.85.1 (Hotfix) | Date: 2022-12-14
 
-### Bug Fixes
+### Corrections de bugs
 
 - Fixed #624 - Net architecture sheet can't click generation button
 
 ## Version 0.85.0 | Date: 2022-12-11
 
-### New Features
+### Nouvelles fonctionnalités
 
 - Added 12 new guns from The 12 Days of Gunmas
 - Added 12 new guns and 1 new attachment from Woodchipper’s Garage
@@ -242,7 +258,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - Added page references to all clothing items and critical injuries
 - #444 - Russian Localization Added. Thanks to our translators @openmanv and @kurigohan.
 
-### Changes
+### Changements
 
 - #482 - The Babele module should no longer require renaming files or directories to make it work
 - #585 - Renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes
@@ -259,7 +275,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - Where weapon features aren't currently supported, a note has been added to that weapons description
 - Changed the magazine upgrades to use `override` instead of `modifier`
 
-### Bug Fixes
+### Corrections de bugs
 
 - Aligned the second column on the gear tab so it is not all over the place
 - Fixed missing thumbnail image for the included Dystopian City Junction map
@@ -278,7 +294,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
-### Bug Fixes
+### Corrections de bugs
 
 - Fix HTML Stripping in item descriptions on character sheets
 - Fix Create/Edit Role Ability dialog not submitting.
@@ -292,7 +308,7 @@ In this release we read Critical Injuries and DV Tables directly from the system
 
 If you are using modified Critical Injuries please check out [this](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/Items/Critical-Injuries#configuring-home-brew-injuries) Wiki article on how to use Homebrew Injuries. The same process can also be used with Homebrew DV Tables following this [Wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/DV-Tables#configuring-home-brew-dv-tables) article.
 
-### New Features
+### Nouvelles fonctionnalités
 
 - Revamped automatic damage application:
   - Shields are taken into account
@@ -300,7 +316,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - Zap now counts as an "attack" and you can roll damage from the chat card
   - Roll damage from program attack cards
 
-### Changes
+### Changements
 
 - #434 - Users no longer need to import compendia to use DV measurements or roll critical injuries
 - Drugs can now be equipped, owned, or carried
@@ -316,7 +332,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - #555 - Create Elflines Online Compendium as a Compendium not a macro
 - The Role block in the left pane of the character sheet is now just a simple text box. Active Net Role is now set from the Net section of the Fight tab. This should be a lot clearer to users and require less maintenance.
 
-### Bug Fixes
+### Corrections de bugs
 
 - #553 - Macros can be dragged to the hotbar
 - #546 - Techscanner now properly gives bonuses to Cybertech and Weaponstech
@@ -332,7 +348,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.83.1 (Hotfix) | Date: 2022-10-23
 
-### Bug Fixes
+### Corrections de bugs
 
 - #529 - Fix non-shop containers having the wrong button
 - #536 - Spelling mistake: "Ememies" (English)
@@ -349,19 +365,19 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.83.0 | Date: 2022-10-02
 
-### New Features
+### Nouvelles fonctionnalités
 
 - New UI for modifying Mook skills on the Mook sheet
 - Drugs can be used in the Mook sheet
 - Stackable items can be dragged to the Mook sheet and stacked properly
 
-### Changes
+### Changements
 
 - Automatic babele folder configuration, so that it does not have to be set by the user
 - Mook portrait is always shown
 - A few minor UI improvements to the Mook sheet
 
-### Bug Fixes
+### Corrections de bugs
 
 - #476 - Vehicles cost can now be edited
 - Cyberware & Upgrade templates still had some references to .data causing the shim to fire
@@ -376,12 +392,12 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.82.0 | Date: 2022-09-22
 
-### New Features
+### Nouvelles fonctionnalités
 
 - Foundry V10 Compatibility
 - Spanish translation! Thank you ZRAAA78!
 
-### Bug Fixes
+### Corrections de bugs
 
 - #473 - Fashionware foundational item not migrated to v10
 - #472 - EMP & Luck Values/Max greater than 9 mess with the formatting. If a user enters a value > 9, a warning banner is shown letting them know there will be formatting issues and the formatting changes to make it more obvious something is amiss.
@@ -404,13 +420,13 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - 464 - Fix issue where containers corrupt eurobucks amount for non-stackable items
 
-### New Features
+### Nouvelles fonctionnalités
 
 - Polish support available!
 
 ## Version 0.81.3 (Hotfix) | Date: 2022-08-02
 
-### Bug Fixes
+### Corrections de bugs
 
 - When installing cyberware and selecting `None` for the Humanity Loss, the maximum humanity was not being decremented forcing one to re-calculate it using the calculator.
 - Corrected an issue with Compendium Migration where `Scene` type Compendia was not properly being migrated.
@@ -419,14 +435,14 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.2 (Hotfix) | Date: 2022-08-02
 
-### Bug Fixes
+### Corrections de bugs
 
 - #458 - The rulers for the DV Calculation is broken for tables with regexp characters in the name [such as (Autofire)]
 - #455 - Containers/Vendors issues (non-English settings)
 
 ## Version 0.81.1 (Hotfix) | Date: 2022-08-01
 
-### Bug Fixes
+### Corrections de bugs
 
 - #456 - Selling non-stackable items to vendors results in a NaN offer from the vendor
 - #454 - Kendachi Mono-Three has Incorrect Attack Bonus
@@ -435,7 +451,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.0 | Date: 2022-07-31
 
-### New Features
+### Nouvelles fonctionnalités
 
 - #225 - Active effects for Items
   - Active Effects are a Foundry feature that allow items to apply modifications to stats and skills of characters in the game. Active Effects can also be added to Characters arbitrarily without associating to an item.
@@ -459,7 +475,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Feature Request #424: Ability to use LUCK on Stat, Skill, Attack, Program, Cyberdeck, and Interface/Charismatic Impact rolls. Automatically deducts from character sheet.
 - #414 - German is now a supported language. Most game system text (excluding pre-made items) will appear in this language if set in game settings. Thank you to our German translators: High123, Similar and Tealk.
 
-### Changes
+### Changements
 
 - Feature Request #352: Removed the fixed height CSS for the "Player Notes" section in the lifepath tab for a better writing/reading experience
 - Consolidated gain, lose and set ledger functions for EB, IP and Reputation to make it more manageable
@@ -507,7 +523,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - The _quality_ field has been removed from items (weapons, cyberdecks and vehicles) to avoid confusion about whether to change values in other fields. You can still use the name and other fields (such at attack modifier) to express excellent quality items
   - Some item types (weapons, vehicles) no longer "stack." They do not have an amount field any more
 
-### Bug Fixes
+### Corrections de bugs
 
 - Corrected an issue when a player did not have proper permissions on a vendor, the purchase would fail, but the player would still be charged for the item
 - Fixed the ability to delete items from the Mook sheet
@@ -540,7 +556,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.80.1 (Hotfix) | Date: 2021-01-04
 
-### Changes
+### Changements
 
 - Addressed #352: Removed the fixed height CSS for the "Player Notes" section in the lifepath tab for a better writing/reading experience
 - Fixed #354 - Item Upgrades should be removable again and additional upgrades can be installed
@@ -549,7 +565,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.80.0 | Date: 2021-12-23
 
-### New Features
+### Nouvelles fonctionnalités
 
 - Updated the system for Foundry v9 compatibility. No further updates will be provided to the 0.8.x release. [Please backup your data before attempting any major upgrade!](https://www.youtube.com/watch?v=OmbxMmqNNXU)
 - Added functionality to delete single ledger lines for the GM. Players are not able to do so.
@@ -557,7 +573,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added functionality to manually increase the Death Save Penalty of a character. This is useful in case a character gets hit, while Mortally Wounded.
 - Many new icons added to items in the compendiums! See CREDITS.md for attribution and thanks!
 
-### Changes
+### Changements
 
 - When a release update is applied, a pop up window will now display with relevant information:
   - At a minimum, there will be a link to the CHANGELOG for the release
@@ -572,7 +588,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - All items on a mook can be dragged between sheets, allowing the GM to "loot" mooks on behalf of player characters.
   - Several changes to the GitLab README to assist with introducing new developers to the system (Join Us!)
 
-### Bug Fixes
+### Corrections de bugs
 
 - Rubber ammunition no longer ablates armor and will not reduce an actor to below 1 hit points per RAW.
 - Fixed #286 - The item data was not being passed when dragging from a Mook sheet causing the drag/drop to fail. This has been resolved.
@@ -599,7 +615,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.79.0 | Date: 2021-09-11
 
-### New Features
+### Nouvelles fonctionnalités
 
 - Added support for automatic damage application on Characters and Mooks.
   - The damage chat card of weapon attacks now has an additional button to apply the damage to the selected tokens.
@@ -623,12 +639,12 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - BREAKING: Netrunners must select which role should be utilized for netrunning from the "Configure Active Role" dialog on the main part (left) of the character sheet, otherwise you will not be able to utilize the cyberdeck tab of the character sheet. This will be selected for you on migration if you had the Netrunner role selected on a character previously, but will need to be configured on new characters.
 - Added filter capability for Skills & Gear. This is a client side option which can be enabled/disabled in the System Settings.
 
-### Changes
+### Changements
 
 - Feature Request #296: Exotic Weapons from the Core Rulebook are now present in the Weapons Compendium. The Battleglove has been placed into Cyberware Compendium, and Battery Pack has been placed into the Ammo Compendium.
 - Feature Request #319: Item Upgrades are now accessible on a Mook sheet. This includes support for Underbarrel weapons which will display as a usable weapon.
 
-### Bug Fixes
+### Corrections de bugs
 
 - Fixed #292: Attempting to delete installed cyberware is prevented now, as it can leave the actor in a broken state.
 - Fixed #294: Cybersnake and Vampyres cyberware items from the compendium now display their weapon stats in the fight tab.
@@ -650,7 +666,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.78.0 | Date: 2021-08-03
 
-### New Features
+### Nouvelles fonctionnalités
 
 - Cyberware Items which act as weapons can now be configured as such
   - Core Rule Book Examples: Popup Weapons, Big Knucks, Wolvers, etc
@@ -658,7 +674,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Introduction of the Item Object: Item Upgrade
   - Initial implementation of the Item Upgrade Object enables:
     - Upgrades to Weapons, Cyberdecks, Cyberware, Clothing, Armor and Gear
-    - Weapons
+    - Armes
       - Adding weapon attachments to weapons to can modify settings for ROF, Attack Modifier, Magazine Size & Damage
         - For each of these data points, you have the option to modify or override the value of them allowing for flexibility in upgrade attachments
         - Core Rule Book Examples: Drum Magazine, Extended Magainze
@@ -677,7 +693,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
       - Clothing can now have upgrades applied to them to modify COOL and the "Wardrobe & Style" Skill Rolls.
         - Overriding stats/skills is not supported, all values will be treated as a modifier.
         - Note: If the upgrade applies to COOL, it will affect ALL rolls of COOL (COOL Skills too).
-    - Armor
+    - Armure
       - Armor can now have upgrades applied to modify their SP on the head and/or body as well as to increase the HP on shields
       - NOTE: Due to the way the shield mechanics work, you'll have to repair the shield after installing the item upgrade
     - Gear
@@ -698,7 +714,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - A compendium for clothing has been added (thanks @aarong123!)
 - Help article buttons (?) are now available on items when viewing them in the top-right corner. This will redirect you to the associated item help page on our wiki.
 
-### Changes
+### Changements
 
 - Newly created actors and items will automatically have default icons configured.
 - Restructured the language file for easier translations.
@@ -709,7 +725,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - The container sheet inventory will now stretch with the window length vertically
 - Many, many little tweaks and improvements to the French translation (thank you @h.gelis and @thevincekun)
 
-### Bug Fixes
+### Corrections de bugs
 
 - Fixed #263: New containers now show infinite stock option, as they are initialized as a shop.
 - Fix #265, #266, #267: Gear tab now remembers scroll position.
@@ -735,7 +751,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Migrated the source code to work with foundry version 0.8.X
 - Rewrote the migration code support new features from foundry 0.8.X
 
-### New Features
+### Nouvelles fonctionnalités
 
 - Improvements have been added to the cyberware tab. For foundational cyberware that has no optional slots (such as Borgware), no Used/Total is displayed in the title.
 - Added options to choose how to display the skill values for the mook character sheet. Now one can show it in the same way as it is printed in the book. Please look at the settings for this.
@@ -803,7 +819,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - Netrunning icons for actors (and some other things) are now included in the system. They can be accessed from the tile browser in "systems/cyberpunk-red-core/icons/netrunning". Big big thanks to Verasunrise (the artist) and Hyriu33 for letting us provide this awesome artwork with our system!
 - Street Drugs have been added to the "Gear" compendium.
 
-### Changes
+### Changements
 
 - Restructured the code for character and mook sheets for ease of development
 - Changed the scene activation when generating a scene from a net architecture to just viewing the scene. This allows to show the new scene to the GM, but not the players in order to do some more preparation if needed.
@@ -813,7 +829,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Default images added for compendia. Images from <https://game-icons.net>. They can be accessed from the file browser in "systems/cyberpunk-red-core/icons/compendium/default".
 - The French translation has been updated to account for all strings in this release. (Thank you VinceKun!)
 
-### Bug Fixes
+### Corrections de bugs
 
 - Borgware items (Shoulder Mount / Implanted Frames / MultiOptic Mount / Shoulder Array) are now classified as foundational cyberware and do not require a missing foundational item.
 - Code added so New Worlds will not immediately go through migration
@@ -842,7 +858,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.76.0 | Date: 2021-05-26
 
-### New Features
+### Nouvelles fonctionnalités
 
 - FnWeather made a great video demonstrating some of the following changes which you can find here: <https://www.youtube.com/watch?v=csgB6c5KhkU>. Thanks to him!
 - Added "Option Slots Size" for optional cyberware. This allows proper tracking of cyberware that can use no slots, or multiple slots. By default when first updating to this version all cyberware has an assumed slot size of 1. Please update your optional cyberware accordingly in line with the core rulebook.
@@ -876,7 +892,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - The suppressive fire option is now considered in mook sheets (same as character sheets, see issue #195).
   - Portrait added in an expandable frame.
 
-### Changes
+### Changements
 
 - Setting the autofire maximum multiplier on an item will now be taken into account when rolling damage for autofire damage rolls. For weapons defined in the core rules (SMG, H. SMG & Assault Rifles) leaving this as 0 will utilize the core rule set for those items. You can over-ride the core rules (for homebrew) by actually setting this to a non-zero amount. If you set the multiplier in the roll dialog to a value higher than the allowable value, it will default to the maximum allowable multiplier.
 - Characters are now linked to their token by default, Mooks are not.
@@ -885,7 +901,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added localization to places where it was not implemented. (!325)
 - Removed "Core" tag from Critical Injury and DV compendia (which should be imported) to make them distinct from "Skills - Core" and "Cyberware - Core" (which should NOT be imported). (!379)
 
-### Bug Fixes
+### Corrections de bugs
 
 - fixed #49 - The equipped glyph now takes the same space as the other two
 - fixed #158 - Stat padding fixed for LUCK and EMP, so that they have the same font size as the others
@@ -904,9 +920,21 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version: 0.75.4 (Hotfix) | Date: 2021-05-05
 
-- Fixed release manifest to not lock users into version 0.75.3 without possibility to update
+- Fixed release manifest to not lock users into version 0.75.2 without possibility to update
 
-## Version: 0.75.3 (Hotfix) | Date: 2021-05-02
+## Please Note
+
+- Version 0.74.2 had an error in the release manifest causing issues with updating. This was attempted to be fixed a first time but sadly that fix contain a further issue. A second attempt was made and this was successful. During this however the version numbers appear to have got confused slightly, leading to the strange jump between the version number below (0.74.2) and above (0.75.4).
+- In more specific terms:
+  - Hotfix 0.74.2 is created with the fix below. The version number in `system.json` is changed, but the manifest and download links aren't updated
+  - Another hotfix is created numbered 0.75.3. This changes the manifest and download links to be that of 0.75.3, but contains a typo in the download link
+  - The typo is then fixed, but without a bump in the version number
+  - 0.75.4 is created, with a new version agnostic manifest link but the download link from 0.75.3
+- This history was initially preserved in a branch containing the various release manifests, but in April 2023 Zankoas deleted that branch in a clean-up. In doing so this note was added to avoid losing the record entirely
+- Three commits from that branch containing the `system.json` changes between 0.74.2 and 0.75.4 hadn't been merged in, and as such were deleted
+- 0.74.2 wasn't tagged, but can be found at commit hash `1fdb27abbcfbf57152690e76992c109a464d57f7` on date `03/05/21 16:48:36`
+
+## Version: 0.74.2 (Hotfix) | Date: 2021-05-02
 
 - Role ability settings were lost when changing other data on the sheet. [issue #203](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/issues/203)
 
@@ -946,7 +974,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added a field for a static attack modifier on weapons.
 - Added a warning on cyberware install to remind users that installing cyberware also deducts from maximum humanity.
 
-### Bug Fixes
+### Corrections de bugs
 
 - 'Basic' skills (the ones that all characters have points in) now display as bold again (no issue to reference)
 - Token name now correctly displays in chat when rolling from a macro.
@@ -990,7 +1018,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Foundation for roll glyphs embedded into chat cards implemented.
 - Many changes and fixes for data migration during updates.
 
-### Bug Fixes
+### Corrections de bugs
 
 - Applying status condition icons no longer fails.
 - Custom pause animation no longer disappears on unpause/re-pause.

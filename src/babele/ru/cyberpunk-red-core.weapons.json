@@ -65,10 +65,6 @@
       "name": "Боевой нож",
       "description": "<p>Нож, подходящий улицам.</p>"
     },
-    "Constitution Arms Hurricane Assault Weapon": {
-      "name": "Штурмовое оружие Constitution Arms Hurricane",
-      "description": "<p>Экзотический дробовик с ТС 2. Невозможно производить прицельный выстрел. Для использования необходимо ТЕЛ 11 (если не установлен на треногу). См. стр. 348 Core Book'а.</p>"
-    },
     "Crossbow (Excellent)": {
       "name": "Арбалет (Отличное)",
       "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
@@ -96,6 +92,10 @@
     "Dartgun": {
       "name": "Дротикомёт",
       "description": "<p>Кибернетическое оружие. Необходима установка одноимённого киберимпланта.</p>"
+    },
+    "EMG-86 Railgun": {
+      "name": "EMG-86 Railgun",
+      "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
     },
     "Flamethrower": {
       "name": "Огнемёт",
@@ -161,9 +161,13 @@
       "name": "Лопасти вертолёта",
       "description": "<p>Снятые со старого воздушного судна, эти лезвия могут разрезать не только воздух.</p>"
     },
-    "Kendachi Mono-Three": {
-      "name": "Kendachi Mono-Three",
-      "description": "<p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears as a high-tech katana, able to ignore any armor below SP11*. Refer to the full item description on pg. 348.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
+    "Helix": {
+      "name": "Helix",
+      "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+    },
+    "Hurricane Assault Weapon": {
+      "name": "Hurricane Assault Weapon",
+      "description": "<p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or higher (unless mounted). Refer to the full item description on pg. 348.</p>"
     },
     "Lead Pipe (Excellent)": {
       "name": "Свинцовая труба (Отличное)",
@@ -237,9 +241,9 @@
       "name": "Микроволновка",
       "description": "<p>An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be rendered inoperable for a minute unless the target passes a DV15 Cybertech Check. Refer to the full item description on pg. 348.</p>"
     },
-    "Militech \"Cowboy\" U-56 Grenade Launcher": {
-      "name": "Гранатомёт Militech \"Ковбой\" U-56",
-      "description": "<p>Экзотический гранотомёт с ТС 2. Вмещает четыре гранаты. Для использования необходимо ТЕЛ 11 (если не установлен на треногу). См. стр. 349 Core Book'а.</p>"
+    "Mono-Three": {
+      "name": "Mono-Three",
+      "description": "<p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears as a high-tech katana, able to ignore any armor below SP11*. Refer to the full item description on pg. 348.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
     },
     "Naginata (Excellent)": {
       "name": "Нагината (Отличное)",
@@ -252,10 +256,6 @@
     "Naginata": {
       "name": "Нагината",
       "description": "<p>Японский деревянный шест с изогнутым лезвием на конце. Любимое оружие бойцов Арасаки в ближнем бою.</p>"
-    },
-    "Rhinemetall EMG-86 Railgun": {
-      "name": "Рельсотрон Rhinemetall EMG-86",
-      "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
     },
     "Rippers": {
       "name": "Потрошители",
@@ -373,9 +373,9 @@
       "name": "Томагавк",
       "description": "<p>Лёгкий метательный топор.</p>"
     },
-    "Tsunami Arms Helix": {
-      "name": "Tsunami Arms Helix",
-      "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+    "U-56 Grenade Launcher \"Cowboy\"": {
+      "name": "U-56 Grenade Launcher \"Cowboy\"",
+      "description": "<p>An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
     },
     "Unarmed": {
       "name": "Без оружия",
