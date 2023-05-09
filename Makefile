@@ -37,6 +37,21 @@ ci:
 		rm -rf vars.env; \
 	fi
 
+# Runs the validate packs ci job
+validate-packs:
+	@if [[ "$(CI_JOBS)" == "none" ]]; then \
+		echo "Please install node dependencies with 'make install'"; \
+	else \
+		npx gitlab-ci-local \
+		  --variable \
+		    CI_COMMIT_BRANCH=$(CI_COMMIT_BRANCH) \
+		    CI_DEFAULT_BRANCH=$(CI_COMMIT_BRANCH) \
+		  --needs \
+		    init \
+			validate-packs; \
+		rm -rf vars.env; \
+	fi
+
 # Job to lint code quickly vs. a full ci run above
 lint:
 	@if [[ "$(CI_JOBS)" == "none" ]]; then \
