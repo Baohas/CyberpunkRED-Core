@@ -1,0 +1,35 @@
+_id: vlIGLZxqhZHEdxqg
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/gorgon-security-van.svg
+name: Gorgon Security Van
+system:
+  brand: Militech
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>A monster of an armored van.</p>
+      <p>Full details can be found on page 73.</p>
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 37000
+  sdp: 50
+  seats: 6
+  source:
+    book: BC
+    page: 73
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161KPH
+  upgrades: []
+type: vehicle

@@ -1,0 +1,34 @@
+_id: thLFAzw0AHhT0cSI
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/megahauler.svg
+name: MegaHauler
+system:
+  brand: TetraCorp America
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Armored truck transport. As much a train as a car.</p>
+      <p>Full details can be found on page 79.</p>
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 143000
+  sdp: 200
+  seats: 4
+  source:
+    book: BC
+    page: 79
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+  upgrades: []
+type: vehicle

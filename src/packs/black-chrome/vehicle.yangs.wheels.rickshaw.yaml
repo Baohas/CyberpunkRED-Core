@@ -1,0 +1,35 @@
+_id: 6zH9r2jEY9ytH4em
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/yangs-wheels-rickshaw.svg
+name: Yang's Wheels Rickshaw
+system:
+  brand: Yang's Wheels LTD
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Roadbike with attached trailer for passengers.</p>
+      <p>Full details can be found on page 81.</p>
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 21000
+  sdp: 35
+  seats: 4
+  source:
+    book: BC
+    page: 81
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+  upgrades: []
+type: vehicle
