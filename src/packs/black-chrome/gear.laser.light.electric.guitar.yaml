@@ -1,0 +1,69 @@
+_id: GMouAyDuNb6QJ4a4
+effects:
+  - _id: pXuqlBa6lrqAAf82
+    changes:
+      - key: bonuses.playInstrument
+        mode: 2
+        priority: null
+        value: "1"
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: true
+              onByDefault: false
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/black-chrome/laser-light-electric-guitar.svg
+    label: Laser Light Electric Guitar
+    tint: null
+    transfer: true
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/laser-light-electric-guitar.svg
+name: Laser Light Electric Guitar
+system:
+  amount: 1
+  brand: Laser Light
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Electric Guitar that gives the User a +1 to their Play Instrument
+      (Guitar) Skill Check. This guitar also counts as one installation of Light
+      Tattoo Fashionware while worn. For more information, see Black Chrome Page
+      41.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  source:
+    book: BC
+    page: 41
+  upgrades: []
+  usage: equipped
+type: gear

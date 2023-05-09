@@ -1,0 +1,43 @@
+_id: lZYITSx53rsxoNHz
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/worldsat-aerial-sphere.svg
+name: WorldSat Aerial Sphere
+system:
+  amount: 1
+  brand: WorldSat
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Takes an hour to setup. When setup, it can't be moved before being
+      deconstructed. This also takes an hour. When set up, it provides access to
+      a Citinet when within 50 miles of the city or of another set up WorldSat
+      Aerial Sphere that is connected to the Citinet. The WorldSat Aerial
+      Sphere's wire has 10 HP. If it is destroyed, the Worldsat Aerial Sphere is
+      Destroyed Beyond Repair and the connection is immediatly severed. For more
+      information, see Black Chrome Page 50.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  source:
+    book: BC
+    page: 50
+  upgrades: []
+  usage: toggled
+type: gear

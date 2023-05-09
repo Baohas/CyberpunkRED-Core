@@ -1,0 +1,40 @@
+_id: qVrAYOVvfBpIgEor
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/killstrom-typhoid-speaker.svg
+name: Typhoid Speaker
+system:
+  amount: 1
+  brand: KillStrom Music
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>When linked to a KillStrom Sonic Boom Amp, the DV of the Resist
+      Torture/Drugs Check of the Sonic Boom Amp Effect is increased by 1 and
+      it's range is increased by 90 m/yards. Must be powered to function. For
+      more information, see Black Chrome Page 41.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  source:
+    book: BC
+    page: 41
+  upgrades: []
+  usage: toggled
+type: gear

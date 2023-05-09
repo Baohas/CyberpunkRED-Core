@@ -1,0 +1,39 @@
+_id: swKwgrj4QbNn5EvW
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/one-touch-habitat.svg
+name: One Touch Habitat
+system:
+  amount: 1
+  brand: Everest VentureWare
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Provides protection from Exposure. Counts as Sleeping in the Wilderness
+      or as Sleeping on the Streets. Can only fit one person without being
+      Crammed. Takes one Action to be Deployed or Undeployed. For more
+      information, see Black Chrome Page 48.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  source:
+    book: BC
+    page: 48
+  upgrades: []
+  usage: toggled
+type: gear

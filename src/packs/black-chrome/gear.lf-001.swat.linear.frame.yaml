@@ -1,0 +1,68 @@
+_id: DZe6EtplLToNFWjN
+effects:
+  - _id: Mr1smM09ey7SR6II
+    changes:
+      - key: system.stats.body.value
+        mode: 5
+        priority: null
+        value: "12"
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": stat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
+    label: LF-001 SWAT Linear Frame
+    tint: null
+    transfer: true
+img: systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
+name: LF-001 SWAT Linear Frame
+system:
+  amount: 1
+  brand: Polska CyberTechnologies
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Exoskeleton. Requires 2 Interface Plugs. Increases BODY to 12 while
+      plugged in. No changes to your HP or Deathsave. Ignores the normal
+      movement penalty for climbing and swimming. (See Black Chrome pg. 53 for
+      more details.)</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: true
+  isUpgraded: false
+  price:
+    market: 5000
+  providesHardening: false
+  revealed: true
+  source:
+    book: BC
+    page: 53
+  upgrades: []
+  usage: equipped
+type: gear

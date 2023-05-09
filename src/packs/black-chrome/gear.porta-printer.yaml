@@ -1,0 +1,39 @@
+_id: W9F58ETpCL2o1XYu
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/zetatech-porta-printer.svg
+name: Porta-Printer
+system:
+  amount: 1
+  brand: Zetatech
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Miniature Workshop. Allows a Tech to use Upgrade and Fabrication
+      Experstise anywhere as long as they have techtools. For more information,
+      see Black Chrome Page 43.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isUpgraded: false
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  source:
+    book: BC
+    page: 43
+  upgrades: []
+  usage: toggled
+type: gear

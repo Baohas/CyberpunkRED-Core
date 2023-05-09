@@ -1,0 +1,67 @@
+_id: G7KBZHlRtEBGD6JY
+effects:
+  - _id: g80WDTq4XGjrJgJc
+    changes:
+      - key: bonuses.concealOrRevealObject
+        mode: 2
+        priority: null
+        value: "2"
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+          situational:
+            "0":
+              isSituational: true
+              onByDefault: false
+    icon: >-
+      systems/cyberpunk-red-core/icons/compendium/black-chrome/rapideploy-sheath.svg
+    label: RapiDeploy Sheath
+    tint: null
+    transfer: true
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/rapideploy-sheath.svg
+name: RapiDeploy Sheath
+system:
+  amount: 1
+  brand: Gambler Workshop
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Gives the User a +2 bonus to their Conceal/Reveal Skill Check if used
+      to conceal a weapon already capable of concealement. For more information,
+      see Black Chrome Page 47.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  source:
+    book: BC
+    page: 47
+  upgrades: []
+  usage: equipped
+type: gear

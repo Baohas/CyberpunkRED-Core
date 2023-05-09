@@ -1,0 +1,39 @@
+_id: pcQ6FsBuHHIWNDlP
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/streetcase.svg
+name: Streetcase
+system:
+  amount: 1
+  brand: SecSystems
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Can carry an easily accessible Heavy Pistol, a laptop computer, a
+      ChipVault and a single smoke grenade. The Heavy Pistol can instead be
+      replaced by a ModFire 10x (in Heavy Pistol Mode) and its parts. For more
+      information, see Black Chrome Page 47.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  source:
+    book: BC
+    page: 47
+  upgrades: []
+  usage: toggled
+type: gear

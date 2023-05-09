@@ -1,0 +1,38 @@
+_id: Hpa8rpiVDRX29Gr5
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/mr-biscuit-multi-food-processor.svg
+name: Mr. Biscuit Multi-Food Processor
+system:
+  amount: 1
+  brand: Everest VentureWare
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Can sustain a group of up to 10 people when in the Outskirts. For more
+      information, see Black Chrome Page 49.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  source:
+    book: BC
+    page: 49
+  upgrades: []
+  usage: toggled
+type: gear
