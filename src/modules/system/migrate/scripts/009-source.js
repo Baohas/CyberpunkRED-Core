@@ -42,28 +42,30 @@ export default class SourceMigration extends CPRMigration {
     const updateData = item.isOwned ? { _id: item._id } : {};
     const itemSource = item.system.source;
 
-    LOGGER.debug(`${itemSource}`);
-    if (itemSource !== "") {
-      // Replace `pg` (case insensitive) with a pipe,
-      // remove any "."
-      // remove any spaces
-      // returns "foo|123" or "|123" or "foo|"
-      const cleanSource = itemSource
-        .replace(/pg/gi, "|")
-        .replace(/\./g, "")
-        .replace(" ", "");
-      LOGGER.debug(`${cleanSource}`);
-      const source = cleanSource.split("|");
-      const book = source[0] ? source[0] : "";
-      const page = source[1] ? source[1].replace(/\D/g, "") : "";
-      LOGGER.debug(
-        `migrateItem | ${this.version}-${this.name} | source/book: ${book}`
-      );
-      LOGGER.debug(
-        `migrateItem | ${this.version}-${this.name} | source/page: ${page}`
-      );
-      updateData["system.source"] = { book, page };
-      return item.isOwned ? updateData : item.update(updateData);
+    if (Object.prototype.toString.call(itemSource) !== "[object Object]") {
+      LOGGER.debug(`${itemSource}`);
+      if (itemSource !== "") {
+        // Replace `pg` (case insensitive) with a pipe,
+        // remove any "."
+        // remove any spaces
+        // returns "foo|123" or "|123" or "foo|"
+        const cleanSource = itemSource
+          .replace(/pg/gi, "|")
+          .replace(/\./g, "")
+          .replace(" ", "");
+        LOGGER.debug(`${cleanSource}`);
+        const source = cleanSource.split("|");
+        const book = source[0] ? source[0] : "";
+        const page = source[1] ? source[1].replace(/\D/g, "") : "";
+        LOGGER.debug(
+          `migrateItem | ${this.version}-${this.name} | source/book: ${book}`
+        );
+        LOGGER.debug(
+          `migrateItem | ${this.version}-${this.name} | source/page: ${page}`
+        );
+        updateData["system.source"] = { book, page };
+        return item.isOwned ? updateData : item.update(updateData);
+      }
     }
 
     return null;
