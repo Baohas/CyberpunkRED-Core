@@ -1,0 +1,28 @@
+_id: LumJXCKgGQTLZJWu
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/arasaka-wound-salt.svg
+name: Arasaka Wound Salt
+system:
+  ablationValue: 1
+  amount: 1
+  brand: Arasaka
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Coating for Arasaka Weeping Reaver Katana only.</p>
+
+      <p>Able to apply a second a seconde Critical Injury, details of which can
+      be found on page 91.</p>
+  favorite: false
+  price:
+    market: 100
+  source:
+    book: BC
+    page: 91
+  type: basic
+  variety: heavyPistol
+type: ammo

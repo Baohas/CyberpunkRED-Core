@@ -1,0 +1,25 @@
+_id: 2h87i3r9DkK7sabX
+img: systems/cyberpunk-red-core/icons/compendium/ammo/paintball_basic.png
+name: Doberman 500 Marking Scent
+system:
+  ablationValue: 0
+  amount: 12
+  brand: KTech
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Special Ammo Type for the Air Pistol. For more information, see Black
+      Chrome Page 44.</p>
+  favorite: false
+  price:
+    market: 50
+  source:
+    book: BC
+    page: 44
+  type: special
+  variety: custom
+type: ammo

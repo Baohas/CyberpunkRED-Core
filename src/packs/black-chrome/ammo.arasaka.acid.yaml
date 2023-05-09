@@ -1,0 +1,24 @@
+_id: wIMBD44ZU3iJ6jNI
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/osmosis_compound.svg
+name: Arasaka Acid
+system:
+  ablationValue: 2
+  amount: 1
+  brand: Arasaka
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Coating for Arasaka Weeping Reaver Katana only.</p>
+  favorite: false
+  price:
+    market: 100
+  source:
+    book: BC
+    page: 91
+  type: acid
+  variety: custom
+type: ammo

@@ -1,0 +1,23 @@
+_id: ZsltnSIORaBm5bh6
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/rocks.svg
+name: Rocks
+system:
+  ablationValue: 1
+  amount: 10
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Ammunition for the Nomad Rocker.</p>
+  favorite: false
+  price:
+    market: 0
+  source:
+    book: BC
+    page: 115
+  type: basic
+  variety: custom
+type: ammo

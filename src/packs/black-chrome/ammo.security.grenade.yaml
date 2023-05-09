@@ -1,0 +1,25 @@
+_id: EBdbf1JaVGl0M7LJ
+img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_armorpiercing.png
+name: Security Grenade
+system:
+  ablationValue: 1
+  amount: 1
+  brand: KTech
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Armor piercing Grenade that doesn't damage cover. Full rules can be
+      found on page 89.</p>
+  favorite: false
+  price:
+    market: 100
+  source:
+    book: BC
+    page: 89
+  type: armorPiercing
+  variety: grenade
+type: ammo

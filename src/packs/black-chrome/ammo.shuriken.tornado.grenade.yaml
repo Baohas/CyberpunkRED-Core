@@ -1,0 +1,25 @@
+_id: KPSBX2Ns6cj6JC4v
+img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_flashbang.png
+name: Shuriken Tornado Grenade
+system:
+  ablationValue: 1
+  amount: 1
+  brand: Great Lakes Cutlery
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>A literal explosion of shurikens. Can apply second Critical Injury,
+      details of which can be found on page 87.</p>
+  favorite: false
+  price:
+    market: 100
+  source:
+    book: BC
+    page: 87
+  type: special
+  variety: grenade
+type: ammo

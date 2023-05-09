@@ -1,0 +1,23 @@
+_id: 80TODp6SDXS3ZnSi
+img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_smoke.png
+name: Arachnid Grenade
+system:
+  ablationValue: 0
+  amount: 1
+  brand: Centurion Essentials
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>A very sticky grenade, details of which can be found on page 86.</p>
+  favorite: false
+  price:
+    market: 100
+  source:
+    book: BC
+    page: 86
+  type: special
+  variety: grenade
+type: ammo
