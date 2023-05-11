@@ -2,7 +2,7 @@
 
 # Changelog
 
-## Version 0.87.0 | Date: TBD
+## Version 0.87.0
 
 ### Action Needed
 
