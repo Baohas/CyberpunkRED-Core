@@ -1120,4 +1120,49 @@ export default function registerHandlebarsHelpers() {
         return string;
     }
   });
+
+  /**
+   * Map items to wiki links
+   * Some items are pluralised, some are not, map these
+   */
+  Handlebars.registerHelper("cprWikiLink", (string) => {
+    LOGGER.trace("cprTextTransform | handlebarsHelper | Called.");
+    const gitlabUrl = `https://gitlab.com/cyberpunk-red-team/fvtt-${game.system.id}`;
+    const wikiUrl = `${gitlabUrl}/-/wikis/`;
+    const itemPath = "System-Documentation/Items";
+    switch (string) {
+      case "ammo":
+        return `${wikiUrl}/${itemPath}/Ammo`;
+      case "armor":
+        return `${wikiUrl}/${itemPath}/Armor`;
+      case "clothing":
+        return `${wikiUrl}/${itemPath}/Clothing`;
+      case "criticalInjury":
+        return `${wikiUrl}/${itemPath}/Critical-Injuries`;
+      case "cyberdeck":
+        return `${wikiUrl}/${itemPath}/Cyberdecks`;
+      case "cyberware":
+        return `${wikiUrl}/${itemPath}/Cyberware`;
+      case "drug":
+        return `${wikiUrl}/${itemPath}/Drugs`;
+      case "gear":
+        return `${wikiUrl}/${itemPath}/Gear`;
+      case "itemUpgrade":
+        return `${wikiUrl}/${itemPath}/Upgrades`;
+      case "netarch":
+        return `${wikiUrl}/${itemPath}/NET-Architecture`;
+      case "program":
+        return `${wikiUrl}/${itemPath}/Programs`;
+      case "role":
+        return `${wikiUrl}/${itemPath}/Roles`;
+      case "skill":
+        return `${wikiUrl}/${itemPath}/Skills`;
+      case "vehicle":
+        return `${wikiUrl}/${itemPath}/Vehicles`;
+      case "weapon":
+        return `${wikiUrl}/${itemPath}/Weapons`;
+      default:
+        return string;
+    }
+  });
 }
