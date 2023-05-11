@@ -30,7 +30,7 @@
       <div class="item-details-help">
         {{localize (cprFindConfigValue "objectTypes" item.type)}}
         <a class="help-article text-padding-left-smallest"
-           href="https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/  wikis/System-Documentation/Items/{{item.type}}"
+           href="{{cprWikiLink item.type}}"
            data-tooltip="{{localize "CPR.global.generic.helparticle"}}">
           <i class="fas fa-question-circle"></i>
         </a>
