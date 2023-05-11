@@ -9,7 +9,6 @@ import MarkdownIt from "markdown-it";
 import * as config from "./config.mjs";
 import {
   DEBUG,
-  CHANGELOG_FILE,
   SYSTEM_FILE,
   SYSTEM_TITLE,
   SYSTEM_VERSION,
@@ -102,25 +101,34 @@ async function buildManifest() {
 async function buildChangelog() {
   return new Promise((cb) => {
     log("Generating Release Notes...");
-    // Check if the target dir is created
-    if (!fs.existsSync(path.join(destFolder, "lang/release-notes/"))) {
-      fs.mkdirpSync(path.join(destFolder, "lang/release-notes/"));
-    }
+    const systemRaw = fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE));
+    const system = JSON.parse(systemRaw);
+    const { languages } = system;
 
-    // If we don't have a manually created file then generate one
-    if (
-      !fs.existsSync(
-        path.join(srcFolder, "lang/release-notes", `${SYSTEM_VERSION}.en`)
-      )
-    ) {
-      const changelog = fs.readFileSync(path.resolve(CHANGELOG_FILE), "utf-8");
+    for (const [key, value] of Object.entries(languages)) {
+      const { lang } = value;
+      const changelogFile =
+        lang !== "en" ? `CHANGELOG.${lang}.md` : "CHANGELOG.md";
+      const changelog = fs.readFileSync(path.resolve(changelogFile), "utf-8");
+      // This creates an array of all H2 (##) and sub elements in a markdown file
+      // then we grab the first one and render that markdown to html and write
+      // it to a release-notes file which is then rendered in Foundry
       const regex = /(?:^|\n)##\s[^\n]*\n(.*?)(?=\n##?\s|$)/gs;
       const release = regex.exec(changelog)[0];
       const md = new MarkdownIt();
       const result = md.render(release);
 
+      // Create the lang/release-notes directory
+      if (!fs.existsSync(path.join(destFolder, "lang/release-notes/"))) {
+        fs.mkdirpSync(path.join(destFolder, "lang/release-notes/"));
+      }
+
       fs.writeFileSync(
-        path.join(destFolder, "lang/release-notes/", `${SYSTEM_VERSION}.en`),
+        path.join(
+          destFolder,
+          "lang/release-notes/",
+          `${SYSTEM_VERSION}.${lang}`
+        ),
         result,
         { mode: 0o644 }
       );

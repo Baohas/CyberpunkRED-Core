@@ -32,10 +32,13 @@ export default class UpdateScreen extends Application {
     // to English. Then if English dosn't exist return an empty string
     const releaseNotesFile = `systems/${game.system.id}/lang/release-notes/${game.system.version}`;
 
-    const lang = game.i18n;
+    const { lang } = game.i18n;
     let response = await fetch(`${releaseNotesFile}.${lang}`);
 
     if (response.status !== 200) {
+      LOGGER.trace(
+        `getData | UpdateScreen | Could not read  file '${releaseNotesFile}.${lang}'`
+      );
       response = await fetch(`${releaseNotesFile}.en`);
     }
 
