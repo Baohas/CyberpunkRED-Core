@@ -1,8 +1,0 @@
-<p>In this release we made it possible to set an ablation value on ammo. When a target is shot with a particular ammo, the system
-will look up that value and subtract it from the SP on the target's armor. For armor-piercing rounds this value is 2, for rubber
-rounds it is 0, and for almost everything else it is 1. This allows us to better support some DLC items too, such as the 
-Malorian Arms Sub-Flechette ammo that has an ablation value of 4.</p>
-
-<p>While we made a best effort to migrate any Ammo Items on characters or custom/homebrew we may not have caught every possibility.
-Just to to be sure, please check any custom/homebrew ammo your have created and ensure it has it's Ablation configured correctly.
-Any Ammo in custom Compendia  will not have been migrated automatically and will require manually updating.</p>
