@@ -8,8 +8,8 @@ IFS=$'\n\t'
 # URL to use as the base for out API calls
 PROJECT_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}"
 
-# This is insane, GitLab doesn't pass the MR IID to a 'push' event in any
-# ENVARS as you would expect but it does put something along the lines of
+# GitLab doesn't pass the MR IID to a 'push' event in any ENVARS as you would
+# expect but it does put something along the lines of
 # 'See merge request cyberpunk-red-team/ci-testing!5' in `env`?! so we can
 # grep for this and extract the MR IID.
 
@@ -17,7 +17,6 @@ PROJECT_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}"
 # is labelled as this also applies to direct pushes to the branch, so they won't
 # have the text so we need to set ISSUES to an empty array so we can skip the labelling if it's just a standard push to `dev` not from an MR.
 
-# Short circuit to 0 if we can't find an MR IID
 MR_IID=$(
   env |
     grep 'See merge request' |
