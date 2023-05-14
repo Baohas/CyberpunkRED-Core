@@ -2,6 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+set -x
 # Variables that are set by GitLab CI environment
 # CI_API_V4_URL, CI_PROJECT_ID, CHOOM_BOT_API
 
