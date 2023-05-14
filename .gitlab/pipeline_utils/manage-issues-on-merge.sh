@@ -129,7 +129,7 @@ function close_issue() {
 }
 
 # Update the Labels using LABELS_TO_ADD defined above
-# $1 == issue_id
+# $1 = issue_id
 function add_labels() {
   echo "Adding labels to issue $1"
   curl \
@@ -144,7 +144,7 @@ function add_labels() {
 }
 
 # Leave a Note (comment) on the issue to say it's in dev and needs testing
-# $1 == issue_id
+# $1 = issue_id
 function add_note() {
   echo "Adding note to issue $1"
   curl \
