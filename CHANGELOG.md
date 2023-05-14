@@ -12,13 +12,80 @@ Effects with situational modifiers have been given the appropriate settings on a
 
 #### Electronic Items
 
-We have migrated all Gear items provided by our Compendia to support `isElectronic` but you will need to update any Homebre/Custom items manually if you want them to support this new data point.
+We have migrated all Gear items provided by our Compendia to support `isElectronic` but you will need to update any Homebrew/Custom items manually if you want them to support this new data point.
 
 #### CSS Themes / Rewrite
 
 Do to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
 
-For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme Ernies needs to be configured to use Dark Mode as well
+For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme Ernies needs to be configured to use Dark Mode as well.
+
+### New Features
+
+#### Improved Dialogues
+
+- All dialogues have been given new styling and have been converted to a new system called CPRDialog.
+- This will allow for more responsive dialogues with complex logic in the future. Some of this is already implemented in Roll Dialogues (see next bullet point).
+
+#### Improved Roll Dialogues
+
+- The UI for roll dialogues has been improved and brought more in-line with the style of our system.
+- Dialogues are now responsive sheets and can change depending on inputs.
+- No more detective work: A tool tip (both in dialogues and on roll cards) displays where every bonus/penalty on your roll comes from.
+- Toggle situational modifiers from active effects, upgrades, and roles right from the dialog.
+- Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu.
+- Add any additional modifiers to the roll as needed.
+- Future work:
+  - Change every dialog over to the improved UI.
+
+#### Roll Modifiers
+
+- New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
+- Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
+  - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogues with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
+- Modifiers to rolls from Role Abilities also have Situational (and On By Default) options.
+- Modifiers to rolls from item Upgrades also have Situational (and On By Default) options.
+  - NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. Sorry!
+- Known Issues / Future Work:
+  - It is a known issue that Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
+
+#### CSS Themes
+
+We have added the functionality for system specific themes. This allows us to ship a few default themes (dark mode!). You can configure this in the `Settings > Cyberpunk RED - CORE` section.
+
+This lays the foundation for allowing 3rd party modules to register their own CPR specific themes in a future release.
+
+#### Compendia
+
+- Added clothing descriptions with help from Hakuan Quietpaws
+- Added The 12 Days of Cybermas with help from Miklos
+- Added Hornet’s Pharmacy with help from Miklos
+- Added Nomad vehicle upgrades with help from WombatCombat
+- Added Spinning Your Wheels upgrades with help from Sushimatic
+- Added Must Have Cyberware Deals with help from Miklos
+- Added Midnight With The Upload with help from Miklos
+- Added Night City Tarot content with help from Hakuan Quietpaws
+- Added All About Drones with help from Hakuan Quietpaws
+- Added Exotics of 2045 with help from Hakuan Quietpaws
+- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
+- Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
+- Added Night City Weather with help from Miklos
+- Added Non-Generic Weapons
+- Added Black Chrome with help from
+  - H.P. Racha
+  - Hakuan Quietpaws
+  - Sushimatic
+
+#### Other New Features
+
+- Add check for `core.photosensitivityMode` when rendering pause animation
+- Add a `isElectronic` data point to Gear items
+  - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (EG: A macro to select which items to disable with an EMP)
+- Add `Get EMP'd Items` macro
+  - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (without shielding), carried (electronic) Gear items, or Cyberdecks and outputs the results to chat
+- Add a `brand` field to physical items
+  - All compendia provided by the system have been migrated
+  - We so not provide any migrations for in world items as there are to many edge cases to reliably do this
 
 ### Changes
 
@@ -66,83 +133,15 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Item Sheet
   - Slight Rewrite of header
 
-#### CSS Themes
-
-We have added the functionality for system specific themes. This allows us to ship a few default themes (dark mode!). You can configure this in the `Settings > Cyberpunk RED - CORE` section.
-
-This lays the foundation for allowing 3rd party modules to register their own CPR specific themes in a future release.
-
-### Misc
+#### Other Changes
 
 - Updated the background and header images to new versions by Rayane Souizi "Wizi"
 - Ammo selection dropdown now shows stack size
 - Changed the default weapon to use the default weapon icon
-- Added clothing descriptions with help from Hakuan Quietpaws
-- `source` field for items has been split into 2 seperate Fields
+- `source` field for items has been split into 2 separate Fields
   - `source.book`
   - `source.page`
 - Update compendia icons for Armor
-
-### New Features
-
-#### Improved Dialogues
-
-- All dialogues have been given new styling and have been converted to a new system called CPRDialog.
-- This will allow for more responsive dialogues with complex logic in the future. Some of this is already implemented in Roll Dialogues (see next bullet point.)
-
-#### Improved Roll Dialogs
-
-- The UI for roll dialogues has been improved and brought more in-line with the style of our system.
-- Dialogues are now responsive sheets and can change depending on inputs.
-- No more detective work: A tool tip (both in dialogues and on roll cards) displays where every bonus/penalty on your roll comes from.
-- Toggle situational modifiers from active effects, upgrades, and roles right from the dialog.
-- Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu.
-- Add any additional modifiers to the roll as needed.
-- Future work:
-  - Change every dialog over to the improved UI.
-
-#### Roll Modifiers
-
-- New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
-- Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
-  - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogues with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
-- Modifiers to rolls from Role Abilities also have Situational (and On By Default) options.
-- Modifiers to rolls from item Upgrades also have Situational (and On By Default) options.
-- NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. Sorry!
-- Known Issues / Future Work:
-  - It is a known issue that Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
-
-#### Misc
-
-- Add check for `core.photosensitivityMode` when rendering pause animation
-- Add a `isElectronic` data point to Gear items
-  - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (EG: A macro to select which items to disable with an EMP)
-- Add `Get EMP'd Items` macro
-  - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (wihout sheilding), carried (electroinc) Gear items, or Cyberdecks and outputs the results to chat
-- Add a `brand` field to physical items
-  - All compendia provided by the system have been migrated
-  - We so not provide any migrations for in world items as there are to many edge cases to reliably do this
-
-#### Content / Compendia
-
-- Added The 12 Days of Cybermas with help from Miklos
-- Added Hornet’s Pharmacy with help from Miklos
-- Added Nomad vehicle upgrades with help from WombatCombat
-- Added Spinning Your Wheels upgrades with help from Sushimatic
-- Added Must Have Cyberware Deals with help from Miklos
-- Added Midnight With The Upload with help from Miklos
-- Added Night City Tarot content with help from Hakuan Quietpaws
-- Added All About Drones with help from Hakuan Quietpaws
-- Added Exotics of 2045 with help from Hakuan Quietpaws
-- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
-- Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
-- Added Night City Weather with help from Miklos
-- Added Non-Generic Weapons
-- Added Black Chrome Plus DLC
-- Added Black Chrome with help from
-  - H.P. Racha
-  - Hakuan Quietpaws
-  - Sushimatic
 
 ### Bug Fixes
 
@@ -151,9 +150,9 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - Fixed medical grade cyber limbs incorrectly accepting upgrades
 - Fixed a typo in the underbarrel grenade launcher description
 - Added back the underbarrel shotgun that was accidentally deleted
-- Dragging document links to item descriptions links the document correctly.
-- #703 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error.
-- #700 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console.
+- Dragging document links to item descriptions links the document correctly
+- #703 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
+- #700 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console
 - Fix missing tool-tip text in compendia settings
 - Fixed incorrect rounding on the flamethrower and thrown weapon Icons
 - Remove duplicate Smart Lens Cyberware
@@ -164,8 +163,8 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - Fixed not being able to install the correct type of upgrades into a Smart Lens
 - Fixed #701 - Issue with Black ICE rolling the wrong damage.
 - Fix Smart Glasses / Smart Lenses not taking cybereye options
-- Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error.
-- Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console.
+- Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
+- Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console
 
 ## Version 0.86.1 | Date: 2023-02-05
 
@@ -177,7 +176,7 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - #693 - The stripHTML() Handlebar helper fails if the passed HTML contains a percentage sign.
 - #691 - Actors stored in compendiums and dragged out into worlds were losing information on any items that were installed.
 - Fixed the ability to decrement REZ of a running program in the Net tab
-- #692 - Code accidentally added `programs` instead of `cyberware` for owned cyberware on existing actors. This fix adds `cyberware` as it should hav been however we can't know if `programs` was a valid entry for a world, so we are not removing that. It does not impact anything and a GM can manually remove `programs` from an owned piece of cyberware via the item settings if needed.
+- #692 - Code accidentally added `programs` instead of `cyberware` for owned cyberware on existing actors. This fix adds `cyberware` as it should have been however we can't know if `programs` was a valid entry for a world, so we are not removing that. It does not impact anything and a GM can manually remove `programs` from an owned piece of cyberware via the item settings if needed.
 
 ### Changes
 
