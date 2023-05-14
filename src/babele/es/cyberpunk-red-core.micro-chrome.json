@@ -14,8 +14,8 @@
       "description": "<p>Da a un usuario una única opción de ciberóptico. Puede usar una lente inteligente por ojo.</p>"
     },
     "MicroCutie": {
-      "name": "MicroCutie",
-      "description": "<p>Using an action the user can enable HypurrburstTM mode. HypurrburstTM mode increases the weapons damage to 4d6, but drains all remaining shots when fired. Requires at least 4 rounds remaining to enable. The weapon purrs while in HypurrburstTM mode*.<br><em>Special fire mode not currently supported; will need to be manually applied</em></p>"
+      "name": "MicroDulzura",
+      "description": "<p>Utilizando una acción, el usuario puede habilitar el modo HypurrburstM. El modo HypurrburstTM aumenta el daño de las armas a 4d6, pero drena todos los disparos restantes cuando se dispara. Requiere al menos 4 rondas para habilitar. El arma hace un ruido de ronroneo en modo HypurrburstM*.<br><em>Modo de fuego especial no soportado actualmente; tendrá que aplicarse manualmente</em></p>"
     }
   }
 }

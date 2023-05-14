@@ -11,7 +11,7 @@
     },
     "Arrow (Biotoxin)": {
       "name": "Flecha (Biotoxina)",
-      "description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra DV15. Al fallar 3d6 de daño a HP sin Ablación. </p>"
+      "description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra VD15. Al fallar 3d6 de daño a HP sin Ablación. </p>"
     },
     "Arrow (Expansive)": {
       "name": "Flecha (Expansiva)",
@@ -23,7 +23,7 @@
     },
     "Arrow (Poison)": {
       "name": "Flecha (veneno)",
-      "description": "<p>Sin daño inmediato. Si golpea al objetivo y pasa la armadura, tira Resistir Tortugas/Drogas contra DV13. Al fallar 2d6 de daño a PV sin ablación. </p>"
+      "description": "<p>Sin daño inmediato. Si golpea al objetivo y pasa la armadura, tira Resistir Tortugas/Drogas contra VD13. Al fallar 2d6 de daño a PV sin ablación. </p>"
     },
     "Arrow (Rubber)": {
       "name": "Flecha (Goma)",
@@ -31,11 +31,11 @@
     },
     "Arrow (Sleep)": {
       "name": "Flecha (Dormir)",
-      "description": "<p>No inflige daño. Si golpea al objetivo y pasa la armadura tira Resiste la Torture/Drogas contra DV13. Al fallar cae inconciente (ver pg. 169) durante 1 minuto. Puede despertarse por daño u otra persona usando una acción para tocarlos/sacudirlos.</p>"
+      "description": "<p>No inflige daño. Si golpea al objetivo y pasa la armadura, tira Resiste la Torture/Drogas contra VD13. Al fallar cae inconsciente (ver pg. 169) durante 1 minuto. Puede despertarse por daño u otra persona usando una acción para tocarlos/sacudirlos.</p>"
     },
     "Arrow (Smart)": {
       "name": "Flecha (Inteligente)",
-      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+      "description": "<p>Req Ciberimplante de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo VD 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
     "Battery Pack": {
       "name": "Paquete de Baterías",
@@ -47,15 +47,15 @@
     },
     "Grenade (Biotoxin)": {
       "name": "Granada (Biotoxina)",
-      "description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra DV15. Al fallar 3d6 de daño a PV sin Ablación. </p>"
+      "description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra VD15. Al fallar 3d6 de daño a PV sin Ablación. </p>"
     },
     "Grenade (EMP)": {
       "name": "Granada (EMP por sus siglas en inglés)",
-      "description": "<p>Si pega debe superar una tirada de Cybertecnología DV15. Si falla, 2 piezas de Cyberware o electrónica cargada (elección de GM) deja de funcionar por 1 minuto. Los cybermiembros se cuelgan sueltamente como un brazo de carne desmembrado ver pg. 187.</p>"
+      "description": "<p>Si pega debe superar una tirada de Cibertecnología VD15. Si falla, 2 piezas de Cyberware o electrónica cargada (elección de GM) deja de funcionar por 1 minuto. Los cibermiembros se cuelgan sueltamente como un brazo de carne desmembrado ver pg. 187.</p>"
     },
     "Grenade (Flashbang)": {
       "name": "Granada (FlashBang)",
-      "description": "<p>No inflige daño. Si golpea, tira Resiste la Torture/Drogas contra DV15. Si falla, toma las heridas críticas Ojo Dañado y Oído Dañado (ver pg. 188) durante 1 minuto. No inflige daño crítico. </p>"
+      "description": "<p>No inflige daño. Si golpea, tira Resistir Tortura/Drogas contra VD15. Si falla, toma las heridas críticas Ojo Dañado y Oído Dañado (ver pg. 188) durante 1 minuto. No inflige daño crítico. </p>"
     },
     "Grenade (Incendiary)": {
       "name": "Granada (Incendiaria)",
@@ -63,11 +63,11 @@
     },
     "Grenade (Poison)": {
       "name": "Granada (Veneno)",
-      "description": "<p>Sin daño inmediato. Si golpea al objetivo y pasa la armadura, tira Resistir Tortugas/Drogas contra DV13. Al fallar 2d6 de daño a PV sin ablación. </p>"
+      "description": "<p>Sin daño inmediato. Si golpea al objetivo y pasa la armadura, tira Resistir Tortugas/Drogas contra VD13. Al fallar 2d6 de daño a PV sin ablación. </p>"
     },
     "Grenade (Sleep)": {
       "name": "Granada (Dormir)",
-      "description": "<p>No inflige daño. Si golpea al objetivo y pasa la armadura, tira Resiste la Torture/Drogas contra DV13. Al fallar cae inconsciente (ver pg. 169) durante 1 minuto. Puede despertarse por daño u otra persona usando una acción para tocarlos/sacudirlos.</p>"
+      "description": "<p>No inflige daño. Si golpea al objetivo y pasa la armadura, tira Resistir Tortura/Drogas contra VD13. Al fallar cae inconsciente (ver pg. 169) durante 1 minuto. Puede despertarse por daño u otra persona usando una acción para tocarlos/sacudirlos.</p>"
     },
     "Grenade (Smoke)": {
       "name": "Granada (Humo)",
@@ -75,7 +75,7 @@
     },
     "Grenade (Teargas)": {
       "name": "Granada (Lacrimógena)",
-      "description": "<p>No inflige daño. Golpea los ojos si están descubiertos. Tira para resistir la tortura/drogas contra DV13. Si falla, sufre lesiones críticas Ojo Dañado (ver página 188) durante 1 minuto. No inflige daño adicional crítico.</p>"
+      "description": "<p>No inflige daño. Golpea los ojos si están descubiertos. Tira para resistir la tortura/drogas contra VD13. Si falla, sufre lesiones críticas Ojo Dañado (ver página 188) durante 1 minuto. No inflige daño adicional crítico.</p>"
     },
     "Heavy Pistol (Armor Piercing)": {
       "name": "Pistola Pesada (Perforación de Armadura)",
@@ -99,7 +99,7 @@
     },
     "Heavy Pistol (Smart)": {
       "name": "Pistola Pesada (Inteligente)",
-      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+      "description": "<p>Req Ciberimplante de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo VD 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
     "Medium Pistol (Armor Piercing)": {
       "name": "Pistola Media (Perforación de Armadura)",
@@ -123,7 +123,7 @@
     },
     "Medium Pistol (Smart)": {
       "name": "Pistola Media (Inteligente)",
-      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+      "description": "<p>Req Ciberimplante de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo VD 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
     "Paintball (Acid)": {
       "name": "Bola de Pintura (Ácido)",
@@ -155,7 +155,7 @@
     },
     "Rifle (Smart)": {
       "name": "Rifle (Inteligente)",
-      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+      "description": "<p>Req Ciberimplante de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo VD 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
     "Rocket (Armor Piercing)": {
       "name": "Cohete (Perforación de Armadura)",
@@ -163,7 +163,7 @@
     },
     "Rocket (Smart)": {
       "name": "Cohete (Inteligente)",
-      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+      "description": "<p>Req Ciberimplante de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo VD 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
     "Shotgun Shell (Basic)": {
       "name": "Cartuchos de Escopeta (Básicos)",
@@ -195,7 +195,7 @@
     },
     "Shotgun Slug (Smart)": {
       "name": "Posta de Escopeta (Inteligente)",
-      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+      "description": "<p>Req Ciberimplante de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo VD 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
     "Very Heavy Pistol (Armor Piercing)": {
       "name": "Pistola Muy Pesada (Perforación de Armadura)",
@@ -219,7 +219,7 @@
     },
     "Very Heavy Pistol (Smart)": {
       "name": "Pistola Muy Pesada (Inteligente)",
-      "description": "<p>Req Cyberware de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo DV 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
+      "description": "<p>Req Ciberimplante de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo VD 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     }
   }
 }

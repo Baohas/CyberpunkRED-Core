@@ -1,149 +1,149 @@
 {
-  "label": "Core Branded Weapons",
+  "label": "Armas con Marca Básico",
   "entries": {
     "Avenger": {
-      "name": "Avenger",
-      "description": "<p>A concealable, medium-sized pistol. +1 to Attack.</p>"
+      "name": "Vengadora",
+      "description": "<p>Una pistola media ocultable. +1 al ataque.</p>"
     },
     "Bearcat": {
-      "name": "Bearcat",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
+      "name": "Manturón",
+      "description": "<p>Arco revitalizado, recargado como parte de una Acción de Ataque.</p>\n<p>+1 al Ataque.</p>"
     },
     "Boomer Buster": {
-      "name": "Boomer Buster",
-      "description": "<p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>"
+      "name": "Destructor de Boomers",
+      "description": "<p>Una Pistola Muy Pesada. No se puede ocultar. +1 para Atacar.</p>"
     },
     "Bulldog": {
       "name": "Bulldog",
-      "description": "<p>An all-purpose shotgun. +1 to Attack.</p>"
+      "description": "<p>Una escopeta para todos los propósitos. +1 al Ataque. </p>"
     },
     "City Reaper": {
-      "name": "City Reaper",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "name": "Segador de Ciudad",
+      "description": "<p>Un SMG pesado. Debido a su tamaño, no puede ser ocultado. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>"
     },
     "Cityhunter": {
-      "name": "Cityhunter",
-      "description": "<p>A concealable, heavy pistol. +1 to Attack.</p>"
+      "name": "Cazador de Ciudad",
+      "description": "<p>Una Pistola Pesada ocultable. +1 al Ataque.</p>"
     },
     "Dragon": {
-      "name": "Dragon",
-      "description": "<p>A standard-issue assault rifle. +1 to Attack.</p>"
+      "name": "Dragón",
+      "description": "<p>Un rifle de asalto estándar. +1 para Atacar.</p>"
     },
     "Home Defender": {
-      "name": "Home Defender",
-      "description": "<p>An all-purpose shotgun.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "name": "Defensor de Casa",
+      "description": "<p>Una escopeta para todos los propósitos. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>"
     },
     "Hotshot": {
-      "name": "Hotshot",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage. +1 to Attack.</p>"
+      "name": "Tiro Caliente",
+      "description": "<p>Saca los cañones grandes. Este lanzador de cohetes causará algún daño. +1 al ataque.</p>"
     },
     "Hunter": {
-      "name": "Hunter",
-      "description": "<p>A crossbow which must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "name": "Cazador",
+      "description": "<p>Una ballesta que debe recargarse después de cada ataque. Si tira 1 en el ataque (pifia) la cuerda se suelta y requiere una acción para volver a colocarla. </p>"
     },
     "Jungle Reaper": {
-      "name": "Jungle Reaper",
-      "description": "<p>A standard-issue assault rifle.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "name": "Segador de la Jungla",
+      "description": "<p>Un rifle de asalto estándar. Si tira 1 en Ataque (pifia) el rifle se atasca y requiere una acción para desatascar. </p>"
     },
     "Long Rifle": {
-      "name": "Long Rifle",
-      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. </p>"
+      "name": "Rifle Largo",
+      "description": "<p>Un rifle de francotirador de larga distancia. Carga 4 balas en un cargador. </p>"
     },
     "Magnum": {
       "name": "Magnum",
-      "description": "<p>A concealable, heavy pistol.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>Una Pistola Pesada ocultable. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>"
     },
     "Mark III": {
       "name": "Mark III",
-      "description": "<p>A concealable, heavy pistol. </p>"
+      "description": "<p>Una Pistola Pesada ocultable.</p>"
     },
     "Minami 10": {
       "name": "Minami 10",
-      "description": "<p>A concealable SMG. +1 to Attack.</p>"
+      "description": "<p>Un SMG ocultable. +1 para Atacar.</p>"
     },
     "Mini-Gat": {
       "name": "Mini-Gat",
-      "description": "<p>A concealable SMG. </p>"
+      "description": "<p>Un SMG ocultable. </p>"
     },
     "Mini-Grenade": {
-      "name": "Mini-Grenade",
-      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. </p>"
+      "name": "Mini-Granada",
+      "description": "<p>Un lanzador de granadas de alto impacto. Puedes usar una variedad de granadas con esto. </p>"
     },
     "P-35": {
       "name": "P-35",
-      "description": "<p>A very heavy pistol. It can't be concealed. </p>"
+      "description": "<p>Una Pistola Muy Pesada. No se puede ocultar.</p>"
     },
     "Rapid Assault": {
-      "name": "Rapid Assault",
-      "description": "<p>An all-purpose shotgun. </p>"
+      "name": "Asalto Rápido",
+      "description": "<p>Una escopeta para todos los propósitos. </p>"
     },
     "Ronin": {
       "name": "Ronin",
-      "description": "<p>A standard-issue assault rifle. </p>"
+      "description": "<p>Un rifle de asalto estándar. </p>"
     },
     "Scorpion": {
-      "name": "Scorpion",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
+      "name": "Escorpión",
+      "description": "<p>Una Ballesta, recargada como parte de una acción de Ataque.</p>\n<p>+1 para Ataque.</p>"
     },
     "Sherwood": {
       "name": "Sherwood",
-      "description": "<p>A revitalized bow that must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>Un arco revitalizado que debe recargarse después de cada ataque. Si tira 1 en ataque (pifia) la cuerda se suelta y requiere una acción para volver a colocarla. </p>"
     },
     "SMG-21": {
       "name": "SMG-21",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed. </p>"
+      "description": "<p>Un SMG pesado. Debido a su tamaño, no puede ser ocultado. </p>"
     },
     "Snipe-Star": {
-      "name": "Snipe-Star",
-      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "name": "Francotirador-Estrella",
+      "description": "<p>Un rifle de francotirador de larga distancia. Carga 4 balas en un cargador. Si tira 1 en el ataque (pifia) el rifle se atasca y requiere una acción para desatascar. </p>"
     },
     "Streetmaster": {
-      "name": "Streetmaster",
-      "description": "<p>A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "name": "Maestro Callejero",
+      "description": "<p>Una Pistola Media ocultable. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>"
     },
     "Striker": {
-      "name": "Striker",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>"
+      "name": "Golpeador",
+      "description": "<p>Una Ballesta, recargada como parte de una acción de Ataque.</p>"
     },
     "Super Chief": {
-      "name": "Super Chief",
-      "description": "<p>A very heavy pistol. It can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "name": "Super Jefe",
+      "description": "<p>Una Pistola Muy Pesada. No se puede ocultar. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>"
     },
     "Tech-Assault III": {
-      "name": "Tech-Assault III",
-      "description": "<p>A concealable SMG.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "name": "Tech-Asalto III",
+      "description": "<p>Un SMG ocultable. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>"
     },
     "Tomcat": {
       "name": "Tomcat",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>Arco revitalizado, recargado como parte de una acción de Ataque.</p>"
     },
     "Type-18": {
       "name": "Type-18",
-      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. +1 to Attack.</p>"
+      "description": "<p>Un lanzador de granadas de alto impacto. Puedes usar una variedad de granadas con esto. +1 para Atacar.</p>"
     },
     "Type-G": {
       "name": "Type-G",
-      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>Un lanzador de granadas de alto impacto. Puedes usar una variedad de granadas con esto. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>"
     },
     "Type-R": {
       "name": "Type-R",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>Saca los cañones grandes. Este lanzador de cohetes causará algún daño. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>"
     },
     "Urban": {
-      "name": "Urban",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage. </p>"
+      "name": "Urbano",
+      "description": "<p>Saca los cañones grandes. Este lanzador de cohetes causará algún daño. </p>"
     },
     "Viper": {
-      "name": "Viper",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>"
+      "name": "Víbora",
+      "description": "<p>Un SMG pesado. Debido a su tamaño, no puede ser ocultado. +1 para Atacar.</p>"
     },
     "WSSA Sniper System": {
-      "name": "WSSA Sniper System",
-      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.</p>"
+      "name": "Sistema de Francotirador WSSA",
+      "description": "<p>Un rifle de francotirador de larga distancia. Carga 4 balas en un cargador. +1 al ataque. </p>"
     },
     "X-9mm": {
       "name": "X-9mm",
-      "description": "<p>A concealable, medium-sized pistol. </p>"
+      "description": "<p>Una Pistola Media ocultable.</p>"
     }
   }
 }

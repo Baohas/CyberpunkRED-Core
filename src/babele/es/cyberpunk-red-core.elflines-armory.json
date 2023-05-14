@@ -7,7 +7,7 @@
     },
     "Poison Arrow": {
       "name": "Flecha Venenosa",
-      "description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra DV13. Al fallar 2d6 de daño a HP sin ablación. </p>"
+      "description": "<p>Sin daño inmediato. Al golpear, tira Resistir Tortugas/Drogas contra VD13. Al fallar 2d6 de daño a PV sin ablación. </p>"
     },
     "Chainmail Armor (Body)": {
       "name": "Armadura de cota de mallas (Cuerpo)",

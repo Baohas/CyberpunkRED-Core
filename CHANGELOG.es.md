@@ -2,95 +2,78 @@
 
 # Changelog
 
-## Version 0.87.0 | Date: TBD
+## Version 0.87.0
 
-### Release Specific Notes
+### Action Needed
 
-- The project Discord has changed! Please visit our [Wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/home#project-red-cast-of-characters) for the new link!
-- NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. See New Features -> Roll Modifiers section of Changelog for more details.
-- Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. See New Features -> Roll Modifiers section of Changelog for more details.
-- We have migrated all Gear items provided by our Compendia to support `isElectronic` but you will need to update any Homebre/Custom items manually if you want them to support this new data point.
+#### Situational Modifiers
 
-### New Features
+Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. See New Features -> Roll Modifiers section of Changelog for more details.
 
-- Improved Dialogs:
-  - All dialogs have been given new styling and have been converted to a new system called CPRDialog.
-  - This will allow for more responsive dialogs with complex logic in the future. Some of this is already implemented in Roll Dialogs (see next bullet point.)
-- Improved Roll Dialogs:
-  - The UI for roll dialogs has been improved and brought more in-line with the style of our system.
-  - Dialogs are now responsive sheets and can change depending on inputs.
-  - No more detective work: A tool tip (both in dialogs and on roll cards) displays where every bonus/penalty on your roll comes from.
-  - Toggle situational modifiers from active effects, upgrades, and roles right from the dialog.
-  - Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu.
-  - Add any additional modifiers to the roll as needed.
-  - Future work:
-    - Change every dialog over to the improved UI.
-- Roll Modifiers:
-  - New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
-  - Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
-    - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogs with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
-  - Modifiers to rolls from Role Abilities also have Situational (and On By Default) options.
-  - Modifiers to rolls from item Upgrades also have Situational (and On By Default) options.
-  - NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. Sorry!
-  - Known Issues / Future Work:
-    - It is a known issue that Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
-- Add check for core.photosensitivityMode when rendering pause animation
-- Add a `isElectronic` data point to Gear items
-  - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (EG: A macro to select which items to disable with an EMP)
-- Add `Get EMP'd Items` macro
-  - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (wihout sheilding), carried (electroinc) Gear items, or Cyberdecks and outputs the results to chat
-- Add a `brand` field to physical items
-  - All compendia provided by the system have been migrated
-  - We so not provide any migrations for in world items as there are to many edge cases to reliably do this
-- Added The 12 Days of Cybermas with help from Miklos
-- Added Hornet’s Pharmacy with help from Miklos
-- Added Nomad vehicle upgrades with help from WombatCombat
-- Added Spinning Your Wheels upgrades with help from Sushimatic
-- Added Must Have Cyberware Deals with help from Miklos
-- Added Midnight With The Upload with help from Miklos
-- Added Night City Tarot content with help from Hakuan Quietpaws
-- Added All About Drones with help from Hakuan Quietpaws
-- Added Exotics of 2045 with help from Hakuan Quietpaws
-- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
-- Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
-- Added Night City Weather with help from Miklos
-- Added Non-Generic Weapons
+#### Electronic Items
+
+We have migrated all Gear items provided by our Compendia to support `isElectronic` but you will need to update any Homebre/Custom items manually if you want them to support this new data point.
+
+#### CSS Themes / Rewrite
+
+Do to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
+
+For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme Ernies needs to be configured to use Dark Mode as well
 
 ### Changes
 
-We have rewritten the Weapons & Armor section of the Character sheet and Mook sheet reducing the amount of duplicated code behind the scenes. This allows us to more easily make changes or add new features to these sections and have them shared between both Character and Actors.
+#### Sheet Rewrites
 
-We have also rewritten the Character Info and Stat blocks to fix layout issues exposed by the font change in the last update and move some sheet functionality into this area. This also allows character to have LUCK and EMP STATs of > 9 without layout issues!
+This release brings lots of Sheet changes to fix a lot of wonk exposed by the font change in the last release, reduce code complexity behind the scenes, and add more information and functionality to the sheets.
 
-- Character Sheet Skills now show the related STAT before the Skill name
-- Character Sheet Fight Tab
-  - Critical Injuries
-    - Add Critical Injury Image
-    - Display `Death Save +1` if an Injury increases the Death Save
-    - Display the name of any Active Effects that are applied
-  - Armor
-    - Add Armor Image
-    - Update the Layout
-  - Weapons
-    - Move Weapon actions (Reload etc.) to take up less space
-    - Show `Autofire` multiplier
-    - Only show `Autofire` or `Suppressive` if configured
-    - Show loaded Ammo Type
-    - Show weapon stats
-      - ROF
-      - Attack Modifier
-      - Damage
-      - Hand Required
-- Use the same code for Weapons/Ammo in Character & Mook Sheets
-- Character Info block
-  - Rewrite to add more functionality
-  - Move Eurobucks from Gear
-  - Move Reputation from Lifepath
-  - Move Sheet Search/Filter from right pane no mans land
-    - This removes the System Option and is displayed for all users
-  - Remove the HP/Humanity Calculator options
-    - Recalc functionality moved to Section Title
-  - Move Facedown roll from Fight tab to Reputation section
+- Character Sheet
+  - Stats block
+    - Refactored for better layout
+    - Allows 2 digit values for EMP/LUCK
+  - Info block
+    - Rewrite to add more functionality
+    - Move Eurobucks from Gear
+    - Move Reputation from Lifepath tab
+      - Move Facedown roll from Fight tab to Reputation section
+    - Move Sheet Search/Filter from right pane no mans land
+      - This removes the System Option and is displayed for all users
+    - Remove the HP/Humanity Calculators
+      - Recalc functionality moved to Section title
+  - Fight Tab
+    - Weapons
+      - Move Weapon actions (Reload etc.) to take up less space
+      - Only show `Autofire` or `Suppressive` if configured
+      - Show loaded Ammo Type
+      - Show weapon stats
+        - ROF
+        - Attack Modifier
+        - Damage
+        - Hands Required
+    - Armor
+      - Add Armor Image
+      - Update the Layout
+    - Critical Injuries
+      - Add Critical Injury Image
+      - Display `Death Save +1` if an Injury increases the Death Save
+      - Display the name of any Active Effects that are applied
+- Mook Sheet
+  - Use the same Weapon block code as the character sheet
+  - Use the same Armor block code as the character sheet
+- Black Ice Sheet
+  - Complete re-write
+  - Adds `damage` field
+  - Copies Image from program along with stats
+- Item Sheet
+  - Slight Rewrite of header
+
+#### CSS Themes
+
+We have added the functionality for system specific themes. This allows us to ship a few default themes (dark mode!). You can configure this in the `Settings > Cyberpunk RED - CORE` section.
+
+This lays the foundation for allowing 3rd party modules to register their own CPR specific themes in a future release.
+
+### Misc
+
 - Updated the background and header images to new versions by Rayane Souizi "Wizi"
 - Ammo selection dropdown now shows stack size
 - Changed the default weapon to use the default weapon icon
@@ -100,13 +83,46 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
   - `source.page`
 - Update compendia icons for Armor
 
+### New Features
+
+#### Improved Dialogues
+
+- All dialogues have been given new styling and have been converted to a new system called CPRDialog.
+- This will allow for more responsive dialogues with complex logic in the future. Some of this is already implemented in Roll Dialogues (see next bullet point.)
+
+#### Improved Roll Dialogs
+
+- The UI for roll dialogues has been improved and brought more in-line with the style of our system.
+- Dialogues are now responsive sheets and can change depending on inputs.
+- No more detective work: A tool tip (both in dialogues and on roll cards) displays where every bonus/penalty on your roll comes from.
+- Toggle situational modifiers from active effects, upgrades, and roles right from the dialog.
+- Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu.
+- Add any additional modifiers to the roll as needed.
+- Future work:
+  - Change every dialog over to the improved UI.
+
+#### Roll Modifiers
+
+- New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
+- Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
+  - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogues with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
+- Modifiers to rolls from Role Abilities also have Situational (and On By Default) options.
+- Modifiers to rolls from item Upgrades also have Situational (and On By Default) options.
+- NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. Sorry!
+- Known Issues / Future Work:
+  - It is a known issue that Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
+
+#### Misc
+
+- Add check for `core.photosensitivityMode` when rendering pause animation
+
 ### Bug Fixes
 
 - Fixed a capitalisation issue in the medical grade cyber limbs. Thanks ButchAmy!
 - Fixed incorrect page reference numbers for medical grade cyber limbs
 - Fixed medical grade cyber limbs incorrectly accepting upgrades
 - Fixed a typo in the underbarrel grenade launcher description
-- #679 - Added back the underbarrel shotgun that was accidentally deleted
+- Added back the underbarrel shotgun that was accidentally deleted
 - Dragging document links to item descriptions links the document correctly.
 - #703 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error.
 - #700 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console.
@@ -119,6 +135,9 @@ We have also rewritten the Character Info and Stat blocks to fix layout issues e
 - Fixed description of the Militech Crusher which confused shotgun shells and shotgun slugs
 - Fixed not being able to install the correct type of upgrades into a Smart Lens
 - Solucionado #701 - Problema con el lanzamiento del ICE Negro del daño incorrecto.
+- Fix Smart Glasses / Smart Lenses not taking cybereye options
+- Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error.
+- Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console.
 
 ## Version 0.86.1 | Date: 2023-02-05
 

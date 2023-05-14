@@ -2,95 +2,78 @@
 
 # Journal des modifications
 
-## Version 0.87.0 | Date : TBD
+## Version 0.87.0
 
-### Notes spécifiques à la publication
+### Action Needed
 
-- Le Discord du projet a changé ! Veuillez visiter notre [Wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/home#project-red-cast-of-characters) pour le nouveau lien !
-- REMARQUE : Les effets avec les modificateurs de situation ont reçu les réglages appropriés sur tous les éléments du compendium, mais vous devrez les mettre à jour manuellement sur des éléments qui existent déjà sur des acteurs. Reportez-vous à la section Nouvelles fonctionnalités -> Section Modificateurs de jets du Journal des modifications pour plus de détails.
-- Les effets avec les modificateurs de situation ont reçu les réglages appropriés sur tous les éléments du compendium, mais vous devrez les mettre à jour manuellement sur les éléments qui existent déjà sur les acteurs. Reportez-vous à la section Nouvelles fonctionnalités -> Section Modificateurs de jets du Journal des modifications pour plus de détails.
-- Nous avons migré tous les éléments Équipement fournis par notre Compendium pour prendre en charge `estElectronique` mais vous devrez mettre à jour tous les éléments faits maison/personnalisés manuellement si vous voulez qu'ils prennent en charge ce nouveau point de données.
+#### Situational Modifiers
 
-### Nouvelles fonctionnalités
+Les effets avec les modificateurs de situation ont reçu les réglages appropriés sur tous les éléments du compendium, mais vous devrez les mettre à jour manuellement sur les éléments qui existent déjà sur les acteurs. Reportez-vous à la section Nouvelles fonctionnalités -> Section Modificateurs de jets du Journal des modifications pour plus de détails.
 
-- Dialogues améliorés :
-  - Toutes les boîtes de dialogue ont été remises en forme et ont été converties en un nouveau système appelé CPRDialog.
-  - Cela permettra à l'avenir une meilleure réactivité sur les boîtes de dialogues avec une logique complexe. Certains de ces éléments sont déjà implémentés dans les boîtes de dialogues déroulants (voir le point suivant.)
-- Dialogues déroulants améliorés :
-  - L'interface utilisateur pour les dialogues déroulants a été améliorée et alignée sur le style de notre système.
-  - Les dialogues sont maintenant des feuilles adaptatives et peuvent changer selon les entrées.
-  - Fini le travail de détection : un outil (à la fois dans les boîtes de dialogue et sur les cartes de jet) indique d'où vient chaque bonus/pénalité sur votre jet.
-  - Basculer les modificateurs de situation des effets actifs, des améliorations et des rôles directement depuis la boîte de dialogue.
-  - Activer/désactiver les modificateurs de situation de base à la page 130 du livre de règles de base à partir d'un menu déroulant.
-  - Ajouter des modificateurs supplémentaires au jet si nécessaire.
-  - Travail futur :
-    - Changer chaque boîte de dialogue vers l'interface utilisateur améliorée.
-- Modificateurs de jet :
-  - Nouvelle touche Effet actif : Toutes les Actions - Modifie toutes les actions avec une seule touche d'effets actifs. Trouvé dans la catégorie 'Divers' dans la fenêtre de configuration d'Effet actif.
-  - Chaque modificateur d'un effet peut être basculé comme situationnel. Les modificateurs de situation ne s'appliquent que dans certaines situations. Les modificateurs de situation peuvent également être activés par défaut.
-    - Par exemple, le cyberimplant Téléoptique ajoute +1 à certaines attaques lorsque la cible est au-delà de 51 m de distance. Puisque nous ne voulons pas que ce bonus s'applique tout le temps, il est basculé Situationnel. De cette façon, nous pouvons l'appliquer dans les boîtes de dialogue de jet en un seul clic, seulement si nécessaire. Si votre personnage est un sniper et utilise presque toujours le bonus Téléoptique, vous pouvez également basculer le modificateur situationnel comme activé par défaut. De cette façon, le modificateur est appliqué par défaut, mais il peut être désactivé pendant les quelques fois où votre personnage se rapproche de sa distance.
-  - Les modificateurs au jet à partir des capacités de rôle ont également des options situationnelles (et Activé par défaut).
-  - Les modificateurs au jet à partir des améliorations d'objets ont également des options situationnelles (et Activé par défaut).
-  - REMARQUE : Les effets avec les modificateurs de situation ont reçu les réglages appropriés sur tous les éléments du compendium, mais vous devrez les mettre à jour manuellement sur des éléments qui existent déjà sur des acteurs. Sorry!
-  - Problèmes connus / Travaux futurs :
-    - C'est un problème connu que les effets actifs sur les statistiques se comportent différemment de tous les autres. En raison de cela, les modificateurs sur les effets de statistiques ne peuvent actuellement pas être basculés Situationnels. Cela sera corrigé dans une prochaine version.
-- Ajouter une vérification pour le mode core.photosensibilité lors de l'animation de mise en pause
-- Ajouter un point de données `estElectronique` aux éléments d'équipement
-  - Bien qu'il ne soit pas utilisé par le système lui-même, il a été ajouté comme fonctionnalité de commodité pour les créateurs de modules et/ou pour l'écriture de macros (par exemple : une macro pour sélectionner quels éléments désactiver avec un IEM)
-- Ajouter une macro `Objets touchés par IEM`
-  - Une nouvelle Macro qui touche les acteurs sélectionnés dans une scène et touche 2 des éléments : cyberimplant installé (sans blindage anti-IEM), équipement porté (électronique) , ou cyberconsole et affiche les résultats dans la fenêtre de chat.
-- Ajout d'un champ de `marque` aux objets physiques
-  - Tous les compendiums fournis par le système ont été migrés
-  - Nous ne fournissons donc aucune migration dans les objets de monde car il y a de nombreux cas de retard pour le faire de façon fiable
-- Ajout du DLC des 12 jours de CyberNoël (Cybermas) avec l'aide de Miklos
-- Ajout du DLC La Pharmacie de Hornet avec l'aide de Miklos
-- Ajout des améliorations de véhicules Nomades avec l'aide de WombatCombat
-- Ajout des améliorations du DLC En Roue Libre (Spinning Your Wheels) avec l'aide de Sushimatic
-- Ajout du DLC Implants Indispensables (Must have Cyberware Deals) avec l'aide de Miklos
-- Ajout du DLC Minuit avec l'Upload (Midnight With The Upload) avec l'aide de Miklos
-- Ajout du contenu du DLC Tarot de Night City avec l'aide de Hakuan Quietpaws
-- Ajout de Tout Sur Les Drones avec l'aide de Hakuan Quietpaws
-- Ajout d'Exotiques en 2045 avec l'aide de Hakuan Quietpaws
-- Ajout du DLC Black Chrome Plus avec l'aide de H.P. Racha et Sushimatic
-- Ajout du DLC Conteneurs et Hôtels Cube avec l'aide de Hakuan Quietpaws
-- Ajout du DLC Météo de Night City avec l'aide de Miklos
-- Ajout d'armes non génériques
+#### Electronic Items
+
+Nous avons migré tous les éléments Équipement fournis par notre Compendium pour prendre en charge `estElectronique` mais vous devrez mettre à jour tous les éléments faits maison/personnalisés manuellement si vous voulez qu'ils prennent en charge ce nouveau point de données.
+
+#### CSS Themes / Rewrite
+
+Do to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
+
+For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme Ernies needs to be configured to use Dark Mode as well
 
 ### Changements
 
-Nous avons réécrit la section Armes & Armure de la feuille de personnage et de la feuille de sbire réduisant la quantité de code en double en coulisses. Cela nous permet de faire plus facilement des changements ou d'ajouter de nouvelles fonctionnalités à ces sections et de les faire partager à la fois entre personnage et acteurs.
+#### Sheet Rewrites
 
-Nous avons également réécrit les blocs Info Personnage et Statistiques pour résoudre les problèmes de mise en page exposés par le changement de police dans la dernière mise à jour et déplacé certaines fonctionnalités de feuille dans cette zone. Cela permet également aux personnages d'avoir des stats de CHA et EMP > 9 sans problèmes de mise en page !
+This release brings lots of Sheet changes to fix a lot of wonk exposed by the font change in the last release, reduce code complexity behind the scenes, and add more information and functionality to the sheets.
 
-- La Feuille de compétences du personnage montre maintenant la statistique associée avant le nom de la compétence
-- Onglet de combat de la feuille de personnage
-  - Blessures critiques
-    - Ajout de l'image de blessure critique
-    - Affiche `jet de sauvegarde contre la Mort +1` si une blessure augmente le jet de sauvegarde contre la Mort
-    - Affiche le nom de tous les effets actifs qui sont appliqués
-  - Armure
-    - Ajout d'une Image d'Armure
-    - Mise à jour de présentation
-  - Armes
-    - Déplacement des actions d'armes (Recharger, etc.) pour prendre moins de place
-    - Affichage du multiplicateur de `Tir automatique`
-    - N'affiche `Tir automatique` ou `Tir de Suppression` que si configuré
-    - Affiche le type de munition chargée
-    - Affiche les statistiques de l'arme
-      - Att/round
-      - Modificateur d'attaque
-      - Dégâts
-      - Main(s) requise(s)
-- Utilise le même code pour les Armes/Munitions dans les feuilles de personnage et de sbire
-- Bloc Info Personnage
-  - Réécrit pour ajouter plus de fonctionnalité
-  - Déplacement des Eurodollars de l’Équipement
-  - Déplacement de la Réputation depuis le parcours de vie
-  - Move Sheet Search/Filter from right pane no mans land
-    - Cela supprime l'option Système et est affiché pour tous les utilisateurs
-  - Retrait des options de la calculatrice PS/Humanité
-    - Fonctionnalité de recalcul déplacée vers le titre de la section
-  - Déplacement de Baston de Regard de l'onglet Combat vers la section Réputation
+- Character Sheet
+  - Stats block
+    - Refactored for better layout
+    - Allows 2 digit values for EMP/LUCK
+  - Info block
+    - Réécrit pour ajouter plus de fonctionnalité
+    - Déplacement des Eurodollars de l’Équipement
+    - Move Reputation from Lifepath tab
+      - Déplacement de Baston de Regard de l'onglet Combat vers la section Réputation
+    - Move Sheet Search/Filter from right pane no mans land
+      - Cela supprime l'option Système et est affiché pour tous les utilisateurs
+    - Remove the HP/Humanity Calculators
+      - Recalc functionality moved to Section title
+  - Fight Tab
+    - Armes
+      - Déplacement des actions d'armes (Recharger, etc.) pour prendre moins de place
+      - N'affiche `Tir automatique` ou `Tir de Suppression` que si configuré
+      - Affiche le type de munition chargée
+      - Affiche les statistiques de l'arme
+        - Att/round
+        - Modificateur d'attaque
+        - Dégâts
+        - Hands Required
+    - Armure
+      - Ajout d'une Image d'Armure
+      - Mise à jour de présentation
+    - Blessures critiques
+      - Ajout de l'image de blessure critique
+      - Affiche `jet de sauvegarde contre la Mort +1` si une blessure augmente le jet de sauvegarde contre la Mort
+      - Affiche le nom de tous les effets actifs qui sont appliqués
+- Mook Sheet
+  - Use the same Weapon block code as the character sheet
+  - Use the same Armor block code as the character sheet
+- Black Ice Sheet
+  - Complete re-write
+  - Adds `damage` field
+  - Copies Image from program along with stats
+- Item Sheet
+  - Slight Rewrite of header
+
+#### CSS Themes
+
+We have added the functionality for system specific themes. This allows us to ship a few default themes (dark mode!). You can configure this in the `Settings > Cyberpunk RED - CORE` section.
+
+This lays the foundation for allowing 3rd party modules to register their own CPR specific themes in a future release.
+
+### Misc
+
 - Mise à jour des images d'arrière-plan et d'en-tête, nouvelles versions de Rayane Souizi "Wizi"
 - La liste déroulante de la sélection de munitions affiche maintenant la taille de la pile
 - Modification de l'Arme par défaut pour utiliser l'icône de l'arme par défaut
@@ -100,13 +83,46 @@ Nous avons également réécrit les blocs Info Personnage et Statistiques pour r
   - `page.source`
 - Mise à jour des icônes de compendiums pour les armures
 
+### Nouvelles fonctionnalités
+
+#### Improved Dialogues
+
+- All dialogues have been given new styling and have been converted to a new system called CPRDialog.
+- This will allow for more responsive dialogues with complex logic in the future. Some of this is already implemented in Roll Dialogues (see next bullet point.)
+
+#### Improved Roll Dialogs
+
+- The UI for roll dialogues has been improved and brought more in-line with the style of our system.
+- Dialogues are now responsive sheets and can change depending on inputs.
+- No more detective work: A tool tip (both in dialogues and on roll cards) displays where every bonus/penalty on your roll comes from.
+- Basculer les modificateurs de situation des effets actifs, des améliorations et des rôles directement depuis la boîte de dialogue.
+- Activer/désactiver les modificateurs de situation de base à la page 130 du livre de règles de base à partir d'un menu déroulant.
+- Ajouter des modificateurs supplémentaires au jet si nécessaire.
+- Travail futur :
+  - Changer chaque boîte de dialogue vers l'interface utilisateur améliorée.
+
+#### Roll Modifiers
+
+- Nouvelle touche Effet actif : Toutes les Actions - Modifie toutes les actions avec une seule touche d'effets actifs. Trouvé dans la catégorie 'Divers' dans la fenêtre de configuration d'Effet actif.
+- Chaque modificateur d'un effet peut être basculé comme situationnel. Les modificateurs de situation ne s'appliquent que dans certaines situations. Les modificateurs de situation peuvent également être activés par défaut.
+  - Par exemple, le cyberimplant Téléoptique ajoute +1 à certaines attaques lorsque la cible est au-delà de 51 m de distance. Puisque nous ne voulons pas que ce bonus s'applique tout le temps, il est basculé Situationnel. This way, we can apply it in roll dialogues with one click, only as needed. Si votre personnage est un sniper et utilise presque toujours le bonus Téléoptique, vous pouvez également basculer le modificateur situationnel comme activé par défaut. De cette façon, le modificateur est appliqué par défaut, mais il peut être désactivé pendant les quelques fois où votre personnage se rapproche de sa distance.
+- Les modificateurs au jet à partir des capacités de rôle ont également des options situationnelles (et Activé par défaut).
+- Les modificateurs au jet à partir des améliorations d'objets ont également des options situationnelles (et Activé par défaut).
+- REMARQUE : Les effets avec les modificateurs de situation ont reçu les réglages appropriés sur tous les éléments du compendium, mais vous devrez les mettre à jour manuellement sur des éléments qui existent déjà sur des acteurs. Sorry!
+- Problèmes connus / Travaux futurs :
+  - C'est un problème connu que les effets actifs sur les statistiques se comportent différemment de tous les autres. En raison de cela, les modificateurs sur les effets de statistiques ne peuvent actuellement pas être basculés Situationnels. Cela sera corrigé dans une prochaine version.
+
+#### Misc
+
+- Add check for `core.photosensitivityMode` when rendering pause animation
+
 ### Corrections de bugs
 
 - Correction d'un problème de capitalisation dans les cybermembres de classe médicale. Merci ButchAmy !
 - Correction des numéros de page incorrects de référence pour les cybermembres de classe médicale
 - Correction des cybermembres de catégorie médicale acceptant incorrectement les améliorations
 - Correction d'une faute de frappe dans la description du lance-grenades sous-canon
-- #679 - Rajout du fusil à pompe sous-canon qui avait été accidentellement supprimé
+- Added back the underbarrel shotgun that was accidentally deleted
 - Le glissement de liens vers les descriptions des objets relie correctement au document.
 - #703 - Correction du problème où les tokens jetés sur la scène par le MJ causaient une erreur de permissions sur le joueur.
 - #700 - Correction du problème où la création de tokens GLACE/Démon/Conteneur sur la scène provoquait une erreur dans la console.
@@ -119,6 +135,9 @@ Nous avons également réécrit les blocs Info Personnage et Statistiques pour r
 - Correction de la description du Militech Crusher qui confondait les chevrotines de fusils à pompe et les slugs de fusils à pompe
 - Correction de ne pas pouvoir installer le bon type d'améliorations dans les Smart Lens
 - Correction de #701 - Problème avec les GLACE noirs appliquant les mauvais dégâts.
+- Correction des Lunettes connectées / Smart Lenses qui n'acceptaient pas les options cyberoptiques
+- Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error.
+- Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console.
 
 ## Version 0.86.1 | Date: 2023-02-05
 
