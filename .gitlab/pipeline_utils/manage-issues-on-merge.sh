@@ -5,25 +5,24 @@ IFS=$'\n\t'
 env | sort
 
 # Variables that are set by GitLab CI environment
-# CI_API_V4_URL, CI_PROJECT_ID, CHOOM_BOT_API
+# CI_API_V4_URL, CI_COMMIT_SHA, CI_PROJECT_ID, CHOOM_BOT_API
 
 # URL to use as the base for out API calls
 PROJECT_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}"
 
 # GitLab doesn't pass the MR IID to a 'push' event in any ENVARS as you would
-# expect but it does put something along the lines of
-# 'See merge request cyberpunk-red-team/ci-testing!5' in `env`?! so we can
-# grep for this and extract the MR IID.
+# expect, so we call the API using the provided CI_COMMIT_SHA and grab the MR IID
 
 # However if the source of the pipeline is 'push' which is what a merge request
-# is labelled as this also applies to direct pushes to the branch, so they won't
-# have the text so we need to set ISSUES to an empty array so we can skip the labelling if it's just a standard push to `dev` not from an MR.
+# is labelled as this also applies to direct pushes to the branch.
+# But we very rarely do this so hopefully i'ts fine :D
 
 MR_IID=$(
-  env |
-    grep 'See merge request' |
-    grep -Eom 1 '![0-9]{1,10}$' |
-    tr -d "!" || true
+  curl \
+    --silent \
+    --header "PRIVATE-TOKEN: ${CHOOM_BOT_API}" \
+    "${PROJECT_URL}/merge_requests" |
+    jq '.[] | select(.sha=="'"${CI_COMMIT_SHA}"'") | .iid' || true
 )
 
 if [[ -z ${MR_IID} ]]; then
