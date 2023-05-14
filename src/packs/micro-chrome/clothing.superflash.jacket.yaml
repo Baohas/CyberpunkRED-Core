@@ -12,10 +12,9 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>A nice jacket carrying a surpise; using an action anyone wearing this
-      jacket can consume a battery to let off a blinding light. Treat as a
-      Flashbang Grenade without the Damaged Ear Critical Injury, centered on the
-      wearer.</p>
+      <p>A nice jacket carrying a surprise; using an action anyone wearing this
+      jacket can consume a battery to let off a blinding light. Full rules can
+      be found in Micro Chrome on Page 1.</p>
   equipped: owned
   favorite: false
   installedItems:
