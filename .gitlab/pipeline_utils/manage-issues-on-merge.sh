@@ -90,7 +90,7 @@ function close_issue() {
     --request PUT \
     --silent \
     --header "PRIVATE-TOKEN: ${CHOOM_BOT_API}" \
-    "${PROJECT_URL}/issues/$1" >/dev/null
+    "${PROJECT_URL}/issues/$1"
 }
 
 # Update the Labels using LABELS_TO_ADD defined above
