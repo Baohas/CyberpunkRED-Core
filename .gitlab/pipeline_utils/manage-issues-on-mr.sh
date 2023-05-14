@@ -27,8 +27,11 @@ if [[ -n ${MR_IID} ]]; then
       tr -d '#' |
       sort -u
   )
+  echo "Issues linked from MR: ${ISSUES[*]}"
 else
-  ISSUES=()
+  echo "Unable to find Merge Request IID"
+  echo "No issue management will be done in this pipeline"
+  exit 0
 fi
 
 # Labels to add to the Issues in ISSUES
@@ -63,12 +66,15 @@ function check_issue() {
   # Let's check if we want to process the linked issue
   if [[ "${errors}" == "404 Not found" ]]; then
     # If we can't find the issue we don't want to process
+    echo "Issue $1 not found"
     return 1
   elif [[ "${state}" == "closed" ]]; then
     # If the state is closed we don't want to process
+    echo "Issue $1 already closed, ignoring"
     return 1
   else
     # Otherwise continue
+    echo "Processing issue $1"
     return 0
   fi
 }
@@ -76,6 +82,7 @@ function check_issue() {
 # Update the Labels using LABELS_TO_ADD defined above
 # $1 == issue_id
 function add_labels() {
+  echo "Adding labels to issue $1"
   curl \
     --data-urlencode "add_labels=$(
       IFS=,
@@ -89,6 +96,7 @@ function add_labels() {
 # Update labels on an Issue
 # $1 == issue_id
 function change_labels() {
+  echo "Updating labels on issue $1"
   curl \
     --data-urlencode "add_labels=Bug::Confirmed" \
     --request PUT \
@@ -126,6 +134,8 @@ function set_issue_assignees() {
   if ! echo "${issue_assignees[*]}" | grep -q "${mr_author}"; then
     issue_assignees+=("${mr_author}")
   fi
+
+  echo "Setting issue assignee to ${mr_author}"
 
   # Update the issue assignees
   curl \
