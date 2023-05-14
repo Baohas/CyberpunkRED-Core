@@ -23,7 +23,7 @@ MR_IID=$(
   env |
     grep 'See merge request' |
     grep -Eom 1 '![0-9]{1,10}$' |
-    tr -d "!"
+    tr -d "!" || true
 )
 
 if [[ -z ${MR_IID} ]]; then
