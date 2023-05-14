@@ -61,7 +61,7 @@ manage-issues-on-merge:
     - apk add bash jq curl
   script:
     - echo "Managing Issues..."
-    - bash -x ./.gitlab/pipeline_utils/manage-issues-on-merge.sh
+    - ./.gitlab/pipeline_utils/manage-issues-on-merge.sh
   rules:
     # Don't run if we're in the cleanup-dev schedule
     - if: $CPR_SCHEDULE == "cleanup-dev"
