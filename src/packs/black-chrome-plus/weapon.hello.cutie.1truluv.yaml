@@ -1,11 +1,8 @@
 _id: okVi2Gn9qk8KH7sD
 effects: []
-flags:
-  core:
-    sourceId: Compendium.cyberpunk-red-core.black-chrome-plus.okVi2Gn9qk8KH7sD
 img: >-
-  systems/cyberpunk-red-core/icons/compendium/black-chrome-plus/sanroo-hello-cutie-1TruLuv.svg
-name: Sanroo Hello Cutie 1TruLuv
+  systems/cyberpunk-red-core/icons/compendium/black-chrome-plus/hello-cutie-1TruLuv.svg
+name: Hello Cutie 1TruLuv
 system:
   ammoVariety: []
   attackmod: 0
