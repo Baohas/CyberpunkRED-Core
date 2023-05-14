@@ -667,7 +667,7 @@ export class CPRRoleRoll extends CPRRoll {
 }
 
 /**
- * Interface Rolls are for most rolls made from the Net section of the Fight tab.
+ * Interface Rolls are for most rolls made from the NET section of the Fight tab.
  * This includes regular interface actions like Pathfinder or Slide, but also
  * applies to attacks like Zap or from loaded programs. The only rolls this doesn't cover
  * are damage rolls from loaded programs (or zap).

@@ -12,7 +12,7 @@ system:
     value: |-
       <p>No frills, just raw processing power.</p>
       <p>2 slots only for Hardware</p>
-      <p>+1 to Net Actions each turn.</p>
+      <p>+1 to NET Actions each turn.</p>
   equipped: owned
   favorite: false
   installLocation: mall

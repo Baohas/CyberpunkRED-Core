@@ -5,7 +5,7 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**
- * Extend the base CPRItem object with things specific to Net Architectures.
+ * Extend the base CPRItem object with things specific to NET Architectures.
  * @extends {CPRItem}
  */
 export default class CPRNetArchItem extends CPRItem {

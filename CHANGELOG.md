@@ -165,6 +165,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Fix Smart Glasses / Smart Lenses not taking cybereye options
 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console
+- Fixed many places where 'NET' was incorrectly formatted as 'Net'
 
 ## Version 0.86.1 | Date: 2023-02-05
 
@@ -175,7 +176,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - #686 - Installing a secondary weapon as a weapon upgrade does not show that upgrade in the Fight Tab
 - #693 - The stripHTML() Handlebar helper fails if the passed HTML contains a percentage sign.
 - #691 - Actors stored in compendiums and dragged out into worlds were losing information on any items that were installed.
-- Fixed the ability to decrement REZ of a running program in the Net tab
+- Fixed the ability to decrement REZ of a running program in the NET tab
 - #692 - Code accidentally added `programs` instead of `cyberware` for owned cyberware on existing actors. This fix adds `cyberware` as it should have been however we can't know if `programs` was a valid entry for a world, so we are not removing that. It does not impact anything and a GM can manually remove `programs` from an owned piece of cyberware via the item settings if needed.
 
 ### Changes
@@ -277,7 +278,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ### Bug Fixes
 
-- Fixed #624 - Net architecture sheet can't click generation button
+- Fixed #624 - NET architecture sheet can't click generation button
 
 ## Version 0.85.0 | Date: 2022-12-11
 
@@ -376,7 +377,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - #539 - Add ROF to weapons in the fight tab
 - Hide/Show `Used Upgrade Slots` if an item has slots
 - #555 - Create Elflines Online Compendium as a Compendium not a macro
-- The Role block in the left pane of the character sheet is now just a simple text box. Active Net Role is now set from the Net section of the Fight tab. This should be a lot clearer to users and require less maintenance.
+- The Role block in the left pane of the character sheet is now just a simple text box. Active NET Role is now set from the NET section of the Fight tab. This should be a lot clearer to users and require less maintenance.
 
 ### Bug Fixes
 
@@ -676,8 +677,8 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - NOTE: This feature is ENABLED by default as it follows RAW, however may be disabled via the System Settings.
 - Implemented CPR Roll Cards for Initiative.
   - Solo Role Ability `Initiative Reaction` is taken into account when rolling Initiative.
-- Implemented proper initiative rules for Net Combat.
-  - If a character or mook has a cyberdeck equipped when rolling initiative, you will be prompted whether you are rolling for Meat or Net combat as the calculation used depends on this.
+- Implemented proper initiative rules for NET Combat.
+  - If a character or mook has a cyberdeck equipped when rolling initiative, you will be prompted whether you are rolling for Meat or NET combat as the calculation used depends on this.
 - Roles are now items which allows for creation of custom roles and better handling of their functionality.
   - Can configure role abilities to roll with different skills for different situations like the Tech's Upgrade Expertise ability.
   - Can configure flat bonuses to attack, damage, and skill rolls for situations like the Solo's Precision Attack or the Nomad's Moto.
@@ -786,7 +787,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.77.1 (Hotfix) | Date: 2021-06-29
 
-- Corrected localization issue of text on chat cards when rolling Net Damage
+- Corrected localization issue of text on chat cards when rolling NET Damage
 - Added Zap as a rollable interface ability as it was missing from the list (Zap damage will be handled in a future release)
 
 ## Version 0.77.0 | Date: 2021-06-25
@@ -822,17 +823,17 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - Introduction of the Item Object: Cyberdeck
     - Migration code added for existing "Gear" items which have the word "cyberdeck" in the name. These items will be pre-pended with a '[MIGRATED]' tag on it to help identify that the item should be replaced with a new Cyberdeck Item. We have opted to not automate this replacement as people may update just prior to hosting a game and this would/could cause issues for planned sessions.
     - Cyberdeck items in the Shipped Gear Compendium have been replaced with versions utilizing the new Cyberdeck Item Object
-  - Ability to equip one (1) Cyberdeck enables Meat/Net toggle on Fight Tab
+  - Ability to equip one (1) Cyberdeck enables Meat/NET toggle on Fight Tab
   - Ability to install Programs on the Cyberdeck from the Cyberdeck Settings Page and directly from the Gear Tab
   - Programs (Booster) have been enhanced to allow the addition of Roll Modifiers for Interface Abilities (i.e. Eraser gives a +2 to Cloak)
   - Booster Roll Modifiers exposed in Roll verification dialog and added to the roll for Rezzed Boosters Only
     - Shipped Program Compendium updated to include these roll modifiers (Any imported items should be re-imported or manually updated to add these)
   - Programs (Attacker) have been enhanced to allow the setting of Damage. For Anti-Program Attackers, both BlackICE and non-BlackICE damage rolls may be configured
     - Attack rolls for Anti-Program Attack Rolls will prompt on which damage type to roll
-  - When equipping a Cyberdeck in inventory, the Fight Tab exposes a toggle between Meat and Net space. Net space enables quick access to:
+  - When equipping a Cyberdeck in inventory, the Fight Tab exposes a toggle between Meat and NET space. NET space enables quick access to:
     - Roll Interface Abilities
     - Roll Speed against a Black-ICE encounter
-    - Roll Defense against a Net Attack
+    - Roll Defense against a NET Attack
       - Includes any Rezzed Boosters that may have a DEF rating in the Modifiers field
     - Activate/Deactivate & track Rezzed Boosters, Defenders & Black ICE
       - Ability to manage (reduce & reset) the REZ on Boosters and Defenders programs when they take an attack
@@ -913,12 +914,12 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added functionality to automatically resize the character and item sheets. There is a system setting to decide if you want to use it, with the default being off.
 - Added Debug Elements setting for developers.
 - Added "Unarmed" weapon type with optional (on by default) automatic damage determination based on BODY.
-- Added new functionality for the Net architectures.
+- Added new functionality for the NET architectures.
   - It can now be configured on its item sheet, adding, removing and editing the floors.
   - If a specific black ICE is selected it is linked to the corresponding black ICE item sheet if it exists. You have to create these black ICE items yourself.
   - In addition one can automatically generate a scene showing the NET architecture. This scene generation allows for floors up to eight (8) deep and up to four (4) branches to be displayed.
   - Experimental: The scene generation can be customized to use custom assets and custom sizes to allow for maximum flexibility.
-  - As these new features of the Net architecture are experimental, there might be some problems or bugs. If you find any, please let us know.
+  - As these new features of the NET architecture are experimental, there might be some problems or bugs. If you find any, please let us know.
 - Two built-in scenes (maps) are now available in the compendium, alongside the NET architecture tiles. These have been graciously provided by [SolutionMaps](https://www.patreon.com/solutionmaps).
 - The system compendium has now been updated to include ammo, armor, additional cyberware, gear, programs, vehicles and weapons. Simple descriptions are provided to align with the R. Talsorian "Homebrew Content Policy". Please ensure you always reference an official, legally-owned rulebook for the full item description and information. No Actors or "Black ICE" programs are provided, as these count as NPCs under the policy rules and cannot be distributed. If you find any mistakes or typos in the compendia, please let us know in issue #226.
 - One can now change item-amount from character sheet for Ammo, Clothing, and Gear item-types.
