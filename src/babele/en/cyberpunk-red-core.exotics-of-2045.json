@@ -12,10 +12,6 @@
     "Firebreather": {
       "name": "Firebreather",
       "description": "<p>Implanted Exotic Shotgun. Can only hold one incendiary shotgun shell. </p>\n<p>Refer to the full description on page 73 of Interface Red vol. 2.</p>"
-    },
-    "Heuristic Health Monitor": {
-      "name": "Heuristic Health Monitor",
-      "description": "<p>Sensors placed around the body which provide information to give a HP number. Requires Biomonitor.</p>\n<p>Refer to the full description on page 73 of Interface Red vol. 2.</p>"
     }
   }
 }

@@ -3,7 +3,7 @@
   "entries": {
     "Appetite Controller": {
       "name": "Appetite Controller",
-      "description": "<p>Suppresses hunger response. User ignores Humanity Loss penalties from starvation trauma but User can still starve. Roll a Death Save at start of 7th consecutive day without eating. +1 to successive Death Saves each day afterwards.</p>\n<p>Requires Biomonitor.</p>"
+      "description": "<p>Suppresses hunger response. User ignores Humanity Loss penalties from starvation trauma but User can still starve. Roll a Death Save at start of 7th consecutive day without eating. +1 to successive Death Saves each day afterwards.</p>\n<p>Requires Biomonitor.</p>\n<p>Also found in Exotics of 2045.</p>"
     },
     "Cyberpillow": {
       "name": "Cyberpillow",
@@ -31,7 +31,7 @@
     },
     "NeuTongue": {
       "name": "NeuTongue",
-      "description": "<p>Simulates flavor sensations. Use a linked Agent to customize flavor profiles. Can be deactivated without an Action. No sense of taste when deactivated.</p>\n<p>Replaces Meat tongue.</p>"
+      "description": "<p>Simulates flavor sensations. Use a linked Agent to customize flavor profiles. Can be deactivated without an Action. No sense of taste when deactivated.</p>\n<p>Replaces Meat tongue.</p>\n<p>Also found in Exotics of 2045.</p>"
     },
     "PerfectFit Cyberfoot": {
       "name": "PerfectFit Cyberfoot",

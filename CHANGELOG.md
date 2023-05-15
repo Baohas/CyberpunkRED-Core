@@ -142,6 +142,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
   - `source.book`
   - `source.page`
 - Update compendia icons for Armor
+- Reordered system systems
 
 ### Bug Fixes
 
