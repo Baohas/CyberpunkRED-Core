@@ -160,6 +160,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 - Adjusted the wording of existing Elflines items to better fit their function
 - Update default icons for Black ICE and Demons
 - Contaiers configured as shops default to buying all at 100%
+- Removed duplicated suffixes on ammo selection
 
 ### Bug Fixes
 

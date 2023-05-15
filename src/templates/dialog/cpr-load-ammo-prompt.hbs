@@ -23,7 +23,9 @@
               {{#each this.ammoList as |ammo| }}
                 <option value="{{ammo.uuid}}">
                   {{ammo.name}}
-                  ({{localize (cprFindConfigValue "ammoType" ammo.system.type)}})
+                  {{#unless (cprStringContainsSubstringList ammo.name (cprListConcat (localize (cprFindConfigValue 'ammoType' ammo.system.type)) ammo.system.type))}}
+                    ({{localize (cprFindConfigValue "ammoType" ammo.system.type)}})
+                  {{/unless}}
                   [x{{ammo.system.amount}}]
                 </option>
               {{/each}}
