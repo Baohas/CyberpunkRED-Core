@@ -801,7 +801,7 @@
   "CPR.itemSheet.physical.price.category": "Category",
   "CPR.itemSheet.physical.price.price": "Price",
   "CPR.itemSheet.physical.priceHoverExplanation": "The price entered here should be the price of a single unit of the item.",
-  "CPR.itemSheet.physical.priceHoverExplanationAmmo": "The price entered here should be the price of a single purchase unit of the item. The amount for a purchase unit is 1 for grenades and rockets and 10 otherwise, see p. 344 in the rulebook.",
+  "CPR.itemSheet.physical.priceHoverExplanationAmmo": "The price entered here should be the price of a single purchase unit of the item. For ammo, the purchase unit is 1 for grenades and rockets and 10 otherwise (pg. 344).",
   "CPR.itemSheet.program.damageTo": "Damage to {programType}",
   "CPR.itemSheet.program.nonBlackIce": "non Black ICE",
   "CPR.itemSheet.program.programSize": "Program Size",
