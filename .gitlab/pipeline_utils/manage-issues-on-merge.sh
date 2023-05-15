@@ -28,6 +28,7 @@ MR_IID=$(
 if [[ -z ${MR_IID} ]]; then
   echo "Unable to find MR IID"
   echo "No issue management will be done in this pipeline"
+  rebase_all_mrs
   exit 0
 fi
 
@@ -45,6 +46,7 @@ if [[ ${MR_IID} -ne 0 ]]; then
   echo "Issues linked from MR: ${ISSUES[*]}"
 else
   echo "No issues found in MR ${MR_IID} description"
+  rebase_all_mrs
   exit 0
 fi
 
