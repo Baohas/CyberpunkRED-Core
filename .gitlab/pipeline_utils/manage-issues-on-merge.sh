@@ -2,8 +2,6 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-env | sort
-
 # Variables that are set by GitLab CI environment
 # CI_API_V4_URL, CI_COMMIT_SHA, CI_PROJECT_ID, CHOOM_BOT_API
 
@@ -28,11 +26,9 @@ MR_IID=$(
 if [[ -z ${MR_IID} ]]; then
   echo "Unable to find MR IID"
   echo "No issue management will be done in this pipeline"
-  rebase_all_mrs
-  exit 0
 fi
 
-if [[ ${MR_IID} -ne 0 ]]; then
+if [[ ${MR_IID} =~ ^[0-9]+$ ]]; then
   mapfile -t ISSUES < <(
     curl \
       --silent \
@@ -45,9 +41,8 @@ if [[ ${MR_IID} -ne 0 ]]; then
   )
   echo "Issues linked from MR: ${ISSUES[*]}"
 else
-  echo "No issues found in MR ${MR_IID} description"
-  rebase_all_mrs
-  exit 0
+  ISSUES=()
+  echo "No issues found in MR description"
 fi
 
 # Labels to add to the Issues in ISSUES
@@ -188,9 +183,9 @@ function main() {
       add_labels "${issue}"
       add_note "${issue}"
       close_issue "${issue}"
-      rebase_all_mrs
     fi
   done
+  rebase_all_mrs
 }
 
 main
