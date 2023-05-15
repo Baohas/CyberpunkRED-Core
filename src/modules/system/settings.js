@@ -8,6 +8,9 @@ import setTheme from "./theme.js";
  * This file defines user settings for the system module.
  */
 const registerSystemSettings = () => {
+  /*
+   *  Display / User Settings
+   */
   game.settings.register(game.system.id, "theme", {
     name: "CPR.settings.theme.title",
     hint: "CPR.settings.theme.hint",
@@ -27,8 +30,155 @@ const registerSystemSettings = () => {
     },
   });
 
-  // XXX: Debug and trace logs come first because sometimes we're using them while in the
-  //      early initialization of FoundryVTT.
+  game.settings.register(game.system.id, "enablePauseAnimation", {
+    name: "CPR.settings.enablePauseAnimation.name",
+    hint: "CPR.settings.enablePauseAnimation.hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: true,
+    onChange: (value) => {
+      LOGGER.log(`Changed enablePauseAnimation to ${value}`);
+    },
+  });
+
+  // Invert CTRL+Click behaviour
+  // Default:
+  //   Click to roll:      Brings up roll dialogue
+  //   Ctrl+Click to roll: Skips roll dialogue
+  game.settings.register(game.system.id, "invertRollCtrlFunction", {
+    name: "CPR.settings.invertRollCtrlFunction.name",
+    hint: "CPR.settings.invertRollCtrlFunction.hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      LOGGER.log(`Changed invertRollCtrlFunction to ${value}`);
+    },
+  });
+
+  /*
+   *  Game Settings
+   */
+
+  // Select Compendia to use for Criticals/DV/Netarch rolltables
+  game.settings.registerMenu(game.system.id, "compendiumSettingsMenu", {
+    name: "CPR.settings.compendiumMenu.name",
+    label: "CPR.settings.compendiumMenu.button",
+    hint: "CPR.settings.compendiumMenu.hint",
+    icon: "fa-solid fa-book",
+    type: CPRCompendiaSettings,
+  });
+
+  // Should Initiative Explode?
+  game.settings.register(game.system.id, "criticalInitiative", {
+    name: "CPR.settings.criticalInitiative.name",
+    hint: "CPR.settings.criticalInitiative.hint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+    onChange: (value) => {
+      LOGGER.log(`Changed criticalInitiative to ${value}`);
+    },
+  });
+
+  // Prevent Duplicate Critical Injuries
+  game.settings.register(game.system.id, "preventDuplicateCriticalInjuries", {
+    name: "CPR.settings.preventDuplicateCriticalInjuries.name",
+    hint: "CPR.settings.preventDuplicateCriticalInjuries.hint",
+    scope: "world",
+    config: true,
+    type: String,
+    choices: {
+      off: "CPR.settings.preventDuplicateCriticalInjuries.off",
+      warn: "CPR.settings.preventDuplicateCriticalInjuries.warn",
+      reroll: "CPR.settings.preventDuplicateCriticalInjuries.reroll",
+    },
+    default: "off",
+    onChange: (value) => {
+      LOGGER.log(`Changed preventDuplicateCriticalInjuries to ${value}`);
+    },
+  });
+
+  /*
+   *  System settings
+   */
+
+  // Can players create their own items?
+  game.settings.register(game.system.id, "playersCreateInventory", {
+    name: "CPR.settings.playersCreateInventory.name",
+    hint: "CPR.settings.playersCreateInventory.hint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      LOGGER.log(`Changed playersCreateInventory to ${value}`);
+    },
+  });
+
+  // Show a confirmation prompt before deleting an item from a sheet
+  game.settings.register(game.system.id, "deleteItemConfirmation", {
+    name: "CPR.settings.deleteConfirmation.name",
+    hint: "CPR.settings.deleteConfirmation.hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: true,
+    onChange: (value) => {
+      LOGGER.log(`Changed deleteItemConfirmation to ${value}`);
+    },
+  });
+
+  // Mook Sheet Skill display method
+  // Options:
+  //   Level: Points
+  //   Base:  Points + STAT
+  //   Total: Points + STAT + Mods
+  game.settings.register(game.system.id, "mookSheetSkillDisplay", {
+    name: "CPR.settings.mookSheetSkillDisplay.name",
+    hint: "CPR.settings.mookSheetSkillDisplay.hint",
+    scope: "client",
+    config: true,
+    type: String,
+    choices: {
+      level: "CPR.settings.mookSheetSkillDisplay.level",
+      base: "CPR.settings.mookSheetSkillDisplay.base",
+      total: "CPR.settings.mookSheetSkillDisplay.total",
+    },
+    default: "base",
+    onChange: (value) => {
+      LOGGER.log(`Changed mookSheetSkillDisplay to ${value}`);
+    },
+  });
+
+  // Display AE icons on Token
+  game.settings.register(game.system.id, "displayStatusAsActiveEffects", {
+    name: "CPR.settings.displayStatusAsActiveEffects.name",
+    hint: "CPR.settings.displayStatusAsActiveEffects.hint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+    onChange: (value) => {
+      LOGGER.log(`Changed displayStatusAsActiveEffects to ${value}`);
+    },
+  });
+
+  game.settings.register(game.system.id, "userSettings", {
+    name: "User Settings",
+    scope: "client",
+    config: false,
+    type: Object,
+    default: {},
+  });
+
+  /*
+   *  Dev settings
+   */
+
   game.settings.register(game.system.id, "debugLogs", {
     name: "CPR.settings.debugLogs.name",
     hint: "CPR.settings.debugLogs.hint",
@@ -65,88 +215,21 @@ const registerSystemSettings = () => {
     },
   });
 
-  game.settings.register(game.system.id, "playersCreateInventory", {
-    name: "CPR.settings.playersCreateInventory.name",
-    hint: "CPR.settings.playersCreateInventory.hint",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed playersCreateInventory to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "deleteItemConfirmation", {
-    name: "CPR.settings.deleteConfirmation.name",
-    hint: "CPR.settings.deleteConfirmation.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: true,
-    onChange: (value) => {
-      LOGGER.log(`Changed deleteItemConfirmation to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "enablePauseAnimation", {
-    name: "CPR.settings.enablePauseAnimation.name",
-    hint: "CPR.settings.enablePauseAnimation.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: true,
-    onChange: (value) => {
-      LOGGER.log(`Changed enablePauseAnimation to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "invertRollCtrlFunction", {
-    name: "CPR.settings.invertRollCtrlFunction.name",
-    hint: "CPR.settings.invertRollCtrlFunction.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed invertRollCtrlFunction to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "mookSheetSkillDisplay", {
-    name: "CPR.settings.mookSheetSkillDisplay.name",
-    hint: "CPR.settings.mookSheetSkillDisplay.hint",
-    scope: "client",
-    config: true,
-    type: String,
-    choices: {
-      level: "CPR.settings.mookSheetSkillDisplay.level",
-      base: "CPR.settings.mookSheetSkillDisplay.base",
-      total: "CPR.settings.mookSheetSkillDisplay.total",
-    },
-    default: "base",
-    onChange: (value) => {
-      LOGGER.log(`Changed mookSheetSkillDisplay to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "preventDuplicateCriticalInjuries", {
-    name: "CPR.settings.preventDuplicateCriticalInjuries.name",
-    hint: "CPR.settings.preventDuplicateCriticalInjuries.hint",
+  // Saves the last time a migration to a data model took place
+  game.settings.register(game.system.id, "dataModelVersion", {
+    name: "CPR.settings.systemDataModelVersion.name",
+    hint: "CPR.settings.systemDataModelVersion.hint",
     scope: "world",
     config: true,
     type: String,
-    choices: {
-      off: "CPR.settings.preventDuplicateCriticalInjuries.off",
-      warn: "CPR.settings.preventDuplicateCriticalInjuries.warn",
-      reroll: "CPR.settings.preventDuplicateCriticalInjuries.reroll",
-    },
-    default: "off",
+    default: "newCprWorld",
     onChange: (value) => {
-      LOGGER.log(`Changed preventDuplicateCriticalInjuries to ${value}`);
+      LOGGER.log(`Changed dataModelVersion to ${value}`);
     },
   });
 
+  // These 3 settings are in a seperate app called by compendiumSettingsMenu
+  // Placed at the bottom as they don't effect the display order
   game.settings.register(game.system.id, "criticalInjuryRollTableCompendium", {
     name: "CPR.settings.criticalInjuryRollTableCompendium.name",
     hint: "CPR.settings.criticalInjuryRollTableCompendium.hint",
@@ -183,59 +266,7 @@ const registerSystemSettings = () => {
     },
   });
 
-  game.settings.registerMenu(game.system.id, "compendiumSettingsMenu", {
-    name: "CPR.settings.compendiumMenu.name",
-    label: "CPR.settings.compendiumMenu.button",
-    hint: "CPR.settings.compendiumMenu.hint",
-    icon: "fa-solid fa-book",
-    type: CPRCompendiaSettings,
-  });
-
-  game.settings.register(game.system.id, "criticalInitiative", {
-    name: "CPR.settings.criticalInitiative.name",
-    hint: "CPR.settings.criticalInitiative.hint",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: true,
-    onChange: (value) => {
-      LOGGER.log(`Changed criticalInitiative to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "displayStatusAsActiveEffects", {
-    name: "CPR.settings.displayStatusAsActiveEffects.name",
-    hint: "CPR.settings.displayStatusAsActiveEffects.hint",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: true,
-    onChange: (value) => {
-      LOGGER.log(`Changed displayStatusAsActiveEffects to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "userSettings", {
-    name: "User Settings",
-    scope: "client",
-    config: false,
-    type: Object,
-    default: {},
-  });
-
-  // Saves the last time a migration to a data model took place
-  game.settings.register(game.system.id, "dataModelVersion", {
-    name: "CPR.settings.systemDataModelVersion.name",
-    hint: "CPR.settings.systemDataModelVersion.hint",
-    scope: "world",
-    config: true,
-    type: String,
-    default: "newCprWorld",
-    onChange: (value) => {
-      LOGGER.log(`Changed dataModelVersion to ${value}`);
-    },
-  });
-
+  // This is not displayed at all
   // Saves the previous game.system.version so we can check if we were recently updated
   game.settings.register(game.system.id, "systemVersion", {
     name: "System Version",
