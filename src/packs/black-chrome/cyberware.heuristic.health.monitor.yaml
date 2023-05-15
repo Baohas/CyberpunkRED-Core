@@ -18,8 +18,6 @@ system:
     value: >-
       <p>Requires biomonitor. Can know HP at a glance. (See Black Chrome pg. 19
       for more details)</p>
-
-      <p>Also found in Exotics of 2045.</p>
   dvTable: ""
   favorite: false
   fireModes:

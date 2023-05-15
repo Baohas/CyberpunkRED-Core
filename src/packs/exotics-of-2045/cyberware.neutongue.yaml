@@ -1,8 +1,8 @@
-_id: 0z0v50kDAgHvMquv
+_id: mTL4ZsBLRd6dO7Hv
 effects: []
 img: >-
-  systems/cyberpunk-red-core/icons/compendium/black-chrome/reflex-co-processor.svg
-name: Reflex Co-Processor
+  systems/cyberpunk-red-core/icons/compendium/exotics-of-2045/neutongue.svg
+name: NeuTongue
 system:
   ammoVariety: []
   attackmod: 0
@@ -16,24 +16,27 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>Neuralware. Negates REF requirement to dodge bullets. (See Black Chrome
-      pg. 21 for more details)</p>
+      <p>Simulates flavor sensations. Use a linked Agent to customize flavor
+      profiles. Can be deactivated without an Action. No sense of taste when
+      deactivated.</p>
+
+      <p>Replaces Meat tongue.</p>
   dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: 4d6
-    static: 14
+    roll: 2d6
+    static: 7
   installLocation: hospital
   installedIn: ""
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isElectronic: true
   isFoundational: false
@@ -48,19 +51,19 @@ system:
     max: 0
     value: 0
   price:
-    market: 500
+    market: 100
   providesHardening: false
   revealed: true
   rof: 1
   size: 1
   source:
-    book: BC
-    page: 21
-  type: neuralWare
+    book: IRv2
+    page: 73
+  type: cyberwareInternal
   unarmedAutomaticCalculation: true
   upgrades: []
-  usage: installed
+  usage: toggled
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  weaponSkill: ""
+  weaponType: ""
 type: cyberware

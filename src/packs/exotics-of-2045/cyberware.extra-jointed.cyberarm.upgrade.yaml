@@ -25,12 +25,12 @@ effects:
               isSituational: false
               onByDefault: false
     icon: >-
-      systems/cyberpunk-red-core/icons/compendium/black-chrome/extra-joined-cyberarm.svg
+      systems/cyberpunk-red-core/icons/compendium/exotics-of-2045/extra-joined-cyberarm.svg
     label: Extra-Jointed Cyberarm
     tint: null
     transfer: true
 img: >-
-  systems/cyberpunk-red-core/icons/compendium/black-chrome/extra-joined-cyberarm.svg
+  systems/cyberpunk-red-core/icons/compendium/exotics-of-2045/extra-joined-cyberarm.svg
 name: Extra-Jointed Cyberarm Upgrade
 system:
   ammoVariety: []
@@ -83,8 +83,8 @@ system:
   rof: 1
   size: 1
   source:
-    book: BC
-    page: 18
+    book: IRv2
+    page: 73
   type: cyberArm
   unarmedAutomaticCalculation: true
   upgrades: []

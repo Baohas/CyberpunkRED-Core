@@ -1,8 +1,8 @@
-_id: 0z0v50kDAgHvMquv
+_id: nFysJU3aqxEIYpwb
 effects: []
 img: >-
-  systems/cyberpunk-red-core/icons/compendium/black-chrome/reflex-co-processor.svg
-name: Reflex Co-Processor
+  systems/cyberpunk-red-core/icons/compendium/exotics-of-2045/appetite_controller.svg
+name: Appetite Controller
 system:
   ammoVariety: []
   attackmod: 0
@@ -16,16 +16,20 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>Neuralware. Negates REF requirement to dodge bullets. (See Black Chrome
-      pg. 21 for more details)</p>
+      <p>Suppresses hunger response. User ignores Humanity Loss penalties from
+      starvation trauma but User can still starve. Roll a Death Save at start of
+      7th consecutive day without eating. +1 to successive Death Saves each day
+      afterwards.</p>
+
+      <p>Requires Biomonitor.</p>
   dvTable: ""
   favorite: false
   fireModes:
     autoFire: 0
     suppressiveFire: false
   humanityLoss:
-    roll: 4d6
-    static: 14
+    roll: 2d6
+    static: 7
   installLocation: hospital
   installedIn: ""
   installedItems:
@@ -54,13 +58,13 @@ system:
   rof: 1
   size: 1
   source:
-    book: BC
-    page: 21
-  type: neuralWare
+    book: IRv2
+    page: 72
+  type: cyberwareInternal
   unarmedAutomaticCalculation: true
   upgrades: []
-  usage: installed
+  usage: toggled
   usesType: magazine
-  weaponSkill: Archery
-  weaponType: assaultRifle
+  weaponSkill: ""
+  weaponType: ""
 type: cyberware

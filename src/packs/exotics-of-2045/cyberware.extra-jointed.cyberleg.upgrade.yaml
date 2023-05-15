@@ -1,6 +1,6 @@
-_id: iQMwC5XITZSDn4mz
+_id: NfrakevKusMULu6P
 effects:
-  - _id: 07oWqLTtRifNsjsz
+  - _id: AEPyx9yDuDjD5ncB
     changes:
       - key: bonuses.contortionist
         mode: 2
@@ -25,13 +25,13 @@ effects:
               isSituational: false
               onByDefault: false
     icon: >-
-      systems/cyberpunk-red-core/icons/compendium/black-chrome/extra-joined-cyberarm.svg
-    label: Extra-Jointed Cyberarm
+      systems/cyberpunk-red-core/icons/compendium/exotics-of-2045/extra-joined-cyberleg.svg
+    label: Extra-Jointed Cyberleg
     tint: null
     transfer: true
 img: >-
-  systems/cyberpunk-red-core/icons/compendium/black-chrome/extra-joined-cyberarm.svg
-name: Extra-Jointed Cyberarm Upgrade
+  systems/cyberpunk-red-core/icons/compendium/exotics-of-2045/extra-joined-cyberleg.svg
+name: Extra-Jointed Cyberleg Upgrade
 system:
   ammoVariety: []
   attackmod: 0
@@ -45,7 +45,7 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>Enchances cyberarm articulation. +2 Contortionist. (See Black Chrome
+      <p>Enchances cyberleg articulation. +2 Contortionist. (See Black Chrome
       pg. 18 for more details)</p>
   dvTable: ""
   favorite: false
@@ -83,9 +83,9 @@ system:
   rof: 1
   size: 1
   source:
-    book: BC
-    page: 18
-  type: cyberArm
+    book: IRv2
+    page: 73
+  type: cyberLeg
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: installed

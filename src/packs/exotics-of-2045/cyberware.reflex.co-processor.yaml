@@ -1,7 +1,7 @@
 _id: 0z0v50kDAgHvMquv
 effects: []
 img: >-
-  systems/cyberpunk-red-core/icons/compendium/black-chrome/reflex-co-processor.svg
+  systems/cyberpunk-red-core/icons/compendium/exotics-of-2045/reflex-co-processor.svg
 name: Reflex Co-Processor
 system:
   ammoVariety: []
@@ -54,8 +54,8 @@ system:
   rof: 1
   size: 1
   source:
-    book: BC
-    page: 21
+    book: IRv2
+    page: 73
   type: neuralWare
   unarmedAutomaticCalculation: true
   upgrades: []
