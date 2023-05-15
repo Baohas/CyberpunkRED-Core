@@ -70,14 +70,6 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Core Branded Weapons",
-      "type": "Item",
-      "name": "core-branded-weapons",
-      "path": "packs/core-branded-weapons.db",
-      "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
-    },
-    {
       "label": "Critical Injuries (Body)",
       "type": "Item",
       "name": "critical-injuries-body",
@@ -322,6 +314,14 @@
       "type": "Item",
       "name": "weapons",
       "path": "packs/weapons.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
+      "label": "Weapons (Branded)",
+      "type": "Item",
+      "name": "weapons-branded",
+      "path": "packs/weapons-branded.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
