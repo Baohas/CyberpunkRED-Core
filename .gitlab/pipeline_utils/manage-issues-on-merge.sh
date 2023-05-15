@@ -156,6 +156,27 @@ function add_note() {
     "${PROJECT_URL}/issues/$1/notes" >/dev/null
 }
 
+# Rebase all other MRs when we merge
+function rebase_all_mrs() {
+  echo "Rebasing Open Merge Requests"
+  OPEN_MRS=$(
+    curl \
+      --silent \
+      --header "PRIVATE-TOKEN: ${CHOOM_BOT_API}" \
+      "${PROJECT_URL}/merge_requests?state=opened" |
+      jq '.[] | .iid'
+  )
+  echo "MRs to rebase ${OPEN_MRS}"
+
+  for iid in ${OPEN_MRS}; do
+    echo "Rebasing MR ${iid}"
+    curl \
+      --request PUT \
+      --header "PRIVATE-TOKEN: ${CHOOM_BOT_API}" \
+      "${PROJECT_URL}/merge_requests/${iid}/rebase"
+  done
+}
+
 function main() {
   # Loop over each issue
   for issue in "${ISSUES[@]}"; do
@@ -165,6 +186,7 @@ function main() {
       add_labels "${issue}"
       add_note "${issue}"
       close_issue "${issue}"
+      rebase_all_mrs
     fi
   done
 }
