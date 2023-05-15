@@ -15,10 +15,8 @@ system:
     unidentified: ""
     value: >-
       <p>Kevlar Body Armor that ignores the Whiplash critical injury from car
-      crashes as long as the armor's CO2 tank is full. If the suit is inflated
-      from a crash, -5 MOVE (Min 1) until deflated with an action. CO2 tanks
-      must be replaced after usage*. Refer to full item description on BC pg.
-      33.</p>
+      crashes as long as the armor's CO2 tank is full*. Refer to full item
+      description on BC pg. 33.</p>
 
       <p><em>*Must be manually added after acquiring the armor.</em></p>
   equipped: owned

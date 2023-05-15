@@ -39,7 +39,7 @@
     },
     "AirRider": {
       "name": "AirRider",
-      "description": "<p>Kevlar Body Armor that ignores the Whiplash critical injury from car crashes as long as the armor's CO2 tank is full. If the suit is inflated from a crash, -5 MOVE (Min 1) until deflated with an action. CO2 tanks must be replaced after usage*. Refer to full item description on BC pg. 33.</p>\n<p><em>*Must be manually added after acquiring the armor.</em></p>"
+      "description": "<p>Kevlar Body Armor that ignores the Whiplash critical injury from car crashes as long as the armor's CO2 tank is full*. Refer to full item description on BC pg. 33.</p>\n<p><em>*Must be manually added after acquiring the armor.</em></p>"
     },
     "Bunker Gear": {
       "name": "Bunker Gear",
@@ -115,7 +115,7 @@
     },
     "Shock Armor": {
       "name": "Shock Armor",
-      "description": "<p>Kevlar armor that shocks anyone who is grappling you, forcing them to make a DV15 Resist Drugs/Torture check. If the check failed, the grapple ends. Refer to full item description on BC pg. 29.</p>"
+      "description": "<p>Kevlar armor that shocks anyone who is grappling you. Refer to full item description on BC pg. 29.</p>"
     },
     "Skid Row Trench": {
       "name": "Skid Row Trench",
@@ -131,7 +131,7 @@
     },
     "Holo-Wear": {
       "name": "Holo-Wear",
-      "description": "<p>Holographic clothing that can get disabled by EMP blasts for a minute. Can swap styles with an action from a selection purchased (100eb/style) and installed on an agent. Refer to full item description on BC pg. 35.</p>"
+      "description": "<p>Holographic clothing that can get disabled by EMP blasts for a minute. Can swap styles with an action if purchased. Refer to full item description on BC pg. 35.</p>"
     },
     "Budget Chipware Socket": {
       "name": "Budget Chipware Socket",
@@ -191,7 +191,7 @@
     },
     "MechaMan Smart Glove": {
       "name": "MechaMan Smart Glove",
-      "description": "<p>A biking glove that comes with a subdermal grip pre-installed* which requires a neural link to use. Has 1 cyberarm option slot. Cannot access any hand options under the glove while worn. Requires an action to equip and unequip. Refer to full item description on BC pg. 37.<br><em>*Subdermal Grip must be added and installed manually after acquring the glove</em></p>"
+      "description": "<p>A biking glove that comes with a subdermal grip pre-installed* which requires a neural link to use. Has 1 cyberarm option slot. Refer to full item description on BC pg. 37.<br><em>*Subdermal Grip must be added and installed manually after acquiring the glove</em></p>"
     },
     "Modular Finger Cyberhand": {
       "name": "Modular Finger Cyberhand",
@@ -247,7 +247,7 @@
     },
     "ChipVault": {
       "name": "ChipVault",
-      "description": "<p>Can hold up to 8 pieces of Chipware. Chipware stored inside are immuned to EMP effects. Can only be unlocked via biometric scan, a DV 17 Elec/Security Tech Check or with a DV10 Pick Lock Check. For more information, see Black Chrome Page 44.</p>"
+      "description": "<p>Can hold up to 8 pieces of Chipware. Chipware stored inside are immune to EMP effects. For more information, see Black Chrome Page 44.</p>"
     },
     "CO2 Tank": {
       "name": "CO2 Tank",
@@ -259,7 +259,7 @@
     },
     "Drink Master 3000": {
       "name": "Drink Master 3000",
-      "description": "<p>Can make 10 beverages out of a 3000 beverages library before needing to be refilled with 100eb worth of materials. Can also make Smash. For more information, see Black Chrome Page 42.</p>"
+      "description": "<p>Can make 10 beverages out of a 3000 beverages library before needing to be refilled. Can also make Smash. For more information, see Black Chrome Page 42.</p>"
     },
     "EL-F4-NT Linear Frame": {
       "name": "EL-F4-NT Linear Frame",
@@ -271,7 +271,7 @@
     },
     "Jeeves Executive Garment Bag": {
       "name": "Jeeves Executive Garment Bag",
-      "description": "<p>Bag that can repair one piece of fashion or armor at a time. The time it takes is based on the Item's Price Category. For more information, see Black Chrome Page 43.</p>"
+      "description": "<p>Bag that can repair one piece of fashion or armor at a time. For more information, see Black Chrome Page 43.</p>"
     },
     "Laser Light Electric Guitar": {
       "name": "Laser Light Electric Guitar",
@@ -287,11 +287,11 @@
     },
     "Nitro Ultra9": {
       "name": "Nitro Ultra9",
-      "description": "<p>Can be poured into a Vehicle's tank to refill it as an Action. For the next 24 hours, when a Vehicle would take 6d6 damage as a result of being rammed or ramming something without a Combat Plow, it instead takes 12d6 damage. For the same period, the vehicle also gains a bonus of +5 to its MOVE. For more information, see Black Chrome Page 49.</p>"
+      "description": "<p>Can be poured into a Vehicle's tank to refill it as an Action. Gives bonuses to movement at the expense of safety. For more information, see Black Chrome Page 49.</p>"
     },
     "One Touch Habitat": {
       "name": "One Touch Habitat",
-      "description": "<p>Provides protection from Exposure. Counts as Sleeping in the Wilderness or as Sleeping on the Streets. Can only fit one person without being Crammed. Takes one Action to be Deployed or Undeployed. For more information, see Black Chrome Page 48.</p>"
+      "description": "<p>Provides protection from Exposure. Counts as Sleeping in the Wilderness or as Sleeping on the Streets. For more information, see Black Chrome Page 48.</p>"
     },
     "Porta-Printer": {
       "name": "Porta-Printer",
@@ -307,7 +307,7 @@
     },
     "Sonic Boom Amp": {
       "name": "Sonic Boom Amp",
-      "description": "<p>While linked to an instrument, the User can take an Action to make everyone in a 10m/yards radius roll a DV15 Resist Torture/Drugs Check. When failed, they suffer the Damaged Ear Critical Injury for 1 minute without taking the bonus damage. Must be powered to function. For more information, see Black Chrome Page 40.</p>"
+      "description": "<p>While linked to an instrument, the User can take an Action to make everyone nearby make a Resist Torture/Drugs Check. For more information, see Black Chrome Page 40.</p>"
     },
     "SovOil Industrial Lubricant": {
       "name": "SovOil Industrial Lubricant",
@@ -323,7 +323,7 @@
     },
     "Streetcase": {
       "name": "Streetcase",
-      "description": "<p>Can carry an easily accessible Heavy Pistol, a laptop computer, a ChipVault and a single smoke grenade. The Heavy Pistol can instead be replaced by a ModFire 10x (in Heavy Pistol Mode) and its parts. For more information, see Black Chrome Page 47.</p>"
+      "description": "<p>Can carry many easily accessible items that YOU need to stay safe. For more information, see Black Chrome Page 47.</p>"
     },
     "Triti-Fizz": {
       "name": "Triti-Fizz",
@@ -331,7 +331,7 @@
     },
     "Typhoid Speaker": {
       "name": "Typhoid Speaker",
-      "description": "<p>When linked to a KillStrom Sonic Boom Amp, the DV of the Resist Torture/Drugs Check of the Sonic Boom Amp Effect is increased by 1 and it's range is increased by 90 m/yards. Must be powered to function. For more information, see Black Chrome Page 41.</p>"
+      "description": "<p>When linked to a KillStrom Sonic Boom Amp, increases the DV of the Resist Torture/Drugs Check. For more information, see Black Chrome Page 41.</p>"
     },
     "Universal Aqualung": {
       "name": "Universal Aqualung",
@@ -343,7 +343,7 @@
     },
     "WorldSat Aerial Sphere": {
       "name": "WorldSat Aerial Sphere",
-      "description": "<p>Takes an hour to setup. When setup, it can't be moved before being deconstructed. This also takes an hour. When set up, it provides access to a Citinet when within 50 miles of the city or of another set up WorldSat Aerial Sphere that is connected to the Citinet. The WorldSat Aerial Sphere's wire has 10 HP. If it is destroyed, the Worldsat Aerial Sphere is Destroyed Beyond Repair and the connection is immediatly severed. For more information, see Black Chrome Page 50.</p>"
+      "description": "<p>When set up, provides access to a Citinet when within 50 miles of the city or of another set up WorldSat Aerial Sphere that is connected to the Citinet. For more information, see Black Chrome Page 50.</p>"
     },
     "4Tify": {
       "name": "4Tify",
@@ -427,7 +427,7 @@
     },
     "Highway Master Artemis": {
       "name": "Highway Master Artemis",
-      "description": "<p>A low-riding Roadbike with retractable glass cover. Can be surpercharge in Superbike at the risk of damaging the bike.</p>\n<p>Full details can be found on page 70.</p>"
+      "description": "<p>A low-riding Roadbike with retractable glass cover. Has a surpercharge mode that doesn't come with a safety guarantee.</p>\n<p>Full details can be found on page 70.</p>"
     },
     "JetBoy Hoverboard": {
       "name": "JetBoy Hoverboard",
@@ -471,7 +471,7 @@
     },
     "TDT 004": {
       "name": "TDT 004",
-      "description": "<p>Troop transport Helicopter.</p>\n<p>Full stats can be found on page 59.</p>"
+      "description": "<p>Troop transport Helicopter.</p>\n<p>Full details can be found on page 59.</p>"
     },
     "The Grundy": {
       "name": "The Grundy",
@@ -527,7 +527,7 @@
     },
     "Crowd Buster": {
       "name": "Crowd Buster",
-      "description": "<p>The Pursuit Security Incorporated Crowd Buster is an Exotic Assault Rifle with a unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear Protectors. Full rules can be found in Black Chrome on Page 116.</p>"
+      "description": "<p>The Pursuit Security Incorporated Crowd Buster is an Exotic Assault Rifle with a unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear Protectors*. Full rules can be found in Black Chrome on Page 116.</p>\n<p><em>*Must be manually applied after purchase</em></p>"
     },
     "Door Cracker": {
       "name": "Door Cracker",
@@ -547,7 +547,7 @@
     },
     "FangFist": {
       "name": "FangFist",
-      "description": "<p>Excellent Quality One Handed Exotic Medium Melee Weapon.</p>\n<p>A glove with a short retractable blade.</p>"
+      "description": "<p>Excellent Quality One Handed Exotic Medium Melee Weapon.</p>\n<p>A glove with a short retractable blade.</p>\n<p>Full details can be found on page 98.</p>"
     },
     "Fox Dual Ammo Pistol": {
       "name": "Fox Dual Ammo Pistol",
@@ -555,11 +555,11 @@
     },
     "GunMart Smart Special": {
       "name": "GunMart Smart Special",
-      "description": "<p>The GunMart Smart Special is a Poor Quality Exotic Heavy Pistol with an integrated Smartgun Link. It is Destroyed Beyond Repair on a Critical Failure. Full rules can be found in Black Chrome on Page 108.</p>"
+      "description": "<p>The GunMart Smart Special is a Poor Quality Exotic Heavy Pistol with an integrated Smartgun Link. Full rules can be found in Black Chrome on Page 108.</p>"
     },
     "GunMart Special": {
       "name": "GunMart Special",
-      "description": "<p>The GunMart Special is a Poor Quality Exotic Heavy Pistol. It is Destroyed Beyond Repair on a Critical Failure. Full rules can be found in Black Chrome on Page 108.</p>"
+      "description": "<p>The GunMart Special is a Poor Quality Exotic Heavy Pistol. Full rules can be found in Black Chrome on Page 108.</p>"
     },
     "Hades Multipurpose Assault Shotgun": {
       "name": "Hades Multipurpose Assault Shotgun",
@@ -567,7 +567,7 @@
     },
     "Hello Cutie Ultra-K8 Assault Pistol": {
       "name": "Hello Cutie Ultra-K8 Assault Pistol",
-      "description": "<p>The Sanroo Hello Cutie Ultra-K8 Assault Pistol is an Excellent Quality Exotic Very Heavy Pistol with an Excellent Quality Heavy SMG mode. It is incompatible with magazine attachments. Full rules can be found in Black Chrome on Page 118.</p>"
+      "description": "<p>The Sanroo Hello Cutie Ultra-K8 Assault Pistol is an Excellent Quality Exotic Very Heavy Pistol with an Excellent Quality Heavy SMG mode. Full rules can be found in Black Chrome on Page 118.</p>"
     },
     "KillChip 100 Micro-Bomb": {
       "name": "KillChip 100 Micro-Bomb",
@@ -639,15 +639,15 @@
     },
     "Pepper Shaker": {
       "name": "Pepper Shaker",
-      "description": "<p>The Federated Arms Pepper Shaker is an Exotic SMG incapable of single shot or aimed shots. It can only Autofire. Autofire only use 6 bullets for this weapon. Full rules can be found in Black Chrome on Page 105.</p>"
+      "description": "<p>The Federated Arms Pepper Shaker is an Exotic SMG incapable of single shot or aimed shots. Autofire only use 6 bullets for this weapon. Full rules can be found in Black Chrome on Page 105.</p>"
     },
     "Perseus": {
       "name": "Perseus",
-      "description": "<p>The Militech Perseus is an Excellent Quality Exotic Very Heavy Pistol. Its magazine holds 11 rounds. Full Rules can be found in Black Chrome on Page 112.</p>"
+      "description": "<p>The Militech Perseus is an Excellent Quality Exotic Very Heavy Pistol. Full Rules can be found in Black Chrome on Page 112.</p>"
     },
     "Pursuit Security Bouncer": {
       "name": "Pursuit Security Bouncer",
-      "description": "<p>Battery powered glove.</p>\n<p>One Handed Exotic Combination Stun Baton and Microwaver.&nbsp;&nbsp;</p>"
+      "description": "<p>Battery powered glove.</p>\n<p>One Handed Exotic Combination Stun Baton and Microwaver.</p>\n<p>Full details can be found on page 97.</p>"
     },
     "Ranger Combat Boomerang": {
       "name": "Ranger Combat Boomerang",
@@ -659,7 +659,7 @@
     },
     "Rostović Kleaver": {
       "name": "Rostović Kleaver",
-      "description": "<p>Two Handed Exotic Very Heavy Melee Weapon. Can use a batter pack to increase damage, details of which can be found on page 94.</p>\n<p>Need BODY 11 or more to use it.</p>"
+      "description": "<p>Two Handed Exotic Very Heavy Melee Weapon. Can use a battery pack to increase damage, details of which can be found on page 94.</p>\n<p>Need BODY 11 or more to use it.</p>"
     },
     "Superchrome® Glam Rifle": {
       "name": "Superchrome® Glam Rifle",
@@ -675,11 +675,11 @@
     },
     "Survivalist": {
       "name": "Survivalist",
-      "description": "<p>The Eagletech Survivalist is a 2-in-1 Crossbow and Assault RIfle. It is incapable of Autofire. It comes with an integrated Sniping Scope. (Has to be added to the item separately.) Full rules can be found in Black Chrome on Page 103.</p>"
+      "description": "<p>The Eagletech Survivalist is a 2-in-1 Crossbow and Assault RIfle. It is incapable of Autofire. It comes with an integrated Sniping Scope*. Full rules can be found in Black Chrome on Page 103.</p>\n<p><em>*Must be manually applied after purchase</em></p>"
     },
     "Tasmanskiy Klô": {
       "name": "Tasmanskiy Klô",
-      "description": "<p>Big retractable blades in a Combat Glove.&nbsp;</p>\n<p>Excellent Quality Exotic Very Heavy Melee Weapon.</p>"
+      "description": "<p>Big retractable blades in a Combat Glove.&nbsp;</p>\n<p>Excellent Quality Exotic Very Heavy Melee Weapon.</p>\n<p>Full details can be found on page 99.</p>"
     },
     "TechHammer": {
       "name": "TechHammer",
@@ -691,7 +691,7 @@
     },
     "TR-4 Detonator Fluid": {
       "name": "TR-4 Detonator Fluid",
-      "description": "<p>Must be poured into a fuel tank vehicule to explode. Full rules can be found on page 90.</p>"
+      "description": "<p>Must be poured into a fuel tank vehicle to explode. Full rules can be found on page 90.</p>"
     },
     "Ulični Uništitelj (Street Destroyer)": {
       "name": "Ulični Uništitelj (Street Destroyer)",

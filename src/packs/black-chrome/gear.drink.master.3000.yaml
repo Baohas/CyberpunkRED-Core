@@ -13,8 +13,8 @@ system:
     unidentified: ""
     value: >-
       <p>Can make 10 beverages out of a 3000 beverages library before needing to
-      be refilled with 100eb worth of materials. Can also make Smash. For more
-      information, see Black Chrome Page 42.</p>
+      be refilled. Can also make Smash. For more information, see Black Chrome
+      Page 42.</p>
   equipped: owned
   favorite: false
   installedItems:

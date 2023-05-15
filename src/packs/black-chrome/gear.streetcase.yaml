@@ -12,10 +12,8 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>Can carry an easily accessible Heavy Pistol, a laptop computer, a
-      ChipVault and a single smoke grenade. The Heavy Pistol can instead be
-      replaced by a ModFire 10x (in Heavy Pistol Mode) and its parts. For more
-      information, see Black Chrome Page 47.</p>
+      <p>Can carry many easily accessible items that YOU need to stay safe. For
+      more information, see Black Chrome Page 47.</p>
   equipped: owned
   favorite: false
   installedItems:

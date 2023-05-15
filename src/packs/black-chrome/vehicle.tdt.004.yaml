@@ -11,7 +11,7 @@ system:
     unidentified: ""
     value: |-
       <p>Troop transport Helicopter.</p>
-      <p>Full stats can be found on page 59.</p>
+      <p>Full details can be found on page 59.</p>
   favorite: false
   installedItems:
     allowed: true

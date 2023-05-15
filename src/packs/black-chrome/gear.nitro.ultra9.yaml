@@ -12,11 +12,9 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>Can be poured into a Vehicle's tank to refill it as an Action. For the
-      next 24 hours, when a Vehicle would take 6d6 damage as a result of being
-      rammed or ramming something without a Combat Plow, it instead takes 12d6
-      damage. For the same period, the vehicle also gains a bonus of +5 to its
-      MOVE. For more information, see Black Chrome Page 49.</p>
+      <p>Can be poured into a Vehicle's tank to refill it as an Action. Gives
+      bonuses to movement at the expense of safety. For more information, see
+      Black Chrome Page 49.</p>
   equipped: owned
   favorite: false
   installedItems:

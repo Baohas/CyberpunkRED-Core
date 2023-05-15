@@ -16,8 +16,8 @@ system:
     unidentified: ""
     value: >-
       <p>The GunMart Smart Special is a Poor Quality Exotic Heavy Pistol with an
-      integrated Smartgun Link. It is Destroyed Beyond Repair on a Critical
-      Failure. Full rules can be found in Black Chrome on Page 108.</p>
+      integrated Smartgun Link. Full rules can be found in Black Chrome on Page
+      108.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

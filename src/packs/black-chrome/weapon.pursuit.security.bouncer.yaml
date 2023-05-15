@@ -14,11 +14,10 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: >-
+    value: |-
       <p>Battery powered glove.</p>
-
-      <p>One Handed Exotic Combination Stun Baton and
-      Microwaver.&nbsp;&nbsp;</p>
+      <p>One Handed Exotic Combination Stun Baton and Microwaver.</p>
+      <p>Full details can be found on page 97.</p>
   dvTable: ""
   equipped: owned
   favorite: false

@@ -12,10 +12,8 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>Can hold up to 8 pieces of Chipware. Chipware stored inside are immuned
-      to EMP effects. Can only be unlocked via biometric scan, a DV 17
-      Elec/Security Tech Check or with a DV10 Pick Lock Check. For more
-      information, see Black Chrome Page 44.</p>
+      <p>Can hold up to 8 pieces of Chipware. Chipware stored inside are immune
+      to EMP effects. For more information, see Black Chrome Page 44.</p>
   equipped: owned
   favorite: false
   installedItems:

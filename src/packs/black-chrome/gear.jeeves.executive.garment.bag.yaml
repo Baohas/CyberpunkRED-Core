@@ -13,9 +13,8 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>Bag that can repair one piece of fashion or armor at a time. The time
-      it takes is based on the Item's Price Category. For more information, see
-      Black Chrome Page 43.</p>
+      <p>Bag that can repair one piece of fashion or armor at a time. For more
+      information, see Black Chrome Page 43.</p>
   equipped: owned
   favorite: false
   installedItems:

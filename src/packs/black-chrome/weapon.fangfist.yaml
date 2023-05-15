@@ -16,6 +16,7 @@ system:
     value: |-
       <p>Excellent Quality One Handed Exotic Medium Melee Weapon.</p>
       <p>A glove with a short retractable blade.</p>
+      <p>Full details can be found on page 98.</p>
   dvTable: ""
   equipped: owned
   favorite: false

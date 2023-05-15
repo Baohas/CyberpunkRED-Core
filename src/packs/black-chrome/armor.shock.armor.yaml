@@ -14,9 +14,8 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>Kevlar armor that shocks anyone who is grappling you, forcing them to
-      make a DV15 Resist Drugs/Torture check. If the check failed, the grapple
-      ends. Refer to full item description on BC pg. 29.</p>
+      <p>Kevlar armor that shocks anyone who is grappling you. Refer to full
+      item description on BC pg. 29.</p>
   equipped: owned
   favorite: false
   headLocation:

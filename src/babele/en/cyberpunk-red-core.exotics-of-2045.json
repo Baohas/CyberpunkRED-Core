@@ -15,7 +15,7 @@
     },
     "Heuristic Health Monitor": {
       "name": "Heuristic Health Monitor",
-      "description": "<p>Requires Biomonitor.</p>\n<p>Sensors around the body monitor to provide information on tissue health, bone density, and muscle grouping gains that is distilled into an HP number.</p>\n<p>Refer to the full description on page 73 of Interface Red vol. 2.</p>"
+      "description": "<p>Sensors placed around the body which provide information to give a HP number. Requires Biomonitor.</p>\n<p>Refer to the full description on page 73 of Interface Red vol. 2.</p>"
     }
   }
 }

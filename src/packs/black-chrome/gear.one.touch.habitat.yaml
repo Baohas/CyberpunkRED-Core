@@ -13,9 +13,8 @@ system:
     unidentified: ""
     value: >-
       <p>Provides protection from Exposure. Counts as Sleeping in the Wilderness
-      or as Sleeping on the Streets. Can only fit one person without being
-      Crammed. Takes one Action to be Deployed or Undeployed. For more
-      information, see Black Chrome Page 48.</p>
+      or as Sleeping on the Streets. For more information, see Black Chrome Page
+      48.</p>
   equipped: owned
   favorite: false
   installedItems:

@@ -17,11 +17,9 @@ system:
     unidentified: ""
     value: >-
       <p>A biking glove that comes with a subdermal grip pre-installed* which
-      requires a neural link to use. Has 1 cyberarm option slot. Cannot access
-      any hand options under the glove while worn. Requires an action to equip
-      and unequip. Refer to full item description on BC pg.
-      37.<br><em>*Subdermal Grip must be added and installed manually after
-      acquring the glove</em></p>
+      requires a neural link to use. Has 1 cyberarm option slot. Refer to full
+      item description on BC pg. 37.<br><em>*Subdermal Grip must be added and
+      installed manually after acquiring the glove</em></p>
   dvTable: ""
   favorite: false
   fireModes:
