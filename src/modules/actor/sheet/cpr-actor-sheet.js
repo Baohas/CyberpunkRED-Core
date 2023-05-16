@@ -323,9 +323,9 @@ export default class CPRActorSheet extends ActorSheet {
       .click(() => this._increaseDeathSave());
 
     // Filter contents of skills or gear
-    html
-      .find(".filter-contents")
-      .change((event) => this._applyContentFilter(event));
+    html.find(".filter-contents").bind("keyup", (event) => {
+      this._applyContentFilter(event);
+    });
 
     // Reset content filter
     html.find(".reset-content-filter").click(() => this._clearContentFilter());
@@ -1486,8 +1486,10 @@ export default class CPRActorSheet extends ActorSheet {
   async _applyContentFilter(event) {
     LOGGER.trace("_applyContentFilter | CPRActorSheet | called.");
     const filterValue = event.currentTarget.value;
+    const num = $(".filter-contents").val();
     this.options.cprContentFilter = filterValue;
-    this._render();
+    await this._render();
+    $(".filter-contents").focus().val("").val(num);
   }
 
   /**

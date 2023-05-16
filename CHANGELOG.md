@@ -104,6 +104,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
       - Move Facedown roll from Fight tab to Reputation section
     - Move Sheet Search/Filter from right pane no mans land
       - This removes the System Option and is displayed for all users
+      - Enable automatic searching when typing
     - Remove the HP/Humanity Calculators
       - Recalc functionality moved to Section title
   - Fight Tab
