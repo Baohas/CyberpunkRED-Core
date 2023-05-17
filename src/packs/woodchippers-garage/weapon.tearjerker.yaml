@@ -7,7 +7,7 @@ system:
   ammoVariety:
     - grenade
   attackmod: 1
-  brand: Pursuit Security Incorporated
+  brand: Pursuit Security Inc.
   concealable:
     concealable: false
     isConcealed: false

@@ -6,7 +6,7 @@ name: Micro Hydrogen Combustor
 system:
   ammoVariety: []
   attackmod: 0
-  brand: Hydrosubsidium Incorporated
+  brand: Hydrosubsidium Inc.
   concealable:
     concealable: true
     isConcealed: false

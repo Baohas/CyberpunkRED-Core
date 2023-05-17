@@ -6,7 +6,7 @@ system:
   ammoVariety:
     - heavyPistol
   attackmod: 0
-  brand: Pursuit Security Incorporated
+  brand: Pursuit Security Inc.
   concealable:
     concealable: true
     isConcealed: false

@@ -5,7 +5,7 @@ name: FangFist
 system:
   ammoVariety: []
   attackmod: 0
-  brand: Slamdance Incorporated
+  brand: Slamdance Inc.
   concealable:
     concealable: true
     isConcealed: false

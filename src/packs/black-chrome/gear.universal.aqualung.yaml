@@ -4,7 +4,7 @@ img: systems/cyberpunk-red-core/icons/compendium/gear/antismog_breathing_mask.sv
 name: Universal Aqualung
 system:
   amount: 1
-  brand: Hydrosubsidium Incorporated
+  brand: Hydrosubsidium Inc.
   concealable:
     concealable: true
     isConcealed: false

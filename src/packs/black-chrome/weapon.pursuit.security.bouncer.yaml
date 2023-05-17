@@ -6,7 +6,7 @@ name: Pursuit Security Bouncer
 system:
   ammoVariety: []
   attackmod: 0
-  brand: Pursuit Security Incorporated
+  brand: Pursuit Security Inc.
   concealable:
     concealable: false
     isConcealed: false
