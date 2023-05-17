@@ -166,6 +166,14 @@
       "package": "cyberpunk-red-core"
     },
     {
+      "label": "Elflines Online the Trading Card Game",
+      "type": "Item",
+      "name": "elflines-online-the-trading-card-game",
+      "path": "packs/elflines-online-the-trading-card-game.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
       "label": "Exotics of 2045",
       "type": "Item",
       "name": "exotics-of-2045",

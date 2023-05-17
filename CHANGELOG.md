@@ -73,6 +73,7 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic
 - Added clothing descriptions with help from Hakuan Quietpaws
 - Added Mook Encounter Complication, Hardened Lieutenant Tactics, and Hardened Mini Boss Mini Promotion rolltables
+- Added Elflines Online the Trading Card Game with help from LordCheesusCrust
 
 #### Other New Features
 
