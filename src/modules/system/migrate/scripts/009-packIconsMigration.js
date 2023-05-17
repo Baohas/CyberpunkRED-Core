@@ -77,6 +77,20 @@ export default class PackIconMigration extends CPRMigration {
       return item.isOwned ? updateData : item.update(updateData);
     }
 
+    // Migrate old unused netrunning icons on items
+    const imageMap = {
+      "icons/default/Black_Ice.png":
+        "icons/compendium/default/default-blackice.svg",
+      "icons/netrunning/Demon.png":
+        "icons/compendium/default/default-demon.svg",
+    };
+
+    const itemShortPath = itemImage.split("/").slice(2).join("/");
+    if (itemShortPath in imageMap) {
+      updateData.img = `systems/${game.system.id}/${imageMap[itemShortPath]}`;
+      return item.isOwned ? updateData : item.update(updateData);
+    }
+
     // Update net-rolltable images
     const itemNames = [
       "All Other Floors (Advanced)",
@@ -317,6 +331,24 @@ export default class PackIconMigration extends CPRMigration {
    */
   async migrateActor(actor) {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
+    const actorIcon = actor.img;
+    const imageMap = {
+      "icons/netrunning/Black_Ice.png":
+        "icons/compendium/default/default-blackice.svg",
+      "icons/netrunning/Demon.png":
+        "icons/compendium/default/default-demon.svg",
+    };
+    const actorIconPath = actorIcon.split("/").slice(2).join("/");
+
+    if (actorIconPath in imageMap) {
+      await actor.update({
+        img: `systems/${game.system.id}/${imageMap[actorIconPath]}`,
+      });
+      await actor.update({
+        "prototypeToken.texture.src": `systems/${game.system.id}/${imageMap[actorIconPath]}`,
+      });
+    }
+
     const itemUpdates = [];
     for (const item of actor.items) {
       // eslint-disable-next-line no-await-in-loop
