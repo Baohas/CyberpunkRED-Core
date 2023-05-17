@@ -447,7 +447,7 @@ export default class CPRSystemUtils {
     } else if (foundryObject === "Actor") {
       switch (objectType) {
         case "blackIce": {
-          imageLink = `systems/${game.system.id}/icons/netrunning/Black_Ice.png`;
+          imageLink = `systems/${game.system.id}/icons/compendium/default/default-blackice.svg`;
           break;
         }
         case "container": {
@@ -455,7 +455,7 @@ export default class CPRSystemUtils {
           break;
         }
         case "demon": {
-          imageLink = `systems/${game.system.id}/icons/netrunning/Demon.png`;
+          imageLink = `systems/${game.system.id}/icons/compendium/default/default-demon.svg`;
           break;
         }
         case "mook": {

@@ -149,6 +149,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Updated compendia icons for Armor
 - Reordered system systems
 - Adjusted the wording of existing Elflines items to better fit their function
+- Update default icons for Black ICE and Demons
 
 ### Bug Fixes
 
