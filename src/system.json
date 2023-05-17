@@ -182,6 +182,14 @@
       "package": "cyberpunk-red-core"
     },
     {
+      "label": "Hardened Enemies",
+      "type": "RollTable",
+      "name": "hardened-enemies",
+      "path": "packs/hardened-enemies.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
       "label": "Hornet's Pharmacy",
       "type": "Item",
       "name": "hornets-pharmacy",

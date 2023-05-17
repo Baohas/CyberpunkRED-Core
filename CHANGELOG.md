@@ -57,7 +57,6 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 
 #### Compendia
 
-- Added clothing descriptions with help from Hakuan Quietpaws
 - Added The 12 Days of Cybermas with help from Miklos
 - Added Hornet’s Pharmacy with help from Miklos
 - Added Nomad vehicle upgrades with help from WombatCombat
@@ -70,11 +69,10 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
 - Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
 - Added Night City Weather with help from Miklos
-- Added Non-Generic Weapons
-- Added Black Chrome with help from
-  - H.P. Racha
-  - Hakuan Quietpaws
-  - Sushimatic
+- Added Branded Weapons with help from Hakuan Quietpaws
+- Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic
+- Added clothing descriptions with help from Hakuan Quietpaws
+- Added Mook Encounter Complication, Hardened Lieutenant Tactics, and Hardened Mini Boss Mini Promotion rolltables
 
 #### Other New Features
 
@@ -142,7 +140,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - `source` field for items has been split into 2 separate Fields
   - `source.book`
   - `source.page`
-- Update compendia icons for Armor
+- Updated compendia icons for Armor
 - Reordered system systems
 
 ### Bug Fixes
