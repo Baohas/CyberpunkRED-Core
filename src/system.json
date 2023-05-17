@@ -160,8 +160,8 @@
     {
       "label": "Elflines Online Macros",
       "type": "Macro",
-      "name": "elflines-online",
-      "path": "packs/elflines-online.db",
+      "name": "elflines-online-macros",
+      "path": "packs/elflines-online-macros.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
