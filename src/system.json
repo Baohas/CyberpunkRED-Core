@@ -160,8 +160,8 @@
     {
       "label": "Elflines Online Armory",
       "type": "Item",
-      "name": "elflines-armory",
-      "path": "packs/elflines-armory.db",
+      "name": "elflines-online-armory",
+      "path": "packs/elflines-online-armory.db",
       "system": "cyberpunk-red-core",
       "package": "cyberpunk-red-core"
     },
