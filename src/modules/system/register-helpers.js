@@ -1083,11 +1083,11 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprAmmoDamageOverride", (uuid, property) => {
     LOGGER.trace("cprAmmoDamageOverride | handlebarsHelper | Called.");
     const ammoItem = fromUuidSync(uuid);
-    if (property === "override" || property === "value") {
-      return ammoItem.system.damage[property];
+    if (property === "mode" || property === "value" || property === "minimum") {
+      return ammoItem.system.overrides.damage[property];
     }
     return LOGGER.error(
-      `The only valid property parameters are 'override' or 'value'. '${property}' is not valid.`
+      `The only valid property parameters are 'mode', 'value', or 'minimum'. '${property}' is not valid.`
     );
   });
 

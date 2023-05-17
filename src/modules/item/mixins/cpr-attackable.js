@@ -414,25 +414,40 @@ const Attackable = function Attackable() {
       }
     }
 
-    const ammoDamageOverride = this._getLoadedAmmoProp("damage"); // Get damage override information.
-    if (ammoDamageOverride?.override === "set") {
-      damage = ammoDamageOverride.value; // If mode is "set", then set the value.
-    } else if (ammoDamageOverride?.override === "modify") {
-      const modifier = ammoDamageOverride.value.match(/-*[0-9][0-9]*/);
-      if (!modifier) {
+    const damageOverride = this._getLoadedAmmoProp("overrides")?.damage; // Get damage override information.
+    if (damageOverride?.mode === "set") {
+      damage = damageOverride.value; // If mode is "set", then set the value.
+    } else if (damageOverride?.mode === "modify") {
+      // If mode is "modify",
+      const overrideDiceMod = damageOverride.value.match(/(\+|-)?[0-9]+/); // Get the override's number of dice (and math operator)
+      const overrideResultMod =
+        damageOverride.value.match(/d6\s*((\+|-)[0-9])/); // Get the override's +X or -X from the end of the formula (e.g. 2d6 +4)
+      if (!overrideDiceMod) {
         return SystemUtils.DisplayMessage(
           "warn",
-          `This ammo's damage override has an invalid value (${ammoDamageOverride.value}). Check the ammo's settings.`
+          `This ammo's damage override has an invalid value (${damageOverride.value}). Check the ammo's settings.`
         );
       }
-      const currentDamage = damage.match(/[0-9][0-9]*/);
+      const currentDamageDie = damage.match(/[0-9]+/); // Get current damage's number of dice.
+      const currentDamageResultMod = damage.match(/d6\s*((\+|-)[0-9])/); // Get current damage's +X or -X from the end of the formula.
       const newDamage =
-        Number.parseInt(currentDamage[0], 10) +
-        Number.parseInt(modifier[0], 10);
-      if (newDamage <= 0) {
-        damage = "1d6";
+        // Add current damage dice and override's damage dice.
+        Number.parseInt(currentDamageDie[0], 10) +
+        Number.parseInt(overrideDiceMod[0], 10);
+      const minimumDamage = Number.parseInt(
+        damageOverride.minimum.match(/[0-9]+/),
+        10
+      );
+      if (newDamage <= minimumDamage) {
+        damage = damageOverride.minimum;
       } else {
         damage = `${newDamage}d6`;
+      }
+      if (overrideResultMod) {
+        damage += overrideResultMod[1]; // Re-add override's +X or -X from end of formula.
+      }
+      if (currentDamageResultMod) {
+        damage += currentDamageResultMod[1]; // Re-add current damage's +X or -X from the end of formula.
       }
     }
 

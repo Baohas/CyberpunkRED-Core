@@ -80,7 +80,7 @@
           0
         {{else if (cprCompare ammoType "===" "Paintballs")}}
           0
-        {{else if (cprAmmoDamageOverride this.system.magazine.ammoData.uuid "override")}}
+        {{else if (cprAmmoDamageOverride this.system.magazine.ammoData.uuid "mode")}}
           {{cprAmmoDamageOverride this.system.magazine.ammoData.uuid "value"}}*
         {{else}}
           {{this.system.damage}}
