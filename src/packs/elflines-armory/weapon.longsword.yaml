@@ -14,8 +14,8 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>A hollow cylinder, typically made of metal or fiberglass. It may have
-      conveyed fluids once. </p>
+      <p>A bladed, hilted weapon. Specifically designed for cutting or
+      thrusting. 2 ROF if wielding two longswords.</p>
   dvTable: ""
   equipped: owned
   favorite: false
@@ -40,7 +40,7 @@ system:
   price:
     market: 100
   revealed: true
-  rof: 2
+  rof: 1
   source:
     book: ELO
     page: 3

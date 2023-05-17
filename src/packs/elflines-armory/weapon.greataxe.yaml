@@ -14,8 +14,9 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <p>A japanese wooden pole with a curved blade on one side. Favoured by
-      Arasaka tactical teams for close engagements. </p>
+      <p>A wooden pole with a curved blade on each side. Favoured by raid
+      parties for close engagements. Requires 2 hands to wield even by a wielder
+      with Body 8 or higher.</p>
   dvTable: ""
   equipped: owned
   favorite: false

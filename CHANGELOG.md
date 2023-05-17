@@ -144,6 +144,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
   - `source.page`
 - Updated compendia icons for Armor
 - Reordered system systems
+- Adjusted the wording of existing Elflines items to better fit their function
 
 ### Bug Fixes
 

@@ -13,7 +13,7 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>
+    value: <p>Armor made up of innumerable metal rings. -2 to REF, DEX, and MOVE.</p>
   equipped: owned
   favorite: false
   headLocation:
@@ -26,12 +26,14 @@ system:
     slots: 0
     usedSlots: 0
   isBodyLocation: true
+  isElectronic: false
   isHeadLocation: false
   isShield: false
   isUpgraded: false
   penalty: -2
   price:
     market: 100
+  providesHardening: false
   revealed: true
   shieldHitPoints:
     max: 0
