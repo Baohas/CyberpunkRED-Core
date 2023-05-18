@@ -645,4 +645,22 @@ export default class CPRSystemUtils {
     LOGGER.trace("stripHTML | CPRSystemUtils | Called.");
     return decodeURIComponent($(htmlString).text().replace("%", "&#37")).trim();
   }
+
+  /**
+   * Ensure something is a numeric and if it is not, log an error. Since this seems to be a common
+   * occurrence and causes data corruption, logging an error which produces a stack trace will
+   * be useful in determining where the issue is.
+   *
+   * @static
+   * @param {String} numericVariable - the html string to convert into plain text
+   * @returns {Boolean}
+   */
+  static isNumeric(numericVariable) {
+    LOGGER.trace("isNumeric | CPRSystemUtils | Called.");
+    if (Number.isNaN(numericVariable)) {
+      LOGGER.error("Expected a numeric, but received NaN");
+      return false;
+    }
+    return true;
+  }
 }

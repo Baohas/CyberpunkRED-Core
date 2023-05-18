@@ -458,14 +458,18 @@ export default class CPRChat {
   static async damageApplication(event) {
     LOGGER.trace("damageApplication | CPRChat | Called.");
     // Define a bunch of constants to be used in the rest of the function.
-    const totalDamage = parseInt(
-      SystemUtils.GetEventDatum(event, "data-total-damage"),
-      10
-    );
-    const bonusDamage = parseInt(
-      SystemUtils.GetEventDatum(event, "data-bonus-damage"),
-      10
-    );
+    const totalDamage = SystemUtils.isNumeric(
+      parseInt(SystemUtils.GetEventDatum(event, "data-total-damage"), 10)
+    )
+      ? parseInt(SystemUtils.GetEventDatum(event, "data-total-damage"), 10)
+      : 0;
+
+    const bonusDamage = SystemUtils.isNumeric(
+      parseInt(SystemUtils.GetEventDatum(event, "data-bonus-damage"), 10)
+    )
+      ? parseInt(SystemUtils.GetEventDatum(event, "data-bonus-damage"), 10)
+      : 0;
+
     const damageLethal = /true/i.test(
       SystemUtils.GetEventDatum(event, "data-damage-lethal")
     );
@@ -474,10 +478,12 @@ export default class CPRChat {
     if (location !== "head" && location !== "brain") {
       location = "body";
     }
-    const ablation = parseInt(
-      SystemUtils.GetEventDatum(event, "data-ablation"),
-      10
-    );
+
+    const ablation = SystemUtils.isNumeric(
+      parseInt(SystemUtils.GetEventDatum(event, "data-ablation"), 10)
+    )
+      ? parseInt(SystemUtils.GetEventDatum(event, "data-ablation"), 10)
+      : 0;
 
     const ignoreHalfArmor = /true/i.test(
       SystemUtils.GetEventDatum(event, "data-ignore-half-armor")
