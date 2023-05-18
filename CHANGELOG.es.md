@@ -12,13 +12,80 @@ Effects with situational modifiers have been given the appropriate settings on a
 
 #### Electronic Items
 
-We have migrated all Gear items provided by our Compendia to support `isElectronic` but you will need to update any Homebre/Custom items manually if you want them to support this new data point.
+We have migrated all Gear items provided by our Compendia to support `isElectronic` but you will need to update any Homebrew/Custom items manually if you want them to support this new data point.
 
 #### CSS Themes / Rewrite
 
 Do to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
 
-For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme Ernies needs to be configured to use Dark Mode as well
+For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme Ernies needs to be configured to use Dark Mode as well.
+
+### New Features
+
+#### Improved Dialogues
+
+- All dialogues have been given new styling and have been converted to a new system called CPRDialog.
+- This will allow for more responsive dialogues with complex logic in the future. Some of this is already implemented in Roll Dialogues (see next bullet point).
+
+#### Improved Roll Dialogues
+
+- The UI for roll dialogues has been improved and brought more in-line with the style of our system.
+- Dialogues are now responsive sheets and can change depending on inputs.
+- No more detective work: A tool tip (both in dialogues and on roll cards) displays where every bonus/penalty on your roll comes from.
+- Toggle situational modifiers from active effects, upgrades, and roles right from the dialog.
+- Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu.
+- Add any additional modifiers to the roll as needed.
+- Future work:
+  - Change every dialog over to the improved UI.
+
+#### Roll Modifiers
+
+- New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
+- Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
+  - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogues with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
+- Modifiers to rolls from Role Abilities also have Situational (and On By Default) options.
+- Modifiers to rolls from item Upgrades also have Situational (and On By Default) options.
+  - NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. Sorry!
+- Known Issues / Future Work:
+  - It is a known issue that Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
+
+#### CSS Themes
+
+We have added the functionality for system specific themes. This allows us to ship a few default themes (dark mode!). You can configure this in the `Settings > Cyberpunk RED - CORE` section.
+
+This lays the foundation for allowing 3rd party modules to register their own CPR specific themes in a future release.
+
+#### Compendia
+
+- Added The 12 Days of Cybermas with help from Miklos
+- Added Hornet’s Pharmacy with help from Miklos
+- Added Nomad vehicle upgrades with help from WombatCombat
+- Added Spinning Your Wheels upgrades with help from Sushimatic
+- Added Must Have Cyberware Deals with help from Miklos
+- Added Midnight With The Upload with help from Miklos
+- Added Night City Tarot content with help from Hakuan Quietpaws
+- Added All About Drones with help from Hakuan Quietpaws
+- Added Exotics of 2045 with help from Hakuan Quietpaws
+- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
+- Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
+- Added Night City Weather with help from Miklos
+- Added Branded Weapons with help from Hakuan Quietpaws
+- Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic
+- Added clothing descriptions with help from Hakuan Quietpaws
+- Added Mook Encounter Complication, Hardened Lieutenant Tactics, and Hardened Mini Boss Mini Promotion rolltables
+- Added missing Elflines Online items with help from LordCheesusCrust
+- Added Elflines Online the Trading Card Game with help from LordCheesusCrust
+
+#### Other New Features
+
+- Add check for `core.photosensitivityMode` when rendering pause animation
+- Add a `isElectronic` data point to Gear items
+  - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (EG: A macro to select which items to disable with an EMP)
+- Add `Get EMP'd Items` macro
+  - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (without shielding), carried (electronic) Gear items, or Cyberdecks and outputs the results to chat
+- Add a `brand` field to physical items
+  - All compendia provided by the system have been migrated
+  - We so not provide any migrations for in world items as there are to many edge cases to reliably do this
 
 ### Changes
 
@@ -37,6 +104,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
       - Move Facedown roll from Fight tab to Reputation section
     - Move Sheet Search/Filter from right pane no mans land
       - This removes the System Option and is displayed for all users
+      - Enable automatic searching when typing
     - Remove the HP/Humanity Calculators
       - Recalc functionality moved to Section title
   - Fight Tab
@@ -66,55 +134,17 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Item Sheet
   - Slight Rewrite of header
 
-#### CSS Themes
-
-We have added the functionality for system specific themes. This allows us to ship a few default themes (dark mode!). You can configure this in the `Settings > Cyberpunk RED - CORE` section.
-
-This lays the foundation for allowing 3rd party modules to register their own CPR specific themes in a future release.
-
-### Misc
+#### Other Changes
 
 - Updated the background and header images to new versions by Rayane Souizi "Wizi"
 - Ammo selection dropdown now shows stack size
 - Changed the default weapon to use the default weapon icon
-- Added clothing descriptions with help from Hakuan Quietpaws
-- `source` field for items has been split into 2 seperate Fields
+- `source` field for items has been split into 2 separate Fields
   - `source.book`
   - `source.page`
-- Update compendia icons for Armor
-
-### New Features
-
-#### Improved Dialogues
-
-- All dialogues have been given new styling and have been converted to a new system called CPRDialog.
-- This will allow for more responsive dialogues with complex logic in the future. Some of this is already implemented in Roll Dialogues (see next bullet point.)
-
-#### Improved Roll Dialogs
-
-- The UI for roll dialogues has been improved and brought more in-line with the style of our system.
-- Dialogues are now responsive sheets and can change depending on inputs.
-- No more detective work: A tool tip (both in dialogues and on roll cards) displays where every bonus/penalty on your roll comes from.
-- Toggle situational modifiers from active effects, upgrades, and roles right from the dialog.
-- Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu.
-- Add any additional modifiers to the roll as needed.
-- Future work:
-  - Change every dialog over to the improved UI.
-
-#### Roll Modifiers
-
-- New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
-- Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
-  - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogues with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
-- Modifiers to rolls from Role Abilities also have Situational (and On By Default) options.
-- Modifiers to rolls from item Upgrades also have Situational (and On By Default) options.
-- NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. Sorry!
-- Known Issues / Future Work:
-  - It is a known issue that Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
-
-#### Misc
-
-- Add check for `core.photosensitivityMode` when rendering pause animation
+- Updated compendia icons for Armor
+- Reordered system systems
+- Adjusted the wording of existing Elflines items to better fit their function
 
 ### Bug Fixes
 
@@ -123,9 +153,9 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - Fixed medical grade cyber limbs incorrectly accepting upgrades
 - Fixed a typo in the underbarrel grenade launcher description
 - Added back the underbarrel shotgun that was accidentally deleted
-- Dragging document links to item descriptions links the document correctly.
-- #703 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error.
-- #700 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console.
+- Dragging document links to item descriptions links the document correctly
+- #703 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
+- #700 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console
 - Fix missing tool-tip text in compendia settings
 - Fixed incorrect rounding on the flamethrower and thrown weapon Icons
 - Remove duplicate Smart Lens Cyberware
@@ -136,8 +166,9 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - Fixed not being able to install the correct type of upgrades into a Smart Lens
 - Solucionado #701 - Problema con el lanzamiento del ICE Negro del daño incorrecto.
 - Fix Smart Glasses / Smart Lenses not taking cybereye options
-- Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error.
-- Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console.
+- Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
+- Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console
+- Fixed many places where 'NET' was incorrectly formatted as 'Net'
 
 ## Version 0.86.1 | Date: 2023-02-05
 
@@ -148,8 +179,8 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - #686 - Installing a secondary weapon as a weapon upgrade does not show that upgrade in the Fight Tab
 - #693 - The stripHTML() Handlebar helper fails if the passed HTML contains a percentage sign.
 - #691 - Actors stored in compendiums and dragged out into worlds were losing information on any items that were installed.
-- Fixed the ability to decrement REZ of a running program in the Net tab
-- #692 - Code accidentally added `programs` instead of `cyberware` for owned cyberware on existing actors. This fix adds `cyberware` as it should hav been however we can't know if `programs` was a valid entry for a world, so we are not removing that. It does not impact anything and a GM can manually remove `programs` from an owned piece of cyberware via the item settings if needed.
+- Fixed the ability to decrement REZ of a running program in the NET tab
+- #692 - Code accidentally added `programs` instead of `cyberware` for owned cyberware on existing actors. This fix adds `cyberware` as it should have been however we can't know if `programs` was a valid entry for a world, so we are not removing that. It does not impact anything and a GM can manually remove `programs` from an owned piece of cyberware via the item settings if needed.
 
 ### Changes
 
@@ -250,7 +281,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ### Bug Fixes
 
-- Fixed #624 - Net architecture sheet can't click generation button
+- Fixed #624 - NET architecture sheet can't click generation button
 
 ## Version 0.85.0 | Date: 2022-12-11
 
@@ -349,7 +380,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - #539 - Add ROF to weapons in the fight tab
 - Hide/Show `Used Upgrade Slots` if an item has slots
 - #555 - Create Elflines Online Compendium as a Compendium not a macro
-- The Role block in the left pane of the character sheet is now just a simple text box. Active Net Role is now set from the Net section of the Fight tab. This should be a lot clearer to users and require less maintenance.
+- The Role block in the left pane of the character sheet is now just a simple text box. Active NET Role is now set from the NET section of the Fight tab. This should be a lot clearer to users and require less maintenance.
 
 ### Bug Fixes
 
@@ -649,8 +680,8 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - NOTE: This feature is ENABLED by default as it follows RAW, however may be disabled via the System Settings.
 - Implemented CPR Roll Cards for Initiative.
   - Solo Role Ability `Initiative Reaction` is taken into account when rolling Initiative.
-- Implemented proper initiative rules for Net Combat.
-  - If a character or mook has a cyberdeck equipped when rolling initiative, you will be prompted whether you are rolling for Meat or Net combat as the calculation used depends on this.
+- Implemented proper initiative rules for NET Combat.
+  - If a character or mook has a cyberdeck equipped when rolling initiative, you will be prompted whether you are rolling for Meat or NET combat as the calculation used depends on this.
 - Roles are now items which allows for creation of custom roles and better handling of their functionality.
   - Can configure role abilities to roll with different skills for different situations like the Tech's Upgrade Expertise ability.
   - Can configure flat bonuses to attack, damage, and skill rolls for situations like the Solo's Precision Attack or the Nomad's Moto.
@@ -759,7 +790,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.77.1 (Hotfix) | Date: 2021-06-29
 
-- Corrected localization issue of text on chat cards when rolling Net Damage
+- Corrected localization issue of text on chat cards when rolling NET Damage
 - Added Zap as a rollable interface ability as it was missing from the list (Zap damage will be handled in a future release)
 
 ## Version 0.77.0 | Date: 2021-06-25
@@ -795,17 +826,17 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - Introduction of the Item Object: Cyberdeck
     - Migration code added for existing "Gear" items which have the word "cyberdeck" in the name. These items will be pre-pended with a '[MIGRATED]' tag on it to help identify that the item should be replaced with a new Cyberdeck Item. We have opted to not automate this replacement as people may update just prior to hosting a game and this would/could cause issues for planned sessions.
     - Cyberdeck items in the Shipped Gear Compendium have been replaced with versions utilizing the new Cyberdeck Item Object
-  - Ability to equip one (1) Cyberdeck enables Meat/Net toggle on Fight Tab
+  - Ability to equip one (1) Cyberdeck enables Meat/NET toggle on Fight Tab
   - Ability to install Programs on the Cyberdeck from the Cyberdeck Settings Page and directly from the Gear Tab
   - Programs (Booster) have been enhanced to allow the addition of Roll Modifiers for Interface Abilities (i.e. Eraser gives a +2 to Cloak)
   - Booster Roll Modifiers exposed in Roll verification dialog and added to the roll for Rezzed Boosters Only
     - Shipped Program Compendium updated to include these roll modifiers (Any imported items should be re-imported or manually updated to add these)
   - Programs (Attacker) have been enhanced to allow the setting of Damage. For Anti-Program Attackers, both BlackICE and non-BlackICE damage rolls may be configured
     - Attack rolls for Anti-Program Attack Rolls will prompt on which damage type to roll
-  - When equipping a Cyberdeck in inventory, the Fight Tab exposes a toggle between Meat and Net space. Net space enables quick access to:
+  - When equipping a Cyberdeck in inventory, the Fight Tab exposes a toggle between Meat and NET space. NET space enables quick access to:
     - Roll Interface Abilities
     - Roll Speed against a Black-ICE encounter
-    - Roll Defense against a Net Attack
+    - Roll Defense against a NET Attack
       - Includes any Rezzed Boosters that may have a DEF rating in the Modifiers field
     - Activate/Deactivate & track Rezzed Boosters, Defenders & Black ICE
       - Ability to manage (reduce & reset) the REZ on Boosters and Defenders programs when they take an attack
@@ -886,12 +917,12 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added functionality to automatically resize the character and item sheets. There is a system setting to decide if you want to use it, with the default being off.
 - Added Debug Elements setting for developers.
 - Added "Unarmed" weapon type with optional (on by default) automatic damage determination based on BODY.
-- Added new functionality for the Net architectures.
+- Added new functionality for the NET architectures.
   - It can now be configured on its item sheet, adding, removing and editing the floors.
   - If a specific black ICE is selected it is linked to the corresponding black ICE item sheet if it exists. You have to create these black ICE items yourself.
   - In addition one can automatically generate a scene showing the NET architecture. This scene generation allows for floors up to eight (8) deep and up to four (4) branches to be displayed.
   - Experimental: The scene generation can be customized to use custom assets and custom sizes to allow for maximum flexibility.
-  - As these new features of the Net architecture are experimental, there might be some problems or bugs. If you find any, please let us know.
+  - As these new features of the NET architecture are experimental, there might be some problems or bugs. If you find any, please let us know.
 - Two built-in scenes (maps) are now available in the compendium, alongside the NET architecture tiles. These have been graciously provided by [SolutionMaps](https://www.patreon.com/solutionmaps).
 - The system compendium has now been updated to include ammo, armor, additional cyberware, gear, programs, vehicles and weapons. Simple descriptions are provided to align with the R. Talsorian "Homebrew Content Policy". Please ensure you always reference an official, legally-owned rulebook for the full item description and information. No Actors or "Black ICE" programs are provided, as these count as NPCs under the policy rules and cannot be distributed. If you find any mistakes or typos in the compendia, please let us know in issue #226.
 - One can now change item-amount from character sheet for Ammo, Clothing, and Gear item-types.

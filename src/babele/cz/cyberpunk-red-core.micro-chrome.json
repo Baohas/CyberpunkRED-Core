@@ -3,11 +3,11 @@
   "entries": {
     "Superflash Jacket": {
       "name": "Superflash Jacket",
-      "description": "<p>A nice jacket carrying a surpise; using an action anyone wearing this jacket can consume a battery to let off a blinding light. Treat as a Flashbang Grenade without the Damaged Ear Critical Injury, centered on the wearer.</p>"
+      "description": "<p>A nice jacket carrying a surprise; using an action anyone wearing this jacket can consume a battery to let off a blinding light. Full rules can be found in Micro Chrome on Page 1.</p>"
     },
     "Chipware Compartment": {
       "name": "Chipware Compartment",
-      "description": "<p>Lets you conceal up to four pieces of chipware, no Check required. Retrieval is done by spending an action to spin the eye in its socket.</p>"
+      "description": "<p>Lets you conceal up to four pieces of chipware, no Check required. Full rules can be found in Micro Chrome on Page 1.</p>"
     },
     "Smart Lens": {
       "name": "Smart Lens",
@@ -15,7 +15,7 @@
     },
     "MicroCutie": {
       "name": "MicroCutie",
-      "description": "<p>Using an action the user can enable HypurrburstTM mode. HypurrburstTM mode increases the weapons damage to 4d6, but drains all remaining shots when fired. Requires at least 4 rounds remaining to enable. The weapon purrs while in HypurrburstTM mode*.<br><em>Special fire mode not currently supported; will need to be manually applied</em></p>"
+      "description": "<p>An excellent quality pistol with a unique HypurrburstTM mode fire mode*. The weapon purrs when used. Full rules can be found in Micro Chrome on Page 1.</p>\n<p><br><em>Special fire mode not currently supported; will need to be manually applied</em></p>"
     }
   }
 }

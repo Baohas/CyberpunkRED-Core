@@ -1,6 +1,10 @@
 {
   "label": "Exótica de 2045",
   "entries": {
+    "Appetite Controller": {
+      "name": "Appetite Controller",
+      "description": "<p>Suppresses hunger response. User ignores Humanity Loss penalties from starvation trauma but User can still starve. Roll a Death Save at start of 7th consecutive day without eating. +1 to successive Death Saves each day afterwards.</p>\n<p>Requires Biomonitor.</p>"
+    },
     "Combat Jaw": {
       "name": "Mandíbula de Combate",
       "description": "<p>Arma Cuerpo a Cuerpo Muy Pesada implantada.</p>\n<p>Consulte la descripción completa de la página 72 de Interface Red vol. 2.</p>"
@@ -10,12 +14,12 @@
       "description": "<p>Arma Cuerpo a Cuerpo Pesada implantada. Requiere Interfaz Neuronal.</p>\n<p>Consulte la descripción completa de la página 72 de Interface Red vol. 2.</p>"
     },
     "Extra-Jointed Cyberarm Upgrade": {
-      "name": "Montura de Ciberbrazo Extra",
-      "description": "<ul>\n<li>+2 a la Habilidad Contorcionista</li>\n<li>Uno por ciberarma</li>\n<li>Máximo de 4 bonificaciones (+8)</li>\n</ul>\n<p>Consulte la descripción completa de la página 73 del vol. rojo de la interfaz. 2.</p>"
+      "name": "Extra-Jointed Cyberarm Upgrade",
+      "description": "<p>Enchances cyberarm articulation. +2 Contortionist. (See Black Chrome pg. 18 for more details)</p>"
     },
     "Extra-Jointed Cyberleg Upgrade": {
-      "name": "Montura de Ciberpierna Extra",
-      "description": "<ul>\n<li>+2 a la Habilidad Contorcionista</li>\n<li>Uno por ciberarma</li>\n<li>Máximo de 4 bonificaciones (+8)</li>\n</ul>\n<p>Consulte la descripción completa de la página 73 del Interface Red vol. 2.</p>"
+      "name": "Extra-Jointed Cyberleg Upgrade",
+      "description": "<p>Enchances cyberleg articulation. +2 Contortionist. (See Black Chrome pg. 18 for more details)</p>"
     },
     "Firebreather": {
       "name": "Aliento Ígneo",
@@ -23,7 +27,15 @@
     },
     "Heuristic Health Monitor": {
       "name": "Seguidor Heurístico de la Salud",
-      "description": "<p>Requiere Biomonitor.</p>\n<p>Sensores alrededor del monitor del cuerpo para proporcionar información sobre la salud del tejido aumento de densidad ósea y agrupación muscular que se destila en un número de PV.</p>\n<p>Consulte la descripción completa de la página 73 del Interface Red vol. 2.</p>"
+      "description": "<p>Requires biomonitor. Can know HP at a glance. (See Black Chrome pg. 19 for more details)</p>"
+    },
+    "NeuTongue": {
+      "name": "NeuTongue",
+      "description": "<p>Simulates flavor sensations. Use a linked Agent to customize flavor profiles. Can be deactivated without an Action. No sense of taste when deactivated.</p>\n<p>Replaces Meat tongue.</p>"
+    },
+    "Reflex Co-Processor": {
+      "name": "Reflex Co-Processor",
+      "description": "<p>Neuralware. Negates REF requirement to dodge bullets. (See Black Chrome pg. 21 for more details)</p>"
     }
   }
 }

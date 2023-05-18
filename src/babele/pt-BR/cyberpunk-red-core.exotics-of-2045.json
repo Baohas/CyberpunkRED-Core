@@ -1,6 +1,10 @@
 {
   "label": "Exotics of 2045",
   "entries": {
+    "Appetite Controller": {
+      "name": "Appetite Controller",
+      "description": "<p>Suppresses hunger response. User ignores Humanity Loss penalties from starvation trauma but User can still starve. Roll a Death Save at start of 7th consecutive day without eating. +1 to successive Death Saves each day afterwards.</p>\n<p>Requires Biomonitor.</p>"
+    },
     "Combat Jaw": {
       "name": "Combat Jaw",
       "description": "<p>Implanted Very Heavy Melee Weapon.</p>\n<p>Refer to the full description on page 72 of Interface Red vol. 2.</p>"
@@ -11,11 +15,11 @@
     },
     "Extra-Jointed Cyberarm Upgrade": {
       "name": "Extra-Jointed Cyberarm Upgrade",
-      "description": "<ul>\n<li>+2 to Contortionist Skill</li>\n<li>One per cyberarm</li>\n<li>Max of 4 bonuses (+8)</li>\n</ul>\n<p>Refer to the full description on page 73 of Interface Red vol. 2.</p>"
+      "description": "<p>Enchances cyberarm articulation. +2 Contortionist. (See Black Chrome pg. 18 for more details)</p>"
     },
     "Extra-Jointed Cyberleg Upgrade": {
       "name": "Extra-Jointed Cyberleg Upgrade",
-      "description": "<ul>\n<li>+2 to Contortionist Skill</li>\n<li>One per cyberarm</li>\n<li>Max of 4 bonuses (+8)</li>\n</ul>\n<p>Refer to the full description on page 73 of Interface Red vol. 2.</p>"
+      "description": "<p>Enchances cyberleg articulation. +2 Contortionist. (See Black Chrome pg. 18 for more details)</p>"
     },
     "Firebreather": {
       "name": "Firebreather",
@@ -23,7 +27,15 @@
     },
     "Heuristic Health Monitor": {
       "name": "Heuristic Health Monitor",
-      "description": "<p>Requires Biomonitor.</p>\n<p>Sensors around the body monitor to provide information on tissue health, bone density, and muscle grouping gains that is distilled into an HP number.</p>\n<p>Refer to the full description on page 73 of Interface Red vol. 2.</p>"
+      "description": "<p>Requires biomonitor. Can know HP at a glance. (See Black Chrome pg. 19 for more details)</p>"
+    },
+    "NeuTongue": {
+      "name": "NeuTongue",
+      "description": "<p>Simulates flavor sensations. Use a linked Agent to customize flavor profiles. Can be deactivated without an Action. No sense of taste when deactivated.</p>\n<p>Replaces Meat tongue.</p>"
+    },
+    "Reflex Co-Processor": {
+      "name": "Reflex Co-Processor",
+      "description": "<p>Neuralware. Negates REF requirement to dodge bullets. (See Black Chrome pg. 21 for more details)</p>"
     }
   }
 }

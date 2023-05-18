@@ -27,7 +27,7 @@
     },
     "Kirama Training Deck": {
       "name": "Kirama Console d'entraînement",
-      "description": "<p>La cyberconsole de démarrage. Bon rapport qualité-prix avec spécifications matérielles minimum.</p>\n<p>5 emplacements uniquement pour les programmes.</p>\n<p>Le netrunner doit être 2m/yds ou plus proche du point d'accès à connecter. Tous les dégâts cérébraux causés en combat Net sont doublés.</p>"
+      "description": "<p>La cyberconsole de démarrage. Bon rapport qualité-prix avec spécifications matérielles minimum.</p>\n<p>5 emplacements uniquement pour les programmes.</p>\n<p>Le netrunner doit être à 2m ou plus proche du point d'accès à connecter. Tous les dégâts cérébraux causés en combat Net sont doublés.</p>"
     },
     "MicroMate": {
       "name": "MicroPote",

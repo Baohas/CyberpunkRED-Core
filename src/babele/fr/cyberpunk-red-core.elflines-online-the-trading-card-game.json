@@ -1,0 +1,21 @@
+{
+  "label": "Elflines Online le jeu de cartes à collectionner",
+  "entries": {
+    "Elflines Online Playing Cards": {
+      "name": "Cartes de jeu Elflines Online",
+      "description": "<p>Cartes destinées à être utilisées dans le cadre du jeu de cartes de collection Elfines Online.</p>"
+    },
+    "Duel Caster": {
+      "name": "Duel Caster",
+      "description": "<p>A plastic housing and card launcher for ELO Cards. ROF 3 if only weapon fired on your turn. Can also be loaded with normal playing cards but makes the weapon Poor Quality.</p>"
+    },
+    "Scarlet Blackbow": {
+      "name": "Scarlet Blackbow",
+      "description": "<p>A revitalized bow that must be reloaded after every attack. If you roll 1 on Attack (Crit fail) the bow's battery pack explodes. Comes bundeled with a Quiver and 6 Rubber Arrows.</p>"
+    },
+    "Sword of Arvish": {
+      "name": "Sword of Arvish",
+      "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting. If you roll 1 on Attack (Crit Fail) the weapon crushes the wielder's fingers.</p>"
+    }
+  }
+}

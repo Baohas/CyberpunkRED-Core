@@ -21,18 +21,6 @@
       "name": "Archimedes",
       "description": "<p>Utilise la compétence Pilotage de véhicule aérien au lieu de la compétence Armes lourdes pour tirer, nécessite le cyberimplant Dispositif de visée et ne peut utiliser que des roquettes intelligentes. Il est fourni avec une roquette intelligente à l'achat. Quelle gentillesse.</p>"
     },
-    "SDF-45": {
-      "name": "SDF-45",
-      "description": "<p>Ce lance-roquettes ne peut charger que des fusées perforantes et a une portée maximale de 400 m. Quand est tirée une roquette à la fois, le MJ choisit l'endroit où elle atterrit. Quand sont tirées deux roquettes à la fois, le MJ choisit l'endroit où les roquettes atterrissent, mais cette fois jusqu'à 50 m de la cible, et avec chaque roquette séparés d'au moins 10 m.</p>"
-    },
-    "Ballistic Harpoon": {
-      "name": "Harpon balistique",
-      "description": "<p>Ce harpon peut être utilisé comme une arme de mêlée très lourde à deux mains, ou tirer de son canon comme une arme à distance. Lorsqu'il est tirée, il ignore toujours la moitié de l'armure du défenseur*. <br><em>*Ni les calculs de réduction d'armure ni le basculement à une arme de mêlée ne sont actuellement supportés, à faire manuellement donc</em></p>"
-    },
-    "BudgetArms Triple Treat": {
-      "name": "BudgetArms Triple Treat",
-      "description": "<p>Fournit avec un lance-grenades exotique* qui - comme l'arme principale est de mauvaise qualité - fonctionne comme une arme de mauvaise qualité. Il ne peut pas être supprimé. Celui-ci et l'arme principale peuvent tirer des munitions non basiques.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'arme</em></p>"
-    },
     "Burst Flamethrower": {
       "name": "Lance-flammes à rafale",
       "description": "<p>Peut seulement tirer des chevrotines de fusil à pompe incendiaire, mais les cibles enflammées par cette arme brûlent de 4 PS par tour.<br><br>De plus, cette arme peut consommer toutes ses munitions restantes pour tirer une boule de feu, qui explose de façon similaire à une grenade incendiaire. L’utilisateur de l’arme est également touché par la boule de feu, prenant feu à une intensité Mortelle*.</p>\n<p><em>*Mode de tir spécial non pris en charge actuellement ; devra être appliqué manuellement</em></p>"
@@ -57,9 +45,17 @@
       "name": "Lance-roquettes de poche",
       "description": "<p>Tant que cette arme est déchargée, elle peut être dissimulée.</p>"
     },
+    "SDF-45": {
+      "name": "SDF-45",
+      "description": "<p>Ce lance-roquettes ne peut charger que des fusées perforantes et a une portée maximale de 400 m. Quand est tirée une roquette à la fois, le MJ choisit l'endroit où elle atterrit. Quand sont tirées deux roquettes à la fois, le MJ choisit l'endroit où les roquettes atterrissent, mais cette fois jusqu'à 50 m de la cible, et avec chaque roquette séparés d'au moins 10 m.</p>"
+    },
     "TearJerker": {
       "name": "TearJerker",
       "description": "<p>Cette arme ne peut tirer que des munitions Fumigènes ou Lacrymogène.</p>"
+    },
+    "Triple Treat": {
+      "name": "Triple Treat",
+      "description": "<p>Fournit avec un lance-grenades exotique* monté sous le canon qui - comme l'arme principale est de mauvaise qualité - fonctionne comme une arme de mauvaise qualité. Il ne peut pas être supprimé. Celui-ci et l'arme principale peuvent tirer des munitions non basiques.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'arme</em></p>"
     }
   }
 }

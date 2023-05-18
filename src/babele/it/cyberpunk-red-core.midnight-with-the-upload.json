@@ -3,7 +3,7 @@
   "entries": {
     "Hummingbird": {
       "name": "Hummingbird",
-      "description": "<p>No frills, just raw processing power.</p>\n<p>2 slots only for Hardware</p>\n<p>+1 to Net Actions each turn.</p>"
+      "description": "<p>No frills, just raw processing power.</p>\n<p>2 slots only for Hardware</p>\n<p>+1 to NET Actions each turn.</p>"
     },
     "Kaliya": {
       "name": "Kaliya",
@@ -27,7 +27,7 @@
     },
     "Kirama Training Deck": {
       "name": "Kirama Training Deck",
-      "description": "<p>The quintessential starter Cyberdeck. Bargain-bin price with bare-minimum hardware specs.</p>\n<p>5 slots only for Programs.</p>\n<p>Netrunner must be 2m/yds or closer to Access Point to Jack In. All brain damage from Net combat is doubled.</p>"
+      "description": "<p>The quintessential starter Cyberdeck. Bargain-bin price with bare-minimum hardware specs.</p>\n<p>5 slots only for Programs.</p>\n<p>Netrunner must be 2m/yds or closer to Access Point to Jack In. All brain damage from NET combat is doubled.</p>"
     },
     "MicroMate": {
       "name": "MicroMate",
@@ -71,7 +71,7 @@
     },
     "Combat Recorder": {
       "name": "Combat Recorder",
-      "description": "<p>Real-world Combat data is invaluable for Black ICE development.</p>\n<p>If another Netrunner in the same Net Architecture fails a Death Save, the last 5 minutes of non-self incriminating Netrun combat data is saved to the Cyberdeck. Recordings can be sold for 50eb.</p>"
+      "description": "<p>Real-world Combat data is invaluable for Black ICE development.</p>\n<p>If another Netrunner in the same NET Architecture fails a Death Save, the last 5 minutes of non-self incriminating Netrun combat data is saved to the Cyberdeck. Recordings can be sold for 50eb.</p>"
     },
     "Defense Sequencer": {
       "name": "Defense Sequencer",

@@ -3,11 +3,11 @@
   "entries": {
     "Superflash Jacket": {
       "name": "Chaqueta Superflash",
-      "description": "<p>Una bonita chaqueta portando un sorpresa; con una acción, cualquier persona que use este chaqueta puede consumir una batería para encender una luz cegadora. Trata como una granada de Flashbang sin la lesión de oido crítica, centrada en el portador.</p>"
+      "description": "<p>A nice jacket carrying a surprise; using an action anyone wearing this jacket can consume a battery to let off a blinding light. Full rules can be found in Micro Chrome on Page 1.</p>"
     },
     "Chipware Compartment": {
       "name": "Compartimiento de Chipware",
-      "description": "<p>Te permite ocultar hasta cuatro piezas de chipware, no se requiere Chequeo. La recuperación se hace gastando una acción para girar el ojo en su socket</p>"
+      "description": "<p>Lets you conceal up to four pieces of chipware, no Check required. Full rules can be found in Micro Chrome on Page 1.</p>"
     },
     "Smart Lens": {
       "name": "Lente Inteligente",
@@ -15,7 +15,7 @@
     },
     "MicroCutie": {
       "name": "MicroDulzura",
-      "description": "<p>Utilizando una acción, el usuario puede habilitar el modo HypurrburstM. El modo HypurrburstTM aumenta el daño de las armas a 4d6, pero drena todos los disparos restantes cuando se dispara. Requiere al menos 4 rondas para habilitar. El arma hace un ruido de ronroneo en modo HypurrburstM*.<br><em>Modo de fuego especial no soportado actualmente; tendrá que aplicarse manualmente</em></p>"
+      "description": "<p>An excellent quality pistol with a unique HypurrburstTM mode fire mode*. The weapon purrs when used. Full rules can be found in Micro Chrome on Page 1.</p>\n<p><br><em>Special fire mode not currently supported; will need to be manually applied</em></p>"
     }
   }
 }
