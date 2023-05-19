@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* globals Actor, game, getProperty, hasProperty, duplicate */
+/* globals Actor, game, getProperty, hasProperty, duplicate, CPRMookActorSheet,  CPRContainerActorSheet */
 import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";
 import CPRCharacterActorSheet from "./sheet/cpr-character-sheet.js";
@@ -214,9 +214,10 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * The two reasons we extend this code are:
+   * The three reasons we extend this code are:
    *  - handle an edge case for migrations.
    *  - handle creating items on unlinked tokens
+   *  - handle item stacking
    *
    * @override
    * @param {String} embeddedName - document name, usually a category like Item
@@ -252,6 +253,24 @@ export default class CPRActor extends Actor {
         ids,
         context
       );
+    }
+    if (
+      embeddedName === "Item" &&
+      Object.values(this.apps).some(
+        (app) =>
+          app instanceof CPRCharacterActorSheet ||
+          app instanceof CPRMookActorSheet ||
+          app instanceof CPRContainerActorSheet
+      ) &&
+      !context.CPRsplitStack &&
+      ids.length === 1
+    ) {
+      LOGGER.debug("Attempting to stack items on an actor sheet");
+      const doc = ids[0];
+      const returnValue = await this.automaticallyStackItems(doc);
+      if (returnValue.length > 0) {
+        return returnValue;
+      }
     }
     return super.createEmbeddedDocuments(embeddedName, ids, context);
   }
@@ -1453,15 +1472,14 @@ export default class CPRActor extends Actor {
             addedAmount = 1;
           }
           const newAmount = oldAmount + addedAmount;
-          this.updateEmbeddedDocuments("Item", [
+          return this.updateEmbeddedDocuments("Item", [
             { _id: itemMatch.id, "system.amount": newAmount },
           ]);
-          return false;
         }
       }
     }
     // If not stackable, then return true to continue adding the item.
-    return true;
+    return [];
   }
 
   /**

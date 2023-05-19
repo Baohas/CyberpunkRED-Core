@@ -28,6 +28,32 @@ export default class CPRContainerActor extends Actor {
   }
 
   /**
+   * The three reasons we extend this code are:
+   *  - handle an edge case for migrations.
+   *  - handle creating items on unlinked tokens
+   *  - handle item stacking
+   *
+   * @override
+   * @param {String} embeddedName - document name, usually a category like Item
+   * @param {Object} ids - Array of documents to consider
+   * @param {Object} context - an object tracking the context in which the method is being called
+   * @returns {null}
+   */
+  async createEmbeddedDocuments(embeddedName, ids, context = {}) {
+    LOGGER.trace("createEmbeddedDocuments | CPRContainerActor | called.");
+    // Attempt to stack item before creating it
+    if (embeddedName === "Item" && !context.CPRsplitStack && ids.length === 1) {
+      LOGGER.debug("Attempting to stack items on an actor sheet");
+      const doc = ids[0];
+      const returnValue = await this.automaticallyStackItems(doc);
+      if (returnValue.length > 0) {
+        return returnValue;
+      }
+    }
+    return super.createEmbeddedDocuments(embeddedName, ids, context);
+  }
+
+  /**
    * automaticallyStackItems searches for an identical item on the actor
    * and if found increments the amount and price for the item on the actor
    * instead of adding it as a new item.
@@ -63,14 +89,13 @@ export default class CPRContainerActor extends Actor {
           addedAmount = 1;
         }
         const newAmount = oldAmount + addedAmount;
-        this.updateEmbeddedDocuments("Item", [
+        return this.updateEmbeddedDocuments("Item", [
           { _id: itemMatch._id, "system.amount": newAmount },
         ]);
-        return false;
       }
     }
     // If not stackable, then return true to continue adding the item.
-    return true;
+    return [];
   }
 
   /**

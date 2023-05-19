@@ -315,7 +315,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (
       tradePartnerActor.automaticallyStackItems(
         new CPRItem(transferredItemData)
-      )
+      ).length > 0
     ) {
       await tradePartnerActor.createEmbeddedDocuments("Item", [
         transferredItemData,

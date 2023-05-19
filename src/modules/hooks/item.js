@@ -1,8 +1,6 @@
 /* global Hooks game Handlebars */
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
-import CPRCharacterActorSheet from "../actor/sheet/cpr-character-sheet.js";
-import CPRContainerActorSheet from "../actor/sheet/cpr-container-sheet.js";
 import CPRMookActorSheet from "../actor/sheet/cpr-mook-sheet.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
@@ -38,28 +36,13 @@ const itemHooks = () => {
     LOGGER.trace("preCreateItem | itemHooks | Called.");
 
     const actor = doc.parent;
-    let returnValue = true;
+
     if (typeof createData.img === "undefined" && actor === null) {
       const itemImage = SystemUtils.GetDefaultImage("Item", createData.type);
       doc.updateSource({ img: itemImage });
     }
 
-    if (actor != null) {
-      if (
-        Object.values(actor.apps).some(
-          (app) =>
-            app instanceof CPRCharacterActorSheet ||
-            app instanceof CPRMookActorSheet ||
-            app instanceof CPRContainerActorSheet
-        ) &&
-        userId === game.user._id &&
-        !options.CPRsplitStack
-      ) {
-        LOGGER.debug("Attempting to stack items on a container sheet");
-        returnValue = actor.automaticallyStackItems(doc);
-      }
-    }
-    return returnValue;
+    return true;
   });
 
   /**
