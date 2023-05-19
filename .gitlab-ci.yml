@@ -13,6 +13,7 @@ stages:
   - build
   - pre-release
   - release
+  - post-release
 
 init:
   stage: init
@@ -719,7 +720,7 @@ publish:
     - apt-get update
     - apt-get install curl jq -y
   script:
-    - echo "Releasing cyberpunk-red-core..."
+    - echo "Publishing cyberpunk-red-core..."
     - ./.gitlab/pipeline_utils/publish.sh
   needs:
     - job: init
@@ -727,6 +728,31 @@ publish:
     - job: build-artifacts
     - job: pre-release
       optional: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
+# Builds system to generate a release announcment then webooks to Discord
+announce:
+  stage: post-release
+  before_script:
+    - apt-get update
+    - apt-get install curl jq -y
+  script:
+    - echo "Generating message from changelog..."
+    - ./.gitlab/pipeline_utils/build.sh
+    - echo "Announcing the new release on Discord..."
+    - ./.gitlab/pipeline_utils/discord-release.sh
+  needs:
+    - job: init
+      artifacts: true
+    - job: build-artifacts
+    - job: publish
   rules:
     # Don't run if we're in the cleanup-dev schedule
     - if: $CPR_SCHEDULE == "cleanup-dev"
