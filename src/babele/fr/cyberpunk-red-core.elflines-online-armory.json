@@ -67,11 +67,11 @@
     },
     "Longsword": {
       "name": "Épée longue",
-      "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting. 2 ROF if wielding two longswords.</p>"
+      "description": "<p>Épée longue. Spécifiquement conçue pour découper et transpercer. 2 Att/round si vous portez deux épées longues.</p>"
     },
     "Shortsword": {
       "name": "Épée courte",
-      "description": "<p>A short bladed, hilted weapon. Specifically designed for cutting or thrusting.</p>"
+      "description": "<p>Une épée courte. Conçue pour couper et transpercer.</p>"
     }
   }
 }
