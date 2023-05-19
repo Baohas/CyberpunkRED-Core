@@ -236,13 +236,10 @@ async function buildChangelog() {
       const changelogFile =
         lang !== "en" ? `CHANGELOG.${lang}.md` : "CHANGELOG.md";
       const changelog = fs.readFileSync(path.resolve(changelogFile), "utf-8");
-      // This creates an array of all H2 (##) and sub elements in a markdown file
-      // then we grab the first one and render that markdown to html and write
-      // it to a release-notes file which is then rendered in Foundry
-      const regex = /(?:^|\n)##\s[^\n]*\n(.*?)(?=\n##?\s|$)/gs;
-      const release = regex.exec(changelog)[0];
+      // Get the latest release data from the CHANGELOG
+      const release = _extractMarkdown(changelog, 2)[0];
       const md = new MarkdownIt();
-      const result = md.render(release);
+      const result = md.render(release.content);
 
       // Create the lang/release-notes directory
       if (!fs.existsSync(path.join(destFolder, "lang/release-notes/"))) {
