@@ -9,10 +9,41 @@ import MarkdownIt from "markdown-it";
 import * as config from "./config.mjs";
 import {
   DEBUG,
+  DISCORD_BOT_AVATAR,
+  DISCORD_BOT_NAME,
+  DISCORD_MESSAGE_BACKUP,
+  DISCORD_MESSAGE_CHANGELOG,
+  DISCORD_MESSAGE_HEADER,
+  DISCORD_MESSAGE_INTROS,
   SYSTEM_FILE,
   SYSTEM_TITLE,
   SYSTEM_VERSION,
 } from "./constants.mjs";
+
+// Extrack a header level and it's children
+function _extractMarkdown(markdown, level) {
+  const regex = new RegExp(
+    `^(#{${level}}\\s.*)[\\s\\S]*?(?=(^#{1,${level + 1}}\\s)|$)`,
+    "gm"
+  );
+  const data = [];
+  let match = regex.exec(markdown);
+
+  while (match != null) {
+    const headingText = match[1].replace(`#{${level}}`, "").trim();
+    const startIndex = match.index + match[0].length;
+    const endIndex = markdown.indexOf(`\n${"#".repeat(level)} `, startIndex);
+    const content = markdown
+      .substring(startIndex, endIndex !== -1 ? endIndex : undefined)
+      .trim();
+
+    data.push({ heading: headingText, content });
+
+    match = regex.exec(markdown);
+  }
+
+  return data;
+}
 
 const destFolder = path.resolve(config.dataPath);
 const srcFolder = "src";
@@ -93,6 +124,101 @@ async function buildManifest() {
       JSON.stringify(system, null, 2)
     );
     log(`Finished building ${SYSTEM_FILE}.`);
+    cb();
+  });
+}
+
+// Create the release notes for the version and put it in the distDir
+async function buildDiscordMessage() {
+  return new Promise((cb) => {
+    log("Generating Release Notes...");
+    const changelogFile = "CHANGELOG.md";
+    const changelog = fs.readFileSync(path.resolve(changelogFile), "utf-8");
+
+    // Get the latest release data from the CHANGELOG
+    const releaseData = _extractMarkdown(changelog, 2)[0];
+    // Make an array of each H3 section from the latest release Data
+    const releaseSections = _extractMarkdown(releaseData.content, 3);
+
+    // The main Message can only be 2000 chars long, so we'll build it from
+    // the above string then add the actual changes in as embeds.
+    const message = [];
+    message.push(DISCORD_MESSAGE_HEADER);
+    message.push(
+      DISCORD_MESSAGE_INTROS[
+        Math.floor(Math.random() * DISCORD_MESSAGE_INTROS.length)
+      ]
+    );
+    message.push(DISCORD_MESSAGE_BACKUP);
+    message.push(DISCORD_MESSAGE_CHANGELOG);
+
+    const jsonData = {
+      username: DISCORD_BOT_NAME,
+      avatar_url: DISCORD_BOT_AVATAR,
+      content: message.join("\n\n"),
+      embeds: [],
+    };
+
+    // Generate the embeds
+    releaseSections.forEach((section) => {
+      const sectionTempData = [];
+      const sectionHeading = section.heading.replace("### ", "");
+      const sectionItems = _extractMarkdown(section.content, 4);
+
+      if (sectionItems.length > 0) {
+        // Loop over each h4 in the parent h3
+        sectionItems.forEach((item) => {
+          const itemHeading = item.heading.replace("#### ", "");
+          // Strip out any unordered lists, we only want the headline changes
+          const itemContent = item.content
+            .replace(/^(\s*)[-+*]\s+.+$/gm, "")
+            .replace(/\n{2,}/g, "");
+          // If once we've stripped the ol/uls the section has no content, skip it
+          if (itemContent !== "") {
+            sectionTempData.push(`**${itemHeading}**\n\n${itemContent}`);
+          }
+        });
+      } else {
+        // Strip out any unordered lists, we only want the headline changes
+        const itemContent = section.content
+          .replace(/^(\s*)[-+*]\s+.+$/gm, "")
+          .replace(/\n{2,}/g, "");
+
+        sectionTempData.push(itemContent);
+      }
+
+      const sectionData = sectionTempData.join("\n\n");
+
+      // Discord uses decimal rather than hex for colors
+      // Set color in the following way:
+      //   Action Needed: red
+      //   Bug Fixes: blue
+      //   Changes: orange
+      //   New Features: green (default)
+      const sectionColor = sectionHeading.includes("Action Needed")
+        ? 16711680
+        : sectionHeading.includes("Bug Fixes")
+        ? 5814783
+        : sectionHeading.includes("Changes")
+        ? 15300864
+        : 962304;
+
+      if (sectionData !== "") {
+        jsonData.embeds.push({
+          title: `**${sectionHeading}**`,
+          description: sectionData,
+          color: sectionColor,
+        });
+      }
+    });
+
+    // Write the discord message data to a file
+    fs.writeFileSync(
+      path.join(destFolder, "lang/release-notes/", `discord.json`),
+      JSON.stringify(jsonData, null, "  "),
+      { mode: 0o644 }
+    );
+    log("Finished Generating Discord Release Notes.");
     cb();
   });
 }
@@ -211,6 +337,7 @@ async function watchSrc() {
 export {
   buildManifest,
   buildChangelog,
+  buildDiscordMessage,
   cleanDist,
   copyAssets,
   compileLess,

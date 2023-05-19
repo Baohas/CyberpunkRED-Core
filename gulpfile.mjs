@@ -14,7 +14,8 @@ export const assets = gulp.parallel(
   bld.processImages,
   bld.buildManifest,
   bld.buildChangelog,
-  bld.copyAssets
+  bld.copyAssets,
+  bld.buildDiscordMessage
 );
 
 // Export packs from Foundry to src/packs
