@@ -169,6 +169,9 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console
 - Fixed many places where 'NET' was incorrectly formatted as 'Net'
+- Fixed a couple issues around migration:
+  - #681 issue where uninstalling installed items was broken if the item was directly installed into the actor and not into a containerType item
+  - The code was calling createEmbeddedDocument on the TokenDocument however this version of Foundry expects the call to be on the associated actor
 
 ## Version 0.86.1 | Date: 2023-02-05
 

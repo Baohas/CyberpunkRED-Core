@@ -314,7 +314,10 @@ export default class CPRActor extends Actor {
         item.system.isInstalled &&
         item.system.installedIn !== ""
       ) {
-        const installLocation = this.getOwnedItem(item.system.installedIn);
+        const installLocation =
+          item.system.installedIn === this.uuid
+            ? this
+            : this.getOwnedItem(item.system.installedIn);
         if (containerTypes.includes(installLocation.type)) {
           await installLocation.uninstallItems([item], false);
         }
