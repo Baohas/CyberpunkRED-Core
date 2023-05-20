@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */
-/* global game, hasProperty, duplicate, mergeObject, Item fromUuidSync TokenDocument */
+/* global game, hasProperty, duplicate, mergeObject, Item, fromUuidSync, fromUuid, TokenDocument */
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
@@ -453,11 +453,17 @@ export default class CPRMigration {
       return;
     }
 
-    let actor = fromUuidSync(originalData.actor);
+    const compendiumRegex = /Compendium/g;
+
+    let actor = originalData.actor.match(compendiumRegex)
+      ? await fromUuid(originalData.actor)
+      : fromUuidSync(originalData.actor);
     if (actor instanceof TokenDocument) {
       actor = actor.actor;
     }
-    const oldOwnedItem = fromUuidSync(originalData.item);
+    const oldOwnedItem = originalData.item.match(compendiumRegex)
+      ? await fromUuid(originalData.item)
+      : fromUuidSync(originalData.item);
     const resultArray = await actor.createEmbeddedDocuments("Item", [
       item.toObject(),
     ]);
