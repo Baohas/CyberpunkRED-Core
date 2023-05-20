@@ -1,8 +1,8 @@
 _id: KPSBX2Ns6cj6JC4v
-img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_flashbang.png
+img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_armorpiercing.png
 name: Shuriken Tornado Grenade
 system:
-  ablationValue: 1
+  ablationValue: 2
   amount: 1
   brand: Great Lakes Cutlery
   concealable:

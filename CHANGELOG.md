@@ -86,6 +86,7 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - Add a `brand` field to physical items
   - All compendia provided by the system have been migrated
   - We so not provide any migrations for in world items as there are to many edge cases to reliably do this
+- Added many many new icons for the new Compendia
 - You can now pass an ablation modifier via the /red command.
   - Example: `/red 6d6a2` will generate a 6d6 damage roll as it always did, but when the damage is applied to tokens, the armor will be ablated by 2
   - Reminder Note: If using any roll modifiers and the card description modifier (#), the card description modifier must be the last one used on the line. This has always been the case, just calling it our here as this now adds an additional modifier.

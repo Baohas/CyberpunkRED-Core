@@ -2,7 +2,7 @@ _id: EBdbf1JaVGl0M7LJ
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_armorpiercing.png
 name: Security Grenade
 system:
-  ablationValue: 1
+  ablationValue: 2
   amount: 1
   brand: KTech
   concealable:
