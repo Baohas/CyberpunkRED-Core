@@ -331,8 +331,8 @@
         },
         "autofire": {
           "mode": "none",
-          "value": "-1",
-          "minimum": "3"
+          "value": -1,
+          "minimum": 3
         }
       }
     },
