@@ -16,6 +16,15 @@ system:
       falls Prone (see pg. 169) and unconscious for 1 minute. Can be woken by
       damage or another person using an action to touch/shake them.</p>
   favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
   price:
     market: 500
   source:

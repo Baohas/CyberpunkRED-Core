@@ -25,6 +25,7 @@ system:
   isUpgraded: false
   price:
     market: 100
+  providesHardening: false
   revealed: true
   source:
     book: Core

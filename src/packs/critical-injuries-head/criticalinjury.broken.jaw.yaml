@@ -4,6 +4,7 @@ effects:
     changes:
       - key: bonuses.allActionsSpeech
         mode: 2
+        priority: null
         value: "-4"
     disabled: false
     duration:

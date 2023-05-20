@@ -18,6 +18,15 @@ system:
       <p><em>*Not currently supported so will need to manually reduce armour on
       hit</em></p>
   favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
   price:
     market: 10
   source:

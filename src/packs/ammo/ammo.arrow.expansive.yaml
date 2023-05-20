@@ -16,6 +16,15 @@ system:
       second (different) Critical Injury. Second injury does not deal bonus
       damage.</p>
   favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
   price:
     market: 100
   source:

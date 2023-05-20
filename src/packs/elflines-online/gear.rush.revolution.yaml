@@ -11,8 +11,7 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: >-
-      <p>Braindance Headset. Required to play Elflines Online.</p>
+    value: <p>Braindance Headset. Required to play Elflines Online.</p>
   equipped: owned
   favorite: false
   installedItems:

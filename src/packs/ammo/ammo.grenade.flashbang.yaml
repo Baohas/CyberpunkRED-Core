@@ -16,6 +16,15 @@ system:
       the Damaged Eye and Damaged Ear Critical injuries (see pg. 188) for 1
       minute. No Crit damage dealt. </p>
   favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
   price:
     market: 100
   source:

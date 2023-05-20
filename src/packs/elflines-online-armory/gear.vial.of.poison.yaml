@@ -21,9 +21,11 @@ system:
     list: []
     slots: 0
     usedSlots: 0
+  isElectronic: false
   isUpgraded: false
   price:
     market: 100
+  providesHardening: false
   revealed: true
   source:
     book: ELO

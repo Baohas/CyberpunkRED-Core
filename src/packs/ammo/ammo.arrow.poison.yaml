@@ -15,6 +15,15 @@ system:
       <p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs
       Check. On a fail 2d6 damage to HP. No Ablation. </p>
   favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
   price:
     market: 100
   source:

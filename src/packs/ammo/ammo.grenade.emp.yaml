@@ -16,6 +16,15 @@ system:
       electronics (GM's choice) stop working for 1 minute. Cyberlimbs hang
       loosely like a dismembered meat arm see pg. 187.</p>
   favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
   price:
     market: 500
   source:
