@@ -64,6 +64,12 @@ export class CPRRoll {
    */
   _processFormula(formula) {
     LOGGER.trace("_processFormula | CPRRoll | Called.");
+    // If formula is just a number string, return that number.
+    // This allows us to pass flat numbers as the roll formula, if a weapon or its ammo do flat damage.
+    // See: "https://stackoverflow.com/questions/175739/how-can-i-check-if-a-string-is-a-valid-number"
+    if (!Number.isNaN(+formula)) {
+      return formula;
+    }
     const dice = /[0-9][0-9]*d[0-9][0-9]*/;
     const die = /d[0-9][0-9]*/;
     // cut out the XdY term, leaving only + or - terms after
