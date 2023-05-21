@@ -1,0 +1,139 @@
+_id: xWZowpQzG7fpmoP7
+description: >-
+  Source: Achievements and Loot Boxes pg.5
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: true
+flags:
+  exportSource:
+    coreVersion: "10.291"
+    system: cyberpunk-red-core
+    systemVersion: v0.86.1
+    world: cyberpunk-red
+formula: 1d6
+img: icons/containers/boxes/crate-reinforced-brown.webp
+name: A Box Covered in Chipped Paint
+replacement: true
+results:
+  - _id: pXWJgAjL94Fgr83F
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: 3rtsVDMaB16lc5tY
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_teargas.png
+    range:
+      - 1
+      - 1
+    text: Grenade (Teargas)
+    type: 2
+    weight: 1
+  - _id: kB1Uz1Ik3X5gbsgq
+    documentCollection: cyberpunk-red-core.black-chrome
+    documentId: RwZUbGdbyp5KTEc5
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol_poor.svg
+    range:
+      - 2
+      - 2
+    text: GunMart Smart Special
+    type: 2
+    weight: 1
+  - _id: j6zj2lwkNOsXUUPe
+    documentCollection: cyberpunk-red-core.spinning-your-wheels
+    documentId: XIDIqcWCFJtzYeRw
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/spinning_your_wheels/bicycle.svg
+    range:
+      - 3
+      - 3
+    text: Bicycle
+    type: 2
+    weight: 1
+  - _id: Y8W7Mp8xVqTOTcDg
+    documentCollection: cyberpunk-red-core.woodchippers-garage
+    documentId: moqJ5beR4WqWCpZM
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher.svg
+    range:
+      - 4
+      - 4
+    text: Flare Gun
+    type: 2
+    weight: 1
+  - _id: HEpyqeyPVjaNh0Uf
+    documentCollection: cyberpunk-red-core.armor
+    documentId: Bg1YEeF25HhfrzOG
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/armor/bullet_proof_shield.svg
+    range:
+      - 5
+      - 5
+    text: Bullet Proof Shield
+    type: 2
+    weight: 1
+  - _id: CLYP5a79aDXgfBJc
+    documentCollection: cyberpunk-red-core.the-12-days-of-gunmas
+    documentId: cUgtpdroFgBBJGam
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
+    range:
+      - 6
+      - 6
+    text: Crusher
+    type: 2
+    weight: 1
+  - _id: JmBWc0G5bpw0tIC7
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: WOJD6hQVUVEK8AsJ
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_rubber.png
+    range:
+      - 2
+      - 2
+    text: Heavy Pistol (Rubber)
+    type: 2
+    weight: 1
+  - _id: csBVQiIWZ7TzP3ni
+    documentCollection: cyberpunk-red-core.gear
+    documentId: EUZBOSRdQWOqKVUg
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/roadflare.svg
+    range:
+      - 4
+      - 4
+    text: Road Flare
+    type: 2
+    weight: 1
+  - _id: srJ48dB0LAX4UuXl
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: mkI1KpjAOUz9PxRM
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_shell_basic.png
+    range:
+      - 6
+      - 6
+    text: Shotgun Shell (Basic)
+    type: 2
+    weight: 1
+  - _id: 8GiUMH48KDkiJc3c
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: jmia1vHSv6bdQEVP
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_basic.png
+    range:
+      - 2
+      - 2
+    text: Heavy Pistol (Basic)
+    type: 2
+    weight: 1

@@ -22,6 +22,15 @@
   "styles": ["main.css"],
   "packs": [
     {
+      "label": "Achievements and Loot Boxes",
+      "type": "RollTable",
+      "name": "achievements-and-loot-boxes",
+      "path": "packs/achievements-and-loot-boxes.db",
+      "system": "cyberpunk-red-core",
+      "private": false,
+      "flags": {}
+    },
+    {
       "label": "All About Drones",
       "type": "Item",
       "name": "all-about-drones",

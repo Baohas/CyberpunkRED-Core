@@ -1,0 +1,168 @@
+_id: 4S3emhUCIIDNoTAg
+description: >-
+  Source: Achievements and Loot Boxes pg.5
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: true
+flags:
+  exportSource:
+    coreVersion: "10.291"
+    system: cyberpunk-red-core
+    systemVersion: v0.86.1
+    world: cyberpunk-red
+formula: 1d6
+img: icons/containers/boxes/box-gift-green.webp
+name: A Box Handsomely Gift Wrapped
+replacement: true
+results:
+  - _id: 9XqUo02ZTN1EJoQT
+    documentCollection: cyberpunk-red-core.gear
+    documentId: JL6Nf3l7hjzDmJZ5
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/binoculars.svg
+    range:
+      - 1
+      - 1
+    text: Binoculars
+    type: 2
+    weight: 1
+  - _id: hgXu6ktxNPBq4rfg
+    documentCollection: cyberpunk-red-core.armor
+    documentId: uaN9WukkezPfcutU
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor.svg
+    range:
+      - 2
+      - 2
+    text: Light Armorjack (Body)
+    type: 2
+    weight: 1
+  - _id: IFS3beg2EGj5LDSS
+    documentCollection: cyberpunk-red-core.weapons-branded
+    documentId: luv1w6UcSC3xHg5j
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/weapons/mediumPistol_excellent.svg
+    range:
+      - 3
+      - 3
+    text: Avenger
+    type: 2
+    weight: 1
+  - _id: YYpTUny4o9I5DdR6
+    documentCollection: cyberpunk-red-core.gear
+    documentId: clCxd7qkp2olsKii
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/video_camera.svg
+    range:
+      - 4
+      - 4
+    text: Video Camera
+    type: 2
+    weight: 1
+  - _id: oUTec8w9GkgiP5A9
+    documentCollection: cyberpunk-red-core.must-have-cyberware-deals
+    documentId: mTL4ZsBLRd6dO7Hv
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/must_have_cyberware_deals/neutongue.svg
+    range:
+      - 5
+      - 5
+    text: NeuTongue
+    type: 2
+    weight: 1
+  - _id: 6ZVQlLsR7FFUysXC
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: n1vIKB6Mln9XgUXL
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_rubber.png
+    range:
+      - 3
+      - 3
+    text: Medium Pistol (Rubber)
+    type: 2
+    weight: 1
+  - _id: sFfjwgosN9Kfm007
+    documentCollection: cyberpunk-red-core.black-chrome
+    documentId: 0z0v50kDAgHvMquv
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/black-chrome/reflex-co-processor.svg
+    range:
+      - 6
+      - 6
+    text: Reflex Co-Processor
+    type: 2
+    weight: 1
+  - _id: 6Aob1Q13Wnq2fmKF
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: 6OdC9uNTwgQLFdto
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_basic.png
+    range:
+      - 3
+      - 3
+    text: Medium Pistol (Basic)
+    type: 2
+    weight: 1
+  - _id: NadBu2gykgTVe0A4
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: PBA9BUs49TQeLoDi
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_armorpiercing.png
+    range:
+      - 3
+      - 3
+    text: Medium Pistol (Armor Piercing)
+    type: 2
+    weight: 1
+  - _id: jXkHDDDnhIXQCaQd
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: yEZOd9wbzrw30wKz
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_expansive.png
+    range:
+      - 3
+      - 3
+    text: Medium Pistol (Expansive)
+    type: 2
+    weight: 1
+  - _id: Nzy48k6l0ISVynhn
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: wTLwxLUvBBoM3yhM
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_incendiary.png
+    range:
+      - 3
+      - 3
+    text: Medium Pistol (Incendiary)
+    type: 2
+    weight: 1
+  - _id: CQ6soKGNpevqO25w
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: 6dwSiAhYho02ZtgL
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_smart.png
+    range:
+      - 3
+      - 3
+    text: Medium Pistol (Smart)
+    type: 2
+    weight: 1

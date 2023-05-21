@@ -1,0 +1,95 @@
+_id: VszxZ4TJjQ8FGuoc
+description: >-
+  Source: Achievements and Loot Boxes pg.5
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: true
+flags:
+  exportSource:
+    coreVersion: "10.291"
+    system: cyberpunk-red-core
+    systemVersion: v0.86.1
+    world: cyberpunk-red
+formula: 1d6
+img: icons/containers/chest/chest-simple-box-blue.webp
+name: A Box Freezing Cold To The Touch
+replacement: true
+results:
+  - _id: JiMN6zADBZGPIqHC
+    documentCollection: cyberpunk-red-core.clothing
+    documentId: Xi3LUVQem3nBHgB1
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/clothing/generic_mirrorshades.svg
+    range:
+      - 1
+      - 1
+    text: Bohemian Mirrorshades
+    type: 2
+    weight: 1
+  - _id: wqG4JWoUVJYhyJqH
+    documentCollection: cyberpunk-red-core.black-chrome
+    documentId: OzfbjQ3nPCCf6BQQ
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/black-chrome/street-viper-riding-suit.svg
+    range:
+      - 2
+      - 2
+    text: Street Viper Riding Suit
+    type: 2
+    weight: 1
+  - _id: qVw9IIb1peHOxlXK
+    documentCollection: cyberpunk-red-core.black-chrome
+    documentId: BYDAED1axkFYm1h9
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/cyberware/cybereye.svg
+    range:
+      - 3
+      - 3
+    text: Sponsored Cybereye
+    type: 2
+    weight: 1
+  - _id: C1PBkQkgZesy7QSz
+    documentCollection: cyberpunk-red-core.black-chrome
+    documentId: xVE36X9aE4m3mRza
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/black-chrome/skidrow-trench.svg
+    range:
+      - 4
+      - 4
+    text: Skid Row Trench
+    type: 2
+    weight: 1
+  - _id: 1luj1hZCHHXcW6eT
+    documentCollection: cyberpunk-red-core.hornets-pharmacy
+    documentId: RZ7P9nSOB21pfiaI
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/prime_time.svg
+    range:
+      - 5
+      - 5
+    text: Prime Time
+    type: 2
+    weight: 1
+  - _id: xdzTOenYphIk50Dk
+    documentCollection: cyberpunk-red-core.black-chrome
+    documentId: fyi3U9v6On4r1iiO
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/black-chrome/laser-light-street-jacket.svg
+    range:
+      - 6
+      - 6
+    text: Laser Light Street Jacket
+    type: 2
+    weight: 1

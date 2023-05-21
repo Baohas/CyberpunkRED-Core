@@ -75,6 +75,7 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - Added Mook Encounter Complication, Hardened Lieutenant Tactics, and Hardened Mini Boss Mini Promotion rolltables
 - Added missing Elflines Online items with help from LordCheesusCrust
 - Added Elflines Online the Trading Card Game with help from LordCheesusCrust
+- Added Achievements And Loot Boxes with help from LordCheesusCrust
 
 #### Other New Features
 

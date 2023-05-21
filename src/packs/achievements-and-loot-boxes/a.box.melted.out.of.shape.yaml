@@ -1,0 +1,154 @@
+_id: bOtq937SNIahmbeK
+description: >-
+  Source: Achievements and Loot Boxes pg.6
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: true
+flags:
+  exportSource:
+    coreVersion: "10.291"
+    system: cyberpunk-red-core
+    systemVersion: v0.86.1
+    world: cyberpunk-red
+formula: 1d6
+img: icons/containers/boxes/crate-wooden-grey.webp
+name: A Box Melted Out Of Shape
+replacement: true
+results:
+  - _id: fABg1vUrxkxVFiXh
+    documentCollection: cyberpunk-red-core.black-chrome-plus
+    documentId: ZWoM763wXSI3njJA
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/black-chrome-plus/scavenged-armor.svg
+    range:
+      - 1
+      - 1
+    text: Scavenged Armor
+    type: 2
+    weight: 1
+  - _id: 4kibUUAHR3AIsfNo
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: IJhN5QHmu4hAJxLo
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_incendiary.png
+    range:
+      - 2
+      - 2
+    text: Grenade (Incendiary)
+    type: 2
+    weight: 1
+  - _id: 3TasXLmE9oieBVdw
+    documentCollection: cyberpunk-red-core.black-chrome
+    documentId: MfNQoF64u5w8cK7A
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/black-chrome/neo-soviet-cyberarm.svg
+    range:
+      - 3
+      - 3
+    text: Neo-Soviet Cyberarm
+    type: 2
+    weight: 1
+  - _id: EecXu96GFBGINFti
+    documentCollection: cyberpunk-red-core.the-12-days-of-gunmas
+    documentId: poMp4coxB8SORzvi
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle_poor.svg
+    range:
+      - 4
+      - 4
+    text: ST-5 Assault Rifle
+    type: 2
+    weight: 1
+  - _id: uCN8IKzSfQcwODf8
+    documentCollection: cyberpunk-red-core.black-chrome-plus
+    documentId: 5boGB9jFKUJ9cSMR
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/black-chrome-plus/everest-ventureware-survivalmaster.svg
+    range:
+      - 5
+      - 5
+    text: SurvivalMaster
+    type: 2
+    weight: 1
+  - _id: pUmneVMNecBD6xLc
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: qA9wmNHuGLsxBtRB
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_rubber.png
+    range:
+      - 4
+      - 4
+    text: Rifle (Rubber)
+    type: 2
+    weight: 1
+  - _id: VYOkYZW8dWTw78J6
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: qA9wmNHuGLsxBtRB
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_rubber.png
+    range:
+      - 5
+      - 5
+    text: Rifle (Rubber)
+    type: 2
+    weight: 1
+  - _id: gW46vRTu751ecurO
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: J3NfMgRdqoUwFDDs
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_basic.png
+    range:
+      - 4
+      - 4
+    text: Rifle (Basic)
+    type: 2
+    weight: 1
+  - _id: c882saQgR5Rml9cq
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: J3NfMgRdqoUwFDDs
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_basic.png
+    range:
+      - 5
+      - 5
+    text: Rifle (Basic)
+    type: 2
+    weight: 1
+  - _id: eD54BZDsA1AmnI7r
+    documentCollection: cyberpunk-red-core.weapons
+    documentId: qAqYtbD1yFgQNelR
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/weapons/flamethrower.svg
+    range:
+      - 6
+      - 6
+    text: Flamethrower
+    type: 2
+    weight: 1
+  - _id: rfMkakfZl1fgqRNA
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: MdA5gBfCKbBuHGof
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_shell_incendiary.png
+    range:
+      - 6
+      - 6
+    text: Shotgun Shell (Incendiary)
+    type: 2
+    weight: 1

@@ -1,0 +1,115 @@
+_id: uq1cseo3a1hAx7Pg
+description: >-
+  Source: Achievements and Loot Boxes pg.5
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: true
+flags:
+  exportSource:
+    coreVersion: "10.291"
+    system: cyberpunk-red-core
+    systemVersion: v0.86.1
+    world: cyberpunk-red
+formula: 1d6
+img: icons/containers/boxes/box-gift-blue.webp
+name: A Box Bound Tightly in Rope
+replacement: true
+results:
+  - _id: NYIH71JwbuArdM71
+    documentCollection: ""
+    documentId: null
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/rope.svg
+    range:
+      - 1
+      - 1
+    text: 2 Coils of Rope (60m/yd per coil, 120m/yd in all.)
+    type: 0
+    weight: 1
+  - _id: gEL1jssG8BYFCbEN
+    documentCollection: cyberpunk-red-core.gear
+    documentId: ECoCsPyfIEBCSggM
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/virtuality_goggles.svg
+    range:
+      - 2
+      - 2
+    text: Virtuality Goggles
+    type: 2
+    weight: 1
+  - _id: 1xJ62jbSbw9jlhRl
+    documentCollection: cyberpunk-red-core.gear
+    documentId: VrwVUEHuMCGjp8Fi
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/grapple_gun.svg
+    range:
+      - 3
+      - 3
+    text: Grapple Gun
+    type: 2
+    weight: 1
+  - _id: uMEBOmKCPijSlR7T
+    documentCollection: cyberpunk-red-core.gear
+    documentId: gaGUmTGViuxZ4mqR
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/vial_poison.svg
+    range:
+      - 4
+      - 4
+    text: Vial of Poison
+    type: 2
+    weight: 1
+  - _id: VQynxqPUN4ABRYGD
+    documentCollection: cyberpunk-red-core.clothing
+    documentId: iwf7yiZyvmhW3rPj
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
+    range:
+      - 5
+      - 5
+    text: Urban Flash Jewelry
+    type: 2
+    weight: 1
+  - _id: fQTbhhUcSlRuNsSf
+    documentCollection: cyberpunk-red-core.the-12-days-of-cybermas
+    documentId: U8SdGzK5sIdWHaQ1
+    drawn: false
+    flags: {}
+    img: >-
+      systems/cyberpunk-red-core/icons/compendium/the_12_days_of_cybermas/cybermatrix_gang_jazzler.svg
+    range:
+      - 6
+      - 6
+    text: Gang Jazzler
+    type: 2
+    weight: 1
+  - _id: kGYKKrORxH2OxM6Q
+    documentCollection: cyberpunk-red-core.gear
+    documentId: i0xmIJjhcMKIWJ0M
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/gear/rope.svg
+    range:
+      - 1
+      - 1
+    text: Rope (60m/yd)
+    type: 2
+    weight: 1
+  - _id: SZBfy8RDcTLbwCkV
+    documentCollection: cyberpunk-red-core.ammo
+    documentId: MfuoJ69NL1FiP7B8
+    drawn: false
+    flags: {}
+    img: systems/cyberpunk-red-core/icons/compendium/ammo/battery.png
+    range:
+      - 6
+      - 6
+    text: Battery Pack
+    type: 2
+    weight: 1
