@@ -70,7 +70,7 @@ export default class CPRItem extends Item {
    * upgrades should come along for the ride, but be separately created items.
    *
    * During the Active Effects data migration, we did want to keep the included items.
-   * To enable that behavior, pass isMigrating as true in the options object when calling Item.create().
+   * To enable that behavior, pass cprIsMigrating as true in the options object when calling Item.create().
    *
    * @param {Item} data - the primitive data for the Item being created
    * @param {Object} options - options (for Foundry) to the Item creation process

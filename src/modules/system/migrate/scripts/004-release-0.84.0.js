@@ -98,11 +98,15 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
     }
 
     if (itemDeletions.length > 0) {
-      await actor.deleteEmbeddedDocuments("Item", itemDeletions);
+      await actor.deleteEmbeddedDocuments("Item", itemDeletions, {
+        cprIsMigrating: true,
+      });
     }
 
     if (itemCreations.length > 0) {
-      await actor.createEmbeddedDocuments("Item", itemCreations);
+      await actor.createEmbeddedDocuments("Item", itemCreations, {
+        cprIsMigrating: true,
+      });
     }
 
     return itemUpdates.length > 0

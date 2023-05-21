@@ -693,7 +693,7 @@ export default class BaseMigration extends CPRMigration {
 
     if (newItems.length > 0) {
       await actorDocument.createEmbeddedDocuments("Item", newItems, {
-        CPRmigration: true,
+        cprIsMigrating: true,
       });
     }
   }

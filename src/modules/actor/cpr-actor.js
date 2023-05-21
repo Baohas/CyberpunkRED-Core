@@ -230,7 +230,7 @@ export default class CPRActor extends Actor {
     // If migration is calling this, we definitely want to
     // create the Embedded Documents.
     const isMigration = !!(
-      typeof context !== "undefined" && context.CPRmigration
+      typeof context !== "undefined" && context.cprIsMigrating
     );
     if (!isMigration) {
       if (embeddedName === "Item") {
@@ -310,35 +310,43 @@ export default class CPRActor extends Actor {
    */
   async deleteEmbeddedDocuments(embeddedName, ids, context = {}) {
     LOGGER.trace("deleteEmbeddedDocuments | CPRActor | called.");
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
-    for (const itemId of ids) {
-      const item = this.getOwnedItem(itemId);
-      if (
-        containerTypes.includes(item.type) &&
-        item.system.installedItems.list.length > 0
-      ) {
-        const itemList = [];
-        for (const installedUuid of item.system.installedItems.list) {
-          const installedItem = this.getOwnedItem(installedUuid);
-          if (installedItem) {
-            itemList.push(installedItem);
+    // If migration is calling this, we assume migration is
+    // handling all references to containers and installable
+    // items, so we just delete the item.
+    const isMigration = !!(
+      typeof context !== "undefined" && context.cprIsMigrating
+    );
+    if (!isMigration) {
+      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+      const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
+      for (const itemId of ids) {
+        const item = this.getOwnedItem(itemId);
+        if (
+          containerTypes.includes(item.type) &&
+          item.system.installedItems.list.length > 0
+        ) {
+          const itemList = [];
+          for (const installedUuid of item.system.installedItems.list) {
+            const installedItem = this.getOwnedItem(installedUuid);
+            if (installedItem) {
+              itemList.push(installedItem);
+            }
           }
+          await item.uninstallItems(itemList, true);
         }
-        await item.uninstallItems(itemList, true);
-      }
 
-      if (
-        installableTypes.includes(item.type) &&
-        item.system.isInstalled &&
-        item.system.installedIn !== ""
-      ) {
-        const installLocation =
-          item.system.installedIn === this.uuid
-            ? this
-            : this.getOwnedItem(item.system.installedIn);
-        if (containerTypes.includes(installLocation.type)) {
-          await installLocation.uninstallItems([item], false);
+        if (
+          installableTypes.includes(item.type) &&
+          item.system.isInstalled &&
+          item.system.installedIn !== ""
+        ) {
+          const installLocation =
+            item.system.installedIn === this.uuid
+              ? this
+              : this.getOwnedItem(item.system.installedIn);
+          if (containerTypes.includes(installLocation.type)) {
+            await installLocation.uninstallItems([item], false);
+          }
         }
       }
     }

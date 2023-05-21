@@ -55,7 +55,7 @@ export default class ActiveEffectsMigration extends CPRMigration {
         folder: this.migrationFolder,
       },
       {
-        isMigrating: true,
+        cprIsMigrating: true,
       }
     );
   }
@@ -207,7 +207,7 @@ export default class ActiveEffectsMigration extends CPRMigration {
         const createdItem = await actor.createEmbeddedDocuments(
           "Item",
           [newData],
-          { isMigrating: true }
+          { cprIsMigrating: true }
         );
         remappedItems[ownedItem._id] = createdItem[0]._id;
         await newItem.delete();
@@ -239,7 +239,9 @@ export default class ActiveEffectsMigration extends CPRMigration {
     }
 
     if (deleteList.length > 0) {
-      await actor.deleteEmbeddedDocuments("Item", deleteList);
+      await actor.deleteEmbeddedDocuments("Item", deleteList, {
+        cprIsMigrating: true,
+      });
     }
 
     // Update any item references for items re-created as part of this process
@@ -451,7 +453,9 @@ export default class ActiveEffectsMigration extends CPRMigration {
       for (let i = 0; i < dupeAmount; i += 1) {
         dupeItems.push(duplicate(dupeData));
       }
-      await item.actor.createEmbeddedDocuments("Item", dupeItems);
+      await item.actor.createEmbeddedDocuments("Item", dupeItems, {
+        cprIsMigrating: true,
+      });
     }
   }
 

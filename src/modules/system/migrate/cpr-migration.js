@@ -415,7 +415,7 @@ export default class CPRMigration {
         folder: this.migrationFolder,
       },
       {
-        isMigrating: true,
+        cprIsMigrating: true,
       }
     );
 
