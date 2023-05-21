@@ -75,6 +75,7 @@ Cela jette les bases pour permettre aux modules tiers d’enregistrer leurs prop
 - Ajout des tables aléatoires de Complications de rencontres de sbires, Tactiques de lieutenants endurcis et Promotions de Mini-boss
 - Ajout d'objets manquants de Elflines Online avec l'aide de LordCheesusCroust
 - Ajout du jeu de cartes à collectionner d'Elflines Online avec l'aide de LordCheesusCrust
+- Added Achievements And Loot Boxes with help from LordCheesusCrust
 
 #### Autres nouvelles fonctionnalités
 
@@ -86,6 +87,10 @@ Cela jette les bases pour permettre aux modules tiers d’enregistrer leurs prop
 - Ajout d'un champ de `marque` aux objets physiques
   - Tous les compendiums fournis par le système ont été migrés
   - Nous ne fournissons donc aucune migration dans les objets de monde car il y a de nombreux cas de retard pour le faire de façon fiable
+- Added many many new icons for the new Compendia
+- You can now pass an ablation modifier via the /red command.
+  - Example: `/red 6d6a2` will generate a 6d6 damage roll as it always did, but when the damage is applied to tokens, the armor will be ablated by 2
+  - Reminder Note: If using any roll modifiers and the card description modifier (#), the card description modifier must be the last one used on the line. This has always been the case, just calling it our here as this now adds an additional modifier.
 
 ### Changements
 
@@ -145,6 +150,7 @@ Cette version apporte beaucoup de changements de feuille pour corriger beaucoup 
 - Mise à jour des icônes de compendiums pour les armures
 - Système de systèmes réordonné
 - Ajustement du libellé des objets Elflines existants pour mieux correspondre à leur fonction
+- Update default icons for Black ICE and Demons
 
 ### Corrections de bugs
 
@@ -169,6 +175,10 @@ Cette version apporte beaucoup de changements de feuille pour corriger beaucoup 
 - Correction du problème où les tokens jetés sur la scène par le MJ causaient une erreur de permissions sur le joueur
 - Correction du problème où la création de tokens GLACE/Démon/Conteneur sur la scène provoquait une erreur dans la console
 - Correction de nombreux endroits où 'NET' était mal formaté comme 'Net'
+- Fixed a couple issues around migration:
+  - #681 issue where uninstalling installed items was broken if the item was directly installed into the actor and not into a containerType item
+  - The code was calling createEmbeddedDocument on the TokenDocument however this version of Foundry expects the call to be on the associated actor
+- #741 - Fixed issue where selling stackable items to a vendor was broken
 
 ## Version 0.86.1 | Date: 2023-02-05
 

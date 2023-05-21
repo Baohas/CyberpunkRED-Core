@@ -113,6 +113,7 @@
   "CPR.characterSheet.rightPane.effects.situational": "Situational Effects",
   "CPR.characterSheet.rightPane.effects.situationalOffByDefault": "Situational (Off by default)",
   "CPR.characterSheet.rightPane.effects.situationalOnByDefault": "Situational (On by default)",
+  "CPR.characterSheet.rightPane.effects.source": "Source",
   "CPR.characterSheet.rightPane.effects.title": "Эффекты",
   "CPR.characterSheet.rightPane.effects.toggle": "Переключить эффект",
   "CPR.characterSheet.rightPane.eurobucks.eurobucks": "Евробаксы",

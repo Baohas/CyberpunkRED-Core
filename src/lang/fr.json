@@ -113,6 +113,7 @@
   "CPR.characterSheet.rightPane.effects.situational": "Effets situationnels",
   "CPR.characterSheet.rightPane.effects.situationalOffByDefault": "Situationnel (désactivé par défaut)",
   "CPR.characterSheet.rightPane.effects.situationalOnByDefault": "Situationnel (Activé par défaut)",
+  "CPR.characterSheet.rightPane.effects.source": "Source",
   "CPR.characterSheet.rightPane.effects.title": "Effets",
   "CPR.characterSheet.rightPane.effects.toggle": "Activer/désactiver l'effet",
   "CPR.characterSheet.rightPane.eurobucks.eurobucks": "Eurodollars",

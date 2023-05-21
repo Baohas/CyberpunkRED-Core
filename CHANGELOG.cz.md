@@ -75,6 +75,7 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - Added Mook Encounter Complication, Hardened Lieutenant Tactics, and Hardened Mini Boss Mini Promotion rolltables
 - Added missing Elflines Online items with help from LordCheesusCrust
 - Added Elflines Online the Trading Card Game with help from LordCheesusCrust
+- Added Achievements And Loot Boxes with help from LordCheesusCrust
 
 #### Other New Features
 
@@ -86,6 +87,10 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - Add a `brand` field to physical items
   - All compendia provided by the system have been migrated
   - We so not provide any migrations for in world items as there are to many edge cases to reliably do this
+- Added many many new icons for the new Compendia
+- You can now pass an ablation modifier via the /red command.
+  - Example: `/red 6d6a2` will generate a 6d6 damage roll as it always did, but when the damage is applied to tokens, the armor will be ablated by 2
+  - Reminder Note: If using any roll modifiers and the card description modifier (#), the card description modifier must be the last one used on the line. This has always been the case, just calling it our here as this now adds an additional modifier.
 
 ### Changes
 
@@ -145,6 +150,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Updated compendia icons for Armor
 - Reordered system systems
 - Adjusted the wording of existing Elflines items to better fit their function
+- Update default icons for Black ICE and Demons
 
 ### Bug Fixes
 
@@ -169,6 +175,10 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console
 - Fixed many places where 'NET' was incorrectly formatted as 'Net'
+- Fixed a couple issues around migration:
+  - #681 issue where uninstalling installed items was broken if the item was directly installed into the actor and not into a containerType item
+  - The code was calling createEmbeddedDocument on the TokenDocument however this version of Foundry expects the call to be on the associated actor
+- #741 - Fixed issue where selling stackable items to a vendor was broken
 
 ## Version 0.86.1 | Date: 2023-02-05
 
