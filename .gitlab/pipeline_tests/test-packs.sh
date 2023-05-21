@@ -18,8 +18,30 @@ mapfile -t ITEMS < <(
 
 # For each itemType run the YAML fragments through v8r
 for item in "${ITEMS[@]}"; do
-  # Shortcut v84 as we're doing error handling based on the output
-  npx v8r src/packs/**/"${item}".*.yaml 2>/dev/null >results.json || true
+  # Shortcut v84r as we're doing error handling based on the output
+  npx v8r src/packs/**/"${item}".*.yaml \
+    >results.json \
+    2>errors.txt || true
+
+  # Validate we actually get JSON back
+  if ! jq empty results.json >/dev/null 2>&1; then
+    echo "❌ v8r returned invalid JSON for ${item}. Output:"
+    cat errors.txt
+    echo "---"
+    cat results.json
+    echo "Exiting"
+    exit 1
+  fi
+
+  # If we do get JSON output, make sure that it contains the `results` key
+  if ! jq .results results.json >/dev/null 2>&1; then
+    echo "❌ v8r output does not contain the 'results' key"
+    cat errors.txt
+    echo "---"
+    cat results.json
+    echo "Exiting"
+    exit 1
+  fi
 
   # Parse out errors from the results
   all_errors=$(
@@ -30,6 +52,7 @@ for item in "${ITEMS[@]}"; do
   )
 
   rm -rf results.json
+  rm -rf errors.txt
 
   # Get a count of the errors
   end=$(echo "${all_errors}" | jq length)
