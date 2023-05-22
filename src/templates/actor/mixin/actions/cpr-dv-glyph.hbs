@@ -1,7 +1,17 @@
 {{cprTrace "START ACTOR MIXIN ACTIONS CPR-DV-GLYPH.HBS"}}
 {{log this}}
 {{#if (cprCompare system.dvTable "!==" "") }}
+<<<<<<< HEAD
   <a class="item-action dv-glyph{{#if (cprHighlightDVRuler this)}} dv-active{{/if}}" data-item-id="{{id}}" data-action-type="dv-ruler" data-action="measure-dv"><i class="fas fa-ruler"
   data-tooltip="{{localize "CPR.actorSheets.commonActions.measureDv"}}"></i></a>
+=======
+  {{#if (cprCompare actor.sheet.token.object.document.flags.cyberpunk-red-core.cprDvTable.name "===" system.dvTable)}}
+    <a class="item-action dv-glyph dv-active" data-item-id="{{id}}" data-action-type="dv-ruler" data-action="measure-dv"><i class="fas fa-ruler"
+    data-tooltip="{{localize "CPR.actorSheets.commonActions.measureDv"}}"></i></a>
+  {{else}}
+    <a class="item-action dv-glyph" data-item-id="{{id}}" data-action-type="dv-ruler" data-action="measure-dv"><i class="fas fa-ruler"
+    data-tooltip="{{localize "CPR.actorSheets.commonActions.measureDv"}}"></i></a>
+  {{/if}}
+>>>>>>> d597cebee (Warn players to select token before trying to measure DV is their token is not selected.  Highlight the currently active DV tool.)
 {{/if}}
 {{cprTrace "END CPR-DV-GLYPH.HBS"}}
