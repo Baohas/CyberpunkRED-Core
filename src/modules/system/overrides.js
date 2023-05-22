@@ -13,7 +13,15 @@ export default function overrideRulerFunctions() {
       totalDistance
     );
     if (this.user.isSelf) {
-      const token = canvas.tokens.controlled["0"];
+      let token = canvas.tokens.controlled["0"];
+      if (!token) {
+        const ownedTokens = canvas.tokens.ownedTokens.filter(
+          (t) =>
+            t.actor.constructor.name === "CPRCharacterActor" ||
+            t.actor.constructor.name === "CPRMookActor"
+        );
+        token = ownedTokens.length === 1 ? ownedTokens[0] : false;
+      }
       if (token) {
         const DvTable = token.document.getFlag(game.system.id, "cprDvTable");
         if (DvTable && typeof DvTable === "object") {
@@ -35,6 +43,9 @@ export default function overrideRulerFunctions() {
             }
           }
         }
+      } else {
+        const noToken = game.i18n.localize("CPR.messages.warningRulerNoToken");
+        returnLabel = `${returnLabel}\nDV: ${noToken}`;
       }
     }
     return returnLabel;

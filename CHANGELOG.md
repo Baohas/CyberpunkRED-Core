@@ -182,7 +182,11 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Migrating actors that are on scenes in a compendium would fail because the code did UUID lookups and Foundry won't let you do this synchronously. Added code so if the restoration is for a Compenium actor/item, the lookup is done with an async await.
 - Fixed an issue where if migration performs a backup/restore of an installed item, it would delete the original item which was causing the container item to report the incorrect amount of used slots.
 - Standardized the passed migration context to actor:*EmbeddedDocuments to isMigrating
-- #705 - When clicking the DV button on a sheet, users would sometimes feel like the Ruler was broken if they did not have the token selected. A warning message is now thrown if a user clicks the DV button and they do not have a token selected.  Additionally, the DV ruler is now highlighted for the ruler that is currently active.
+- #705 - When clicking the DV button on a sheet, users would sometimes feel like the Ruler was broken since it wouldn't show a DV if they did not have the token selected. Functionality has been enhanced:
+  - Clicking the DV ruler will now highlight the current set DV table on the associated token
+  - If the user owns only 1 token of either Character or Mook on a scene, it will default to using the DV settings of that token
+  - If a user owns multiple tokens of either Character or Mook, a warning message is now thrown when the user clicks the ruler to select a DV telling them they need to select the token before use
+  - If a user owns multiple tokens of either Character or Mook and has no tokens selected, when they use the ruler, a message is displayed below the distance advising the user to select the token of the DV they want to see.
 
 ## Version 0.86.1 | Date: 2023-02-05
 

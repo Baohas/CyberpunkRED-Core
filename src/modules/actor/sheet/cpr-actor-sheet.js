@@ -703,7 +703,12 @@ export default class CPRActorSheet extends ActorSheet {
             this._setDvIconState(item);
             if (
               canvas.tokens.controlled.filter((t) => t.id === this.token.id)
-                .length === 0
+                .length === 0 &&
+              canvas.tokens.ownedTokens.filter(
+                (t) =>
+                  t.actor.constructor.name === "CPRCharacterActor" ||
+                  t.actor.constructor.name === "CPRMookActor"
+              ).length !== 1
             ) {
               SystemUtils.DisplayMessage(
                 "warn",
