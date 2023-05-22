@@ -45,7 +45,7 @@ const Loadable = function Loadable() {
     );
     const activeTable = flag === "autofire" ? `${dvTable} (Autofire)` : dvTable;
     if (actor.sheet.token !== null)
-      await SystemUtils.SetDvTable(actor.sheet.token.object, activeTable);
+      return SystemUtils.SetDvTable(actor.sheet.token.object, activeTable);
   };
 
   /**
