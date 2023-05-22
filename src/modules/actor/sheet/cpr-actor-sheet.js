@@ -1,4 +1,4 @@
-/* global ActorSheet, $, setProperty, game, getProperty, mergeObject duplicate, TextEditor, fromUuidSync */
+/* global ActorSheet, $, setProperty, game, getProperty, mergeObject duplicate, TextEditor, fromUuidSync, document, canvas */
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRLedger from "../../dialog/cpr-ledger-form.js";
@@ -697,6 +697,25 @@ export default class CPRActorSheet extends ActorSheet {
           item.uninstall();
           break;
         }
+        case "dv-ruler": {
+          if (item.system?.dvTable !== "") {
+            item.doAction(this.actor, event.currentTarget.attributes);
+            this._setDvIconState(item);
+            if (
+              canvas.tokens.controlled.filter((t) => t.id === this.token.id)
+                .length === 0
+            ) {
+              SystemUtils.DisplayMessage(
+                "warn",
+                SystemUtils.Localize(
+                  "CPR.messages.warningTokenNotSelectedForDV"
+                )
+              );
+            }
+          }
+
+          break;
+        }
         default: {
           item.doAction(this.actor, event.currentTarget.attributes);
         }
@@ -706,6 +725,35 @@ export default class CPRActorSheet extends ActorSheet {
         this.actor.updateEmbeddedDocuments("Item", [
           { _id: item.id, system: item.system },
         ]);
+      }
+    }
+  }
+
+  /**
+   * When clicking the DV ruler, we want to highlight the active ruler.
+   *
+   * @async
+   * @private
+   * @callback
+   * @param {CPRItem} item - item we are activating the DV Ruler for
+   */
+  _setDvIconState(item) {
+    LOGGER.trace("_setDvIconState | CPRActorSheet | Called.");
+    const dvGlyphs = document.getElementsByClassName("dv-glyph");
+
+    const dvFlag = this.token.object.document.getFlag(
+      game.system.id,
+      "cprDvTable"
+    );
+
+    const dvFlagSet = typeof dvFlag === "object" && dvFlag?.name !== "";
+
+    for (const glyphNode of dvGlyphs) {
+      const weaponId = $(glyphNode).attr("data-item-id");
+      if (weaponId === item._id && dvFlagSet) {
+        $(glyphNode).addClass("dv-active");
+      } else {
+        $(glyphNode).removeClass("dv-active");
       }
     }
   }
