@@ -2,9 +2,21 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# The following vars are set during the 'init' CI job.
+# SYSTEM_FILE
+
 ERRORS=0
 SYSTEM_FILE="${SYSTEM_FILE:-src/system.json}"
 TEMPLATE_FILE="${TEMPLATE_FILE:-src/template.json}"
+
+# Cleanup files used during testing
+cleanup() {
+  rm -rf results.json
+  rm -rf errors.txt
+}
+
+# Trap any early exits for cleanup
+trap cleanup EXIT
 
 # Get a list of itemTypes from the template.json file
 # Remove 'netarch' from the from the results as we don't validate those
@@ -51,8 +63,8 @@ for item in "${ITEMS[@]}"; do
       | {file: .fileLocation, errors: .errors, code: .code}]' results.json
   )
 
-  rm -rf results.json
-  rm -rf errors.txt
+  # Cleanup any files we've just used
+  cleanup
 
   # Get a count of the errors
   end=$(echo "${all_errors}" | jq length)
