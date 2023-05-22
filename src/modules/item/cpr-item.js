@@ -190,6 +190,7 @@ export default class CPRItem extends Item {
       }
       default:
     }
+    return Promise.resolve();
   }
 
   /**

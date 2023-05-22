@@ -46,13 +46,14 @@ const Loadable = function Loadable() {
     const activeTable = flag === "autofire" ? `${dvTable} (Autofire)` : dvTable;
     if (actor.sheet.token !== null)
       return SystemUtils.SetDvTable(actor.sheet.token.object, activeTable);
+    return Promise.resolve();
   };
 
   /**
    * Unload this item if it has any ammo in it.
    *
    * @async
-   * @returns - updated actor document, or null if this is not an owned item
+   * @returns {Promise} - updated actor document, or null if this is not an owned item
    */
   this._unloadItem = async function _unloadItem() {
     LOGGER.trace("_unloadItem | Loadable | Called.");
@@ -178,6 +179,7 @@ const Loadable = function Loadable() {
       }
       return this.actor.updateEmbeddedDocuments("Item", loadUpdate);
     }
+    return Promise.resolve();
   };
 
   /**
