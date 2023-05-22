@@ -183,7 +183,6 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Fixed an issue where if migration performs a backup/restore of an installed item, it would delete the original item which was causing the container item to report the incorrect amount of used slots.
 - Standardized the passed migration context to actor:*EmbeddedDocuments to isMigrating
 - #705 - When clicking the DV button on a sheet, users would sometimes feel like the Ruler was broken if they did not have the token selected. A warning message is now thrown if a user clicks the DV button and they do not have a token selected.  Additionally, the DV ruler is now highlighted for the ruler that is currently active.
-- #705 - When clicking the DV button on a sheet, users would sometimes feel like the Ruler was broken if they did not have the token selected. A warning message is now thrown if a user clicks the DV button and they do not have a token selected.  Additionally, the DV ruler is now highlighted for the ruler that is currently active.
 
 ## Version 0.86.1 | Date: 2023-02-05
 
