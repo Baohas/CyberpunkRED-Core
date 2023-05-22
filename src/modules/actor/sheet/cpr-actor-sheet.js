@@ -739,7 +739,10 @@ export default class CPRActorSheet extends ActorSheet {
    */
   _setDvIconState(item) {
     LOGGER.trace("_setDvIconState | CPRActorSheet | Called.");
-    const dvGlyphs = document.getElementsByClassName("dv-glyph");
+    const NodeID = `${item.actor.constructor.name}Sheet-Actor-${item.actor.id}`;
+    const dvGlyphs = document
+      .getElementById(NodeID)
+      .getElementsByClassName("dv-glyph");
 
     const dvFlag = this.token.object.document.getFlag(
       game.system.id,
