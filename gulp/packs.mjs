@@ -320,8 +320,9 @@ async function genPacksBabele() {
     );
     const { packs } = sysFile;
 
-    // Create the packs dir if it doesn't exist.
-    if (!fs.existsSync(babeleDir)) {
+    // To handle compendia renames we need to blast the files then rebuild them
+    if (fs.existsSync(babeleDir)) {
+      fs.rmSync(babeleDir, { recursive: true });
       fs.mkdirSync(babeleDir);
     }
 
