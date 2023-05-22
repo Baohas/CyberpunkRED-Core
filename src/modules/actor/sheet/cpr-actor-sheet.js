@@ -699,7 +699,7 @@ export default class CPRActorSheet extends ActorSheet {
         }
         case "dv-ruler": {
           if (item.system?.dvTable !== "") {
-            item.doAction(this.actor, event.currentTarget.attributes);
+            await item.doAction(this.actor, event.currentTarget.attributes);
             this._setDvIconState(item);
             if (
               canvas.tokens.controlled.filter((t) => t.id === this.token.id)
@@ -739,9 +739,9 @@ export default class CPRActorSheet extends ActorSheet {
    */
   _setDvIconState(item) {
     LOGGER.trace("_setDvIconState | CPRActorSheet | Called.");
-    const NodeID = `${item.actor.constructor.name}Sheet-Actor-${item.actor.id}`;
+    const CharacterSheetNodeID = `${item.actor.constructor.name}Sheet-Actor-${item.actor.id}`;
     const dvGlyphs = document
-      .getElementById(NodeID)
+      .getElementById(CharacterSheetNodeID)
       .getElementsByClassName("dv-glyph");
 
     const dvFlag = this.token.object.document.getFlag(

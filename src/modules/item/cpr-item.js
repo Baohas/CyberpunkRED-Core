@@ -177,23 +177,20 @@ export default class CPRItem extends Item {
     const itemType = this.type;
     switch (itemType) {
       case "cyberware": {
-        this._cyberwareAction(actor, actionAttributes);
-        break;
+        return this._cyberwareAction(actor, actionAttributes);
       }
       case "itemUpgrade": {
-        this._itemUpgradeAction(actor, actionAttributes);
-        break;
+        return this._itemUpgradeAction(actor, actionAttributes);
       }
       case "weapon": {
-        this._weaponAction(actor, actionAttributes);
-        break;
+        return this._weaponAction(actor, actionAttributes);
       }
       case "ammo": {
-        this._ammoAction(actionAttributes);
-        break;
+        return this._ammoAction(actionAttributes);
       }
       default:
     }
+    return Promise.resolve();
   }
 
   /**

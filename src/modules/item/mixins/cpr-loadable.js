@@ -45,14 +45,15 @@ const Loadable = function Loadable() {
     );
     const activeTable = flag === "autofire" ? `${dvTable} (Autofire)` : dvTable;
     if (actor.sheet.token !== null)
-      await SystemUtils.SetDvTable(actor.sheet.token.object, activeTable);
+      return SystemUtils.SetDvTable(actor.sheet.token.object, activeTable);
+    return Promise.resolve();
   };
 
   /**
    * Unload this item if it has any ammo in it.
    *
    * @async
-   * @returns - updated actor document, or null if this is not an owned item
+   * @returns {Promise} - updated actor document, or null if this is not an owned item
    */
   this._unloadItem = async function _unloadItem() {
     LOGGER.trace("_unloadItem | Loadable | Called.");
@@ -63,7 +64,7 @@ const Loadable = function Loadable() {
         await this.createAmmoItems();
         ammo = this.actor.getOwnedItem(this.system.magazine.ammoData.uuid);
         if (!ammo) {
-          return null;
+          return Promise.resolve();
         }
       }
 
@@ -76,7 +77,7 @@ const Loadable = function Loadable() {
         { _id: this.id, system: this.system },
       ]);
     }
-    return null;
+    return Promise.resolve();
   };
 
   /**
@@ -85,7 +86,7 @@ const Loadable = function Loadable() {
    *
    * @async
    * @param {String} reloadAmmoId - Id of the ammo being reloaded, null otherwise.
-   * @returns null
+   * @returns {Promise}
    */
   this._loadItem = async function _loadItem(reloadAmmoId) {
     LOGGER.trace("_loadItem | Loadable | Called.");
@@ -117,7 +118,7 @@ const Loadable = function Loadable() {
             "warn",
             SystemUtils.Localize("CPR.messages.noValidAmmo")
           );
-          return;
+          return Promise.resolve();
         }
 
         // Show "Load Ammo" dialog,
@@ -127,7 +128,7 @@ const Loadable = function Loadable() {
           title: SystemUtils.Localize("CPR.dialog.selectAmmo.title"),
         }).catch((err) => LOGGER.debug(err));
         if (dialogData === undefined) {
-          return;
+          return Promise.resolve();
         }
         selectedAmmoId = dialogData.selectedAmmo;
       }
@@ -153,7 +154,7 @@ const Loadable = function Loadable() {
             "warn",
             SystemUtils.Localize("CPR.messages.reloadOutOfAmmo")
           );
-          return;
+          return Promise.resolve();
         }
 
         // By the time we reach here, we know the weapon and ammo we are loading
@@ -176,8 +177,9 @@ const Loadable = function Loadable() {
         }
         loadUpdate.push({ _id: this._id, "system.magazine": magazineData });
       }
-      this.actor.updateEmbeddedDocuments("Item", loadUpdate);
+      return this.actor.updateEmbeddedDocuments("Item", loadUpdate);
     }
+    return Promise.resolve();
   };
 
   /**

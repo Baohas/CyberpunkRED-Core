@@ -27,27 +27,27 @@ const Attackable = function Attackable() {
     const actionData = actionAttributes["data-action"].nodeValue;
     switch (actionData) {
       case "select-ammo":
-        this._loadItem();
+        await this._loadItem();
         break;
       case "unload":
-        this._unloadItem();
+        await this._unloadItem();
         break;
       case "load":
-        this._loadItem();
+        await this._loadItem();
         break;
       case "reload-ammo":
-        this._loadItem(this.system.magazine.ammoData.uuid);
+        await this._loadItem(this.system.magazine.ammoData.uuid);
         break;
       case "measure-dv":
-        await this._setDvTable(actor, this.system.dvTable);
-        break;
+        return this._setDvTable(actor, this.system.dvTable);
       default:
     }
     if (this.actor) {
-      this.actor.updateEmbeddedDocuments("Item", [
+      return this.actor.updateEmbeddedDocuments("Item", [
         { _id: this.id, system: this.system },
       ]);
     }
+    return Promise.resolve();
   };
 
   /**
