@@ -42,5 +42,8 @@ export default class HudInterface {
     const index = controlled.findIndex((x) => x.id === tokenData._id);
     const token = controlled[index];
     await SystemUtils.SetDvTable(token, formData.dvTable);
+    if (token.actor.sheet.rendered) {
+      token.actor.sheet.render();
+    }
   }
 }
