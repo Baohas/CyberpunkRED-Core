@@ -168,9 +168,10 @@ function rebase_all_mrs() {
   for iid in ${OPEN_MRS}; do
     echo "Rebasing MR ${iid}"
     curl \
+      --silent \
       --request PUT \
       --header "PRIVATE-TOKEN: ${CHOOM_BOT_API}" \
-      "${PROJECT_URL}/merge_requests/${iid}/rebase"
+      "${PROJECT_URL}/merge_requests/${iid}/rebase" >/dev/null
   done
 }
 
