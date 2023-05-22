@@ -1,11 +1,7 @@
 {{cprTrace "START ACTOR MIXIN ACTIONS CPR-DV-GLYPH.HBS"}}
+{{log this}}
 {{#if (cprCompare system.dvTable "!==" "") }}
-  {{#if (cprCompare actor.sheet.token.object.document.flags.cyberpunk-red-core.cprDvTable.name "===" system.dvTable)}}
-    <a class="item-action dv-glyph dv-active" data-item-id="{{id}}" data-action-type="dv-ruler" data-action="measure-dv"><i class="fas fa-ruler"
-    data-tooltip="{{localize "CPR.actorSheets.commonActions.measureDv"}}"></i></a>
-  {{else}}
-    <a class="item-action dv-glyph" data-item-id="{{id}}" data-action-type="dv-ruler" data-action="measure-dv"><i class="fas fa-ruler"
-    data-tooltip="{{localize "CPR.actorSheets.commonActions.measureDv"}}"></i></a>
-  {{/if}}
+  <a class="item-action dv-glyph{{#if (cprHighlightDVRuler this)}} dv-active{{/if}}" data-item-id="{{id}}" data-action-type="dv-ruler" data-action="measure-dv"><i class="fas fa-ruler"
+  data-tooltip="{{localize "CPR.actorSheets.commonActions.measureDv"}}"></i></a>
 {{/if}}
 {{cprTrace "END CPR-DV-GLYPH.HBS"}}
