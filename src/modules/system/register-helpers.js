@@ -1117,6 +1117,29 @@ export default function registerHandlebarsHelpers() {
     }
   });
 
+  Handlebars.registerHelper("cprHighlightDVRuler", (item) => {
+    LOGGER.trace("cprHighlightDVRuler | handlebarsHelper | Called.");
+    const token = item.actor.sheet?.token;
+    let itemDvTable = item.system?.dvTable;
+    if (token !== null && itemDvTable !== null && itemDvTable !== "") {
+      const tokenDv = token.object.document.getFlag(
+        game.system.id,
+        "cprDvTable"
+      );
+      const firetype = token.actor.getFlag(
+        game.system.id,
+        `firetype-${item.id}`
+      );
+      if (firetype === "autofire") {
+        itemDvTable = `${itemDvTable} (Autofire)`;
+      }
+      if (tokenDv?.name === itemDvTable) {
+        return true;
+      }
+    }
+    return false;
+  });
+
   /**
    * Map items to wiki links
    * Some items are pluralised, some are not, map these
