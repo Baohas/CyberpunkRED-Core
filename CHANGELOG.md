@@ -179,6 +179,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
   - #681 issue where uninstalling installed items was broken if the item was directly installed into the actor and not into a containerType item
   - The code was calling createEmbeddedDocument on the TokenDocument however this version of Foundry expects the call to be on the associated actor
 - #741 - Fixed issue where selling stackable items to a vendor was broken
+- #705 - When clicking the DV button on a sheet, users would sometimes feel like the Ruler was broken if they did not have the token selected. A warning message is now thrown if a user clicks the DV button and they do not have a token selected.  Additionally, the DV ruler is now highlighted for the ruler that is currently active.
 
 ## Version 0.86.1 | Date: 2023-02-05
 
