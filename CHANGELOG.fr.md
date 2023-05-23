@@ -75,7 +75,7 @@ Cela jette les bases pour permettre aux modules tiers d’enregistrer leurs prop
 - Ajout des tables aléatoires de Complications de rencontres de sbires, Tactiques de lieutenants endurcis et Promotions de Mini-boss
 - Ajout d'objets manquants de Elflines Online avec l'aide de LordCheesusCroust
 - Ajout du jeu de cartes à collectionner d'Elflines Online avec l'aide de LordCheesusCrust
-- Added Achievements And Loot Boxes with help from LordCheesusCrust
+- Ajout du DLC Accomplissements et Caisses de butin avec l'aide de LordCheesusCrust
 
 #### Autres nouvelles fonctionnalités
 
@@ -87,10 +87,10 @@ Cela jette les bases pour permettre aux modules tiers d’enregistrer leurs prop
 - Ajout d'un champ de `marque` aux objets physiques
   - Tous les compendiums fournis par le système ont été migrés
   - Nous ne fournissons donc aucune migration dans les objets de monde car il y a de nombreux cas de retard pour le faire de façon fiable
-- Added many many new icons for the new Compendia
-- You can now pass an ablation modifier via the /red command.
-  - Example: `/red 6d6a2` will generate a 6d6 damage roll as it always did, but when the damage is applied to tokens, the armor will be ablated by 2
-  - Reminder Note: If using any roll modifiers and the card description modifier (#), the card description modifier must be the last one used on the line. This has always been the case, just calling it our here as this now adds an additional modifier.
+- Ajout de nombreuses nouvelles icônes pour les nouveaux Compendiums
+- Vous pouvez maintenant appliquer un modificateur de perforation via la commande /red.
+  - Exemple : `/red 6d6a2` générera un jet de dégâts de 6d6 comme toujours, mais lorsque les dégâts sont appliqués aux tokens, l'armure sera divisée par 2
+  - Note de rappel : Si vous utilisez des jets de modificateurs et le modificateur de description de la carte (#), le modificateur de description de la carte doit être le dernier utilisé sur la ligne. Cela a toujours été le cas, nous le rappelons ici, car cela ajoute maintenant un modificateur supplémentaire.
 
 ### Changements
 
@@ -150,7 +150,7 @@ Cette version apporte beaucoup de changements de feuille pour corriger beaucoup 
 - Mise à jour des icônes de compendiums pour les armures
 - Système de systèmes réordonné
 - Ajustement du libellé des objets Elflines existants pour mieux correspondre à leur fonction
-- Update default icons for Black ICE and Demons
+- Mise à jour des icônes par défaut pour les GLACE noirs et les démons
 
 ### Corrections de bugs
 
@@ -175,10 +175,13 @@ Cette version apporte beaucoup de changements de feuille pour corriger beaucoup 
 - Correction du problème où les tokens jetés sur la scène par le MJ causaient une erreur de permissions sur le joueur
 - Correction du problème où la création de tokens GLACE/Démon/Conteneur sur la scène provoquait une erreur dans la console
 - Correction de nombreux endroits où 'NET' était mal formaté comme 'Net'
-- Fixed a couple issues around migration:
-  - #681 issue where uninstalling installed items was broken if the item was directly installed into the actor and not into a containerType item
-  - The code was calling createEmbeddedDocument on the TokenDocument however this version of Foundry expects the call to be on the associated actor
-- #741 - Fixed issue where selling stackable items to a vendor was broken
+- Correction de quelques problèmes liés à la migration :
+  - Problème n°681 où la désinstallation des éléments installés était cassée si l'objet était directement installé dans l'acteur et non dans un élément type conteneur
+  - Le code appelait createEmbeddedDocument sur le TokenDocument mais cette version de Foundry attend que l'appel soit sur l'acteur associé
+- #741 - Correction d'un problème où la vente d'objets empilables à un vendeur était cassée
+- Migrer les acteurs qui sont sur les scènes dans un compendium échouerait parce que le code a fait des recherches UUID et Foundry ne vous laissera pas le faire de manière synchrone. Ajout de code afin que si la restauration est pour un acteur ou un objet de Compendium, la recherche se fait asynchrone.
+- Correction d'un problème où si la migration effectue une sauvegarde/restauration d'un élément installé, cela supprimerait l'élément d'origine qui faisait que l'élément conteneur signalait le nombre incorrect d'emplacements utilisés.
+- Normalisation du contexte de migration passé à l'acteur:*EmbeddedDocuments to isMigrating
 
 ## Version 0.86.1 | Date: 2023-02-05
 

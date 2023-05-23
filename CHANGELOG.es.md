@@ -179,6 +179,9 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
   - #681 issue where uninstalling installed items was broken if the item was directly installed into the actor and not into a containerType item
   - The code was calling createEmbeddedDocument on the TokenDocument however this version of Foundry expects the call to be on the associated actor
 - #741 - Fixed issue where selling stackable items to a vendor was broken
+- Migrating actors that are on scenes in a compendium would fail because the code did UUID lookups and Foundry won't let you do this synchronously. Added code so if the restoration is for a Compenium actor/item, the lookup is done with an async await.
+- Fixed an issue where if migration performs a backup/restore of an installed item, it would delete the original item which was causing the container item to report the incorrect amount of used slots.
+- Standardized the passed migration context to actor:*EmbeddedDocuments to isMigrating
 
 ## Version 0.86.1 | Date: 2023-02-05
 
