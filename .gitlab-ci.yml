@@ -761,7 +761,7 @@ announce:
     - apt-get install curl jq -y
   script:
     - echo "Generating message from changelog..."
-    - ./.gitlab/pipeline_utils/build.sh
+    - npx run build
     - echo "Announcing the new release on Discord..."
     - ./.gitlab/pipeline_utils/discord-release.sh
   needs:
