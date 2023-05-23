@@ -682,8 +682,8 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     promptData.itemTypes.forEach((itemType) => {
       if (typeof promptData.currentConfig.itemTypes[itemType] === "undefined") {
         promptData.currentConfig.itemTypes[itemType] = {
-          isPurchasing: false,
-          purchasePercentage: 0,
+          isPurchasing: true,
+          purchasePercentage: 100,
         };
       }
     });
