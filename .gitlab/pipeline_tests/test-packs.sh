@@ -9,6 +9,11 @@ ERRORS=0
 SYSTEM_FILE="${SYSTEM_FILE:-src/system.json}"
 TEMPLATE_FILE="${TEMPLATE_FILE:-src/template.json}"
 
+if ! type jq >/dev/null; then
+  echo "❌ 'jq' dependency not found. Please insall 'jq'."
+  exit 1
+fi
+
 # Cleanup files used during testing
 cleanup() {
   rm -rf results.json
