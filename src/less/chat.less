@@ -1,4 +1,5 @@
-.chat-message {
+.chat-message,
+.chat-message.whisper {
   font-family: var(--cpr-font-primary);
   background: var(--cpr-background-chat-card);
   color: var(--cpr-text-chat-normal);
@@ -9,6 +10,10 @@
 
   img {
     border: none;
+  }
+
+  footer {
+  color: var(--cpr-text-foundry-hint);
   }
 }
 
@@ -209,7 +214,7 @@
   line-height: 1rem;
   border: 0.063rem solid var(--cpr-background-chat-border);
   border-radius: 0.188rem;
-  background: var(--cpr-background-chat);
+  background: var(--cpr-background-chat-card);
 }
 
 /*--------------------
