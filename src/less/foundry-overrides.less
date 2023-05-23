@@ -211,6 +211,17 @@ input::placeholder {
   }
 }
 
+// Override the content link element use when linking to another foundry
+// actor, item etc.
+.content-link {
+  background: var(--cpr-background-content-link) !important;
+  color: var(--cpr-text-normal);
+
+  i::before {
+    color: var(--cpr-text-normal);
+  }
+}
+
 /* -------------------------------------------- */
 /* Override pause menu with glitch effect       */
 /* IF enabled in settings.enablePauseAnimation  */
