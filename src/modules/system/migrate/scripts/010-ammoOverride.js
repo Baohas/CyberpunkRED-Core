@@ -41,19 +41,91 @@ export default class AmmoOverrideMigration extends CPRMigration {
     LOGGER.trace(`migrateItem | ${this.version}-${this.name}`);
     const updateData = item.isOwned ? { _id: item._id } : {};
 
+    // Get translation lists of ammo, group by similarity. Note, migrations will only occur if a user has not changed
+    // the name of the item from the compendia.
+    const translations = {
+      biotoxinAmmo: [
+        "Arrow (Biotoxin)",
+        "Flecha (Biotoxina)",
+        "Flèche (Biotoxine)",
+        "Frecce (a Biotossina)",
+        "Granada (Biotoxina)",
+        "Granata (a Biotossina)",
+        "Granate (Biotoxin)",
+        "Grenade (Biotoxin)",
+        "Grenade (Biotoxine)",
+        "Paintball (Biotoxin)",
+        "Pfeil (Biotoxin)",
+      ],
+      poisonAmmo: [
+        "Arrow (Poison)",
+        "Flecha (veneno)",
+        "Flèche (Poison)",
+        "Frecce (Avvelenate)",
+        "Paintball (Posion)",
+        "Pfeil (Gift)",
+        "Poison Arrow",
+      ],
+      nonDamageAmmo: [
+        "Arrow (Sleep)",
+        "Flecha (Dormir)",
+        "Flèche (Soporifique)",
+        "Frecce (Soporifere)",
+        "Granada (Dormir)",
+        "Granada (FlashBang)",
+        "Granada (Lacrimógena)",
+        "Granata (Flashbang)",
+        "Granata (Lacrimogena)",
+        "Granata (Soporifera)",
+        "Granate (Blendgranate)",
+        "Granate (Schlaf)",
+        "Granate (Tränengas)",
+        "Grenade (Étourdissantes)",
+        "Grenade (Flashbang)",
+        "Grenade (Lacrymogène)",
+        "Grenade (Sleep)",
+        "Grenade (Soporifique)",
+        "Grenade (Teargas)",
+        "Pfeil (Schlaf)",
+      ],
+      shotgunShells: [
+        "Cartucce a Pallini (Base)",
+        "Cartuchos de Escopeta (Básicos)",
+        "Chevrotine de fusil à pompe (Standard)",
+        "Schrotpatrone (Basis)",
+        "Shotgun Shell (Basic)",
+      ],
+    };
+
+    // These are the new datapoints that all ammo need.
+    const overrides = {
+      damage: {
+        mode: "none",
+        value: "3d6",
+        minimum: "1d6",
+      },
+      autofire: {
+        mode: "none",
+        value: -1,
+        minimum: 3,
+      },
+    };
+
     if (item.type === "ammo") {
-      const overrides = {
-        damage: {
-          mode: "none",
-          value: "3d6",
-          minimum: "1d6",
-        },
-        autofire: {
-          mode: "none",
-          value: -1,
-          minimum: 3,
-        },
-      };
+      // For specific types of ammo, change the above overrides to fit their rules.
+      if (
+        translations.biotoxinAmmo.includes(item.name) ||
+        translations.shotgunShells.includes(item.name)
+      ) {
+        overrides.damage.mode = "set";
+        overrides.damage.value = "3d6";
+      } else if (translations.poisonAmmo.includes(item.name)) {
+        overrides.damage.mode = "set";
+        overrides.damage.value = "2d6";
+      } else if (translations.nonDamageAmmo.includes(item.name)) {
+        overrides.damage.mode = "set";
+        overrides.damage.value = "0";
+      }
       updateData["system.overrides"] = overrides;
       return item.isOwned ? updateData : item.update(updateData);
     }

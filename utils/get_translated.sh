@@ -18,35 +18,20 @@ IFS=$'\n\t'
 # LANGS: The langages you want to extract
 #  EG: ("de" "es")
 
-ITEM_FILE="cyberpunk-red-core.gear.json"
+ITEM_FILE="cyberpunk-red-core.ammo.json"
 
 ITEMS=(
-  "Agent"
-  "Audio Recorder"
-  "Auto Level Dampening Ear Protectors"
-  "Braindance Viewer"
-  "Bug Detector"
-  "Chemical Analyzer"
-  "Computer"
-  "Cryopump"
-  "Cryotank"
-  "Disposable Cell Phone"
-  "Drum Synthesizer"
-  "Electric Guitar/Other Instrument"
-  "Flashlight"
-  "Homing Tracer"
-  "Linear Frame β (Beta)"
-  "Linear Frame ∑ (Sigma)"
-  "Medscanner"
-  "Memory Chip"
-  "Pocket Amplifier"
-  "Radar Detector"
-  "Radio Communicator"
-  "Scrambler/Descrambler"
-  "Tech Scanner"
-  "Tracer Button"
-  "Video Camera"
-  "Virtuality Goggles"
+  #"Arrow (Biotoxin)"
+  #"Arrow (Poison)"
+  #"Arrow (Sleep)"
+  #"Grenade (Biotoxin)"
+  #"Grenade (Flashbang)"
+  #"Grenade (Sleep)"
+  #"Grenade (Teargas)"
+  #"Shotgun Shell (Basic)"
+  #"Poison Arrow"
+  #"Paintball (Biotoxin)"
+  #"Paintball (Posion)"
 )
 
 mapfile -t LANGS < <(

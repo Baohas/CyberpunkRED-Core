@@ -22,8 +22,8 @@ system:
       value: -1
     damage:
       minimum: 1d6
-      mode: none
-      value: 3d6
+      mode: set
+      value: 2d6
   price:
     market: 10
   source:

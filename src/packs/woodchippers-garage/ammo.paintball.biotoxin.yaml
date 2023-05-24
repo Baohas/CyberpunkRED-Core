@@ -23,7 +23,7 @@ system:
       value: -1
     damage:
       minimum: 1d6
-      mode: none
+      mode: set
       value: 3d6
   price:
     market: 0
