@@ -845,10 +845,22 @@ export class CPRDamageRoll extends CPRRoll {
    * @param {Number} autofireMultiplier - damage multiplier that comes from how well the attack roll exceed the DV
    * @param {Number} autofireMultiplierMax - the maximum damage multiplier for the roll, which is set by the weapon type
    */
-  configureAutofire(autofireMultiplier, autofireMultiplierMax = 0) {
+  configureAutofire(
+    autofireMultiplier,
+    // eslint-disable-next-line default-param-last
+    autofireMultiplierMax = 0,
+    ammoOverride
+  ) {
     LOGGER.trace("configureAutofire | CPRDamageRoll | Called.");
     this.autofireMultiplier = autofireMultiplier;
-    if (autofireMultiplierMax > this.autofireMultiplierMax) {
+
+    if (ammoOverride?.mode === "modify") {
+      const trueMax = Math.max(
+        autofireMultiplierMax + ammoOverride.value,
+        ammoOverride.minimum
+      );
+      this.autofireMultiplierMax = trueMax;
+    } else if (autofireMultiplierMax > this.autofireMultiplierMax) {
       this.autofireMultiplierMax = autofireMultiplierMax;
     }
   }

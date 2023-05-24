@@ -226,6 +226,11 @@ CPR.ammoDamageOverrideModes = {
   modify: "CPR.global.generic.modify",
 };
 
+CPR.ammoAutofireOverrideModes = {
+  none: "CPR.global.generic.no",
+  modify: "CPR.global.generic.modify",
+};
+
 CPR.inventoryCategories = {
   weapon: "CPR.global.itemTypes.weapon",
   ammo: "CPR.global.itemTypes.ammo",

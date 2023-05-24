@@ -292,7 +292,12 @@ const Attackable = function Attackable() {
         cprWeaponData.weaponType === "assaultRifle" ? 4 : 3;
     }
 
-    cprRoll.configureAutofire(1, cprWeaponData.fireModes.autoFire);
+    const autofireOverride = this._getLoadedAmmoProp("overrides")?.autofire;
+    cprRoll.configureAutofire(
+      1,
+      cprWeaponData.fireModes.autoFire,
+      autofireOverride
+    );
 
     switch (type) {
       case CPRRolls.rollTypes.AIMED: {
