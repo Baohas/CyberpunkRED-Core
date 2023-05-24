@@ -78,7 +78,7 @@
               "properties": {
                 "mode": {
                   "type": "string",
-                  "enum": ["none", "set", "modify"]
+                  "enum": ["none", "modify"]
                 },
                 "value": {
                   "type": "integer"

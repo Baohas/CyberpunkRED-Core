@@ -32,6 +32,8 @@ ITEMS=(
   #"Poison Arrow"
   #"Paintball (Biotoxin)"
   #"Paintball (Posion)"
+  "Paintball (Basic)"
+  "Paintball (Acid)"
 )
 
 mapfile -t LANGS < <(
