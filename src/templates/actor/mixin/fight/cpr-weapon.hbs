@@ -76,12 +76,10 @@
     {{#if this.system.magazine.ammoData.uuid}}
       <span class="text-pill">
         {{localize "CPR.global.generic.damage"}}
-        {{#if (cprCompare ammoType "===" "Rubber")}}
-          0
-        {{else if (cprCompare ammoType "===" "Paintballs")}}
-          0
-        {{else if (cprAmmoDamageOverride this.system.magazine.ammoData.uuid "mode")}}
-          {{cprAmmoDamageOverride this.system.magazine.ammoData.uuid "value"}}*
+        {{#if (cprCompare (cprGetAmmoOverrideProp this.system.magazine.ammoData.uuid "damage" "mode") "!==" "none")}}
+          <span data-tooltip="{{localize "CPR.actorSheets.fightTab.ammoOverrideTooltip"}}">
+            {{cprGetWeaponDamage this}}*
+          </span>
         {{else}}
           {{this.system.damage}}
         {{/if}}

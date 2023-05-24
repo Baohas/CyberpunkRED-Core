@@ -1078,17 +1078,36 @@ export default function registerHandlebarsHelpers() {
    * whether or not to apply the override. "Value" is the damage value, e.g. "3d6".
    *
    * @param {String} uuid - The Uuid of the ammo item.
-   * @param {String} property - Should be "override" or "value".
+   * @param {String} override - The override we want, 'damage' or 'autofire'.
+   * @param {String} property - Should be 'mode', 'value', or 'minimum'.
    */
-  Handlebars.registerHelper("cprAmmoDamageOverride", (uuid, property) => {
-    LOGGER.trace("cprAmmoDamageOverride | handlebarsHelper | Called.");
-    const ammoItem = fromUuidSync(uuid);
-    if (property === "mode" || property === "value" || property === "minimum") {
-      return ammoItem.system.overrides.damage[property];
+  Handlebars.registerHelper(
+    "cprGetAmmoOverrideProp",
+    (uuid, override, property) => {
+      LOGGER.trace("cprGetAmmoOverrideProp | handlebarsHelper | Called.");
+      const ammoItem = fromUuidSync(uuid);
+
+      if (
+        !(property === "mode" || property === "value" || property === "minimum")
+      ) {
+        return LOGGER.debug(
+          `The only currently valid property parameters are 'mode', 'value', or 'minimum'. '${property}' is not valid.`
+        );
+      }
+
+      if (!(override === "damage" || override === "autofire")) {
+        return LOGGER.debug(
+          `The only currently valid override keys are 'damage' and 'autofire'. '${override}' is not valid.`
+        );
+      }
+
+      return ammoItem.system.overrides[override][property];
     }
-    return LOGGER.error(
-      `The only valid property parameters are 'mode', 'value', or 'minimum'. '${property}' is not valid.`
-    );
+  );
+
+  Handlebars.registerHelper("cprGetWeaponDamage", (weapon) => {
+    LOGGER.trace("cprGetWeaponDamage | handlebarsHelper | Called.");
+    return weapon.getWeaponDamage();
   });
 
   /**
