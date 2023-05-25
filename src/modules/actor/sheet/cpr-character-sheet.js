@@ -191,9 +191,10 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     LOGGER.trace("_cycleEquipState | CPRCharacterActorSheet | Called.");
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     const prop = CPRActorSheet._getObjProp(event);
+    let newValue = "owned";
     switch (item.system.equipped) {
       case "owned": {
-        this._updateOwnedItemProp(item, prop, "carried");
+        newValue = "carried";
         break;
       }
       case "carried": {
@@ -203,23 +204,32 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
             "CPR.messages.warningTooManyHands"
           );
         }
+        newValue = "equipped";
         if (item.type === "cyberdeck") {
           if (this.actor.hasItemTypeEquipped(item.type)) {
             Rules.lawyer(false, "CPR.messages.errorTooManyCyberdecks");
-            this._updateOwnedItemProp(item, prop, "owned");
-            break;
+            newValue = "owned";
           }
         }
-        this._updateOwnedItemProp(item, prop, "equipped");
         break;
       }
       case "equipped": {
-        this._updateOwnedItemProp(item, prop, "owned");
+        newValue = "owned";
         break;
       }
       default: {
-        this._updateOwnedItemProp(item, prop, "carried");
+        newValue = "carried";
         break;
+      }
+    }
+    this._updateOwnedItemProp(item, prop, newValue);
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    if (containerTypes.includes(item.type)) {
+      const allInstalledItems = item.recursiveGetAllInstalledItems();
+      if (allInstalledItems.length > 0) {
+        for (const installedItem of allInstalledItems) {
+          this._updateOwnedItemProp(installedItem, prop, newValue);
+        }
       }
     }
   }

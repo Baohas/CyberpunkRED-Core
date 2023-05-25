@@ -22,6 +22,8 @@ For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/
 
 ### New Features
 
+- Upgrade items can now have ActiveEffects added to them and activated when the item they are installed into is equipped.
+
 #### Improved Dialogues
 
 - All dialogues have been given new styling and have been converted to a new system called CPRDialog.

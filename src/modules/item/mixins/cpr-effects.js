@@ -75,9 +75,7 @@ const Effects = function Effects() {
       );
       return null;
     }
-    let disabled = false;
-    if (this.system.usage === "toggled" || this.system.usage === "snorted")
-      disabled = true;
+    const disabled = this.system.usage === "snorted";
     const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [
       {
         label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
@@ -291,6 +289,22 @@ const Effects = function Effects() {
         // if unowned, then we can change the AEs on the item itself
         this.effects.forEach((ae) =>
           aeUpdates.push({ _id: ae.id, disabled: true })
+        );
+        this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
+      }
+    }
+    if (usage === "equipped") {
+      const aeUpdates = [];
+      if (this.isOwned) {
+        // if the item is owned, we change the AEs on the actor
+        this.getMyEffectsOnActor().forEach((ae) =>
+          aeUpdates.push({ _id: ae.id, disabled: false })
+        );
+        this.actor.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
+      } else {
+        // if unowned, then we can change the AEs on the item itself
+        this.effects.forEach((ae) =>
+          aeUpdates.push({ _id: ae.id, disabled: false })
         );
         this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
       }
