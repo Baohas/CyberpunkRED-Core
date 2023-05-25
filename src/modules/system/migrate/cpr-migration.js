@@ -374,14 +374,40 @@ export default class CPRMigration {
     return good;
   }
 
+  /**
+   * Create a migration folder for object editing.
+   *
+   * Some things, such as Active Effects can not be edited on on owned item.  To make changes
+   * to these items, the item needs to be cloned or "backed up" into a world item, edited
+   * and then put back onto the Actor.
+   *
+   * If your migration needs to do this, you should call createMigrationFolder() from your
+   * preMigrate function passing the name of the migration.  This will return a folder object
+   * to store the backed up objects.
+   * @param {String} migrationName - the name of the migration running
+   * @returns {Folder}
+   */
   static async createMigrationFolder(migrationName) {
     LOGGER.trace("createMigrationFolder | CPRMigration");
     return CPRSystemUtils.GetFolder(
       "Item",
-      `${migrationName} Migration Workspace`
+      `${migrationName} Workspace`
     );
   }
 
+  /**
+   * Delete the migration folder for object editing.
+   *
+   * If your migration code is making use of the backupOwnedItem and restoreOwnedItem
+   * and a migration folder, you should call deleteMigrationFolder() from your
+   * postMigrate() function passing the migration Folder object.
+   *
+   * If the folder is not empty, it will not delete the folder and instead throw
+   * debug messages to the console in order to help figure out why there are still
+   * objects in the folder.
+   *
+   * @param {Folder} migratonFolder - the folder we are storing the items in
+   */
   static async deleteMigrationFolder(migrationFolder) {
     LOGGER.trace("deleteMigrationFolder | CPRMigration");
     if (migrationFolder && migrationFolder.contents.length === 0) {
@@ -426,6 +452,7 @@ export default class CPRMigration {
    *       is a hard problem because the IDs will always change with each call.
    *
    * @param {CPRItem} item - the item we are copying
+   * @param {Folder} migratonFolder - the folder we are storing the items in
    * @returns the copied item data
    */
   static async backupOwnedItem(item, migrationFolder) {
@@ -467,6 +494,15 @@ export default class CPRMigration {
     return newItem;
   }
 
+  /**
+   * Restores the changed item back onto the original actor ensuring all
+   * data points are updated. Once the object is re-created on the Actor
+   * it is cleaned up from the Migration Folder.
+   *
+   * Note: The OLD item needs to be deleted from the actor by the migration code.
+   *
+   * @param {CPRItem} item - the item we modified and has to be re-created on the Actor
+   */
   static async restoreOwnedItem(item) {
     LOGGER.trace("restoreOwnedItems | CPRMigration");
     const originalData = this.itemMapping[item.uuid];
