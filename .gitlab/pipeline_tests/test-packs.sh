@@ -30,7 +30,7 @@ mapfile -t ITEMS < <(
     --compact-output \
     --raw-output \
     '.Item.types | del(.[index("netarch")]) | .[]' \
-    "${TEMPLATE_FILE}"
+    "${TEMPLATE_FILE}" | sed 's/[^[:alnum:]]//g'
 )
 
 # For each itemType run the YAML fragments through v8r
