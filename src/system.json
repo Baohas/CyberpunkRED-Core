@@ -100,7 +100,13 @@
       "name": "critical-injury-tables",
       "path": "packs/critical-injury-tables.db",
       "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
+      "package": "cyberpunk-red-core",
+      "ownership": {
+        "PLAYER": "NONE",
+        "TRUSTED": "NONE",
+        "ASSISTANT": "NONE",
+        "GAMEMASTER": "NONE"
+      }
     },
     {
       "label": "Cyberchairs",
@@ -132,7 +138,13 @@
       "name": "cyberware-core",
       "path": "packs/cyberware-core.db",
       "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
+      "package": "cyberpunk-red-core",
+      "ownership": {
+        "PLAYER": "NONE",
+        "TRUSTED": "NONE",
+        "ASSISTANT": "NONE",
+        "GAMEMASTER": "NONE"
+      }
     },
     {
       "label": "Cyberware",
@@ -156,7 +168,13 @@
       "name": "dv-tables",
       "path": "packs/dv-tables.db",
       "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
+      "package": "cyberpunk-red-core",
+      "ownership": {
+        "PLAYER": "NONE",
+        "TRUSTED": "NONE",
+        "ASSISTANT": "NONE",
+        "GAMEMASTER": "NONE"
+      }
     },
     {
       "label": "Elflines Online",
@@ -260,7 +278,13 @@
       "name": "net-rolltables",
       "path": "packs/net-rolltables.db",
       "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
+      "package": "cyberpunk-red-core",
+      "ownership": {
+        "PLAYER": "NONE",
+        "TRUSTED": "NONE",
+        "ASSISTANT": "NONE",
+        "GAMEMASTER": "NONE"
+      }
     },
     {
       "label": "Night City Tarot",
@@ -300,7 +324,13 @@
       "name": "skills",
       "path": "packs/skills.db",
       "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
+      "package": "cyberpunk-red-core",
+      "ownership": {
+        "PLAYER": "NONE",
+        "TRUSTED": "NONE",
+        "ASSISTANT": "NONE",
+        "GAMEMASTER": "NONE"
+      }
     },
     {
       "label": "Skills (Languages)",
