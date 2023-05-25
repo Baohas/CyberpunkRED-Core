@@ -3,6 +3,8 @@
 import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";
 import CPRCharacterActorSheet from "./sheet/cpr-character-sheet.js";
+import CPRMookActorSheet from "./sheet/cpr-mook-sheet.js";
+import CPRContainerActorSheet from "./sheet/cpr-actor-sheet.js";
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";

@@ -22,6 +22,8 @@ For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/
 
 ### New Features
 
+- Upgrade items can now have ActiveEffects added to them and activated when the item they are installed into is equipped.
+
 #### Improved Dialogues
 
 - All dialogues have been given new styling and have been converted to a new system called CPRDialog.
@@ -151,6 +153,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Reordered system systems
 - Adjusted the wording of existing Elflines items to better fit their function
 - Update default icons for Black ICE and Demons
+- Contaiers configured as shops default to buying all at 100%
 
 ### Bug Fixes
 

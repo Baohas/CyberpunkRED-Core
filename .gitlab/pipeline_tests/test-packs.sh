@@ -2,9 +2,26 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# The following vars are set during the 'init' CI job.
+# SYSTEM_FILE
+
 ERRORS=0
 SYSTEM_FILE="${SYSTEM_FILE:-src/system.json}"
 TEMPLATE_FILE="${TEMPLATE_FILE:-src/template.json}"
+
+if ! type jq >/dev/null; then
+  echo "❌ 'jq' dependency not found. Please insall 'jq'."
+  exit 1
+fi
+
+# Cleanup files used during testing
+cleanup() {
+  rm -rf results.json
+  rm -rf errors.txt
+}
+
+# Trap any early exits for cleanup
+trap cleanup EXIT
 
 # Get a list of itemTypes from the template.json file
 # Remove 'netarch' from the from the results as we don't validate those
@@ -13,13 +30,35 @@ mapfile -t ITEMS < <(
     --compact-output \
     --raw-output \
     '.Item.types | del(.[index("netarch")]) | .[]' \
-    "${TEMPLATE_FILE}"
+    "${TEMPLATE_FILE}" | sed 's/[^[:alnum:]]//g'
 )
 
 # For each itemType run the YAML fragments through v8r
 for item in "${ITEMS[@]}"; do
-  # Shortcut v84 as we're doing error handling based on the output
-  npx v8r src/packs/**/"${item}".*.yaml 2>/dev/null >results.json || true
+  # Shortcut v84r as we're doing error handling based on the output
+  npx v8r src/packs/**/"${item}".*.yaml \
+    >results.json \
+    2>errors.txt || true
+
+  # Validate we actually get JSON back
+  if ! jq empty results.json >/dev/null 2>&1; then
+    echo "❌ v8r returned invalid JSON for ${item}. Output:"
+    cat errors.txt
+    echo "---"
+    cat results.json
+    echo "Exiting"
+    exit 1
+  fi
+
+  # If we do get JSON output, make sure that it contains the `results` key
+  if ! jq .results results.json >/dev/null 2>&1; then
+    echo "❌ v8r output does not contain the 'results' key"
+    cat errors.txt
+    echo "---"
+    cat results.json
+    echo "Exiting"
+    exit 1
+  fi
 
   # Parse out errors from the results
   all_errors=$(
@@ -29,7 +68,8 @@ for item in "${ITEMS[@]}"; do
       | {file: .fileLocation, errors: .errors, code: .code}]' results.json
   )
 
-  rm -rf results.json
+  # Cleanup any files we've just used
+  cleanup
 
   # Get a count of the errors
   end=$(echo "${all_errors}" | jq length)

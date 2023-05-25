@@ -9,6 +9,9 @@
         "_id": {
           "$ref": "./components/id.json"
         },
+        "effects": {
+          "$ref": "./components/effects/activeEffects.json"
+        },
         "flags": {
           "$ref": "./components/flags.json"
         },
@@ -28,6 +31,7 @@
       },
       "required": [
         "_id",
+        "effects",
         "img",
         "name",
         "system",
@@ -98,6 +102,9 @@
         "providesHardening": {
           "$ref": "./components/electronic/providesHardening.json"
         },
+        "revealed": {
+          "$ref": "./components/effects/revealed.json"
+        },
         "rof": {
           "$ref": "./components/attackable/rof.json"
         },
@@ -116,6 +123,9 @@
         },
         "unarmedAutomaticCalculation": {
           "$ref": "./components/attackable/unarmedAutomaticCalculation.json"
+        },
+        "usage": {
+          "$ref": "./components/effects/usage.json"
         },
         "usesType": {
           "$ref": "./components/loadable/usesType.json"

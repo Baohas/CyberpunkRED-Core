@@ -161,17 +161,24 @@ const Container = function Container() {
     const actor = this.isOwned ? this.actor : false;
 
     const installedItems = duplicate(this.system.installedItems);
+    const equippableTypes = SystemUtils.GetTemplateItemTypes("equippable");
 
     itemList.forEach((item) => {
       if (!installedItems.list.includes(item.uuid)) {
         installedItems.list.push(item.uuid);
       }
       installedItems.usedSlots += item.system.size;
-      updateList.push({
+      const itemData = {
         _id: item.id,
         "system.isInstalled": true,
         "system.installedIn": this.uuid,
-      });
+      };
+      if (equippableTypes.includes(item.type)) {
+        itemData["system.equipped"] = equippableTypes.includes(this.type)
+          ? this.system.equipped
+          : "equipped";
+      }
+      updateList.push(itemData);
     });
     updateList.push({ _id: this.id, "system.installedItems": installedItems });
 
@@ -249,6 +256,8 @@ const Container = function Container() {
       }
     }
 
+    const equippableTypes = SystemUtils.GetTemplateItemTypes("equippable");
+
     uninstallList.forEach((item) => {
       const updateData = {
         _id: item._id,
@@ -258,6 +267,9 @@ const Container = function Container() {
       if (recursive) {
         updateData["system.installedItems.list"] = [];
         updateData["system.installedItems.usedSlots"] = 0;
+      }
+      if (equippableTypes.includes(item.type)) {
+        updateData["system.equipped"] = item.isOwned ? "carried" : "owned";
       }
       updateList.push(updateData);
     });

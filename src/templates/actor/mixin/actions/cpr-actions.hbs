@@ -21,7 +21,9 @@
   {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-split-item.hbs"}}
 {{/if}}
 {{#if (cprHasTemplate type "equippable") }}
-  {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-equip-glyph.hbs"}}
+  {{#unless (cprCompare type "===" "itemUpgrade")}}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-equip-glyph.hbs"}}
+  {{/unless}}
 {{/if}}
 {{#if (cprListContains "itemUpgrade,cyberdeck" type) }}
   {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-install-item-glyph.hbs"}}

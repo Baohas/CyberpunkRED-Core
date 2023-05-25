@@ -449,6 +449,8 @@
         "attackable",
         "common",
         "electronic",
+        "effects",
+        "equippable",
         "physical",
         "installable",
         "loadable",
