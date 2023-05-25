@@ -92,6 +92,9 @@ const Loadable = function Loadable() {
     let selectedAmmoId = reloadAmmoId;
     const loadUpdate = [];
     if (this.actor) {
+      if (selectedAmmoId && !this.actor.getOwnedItem(selectedAmmoId)) {
+        selectedAmmoId = "";
+      }
       if (!selectedAmmoId) {
         const ownedAmmo = this.actor.itemTypes.ammo;
         const validAmmo = [];
@@ -140,6 +143,7 @@ const Loadable = function Loadable() {
       if (selectedAmmoId) {
         const magazineData = this.system.magazine;
         const ammo = this.actor.getOwnedItem(selectedAmmoId);
+
         magazineData.ammoData.uuid = ammo.uuid;
         magazineData.ammoData.name = ammo.name;
         loadUpdate.push({
