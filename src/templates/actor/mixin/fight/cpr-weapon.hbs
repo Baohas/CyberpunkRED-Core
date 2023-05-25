@@ -129,7 +129,12 @@
         <li>
           <span class="text-padding-right-small">
             {{localize "CPR.actorSheets.fireModes.autoFire"}}
-            ({{this.system.fireModes.autoFire}})
+            (
+              {{~cprGetWeaponAutofireMax this~}}
+              {{~#if (cprCompare (cprGetAmmoOverrideProp this.system.magazine.ammoData.uuid "autofire" "mode") "!==" "none")~}}
+                <span data-tooltip="{{localize "CPR.actorSheets.fightTab.ammoAutofireOverrideTooltip"}}">*</span>
+              {{~/if~}}
+            )
           </span>
           <a class="fire-checkbox" data-fire-mode="autofire" data-item-id="{{this.id}}">
             {{#if (cprFireMode actor "autofire" this.id) }}

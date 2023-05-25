@@ -1105,9 +1105,42 @@ export default function registerHandlebarsHelpers() {
     }
   );
 
+  /**
+   * Returns damage for a particular weapon, taking into account loaded ammo which may
+   * modify the base damage.
+   *
+   * @param {CPRWeapon} weapon - weapon item whose damage we are interested in returning
+
+   */
   Handlebars.registerHelper("cprGetWeaponDamage", (weapon) => {
     LOGGER.trace("cprGetWeaponDamage | handlebarsHelper | Called.");
     return weapon.getWeaponDamage();
+  });
+
+  /**
+   * Returns the autofire maximum for a particular weapon, taking into account loaded ammo,
+   * which may modify the base autofire maximum.
+   *
+   * @param {CPRWeapon} weapon - weapon item whose autofire Maximum we are interested in returning
+
+   */
+  Handlebars.registerHelper("cprGetWeaponAutofireMax", (weapon) => {
+    LOGGER.trace("cprGetWeaponDamage | handlebarsHelper | Called.");
+    const weaponAutofireMax = weapon.system.fireModes.autoFire;
+    const ammoItem = fromUuidSync(weapon.system.magazine.ammoData.uuid).system;
+    let trueMax = 0;
+    if (ammoItem.overrides.autofire.mode !== "none") {
+      const ammoAutofireModifier = ammoItem.overrides.autofire.value;
+      const ammoAutofireMin = ammoItem.overrides.autofire.minimum;
+      trueMax = Math.max(
+        weaponAutofireMax + ammoAutofireModifier,
+        ammoAutofireMin
+      );
+    } else {
+      trueMax = weaponAutofireMax;
+    }
+
+    return trueMax;
   });
 
   /**
