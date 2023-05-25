@@ -107,9 +107,9 @@ const Loadable = function Loadable() {
         let dialogData = {
           weapon: this,
           ammoList: validAmmo,
-          selectedAmmo:
-            // Use currently loaded ammo. If none, default to first in the list of valid ammo.
-            this.system.magazine.ammoData?.uuid || validAmmo[0].uuid,
+          selectedAmmo: this.system.magazine.ammoData?.uuid
+            ? this.system.magazine.ammoData?.uuid
+            : "",
           returnType: "string",
         };
         if (validAmmo.length === 0) {
