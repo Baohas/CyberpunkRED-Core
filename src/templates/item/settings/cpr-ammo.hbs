@@ -62,19 +62,17 @@
   </div>
 </li>
 {{#if (cprCompare item.system.overrides.damage.mode "!==" "none")}}
-<li class="item flexrow">
-  &nbsp;&nbsp;
-  <div class="item flexrow setting-name text-nowrap">
-    {{localize "CPR.itemSheet.ammo.modifierValue"}}
-  </div>
-  <div class="item flexrow setting-value text-nowrap item-end">
-    <input name="system.overrides.damage.value" type="text" value="{{item.system.overrides.damage.value}}"/>
-  </div>
-</li>
+  <li class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap text-padding-left-largest">
+      {{localize "CPR.itemSheet.ammo.modifierValue"}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+      <input name="system.overrides.damage.value" type="text" value="{{item.system.overrides.damage.value}}"/>
+    </div>
+  </li>
   {{#if (cprCompare item.system.overrides.damage.mode "===" "modify")}}
     <li class="item flexrow">
-      &nbsp;&nbsp;
-      <div class="item flexrow setting-name text-nowrap">
+      <div class="item flexrow setting-name text-nowrap text-padding-left-largest">
         {{localize "CPR.itemSheet.ammo.modifierMinimum"}}
       </div>
       <div class="item flexrow setting-value text-nowrap item-end">
@@ -102,19 +100,17 @@
   </div>
 </li>
 {{#if (cprCompare item.system.overrides.autofire.mode "!==" "none")}}
-<li class="item flexrow">
-  &nbsp;&nbsp;
-  <div class="item flexrow setting-name text-nowrap">
-    {{localize "CPR.itemSheet.ammo.modifierValue"}}
-  </div>
-  <div class="item flexrow setting-value text-nowrap item-end">
-    <input name="system.overrides.autofire.value" type="number" value="{{item.system.overrides.autofire.value}}"/>
-  </div>
-</li>
+  <li class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap text-padding-left-largest">
+      {{localize "CPR.itemSheet.ammo.modifierValue"}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+      <input name="system.overrides.autofire.value" type="number" value="{{item.system.overrides.autofire.value}}"/>
+    </div>
+  </li>
   {{#if (cprCompare item.system.overrides.autofire.mode "===" "modify")}}
     <li class="item flexrow">
-      &nbsp;&nbsp;
-      <div class="item flexrow setting-name text-nowrap">
+      <div class="item flexrow setting-name text-nowrap text-padding-left-largest">
         {{localize "CPR.itemSheet.ammo.modifierMinimum"}}
       </div>
       <div class="item flexrow setting-value text-nowrap item-end">
