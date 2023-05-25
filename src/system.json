@@ -7,9 +7,9 @@
   "title": "Cyberpunk RED - CORE",
   "description": "Implementation of the Cyberpunk RED, Core Rules, for FVTT",
   "compatibility": {
-    "minimum": 10,
-    "verified": 10,
-    "maximum": 10
+    "minimum": 11,
+    "verified": 11,
+    "maximum": 11
   },
   "templateVersion": 3,
   "authors": [
