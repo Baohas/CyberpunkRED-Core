@@ -28,10 +28,8 @@ export default class ImprovedDialogMigration extends CPRMigration {
       "notify",
       CPRSystemUtils.Localize("CPR.migration.effects.beginMigration")
     );
-    this.migrationFolder = await CPRSystemUtils.GetFolder(
-      "Item",
-      "Improved-Dialog-Migration Workspace"
-    );
+    this.migrationFolder = await CPRMigration.createMigrationFolder(this.name);
+
     LOGGER.log(`Starting migration: ${this.name}`);
   }
 
@@ -40,10 +38,7 @@ export default class ImprovedDialogMigration extends CPRMigration {
    */
   async postMigrate() {
     LOGGER.trace(`postMigrate | ${this.version}-${this.name}`);
-    if (this.migrationFolder.contents.length === 0) {
-      LOGGER.debug("would delete migration folder");
-      this.migrationFolder.delete();
-    }
+    CPRMigration.deleteMigrationFolder(this.migrationFolder);
     LOGGER.log(`Finishing migration: ${this.name}`);
   }
 
@@ -125,7 +120,10 @@ export default class ImprovedDialogMigration extends CPRMigration {
       // We cannot add AEs to owned items, that's a Foundry limitation. If an owned item might get an AE
       // as a result of this migration, we must make an unowned copy first, and then copy that back to
       // the actor. Not all item types require this, and skills/core cyberware are filtered out earlier.
-      const newWorldItem = await CPRMigration.backupOwnedItem(ownedItem);
+      const newWorldItem = await CPRMigration.backupOwnedItem(
+        ownedItem,
+        this.migrationFolder
+      );
 
       try {
         await ImprovedDialogMigration.migrateItem(newWorldItem);

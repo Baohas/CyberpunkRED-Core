@@ -192,6 +192,8 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 - Migrating actors that are on scenes in a compendium would fail because the code did UUID lookups and Foundry won't let you do this synchronously. Added code so if the restoration is for a Compenium actor/item, the lookup is done with an async await.
 - Fixed an issue where if migration performs a backup/restore of an installed item, it would delete the original item which was causing the container item to report the incorrect amount of used slots.
 - Standardized the passed migration context to actor:\*EmbeddedDocuments to isMigrating
+- Standardized the passed migration context to actor:\*EmbeddedDocuments to isMigrating
+- Fixed the usages of restoreOwnedItem to be consistent with backupOwnedItem in that it cleans up the owned item that was created.
 
 ## Version 0.86.1 | Date: 2023-02-05
 

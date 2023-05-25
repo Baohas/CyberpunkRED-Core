@@ -374,19 +374,47 @@ export default class CPRMigration {
     return good;
   }
 
-  static async createMigrationFolder() {
+  static async createMigrationFolder(migrationName) {
     LOGGER.trace("createMigrationFolder | CPRMigration");
-    this.migrationFolder = await CPRSystemUtils.GetFolder(
+    return CPRSystemUtils.GetFolder(
       "Item",
-      `Active Effect ${this.name} Workspace`
+      `${migrationName} Migration Workspace`
     );
   }
 
-  static deleteMigrationFolder() {
+  static async deleteMigrationFolder(migrationFolder) {
     LOGGER.trace("deleteMigrationFolder | CPRMigration");
-    if (this.migrationFolder && this.migrationFolder.contents.length === 0) {
+    if (migrationFolder && migrationFolder.contents.length === 0) {
       LOGGER.debug("would delete migration folder");
-      this.migrationFolder.delete();
+      migrationFolder.delete();
+    } else {
+      LOGGER.error(`MIGRATION FOLDER NOT EMPTY: ${migrationFolder.name}`);
+      for (const item of migrationFolder.contents) {
+        const mappingData = this.itemMapping[item.uuid];
+        const sourceItem = mappingData?.item
+          ? await fromUuid(mappingData.item)
+          : { name: "<OBJECT MISSING>" };
+        const sourceActor = mappingData?.actor
+          ? await fromUuid(mappingData.actor)
+          : { name: "<OBJECT MISSING>" };
+
+        let errorMessage = `Folder Name: ${migrationFolder.name} | Folder Item: ${item.name} (${item.uuid}) | Source Item: ${sourceItem.name} (${mappingData.item}) | Source Actor: ${sourceActor.name} (${mappingData.actor})`;
+        if (
+          mappingData.actor.match(/Compendium/) &&
+          !sourceActor.name.match(/OBJECT MISSING/)
+        ) {
+          const compendiumTitle = sourceActor.compendium?.title;
+          errorMessage = `${errorMessage} | Compendium: ${compendiumTitle}`;
+          const UuidParts = mappingData.actor.split(".");
+          UuidParts.splice(4);
+          const CompendiumObjectUuid = UuidParts.join(".");
+          const CompendiumObject = await fromUuid(CompendiumObjectUuid);
+          if (CompendiumObject) {
+            errorMessage = `${errorMessage} | Compendium Entry: ${CompendiumObject.name} (${CompendiumObjectUuid})`;
+          }
+        }
+        LOGGER.error(errorMessage);
+      }
     }
   }
 
@@ -400,11 +428,8 @@ export default class CPRMigration {
    * @param {CPRItem} item - the item we are copying
    * @returns the copied item data
    */
-  static async backupOwnedItem(item) {
+  static async backupOwnedItem(item, migrationFolder) {
     LOGGER.trace("backupOwnedItem | CPRMigration");
-    if (!this.migrationFolder) {
-      await this.createMigrationFolder();
-    }
 
     const newItem = await Item.create(
       {
@@ -412,7 +437,7 @@ export default class CPRMigration {
         type: item.type,
         system: item.system,
         img: item.img,
-        folder: this.migrationFolder,
+        folder: migrationFolder,
       },
       {
         cprIsMigrating: true,
@@ -614,6 +639,7 @@ export default class CPRMigration {
     if (updateList.length > 0) {
       await actor.updateEmbeddedDocuments("Item", updateList);
     }
+    await item.delete();
   }
   /**
    * This block of abstract methods breaks down how each document type is migrated. If there
