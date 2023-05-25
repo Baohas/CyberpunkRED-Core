@@ -1101,7 +1101,12 @@ export default function registerHandlebarsHelpers() {
         );
       }
 
-      return ammoItem.system.overrides[override][property];
+      // If no ammo item, return "none". This is a hack to not add extra logic to the handlebars.
+      // Prevents melee and unloaded weapons from displaying italicized/tool-tipped damage text-pills.
+      if (ammoItem) {
+        return ammoItem.system.overrides[override][property];
+      }
+      return "none";
     }
   );
 
@@ -1127,11 +1132,11 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprGetWeaponAutofireMax", (weapon) => {
     LOGGER.trace("cprGetWeaponDamage | handlebarsHelper | Called.");
     const weaponAutofireMax = weapon.system.fireModes.autoFire;
-    const ammoItem = fromUuidSync(weapon.system.magazine.ammoData.uuid).system;
+    const ammoItem = fromUuidSync(weapon.system.magazine.ammoData.uuid);
     let trueMax = 0;
-    if (ammoItem.overrides.autofire.mode !== "none") {
-      const ammoAutofireModifier = ammoItem.overrides.autofire.value;
-      const ammoAutofireMin = ammoItem.overrides.autofire.minimum;
+    if (ammoItem && ammoItem.system.overrides.autofire.mode !== "none") {
+      const ammoAutofireModifier = ammoItem.system.overrides.autofire.value;
+      const ammoAutofireMin = ammoItem.system.overrides.autofire.minimum;
       trueMax = Math.max(
         weaponAutofireMax + ammoAutofireModifier,
         ammoAutofireMin
