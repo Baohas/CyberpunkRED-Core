@@ -856,7 +856,9 @@ export class CPRDamageRoll extends CPRRoll {
     this.autofireMultiplier = autofireMultiplier;
 
     // We account for ammo overriding autofire maximum here.
-    if (ammoOverride?.mode === "modify") {
+    if (ammoOverride?.mode === "set") {
+      this.autofireMultiplierMax = ammoOverride.value;
+    } else if (ammoOverride?.mode === "modify") {
       const trueMax = Math.max(
         autofireMultiplierMax + ammoOverride.value,
         ammoOverride.minimum

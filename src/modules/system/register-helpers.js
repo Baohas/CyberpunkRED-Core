@@ -1134,7 +1134,12 @@ export default function registerHandlebarsHelpers() {
     const weaponAutofireMax = weapon.system.fireModes.autoFire;
     const ammoItem = fromUuidSync(weapon.system.magazine.ammoData.uuid);
     let trueMax = 0;
-    if (ammoItem && ammoItem.system.overrides.autofire.mode !== "none") {
+    if (ammoItem && ammoItem.system.overrides.autofire.mode === "set") {
+      trueMax = ammoItem.system.overrides.autofire.value;
+    } else if (
+      ammoItem &&
+      ammoItem.system.overrides.autofire.mode === "modify"
+    ) {
       const ammoAutofireModifier = ammoItem.system.overrides.autofire.value;
       const ammoAutofireMin = ammoItem.system.overrides.autofire.minimum;
       trueMax = Math.max(

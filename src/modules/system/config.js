@@ -228,6 +228,7 @@ CPR.ammoDamageOverrideModes = {
 
 CPR.ammoAutofireOverrideModes = {
   none: "CPR.global.generic.no",
+  set: "CPR.global.generic.set",
   modify: "CPR.global.generic.modify",
 };
 
