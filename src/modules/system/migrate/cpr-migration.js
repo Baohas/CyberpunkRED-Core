@@ -389,10 +389,7 @@ export default class CPRMigration {
    */
   static async createMigrationFolder(migrationName) {
     LOGGER.trace("createMigrationFolder | CPRMigration");
-    return CPRSystemUtils.GetFolder(
-      "Item",
-      `${migrationName} Workspace`
-    );
+    return CPRSystemUtils.GetFolder("Item", `${migrationName} Workspace`);
   }
 
   /**
