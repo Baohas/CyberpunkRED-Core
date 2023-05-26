@@ -75,6 +75,52 @@ export default class CPRSystemUtils {
   }
 
   /**
+   * Take a default object of themes and gather them from other modules which can
+   * register them with:
+   * game.modules.get("module-name").cprcThemes = { foo: "bar" };
+   *
+   * @static
+   * @themes {Object} - Themes to be merged with module themes
+   *                    In this case likely `CPR.themes` from config.js
+   * @returns {Object} - Merged choices of themes
+   */
+  static GetThemes(themes) {
+    LOGGER.trace("GetThemes | CPRSystemUtils | Called.");
+    const defaultThemes = themes;
+    const moduleThemes = {};
+
+    // Filter modules that have 'cprcThemes' defined
+    const themeModules = game.modules.filter((module) => {
+      return module.active && module && module.cprcThemes;
+    });
+
+    // Loop over any modules registering 'cprcThemes' and build a new object
+    for (const module of themeModules) {
+      const moduleChoices = module.cprcThemes;
+      Object.assign(moduleThemes, moduleChoices);
+    }
+
+    // Merge them all together with the system provided themes
+    const mergedChoices = { ...defaultThemes, ...moduleThemes };
+
+    return mergedChoices;
+  }
+
+  /**
+   * Set the selected theme
+   *
+   * @static
+   */
+  static SetTheme() {
+    LOGGER.trace("SetThemes | CPRSystemUtils | Called.");
+    const theme = game.settings.get(game.system.id, "theme")
+      ? game.settings.get(game.system.id, "theme")
+      : "default";
+
+    document.documentElement.setAttribute("data-cpr-theme", theme);
+  }
+
+  /**
    * Return an array of "core" skills that are defined in the rules, and all characters
    * start with them defined.
    *

@@ -55,7 +55,7 @@ For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/
 
 We have added the functionality for system specific themes. This allows us to ship a few default themes (dark mode!). You can configure this in the `Settings > Cyberpunk RED - CORE` section.
 
-This lays the foundation for allowing 3rd party modules to register their own CPR specific themes in a future release.
+If you are interested in making a theme for the system check out the [CSS Themes](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/CSS-Themes) wiki page which details the process.
 
 #### Compendia
 
