@@ -473,22 +473,6 @@
       "name": "TDT 004",
       "description": "<p>Troop transport Helicopter.</p>\n<p>Full details can be found on page 59.</p>"
     },
-    "The Grundy": {
-      "name": "The Grundy",
-      "description": "<p>Armored industrial looking Compact Grouncar, with a powerful combat plow.</p>\n<p>Full details can be found on page 68.</p>"
-    },
-    "The Harriet 100": {
-      "name": "The Harriet 100",
-      "description": "<p>A classic Roadbike with a more feminine look.</p>\n<p>Full details can be found on page 69.</p>"
-    },
-    "The Harvey 100": {
-      "name": "The Harvey 100",
-      "description": "<p>A classic Roadbike.</p>\n<p>Full details can be found on page 69.</p>"
-    },
-    "The Harvey Merc": {
-      "name": "The Harvey Merc",
-      "description": "<p>A classic roadbike, this time with mounted weapons.</p>\n<p>Full details can be found on page 69.</p>"
-    },
     "The Zacatzontli Pickup Truck": {
       "name": "The Zacatzontli Pickup Truck",
       "description": "<p>A Compact Groundcar equipped for off-road travel.</p>\n<p>Full details can be found on page 74.</p>"
@@ -504,10 +488,6 @@
     "Yang's Wheels Rickshaw": {
       "name": "Yang's Wheels Rickshaw",
       "description": "<p>Roadbike with attached trailer for passengers.</p>\n<p>Full details can be found on page 81.</p>"
-    },
-    "Zacatzontli Pickup Truck": {
-      "name": "Zacatzontli Pickup Truck",
-      "description": "<p>A Compact Groundcar equipped for off-road travel.</p>\n<p>Full details can be found on page 74.</p>"
     },
     "Arasaka Prototype Variable Assault Rifle": {
       "name": "Arasaka Prototype Variable Assault Rifle",

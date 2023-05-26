@@ -1,5 +1,6 @@
 _id: 2h87i3r9DkK7sabX
-img: systems/cyberpunk-red-core/icons/compendium/black-chrome/paintball_tracking.png
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/paintball_tracking.png
 name: Doberman 500 Marking Scent
 system:
   ablationValue: 0
