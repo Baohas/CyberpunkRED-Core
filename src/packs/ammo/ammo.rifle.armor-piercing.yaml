@@ -1,6 +1,6 @@
-_id: QHpJ8EeoAnIWsFvZ
-img: systems/cyberpunk-red-core/icons/compendium/ammo/bow_armorpiercing.png
-name: Arrow (Armor Piercing)
+_id: BEj2oUj2UOKgBFDz
+img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_armorpiercing.png
+name: Rifle (Armor-Piercing)
 system:
   ablationValue: 2
   amount: 10
@@ -11,7 +11,7 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Double ablation to armor.</p>
+    value: <p>Double ablation to armor. </p>
   favorite: false
   overrides:
     autofire:
@@ -28,5 +28,5 @@ system:
     book: Core
     page: 345
   type: armorPiercing
-  variety: arrow
+  variety: rifle
 type: ammo

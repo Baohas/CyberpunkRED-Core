@@ -1,6 +1,7 @@
-_id: BEj2oUj2UOKgBFDz
-img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_armorpiercing.png
-name: Rifle (Armor Piercing)
+_id: 67GcScXFPCzIGi4s
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/ammo/pistolveryheavy_armorpiercing.png
+name: Heavy Pistol (Armor-Piercing)
 system:
   ablationValue: 2
   amount: 10
@@ -28,5 +29,5 @@ system:
     book: Core
     page: 345
   type: armorPiercing
-  variety: rifle
+  variety: heavyPistol
 type: ammo
