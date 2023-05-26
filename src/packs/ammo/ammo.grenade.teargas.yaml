@@ -16,6 +16,15 @@ system:
       Torture/Drugs Check. On fail suffer Damaged Eye Critical Injury (See pg.
       188) for 1 minute. Does not deal critical bonus damage.</p>
   favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: set
+      value: "0"
   price:
     market: 50
   source:

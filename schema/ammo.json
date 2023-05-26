@@ -28,13 +28,7 @@
           "const": "ammo"
         }
       },
-      "required": [
-        "_id",
-        "img",
-        "name",
-        "system",
-        "type"
-      ]
+      "required": ["_id", "img", "name", "system", "type"]
     },
     "System": {
       "type": "object",
@@ -53,6 +47,50 @@
         },
         "concealable": {
           "$ref": "./components/physical/concealable.json"
+        },
+        "overrides": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Ammo damage may override or modify weapon damage. Autofire may be modified by ammo.",
+          "properties": {
+            "damage": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "enum": ["none", "set", "modify"]
+                },
+                "value": {
+                  "type": "string",
+                  "pattern": "^-?[0-9]{1,2}d6$|^0$"
+                },
+                "minimum": {
+                  "type": "string",
+                  "pattern": "^[0-9]{1,2}d6$|^0$"
+                }
+              },
+              "required": ["mode", "value", "minimum"]
+            },
+            "autofire": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "enum": ["none", "set", "modify"]
+                },
+                "value": {
+                  "type": "integer"
+                },
+                "minimum": {
+                  "type": "integer"
+                }
+              },
+              "required": ["mode", "value", "minimum"]
+            }
+          },
+          "required": ["damage", "autofire"]
         },
         "description": {
           "$ref": "./components/common/description.json"
@@ -80,6 +118,7 @@
         "concealable",
         "description",
         "favorite",
+        "overrides",
         "price",
         "source",
         "type",

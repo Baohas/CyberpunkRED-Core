@@ -13,6 +13,15 @@ system:
     unidentified: ""
     value: <p>Basic ammo, nothing special.</p>
   favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: set
+      value: 3d6
   price:
     market: 10
   source:

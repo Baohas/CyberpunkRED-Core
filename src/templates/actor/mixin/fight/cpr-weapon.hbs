@@ -73,18 +73,15 @@
     {{/if}}
 
     {{!-- Damage --}}
-    {{#if this.system.magazine.ammoData.uuid}}
-      <span class="text-pill">
-        {{localize "CPR.global.generic.damage"}}
-        {{#if (cprCompare ammoType "===" "Rubber")}}
-          0
-        {{else if (cprCompare ammoType "===" "Paintballs")}}
-          0
-        {{else}}
-          {{this.system.damage}}
-        {{/if}}
-      </span>
-    {{/if}}
+    <span
+      {{#if (cprCompare (cprGetAmmoOverrideProp this.system.magazine.ammoData.uuid "damage" "mode") "!==" "none")}}
+        class="text-pill text-italic" data-tooltip="{{localize "CPR.actorSheets.fightTab.ammoDamageOverrideTooltip"}}">
+      {{else}}
+        class="text-pill">
+      {{/if}}
+      {{localize "CPR.global.generic.damage"}}
+      {{cprGetWeaponDamage this}}
+    </span>
 
     {{!-- Ablation --}}
     {{#if this.system.magazine.ammoData.uuid}}
@@ -127,9 +124,14 @@
       {{!-- Autofire --}}
       {{#if (cprCompare this.system.fireModes.autoFire ">" 0)}}
         <li>
-          <span class="text-padding-right-small">
+          <span
+            {{#if (cprCompare (cprGetAmmoOverrideProp this.system.magazine.ammoData.uuid "autofire" "mode") "!==" "none")}}
+              class="text-padding-right-small text-italic" data-tooltip="{{localize "CPR.actorSheets.fightTab.ammoAutofireOverrideTooltip"}}">
+            {{else}}
+              class="text-padding-right-small">
+            {{/if}}
             {{localize "CPR.actorSheets.fireModes.autoFire"}}
-            ({{this.system.fireModes.autoFire}})
+            ({{cprGetWeaponAutofireMax this}})
           </span>
           <a class="fire-checkbox" data-fire-mode="autofire" data-item-id="{{this.id}}">
             {{#if (cprFireMode actor "autofire" this.id) }}

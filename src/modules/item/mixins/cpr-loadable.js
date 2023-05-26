@@ -93,6 +93,9 @@ const Loadable = function Loadable() {
     let selectedAmmoId = reloadAmmoId;
     const loadUpdate = [];
     if (this.actor) {
+      if (selectedAmmoId && !this.actor.getOwnedItem(selectedAmmoId)) {
+        selectedAmmoId = "";
+      }
       if (!selectedAmmoId) {
         const ownedAmmo = this.actor.itemTypes.ammo;
         const validAmmo = [];
@@ -105,14 +108,6 @@ const Loadable = function Loadable() {
           }
         });
 
-        let dialogData = {
-          weapon: this,
-          ammoList: validAmmo,
-          selectedAmmo:
-            // Use currently loaded ammo. If none, default to first in the list of valid ammo.
-            this.system.magazine.ammoData?.uuid || validAmmo[0].uuid,
-          returnType: "string",
-        };
         if (validAmmo.length === 0) {
           SystemUtils.DisplayMessage(
             "warn",
@@ -120,6 +115,15 @@ const Loadable = function Loadable() {
           );
           return Promise.resolve();
         }
+
+        let dialogData = {
+          weapon: this,
+          ammoList: validAmmo,
+          selectedAmmo: this.system.magazine.ammoData?.uuid
+            ? this.system.magazine.ammoData?.uuid
+            : "",
+          returnType: "string",
+        };
 
         // Show "Load Ammo" dialog,
         dialogData = await CPRDialog.showDialog(dialogData, {
@@ -141,6 +145,7 @@ const Loadable = function Loadable() {
       if (selectedAmmoId) {
         const magazineData = this.system.magazine;
         const ammo = this.actor.getOwnedItem(selectedAmmoId);
+
         magazineData.ammoData.uuid = ammo.uuid;
         magazineData.ammoData.name = ammo.name;
         loadUpdate.push({

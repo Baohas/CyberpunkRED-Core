@@ -279,37 +279,7 @@ const Attackable = function Attackable() {
     const cprWeaponData = this.system;
     const rollName = this.name;
     const { weaponType } = cprWeaponData;
-    let { damage } = this.system;
-    if (
-      (weaponType === "unarmed" || weaponType === "martialArts") &&
-      cprWeaponData.unarmedAutomaticCalculation
-    ) {
-      // calculate damage based on BODY stat
-      const cprActorData = this.actor.system;
-      const actorBodyStat = cprActorData.stats.body.value;
-      if (actorBodyStat <= 4) {
-        if (
-          weaponType === "unarmed" &&
-          this.actor.itemTypes.cyberware.some(
-            (c) =>
-              c.system.type === "cyberArm" &&
-              c.system.isInstalled === true &&
-              c.system.isFoundational === true
-          )
-        ) {
-          // If the user has an installed Cyberarm, which is a foundational. This is only for unarmed damage, not martial arts damage.
-          damage = "2d6";
-        } else {
-          damage = "1d6";
-        }
-      } else if (actorBodyStat <= 6) {
-        damage = "2d6";
-      } else if (actorBodyStat <= 10) {
-        damage = "3d6";
-      } else {
-        damage = "4d6";
-      }
-    }
+    const damage = this.getWeaponDamage();
 
     const cprRoll = new CPRRolls.CPRDamageRoll(rollName, damage, weaponType);
     if (
@@ -322,7 +292,12 @@ const Attackable = function Attackable() {
         cprWeaponData.weaponType === "assaultRifle" ? 4 : 3;
     }
 
-    cprRoll.configureAutofire(1, cprWeaponData.fireModes.autoFire);
+    const autofireOverride = this._getLoadedAmmoProp("overrides")?.autofire;
+    cprRoll.configureAutofire(
+      1,
+      cprWeaponData.fireModes.autoFire,
+      autofireOverride
+    );
 
     switch (type) {
       case CPRRolls.rollTypes.AIMED: {
@@ -402,6 +377,86 @@ const Attackable = function Attackable() {
     const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
     cprRoll.addMod(damageMods);
     return cprRoll;
+  };
+
+  /**
+   * Calculates the damage for a weapon. For unarmed or martial arts damage rolls, calculate based on the body stat.
+   * For ranged weapons, factor in if the ammo overrides the weapon's base damage.
+   *
+   * @returns {String} - Damage formula in the form of `Xd6`.
+   */
+  this.getWeaponDamage = function _getWeaponDamage() {
+    let { damage } = this.system;
+    const { weaponType } = this.system;
+    if (
+      (weaponType === "unarmed" || weaponType === "martialArts") &&
+      this.system.unarmedAutomaticCalculation
+    ) {
+      // calculate damage based on BODY stat
+      const cprActorData = this.actor.system;
+      const actorBodyStat = cprActorData.stats.body.value;
+      if (actorBodyStat <= 4) {
+        if (
+          weaponType === "unarmed" &&
+          this.actor.itemTypes.cyberware.some(
+            (c) =>
+              c.system.type === "cyberArm" &&
+              c.system.isInstalled === true &&
+              c.system.isFoundational === true
+          )
+        ) {
+          // If the user has an installed Cyberarm, which is a foundational. This is only for unarmed damage, not martial arts damage.
+          damage = "2d6";
+        } else {
+          damage = "1d6";
+        }
+      } else if (actorBodyStat <= 6) {
+        damage = "2d6";
+      } else if (actorBodyStat <= 10) {
+        damage = "3d6";
+      } else {
+        damage = "4d6";
+      }
+    }
+
+    const damageOverride = this._getLoadedAmmoProp("overrides")?.damage; // Get damage override information.
+    if (damageOverride?.mode === "set") {
+      damage = damageOverride.value; // If mode is "set", then set the value.
+    } else if (damageOverride?.mode === "modify") {
+      // If mode is "modify",
+      const overrideDiceMod = damageOverride.value.match(/(\+|-)?[0-9]+/); // Get the override's number of dice (and math operator)
+      const overrideResultMod =
+        damageOverride.value.match(/d6\s*((\+|-)[0-9])/); // Get the override's +X or -X from the end of the formula (e.g. 2d6 +4)
+      if (!overrideDiceMod) {
+        return SystemUtils.DisplayMessage(
+          "warn",
+          `This ammo's damage override has an invalid value (${damageOverride.value}). Check the ammo's settings.`
+        );
+      }
+      const currentDamageDie = damage.match(/[0-9]+/); // Get current damage's number of dice.
+      const currentDamageResultMod = damage.match(/d6\s*((\+|-)[0-9])/); // Get current damage's +X or -X from the end of the formula.
+      const newDamage =
+        // Add current damage dice and override's damage dice.
+        Number.parseInt(currentDamageDie[0], 10) +
+        Number.parseInt(overrideDiceMod[0], 10);
+      const minimumDamage = Number.parseInt(
+        damageOverride.minimum.match(/[0-9]+/),
+        10
+      );
+      if (newDamage <= minimumDamage) {
+        damage = damageOverride.minimum;
+      } else {
+        damage = `${newDamage}d6`;
+      }
+      if (overrideResultMod) {
+        damage += overrideResultMod[1]; // Re-add override's +X or -X from end of formula.
+      }
+      if (currentDamageResultMod) {
+        damage += currentDamageResultMod[1]; // Re-add current damage's +X or -X from the end of formula.
+      }
+    }
+
+    return damage;
   };
 
   /**

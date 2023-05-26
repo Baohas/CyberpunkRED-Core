@@ -13,6 +13,15 @@ system:
     unidentified: ""
     value: <p>Regular paintballs that don't do any damage. Annoying though.</p>
   favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: set
+      value: "0"
   price:
     market: 10
   source:

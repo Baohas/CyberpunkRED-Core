@@ -64,6 +64,12 @@ export class CPRRoll {
    */
   _processFormula(formula) {
     LOGGER.trace("_processFormula | CPRRoll | Called.");
+    // If formula is just a number string, return that number.
+    // This allows us to pass flat numbers as the roll formula, if a weapon or its ammo do flat damage.
+    // See: "https://stackoverflow.com/questions/175739/how-can-i-check-if-a-string-is-a-valid-number"
+    if (!Number.isNaN(+formula)) {
+      return formula;
+    }
     const dice = /[0-9][0-9]*d[0-9][0-9]*/;
     const die = /d[0-9][0-9]*/;
     // cut out the XdY term, leaving only + or - terms after
@@ -838,11 +844,27 @@ export class CPRDamageRoll extends CPRRoll {
    *
    * @param {Number} autofireMultiplier - damage multiplier that comes from how well the attack roll exceed the DV
    * @param {Number} autofireMultiplierMax - the maximum damage multiplier for the roll, which is set by the weapon type
+   * @param {Object} ammoOverride - Data from the ammo, which may override the weapon's autofire maximum.
    */
-  configureAutofire(autofireMultiplier, autofireMultiplierMax = 0) {
+  configureAutofire(
+    autofireMultiplier,
+    // eslint-disable-next-line default-param-last
+    autofireMultiplierMax = 0,
+    ammoOverride
+  ) {
     LOGGER.trace("configureAutofire | CPRDamageRoll | Called.");
     this.autofireMultiplier = autofireMultiplier;
-    if (autofireMultiplierMax > this.autofireMultiplierMax) {
+
+    // We account for ammo overriding autofire maximum here.
+    if (ammoOverride?.mode === "set") {
+      this.autofireMultiplierMax = ammoOverride.value;
+    } else if (ammoOverride?.mode === "modify") {
+      const trueMax = Math.max(
+        autofireMultiplierMax + ammoOverride.value,
+        ammoOverride.minimum
+      );
+      this.autofireMultiplierMax = trueMax;
+    } else if (autofireMultiplierMax > this.autofireMultiplierMax) {
       this.autofireMultiplierMax = autofireMultiplierMax;
     }
   }

@@ -15,6 +15,15 @@ system:
       <p>Net for the net launcher that grapples the target on hit. (See Black
       Chrome Pg. 20-21 for more details)</p>
   favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: set
+      value: "0"
   price:
     market: 50
   source:

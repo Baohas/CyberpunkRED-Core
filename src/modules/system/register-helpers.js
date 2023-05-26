@@ -1074,6 +1074,86 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Returns specific property for ammo's damage override. "Override" is a boolean,
+   * whether or not to apply the override. "Value" is the damage value, e.g. "3d6".
+   *
+   * @param {String} uuid - The Uuid of the ammo item.
+   * @param {String} override - The override we want, 'damage' or 'autofire'.
+   * @param {String} property - Should be 'mode', 'value', or 'minimum'.
+   */
+  Handlebars.registerHelper(
+    "cprGetAmmoOverrideProp",
+    (uuid, override, property) => {
+      LOGGER.trace("cprGetAmmoOverrideProp | handlebarsHelper | Called.");
+      const ammoItem = fromUuidSync(uuid);
+
+      if (
+        !(property === "mode" || property === "value" || property === "minimum")
+      ) {
+        return LOGGER.debug(
+          `The only currently valid property parameters are 'mode', 'value', or 'minimum'. '${property}' is not valid.`
+        );
+      }
+
+      if (!(override === "damage" || override === "autofire")) {
+        return LOGGER.debug(
+          `The only currently valid override keys are 'damage' and 'autofire'. '${override}' is not valid.`
+        );
+      }
+
+      // If no ammo item, return "none". This is a hack to not add extra logic to the handlebars.
+      // Prevents melee and unloaded weapons from displaying italicized/tool-tipped damage text-pills.
+      if (ammoItem) {
+        return ammoItem.system.overrides[override][property];
+      }
+      return "none";
+    }
+  );
+
+  /**
+   * Returns damage for a particular weapon, taking into account loaded ammo which may
+   * modify the base damage.
+   *
+   * @param {CPRWeapon} weapon - weapon item whose damage we are interested in returning
+
+   */
+  Handlebars.registerHelper("cprGetWeaponDamage", (weapon) => {
+    LOGGER.trace("cprGetWeaponDamage | handlebarsHelper | Called.");
+    return weapon.getWeaponDamage();
+  });
+
+  /**
+   * Returns the autofire maximum for a particular weapon, taking into account loaded ammo,
+   * which may modify the base autofire maximum.
+   *
+   * @param {CPRWeapon} weapon - weapon item whose autofire Maximum we are interested in returning
+
+   */
+  Handlebars.registerHelper("cprGetWeaponAutofireMax", (weapon) => {
+    LOGGER.trace("cprGetWeaponDamage | handlebarsHelper | Called.");
+    const weaponAutofireMax = weapon.system.fireModes.autoFire;
+    const ammoItem = fromUuidSync(weapon.system.magazine.ammoData.uuid);
+    let trueMax = 0;
+    if (ammoItem && ammoItem.system.overrides.autofire.mode === "set") {
+      trueMax = ammoItem.system.overrides.autofire.value;
+    } else if (
+      ammoItem &&
+      ammoItem.system.overrides.autofire.mode === "modify"
+    ) {
+      const ammoAutofireModifier = ammoItem.system.overrides.autofire.value;
+      const ammoAutofireMin = ammoItem.system.overrides.autofire.minimum;
+      trueMax = Math.max(
+        weaponAutofireMax + ammoAutofireModifier,
+        ammoAutofireMin
+      );
+    } else {
+      trueMax = weaponAutofireMax;
+    }
+
+    return trueMax;
+  });
+
+  /**
    * Return true/false depending on whether debugElements setting in the game is enabled
    */
   Handlebars.registerHelper("cprIsDebug", () => {

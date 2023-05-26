@@ -18,6 +18,15 @@ system:
       <p>Able to apply a second a seconde Critical Injury, details of which can
       be found on page 91.</p>
   favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
   price:
     market: 100
   source:

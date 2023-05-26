@@ -4,6 +4,7 @@ effects:
     changes:
       - key: bonuses.perceptionHearing
         mode: 2
+        priority: null
         value: "-2"
     disabled: false
     duration:

@@ -16,6 +16,15 @@ system:
       <p>Created from 3 Vials of Biotoxin strapped together. Deals no direct
       damage on hit.</p>
   favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: set
+      value: 3d6
   price:
     market: 0
   source:

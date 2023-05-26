@@ -4,6 +4,9 @@
   {{#if system.isRanged }}
     {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-reload-glyph.hbs"}}
   {{/if}}
+  {{#if system.isRanged }}
+    {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-changeAmmo-glyph.hbs"}}
+  {{/if}}
 {{/if}}
 {{#if (cprCompare type "===" "cyberware") }}
   {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-install-cyberware-glyph.hbs"}}

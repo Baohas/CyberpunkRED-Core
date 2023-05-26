@@ -56,6 +56,7 @@ system:
     list: []
     slots: 3
     usedSlots: 0
+  isElectronic: false
   isFoundational: false
   isInstalled: false
   isRanged: false

@@ -13,3 +13,4 @@ export { default as PackIconMigration } from "./009-packIconsMigration.js";
 export { default as ItemIsElectronicMigration } from "./009-isElectronic.js";
 export { default as SourceMigration } from "./009-source.js";
 export { default as ItemSmartGlassesMigration } from "./009-fixSmartGlasses.js";
+export { default as AmmoOverrideMigration } from "./010-ammoOverride.js";
