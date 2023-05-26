@@ -271,6 +271,24 @@ const PROVIDES_HARDENING = [
   "Усиленная защита (Киберрука)",
 ];
 
+const CORE_CYBERWARE = [
+  "Cyberfashion (7 emplacements d'extension)",
+  "Cybermoda (7 gniazd na modyfikacje)",
+  "Esterno (7 Slot Opzionali)",
+  "External (7 Option Slots)",
+  "Externe (7 Emplacements d'extension)",
+  "Externo (7 Espacios de Opción)",
+  "Fashionware (7 Espacios de Opción)",
+  "Fashionware (7 Option Slots)",
+  "Fashionware (7 Slot Opzionali)",
+  "Internal (7 Option Slots)",
+  "Interne (7 Emplacements d'extension)",
+  "Interno (7 Espacios de Opción)",
+  "Interno (7 Slot Opzionali)",
+  "Wewnętrzne (7 gniazd na modyfikacje)",
+  "Zewnętrzne (7 gniazd na modyfikacje)",
+];
+
 export default class ItemIsElectronicMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | ItemIsElectronic Migration");
@@ -337,7 +355,14 @@ export default class ItemIsElectronicMigration extends CPRMigration {
     // All cyberware/cyberdecks are electronic
     if (item.type === "cyberware" || item.type === "cyberdeck") {
       const updateData = item.isOwned ? { _id: item._id } : {};
-      updateData["system.isElectronic"] = true;
+      // Core cyberware is a system thing, not a "real" item
+      if (CORE_CYBERWARE.includes(item.name)) {
+        updateData["system.isElectronic"] = false;
+      } else {
+        updateData["system.isElectronic"] = true;
+      }
+
+      // Some Cyberware provided hardening, update those
       if (PROVIDES_HARDENING.includes(item.name)) {
         updateData["system.providesHardening"] = true;
       } else {
