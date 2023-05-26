@@ -26,8 +26,6 @@ For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/
 
 ### New Features
 
-- Upgrade items can now have ActiveEffects added to them and activated when the item they are installed into is equipped.
-
 #### Improved Dialogues
 
 - All dialogues have been given new styling and have been converted to a new system called CPRDialog.
@@ -95,6 +93,7 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - You can now pass an ablation modifier via the /red command.
   - Example: `/red 6d6a2` will generate a 6d6 damage roll as it always did, but when the damage is applied to tokens, the armor will be ablated by 2
   - Reminder Note: If using any roll modifiers and the card description modifier (#), the card description modifier must be the last one used on the line. This has always been the case, just calling it out here as this now adds an additional modifier.
+- Upgrade items can now have ActiveEffects added to them and activated when the item they are installed into is equipped.
 
 ### Changes
 
