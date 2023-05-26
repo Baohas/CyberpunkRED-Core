@@ -22,6 +22,8 @@ Par exemple, si vous utilisez [Ernies Modern UI](https://foundryvtt.com/packages
 
 ### Nouvelles fonctionnalités
 
+- Les objets d'amélioration peuvent maintenant avoir des effets Actifs ajoutés à eux et activés quand l'objet dans lequel ils sont installés est équipé.
+
 #### Dialogues améliorés
 
 - Tous les dialogues ont été remis en forme et ont été convertis en un nouveau système appelé CPRDialog.
@@ -151,6 +153,7 @@ Cette version apporte beaucoup de changements de feuille pour corriger beaucoup 
 - Système de systèmes réordonné
 - Ajustement du libellé des objets Elflines existants pour mieux correspondre à leur fonction
 - Mise à jour des icônes par défaut pour les GLACE noirs et les démons
+- Les conteneurs sont configurés comme boutiques par défaut pour tout acheter à 100%
 
 ### Corrections de bugs
 
@@ -181,7 +184,7 @@ Cette version apporte beaucoup de changements de feuille pour corriger beaucoup 
 - #741 - Correction d'un problème où la vente d'objets empilables à un vendeur était cassée
 - Migrer les acteurs qui sont sur les scènes dans un compendium échouerait parce que le code a fait des recherches UUID et Foundry ne vous laissera pas le faire de manière synchrone. Ajout de code afin que si la restauration est pour un acteur ou un objet de Compendium, la recherche se fait asynchrone.
 - Correction d'un problème où si la migration effectue une sauvegarde/restauration d'un élément installé, cela supprimerait l'élément d'origine qui faisait que l'élément conteneur signalait le nombre incorrect d'emplacements utilisés.
-- Normalisation du contexte de migration passé à l'acteur:*EmbeddedDocuments to isMigrating
+- Normalisation du contexte de migration passé à l'acteur:\*EmbeddedDocuments à isMigrating
 
 ## Version 0.86.1 | Date: 2023-02-05
 
