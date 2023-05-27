@@ -39,6 +39,10 @@ command: |-
    * Main logic
    */
 
+  if (allTokens.length === 0) {
+    return ui.notifications.warn(game.i18n.localize("CPR.macro.noTokenSelected"));
+  }
+
   allTokens.forEach((token) => {
     console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name}`);
     let actor =

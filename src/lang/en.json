@@ -871,6 +871,7 @@
   "CPR.ledger.wealth": "Eurobucks",
   "CPR.macro.invalidRollType": "You have specified and invalid roll type for your macro:",
   "CPR.macro.itemMissing": "Ensure you have the actor selected which has an item/skill named:",
+  "CPR.macro.noTokenSelected": "Warning: No Token(s) selected!",
   "CPR.messages.ammoMissingFromGear": "The ammo item you are trying to reload from no longer exists in your inventory. Change ammo instead of reload.",
   "CPR.messages.amountNotNumber": "Error: The amount entered could not be converted to a number!",
   "CPR.messages.cannotDeleteCoreCyberware": "You cannot delete core Cyberware. Just remove the options and it will be hidden.",
