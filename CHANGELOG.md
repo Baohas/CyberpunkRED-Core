@@ -78,6 +78,7 @@ If you are interested in making a theme for the system check out the [CSS Themes
 - Added missing Elflines Online items with help from LordCheesusCrust
 - Added Elflines Online the Trading Card Game with help from LordCheesusCrust
 - Added Achievements And Loot Boxes with help from LordCheesusCrust
+- Added language specific skills with help from LordCheesusCrust
 
 #### Other New Features
 
