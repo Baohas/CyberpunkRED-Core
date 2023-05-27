@@ -374,19 +374,70 @@ export default class CPRMigration {
     return good;
   }
 
-  static async createMigrationFolder() {
+  /**
+   * Create a migration folder for object editing.
+   *
+   * Some things, such as Active Effects can not be edited on on owned item.  To make changes
+   * to these items, the item needs to be cloned or "backed up" into a world item, edited
+   * and then put back onto the Actor.
+   *
+   * If your migration needs to do this, you should call createMigrationFolder() from your
+   * preMigrate function passing the name of the migration.  This will return a folder object
+   * to store the backed up objects.
+   * @param {String} migrationName - the name of the migration running
+   * @returns {Folder}
+   */
+  static async createMigrationFolder(migrationName) {
     LOGGER.trace("createMigrationFolder | CPRMigration");
-    this.migrationFolder = await CPRSystemUtils.GetFolder(
-      "Item",
-      `Active Effect ${this.name} Workspace`
-    );
+    return CPRSystemUtils.GetFolder("Item", `${migrationName} Workspace`);
   }
 
-  static deleteMigrationFolder() {
+  /**
+   * Delete the migration folder for object editing.
+   *
+   * If your migration code is making use of the backupOwnedItem and restoreOwnedItem
+   * and a migration folder, you should call deleteMigrationFolder() from your
+   * postMigrate() function passing the migration Folder object.
+   *
+   * If the folder is not empty, it will not delete the folder and instead throw
+   * debug messages to the console in order to help figure out why there are still
+   * objects in the folder.
+   *
+   * @param {Folder} migratonFolder - the folder we are storing the items in
+   */
+  static async deleteMigrationFolder(migrationFolder) {
     LOGGER.trace("deleteMigrationFolder | CPRMigration");
-    if (this.migrationFolder && this.migrationFolder.contents.length === 0) {
+    if (migrationFolder && migrationFolder.contents.length === 0) {
       LOGGER.debug("would delete migration folder");
-      this.migrationFolder.delete();
+      migrationFolder.delete();
+    } else {
+      LOGGER.error(`MIGRATION FOLDER NOT EMPTY: ${migrationFolder.name}`);
+      for (const item of migrationFolder.contents) {
+        const mappingData = this.itemMapping[item.uuid];
+        const sourceItem = mappingData?.item
+          ? await fromUuid(mappingData.item)
+          : { name: "<OBJECT MISSING>" };
+        const sourceActor = mappingData?.actor
+          ? await fromUuid(mappingData.actor)
+          : { name: "<OBJECT MISSING>" };
+
+        let errorMessage = `Folder Name: ${migrationFolder.name} | Folder Item: ${item.name} (${item.uuid}) | Source Item: ${sourceItem.name} (${mappingData.item}) | Source Actor: ${sourceActor.name} (${mappingData.actor})`;
+        if (
+          mappingData.actor.match(/Compendium/) &&
+          !sourceActor.name.match(/OBJECT MISSING/)
+        ) {
+          const compendiumTitle = sourceActor.compendium?.title;
+          errorMessage = `${errorMessage} | Compendium: ${compendiumTitle}`;
+          const UuidParts = mappingData.actor.split(".");
+          UuidParts.splice(4);
+          const CompendiumObjectUuid = UuidParts.join(".");
+          const CompendiumObject = await fromUuid(CompendiumObjectUuid);
+          if (CompendiumObject) {
+            errorMessage = `${errorMessage} | Compendium Entry: ${CompendiumObject.name} (${CompendiumObjectUuid})`;
+          }
+        }
+        LOGGER.error(errorMessage);
+      }
     }
   }
 
@@ -398,13 +449,11 @@ export default class CPRMigration {
    *       is a hard problem because the IDs will always change with each call.
    *
    * @param {CPRItem} item - the item we are copying
+   * @param {Folder} migratonFolder - the folder we are storing the items in
    * @returns the copied item data
    */
-  static async backupOwnedItem(item) {
+  static async backupOwnedItem(item, migrationFolder) {
     LOGGER.trace("backupOwnedItem | CPRMigration");
-    if (!this.migrationFolder) {
-      await this.createMigrationFolder();
-    }
 
     const newItem = await Item.create(
       {
@@ -412,7 +461,7 @@ export default class CPRMigration {
         type: item.type,
         system: item.system,
         img: item.img,
-        folder: this.migrationFolder,
+        folder: migrationFolder,
       },
       {
         cprIsMigrating: true,
@@ -442,6 +491,15 @@ export default class CPRMigration {
     return newItem;
   }
 
+  /**
+   * Restores the changed item back onto the original actor ensuring all
+   * data points are updated. Once the object is re-created on the Actor
+   * it is cleaned up from the Migration Folder.
+   *
+   * Note: The OLD item needs to be deleted from the actor by the migration code.
+   *
+   * @param {CPRItem} item - the item we modified and has to be re-created on the Actor
+   */
   static async restoreOwnedItem(item) {
     LOGGER.trace("restoreOwnedItems | CPRMigration");
     const originalData = this.itemMapping[item.uuid];
@@ -614,6 +672,7 @@ export default class CPRMigration {
     if (updateList.length > 0) {
       await actor.updateEmbeddedDocuments("Item", updateList);
     }
+    await item.delete();
   }
   /**
    * This block of abstract methods breaks down how each document type is migrated. If there

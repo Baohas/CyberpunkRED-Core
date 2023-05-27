@@ -27,7 +27,7 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
       "notify",
       CPRSystemUtils.Localize("CPR.migration.effects.beginMigration")
     );
-    CPRMigration.createMigrationFolder();
+    this.migrationFolder = CPRMigration.createMigrationFolder(this.name);
     LOGGER.log(`Starting migration: ${this.name}`);
   }
 
@@ -36,7 +36,7 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
    */
   async postMigrate() {
     LOGGER.trace(`postMigrate | ${this.version}-${this.name}`);
-    CPRMigration.deleteMigrationFolder();
+    CPRMigration.deleteMigrationFolder(this.migrationFolder);
     LOGGER.log(`Finishing migration: ${this.name}`);
   }
 
@@ -70,7 +70,10 @@ export default class ReleaseEightyFourDotZero extends CPRMigration {
       if (aeChanges) {
         const aeSource = fromUuidSync(activeEffect.origin);
         if (aeSource instanceof Item) {
-          const newItem = await CPRMigration.backupOwnedItem(aeSource);
+          const newItem = await CPRMigration.backupOwnedItem(
+            aeSource,
+            this.migrationFolder
+          );
           await ReleaseEightyFourDotZero.migrateItem(newItem);
           itemCreations.push(newItem.toObject());
           itemDeletions.push(aeSource._id);

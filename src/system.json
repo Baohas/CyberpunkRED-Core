@@ -303,6 +303,14 @@
       "package": "cyberpunk-red-core"
     },
     {
+      "label": "Skills (Languages)",
+      "type": "Item",
+      "name": "skills-languages",
+      "path": "packs/skills-languages.db",
+      "system": "cyberpunk-red-core",
+      "package": "cyberpunk-red-core"
+    },
+    {
       "label": "Spinning Your Wheels",
       "type": "Item",
       "name": "spinning-your-wheels",

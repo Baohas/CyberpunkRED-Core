@@ -78,6 +78,7 @@ If you are interested in making a theme for the system check out the [CSS Themes
 - Added missing Elflines Online items with help from LordCheesusCrust
 - Added Elflines Online the Trading Card Game with help from LordCheesusCrust
 - Added Achievements And Loot Boxes with help from LordCheesusCrust
+- Added language specific skills with help from LordCheesusCrust
 
 #### Other New Features
 
@@ -196,6 +197,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
   - If the user owns only 1 token of either Character or Mook on a scene, it will default to using the DV settings of that token
   - If a user owns multiple tokens of either Character or Mook, a warning message is now thrown when the user clicks the ruler to select a DV telling them they need to select the token before use
   - If a user owns multiple tokens of either Character or Mook and has no tokens selected, when they use the ruler, a message is displayed below the distance advising the user to select the token of the DV they want to see.
+- Fixed the usages of restoreOwnedItem to be consistent with backupOwnedItem in that it cleans up the owned item that was created.
 
 ## Version 0.86.1 | Date: 2023-02-05
 

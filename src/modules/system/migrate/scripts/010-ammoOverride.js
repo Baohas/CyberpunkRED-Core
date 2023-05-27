@@ -114,6 +114,11 @@ export default class AmmoOverrideMigration extends CPRMigration {
         "Chevrotine de fusil à pompe (Standard)",
         "Schrotpatrone (Basis)",
         "Shotgun Shell (Basic)",
+        "Cartucce a Pallini (Incendiarie)",
+        "Cartuchos de Escopeta (Incendiario)",
+        "Chevrotine de fusil à pompe (Incendiaire)",
+        "Schrotpatrone (Brand)",
+        "Shotgun Shell (Incendiary)",
       ],
     };
 
