@@ -38,22 +38,6 @@ init:
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
-check-babele-renames:
-  stage: init
-  image: mvdan/shfmt:latest-alpine
-  before_script:
-    - apk update
-    - apk add bash jq curl git
-  script:
-    - echo "Checking if Babele files have been renamed..."
-    - ./.gitlab/pipeline_utils/check-babele-renames.sh
-  rules:
-    # Don't run if we're in the cleanup-dev schedule
-    - if: $CPR_SCHEDULE == "cleanup-dev"
-      when: never
-    # Run on MRs
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-
 manage-issues-on-mr:
   stage: init
   image: mvdan/shfmt:latest-alpine
@@ -761,7 +745,7 @@ announce:
     - apt-get install curl jq -y
   script:
     - echo "Generating message from changelog..."
-    - ./.gitlab/pipeline_utils/build.sh
+    - npx run build
     - echo "Announcing the new release on Discord..."
     - ./.gitlab/pipeline_utils/discord-release.sh
   needs:

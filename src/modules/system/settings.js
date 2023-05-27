@@ -2,7 +2,7 @@
 import CPR from "./config.js";
 import CPRCompendiaSettings from "../apps/cpr-compendia-settings.js";
 import LOGGER from "../utils/cpr-logger.js";
-import setTheme from "./theme.js";
+import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
  * This file defines user settings for the system module.
@@ -18,15 +18,10 @@ const registerSystemSettings = () => {
     config: true,
     type: String,
     default: "default",
-    // This object should be generated somehow and have the ability to have
-    // modules to register new themes.
-    choices: {
-      default: "CPR.settings.theme.name.default",
-      darkmode: "CPR.settings.theme.name.darkmode",
-    },
+    choices: () => SystemUtils.GetThemes(CPR.themes),
     onChange: (value) => {
       LOGGER.log(`Changed theme to ${value}`);
-      setTheme();
+      SystemUtils.SetTheme();
     },
   });
 

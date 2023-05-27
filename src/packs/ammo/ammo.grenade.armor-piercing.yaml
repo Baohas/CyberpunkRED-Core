@@ -1,10 +1,9 @@
-_id: YFtrIcr5qsT2zO9V
-img: >-
-  systems/cyberpunk-red-core/icons/compendium/ammo/shotgun_slug_armorpiercing.png
-name: Shotgun Slug (Armor Piercing)
+_id: tivSfxqoNYnBlNah
+img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_armorpiercing.png
+name: Grenade (Armor-Piercing)
 system:
   ablationValue: 2
-  amount: 10
+  amount: 1
   brand: ""
   concealable:
     concealable: true
@@ -29,5 +28,5 @@ system:
     book: Core
     page: 345
   type: armorPiercing
-  variety: shotgunSlug
+  variety: grenade
 type: ammo

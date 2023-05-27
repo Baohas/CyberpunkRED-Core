@@ -810,4 +810,9 @@ CPR.defaultSituationalMods = {
   },
 };
 
+CPR.themes = {
+  default: "CPR.settings.theme.name.default",
+  darkmode: "CPR.settings.theme.name.darkmode",
+};
+
 export default CPR;

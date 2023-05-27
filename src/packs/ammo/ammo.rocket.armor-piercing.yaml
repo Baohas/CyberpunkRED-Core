@@ -1,10 +1,9 @@
-_id: oFcsVOL1UHu7MTnu
-img: >-
-  systems/cyberpunk-red-core/icons/compendium/ammo/pistolveryheavy_armorpiercing.png
-name: Very Heavy Pistol (Armor Piercing)
+_id: dHHTQLHUkd0IX8GI
+img: systems/cyberpunk-red-core/icons/compendium/ammo/rocket_armorpiercing.png
+name: Rocket (Armor-Piercing)
 system:
   ablationValue: 2
-  amount: 10
+  amount: 1
   brand: ""
   concealable:
     concealable: true
@@ -29,5 +28,5 @@ system:
     book: Core
     page: 345
   type: armorPiercing
-  variety: vHeavyPistol
+  variety: rocket
 type: ammo

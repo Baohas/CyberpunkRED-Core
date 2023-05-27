@@ -190,6 +190,12 @@ async function extPacks() {
     );
     const { packs } = sysFile;
 
+    // Delete the packs before extracting them to handle name changes
+    if (fs.existsSync(fragmentDir)) {
+      fs.rmSync(fragmentDir, { recursive: true });
+      fs.mkdirSync(fragmentDir);
+    }
+
     if (fs.existsSync(packsDir)) {
       packs.forEach((pack) => {
         const packName = pack.name;

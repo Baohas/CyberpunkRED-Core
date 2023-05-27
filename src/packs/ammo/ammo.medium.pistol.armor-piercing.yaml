@@ -1,9 +1,10 @@
-_id: dHHTQLHUkd0IX8GI
-img: systems/cyberpunk-red-core/icons/compendium/ammo/rocket_armorpiercing.png
-name: Rocket (Armor Piercing)
+_id: PBA9BUs49TQeLoDi
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_armorpiercing.png
+name: Medium Pistol (Armor-Piercing)
 system:
   ablationValue: 2
-  amount: 1
+  amount: 10
   brand: ""
   concealable:
     concealable: true
@@ -28,5 +29,5 @@ system:
     book: Core
     page: 345
   type: armorPiercing
-  variety: rocket
+  variety: medPistol
 type: ammo
