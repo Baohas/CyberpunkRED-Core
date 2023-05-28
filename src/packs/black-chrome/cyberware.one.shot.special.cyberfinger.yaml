@@ -1,0 +1,68 @@
+_id: hqxjHYkBe9mLzl2B
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/cyberfinger.svg
+name: One Shot Special Cyberfinger
+system:
+  ammoVariety:
+    - heavyPistol
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  core: false
+  damage: 3d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Cyberfinger that holds a concealed Exotic
+      @UUID[Compendium.cyberpunk-red-core.weapons.Y433cjlB1uVHPysk]{Heavy
+      Pistol}. Can only be installed on a modular finger cyberhand. (See Black
+      Chrome pg. 26 for more details)</p>
+  dvTable: DV Pistol
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: 7
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isInstalled: false
+  isRanged: true
+  isUpgraded: false
+  isWeapon: true
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 1
+    value: 0
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  rof: 2
+  size: 1
+  source:
+    book: BC
+    page: 26
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: heavyPistol
+type: cyberware
