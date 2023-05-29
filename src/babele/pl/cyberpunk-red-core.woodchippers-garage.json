@@ -3,7 +3,7 @@
   "entries": {
     "M-02 Rounds": {
       "name": "M-02 Rounds",
-      "description": "<p>Special Armor Piercing rounds for use only in the Sternmeyer M-02 Heavy Rifle. Comes in a drum of 80.</p>"
+      "description": "<p>Special Armor-Piercing rounds for use only in the Sternmeyer M-02 Heavy Rifle. Comes in a drum of 80.</p>"
     },
     "Paintball (Biotoxin)": {
       "name": "Paintball (Biotoxin)",
@@ -35,7 +35,7 @@
     },
     "M-02 Heavy Rifle": {
       "name": "M-02 Heavy Rifle",
-      "description": "<p>This weapon fires it's own custom ammunition, priced at 500eb (Expensive) for 80 rounds of Armor Piercing ammo.</p>"
+      "description": "<p>This weapon fires it's own custom ammunition, priced at 500eb (Expensive) for 80 rounds of Armor-Piercing ammo.</p>"
     },
     "Nomad Air Cannon": {
       "name": "Nomad Air Cannon",
@@ -47,7 +47,7 @@
     },
     "SDF-45": {
       "name": "SDF-45",
-      "description": "<p>This rocket launcher can only load Armor Piercing rockets, and has a maximum range of 400 m/yds. When fired one rocket at a time, the GM chooses where they rockets land. When fired two rockets at a time, the GM chooses where the rockets land but this time up to 50 m/yds away from the target, and with each rocket more than 10 m/yds from each other.</p>"
+      "description": "<p>This rocket launcher can only load Armor-Piercing rockets, and has a maximum range of 400 m/yds. When fired one rocket at a time, the GM chooses where they rockets land. When fired two rockets at a time, the GM chooses where the rockets land but this time up to 50 m/yds away from the target, and with each rocket more than 10 m/yds from each other.</p>"
     },
     "TearJerker": {
       "name": "TearJerker",

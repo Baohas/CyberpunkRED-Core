@@ -133,9 +133,25 @@
       "name": "Holo-Wear",
       "description": "<p>Holographic clothing that can get disabled by EMP blasts for a minute. Can swap styles with an action if purchased. Refer to full item description on BC pg. 35.</p>"
     },
+    "Airhypo Cyberfinger": {
+      "name": "Airhypo Cyberfinger",
+      "description": "<p>Cyberfinger that holds an @UUID[Compendium.cyberpunk-red-core.gear.Th74cfC87RqEJKAb]{Airhypo}. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 24 for more details)</p>"
+    },
+    "Ballpoint Cyberfinger": {
+      "name": "Ballpoint Cyberfinger",
+      "description": "<p>Cyberfinger with a ballpoint pen inside. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 24 for more details)</p>"
+    },
     "Budget Chipware Socket": {
       "name": "Budget Chipware Socket",
       "description": "<p>A cheap socket for a single installation of chipware. Damage to the head sends the installed chipware 30 m/yds away, potentially breaking it (see Black Chrome pg. 17 for more details).</p>"
+    },
+    "Bullet Storage Cyberfinger": {
+      "name": "Bullet Storage Cyberfinger",
+      "description": "<p>Cyberfinger that can be used to conceal two rounds of ammunition of any type. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 24 for more details)</p>"
+    },
+    "Dartgun Cyberfinger": {
+      "name": "Dartgun Cyberfinger",
+      "description": "<p>Cyberfinger that holds a concealed @UUID[Compendium.cyberpunk-red-core.weapons.fSvkIl83Rsqd7O16]{Dartgun}. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 24 for more details)</p>"
     },
     "Discount Cyberaudio Suite": {
       "name": "Discount Cyberaudio Suite",
@@ -157,6 +173,10 @@
       "name": "Flashbulb",
       "description": "<p>Requires cyberarm. User can attempt to blind anyone within 25m/yds. (See Black Chrome pg. 18 for more details)</p>"
     },
+    "Flashlight Cyberfinger": {
+      "name": "Flashlight Cyberfinger",
+      "description": "<p>Cyberfinger that holds a concealed @UUID[Compendium.cyberpunk-red-core.gear.spgehgLv94vrH4Zo]{Flashlight}. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 24 for more details)</p>"
+    },
     "Hardened Shielding (Borgware)": {
       "name": "Hardened Shielding (Borgware)",
       "description": "<p>Borgware this is installed to is not affected by EMP effects. (see Black Chrome pg. 17 for more details.)</p>"
@@ -172,6 +192,10 @@
     "Heuristic Health Monitor": {
       "name": "Seguidor Heurístico de la Salud",
       "description": "<p>Requires biomonitor. Can know HP at a glance. (See Black Chrome pg. 19 for more details)</p>"
+    },
+    "Homing Tracer Cyberfinger": {
+      "name": "Homing Tracer Cyberfinger",
+      "description": "<p>Cyberfinger that functions like a @UUID[Compendium.cyberpunk-red-core.gear.QIHx5oQOirtTlAaD]{Homing Tracer}. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 25 for more details)</p>"
     },
     "Implanted Fūma Kotarō Linear Frame": {
       "name": "Implanted Fūma Kotarō Linear Frame",
@@ -189,9 +213,29 @@
       "name": "Integrated Cyberdeck Upgrade",
       "description": "<p>Requires Cyberdeck (Hardwired), adds an extra slot to the cyberdeck. (See Black Chrome pg. 19 for more details)</p>"
     },
+    "Laser Pointer Cyberfinger": {
+      "name": "Laser Pointer Cyberfinger",
+      "description": "<p>Cyberfinger holding a concealed Laser Pointer. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 25 for more details)</p>"
+    },
+    "Lighter Cyberfinger": {
+      "name": "Lighter Cyberfinger",
+      "description": "<p>Cyberfinger holding a concealed lighter. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 25 for more details)</p>"
+    },
+    "Lockpick Cyberfinger": {
+      "name": "Lockpick Cyberfinger",
+      "description": "<p>Cyberfinger holding a concealed @UUID[Compendium.cyberpunk-red-core.gear.vlhGpguIMioeA8fe]{Lock Picking Set}. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 25 for more details)</p>"
+    },
     "MechaMan Smart Glove": {
       "name": "MechaMan Smart Glove",
       "description": "<p>A biking glove that comes with a subdermal grip pre-installed* which requires a neural link to use. Has 1 cyberarm option slot. Refer to full item description on BC pg. 37.<br><em>*Subdermal Grip must be added and installed manually after acquiring the glove</em></p>"
+    },
+    "Microphone Cyberfinger": {
+      "name": "Microphone Cyberfinger",
+      "description": "<p>Cyberfinger holding a concealed recording device. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 25 for more details)</p>"
+    },
+    "Mini Air Supply Cyberfinger": {
+      "name": "Mini Air Supply Cyberfinger",
+      "description": "<p>Cyberfinger with an integrated air tank. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 26 for more details)</p>"
     },
     "Modular Finger Cyberhand": {
       "name": "Modular Finger Cyberhand",
@@ -204,6 +248,10 @@
     "Neo-Soviet Cyberarm": {
       "name": "Neo-Soviet Cyberarm",
       "description": "<p>A soviet cybernetical replacement arm. Comes with a free hand pre-installed. -1 to rolls requiring arm without BODY 8+. (See Black Chrome pg. 20 for more details)</p>"
+    },
+    "One Shot Special Cyberfinger": {
+      "name": "One Shot Special Cyberfinger",
+      "description": "<p>Cyberfinger that holds a concealed Exotic @UUID[Compendium.cyberpunk-red-core.weapons.Y433cjlB1uVHPysk]{Heavy Pistol}. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 26 for more details)</p>"
     },
     "Popup Net Launcher": {
       "name": "Popup Net Launcher",
@@ -233,9 +281,25 @@
       "name": "Sponsored Cybereye",
       "description": "<p>A replacement eye. Chyron comes pre-installed*. User randomly experiences random ads. (See Black Chrome pg. 22 for more details)</p>\n<p>*Chyron must be added after installation</p>"
     },
+    "Spray Paint Cyberfinger": {
+      "name": "Spray Paint Cyberfinger",
+      "description": "<p>Cyberfinger functioning as a spray can. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 26 for more details)</p>"
+    },
+    "Squirt Cyberfinger": {
+      "name": "Squirt Cyberfinger",
+      "description": "<p>Cyberfinger that can hold and spray various liquids. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 26 for more details)</p>"
+    },
+    "Standard Cyberfinger": {
+      "name": "Standard Cyberfinger",
+      "description": "<p>Cyberfinger. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 26 for more details)</p>"
+    },
     "Trauma Response Nanomatrix": {
       "name": "Trauma Response Nanomatrix",
       "description": "<p>Can fully repair skinweave or subdermal armor once a day. (See Black Chrome pg. 22 for more details.)</p>"
+    },
+    "Wirecutter/Scissors Cyberfingers": {
+      "name": "Wirecutter/Scissors Cyberfingers",
+      "description": "<p>Cyberfinger pair that can serve as scissors or wirecutters. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 26 for more details)</p>"
     },
     "AirWell 50": {
       "name": "AirWell 50",
@@ -473,22 +537,6 @@
       "name": "TDT 004",
       "description": "<p>Troop transport Helicopter.</p>\n<p>Full details can be found on page 59.</p>"
     },
-    "The Grundy": {
-      "name": "The Grundy",
-      "description": "<p>Armored industrial looking Compact Grouncar, with a powerful combat plow.</p>\n<p>Full details can be found on page 68.</p>"
-    },
-    "The Harriet 100": {
-      "name": "The Harriet 100",
-      "description": "<p>A classic Roadbike with a more feminine look.</p>\n<p>Full details can be found on page 69.</p>"
-    },
-    "The Harvey 100": {
-      "name": "The Harvey 100",
-      "description": "<p>A classic Roadbike.</p>\n<p>Full details can be found on page 69.</p>"
-    },
-    "The Harvey Merc": {
-      "name": "The Harvey Merc",
-      "description": "<p>A classic roadbike, this time with mounted weapons.</p>\n<p>Full details can be found on page 69.</p>"
-    },
     "The Zacatzontli Pickup Truck": {
       "name": "The Zacatzontli Pickup Truck",
       "description": "<p>A Compact Groundcar equipped for off-road travel.</p>\n<p>Full details can be found on page 74.</p>"
@@ -504,10 +552,6 @@
     "Yang's Wheels Rickshaw": {
       "name": "Yang's Wheels Rickshaw",
       "description": "<p>Roadbike with attached trailer for passengers.</p>\n<p>Full details can be found on page 81.</p>"
-    },
-    "Zacatzontli Pickup Truck": {
-      "name": "Zacatzontli Pickup Truck",
-      "description": "<p>A Compact Groundcar equipped for off-road travel.</p>\n<p>Full details can be found on page 74.</p>"
     },
     "Arasaka Prototype Variable Assault Rifle": {
       "name": "Arasaka Prototype Variable Assault Rifle",

@@ -1,9 +1,9 @@
 {
   "label": "Munizioni",
   "entries": {
-    "Arrow (Armor Piercing)": {
-      "name": "Frecce (Perforanti)",
-      "description": "<p>Queste Munizioni ablano le armature di 2 punti.</p>"
+    "Arrow (Armor-Piercing)": {
+      "name": "Arrow (Armor-Piercing)",
+      "description": "<p>Double ablation to armor.</p>"
     },
     "Arrow (Basic)": {
       "name": "Frecce (Base)",
@@ -41,9 +41,9 @@
       "name": "Pacchetto Batteria",
       "description": "<p>Un pacco batteria ricaricabile (1 ora), comunemente usato per armi Esotiche. Contiene 8 colpi e può essere ricaricato.&nbsp;</p>"
     },
-    "Grenade (Armor Piercing)": {
-      "name": "Granata (Perforante)",
-      "description": "<p>Queste Munizioni ablano le armature di 2 punti.</p>"
+    "Grenade (Armor-Piercing)": {
+      "name": "Grenade (Armor-Piercing)",
+      "description": "<p>Double ablation to armor. </p>"
     },
     "Grenade (Biotoxin)": {
       "name": "Granata (a Biotossina)",
@@ -77,9 +77,9 @@
       "name": "Granata (Lacrimogena)",
       "description": "<p>Un attacco con queste Munizioni non causa danni, ma la vittima deve superare una Prova di Resistere a Tortura/Droghe VD 13. Se fallisce, subisce gli effetti della Ferita Critica Occhio Danneggiato (vedere pag. 188) per 1 minuto. Questa non causa Danni Bonus.</p>"
     },
-    "Heavy Pistol (Armor Piercing)": {
-      "name": "Pistola Pesante (Perforante)",
-      "description": "<p>Queste Munizioni ablano le armature di 2 punti. </p>"
+    "Heavy Pistol (Armor-Piercing)": {
+      "name": "Heavy Pistol (Armor-Piercing)",
+      "description": "<p>Double ablation to armor. </p>"
     },
     "Heavy Pistol (Basic)": {
       "name": "Pistola Pesante (Base)",
@@ -101,9 +101,9 @@
       "name": "Pistola Pesante (Smart)",
       "description": "<p>Per usare queste Munizioni è necessario avere il Cyberware Mirino, altrimenti non sparerà. Quando si usano queste Munizioni, se si fallisce di 4 o meno la Prova d’Attacco in modalità Colpo Singolo, è possibile attaccare nuovamente contro lo stesso VD dell’attacco originale più 10 al risultato del d10, invece del normale valore. Si può in ogni caso spendere FOR. Chi può schivare i proiettili può farlo anche con questo attacco. </p>"
     },
-    "Medium Pistol (Armor Piercing)": {
-      "name": "Pistola Media (Perforante)",
-      "description": "<p>Queste Munizioni ablano le armature di 2 punti.</p>"
+    "Medium Pistol (Armor-Piercing)": {
+      "name": "Medium Pistol (Armor-Piercing)",
+      "description": "<p>Double ablation to armor. </p>"
     },
     "Medium Pistol (Basic)": {
       "name": "Pistola Media (Base)",
@@ -133,9 +133,9 @@
       "name": "Paintball (Base)",
       "description": "<p>Palle di vernice regolari che non causano alcun danno. Che noia.</p>"
     },
-    "Rifle (Armor Piercing)": {
-      "name": "Fucile (Perforante)",
-      "description": "<p>Queste Munizioni ablano le armature di 2 punti.</p>"
+    "Rifle (Armor-Piercing)": {
+      "name": "Rifle (Armor-Piercing)",
+      "description": "<p>Double ablation to armor. </p>"
     },
     "Rifle (Basic)": {
       "name": "Fucile (Base)",
@@ -157,9 +157,9 @@
       "name": "Fucile (Smart)",
       "description": "<p>Per usare queste Munizioni è necessario avere il Cyberware Mirino, altrimenti non sparerà. Quando si usano queste Munizioni, se si fallisce di 4 o meno la Prova d’Attacco in modalità Colpo Singolo, è possibile attaccare nuovamente contro lo stesso VD dell’attacco originale più 10 al risultato del d10, invece del normale valore. Si può in ogni caso spendere FOR. Chi può schivare i proiettili può farlo anche con questo attacco. </p>"
     },
-    "Rocket (Armor Piercing)": {
-      "name": "Razzo (Perforante)",
-      "description": "<p>Queste Munizioni ablano le armature di 2 punti. </p>"
+    "Rocket (Armor-Piercing)": {
+      "name": "Rocket (Armor-Piercing)",
+      "description": "<p>Double ablation to armor. </p>"
     },
     "Rocket (Smart)": {
       "name": "Razzo (Smart)",
@@ -173,9 +173,9 @@
       "name": "Cartucce a Pallini (Incendiarie)",
       "description": "<p>Se queste Munizioni causano danni che superano l’armatura del bersaglio, questi prende fuoco. Finché non usa un’Azione per spegnere le fiamme subisce 2 danni diretti ai PF alla fine di ogni suo Turno. Questo effetto non è cumulativo. </p>"
     },
-    "Shotgun Slug (Armor Piercing)": {
-      "name": "Cartucce a Pallettoni (Perforanti)",
-      "description": "<p>Queste Munizioni ablano le armature di 2 punti. </p>"
+    "Shotgun Slug (Armor-Piercing)": {
+      "name": "Shotgun Slug (Armor-Piercing)",
+      "description": "<p>Double ablation to armor. </p>"
     },
     "Shotgun Slug (Basic)": {
       "name": "Cartucce a Pallettoni (Base)",
@@ -197,9 +197,9 @@
       "name": "Cartucce a Pallettoni (Smart)",
       "description": "<p>Per usare queste Munizioni è necessario avere il Cyberware Mirino, altrimenti non sparerà. Quando si usano queste Munizioni, se si fallisce di 4 o meno la Prova d’Attacco in modalità Colpo Singolo, è possibile attaccare nuovamente contro lo stesso VD dell’attacco originale più 10 al risultato del d10, invece del normale valore. Si può in ogni caso spendere FOR. Chi può schivare i proiettili può farlo anche con questo attacco. </p>"
     },
-    "Very Heavy Pistol (Armor Piercing)": {
-      "name": "Pistola Molto Pesante (Perforante)",
-      "description": "<p>Queste Munizioni ablano le armature di 2 punti. </p>"
+    "Very Heavy Pistol (Armor-Piercing)": {
+      "name": "Very Heavy Pistol (Armor-Piercing)",
+      "description": "<p>Double ablation to armor. </p>"
     },
     "Very Heavy Pistol (Basic)": {
       "name": "Pistola Molto Pesante (Base)",

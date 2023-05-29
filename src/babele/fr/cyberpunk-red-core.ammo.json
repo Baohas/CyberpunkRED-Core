@@ -1,7 +1,7 @@
 {
   "label": "Munitions",
   "entries": {
-    "Arrow (Armor Piercing)": {
+    "Arrow (Armor-Piercing)": {
       "name": "Flèche (Perforante)",
       "description": "<p>Double la perforation d'armure.</p>"
     },
@@ -41,9 +41,9 @@
       "name": "Batterie",
       "description": "<p>Une batterie rechargeable (1 heure) souvent utilisée pour les armes exotiques. Contient 8 charges.&nbsp;</p>"
     },
-    "Grenade (Armor Piercing)": {
+    "Grenade (Armor-Piercing)": {
       "name": "Grenade (Perforante)",
-      "description": "<p>Double la perforation d'armure. </p>"
+      "description": "<p>Double la perforation d'armure.</p>"
     },
     "Grenade (Biotoxin)": {
       "name": "Grenade (Biotoxine)",
@@ -77,7 +77,7 @@
       "name": "Grenade (Lacrymogène)",
       "description": "<p>N'applique pas de dégâts. Si oeil de chair touché : jet de Résistance torture/drogues SD13. Si échec, appliquer la blessure critique Oeil endommagé (cf. p. 188) pour 1 minute, sans les dégâts bonus de blessures critiques. </p>"
     },
-    "Heavy Pistol (Armor Piercing)": {
+    "Heavy Pistol (Armor-Piercing)": {
       "name": "Pistolet lourd (Perforante)",
       "description": "<p>Double la perforation d'armure.</p>"
     },
@@ -101,7 +101,7 @@
       "name": "Pistolet lourd (Intelligente)",
       "description": "<p>Nécessite cyberimplant Lunette de visée, sinon l'arme ne tire pas. Si l'attaque au coup par coup rate de 4 points ou moins, lancez une seconde attaque avec le même SD mais avec la formule 1d10+10 (sans rien ajouter, sauf points de Chance). La cible peut esquiver cette seconde attaque si elle le peut. </p>"
     },
-    "Medium Pistol (Armor Piercing)": {
+    "Medium Pistol (Armor-Piercing)": {
       "name": "Pistolet Moyen (Perforante)",
       "description": "<p>Double la perforation d'armure.</p>"
     },
@@ -133,9 +133,9 @@
       "name": "Paintball (Standard)",
       "description": "<p>Des billes de peinture ordinaires qui ne causent aucun dégât. Ennuyant, cependant.</p>"
     },
-    "Rifle (Armor Piercing)": {
+    "Rifle (Armor-Piercing)": {
       "name": "Fusil (Perforante)",
-      "description": "<p>Double la perforation d'armure. </p>"
+      "description": "<p>Double la perforation d'armure.</p>"
     },
     "Rifle (Basic)": {
       "name": "Fusil (Standard)",
@@ -157,9 +157,9 @@
       "name": "Fusil (Intelligente)",
       "description": "<p>Nécessite cyberimplant Lunette de visée, sinon l'arme ne tire pas. Si l'attaque au coup par coup rate de 4 points ou moins, lancez une seconde attaque avec le même SD mais avec la formule 1d10+10 (sans rien ajouter, sauf points de Chance). La cible peut esquiver cette seconde attaque si elle le peut. </p>"
     },
-    "Rocket (Armor Piercing)": {
+    "Rocket (Armor-Piercing)": {
       "name": "Roquette (Perforante)",
-      "description": "<p>Double la perforation d'armure. </p>"
+      "description": "<p>Double la perforation d'armure.</p>"
     },
     "Rocket (Smart)": {
       "name": "Roquette (Intelligente)",
@@ -173,9 +173,9 @@
       "name": "Chevrotine de fusil à pompe (Incendiaire)",
       "description": "<p>Si la cible subit des dégâts, elle prend feu. La cible subit 2 points de dégâts aux PS à la fin de son tour à moins qu'elle n'utilise une action pour éteindre les flammes. Ne se cumule pas.</p>"
     },
-    "Shotgun Slug (Armor Piercing)": {
+    "Shotgun Slug (Armor-Piercing)": {
       "name": "Slug de fusil à pompe (Perforante)",
-      "description": "<p>Double la perforation d'armure. </p>"
+      "description": "<p>Double la perforation d'armure.</p>"
     },
     "Shotgun Slug (Basic)": {
       "name": "Slug de fusil à pompe (Standard)",
@@ -197,9 +197,9 @@
       "name": "Slug de fusil à pompe (Intelligente)",
       "description": "<p>Nécessite cyberimplant Lunette de visée, sinon l'arme ne tire pas. Si l'attaque au coup par coup rate de 4 points ou moins, lancez une seconde attaque avec le même SD mais avec la formule 1d10+10 (sans rien ajouter, sauf points de Chance). La cible peut esquiver cette seconde attaque si elle le peut. </p>"
     },
-    "Very Heavy Pistol (Armor Piercing)": {
+    "Very Heavy Pistol (Armor-Piercing)": {
       "name": "Pistolet très lourd (Perforante)",
-      "description": "<p>Double la perforation d'armure. </p>"
+      "description": "<p>Double la perforation d'armure.</p>"
     },
     "Very Heavy Pistol (Basic)": {
       "name": "Pistolet très lourd (Standard)",

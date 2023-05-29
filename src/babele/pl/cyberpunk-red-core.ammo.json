@@ -1,8 +1,8 @@
 {
   "label": "Amunicja",
   "entries": {
-    "Arrow (Armor Piercing)": {
-      "name": "Arrow (Armor Piercing)",
+    "Arrow (Armor-Piercing)": {
+      "name": "Arrow (Armor-Piercing)",
       "description": "<p>Double ablation to armor.</p>"
     },
     "Arrow (Basic)": {
@@ -41,8 +41,8 @@
       "name": "Pakiet Baterii",
       "description": "<p>A rechargeable (1 hour) battery pack, commonly used with Exotic weapons. Contains 8 shots and can be recharged.&nbsp;</p>"
     },
-    "Grenade (Armor Piercing)": {
-      "name": "Grenade (Armor Piercing)",
+    "Grenade (Armor-Piercing)": {
+      "name": "Grenade (Armor-Piercing)",
       "description": "<p>Double ablation to armor. </p>"
     },
     "Grenade (Biotoxin)": {
@@ -77,8 +77,8 @@
       "name": "Grenade (Teargas)",
       "description": "<p>Deals no Damage. Hit targets with Meat eyes roll DV13 Resist Torture/Drugs Check. On fail suffer Damaged Eye Critical Injury (See pg. 188) for 1 minute. Does not deal critical bonus damage.</p>"
     },
-    "Heavy Pistol (Armor Piercing)": {
-      "name": "Heavy Pistol (Armor Piercing)",
+    "Heavy Pistol (Armor-Piercing)": {
+      "name": "Heavy Pistol (Armor-Piercing)",
       "description": "<p>Double ablation to armor. </p>"
     },
     "Heavy Pistol (Basic)": {
@@ -101,8 +101,8 @@
       "name": "Heavy Pistol (Smart)",
       "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
     },
-    "Medium Pistol (Armor Piercing)": {
-      "name": "Medium Pistol (Armor Piercing)",
+    "Medium Pistol (Armor-Piercing)": {
+      "name": "Medium Pistol (Armor-Piercing)",
       "description": "<p>Double ablation to armor. </p>"
     },
     "Medium Pistol (Basic)": {
@@ -133,8 +133,8 @@
       "name": "Paintball (Basic)",
       "description": "<p>Regular paintballs that don't do any damage. Annoying though.</p>"
     },
-    "Rifle (Armor Piercing)": {
-      "name": "Rifle (Armor Piercing)",
+    "Rifle (Armor-Piercing)": {
+      "name": "Rifle (Armor-Piercing)",
       "description": "<p>Double ablation to armor. </p>"
     },
     "Rifle (Basic)": {
@@ -157,8 +157,8 @@
       "name": "Rifle (Smart)",
       "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
     },
-    "Rocket (Armor Piercing)": {
-      "name": "Rocket (Armor Piercing)",
+    "Rocket (Armor-Piercing)": {
+      "name": "Rocket (Armor-Piercing)",
       "description": "<p>Double ablation to armor. </p>"
     },
     "Rocket (Smart)": {
@@ -173,8 +173,8 @@
       "name": "Shotgun Shell (Incendiary)",
       "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
     },
-    "Shotgun Slug (Armor Piercing)": {
-      "name": "Shotgun Slug (Armor Piercing)",
+    "Shotgun Slug (Armor-Piercing)": {
+      "name": "Shotgun Slug (Armor-Piercing)",
       "description": "<p>Double ablation to armor. </p>"
     },
     "Shotgun Slug (Basic)": {
@@ -197,8 +197,8 @@
       "name": "Shotgun Slug (Smart)",
       "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
     },
-    "Very Heavy Pistol (Armor Piercing)": {
-      "name": "Very Heavy Pistol (Armor Piercing)",
+    "Very Heavy Pistol (Armor-Piercing)": {
+      "name": "Very Heavy Pistol (Armor-Piercing)",
       "description": "<p>Double ablation to armor. </p>"
     },
     "Very Heavy Pistol (Basic)": {

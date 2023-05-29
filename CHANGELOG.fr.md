@@ -6,6 +6,10 @@
 
 ### Action requise
 
+#### Munitions qui modifient les dégâts des armes
+
+Les munitions peuvent désormais modifier les dégâts des armes et le maximum de tir automatique. Par exemple, les chevrotines de fusil à pompe donnent automatiquement 3d6 points de dégâts au lieu des dégâts de base du fusil à pompe. Nous avons fait de notre mieux pour migrer les éléments pertinents sur les acteurs, mais si vous avez changé le nom des objets de compendiums ou si vous avez des objets faits maison avec cette fonctionnalité, ces éléments devront être mis à jour manuellement.
+
 #### Modificateurs situationnels
 
 Les effets avec les modificateurs de situation ont reçu les réglages appropriés sur tous les éléments du compendium, mais vous devrez les mettre à jour manuellement sur les éléments qui existent déjà sur les acteurs. Reportez-vous à la section Nouvelles fonctionnalités -> Section Modificateurs de jets du Journal des modifications pour plus de détails.
@@ -22,8 +26,6 @@ Par exemple, si vous utilisez [Ernies Modern UI](https://foundryvtt.com/packages
 
 ### Nouvelles fonctionnalités
 
-- Les objets d'amélioration peuvent maintenant avoir des effets Actifs ajoutés à eux et activés quand l'objet dans lequel ils sont installés est équipé.
-
 #### Dialogues améliorés
 
 - Tous les dialogues ont été remis en forme et ont été convertis en un nouveau système appelé CPRDialog.
@@ -37,8 +39,6 @@ Par exemple, si vous utilisez [Ernies Modern UI](https://foundryvtt.com/packages
 - Basculer les modificateurs de situation des effets actifs, des améliorations et des rôles directement depuis la boîte de dialogue.
 - Activer/désactiver les modificateurs de situation de base à la page 130 du livre de règles de base à partir d'un menu déroulant.
 - Ajouter des modificateurs supplémentaires au jet si nécessaire.
-- Travail futur :
-  - Changer chaque boîte de dialogue vers l'interface utilisateur améliorée.
 
 #### Modificateurs de jet
 
@@ -55,7 +55,7 @@ Par exemple, si vous utilisez [Ernies Modern UI](https://foundryvtt.com/packages
 
 Nous avons ajouté les fonctionnalités pour les thèmes spécifiques au système. Cela nous permet d'expédier quelques thèmes par défaut (mode sombre!). Vous pouvez configurer cela dans la section `Paramètres > Cyberpunk RED - CORE`.
 
-Cela jette les bases pour permettre aux modules tiers d’enregistrer leurs propres thèmes spécifiques à CPR dans une prochaine version.
+Si vous êtes intéressé par la création d'un thème pour le système, consultez la page wiki des [thèmes CSS](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/CSS-Themes) qui détaille le processus.
 
 #### Compendium
 
@@ -78,6 +78,7 @@ Cela jette les bases pour permettre aux modules tiers d’enregistrer leurs prop
 - Ajout d'objets manquants de Elflines Online avec l'aide de LordCheesusCroust
 - Ajout du jeu de cartes à collectionner d'Elflines Online avec l'aide de LordCheesusCrust
 - Ajout du DLC Accomplissements et Caisses de butin avec l'aide de LordCheesusCrust
+- Ajout de compétences linguistiques spécifiques avec l'aide de LordCheesusCrust
 
 #### Autres nouvelles fonctionnalités
 
@@ -93,6 +94,7 @@ Cela jette les bases pour permettre aux modules tiers d’enregistrer leurs prop
 - Vous pouvez maintenant appliquer un modificateur de perforation via la commande /red.
   - Exemple : `/red 6d6a2` générera un jet de dégâts de 6d6 comme toujours, mais lorsque les dégâts sont appliqués aux tokens, l'armure sera divisée par 2
   - Note de rappel : Si vous utilisez des jets de modificateurs et le modificateur de description de la carte (#), le modificateur de description de la carte doit être le dernier utilisé sur la ligne. Cela a toujours été le cas, nous le rappelons ici, car cela ajoute maintenant un modificateur supplémentaire.
+- Les objets d'amélioration peuvent maintenant avoir des effets Actifs ajoutés à eux et activés quand l'objet dans lequel ils sont installés est équipé.
 
 ### Changements
 
@@ -141,19 +143,24 @@ Cette version apporte beaucoup de changements de feuille pour corriger beaucoup 
 - Feuille d'objet
   - Légère réécriture de l'en-tête
 
+#### Munitions qui modifient les dégâts des armes
+
+Les munitions peuvent désormais modifier les dégâts des armes et le maximum de tir automatique. This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo).
+
 #### Autres modifications
 
-- Mise à jour des images d'arrière-plan et d'en-tête, nouvelles versions de Rayane Souizi "Wizi"
-- La liste déroulante de la sélection de munitions affiche maintenant la taille de la pile
-- Modification de l'Arme par défaut pour utiliser l'icône de l'arme par défaut
-- Le champ `source` pour les objets a été divisé en 2 champs séparés
-  - `livre.source`
-  - `page.source`
-- Mise à jour des icônes de compendiums pour les armures
-- Système de systèmes réordonné
-- Ajustement du libellé des objets Elflines existants pour mieux correspondre à leur fonction
-- Mise à jour des icônes par défaut pour les GLACE noirs et les démons
-- Les conteneurs sont configurés comme boutiques par défaut pour tout acheter à 100%
+- Updated the background and header images to new versions by Rayane Souizi "Wizi"
+- Ammo selection dropdown now shows stack size
+- Changed the default weapon to use the default weapon icon
+- `source` field for items has been split into 2 separate Fields
+  - `source.book`
+  - `source.page`
+- Updated compendia icons for Armor
+- Reordered system systems
+- Adjusted the wording of existing Elflines items to better fit their function
+- Update default icons for Black ICE and Demons
+- Contaiers configured as shops default to buying all at 100%
+- Removed duplicated suffixes on ammo selection
 
 ### Corrections de bugs
 
@@ -184,7 +191,13 @@ Cette version apporte beaucoup de changements de feuille pour corriger beaucoup 
 - #741 - Correction d'un problème où la vente d'objets empilables à un vendeur était cassée
 - Migrer les acteurs qui sont sur les scènes dans un compendium échouerait parce que le code a fait des recherches UUID et Foundry ne vous laissera pas le faire de manière synchrone. Ajout de code afin que si la restauration est pour un acteur ou un objet de Compendium, la recherche se fait asynchrone.
 - Correction d'un problème où si la migration effectue une sauvegarde/restauration d'un élément installé, cela supprimerait l'élément d'origine qui faisait que l'élément conteneur signalait le nombre incorrect d'emplacements utilisés.
-- Normalisation du contexte de migration passé à l'acteur:\*EmbeddedDocuments à isMigrating
+- Standardized the passed migration context to actor:*EmbeddedDocuments to isMigrating
+- #705 - When clicking the DV button on a sheet, users would sometimes feel like the Ruler was broken since it wouldn't show a DV if they did not have the token selected. Functionality has been enhanced:
+  - Clicking the DV ruler will now highlight the current set DV table on the associated token
+  - If the user owns only 1 token of either Character or Mook on a scene, it will default to using the DV settings of that token
+  - If a user owns multiple tokens of either Character or Mook, a warning message is now thrown when the user clicks the ruler to select a DV telling them they need to select the token before use
+  - If a user owns multiple tokens of either Character or Mook and has no tokens selected, when they use the ruler, a message is displayed below the distance advising the user to select the token of the DV they want to see.
+- Fixed the usages of restoreOwnedItem to be consistent with backupOwnedItem in that it cleans up the owned item that was created.
 
 ## Version 0.86.1 | Date: 2023-02-05
 

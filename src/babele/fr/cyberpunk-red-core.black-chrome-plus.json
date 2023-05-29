@@ -1,9 +1,49 @@
 {
   "label": "Black Chrome Plus",
   "entries": {
+    "Arrow (Junk)": {
+      "name": "Flèche (Camelote)",
+      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
+    },
     "Big Dreem Rounds": {
       "name": "Big Dreem munitions",
       "description": "<p>Munitions personnalisées pour TeenDreem.</p>"
+    },
+    "Heavy Pistol (Junk)": {
+      "name": "Pistolet lourd (camelote)",
+      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
+    },
+    "Heavy Pistol (Small Game)": {
+      "name": "Pistolet Lourd (Petit gibier)",
+      "description": "<p>Munition de petit gibier ; pas géniale pour les gens. Inflige 2d6 dégâts de moins.</p>"
+    },
+    "Medium Pistol (Junk)": {
+      "name": "Pistolet moyen (camelote)",
+      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
+    },
+    "Medium Pistol (Small Game)": {
+      "name": "Pistolet Moyen (Petit gibier)",
+      "description": "<p>Munition de petit gibier ; pas géniale pour les gens. Inflige 2d6 dégâts de moins.</p>"
+    },
+    "Rifle (Junk)": {
+      "name": "Fusil (camelote)",
+      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
+    },
+    "Rifle (Small Game)": {
+      "name": "Fusil (Petit gibier)",
+      "description": "<p>Munition de petit gibier ; pas géniale pour les gens. Inflige 2d6 dégâts de moins.</p>"
+    },
+    "Shotgun Slug (Junk)": {
+      "name": "Slug de fusil à pompe (camelote)",
+      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
+    },
+    "Very Heavy Pistol (Junk)": {
+      "name": "Pistolet très lourd (camelote)",
+      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
+    },
+    "Very Heavy Pistol (Small Game)": {
+      "name": "Pistolet très lourd (Petit gibier)",
+      "description": "<p>Munition de petit gibier ; pas géniale pour les gens. Inflige 2d6 dégâts de moins.</p>"
     },
     "Scavenged Armor": {
       "name": "Armure de récupération",
@@ -32,6 +72,10 @@
     "Molotov Cocktail": {
       "name": "Cocktail Molotov",
       "description": "<p>Grenade incendiaire fragile. Met une cible en feu Mortel (voir CP:R p.180)</p>"
+    },
+    "SportMaster": {
+      "name": "SportMaster",
+      "description": "<p>Un fusil de sport, pour le plaisir, pas les gens. Peut seulement charger des munitions de petit gibier et est incapable de tir automatique et de tir suppressif.</p>"
     },
     "SurvivalMaster": {
       "name": "SurvivalMaster",

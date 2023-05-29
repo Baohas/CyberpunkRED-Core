@@ -6,6 +6,10 @@
 
 ### Action Needed
 
+#### Ammo Modifies Weapon Damage
+
+Ammo can now modify weapon damage / autofire maximums. For example, shotgun shells automatically roll 3d6 damage instead of the shotgun's base damage. We made a best attempt at migrating relevant items on actors, but if you've changed the name of compendia items or have homebrew items with this functionality, those items will need to be updated manually.
+
 #### Situational Modifiers
 
 Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. See New Features -> Roll Modifiers section of Changelog for more details.
@@ -16,18 +20,16 @@ We have migrated all Gear items provided by our Compendia to support `isElectron
 
 #### CSS Themes / Rewrite
 
-Do to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
+Due to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
 
 For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme Ernies needs to be configured to use Dark Mode as well.
 
 ### New Features
 
-- Upgrade items can now have ActiveEffects added to them and activated when the item they are installed into is equipped.
-
 #### Improved Dialogues
 
 - All dialogues have been given new styling and have been converted to a new system called CPRDialog.
-- This will allow for more responsive dialogues with complex logic in the future. Some of this is already implemented in Roll Dialogues (see next bullet point).
+- This will allow for more responsive dialogues with complex logic. Some of this is already implemented in Roll Dialogues (see next bullet point).
 
 #### Improved Roll Dialogues
 
@@ -37,8 +39,6 @@ For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/
 - Toggle situational modifiers from active effects, upgrades, and roles right from the dialog.
 - Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu.
 - Add any additional modifiers to the roll as needed.
-- Future work:
-  - Change every dialog over to the improved UI.
 
 #### Roll Modifiers
 
@@ -55,7 +55,7 @@ For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/
 
 We have added the functionality for system specific themes. This allows us to ship a few default themes (dark mode!). You can configure this in the `Settings > Cyberpunk RED - CORE` section.
 
-This lays the foundation for allowing 3rd party modules to register their own CPR specific themes in a future release.
+If you are interested in making a theme for the system check out the [CSS Themes](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/CSS-Themes) wiki page which details the process.
 
 #### Compendia
 
@@ -78,6 +78,7 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - Added missing Elflines Online items with help from LordCheesusCrust
 - Added Elflines Online the Trading Card Game with help from LordCheesusCrust
 - Added Achievements And Loot Boxes with help from LordCheesusCrust
+- Added language specific skills with help from LordCheesusCrust
 
 #### Other New Features
 
@@ -92,7 +93,8 @@ This lays the foundation for allowing 3rd party modules to register their own CP
 - Added many many new icons for the new Compendia
 - You can now pass an ablation modifier via the /red command.
   - Example: `/red 6d6a2` will generate a 6d6 damage roll as it always did, but when the damage is applied to tokens, the armor will be ablated by 2
-  - Reminder Note: If using any roll modifiers and the card description modifier (#), the card description modifier must be the last one used on the line. This has always been the case, just calling it our here as this now adds an additional modifier.
+  - Reminder Note: If using any roll modifiers and the card description modifier (#), the card description modifier must be the last one used on the line. This has always been the case, just calling it out here as this now adds an additional modifier.
+- Upgrade items can now have ActiveEffects added to them and activated when the item they are installed into is equipped.
 
 ### Changes
 
@@ -141,6 +143,10 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Item Sheet
   - Slight Rewrite of header
 
+#### Ammo Modifies Weapon Damage
+
+Ammo can now modify weapon damage / autofire maximums. This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo).
+
 #### Other Changes
 
 - Updated the background and header images to new versions by Rayane Souizi "Wizi"
@@ -154,6 +160,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Adjusted the wording of existing Elflines items to better fit their function
 - Update default icons for Black ICE and Demons
 - Contaiers configured as shops default to buying all at 100%
+- Removed duplicated suffixes on ammo selection
 
 ### Bug Fixes
 
@@ -184,7 +191,13 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - #741 - Fixed issue where selling stackable items to a vendor was broken
 - Migrating actors that are on scenes in a compendium would fail because the code did UUID lookups and Foundry won't let you do this synchronously. Added code so if the restoration is for a Compenium actor/item, the lookup is done with an async await.
 - Fixed an issue where if migration performs a backup/restore of an installed item, it would delete the original item which was causing the container item to report the incorrect amount of used slots.
-- Standardized the passed migration context to actor:\*EmbeddedDocuments to isMigrating
+- Standardized the passed migration context to actor:*EmbeddedDocuments to isMigrating
+- #705 - When clicking the DV button on a sheet, users would sometimes feel like the Ruler was broken since it wouldn't show a DV if they did not have the token selected. Functionality has been enhanced:
+  - Clicking the DV ruler will now highlight the current set DV table on the associated token
+  - If the user owns only 1 token of either Character or Mook on a scene, it will default to using the DV settings of that token
+  - If a user owns multiple tokens of either Character or Mook, a warning message is now thrown when the user clicks the ruler to select a DV telling them they need to select the token before use
+  - If a user owns multiple tokens of either Character or Mook and has no tokens selected, when they use the ruler, a message is displayed below the distance advising the user to select the token of the DV they want to see.
+- Fixed the usages of restoreOwnedItem to be consistent with backupOwnedItem in that it cleans up the owned item that was created.
 
 ## Version 0.86.1 | Date: 2023-02-05
 

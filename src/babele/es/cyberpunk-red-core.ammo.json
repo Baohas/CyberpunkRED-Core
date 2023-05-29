@@ -1,8 +1,8 @@
 {
   "label": "Munición",
   "entries": {
-    "Arrow (Armor Piercing)": {
-      "name": "Flecha (Perforación de armadura)",
+    "Arrow (Armor-Piercing)": {
+      "name": "Flecha (Perforación de Armadura)",
       "description": "<p>Doble ablación a la armadura. </p>"
     },
     "Arrow (Basic)": {
@@ -41,7 +41,7 @@
       "name": "Paquete de Baterías",
       "description": "<p>Un paquete de batería recargable (1 hora) usado comúnmente con armas exóticas. Contiene 8 tiros y puede ser recargado.&nbsp;</p>"
     },
-    "Grenade (Armor Piercing)": {
+    "Grenade (Armor-Piercing)": {
       "name": "Granada (Perforación de Armadura)",
       "description": "<p>Doble ablación a la armadura. </p>"
     },
@@ -77,7 +77,7 @@
       "name": "Granada (Lacrimógena)",
       "description": "<p>No inflige daño. Golpea los ojos si están descubiertos. Tira para resistir la tortura/drogas contra VD13. Si falla, sufre lesiones críticas Ojo Dañado (ver página 188) durante 1 minuto. No inflige daño adicional crítico.</p>"
     },
-    "Heavy Pistol (Armor Piercing)": {
+    "Heavy Pistol (Armor-Piercing)": {
       "name": "Pistola Pesada (Perforación de Armadura)",
       "description": "<p>Doble ablación a la armadura. </p>"
     },
@@ -101,7 +101,7 @@
       "name": "Pistola Pesada (Inteligente)",
       "description": "<p>Req Ciberimplante de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo VD 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
-    "Medium Pistol (Armor Piercing)": {
+    "Medium Pistol (Armor-Piercing)": {
       "name": "Pistola Media (Perforación de Armadura)",
       "description": "<p>Doble ablación a la armadura. </p>"
     },
@@ -133,7 +133,7 @@
       "name": "Bola de Pintura (Básica)",
       "description": "<p>Bolas de Pintura regulares que no causan daño. Pero molestan.</p>"
     },
-    "Rifle (Armor Piercing)": {
+    "Rifle (Armor-Piercing)": {
       "name": "Rifle (Perforación de Armadura)",
       "description": "<p>Doble ablación a la armadura. </p>"
     },
@@ -157,7 +157,7 @@
       "name": "Rifle (Inteligente)",
       "description": "<p>Req Ciberimplante de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo VD 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
-    "Rocket (Armor Piercing)": {
+    "Rocket (Armor-Piercing)": {
       "name": "Cohete (Perforación de Armadura)",
       "description": "<p>Doble ablación a la armadura. </p>"
     },
@@ -173,7 +173,7 @@
       "name": "Cartuchos de Escopeta (Incendiario)",
       "description": "<p>Si hace daño, el objetivo se considera encendido. El objetivo recibe 2 puntos de daño al final de su turno, a menos que utilice acción para extinguir llamas. No se acumula. </p>"
     },
-    "Shotgun Slug (Armor Piercing)": {
+    "Shotgun Slug (Armor-Piercing)": {
       "name": "Posta de Escopeta (Perforación de Armadura)",
       "description": "<p>Doble ablación a la armadura. </p>"
     },
@@ -197,7 +197,7 @@
       "name": "Posta de Escopeta (Inteligente)",
       "description": "<p>Req Ciberimplante de Sistema de Puntería, de lo contrario no se disparará. Si falla el ataque por 4 o menos, tira un segundo ataque al mismo VD 1d10+10 (sin sumar estadística). Puede añadir suerte. El objetivo puede esquivar el segundo tiro como normal si es capaz de hacerlo. </p>"
     },
-    "Very Heavy Pistol (Armor Piercing)": {
+    "Very Heavy Pistol (Armor-Piercing)": {
       "name": "Pistola Muy Pesada (Perforación de Armadura)",
       "description": "<p>Doble ablación a la armadura. </p>"
     },

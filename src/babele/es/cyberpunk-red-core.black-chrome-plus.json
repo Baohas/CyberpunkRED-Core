@@ -1,9 +1,49 @@
 {
   "label": "Cromo Negro Plus",
   "entries": {
+    "Arrow (Junk)": {
+      "name": "Arrow (Junk)",
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+    },
     "Big Dreem Rounds": {
       "name": "Rondas de Gran Dreem",
       "description": "<p>Munición personalizada para la Dreem Adolescente.</p>"
+    },
+    "Heavy Pistol (Junk)": {
+      "name": "Heavy Pistol (Junk)",
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+    },
+    "Heavy Pistol (Small Game)": {
+      "name": "Heavy Pistol (Small Game)",
+      "description": "<p>Small game ammo; not great for people. Deals 2d6 less damage.</p>"
+    },
+    "Medium Pistol (Junk)": {
+      "name": "Medium Pistol (Junk)",
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+    },
+    "Medium Pistol (Small Game)": {
+      "name": "Medium Pistol (Small Game)",
+      "description": "<p>Small game ammo; not great for people. Deals 2d6 less damage.</p>"
+    },
+    "Rifle (Junk)": {
+      "name": "Rifle (Junk)",
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+    },
+    "Rifle (Small Game)": {
+      "name": "Rifle (Small Game)",
+      "description": "<p>Small game ammo; not great for people. Deals 2d6 less damage.</p>"
+    },
+    "Shotgun Slug (Junk)": {
+      "name": "Shotgun Slug (Junk)",
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+    },
+    "Very Heavy Pistol (Junk)": {
+      "name": "Very Heavy Pistol (Junk)",
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+    },
+    "Very Heavy Pistol (Small Game)": {
+      "name": "Very Heavy Pistol (Small Game)",
+      "description": "<p>Small game ammo; not great for people. Deals 2d6 less damage.</p>"
     },
     "Scavenged Armor": {
       "name": "Armadura de Carroñero",
@@ -32,6 +72,10 @@
     "Molotov Cocktail": {
       "name": "Coctél Molotov",
       "description": "<p>Frágil Granada Incendiaria. Enciende a un objetivo en un fuego mortal (ver CP:R p.180)</p>"
+    },
+    "SportMaster": {
+      "name": "SportMaster",
+      "description": "<p>A sport rifle, for fun, not people. Can only load Small Game Ammunition and is incapable of Autofire and Suppressive Fire.</p>"
     },
     "SurvivalMaster": {
       "name": "Maestro de Supervivencia",
