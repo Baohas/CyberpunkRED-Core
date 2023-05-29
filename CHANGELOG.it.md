@@ -191,7 +191,8 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 - #741 - Fixed issue where selling stackable items to a vendor was broken
 - Migrating actors that are on scenes in a compendium would fail because the code did UUID lookups and Foundry won't let you do this synchronously. Added code so if the restoration is for a Compenium actor/item, the lookup is done with an async await.
 - Fixed an issue where if migration performs a backup/restore of an installed item, it would delete the original item which was causing the container item to report the incorrect amount of used slots.
-- Standardized the passed migration context to actor:*EmbeddedDocuments to isMigrating
+- Standardized the passed migration context to actor:\*EmbeddedDocuments to isMigrating
+- Fix HTML stripping of item descriptions on the Character sheet
 - #705 - When clicking the DV button on a sheet, users would sometimes feel like the Ruler was broken since it wouldn't show a DV if they did not have the token selected. Functionality has been enhanced:
   - Clicking the DV ruler will now highlight the current set DV table on the associated token
   - If the user owns only 1 token of either Character or Mook on a scene, it will default to using the DV settings of that token

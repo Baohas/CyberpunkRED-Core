@@ -191,7 +191,8 @@ Les munitions peuvent désormais modifier les dégâts des armes et le maximum d
 - #741 - Correction d'un problème où la vente d'objets empilables à un vendeur était cassée
 - Migrer les acteurs qui sont sur les scènes dans un compendium échouerait parce que le code a fait des recherches UUID et Foundry ne vous laissera pas le faire de manière synchrone. Ajout de code afin que si la restauration est pour un acteur ou un objet de Compendium, la recherche se fait asynchrone.
 - Correction d'un problème où si la migration effectue une sauvegarde/restauration d'un élément installé, cela supprimerait l'élément d'origine qui faisait que l'élément conteneur signalait le nombre incorrect d'emplacements utilisés.
-- Standardized the passed migration context to actor:*EmbeddedDocuments to isMigrating
+- Standardized the passed migration context to actor:\*EmbeddedDocuments to isMigrating
+- Fix HTML stripping of item descriptions on the Character sheet
 - #705 - When clicking the DV button on a sheet, users would sometimes feel like the Ruler was broken since it wouldn't show a DV if they did not have the token selected. Functionality has been enhanced:
   - Clicking the DV ruler will now highlight the current set DV table on the associated token
   - If the user owns only 1 token of either Character or Mook on a scene, it will default to using the DV settings of that token
