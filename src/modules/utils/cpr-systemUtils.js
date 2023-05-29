@@ -1,4 +1,4 @@
-/* global document game ui Folder canvas duplicate */
+/* global document game ui Folder canvas duplicate Handlebars */
 /* eslint-env jquery */
 
 import LOGGER from "./cpr-logger.js";
@@ -689,7 +689,7 @@ export default class CPRSystemUtils {
    */
   static stripHTML(htmlString) {
     LOGGER.trace("stripHTML | CPRSystemUtils | Called.");
-    return decodeURIComponent($(htmlString).text().replace("%", "&#37")).trim();
+    return new Handlebars.SafeString($("<div>").html(htmlString).text());
   }
 
   /**
