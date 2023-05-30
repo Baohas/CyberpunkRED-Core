@@ -51,6 +51,6 @@ system:
   upgrades: []
   usage: toggled
   usesType: magazine
-  weaponSkill: Brawling
+  weaponSkill: Melee Weapon
   weaponType: medMelee
 type: weapon

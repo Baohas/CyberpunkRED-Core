@@ -21,7 +21,7 @@ system:
       <p>Full rules can be found in Black Chrome on Page 115.</p>
 
       <p><em>* This Upgrade needs to be added manually.</em></p>
-  dvTable: ""
+  dvTable: DV Pistol
   equipped: owned
   favorite: false
   fireModes:
@@ -54,6 +54,6 @@ system:
   upgrades: []
   usage: equipped
   usesType: magazine
-  weaponSkill: Brawling
+  weaponSkill: Handgun
   weaponType: heavyPistol
 type: weapon
