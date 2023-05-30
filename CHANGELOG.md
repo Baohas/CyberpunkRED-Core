@@ -199,6 +199,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
   - If a user owns multiple tokens of either Character or Mook, a warning message is now thrown when the user clicks the ruler to select a DV telling them they need to select the token before use
   - If a user owns multiple tokens of either Character or Mook and has no tokens selected, when they use the ruler, a message is displayed below the distance advising the user to select the token of the DV they want to see.
 - Fixed the usages of restoreOwnedItem to be consistent with backupOwnedItem in that it cleans up the owned item that was created.
+- Fixed Cyberchairs not overriding a users MOVE stat as they should. Thanks Dingo!
 
 ## Version 0.86.1 | Date: 2023-02-05
 

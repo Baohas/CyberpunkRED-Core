@@ -1,5 +1,33 @@
 _id: XbKkA6CrI42pvdcz
-effects: []
+effects:
+  - _id: G7BqXlan9qseMytK
+    changes:
+      - key: system.stats.move.value
+        mode: 5
+        priority: null
+        value: "5"
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": stat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    icon: systems/cyberpunk-red-core/icons/compendium/cyberchairs/cyberchair.svg
+    label: Mercurius Cyberchair
+    tint: null
+    transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/cyberchairs/cyberchair.svg
 name: Mercurius Cyberchair
 system:
@@ -42,5 +70,5 @@ system:
     book: CC
     page: 2
   upgrades: []
-  usage: toggled
+  usage: equipped
 type: gear
