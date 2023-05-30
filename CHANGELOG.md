@@ -136,6 +136,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Mook Sheet
   - Use the same Weapon block code as the character sheet
   - Use the same Armor block code as the character sheet
+  - Support item upgrades on the mook sheet (issue #779)
 - Black Ice Sheet
   - Complete re-write
   - Adds `damage` field
