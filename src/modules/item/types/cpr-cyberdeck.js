@@ -519,7 +519,6 @@ export default class CPRCyberdeckItem extends CPRItem {
           programData.atk,
           programData.def,
           programData.rez,
-          programData.rez,
           programData.description.value
         );
       } catch (error) {
@@ -566,8 +565,7 @@ export default class CPRCyberdeckItem extends CPRItem {
           programData.atk,
           programData.def,
           programData.rez,
-          programData.description.value,
-          programData.rez
+          programData.description.value
         );
         const cprFlags =
           typeof programData.flags[game.system.id] !== "undefined"

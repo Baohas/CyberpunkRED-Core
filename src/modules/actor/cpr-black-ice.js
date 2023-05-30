@@ -131,6 +131,7 @@ export default class CPRBlackIceActor extends Actor {
    * @param {Number} rez    - Value to set REZ to, both value and max are configured to the same
    * @param {String} effect - Text to display in the effect field of the Black ICE. Any HTML is stripped from
    *                          the string. If this is not set it will default to whatever exists on the Actor.
+   * @param {Number} rezMax - Value to set REZ MAX to, both value and max are configured separately
    */
   programmaticallyUpdate(
     type,
@@ -155,6 +156,8 @@ export default class CPRBlackIceActor extends Actor {
     // this is only passed on Creation, never update
     if (rezMax !== null) {
       setProperty(cprData, "stats.rez.max", rezMax);
+    } else {
+      setProperty(cprData, "stats.rez.max", rezValue);
     }
     this.update({ system: cprData });
   }
