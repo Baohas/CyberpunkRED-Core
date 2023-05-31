@@ -733,7 +733,7 @@ export default class CPRCyberdeckItem extends CPRItem {
           break;
         }
         case "rez": {
-          programState.rez = updatedData.rez.value;
+          if (updatedData.rez.value) programState.rez = updatedData.rez.value;
           break;
         }
         default:
