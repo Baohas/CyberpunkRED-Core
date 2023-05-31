@@ -20,7 +20,7 @@ system:
       rules can be found in Black Chrome on Page 103.</p>
 
       <p><em>*Must be manually applied after purchase</em></p>
-  dvTable: ""
+  dvTable: DV Bows & Crossbows
   equipped: owned
   favorite: false
   fireModes:
@@ -53,6 +53,6 @@ system:
   upgrades: []
   usage: toggled
   usesType: magazine
-  weaponSkill: Brawling
+  weaponSkill: Archery
   weaponType: bow
 type: weapon
