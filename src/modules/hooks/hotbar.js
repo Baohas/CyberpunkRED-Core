@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-/* global Hooks game Macro */
+/* global Hooks game Macro fromUuidSync */
 import LOGGER from "../utils/cpr-logger.js";
 
 /**
@@ -25,135 +25,108 @@ const hotbarHooks = () => {
    */
   Hooks.on("hotbarDrop", (_, data, slot) => {
     LOGGER.trace("hotbarDrop | hotbarHooks | Called.");
-    if (data.type === "Macro") {
-      return true;
-    }
+    const document = fromUuidSync(data.uuid);
     const macroObject = {
-      name: "",
+      name: document.name,
       type: "script",
-      img: "",
+      img: document.img,
       command: "",
     };
     let macro = null;
-    let command = "";
-    if (data.type === "Item") {
-      if (
-        data.system === undefined ||
-        data.system === undefined ||
-        data.system.data === undefined ||
-        data.system.data._id === undefined
-      ) {
-        return;
-      }
-      const itemId = data.system.data._id;
-      let item = game.items.find((i) => i.id === itemId);
-
-      if (item === null || typeof item === "undefined") {
-        // Item not found in the world, check actor for the item
-        if (data.system.actorId !== undefined) {
-          const actor = game.actors.find((a) => a.id === data.system.actorId);
-          if (actor !== null) {
-            item = actor.getEmbeddedDocument("Item", itemId);
+    let command = `Hotbar.toggleDocumentSheet("${document.uuid}")`;
+    switch (data.type) {
+      case "Item":
+        {
+          // Create item macro if rollable item - weapon, cyberware weapon or skill
+          if (
+            document.type !== "weapon" &&
+            !(document.type === "cyberware" && document.system.isWeapon) &&
+            document.type !== "skill"
+          ) {
+            return true;
+          }
+          command =
+            "// Set this to true if you want to skip the roll verify prompt.\n";
+          command +=
+            "// Do not delete the semi-colon at the end of the line!\n";
+          command += "const skipPrompt = false;\n";
+          command += "\n";
+          const itemName = document.name
+            .replace(/\\/g, "\\\\")
+            .replace(/\\([\s\S])|(")/g, "\\$1$2");
+          if (
+            document.type === "weapon" ||
+            (document.type === "cyberware" && document.system.isWeapon)
+          ) {
+            command +=
+              "// The roll type of the weapon for this macro is configurable.\n";
+            command +=
+              "// By default, we do the standard attack, however the rollType,\n";
+            command +=
+              "// may be configured by setting it to a different value:\n";
+            command += "//\n";
+            command +=
+              "// damage - Set the rollType to this to roll damage instead of an attack\n";
+            command += "//\n";
+            if (document.system.isRanged) {
+              command +=
+                "// For ranged weapons, you can configure a number of alternate fire:\n";
+              command += "// attacks:\n";
+              command += "//\n";
+              command += "// aimed       - Performs an aimed shot\n";
+              command += "// autofire    - Performs an autofire attack,\n";
+              command +=
+                "//               use only for SMG types and Assault Rifles\n";
+              command +=
+                "// suppressive - Performs a suppressive fire attack,\n";
+              command +=
+                "//               use only for SMG types and Assault Rifles\n";
+              command += "//\n";
+            }
+            command +=
+              '// Simply change the "attack" to one of the above to change the function.\n';
+            command += "\n";
+            command += 'const rollType = "attack";\n';
+            command += "\n";
+            command += "// Do not edit anything below this line, please.\n";
+            command += "\n";
+            command += `game.cpr.macro.rollItemMacro("${itemName}", {skipPrompt, rollType});`;
+          } else if (document.type === "skill") {
+            command += `game.cpr.macro.rollItemMacro("${itemName}", {skipPrompt});`;
+          }
+          macro = game.macros.contents.find(
+            (m) => m.name === document.name && m.command === command
+          );
+          const img =
+            document.type === "skill"
+              ? `systems/${game.system.id}/icons/chip-skill.png`
+              : document.img;
+          if (!macro) {
+            macroObject.name = document.name;
+            macroObject.img = img;
+            macroObject.command = command;
           }
         }
-      }
-
-      if (item === null) {
-        return;
-      }
-
-      // Create item macro if rollable item - weapon, cyberware weapon or skill
-      if (
-        item.type !== "weapon" &&
-        !(item.type === "cyberware" && item.system.isWeapon) &&
-        item.type !== "skill"
-      ) {
-        return;
-      }
-      command +=
-        "// Set this to true if you want to skip the roll verify prompt.\n";
-      command += "// Do not delete the semi-colon at the end of the line!\n";
-      command += "const skipPrompt = false;\n";
-      command += "\n";
-      const itemName = item.name
-        .replace(/\\/g, "\\\\")
-        .replace(/\\([\s\S])|(")/g, "\\$1$2");
-      if (
-        item.type === "weapon" ||
-        (item.type === "cyberware" && item.system.isWeapon)
-      ) {
-        command +=
-          "// The roll type of the weapon for this macro is configurable.\n";
-        command +=
-          "// By default, we do the standard attack, however the rollType,\n";
-        command += "// may be configured by setting it to a different value:\n";
-        command += "//\n";
-        command +=
-          "// damage - Set the rollType to this to roll damage instead of an attack\n";
-        command += "//\n";
-        if (item.system.isRanged) {
-          command +=
-            "// For ranged weapons, you can configure a number of alternate fire:\n";
-          command += "// attacks:\n";
-          command += "//\n";
-          command += "// aimed       - Performs an aimed shot\n";
-          command += "// autofire    - Performs an autofire attack,\n";
-          command +=
-            "//               use only for SMG types and Assault Rifles\n";
-          command += "// suppressive - Performs a suppressive fire attack,\n";
-          command +=
-            "//               use only for SMG types and Assault Rifles\n";
-          command += "//\n";
+        break;
+      case "JournalEntry":
+        macro = game.macros.contents.find(
+          (m) => m.name === document.name && m.command === command
+        );
+        if (!macro) {
+          macroObject.img = `systems/${game.system.id}/icons/memory-card.svg`;
+          macroObject.command = command;
         }
-        command +=
-          '// Simply change the "attack" to one of the above to change the function.\n';
-        command += "\n";
-        command += 'const rollType = "attack";\n';
-        command += "\n";
-        command += "// Do not edit anything below this line, please.\n";
-        command += "\n";
-        command += `game.cpr.macro.rollItemMacro("${itemName}", {skipPrompt, rollType});`;
-      } else if (item.type === "skill") {
-        command += `game.cpr.macro.rollItemMacro("${itemName}", {skipPrompt});`;
-      }
-      macro = game.macros.contents.find(
-        (m) => m.name === item.name && m.command === command
-      );
-      const img =
-        item.type === "skill"
-          ? `systems/${game.system.id}/icons/chip-skill.png`
-          : item.img;
-      if (!macro) {
-        macroObject.name = item.name;
-        macroObject.img = img;
-        macroObject.command = command;
-      }
-    } else if (data.type === "Actor") {
-      // Create a macro to open the actor sheet of the actor dropped on the hotbar
-
-      const actor = game.actors.get(data.id);
-      command = `game.actors.get("${data.id}").sheet.render(true)`;
-      macro = game.macros.contents.find(
-        (m) => m.name === actor.name && m.command === command
-      );
-      if (!macro) {
-        macroObject.name = actor.name;
-        macroObject.img = actor.img;
-        macroObject.command = command;
-      }
-    } else if (data.type === "JournalEntry") {
-      // Create a macro to open the journal sheet of the journal dropped on the hotbar
-      const journal = game.journal.get(data.id);
-      command = `game.journal.get("${data.id}").sheet.render(true)`;
-      macro = game.macros.contents.find(
-        (m) => m.name === journal.name && m.command === command
-      );
-      if (!macro) {
-        macroObject.name = journal.name;
-        macroObject.img = `systems/${game.system.id}/icons/memory-card.svg`;
-        macroObject.command = command;
-      }
+        break;
+      default:
+        macro = game.macros.contents.find(
+          (m) => m.name === document.name && m.command === command
+        );
+        if (!macro) {
+          macroObject.command = command;
+        }
+        break;
     }
+
     if (macroObject.name !== "") {
       Macro.create(macroObject, { displaySheet: false }).then((newMacro) => {
         game.user.assignHotbarMacro(newMacro, slot);
@@ -161,6 +134,7 @@ const hotbarHooks = () => {
     } else {
       game.user.assignHotbarMacro(macro, slot);
     }
+
     return false;
   });
 };
