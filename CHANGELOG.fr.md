@@ -136,7 +136,7 @@ Cette version apporte beaucoup de changements de feuille pour corriger beaucoup 
 - Feuille de Sbire
   - Utilisation du même code de bloc d'arme que la feuille de personnage
   - Utilisation du même code de bloc d'armure que la feuille de personnage
-  - Support item upgrades on the mook sheet (issue #779)
+  - Améliorations d'objets de soutien sur la feuille de sbire (problème #779)
 - Feuille GLACE Noir
   - Réécriture complète
   - Ajout d'un champ `dégâts`
@@ -162,7 +162,7 @@ Les munitions peuvent désormais modifier les dégâts des armes et le maximum d
 - Mise à jour des icônes par défaut pour les GLACE noirs et les démons
 - Les conteneurs sont configurés comme boutiques par défaut pour tout acheter à 100%
 - Suppression des suffixes dupliqués sur la sélection de munitions
-- Clicking reload when you are out of an ammo type will bring up the switch ammo dialog
+- Cliquer sur recharger lorsque vous êtes à court d'un type de munitions affichera la boîte de dialogue des munitions
 
 ### Corrections de bugs
 
@@ -202,8 +202,8 @@ Les munitions peuvent désormais modifier les dégâts des armes et le maximum d
   - Si un utilisateur possède plusieurs tokens de personnages ou de sbires et n'a aucun jeton sélectionné, lorsqu'il utilise la règle, un message s'affiche en dessous de la distance conseillant à l'utilisateur de sélectionner le jeton du SD qu'il souhaite voir.
 - Correction des utilisations de restoreOwnedItem pour être cohérentes avec backupOwnedItem en ce qu'il nettoie l'élément possédé qui a été créé.
 - Correction des cyberfauteuils qui ne remplaçaient pas les caractéristiques MOUV des utilisateurs comme ils le devraient. Merci Dingo!
-- #577 - Restore firemode of weapon after the macro completes to what it was before the macro was executed
-- Previously, when unloading ammo that you no longer own the item for, it would leave the bullet count in the weapon but clear the UUID of the ammo in the weapon. This could cause problems when attempting to use that weapon as the bullet type is unknown. Additionally, when reloading, it would only take the bullet difference from the other bullet type instead of the full amount to load the weapon
+- #577 - Restauration du mode de tir de l'arme une fois que la macro est terminée à ce qu'elle était avant l'exécution de la macro
+- Auparavant, lors du déchargement de munitions que vous ne possédiez plus, la balle était toujours comptée dans l'arme mais disparaissait de l'UI. Cela peut causer des problèmes lorsque vous essayez d'utiliser cette arme car le type de balle est inconnu. De plus, lors du rechargement, seule la différence de balle par rapport à l'autre type de balle serait prise en compte au lieu de la quantité totale pour charger l'arme
 
 ## Version 0.86.1 | Date: 2023-02-05
 
