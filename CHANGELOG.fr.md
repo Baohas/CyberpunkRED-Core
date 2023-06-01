@@ -136,6 +136,7 @@ Cette version apporte beaucoup de changements de feuille pour corriger beaucoup 
 - Feuille de Sbire
   - Utilisation du même code de bloc d'arme que la feuille de personnage
   - Utilisation du même code de bloc d'armure que la feuille de personnage
+  - Support item upgrades on the mook sheet (issue #779)
 - Feuille GLACE Noir
   - Réécriture complète
   - Ajout d'un champ `dégâts`
@@ -161,6 +162,7 @@ Les munitions peuvent désormais modifier les dégâts des armes et le maximum d
 - Mise à jour des icônes par défaut pour les GLACE noirs et les démons
 - Les conteneurs sont configurés comme boutiques par défaut pour tout acheter à 100%
 - Suppression des suffixes dupliqués sur la sélection de munitions
+- Clicking reload when you are out of an ammo type will bring up the switch ammo dialog
 
 ### Corrections de bugs
 
@@ -201,6 +203,7 @@ Les munitions peuvent désormais modifier les dégâts des armes et le maximum d
 - Correction des utilisations de restoreOwnedItem pour être cohérentes avec backupOwnedItem en ce qu'il nettoie l'élément possédé qui a été créé.
 - Correction des cyberfauteuils qui ne remplaçaient pas les caractéristiques MOUV des utilisateurs comme ils le devraient. Merci Dingo!
 - #577 - Restore firemode of weapon after the macro completes to what it was before the macro was executed
+- Previously, when unloading ammo that you no longer own the item for, it would leave the bullet count in the weapon but clear the UUID of the ammo in the weapon. This could cause problems when attempting to use that weapon as the bullet type is unknown. Additionally, when reloading, it would only take the bullet difference from the other bullet type instead of the full amount to load the weapon
 
 ## Version 0.86.1 | Date: 2023-02-05
 
