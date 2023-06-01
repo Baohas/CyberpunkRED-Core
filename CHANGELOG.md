@@ -161,6 +161,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 - Update default icons for Black ICE and Demons
 - Contaiers configured as shops default to buying all at 100%
 - Removed duplicated suffixes on ammo selection
+- Clicking reload when you are out of an ammo type will bring up the switch ammo dialog
 
 ### Bug Fixes
 
@@ -201,6 +202,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 - Fixed the usages of restoreOwnedItem to be consistent with backupOwnedItem in that it cleans up the owned item that was created.
 - Fixed Cyberchairs not overriding a users MOVE stat as they should. Thanks Dingo!
 - #577 - Restore firemode of weapon after the macro completes to what it was before the macro was executed
+- Previously, when unloading ammo that you no longer own the item for, it would leave the bullet count in the weapon but clear the UUID of the ammo in the weapon. This could cause problems when attempting to use that weapon as the bullet type is unknown. Additionally, when reloading, it would only take the bullet difference from the other bullet type instead of the full amount to load the weapon
 
 ## Version 0.86.1 | Date: 2023-02-05
 
