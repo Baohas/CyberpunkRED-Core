@@ -145,22 +145,22 @@ Cette version apporte beaucoup de changements de feuille pour corriger beaucoup 
 
 #### Munitions qui modifient les dégâts des armes
 
-Les munitions peuvent désormais modifier les dégâts des armes et le maximum de tir automatique. This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo).
+Les munitions peuvent désormais modifier les dégâts des armes et le maximum de tir automatique. Ceci prend en charge les munitions qui remplacent les dégâts de l'arme (par exemple, les chevrotines de fusil à pompe), munitions qui ne font aucun dégât (par exemple les munitions somnifères) et les munitions qui ajoutent / soustraient aux dégâts de l'arme (munitions de camelote). De la même manière, les munitions peuvent modifier le maximum de tir automatique de l'arme de base (munitions de camelote).
 
 #### Autres modifications
 
-- Updated the background and header images to new versions by Rayane Souizi "Wizi"
-- Ammo selection dropdown now shows stack size
-- Changed the default weapon to use the default weapon icon
-- `source` field for items has been split into 2 separate Fields
-  - `source.book`
-  - `source.page`
-- Updated compendia icons for Armor
-- Reordered system systems
-- Adjusted the wording of existing Elflines items to better fit their function
-- Update default icons for Black ICE and Demons
-- Contaiers configured as shops default to buying all at 100%
-- Removed duplicated suffixes on ammo selection
+- Mise à jour des images d'arrière-plan et d'en-tête, nouvelles versions de Rayane Souizi "Wizi"
+- La liste déroulante de la sélection de munitions affiche maintenant la taille de la pile
+- Modification de l'Arme par défaut pour utiliser l'icône de l'arme par défaut
+- Le champ `source` pour les objets a été divisé en 2 champs séparés
+  - `livre.source`
+  - `page.source`
+- Mise à jour des icônes de compendiums pour les armures
+- Système de systèmes réordonné
+- Ajustement du libellé des objets Elflines existants pour mieux correspondre à leur fonction
+- Mise à jour des icônes par défaut pour les GLACE noirs et les démons
+- Les conteneurs sont configurés comme boutiques par défaut pour tout acheter à 100%
+- Suppression des suffixes dupliqués sur la sélection de munitions
 
 ### Corrections de bugs
 
@@ -191,14 +191,16 @@ Les munitions peuvent désormais modifier les dégâts des armes et le maximum d
 - #741 - Correction d'un problème où la vente d'objets empilables à un vendeur était cassée
 - Migrer les acteurs qui sont sur les scènes dans un compendium échouerait parce que le code a fait des recherches UUID et Foundry ne vous laissera pas le faire de manière synchrone. Ajout de code afin que si la restauration est pour un acteur ou un objet de Compendium, la recherche se fait asynchrone.
 - Correction d'un problème où si la migration effectue une sauvegarde/restauration d'un élément installé, cela supprimerait l'élément d'origine qui faisait que l'élément conteneur signalait le nombre incorrect d'emplacements utilisés.
-- Standardized the passed migration context to actor:\*EmbeddedDocuments to isMigrating
-- Fix HTML stripping of item descriptions on the Character sheet
-- #705 - When clicking the DV button on a sheet, users would sometimes feel like the Ruler was broken since it wouldn't show a DV if they did not have the token selected. Functionality has been enhanced:
-  - Clicking the DV ruler will now highlight the current set DV table on the associated token
-  - If the user owns only 1 token of either Character or Mook on a scene, it will default to using the DV settings of that token
-  - If a user owns multiple tokens of either Character or Mook, a warning message is now thrown when the user clicks the ruler to select a DV telling them they need to select the token before use
-  - If a user owns multiple tokens of either Character or Mook and has no tokens selected, when they use the ruler, a message is displayed below the distance advising the user to select the token of the DV they want to see.
-- Fixed the usages of restoreOwnedItem to be consistent with backupOwnedItem in that it cleans up the owned item that was created.
+- Normalisation du contexte de migration passé à l'acteur:\*EmbeddedDocuments à isMigrating
+- Correction des tags HTML des descriptions d'objets dans la feuille de personnage
+- #705 - En cliquant sur le bouton SD sur une feuille, les utilisateurs avaient parfois l'impression que la règle de contrôle était cassée car elle ne montrait pas de SD s'ils n'avaient pas le token sélectionné. La fonctionnalité a été améliorée :
+  - Cliquer sur la règle SD mettra maintenant en surbrillance la table SD actuelle sur le token associé
+  - Si l'utilisateur ne possède que 1 token de personnage ou de sbire sur une scène, il utilisera par défaut les paramètres SD de ce jeton
+  - Si un utilisateur possède plusieurs tokens de personnages ou de sbires, un message d'avertissement est maintenant lancé lorsque l'utilisateur clique sur la règle pour sélectionner un SD lui disant qu'il a besoin de sélectionner le token avant d'utilisation
+  - Si un utilisateur possède plusieurs tokens de personnages ou de sbires et n'a aucun jeton sélectionné, lorsqu'il utilise la règle, un message s'affiche en dessous de la distance conseillant à l'utilisateur de sélectionner le jeton du SD qu'il souhaite voir.
+- Correction des utilisations de restoreOwnedItem pour être cohérentes avec backupOwnedItem en ce qu'il nettoie l'élément possédé qui a été créé.
+- Correction des cyberfauteuils qui ne remplaçaient pas les caractéristiques MOUV des utilisateurs comme ils le devraient. Merci Dingo!
+- #577 - Restore firemode of weapon after the macro completes to what it was before the macro was executed
 
 ## Version 0.86.1 | Date: 2023-02-05
 
