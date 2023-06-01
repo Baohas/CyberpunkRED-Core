@@ -204,6 +204,7 @@ Les munitions peuvent désormais modifier les dégâts des armes et le maximum d
 - Correction des cyberfauteuils qui ne remplaçaient pas les caractéristiques MOUV des utilisateurs comme ils le devraient. Merci Dingo!
 - #577 - Restauration du mode de tir de l'arme une fois que la macro est terminée à ce qu'elle était avant l'exécution de la macro
 - Auparavant, lors du déchargement de munitions que vous ne possédiez plus, la balle était toujours comptée dans l'arme mais disparaissait de l'UI. Cela peut causer des problèmes lorsque vous essayez d'utiliser cette arme car le type de balle est inconnu. De plus, lors du rechargement, seule la différence de balle par rapport à l'autre type de balle serait prise en compte au lieu de la quantité totale pour charger l'arme
+- Fix Combat Utility Belt custom status auto apply an remove handling
 
 ## Version 0.86.1 | Date: 2023-02-05
 
