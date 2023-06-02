@@ -76,10 +76,13 @@ const Installable = function Installable() {
     }
 
     const targetItem = actor.getOwnedItem(dialogData.selectedTarget);
-    await targetItem.installItems([this]);
 
-    if (installationType === "itemUpgrade") {
-      await targetItem.syncUpgrades();
+    if (targetItem) {
+      await targetItem.installItems([this]);
+
+      if (installationType === "itemUpgrade") {
+        await targetItem.syncUpgrades();
+      }
     }
   };
 

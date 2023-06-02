@@ -66,11 +66,10 @@ export default class CPRMacro {
       return;
     }
 
-    if (rollType === "damage") {
-      extraData.damageType = actor.getFlag(
-        game.system.id,
-        `firetype-${item._id}`
-      );
+    const savedFireType = actor.getFlag(game.system.id, `firetype-${item._id}`);
+
+    if (rollType === "damage" && savedFireType) {
+      extraData.damageType = savedFireType;
     }
 
     let cprRoll = item.createRoll(rollType, actor, extraData);
@@ -86,6 +85,17 @@ export default class CPRMacro {
     if (!extraData.skipPrompt) {
       const keepRolling = await cprRoll.handleRollDialog(event, actor, item);
       if (!keepRolling) {
+        if (savedFireType !== rollType) {
+          if (savedFireType) {
+            actor.setFlag(
+              game.system.id,
+              `firetype-${item._id}`,
+              savedFireType
+            );
+          } else {
+            actor.unsetFlag(game.system.id, `firetype-${item._id}`);
+          }
+        }
         return;
       }
     }
@@ -97,6 +107,13 @@ export default class CPRMacro {
 
     CPRChat.RenderRollCard(cprRoll);
 
+    if (savedFireType !== rollType) {
+      if (savedFireType) {
+        actor.setFlag(game.system.id, `firetype-${item._id}`, savedFireType);
+      } else {
+        actor.unsetFlag(game.system.id, `firetype-${item._id}`);
+      }
+    }
     // Need to figure out what we did here since this is gone??
     // actor.setPreviousRoll(cprRoll);
   }

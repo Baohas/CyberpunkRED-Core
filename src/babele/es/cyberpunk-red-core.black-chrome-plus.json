@@ -2,48 +2,48 @@
   "label": "Cromo Negro Plus",
   "entries": {
     "Arrow (Junk)": {
-      "name": "Arrow (Junk)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+      "name": "Flecha (Basura)",
+      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
     },
     "Big Dreem Rounds": {
       "name": "Rondas de Gran Dreem",
       "description": "<p>Munición personalizada para la Dreem Adolescente.</p>"
     },
     "Heavy Pistol (Junk)": {
-      "name": "Heavy Pistol (Junk)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+      "name": "Pistola Pesada (Basura)",
+      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
     },
     "Heavy Pistol (Small Game)": {
-      "name": "Heavy Pistol (Small Game)",
-      "description": "<p>Small game ammo; not great for people. Deals 2d6 less damage.</p>"
+      "name": "Pistola Pesada (Juguete)",
+      "description": "<p>Munición de juguete, no ideal para la gente. Inflige 2d6 menos de daño.</p>"
     },
     "Medium Pistol (Junk)": {
-      "name": "Medium Pistol (Junk)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+      "name": "Pistola Media (Basura)",
+      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
     },
     "Medium Pistol (Small Game)": {
-      "name": "Medium Pistol (Small Game)",
-      "description": "<p>Small game ammo; not great for people. Deals 2d6 less damage.</p>"
+      "name": "Pistola Media (Juguete)",
+      "description": "<p>Munición de juguete, no ideal para la gente. Inflige 2d6 menos de daño.</p>"
     },
     "Rifle (Junk)": {
-      "name": "Rifle (Junk)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+      "name": "Rifle (Basura)",
+      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
     },
     "Rifle (Small Game)": {
-      "name": "Rifle (Small Game)",
-      "description": "<p>Small game ammo; not great for people. Deals 2d6 less damage.</p>"
+      "name": "Rifle (Juguete)",
+      "description": "<p>Munición de juguete, no ideal para la gente. Inflige 2d6 menos de daño.</p>"
     },
     "Shotgun Slug (Junk)": {
-      "name": "Shotgun Slug (Junk)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+      "name": "Posta de Escopeta (Basura)",
+      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
     },
     "Very Heavy Pistol (Junk)": {
-      "name": "Very Heavy Pistol (Junk)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+      "name": "Pistola Muy Pesada (Basura)",
+      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
     },
     "Very Heavy Pistol (Small Game)": {
-      "name": "Very Heavy Pistol (Small Game)",
-      "description": "<p>Small game ammo; not great for people. Deals 2d6 less damage.</p>"
+      "name": "Pistola Muy Pesada (Juguete)",
+      "description": "<p>Munición de juguete, no ideal para la gente. Inflige 2d6 menos de daño.</p>"
     },
     "Scavenged Armor": {
       "name": "Armadura de Carroñero",
@@ -74,8 +74,8 @@
       "description": "<p>Frágil Granada Incendiaria. Enciende a un objetivo en un fuego mortal (ver CP:R p.180)</p>"
     },
     "SportMaster": {
-      "name": "SportMaster",
-      "description": "<p>A sport rifle, for fun, not people. Can only load Small Game Ammunition and is incapable of Autofire and Suppressive Fire.</p>"
+      "name": "Maestro del Deporte",
+      "description": "<p>Un rifle deportivo, para la diversión, no para personas. Solo puede cargar una pequeña munición de juguete y es incapaz de autofuego y fuego supresivo.</p>"
     },
     "SurvivalMaster": {
       "name": "Maestro de Supervivencia",

@@ -324,6 +324,7 @@ export default class CPRActor extends Actor {
       for (const itemId of ids) {
         const item = this.getOwnedItem(itemId);
         if (
+          item &&
           containerTypes.includes(item.type) &&
           item.system.installedItems.list.length > 0
         ) {
@@ -338,6 +339,7 @@ export default class CPRActor extends Actor {
         }
 
         if (
+          item &&
           installableTypes.includes(item.type) &&
           item.system.isInstalled &&
           item.system.installedIn !== ""

@@ -49,7 +49,7 @@
     {{~#if (cprCompare (cprCompare (cprGetMookCyberwareLength actor) ">" 0) "&&" (cprCompare (cprCompare actor.itemTypes.ammo.length ">" 0) "||" (cprCompare actor.itemTypes.gear.length ">" 0)))}},{{~/if}}
     <!-- Display specific item types in the Gear section -->
     {{~#each actor.itemTypes as |items itemType|}}
-      {{~#if (cprListContains "ammo,clothing,cyberdeck,drug,gear" itemType)}}
+      {{~#if (cprListContains "ammo,clothing,cyberdeck,drug,gear,itemUpgrade" itemType)}}
         {{~#each (cprSort items "name") as |item i|}}
           {{~#unless @first}},{{~/unless}}
             <a class="name item deletable changeable item-edit"
@@ -72,9 +72,12 @@
           {{#if (cprHasTemplate item.type "stackable") }}
             (x{{item.system.amount}})
           {{~/if}}
+          {{~#if (cprCompare item.type "===" "itemUpgrade")}}
+            {{~> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-install-item-glyph.hbs"}}
+          {{~/if}}
         {{~/each}}
         {{~#if (cprCompare items.length ">" 0)}}
-          {{~#unless (cprCompare itemType "===" "gear")}},{{~/unless}}
+          {{~#unless (cprCompare itemType "===" "itemUpgrade")}},{{~/unless}}
         {{~/if}}
       {{~/if}}
     {{~/each}}

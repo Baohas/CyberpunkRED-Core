@@ -91,11 +91,17 @@ const Loadable = function Loadable() {
   this._loadItem = async function _loadItem(reloadAmmoId) {
     LOGGER.trace("_loadItem | Loadable | Called.");
     let selectedAmmoId = reloadAmmoId;
-    const loadUpdate = [];
-    if (this.actor) {
-      if (selectedAmmoId && !this.actor.getOwnedItem(selectedAmmoId)) {
+    if (reloadAmmoId) {
+      const reloadAmmo = this.actor.getOwnedItem(reloadAmmoId);
+      if (!(reloadAmmo && reloadAmmo.system.amount !== 0)) {
         selectedAmmoId = "";
       }
+    }
+    const loadedAmmo = this.system.magazine.ammoData?.uuid
+      ? this.actor.getOwnedItem(this.system.magazine.ammoData.uuid)
+      : null;
+    const loadUpdate = [];
+    if (this.actor) {
       if (!selectedAmmoId) {
         const ownedAmmo = this.actor.itemTypes.ammo;
         const validAmmo = [];
@@ -105,10 +111,22 @@ const Loadable = function Loadable() {
             this.getRollData().ammoVariety.includes(ammo.getRollData().variety)
           ) {
             validAmmo.push(ammo);
+            if (!selectedAmmoId) {
+              selectedAmmoId = ammo.uuid;
+            }
           }
         });
 
-        if (validAmmo.length === 0) {
+        if (loadedAmmo) {
+          selectedAmmoId = loadedAmmo.system.amount > 0 ? loadedAmmo.uuid : "";
+        } else if (
+          this.system.magazine.ammoData?.uuid &&
+          this.system.magazine.ammoData.uuid !== ""
+        ) {
+          selectedAmmoId = "";
+        } else if (validAmmo.length > 0) {
+          selectedAmmoId = validAmmo[0].uuid;
+        } else {
           SystemUtils.DisplayMessage(
             "warn",
             SystemUtils.Localize("CPR.messages.noValidAmmo")
@@ -119,9 +137,7 @@ const Loadable = function Loadable() {
         let dialogData = {
           weapon: this,
           ammoList: validAmmo,
-          selectedAmmo: this.system.magazine.ammoData?.uuid
-            ? this.system.magazine.ammoData?.uuid
-            : "",
+          selectedAmmo: selectedAmmoId,
           returnType: "string",
         };
 
@@ -137,8 +153,10 @@ const Loadable = function Loadable() {
         selectedAmmoId = dialogData.selectedAmmo;
       }
 
-      const loadedAmmo = this.system.magazine.ammoData.uuid;
-      if (loadedAmmo !== "" && loadedAmmo !== selectedAmmoId) {
+      if (
+        this.system.magazine.ammoData?.uuid !== selectedAmmoId &&
+        this.system.magazine.ammoData?.uuid !== ""
+      ) {
         await this._unloadItem();
       }
 
@@ -359,6 +377,7 @@ const Loadable = function Loadable() {
       }
     }
     magazineData.ammoData = ammoData;
+    magazineData.value = 0;
     return !actor
       ? this.update({ "system.magazine": magazineData })
       : actor.updateEmbeddedDocuments("Item", [
