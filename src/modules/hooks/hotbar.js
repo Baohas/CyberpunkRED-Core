@@ -30,7 +30,7 @@ const hotbarHooks = () => {
       name: document.name,
       type: "script",
       img: document.img,
-      command: "",
+      command: `Hotbar.toggleDocumentSheet("${document.uuid}")`,
     };
     let macro = null;
     let command = `Hotbar.toggleDocumentSheet("${document.uuid}")`;
@@ -43,7 +43,7 @@ const hotbarHooks = () => {
             !(document.type === "cyberware" && document.system.isWeapon) &&
             document.type !== "skill"
           ) {
-            return true;
+            break;
           }
           command =
             "// Set this to true if you want to skip the roll verify prompt.\n";
@@ -94,40 +94,28 @@ const hotbarHooks = () => {
           } else if (document.type === "skill") {
             command += `game.cpr.macro.rollItemMacro("${itemName}", {skipPrompt});`;
           }
-          macro = game.macros.contents.find(
-            (m) => m.name === document.name && m.command === command
-          );
-          const img =
+          macroObject.command = command;
+
+          macroObject.img =
             document.type === "skill"
               ? `systems/${game.system.id}/icons/chip-skill.png`
               : document.img;
-          if (!macro) {
-            macroObject.name = document.name;
-            macroObject.img = img;
-            macroObject.command = command;
-          }
         }
         break;
       case "JournalEntry":
-        macro = game.macros.contents.find(
-          (m) => m.name === document.name && m.command === command
-        );
-        if (!macro) {
-          macroObject.img = `systems/${game.system.id}/icons/memory-card.svg`;
-          macroObject.command = command;
-        }
+        macroObject.img = `systems/${game.system.id}/icons/memory-card.svg`;
         break;
+      case "Macro":
+        return true;
       default:
-        macro = game.macros.contents.find(
-          (m) => m.name === document.name && m.command === command
-        );
-        if (!macro) {
-          macroObject.command = command;
-        }
         break;
     }
 
-    if (macroObject.name !== "") {
+    macro = game.macros.contents.find(
+      (m) => m.name === document.name && m.command === command
+    );
+
+    if (!macro) {
       Macro.create(macroObject, { displaySheet: false }).then((newMacro) => {
         game.user.assignHotbarMacro(newMacro, slot);
       });
