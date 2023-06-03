@@ -201,6 +201,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
   - If a user owns multiple tokens of either Character or Mook, a warning message is now thrown when the user clicks the ruler to select a DV telling them they need to select the token before use
   - If a user owns multiple tokens of either Character or Mook and has no tokens selected, when they use the ruler, a message is displayed below the distance advising the user to select the token of the DV they want to see.
 - Fixed the usages of restoreOwnedItem to be consistent with backupOwnedItem in that it cleans up the owned item that was created.
+- #671 - BlackICE tokens were getting corrupted when they were first created because the calls to update the token were passing bad data.  This has been corrected.
 - Fixed Cyberchairs not overriding a users MOVE stat as they should. Thanks Dingo!
 - #577 - Restore firemode of weapon after the macro completes to what it was before the macro was executed
 - Previously, when unloading ammo that you no longer own the item for, it would leave the bullet count in the weapon but clear the UUID of the ammo in the weapon. This could cause problems when attempting to use that weapon as the bullet type is unknown. Additionally, when reloading, it would only take the bullet difference from the other bullet type instead of the full amount to load the weapon
