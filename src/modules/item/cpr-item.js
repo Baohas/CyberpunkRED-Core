@@ -82,6 +82,32 @@ export default class CPRItem extends Item {
   }
 
   /**
+   * Perform follow-up operations when a set of Documents of this type are updated.
+   * This is where side effects of updates should be implemented.
+   * Post-update side effects are performed only for the client which requested the operation.
+   *
+   * If item is inside an Actor - we validate and update Actor's ActiveEffects.
+   *
+   * @param {Document[]} documents                    The Document instances which were updated
+   * @param {DocumentModificationContext} context     The context for the modification operation
+   * @protected
+   */
+  static async _onUpdateDocuments(updated, context) {
+    LOGGER.trace("_onUpdateDocuments | CPRItem | Called.");
+
+    await super._onUpdateDocuments(updated, context);
+
+    const parent = context?.parent;
+    if (parent.effects) {
+      await Promise.all(
+        parent.effects
+          .filter((e) => updated.includes(e.getEffectParent()))
+          .map(async (e) => e.updateSuppression())
+      );
+    }
+  }
+
+  /**
    * Load all mixins configured in the Item metadata.
    * TODO: enum this
    *

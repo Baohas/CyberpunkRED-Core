@@ -203,19 +203,6 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * The Active Effects do not have access to their parent at preparation time so we wait until
-   * this stage to determine whether they are suppressed or not. Taken from dnd5e character code.
-   *
-   * @override
-   * @returns nothing, just applies effects to the actor
-   */
-  applyActiveEffects() {
-    LOGGER.trace("applyActiveEffects | CPRActor | Called.");
-    this.effects.forEach((e) => e.determineSuppression());
-    return super.applyActiveEffects();
-  }
-
-  /**
    * The three reasons we extend this code are:
    *  - handle an edge case for migrations.
    *  - handle creating items on unlinked tokens
