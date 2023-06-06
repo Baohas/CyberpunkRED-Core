@@ -3,7 +3,7 @@
   "entries": {
     "M-02 Rounds": {
       "name": "Rondas M-02",
-      "description": "<p>Special Armor-Piercing rounds for use only in the Sternmeyer M-02 Heavy Rifle. Comes in a drum of 80.</p>"
+      "description": "<p>Rondas de munición perforante de armadura especiales solo para uso en el Rifle Pesado de Sternmeyer M-02. Viene en un tambor de 80.</p>"
     },
     "Paintball (Biotoxin)": {
       "name": "Bola de pintura (Biotoxina)",
@@ -35,7 +35,7 @@
     },
     "M-02 Heavy Rifle": {
       "name": "Rifle Pesado M-02",
-      "description": "<p>This weapon fires it's own custom ammunition, priced at 500eb (Expensive) for 80 rounds of Armor-Piercing ammo.</p>"
+      "description": "<p>Esta arma dispara su propia munición personalizada, con un precio de 500ed (Caro) por 80 rondas de munición Perforadora de armadura.</p>"
     },
     "Nomad Air Cannon": {
       "name": "Cañón aéreo nomade",
@@ -47,7 +47,7 @@
     },
     "SDF-45": {
       "name": "SDF-45",
-      "description": "<p>This rocket launcher can only load Armor-Piercing rockets, and has a maximum range of 400 m/yds. When fired one rocket at a time, the GM chooses where they rockets land. When fired two rockets at a time, the GM chooses where the rockets land but this time up to 50 m/yds away from the target, and with each rocket more than 10 m/yds from each other.</p>"
+      "description": "<p>Este lanzador de cohetes solo puede cargar cohetes perforantes de armadura y tiene un rango máximo de 400 m/yds. Cuando se dispara un cohete a la vez, el DJ elige dónde aterrizan. Cuando se disparan dos cohetes a la vez, el DJ elige dónde aterrizan los cohetes, pero esta vez hasta 50 m/yd lejos del objetivo, y con cada cohete de más de 10 m/yds unos de otros.</p>"
     },
     "TearJerker": {
       "name": "Bromista-Llorón",
