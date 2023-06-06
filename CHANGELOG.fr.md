@@ -201,11 +201,11 @@ Les munitions peuvent désormais modifier les dégâts des armes et le maximum d
   - Si un utilisateur possède plusieurs tokens de personnages ou de sbires, un message d'avertissement est maintenant lancé lorsque l'utilisateur clique sur la règle pour sélectionner un SD lui disant qu'il a besoin de sélectionner le token avant d'utilisation
   - Si un utilisateur possède plusieurs tokens de personnages ou de sbires et n'a aucun jeton sélectionné, lorsqu'il utilise la règle, un message s'affiche en dessous de la distance conseillant à l'utilisateur de sélectionner le jeton du SD qu'il souhaite voir.
 - Correction des utilisations de restoreOwnedItem pour être cohérentes avec backupOwnedItem en ce qu'il nettoie l'élément possédé qui a été créé.
-- #671 - BlackICE tokens were getting corrupted when they were first created because the calls to update the token were passing bad data.  This has been corrected.
+- #671 - Les tokens GLACE noirs étaient corrompus quand ils ont été créés au début parce que les appels pour mettre à jour le token passaient de mauvaises données.  Cela a été corrigé.
 - Correction des cyberfauteuils qui ne remplaçaient pas les caractéristiques MOUV des utilisateurs comme ils le devraient. Merci Dingo!
 - #577 - Restauration du mode de tir de l'arme une fois que la macro est terminée à ce qu'elle était avant l'exécution de la macro
 - Auparavant, lors du déchargement de munitions que vous ne possédiez plus, la balle était toujours comptée dans l'arme mais disparaissait de l'UI. Cela peut causer des problèmes lorsque vous essayez d'utiliser cette arme car le type de balle est inconnu. De plus, lors du rechargement, seule la différence de balle par rapport à l'autre type de balle serait prise en compte au lieu de la quantité totale pour charger l'arme
-- Fix Combat Utility Belt custom status auto apply an remove handling
+- Correction du statut personnalisé de Combat Utility Belt pour l'application automatique d'une gestion de suppression
 
 ## Version 0.86.1 | Date: 2023-02-05
 
