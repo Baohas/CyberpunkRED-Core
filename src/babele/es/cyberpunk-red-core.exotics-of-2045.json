@@ -14,12 +14,12 @@
       "description": "<p>Arma Cuerpo a Cuerpo Pesada implantada. Requiere Interfaz Neuronal.</p>\n<p>Consulte la descripción completa de la página 72 de Interface Red vol. 2.</p>"
     },
     "Extra-Jointed Cyberarm Upgrade": {
-      "name": "Extra-Jointed Cyberarm Upgrade",
-      "description": "<p>Enchances cyberarm articulation. +2 Contortionist. (See Black Chrome pg. 18 for more details)</p>"
+      "name": "Montura de Ciberbrazo Extra-Articulada",
+      "description": "<p>Mejora de articulación del ciberbrazo. +2 Contorsionista. (Ver Cromo Negro 18 para más detalles)</p>"
     },
     "Extra-Jointed Cyberleg Upgrade": {
-      "name": "Extra-Jointed Cyberleg Upgrade",
-      "description": "<p>Enchances cyberleg articulation. +2 Contortionist. (See Black Chrome pg. 18 for more details)</p>"
+      "name": "Montura de Ciberpierna Extra-Articulada",
+      "description": "<p>Mejora de articulación de la ciberpierna. +2 Contorsionista. (Ver Cromo Negro 18 para más detalles)</p>"
     },
     "Firebreather": {
       "name": "Aliento Ígneo",
@@ -27,15 +27,15 @@
     },
     "Heuristic Health Monitor": {
       "name": "Seguidor Heurístico de la Salud",
-      "description": "<p>Requires biomonitor. Can know HP at a glance. (See Black Chrome pg. 19 for more details)</p>"
+      "description": "<p>Requiere Biomonitor. Puede conocer PV de un vistazo. (Vea el Cromo Negro 19 para más detalles)</p>"
     },
     "NeuTongue": {
       "name": "NeuTongue",
       "description": "<p>Simulates flavor sensations. Use a linked Agent to customize flavor profiles. Can be deactivated without an Action. No sense of taste when deactivated.</p>\n<p>Replaces Meat tongue.</p>"
     },
     "Reflex Co-Processor": {
-      "name": "Reflex Co-Processor",
-      "description": "<p>Neuralware. Negates REF requirement to dodge bullets. (See Black Chrome pg. 21 for more details)</p>"
+      "name": "Co-Procesador Reflex",
+      "description": "<p>Implante Neuronal. Niega el requisito de REF para esquivar balas. (Ver cromo negro pg. 21 para más detalles)</p>"
     }
   }
 }
