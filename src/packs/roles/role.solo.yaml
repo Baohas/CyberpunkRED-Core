@@ -3,7 +3,7 @@ img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Solo
 system:
   abilities:
-    - bonusRatio: 1
+    - bonusRatio: 4
       bonuses: []
       description: ""
       hasRoll: false
@@ -15,7 +15,8 @@ system:
       rank: 0
       skill: "--"
       stat: "--"
-      universalBonuses: []
+      universalBonuses:
+        - fumbleRecovery
     - bonusRatio: 1
       bonuses: []
       description: ""

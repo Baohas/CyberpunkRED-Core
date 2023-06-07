@@ -195,7 +195,7 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["initiative", "attack", "damage", "damageReduction"]
+            "enum": ["initiative", "attack", "damage", "damageReduction", "fumbleRecovery"]
           }
         }
       },
