@@ -380,11 +380,11 @@ export default class CPRCyberdeckItem extends CPRItem {
     // If interfaceAbiltiy is Zap, we will handle roll either as a Damage Roll or an Attack Roll.
     // If interfaceAbility is anything else, we will handle roll as as an Interface Roll.
     if (rollInfo.executionType === "damage") {
-      cprRoll = new CPRRolls.CPRDamageRoll(
-        SystemUtils.Localize("CPR.global.role.netrunner.interfaceAbility.zap"),
-        "1d6",
-        "program"
+      const zap = SystemUtils.Localize(
+        "CPR.global.role.netrunner.interfaceAbility.zap"
       );
+      cprRoll = new CPRRolls.CPRDamageRoll(zap, "1d6", "program");
+      cprRoll.setNetCombat(zap);
     } else {
       if (interfaceAbility === "zap") rollType = "attack";
       cprRoll = new CPRRolls.CPRInterfaceRoll(rollType, roleName, roleValue);
