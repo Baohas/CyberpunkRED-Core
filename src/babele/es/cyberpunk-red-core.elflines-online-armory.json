@@ -11,11 +11,11 @@
     },
     "Chainmail Armor (Body)": {
       "name": "Armadura de cota de mallas (Cuerpo)",
-      "description": "<p>Armor made up of innumerable metal rings. -2 to REF, DEX, and MOVE.</p>"
+      "description": "<p>Armadura formada por innumerables anillos de metal. -2 a REF, DES y MOV.</p>"
     },
     "Chainmail Armor (Head)": {
       "name": "Armadura de cota de mallas (Cabeza)",
-      "description": "<p>Armor made up of innumerable metal rings for your head. -2 to REF, DEX, and MOVE.</p>"
+      "description": "<p>Armadura formada por innumerables anillos de metal para tu cabeza. -2 a REF, DES y MOV.</p>"
     },
     "Full Plate Armor (Body)": {
       "name": "Armadura de placas completa (Cuerpo)",
@@ -39,15 +39,15 @@
     },
     "Studded Leather Armor (Body)": {
       "name": "Armadura de cuero tachonado (Cuerpo)",
-      "description": "<p>Standard Studded Leather Armor. No armor penalty.</p>"
+      "description": "<p>Armadura Estándar de Cuero Tachonado. Sin penalización de armadura.</p>"
     },
     "Studded Leather Armor (Head)": {
       "name": "Armadura de cuero tachonado (Cabeza)",
-      "description": "<p>Standard Studded Leather Armor for your head. No armor penalty.</p>"
+      "description": "<p>Armadura Estándar de Cuero Tachonado para tu cabeza. Sin penalización de armadura.</p>"
     },
     "Sacred Herbs": {
       "name": "Hierbas sagradas",
-      "description": "<p>Ingesting Sacred Herbs immediately heals HP equal to the user's BODY plus their WILL.</p>"
+      "description": "<p>Ingerir Hierbas Sagradas cura inmediatamente a PV igual al TCO del usuario más su VOL.</p>"
     },
     "Vial of Poison": {
       "name": "Frasco de veneno",
@@ -59,19 +59,19 @@
     },
     "Dagger": {
       "name": "Daga",
-      "description": "<p>A knife fit for a hunter.</p>"
+      "description": "<p>Un cuchillo apto para un cazador.</p>"
     },
     "Greataxe": {
       "name": "Hacha Grande",
-      "description": "<p>A wooden pole with a curved blade on each side. Favoured by raid parties for close engagements. Requires 2 hands to wield even by a wielder with Body 8 or higher.</p>"
+      "description": "<p>Un poste de madera con una hoja curva en cada lado. Favorecido por grupos de incursión para enfrentamientos cercanos. Requiere 2 manos para manejar incluso por un portador con TCO 8 o superior.</p>"
     },
     "Longsword": {
       "name": "Espada larga",
-      "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting. 2 ROF if wielding two longswords.</p>"
+      "description": "<p>Un arma afilada con empuñadura. Específicamente diseñado para cortar o empujar. 2 CdT si empuñan dos espadas largas.</p>"
     },
     "Shortsword": {
       "name": "Espada corta",
-      "description": "<p>A short bladed, hilted weapon. Specifically designed for cutting or thrusting.</p>"
+      "description": "<p>Arma de filo corta empuñada. Específicamente diseñada para cortar o pinchar. </p>"
     }
   }
 }
