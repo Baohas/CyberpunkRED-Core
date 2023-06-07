@@ -276,6 +276,7 @@ export default class CPRCyberdeckItem extends CPRItem {
         cprRoll.rollCardExtraArgs.program = program;
         cprRoll.rollCardExtraArgs.cyberdeck = this;
         cprRoll.ability = "attack";
+        cprRoll.setProgramRollCard();
         break;
       }
       case "def": {

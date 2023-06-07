@@ -382,7 +382,7 @@ export class CPRProgramStatRoll extends CPRStatRoll {
    * @param {String} rollTitle - a title for the roll, shown in the roll card (chat message)
    */
   setNetCombat(rollTitle) {
-    LOGGER.trace("setNetCombat | CPRStatRoll | Called.");
+    LOGGER.trace("setNetCombat | CPRProgramStatRoll | Called.");
     this.rollTitle = rollTitle;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-stat-rollcard.hbs`;
   }
@@ -696,6 +696,11 @@ export class CPRInterfaceRoll extends CPRRoleRoll {
 
     this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-net-roll-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-cyberdeck-rollcard.hbs`;
+  }
+
+  setProgramRollCard() {
+    LOGGER.trace("setProgramRollCard | CPRInterfaceRoll | Called.");
+    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-attack-rollcard.hbs`;
   }
 
   _computeBase() {
