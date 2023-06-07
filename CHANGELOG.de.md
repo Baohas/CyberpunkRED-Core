@@ -6,58 +6,59 @@
 
 ### Aktion erforderlich
 
+#### New Discord
+
+We have moved Discord server! If you need any help with this release, want to help with future releases, or just want to join our community we can now be found in our new [Discord server](https://discord.gg/TsvcZUEtbJ). We hope to see you there!
+
 #### Munition ändert Waffenschaden
 
-Ammo can now modify weapon damage / autofire maximums. For example, shotgun shells automatically roll 3d6 damage instead of the shotgun's base damage. We made a best attempt at migrating relevant items on actors, but if you've changed the name of compendia items or have homebrew items with this functionality, those items will need to be updated manually.
+Munition kann jetzt den Waffenschaden / das Maximum des automatischen Feuerns ändern. Zum Beispiel würfeln Schrotflintenpatronen automatisch 3d6 Schaden anstatt des Grundschadens der Schrotflinte. Wir haben den besten Versuch unternommen, relevante Gegenstände auf Akteuren zu migrieren, aber wenn du den Namen von Kompendien-Elementen geändert hast oder homebrew Elemente mit dieser Funktion hast, müssen diese Elemente manuell aktualisiert werden.
 
-#### Situational Modifiers
+#### Situationsbedingte Modifikatoren
 
-Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. See New Features -> Roll Modifiers section of Changelog for more details.
+Effekte mit situationsbedingten Modifikatoren haben die entsprechenden Einstellungen für alle Kompendiumsgegenstände erhalten, aber müssen manuell für alle Gegenstände, die bereits auf Akteuren vorhanden sind, aktualisiert werden. Siehe Neue Funktionen -> Dem Wurfmodifikatoren-Abschnitt des Änderungsverlaufs für weitere Details.
 
-#### Electronic Items
+#### Elektronische Gegenstände
 
-We have migrated all Gear items provided by our Compendia to support `isElectronic` but you will need to update any Homebrew/Custom items manually if you want them to support this new data point.
+We have migrated all Gear items provided by our Compendia to support `isElectronic` but you will need to update any homebrew items manually if you want them to support this new data point.
 
-#### CSS Themes / Rewrite
+#### CSS-Designs / Überarbeitungen
 
-Due to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
+Aufgrund einer großen Anzahl von Änderungen an der Art und Weise, wie wir CSS verwenden und dass wir eine Reihe von Foundry CSS Standardeinstellungen überschreiben müssen, können alle Module, die auch Foundry CSS Standardeinstellungen berühren, inkompatibel sein oder Konflikte mit unseren CSS-Änderungen haben.
 
-For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme Ernies needs to be configured to use Dark Mode as well.
+For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme then Ernies needs to be configured to use Dark Mode as well.
 
-### New Features
+### Neue Funktionen
 
-#### Improved Dialogues
+#### Verbesserte Dialoge
 
-- All dialogues have been given new styling and have been converted to a new system called CPRDialog.
-- This will allow for more responsive dialogues with complex logic. Some of this is already implemented in Roll Dialogues (see next bullet point).
+- All dialogues have been given new styling and have been converted to a new system called CPRDialog
+- This will allow for more responsive dialogues with complex logic, the first use of which is in new roll dialogues:
+  - The UI for roll dialogues has been improved and brought more in-line with the style of our system
+  - Dialogues are now responsive sheets and can change depending on inputs
+  - No more detective work: A tool tip (both in dialogues and on roll cards) displays where every bonus/penalty on your roll comes from
+  - Toggle situational modifiers from active effects, upgrades, and roles right from the dialog
+  - Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu
+  - Add any additional modifiers to the roll as needed
 
-#### Improved Roll Dialogues
+#### Würfel-Modifikatoren
 
-- The UI for roll dialogues has been improved and brought more in-line with the style of our system.
-- Dialogues are now responsive sheets and can change depending on inputs.
-- No more detective work: A tool tip (both in dialogues and on roll cards) displays where every bonus/penalty on your roll comes from.
-- Toggle situational modifiers from active effects, upgrades, and roles right from the dialog.
-- Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu.
-- Add any additional modifiers to the roll as needed.
+- Neuer aktive Effekte Schlüsselbegriff: Alle Aktionen - Ändert alle Aktionen mit einem einzigen aktiven Effekt. Zu finden in der Kategorie 'Sonstiges' im Konfigurationsfenster der aktiven Effekte.
+- Jeder Modifikator auf einem Effekt kann als situationsbedingt eingestellt werden. Situationsbedingte Modifikatoren sind solche, die nur in bestimmten Situationen gelten. Situationsbedingte Modifikatoren können auch standardmäßig eingeschaltet werden.
+  - Beispielsweise fügt die TeleOptics Cyberware bestimmten Angriffen einen Modifikator von +1 hinzu, wenn das Ziel weiter als 51 m entfernt ist. Da wir nicht wollen, dass dieser Bonus die ganze Zeit gilt, handelt es sich um einen situationsbedingten Modifikator. Auf diese Weise können wir diesen mit einem Klick im Würfeldialog anwenden, nur wenn nötig. Wenn Ihr Charakter ein Scharfschütze ist und fast immer den TeleOptik-Bonus verwendet, kann man auch den situationsbedingten Modifikator auf standardmäßig an umschalten. Auf diese Weise wird der Modifikator standardmäßig angewendet, aber kann ausgeschaltet werden, wenn der Charakter sich in zu sehr nähert.
+- Modifiers to rolls from Role Abilities also have Situational (and On By Default) options
+- Modifiers to rolls from item Upgrades also have Situational (and On By Default) options
+  - Note: effects with situational modifiers have been given the appropriate settings on all compendium items but you will have to manually update them on items that already exist on actors
+- Known Issue:
+  - Active Effects on Stats behave differently than all others. Aus diesem Grund können Modifikatoren von Statistiken derzeit nicht in situationsbedingte Modifikatoren umgewandelt werden. Dies wird in einer der kommenden Versionen behoben.
 
-#### Roll Modifiers
+#### CSS-Designs
 
-- New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
-- Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
-  - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogues with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
-- Modifiers to rolls from Role Abilities also have Situational (and On By Default) options.
-- Modifiers to rolls from item Upgrades also have Situational (and On By Default) options.
-  - NOTE: Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. Sorry!
-- Known Issues / Future Work:
-  - It is a known issue that Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
+Wir haben die Funktionalität für systemspezifische Designs hinzugefügt. Dies erlaubt es uns, ein paar Standard-Designs (dunkler Modus!) zur Verfügung zu stellen. Dies kann unter `Einstellungen > Cyberpunk RED - CORE` konfiguriert werden.
 
-#### CSS Themes
+Wenn du daran interessiert bist ein eigenes CSS Design für das System zu erstellen, schaue die die [CSS-Designs](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/CSS-Themes) Seite an, die den Prozess detailliert beschreibt.
 
-We have added the functionality for system specific themes. This allows us to ship a few default themes (dark mode!). You can configure this in the `Settings > Cyberpunk RED - CORE` section.
-
-If you are interested in making a theme for the system check out the [CSS Themes](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/CSS-Themes) wiki page which details the process.
-
-#### Compendia
+#### Kompendia
 
 - Added The 12 Days of Cybermas with help from Miklos
 - Added Hornet’s Pharmacy with help from Miklos
@@ -82,19 +83,19 @@ If you are interested in making a theme for the system check out the [CSS Themes
 
 #### Other New Features
 
-- Add check for `core.photosensitivityMode` when rendering pause animation
-- Add a `isElectronic` data point to Gear items
-  - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (EG: A macro to select which items to disable with an EMP)
-- Add `Get EMP'd Items` macro
+- Added a check for `core.photosensitivityMode` when rendering pause animation
+- Added a `isElectronic` data point to Gear items
+  - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (e.g. a macro to select which items to disable with an EMP)
+- Added `Get EMP'd Items` macro
   - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (without shielding), carried (electronic) Gear items, or Cyberdecks and outputs the results to chat
-- Add a `brand` field to physical items
+- Added a `brand` field to physical items
   - All compendia provided by the system have been migrated
   - We so not provide any migrations for in world items as there are to many edge cases to reliably do this
 - Added many many new icons for the new Compendia
-- You can now pass an ablation modifier via the /red command.
-  - Example: `/red 6d6a2` will generate a 6d6 damage roll as it always did, but when the damage is applied to tokens, the armor will be ablated by 2
-  - Reminder Note: If using any roll modifiers and the card description modifier (#), the card description modifier must be the last one used on the line. This has always been the case, just calling it out here as this now adds an additional modifier.
-- Upgrade items can now have ActiveEffects added to them and activated when the item they are installed into is equipped.
+- You can now pass an ablation modifier via the /red command
+  - Example: `/red 6d6a2` will generate a 6d6 damage roll as it always did, but when the damage is applied to tokens the armor will be ablated by 2
+  - Reminder: if using any roll modifiers and the card description modifier (#), the card description modifier must be the last one used on the line. This has always been the case, just calling it out here as this now adds an additional modifier.
+- Upgrade items can now have ActiveEffects added to them and activated when the item they are installed into is equipped
 
 ### Changes
 
@@ -111,7 +112,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
     - Move Eurobucks from Gear
     - Move Reputation from Lifepath tab
       - Move Facedown roll from Fight tab to Reputation section
-    - Move Sheet Search/Filter from right pane no mans land
+    - Move Sheet Search/Filter from right pane no man's land
       - This removes the System Option and is displayed for all users
       - Enable automatic searching when typing
     - Remove the HP/Humanity Calculators
@@ -146,7 +147,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 
 #### Munition ändert Waffenschaden
 
-Ammo can now modify weapon damage / autofire maximums. This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo).
+Munition kann jetzt den Waffenschaden / das Maximum des automatischen Feuerns ändern. This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo).
 
 #### Other Changes
 
@@ -156,13 +157,13 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 - `source` field for items has been split into 2 separate Fields
   - `source.book`
   - `source.page`
-- Updated compendia icons for Armor
+- Updated compendia icons for armor
 - Reordered system systems
 - Adjusted the wording of existing Elflines items to better fit their function
-- Update default icons for Black ICE and Demons
-- Contaiers configured as shops default to buying all at 100%
+- Updated default icons for Black ICE and Demons
+- Containers configured as shops now default to buying all at 100%
 - Removed duplicated suffixes on ammo selection
-- Clicking reload when you are out of an ammo type will bring up the switch ammo dialog
+- Clicking reload when you are out of an ammo type will bring up the switch ammo dialogue
 
 ### Bug Fixes
 
@@ -174,38 +175,38 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 - Dragging document links to item descriptions links the document correctly
 - #703 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
 - #700 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console
-- Fix missing tool-tip text in compendia settings
+- Fixed missing tool-tip text in compendia settings
 - Fixed incorrect rounding on the flamethrower and thrown weapon Icons
-- Remove duplicate Smart Lens Cyberware
+- Removed duplicate Smart Lens Cyberware
 - Fixed no DV table being set for the pop-up grenade launcher. Thanks diwako!
 - Fixed some incorrect wording for Cyberchairs. Thanks VinceKun!
 - Fixed bicycles not being able to accept upgrades
 - Fixed description of the Militech Crusher which confused shotgun shells and shotgun slugs
 - Fixed not being able to install the correct type of upgrades into a Smart Lens
-- Fixed #701 - Issue with Black ICE rolling the wrong damage.
-- Fix Smart Glasses / Smart Lenses not taking cybereye options
+- #701 - Fixed issue with Black ICE rolling the wrong damage
+- Fixed Smart Glasses / Smart Lenses not taking cybereye options
 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console
 - Fixed many places where 'NET' was incorrectly formatted as 'Net'
 - Fixed a couple issues around migration:
-  - #681 issue where uninstalling installed items was broken if the item was directly installed into the actor and not into a containerType item
+  - #681 - Issue where uninstalling installed items was broken if the item was directly installed into the actor and not into a `containerType` item
   - The code was calling createEmbeddedDocument on the TokenDocument however this version of Foundry expects the call to be on the associated actor
 - #741 - Fixed issue where selling stackable items to a vendor was broken
 - Migrating actors that are on scenes in a compendium would fail because the code did UUID lookups and Foundry won't let you do this synchronously. Added code so if the restoration is for a Compenium actor/item, the lookup is done with an async await.
 - Fixed an issue where if migration performs a backup/restore of an installed item, it would delete the original item which was causing the container item to report the incorrect amount of used slots.
 - Standardized the passed migration context to actor:\*EmbeddedDocuments to isMigrating
-- Fix HTML stripping of item descriptions on the Character sheet
+- Fixed HTML stripping of item descriptions on the Character sheet
 - #705 - When clicking the DV button on a sheet, users would sometimes feel like the Ruler was broken since it wouldn't show a DV if they did not have the token selected. Functionality has been enhanced:
   - Clicking the DV ruler will now highlight the current set DV table on the associated token
   - If the user owns only 1 token of either Character or Mook on a scene, it will default to using the DV settings of that token
   - If a user owns multiple tokens of either Character or Mook, a warning message is now thrown when the user clicks the ruler to select a DV telling them they need to select the token before use
-  - If a user owns multiple tokens of either Character or Mook and has no tokens selected, when they use the ruler, a message is displayed below the distance advising the user to select the token of the DV they want to see.
-- Fixed the usages of restoreOwnedItem to be consistent with backupOwnedItem in that it cleans up the owned item that was created.
-- #671 - BlackICE tokens were getting corrupted when they were first created because the calls to update the token were passing bad data.  This has been corrected.
+  - If a user owns multiple tokens of either Character or Mook and has no tokens selected, when they use the ruler, a message is displayed below the distance advising the user to select the token of the DV they want to see
+- Fixed the usages of restoreOwnedItem to be consistent with backupOwnedItem in that it cleans up the owned item that was created
+- #671 - Fixed BlackICE tokens getting corrupted when they were first created because the calls to update the token were passing bad data
 - Fixed Cyberchairs not overriding a users MOVE stat as they should. Thanks Dingo!
-- #577 - Restore firemode of weapon after the macro completes to what it was before the macro was executed
-- Previously, when unloading ammo that you no longer own the item for, it would leave the bullet count in the weapon but clear the UUID of the ammo in the weapon. This could cause problems when attempting to use that weapon as the bullet type is unknown. Additionally, when reloading, it would only take the bullet difference from the other bullet type instead of the full amount to load the weapon
-- Fix Combat Utility Belt custom status auto apply an remove handling
+- #577 - Restored firemode of weapon after a macro completes to what it was before the macro was executed
+- Previously, when unloading ammo that you no longer own the item for, it would leave the bullet count in the weapon but clear the UUID of the ammo in the weapon. This could cause problems when attempting to use that weapon as the bullet type is unknown. Additionally, when reloading, it would only take the bullet difference from the other bullet type instead of the full amount to load the weapon.
+- Fixed Combat Utility Belt custom status auto apply an remove handling
 
 ## Version 0.86.1 | Date: 2023-02-05
 
@@ -242,7 +243,7 @@ In testing the new system, it occurred to us that under the previous system, it 
 
 We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check the console to ensure you did not miss any important messages about your world. Additional details can be found [here](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/Release-Information/migrations)
 
-### New Features
+### Neue Funktionen
 
 - Universal Installation System replaces the back end code for installing Cyberware in Actors, Programs in Cyberdecks and Upgrades in other owned Items. This new system provides the following new features:
   - World Items (aka unowned items) can now be upgraded by World Upgrades to allow GMs to create pre-upgraded weapons, armors, etc
@@ -277,8 +278,8 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - Update the main system font to Jost for better readability
 - Prior to this release, selling an upgraded item to a vendor renamed the item, pre-pending the word `Upgraded` to the name. Items are no longer renamed and instead, `Upgraded` is displayed inline if the item is upgraded without changing the item name.
 - #448 - Add the ability to "quick fix" a critical injury - resolved for now by making them all Toggled
-- #611 - default to Body table when rolling critical injuries
-- #633 - uninstall of programs from fight tab is failing
+- #611 - Default to Body table when rolling critical injuries
+- #633 - Uninstall of programs from fight tab is failing
 - Resizing sheets is now handled by Foundry, removing our custom code to manage it
 - Updated the design of the character Effects tab
 - Updated the design of the Effect tab in the active effects sheet
@@ -322,7 +323,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.85.0 | Date: 2022-12-11
 
-### New Features
+### Neue Funktionen
 
 - Added 12 new guns from The 12 Days of Gunmas
 - Added 12 new guns and 1 new attachment from Woodchipper’s Garage
@@ -395,7 +396,7 @@ In this release we read Critical Injuries and DV Tables directly from the system
 
 If you are using modified Critical Injuries please check out [this](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/Items/Critical-Injuries#configuring-home-brew-injuries) Wiki article on how to use Homebrew Injuries. The same process can also be used with Homebrew DV Tables following this [Wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/DV-Tables#configuring-home-brew-dv-tables) article.
 
-### New Features
+### Neue Funktionen
 
 - Revamped automatic damage application:
   - Shields are taken into account
@@ -452,7 +453,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.83.0 | Date: 2022-10-02
 
-### New Features
+### Neue Funktionen
 
 - New UI for modifying Mook skills on the Mook sheet
 - Drugs can be used in the Mook sheet
@@ -479,7 +480,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.82.0 | Date: 2022-09-22
 
-### New Features
+### Neue Funktionen
 
 - Foundry V10 Compatibility
 - Spanish translation! Thank you ZRAAA78!
@@ -507,7 +508,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - 464 - Fix issue where containers corrupt eurobucks amount for non-stackable items
 
-### New Features
+### Neue Funktionen
 
 - Polish support available!
 
@@ -538,7 +539,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.0 | Date: 2022-07-31
 
-### New Features
+### Neue Funktionen
 
 - #225 - Active effects for Items
   - Active Effects are a Foundry feature that allow items to apply modifications to stats and skills of characters in the game. Active Effects can also be added to Characters arbitrarily without associating to an item.
@@ -652,7 +653,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.80.0 | Date: 2021-12-23
 
-### New Features
+### Neue Funktionen
 
 - Updated the system for Foundry v9 compatibility. No further updates will be provided to the 0.8.x release. [Please backup your data before attempting any major upgrade!](https://www.youtube.com/watch?v=OmbxMmqNNXU)
 - Added functionality to delete single ledger lines for the GM. Players are not able to do so.
@@ -702,7 +703,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.79.0 | Date: 2021-09-11
 
-### New Features
+### Neue Funktionen
 
 - Added support for automatic damage application on Characters and Mooks.
   - The damage chat card of weapon attacks now has an additional button to apply the damage to the selected tokens.
@@ -753,7 +754,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.78.0 | Date: 2021-08-03
 
-### New Features
+### Neue Funktionen
 
 - Cyberware Items which act as weapons can now be configured as such
   - Core Rule Book Examples: Popup Weapons, Big Knucks, Wolvers, etc
@@ -838,7 +839,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Migrated the source code to work with foundry version 0.8.X
 - Rewrote the migration code support new features from foundry 0.8.X
 
-### New Features
+### Neue Funktionen
 
 - Improvements have been added to the cyberware tab. For foundational cyberware that has no optional slots (such as Borgware), no Used/Total is displayed in the title.
 - Added options to choose how to display the skill values for the mook character sheet. Now one can show it in the same way as it is printed in the book. Please look at the settings for this.
@@ -945,7 +946,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.76.0 | Date: 2021-05-26
 
-### New Features
+### Neue Funktionen
 
 - FnWeather made a great video demonstrating some of the following changes which you can find here: <https://www.youtube.com/watch?v=csgB6c5KhkU>. Thanks to him!
 - Added "Option Slots Size" for optional cyberware. This allows proper tracking of cyberware that can use no slots, or multiple slots. By default when first updating to this version all cyberware has an assumed slot size of 1. Please update your optional cyberware accordingly in line with the core rulebook.
