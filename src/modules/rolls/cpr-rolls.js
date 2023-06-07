@@ -512,20 +512,6 @@ export class CPRAttackRoll extends CPRSkillRoll {
     this.weaponType = weaponType;
     this.location = "body";
   }
-
-  /**
-   * Flip this roll to stat role from a program, which has a special name, prompt, and card design.
-   *
-   * @param {String} rollTitle - a title for the roll, shown in the roll card (chat message)
-   */
-  setNetCombat(rollTitle) {
-    LOGGER.trace("setNetCombat | CPRAttackRoll | Called.");
-    this.rollTitle = rollTitle;
-    this.roleName = this.skillName;
-    this.roleValue = this.skillValue;
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-net-roll-prompt.hbs`;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-attack-rollcard.hbs`;
-  }
 }
 
 /**
