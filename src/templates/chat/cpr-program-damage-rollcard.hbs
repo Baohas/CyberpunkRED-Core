@@ -9,11 +9,11 @@
         {{#if (cprCompare (cprCompare rollCardExtraArgs.program.class "===" "antiprogramattacker") "&&" (cprCompare rollCardExtraArgs.program.damage.blackIce "!==" "")) }}
           {{#if (cprCompare formula "===" rollCardExtraArgs.program.damage.standard) }}
             <div class="rollcard-subtitle-center text-small">
-              {{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.itemSheet.program.nonBlackIce"}}
+              {{localize "CPR.itemSheet.program.damageTo" programType=(localize "CPR.itemSheet.program.nonBlackIce")}}
             </div>
           {{else}}
             <div class="rollcard-subtitle-center text-small">
-              {{localize "CPR.itemSheet.program.damageTo"}} {{localize "CPR.global.programClass.blackice"}}
+              {{localize "CPR.itemSheet.program.damageTo" programType=(localize "CPR.itemSheet.program.nonBlackIce")}}
             </div>
           {{/if}}
         {{else}}
