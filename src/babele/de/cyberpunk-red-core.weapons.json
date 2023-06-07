@@ -114,15 +114,15 @@
       "description": "<p>Ein hochwirksamer Granatwerfer. Mit ihm können Sie eine Vielzahl von Granaten verwenden.</p>"
     },
     "Heavy Melee (Excellent)": {
-      "name": "Heavy Melee (Excellent)",
+      "name": "Schwere Nahkampfwaffe (Hervorragende Qualität)",
       "description": "<p>Generic Excellent Quality Heavy Melee Weapon.</p>\n<p>+1 to Attack.</p>"
     },
     "Heavy Melee (Poor)": {
-      "name": "Heavy Melee (Poor)",
+      "name": "Schwere Nahkampfwaffe (Schlechte Qualität)",
       "description": "<p>Generic Poor Quality Heavy Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>\n<p>&nbsp;</p>"
     },
     "Heavy Melee": {
-      "name": "Heavy Melee",
+      "name": "Schwere Nahkampfwaffe",
       "description": "<p>Generic Heavy Melee Weapon.</p>"
     },
     "Heavy Pistol (Excellent)": {
@@ -182,15 +182,15 @@
       "description": "<p>Ein Hohlzylinder, typischerweise aus Metall, der einst Flüssigkeiten transportiert hat.</p>"
     },
     "Light Melee (Excellent)": {
-      "name": "Light Melee (Excellent)",
+      "name": "Leichte Nahkampfwaffe (Hervorragende Qualität)",
       "description": "<p>Generic Excellent Qulaity Light Melee weapon.</p>\n<p>+1 to Attack.</p>"
     },
     "Light Melee (Poor)": {
-      "name": "Light Melee (Poor)",
+      "name": "Leichte Nahkampfwaffe (Schlechte Qualität)",
       "description": "<p>Generic Poor Quality Light Melee weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
     },
     "Light Melee": {
-      "name": "Light Melee",
+      "name": "Leichte Nahkampfwaffe",
       "description": "<p>Generic Light Melee weapon.</p>"
     },
     "Machete (Excellent)": {
@@ -214,15 +214,15 @@
       "description": "<p>Der Kampf mit jahrhundertealten überlieferten Kampfkünsten, ignoriert die halbe Panzerung (aufgerundet)</p>"
     },
     "Medium Melee (Excellent)": {
-      "name": "Medium Melee (Excellent)",
+      "name": "Mittlere Nahkampfwaffe (Hervorragende Qualität)",
       "description": "<p>Generic Excellent Quality Medium Melee Weapon.</p>\n<p>+1 to Attack.</p>"
     },
     "Medium Melee (Poor)": {
-      "name": "Medium Melee (Poor)",
+      "name": "Mittlere Nahkampfwaffe (Schlechte Qualität)",
       "description": "<p>Generic Poor Quality Medium Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
     },
     "Medium Melee": {
-      "name": "Medium Melee",
+      "name": "Mittlere Nahkampfwaffe",
       "description": "<p>Generic Medium Melee Weapon.</p>"
     },
     "Medium Pistol (Excellent)": {
@@ -358,7 +358,7 @@
       "description": "<p>Ein Schwert. Speziell zum Schneiden oder Stechen entwickelt. </p>"
     },
     "Thrown Weapon": {
-      "name": "Thrown Weapon",
+      "name": "Wurfwaffe",
       "description": "<p>A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets. Melee weapons deal their base damage, but don't penetrate half SP.</p>"
     },
     "Tomahawk (Excellent)": {
@@ -382,15 +382,15 @@
       "description": "<p>Wenn rohe Gewalt auf Körper trifft, ignoriert die halbe Panzerung nicht!</p>"
     },
     "Very Heavy Melee (Excellent)": {
-      "name": "Very Heavy Melee (Excellent)",
+      "name": "Sehr schwere Nahkampfwaffe (Hervorragende Qualität)",
       "description": "<p>Generic Excellent Quality Very Heavy Melee Weapon.</p>\n<p>+1 to Attack.</p>"
     },
     "Very Heavy Melee (Poor)": {
-      "name": "Very Heavy Melee (Poor)",
+      "name": "Sehr schwere Nahkampfwaffe (Schlechte Qualität)",
       "description": "<p>Generic Poor Quality Very Heavy Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
     },
     "Very Heavy Melee": {
-      "name": "Very Heavy Melee",
+      "name": "Sehr schwere Nahkampfwaffe",
       "description": "<p>Generic Very Heavy Melee Weapon.</p>"
     },
     "Very Heavy Pistol (Excellent)": {
