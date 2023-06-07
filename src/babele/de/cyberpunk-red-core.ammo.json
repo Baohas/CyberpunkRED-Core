@@ -2,8 +2,8 @@
   "label": "Munition",
   "entries": {
     "Arrow (Armor-Piercing)": {
-      "name": "Arrow (Armor-Piercing)",
-      "description": "<p>Double ablation to armor.</p>"
+      "name": "Pfeil (Panzerbrechend)",
+      "description": "<p>Doppelte Abtragung der Rüstung.</p>"
     },
     "Arrow (Basic)": {
       "name": "Pfeil (Basis)",
@@ -42,8 +42,8 @@
       "description": "<p>Die Munition ist gratis, da sie leicht wieder aufladbare Batteriepacks (Ladezeit 1 Stunde) erfordert, die nach 8 Schüssen ersetzt werden müssen.&nbsp;</p>"
     },
     "Grenade (Armor-Piercing)": {
-      "name": "Grenade (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Granate (Panzerbrechend)",
+      "description": "<p>Doppelte Abtragung der Rüstung.</p>"
     },
     "Grenade (Biotoxin)": {
       "name": "Granate (Biotoxin)",
@@ -78,8 +78,8 @@
       "description": "<p>Der Angriff richtet keinen Schaden an. Stattdessen muss jeder mit Fleischaugen eine Probe auf Folter/Drogen widerstehen mit SG 13 ablegen. Wer scheitert, erleidet in der nächsten Minute die Kritische Verletzung Augenschaden (siehe Seite 188). Diese Kritische Verletzung richtet keinen Bonusschaden an.</p>"
     },
     "Heavy Pistol (Armor-Piercing)": {
-      "name": "Heavy Pistol (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Schwere Pistole (Panzerbrechend)",
+      "description": "<p>Doppelte Abtragung der Rüstung.</p>"
     },
     "Heavy Pistol (Basic)": {
       "name": "Schwere Pistole (Basis)",
@@ -102,8 +102,8 @@
       "description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
     },
     "Medium Pistol (Armor-Piercing)": {
-      "name": "Medium Pistol (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Mittelschwere Pistole (Panzerbrechend)",
+      "description": "<p>Doppelte Abtragung der Rüstung.</p>"
     },
     "Medium Pistol (Basic)": {
       "name": "Mittelschwere Pistole (Basis)",
@@ -134,8 +134,8 @@
       "description": "<p>Standard Paintbälle, die keinen Schaden anrichten. Dennoch ärgerlich.</p>"
     },
     "Rifle (Armor-Piercing)": {
-      "name": "Rifle (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Gewehr (Panzerbrechend)",
+      "description": "<p>Doppelte Abtragung der Rüstung.</p>"
     },
     "Rifle (Basic)": {
       "name": "Gewehr (Basis)",
@@ -158,8 +158,8 @@
       "description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
     },
     "Rocket (Armor-Piercing)": {
-      "name": "Rocket (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Rakete (Panzerbrechend)",
+      "description": "<p>Doppelte Abtragung der Rüstung.</p>"
     },
     "Rocket (Smart)": {
       "name": "Rakete (Smart)",
@@ -174,8 +174,8 @@
       "description": "<p>Wenn du durch die Panzerung eines Ziels hindurch Schaden anrichtest, steckst du das Ziel in Brand. Wenn das Ziel keine Aktion aufwendet, um sich selbst zu löschen, werden am Ende jedes seiner Züge 2 Schadenspunkte direkt von seinen TP abgezogen. Wenn der Effekt mehrfach auftritt, ist er nicht kumulativ.</p>"
     },
     "Shotgun Slug (Armor-Piercing)": {
-      "name": "Shotgun Slug (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Flintenpatrone (Panzerbrechend)",
+      "description": "<p>Doppelte Abtragung der Rüstung.</p>"
     },
     "Shotgun Slug (Basic)": {
       "name": "Flintenpatrone (Basis)",
@@ -198,8 +198,8 @@
       "description": "<p>Die Cyberware Zielerfassung wird benötigt, ohne wird die Smart-Munition aufgrund einer Sicherheitsfunktion nicht abgeschossen. Wenn du diese Munition verwendest und dir der Schuss im Einzelschussmodus der Waffe um 4 oder weniger misslingt, erhält dein Schuss sofort eine zweite Chance, dein Ziel zu treffen. Du nutzt den gleichen SG, allerdings addierst du 10 zu dem Ergebnis statt allem anderen, was du hinzufügen würdest, mit Ausnahme von GLÜ. Ein Ziel, dass Geschossen ausweichen kann, kann sich entscheiden, diesem Angriff wie üblich auszuweichen.</p>"
     },
     "Very Heavy Pistol (Armor-Piercing)": {
-      "name": "Very Heavy Pistol (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Sehr Schwere Pistole (Panzerbrechend)",
+      "description": "<p>Doppelte Abtragung der Rüstung.</p>"
     },
     "Very Heavy Pistol (Basic)": {
       "name": "Sehr Schwere Pistole (Basis)",
