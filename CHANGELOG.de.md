@@ -1,12 +1,12 @@
 <!-- markdownlint-disable MD024 -->
 
-# Changelog
+# Änderungsverlauf
 
 ## Version 0.87.0
 
-### Action Needed
+### Aktion erforderlich
 
-#### Ammo Modifies Weapon Damage
+#### Munition ändert Waffenschaden
 
 Ammo can now modify weapon damage / autofire maximums. For example, shotgun shells automatically roll 3d6 damage instead of the shotgun's base damage. We made a best attempt at migrating relevant items on actors, but if you've changed the name of compendia items or have homebrew items with this functionality, those items will need to be updated manually.
 
@@ -144,7 +144,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Item Sheet
   - Slight Rewrite of header
 
-#### Ammo Modifies Weapon Damage
+#### Munition ändert Waffenschaden
 
 Ammo can now modify weapon damage / autofire maximums. This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo).
 
