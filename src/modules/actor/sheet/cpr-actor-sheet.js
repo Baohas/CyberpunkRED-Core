@@ -1343,13 +1343,6 @@ export default class CPRActorSheet extends ActorSheet {
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const item = this.actor.getEmbeddedDocument("Item", itemId);
     const tokenId = this.token === null ? null : this.token.id;
-    if (item.type === "cyberware" && item.system.isInstalled) {
-      SystemUtils.DisplayMessage(
-        "error",
-        SystemUtils.Localize("CPR.messages.tradeDragInstalledCyberwareError")
-      );
-      return;
-    }
     event.dataTransfer.setData(
       "text/plain",
       JSON.stringify({
@@ -1389,6 +1382,13 @@ export default class CPRActorSheet extends ActorSheet {
     const dragData = TextEditor.getDragEventData(event);
     let sourceActor;
     const sourceItem = fromUuidSync(dragData.uuid);
+    if (sourceItem.type === "cyberware" && sourceItem.system.isInstalled) {
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Localize("CPR.messages.tradeDragInstalledCyberwareError")
+      );
+      return;
+    }
     const transferItem =
       dragData.system && dragData.system.actorId !== undefined;
     if (transferItem) {
