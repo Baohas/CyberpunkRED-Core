@@ -71,24 +71,13 @@
           <span class="mook-weapon-header text-semi">
             {{localize "CPR.characterSheet.bottomPane.fight.weapons"}}
           </span>
-          <div class="weapon-content">
-          {{#each (cprSort actor.itemTypes.weapon "name") as |weapon|}}
-            {{#if (cprCompare weapon.system.equipped "===" "equipped")}}
-              {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-weapon.hbs" this}}
-            {{/if}}
-          {{/each}}
-          {{#each (cprSort (cprFilter actor.itemTypes.cyberware "system.isInstalled" true) "name") as |weapon| }}
-            {{#if system.isWeapon }}
-              {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-weapon.hbs" this}}
-            {{/if}}
-          {{/each}}
-          </div>
+          {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-weapons-list.hbs" this}}
         </div>
         <div class="mook-armor">
           <span class="mook-armor-header text-semi">
             {{localize "CPR.global.itemTypes.armor"}}
           </span>
-          {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-armor.hbs"}}
+          {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-armor-list.hbs"}}
         </div>
       </div>
       <div class="mook-skills pad-thin">

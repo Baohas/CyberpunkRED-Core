@@ -2,8 +2,22 @@
 <div class="fight-tab">
   {{#if (cprCompare actor.system.fightState "===" "Meatspace") }}
     {{> "systems/cyberpunk-red-core/templates/actor/character/bottom-pane/fight/cpr-criticalInjuries.hbs" }}
-    {{> "systems/cyberpunk-red-core/templates/actor/character/bottom-pane/fight/cpr-armor-list.hbs" }}
-    {{> "systems/cyberpunk-red-core/templates/actor/character/bottom-pane/fight/cpr-weapons-list.hbs" }}
+    <div class="armor-section">
+      <li class="items-header flexrow">
+        <span class="item-name section-name text-nowrap text-padding-left-smallest">
+          {{localize "CPR.global.itemTypes.armor"}}
+        </span>
+      </li>
+      {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-armor-list.hbs" }}
+    </div>
+    <div class="weapon-section">
+      <li class="items-header flexrow">
+        <span class="text-padding-left-smallest">
+          {{localize "CPR.characterSheet.bottomPane.fight.weapons"}}
+        </span>
+      </li>
+      {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-weapons-list.hbs" }}
+    </div>
   {{/if}}
   {{#if (cprCompare actor.system.fightState "===" "Netspace") }}
     {{> "systems/cyberpunk-red-core/templates/actor/mixin/netrunning/cpr-netActions.hbs" }}

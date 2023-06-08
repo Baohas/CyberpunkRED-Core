@@ -170,8 +170,13 @@
     grid-template-columns: 1fr 0.5fr;
     grid-area: mook-gear;
     grid-template-areas: "mook-weapon-list mook-armor";
+
     .mook-weapon-list {
       grid-area: mook-weapon-list;
+
+      .items-header {
+        font-weight: 500;
+      }
 
       .mook-weapon-header {
         color: var(--cpr-text-mook-header);

@@ -24,7 +24,6 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/character/bottom-pane/cpr-role-tab.hbs`,
     `systems/${game.system.id}/templates/actor/character/bottom-pane/fight/cpr-criticalInjuries.hbs`,
     `systems/${game.system.id}/templates/actor/character/bottom-pane/fight/cpr-weapons-list.hbs`,
-    `systems/${game.system.id}/templates/actor/character/bottom-pane/fight/cpr-armor-list.hbs`,
 
     // Actor: Character - Skill Tab
     `systems/${game.system.id}/templates/actor/character/right-pane/tabs/skills/cpr-skills-category.hbs`,
@@ -68,8 +67,10 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/mixin/actions/cpr-upgrade-glyph.hbs`,
 
     // Actor: Mixins - Fight
-    `systems/${game.system.id}/templates/actor/mixin/fight/cpr-armor.hbs`,
-    `systems/${game.system.id}/templates/actor/mixin/fight/cpr-weapon.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/fight/cpr-armor-list.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/fight/cpr-weapons-list.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/fight/mixin/cpr-armor.hbs`,
+    `systems/${game.system.id}/templates/actor/mixin/fight/mixin/cpr-weapon.hbs`,
     `systems/${game.system.id}/templates/actor/mixin/fight/mixin/cpr-armor-location.hbs`,
 
     // Actor: Mixins: Netrunning
@@ -78,7 +79,6 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/mixin/netrunning/cpr-rezzedPrograms.hbs`,
 
     // Actor: Mook - Sheet
-    `systems/${game.system.id}/templates/actor/mook/cpr-mook-armor.hbs`,
     `systems/${game.system.id}/templates/actor/mook/cpr-mook-criticalInjury.hbs`,
     `systems/${game.system.id}/templates/actor/mook/cpr-mook-cyberware-optional.hbs`,
     `systems/${game.system.id}/templates/actor/mook/cpr-mook-gear.hbs`,
@@ -86,7 +86,6 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/mook/cpr-mook-program.hbs`,
     `systems/${game.system.id}/templates/actor/mook/cpr-mook-skills.hbs`,
     `systems/${game.system.id}/templates/actor/mook/cpr-mook-stats.hbs`,
-    `systems/${game.system.id}/templates/actor/mook/cpr-mook-weapons.hbs`,
 
     // Actor: Container - Sheet
     `systems/${game.system.id}/templates/actor/container/cpr-container-actions.hbs`,
