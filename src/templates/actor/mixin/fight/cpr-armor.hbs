@@ -4,7 +4,7 @@
     <img alt="{{this.name}}" src="{{this.img}}"/>
   </div>
   <div class="armor-name">
-    <a class="name item-edit text-semi{{#if isMook}} deletable changeable{{/if}}"
+    <a class="name item-edit text-semi{{#if (cprCompare (cprGetProp actor "type") '===' "mook")}} deletable changeable{{/if}}"
        {{#if (cprCompare (cprGetProp actor "type") '===' "mook")}}
          tabindex="0"
        {{/if}}
