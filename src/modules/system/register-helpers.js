@@ -1289,4 +1289,21 @@ export default function registerHandlebarsHelpers() {
         return string;
     }
   });
+
+  /**
+   * Work out how to display branded items
+   */
+  Handlebars.registerHelper("cprBrandedName", (item) => {
+    LOGGER.trace("cprTextTransform | handlebarsHelper | Called.");
+    const brandName = item.system.brand;
+    const itemName = item.name;
+
+    if (brandName === "") {
+      return itemName;
+    }
+    if (itemName.includes(brandName)) {
+      return itemName;
+    }
+    return `${brandName} ${itemName}`;
+  });
 }

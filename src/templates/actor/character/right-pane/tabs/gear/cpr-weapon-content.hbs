@@ -9,7 +9,7 @@
        alt="{{localize (cprFindConfigValue "weaponTypeList" item.system.weaponType)}}">
     <a class="name item-edit flex-center">
       <img src="{{item.img}}"/>
-      {{item.name}}
+      {{cprBrandedName item}}
       {{#if item.system.isUpgraded }}
         <i class="text-super fa-solid fa-square-up"></i>
       {{/if}}
