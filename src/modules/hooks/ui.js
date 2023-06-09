@@ -31,6 +31,12 @@ const uiHooks = () => {
     LOGGER.trace("setTheme | uiHooks | called");
     SystemUtils.SetTheme();
   });
+
+  // Add support for theming PopOut! windows
+  Hooks.on("PopOut:loaded", async (app, node) => {
+    LOGGER.trace("setTheme | uiHooks | called");
+    SystemUtils.SetTheme(node);
+  });
 };
 
 export default uiHooks;

@@ -111,13 +111,19 @@ export default class CPRSystemUtils {
    *
    * @static
    */
-  static SetTheme() {
+  static SetTheme(node) {
     LOGGER.trace("SetThemes | CPRSystemUtils | Called.");
     const theme = game.settings.get(game.system.id, "theme")
       ? game.settings.get(game.system.id, "theme")
       : "default";
 
-    document.documentElement.setAttribute("data-cpr-theme", theme);
+    // `node` is passed from the `PopOut:popout` hook, so if we have that set the
+    // theme in the popped out window, else just set it in the primary window
+    if (node) {
+      node.ownerDocument.documentElement.setAttribute("data-cpr-theme", theme);
+    } else {
+      document.documentElement.setAttribute("data-cpr-theme", theme);
+    }
   }
 
   /**
