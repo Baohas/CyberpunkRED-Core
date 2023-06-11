@@ -1382,7 +1382,7 @@ export default class CPRActorSheet extends ActorSheet {
     const dragData = TextEditor.getDragEventData(event);
     let sourceActor;
     const sourceItem = fromUuidSync(dragData.uuid);
-    if (sourceItem.type === "cyberware" && sourceItem.system.isInstalled) {
+    if (sourceItem.type === "cyberware" && sourceItem.system?.isInstalled) {
       SystemUtils.DisplayMessage(
         "error",
         SystemUtils.Localize("CPR.messages.tradeDragInstalledCyberwareError")
