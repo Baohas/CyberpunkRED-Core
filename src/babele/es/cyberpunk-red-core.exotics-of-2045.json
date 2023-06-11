@@ -2,8 +2,8 @@
   "label": "Exótica de 2045",
   "entries": {
     "Appetite Controller": {
-      "name": "Appetite Controller",
-      "description": "<p>Suppresses hunger response. User ignores Humanity Loss penalties from starvation trauma but User can still starve. Roll a Death Save at start of 7th consecutive day without eating. +1 to successive Death Saves each day afterwards.</p>\n<p>Requires Biomonitor.</p>"
+      "name": "Controlador de Apetito",
+      "description": "<p>Reprime la sensación de hambre. El usuario ignora la pérdida de Humanidad de sanciones por trauma de inanición, pero el usuario todavía puede morir de hambre. Tira Salvación contra la Muerte al comienzo del séptimo día consecutivo sin comer. +1 a las sucesivas tiradas de Salvación contra la Muerte cada día después.</p>\n<p>Requiere Biomonitor.</p>"
     },
     "Combat Jaw": {
       "name": "Mandíbula de Combate",
@@ -30,8 +30,8 @@
       "description": "<p>Requiere Biomonitor. Puede conocer PV de un vistazo. (Vea el Cromo Negro 19 para más detalles)</p>"
     },
     "NeuTongue": {
-      "name": "NeuTongue",
-      "description": "<p>Simulates flavor sensations. Use a linked Agent to customize flavor profiles. Can be deactivated without an Action. No sense of taste when deactivated.</p>\n<p>Replaces Meat tongue.</p>"
+      "name": "Lengua Neutónica",
+      "description": "<p>Simula sensaciones de sabor. Utiliza un agente vinculado para personalizar los perfiles de sabor. Se puede desactivar sin una acción. No hay sensación de sabor cuando se desactiva.</p>\n<p>Reemplaza la lengua de la carne.</p>"
     },
     "Reflex Co-Processor": {
       "name": "Co-Procesador Reflex",
