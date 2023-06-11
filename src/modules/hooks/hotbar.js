@@ -41,6 +41,10 @@ const hotbarHooks = () => {
           if (
             document.type !== "weapon" &&
             !(document.type === "cyberware" && document.system.isWeapon) &&
+            !(
+              document.type === "itemUpgrade" &&
+              document.system.modifiers.secondaryWeapon.configured
+            ) &&
             document.type !== "skill"
           ) {
             break;
@@ -56,7 +60,9 @@ const hotbarHooks = () => {
             .replace(/\\([\s\S])|(")/g, "\\$1$2");
           if (
             document.type === "weapon" ||
-            (document.type === "cyberware" && document.system.isWeapon)
+            (document.type === "cyberware" && document.system.isWeapon) ||
+            (document.type === "itemUpgrade" &&
+              document.system.modifiers.secondaryWeapon.configured)
           ) {
             command +=
               "// The roll type of the weapon for this macro is configurable.\n";

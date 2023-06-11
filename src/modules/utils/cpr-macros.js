@@ -45,6 +45,7 @@ export default class CPRMacro {
     let rollType;
     switch (item.type) {
       case "weapon":
+      case "itemUpgrade":
       case "cyberware": {
         rollType = extraData.rollType;
         break;
