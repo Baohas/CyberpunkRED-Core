@@ -11,7 +11,7 @@
     {{localize "CPR.global.generic.install"}}:
   </span>
   <span class="summary-value">
-    {{localize (cprFindConfigValue "cyberwareInstallList" item.system.install)}}
+    {{localize (cprFindConfigValue "cyberwareInstallList" item.system.installLocation)}}
   </span>
 </div>
 {{#if (cprCompare item.system.installedItems.allowed "&&" (cprListContains item.system.installedItems.list "cyberware")) }}
