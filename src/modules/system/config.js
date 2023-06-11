@@ -365,7 +365,7 @@ CPR.criticalInjuryTables = {
 };
 
 // game.system is not defined when this file is read, so there is a magic string here
-CPR.defaultCriticalInjuryTable = "cyberpunk-red-core.criticalInjuryTables";
+CPR.defaultCriticalInjuryTable = "cyberpunk-red-core.critical-injury-tables";
 CPR.defaultNetArchTable = "cyberpunk-red-core.net-rolltables";
 CPR.defaultDvTable = "cyberpunk-red-core.dv-tables";
 
