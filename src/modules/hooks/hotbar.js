@@ -115,7 +115,12 @@ const hotbarHooks = () => {
       (m) => m.name === document.name && m.command === command
     );
 
-    if (!macro) {
+    if (!macro || !macro.isOwner) {
+      if (!macro.isOwner) {
+        // If the macro exists but we are not the owner, create a new macro with our username prepended.
+        // This should help avoid duplicate macro names.
+        macroObject.name = `${game.user.name} - ${macroObject.name}`;
+      }
       Macro.create(macroObject, { displaySheet: false }).then((newMacro) => {
         game.user.assignHotbarMacro(newMacro, slot);
       });
