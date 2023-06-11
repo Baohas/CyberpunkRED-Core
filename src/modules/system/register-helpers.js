@@ -936,11 +936,19 @@ export default function registerHandlebarsHelpers() {
     }
 
     for (const skill of skillList) {
-      skillMap["bonuses.".concat(SystemUtils.slugify(skill.name))] = skill.name;
+      const localizedKey = `CPR.global.itemType.skill.${SystemUtils.slugify(
+        skill.name
+      )}`;
+      skillMap["bonuses.".concat(SystemUtils.slugify(skill.name))] =
+        localizedKey;
     }
-    // "sort" the skillMap properties before passing it back
+    // "sort" the skillMap properties before passing it back (sorting by localized value)
     return Object.keys(skillMap)
-      .sort()
+      .sort((a, b) =>
+        game.i18n
+          .localize(skillMap[a])
+          .localeCompare(game.i18n.localize(skillMap[b]))
+      )
       .reduce((result, key) => {
         // eslint-disable-next-line no-param-reassign
         result[key] = skillMap[key];
