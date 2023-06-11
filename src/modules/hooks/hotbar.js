@@ -27,7 +27,7 @@ const hotbarHooks = () => {
     LOGGER.trace("hotbarDrop | hotbarHooks | Called.");
     const document = fromUuidSync(data.uuid);
     const macroObject = {
-      name: document.name,
+      name: `${game.user.name} - ${document.name}`, // Prepend the user's name to prevent duplicates with different permissions.
       type: "script",
       img: document.img,
       command: `Hotbar.toggleDocumentSheet("${document.uuid}")`,
@@ -112,15 +112,10 @@ const hotbarHooks = () => {
     }
 
     macro = game.macros.contents.find(
-      (m) => m.name === document.name && m.command === command
+      (m) => m.name === macroObject.name && m.command === command && m.isOwner
     );
 
-    if (!macro || !macro.isOwner) {
-      if (!macro.isOwner) {
-        // If the macro exists but we are not the owner, create a new macro with our username prepended.
-        // This should help avoid duplicate macro names.
-        macroObject.name = `${game.user.name} - ${macroObject.name}`;
-      }
+    if (!macro) {
       Macro.create(macroObject, { displaySheet: false }).then((newMacro) => {
         game.user.assignHotbarMacro(newMacro, slot);
       });
