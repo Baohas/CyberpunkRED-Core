@@ -208,6 +208,7 @@ Munition kann jetzt den Waffenschaden / das Maximum des automatischen Feuerns ä
 - #577 - Restored firemode of weapon after a macro completes to what it was before the macro was executed
 - Previously, when unloading ammo that you no longer own the item for, it would leave the bullet count in the weapon but clear the UUID of the ammo in the weapon. This could cause problems when attempting to use that weapon as the bullet type is unknown. Additionally, when reloading, it would only take the bullet difference from the other bullet type instead of the full amount to load the weapon.
 - Fixed Combat Utility Belt custom status auto apply an remove handling
+- #657 - Fixed issues with dragging various document types to the hotbar.
 
 ## Version 0.86.1 | Date: 2023-02-05
 
