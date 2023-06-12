@@ -2,15 +2,11 @@
 
 # Changelog
 
-## Version 0.88.0
-
-### Action Needed
-
-### New Features
-
-### Changes
+## Version 0.87.1
 
 ### Bug Fixes
+
+Fix broken migrations
 
 ## Version 0.87.0
 
