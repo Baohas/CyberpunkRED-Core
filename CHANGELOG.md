@@ -7,6 +7,7 @@
 ### Bug Fixes
 
 - Fix Programs having `undefined` before their name in character sheets
+- Fix call to `cprBrandName` in Container sheet
 
 ## Version 0.87.1
 
