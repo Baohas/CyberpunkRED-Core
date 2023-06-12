@@ -10,6 +10,7 @@
 - Fix call to `cprBrandName` in Container sheet
 - Fix Price of Fuma Kotaro Linear Frame (Implanted) in Black Chrome
 - Fix text color on mook sheet for CyberWare Weapons
+- Fix migration with container actors
 
 ## Version 0.87.1
 

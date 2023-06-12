@@ -542,7 +542,7 @@ export default class CPRMigration {
 
     if (
       installableTypes.includes(item.type) &&
-      actor.system.installedItems.list.includes(originalUuid)
+      actor.system.installedItems?.list.includes(originalUuid)
     ) {
       const newInstalledItems = actor.system.installedItems.list;
       newInstalledItems.push(newOwnedItem.uuid);
@@ -552,7 +552,7 @@ export default class CPRMigration {
     const ownedItems = actor.items.filter((i) => {
       if (
         containerTypes.includes(i.type) &&
-        i.system.installedItems.list.includes(originalUuid)
+        i.system.installedItems?.list.includes(originalUuid)
       )
         return true;
       if (
