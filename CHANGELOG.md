@@ -215,7 +215,6 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 - #671 - Fixed BlackICE tokens getting corrupted when they were first created because the calls to update the token were passing bad data
 - #795 - Fixed incorrect damage from rollcard for programs.
 - Fixed Cyberchairs not overriding a users MOVE stat as they should. Thanks Dingo!
-- Fix active effects not actually toggling on/off correctly.
 - #577 - Restored firemode of weapon after a macro completes to what it was before the macro was executed
 - Previously, when unloading ammo that you no longer own the item for, it would leave the bullet count in the weapon but clear the UUID of the ammo in the weapon. This could cause problems when attempting to use that weapon as the bullet type is unknown. Additionally, when reloading, it would only take the bullet difference from the other bullet type instead of the full amount to load the weapon.
 - Fixed untranslated skills in active-effect dialog.
