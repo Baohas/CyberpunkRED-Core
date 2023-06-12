@@ -2,6 +2,16 @@
 
 # Changelog
 
+## Version 0.88.0
+
+### Action Needed
+
+### New Features
+
+### Changes
+
+### Bug Fixes
+
 ## Version 0.87.0
 
 ### Action Needed
