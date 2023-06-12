@@ -6,6 +6,8 @@
 
 ### Bug Fixes
 
+- Fix Programs having `undefined` before their name in character sheets
+
 ## Version 0.87.1
 
 ### Bug Fixes

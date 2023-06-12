@@ -1303,10 +1303,10 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprBrandedName", (item) => {
     LOGGER.trace("cprTextTransform | handlebarsHelper | Called.");
-    const brandName = item.system.brand;
+    const brandName = item.system?.brand;
     const itemName = item.name;
 
-    if (brandName === "") {
+    if (brandName === undefined || brandName === "") {
       return itemName;
     }
     if (itemName.includes(brandName)) {
