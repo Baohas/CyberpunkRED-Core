@@ -233,7 +233,9 @@ export default class CPRActorSheet extends ActorSheet {
         id: e.id,
         icon: e.icon,
         usage: e.usage,
-        isSuppressed: e.isSuppressed,
+        system: {
+          isSuppressed: e.system.isSuppressed,
+        },
         disabled: e.disabled,
       };
       if (
@@ -245,12 +247,12 @@ export default class CPRActorSheet extends ActorSheet {
       ) {
         // Get effects with no changes and display in the Permanent Effects category.
         // This is a rare case where a user makes an effect but doesn't add any changes.
-        if (e.changes.length === 0 && !e.disabled && !e.isSuppressed) {
+        if (e.changes.length === 0 && !e.disabled && !e.system.isSuppressed) {
           categories.permanent.effects.push(simplifiedEffect);
         }
 
         // Get situational, non-disabled effects.
-        if (!e.disabled && !e.isSuppressed) {
+        if (!e.disabled && !e.system.isSuppressed) {
           const situationalMods = CPRMod.getAllModifiers([e]).filter(
             (m) => m.isSituational
           );
@@ -263,7 +265,7 @@ export default class CPRActorSheet extends ActorSheet {
         }
 
         // Get inactive (disabled or suppressed) effects.
-        if (e.disabled || e.isSuppressed) {
+        if (e.disabled || e.system.isSuppressed) {
           // The second argument in the following function is set to true, so that it gets disabled modifiers.
           simplifiedEffect.changes = CPRMod.getAllModifiers([e], true);
           categories.inactive.effects.push(simplifiedEffect);

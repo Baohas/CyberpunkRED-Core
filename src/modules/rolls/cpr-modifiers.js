@@ -42,7 +42,7 @@ export default class CPRMod {
     const allModifiers = [];
     effects.forEach((effect) => {
       // Ignore suppressed/disabled effects, unless getDisabled = true. In that case, get all.
-      if ((!effect.isSuppressed && !effect.disabled) || getDisabled) {
+      if ((!effect.system.isSuppressed && !effect.disabled) || getDisabled) {
         effect.changes.forEach((change, index) => {
           const mod = new CPRMod(effect, change, index);
           allModifiers.push(mod);

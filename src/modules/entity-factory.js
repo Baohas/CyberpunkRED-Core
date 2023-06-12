@@ -7,7 +7,6 @@ import CPRDemonActor from "./actor/cpr-demon.js";
 import CPRMookActor from "./actor/cpr-mook.js";
 
 // Items
-import CPRItem from "./item/cpr-item.js";
 import CPRAmmoItem from "./item/types/cpr-ammo.js";
 import CPRArmorItem from "./item/types/cpr-armor.js";
 import CPRClothingItem from "./item/types/cpr-clothing.js";
@@ -106,4 +105,4 @@ itemTypes.role = CPRRoleItem;
 itemTypes.skill = CPRSkillItem;
 itemTypes.vehicle = CPRVehicleItem;
 itemTypes.weapon = CPRWeaponItem;
-export const itemConstructor = factory(itemTypes, CPRItem);
+export const itemConstructor = factory(itemTypes, Item);

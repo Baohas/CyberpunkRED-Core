@@ -19,6 +19,11 @@ export default class CPRActiveEffect extends ActiveEffect {
   constructor(object = {}, options = {}) {
     LOGGER.trace("constructor | CPRActiveEffect | Called.");
     super(object, options);
+    if (!this.system) {
+      this.system = {
+        isSuppressed: false,
+      };
+    }
   }
 
   /**
@@ -91,6 +96,21 @@ export default class CPRActiveEffect extends ActiveEffect {
   }
 
   /**
+   * Check if this effect is suppressed before applying it. Taken from the 5E code in
+   * active-effect.js.
+   *
+   * @override
+   * @param {CPRActor} actor - who's getting the active effect?
+   * @param {Object} change - the change to apply from an effect
+   * @returns null if this is suppressed, apply() otherwise
+   */
+  apply(actor, change) {
+    LOGGER.trace("apply | CPRActiveEffect | Called.");
+    if (this.system.isSuppressed) return null;
+    return super.apply(actor, change);
+  }
+
+  /**
    * Determine if this effect is suppressed because of some game mechanic, like the item is not equipped.
    * This was mostly copied from the dnd5e module in active-effect.js.
    *
@@ -99,29 +119,13 @@ export default class CPRActiveEffect extends ActiveEffect {
    *
    * @returns nothing, it only sets the isSuppressed property (it's a mutator)
    */
-  async updateSuppression() {
+  determineSuppression() {
     LOGGER.trace("determineSuppression | CPRActiveEffect | Called.");
-    const isSuppressed = this.calculateSuppression();
-    if (this.isSuppressed !== isSuppressed) {
-      await this.setFlag(game.system.id, "isSuppressed", isSuppressed);
-    }
-  }
-
-  /**
-   * Actual suppression calculation logic.
-   */
-  calculateSuppression() {
-    if (this.parent.documentName !== "Actor") return false;
+    this.system.isSuppressed = false;
+    if (this.system.disabled || this.parent.documentName !== "Actor") return;
     const doc = this.getEffectParent();
-    if (!doc) return false; // happens on item delete
-    if (doc instanceof CPRActor) return false; // we never suppress actor effects
-    return doc.areEffectsSuppressed();
-  }
-
-  /**
-   * Overriding default getter to return actual value instead of false if one is set.
-   */
-  get isSuppressed() {
-    return this.getFlag(game.system.id, "isSuppressed") ?? false;
+    if (!doc) return; // happens on item delete
+    if (doc instanceof CPRActor) return; // we never suppress actor effects
+    this.system.isSuppressed = doc.areEffectsSuppressed();
   }
 }
