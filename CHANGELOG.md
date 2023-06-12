@@ -9,6 +9,7 @@
 - Fix Programs having `undefined` before their name in character sheets
 - Fix call to `cprBrandName` in Container sheet
 - Fix Price of Fuma Kotaro Linear Frame (Implanted) in Black Chrome
+- Fix text color on mook sheet for CyberWare Weapons
 
 ## Version 0.87.1
 
