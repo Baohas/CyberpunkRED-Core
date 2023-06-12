@@ -93,7 +93,7 @@ system:
     max: 0
     value: 0
   price:
-    market: 100
+    market: 5000
   providesHardening: false
   revealed: true
   rof: 1

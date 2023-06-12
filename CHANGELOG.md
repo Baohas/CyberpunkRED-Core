@@ -8,6 +8,7 @@
 
 - Fix Programs having `undefined` before their name in character sheets
 - Fix call to `cprBrandName` in Container sheet
+- Fix Price of Fuma Kotaro Linear Frame (Implanted) in Black Chrome
 
 ## Version 0.87.1
 
