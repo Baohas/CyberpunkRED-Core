@@ -1,216 +1,216 @@
 {
-  "label": "Skills (Languages)",
+  "label": "Fähigkeiten (Sprachen)",
   "entries": {
     "Language (Arabic)": {
-      "name": "Language (Arabic)",
+      "name": "Sprache (Arabisch)",
       "description": ""
     },
     "Language (Bengali)": {
-      "name": "Language (Bengali)",
+      "name": "Sprache (Bengali)",
       "description": ""
     },
     "Language (Berber)": {
-      "name": "Language (Berber)",
+      "name": "Sprache (Berberisch)",
       "description": ""
     },
     "Language (Burmese)": {
-      "name": "Language (Burmese)",
+      "name": "Sprache (Burmesisch)",
       "description": ""
     },
     "Language (Cantonese Chinese)": {
-      "name": "Language (Cantonese Chinese)",
+      "name": "Sprache (Kantonesisches Chinesisch)",
       "description": ""
     },
     "Language (Cree)": {
-      "name": "Language (Cree)",
+      "name": "Sprache (Cree)",
       "description": ""
     },
     "Language (Creole)": {
-      "name": "Language (Creole)",
+      "name": "Sprache (Kreolisch)",
       "description": ""
     },
     "Language (Dari)": {
-      "name": "Language (Dari)",
+      "name": "Sprache (Dari)",
       "description": ""
     },
     "Language (Dutch)": {
-      "name": "Language (Dutch)",
+      "name": "Sprache (Niederländisch)",
       "description": ""
     },
     "Language (English)": {
-      "name": "Language (English)",
+      "name": "Sprache (Englisch)",
       "description": ""
     },
     "Language (Farsi)": {
-      "name": "Language (Farsi)",
+      "name": "Sprache (Farsi)",
       "description": ""
     },
     "Language (Filipino)": {
-      "name": "Language (Filipino)",
+      "name": "Sprache (Filipino)",
       "description": ""
     },
     "Language (Finnish)": {
-      "name": "Language (Finnish)",
+      "name": "Sprache (Finnisch)",
       "description": ""
     },
     "Language (French)": {
-      "name": "Language (French)",
+      "name": "Sprache (Französisch)",
       "description": ""
     },
     "Language (German)": {
-      "name": "Language (German)",
+      "name": "Sprache (Deutsch)",
       "description": ""
     },
     "Language (Guarani)": {
-      "name": "Language (Guarani)",
+      "name": "Sprache (Guarani)",
       "description": ""
     },
     "Language (Hausa)": {
-      "name": "Language (Hausa)",
+      "name": "Sprache (Hausa)",
       "description": ""
     },
     "Language (Hawaiian)": {
-      "name": "Language (Hawaiian)",
+      "name": "Sprache (Hawaiianisch)",
       "description": ""
     },
     "Language (Hebrew)": {
-      "name": "Language (Hebrew)",
+      "name": "Sprache (Hebräisch)",
       "description": ""
     },
     "Language (Hindi)": {
-      "name": "Language (Hindi)",
+      "name": "Sprache (Hindi)",
       "description": ""
     },
     "Language (Indonesian)": {
-      "name": "Language (Indonesian)",
+      "name": "Sprache (Indonesisch)",
       "description": ""
     },
     "Language (Italian)": {
-      "name": "Language (Italian)",
+      "name": "Sprache (Italienisch)",
       "description": ""
     },
     "Language (Japanese)": {
-      "name": "Language (Japanese)",
+      "name": "Sprache (Japanisch)",
       "description": ""
     },
     "Language (Khmer)": {
-      "name": "Language (Khmer)",
+      "name": "Sprache (Khmer)",
       "description": ""
     },
     "Language (Korean)": {
-      "name": "Language (Korean)",
+      "name": "Sprache (Koreanisch)",
       "description": ""
     },
     "Language (Lingala)": {
-      "name": "Language (Lingala)",
+      "name": "Sprache (Lingala)",
       "description": ""
     },
     "Language (Malayan)": {
-      "name": "Language (Malayan)",
+      "name": "Sprache (Malaysisch)",
       "description": ""
     },
     "Language (Mandarin Chinese)": {
-      "name": "Language (Mandarin Chinese)",
+      "name": "Sprache (Mandarin-Chinesisch)",
       "description": ""
     },
     "Language (Maori)": {
-      "name": "Language (Maori)",
+      "name": "Sprache (Maori)",
       "description": ""
     },
     "Language (Mayan)": {
-      "name": "Language (Mayan)",
+      "name": "Sprache (Maya)",
       "description": ""
     },
     "Language (Mongolian)": {
-      "name": "Language (Mongolian)",
+      "name": "Sprache (Mongolisch)",
       "description": ""
     },
     "Language (Navajo)": {
-      "name": "Language (Navajo)",
+      "name": "Sprache (Navajo)",
       "description": ""
     },
     "Language (Nepali)": {
-      "name": "Language (Nepali)",
+      "name": "Sprache (Nepali)",
       "description": ""
     },
     "Language (Norwegian)": {
-      "name": "Language (Norwegian)",
+      "name": "Sprache (Norwegisch)",
       "description": ""
     },
     "Language (Oromo)": {
-      "name": "Language (Oromo)",
+      "name": "Sprache (Oromo)",
       "description": ""
     },
     "Language (Pama-Nyungan)": {
-      "name": "Language (Pama-Nyungan)",
+      "name": "Sprache (Pama-Nyungan)",
       "description": ""
     },
     "Language (Polish)": {
-      "name": "Language (Polish)",
+      "name": "Sprache (Polnisch)",
       "description": ""
     },
     "Language (Portuguese)": {
-      "name": "Language (Portuguese)",
+      "name": "Sprache (Portugiesisch)",
       "description": ""
     },
     "Language (Quechua)": {
-      "name": "Language (Quechua)",
+      "name": "Sprache (Quechua)",
       "description": ""
     },
     "Language (Romanian)": {
-      "name": "Language (Romanian)",
+      "name": "Sprache (Rumänisch)",
       "description": ""
     },
     "Language (Russian)": {
-      "name": "Language (Russian)",
+      "name": "Sprache (Russisch)",
       "description": ""
     },
     "Language (Sinhalese)": {
-      "name": "Language (Sinhalese)",
+      "name": "Sprache (Singhalesisch)",
       "description": ""
     },
     "Language (Spanish)": {
-      "name": "Language (Spanish)",
+      "name": "Sprache (Spanisch)",
       "description": ""
     },
     "Language (Swahili)": {
-      "name": "Language (Swahili)",
+      "name": "Sprache (Swahili)",
       "description": ""
     },
     "Language (Swedish)": {
-      "name": "Language (Swedish)",
+      "name": "Sprache (Schwedisch)",
       "description": ""
     },
     "Language (Tahitian)": {
-      "name": "Language (Tahitian)",
+      "name": "Sprache (Tahitianisch)",
       "description": ""
     },
     "Language (Tamil)": {
-      "name": "Language (Tamil)",
+      "name": "Sprache (Tamil)",
       "description": ""
     },
     "Language (Turkish)": {
-      "name": "Language (Turkish)",
+      "name": "Sprache (Türkisch)",
       "description": ""
     },
     "Language (Twi)": {
-      "name": "Language (Twi)",
+      "name": "Sprache (Twi)",
       "description": ""
     },
     "Language (Ukrainian)": {
-      "name": "Language (Ukrainian)",
+      "name": "Sprache (Ukrainisch)",
       "description": ""
     },
     "Language (Urdu)": {
-      "name": "Language (Urdu)",
+      "name": "Sprache (Urdu)",
       "description": ""
     },
     "Language (Vietnamese)": {
-      "name": "Language (Vietnamese)",
+      "name": "Sprache (Vietnamesisch)",
       "description": ""
     },
     "Language (Yoruba)": {
-      "name": "Language (Yoruba)",
+      "name": "Sprache (Yoruba)",
       "description": ""
     }
   }

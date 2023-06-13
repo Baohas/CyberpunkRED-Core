@@ -67,11 +67,11 @@
     },
     "Skin Weave": {
       "name": "Hautverstärker",
-      "description": "<p>Armor Item for Skin Weave Cyberware.</p>"
+      "description": "<p>Rüstungsgegenstand für Hautverstärker-Cyberware.</p>"
     },
     "Subdermal Armor": {
       "name": "Subdermale Panzerung",
-      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>"
+      "description": "<p>Rüstungsgegenstand für die Cyberware Subdermale Panzerung.</p>"
     }
   }
 }
