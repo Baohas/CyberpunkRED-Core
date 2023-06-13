@@ -11,6 +11,7 @@
 - Fix Price of Fuma Kotaro Linear Frame (Implanted) in Black Chrome
 - Fix text color on mook sheet for CyberWare Weapons
 - Fix migration with container actors
+- Increase Black ICE sheet width to acomodate 2 digit REZ values better
 
 ## Version 0.87.1
 
