@@ -12,6 +12,7 @@
 - Fix text color on mook sheet for CyberWare Weapons
 - Fix migration with container actors
 - Increase Black ICE sheet width to acomodate 2 digit REZ values better
+- Fix Black ICE tokens/actors not updating when populating with a program
 
 ## Version 0.87.1
 

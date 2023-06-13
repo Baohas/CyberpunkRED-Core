@@ -234,9 +234,15 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
         cprProgramData.description.value
       );
       if (this.actor.isToken) {
-        this.actor.token.name = program.name;
-        this.actor.name = program.name;
-        this.actor.img = program.img;
+        await this.actor.update({
+          name: program.name,
+          img: program.img,
+          "system.effect": program.system.description.value,
+        });
+        await this.actor.token.update({
+          name: program.name,
+          img: program.img,
+        });
         await this.actor.token.setFlag(
           game.system.id,
           "programUUID",
@@ -244,6 +250,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
         );
       }
     }
+    await this.actor.update();
     this.render(true, { renderData: this.actor.system });
   }
 
