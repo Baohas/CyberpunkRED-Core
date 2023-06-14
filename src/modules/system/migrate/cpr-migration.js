@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */
-/* global game, hasProperty, duplicate, mergeObject, Item, fromUuidSync, fromUuid, TokenDocument */
+/* global game, hasProperty, duplicate, mergeObject, Item, fromUuidSync, fromUuid, TokenDocument, debugger */
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
@@ -28,6 +28,13 @@ export default class CPRMigration {
     this.foundryMajorVersion = parseInt(game.version, 10);
     this.migrationFolder = false;
     this.itemMapping = {};
+    this.debugMigration = {
+      enabled: true,
+      actor: { name: "Urchin", id: "", uuid: "" },
+      item: { name: "", id: "", uuid: "" },
+      scene: { name: "", id: "", uuid: "" },
+      compendia: { name: "", id: "", uuid: "" },
+    };
   }
 
   /**
@@ -231,6 +238,14 @@ export default class CPRMigration {
     let good = true;
     const actorMigrations = game.actors.contents.map(async (actor) => {
       try {
+        if (
+          this.debugMigration.enabled &&
+          (actor.name === this.debugMigration.actor.name ||
+            actor.id === this.debugMigration.actor.id ||
+            actor.uuid === this.debugMigration.actor.uuid)
+        ) {
+          debugger;
+        }
         return await this.migrateActor(actor);
       } catch (err) {
         LOGGER.error(err);
@@ -265,6 +280,14 @@ export default class CPRMigration {
     let good = true;
     const sceneMigrations = game.scenes.contents.map(async (scene) => {
       try {
+        if (
+          this.debugMigration.enabled &&
+          (scene.name === this.debugMigration.scene.name ||
+            scene.id === this.debugMigration.scene.id ||
+            scene.uuid === this.debugMigration.scene.uuid)
+        ) {
+          debugger;
+        }
         return await this.migrateScene(scene);
       } catch (err) {
         LOGGER.error(err);
@@ -341,6 +364,14 @@ export default class CPRMigration {
     )) {
       // Perform Foundry server-side migration of the pack data model
       await pack.migrate();
+      if (
+        classRef.debugMigration.enabled &&
+        (pack.name === classRef.debugMigration.compendia.name ||
+          pack.id === classRef.debugMigration.compendia.id ||
+          pack.uuid === classRef.debugMigration.compendia.uuid)
+      ) {
+        debugger;
+      }
       // Iterate over compendium entries - applying fine-tuned migration functions
       const docs = await pack.getDocuments();
       const packMigrations = docs.map(async (doc) => {
