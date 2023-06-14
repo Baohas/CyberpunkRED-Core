@@ -20,6 +20,10 @@ effects:
         changes:
           cats:
             "0": stat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/grafted_muscle_and_bone_lace.svg
     label: Grafted Muscle & Bone Lace

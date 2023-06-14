@@ -20,6 +20,10 @@ effects:
         changes:
           cats:
             "0": combat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/torn_muscle.svg
     label: Torn Muscle

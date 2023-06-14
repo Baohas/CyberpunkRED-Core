@@ -45,6 +45,25 @@ effects:
             "3": skill
             "4": skill
             "5": skill
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+            "1":
+              isSituational: false
+              onByDefault: false
+            "2":
+              isSituational: false
+              onByDefault: false
+            "3":
+              isSituational: false
+              onByDefault: false
+            "4":
+              isSituational: false
+              onByDefault: false
+            "5":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/smash.svg
     label: Smash Primary
     tint: null
@@ -94,6 +113,25 @@ effects:
             "3": skill
             "4": skill
             "5": skill
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+            "1":
+              isSituational: false
+              onByDefault: false
+            "2":
+              isSituational: false
+              onByDefault: false
+            "3":
+              isSituational: false
+              onByDefault: false
+            "4":
+              isSituational: false
+              onByDefault: false
+            "5":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/smash_addiciton.svg
     label: Smash Addiction
     tint: null

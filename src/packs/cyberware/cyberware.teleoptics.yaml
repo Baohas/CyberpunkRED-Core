@@ -25,6 +25,13 @@ effects:
           cats:
             "0": combat
             "1": combat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+            "1":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/teleoptics.svg
     label: TeleOptics
     tint: null

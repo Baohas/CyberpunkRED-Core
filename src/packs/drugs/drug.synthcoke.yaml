@@ -20,6 +20,10 @@ effects:
         changes:
           cats:
             "0": stat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke.svg
     label: Synthcoke Primary
     tint: null
@@ -44,6 +48,10 @@ effects:
         changes:
           cats:
             "0": stat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
     label: Synthcoke Addiction
     tint: null
@@ -68,6 +76,10 @@ effects:
         changes:
           cats:
             "0": stat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
     label: Synthcoke Addicted Primary
     tint: null

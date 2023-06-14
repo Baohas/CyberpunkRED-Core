@@ -20,6 +20,10 @@ effects:
         changes:
           cats:
             "0": custom
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/gear/glowstick.svg
     label: Glow Stick
     tint: null

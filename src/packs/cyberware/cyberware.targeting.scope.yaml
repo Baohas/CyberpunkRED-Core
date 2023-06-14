@@ -20,6 +20,10 @@ effects:
         changes:
           cats:
             "0": combat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/targeting_scope.svg
     label: Targeting Scope
     tint: null

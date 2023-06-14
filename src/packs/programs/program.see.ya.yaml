@@ -20,6 +20,10 @@ effects:
         changes:
           cats:
             "0": netrun
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/programs/see_ya.svg
     label: See Ya
     tint: null

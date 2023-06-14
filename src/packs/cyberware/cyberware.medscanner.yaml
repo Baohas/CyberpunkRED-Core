@@ -25,6 +25,13 @@ effects:
           cats:
             "0": skill
             "1": skill
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+            "1":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/medscanner.svg
     label: Medscanner
     tint: null

@@ -20,6 +20,10 @@ effects:
         changes:
           cats:
             "0": stat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/boost.svg
     label: Boost Primary
     tint: null
@@ -44,6 +48,10 @@ effects:
         changes:
           cats:
             "0": stat
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/boost_addiction.svg
     label: Boost Addiction
     tint: null

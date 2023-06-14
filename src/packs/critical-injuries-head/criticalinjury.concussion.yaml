@@ -20,6 +20,10 @@ effects:
         changes:
           cats:
             "0": misc
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/concussion.svg
     label: Concussion

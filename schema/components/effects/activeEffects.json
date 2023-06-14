@@ -295,7 +295,7 @@
           }
         }
       },
-      "required": ["cats"]
+      "required": ["cats", "situational"]
     },
     "CPRC-Effect-System-Changes-Situational": {
       "type": "object",
