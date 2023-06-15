@@ -6,7 +6,7 @@ effects:
         mode: 5
         priority: null
         value: "12"
-    disabled: true
+    disabled: false
     duration:
       combat: null
       rounds: null
