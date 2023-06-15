@@ -30,8 +30,7 @@ export default class CPRMigration {
     this.itemMapping = {};
     this.debugMigration = {
       enabled: false,
-      actor: { name: "Burnslide", id: "", uuid: "" },
-      item: { name: "", id: "", uuid: "" },
+      actor: { name: "", id: "", uuid: "" },
       scene: { name: "", id: "", uuid: "" },
       compendia: { name: "", id: "", uuid: "" },
     };
