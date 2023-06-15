@@ -2,6 +2,10 @@
 
 # Changelog
 
+## Version 0.87.3
+
+### Bug Fixes
+
 ## Version 0.87.2
 
 ### Bug Fixes
