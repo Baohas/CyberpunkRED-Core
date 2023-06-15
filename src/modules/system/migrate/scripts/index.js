@@ -16,3 +16,4 @@ export { default as ItemSmartGlassesMigration } from "./009-fixSmartGlasses.js";
 export { default as AmmoOverrideMigration } from "./010-ammoOverride.js";
 export { default as ArmorPiercingMigration } from "./011-armorPiercing.js";
 export { default as InstalledItemMigrationFix } from "./012-installedItemMigrationFix.js";
+export { default as RoleAbilitiesFix } from "./013-roleAbilitiesFix.js";
