@@ -1,5 +1,29 @@
 _id: umX2i9wlVcBG1lgv
-effects: []
+effects:
+  - _id: TeYMucOf1sfsns1r
+    changes:
+      - key: bonuses.hasPainSuppression
+        mode: 5
+        priority: null
+        value: true
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": misc
+    icon: systems/cyberpunk-red-core/icons/compendium/cyberware/pain_editor.svg
+    label: Pain Editor
+    tint: null
+    transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/pain_editor.svg
 name: Pain Editor
 system:
@@ -56,7 +80,7 @@ system:
   type: neuralWare
   unarmedAutomaticCalculation: true
   upgrades: []
-  usage: toggled
+  usage: installed
   usesType: magazine
   weaponSkill: Archery
   weaponType: assaultRifle

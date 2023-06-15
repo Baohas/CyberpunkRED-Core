@@ -744,6 +744,7 @@ CPR.activeEffectKeys = {
     "bonuses.allActions": "CPR.effectSheet.misc.allActions",
     "bonuses.allActionsHands": "CPR.effectSheet.misc.allActionsHands",
     "bonuses.allActionsSpeech": "CPR.effectSheet.misc.allActionsSpeech",
+    "bonuses.hasPainSuppression": "CPR.effectSheet.misc.hasPainSuppression",
   },
 };
 

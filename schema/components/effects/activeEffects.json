@@ -194,7 +194,8 @@
             "bonuses.allActions",
             "bonuses.allActionsHands",
             "bonuses.allActionsSpeech",
-            "ATL.light.bright"
+            "ATL.light.bright",
+            "bonuses.hasPainSuppression"
           ]
         },
         "mode": {

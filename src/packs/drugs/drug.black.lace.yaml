@@ -1,5 +1,29 @@
 _id: 6BM5WFyCyIM8lZib
 effects:
+  - _id: aNvneLolAXX4F6Rs
+    changes:
+      - key: bonuses.hasPainSuppression
+        mode: 5
+        priority: null
+        value: true
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": misc
+    icon: systems/cyberpunk-red-core/icons/compendium/status/black_lace.svg
+    label: Black Lace Primary
+    tint: null
+    transfer: true
   - _id: L4P56fOWGjVT82ES
     changes:
       - key: system.stats.ref.value
@@ -37,7 +61,7 @@ system:
   concealable:
     concealable: false
     isConcealed: false
-  consumed: None
+  consumed: Black Lace Primary
   description:
     chat: ""
     unidentified: ""
@@ -75,5 +99,5 @@ system:
   source:
     book: Core
     page: 357
-  usage: toggled
+  usage: snorted
 type: drug

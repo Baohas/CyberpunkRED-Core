@@ -383,6 +383,7 @@ export default class CPRActor extends Actor {
     this.bonuses.universalAttack = 0;
     this.bonuses.universalDamage = 0;
     this.bonuses.universalDamageReduction = 0;
+    this.bonuses.hasPainSuppression = false;
     // netrunning things
     this.bonuses.speed = 0;
     this.bonuses.perception_net = 0; // beware of hacks because "perception" is also a skill
@@ -647,7 +648,10 @@ export default class CPRActor extends Actor {
   getWoundStateMods() {
     LOGGER.trace("getWoundStateMods | CPRActor | Obtaining Wound State Mods.");
     let woundStateMod = 0;
-    if (this.getWoundState() === "seriouslyWounded") {
+    if (
+      this.getWoundState() === "seriouslyWounded" &&
+      !this.bonuses.hasPainSuppression
+    ) {
       woundStateMod = -2;
     }
     if (this.getWoundState() === "mortallyWounded") {

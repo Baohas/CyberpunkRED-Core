@@ -1,5 +1,33 @@
 _id: r21n9rFplUOtnjHM
-effects: []
+effects:
+  - _id: Tdev2grXyvKJvIhr
+    changes:
+      - key: bonuses.hasPainSuppression
+        mode: 5
+        priority: null
+        value: true
+    disabled: true
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": misc
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+    icon: systems/cyberpunk-red-core/icons/compendium/drugs/stim.svg
+    label: Stim
+    tint: null
+    transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/drugs/stim.svg
 name: Stim
 system:
@@ -8,7 +36,7 @@ system:
   concealable:
     concealable: false
     isConcealed: false
-  consumed: None
+  consumed: Stim
   description:
     chat: ""
     unidentified: ""
@@ -24,5 +52,5 @@ system:
   source:
     book: Core
     page: 150
-  usage: toggled
+  usage: snorted
 type: drug
