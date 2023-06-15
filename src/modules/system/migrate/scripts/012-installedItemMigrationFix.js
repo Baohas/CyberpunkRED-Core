@@ -35,6 +35,24 @@ export default class InstalledItemMigrationFix extends CPRMigration {
    */
   async migrateActor(actor) {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
+    if (actor.system.installedItems.list.length > 0) {
+      const actorInstalledItems = [];
+      for (const installedItemUuid of actor.system.installedItems.list) {
+        const installedItemUuidParts = installedItemUuid.split('.');
+        installedItemUuidParts[1] = actor._id;
+        const newInstalledItemUuid = installedItemUuidParts.join('.');
+        const item = fromUuidSync(newInstalledItemUuid);
+        if (item && item.isOwned && item.actor.uuid === actor.uuid) {
+          actorInstalledItems.push(item.uuid);
+        }
+      }
+      if (actorInstalledItems !== actor.system.installedItems.list) {
+        await actor.update({
+          "system.installedItems.list": actorInstalledItems,
+        });
+      }
+    }
+
     const containerTypes = CPRSystemUtils.GetTemplateItemTypes("container");
     const upgradableTypes = CPRSystemUtils.GetTemplateItemTypes("upgradable");
     const ownedItemUpdates = [];

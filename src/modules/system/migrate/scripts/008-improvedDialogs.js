@@ -107,6 +107,10 @@ export default class ImprovedDialogMigration extends CPRMigration {
 
     await actor.updateEmbeddedDocuments("ActiveEffect", updateList);
 
+    if (actor.name === "Burnslide") {
+      debugger;
+    }
+
     const ownedEffectItems = actor.items.filter((i) => {
       if (i.type === "skill") return false;
       if (i.type === "cyberware" && i.system.core) return false;

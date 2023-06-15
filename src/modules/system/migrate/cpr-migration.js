@@ -29,8 +29,8 @@ export default class CPRMigration {
     this.migrationFolder = false;
     this.itemMapping = {};
     this.debugMigration = {
-      enabled: true,
-      actor: { name: "Urchin", id: "", uuid: "" },
+      enabled: false,
+      actor: { name: "Burnslide", id: "", uuid: "" },
       item: { name: "", id: "", uuid: "" },
       scene: { name: "", id: "", uuid: "" },
       compendia: { name: "", id: "", uuid: "" },
@@ -365,10 +365,10 @@ export default class CPRMigration {
       // Perform Foundry server-side migration of the pack data model
       await pack.migrate();
       if (
-        classRef.debugMigration.enabled &&
-        (pack.name === classRef.debugMigration.compendia.name ||
-          pack.id === classRef.debugMigration.compendia.id ||
-          pack.uuid === classRef.debugMigration.compendia.uuid)
+        this.debugMigration.enabled &&
+        (pack.name === this.debugMigration.compendia.name ||
+          pack.id === this.debugMigration.compendia.id ||
+          pack.uuid === this.debugMigration.compendia.uuid)
       ) {
         debugger;
       }
@@ -575,7 +575,9 @@ export default class CPRMigration {
       installableTypes.includes(item.type) &&
       actor.system.installedItems?.list.includes(originalUuid)
     ) {
-      const newInstalledItems = actor.system.installedItems.list;
+      const newInstalledItems = actor.system.installedItems.list.filter(
+        (uuid) => uuid !== originalUuid
+      );
       newInstalledItems.push(newOwnedItem.uuid);
       await actor.update({ "system.installedItems.list": newInstalledItems });
     }
