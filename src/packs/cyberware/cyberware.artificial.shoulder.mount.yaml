@@ -87,7 +87,7 @@ system:
   type: borgware
   unarmedAutomaticCalculation: true
   upgrades: []
-  usage: toggled
+  usage: installed
   usesType: magazine
   weaponSkill: ""
   weaponType: ""
