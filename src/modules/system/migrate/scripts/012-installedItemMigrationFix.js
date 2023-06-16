@@ -35,6 +35,9 @@ export default class InstalledItemMigrationFix extends CPRMigration {
    */
   async migrateActor(actor) {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
+    if (typeof actor.system.installedItems !== "object") {
+      return Promise.resolve();
+    }
     if (actor.system.installedItems.list.length > 0) {
       const actorInstalledItems = [];
       for (const installedItemUuid of actor.system.installedItems.list) {
@@ -92,7 +95,7 @@ export default class InstalledItemMigrationFix extends CPRMigration {
                 const modifier = upgradeModifiers[index];
                 if (
                   typeof modifier !== "undefined" &&
-                  typeof CPR.upgradableDataPoints[this.type][index] !==
+                  typeof CPR.upgradableDataPoints[item.type][index] !==
                     "undefined" &&
                   modifier !== 0 &&
                   modifier !== null &&
