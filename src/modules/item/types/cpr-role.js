@@ -195,9 +195,6 @@ export default class CPRRoleItem extends CPRItem {
     }
     // Check whether each sub ability has the applicable bonus/universal bonus.
     this.system.abilities.forEach((a, index) => {
-      console.log(a);
-      console.log(index);
-      console.log("BREAK");
       if (
         a?.[roleBonusKey].some((b) => b.name === bonusName || b === bonusName)
       ) {
