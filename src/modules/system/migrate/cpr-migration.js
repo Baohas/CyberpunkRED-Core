@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */

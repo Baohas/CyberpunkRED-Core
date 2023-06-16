@@ -41,9 +41,9 @@ export default class InstalledItemMigrationFix extends CPRMigration {
     if (actor.system.installedItems.list.length > 0) {
       const actorInstalledItems = [];
       for (const installedItemUuid of actor.system.installedItems.list) {
-        const installedItemUuidParts = installedItemUuid.split('.');
+        const installedItemUuidParts = installedItemUuid.split(".");
         installedItemUuidParts[1] = actor._id;
-        const newInstalledItemUuid = installedItemUuidParts.join('.');
+        const newInstalledItemUuid = installedItemUuidParts.join(".");
         const item = fromUuidSync(newInstalledItemUuid);
         if (item && item.isOwned && item.actor.uuid === actor.uuid) {
           actorInstalledItems.push(item.uuid);
