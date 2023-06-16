@@ -5,7 +5,7 @@ effects:
       - key: bonuses.hasPainSuppression
         mode: 5
         priority: null
-        value: true
+        value: "1"
     disabled: false
     duration:
       combat: null

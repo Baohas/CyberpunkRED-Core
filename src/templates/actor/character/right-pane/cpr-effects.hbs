@@ -26,7 +26,9 @@
                   {{!-- "this" is now an individual mod for the AE object --}}
                   {{cprGetChangeNameByKey ../this change.category change.key}}
                   {{#if change.value }}
-                    {{cprEffectModMode change.changeMode change.value}}
+                    {{#unless (cprCompare change.key "===" "bonuses.hasPainSuppression")}}
+                      {{cprEffectModMode change.changeMode change.value}}
+                    {{/unless}}
                   {{~else}}
                     0
                   {{~/if}}
