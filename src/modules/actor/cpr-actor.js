@@ -2071,6 +2071,7 @@ export default class CPRActor extends Actor {
    * It handles the automatic equipping of gear and installation of cyberware.
    *
    * @param {CPRItem} item - the item document that was dragged
+   * @returns {Promise}
    */
   async handleMookDraggedItem(item) {
     LOGGER.trace("handleMookDraggedItem | CPRActor | Called.");
@@ -2087,5 +2088,6 @@ export default class CPRActor extends Actor {
         { _id: item._id, "system.equipped": "equipped" },
       ]);
     }
+    return Promise.resolve();
   }
 }
