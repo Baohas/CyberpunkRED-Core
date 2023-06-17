@@ -13,6 +13,7 @@
 - #824 - Now when you drag a cyberware item to a mook sheet, if it can't be auto-installed/equipped, it will delete the newly created item so it does not remain hidden in the inventory.
 - Fix Crushed Fingers/Lost Eye Critical Injury Effect Name
 - #827 - Fix items not being created when purchased from a vendor/container actor.
+- #829 - Fix failure when migrating tokens with broken references to their parent actors.
 
 ## Version 0.87.2
 
