@@ -312,8 +312,8 @@ export default class CPRMigration {
     LOGGER.trace("migrateScene | CPRMigration");
     const tokens = scene.tokens.contents.filter((token) => {
       const tokenData = this.foundryMajorVersion < 10 ? token.data : token;
-      if (!tokenData.actorLink && !game.actors.has(tokenData.actorId)) {
-        // Degenerate case where the token is unlinked, but the actor it is derived from was since
+      if (!game.actors.has(tokenData.actorId)) {
+        // Degenerate case where the actor that the token is derived from was since
         // deleted. This makes token.actor null so we don't have a full view of all of the actor data.
         // This is technically a broken token and even Foundry throws errors when you do certain things
         // with this token. We skip it.
