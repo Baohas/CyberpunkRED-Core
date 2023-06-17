@@ -487,7 +487,7 @@ export default class CPRActor extends Actor {
    *
    * @async
    * @param {String} itemId - the ItemId of the cyberware to be added
-   * @returns {null}
+   * @returns {Boolean} - Whether the installation was successful or not
    */
   async installCyberware(itemId) {
     LOGGER.trace("installCyberware | CPRActor | Called.");
@@ -508,7 +508,7 @@ export default class CPRActor extends Actor {
         false,
         "CPR.messages.warnNoFoundationalCyberwareOfCorrectType"
       );
-      return;
+      return false;
     }
 
     // For each Foundational Cyberware of the item.system.type that is installed
@@ -554,7 +554,7 @@ export default class CPRActor extends Actor {
       }
     ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
-      return;
+      return false;
     }
 
     if (!item.system.isFoundational && !formData.foundationalId) {
@@ -562,18 +562,20 @@ export default class CPRActor extends Actor {
         false,
         "CPR.messages.warnNoFoundationalCyberwareOfCorrectType"
       );
-      return;
+      return false;
     }
 
     const target = item.system.isFoundational
       ? this
       : this.getOwnedItem(formData.foundationalId);
 
-    target.installItems([item]).then(async (installationSuccess) => {
-      if (installationSuccess.length > 0) {
-        await this.loseHumanityValue(item, formData);
-      }
-    });
+    const installationSuccess = await target.installItems([item]);
+
+    if (installationSuccess.length > 0) {
+      await this.loseHumanityValue(item, formData);
+      return true;
+    }
+    return false;
   }
 
   /**
@@ -2070,15 +2072,18 @@ export default class CPRActor extends Actor {
    *
    * @param {CPRItem} item - the item document that was dragged
    */
-  handleMookDraggedItem(item) {
+  async handleMookDraggedItem(item) {
     LOGGER.trace("handleMookDraggedItem | CPRActor | Called.");
     // auto-install this cyberware
     if (item.type === "cyberware") {
-      this.installCyberware(item._id);
+      const installResult = await this.installCyberware(item._id);
+      if (!installResult) {
+        return this.deleteEmbeddedDocuments("Item", [item._id]);
+      }
     }
     // auto-equip this item
     if (SystemUtils.hasDataModelTemplate(item.type, "equippable")) {
-      this.updateEmbeddedDocuments("Item", [
+      return this.updateEmbeddedDocuments("Item", [
         { _id: item._id, "system.equipped": "equipped" },
       ]);
     }
