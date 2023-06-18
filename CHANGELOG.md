@@ -9,6 +9,7 @@
 - #808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - #812 - Some roles were missing the bonuses data point as an empty array.
 - Fix being unable to delete certain effects from compendium items with Active Effects.
+- Fix CSS issues with modules Cautious Gamemaster's Pack and Item Piles
 
 ## Version 0.87.2
 
