@@ -33,7 +33,7 @@ effects:
               isSituational: true
               onByDefault: true
     icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_eye.svg
-    label: New Effect
+    label: Lost Eye
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_eye.svg

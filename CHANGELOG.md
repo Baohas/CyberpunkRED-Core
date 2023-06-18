@@ -11,6 +11,7 @@
 - Fix being unable to delete certain effects from compendium items with Active Effects.
 - Fix CSS issues with modules Cautious Gamemaster's Pack and Item Piles
 - Fix #824 - Now when you drag a cyberware item to a mook sheet, if it can't be auto-installed/equipped, it will delete the newly created item so it does not remain hidden in the inventory.
+- Fix Crushed Fingers/Lost Eye Critical Injury Effect Name
 
 ## Version 0.87.2
 
