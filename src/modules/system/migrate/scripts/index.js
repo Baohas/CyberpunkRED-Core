@@ -18,3 +18,4 @@ export { default as ArmorPiercingMigration } from "./011-armorPiercing.js";
 export { default as InstalledItemMigrationFix } from "./012-installedItemMigrationFix.js";
 export { default as RoleAbilitiesFix } from "./013-roleAbilitiesFix.js";
 export { default as SituationalFix } from "./014-situationalFix.js";
+export { default as dvCompendiumMigration } from "./015-dvCompendium.js";
