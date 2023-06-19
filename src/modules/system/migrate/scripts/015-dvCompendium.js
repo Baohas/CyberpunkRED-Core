@@ -1,4 +1,5 @@
 /* eslint-disable foundry-cpr/logger-after-function-definition */
+/* global game */
 
 import CPRMigration from "../cpr-migration.js";
 import LOGGER from "../../../utils/cpr-logger.js";
@@ -28,23 +29,11 @@ export default class dvCompendiumMigration extends CPRMigration {
   }
 
   /**
-   * Here's the real work.
+   * Migrate settings. This is a new function introduced in this migration (015-dvCompendium).
    *
-   * @param {CPRItem} item
    */
-  static async migrateItem(item) {
-    LOGGER.debug(`migrateItem | ${this.version}-${this.name}`);
-  }
-
-  /**
-   * Simply make sure owned items are updated too.
-   *
-   * @param {CPRActor} actor
-   */
-  async migrateActor(actor) {
-    LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
-    // Abusing this to update the game setting
-    // Tried for a few hours to add a `migrateSetting` function
+  async migrateSettings() {
+    LOGGER.trace(`migrateSettings | ${this.version}-${this.name}`);
     const settingName = "dvRollTableCompendium";
     const newValue = `${game.system.id}.dv-tables`;
     const oldValue = `${game.system.id}.dvTables`;
@@ -52,13 +41,9 @@ export default class dvCompendiumMigration extends CPRMigration {
 
     if (currentValue === oldValue) {
       LOGGER.trace(`migrateSettings | Updating ${settingName} to ${newValue}`);
-      return game.settings.set(game.system.id, settingName, newValue);
+      await game.settings.set(game.system.id, settingName, newValue);
     }
-    for (const item of actor.items) {
-      // eslint-disable-next-line no-await-in-loop
-      const updateData = await PackIconMigration.migrateItem(item);
-      if (updateData !== null) itemUpdates.push(updateData);
-    }
-    return actor.updateEmbeddedDocuments("Item", itemUpdates);
+    // Return true so that migration continues if the setting was already correct.
+    return true;
   }
 }

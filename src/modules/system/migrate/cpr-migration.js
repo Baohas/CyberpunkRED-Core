@@ -61,6 +61,15 @@ export default class CPRMigration {
       `${CPRSystemUtils.Localize("CPR.migration.status.compendia")}...`;
     CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
 
+    // Migrate settings, if any, first.
+    if (!(await this.migrateSettings())) {
+      CPRSystemUtils.DisplayMessage(
+        "error",
+        CPRSystemUtils.Localize("CPR.migration.status.settingsErrors")
+      );
+      return false;
+    }
+
     if (!(await CPRMigration.migrateItems(classRef))) {
       CPRSystemUtils.DisplayMessage(
         "error",
@@ -192,6 +201,16 @@ export default class CPRMigration {
       newList.push(itemUpdateData);
     }
     return newList;
+  }
+
+  /**
+   * Does nothing and is meant to be over-ridden.
+   *
+   */
+  async migrateSettings() {
+    LOGGER.trace("migrateSettings | CPRMigration");
+    // Return true so that if a migration script doesn't override this function, nothing fails.
+    return true;
   }
 
   /**
