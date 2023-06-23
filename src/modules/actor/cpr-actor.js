@@ -248,14 +248,7 @@ export default class CPRActor extends Actor {
         }
       }
     }
-    // Call appropriate create method depending on if it is an unlinked token actor
-    if (this.isToken && !this.token.isLinked) {
-      return this.token.createActorEmbeddedDocuments(
-        embeddedName,
-        ids,
-        context
-      );
-    }
+
     if (
       embeddedName === "Item" &&
       Object.values(this.apps).some(
@@ -288,14 +281,6 @@ export default class CPRActor extends Actor {
    */
   async updateEmbeddedDocuments(embeddedName, updates, options = {}) {
     LOGGER.trace("updateEmbeddedDocuments | CPRActor | called.");
-    // Call appropriate update method depending on if it is an unlinked token actor
-    if (this.isToken && !this.token.isLinked) {
-      return this.token.updateActorEmbeddedDocuments(
-        embeddedName,
-        updates,
-        options
-      );
-    }
     return super.updateEmbeddedDocuments(embeddedName, updates, options);
   }
 
@@ -355,14 +340,6 @@ export default class CPRActor extends Actor {
       }
     }
 
-    // Call appropriate delete method depending on if it is an unlinked token actor
-    if (this.isToken && !this.token.isLinked) {
-      return this.token.deleteActorEmbeddedDocuments(
-        embeddedName,
-        ids,
-        context
-      );
-    }
     return super.deleteEmbeddedDocuments(embeddedName, ids, context);
   }
 

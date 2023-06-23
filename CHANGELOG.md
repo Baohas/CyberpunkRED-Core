@@ -14,6 +14,7 @@
 - Fix Crushed Fingers/Lost Eye Critical Injury Effect Name
 - #827 - Fix items not being created when purchased from a vendor/container actor.
 - #829 - Fix failure when migrating tokens with broken references to their parent actors.
+- Fix issue where unlinked actors were not gaining Active Effects.
 
 ## Version 0.87.2
 
