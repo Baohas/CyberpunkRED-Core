@@ -26,7 +26,7 @@ effects:
               onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/amplified_hearing.svg
-    label: Amplified Hearing
+    name: Amplified Hearing
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/amplified_hearing.svg

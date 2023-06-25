@@ -21,7 +21,7 @@ effects:
           cats:
             "0": custom
     icon: systems/cyberpunk-red-core/icons/compendium/gear/flashlight.svg
-    label: Flashlight
+    name: Flashlight
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/gear/flashlight.svg

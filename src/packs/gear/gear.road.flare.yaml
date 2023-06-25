@@ -21,7 +21,7 @@ effects:
           cats:
             "0": custom
     icon: systems/cyberpunk-red-core/icons/compendium/gear/roadflare.svg
-    label: Road Flare
+    name: Road Flare
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/gear/roadflare.svg

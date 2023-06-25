@@ -34,7 +34,7 @@ effects:
               onByDefault: true
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg
-    label: Damaged Eye
+    name: Damaged Eye
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg

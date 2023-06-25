@@ -27,7 +27,7 @@ effects:
             "1": skill
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/voice_stress_analyzer.svg
-    label: Voice Stress Analyzer
+    name: Voice Stress Analyzer
     tint: null
     transfer: true
 img: >-

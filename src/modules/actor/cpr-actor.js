@@ -1906,7 +1906,7 @@ export default class CPRActor extends Actor {
     if (setting) {
       const dialogMessage = `${SystemUtils.Localize(
         "CPR.dialog.deleteConfirmation.message"
-      )} ${effect.label}?`;
+      )} ${effect.name}?`;
 
       // Show "Default" dialog.
       const confirmDelete = await CPRDialog.showDialog(

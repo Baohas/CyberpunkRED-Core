@@ -26,7 +26,7 @@ effects:
               onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
-    label: LF-001 SWAT Linear Frame
+    name: LF-001 SWAT Linear Frame
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg

@@ -22,7 +22,7 @@ effects:
             "0": misc
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/concussion.svg
-    label: Concussion
+    name: Concussion
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/concussion.svg

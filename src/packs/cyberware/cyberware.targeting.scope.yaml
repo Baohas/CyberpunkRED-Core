@@ -21,7 +21,7 @@ effects:
           cats:
             "0": combat
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/targeting_scope.svg
-    label: Targeting Scope
+    name: Targeting Scope
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/targeting_scope.svg

@@ -25,7 +25,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_beta.svg
-    label: Linear Frame Beta
+    name: Linear Frame Beta
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_beta.svg

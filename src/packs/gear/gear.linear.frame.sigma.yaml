@@ -25,7 +25,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_sigma.svg
-    label: Linear Frame Sigma
+    name: Linear Frame Sigma
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_sigma.svg

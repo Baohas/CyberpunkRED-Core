@@ -65,7 +65,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/piranha-smash.svg
-    label: Piranha Smash Primary
+    name: Piranha Smash Primary
     tint: null
     transfer: true
   - _id: qSb9OyRqLojya1co
@@ -134,7 +134,7 @@ effects:
               onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/status/piranha-smash-addiction.svg
-    label: Piranha Smash Addiciton
+    name: Piranha Smash Addiciton
     tint: null
     transfer: true
 img: >-

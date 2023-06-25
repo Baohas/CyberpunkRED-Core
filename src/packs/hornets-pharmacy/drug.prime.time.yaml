@@ -33,7 +33,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/prime_time.svg
-    label: Prime Time
+    name: Prime Time
     tint: null
     transfer: true
   - _id: cDOJ0bvvt3q79G8y
@@ -62,7 +62,7 @@ effects:
               onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/status/prime_time_addiction.svg
-    label: Prime Time Addiction
+    name: Prime Time Addiction
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/prime_time.svg

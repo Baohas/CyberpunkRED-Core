@@ -25,7 +25,7 @@ effects:
               isSituational: true
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/poser_chip.svg
-    label: Poser Chip (Impersonate)
+    name: Poser Chip (Impersonate)
     tint: null
     transfer: true
   - _id: joudVbiOapxtTJl8
@@ -53,7 +53,7 @@ effects:
               isSituational: true
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/poser_chip.svg
-    label: Poser Chip (Roleplay)
+    name: Poser Chip (Roleplay)
     tint: null
     transfer: true
 img: >-

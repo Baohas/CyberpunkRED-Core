@@ -25,7 +25,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/cyberweapons/wolvers.svg
-    label: Tasmanskiy Klô
+    name: Tasmanskiy Klô
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/cyberweapons/wolvers.svg

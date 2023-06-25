@@ -21,7 +21,7 @@ effects:
           cats:
             "0": combat
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/kerenzikov.svg
-    label: Kerenzikov
+    name: Kerenzikov
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/kerenzikov.svg

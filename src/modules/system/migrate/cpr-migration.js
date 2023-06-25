@@ -473,7 +473,7 @@ export default class CPRMigration {
         // const [effect] = await newItem.createEffect(false);
         const newData = {
           // _id: effect.id,
-          label: sourceEffect.label,
+          name: sourceEffect.name,
           icon: sourceEffect.icon,
           system: sourceEffect.system,
           changes: sourceEffect.changes,

@@ -21,7 +21,7 @@ effects:
           cats:
             "0": netrun
     icon: systems/cyberpunk-red-core/icons/compendium/programs/speedy_gonzalvez.svg
-    label: Speedy Gonzalves
+    name: Speedy Gonzalves
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/programs/speedy_gonzalvez.svg

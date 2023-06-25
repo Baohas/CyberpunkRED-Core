@@ -22,7 +22,7 @@ effects:
             "0": stat
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/grafted_muscle_and_bone_lace.svg
-    label: Grafted Muscle & Bone Lace
+    name: Grafted Muscle & Bone Lace
     tint: null
     transfer: true
 img: >-

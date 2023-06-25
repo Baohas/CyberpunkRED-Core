@@ -21,7 +21,7 @@ effects:
           cats:
             "0": stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke.svg
-    label: Synthcoke Primary
+    name: Synthcoke Primary
     tint: null
     transfer: true
   - _id: 9fYAbvg99knLYj9T
@@ -45,7 +45,7 @@ effects:
           cats:
             "0": stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
-    label: Synthcoke Addiction
+    name: Synthcoke Addiction
     tint: null
     transfer: true
   - _id: rw9YMhZaP2AQcYJw
@@ -69,7 +69,7 @@ effects:
           cats:
             "0": stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/synthcoke_addiciton.svg
-    label: Synthcoke Addicted Primary
+    name: Synthcoke Addicted Primary
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/drugs/synthcoke.svg

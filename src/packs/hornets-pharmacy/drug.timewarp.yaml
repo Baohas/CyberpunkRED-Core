@@ -25,7 +25,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/readied_action.svg
-    label: Timewarp Primary
+    name: Timewarp Primary
     tint: null
     transfer: true
   - _id: vehnLbHCsPpLEcaK
@@ -53,7 +53,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/timewarp_addiction.svg
-    label: Timewarp Addicted
+    name: Timewarp Addicted
     tint: null
     transfer: true
   - _id: 2UFkxrs6fI3cmpNz
@@ -81,7 +81,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/timewarp_addiction.svg
-    label: Timewarp Addicted Primary
+    name: Timewarp Addicted Primary
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/timewarp.svg

@@ -159,12 +159,12 @@ const Effects = function Effects() {
   /**
    * Return an active effect matching the give name ("label" is the AE property).
    *
-   * @param {String} label - the name to search by
+   * @param {String} name - the name to search by
    * @returns {ActiveEffect}
    */
-  this.getEffectByName = function getEffectByName(label) {
+  this.getEffectByName = function getEffectByName(name) {
     LOGGER.trace("getEffectByName | Effects | Called.");
-    return this.effects.find((e) => e.label === label);
+    return this.effects.find((e) => e.name === name);
   };
 
   /**
@@ -174,7 +174,7 @@ const Effects = function Effects() {
    */
 
   this.getEffectNames = function getEffectNames() {
-    return this.effects.map((e) => e.label);
+    return this.effects.map((e) => e.name);
   };
 
   /**

@@ -21,7 +21,7 @@ effects:
           cats:
             "0": stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/boost.svg
-    label: Boost Primary
+    name: Boost Primary
     tint: null
     transfer: true
   - _id: ptnwPRaryJxNVOQf
@@ -45,7 +45,7 @@ effects:
           cats:
             "0": stat
     icon: systems/cyberpunk-red-core/icons/compendium/status/boost_addiction.svg
-    label: Boost Addiction
+    name: Boost Addiction
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/drugs/boost.svg

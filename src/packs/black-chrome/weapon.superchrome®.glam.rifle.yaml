@@ -25,7 +25,7 @@ effects:
               isSituational: true
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
-    label: Superchrome® Glam Rifle
+    name: Superchrome® Glam Rifle
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg

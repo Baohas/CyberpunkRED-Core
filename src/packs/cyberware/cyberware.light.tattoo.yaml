@@ -21,7 +21,7 @@ effects:
           cats:
             "0": skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/light_tattoo.svg
-    label: Light Tattoo
+    name: Light Tattoo
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/light_tattoo.svg

@@ -65,7 +65,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/veritas.svg
-    label: Veritas Primary
+    name: Veritas Primary
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/veritas.svg

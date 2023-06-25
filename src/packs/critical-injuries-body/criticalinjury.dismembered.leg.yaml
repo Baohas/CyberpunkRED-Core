@@ -22,7 +22,7 @@ effects:
             "0": stat
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/dismembered_leg.svg
-    label: Dismembered Leg
+    name: Dismembered Leg
     tint: null
     transfer: true
 img: >-

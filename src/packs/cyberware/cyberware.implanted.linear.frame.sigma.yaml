@@ -22,7 +22,7 @@ effects:
             "0": stat
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/cyberware/implanted_linearframe_sigma.svg
-    label: Implanted Linear Frame Sigma
+    name: Implanted Linear Frame Sigma
     tint: null
     transfer: true
 img: >-

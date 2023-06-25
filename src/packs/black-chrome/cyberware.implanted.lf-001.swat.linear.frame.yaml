@@ -26,7 +26,7 @@ effects:
               onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/default/default-implanted-linearframe.svg
-    label: Implated LF-001 SWAT Linear Frame
+    name: Implated LF-001 SWAT Linear Frame
     tint: null
     transfer: true
 img: >-

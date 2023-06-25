@@ -164,7 +164,7 @@ export class CPRRoll {
   async roll() {
     LOGGER.trace("roll | CPRRoll | Called.");
     // calculate the initial roll
-    this._roll = await new Roll(this.formula).evaluate({ async: true });
+    this._roll = await new Roll(this.formula).evaluate();
 
     // eslint-disable-next-line no-use-before-define
     if (!(this instanceof CPRInitiative)) {
@@ -183,7 +183,7 @@ export class CPRRoll {
 
     // check and consider criticals (min or max # on die)
     if (this.wasCritical() && this.calculateCritical) {
-      this._critRoll = await new Roll(this.formula).evaluate({ async: true });
+      this._critRoll = await new Roll(this.formula).evaluate();
       // eslint-disable-next-line no-use-before-define
       if (!(this instanceof CPRInitiative)) {
         await DiceSoNice.ShowDiceSoNice(this._critRoll);

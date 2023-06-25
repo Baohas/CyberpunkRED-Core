@@ -41,7 +41,7 @@ effects:
               isSituational: true
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/image_enhance.svg
-    label: Image Enhance
+    name: Image Enhance
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/image_enhance.svg

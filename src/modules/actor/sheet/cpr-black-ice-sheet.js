@@ -42,16 +42,10 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
 
     foundryData.enrichedHTML = [];
     foundryData.enrichedHTML.systemEffect = await TextEditor.enrichHTML(
-      this.actor.system.effect,
-      {
-        async: true,
-      }
+      this.actor.system.effect
     );
     foundryData.enrichedHTML.systemNotes = await TextEditor.enrichHTML(
-      this.actor.system.notes,
-      {
-        async: true,
-      }
+      this.actor.system.notes
     );
 
     // Get data for the linked program for the Black ICE.

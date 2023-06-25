@@ -21,7 +21,7 @@ effects:
           cats:
             "0": netrun
     icon: systems/cyberpunk-red-core/icons/compendium/programs/worm.svg
-    label: Worm
+    name: Worm
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/programs/worm.svg

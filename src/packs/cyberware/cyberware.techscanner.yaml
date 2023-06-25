@@ -51,7 +51,7 @@ effects:
             "5": skill
             "6": skill
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/techscanner.svg
-    label: Techscanner
+    name: Techscanner
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/techscanner.svg
