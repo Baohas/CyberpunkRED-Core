@@ -16,6 +16,8 @@ This game system (including items provided in the compendium) contains unofficia
   - [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
 - Orbitron
   - [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
+- Rubik
+  - [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
 
 ## Art
 
