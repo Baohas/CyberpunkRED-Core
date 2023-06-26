@@ -85,9 +85,6 @@ form {
     min-width: unset;
     margin: 0;
     line-height: inherit;
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
     user-select: text;
     border: none;
     height: 100%;
@@ -183,7 +180,12 @@ input::placeholder {
   }
 }
 
-// Overide the standard editor styles
+/*
+ * TinyMCE editor
+ *
+ * We don't have many options to style TinyMCE as it is loaded in an iframe
+ */
+
 .editor {
   .editor-edit {
     color: var(--cpr-text-editor-button);
@@ -228,13 +230,75 @@ input::placeholder {
   }
 }
 
-/* Prosemirror Editor */
+/*
+ * Prosemirror Overrides
+ *
+ * .prosemirror gets a lot of styling from the Journals section below as well
+ * the rules here are specific to the editor that don't have styles in the
+ * Journal section itself. If the Foundry devs use prosemirror for other editor
+ * fields down the line we will need port them to this section or extend the
+ * Journal section below to apply to other classes as well.
+ */
 
-// Fix Image selection popup
-.prosemirror.menu-dialog form {
-  color: var(--cpr-text-normal);
-  background: var(--cpr-background-box);
+.prosemirror,
+.prosemirror.menu-dialog {
+  form {
+    color: var(--cpr-text-normal);
+    background: var(--cpr-background-box);
+  }
+
+  menu {
+    button,
+    ul,
+    .pm-dropdown {
+      color: var(--cpr-text-foundry-input) !important;
+      background: var(--cpr-background-editor-button) !important;
+
+      // Set the color of the icons in the dropdowns
+      i,
+      i:hover {
+        color: var(--cpr-text-foundry-input) !important;
+      }
+      li {
+        &:hover {
+          color: var(--cpr-text-foundry-input) !important;
+          background: var(--cpr-background-editor-button-hover) !important;
+        }
+      }
+    }
+    button {
+      &:active {
+        color: var(--cpr-text-foundry-input) !important;
+        background: var(--cpr-background-editor-button-active) !important;
+      }
+
+      &:hover {
+        color: var(--cpr-text-foundry-input) !important;
+        background: var(--cpr-background-editor-button-hover) !important;
+      }
+    }
+    //input,
+    //button {
+    //  color: var(--cpr-text-foundry-input) !important;
+    //  background: var(--cpr-background-foundry-input) !important;
+
+    //  .title {
+    //    font-family: var(--cpr-font-journal-header);
+    //  }
+    //}
+  }
 }
+
+//// Fix Image selection popup
+//.prosemirror.menu-dialog form {
+//  color: var(--cpr-text-normal);
+//  background: var(--cpr-background-box);
+//}
+//
+//.prosemirror .pm-dropdown {
+//  color: var(--cpr-text-normal) !important;
+//  background: var(--cpr-background-box) !important;
+//}
 
 // Override the content link element use when linking to another foundry
 // actor, item etc.
@@ -244,6 +308,137 @@ input::placeholder {
 
   i::before {
     color: var(--cpr-text-normal);
+  }
+}
+
+/*
+ * Journals
+ */
+
+// This is not in the general journal divs as you would expect
+.journal-header {
+  input {
+    color: var(--cpr-text-chat-normal) !important;
+    font-family: var(--cpr-font-journal-header);
+    font-weight: 800;
+    font-variant: small-caps;
+  }
+}
+
+.prosemirror, // Give Prosemirror the same styling as journals
+.journal-sheet-container {
+  font-family: var(--cpr-font-primary);
+
+  // Normally we wouldn't use <strong> but it's how the WYSIWYG editor
+  // does bold, style this to be more semi-bold.
+  strong {
+    font-weight: 550;
+  }
+
+  hr {
+    border-bottom: 0.125rem solid var(--cpr-background-dialog-border);
+  }
+
+  // We don't want no stinkin' borders
+  img {
+    border: none;
+  }
+
+  // This only supports tables with alternating color rows (90% of tables in the
+  // the book), will need some more rules for alternating color columns.
+  table {
+    color: var(--cpr-text-normal);
+    border: 0.313rem solid var(--cpr-background-dialog-border);
+    table-layout: auto;
+    td,
+    tr {
+      border: 0.313rem solid var(--cpr-background-dialog-border) !important;
+      padding: 0.313rem;
+    }
+    tr:nth-child(even) {
+      background: var(--cpr-background-row-even);
+    }
+    tr:nth-child(odd) {
+      background: var(--cpr-background-row-odd);
+    }
+    tr:first-child {
+      color: var(--cpr-text-journal-table-header);
+      font-weight: bold;
+      background: var(--cpr-background-dialog-border);
+      text-align: left;
+      text-justify: center;
+    }
+  }
+
+  .journal-sidebar {
+    color: var(--cpr-text-journal-sidebar) !important;
+    .pages-list {
+      .directory-item.active:first-of-type,
+      .directory-item.active + :not(.active) {
+        border-top: 0.063rem solid var(--cpr-background-dialog-border);
+      }
+    }
+  }
+
+  .journal-entry-content,
+  .journal-page-content {
+    color: var(--cpr-text-normal) !important;
+    background: var(--cpr-background-box) !important;
+
+    // Catchall for headers in the journal pages
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .journal-header,
+    .journal-header input {
+      color: var(--cpr-text-chat-normal) !important;
+      font-family: var(--cpr-font-journal-header);
+      font-weight: 800;
+      font-variant: small-caps;
+    }
+
+    // Add a line under all headings
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      border-bottom: 0.125rem solid var(--cpr-background-dialog-border);
+    }
+  }
+
+  blockquote {
+    padding: 0.313rem 0.313rem 0.313rem 1.25rem;
+    background: var(--cpr-background-journal-blockquote);
+  }
+
+  .secret {
+    border: 0.125rem dashed var(--cpr-background-journal-secret-hidden-border);
+    background-color: var(--cpr-background-journal-secret-hidden-background);
+  }
+
+  section.secret.revealed {
+    border: 0rem;
+    background: var(--cpr-background-box);
+  }
+
+  // This isn't supported by the GUI editors but can be done when editing the HTML
+  // But it allows us to create nice info boxes in journals as needed.
+  section.info::before {
+    content: "ℹ️";
+    position: absolute;
+    margin: 0.5rem 0rem 0rem -1.45rem;
+  }
+
+  section.info {
+    padding: 0.313rem 0.313rem 0.313rem 2rem;
+    background: var(--cpr-background-journal-info);
+    border-radius: 0.313rem;
+    margin: 0.313rem 0rem;
   }
 }
 
