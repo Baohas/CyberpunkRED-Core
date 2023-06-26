@@ -12,7 +12,10 @@ This game system (including items provided in the compendium) contains unofficia
 
 ## Fonts
 
-- Audimat Typeface by [SMeltery](http://www.smeltery.net)
+- Jost\*
+  - [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
+- Orbitron
+  - [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
 
 ## Art
 
