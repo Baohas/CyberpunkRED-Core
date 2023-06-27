@@ -9,7 +9,7 @@ export default class SituationalFix extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | SituaionalFix");
     super();
-    this.version = 12;
+    this.version = 14;
     this.name = "Situational HotFix Migration";
   }
 
