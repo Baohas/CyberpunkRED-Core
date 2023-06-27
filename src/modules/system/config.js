@@ -360,8 +360,8 @@ CPR.itemQuality = {
 };
 
 CPR.criticalInjuryTables = {
-  "Critical Injuries (Head)": "criticalInjuriesHead",
-  "Critical Injuries (Body)": "criticalInjuriesBody",
+  "Critical Injuries (Head)": "critical-injuries-head",
+  "Critical Injuries (Body)": "critical-injuries-body",
 };
 
 // game.system is not defined when this file is read, so there is a magic string here
