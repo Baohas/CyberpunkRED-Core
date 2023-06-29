@@ -78,7 +78,7 @@ const Effects = function Effects() {
     const disabled = this.system.usage === "snorted";
     const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [
       {
-        label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
+        name: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
         icon: "icons/svg/aura.svg",
         origin: this.uuid,
         disabled,
@@ -157,7 +157,7 @@ const Effects = function Effects() {
   };
 
   /**
-   * Return an active effect matching the give name ("label" is the AE property).
+   * Return an active effect matching the give name.
    *
    * @param {String} name - the name to search by
    * @returns {ActiveEffect}
