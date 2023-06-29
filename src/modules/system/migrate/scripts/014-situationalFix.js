@@ -38,7 +38,7 @@ export default class SituationalFix extends CPRMigration {
    *
    * @param {CPRItem} item
    */
-  static async migrateItem(item) {
+  static async migrateItem2(item) {
     LOGGER.trace(`migrateItem | ${this.version}-${this.name}`);
     const updateData = duplicate(item);
     if (
@@ -63,6 +63,37 @@ export default class SituationalFix extends CPRMigration {
     return item.isOwned ? updateData : item.update(updateData);
   }
 
+  static migrateActiveEffect(document) {
+    const { effects } = document;
+    const updateList = [];
+    effects.forEach((e) => {
+      const newEffect = duplicate(e);
+      e.changes.forEach((c, i) => {
+        const changeFlags = newEffect.flags[game.system.id].changes;
+        if (!changeFlags.situational) {
+          newEffect.flags[game.system.id].changes[`situational.${i}`] = {
+            isSituational: false,
+            onByDefault: false,
+          };
+        }
+      });
+      updateList.push(newEffect);
+    });
+    return updateList;
+  }
+
+  /**
+   * Here's the real work.
+   *
+   * @param {CPRItem} item
+   */
+  static async migrateItem(item) {
+    LOGGER.trace(`migrateItem | ${this.version}-${this.name}`);
+    const updateList = this.migrateActiveEffect(item);
+    const foo = await item.update({ effects: updateList });
+    return foo;
+  }
+
   /**
    * Simply make sure owned items are updated too.
    *
@@ -70,12 +101,29 @@ export default class SituationalFix extends CPRMigration {
    */
   async migrateActor(actor) {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
-    const itemUpdates = [];
+    const { effects } = actor;
+    const updateList = [];
+
+    effects.forEach((e) => {
+      const newEffect = duplicate(e);
+      e.changes.forEach((c, i) => {
+        const changeFlags = newEffect.flags[game.system.id].changes;
+        if (!changeFlags.situational) {
+          newEffect.flags[game.system.id].changes[`situational.${i}`] = {
+            isSituational: false,
+            onByDefault: false,
+          };
+        }
+      });
+      updateList.push(newEffect);
+    });
+
     for (const item of actor.items) {
       // eslint-disable-next-line no-await-in-loop
-      const updateData = await SituationalFix.migrateItem(item);
-      if (updateData !== null) itemUpdates.push(updateData);
+      await SituationalFix.migrateItem(item);
     }
-    return actor.updateEmbeddedDocuments("Item", itemUpdates);
+
+    const foo = await actor.updateEmbeddedDocuments("ActiveEffect", updateList);
+    return foo;
   }
 }
