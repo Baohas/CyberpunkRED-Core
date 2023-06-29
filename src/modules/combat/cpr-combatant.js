@@ -77,7 +77,7 @@ export default class CPRCombatant extends Combatant {
     }
     // Demons and Black ICE do not have initiative bonuses.
     if (actor.type !== "demon" && actor.type !== "blackIce") {
-      const effects = actor.effects.contents;
+      const effects = Array.from(actor.allApplicableEffects());
       const allMods = CPRMod.getAllModifiers(effects);
       const filteredMods = allMods.filter(
         (m) => !m.isSituational || (m.isSituational && m.onByDefault)

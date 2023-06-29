@@ -182,7 +182,7 @@ export default class CPRActorSheet extends ActorSheet {
       "displayStatusAsActiveEffects"
     );
     // Iterate over active effects, classifying them into categories
-    for (const e of this.actor.effects) {
+    for (const e of this.actor.allApplicableEffects()) {
       // eslint-disable-next-line no-await-in-loop
       // await e._getSourceName(); // Trigger a lookup for the source name
 

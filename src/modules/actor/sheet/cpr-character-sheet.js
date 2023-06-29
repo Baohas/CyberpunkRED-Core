@@ -494,7 +494,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     event.preventDefault();
     const action = SystemUtils.GetEventDatum(event, "data-action");
     const effectId = SystemUtils.GetEventDatum(event, "data-effect-id");
-    const effect = this.actor.effects.get(effectId);
+    const effect = this.actor.allApplicableEffects().get(effectId);
     switch (action) {
       case "create":
         return this.actor.createEffect();

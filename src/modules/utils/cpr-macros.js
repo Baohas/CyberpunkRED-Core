@@ -126,7 +126,7 @@ export default class CPRMacro {
    */
   static async FixActorIdsInEffects(actor) {
     LOGGER.trace("FixActorIdsInEffects | CPRMacro | Called.");
-    const effects = duplicate(actor.effects);
+    const effects = duplicate(Array.from(actor.allApplicableEffects()));
     const actorOrigin = `Actor.${actor._id}`;
     effects.forEach((e) => {
       if (e.origin.startsWith("Actor")) {

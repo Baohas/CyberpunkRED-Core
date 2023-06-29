@@ -112,6 +112,9 @@ Hooks.once("init", async () => {
   CONFIG.Item.documentClass = itemConstructor;
   CONFIG.Combatant.documentClass = CPRCombatant;
 
+  // Turn legacy tranferral for active effects off. Necessary for v11.
+  CONFIG.ActiveEffect.legacyTransferral = false;
+
   preloadHandlebarsTemplates();
   registerHandlebarsHelpers();
   registerSystemSettings();

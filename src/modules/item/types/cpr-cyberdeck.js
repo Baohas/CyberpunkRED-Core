@@ -301,7 +301,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     }
     cprRoll.rollTitle = pgmName;
 
-    const effects = actor.effects.contents; // Active effects on the actor.
+    const effects = Array.from(actor.allApplicableEffects()); // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(
@@ -396,7 +396,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     cprRoll.rollTitle = rollTitle;
 
     // Figure out all applicable modifiers.
-    const effects = actor.effects.contents; // Active effects on the actor.
+    const effects = Array.from(actor.allApplicableEffects()); // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(

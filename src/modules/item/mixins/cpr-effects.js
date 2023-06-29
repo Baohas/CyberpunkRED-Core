@@ -260,7 +260,7 @@ const Effects = function Effects() {
   this.getMyEffectsOnActor = function getMyEffectsOnActor() {
     LOGGER.trace("getActorItemEffects | Effects | Called.");
     if (!this.isOwned || !this.actor) return [];
-    return this.actor.effects.filter((ae) =>
+    return Array.from(this.actor.allApplicableEffects()).filter((ae) =>
       ae.origin.endsWith(`Item.${this.id}`)
     );
   };

@@ -1035,7 +1035,7 @@ export default function registerHandlebarsHelpers() {
     (skillName, actor, infoType, options) => {
       LOGGER.trace("cprGetSkillModInfo | handlebarsHelper | Called.");
       const skillSlug = SystemUtils.slugify(skillName);
-      const effects = actor.effects.contents; // Active effects on the actor.
+      const effects = Array.from(actor.allApplicableEffects()); // Active effects on the actor.
       const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
       let relevantMods = CPRMod.getRelevantMods(allMods, [
         skillSlug,
