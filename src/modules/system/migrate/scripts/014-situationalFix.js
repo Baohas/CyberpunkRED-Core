@@ -63,25 +63,6 @@ export default class SituationalFix extends CPRMigration {
     return item.isOwned ? updateData : item.update(updateData);
   }
 
-  static migrateActiveEffect(document) {
-    const { effects } = document;
-    const updateList = [];
-    effects.forEach((e) => {
-      const newEffect = duplicate(e);
-      e.changes.forEach((c, i) => {
-        const changeFlags = newEffect.flags[game.system.id].changes;
-        if (!changeFlags.situational) {
-          newEffect.flags[game.system.id].changes[`situational.${i}`] = {
-            isSituational: false,
-            onByDefault: false,
-          };
-        }
-      });
-      updateList.push(newEffect);
-    });
-    return updateList;
-  }
-
   /**
    * Here's the real work.
    *
@@ -90,40 +71,58 @@ export default class SituationalFix extends CPRMigration {
   static async migrateItem(item) {
     LOGGER.trace(`migrateItem | ${this.version}-${this.name}`);
     const updateList = this.migrateActiveEffect(item);
-    const foo = await item.update({ effects: updateList });
-    return foo;
+    // The following is a workaround that let's us update an active effect on an owned item.
+    // One must interact with the array directly, rather than using Foundry's typical API.
+    // This is a limitation of Foundry pre-v11.
+    return item.update({ effects: updateList });
   }
 
   /**
-   * Simply make sure owned items are updated too.
+   * When an item with an AE is dropped on the actor sheet,
+   * a duplicate AE is created directly on the actor.
+   * Both need to be updated accordingly.
    *
    * @param {CPRActor} actor
    */
   async migrateActor(actor) {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
-    const { effects } = actor;
-    const updateList = [];
+    for (const item of actor.items) {
+      // eslint-disable-next-line no-await-in-loop
+      await SituationalFix.migrateItem(item); // Migrate each owned item.
+    }
 
+    // Migrate each AE on the actor itself.
+    const updateList = SituationalFix.migrateActiveEffect(actor);
+    return actor.updateEmbeddedDocuments("ActiveEffect", updateList);
+  }
+
+  /**
+   * Script that migrates effects from a document (either an actor or item).
+   *
+   * @param {CPRActor|CPRItem} document
+   */
+  static migrateActiveEffect(document) {
+    const { effects } = document;
+    const updateList = [];
+    // Iterate over each effect.
     effects.forEach((e) => {
+      // `newEffect` will start as a dupe of the original effect. Then we will mutate it with the new data.
       const newEffect = duplicate(e);
+      // Iterate over each change on the effect.
       e.changes.forEach((c, i) => {
         const changeFlags = newEffect.flags[game.system.id].changes;
+        // If the `situational` flag doesn't exist...
         if (!changeFlags.situational) {
+          // Create the correct flag.
           newEffect.flags[game.system.id].changes[`situational.${i}`] = {
             isSituational: false,
             onByDefault: false,
           };
         }
       });
+      // Update the list with each new effect.
       updateList.push(newEffect);
     });
-
-    for (const item of actor.items) {
-      // eslint-disable-next-line no-await-in-loop
-      await SituationalFix.migrateItem(item);
-    }
-
-    const foo = await actor.updateEmbeddedDocuments("ActiveEffect", updateList);
-    return foo;
+    return updateList;
   }
 }
