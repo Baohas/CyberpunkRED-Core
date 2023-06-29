@@ -9,7 +9,7 @@ export default class SituationalFix extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | SituaionalFix");
     super();
-    this.version = 12;
+    this.version = 14;
     this.name = "Situational HotFix Migration";
   }
 
@@ -31,36 +31,6 @@ export default class SituationalFix extends CPRMigration {
   async postMigrate() {
     LOGGER.trace(`postMigrate | ${this.version}-${this.name}`);
     LOGGER.log(`Finishing migration: ${this.name}`);
-  }
-
-  /**
-   * Here's the real work.
-   *
-   * @param {CPRItem} item
-   */
-  static async migrateItem2(item) {
-    LOGGER.trace(`migrateItem | ${this.version}-${this.name}`);
-    const updateData = duplicate(item);
-    if (
-      updateData.effects.some(
-        (e) => !e.flags[game.system.id].changes.situational
-      )
-    ) {
-      updateData.effects.forEach(async (e) => {
-        e.changes.forEach(async (c, i) => {
-          if (!e.flags[game.system.id].changes.situational) {
-            e.flags[
-              `${game.system.id}.changes.situational.${i}.isSituational`
-            ] = false;
-            e.flags[
-              `${game.system.id}.changes.situational.${i}.onByDefault`
-            ] = false;
-          }
-        });
-      });
-    }
-
-    return item.isOwned ? updateData : item.update(updateData);
   }
 
   /**
