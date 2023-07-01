@@ -184,9 +184,6 @@ export default class CPRActorSheet extends ActorSheet {
     );
     // Iterate over active effects, classifying them into categories
     for (const e of this.actor.allApplicableEffects()) {
-      // eslint-disable-next-line no-await-in-loop
-      // await e._getSourceName(); // Trigger a lookup for the source name
-
       // We want to create a "simplified effect" for two reasons:
       //    1. To make accessing information via handlebars easier.
       //    2. We want to only feed the changes that are relevant to each section.
@@ -197,6 +194,7 @@ export default class CPRActorSheet extends ActorSheet {
       const simplifiedEffect = {
         name: e.name,
         sourceName: e.sourceName,
+        parentName: e.parent.name,
         id: e.id,
         icon: e.icon,
         usage: e.usage,

@@ -27,51 +27,6 @@ export default class CPRActiveEffect extends ActiveEffect {
   }
 
   /**
-   * Get the item/actor that provides this active effect. You might think this is simply
-   * this.parent, but that can vary depending on if it is on an actor itself, or
-   * an unlinked token. Instead we use the origin property and act from that.
-   *
-   * There are cases where null is returned, which is when the parent cannot be determined.
-   *
-   * Example origins (in same order as conditionals below):
-   *    Status effects (like an sleep icon on a token) are AEs, and the origin is "undefined"
-   *    On a world actor itself: "Actor.voAMugZgXyH2OG9l"
-   *    On an actor itself that is stored in a compendium: "Compendium.world.test.8XnYcfQCvbqjTi06"
-   *    On an unlinked token actor itself: "Scene.rG5JN8h8v5hFMmCC.Token.IbKRfHzNJyk1isk0"
-   *    AE on a world (unowned) item (in or out of a compendium): "Item.ioY6vLPzo2ZuhXuS"
-   *    AE from an item owned by a world actor (in or out of a compendium): "Actor.voAMugZgXyH2OG9l.Item.ioY6vLPzo2ZuhXuS"
-   *    On an unlinked token actor with an owned item: "Scene.rG5JN8h8v5hFMmCC.Token.IbKRfHzNJyk1isk0.Item.9c66oxg9rk13o"
-   */
-  getEffectParent() {
-    LOGGER.trace("getEffectParent | CPRActiveEffect | Called.");
-    if (!this.origin) return null;
-    // eslint-disable-next-line no-unused-vars
-    const [parentType, parentId, documentType, documentId, childType, childId] =
-      this.origin?.split(".") ?? [];
-    if (parentType === "Actor" && !documentType) return this.parent;
-    if (parentType === "Compendium") return null;
-    if (parentType === "Scene" && documentType === "Token" && !childType)
-      return this.parent;
-    if (parentType === "Item") return this.parent;
-    if (parentType === "Actor" && documentType === "Item") {
-      const item = this.parent.items.get(documentId);
-      if (!item) return null;
-      return item;
-    }
-    if (
-      parentType === "Scene" &&
-      documentType === "Token" &&
-      childType === "Item"
-    ) {
-      const item = this.parent.items.get(childId);
-      if (!item) return null;
-      return item;
-    }
-    LOGGER.error(`This AE has a crazy origin: ${this.origin}`);
-    return null;
-  }
-
-  /**
    * Convenience getter for retrieving how an effect is "used", this is actually stored
    * on the item providing the effect.
    *
@@ -79,7 +34,7 @@ export default class CPRActiveEffect extends ActiveEffect {
    */
   get usage() {
     LOGGER.trace("get usage | CPRActiveEffect | Called.");
-    const item = this.getEffectParent();
+    const item = this.parent;
     if (!item) return null;
     return item.system.usage;
   }
@@ -123,7 +78,7 @@ export default class CPRActiveEffect extends ActiveEffect {
     LOGGER.trace("determineSuppression | CPRActiveEffect | Called.");
     this.system.isSuppressed = false;
     if (this.system.disabled || this.parent.documentName !== "Actor") return;
-    const doc = this.getEffectParent();
+    const doc = this.parent;
     if (!doc) return; // happens on item delete
     if (doc instanceof CPRActor) return; // we never suppress actor effects
     this.system.isSuppressed = doc.areEffectsSuppressed();

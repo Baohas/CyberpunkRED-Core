@@ -921,17 +921,17 @@ export default function registerHandlebarsHelpers() {
    * comes from an Item, we look up all non-core skill items in the world, and use that list.
    * If it comes from an actor, we loop over the skills it owns and generate a mapping with that.
    *
-   * @param {CPRActiveEffect} effect - the AE in question
+   * @param {Object} effectData - Sheet object that contains the AE in question
    * @return {Object} - sorted object of skill keys to names
    */
-  Handlebars.registerHelper("cprGetSkillsForEffects", (effect) => {
+  Handlebars.registerHelper("cprGetSkillsForEffects", (effectData) => {
     LOGGER.trace("cprGetSkillsForEffects | handlebarsHelper | Called.");
     const skillMap = CPR.activeEffectKeys.skill;
     let skillList = [];
-    if (effect.isItemEffect) {
+    if (effectData.isItemEffect) {
       skillList = game.items.filter((i) => i.type === "skill");
-    } else if (effect.isActorEffect) {
-      const actor = effect.effectParent;
+    } else if (effectData.isActorEffect) {
+      const actor = effectData.effect.parent;
       skillList = actor.items.filter((i) => i.type === "skill");
     }
 
@@ -998,8 +998,7 @@ export default function registerHandlebarsHelpers() {
       return SystemUtils.Localize(CPR.activeEffectKeys[cat][key]);
     }
 
-    const sourceDoc =
-      doc instanceof CPRActiveEffect ? doc.getEffectParent() : doc;
+    const sourceDoc = doc instanceof CPRActiveEffect ? doc.parent : doc;
     if (!sourceDoc) return "???"; // a recently deleted item will sometimes do this
     if (cat === "skill") {
       const skillMap = CPR.activeEffectKeys.skill;
