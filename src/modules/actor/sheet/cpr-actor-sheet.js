@@ -70,22 +70,23 @@ export default class CPRActorSheet extends ActorSheet {
   async getData() {
     LOGGER.trace("getData | CPRActorSheet | Called.");
     const foundryData = super.getData();
-    const cprActorData = foundryData.actor.system;
+    foundryData.fightData = {};
     if (this.actor.type === "mook" || this.actor.type === "character") {
-      cprActorData.fightOptions = this.actor.hasItemTypeEquipped("cyberdeck")
+      foundryData.fightData.fightOptions = this.actor.hasItemTypeEquipped(
+        "cyberdeck"
+      )
         ? "both"
         : "";
       let fightState = this.actor.getFlag(game.system.id, "fightState");
-      if (!fightState || cprActorData.fightOptions !== "both") {
+      if (!fightState || foundryData.fightData.fightOptions !== "both") {
         fightState = "Meatspace";
       }
-      cprActorData.fightState = fightState;
-      cprActorData.cyberdeck = "";
+      foundryData.fightData.fightState = fightState;
+      foundryData.fightData.cyberdeck = "";
       if (fightState === "Netspace") {
-        cprActorData.cyberdeck = this.actor.getEquippedCyberdeck();
+        foundryData.fightData.cyberdeck = this.actor.getEquippedCyberdeck();
       }
-      cprActorData.filteredEffects = await this.prepareActiveEffectCategories();
-      foundryData.data.system = cprActorData;
+      foundryData.filteredEffects = await this.prepareActiveEffectCategories();
     }
     // This appears to have been removed in V10?
     foundryData.isGM = game.user.isGM;

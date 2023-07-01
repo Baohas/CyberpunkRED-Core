@@ -1,7 +1,7 @@
 {{cprTrace "START ACTOR CHARACTER RIGHT-PANE CPR-EFFECTS.HBS"}}
 <ol class="effects-list">
   {{!-- derived from DND5E's active-effects.html --}}
-  {{#each actor.system.filteredEffects as |section sid| }}
+  {{#each filteredEffects as |section sid| }}
     <li class="effects-category flexrow item-header" data-effect-type="{{section.type}}">
       <span class="effect-name">
         {{localize section.label}}
