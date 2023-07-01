@@ -216,21 +216,6 @@ const Effects = function Effects() {
   };
 
   /**
-   * Return all active effects on an actor that is coming from this item. You may think this
-   * is the same list that is on this item, but it is not. The actor AEs have completely
-   * different IDs and potentially data (e.g. "disabled").
-   *
-   * @return {Array:CPRActiveEffect}
-   */
-  this.getMyEffectsOnActor = function getMyEffectsOnActor() {
-    LOGGER.trace("getActorItemEffects | Effects | Called.");
-    if (!this.isOwned || !this.actor) return [];
-    return Array.from(this.actor.allApplicableEffects()).filter((ae) =>
-      ae.origin.endsWith(`Item.${this.id}`)
-    );
-  };
-
-  /**
    * There are cases where changing the usage should trigger other behaviors, like setting all AEs
    * to disabled when setting it to snorted. Players should not gain their effects merely by touching
    * the drugs (i.e. putting them in their inventory).
@@ -244,35 +229,17 @@ const Effects = function Effects() {
     LOGGER.trace("_setUsage | Effects | Called.");
     if (usage === "snorted") {
       const aeUpdates = [];
-      if (this.isOwned) {
-        // if the item is owned, we change the AEs on the actor
-        this.getMyEffectsOnActor().forEach((ae) =>
-          aeUpdates.push({ _id: ae.id, disabled: true })
-        );
-        this.actor.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
-      } else {
-        // if unowned, then we can change the AEs on the item itself
-        this.effects.forEach((ae) =>
-          aeUpdates.push({ _id: ae.id, disabled: true })
-        );
-        this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
-      }
+      this.effects.forEach((ae) =>
+        aeUpdates.push({ _id: ae.id, disabled: true })
+      );
+      this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
     }
     if (usage === "equipped") {
       const aeUpdates = [];
-      if (this.isOwned) {
-        // if the item is owned, we change the AEs on the actor
-        this.getMyEffectsOnActor().forEach((ae) =>
-          aeUpdates.push({ _id: ae.id, disabled: false })
-        );
-        this.actor.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
-      } else {
-        // if unowned, then we can change the AEs on the item itself
-        this.effects.forEach((ae) =>
-          aeUpdates.push({ _id: ae.id, disabled: false })
-        );
-        this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
-      }
+      this.effects.forEach((ae) =>
+        aeUpdates.push({ _id: ae.id, disabled: false })
+      );
+      this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
     }
   };
 };

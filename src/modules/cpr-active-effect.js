@@ -77,7 +77,7 @@ export default class CPRActiveEffect extends ActiveEffect {
   determineSuppression() {
     LOGGER.trace("determineSuppression | CPRActiveEffect | Called.");
     this.system.isSuppressed = false;
-    if (this.system.disabled || this.parent.documentName !== "Actor") return;
+    if (this.disabled) return;
     const doc = this.parent;
     if (!doc) return; // happens on item delete
     if (doc instanceof CPRActor) return; // we never suppress actor effects
