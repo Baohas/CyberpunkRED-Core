@@ -65,12 +65,12 @@
               <i class="far {{#if effect.disabled }}fa-circle{{else }}fa-check-circle{{/if }}"></i>
             </a>
           {{/if}}
-          {{#if (cprCompare effect.sourceName "===" ../../actor.name) }}
             <a class="effect-control"
                data-action="edit"
                data-tooltip="{{localize 'CPR.characterSheet.rightPane.effects.edit'}}">
               <i class="fas fa-edit"></i>
             </a>
+          {{#if (cprCompare effect.sourceName "===" ../../actor.name) }}
             <a class="effect-control"
                data-action="copy"
                data-tooltip="{{localize 'CPR.characterSheet.rightPane.effects.duplicate'}}">
@@ -81,9 +81,6 @@
                 data-tooltip="{{localize 'CPR.characterSheet.rightPane.effects.delete'}}">
                <i class="fas fa-trash-alt"></i>
              </a>
-           {{else}}
-             <i class="fas fa-question-circle"
-                data-tooltip="{{localize "CPR.characterSheet.rightPane.effects.noEditOnItem"}}"></i>
            {{/if}}
          </div>
        </li>
