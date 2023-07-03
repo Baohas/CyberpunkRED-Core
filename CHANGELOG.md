@@ -15,10 +15,11 @@
 
 ### Changes
 
+- Update token methods for v11 compatibility
 - Update System files for v11
 - Update `label` > `name` for Active effects
 - Hide system only Compendiums from Compendium tab
-- Organize Compendiums into COmpendium Folders
+- Organize Compendiums into Compendium Folders
 
 ## Version 0.87.4
 
