@@ -8,7 +8,7 @@ name: Critical Injuries (Body)
 replacement: true
 results:
   - _id: ZieosouBln5Il2tk
-    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentCollection: cyberpunk-red-core.critical-injuries-body
     documentId: 9N6yHeVwiGg2MkeL
     drawn: false
     flags: {}
@@ -21,7 +21,7 @@ results:
     type: 2
     weight: 1
   - _id: odZ5Yyt3WOrNSKzV
-    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentCollection: cyberpunk-red-core.critical-injuries-body
     documentId: xmlFB3X2q2NAklfn
     drawn: false
     flags: {}
@@ -34,7 +34,7 @@ results:
     type: 2
     weight: 1
   - _id: TGVSxOE3pxFV34Sm
-    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentCollection: cyberpunk-red-core.critical-injuries-body
     documentId: RAZcouFe0FS1VN1o
     drawn: false
     flags: {}
@@ -47,7 +47,7 @@ results:
     type: 2
     weight: 1
   - _id: unBMWAiXQKK6GY0M
-    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentCollection: cyberpunk-red-core.critical-injuries-body
     documentId: MQpiPgEtPaIe6MJ6
     drawn: false
     flags: {}
@@ -60,7 +60,7 @@ results:
     type: 2
     weight: 1
   - _id: O1dQcS4a7PmVCp5J
-    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentCollection: cyberpunk-red-core.critical-injuries-body
     documentId: Y65igO9rtakP4qSs
     drawn: false
     flags: {}
@@ -73,7 +73,7 @@ results:
     type: 2
     weight: 1
   - _id: RCLUsZLr404b5IcV
-    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentCollection: cyberpunk-red-core.critical-injuries-body
     documentId: xTQ2T50UGNY8DrHl
     drawn: false
     flags: {}
@@ -86,7 +86,7 @@ results:
     type: 2
     weight: 1
   - _id: QGtmPYrCvP88rKzC
-    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentCollection: cyberpunk-red-core.critical-injuries-body
     documentId: yBy9rlhgZeaWGtHh
     drawn: false
     flags: {}
@@ -99,7 +99,7 @@ results:
     type: 2
     weight: 1
   - _id: dpYAJWeQ1uDXPo0S
-    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentCollection: cyberpunk-red-core.critical-injuries-body
     documentId: Z3iVuSFtma3Bx7SX
     drawn: false
     flags: {}
@@ -112,7 +112,7 @@ results:
     type: 2
     weight: 1
   - _id: juZQlAH6geJgCHw4
-    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentCollection: cyberpunk-red-core.critical-injuries-body
     documentId: pQ2F7FsQvZJyZGXe
     drawn: false
     flags: {}
@@ -125,7 +125,7 @@ results:
     type: 2
     weight: 1
   - _id: YhW9mFW9i6vzKbBU
-    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentCollection: cyberpunk-red-core.critical-injuries-body
     documentId: IKKcCgHU1lBJ4wVd
     drawn: false
     flags: {}
@@ -138,7 +138,7 @@ results:
     type: 2
     weight: 1
   - _id: ysFKhaP2wS8HHg8A
-    documentCollection: cyberpunk-red-core.criticalInjuriesBody
+    documentCollection: cyberpunk-red-core.critical-injuries-body
     documentId: vRhxMWgOHYROHeHm
     drawn: false
     flags: {}

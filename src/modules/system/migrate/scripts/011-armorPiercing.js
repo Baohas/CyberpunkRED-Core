@@ -4,6 +4,10 @@ import CPRMigration from "../cpr-migration.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
+/**
+ * Here we rename Armor-piercing ammo items to include the hyphen, which was
+ * mistakenly omitted previously.
+ */
 export default class ArmorPiercingMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | ArmorPiercing Migration");

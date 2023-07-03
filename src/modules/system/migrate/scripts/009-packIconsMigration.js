@@ -5,6 +5,10 @@ import CPRMigration from "../cpr-migration.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
+/**
+ * This migration updates icons on owned items to match up with what is
+ * introduced in the compendia this release.
+ */
 export default class PackIconMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | PackIcon Migration");

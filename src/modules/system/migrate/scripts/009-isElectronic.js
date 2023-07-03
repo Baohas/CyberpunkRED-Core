@@ -289,6 +289,11 @@ const CORE_CYBERWARE = [
   "Zewnętrzne (7 gniazd na modyfikacje)",
 ];
 
+/**
+ * An unreported feature was to add a means to distinguish electronic
+ * from other items. This enables a little more control and automation
+ * over situations where EMP grenades or damage is used.
+ */
 export default class ItemIsElectronicMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | ItemIsElectronic Migration");

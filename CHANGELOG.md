@@ -8,6 +8,7 @@
 
 - #808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - #812 - Some roles were missing the bonuses data point as an empty array.
+- Fix not being able to open any Items due to the DV Tables compendium setting pointing to the old name
 - Fix being unable to delete certain effects from compendium items with Active Effects.
 - Fix CSS issues with modules Cautious Gamemaster's Pack and Item Piles
 - #824 - Now when you drag a cyberware item to a mook sheet, if it can't be auto-installed/equipped, it will delete the newly created item so it does not remain hidden in the inventory.
@@ -15,6 +16,7 @@
 - #827 - Fix items not being created when purchased from a vendor/container actor.
 - #829 - Fix failure when migrating tokens with broken references to their parent actors.
 - Fix issue where unlinked actors were not gaining Active Effects.
+- Fix compendia name references for critical injuries which was preventing rolling critical injuries
 
 ## Version 0.87.2
 

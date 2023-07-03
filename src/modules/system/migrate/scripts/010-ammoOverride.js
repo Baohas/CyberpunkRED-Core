@@ -4,6 +4,10 @@ import CPRMigration from "../cpr-migration.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
+/**
+ * See #273 and #394. This migration enable ammo items to override the damage
+ * dealt by a weapon it is loaded into.
+ */
 export default class AmmoOverrideMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | Source Migration");

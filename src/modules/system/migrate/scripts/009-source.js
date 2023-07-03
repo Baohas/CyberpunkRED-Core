@@ -4,6 +4,10 @@ import CPRMigration from "../cpr-migration.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
+/**
+ * See #740 and #590. We decided to break up the source property into more fields so we could
+ * be more precise about where rules are coming from. There are book and page fields.
+ */
 export default class SourceMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | Source Migration");

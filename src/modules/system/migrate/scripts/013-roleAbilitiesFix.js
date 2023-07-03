@@ -1,6 +1,9 @@
 import CPRMigration from "../cpr-migration.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
+/**
+ * See #812 for details about this migration.
+ */
 export default class RoleAbilitiesFix extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | RoleAbilitiesFix Migration");

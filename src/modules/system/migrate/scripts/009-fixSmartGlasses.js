@@ -16,6 +16,10 @@ const SMART_GLASSES = [
   "Умные очки",
 ];
 
+/**
+ * This migration addressed an unreported bug where Smart Glasses/Lens could not
+ * be added to Cybereyes.
+ */
 export default class ItemSmartGlassesMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | ItemSmartGlassesMigration Migration");

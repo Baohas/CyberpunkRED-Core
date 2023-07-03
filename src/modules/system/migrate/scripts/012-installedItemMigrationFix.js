@@ -4,6 +4,9 @@ import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 import CPR from "../../config.js";
 
+/**
+ * See #808 for details about this migration.
+ */
 export default class InstalledItemMigrationFix extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | InstalledItemMigrationFix Migration");
@@ -71,8 +74,15 @@ export default class InstalledItemMigrationFix extends CPRMigration {
         };
         let installedSize = 0;
         for (const installedItemUUID of item.system.installedItems.list) {
-          const installedItem = fromUuidSync(installedItemUUID);
-          if (installedItem !== null) {
+          let installedItem;
+          try {
+            installedItem = fromUuidSync(installedItemUUID);
+          } catch (error) {
+            LOGGER.warn(
+              `Item could not be found on actor, "${installedItemUUID}". Skipping`
+            );
+          }
+          if (installedItem && installedItem !== null) {
             installedSize += installedItem.system.size;
             if (!installedItem.system.isInstalled) {
               const systemUpdate = installedItem.system;
