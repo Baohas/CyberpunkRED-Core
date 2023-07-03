@@ -104,7 +104,7 @@ const tokenHooks = () => {
           "system.installedIn": tokenDocument.uuid,
         });
       }
-      tokenDocument.modifyActorDocument({
+      tokenDocument.actor.update({
         "system.installedItems.list": actorInstallList,
       });
 
@@ -214,7 +214,7 @@ const tokenHooks = () => {
           updateList.push(itemUpdates);
         }
       }
-      tokenDocument.updateActorEmbeddedDocuments("Item", updateList, {});
+      tokenDocument.actor.updateEmbeddedDocuments("Item", updateList, {});
     }
   });
 };
