@@ -773,7 +773,6 @@
   "CPR.itemSheet.effects.deleteEffectDesc": "Delete this effect from the item",
   "CPR.itemSheet.effects.duplicateEffectDesc": "Duplicate this effect",
   "CPR.itemSheet.effects.editEffectDesc": "Edit this effect",
-  "CPR.itemSheet.effects.editOwnedWarning": "Editing effects on an owned item is unsupported by Foundry and will be added on a future date.",
   "CPR.itemSheet.effects.effects": "Effects",
   "CPR.itemSheet.effects.nameAndChanges": "Name and Changes",
   "CPR.itemSheet.effects.newEffect": "New Effect",
