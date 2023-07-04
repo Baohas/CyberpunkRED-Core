@@ -11,8 +11,6 @@ export default class aeFix extends CPRMigration {
    * with useless active effects that could not be deleted. The behavior happens
    * when the AE origins include IDs that do not match with the actor or owned item.
    * The root cause was never figured out; we just delete them in the actor migration.
-   *
-   * https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/issues/830
    */
   constructor() {
     LOGGER.trace("constructor | SituaionalFix");
