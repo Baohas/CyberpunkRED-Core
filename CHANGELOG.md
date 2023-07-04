@@ -19,6 +19,7 @@
 - Fix compendia name references for critical injuries which was preventing rolling critical injuries
 - #830 - Fix a case where the 0.87 migration would create duplicate and useless active effects
 - #846 - Installed items losing their installation data after migration
+- Various minor CSS fixes
 
 ## Version 0.87.2
 
