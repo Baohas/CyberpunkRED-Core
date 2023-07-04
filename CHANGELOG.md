@@ -17,6 +17,7 @@
 - #829 - Fix failure when migrating tokens with broken references to their parent actors.
 - Fix issue where unlinked actors were not gaining Active Effects.
 - Fix compendia name references for critical injuries which was preventing rolling critical injuries
+- #830 - Fix a case where the 0.87 migration would create duplicate and useless active effects
 
 ## Version 0.87.2
 
