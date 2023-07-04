@@ -18,6 +18,7 @@
 - Fix issue where unlinked actors were not gaining Active Effects.
 - Fix compendia name references for critical injuries which was preventing rolling critical injuries
 - #830 - Fix a case where the 0.87 migration would create duplicate and useless active effects
+- #846 - Installed items losing their installation data after migration
 
 ## Version 0.87.2
 

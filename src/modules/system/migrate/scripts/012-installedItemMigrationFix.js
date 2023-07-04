@@ -1,4 +1,6 @@
 /* globals fromUuidSync */
+/* eslint-disable foundry-cpr/logger-after-function-definition */
+
 import CPRMigration from "../cpr-migration.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 import LOGGER from "../../../utils/cpr-logger.js";
@@ -68,6 +70,8 @@ export default class InstalledItemMigrationFix extends CPRMigration {
         containerTypes.includes(item.type) &&
         item.system.installedItems.list.length > 0
       ) {
+        // if we're in here, we're looking at Items that are "containers" in the sense that
+        // other items can be installed or added to them in some way.
         const installedItemsList = [];
         const itemUpdates = {
           _id: item.id,
@@ -78,23 +82,29 @@ export default class InstalledItemMigrationFix extends CPRMigration {
           try {
             installedItem = fromUuidSync(installedItemUUID);
           } catch (error) {
+            // This should not happen because we're iterating over actor.items, but we're being
+            // defensive in case something changed while we're migrating data.
             LOGGER.warn(
               `Item could not be found on actor, "${installedItemUUID}". Skipping`
             );
           }
           if (installedItem && installedItem !== null) {
+            // We have an installed item to consider.
             installedSize += installedItem.system.size;
+            const systemUpdate = installedItem.system;
+            // If the installed item thinks it is not installed, we correct that. We assume the container
+            // is the source of truth.
             if (!installedItem.system.isInstalled) {
-              const systemUpdate = installedItem.system;
               systemUpdate.isInstalled = true;
               systemUpdate.installedIn = item.uuid;
-              const updatedItem = {
-                _id: installedItem.id,
-                system: systemUpdate,
-              };
-              ownedItemUpdates.push(updatedItem);
-              installedItemsList.push(installedItem.uuid);
             }
+            const updatedItem = {
+              _id: installedItem.id,
+              system: systemUpdate,
+            };
+            ownedItemUpdates.push(updatedItem);
+            installedItemsList.push(installedItem.uuid);
+            // now we check for upgrades
             if (
               upgradableTypes.includes(item.type) &&
               installedItem.type === "itemUpgrade"
