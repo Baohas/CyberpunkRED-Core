@@ -20,6 +20,7 @@
 - #830 - Fix a case where the 0.87 migration would create duplicate and useless active effects
 - #846 - Installed items losing their installation data after migration
 - Various minor CSS fixes
+- #854 - Fix missing Babele translations for Critical Injuries preventing rolling Critical Injuries from character sheets
 
 ## Version 0.87.2
 
