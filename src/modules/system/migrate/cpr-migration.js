@@ -352,7 +352,7 @@ export default class CPRMigration {
       } catch (err) {
         LOGGER.error(err);
         throw new Error(
-          `${this.name}: ${token.actor.name} token had a migration error: ${err.message}`
+          `${this.name}: ${token.name} token had a migration error: ${err.message}`
         );
       }
     });

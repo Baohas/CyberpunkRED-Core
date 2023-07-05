@@ -31,6 +31,7 @@
 - Various minor CSS fixes
 - #854 - Fix missing Babele translations for Critical Injuries preventing rolling Critical Injuries from character sheets
 - Fix rolling custom skills.
+- #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 
 ## Version 0.87.2
 
