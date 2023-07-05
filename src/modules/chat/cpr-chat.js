@@ -341,7 +341,13 @@ export default class CPRChat {
 
           const targetedTokens =
             SystemUtils.getUserTargetedOrSelected("targeted"); // get user targeted tokens for output to chat
-          if (targetedTokens.length === 0) {
+          if (
+            targetedTokens.length === 0 &&
+            game.settings.get(
+              game.system.id,
+              "warnAboutNoTargetsWhenRollingDamage"
+            )
+          ) {
             SystemUtils.DisplayMessage(
               "warn",
               "CPR.chat.damageApplication.noTokenTargeted"

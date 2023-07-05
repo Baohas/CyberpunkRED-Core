@@ -19,6 +19,7 @@
 - Update `label` > `name` for Active effects
 - Hide system only Compendiums from Compendium tab
 - Organize Compendiums into COmpendium Folders
+- Add setting to disable warning when rolling damage without targets
 
 ## Version 0.87.4
 
