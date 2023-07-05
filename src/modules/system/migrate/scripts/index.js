@@ -21,3 +21,4 @@ export { default as SituationalFix } from "./014-situationalFix.js";
 export { default as aeFix } from "./015-aeFix.js";
 export { default as dvCompendiumMigration } from "./016-dvCompendium.js";
 export { default as criticalInjuryCompendiumMigration } from "./017-critTables.js";
+export { default as CustomSkillFix } from "./018-customSkillFix.js";

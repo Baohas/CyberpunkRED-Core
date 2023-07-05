@@ -53,21 +53,9 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <input name="system.level"
-           data-dtype="{{item.system.level}}"
-           value="{{item.system.level}}"
-           type="number"/>
-  </div>
-</li>
-{{!-- Skill Mods Settings--}}
-<li class="item flexrow">
-  <div class="item flexrow setting-name text-nowrap">
-    {{localize "CPR.rolls.mods"}}
-  </div>
-  <div class="item flexrow setting-value text-nowrap item-end">
-    <input name="system.skillmod"
-           data-dtype="{{item.system.skillmod}}"
-           value="{{item.system.skillmod}}"
-           type="number"/>
+           type="number"
+           data-dtype="Number"
+           value="{{item.system.level}}" />
   </div>
 </li>
 {{!-- Skill Stat Settings--}}

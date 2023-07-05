@@ -34,7 +34,7 @@ export default class CPRSkillItem extends CPRItem {
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = actor.getStat(statName);
     const skillName = this.name;
-    const skillLevel = cprItemData.level;
+    const skillLevel = Number.parseInt(cprItemData.level, 10);
 
     const effects = actor.effects.contents; // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
