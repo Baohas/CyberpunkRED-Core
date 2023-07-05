@@ -1045,7 +1045,6 @@
   "CPR.rolls.modifiers.sources.armorPenalty": "Armor Penalty ({stat})",
   "CPR.rolls.modifiers.sources.rollFormula": "Roll Formula",
   "CPR.rolls.modifiers.sources.woundStatePenalty": "Wound State Penalty",
-  "CPR.rolls.mods": "Mods",
   "CPR.rolls.noAutfireMaxConfig": "Configure Autofire Max Multiplier!",
   "CPR.rolls.reputation": "Reputation",
   "CPR.rolls.roleAbility": "Role Ability",
