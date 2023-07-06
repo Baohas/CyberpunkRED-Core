@@ -33,7 +33,7 @@ effects:
               isSituational: true
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
-    label: Agent
+    name: Agent
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg

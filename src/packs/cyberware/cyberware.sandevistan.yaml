@@ -25,7 +25,7 @@ effects:
               isSituational: true
               onByDefault: true
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/sandevistan.svg
-    label: Sandevistan
+    name: Sandevistan
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/sandevistan.svg

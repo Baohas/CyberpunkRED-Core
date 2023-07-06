@@ -26,7 +26,7 @@ effects:
               onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/black-chrome/killstrom-banshee-microphone.svg
-    label: Banshee Microphone
+    name: Banshee Microphone
     tint: null
     transfer: true
 img: >-

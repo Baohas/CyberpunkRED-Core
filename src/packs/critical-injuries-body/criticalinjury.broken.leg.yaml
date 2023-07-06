@@ -26,7 +26,7 @@ effects:
               onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_leg.svg
-    label: Broken Leg
+    name: Broken Leg
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_leg.svg

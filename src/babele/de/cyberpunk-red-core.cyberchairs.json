@@ -1,13 +1,13 @@
 {
-  "label": "Cyberchairs",
+  "label": "Cyberstühle",
   "entries": {
     "Mercurius Cyberchair": {
-      "name": "Mercurius Cyberchair",
-      "description": "<p>An impressively affordable cyberchair, offering great features at this price point. While using it the operator's base MOVE becomes 5, with all regular movement options remaining available.</p>\n<p>Operation of the cyberchair requires either a free hand, or interface plugs.</p>\n<p>If the operator suffers a critical injury that reduces their MOVE, the MOVE of the cyberchair is instead effected.</p>\n<p>The cyberchair cannot be targeted specifically, nor can it be disabled via EMP effects.</p>"
+      "name": "Mercurius-Cyberstuhl",
+      "description": "<p>Ein erschwinglicher Cyberstuhl mit für den Preis beeindruckenden Funktionen. Während der Nutzung beträgt die Basis-BEW des Nutzers 5, wobei alle regulären Bewegungsoptionen nutzbar bleiben.</p>\n<p>Die Steuerung des Cyberstuhls benötigt entweder eine freie Hand oder Interface-Buchsen.</p>\n<p>Wenn der Nutzer eine Kritische Verletzung erleidet, die die BEW verringert, betrifft dies stattdessen die BEW des Cyberstuhls.</p>\n<p>Der Cyberstuhl kann nicht spezifisch anvisiert werden und nicht durch EMP-Effekte ausgeschaltet werden.</p>"
     },
     "Spider Cyberchair": {
-      "name": "Spider Cyberchair",
-      "description": "<p>The top of the line cyberchair, giving the premier user many options. While using it the operator's base MOVE becomes 5, with all regular movement options remaining available.</p>\n<p>Additionally, this cyberchair has room for 4 cyberlimb options*. Any options installed always count as being paired.</p>\n<p>Operation of the cyberchair requires either a free hand, or interface plugs.</p>\n<p>If the operator suffers a critical injury that reduces their MOVE, the MOVE of the cyberchair is instead effected.</p>\n<p>The cyberchair cannot be targeted specifically, nor can it be disabled via EMP effects.</p>\n<p><em>*Installing cyberlimp options currently not supported</em></p>"
+      "name": "Spinnen-Cyberstuhl",
+      "description": "<p>Der Spitzen-Cyberstuhl mit Unmengen Optionen für den versierten Nutzer. Während der Nutzung beträgt die Basis-BEW des Nutzers 5, wobei alle regulären Bewegungsoptionen nutzbar bleiben.</p>\n<p>Zusätzlich verfügt dieser Cyberstuhl über Platz für 4 Cybergliedmaßen-Optionen*. Alle installierten Optionen gelten immer als paarweise.</p>\n<p>Die Steuerung des Cyberstuhls benötigt entweder eine freie Hand oder Interface-Buchsen.</p>\n<p>Wenn der Nutzer eine Kritische Verletzung erleidet, die die BEW verringert, betrifft dies stattdessen die BEW des Cyberstuhls.</p>\n<p>Der Cyberstuhl kann nicht spezifisch anvisiert werden und nicht durch EMP-Effekte ausgeschaltet werden.</p>\n<p><em>*Installation von Cybergliedmaßen-Optionen aktuell nicht unterstützt</em></p>"
     }
   }
 }

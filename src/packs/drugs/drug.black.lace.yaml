@@ -26,7 +26,7 @@ effects:
               onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/status/black_lace_addiction.svg
-    label: Black Lace Addicition
+    name: Black Lace Addicition
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/drugs/black_lace.svg

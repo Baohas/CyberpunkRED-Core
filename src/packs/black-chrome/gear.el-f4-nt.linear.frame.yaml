@@ -26,7 +26,7 @@ effects:
               onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
-    label: EL-F4-NT Linear Frame
+    name: EL-F4-NT Linear Frame
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_sigma.svg

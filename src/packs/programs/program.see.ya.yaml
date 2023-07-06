@@ -25,7 +25,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/programs/see_ya.svg
-    label: See Ya
+    name: See Ya
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/programs/see_ya.svg

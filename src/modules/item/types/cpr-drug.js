@@ -45,7 +45,7 @@ export default class CPRDrugItem extends CPRItem {
         } else {
           const aeObj = this.getEffectByName(consumed);
           const [actorEffect] = this.getMyEffectsOnActor().filter(
-            (ae) => ae.label === aeObj.label
+            (ae) => ae.name === aeObj.name
           );
           effectUpdates.push({ _id: actorEffect.id, disabled: false });
         }

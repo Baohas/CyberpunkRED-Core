@@ -30,7 +30,7 @@
         "icon": {
           "$ref": "../img.json"
         },
-        "label": {
+        "name": {
           "type": "string"
         },
         "tint": {
@@ -47,7 +47,7 @@
         "duration",
         "flags",
         "icon",
-        "label",
+        "name",
         "tint",
         "transfer"
       ]

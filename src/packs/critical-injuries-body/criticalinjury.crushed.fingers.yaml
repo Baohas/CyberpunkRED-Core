@@ -25,7 +25,7 @@ effects:
               isSituational: true
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_fingers.svg
-    label: Crushed Fingers
+    name: Crushed Fingers
     tint: null
     transfer: true
 img: >-

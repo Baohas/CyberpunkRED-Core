@@ -73,7 +73,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/gear/tech_scanner.svg
-    label: Techscanner
+    name: Techscanner
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/gear/tech_scanner.svg

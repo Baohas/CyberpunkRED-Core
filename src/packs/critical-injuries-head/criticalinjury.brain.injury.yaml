@@ -26,7 +26,7 @@ effects:
               onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/brain_injury.svg
-    label: Brain Injury
+    name: Brain Injury
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/brain_injury.svg

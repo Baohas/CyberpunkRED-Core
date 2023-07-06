@@ -1857,7 +1857,7 @@ export default class CPRActor extends Actor {
     LOGGER.trace("createEffect | CPRActor | Called.");
     const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [
       {
-        label: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
+        name: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
         icon: "icons/svg/aura.svg",
         origin: this.uuid,
         disabled: false,
@@ -1885,7 +1885,7 @@ export default class CPRActor extends Actor {
     if (setting) {
       const dialogMessage = `${SystemUtils.Localize(
         "CPR.dialog.deleteConfirmation.message"
-      )} ${effect.label}?`;
+      )} ${effect.name}?`;
 
       // Show "Default" dialog.
       const confirmDelete = await CPRDialog.showDialog(

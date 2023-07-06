@@ -65,7 +65,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/smash.svg
-    label: Smash Primary
+    name: Smash Primary
     tint: null
     transfer: true
   - _id: R7hdY2qZux5j9oVJ
@@ -133,7 +133,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/smash_addiciton.svg
-    label: Smash Addiction
+    name: Smash Addiction
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/drugs/smash.svg

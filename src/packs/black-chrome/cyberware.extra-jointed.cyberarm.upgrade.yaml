@@ -26,7 +26,7 @@ effects:
               onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/black-chrome/extra-joined-cyberarm.svg
-    label: Extra-Jointed Cyberarm
+    name: Extra-Jointed Cyberarm
     tint: null
     transfer: true
 img: >-

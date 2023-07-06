@@ -26,7 +26,7 @@ effects:
               onByDefault: false
     icon: >-
       systems/cyberpunk-red-core/icons/compendium/critical_injuries/collapsed_lung.svg
-    label: Collapsed Lung
+    name: Collapsed Lung
     tint: null
     transfer: true
 img: >-

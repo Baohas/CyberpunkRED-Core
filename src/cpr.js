@@ -139,7 +139,7 @@ Hooks.once("ready", async () => {
   let migrationSuccess = true;
   if (dataModelVersion !== "newCprWorld") {
     LOGGER.debug(`Data model before comparison: ${dataModelVersion}`);
-    if (dataModelVersion.indexOf(".") > -1)
+    if (dataModelVersion.toString().indexOf(".") > -1)
       dataModelVersion = isNewerVersion("0.80.0", dataModelVersion) ? -1 : 0;
     LOGGER.debug(`New data model version is: ${dataModelVersion}`);
     const MR = new MigrationRunner();

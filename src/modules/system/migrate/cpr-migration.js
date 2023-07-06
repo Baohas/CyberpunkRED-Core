@@ -521,15 +521,27 @@ export default class CPRMigration {
     if (item.effects.size > 0) {
       for (const sourceEffect of item.effects) {
         // const [effect] = await newItem.createEffect(false);
-        const newData = {
+        let newData = {
           // _id: effect.id,
-          label: sourceEffect.label,
+          name: sourceEffect.name,
           icon: sourceEffect.icon,
           system: sourceEffect.system,
           changes: sourceEffect.changes,
           flags: sourceEffect.flags,
           disabled: sourceEffect.disabled,
         };
+        if (this.foundryMajorVersion >= 11) {
+          newData = {
+            // _id: effect.id,
+            name: sourceEffect.name,
+            icon: sourceEffect.icon,
+            system: sourceEffect.system,
+            changes: sourceEffect.changes,
+            flags: sourceEffect.flags,
+            disabled: sourceEffect.disabled,
+          };
+        }
+
         await newItem.createEmbeddedDocuments("ActiveEffect", [newData]);
       }
     }

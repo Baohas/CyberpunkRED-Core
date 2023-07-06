@@ -25,7 +25,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/gear/roadflare.svg
-    label: Road Flare
+    name: Road Flare
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/gear/roadflare.svg

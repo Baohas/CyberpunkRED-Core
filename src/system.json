@@ -7,9 +7,9 @@
   "title": "Cyberpunk RED - CORE",
   "description": "Implementation of the Cyberpunk RED, Core Rules, for FVTT",
   "compatibility": {
-    "minimum": 10,
-    "verified": 10,
-    "maximum": 10
+    "minimum": 11,
+    "verified": 11,
+    "maximum": 11
   },
   "templateVersion": 3,
   "authors": [
@@ -20,6 +20,69 @@
   ],
   "esmodules": ["cpr.js"],
   "styles": ["main.css"],
+  "packFolders": [
+    {
+      "name": "Cyberpunk RED: Internal",
+      "sorting": "m",
+      "packs": ["critical-injuries-body", "critical-injuries-head"]
+    },
+    {
+      "name": "Cyberpunk RED: Core",
+      "sorting": "m",
+      "packs": [
+        "ammo",
+        "armor",
+        "clothing",
+        "cyberware",
+        "drugs",
+        "gear",
+        "programs",
+        "roles",
+        "skills-languages",
+        "upgrades",
+        "vehicles",
+        "weapons",
+        "weapons-branded"
+      ]
+    },
+    {
+      "name": "Cyberpunk RED: DLC",
+      "sorting": "m",
+      "packs": [
+        "achievements-and-loot-boxes",
+        "all-about-drones",
+        "black-chrome-plus",
+        "cyberchairs",
+        "elflines-online",
+        "elflines-online-armory",
+        "elflines-online-macros",
+        "elflines-online-the-trading-card-game",
+        "exotics-of-2045",
+        "hardened-enemies",
+        "hornets-pharmacy",
+        "micro-chrome",
+        "must-have-cyberware-deals",
+        "midnight-with-the-upload",
+        "cargo-containers-and-cube-hotels",
+        "night-city-tarot",
+        "night-city-weather",
+        "spinning-your-wheels",
+        "the-12-days-of-cybermas",
+        "the-12-days-of-gunmas",
+        "woodchippers-garage"
+      ]
+    },
+    {
+      "name": "Cyberpunk RED: Other",
+      "sorting": "m",
+      "packs": ["cyberpunk-red-core-macros", "scenes"]
+    },
+    {
+      "name": "Cyberpunk RED: Sourcebooks",
+      "sorting": "m",
+      "packs": ["black-chrome"]
+    }
+  ],
   "packs": [
     {
       "label": "Achievements and Loot Boxes",
@@ -27,8 +90,7 @@
       "name": "achievements-and-loot-boxes",
       "path": "packs/achievements-and-loot-boxes.db",
       "system": "cyberpunk-red-core",
-      "private": false,
-      "flags": {}
+      "package": "cyberpunk-red-core"
     },
     {
       "label": "All About Drones",
@@ -100,7 +162,13 @@
       "name": "critical-injury-tables",
       "path": "packs/critical-injury-tables.db",
       "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
+      "package": "cyberpunk-red-core",
+      "ownership": {
+        "PLAYER": "NONE",
+        "TRUSTED": "NONE",
+        "ASSISTANT": "NONE",
+        "GAMEMASTER": "NONE"
+      }
     },
     {
       "label": "Cyberchairs",
@@ -127,12 +195,18 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Cyberware (Core) - DO NOT USE",
+      "label": "Cyberware (Core)",
       "type": "Item",
       "name": "cyberware-core",
       "path": "packs/cyberware-core.db",
       "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
+      "package": "cyberpunk-red-core",
+      "ownership": {
+        "PLAYER": "NONE",
+        "TRUSTED": "NONE",
+        "ASSISTANT": "NONE",
+        "GAMEMASTER": "NONE"
+      }
     },
     {
       "label": "Cyberware",
@@ -156,7 +230,13 @@
       "name": "dv-tables",
       "path": "packs/dv-tables.db",
       "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
+      "package": "cyberpunk-red-core",
+      "ownership": {
+        "PLAYER": "NONE",
+        "TRUSTED": "NONE",
+        "ASSISTANT": "NONE",
+        "GAMEMASTER": "NONE"
+      }
     },
     {
       "label": "Elflines Online",
@@ -260,7 +340,13 @@
       "name": "net-rolltables",
       "path": "packs/net-rolltables.db",
       "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
+      "package": "cyberpunk-red-core",
+      "ownership": {
+        "PLAYER": "NONE",
+        "TRUSTED": "NONE",
+        "ASSISTANT": "NONE",
+        "GAMEMASTER": "NONE"
+      }
     },
     {
       "label": "Night City Tarot",
@@ -295,12 +381,18 @@
       "package": "cyberpunk-red-core"
     },
     {
-      "label": "Skills (Core) - DO NOT USE",
+      "label": "Skills (Core)",
       "type": "Item",
       "name": "skills",
       "path": "packs/skills.db",
       "system": "cyberpunk-red-core",
-      "package": "cyberpunk-red-core"
+      "package": "cyberpunk-red-core",
+      "ownership": {
+        "PLAYER": "NONE",
+        "TRUSTED": "NONE",
+        "ASSISTANT": "NONE",
+        "GAMEMASTER": "NONE"
+      }
     },
     {
       "label": "Skills (Languages)",

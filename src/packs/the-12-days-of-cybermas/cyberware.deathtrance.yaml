@@ -25,7 +25,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/deathtrance.svg
-    label: Deathtrance
+    name: Deathtrance
     tint: null
     transfer: true
 img: >-

@@ -2,6 +2,12 @@
 
 # Changelog
 
+## Version 0.87.1
+
+### Bug Fixes
+
+Fix broken migrations
+
 ## Version 0.87.0
 
 ### Action Needed
@@ -207,6 +213,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 - Fixed Cyberchairs not overriding a users MOVE stat as they should. Thanks Dingo!
 - #577 - Restored firemode of weapon after a macro completes to what it was before the macro was executed
 - Previously, when unloading ammo that you no longer own the item for, it would leave the bullet count in the weapon but clear the UUID of the ammo in the weapon. This could cause problems when attempting to use that weapon as the bullet type is unknown. Additionally, when reloading, it would only take the bullet difference from the other bullet type instead of the full amount to load the weapon.
+- Fixed untranslated skills in active-effect dialog.
 - Fixed Combat Utility Belt custom status auto apply an remove handling
 - #657 - Fixed issues with dragging various document types to the hotbar.
 

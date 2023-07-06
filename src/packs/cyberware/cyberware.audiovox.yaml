@@ -25,7 +25,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
-    label: AudioVox Acting
+    name: AudioVox Acting
     tint: null
     transfer: true
   - _id: dqjjjMsDuHu1WoiE
@@ -53,7 +53,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
-    label: AudioVox Singing (Play Instrument)
+    name: AudioVox Singing (Play Instrument)
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg

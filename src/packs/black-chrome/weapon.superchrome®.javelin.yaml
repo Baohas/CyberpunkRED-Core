@@ -25,7 +25,7 @@ effects:
               isSituational: true
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle.svg
-    label: Superchrome® Javelin
+    name: Superchrome® Javelin
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle.svg

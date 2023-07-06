@@ -33,7 +33,7 @@ effects:
               isSituational: false
               onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/cyberware/teleoptics.svg
-    label: TeleOptics
+    name: TeleOptics
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/teleoptics.svg

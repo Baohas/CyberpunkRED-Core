@@ -24,7 +24,7 @@ effects:
             "0":
               isSituational: true
     icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
-    label: Lost Ear
+    name: Lost Ear
     tint: null
     transfer: true
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
