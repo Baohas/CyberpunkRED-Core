@@ -171,6 +171,34 @@ const registerSystemSettings = () => {
   });
 
   /*
+   * Migration Settings
+   */
+
+  game.settings.register(game.system.id, "migrateLockedCompendia", {
+    name: "CPR.settings.migrateLockedCompendia.name",
+    hint: "CPR.settings.migrateLockedCompendia.hint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+    onChange: (value) => {
+      LOGGER.log(`Changed migrateLockedCompendia to ${value}`);
+    },
+  });
+
+  game.settings.register(game.system.id, "migrateModuleCompendia", {
+    name: "CPR.settings.migrateModuleCompendia.name",
+    hint: "CPR.settings.migrateModuleCompendia.hint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      LOGGER.log(`Changed migrateModuleCompendia to ${value}`);
+    },
+  });
+
+  /*
    *  Dev settings
    */
 

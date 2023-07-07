@@ -4,6 +4,17 @@
 
 ## Version 0.87.4
 
+### New Features
+
+- Add the ability to migrate Locked compendia
+  - Adds System Setting: "Migrate Locked Compendia"
+    - Default: true
+  - If enabled it will unlock compendia then re-lock them after
+- Add the ability to migrate Module compendia
+  - Adds System Setting: "Migrate module Compendia"
+    - Default: false
+  - If enabled we will migrate Module provided compendia
+
 ### Bug Fixes
 
 - Fix some typos/wording in BC+ items
