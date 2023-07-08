@@ -8,6 +8,8 @@
 
 - Fix some typos/wording in BC+ items
 - Fix character sheet filter when using localization
+- Fix mook skill mod dialog div overflow
+- Fix mook skill mod dialogue translations
 
 ## Version 0.87.3
 
