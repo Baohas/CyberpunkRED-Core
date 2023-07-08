@@ -12,6 +12,7 @@
 - Fix mook skill mod dialogue translations
 - Fix localization of skill names in roll dialogs
 - Fix localization of Equipped status in the item sheet
+- Fix Localization of skills in attack roll cards
 
 ## Version 0.87.3
 
