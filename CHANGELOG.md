@@ -56,8 +56,6 @@
 - Fix #707 - Importing actors from .jsons with installed items should now work as expected.
 - Fix an issue where compendia actors erroneously had their installed item data wiped.
 
-## Version 0.87.4
-
 ## Version 0.87.3
 
 ### Bug Fixes
