@@ -33,7 +33,7 @@
   {{!-- Skill List --}}
   <ol class="items-list">
     {{#each (cprSortCoreSkills (cprFilter actor.itemTypes.skill "system.category" category) ) as |skill s| }}
-      {{#if (cprSheetContentFilter ../this.sheet.options.cprContentFilter skill.name) }}
+      {{#if (cprSheetContentFilter ../this.sheet.options.cprContentFilter (localize (cprGetLocalizedlNameKey skill.name "skill"))) }}
       <li class="item flexrow{{#if skill.system.favorite }} favorite{{else }}{{#if (cprListContains ../sheet.options.collapsedSections (cprGeneratePartial "skillTab-VAR" ../category)) }} hide{{/if }}{{/if }}"
           data-item-id="{{skill._id}}"
           data-skill-category="{{skill.system.category}}"

@@ -7,6 +7,7 @@
 ### Bug Fixes
 
 - Fix some typos/wording in BC+ items
+- Fix character sheet filter when using localization
 
 ## Version 0.87.3
 
