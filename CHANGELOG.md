@@ -4,6 +4,10 @@
 
 ## Version 0.87.4
 
+### Bug Fixes
+
+- Fix some typos/wording in BC+ items
+
 ## Version 0.87.3
 
 ### Bug Fixes

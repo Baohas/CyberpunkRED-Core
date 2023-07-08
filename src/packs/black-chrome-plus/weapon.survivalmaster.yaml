@@ -1,7 +1,6 @@
 _id: 5boGB9jFKUJ9cSMR
 effects: []
-img: >-
-  systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
 name: SurvivalMaster
 system:
   ammoVariety:
