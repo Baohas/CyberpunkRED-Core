@@ -17,6 +17,7 @@
 
 - Fix some typos/wording in BC+ items
 - Add CSS overrides for Dice Tray module buttons
+- Fix character sheet filter when using localization
 
 ## Version 0.87.3
 
