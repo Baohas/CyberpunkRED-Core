@@ -16,6 +16,7 @@
 ### Bug Fixes
 
 - Fix some typos/wording in BC+ items
+- Add CSS overrides for Dice Tray module buttons
 
 ## Version 0.87.3
 
