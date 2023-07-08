@@ -22,7 +22,7 @@ system:
     damage:
       minimum: 1d6
       mode: modify
-      value: -2d6
+      value: "-2d6"
   price:
     market: 10
   source:

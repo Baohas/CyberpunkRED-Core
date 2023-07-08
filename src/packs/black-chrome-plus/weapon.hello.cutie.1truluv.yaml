@@ -1,7 +1,6 @@
 _id: okVi2Gn9qk8KH7sD
 effects: []
-img: >-
-  systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle.svg
+img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle.svg
 name: Hello Cutie 1TruLuv
 system:
   ammoVariety: []
@@ -17,7 +16,7 @@ system:
     value: >-
       <p>Exotic Sniper Rifle. Can load non basic ammunition.</p>
 
-      <p>Equiped with a Sniping Scope and Infrared Night Vision Scope*, and
+      <p>Equipped with a Sniping Scope and Infrared Night Vision Scope*, and
       built-in Agent which includes a pseudo AI girlfriend who can recognize and
       talk to the owner.</p>
 
