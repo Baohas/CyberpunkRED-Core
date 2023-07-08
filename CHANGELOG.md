@@ -10,6 +10,7 @@
 - Fix character sheet filter when using localization
 - Fix mook skill mod dialog div overflow
 - Fix mook skill mod dialogue translations
+- Fix localization of skill names in roll dialogs
 
 ## Version 0.87.3
 
