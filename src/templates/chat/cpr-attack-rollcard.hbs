@@ -57,12 +57,18 @@
         </div>
         <div class="d10-data-div">
           <div class="d10-data-details hide">
-            <div class="text-normal text-semi">{{localize statName}} + {{statValue}}</div>
             <div class="text-normal text-semi">
-              {{localize skillName}} + {{skillValue}}
+              {{localize statName}} + {{statValue}}
+            </div>
+            <div class="text-normal text-semi">
+              {{localize (cprGetLocalizedlNameKey skillName "skill")}}
+              +
+              {{skillValue}}
             </div>
             {{#if roleValue }}
-              <div class="text-normal text-semi">{{localize roleName}} + {{roleValue}}</div>
+              <div class="text-normal text-semi">
+                {{localize roleName}} + {{roleValue}}
+              </div>
             {{/if}}
             {{#if (cprCompare mods.length "||" additionalMods.length) }}
               {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
