@@ -158,10 +158,12 @@ export default class InstalledItemMigrationFix extends CPRMigration {
                 const modifier = upgradeModifiers[index];
 
                 // If modifier exists, corresponding data point exists in the
-                // CPR.upgradableDataPoints, and the modifier is not 0, null or
+                // CPR.upgradableDataPoints, modifier.configured is true
+                // (secondaryWeapon), and the modifier is not 0, null or
                 // empty string, then add it to the list
                 if (
                   typeof modifier !== "undefined" &&
+                  modifier.configured &&
                   typeof CPR.upgradableDataPoints[item.type][index] !==
                     "undefined" &&
                   modifier !== 0 &&
