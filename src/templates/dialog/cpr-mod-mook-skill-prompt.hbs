@@ -10,8 +10,12 @@
       </li>
     {{#each (cprSort object "name") as |skill| }}
       <li class="dialog-item skill-name flexrow">
-        <div class="dialog-item-name text-nowrap">{{skill.name}}</div>
-        <div class="dialog-item-detail skill-base text-nowrap">+{{skill.stat}}</div>
+        <div class="dialog-item-name text-nowrap">
+          {{localize (cprGetLocalizedlNameKey skill.name "skill")}}
+        </div>
+        <div class="dialog-item-detail skill-base text-nowrap">
+          +{{skill.stat}}
+        </div>
         <div class="dialog-item-detail skill-level text-nowrap">
           <input class="number skill-input"
                  name="{{skill.id}}.level"
@@ -26,6 +30,6 @@
     {{/each}}
     </ol>
   </div>
-  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 </form>
+{{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 {{cprTrace "END CPR-MOD-MOOK-SKILL-PROMPT.HBS"}}
