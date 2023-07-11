@@ -15,24 +15,9 @@ system:
     chat: ""
     unidentified: ""
     value: >-
-      <div class="QcsUad BDJ8fb BLojaf">
-
-      <div class="usGWQd" aria-live="polite">
-
-      <div class="KkbLmb">
-
-      <div class="lRu31"><span class="HwtZe" lang="en"><span class="jCAhz
-      ChMk0b"><span class="ryNqvb">A small explosive that detonates after being
-      immersed in a liquid. Is both a</span></span></span><span class="HwtZe"
-      lang="en">rmor piercing and </span><span class="HwtZe" lang="en"><span
-      class="jCAhz ChMk0b"><span class="ryNqvb">creates a large cloud of smoke.
-      Full rules can be found on page 88.</span></span></span></div>
-
-      </div>
-
-      </div>
-
-      </div>
+      <p> A small explosive that detonates after being immersed in a liquid. Is
+      both armor piercing and creates a large cloud of smoke. </p> <p> Full
+      rules can be found on page 88. </p>
   dvTable: ""
   equipped: owned
   favorite: false

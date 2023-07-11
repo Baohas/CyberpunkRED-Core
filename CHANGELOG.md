@@ -14,6 +14,7 @@
 - Fix localization of skill names in roll dialogs
 - Fix localization of Equipped status in the item sheet
 - Fix Localization of skills in attack roll cards
+- Fix description for Micro Hydrogen Combustor in Black Chrome
 
 ## Version 0.87.3
 
