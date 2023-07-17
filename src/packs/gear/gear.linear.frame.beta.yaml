@@ -3,7 +3,7 @@ effects:
   - _id: fby6eAZaHGBFcK1v
     changes:
       - key: system.stats.body.value
-        mode: 2
+        mode: 5
         priority: null
         value: "14"
     disabled: false
