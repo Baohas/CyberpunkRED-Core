@@ -38,6 +38,7 @@
 - #854 - Fix missing Babele translations for Critical Injuries preventing rolling Critical Injuries from character sheets
 - Fix rolling custom skills.
 - Fix Beta Linear Frames AE mode to be set not add
+- Fix Nova Model 757 slots
 
 ## Version 0.87.2
 
