@@ -31,7 +31,7 @@ system:
     allowed: true
     allowedTypes: []
     list: []
-    slots: 0
+    slots: 2
     usedSlots: 0
   isRanged: true
   isUpgraded: false
