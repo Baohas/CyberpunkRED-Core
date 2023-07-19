@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* globals Actor, game, getProperty, hasProperty, duplicate, CPRMookActorSheet,  CPRContainerActorSheet */
+/* globals Actor, game, getProperty, hasProperty, duplicate */
 import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";
 import CPRCharacterActorSheet from "./sheet/cpr-character-sheet.js";
@@ -30,7 +30,7 @@ export default class CPRActor extends Actor {
    * @param {Object} options - not used here, but required by the parent class
    */
   static async create(data, options) {
-    LOGGER.trace("create | CPRCharacterActor | called.");
+    LOGGER.trace("create | CPRActor | called.");
     const createData = data;
     const newActor = typeof data.system === "undefined";
     if (newActor) {
@@ -126,6 +126,81 @@ export default class CPRActor extends Actor {
     }
     await actor.update({ "system.installedItems.list": installedItems });
     return actor;
+  }
+
+  /**
+   * This is a helper function to sync installed item UUIDs on Actors and their respective owned items.
+   * We need this because there are issues importing actors with installed items. Essentially,
+   * the uuids in `installedIn` and `installedItems.list` (and `magazine.ammoData.uuid` for weapons)
+   * do not get updated with the ID of the new actor. This function rectifies that and should be called
+   * where relevant (e.g. actor.importFromJSON() )
+   *
+   * @async
+   */
+  async syncAllInstalled() {
+    LOGGER.trace("syncAllInstalled | CPRActor | called.");
+    const actorUUID = this.uuid;
+    const updateList = [];
+    const installedItems = [];
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    for (const sourceUUID of this.system.installedItems.list) {
+      const sourceItemId = sourceUUID.split(".").pop();
+      const newItemId = `${actorUUID}.Item.${sourceItemId}`;
+      installedItems.push(newItemId);
+      const item = this.getOwnedItem(newItemId);
+      updateList.push({
+        _id: item.id,
+        "system.isInstalled": true,
+        "system.installedIn": actorUUID,
+      });
+      if (
+        containerTypes.includes(item.type) &&
+        item.system.installedItems.list.length > 0
+      ) {
+        await item.recursiveInstallSync();
+      }
+    }
+    // Sync any owned items that are containers
+    for (const itemType of Object.keys(this.itemTypes)) {
+      if (containerTypes.includes(itemType)) {
+        for (const item of this.itemTypes[itemType]) {
+          if (item.system.installedItems.list.length > 0) {
+            await item.recursiveInstallSync();
+          }
+        }
+      }
+    }
+    // Sync any loaded weapons
+    for (const item of this.itemTypes.weapon) {
+      if (
+        item.system.isRanged &&
+        item.system.magazine.ammoData.uuid.length > 0
+      ) {
+        const sourceItemId = item.system.magazine.ammoData.uuid
+          .split(".")
+          .pop();
+        const newItemId = `${actorUUID}.Item.${sourceItemId}`;
+        updateList.push({
+          _id: item.id,
+          "system.magazine.ammoData.uuid": newItemId,
+        });
+      }
+    }
+    await this.updateEmbeddedDocuments("Item", updateList);
+    await this.update({ "system.installedItems.list": installedItems });
+  }
+
+  /**
+   * We override this function so that we can properly sync installed items on the imported actor.
+   * This is necessary due to how we handle installed items.
+   *
+   * @param {*} json
+   * @override
+   */
+  async importFromJSON(json) {
+    LOGGER.trace("importFromJSON | CPRActor | Called.");
+    const actor = await super.importFromJSON(json);
+    await actor.syncAllInstalled();
   }
 
   /**
