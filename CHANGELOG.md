@@ -18,6 +18,7 @@
 - Fix bug in 012-installedItemMigrationFix.js migration script that failed with unconfigured secondary weapons
 - Fix description for Micro Hydrogen Combustor in Black Chrome
 - Fix migration error in 006-universalInstall script
+- Fix #707 - Importing actors from .jsons with installed items should now work as expected.
 
 ## Version 0.87.3
 
