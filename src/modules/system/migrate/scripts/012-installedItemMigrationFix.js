@@ -42,7 +42,7 @@ export default class InstalledItemMigrationFix extends CPRMigration {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
 
     // If the actor doesn't have any installed items, resolve the promise and return
-    if (typeof actor.system.installedItems !== "object") {
+    if (typeof actor.system.installedItems !== "object" || actor.compendium) {
       return Promise.resolve();
     }
 
