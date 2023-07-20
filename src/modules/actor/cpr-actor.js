@@ -128,6 +128,18 @@ export default class CPRActor extends Actor {
     return actor;
   }
 
+  /**
+   * This is a helper function to sync installed item UUIDs on Actors and their respective owned items.
+   * This is a 'twin' to the function `CPRActor.syncInstalledItems()`. What is the difference?
+   * Typically, we use the parent document's `document.system.installedItems.list` as the "source of truth"
+   * for what things are installed into what. This is a list of UUIDs of installed items.
+   * In rare instances (specifically with migration script 012), some actors in compendia were getting this
+   * data-point wiped out. Luckily, on the installed items themselves, there is a datapoint called `item.installedIn`,
+   * which did not get wiped out. This function reconstructs `installedItems.list` using the above data-point,
+   * and makes sure all UUIDs match. It is hopefully seldom used.
+   *
+   * @async
+   */
   async syncInstalledViaInstalledIn() {
     LOGGER.trace("syncInstalledViaInstalledIn | CPRActor | called.");
     const actorUUID = this.uuid;
@@ -214,8 +226,8 @@ export default class CPRActor extends Actor {
    *
    * @async
    */
-  async syncInstalledViaInstalledItemsList() {
-    LOGGER.trace("syncInstalledViaInstalledItemsList | CPRActor | called.");
+  async syncInstalledItems() {
+    LOGGER.trace("syncInstalledItems | CPRActor | called.");
     const actorUUID = this.uuid;
     const updateList = [];
     const installedItems = [];
@@ -278,7 +290,7 @@ export default class CPRActor extends Actor {
   async importFromJSON(json) {
     LOGGER.trace("importFromJSON | CPRActor | Called.");
     const actor = await super.importFromJSON(json);
-    await actor.syncInstalledViaInstalledItemsList();
+    await actor.syncInstalledItems();
   }
 
   /**
