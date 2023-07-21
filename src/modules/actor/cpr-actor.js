@@ -136,7 +136,8 @@ export default class CPRActor extends Actor {
    * In rare instances (specifically with migration script 012), some actors in compendia were getting this
    * data-point wiped out. Luckily, on the installed items themselves, there is a datapoint called `item.installedIn`,
    * which did not get wiped out. This function reconstructs `installedItems.list` using the above data-point,
-   * and makes sure all UUIDs match. It is hopefully seldom used.
+   * and makes sure all UUIDs match. The other, more often-used function reconstructs installed item
+   * info from `installedItems.list` (as is best-practice). The following function is hopefully seldom used.
    *
    * @async
    */
@@ -155,6 +156,14 @@ export default class CPRActor extends Actor {
           );
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
 
+    /**
+     * This function adapts `item.recursiveInstallSync()` for this particular use-case.
+     * It shouldn't be needed outside of its parent function.
+     *
+     * @async
+     * @param {CPRActor} actor - The actor who the parent function is fixing.
+     * @param {CPRItem} item - An owned item on the actor that we are fixing.
+     */
     async function recursiveInstall(actor, item) {
       // const actorUUID = this.uuid;
       const itemUpdateList = [];
