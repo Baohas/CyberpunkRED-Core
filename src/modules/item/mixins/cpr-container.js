@@ -381,6 +381,7 @@ const Container = function Container() {
   this.recursiveInstallSync = async function recursiveInstallSync() {
     LOGGER.trace("recursiveInstallSync | Container | Called.");
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
     const actor = this.isOwned ? this.actor : false;
     if (actor) {
       const actorUUID = actor.uuid;
@@ -434,6 +435,11 @@ const Container = function Container() {
         });
       }
       await actor.updateEmbeddedDocuments("Item", updateList);
+
+      // Do this last because `syncUpgrades` relies on the updates above to work.
+      if (upgradableTypes.includes(this.type)) {
+        await this.syncUpgrades();
+      }
     }
   };
 };

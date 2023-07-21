@@ -119,7 +119,6 @@ export default class CPRActor extends Actor {
      * @param {CPRItem} item - An owned item on the actor that we are fixing.
      */
     async function recursiveInstall(actor, item) {
-      // const actorUUID = this.uuid;
       const itemUpdateList = [];
       const installedList = actor.items.filter(
         // Match for UUIDs that contain "Item" (i.e. items)
@@ -139,6 +138,12 @@ export default class CPRActor extends Actor {
         "system.installedItems.list": installedList.map((i) => i.uuid),
       });
       await actor.updateEmbeddedDocuments("Item", itemUpdateList);
+
+      // Do this last because `syncUpgrades` relies on the updates above to work.
+      const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
+      if (upgradableTypes.includes(item.type)) {
+        await item.syncUpgrades();
+      }
     }
 
     for (const item of currentItems) {
@@ -151,6 +156,7 @@ export default class CPRActor extends Actor {
         await recursiveInstall(this, item);
       }
     }
+
     installedItems = currentItems.map((i) => i.uuid);
     // Sync any owned items that are containers
     for (const itemType of Object.keys(this.itemTypes)) {

@@ -1,4 +1,4 @@
-/* global duplicate CONST fromUuidSync */
+/* global duplicate CONST fromUuid */
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 
@@ -37,8 +37,9 @@ const Upgradable = function Upgradable() {
     // Next identify any upgrades that are installed but not recorded
     // as an upgraded data point
     const newUpgrades = [];
-    installedItems.list.forEach((uuid) => {
-      const installedItem = fromUuidSync(uuid);
+    for (const uuid of installedItems.list) {
+      // eslint-disable-next-line no-await-in-loop
+      const installedItem = await fromUuid(uuid);
       if (
         installedItem.type === "itemUpgrade" &&
         installedUpgrades.filter((upgrade) => upgrade.uuid === uuid).length ===
@@ -46,7 +47,7 @@ const Upgradable = function Upgradable() {
       ) {
         newUpgrades.push(installedItem);
       }
-    });
+    }
 
     for (const upgrade of newUpgrades) {
       upgradeStatus = true;
