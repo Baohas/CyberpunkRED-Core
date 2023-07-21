@@ -61,7 +61,6 @@ export default class CPRActor extends Actor {
     }
     const actor = await super.create(createData, options);
     const installedItems = [];
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     if (newActor) {
       // If this is a brand new actor (i.e. not a duplicate), install core cyberware.
       const updateList = [];
@@ -75,56 +74,11 @@ export default class CPRActor extends Actor {
       });
       // Update the embedded core cyberware with the correct reference to the actor its installed in.
       actor.updateEmbeddedDocuments("Item", updateList);
+      await actor.update({ "system.installedItems.list": installedItems });
     } else {
-      // An actor was copied, first sync all items installed in the actor (Cyberware)
-      const actorUUID = actor.uuid;
-      const updateList = [];
-      for (const sourceUUID of actor.system.installedItems.list) {
-        const sourceItemId = sourceUUID.split(".").pop();
-        const newItemId = `${actorUUID}.Item.${sourceItemId}`;
-        installedItems.push(newItemId);
-        const item = actor.getOwnedItem(newItemId);
-        updateList.push({
-          _id: item.id,
-          "system.isInstalled": true,
-          "system.installedIn": actorUUID,
-        });
-        if (
-          containerTypes.includes(item.type) &&
-          item.system.installedItems.list.length > 0
-        ) {
-          await item.recursiveInstallSync();
-        }
-      }
-      // Sync any owned items that are containers
-      for (const itemType of Object.keys(actor.itemTypes)) {
-        if (containerTypes.includes(itemType)) {
-          for (const item of actor.itemTypes[itemType]) {
-            if (item.system.installedItems.list.length > 0) {
-              await item.recursiveInstallSync();
-            }
-          }
-        }
-      }
-      // Sync any loaded weapons
-      for (const item of actor.itemTypes.weapon) {
-        if (
-          item.system.isRanged &&
-          item.system.magazine.ammoData.uuid.length > 0
-        ) {
-          const sourceItemId = item.system.magazine.ammoData.uuid
-            .split(".")
-            .pop();
-          const newItemId = `${actorUUID}.Item.${sourceItemId}`;
-          updateList.push({
-            _id: item.id,
-            "system.magazine.ammoData.uuid": newItemId,
-          });
-        }
-      }
-      await actor.updateEmbeddedDocuments("Item", updateList);
+      // An actor was copied, sync all installed items with the UUID corresponding to the new actor.
+      actor.syncInstalledItems();
     }
-    await actor.update({ "system.installedItems.list": installedItems });
     return actor;
   }
 
@@ -231,7 +185,8 @@ export default class CPRActor extends Actor {
    * We need this because there are issues importing actors with installed items. Essentially,
    * the uuids in `installedIn` and `installedItems.list` (and `magazine.ammoData.uuid` for weapons)
    * do not get updated with the ID of the new actor. This function rectifies that and should be called
-   * where relevant (e.g. actor.importFromJSON() )
+   * where relevant (e.g. importing an actor from JSON in actor.importFromJSON(), duplicating an actor
+   * in actor.create(), etc.)
    *
    * @async
    */
