@@ -11,6 +11,7 @@
 - Fix character sheet filter when using localization
 - Fix mook skill mod dialog div overflow
 - Fix mook skill mod dialogue translations
+- Fix Roll Card chat message scaling with Font Size changes
 - Fix localization of skill names in roll dialogs
 - Fix localization of Equipped status in the item sheet
 - Fix Localization of skills in attack roll cards
