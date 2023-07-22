@@ -73,17 +73,23 @@ export default class ImportedActorFix extends CPRMigration {
         return actor.syncInstalledViaInstalledIn();
       }
 
-      // If this is true, actor.installedItems.list does not correspond to
-      // the UUIDs of the actual items installed. This likely means a user imported
+      // If either of the following are true, actor|item.system installedItems.list does not
+      // correspond to the UUIDs of the actual items installed. This likely means a user imported
       // a .json of an actor with installed items. We can fix that using the more general
       // method (syncInstalledItems)
-      const brokenJsonImport = !actor.system.installedItems.list.some(
+      const brokenJsonImportActorList = !actor.system.installedItems.list.some(
         (uuid) => {
           const idFragments = uuid.split(".");
           return idFragments.includes(actor.id);
         }
       );
-      if (brokenJsonImport) {
+      const brokenJsonImportItemList = !actor.items.some((i) =>
+        i.system.installedItems?.list.some((uuid) => {
+          const idFragments = uuid.split(".");
+          return idFragments.includes(i.id);
+        })
+      );
+      if (brokenJsonImportActorList || brokenJsonImportItemList) {
         return actor.syncInstalledItems();
       }
     }
