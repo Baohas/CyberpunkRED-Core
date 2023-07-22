@@ -26,6 +26,7 @@
 - Fix Localization of skills in attack roll cards
 - Fix bug in 012-installedItemMigrationFix.js migration script that failed with unconfigured secondary weapons
 - Fix description for Micro Hydrogen Combustor in Black Chrome
+- Fix migration error in 006-universalInstall script
 
 ## Version 0.87.3
 
