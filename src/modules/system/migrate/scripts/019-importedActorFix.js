@@ -86,7 +86,7 @@ export default class ImportedActorFix extends CPRMigration {
       const brokenJsonImportItemList = !actor.items.some((i) =>
         i.system.installedItems?.list.some((uuid) => {
           const idFragments = uuid.split(".");
-          return idFragments.includes(i.id);
+          return idFragments.includes(actor.id);
         })
       );
       if (brokenJsonImportActorList || brokenJsonImportItemList) {
