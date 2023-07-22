@@ -47,10 +47,9 @@ export default class ImportedActorFix extends CPRMigration {
 
     // Only run if the actor is from a compendium and can have installed items.
     if (
-      actor.compendium &&
-      (actor.type === "character" ||
-        actor.type === "mook" ||
-        actor.type === "container")
+      actor.type === "character" ||
+      actor.type === "mook" ||
+      actor.type === "container"
     ) {
       // Determine if the actor has its installed items messed up.
       const actorHasInstalledItems =
@@ -68,9 +67,24 @@ export default class ImportedActorFix extends CPRMigration {
           )
       );
 
-      // If either of the above are true, fix the actor.
+      // If either of the above are true, migration script 012 broke the actor,
+      // so we will fix it with a method specific to the issue in that script.
       if (actorHasInstalledItems || ownedItemsHaveInstalledItems) {
         return actor.syncInstalledViaInstalledIn();
+      }
+
+      // If this is true, actor.installedItems.list does not correspond to
+      // the UUIDs of the actual items installed. This likely means a user imported
+      // a .json of an actor with installed items. We can fix that using the more general
+      // method (syncInstalledItems)
+      const brokenJsonImport = !actor.system.installedItems.list.some(
+        (uuid) => {
+          const idFragments = uuid.split(".");
+          return idFragments.includes(actor.id);
+        }
+      );
+      if (brokenJsonImport) {
+        return actor.syncInstalledItems();
       }
     }
 
