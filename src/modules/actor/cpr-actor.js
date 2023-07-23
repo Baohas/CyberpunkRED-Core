@@ -76,7 +76,7 @@ export default class CPRActor extends Actor {
       actor.updateEmbeddedDocuments("Item", updateList);
       await actor.update({ "system.installedItems.list": installedItems });
     } else {
-      // An actor was copied, sync all installed items with the UUID corresponding to the new actor.
+      // An actor was copied/imported, sync all installed items with the UUID corresponding to the new actor.
       actor.syncInstalledItems();
     }
     return actor;
@@ -100,14 +100,10 @@ export default class CPRActor extends Actor {
     const actorUUID = this.uuid;
     const updateList = [];
     let installedItems = [];
-    const currentItems =
-      this.system.installedItems.list.length > 0
-        ? this.system.installedItems.list
-        : this.items.filter(
-            (item) =>
-              // Match for UUID's that do not contain "Item" (i.e. actors)
-              item.system.isInstalled && !item.system.installedIn?.match("Item")
-          );
+    const currentItems = this.items.filter((item) => {
+      // Match for UUID's that do not contain "Item" (i.e. actors)
+      return item.system.isInstalled && !item.system.installedIn?.match("Item");
+    });
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
 
     /**
