@@ -58,7 +58,7 @@ REPO_URL="${PROJECT_URL}/packages/generic/fvtt-${SYSTEM_NAME}"
 ###################
 # Variables that need to be overwritten depending on the job needs.
 
-# If the CI_COMMIT_TAG is empty we're probably merging to dev so
+# If the CI_COMMIT_TAG is empty we're probably merging to master so
 # overwite the defaults. Used in the build stages.
 if [[ -z "${CI_COMMIT_TAG}" ]]; then
   # Use the date/time as a version number
