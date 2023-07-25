@@ -46,8 +46,8 @@
       "description": "<p>Ein Anwender, der Chemohaut und Kunsthaar besitzt, addiert +2 zu seiner Fertigkeit Körperpflege. (Der Bonus gilt nur einmal.)</p>"
     },
     "Chipware Socket": {
-      "name": "Chipware Buchse",
-      "description": "<p>-Option. Eine einzelne Buchse im Nacken, über die man schnell ein einzelnes Chipware-Teil installieren kann, von denen es unzählige gibt.</p>"
+      "name": "Chipware-Buchse",
+      "description": "<p>Eine einzelne Buchse im Nacken, über die man schnell ein einzelnes Chipware-Teil installieren kann, von denen es unzählige gibt.</p>"
     },
     "Chyron": {
       "name": "Einblendung",
@@ -166,7 +166,7 @@
       "description": "<p>Immer aktive Speedware, die für eine ständig verbesserte Reaktionszeit sorgt. Der Anwender addiert +2 zu seinen Initiativewürfen.</p>"
     },
     "Level Damper": {
-      "name": "Schalldämpfer",
+      "name": "Lärmdämmung",
       "description": "<p>Automatische Lärmdämpfung. Der Anwender ist immun gegenüber Taubheit oder anderen Effekten, die durch gefährlich laute Geräusche verursacht werden.</p>"
     },
     "Light Tattoo": {
@@ -178,11 +178,11 @@
       "description": "<p>Reduziert Mali durch Dunkelheit und andere nicht greifbare Sichtbehinderungen wie Rauch, Nebel und so weiter auf 0. Benötigt zwei Cyberaugen, muss paarweise gekauft werden und nimmt pro Cyberauge 2 Optionsslots ein.</p>"
     },
     "Meat Arm": {
-      "name": "Fleischlicher-Arm",
+      "name": "Fleischarm",
       "description": "<p>Ein normaler Arm. Dieser kann Aufsätze wie eine Standardhand oder einige Waffen und Werkzeuge als einziges installiertes Teil tragen.</p>"
     },
     "Meat Leg": {
-      "name": "Fleischliches-Bein",
+      "name": "Fleischbein",
       "description": "<p>Ein normales Bein. Erlaubt den Einbau von Klauenfuß.</p>"
     },
     "Medical Grade Cyberarm": {
@@ -198,7 +198,7 @@
       "description": "<p>Scanner mit externen Sonden und Kontakten zum Diagnostizieren von Verletzungen und Krankheiten, unterstützt den Anwender bei medizinischen Notfällen, für die kein Eingriff nötig ist. Der Anwender addiert +2 zur Fertigkeit Erste Hilfe und Notfallmedizin hinzu.</p>"
     },
     "Memory Chip": {
-      "name": "Memory Chip",
+      "name": "Speicherchip",
       "description": "<p>Datenspeicherung. Wie ein Flash-Laufwerk für Ihr Gehirn.</p>"
     },
     "MicroOptics": {
@@ -282,7 +282,7 @@
       "description": "<p>Der Anwender kann über 1,5 km per Funk kommunizieren.</p>"
     },
     "Radio Scanner/Music Player": {
-      "name": "Sendersucher/Musik­ wiedergabe",
+      "name": "Sendersucher/Musik­wiedergabe",
       "description": "<p>Der Anwender kann mit einer Aktion alle Radiofrequenzen absuchen, die sich innerhalb von 1,5 km befinden und derzeit in Betrieb sind oder sich mit dem Datenpool verbinden, um die heißeste Musik zu hören</p>"
     },
     "Realskinn Covering (Cyber Arm)": {
@@ -331,7 +331,7 @@
     },
     "Skin Weave": {
       "name": "Hautverstärker",
-      "description": "<p>External Body Cyberware*. Head and Body Armor SP7 and recovers 1SP/day. Armor does not stack.</p>\n<p><em>* Cyberware Armor does not function as armor in the system, please add the \"Skin Weave\" item to the character/mook to track</em></p>"
+      "description": "<p>Externe Körpercyberware*. Kopf und Körper SW 7 und regeneriert 1 SW pro Tag. Wie üblich nicht mit anderer Panzerung stapelbar.</p>\n<p><em>* Cyberware-Panzerung funktioniert im System nicht als Panzerung, bitte manuell den Charakter mit dem Panzerungs-Item \"Hautverstärker\" ausrüsten</em></p>"
     },
     "Skinwatch": {
       "name": "Hautuhr",
@@ -351,7 +351,7 @@
     },
     "Subdermal Armor": {
       "name": "Subdermale Panzerung",
-      "description": "<p>External Body Cyberware*. Head and Body Armor SP11 and recovers 1SP/day. Armor does not stack.</p>\n<p><em>* Cyberware Armor does not function as armor in the system, please add the \"Subdermal Armor\" item to the character/mook to track</em></p>"
+      "description": "<p>Externe Körpercyberware*. Kopf und Körper SW 11 und regeneriert 1 SW pro Tag. Wie üblich nicht mit anderer Panzerung stapelbar.</p>\n<p><em>* Cyberware-Panzerung funktioniert im System nicht als Panzerung, bitte manuell den Charakter mit dem Panzerungs-Item \"Subdermale Panzerung\" ausrüsten</em></p>"
     },
     "Subdermal Grip": {
       "name": "Subdermalgriff",

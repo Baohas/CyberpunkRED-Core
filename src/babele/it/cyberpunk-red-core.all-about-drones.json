@@ -1,29 +1,29 @@
 {
-  "label": "All About Drones",
+  "label": "Tutto Sui Droni",
   "entries": {
     "GRAF3": {
       "name": "GRAF3",
-      "description": "<p>Quadraped construction drone.</p>\n<p>Refer to the full description on page 59 of Interface Red vol. 1.</p>"
+      "description": "<p>Drone da costruzione quadrupede.</p>\n<p>Fare riferimento alla descrizione completa a pagina 59 di Interface Red vol. 1.</p>"
     },
     "My First GRAF3": {
-      "name": "My First GRAF3",
-      "description": "<p>Personal Drone. Tiny GRAF3 that can be linked to an Agent.</p>\n<p>Refer to the full description on page 61 of Interface Red vol. 1.</p>"
+      "name": "Il Mio Primo GRAF3",
+      "description": "<p>Drone Personale. il Mio Primo GRAF3 viene collegato a un Agent.</p>\n<p>Fare riferimento alla descrizione completa a pagina 61 di Interface Red vol. 1.</p>"
     },
     "Savannah Eagle": {
       "name": "Savannah Eagle",
-      "description": "<p>Active Airborne Defense Drone.</p>\n<p>Refer to the fuill description on page 60 of Interface Red vol. 1.</p>"
+      "description": "<p>Drone aereo di Difesa Attivo.</p>\n<p>Fare riferimento alla descrizione completa a pagina 60 di Interface Red vol. 1.</p>"
     },
     "Savannah Panther": {
       "name": "Savannah Panther",
-      "description": "<p>Active Defense Drone.</p>\n<p>Refer to the full description on page 61 of Interface Red vol. 1.</p>"
+      "description": "<p>Drone di Difesa Attiva.</p>\n<p>Fare riferimento alla descrizione completa a pagina 60 di Interface Red vol. 1.</p>"
     },
     "The Observer": {
-      "name": "The Observer",
-      "description": "<p>Personal Drone. Flying camera that can be linked to an Agent.</p>\n<p>Refer to the full description on page 62 of Interface Red vol. 1.</p>"
+      "name": "Observer",
+      "description": "<p>Drone Personale. Camera aerea che può essere collegata a un Agent.</p>\n<p>Fare riferimento alla descrizione completa a pagina 62 di Interface Red vol. 1.</p>"
     },
     "The Transporter": {
-      "name": "The Transporter",
-      "description": "<p>Personal Drone. Transporter Drone that can be linked to an Agent.</p>\n<p>Refer to the full description on page 63 of Interface Red vol. 1.</p>"
+      "name": "Transporter",
+      "description": "<p>Drone Personale. Drone aereo di trasporto che può essere collegato a un agente.</p>\n<p>Fare riferimento alla descrizione completa a pagina 63 di Interface Red vol. 1.</p>"
     }
   }
 }

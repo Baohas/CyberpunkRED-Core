@@ -3,7 +3,7 @@
   "entries": {
     "Arrow (Junk)": {
       "name": "Flecha (Basura)",
-      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
     },
     "Big Dreem Rounds": {
       "name": "Rondas de Gran Dreem",
@@ -19,7 +19,7 @@
     },
     "Medium Pistol (Junk)": {
       "name": "Pistola Media (Basura)",
-      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
     },
     "Medium Pistol (Small Game)": {
       "name": "Pistola Media (Juguete)",
@@ -27,7 +27,7 @@
     },
     "Rifle (Junk)": {
       "name": "Rifle (Basura)",
-      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
     },
     "Rifle (Small Game)": {
       "name": "Rifle (Juguete)",
@@ -35,11 +35,11 @@
     },
     "Shotgun Slug (Junk)": {
       "name": "Posta de Escopeta (Basura)",
-      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
     },
     "Very Heavy Pistol (Junk)": {
       "name": "Pistola Muy Pesada (Basura)",
-      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
     },
     "Very Heavy Pistol (Small Game)": {
       "name": "Pistola Muy Pesada (Juguete)",
@@ -55,7 +55,7 @@
     },
     "Bullet To Slug Adapter Casings": {
       "name": "Casquillo adaptable para balas a perdigones",
-      "description": "<p>Haz que cualquier bala pueda ser disparada como un cartucho de escopeta.</p>\n<p>Una caja de casquillos adaptable para balas a perdigones viene con 10 casquillos.</p>\n<p>Puedes cargar 10 balas en 10 adaptadores usando el dispositivo incluido en una acción. Si se cargan manualmente, se necesita una acción para cargar 1 bala.</p>"
+      "description": "<p>Make any bullet able to be fired as a shotgun slug.</p>\n<p>A box of Bullet to Slug Adapter Casings comes with 10 casings.</p>\n<p>You can load 10 bullets into 10 adapters using the included jig in an Action. If loading by hand it takes an Action to load 1 bullet.</p>"
     },
     "Solo of Fortune Bodypillow": {
       "name": "Almohada Corporal de Soldado de Fortuna",
@@ -67,7 +67,7 @@
     },
     "Hello Cutie 1TruLuv": {
       "name": "Hello Cutie 1TruLuv",
-      "description": "<p>Rifle de francotirador exótico. Puede cargar munición no básica.</p>\n<p>Equipado con una mira de largo alcance y Visión Nocturna*, y Agente integrado que incluye una pseudo novia/o IA que puede reconocer y hablar con el propietario.</p>\n<p>Cuidarlo bien, usarlo regularmente y el arma mejora. Descuídalo y deberás disculparte...</p>\n<p><em>* Estas actualizaciones deben ser instaladas manualmente después de añadir a un actor<br></em></p>"
+      "description": "<p>Exotic Sniper Rifle. Can load non basic ammunition.</p>\n<p>Equipped with a Sniping Scope and Infrared Night Vision Scope*, and built-in Agent which includes a pseudo AI girlfriend who can recognize and talk to the owner.</p>\n<p>Take good care of it/her and use it/her regularly and the weapon improves. Neglect it/her and you'll have to apologize...</p>\n<p><em>* These upgrades need to be installed manually after adding to an actor<br></em></p>"
     },
     "Molotov Cocktail": {
       "name": "Coctél Molotov",

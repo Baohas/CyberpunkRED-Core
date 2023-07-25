@@ -3,7 +3,7 @@
   "entries": {
     "Amplified Hearing": {
       "name": "Udito Amplificato",
-      "description": "<p>Provides +2 to perception checks that use hearing.</p>"
+      "description": "<p>+2 alle Prove di Percezione basate sull’udito. Richiede Sistema Cyberudito.</p>"
     },
     "Anti-Dazzle": {
       "name": "Antiriflesso",
@@ -83,7 +83,7 @@
     },
     "Cybersnake": {
       "name": "Cyberserpente",
-      "description": "<p>A throat snake which is a Very Heavy Melee weapon.</p>"
+      "description": "<p>Arma da Mischia Molto Pesante montata nell’esofago. Occultabile.</p>"
     },
     "Dartgun": {
       "name": "Lanciadardi",
@@ -186,12 +186,12 @@
       "description": "<p>Una gamba regolare. Questo può supportare allegati come un Piede Standard o armi come il Piede Pattino.</p>"
     },
     "Medical Grade Cyberarm": {
-      "name": "Medical Grade Cyberarm",
-      "description": "<p>A medical grade cyberarm. Does not allow options to be installed.</p>"
+      "name": "Cyberbraccio Medico",
+      "description": "<p>Un cyberbraccio di livello medico. Non consente installazioni opzionali e non causa perdite di umanità.</p>"
     },
     "Medical Grade Cyberleg": {
-      "name": "Medical Grade Cyberleg",
-      "description": "<p>A medical grade cyberleg. Does not allow options to be installed.</p>"
+      "name": "Cybergamba Medica",
+      "description": "<p>Una cybergamba di livello medico. Non consente installazioni opzionali e non causa perdite di umanità.</p>"
     },
     "Medscanner": {
       "name": "Medscanner",
@@ -270,8 +270,8 @@
       "description": "<p>Notifica il radar attivo rilevato entro un raggio di 100m.</p>"
     },
     "Radar/Sonar Implant": {
-      "name": "Radar/Sonar Implant",
-      "description": "<p>Scans 50m/yds around you. Doesn't work through cover. </p>"
+      "name": "Impianto Radar / Sonar",
+      "description": "<p>Scansiona di continuo quel che ti circonda entro 50m. Non funziona attraverso coperture (es: porte). \nIl Gm segnala all’utente la presenza di oggetti in movimento rilevati e la loro direzione.</p>"
     },
     "Radiation Detector": {
       "name": "Rilevatore di Radiazioni",
@@ -331,7 +331,7 @@
     },
     "Skin Weave": {
       "name": "Skin Weave",
-      "description": "<p>External Body Cyberware*. Head and Body Armor SP7 and recovers 1SP/day. Armor does not stack.</p>\n<p><em>* Cyberware Armor does not function as armor in the system, please add the \"Skin Weave\" item to the character/mook to track</em></p>"
+      "description": "<p>Impianto Esterno*. PA 7 su testa e corpo. Non cumulativo con le armature indossate. Subisce ablazione. Recupera 1 PA ogni giorno di riposo.</p>\n<p><em>* L'armatura Cyberware non funziona come armatura, aggiungere l' oggetto \"Skin Weave\" alla scheda personaggio per segnarlo.</em></p>"
     },
     "Skinwatch": {
       "name": "Orologio Dermale",
@@ -351,7 +351,7 @@
     },
     "Subdermal Armor": {
       "name": "Armatura Subdermale",
-      "description": "<p>External Body Cyberware*. Head and Body Armor SP11 and recovers 1SP/day. Armor does not stack.</p>\n<p><em>* Cyberware Armor does not function as armor in the system, please add the \"Subdermal Armor\" item to the character/mook to track</em></p>"
+      "description": "<p>Impianto Esterno*. PA 11 su testa e corpo. Non cumulativo con le armature indossate. Subisce ablazione. Recupera 1 PA ogni giorno di riposo.</p>\n<p><em>* L'armatura Cyberware non funziona come armatura, aggiungere l' oggetto \"Skin Weave\" alla scheda personaggio per segnarlo.</em></p>"
     },
     "Subdermal Grip": {
       "name": "Presa Sottocutanea",
@@ -391,7 +391,7 @@
     },
     "TeleOptics": {
       "name": "TeleOttica",
-      "description": "<p>Telescope in your eye up to 800m/yds. +1 to single shot/aimed shot if greater than 50m away.</p>"
+      "description": "<p>Telescopio nel tuo occhio in grado di vedere dettagli fino a 800m. Aggiunge +1 alle Prove d’Attacco per Colpi Singoli e Colpi Mirati contro bersagli a oltre 51m di distanza. Non cumulativo.</p>"
     },
     "Tool Hand": {
       "name": "Mano Attrezzo",

@@ -1,107 +1,107 @@
 {
-  "label": "NET Architecture Rolltables",
+  "label": "Tabelle Architettura di Rete",
   "entries": {
     "All Other Floors (Advanced)": {
-      "name": "All Other Floors (Advanced)",
+      "name": "Tutti Gli Altri Piani (Avanzate)",
       "results": [
         {
-          "3-3": "Hellhound x3",
-          "4-4": "Asp x2",
-          "5-5": "Hellhound, Liche",
-          "6-6": "Wisp x3",
-          "7-7": "Hellhound, Sabertooth",
+          "3-3": "Cerbero x3",
+          "4-4": "Cobra x2",
+          "5-5": "Cerbero, Lich",
+          "6-6": "Sprite x3",
+          "7-7": "Cerbero, Sabertooth",
           "8-8": "Kraken",
-          "9-9": "Password DV12",
-          "10-10": "File DV12",
-          "11-11": "Control Node DV12",
-          "12-12": "Password DV12",
-          "13-13": "Giant",
+          "9-9": "Password VD12",
+          "10-10": "File VD12",
+          "11-11": "Nodo di Controllo VD12",
+          "12-12": "Password VD12",
+          "13-13": "Titan",
           "14-14": "Dragon",
           "15-15": "Killer, Scorpion",
           "16-16": "Kraken",
-          "17-17": "Raven, Wisp, Hellhound",
+          "17-17": "Raven, Sprite, Cerbero",
           "18-18": "Dragon x2"
         }
       ]
     },
     "All Other Floors (Basic)": {
-      "name": "All Other Floors (Basic)",
+      "name": "Tutti Gli Altri Piani (Base)",
       "results": [
         {
-          "3-3": "Hellhound",
+          "3-3": "Cerbero",
           "4-4": "Sabertooth",
           "5-5": "Raven x2",
-          "6-6": "Hellhound",
-          "7-7": "Wisp",
+          "6-6": "Cerbero",
+          "7-7": "Sprite",
           "8-8": "Raven",
-          "9-9": "Password DV6",
-          "10-10": "File DV6",
-          "11-11": "Control Node DV6",
-          "12-12": "Password DV6",
+          "9-9": "Password VD6",
+          "10-10": "File VD6",
+          "11-11": "Nodo di Controllo VD6",
+          "12-12": "Password VD6",
           "13-13": "Skunk",
-          "14-14": "Asp",
+          "14-14": "Cobra",
           "15-15": "Scorpion",
           "16-16": "Killer, Skunk",
-          "17-17": "Wisp x3",
-          "18-18": "Liche"
+          "17-17": "Sprite x3",
+          "18-18": "Lich"
         }
       ]
     },
     "All Other Floors (Standard)": {
-      "name": "All Other Floors (Standard)",
+      "name": "Tutti gli altri Piani (Standard)",
       "results": [
         {
-          "3-3": "Hellhound x2",
-          "4-4": "Hellhound, Killer",
+          "3-3": "Cerbero x2",
+          "4-4": "Cerbero, Killer",
           "5-5": "Skunk x2",
           "6-6": "Sabertooth",
           "7-7": "Scorpion",
-          "8-8": "Hellhound",
-          "9-9": "Password DV8",
-          "10-10": "File DV8",
-          "11-11": "Control Node DV8",
-          "12-12": "Password DV8",
-          "13-13": "Asp",
+          "8-8": "Cerbero",
+          "9-9": "Password VD8",
+          "10-10": "File VD8",
+          "11-11": "Nodo di Controllo VD8",
+          "12-12": "Password VD8",
+          "13-13": "Cobra",
           "14-14": "Killer",
-          "15-15": "Liche",
-          "16-16": "Asp",
+          "15-15": "Lich",
+          "16-16": "Cobra",
           "17-17": "Raven x3",
-          "18-18": "Liche, Raven"
+          "18-18": "Lich, Raven"
         }
       ]
     },
     "All Other Floors (Uncommon)": {
-      "name": "All Other Floors (Uncommon)",
+      "name": "Tutti gli altri Piani (Non Comune)",
       "results": [
         {
           "3-3": "Kraken",
-          "4-4": "Hellhound, Scorpion",
-          "5-5": "Hellhound, Killer",
+          "4-4": "Cerbero, Scorpion",
+          "5-5": "Cerbero, Killer",
           "6-6": "Raven x2",
           "7-7": "Sabertooth",
-          "8-8": "Hellhound",
-          "9-9": "Password DV10",
-          "10-10": "File DV10",
-          "11-11": "Control Node DV10",
-          "12-12": "Password DV10",
+          "8-8": "Cerbero",
+          "9-9": "Password VD10",
+          "10-10": "File VD10",
+          "11-11": "Nodo di Controllo VD10",
+          "12-12": "Password VD10",
           "13-13": "Killer",
-          "14-14": "Liche",
+          "14-14": "Lich",
           "15-15": "Dragon",
-          "16-16": "Asp, Raven",
-          "17-17": "Dragon, Wisp",
-          "18-18": "Giant"
+          "16-16": "Cobra, Raven",
+          "17-17": "Dragon, Sprite",
+          "18-18": "Titan"
         }
       ]
     },
     "First Two Floors (The Lobby)": {
-      "name": "First Two Floors (The Lobby)",
+      "name": "Primi Due Piani (La Lobby)",
       "results": [
         {
-          "1-1": "File DV6",
-          "2-2": "Password DV6",
-          "3-3": "Password DV8",
+          "1-1": "File VD6",
+          "2-2": "Password VD6",
+          "3-3": "Password VD8",
           "4-4": "Skunk",
-          "5-5": "Wisp",
+          "5-5": "Sprite",
           "6-6": "Killer"
         }
       ]

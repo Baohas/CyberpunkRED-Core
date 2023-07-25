@@ -55,7 +55,7 @@
     },
     "Bow": {
       "name": "Bogen",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>Ein Bogen. Das Nachladen ist Teil der Angriffsaktion.</p>"
     },
     "Dagger": {
       "name": "Dagger",

@@ -3,7 +3,7 @@
   "entries": {
     "Air Pistol": {
       "name": "Pistola Pneumatica",
-      "description": "<p>An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is able to ablate armor by one with each hit. Refer to the full item description on pg. 347.</p>"
+      "description": "<p>Una pistola media esotica. Spara pallini di plastica, di solito pieni di vernice innocua. Se caricato con acido è in grado di abilitare l'armatura di uno ad ogni colpo. Fare riferimento alla descrizione completa dell'articolo su pg. 348.</p>"
     },
     "Assault Rifle (Excellent)": {
       "name": "Fucile D'Assalto (Eccellente)",
@@ -31,7 +31,7 @@
     },
     "Bow (Excellent)": {
       "name": "Arco (Eccellente)",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Un arco rivitalizzato, ricaricato come parte di un'azione di attacco.</p>\n<p>Attacco +1.</p>"
     },
     "Bow (Poor)": {
       "name": "Arco (Scarso)",
@@ -67,7 +67,7 @@
     },
     "Crossbow (Excellent)": {
       "name": "Balestra (Eccellente)",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Una balestra, ricaricata come parte di un'azione di attacco.</p>\n<p>Attacco +1.</p>"
     },
     "Crossbow (Poor)": {
       "name": "Balestra (Scarso)",
@@ -75,7 +75,7 @@
     },
     "Crossbow": {
       "name": "Balestra",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>Una balestra, ricaricato come parte di un' azione di attacco.</p>"
     },
     "Crowbar (Excellent)": {
       "name": "Piede di Porco (Eccellente)",
@@ -94,12 +94,12 @@
       "description": "<p>Una Pistola Insolita molto pesante. Fare riferimento alla descrizione completa dell'articolo su pg. 348.</p>"
     },
     "EMG-86 Railgun": {
-      "name": "EMG-86 Railgun",
-      "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
+      "name": "Rhinemetal EMG-86 Railgun",
+      "description": "<p>Un fucile d'assalto insolito. non può essere usato in Fuoco Automatico né per Colpi Mirati. Usarlo richiede almeno FIS 11 (a meno che non sia montato su un supporto). Ignora le armature con meno di PA 11*. Fare riferimento alla descrizione completa a pag. 349.</p>\n<p><em>*Al momento non supportato sarà necessario applicare manualmente i danni ai bersagli corazzati</em></p>"
     },
     "Flamethrower": {
       "name": "Lanciafiamme",
-      "description": "<p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full item description on pg. 348.</p>"
+      "description": "<p>Uno Shotgun insolito che utilizza l'Abilità per le Armi Pesanti. Fare riferimento alla descrizione completa dell'oggetto su pg. 347.</p>"
     },
     "Grenade Launcher (Excellent)": {
       "name": "Lanciagranate (Eccellente)",
@@ -115,15 +115,15 @@
     },
     "Heavy Melee (Excellent)": {
       "name": "Arma da Mischia Pesante (Eccellente)",
-      "description": "<p>Generic Excellent Quality Heavy Melee Weapon.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arma Generica da Mischia Pesante di qualità eccellente.</p>\n<p>Attacco +1.</p>"
     },
     "Heavy Melee (Poor)": {
       "name": "Arma da Mischia Pesante (Scarsa)",
-      "description": "<p>Generic Poor Quality Heavy Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>\n<p>&nbsp;</p>"
+      "description": "<p>Arma da mischia pesante generica di bassa qualità.</p>\n<p>In caso di Fallimento Critico (1 sulla Prova d’Attacco) l'arma subisce un malfunzionamento ed è necessaria un' Azione per sbloccarla.</p>\n<p>&nbsp;</p>"
     },
     "Heavy Melee": {
       "name": "Arma da Mischia Pesante",
-      "description": "<p>Generic Heavy Melee Weapon.</p>"
+      "description": "<p>Arma da Mischia Pesante Generica.</p>"
     },
     "Heavy Pistol (Excellent)": {
       "name": "Pistola Pesante (Eccellente)",
@@ -162,12 +162,12 @@
       "description": "<p>Preso da un derelitto, queste lame sono in grado di affettare cose molto facilmente. </p>"
     },
     "Helix": {
-      "name": "Helix",
-      "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+      "name": "Tsunami Arms Helix",
+      "description": "<p>Un Fucile d'Assalto Insolito che utilizza solo Fuoco Automatico. Tiene 40 proiettili, usandone 20 per ogni attacco. Usa regole di Fuoco Automatico con un moltiplicatore fino ad un massimo di 5. Richiede almeno FIS 11 (a meno che non sia montato su un supporto). Fare riferimento alla descrizione dell'elemento completo su pg. 349.</p>"
     },
     "Hurricane Assault Weapon": {
-      "name": "Hurricane Assault Weapon",
-      "description": "<p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or higher (unless mounted). Refer to the full item description on pg. 348.</p>"
+      "name": "Constitution Arms Hurricane d' Assalto",
+      "description": "<p>Uno Shotgun Insolito con CF 2. Non permette Colpi Mirati. Usarlo richiede almeno FIS 11 (Se non è montato su un supporto). Per la descrizione completa fare riferimento a pag. 347.</p>"
     },
     "Lead Pipe (Excellent)": {
       "name": "Tubo di Piombo (Eccellente)",
@@ -175,7 +175,7 @@
     },
     "Lead Pipe (Poor)": {
       "name": "Tubo di Piombo (Scarso)",
-      "description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once. If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
+      "description": "<p>Un tubo tipicamente in metallo o vetroresina. Può aver trasportato fluidi. Se fai 1 all'Attacco (Fallimento Critico) l'arma fallisce in qualche modo e richiede un' azione per utilizzarla nuovamente.</p>"
     },
     "Lead Pipe": {
       "name": "Tubo di Piombo",
@@ -183,15 +183,15 @@
     },
     "Light Melee (Excellent)": {
       "name": "Arma da Mischia Leggera (Eccellente)",
-      "description": "<p>Generic Excellent Qulaity Light Melee weapon.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arma Generica da Mischia Leggera di qualità eccellente.</p>\n<p>Attacco +1.</p>"
     },
     "Light Melee (Poor)": {
       "name": "Arma da Mischia Leggera (Scarsa)",
-      "description": "<p>Generic Poor Quality Light Melee weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
+      "description": "<p>Un'Arma da Mischia Leggera di Bassa Qualità.</p> \n<p>Se fai 1 all'Attacco (Fallimento Critico) l'arma fallisce in qualche modo e richiede un'azione per utilizzarla nuovamente.</p>"
     },
     "Light Melee": {
       "name": "Arma da Mischia Leggera",
-      "description": "<p>Generic Light Melee weapon.</p>"
+      "description": "<p>Arma da Mischia Leggera Generica</p>"
     },
     "Machete (Excellent)": {
       "name": "Machete (Eccellente)",
@@ -207,7 +207,7 @@
     },
     "Malorian Arms 3516": {
       "name": "Malorian Arms 3516",
-      "description": "<p>An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link* that must be used. Refer to the full item description on pg. 348.</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>Una pistola molto pesante insolita, di ottima qualità. Viene fornita con un collegamento Smartgun* che deve essere utilizzato. Consultare la descrizione completa dell'articolo su pg. 348.</p>\n<p><em>*Deve essere aggiunto manualmente dopo l'acquisizione dell'arma</em></p>"
     },
     "Martial Arts": {
       "name": "Arti Marziali",
@@ -215,15 +215,15 @@
     },
     "Medium Melee (Excellent)": {
       "name": "Arma da Mischia Media (Eccellente)",
-      "description": "<p>Generic Excellent Quality Medium Melee Weapon.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arma Generica da Mischia media di qualità eccellente.</p>\n<p>Attacco +1.</p>"
     },
     "Medium Melee (Poor)": {
       "name": "Arma da Mischia Media (Scarsa)",
-      "description": "<p>Generic Poor Quality Medium Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
+      "description": "<p>Arma da Mischia Media Generica di Bassa Qualità.</p>\n<p>Se fai 1 sul tiro per colpire (Fallimento Critico) l'arma fallisce in qualche modo e richiede un'azione per utilizzarla nuovamente</p>"
     },
     "Medium Melee": {
       "name": "Arma da Mischia Media",
-      "description": "<p>Generic Medium Melee Weapon.</p>"
+      "description": "<p>Arma da Mischia Media Generica</p>"
     },
     "Medium Pistol (Excellent)": {
       "name": "Pistola Media (Eccellente)",
@@ -239,11 +239,11 @@
     },
     "Microwaver": {
       "name": "Microwaver",
-      "description": "<p>An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be rendered inoperable for a minute unless the target passes a DV15 Cybertech Check. Refer to the full item description on pg. 348.</p>"
+      "description": "<p>Una Pistola Insolita molto pesante. Può rendere i cyberware o i componenti elettrici inutilizzabili per un minuto a meno che il bersaglio non superi una prova di Cybertecnologia VD 15. Fare riferimento alla descrizione completa dell'articolo su pg. 348.</p>"
     },
     "Mono-Three": {
-      "name": "Mono-Three",
-      "description": "<p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears as a high-tech katana, able to ignore any armor below SP11*. Refer to the full item description on pg. 348.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
+      "name": "Kendachi Mono-Tre",
+      "description": "<p>Un’ Arma da Mischia Insolita Molto Pesante, a Due Mani e di Alta Qualità. Ha l'aspetto di una Katana ad alta tecnologia, in grado di ignorare le armature con meno di PA 11*. Fare riferimento alla descrizione completa a pag. 347.</p>\n<p><em>*Non attualmente supportato. sarà necessario applicare manualmente il danno ai bersagli corazzati.</em></p>"
     },
     "Naginata (Excellent)": {
       "name": "Naginata (Eccellente)",
@@ -287,7 +287,7 @@
     },
     "Shrieker": {
       "name": "Urlatore",
-      "description": "<p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear critical injuries. The target must beat a DV15 Resist Torture/Drugs Check or suffer the Damaged Ear critical injury. Refer to the full item description on pg. 349.</p>"
+      "description": "<p>Una Pistola Insolita Molto Pesante. Richiede protezione dell'orecchio per prevenire Ferita Critica: Orecchio Danneggiato. Il bersaglio deve superare una Prova Resistere a Torture/Droghe VD15 o subire la ferita critica. Fare riferimento alla descrizione completa dell'articolo su pg. 349.</p>"
     },
     "Sledgehammer (Excellent)": {
       "name": "Martello da Demolizione (Eccellente)",
@@ -343,7 +343,7 @@
     },
     "Stun Gun": {
       "name": "Taser",
-      "description": "<p>An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor. Refer to the full item description on pg. 349.</p>"
+      "description": "<p>Una Pistola Pesante Insolita che, se riduce il bersaglio a meno di 1PF, lo lascia con 1PF e Privo di Sensi. Non può causare Colpi Critici né ablare l’ armatura. Non ha bisogno di Munizioni, dato che usa batterie ricaricabili (1 ora), che vanno sostituite dopo 8 colpi. Fare riferimento alla descrizione completa a pag. 349.</p>"
     },
     "Sword (Excellent)": {
       "name": "Spada (Eccellente)",
@@ -358,8 +358,8 @@
       "description": "<p>Un'arma lamata ed elsata. Volutamente progettata per tagliare o perforare. </p>"
     },
     "Thrown Weapon": {
-      "name": "Thrown Weapon",
-      "description": "<p>A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets. Melee weapons deal their base damage, but don't penetrate half SP.</p>"
+      "name": "Lanciare",
+      "description": "<p>Un tiro base o parabolico di un oggetto. Usa un'azione per fare un attacco a distanza fino a 25m. I bersagli possono scegliere di Schivare il tuo tiro se possono Schivare proiettili. Le armi da mischia infliggono i loro danni base, ma non dimezzano la PA.</p>"
     },
     "Tomahawk (Excellent)": {
       "name": "Tomahawk (Eccellente)",
@@ -374,8 +374,8 @@
       "description": "<p>Un'ascia leggera che può essere lanciata. </p>"
     },
     "U-56 Grenade Launcher \"Cowboy\"": {
-      "name": "U-56 Grenade Launcher \"Cowboy\"",
-      "description": "<p>An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+      "name": "Lanciagranate Militech “Cowboy” U-56",
+      "description": "<p>Un Lanciagranate Insolito con CF 2, che alloggia 4 granate nel caricatore. Pur essendo un’Arma Insolita può utilizzare ogni tipo di Granata. Richiede, se non montata su un supporto, per usarla almeno FIS 11. Fare riferimento alla descrizione dell'elemento completo su pg. 348.</p>"
     },
     "Unarmed": {
       "name": "Disarmato",
@@ -383,15 +383,15 @@
     },
     "Very Heavy Melee (Excellent)": {
       "name": "Arma da Mischia Molto Pesante (Eccellente)",
-      "description": "<p>Generic Excellent Quality Very Heavy Melee Weapon.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arma Generica da Mischia Molto Pesante di qualità eccellente.</p>\n<p>Attacco +1.</p>"
     },
     "Very Heavy Melee (Poor)": {
       "name": "Arma da Mischia Molto Pesante (Scarsa)",
-      "description": "<p>Generic Poor Quality Very Heavy Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
+      "description": "<p>Arma da Mischia Molto Pesante Generica di Bassa Qualità.</p>\n<p>Se fai 1 sul tiro per colpire (Fallimento Critico) l'arma fallisce in qualche modo e richiede un'azione per utilizzarla nuovamente</p>"
     },
     "Very Heavy Melee": {
       "name": "Arma da Mischia Molto Pesante",
-      "description": "<p>Generic Very Heavy Melee Weapon.</p>"
+      "description": "<p>Arma da Mischia Molto Pesante Generica</p>"
     },
     "Very Heavy Pistol (Excellent)": {
       "name": "Pistola Molto Pesante (Eccellente)",

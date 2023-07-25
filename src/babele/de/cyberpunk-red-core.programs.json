@@ -39,7 +39,7 @@
     },
     "Shield": {
       "name": "Schild",
-      "description": "<p>Der erste erfolgreiche Hirnschaden durch ein nicht Schwarzes ICE wird gestoppt. Es kann immer nur 1 Exemplar auf einmal rezensiert werden. Jede Kopie hat 1 Einsatz pro Netrun.</p>"
+      "description": "<p>Der erste erfolgreiche Hirnschadenangriff durch ein Nicht-Schwarzes ICE wird gestoppt. Es kann nur 1 Programmkopie gleichzeitig laufen. Jede Kopie dieses Programms kann nur einmal pro Netrun benutzt werden.</p>"
     },
     "Speedy Gonzalvez": {
       "name": "Speedy Gonzalvez",

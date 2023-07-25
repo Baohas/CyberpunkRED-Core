@@ -67,11 +67,11 @@
     },
     "Skin Weave": {
       "name": "Skin Weave",
-      "description": "<p>Armor Item for Skin Weave Cyberware.</p>"
+      "description": "<p>Armatura del Cyberweare \"Skin Weave\".</p>"
     },
     "Subdermal Armor": {
       "name": "Armatura Subdermale",
-      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>"
+      "description": "<p>Armatura del Cyberweare \"Armatura Subdermale\".</p>"
     }
   }
 }

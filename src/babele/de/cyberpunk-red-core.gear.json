@@ -2,12 +2,12 @@
   "label": "Ausrüstung",
   "entries": {
     "Cyberdeck (Excellent)": {
-      "name": "Cyberdeck (Excellent)",
-      "description": "<p>Netrunner deck. 9 slots.</p>"
+      "name": "Cyberdeck (Hervorragende Qualität)",
+      "description": "<p>Hervorragendes Deck fürs Netrunning. 9 Slots. Weitere Informationen auf Seite 353.</p>"
     },
     "Cyberdeck (Poor)": {
-      "name": "Cyberdeck (Poor)",
-      "description": "<p>Netrunner deck. 5 slots.</p>"
+      "name": "Cyberdeck (Schlechte Qualität)",
+      "description": "<p>Schlechtes Deck fürs Netrunning. 5 Slots. Weitere Informationen auf Seite 353.</p>"
     },
     "Cyberdeck": {
       "name": "Cyberdeck",
@@ -15,11 +15,11 @@
     },
     "Battleglove": {
       "name": "Kampfhandschuh",
-      "description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>"
+      "description": "<p>Ein exotischer schwerer Panzerhandschuh, der Hand und Unterarm bedeckt. Bietet drei Optionsslots für Cyberarm- oder Cyberbein-Optionen. Details auf Seite 347.</p>"
     },
     "Smart Glasses": {
       "name": "Smart-Brille",
-      "description": "<p>Eyewear with two options slots for cybereye options.</p>"
+      "description": "<p>Brille mit zwei Optionsslots für Cyberaugen-Optionen.</p>"
     },
     "Agent": {
       "name": "Agent",
@@ -47,7 +47,7 @@
     },
     "Braindance Viewer": {
       "name": "Braindance-Viewer",
-      "description": "<p>Erlaubt Betrachtern die Braindance-Erfahrung.</p>"
+      "description": "<p>Dient zum Ansehen von Braindance-Erfahrungen.</p>"
     },
     "Bug Detector": {
       "name": "Wanzen­­finder",
@@ -87,7 +87,7 @@
     },
     "Electric Guitar/Other Instrument": {
       "name": "Elektrische Gitarre/Anderes Instrument",
-      "description": "<p>Musical instrument. Electric instruments requires an amplifier.</p>"
+      "description": "<p>Musikinstrument. Elektrische Instrumente benötigen einen Verstärker.</p>"
     },
     "Flashlight": {
       "name": "Taschenlampe",
@@ -146,7 +146,7 @@
       "description": "<p>Vollständiger medizinischer Werkzeugsatz in einer Tasche.</p>"
     },
     "Memory Chip": {
-      "name": "Memory Chip",
+      "name": "Speicherchip",
       "description": "<p>Standarddatenspeicher.</p>"
     },
     "MRE": {
@@ -174,7 +174,7 @@
       "description": "<p>Ohrhörer. Reichweite: 1,5 km.</p>"
     },
     "Radio Scanner/Music Player": {
-      "name": "Sendersucher/Musik­ wiedergabe",
+      "name": "Sendersucher/Musik­wiedergabe",
       "description": "<p>Spiele die heißeste Musik ab und schalte auf einen Radiosender im Umkreis von 1,5 km.</p>"
     },
     "Road Flare": {
@@ -191,7 +191,7 @@
     },
     "Tech Bag": {
       "name": "Tech-Tasche",
-      "description": "<p>Kleine Tasche mit Werkzeuge zum Reparieren von Sachen.</p>"
+      "description": "<p>Kleine Tasche mit Werkzeugen und einfachem Material zum Reparieren von Sachen.</p>"
     },
     "Techscanner": {
       "name": "TechScanner",
@@ -207,7 +207,7 @@
     },
     "Tracer Button": {
       "name": "Peilsender",
-      "description": "<p>Mit einem Peilsucher kann sie aus bis zu 1,5 Kilometer Entfernung geortet werden.</p>"
+      "description": "<p>Kann mit einem Peilsucher aus bis zu 1,5 Kilometer Entfernung geortet werden.</p>"
     },
     "Vial of Biotoxin": {
       "name": "Flasche mit Biotoxin",

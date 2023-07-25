@@ -3,7 +3,7 @@
   "entries": {
     "Air Pistol": {
       "name": "Pistola de Aire",
-      "description": "<p>An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is able to ablate armor by one with each hit. Refer to the full item description on pg. 347.</p>"
+      "description": "<p>Una pistola media exótica. Dispara bolas de pinta. Si se cargan con ácido, puede producir ablación de la armadura de 1 con cada golpe. Consulte la descripción completa del artículo en pg. 347.</p>"
     },
     "Assault Rifle (Excellent)": {
       "name": "Rifle de Asalto (Excelente)",
@@ -31,7 +31,7 @@
     },
     "Bow (Excellent)": {
       "name": "Arco (Excelente)",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arco revitalizado, recargado como parte de una Acción de Ataque.</p>\n<p>+1 al Ataque.</p>"
     },
     "Bow (Poor)": {
       "name": "Arco (Pobre)",
@@ -67,7 +67,7 @@
     },
     "Crossbow (Excellent)": {
       "name": "Ballesta (Excelente)",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Una Ballesta, recargada como parte de una acción de Ataque.</p>\n<p>+1 para Ataque.</p>"
     },
     "Crossbow (Poor)": {
       "name": "Ballesta (Pobre)",
@@ -75,7 +75,7 @@
     },
     "Crossbow": {
       "name": "Ballesta",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>Una Ballesta, recargada como parte de una acción de Ataque.</p>"
     },
     "Crowbar (Excellent)": {
       "name": "Barreta (Excelente)",
@@ -94,12 +94,12 @@
       "description": "<p>Una pistola muy pesada exótica. Consulte la descripción completa del artículo en pg. 348.</p>"
     },
     "EMG-86 Railgun": {
-      "name": "EMG-86 Railgun",
-      "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
+      "name": "Cañón de Riel EMG-86",
+      "description": "<p>Un rifle de asalto exótico. No puede hacer fuego automático o tiros apuntados. Requiere TCO 11 o superior (a menos que esté montado). Ignora cualquier armadura debajo de CP11*. Consulte la descripción completa del artículo en pg. 349.</p>\n<p><em>*Actualmente no soportado, aplicar daño manualmente a los objetivos blindados</em></p>"
     },
     "Flamethrower": {
       "name": "Lanzallamas",
-      "description": "<p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full item description on pg. 348.</p>"
+      "description": "<p>Una escopeta exótica que utiliza la Habilidad de Armas Pesadas. Consulte la descripción completa del artículo en la página 348.</p>"
     },
     "Grenade Launcher (Excellent)": {
       "name": "Lanzagranadas (Excelente)",
@@ -115,15 +115,15 @@
     },
     "Heavy Melee (Excellent)": {
       "name": "Arma Cuerpo a Cuerpo Pesada (Excelente)",
-      "description": "<p>Generic Excellent Quality Heavy Melee Weapon.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arma Cuerpo a Cuerpo Pesada Excelente Genérica.</p>\n<p>+1 al Ataque.</p>"
     },
     "Heavy Melee (Poor)": {
       "name": "Arma Cuerpo a Cuerpo Pesada (Pobre)",
-      "description": "<p>Generic Poor Quality Heavy Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>\n<p>&nbsp;</p>"
+      "description": "<p>Arma cuerpo a cuerpo pesada de mala calidad genérica.</p>\n<p>Si tira 1 en Ataque (fallo crítico) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>"
     },
     "Heavy Melee": {
       "name": "Arma Cuerpo a Cuerpo Pesada",
-      "description": "<p>Generic Heavy Melee Weapon.</p>"
+      "description": "<p>Arma Cuerpo a Cuerpo Pesada Genérica</p>"
     },
     "Heavy Pistol (Excellent)": {
       "name": "Pistola Pesada (Excelente)",
@@ -163,11 +163,11 @@
     },
     "Helix": {
       "name": "Helix",
-      "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+      "description": "<p>Un Rifle de Asalto exótico que utiliza solo fuego automático. Carga 40 balas, usando 20 balas con cada ataque. Utiliza reglas de fuego automático con una multiplicación hasta un máximo de 5. Requiere TCO 11 o superior (a menos que esté montado). Consulte la descripción completa del artículo en pg. 349.</p>"
     },
     "Hurricane Assault Weapon": {
-      "name": "Hurricane Assault Weapon",
-      "description": "<p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or higher (unless mounted). Refer to the full item description on pg. 348.</p>"
+      "name": "Arma de Asalto Hurricane",
+      "description": "<p>Una escopeta exótica con CdT 2. No puede hacer disparos dirigidos y necesita TCO 11 o superior (a menos que esté montada). Consulte la descripción completa del artículo en pg. 348.</p>"
     },
     "Lead Pipe (Excellent)": {
       "name": "Tubería de Plomo (Excelente)",
@@ -175,7 +175,7 @@
     },
     "Lead Pipe (Poor)": {
       "name": "Tubería de Plomo (Pobre)",
-      "description": "<p>A hollow cylinder, typically made of metal or fiberglass. It may have conveyed fluids once. If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
+      "description": "<p>Un cilindro hueco, generalmente hecho de metal o fibra de vidrio. Puede haber transportado fluidos una vez. Si tira 1 en el ataque (pifia) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>"
     },
     "Lead Pipe": {
       "name": "Tubería de Plomo",
@@ -183,15 +183,15 @@
     },
     "Light Melee (Excellent)": {
       "name": "Arma Cuerpo a Cuerpo Ligera (Excelente)",
-      "description": "<p>Generic Excellent Qulaity Light Melee weapon.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arma Cuerpo a Cuerpo Ligera de excelente calidad Genérica.</p>\n<p>+1 para atacar.</p>"
     },
     "Light Melee (Poor)": {
       "name": "Arma Cuerpo a Cuerpo Ligera (Pobre)",
-      "description": "<p>Generic Poor Quality Light Melee weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
+      "description": "<p>Arma Cuerpo a Cuerpo Ligera de mala calidad genérica.</p>\n<p>Si tira 1 en Ataque (fallo crítico) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>"
     },
     "Light Melee": {
       "name": "Arma Cuerpo a Cuerpo Ligera",
-      "description": "<p>Generic Light Melee weapon.</p>"
+      "description": "<p>Arma Cuerpo a Cuerpo Ligera Genérica</p>"
     },
     "Machete (Excellent)": {
       "name": "Machete (Excelente)",
@@ -207,7 +207,7 @@
     },
     "Malorian Arms 3516": {
       "name": "Malorian Arms 3516",
-      "description": "<p>An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link* that must be used. Refer to the full item description on pg. 348.</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>Una Pistola Muy Pesada Exótica y de excelente calidad. Viene con un enlace de Arma Inteligente* que debe ser utilizado. Consulte la descripción completa del artículo en pg. 348.</p>\n<p><em>*Debe ser añadido manualmente después de adquirir el arma</em></p>"
     },
     "Martial Arts": {
       "name": "Artes Marciales",
@@ -215,15 +215,15 @@
     },
     "Medium Melee (Excellent)": {
       "name": "Arma Cuerpo a Cuerpo Mediana (Excelente)",
-      "description": "<p>Generic Excellent Quality Medium Melee Weapon.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arma Cuerpo a Cuerpo Mediana de Calidad Excelente Genérica.</p>\n<p>+1 al Ataque.</p>"
     },
     "Medium Melee (Poor)": {
       "name": "Arma Cuerpo a Cuerpo Mediana (Pobre)",
-      "description": "<p>Generic Poor Quality Medium Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
+      "description": "<p>Arma Cuerpo a Cuerpo Mediana de mala calidad genérica.</p>\n<p>Si tira 1 en Ataque (fallo crítico) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>"
     },
     "Medium Melee": {
       "name": "Arma Cuerpo a Cuerpo Mediana",
-      "description": "<p>Generic Medium Melee Weapon.</p>"
+      "description": "<p>Arma Cuerpo a Cuerpo Media Genérica.</p>"
     },
     "Medium Pistol (Excellent)": {
       "name": "Pistola Media (Excelente)",
@@ -239,11 +239,11 @@
     },
     "Microwaver": {
       "name": "Microondas",
-      "description": "<p>An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be rendered inoperable for a minute unless the target passes a DV15 Cybertech Check. Refer to the full item description on pg. 348.</p>"
+      "description": "<p>Una pistola exótica muy pesada. Puede causar que los ciberimplantes o los componentes eléctricos queden inoperables por un minuto a menos que se pase una tirada de Cibertecnología VD15. Consulte la descripción completa del artículo en pg. 348.</p>"
     },
     "Mono-Three": {
-      "name": "Mono-Three",
-      "description": "<p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears as a high-tech katana, able to ignore any armor below SP11*. Refer to the full item description on pg. 348.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
+      "name": "Mono-tres",
+      "description": "<p>Un arma cuerpo a cuerpo exótica y de excelente calidad, dos manos a mano. Aparece como una katana de alta tecnología, capaz de ignorar cualquier armadura debajo del CP11*. Consulte la descripción completa del objeto en pg. 348.</p>\n<p><em>*Actualmente no soportada, aplicar daño manualmente a los objetivos blindados</em></p>"
     },
     "Naginata (Excellent)": {
       "name": "Naginata (Excelente)",
@@ -287,7 +287,7 @@
     },
     "Shrieker": {
       "name": "Shrieker",
-      "description": "<p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear critical injuries. The target must beat a DV15 Resist Torture/Drugs Check or suffer the Damaged Ear critical injury. Refer to the full item description on pg. 349.</p>"
+      "description": "<p>Una Pistola Exótica Muy Pesada. Requiere protección auditiva para prevenir lesión crítica oído dañado. El objetivo debe tirar Resistir torturas/Drogas VD15 o sufrir la lesión crítica. Consulte la descripción completa del objeto en pg. 349.</p>"
     },
     "Sledgehammer (Excellent)": {
       "name": "Mazo (Excelente)",
@@ -343,7 +343,7 @@
     },
     "Stun Gun": {
       "name": "Cañón Aturdidor",
-      "description": "<p>An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor. Refer to the full item description on pg. 349.</p>"
+      "description": "<p>Una Pistola Pesada Exótica. El objetivo es dejado inconsciente si el daño infligido lo reduciría a menos de 1 PV. No causa lesiones críticas ni ablación de armadura. Consulte la descripción completa del artículo en la página 349.</p>"
     },
     "Sword (Excellent)": {
       "name": "Espada (Excelente)",
@@ -358,8 +358,8 @@
       "description": "<p>Arma de filo empuñada. Específicamente diseñada para cortar o pinchar. </p>"
     },
     "Thrown Weapon": {
-      "name": "Thrown Weapon",
-      "description": "<p>A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets. Melee weapons deal their base damage, but don't penetrate half SP.</p>"
+      "name": "Arma Arrojadiza",
+      "description": "<p>Un globo o frasco básico. Usa una acción para realizar un ataque a distancia de hasta 25 m/yd. Los objetivos pueden optar por esquivar tu lanzamiento si pueden esquivar balas. Las armas cuerpo a cuerpo infligen su daño base, pero no penetran la mitad de CP.</p>"
     },
     "Tomahawk (Excellent)": {
       "name": "Tomahawk (Excelente)",
@@ -374,8 +374,8 @@
       "description": "<p>Un hacha ligera que puede lanzarse. </p>"
     },
     "U-56 Grenade Launcher \"Cowboy\"": {
-      "name": "U-56 Grenade Launcher \"Cowboy\"",
-      "description": "<p>An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+      "name": "Lanzagranadas U-56 \"Cowboy\"",
+      "description": "<p>Un Lanzagranadas Exótico con CdT 2. Carga 4 granadas. Requiere TCO 11 o superior (a menos que se monte). Consulte la descripción completa del artículo en pg. 349.</p>"
     },
     "Unarmed": {
       "name": "Desarmado",
@@ -383,15 +383,15 @@
     },
     "Very Heavy Melee (Excellent)": {
       "name": "Arma Cuerpo a Cuerpo Muy Pesada (Excelente)",
-      "description": "<p>Generic Excellent Quality Very Heavy Melee Weapon.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>Arma Cuerpo a Cuerpo Muy Pesada Excelente Genérica.</p>\n<p>+1 al Ataque.</p>"
     },
     "Very Heavy Melee (Poor)": {
       "name": "Arma Cuerpo a Cuerpo Muy Pesada (Pobre)",
-      "description": "<p>Generic Poor Quality Very Heavy Melee Weapon.</p>\n<p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an action to be made usable again.</p>"
+      "description": "<p>Arma Cuerpo a Cuerpo Muy Pesada de mala calidad genérica.</p>\n<p>Si tira 1 en Ataque (fallo crítico) el arma falla de alguna manera y requiere una acción que se pueda volver a utilizar.</p>"
     },
     "Very Heavy Melee": {
       "name": "Arma Cuerpo a Cuerpo Muy Pesada",
-      "description": "<p>Generic Very Heavy Melee Weapon.</p>"
+      "description": "<p>Arma Cuerpo a Cuerpo Muy Pesada Genérica</p>"
     },
     "Very Heavy Pistol (Excellent)": {
       "name": "Pistola Muy Pesada (Excelente)",

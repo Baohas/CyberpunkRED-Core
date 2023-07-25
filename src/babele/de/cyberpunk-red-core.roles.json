@@ -14,11 +14,11 @@
       "description": "<p>Abgebrühte Gesetzeshüter, die in den Hexenkesseln und auf den brutalen Straßenkrieger-Highways außerhalb patrouillieren.</p>"
     },
     "Media": {
-      "name": "Medias",
+      "name": "Media",
       "description": "<p>Journalisten, Medienstars und soziale Influencer, die alles riskieren, um an die Wahrheit zu kommen – oder an den Ruhm.</p>"
     },
     "Medtech": {
-      "name": "MediTechs",
+      "name": "MediTech",
       "description": "<p>Illegale Straßenärzte und Cyberware-Sanis, die Fleisch und Metall gleichermaßen zusammenflicken.</p>"
     },
     "Netrunner": {
@@ -26,7 +26,7 @@
       "description": "<p>Kybernetische Meister-Hacker der Post-Net-Welt, die einem das Hirn rösten und Geheimnisse stehlen.</p>"
     },
     "Nomad": {
-      "name": "Nomaden",
+      "name": "Nomade",
       "description": "<p>Transportexperten, ultimative Straßenkrieger, Piraten und Schmuggler, welche die Welt am Laufen halten.</p>"
     },
     "Rockerboy": {
@@ -34,7 +34,7 @@
       "description": "<p>Rock-and-Roll-Rebellen, die mit Auftritten, Kunst und Rhetorik gegen die Obrigkeit kämpfen.</p>"
     },
     "Solo": {
-      "name": "Solos",
+      "name": "Solo",
       "description": "<p>Die Auftragsmörder, Leibwächter, Killer und Söldner der gesetzlosen neuen Welt.</p>"
     },
     "Tech": {

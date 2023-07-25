@@ -47,11 +47,11 @@
     },
     "Grenade (Biotoxin)": {
       "name": "Granate (Biotoxin)",
-      "description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen, mit SG 15 abzulegen. Scheitert die Probe, erleidet das Ziel 3W6 direkten Schaden an seinen TP. Panzerung wird nicht abgetragen.</p>"
+      "description": "<p>Der Angriff richtet keinen Schaden an. Das Ziel muss eine Probe auf Folter/Drogen widerstehen mit SG 15 ablegen. Scheitert die Probe, erleidet das Ziel 3W6 direkten Schaden an seinen TP. Panzerung wird nicht abgetragen.</p>"
     },
     "Grenade (EMP)": {
       "name": "Granate (EMP)",
-      "description": "<p>Richtest keinen Schaden an. Stattdessen müssen alle eine Probe auf Cybertech mit SG 15 ablegen. Wenn sie scheitern, dann wählt der SL 2 Teile an Cyberware oder getragener Elektronik aus, die 1 Minute lang außer Betrieb gesetzt werden. Cybergliedmaßen, die außer Betrieb gesetzt sind, reagieren wie ihre fleischlichen Pendants, wenn diese abgetrennt werden, hängen allerdings nur lose herunter. Siehe Kritische Verletzungen ab Seite 187.</p>"
+      "description": "<p>Richtet keinen Schaden an. Stattdessen müssen alle eine Probe auf Cybertech mit SG 15 ablegen. Wenn sie scheitern, dann wählt der SL 2 Teile an Cyberware oder getragener Elektronik aus, die 1 Minute lang außer Betrieb gesetzt werden. Cybergliedmaßen, die außer Betrieb gesetzt werden reagieren wie ihre fleischlichen Pendants, wenn diese abgetrennt werden, hängen allerdings nur lose herunter. Siehe Kritische Verletzungen ab Seite 187.</p>"
     },
     "Grenade (Flashbang)": {
       "name": "Granate (Blendgranate)",
@@ -71,7 +71,7 @@
     },
     "Grenade (Smoke)": {
       "name": "Granate (Rauch)",
-      "description": "<p>Der Angriff richtet keinen Schaden an. Erfüllt für eine Minute nach dem Aufprall ein Gebiet von 10 x 10 Metern mit Rauch. Der normale Malus für den Versuch, eine Aufgabe zu erfüllen, liegt bei –4.</p>"
+      "description": "<p>Der Angriff richtet keinen Schaden an. Füllt für eine Minute ein Gebiet von 10 x 10 Metern mit Rauch. Der normale Malus für den Versuch, eine Aufgabe im Rauch zu erfüllen liegt bei –4.</p>"
     },
     "Grenade (Teargas)": {
       "name": "Granate (Tränengas)",

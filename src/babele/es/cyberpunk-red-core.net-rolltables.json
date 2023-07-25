@@ -65,44 +65,44 @@
           "14-14": "Asesino",
           "15-15": "Liche",
           "16-16": "Aspid",
-          "17-17": "Raven x3",
-          "18-18": "Liche, Raven"
+          "17-17": "Cuervo x3",
+          "18-18": "Liche, Cuervo"
         }
       ]
     },
     "All Other Floors (Uncommon)": {
-      "name": "All Other Floors (Uncommon)",
+      "name": "Todos los Otros Pisos (Poco Común)",
       "results": [
         {
           "3-3": "Kraken",
-          "4-4": "Hellhound, Scorpion",
-          "5-5": "Hellhound, Killer",
-          "6-6": "Raven x2",
-          "7-7": "Sabertooth",
-          "8-8": "Hellhound",
-          "9-9": "Password DV10",
-          "10-10": "File DV10",
-          "11-11": "Control Node DV10",
-          "12-12": "Password DV10",
-          "13-13": "Killer",
+          "4-4": "Perro del Infierno, Escorpión",
+          "5-5": "Perro del Infierno, Asesino",
+          "6-6": "Cuervo x2",
+          "7-7": "Dientes de Sable",
+          "8-8": "Perro del Infierno",
+          "9-9": "Contraseña VD10",
+          "10-10": "Archivo VD10",
+          "11-11": "Nodo de Control VD10",
+          "12-12": "Contraseña VD10",
+          "13-13": "Asesino",
           "14-14": "Liche",
-          "15-15": "Dragon",
-          "16-16": "Asp, Raven",
-          "17-17": "Dragon, Wisp",
-          "18-18": "Giant"
+          "15-15": "Dragón",
+          "16-16": "Aspid, Cuervo",
+          "17-17": "Dragón, Fuego Fatuo",
+          "18-18": "Gigante"
         }
       ]
     },
     "First Two Floors (The Lobby)": {
-      "name": "First Two Floors (The Lobby)",
+      "name": "Primeros Dos Pisos (El Lobby)",
       "results": [
         {
-          "1-1": "File DV6",
-          "2-2": "Password DV6",
-          "3-3": "Password DV8",
-          "4-4": "Skunk",
-          "5-5": "Wisp",
-          "6-6": "Killer"
+          "1-1": "Archivo VD6",
+          "2-2": "Contraseña VD6",
+          "3-3": "Contraseña VD8",
+          "4-4": "Mofeta",
+          "5-5": "Fuego Fatuo",
+          "6-6": "Asesino"
         }
       ]
     }

@@ -5,17 +5,17 @@
       "name": "Critical Injuries (Body)",
       "results": [
         {
-          "2-2": "Braço Desmembrado",
-          "3-3": "Mão Desmembrada",
-          "4-4": "Pulmão Comprometido",
-          "5-5": "Costelas Quebradas",
-          "6-6": "Braço Quebrado",
-          "7-7": "Objeto Estranho",
-          "8-8": "Perna Quebrada",
-          "9-9": "Músculo Rasgado",
-          "10-10": "Lesão na Espinha",
-          "11-11": "Dedos Esmagados",
-          "12-12": "Perna Desmembrada"
+          "2-2": "Dismembered Arm",
+          "3-3": "Dismembered Hand",
+          "4-4": "Collapsed Lung",
+          "5-5": "Broken Ribs",
+          "6-6": "Broken Arm",
+          "7-7": "Foreign Object",
+          "8-8": "Broken Leg",
+          "9-9": "Torn Muscle",
+          "10-10": "Spinal Injury",
+          "11-11": "Crushed Fingers",
+          "12-12": "Dismembered Leg"
         }
       ]
     },
@@ -23,17 +23,17 @@
       "name": "Critical Injuries (Head)",
       "results": [
         {
-          "2-2": "Olho Perdido",
-          "3-3": "Lesão no cérebro",
-          "4-4": "Olho Danificado",
-          "5-5": "Concussão",
-          "6-6": "Geleia Quebrada",
-          "7-7": "Objeto Estrangeiro (H)",
-          "8-8": "Chicote",
-          "9-9": "Crânio Rachado",
-          "10-10": "Orelha Danificada",
-          "11-11": "Pipe de Vento Esmagado",
-          "12-12": "Orelha Perdida"
+          "2-2": "Lost Eye",
+          "3-3": "Brain Injury",
+          "4-4": "Damaged Eye",
+          "5-5": "Concussion",
+          "6-6": "Broken Jaw",
+          "7-7": "Foreign Object (H)",
+          "8-8": "Whiplash",
+          "9-9": "Cracked Skull",
+          "10-10": "Damaged Ear",
+          "11-11": "Crushed Windpipe",
+          "12-12": "Lost Ear"
         }
       ]
     }

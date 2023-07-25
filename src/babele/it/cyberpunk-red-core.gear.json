@@ -2,12 +2,12 @@
   "label": "Equipaggiamento",
   "entries": {
     "Cyberdeck (Excellent)": {
-      "name": "Cyberdeck (Excellent)",
-      "description": "<p>Netrunner deck. 9 slots.</p>"
+      "name": "Cyberdeck (Alta Qualità)",
+      "description": "<p>Piattaforma modulare per Netrunner. 9 slot.</p>"
     },
     "Cyberdeck (Poor)": {
-      "name": "Cyberdeck (Poor)",
-      "description": "<p>Netrunner deck. 5 slots.</p>"
+      "name": "Cyberdeck (Bassa Qualità)",
+      "description": "<p>Piattaforma modulare per Netrunner. 5 slot.</p>"
     },
     "Cyberdeck": {
       "name": "Cyberdeck",
@@ -19,7 +19,7 @@
     },
     "Smart Glasses": {
       "name": "Occhiali Intelligenti",
-      "description": "<p>Eyewear with two options slots for cybereye options.</p>"
+      "description": "<p>Visore che include due Slot Opzioni da Cyberocchio.</p>"
     },
     "Agent": {
       "name": "Agent",
@@ -87,7 +87,7 @@
     },
     "Electric Guitar/Other Instrument": {
       "name": "Chitarra Elettrica/Altro Strumento",
-      "description": "<p>Musical instrument. Electric instruments requires an amplifier.</p>"
+      "description": "<p>Strumento musicale. Gli strumenti elettrici richiedono un amplificatore.</p>"
     },
     "Flashlight": {
       "name": "Torcia Elettrica",

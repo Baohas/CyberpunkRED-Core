@@ -2,6 +2,80 @@
 
 # Journal des modifications
 
+## Version 0.88.0
+
+### Changements
+
+- Update System files for v11
+- Update `label` > `name` for Active effects
+- Hide system only Compendiums from Compendium tab
+- Organize Compendiums into COmpendium Folders
+
+## Version 0.87.4
+
+### Nouvelles fonctionnalités
+
+- Add the ability to migrate Locked compendia
+  - Adds System Setting: "Migrate Locked Compendia"
+    - Default: true
+  - If enabled it will unlock compendia then re-lock them after
+- Add the ability to migrate Module compendia
+  - Adds System Setting: "Migrate module Compendia"
+    - Default: false
+  - If enabled we will migrate Module provided compendia
+
+### Corrections de bugs
+
+- Fix some typos/wording in BC+ items
+- Add CSS overrides for Dice Tray module buttons
+- Fix character sheet filter when using localization
+- Fix mook skill mod dialog div overflow
+- Fix mook skill mod dialogue translations
+- Fix Roll Card chat message scaling with Font Size changes
+- Fix localization of skill names in roll dialogs
+- Fix localization of Equipped status in the item sheet
+- Fix Localization of skills in attack roll cards
+- Fix bug in 012-installedItemMigrationFix.js migration script that failed with unconfigured secondary weapons
+- Fix description for Micro Hydrogen Combustor in Black Chrome
+- Fix migration error in 006-universalInstall script
+- Fix #707 - Importing actors from .jsons with installed items should now work as expected.
+- Fix an issue where compendia actors erroneously had their installed item data wiped.
+
+## Version 0.87.3
+
+### Corrections de bugs
+
+- #808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
+- #812 - Some roles were missing the bonuses data point as an empty array.
+- Fix not being able to open any Items due to the DV Tables compendium setting pointing to the old name
+- Fix being unable to delete certain effects from compendium items with Active Effects.
+- Fix CSS issues with modules Cautious Gamemaster's Pack and Item Piles
+- #824 - Now when you drag a cyberware item to a mook sheet, if it can't be auto-installed/equipped, it will delete the newly created item so it does not remain hidden in the inventory.
+- Fix Crushed Fingers/Lost Eye Critical Injury Effect Name
+- #827 - Fix items not being created when purchased from a vendor/container actor.
+- #829 - Fix failure when migrating tokens with broken references to their parent actors.
+- Fix issue where unlinked actors were not gaining Active Effects.
+- Fix compendia name references for critical injuries which was preventing rolling critical injuries
+- #830 - Fix a case where the 0.87 migration would create duplicate and useless active effects
+- #846 - Installed items losing their installation data after migration
+- Various minor CSS fixes
+- #854 - Fix missing Babele translations for Critical Injuries preventing rolling Critical Injuries from character sheets
+- Fix rolling custom skills.
+- Fix Beta Linear Frames AE mode to be set not add
+- Fix Nova Model 757 slots
+
+## Version 0.87.2
+
+### Corrections de bugs
+
+- Fix Programs having `undefined` before their name in character sheets
+- Fix call to `cprBrandName` in Container sheet
+- Fix Price of Fuma Kotaro Linear Frame (Implanted) in Black Chrome
+- Fix text color on mook sheet for CyberWare Weapons
+- Fix migration with container actors
+- Increase Black ICE sheet width to acomodate 2 digit REZ values better
+- Fix Black ICE tokens/actors not updating when populating with a program
+
 ## Version 0.87.1
 
 ### Corrections de bugs

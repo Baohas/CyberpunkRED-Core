@@ -3,7 +3,7 @@
   "entries": {
     "Arrow (Junk)": {
       "name": "Arrow (Junk)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
     },
     "Big Dreem Rounds": {
       "name": "Big Dreem Rounds",
@@ -19,7 +19,7 @@
     },
     "Medium Pistol (Junk)": {
       "name": "Medium Pistol (Junk)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
     },
     "Medium Pistol (Small Game)": {
       "name": "Medium Pistol (Small Game)",
@@ -27,7 +27,7 @@
     },
     "Rifle (Junk)": {
       "name": "Rifle (Junk)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
     },
     "Rifle (Small Game)": {
       "name": "Rifle (Small Game)",
@@ -35,11 +35,11 @@
     },
     "Shotgun Slug (Junk)": {
       "name": "Shotgun Slug (Junk)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
     },
     "Very Heavy Pistol (Junk)": {
       "name": "Very Heavy Pistol (Junk)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with more than 1SP.</p>"
+      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
     },
     "Very Heavy Pistol (Small Game)": {
       "name": "Very Heavy Pistol (Small Game)",
@@ -55,7 +55,7 @@
     },
     "Bullet To Slug Adapter Casings": {
       "name": "Bullet To Slug Adapter Casings",
-      "description": "<p>Make any bullet able to be fired as a shotgun slug.</p>\n<p>A box of Bullet to Slug Adapter Casings comes with 10 casings.</p>\n<p>You can load 10 bullets into 10 adapters using the included jig in an Action. If loading by and it takes an Action to load 1 bullet.</p>"
+      "description": "<p>Make any bullet able to be fired as a shotgun slug.</p>\n<p>A box of Bullet to Slug Adapter Casings comes with 10 casings.</p>\n<p>You can load 10 bullets into 10 adapters using the included jig in an Action. If loading by hand it takes an Action to load 1 bullet.</p>"
     },
     "Solo of Fortune Bodypillow": {
       "name": "Solo of Fortune Bodypillow",
@@ -67,7 +67,7 @@
     },
     "Hello Cutie 1TruLuv": {
       "name": "Hello Cutie 1TruLuv",
-      "description": "<p>Exotic Sniper Rifle. Can load non basic ammunition.</p>\n<p>Equiped with a Sniping Scope and Infrared Night Vision Scope*, and built-in Agent which includes a pseudo AI girlfriend who can recognize and talk to the owner.</p>\n<p>Take good care of it/her and use it/her regularly and the weapon improves. Neglect it/her and you'll have to apologize...</p>\n<p><em>* These upgrades need to be installed manually after adding to an actor<br></em></p>"
+      "description": "<p>Exotic Sniper Rifle. Can load non basic ammunition.</p>\n<p>Equipped with a Sniping Scope and Infrared Night Vision Scope*, and built-in Agent which includes a pseudo AI girlfriend who can recognize and talk to the owner.</p>\n<p>Take good care of it/her and use it/her regularly and the weapon improves. Neglect it/her and you'll have to apologize...</p>\n<p><em>* These upgrades need to be installed manually after adding to an actor<br></em></p>"
     },
     "Molotov Cocktail": {
       "name": "Molotov Cocktail",
