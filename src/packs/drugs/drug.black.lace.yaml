@@ -20,8 +20,12 @@ effects:
         changes:
           cats:
             "0": misc
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
     icon: systems/cyberpunk-red-core/icons/compendium/status/black_lace.svg
-    label: Black Lace Primary
+    name: Black Lace Primary
     tint: null
     transfer: true
   - _id: L4P56fOWGjVT82ES

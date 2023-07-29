@@ -24,7 +24,7 @@ export default class CPRMod {
     this.onByDefault =
       effect.flags[game.system.id].changes.situational?.[index].onByDefault; // S
     this.id = `${change.key}-${effect.id}`; // We enforce one change key per effect, so this should always be a unique ID.
-    this.source = effect.label;
+    this.source = effect.name;
     this.value = Number.parseInt(change.value, 10);
     this.key = change.key;
     this.changeMode = change.mode; // Right now, only ADD (const = 2) is supported. Change modes come from Foundry)
