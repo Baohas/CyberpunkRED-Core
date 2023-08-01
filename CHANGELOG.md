@@ -8,6 +8,7 @@
 
 - Add CSS theming to Journals
 - New Theming for Tooltips
+- Support for editing Active Effects on owned items
 
 ### Bug Fixes
 
