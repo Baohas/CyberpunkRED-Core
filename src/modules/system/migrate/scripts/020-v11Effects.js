@@ -5,12 +5,12 @@ import CPRMigration from "../cpr-migration.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
-export default class JunkDataMigration extends CPRMigration {
+export default class v11EffectsMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | JunkData Migration");
     super();
-    this.version = 19;
-    this.name = "JunkData Migration";
+    this.version = 20;
+    this.name = "v11 Effects Migration";
   }
 
   /**
@@ -34,17 +34,33 @@ export default class JunkDataMigration extends CPRMigration {
   }
 
   /**
-   * Remove junk fields from actors.
+   * In `actor.getData()` we were erroneously adding datapoints that are not in our datamodel.
+   * This removes them.
+   *
+   * Additionally, in Foundry v11, items with AEs no longer duplicate them to the actor.
+   * Thus, without migration there would be duplicate effects showing up, one from the actor,
+   * and one from the item. This removes the duplicate effects from the actor.
    *
    * @param {CPRActor} actor
    */
   async migrateActor(actor) {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
     const updateData = duplicate(actor.system);
+
+    // Remove accidental junk data:
     updateData["-=fightOptions"] = null;
     updateData["-=fightState"] = null;
     updateData["-=cyberdeck"] = null;
     updateData["-=filteredEffects"] = null;
+
+    // De-duplicate active effects:
+    const deleteIds = [];
+    for (const effect of actor.effects.contents) {
+      if (effect.origin.match("Item")) {
+        deleteIds.push(effect.id);
+      }
+    }
+    await actor.deleteEmbeddedDocuments("ActiveEffect", deleteIds);
     return actor.update({ system: updateData });
   }
 }

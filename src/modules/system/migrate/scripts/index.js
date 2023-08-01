@@ -23,3 +23,4 @@ export { default as dvCompendiumMigration } from "./016-dvCompendium.js";
 export { default as criticalInjuryCompendiumMigration } from "./017-critTables.js";
 export { default as CustomSkillFix } from "./018-customSkillFix.js";
 export { default as ImportedActorFix } from "./019-importedActorFix.js";
+export { default as v11EffectsMigration } from "./020-v11Effects.js";
