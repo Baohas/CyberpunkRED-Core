@@ -56,7 +56,7 @@ export default class v11EffectsMigration extends CPRMigration {
     // De-duplicate active effects:
     const deleteIds = [];
     for (const effect of actor.effects.contents) {
-      if (effect.origin.match("Item")) {
+      if (effect.origin?.match("Item")) {
         deleteIds.push(effect.id);
       }
     }
