@@ -109,10 +109,22 @@
       </div>
     </div>
     <div class="blackice-effects">
-      {{editor enrichedHTML.systemEffect target="system.effect" button=true owner=owner editable=editable}}
+      {{editor enrichedHTML.systemEffect
+          target="system.effect"
+          button=true
+          owner=owner
+          editable=editable
+          engine="prosemirror"
+      }}
     </div>
     <div class="blackice-notes">
-      {{editor enrichedHTML.systemNotes target="system.notes" button=true owner=owner editable=editable}}
+      {{editor enrichedHTML.systemNotes
+          target="system.notes"
+          button=true
+          owner=owner
+          editable=editable
+          engine="prosemirror"
+      }}
     </div>
   </div>
 </form>
