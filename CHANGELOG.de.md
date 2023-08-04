@@ -4,6 +4,15 @@
 
 ## Version 0.88.0
 
+### Neue Funktionen
+
+- Add CSS theming to Journals
+- New Theming for Tooltips
+
+### Fehlerbehebungen
+
+- A couple of minor CSS fixes
+
 ### Änderungen
 
 - Update System files for v11
