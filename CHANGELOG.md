@@ -8,6 +8,7 @@
 
 - Add CSS theming to Journals
 - New Theming for Tooltips
+- Add CSS theming to all TextEditor instances (Notes, Descriptions, etc.)
 - Support for editing Active Effects on owned items
 
 ### Bug Fixes
@@ -21,6 +22,8 @@
 - Update `label` > `name` for Active effects
 - Hide system only Compendiums from Compendium tab
 - Organize Compendiums into Compendium Folders
+- Switch all TextEditor instances to use Prosemirror
+- Change font-hero to use same styling as journal headers
 
 ## Version 0.87.4
 
