@@ -181,56 +181,6 @@ input::placeholder {
 }
 
 /*
- * TinyMCE editor
- *
- * We don't have many options to style TinyMCE as it is loaded in an iframe
- */
-
-.editor {
-  .editor-edit {
-    color: var(--cpr-text-editor-button);
-    background-color: var(--cpr-background-editor-button);
-  }
-
-  .tox-tinymce {
-    border: unset;
-    border-radius: unset;
-
-    .tox-edit-area__iframe {
-      // This must be a light backlground no matter the theme as we can't
-      // style the content of iframes
-      background: var(--cpr-color-white);
-    }
-  }
-
-  .tox {
-    .tox-tbtn {
-      color: var(--cpr-text-editor-button);
-      background-color: var(--cpr-background-editor-button);
-    }
-
-    .tox-editor-container {
-      .tox-editor-header {
-        border: unset;
-        box-shadow: unset;
-        padding: unset;
-        transition: unset;
-
-        .tox-toolbar-overlord {
-          color: var(--cpr-text-editor-header);
-          background-color: var(--cpr-background-editor-header);
-
-          .tox-toolbar__primary {
-            background: none;
-            transform: unset;
-          }
-        }
-      }
-    }
-  }
-}
-
-/*
  * Prosemirror Overrides
  *
  * .prosemirror gets a lot of styling from the Journals section below as well
@@ -277,16 +227,20 @@ input::placeholder {
         background: var(--cpr-background-editor-button-hover) !important;
       }
     }
-    //input,
-    //button {
-    //  color: var(--cpr-text-foundry-input) !important;
-    //  background: var(--cpr-background-foundry-input) !important;
-
-    //  .title {
-    //    font-family: var(--cpr-font-journal-header);
-    //  }
-    //}
   }
+
+  .editor-container {
+    height: 100%;
+  }
+
+  .editor-content {
+    height: 100%;
+    padding: 0rem;
+  }
+}
+
+.editor.prosemirror {
+  min-height: 10rem;
 }
 
 // Override the content link element use when linking to another foundry
@@ -314,7 +268,14 @@ input::placeholder {
   }
 }
 
-.prosemirror, // Give Prosemirror the same styling as journals
+/*
+ * TextEditor/Prosemirror Overides
+ */
+
+.prosemirror,
+.editor-content,
+.journal-entry-content,
+.journal-page-content,
 .journal-sheet-container {
   font-family: var(--cpr-font-primary);
 
@@ -369,35 +330,32 @@ input::placeholder {
     }
   }
 
-  .journal-entry-content,
-  .journal-page-content {
-    color: var(--cpr-text-normal) !important;
-    background: var(--cpr-background-box) !important;
+  color: var(--cpr-text-normal) !important;
+  background: var(--cpr-background-box) !important;
 
-    // Catchall for headers in the journal pages
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    .journal-header,
-    .journal-header input {
-      color: var(--cpr-text-chat-normal) !important;
-      font-family: var(--cpr-font-journal-header);
-      font-weight: 800;
-      font-variant: small-caps;
-    }
+  // Catchall for headers
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .journal-header,
+  .journal-header input {
+    color: var(--cpr-text-chat-normal) !important;
+    font-family: var(--cpr-font-journal-header);
+    font-weight: 800;
+    font-variant: small-caps;
+  }
 
-    // Add a line under all headings
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      border-bottom: 0.125rem solid var(--cpr-background-dialog-border);
-    }
+  // Add a line under all headings
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    border-bottom: 0.125rem solid var(--cpr-background-dialog-border);
   }
 
   blockquote {
