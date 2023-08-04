@@ -98,6 +98,14 @@ export default class CPRActorSheet extends ActorSheet {
           async: true,
         });
     }
+    if (this.actor.type === "demon") {
+      foundryData.enrichedHTML.systemNotes = await TextEditor.enrichHTML(
+        this.actor.system.notes,
+        {
+          async: true,
+        }
+      );
+    }
     if (this.actor.type === "character") {
       foundryData.enrichedHTML.systemLifepathCulturalOrigin =
         await TextEditor.enrichHTML(this.actor.system.lifepath.culturalOrigin, {
