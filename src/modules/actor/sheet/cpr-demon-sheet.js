@@ -16,7 +16,7 @@ export default class CPRDemonActorSheet extends ActorSheet {
     LOGGER.trace("defaultOptions | CPRDemonActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-demon-sheet.hbs`,
-      width: 631,
+      width: 652,
       height: "auto",
     });
   }
