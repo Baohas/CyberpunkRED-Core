@@ -86,7 +86,8 @@ export default class CPRItemSheet extends ItemSheet {
 
     // Enrich the description so that links to foundry documents in item descriptions have proper functionality.
     foundryData.enrichedHTMLDescription = await TextEditor.enrichHTML(
-      foundryData.item.system.description.value
+      foundryData.item.system.description.value,
+      { async: true }
     );
     return foundryData;
   }
