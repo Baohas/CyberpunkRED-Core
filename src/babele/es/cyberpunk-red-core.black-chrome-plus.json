@@ -3,7 +3,7 @@
   "entries": {
     "Arrow (Junk)": {
       "name": "Flecha (Basura)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
+      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
     },
     "Big Dreem Rounds": {
       "name": "Rondas de Gran Dreem",
@@ -19,7 +19,7 @@
     },
     "Medium Pistol (Junk)": {
       "name": "Pistola Media (Basura)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
+      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
     },
     "Medium Pistol (Small Game)": {
       "name": "Pistola Media (Juguete)",
@@ -27,7 +27,7 @@
     },
     "Rifle (Junk)": {
       "name": "Rifle (Basura)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
+      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
     },
     "Rifle (Small Game)": {
       "name": "Rifle (Juguete)",
@@ -35,11 +35,11 @@
     },
     "Shotgun Slug (Junk)": {
       "name": "Posta de Escopeta (Basura)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
+      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
     },
     "Very Heavy Pistol (Junk)": {
       "name": "Pistola Muy Pesada (Basura)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
+      "description": "<p>Munición basura; barata, pero inflige 1d6 menos de daño a cualquiera con más de 1CP.</p>"
     },
     "Very Heavy Pistol (Small Game)": {
       "name": "Pistola Muy Pesada (Juguete)",
@@ -55,7 +55,7 @@
     },
     "Bullet To Slug Adapter Casings": {
       "name": "Casquillo adaptable para balas a perdigones",
-      "description": "<p>Make any bullet able to be fired as a shotgun slug.</p>\n<p>A box of Bullet to Slug Adapter Casings comes with 10 casings.</p>\n<p>You can load 10 bullets into 10 adapters using the included jig in an Action. If loading by hand it takes an Action to load 1 bullet.</p>"
+      "description": "<p>Haz que cualquier bala pueda ser disparada como un cartucho de escopeta.</p>\n<p>Una caja de casquillos adaptable para balas a perdigones viene con 10 casquillos.</p>\n<p>Puedes cargar 10 balas en 10 adaptadores usando el dispositivo incluido en una acción. Si se cargan manualmente, se necesita una acción para cargar 1 bala.</p>"
     },
     "Solo of Fortune Bodypillow": {
       "name": "Almohada Corporal de Soldado de Fortuna",
