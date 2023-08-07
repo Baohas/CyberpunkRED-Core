@@ -24,6 +24,7 @@
 - Organize Compendiums into Compendium Folders
 - Switch all TextEditor instances to use Prosemirror
 - Change font-hero to use same styling as journal headers
+- Change styling of release notes pop-up to match journal styling
 
 ## Version 0.87.4
 
