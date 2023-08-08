@@ -1,7 +1,7 @@
 /* globals foundry */
 
-import CPR from "../../system/config.js";
-import LOGGER from "../../utils/cpr-logger.js";
+import CPR from "../../../system/config.js";
+import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class DerivedStatsSchema extends foundry.abstract.DataModel {
   static defineSchema() {
@@ -110,10 +110,5 @@ export default class DerivedStatsSchema extends foundry.abstract.DataModel {
         }),
       }),
     };
-  }
-
-  get seriouslyWounded() {
-    LOGGER.trace("seriouslyWounded");
-    return Math.ceil(this.parent.system.hp.max / 2);
   }
 }
