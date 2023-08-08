@@ -30,7 +30,7 @@ import registerSystemSettings from "./modules/system/settings.js";
 
 // Data Models
 import CPRActorDataModel from "./modules/datamodels/actor/cpr-actor-datamodel.js";
-import LedgerSchema from "./modules/datamodels/actor/components/cpr-ledger-datamodel.js";
+import AmmoDataModel from "./modules/datamodels/item/cpr-ammo-datamodel.js";
 
 // This defines the version of the Data Model for this release.  We should
 // only update this when the Data Model Changes.
@@ -116,9 +116,11 @@ Hooks.once("init", async () => {
   CONFIG.Item.documentClass = itemConstructor;
   CONFIG.Combatant.documentClass = CPRCombatant;
 
-  // Register data models.
+  // Register Actor data models.
   CONFIG.Actor.systemDataModels.character = CPRActorDataModel;
-  CONFIG.Actor.systemDataModels.ledger = LedgerSchema;
+
+  // Register Item data models.
+  CONFIG.Item.systemDataModels.ammo = AmmoDataModel;
 
   // Turn legacy tranferral for active effects off. Necessary for v11.
   CONFIG.ActiveEffect.legacyTransferral = false;
