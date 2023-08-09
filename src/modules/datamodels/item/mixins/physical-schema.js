@@ -8,8 +8,8 @@ export default class PhysicalSchema extends foundry.abstract.DataModel {
     const { fields } = foundry.data;
     return {
       concealable: new fields.SchemaField({
-        concealable: new fields.BooleanField({ inital: false }),
-        isConcealed: new fields.BooleanField({ inital: false }),
+        concealable: new fields.BooleanField({ initial: false }),
+        isConcealed: new fields.BooleanField({ initial: false }),
       }),
       brand: new fields.StringField({ blank: true }),
     };
