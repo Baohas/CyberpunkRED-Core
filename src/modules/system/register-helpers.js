@@ -1,4 +1,4 @@
-/* global Handlebars game getProperty fromUuidSync */
+/* global Handlebars game getProperty */
 /* eslint-env jquery */
 import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
@@ -63,15 +63,10 @@ export default function registerHandlebarsHelpers() {
    * Return an owned item on an actor given the ID
    */
   Handlebars.registerHelper("cprGetOwnedItem", (actor, itemId) => {
-    let item;
-    if (actor === null) {
-      item = fromUuidSync(itemId);
-    } else {
-      item = actor.items.find((i) => i.id === itemId)
-        ? actor.items.find((i) => i.id === itemId)
-        : actor.items.find((i) => i.uuid === itemId);
-    }
-    return item;
+    return (
+      actor.items.find((i) => i.id === itemId) ||
+      actor.items.find((i) => i.uuid === itemId)
+    );
   });
 
   /**
@@ -495,14 +490,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Get document from uuid.
-   */
-  Handlebars.registerHelper("cprFromUuidSync", (uuid) => {
-    LOGGER.trace("cprFromUuidSync | handlebarsHelper | Called.");
-    return fromUuidSync(uuid);
-  });
-
-  /**
    * Return a system setting value given the name
    */
   Handlebars.registerHelper("cprSystemConfig", (settingName) =>
@@ -730,7 +717,7 @@ export default function registerHandlebarsHelpers() {
       let returnString = "";
       if (actor) {
         for (const itemId of itemList) {
-          const installedItem = fromUuidSync(itemId);
+          const installedItem = item.actor.getOwnedItem(itemId);
           if (installedItem) {
             const itemType = SystemUtils.Localize(
               CPR.objectTypes[installedItem.type]
@@ -1110,15 +1097,16 @@ export default function registerHandlebarsHelpers() {
    * Returns specific property for ammo's damage override. "Override" is a boolean,
    * whether or not to apply the override. "Value" is the damage value, e.g. "3d6".
    *
+   * @param {String} actor - The actor who is the owner of this weapon/ammo.
    * @param {String} uuid - The Uuid of the ammo item.
    * @param {String} override - The override we want, 'damage' or 'autofire'.
    * @param {String} property - Should be 'mode', 'value', or 'minimum'.
    */
   Handlebars.registerHelper(
     "cprGetAmmoOverrideProp",
-    (uuid, override, property) => {
+    (actor, uuid, override, property) => {
       LOGGER.trace("cprGetAmmoOverrideProp | handlebarsHelper | Called.");
-      const ammoItem = fromUuidSync(uuid);
+      const ammoItem = actor.getOwnedItem(uuid);
 
       if (
         !(property === "mode" || property === "value" || property === "minimum")
@@ -1165,7 +1153,9 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprGetWeaponAutofireMax", (weapon) => {
     LOGGER.trace("cprGetWeaponDamage | handlebarsHelper | Called.");
     const weaponAutofireMax = weapon.system.fireModes.autoFire;
-    const ammoItem = fromUuidSync(weapon.system.magazine.ammoData.uuid);
+    const ammoItem = weapon.actor.getOwnedItem(
+      weapon.system.magazine.ammoData.uuid
+    );
     let trueMax = 0;
     if (ammoItem && ammoItem.system.overrides.autofire.mode === "set") {
       trueMax = ammoItem.system.overrides.autofire.value;
