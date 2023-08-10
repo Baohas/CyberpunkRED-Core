@@ -39,7 +39,7 @@
   <div class="weapon-ammo">
     {{#if this.system.isRanged}}
       {{#if this.system.magazine.ammoData.uuid}}
-        {{#with (cprFromUuidSync this.system.magazine.ammoData.uuid) as |ammoData|}}
+        {{#with (cprGetOwnedItem actor this.system.magazine.ammoData.uuid) as |ammoData|}}
           {{localize (cprFindConfigValue "ammoType" ammoData.system.type)}}:
         {{/with}}
         {{this.system.magazine.value}}
@@ -77,7 +77,7 @@
 
     {{!-- Damage --}}
     <span
-      {{#if (cprCompare (cprGetAmmoOverrideProp this.system.magazine.ammoData.uuid "damage" "mode") "!==" "none")}}
+      {{#if (cprCompare (cprGetAmmoOverrideProp actor this.system.magazine.ammoData.uuid "damage" "mode") "!==" "none")}}
         class="text-pill text-italic" data-tooltip="{{localize "CPR.actorSheets.fightTab.ammoDamageOverrideTooltip"}}">
       {{else}}
         class="text-pill">
@@ -88,7 +88,7 @@
 
     {{!-- Ablation --}}
     {{#if this.system.magazine.ammoData.uuid}}
-      {{#with (cprFromUuidSync this.system.magazine.ammoData.uuid) as |ammoData|}}
+      {{#with (cprGetOwnedItem actor this.system.magazine.ammoData.uuid) as |ammoData|}}
         {{#if (cprCompare ammoData.system.ablationValue "!==" 1)}}
           <span class="text-pill">
             {{localize "CPR.global.generic.ablation"}}
@@ -128,7 +128,7 @@
       {{#if (cprCompare this.system.fireModes.autoFire ">" 0)}}
         <li>
           <span
-            {{#if (cprCompare (cprGetAmmoOverrideProp this.system.magazine.ammoData.uuid "autofire" "mode") "!==" "none")}}
+            {{#if (cprCompare (cprGetAmmoOverrideProp actor this.system.magazine.ammoData.uuid "autofire" "mode") "!==" "none")}}
               class="text-padding-right-small text-italic" data-tooltip="{{localize "CPR.actorSheets.fightTab.ammoAutofireOverrideTooltip"}}">
             {{else}}
               class="text-padding-right-small">
