@@ -21,7 +21,8 @@ export default class PackUtils {
    * '!tables!4S3emhUCIIDNoTAg' or
    * '!tables.results!4S3emhUCIIDNoTAg.6Aob1Q13Wnq2fmKF'
    *
-   * @param {string} str - The input string from which the pack type should be extracted.
+   * @param {string} str - The input string from which the pack type should be
+   *                       extracted.
    * @returns {string} The extracted pack type from the input string.
    */
   static getPackType(str) {
@@ -36,8 +37,10 @@ export default class PackUtils {
    * '!tables!4S3emhUCIIDNoTAg' or
    * '!tables.results!4S3emhUCIIDNoTAg.6Aob1Q13Wnq2fmKF'
    *
-   * @param {string} str - The input string from which the pack sub-type should be extracted.
-   * @returns {string|null} The extracted pack sub-type from the input string or null if not present.
+   * @param {string} str - The input string from which the pack sub-type
+   *                       should be extracted.
+   * @returns {string} The extracted pack sub-type from the input string ""
+   *                   (empty string) if not present.
    *
    */
   static getPackSubType(str) {
@@ -293,6 +296,101 @@ export default class PackUtils {
     await db.close();
   }
 
+  /*
+   * Reads YAML fragments in a directory and generates Babele translation files
+   *
+   * @param {string} fragmentDir - The directoryto read the fragment files from
+   * @param {string} outputFile - The path to the file to write
+   * @param {string} packLabel - The Label for the pack
+   * @returns {Promise<void>} - A Promise that resolves when the generation
+   *                           process is complete.
+   */
+  static async generateBabeleFile(fragmentDir, outputFile, packLabel) {
+    if (TRACE) {
+      log(`TRACE: PackUtils | generateBabeleFile called.`);
+    }
+
+    // Setup the base object for to be populated and output to the babele file
+    const packData = {
+      label: packLabel,
+      entries: {},
+    };
+
+    const files = fs.readdirSync(fragmentDir);
+    for (const file of files) {
+      if (TRACE) {
+        log(`Processing: ${file}`);
+      }
+      const fileContents = fs.readFileSync(
+        path.join(fragmentDir, file),
+        "utf-8"
+      );
+      const data = YAML.load(fileContents);
+      const itemKey = data._key;
+      const packType = this.getPackType(itemKey);
+      const packSubType = this.getPackSubType(itemKey);
+      const itemName = data.name;
+      const itemDescription = data.system?.description.value
+        ? data.system.description.value
+        : "";
+
+      // We only want to process items, not effects
+      if (packType === "items" && packSubType === "") {
+        const item = {
+          name: itemName,
+          description: itemDescription,
+        };
+
+        // Add the item to the packData
+        packData.entries[itemName] = item;
+      }
+
+      // We only want to process tables, not results
+      if (packType === "tables" && packSubType === "") {
+        const tableName = data.name;
+        const tableResults = data.results;
+        const resultsOutput = {};
+
+        // data.results.forEach((item) => {
+        //  const key = `${item.range[0]}-${item.range[1]}`;
+        //  tableResults[key] = item.text;
+        // });
+
+        for (const result of tableResults) {
+          // This assumes a single file is returned from the filter function.
+          // Given the naming of the files this should always be the case.
+          const resultFile = path.resolve(
+            fragmentDir,
+            fs
+              .readdirSync(fragmentDir)
+              .filter(
+                (fn) =>
+                  fn.startsWith(`result.`) &&
+                  fn.endsWith(`${result.toLowerCase()}.yaml`)
+              )[0]
+          );
+          const resContents = fs.readFileSync(resultFile, "utf-8");
+          const resData = YAML.load(resContents);
+          const key = resData.range.join("-");
+          resultsOutput[key] = resData.text ? resData.text : "";
+
+          // Add each result to the packData
+          packData.entries[tableName] = {
+            name: tableName,
+            results: [resultsOutput],
+          };
+        }
+      }
+    }
+
+    if (TRACE) {
+      log(`TRACE: PackUtils | generateBabeleFile | writing ${outputFile}`);
+    }
+
+    // Write the Babele file
+    fs.writeFileSync(outputFile, JSON.stringify(packData, null, 2));
+  }
+
   /**
    * Cleans the given pack data by removing unnecessary properties and fixing
    * common errors.
@@ -472,3 +570,4 @@ export default class PackUtils {
     return data;
   }
 }
+

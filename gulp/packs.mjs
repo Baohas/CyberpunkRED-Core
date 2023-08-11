@@ -115,99 +115,41 @@ async function genPacks() {
 // Loop over each pack.db in `dataDir/packs` and create babele file for
 // translation using crowdin
 async function genPacksBabele() {
-  return new Promise((cb) => {
-    log("Generating Babele Files...");
-    // We only care about translating certian pack types
-    const translatedPacks = ["Item", "RollTable"];
+  log("Generating Babele Files...");
+  // We only care about translating certian pack types
+  const translatedPacks = ["Item", "RollTable"];
 
-    const fragmentDir = path.resolve(srcFolder, "packs");
-    const babeleDir = path.resolve(srcFolder, "babele", "en");
-    const sysFile = JSON.parse(
-      fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE))
+  const fragmentDir = path.resolve(SRC_DIR, PACKS_DIR);
+  const babeleDir = path.resolve(SRC_DIR, "babele", "en");
+  const sysFile = JSON.parse(
+    fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE))
+  );
+  const { packs } = sysFile;
+
+  // To handle compendia renames we need to blast the files then rebuild them
+  if (fs.existsSync(babeleDir)) {
+    fs.rmSync(babeleDir, { recursive: true });
+  }
+  fs.mkdirSync(babeleDir);
+
+  const promises = packs.map(async (pack) => {
+    const packName = pack.name;
+    const packLabel = pack.label;
+    const fragmentPath = path.resolve(SRC_DIR, pack.path);
+    const outputFile = path.resolve(
+      SRC_DIR,
+      babeleDir,
+      `${SYSTEM_NAME}.${packName}.json`
     );
-    const { packs } = sysFile;
 
-    // To handle compendia renames we need to blast the files then rebuild them
-    if (fs.existsSync(babeleDir)) {
-      fs.rmSync(babeleDir, { recursive: true });
-      fs.mkdirSync(babeleDir);
+    if (DEBUG) {
+      log(`DEBUG: Processing pack: ${packName}`);
     }
 
-    packs.forEach((pack) => {
-      if (translatedPacks.includes(pack.type)) {
-        const packName = pack.name;
-        const packFileName = packName;
-        const packLabel = pack.label;
-        const packType = pack.type;
-        const babelePath = path.resolve(
-          babeleDir,
-          `${SYSTEM_NAME}.${packFileName}.json`
-        );
-        if (DEBUG) {
-          log(`DEBUG: Processing ${packName}`);
-        }
-
-        const packData = {
-          label: packLabel,
-          entries: {},
-        };
-
-        // If the fragment dir exists, do stuff, else error
-        if (fs.existsSync(path.join(fragmentDir, packName))) {
-          const fragments = fs.readdirSync(path.join(fragmentDir, packName));
-
-          // Loop over each file
-          fragments.forEach((fragment) => {
-            if (DEBUG) {
-              log(`DEBUG: Processing ${packName}/${fragment}`);
-            }
-            const fragmentPath = path.join(fragmentDir, packName, fragment);
-            const entry = YAML.load(fs.readFileSync(fragmentPath), "UTF-8");
-
-            _cleanPackData(entry);
-
-            // Because the output for each type of compendia is different
-            // we need to construct the items differently for each
-            if (packType === "Item") {
-              const itemName = entry.name;
-              const itemDescription = entry.system.description.value
-                ? entry.system.description.value
-                : "";
-
-              const item = {
-                name: itemName,
-                description: itemDescription,
-              };
-
-              packData.entries[itemName] = item;
-            }
-
-            if (packType === "RollTable") {
-              const tableName = entry.name;
-              const tableResults = {};
-
-              entry.results.forEach((item) => {
-                const key = `${item.range[0]}-${item.range[1]}`;
-                tableResults[key] = item.text;
-              });
-
-              packData.entries[tableName] = {
-                name: tableName,
-                results: [tableResults],
-              };
-            }
-          });
-
-          if (DEBUG) {
-            console.log(`DEBUG: writing ${babelePath}`);
-          }
-          fs.writeFileSync(babelePath, JSON.stringify(packData, null, 2));
-        }
-      }
-    });
-    log("Finished Generating Babele Files...");
-    cb();
+    await PackUtils.generateBabeleFile(fragmentPath, outputFile, packLabel);
   });
+  log("Finished Generating Babele Files...");
+  return Promise.all(promises);
 }
 
 export { extPacks, genPacks, genPacksBabele };
