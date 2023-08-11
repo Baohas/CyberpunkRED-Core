@@ -1,0 +1,57 @@
+_id: qAqYtbD1yFgQNelR
+_key: "!items!qAqYtbD1yFgQNelR"
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/weapons/flamethrower.svg
+name: Flamethrower
+system:
+  ammoVariety:
+    - shotgunShell
+    - shotgunSlug
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 5d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full
+      item description on pg. 348.</p>
+  dvTable: DV Shotgun (Slug)
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 4
+    value: 0
+  price:
+    market: 500
+  revealed: true
+  rof: 1
+  source:
+    book: Core
+    page: 348
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: shotgun
+type: weapon

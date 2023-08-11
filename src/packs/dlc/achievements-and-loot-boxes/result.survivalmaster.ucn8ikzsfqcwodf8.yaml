@@ -1,0 +1,13 @@
+_id: uCN8IKzSfQcwODf8
+_key: "!tables.results!bOtq937SNIahmbeK.uCN8IKzSfQcwODf8"
+documentCollection: cyberpunk-red-core.black-chrome-plus
+documentId: 5boGB9jFKUJ9cSMR
+drawn: false
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome-plus/everest-ventureware-survivalmaster.svg
+range:
+  - 5
+  - 5
+text: SurvivalMaster
+type: 2
+weight: 1

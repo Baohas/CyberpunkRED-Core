@@ -1,0 +1,38 @@
+_id: sWcT0Dw2kpW172Al
+_key: "!items!sWcT0Dw2kpW172Al"
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_top.svg
+name: Gang Colors Top
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Show your allegiance with Gang colors!</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 20
+  providesHardening: false
+  revealed: true
+  source:
+    book: Core
+    page: 356
+  style: gangColors
+  type: top
+  upgrades: []
+  usage: equipped
+type: clothing

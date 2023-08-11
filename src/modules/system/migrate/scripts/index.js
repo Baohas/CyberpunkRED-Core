@@ -24,3 +24,4 @@ export { default as criticalInjuryCompendiumMigration } from "./017-critTables.j
 export { default as CustomSkillFix } from "./018-customSkillFix.js";
 export { default as ImportedActorFix } from "./019-importedActorFix.js";
 export { default as v11EffectsMigration } from "./020-v11Effects.js";
+export { default as packNameMigration } from "./021-packRenames.js";

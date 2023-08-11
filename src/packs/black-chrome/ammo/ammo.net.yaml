@@ -1,0 +1,36 @@
+_id: etGQrEprF1AboZmt
+_key: "!items!etGQrEprF1AboZmt"
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/capsule_tied.png
+name: Net
+system:
+  ablationValue: 0
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Net for the net launcher that grapples the target on hit. (See Black
+      Chrome Pg. 20-21 for more details)</p>
+  favorite: false
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: set
+      value: "0"
+  price:
+    market: 50
+  source:
+    book: BC
+    page: 20
+  type: special
+  variety: custom
+type: ammo

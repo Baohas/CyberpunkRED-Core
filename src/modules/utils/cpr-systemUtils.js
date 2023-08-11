@@ -134,7 +134,9 @@ export default class CPRSystemUtils {
    */
   static async GetCoreSkills() {
     LOGGER.trace("GetCoreSkills | CPRSystemUtils | Called.");
-    return CPRSystemUtils.GetCompendiumDocs(`${game.system.id}.skills`);
+    return CPRSystemUtils.GetCompendiumDocs(
+      `${game.system.id}.internal_skills`
+    );
   }
 
   /**
@@ -145,7 +147,9 @@ export default class CPRSystemUtils {
    */
   static async GetCoreCyberware() {
     LOGGER.trace("GetCoreCyberware | CPRSystemUtils | Called.");
-    return CPRSystemUtils.GetCompendiumDocs(`${game.system.id}.cyberware-core`);
+    return CPRSystemUtils.GetCompendiumDocs(
+      `${game.system.id}.internal_cyberware-core`
+    );
   }
 
   /**

@@ -1,0 +1,59 @@
+_id: maC7pXPwRqULiTPF
+_key: "!items!maC7pXPwRqULiTPF"
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/weapons/mediumPistol_excellent.svg
+name: MicroCutie
+system:
+  ammoVariety:
+    - medPistol
+  attackmod: 1
+  brand: Hello Cutie
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 2d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>An excellent quality pistol with a unique HypurrburstTM mode fire
+      mode*. The weapon purrs when used. Full rules can be found in Micro Chrome
+      on Page 1.</p>
+
+      <p><br><em>Special fire mode not currently supported; will need to be
+      manually applied</em></p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 10
+    value: 0
+  price:
+    market: 1000
+  revealed: true
+  rof: 2
+  source:
+    book: MC
+    page: 1
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: medPistol
+type: weapon

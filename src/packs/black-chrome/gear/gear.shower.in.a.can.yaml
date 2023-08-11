@@ -1,0 +1,38 @@
+_id: hKYCFn6oovt6pBwF
+_key: "!items!hKYCFn6oovt6pBwF"
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/shower-in-can.svg
+name: Shower•in•a•Can
+system:
+  amount: 1
+  brand: Biotechnica
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Spray Deodorant. Desinfects and deodorize. One use per can. For more
+      information, see Black Chrome Page 38.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 10
+  providesHardening: false
+  revealed: true
+  source:
+    book: BC
+    page: 38
+  upgrades: []
+  usage: toggled
+type: gear

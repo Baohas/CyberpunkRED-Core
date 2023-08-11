@@ -1,0 +1,57 @@
+_id: t0cGEnuajobz3wTq
+_key: "!items!t0cGEnuajobz3wTq"
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/weapons/Sword_poor.svg
+name: Mono-Katana Solo Wolf and Bot
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Kendachi
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 4d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Poor Quality Two Handed Exotic Very Heavy Melee Weapon.</p>
+
+      <p>Mono-Katana cheap look-alike. Rules for spotting them apart can be
+      found on page 92.</p>
+  dvTable: ""
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 2
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 100
+  revealed: true
+  rof: 1
+  source:
+    book: BC
+    page: 92
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: vHeavyMelee
+type: weapon
