@@ -351,11 +351,9 @@ export default class PackUtils {
         const tableResults = data.results;
         const resultsOutput = {};
 
-        // data.results.forEach((item) => {
-        //  const key = `${item.range[0]}-${item.range[1]}`;
-        //  tableResults[key] = item.text;
-        // });
-
+        // We need to loop through the results array from the 'table' file and
+        // find the relevant 'result' file and process it's contents and add
+        // them to the packData as individual entries in the output babele file
         for (const result of tableResults) {
           // This assumes a single file is returned from the filter function.
           // Given the naming of the files this should always be the case.
@@ -570,4 +568,3 @@ export default class PackUtils {
     return data;
   }
 }
-
