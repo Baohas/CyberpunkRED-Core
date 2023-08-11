@@ -2,6 +2,13 @@
 
 # Changelog
 
+## Version 0.87.5
+
+### Bug Fixes
+
+- Fix rendering of Actor documents from compendia.
+  - Future work: Fix certain updates to compendia documents failing.
+
 ## Version 0.87.4
 
 ### New Features
