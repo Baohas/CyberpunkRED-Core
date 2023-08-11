@@ -9,8 +9,11 @@
         "_id": {
           "$ref": "./components/id.json"
         },
+        "_key": {
+          "$ref": "./components/key.json"
+        },
         "effects": {
-          "$ref": "./components/effects/activeEffects.json"
+          "$ref": "./components/effects.json"
         },
         "flags": {
           "$ref": "./components/flags.json"
@@ -29,14 +32,7 @@
           "$ref": "#/definitions/System"
         }
       },
-      "required": [
-        "_id",
-        "effects",
-        "img",
-        "name",
-        "system",
-        "type"
-      ]
+      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
     },
     "System": {
       "type": "object",

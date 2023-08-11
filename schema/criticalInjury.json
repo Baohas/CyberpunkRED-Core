@@ -9,8 +9,11 @@
         "_id": {
           "$ref": "./components/id.json"
         },
+        "_key": {
+          "$ref": "./components/key.json"
+        },
         "effects": {
-          "$ref": "./components/effects/activeEffects.json"
+          "$ref": "./components/effects.json"
         },
         "flags": {
           "$ref": "./components/flags.json"
@@ -29,14 +32,7 @@
           "$ref": "#/definitions/System"
         }
       },
-      "required": [
-        "_id",
-        "effects",
-        "img",
-        "name",
-        "system",
-        "type"
-      ]
+      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
     },
     "System": {
       "type": "object",
@@ -53,10 +49,7 @@
         },
         "location": {
           "type": "string",
-          "enum": [
-            "head",
-            "body"
-          ]
+          "enum": ["head", "body"]
         },
         "quickFix": {
           "$ref": "#/definitions/QuickFix"
@@ -92,28 +85,17 @@
       "properties": {
         "dvFirstAid": {
           "type": "integer",
-          "enum": [
-            0,
-            13
-          ]
+          "enum": [0, 13]
         },
         "dvParamedic": {
           "type": "integer",
-          "enum": [
-            0,
-            13,
-            15
-          ]
+          "enum": [0, 13, 15]
         },
         "type": {
           "type": "string"
         }
       },
-      "required": [
-        "dvFirstAid",
-        "dvParamedic",
-        "type"
-      ]
+      "required": ["dvFirstAid", "dvParamedic", "type"]
     },
     "Treatment": {
       "type": "object",
@@ -121,30 +103,17 @@
       "properties": {
         "dvParamedic": {
           "type": "integer",
-          "enum": [
-            0,
-            13,
-            15
-          ]
+          "enum": [0, 13, 15]
         },
         "dvSurgery": {
           "type": "integer",
-          "enum": [
-            0,
-            13,
-            15,
-            17
-          ]
+          "enum": [0, 13, 15, 17]
         },
         "type": {
           "type": "string"
         }
       },
-      "required": [
-        "dvParamedic",
-        "dvSurgery",
-        "type"
-      ]
+      "required": ["dvParamedic", "dvSurgery", "type"]
     }
   }
 }

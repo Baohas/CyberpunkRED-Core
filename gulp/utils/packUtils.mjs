@@ -325,6 +325,10 @@ export default class PackUtils {
       log(`TRACE: PackUtils | cleanPackData called.`);
     }
 
+    if ("author" in data) {
+      delete data.author;
+    }
+
     if ("flags" in data) {
       if ("exportSource" in data.flags) {
         delete data.flags.exportSource;

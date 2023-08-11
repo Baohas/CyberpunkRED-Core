@@ -1,16 +1,16 @@
 {
-  "description": "Schema for the Foundry `effects` array of objects",
-  "type": "array",
-  "items": {
-    "$ref": "#/definitions/CPRC-Effect"
-  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/CPRC-Active-Effect",
   "definitions": {
-    "CPRC-Effect": {
+    "CPRC-Active-Effect": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "_id": {
-          "$ref": "../id.json"
+          "$ref": "./components/id.json"
+        },
+        "_key": {
+          "$ref": "./components/key.json"
         },
         "changes": {
           "type": "array",
@@ -28,7 +28,7 @@
           "$ref": "#/definitions/CPRC-Effect-Flags"
         },
         "icon": {
-          "$ref": "../img.json"
+          "$ref": "./components/img.json"
         },
         "name": {
           "type": "string"
