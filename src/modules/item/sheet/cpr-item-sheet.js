@@ -50,10 +50,9 @@ export default class CPRItemSheet extends ItemSheet {
   async getData() {
     LOGGER.trace("getData | CPRItemSheet | Called.");
     const foundryData = super.getData();
-    const cprData = foundryData.item.system;
+    const cprData = {};
     // data.isGM = game.user.isGM;
     cprData.isGM = game.user.isGM;
-    cprData.isOwned = this.object.isOwned;
     const itemType = foundryData.item.type;
     const mixins = SystemUtils.getDataModelTemplates(itemType);
     if (itemType === "role" || mixins.includes("attackable")) {
@@ -82,14 +81,13 @@ export default class CPRItemSheet extends ItemSheet {
     const dvTables = await SystemUtils.GetDvTables();
     cprData.dvTableNames = [];
     for (const table of dvTables) cprData.dvTableNames.push(table.name);
-    foundryData.item.system = cprData;
 
     // Enrich the description so that links to foundry documents in item descriptions have proper functionality.
     foundryData.enrichedHTMLDescription = await TextEditor.enrichHTML(
       foundryData.item.system.description.value,
       { async: true }
     );
-    return foundryData;
+    return { ...foundryData, ...cprData };
   }
 
   /* -------------------------------------------- */

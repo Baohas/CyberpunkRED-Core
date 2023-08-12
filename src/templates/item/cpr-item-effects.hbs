@@ -119,7 +119,7 @@
               {{#if this.editable }}
                 <select name="system.consumed" data-dtype="{{item.system.consumed}}">
                   {{#select item.system.consumed}}
-                    {{#each item.system.effectNames }}
+                    {{#each effectNames }}
                       <option value="{{this}}">
                         {{this}}
                       </option>

@@ -1,4 +1,4 @@
-/* global Item game fromUuidSync */
+/* global Item game */
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
