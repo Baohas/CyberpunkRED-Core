@@ -2,6 +2,12 @@
 
 # Changelog
 
+## Version 0.87.6
+
+### Bug Fixes
+
+- Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
+
 ## Version 0.87.5
 
 ### Bug Fixes

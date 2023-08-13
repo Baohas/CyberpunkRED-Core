@@ -63,6 +63,11 @@ export default function registerHandlebarsHelpers() {
    * Return an owned item on an actor given the ID
    */
   Handlebars.registerHelper("cprGetOwnedItem", (actor, itemId) => {
+    if (actor === null) {
+      return (
+        game.items.get(itemId) || game.items.find((i) => i.uuid === itemId)
+      );
+    }
     return (
       actor.items.find((i) => i.id === itemId) ||
       actor.items.find((i) => i.uuid === itemId)
