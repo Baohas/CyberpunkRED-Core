@@ -26,6 +26,12 @@
 - Change font-hero to use same styling as journal headers
 - Change styling of release notes pop-up to match journal styling
 
+## Version 0.87.6
+
+### Bug Fixes
+
+- Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
+
 ## Version 0.87.5
 
 ### Bug Fixes
