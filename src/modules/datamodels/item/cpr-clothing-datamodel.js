@@ -15,14 +15,14 @@ import ValuableSchema from "./mixins/valuable-schema.js";
 
 export default class ClothingDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
+  ContainerSchema,
   EffectsSchema,
   ElectronicSchema,
   EquippableSchema,
   PhysicalSchema,
   StackableSchema,
   UpgradableSchema,
-  ValuableSchema,
-  ContainerSchema
+  ValuableSchema
 ) {
   static defineSchema() {
     LOGGER.trace("defineSchema | ClothingDataModel | called.");

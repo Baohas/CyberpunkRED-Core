@@ -11,21 +11,20 @@ import ElectronicSchema from "./mixins/electronic-schema.js";
 import InstallableSchema from "./mixins/installable-schema.js";
 import LoadableSchema from "./mixins/loadable-schema.js";
 import PhysicalSchema from "./mixins/physical-schema.js";
-import StackableSchema from "./mixins/stackable-schema.js";
 import UpgradableSchema from "./mixins/upgradable-schema.js";
 import ValuableSchema from "./mixins/valuable-schema.js";
 
-export default class CyberwareModel extends CPRSystemDataModel.mixin(
+export default class CyberwareDataModel extends CPRSystemDataModel.mixin(
   AttackableSchema,
   CommonSchema,
+  ContainerSchema,
   EffectsSchema,
   ElectronicSchema,
   InstallableSchema,
   LoadableSchema,
   PhysicalSchema,
   UpgradableSchema,
-  ValuableSchema,
-  ContainerSchema
+  ValuableSchema
 ) {
   static defineSchema() {
     LOGGER.trace("defineSchema | CyberwareModel | called.");

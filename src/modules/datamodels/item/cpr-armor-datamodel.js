@@ -13,13 +13,13 @@ import ValuableSchema from "./mixins/valuable-schema.js";
 
 export default class ArmorDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
+  ContainerSchema,
   EffectsSchema,
   ElectronicSchema,
   EquippableSchema,
   PhysicalSchema,
   UpgradableSchema,
-  ValuableSchema,
-  ContainerSchema
+  ValuableSchema
 ) {
   static defineSchema() {
     LOGGER.trace("defineSchema | ArmorModel | called.");
