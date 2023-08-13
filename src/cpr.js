@@ -33,6 +33,7 @@ import CPRActorDataModel from "./modules/datamodels/actor/cpr-actor-datamodel.js
 import AmmoDataModel from "./modules/datamodels/item/cpr-ammo-datamodel.js";
 import ArmorDataModel from "./modules/datamodels/item/cpr-armor-datamodel.js";
 import ClothingDataModel from "./modules/datamodels/item/cpr-clothing-datamodel.js";
+import CriticalInjuryDataModel from "./modules/datamodels/item/cpr-criticalInjury-datamodel.js";
 import WeaponDataModel from "./modules/datamodels/item/cpr-weapon-datamodel.js";
 
 // This defines the version of the Data Model for this release.  We should
@@ -126,6 +127,7 @@ Hooks.once("init", async () => {
   CONFIG.Item.systemDataModels.ammo = AmmoDataModel;
   CONFIG.Item.systemDataModels.armor = ArmorDataModel;
   CONFIG.Item.systemDataModels.clothing = ClothingDataModel;
+  CONFIG.Item.systemDataModels.criticalInjury = CriticalInjuryDataModel;
   CONFIG.Item.systemDataModels.weapon = WeaponDataModel;
 
   // Turn legacy tranferral for active effects off. Necessary for v11.

@@ -22,7 +22,7 @@ export default class ArmorDataModel extends CPRSystemDataModel.mixin(
   ContainerSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | WeaponDataModel | called.");
+    LOGGER.trace("defineSchema | ArmorModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       isBodyLocation: new fields.BooleanField({ initial: true }),

@@ -25,7 +25,7 @@ export default class ClothingDataModel extends CPRSystemDataModel.mixin(
   ContainerSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | WeaponDataModel | called.");
+    LOGGER.trace("defineSchema | ClothingDataModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       type: new fields.StringField({
