@@ -1,5 +1,6 @@
 /* globals foundry */
 
+import CPR from "../../../system/config.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class LoadableSchema extends foundry.abstract.DataModel {
@@ -29,7 +30,9 @@ export default class LoadableSchema extends foundry.abstract.DataModel {
           uuid: new fields.StringField({ blank: true }),
         }),
       }),
-      brand: new fields.StringField({ blank: true }),
+      ammoVariety: new fields.ArrayField(
+        new fields.StringField({ choices: CPR.ammoVariety })
+      ),
     };
   }
 }

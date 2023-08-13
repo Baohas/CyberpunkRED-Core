@@ -7,7 +7,7 @@ export default class UpgradableSchema extends foundry.abstract.DataModel {
     LOGGER.trace("defineSchema | UpgradableSchema | called.");
     const { fields } = foundry.data;
     return {
-      installLocation: new fields.ArrayField(
+      upgrades: new fields.ArrayField(
         new fields.StringField({
           blank: true,
         })
