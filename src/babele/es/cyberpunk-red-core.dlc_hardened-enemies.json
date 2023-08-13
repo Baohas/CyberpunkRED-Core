@@ -5,16 +5,16 @@
       "name": "Tácticas de Tenientes Endurecidos",
       "results": [
         {
-          "1-1": "El teniente y sus aliados emboscan al grupo (CP:R página 399).",
-          "2-2": "El teniente está utilizando un escudo humano (CP:R página 184).",
-          "3-3": "El teniente ordena a sus aliados que se concentren en un jugador en particular.",
-          "4-4": "El teniente ordena a sus aliados que ataquen con todo al grupo.",
-          "5-5": "El teniente se encuentra en una posición altamente defendible, haciendo uso de la cubierta.",
-          "6-6": "El Teniente tiene las habilidades de Primeros Auxilios y Paramédicos en un básico de 14 cada una.",
-          "7-7": "El Teniente ha amañado una Granada Perforadora (CP:R página 345) como una trampa antes del combate, en algún lugar del campo. Detectarla requiere una comprobación de habilidad de Percepción VD15. Desarmarla requiere una comprobación de Habilidad de Demolición VD9. La granada se activa si cualquier personaje se mueve hacia el cuadrado en el que está escondida.",
-          "8-8": "El teniente ha investigado exhaustivamente las capacidades de combate del grupo.",
-          "9-9": "El Teniente tiene una FRI de 6, una Reputación de 2 e intenta un Enfrentamiento. (CP:R página 194) antes del comienzo del combate o justo al principio.",
-          "10-10": "El Teniente tiene una Habilidad de Tácticas de 16 y está en el comando."
+          "1-1": "1 Mook is firing incendiary ammunition (CP:R page 346), but only has 10 rounds.",
+          "2-2": "Add 2 additional Mooks to the encounter at the start of the 2nd Round.",
+          "3-3": "2 Mooks are currently experiencing the primary effect of Black Lace (CP:R page 227).",
+          "4-4": "Give them Medium Armorjack that’s been Tech upgraded, removing the Armor Penalty.",
+          "5-5": "Give them an additional 600eb of Cyberware.",
+          "6-6": "Give them a Reputation of 5.",
+          "7-7": "Add an additional Mook of a different type to the encounter.",
+          "8-8": "Add 2 Mooks to the encounter. Give each a Critical Injury to the head.",
+          "9-9": "Add 1 additional Mook to the encounter at the start of Rounds 2, 3, and 4.",
+          "10-10": "1 Mook has an SMG, no sense of self preservation, an Autofire Skill Base of 16, and no head armor."
         }
       ]
     },
@@ -22,16 +22,16 @@
       "name": "Promover a Mini Jefe Endurecido",
       "results": [
         {
-          "1-1": "Aumenta una de sus Bases de Habilidades que está por encima de 10 a 17.",
-          "2-2": "Aumenta su PV en 10.",
-          "3-3": "Dales Trabajo en Equipos 3 (consulta la página de CP:R 153), y dales un Miembro de Equipo de tu elección.",
+          "1-1": "1 Mook is firing incendiary ammunition (CP:R page 346), but only has 10 rounds.",
+          "2-2": "Add 2 additional Mooks to the encounter at the start of the 2nd Round.",
+          "3-3": "2 Mooks are currently experiencing the primary effect of Black Lace (CP:R page 227).",
           "4-4": "Dales una Chaqueta Blindada Media que ha sido mejorado Técnico eliminando la Penalización de Armadura.",
           "5-5": "Dales 600ed adicionales de Ciberimplantes.",
           "6-6": "Dales una Reputación de 5.",
-          "7-7": "Dales una Granada PEM (véase la página 345 de CP:R) y una base de habilidad de Atletismo de 16.",
-          "8-8": "Dales una dosis de Lazo Negro (ver página 357) o Sintecoca (ver página CP:R 358) antes de que comience el combate.",
-          "9-9": "Aumenta su MOV a 8 o incrementa su Base de Habilidades de Evasión a 18.",
-          "10-10": "Dales Agallas (ver página CP:R 363) y una ronda de EsculturaCorporal Exótica (ver página CP:R 226). ¿Tiburón? ¿Arowana? Tú decides."
+          "7-7": "Add an additional Mook of a different type to the encounter.",
+          "8-8": "Add 2 Mooks to the encounter. Give each a Critical Injury to the head.",
+          "9-9": "Add 1 additional Mook to the encounter at the start of Rounds 2, 3, and 4.",
+          "10-10": "1 Mook has an SMG, no sense of self preservation, an Autofire Skill Base of 16, and no head armor."
         }
       ]
     },
@@ -42,9 +42,9 @@
           "1-1": "1 Tipejo está disparando munición incendiaria (página CP:R 346), pero solo tiene 10 rondas.",
           "2-2": "Añada 2 Tipejos adicionales al encuentro al comienzo de la segunda ronda.",
           "3-3": "2 Tipejos están experimentando actualmente el efecto primario de Lazo Negro (CP:R página 227).",
-          "4-4": "Un Tipejo tiene una Granada Perforadora (CP:R página 345) y una Habilidad de Atletismo de 12.",
-          "5-5": "Un Tipejo lleva Chaqueta Blindada Pesada (CP13). Aumenta su REF, DES, y MOV en 2 (antes de calcular la Penalización de Armadura).",
-          "6-6": "Los Tipejos están más organizados de lo habitual. Un Tipejo tiene una habilidad de Tácticas de 13 y una Granada de Humo (CP:R página 347).",
+          "4-4": "Give them Medium Armorjack that’s been Tech upgraded, removing the Armor Penalty.",
+          "5-5": "Give them an additional 600eb of Cyberware.",
+          "6-6": "Give them a Reputation of 5.",
           "7-7": "Añade un Tipejo adicional de un tipo diferente al encuentro.",
           "8-8": "Añade 2 Tipejos al encuentro. Dale a cada uno una lesión crítica en la cabeza.",
           "9-9": "Añada 1 Tipejo adicional al encuentro al comienzo de las Rondas 2, 3 y 4.",

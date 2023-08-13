@@ -5,21 +5,21 @@
       "name": "Alle anderen Stockwerke (Fortgeschritten)",
       "results": [
         {
-          "3-3": "Höllenhund x3",
+          "3-3": "Hellhound",
           "4-4": "Viper x2",
-          "5-5": "Höllenhund, Lich",
-          "6-6": "Irrlicht x3",
+          "5-5": "Hellhound, Killer",
+          "6-6": "Hellhound",
           "7-7": "Höllenhund, Säbelzahntiger",
-          "8-8": "Krake",
-          "9-9": "Passwort SG12",
-          "10-10": "Datei SG12",
-          "11-11": "Kontrollknoten SG12",
-          "12-12": "Passwort SG12",
-          "13-13": "Riese",
-          "14-14": "Drache",
-          "15-15": "Killer, Skorpion",
-          "16-16": "Krake",
-          "17-17": "Rabe, Irrlicht, Höllenhund",
+          "8-8": "Hellhound",
+          "9-9": "Password DV10",
+          "10-10": "File DV10",
+          "11-11": "Control Node DV10",
+          "12-12": "Password DV10",
+          "13-13": "Asp",
+          "14-14": "Asp",
+          "15-15": "Dragon",
+          "16-16": "Asp",
+          "17-17": "Dragon, Wisp",
           "18-18": "Drache x2"
         }
       ]
@@ -29,21 +29,21 @@
       "results": [
         {
           "3-3": "Höllenhund",
-          "4-4": "Säbelzahntiger",
-          "5-5": "Rabe x2",
+          "4-4": "Asp x2",
+          "5-5": "Hellhound, Killer",
           "6-6": "Höllenhund",
-          "7-7": "Irrlicht",
-          "8-8": "Rabe",
-          "9-9": "Passwort SG6",
-          "10-10": "Datei SG6",
-          "11-11": "Kontrollknoten SG6",
-          "12-12": "Passwort SG6",
-          "13-13": "Stinktier",
+          "7-7": "Hellhound, Sabertooth",
+          "8-8": "Hellhound",
+          "9-9": "Password DV10",
+          "10-10": "File DV10",
+          "11-11": "Control Node DV10",
+          "12-12": "Password DV10",
+          "13-13": "Asp",
           "14-14": "Viper",
-          "15-15": "Skorpion",
-          "16-16": "Killer, Stinktier",
-          "17-17": "Irrlicht x3",
-          "18-18": "Lich"
+          "15-15": "Dragon",
+          "16-16": "Asp",
+          "17-17": "Dragon, Wisp",
+          "18-18": "Dragon x2"
         }
       ]
     },
@@ -51,22 +51,22 @@
       "name": "Alle anderen Stockwerke (Standard)",
       "results": [
         {
-          "3-3": "Höllenhund x2",
-          "4-4": "Höllenhund, Killer",
-          "5-5": "Stinktier x2",
-          "6-6": "Säbelzahntiger",
-          "7-7": "Skorpion",
+          "3-3": "Hellhound",
+          "4-4": "Asp x2",
+          "5-5": "Hellhound, Killer",
+          "6-6": "Hellhound",
+          "7-7": "Hellhound, Sabertooth",
           "8-8": "Höllenhund",
-          "9-9": "Passwort SG8",
-          "10-10": "Datei SG8",
-          "11-11": "Kontrollknoten SG8",
-          "12-12": "Passwort SG8",
+          "9-9": "Password DV10",
+          "10-10": "File DV10",
+          "11-11": "Control Node DV10",
+          "12-12": "Password DV10",
           "13-13": "Viper",
-          "14-14": "Killer",
-          "15-15": "Lich",
+          "14-14": "Asp",
+          "15-15": "Dragon",
           "16-16": "Viper",
-          "17-17": "Rabe x3",
-          "18-18": "Lich, Rabe"
+          "17-17": "Dragon, Wisp",
+          "18-18": "Dragon x2"
         }
       ]
     },
@@ -74,22 +74,22 @@
       "name": "Alle anderen Stockwerke (Ungewöhnlich)",
       "results": [
         {
-          "3-3": "Krake",
-          "4-4": "Höllenhund, Skorpion",
+          "3-3": "Hellhound",
+          "4-4": "Asp x2",
           "5-5": "Höllenhund, Killer",
-          "6-6": "Rabe x2",
-          "7-7": "Säbelzahntiger",
+          "6-6": "Hellhound",
+          "7-7": "Hellhound, Sabertooth",
           "8-8": "Höllenhund",
           "9-9": "Passwort SG10",
           "10-10": "Datei SG10",
           "11-11": "Kontrollknoten SG10",
           "12-12": "Passwort SG10",
-          "13-13": "Killer",
-          "14-14": "Lich",
+          "13-13": "Asp",
+          "14-14": "Asp",
           "15-15": "Drache",
-          "16-16": "Viper, Rabe",
+          "16-16": "Asp",
           "17-17": "Drache, Irrlicht",
-          "18-18": "Riese"
+          "18-18": "Dragon x2"
         }
       ]
     },

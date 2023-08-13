@@ -5,21 +5,21 @@
       "name": "Tutti Gli Altri Piani (Avanzate)",
       "results": [
         {
-          "3-3": "Cerbero x3",
+          "3-3": "Hellhound",
           "4-4": "Cobra x2",
-          "5-5": "Cerbero, Lich",
-          "6-6": "Sprite x3",
+          "5-5": "Hellhound, Killer",
+          "6-6": "Hellhound",
           "7-7": "Cerbero, Sabertooth",
-          "8-8": "Kraken",
-          "9-9": "Password VD12",
-          "10-10": "File VD12",
-          "11-11": "Nodo di Controllo VD12",
-          "12-12": "Password VD12",
-          "13-13": "Titan",
-          "14-14": "Dragon",
-          "15-15": "Killer, Scorpion",
-          "16-16": "Kraken",
-          "17-17": "Raven, Sprite, Cerbero",
+          "8-8": "Hellhound",
+          "9-9": "Password DV10",
+          "10-10": "File DV10",
+          "11-11": "Control Node DV10",
+          "12-12": "Password DV10",
+          "13-13": "Asp",
+          "14-14": "Asp",
+          "15-15": "Dragon",
+          "16-16": "Asp",
+          "17-17": "Dragon, Wisp",
           "18-18": "Dragon x2"
         }
       ]
@@ -29,21 +29,21 @@
       "results": [
         {
           "3-3": "Cerbero",
-          "4-4": "Sabertooth",
-          "5-5": "Raven x2",
+          "4-4": "Asp x2",
+          "5-5": "Hellhound, Killer",
           "6-6": "Cerbero",
-          "7-7": "Sprite",
-          "8-8": "Raven",
-          "9-9": "Password VD6",
-          "10-10": "File VD6",
-          "11-11": "Nodo di Controllo VD6",
-          "12-12": "Password VD6",
-          "13-13": "Skunk",
+          "7-7": "Hellhound, Sabertooth",
+          "8-8": "Hellhound",
+          "9-9": "Password DV10",
+          "10-10": "File DV10",
+          "11-11": "Control Node DV10",
+          "12-12": "Password DV10",
+          "13-13": "Asp",
           "14-14": "Cobra",
-          "15-15": "Scorpion",
-          "16-16": "Killer, Skunk",
-          "17-17": "Sprite x3",
-          "18-18": "Lich"
+          "15-15": "Dragon",
+          "16-16": "Asp",
+          "17-17": "Dragon, Wisp",
+          "18-18": "Dragon x2"
         }
       ]
     },
@@ -51,22 +51,22 @@
       "name": "Tutti gli altri Piani (Standard)",
       "results": [
         {
-          "3-3": "Cerbero x2",
-          "4-4": "Cerbero, Killer",
-          "5-5": "Skunk x2",
-          "6-6": "Sabertooth",
-          "7-7": "Scorpion",
+          "3-3": "Hellhound",
+          "4-4": "Asp x2",
+          "5-5": "Hellhound, Killer",
+          "6-6": "Hellhound",
+          "7-7": "Hellhound, Sabertooth",
           "8-8": "Cerbero",
-          "9-9": "Password VD8",
-          "10-10": "File VD8",
-          "11-11": "Nodo di Controllo VD8",
-          "12-12": "Password VD8",
+          "9-9": "Password DV10",
+          "10-10": "File DV10",
+          "11-11": "Control Node DV10",
+          "12-12": "Password DV10",
           "13-13": "Cobra",
-          "14-14": "Killer",
-          "15-15": "Lich",
+          "14-14": "Asp",
+          "15-15": "Dragon",
           "16-16": "Cobra",
-          "17-17": "Raven x3",
-          "18-18": "Lich, Raven"
+          "17-17": "Dragon, Wisp",
+          "18-18": "Dragon x2"
         }
       ]
     },
@@ -74,22 +74,22 @@
       "name": "Tutti gli altri Piani (Non Comune)",
       "results": [
         {
-          "3-3": "Kraken",
-          "4-4": "Cerbero, Scorpion",
+          "3-3": "Hellhound",
+          "4-4": "Asp x2",
           "5-5": "Cerbero, Killer",
-          "6-6": "Raven x2",
-          "7-7": "Sabertooth",
+          "6-6": "Hellhound",
+          "7-7": "Hellhound, Sabertooth",
           "8-8": "Cerbero",
           "9-9": "Password VD10",
           "10-10": "File VD10",
           "11-11": "Nodo di Controllo VD10",
           "12-12": "Password VD10",
-          "13-13": "Killer",
-          "14-14": "Lich",
+          "13-13": "Asp",
+          "14-14": "Asp",
           "15-15": "Dragon",
-          "16-16": "Cobra, Raven",
+          "16-16": "Asp",
           "17-17": "Dragon, Sprite",
-          "18-18": "Titan"
+          "18-18": "Dragon x2"
         }
       ]
     },

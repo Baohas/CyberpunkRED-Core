@@ -4,6 +4,12 @@
 
 ## Version 0.88.0
 
+### Aktion erforderlich
+
+We have renamed all Compendia in the system utilizing the new Compendium Folders feature which has meant some changes behind the scenes which mean the pack names themselves have changed.
+
+This means any instances where you have dragged an item from a compendium into a text field like an Item Description or Journal entry which created a link to the item is now referencing a broken item. Unfortunately this would be very complex and fragile to migrate so we have not provided migrations for this. You can fix it by editing the document and dragging and dropping the item from the compendium again.
+
 ### Neue Funktionen
 
 - Add CSS theming to Journals
@@ -25,6 +31,7 @@
 - Switch all TextEditor instances to use Prosemirror
 - Change font-hero to use same styling as journal headers
 - Change styling of release notes pop-up to match journal styling
+- All Compendium updated for v11 and now sorted into Folders
 
 ## Version 0.87.6
 
