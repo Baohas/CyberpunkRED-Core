@@ -7,11 +7,7 @@ export default class UpgradableSchema extends foundry.abstract.DataModel {
     LOGGER.trace("defineSchema | UpgradableSchema | called.");
     const { fields } = foundry.data;
     return {
-      upgrades: new fields.ArrayField(
-        new fields.StringField({
-          blank: true,
-        })
-      ),
+      upgrades: new fields.ArrayField(new fields.ObjectField({})),
       isUpgraded: new fields.BooleanField({ initial: false }),
     };
   }

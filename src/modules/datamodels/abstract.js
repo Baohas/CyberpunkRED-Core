@@ -8,7 +8,6 @@
  * Data Model variant with some extra methods to support template mix-ins.
  *
  * **Note**: This uses some advanced Javascript techniques that are not necessary for most data models.
- * Please refer to the [advancement data models]{@link BaseAdvancement} for an example of a more typical usage.
  *
  * In template.json, each Actor or Item type can incorporate several templates which are chunks of data that are
  * common across all the types that use them. One way to represent them in the schema for a given Document type is to
