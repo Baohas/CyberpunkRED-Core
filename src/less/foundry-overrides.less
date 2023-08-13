@@ -272,6 +272,10 @@ input::placeholder {
  * TextEditor/Prosemirror Overides
  */
 
+.journal-entry-content {
+  background: var(--cpr-background-box) !important;
+}
+
 .prosemirror,
 .editor-content,
 .releasenotes,
@@ -279,6 +283,7 @@ input::placeholder {
 .journal-page-content,
 .journal-sheet-container {
   font-family: var(--cpr-font-primary);
+  color: var(--cpr-text-normal) !important;
 
   // Normally we wouldn't use <strong> but it's how the WYSIWYG editor
   // does bold, style this to be more semi-bold.
@@ -322,7 +327,6 @@ input::placeholder {
   }
 
   .journal-sidebar {
-    color: var(--cpr-text-journal-sidebar) !important;
     .pages-list {
       .directory-item.active:first-of-type,
       .directory-item.active + :not(.active) {
@@ -330,9 +334,6 @@ input::placeholder {
       }
     }
   }
-
-  color: var(--cpr-text-normal) !important;
-  background: var(--cpr-background-box) !important;
 
   // Catchall for headers
   h1,
