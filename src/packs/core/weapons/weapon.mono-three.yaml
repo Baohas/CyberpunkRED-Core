@@ -5,7 +5,7 @@ img: systems/cyberpunk-red-core/icons/compendium/weapons/Naginata_excellent.svg
 name: Mono-Three
 system:
   ammoVariety: []
-  attackmod: 0
+  attackmod: 1
   brand: Kendachi
   concealable:
     concealable: false
