@@ -1,11 +1,11 @@
 /* globals foundry */
 
 import LOGGER from "../../utils/cpr-logger.js";
-import DerivedStatsSchema from "./components/cpr-derivedStats-datamodel.js";
-import ExternalResourceSchema from "./components/cpr-external-resource-datamodel.js";
-import LedgerSchema from "./components/cpr-ledger-datamodel.js";
-import StatSchema from "./components/cpr-stat-datamodel.js";
-import LifestyleSchema from "./components/cpr-lifestyle-datamodel.js";
+import DerivedStatsSchema from "./components/cpr-derivedStats-schema.js";
+import ExternalResourceSchema from "./components/cpr-external-resource-schema.js";
+import LedgerSchema from "./components/cpr-ledger-schema.js";
+import StatSchema from "./components/cpr-stat-schema.js";
+import LifestyleSchema from "./components/cpr-lifestyle-schema.js";
 
 export default class CPRActorDataModel extends foundry.abstract.DataModel {
   static defineSchema() {
