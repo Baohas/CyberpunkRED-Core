@@ -126,19 +126,19 @@ Hooks.once("init", async () => {
   CONFIG.Combatant.documentClass = CPRCombatant;
 
   // Register Actor data models.
-  CONFIG.Actor.systemDataModels.character = CPRActorDataModel;
+  CONFIG.Actor.dataModels.character = CPRActorDataModel;
 
   // Register Item data models.
-  CONFIG.Item.systemDataModels.ammo = AmmoDataModel;
-  CONFIG.Item.systemDataModels.armor = ArmorDataModel;
-  CONFIG.Item.systemDataModels.clothing = ClothingDataModel;
-  CONFIG.Item.systemDataModels.criticalInjury = CriticalInjuryDataModel;
-  CONFIG.Item.systemDataModels.cyberdeck = CyberdeckDataModel;
-  CONFIG.Item.systemDataModels.cyberware = CyberwareDataModel;
-  CONFIG.Item.systemDataModels.drug = DrugDataModel;
-  CONFIG.Item.systemDataModels.gear = GearDataModel;
-  CONFIG.Item.systemDataModels.itemUpgrade = ItemUpgradeDataModel;
-  CONFIG.Item.systemDataModels.weapon = WeaponDataModel;
+  CONFIG.Item.dataModels.ammo = AmmoDataModel;
+  CONFIG.Item.dataModels.armor = ArmorDataModel;
+  CONFIG.Item.dataModels.clothing = ClothingDataModel;
+  CONFIG.Item.dataModels.criticalInjury = CriticalInjuryDataModel;
+  CONFIG.Item.dataModels.cyberdeck = CyberdeckDataModel;
+  CONFIG.Item.dataModels.cyberware = CyberwareDataModel;
+  CONFIG.Item.dataModels.drug = DrugDataModel;
+  CONFIG.Item.dataModels.gear = GearDataModel;
+  CONFIG.Item.dataModels.itemUpgrade = ItemUpgradeDataModel;
+  CONFIG.Item.dataModels.weapon = WeaponDataModel;
 
   // Turn legacy tranferral for active effects off. Necessary for v11.
   CONFIG.ActiveEffect.legacyTransferral = false;
