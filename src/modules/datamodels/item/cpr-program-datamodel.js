@@ -8,23 +8,23 @@ import EffectsSchema from "./mixins/effects-schema.js";
 import InstallableSchema from "./mixins/installable-schema.js";
 import ValuableSchema from "./mixins/valuable-schema.js";
 
-export default class ProgramModel extends CPRSystemDataModel.mixin(
+export default class ProgramDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
   EffectsSchema,
   InstallableSchema,
   ValuableSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | ProgramModel | called.");
+    LOGGER.trace("defineSchema | ProgramDataModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       class: new fields.StringField({
         initial: "defender",
-        choices: CPR.programClassList,
+        choices: Object.keys(CPR.programClassList),
       }),
       blackIceType: new fields.StringField({
         initial: "antipersonnel",
-        choices: CPR.blackIceType,
+        choices: Object.keys(CPR.blackIceType),
       }),
       prototypeActor: new fields.StringField({}),
       interface: new fields.NumberField({

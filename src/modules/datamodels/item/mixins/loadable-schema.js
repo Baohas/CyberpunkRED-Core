@@ -31,7 +31,7 @@ export default class LoadableSchema extends foundry.abstract.DataModel {
         }),
       }),
       ammoVariety: new fields.ArrayField(
-        new fields.StringField({ choices: CPR.ammoVariety })
+        new fields.StringField({ choices: Object.keys(CPR.ammoVariety) })
       ),
     };
   }

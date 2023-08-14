@@ -16,12 +16,12 @@ export default class CriticalInjuryDataModel extends CPRSystemDataModel.mixin(
     return this.mergeSchema(super.defineSchema(), {
       location: new fields.StringField({
         initial: "body",
-        choices: CPR.criticalInjuryLocation,
+        choices: Object.keys(CPR.criticalInjuryLocation),
       }),
       quickFix: new fields.SchemaField({
         type: new fields.StringField({
           initial: "firstAidParamedic",
-          choices: CPR.criticalInjuryQuickFix,
+          choices: Object.keys(CPR.criticalInjuryQuickFix),
         }),
         dvFirstAid: new fields.NumberField({
           required: true,
@@ -41,7 +41,7 @@ export default class CriticalInjuryDataModel extends CPRSystemDataModel.mixin(
       treatment: new fields.SchemaField({
         type: new fields.StringField({
           initial: "paramedicSurgery",
-          choices: CPR.criticalInjuryTreatment,
+          choices: Object.keys(CPR.criticalInjuryTreatment),
         }),
         dvParamedic: new fields.NumberField({
           required: true,

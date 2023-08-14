@@ -37,7 +37,7 @@ export default class AmmoDataModel extends CPRSystemDataModel.mixin(
           mode: new fields.StringField({
             blank: false,
             initial: "none",
-            choices: CPR.ammoAutofireOverrideModes,
+            choices: Object.keys(CPR.ammoAutofireOverrideModes),
           }),
           value: new fields.NumberField({
             required: true,
@@ -53,7 +53,7 @@ export default class AmmoDataModel extends CPRSystemDataModel.mixin(
           mode: new fields.StringField({
             blank: false,
             initial: "none",
-            choices: CPR.ammoDamageOverrideModes,
+            choices: Object.keys(CPR.ammoDamageOverrideModes),
           }),
           value: new fields.StringField({
             initial: "3d6",
@@ -63,12 +63,12 @@ export default class AmmoDataModel extends CPRSystemDataModel.mixin(
       type: new fields.StringField({
         blank: false,
         initial: "basic",
-        choices: CPR.ammoType,
+        choices: Object.keys(CPR.ammoType),
       }),
       variety: new fields.StringField({
         blank: false,
         initial: "heavyPistol",
-        choices: CPR.ammoVariety,
+        choices: Object.keys(CPR.ammoVariety),
       }),
     });
   }

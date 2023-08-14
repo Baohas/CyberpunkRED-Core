@@ -8,7 +8,9 @@ export default class DerivedStatsSchema extends foundry.abstract.DataModel {
     LOGGER.trace("defineSchema | DerivedStatsSchema | called.");
     const { fields } = foundry.data;
     return {
-      currentWoundState: new fields.StringField({ choices: CPR.woundState }),
+      currentWoundState: new fields.StringField({
+        choices: Object.keys(CPR.woundState),
+      }),
       deathSave: new fields.SchemaField({
         basePenalty: new fields.NumberField({
           required: true,

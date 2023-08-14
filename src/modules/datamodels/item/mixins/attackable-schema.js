@@ -10,7 +10,7 @@ export default class AttackableSchema extends foundry.abstract.DataModel {
     return {
       weaponType: new fields.StringField({
         blank: true,
-        choices: CPR.weaponTypeList,
+        choices: Object.keys(CPR.weaponTypeList),
       }),
       weaponSkill: new fields.StringField({
         blank: true,

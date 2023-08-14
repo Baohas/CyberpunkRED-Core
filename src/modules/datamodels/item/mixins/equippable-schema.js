@@ -10,7 +10,7 @@ export default class EquippableSchema extends foundry.abstract.DataModel {
     return {
       equipped: new fields.StringField({
         initial: "owned",
-        choices: CPR.equipped,
+        choices: Object.keys(CPR.equipped),
       }),
     };
   }

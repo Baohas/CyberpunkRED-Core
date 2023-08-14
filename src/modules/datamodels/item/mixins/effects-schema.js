@@ -11,7 +11,7 @@ export default class EffectsSchema extends foundry.abstract.DataModel {
       revealed: new fields.BooleanField({ initial: true }),
       usage: new fields.StringField({
         initial: "toggled",
-        choices: CPR.effectUses,
+        choices: Object.keys(CPR.effectUses),
       }),
     };
   }

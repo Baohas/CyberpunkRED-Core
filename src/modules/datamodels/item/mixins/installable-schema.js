@@ -10,7 +10,7 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
     return {
       installLocation: new fields.StringField({
         initial: "mall",
-        choices: CPR.cyberwareInstallList,
+        choices: Object.keys(CPR.cyberwareInstallList),
       }),
       installedIn: new fields.StringField({
         blank: true,
