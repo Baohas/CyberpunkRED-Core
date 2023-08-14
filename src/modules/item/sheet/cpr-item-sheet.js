@@ -51,7 +51,6 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("getData | CPRItemSheet | Called.");
     const foundryData = super.getData();
     const cprData = {};
-    // data.isGM = game.user.isGM;
     cprData.isGM = game.user.isGM;
     const itemType = foundryData.item.type;
     const mixins = SystemUtils.getDataModelTemplates(itemType);
@@ -59,7 +58,7 @@ export default class CPRItemSheet extends ItemSheet {
       // relativeSkills and relativeAmmo will be other items relevant to this one.
       // For owned objects, the item list will come from the character owner
       // For unowned objects, the item list will come from the core list of objects
-      if (cprData.isOwned) {
+      if (foundryData.item.isOwned) {
         cprData.relativeSkills = this.object.actor.itemTypes.skill;
         cprData.relativeAmmo = this.object.actor.itemTypes.ammo;
       } else {
