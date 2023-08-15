@@ -115,6 +115,124 @@ Hooks.once("init", async () => {
   // Turn legacy tranferral for active effects off. Necessary for v11.
   CONFIG.ActiveEffect.legacyTransferral = false;
 
+  // Make System fonts available to Foundry
+  CONFIG.fontDefinitions.Jost = {
+    editor: true,
+    fonts: [
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-100.ttf`],
+        weight: 100,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-200.ttf`],
+        weight: 200,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-300.ttf`],
+        weight: 300,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-400.ttf`],
+        weight: 400,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-500.ttf`],
+        weight: 500,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-600.ttf`],
+        weight: 600,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-700.ttf`],
+        weight: 700,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-800.ttf`],
+        weight: 800,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-900.ttf`],
+        weight: 900,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-100-italic.ttf`],
+        weight: 100,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-200-italic.ttf`],
+        weight: 200,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-300-italic.ttf`],
+        weight: 300,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-400-italic.ttf`],
+        weight: 400,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-500-italic.ttf`],
+        weight: 500,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-600-italic.ttf`],
+        weight: 600,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-700-italic.ttf`],
+        weight: 700,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-800-italic.ttf`],
+        weight: 800,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-900-italic.ttf`],
+        weight: 900,
+        style: `italic`,
+      },
+    ],
+  };
+
+  CONFIG.fontDefinitions.Orbitron = {
+    editor: true,
+    fonts: [
+      {
+        urls: [`systems/${game.system.id}/fonts/Orbitron-400.ttf`],
+        weight: 400,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Orbitron-500.ttf`],
+        weight: 500,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Orbitron-600.ttf`],
+        weight: 600,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Orbitron-700.ttf`],
+        weight: 700,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Orbitron-800.ttf`],
+        weight: 800,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Orbitron-900.ttf`],
+        weight: 900,
+      },
+    ],
+  };
+
   preloadHandlebarsTemplates();
   registerHandlebarsHelpers();
   registerSystemSettings();
