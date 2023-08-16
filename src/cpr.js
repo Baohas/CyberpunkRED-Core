@@ -29,9 +29,10 @@ import overrideRulerFunctions from "./modules/system/overrides.js";
 import registerSystemSettings from "./modules/system/settings.js";
 
 // Actor Data Models:
-import CharacterDataModel from "./modules/datamodels/actor/cpr-character-datamodel.js";
 import BlackIceDataModel from "./modules/datamodels/actor/cpr-blackIce-datamodel.js";
+import CharacterDataModel from "./modules/datamodels/actor/cpr-character-datamodel.js";
 import ContainerDataModel from "./modules/datamodels/actor/cpr-container-datamodel.js";
+import DemonDataModel from "./modules/datamodels/actor/cpr-demon-datamodel.js";
 import MookDataModel from "./modules/datamodels/actor/cpr-mook-datamodel.js";
 
 // Item Data Models:
@@ -139,6 +140,7 @@ Hooks.once("init", async () => {
   CONFIG.Actor.dataModels.blackIce = BlackIceDataModel;
   CONFIG.Actor.dataModels.character = CharacterDataModel;
   CONFIG.Actor.dataModels.container = ContainerDataModel;
+  CONFIG.Actor.dataModels.demon = DemonDataModel;
   CONFIG.Actor.dataModels.mook = MookDataModel;
 
   // Register Item data models.
