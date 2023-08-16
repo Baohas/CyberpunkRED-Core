@@ -38,20 +38,17 @@ export default class CPRDrugItem extends CPRItem {
           consumed === "None"
         ) {
           // no primary was specified, so we enable all of them
-          const actorEffects = this.getMyEffectsOnActor();
-          actorEffects.forEach((ae) => {
+          this.effects.forEach((ae) => {
             effectUpdates.push({ _id: ae.id, disabled: false });
           });
         } else {
           const aeObj = this.getEffectByName(consumed);
-          const [actorEffect] = this.getMyEffectsOnActor().filter(
-            (ae) => ae.name === aeObj.name
-          );
-          effectUpdates.push({ _id: actorEffect.id, disabled: false });
+          const effect = this.effects.find((ae) => ae.name === aeObj.name);
+          effectUpdates.push({ _id: effect.id, disabled: false });
         }
-        this.actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates); // update AEs
+        await this.updateEmbeddedDocuments("ActiveEffect", effectUpdates); // update AEs
       }
-      this.actor.updateEmbeddedDocuments("Item", [
+      await this.actor.updateEmbeddedDocuments("Item", [
         { _id: this.id, system: this.system },
       ]); // update the amount
     }
