@@ -42,6 +42,7 @@ import ItemUpgradeDataModel from "./modules/datamodels/item/cpr-itemUpgrade-data
 import NetArchDataModel from "./modules/datamodels/item/cpr-netarch-datamodel.js";
 import ProgramDataModel from "./modules/datamodels/item/cpr-program-datamodel.js";
 import RoleDataModel from "./modules/datamodels/item/cpr-role-datamodel.js";
+import SkillDataModel from "./modules/datamodels/item/cpr-skill-datamodel.js";
 import WeaponDataModel from "./modules/datamodels/item/cpr-weapon-datamodel.js";
 
 // This defines the version of the Data Model for this release.  We should
@@ -144,6 +145,7 @@ Hooks.once("init", async () => {
   CONFIG.Item.dataModels.netarch = NetArchDataModel;
   CONFIG.Item.dataModels.program = ProgramDataModel;
   CONFIG.Item.dataModels.role = RoleDataModel;
+  CONFIG.Item.dataModels.skill = SkillDataModel;
   CONFIG.Item.dataModels.weapon = WeaponDataModel;
 
   // Turn legacy tranferral for active effects off. Necessary for v11.

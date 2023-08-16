@@ -5,11 +5,11 @@ import CPR from "../../system/config.js";
 import CPRSystemDataModel from "../abstract.js";
 import CommonSchema from "./mixins/common-schema.js";
 
-export default class ProgramModel extends CPRSystemDataModel.mixin(
+export default class RoleDataModel extends CPRSystemDataModel.mixin(
   CommonSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | ProgramModel | called.");
+    LOGGER.trace("defineSchema | RoleDataModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       rank: new fields.NumberField({
