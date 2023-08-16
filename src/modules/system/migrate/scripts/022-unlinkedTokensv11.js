@@ -48,7 +48,10 @@ export default class v11TokenMigration extends CPRMigration {
     // Declare the uuid mutation function for later use.
     function mutateUuid(actorId, uuid) {
       const splitUuids = uuid.split(".");
-      if (splitUuids.includes("Token")) {
+      // Only do this if the uuid does not contain "Actor"
+      // to avoid erroneously remutating already migrated data
+      // Like in the case of a half-done migration.
+      if (!splitUuids.includes("Actor")) {
         const i = splitUuids.indexOf("Item");
         splitUuids.splice(i, 0, "Actor", actorId);
       }
