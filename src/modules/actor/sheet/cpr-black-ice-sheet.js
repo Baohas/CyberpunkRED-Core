@@ -41,11 +41,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     const foundryData = super.getData();
 
     foundryData.enrichedHTML = [];
-    foundryData.enrichedHTML.systemEffect = await TextEditor.enrichHTML(
-      this.actor.system.effect,
-      { async: true }
-    );
-    foundryData.enrichedHTML.systemNotes = await TextEditor.enrichHTML(
+    foundryData.enrichedHTML.notes = await TextEditor.enrichHTML(
       this.actor.system.notes,
       { async: true }
     );
@@ -233,7 +229,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
         await this.actor.update({
           name: program.name,
           img: program.img,
-          "system.effect": program.system.description.value,
+          "system.notes": program.system.description.value,
         });
         await this.actor.token.update({
           name: program.name,
