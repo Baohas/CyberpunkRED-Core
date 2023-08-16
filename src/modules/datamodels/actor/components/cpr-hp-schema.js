@@ -3,7 +3,7 @@
 import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class HpSchema extends foundry.abstract.DataModel {
-  static defineSchema() {
+  static defineSchema(initial) {
     LOGGER.trace("defineSchema | HpSchema | called.");
     const { fields } = foundry.data;
     return {
@@ -12,7 +12,7 @@ export default class HpSchema extends foundry.abstract.DataModel {
         nullable: false,
         integer: true,
         positive: false,
-        initial: 40,
+        initial: initial || 40,
         min: 0,
       }),
       transactions: new fields.ArrayField(
@@ -25,7 +25,7 @@ export default class HpSchema extends foundry.abstract.DataModel {
         nullable: false,
         integer: true,
         positive: false,
-        initial: 40,
+        initial: initial || 40,
         min: 0,
       }),
     };
