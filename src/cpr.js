@@ -29,7 +29,7 @@ import overrideRulerFunctions from "./modules/system/overrides.js";
 import registerSystemSettings from "./modules/system/settings.js";
 
 // Actor Data Models:
-import CPRActorDataModel from "./modules/datamodels/actor/cpr-actor-datamodel.js";
+import CharacterDataModel from "./modules/datamodels/actor/cpr-character-datamodel.js";
 
 // Item Data Models:
 import AmmoDataModel from "./modules/datamodels/item/cpr-ammo-datamodel.js";
@@ -133,7 +133,7 @@ Hooks.once("init", async () => {
   CONFIG.Combatant.documentClass = CPRCombatant;
 
   // Register Actor data models.
-  CONFIG.Actor.dataModels.character = CPRActorDataModel;
+  CONFIG.Actor.dataModels.character = CharacterDataModel;
 
   // Register Item data models.
   CONFIG.Item.dataModels.ammo = AmmoDataModel;
