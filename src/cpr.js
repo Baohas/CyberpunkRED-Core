@@ -28,8 +28,10 @@ import overrideRulerFunctions from "./modules/system/overrides.js";
 // System settings
 import registerSystemSettings from "./modules/system/settings.js";
 
-// Data Models
+// Actor Data Models:
 import CPRActorDataModel from "./modules/datamodels/actor/cpr-actor-datamodel.js";
+
+// Item Data Models:
 import AmmoDataModel from "./modules/datamodels/item/cpr-ammo-datamodel.js";
 import ArmorDataModel from "./modules/datamodels/item/cpr-armor-datamodel.js";
 import ClothingDataModel from "./modules/datamodels/item/cpr-clothing-datamodel.js";
@@ -43,6 +45,7 @@ import NetArchDataModel from "./modules/datamodels/item/cpr-netarch-datamodel.js
 import ProgramDataModel from "./modules/datamodels/item/cpr-program-datamodel.js";
 import RoleDataModel from "./modules/datamodels/item/cpr-role-datamodel.js";
 import SkillDataModel from "./modules/datamodels/item/cpr-skill-datamodel.js";
+import VehicleDataModel from "./modules/datamodels/item/cpr-vehicle-datamodel.js";
 import WeaponDataModel from "./modules/datamodels/item/cpr-weapon-datamodel.js";
 
 // This defines the version of the Data Model for this release.  We should
@@ -146,6 +149,7 @@ Hooks.once("init", async () => {
   CONFIG.Item.dataModels.program = ProgramDataModel;
   CONFIG.Item.dataModels.role = RoleDataModel;
   CONFIG.Item.dataModels.skill = SkillDataModel;
+  CONFIG.Item.dataModels.vehicle = VehicleDataModel;
   CONFIG.Item.dataModels.weapon = WeaponDataModel;
 
   // Turn legacy tranferral for active effects off. Necessary for v11.
