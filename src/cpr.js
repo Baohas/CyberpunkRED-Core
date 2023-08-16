@@ -30,6 +30,7 @@ import registerSystemSettings from "./modules/system/settings.js";
 
 // Actor Data Models:
 import CharacterDataModel from "./modules/datamodels/actor/cpr-character-datamodel.js";
+import MookDataModel from "./modules/datamodels/actor/cpr-mook-datamodel.js";
 
 // Item Data Models:
 import AmmoDataModel from "./modules/datamodels/item/cpr-ammo-datamodel.js";
@@ -134,6 +135,7 @@ Hooks.once("init", async () => {
 
   // Register Actor data models.
   CONFIG.Actor.dataModels.character = CharacterDataModel;
+  CONFIG.Actor.dataModels.mook = MookDataModel;
 
   // Register Item data models.
   CONFIG.Item.dataModels.ammo = AmmoDataModel;
