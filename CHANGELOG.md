@@ -29,6 +29,7 @@ This means any instances where you have dragged an item from a compendium into a
 - Hide system only Compendiums from Compendium tab
 - Organize Compendiums into Compendium Folders
 - Switch all TextEditor instances to use Prosemirror
+- Combine "effects" and "notes" field for Black Ice.
 - Change font-hero to use same styling as journal headers
 - Change styling of release notes pop-up to match journal styling
 - All Compendium updated for v11 and now sorted into Folders
