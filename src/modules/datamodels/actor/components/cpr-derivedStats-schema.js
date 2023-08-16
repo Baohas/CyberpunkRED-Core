@@ -2,6 +2,7 @@
 
 import CPR from "../../../system/config.js";
 import LOGGER from "../../../utils/cpr-logger.js";
+import HpSchema from "./cpr-hp-schema.js";
 
 export default class DerivedStatsSchema extends foundry.abstract.DataModel {
   static defineSchema() {
@@ -37,29 +38,7 @@ export default class DerivedStatsSchema extends foundry.abstract.DataModel {
           min: 0,
         }),
       }),
-      hp: new fields.SchemaField({
-        max: new fields.NumberField({
-          required: true,
-          nullable: false,
-          integer: true,
-          positive: false,
-          initial: 40,
-          min: 0,
-        }),
-        transactions: new fields.ArrayField(
-          new fields.ArrayField(
-            new fields.StringField({ required: true, blank: true })
-          )
-        ),
-        value: new fields.NumberField({
-          required: true,
-          nullable: false,
-          integer: true,
-          positive: false,
-          initial: 40,
-          min: 0,
-        }),
-      }),
+      hp: new fields.SchemaField(HpSchema.defineSchema()),
       humanity: new fields.SchemaField({
         max: new fields.NumberField({
           required: true,
