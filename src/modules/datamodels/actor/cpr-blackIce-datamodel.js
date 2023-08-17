@@ -52,7 +52,6 @@ export default class BlackIceDataModel extends CPRSystemDataModel.mixin() {
         initial: 100,
         min: 0,
       }),
-      effect: new fields.HTMLField(),
       notes: new fields.HTMLField(),
     });
   }
