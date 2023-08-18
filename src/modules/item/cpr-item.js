@@ -48,11 +48,9 @@ export default class CPRItem extends Item {
     // If an AE has a usage !== "toggled", then any active effects should not be disabled
     // (ie: Always On, Installed, etc) otherwise the disabled flag takes precedence when
     // determining if the effect is suppressed or not
-    if (
-      data["system.usage"] !== "undefined" &&
-      data["system.usage"] !== this.system.usage
-    ) {
-      if (data["system.usage"] !== "toggled") {
+    const usage = data["system.usage"];
+    if (usage && usage !== this.system.usage) {
+      if (usage !== "toggled" && usage !== "snorted") {
         this.effects.forEach((e) => {
           if (e.disabled) {
             this.toggleEffect(e._id);
