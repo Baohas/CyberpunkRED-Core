@@ -608,8 +608,19 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprGetMookSkills", (array) => {
     LOGGER.trace("cprGetMookSkills | handlebarsHelper | Called.");
     const skillList = [];
-    array.forEach((skill) => {
+    // Create a deep clone of the actor.itemTypes.skill so we don't accidentally mutate them on the actor
+    let arr = SystemUtils.deepCloneArray(array);
+    arr.forEach((skill) => {
+      // Localize the skills first
+      const localizedKey = `CPR.global.itemType.skill.${SystemUtils.slugify(
+        skill.name
+      )}`;
+      const localizedSkillName = skill.system.core
+        ? SystemUtils.Localize(localizedKey)
+        : skill.name;
+
       if (skill.system.level !== 0 || skill.system.skillmod > 0) {
+        skill.name = localizedSkillName;
         skillList.push(skill);
       }
     });

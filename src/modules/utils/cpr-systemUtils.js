@@ -719,4 +719,19 @@ export default class CPRSystemUtils {
     }
     return true;
   }
+
+  /**
+   * Create deep clones of arrays to prevent mutation of original arrays when we go to manipulate it
+   * @static
+   * @param {Array} array
+   * @returns {Array}
+   */
+  static deepCloneArray(array) {
+    LOGGER.trace("deepCloneArray | CPRSystemUtils | Called.");
+    const clonedArr = array.map((a) => {
+      return { ...a };
+    });
+
+    return clonedArr;
+  }
 }

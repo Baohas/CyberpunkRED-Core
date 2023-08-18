@@ -117,13 +117,19 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   async _modMookSkills() {
     LOGGER.trace("_modMookSkills | CPRMookActorSheet | Called.");
     const skillObj = {};
+
     this.actor.itemTypes.skill.forEach((s) => {
+      const slug = SystemUtils.slugify(s.name);
+      const localizedName = SystemUtils.Localize(
+        `CPR.global.itemType.skill.${slug}`
+      );
+      const skillName = s.system.core ? localizedName : s.name;
       const skillRef = {
         id: s.id,
-        name: s.name,
+        name: skillName,
         level: s.system.level,
         stat: this.actor.system.stats[s.system.stat].value,
-        mod: this.actor.bonuses[SystemUtils.slugify(s.name)],
+        mod: this.actor.bonuses[slug],
       };
       skillObj[s.id] = skillRef;
     });
