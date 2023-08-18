@@ -170,17 +170,24 @@
     {{!-- Program REZ--}}
     <li class="item flexrow">
       <div class="item flexrow setting-name text-nowrap">
-        {{localize "CPR.global.generic.rez"}}
+        {{localize "CPR.global.generic.rez"}} Max
       </div>
       <div class="item flexrow setting-value text-nowrap item-end">
-        {{#if this.editable }}
-          <input name="system.rez"
+          <input name="system.rez.max"
                  type="number"
-                 value="{{item.system.rez}}"
+                 value="{{item.system.rez.max}}"
                  placeholder="5"/>
-        {{else}}
-          <span class="text-flex-end">{{item.system.rez}}</span>
-        {{/if}}
+      </div>
+    </li>
+    <li class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.global.generic.rez"}} Current
+      </div>
+      <div class="item flexrow setting-value text-nowrap item-end">
+          <input name="system.rez.value"
+                 type="number"
+                 value="{{item.system.rez.value}}"
+                 placeholder="5"/>
       </div>
     </li>
     {{cprTrace "END CPR-PROGRAM.HBS"}}

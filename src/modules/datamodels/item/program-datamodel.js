@@ -7,6 +7,7 @@ import CommonSchema from "./mixins/common-schema.js";
 import EffectsSchema from "./mixins/effects-schema.js";
 import InstallableSchema from "./mixins/installable-schema.js";
 import ValuableSchema from "./mixins/valuable-schema.js";
+import HpSchema from "../actor/components/cpr-hp-schema.js";
 
 export default class ProgramDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
@@ -67,13 +68,21 @@ export default class ProgramDataModel extends CPRSystemDataModel.mixin(
         initial: 0,
         min: 0,
       }),
-      rez: new fields.NumberField({
-        required: true,
-        nullable: false,
-        integer: true,
-        initial: 0,
-        min: 0,
-      }),
+      rez: new fields.SchemaField(HpSchema.defineSchema(10)),
     });
+  }
+
+  static migrateData(source) {
+    LOGGER.trace("migrateData");
+    if (!(source.rez instanceof Object)) {
+      const newRez = {
+        value: source.rez,
+        max: source.rez,
+        transactions: [],
+      };
+      // eslint-disable-next-line no-param-reassign
+      source.rez = newRez;
+    }
+    return super.migrateData(source);
   }
 }
