@@ -49,7 +49,10 @@ export default class BlackIceNotesMigration extends CPRMigration {
     const updateData = duplicate(actor.system);
 
     // Combine effects and notes.
-    const newNotes = `${actor.system.effect}<hr>${actor.system.notes}`;
+    const newNotes =
+      actor.system.effect?.length > 0 && actor.system.notes.length > 0
+        ? `${actor.system.effect}<hr>${actor.system.notes}`
+        : `${actor.system.effect}${actor.system.notes}`;
 
     updateData.notes = newNotes;
 
