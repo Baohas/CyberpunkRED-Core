@@ -289,12 +289,7 @@ export default class CPRActor extends Actor {
         updateData["system.installedItems.usedSlots"] = 0;
       }
 
-      if (item.type === "cyberdeck") {
-        updateData["system.programs"] = {
-          installed: [],
-          rezzed: [],
-        };
-      } else if (item.type === "program") {
+      if (item.type === "program") {
         updateData["system.isRezzed"] = false;
       }
 

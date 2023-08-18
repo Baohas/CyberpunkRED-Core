@@ -633,28 +633,28 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     const { token } = this;
     switch (executionType) {
       case "rez": {
-        if (!cyberdeck.isRezzed(program)) {
+        if (!program.system.isRezzed) {
           await cyberdeck.rezProgram(program, token);
           this._updateOwnedItem(cyberdeck);
         }
         break;
       }
       case "derez": {
-        if (cyberdeck.isRezzed(program)) {
+        if (program.system.isRezzed) {
           await cyberdeck.derezProgram(program);
           this._updateOwnedItem(cyberdeck);
         }
         break;
       }
       case "reduce-rez": {
-        if (cyberdeck.isRezzed(program)) {
+        if (program.system.isRezzed) {
           await cyberdeck.reduceRezProgram(program);
           this._updateOwnedItem(cyberdeck);
         }
         break;
       }
       case "reset-rez": {
-        if (cyberdeck.isRezzed(program)) {
+        if (program.system.isRezzed) {
           await cyberdeck.resetRezProgram(program);
           this._updateOwnedItem(cyberdeck);
         }

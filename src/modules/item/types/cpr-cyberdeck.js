@@ -32,15 +32,13 @@ export default class CPRCyberdeckItem extends CPRItem {
     const installedItems = duplicate(this.system.installedItems);
 
     const uninstallList = [];
-    for (const program of this.system.programs.installed) {
+    for (const program of this.system.installedPrograms) {
       if (!installedItems.list.includes(program.uuid)) {
         const item = !actor
-          ? fromUuidSync(program.uuid)
+          ? game.items.get(program.id)
           : actor.getOwnedItem(program.uuid);
         if (item) {
           uninstallList.push(item);
-        } else {
-          uninstallList.push({ uuid: program.uuid, system: program });
         }
       }
     }
@@ -50,7 +48,7 @@ export default class CPRCyberdeckItem extends CPRItem {
       const item = !actor ? fromUuidSync(uuid) : actor.getOwnedItem(uuid);
       if (item && item.type === "program") {
         if (
-          this.system.programs.installed.filter((p) => p.uuid === uuid)
+          this.system.installedPrograms.filter((p) => p.uuid === uuid)
             .length === 0
         ) {
           installList.push(item);
@@ -62,7 +60,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     }
 
     if (installList.length > 0) {
-      await this.installPrograms(installList);
+      await this.installItems(installList);
     }
 
     const allUpdates = installList.concat(uninstallList);
@@ -79,76 +77,19 @@ export default class CPRCyberdeckItem extends CPRItem {
   }
 
   /**
-   * Returns a list of installed programs.  This is a list of ItemData as the
-   * Item itself is not stored because Items can't own Items. As such, if you
-   * are looking for a specific program, each Array entry has a entry._id of
-   * the Object it represents.
-   *
-   * @public
-   */
-  getInstalledPrograms() {
-    LOGGER.trace("getInstalledPrograms | CPRCyberdeckItem | Called.");
-    return this.system.programs.installed;
-  }
-
-  /**
-   * Returns a list of rezzed programs.  This is a list of ItemData as the
-   * Item itself is not stored because Items can't own Items. As such, if you
-   * are looking for a specific program, each Array entry has a entry._id of
-   * the Object it represents.
-   *
-   * @public
-   */
-  getRezzedPrograms() {
-    LOGGER.trace("getRezzedPrograms | CPRCyberdeckItem | Called.");
-    return this.system.programs.rezzed;
-  }
-
-  /**
-   * Install programs from the Cyberdeck
-   *
-   * @public
-   * @param {Array} programs      - Array of CPRItem programs
-   */
-  installPrograms(programs) {
-    LOGGER.trace("installPrograms | CPRCyberdeckItem | Called.");
-    const { installed } = this.system.programs;
-    programs.forEach((p) => {
-      const onDeck = installed.filter((iProgram) => iProgram.uuid === p.uuid);
-      if (onDeck.length === 0) {
-        const programInstallation = duplicate(p.system);
-        programInstallation.isRezzed = false;
-        programInstallation.uuid = p.uuid;
-        programInstallation.name = p.name;
-        programInstallation.flags = p.flags;
-        installed.push(programInstallation);
-        if (p.isOwned) {
-          p.setInstalled();
-        }
-      }
-    });
-    this.system.programs.installed = installed;
-  }
-
-  /**
    * Uninstall programs from the Cyberdeck
    *
    * @public
    * @param {Array} programs      - Array of CPRItem programs
    */
-  uninstallPrograms(programs) {
+  async uninstallPrograms(programs) {
     LOGGER.trace("uninstallPrograms | CPRCyberdeckItem | Called.");
-    let { rezzed } = this.system.programs;
-    let { installed } = this.system.programs;
+    await this.uninstallItems(programs);
     const tokenList = [];
     let sceneId;
     programs.forEach(async (program) => {
-      if (program.system.class === "blackice" && this.isRezzed(program)) {
-        const rezzedIndex = this.system.programs.rezzed.findIndex(
-          (p) => p.uuid === program.uuid
-        );
-        const programData = this.system.programs.rezzed[rezzedIndex];
-        const cprFlags = programData.flags[game.system.id];
+      if (program.system.class === "blackice" && program.system.isRezzed) {
+        const cprFlags = program.flags[game.system.id];
         if (cprFlags.biTokenId) {
           tokenList.push(cprFlags.biTokenId);
         }
@@ -156,11 +97,7 @@ export default class CPRCyberdeckItem extends CPRItem {
           sceneId = cprFlags.sceneId;
         }
       }
-      installed = installed.filter((p) => p.uuid !== program.uuid);
-      rezzed = rezzed.filter((p) => p.uuid !== program.uuid);
     });
-    this.system.programs.installed = installed;
-    this.system.programs.rezzed = rezzed;
 
     if (tokenList.length > 0 && sceneId) {
       const sceneList = game.scenes.filter((s) => s.id === sceneId);
@@ -173,29 +110,6 @@ export default class CPRCyberdeckItem extends CPRItem {
   }
 
   /**
-   * Return true/false if the program is Rezzed
-   *
-   * @public
-   * @param {CPRItem} program      - CPRItem of the program to check
-   */
-  isRezzed(program) {
-    LOGGER.trace("isRezzed | CPRCyberdeckItem | Called.");
-    const rezzedPrograms = this.system.programs.rezzed.filter(
-      (p) => p.uuid === program.uuid
-    );
-    const { installed } = this.system.programs;
-    const installIndex = installed.findIndex((p) => p.uuid === program.uuid);
-    const programState = installed[installIndex];
-    programState.isRezzed = rezzedPrograms.length > 0;
-    installed[installIndex] = programState;
-    this.system.programs.installed = installed;
-    // Passed by reference
-    // eslint-disable-next-line no-param-reassign
-    program.isRezzed = rezzedPrograms.length > 0;
-    return rezzedPrograms.length > 0;
-  }
-
-  /**
    * Rez a program by setting the isRezzed boolean on the program to true
    * and push the program onto the rezzed array of the Cyberdeck
    *
@@ -205,30 +119,10 @@ export default class CPRCyberdeckItem extends CPRItem {
   async rezProgram(program, callingToken) {
     LOGGER.trace("rezProgram | CPRCyberdeckItem | Called.");
     const programData = duplicate(program.system);
-    const { installed } = this.system.programs;
-    const installIndex = installed.findIndex((p) => p.uuid === program.uuid);
-    const programState = installed[installIndex];
-
-    // This instance ID is being added pro-actively because the rulebook
-    // is a bit fuzzy on the bottom of Page 201 with regards to rezzing the
-    // same program multiple times.  The rulebook says:
-    // "You can run multiple copies of the same Program on your Cyberdeck"
-    // however when I asked on the Discord, I was told you can not do this,
-    // you have to install a program twice on the Cyberdeck if you want to
-    // rez it twice.  So the code here supports what was told to me in Discord.
-    // If it ever comes back that a single install of a program can be run
-    // multiple times, we will already have a an instance ID to differentiate
-    // the different rezzes.
-    const rezzedInstance = randomID();
-    program.setRezzed(rezzedInstance);
-    programState.isRezzed = true;
-    programState.flags = duplicate(program.flags);
-    installed[installIndex] = programState;
+    await program.setRezzed();
     if (programData.class === "blackice") {
-      await this._rezBlackIceToken(programState, callingToken);
+      await this._rezBlackIceToken(program, callingToken);
     }
-    this.system.programs.installed = installed;
-    this.system.programs.rezzed.push(programState);
   }
 
   /**
@@ -242,7 +136,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     LOGGER.trace("_createCyberdeckRoll | CPRCyberdeckItem | Called.");
     let cprRoll;
     const { programUUID } = extraData;
-    const program = this.getInstalledPrograms().find(
+    const program = this.system.installedPrograms.find(
       (iProgram) => iProgram.uuid === programUUID
     );
     if (!program) {
@@ -445,11 +339,11 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @private
    * @param {CPRItem} program      - CPRItem of the program create the Token for
    */
-  async _rezBlackIceToken(programData, callingToken) {
+  async _rezBlackIceToken(program, callingToken) {
     LOGGER.trace("_rezBlackIceToken | CPRCyberdeckItem | Called.");
     let netrunnerToken = callingToken;
     let scene;
-    const blackIceName = programData.name;
+    const blackIceName = program.name;
 
     if (!netrunnerToken && this.actor.isToken) {
       netrunnerToken = this.actor.token;
@@ -511,17 +405,18 @@ export default class CPRCyberdeckItem extends CPRItem {
           type: "blackIce",
           folder: dynamicFolder,
           img: `systems/${game.system.id}/icons/netrunning/Black_Ice.png`,
+          system: {
+            class: program.system.blackIceType,
+            stats: {
+              per: program.system.per,
+              spd: program.system.spd,
+              atk: program.system.atk,
+              def: program.system.def,
+              rez: program.system.rez,
+            },
+            notes: program.system.description.value,
+          },
         });
-        // Configure the Actor based on the Black ICE Program Stats.
-        blackIce.programmaticallyUpdate(
-          programData.blackIceType,
-          programData.per,
-          programData.spd,
-          programData.atk,
-          programData.def,
-          programData.rez,
-          programData.description.value
-        );
       } catch (error) {
         LOGGER.error(
           `_rezBlackIceToken | CPRItem | Attempting to create a Black ICE Actor failed. Error: ${error}`
@@ -536,7 +431,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     const tokenFlags = {
       netrunnerTokenId: netrunnerToken.id,
       sourceCyberdeckId: this.id,
-      programUUID: programData.uuid,
+      programUUID: program.uuid,
       sceneId: scene.id,
     };
     const tokenData = [
@@ -559,24 +454,26 @@ export default class CPRCyberdeckItem extends CPRItem {
       const biToken = biTokenList.length > 0 ? biTokenList[0] : null;
       if (biToken !== null) {
         // Update the Token Actor based on the Black ICE Program Stats, leaving any effect description in place.
-        biToken.actor.programmaticallyUpdate(
-          programData.blackIceType,
-          programData.per,
-          programData.spd,
-          programData.atk,
-          programData.def,
-          programData.rez,
-          programData.description.value
-        );
+        biToken.actor.update({
+          class: program.system.blackIceType,
+          stats: {
+            per: program.system.per,
+            spd: program.system.spd,
+            atk: program.system.atk,
+            def: program.system.def,
+            rez: program.system.rez,
+          },
+          notes: program.system.description.value,
+        });
         const cprFlags =
-          typeof programData.flags[game.system.id] !== "undefined"
-            ? programData.flags[game.system.id]
+          typeof program.flags[game.system.id] !== "undefined"
+            ? program.flags[game.system.id]
             : {};
         cprFlags.biTokenId = biToken.id;
         cprFlags.sceneId = scene.id;
         // Passed by reference
         // eslint-disable-next-line no-param-reassign
-        programData.flags[game.system.id] = cprFlags;
+        program.flags[game.system.id] = cprFlags;
       }
     } catch (error) {
       LOGGER.error(
@@ -593,24 +490,10 @@ export default class CPRCyberdeckItem extends CPRItem {
    */
   async derezProgram(program) {
     LOGGER.trace("derezProgram | CPRCyberdeckItem | Called.");
-    const { rezzed } = this.system.programs;
-    const rezzedIndex = rezzed.findIndex((p) => p.uuid === program.uuid);
-    const { installed } = this.system.programs;
-    const installIndex = installed.findIndex((p) => p.uuid === program.uuid);
-    const programState = installIndex >= 0 ? installed[installIndex] : null;
-    const programData = rezzedIndex >= 0 ? rezzed[rezzedIndex] : null;
     program.unsetRezzed();
-    if (programState !== null) {
-      programState.isRezzed = false;
-      installed[installIndex] = programState;
-    }
     if (program.system.class === "blackice") {
-      await CPRCyberdeckItem._derezBlackIceToken(programData);
+      await CPRCyberdeckItem._derezBlackIceToken(program);
     }
-    const newRezzed = this.system.programs.rezzed.filter(
-      (p) => p.uuid !== program.uuid
-    );
-    this.system.programs.rezzed = newRezzed;
   }
 
   /**
@@ -660,14 +543,9 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @public
    * @param {CPRItem} program      - CPRItem of the program to reset
    */
-  resetRezProgram(program) {
+  async resetRezProgram(program) {
     LOGGER.trace("resetRezProgram | CPRCyberdeckItem | Called.");
-    const { rezzed } = this.system.programs;
-    const rezzedIndex = rezzed.findIndex((p) => p._id === program.id);
-    const { installed } = this.system.programs;
-    const installedIndex = installed.findIndex((p) => p._id === program.id);
-    this.system.programs.rezzed[rezzedIndex] =
-      this.system.programs.installed[installedIndex];
+    await program.update({ "system.rez.value": program.system.rez.max });
   }
 
   /**
@@ -677,19 +555,14 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @param {CPRItem} program     - The program to reduce the REZ of
    * @param {Number} reduceAmount - Amount to reduce REZ by. Defaults to 1.
    */
-  reduceRezProgram(program, reduceAmount = 1) {
+  async reduceRezProgram(program, reduceAmount = 1) {
     LOGGER.trace("reduceRezProgram | CPRCyberdeckItem | Called.");
-    const { rezzed } = this.system.programs;
-    const rezzedIndex = rezzed.findIndex((p) => p.uuid === program.uuid);
-    const programState = rezzed[rezzedIndex];
-    const newRez = Math.max(programState.rez - reduceAmount, 0);
-    programState.rez = newRez;
-    this.system.programs.rezzed[rezzedIndex] = programState;
+    const newRez = Math.max(program.rez.value - reduceAmount, 0);
     if (
-      programState.class === "blackice" &&
-      typeof programState.flags[game.system.id] !== "undefined"
+      program.class === "blackice" &&
+      typeof program.flags[game.system.id] !== "undefined"
     ) {
-      const cprFlags = programState.flags[game.system.id];
+      const cprFlags = program.flags[game.system.id];
       if (typeof cprFlags.biTokenId !== "undefined") {
         const { biTokenId } = cprFlags;
         const tokenList = canvas.scene.tokens
@@ -698,47 +571,11 @@ export default class CPRCyberdeckItem extends CPRItem {
           .filter((t) => t.id === biTokenId);
         if (tokenList.length === 1) {
           const [biToken] = tokenList;
-          biToken.actor.programmaticallyUpdate(
-            programState.blackIceType,
-            programState.per,
-            programState.spd,
-            programState.atk,
-            programState.def,
-            programState.rez,
-            programState.description.value
-          );
+          await biToken.actor.update({
+            "system.rez.value": newRez,
+          });
         }
       }
     }
-  }
-
-  /**
-   * Update a rezzed program with updated data
-   *
-   * @param {String} programUUID - the _id of the program to be updated
-   * @param {Object} updatedData - object data of the program to update with
-   */
-  updateRezzedProgram(programUUID, updatedData) {
-    LOGGER.trace("updateRezzedProgram | CPRCyberdeckItem | Called.");
-    const { rezzed } = this.system.programs;
-    const rezzedIndex = rezzed.findIndex((p) => p.uuid === programUUID);
-    const programState = rezzed[rezzedIndex];
-    const dataPoints = Object.keys(updatedData);
-    dataPoints.forEach((attribute) => {
-      switch (attribute) {
-        case "per":
-        case "spd":
-        case "atk":
-        case "def": {
-          programState[attribute] = updatedData[attribute];
-          break;
-        }
-        case "rez": {
-          if (updatedData.rez.value) programState.rez = updatedData.rez.value;
-          break;
-        }
-        default:
-      }
-    });
   }
 }

@@ -150,6 +150,8 @@ const actorHooks = () => {
           const netrunner = netrunnerToken.actor;
           const cyberdeck = netrunner.getOwnedItem(cyberdeckId);
           cyberdeck.updateRezzedProgram(programUUID, updatedData.system.stats);
+          const program = netrunner.getOwnedItem(programUUID);
+          program.update({ system: updatedData.system });
           netrunner.updateEmbeddedDocuments("Item", [
             { _id: cyberdeck.id, system: cyberdeck.system },
           ]);

@@ -1006,7 +1006,7 @@ export default class CPRItemSheet extends ItemSheet {
     }
 
     if (installedItem.type === "program") {
-      await item.syncPrograms();
+      // await item.syncPrograms();
     }
   }
 

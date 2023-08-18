@@ -405,35 +405,11 @@ const Container = function Container() {
         }
       }
 
-      if (this.type === "cyberdeck") {
-        const oldPrograms = this.system.programs;
-        const newPrograms = {
-          installed: [],
-          rezzed: [],
-        };
+      updateList.push({
+        _id: this.id,
+        "system.installedItems.list": installedList,
+      });
 
-        for (const programData of oldPrograms.installed) {
-          const originalProgramID = programData.uuid.split(".").pop();
-          programData.uuid = `${actorUUID}.Item.${originalProgramID}`;
-          newPrograms.installed.push(programData);
-        }
-
-        for (const programData of oldPrograms.rezzed) {
-          const originalProgramID = programData.uuid.split(".").pop();
-          programData.uuid = `${actorUUID}.Item.${originalProgramID}`;
-          newPrograms.rezzed.push(programData);
-        }
-        updateList.push({
-          _id: this.id,
-          "system.installedItems.list": installedList,
-          "system.programs": newPrograms,
-        });
-      } else {
-        updateList.push({
-          _id: this.id,
-          "system.installedItems.list": installedList,
-        });
-      }
       await actor.updateEmbeddedDocuments("Item", updateList);
 
       // Do this last because `syncUpgrades` relies on the updates above to work.

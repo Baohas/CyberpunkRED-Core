@@ -15,46 +15,16 @@ export default class CPRProgramItem extends CPRItem {
    */
 
   /**
-   * Sets a program to uninstalled.
+   * Sets a program to rezzed.
    *
    * @public
    */
-  setInstalled() {
-    LOGGER.trace("setInstalled | CPRProgramItem | Called.");
-    this.system.isInstalled = true;
-  }
-
-  /**
-   * Sets a program to uninstalled.
-   *
-   * @public
-   */
-  unsetInstalled() {
-    LOGGER.trace("unsetInstalled | CPRProgramItem | Called.");
-    this.system.isInstalled = false;
-  }
-
-  /**
-   * Returns a boolean if the program is installed.
-   *
-   * @public
-   */
-  getInstalled() {
-    LOGGER.trace("getInstalled | CPRProgramItem | Called.");
-    return this.system.isInstalled;
-  }
-
-  /**
-   * Sets a program to uninstalled.
-   *
-   * @public
-   */
-  setRezzed(instanceId = null) {
+  async setRezzed(instanceId = null) {
     LOGGER.trace("setRezzed | CPRProgramItem | Called.");
     if (instanceId) {
-      this.setFlag(game.system.id, "rezInstanceId", instanceId);
+      await this.setFlag(game.system.id, "rezInstanceId", instanceId);
     }
-    this.system.isRezzed = true;
+    await this.update({ "system.isRezzed": true });
   }
 
   /**
@@ -65,15 +35,5 @@ export default class CPRProgramItem extends CPRItem {
   unsetRezzed() {
     LOGGER.trace("unsetRezzed | CPRProgramItem | Called.");
     this.system.isRezzed = false;
-  }
-
-  /**
-   * Returns a boolean if the program is installed.
-   *
-   * @public
-   */
-  getRezzed() {
-    LOGGER.trace("getRezzed | CPRProgramItem | Called.");
-    return this.system.isRezzed;
   }
 }

@@ -970,11 +970,15 @@ export default class CPRActorSheet extends ActorSheet {
     if (item.type === "cyberdeck") {
       // Set all of the owned programs that were installed on
       // this cyberdeck to uninstalled.
-      const programs = item.getInstalledPrograms();
+      const programs = item.system.installedPrograms;
       const updateList = [];
       programs.forEach((p) => {
-        const program = this.actor.getOwnedItem(p.uuid);
-        updateList.push({ _id: program._id, "system.isInstalled": false });
+        const program = this.actor.getOwnedItem(p.id);
+        updateList.push({
+          _id: program._id,
+          "system.isInstalled": false,
+          "system.isRezzed": false,
+        });
       });
       await this.actor.updateEmbeddedDocuments("Item", updateList);
     }
