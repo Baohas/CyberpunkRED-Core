@@ -1,4 +1,4 @@
-/* globals foundry */
+/* globals foundry parseUuid */
 
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../abstract.js";
@@ -61,8 +61,22 @@ export default class CharacterDataModel extends CPRSystemDataModel.mixin(
     });
   }
 
+  static migrateData(source) {
+    LOGGER.trace("migrateData");
+    if (source.installedItems?.list) {
+      const installed = source.installedItems.list;
+      // eslint-disable-next-line no-param-reassign
+      source.installedItems.list = installed.map((i) => {
+        const parsedUuid = parseUuid(i);
+        const index = parsedUuid.embedded.indexOf("Item") + 1;
+        return parsedUuid.embedded[index] ?? i;
+      });
+    }
+    return super.migrateData(source);
+  }
+
   get seriouslyWounded() {
-    LOGGER.trace("seriouslyWounded");
+    LOGGER.trace("get seriouslyWounded");
     return Math.ceil(this.parent.system.derivedStats.hp.max / 2);
   }
 }
