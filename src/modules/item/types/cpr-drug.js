@@ -27,7 +27,7 @@ export default class CPRDrugItem extends CPRItem {
       SystemUtils.Localize("CPR.messages.notEnoughDrugs")
     );
     if (!(await this._confirmSnort())) return;
-    this.system.amount = Math.max(0, this.system.amount - 1);
+    const newAmount = Math.max(0, this.system.amount - 1);
     if (this.actor) {
       if (this.effects.size > 0 && this.system.usage === "snorted") {
         // item has active effects to consider activating
@@ -48,9 +48,7 @@ export default class CPRDrugItem extends CPRItem {
         }
         await this.updateEmbeddedDocuments("ActiveEffect", effectUpdates); // update AEs
       }
-      await this.actor.updateEmbeddedDocuments("Item", [
-        { _id: this.id, system: this.system },
-      ]); // update the amount
+      await this.update({ "system.amount": newAmount }); // update the amount
     }
     SystemUtils.DisplayMessage(
       "notify",
