@@ -11,7 +11,7 @@
     {{#each (cprSort object "name") as |skill| }}
       <li class="dialog-item skill-name flexrow">
         <div class="dialog-item-name text-nowrap">
-          {{localize (cprGetLocalizedlNameKey skill.name "skill")}}
+          {{skill.name}}
         </div>
         <div class="dialog-item-detail skill-base text-nowrap">
           +{{skill.stat}}
