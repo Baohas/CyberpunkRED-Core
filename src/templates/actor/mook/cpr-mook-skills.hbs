@@ -28,11 +28,7 @@
          data-roll-type="skill"
          data-roll-title="{{skill.name}}"
          data-tooltip="{{localize "CPR.mookSheet.skills.clickToRollThisSkill"}}, {{localize "CPR.mookSheet.skills.pressDeleteToReset"}}">
-        {{#if skill.system.core }}
-          {{localize (cprGetLocalizedlNameKey skill)}}
-        {{else}}
-          {{skill.name}}
-        {{/if}}
+        {{skill.name}}
         {{#if (cprCompare (cprSystemConfig "mookSheetSkillDisplay") "===" "level") }}
           ({{~cprEffectModMode 2 skill.system.level}})
         {{~/if}}
