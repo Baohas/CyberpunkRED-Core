@@ -1212,7 +1212,10 @@ export default function registerHandlebarsHelpers() {
     LOGGER.trace("cprProgramHasDamageRoll | handlebarsHelper | Called.");
     let returnCode = false;
     if (typeof program === "object") {
-      if (program?.damage.standard !== "" || program?.damage.blackIce !== "") {
+      if (
+        program?.system.damage.standard !== "" ||
+        program?.system.damage.blackIce !== ""
+      ) {
         returnCode = true;
       }
     }

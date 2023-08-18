@@ -34,4 +34,14 @@ export default class CyberdeckDataModel extends CPRSystemDataModel.mixin(
       }),
     });
   }
+
+  // eslint-disable-next-line foundry-cpr/logger-after-function-definition
+  get installedPrograms() {
+    return this.parent.getInstalledItems("program");
+  }
+
+  // eslint-disable-next-line foundry-cpr/logger-after-function-definition
+  get rezzedPrograms() {
+    return this.parent.getInstalledItems("program").filter((p) => p.isRezzed);
+  }
 }

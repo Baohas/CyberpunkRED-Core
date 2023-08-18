@@ -84,6 +84,10 @@ export default class CPRActorSheet extends ActorSheet {
       foundryData.fightData.fightState = fightState;
       foundryData.fightData.cyberdeck = "";
       if (fightState === "Netspace") {
+        const cyberdeck = this.actor.getEquippedCyberdeck();
+        foundryData.cyberdeck = cyberdeck;
+        foundryData.installedPrograms = cyberdeck.system.installedPrograms;
+        foundryData.rezzedPrograms = cyberdeck.system.rezzedPrograms;
         foundryData.fightData.cyberdeck = this.actor.getEquippedCyberdeck();
       }
       foundryData.filteredEffects = await this.prepareActiveEffectCategories();

@@ -26,7 +26,7 @@
           </div>
           <div class="rezzed-program-reset text-semi text-center"></div>
         </li>
-        {{#each ../fightData.cyberdeck.system.programs.rezzed as |program| }}
+        {{#each ../rezzedPrograms as |program| }}
           {{#if (cprCompare program.class "===" pc) }}
             <li class="item flexrow cyberdeck-rezzed-software-list"
                 data-item-id="{{program.uuid}}">
@@ -95,31 +95,31 @@
           {{localize "CPR.global.generic.rez"}}
         </div>
       </li>
-      {{#each fightData.cyberdeck.system.programs.rezzed as |program| }}
-        {{#if (cprCompare program.class "===" "blackice") }}
+      {{#each rezzedPrograms as |program| }}
+        {{#if (cprCompare program.system.class "===" "blackice") }}
           <li class="item flexrow text-padding-left-smallest cyberdeck-rezzed-software-list"
               data-item-id="{{program.uuid}}">
             <div class="rezzed-program-name">
               <a class="name item-view"
    data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToView"}}"
    data-cyberdeck-id="{{../fightData.cyberdeck.id}}"
-   data-program-uuid="{{program.uuid}}">{{program.name}} ({{localize (cprFindConfigValue "blackIceType" program.blackIceType)}})</a>
+   data-program-uuid="{{program.uuid}}">{{program.name}} ({{localize (cprFindConfigValue "blackIceType" program.system.blackIceType)}})</a>
             </div>
             <div class="rezzed-program-per text-center">
-              {{program.per}}
+              {{program.system.per}}
             </div>
             <div class="rezzed-program-spd text-center">
-              {{program.spd}}
+              {{program.system.spd}}
             </div>
             <div class="rezzed-program-atk text-center">
-              {{program.atk}}
+              {{program.system.atk}}
             </div>
             <div class="rezzed-program-def text-center">
-              {{program.def}}
+              {{program.system.def}}
             </div>
             <div class="rezzed-program-rez-and-decrement text-center">
               <div class="rezzed-program-rez text-center">
-                {{program.rez}}
+                {{program.system.rez}}
               </div>
               <div class="rezzed-program-decrement-rez text-center">
                 {{#if (cprCompare ../actor.system.type "===" "mook") }}
