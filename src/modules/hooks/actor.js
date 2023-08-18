@@ -25,7 +25,10 @@ const actorHooks = () => {
     LOGGER.trace("preCreateActor | actorHooks | Called.");
     if (typeof createData.img === "undefined") {
       const actorImage = SystemUtils.GetDefaultImage("Actor", createData.type);
-      doc.updateSource({ img: actorImage });
+      doc.updateSource({
+        img: actorImage,
+        "prototypeToken.texture.src": actorImage,
+      });
     }
   });
 
