@@ -833,7 +833,6 @@
   "CPR.itemSheet.vehicle.seats": "Sitze",
   "CPR.itemSheet.vehicle.speedNarrative": "Geschwindigkeit (Narrativ)",
   "CPR.itemSheet.vehicle.structuralDamagePoints": "Strukturschadenspunkte",
-  "CPR.itemSheet.vehicle.tags": "Kfz-Kennzeichen",
   "CPR.itemSheet.weapon.attachments": "Waffenzubehör",
   "CPR.itemSheet.weapon.attackMod": "Angriffsmodifikator",
   "CPR.itemSheet.weapon.configureCompatibleAmmo": "Kompatible Munition konfigurieren",
