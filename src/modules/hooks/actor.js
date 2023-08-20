@@ -48,7 +48,7 @@ const actorHooks = () => {
    * @param {object} (unused)             Additional options which modify the creation request
    * @param {string} (unused)               The ID of the requesting user, always game.user.id
    */
-  Hooks.on("preUpdateActor", (doc, updatedData) => {
+  Hooks.on("preUpdateActor", async (doc, updatedData) => {
     LOGGER.trace("preUpdateActor | actorHooks | Called.");
     if (updatedData.system && updatedData.system.externalData) {
       Object.keys(updatedData.system.externalData).forEach((itemType) => {
@@ -138,7 +138,6 @@ const actorHooks = () => {
         game.system.id,
         "netrunnerTokenId"
       );
-      const cyberdeckId = biToken.getFlag(game.system.id, "sourceCyberdeckId");
       const programUUID = biToken.getFlag(game.system.id, "programUUID");
       const sceneId = biToken.getFlag(game.system.id, "sceneId");
       const sceneList = game.scenes.filter((s) => s.id === sceneId);
@@ -148,13 +147,10 @@ const actorHooks = () => {
         if (tokenList.length === 1) {
           const netrunnerToken = tokenList[0];
           const netrunner = netrunnerToken.actor;
-          const cyberdeck = netrunner.getOwnedItem(cyberdeckId);
-          cyberdeck.updateRezzedProgram(programUUID, updatedData.system.stats);
           const program = netrunner.getOwnedItem(programUUID);
-          program.update({ system: updatedData.system });
-          netrunner.updateEmbeddedDocuments("Item", [
-            { _id: cyberdeck.id, system: cyberdeck.system },
-          ]);
+          await program.update({
+            "system.rez": updatedData.system.stats.rez,
+          });
         }
       }
     }

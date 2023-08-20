@@ -1,5 +1,4 @@
 {{cprTrace "START ACTOR MIXIN NETRUNNING CPR-REZZEDPROGRAMS.HBS"}}
-
 <div class="cyberdeck-rezzed-section">
   <li class="items-header flexrow">
     <span class="item-name section-name text-nowrap text-padding-left-smallest">
@@ -27,7 +26,7 @@
           <div class="rezzed-program-reset text-semi text-center"></div>
         </li>
         {{#each ../rezzedPrograms as |program| }}
-          {{#if (cprCompare program.class "===" pc) }}
+          {{#if (cprCompare program.system.class "===" pc) }}
             <li class="item flexrow cyberdeck-rezzed-software-list"
                 data-item-id="{{program.uuid}}">
               <div class="rezzed-program-name text-padding-left-smallest">
@@ -41,17 +40,17 @@
               <div class="rezzed-program-per text-semi text-center"></div>
               <div class="rezzed-program-spd text-semi text-center"></div>
               <div class="rezzed-program-atk text-center">
-                {{program.atk}}
+                {{program.system.atk}}
               </div>
               <div class="rezzed-program-def text-center">
-                {{program.def}}
+                {{program.system.def}}
               </div>
               <div class="rezzed-program-rez-and-decrement text-center">
                 <div class="rezzed-program-rez text-center">
-                  {{program.rez}}
+                  {{program.system.rez.value}}
                 </div>
                 <div class="rezzed-program-decrement-rez text-center">
-                  {{#if (cprCompare program.rez ">" 0) }}
+                  {{#if (cprCompare program.system.rez.value ">" 0) }}
                     <a class="program-execution"
                        data-execution-type="reduce-rez"
                        data-cyberdeck-id="{{../../fightData.cyberdeck.id}}"
@@ -119,11 +118,11 @@
             </div>
             <div class="rezzed-program-rez-and-decrement text-center">
               <div class="rezzed-program-rez text-center">
-                {{program.system.rez}}
+                {{program.system.rez.value}}
               </div>
               <div class="rezzed-program-decrement-rez text-center">
                 {{#if (cprCompare ../actor.system.type "===" "mook") }}
-                  {{#if (cprCompare program.rez ">" 0) }}
+                  {{#if (cprCompare program.system.rez.value ">" 0) }}
                     <a class="program-execution"
                        data-execution-type="reduce-rez"
                        data-cyberdeck-id="{{../fightData.cyberdeck.id}}"

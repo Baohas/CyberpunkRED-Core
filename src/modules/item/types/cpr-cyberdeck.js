@@ -87,7 +87,11 @@ export default class CPRCyberdeckItem extends CPRItem {
     await this.uninstallItems(programs);
     const tokenList = [];
     let sceneId;
-    programs.forEach(async (program) => {
+    for (const program of programs) {
+      if (program.isRezzed) {
+        // eslint-disable-next-line no-await-in-loop
+        await program.update({ "system.isRezzed": false });
+      }
       if (program.system.class === "blackice" && program.system.isRezzed) {
         const cprFlags = program.flags[game.system.id];
         if (cprFlags.biTokenId) {
@@ -97,16 +101,15 @@ export default class CPRCyberdeckItem extends CPRItem {
           sceneId = cprFlags.sceneId;
         }
       }
-    });
+    }
 
     if (tokenList.length > 0 && sceneId) {
       const sceneList = game.scenes.filter((s) => s.id === sceneId);
       if (sceneList.length === 1) {
         const [scene] = sceneList;
-        return scene.deleteEmbeddedDocuments("Token", tokenList);
+        await scene.deleteEmbeddedDocuments("Token", tokenList);
       }
     }
-    return null;
   }
 
   /**
@@ -150,12 +153,12 @@ export default class CPRCyberdeckItem extends CPRItem {
     const roleValue = Number.parseInt(extraData.netRoleItem.system.rank, 10);
     const pgmName = program.name;
     const { executionType } = extraData;
-    const statValue = program[executionType];
+    const statValue = program.system[executionType];
     const statName = SystemUtils.Localize(
       `CPR.global.blackIce.stats.${executionType}`
     );
 
-    const damageFormula = program.damage.standard;
+    const damageFormula = program.system.damage.standard;
     // Attack and defense rolls from programs are treated as Interface Rolls.
     // Damage rolls from programs are treated as normal Damage Rolls.
     switch (executionType) {
@@ -557,9 +560,9 @@ export default class CPRCyberdeckItem extends CPRItem {
    */
   async reduceRezProgram(program, reduceAmount = 1) {
     LOGGER.trace("reduceRezProgram | CPRCyberdeckItem | Called.");
-    const newRez = Math.max(program.rez.value - reduceAmount, 0);
+    const newRez = Math.max(program.system.rez.value - reduceAmount, 0);
     if (
-      program.class === "blackice" &&
+      program.system.class === "blackice" &&
       typeof program.flags[game.system.id] !== "undefined"
     ) {
       const cprFlags = program.flags[game.system.id];
@@ -577,5 +580,6 @@ export default class CPRCyberdeckItem extends CPRItem {
         }
       }
     }
+    await program.update({ "system.rez.value": newRez });
   }
 }

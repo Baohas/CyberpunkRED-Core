@@ -30,7 +30,7 @@
       {{/if}}
       {{!-- Additional user inputted modifiers --}}
       {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-additional-modifiers.hbs" this}}
-      {{#if (cprCompare (cprCompare rollData.rollCardExtraArgs.program.class "!==" "blackice") "&&" (cprCompare rollData.rollCardExtraArgs.program.class "!==" "demon")) }}
+      {{#if (cprCompare (cprCompare rollData.rollCardExtraArgs.program.system.class "!==" "blackice") "&&" (cprCompare rollData.rollCardExtraArgs.program.system.class "!==" "demon")) }}
         <li class="dialog-item flexrow">
           <div class="dialog-item-name text-nowrap">{{localize "CPR.rolls.luck"}}:</div>
           <div class="dialog-item-input text-nowrap">

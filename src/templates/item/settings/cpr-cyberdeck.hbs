@@ -22,7 +22,7 @@
              data-tooltip="{{localize "CPR.itemSheet.cyberdeck.eraseProgram"}}"></i>
         </a>
       {{else}}
-        {{program.name}} ({{localize (cprFindConfigValue "programClassList" program.class)}})
+        {{program.name}} ({{localize (cprFindConfigValue "programClassList" program.system.class)}})
         <a class="program-uninstall text-padding-left-smaller"
            data-item-id="{{program.uuid}}">
           <i class="fas fa-folder-minus"
