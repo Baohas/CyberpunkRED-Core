@@ -27,3 +27,4 @@ export { default as v11EffectsMigration } from "./020-v11Effects.js";
 export { default as packNameMigration } from "./021-packRenames.js";
 export { default as v11TokenMigration } from "./022-unlinkedTokensv11.js";
 export { default as BlackIceNotesMigration } from "./023-blackIceNotesFix.js";
+export { default as NullStatsMigration } from "./024-nullTokenStats.js";

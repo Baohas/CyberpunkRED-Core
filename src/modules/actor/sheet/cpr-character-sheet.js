@@ -689,4 +689,22 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
 
     return cyberdeck.sheet._uninstallSingleItem(event);
   }
+
+  foo() {
+    return fromUuidSync(
+      "Scene.1Vsvf58EGJ12O0IC.Token.zW3ziKPOIPweHd4q.Actor.4lgIERZPRwAFxdsH"
+    ).updateEmbeddedDocuments("Item", [
+      {
+        _id: "fv1g4919R7vp975X",
+        _stats: {
+          coreVersion: "10.303",
+          createdTime: 1692463494866,
+          lastModifiedBy: "Tk20S39ggUnMuKpt",
+          modifiedTime: 1692463494866,
+          systemId: "cyberpunk-red-core",
+          systemVersion: "v0.87.6",
+        },
+      },
+    ]);
+  }
 }
