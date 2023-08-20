@@ -999,14 +999,13 @@ export default class CPRItemSheet extends ItemSheet {
     const installedItem = !actor
       ? fromUuidSync(installedItemId)
       : actor.getOwnedItem(installedItemId);
-    await item.uninstallItems([installedItem]);
+
+    if (installedItem.type === "program") {
+      await item.uninstallPrograms([installedItem]);
+    }
 
     if (installedItem.type === "itemUpgrade") {
       await item.syncUpgrades();
-    }
-
-    if (installedItem.type === "program") {
-      // await item.syncPrograms();
     }
   }
 

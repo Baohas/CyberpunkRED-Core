@@ -88,7 +88,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     const tokenList = [];
     let sceneId;
     for (const program of programs) {
-      if (program.isRezzed) {
+      if (program.system.isRezzed) {
         // eslint-disable-next-line no-await-in-loop
         await program.update({ "system.isRezzed": false });
       }

@@ -11,7 +11,7 @@
   </div>
 </li>
 <div class="installed-programs"></div>
-{{#each item.installedPrograms as |program| }}
+{{#each item.system.installedPrograms as |program| }}
   <li class="item flexrow">
     <div class="item flexrow setting-name text-nowrap text-padding-left-small">
       {{#if (cprListContains "speed,attack,defense" program.system.class) }}
