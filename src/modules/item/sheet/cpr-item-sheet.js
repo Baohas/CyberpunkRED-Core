@@ -928,65 +928,18 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("_manageInstalledItems | CPRItemSheet | Called.");
     const { item } = this;
 
-    /*
-    if (!actor || (actor.type !== "character" && actor.type !== "mook")) {
-      SystemUtils.DisplayMessage("warn", SystemUtils.Localize("CPR.messages.ownedItemOnlyError"));
-      return;
-    }
-    */
     const promptResult = await this._selectInstallableItems(itemType);
 
     if (Object.keys(promptResult).length === 0) {
       return;
     }
 
-    let installedItemChanges = [];
-    if (promptResult.uninstallableItems.length > 0) {
-      const changeResult = await item.uninstallItems(
-        promptResult.uninstallableItems
-      );
-      if (Array.isArray(changeResult)) {
-        // Returned actor.updatedEmbeddedDocuments() so it is an owned item
-        installedItemChanges = installedItemChanges.concat(
-          changeResult.filter((i) => i._id !== item._id)
-        );
-      } else {
-        // Returned item.update() so it is a world item
-        installedItemChanges = installedItemChanges.concat(
-          promptResult.uninstallableItems
-        );
-      }
+    if (promptResult.uninstallItemList.length > 0) {
+      await item.uninstallItems(promptResult.uninstallItemList);
     }
 
-    if (promptResult.installableItems.length > 0) {
-      const changeResult = await item.installItems(
-        promptResult.installableItems
-      );
-      if (Array.isArray(changeResult)) {
-        // Returned actor.updatedEmbeddedDocuments() so it is an owned item
-        installedItemChanges = installedItemChanges.concat(
-          changeResult.filter((i) => i._id !== item._id)
-        );
-      } else {
-        // Returned item.update() so it is a world item
-        installedItemChanges = installedItemChanges.concat(
-          promptResult.installableItems
-        );
-      }
-    }
-
-    if (
-      installedItemChanges.filter((i) => i.type === "itemUpgrade").length > 0
-    ) {
-      await item.syncUpgrades(
-        installedItemChanges.filter((i) => i.type === "itemUpgrade")
-      );
-    }
-
-    if (installedItemChanges.filter((i) => i.type === "program").length > 0) {
-      await item.syncPrograms(
-        installedItemChanges.filter((i) => i.type === "program")
-      );
+    if (promptResult.installItemList.length > 0) {
+      await item.installItems(promptResult.installItemList);
     }
   }
 
@@ -1196,118 +1149,52 @@ export default class CPRItemSheet extends ItemSheet {
     }
   }
 
+  /**
+   * Get an array of the objects installed in this Item. An optional
+   * string parameter may be passed to filter the return list by a
+   * specific Item type.
+   *
+   * @param {String} - Type of item to filter for.
+   * @returns {Object} - { uninstallItemList (Array of CPRItems),
+   *                       installItemList (Array of CPRItems) }
+   */
   async _selectInstallableItems(itemType = false) {
     LOGGER.trace("_selectInstallableItems | CPRItemSheet | Called.");
     const installTarget = this.item;
-
     const actor = installTarget.isOwned ? installTarget.actor : false;
+    // Items that *can* be installed, but might not be currently.
+    const installableItems = installTarget.getInstallableItems(itemType);
+    // Items that are currently installed.
+    const installedItems = installTarget.getInstalledItems(itemType);
 
-    // First get all items that are installed in this.
-    const installedItems = itemType
-      ? installTarget.getInstalledItems(itemType)
-      : installTarget.getInstalledItems();
+    // Get total slots.
+    const availableSlots = installTarget.availableInstallSlots();
+    const totalSlots =
+      availableSlots + installTarget.system.installedItems.usedSlots;
 
-    // Next get all uninstalled items that
-    let uninstalledItems = !actor
-      ? game.items.filter(
-          (item) =>
-            this.item.system.installedItems.allowedTypes.includes(item.type) &&
-            item.system.isInstalled === false
-        )
-      : actor.items.filter(
-          (item) =>
-            this.item.system.installedItems.allowedTypes.includes(item.type) &&
-            item.system.isInstalled === false
-        );
-
-    // Remove itemUpgrades that are not upgrades for this installTarget.type
-    uninstalledItems = uninstalledItems.filter(
-      (item) =>
-        item.type !== "itemUpgrade" ||
-        (item.type === "itemUpgrade" && item.system.type === installTarget.type)
-    );
-
-    if (itemType) {
-      uninstalledItems =
-        itemType === "itemUpgrade"
-          ? uninstalledItems.filter(
-              (item) =>
-                item.type === itemType &&
-                item.system.type === installTarget.type
-            )
-          : uninstalledItems.filter((item) => item.type === itemType);
-    }
-
-    if (!actor) {
-      for (const installedItem of installedItems) {
-        uninstalledItems = uninstalledItems.filter(
-          (i) => i.uuid !== installedItem.uuid && i.name !== installedItem.name
-        );
-      }
-    }
-    let itemsList = [];
-    const selectedItems = []; // This is so the template displays currently installed items as checked.
-
-    for (const i of installedItems) {
-      const itemData = {
-        name: i.name,
-        uuid: i.uuid,
-        type: i.type,
-        system: {
-          isInstalled: true,
-          size: i.system.size,
-        },
-      };
-      if (i.type === "program") {
-        itemData.system.class = i.system.class;
-      }
-      itemsList.push(itemData);
-      selectedItems.push(itemData.uuid);
-    }
-
-    for (const i of uninstalledItems) {
-      const itemData = {
-        name: i.name,
-        uuid: i.uuid,
-        type: i.type,
-        system: {
-          isInstalled: false,
-          size: i.system.size,
-        },
-      };
-      if (i.type === "program") {
-        itemData.system.class = i.system.class;
-      }
-      itemsList.push(itemData);
-    }
-
-    itemsList = itemsList.sort((a, b) => (a.name > b.name ? 1 : -1));
-
+    // For organizing the list by type in the dialog template.
     const typeList = [];
-    for (const item of itemsList) {
+    for (const item of installableItems) {
       if (!typeList.includes(item.type)) {
         typeList.push(item.type);
       }
     }
 
-    typeList.sort();
-
-    const availableSlots = this.item.availableInstallSlots();
-    const totalSlots =
-      availableSlots + this.item.system.installedItems.usedSlots;
-
+    // Create a readable title and header.
     const dialogItemType = itemType
       ? SystemUtils.Localize(CPR.objectTypes[itemType])
       : SystemUtils.Localize("CPR.global.generic.item");
+
     const dialogPromptTitle = `${SystemUtils.Format(
       "CPR.dialog.selectInstallableItems.title",
       { type: dialogItemType }
     )}
-      | ${SystemUtils.Localize(
-        "CPR.global.generic.item"
-      )} ${SystemUtils.Localize("CPR.global.generic.slots")}: ${totalSlots}`;
+    | ${SystemUtils.Localize("CPR.global.generic.item")} ${SystemUtils.Localize(
+      "CPR.global.generic.slots"
+    )}: ${totalSlots}`;
+
     const dialogPromptText =
-      itemsList.length > 0
+      installableItems.length > 0
         ? SystemUtils.Format("CPR.dialog.selectInstallableItems.text", {
             type: dialogItemType,
             target: installTarget.name,
@@ -1316,14 +1203,14 @@ export default class CPRItemSheet extends ItemSheet {
             target: installTarget.name,
           })}`;
 
+    // Prepare the form data.
     let formData = {
       target: installTarget,
       header: dialogPromptText,
       typeList,
-      itemsList,
-      selectedItems,
+      itemsList: installableItems,
+      selectedItems: installedItems.map((i) => i.uuid),
       itemType: dialogItemType,
-      returnType: "array",
     };
 
     // Show "Select Install Items" prompt.
@@ -1349,28 +1236,30 @@ export default class CPRItemSheet extends ItemSheet {
       filteredSelectedItems = formData.selectedItems.filter((i) => i);
     }
 
-    const uninstallableItems = [];
-
+    // Final list of uninstalled items.
+    const uninstallItemList = [];
+    // Push to the list if it was installed, but isn't anymore.
     installedItems.forEach((item) => {
       if (!filteredSelectedItems.includes(item._id)) {
-        uninstallableItems.push(item);
+        uninstallItemList.push(item);
       }
     });
 
-    const installableItems = [];
-
+    // Final list of installed items.
+    const installItemList = [];
+    // Push to the list if it wasn't installed, but is now.
     filteredSelectedItems.forEach((itemId) => {
       if (installedItems.filter((item) => item._id === itemId).length === 0) {
         const installedItem = !actor
-          ? fromUuidSync(itemId)
+          ? game.items.get(itemId)
           : actor.getOwnedItem(itemId);
-        installableItems.push(installedItem);
+        installItemList.push(installedItem);
       }
     });
 
     const promptResult = {
-      uninstallableItems,
-      installableItems,
+      uninstallItemList,
+      installItemList,
     };
 
     return promptResult;

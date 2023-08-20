@@ -77,14 +77,15 @@ export default class CPRCyberdeckItem extends CPRItem {
   }
 
   /**
-   * Uninstall programs from the Cyberdeck
+   * Special logic for uninstalling programs. Note, this should rarely be called
+   * outside of `item.uninstallItems()`. Use that method to uninstall any programs,
+   * and this will automatically be called.
    *
    * @public
    * @param {Array} programs      - Array of CPRItem programs
    */
   async uninstallPrograms(programs) {
     LOGGER.trace("uninstallPrograms | CPRCyberdeckItem | Called.");
-    await this.uninstallItems(programs);
     const tokenList = [];
     let sceneId;
     for (const program of programs) {

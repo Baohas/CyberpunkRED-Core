@@ -51,6 +51,45 @@ const Container = function Container() {
   };
 
   /**
+   * Get an array of items that can be installed in this item,
+   * whether they are installed or not.
+   *
+   * @param {String} type - Optionally return a list of a specific item type
+   * @returns {Array} - Array of objects that are installed
+   */
+  this.getInstallableItems = function getInstallableItems(type = false) {
+    LOGGER.trace("getInstalableItems | Container | Called.");
+    const actor = this.isOwned ? this.actor : false;
+    // If a type is provided as an argument, then that is the only allowed type.
+    // Otherwise, go with the configured values.
+    const allowedTypes = type
+      ? [type]
+      : this.system.installedItems.allowedTypes;
+
+    // If there is an actor, get owned items. Else, get world items.
+    let installableItems = [];
+    if (actor) {
+      installableItems = actor.items.filter((i) =>
+        allowedTypes.includes(i.type)
+      );
+    } else {
+      installableItems = game.items.filter((i) =>
+        allowedTypes.includes(i.type)
+      );
+    }
+
+    // Filter out item upgrades that don't fit this item type.
+    installableItems = installableItems.filter((i) => {
+      if (i.type === "itemUpgrade" && this.type !== i.system.type) {
+        return false;
+      }
+      return true;
+    });
+
+    return installableItems;
+  };
+
+  /**
    * Get an array of the objects installed in this Item. An optional
    * string parameter may be passed to filter the return list by a
    * specific Item type.
@@ -207,77 +246,66 @@ const Container = function Container() {
    * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
    */
   this.uninstallItems = async function uninstallItems(
-    itemList,
+    uninstallList,
     recursive = false
   ) {
     LOGGER.trace("uninstallItems | Container | Called.");
-    if (!Array.isArray(itemList)) {
+    if (!Array.isArray(uninstallList)) {
       return Promise.reject(
         new Error(
-          `Container.installItems argument is not an array: ${itemList}`
+          `Container.uninstallItems argument is not an array: ${uninstallList}`
         )
       );
     }
-
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     const actor = this.isOwned ? this.actor : false;
+    // Duplicate the currenlty installed items.
+    const installedIds = duplicate(this.system.installedItems.list);
 
-    const installedItems = duplicate(this.system.installedItems);
-    const updateList = [];
+    for (const item of uninstallList) {
+      // Get index of uninstalled item. Remove UUID option eventually.
+      const index =
+        installedIds.indexOf(item.id) || installedIds.indexOf(item.uuid);
+      // Remove that entry.
+      installedIds.splice(index, 1);
 
-    const uninstallList = JSON.parse(JSON.stringify(itemList));
+      // Update the item being uninstalled.
+      await item.update({
+        "system.isInstalled": false,
+        "system.installedIn": "",
+      });
 
-    for (const item of itemList) {
-      installedItems.list = installedItems.list.filter(
-        (uuid) => item.uuid !== uuid
-      );
-      installedItems.usedSlots =
-        installedItems.usedSlots < item.system.size
-          ? 0
-          : installedItems.usedSlots - item.system.size;
+      // Handle recursion - Uninstall items installed in items from `uninstallList`.
       if (recursive && containerTypes.includes(item.type)) {
-        let embeddedItemList = item.getInstalledItems();
-
-        while (embeddedItemList.length > 0) {
-          let updatedEmbeddedItemList = [];
-          for (const embeddedItem of embeddedItemList) {
-            uninstallList.push(embeddedItem);
-            if (
-              containerTypes.includes(embeddedItem.type) &&
-              embeddedItem.system.installedItems.list.length > 0
-            ) {
-              updatedEmbeddedItemList = updatedEmbeddedItemList.concat(
-                embeddedItem.getInstalledItems()
-              );
-            }
-          }
-          embeddedItemList = updatedEmbeddedItemList;
+        const recursiveUninstalled = item.getInstalledItems();
+        if (recursiveUninstalled.length > 0) {
+          await item.uninstallItems(recursiveUninstalled, true);
         }
       }
     }
 
-    const equippableTypes = SystemUtils.GetTemplateItemTypes("equippable");
+    // Programs require some special actions like setting isRezzed to false,
+    // and deleting any Black Ice tokens from the canvas, if applicable.
+    // Those are handled in `cyberdeck.uninstallPrograms()`.
+    const uninstalledPrograms = uninstallList.filter(
+      (i) => i.type === "program"
+    );
+    if (uninstalledPrograms.length > 0 && this.type === "cyberdeck") {
+      await this.uninstallPrograms(uninstalledPrograms);
+    }
 
-    uninstallList.forEach((item) => {
-      const updateData = {
-        _id: item._id,
-        "system.isInstalled": false,
-        "system.installedIn": "",
-      };
-      if (recursive) {
-        updateData["system.installedItems.list"] = [];
-        updateData["system.installedItems.usedSlots"] = 0;
-      }
-      if (equippableTypes.includes(item.type)) {
-        updateData["system.equipped"] = item.isOwned ? "carried" : "owned";
-      }
-      updateList.push(updateData);
+    // Update used slots with the newly installed system.
+    let usedSlots = 0;
+    installedIds.forEach((i) => {
+      const item = actor ? actor.getOwnedItem(i) : game.items.get(i);
+      usedSlots += item.system.size;
     });
 
-    updateList.push({ _id: this.id, "system.installedItems": installedItems });
-    return !actor
-      ? this.update({ "system.installedItems": installedItems })
-      : actor.updateEmbeddedDocuments("Item", updateList);
+    // Update the item with the new list and used slots.
+    return this.update({
+      "system.installedItems.list": installedIds,
+      "system.installedItems.usedSlots": usedSlots,
+    });
   };
 
   /**
