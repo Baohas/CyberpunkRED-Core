@@ -12,6 +12,9 @@
         "_key": {
           "$ref": "./components/key.json"
         },
+        "_stats": {
+          "$ref": "./components/stats.json"
+        },
         "effects": {
           "$ref": "./components/effects.json"
         },
@@ -32,7 +35,16 @@
           "$ref": "#/definitions/System"
         }
       },
-      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
+      "required": [
+        "_id",
+        "_key",
+        "_stats",
+        "effects",
+        "img",
+        "name",
+        "system",
+        "type"
+      ]
     },
     "System": {
       "type": "object",
@@ -60,16 +72,16 @@
           "$ref": "./components/valuable/price.json"
         },
         "sdp": {
-          "type": "integer"
+          "type": "number"
         },
         "seats": {
-          "type": "integer"
+          "type": "number"
         },
         "source": {
           "$ref": "./components/common/source.json"
         },
         "speedCombat": {
-          "type": "integer"
+          "type": "number"
         },
         "speedNarrative": {
           "type": "string"
