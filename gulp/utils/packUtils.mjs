@@ -559,11 +559,6 @@ export default class PackUtils {
           10
         );
       }
-
-      // Run the function over any effects
-      if (data.effects) {
-        data.effects.forEach((i) => this.cleanPackData(i));
-      }
     }
     return data;
   }
