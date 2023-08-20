@@ -1,5 +1,12 @@
 _id: rW0qJ4pY3g4gK7yP
 _key: "!items!rW0qJ4pY3g4gK7yP"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects: []
 img: icons/svg/item-bag.svg
 name: Fashionware (7 Option Slots)

@@ -1,5 +1,12 @@
 _id: ka6ccQeTt7ud3pFi
 _key: "!items!ka6ccQeTt7ud3pFi"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects:
   - bSalB1is9PwUW4HE
   - 6eJSLpqij03VxIFa

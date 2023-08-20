@@ -1,5 +1,12 @@
 _id: wSx9q7TVUJevCu8w
 _key: "!items!wSx9q7TVUJevCu8w"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/co2-tank.svg
 name: CO2 Tank

@@ -1,5 +1,12 @@
 _id: GPgc2QczR4H1rYPj
 _key: "!items!GPgc2QczR4H1rYPj"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/gear/tech_tool.svg
 name: Techtool

@@ -1,5 +1,12 @@
 _id: v6QgCemk6DInkpZJ
 _key: "!items!v6QgCemk6DInkpZJ"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
 name: High Fashion Jewelry

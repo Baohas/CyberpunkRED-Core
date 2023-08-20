@@ -1,5 +1,12 @@
 _id: u3PSLc6L0OGt8wcQ
 _key: "!items!u3PSLc6L0OGt8wcQ"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects: []
 img: >-
   systems/cyberpunk-red-core/icons/compendium/midnight-with-the-upload/combat_recorder.svg

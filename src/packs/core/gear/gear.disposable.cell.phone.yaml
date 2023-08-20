@@ -1,5 +1,12 @@
 _id: OjMJ2SyoMr4VWmnm
 _key: "!items!OjMJ2SyoMr4VWmnm"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/gear/disposable_cellphone.svg
 name: Disposable Cell Phone

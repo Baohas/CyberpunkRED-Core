@@ -1,5 +1,12 @@
 _id: Cq0h1I75g6Q4NM1h
 _key: "!items!Cq0h1I75g6Q4NM1h"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects: []
 img: icons/weapons/daggers/dagger-straight-blue.webp
 name: Dagger

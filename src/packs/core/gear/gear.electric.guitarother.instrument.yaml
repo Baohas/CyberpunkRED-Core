@@ -1,5 +1,12 @@
 _id: aiX4CSRjs0oKGIFK
 _key: "!items!aiX4CSRjs0oKGIFK"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/gear/electric_guitar.svg
 name: Electric Guitar/Other Instrument
