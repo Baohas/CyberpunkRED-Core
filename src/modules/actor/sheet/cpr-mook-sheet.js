@@ -123,7 +123,11 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       const localizedName = SystemUtils.Localize(
         `CPR.global.itemType.skill.${slug}`
       );
-      const skillName = s.system.core ? localizedName : s.name;
+      const skillName =
+        // Ensure that the skill isn't already localized
+        s.system.core && localizedName.split(".").length == 1
+          ? localizedName
+          : s.name;
       const skillRef = {
         id: s.id,
         name: skillName,
