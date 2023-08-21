@@ -452,6 +452,18 @@ export class CPRFacedownRoll extends CPRStatRoll {
     this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-facedown-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-facedown-rollcard.hbs`;
   }
+
+  /**
+   * This override is where the stat value is included in the roll results.
+   *
+   * @override
+   * @private
+   * @returns {Number}
+   */
+  _computeBase() {
+    LOGGER.trace("_computeBase | CPRStatRoll | Called.");
+    return super._computeBase() + this.repValue;
+  }
 }
 
 /**

@@ -3,6 +3,7 @@
 import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import TextUtils from "../utils/TextUtils.js";
 import CPRActiveEffect from "../cpr-active-effect.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 
@@ -1213,11 +1214,11 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Strip all <html> tags from a string
+   * Sanitize a string to remove Foundry @UUID references and sanitize HTML
    */
-  Handlebars.registerHelper("cprStripHtml", (string) => {
+  Handlebars.registerHelper("cprSanitizeText", (string) => {
     LOGGER.trace("cprStripHtml | handlebarsHelper | Called.");
-    return SystemUtils.stripHTML(string);
+    return TextUtils.sanitizeEnrichedText(string);
   });
 
   /**
