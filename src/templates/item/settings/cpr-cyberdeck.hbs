@@ -17,14 +17,14 @@
       {{#if (cprListContains "speed,attack,defense" program.system.class) }}
         {{program.name}} ({{localize program.system.class}})
         <a class="program-uninstall text-padding-left-normal"
-           data-item-id="{{program.uuid}}">
+           data-item-id="{{program.id}}">
           <i class="fas fa-folder-minus"
              data-tooltip="{{localize "CPR.itemSheet.cyberdeck.eraseProgram"}}"></i>
         </a>
       {{else}}
         {{program.name}} ({{localize (cprFindConfigValue "programClassList" program.system.class)}})
         <a class="program-uninstall text-padding-left-smaller"
-           data-item-id="{{program.uuid}}">
+           data-item-id="{{program.id}}">
           <i class="fas fa-folder-minus"
              data-tooltip="{{localize "CPR.itemSheet.cyberdeck.eraseProgram"}}"></i>
         </a>

@@ -949,17 +949,11 @@ export default class CPRItemSheet extends ItemSheet {
     const { item } = this;
     const actor = this.item.isOwned ? this.item.actor : null;
 
-    const installedItem = !actor
-      ? fromUuidSync(installedItemId)
-      : actor.getOwnedItem(installedItemId);
+    const installedItem = actor
+      ? actor.getOwnedItem(installedItemId)
+      : game.items.get(installedItemId);
 
-    if (installedItem.type === "program") {
-      await item.uninstallPrograms([installedItem]);
-    }
-
-    if (installedItem.type === "itemUpgrade") {
-      await item.syncUpgrades();
-    }
+    item.uninstallItems([installedItem]);
   }
 
   async _roleAbilityAction(event) {
