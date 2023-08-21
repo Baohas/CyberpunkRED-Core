@@ -1,4 +1,4 @@
-/* globals foundry */
+/* globals foundry parseUuid */
 
 import LOGGER from "../../../utils/cpr-logger.js";
 import StatSchema from "../components/stat-schema.js";
@@ -57,7 +57,7 @@ export default class CommonSchema extends foundry.abstract.DataModel {
           { initial: ["cyberware"] }
         ),
         list: new fields.ArrayField(
-          new fields.StringField({ required: true, blank: true }),
+          new fields.DocumentIdField({ required: true }),
           { initial: [] }
         ),
       }),
@@ -73,5 +73,24 @@ export default class CommonSchema extends foundry.abstract.DataModel {
         }),
       }),
     };
+  }
+
+  static migrateData(source) {
+    LOGGER.trace("migrateData");
+    if (source.installedItems?.list.length > 0) {
+      const installed = source.installedItems.list;
+      // eslint-disable-next-line no-param-reassign
+      source.installedItems.list = installed.map((i) => {
+        if (foundry.data.validators.isValidId(i)) {
+          return i;
+        }
+        const parsedUuid = parseUuid(i);
+        const index = parsedUuid.embedded.indexOf("Item") + 1;
+        return parsedUuid.documentType === "Item"
+          ? parsedUuid.documentId
+          : parsedUuid.embedded[index];
+      });
+    }
+    return super.migrateData(source);
   }
 }

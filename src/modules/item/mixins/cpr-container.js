@@ -38,11 +38,12 @@ const Container = function Container() {
    */
   this.getInstalledItems = function getInstalledItems(type = false) {
     LOGGER.trace("getInstalledItems | Container | Called.");
+    const actor = this.isOwned ? this.actor : false;
 
     const installedItems = [];
 
-    this.system.installedItems.list.forEach((uuid) => {
-      const item = fromUuidSync(uuid);
+    this.system.installedItems.list.forEach((id) => {
+      const item = actor ? actor.getOwnedItem(id) : game.items.get(id);
       if (!type || item.type === type) {
         installedItems.push(item);
       }
@@ -185,6 +186,7 @@ const Container = function Container() {
    */
   this.installItems = async function installItems(itemList) {
     LOGGER.trace("_installItems | Container | Called.");
+    // Make sure this function is passed an array.
     if (!Array.isArray(itemList)) {
       return Promise.reject(
         new Error(`CPRItem.installItems argument is not an array: ${itemList}`)
@@ -192,7 +194,7 @@ const Container = function Container() {
     }
 
     const updateList = [];
-
+    // Make sure we can actually install the items in this list.
     if (!this.canInstallItems(itemList)) {
       return updateList;
     }
@@ -203,22 +205,29 @@ const Container = function Container() {
     const equippableTypes = SystemUtils.GetTemplateItemTypes("equippable");
 
     itemList.forEach((item) => {
+      // No need to install it, it it's already installed.
       if (!installedItems.list.includes(item.uuid)) {
+        // Add installed item to the target's list.
         installedItems.list.push(item.uuid);
+        // Update target's used slots.
+        installedItems.usedSlots += item.system.size;
+        // Update the installed item itself.
+        const itemData = {
+          _id: item.id,
+          "system.isInstalled": true,
+          "system.installedIn": this.uuid,
+        };
+        // Set equipped status of the newly installed item.
+        if (equippableTypes.includes(item.type)) {
+          itemData["system.equipped"] = equippableTypes.includes(this.type)
+            ? this.system.equipped
+            : "equipped";
+        }
+        // Push the installed item data
+        updateList.push(itemData);
       }
-      installedItems.usedSlots += item.system.size;
-      const itemData = {
-        _id: item.id,
-        "system.isInstalled": true,
-        "system.installedIn": this.uuid,
-      };
-      if (equippableTypes.includes(item.type)) {
-        itemData["system.equipped"] = equippableTypes.includes(this.type)
-          ? this.system.equipped
-          : "equipped";
-      }
-      updateList.push(itemData);
     });
+    // Push the data for the target item to the update list.
     updateList.push({ _id: this.id, "system.installedItems": installedItems });
 
     return !actor
@@ -328,23 +337,11 @@ const Container = function Container() {
     const equipTypes = SystemUtils.GetTemplateItemTypes("equippable");
     const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
     const creationList = [];
-    for (const installedUUID of this.system.installedItems.list) {
-      const installedItem = fromUuidSync(installedUUID);
-      if (installedItem?.actor?._id !== actor._id) {
-        const newItemData = installedItem.toObject();
-        if (equipTypes.includes(installedItem.type)) {
-          newItemData.system.equipped = "carried";
-        }
-        newItemData.system.isInstalled = !!actor;
-        newItemData.system.installedIn = actor ? this.uuid : "";
-        creationList.push({
-          name: newItemData.name,
-          img: newItemData.img,
-          type: newItemData.type,
-          system: newItemData.system,
-          effects: duplicate(newItemData.effects),
-        });
-      }
+    for (const installedId of this.system.installedItems.list) {
+      const installedItem = actor
+        ? actor.getOwnedItem(installedId)
+        : game.items.get(installedId);
+      creationList.push(installedItem.toObject());
     }
 
     const newInstalledList = [];
@@ -369,30 +366,16 @@ const Container = function Container() {
             ? folderList[0]
             : await Folder.create({ name: folderName, type: "Item" });
         for (const item of creationList) {
-          const newItem = await Item.create({
-            name: item.name,
-            type: item.type,
-            img: item.img,
-            system: item.system,
-            effects: duplicate(item.effects),
-            folder: workingFolder,
-          });
+          item.folder = workingFolder;
+          item.system.isInstalled = true;
+          item.system.installedIn = this.id;
+          const newItem = await Item.create(item);
           createdItems.push(newItem);
         }
       }
       for (const item of createdItems) {
-        newInstalledList.push(item.uuid);
+        newInstalledList.push(item.id);
       }
-    }
-
-    this.system.installedItems.list = newInstalledList;
-
-    if (this.type === "cyberdeck") {
-      await this.syncPrograms();
-    }
-
-    if (upgradableTypes.includes(this.type)) {
-      await this.syncUpgrades();
     }
 
     return !actor

@@ -18,64 +18,6 @@ export default class CPRCyberdeckItem extends CPRItem {
    * The methods below apply to the CPRItem.type = "cyberdeck"
    */
 
-  async syncPrograms() {
-    LOGGER.trace("syncPrograms | CPRCyberdeckItem | Called.");
-
-    const actor = this.isOwned ? this.actor : false;
-
-    /*
-    if (!actor) {
-      return Promise.reject(new Error("Can not install upgrades in unowned objects."));
-    }
-    */
-
-    const installedItems = duplicate(this.system.installedItems);
-
-    const uninstallList = [];
-    for (const program of this.system.installedPrograms) {
-      if (!installedItems.list.includes(program.uuid)) {
-        const item = !actor
-          ? game.items.get(program.id)
-          : actor.getOwnedItem(program.uuid);
-        if (item) {
-          uninstallList.push(item);
-        }
-      }
-    }
-
-    const installList = [];
-    for (const uuid of installedItems.list) {
-      const item = !actor ? fromUuidSync(uuid) : actor.getOwnedItem(uuid);
-      if (item && item.type === "program") {
-        if (
-          this.system.installedPrograms.filter((p) => p.uuid === uuid)
-            .length === 0
-        ) {
-          installList.push(item);
-        }
-      }
-    }
-    if (uninstallList.length > 0) {
-      await this.uninstallPrograms(uninstallList);
-    }
-
-    if (installList.length > 0) {
-      await this.installItems(installList);
-    }
-
-    const allUpdates = installList.concat(uninstallList);
-    const updateList = [];
-    for (const item of allUpdates) {
-      if (typeof item._id !== "undefined") {
-        updateList.push({ _id: item._id, system: item.system });
-      }
-    }
-    updateList.push({ _id: this._id, system: this.system });
-    return !actor
-      ? this.update({ system: this.system })
-      : actor.updateEmbeddedDocuments("Item", updateList);
-  }
-
   /**
    * Special logic for uninstalling programs. Note, this should rarely be called
    * outside of `item.uninstallItems()`. Use that method to uninstall any programs,

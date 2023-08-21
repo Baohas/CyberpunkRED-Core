@@ -1209,7 +1209,7 @@ export default class CPRItemSheet extends ItemSheet {
       header: dialogPromptText,
       typeList,
       itemsList: installableItems,
-      selectedItems: installedItems.map((i) => i.uuid),
+      selectedItems: installedItems.map((i) => i.id),
       itemType: dialogItemType,
     };
 
