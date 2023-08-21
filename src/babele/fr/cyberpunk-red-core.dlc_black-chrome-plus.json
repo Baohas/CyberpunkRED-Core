@@ -3,7 +3,7 @@
   "entries": {
     "Arrow (Junk)": {
       "name": "Flèche (Camelote)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
+      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
     },
     "Big Dreem Rounds": {
       "name": "Big Dreem munitions",
@@ -19,7 +19,7 @@
     },
     "Medium Pistol (Junk)": {
       "name": "Pistolet moyen (camelote)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
+      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
     },
     "Medium Pistol (Small Game)": {
       "name": "Pistolet Moyen (Petit gibier)",
@@ -27,7 +27,7 @@
     },
     "Rifle (Junk)": {
       "name": "Fusil (camelote)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
+      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
     },
     "Rifle (Small Game)": {
       "name": "Fusil (Petit gibier)",
@@ -35,11 +35,11 @@
     },
     "Shotgun Slug (Junk)": {
       "name": "Slug de fusil à pompe (camelote)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
+      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
     },
     "Very Heavy Pistol (Junk)": {
       "name": "Pistolet très lourd (camelote)",
-      "description": "<p>Junk ammo; cheap but deals 1d6 less damage against anyone with 1SP or more.</p>"
+      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
     },
     "Very Heavy Pistol (Small Game)": {
       "name": "Pistolet très lourd (Petit gibier)",
@@ -55,7 +55,7 @@
     },
     "Bullet To Slug Adapter Casings": {
       "name": "Douilles adaptatrices balles vers slugs",
-      "description": "<p>Make any bullet able to be fired as a shotgun slug.</p>\n<p>A box of Bullet to Slug Adapter Casings comes with 10 casings.</p>\n<p>You can load 10 bullets into 10 adapters using the included jig in an Action. If loading by hand it takes an Action to load 1 bullet.</p>"
+      "description": "<p>Permet de tirer n'importe quelle balle en tant que slug de fusil à pompe.</p>\n<p>Vendue en boîte de 10 douilles adaptatrices.</p>\n<p>Vous pouvez charger en une Action 10 balles dans 10 adaptateurs en utilisant le casier inclus. Si le chargement est effectué balle par balle il faut une Action pour charger 1 adaptateur.</p>"
     },
     "Solo of Fortune Bodypillow": {
       "name": "Traversin Solo of Fortune",
@@ -67,7 +67,7 @@
     },
     "Hello Cutie 1TruLuv": {
       "name": "Hello Cutie 1TruLuv",
-      "description": "<p>Exotic Sniper Rifle. Can load non basic ammunition.</p>\n<p>Equipped with a Sniping Scope and Infrared Night Vision Scope*, and built-in Agent which includes a pseudo AI girlfriend who can recognize and talk to the owner.</p>\n<p>Take good care of it/her and use it/her regularly and the weapon improves. Neglect it/her and you'll have to apologize...</p>\n<p><em>* These upgrades need to be installed manually after adding to an actor<br></em></p>"
+      "description": "<p>Fusil de précision exotique. Peut charger des munitions non basiques.</p>\n<p>Équipé d'une lunette de précision, de la vision nocturne et infrarouge*, et un Agent intégré comprenant une IA pseudo petite amie qui peut reconnaître et parler au propriétaire de l'arme.</p>\n<p>Prenez bien soin d'elle/lui et utilisez-la/le et l'arme s'améliorera. Délaissez le/la et vous devrez vous excuser...</p>\n<p><em>* Ces améliorations doivent être installées manuellement après avoir ajouté l'arme à un acteur<br></em></p>"
     },
     "Molotov Cocktail": {
       "name": "Cocktail Molotov",

@@ -2,40 +2,40 @@
   "label": "Munición",
   "entries": {
     "Arachnid Grenade": {
-      "name": "Arachnid Grenade",
-      "description": "<p>A very sticky grenade, details of which can be found on page 86.</p>"
+      "name": "Granada Arácnida",
+      "description": "<p>Una granada muy pegajosa, cuyos detalles se pueden encontrar en la página 86.</p>"
     },
     "Arasaka Acid": {
-      "name": "Arasaka Acid",
-      "description": "<p>Coating for Arasaka Weeping Reaver Katana only.</p>"
+      "name": "Ácido de Arasaka",
+      "description": "<p>Recubrimiento para la Katana \"Atracador Llorón\" de Arasaka.</p>"
     },
     "Arasaka Fire": {
-      "name": "Arasaka Fire",
-      "description": "<p>Coating for Arasaka Weeping Reaver Katana only.</p>\n<p>Can set target on fire, details of which can be found on page 91.</p>"
+      "name": "Fuego de Arasaka",
+      "description": "<p>Recubrimiento para la Katana \"Atracador Llorón\" de Arasaka.</p>\n<p>Puede poner el objetivo en llamas, detalles de los cuales se pueden encontrar en la página 91.</p>"
     },
     "Arasaka Wound Salt": {
-      "name": "Arasaka Wound Salt",
-      "description": "<p>Coating for Arasaka Weeping Reaver Katana only.</p>\n<p>Able to apply a second a seconde Critical Injury, details of which can be found on page 91.</p>"
+      "name": "Sal de Herida de Arasaka",
+      "description": "<p>Recubrimiento para la Katana \"Atracador Llorón\" de Arasaka.</p>\n<p>Capaz de aplicar un segundo una segunda lesión crítica, cuyos detalles se pueden encontrar en la página 91.</p>"
     },
     "Doberman 500 Marking Scent": {
-      "name": "Doberman 500 Marking Scent",
-      "description": "<p>Special Ammo Type for the Air Pistol. For more information, see Black Chrome Page 44.</p>"
+      "name": "Doberman 500 Perfume Marcador",
+      "description": "<p>Tipo de munición especial para la Pistola del Aire. Para obtener más información, consulte la página del Cromo Negro 44.</p>"
     },
     "Net": {
-      "name": "Net",
-      "description": "<p>Net for the net launcher that grapples the target on hit. (See Black Chrome Pg. 20-21 for more details)</p>"
+      "name": "Red",
+      "description": "<p>Red para el lanzador de redes que atrapa al objetivo al golpear. (Ver Cromo Negro Pg. 20-21 para más detalles)</p>"
     },
     "Rocks": {
-      "name": "Rocks",
-      "description": "<p>Ammunition for the Nomad Rocker.</p>"
+      "name": "Rocas",
+      "description": "<p>Munición para el Lanza-Rocas Nómada.</p>"
     },
     "Security Grenade": {
-      "name": "Security Grenade",
-      "description": "<p>Armor piercing Grenade that doesn't damage cover. Full rules can be found on page 89.</p>"
+      "name": "Granada de Seguridad",
+      "description": "<p>Granada perforadora de armadura que no daña la cobertura. Puede encontrar reglas completas en la página 89.</p>"
     },
     "Shuriken Tornado Grenade": {
-      "name": "Shuriken Tornado Grenade",
-      "description": "<p>A literal explosion of shurikens. Can apply second Critical Injury, details of which can be found on page 87.</p>"
+      "name": "Granada de Tornado de Shuriken",
+      "description": "<p>Una explosión literal de shurikens. Puede aplicar una segunda lesión crítica, detalles de los cuales se pueden encontrar en la página 87.</p>"
     }
   }
 }

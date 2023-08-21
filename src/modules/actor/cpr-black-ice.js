@@ -140,7 +140,7 @@ export default class CPRBlackIceActor extends Actor {
     atk,
     def,
     rezValue,
-    effect,
+    notes,
     rezMax = null
   ) {
     LOGGER.trace("programmaticallyUpdate | CPRBlackIceActor | called.");
@@ -152,7 +152,7 @@ export default class CPRBlackIceActor extends Actor {
     setProperty(cprData, "stats.atk", atk);
     setProperty(cprData, "stats.def", def);
     setProperty(cprData, "stats.rez.value", rezValue);
-    setProperty(cprData, "effect", SystemUtils.stripHTML(effect));
+    setProperty(cprData, "notes", notes);
     // this is only passed on Creation, never update
     if (rezMax !== null) {
       setProperty(cprData, "stats.rez.max", rezMax);

@@ -5,21 +5,21 @@
       "name": "Todos los Otros Pisos (Avanzado)",
       "results": [
         {
-          "3-3": "Hellhound",
+          "3-3": "Perro del Infierno",
           "4-4": "Aspid x2",
-          "5-5": "Hellhound, Killer",
-          "6-6": "Hellhound",
+          "5-5": "Perro del Infierno, Asesino",
+          "6-6": "Perro del Infierno",
           "7-7": "Perro del Infierno, Dientes de Sable",
-          "8-8": "Hellhound",
-          "9-9": "Password DV10",
-          "10-10": "File DV10",
-          "11-11": "Control Node DV10",
-          "12-12": "Password DV10",
-          "13-13": "Asp",
-          "14-14": "Asp",
-          "15-15": "Dragon",
-          "16-16": "Asp",
-          "17-17": "Dragon, Wisp",
+          "8-8": "Perro del Infierno",
+          "9-9": "Contraseña VD10",
+          "10-10": "Archivo VD10",
+          "11-11": "Nodo de Control VD10",
+          "12-12": "Contraseña VD10",
+          "13-13": "Aspid",
+          "14-14": "Aspid",
+          "15-15": "Dragón",
+          "16-16": "Aspid",
+          "17-17": "Dragón, Fuego Fatuo",
           "18-18": "Dragón x2"
         }
       ]
@@ -29,21 +29,21 @@
       "results": [
         {
           "3-3": "Perro del Infierno",
-          "4-4": "Asp x2",
-          "5-5": "Hellhound, Killer",
+          "4-4": "Aspid x2",
+          "5-5": "Perro del Infierno, Asesino",
           "6-6": "Perro del Infierno",
-          "7-7": "Hellhound, Sabertooth",
-          "8-8": "Hellhound",
-          "9-9": "Password DV10",
-          "10-10": "File DV10",
-          "11-11": "Control Node DV10",
-          "12-12": "Password DV10",
-          "13-13": "Asp",
+          "7-7": "Perro del Infierno, Dientes de Sable",
+          "8-8": "Perro del Infierno",
+          "9-9": "Contraseña VD10",
+          "10-10": "Archivo VD10",
+          "11-11": "Nodo de Control VD10",
+          "12-12": "Contraseña VD10",
+          "13-13": "Aspid",
           "14-14": "Aspid",
-          "15-15": "Dragon",
-          "16-16": "Asp",
-          "17-17": "Dragon, Wisp",
-          "18-18": "Dragon x2"
+          "15-15": "Dragón",
+          "16-16": "Aspid",
+          "17-17": "Dragón, Fuego Fatuo",
+          "18-18": "Dragón x2"
         }
       ]
     },
@@ -51,22 +51,22 @@
       "name": "Todos los Otros Pisos (Estándar)",
       "results": [
         {
-          "3-3": "Hellhound",
-          "4-4": "Asp x2",
-          "5-5": "Hellhound, Killer",
-          "6-6": "Hellhound",
-          "7-7": "Hellhound, Sabertooth",
+          "3-3": "Perro del Infierno",
+          "4-4": "Aspid x2",
+          "5-5": "Perro del Infierno, Asesino",
+          "6-6": "Perro del Infierno",
+          "7-7": "Perro del Infierno, Dientes de Sable",
           "8-8": "Perro del Infierno",
-          "9-9": "Password DV10",
-          "10-10": "File DV10",
-          "11-11": "Control Node DV10",
-          "12-12": "Password DV10",
+          "9-9": "Contraseña VD10",
+          "10-10": "Archivo VD10",
+          "11-11": "Nodo de Control VD10",
+          "12-12": "Contraseña VD10",
           "13-13": "Aspid",
-          "14-14": "Asp",
-          "15-15": "Dragon",
+          "14-14": "Aspid",
+          "15-15": "Dragón",
           "16-16": "Aspid",
-          "17-17": "Dragon, Wisp",
-          "18-18": "Dragon x2"
+          "17-17": "Dragón, Fuego Fatuo",
+          "18-18": "Dragón x2"
         }
       ]
     },
@@ -74,22 +74,22 @@
       "name": "Todos los Otros Pisos (Poco Común)",
       "results": [
         {
-          "3-3": "Hellhound",
-          "4-4": "Asp x2",
+          "3-3": "Perro del Infierno",
+          "4-4": "Aspid x2",
           "5-5": "Perro del Infierno, Asesino",
-          "6-6": "Hellhound",
-          "7-7": "Hellhound, Sabertooth",
+          "6-6": "Perro del Infierno",
+          "7-7": "Perro del Infierno, Dientes de Sable",
           "8-8": "Perro del Infierno",
           "9-9": "Contraseña VD10",
           "10-10": "Archivo VD10",
           "11-11": "Nodo de Control VD10",
           "12-12": "Contraseña VD10",
-          "13-13": "Asp",
-          "14-14": "Asp",
+          "13-13": "Aspid",
+          "14-14": "Aspid",
           "15-15": "Dragón",
-          "16-16": "Asp",
+          "16-16": "Aspid",
           "17-17": "Dragón, Fuego Fatuo",
-          "18-18": "Dragon x2"
+          "18-18": "Dragón x2"
         }
       ]
     },
