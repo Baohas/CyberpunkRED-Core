@@ -1,5 +1,5 @@
 /* eslint-disable foundry-cpr/logger-after-function-definition */
-/* global duplicate */
+/* global game */
 
 import CPRMigration from "../cpr-migration.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
@@ -55,7 +55,7 @@ export default class NullStatsMigration extends CPRMigration {
             createdTime: 1692463494866,
             lastModifiedBy: "Tk20S39ggUnMuKpt",
             modifiedTime: 1692463494866,
-            systemId: "cyberpunk-red-core",
+            systemId: game.system.id,
             systemVersion: "v0.87.6",
           },
         });
