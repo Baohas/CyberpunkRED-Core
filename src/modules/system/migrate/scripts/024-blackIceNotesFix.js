@@ -5,12 +5,12 @@ import CPRMigration from "../cpr-migration.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
-export default class NullStatsMigration extends CPRMigration {
+export default class BlackIceNotesMigration extends CPRMigration {
   constructor() {
-    LOGGER.trace("constructor | Null Stats - Migration");
+    LOGGER.trace("constructor | Black Ice Notes - Migration");
     super();
     this.version = 24;
-    this.name = "Null Stats - Migration";
+    this.name = "Black Ice Notes - Migration";
   }
 
   /**
@@ -42,26 +42,22 @@ export default class NullStatsMigration extends CPRMigration {
   async migrateActor(actor) {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
     // Return if not Black Ice.
-    if (actor.token && !actor.token.actorLink) {
-      const nullStatItems = actor.items.filter((i) => {
-        return Object.values(i._stats).some((stat) => !stat);
-      });
-      const nullStatUpdates = [];
-      nullStatItems.forEach((i) => {
-        nullStatUpdates.push({
-          _id: i.id,
-          _stats: {
-            coreVersion: "10.303",
-            createdTime: 1692463494866,
-            lastModifiedBy: "Tk20S39ggUnMuKpt",
-            modifiedTime: 1692463494866,
-            systemId: "cyberpunk-red-core",
-            systemVersion: "v0.87.6",
-          },
-        });
-      });
-      return actor.updateEmbeddedDocuments("Item", nullStatUpdates);
+    if (actor.type !== "blackIce") {
+      return Promise.resolve();
     }
-    return Promise.resolve();
+
+    const updateData = duplicate(actor.system);
+
+    // Combine effects and notes.
+    const newNotes =
+      actor.system.effect?.length > 0 && actor.system.notes.length > 0
+        ? `${actor.system.effect}<hr>${actor.system.notes}`
+        : `${actor.system.effect}${actor.system.notes}`;
+
+    updateData.notes = newNotes;
+
+    // Remove now-unnecessary field.
+    updateData["-=effect"] = null;
+    return actor.update({ system: updateData });
   }
 }

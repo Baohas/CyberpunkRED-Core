@@ -9,7 +9,7 @@ export default class v11EffectsMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | JunkData Migration");
     super();
-    this.version = 20;
+    this.version = 21;
     this.name = "v11 Effects Migration";
   }
 
