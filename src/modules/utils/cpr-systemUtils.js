@@ -712,19 +712,6 @@ export default class CPRSystemUtils {
   }
 
   /**
-   * Strip out html markup from a string. This is done with a combination of jQuery to remove the
-   * html tags, and a JavaScript built-in to remove URL codes like "&nbsp;".
-   *
-   * @static
-   * @param {String} htmlString - the html string to convert into plain text
-   * @returns {String}
-   */
-  static stripHTML(htmlString) {
-    LOGGER.trace("stripHTML | CPRSystemUtils | Called.");
-    return new Handlebars.SafeString($("<div>").html(htmlString).text());
-  }
-
-  /**
    * Ensure something is a numeric and if it is not, log an error. Since this seems to be a common
    * occurrence and causes data corruption, logging an error which produces a stack trace will
    * be useful in determining where the issue is.
