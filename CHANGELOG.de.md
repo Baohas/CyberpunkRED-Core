@@ -20,6 +20,7 @@ This means any instances where you have dragged an item from a compendium into a
 ### Fehlerbehebungen
 
 - A couple of minor CSS fixes
+- Fix CSS colors on User Config pop out
 
 ### Änderungen
 
