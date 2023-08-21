@@ -12,7 +12,7 @@
   "CPR.actorSheets.commonActions.managePrograms": "Manage Programs",
   "CPR.actorSheets.commonActions.manageUpgrades": "Manage Upgrades",
   "CPR.actorSheets.commonActions.measureDv": "Measure DV",
-  "CPR.actorSheets.commonActions.new": "New",
+  "CPR.actorSheets.commonActions.new": "New {item}",
   "CPR.actorSheets.commonActions.reload": "Reload",
   "CPR.actorSheets.commonActions.removeUpgrade": "Remove Upgrade",
   "CPR.actorSheets.commonActions.repair": "Repair",
