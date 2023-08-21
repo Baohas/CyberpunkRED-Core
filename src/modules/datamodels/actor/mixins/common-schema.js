@@ -4,6 +4,7 @@ import LOGGER from "../../../utils/cpr-logger.js";
 import StatSchema from "../components/stat-schema.js";
 import DerivedStatsSchema from "../components/derivedStats-schema.js";
 import ExternalResourceSchema from "../components/external-resource-schema.js";
+import InstalledItemsSchema from "../../shared/installedItems-schema.js";
 import LedgerSchema from "../components/ledger-schema.js";
 
 export default class CommonSchema extends foundry.abstract.DataModel {
@@ -45,22 +46,9 @@ export default class CommonSchema extends foundry.abstract.DataModel {
         history: new fields.HTMLField({ initial: "" }),
         notes: new fields.HTMLField({ initial: "" }),
       }),
-      installedItems: new fields.SchemaField({
-        allowed: new fields.BooleanField({ initial: true }),
-        allowedTypes: new fields.ArrayField(
-          // Can this be blank?
-          new fields.StringField({
-            required: true,
-            blank: true,
-            choices: ["cyberware"],
-          }),
-          { initial: ["cyberware"] }
-        ),
-        list: new fields.ArrayField(
-          new fields.DocumentIdField({ required: true }),
-          { initial: [] }
-        ),
-      }),
+      installedItems: new fields.SchemaField(
+        InstalledItemsSchema.defineSchema(["cyberware"])
+      ),
       reputation: new fields.SchemaField(LedgerSchema.defineSchema()),
       roleInfo: new fields.SchemaField({
         activeNetRole: new fields.DocumentIdField({
@@ -77,20 +65,7 @@ export default class CommonSchema extends foundry.abstract.DataModel {
 
   static migrateData(source) {
     LOGGER.trace("migrateData");
-    if (source.installedItems?.list.length > 0) {
-      const installed = source.installedItems.list;
-      // eslint-disable-next-line no-param-reassign
-      source.installedItems.list = installed.map((i) => {
-        if (foundry.data.validators.isValidId(i)) {
-          return i;
-        }
-        const parsedUuid = parseUuid(i);
-        const index = parsedUuid.embedded.indexOf("Item") + 1;
-        return parsedUuid.documentType === "Item"
-          ? parsedUuid.documentId
-          : parsedUuid.embedded[index];
-      });
-    }
+    InstalledItemsSchema.migrateData(source);
     return super.migrateData(source);
   }
 }
