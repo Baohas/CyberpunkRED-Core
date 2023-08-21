@@ -125,7 +125,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       );
       const skillName =
         // Ensure that the skill isn't already localized
-        s.system.core && localizedName.split(".").length == 1
+        s.system.core && localizedName.split(".").length === 1
           ? localizedName
           : s.name;
       const skillRef = {

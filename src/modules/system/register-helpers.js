@@ -616,7 +616,7 @@ export default function registerHandlebarsHelpers() {
       );
       const localizedSkillName =
         // Ensure that the skill isn't already localized
-        skill.system.core && localizedName.split(".").length == 1
+        skill.system.core && localizedName.split(".").length === 1
           ? localizedName
           : skill.name;
       if (skill.system.level !== 0 || skill.system.skillmod > 0) {
