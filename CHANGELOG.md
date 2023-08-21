@@ -20,6 +20,7 @@ This means any instances where you have dragged an item from a compendium into a
 ### Bug Fixes
 
 - A couple of minor CSS fixes
+- Facedown rolls correctly include reputation value.
 - Fix CSS colors on User Config pop out
 - Fix Item Description tooltips in gear sheets to sanitize UUID references
 
