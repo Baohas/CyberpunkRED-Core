@@ -2,6 +2,7 @@
 
 import CPR from "../../../system/config.js";
 import LOGGER from "../../../utils/cpr-logger.js";
+import InstalledItemsSchema from "../../shared/installedItems-schema.js";
 
 export default class InstallableSchema extends foundry.abstract.DataModel {
   static defineSchema() {
@@ -12,9 +13,7 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
         initial: "mall",
         choices: Object.keys(CPR.cyberwareInstallList),
       }),
-      installedIn: new fields.StringField({
-        blank: true,
-      }),
+      installedIn: new fields.DocumentIdField({ blank: true }),
       isInstalled: new fields.BooleanField({ initial: false }),
       size: new fields.NumberField({
         required: true,
@@ -24,5 +23,14 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
         min: 0,
       }),
     };
+  }
+
+  static migrateData(source) {
+    LOGGER.trace("migrateData");
+    // eslint-disable-next-line no-param-reassign
+    source.installedIn = InstalledItemsSchema.migrateItemUuid(
+      source.installedIn
+    );
+    return super.migrateData(source);
   }
 }
