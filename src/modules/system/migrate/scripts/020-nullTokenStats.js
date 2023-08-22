@@ -71,11 +71,12 @@ export default class NullStatsMigration extends CPRMigration {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
     const updateItems = [];
     for (const item of actor.items) {
-      // eslint-disable-next-line no-await-in-loop
-      updateItems.push({
-        _id: item._id,
-        _stats: this.migrationStats,
-      });
+      if (item._stats && Object.values(item._stats).some((stat) => !stat)) {
+        updateItems.push({
+          _id: item._id,
+          _stats: this.migrationStats,
+        });
+      }
     }
     if (updateItems.length > 0) {
       await actor.updateEmbeddedDocuments("Item", updateItems);
