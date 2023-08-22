@@ -12,6 +12,9 @@
         "_key": {
           "$ref": "./components/key.json"
         },
+        "_stats": {
+          "$ref": "./components/stats.json"
+        },
         "effects": {
           "$ref": "./components/effects.json"
         },
@@ -32,14 +35,23 @@
           "$ref": "#/definitions/System"
         }
       },
-      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
+      "required": [
+        "_id",
+        "_key",
+        "_stats",
+        "effects",
+        "img",
+        "name",
+        "system",
+        "type"
+      ]
     },
     "System": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "atk": {
-          "type": "integer"
+          "type": "number"
         },
         "blackIceType": {
           "type": "string",
@@ -58,7 +70,7 @@
           "$ref": "#/definitions/ProgramDamage"
         },
         "def": {
-          "type": "integer"
+          "type": "number"
         },
         "description": {
           "$ref": "./components/common/description.json"
@@ -73,7 +85,7 @@
           "$ref": "./components/installable/installedIn.json"
         },
         "interface": {
-          "type": "integer"
+          "type": "number"
         },
         "isInstalled": {
           "$ref": "./components/installable/isInstalled.json"
@@ -84,7 +96,7 @@
           "const": false
         },
         "per": {
-          "type": "integer"
+          "type": "number"
         },
         "price": {
           "$ref": "./components/valuable/price.json"
@@ -96,7 +108,7 @@
           "$ref": "./components/effects/revealed.json"
         },
         "rez": {
-          "type": "integer"
+          "type": "number"
         },
         "size": {
           "$ref": "./components/installable/size.json"
@@ -105,7 +117,7 @@
           "$ref": "./components/common/source.json"
         },
         "spd": {
-          "type": "integer"
+          "type": "number"
         },
         "usage": {
           "$ref": "./components/effects/usage.json"

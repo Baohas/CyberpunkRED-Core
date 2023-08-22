@@ -1,5 +1,12 @@
 _id: lw6N5svBE702A6VE
 _key: "!items!lw6N5svBE702A6VE"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/upgrades/seating_upgrade.svg
 name: Seating Upgrade

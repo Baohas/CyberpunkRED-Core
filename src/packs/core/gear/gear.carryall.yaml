@@ -1,5 +1,12 @@
 _id: y2a4HDhIl7FlJyD7
 _key: "!items!y2a4HDhIl7FlJyD7"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/gear/carryall.svg
 name: Carryall

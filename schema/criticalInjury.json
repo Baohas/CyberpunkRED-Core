@@ -12,6 +12,9 @@
         "_key": {
           "$ref": "./components/key.json"
         },
+        "_stats": {
+          "$ref": "./components/stats.json"
+        },
         "effects": {
           "$ref": "./components/effects.json"
         },
@@ -32,7 +35,16 @@
           "$ref": "#/definitions/System"
         }
       },
-      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
+      "required": [
+        "_id",
+        "_key",
+        "_stats",
+        "effects",
+        "img",
+        "name",
+        "system",
+        "type"
+      ]
     },
     "System": {
       "type": "object",
@@ -84,11 +96,11 @@
       "additionalProperties": false,
       "properties": {
         "dvFirstAid": {
-          "type": "integer",
+          "type": "number",
           "enum": [0, 13]
         },
         "dvParamedic": {
-          "type": "integer",
+          "type": "number",
           "enum": [0, 13, 15]
         },
         "type": {
@@ -102,11 +114,11 @@
       "additionalProperties": false,
       "properties": {
         "dvParamedic": {
-          "type": "integer",
+          "type": "number",
           "enum": [0, 13, 15]
         },
         "dvSurgery": {
-          "type": "integer",
+          "type": "number",
           "enum": [0, 13, 15, 17]
         },
         "type": {

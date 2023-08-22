@@ -1,5 +1,12 @@
 _id: uApwuxpuIJMe47Vn
 _key: "!items!uApwuxpuIJMe47Vn"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects:
   - CMDlHoVTmNq5MRwZ
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/teleoptics.svg

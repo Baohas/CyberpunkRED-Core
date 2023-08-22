@@ -1,5 +1,12 @@
 _id: PRLDaeBVeMuBBIeO
 _key: "!items!PRLDaeBVeMuBBIeO"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects:
   - v688v2AQZUpGXV7t
   - R7hdY2qZux5j9oVJ

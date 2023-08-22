@@ -1,5 +1,12 @@
 _id: Z3iVuSFtma3Bx7SX
 _key: "!items!Z3iVuSFtma3Bx7SX"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects:
   - KkhtjtxpPv03U2Km
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/torn_muscle.svg

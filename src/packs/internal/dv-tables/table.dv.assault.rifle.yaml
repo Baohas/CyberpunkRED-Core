@@ -1,5 +1,12 @@
 _id: 9e3u59OJyL2w5TBX
 _key: "!tables!9e3u59OJyL2w5TBX"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 description: Core Rulebook Page 173
 displayRoll: false
 formula: ""

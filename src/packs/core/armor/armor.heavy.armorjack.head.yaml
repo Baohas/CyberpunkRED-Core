@@ -1,5 +1,12 @@
 _id: qLQYAFps9PrqMzUk
 _key: "!items!qLQYAFps9PrqMzUk"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Armor_Head.svg
 name: Heavy Armorjack (Head)

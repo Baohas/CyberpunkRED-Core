@@ -1,5 +1,12 @@
 _id: G7KBZHlRtEBGD6JY
 _key: "!items!G7KBZHlRtEBGD6JY"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects:
   - g80WDTq4XGjrJgJc
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/rapideploy-sheath.svg

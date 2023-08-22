@@ -12,6 +12,9 @@
         "_key": {
           "$ref": "./components/key.json"
         },
+        "_stats": {
+          "$ref": "./components/stats.json"
+        },
         "effects": {
           "$ref": "./components/effects.json"
         },
@@ -32,7 +35,16 @@
           "$ref": "#/definitions/System"
         }
       },
-      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
+      "required": [
+        "_id",
+        "_key",
+        "_stats",
+        "effects",
+        "img",
+        "name",
+        "system",
+        "type"
+      ]
     },
     "System": {
       "type": "object",
@@ -48,7 +60,7 @@
           "type": "boolean"
         },
         "bonusRatio": {
-          "type": "integer"
+          "type": "number"
         },
         "bonuses": {
           "type": "array",
@@ -85,7 +97,7 @@
           "$ref": "#/definitions/onByDefault"
         },
         "rank": {
-          "type": "integer",
+          "type": "number",
           "const": 4
         },
         "skill": {
@@ -132,7 +144,7 @@
       "additionalProperties": false,
       "properties": {
         "bonusRatio": {
-          "type": "integer"
+          "type": "number"
         },
         "bonuses": {
           "type": "array",
@@ -145,7 +157,7 @@
           "type": "boolean"
         },
         "index": {
-          "type": "integer"
+          "type": "number"
         },
         "isSituational": {
           "$ref": "#/definitions/isSituational"
@@ -177,7 +189,7 @@
           "$ref": "#/definitions/onByDefault"
         },
         "rank": {
-          "type": "integer",
+          "type": "number",
           "enum": [0, 4]
         },
         "skill": {

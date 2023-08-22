@@ -1,5 +1,12 @@
 _id: Aq3Fim1KykSIjtXU
 _key: "!items!Aq3Fim1KykSIjtXU"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects:
   - uL6ZlWV5CjTzQj2N
 img: systems/cyberpunk-red-core/icons/compendium/cyberweapons/wolvers.svg

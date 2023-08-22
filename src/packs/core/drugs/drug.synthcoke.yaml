@@ -1,5 +1,12 @@
 _id: CyYpPh89G7IYyryM
 _key: "!items!CyYpPh89G7IYyryM"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects:
   - maW3KSp6yjC85oUn
   - 9fYAbvg99knLYj9T

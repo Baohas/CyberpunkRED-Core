@@ -9,7 +9,7 @@ export default class BlackIceNotesMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | Black Ice Notes - Migration");
     super();
-    this.version = 23;
+    this.version = 24;
     this.name = "Black Ice Notes - Migration";
   }
 

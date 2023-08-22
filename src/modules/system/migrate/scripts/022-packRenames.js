@@ -11,7 +11,7 @@ export default class packNameMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | packNameMigration");
     super();
-    this.version = 21;
+    this.version = 22;
     this.name = "packName Migration";
   }
 

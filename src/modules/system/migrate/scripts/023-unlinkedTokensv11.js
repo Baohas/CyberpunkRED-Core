@@ -9,7 +9,7 @@ export default class v11TokenMigration extends CPRMigration {
   constructor() {
     LOGGER.trace("constructor | Unlinked Tokens (v11) Migration");
     super();
-    this.version = 22;
+    this.version = 23;
     this.name = "Unlinked Tokens (v11) Migration";
   }
 

@@ -1,5 +1,12 @@
 _id: Zp90Q36fQ769vmhp
 _key: "!items!Zp90Q36fQ769vmhp"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun_poor.svg
 name: Faisal's Dead or Alive
