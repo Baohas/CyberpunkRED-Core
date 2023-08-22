@@ -17,7 +17,6 @@ export default class CPRContainerActor extends Actor {
   static async create(data, options) {
     LOGGER.trace("create | CPRContainerActor | called.");
     const createData = data;
-    const newActor = typeof data.system === "undefined";
     if (typeof data.system === "undefined") {
       LOGGER.trace("create | New Actor | CPRContainerActor | called.");
       createData.token = {
@@ -27,11 +26,6 @@ export default class CPRContainerActor extends Actor {
     }
     const newContainerActor = await super.create(createData, options);
     newContainerActor.setContainerType("shop");
-
-    if (!newActor) {
-      // An actor was copied/imported, sync all installed items with the UUID corresponding to the new actor.
-      newContainerActor.syncInstalledItems();
-    }
   }
 
   /**
@@ -58,152 +52,6 @@ export default class CPRContainerActor extends Actor {
       }
     }
     return super.createEmbeddedDocuments(embeddedName, ids, context);
-  }
-
-  /**
-   * This is a helper function to sync installed item UUIDs on Actors and their respective owned items.
-   * This is a 'twin' to the function `CPRActor.syncInstalledItems(actor)`. What is the difference?
-   * Typically, we use the parent document's `document.system.installedItems.list` as the "source of truth"
-   * for what things are installed into what. This is a list of UUIDs of installed items.
-   * In rare instances (specifically with migration script 012), some actors in compendia were getting this
-   * data-point wiped out. Luckily, on the installed items themselves, there is a datapoint called `item.installedIn`,
-   * which did not get wiped out. This function reconstructs `installedItems.list` using the above data-point,
-   * and makes sure all UUIDs match. The other, more often-used function reconstructs installed item
-   * info from `installedItems.list` (as is best-practice). The following function is hopefully seldom used.
-   *
-   * Note: Much of this code is duplicated from CPRActor.
-   *
-   * @async
-   */
-  async syncInstalledViaInstalledIn() {
-    LOGGER.trace("syncInstalledViaInstalledIn | CPRActor | called.");
-    const actorUUID = this.uuid;
-    const updateList = [];
-    const currentItems = this.items.filter((item) => {
-      // Match for UUID's that do not contain "Item" (i.e. actors)
-      return item.system.isInstalled && !item.system.installedIn?.match("Item");
-    });
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-
-    /**
-     * This function adapts `item.recursiveInstallSync()` for this particular use-case.
-     * It shouldn't be needed outside of its parent function.
-     *
-     * @async
-     * @param {CPRActor} actor - The actor who the parent function is fixing.
-     * @param {CPRItem} item - An owned item on the actor that we are fixing.
-     */
-    async function recursiveInstall(actor, item) {
-      const itemUpdateList = [];
-      const installedList = actor.items.filter(
-        // Match for UUIDs that contain "Item" (i.e. items)
-        (i) => i.system.isInstalled && i.system.installedIn?.match(item.id)
-      );
-      for (const i of installedList) {
-        itemUpdateList.push({
-          _id: i.id,
-          "system.isInstalled": true,
-          "system.installedIn": item.uuid,
-        });
-        if (containerTypes.includes(i.type)) {
-          await recursiveInstall(actor, i);
-        }
-      }
-      await item.update({
-        "system.installedItems.list": installedList.map((i) => i.uuid),
-      });
-      await actor.updateEmbeddedDocuments("Item", itemUpdateList);
-
-      // Do this last because `syncUpgrades` relies on the updates above to work.
-      const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
-      if (upgradableTypes.includes(item.type)) {
-        await item.syncUpgrades();
-      }
-    }
-
-    for (const item of currentItems) {
-      updateList.push({
-        _id: item.id,
-        "system.isInstalled": true,
-        "system.installedIn": actorUUID,
-      });
-      if (containerTypes.includes(item.type)) {
-        await recursiveInstall(this, item);
-      }
-    }
-
-    // Sync any owned items that are containers
-    for (const itemType of Object.keys(this.itemTypes)) {
-      if (containerTypes.includes(itemType)) {
-        for (const item of this.itemTypes[itemType]) {
-          await recursiveInstall(this, item);
-        }
-      }
-    }
-    // Sync any loaded weapons
-    for (const item of this.itemTypes.weapon) {
-      if (
-        item.system.isRanged &&
-        item.system.magazine.ammoData.uuid.length > 0
-      ) {
-        const sourceItemId = item.system.magazine.ammoData.uuid
-          .split(".")
-          .pop();
-        const newItemId = `${actorUUID}.Item.${sourceItemId}`;
-        updateList.push({
-          _id: item.id,
-          "system.magazine.ammoData.uuid": newItemId,
-        });
-      }
-    }
-    await this.updateEmbeddedDocuments("Item", updateList);
-  }
-
-  /**
-   * This is a helper function to sync installed item UUIDs on Actors and their respective owned items.
-   * We need this because there are issues importing actors with installed items. Essentially,
-   * the uuids in `installedIn` and `installedItems.list` (and `magazine.ammoData.uuid` for weapons)
-   * do not get updated with the ID of the new actor. This function rectifies that and should be called
-   * where relevant (e.g. importing an actor from JSON in actor.importFromJSON(), duplicating an actor
-   * in actor.create(), etc.)
-   *
-   * Note: Much of this code is duplicated from CPRActor.
-   *
-   * @async
-   */
-  async syncInstalledItems() {
-    LOGGER.trace("syncInstalledItems | CPRActor | called.");
-    const actorUUID = this.uuid;
-    const updateList = [];
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-
-    // Sync any owned items that are containers
-    for (const itemType of Object.keys(this.itemTypes)) {
-      if (containerTypes.includes(itemType)) {
-        for (const item of this.itemTypes[itemType]) {
-          if (item.system.installedItems.list.length > 0) {
-            await item.recursiveInstallSync();
-          }
-        }
-      }
-    }
-    // Sync any loaded weapons
-    for (const item of this.itemTypes.weapon) {
-      if (
-        item.system.isRanged &&
-        item.system.magazine.ammoData.uuid.length > 0
-      ) {
-        const sourceItemId = item.system.magazine.ammoData.uuid
-          .split(".")
-          .pop();
-        const newItemId = `${actorUUID}.Item.${sourceItemId}`;
-        updateList.push({
-          _id: item.id,
-          "system.magazine.ammoData.uuid": newItemId,
-        });
-      }
-    }
-    await this.updateEmbeddedDocuments("Item", updateList);
   }
 
   /**
@@ -263,19 +111,6 @@ export default class CPRContainerActor extends Actor {
     }
 
     await this.updateEmbeddedDocuments("Item", updateList);
-  }
-
-  /**
-   * We override this function so that we can properly sync installed items on the imported actor.
-   * This is necessary due to how we handle installed items.
-   *
-   * @param {*} json
-   * @override
-   */
-  async importFromJSON(json) {
-    LOGGER.trace("importFromJSON | CPRActor | Called.");
-    const actor = await super.importFromJSON(json);
-    await actor.syncInstalledItems();
   }
 
   /**
