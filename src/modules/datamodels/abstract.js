@@ -56,7 +56,7 @@ export default class CPRSystemDataModel extends foundry.abstract.DataModel {
   /* -------------------------------------------- */
 
   /** @inheritdoc */
-  static defineSchema() {
+  static defineSchema(...args) {
     const schema = {};
     for (const template of this._schemaTemplates) {
       if (!template.defineSchema) {
@@ -64,7 +64,7 @@ export default class CPRSystemDataModel extends foundry.abstract.DataModel {
           `Invalid CPR template mixin ${template} defined on class ${this.constructor}`
         );
       }
-      this.mergeSchema(schema, template.defineSchema());
+      this.mergeSchema(schema, template.defineSchema(...args));
     }
     return schema;
   }

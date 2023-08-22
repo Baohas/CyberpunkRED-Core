@@ -31,9 +31,14 @@ export default class InstalledItemsSchema extends foundry.abstract.DataModel {
       ),
     };
     if (includeSlots) {
-      return { ...baseSchema, ...this.slotsSchema };
+      return {
+        installedItems: new fields.SchemaField({
+          ...baseSchema,
+          ...this.slotsSchema,
+        }),
+      };
     }
-    return { ...baseSchema };
+    return { installedItems: new fields.SchemaField({ ...baseSchema }) };
   }
 
   static get slotsSchema() {

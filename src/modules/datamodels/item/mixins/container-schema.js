@@ -1,22 +1,14 @@
-/* globals foundry parseUuid */
+/* globals */
 
 import LOGGER from "../../../utils/cpr-logger.js";
+import CPRSystemDataModel from "../../abstract.js";
 import InstalledItemsSchema from "../../shared/installedItems-schema.js";
 
-export default class ContainerSchema extends foundry.abstract.DataModel {
+export default class ContainerSchema extends CPRSystemDataModel.mixin(
+  InstalledItemsSchema
+) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | ContainerSchema | called.");
-    const { fields } = foundry.data;
-    return {
-      installedItems: new fields.SchemaField(
-        InstalledItemsSchema.defineSchema(["itemUpgrade"], true)
-      ),
-    };
-  }
-
-  static migrateData(source) {
-    LOGGER.trace("migrateData");
-    InstalledItemsSchema.migrateData(source);
-    return super.migrateData(source);
+    LOGGER.trace("defineSchema | CommonSchema | called.");
+    return this.mergeSchema(super.defineSchema(["itemUpgrades"], true), {});
   }
 }

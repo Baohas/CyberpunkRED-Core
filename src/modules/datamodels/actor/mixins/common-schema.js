@@ -1,18 +1,21 @@
 /* globals foundry parseUuid */
 
 import LOGGER from "../../../utils/cpr-logger.js";
+import CPRSystemDataModel from "../../abstract.js";
 import StatSchema from "../components/stat-schema.js";
 import DerivedStatsSchema from "../components/derivedStats-schema.js";
 import ExternalResourceSchema from "../components/external-resource-schema.js";
 import InstalledItemsSchema from "../../shared/installedItems-schema.js";
 import LedgerSchema from "../components/ledger-schema.js";
 
-export default class CommonSchema extends foundry.abstract.DataModel {
+export default class CommonSchema extends CPRSystemDataModel.mixin(
+  InstalledItemsSchema
+) {
   static defineSchema() {
     LOGGER.trace("defineSchema | CommonSchema | called.");
     const { fields } = foundry.data;
     const hasMax = true;
-    return {
+    return this.mergeSchema(super.defineSchema(["cyberware"]), {
       stats: new fields.SchemaField({
         body: new fields.SchemaField(StatSchema.defineSchema()),
         cool: new fields.SchemaField(StatSchema.defineSchema()),
@@ -46,9 +49,6 @@ export default class CommonSchema extends foundry.abstract.DataModel {
         history: new fields.HTMLField({ initial: "" }),
         notes: new fields.HTMLField({ initial: "" }),
       }),
-      installedItems: new fields.SchemaField(
-        InstalledItemsSchema.defineSchema(["cyberware"])
-      ),
       reputation: new fields.SchemaField(LedgerSchema.defineSchema()),
       roleInfo: new fields.SchemaField({
         activeNetRole: new fields.DocumentIdField({
@@ -60,12 +60,6 @@ export default class CommonSchema extends foundry.abstract.DataModel {
           blank: true,
         }),
       }),
-    };
-  }
-
-  static migrateData(source) {
-    LOGGER.trace("migrateData");
-    InstalledItemsSchema.migrateData(source);
-    return super.migrateData(source);
+    });
   }
 }
