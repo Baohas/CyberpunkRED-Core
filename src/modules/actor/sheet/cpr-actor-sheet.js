@@ -569,7 +569,7 @@ export default class CPRActorSheet extends ActorSheet {
     }
 
     // "Consume" LUCK if used
-    if (Number.isInteger(cprRoll.luck) > 0) {
+    if (Number.isInteger(cprRoll.luck) && cprRoll.luck > 0) {
       const luckStat = this.actor.system.stats.luck.value;
       this.actor.update({
         "system.stats.luck.value":
