@@ -11,6 +11,16 @@ export default class NullStatsMigration extends CPRMigration {
     super();
     this.version = 20;
     this.name = "Null Stats - Migration";
+    // Our system does not actually use the values in these fields, we are mimicking
+    // what Foundry sets.
+    this.migrationStats = {
+      coreVersion: "10.303",
+      createdTime: 1692463494866, // This is just a unix timestamp
+      lastModifiedBy: "CPRCMigration088", // This can be anything [A-Za-z0-9]{16}
+      modifiedTime: 1692463494866,
+      systemId: game.system.id,
+      systemVersion: "v0.87.6",
+    };
   }
 
   /**
@@ -46,7 +56,7 @@ export default class NullStatsMigration extends CPRMigration {
     LOGGER.trace(`migrateItem | ${this.version}-${this.name}`);
     if (item._stats && Object.values(item._stats).some((stat) => !stat)) {
       return item.update({
-        _stats: NullStatsMigration.migrationStats,
+        _stats: this.migrationStats,
       });
     }
     return Promise.resolve();
@@ -64,20 +74,11 @@ export default class NullStatsMigration extends CPRMigration {
       // eslint-disable-next-line no-await-in-loop
       updateItems.push({
         _id: item._id,
-        _stats: NullStatsMigration.migrationStats,
+        _stats: this.migrationStats,
       });
     }
     if (updateItems.length > 0) {
       await actor.updateEmbeddedDocuments("Item", updateItems);
     }
   }
-
-  static migrationStats = {
-    coreVersion: "10.303", // Doesn't matter
-    createdTime: 1692463494866, // This is just a unix timestamp
-    lastModifiedBy: "CPRCMigration088", // This can be anything [A-Za-z0-9]{16}
-    modifiedTime: 1692463494866, // This is just a unix timestamp
-    systemId: "cyberpunk-red-core", // This needs to be this obviously
-    systemVersion: "v0.87.6", // Doesn't matter
-  };
 }
