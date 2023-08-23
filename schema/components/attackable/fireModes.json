@@ -3,7 +3,7 @@
   "additionalProperties": false,
   "properties": {
     "autoFire": {
-      "type": "number"
+      "type": "integer"
     },
     "suppressiveFire": {
       "type": "boolean"

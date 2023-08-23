@@ -12,9 +12,6 @@
         "_key": {
           "$ref": "./components/key.json"
         },
-        "_stats": {
-          "$ref": "./components/stats.json"
-        },
         "effects": {
           "$ref": "./components/effects.json"
         },
@@ -36,16 +33,7 @@
           "const": "armor"
         }
       },
-      "required": [
-        "_id",
-        "_key",
-        "_stats",
-        "effects",
-        "img",
-        "name",
-        "system",
-        "type"
-      ]
+      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
     },
     "System": {
       "type": "object",
@@ -91,7 +79,7 @@
           "$ref": "./components/upgradable/isUpgraded.json"
         },
         "penalty": {
-          "type": "number"
+          "type": "integer"
         },
         "price": {
           "$ref": "./components/valuable/price.json"
@@ -142,10 +130,10 @@
       "additionalProperties": false,
       "properties": {
         "ablation": {
-          "type": "number"
+          "type": "integer"
         },
         "sp": {
-          "type": "number"
+          "type": "integer"
         }
       },
       "required": ["ablation", "sp"]
@@ -155,10 +143,10 @@
       "additionalProperties": false,
       "properties": {
         "max": {
-          "type": "number"
+          "type": "integer"
         },
         "value": {
-          "type": "number"
+          "type": "integer"
         }
       },
       "required": ["max", "value"]

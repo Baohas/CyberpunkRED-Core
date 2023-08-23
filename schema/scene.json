@@ -23,7 +23,7 @@
           "$ref": "./components/hex.json"
         },
         "darkness": {
-          "type": "number"
+          "type": "integer"
         },
         "drawings": {
           "type": "array"
@@ -38,7 +38,7 @@
           "type": "null"
         },
         "fogReset": {
-          "type": "number"
+          "type": "integer"
         },
         "fogUnexploredColor": {
           "type": "null"
@@ -59,7 +59,7 @@
           "$ref": "#/definitions/Grid"
         },
         "height": {
-          "type": "number"
+          "type": "integer"
         },
         "initial": {
           "$ref": "#/definitions/Initial"
@@ -78,7 +78,7 @@
           "type": "string"
         },
         "navOrder": {
-          "type": "number"
+          "type": "integer"
         },
         "navigation": {
           "type": "boolean"
@@ -88,7 +88,7 @@
           "items": {}
         },
         "padding": {
-          "type": "number"
+          "type": "integer"
         },
         "playlist": {
           "type": "null"
@@ -126,7 +126,7 @@
           "type": "string"
         },
         "width": {
-          "type": "number"
+          "type": "integer"
         }
       },
       "required": [
@@ -175,19 +175,19 @@
       "additionalProperties": false,
       "properties": {
         "offsetX": {
-          "type": "number"
+          "type": "integer"
         },
         "offsetY": {
-          "type": "number"
+          "type": "integer"
         },
         "rotation": {
-          "type": "number"
+          "type": "integer"
         },
         "scaleX": {
-          "type": "number"
+          "type": "integer"
         },
         "scaleY": {
-          "type": "number"
+          "type": "integer"
         },
         "src": {
           "type": "string"
@@ -218,13 +218,13 @@
           "type": "string"
         },
         "distance": {
-          "type": "number"
+          "type": "integer"
         },
         "size": {
-          "type": "number"
+          "type": "integer"
         },
         "type": {
-          "type": "number"
+          "type": "integer"
         },
         "units": {
           "type": "string"
