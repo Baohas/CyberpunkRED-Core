@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 /* global foundry */
 /* eslint-disable no-continue */
 /* eslint-disable foundry-cpr/logger-after-function-definition */
@@ -20,7 +21,7 @@
  * can define its own schema unique to it, and then add templates in direct correspondence to those in template.json
  * via SystemDataModel.mixin.
  */
-// eslint-disable-next-line max-classes-per-file
+
 export default class CPRSystemDataModel extends foundry.abstract.DataModel {
   /**
    * System type that this system data model represents (e.g. "character", "npc", "vehicle").

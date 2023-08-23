@@ -5,7 +5,7 @@ import CPR from "../../system/config.js";
 import CPRSystemDataModel from "../abstract.js";
 import AttackableSchema from "./mixins/attackable-schema.js";
 import CommonSchema from "./mixins/common-schema.js";
-import ContainerSchema from "./mixins/container-schema.js";
+import ContainerSchema from "../shared/container-schema.js";
 import EffectsSchema from "./mixins/effects-schema.js";
 import EquippableSchema from "./mixins/equippable-schema.js";
 import LoadableSchema from "./mixins/loadable-schema.js";

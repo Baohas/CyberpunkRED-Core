@@ -1,21 +1,17 @@
-/* globals foundry parseUuid */
+/* globals foundry */
 
 import LOGGER from "../../../utils/cpr-logger.js";
-import CPRSystemDataModel from "../../abstract.js";
 import StatSchema from "../components/stat-schema.js";
 import DerivedStatsSchema from "../components/derivedStats-schema.js";
 import ExternalResourceSchema from "../components/external-resource-schema.js";
-import InstalledItemsSchema from "../../shared/installedItems-schema.js";
 import LedgerSchema from "../components/ledger-schema.js";
 
-export default class CommonSchema extends CPRSystemDataModel.mixin(
-  InstalledItemsSchema
-) {
+export default class CommonSchema extends foundry.abstract.DataModel {
   static defineSchema() {
     LOGGER.trace("defineSchema | CommonSchema | called.");
     const { fields } = foundry.data;
     const hasMax = true;
-    return this.mergeSchema(super.defineSchema(["cyberware"]), {
+    return {
       stats: new fields.SchemaField({
         body: new fields.SchemaField(StatSchema.defineSchema()),
         cool: new fields.SchemaField(StatSchema.defineSchema()),
@@ -60,6 +56,6 @@ export default class CommonSchema extends CPRSystemDataModel.mixin(
           blank: true,
         }),
       }),
-    });
+    };
   }
 }
