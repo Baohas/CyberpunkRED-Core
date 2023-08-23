@@ -46,7 +46,7 @@ system:
     slots: 3
     usedSlots: 0
   isElectronic: true
-  isFoundational: true
+  isFoundational: false
   isInstalled: false
   isRanged: false
   isUpgraded: false

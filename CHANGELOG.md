@@ -27,6 +27,7 @@ This means any instances where you have dragged an item from a compendium into a
 - Localized Mook skills are now sorted alphabetically
 - Fix luck rolls adding luck stat when no luck applied
 - Temp fix for Dice so Nice treating reputation as string on facedown rolls
+- Fix missing foundational need for Holo Projector Cyberware
 
 ### Changes
 
