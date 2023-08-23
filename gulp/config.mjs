@@ -1,5 +1,7 @@
 import fs from "fs-extra";
 import path from "path";
+import log from "fancy-log";
+import chalk from "chalk";
 
 export const DEBUG = process.env.DEBUG ? process.env.DEBUG : false;
 export const TRACE = process.env.TRACE ? process.env.TRACE : false;
@@ -70,6 +72,12 @@ function _getDestDir() {
     } else {
       return dataPath;
     }
+  } else {
+    log(
+      `${chalk.yellow(
+        "WARNING"
+      )}: foundryconfig.json not found building to ${DEFAULT_DESTINATION_FOLDER}`
+    );
   }
   return DEFAULT_DESTINATION_FOLDER;
 }
