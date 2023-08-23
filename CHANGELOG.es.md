@@ -24,6 +24,8 @@ This means any instances where you have dragged an item from a compendium into a
 - Fix CSS colors on User Config pop out
 - Fix Item Description tooltips in gear sheets to sanitize UUID references
 - Fix missing \_stats data from all system Compendia/Packs
+- Localized Mook skills are now sorted alphabetically
+- Fix luck rolls adding luck stat when no luck applied
 
 ### Changes
 
