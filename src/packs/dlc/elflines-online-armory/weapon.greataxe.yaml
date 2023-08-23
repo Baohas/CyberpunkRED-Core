@@ -1,12 +1,5 @@
 _id: syV8GagEmOsAOMkj
 _key: "!items!syV8GagEmOsAOMkj"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects: []
 img: icons/weapons/axes/axe-double-black.webp
 name: Greataxe

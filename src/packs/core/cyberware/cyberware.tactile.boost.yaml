@@ -1,12 +1,5 @@
 _id: zoj5iyIV1bVrMxzW
 _key: "!items!zoj5iyIV1bVrMxzW"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/tactile_boot.svg
 name: Tactile Boost

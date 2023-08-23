@@ -1,12 +1,5 @@
 _id: 2EvWIW0HXwoBK6xq
 _key: "!items!2EvWIW0HXwoBK6xq"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects:
   - tVc7bM54Ej63Yv2E
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/techscanner.svg

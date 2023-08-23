@@ -1,12 +1,5 @@
 _id: OHMbhkYy7we5ieIL
 _key: "!items!OHMbhkYy7we5ieIL"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects:
   - DyNsjXqBcOOWFdG9
 img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle.svg

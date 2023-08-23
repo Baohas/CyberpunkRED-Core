@@ -1,12 +1,5 @@
 _id: kPYQ2Fod5FQvED38
 _key: "!items!kPYQ2Fod5FQvED38"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_pocket.svg
 name: Subdermal Pocket
