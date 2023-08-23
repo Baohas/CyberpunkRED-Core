@@ -102,6 +102,11 @@ async function genPacks() {
       fs.mkdirSync(outputDir, { recursive: true });
     }
 
+    // Create the fragment dir if it's a new pack and the dir doesn't exist
+    if (!fs.pathExistsSync(fragmentPath)) {
+      fs.mkdirSync(fragmentPath, { recursive: true });
+    }
+
     // Pack the database then return the promise so we're async
     await PackUtils.packLeveldb(fragmentPath, outputDir);
     return [];
