@@ -22,7 +22,7 @@ export const assets = gulp.parallel(
 export const extractPacks = gulp.series(packs.extPacks, packs.genPacksBabele);
 export const generateBabele = gulp.series(packs.genPacksBabele);
 
-//
+// Clean target dir then build
 export const build = gulp.series(clean, assets);
 
 // Don't just call `build` & `bld.watch` because `build` cleans the directory
