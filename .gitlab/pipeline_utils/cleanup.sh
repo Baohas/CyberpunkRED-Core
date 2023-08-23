@@ -27,21 +27,20 @@ PACKAGES_KEEP="${PACKAGES_KEEP:-3}"
 
 # Get a list of release ids
 # Sorts by version number oldest => newest
-ALL_IDS=$(
+# Fetch all IDs using curl and jq, and store them in an array
+mapfile -t ALL_IDS < <(
   curl \
     --silent \
     --location \
     --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
     "${PACKAGES_URL}" |
-    jq '.[]
-  | select(.name=="'"${PACKAGE_NAME}"'")
-  | select(.version != "latest")
-  | { version: .version, id: .id}' |
-    jq --slurp 'sort_by(.version) | .[] | .id'
+    jq -r '.[]
+      | select(.name == "fvtt-cyberpunk-red-core" and .version != "latest")
+      | .id'
 )
 
-# Filter ALL_IDS to get the ones we want to delete
-DELETE_IDS=$(echo "${ALL_IDS}" | head -n -"${PACKAGES_KEEP}")
+# Remove the latest 3 packages
+DELETE_IDS=("${ALL_IDS[@]::${#ALL_IDS[@]}-3}")
 
 # Hit the GitLab API and delete a package
 function delete_package() {
@@ -81,10 +80,10 @@ function delete_package() {
 
 # Check if we have anything to delete, if we do loop over the results
 # and delete the packages
-if [[ -z "${DELETE_IDS}" ]]; then
+if [[ -z "${DELETE_IDS[*]}" ]]; then
   echo "Nothing to delete"
 else
-  for id in ${DELETE_IDS}; do
+  for id in "${DELETE_IDS[@]}"; do
     delete_package "${id}"
   done
 fi
