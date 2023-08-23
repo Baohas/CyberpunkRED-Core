@@ -26,6 +26,7 @@ This means any instances where you have dragged an item from a compendium into a
 - Fix missing \_stats data from all system Compendia/Packs
 - Localized Mook skills are now sorted alphabetically
 - Fix luck rolls adding luck stat when no luck applied
+- Temp fix for Dice so Nice treating reputation as string on facedown rolls
 
 ### Änderungen
 
