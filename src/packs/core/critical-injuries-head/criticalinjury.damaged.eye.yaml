@@ -1,12 +1,5 @@
 _id: qoegLCfpEOQifeZq
 _key: "!items!qoegLCfpEOQifeZq"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects:
   - exv56SDpa0UW3rxp
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg

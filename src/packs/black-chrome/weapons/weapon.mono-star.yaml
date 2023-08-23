@@ -1,12 +1,5 @@
 _id: WanZL37uS6qD7acP
 _key: "!items!WanZL37uS6qD7acP"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/mono-star.svg
 name: Mono-Star

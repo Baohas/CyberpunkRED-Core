@@ -1,12 +1,5 @@
 _id: PJZmDEjwaM5RWguB
 _key: "!items!PJZmDEjwaM5RWguB"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/default/cyberdeck.svg
 name: Warlock's Book

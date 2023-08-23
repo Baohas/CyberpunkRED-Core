@@ -1,12 +1,5 @@
 _id: OCEWvjde4ZKq78ao
 _key: "!items!OCEWvjde4ZKq78ao"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_basic.png
 name: Big Dreem Rounds

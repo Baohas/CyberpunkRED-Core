@@ -1,12 +1,5 @@
 _id: 8X8llGr7eUD7KMmP
 _key: "!items!8X8llGr7eUD7KMmP"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol_poor.svg
 name: Timeless WW1 Rifle to Pistol Conversion

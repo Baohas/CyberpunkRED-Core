@@ -1,12 +1,5 @@
 _id: 6jicmuwJKrB98O1R
 _key: "!items!6jicmuwJKrB98O1R"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects:
   - CTDjkh6v3bPEa7ZW
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/chemskin.svg

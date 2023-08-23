@@ -1,12 +1,5 @@
 _id: 1oD47YLHJqb4V8aj
 _key: "!items!1oD47YLHJqb4V8aj"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/lotus-netsuit.svg
 name: Lotos Netsuit

@@ -1,12 +1,5 @@
 _id: qL9B85FSo6cYhTBL
 _key: "!items!qL9B85FSo6cYhTBL"
-_stats:
-  coreVersion: "11.307"
-  createdTime: 1692532896113
-  lastModifiedBy: 00CPRCBuildBot00
-  modifiedTime: 1692532896113
-  systemId: cyberpunk-red-core
-  systemVersion: v0.0.0dev
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol.svg
 name: Nova Model 757 Cityhunter
