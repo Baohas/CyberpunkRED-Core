@@ -462,7 +462,7 @@ export class CPRFacedownRoll extends CPRStatRoll {
    */
   _computeBase() {
     LOGGER.trace("_computeBase | CPRStatRoll | Called.");
-    return super._computeBase() + this.repValue;
+    return super._computeBase() + Number.parseInt(this.repValue, 10);
   }
 }
 
