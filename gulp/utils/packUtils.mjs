@@ -85,8 +85,7 @@ export default class PackUtils {
       .replace(/ /g, ".")
       .replace(/,/g, "")
       .replace(/\.\./g, ".")
-      .replace(/\.-\./g, ".")
-      .toLowerCase();
+      .replace(/\.-\./g, ".");
   }
 
   /*
@@ -179,17 +178,22 @@ export default class PackUtils {
     const name = data.name ? data.name.split(" ").slice(0, 5).join(" ") : "";
     const text = data.text ? data.text.split(" ").slice(0, 5).join(" ") : "";
 
+    // Cast to lowercase for filenames
+    const typeLower = typeof data.type === "string" ? type.toLowerCase() : "";
+    const nameLower = data.name ? name.toLowerCase() : "";
+    const textLower = data.text ? text.toLowerCase() : "";
+
     switch (keySubType) {
       case "":
         switch (keyType) {
           case "items":
-            return this.cleanFileName(`${type}.${name}.yaml`);
+            return this.cleanFileName(`${typeLower}.${nameLower}.yaml`);
           case "scenes":
-            return this.cleanFileName(`scene.${name}.yaml`);
+            return this.cleanFileName(`scene.${nameLower}.yaml`);
           case "tables":
-            return this.cleanFileName(`table.${name}.yaml`);
+            return this.cleanFileName(`table.${nameLower}.yaml`);
           case "macros":
-            return this.cleanFileName(`macro.${name}.yaml`);
+            return this.cleanFileName(`macro.${nameLower}.yaml`);
           default:
             log(data);
             throw new Error(
@@ -200,10 +204,11 @@ export default class PackUtils {
       // the _id as an identifier as this is globally unique which should
       // hopefully prevent silent data loss if 2 items have the effect/results
       // with the same name.
+      // NOTE: Do not cast `id` it lowercase as this could lead to collisions
       case "effects":
-        return this.cleanFileName(`effect.${name}.${id}.yaml`);
+        return this.cleanFileName(`effect.${nameLower}.${id}.yaml`);
       case "results":
-        return this.cleanFileName(`result.${text}.${id}.yaml`);
+        return this.cleanFileName(`result.${textLower}.${id}.yaml`);
       default:
         log(data);
         throw new Error(
@@ -375,8 +380,7 @@ export default class PackUtils {
               .readdirSync(fragmentDir)
               .filter(
                 (fn) =>
-                  fn.startsWith(`result.`) &&
-                  fn.endsWith(`${result.toLowerCase()}.yaml`)
+                  fn.startsWith(`result.`) && fn.endsWith(`${result}.yaml`)
               )[0]
           );
           const resContents = fs.readFileSync(resultFile, "utf-8");
