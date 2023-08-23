@@ -7,7 +7,7 @@ import sanitize from "sanitize-filename";
 import YAML from "js-yaml";
 import { ClassicLevel } from "classic-level";
 
-import { TRACE } from "../config.mjs";
+import { SRC_DIR, SYSTEM_FILE, SYSTEM_VERSION, TRACE } from "../config.mjs";
 
 /*
  * PackUtils; helpful functions for dealing with packs
@@ -24,6 +24,13 @@ export default class PackUtils {
    * @param {string} str - The input string from which the pack type should be
    *                       extracted.
    * @returns {string} The extracted pack type from the input string.
+   *
+   * TODO: These functions will need to be made more flexible to support actors
+   *       or possibly pre-upgraded items as they have three level deep keys
+   *       like: !actor.item.effect! and I would guess these can be arbitrarily
+   *       deep eg: !actor.item.item.effects! for a pre-upgraded item
+   *       Might be worth checking the Foundry code/discord to see how they
+   *       handle it
    */
   static getPackType(str) {
     return str.split("!")[1].split(".")[0];
@@ -288,10 +295,15 @@ export default class PackUtils {
       const key = data._key;
       // We don't want to store the key in the data so delete it from data
       delete data._key;
+      // Scrub the data of anything we don't need
       const cleanData = this.cleanPackData(data);
-      batch.put(key, cleanData);
+      // Generate the `_stats` key
+      const finalData = this.generateStats(cleanData);
+      // Add the data to the batch to be written to the db
+      batch.put(key, finalData);
     }
 
+    // Write to the db
     await batch.write();
     await db.close();
   }
@@ -390,6 +402,42 @@ export default class PackUtils {
   }
 
   /**
+   * Generate statistics for the provided data by adding metadata related to the
+   * data's origin and modifications. This method adds information such as core
+   * version, creation time, modification details, and system version to the input
+   * data.
+   *
+   * @param {object} data - The data object to which statistics and metadata will
+   *                       be added.
+   * @returns {object} A new object containing the input data along with added
+   *                   statistics and metadata.
+   *
+   */
+  static generateStats(data) {
+    if (TRACE) {
+      log(`TRACE: PackUtils | generateStats called.`);
+    }
+
+    const sysFile = JSON.parse(
+      fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE))
+    );
+    const foundryVersion = sysFile.compatibility.minimum;
+    const timestamp = new Date().getTime();
+
+    const stats = {
+      _stats: {
+        coreVersion: foundryVersion,
+        createdTime: timestamp,
+        lastModifiedBy: "00CPRCBuildBot00",
+        modifiedTime: timestamp,
+        systemVersion: SYSTEM_VERSION,
+      },
+    };
+
+    return { ...data, ...stats };
+  }
+
+  /**
    * Cleans the given pack data by removing unnecessary properties and fixing
    * common errors.
    *
@@ -445,13 +493,10 @@ export default class PackUtils {
       }
     }
 
-    /*
-     * Overwrite _stats.lastModifiedBy to a botid to avoid clashese with
-     * real _ids (pretty low chance)
-     */
-
-    if (data._stats?.lastModifiedBy) {
-      data._stats.lastModifiedBy = "00CPRCBuildBot00";
+    // We generate _stats on build with `generateStats` so delete them if
+    // they exist
+    if ("_stats" in data) {
+      delete data._stats;
     }
 
     // Only run on items
