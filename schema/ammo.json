@@ -13,9 +13,6 @@
         "_key": {
           "$ref": "./components/key.json"
         },
-        "_stats": {
-          "$ref": "./components/stats.json"
-        },
         "effects": {
           "$ref": "./components/effects.json"
         },
@@ -37,16 +34,7 @@
           "const": "ammo"
         }
       },
-      "required": [
-        "_id",
-        "_key",
-        "_stats",
-        "effects",
-        "img",
-        "name",
-        "system",
-        "type"
-      ]
+      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
     },
     "System": {
       "type": "object",
@@ -55,7 +43,7 @@
       "properties": {
         "ablationValue": {
           "description": "Ablation Value of Ammo",
-          "type": "number"
+          "type": "integer"
         },
         "amount": {
           "$ref": "./components/stackable/amount.json"
@@ -99,10 +87,10 @@
                   "enum": ["none", "set", "modify"]
                 },
                 "value": {
-                  "type": "number"
+                  "type": "integer"
                 },
                 "minimum": {
-                  "type": "number"
+                  "type": "integer"
                 }
               },
               "required": ["mode", "value", "minimum"]

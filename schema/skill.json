@@ -12,9 +12,6 @@
         "_key": {
           "$ref": "./components/key.json"
         },
-        "_stats": {
-          "$ref": "./components/stats.json"
-        },
         "effects": {
           "$ref": "./components/effects.json"
         },
@@ -35,16 +32,7 @@
           "$ref": "#/definitions/System"
         }
       },
-      "required": [
-        "_id",
-        "_key",
-        "_stats",
-        "effects",
-        "img",
-        "name",
-        "system",
-        "type"
-      ]
+      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
     },
     "System": {
       "type": "object",
@@ -80,7 +68,7 @@
           "$ref": "./components/common/favorite.json"
         },
         "level": {
-          "type": "number"
+          "type": "integer"
         },
         "source": {
           "$ref": "./components/common/source.json"

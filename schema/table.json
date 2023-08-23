@@ -12,9 +12,6 @@
         "_key": {
           "$ref": "./components/key.json"
         },
-        "_stats": {
-          "$ref": "./components/stats.json"
-        },
         "description": {
           "type": "string"
         },
@@ -45,7 +42,6 @@
       "required": [
         "_id",
         "_key",
-        "_stats",
         "description",
         "displayRoll",
         "formula",

@@ -23,11 +23,11 @@
       "maxLength": 0
     },
     "slots": {
-      "type": "number"
+      "type": "integer"
     },
     "usedSlots": {
       "description": "Number of slots used, not supported in compendia so must be 0",
-      "type": "number",
+      "type": "integer",
       "const": 0
     }
   },

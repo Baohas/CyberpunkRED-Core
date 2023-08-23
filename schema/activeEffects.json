@@ -198,14 +198,15 @@
           ]
         },
         "mode": {
-          "type": "number",
+          "type": "integer",
           "enum": [0, 1, 2, 3, 4, 5]
         },
         "priority": {
           "type": "null"
         },
         "value": {
-          "type": "string"
+          "type": "string",
+          "format": "integer"
         }
       },
       "required": ["key", "mode", "priority", "value"]

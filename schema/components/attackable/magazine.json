@@ -6,10 +6,10 @@
       "$ref": "../loadable/ammoData.json"
     },
     "max": {
-      "type": "number"
+      "type": "integer"
     },
     "value": {
-      "type": "number"
+      "type": "integer"
     }
   },
   "required": [
