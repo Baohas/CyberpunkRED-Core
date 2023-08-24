@@ -1,21 +1,19 @@
-_id: EBdbf1JaVGl0M7LJ
-_key: "!items!EBdbf1JaVGl0M7LJ"
+_id: 80TODp6SDXS3ZnSi
+_key: "!items!80TODp6SDXS3ZnSi"
 effects: []
-img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_armorpiercing.png
-name: Security Grenade
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/grenade_tied.png
+name: Grenade (Arachnid)
 system:
-  ablationValue: 2
+  ablationValue: 0
   amount: 1
-  brand: KTech
+  brand: Centurion Essentials
   concealable:
     concealable: true
     isConcealed: false
   description:
     chat: ""
     unidentified: ""
-    value: >-
-      <p>Armor piercing Grenade that doesn't damage cover. Full rules can be
-      found on page 89.</p>
+    value: <p>A very sticky grenade, details of which can be found on page 86.</p>
   favorite: false
   overrides:
     autofire:
@@ -30,7 +28,7 @@ system:
     market: 100
   source:
     book: BC
-    page: 89
-  type: armorPiercing
+    page: 86
+  type: special
   variety: grenade
 type: ammo
