@@ -45,6 +45,7 @@
     "lint": "^1.1.2",
     "markdown-it": "^13.0.1",
     "markdownlint-cli": "^0.32.2",
+    "marked": "^7.0.4",
     "merge-stream": "^2.0.0",
     "minimatch": "^5.1.0",
     "sanitize-filename": "^1.6.3",

@@ -22,6 +22,7 @@ foundryconfig.json
 
 # Build
 dist/
+src/packs/other/changelog
 
 # Ryan's temp files
 **/foo*

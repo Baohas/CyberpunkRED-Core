@@ -4,6 +4,7 @@ import gulp from "gulp";
 import less from "gulp-less";
 import path from "path";
 import svgmin from "gulp-svgmin";
+import YAML from "js-yaml";
 import ChangelogUtils from "./utils/changelogUtils.mjs";
 
 import {
@@ -21,6 +22,7 @@ import {
   SYSTEM_FILE,
   SYSTEM_TITLE,
   SYSTEM_VERSION,
+  PACKS_DIR,
 } from "./config.mjs";
 
 // Helter function to create the target directory we're building into
@@ -199,38 +201,44 @@ async function buildDiscordMessage() {
   });
 }
 
-// Create the release notes for the version and put it in the distDir
+/**
+ * Generates YAML changelog files from the CHANGELOG for all different
+ * languages and stick them in the PACKS_DIR so we can build them into a
+ * compendium.
+ *
+ * @returns {Promise<void>} A promise that resolves when the changelog
+ * generation is complete.
+ */
 async function buildChangelog() {
-  return new Promise((cb) => {
-    log("Generating Release Notes...");
-    const systemRaw = fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE));
-    const system = JSON.parse(systemRaw);
-    const { languages } = system;
+  log("Generating Changelog...");
+  const fragmentDir = path.resolve(SRC_DIR, PACKS_DIR);
+  const changelogDir = path.resolve(fragmentDir, "other/changelog");
+  const systemRaw = fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE));
+  const system = JSON.parse(systemRaw);
+  const { languages } = system;
 
-    for (const [key, value] of Object.entries(languages)) {
-      const { lang } = value;
-      const changelogFile =
-        lang !== "en" ? `CHANGELOG.${lang}.md` : "CHANGELOG.md";
-      const changelog = fs.readFileSync(path.resolve(changelogFile), "utf-8");
-      // Get the latest release data from the CHANGELOG
-      const release = _extractMarkdown(changelog, 2)[0];
-      const md = new MarkdownIt();
-      const result = md.render(release.content);
+  // Delete then re-create
+  if (fs.pathExistsSync(changelogDir)) {
+    fs.rmSync(changelogDir, { recursive: true });
+  }
+  fs.mkdirSync(changelogDir, { recursive: true });
 
-      // Create the lang/release-notes directory
-      if (!fs.existsSync(path.join(DEST_DIR, "lang/release-notes/"))) {
-        fs.mkdirpSync(path.join(DEST_DIR, "lang/release-notes/"));
-      }
-
-      fs.writeFileSync(
-        path.join(DEST_DIR, "lang/release-notes/", `${SYSTEM_VERSION}.${lang}`),
-        result,
-        { mode: 0o644 }
-      );
-    }
-    log("Finished Generating Release Notes.");
-    cb();
+  // Loop over each language
+  const promises = Object.values(languages).map(async (value) => {
+    const langShort = value.lang;
+    const langFull = value.name;
+    const changelogFile =
+      langShort !== "en" ? `CHANGELOG.${langShort}.md` : "CHANGELOG.md";
+    const changelog = fs.readFileSync(path.resolve(changelogFile), "utf-8");
+    await ChangelogUtils.GenerateChangelogJournal(
+      changelog,
+      langFull,
+      changelogDir
+    );
   });
+
+  await Promise.all(promises);
+  log("Finished Generating Changelog...");
 }
 
 async function processImages() {
