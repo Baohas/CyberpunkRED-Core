@@ -4,9 +4,8 @@ import gulp from "gulp";
 import less from "gulp-less";
 import path from "path";
 import svgmin from "gulp-svgmin";
-import MarkdownIt from "markdown-it";
+import ChangelogUtils from "./utils/changelogUtils.mjs";
 
-import * as config from "./config.mjs";
 import {
   DEBUG,
   DEST_DIR,
@@ -23,31 +22,6 @@ import {
   SYSTEM_TITLE,
   SYSTEM_VERSION,
 } from "./config.mjs";
-
-// Extrack a header level and it's children
-function _extractMarkdown(markdown, level) {
-  const regex = new RegExp(
-    `^(#{${level}}\\s.*)[\\s\\S]*?(?=(^#{1,${level + 1}}\\s)|$)`,
-    "gm"
-  );
-  const data = [];
-  let match = regex.exec(markdown);
-
-  while (match != null) {
-    const headingText = match[1].replace(`#{${level}}`, "").trim();
-    const startIndex = match.index + match[0].length;
-    const endIndex = markdown.indexOf(`\n${"#".repeat(level)} `, startIndex);
-    const content = markdown
-      .substring(startIndex, endIndex !== -1 ? endIndex : undefined)
-      .trim();
-
-    data.push({ heading: headingText, content });
-
-    match = regex.exec(markdown);
-  }
-
-  return data;
-}
 
 // Helter function to create the target directory we're building into
 async function _createDist() {
@@ -135,9 +109,12 @@ async function buildDiscordMessage() {
     const changelog = fs.readFileSync(path.resolve(changelogFile), "utf-8");
 
     // Get the latest release data from the CHANGELOG
-    const releaseData = _extractMarkdown(changelog, 2)[0];
+    const releaseData = ChangelogUtils.markdownToJson(changelog, 2)[0];
     // Make an array of each H3 section from the latest release Data
-    const releaseSections = _extractMarkdown(releaseData.content, 3);
+    const releaseSections = ChangelogUtils.markdownToJson(
+      releaseData.content,
+      3
+    );
 
     // The main Message can only be 2000 chars long, so we'll build it from
     // the above string then add the actual changes in as embeds.
@@ -162,7 +139,7 @@ async function buildDiscordMessage() {
     releaseSections.forEach((section) => {
       const sectionTempData = [];
       const sectionHeading = section.heading.replace("### ", "");
-      const sectionItems = _extractMarkdown(section.content, 4);
+      const sectionItems = ChangelogUtils.markdownToJson(section.content, 4);
 
       if (sectionItems.length > 0) {
         // Loop over each h4 in the parent h3
