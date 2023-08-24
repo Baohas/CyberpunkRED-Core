@@ -8,10 +8,14 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
  * mixin. This does not accommodate items that are upgrades.
  */
 const Container = function Container() {
-  /*
-   ** Return the number of available slots, taking into
+  /**
+   * Return the number of available slots, taking into
    * considerations any upgrades which may change the number
-   * of slots
+   * of slots.
+   *
+   * NOTE: Only call this function when `this` is CPRItem,
+   * as CPRActors don't have slots.
+   *
    * @returns Integer - Total number of available slots
    */
   this.availableInstallSlots = function availableInstallSlots() {
@@ -91,9 +95,7 @@ const Container = function Container() {
   };
 
   /**
-   * Get an array of the objects installed in this Item. An optional
-   * string parameter may be passed to filter the return list by a
-   * specific Item type.
+   * Get an array of the objects installed in this Item.
    *
    * @returns {Array} - Array of objects that are installed
    */
@@ -145,14 +147,18 @@ const Container = function Container() {
       return false;
     }
 
+    // Check that the document allows anything to be installed.
     let result = this.system.installedItems.allowed;
 
     let totalInstallationSize = 0;
     itemList.forEach((item) => {
       if (
+        // Check that the item's *type* can be installed.
         this.system.installedItems.allowedTypes.includes(item.type) &&
+        // Check that the item being installed is actually 'installable'.
         SystemUtils.getDataModelTemplates(item.type).includes("installable")
       ) {
+        // For actors, which don't have slots, this will result in `0 + undefined = NaN` and will otherwise be unused
         totalInstallationSize += item.system.size;
       } else {
         SystemUtils.DisplayMessage(
@@ -166,37 +172,41 @@ const Container = function Container() {
       }
     });
 
-    const availableSlots = this.availableInstallSlots();
-    if (totalInstallationSize > availableSlots) {
-      SystemUtils.DisplayMessage(
-        "error",
-        SystemUtils.Format("CPR.messages.installInsufficientSlots", {
-          item: this.name,
-        })
-      );
-      result = false;
+    if (this.documentName === "Item") {
+      const availableSlots = this.availableInstallSlots();
+      if (totalInstallationSize > availableSlots) {
+        SystemUtils.DisplayMessage(
+          "error",
+          SystemUtils.Format("CPR.messages.installInsufficientSlots", {
+            item: this.name,
+          })
+        );
+        result = false;
+      }
     }
+
     return result;
   };
 
   /**
    * This will install items into this item.
    * @param {Array} itemList - Array of Item Objects to be installed
-   * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
+   * @returns {Promise<Boolean>} - Promise containing a boolean; whether or not changes were made to the caling document.
    */
   this.installItems = async function installItems(itemList) {
     LOGGER.trace("_installItems | Container | Called.");
     // Make sure this function is passed an array.
     if (!Array.isArray(itemList)) {
-      return Promise.reject(
+      Promise.reject(
         new Error(`CPRItem.installItems argument is not an array: ${itemList}`)
       );
+      return false;
     }
 
     const updateList = [];
     // Make sure we can actually install the items in this list.
     if (!this.canInstallItems(itemList)) {
-      return updateList;
+      return false;
     }
 
     const actor = this.isOwned ? this.actor : false;
@@ -214,8 +224,6 @@ const Container = function Container() {
         // Update the installed item itself.
         const itemData = {
           _id: item.id,
-          "system.isInstalled": true,
-          "system.installedIn": this.uuid,
         };
         // Set equipped status of the newly installed item.
         if (equippableTypes.includes(item.type)) {
@@ -230,9 +238,16 @@ const Container = function Container() {
     // Push the data for the target item to the update list.
     updateList.push({ _id: this.id, "system.installedItems": installedItems });
 
-    return !actor
-      ? this.update({ "system.installedItems": installedItems })
-      : actor.updateEmbeddedDocuments("Item", updateList);
+    if (actor) {
+      // `document.updateEmbeddedDocuments` returns an empty list if no changes were made.
+      return actor
+        .updateEmbeddedDocuments("Item", updateList)
+        .then((list) => list.length > 0);
+    }
+
+    // `document.update` returns undefined if no changes were made. Double exclamation point
+    // to make this a boolean.
+    return !!(await this.update({ "system.installedItems": installedItems }));
   };
 
   /**
@@ -278,12 +293,6 @@ const Container = function Container() {
       // Remove that entry.
       installedIds.splice(index, 1);
 
-      // Update the item being uninstalled.
-      await item.update({
-        "system.isInstalled": false,
-        "system.installedIn": "",
-      });
-
       // Handle recursion - Uninstall items installed in items from `uninstallList`.
       if (recursive && containerTypes.includes(item.type)) {
         const recursiveUninstalled = item.getInstalledItems();
@@ -305,10 +314,12 @@ const Container = function Container() {
 
     // Update used slots with the newly installed system.
     let usedSlots = 0;
-    installedIds.forEach((i) => {
-      const item = actor ? actor.getOwnedItem(i) : game.items.get(i);
-      usedSlots += item.system.size;
-    });
+    if (this.documentName === "Item") {
+      installedIds.forEach((i) => {
+        const item = actor ? actor.getOwnedItem(i) : game.items.get(i);
+        usedSlots += item.system.size;
+      });
+    }
 
     // Update the item with the new list and used slots.
     return this.update({
@@ -383,51 +394,6 @@ const Container = function Container() {
       : actor.updateEmbeddedDocuments("Item", [
           { _id: this._id, "system.installedItems.list": newInstalledList },
         ]);
-  };
-
-  /**
-   * This function is called when an actor is duplicated.  It ensures that the installed items of
-   * the copied actor are all now pointing to the new object on the new actor.
-   */
-  this.recursiveInstallSync = async function recursiveInstallSync() {
-    LOGGER.trace("recursiveInstallSync | Container | Called.");
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
-    const actor = this.isOwned ? this.actor : false;
-    if (actor) {
-      const actorUUID = actor.uuid;
-      const updateList = [];
-      const installedList = [];
-      for (const installedItemUUID of this.system.installedItems.list) {
-        const sourceItemId = installedItemUUID.split(".").pop();
-        const newItemId = `${actorUUID}.Item.${sourceItemId}`;
-        installedList.push(newItemId);
-        const installedItem = actor.getOwnedItem(newItemId);
-        updateList.push({
-          _id: installedItem.id,
-          "system.isInstalled": true,
-          "system.installedIn": this.uuid,
-        });
-        if (
-          containerTypes.includes(installedItem.type) &&
-          installedItem.system.installedItems.list.length > 0
-        ) {
-          await installedItem.recursiveInstallSync();
-        }
-      }
-
-      updateList.push({
-        _id: this.id,
-        "system.installedItems.list": installedList,
-      });
-
-      await actor.updateEmbeddedDocuments("Item", updateList);
-
-      // Do this last because `syncUpgrades` relies on the updates above to work.
-      if (upgradableTypes.includes(this.type)) {
-        await this.syncUpgrades();
-      }
-    }
   };
 };
 

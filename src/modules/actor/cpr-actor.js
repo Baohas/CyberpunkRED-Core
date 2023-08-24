@@ -12,6 +12,7 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 import TextUtils from "../utils/TextUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
+import Container from "../item/mixins/cpr-container.js";
 
 /**
  * CPRActor contains common code between mooks and characters (NPCs and players).
@@ -81,6 +82,27 @@ export default class CPRActor extends Actor {
   }
 
   /**
+   * Load all mixins configured in the Item metadata.
+   * TODO: enum this
+   *
+   * @public
+   */
+  loadMixins() {
+    LOGGER.trace("loadMixins | CPRItem | Called.");
+    const mixins = ["container"];
+    for (let m = 0; m < mixins.length; m += 1) {
+      switch (mixins[m]) {
+        case "container": {
+          Container.call(CPRActor.prototype);
+          break;
+        }
+        default:
+          LOGGER.warn(`Tried to load an unknown mixin, ${mixins[m]}`);
+      }
+    }
+  }
+
+  /**
    * This is a helper function for when syncing installed items fails irrecoverably.
    * It forcibly uninstalls all items from all other items so that the character sheet
    * can reset from a neutral state. This function should reveal items that are "invisible" on actors
@@ -105,8 +127,6 @@ export default class CPRActor extends Actor {
     for (const item of relevantItems) {
       const updateData = {
         _id: item.id,
-        "system.isInstalled": item.system.core ?? false,
-        "system.installedIn": item.system.core ? this.uuid : "",
       };
 
       if (item.system.installedItems?.list) {
@@ -134,7 +154,7 @@ export default class CPRActor extends Actor {
       }
 
       if (item.system.core) {
-        installedList.push(item.uuid);
+        installedList.push(item.id);
       }
       updateList.push(updateData);
     }
@@ -152,6 +172,7 @@ export default class CPRActor extends Actor {
   prepareData() {
     LOGGER.trace("prepareData | CPRActor | Called.");
     super.prepareData();
+    this.loadMixins();
     if (this.compendium === null || this.compendium === undefined) {
       // It looks like prepareData() is called for any actors/npc's that exist in
       // the game and the clients can't update them.  Everyone should only calculate
@@ -503,13 +524,13 @@ export default class CPRActor extends Actor {
     const compatibleTargetCyberware = [];
     baseCompatibleFoundationalCyberware.forEach((cyberware) => {
       compatibleTargetCyberware.push(cyberware);
-      let uuidList = cyberware.system.installedItems.list;
+      let idList = cyberware.system.installedItems.list;
       const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-      while (uuidList.length > 0) {
-        const loopList = uuidList;
-        uuidList = [];
-        for (const uuid of loopList) {
-          const itemLookup = this.getOwnedItem(uuid);
+      while (idList.length > 0) {
+        const loopList = idList;
+        idList = [];
+        for (const id of loopList) {
+          const itemLookup = this.getOwnedItem(id);
           if (containerTypes.includes(itemLookup.type)) {
             if (
               itemLookup.system.installedItems.allowed &&
@@ -520,7 +541,7 @@ export default class CPRActor extends Actor {
             ) {
               compatibleTargetCyberware.push(itemLookup);
             }
-            uuidList = uuidList.concat(itemLookup.system.installedItems.list);
+            idList = idList.concat(itemLookup.system.installedItems.list);
           }
         }
       }
@@ -558,11 +579,10 @@ export default class CPRActor extends Actor {
 
     const installationSuccess = await target.installItems([item]);
 
-    if (installationSuccess.length > 0) {
+    if (installationSuccess) {
       await this.loseHumanityValue(item, formData);
-      return true;
     }
-    return false;
+    return installationSuccess;
   }
 
   /**
@@ -599,186 +619,12 @@ export default class CPRActor extends Actor {
 
     if (confirmRemove) {
       const target =
-        this.uuid === item.system.installedIn
+        this.id === item.system.installedIn
           ? this
           : this.getOwnedItem(item.system.installedIn);
-      const uninstallList = await target.uninstallItems([item]);
-      for (const ui of uninstallList) {
-        if (SystemUtils.GetTemplateItemTypes("upgradable").includes(ui.type)) {
-          // eslint-disable-next-line no-await-in-loop
-          await ui.syncUpgrades();
-        }
-      }
+      await target.uninstallItems([item]);
     }
     return this.setMaxHumanity();
-  }
-
-  /**
-   * Get an array of the objects installed in this Item. An optional
-   * string parameter may be passed to filter the return list by a
-   * specific Item type.
-   *
-   * @param {String} type - Optionally return a list of a specific item type
-   * @returns {Array} - Array of objects that are installed
-   */
-  getInstalledItems(type = false) {
-    LOGGER.trace("getInstalledItems | CPRActor | Called.");
-    const installedItems = [];
-
-    if (this.system.installedItems.list.length > 0) {
-      this.system.installedItems.list.forEach((uuid) => {
-        const installedItem = this.getOwnedItem(uuid);
-        if (installedItem && (!type || (type && installedItem.type === type))) {
-          installedItems.push(installedItem);
-        }
-      });
-    }
-    return installedItems;
-  }
-
-  /**
-   * Determine if a set of objects can be installed into this Item. Checks for
-   * the following criteria:
-   *  - Items are allowed to be installed
-   *  - Item in itemLists are all in the allowedTypes of this item
-   *
-   * @param {Array} itemList - Array of objects to wanting to be installed
-   * @returns {Boolean} - Whether this item can install all objects passed to it
-   */
-  canInstallItems(itemList) {
-    LOGGER.trace("canInstallItems | CPRActor | Called.");
-    if (!Array.isArray(itemList)) {
-      LOGGER.debug(
-        `CPRActor.canInstallItems argument is not an array: ${itemList}`
-      );
-      return false;
-    }
-    let result = true;
-    itemList.forEach((item) => {
-      if (
-        !this.system.installedItems.allowedTypes.includes(item.type) ||
-        !SystemUtils.getDataModelTemplates(item.type).includes("installable")
-      ) {
-        result = false;
-      }
-    });
-    return this.system.installedItems.allowed && result;
-  }
-
-  /**
-   * This will install items into this Actor.
-   * @param {Array} itemList - Array of Item Objects to be installed
-   * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
-   */
-  async installItems(itemList) {
-    LOGGER.trace("installItems | CPRActor | Called.");
-    if (!Array.isArray(itemList)) {
-      return Promise.reject(
-        new Error(`CPRActor.installItems argument is not an array: ${itemList}`)
-      );
-    }
-    if (!this.canInstallItems(itemList)) {
-      return Promise.reject(
-        new Error(
-          "Installation failed.  One or more item types are not allowed to be installed."
-        )
-      );
-    }
-    const installedItems = duplicate(this.system.installedItems);
-    const updateList = [];
-
-    itemList.forEach((item) => {
-      if (!installedItems.list.includes(item.uuid)) {
-        installedItems.list.push(item.uuid);
-      }
-      updateList.push({
-        _id: item.id,
-        "system.isInstalled": true,
-        "system.installedIn": this.uuid,
-      });
-    });
-
-    await this.update({ "system.installedItems": installedItems });
-    return this.updateEmbeddedDocuments("Item", updateList);
-  }
-
-  /**
-   * This will uninstall all items in itemList from this Actor.  By default, any installed items
-   * which also have installed items WILL have those items removed from it.
-   *  Example 1:
-   *    Uninstall a CyberArm which has a Big Knucks will also remove the Big Knucks from the CyberArm
-   *  Example 2:
-   *    Uninstall a CyberArm which has a Cyberdeck in it, all programs and upgrades from the
-   *    Cyberdeck are also uninstalled. (Not preferrable, see TODO)
-   *
-   * TODO: Determine if we should stop recursiveness on an item type change.  IE, if this
-   *       is a cyberware item, only remove all embedded cyberware items and if something else
-   *       is installed, like a cyberdeck, don't uninstall whatever it has installed.
-   * @param {Array} itemList - Array of objects to uninstall
-   * @param {Boolean} recursive  - Boolean stating if the uninstallation should be recursive
-   *                               in that each item uninstalled should also have it's own
-   *                               installed items removed.  This is needed for Cyberware uninstallations.
-   * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
-   */
-  async uninstallItems(itemList, recursive = true) {
-    LOGGER.trace("uninstallItems | CPRActor | Called.");
-    if (!Array.isArray(itemList)) {
-      return Promise.reject(
-        new Error(
-          `CPRActor.uninstallItems argument is not an array: ${itemList}`
-        )
-      );
-    }
-
-    const installedItems = duplicate(this.system.installedItems);
-    const updateList = [];
-
-    const uninstallList = [];
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-
-    for (const item of itemList) {
-      if (installedItems.list.includes(item.uuid)) {
-        installedItems.list = installedItems.list.filter(
-          (uuid) => item.uuid !== uuid
-        );
-        uninstallList.push(item);
-        if (recursive) {
-          let embeddedItemList = item.getInstalledItems();
-
-          while (embeddedItemList.length > 0) {
-            const embeddedItemsData = JSON.parse(
-              JSON.stringify(embeddedItemList)
-            );
-            embeddedItemList = [];
-            for (const embeddedItemData of embeddedItemsData) {
-              const embeddedItem = this.getOwnedItem(embeddedItemData._id);
-              uninstallList.push(embeddedItem);
-              if (
-                containerTypes.includes(embeddedItem.type) &&
-                embeddedItem.system.installedItems.list.length > 0
-              ) {
-                embeddedItemList = embeddedItemList.concat(
-                  embeddedItem.getInstalledItems()
-                );
-              }
-            }
-          }
-        }
-      }
-    }
-
-    uninstallList.forEach((item) => {
-      updateList.push({
-        _id: item._id,
-        "system.isInstalled": false,
-        "system.installedIn": "",
-        "system.installedItems.list": [],
-        "system.installedItems.usedSlots": 0,
-      });
-    });
-
-    await this.update({ "system.installedItems": installedItems });
-    return this.updateEmbeddedDocuments("Item", updateList);
   }
 
   /**

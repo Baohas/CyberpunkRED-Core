@@ -110,8 +110,4 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
       ? parsedUuid.documentId
       : parsedUuid.embedded[index];
   }
-
-  testFunction() {
-    console.log("Success!");
-  }
 }
