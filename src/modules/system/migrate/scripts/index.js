@@ -23,7 +23,7 @@ export { default as dvCompendiumMigration } from "./016-dvCompendium.js";
 export { default as criticalInjuryCompendiumMigration } from "./017-critTables.js";
 export { default as CustomSkillFix } from "./018-customSkillFix.js";
 export { default as ImportedActorFix } from "./019-importedActorFix.js";
-export { default as NullStatsMigration } from "./020-nullTokenStats.js";
+export { default as TokenItemLossMigration } from "./020-tokenItemLossFix.js";
 export { default as v11EffectsMigration } from "./021-v11Effects.js";
 export { default as packNameMigration } from "./022-packRenames.js";
 export { default as v11TokenMigration } from "./023-unlinkedTokensv11.js";
