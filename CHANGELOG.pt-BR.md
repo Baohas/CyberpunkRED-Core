@@ -2,6 +2,16 @@
 
 # Changelog
 
+## Version 0.88.1
+
+### Action Needed
+
+**WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
+
+### Bug Fixes
+
+- Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
+
 ## Version 0.88.0
 
 ### Action Needed
@@ -27,6 +37,7 @@ This means any instances where you have dragged an item from a compendium into a
 - Localized Mook skills are now sorted alphabetically
 - Fix luck rolls adding luck stat when no luck applied
 - Temp fix for Dice so Nice treating reputation as string on facedown rolls
+- Fix missing foundational need for Holo Projector Cyberware
 
 ### Changes
 
