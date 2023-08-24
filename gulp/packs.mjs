@@ -19,19 +19,17 @@ import {
  * @returns {Promise} A promise which resolves when all packs have been processed.
  * @throws Will throw an error if the path for a specific pack does not exist.
  *
- * @example
- * extPacks().then(() => {
- *   console.log('All packs have been extracted successfully.');
- * }).catch(error => {
- *   console.error('Error occurred while extracting packs:', error);
- * });
  */
 async function extPacks() {
   const fragmentDir = path.resolve(SRC_DIR, PACKS_DIR);
   const sysFile = JSON.parse(
     fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE))
   );
-  const { packs } = sysFile;
+  let { packs } = sysFile;
+
+  // Skip the changelog pack as we generate that with 'generateChangelog'
+  // so we don't need to extract it
+  packs = packs.filter((pack) => pack.name !== "other_changelog");
 
   // Because we want to handle deleted items in git properly we first delete
   // the fragmentDir then re-create it before writing out files.
@@ -71,6 +69,15 @@ async function extPacks() {
   return Promise.all(promises);
 }
 
+/**
+ * Generate packs by processing YAML fragments.
+ *
+ * @async
+ * @function genPacks
+ * @returns {Promise<void[]>} - A Promise that resolves with an array of empty
+ *                              arrays once all packs are generated.
+ *
+ */
 async function genPacks() {
   log("Generating Packs...");
   const packsDir = path.resolve(DEST_DIR, PACKS_DIR);
@@ -121,14 +128,15 @@ async function genPacks() {
 async function genPacksBabele() {
   log("Generating Babele Files...");
   // We only care about translating certian pack types
-  const translatedPacks = ["Item", "RollTable"];
-
-  const fragmentDir = path.resolve(SRC_DIR, PACKS_DIR);
   const babeleDir = path.resolve(SRC_DIR, "babele", "en");
   const sysFile = JSON.parse(
     fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE))
   );
-  const { packs } = sysFile;
+  let { packs } = sysFile;
+
+  // Skip the changelog pack as we generate that with 'generateChangelog'
+  // and it doesn't need to be translated
+  packs = packs.filter((pack) => pack.name !== "other_changelog");
 
   // To handle compendia renames we need to blast the files then rebuild them
   if (fs.existsSync(babeleDir)) {
