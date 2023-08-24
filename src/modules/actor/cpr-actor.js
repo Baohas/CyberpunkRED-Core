@@ -35,50 +35,40 @@ export default class CPRActor extends Actor {
     LOGGER.trace("create | CPRActor | called.");
     const createData = data;
     const newActor = typeof data.system === "undefined";
-    if (newActor) {
-      LOGGER.trace("create | New Actor | CPRCharacterActor | called.");
-      createData.items = [];
-      const tmpItems = data.items.concat(
-        await SystemUtils.GetCoreSkills(),
-        await SystemUtils.GetCoreCyberware()
-      );
-      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-      tmpItems.forEach((item) => {
-        const updatedSystem = duplicate(item.system);
-        if (containerTypes.includes(item.type)) {
-          updatedSystem.installedItems.slots = 7;
-          updatedSystem.installedItems.allowedTypes = [
-            "itemUpgrade",
-            "cyberware",
-          ];
-        }
-        const cprItem = {
-          name: item.name,
-          img: item.img,
-          type: item.type,
-          system: updatedSystem,
-        };
-        createData.items.push(cprItem);
-      });
+    if (!newActor) {
+      return super.create(data, options);
     }
+
+    LOGGER.trace("create | New Actor | CPRCharacterActor | called.");
+    createData.items = [];
+    const tmpItems = data.items.concat(
+      await SystemUtils.GetCoreSkills(),
+      await SystemUtils.GetCoreCyberware()
+    );
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    tmpItems.forEach((item) => {
+      const updatedSystem = duplicate(item.system);
+      if (containerTypes.includes(item.type)) {
+        updatedSystem.installedItems.slots = 7;
+        updatedSystem.installedItems.allowedTypes = [
+          "itemUpgrade",
+          "cyberware",
+        ];
+      }
+      const cprItem = {
+        name: item.name,
+        img: item.img,
+        type: item.type,
+        system: updatedSystem,
+      };
+      createData.items.push(cprItem);
+    });
+
     const actor = await super.create(createData, options);
     const installedItems = [];
-    if (newActor) {
-      // If this is a brand new actor (i.e. not a duplicate), install core cyberware.
-      const updateList = [];
-      actor.itemTypes.cyberware.forEach((cw) => {
-        installedItems.push(cw.uuid);
-        updateList.push({
-          _id: cw.id,
-          "system.isInstalled": true,
-          "system.installedIn": actor.uuid,
-        });
-      });
-      // Update the embedded core cyberware with the correct reference to the actor its installed in.
-      actor.updateEmbeddedDocuments("Item", updateList);
-      await actor.update({ "system.installedItems.list": installedItems });
-    }
-    return actor;
+    // If this is a brand new actor (i.e. not a duplicate), install core cyberware.
+    actor.itemTypes.cyberware.forEach((cw) => installedItems.push(cw.id));
+    return actor.update({ "system.installedItems.list": installedItems });
   }
 
   /**
@@ -328,6 +318,10 @@ export default class CPRActor extends Actor {
    * - items installed in other items
    * - updating items on unlinked tokens
    *
+   * When we delete an owned item, we should first check if it has items installed into it,
+   * or if it's installed into something else (or both). That way we can make sure they get
+   * uninstalled properly and their references are scrubbed.
+   *
    * @override
    * @param {String} embeddedName - document name, usually a category like Item
    * @param {Object} ids - Array of documents to consider
@@ -339,46 +333,60 @@ export default class CPRActor extends Actor {
     // If migration is calling this, we assume migration is
     // handling all references to containers and installable
     // items, so we just delete the item.
-    const isMigration = !!(
-      typeof context !== "undefined" && context.cprIsMigrating
-    );
+    const isMigration = !!context?.cprIsMigrating;
     if (!isMigration) {
       const containerTypes = SystemUtils.GetTemplateItemTypes("container");
       const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
+      // For every item that we are deleting.
       for (const itemId of ids) {
+        // Get the item.
         const item = this.getOwnedItem(itemId);
         if (
+          // If item exists...
           item &&
+          // ... and item is a container...
           containerTypes.includes(item.type) &&
+          // ... and item has things installed into it.
           item.system.installedItems.list.length > 0
         ) {
           const itemList = [];
-          for (const installedUuid of item.system.installedItems.list) {
-            const installedItem = this.getOwnedItem(installedUuid);
+          // For every installed-item in this item...
+          for (const installedId of item.system.installedItems.list) {
+            // ...get the item,...
+            const installedItem = this.getOwnedItem(installedId);
+            // ...if the item exists...
             if (installedItem) {
+              // ...add that item to the list.
               itemList.push(installedItem);
             }
           }
+          // Uninstall all items (with recursion) before deletion.
           await item.uninstallItems(itemList, true);
         }
 
         if (
+          // If item exists...
           item &&
+          // ...and Item is an installable...
           installableTypes.includes(item.type) &&
-          item.system.isInstalled &&
-          item.system.installedIn !== ""
+          // and item is installed somewhere....
+          item.system.isInstalled
         ) {
+          // ...Get where it is installed.
           const installLocation =
-            item.system.installedIn === this.uuid
-              ? this
-              : this.getOwnedItem(item.system.installedIn);
-          if (containerTypes.includes(installLocation.type)) {
-            await installLocation.uninstallItems([item], false);
-          }
+            // If item is installed in the actor,
+            item.system.installedIn === this.id
+              ? // location is the actor
+                this
+              : // else, location is an item.
+                this.getOwnedItem(item.system.installedIn);
+          // Uninstall this item from its install location.
+          await installLocation.uninstallItems([item], false);
         }
       }
     }
 
+    // Continue on with deleting the documents (call the Foundry function).
     return super.deleteEmbeddedDocuments(embeddedName, ids, context);
   }
 
@@ -1721,7 +1729,7 @@ export default class CPRActor extends Actor {
       {
         name: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
         icon: "icons/svg/aura.svg",
-        origin: this.uuid,
+        origin: this.uuid, // Do we still want this here?
         disabled: false,
       },
     ]);

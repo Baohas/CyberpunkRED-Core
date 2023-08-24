@@ -79,8 +79,6 @@ export default class CPRContainerActor extends Actor {
     for (const item of relevantItems) {
       const updateData = {
         _id: item.id,
-        "system.isInstalled": item.system.core ?? false,
-        "system.installedIn": item.system.core ? this.uuid : "",
       };
 
       if (item.system.installedItems?.list) {
