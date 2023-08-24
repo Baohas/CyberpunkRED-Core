@@ -14,6 +14,104 @@ import { SRC_DIR, SYSTEM_FILE, SYSTEM_VERSION, TRACE } from "../config.mjs";
  */
 export default class PackUtils {
   /**
+   * Generates a random string based on the given length.
+   * @private
+   * @param {number} length - The length of the generated string.
+   * @returns {string} A random string.
+   */
+  static _generateRandomString(length) {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+
+    for (let i = 0; i < length; ) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      result += characters.charAt(randomIndex);
+      i += 1;
+    }
+
+    return result;
+  }
+
+  /**
+   * Generates a unique ID based on the given criteria.
+   * @private
+   * @param {string[]} existingIds - An array of existing IDs.
+   * @returns {string} A unique ID.
+   */
+  static async _generateUniqueId(existingIds) {
+    const maxAttempts = 100;
+    let attempts = 0;
+    let id;
+
+    while (attempts < maxAttempts) {
+      id = this._generateRandomString(16);
+      if (!existingIds.includes(id)) {
+        break;
+      }
+      attempts += 1;
+    }
+
+    if (attempts === maxAttempts) {
+      throw new Error("Unable to generate a unique ID");
+    }
+
+    return id;
+  }
+
+  /**
+   * Gets existing IDs from the files in the specified directory and its subdirectories.
+   * @private
+   * @param {string} dirPath - The directory path to process.
+   * @returns {Promise<string[]>} A promise that resolves with the array of existing IDs.
+   */
+  static async _getExistingIds(dirPath) {
+    const existingIds = [];
+
+    async function processDirectory(directory) {
+      const entries = await fs.readdir(directory);
+
+      const promises = entries.map(async (entry) => {
+        const entryPath = path.join(directory, entry);
+        const stats = await fs.stat(entryPath);
+
+        if (stats.isDirectory()) {
+          return processDirectory(entryPath); // Recurse into subdirectories
+        }
+        if (stats.isFile() && entry.endsWith(".yaml")) {
+          const yamlContent = await fs.readFile(entryPath, "utf8");
+          const yamlData = YAML.load(yamlContent);
+
+          if (yamlData && yamlData._id) {
+            existingIds.push(yamlData._id);
+          }
+        }
+
+        return null; // Return a value for the map function
+      });
+
+      await Promise.all(promises);
+    }
+
+    await processDirectory(dirPath);
+
+    return existingIds;
+  }
+
+  /**
+   * Generates a unique ID based on files in the specified directory.
+   * @param {string} fragmentDir - The directory to process.
+   * @returns {Promise<string>} A promise that resolves with the generated ID.
+   */
+  static async generateId(fragmentDir) {
+    const existingIds = [];
+
+    await this._getExistingIds(fragmentDir);
+    const newId = await this._generateUniqueId(existingIds);
+    return newId;
+  }
+
+  /**
    * Extracts the pack type from a levelDB key.
    *
    * The input string is expected to be in the format:
@@ -101,7 +199,6 @@ export default class PackUtils {
    * @returns {string} - The cleaned string with invisible whitespace characters
    *                     removed and quotes normalized.
    */
-  // Removes invisible whitespace chars and normalises single and double-quotes.
   static cleanString(str) {
     if (TRACE) {
       log(`TRACE: PackUtils | cleanString called.`);
