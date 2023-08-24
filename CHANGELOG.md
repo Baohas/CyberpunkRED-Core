@@ -2,6 +2,12 @@
 
 # Changelog
 
+## Version 0.89.0
+
+### Bug Fixes
+
+- Fix weapons moved to stash not applying correct amount of ammo stack
+
 ## Version 0.88.1
 
 ### Action Needed
