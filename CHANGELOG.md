@@ -1160,7 +1160,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - Fixed release manifest to not lock users into version 0.75.2 without possibility to update
 
-## Please Note
+### Please Note
 
 - Version 0.74.2 had an error in the release manifest causing issues with updating. This was attempted to be fixed a first time but sadly that fix contain a further issue. A second attempt was made and this was successful. During this however the version numbers appear to have got confused slightly, leading to the strange jump between the version number below (0.74.2) and above (0.75.4).
 - In more specific terms:
@@ -1224,12 +1224,12 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Refactored data model to conform with plans going forward.
 - Logging has been overhauled.
 
-## Version: 0.66 (Hotfix) | Date: 2021-03-21
+## Version: 0.66.0 (Hotfix) | Date: 2021-03-21
 
 - Aimed shot was using the Autofire Skill when attacking instead of using the Weapon Skill
 - Suppressive Fire was using the Weapon Skill when attacking instead of using the Autofire Skill
 
-## Version: 0.65 | Date: 2021-03-20
+## Version: 0.65.0 | Date: 2021-03-20
 
 ### UI/UX
 
