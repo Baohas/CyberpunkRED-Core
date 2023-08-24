@@ -350,16 +350,24 @@ const Loadable = function Loadable() {
         }
 
         if (typeof ammo === "object") {
-          // We have a source ammo to model from
+          // We have a source ammo to model from; if ammo is created from an
+          // unloaded weapon, a new instance of the ammo is created if one
+          // doesn't exist in an actor or if it does exist, updates the values
+          // of the existing ammo with the unloaded amount.
           const newItemData = ammo.toObject();
-          newItemData.system.amount = 0;
+          newItemData.system.amount = magazineData.value;
           const itemMatch = actor.items.find(
             (i) => i.type === ammo.type && i.name === ammo.name
           );
           if (itemMatch) {
+            // if match found, update existing ammo stack amount
             ammoData.name = itemMatch.name;
             ammoData.uuid = itemMatch.uuid;
+            await itemMatch.update({
+              "system.amount": itemMatch.system.amount + magazineData.value,
+            });
           } else {
+            // if not found, build new ammo stack with unloaded amount
             const createdItems = await actor.createEmbeddedDocuments("Item", [
               newItemData,
             ]);
