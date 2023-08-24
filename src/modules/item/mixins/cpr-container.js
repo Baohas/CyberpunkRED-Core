@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* global duplicate fromUuidSync Item game Folder */
+/* global duplicate Item game Folder */
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
@@ -106,22 +106,19 @@ const Container = function Container() {
       const installedItems = [];
       const containerTypes = SystemUtils.GetTemplateItemTypes("container");
 
+      const actor = this.isEmbedded ? this.actor : false;
       if (this.system.installedItems.list.length > 0) {
-        let uuidList = this.system.installedItems.list;
-        while (uuidList.length > 0) {
-          for (const uuid of uuidList) {
-            const item = fromUuidSync(uuid);
+        let idList = this.system.installedItems.list;
+        while (idList.length > 0) {
+          for (const id of idList) {
+            const item = actor ? actor.getOwnedItem(id) : game.items.get(id);
             if (item !== null) {
-              if (!item?.isOwned) {
-                item.system.isInstalled = true;
-                item.system.installedIn = this.uuid;
-              }
               if (containerTypes.includes(item.type)) {
-                uuidList = uuidList.concat(item.system.installedItems.list);
+                idList = idList.concat(item.system.installedItems.list);
               }
               installedItems.push(item);
             }
-            uuidList = uuidList.filter((itemUUID) => itemUUID !== uuid);
+            idList = idList.filter((itemId) => itemId !== id);
           }
         }
       }
@@ -216,9 +213,9 @@ const Container = function Container() {
 
     itemList.forEach((item) => {
       // No need to install it, it it's already installed.
-      if (!installedItems.list.includes(item.uuid)) {
+      if (!installedItems.list.includes(item.id)) {
         // Add installed item to the target's list.
-        installedItems.list.push(item.uuid);
+        installedItems.list.push(item.id);
         // Update target's used slots.
         installedItems.usedSlots += item.system.size;
         // Update the installed item itself.
@@ -287,9 +284,8 @@ const Container = function Container() {
     const installedIds = duplicate(this.system.installedItems.list);
 
     for (const item of uninstallList) {
-      // Get index of uninstalled item. Remove UUID option eventually.
-      const index =
-        installedIds.indexOf(item.id) || installedIds.indexOf(item.uuid);
+      // Get index of uninstalled item.
+      const index = installedIds.indexOf(item.id);
       // Remove that entry.
       installedIds.splice(index, 1);
 
