@@ -1,4 +1,4 @@
-/* global duplicate CONST fromUuid */
+/* global duplicate CONST game */
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 
@@ -22,13 +22,13 @@ const Upgradable = function Upgradable() {
     const actor = this.isOwned ? this.actor : false;
 
     const installedItems = duplicate(this.system.installedItems);
-    let installedUpgrades = duplicate(this.system.upgrades);
+    let installedUpgrades = duplicate(this.system.installedUpgrades);
 
     // First, remove any upgrades that were uninstalled
-    for (const upgrade of this.system.upgrades) {
+    for (const upgrade of this.system.installedUpgrades) {
       if (!installedItems.list.includes(upgrade.uuid)) {
         installedUpgrades = installedUpgrades.filter(
-          (u) => u.uuid !== upgrade.uuid
+          (u) => u.id !== upgrade.id
         );
       }
     }
@@ -37,13 +37,12 @@ const Upgradable = function Upgradable() {
     // Next identify any upgrades that are installed but not recorded
     // as an upgraded data point
     const newUpgrades = [];
-    for (const uuid of installedItems.list) {
+    for (const id of installedItems.list) {
       // eslint-disable-next-line no-await-in-loop
-      const installedItem = await fromUuid(uuid);
+      const installedItem = actor ? actor.getOwnedItem(id) : game.items.get(id);
       if (
         installedItem.type === "itemUpgrade" &&
-        installedUpgrades.filter((upgrade) => upgrade.uuid === uuid).length ===
-          0
+        installedUpgrades.filter((upgrade) => upgrade.id === id).length === 0
       ) {
         newUpgrades.push(installedItem);
       }
@@ -53,8 +52,8 @@ const Upgradable = function Upgradable() {
       upgradeStatus = true;
       const upgradeModifiers = upgrade.system.modifiers;
       const modList = {};
-      Object.keys(upgradeModifiers).forEach((index) => {
-        const modifier = upgradeModifiers[index];
+      Object.entries(upgradeModifiers).forEach(([key, value]) => {
+        const modifier = value;
         /*
               Before we add this modifier to the list of upgrades for this item, we need to do several checks:
               1. Ensure the modifier is defined as the key could have been added but the value never set
@@ -63,18 +62,12 @@ const Upgradable = function Upgradable() {
               3. The next couple checks ensure we are only adding actual modifications, null, 0 or empty strings don't modify
                 anything, so we ignore those.
             */
-        if (
-          typeof modifier !== "undefined" &&
-          typeof CPR.upgradableDataPoints[this.type][index] !== "undefined" &&
-          modifier !== 0 &&
-          modifier !== null &&
-          modifier !== ""
-        ) {
+        if (CPR.upgradableDataPoints[this.type][key]) {
           if (
             typeof modifier.value === "undefined" ||
             modifier.value !== null
           ) {
-            modList[index] = modifier;
+            modList[key] = modifier;
           }
         }
       });
@@ -96,11 +89,11 @@ const Upgradable = function Upgradable() {
       {
         _id: this._id,
         "system.isUpgraded": upgradeStatus,
-        "system.upgrades": installedUpgrades,
+        "system.installedUpgrades": installedUpgrades,
       },
     ];
     this.system.isUpgraded = upgradeStatus;
-    this.system.upgrades = installedUpgrades;
+    this.system.installedUpgrades = installedUpgrades;
 
     if (
       this.type === "weapon" &&
@@ -141,7 +134,7 @@ const Upgradable = function Upgradable() {
       typeof this.system.isUpgraded === "boolean" &&
       this.system.isUpgraded
     ) {
-      const installedUpgrades = this.system.upgrades;
+      const { installedUpgrades } = this.system;
       installedUpgrades.forEach((upgrade) => {
         if (typeof upgrade.system.modifiers[dataPoint] !== "undefined") {
           const modType = upgrade.system.modifiers[dataPoint].type;
@@ -184,7 +177,7 @@ const Upgradable = function Upgradable() {
       this.system.isUpgraded
     ) {
       // Get all installed upgrades.
-      const installedUpgrades = this.system.upgrades;
+      const { installedUpgrades } = this.system;
 
       // Get all installed upgrades of type override.
       const overrides = installedUpgrades.filter(
@@ -239,20 +232,6 @@ const Upgradable = function Upgradable() {
       }
     }
     return relevantUpgrades;
-  };
-
-  /**
-   * Whenever a new upgradeable item is created, we automatically clear the upgrades associated with it.
-   * Otherwise, a copied Item will contain references to upgrades used in the original item.
-   *
-   * @param {Object} data - the data the item is being created from
-   */
-  this.clearUpgrades = function clearUpgrades(data) {
-    LOGGER.trace("clearUpgrades | Upgradable | Called.");
-    const newData = data;
-    newData.system.isUpgraded = false;
-    newData.system.upgrades = [];
-    return newData;
   };
 };
 

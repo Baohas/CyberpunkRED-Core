@@ -5,7 +5,7 @@
       {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/mixin/cpr-weapon.hbs" this}}
       {{!-- Loop over each upgrade and work out if it's a weapon --}}
       {{#if weapon.system.isUpgraded}}
-        {{#each weapon.system.upgrades as |upgrade|}}
+        {{#each weapon.system.installedUpgrades as |upgrade|}}
           {{#if upgrade.system.modifiers.secondaryWeapon.configured}}
             {{#each (cprFilter ../actor.itemTypes.itemUpgrade "_id" upgrade._id) as |weapon|}}
               {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/mixin/cpr-weapon.hbs" this}}

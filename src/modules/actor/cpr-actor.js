@@ -123,11 +123,6 @@ export default class CPRActor extends Actor {
         updateData["system.installedItems.list"] = [];
       }
 
-      if (item.system.upgrades) {
-        updateData["system.upgrades"] = [];
-        updateData["system.isUpgraded"] = [];
-      }
-
       if (item.system.installedItems?.slots) {
         updateData["system.installedItems.usedSlots"] = 0;
       }
@@ -1321,7 +1316,7 @@ export default class CPRActor extends Actor {
       if (itemMatch) {
         const canStack = !(
           itemTemplates.includes("upgradable") &&
-          itemMatch.system.upgrades.length === 0
+          itemMatch.system.installedUpgrades.length === 0
         );
         if (canStack) {
           let oldAmount = parseInt(itemMatch.system.amount, 10);

@@ -59,7 +59,7 @@
 </li>
 {{#if item.system.isUpgraded }}
   <hr/>
-  {{#each item.system.upgrades as |upgrade| }}
+  {{#each item.system.installedUpgrades as |upgrade| }}
     <li class="item flexrow" data-item-id="{{upgrade.uuid}}" draggable="false">
       <div class="item-name flexrow setting-name text-nowrap">
         {{#if this.editable }}

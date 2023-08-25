@@ -79,33 +79,21 @@ const Installable = function Installable() {
 
     if (targetItem) {
       await targetItem.installItems([this]);
-
-      if (installationType === "itemUpgrade") {
-        await targetItem.syncUpgrades();
-      }
     }
   };
 
   /**
-   * Install this item into a container type item
+   * Uninstall this item.
    *
    * @async
    */
   this.uninstall = async function uninstall() {
     LOGGER.trace("uninstall | Installable | Called.");
-    const container = fromUuidSync(this.system.installedIn);
-    if (typeof container !== "object") {
-      return;
-    }
-
-    const updatedItems = await container.uninstallItems([this]);
-    const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
-
-    for (const item of updatedItems) {
-      if (upgradableTypes.includes(item.type)) {
-        await item.syncUpgrades();
-      }
-    }
+    const actor = this.isEmbedded ? this.actor : false;
+    const container = actor
+      ? actor.getOwnedItem(this.system.installedIn)
+      : game.items.get(this.system.installedIn);
+    return container.uninstallItems([this]);
   };
 };
 

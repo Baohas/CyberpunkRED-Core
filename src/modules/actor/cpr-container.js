@@ -85,11 +85,6 @@ export default class CPRContainerActor extends Actor {
         updateData["system.installedItems.list"] = [];
       }
 
-      if (item.system.upgrades) {
-        updateData["system.upgrades"] = [];
-        updateData["system.isUpgraded"] = [];
-      }
-
       if (item.system.installedItems?.slots) {
         updateData["system.installedItems.usedSlots"] = 0;
       }
@@ -128,7 +123,7 @@ export default class CPRContainerActor extends Actor {
         if (i.type === newItem.type && i.name === newItem.name) {
           if (
             itemTemplates.includes("upgradable") &&
-            i.system.upgrades.length !== 0
+            i.system.installedUpgrades.length !== 0
           ) {
             return false;
           }
