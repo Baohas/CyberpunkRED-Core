@@ -16,6 +16,8 @@
 - Fix weapons moved to stash not applying correct amount of ammo stack
 - Fix incorrect Black Chrome Grenade Names
 - Fix `Heavy Pistol (ArmorPiercing)` icon
+- Fix Mood Eye Cyberware not being fashionware
+- Fix Perfect Fit Cyberfoot not requiring foundational
 
 ## Version 0.88.1
 

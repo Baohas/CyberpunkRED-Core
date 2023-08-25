@@ -76,7 +76,7 @@ system:
   source:
     book: MHCD
     page: 3
-  type: neuralWare
+  type: fashionware
   unarmedAutomaticCalculation: true
   upgrades: []
   usage: toggled
