@@ -626,8 +626,8 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       event,
       "data-execution-type"
     );
-    const programUUID = SystemUtils.GetEventDatum(event, "data-program-uuid");
-    const program = this.actor.getOwnedItem(programUUID);
+    const programId = SystemUtils.GetEventDatum(event, "data-program-id");
+    const program = this.actor.getOwnedItem(programId);
     const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
     const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
     const { token } = this;

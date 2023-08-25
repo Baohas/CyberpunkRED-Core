@@ -81,15 +81,13 @@ export default class CPRCyberdeckItem extends CPRItem {
   _createCyberdeckRoll(actor, extraData = {}) {
     LOGGER.trace("_createCyberdeckRoll | CPRCyberdeckItem | Called.");
     let cprRoll;
-    const { programUUID } = extraData;
-    const program = this.system.installedPrograms.find(
-      (iProgram) => iProgram.uuid === programUUID
-    );
+    const { programId } = extraData;
+    const program = actor.getOwnedItem(programId);
     if (!program) {
       LOGGER.error(
-        `_createCyberdeckRoll | CPRCyberdeckItem | Unable to locate program ${programUUID}.`
+        `_createCyberdeckRoll | CPRCyberdeckItem | Unable to locate program ${programId}.`
       );
-      return CPRRolls.CPRRoll("Unknown Program", "1d10");
+      return new CPRRolls.CPRRoll("Unknown Program", "1d10");
     }
 
     const roleName = extraData.netRoleItem.system.mainRoleAbility;

@@ -517,10 +517,7 @@ export default class CPRActorSheet extends ActorSheet {
         break;
       }
       case CPRRolls.rollTypes.CYBERDECKPROGRAM: {
-        const programUUID = SystemUtils.GetEventDatum(
-          event,
-          "data-program-uuid"
-        );
+        const programId = SystemUtils.GetEventDatum(event, "data-program-id");
         const cyberdeckId = SystemUtils.GetEventDatum(
           event,
           "data-cyberdeck-id"
@@ -543,7 +540,7 @@ export default class CPRActorSheet extends ActorSheet {
         }
         const extraData = {
           cyberdeckId,
-          programUUID,
+          programId,
           executionType,
           netRoleItem,
         };

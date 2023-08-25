@@ -28,12 +28,12 @@
         {{#each ../rezzedPrograms as |program| }}
           {{#if (cprCompare program.system.class "===" pc) }}
             <li class="item flexrow cyberdeck-rezzed-software-list"
-                data-item-id="{{program.uuid}}">
+                data-item-id="{{program.id}}">
               <div class="rezzed-program-name text-padding-left-smallest">
                 <a class="name item-view"
                    data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToView"}}"
                    data-cyberdeck-id="{{../../fightData.cyberdeck.id}}"
-                   data-program-uuid="{{program.uuid}}">
+                   data-program-id="{{program.id}}">
                   {{program.name}}
                 </a>
               </div>
@@ -54,7 +54,7 @@
                     <a class="program-execution"
                        data-execution-type="reduce-rez"
                        data-cyberdeck-id="{{../../fightData.cyberdeck.id}}"
-                       data-program-uuid="{{program.uuid}}">
+                       data-program-id="{{program.id}}">
                       <i class="far fa-minus-square"
                          data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.reduceRez"}}"></i>
                     </a>
@@ -65,7 +65,7 @@
                 <a class="program-execution"
                    data-execution-type="reset-rez"
                    data-cyberdeck-id="{{../../fightData.cyberdeck.id}}"
-                   data-program-uuid="{{program.uuid}}">
+                   data-program-id="{{program.id}}">
                   <i class="fas fa-undo"
                      data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.resetRez"}}"></i>
                 </a>
@@ -97,12 +97,12 @@
       {{#each rezzedPrograms as |program| }}
         {{#if (cprCompare program.system.class "===" "blackice") }}
           <li class="item flexrow text-padding-left-smallest cyberdeck-rezzed-software-list"
-              data-item-id="{{program.uuid}}">
+              data-item-id="{{program.id}}">
             <div class="rezzed-program-name">
               <a class="name item-view"
    data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToView"}}"
    data-cyberdeck-id="{{../fightData.cyberdeck.id}}"
-   data-program-uuid="{{program.uuid}}">{{program.name}} ({{localize (cprFindConfigValue "blackIceType" program.system.blackIceType)}})</a>
+   data-program-id="{{program.id}}">{{program.name}} ({{localize (cprFindConfigValue "blackIceType" program.system.blackIceType)}})</a>
             </div>
             <div class="rezzed-program-per text-center">
               {{program.system.per}}
@@ -126,7 +126,7 @@
                     <a class="program-execution"
                        data-execution-type="reduce-rez"
                        data-cyberdeck-id="{{../fightData.cyberdeck.id}}"
-                       data-program-uuid="{{program.uuid}}"><i class="far fa-minus-square"
+                       data-program-id="{{program.id}}"><i class="far fa-minus-square"
    data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.reduceRez"}}"></i></a>{{/if}}{{/if}}
                   </div>
                 </div>
@@ -136,19 +136,19 @@
                        data-roll-type="cyberdeckProgram"
                        data-execution-type="atk"
                        data-cyberdeck-id="{{../fightData.cyberdeck.id}}"
-                       data-program-uuid="{{program.uuid}}"><i class="fas fa-fist-raised red-fg"
+                       data-program-id="{{program.id}}"><i class="fas fa-fist-raised red-fg"
    data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i></a>
                     <a class="program-execution"
                        data-roll-type="cyberdeckProgram"
                        data-execution-type="damage"
                        data-cyberdeck-id="{{../fightData.cyberdeck.id}}"
-                       data-program-uuid="{{program.uuid}}"><i class="fas fa-tint red-fg"
+                       data-program-id="{{program.id}}"><i class="fas fa-tint red-fg"
    data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i></a>
                     <a class="program-execution"
                        data-roll-type="cyberdeckProgram"
                        data-execution-type="def"
                        data-cyberdeck-id="{{../fightData.cyberdeck.id}}"
-                       data-program-uuid="{{program.uuid}}"><i class="fas fa-shield-virus red-fg"
+                       data-program-id="{{program.id}}"><i class="fas fa-shield-virus red-fg"
    data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollDefense"}}"></i></a>
                   {{/if}}
                 </div>

@@ -7,7 +7,7 @@ import CommonSchema from "./mixins/common-schema.js";
 import EffectsSchema from "./mixins/effects-schema.js";
 import InstallableSchema from "./mixins/installable-schema.js";
 import ValuableSchema from "./mixins/valuable-schema.js";
-import HpSchema from "../actor/components/cpr-hp-schema.js";
+import HpSchema from "../actor/components/hp-schema.js";
 
 export default class ProgramDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
