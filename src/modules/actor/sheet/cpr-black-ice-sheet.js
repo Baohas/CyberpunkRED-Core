@@ -178,10 +178,17 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
    */
   async _configureFromProgram() {
     LOGGER.trace("_configureFromProgram | CPRBlackIceActorSheet | Called.");
+    // Only configure Black ICE from a token.
+    if (!this.actor.isToken) {
+      SystemUtils.DisplayMessage(
+        "error",
+        SystemUtils.Localize("CPR.messages.linkBlackIceWithoutToken")
+      );
+      return;
+    }
     const biPrograms = game.items.filter(
       (i) => i.type === "program" && i.system.class === "blackice"
     );
-
     // Sorts the biPrograms list before 'selecting Black Ice Actor from Program' link box
     biPrograms.sort((a, b) => {
       const progA = a.name.toUpperCase();
@@ -195,21 +202,15 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       return 0;
     });
 
-    const linkedProgramUUID = this.actor.isToken
-      ? this.actor.token.getFlag(game.system.id, "programUUID")
-      : null;
-    if (linkedProgramUUID === null) {
-      SystemUtils.DisplayMessage(
-        "error",
-        SystemUtils.Localize("CPR.messages.linkBlackIceWithoutToken")
-      );
-      return;
-    }
+    const linkedProgramUUID = this.actor.token.getFlag(
+      game.system.id,
+      "programUUID"
+    );
 
     // Show "Configure Black Ice Actor From Program" prompt
     let dialogData = {
       biProgramList: biPrograms,
-      programUUID: linkedProgramUUID,
+      programUUID: linkedProgramUUID || "unlink",
     };
     dialogData = await CPRDialog.showDialog(dialogData, {
       // Set the options for the dialog.
@@ -229,34 +230,29 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       const program = biPrograms.filter(
         (p) => p.uuid === dialogData.programUUID
       )[0];
-      const cprProgramData = duplicate(program.system);
-      this.actor.programmaticallyUpdate(
-        cprProgramData.blackIceType,
-        cprProgramData.per,
-        cprProgramData.spd,
-        cprProgramData.atk,
-        cprProgramData.def,
-        cprProgramData.rez,
-        cprProgramData.description.value
+      await this.actor.update({
+        name: program.name,
+        img: program.img,
+        "system.class": program.system.stats,
+        "system.stats": {
+          per: program.system.per,
+          spd: program.system.spd,
+          atk: program.system.atk,
+          def: program.system.def,
+          rez: program.system.rez,
+        },
+        "system.notes": program.system.description.value,
+      });
+      await this.actor.token.update({
+        name: program.name,
+        img: program.img,
+      });
+      await this.actor.token.setFlag(
+        game.system.id,
+        "programUUID",
+        program.uuid
       );
-      if (this.actor.isToken) {
-        await this.actor.update({
-          name: program.name,
-          img: program.img,
-          "system.notes": program.system.description.value,
-        });
-        await this.actor.token.update({
-          name: program.name,
-          img: program.img,
-        });
-        await this.actor.token.setFlag(
-          game.system.id,
-          "programUUID",
-          program.uuid
-        );
-      }
     }
-    await this.actor.update();
     this.render(true, { renderData: this.actor.system });
   }
 

@@ -118,51 +118,6 @@ export default class CPRBlackIceActor extends Actor {
   }
 
   /**
-   * Set the statistics on this Black ICE Actor programmatically, such as
-   * configuring a Black ICE Actor from a Black ICE Item (Program) on
-   * a cyberdeck
-   *
-   * @public
-   * @param {String} type   - Type of Black ICE, acceptable values found in config.js:CPR.blackIceType
-   * @param {Number} per    - Value to set ATK to
-   * @param {Number} spd    - Value to set ATK to
-   * @param {Number} atk    - Value to set ATK to
-   * @param {Number} def    - Value to set ATK to
-   * @param {Number} rez    - Value to set REZ to, both value and max are configured to the same
-   * @param {String} effect - Text to display in the effect field of the Black ICE. Any HTML is stripped from
-   *                          the string. If this is not set it will default to whatever exists on the Actor.
-   * @param {Number} rezMax - Value to set REZ MAX to, both value and max are configured separately
-   */
-  programmaticallyUpdate(
-    type,
-    per,
-    spd,
-    atk,
-    def,
-    rezValue,
-    notes,
-    rezMax = null
-  ) {
-    LOGGER.trace("programmaticallyUpdate | CPRBlackIceActor | called.");
-    // If BlackICE ever gets Active Effects, this code will be a problem. See Issue #583.
-    const cprData = duplicate(this.system);
-    setProperty(cprData, "class", type);
-    setProperty(cprData, "stats.per", per);
-    setProperty(cprData, "stats.spd", spd);
-    setProperty(cprData, "stats.atk", atk);
-    setProperty(cprData, "stats.def", def);
-    setProperty(cprData, "stats.rez.value", rezValue);
-    setProperty(cprData, "notes", notes);
-    // this is only passed on Creation, never update
-    if (rezMax !== null) {
-      setProperty(cprData, "stats.rez.max", rezMax);
-    } else {
-      setProperty(cprData, "stats.rez.max", rezValue);
-    }
-    this.update({ system: cprData });
-  }
-
-  /**
    * Apply damage to the rez of the Black ICE.
    * @param {int} damage - direct damage dealt
    * @param {int} bonusDamage - bonus damage dealt
