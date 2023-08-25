@@ -35,7 +35,7 @@ mapfile -t ALL_IDS < <(
     --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
     "${PACKAGES_URL}" |
     jq -r '.[]
-      | select(.name == "fvtt-cyberpunk-red-core" and .version != "latest")
+      | select(.name == "fvtt-cyberpunk-red-core-dev" and .version != "latest")
       | .id'
 )
 
