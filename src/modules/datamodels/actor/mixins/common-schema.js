@@ -1,10 +1,10 @@
 /* globals foundry */
 
 import LOGGER from "../../../utils/cpr-logger.js";
-import StatSchema from "../components/cpr-stat-schema.js";
-import DerivedStatsSchema from "../components/cpr-derivedStats-schema.js";
-import ExternalResourceSchema from "../components/cpr-external-resource-schema.js";
-import LedgerSchema from "../components/cpr-ledger-schema.js";
+import StatSchema from "../components/stat-schema.js";
+import DerivedStatsSchema from "../components/derivedStats-schema.js";
+import ExternalResourceSchema from "../components/external-resource-schema.js";
+import LedgerSchema from "../components/ledger-schema.js";
 
 export default class CommonSchema extends foundry.abstract.DataModel {
   static defineSchema() {

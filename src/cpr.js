@@ -29,28 +29,28 @@ import overrideRulerFunctions from "./modules/system/overrides.js";
 import registerSystemSettings from "./modules/system/settings.js";
 
 // Actor Data Models:
-import BlackIceDataModel from "./modules/datamodels/actor/cpr-blackIce-datamodel.js";
-import CharacterDataModel from "./modules/datamodels/actor/cpr-character-datamodel.js";
-import ContainerDataModel from "./modules/datamodels/actor/cpr-container-datamodel.js";
-import DemonDataModel from "./modules/datamodels/actor/cpr-demon-datamodel.js";
-import MookDataModel from "./modules/datamodels/actor/cpr-mook-datamodel.js";
+import BlackIceDataModel from "./modules/datamodels/actor/blackIce-datamodel.js";
+import CharacterDataModel from "./modules/datamodels/actor/character-datamodel.js";
+import ContainerDataModel from "./modules/datamodels/actor/container-datamodel.js";
+import DemonDataModel from "./modules/datamodels/actor/demon-datamodel.js";
+import MookDataModel from "./modules/datamodels/actor/mook-datamodel.js";
 
 // Item Data Models:
-import AmmoDataModel from "./modules/datamodels/item/cpr-ammo-datamodel.js";
-import ArmorDataModel from "./modules/datamodels/item/cpr-armor-datamodel.js";
-import ClothingDataModel from "./modules/datamodels/item/cpr-clothing-datamodel.js";
-import CriticalInjuryDataModel from "./modules/datamodels/item/cpr-criticalInjury-datamodel.js";
-import CyberdeckDataModel from "./modules/datamodels/item/cpr-cyberdeck-datamodel.js";
-import CyberwareDataModel from "./modules/datamodels/item/cpr-cyberware-datamodel.js";
-import DrugDataModel from "./modules/datamodels/item/cpr-drug-datamodel.js";
-import GearDataModel from "./modules/datamodels/item/cpr-gear-datamodel.js";
-import ItemUpgradeDataModel from "./modules/datamodels/item/cpr-itemUpgrade-datamodel.js";
-import NetArchDataModel from "./modules/datamodels/item/cpr-netarch-datamodel.js";
-import ProgramDataModel from "./modules/datamodels/item/cpr-program-datamodel.js";
-import RoleDataModel from "./modules/datamodels/item/cpr-role-datamodel.js";
-import SkillDataModel from "./modules/datamodels/item/cpr-skill-datamodel.js";
-import VehicleDataModel from "./modules/datamodels/item/cpr-vehicle-datamodel.js";
-import WeaponDataModel from "./modules/datamodels/item/cpr-weapon-datamodel.js";
+import AmmoDataModel from "./modules/datamodels/item/ammo-datamodel.js";
+import ArmorDataModel from "./modules/datamodels/item/armor-datamodel.js";
+import ClothingDataModel from "./modules/datamodels/item/clothing-datamodel.js";
+import CriticalInjuryDataModel from "./modules/datamodels/item/criticalInjury-datamodel.js";
+import CyberdeckDataModel from "./modules/datamodels/item/cyberdeck-datamodel.js";
+import CyberwareDataModel from "./modules/datamodels/item/cyberware-datamodel.js";
+import DrugDataModel from "./modules/datamodels/item/drug-datamodel.js";
+import GearDataModel from "./modules/datamodels/item/gear-datamodel.js";
+import ItemUpgradeDataModel from "./modules/datamodels/item/itemUpgrade-datamodel.js";
+import NetArchDataModel from "./modules/datamodels/item/netarch-datamodel.js";
+import ProgramDataModel from "./modules/datamodels/item/program-datamodel.js";
+import RoleDataModel from "./modules/datamodels/item/role-datamodel.js";
+import SkillDataModel from "./modules/datamodels/item/skill-datamodel.js";
+import VehicleDataModel from "./modules/datamodels/item/vehicle-datamodel.js";
+import WeaponDataModel from "./modules/datamodels/item/weapon-datamodel.js";
 
 // This defines the version of the Data Model for this release.  We should
 // only update this when the Data Model Changes.

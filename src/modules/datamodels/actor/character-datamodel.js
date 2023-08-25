@@ -3,8 +3,8 @@
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../abstract.js";
 import CommonSchema from "./mixins/common-schema.js";
-import LedgerSchema from "./components/cpr-ledger-schema.js";
-import LifestyleSchema from "./components/cpr-lifestyle-schema.js";
+import LedgerSchema from "./components/ledger-schema.js";
+import LifestyleSchema from "./components/lifestyle-schema.js";
 import WealthSchema from "./mixins/wealth-schema.js";
 
 export default class CharacterDataModel extends CPRSystemDataModel.mixin(

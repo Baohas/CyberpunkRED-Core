@@ -2,7 +2,7 @@
 
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../abstract.js";
-import HpSchema from "./components/cpr-hp-schema.js";
+import HpSchema from "./components/hp-schema.js";
 
 export default class DemonDataModel extends CPRSystemDataModel.mixin() {
   static defineSchema() {

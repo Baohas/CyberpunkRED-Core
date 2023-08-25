@@ -2,7 +2,7 @@
 
 import CPR from "../../../system/config.js";
 import LOGGER from "../../../utils/cpr-logger.js";
-import HpSchema from "./cpr-hp-schema.js";
+import HpSchema from "./hp-schema.js";
 
 export default class DerivedStatsSchema extends foundry.abstract.DataModel {
   static defineSchema() {

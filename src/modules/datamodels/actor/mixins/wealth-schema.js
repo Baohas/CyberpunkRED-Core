@@ -1,7 +1,7 @@
 /* globals foundry */
 
 import LOGGER from "../../../utils/cpr-logger.js";
-import LedgerSchema from "../components/cpr-ledger-schema.js";
+import LedgerSchema from "../components/ledger-schema.js";
 
 export default class WealthSchema extends foundry.abstract.DataModel {
   static defineSchema() {
