@@ -87,84 +87,22 @@ const tokenHooks = () => {
   Hooks.on("createToken", (tokenDocument, options, user) => {
     LOGGER.trace("createToken | tokenHooks | Called.");
     const installableActors = ["mook", "character"]; // Define actors that can have items 'installed' into them.
+    const updateList = [];
     if (
       !tokenDocument.isLinked &&
       tokenDocument.isOwner && // Only fire if the user owns the token being created. preventing permissions errors.
       installableActors.includes(tokenDocument.actor.type) // Only fire for actors that can have installed items.
     ) {
-      // Update items installed in the actor
-      const actorInstallList = [];
-      const updateList = [];
-      for (const oldUuid of tokenDocument.actor.system.installedItems.list) {
-        const itemId = oldUuid.split(".").pop();
-        const item = tokenDocument.actor.getOwnedItem(itemId);
-        actorInstallList.push(item.uuid);
-        updateList.push({
-          _id: item._id,
-          "system.installedIn": tokenDocument.uuid,
-        });
-      }
-      tokenDocument.actor.update({
-        "system.installedItems.list": actorInstallList,
-      });
-
-      const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
-      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-      const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
       const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
+      const loadedItems = tokenDocument.actor.items.filter((i) =>
+        loadableTypes.includes(i.type)
+      );
 
-      const ownedItems = tokenDocument.actor.items.filter((i) => {
-        if (
-          containerTypes.includes(i.type) &&
-          i.system.installedItems.list.length > 0
-        )
-          return true;
-        if (installableTypes.includes(i.type) && i.system.isInstalled)
-          return true;
-        if (
-          loadableTypes.includes(i.type) &&
-          i.system.magazine.ammoData.uuid !== ""
-        )
-          return true;
-        return false;
-      });
-
-      for (const item of ownedItems) {
+      for (const item of loadedItems) {
         const itemUpdates = {
           _id: item._id,
           system: {},
         };
-
-        if (containerTypes.includes(item.type)) {
-          itemUpdates.system.installedItems = { list: [] };
-          for (const oldUuid of item.system.installedItems.list) {
-            const itemId = oldUuid.split(".").pop();
-            const installedItem = tokenDocument.actor.getOwnedItem(itemId);
-            itemUpdates.system.installedItems.list.push(installedItem.uuid);
-          }
-        }
-
-        if (installableTypes.includes(item.type)) {
-          const installedInId = item.system.installedIn.split(".").pop();
-          const installedInItem =
-            tokenDocument.actor.getOwnedItem(installedInId);
-          if (installedInItem) {
-            itemUpdates.system.installedIn = installedInItem.uuid;
-          }
-        }
-
-        if (upgradableTypes.includes(item.type)) {
-          const newUpgrades = [];
-          for (const upgradeData of item.system.upgrades) {
-            const upgradeId = upgradeData.uuid.split(".").pop();
-            const upgradeItem = tokenDocument.actor.getOwnedItem(upgradeId);
-            if (upgradeItem) {
-              upgradeData.uuid = upgradeItem.uuid;
-            }
-            newUpgrades.push(upgradeData);
-          }
-          itemUpdates.system.upgrades = newUpgrades;
-        }
 
         if (loadableTypes.includes(item.type)) {
           const ammoId = item.system.magazine.ammoData.uuid.split(".").pop();
@@ -182,8 +120,8 @@ const tokenHooks = () => {
           updateList.push(itemUpdates);
         }
       }
-      tokenDocument.actor.updateEmbeddedDocuments("Item", updateList, {});
     }
+    tokenDocument.actor.updateEmbeddedDocuments("Item", updateList, {});
   });
 };
 
