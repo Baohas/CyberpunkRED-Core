@@ -95,7 +95,7 @@
         <optgroup label="{{localize "CPR.itemSheet.role.skillList"}}">
           {{#each (cprSort (cprGetProp item.system 'relativeSkills') "name") as |skill| }}
             <option value="{{skill.name}}">
-              {{localize skill.name}}
+              {{localize (cprGetLocalizedlNameKey skill.name 'skill.name')}}
             </option>
           {{/each}}
         </optgroup>
