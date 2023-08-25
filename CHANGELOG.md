@@ -15,6 +15,12 @@
 - Fix unlinked character and mook actors resetting back to default 40 HP, 60 Humanity
 - Fix BlackICE actor program link list not in alphabetical order
 
+### New Features
+
+- The Changelog is now a Journal allowing:
+  - The entire Changelog to be shown
+  - Re-opening at any time
+
 ## Version 0.88.1
 
 ### Action Needed
