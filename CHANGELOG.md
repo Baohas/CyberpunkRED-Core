@@ -11,6 +11,7 @@
 - Fix `Heavy Pistol (ArmorPiercing)` icon
 - Fix Mood Eye Cyberware not being fashionware
 - Fix Perfect Fit Cyberfoot not requiring foundational
+- Fix HP and Humanity resetting to 40 HP/60 Humanity every time that world and current scene reloaded.
 
 ## Version 0.88.1
 

@@ -585,13 +585,11 @@ export default class CPRActor extends Actor {
       derivedStats.deathSave.penalty + derivedStats.deathSave.basePenalty;
     this.system.derivedStats = derivedStats;
 
-    if (typeof this.apps === "undefined") {
-      // this happens when the actor is being created, we hardcode defaults here based on 6s in all stats
-      derivedStats.hp.value = 40;
-      derivedStats.hp.max = 40;
-      derivedStats.humanity.value = 60;
-      derivedStats.humanity.max = 60;
-    } else if (
+    // Removed block that set actor token initial stats to hp=40 and humanity=60, no known purpose for forcing
+    // stat reset on token being placed since it's tied to actor stats when token is first placed and then keeps
+    // stats until changed when unlinked or if the token remains linked.  Mooks start in an unlinked state and
+    // should rely on Mook stat block.
+    if (
       Object.values(this.apps).some(
         (app) => app instanceof CPRCharacterActorSheet
       )
