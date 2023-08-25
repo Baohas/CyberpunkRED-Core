@@ -369,6 +369,7 @@ CPR.defaultCriticalInjuryTable =
   "cyberpunk-red-core.internal_critical-injury-tables";
 CPR.defaultNetArchTable = "cyberpunk-red-core.internal_net-rolltables";
 CPR.defaultDvTable = "cyberpunk-red-core.internal_dv-tables";
+CPR.changelogCompendium = "cyberpunk-red-core.other_changelog";
 
 CPR.criticalInjuryLocation = {
   body: "CPR.global.location.body",

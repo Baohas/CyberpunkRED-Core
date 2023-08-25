@@ -17,7 +17,7 @@ import LOGGER from "./modules/utils/cpr-logger.js";
 import CPRMacro from "./modules/utils/cpr-macros.js";
 import SystemUtils from "./modules/utils/cpr-systemUtils.js";
 import MigrationRunner from "./modules/system/migrate/migration.js";
-import UpdateScreen from "./modules/system/update-popup.js";
+import CPR from "./modules/system/config.js";
 
 // Function imports
 import registerHooks from "./modules/system/hooks.js";
@@ -292,7 +292,12 @@ Hooks.once("ready", async () => {
       "systemVersion",
       game.system.version
     );
-    UpdateScreen.RenderPopup();
+    // Pop Up the relevant Changelog Journal from
+    const changelog = await SystemUtils.GetCompendiumDoc(
+      CPR.changelogCompendium,
+      `Changelog ${CONFIG.supportedLanguages[game.i18n.lang]}`
+    );
+    changelog.sheet.render(true);
   }
 });
 

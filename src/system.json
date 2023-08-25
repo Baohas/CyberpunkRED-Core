@@ -544,18 +544,23 @@
       "path": "lang/en.json"
     },
     {
+      "lang": "cz",
+      "name": "Czech",
+      "path": "lang/cz.json"
+    },
+    {
       "lang": "de",
-      "name": "German",
+      "name": "Deutsch (German)",
       "path": "lang/de.json"
     },
     {
       "lang": "es",
-      "name": "Spanish",
+      "name": "Español",
       "path": "lang/es.json"
     },
     {
       "lang": "fr",
-      "name": "French",
+      "name": "Français",
       "path": "lang/fr.json"
     },
     {
@@ -565,12 +570,12 @@
     },
     {
       "lang": "pl",
-      "name": "Polish",
+      "name": "Polski",
       "path": "lang/pl.json"
     },
     {
       "lang": "pt-BR",
-      "name": "Brazilian Portuguese",
+      "name": "Português (Brasil)",
       "path": "lang/pt-BR.json"
     },
     {
