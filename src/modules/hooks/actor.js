@@ -36,10 +36,11 @@ const actorHooks = () => {
    * The preUpdateActor Hook is provided by Foundry and triggered here. When an Actor is updated, this hook is called just
    * prior to update. This hook has 3 purposes.
    *
-   * 1. Check the role stats and issue a warning if points are not allocated per rules
-   * 2. If the corresponding token for the actor is displaying a resource bar for armor SP, update it to use newly equipped
+   * 1. If the corresponding token for the actor is displaying a resource bar for armor SP, update it to use newly equipped
    *    armor items when the equipment changes.
-   * 3. If the actor being updated is Black-ICE, reflect those changes on the owned items too.
+   * 2. If the actor being updated is Black-ICE, reflect those changes on the owned items too.
+   * 3. Check that EMP and LUCK values are not > 3 digits so that display on sheet doesn't get messed up.
+   *
    *
    * @public
    * @memberof hookEvents
@@ -50,7 +51,8 @@ const actorHooks = () => {
    */
   Hooks.on("preUpdateActor", async (doc, updatedData) => {
     LOGGER.trace("preUpdateActor | actorHooks | Called.");
-    if (updatedData.system && updatedData.system.externalData) {
+    // See above JSDocs #1.
+    if (updatedData.system?.externalData) {
       Object.keys(updatedData.system.externalData).forEach((itemType) => {
         if (!updatedData.system.externalData[itemType].id) {
           const itemId = doc.system.externalData[itemType].id;
@@ -125,13 +127,8 @@ const actorHooks = () => {
         }
       });
     }
-
-    if (
-      doc.type === "blackIce" &&
-      doc.isToken &&
-      updatedData.system &&
-      updatedData.system.stats
-    ) {
+    // See above JSDocs #2.
+    if (doc.type === "blackIce" && doc.isToken && updatedData.system?.stats) {
       const biToken = doc.token;
 
       const netrunnerTokenId = biToken.getFlag(
@@ -154,12 +151,8 @@ const actorHooks = () => {
         }
       }
     }
-
-    if (
-      updatedData.system &&
-      updatedData.system.stats &&
-      (updatedData.system.stats.emp || updatedData.system.stats.luck)
-    ) {
+    // See above JSDocs #3.
+    if (updatedData.system?.stats?.emp || updatedData.system?.stats?.luck) {
       const updatedValue = updatedData.system.stats.emp
         ? updatedData.system.stats.emp.value
         : updatedData.system.stats.luck.value;
