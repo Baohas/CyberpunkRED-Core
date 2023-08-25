@@ -2,11 +2,12 @@
 
 # Changelog
 
-## Version 0.89.0
+## Version 0.82.2
 
 ### Bug Fixes
 
 - Fix weapons moved to stash not applying correct amount of ammo stack
+- Fix incorrect Black Chrome Grenade Names
 
 ## Version 0.88.1
 
