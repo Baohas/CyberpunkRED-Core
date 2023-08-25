@@ -8,6 +8,7 @@
 
 - Fix weapons moved to stash not applying correct amount of ammo stack
 - Fix incorrect Black Chrome Grenade Names
+- Fix `Heavy Pistol (ArmorPiercing)` icon
 
 ## Version 0.88.1
 
