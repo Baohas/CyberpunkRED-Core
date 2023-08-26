@@ -181,6 +181,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     const biPrograms = game.items.filter(
       (i) => i.type === "program" && i.system.class === "blackice"
     );
+    biPrograms.sort();
     const linkedProgramUUID = this.actor.isToken
       ? this.actor.token.getFlag(game.system.id, "programUUID")
       : null;
