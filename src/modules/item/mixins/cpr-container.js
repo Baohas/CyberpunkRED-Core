@@ -48,7 +48,7 @@ const Container = function Container() {
 
     this.system.installedItems.list.forEach((id) => {
       const item = actor ? actor.getOwnedItem(id) : game.items.get(id);
-      if (!type || item.type === type) {
+      if (!type || item?.type === type) {
         installedItems.push(item);
       }
     });

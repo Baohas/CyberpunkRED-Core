@@ -973,7 +973,6 @@ export default class CPRActorSheet extends ActorSheet {
         const program = this.actor.getOwnedItem(p.id);
         updateList.push({
           _id: program._id,
-          "system.isInstalled": false,
           "system.isRezzed": false,
         });
       });
@@ -987,15 +986,6 @@ export default class CPRActorSheet extends ActorSheet {
         );
         return;
       }
-    }
-
-    if (game.system.template.Item[item.type].templates.includes("upgradable")) {
-      const { upgrades } = item.system;
-      const updateList = [];
-      upgrades.forEach((u) => {
-        updateList.push({ _id: u._id, "system.isInstalled": false });
-      });
-      await this.actor.updateEmbeddedDocuments("Item", updateList);
     }
     await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
   }

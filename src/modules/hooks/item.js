@@ -19,11 +19,6 @@ const itemHooks = () => {
    *   sidebar, or imported to the sidebar from a compendium. In both of these cases, createData.img is defined,
    *   whereas when creating an item from the sidebar directly, it is not.
    *
-   *   The second check makes sure the item isn't being created on an actor. This case is addressed in
-   *   the function _createInventoryItem in cpr-character-sheet.js and cpr-container-sheet.js.
-   *
-   *  - This code handles the case where an item is being created but it should "stack" on top of an
-   *    existing item instead.
    *
    * @public
    * @memberof hookEvents
