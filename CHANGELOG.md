@@ -2,7 +2,7 @@
 
 # Changelog
 
-## Version 0.82.2
+## Version 0.88.2
 
 ### Changes
 
@@ -19,6 +19,8 @@
 - Fix Mood Eye Cyberware not being fashionware
 - Fix Perfect Fit Cyberfoot not requiring foundational
 - Fix HP and Humanity resetting to 40 HP/60 Humanity every time that world and current scene reloaded.
+- Fix unlinked character and mook actors resetting back to default 40 HP, 60 Humanity
+- Fix BlackICE actor program link list not in alphabetical order
 
 ## Version 0.88.1
 
