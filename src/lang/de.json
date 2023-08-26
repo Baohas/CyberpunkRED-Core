@@ -12,7 +12,7 @@
   "CPR.actorSheets.commonActions.managePrograms": "Programme verwalten",
   "CPR.actorSheets.commonActions.manageUpgrades": "Verbesserungen verwalten",
   "CPR.actorSheets.commonActions.measureDv": "SG bestimmen",
-  "CPR.actorSheets.commonActions.new": "Neu",
+  "CPR.actorSheets.commonActions.new": "New {item}",
   "CPR.actorSheets.commonActions.reload": "Nachladen",
   "CPR.actorSheets.commonActions.removeUpgrade": "Verbesserung entfernen",
   "CPR.actorSheets.commonActions.repair": "Reparieren",

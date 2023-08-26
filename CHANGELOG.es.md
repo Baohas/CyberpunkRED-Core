@@ -14,7 +14,7 @@
 
 ## Version 0.88.0
 
-### Action Needed
+### Acción requerida
 
 We have renamed all Compendia in the system utilizing the new Compendium Folders feature which has meant some changes behind the scenes which mean the pack names themselves have changed.
 

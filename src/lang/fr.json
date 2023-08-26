@@ -12,7 +12,7 @@
   "CPR.actorSheets.commonActions.managePrograms": "Gérer les Programmes",
   "CPR.actorSheets.commonActions.manageUpgrades": "Gérer les mises à jour",
   "CPR.actorSheets.commonActions.measureDv": "Mesurer SD",
-  "CPR.actorSheets.commonActions.new": "Nouveau",
+  "CPR.actorSheets.commonActions.new": "New {item}",
   "CPR.actorSheets.commonActions.reload": "Recharger",
   "CPR.actorSheets.commonActions.removeUpgrade": "Supprimer l'amélioration",
   "CPR.actorSheets.commonActions.repair": "Réparer",

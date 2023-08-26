@@ -12,7 +12,7 @@
   "CPR.actorSheets.commonActions.managePrograms": "Gestisci Programmi",
   "CPR.actorSheets.commonActions.manageUpgrades": "Gestisci Aggiornamenti",
   "CPR.actorSheets.commonActions.measureDv": "Misura il VD",
-  "CPR.actorSheets.commonActions.new": "Nuovo",
+  "CPR.actorSheets.commonActions.new": "New {item}",
   "CPR.actorSheets.commonActions.reload": "Ricarica",
   "CPR.actorSheets.commonActions.removeUpgrade": "Rimuovi Aggiornamento",
   "CPR.actorSheets.commonActions.repair": "Ripara",

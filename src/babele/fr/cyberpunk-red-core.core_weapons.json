@@ -354,7 +354,7 @@
       "description": "<p>Une arme avec une lame et une poignée. Conçue pour couper. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
     },
     "Sword": {
-      "name": "Sabre",
+      "name": "Épée",
       "description": "<p>Une arme avec une lame et une poignée.</p>"
     },
     "Thrown Weapon": {
