@@ -339,57 +339,29 @@ const Container = function Container() {
    */
   this.createInstalledItems = async function createInstalledItems() {
     LOGGER.trace("createInstalledItems | Container | Called.");
-    const actor = this.isOwned ? this.actor : false;
+    const actor = this.parent;
 
-    const equipTypes = SystemUtils.GetTemplateItemTypes("equippable");
-    const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
     const creationList = [];
     for (const installedId of this.system.installedItems.list) {
-      const installedItem = actor
-        ? actor.getOwnedItem(installedId)
-        : game.items.get(installedId);
+      const installedItem = game.items.get(installedId);
       creationList.push(installedItem.toObject());
     }
 
     const newInstalledList = [];
-
     if (creationList.length > 0) {
-      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-      let createdItems = [];
-      if (actor) {
-        createdItems = await actor.createEmbeddedDocuments(
-          "Item",
-          creationList
-        );
-      } else {
-        const folderName = SystemUtils.Localize(
-          "CPR.settings.installedItemsFolder"
-        );
-        const folderList = game.folders.filter(
-          (folder) => folder.name === folderName && folder.type === "Item"
-        );
-        const workingFolder =
-          folderList.length === 1
-            ? folderList[0]
-            : await Folder.create({ name: folderName, type: "Item" });
-        for (const item of creationList) {
-          item.folder = workingFolder;
-          item.system.isInstalled = true;
-          item.system.installedIn = this.id;
-          const newItem = await Item.create(item);
-          createdItems.push(newItem);
-        }
-      }
+      const createdItems = await actor.createEmbeddedDocuments(
+        "Item",
+        creationList
+      );
+
       for (const item of createdItems) {
         newInstalledList.push(item.id);
       }
     }
 
-    return !actor
-      ? this.update({ "system.installedItems.list": newInstalledList })
-      : actor.updateEmbeddedDocuments("Item", [
-          { _id: this._id, "system.installedItems.list": newInstalledList },
-        ]);
+    return actor.updateEmbeddedDocuments("Item", [
+      { _id: this._id, "system.installedItems.list": newInstalledList },
+    ]);
   };
 };
 

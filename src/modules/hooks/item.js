@@ -104,9 +104,8 @@ const itemHooks = () => {
             dialogMessage = dialogMessage.concat(
               `<center>${itemName} ${folderName}</center><br>`
             );
-
-            dialogMessage = new Handlebars.SafeString(dialogMessage);
           }
+          dialogMessage = new Handlebars.SafeString(dialogMessage);
           // Show "Default" prompt.
           CPRDialog.showDialog(
             { dialogMessage },
@@ -149,6 +148,7 @@ const itemHooks = () => {
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
     if (
+      doc.parent &&
       containerTypes.includes(doc.type) &&
       doc.system.installedItems.list.length > 0
     ) {
