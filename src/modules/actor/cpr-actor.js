@@ -545,9 +545,8 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * This is where derived stats are calculated, and the behavior is driven by which sheet
-   * (aka "app") is associated with the actor. This includes max HP, Humanity, Empathy, and
-   * Death Saves. For mooks we skip humanity and hp calculations.
+   * This is where derived stats are calculated, Note, one can tailor the behavior
+   * depending on which sheet (aka "app") is associated with the actor.
    *
    * To Do: this is called 3 times when creating an actor... why?
    *
@@ -565,12 +564,6 @@ export default class CPRActor extends Actor {
     // seriously wounded
     derivedStats.seriouslyWounded = Math.ceil(derivedStats.hp.max / 2);
 
-    // We need to always call this because if the actor was wounded and now is not, their
-    // value would be equal to max, however their current wound state was never updated.
-    this._setWoundState();
-    // Updated derivedStats variable with currentWoundState
-    derivedStats.currentWoundState = this.system.derivedStats.currentWoundState;
-
     // Death save
     let basePenalty = 0; // 0 + active effects
     const critInjury = this.itemTypes.criticalInjury;
@@ -585,25 +578,23 @@ export default class CPRActor extends Actor {
       derivedStats.deathSave.penalty + derivedStats.deathSave.basePenalty;
     this.system.derivedStats = derivedStats;
 
-    // Removed block that set actor token initial stats to hp=40 and humanity=60, no known purpose for forcing
-    // stat reset on token being placed since it's tied to actor stats when token is first placed and then keeps
-    // stats until changed when unlinked or if the token remains linked.  Mooks start in an unlinked state and
-    // should rely on Mook stat block.
-    if (
-      Object.values(this.apps).some(
-        (app) => app instanceof CPRCharacterActorSheet
-      )
-    ) {
-      // The rest is character-specific. We only calculate hp and humanity for characters because some mooks
-      // break the rules/standards.
-      derivedStats.hp.value = Math.min(
-        derivedStats.hp.value,
-        derivedStats.hp.max
-      );
-      if (derivedStats.humanity.value > derivedStats.humanity.max) {
-        derivedStats.humanity.value = derivedStats.humanity.max;
-      }
-    }
+    // Make sure current HP is never higher than max HP.
+    derivedStats.hp.value = Math.min(
+      derivedStats.hp.value,
+      derivedStats.hp.max
+    );
+
+    // Make sure current Humanity is never higher than max Humanity.
+    derivedStats.humanity.value = Math.min(
+      derivedStats.humanity.value,
+      derivedStats.humanity.max
+    );
+
+    // We need to always call this because if the actor was wounded and now is not, their
+    // value would be equal to max, however their current wound state was never updated.
+    this._setWoundState();
+    // Updated derivedStats variable with currentWoundState
+    derivedStats.currentWoundState = this.system.derivedStats.currentWoundState;
   }
 
   /**
