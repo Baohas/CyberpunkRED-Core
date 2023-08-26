@@ -73,17 +73,20 @@ export default class v11EffectsMigration extends CPRMigration {
 
         // Finally, get origin item.
         const originItem = actor.items.find((i) => i.id === id);
-        // From item, get origin effect.
-        const originEffect = originItem.effects.find(
-          (e) => e.name === effect.name
-        );
 
-        // Get relevant info from the actor's effect we're about to delete.
-        const { disabled } = effect;
-        const { system } = effect;
+        if (originItem) {
+          // From item, get origin effect.
+          const originEffect = originItem.effects.find(
+            (e) => e.name === effect.name
+          );
 
-        // Update the item's effect with the actor's effect's info.
-        originEffect.update({ disabled, system });
+          // Get relevant info from the actor's effect we're about to delete.
+          const { disabled } = effect;
+          const { system } = effect;
+
+          // Update the item's effect with the actor's effect's info.
+          originEffect.update({ disabled, system });
+        }
       }
     }
     await actor.deleteEmbeddedDocuments("ActiveEffect", deleteIds);

@@ -21,6 +21,7 @@
 - Fix HP and Humanity resetting to 40 HP/60 Humanity every time that world and current scene reloaded.
 - Fix unlinked character and mook actors resetting back to default 40 HP, 60 Humanity
 - Fix BlackICE actor program link list not in alphabetical order
+- Fix issue where orphaned effects on actors were causing migrations to fail.
 
 ### New Features
 
