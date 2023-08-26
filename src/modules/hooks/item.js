@@ -74,7 +74,7 @@ const itemHooks = () => {
           );
           let dialogMessage = `${SystemUtils.Format(
             "CPR.dialog.deleteInstalledWorldItem.text",
-            { itemName: doc.name }
+            { itemName: doc.name, folderName: doc.folder.name }
           )}`;
           dialogMessage = dialogMessage.concat("<br><br>");
           for (const item of installedList) {

@@ -7,11 +7,13 @@ import * as tokenHudHooks from "../hooks/tokenhud.js";
 import * as uiHooks from "../hooks/ui.js";
 import * as hotbarHooks from "../hooks/hotbar.js";
 import * as externalHooks from "../hooks/external-modules.js";
+import * as folderHooks from "../hooks/folder.js";
 
 export default function registerHooks() {
   actorHooks.default();
   actorSheetHooks.default();
   chatHooks.default();
+  folderHooks.default();
   itemHooks.default();
   tokenHudHooks.default();
   uiHooks.default();
