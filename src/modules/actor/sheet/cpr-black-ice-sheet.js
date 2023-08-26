@@ -181,7 +181,20 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     const biPrograms = game.items.filter(
       (i) => i.type === "program" && i.system.class === "blackice"
     );
-    biPrograms.sort();
+
+    // Sorts the biPrograms list before 'selecting Black Ice Actor from Program' link box
+    biPrograms.sort((a, b) => {
+      const progA = a.name.toUpperCase();
+      const progB = b.name.toUpperCase();
+      if (progA < progB) {
+        return -1;
+      }
+      if (progA > progB) {
+        return 1;
+      }
+      return 0;
+    });
+
     const linkedProgramUUID = this.actor.isToken
       ? this.actor.token.getFlag(game.system.id, "programUUID")
       : null;
