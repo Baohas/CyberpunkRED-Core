@@ -67,9 +67,9 @@
   {{#if (cprCompare item.system.installedItems.list.length ">" 0) }}
     <li class="item flexrow">
       <div class="item flexrow setting-name text-nowrap text-padding-left-smaller">
-        {{#each item.system.installedItems.list as |UUID| }}
-          {{#unless (cprCompare (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type") "===" "program")}}
-            {{cprGetProp (cprGetOwnedItem ../item.actor UUID) "name"}} ({{localize (cprFindConfigValue "objectTypes" (cprGetProp (cprGetOwnedItem ../item.actor UUID) "type"))}})
+        {{#each item.system.installedItems.list as |id| }}
+          {{#unless (cprCompare (cprGetProp (cprGetOwnedItem ../item.actor id) "type") "===" "program")}}
+            {{cprGetProp (cprGetOwnedItem ../item.actor id) "name"}} ({{localize (cprFindConfigValue "objectTypes" (cprGetProp (cprGetOwnedItem ../item.actor id) "type"))}})
         {{/unless}}
       {{/each}}
     </div>

@@ -14,8 +14,8 @@
   {{~#if (cprCompare cyberware.system.installedItems.list.length ">" 0)~}}
     (
   {{/if~}}
-  {{~#each cyberware.system.installedItems.list as |UUID|~}}
-    {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-cyberware-optional.hbs" (cprMergeForPartialArg "actor,cyberware" ../actor (cprGetOwnedItem ../actor UUID))}}
+  {{~#each cyberware.system.installedItems.list as |id|~}}
+    {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-cyberware-optional.hbs" (cprMergeForPartialArg "actor,cyberware" ../actor (cprGetOwnedItem ../actor id))}}
   {{~/each}}
   {{~#if (cprCompare cyberware.system.installedItems.list.length ">" 0)~}}
     )

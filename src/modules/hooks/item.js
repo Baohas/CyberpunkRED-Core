@@ -70,7 +70,7 @@ const itemHooks = () => {
           containerTypes.includes(i.type)
         );
         const installedList = worldContainerItems.filter((i) =>
-          i.system.installedItems.list.includes(doc.uuid)
+          i.system.installedItems.list.includes(doc.id)
         );
         if (installedList.length > 0) {
           const debugMode = game.settings.get(game.system.id, "debugElements");

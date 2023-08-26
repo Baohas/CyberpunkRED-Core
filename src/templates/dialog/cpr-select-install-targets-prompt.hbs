@@ -36,7 +36,7 @@
                 {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}}/{{cprApplyUpgrade item item.system.installedItems.slots "slots"}}
               </div>
               <div class="flex-width-15 dialog-item-input">
-                <input type="radio" name="selectedTarget" value="{{item.uuid}}" {{checked (cprCompare ../../selectedTarget "===" item.uuid)}}/>
+                <input type="radio" name="selectedTarget" value="{{item.id}}" {{checked (cprCompare ../../selectedTarget "===" item.id)}}/>
               </div>
             </li>
           {{/if}}

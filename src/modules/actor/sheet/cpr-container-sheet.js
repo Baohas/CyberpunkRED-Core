@@ -399,8 +399,8 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       containerTypes.includes(item.type) &&
       cprItemData.installedItems.list.length > 0
     ) {
-      cprItemData.installedItems.list.forEach((installedUUID) => {
-        const installedItem = fromUuidSync(installedUUID);
+      cprItemData.installedItems.list.forEach((installedId) => {
+        const installedItem = tradePartnerActor.getOwnedItem(installedId);
         if (installedItem) {
           cost += installedItem.system.price.market;
         }

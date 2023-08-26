@@ -60,7 +60,7 @@
 {{#if item.system.isUpgraded }}
   <hr/>
   {{#each item.system.installedUpgrades as |upgrade| }}
-    <li class="item flexrow" data-item-id="{{upgrade.uuid}}" draggable="false">
+    <li class="item flexrow" data-item-id="{{upgrade.id}}" draggable="false">
       <div class="item-name flexrow setting-name text-nowrap">
         {{#if this.editable }}
           <a class="name item-view">{{upgrade.name}}</a>
@@ -73,7 +73,7 @@
       </div>
       <div class="item flexrow setting-value text-nowrap item-end">
         {{#if ../this.editable }}
-          <a class="remove-upgrade" data-item-id="{{upgrade.uuid}}">
+          <a class="remove-upgrade" data-item-id="{{upgrade.id}}">
             <i class="fab fa-superpowers"
                data-tooltip="{{localize "CPR.actorSheets.commonActions.removeUpgrade"}}"></i>
           </a>

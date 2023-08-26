@@ -745,8 +745,8 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprGetMookCyberware", (mook) => {
     LOGGER.trace("cprGetMookCyberware | handlebarsHelper | Called.");
     const installedCyberwareList = [];
-    for (const installedUUID of mook.system.installedItems.list) {
-      const item = mook.getOwnedItem(installedUUID);
+    for (const installedId of mook.system.installedItems.list) {
+      const item = mook.getOwnedItem(installedId);
       if (item.type === "cyberware") {
         const optionals = [];
         if (item.system.installedItems.list.length > 0) {
@@ -772,8 +772,8 @@ export default function registerHandlebarsHelpers() {
       "cyberwareExternal",
       "fashionware",
     ];
-    for (const installedUUID of mook.system.installedItems.list) {
-      const item = mook.getOwnedItem(installedUUID);
+    for (const installedId of mook.system.installedItems.list) {
+      const item = mook.getOwnedItem(installedId);
       if (
         item.type === "cyberware" &&
         !exclusionList.includes(item.system.type)
