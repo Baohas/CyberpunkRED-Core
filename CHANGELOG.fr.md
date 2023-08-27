@@ -2,6 +2,12 @@
 
 # Journal des modifications
 
+## Version 0.89.0
+
+### Changements
+
+- Switched to using DataModels to enforce data types (#316, #723)
+
 ## Version 0.88.1
 
 ### Action requise
@@ -39,7 +45,7 @@ This means any instances where you have dragged an item from a compendium into a
 - Temp fix for Dice so Nice treating reputation as string on facedown rolls
 - Fix missing foundational need for Holo Projector Cyberware
 
-### Changements
+### Changes
 
 - Update token methods for v11 compatibility
 - Update System files for v11
