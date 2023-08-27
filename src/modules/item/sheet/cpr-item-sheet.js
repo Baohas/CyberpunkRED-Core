@@ -50,17 +50,15 @@ export default class CPRItemSheet extends ItemSheet {
   async getData() {
     LOGGER.trace("getData | CPRItemSheet | Called.");
     const foundryData = super.getData();
-    const cprData = foundryData.item.system;
-    // data.isGM = game.user.isGM;
+    const cprData = {};
     cprData.isGM = game.user.isGM;
-    cprData.isOwned = this.object.isOwned;
     const itemType = foundryData.item.type;
     const mixins = SystemUtils.getDataModelTemplates(itemType);
     if (itemType === "role" || mixins.includes("attackable")) {
       // relativeSkills and relativeAmmo will be other items relevant to this one.
       // For owned objects, the item list will come from the character owner
       // For unowned objects, the item list will come from the core list of objects
-      if (cprData.isOwned) {
+      if (foundryData.item.isOwned) {
         cprData.relativeSkills = this.object.actor.itemTypes.skill;
         cprData.relativeAmmo = this.object.actor.itemTypes.ammo;
       } else {
@@ -82,14 +80,13 @@ export default class CPRItemSheet extends ItemSheet {
     const dvTables = await SystemUtils.GetDvTables();
     cprData.dvTableNames = [];
     for (const table of dvTables) cprData.dvTableNames.push(table.name);
-    foundryData.item.system = cprData;
 
     // Enrich the description so that links to foundry documents in item descriptions have proper functionality.
     foundryData.enrichedHTMLDescription = await TextEditor.enrichHTML(
       foundryData.item.system.description.value,
       { async: true }
     );
-    return foundryData;
+    return { ...foundryData, ...cprData };
   }
 
   /* -------------------------------------------- */

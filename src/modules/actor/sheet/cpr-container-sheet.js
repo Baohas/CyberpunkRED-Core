@@ -39,7 +39,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
   async getData() {
     LOGGER.trace("getData | CPRContainerSheet | Called.");
     const foundryData = await super.getData();
-    const cprActorData = foundryData.actor.system;
+    const cprActorData = {};
 
     cprActorData.userOwnedActors = [];
     game.actors
@@ -61,8 +61,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       cprActorData.userCharacter = "";
       cprActorData.tradePartnerId = this.tradePartnerId;
     }
-    foundryData.data.system = cprActorData;
-    return foundryData;
+    return { ...foundryData, ...cprActorData };
   }
 
   /**
