@@ -1,8 +1,9 @@
-/* global Handlebars game getProperty fromUuidSync */
+/* global Handlebars game getProperty */
 /* eslint-env jquery */
 import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import TextUtils from "../utils/TextUtils.js";
 import CPRActiveEffect from "../cpr-active-effect.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 
@@ -63,15 +64,15 @@ export default function registerHandlebarsHelpers() {
    * Return an owned item on an actor given the ID
    */
   Handlebars.registerHelper("cprGetOwnedItem", (actor, itemId) => {
-    let item;
     if (actor === null) {
-      item = fromUuidSync(itemId);
-    } else {
-      item = actor.items.find((i) => i.id === itemId)
-        ? actor.items.find((i) => i.id === itemId)
-        : actor.items.find((i) => i.uuid === itemId);
+      return (
+        game.items.get(itemId) || game.items.find((i) => i.uuid === itemId)
+      );
     }
-    return item;
+    return (
+      actor.items.find((i) => i.id === itemId) ||
+      actor.items.find((i) => i.uuid === itemId)
+    );
   });
 
   /**
@@ -495,14 +496,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Get document from uuid.
-   */
-  Handlebars.registerHelper("cprFromUuidSync", (uuid) => {
-    LOGGER.trace("cprFromUuidSync | handlebarsHelper | Called.");
-    return fromUuidSync(uuid);
-  });
-
-  /**
    * Return a system setting value given the name
    */
   Handlebars.registerHelper("cprSystemConfig", (settingName) =>
@@ -616,7 +609,8 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprGetMookSkills", (array) => {
     LOGGER.trace("cprGetMookSkills | handlebarsHelper | Called.");
     const skillList = [];
-    array.forEach((skill) => {
+    const sortedArray = SystemUtils.SortItemListByName(array);
+    sortedArray.forEach((skill) => {
       if (skill.system.level !== 0 || skill.system.skillmod > 0) {
         skillList.push(skill);
       }
@@ -682,7 +676,7 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprEntityTypes", (entityType) => {
     LOGGER.trace("cprEntityTypes | handlebarsHelper | Called.");
     return typeof game.system.documentTypes[entityType] === "object"
-      ? game.system.documentTypes[entityType]
+      ? game.system.documentTypes[entityType].filter((type) => type !== "base")
       : {};
   });
 
@@ -730,7 +724,7 @@ export default function registerHandlebarsHelpers() {
       let returnString = "";
       if (actor) {
         for (const itemId of itemList) {
-          const installedItem = fromUuidSync(itemId);
+          const installedItem = item.actor.getOwnedItem(itemId);
           if (installedItem) {
             const itemType = SystemUtils.Localize(
               CPR.objectTypes[installedItem.type]
@@ -921,17 +915,17 @@ export default function registerHandlebarsHelpers() {
    * comes from an Item, we look up all non-core skill items in the world, and use that list.
    * If it comes from an actor, we loop over the skills it owns and generate a mapping with that.
    *
-   * @param {CPRActiveEffect} effect - the AE in question
+   * @param {Object} effectData - Sheet object that contains the AE in question
    * @return {Object} - sorted object of skill keys to names
    */
-  Handlebars.registerHelper("cprGetSkillsForEffects", (effect) => {
+  Handlebars.registerHelper("cprGetSkillsForEffects", (effectData) => {
     LOGGER.trace("cprGetSkillsForEffects | handlebarsHelper | Called.");
     const skillMap = CPR.activeEffectKeys.skill;
     let skillList = [];
-    if (effect.isItemEffect) {
+    if (effectData.isItemEffect) {
       skillList = game.items.filter((i) => i.type === "skill");
-    } else if (effect.isActorEffect) {
-      const actor = effect.effectParent;
+    } else if (effectData.isActorEffect) {
+      const actor = effectData.effect.parent;
       skillList = actor.items.filter((i) => i.type === "skill");
     }
 
@@ -998,8 +992,7 @@ export default function registerHandlebarsHelpers() {
       return SystemUtils.Localize(CPR.activeEffectKeys[cat][key]);
     }
 
-    const sourceDoc =
-      doc instanceof CPRActiveEffect ? doc.getEffectParent() : doc;
+    const sourceDoc = doc instanceof CPRActiveEffect ? doc.parent : doc;
     if (!sourceDoc) return "???"; // a recently deleted item will sometimes do this
     if (cat === "skill") {
       const skillMap = CPR.activeEffectKeys.skill;
@@ -1035,7 +1028,7 @@ export default function registerHandlebarsHelpers() {
     (skillName, actor, infoType, options) => {
       LOGGER.trace("cprGetSkillModInfo | handlebarsHelper | Called.");
       const skillSlug = SystemUtils.slugify(skillName);
-      const effects = actor.effects.contents; // Active effects on the actor.
+      const effects = Array.from(actor.allApplicableEffects()); // Active effects on the actor.
       const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
       let relevantMods = CPRMod.getRelevantMods(allMods, [
         skillSlug,
@@ -1110,15 +1103,16 @@ export default function registerHandlebarsHelpers() {
    * Returns specific property for ammo's damage override. "Override" is a boolean,
    * whether or not to apply the override. "Value" is the damage value, e.g. "3d6".
    *
+   * @param {String} actor - The actor who is the owner of this weapon/ammo.
    * @param {String} uuid - The Uuid of the ammo item.
    * @param {String} override - The override we want, 'damage' or 'autofire'.
    * @param {String} property - Should be 'mode', 'value', or 'minimum'.
    */
   Handlebars.registerHelper(
     "cprGetAmmoOverrideProp",
-    (uuid, override, property) => {
+    (actor, uuid, override, property) => {
       LOGGER.trace("cprGetAmmoOverrideProp | handlebarsHelper | Called.");
-      const ammoItem = fromUuidSync(uuid);
+      const ammoItem = actor.getOwnedItem(uuid);
 
       if (
         !(property === "mode" || property === "value" || property === "minimum")
@@ -1165,7 +1159,9 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprGetWeaponAutofireMax", (weapon) => {
     LOGGER.trace("cprGetWeaponDamage | handlebarsHelper | Called.");
     const weaponAutofireMax = weapon.system.fireModes.autoFire;
-    const ammoItem = fromUuidSync(weapon.system.magazine.ammoData.uuid);
+    const ammoItem = weapon.actor.getOwnedItem(
+      weapon.system.magazine.ammoData.uuid
+    );
     let trueMax = 0;
     if (ammoItem && ammoItem.system.overrides.autofire.mode === "set") {
       trueMax = ammoItem.system.overrides.autofire.value;
@@ -1208,11 +1204,11 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Strip all <html> tags from a string
+   * Sanitize a string to remove Foundry @UUID references and sanitize HTML
    */
-  Handlebars.registerHelper("cprStripHtml", (string) => {
+  Handlebars.registerHelper("cprSanitizeText", (string) => {
     LOGGER.trace("cprStripHtml | handlebarsHelper | Called.");
-    return SystemUtils.stripHTML(string);
+    return TextUtils.sanitizeEnrichedText(string);
   });
 
   /**

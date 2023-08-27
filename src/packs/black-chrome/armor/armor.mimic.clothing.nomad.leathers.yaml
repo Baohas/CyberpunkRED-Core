@@ -1,0 +1,58 @@
+_id: Zp4KJsajg98V6NOv
+_key: "!items!Zp4KJsajg98V6NOv"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/mimic-clothing-kit.svg
+name: Mimic Clothing (Nomad Leathers)
+system:
+  bodyLocation:
+    ablation: 0
+    sp: 11
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Light Armorjack made from a Mimic Clothing Kit and "Nomad Leathers"
+      clothing. Refer to full item description on BC pg. 33.</p>
+  equipped: owned
+  favorite: false
+  headLocation:
+    ablation: 0
+    sp: 0
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isBodyLocation: true
+  isElectronic: false
+  isHeadLocation: false
+  isShield: false
+  isUpgraded: false
+  penalty: 0
+  price:
+    market: 200
+  providesHardening: false
+  revealed: true
+  shieldHitPoints:
+    max: 0
+    value: 0
+  source:
+    book: BC
+    page: 33
+  upgrades: []
+  usage: equipped
+type: armor

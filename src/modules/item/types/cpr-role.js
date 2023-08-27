@@ -98,7 +98,7 @@ export default class CPRRoleItem extends CPRItem {
       }
     }
 
-    const effects = actor.effects.contents;
+    const effects = Array.from(actor.allApplicableEffects());
     const allMods = CPRMod.getAllModifiers(effects);
     const filteredMods = allMods.filter(
       (m) => !m.isSituational || (m.isSituational && m.onByDefault)

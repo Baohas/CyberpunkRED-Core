@@ -2,23 +2,74 @@
 
 # Changelog
 
+## Version 0.89.0
+
+### Changes
+
+- Switched to using DataModels to enforce data types (#316, #723)
+
+## Version 0.88.1
+
+### Action Needed
+
+**WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
+
+### Bug Fixes
+
+- Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
+
 ## Version 0.88.0
+
+### Action Needed
+
+We have renamed all Compendia in the system utilizing the new Compendium Folders feature which has meant some changes behind the scenes which mean the pack names themselves have changed.
+
+This means any instances where you have dragged an item from a compendium into a text field like an Item Description or Journal entry which created a link to the item is now referencing a broken item. Unfortunately this would be very complex and fragile to migrate so we have not provided migrations for this. You can fix it by editing the document and dragging and dropping the item from the compendium again.
 
 ### New Features
 
 - Add CSS theming to Journals
 - New Theming for Tooltips
+- Add CSS theming to all TextEditor instances (Notes, Descriptions, etc.)
+- Support for editing Active Effects on owned items
 
 ### Bug Fixes
 
 - A couple of minor CSS fixes
+- Facedown rolls correctly include reputation value.
+- Fix CSS colors on User Config pop out
+- Fix Item Description tooltips in gear sheets to sanitize UUID references
+- Fix missing \_stats data from all system Compendia/Packs
+- Localized Mook skills are now sorted alphabetically
+- Fix luck rolls adding luck stat when no luck applied
+- Temp fix for Dice so Nice treating reputation as string on facedown rolls
+- Fix missing foundational need for Holo Projector Cyberware
 
 ### Changes
 
+- Update token methods for v11 compatibility
 - Update System files for v11
 - Update `label` > `name` for Active effects
 - Hide system only Compendiums from Compendium tab
-- Organize Compendiums into COmpendium Folders
+- Organize Compendiums into Compendium Folders
+- Switch all TextEditor instances to use Prosemirror
+- Combine "effects" and "notes" field for Black Ice.
+- Change font-hero to use same styling as journal headers
+- Change styling of release notes pop-up to match journal styling
+- All Compendium updated for v11 and now sorted into Folders
+
+## Version 0.87.6
+
+### Bug Fixes
+
+- Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
+
+## Version 0.87.5
+
+### Bug Fixes
+
+- Fix rendering of Actor documents from compendia.
+  - Future work: Fix certain updates to compendia documents failing.
 
 ## Version 0.87.4
 

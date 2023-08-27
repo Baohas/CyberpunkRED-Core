@@ -134,7 +134,7 @@ const Attackable = function Attackable() {
       );
     }, false);
 
-    const effects = actor.effects.contents; // Active effects on the actor.
+    const effects = Array.from(actor.allApplicableEffects()); // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(
@@ -380,7 +380,7 @@ const Attackable = function Attackable() {
       }
     }
 
-    const effects = actor.effects.contents; // Active effects on the actor.
+    const effects = Array.from(actor.allApplicableEffects()); // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(

@@ -1,0 +1,73 @@
+_id: yoTV7C3y1qXrXklA
+_key: "!items!yoTV7C3y1qXrXklA"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/exotics-of-2045/combat-jaw.svg
+name: Combat Jaw
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  core: false
+  damage: 4d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Implanted Very Heavy Melee Weapon.</p>
+      <p>Refer to the full description on page 72 of Interface Red vol. 2.</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 4d6
+    static: 14
+  installLocation: hospital
+  installedIn: ""
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: true
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 2
+  source:
+    book: IRv2
+    page: 72
+  type: cyberwareExternal
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: vHeavyMelee
+type: cyberware

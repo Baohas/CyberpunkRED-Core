@@ -38,7 +38,7 @@
     <select name="system.weaponSkill" data-dtype="{{item.system.weaponSkill}}">
       {{#select item.system.weaponSkill}}
       {{#each (cprFindConfigObj "skillCategoriesForWeapons") as |skillCat s| }}
-        <optgroup label="{{localize skillCat}}">
+        <optgroup label="{{localize (cprGetLocalizedlNameKey skill.name ''skillCat')}}">
           {{#each (cprSortCoreSkills ../item.system.relativeSkills) as |skillOption| }}
             {{#if (cprCompare skillOption.system.category "===" s) }}
               <option value="{{skillOption.name}}">
@@ -151,7 +151,7 @@
         <option value="">
           N/A
         </option>
-        {{#each item.system.dvTableNames as |rollTable| }}
+        {{#each dvTableNames as |rollTable| }}
           <option value="{{rollTable}}">
             {{rollTable}}
           </option>
@@ -247,12 +247,12 @@
   {{#each (cprFindConfigObj "ammoVariety") as |ammoVariety a| }}
     {{#if (cprListContains (cprGetProp ../item.system "ammoVariety") a) }}
       <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap text-padding-left">
+        <div class="item flexrow setting-name text-nowrap text-padding-left-largest">
           {{localize ammoVariety}}
           {{#if ../item.isOwned }}
-            {{#if (cprIsNumber (cprMath "sum" (cprGetProp (cprFilter ../item.system.relativeAmmo "system.variety" a) "system.amount"))) }}
+            {{#if (cprIsNumber (cprMath "sum" (cprGetProp (cprFilter ../relativeAmmo "system.variety" a) "system.amount"))) }}
               <div class="text-right">
-                ({{localize "CPR.itemSheet.weapon.youOwn"}} {{cprMath "sum" (cprGetProp (cprFilter ../item.system.relativeAmmo "system.variety" a) "system.amount")}} {{localize "CPR.itemSheet.weapon.rounds"}})
+                ({{localize "CPR.itemSheet.weapon.youOwn"}} {{cprMath "sum" (cprGetProp (cprFilter ../relativeAmmo "system.variety" a) "system.amount")}} {{localize "CPR.itemSheet.weapon.rounds"}})
               </div>
             {{/if}}
           {{/if}}

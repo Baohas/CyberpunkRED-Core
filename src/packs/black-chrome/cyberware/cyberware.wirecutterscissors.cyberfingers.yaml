@@ -1,0 +1,74 @@
+_id: GkcLdOzI3jhtTYPd
+_key: "!items!GkcLdOzI3jhtTYPd"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/cyberfinger.svg
+name: Wirecutter/Scissors Cyberfingers
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Cyberfinger pair that can serve as scissors or wirecutters. Can only be
+      installed on a modular finger cyberhand. (See Black Chrome pg. 26 for more
+      details)</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 1d6
+    static: 3
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: true
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  rof: 2
+  size: 2
+  source:
+    book: BC
+    page: 26
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: lightMelee
+type: cyberware

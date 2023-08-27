@@ -70,22 +70,23 @@ export default class CPRActorSheet extends ActorSheet {
   async getData() {
     LOGGER.trace("getData | CPRActorSheet | Called.");
     const foundryData = super.getData();
-    const cprActorData = foundryData.actor.system;
+    foundryData.fightData = {};
     if (this.actor.type === "mook" || this.actor.type === "character") {
-      cprActorData.fightOptions = this.actor.hasItemTypeEquipped("cyberdeck")
+      foundryData.fightData.fightOptions = this.actor.hasItemTypeEquipped(
+        "cyberdeck"
+      )
         ? "both"
         : "";
       let fightState = this.actor.getFlag(game.system.id, "fightState");
-      if (!fightState || cprActorData.fightOptions !== "both") {
+      if (!fightState || foundryData.fightData.fightOptions !== "both") {
         fightState = "Meatspace";
       }
-      cprActorData.fightState = fightState;
-      cprActorData.cyberdeck = "";
+      foundryData.fightData.fightState = fightState;
+      foundryData.fightData.cyberdeck = "";
       if (fightState === "Netspace") {
-        cprActorData.cyberdeck = this.actor.getEquippedCyberdeck();
+        foundryData.fightData.cyberdeck = this.actor.getEquippedCyberdeck();
       }
-      cprActorData.filteredEffects = await this.prepareActiveEffectCategories();
-      foundryData.data.system = cprActorData;
+      foundryData.filteredEffects = await this.prepareActiveEffectCategories();
     }
     // This appears to have been removed in V10?
     foundryData.isGM = game.user.isGM;
@@ -93,53 +94,95 @@ export default class CPRActorSheet extends ActorSheet {
     foundryData.enrichedHTML = [];
     if (this.actor.type !== "container") {
       foundryData.enrichedHTML.systemInformationNotes =
-        await TextEditor.enrichHTML(this.actor.system.information.notes);
+        await TextEditor.enrichHTML(this.actor.system.information.notes, {
+          async: true,
+        });
+    }
+    if (this.actor.type === "demon") {
+      foundryData.enrichedHTML.systemNotes = await TextEditor.enrichHTML(
+        this.actor.system.notes,
+        {
+          async: true,
+        }
+      );
     }
     if (this.actor.type === "character") {
       foundryData.enrichedHTML.systemLifepathCulturalOrigin =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.culturalOrigin);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.culturalOrigin, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathLanguages =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.languages);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.languages, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathPersonality =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.personality);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.personality, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathClothingStyle =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.clothingStyle);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.clothingStyle, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathHairStyle =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.hairStyle);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.hairStyle, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathAffectations =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.affectations);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.affectations, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathValueMost =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.valueMost);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.valueMost, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathAboutPeople =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.aboutPeople);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.aboutPeople, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathValuedPerson =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.valuedPerson);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.valuedPerson, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathValuedPossession =
         await TextEditor.enrichHTML(
-          this.actor.system.lifepath.valuedPossession
+          this.actor.system.lifepath.valuedPossession,
+          { async: true }
         );
       foundryData.enrichedHTML.systemLifepathFamilyBackground =
         await TextEditor.enrichHTML(
-          this.actor.system.lifepath.familyBackground
+          this.actor.system.lifepath.familyBackground,
+          { async: true }
         );
       foundryData.enrichedHTML.systemLifepathChildhoodEnvironment =
         await TextEditor.enrichHTML(
-          this.actor.system.lifepath.childhoodEnvironment
+          this.actor.system.lifepath.childhoodEnvironment,
+          { async: true }
         );
       foundryData.enrichedHTML.systemLifepathFamilyCrisis =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.familyCrisis);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.familyCrisis, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathLifeGoals =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.lifeGoals);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.lifeGoals, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathRoleLifepath =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.roleLifepath);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.roleLifepath, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathFriends =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.friends);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.friends, {
+          async: true,
+        });
       foundryData.enrichedHTML.systemLifepathTragicLoveAffairs =
         await TextEditor.enrichHTML(
-          this.actor.system.lifepath.tragicLoveAffairs
+          this.actor.system.lifepath.tragicLoveAffairs,
+          { async: true }
         );
       foundryData.enrichedHTML.systemLifepathEnemies =
-        await TextEditor.enrichHTML(this.actor.system.lifepath.enemies);
+        await TextEditor.enrichHTML(this.actor.system.lifepath.enemies, {
+          async: true,
+        });
     }
 
     return foundryData;
@@ -182,10 +225,7 @@ export default class CPRActorSheet extends ActorSheet {
       "displayStatusAsActiveEffects"
     );
     // Iterate over active effects, classifying them into categories
-    for (const e of this.actor.effects) {
-      // eslint-disable-next-line no-await-in-loop
-      // await e._getSourceName(); // Trigger a lookup for the source name
-
+    for (const e of this.actor.allApplicableEffects()) {
       // We want to create a "simplified effect" for two reasons:
       //    1. To make accessing information via handlebars easier.
       //    2. We want to only feed the changes that are relevant to each section.
@@ -196,6 +236,7 @@ export default class CPRActorSheet extends ActorSheet {
       const simplifiedEffect = {
         name: e.name,
         sourceName: e.sourceName,
+        parentName: e.parent.name,
         id: e.id,
         icon: e.icon,
         usage: e.usage,
@@ -528,7 +569,7 @@ export default class CPRActorSheet extends ActorSheet {
     }
 
     // "Consume" LUCK if used
-    if (Number.isInteger(cprRoll.luck) > 0) {
+    if (Number.isInteger(cprRoll.luck) && cprRoll.luck > 0) {
       const luckStat = this.actor.system.stats.luck.value;
       this.actor.update({
         "system.stats.luck.value":

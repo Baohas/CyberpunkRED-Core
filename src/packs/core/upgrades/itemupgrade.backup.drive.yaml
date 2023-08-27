@@ -1,0 +1,82 @@
+_id: DWfusJuwJXXt59bA
+_key: "!items!DWfusJuwJXXt59bA"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/upgrades/backup_drive.svg
+name: Backup Drive
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Saves Non-Black IE programs when destroyed. These programs can be
+      re-installed by a Netrunner as a meat action.&nbsp;</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: true
+  isInstalled: false
+  isRanged: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  modifiers:
+    attackmod:
+      type: modifier
+      value: null
+    damage:
+      type: modifier
+      value: null
+    magazine:
+      type: modifier
+      value: null
+    rof:
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: false
+    slots:
+      type: modifier
+      value: 0
+  price:
+    market: 100
+  providesHardening: false
+  rof: 1
+  size: 2
+  source:
+    book: Core
+    page: 368
+  type: cyberdeck
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: itemUpgrade

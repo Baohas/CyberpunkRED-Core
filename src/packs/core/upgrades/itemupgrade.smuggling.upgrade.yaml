@@ -1,0 +1,91 @@
+_id: 7RZSjo4XKb5TFmkd
+_key: "!items!7RZSjo4XKb5TFmkd"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/upgrades/smuggling_upgrade.svg
+name: Smuggling Upgrade
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Can be applied to all vehicles. Adds two <strong>Hidden
+      Holsters</strong> to the vehicle, and a large hidden compartment for
+      smuggling purposes. These can be discovered with a DV17 Conceal/Reveal
+      Object check.&nbsp;<br><br>Can be taken multiple times with the exception
+      of Bikes, Jetskis and Gyrocopters.</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: false
+  isInstalled: false
+  isRanged: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  modifiers:
+    attackmod:
+      type: modifier
+      value: null
+    damage:
+      type: modifier
+      value: null
+    magazine:
+      type: modifier
+      value: null
+    rof:
+      type: modifier
+      value: null
+    sdp:
+      type: modifier
+      value: null
+    seats:
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: false
+    speedCombat:
+      type: modifier
+      value: null
+  price:
+    market: 1000
+  providesHardening: false
+  rof: 1
+  size: 0
+  source:
+    book: Core
+    page: 163
+  type: vehicle
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: itemUpgrade

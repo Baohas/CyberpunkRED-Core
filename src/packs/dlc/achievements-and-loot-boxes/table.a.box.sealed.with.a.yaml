@@ -1,0 +1,27 @@
+_id: McQc33tLYAp7djIV
+_key: "!tables!McQc33tLYAp7djIV"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+description: >-
+  Source: Achievements and Loot Boxes pg.6
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: true
+formula: 1d6
+img: icons/containers/chest/chest-simple-box-red.webp
+name: A Box Sealed With A Lipstick Kiss
+replacement: true
+results:
+  - qARQwKszLKCxPfQz
+  - l2HE2AEJWDP4KWxL
+  - Z4X7w54H3NbzzFwz
+  - iQoEKgujgMhvPqeP
+  - xkhT1oZHM1csCCb0
+  - O7yueN1blyInPhr9
+  - KiNstFkzGSpxEExo

@@ -1,0 +1,24 @@
+_id: 9e3u59OJyL2w5TBX
+_key: "!tables!9e3u59OJyL2w5TBX"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+description: Core Rulebook Page 173
+displayRoll: false
+formula: ""
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_DV_Table.svg
+name: DV Assault Rifle
+replacement: false
+results:
+  - zXl7UvTeYMrSRpuy
+  - P8NFXXM5JXKhDWGE
+  - NbVO3Hf5CkNOJVAO
+  - DabpmcLl9OHn4EV6
+  - MmqdSIJDKT4XQxqb
+  - ArhYpzsWlsl3VtYr
+  - 6VEl92vkELv6UApM
+  - hO75OehjVDMgeuHC

@@ -1,0 +1,43 @@
+_id: ESkB5MZNBQ9Kh5bw
+_key: "!items!ESkB5MZNBQ9Kh5bw"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/econocompact.svg
+name: EconoCompact
+system:
+  brand: AmeriCar
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Small and low-cost Compact Groundcar.</p>
+      <p>Full details can be found on page 64.</p>
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 20000
+  sdp: 50
+  seats: 3
+  source:
+    book: BC
+    page: 64
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+  upgrades: []
+type: vehicle

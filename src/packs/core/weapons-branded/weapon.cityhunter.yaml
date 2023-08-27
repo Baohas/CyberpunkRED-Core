@@ -1,0 +1,61 @@
+_id: alT9Pzr61OYQH6ws
+_key: "!items!alT9Pzr61OYQH6ws"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol_excellent.svg
+name: Cityhunter
+system:
+  ammoVariety:
+    - heavyPistol
+  attackmod: 1
+  brand: Nova Arms
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 3d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>A concealable, heavy pistol. +1 to Attack.</p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 8
+    value: 0
+  price:
+    market: 500
+  revealed: true
+  rof: 2
+  source:
+    book: Core
+    page: 341
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: heavyPistol
+type: weapon

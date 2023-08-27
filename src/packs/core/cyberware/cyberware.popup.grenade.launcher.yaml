@@ -1,0 +1,75 @@
+_id: TievDHlAoROyoynx
+_key: "!items!TievDHlAoROyoynx"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/cyberware/popup_grenade_launcher.svg
+name: Popup Grenade Launcher
+system:
+  ammoVariety:
+    - grenade
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 6d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>A concealable one-shot Grenade Launcher. Can't hold anything with this
+      hand while activated. </p>
+  dvTable: DV Grenade Launcher
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 2d6
+    static: 7
+  installLocation: clinic
+  installedIn: ""
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isInstalled: false
+  isRanged: true
+  isUpgraded: false
+  isWeapon: true
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 1
+    value: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 2
+  source:
+    book: Core
+    page: 365
+  type: cyberArm
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Heavy Weapons
+  weaponType: grenadeLauncher
+type: cyberware

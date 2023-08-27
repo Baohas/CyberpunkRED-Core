@@ -1,0 +1,36 @@
+{
+  "description": "Stats from Foundry about items",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "coreVersion": {
+      "type": "string"
+    },
+    "createdTime": {
+      "type": "number"
+    },
+    "lastModifiedBy": {
+      "type": "string",
+      "const": "00CPRCBuildBot00"
+    },
+    "modifiedTime": {
+      "type": "number"
+    },
+    "systemId": {
+      "type": "string",
+      "const": "cyberpunk-red-core"
+    },
+    "systemVersion": {
+      "type": "string",
+      "const": "v0.0.0dev"
+    }
+  },
+  "required": [
+    "coreVersion",
+    "createdTime",
+    "lastModifiedBy",
+    "modifiedTime",
+    "systemId",
+    "systemVersion"
+  ]
+}

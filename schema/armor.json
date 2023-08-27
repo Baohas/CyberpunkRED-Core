@@ -9,8 +9,14 @@
         "_id": {
           "$ref": "./components/id.json"
         },
+        "_key": {
+          "$ref": "./components/key.json"
+        },
+        "_stats": {
+          "$ref": "./components/stats.json"
+        },
         "effects": {
-          "$ref": "./components/effects/activeEffects.json"
+          "$ref": "./components/effects.json"
         },
         "flags": {
           "$ref": "./components/flags.json"
@@ -32,6 +38,8 @@
       },
       "required": [
         "_id",
+        "_key",
+        "_stats",
         "effects",
         "img",
         "name",
@@ -83,7 +91,7 @@
           "$ref": "./components/upgradable/isUpgraded.json"
         },
         "penalty": {
-          "type": "integer"
+          "type": "number"
         },
         "price": {
           "$ref": "./components/valuable/price.json"
@@ -134,32 +142,26 @@
       "additionalProperties": false,
       "properties": {
         "ablation": {
-          "type": "integer"
+          "type": "number"
         },
         "sp": {
-          "type": "integer"
+          "type": "number"
         }
       },
-      "required": [
-        "ablation",
-        "sp"
-      ]
+      "required": ["ablation", "sp"]
     },
     "ShieldHitPoints": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "max": {
-          "type": "integer"
+          "type": "number"
         },
         "value": {
-          "type": "integer"
+          "type": "number"
         }
       },
-      "required": [
-        "max",
-        "value"
-      ]
+      "required": ["max", "value"]
     }
   }
 }

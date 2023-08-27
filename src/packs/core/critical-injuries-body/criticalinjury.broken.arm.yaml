@@ -1,0 +1,34 @@
+_id: Y65igO9rtakP4qSs
+_key: "!items!Y65igO9rtakP4qSs"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_arm.svg
+name: Broken Arm
+system:
+  deathSaveIncrease: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Arm unusable. Drop what it was holding</p>
+  favorite: false
+  location: body
+  quickFix:
+    dvFirstAid: 0
+    dvParamedic: 13
+    type: paramedic
+  revealed: true
+  source:
+    book: Core
+    page: 187
+  treatment:
+    dvParamedic: 15
+    dvSurgery: 13
+    type: paramedicSurgery
+  usage: toggled
+type: criticalInjury

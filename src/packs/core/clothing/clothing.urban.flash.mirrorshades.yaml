@@ -1,0 +1,47 @@
+_id: jhwXtXIbJFgwirQO
+_key: "!items!jhwXtXIbJFgwirQO"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_mirrorshades.svg
+name: Urban Flash Mirrorshades
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>The most technological and flashy clothing you can find in the Time of
+      the Red.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  source:
+    book: Core
+    page: 356
+  style: urbanFlash
+  type: mirrorshades
+  upgrades: []
+  usage: equipped
+type: clothing

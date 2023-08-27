@@ -1,0 +1,48 @@
+_id: QE785D3EE383knl6
+_key: "!items!QE785D3EE383knl6"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects:
+  - wt756dqaUSrGgJek
+img: systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
+name: Vermilion Linear Frame
+system:
+  amount: 1
+  brand: Wyzard Technologies
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Exoskeleton. Requires 2 Interface Plugs. Increases BODY to 12 while
+      plugged in. No changes to your HP or Deathsave. &nbsp;No movement penalty
+      for jumping. While running your movement is increased by 6m/yds. (See
+      Black Chrome pg. 54 for more details.)</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 5000
+  providesHardening: false
+  revealed: true
+  source:
+    book: BC
+    page: 54
+  upgrades: []
+  usage: equipped
+type: gear

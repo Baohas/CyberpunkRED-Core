@@ -31,8 +31,8 @@
   {{/if}}
   </div>
   <div class="item-detail gear-data text-nowrap"
-       data-tooltip="{{cprStripHtml item.system.description.value}}">
-    {{cprStripHtml item.system.description.value}}
+       data-tooltip="{{cprSanitizeText item.system.description.value}}">
+    {{cprSanitizeText item.system.description.value}}
   </div>
   <div class="item-detail gear-actions text-nowrap">
     {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-actions.hbs" item}}

@@ -1,0 +1,47 @@
+_id: OaYG5oUfDQ8VAT71
+_key: "!items!OaYG5oUfDQ8VAT71"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_mirrorshades.svg
+name: Businesswear Mirrorshades
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Your typical corporative clothing. Show everyone that you're here and
+      you mean business.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  source:
+    book: Core
+    page: 356
+  style: businesswear
+  type: mirrorshades
+  upgrades: []
+  usage: equipped
+type: clothing

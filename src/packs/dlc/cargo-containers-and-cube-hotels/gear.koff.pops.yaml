@@ -1,0 +1,49 @@
+_id: R3HxQCBBkQ7iHOzY
+_key: "!items!R3HxQCBBkQ7iHOzY"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/cargo-containers-and-cube-hotels/koff-pops.svg
+name: Koff Pops
+system:
+  amount: 10
+  brand: Continental Brands
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Koff Pops used with the Continental Brands Koff Popper.&nbsp;</p>
+      <ul>
+      <li>Pack of 10</li>
+      <li>Included in Kibble or higher lifestyle</li>
+      </ul>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 10
+  providesHardening: false
+  revealed: true
+  source:
+    book: CCaCH
+    page: 6
+  upgrades: []
+  usage: toggled
+type: gear

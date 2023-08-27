@@ -1,0 +1,35 @@
+_id: fRtXPlBcWvtgtNTf
+_key: "!items!fRtXPlBcWvtgtNTf"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/drugs/rapidetox.svg
+name: Rapidetox
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  consumed: None
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Injecting a target with Rapidetox will eliminate the effects of any
+      drugs, poisons, or intoxicants they are currently affected by.</p>
+  equipped: owned
+  favorite: false
+  price:
+    market: 0
+  revealed: true
+  source:
+    book: Core
+    page: 150
+  usage: toggled
+type: drug

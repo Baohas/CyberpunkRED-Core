@@ -134,7 +134,9 @@ export default class CPRSystemUtils {
    */
   static async GetCoreSkills() {
     LOGGER.trace("GetCoreSkills | CPRSystemUtils | Called.");
-    return CPRSystemUtils.GetCompendiumDocs(`${game.system.id}.skills`);
+    return CPRSystemUtils.GetCompendiumDocs(
+      `${game.system.id}.internal_skills`
+    );
   }
 
   /**
@@ -145,7 +147,9 @@ export default class CPRSystemUtils {
    */
   static async GetCoreCyberware() {
     LOGGER.trace("GetCoreCyberware | CPRSystemUtils | Called.");
-    return CPRSystemUtils.GetCompendiumDocs(`${game.system.id}.cyberware-core`);
+    return CPRSystemUtils.GetCompendiumDocs(
+      `${game.system.id}.internal_cyberware-core`
+    );
   }
 
   /**
@@ -255,11 +259,33 @@ export default class CPRSystemUtils {
     }
   }
 
+  /**
+   * Localize a string using internationalization.
+   *
+   * This static method allows you to localize a string using internationalization (i18n).
+   * It utilizes the `game.i18n.localize()` method to retrieve the localized version of the string.
+   *
+   * @param {string} string - The string key to be localized.
+   * @returns {string} The localized version of the input string.
+   *
+   */
   // eslint-disable-next-line foundry-cpr/logger-after-function-definition
   static Localize(string) {
     return game.i18n.localize(string);
   }
 
+  /**
+   * Format a string using internationalization and substitution.
+   *
+   * This static method allows you to format a string using internationalization (i18n)
+   * and substitution of values from an object. It utilizes the `game.i18n.format()` method
+   * to perform the formatting.
+   *
+   * @param {string} string - The string to be formatted, possibly containing placeholders.
+   * @param {object} object - An object containing key-value pairs for substitution.
+   * @returns {string} The formatted string with substituted values.
+   *
+   */
   // eslint-disable-next-line foundry-cpr/logger-after-function-definition
   static Format(string, object) {
     return game.i18n.format(string, object);
@@ -683,19 +709,6 @@ export default class CPRSystemUtils {
       }
     }
     return id;
-  }
-
-  /**
-   * Strip out html markup from a string. This is done with a combination of jQuery to remove the
-   * html tags, and a JavaScript built-in to remove URL codes like "&nbsp;".
-   *
-   * @static
-   * @param {String} htmlString - the html string to convert into plain text
-   * @returns {String}
-   */
-  static stripHTML(htmlString) {
-    LOGGER.trace("stripHTML | CPRSystemUtils | Called.");
-    return new Handlebars.SafeString($("<div>").html(htmlString).text());
   }
 
   /**

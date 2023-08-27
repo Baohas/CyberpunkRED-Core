@@ -2,12 +2,11 @@
   font-family: var(--cpr-font-primary);
   display: grid;
   grid-template-columns: 3.75rem 3.75rem 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 4.5rem 3rem 1fr 1fr;
+  grid-template-rows: 4.5rem 3rem 1fr;
   grid-auto-flow: row;
   grid-template-areas:
     "blackice-image blackice-image blackice-info blackice-info blackice-info blackice-info blackice-info blackice-actions"
     "blackice-image blackice-image blackice-stats blackice-stats blackice-stats blackice-stats blackice-stats blackice-stats"
-    "blackice-effects blackice-effects blackice-effects blackice-effects blackice-effects blackice-effects blackice-effects blackice-effects"
     "blackice-notes blackice-notes blackice-notes blackice-notes blackice-notes blackice-notes blackice-notes blackice-notes";
   height: auto;
   gap: 0.313rem;
@@ -175,12 +174,6 @@
         display: grid;
       }
     }
-  }
-
-  .blackice-effects {
-    grid-area: blackice-effects;
-    background-color: var(--cpr-background-box);
-    min-height: 2rem;
   }
 
   .blackice-notes {
