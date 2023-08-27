@@ -4,7 +4,14 @@
 import LOGGER from "./cpr-logger.js";
 
 /**
- * CPR-C utilities that are used for Text manipulation
+ * CPR-C utilities that are used for Text manipulation.
+ *
+ * Until FoundryVTT supports server-side html sanitation, we have client side
+ * methods defined here. In Foundry's discord there were loose commitments to
+ * implement server-side in v12.
+ *
+ * For more information, see this MR comment:
+ * https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/merge_requests/1143#note_1531138058
  */
 export default class CPRTextUtils {
   /**
