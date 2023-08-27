@@ -11,8 +11,7 @@ import LOGGER from "./cpr-logger.js";
  * implement server-side in v12. Newer editors built into Foundry may solve
  * this for us too.
  *
- * For more information, see this MR comment:
- * https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/merge_requests/1143#note_1531138058
+ * For more information, see the comments in MR !1143
  */
 export default class CPRTextUtils {
   /**
