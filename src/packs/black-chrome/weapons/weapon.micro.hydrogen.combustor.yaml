@@ -1,0 +1,64 @@
+_id: uyBRdbvnCDcFdO82
+_key: "!items!uyBRdbvnCDcFdO82"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/micro-hydrogen-combustor.svg
+name: Micro Hydrogen Combustor
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Hydrosubsidium Inc.
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 6d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p> A small explosive that detonates after being immersed in a liquid. Is
+      both armor piercing and creates a large cloud of smoke. </p> <p> Full
+      rules can be found on page 88. </p>
+  dvTable: ""
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 500
+  revealed: true
+  rof: 1
+  source:
+    book: BC
+    page: 88
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Demolitions
+  weaponType: thrownWeapon
+type: weapon

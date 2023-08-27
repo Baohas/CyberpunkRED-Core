@@ -1,0 +1,43 @@
+_id: Q8XG4TMqvwqMfaZK
+_key: "!items!Q8XG4TMqvwqMfaZK"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/range-trike.svg
+name: Range Trike
+system:
+  brand: Diego Motors
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Three wheeled Roadbike.</p>
+      <p>Full details can be found on page 67.</p>
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isUpgraded: false
+  price:
+    market: 31000
+  sdp: 55
+  seats: 3
+  source:
+    book: BC
+    page: 67
+  speedCombat: 20
+  speedNarrative: 100 MPH / 161 KPH
+  upgrades: []
+type: vehicle

@@ -1,0 +1,28 @@
+_id: zJA3lYQ47dmm55fd
+_key: "!items!zJA3lYQ47dmm55fd"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: icons/svg/item-bag.svg
+name: Paramedic
+system:
+  basic: false
+  category: techniqueSkills
+  core: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  difficulty: difficult
+  favorite: false
+  level: 0
+  source:
+    book: Core
+    page: 141
+  stat: tech
+type: skill

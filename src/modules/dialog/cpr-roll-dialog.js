@@ -64,7 +64,7 @@ export class CPRRollDialog extends CPRDialog {
     // Get filtered situational mods. These currently come from effects, role abilities, or item upgrades.
     data.filteredMods = CPRMod.getSituationalRollMods(
       this.rollData,
-      this.actor.effects.contents,
+      Array.from(this.actor.allApplicableEffects()),
       this.item,
       this.actor
     );
@@ -259,7 +259,7 @@ export class CPRRoleRollDialog extends CPRRollDialog {
     this.rollData.statName = skill.system.stat;
     this.rollData.statValue = this.actor.getStat(this.rollData.statName);
 
-    const effects = this.actor.effects.contents;
+    const effects = Array.from(this.actor.allApplicableEffects());
     const allMods = CPRMod.getAllModifiers(effects);
     // Mods for the skill we are changing to.
     const newSkillMods = CPRMod.getRelevantMods(allMods, [

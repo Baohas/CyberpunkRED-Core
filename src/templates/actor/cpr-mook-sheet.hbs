@@ -94,7 +94,13 @@
           <span>{{localize "CPR.global.generic.notes"}}</span>
         </div>
         <div class="mook-notes-content">
-          {{editor enrichedHTML.systemInformationNotes target="system.information.notes" button=true owner=owner editable=editable}}
+          {{editor enrichedHTML.systemInformationNotes
+              target="system.information.notes"
+              button=true
+              owner=owner
+              editable=editable
+              engine="prosemirror"
+          }}
         </div>
       </div>
     </div>

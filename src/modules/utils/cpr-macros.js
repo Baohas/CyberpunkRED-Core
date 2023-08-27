@@ -118,27 +118,4 @@ export default class CPRMacro {
     // Need to figure out what we did here since this is gone??
     // actor.setPreviousRoll(cprRoll);
   }
-
-  /**
-   * This is called from hooks/actor.js::createActor(). See the comments there for details.
-   *
-   * @param {Document} actor
-   */
-  static async FixActorIdsInEffects(actor) {
-    LOGGER.trace("FixActorIdsInEffects | CPRMacro | Called.");
-    const effects = duplicate(actor.effects);
-    const actorOrigin = `Actor.${actor._id}`;
-    effects.forEach((e) => {
-      if (e.origin.startsWith("Actor")) {
-        if (e.origin.includes("Item")) {
-          const bits = e.origin.split(".");
-          e.origin = `${actorOrigin}.${bits.slice(2).join(".")}`;
-        } else {
-          e.origin = actorOrigin;
-          e._sourceName = actor.name;
-        }
-      }
-    });
-    actor.updateSource({ effects });
-  }
 }

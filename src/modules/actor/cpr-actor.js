@@ -410,7 +410,9 @@ export default class CPRActor extends Actor {
    */
   applyActiveEffects() {
     LOGGER.trace("applyActiveEffects | CPRActor | Called.");
-    this.effects.forEach((e) => e.determineSuppression());
+    for (const e of this.allApplicableEffects()) {
+      e.determineSuppression();
+    }
     return super.applyActiveEffects();
   }
 
@@ -1408,7 +1410,7 @@ export default class CPRActor extends Actor {
     const statValue = this.getStat(statName);
     const cprRoll = new CPRRolls.CPRStatRoll(niceStatName, statValue);
 
-    const effects = this.effects.contents;
+    const effects = Array.from(this.allApplicableEffects());
     const allMods = CPRMod.getAllModifiers(effects);
     const filteredMods = allMods.filter(
       (m) => !m.isSituational || (m.isSituational && m.onByDefault)
@@ -1461,7 +1463,7 @@ export default class CPRActor extends Actor {
     );
 
     // Figure out all applicable modifiers.
-    const effects = this.effects.contents; // Active effects on the actor.
+    const effects = Array.from(this.allApplicableEffects()); // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(
@@ -1497,7 +1499,7 @@ export default class CPRActor extends Actor {
       bodyStat
     );
 
-    const effects = this.effects.contents; // Active effects on the actor.
+    const effects = Array.from(this.allApplicableEffects()); // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(

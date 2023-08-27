@@ -1,0 +1,65 @@
+_id: B53FFRpbpoT3VPP0
+_key: "!items!B53FFRpbpoT3VPP0"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/weapons/shrieker.svg
+name: Shrieker
+system:
+  ammoVariety:
+    - battery
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: "0"
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged
+      Ear critical injuries. The target must beat a DV15 Resist Torture/Drugs
+      Check or suffer the Damaged Ear critical injury. Refer to the full item
+      description on pg. 349.</p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 8
+    value: 0
+  price:
+    market: 500
+  revealed: true
+  rof: 1
+  source:
+    book: Core
+    page: 349
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: weapon

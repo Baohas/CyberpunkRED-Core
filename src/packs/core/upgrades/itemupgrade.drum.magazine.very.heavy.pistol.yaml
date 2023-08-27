@@ -1,0 +1,79 @@
+_id: v2DXDjMY1NlGWdFZ
+_key: "!items!v2DXDjMY1NlGWdFZ"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/upgrades/generic_drum_magazine.svg
+name: Drum Magazine (Very Heavy Pistol)
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Increases magazine size to a massive 28 bullets.</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: false
+  isInstalled: false
+  isRanged: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  modifiers:
+    attackmod:
+      isSituational: false
+      type: modifier
+      value: null
+    damage:
+      isSituational: false
+      type: modifier
+      value: null
+    magazine:
+      type: override
+      value: 28
+    rof:
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: false
+  price:
+    market: 500
+  providesHardening: false
+  rof: 1
+  size: 1
+  source:
+    book: Core
+    page: 343
+  type: weapon
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: itemUpgrade

@@ -1,0 +1,64 @@
+_id: mDciV1eKpoew146L
+_key: "!items!mDciV1eKpoew146L"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol.svg
+name: ModFire 10X (Rifle)
+system:
+  ammoVariety:
+    - custom
+  attackmod: 0
+  brand: Centurion Essentials
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 5d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>The ModFire 10X is an Exotic Heavy Pistol. Can also be transformed into
+      an Exotic SMG or an Exotic Assault Rifle, assuming the user has all the
+      needed parts. Full rules can be found in Black Chrome on Page 114.</p>
+  dvTable: DV Assault Rifle
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 8
+    value: 0
+  price:
+    market: 1000
+  revealed: true
+  rof: 2
+  source:
+    book: BC
+    page: 114
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Shoulder Arms
+  weaponType: assaultRifle
+type: weapon

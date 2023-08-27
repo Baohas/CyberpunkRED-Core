@@ -1,0 +1,41 @@
+_id: 2ea71NL50IBcCcJZ
+_key: "!items!2ea71NL50IBcCcJZ"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects:
+  - oiotWhajDFYb5QQm
+img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/veritas.svg
+name: Veritas
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  consumed: Veritas Primary
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Dose lasts 10 minutes.</p>
+
+      <p>MedTech pharmaceutical.</p>
+
+      <p>Target must make a DV17 Resist Torture/Drugs check. On failed check,
+      target suffers -5 to Acting, Concentration, Conversation, Deduction, Human
+      Perception, and Persuasion Checks</p>
+  equipped: owned
+  favorite: false
+  price:
+    market: 0
+  revealed: true
+  source:
+    book: HP
+    page: 4
+  usage: snorted
+type: drug

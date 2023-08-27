@@ -23,7 +23,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     LOGGER.trace("defaultOptions | CPRBlackIceActorSheet | Called.");
     return mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-black-ice-sheet.hbs`,
-      width: 530,
+      width: 575,
       height: "auto",
     });
   }
@@ -41,11 +41,9 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     const foundryData = super.getData();
 
     foundryData.enrichedHTML = [];
-    foundryData.enrichedHTML.systemEffect = await TextEditor.enrichHTML(
-      this.actor.system.effect
-    );
-    foundryData.enrichedHTML.systemNotes = await TextEditor.enrichHTML(
-      this.actor.system.notes
+    foundryData.enrichedHTML.notes = await TextEditor.enrichHTML(
+      this.actor.system.notes,
+      { async: true }
     );
 
     // Get data for the linked program for the Black ICE.
@@ -231,7 +229,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
         await this.actor.update({
           name: program.name,
           img: program.img,
-          "system.effect": program.system.description.value,
+          "system.notes": program.system.description.value,
         });
         await this.actor.token.update({
           name: program.name,

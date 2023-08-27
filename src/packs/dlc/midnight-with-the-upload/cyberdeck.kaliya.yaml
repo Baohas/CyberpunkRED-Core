@@ -1,0 +1,56 @@
+_id: s6f9GxYUg6IUgehg
+_key: "!items!s6f9GxYUg6IUgehg"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/default/cyberdeck.svg
+name: Kaliya
+system:
+  brand: Zetatech
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>A fantastic option for dismantling hostile Netrunners. Just hope they
+      don&rsquo;t have any Black ICE.</p>
+
+      <p>6 slots for Programs or Hardware, 3 extra slots only for Flak
+      programs.</p>
+
+      <p>Restrictions for Defender Programs and Black ICE: Only Flak and Asp can
+      be installed in any slot.</p>
+  equipped: owned
+  favorite: false
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - program
+    list: []
+    slots: 9
+    usedSlots: 0
+  isElectronic: true
+  isInstalled: false
+  isUpgraded: false
+  price:
+    market: 500
+  programs:
+    installed: []
+    rezzed: []
+  providesHardening: false
+  size: 1
+  source:
+    book: MwtU
+    page: 4
+  upgrades: []
+type: cyberdeck

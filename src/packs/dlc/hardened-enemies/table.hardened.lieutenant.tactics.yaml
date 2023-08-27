@@ -1,0 +1,26 @@
+_id: amZejGzbh9vPIYgD
+_key: "!tables!amZejGzbh9vPIYgD"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+description: ""
+displayRoll: true
+formula: 1d10
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Dice.svg
+name: Hardened Lieutenant Tactics
+replacement: true
+results:
+  - 0xrQZWSwPOKRoL3y
+  - eaZCXhYnfC40TIpy
+  - SSJZuGWvigH6bBfC
+  - tH997BD0tlvXcdll
+  - YuylHfn9SvN3P5Cp
+  - W71b244r1zoNm9oo
+  - cZufX1qgLNnpGyrm
+  - CfqL0bly7quUOoLz
+  - hJdYGg92ZRFKkyVv
+  - MoSN5snyJfdo6VXo

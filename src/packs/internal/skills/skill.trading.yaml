@@ -1,0 +1,28 @@
+_id: 3QXtTqLRdD1lZYsI
+_key: "!items!3QXtTqLRdD1lZYsI"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: icons/svg/item-bag.svg
+name: Trading
+system:
+  basic: false
+  category: socialSkills
+  core: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  difficulty: typical
+  favorite: false
+  level: 0
+  source:
+    book: Core
+    page: 139
+  stat: cool
+type: skill

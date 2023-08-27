@@ -68,13 +68,6 @@ const Effects = function Effects() {
    */
   this.createEffect = async function createEffect(render = true) {
     LOGGER.trace("createEffect | Effects | Called.");
-    if (this.isOwned) {
-      SystemUtils.DisplayMessage(
-        "warn",
-        SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning")
-      );
-      return null;
-    }
     const disabled = this.system.usage === "snorted";
     const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [
       {
@@ -90,13 +83,6 @@ const Effects = function Effects() {
 
   this.copyEffect = function copyEffect(eid) {
     LOGGER.trace("copyEffect | Effects | Called.");
-    if (this.isOwned) {
-      SystemUtils.DisplayMessage(
-        "warn",
-        SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning")
-      );
-      return null;
-    }
     const effect = duplicate(this.getEffect(eid));
     return this.createEmbeddedDocuments("ActiveEffect", [effect]);
   };
@@ -110,13 +96,6 @@ const Effects = function Effects() {
   this.deleteEffect = function deleteEffect(eid) {
     LOGGER.trace("deleteEffect | Effects | Called.");
     const effect = this.getEffect(eid);
-    if (this.isOwned) {
-      SystemUtils.DisplayMessage(
-        "warn",
-        SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning")
-      );
-      return null;
-    }
     return effect.delete();
   };
 
@@ -128,13 +107,6 @@ const Effects = function Effects() {
    */
   this.editEffect = function editEffect(eid) {
     LOGGER.trace("editEffect | Effects | Called.");
-    if (this.isOwned) {
-      SystemUtils.DisplayMessage(
-        "warn",
-        SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning")
-      );
-      return null;
-    }
     const effect = this.getEffect(eid);
     return effect.sheet.render(true);
   };
@@ -188,13 +160,6 @@ const Effects = function Effects() {
     const effect = this.getEffect(eid);
     const value = !effect.disabled;
     LOGGER.debug(`Setting disabled on ${eid} to ${value}`);
-    if (this.isOwned) {
-      SystemUtils.DisplayMessage(
-        "warn",
-        SystemUtils.Localize("CPR.itemSheet.effects.editOwnedWarning")
-      );
-      return null;
-    }
     return effect.update({ disabled: value });
   };
 
@@ -251,21 +216,6 @@ const Effects = function Effects() {
   };
 
   /**
-   * Return all active effects on an actor that is coming from this item. You may think this
-   * is the same list that is on this item, but it is not. The actor AEs have completely
-   * different IDs and potentially data (e.g. "disabled").
-   *
-   * @return {Array:CPRActiveEffect}
-   */
-  this.getMyEffectsOnActor = function getMyEffectsOnActor() {
-    LOGGER.trace("getActorItemEffects | Effects | Called.");
-    if (!this.isOwned || !this.actor) return [];
-    return this.actor.effects.filter((ae) =>
-      ae.origin.endsWith(`Item.${this.id}`)
-    );
-  };
-
-  /**
    * There are cases where changing the usage should trigger other behaviors, like setting all AEs
    * to disabled when setting it to snorted. Players should not gain their effects merely by touching
    * the drugs (i.e. putting them in their inventory).
@@ -279,35 +229,17 @@ const Effects = function Effects() {
     LOGGER.trace("_setUsage | Effects | Called.");
     if (usage === "snorted") {
       const aeUpdates = [];
-      if (this.isOwned) {
-        // if the item is owned, we change the AEs on the actor
-        this.getMyEffectsOnActor().forEach((ae) =>
-          aeUpdates.push({ _id: ae.id, disabled: true })
-        );
-        this.actor.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
-      } else {
-        // if unowned, then we can change the AEs on the item itself
-        this.effects.forEach((ae) =>
-          aeUpdates.push({ _id: ae.id, disabled: true })
-        );
-        this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
-      }
+      this.effects.forEach((ae) =>
+        aeUpdates.push({ _id: ae.id, disabled: true })
+      );
+      this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
     }
     if (usage === "equipped") {
       const aeUpdates = [];
-      if (this.isOwned) {
-        // if the item is owned, we change the AEs on the actor
-        this.getMyEffectsOnActor().forEach((ae) =>
-          aeUpdates.push({ _id: ae.id, disabled: false })
-        );
-        this.actor.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
-      } else {
-        // if unowned, then we can change the AEs on the item itself
-        this.effects.forEach((ae) =>
-          aeUpdates.push({ _id: ae.id, disabled: false })
-        );
-        this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
-      }
+      this.effects.forEach((ae) =>
+        aeUpdates.push({ _id: ae.id, disabled: false })
+      );
+      this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
     }
   };
 };

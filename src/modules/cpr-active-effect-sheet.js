@@ -270,7 +270,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
   getData() {
     LOGGER.trace("getData | CPRActiveEffectSheet | Called.");
     const data = super.getData();
-    data.effectParent = this.document.getEffectParent();
     return data;
   }
 }

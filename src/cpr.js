@@ -28,9 +28,33 @@ import overrideRulerFunctions from "./modules/system/overrides.js";
 // System settings
 import registerSystemSettings from "./modules/system/settings.js";
 
+// Actor Data Models:
+import BlackIceDataModel from "./modules/datamodels/actor/blackIce-datamodel.js";
+import CharacterDataModel from "./modules/datamodels/actor/character-datamodel.js";
+import ContainerDataModel from "./modules/datamodels/actor/container-datamodel.js";
+import DemonDataModel from "./modules/datamodels/actor/demon-datamodel.js";
+import MookDataModel from "./modules/datamodels/actor/mook-datamodel.js";
+
+// Item Data Models:
+import AmmoDataModel from "./modules/datamodels/item/ammo-datamodel.js";
+import ArmorDataModel from "./modules/datamodels/item/armor-datamodel.js";
+import ClothingDataModel from "./modules/datamodels/item/clothing-datamodel.js";
+import CriticalInjuryDataModel from "./modules/datamodels/item/criticalInjury-datamodel.js";
+import CyberdeckDataModel from "./modules/datamodels/item/cyberdeck-datamodel.js";
+import CyberwareDataModel from "./modules/datamodels/item/cyberware-datamodel.js";
+import DrugDataModel from "./modules/datamodels/item/drug-datamodel.js";
+import GearDataModel from "./modules/datamodels/item/gear-datamodel.js";
+import ItemUpgradeDataModel from "./modules/datamodels/item/itemUpgrade-datamodel.js";
+import NetArchDataModel from "./modules/datamodels/item/netarch-datamodel.js";
+import ProgramDataModel from "./modules/datamodels/item/program-datamodel.js";
+import RoleDataModel from "./modules/datamodels/item/role-datamodel.js";
+import SkillDataModel from "./modules/datamodels/item/skill-datamodel.js";
+import VehicleDataModel from "./modules/datamodels/item/vehicle-datamodel.js";
+import WeaponDataModel from "./modules/datamodels/item/weapon-datamodel.js";
+
 // This defines the version of the Data Model for this release.  We should
 // only update this when the Data Model Changes.
-const DATA_MODEL_VERSION = 19;
+const DATA_MODEL_VERSION = 24;
 export default DATA_MODEL_VERSION;
 
 Hooks.once("init", async () => {
@@ -111,6 +135,151 @@ Hooks.once("init", async () => {
   CONFIG.Combat.documentClass = CPRCombat;
   CONFIG.Item.documentClass = itemConstructor;
   CONFIG.Combatant.documentClass = CPRCombatant;
+
+  // Register Actor data models.
+  CONFIG.Actor.dataModels.blackIce = BlackIceDataModel;
+  CONFIG.Actor.dataModels.character = CharacterDataModel;
+  CONFIG.Actor.dataModels.container = ContainerDataModel;
+  CONFIG.Actor.dataModels.demon = DemonDataModel;
+  CONFIG.Actor.dataModels.mook = MookDataModel;
+
+  // Register Item data models.
+  CONFIG.Item.dataModels.ammo = AmmoDataModel;
+  CONFIG.Item.dataModels.armor = ArmorDataModel;
+  CONFIG.Item.dataModels.clothing = ClothingDataModel;
+  CONFIG.Item.dataModels.criticalInjury = CriticalInjuryDataModel;
+  CONFIG.Item.dataModels.cyberdeck = CyberdeckDataModel;
+  CONFIG.Item.dataModels.cyberware = CyberwareDataModel;
+  CONFIG.Item.dataModels.drug = DrugDataModel;
+  CONFIG.Item.dataModels.gear = GearDataModel;
+  CONFIG.Item.dataModels.itemUpgrade = ItemUpgradeDataModel;
+  CONFIG.Item.dataModels.netarch = NetArchDataModel;
+  CONFIG.Item.dataModels.program = ProgramDataModel;
+  CONFIG.Item.dataModels.role = RoleDataModel;
+  CONFIG.Item.dataModels.skill = SkillDataModel;
+  CONFIG.Item.dataModels.vehicle = VehicleDataModel;
+  CONFIG.Item.dataModels.weapon = WeaponDataModel;
+
+  // Turn legacy tranferral for active effects off. Necessary for v11.
+  CONFIG.ActiveEffect.legacyTransferral = false;
+
+  // Make System fonts available to Foundry
+  CONFIG.fontDefinitions.Jost = {
+    editor: true,
+    fonts: [
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-100.ttf`],
+        weight: 100,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-200.ttf`],
+        weight: 200,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-300.ttf`],
+        weight: 300,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-400.ttf`],
+        weight: 400,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-500.ttf`],
+        weight: 500,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-600.ttf`],
+        weight: 600,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-700.ttf`],
+        weight: 700,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-800.ttf`],
+        weight: 800,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-900.ttf`],
+        weight: 900,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-100-italic.ttf`],
+        weight: 100,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-200-italic.ttf`],
+        weight: 200,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-300-italic.ttf`],
+        weight: 300,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-400-italic.ttf`],
+        weight: 400,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-500-italic.ttf`],
+        weight: 500,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-600-italic.ttf`],
+        weight: 600,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-700-italic.ttf`],
+        weight: 700,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-800-italic.ttf`],
+        weight: 800,
+        style: `italic`,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Jost-900-italic.ttf`],
+        weight: 900,
+        style: `italic`,
+      },
+    ],
+  };
+
+  CONFIG.fontDefinitions.Orbitron = {
+    editor: true,
+    fonts: [
+      {
+        urls: [`systems/${game.system.id}/fonts/Orbitron-400.ttf`],
+        weight: 400,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Orbitron-500.ttf`],
+        weight: 500,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Orbitron-600.ttf`],
+        weight: 600,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Orbitron-700.ttf`],
+        weight: 700,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Orbitron-800.ttf`],
+        weight: 800,
+      },
+      {
+        urls: [`systems/${game.system.id}/fonts/Orbitron-900.ttf`],
+        weight: 900,
+      },
+    ],
+  };
 
   preloadHandlebarsTemplates();
   registerHandlebarsHelpers();

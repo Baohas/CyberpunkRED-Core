@@ -1,0 +1,45 @@
+_id: mmckNZZHbEtSoyA1
+_key: "!items!mmckNZZHbEtSoyA1"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/all-about-drones/graf3.svg
+name: GRAF3
+system:
+  amount: 1
+  brand: Zhirafa
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Quadraped construction drone.</p>
+      <p>Refer to the full description on page 59 of Interface Red vol. 1.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isUpgraded: false
+  price:
+    market: 5000
+  providesHardening: false
+  revealed: true
+  source:
+    book: IRv1
+    page: 59
+  upgrades: []
+  usage: toggled
+type: gear
