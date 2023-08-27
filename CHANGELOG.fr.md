@@ -59,7 +59,7 @@ This means any instances where you have dragged an item from a compendium into a
 - Temp fix for Dice so Nice treating reputation as string on facedown rolls
 - Fix missing foundational need for Holo Projector Cyberware
 
-### Changements
+### Att/round
 
 - Update token methods for v11 compatibility
 - Update System files for v11
@@ -251,7 +251,7 @@ Si vous êtes intéressé par la création d'un thème pour le système, consult
   - Note de rappel : Si vous utilisez des jets de modificateurs et le modificateur de description de la carte (#), le modificateur de description de la carte doit être le dernier utilisé sur la ligne. Cela a toujours été le cas, nous le rappelons ici, car cela ajoute maintenant un modificateur supplémentaire.
 - Les objets d'amélioration peuvent maintenant avoir des effets Actifs ajoutés à eux et activés quand l'objet dans lequel ils sont installés est équipé
 
-### Changements
+### Att/round
 
 #### Réécritures de feuilles
 
@@ -377,7 +377,7 @@ Ammo can now modify weapon damage / autofire maximums. Ceci prend en charge les 
 - Fixed the ability to decrement REZ of a running program in the NET tab
 - #692 - Code accidentally added `programs` instead of `cyberware` for owned cyberware on existing actors. This fix adds `cyberware` as it should have been however we can't know if `programs` was a valid entry for a world, so we are not removing that. It does not impact anything and a GM can manually remove `programs` from an owned piece of cyberware via the item settings if needed.
 
-### Changements
+### Att/round
 
 - When `Debug Elements in UI` is enabled on an item with other installed items in it, the installed items will have their UUID's displayed to help troubleshooting.
 
@@ -424,7 +424,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - All Cyberware can now be a weapon
 - Added a note making it more clear how under barrel weapons work
 
-### Changements
+### Att/round
 
 - Change the Crit Injury icon for head injuries
 - Change the Crit Injury icons to display before name
@@ -503,7 +503,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - Added page references to all clothing items and critical injuries
 - #444 - Russian Localization Added. Thanks to our translators @openmanv and @kurigohan.
 
-### Changements
+### Att/round
 
 - #482 - The Babele module should no longer require renaming files or directories to make it work
 - #585 - Renamed ammo to list the weapon first and then the type (`Basic Rifle` -> `Rifle (Basic)`) to enable easier browsing and consistency with other naming schemes
@@ -561,7 +561,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - Zap now counts as an "attack" and you can roll damage from the chat card
   - Roll damage from program attack cards
 
-### Changements
+### Att/round
 
 - #434 - Users no longer need to import compendia to use DV measurements or roll critical injuries
 - Drugs can now be equipped, owned, or carried
@@ -616,7 +616,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Drugs can be used in the Mook sheet
 - Stackable items can be dragged to the Mook sheet and stacked properly
 
-### Changements
+### Att/round
 
 - Automatic babele folder configuration, so that it does not have to be set by the user
 - Mook portrait is always shown
@@ -720,7 +720,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Feature Request #424: Ability to use LUCK on Stat, Skill, Attack, Program, Cyberdeck, and Interface/Charismatic Impact rolls. Automatically deducts from character sheet.
 - #414 - German is now a supported language. Most game system text (excluding pre-made items) will appear in this language if set in game settings. Thank you to our German translators: High123, Similar and Tealk.
 
-### Changements
+### Att/round
 
 - Feature Request #352: Removed the fixed height CSS for the "Player Notes" section in the lifepath tab for a better writing/reading experience
 - Consolidated gain, lose and set ledger functions for EB, IP and Reputation to make it more manageable
@@ -818,7 +818,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added functionality to manually increase the Death Save Penalty of a character. This is useful in case a character gets hit, while Mortally Wounded.
 - Many new icons added to items in the compendiums! See CREDITS.md for attribution and thanks!
 
-### Changements
+### Att/round
 
 - When a release update is applied, a pop up window will now display with relevant information:
   - At a minimum, there will be a link to the CHANGELOG for the release
@@ -884,7 +884,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - BREAKING: Netrunners must select which role should be utilized for netrunning from the "Configure Active Role" dialog on the main part (left) of the character sheet, otherwise you will not be able to utilize the cyberdeck tab of the character sheet. This will be selected for you on migration if you had the Netrunner role selected on a character previously, but will need to be configured on new characters.
 - Added filter capability for Skills & Gear. This is a client side option which can be enabled/disabled in the System Settings.
 
-### Changements
+### Att/round
 
 - Feature Request #296: Exotic Weapons from the Core Rulebook are now present in the Weapons Compendium. The Battleglove has been placed into Cyberware Compendium, and Battery Pack has been placed into the Ammo Compendium.
 - Feature Request #319: Item Upgrades are now accessible on a Mook sheet. This includes support for Underbarrel weapons which will display as a usable weapon.
@@ -959,7 +959,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - A compendium for clothing has been added (thanks @aarong123!)
 - Help article buttons (?) are now available on items when viewing them in the top-right corner. This will redirect you to the associated item help page on our wiki.
 
-### Changements
+### Att/round
 
 - Newly created actors and items will automatically have default icons configured.
 - Restructured the language file for easier translations.
@@ -1064,7 +1064,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - Netrunning icons for actors (and some other things) are now included in the system. They can be accessed from the tile browser in "systems/cyberpunk-red-core/icons/netrunning". Big big thanks to Verasunrise (the artist) and Hyriu33 for letting us provide this awesome artwork with our system!
 - Street Drugs have been added to the "Gear" compendium.
 
-### Changements
+### Att/round
 
 - Restructured the code for character and mook sheets for ease of development
 - Changed the scene activation when generating a scene from a net architecture to just viewing the scene. This allows to show the new scene to the GM, but not the players in order to do some more preparation if needed.
@@ -1137,7 +1137,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - The suppressive fire option is now considered in mook sheets (same as character sheets, see issue #195).
   - Portrait added in an expandable frame.
 
-### Changements
+### Att/round
 
 - Setting the autofire maximum multiplier on an item will now be taken into account when rolling damage for autofire damage rolls. For weapons defined in the core rules (SMG, H. SMG & Assault Rifles) leaving this as 0 will utilize the core rule set for those items. You can over-ride the core rules (for homebrew) by actually setting this to a non-zero amount. If you set the multiplier in the roll dialog to a value higher than the allowable value, it will default to the maximum allowable multiplier.
 - Characters are now linked to their token by default, Mooks are not.
