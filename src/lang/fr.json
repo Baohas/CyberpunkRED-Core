@@ -1104,6 +1104,8 @@
   "CPR.settings.title": "Paramètres",
   "CPR.settings.traceLogs.hint": "Activer les logs de suivi. Activez-le quand vous voulez soumettre un bug ou si vous travaillez avec un développeur du module sur un problème.",
   "CPR.settings.traceLogs.name": "Logs de suivi",
+  "CPR.settings.warnAboutNoTargetsWhenRollingDamage.hint": "Uncheck to disable the warning about having no tokens targeted when rolling damage. Useful if you don't want to enforce using Foundry's targeting functionality.",
+  "CPR.settings.warnAboutNoTargetsWhenRollingDamage.name": "Warn when rolling without targets",
   "CPR.sheets.blackiceSheet": "Feuille GLACE Noir",
   "CPR.sheets.characterSheet": "Feuille de Personnage",
   "CPR.sheets.containerSheet": "Feuille de Conteneur/Magasin",
