@@ -26,8 +26,8 @@ export default class LoadableSchema extends foundry.abstract.DataModel {
           min: 0,
         }),
         ammoData: new fields.SchemaField({
-          name: new fields.StringField({ blank: true }),
-          uuid: new fields.StringField({ blank: true }),
+          name: new fields.StringField({ blank: true, initial: "" }),
+          uuid: new fields.StringField({ blank: true, initial: "" }),
         }),
       }),
       ammoVariety: new fields.ArrayField(

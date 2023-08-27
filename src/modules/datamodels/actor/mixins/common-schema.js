@@ -13,16 +13,16 @@ export default class CommonSchema extends foundry.abstract.DataModel {
     const hasMax = true;
     return {
       stats: new fields.SchemaField({
-        body: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
-        cool: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
-        dex: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
+        body: new fields.SchemaField(StatSchema.defineSchema()),
+        cool: new fields.SchemaField(StatSchema.defineSchema()),
+        dex: new fields.SchemaField(StatSchema.defineSchema()),
         emp: new fields.SchemaField(StatSchema.defineSchema(hasMax)),
-        int: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
+        int: new fields.SchemaField(StatSchema.defineSchema()),
         luck: new fields.SchemaField(StatSchema.defineSchema(hasMax)),
-        move: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
-        ref: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
-        tech: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
-        will: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
+        move: new fields.SchemaField(StatSchema.defineSchema()),
+        ref: new fields.SchemaField(StatSchema.defineSchema()),
+        tech: new fields.SchemaField(StatSchema.defineSchema()),
+        will: new fields.SchemaField(StatSchema.defineSchema()),
       }),
       externalData: new fields.SchemaField({
         currentArmorBody: new fields.SchemaField(
