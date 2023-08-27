@@ -8,7 +8,8 @@ import LOGGER from "./cpr-logger.js";
  *
  * Until FoundryVTT supports server-side html sanitation, we have client side
  * methods defined here. In Foundry's discord there were loose commitments to
- * implement server-side in v12.
+ * implement server-side in v12. Newer editors built into Foundry may solve
+ * this for us too.
  *
  * For more information, see this MR comment:
  * https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/merge_requests/1143#note_1531138058

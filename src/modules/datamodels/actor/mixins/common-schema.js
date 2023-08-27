@@ -10,18 +10,19 @@ export default class CommonSchema extends foundry.abstract.DataModel {
   static defineSchema() {
     LOGGER.trace("defineSchema | CommonSchema | called.");
     const { fields } = foundry.data;
+    const hasMax = true;
     return {
       stats: new fields.SchemaField({
-        body: new fields.SchemaField(StatSchema.defineSchema()),
-        cool: new fields.SchemaField(StatSchema.defineSchema()),
-        dex: new fields.SchemaField(StatSchema.defineSchema()),
-        emp: new fields.SchemaField(StatSchema.defineSchema(true)),
-        int: new fields.SchemaField(StatSchema.defineSchema()),
-        luck: new fields.SchemaField(StatSchema.defineSchema(true)),
-        move: new fields.SchemaField(StatSchema.defineSchema()),
-        ref: new fields.SchemaField(StatSchema.defineSchema()),
-        tech: new fields.SchemaField(StatSchema.defineSchema()),
-        will: new fields.SchemaField(StatSchema.defineSchema()),
+        body: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
+        cool: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
+        dex: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
+        emp: new fields.SchemaField(StatSchema.defineSchema(hasMax)),
+        int: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
+        luck: new fields.SchemaField(StatSchema.defineSchema(hasMax)),
+        move: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
+        ref: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
+        tech: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
+        will: new fields.SchemaField(StatSchema.defineSchema(!hasMax)),
       }),
       externalData: new fields.SchemaField({
         currentArmorBody: new fields.SchemaField(
