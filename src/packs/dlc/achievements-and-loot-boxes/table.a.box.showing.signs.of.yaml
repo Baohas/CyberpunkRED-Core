@@ -1,0 +1,26 @@
+_id: WmWdGRlhzhA2ZcmV
+_key: "!tables!WmWdGRlhzhA2ZcmV"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+description: >-
+  Source: Achievements and Loot Boxes pg.6
+
+  All weapons come fully loaded with a compatible ammo type of the GM's
+  choosing.
+displayRoll: true
+formula: 1d6
+img: icons/containers/boxes/crate-wooden-brown.webp
+name: A Box Showing Signs Of Repair
+replacement: true
+results:
+  - eSMmjYuRfPdHRHK2
+  - NAW6SeAGHYRp9Qgx
+  - XFxM9lyMYSCxHQqS
+  - ALhnacS6Hjr3pHNH
+  - ye7viJCwPjZqFjih
+  - YPH6EdW6lvbn2VLj

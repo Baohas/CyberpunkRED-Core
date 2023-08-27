@@ -64,7 +64,9 @@
           <div class="d10-data-details hide">
             <div class="text-normal text-semi">{{localize statName}} + {{statValue}}</div>
             <div class="text-normal text-semi">
-              {{localize skillName}} + {{skillValue}}
+              {{localize (cprGetLocalizedlNameKey skillName "skill")}}
+              +
+              {{skillValue}}
             </div>
             {{#if roleValue }}
               <div class="text-normal text-semi">{{localize roleName}} + {{roleValue}}</div>

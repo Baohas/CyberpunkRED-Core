@@ -1,0 +1,46 @@
+_id: KNY6BomYkUOkpctH
+_key: "!items!KNY6BomYkUOkpctH"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/all-about-drones/the-transporter.svg
+name: The Transporter
+system:
+  amount: 1
+  brand: Concept Mechanics
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Personal Drone. Transporter Drone that can be linked to an Agent.</p>
+      <p>Refer to the full description on page 63 of Interface Red vol. 1.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isUpgraded: false
+  price:
+    market: 5000
+  providesHardening: false
+  revealed: true
+  source:
+    book: IRv1
+    page: 63
+  upgrades: []
+  usage: toggled
+type: gear

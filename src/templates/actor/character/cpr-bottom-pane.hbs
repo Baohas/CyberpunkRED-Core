@@ -14,8 +14,8 @@
               {{localize "CPR.characterSheet.bottomPane.fight.title"}}
             </a>
           </div>
-          {{#if (cprCompare actor.system.fightOptions "===" "both") }}
-            {{#if (cprCompare actor.system.fightState "===" "Meatspace") }}
+          {{#if (cprCompare fightData.fightOptions "===" "both") }}
+            {{#if (cprCompare fightData.fightState "===" "Meatspace") }}
               <div class="text-padding-left-smaller">
                 (<span class="tab-highlight">
                   {{~localize "CPR.characterSheet.bottomPane.fight.meat"}}

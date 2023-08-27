@@ -494,7 +494,9 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     event.preventDefault();
     const action = SystemUtils.GetEventDatum(event, "data-action");
     const effectId = SystemUtils.GetEventDatum(event, "data-effect-id");
-    const effect = this.actor.effects.get(effectId);
+    const effect = Array.from(this.actor.allApplicableEffects()).find(
+      (e) => e.id === effectId
+    );
     switch (action) {
       case "create":
         return this.actor.createEffect();
@@ -571,12 +573,10 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   async _createInventoryItem(event) {
     LOGGER.trace("_createInventoryItem | CPRCharacterActorSheet | Called.");
     const itemType = SystemUtils.GetEventDatum(event, "data-item-type");
-    const itemTypeNice = itemType.toLowerCase().capitalize();
-    const itemString = "ITEM.Type";
-    const itemTypeLocal = itemString.concat(itemTypeNice);
-    const newWord = SystemUtils.Localize("CPR.actorSheets.commonActions.new");
-    const newType = SystemUtils.Localize(itemTypeLocal);
-    const itemName = `${newWord} ${newType}`;
+    const itemString = `TYPES.Item.${itemType}`;
+    const itemName = SystemUtils.Format("CPR.actorSheets.commonActions.new", {
+      item: SystemUtils.Localize(itemString),
+    });
     const itemImage = SystemUtils.GetDefaultImage("Item", itemType);
     const itemData = { img: itemImage, name: itemName, type: itemType };
     await this.actor.createEmbeddedDocuments("Item", [itemData]);

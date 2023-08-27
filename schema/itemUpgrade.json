@@ -9,8 +9,14 @@
         "_id": {
           "$ref": "./components/id.json"
         },
+        "_key": {
+          "$ref": "./components/key.json"
+        },
+        "_stats": {
+          "$ref": "./components/stats.json"
+        },
         "effects": {
-          "$ref": "./components/effects/activeEffects.json"
+          "$ref": "./components/effects.json"
         },
         "flags": {
           "$ref": "./components/flags.json"
@@ -31,6 +37,8 @@
       },
       "required": [
         "_id",
+        "_key",
+        "_stats",
         "effects",
         "img",
         "name",
@@ -116,10 +124,7 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "cyberdeck",
-            "weapon"
-          ]
+          "enum": ["clothing", "cyberdeck", "gear", "vehicle", "weapon"]
         },
         "unarmedAutomaticCalculation": {
           "$ref": "./components/attackable/unarmedAutomaticCalculation.json"

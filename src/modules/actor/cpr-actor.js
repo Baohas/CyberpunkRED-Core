@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* globals Actor, game, getProperty, hasProperty, duplicate, CPRMookActorSheet,  CPRContainerActorSheet */
+/* globals Actor, game, getProperty, hasProperty, duplicate */
 import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";
 import CPRCharacterActorSheet from "./sheet/cpr-character-sheet.js";
@@ -30,7 +30,7 @@ export default class CPRActor extends Actor {
    * @param {Object} options - not used here, but required by the parent class
    */
   static async create(data, options) {
-    LOGGER.trace("create | CPRCharacterActor | called.");
+    LOGGER.trace("create | CPRActor | called.");
     const createData = data;
     const newActor = typeof data.system === "undefined";
     if (newActor) {
@@ -61,7 +61,6 @@ export default class CPRActor extends Actor {
     }
     const actor = await super.create(createData, options);
     const installedItems = [];
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     if (newActor) {
       // If this is a brand new actor (i.e. not a duplicate), install core cyberware.
       const updateList = [];
@@ -75,57 +74,257 @@ export default class CPRActor extends Actor {
       });
       // Update the embedded core cyberware with the correct reference to the actor its installed in.
       actor.updateEmbeddedDocuments("Item", updateList);
+      await actor.update({ "system.installedItems.list": installedItems });
     } else {
-      // An actor was copied, first sync all items installed in the actor (Cyberware)
-      const actorUUID = actor.uuid;
-      const updateList = [];
-      for (const sourceUUID of actor.system.installedItems.list) {
-        const sourceItemId = sourceUUID.split(".").pop();
-        const newItemId = `${actorUUID}.Item.${sourceItemId}`;
-        installedItems.push(newItemId);
-        const item = actor.getOwnedItem(newItemId);
-        updateList.push({
-          _id: item.id,
+      // An actor was copied/imported, sync all installed items with the UUID corresponding to the new actor.
+      actor.syncInstalledItems();
+    }
+    return actor;
+  }
+
+  /**
+   * This is a helper function to sync installed item UUIDs on Actors and their respective owned items.
+   * This is a 'twin' to the function `CPRActor.syncInstalledItems()`. What is the difference?
+   * Typically, we use the parent document's `document.system.installedItems.list` as the "source of truth"
+   * for what things are installed into what. This is a list of UUIDs of installed items.
+   * In rare instances (specifically with migration script 012), some actors in compendia were getting this
+   * data-point wiped out. Luckily, on the installed items themselves, there is a datapoint called `item.installedIn`,
+   * which did not get wiped out. This function reconstructs `installedItems.list` using the above data-point,
+   * and makes sure all UUIDs match. The other, more often-used function reconstructs installed item
+   * info from `installedItems.list` (as is best-practice). The following function is hopefully seldom used.
+   *
+   * @async
+   */
+  async syncInstalledViaInstalledIn() {
+    LOGGER.trace("syncInstalledViaInstalledIn | CPRActor | called.");
+    const actorUUID = this.uuid;
+    const updateList = [];
+    let installedItems = [];
+    const currentItems = this.items.filter((item) => {
+      // Match for UUID's that do not contain "Item" (i.e. actors)
+      return item.system.isInstalled && !item.system.installedIn?.match("Item");
+    });
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+
+    /**
+     * This function adapts `item.recursiveInstallSync()` for this particular use-case.
+     * It shouldn't be needed outside of its parent function.
+     *
+     * @async
+     * @param {CPRActor} actor - The actor who the parent function is fixing.
+     * @param {CPRItem} item - An owned item on the actor that we are fixing.
+     */
+    async function recursiveInstall(actor, item) {
+      const itemUpdateList = [];
+      const installedList = actor.items.filter(
+        // Match for UUIDs that contain "Item" (i.e. items)
+        (i) => i.system.isInstalled && i.system.installedIn?.match(item.id)
+      );
+      for (const i of installedList) {
+        itemUpdateList.push({
+          _id: i.id,
           "system.isInstalled": true,
-          "system.installedIn": actorUUID,
+          "system.installedIn": item.uuid,
         });
-        if (
-          containerTypes.includes(item.type) &&
-          item.system.installedItems.list.length > 0
-        ) {
-          await item.recursiveInstallSync();
+        if (containerTypes.includes(i.type)) {
+          await recursiveInstall(actor, i);
         }
       }
-      // Sync any owned items that are containers
-      for (const itemType of Object.keys(actor.itemTypes)) {
-        if (containerTypes.includes(itemType)) {
-          for (const item of actor.itemTypes[itemType]) {
-            if (item.system.installedItems.list.length > 0) {
-              await item.recursiveInstallSync();
-            }
+      await item.update({
+        "system.installedItems.list": installedList.map((i) => i.uuid),
+      });
+      await actor.updateEmbeddedDocuments("Item", itemUpdateList);
+
+      // Do this last because `syncUpgrades` relies on the updates above to work.
+      const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
+      if (upgradableTypes.includes(item.type)) {
+        await item.syncUpgrades();
+      }
+    }
+
+    for (const item of currentItems) {
+      updateList.push({
+        _id: item.id,
+        "system.isInstalled": true,
+        "system.installedIn": actorUUID,
+      });
+      if (containerTypes.includes(item.type)) {
+        await recursiveInstall(this, item);
+      }
+    }
+
+    installedItems = currentItems.map((i) => i.uuid);
+    // Sync any owned items that are containers
+    for (const itemType of Object.keys(this.itemTypes)) {
+      if (containerTypes.includes(itemType)) {
+        for (const item of this.itemTypes[itemType]) {
+          await recursiveInstall(this, item);
+        }
+      }
+    }
+    // Sync any loaded weapons
+    for (const item of this.itemTypes.weapon) {
+      if (
+        item.system.isRanged &&
+        item.system.magazine.ammoData.uuid.length > 0
+      ) {
+        const sourceItemId = item.system.magazine.ammoData.uuid
+          .split(".")
+          .pop();
+        const newItemId = `${actorUUID}.Item.${sourceItemId}`;
+        updateList.push({
+          _id: item.id,
+          "system.magazine.ammoData.uuid": newItemId,
+        });
+      }
+    }
+    await this.updateEmbeddedDocuments("Item", updateList);
+    await this.update({ "system.installedItems.list": installedItems });
+  }
+
+  /**
+   * This is a helper function to sync installed item UUIDs on Actors and their respective owned items.
+   * We need this because there are issues importing actors with installed items. Essentially,
+   * the uuids in `installedIn` and `installedItems.list` (and `magazine.ammoData.uuid` for weapons)
+   * do not get updated with the ID of the new actor. This function rectifies that and should be called
+   * where relevant (e.g. importing an actor from JSON in actor.importFromJSON(), duplicating an actor
+   * in actor.create(), etc.)
+   *
+   * @async
+   */
+  async syncInstalledItems() {
+    LOGGER.trace("syncInstalledItems | CPRActor | called.");
+    const actorUUID = this.uuid;
+    const updateList = [];
+    const installedItems = [];
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+
+    for (const sourceUUID of this.system.installedItems.list) {
+      const sourceItemId = sourceUUID.split(".").pop();
+      const newItemId = `${actorUUID}.Item.${sourceItemId}`;
+      installedItems.push(newItemId);
+      const item = this.getOwnedItem(newItemId);
+      updateList.push({
+        _id: item.id,
+        "system.isInstalled": true,
+        "system.installedIn": actorUUID,
+      });
+      if (
+        containerTypes.includes(item.type) &&
+        item.system.installedItems.list.length > 0
+      ) {
+        await item.recursiveInstallSync();
+      }
+    }
+    // Sync any owned items that are containers
+    for (const itemType of Object.keys(this.itemTypes)) {
+      if (containerTypes.includes(itemType)) {
+        for (const item of this.itemTypes[itemType]) {
+          if (item.system.installedItems.list.length > 0) {
+            await item.recursiveInstallSync();
           }
         }
       }
-      // Sync any loaded weapons
-      for (const item of actor.itemTypes.weapon) {
-        if (
-          item.system.isRanged &&
-          item.system.magazine.ammoData.uuid.length > 0
-        ) {
-          const sourceItemId = item.system.magazine.ammoData.uuid
-            .split(".")
-            .pop();
-          const newItemId = `${actorUUID}.Item.${sourceItemId}`;
-          updateList.push({
-            _id: item.id,
-            "system.magazine.ammoData.uuid": newItemId,
-          });
-        }
-      }
-      await actor.updateEmbeddedDocuments("Item", updateList);
     }
-    await actor.update({ "system.installedItems.list": installedItems });
-    return actor;
+    // Sync any loaded weapons
+    for (const item of this.itemTypes.weapon) {
+      if (
+        item.system.isRanged &&
+        item.system.magazine.ammoData.uuid.length > 0
+      ) {
+        const sourceItemId = item.system.magazine.ammoData.uuid
+          .split(".")
+          .pop();
+        const newItemId = `${actorUUID}.Item.${sourceItemId}`;
+        updateList.push({
+          _id: item.id,
+          "system.magazine.ammoData.uuid": newItemId,
+        });
+      }
+    }
+    await this.updateEmbeddedDocuments("Item", updateList);
+    await this.update({ "system.installedItems.list": installedItems });
+  }
+
+  /**
+   * This is a helper function for when syncing installed items fails irrecoverably.
+   * It forcibly uninstalls all items from all other items so that the character sheet
+   * can reset from a neutral state. This function should reveal items that are "invisible" on actors
+   * due to UUIDs not matching up. Unfortunately, it means that users will have to manually
+   * reinstall all their items, but at least other stats on those items aren't lost.
+   * Ideally, this is also seldomly used.
+   *
+   * @async
+   */
+  async resetInstalledItems() {
+    LOGGER.trace("resetInstalledItems | CPRActor | called.");
+
+    const installedList = [];
+
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
+    const relevantItems = this.items.filter(
+      (i) =>
+        containerTypes.includes(i.type) || installableTypes.includes(i.type)
+    );
+    const updateList = [];
+    for (const item of relevantItems) {
+      const updateData = {
+        _id: item.id,
+        "system.isInstalled": item.system.core ?? false,
+        "system.installedIn": item.system.core ? this.uuid : "",
+      };
+
+      if (item.system.installedItems?.list) {
+        updateData["system.installedItems.list"] = [];
+      }
+
+      if (item.system.upgrades) {
+        updateData["system.upgrades"] = [];
+        updateData["system.isUpgraded"] = [];
+      }
+
+      if (item.system.installedItems?.slots) {
+        updateData["system.installedItems.usedSlots"] = 0;
+      }
+
+      if (item.type === "cyberdeck") {
+        updateData["system.programs"] = {
+          installed: [],
+          rezzed: [],
+        };
+      } else if (item.type === "program") {
+        updateData["system.isRezzed"] = false;
+      }
+
+      if (item.type === "weapon") {
+        updateData["system.magazine.ammoData"] = {
+          name: "",
+          uuid: "",
+        };
+      }
+
+      if (item.system.core) {
+        installedList.push(item.uuid);
+      }
+      updateList.push(updateData);
+    }
+
+    await this.update({ "system.installedItems.list": installedList });
+    await this.updateEmbeddedDocuments("Item", updateList);
+  }
+
+  /**
+   * We override this function so that we can properly sync installed items on the imported actor.
+   * This is necessary due to how we handle installed items.
+   *
+   * @param {*} json
+   * @override
+   */
+  async importFromJSON(json) {
+    LOGGER.trace("importFromJSON | CPRActor | Called.");
+    const actor = await super.importFromJSON(json);
+    await actor.syncInstalledItems();
   }
 
   /**
@@ -211,7 +410,9 @@ export default class CPRActor extends Actor {
    */
   applyActiveEffects() {
     LOGGER.trace("applyActiveEffects | CPRActor | Called.");
-    this.effects.forEach((e) => e.determineSuppression());
+    for (const e of this.allApplicableEffects()) {
+      e.determineSuppression();
+    }
     return super.applyActiveEffects();
   }
 
@@ -1209,7 +1410,7 @@ export default class CPRActor extends Actor {
     const statValue = this.getStat(statName);
     const cprRoll = new CPRRolls.CPRStatRoll(niceStatName, statValue);
 
-    const effects = this.effects.contents;
+    const effects = Array.from(this.allApplicableEffects());
     const allMods = CPRMod.getAllModifiers(effects);
     const filteredMods = allMods.filter(
       (m) => !m.isSituational || (m.isSituational && m.onByDefault)
@@ -1262,7 +1463,7 @@ export default class CPRActor extends Actor {
     );
 
     // Figure out all applicable modifiers.
-    const effects = this.effects.contents; // Active effects on the actor.
+    const effects = Array.from(this.allApplicableEffects()); // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(
@@ -1298,7 +1499,7 @@ export default class CPRActor extends Actor {
       bodyStat
     );
 
-    const effects = this.effects.contents; // Active effects on the actor.
+    const effects = Array.from(this.allApplicableEffects()); // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(

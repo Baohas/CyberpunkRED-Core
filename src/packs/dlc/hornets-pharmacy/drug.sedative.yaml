@@ -1,0 +1,41 @@
+_id: Tv6eIBNtpwqRqJSO
+_key: "!items!Tv6eIBNtpwqRqJSO"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/sedative.svg
+name: Sedative
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  consumed: None
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>MedTech pharmaceutical.</p>
+
+      <p>Applies the Unconscious condition for 4 hours on a willing target. +2
+      bonus to MechTech Surgery checks on targets dosed with Sedative.</p>
+
+      <p>Unwilling target must make a DV15 Resist Torture/Drugs check. On failed
+      check, target is unconscious for 1 minute or 20 rounds in combat. Target
+      wakes upon taking damage. Others can use an Action to awaken target.</p>
+  equipped: owned
+  favorite: false
+  price:
+    market: 0
+  revealed: true
+  source:
+    book: HP
+    page: 4
+  usage: toggled
+type: drug

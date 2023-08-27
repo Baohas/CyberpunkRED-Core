@@ -33,7 +33,7 @@ fi
 
 # Issue lables to not run the test on
 # We don't need to run on all Issues
-# We ignore `Bug::Dev` as this is used for bugs on dev which don't usually
+# We ignore `Bug::Dev` as this is used for bugs in development which don't usually
 # need changelog changes as these are following a Feature merge.
 LABELS_TO_TEST=(
   "Bug::Confirmed"
@@ -93,8 +93,8 @@ function check_changelog() {
   fi
 }
 
-# If not during a MR related job this will not be set, so default to dev
-BRANCH="${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-dev}"
+# If not during a MR related job this will not be set, so default to master
+BRANCH="${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-master}"
 
 function main() {
   check=0

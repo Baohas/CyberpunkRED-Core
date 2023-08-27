@@ -1,0 +1,36 @@
+_id: MauQVKqh2mLLWXA8
+_key: "!items!MauQVKqh2mLLWXA8"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
+name: Exec
+system:
+  abilities: []
+  addRoleAbilityRank: true
+  bonusRatio: 1
+  bonuses: []
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Business executives and fat-cat defenders ready to risk it all to rise
+      the corporate ladder and realize the New American dream.</p>
+  favorite: false
+  hasRoll: false
+  isSituational: false
+  mainRoleAbility: Teamwork
+  onByDefault: false
+  rank: 4
+  skill: "--"
+  source:
+    book: Core
+    page: 153
+  stat: "--"
+  universalBonuses: []
+type: role

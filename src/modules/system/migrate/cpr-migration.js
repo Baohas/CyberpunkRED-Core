@@ -348,7 +348,13 @@ export default class CPRMigration {
     });
     const tokenMigrations = tokens.map(async (token) => {
       try {
-        return await this.migrateActor(token.actor);
+        // Essentially we have to update every token with a dummy update so that items aren't
+        // deleted from unlinked tokens. This is a foundry bug. See migration script `020-tokenItemLossFix.js`
+        // TODO: REMOVE THIS AFTER 0.88.X
+        if (Object.getPrototypeOf(this).migrateToken) {
+          await this.migrateToken(token); // This only exists in migration script 020.
+        }
+        return this.migrateActor(token.actor);
       } catch (err) {
         LOGGER.error(err);
         throw new Error(
@@ -375,14 +381,51 @@ export default class CPRMigration {
   async migrateCompendia(classRef) {
     LOGGER.trace("migrateCompendia | CPRMigration");
     let good = true;
-    for (const pack of game.packs.filter(
+
+    // Pack types we provide migrations for
+    const packTypes = ["Actor", "Item", "Scene"];
+
+    // Read setting to check which pack.sourceTypes we are migrating
+    const sourceTypes = ["world"];
+
+    // If we are migrating module compendia add it to the sourceTypes array
+    if (game.settings.get(game.system.id, "migrateModuleCompendia")) {
+      sourceTypes.push("module");
+    }
+
+    // During dev you might want to run migrations on our own packs rather than
+    // migrate by hand, if so uncomment this and set migration of locked packs
+    // to true in the game settings and run your migrations.
+    // sourceTypes.push("system");
+
+    // Check if we are migrating locked packs
+    const migrateLockedPacks = game.settings.get(
+      game.system.id,
+      "migrateLockedCompendia"
+    );
+
+    // Get a list of packs to migrate based on the settings above
+    const packsToMigrate = game.packs.filter(
       (p) =>
-        p.metadata.packageType === "world" &&
-        ["Actor", "Item", "Scene"].includes(p.metadata.type) &&
-        !p.locked
-    )) {
+        packTypes.includes(p.metadata.type) &&
+        sourceTypes.includes(p.metadata.packageType) &&
+        (migrateLockedPacks || !p.locked)
+    );
+
+    LOGGER.debug(
+      `CPRC Migration | Migrating packs: ${packsToMigrate
+        .map((p) => p.metadata.id)
+        .join(", ")}`
+    );
+
+    for (const pack of packsToMigrate) {
+      // If we are migrating locked packs we need to unlock them before migrating
+      const wasLocked = pack.locked;
+      await pack.configure({ locked: false });
+
       // Perform Foundry server-side migration of the pack data model
       await pack.migrate();
+
       if (
         this.debugMigration.enabled &&
         (pack.name === this.debugMigration.compendia.name ||
@@ -391,6 +434,7 @@ export default class CPRMigration {
       ) {
         debugger;
       }
+
       // Iterate over compendium entries - applying fine-tuned migration functions
       const docs = await pack.getDocuments();
       const packMigrations = docs.map(async (doc) => {
@@ -414,12 +458,15 @@ export default class CPRMigration {
             );
         }
       });
+
       const values = await Promise.allSettled(packMigrations);
       for (const value of values.filter((v) => v.status !== "fulfilled")) {
         LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
         LOGGER.error(value.reason.stack);
         good = false;
       }
+      // Lock packs if they were locked pre-migration
+      await pack.configure({ locked: wasLocked });
     }
     return good;
   }

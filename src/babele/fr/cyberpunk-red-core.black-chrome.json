@@ -635,7 +635,7 @@
     },
     "Micro Hydrogen Combustor": {
       "name": "Micro catalyseur à hydrogène",
-      "description": "<div class=\"QcsUad BDJ8fb BLojaf\">\n<div class=\"usGWQd\" aria-live=\"polite\">\n<div class=\"KkbLmb\">\n<div class=\"lRu31\"><span class=\"HwtZe\" lang=\"en\"><span class=\"jCAhz ChMk0b\"><span class=\"ryNqvb\">Un petit dispositif qui explose après avoir été immergée dans un liquide. Est à la fois un</span></span></span><span class=\"HwtZe\" lang=\"en\">perce armure et </span><span class=\"HwtZe\" lang=\"en\"><span class=\"jCAhz ChMk0b\"><span class=\"ryNqvb\">crée un large nuage de fumée. Les règles complètes peuvent être trouvées dans Black Chrome à la page 88.</span></span></span></div>\n</div>\n</div>\n</div>"
+      "description": "<p> A small explosive that detonates after being immersed in a liquid. Is both armor piercing and creates a large cloud of smoke. </p> <p> Full rules can be found on page 88. </p>"
     },
     "ModFire 10X (Pistol)": {
       "name": "ModFire 10X (Pistolet)",

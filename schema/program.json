@@ -9,8 +9,14 @@
         "_id": {
           "$ref": "./components/id.json"
         },
+        "_key": {
+          "$ref": "./components/key.json"
+        },
+        "_stats": {
+          "$ref": "./components/stats.json"
+        },
         "effects": {
-          "$ref": "./components/effects/activeEffects.json"
+          "$ref": "./components/effects.json"
         },
         "flags": {
           "$ref": "./components/flags.json"
@@ -31,6 +37,8 @@
       },
       "required": [
         "_id",
+        "_key",
+        "_stats",
         "effects",
         "img",
         "name",
@@ -43,15 +51,11 @@
       "additionalProperties": false,
       "properties": {
         "atk": {
-          "type": "integer"
+          "type": "number"
         },
         "blackIceType": {
           "type": "string",
-          "enum": [
-            "antipersonnel",
-            "antiprogram",
-            "demon"
-          ]
+          "enum": ["antipersonnel", "antiprogram", "demon"]
         },
         "class": {
           "type": "string",
@@ -66,7 +70,7 @@
           "$ref": "#/definitions/ProgramDamage"
         },
         "def": {
-          "type": "integer"
+          "type": "number"
         },
         "description": {
           "$ref": "./components/common/description.json"
@@ -81,7 +85,7 @@
           "$ref": "./components/installable/installedIn.json"
         },
         "interface": {
-          "type": "integer"
+          "type": "number"
         },
         "isInstalled": {
           "$ref": "./components/installable/isInstalled.json"
@@ -92,7 +96,7 @@
           "const": false
         },
         "per": {
-          "type": "integer"
+          "type": "number"
         },
         "price": {
           "$ref": "./components/valuable/price.json"
@@ -104,7 +108,7 @@
           "$ref": "./components/effects/revealed.json"
         },
         "rez": {
-          "type": "integer"
+          "type": "number"
         },
         "size": {
           "$ref": "./components/installable/size.json"
@@ -113,7 +117,7 @@
           "$ref": "./components/common/source.json"
         },
         "spd": {
-          "type": "integer"
+          "type": "number"
         },
         "usage": {
           "$ref": "./components/effects/usage.json"
@@ -154,10 +158,7 @@
           "$ref": "./components/attackable/damage.json"
         }
       },
-      "required": [
-        "blackIce",
-        "standard"
-      ]
+      "required": ["blackIce", "standard"]
     }
   }
 }

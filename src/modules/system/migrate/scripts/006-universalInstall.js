@@ -196,7 +196,8 @@ export default class UniversalInstallMigration extends CPRMigration {
             }
           } else if (
             typeof item.system.installedItems === "object" &&
-            item.system.installedItems.list.length > 0 ** actor.isToken &&
+            item.system.installedItems.list.length > 0 &&
+            actor.isToken &&
             !actor.token.isLinked
           ) {
             // This is a token of an already migrated actor, fix the installed Items references

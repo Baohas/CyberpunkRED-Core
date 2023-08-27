@@ -9,16 +9,20 @@ import MarkdownIt from "markdown-it";
 import * as config from "./config.mjs";
 import {
   DEBUG,
+  DEST_DIR,
   DISCORD_BOT_AVATAR,
   DISCORD_BOT_NAME,
   DISCORD_MESSAGE_BACKUP,
   DISCORD_MESSAGE_CHANGELOG,
   DISCORD_MESSAGE_HEADER,
   DISCORD_MESSAGE_INTROS,
+  SRC_DIR,
+  SOURCE_FILES,
+  SOURCE_DIRS,
   SYSTEM_FILE,
   SYSTEM_TITLE,
   SYSTEM_VERSION,
-} from "./constants.mjs";
+} from "./config.mjs";
 
 // Extrack a header level and it's children
 function _extractMarkdown(markdown, level) {
@@ -45,22 +49,17 @@ function _extractMarkdown(markdown, level) {
   return data;
 }
 
-const destFolder = path.resolve(config.dataPath);
-const srcFolder = "src";
-const { sourceFiles } = config;
-const { sourceFolders } = config;
-
 // Helter function to create the target directory we're building into
 async function _createDist() {
-  if (!fs.existsSync(destFolder)) {
-    fs.mkdirSync(destFolder);
+  if (!fs.existsSync(DEST_DIR)) {
+    fs.mkdirSync(DEST_DIR);
   }
 }
 
 // Blast the build directory to ensure it's fresh
 async function cleanDist() {
-  if (fs.existsSync(destFolder)) {
-    fs.emptyDirSync(destFolder);
+  if (fs.existsSync(DEST_DIR)) {
+    fs.emptyDirSync(DEST_DIR);
   }
 }
 
@@ -70,9 +69,9 @@ async function compileLess() {
     log("Building CSS...");
     _createDist();
     gulp
-      .src(path.resolve(srcFolder, "less/main.less"))
+      .src(path.resolve(SRC_DIR, "less/main.less"))
       .pipe(less({ javascriptEnabled: true }))
-      .pipe(gulp.dest(path.resolve(destFolder)))
+      .pipe(gulp.dest(path.resolve(DEST_DIR)))
       .on("finish", () => {
         log("Finished Building CSS.");
         cb();
@@ -86,11 +85,11 @@ async function copyAssets() {
   return new Promise((cb) => {
     log("Copying static assets...");
     _createDist();
-    [...sourceFiles, ...sourceFolders].forEach((asset) => {
+    [...SOURCE_FILES, ...SOURCE_DIRS].forEach((asset) => {
       if (DEBUG) {
         log(`DEBUG: Copying ${asset.from}`);
       }
-      gulp.src(asset.from).pipe(gulp.dest(path.resolve(destFolder, asset.to)));
+      gulp.src(asset.from).pipe(gulp.dest(path.resolve(DEST_DIR, asset.to)));
     });
     log("Finished copying static assets.");
     cb();
@@ -102,7 +101,7 @@ async function buildManifest() {
     log(`Building ${SYSTEM_FILE}...`);
     _createDist();
     // Read the template system.json from src/
-    const systemRaw = fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE));
+    const systemRaw = fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE));
     const system = JSON.parse(systemRaw);
     // If we're in CI use $VERSION as the version, else use a dummy version
     const version = SYSTEM_VERSION;
@@ -120,7 +119,7 @@ async function buildManifest() {
     system.title = SYSTEM_TITLE;
 
     fs.writeFileSync(
-      path.resolve(destFolder, SYSTEM_FILE),
+      path.resolve(DEST_DIR, SYSTEM_FILE),
       JSON.stringify(system, null, 2)
     );
     log(`Finished building ${SYSTEM_FILE}.`);
@@ -214,7 +213,7 @@ async function buildDiscordMessage() {
 
     // Write the discord message data to a file
     fs.writeFileSync(
-      path.join(destFolder, "lang/release-notes/", `discord.json`),
+      path.join(DEST_DIR, "lang/release-notes/", `discord.json`),
       JSON.stringify(jsonData, null, "  "),
       { mode: 0o644 }
     );
@@ -227,7 +226,7 @@ async function buildDiscordMessage() {
 async function buildChangelog() {
   return new Promise((cb) => {
     log("Generating Release Notes...");
-    const systemRaw = fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE));
+    const systemRaw = fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE));
     const system = JSON.parse(systemRaw);
     const { languages } = system;
 
@@ -242,16 +241,12 @@ async function buildChangelog() {
       const result = md.render(release.content);
 
       // Create the lang/release-notes directory
-      if (!fs.existsSync(path.join(destFolder, "lang/release-notes/"))) {
-        fs.mkdirpSync(path.join(destFolder, "lang/release-notes/"));
+      if (!fs.existsSync(path.join(DEST_DIR, "lang/release-notes/"))) {
+        fs.mkdirpSync(path.join(DEST_DIR, "lang/release-notes/"));
       }
 
       fs.writeFileSync(
-        path.join(
-          destFolder,
-          "lang/release-notes/",
-          `${SYSTEM_VERSION}.${lang}`
-        ),
+        path.join(DEST_DIR, "lang/release-notes/", `${SYSTEM_VERSION}.${lang}`),
         result,
         { mode: 0o644 }
       );
@@ -265,7 +260,7 @@ async function processImages() {
   return new Promise((cb) => {
     log("Processing Images...");
     gulp
-      .src("src/**/*.{jpg,jpeg,png,webp,webm}", { base: srcFolder })
+      .src("src/**/*.{jpg,jpeg,png,webp,webm}", { base: SRC_DIR })
       .on("data", (file) => {
         if (DEBUG) {
           log(
@@ -276,7 +271,7 @@ async function processImages() {
           );
         }
       })
-      .pipe(gulp.dest(destFolder))
+      .pipe(gulp.dest(DEST_DIR))
       .on("finish", () => {
         log("Finished Processing Images.");
         cb();
@@ -288,7 +283,7 @@ async function processSvgs() {
   return new Promise((cb) => {
     log("Processing SVGs...");
     gulp
-      .src("src/**/*.svg", { base: srcFolder })
+      .src("src/**/*.svg", { base: SRC_DIR })
       .on("data", (file) => {
         if (DEBUG) {
           log(
@@ -302,7 +297,7 @@ async function processSvgs() {
           plugins: ["convertStyleToAttrs"],
         })
       )
-      .pipe(gulp.dest(destFolder))
+      .pipe(gulp.dest(DEST_DIR))
       .on("finish", () => {
         log("Finished Processing SVGs.");
         cb();
@@ -316,12 +311,12 @@ async function watchSrc() {
     gulp
       .watch(pattern)
       .on("all", () =>
-        gulp.src(pattern).pipe(gulp.dest(path.resolve(destFolder, out)))
+        gulp.src(pattern).pipe(gulp.dest(path.resolve(DEST_DIR, out)))
       );
   }
 
-  sourceFiles.forEach((file) => watcher(file.from, file.to));
-  sourceFolders.forEach((folder) => watcher(folder.from, folder.to));
+  SOURCE_FILES.forEach((file) => watcher(file.from, file.to));
+  SOURCE_DIRS.forEach((folder) => watcher(folder.from, folder.to));
   gulp.watch("src/**/*.less").on("all", () => compileLess());
   // disabling while we fix Crowdin
   // gulp.watch("src/lang/*.json").on("all", () => propagateLangs());

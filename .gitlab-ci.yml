@@ -33,7 +33,7 @@ init:
     - if: $CPR_SCHEDULE == "cleanup-dev"
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -67,8 +67,8 @@ manage-issues-on-merge:
     # Don't run if we're in the cleanup-dev schedule
     - if: $CPR_SCHEDULE == "cleanup-dev"
       when: never
-    # Only run when merging to dev
-    # This will run on all pushes to `dev`, however there is logic in the
+    # Only run when merging to master
+    # This will run on all pushes to 'master', however there is logic in the
     # script to ensure it only runs if it's related to an MR.
     # This is because GitLab CI doesn't expose the MR variables when merging
     # from an MR for some reason
@@ -101,7 +101,7 @@ lint-code:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -128,7 +128,7 @@ code-formatting:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -147,7 +147,7 @@ lint-json:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -168,7 +168,7 @@ lint-yaml:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -190,8 +190,8 @@ validate-packs:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
-    - if: $CI_COMMIT_BRANCH == "dev"
+    # Run on merge to 'master'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
 
@@ -209,7 +209,7 @@ lint-markdown:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -228,7 +228,7 @@ unit-test:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -251,7 +251,7 @@ test-shell-scripts:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -270,7 +270,7 @@ test-less-colors:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -289,7 +289,7 @@ test-less-units:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -309,7 +309,7 @@ language-babele:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -328,7 +328,7 @@ language-unused-strings:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -351,7 +351,7 @@ language-exists:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -374,7 +374,7 @@ language-strings:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -412,7 +412,7 @@ handelbars-inlinestyles:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -450,7 +450,7 @@ handlebars-tooltips:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -469,7 +469,7 @@ handlebars-traces:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -488,7 +488,7 @@ handlebars-tags:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -507,7 +507,7 @@ handlebars-compare:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -526,7 +526,7 @@ handlebars-helpers:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -545,7 +545,7 @@ handlebars-templates:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -564,7 +564,7 @@ code-localization:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -583,7 +583,7 @@ game-id:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
@@ -601,7 +601,7 @@ compendia-use:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'dev'
+    # Run on merge to 'master'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG

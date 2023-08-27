@@ -1,0 +1,47 @@
+_id: NoN4GJNgu6tE6mqd
+_key: "!items!NoN4GJNgu6tE6mqd"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/killstrom-sonic-boom-amp.svg
+name: Sonic Boom Amp
+system:
+  amount: 1
+  brand: KillStrom Music
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>While linked to an instrument, the User can take an Action to make
+      everyone nearby make a Resist Torture/Drugs Check. For more information,
+      see Black Chrome Page 40.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isUpgraded: false
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  source:
+    book: BC
+    page: 40
+  upgrades: []
+  usage: toggled
+type: gear

@@ -6,7 +6,10 @@
     </div>
     {{#if (cprListContains prototypeChain "CPRInitiative") }}
       <div class="text-center">
-        <span class="text-semi">{{localize "CPR.global.generic.combatant"}}:</span> {{rollData.combatant}}
+        <span class="text-semi">
+          {{localize "CPR.global.generic.combatant"}}:
+        </span>
+        {{rollData.combatant}}
       </div>
     {{/if}}
   </div>
@@ -15,28 +18,41 @@
     <ol class="dialog-list">
       <li class="dialog-item flexrow">
         <div class="dialog-item-name text-nowrap">
-          {{localize "CPR.global.generic.stat"}} ({{localize rollData.statName}}):
+          {{localize "CPR.global.generic.stat"}}
+          ({{localize rollData.statName}}):
         </div>
         <div class="dialog-item-input text-nowrap">
-          <input name="statValue" type="number" data-dtype="Number" value="{{rollData.statValue}}"/>
+          <input name="statValue"
+                 type="number"
+                 data-dtype="Number"
+                 value="{{rollData.statValue}}"/>
         </div>
       </li>
       {{#if (cprListContains prototypeChain "CPRSkillRoll") }}
         <li class="dialog-item flexrow">
           <div class="dialog-item-name text-nowrap">
-            {{localize "CPR.global.itemTypes.skill"}} ({{localize rollData.skillName}}):
+            {{localize "CPR.global.itemTypes.skill"}}
+            ({{localize (cprGetLocalizedlNameKey rollData.skillName "skill")}}):
           </div>
           <div class="dialog-item-input text-nowrap">
-            <input name="skillValue" type="number" data-dtype="Number" value="{{rollData.skillValue}}"/>
+            <input name="skillValue"
+                   type="number"
+                   data-dtype="Number"
+                   value="{{rollData.skillValue}}"/>
           </div>
         </li>
       {{/if}}
       {{!-- Additional user inputted modifiers --}}
       {{> "systems/cyberpunk-red-core/templates/dialog/rolls/cpr-additional-modifiers.hbs" this}}
       <li class="dialog-item flexrow">
-        <div class="dialog-item-name text-nowrap">{{localize "CPR.rolls.luck"}}:</div>
+        <div class="dialog-item-name text-nowrap">
+          {{localize "CPR.rolls.luck"}}:
+        </div>
         <div class="dialog-item-input text-nowrap">
-          <input name="luck" type="number" data-dtype="Number" value="{{rollData.luck}}"/>
+          <input name="luck"
+                 type="number"
+                 data-dtype="Number"
+                 value="{{rollData.luck}}"/>
         </div>
       </li>
       <li class="dialog-item flexrow">
@@ -44,7 +60,11 @@
           {{localize "CPR.rolls.shouldRollCriticals"}}:
         </div>
         <div class="dialog-item-input text-nowrap">
-          <input name="calculateCritical" class="item-checkbox" type="checkbox" data-target="calculateCritical" data-dtype="Checkbox" {{checked rollData.calculateCritical}}/>
+          <input name="calculateCritical"
+                 class="item-checkbox"
+                 type="checkbox"
+                 data-target="calculateCritical"
+                 data-dtype="Checkbox" {{checked rollData.calculateCritical}}/>
         </div>
       </li>
       {{#if (cprListContains prototypeChain "CPRAimedAttackRoll") }}

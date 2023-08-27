@@ -1,0 +1,77 @@
+_id: R3b9aNqHxWIAo4tX
+_key: "!items!R3b9aNqHxWIAo4tX"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects:
+  - B5UD7QmiTRg3jyFR
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/default/default-implanted-linearframe.svg
+name: Implanted LF-001 SWAT Linear Frame
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Polska CyberTechnologies
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Increases your BODY stat to 12 (adjusting your HP and Wound Threshold
+      and Death Save). Removes the movement penalty for climbing and swimming.
+      (See Black Chrome pg. 53 for more details.)</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 4d6
+    static: 14
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - cyberware
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: true
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 5000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 0
+  source:
+    book: BC
+    page: 53
+  type: borgware
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

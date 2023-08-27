@@ -117,7 +117,11 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   async _modMookSkills() {
     LOGGER.trace("_modMookSkills | CPRMookActorSheet | Called.");
     const skillObj = {};
-    this.actor.itemTypes.skill.forEach((s) => {
+
+    const sortedArray = SystemUtils.SortItemListByName(
+      this.actor.itemTypes.skill
+    );
+    sortedArray.forEach((s) => {
       const skillRef = {
         id: s.id,
         name: s.name,

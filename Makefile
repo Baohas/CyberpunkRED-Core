@@ -3,7 +3,7 @@ TEMPLATE_FILE ?= template.json
 SYSTEM_NAME   ?= cyberpunk-red-core
 
 CI_JOBS ?= $(shell ./.gitlab/pipeline_utils/get-jobs.sh)
-CI_COMMIT_BRANCH = dev
+CI_COMMIT_BRANCH = master
 
 # Cleanly (re)install nodejs dependencies
 install:

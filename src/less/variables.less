@@ -9,8 +9,9 @@
 :root {
   // Fonts
   --cpr-font-primary: "Jost";
-  --cpr-font-hero: "Jost";
+  --cpr-font-hero: "Rubik";
   --cpr-font-pause: "Orbitron";
+  --cpr-font-journal-header: "Rubik";
 
   --cpr-font-smallest: 0.6rem;
   --cpr-font-smaller: 0.7rem;
@@ -67,6 +68,10 @@
   --cpr-background-tab-underlay: var(--cpr-color-pink);
   --cpr-background-window: var(--cpr-color-white);
   --cpr-background-content-link: #dddddd;
+  --cpr-background-journal-blockquote: #c9c8c5;
+  --cpr-background-journal-secret-hidden-border: rgba(128, 45, 204);
+  --cpr-background-journal-secret-hidden-background: rgba(128, 45, 204, 0.2);
+  --cpr-background-journal-info: rgba(24, 144, 231, 0.3);
 
   // UI Colors
   --cpr-pause-text: var(--cpr-color-white);
@@ -80,7 +85,6 @@
   --cpr-text-content-link-icon: #dddddd;
   --cpr-text-editor-button: var(--cpr-color-black);
   --cpr-text-editor-header: var(--cpr-color-black);
-  --cpr-text-foundry-button: var(--cpr-color-black);
   --cpr-text-foundry-hint: var(--cpr-color-near-black);
   --cpr-text-foundry-hover: var(--cpr-color-red);
   --cpr-text-foundry-input: var(--cpr-color-black);
@@ -97,6 +101,10 @@
   --cpr-text-tab-highlight: #ffff3f;
   --cpr-text-tab-normal: var(--cpr-color-white);
   --cpr-text-window: var(--cpr-color-black);
+  --cpr-text-hint: var(--cpr-color-near-black);
+  --cpr-text-pause: var(--cpr-color-white);
+  --cpr-text-journal-table-header: var(--cpr-color-white);
+  --cpr-text-dir-list: var(--cpr-color-white);
 }
 
 html[data-cpr-theme="darkmode"] {
@@ -129,12 +137,14 @@ html[data-cpr-theme="darkmode"] {
   --cpr-background-dialog-border: var(--cpr-darkmode-main);
   --cpr-background-dialog-selected: #414a4c;
   --cpr-background-foundry-hover: var(--cpr-darkmode-main);
-  --cpr-background-foundry-button: #454b50;
   --cpr-background-dialog-hr-gradient-start: #394867;
   --cpr-background-dialog-hr-gradient-middle: #bcccdc;
   --cpr-background-dialog-hr-gradient-end: #394867;
   --cpr-background-editor-header: var(--cpr-darkmode-header);
-  --cpr-background-editor-button: var(--cpr-color-light-grey);
+  --cpr-background-editor-button: #656a6a;
+  --cpr-background-editor-button-hover: #3e4242;
+  --cpr-background-editor-button-active: #3e4242;
+  --cpr-background-journal-blockquote: #3f4444;
 
   // Text Colors
   --cpr-text-content-link-icon: #dddddd;
@@ -150,11 +160,11 @@ html[data-cpr-theme="darkmode"] {
   --cpr-text-chat-failure: var(--cpr-darkmode-red);
   --cpr-text-mook-normal: var(--cpr-darkmode-text-main);
   --cpr-text-foundry-input: var(--cpr-darkmode-text-main);
-  --cpr-text-foundry-button: var(--cpr-darkmode-text-main);
   --cpr-text-foundry-hint: #c0c0c0;
   --cpr-text-foundry-hover: #bcccdc;
   --cpr-text-editor-header: var(--cpr-darkmode-text-main);
   --cpr-text-editor-button: var(--cpr-color-black);
+  --cpr-text-dir-list: var(--cpr-darkmode-text-main);
 
   // Override some foundry defaults to better fit the theme
   --color-border-light-primary: #666;

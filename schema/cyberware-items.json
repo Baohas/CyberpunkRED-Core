@@ -9,8 +9,14 @@
         "_id": {
           "$ref": "./components/id.json"
         },
+        "_key": {
+          "$ref": "./components/key.json"
+        },
+        "_stats": {
+          "$ref": "./components/stats.json"
+        },
         "effects": {
-          "$ref": "./components/effects/activeEffects.json"
+          "$ref": "./components/effects.json"
         },
         "flags": {
           "$ref": "./components/flags.json"
@@ -31,6 +37,8 @@
       },
       "required": [
         "_id",
+        "_key",
+        "_stats",
         "effects",
         "img",
         "name",
@@ -201,13 +209,10 @@
           "pattern": "^([0-9]d[36]|0)$"
         },
         "static": {
-          "type": "integer"
+          "type": "number"
         }
       },
-      "required": [
-        "roll",
-        "static"
-      ]
+      "required": ["roll", "static"]
     }
   }
 }

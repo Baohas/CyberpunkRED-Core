@@ -1,10 +1,11 @@
-/* global Actor Item */
 // Actors
+import CPRActor from "./actor/cpr-actor.js";
 import CPRBlackIceActor from "./actor/cpr-black-ice.js";
 import CPRCharacterActor from "./actor/cpr-character.js";
 import CPRContainerActor from "./actor/cpr-container.js";
 import CPRDemonActor from "./actor/cpr-demon.js";
 import CPRMookActor from "./actor/cpr-mook.js";
+import CPRItem from "./item/cpr-item.js";
 
 // Items
 import CPRAmmoItem from "./item/types/cpr-ammo.js";
@@ -87,7 +88,7 @@ actorTypes.character = CPRCharacterActor;
 actorTypes.container = CPRContainerActor;
 actorTypes.demon = CPRDemonActor;
 actorTypes.mook = CPRMookActor;
-export const actorConstructor = factory(actorTypes, Actor);
+export const actorConstructor = factory(actorTypes, CPRActor);
 
 const itemTypes = {};
 itemTypes.ammo = CPRAmmoItem;
@@ -105,4 +106,4 @@ itemTypes.role = CPRRoleItem;
 itemTypes.skill = CPRSkillItem;
 itemTypes.vehicle = CPRVehicleItem;
 itemTypes.weapon = CPRWeaponItem;
-export const itemConstructor = factory(itemTypes, Item);
+export const itemConstructor = factory(itemTypes, CPRItem);

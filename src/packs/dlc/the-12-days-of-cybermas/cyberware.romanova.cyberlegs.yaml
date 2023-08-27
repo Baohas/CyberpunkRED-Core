@@ -1,0 +1,80 @@
+_id: NdcmIwmMz1OHfMu9
+_key: "!items!NdcmIwmMz1OHfMu9"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/the_12_days_of_cybermas/wyzard-technologies_romanova-cyberlegs.svg
+name: Romanova Cyberlegs
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Wyzard Technologies
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>High fashion Cyberlegs with integrated Talon Foot blades in each heel.
+      Blades can not be removed.</p>
+
+      <p>Paired Cyberlegs, 1000eb for both legs. Each leg has 3 slots for
+      Cyberleg or Cyberlimb Options. Roll Humanity Loss once for the pair of
+      legs. Each leg can suffer separate Critical Injuries and must be repaired
+      individually.</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 4d6
+    static: 14
+  installLocation: hospital
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - program
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: true
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: true
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 1000
+  providesHardening: false
+  revealed: true
+  rof: 2
+  size: 1
+  source:
+    book: 12DoC
+    page: 5
+  type: cyberLeg
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: lightMelee
+type: cyberware

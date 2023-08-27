@@ -1,0 +1,62 @@
+_id: TQvsBbPEBc13SdVC
+_key: "!items!TQvsBbPEBc13SdVC"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/weapons/BaseballBat_excellent.svg
+name: Light Melee (Excellent)
+system:
+  ammoVariety: []
+  attackmod: 1
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: |-
+      <p>Generic Excellent Qulaity Light Melee weapon.</p>
+      <p>+1 to Attack.</p>
+  dvTable: ""
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 100
+  revealed: true
+  rof: 2
+  source:
+    book: Core
+    page: 92
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Melee Weapon
+  weaponType: lightMelee
+type: weapon

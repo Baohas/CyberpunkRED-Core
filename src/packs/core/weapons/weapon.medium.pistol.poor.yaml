@@ -1,0 +1,63 @@
+_id: tCTzi4miYdNgAJVc
+_key: "!items!tCTzi4miYdNgAJVc"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/weapons/mediumPistol_poor.svg
+name: Medium Pistol (Poor)
+system:
+  ammoVariety:
+    - medPistol
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  damage: 2d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail)
+      the gun jams and requires using an action to clear. </p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 12
+    value: 0
+  price:
+    market: 20
+  revealed: true
+  rof: 2
+  source:
+    book: Core
+    page: 341
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: medPistol
+type: weapon

@@ -2,6 +2,134 @@
 
 # Changelog
 
+## Version 0.88.1
+
+### Action Needed
+
+**WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
+
+### Bug Fixes
+
+- Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
+
+## Version 0.88.0
+
+### Acción requerida
+
+We have renamed all Compendia in the system utilizing the new Compendium Folders feature which has meant some changes behind the scenes which mean the pack names themselves have changed.
+
+This means any instances where you have dragged an item from a compendium into a text field like an Item Description or Journal entry which created a link to the item is now referencing a broken item. Unfortunately this would be very complex and fragile to migrate so we have not provided migrations for this. You can fix it by editing the document and dragging and dropping the item from the compendium again.
+
+### New Features
+
+- Add CSS theming to Journals
+- New Theming for Tooltips
+- Add CSS theming to all TextEditor instances (Notes, Descriptions, etc.)
+- Support for editing Active Effects on owned items
+
+### Bug Fixes
+
+- A couple of minor CSS fixes
+- Facedown rolls correctly include reputation value.
+- Fix CSS colors on User Config pop out
+- Fix Item Description tooltips in gear sheets to sanitize UUID references
+- Fix missing \_stats data from all system Compendia/Packs
+- Localized Mook skills are now sorted alphabetically
+- Fix luck rolls adding luck stat when no luck applied
+- Temp fix for Dice so Nice treating reputation as string on facedown rolls
+- Fix missing foundational need for Holo Projector Cyberware
+
+### Changes
+
+- Update token methods for v11 compatibility
+- Update System files for v11
+- Update `label` > `name` for Active effects
+- Hide system only Compendiums from Compendium tab
+- Organize Compendiums into Compendium Folders
+- Switch all TextEditor instances to use Prosemirror
+- Combine "effects" and "notes" field for Black Ice.
+- Change font-hero to use same styling as journal headers
+- Change styling of release notes pop-up to match journal styling
+- All Compendium updated for v11 and now sorted into Folders
+
+## Version 0.87.6
+
+### Bug Fixes
+
+- Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
+
+## Version 0.87.5
+
+### Bug Fixes
+
+- Fix rendering of Actor documents from compendia.
+  - Future work: Fix certain updates to compendia documents failing.
+
+## Version 0.87.4
+
+### New Features
+
+- Add the ability to migrate Locked compendia
+  - Adds System Setting: "Migrate Locked Compendia"
+    - Default: true
+  - If enabled it will unlock compendia then re-lock them after
+- Add the ability to migrate Module compendia
+  - Adds System Setting: "Migrate module Compendia"
+    - Default: false
+  - If enabled we will migrate Module provided compendia
+
+### Bug Fixes
+
+- Fix some typos/wording in BC+ items
+- Add CSS overrides for Dice Tray module buttons
+- Fix character sheet filter when using localization
+- Fix mook skill mod dialog div overflow
+- Fix mook skill mod dialogue translations
+- Fix Roll Card chat message scaling with Font Size changes
+- Fix localization of skill names in roll dialogs
+- Fix localization of Equipped status in the item sheet
+- Fix Localization of skills in attack roll cards
+- Fix bug in 012-installedItemMigrationFix.js migration script that failed with unconfigured secondary weapons
+- Fix description for Micro Hydrogen Combustor in Black Chrome
+- Fix migration error in 006-universalInstall script
+- Fix #707 - Importing actors from .jsons with installed items should now work as expected.
+- Fix an issue where compendia actors erroneously had their installed item data wiped.
+
+## Version 0.87.3
+
+### Bug Fixes
+
+- #808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
+- #812 - Some roles were missing the bonuses data point as an empty array.
+- Fix not being able to open any Items due to the DV Tables compendium setting pointing to the old name
+- Fix being unable to delete certain effects from compendium items with Active Effects.
+- Fix CSS issues with modules Cautious Gamemaster's Pack and Item Piles
+- #824 - Now when you drag a cyberware item to a mook sheet, if it can't be auto-installed/equipped, it will delete the newly created item so it does not remain hidden in the inventory.
+- Fix Crushed Fingers/Lost Eye Critical Injury Effect Name
+- #827 - Fix items not being created when purchased from a vendor/container actor.
+- #829 - Fix failure when migrating tokens with broken references to their parent actors.
+- Fix issue where unlinked actors were not gaining Active Effects.
+- Fix compendia name references for critical injuries which was preventing rolling critical injuries
+- #830 - Fix a case where the 0.87 migration would create duplicate and useless active effects
+- #846 - Installed items losing their installation data after migration
+- Various minor CSS fixes
+- #854 - Fix missing Babele translations for Critical Injuries preventing rolling Critical Injuries from character sheets
+- Fix rolling custom skills.
+- Fix Beta Linear Frames AE mode to be set not add
+- Fix Nova Model 757 slots
+
+## Version 0.87.2
+
+### Bug Fixes
+
+- Fix Programs having `undefined` before their name in character sheets
+- Fix call to `cprBrandName` in Container sheet
+- Fix Price of Fuma Kotaro Linear Frame (Implanted) in Black Chrome
+- Fix text color on mook sheet for CyberWare Weapons
+- Fix migration with container actors
+- Increase Black ICE sheet width to acomodate 2 digit REZ values better
+- Fix Black ICE tokens/actors not updating when populating with a program
+
 ## Version 0.87.1
 
 ### Bug Fixes

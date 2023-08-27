@@ -1,0 +1,42 @@
+_id: Du1fktuaMc52c1NH
+_key: "!items!Du1fktuaMc52c1NH"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: icons/consumables/potions/bottle-conical-corked-nameed-skull-poison-green.webp
+name: Vial of Poison
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>2d6 damage unless Resist Torture/Drugs. Armor does not apply.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes: []
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: false
+  isUpgraded: false
+  price:
+    market: 100
+  providesHardening: false
+  revealed: true
+  source:
+    book: ELO
+    page: 3
+  upgrades: []
+  usage: toggled
+type: gear

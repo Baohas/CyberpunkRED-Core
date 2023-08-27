@@ -1,0 +1,56 @@
+{
+  "label": "Ennemis endurcis",
+  "entries": {
+    "Hardened Lieutenant Tactics": {
+      "name": "Tactiques des lieutenants endurcis",
+      "results": [
+        {
+          "1-1": "1 Mook is firing incendiary ammunition (CP:R page 346), but only has 10 rounds.",
+          "2-2": "Add 2 additional Mooks to the encounter at the start of the 2nd Round.",
+          "3-3": "2 Mooks are currently experiencing the primary effect of Black Lace (CP:R page 227).",
+          "4-4": "Give them Medium Armorjack that’s been Tech upgraded, removing the Armor Penalty.",
+          "5-5": "Give them an additional 600eb of Cyberware.",
+          "6-6": "Give them a Reputation of 5.",
+          "7-7": "Add an additional Mook of a different type to the encounter.",
+          "8-8": "Add 2 Mooks to the encounter. Give each a Critical Injury to the head.",
+          "9-9": "Add 1 additional Mook to the encounter at the start of Rounds 2, 3, and 4.",
+          "10-10": "1 Mook has an SMG, no sense of self preservation, an Autofire Skill Base of 16, and no head armor."
+        }
+      ]
+    },
+    "Hardened Mini Boss Mini Promotion": {
+      "name": "Promotion des Mini Boss",
+      "results": [
+        {
+          "1-1": "1 Mook is firing incendiary ammunition (CP:R page 346), but only has 10 rounds.",
+          "2-2": "Add 2 additional Mooks to the encounter at the start of the 2nd Round.",
+          "3-3": "2 Mooks are currently experiencing the primary effect of Black Lace (CP:R page 227).",
+          "4-4": "Le Mini-boss est équipé d'une tenue pare-balles moyenne qui a été améliorée, supprimant la pénalité d'armure.",
+          "5-5": "Le Mini-boss aura 600 ed de cyberimplants supplémentaire.",
+          "6-6": "Le Mini-boss a une réputation de 5.",
+          "7-7": "Add an additional Mook of a different type to the encounter.",
+          "8-8": "Add 2 Mooks to the encounter. Give each a Critical Injury to the head.",
+          "9-9": "Add 1 additional Mook to the encounter at the start of Rounds 2, 3, and 4.",
+          "10-10": "1 Mook has an SMG, no sense of self preservation, an Autofire Skill Base of 16, and no head armor."
+        }
+      ]
+    },
+    "Mook Encounter Complication": {
+      "name": "Complications de rencontre d'un sbire",
+      "results": [
+        {
+          "1-1": "Un sbire tire des munitions incendiaires (Page 346 du livre de règles), mais n'a que 10 balles.",
+          "2-2": "Ajoutez 2 sbires supplémentaires à la rencontre au début du 2e round.",
+          "3-3": "Deux sbires subissent actuellement l'effet principal de la Dentelle noire (Page 357 du livre de règles).",
+          "4-4": "Give them Medium Armorjack that’s been Tech upgraded, removing the Armor Penalty.",
+          "5-5": "Give them an additional 600eb of Cyberware.",
+          "6-6": "Give them a Reputation of 5.",
+          "7-7": "Ajoutez un sbire supplémentaire d'un type différent lors de la rencontre.",
+          "8-8": "Ajoutez 2 sbires à la rencontre. Ils auront toutefois une Blessure Critique à la tête chacun.",
+          "9-9": "Ajoutez 1 sbire supplémentaire à la rencontre au début des rounds 2, 3 et 4.",
+          "10-10": "Un sbire a un pistolet-mitrailleur, aucun sens de l'auto-préservation, une base de compétence de Tir automatique de\n16 et ne porte pas d'armure de tête."
+        }
+      ]
+    }
+  }
+}

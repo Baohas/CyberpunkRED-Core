@@ -1,0 +1,72 @@
+_id: IdSRZEcuCutjFB1D
+_key: "!items!IdSRZEcuCutjFB1D"
+_stats:
+  coreVersion: "11.307"
+  createdTime: 1692532896113
+  lastModifiedBy: 00CPRCBuildBot00
+  modifiedTime: 1692532896113
+  systemId: cyberpunk-red-core
+  systemVersion: v0.0.0dev
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/dartgun.svg
+name: Dartgun
+system:
+  ammoVariety:
+    - arrow
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 4d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>A single shot weapon which can be concealed. </p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 1d3
+    static: 2
+  installLocation: clinic
+  installedIn: ""
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: false
+  isInstalled: false
+  isRanged: true
+  isUpgraded: false
+  isWeapon: true
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 1
+    value: 0
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 3
+  source:
+    book: Core
+    page: 360
+  type: cyberEye
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: cyberware
