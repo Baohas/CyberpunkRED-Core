@@ -1104,6 +1104,8 @@
   "CPR.settings.title": "Настройки",
   "CPR.settings.traceLogs.hint": "Включает логи трассировки. Используй если ты заполняешь багрепорт или работаешь над проблемой.",
   "CPR.settings.traceLogs.name": "Логи трассировки",
+  "CPR.settings.warnAboutNoTargetsWhenRollingDamage.hint": "Uncheck to disable the warning about having no tokens targeted when rolling damage. Useful if you don't want to enforce using Foundry's targeting functionality.",
+  "CPR.settings.warnAboutNoTargetsWhenRollingDamage.name": "Warn when rolling without targets",
   "CPR.sheets.blackiceSheet": "Лист Чёрного Льда",
   "CPR.sheets.characterSheet": "Лист персонажа",
   "CPR.sheets.containerSheet": "Лист контейнера/магазина",
