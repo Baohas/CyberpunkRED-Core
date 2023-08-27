@@ -1104,6 +1104,8 @@
   "CPR.settings.title": "Ustawienia",
   "CPR.settings.traceLogs.hint": "Włącz logi śledzenia. Włącz to, gdy zgłaszasz błąd lub pracujesz z twórcami modułów nad błędem.",
   "CPR.settings.traceLogs.name": "Logi Śledzenia",
+  "CPR.settings.warnAboutNoTargetsWhenRollingDamage.hint": "Uncheck to disable the warning about having no tokens targeted when rolling damage. Useful if you don't want to enforce using Foundry's targeting functionality.",
+  "CPR.settings.warnAboutNoTargetsWhenRollingDamage.name": "Warn when rolling without targets",
   "CPR.sheets.blackiceSheet": "Karta Czarnego LODu",
   "CPR.sheets.characterSheet": "Karta Postaci",
   "CPR.sheets.containerSheet": "Karta Pojemnika/Sklepu",
