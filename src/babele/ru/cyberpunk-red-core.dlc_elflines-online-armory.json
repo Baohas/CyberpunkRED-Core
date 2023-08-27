@@ -1,5 +1,8 @@
 {
   "label": "Elflines Online Armory",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Arrow": {
       "name": "Arrow",
@@ -55,7 +58,8 @@
     },
     "Bow": {
       "name": "Лук",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>",
+      "dvTable": "СЛ Луки и арбалеты"
     },
     "Dagger": {
       "name": "Dagger",

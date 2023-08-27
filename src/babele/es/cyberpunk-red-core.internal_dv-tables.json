@@ -1,5 +1,6 @@
 {
   "label": "Tabla de Tiradas VD",
+  "mapping": {},
   "entries": {
     "DV Assault Rifle (Autofire)": {
       "name": "VD Rifle de Asalto (Automático)",

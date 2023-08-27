@@ -1,5 +1,8 @@
 {
   "label": "Verbesserungen",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Armored Chassis": {
       "name": "Gepanzertes Chassis",
@@ -123,7 +126,8 @@
     },
     "Grenade Launcher Underbarrel": {
       "name": "Granatwerferunterlauf",
-      "description": "<p>Funktioniert wie ein normaler Granatwerfer mit einer Magazingröße von 1. Benötigt zwei Hände zur Nutzung und zwei Zubehörslots. Mit diesem Zubehör kann die Waffe nicht unter Kleidung verborgen werden.</p>\n<p>Die Waffe übernimmt alle Eigenschaften der Waffe, an der sie befestigt ist, wie anderes Zubehör und die Qualität.</p>"
+      "description": "<p>Funktioniert wie ein normaler Granatwerfer mit einer Magazingröße von 1. Benötigt zwei Hände zur Nutzung und zwei Zubehörslots. Mit diesem Zubehör kann die Waffe nicht unter Kleidung verborgen werden.</p>\n<p>Die Waffe übernimmt alle Eigenschaften der Waffe, an der sie befestigt ist, wie anderes Zubehör und die Qualität.</p>",
+      "dvTable": "SG Granatwerfer"
     },
     "Hardened Circuitry": {
       "name": "Schaltkreisabschirmung",
@@ -187,7 +191,8 @@
     },
     "Shotgun Underbarrel": {
       "name": "Flintenunterlauf",
-      "description": "<p>Funktioniert wie eine normale Flinte mit einer Magazingröße von 2. Benötigt zwei Hände zur Nutzung und zwei Zubehörslots. Mit diesem Zubehör kann die Waffe nicht unter Kleidung verborgen werden.</p>\n<p>Die Waffe übernimmt alle Eigenschaften der Waffe, an der sie befestigt ist, wie anderes Zubehör und die Qualität.</p>"
+      "description": "<p>Funktioniert wie eine normale Flinte mit einer Magazingröße von 2. Benötigt zwei Hände zur Nutzung und zwei Zubehörslots. Mit diesem Zubehör kann die Waffe nicht unter Kleidung verborgen werden.</p>\n<p>Die Waffe übernimmt alle Eigenschaften der Waffe, an der sie befestigt ist, wie anderes Zubehör und die Qualität.</p>",
+      "dvTable": "SG Flinte (Flintenpatrone)"
     },
     "Smartgun Link": {
       "name": "Smartgun-Verbindung",

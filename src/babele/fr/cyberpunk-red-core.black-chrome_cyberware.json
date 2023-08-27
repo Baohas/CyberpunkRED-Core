@@ -1,5 +1,8 @@
 {
   "label": "Cyberimplants",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Airhypo Cyberfinger": {
       "name": "Cyberdoigt hypodair",
@@ -19,7 +22,8 @@
     },
     "Dartgun Cyberfinger": {
       "name": "Cyberdoigt pistolet à fléchettes",
-      "description": "<p>Cyberdoigt contenant un @UUID[Compendium.cyberpunk-red-core.weapons.fSvkIl83Rsqd7O16]{Dartgun} dissimulé. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 24 pour plus de détails)</p>"
+      "description": "<p>Cyberdoigt contenant un @UUID[Compendium.cyberpunk-red-core.weapons.fSvkIl83Rsqd7O16]{Dartgun} dissimulé. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 24 pour plus de détails)</p>",
+      "dvTable": "SD Pistolet"
     },
     "Discount Cyberaudio Suite": {
       "name": "Kit cyberaudio économique",
@@ -119,15 +123,18 @@
     },
     "One Shot Special Cyberfinger": {
       "name": "Cyberdoigt spécial à usage unique",
-      "description": "<p>Cyberdoigt contenant un @UUID[Compendium.cyberpunk-red-core.weapons.Y433cjlB1uVHPysk]{Heavy Pistol} dissimulé. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 26 pour plus de détails)</p>"
+      "description": "<p>Cyberdoigt contenant un @UUID[Compendium.cyberpunk-red-core.weapons.Y433cjlB1uVHPysk]{Heavy Pistol} dissimulé. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 26 pour plus de détails)</p>",
+      "dvTable": "SD Pistolet"
     },
     "Popup Net Launcher": {
       "name": "Lanceur de filet escamotable",
-      "description": "<p>Un lanceur de filet exotique dissimulable. Ne peut rien tenir avec cette main lors de l'activation. (Voir Black Chrome p. 20-21 pour plus de détails)</p>"
+      "description": "<p>Un lanceur de filet exotique dissimulable. Ne peut rien tenir avec cette main lors de l'activation. (Voir Black Chrome p. 20-21 pour plus de détails)</p>",
+      "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Popup Shotgun": {
       "name": "Fusil à pompe escamotable",
-      "description": "<p>Un fusil à pompe dissimulable. Il est fourni avec un lien Smartgun préinstallé. Impossible de tenir quoi que ce soit avec cette main pendant l'activation. (Voir Black Chrome p. 21 pour plus de détails)</p>"
+      "description": "<p>Un fusil à pompe dissimulable. Il est fourni avec un lien Smartgun préinstallé. Impossible de tenir quoi que ce soit avec cette main pendant l'activation. (Voir Black Chrome p. 21 pour plus de détails)</p>",
+      "dvTable": "SD Fusil à pompe (Slug)"
     },
     "RacerBracer": {
       "name": "Collier cervical",

@@ -1,5 +1,6 @@
 {
   "label": "Drugs",
+  "mapping": {},
   "entries": {
     "Antibiotic": {
       "name": "Antibiotic",

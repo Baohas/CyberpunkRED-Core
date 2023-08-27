@@ -1,21 +1,28 @@
 {
   "label": "Weapons",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Air Pistol": {
       "name": "Air Pistol",
-      "description": "<p>An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is able to ablate armor by one with each hit. Refer to the full item description on pg. 347.</p>"
+      "description": "<p>An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is able to ablate armor by one with each hit. Refer to the full item description on pg. 347.</p>",
+      "dvTable": "DV Pistol"
     },
     "Assault Rifle (Excellent)": {
       "name": "Assault Rifle (Excellent)",
-      "description": "<p>A standard-issue assault rifle. +1 to Attack.</p>"
+      "description": "<p>A standard-issue assault rifle. +1 to Attack.</p>",
+      "dvTable": "DV Assault Rifle"
     },
     "Assault Rifle (Poor)": {
       "name": "Assault Rifle (Poor)",
-      "description": "<p>A standard-issue assault rifle.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>A standard-issue assault rifle.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "dvTable": "DV Assault Rifle"
     },
     "Assault Rifle": {
       "name": "Assault Rifle",
-      "description": "<p>A standard-issue assault rifle. </p>"
+      "description": "<p>A standard-issue assault rifle. </p>",
+      "dvTable": "DV Assault Rifle"
     },
     "Baseball Bat (Excellent)": {
       "name": "Baseball Bat (Excellent)",
@@ -31,15 +38,18 @@
     },
     "Bow (Excellent)": {
       "name": "Bow (Excellent)",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>",
+      "dvTable": "DV Bows & Crossbows"
     },
     "Bow (Poor)": {
       "name": "Bow (Poor)",
-      "description": "<p>A revitalized bow that must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>A revitalized bow that must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "dvTable": "DV Bows & Crossbows"
     },
     "Bow": {
       "name": "Bow",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>",
+      "dvTable": "DV Bows & Crossbows"
     },
     "Chainsaw (Excellent)": {
       "name": "Chainsaw (Excellent)",
@@ -67,15 +77,18 @@
     },
     "Crossbow (Excellent)": {
       "name": "Crossbow (Excellent)",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>",
+      "dvTable": "DV Bows & Crossbows"
     },
     "Crossbow (Poor)": {
       "name": "Crossbow (Poor)",
-      "description": "<p>A crossbow which must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>A crossbow which must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "dvTable": "DV Bows & Crossbows"
     },
     "Crossbow": {
       "name": "Crossbow",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>",
+      "dvTable": "DV Bows & Crossbows"
     },
     "Crowbar (Excellent)": {
       "name": "Crowbar (Excellent)",
@@ -91,27 +104,33 @@
     },
     "Dartgun": {
       "name": "Dartgun",
-      "description": "<p>An Exotic Very Heavy Pistol. Refer to the full item description on pg. 348.</p>"
+      "description": "<p>An Exotic Very Heavy Pistol. Refer to the full item description on pg. 348.</p>",
+      "dvTable": "DV Pistol"
     },
     "EMG-86 Railgun": {
       "name": "EMG-86 Railgun",
-      "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
+      "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>",
+      "dvTable": "DV Assault Rifle"
     },
     "Flamethrower": {
       "name": "Flamethrower",
-      "description": "<p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full item description on pg. 348.</p>"
+      "description": "<p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full item description on pg. 348.</p>",
+      "dvTable": "DV Shotgun (Slug)"
     },
     "Grenade Launcher (Excellent)": {
       "name": "Grenade Launcher (Excellent)",
-      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. +1 to Attack.</p>"
+      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. +1 to Attack.</p>",
+      "dvTable": "DV Grenade Launcher"
     },
     "Grenade Launcher (Poor)": {
       "name": "Grenade Launcher (Poor)",
-      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "dvTable": "DV Grenade Launcher"
     },
     "Grenade Launcher": {
       "name": "Grenade Launcher",
-      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. </p>"
+      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. </p>",
+      "dvTable": "DV Grenade Launcher"
     },
     "Heavy Melee (Excellent)": {
       "name": "Heavy Melee (Excellent)",
@@ -127,27 +146,33 @@
     },
     "Heavy Pistol (Excellent)": {
       "name": "Heavy Pistol (Excellent)",
-      "description": "<p>A concealable, heavy pistol. +1 to Attack.</p>"
+      "description": "<p>A concealable, heavy pistol. +1 to Attack.</p>",
+      "dvTable": "DV Pistol"
     },
     "Heavy Pistol (Poor)": {
       "name": "Heavy Pistol (Poor)",
-      "description": "<p>A concealable, heavy pistol.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>A concealable, heavy pistol.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "dvTable": "DV Pistol"
     },
     "Heavy Pistol": {
       "name": "Heavy Pistol",
-      "description": "<p>A concealable, heavy pistol. </p>"
+      "description": "<p>A concealable, heavy pistol. </p>",
+      "dvTable": "DV Pistol"
     },
     "Heavy SMG (Excellent)": {
       "name": "Heavy SMG (Excellent)",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>"
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>",
+      "dvTable": "DV SMG"
     },
     "Heavy SMG (Poor)": {
       "name": "Heavy SMG (Poor)",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "dvTable": "DV SMG"
     },
     "Heavy SMG": {
       "name": "Heavy SMG",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed. </p>"
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed. </p>",
+      "dvTable": "DV SMG"
     },
     "Helicopter Blades (Excellent)": {
       "name": "Helicopter Blades (Excellent)",
@@ -163,11 +188,13 @@
     },
     "Helix": {
       "name": "Helix",
-      "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+      "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>",
+      "dvTable": "DV Assault Rifle"
     },
     "Hurricane Assault Weapon": {
       "name": "Hurricane Assault Weapon",
-      "description": "<p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or higher (unless mounted). Refer to the full item description on pg. 348.</p>"
+      "description": "<p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or higher (unless mounted). Refer to the full item description on pg. 348.</p>",
+      "dvTable": "DV Shotgun (Slug)"
     },
     "Lead Pipe (Excellent)": {
       "name": "Lead Pipe (Excellent)",
@@ -207,7 +234,8 @@
     },
     "Malorian Arms 3516": {
       "name": "Malorian Arms 3516",
-      "description": "<p>An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link* that must be used. Refer to the full item description on pg. 348.</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link* that must be used. Refer to the full item description on pg. 348.</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>",
+      "dvTable": "DV Pistol"
     },
     "Martial Arts": {
       "name": "Martial Arts",
@@ -227,19 +255,23 @@
     },
     "Medium Pistol (Excellent)": {
       "name": "Medium Pistol (Excellent)",
-      "description": "<p>A concealable, medium-sized pistol. +1 to Attack.</p>"
+      "description": "<p>A concealable, medium-sized pistol. +1 to Attack.</p>",
+      "dvTable": "DV Pistol"
     },
     "Medium Pistol (Poor)": {
       "name": "Medium Pistol (Poor)",
-      "description": "<p>A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "dvTable": "DV Pistol"
     },
     "Medium Pistol": {
       "name": "Medium Pistol",
-      "description": "<p>A concealable, medium-sized pistol. </p>"
+      "description": "<p>A concealable, medium-sized pistol. </p>",
+      "dvTable": "DV Pistol"
     },
     "Microwaver": {
       "name": "Microwaver",
-      "description": "<p>An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be rendered inoperable for a minute unless the target passes a DV15 Cybertech Check. Refer to the full item description on pg. 348.</p>"
+      "description": "<p>An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be rendered inoperable for a minute unless the target passes a DV15 Cybertech Check. Refer to the full item description on pg. 348.</p>",
+      "dvTable": "DV Pistol"
     },
     "Mono-Three": {
       "name": "Mono-Three",
@@ -263,31 +295,38 @@
     },
     "Rocket Launcher (Excellent)": {
       "name": "Rocket Launcher (Excellent)",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage. +1 to Attack.</p>"
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage. +1 to Attack.</p>",
+      "dvTable": "DV Rocket Launcher"
     },
     "Rocket Launcher (Poor)": {
       "name": "Rocket Launcher (Poor)",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "dvTable": "DV Rocket Launcher"
     },
     "Rocket Launcher": {
       "name": "Rocket Launcher",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage. </p>"
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage. </p>",
+      "dvTable": "DV Rocket Launcher"
     },
     "Shotgun (Excellent)": {
       "name": "Shotgun (Excellent)",
-      "description": "<p>An all-purpose shotgun. +1 to Attack.</p>"
+      "description": "<p>An all-purpose shotgun. +1 to Attack.</p>",
+      "dvTable": "DV Shotgun (Slug)"
     },
     "Shotgun (Poor)": {
       "name": "Shotgun (Poor)",
-      "description": "<p>An all-purpose shotgun.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>An all-purpose shotgun.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "dvTable": "DV Shotgun (Slug)"
     },
     "Shotgun": {
       "name": "Shotgun",
-      "description": "<p>An all-purpose shotgun. </p>"
+      "description": "<p>An all-purpose shotgun. </p>",
+      "dvTable": "DV Shotgun (Slug)"
     },
     "Shrieker": {
       "name": "Shrieker",
-      "description": "<p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear critical injuries. The target must beat a DV15 Resist Torture/Drugs Check or suffer the Damaged Ear critical injury. Refer to the full item description on pg. 349.</p>"
+      "description": "<p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear critical injuries. The target must beat a DV15 Resist Torture/Drugs Check or suffer the Damaged Ear critical injury. Refer to the full item description on pg. 349.</p>",
+      "dvTable": "DV Pistol"
     },
     "Sledgehammer (Excellent)": {
       "name": "Sledgehammer (Excellent)",
@@ -303,27 +342,33 @@
     },
     "SMG (Excellent)": {
       "name": "SMG (Excellent)",
-      "description": "<p>A concealable SMG. +1 to Attack.</p>"
+      "description": "<p>A concealable SMG. +1 to Attack.</p>",
+      "dvTable": "DV SMG"
     },
     "SMG (Poor)": {
       "name": "SMG (Poor)",
-      "description": "<p>A concealable SMG.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>A concealable SMG.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "dvTable": "DV SMG"
     },
     "SMG": {
       "name": "SMG",
-      "description": "<p>A concealable SMG. </p>"
+      "description": "<p>A concealable SMG. </p>",
+      "dvTable": "DV SMG"
     },
     "Sniper Rifle (Excellent)": {
       "name": "Sniper Rifle (Excellent)",
-      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.</p>"
+      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.</p>",
+      "dvTable": "DV Sniper Rifle"
     },
     "Sniper Rifle (Poor)": {
       "name": "Sniper Rifle (Poor)",
-      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "dvTable": "DV Sniper Rifle"
     },
     "Sniper Rifle": {
       "name": "Sniper Rifle",
-      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. </p>"
+      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. </p>",
+      "dvTable": "DV Sniper Rifle"
     },
     "Spiked Bat (Excellent)": {
       "name": "Spiked Bat (Excellent)",
@@ -343,7 +388,8 @@
     },
     "Stun Gun": {
       "name": "Stun Gun",
-      "description": "<p>An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor. Refer to the full item description on pg. 349.</p>"
+      "description": "<p>An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor. Refer to the full item description on pg. 349.</p>",
+      "dvTable": "DV Pistol"
     },
     "Sword (Excellent)": {
       "name": "Sword (Excellent)",
@@ -359,7 +405,8 @@
     },
     "Thrown Weapon": {
       "name": "Thrown Weapon",
-      "description": "<p>A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets. Melee weapons deal their base damage, but don't penetrate half SP.</p>"
+      "description": "<p>A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets. Melee weapons deal their base damage, but don't penetrate half SP.</p>",
+      "dvTable": "DV Thrown Weapon"
     },
     "Tomahawk (Excellent)": {
       "name": "Tomahawk (Excellent)",
@@ -375,7 +422,8 @@
     },
     "U-56 Grenade Launcher \"Cowboy\"": {
       "name": "U-56 Grenade Launcher \"Cowboy\"",
-      "description": "<p>An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+      "description": "<p>An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>",
+      "dvTable": "DV Grenade Launcher"
     },
     "Unarmed": {
       "name": "Unarmed",
@@ -395,15 +443,18 @@
     },
     "Very Heavy Pistol (Excellent)": {
       "name": "Very Heavy Pistol (Excellent)",
-      "description": "<p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>"
+      "description": "<p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>",
+      "dvTable": "DV Pistol"
     },
     "Very Heavy Pistol (Poor)": {
       "name": "Very Heavy Pistol (Poor)",
-      "description": "<p>A very heavy pistol. It can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>"
+      "description": "<p>A very heavy pistol. It can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "dvTable": "DV Pistol"
     },
     "Very Heavy Pistol": {
       "name": "Very Heavy Pistol",
-      "description": "<p>A very heavy pistol. It can't be concealed. </p>"
+      "description": "<p>A very heavy pistol. It can't be concealed. </p>",
+      "dvTable": "DV Pistol"
     }
   }
 }

@@ -1,5 +1,8 @@
 {
   "label": "Cyberware",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Airhypo Cyberfinger": {
       "name": "Airhypo Cyberfinger",

@@ -1,5 +1,8 @@
 {
   "label": "Elflines Online Armory",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Arrow": {
       "name": "Arrow",
@@ -55,7 +58,8 @@
     },
     "Bow": {
       "name": "Bogen",
-      "description": "<p>Ein Bogen. Das Nachladen ist Teil der Angriffsaktion.</p>"
+      "description": "<p>Ein Bogen. Das Nachladen ist Teil der Angriffsaktion.</p>",
+      "dvTable": "SG Bögen und Armbrüste"
     },
     "Dagger": {
       "name": "Dagger",

@@ -1,5 +1,8 @@
 {
   "label": "La Météo de Night City",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Umbrella": {
       "name": "Parapluie",
@@ -19,7 +22,8 @@
     },
     "Tactical Umbrella": {
       "name": "Parapluie tactique",
-      "description": "<p>Un parapluie design avec des armes escamotables. Contient un pistolet lourd de mauvaise qualité (capacité de 2 balles).</p>\n<p>Mode Arme multiple : le Parapluie tactique contient également une arme de mêlée lourde d'excellente qualité.</p>\n<p>Fournit la protection d'un parapluie normal (NCW pg 6)</p>"
+      "description": "<p>Un parapluie design avec des armes escamotables. Contient un pistolet lourd de mauvaise qualité (capacité de 2 balles).</p>\n<p>Mode Arme multiple : le Parapluie tactique contient également une arme de mêlée lourde d'excellente qualité.</p>\n<p>Fournit la protection d'un parapluie normal (NCW pg 6)</p>",
+      "dvTable": "SD Pistolet"
     }
   }
 }

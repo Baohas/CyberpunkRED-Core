@@ -1,5 +1,8 @@
 {
   "label": "Cyberimplants",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Amplified Hearing": {
       "name": "Amplificateur audio",
@@ -247,7 +250,8 @@
     },
     "Popup Grenade Launcher": {
       "name": "Lance-Grenade escamotable",
-      "description": "<p>Un lance-grenade à un coup installé dans le bras. </p>"
+      "description": "<p>Un lance-grenade à un coup installé dans le bras. </p>",
+      "dvTable": "SD Lance-grenades"
     },
     "Popup Melee Weapon": {
       "name": "Arme de mêlée escamotable",

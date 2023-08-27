@@ -1,5 +1,8 @@
 {
   "label": "Cyberware",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Amplified Hearing": {
       "name": "Gehörverstärker",
@@ -247,7 +250,8 @@
     },
     "Popup Grenade Launcher": {
       "name": "Pop-Up-Granatwerfer",
-      "description": "<p>Ein einhändiger Granatwerfer mit nur einer Granate im Magazin. Bei ausgefahrener Waffe kann der\nAnwender nichts anderes in der Hand dieses Arms halten.</p>"
+      "description": "<p>Ein einhändiger Granatwerfer mit nur einer Granate im Magazin. Bei ausgefahrener Waffe kann der\nAnwender nichts anderes in der Hand dieses Arms halten.</p>",
+      "dvTable": "SG Granatwerfer"
     },
     "Popup Melee Weapon": {
       "name": "Pop-Up-Nahkampf­waffe",

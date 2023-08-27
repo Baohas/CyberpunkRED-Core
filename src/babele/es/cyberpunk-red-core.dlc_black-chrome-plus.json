@@ -1,5 +1,8 @@
 {
   "label": "Cromo Negro Plus",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Arrow (Junk)": {
       "name": "Flecha (Basura)",
@@ -63,27 +66,33 @@
     },
     "Big Dreem": {
       "name": "Gran Dreem",
-      "description": "<p>Sub Fusil exótico. Si sueltas el arma, continuará con disparando.</p>"
+      "description": "<p>Sub Fusil exótico. Si sueltas el arma, continuará con disparando.</p>",
+      "dvTable": "VD SMG (Automático)"
     },
     "Hello Cutie 1TruLuv": {
       "name": "Hello Cutie 1TruLuv",
-      "description": "<p>Rifle de francotirador exótico. Puede cargar munición no básica.</p>\n<p>Equipado con una mira de largo alcance y Visión Nocturna*, y Agente integrado que incluye una pseudo novia/o IA que puede reconocer y hablar con el propietario.</p>\n<p>Cuidarlo bien, usarlo regularmente y el arma mejora. Descuídalo y deberás disculparte...</p>\n<p><em>* Estas actualizaciones deben ser instaladas manualmente después de añadir a un actor<br></em></p>"
+      "description": "<p>Rifle de francotirador exótico. Puede cargar munición no básica.</p>\n<p>Equipado con una mira de largo alcance y Visión Nocturna*, y Agente integrado que incluye una pseudo novia/o IA que puede reconocer y hablar con el propietario.</p>\n<p>Cuidarlo bien, usarlo regularmente y el arma mejora. Descuídalo y deberás disculparte...</p>\n<p><em>* Estas actualizaciones deben ser instaladas manualmente después de añadir a un actor<br></em></p>",
+      "dvTable": "VD Rifle de Francotirador"
     },
     "Molotov Cocktail": {
       "name": "Coctél Molotov",
-      "description": "<p>Frágil Granada Incendiaria. Enciende a un objetivo en un fuego mortal (ver CP:R p.180)</p>"
+      "description": "<p>Frágil Granada Incendiaria. Enciende a un objetivo en un fuego mortal (ver CP:R p.180)</p>",
+      "dvTable": "VD Armas arrojadizas"
     },
     "SportMaster": {
       "name": "Maestro del Deporte",
-      "description": "<p>Un rifle deportivo, para la diversión, no para personas. Solo puede cargar una pequeña munición de juguete y es incapaz de autofuego y fuego supresivo.</p>"
+      "description": "<p>Un rifle deportivo, para la diversión, no para personas. Solo puede cargar una pequeña munición de juguete y es incapaz de autofuego y fuego supresivo.</p>",
+      "dvTable": "VD Rifle de Asalto"
     },
     "SurvivalMaster": {
       "name": "Maestro de Supervivencia",
-      "description": "<p>Rifle de Asalto exótico, sin Autofuego, sin Fuego Supresivo.</p>"
+      "description": "<p>Rifle de Asalto exótico, sin Autofuego, sin Fuego Supresivo.</p>",
+      "dvTable": "VD Rifle de Asalto"
     },
     "Timeless WW1 Rifle to Pistol Conversion": {
       "name": "Rifle de la 1ra Guerra Mundial convertido a Pistola",
-      "description": "<p>Pistolas muy pesadas de mala calidad.</p>\n<p>Rearmado manual del perno entre cada tiro (una acción).</p>"
+      "description": "<p>Pistolas muy pesadas de mala calidad.</p>\n<p>Rearmado manual del perno entre cada tiro (una acción).</p>",
+      "dvTable": "VD Pistola"
     }
   }
 }

@@ -1,5 +1,8 @@
 {
   "label": "Armurerie d'Elflines Online",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Arrow": {
       "name": "Flèche",
@@ -55,7 +58,8 @@
     },
     "Bow": {
       "name": "Arc",
-      "description": "<p>Un arc revitalisé, rechargement compris dans l'action d'attaque.</p>"
+      "description": "<p>Un arc revitalisé, rechargement compris dans l'action d'attaque.</p>",
+      "dvTable": "SD Arcs et arbalètes"
     },
     "Dagger": {
       "name": "Dague",

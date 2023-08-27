@@ -1,21 +1,28 @@
 {
   "label": "Оружие",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Air Pistol": {
       "name": "Воздушный пистолет",
-      "description": "<p>An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is able to ablate armor by one with each hit. Refer to the full item description on pg. 347.</p>"
+      "description": "<p>An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is able to ablate armor by one with each hit. Refer to the full item description on pg. 347.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "Assault Rifle (Excellent)": {
       "name": "Штурмовая винтовка (Отличное)",
-      "description": "<p>Стандартная штурмовая винтовка. +1 к атаке.</p>"
+      "description": "<p>Стандартная штурмовая винтовка. +1 к атаке.</p>",
+      "dvTable": "СЛ Штурмовая винтовка"
     },
     "Assault Rifle (Poor)": {
       "name": "Штурмовая винтовка (Плохое)",
-      "description": "<p>Стандартная штурмовая винтовка. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>"
+      "description": "<p>Стандартная штурмовая винтовка. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>",
+      "dvTable": "СЛ Штурмовая винтовка"
     },
     "Assault Rifle": {
       "name": "Штурмовая винтовка",
-      "description": "<p>Стандартная штурмовая винтовка.</p>"
+      "description": "<p>Стандартная штурмовая винтовка.</p>",
+      "dvTable": "СЛ Штурмовая винтовка"
     },
     "Baseball Bat (Excellent)": {
       "name": "Бейсбольная бита (Отличное)",
@@ -31,15 +38,18 @@
     },
     "Bow (Excellent)": {
       "name": "Лук (Отличное)",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>",
+      "dvTable": "СЛ Луки и арбалеты"
     },
     "Bow (Poor)": {
       "name": "Лук (Плохое)",
-      "description": "<p>Восстановленный лук, что нужно перезаряжать после каждого выстрела. Если выпадает единица на атаку (крит. провал), оружие выходит из строя и требует действие для починки.</p>"
+      "description": "<p>Восстановленный лук, что нужно перезаряжать после каждого выстрела. Если выпадает единица на атаку (крит. провал), оружие выходит из строя и требует действие для починки.</p>",
+      "dvTable": "СЛ Луки и арбалеты"
     },
     "Bow": {
       "name": "Лук",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>",
+      "dvTable": "СЛ Луки и арбалеты"
     },
     "Chainsaw (Excellent)": {
       "name": "Бензопила (Отличное)",
@@ -67,15 +77,18 @@
     },
     "Crossbow (Excellent)": {
       "name": "Арбалет (Отличное)",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>"
+      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>",
+      "dvTable": "СЛ Луки и арбалеты"
     },
     "Crossbow (Poor)": {
       "name": "Арбалет (Плохое)",
-      "description": "<p>Арбалет, что нужно перезаряжать после каждого выстрела. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>"
+      "description": "<p>Арбалет, что нужно перезаряжать после каждого выстрела. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>",
+      "dvTable": "СЛ Луки и арбалеты"
     },
     "Crossbow": {
       "name": "Арбалет",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>",
+      "dvTable": "СЛ Луки и арбалеты"
     },
     "Crowbar (Excellent)": {
       "name": "Монтировка (Отличное)",
@@ -91,27 +104,33 @@
     },
     "Dartgun": {
       "name": "Дротикомёт",
-      "description": "<p>Кибернетическое оружие. Необходима установка одноимённого киберимпланта.</p>"
+      "description": "<p>Кибернетическое оружие. Необходима установка одноимённого киберимпланта.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "EMG-86 Railgun": {
       "name": "EMG-86 Railgun",
-      "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>"
+      "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>",
+      "dvTable": "СЛ Штурмовая винтовка"
     },
     "Flamethrower": {
       "name": "Огнемёт",
-      "description": "<p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full item description on pg. 348.</p>"
+      "description": "<p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full item description on pg. 348.</p>",
+      "dvTable": "СЛ Дробовик (Жекан)"
     },
     "Grenade Launcher (Excellent)": {
       "name": "Гранатомет (Отличное)",
-      "description": "<p>Мощный гранатомёт, использующий множество типов гранат. +1 к атаке.</p>"
+      "description": "<p>Мощный гранатомёт, использующий множество типов гранат. +1 к атаке.</p>",
+      "dvTable": "СЛ Гранатомет"
     },
     "Grenade Launcher (Poor)": {
       "name": "Гранатомет (Плохое)",
-      "description": "<p>Мощный гранатомёт, использующий множество типов гранат. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>"
+      "description": "<p>Мощный гранатомёт, использующий множество типов гранат. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>",
+      "dvTable": "СЛ Гранатомет"
     },
     "Grenade Launcher": {
       "name": "Гранатомет",
-      "description": "<p>Мощный гранатомёт, использующий множество типов гранат.</p>"
+      "description": "<p>Мощный гранатомёт, использующий множество типов гранат.</p>",
+      "dvTable": "СЛ Гранатомет"
     },
     "Heavy Melee (Excellent)": {
       "name": "Heavy Melee (Excellent)",
@@ -127,27 +146,33 @@
     },
     "Heavy Pistol (Excellent)": {
       "name": "Тяжёлый пистолет (Отличное)",
-      "description": "<p>Скрываемый тяжёлый пистолет. +1 к атаке.</p>"
+      "description": "<p>Скрываемый тяжёлый пистолет. +1 к атаке.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "Heavy Pistol (Poor)": {
       "name": "Тяжёлый пистолет (Плохое)",
-      "description": "<p>Скрываемый тяжёлый пистолет. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>"
+      "description": "<p>Скрываемый тяжёлый пистолет. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "Heavy Pistol": {
       "name": "Тяжёлый пистолет",
-      "description": "<p>Скрываемый тяжёлый пистолет.</p>"
+      "description": "<p>Скрываемый тяжёлый пистолет.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "Heavy SMG (Excellent)": {
       "name": "Тяжёлый ПП (Отличное)",
-      "description": "<p>Тяжёлый ПП. Из-за габаритов не может быть скрыт. +1 к атаке.</p>"
+      "description": "<p>Тяжёлый ПП. Из-за габаритов не может быть скрыт. +1 к атаке.</p>",
+      "dvTable": "СЛ ПП"
     },
     "Heavy SMG (Poor)": {
       "name": "Тяжёлый ПП (Плохое)",
-      "description": "<p>Тяжёлый ПП. Из-за габаритов не может быть скрыт. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>"
+      "description": "<p>Тяжёлый ПП. Из-за габаритов не может быть скрыт. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>",
+      "dvTable": "СЛ ПП"
     },
     "Heavy SMG": {
       "name": "Тяжёлый ПП",
-      "description": "<p>Тяжёлый ПП. Из-за габаритов не может быть скрыт.</p>"
+      "description": "<p>Тяжёлый ПП. Из-за габаритов не может быть скрыт.</p>",
+      "dvTable": "СЛ ПП"
     },
     "Helicopter Blades (Excellent)": {
       "name": "Лопасти вертолёта (Отличное)",
@@ -163,11 +188,13 @@
     },
     "Helix": {
       "name": "Helix",
-      "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+      "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>",
+      "dvTable": "СЛ Штурмовая винтовка"
     },
     "Hurricane Assault Weapon": {
       "name": "Hurricane Assault Weapon",
-      "description": "<p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or higher (unless mounted). Refer to the full item description on pg. 348.</p>"
+      "description": "<p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or higher (unless mounted). Refer to the full item description on pg. 348.</p>",
+      "dvTable": "СЛ Дробовик (Жекан)"
     },
     "Lead Pipe (Excellent)": {
       "name": "Свинцовая труба (Отличное)",
@@ -207,7 +234,8 @@
     },
     "Malorian Arms 3516": {
       "name": "Malorian Arms 3516",
-      "description": "<p>An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link* that must be used. Refer to the full item description on pg. 348.</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link* that must be used. Refer to the full item description on pg. 348.</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>",
+      "dvTable": "СЛ пистолет"
     },
     "Martial Arts": {
       "name": "Боевые искусства",
@@ -227,19 +255,23 @@
     },
     "Medium Pistol (Excellent)": {
       "name": "Средний пистолет (Отличное)",
-      "description": "<p>Скрываемый пистолет средних размеров. +1 к атаке.</p>"
+      "description": "<p>Скрываемый пистолет средних размеров. +1 к атаке.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "Medium Pistol (Poor)": {
       "name": "Средний пистолет (Плохое)",
-      "description": "<p>Скрываемый пистолет средних размеров. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>"
+      "description": "<p>Скрываемый пистолет средних размеров. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "Medium Pistol": {
       "name": "Средний пистолет",
-      "description": "<p>Скрываемый пистолет средних размеров.</p>"
+      "description": "<p>Скрываемый пистолет средних размеров.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "Microwaver": {
       "name": "Микроволновка",
-      "description": "<p>An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be rendered inoperable for a minute unless the target passes a DV15 Cybertech Check. Refer to the full item description on pg. 348.</p>"
+      "description": "<p>An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be rendered inoperable for a minute unless the target passes a DV15 Cybertech Check. Refer to the full item description on pg. 348.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "Mono-Three": {
       "name": "Mono-Three",
@@ -263,31 +295,38 @@
     },
     "Rocket Launcher (Excellent)": {
       "name": "Ракетница (Отличное)",
-      "description": "<p>Время больших стволов. Ракетница, способная нанести урон. +1 к атаке.</p>"
+      "description": "<p>Время больших стволов. Ракетница, способная нанести урон. +1 к атаке.</p>",
+      "dvTable": "СЛ Ракетница"
     },
     "Rocket Launcher (Poor)": {
       "name": "Ракетница (Плохое)",
-      "description": "<p>Время больших стволов. Ракетница, способная нанести урон. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>"
+      "description": "<p>Время больших стволов. Ракетница, способная нанести урон. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>",
+      "dvTable": "СЛ Ракетница"
     },
     "Rocket Launcher": {
       "name": "Ракетница",
-      "description": "<p>Время больших стволов. Ракетница, способная нанести урон.</p>"
+      "description": "<p>Время больших стволов. Ракетница, способная нанести урон.</p>",
+      "dvTable": "СЛ Ракетница"
     },
     "Shotgun (Excellent)": {
       "name": "Дробовик (Отличное)",
-      "description": "<p>Старый добрый универсальный дробовик. +1 к атаке.</p>"
+      "description": "<p>Старый добрый универсальный дробовик. +1 к атаке.</p>",
+      "dvTable": "СЛ Дробовик (Жекан)"
     },
     "Shotgun (Poor)": {
       "name": "Дробовик (Плохое)",
-      "description": "<p>Старый добрый универсальный дробовик. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>"
+      "description": "<p>Старый добрый универсальный дробовик. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>",
+      "dvTable": "СЛ Дробовик (Жекан)"
     },
     "Shotgun": {
       "name": "Дробовик",
-      "description": "<p>Старый добрый универсальный дробовик.</p>"
+      "description": "<p>Старый добрый универсальный дробовик.</p>",
+      "dvTable": "СЛ Дробовик (Жекан)"
     },
     "Shrieker": {
       "name": "Крикун",
-      "description": "<p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear critical injuries. The target must beat a DV15 Resist Torture/Drugs Check or suffer the Damaged Ear critical injury. Refer to the full item description on pg. 349.</p>"
+      "description": "<p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear critical injuries. The target must beat a DV15 Resist Torture/Drugs Check or suffer the Damaged Ear critical injury. Refer to the full item description on pg. 349.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "Sledgehammer (Excellent)": {
       "name": "Кувалда (Отличное)",
@@ -303,27 +342,33 @@
     },
     "SMG (Excellent)": {
       "name": "ПП (Отличное)",
-      "description": "<p>Скрываемая ППшка. +1 к атаке.</p>"
+      "description": "<p>Скрываемая ППшка. +1 к атаке.</p>",
+      "dvTable": "СЛ ПП"
     },
     "SMG (Poor)": {
       "name": "ПП (Плохое)",
-      "description": "<p>Скрываемая ППшка. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>"
+      "description": "<p>Скрываемая ППшка. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>",
+      "dvTable": "СЛ ПП"
     },
     "SMG": {
       "name": "ПП",
-      "description": "<p>Скрываемая ППшка.</p>"
+      "description": "<p>Скрываемая ППшка.</p>",
+      "dvTable": "СЛ ПП"
     },
     "Sniper Rifle (Excellent)": {
       "name": "Снайперская винтовка (Отличное)",
-      "description": "<p>Дальнобойная снайперская винтовка. В магазине четыре патрона. +1 к атаке.</p>"
+      "description": "<p>Дальнобойная снайперская винтовка. В магазине четыре патрона. +1 к атаке.</p>",
+      "dvTable": "СЛ Снайперская винтовка"
     },
     "Sniper Rifle (Poor)": {
       "name": "Снайперская винтовка (Плохое)",
-      "description": "<p>Дальнобойная снайперская винтовка. В магазине четыре патрона. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>"
+      "description": "<p>Дальнобойная снайперская винтовка. В магазине четыре патрона. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>",
+      "dvTable": "СЛ Снайперская винтовка"
     },
     "Sniper Rifle": {
       "name": "Снайперская винтовка",
-      "description": "<p>Дальнобойная снайперская винтовка. В магазине четыре патрона.</p>"
+      "description": "<p>Дальнобойная снайперская винтовка. В магазине четыре патрона.</p>",
+      "dvTable": "СЛ Снайперская винтовка"
     },
     "Spiked Bat (Excellent)": {
       "name": "Бита с гвоздями (Отличное)",
@@ -343,7 +388,8 @@
     },
     "Stun Gun": {
       "name": "Шокер",
-      "description": "<p>An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor. Refer to the full item description on pg. 349.</p>"
+      "description": "<p>An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor. Refer to the full item description on pg. 349.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "Sword (Excellent)": {
       "name": "Меч (Отличное)",
@@ -359,7 +405,8 @@
     },
     "Thrown Weapon": {
       "name": "Thrown Weapon",
-      "description": "<p>A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets. Melee weapons deal their base damage, but don't penetrate half SP.</p>"
+      "description": "<p>A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets. Melee weapons deal their base damage, but don't penetrate half SP.</p>",
+      "dvTable": "СЛ Метательное оружие"
     },
     "Tomahawk (Excellent)": {
       "name": "Томагавк (Отличное)",
@@ -375,7 +422,8 @@
     },
     "U-56 Grenade Launcher \"Cowboy\"": {
       "name": "U-56 Grenade Launcher \"Cowboy\"",
-      "description": "<p>An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>"
+      "description": "<p>An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>",
+      "dvTable": "СЛ Гранатомет"
     },
     "Unarmed": {
       "name": "Без оружия",
@@ -395,15 +443,18 @@
     },
     "Very Heavy Pistol (Excellent)": {
       "name": "Очень тяжёлый пистолет (Отличное)",
-      "description": "<p>Очень тяжёлый пистолет. Не может быть скрыт. +1 к атаке.</p>"
+      "description": "<p>Очень тяжёлый пистолет. Не может быть скрыт. +1 к атаке.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "Very Heavy Pistol (Poor)": {
       "name": "Очень тяжёлый пистолет (Плохое)",
-      "description": "<p>Очень тяжёлый пистолет. Не может быть скрыт. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>"
+      "description": "<p>Очень тяжёлый пистолет. Не может быть скрыт. Если выпадает единица на атаку (крит. провал), оружие клинит и требует действие для расклина.</p>",
+      "dvTable": "СЛ пистолет"
     },
     "Very Heavy Pistol": {
       "name": "Очень тяжёлый пистолет",
-      "description": "<p>Очень тяжёлый пистолет. Не может быть скрыт.</p>"
+      "description": "<p>Очень тяжёлый пистолет. Не может быть скрыт.</p>",
+      "dvTable": "СЛ пистолет"
     }
   }
 }

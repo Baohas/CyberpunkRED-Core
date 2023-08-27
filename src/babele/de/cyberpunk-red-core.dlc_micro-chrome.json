@@ -1,5 +1,8 @@
 {
   "label": "Micro Chrome",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Superflash Jacket": {
       "name": "Superflash Jacket",
@@ -15,7 +18,8 @@
     },
     "MicroCutie": {
       "name": "MicroCutie",
-      "description": "<p>An excellent quality pistol with a unique HypurrburstTM mode fire mode*. The weapon purrs when used. Full rules can be found in Micro Chrome on Page 1.</p>\n<p><br><em>Special fire mode not currently supported; will need to be manually applied</em></p>"
+      "description": "<p>An excellent quality pistol with a unique HypurrburstTM mode fire mode*. The weapon purrs when used. Full rules can be found in Micro Chrome on Page 1.</p>\n<p><br><em>Special fire mode not currently supported; will need to be manually applied</em></p>",
+      "dvTable": "SG Pistole"
     }
   }
 }

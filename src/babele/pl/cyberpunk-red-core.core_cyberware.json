@@ -1,5 +1,8 @@
 {
   "label": "Cyborgizacje",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Amplified Hearing": {
       "name": "Ulepszony słuch",
@@ -247,7 +250,8 @@
     },
     "Popup Grenade Launcher": {
       "name": "Wysuwany granatnik",
-      "description": "<p>Wysuwany granatnik pojedynczego strzału. Nie można nic trzymać w tej ręce, gdy jest wysunięty.</p>"
+      "description": "<p>Wysuwany granatnik pojedynczego strzału. Nie można nic trzymać w tej ręce, gdy jest wysunięty.</p>",
+      "dvTable": "PT Granatniki"
     },
     "Popup Melee Weapon": {
       "name": "Wysuwana broń biała",

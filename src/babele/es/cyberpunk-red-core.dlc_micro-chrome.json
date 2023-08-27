@@ -1,5 +1,8 @@
 {
   "label": "MicroCromo",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Superflash Jacket": {
       "name": "Chaqueta Superflash",
@@ -15,7 +18,8 @@
     },
     "MicroCutie": {
       "name": "MicroDulzura",
-      "description": "<p>Una pistola de excelente calidad con un modo de fuego HypurrbursTM*. El arma ronronea cuando se usa este modo. Las reglas completas se pueden encontrar en Micro Chrome en la página 1.</p>\n<p><br><em>Modo de fuego especial no compatible actualmente; tendrá que aplicarse manualmente</em></p>"
+      "description": "<p>Una pistola de excelente calidad con un modo de fuego HypurrbursTM*. El arma ronronea cuando se usa este modo. Las reglas completas se pueden encontrar en Micro Chrome en la página 1.</p>\n<p><br><em>Modo de fuego especial no compatible actualmente; tendrá que aplicarse manualmente</em></p>",
+      "dvTable": "VD Pistola"
     }
   }
 }

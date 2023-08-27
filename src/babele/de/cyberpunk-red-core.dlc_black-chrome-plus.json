@@ -1,5 +1,8 @@
 {
   "label": "Black Chrome Plus",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Arrow (Junk)": {
       "name": "Pfeil (Schrott)",
@@ -63,27 +66,33 @@
     },
     "Big Dreem": {
       "name": "Big Dreem",
-      "description": "<p>Exotische MP. Nur Automatisches Feuer. Selbst wenn du die Waffe fallen lässt, schießt sie weiter Automatisches Feuer.</p>"
+      "description": "<p>Exotische MP. Nur Automatisches Feuer. Selbst wenn du die Waffe fallen lässt, schießt sie weiter Automatisches Feuer.</p>",
+      "dvTable": "SG MP (Automatisch)"
     },
     "Hello Cutie 1TruLuv": {
       "name": "Hello Cutie 1TruLuv",
-      "description": "<p>Exotic Sniper Rifle. Can load non basic ammunition.</p>\n<p>Equipped with a Sniping Scope and Infrared Night Vision Scope*, and built-in Agent which includes a pseudo AI girlfriend who can recognize and talk to the owner.</p>\n<p>Take good care of it/her and use it/her regularly and the weapon improves. Neglect it/her and you'll have to apologize...</p>\n<p><em>* These upgrades need to be installed manually after adding to an actor<br></em></p>"
+      "description": "<p>Exotic Sniper Rifle. Can load non basic ammunition.</p>\n<p>Equipped with a Sniping Scope and Infrared Night Vision Scope*, and built-in Agent which includes a pseudo AI girlfriend who can recognize and talk to the owner.</p>\n<p>Take good care of it/her and use it/her regularly and the weapon improves. Neglect it/her and you'll have to apologize...</p>\n<p><em>* These upgrades need to be installed manually after adding to an actor<br></em></p>",
+      "dvTable": "SG Scharfschützengewehr"
     },
     "Molotov Cocktail": {
       "name": "Molotowcocktail",
-      "description": "<p>Empfindliche Brandgranate. Ziel gilt als Tödlich Brennend. (Siehe CP:R S. 180)</p>"
+      "description": "<p>Empfindliche Brandgranate. Ziel gilt als Tödlich Brennend. (Siehe CP:R S. 180)</p>",
+      "dvTable": "SG Wurfwaffe"
     },
     "SportMaster": {
       "name": "SportMaster",
-      "description": "<p>Ein Sportgewehr, für Spaß, nicht für Leute. Kann nur Kleinwild-Munition laden und verfügt nicht über Automatisches Feuer oder Unterdrückungsfeuer.</p>"
+      "description": "<p>Ein Sportgewehr, für Spaß, nicht für Leute. Kann nur Kleinwild-Munition laden und verfügt nicht über Automatisches Feuer oder Unterdrückungsfeuer.</p>",
+      "dvTable": "SG Sturmgewehr"
     },
     "SurvivalMaster": {
       "name": "SurvivalMaster",
-      "description": "<p>Exotisches Sturmgewehr, kein Automatisches Feuer, kein Unterdrückungsfeuer.</p>"
+      "description": "<p>Exotisches Sturmgewehr, kein Automatisches Feuer, kein Unterdrückungsfeuer.</p>",
+      "dvTable": "SG Sturmgewehr"
     },
     "Timeless WW1 Rifle to Pistol Conversion": {
       "name": "Umwandlung Zeitloses WK1-Gewehr zur Pistole",
-      "description": "<p>Wandelt ein altes Gewehr in eine Sehr Schwere Pistole (Schlechte Qualität) um.</p>\n<p>Nach jedem Schuss muss die Waffe als Aktion nachgeladen werden.</p>"
+      "description": "<p>Wandelt ein altes Gewehr in eine Sehr Schwere Pistole (Schlechte Qualität) um.</p>\n<p>Nach jedem Schuss muss die Waffe als Aktion nachgeladen werden.</p>",
+      "dvTable": "SG Pistole"
     }
   }
 }

@@ -1,5 +1,8 @@
 {
   "label": "The 12 Days of Gunmas",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Nova Model 757 Rounds": {
       "name": "Nova Model 757 Rounds",
@@ -11,7 +14,8 @@
     },
     "ARS-5 Submachine Gun": {
       "name": "ARS-5 Submachine Gun",
-      "description": "<p>This heavy SMG is the complete package; it comes with a Smartgun Link, Infrared Nightvision Scope, and a Sniping Scope*.</p>\n<p><em>*All three must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>This heavy SMG is the complete package; it comes with a Smartgun Link, Infrared Nightvision Scope, and a Sniping Scope*.</p>\n<p><em>*All three must be manually added after acquiring the weapon</em></p>",
+      "dvTable": "DV SMG"
     },
     "Chainknife": {
       "name": "Chainknife",
@@ -19,7 +23,8 @@
     },
     "Crusher": {
       "name": "Crusher",
-      "description": "<p>A pistol that fires shotgun shells. What's not to love.</p>"
+      "description": "<p>A pistol that fires shotgun shells. What's not to love.</p>",
+      "dvTable": "DV Pistola"
     },
     "Dragon Flamethrower": {
       "name": "Dragon Flamethrower",
@@ -27,35 +32,43 @@
     },
     "Hellbringer": {
       "name": "Hellbringer",
-      "description": "<p>When this things shoots, you know about it. If fired by someone with less than 10 BODY, this pistol jams. An action is required to unjam it.</p>"
+      "description": "<p>When this things shoots, you know about it. If fired by someone with less than 10 BODY, this pistol jams. An action is required to unjam it.</p>",
+      "dvTable": "DV Pistola"
     },
     "Multiple Ammunition Pistol": {
       "name": "Multiple Ammunition Pistol",
-      "description": "<p>A very heavy pistol capable of loading up to five different ammo types at once*, with the user able to pick between them before firing.</p>\n<p><em>*Currently not supported, so users have to manually change ammo types</em></p>"
+      "description": "<p>A very heavy pistol capable of loading up to five different ammo types at once*, with the user able to pick between them before firing.</p>\n<p><em>*Currently not supported, so users have to manually change ammo types</em></p>",
+      "dvTable": "DV Pistola"
     },
     "Nomad Pneumatic Bolt Gun": {
       "name": "Nomad Pneumatic Bolt Gun",
-      "description": "<p>Capable of firing all Non-Basic ammunition, this weapon is still as versatile as when it was invented over two decades ago.</p>"
+      "description": "<p>Capable of firing all Non-Basic ammunition, this weapon is still as versatile as when it was invented over two decades ago.</p>",
+      "dvTable": "DV Fuzil de Precisão"
     },
     "Nova Model 757 Cityhunter": {
       "name": "Nova Model 757 Cityhunter",
-      "description": "<p>This pistol fires it's own custom rounds bought in packs of 18, though they cost the same as a pack of 10. Comes with a Smartgun Link*.</p>\n<p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>This pistol fires it's own custom rounds bought in packs of 18, though they cost the same as a pack of 10. Comes with a Smartgun Link*.</p>\n<p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>",
+      "dvTable": "DV Pistola"
     },
     "ST-5 Assault Rifle": {
       "name": "ST-5 Assault Rifle",
-      "description": "<p>A - relatively - reliable gun. If you roll 1 on Attack (Crit fail) you must then toss a coin; if you win the gun fires as normal, while if you lose the gun jams and requires using an action to clear.</p>"
+      "description": "<p>A - relatively - reliable gun. If you roll 1 on Attack (Crit fail) you must then toss a coin; if you win the gun fires as normal, while if you lose the gun jams and requires using an action to clear.</p>",
+      "dvTable": "DV Rifle de Assalto"
     },
     "Sub-Flechette Gun": {
       "name": "Sub-Flechette Gun",
-      "description": "<p>This SMG can only fire it's own custom Armor-Piercing Ammunition, however that ammo ablates by 4 when dealing damage. Comes with a Smartgun Link*.</p>\n<p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>This SMG can only fire it's own custom Armor-Piercing Ammunition, however that ammo ablates by 4 when dealing damage. Comes with a Smartgun Link*.</p>\n<p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>",
+      "dvTable": "DV SMG"
     },
     "Teen Dreem": {
       "name": "Teen Dreem",
-      "description": "<p>This SMG can use Autofire and Suppressive Fire all the way down to it's last 2 bullets. Caution is required however, as using either firing mode well melt the gun beyond repair.</p>"
+      "description": "<p>This SMG can use Autofire and Suppressive Fire all the way down to it's last 2 bullets. Caution is required however, as using either firing mode well melt the gun beyond repair.</p>",
+      "dvTable": "DV SMG"
     },
     "WAA Bullpup Assault Weapon": {
       "name": "WAA Bullpup Assault Weapon",
-      "description": "<p>A bullpup rifle in operation for over two decades. Can fire non-basic ammunition and comes with a Smartgun Link*.</p>\n<p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>"
+      "description": "<p>A bullpup rifle in operation for over two decades. Can fire non-basic ammunition and comes with a Smartgun Link*.</p>\n<p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>",
+      "dvTable": "DV Rifle de Assalto"
     }
   }
 }

@@ -1,5 +1,8 @@
 {
   "label": "Upgrades",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Armored Chassis": {
       "name": "Armored Chassis",
@@ -123,7 +126,8 @@
     },
     "Grenade Launcher Underbarrel": {
       "name": "Grenade Launcher Underbarrel",
-      "description": "<p>Functions like a standard grenade launcher, but with a magazine size of 1. Requires 2 hands to use, and takes up 2 attachment slots. While attached, the weapon can't be concealed under clothing.</p>\n<p>Note that the weapon inherits any modifiers from the gun it is attached to, such as other attachments and quality.</p>"
+      "description": "<p>Functions like a standard grenade launcher, but with a magazine size of 1. Requires 2 hands to use, and takes up 2 attachment slots. While attached, the weapon can't be concealed under clothing.</p>\n<p>Note that the weapon inherits any modifiers from the gun it is attached to, such as other attachments and quality.</p>",
+      "dvTable": "DV Grenade Launcher"
     },
     "Hardened Circuitry": {
       "name": "Hardened Circuitry",
@@ -187,7 +191,8 @@
     },
     "Shotgun Underbarrel": {
       "name": "Shotgun Underbarrel",
-      "description": "<p>Functions like a standard shotgun, but with a magazine size of 2. Requires 2 hands to use, and takes up 2 attachment slots. While attached, the weapon can't be concealed under clothing.</p>\n<p>Note that the weapon inherits any modifiers from the gun it is attached to, such as other attachments and quality.</p>"
+      "description": "<p>Functions like a standard shotgun, but with a magazine size of 2. Requires 2 hands to use, and takes up 2 attachment slots. While attached, the weapon can't be concealed under clothing.</p>\n<p>Note that the weapon inherits any modifiers from the gun it is attached to, such as other attachments and quality.</p>",
+      "dvTable": "DV Shotgun (Slug)"
     },
     "Smartgun Link": {
       "name": "Smartgun Link",

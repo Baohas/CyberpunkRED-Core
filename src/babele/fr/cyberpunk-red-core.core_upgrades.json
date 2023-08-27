@@ -1,5 +1,8 @@
 {
   "label": "Améliorations",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Armored Chassis": {
       "name": "Châssis blindé",
@@ -123,7 +126,8 @@
     },
     "Grenade Launcher Underbarrel": {
       "name": "Lance-grenades sous canon",
-      "description": "<p>Fonctionne comme un lance-grenades standard, mais avec un chargeur de 1. Nécessite 2 mains pour utiliser et prend 2 emplacements d'extension. Tant qu'elle est attachée, l'arme ne peut pas être dissimulée sous les vêtements.</p>\n<p>Notez que l'arme hérite de tous les modificateurs de l'arme à laquelle elle est attachée, comme d'autres accessoires et qualité.</p>"
+      "description": "<p>Fonctionne comme un lance-grenades standard, mais avec un chargeur de 1. Nécessite 2 mains pour utiliser et prend 2 emplacements d'extension. Tant qu'elle est attachée, l'arme ne peut pas être dissimulée sous les vêtements.</p>\n<p>Notez que l'arme hérite de tous les modificateurs de l'arme à laquelle elle est attachée, comme d'autres accessoires et qualité.</p>",
+      "dvTable": "SD Lance-grenades"
     },
     "Hardened Circuitry": {
       "name": "Circuits renforcés",
@@ -187,7 +191,8 @@
     },
     "Shotgun Underbarrel": {
       "name": "Double canon à pompe",
-      "description": "<p>Fonctionne comme un fusil à pompe standard, mais avec un chargeur de 2 coups. Nécessite 2 mains pour utiliser et prend 2 emplacements d'extension. Tant qu'elle est attachée, l'arme ne peut pas être dissimulée sous les vêtements.</p>\n<p>Notez que l'arme hérite de tous les modificateurs de l'arme à laquelle elle est attachée, comme d'autres accessoires et qualité.</p>"
+      "description": "<p>Fonctionne comme un fusil à pompe standard, mais avec un chargeur de 2 coups. Nécessite 2 mains pour utiliser et prend 2 emplacements d'extension. Tant qu'elle est attachée, l'arme ne peut pas être dissimulée sous les vêtements.</p>\n<p>Notez que l'arme hérite de tous les modificateurs de l'arme à laquelle elle est attachée, comme d'autres accessoires et qualité.</p>",
+      "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Smartgun Link": {
       "name": "Liaison smartgun",

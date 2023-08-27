@@ -1,5 +1,8 @@
 {
   "label": "Arsenal de Elflines Online",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Arrow": {
       "name": "Flecha",
@@ -55,7 +58,8 @@
     },
     "Bow": {
       "name": "Arco",
-      "description": "<p>Arco revitalizado, recargado como parte de una acción de Ataque.</p>"
+      "description": "<p>Arco revitalizado, recargado como parte de una acción de Ataque.</p>",
+      "dvTable": "VD Arcos y Ballestas"
     },
     "Dagger": {
       "name": "Daga",
