@@ -4,9 +4,9 @@
 
 ## Version 0.89.0
 
-### Changements
+### Att/round
 
-- Switched to using DataModels to enforce data types (#316, #723)
+- Utilisation des DataModels pour imposer les types de données (#316, #723)
 
 ## Version 0.88.1
 
