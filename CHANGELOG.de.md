@@ -8,13 +8,17 @@
 
 - Switched to using DataModels to enforce data types (#316, #723)
 
+### Fehlerbehebungen
+
+- #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
+
 ## Version 0.88.1
 
 ### Aktion erforderlich
 
 **WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
 
-### Fehlerbehebungen
+### Bug Fixes
 
 - Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
 
