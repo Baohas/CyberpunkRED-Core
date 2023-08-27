@@ -363,6 +363,20 @@ const Container = function Container() {
       { _id: this._id, "system.installedItems.list": newInstalledList },
     ]);
   };
+
+  /**
+   * This function converts the IDs in the `installedItems.list` fields and
+   * returns an array of of those Ttems converted into Objects. This is for use
+   * in exporting items that have other items installed in them.
+   *
+   *
+   * @returns {Array<Object>} - Array of Items converted into just plain JS Objects.
+   */
+  this.convertInstalledIdsToObjects = function convertInstalledIdsToObject() {
+    LOGGER.trace("convertInstalledIdsToObjects | Container | Called.");
+    const installedIds = this.system.installedItems.list;
+    return installedIds.map((id) => game.items.get(id).toObject());
+  };
 };
 
 export default Container;

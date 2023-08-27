@@ -1,4 +1,4 @@
-/* global Item game */
+/* global Item game duplicate */
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -156,6 +156,92 @@ export default class CPRItem extends Item {
     LOGGER.trace("prepareDerivedData | CPRItem | Called.");
     super.prepareDerivedData();
     this.loadMixins();
+  }
+
+  /**
+   * We override this function so that when items that have installed items in them are exported,
+   * either to JSON or to compendia, we package the data of their installed items with them. Then,
+   * when these are imported they can be converted into actual objects in the world.
+   *
+   * @override
+   * @param {CompendiumCollection} [pack]   A specific pack being exported to
+   * @param {object} [options]              Additional options which modify how the document is converted
+   * @param {boolean} [options.clearFlags=false]      Clear the flags object
+   * @param {boolean} [options.clearSource=true]      Clear any prior sourceId flag
+   * @param {boolean} [options.clearSort=true]        Clear the currently assigned sort order
+   * @param {boolean} [options.clearFolder=false]     Clear the currently assigned folder
+   * @param {boolean} [options.clearOwnership=true]   Clear document ownership
+   * @param {boolean} [options.clearState=true]       Clear fields which store document state
+   * @param {boolean} [options.keepId=false]          Retain the current Document id
+   * @returns {object}                      A data object of cleaned data suitable for compendium import
+   */
+  toCompendium(pack, options) {
+    LOGGER.trace("toCompendium | CPRItem | called.");
+    const data = super.toCompendium(pack, options);
+    // Convert all of this item's installed list to objects.
+    data.flags.installedObjectList = this.convertInstalledIdsToObjects();
+
+    // Get all installed items that may have things installed in them.
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const allInstalledItems = this.recursiveGetAllInstalledItems().filter((i) =>
+      containerTypes.includes(i.type)
+    );
+
+    // For each of those items...
+    for (const item of allInstalledItems) {
+      // ...if they have things installed...
+      if (item.system.installedItems.list.length > 0) {
+        // ...convert their id list to objects...
+        const convertedList = item.convertInstalledIdsToObjects();
+        // ...and find the object in the data.flags.
+        const parentItemObject = data.flags.installedObjectList.find(
+          (i) => i._id === item.id
+        );
+        // Set the flag to the converted list.
+        parentItemObject.flags.installedObjectList = convertedList;
+      }
+    }
+    // Return the data with objects instead of IDs in these fields.
+    return data;
+  }
+
+  /**
+   * We override this function so that when items that have installed items in them are imported,
+   * from JSON, they convert the data of their installed items in into world objects
+   *
+   * @override
+   * @param {string} json          Raw JSON data to import
+   * @returns {Promise<CPRItem>}   The updated Document instance
+   */
+  async importFromJSON(json) {
+    LOGGER.trace("importFromJSON | CPRItem | called.");
+
+    /**
+     * Recursive function to create installed items from imported data.
+     *
+     * @param {CPRItem(Container)} item - An object converted from data to an instance of CPRItem
+     * @returns
+     */
+    async function createInstalled(item) {
+      const newInstalledList = [];
+      const { flags } = item;
+      for (const itemData of item.flags.installedObjectList) {
+        // eslint-disable-next-line no-await-in-loop
+        const newItem = await Item.create(itemData);
+        newInstalledList.push(newItem.id);
+        if (newItem.flags.installedObjectList) {
+          createInstalled(newItem);
+        }
+      }
+      flags["-=installedObjectList"] = null;
+      return item.update({
+        flags,
+        "system.installedItems.list": newInstalledList,
+      });
+    }
+
+    const item = await super.importFromJSON(json);
+    return createInstalled(item);
   }
 
   /**
