@@ -178,11 +178,17 @@ export default class CPRItem extends Item {
   toCompendium(pack, options) {
     LOGGER.trace("toCompendium | CPRItem | called.");
     const data = super.toCompendium(pack, options);
+
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    // Return data if this is not a container object.
+    if (!containerTypes.includes(this.type)) {
+      return data;
+    }
+
     // Convert all of this item's installed list to objects.
     data.flags.installedObjectList = this.convertInstalledIdsToObjects();
 
     // Get all installed items that may have things installed in them.
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     const allInstalledItems = this.recursiveGetAllInstalledItems().filter((i) =>
       containerTypes.includes(i.type)
     );
@@ -222,17 +228,36 @@ export default class CPRItem extends Item {
      * @param {CPRItem(Container)} item - An object converted from data to an instance of CPRItem
      * @returns
      */
-    async function createInstalled(item) {
+    async function recursiveCreateInstalled(item) {
       const newInstalledList = [];
       const { flags } = item;
       for (const itemData of item.flags.installedObjectList) {
+        // Every sublevel of installed item will have its own folder,
+        // Pointing to what is installed in.
+        const parentFolder = item.folder;
+        const folderName = SystemUtils.Format(
+          "CPR.global.imports.subLevelFolderName",
+          { name: item.name, id: item.id }
+        );
+
+        // Folders can have a max depth of 4, so we can't keep creating subfolders.
+        const parent =
+          parentFolder.depth < 4 ? parentFolder : parentFolder.folder;
+        // eslint-disable-next-line no-await-in-loop
+        itemData.folder = await SystemUtils.GetFolder("Item", folderName, {
+          parent,
+        });
+
+        // Create the item from the object data.
         // eslint-disable-next-line no-await-in-loop
         const newItem = await Item.create(itemData);
         newInstalledList.push(newItem.id);
         if (newItem.flags.installedObjectList) {
-          createInstalled(newItem);
+          recursiveCreateInstalled(newItem);
         }
       }
+      // Update the item with installed list that contains the newly created items' ids.
+      // And remove the now unnecessary import flag.
       flags["-=installedObjectList"] = null;
       return item.update({
         flags,
@@ -240,8 +265,31 @@ export default class CPRItem extends Item {
       });
     }
 
+    // Import the item so that we can then manipulate it.
     const item = await super.importFromJSON(json);
-    return createInstalled(item);
+
+    // Only manipulate the imported item if it contains installed item data.
+    if (item.flags.installedObjectList) {
+      // If the newly created item contains installed item data,
+      // import the item into a folder (if it doesn't already live in one).
+      // That way, that the newly created installed items are organized.
+      // Installed items will then be placed in sub-folders.
+      if (!item.folder) {
+        const folderName = SystemUtils.Format(
+          "CPR.global.imports.topLevelFolderName",
+          { name: item.name, id: item.id }
+        );
+        await item.update({
+          folder: await SystemUtils.GetFolder("Item", folderName),
+        });
+      }
+      // Recursively create installed items from the item data embedded in
+      // `item.flags.installedObjectList`
+      return recursiveCreateInstalled(item);
+    }
+
+    // If item does not have embedded installed data, just return the item.
+    return item;
   }
 
   /**

@@ -517,6 +517,8 @@
   "CPR.global.generic.varying": "Varying",
   "CPR.global.generic.worldFolder": "World Folder",
   "CPR.global.generic.yes": "Yes",
+  "CPR.global.imports.topLevelFolderName": "Import: {name} | ID: {id}",
+  "CPR.global.imports.subLevelFolderName": "Installed In: {name} | ID: {id}",
   "CPR.global.itemQuality.excellent": "Excellent",
   "CPR.global.itemQuality.poor": "Poor",
   "CPR.global.itemQuality.standard": "Standard",

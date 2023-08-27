@@ -370,12 +370,18 @@ const Container = function Container() {
    * in exporting items that have other items installed in them.
    *
    *
-   * @returns {Array<Object>} - Array of Items converted into just plain JS Objects.
+   * @returns {Array<Object>|undefined} - Array of Items converted into just plain JS Objects.
    */
   this.convertInstalledIdsToObjects = function convertInstalledIdsToObject() {
     LOGGER.trace("convertInstalledIdsToObjects | Container | Called.");
     const installedIds = this.system.installedItems.list;
-    return installedIds.map((id) => game.items.get(id).toObject());
+    const installedItemData = installedIds.map((id) =>
+      game.items.get(id).toObject()
+    );
+    if (installedItemData.length > 0) {
+      return installedItemData;
+    }
+    return undefined;
   };
 };
 
