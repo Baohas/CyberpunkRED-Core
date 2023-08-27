@@ -339,21 +339,6 @@ export default class CPRChat {
             cprRoll.location = location;
           }
 
-          const targetedTokens =
-            SystemUtils.getUserTargetedOrSelected("targeted"); // get user targeted tokens for output to chat
-          if (
-            targetedTokens.length === 0 &&
-            game.settings.get(
-              game.system.id,
-              "warnAboutNoTargetsWhenRollingDamage"
-            )
-          ) {
-            SystemUtils.DisplayMessage(
-              "warn",
-              "CPR.chat.damageApplication.noTokenTargeted"
-            );
-          }
-
           const keepRolling = await cprRoll.handleRollDialog(
             event,
             actor,
@@ -365,6 +350,9 @@ export default class CPRChat {
 
           cprRoll = await item.confirmRoll(cprRoll);
           await cprRoll.roll();
+
+          const targetedTokens =
+            SystemUtils.getUserTargetedOrSelected("targeted"); // get user targeted tokens for output to chat
           cprRoll.entityData = {
             actor: actorId,
             token: tokenId,

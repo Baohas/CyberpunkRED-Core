@@ -541,13 +541,6 @@ export default class CPRActorSheet extends ActorSheet {
       }
       default:
     }
-    const targetedTokens = SystemUtils.getUserTargetedOrSelected("targeted"); // get user targeted tokens for output to chat
-    if (rollType === CPRRolls.rollTypes.DAMAGE && targetedTokens.length === 0) {
-      SystemUtils.DisplayMessage(
-        "warn",
-        "CPR.chat.damageApplication.noTokenTargeted"
-      );
-    }
 
     // note: for aimed shots this is where location is set
     const keepRolling = await cprRoll.handleRollDialog(event, this.actor, item);
@@ -579,6 +572,7 @@ export default class CPRActorSheet extends ActorSheet {
 
     // output to chat
     const token = this.token === null ? null : this.token._id;
+    const targetedTokens = SystemUtils.getUserTargetedOrSelected("targeted"); // get user targeted tokens for output to chat
 
     cprRoll.entityData = {
       actor: this.actor.id,
