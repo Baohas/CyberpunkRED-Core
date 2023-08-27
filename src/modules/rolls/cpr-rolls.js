@@ -760,6 +760,19 @@ export class CPRDamageRoll extends CPRRoll {
     LOGGER.trace("constructor | CPRDamageRoll | Called.");
     // we assume always d6s
     super(rollTitle, formula);
+
+    // Warn if no tokens are targeted for a damage roll (and the user settings allow).
+    const targetedTokens = SystemUtils.getUserTargetedOrSelected("targeted");
+    if (
+      targetedTokens.length === 0 &&
+      game.settings.get(game.system.id, "warnAboutNoTargetsWhenRollingDamage")
+    ) {
+      SystemUtils.DisplayMessage(
+        "warn",
+        "CPR.chat.damageApplication.noTokenTargeted"
+      );
+    }
+
     this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-damage-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-damage-rollcard.hbs`;
     // criticals just add 5 damage, they do not need more dice rolled

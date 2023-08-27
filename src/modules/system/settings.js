@@ -162,6 +162,23 @@ const registerSystemSettings = () => {
     },
   });
 
+  // Show  "No tokens targeted" warning when rolling damage
+  game.settings.register(
+    game.system.id,
+    "warnAboutNoTargetsWhenRollingDamage",
+    {
+      name: "CPR.settings.warnAboutNoTargetsWhenRollingDamage.name",
+      hint: "CPR.settings.warnAboutNoTargetsWhenRollingDamage.hint",
+      scope: "world",
+      config: true,
+      type: Boolean,
+      default: true,
+      onChange: (value) => {
+        LOGGER.log(`Changed warnAboutNoTargetsWhenRollingDamage to ${value}`);
+      },
+    }
+  );
+
   game.settings.register(game.system.id, "userSettings", {
     name: "User Settings",
     scope: "client",

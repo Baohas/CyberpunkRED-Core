@@ -1104,6 +1104,8 @@
   "CPR.settings.title": "Settings",
   "CPR.settings.traceLogs.hint": "Enable trace logs. Turn this on when you are filing a bug or working with module developers on an issue.",
   "CPR.settings.traceLogs.name": "Trace Logs",
+  "CPR.settings.warnAboutNoTargetsWhenRollingDamage.hint": "Uncheck to disable the warning about having no tokens targeted when rolling damage. Useful if you don't want to enforce using Foundry's targeting functionality.",
+  "CPR.settings.warnAboutNoTargetsWhenRollingDamage.name": "Warn when rolling without targets",
   "CPR.sheets.blackiceSheet": "Black ICE Sheet",
   "CPR.sheets.characterSheet": "Character Sheet",
   "CPR.sheets.containerSheet": "Container/Shop Sheet",

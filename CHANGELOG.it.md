@@ -8,6 +8,10 @@
 
 - Switched to using DataModels to enforce data types (#316, #723)
 
+### Bug Fixes
+
+- #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
+
 ## Version 0.88.1
 
 ### Action Needed
