@@ -2,6 +2,12 @@
 
 # Changelog
 
+## Version 0.89.0
+
+### Changes
+
+- Switched to using DataModels to enforce data types (#316, #723)
+
 ## Version 0.88.1
 
 ### Action Needed
