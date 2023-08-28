@@ -38,8 +38,8 @@
     <select name="system.weaponSkill" data-dtype="{{item.system.weaponSkill}}">
       {{#select item.system.weaponSkill}}
       {{#each (cprFindConfigObj "skillCategoriesForWeapons") as |skillCat s| }}
-        <optgroup label="{{localize (cprGetLocalizedlNameKey skill.name ''skillCat')}}">
-          {{#each (cprSortCoreSkills ../item.system.relativeSkills) as |skillOption| }}
+        <optgroup label="{{localize skillCat}}">
+          {{#each (cprSortCoreSkills ../relativeSkills) as |skillOption| }}
             {{#if (cprCompare skillOption.system.category "===" s) }}
               <option value="{{skillOption.name}}">
                 {{localize (cprGetLocalizedlNameKey skillOption)}}
