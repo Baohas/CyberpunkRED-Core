@@ -241,7 +241,7 @@ export default class CPRItem extends Item {
       }
       // Recursively create installed items from the item data embedded in
       // `item.flags.installedObjectList`
-      return item.recursiveImportInstalled();
+      return item.importInstalledToWorld();
     }
 
     // If item does not have embedded installed data, just return the item.

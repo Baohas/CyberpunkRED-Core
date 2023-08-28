@@ -148,15 +148,20 @@ const itemHooks = () => {
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
 
-    // If the item is being created on an actor, is a container, and has things installed:
-    if (
-      doc.parent &&
-      containerTypes.includes(doc.type) &&
-      doc.system.installedItems.list.length > 0
-    ) {
-      // Create installed items on the actor and update the original
-      // item's `system.installedItems.list` to point to them.
-      doc.createInstalledItems();
+    // If the item is being created on an actor and is a container...
+    if (doc.parent && containerTypes.includes(doc.type)) {
+      // if doc.flags.installedObjectList exists, this is being added to the actor from a compendium.
+      if (doc.flags.installedObjectList) {
+        const imported = true;
+        // Create installed items on the actor and update the original
+        // item's `system.installedItems.list` to point to them.
+        doc.createInstalledItemsOnActor(imported);
+        // Otherwise this is being added to the actor from a world item.
+      } else if (doc.system.installedItems.list.length > 0) {
+        // Create installed items on the actor and update the original
+        // item's `system.installedItems.list` to point to them.
+        doc.createInstalledItemsOnActor();
+      }
     }
 
     // If this item is being imported into the world,
@@ -175,7 +180,7 @@ const itemHooks = () => {
       }
       // Convert the embedded data into other world items and update
       // the original item's `system.installedItems.list` to point to them.
-      doc.recursiveImportInstalled();
+      doc.importInstalledToWorld();
     }
 
     if (

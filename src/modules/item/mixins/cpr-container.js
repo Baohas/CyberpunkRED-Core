@@ -329,38 +329,56 @@ const Container = function Container() {
    * installed in this container object at the location of this container object. In other words:
    *
    * If this object is created on an actor, the installed items are created on the same actor
-   * If this object is created in the world, the installed items are created as world items
    *
-   * World items that are created, are created in in a folder defined by the localized variable:
-   *
-   *  "CPR.settings.installedItemsFolder".
    *
    * @returns {Promise} - Promise of updated document
    */
-  this.createInstalledItems = async function createInstalledItems() {
-    LOGGER.trace("createInstalledItems | Container | Called.");
+  this.createInstalledItemsOnActor = async function createInstalledItemsOnActor(
+    imported = false
+  ) {
+    LOGGER.trace("createInstalledItemsOnActor | Container | Called.");
     const actor = this.parent;
-
     const creationList = [];
-    for (const installedId of this.system.installedItems.list) {
-      const installedItem = game.items.get(installedId);
-      creationList.push(installedItem.toObject());
+
+    // If this item is imported, the information for installed items
+    // is embedded in its flags.
+    if (imported) {
+      for (const itemData of this.flags.installedObjectList) {
+        // Add the item data to the list.
+        creationList.push(itemData);
+      }
+      // If the item is from the world, we get the information for installed items,
+      // by first finding the item in the world, and then converting it to an object.
+    } else {
+      for (const installedId of this.system.installedItems.list) {
+        const installedItem = game.items.get(installedId);
+        // Add the item data to the list.
+        creationList.push(installedItem.toObject());
+      }
     }
 
     const newInstalledList = [];
+    // Create the items from the list.
     if (creationList.length > 0) {
       const createdItems = await actor.createEmbeddedDocuments(
         "Item",
         creationList
       );
 
+      // Keep track of newly created item ID's so we can update the parent item.
       for (const item of createdItems) {
         newInstalledList.push(item.id);
       }
     }
 
+    // Remove the import flags.
+    const { flags } = this;
+    if (this.flags.installedObjectList) {
+      flags["-=installedObjectList"] = null;
+    }
+    // Update the parent item.
     return actor.updateEmbeddedDocuments("Item", [
-      { _id: this._id, "system.installedItems.list": newInstalledList },
+      { _id: this._id, flags, "system.installedItems.list": newInstalledList },
     ]);
   };
 
@@ -370,10 +388,10 @@ const Container = function Container() {
    * @param {CPRItem(Container)} item - An object converted from data to an instance of CPRItem
    * @returns {CPRItem(container)} - the updated item
    */
-  this.recursiveImportInstalled = async function recursiveImportInstalled(
+  this.importInstalledToWorld = async function importInstalledToWorld(
     recursive
   ) {
-    LOGGER.trace("recursiveImportInstalled | CPRItem | called.");
+    LOGGER.trace("importInstalledToWorld | CPRItem | called.");
     const newInstalledList = [];
     const { flags } = this;
     for (const itemData of this.flags.installedObjectList) {
@@ -398,7 +416,7 @@ const Container = function Container() {
       const newItem = await Item.create(itemData);
       newInstalledList.push(newItem.id);
       if (recursive && newItem.flags.installedObjectList) {
-        newItem.recursiveImportInstalled(recursive);
+        newItem.importInstalledToWorld(recursive);
       }
     }
     // Update the item with installed list that contains the newly created items' ids.
