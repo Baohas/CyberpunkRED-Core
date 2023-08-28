@@ -212,6 +212,56 @@ export default class CPRItem extends Item {
   }
 
   /**
+   * We override this so that when items with installed items are dragged
+   * from one actor to another, the installed items get brought along as well.
+   * Similarly to `toCompendium()` above, we package the installed item information
+   * in Object form and store it in the flags of the original item. Then, using the
+   * `createItem` hook we recursively create all the installed items from this data.
+   *
+   * @param {Object} data - The data object extracted from a DataTransfer event
+   * @param {Object} options - Additional options which affect drop data behavior
+   * @returns {Promise<CPRItem>} - The resolved item
+   */
+  static async fromDropData(data, options) {
+    LOGGER.trace("fromDropData | CPRItem | called.");
+    const item = await super.fromDropData(data, options);
+
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    if (!containerTypes.includes(item.type) || !item.parent) {
+      return item;
+    }
+
+    const flags = duplicate(item.flags);
+    // Convert all of this item's installed list to objects.
+    flags.installedObjectList = item.convertInstalledIdsToObjects(item.actor);
+
+    // Get all installed items that may have things installed in them.
+    const allInstalledItems = item
+      .recursiveGetAllInstalledItems()
+      .filter((i) => containerTypes.includes(i.type));
+
+    for (const childItem of allInstalledItems) {
+      // ...if they have things installed...
+      if (childItem.system.installedItems.list.length > 0) {
+        // ...convert their id list to objects...
+        const convertedList = childItem.convertInstalledIdsToObjects(
+          item.actor
+        );
+        // ...and find the object in the data.flags.
+        const parentItemObject = flags.installedObjectList.find(
+          (i) => i._id === childItem.id
+        );
+        // Set the flag to the converted list.
+        parentItemObject.flags.installedObjectList = convertedList;
+      }
+    }
+
+    await item.update({ flags });
+
+    return item;
+  }
+
+  /**
    * We override this function so that when items that have installed items in them are imported,
    * from JSON, they convert the data of their installed items in into world objects
    *

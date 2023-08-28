@@ -150,14 +150,14 @@ const itemHooks = () => {
 
     // If the item is being created on an actor and is a container...
     if (doc.parent && containerTypes.includes(doc.type)) {
-      // if doc.flags.installedObjectList exists, this is being added to the actor from a compendium.
       if (doc.flags.installedObjectList) {
-        const imported = true;
+        // if doc.flags.installedObjectList exists, this is being added to the actor from a compendium.
         // Create installed items on the actor and update the original
         // item's `system.installedItems.list` to point to them.
+        const imported = true;
         doc.createInstalledItemsOnActor(imported);
-        // Otherwise this is being added to the actor from a world item.
       } else if (doc.system.installedItems.list.length > 0) {
+        // Otherwise this is being added to the actor from a world item.
         // Create installed items on the actor and update the original
         // item's `system.installedItems.list` to point to them.
         doc.createInstalledItemsOnActor();

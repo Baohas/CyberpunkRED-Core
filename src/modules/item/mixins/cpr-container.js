@@ -434,13 +434,16 @@ const Container = function Container() {
    * in exporting items that have other items installed in them.
    *
    *
+   * @param {CPRActor} - Optional: If this item exists on an actor, the actor is supplied.
    * @returns {Array<Object>|undefined} - Array of Items converted into just plain JS Objects.
    */
-  this.convertInstalledIdsToObjects = function convertInstalledIdsToObject() {
+  this.convertInstalledIdsToObjects = function convertInstalledIdsToObject(
+    actor
+  ) {
     LOGGER.trace("convertInstalledIdsToObjects | Container | Called.");
     const installedIds = this.system.installedItems.list;
     const installedItemData = installedIds.map((id) =>
-      game.items.get(id).toObject()
+      actor ? actor.getOwnedItem(id).toObject() : game.items.get(id).toObject()
     );
     if (installedItemData.length > 0) {
       return installedItemData;
