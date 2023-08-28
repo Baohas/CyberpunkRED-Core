@@ -222,52 +222,8 @@ export default class CPRItem extends Item {
   async importFromJSON(json) {
     LOGGER.trace("importFromJSON | CPRItem | called.");
 
-    /**
-     * Recursive function to create installed items from imported data.
-     *
-     * @param {CPRItem(Container)} item - An object converted from data to an instance of CPRItem
-     * @returns
-     */
-    async function recursiveCreateInstalled(item) {
-      const newInstalledList = [];
-      const { flags } = item;
-      for (const itemData of item.flags.installedObjectList) {
-        // Every sublevel of installed item will have its own folder,
-        // Pointing to what is installed in.
-        const parentFolder = item.folder;
-        const folderName = SystemUtils.Format(
-          "CPR.global.imports.subLevelFolderName",
-          { name: item.name, id: item.id }
-        );
-
-        // Folders can have a max depth of 4, so we can't keep creating subfolders.
-        const parent =
-          parentFolder.depth < 4 ? parentFolder : parentFolder.folder;
-        // eslint-disable-next-line no-await-in-loop
-        itemData.folder = await SystemUtils.GetFolder("Item", folderName, {
-          parent,
-        });
-
-        // Create the item from the object data.
-        // eslint-disable-next-line no-await-in-loop
-        const newItem = await Item.create(itemData);
-        newInstalledList.push(newItem.id);
-        if (newItem.flags.installedObjectList) {
-          recursiveCreateInstalled(newItem);
-        }
-      }
-      // Update the item with installed list that contains the newly created items' ids.
-      // And remove the now unnecessary import flag.
-      flags["-=installedObjectList"] = null;
-      return item.update({
-        flags,
-        "system.installedItems.list": newInstalledList,
-      });
-    }
-
     // Import the item so that we can then manipulate it.
     const item = await super.importFromJSON(json);
-
     // Only manipulate the imported item if it contains installed item data.
     if (item.flags.installedObjectList) {
       // If the newly created item contains installed item data,
@@ -285,7 +241,7 @@ export default class CPRItem extends Item {
       }
       // Recursively create installed items from the item data embedded in
       // `item.flags.installedObjectList`
-      return recursiveCreateInstalled(item);
+      return item.recursiveImportInstalled();
     }
 
     // If item does not have embedded installed data, just return the item.

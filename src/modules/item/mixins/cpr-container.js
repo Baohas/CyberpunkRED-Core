@@ -365,6 +365,52 @@ const Container = function Container() {
   };
 
   /**
+   * Recursive function to create installed items from imported data.
+   *
+   * @param {CPRItem(Container)} item - An object converted from data to an instance of CPRItem
+   * @returns {CPRItem(container)} - the updated item
+   */
+  this.recursiveImportInstalled = async function recursiveImportInstalled(
+    recursive
+  ) {
+    LOGGER.trace("recursiveImportInstalled | CPRItem | called.");
+    const newInstalledList = [];
+    const { flags } = this;
+    for (const itemData of this.flags.installedObjectList) {
+      // Every sublevel of installed item will have its own folder,
+      // Pointing to what is installed in.
+      const parentFolder = this.folder;
+      const folderName = SystemUtils.Format(
+        "CPR.global.imports.subLevelFolderName",
+        { name: this.name, id: this.id }
+      );
+
+      // Folders can have a max depth of 4, so we can't keep creating subfolders.
+      const parent =
+        parentFolder.depth < 4 ? parentFolder : parentFolder.folder;
+      // eslint-disable-next-line no-await-in-loop
+      itemData.folder = await SystemUtils.GetFolder("Item", folderName, {
+        parent,
+      });
+
+      // Create the item from the object data.
+      // eslint-disable-next-line no-await-in-loop
+      const newItem = await Item.create(itemData);
+      newInstalledList.push(newItem.id);
+      if (recursive && newItem.flags.installedObjectList) {
+        newItem.recursiveImportInstalled(recursive);
+      }
+    }
+    // Update the item with installed list that contains the newly created items' ids.
+    // And remove the now unnecessary import flag.
+    flags["-=installedObjectList"] = null;
+    return this.update({
+      flags,
+      "system.installedItems.list": newInstalledList,
+    });
+  };
+
+  /**
    * This function converts the IDs in the `installedItems.list` fields and
    * returns an array of of those Ttems converted into Objects. This is for use
    * in exporting items that have other items installed in them.
