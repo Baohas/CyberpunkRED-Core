@@ -6,22 +6,22 @@
 
 ### Att/round
 
-- Switched to using DataModels to enforce data types (#316, #723)
-- Add setting to disable warning when rolling damage without targets
+- Utilisation des DataModels pour imposer les types de données (#316, #723)
+- Ajout d'un paramètre pour désactiver l'avertissement lors du jet des dégâts sans cibles
 
 ### Corrections de bugs
 
-- #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
+- #856 - Correction des jetons de ciblage des cartes de chat divulguant les noms d'acteurs, utilisation des noms de jetons à la place.
 
 ## Version 0.88.1
 
 ### Action requise
 
-**WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
+**AVERTISSEMENT**: SI VOUS AVEZ CHARGE LA MISE À JOUR  `0.88.0`/FOUNDRY V11, C'ETAIT UNE ERREUR (mais pas de votre faute). VOUS DEVEZ REVENIR A LA SAUVEGARDE QUE VOUS AVEZ FAITE / FOUNDRY V10, AVANT LA MISE À JOUR À CETTE VERSION. A NOUVEAU, **REVENEZ A FOUNDRY V10 ET A VOTRE SAUVEGARDE QUE VOUS AVEZ FAIT DE CPR `0.87.6`**, PUIS METTEZ À JOUR DIRECTEMENT AVEC LA `V0.88.1`. Passez sur le Discord si vous avez un problème.
 
-### Bug Fixes
+### Corrections de bugs
 
-- Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
+- Correction d'un bug (de Foundry) où les jetons non liés perdaient tous leurs objets.
 
 ## Version 0.88.0
 
