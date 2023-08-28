@@ -161,7 +161,7 @@ export default class CPRItem extends Item {
   /**
    * We override this function so that when items that have installed items in them are exported,
    * either to JSON or to compendia, we package the data of their installed items with them. Then,
-   * when these are imported they can be converted into actual objects in the world.
+   * when these are imported this data can be converted into actual items in the world.
    *
    * @override
    * @param {CompendiumCollection} [pack]   A specific pack being exported to
@@ -185,29 +185,17 @@ export default class CPRItem extends Item {
       return data;
     }
 
-    // Convert all of this item's installed list to objects.
-    data.flags.installedObjectList = this.convertInstalledIdsToObjects();
+    // Get the data for all installed objects.
+    const installedObjectList = this.createInstalledObjectData();
 
-    // Get all installed items that may have things installed in them.
-    const allInstalledItems = this.recursiveGetAllInstalledItems().filter((i) =>
-      containerTypes.includes(i.type)
-    );
+    // Set the installed object data as a flag.
+    // Note, if you ever change the name of `installedObjectList` to something else,
+    // you would have to change it in `createInstalledObjectData()` too.
+    const { flags } = this;
+    flags.installedObjectList = installedObjectList;
+    data.flags = flags;
 
-    // For each of those items...
-    for (const item of allInstalledItems) {
-      // ...if they have things installed...
-      if (item.system.installedItems.list.length > 0) {
-        // ...convert their id list to objects...
-        const convertedList = item.convertInstalledIdsToObjects();
-        // ...and find the object in the data.flags.
-        const parentItemObject = data.flags.installedObjectList.find(
-          (i) => i._id === item.id
-        );
-        // Set the flag to the converted list.
-        parentItemObject.flags.installedObjectList = convertedList;
-      }
-    }
-    // Return the data with objects instead of IDs in these fields.
+    // Update the item data with the new flags.
     return data;
   }
 
@@ -226,36 +214,22 @@ export default class CPRItem extends Item {
     LOGGER.trace("fromDropData | CPRItem | called.");
     const item = await super.fromDropData(data, options);
 
+    // Return if not a container item or if this item doesn't have a parent.
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     if (!containerTypes.includes(item.type) || !item.parent) {
       return item;
     }
 
+    // Get the data for all installed objects.
+    const installedObjectList = item.createInstalledObjectData();
+
+    // Set the installed object data as a flag.
+    // Note, if you ever change the name of `installedObjectList` to something else,
+    // you would have to change it in `createInstalledObjectData()` too.
     const flags = duplicate(item.flags);
-    // Convert all of this item's installed list to objects.
-    flags.installedObjectList = item.convertInstalledIdsToObjects(item.actor);
+    flags.installedObjectList = installedObjectList;
 
-    // Get all installed items that may have things installed in them.
-    const allInstalledItems = item
-      .recursiveGetAllInstalledItems()
-      .filter((i) => containerTypes.includes(i.type));
-
-    for (const childItem of allInstalledItems) {
-      // ...if they have things installed...
-      if (childItem.system.installedItems.list.length > 0) {
-        // ...convert their id list to objects...
-        const convertedList = childItem.convertInstalledIdsToObjects(
-          item.actor
-        );
-        // ...and find the object in the data.flags.
-        const parentItemObject = flags.installedObjectList.find(
-          (i) => i._id === childItem.id
-        );
-        // Set the flag to the converted list.
-        parentItemObject.flags.installedObjectList = convertedList;
-      }
-    }
-
+    // Update the item with the new flags.
     await item.update({ flags });
 
     return item;

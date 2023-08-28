@@ -450,6 +450,44 @@ const Container = function Container() {
     }
     return undefined;
   };
+
+  /**
+   * Convert the tree of installed items into a recursive list of installed object data.
+   * Return this list as a field in the calling item's flags (`flags.installedObjectList`).
+   *
+   * This is called when dragging items between sheets, and when exporting items.
+   * Installed item data is then built from these objects.
+   *
+   * @returns {Object} - The object data of all installed items in the correct structure.
+   */
+  this.createInstalledObjectData = function createInstalledObjectData() {
+    LOGGER.trace("createInstalledObjectData | CPRItem | called.");
+    // Convert all of this item's installed list to objects.
+    const installedObjectList = this.convertInstalledIdsToObjects(this.actor);
+
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    // Get all installed items that have things installed in them.
+    const allInstalledItems = this.recursiveGetAllInstalledItems().filter((i) =>
+      containerTypes.includes(i.type)
+    );
+
+    for (const childItem of allInstalledItems) {
+      // ...if they have things installed...
+      if (childItem.system.installedItems.list.length > 0) {
+        // ...convert their id list to objects...
+        const childObjectList = childItem.convertInstalledIdsToObjects(
+          this.actor
+        );
+        // ...and find the object in the data.flags.
+        const parentItemObject = installedObjectList.find(
+          (i) => i._id === childItem.id
+        );
+        // Set the parent item's flag to the converted list.
+        parentItemObject.flags.installedObjectList = childObjectList;
+      }
+    }
+    return installedObjectList;
+  };
 };
 
 export default Container;
