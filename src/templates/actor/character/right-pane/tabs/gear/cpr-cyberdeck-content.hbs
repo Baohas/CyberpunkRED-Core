@@ -14,8 +14,8 @@
       {{/if}}
       {{#if item.system.isInstalled }}
         <a class="item-view"
-           data-item-id="{{item.system.installedIn}}"
-           data-tooltip="{{localize "CPR.characterSheet.rightPane.cyber.installedIn"}} {{cprGetProp (cprGetOwnedItem actor item.system.installedIn) "name"}}">
+           data-item-id="{{item.system.installedIn.[0]}}"
+           data-tooltip="{{localize "CPR.characterSheet.rightPane.cyber.installedIn"}} {{cprGetProp (cprGetOwnedItem actor item.system.installedIn.[0]) "name"}}">
           <i class="text-super fa-solid fa-circle-info"></i>
         </a>
       {{/if}}

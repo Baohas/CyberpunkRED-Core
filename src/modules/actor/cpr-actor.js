@@ -311,7 +311,7 @@ export default class CPRActor extends Actor {
   /**
    * This is extended to handle :
    * - items installed in other items
-   * - updating items on unlinked tokens
+   * - container items with other items installed in them.
    *
    * When we delete an owned item, we should first check if it has items installed into it,
    * or if it's installed into something else (or both). That way we can make sure they get
@@ -333,6 +333,7 @@ export default class CPRActor extends Actor {
       const containerTypes = SystemUtils.GetTemplateItemTypes("container");
       const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
       // For every item that we are deleting.
+      const uninstallPromises = [];
       for (const itemId of ids) {
         // Get the item.
         const item = this.getOwnedItem(itemId);
@@ -356,7 +357,7 @@ export default class CPRActor extends Actor {
             }
           }
           // Uninstall all items (with recursion) before deletion.
-          await item.uninstallItems(itemList, true);
+          uninstallPromises.push(item.uninstallItems(itemList, true));
         }
 
         if (
@@ -367,18 +368,22 @@ export default class CPRActor extends Actor {
           // and item is installed somewhere....
           item.system.isInstalled
         ) {
-          // ...Get where it is installed.
-          const installLocation =
+          // ...Get where it is installed (could be multiple locations, if ammo).
+          const installLocations =
             // If item is installed in the actor,
-            item.system.installedIn === this.id
+            item.system.installedIn.includes(this.id)
               ? // location is the actor
-                this
-              : // else, location is an item.
-                this.getOwnedItem(item.system.installedIn);
-          // Uninstall this item from its install location.
-          await installLocation.uninstallItems([item], false);
+                [this]
+              : // else, location is an item or items.
+                this.getMultipleOwnedItems(item.system.installedIn);
+          // Uninstall this item from its install location(s).
+          for (const location of installLocations) {
+            uninstallPromises.push(location.uninstallItems([item], false));
+          }
         }
       }
+      // Resolve all promises.
+      await Promise.all(uninstallPromises);
     }
 
     // Continue on with deleting the documents (call the Foundry function).
@@ -622,9 +627,9 @@ export default class CPRActor extends Actor {
 
     if (confirmRemove) {
       const target =
-        this.id === item.system.installedIn
+        this.id === item.system.installedIn[0]
           ? this
-          : this.getOwnedItem(item.system.installedIn);
+          : this.getOwnedItem(item.system.installedIn[0]);
       await target.uninstallItems([item]);
     }
     return this.setMaxHumanity();
@@ -639,10 +644,25 @@ export default class CPRActor extends Actor {
    */
   getOwnedItem(itemId) {
     LOGGER.trace("getOwnedItem | CPRActor | Called.");
-    const item = this.items.find((i) => i._id === itemId)
-      ? this.items.find((i) => i._id === itemId)
-      : this.items.find((i) => i.uuid === itemId);
+    const item = this.items.find((i) => i._id === itemId || i.uuid === itemId);
     return item;
+  }
+
+  /**
+   * Return an array of Item objects given an array of Ids
+   *
+   * @public
+   * @param {Array} itemIds - Array of Ids or UUIDs of the item(s) to get.
+   * @returns {Array<CPRItem>}
+   */
+  getMultipleOwnedItems(itemIds) {
+    LOGGER.trace("getMultipleOwnedItems | CPRActor | Called.");
+    const items = [];
+    for (const id of itemIds) {
+      const ownedItem = this.items.find((i) => i._id === id || i.uuid === id);
+      items.push(ownedItem);
+    }
+    return items;
   }
 
   /**

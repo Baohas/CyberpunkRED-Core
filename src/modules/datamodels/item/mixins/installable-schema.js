@@ -30,9 +30,9 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
    * @returns {Boolean} - whether or not this is installed in an actor/item.
    */
   get isInstalled() {
-    LOGGER.trace("get isInstalled");
+    LOGGER.trace("get isInstalled | InstallableSchema | called.");
     const { id } = this.parent;
-    const actor = this.parent.isOwned ? this.parent.actor : false;
+    const actor = this.parent.isEmbedded ? this.parent.actor : false;
     if (actor) {
       return (
         actor.system.installedItems.list.includes(id) ||
@@ -43,26 +43,41 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
   }
 
   /**
+   * World installable items can be installed into multiple other world items.
+   *
+   * Most actor embedded items should only be installed in a single other embedded item.
+   * Ammo is the exception. Ammo can be installed into multiple different weapons.
+   *
    * @getter
-   * @returns {String} - the id of the item that this is installed in.
+   * @returns {Array<String>} - the id or list of ids of the item(s) that this is installed in.
    */
   get installedIn() {
-    LOGGER.trace("get installedIn");
+    LOGGER.trace("get installedIn | InstallableSchema | called.");
     const { id } = this.parent;
-    const actor = this.parent.isOwned ? this.parent.actor : false;
+    const actor = this.parent.isEmbedded ? this.parent.actor : false;
+    // If this item lives on an actor...
     if (actor) {
+      // ...and if this item is intsalled in the actor directly...
       const inActor = actor.system.installedItems.list.includes(id);
       if (inActor) {
-        return actor.id;
+        // ...return the actor's ID in an array
+        return [actor.id];
       }
-      const [ownedItem] = actor.items.filter((i) =>
+
+      // If not installed in the actor directly,
+      // check if this is installed in other embedded items.
+      const ownedItems = actor.items.filter((i) =>
         i.system?.installedItems?.list?.includes(id)
       );
-      return ownedItem.id;
+      // ...return the list of owned items this is installed in (or an empty array).
+      return ownedItems.map((i) => i.id);
     }
-    const [worldItem] = game.items.filter((i) =>
+
+    // If the item is not embedded (i.e. it exists in the world)...
+    const worldItems = game.items.filter((i) =>
       i.system?.installedItems?.list?.includes(id)
     );
-    return worldItem.id;
+    // ... return the list of world items this is installed in (or an empty array).
+    return worldItems.map((i) => i.id);
   }
 }

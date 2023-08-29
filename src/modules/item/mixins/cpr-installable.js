@@ -8,6 +8,8 @@ const Installable = function Installable() {
   /**
    * Install this item into a container type item
    *
+   * This is only ever called from the actor sheet.
+   *
    * @async
    */
   this.install = async function install() {
@@ -85,15 +87,25 @@ const Installable = function Installable() {
   /**
    * Uninstall this item.
    *
+   * This is only ever called from the actor sheet.
+   *
    * @async
    */
   this.uninstall = async function uninstall() {
+    if (!this.actor) {
+      return;
+    }
     LOGGER.trace("uninstall | Installable | Called.");
-    const actor = this.isEmbedded ? this.actor : false;
-    const container = actor
-      ? actor.getOwnedItem(this.system.installedIn)
-      : game.items.get(this.system.installedIn);
-    return container.uninstallItems([this]);
+    // In theory, something could be installed multiple items.
+    // In practice, this is currently only true for ammo items.
+    const containers = this.actor.getMultipleOwnedItems(
+      this.system.installedIn
+    );
+    const uninstallPromises = [];
+    for (const container of containers) {
+      uninstallPromises.push(container.uninstallItems([this]));
+    }
+    await Promise.all(uninstallPromises);
   };
 };
 

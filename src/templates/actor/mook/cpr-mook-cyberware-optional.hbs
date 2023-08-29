@@ -7,7 +7,7 @@
                  <br/>
                  {{localize "CPR.mookSheet.items.shiftClickToInstallorUninstall"}}"
    data-item-id="{{cyberware._id}}"
-   data-foundational-id="{{cyberware.system.installedIn}}">
+   data-foundational-id="{{cyberware.system.installedIn.[0]}}">
   {{~cprBrandedName cyberware}}{{#unless @last}},{{/unless~}}
 </a>
 {{~#if (cprCompare cyberware.type "===" "cyberware")}}
