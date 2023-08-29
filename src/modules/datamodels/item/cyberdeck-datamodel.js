@@ -25,7 +25,14 @@ export default class CyberdeckDataModel extends CPRSystemDataModel.mixin(
 ) {
   static defineSchema() {
     LOGGER.trace("defineSchema | CyberdeckDataModel | called.");
-    return this.mergeSchema(super.defineSchema(), {});
+    return this.mergeSchema(
+      super.defineSchema({
+        initialAllowedTypes: ["itemUpgrade", "program"],
+        includeSlots: true,
+        initialSlots: 7,
+      }),
+      {}
+    );
   }
 
   // eslint-disable-next-line foundry-cpr/logger-after-function-definition

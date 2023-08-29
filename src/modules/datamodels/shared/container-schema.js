@@ -20,13 +20,20 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
    * If an actor needs to mix it in, one must pass an options object: `{initialAllowedTypes: ["cyberware"], includeSlots: false}`.
    * See `mook-datamodel.js` or `character-datamodel.js` to see how this is done.
    *
-   * @param {Object} - options for configuring the schema
-   *   @prop {Array<String>} initialAllowedTypes - initial array for allowed types, different for Actors and Items.
-   *   @prop {Boolean} includeSlots - Items include slot data and actors dont. Set true by default since there are more
+   * @param {Object} - options for configuring the schema. Can be overridden in the class that calls this as a mixin.
+   *   @prop {Array<String>} options.initialAllowedTypes - initial array for allowed types, different for Actors and Items.
+   *   @prop {Boolean} options.includeSlots - Items include slot data and actors dont. Set true by default since there are more
+   *   @prop {Boolean} options.initialSlots - How many slots this item should start with.
    *      items than actors that mixin the Container Schema.
    * @returns {SchemaField}
    */
-  static defineSchema(options = { includeSlots: true }) {
+  static defineSchema(
+    options = {
+      initialAllowedTypes: ["itemUpgrade"],
+      includeSlots: true,
+      initialSlots: 3,
+    }
+  ) {
     LOGGER.trace("defineSchema | InstalledItemsSchema | called.");
     const { fields } = foundry.data;
 
@@ -39,7 +46,7 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
           blank: true,
           choices: SystemUtils.GetTemplateItemTypes("installable"),
         }),
-        { initial: options.initialAllowedTypes || ["itemUpgrade"] }
+        { initial: options.initialAllowedTypes }
       ),
       list: new fields.ArrayField(
         new fields.DocumentIdField({ required: true }),
@@ -58,7 +65,7 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
         required: true,
         nullable: false,
         integer: true,
-        initial: 3,
+        initial: options.initialSlots,
         min: 0,
       }),
     };
@@ -75,8 +82,9 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
   }
 
   /**
-   * Migrates data on the fly.
+   * Migrates data on the fly. From Foundry
    *
+   * @override
    * @param {CPRSystemDataModel} source - source actor or item `document.system`
    * @returns
    */
