@@ -6,31 +6,31 @@
 
 ### Corrections de bugs
 
-- Fix weapons moved to stash not applying correct amount of ammo stack
-- Fix incorrect Black Chrome Grenade Names
-- Fix `Heavy Pistol (ArmorPiercing)` icon
-- Fix Mood Eye Cyberware not being fashionware
-- Fix Perfect Fit Cyberfoot not requiring foundational
-- Fix HP and Humanity resetting to 40 HP/60 Humanity every time that world and current scene reloaded.
-- Fix unlinked character and mook actors resetting back to default 40 HP, 60 Humanity
-- Fix BlackICE actor program link list not in alphabetical order
-- Fix issue where orphaned effects on actors were causing migrations to fail.
+- Correction des armes déplacées vers la réserve n'appliquant pas la quantité correcte de munitions
+- Correction des noms incorrects de grenades de Black Chrome
+- Correction de l'icône `Pistolet Lourd (Perforation d'Armure)`
+- Correction de l'implant Mood eye ne faisant pas partie de cyberfashion
+- Correction du Cyberpied parfait ne nécessitant pas de base
+- Correction de la réinitialisation des PS et Humanité à 40 PS/60 Humanité chaque fois que le monde et la scène actuelle étaient rechargés.
+- Correction des acteurs non-liés et les acteurs sbires réinitialisant les 40 PS par défaut, 60 Humanité
+- Correction de la liste des liens de programme GLACE noirs par ordre alphabétique
+- Correction du problème où les effets orphelins sur les acteurs provoquaient l'échec des migrations.
 
 ### Nouvelles fonctionnalités
 
-- The Changelog is now a Journal allowing:
-  - The entire Changelog to be shown
-  - Re-opening at any time
+- Le journal des modifications est maintenant un journal autorisant :
+  - L'affichage de l'ensemble du journal des modifications
+  - Réouverture à tout moment
 
 ## Version 0.88.1
 
 ### Action Needed
 
-**WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
+**AVERTISSEMENT**: SI VOUS AVEZ CHARGE LA MISE À JOUR  `0.88.0`/FOUNDRY V11, C'ETAIT UNE ERREUR (mais pas de votre faute). VOUS DEVEZ REVENIR A LA SAUVEGARDE QUE VOUS AVEZ FAITE / FOUNDRY V10, AVANT LA MISE À JOUR À CETTE VERSION. A NOUVEAU, **REVENEZ A FOUNDRY V10 ET A VOTRE SAUVEGARDE QUE VOUS AVEZ FAIT DE CPR `0.87.6`**, PUIS METTEZ À JOUR DIRECTEMENT AVEC LA `V0.88.1`. Passez sur le Discord si vous avez un problème.
 
 ### Corrections de bugs
 
-- Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
+- Correction d'un bug (de Foundry) où les jetons non liés perdaient tous leurs objets.
 
 ## Version 0.88.0
 
@@ -1231,12 +1231,12 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Refactored data model to conform with plans going forward.
 - Logging has been overhauled.
 
-## Version: 0.66.0 (Hotfix) | Date: 2021-03-21
+## Version: 0.66 (Hotfix) | Date: 2021-03-21
 
 - Aimed shot was using the Autofire Skill when attacking instead of using the Weapon Skill
 - Suppressive Fire was using the Weapon Skill when attacking instead of using the Autofire Skill
 
-## Version: 0.65.0 | Date: 2021-03-20
+## Version: 0.65 | Date: 2021-03-20
 
 ### UI/UX
 

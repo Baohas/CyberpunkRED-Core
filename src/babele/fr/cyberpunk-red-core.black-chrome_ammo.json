@@ -18,11 +18,11 @@
       "description": "<p>Type de munitions spéciales pour pistolet à air comprimé. Pour plus d'informations, voir la page 44 de Black Chrome.</p>"
     },
     "Grenade (Arachnid)": {
-      "name": "Grenade (Arachnid)",
+      "name": "Grenade (Arachnoïde)",
       "description": "<p>Une grenade très collante, dont les détails peuvent être trouvés à la page 86.</p>"
     },
     "Grenade (Security)": {
-      "name": "Grenade (Security)",
+      "name": "Grenade (Sécurité)",
       "description": "<p>Grenade perforante qui n'endommage pas les couverts. Des règles complètes peuvent être trouvées à la page 89.</p>"
     },
     "Grenade (Shuriken Tornado)": {
