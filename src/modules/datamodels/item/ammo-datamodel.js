@@ -4,12 +4,14 @@ import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../abstract.js";
 import CommonSchema from "./mixins/common-schema.js";
+import InstallableSchema from "./mixins/installable-schema.js";
 import PhysicalSchema from "./mixins/physical-schema.js";
 import StackableSchema from "./mixins/stackable-schema.js";
 import ValuableSchema from "./mixins/valuable-schema.js";
 
 export default class AmmoDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
+  InstallableSchema,
   PhysicalSchema,
   StackableSchema,
   ValuableSchema
@@ -17,7 +19,7 @@ export default class AmmoDataModel extends CPRSystemDataModel.mixin(
   static defineSchema() {
     LOGGER.trace("defineSchema | AmmoDataModel | called.");
     const { fields } = foundry.data;
-    return this.mergeSchema(super.defineSchema(), {
+    return this.mergeSchema(super.defineSchema({ initialSize: 0 }), {
       ablationValue: new fields.NumberField({
         required: true,
         nullable: false,

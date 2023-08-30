@@ -19,8 +19,6 @@ export default class CPRCyberwareItem extends CPRItem {
     const actionData = actionAttributes["data-action"].nodeValue;
     switch (actionData) {
       case "select-ammo":
-      case "unload":
-      case "load":
       case "reload-ammo":
       case "measure-dv": {
         return this._weaponAction(actor, actionAttributes);

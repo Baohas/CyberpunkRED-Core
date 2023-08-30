@@ -4,7 +4,7 @@ import CPR from "../../../system/config.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class InstallableSchema extends foundry.abstract.DataModel {
-  static defineSchema() {
+  static defineSchema(options = { initialSize: 1 }) {
     LOGGER.trace("defineSchema | InstallableSchema | called.");
     const { fields } = foundry.data;
     return {
@@ -16,7 +16,7 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
         required: true,
         nullable: false,
         integer: true,
-        initial: 1,
+        initial: options.initialSize,
         min: 0,
       }),
     };

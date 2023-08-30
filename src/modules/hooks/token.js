@@ -66,63 +66,6 @@ const tokenHooks = () => {
       });
     }
   });
-
-  /**
-   * The createToken Hook is provided by Foundry and triggered here. When a token is created, this hook is called
-   * just after. This hook is for unlinked tokens being created.  When an unlinked token is created, the actor data
-   * becomes a synthetic actor and only differential data is stored to the token. With the Universal Install system,
-   * without this hook, all installed items and items that have installed items would have references back to the
-   * original actor that was used to create this token.  This hook updates all owned items which have references to
-   * other owned items.
-   *
-   * Note: When this hook is called, it is called for all users, players included. You can avoid this by checking if
-   * tokenDocument.isOwner.
-   *
-   * @public
-   * @memberof hookEvents
-   * @param {TokenDocument} tokenDocument  The token object created
-   * @param {object} (unused)              Additional options passed by Foundry which modify the create request
-   * @param {string} (unused)              The ID of the requesting user, always game.user.id
-   */
-  Hooks.on("createToken", (tokenDocument, options, user) => {
-    LOGGER.trace("createToken | tokenHooks | Called.");
-    const installableActors = ["mook", "character"]; // Define actors that can have items 'installed' into them.
-    const updateList = [];
-    if (
-      !tokenDocument.isLinked &&
-      tokenDocument.isOwner && // Only fire if the user owns the token being created. preventing permissions errors.
-      installableActors.includes(tokenDocument.actor.type) // Only fire for actors that can have installed items.
-    ) {
-      const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
-      const loadedItems = tokenDocument.actor.items.filter((i) =>
-        loadableTypes.includes(i.type)
-      );
-
-      for (const item of loadedItems) {
-        const itemUpdates = {
-          _id: item._id,
-          system: {},
-        };
-
-        if (loadableTypes.includes(item.type)) {
-          const ammoId = item.system.magazine.ammoData.uuid.split(".").pop();
-          const ammoItem = tokenDocument.actor.getOwnedItem(ammoId);
-          if (ammoItem) {
-            itemUpdates.system.magazine = { ammoData: { name: "", uuid: "" } };
-            itemUpdates.system.magazine.ammoData = {
-              name: ammoItem.name,
-              uuid: ammoItem.uuid,
-            };
-          }
-        }
-
-        if (Object.keys(itemUpdates.system).length > 0) {
-          updateList.push(itemUpdates);
-        }
-      }
-    }
-    tokenDocument.actor.updateEmbeddedDocuments("Item", updateList, {});
-  });
 };
 
 export default tokenHooks;

@@ -27,16 +27,10 @@ const Attackable = function Attackable() {
     const actionData = actionAttributes["data-action"].nodeValue;
     switch (actionData) {
       case "select-ammo":
-        await this._loadItem();
-        break;
-      case "unload":
-        await this._unloadItem();
-        break;
-      case "load":
-        await this._loadItem();
+        await this.load();
         break;
       case "reload-ammo":
-        await this._loadItem(this.system.magazine.ammoData.uuid);
+        await this.reload();
         break;
       case "measure-dv":
         return this._setDvTable(actor, this.system.dvTable);

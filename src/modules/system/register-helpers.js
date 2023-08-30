@@ -1282,9 +1282,7 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprGetWeaponAutofireMax", (weapon) => {
     LOGGER.trace("cprGetWeaponDamage | handlebarsHelper | Called.");
     const weaponAutofireMax = weapon.system.fireModes.autoFire;
-    const ammoItem = weapon.actor.getOwnedItem(
-      weapon.system.magazine.ammoData.uuid
-    );
+    const [ammoItem] = weapon.getInstalledItems("ammo");
     let trueMax = 0;
     if (ammoItem && ammoItem.system.overrides.autofire.mode === "set") {
       trueMax = ammoItem.system.overrides.autofire.value;

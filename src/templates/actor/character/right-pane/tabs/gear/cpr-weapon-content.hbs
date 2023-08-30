@@ -15,9 +15,9 @@
       {{/if}}
     </a>
   </div>
-  <div class="gear-amount" {{#if item.system.isRanged }} {{#if item.system.magazine.ammoData.uuid }} data-tooltip="{{item.system.magazine.ammoData.name }}" {{/if }} {{/if }}>
+  <div class="gear-amount" {{#if item.system.isRanged }} {{#if item.system.hasAmmoLoaded }} data-tooltip="{{item.system.loadedAmmo.name }}" {{/if }} {{/if }}>
     {{#if item.system.isRanged }}
-      {{#if item.system.magazine.ammoData.uuid }}
+      {{#if item.system.hasAmmoLoaded }}
         {{item.system.magazine.value}}/{{cprApplyUpgrade item item.system.magazine.max "magazine"}}
       {{/if}}
     {{/if}}

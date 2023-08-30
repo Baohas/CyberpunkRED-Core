@@ -131,13 +131,6 @@ export default class CPRActor extends Actor {
         updateData["system.isRezzed"] = false;
       }
 
-      if (item.type === "weapon") {
-        updateData["system.magazine.ammoData"] = {
-          name: "",
-          uuid: "",
-        };
-      }
-
       if (item.system.core) {
         installedList.push(item.id);
       }
@@ -1196,21 +1189,6 @@ export default class CPRActor extends Actor {
     );
     cprRoll.addMod(deathSavePenaltyMods);
     return cprRoll;
-  }
-
-  // We need a way to unload a specific ammo from all of the weapons
-  // in case the ammo item is deleted or given to someone else.
-  unloadAmmoFromAllOwnedWeapons(ammoId) {
-    LOGGER.trace("unloadAmmoFromAllOwnedWeapons | CPRActor | Called.");
-    const weapons = this.itemTypes.weapon;
-    weapons.forEach((weapon) => {
-      const cprWeaponData = weapon.system;
-      if (cprWeaponData.isRanged) {
-        if (cprWeaponData.magazine.ammoData.uuid === ammoId) {
-          weapon._unloadItem();
-        }
-      }
-    });
   }
 
   /**

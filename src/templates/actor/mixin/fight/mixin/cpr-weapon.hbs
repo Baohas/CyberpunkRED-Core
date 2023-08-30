@@ -38,8 +38,8 @@
   {{!-- Ammo Ammo Details --}}
   <div class="weapon-ammo">
     {{#if this.system.isRanged}}
-      {{#if this.system.magazine.ammoData.uuid}}
-        {{#with (cprGetOwnedItem actor this.system.magazine.ammoData.uuid) as |ammoData|}}
+      {{#if this.system.hasAmmoLoaded}}
+        {{#with this.system.loadedAmmo as |ammoData|}}
           {{localize (cprFindConfigValue "ammoType" ammoData.system.type)}}:
         {{/with}}
         {{this.system.magazine.value}}

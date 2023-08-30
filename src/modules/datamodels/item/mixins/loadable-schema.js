@@ -25,14 +25,20 @@ export default class LoadableSchema extends foundry.abstract.DataModel {
           initial: 0,
           min: 0,
         }),
-        ammoData: new fields.SchemaField({
-          name: new fields.StringField({ blank: true, initial: "" }),
-          uuid: new fields.StringField({ blank: true, initial: "" }),
-        }),
       }),
       ammoVariety: new fields.ArrayField(
         new fields.StringField({ choices: Object.keys(CPR.ammoVariety) })
       ),
     };
+  }
+
+  get loadedAmmo() {
+    LOGGER.trace("loadedAmmo | LoadableSchema | called.");
+    return this.parent.getInstalledItems("ammo")[0];
+  }
+
+  get hasAmmoLoaded() {
+    LOGGER.trace("hasAmmoLoaded | LoadableSchema | called.");
+    return this.parent.getInstalledItems("ammo").length > 0;
   }
 }

@@ -15,13 +15,13 @@
         <div class="dialog-item-input item-end">
           <select name="selectedAmmo">
             {{#select selectedAmmo}}
-              {{#if (cprCompare weapon.system.magazine.ammoData.uuid "!==" "") }}
+              {{#if weapon.system.hasAmmoLoaded }}
                 <option value="">
-                  {{localize "CPR.dialog.loadAmmo.unload"}} {{localize "CPR.global.itemTypes.weapon"}}
+                  {{localize "CPR.dialog.loadAmmo.unload"}}
                 </option>
               {{/if}}
               {{#each this.ammoList as |ammo| }}
-                <option value="{{ammo.uuid}}">
+                <option value="{{ammo.id}}">
                   {{ammo.name}}
                   {{#unless (cprStringContainsSubstringList ammo.name (cprListConcat (localize (cprFindConfigValue 'ammoType' ammo.system.type)) ammo.system.type))}}
                     ({{localize (cprFindConfigValue "ammoType" ammo.system.type)}})

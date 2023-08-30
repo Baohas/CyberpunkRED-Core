@@ -146,7 +146,6 @@ const itemHooks = () => {
   Hooks.on("createItem", async (doc, _, userId) => {
     LOGGER.trace("createItem | itemHooks | Called.");
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
 
     // If the item is being created on an actor and is a container...
     if (doc.parent && containerTypes.includes(doc.type)) {
@@ -181,13 +180,6 @@ const itemHooks = () => {
       // Convert the embedded data into other world items and update
       // the original item's `system.installedItems.list` to point to them.
       doc.importInstalledToWorld();
-    }
-
-    if (
-      loadableTypes.includes(doc.type) &&
-      doc.system.magazine.ammoData.uuid !== ""
-    ) {
-      doc.createAmmoItems();
     }
 
     const actor = doc.parent;

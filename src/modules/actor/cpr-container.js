@@ -93,13 +93,6 @@ export default class CPRContainerActor extends Actor {
         updateData["system.isRezzed"] = false;
       }
 
-      if (item.type === "weapon") {
-        updateData["system.magazine.ammoData"] = {
-          name: "",
-          uuid: "",
-        };
-      }
-
       updateList.push(updateData);
     }
 

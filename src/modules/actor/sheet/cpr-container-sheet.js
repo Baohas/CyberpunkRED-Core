@@ -438,13 +438,8 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
 
     if (dialogData !== undefined) {
       const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
-      if (
-        loadableTypes.includes(item.type) &&
-        item.system.magazine.ammoData.uuid !== ""
-      ) {
-        await item._unloadItem();
-        cprItemData.magazine.ammoData = { uuid: "", name: "" };
-        cprItemData.magazine.value = 0;
+      if (loadableTypes.includes(item.type)) {
+        await item.unload();
       }
       let createItems = [];
       const deleteItems = [];
