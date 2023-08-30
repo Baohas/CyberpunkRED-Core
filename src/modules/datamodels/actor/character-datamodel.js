@@ -18,7 +18,7 @@ export default class CharacterDataModel extends CPRSystemDataModel.mixin(
     const { fields } = foundry.data;
     return this.mergeSchema(
       super.defineSchema({
-        initiallAllowedTypes: ["cyberware"],
+        initialAllowedTypes: ["cyberware"],
         includeSlots: false,
       }),
       {

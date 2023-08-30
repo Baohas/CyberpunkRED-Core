@@ -11,7 +11,7 @@ export default class MookDataModel extends CPRSystemDataModel.mixin(
     LOGGER.trace("defineSchema | CommonSchema | called.");
     return this.mergeSchema(
       super.defineSchema({
-        initiallAllowedTypes: ["cyberware"],
+        initialAllowedTypes: ["cyberware"],
         includeSlots: false,
       }),
       {}
