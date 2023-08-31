@@ -378,7 +378,7 @@ export default class PackUtils {
       const packType = this.getPackType(itemKey);
       const packSubType = this.getPackSubType(itemKey);
       const itemName = data.name;
-      const itemDescription = data.system?.description.value
+      const itemDescription = data.system?.description?.value
         ? data.system.description.value
         : "";
 
