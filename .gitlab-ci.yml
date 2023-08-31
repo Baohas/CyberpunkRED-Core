@@ -340,8 +340,7 @@ language-exists:
     - apt-get install jq --yes
   script:
     - echo "Checking if all the language files specified in system.json exist..."
-    # disabling while we fix Crowdin
-    # -./.gitlab/pipeline_tests/test-lang-existence.sh
+    - ./.gitlab/pipeline_tests/test-lang-existence.sh
   needs:
     - job: init
       artifacts: true
