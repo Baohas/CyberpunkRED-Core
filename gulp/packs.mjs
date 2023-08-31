@@ -132,11 +132,14 @@ async function genPacksBabele() {
   const sysFile = JSON.parse(
     fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE))
   );
-  let { packs } = sysFile;
+  const { packs } = sysFile;
 
   // Skip the changelog pack as we generate that with 'generateChangelog'
   // and it doesn't need to be translated
-  packs = packs.filter((pack) => pack.name !== "other_changelog");
+  // Skip the skills pack as translating that breaks tons of functioanlity
+  // in the system
+  const packsToRemove = ["internal_skills", "other_changelog"];
+  const updatedPacks = PackUtils.removePacksByName(packs, packsToRemove);
 
   // To handle compendia renames we need to blast the files then rebuild them
   if (fs.existsSync(babeleDir)) {
@@ -144,7 +147,7 @@ async function genPacksBabele() {
   }
   fs.mkdirSync(babeleDir);
 
-  const promises = packs.map(async (pack) => {
+  const promises = updatedPacks.map(async (pack) => {
     const packName = pack.name;
     const packLabel = pack.label;
     const fragmentPath = path.resolve(SRC_DIR, pack.path);
