@@ -132,6 +132,18 @@ export default class PackUtils {
       .replace(/[“”]/gu, '"');
   }
 
+  /**
+   * Removes packs from the array based on their names.
+   * @param {Array} packs - The array of packs.
+   * @param {Array} packNamesToRemove - The array of pack names to remove.
+   * @returns {Promise<Array>} - The updated array of packs after removal.
+   */
+  static removePacksByName(packs, packNamesToRemove) {
+    return packs.filter((pack) => {
+      return !packNamesToRemove.includes(pack.name);
+    });
+  }
+
   /*
    * Determine the name of the YAML fragment of an extracted pack
    *
