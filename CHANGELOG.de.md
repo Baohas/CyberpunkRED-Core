@@ -7,6 +7,7 @@
 ### Änderungen
 
 - Switched to using DataModels to enforce data types (#316, #723)
+- Add setting to disable warning when rolling damage without targets
 
 ### Fehlerbehebungen
 

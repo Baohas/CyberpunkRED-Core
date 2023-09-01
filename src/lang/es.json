@@ -1104,6 +1104,8 @@
   "CPR.settings.title": "Configuración",
   "CPR.settings.traceLogs.hint": "Habilitar los registros de rastros. Actívalo cuando estés presentando un error o trabajando con los desarrolladores de módulos en un problema.",
   "CPR.settings.traceLogs.name": "Registro de Rastros",
+  "CPR.settings.warnAboutNoTargetsWhenRollingDamage.hint": "Uncheck to disable the warning about having no tokens targeted when rolling damage. Useful if you don't want to enforce using Foundry's targeting functionality.",
+  "CPR.settings.warnAboutNoTargetsWhenRollingDamage.name": "Warn when rolling without targets",
   "CPR.sheets.blackiceSheet": "Hoja de Hielo Negro",
   "CPR.sheets.characterSheet": "Hoja de Personaje",
   "CPR.sheets.containerSheet": "Hoja de Contenedor/Tienda",

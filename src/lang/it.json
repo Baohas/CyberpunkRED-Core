@@ -1104,6 +1104,8 @@
   "CPR.settings.title": "Impostazioni",
   "CPR.settings.traceLogs.hint": "Abilita traccia di registro. Attiva questa opzione quando si rileva un bug o si sta lavorando con gli sviluppatori di moduli su un problema.",
   "CPR.settings.traceLogs.name": "Tracce di Registro",
+  "CPR.settings.warnAboutNoTargetsWhenRollingDamage.hint": "Uncheck to disable the warning about having no tokens targeted when rolling damage. Useful if you don't want to enforce using Foundry's targeting functionality.",
+  "CPR.settings.warnAboutNoTargetsWhenRollingDamage.name": "Warn when rolling without targets",
   "CPR.sheets.blackiceSheet": "Sceda Black ICE",
   "CPR.sheets.characterSheet": "Scheda del Personaggio",
   "CPR.sheets.containerSheet": "Scheda Contenitore/Negozio",
