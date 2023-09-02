@@ -53,7 +53,7 @@
             {{#if (cprSheetContentFilter ../../this.options.cprContentFilter item.name) }}
               {{!-- Partial handles Name and Data columns --}}
               {{> (cprGeneratePartial "systems/cyberpunk-red-core/templates/actor/character/right-pane/tabs/gear/cpr-VAR-content.hbs" c) (cprMergeForPartialArg "item,actor,sheet" this ../../this.actor ../../this)}}
-              {{!- Item actions column --}}
+              {{cprNestedInstalledGearTab item}}
             {{/if}}
           {{/each}}
         </ol>

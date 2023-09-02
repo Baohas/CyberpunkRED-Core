@@ -879,6 +879,57 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Returns an series of nested <li> elements representing nested installed items.
+   *
+   * @param {CPRItem(Container)} item - The top-level item.
+   * @returns {Handlebars.SafeString} - Nested list of installed items.
+   */
+  Handlebars.registerHelper("cprNestedInstalledGearTab", (item) => {
+    LOGGER.trace("cprGearInstalled | handlebarsHelper | Called.");
+
+    /**
+     * This function is the thing that actually puts the list together. It works
+     * recursively, calling itself if child items also have installed items.
+     *
+     * @param {CPRItem(Container)} parentItem - The parent item.
+     * @param {Number} [rem = 1] - The amount of indentation.
+     * @returns {String}
+     */
+    function recursiveHTML(parentItem, rem = 1) {
+      // Get all items installed in the parent.
+      const installedItems = parentItem.getInstalledItems();
+      let html = "";
+      // For each installed item, create an <li> element with information about that item.
+      for (const childItem of installedItems) {
+        const localizedType = SystemUtils.Localize(
+          `TYPES.Item.${childItem.type}`
+        );
+        html += `<li class="item flexrow" style="padding-left:${rem}rem" data-item-id="${childItem.id}"
+                     data-item-category="${childItem.type}">`;
+        html += `  <a class="name item-view flex-center">- ${childItem.name} (${localizedType})</a>`;
+        html += `</li>`;
+        // If the child item has its own installed items, call this function on the child item
+        // and increase the indent.
+        if (childItem.system.installedItems?.list?.length > 0) {
+          html += recursiveHTML(childItem, rem + 1);
+        }
+      }
+      return html;
+    }
+
+    // Only return something if the item isn't installed, and has installed items.
+    if (
+      item.system.installedItems?.list?.length > 0 &&
+      !item.system.isInstalled
+    ) {
+      const html = recursiveHTML(item);
+      return new Handlebars.SafeString(html);
+    }
+    // Otherwise return a blank string.
+    return "";
+  });
+
+  /**
    * Returns true if an item type has a particular template applied in the data model
    * To Do: isUpgradeable should use this instead
    */
