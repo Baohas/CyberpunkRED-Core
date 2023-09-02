@@ -1159,7 +1159,15 @@ export default class CPRItemSheet extends ItemSheet {
     // Items that *can* be installed, but might not be currently.
     const installableItems = installTarget
       .getInstallableItems(itemType)
-      .filter((i) => !i.system.isInstalled && i.id !== this.item.id);
+      .filter((i) => {
+        // You cannot install something into itself. Get outta here ouroboros.
+        if (i.id === this.item.id) return false;
+        // You can uninstall things that are already installed in this item.
+        if (i.system.isInstalled && i.system.installedIn[0] !== this.item.id) {
+          return false;
+        }
+        return true;
+      });
     // Items that are currently installed.
     const installedItems = installTarget.getInstalledItems(itemType);
 
