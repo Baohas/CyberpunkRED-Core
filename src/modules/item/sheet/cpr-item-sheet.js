@@ -1157,7 +1157,9 @@ export default class CPRItemSheet extends ItemSheet {
     const installTarget = this.item;
     const actor = installTarget.isOwned ? installTarget.actor : false;
     // Items that *can* be installed, but might not be currently.
-    const installableItems = installTarget.getInstallableItems(itemType);
+    const installableItems = installTarget
+      .getInstallableItems(itemType)
+      .filter((i) => !i.system.isInstalled && i.id !== this.item.id);
     // Items that are currently installed.
     const installedItems = installTarget.getInstalledItems(itemType);
 
