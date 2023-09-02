@@ -283,6 +283,7 @@ const Container = function Container() {
     // Duplicate the currenlty installed items.
     const installedIds = duplicate(this.system.installedItems.list);
 
+    const uninstallPromises = [];
     for (const item of uninstallList) {
       // Get index of uninstalled item.
       const index = installedIds.indexOf(item.id);
@@ -293,10 +294,13 @@ const Container = function Container() {
       if (recursive && containerTypes.includes(item.type)) {
         const recursiveUninstalled = item.getInstalledItems();
         if (recursiveUninstalled.length > 0) {
-          await item.uninstallItems(recursiveUninstalled, true);
+          uninstallPromises.push(
+            item.uninstallItems(recursiveUninstalled, true)
+          );
         }
       }
     }
+    await Promise.all(uninstallPromises);
 
     // Programs require some special actions like setting isRezzed to false,
     // and deleting any Black Ice tokens from the canvas, if applicable.
@@ -306,6 +310,14 @@ const Container = function Container() {
     );
     if (uninstalledPrograms.length > 0 && this.type === "cyberdeck") {
       await this.uninstallPrograms(uninstalledPrograms);
+    }
+
+    // Ammo also requires some special actions when uninstalling, namely restoring the ammo
+    // in the magazine back to the ammo item.
+    const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
+    const uninstalledAmmo = uninstallList.filter((i) => i.type === "ammo");
+    if (uninstalledAmmo.length > 0 && loadableTypes.includes(this.type)) {
+      await this.unload();
     }
 
     // Update used slots with the newly installed system.

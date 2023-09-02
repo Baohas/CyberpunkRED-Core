@@ -49,6 +49,13 @@ const Loadable = function Loadable() {
     return Promise.resolve();
   };
 
+  /**
+   * Unload this weapon. Put the ammo back in the ammo item.
+   * Called by `containerMixin.uninstallItems()`.
+   *
+   * @async
+   * @returns {Promise}
+   */
   this.unload = async function unload() {
     LOGGER.trace("unload | Loadable | Called.");
     const [currentAmmo] = this.getInstalledItems("ammo");
@@ -57,6 +64,12 @@ const Loadable = function Loadable() {
     return currentAmmo.update({ "system.amount": newAmount });
   };
 
+  /**
+   * Open a dialog to configure which ammo is loaded into this weapon.
+   *
+   * @async
+   * @returns {Promise}
+   */
   this.load = async function load() {
     LOGGER.trace("load | Loadable | Called.");
     const [currentAmmo] = this.getInstalledItems("ammo");
@@ -64,7 +77,7 @@ const Loadable = function Loadable() {
     const validAmmo = [];
     Object.keys(ownedAmmo).forEach((index) => {
       const ammo = ownedAmmo[index];
-      if (this.getRollData().ammoVariety.includes(ammo.getRollData().variety)) {
+      if (this.system.ammoVariety.includes(ammo.system.variety)) {
         validAmmo.push(ammo);
       }
     });
@@ -94,14 +107,12 @@ const Loadable = function Loadable() {
 
     const selectedAmmoId = dialogData.selectedAmmo;
     if (selectedAmmoId === "") {
-      await this.unload();
-      await this.uninstallItems([currentAmmo]);
+      return this.uninstallItems([currentAmmo]);
     }
 
     const selectedAmmo = this.actor.getOwnedItem(selectedAmmoId);
     if (selectedAmmo?.id !== currentAmmo?.id) {
       if (currentAmmo) {
-        await this.unload();
         await this.uninstallItems([currentAmmo]);
       }
       await this.installItems([selectedAmmo]);
@@ -110,32 +121,45 @@ const Loadable = function Loadable() {
     return Promise.resolve();
   };
 
+  /**
+   * Reload this weapon from loaded ammo. If no ammo is loaded, open the load dialog.
+   *
+   * @async
+   * @returns {Promise}
+   */
   this.reload = async function reload() {
     LOGGER.trace("reload | Loadable | Called.");
     const [loadedAmmo] = this.getInstalledItems("ammo");
     if (!loadedAmmo) {
       return this.load();
     }
+    if (loadedAmmo.system.amount === 0) {
+      return SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.messages.reloadOutOfAmmo")
+      );
+    }
     const magazineSpace = this.getUpgradedMagazine();
     if (magazineSpace > 0) {
       let newValue = this.system.magazine.value;
-      if (Number(loadedAmmo.system.amount) >= magazineSpace) {
+      if (loadedAmmo.system.amount >= magazineSpace) {
         newValue += magazineSpace;
         await this.update({ "system.magazine.value": newValue });
         return loadedAmmo._ammoDecrement(magazineSpace);
       }
 
-      newValue =
-        Number(this.system.magazine.value) + Number(loadedAmmo.system.amount);
+      newValue = this.system.magazine.value + loadedAmmo.system.amount;
       await this.update({ "system.magazine.value": newValue });
       return loadedAmmo._ammoDecrement(loadedAmmo.system.amount);
     }
-    return SystemUtils.DisplayMessage(
-      "warn",
-      SystemUtils.Localize("CPR.messages.reloadOutOfAmmo")
-    );
+    return Promise.resolve();
   };
 
+  /**
+   * Calculate the amount of space in this magazine, including upgrades.
+   *
+   * @returns {Number} - upgraded magazine space
+   */
   this.getUpgradedMagazine = function getUpgradedMagazine() {
     const magazineData = this.system.magazine;
     const upgradeData = this.getTotalUpgradeValues("magazine");
@@ -183,16 +207,16 @@ const Loadable = function Loadable() {
    */
   this.setWeaponAmmo = function setWeaponAmmo(value) {
     LOGGER.trace("setWeaponAmmo | Loadable | Called.");
-    const maxAmmo = this.getRollData().magazine.max;
+    const maxAmmo = this.system.magazine.max;
     if (this.type === "weapon") {
       if (value.charAt(0) === "+" || value.charAt(0) === "-") {
-        this.getRollData().magazine.value = Math.clamped(
+        this.system.magazine.value = Math.clamped(
           0,
-          this.getRollData().magazine.value + parseInt(value, 10),
+          this.system.magazine.value + parseInt(value, 10),
           maxAmmo
         );
       } else {
-        this.getRollData().magazine.value = Math.clamped(0, value, maxAmmo);
+        this.system.magazine.value = Math.clamped(0, value, maxAmmo);
       }
     }
   };
