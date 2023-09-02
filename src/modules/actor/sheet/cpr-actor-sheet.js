@@ -237,7 +237,7 @@ export default class CPRActorSheet extends ActorSheet {
         name: e.name,
         sourceName: e.sourceName,
         parentName: e.parent.name,
-        id: e.id,
+        uuid: e.uuid,
         icon: e.icon,
         usage: e.usage,
         system: {
