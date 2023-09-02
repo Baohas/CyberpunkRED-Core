@@ -30,6 +30,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 - Fix Perfect Fit Cyberfoot not requiring foundational
 - Fix HP and Humanity resetting to 40 HP/60 Humanity every time that world and current scene reloaded.
 - Fix unlinked character and mook actors resetting back to default 40 HP, 60 Humanity
+- Fix being unable to edit/toggle the same AE from multiple copies of the same item.
 - Fix BlackICE actor program link list not in alphabetical order
 - Fix issue where items did not have their dv tables translated.
 - Fixed rare issue where container actor would fail migration.
