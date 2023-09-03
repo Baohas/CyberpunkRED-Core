@@ -1,5 +1,8 @@
 {
   "label": "La Météo de Night City",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Umbrella": {
       "name": "Parapluie",
