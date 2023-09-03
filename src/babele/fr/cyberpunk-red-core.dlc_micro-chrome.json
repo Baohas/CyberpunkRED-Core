@@ -1,5 +1,8 @@
 {
   "label": "Micro Chrome",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Superflash Jacket": {
       "name": "Veste Superflash",
