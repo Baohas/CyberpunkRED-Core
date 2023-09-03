@@ -1,5 +1,8 @@
 {
   "label": "Armurerie d'Elflines Online",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Arrow": {
       "name": "Flèche",
