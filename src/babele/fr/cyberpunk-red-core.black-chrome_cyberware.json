@@ -1,5 +1,8 @@
 {
   "label": "Cyberimplants",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Airhypo Cyberfinger": {
       "name": "Cyberdoigt hypodair",
