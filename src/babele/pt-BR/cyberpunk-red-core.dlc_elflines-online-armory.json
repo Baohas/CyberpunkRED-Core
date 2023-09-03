@@ -55,7 +55,8 @@
     },
     "Bow": {
       "name": "Arco",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>",
+      "dvTable": "DV Arcos e Balestras"
     },
     "Dagger": {
       "name": "Dagger",
