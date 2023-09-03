@@ -1,5 +1,8 @@
 {
   "label": "Ulepszenia",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Armored Chassis": {
       "name": "Armored Chassis",
