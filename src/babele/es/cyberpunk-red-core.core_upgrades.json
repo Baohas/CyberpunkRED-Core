@@ -1,5 +1,8 @@
 {
   "label": "Actualizaciones",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Armored Chassis": {
       "name": "Chasis Blindado",
