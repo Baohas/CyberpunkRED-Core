@@ -1,5 +1,8 @@
 {
   "label": "Cyberware",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Amplified Hearing": {
       "name": "Amplified Hearing",

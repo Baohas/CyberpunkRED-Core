@@ -361,6 +361,7 @@ export default class PackUtils {
     // Setup the base object for to be populated and output to the babele file
     const packData = {
       label: packLabel,
+      mapping: {},
       entries: {},
     };
 
@@ -394,6 +395,10 @@ export default class PackUtils {
         // field exists, and add it to the entry in the babele file if so.
         if (data.system?.dvTable) {
           item.dvTable = data.system.dvTable;
+          // Make sure the dvTable field in babele files gets mapped to the correct item data field.
+          if (!packData.mapping.dvTable) {
+            packData.mapping.dvTable = "system.dvTable";
+          }
         }
 
         // Add the item to the packData
