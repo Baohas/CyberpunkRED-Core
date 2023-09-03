@@ -63,27 +63,33 @@
     },
     "Big Dreem": {
       "name": "Big Dreem",
-      "description": "<p>Exotic SMG. Autofire only. Even if you drop the weapon, it will continue to Autofire.</p>"
+      "description": "<p>Exotic SMG. Autofire only. Even if you drop the weapon, it will continue to Autofire.</p>",
+      "dvTable": "СЛ ПП (Авто)"
     },
     "Hello Cutie 1TruLuv": {
       "name": "Hello Cutie 1TruLuv",
-      "description": "<p>Exotic Sniper Rifle. Can load non basic ammunition.</p>\n<p>Equipped with a Sniping Scope and Infrared Night Vision Scope*, and built-in Agent which includes a pseudo AI girlfriend who can recognize and talk to the owner.</p>\n<p>Take good care of it/her and use it/her regularly and the weapon improves. Neglect it/her and you'll have to apologize...</p>\n<p><em>* These upgrades need to be installed manually after adding to an actor<br></em></p>"
+      "description": "<p>Exotic Sniper Rifle. Can load non basic ammunition.</p>\n<p>Equipped with a Sniping Scope and Infrared Night Vision Scope*, and built-in Agent which includes a pseudo AI girlfriend who can recognize and talk to the owner.</p>\n<p>Take good care of it/her and use it/her regularly and the weapon improves. Neglect it/her and you'll have to apologize...</p>\n<p><em>* These upgrades need to be installed manually after adding to an actor<br></em></p>",
+      "dvTable": "СЛ Снайперская винтовка"
     },
     "Molotov Cocktail": {
       "name": "Molotov Cocktail",
-      "description": "<p>Fragile Incendiary Grenade. Set a target Deadly on Fire (see CP:R p.180)</p>"
+      "description": "<p>Fragile Incendiary Grenade. Set a target Deadly on Fire (see CP:R p.180)</p>",
+      "dvTable": "СЛ Метательное оружие"
     },
     "SportMaster": {
       "name": "SportMaster",
-      "description": "<p>A sport rifle, for fun, not people. Can only load Small Game Ammunition and is incapable of Autofire and Suppressive Fire.</p>"
+      "description": "<p>A sport rifle, for fun, not people. Can only load Small Game Ammunition and is incapable of Autofire and Suppressive Fire.</p>",
+      "dvTable": "СЛ Штурмовая винтовка"
     },
     "SurvivalMaster": {
       "name": "SurvivalMaster",
-      "description": "<p>Exotic Assault Rifle, no Autofire, no Suppressive Fire.</p>"
+      "description": "<p>Exotic Assault Rifle, no Autofire, no Suppressive Fire.</p>",
+      "dvTable": "СЛ Штурмовая винтовка"
     },
     "Timeless WW1 Rifle to Pistol Conversion": {
       "name": "Timeless WW1 Rifle to Pistol Conversion",
-      "description": "<p>Poor Quality Very Heavy Pistol.</p>\n<p>Manual rearming of the bolt between each shot (one Action).</p>"
+      "description": "<p>Poor Quality Very Heavy Pistol.</p>\n<p>Manual rearming of the bolt between each shot (one Action).</p>",
+      "dvTable": "СЛ пистолет"
     }
   }
 }
