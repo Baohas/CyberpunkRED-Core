@@ -14,7 +14,9 @@
 - Correction de la réinitialisation des PS et Humanité à 40 PS/60 Humanité chaque fois que le monde et la scène actuelle étaient rechargés.
 - Correction des acteurs non-liés et les acteurs sbires réinitialisant les 40 PS par défaut, 60 Humanité
 - Correction de la liste des liens de programme GLACE noirs par ordre alphabétique
+- Fix issue where items did not have their dv tables translated.
 - Correction du problème où les effets orphelins sur les acteurs provoquaient l'échec des migrations.
+- Fix translation issues with translated skills via Babele
 
 ### Nouvelles fonctionnalités
 
