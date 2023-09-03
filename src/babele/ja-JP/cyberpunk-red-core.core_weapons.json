@@ -1,5 +1,8 @@
 {
   "label": "Weapons",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Air Pistol": {
       "name": "Air Pistol",
