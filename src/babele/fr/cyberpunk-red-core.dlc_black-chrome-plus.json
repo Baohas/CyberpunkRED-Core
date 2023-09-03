@@ -63,27 +63,33 @@
     },
     "Big Dreem": {
       "name": "Big Dreem",
-      "description": "<p>Pistolet-mitrailleur exotique. Tir automatique seulement. Même si vous lâchez l'arme, il continuera à tirer automatiquement.</p>"
+      "description": "<p>Pistolet-mitrailleur exotique. Tir automatique seulement. Même si vous lâchez l'arme, il continuera à tirer automatiquement.</p>",
+      "dvTable": "SD Pistolet-mitrailleur (Tir Automatique)"
     },
     "Hello Cutie 1TruLuv": {
       "name": "Hello Cutie 1TruLuv",
-      "description": "<p>Fusil de précision exotique. Peut charger des munitions non basiques.</p>\n<p>Équipé d'une lunette de précision, de la vision nocturne et infrarouge*, et un Agent intégré comprenant une IA pseudo petite amie qui peut reconnaître et parler au propriétaire de l'arme.</p>\n<p>Prenez bien soin d'elle/lui et utilisez-la/le et l'arme s'améliorera. Délaissez le/la et vous devrez vous excuser...</p>\n<p><em>* Ces améliorations doivent être installées manuellement après avoir ajouté l'arme à un acteur<br></em></p>"
+      "description": "<p>Fusil de précision exotique. Peut charger des munitions non basiques.</p>\n<p>Équipé d'une lunette de précision, de la vision nocturne et infrarouge*, et un Agent intégré comprenant une IA pseudo petite amie qui peut reconnaître et parler au propriétaire de l'arme.</p>\n<p>Prenez bien soin d'elle/lui et utilisez-la/le et l'arme s'améliorera. Délaissez le/la et vous devrez vous excuser...</p>\n<p><em>* Ces améliorations doivent être installées manuellement après avoir ajouté l'arme à un acteur<br></em></p>",
+      "dvTable": "SD Fusil de précision"
     },
     "Molotov Cocktail": {
       "name": "Cocktail Molotov",
-      "description": "<p>Grenade incendiaire fragile. Met une cible en feu Mortel (voir CP:R p.180)</p>"
+      "description": "<p>Grenade incendiaire fragile. Met une cible en feu Mortel (voir CP:R p.180)</p>",
+      "dvTable": "SD Arme de lancer"
     },
     "SportMaster": {
       "name": "SportMaster",
-      "description": "<p>Un fusil de sport, pour le plaisir, pas les gens. Peut seulement charger des munitions de petit gibier et est incapable de tir automatique et de tir suppressif.</p>"
+      "description": "<p>Un fusil de sport, pour le plaisir, pas les gens. Peut seulement charger des munitions de petit gibier et est incapable de tir automatique et de tir suppressif.</p>",
+      "dvTable": "SD Fusil d'assaut"
     },
     "SurvivalMaster": {
       "name": "SurvivalMaster",
-      "description": "<p>Fusil d'assaut exotique, pas de tir automatique, pas de tir de suppression.</p>"
+      "description": "<p>Fusil d'assaut exotique, pas de tir automatique, pas de tir de suppression.</p>",
+      "dvTable": "SD Fusil d'assaut"
     },
     "Timeless WW1 Rifle to Pistol Conversion": {
       "name": "Timeless Conversion Fusil 1ereGM en Pistolet",
-      "description": "<p>Pistolet très lourd de qualité médiocre.</p>\n<p>Réarmement manuel de la culasse entre chaque tir (une action).</p>"
+      "description": "<p>Pistolet très lourd de qualité médiocre.</p>\n<p>Réarmement manuel de la culasse entre chaque tir (une action).</p>",
+      "dvTable": "SD Pistolet"
     }
   }
 }
