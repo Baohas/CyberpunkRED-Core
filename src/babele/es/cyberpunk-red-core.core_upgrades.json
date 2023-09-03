@@ -123,7 +123,8 @@
     },
     "Grenade Launcher Underbarrel": {
       "name": "Lanzagranadas Sub Barril",
-      "description": "<p>Funciones como un lanzador de granadas estándar, pero con un tamaño de cargador de 1. Requiere 2 manos para usar, y toma 2 ranuras de opción. Mientras esté conectado, el arma no puede ocultarse bajo la ropa.</p>\n<p>Ten en cuenta que el arma hereda cualquier modificador de la pistola a la que está conectado, como otros adjuntos y calidad.</p>"
+      "description": "<p>Funciones como un lanzador de granadas estándar, pero con un tamaño de cargador de 1. Requiere 2 manos para usar, y toma 2 ranuras de opción. Mientras esté conectado, el arma no puede ocultarse bajo la ropa.</p>\n<p>Ten en cuenta que el arma hereda cualquier modificador de la pistola a la que está conectado, como otros adjuntos y calidad.</p>",
+      "dvTable": "VD Lanzagranadas"
     },
     "Hardened Circuitry": {
       "name": "Circuitos Endurecidos",
@@ -187,7 +188,8 @@
     },
     "Shotgun Underbarrel": {
       "name": "Escopeta Sub Barril",
-      "description": "<p>Funciones como una escopeta estándar, pero con un tamaño de cargador de 2. Requiere 2 manos para usar, y toma 2 ranuras adjuntas. Mientras esté conectado, el arma no puede ocultarse bajo la ropa.</p>\n<p>Ten en cuenta que el arma hereda cualquier modificador de la pistola a la que está conectado, como otros adjuntos y calidad.</p>"
+      "description": "<p>Funciones como una escopeta estándar, pero con un tamaño de cargador de 2. Requiere 2 manos para usar, y toma 2 ranuras adjuntas. Mientras esté conectado, el arma no puede ocultarse bajo la ropa.</p>\n<p>Ten en cuenta que el arma hereda cualquier modificador de la pistola a la que está conectado, como otros adjuntos y calidad.</p>",
+      "dvTable": "VD Escopeta (Perdigones de escopeta)"
     },
     "Smartgun Link": {
       "name": "Enlace de Smartgun",
