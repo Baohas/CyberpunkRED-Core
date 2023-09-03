@@ -19,7 +19,8 @@
     },
     "Tactical Umbrella": {
       "name": "Tactical Umbrella",
-      "description": "<p>A stylish umbrella with pop-out weapons. Contains a Poor Quality Exotic Heavy Pistol (2 bullet capacity).</p>\n<p>Multiple Weapon Modes: Tactical Umbrella also contains an Excellent Quality Exotic Heavy Melee Weapon.</p>\n<p>Provides the protection of a normal umbrella (NCW pg 6)</p>"
+      "description": "<p>A stylish umbrella with pop-out weapons. Contains a Poor Quality Exotic Heavy Pistol (2 bullet capacity).</p>\n<p>Multiple Weapon Modes: Tactical Umbrella also contains an Excellent Quality Exotic Heavy Melee Weapon.</p>\n<p>Provides the protection of a normal umbrella (NCW pg 6)</p>",
+      "dvTable": "DV Pistola"
     }
   }
 }
