@@ -1,5 +1,8 @@
 {
   "label": "Night City Weather",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Umbrella": {
       "name": "Umbrella",
