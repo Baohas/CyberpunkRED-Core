@@ -1,5 +1,8 @@
 {
   "label": "Armas (de Marca)",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Avenger": {
       "name": "Vengadora",
