@@ -1,5 +1,8 @@
 {
   "label": "Cyborgizacje",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Amplified Hearing": {
       "name": "Ulepszony słuch",
