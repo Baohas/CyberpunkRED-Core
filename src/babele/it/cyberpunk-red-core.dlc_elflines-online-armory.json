@@ -1,5 +1,8 @@
 {
   "label": "Armeria di Elflines Online",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Arrow": {
       "name": "Freccia",
