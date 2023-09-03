@@ -1,5 +1,8 @@
 {
   "label": "Оружие",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Air Pistol": {
       "name": "Воздушный пистолет",
