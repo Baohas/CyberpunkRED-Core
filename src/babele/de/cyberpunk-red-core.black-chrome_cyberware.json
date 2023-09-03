@@ -19,7 +19,8 @@
     },
     "Dartgun Cyberfinger": {
       "name": "Dartgun Cyberfinger",
-      "description": "<p>Cyberfinger that holds a concealed @UUID[Compendium.cyberpunk-red-core.weapons.fSvkIl83Rsqd7O16]{Dartgun}. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 24 for more details)</p>"
+      "description": "<p>Cyberfinger that holds a concealed @UUID[Compendium.cyberpunk-red-core.weapons.fSvkIl83Rsqd7O16]{Dartgun}. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 24 for more details)</p>",
+      "dvTable": "SG Pistole"
     },
     "Discount Cyberaudio Suite": {
       "name": "Discount Cyberaudio Suite",
@@ -119,15 +120,18 @@
     },
     "One Shot Special Cyberfinger": {
       "name": "One Shot Special Cyberfinger",
-      "description": "<p>Cyberfinger that holds a concealed Exotic @UUID[Compendium.cyberpunk-red-core.weapons.Y433cjlB1uVHPysk]{Heavy Pistol}. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 26 for more details)</p>"
+      "description": "<p>Cyberfinger that holds a concealed Exotic @UUID[Compendium.cyberpunk-red-core.weapons.Y433cjlB1uVHPysk]{Heavy Pistol}. Can only be installed on a modular finger cyberhand. (See Black Chrome pg. 26 for more details)</p>",
+      "dvTable": "SG Pistole"
     },
     "Popup Net Launcher": {
       "name": "Popup Net Launcher",
-      "description": "<p>A concealable exotic net launcher. Can't hold anything with this hand while activated. (See Black Chrome pgs. 20-21 for more details)</p>"
+      "description": "<p>A concealable exotic net launcher. Can't hold anything with this hand while activated. (See Black Chrome pgs. 20-21 for more details)</p>",
+      "dvTable": "SG Flinte (Flintenpatrone)"
     },
     "Popup Shotgun": {
       "name": "Popup Shotgun",
-      "description": "<p>A concealable shotgun. Comes with a smartgun link pre-installed. Can't hold anything with this hand while activated. (See Black Chrome pg. 21 for more details)</p>"
+      "description": "<p>A concealable shotgun. Comes with a smartgun link pre-installed. Can't hold anything with this hand while activated. (See Black Chrome pg. 21 for more details)</p>",
+      "dvTable": "SG Flinte (Flintenpatrone)"
     },
     "RacerBracer": {
       "name": "RacerBracer",
