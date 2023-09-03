@@ -3,19 +3,23 @@
   "entries": {
     "Air Pistol": {
       "name": "Pistolet à air comprimé",
-      "description": "<p>Pistolet moyen exotique. Tire des billes de peinture. Si chargé avec de l'acide, peut réduire une armure à chaque impact. Reportez-vous à la description complète de l'article p. 349.</p>"
+      "description": "<p>Pistolet moyen exotique. Tire des billes de peinture. Si chargé avec de l'acide, peut réduire une armure à chaque impact. Reportez-vous à la description complète de l'article p. 349.</p>",
+      "dvTable": "SD Pistolet"
     },
     "Assault Rifle (Excellent)": {
       "name": "Fusil d'assaut +",
-      "description": "<p>Un fusil d'assaut. +1 au jet d'attaque.</p>"
+      "description": "<p>Un fusil d'assaut. +1 au jet d'attaque.</p>",
+      "dvTable": "SD Fusil d'assaut"
     },
     "Assault Rifle (Poor)": {
       "name": "Fusil d'assaut -",
-      "description": "<p>Un fusil d'assaut. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>"
+      "description": "<p>Un fusil d'assaut. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "dvTable": "SD Fusil d'assaut"
     },
     "Assault Rifle": {
       "name": "Fusil d'assaut",
-      "description": "<p>Un fusil d'assaut ordinaire. </p>"
+      "description": "<p>Un fusil d'assaut ordinaire. </p>",
+      "dvTable": "SD Fusil d'assaut"
     },
     "Baseball Bat (Excellent)": {
       "name": "Batte de baseball +",
@@ -31,15 +35,18 @@
     },
     "Bow (Excellent)": {
       "name": "Arc +",
-      "description": "<p>Un arc revitalisé, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>"
+      "description": "<p>Un arc revitalisé, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>",
+      "dvTable": "SD Arcs et arbalètes"
     },
     "Bow (Poor)": {
       "name": "Arc -",
-      "description": "<p>Un arc moderne. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>Un arc moderne. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>",
+      "dvTable": "SD Arcs et arbalètes"
     },
     "Bow": {
       "name": "Arc",
-      "description": "<p>Un arc revitalisé, rechargement compris dans l'action d'attaque.</p>"
+      "description": "<p>Un arc revitalisé, rechargement compris dans l'action d'attaque.</p>",
+      "dvTable": "SD Arcs et arbalètes"
     },
     "Chainsaw (Excellent)": {
       "name": "Tronçonneuse +",
@@ -67,15 +74,18 @@
     },
     "Crossbow (Excellent)": {
       "name": "Arbalète +",
-      "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>"
+      "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>",
+      "dvTable": "SD Arcs et arbalètes"
     },
     "Crossbow (Poor)": {
       "name": "Arbalète -",
-      "description": "<p>Une arbalète moderne. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>Une arbalète moderne. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>",
+      "dvTable": "SD Arcs et arbalètes"
     },
     "Crossbow": {
       "name": "Arbalète",
-      "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>"
+      "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>",
+      "dvTable": "SD Arcs et arbalètes"
     },
     "Crowbar (Excellent)": {
       "name": "Pied de biche +",
@@ -91,27 +101,33 @@
     },
     "Dartgun": {
       "name": "Pistolet à fléchettes",
-      "description": "<p>Un pistolet exotique très lourd qu'on ne peut charger qu'avec des munitions de type flèche. Contrairement aux autres\narmes tirant des flèches, le pistolet à fléchettes est muni d'un chargeur spécial de 8 flèches et doit être rechargé comme\nun pistolet très lourd standard</p>"
+      "description": "<p>Un pistolet exotique très lourd qu'on ne peut charger qu'avec des munitions de type flèche. Contrairement aux autres\narmes tirant des flèches, le pistolet à fléchettes est muni d'un chargeur spécial de 8 flèches et doit être rechargé comme\nun pistolet très lourd standard</p>",
+      "dvTable": "SD Pistolet"
     },
     "EMG-86 Railgun": {
       "name": "Canon électrique EMG-86",
-      "description": "<p>Fusil d'assaut exotique. Il ne peut pas faire de tirs ciblés ou de tirs automatiques. Nécessite COR 11 ou plus (sauf s'il est monté). Ignore toute armure en dessous de PA11*. Reportez-vous à la description complète de l'élément en p. 347.</p>\n<p><em>*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles blindées</em></p>"
+      "description": "<p>Fusil d'assaut exotique. Il ne peut pas faire de tirs ciblés ou de tirs automatiques. Nécessite COR 11 ou plus (sauf s'il est monté). Ignore toute armure en dessous de PA11*. Reportez-vous à la description complète de l'élément en p. 347.</p>\n<p><em>*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles blindées</em></p>",
+      "dvTable": "SD Fusil d'assaut"
     },
     "Flamethrower": {
       "name": "Crache-feu",
-      "description": "<p>Un fusil à pompe exotique qui utilise la compétence Armes lourdes. Reportez-vous à la description complète de l'objet p. 347.</p>"
+      "description": "<p>Un fusil à pompe exotique qui utilise la compétence Armes lourdes. Reportez-vous à la description complète de l'objet p. 347.</p>",
+      "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Grenade Launcher (Excellent)": {
       "name": "Lance-grenades +",
-      "description": "<p>Lance-grenades avec lesquels vous pouvez utiliser une grande variété de grenades. +1 au jet d'attaque.</p>"
+      "description": "<p>Lance-grenades avec lesquels vous pouvez utiliser une grande variété de grenades. +1 au jet d'attaque.</p>",
+      "dvTable": "SD Lance-grenades"
     },
     "Grenade Launcher (Poor)": {
       "name": "Lance-grenades -",
-      "description": "<p>Lance-grenades avec lesquels vous pouvez utiliser une grande variété de grenades. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>"
+      "description": "<p>Lance-grenades avec lesquels vous pouvez utiliser une grande variété de grenades. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "dvTable": "SD Lance-grenades"
     },
     "Grenade Launcher": {
       "name": "Lance-grenades",
-      "description": "<p>Lance-grenades avec lesquels vous pouvez utiliser une grande variété de grenades.</p>"
+      "description": "<p>Lance-grenades avec lesquels vous pouvez utiliser une grande variété de grenades.</p>",
+      "dvTable": "SD Lance-grenades"
     },
     "Heavy Melee (Excellent)": {
       "name": "Arme de mêlée lourde (Excellent)",
@@ -127,27 +143,33 @@
     },
     "Heavy Pistol (Excellent)": {
       "name": "Pistolet lourd +",
-      "description": "<p>Un pistolet lourd. Dissimulable. +1 au jet d'attaque.</p>"
+      "description": "<p>Un pistolet lourd. Dissimulable. +1 au jet d'attaque.</p>",
+      "dvTable": "SD Pistolet"
     },
     "Heavy Pistol (Poor)": {
       "name": "Pistolet lourd -",
-      "description": "<p>Un pistolet lourd. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>"
+      "description": "<p>Un pistolet lourd. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>",
+      "dvTable": "SD Pistolet"
     },
     "Heavy Pistol": {
       "name": "Pistolet lourd",
-      "description": "<p>Un pistolet lourd. Dissimulable </p>"
+      "description": "<p>Un pistolet lourd. Dissimulable </p>",
+      "dvTable": "SD Pistolet"
     },
     "Heavy SMG (Excellent)": {
       "name": "Pistolet-mitrailleur lourd +",
-      "description": "<p>Un pistolet-mitrailleur lourd. Non dissimulable. +1 au jet d'attaque.</p>"
+      "description": "<p>Un pistolet-mitrailleur lourd. Non dissimulable. +1 au jet d'attaque.</p>",
+      "dvTable": "SD Pistolet-mitrailleur"
     },
     "Heavy SMG (Poor)": {
       "name": "Pistolet-mitrailleur lourd -",
-      "description": "<p>Pistolet-mitrailleur lourd. Non dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>"
+      "description": "<p>Pistolet-mitrailleur lourd. Non dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "dvTable": "SD Pistolet-mitrailleur"
     },
     "Heavy SMG": {
       "name": "Pistolet-mitrailleur lourd",
-      "description": "<p>Un pistolet-mitrailleur lourd. Non dissimulable.</p>"
+      "description": "<p>Un pistolet-mitrailleur lourd. Non dissimulable.</p>",
+      "dvTable": "SD Pistolet-mitrailleur"
     },
     "Helicopter Blades (Excellent)": {
       "name": "Pale d'hélicoptère +",
@@ -163,11 +185,13 @@
     },
     "Helix": {
       "name": "Helix",
-      "description": "<p>Un fusil d'assaut exotique qui n'utilise que le tir automatique. Contient 40 balles, tire 20 balles à chaque attaque. Utilise les règles Tir automatique avec un multiplicateur maximum de 5. Nécessite COR 11 ou supérieur (sauf s'il est monté). Reportez-vous à la description complète de l'élément à la p. 348.</p>"
+      "description": "<p>Un fusil d'assaut exotique qui n'utilise que le tir automatique. Contient 40 balles, tire 20 balles à chaque attaque. Utilise les règles Tir automatique avec un multiplicateur maximum de 5. Nécessite COR 11 ou supérieur (sauf s'il est monté). Reportez-vous à la description complète de l'élément à la p. 348.</p>",
+      "dvTable": "SD Fusil d'assaut"
     },
     "Hurricane Assault Weapon": {
       "name": "Fusil d'assaut Hurricane",
-      "description": "<p>Fusil à pompe exotique, 2 Att/round. Ne peut pas viser. Chargeur en cylindre de 16 cartouches.\nRecharger cette arme nécessite deux tours. Tirer avec le fusil d'assaut nécessite COR de 11 ou plus (sauf s'il est monté).</p>"
+      "description": "<p>Fusil à pompe exotique, 2 Att/round. Ne peut pas viser. Chargeur en cylindre de 16 cartouches.\nRecharger cette arme nécessite deux tours. Tirer avec le fusil d'assaut nécessite COR de 11 ou plus (sauf s'il est monté).</p>",
+      "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Lead Pipe (Excellent)": {
       "name": "Tuyau en plomb +",
@@ -207,7 +231,8 @@
     },
     "Malorian Arms 3516": {
       "name": "3516 de Malorian Arms",
-      "description": "<p>Pistolet exotique très lourd, qualité excellente. Fourni avec une liaison smartgun* qui doit être utilisée. Reportez-vous à la description complète de l'article sur pg. 347.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'arme</em></p>"
+      "description": "<p>Pistolet exotique très lourd, qualité excellente. Fourni avec une liaison smartgun* qui doit être utilisée. Reportez-vous à la description complète de l'article sur pg. 347.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'arme</em></p>",
+      "dvTable": "SD Pistolet"
     },
     "Martial Arts": {
       "name": "Arts martiaux",
@@ -227,19 +252,23 @@
     },
     "Medium Pistol (Excellent)": {
       "name": "Pistolet moyen +",
-      "description": "<p>Un pistolet de taille moyenne. Dissimulable. +1 au jet d'attaque.</p>"
+      "description": "<p>Un pistolet de taille moyenne. Dissimulable. +1 au jet d'attaque.</p>",
+      "dvTable": "SD Pistolet"
     },
     "Medium Pistol (Poor)": {
       "name": "Pistolet moyen -",
-      "description": "<p>Un pistolet de taille moyenne de mauvaise qualité. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>"
+      "description": "<p>Un pistolet de taille moyenne de mauvaise qualité. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>",
+      "dvTable": "SD Pistolet"
     },
     "Medium Pistol": {
       "name": "Pistolet moyen",
-      "description": "<p>Un pistolet de taille moyenne. Dissimulable </p>"
+      "description": "<p>Un pistolet de taille moyenne. Dissimulable </p>",
+      "dvTable": "SD Pistolet"
     },
     "Microwaver": {
       "name": "Canon à ondes",
-      "description": "<p>Pistolet exotique très lourd. Permet de rendre inopérants les cyberimplants ou les composants électriques pendant une minute, à moins que la cible ne réussisse un jet de Cybertech SD15. Reportez-vous à la description complète de l'élément sur p. 347.</p>"
+      "description": "<p>Pistolet exotique très lourd. Permet de rendre inopérants les cyberimplants ou les composants électriques pendant une minute, à moins que la cible ne réussisse un jet de Cybertech SD15. Reportez-vous à la description complète de l'élément sur p. 347.</p>",
+      "dvTable": "SD Pistolet"
     },
     "Mono-Three": {
       "name": "Mono-Trois",
@@ -263,31 +292,38 @@
     },
     "Rocket Launcher (Excellent)": {
       "name": "Lance-roquettes +",
-      "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts. +1 au jet d'attaque.</p>"
+      "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts. +1 au jet d'attaque.</p>",
+      "dvTable": "SD Lance-roquettes"
     },
     "Rocket Launcher (Poor)": {
       "name": "Lance-roquettes -",
-      "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>"
+      "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "dvTable": "SD Lance-roquettes"
     },
     "Rocket Launcher": {
       "name": "Lance-roquettes",
-      "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts.</p>"
+      "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts.</p>",
+      "dvTable": "SD Lance-roquettes"
     },
     "Shotgun (Excellent)": {
       "name": "Fusil à pompe +",
-      "description": "<p>Fusil à pompe polyvalent. +1 au jet d'attaque.</p>"
+      "description": "<p>Fusil à pompe polyvalent. +1 au jet d'attaque.</p>",
+      "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Shotgun (Poor)": {
       "name": "Fusil à pompe -",
-      "description": "<p>Un fusil à pompe polyvalent. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>"
+      "description": "<p>Un fusil à pompe polyvalent. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Shotgun": {
       "name": "Fusil à pompe",
-      "description": "<p>Un fusil à pompe polyvalent. </p>"
+      "description": "<p>Un fusil à pompe polyvalent. </p>",
+      "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Shrieker": {
       "name": "Hurleur",
-      "description": "<p>Pistolet Exotique très lourd. Nécessite une protection auditive contre les blessures critiques, sinon réussir un jet de Résistance à la torture/aux drogues SD15 ou subir une blessure critique Oreilles endommagées. Reportez-vous à la description complète de l'article sur le p. 348.</p>"
+      "description": "<p>Pistolet Exotique très lourd. Nécessite une protection auditive contre les blessures critiques, sinon réussir un jet de Résistance à la torture/aux drogues SD15 ou subir une blessure critique Oreilles endommagées. Reportez-vous à la description complète de l'article sur le p. 348.</p>",
+      "dvTable": "SD Pistolet"
     },
     "Sledgehammer (Excellent)": {
       "name": "Masse +",
@@ -303,27 +339,33 @@
     },
     "SMG (Excellent)": {
       "name": "Pistolet-mitrailleur +",
-      "description": "<p>Un pistolet-mitrailleur. Dissimulable. +1 au jet d'attaque.</p>"
+      "description": "<p>Un pistolet-mitrailleur. Dissimulable. +1 au jet d'attaque.</p>",
+      "dvTable": "SD Pistolet-mitrailleur"
     },
     "SMG (Poor)": {
       "name": "Pistolet-mitrailleur -",
-      "description": "<p>Pistolet-mitrailleur. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>"
+      "description": "<p>Pistolet-mitrailleur. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "dvTable": "SD Pistolet-mitrailleur"
     },
     "SMG": {
       "name": "Pistolet-mitrailleur",
-      "description": "<p>Un pistolet-mitrailleur. Dissimulable.</p>"
+      "description": "<p>Un pistolet-mitrailleur. Dissimulable.</p>",
+      "dvTable": "SD Pistolet-mitrailleur"
     },
     "Sniper Rifle (Excellent)": {
       "name": "Fusil de précision +",
-      "description": "<p>Un fusil utilisé afin d'engager des cibles à longue distance. +1 au jet d'attaque.</p>"
+      "description": "<p>Un fusil utilisé afin d'engager des cibles à longue distance. +1 au jet d'attaque.</p>",
+      "dvTable": "SD Fusil de précision"
     },
     "Sniper Rifle (Poor)": {
       "name": "Fusil de précision -",
-      "description": "<p>Un fusil utilisé afin d'engager des cibles à longue distance. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>"
+      "description": "<p>Un fusil utilisé afin d'engager des cibles à longue distance. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "dvTable": "SD Fusil de précision"
     },
     "Sniper Rifle": {
       "name": "Fusil de précision",
-      "description": "<p>Un fusil utilisé afin d'engager des cibles à longue distance.</p>"
+      "description": "<p>Un fusil utilisé afin d'engager des cibles à longue distance.</p>",
+      "dvTable": "SD Fusil de précision"
     },
     "Spiked Bat (Excellent)": {
       "name": "Batte cloutée +",
@@ -343,7 +385,8 @@
     },
     "Stun Gun": {
       "name": "Pistolet à impulsion électrique",
-      "description": "<p>Pistolet lourd exotique. La cible est inconsciente si les dégâts infligés la réduisent à moins d'1 PS. Ne cause pas de blessures critiques ne de perforation d'armure. Reportez-vous à la description complète de l'objet sur le pg. 349.</p>"
+      "description": "<p>Pistolet lourd exotique. La cible est inconsciente si les dégâts infligés la réduisent à moins d'1 PS. Ne cause pas de blessures critiques ne de perforation d'armure. Reportez-vous à la description complète de l'objet sur le pg. 349.</p>",
+      "dvTable": "SD Pistolet"
     },
     "Sword (Excellent)": {
       "name": "Épée +",
@@ -359,7 +402,8 @@
     },
     "Thrown Weapon": {
       "name": "Arme de lancer",
-      "description": "<p>Le lancer basique d'un objet. Utilisez une action pour faire une attaque à distance à un maximum de 25 m. Les cibles peuvent choisir d'esquiver votre lancer s'ils le peuvent. Les armes de mêlée infligent leurs dégâts de base, mais ne pénètrent pas la moitié des PA.</p>"
+      "description": "<p>Le lancer basique d'un objet. Utilisez une action pour faire une attaque à distance à un maximum de 25 m. Les cibles peuvent choisir d'esquiver votre lancer s'ils le peuvent. Les armes de mêlée infligent leurs dégâts de base, mais ne pénètrent pas la moitié des PA.</p>",
+      "dvTable": "SD Arme de lancer"
     },
     "Tomahawk (Excellent)": {
       "name": "Tomahawk +",
@@ -375,7 +419,8 @@
     },
     "U-56 Grenade Launcher \"Cowboy\"": {
       "name": "Lance-Grenades \"Cowboy\" U-56",
-      "description": "<p>Lance-grenades exotique à 2 Att/round. Capacité de quatre grenades. Peut lancer n'importe quel type de grenade. Recharger cette arme demande deux tours. Tirer avec le lance-grenades nécessite COR de 11 ou plus (sauf s'il est monté).</p>"
+      "description": "<p>Lance-grenades exotique à 2 Att/round. Capacité de quatre grenades. Peut lancer n'importe quel type de grenade. Recharger cette arme demande deux tours. Tirer avec le lance-grenades nécessite COR de 11 ou plus (sauf s'il est monté).</p>",
+      "dvTable": "SD Lance-grenades"
     },
     "Unarmed": {
       "name": "Désarmé",
@@ -395,15 +440,18 @@
     },
     "Very Heavy Pistol (Excellent)": {
       "name": "Pistolet très lourd +",
-      "description": "<p>Un pistolet très lourd. Non dissimulable. +1 au jet d'attaque.</p>"
+      "description": "<p>Un pistolet très lourd. Non dissimulable. +1 au jet d'attaque.</p>",
+      "dvTable": "SD Pistolet"
     },
     "Very Heavy Pistol (Poor)": {
       "name": "Pistolet très lourd -",
-      "description": "<p>Un pistolet très lourd. Non dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>"
+      "description": "<p>Un pistolet très lourd. Non dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>",
+      "dvTable": "SD Pistolet"
     },
     "Very Heavy Pistol": {
       "name": "Pistolet très lourd",
-      "description": "<p>Un pistolet très lourd. Non dissimulable </p>"
+      "description": "<p>Un pistolet très lourd. Non dissimulable </p>",
+      "dvTable": "SD Pistolet"
     }
   }
 }
