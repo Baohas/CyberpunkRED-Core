@@ -1,5 +1,8 @@
 {
   "label": "Elflines Online the Trading Card Game",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Elflines Online Playing Cards": {
       "name": "Elflines Online Playing Cards",
