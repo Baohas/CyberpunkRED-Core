@@ -1,5 +1,8 @@
 {
   "label": "Armas",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Arasaka Prototype Variable Assault Rifle": {
       "name": "Prototipo de Rifle de Asalto Variable de Arasaka",
