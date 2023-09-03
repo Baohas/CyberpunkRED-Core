@@ -55,7 +55,8 @@
     },
     "Bow": {
       "name": "Bow",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>"
+      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>",
+      "dvTable": "DV Bows & Crossbows"
     },
     "Dagger": {
       "name": "Dagger",

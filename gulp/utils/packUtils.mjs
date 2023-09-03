@@ -377,6 +377,13 @@ export default class PackUtils {
           description: itemDescription,
         };
 
+        // We need to translate the DV Table on items that have such a field,
+        // i.e. items that have the attackable mixin. We simply check if this
+        // field exists, and add it to the entry in the babele file if so.
+        if (data.system?.dvTable) {
+          item.dvTable = data.system.dvTable;
+        }
+
         // Add the item to the packData
         packData.entries[itemName] = item;
       }
