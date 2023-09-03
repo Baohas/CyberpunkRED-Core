@@ -1,5 +1,8 @@
 {
   "label": "Le Noël des punks à flingues",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Nova Model 757 Rounds": {
       "name": "Cartouches pour Nova Model 757",
