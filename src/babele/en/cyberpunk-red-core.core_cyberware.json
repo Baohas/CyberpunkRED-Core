@@ -247,7 +247,8 @@
     },
     "Popup Grenade Launcher": {
       "name": "Popup Grenade Launcher",
-      "description": "<p>A concealable one-shot Grenade Launcher. Can't hold anything with this hand while activated. </p>"
+      "description": "<p>A concealable one-shot Grenade Launcher. Can't hold anything with this hand while activated. </p>",
+      "dvTable": "DV Grenade Launcher"
     },
     "Popup Melee Weapon": {
       "name": "Popup Melee Weapon",
