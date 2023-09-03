@@ -1,5 +1,8 @@
 {
   "label": "MicroCromo",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Superflash Jacket": {
       "name": "Chaqueta Superflash",
