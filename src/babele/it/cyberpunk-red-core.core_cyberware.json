@@ -247,7 +247,8 @@
     },
     "Popup Grenade Launcher": {
       "name": "Lanciagranate Popup",
-      "description": "<p>Un Lanciagranate a Una Mano con un solo colpo installato nel braccio. Incompatibile con gli Accessori eccetto il Collegamento Smartgun. Occultabile senza alcuna Prova. Quando è in uso la mano non può impugnare nulla. </p>"
+      "description": "<p>Un Lanciagranate a Una Mano con un solo colpo installato nel braccio. Incompatibile con gli Accessori eccetto il Collegamento Smartgun. Occultabile senza alcuna Prova. Quando è in uso la mano non può impugnare nulla. </p>",
+      "dvTable": "VD Lanciagranate"
     },
     "Popup Melee Weapon": {
       "name": "Arma da Mischia Popup",
