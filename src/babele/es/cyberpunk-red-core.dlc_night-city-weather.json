@@ -19,7 +19,8 @@
     },
     "Tactical Umbrella": {
       "name": "Paraguas Táctico",
-      "description": "<p>Un paraguas elegante con armas pop-out. Contiene una Pistola Exótica de Calidad Pesada (Carga máxima de 2 balas).</p>\n<p>Múltiples modos de arma: el Paraguas Táctico también contiene una arma cuerpo a cuerpo pesada exótica de calidad excelente.</p>\n<p>Proporciona la protección de un paraguas normal (NCW pg 6)</p>"
+      "description": "<p>Un paraguas elegante con armas pop-out. Contiene una Pistola Exótica de Calidad Pesada (Carga máxima de 2 balas).</p>\n<p>Múltiples modos de arma: el Paraguas Táctico también contiene una arma cuerpo a cuerpo pesada exótica de calidad excelente.</p>\n<p>Proporciona la protección de un paraguas normal (NCW pg 6)</p>",
+      "dvTable": "VD Pistola"
     }
   }
 }
