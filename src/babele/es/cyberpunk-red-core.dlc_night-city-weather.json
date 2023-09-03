@@ -1,5 +1,8 @@
 {
   "label": "Clima de Night City",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Umbrella": {
       "name": "Paraguas",
