@@ -15,7 +15,8 @@
     },
     "MicroCutie": {
       "name": "MicroCutie",
-      "description": "<p>Un pistolet d'excellente qualité avec un mode de tir unique HypurrburstMC. L'arme ronronne lorsqu'elle est utilisée. Les règles complètes peuvent être trouvées dans Micro Chrome sur la page 1.</p>\n<p><br><em>Mode de tir spécial non pris en charge ; devra être appliqué manuellement</em></p>"
+      "description": "<p>Un pistolet d'excellente qualité avec un mode de tir unique HypurrburstMC. L'arme ronronne lorsqu'elle est utilisée. Les règles complètes peuvent être trouvées dans Micro Chrome sur la page 1.</p>\n<p><br><em>Mode de tir spécial non pris en charge ; devra être appliqué manuellement</em></p>",
+      "dvTable": "SD Pistolet"
     }
   }
 }
