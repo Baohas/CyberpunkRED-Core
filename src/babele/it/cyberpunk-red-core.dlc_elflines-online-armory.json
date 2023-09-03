@@ -55,7 +55,8 @@
     },
     "Bow": {
       "name": "Arco",
-      "description": "<p>Un arco rivitalizzato, ricaricato come parte di un'azione di attacco.</p>"
+      "description": "<p>Un arco rivitalizzato, ricaricato come parte di un'azione di attacco.</p>",
+      "dvTable": "VD Arco e Balestro"
     },
     "Dagger": {
       "name": "Pugnale",
