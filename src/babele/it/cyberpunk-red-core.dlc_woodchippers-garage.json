@@ -1,5 +1,8 @@
 {
   "label": "Woodchipper’s Garage",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "M-02 Rounds": {
       "name": "M-02 Rounds",
