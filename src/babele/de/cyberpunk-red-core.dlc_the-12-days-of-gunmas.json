@@ -1,5 +1,8 @@
 {
   "label": "Die Zwölf Knarrentage",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Nova Model 757 Rounds": {
       "name": "Nova Model 757 Munition",
