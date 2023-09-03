@@ -1,5 +1,8 @@
 {
   "label": "Cyberimplants",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Amplified Hearing": {
       "name": "Amplificateur audio",
