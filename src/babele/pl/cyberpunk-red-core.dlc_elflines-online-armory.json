@@ -1,5 +1,8 @@
 {
   "label": "Elflines Online Armory",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Arrow": {
       "name": "Arrow",
