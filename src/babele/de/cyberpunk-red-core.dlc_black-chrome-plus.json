@@ -1,5 +1,8 @@
 {
   "label": "Black Chrome Plus",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Arrow (Junk)": {
       "name": "Pfeil (Schrott)",
