@@ -7,11 +7,13 @@
     },
     "Duel Caster": {
       "name": "Duel Caster",
-      "description": "<p>A plastic housing and card launcher for ELO Cards. ROF 3 if only weapon fired on your turn. Can also be loaded with normal playing cards but makes the weapon Poor Quality.</p>"
+      "description": "<p>A plastic housing and card launcher for ELO Cards. ROF 3 if only weapon fired on your turn. Can also be loaded with normal playing cards but makes the weapon Poor Quality.</p>",
+      "dvTable": "VD Pistola"
     },
     "Scarlet Blackbow": {
       "name": "Scarlet Blackbow",
-      "description": "<p>A revitalized bow that must be reloaded after every attack. If you roll 1 on Attack (Crit fail) the bow's battery pack explodes. Comes bundeled with a Quiver and 6 Rubber Arrows.</p>"
+      "description": "<p>A revitalized bow that must be reloaded after every attack. If you roll 1 on Attack (Crit fail) the bow's battery pack explodes. Comes bundeled with a Quiver and 6 Rubber Arrows.</p>",
+      "dvTable": "VD Arco e Balestro"
     },
     "Sword of Arvish": {
       "name": "Sword of Arvish",
