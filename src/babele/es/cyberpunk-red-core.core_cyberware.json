@@ -247,7 +247,8 @@
     },
     "Popup Grenade Launcher": {
       "name": "Lanzagranadas Rápido",
-      "description": "<p>Un lanzador de granadas de un solo tiro oculto. No puede contener nada con esta mano mientras está activado. </p>"
+      "description": "<p>Un lanzador de granadas de un solo tiro oculto. No puede contener nada con esta mano mientras está activado. </p>",
+      "dvTable": "VD Lanzagranadas"
     },
     "Popup Melee Weapon": {
       "name": "Arma cuerpo a cuerpo emergente",
