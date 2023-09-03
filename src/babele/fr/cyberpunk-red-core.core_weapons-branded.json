@@ -1,5 +1,8 @@
 {
   "label": "Armes (de Marques)",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Avenger": {
       "name": "Avenger",
