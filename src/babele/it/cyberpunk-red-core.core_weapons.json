@@ -1,5 +1,8 @@
 {
   "label": "Armi",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Air Pistol": {
       "name": "Pistola Pneumatica",
