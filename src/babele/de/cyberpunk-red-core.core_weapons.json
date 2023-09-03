@@ -3,19 +3,23 @@
   "entries": {
     "Air Pistol": {
       "name": "Luftpistole",
-      "description": "<p>Eine Exotische Mittelschwere Pistole. Feuer Gelkugeln ab. Kann die Panzerung des Ziels um 1 pro Treffer senken, wenn sie mit Säurekugeln geladen wird. Siehe Details auf Seite 347.</p>"
+      "description": "<p>Eine Exotische Mittelschwere Pistole. Feuer Gelkugeln ab. Kann die Panzerung des Ziels um 1 pro Treffer senken, wenn sie mit Säurekugeln geladen wird. Siehe Details auf Seite 347.</p>",
+      "dvTable": "SG Pistole"
     },
     "Assault Rifle (Excellent)": {
       "name": "Sturmgewehr (Hervorragende Qualität)",
-      "description": "<p>Sturmgewehr von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>"
+      "description": "<p>Sturmgewehr von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+      "dvTable": "SG Sturmgewehr"
     },
     "Assault Rifle (Poor)": {
       "name": "Sturmgewehr (Schlechte Qualität)",
-      "description": "<p>Ein Sturmgewehr von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>"
+      "description": "<p>Ein Sturmgewehr von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "dvTable": "SG Sturmgewehr"
     },
     "Assault Rifle": {
       "name": "Sturmgewehr",
-      "description": "<p>Ein Standard-Sturmgewehr.</p>"
+      "description": "<p>Ein Standard-Sturmgewehr.</p>",
+      "dvTable": "SG Sturmgewehr"
     },
     "Baseball Bat (Excellent)": {
       "name": "Baseballschläger (Hervorragende Qualität)",
@@ -31,15 +35,18 @@
     },
     "Bow (Excellent)": {
       "name": "Bogen (Hervorragende Qualität)",
-      "description": "<p>Ein Bogen. Das Nachladen ist Teil der Angriffsaktion.</p>\n<p>+1 auf Angriffe.</p>"
+      "description": "<p>Ein Bogen. Das Nachladen ist Teil der Angriffsaktion.</p>\n<p>+1 auf Angriffe.</p>",
+      "dvTable": "SG Bögen und Armbrüste"
     },
     "Bow (Poor)": {
       "name": "Bogen (Schlechte Qualität)",
-      "description": "<p>Ein Bogen von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>"
+      "description": "<p>Ein Bogen von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "dvTable": "SG Bögen und Armbrüste"
     },
     "Bow": {
       "name": "Bogen",
-      "description": "<p>Ein Bogen. Das Nachladen ist Teil der Angriffsaktion.</p>"
+      "description": "<p>Ein Bogen. Das Nachladen ist Teil der Angriffsaktion.</p>",
+      "dvTable": "SG Bögen und Armbrüste"
     },
     "Chainsaw (Excellent)": {
       "name": "Kettensäge (Hervorragende Qualität)",
@@ -67,15 +74,18 @@
     },
     "Crossbow (Excellent)": {
       "name": "Armbrust (Hervorragende Qualität)",
-      "description": "<p>Eine Armbrust. Das Nachladen ist Teil der Angriffsaktion.</p>\n<p>+1 auf Angriffe.</p>"
+      "description": "<p>Eine Armbrust. Das Nachladen ist Teil der Angriffsaktion.</p>\n<p>+1 auf Angriffe.</p>",
+      "dvTable": "SG Bögen und Armbrüste"
     },
     "Crossbow (Poor)": {
       "name": "Armbrust (Schlechte Qualität)",
-      "description": "<p>Eine Armbrust von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>"
+      "description": "<p>Eine Armbrust von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "dvTable": "SG Bögen und Armbrüste"
     },
     "Crossbow": {
       "name": "Armbrust",
-      "description": "<p>Eine Armbrust. Das Nachladen ist Teil der Angriffsaktion.</p>"
+      "description": "<p>Eine Armbrust. Das Nachladen ist Teil der Angriffsaktion.</p>",
+      "dvTable": "SG Bögen und Armbrüste"
     },
     "Crowbar (Excellent)": {
       "name": "Brecheisen (Hervorragende Qualität)",
@@ -91,27 +101,33 @@
     },
     "Dartgun": {
       "name": "Pfeilschuss­pistole",
-      "description": "<p>Eine Exotische Sehr Schwere Pistole. Siehe die vollständige Gegenstandsbeschreibung auf S. 348.</p>"
+      "description": "<p>Eine Exotische Sehr Schwere Pistole. Siehe die vollständige Gegenstandsbeschreibung auf S. 348.</p>",
+      "dvTable": "SG Pistole"
     },
     "EMG-86 Railgun": {
       "name": "EMG-86 Railgun",
-      "description": "<p>Ein Exotisches Sturmgewehr ohne Option für Automatisches Feuer oder Gezielte Schüsse. Erfordert KRA 11 oder höher (wenn nicht aufmontiert). Ignoriert Rüstung unter SW 11*. Siehe Details auf Seite 349.</p>\n<p><em>*Aktuell nicht unterstützt, Schaden muss auf gepanzerte Ziele manuell angewendet werden</em></p>"
+      "description": "<p>Ein Exotisches Sturmgewehr ohne Option für Automatisches Feuer oder Gezielte Schüsse. Erfordert KRA 11 oder höher (wenn nicht aufmontiert). Ignoriert Rüstung unter SW 11*. Siehe Details auf Seite 349.</p>\n<p><em>*Aktuell nicht unterstützt, Schaden muss auf gepanzerte Ziele manuell angewendet werden</em></p>",
+      "dvTable": "SG Sturmgewehr"
     },
     "Flamethrower": {
       "name": "Flammenwerfer",
-      "description": "<p>Eine Exotische Schrotflinte, die mit der Fertigkeit Schwere Waffen abgefeuert wird. Siehe Details auf Seite 348.</p>"
+      "description": "<p>Eine Exotische Schrotflinte, die mit der Fertigkeit Schwere Waffen abgefeuert wird. Siehe Details auf Seite 348.</p>",
+      "dvTable": "SG Flinte (Flintenpatrone)"
     },
     "Grenade Launcher (Excellent)": {
       "name": "Granatwerfer (Hervorragende Qualität)",
-      "description": "<p>Granatwerfer von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>"
+      "description": "<p>Granatwerfer von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+      "dvTable": "SG Granatwerfer"
     },
     "Grenade Launcher (Poor)": {
       "name": "Granatwerfer (Schlechte Qualität)",
-      "description": "<p>Ein Granatwerfer von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>"
+      "description": "<p>Ein Granatwerfer von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "dvTable": "SG Granatwerfer"
     },
     "Grenade Launcher": {
       "name": "Granatwerfer",
-      "description": "<p>Ein hochwirksamer Granatwerfer. Mit ihm können eine Vielzahl von Granaten verwendet werden.</p>"
+      "description": "<p>Ein hochwirksamer Granatwerfer. Mit ihm können eine Vielzahl von Granaten verwendet werden.</p>",
+      "dvTable": "SG Granatwerfer"
     },
     "Heavy Melee (Excellent)": {
       "name": "Schwere Nahkampfwaffe (Hervorragende Qualität)",
@@ -127,27 +143,33 @@
     },
     "Heavy Pistol (Excellent)": {
       "name": "Schwere Pistole (Hervorragende Qualität)",
-      "description": "<p>Schwere Pistole von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>"
+      "description": "<p>Schwere Pistole von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+      "dvTable": "SG Pistole"
     },
     "Heavy Pistol (Poor)": {
       "name": "Schwere Pistole (Schlechte Qualität)",
-      "description": "<p>Eine schwere Pistole von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>"
+      "description": "<p>Eine schwere Pistole von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "dvTable": "SG Pistole"
     },
     "Heavy Pistol": {
       "name": "Schwere Pistole",
-      "description": "<p>Eine verbergbare, schwere Pistole.</p>"
+      "description": "<p>Eine verbergbare, schwere Pistole.</p>",
+      "dvTable": "SG Pistole"
     },
     "Heavy SMG (Excellent)": {
       "name": "Schwere MP (Hervorragende Qualität)",
-      "description": "<p>Schwere MP von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu. <br/>\nIm Regelwerk wird es fälschlicherweise mit MG übersetzt</p>"
+      "description": "<p>Schwere MP von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu. <br/>\nIm Regelwerk wird es fälschlicherweise mit MG übersetzt</p>",
+      "dvTable": "SG MP"
     },
     "Heavy SMG (Poor)": {
       "name": "Schwere MP (Schlechte Qualität)",
-      "description": "<p>Eine schwere MP von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst. <br/>\nIm Regelwerk wird es fälschlicherweise mit MG übersetzt</p>"
+      "description": "<p>Eine schwere MP von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst. <br/>\nIm Regelwerk wird es fälschlicherweise mit MG übersetzt</p>",
+      "dvTable": "SG MP"
     },
     "Heavy SMG": {
       "name": "Schwere MP",
-      "description": "<p>Eine schwere MP. Aufgrund der Größe kann sie nicht verborgen werden.<br />\nIm deutschen Regelwerk falsch übersetzt mit MG.</p>"
+      "description": "<p>Eine schwere MP. Aufgrund der Größe kann sie nicht verborgen werden.<br />\nIm deutschen Regelwerk falsch übersetzt mit MG.</p>",
+      "dvTable": "SG MP"
     },
     "Helicopter Blades (Excellent)": {
       "name": "Rotorblatt (Hervorragende Qualität)",
@@ -163,11 +185,13 @@
     },
     "Helix": {
       "name": "Helix",
-      "description": "<p>Ein Exotisches Sturmgewehr, das ausschließlich Autofeuer unterstützt. Fasst 40 Geschosse, verbraucht 20 pro Angriff. Nutzt Autofeuer bis zu einem maximalen Multiplikator von 5. Benötigt KRA 11 (wenn nicht aufmontiert). Siehe Details auf Seite 349.</p>"
+      "description": "<p>Ein Exotisches Sturmgewehr, das ausschließlich Autofeuer unterstützt. Fasst 40 Geschosse, verbraucht 20 pro Angriff. Nutzt Autofeuer bis zu einem maximalen Multiplikator von 5. Benötigt KRA 11 (wenn nicht aufmontiert). Siehe Details auf Seite 349.</p>",
+      "dvTable": "SG Sturmgewehr"
     },
     "Hurricane Assault Weapon": {
       "name": "Hurricane Sturmschrotflinte",
-      "description": "<p>Eine Exotische Schrotflinte mit AF2. Kann keine gezielten Schüsse abgeben und erfordert KRA 11 (wenn nicht aufmontiert). Siehe Details auf Seite 348.</p>"
+      "description": "<p>Eine Exotische Schrotflinte mit AF2. Kann keine gezielten Schüsse abgeben und erfordert KRA 11 (wenn nicht aufmontiert). Siehe Details auf Seite 348.</p>",
+      "dvTable": "SG Flinte (Flintenpatrone)"
     },
     "Lead Pipe (Excellent)": {
       "name": "Bleirohr (Hervorragende Qualität)",
@@ -207,7 +231,8 @@
     },
     "Malorian Arms 3516": {
       "name": "Malorian Arms 3516",
-      "description": "<p>Eine Exotische Sehr Schwere Pistole von Hervorragender Qualität. Verfügt über eine fest installierte Smartgun-Verbindung*, die genutzt werden muss. Details auf Seite 348.</p>\n<p><em>*Muss manuell hinzugefügt werden</em></p>"
+      "description": "<p>Eine Exotische Sehr Schwere Pistole von Hervorragender Qualität. Verfügt über eine fest installierte Smartgun-Verbindung*, die genutzt werden muss. Details auf Seite 348.</p>\n<p><em>*Muss manuell hinzugefügt werden</em></p>",
+      "dvTable": "SG Pistole"
     },
     "Martial Arts": {
       "name": "Kampfkunst",
@@ -227,19 +252,23 @@
     },
     "Medium Pistol (Excellent)": {
       "name": "Mittelschwere Pistole (Hervorragende Qualität)",
-      "description": "<p>Mittelschwere Pistole von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>"
+      "description": "<p>Mittelschwere Pistole von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+      "dvTable": "SG Pistole"
     },
     "Medium Pistol (Poor)": {
       "name": "Mittelschwere Pistole (Schlechte Qualität)",
-      "description": "<p>Eine mittelschwere Pistole von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>"
+      "description": "<p>Eine mittelschwere Pistole von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "dvTable": "SG Pistole"
     },
     "Medium Pistol": {
       "name": "Mittelschwere Pistole",
-      "description": "<p>Eine verdeckbare, mittelschwere Pistole.</p>"
+      "description": "<p>Eine verdeckbare, mittelschwere Pistole.</p>",
+      "dvTable": "SG Pistole"
     },
     "Microwaver": {
       "name": "Mikrowellenstrahler",
-      "description": "<p>Eine Exotische Sehr Schwere Pistole. Statt Schaden anzurichten, muss das Ziel eine Probe auf Cybertech gegen SG 15 ablegen, damit nicht Cyberware oder Elektronik für eine Minute ausfallen. Siehe vollständige Beschreibung auf Seite 348.</p>"
+      "description": "<p>Eine Exotische Sehr Schwere Pistole. Statt Schaden anzurichten, muss das Ziel eine Probe auf Cybertech gegen SG 15 ablegen, damit nicht Cyberware oder Elektronik für eine Minute ausfallen. Siehe vollständige Beschreibung auf Seite 348.</p>",
+      "dvTable": "SG Pistole"
     },
     "Mono-Three": {
       "name": "Mono-Drei",
@@ -263,31 +292,38 @@
     },
     "Rocket Launcher (Excellent)": {
       "name": "Raketenwerfer (Hervorragende Qualität)",
-      "description": "<p>Raketenwerfer von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>"
+      "description": "<p>Raketenwerfer von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+      "dvTable": "SG Raketenwerfer"
     },
     "Rocket Launcher (Poor)": {
       "name": "Raketenwerfer (Schlechte Qualität)",
-      "description": "<p>Ein Raketenwerfer von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>"
+      "description": "<p>Ein Raketenwerfer von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "dvTable": "SG Raketenwerfer"
     },
     "Rocket Launcher": {
       "name": "Raketenwerfer",
-      "description": "<p>Fahre die großen Geschütze auf. Dieser Raketenwerfer wird einigen Schaden anrichten.</p>"
+      "description": "<p>Fahre die großen Geschütze auf. Dieser Raketenwerfer wird einigen Schaden anrichten.</p>",
+      "dvTable": "SG Raketenwerfer"
     },
     "Shotgun (Excellent)": {
       "name": "Flinte (Hervorragende Qualität)",
-      "description": "<p>Flinte von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>"
+      "description": "<p>Flinte von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+      "dvTable": "SG Flinte (Flintenpatrone)"
     },
     "Shotgun (Poor)": {
       "name": "Flinte (Schlechte Qualität)",
-      "description": "<p>Eine Flinte von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>"
+      "description": "<p>Eine Flinte von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "dvTable": "SG Flinte (Flintenpatrone)"
     },
     "Shotgun": {
       "name": "Flinte",
-      "description": "<p>Eine Flinte. Oft auch als Schrotflinte bekannt.</p>"
+      "description": "<p>Eine Flinte. Oft auch als Schrotflinte bekannt.</p>",
+      "dvTable": "SG Flinte (Flintenpatrone)"
     },
     "Shrieker": {
       "name": "Kreischer",
-      "description": "<p>Eine Exotische Sehr Schwere Pistole. Benötigt Hörschutz, um die Kritische Verletzung Ohrenschaden beim Abfeuern zu vermeiden. Das Ziel muss eine Probe auf Folter/Drogen widerstehen gegen SG 15 ablegen, um dieser Kritischen Verletzung zu entgehen. Details auf Seite 349.</p>"
+      "description": "<p>Eine Exotische Sehr Schwere Pistole. Benötigt Hörschutz, um die Kritische Verletzung Ohrenschaden beim Abfeuern zu vermeiden. Das Ziel muss eine Probe auf Folter/Drogen widerstehen gegen SG 15 ablegen, um dieser Kritischen Verletzung zu entgehen. Details auf Seite 349.</p>",
+      "dvTable": "SG Pistole"
     },
     "Sledgehammer (Excellent)": {
       "name": "Vorschlaghammer (Hervorragende Qualität)",
@@ -303,27 +339,33 @@
     },
     "SMG (Excellent)": {
       "name": "MP (Hervorragende Qualität)",
-      "description": "<p>MP von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu. <br/>\nIm Regelwerk wird es fälschlicherweise mit MG übersetzt</p>"
+      "description": "<p>MP von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu. <br/>\nIm Regelwerk wird es fälschlicherweise mit MG übersetzt</p>",
+      "dvTable": "SG MP"
     },
     "SMG (Poor)": {
       "name": "MP (Schlechte Qualität)",
-      "description": "<p>Eine MP von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst. <br/>\nIm Regelwerk wird es fälschlicherweise mit MG übersetzt</p>"
+      "description": "<p>Eine MP von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst. <br/>\nIm Regelwerk wird es fälschlicherweise mit MG übersetzt</p>",
+      "dvTable": "SG MP"
     },
     "SMG": {
       "name": "MP",
-      "description": "<p>Eine Maschinenpistole (MP) die verdeckt getragen werden kann.<br />\nIm deutschen Regelwerk falsch übersetzt mit MG.\n</p>"
+      "description": "<p>Eine Maschinenpistole (MP) die verdeckt getragen werden kann.<br />\nIm deutschen Regelwerk falsch übersetzt mit MG.\n</p>",
+      "dvTable": "SG MP"
     },
     "Sniper Rifle (Excellent)": {
       "name": "Scharfschützengewehr (Hervorragende Qualität)",
-      "description": "<p>Scharfschützengewehr von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>"
+      "description": "<p>Scharfschützengewehr von hervorragender Qualität, addiere +1 zu deinem Angriffswurf hinzu.</p>",
+      "dvTable": "SG Scharfschützengewehr"
     },
     "Sniper Rifle (Poor)": {
       "name": "Schwarfschützengewehr (Schlechte Qualität)",
-      "description": "<p>Ein Scharfschützengewehr von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>"
+      "description": "<p>Ein Scharfschützengewehr von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "dvTable": "SG Scharfschützengewehr"
     },
     "Sniper Rifle": {
       "name": "Scharfschützengewehr",
-      "description": "<p>Ein Scharfschützengewehr für große Entfernungen. Fasst 4 Kugeln in einem Magazin.</p>"
+      "description": "<p>Ein Scharfschützengewehr für große Entfernungen. Fasst 4 Kugeln in einem Magazin.</p>",
+      "dvTable": "SG Scharfschützengewehr"
     },
     "Spiked Bat (Excellent)": {
       "name": "Nagelbrett (Hervorragende Qualität)",
@@ -343,7 +385,8 @@
     },
     "Stun Gun": {
       "name": "Betäubungspistole",
-      "description": "<p>Eine Exotische Schwere Pistole. Wenn der Schaden die TP des Ziels unter 1 senken würde, wird das Ziel stattdessen mit 1 TP bewusstlos. Trägt keine Panzerung ab und verursacht keine Kritischen Verletzungen. Details auf Seite 349.</p>"
+      "description": "<p>Eine Exotische Schwere Pistole. Wenn der Schaden die TP des Ziels unter 1 senken würde, wird das Ziel stattdessen mit 1 TP bewusstlos. Trägt keine Panzerung ab und verursacht keine Kritischen Verletzungen. Details auf Seite 349.</p>",
+      "dvTable": "SG Pistole"
     },
     "Sword (Excellent)": {
       "name": "Schwert (Hervorragende Qualität)",
@@ -359,7 +402,8 @@
     },
     "Thrown Weapon": {
       "name": "Wurfwaffe",
-      "description": "<p>Das einfache Werfen eines Gegenstands. Führe als Aktion einen Fernkampfangriff bis zu 25 m durch. Ziele können versuchen auszuweichen, wenn sie Geschossen ausweichen können. Nahkampfwaffen richten ihren angegebenen Schaden an, halbieren aber nicht den SW. Granaten verursachen den normalen Schaden. Den Schaden durch improvisierte Waffen bestimmt die SL.</p>"
+      "description": "<p>Das einfache Werfen eines Gegenstands. Führe als Aktion einen Fernkampfangriff bis zu 25 m durch. Ziele können versuchen auszuweichen, wenn sie Geschossen ausweichen können. Nahkampfwaffen richten ihren angegebenen Schaden an, halbieren aber nicht den SW. Granaten verursachen den normalen Schaden. Den Schaden durch improvisierte Waffen bestimmt die SL.</p>",
+      "dvTable": "SG Wurfwaffe"
     },
     "Tomahawk (Excellent)": {
       "name": "Tomahawk (Hervorragende Qualität)",
@@ -375,7 +419,8 @@
     },
     "U-56 Grenade Launcher \"Cowboy\"": {
       "name": "U-56 Granatwerfer \"Cowboy\"",
-      "description": "<p>Ein exotischer Granatwerfer mit AF2. Fasst vier Granaten. Benötigt KRA 11 oder höher (wenn nicht aufmontiert). Details auf Seite 349.</p>"
+      "description": "<p>Ein exotischer Granatwerfer mit AF2. Fasst vier Granaten. Benötigt KRA 11 oder höher (wenn nicht aufmontiert). Details auf Seite 349.</p>",
+      "dvTable": "SG Granatwerfer"
     },
     "Unarmed": {
       "name": "Faustkampf",
@@ -395,15 +440,18 @@
     },
     "Very Heavy Pistol (Excellent)": {
       "name": "Sehr schwere Pistole (Hervorragende Qualität)",
-      "description": "<p>Sehr schwere Pistole. Kann nicht verborgen werden. +1 auf Angriffe.</p>"
+      "description": "<p>Sehr schwere Pistole. Kann nicht verborgen werden. +1 auf Angriffe.</p>",
+      "dvTable": "SG Pistole"
     },
     "Very Heavy Pistol (Poor)": {
       "name": "Sehr schwere Pistole (Schlechte Qualität)",
-      "description": "<p>Eine schwere Pistole von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>"
+      "description": "<p>Eine schwere Pistole von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "dvTable": "SG Pistole"
     },
     "Very Heavy Pistol": {
       "name": "Sehr Schwere Pistole",
-      "description": "<p>Eine Sehr Schwere Pistole. Sie kann nicht verborgen werden.</p>"
+      "description": "<p>Eine Sehr Schwere Pistole. Sie kann nicht verborgen werden.</p>",
+      "dvTable": "SG Pistole"
     }
   }
 }
