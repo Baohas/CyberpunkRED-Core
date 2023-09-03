@@ -247,7 +247,8 @@
     },
     "Popup Grenade Launcher": {
       "name": "Lançador de Granadas Popup",
-      "description": "<p>Um lança granada oculta de disparo único. Não pode segurar nada enquanto essa mão está ativa.</p>"
+      "description": "<p>Um lança granada oculta de disparo único. Não pode segurar nada enquanto essa mão está ativa.</p>",
+      "dvTable": "DV Lançador de Granadas"
     },
     "Popup Melee Weapon": {
       "name": "Popup Arma Corpo à Corpo",
