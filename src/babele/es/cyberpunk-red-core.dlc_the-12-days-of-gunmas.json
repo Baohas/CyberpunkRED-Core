@@ -1,5 +1,8 @@
 {
   "label": "Los 12 días de NavidArmas",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Nova Model 757 Rounds": {
       "name": "Rondas del Modelo de Nova 757",
