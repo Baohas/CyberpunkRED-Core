@@ -1,5 +1,8 @@
 {
   "label": "Melhorias",
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
     "Armored Chassis": {
       "name": "Armored Chassis",
