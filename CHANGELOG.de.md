@@ -4,6 +4,16 @@
 
 ## Version 0.88.2
 
+### Action Needed
+
+Our v11 Migrations of Active Effects introduced a bug where modifiers to STATs (and only STATs). Caused them to be multiplied by 3.
+
+For example, if you had the Grafted Bone and Muscle Lace (BODY +2) on an actor with a base BODY of 6, instead of having a BODY of 8, the actor would now have a BODY of 12.
+
+Unfortunately we cannot revert this automatically so you will need to fix these issues manually. Either restore from a pre-`0.88` backup and remgirate or adjust the actors back. This affects all Characters/Mooks who had STAT modifiers.
+
+\*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
+
 ### Fehlerbehebungen
 
 - Fix weapons moved to stash not applying correct amount of ammo stack
@@ -15,7 +25,9 @@
 - Fix unlinked character and mook actors resetting back to default 40 HP, 60 Humanity
 - Fix BlackICE actor program link list not in alphabetical order
 - Fix issue where items did not have their dv tables translated.
+- Fixed rare issue where container actor would fail migration.
 - Fix issue where orphaned effects on actors were causing migrations to fail.
+- Fix migration issue where AEs on stats were causing them to be incorrectly recalculated.
 - Fix translation issues with translated skills via Babele
 
 ### Neue Funktionen
@@ -26,7 +38,7 @@
 
 ## Version 0.88.1
 
-### Action Needed
+### Aktion erforderlich
 
 **WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
 

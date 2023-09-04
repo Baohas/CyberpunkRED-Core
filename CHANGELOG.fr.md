@@ -4,6 +4,16 @@
 
 ## Version 0.88.2
 
+### Action Needed
+
+Our v11 Migrations of Active Effects introduced a bug where modifiers to STATs (and only STATs). Caused them to be multiplied by 3.
+
+For example, if you had the Grafted Bone and Muscle Lace (BODY +2) on an actor with a base BODY of 6, instead of having a BODY of 8, the actor would now have a BODY of 12.
+
+Unfortunately we cannot revert this automatically so you will need to fix these issues manually. Either restore from a pre-`0.88` backup and remgirate or adjust the actors back. This affects all Characters/Mooks who had STAT modifiers.
+
+\*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
+
 ### Corrections de bugs
 
 - Correction des armes déplacées vers la réserve n'appliquant pas la quantité correcte de munitions
@@ -15,7 +25,9 @@
 - Correction des acteurs non-liés et les acteurs sbires réinitialisant les 40 PS par défaut, 60 Humanité
 - Correction de la liste des liens de programme GLACE noirs par ordre alphabétique
 - Fix issue where items did not have their dv tables translated.
+- Fixed rare issue where container actor would fail migration.
 - Correction du problème où les effets orphelins sur les acteurs provoquaient l'échec des migrations.
+- Fix migration issue where AEs on stats were causing them to be incorrectly recalculated.
 - Fix translation issues with translated skills via Babele
 
 ### Nouvelles fonctionnalités
@@ -26,7 +38,7 @@
 
 ## Version 0.88.1
 
-### Action Needed
+### Action requise
 
 **AVERTISSEMENT**: SI VOUS AVEZ CHARGE LA MISE À JOUR  `0.88.0`/FOUNDRY V11, C'ETAIT UNE ERREUR (mais pas de votre faute). VOUS DEVEZ REVENIR A LA SAUVEGARDE QUE VOUS AVEZ FAITE / FOUNDRY V10, AVANT LA MISE À JOUR À CETTE VERSION. A NOUVEAU, **REVENEZ A FOUNDRY V10 ET A VOTRE SAUVEGARDE QUE VOUS AVEZ FAIT DE CPR `0.87.6`**, PUIS METTEZ À JOUR DIRECTEMENT AVEC LA `V0.88.1`. Passez sur le Discord si vous avez un problème.
 
