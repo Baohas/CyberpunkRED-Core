@@ -49,7 +49,7 @@ export default class v11EffectsMigration extends CPRMigration {
    */
   async migrateActor(actor) {
     LOGGER.trace(`migrateActor | ${this.version}-${this.name}`);
-    const updateData = duplicate(actor.system);
+    const updateData = duplicate(actor.toObject().system);
 
     // Remove accidental junk data:
     updateData["-=fightOptions"] = null;

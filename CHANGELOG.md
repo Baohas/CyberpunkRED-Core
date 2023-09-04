@@ -17,6 +17,7 @@
 - Fix issue where items did not have their dv tables translated.
 - Fixed rare issue where container actor would fail migration.
 - Fix issue where orphaned effects on actors were causing migrations to fail.
+- Fix migration issue where AEs on stats were causing them to be incorrectly recalculated.
 - Fix translation issues with translated skills via Babele
 
 ### New Features
