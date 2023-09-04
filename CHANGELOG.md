@@ -15,6 +15,7 @@
 - Fix unlinked character and mook actors resetting back to default 40 HP, 60 Humanity
 - Fix BlackICE actor program link list not in alphabetical order
 - Fix issue where items did not have their dv tables translated.
+- Fixed rare issue where container actor would fail migration.
 - Fix issue where orphaned effects on actors were causing migrations to fail.
 - Fix translation issues with translated skills via Babele
 
