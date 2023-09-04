@@ -895,7 +895,7 @@ export default function registerHandlebarsHelpers() {
      * @param {Number} [rem = 1] - The amount of indentation.
      * @returns {String}
      */
-    function recursiveHTML(parentItem, rem = 1) {
+    function recursiveHTML(parentItem, topLevelId, rem = 1) {
       // Get all items installed in the parent.
       const installedItems = parentItem.getInstalledItems();
       let html = "";
@@ -904,14 +904,20 @@ export default function registerHandlebarsHelpers() {
         const localizedType = SystemUtils.Localize(
           `TYPES.Item.${childItem.type}`
         );
-        html += `<li class="item flexrow" style="padding-left:${rem}rem" data-item-id="${childItem.id}"
+        const display = parentItem.actor.flags?.[game.system.id]
+          ?.showInstalled?.[topLevelId]
+          ? ""
+          : "display:none;";
+
+        html += `<li class="item flexrow" style="padding-left:${rem}rem; ${display}" data-install-parent="${topLevelId}"
+                     data-item-id="${childItem.id}"
                      data-item-category="${childItem.type}">`;
         html += `  <a class="name item-view flex-center">- ${childItem.name} (${localizedType})</a>`;
         html += `</li>`;
         // If the child item has its own installed items, call this function on the child item
         // and increase the indent.
         if (childItem.system.installedItems?.list?.length > 0) {
-          html += recursiveHTML(childItem, rem + 1);
+          html += recursiveHTML(childItem, topLevelId, rem + 1);
         }
       }
       return html;
@@ -922,7 +928,7 @@ export default function registerHandlebarsHelpers() {
       item.system.installedItems?.list?.length > 0 &&
       !item.system.isInstalled
     ) {
-      const html = recursiveHTML(item);
+      const html = recursiveHTML(item, item.id);
       return new Handlebars.SafeString(html);
     }
     // Otherwise return a blank string.

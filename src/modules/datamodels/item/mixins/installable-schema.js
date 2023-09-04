@@ -80,4 +80,31 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
     // ... return the list of world items this is installed in (or an empty array).
     return worldItems.map((i) => i.id);
   }
+
+  /**
+   * There are times it may be useful to know how many layers deep an item is installed. For example,
+   * a Skill Chip in a Chipware Socket in a Neural Ware in an Actor is 3 layers deep:
+   *
+   * Actor (Depth: 0) -> Neural Ware (Depth: 1) -> Chipware Socket (Depth: 2) -> Skill Chip (Depth: 3)
+   *
+   * We use a recursive function to get to the depth.
+   *
+   * @getter
+   * @returns {Number} - The amount of layers deep that this item is installed. Returns 0 if uninstalled.
+   */
+  get installDepth() {
+    LOGGER.trace("get installDepth | InstallableSchema | called.");
+    function getDepth(doc, n = 0) {
+      const actor = doc?.isEmbedded ? doc.actor : false;
+      if (doc.system.isInstalled && doc.documentName !== "Actor") {
+        const parentDoc = actor
+          ? actor.getOwnedItem(doc.system.installedIn[0]) || actor
+          : game.items.get(doc.system.installedIn[0]);
+        return getDepth(parentDoc, n + 1);
+      }
+      return n;
+    }
+
+    return getDepth(this.parent);
+  }
 }

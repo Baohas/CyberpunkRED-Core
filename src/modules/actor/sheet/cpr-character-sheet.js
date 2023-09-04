@@ -80,6 +80,11 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       .find(".toggle-section-visibility")
       .click((event) => this._toggleSectionVisibility(event));
 
+    // toggle display of nested installed items in the gear tab
+    html
+      .find(".toggle-installed-visibility")
+      .click((event) => this._toggleInstalledVisibility(event));
+
     if (!this.options.editable) return;
     // Listeners for editable fields under go here. Fields might not be editable because
     // the user viewing the sheet might not have permission to. They may not be the owner.
@@ -346,6 +351,48 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     }
 
     await this.actor.setLifepath(dialogData);
+  }
+
+  /**
+   * Toggle display of nested installed items on the gear tab.
+   *
+   * @callback
+   * @private
+   * @param {*} event - object with details of the event
+   */
+  async _toggleInstalledVisibility(event) {
+    LOGGER.trace(
+      "_toggleInstalledVisibility | CPRCharacterActorSheet | Called."
+    );
+    const id = SystemUtils.GetEventDatum(event, "data-item-id");
+    const installFlags = this.actor.getFlag(game.system.id, "showInstalled");
+
+    // Rotate the icon.
+    $(event.currentTarget).children("i").toggleClass("fa-rotate-270");
+    // Slide the installed list down.
+    $(event.currentTarget)
+      .parent()
+      .parent()
+      .siblings(`li[data-install-parent="${id}"]`)
+      .slideToggle(300)
+      .promise()
+      .then(async () => {
+        // Then update the actor's flags so the visibility of the list persists.
+        if (installFlags) {
+          // If the actor already has install flags, edit those.
+          installFlags[id] = !installFlags[id];
+          await this.actor.setFlag(
+            game.system.id,
+            "showInstalled",
+            installFlags
+          );
+        } else {
+          // If not, create the flag.
+          await this.actor.setFlag(game.system.id, "showInstalled", {
+            [id]: true,
+          });
+        }
+      });
   }
 
   /**

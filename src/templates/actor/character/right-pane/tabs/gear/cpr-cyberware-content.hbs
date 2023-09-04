@@ -8,6 +8,7 @@
            item-name
            gear-name
            text-nowrap
+           flexrow
            {{#if item.system.isFoundational}}
              text-semi
            {{/if}}"
@@ -16,6 +17,11 @@
              {{#if item.system.isFoundational}}
                ({{localize "CPR.global.generic.foundational" }})
              {{/if}}">
+      <a class="toggle-installed-visibility">
+        {{#if item.system.installedItems.list }}
+          <i class="fa-solid fa-sitemap fa-sm {{#unless (cprGetProp actor.flags.cyberpunk-red-core.showInstalled item.id) }}fa-rotate-270{{/unless}}"></i>
+        {{/if}}
+      </a>
       <a class="name item-edit flex-center">
         <img src="{{item.img}}"/>
         {{cprBrandedName item}}

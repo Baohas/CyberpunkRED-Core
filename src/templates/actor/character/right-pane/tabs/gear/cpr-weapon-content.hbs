@@ -4,9 +4,14 @@
     data-item-id="{{item._id}}"
     data-item-category="{{item.type}}"
     draggable="true">
-  <div class="item-name gear-name text-nowrap"
+  <div class="item-name gear-name text-nowrap flexrow"
        data-tooltip="{{localize (cprFindConfigValue "weaponTypeList" item.system.weaponType)}}"
        alt="{{localize (cprFindConfigValue "weaponTypeList" item.system.weaponType)}}">
+    <a class="toggle-installed-visibility">
+      {{#if item.system.installedItems.list }}
+        <i class="fa-solid fa-sitemap fa-sm {{#unless (cprGetProp actor.flags.cyberpunk-red-core.showInstalled item.id) }}fa-rotate-270{{/unless}}"></i>
+      {{/if}}
+    </a>
     <a class="name item-edit flex-center">
       <img src="{{item.img}}"/>
       {{cprBrandedName item}}
