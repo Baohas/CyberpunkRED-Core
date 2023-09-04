@@ -10,6 +10,16 @@
 - Add setting to disable warning when rolling damage without targets
 - The fumble recovery skill for Solos is now accounted for
 
+### Action Needed
+
+Our v11 Migrations of Active Effects introduced a bug where modifiers to STATs (and only STATs). Caused them to be multiplied by 3.
+
+For example, if you had the Grafted Bone and Muscle Lace (BODY +2) on an actor with a base BODY of 6, instead of having a BODY of 8, the actor would now have a BODY of 12.
+
+Unfortunately we cannot revert this automatically so you will need to fix these issues manually. Either restore from a pre-`0.88` backup and remgirate or adjust the actors back. This affects all Characters/Mooks who had STAT modifiers.
+
+\*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
+
 ### Bug Fixes
 
 - #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
