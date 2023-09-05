@@ -144,7 +144,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     // Uninstall a program on a Cyberdeck
     html
       .find(".uninstall-single-item")
-      .click((event) => this._cyberdeckProgramUninstall(event));
+      .click((event) => this._uninstallSingleItem(event));
 
     // Effects tab listeners
     // Create Active Effect
@@ -373,7 +373,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     $(event.currentTarget)
       .parent()
       .parent()
-      .siblings(`li[data-install-parent="${id}"]`)
+      .siblings(`li[data-top-level-parent="${id}"]`)
       .slideToggle(300)
       .promise()
       .then(async () => {
@@ -731,19 +731,25 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   }
 
   /**
-   * Called when the erase program glyph is clicked (the red folder). Removes the program from
-   * the equipped cyberdeck.
+   * Called when the uninstall item glyph is clicked (the minus folder).
    *
    * @param {*} event - object capturing event data (what was clicked and where?)
-   * @returns {null}
+   * @returns {Promise<null>}
    */
-  async _cyberdeckProgramUninstall(event) {
-    LOGGER.trace(
-      "_cyberdeckProgramUninstall | CPRCharacterActorSheet | Called."
-    );
-    const cyberdeckId = SystemUtils.GetEventDatum(event, "data-cyberdeck-id");
-    const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
+  async _uninstallSingleItem(event) {
+    LOGGER.trace("_uninstallSingleItem | CPRCharacterActorSheet | Called.");
+    // Get the item being uninstalled.
+    const installedItemId = SystemUtils.GetEventDatum(event, "data-item-id");
+    const installedItem = this.actor.getOwnedItem(installedItemId);
 
-    return cyberdeck.sheet._uninstallSingleItem(event);
+    // Get the container item that has has the above item installed, if provided.
+    const containerId = SystemUtils.GetEventDatum(event, "data-direct-parent");
+    const container = this.actor.getOwnedItem(containerId);
+
+    // If a specific container item is provided, uninistall just from that container.
+    // Else, uninstall from all locations.
+    return container
+      ? installedItem.uninstall([container])
+      : installedItem.uninstall();
   }
 }

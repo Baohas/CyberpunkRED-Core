@@ -942,35 +942,11 @@ export default class CPRItemSheet extends ItemSheet {
   async _uninstallSingleItem(event) {
     LOGGER.trace("_uninstallSingleItem | CPRItemSheet | Called.");
     const installedItemId = SystemUtils.GetEventDatum(event, "data-item-id");
-    const { item } = this;
-    const actor = this.item.isOwned ? this.item.actor : null;
-
+    const actor = this.item.isEmbedded ? this.item.actor : null;
     const installedItem = actor
       ? actor.getOwnedItem(installedItemId)
       : game.items.get(installedItemId);
-
-    // Show "Default" dialog.
-    const confirmUninstall = await CPRDialog.showDialog(
-      {
-        dialogMessage: SystemUtils.Format(
-          "CPR.dialog.uninstallConfirmation.message",
-          {
-            installableItemName: installedItem.name,
-            containerItemName: item.name,
-          }
-        ),
-      },
-      // Set the options for the dialog.
-      {
-        title: SystemUtils.Localize("CPR.dialog.uninstallConfirmation.title"),
-      }
-    ).catch((err) => LOGGER.debug(err));
-
-    if (!confirmUninstall) {
-      return;
-    }
-
-    item.uninstallItems([installedItem]);
+    installedItem.uninstall();
   }
 
   async _roleAbilityAction(event) {

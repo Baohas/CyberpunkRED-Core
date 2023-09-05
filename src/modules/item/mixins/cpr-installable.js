@@ -87,25 +87,61 @@ const Installable = function Installable() {
   /**
    * Uninstall this item.
    *
-   * This is only ever called from the actor sheet.
+   * If specific container items are provided, this item will only be uninstalled from those.
+   * Otherwise, the item will be installed from all locations.
    *
    * @async
+   * @param {Array<CPRItem(Container)>} providedContainers - a list of specific containers to uninstall this item from.
+   * @returns {Promise}
    */
-  this.uninstall = async function uninstall() {
-    if (!this.actor) {
-      return;
-    }
+  this.uninstall = async function uninstall(providedContainers) {
     LOGGER.trace("uninstall | Installable | Called.");
-    // In theory, something could be installed multiple items.
+    const { actor } = this;
+
+    // In theory, something could be installed in multiple items.
     // In practice, this is currently only true for ammo items.
-    const containers = this.actor.getMultipleOwnedItems(
-      this.system.installedIn
-    );
+    let containers;
+    if (providedContainers?.length > 0) {
+      containers = providedContainers;
+    } else {
+      containers = actor
+        ? this.actor.getMultipleOwnedItems(this.system.installedIn)
+        : game.items.filter((i) => this.system.installedIn.includes(i.id));
+    }
+
+    // Turn container item names into a string for the dialog.
+    const containerItemNames = containers
+      .map((c) => c.name)
+      .reduce((accumulator, currentValue) => `${accumulator}, ${currentValue}`);
+
+    // Show "Default" dialog.
+    const confirmUninstall = await CPRDialog.showDialog(
+      {
+        dialogMessage: SystemUtils.Format(
+          "CPR.dialog.uninstallConfirmation.message",
+          {
+            installableItemName: this.name,
+            containerItemName: containerItemNames,
+          }
+        ),
+      },
+      // Set the options for the dialog.
+      {
+        title: SystemUtils.Localize("CPR.dialog.uninstallConfirmation.title"),
+      }
+    ).catch((err) => LOGGER.debug(err));
+
+    if (!confirmUninstall) {
+      return Promise.resolve();
+    }
+
     const uninstallPromises = [];
     for (const container of containers) {
+      // Generate a list of promises.
       uninstallPromises.push(container.uninstallItems([this]));
     }
-    await Promise.all(uninstallPromises);
+    // Resolve all of the promises.
+    return Promise.all(uninstallPromises);
   };
 };
 

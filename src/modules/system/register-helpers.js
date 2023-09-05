@@ -904,15 +904,20 @@ export default function registerHandlebarsHelpers() {
         const localizedType = SystemUtils.Localize(
           `TYPES.Item.${childItem.type}`
         );
+        // Whether the content is hidden or not.
         const display = parentItem.actor.flags?.[game.system.id]
           ?.showInstalled?.[topLevelId]
           ? ""
           : "display:none;";
 
-        html += `<li class="item flexrow" style="padding-left:${rem}rem; ${display}" data-install-parent="${topLevelId}"
+        html += `<li class="item flexrow" style="padding-left:${rem}rem; ${display}" data-top-level-parent="${topLevelId}"
                      data-item-id="${childItem.id}"
                      data-item-category="${childItem.type}">`;
         html += `  <a class="name item-view flex-center">- ${childItem.name} (${localizedType})</a>`;
+        // Uninstall glyph
+        html += `  <a class="uninstall-single-item" data-item-id="${childItem.id}" data-direct-parent="${parentItem.id}">`;
+        html += `    <i class="fas fa-folder-minus"></i>`;
+        html += `  </a>`;
         html += `</li>`;
         // If the child item has its own installed items, call this function on the child item
         // and increase the indent.
@@ -923,7 +928,7 @@ export default function registerHandlebarsHelpers() {
       return html;
     }
 
-    // Only return something if the item isn't installed, and has installed items.
+    // Only create a dropdown if the item isn't installed, and has installed items.
     if (
       item.system.installedItems?.list?.length > 0 &&
       !item.system.isInstalled
