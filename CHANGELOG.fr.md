@@ -23,6 +23,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 - Correction du Cyberpied parfait ne nécessitant pas de base
 - Correction de la réinitialisation des PS et Humanité à 40 PS/60 Humanité chaque fois que le monde et la scène actuelle étaient rechargés.
 - Correction des acteurs non-liés et les acteurs sbires réinitialisant les 40 PS par défaut, 60 Humanité
+- Fix being unable to edit/toggle the same AE from multiple copies of the same item.
 - Correction de la liste des liens de programme GLACE noirs par ordre alphabétique
 - Fix issue where items did not have their dv tables translated.
 - Fixed rare issue where container actor would fail migration.
