@@ -69,11 +69,11 @@
         {{/if}}
       </div>
       <div class="item flexrow setting-value text-nowrap item-end">
-        {{localize "CPR.itemSheet.common.itemUpgradeSize"}}: {{upgrade.size}}
+        {{localize "CPR.itemSheet.common.itemUpgradeSize"}}: {{upgrade.system.size}}
       </div>
       <div class="item flexrow setting-value text-nowrap item-end">
         {{#if ../this.editable }}
-          <a class="remove-upgrade" data-item-id="{{upgrade.id}}">
+          <a class="uninstall-single-item" data-item-id="{{upgrade.id}}">
             <i class="fab fa-superpowers"
                data-tooltip="{{localize "CPR.actorSheets.commonActions.removeUpgrade"}}"></i>
           </a>

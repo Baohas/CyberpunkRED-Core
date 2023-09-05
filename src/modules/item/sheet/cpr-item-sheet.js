@@ -141,11 +141,7 @@ export default class CPRItemSheet extends ItemSheet {
       .click(() => this._manageInstalledItems());
 
     html
-      .find(".program-uninstall")
-      .click((event) => this._uninstallSingleItem(event));
-
-    html
-      .find(".remove-upgrade")
+      .find(".uninstall-single-item")
       .click((event) => this._uninstallSingleItem(event));
 
     html
@@ -952,6 +948,27 @@ export default class CPRItemSheet extends ItemSheet {
     const installedItem = actor
       ? actor.getOwnedItem(installedItemId)
       : game.items.get(installedItemId);
+
+    // Show "Default" dialog.
+    const confirmUninstall = await CPRDialog.showDialog(
+      {
+        dialogMessage: SystemUtils.Format(
+          "CPR.dialog.uninstallConfirmation.message",
+          {
+            installableItemName: installedItem.name,
+            containerItemName: item.name,
+          }
+        ),
+      },
+      // Set the options for the dialog.
+      {
+        title: SystemUtils.Localize("CPR.dialog.uninstallConfirmation.title"),
+      }
+    ).catch((err) => LOGGER.debug(err));
+
+    if (!confirmUninstall) {
+      return;
+    }
 
     item.uninstallItems([installedItem]);
   }

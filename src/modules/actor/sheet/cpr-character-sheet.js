@@ -143,7 +143,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
 
     // Uninstall a program on a Cyberdeck
     html
-      .find(".program-uninstall")
+      .find(".uninstall-single-item")
       .click((event) => this._cyberdeckProgramUninstall(event));
 
     // Effects tab listeners
