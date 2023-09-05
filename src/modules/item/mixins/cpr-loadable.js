@@ -115,8 +115,8 @@ const Loadable = function Loadable() {
       if (currentAmmo) {
         await this.uninstallItems([currentAmmo]);
       }
-      await this.installItems([selectedAmmo]);
-      return this.reload();
+      const success = await this.installItems([selectedAmmo]);
+      return success ? this.reload() : Promise.resolve();
     }
     return Promise.resolve();
   };
