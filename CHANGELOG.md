@@ -23,6 +23,7 @@
 - Fix BlackICE actor program link list not in alphabetical order
 - Fix issue where items did not have their dv tables translated.
 - Fix issue where orphaned effects on actors were causing migrations to fail.
+- Fix translation issues with translated skills via Babele
 
 ### New Features
 
