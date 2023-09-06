@@ -904,13 +904,8 @@ export default function registerHandlebarsHelpers() {
         const localizedType = SystemUtils.Localize(
           `TYPES.Item.${childItem.type}`
         );
-        // Whether the content is hidden or not.
-        const display = parentItem.actor.flags?.[game.system.id]
-          ?.showInstalled?.[topLevelId]
-          ? ""
-          : "display:none;";
 
-        html += `<li class="item flexrow" style="padding-left:${rem}rem; ${display}" data-top-level-parent="${topLevelId}"
+        html += `<li class="item flexrow" style="padding-left:${rem}rem;" data-top-level-parent="${topLevelId}"
                      data-item-id="${childItem.id}"
                      data-item-category="${childItem.type}">`;
         html += `  <a class="name item-view flex-center">- ${childItem.name} (${localizedType})</a>`;
@@ -925,7 +920,14 @@ export default function registerHandlebarsHelpers() {
           html += recursiveHTML(childItem, topLevelId, rem + 1);
         }
       }
-      return html;
+      // Whether the content is hidden or not.
+      const display = parentItem.actor.flags?.[game.system.id]?.showInstalled?.[
+        topLevelId
+      ]
+        ? ""
+        : "item-hidden";
+      const wrappedHTML = `<li class="item ${display}" data-items-wrapper-for-parent="${topLevelId}" style="padding: 0;"><ol class="items-list sub-list">${html}</ol></li>`;
+      return wrappedHTML;
     }
 
     // Only create a dropdown if the item isn't installed, and has installed items.

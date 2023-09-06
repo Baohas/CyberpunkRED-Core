@@ -360,39 +360,68 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @private
    * @param {*} event - object with details of the event
    */
+
   async _toggleInstalledVisibility(event) {
+    // Step 1: Initial setup and logging.
     LOGGER.trace(
       "_toggleInstalledVisibility | CPRCharacterActorSheet | Called."
     );
-    const id = SystemUtils.GetEventDatum(event, "data-item-id");
+    const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const installFlags = this.actor.getFlag(game.system.id, "showInstalled");
 
-    // Rotate the icon.
-    $(event.currentTarget).children("i").toggleClass("fa-rotate-270");
-    // Slide the installed list down.
-    $(event.currentTarget)
-      .parent()
-      .parent()
-      .siblings(`li[data-top-level-parent="${id}"]`)
-      .slideToggle(300)
-      .promise()
-      .then(async () => {
-        // Then update the actor's flags so the visibility of the list persists.
+    // Step 2: Toggle the icon rotation to indicate state change.
+    const iconElement = event.currentTarget.querySelector("i");
+    iconElement.classList.toggle("fa-rotate-270");
+
+    // Step 3: Identify the HTML elements involved in the toggling.
+    const collapsibleContainer = event.currentTarget.closest(".collapsible");
+    const installedRow = collapsibleContainer.querySelector(
+      `li[data-items-wrapper-for-parent="${itemId}"]`
+    );
+
+    // Step 4: Prepare the row for animation.
+    installedRow.classList.add("animated-row");
+    installedRow.style.overflow = "hidden";
+    installedRow.style.transition =
+      "height 150ms ease-in-out, opacity 200ms linear";
+
+    // Step 5: Trigger a layout recalculation to prepare for the height transition.
+    const currentHeight = installedRow.clientHeight;
+    installedRow.style.height = `${currentHeight}px`;
+    getComputedStyle(installedRow).height;
+
+    // Step 6: Animate and toggle visibility after animation is done.
+    installedRow.addEventListener(
+      "transitionend",
+      async () => {
+        installedRow.classList.toggle("item-hidden");
+        installedRow.style.height = "";
+
+        // Update the installFlags.
         if (installFlags) {
-          // If the actor already has install flags, edit those.
-          installFlags[id] = !installFlags[id];
+          installFlags[itemId] = !installFlags[itemId];
           await this.actor.setFlag(
             game.system.id,
             "showInstalled",
             installFlags
           );
         } else {
-          // If not, create the flag.
           await this.actor.setFlag(game.system.id, "showInstalled", {
-            [id]: true,
+            [itemId]: true,
           });
         }
-      });
+      },
+      { once: true }
+    );
+
+    // Step 7: Start the animation.
+    if (installedRow.classList.contains("item-hidden")) {
+      installedRow.style.height = `${installedRow.scrollHeight}px`;
+      installedRow.style.opacity = "1";
+    } else {
+      installedRow.style.height = "0px";
+      installedRow.style.opacity = "0";
+    }
   }
 
   /**
