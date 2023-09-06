@@ -8,6 +8,7 @@
 
 - Utilisation des DataModels pour imposer les types de données (#316, #723)
 - Ajout d'un paramètre pour désactiver l'avertissement lors du jet des dégâts sans cibles
+- The fumble recovery skill for Solos is now accounted for
 
 ### Corrections de bugs
 

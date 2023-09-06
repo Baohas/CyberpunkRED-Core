@@ -2,47 +2,47 @@
   "label": "Skills",
   "entries": {
     "Accounting": {
-      "name": "Contabilità",
+      "name": "Accounting",
       "description": ""
     },
     "Acting": {
-      "name": "Recitare",
+      "name": "Acting",
       "description": ""
     },
     "Air Vehicle Tech": {
-      "name": "Tec. degli Aeromobili",
+      "name": "Air Vehicle Tech",
       "description": ""
     },
     "Animal Handling": {
-      "name": "Allevamento",
+      "name": "Animal Handling",
       "description": ""
     },
     "Archery": {
-      "name": "Tiro con l’Arco",
+      "name": "Archery",
       "description": ""
     },
     "Athletics": {
-      "name": "Atletica",
+      "name": "Athletics",
       "description": ""
     },
     "Autofire": {
-      "name": "Fuoco Automatico",
+      "name": "Autofire",
       "description": ""
     },
     "Basic Tech": {
-      "name": "Tecnologia di Base",
+      "name": "Basic Tech",
       "description": ""
     },
     "Brawling": {
-      "name": "Rissa",
+      "name": "Brawling",
       "description": ""
     },
     "Bribery": {
-      "name": "Corrompere",
+      "name": "Bribery",
       "description": ""
     },
     "Bureaucracy": {
-      "name": "Burocrazia",
+      "name": "Bureaucracy",
       "description": ""
     },
     "Business": {
@@ -50,155 +50,155 @@
       "description": ""
     },
     "Composition": {
-      "name": "Comporre",
+      "name": "Composition",
       "description": ""
     },
     "Conceal/Reveal Object": {
-      "name": "Nascondere/Trovare Oggetti",
+      "name": "Conceal/Reveal Object",
       "description": ""
     },
     "Concentration": {
-      "name": "Concentrazione",
+      "name": "Concentration",
       "description": ""
     },
     "Contortionist": {
-      "name": "Contorsionismo",
+      "name": "Contortionist",
       "description": ""
     },
     "Conversation": {
-      "name": "Conversazione",
+      "name": "Conversation",
       "description": ""
     },
     "Criminology": {
-      "name": "Criminologia",
+      "name": "Criminology",
       "description": ""
     },
     "Cryptography": {
-      "name": "Crittografia",
+      "name": "Cryptography",
       "description": ""
     },
     "Cybertech": {
-      "name": "Cybertecnologia",
+      "name": "Cybertech",
       "description": ""
     },
     "Dance": {
-      "name": "Danza",
+      "name": "Dance",
       "description": ""
     },
     "Deduction": {
-      "name": "Deduzione",
+      "name": "Deduction",
       "description": ""
     },
     "Demolitions": {
-      "name": "Demolizioni",
+      "name": "Demolitions",
       "description": ""
     },
     "Drive Land Vehicle": {
-      "name": "Guidare",
+      "name": "Drive Land Vehicle",
       "description": ""
     },
     "Education": {
-      "name": "Istruzione",
+      "name": "Education",
       "description": ""
     },
     "Electronics/Security Tech": {
-      "name": "Elettronica e Sicurezza",
+      "name": "Electronics/Security Tech",
       "description": ""
     },
     "Endurance": {
-      "name": "Tempra",
+      "name": "Endurance",
       "description": ""
     },
     "Evasion": {
-      "name": "Elusione",
+      "name": "Evasion",
       "description": ""
     },
     "First Aid": {
-      "name": "Pronto Soccorso",
+      "name": "First Aid",
       "description": ""
     },
     "Forgery": {
-      "name": "Falsificare",
+      "name": "Forgery",
       "description": ""
     },
     "Gamble": {
-      "name": "Gioco d’Azzardo",
+      "name": "Gamble",
       "description": ""
     },
     "Handgun": {
-      "name": "Pistole",
+      "name": "Handgun",
       "description": ""
     },
     "Heavy Weapons": {
-      "name": "Armi Pesanti",
+      "name": "Heavy Weapons",
       "description": ""
     },
     "Human Perception": {
-      "name": "Sensibilità",
+      "name": "Human Perception",
       "description": ""
     },
     "Interrogation": {
-      "name": "Interrogatorio",
+      "name": "Interrogation",
       "description": ""
     },
     "Land Vehicle Tech": {
-      "name": "Tec. Veicoli Terrestri",
+      "name": "Land Vehicle Tech",
       "description": ""
     },
     "Language (Streetslang)": {
-      "name": "Linguaggio (Streetslang)",
+      "name": "Language (Streetslang)",
       "description": ""
     },
     "Library Search": {
-      "name": "Archivistica",
+      "name": "Library Search",
       "description": ""
     },
     "Lip Reading": {
-      "name": "Leggere le Labbra",
+      "name": "Lip Reading",
       "description": ""
     },
     "Local Expert": {
-      "name": "Conoscenza della Zona",
+      "name": "Local Expert",
       "description": ""
     },
     "Martial Arts": {
-      "name": "Arti Marziali",
+      "name": "Martial Arts",
       "description": ""
     },
     "Melee Weapon": {
-      "name": "Armi da Mischia",
+      "name": "Melee Weapon",
       "description": ""
     },
     "Paint/Draw/Sculpt": {
-      "name": "Belle Arti",
+      "name": "Paint/Draw/Sculpt",
       "description": ""
     },
     "Paramedic": {
-      "name": "Paramedico",
+      "name": "Paramedic",
       "description": ""
     },
     "Perception": {
-      "name": "Percezione",
+      "name": "Perception",
       "description": ""
     },
     "Personal Grooming": {
-      "name": "Cura della Persona",
+      "name": "Personal Grooming",
       "description": ""
     },
     "Persuasion": {
-      "name": "Persuasione",
+      "name": "Persuasion",
       "description": ""
     },
     "Photography/Film": {
-      "name": "Fotografia",
+      "name": "Photography/Film",
       "description": ""
     },
     "Pick Lock": {
-      "name": "Scassinare",
+      "name": "Pick Lock",
       "description": ""
     },
     "Pick Pocket": {
-      "name": "Borseggiare",
+      "name": "Pick Pocket",
       "description": ""
     },
     "Pilot Air Vehicle": {
