@@ -470,35 +470,53 @@ const Container = function Container() {
    * This is called when dragging items between sheets, and when exporting items.
    * Installed item data is then built from these objects.
    *
-   * @returns {Object} - The object data of all installed items in the correct structure.
+   * @returns {Object} - The object data of all installed items nested in the correct structure.
    */
   this.createInstalledObjectData = function createInstalledObjectData() {
     LOGGER.trace("createInstalledObjectData | CPRItem | called.");
-    // Convert all of this item's installed list to objects.
-    const installedObjectList = this.convertInstalledIdsToObjects(this.actor);
 
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    // Get all installed items that have things installed in them.
-    const allInstalledItems = this.recursiveGetAllInstalledItems().filter((i) =>
-      containerTypes.includes(i.type)
-    );
+    /**
+     * Provided a container item, we create an array of nested objects of installed item data.
+     * Note, we store this data as regular JS objects, since the data may be stored in JSON format,
+     * and thus cannot contain Class information.
+     *
+     * @recursive
+     * @param {CPRItem(Container)} parentItem - The item we create an array of nested objects from.
+     * @returns {Array<Object>} - Array of regular JS objects which contain nested installed item data.
+     */
+    function nestItemObjects(parentItem) {
+      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+      // Get first level of installed items.
+      const installedItems = parentItem.getInstalledItems();
 
-    for (const childItem of allInstalledItems) {
-      // ...if they have things installed...
-      if (childItem.system.installedItems.list.length > 0) {
-        // ...convert their id list to objects...
-        const childObjectList = childItem.convertInstalledIdsToObjects(
-          this.actor
-        );
-        // ...and find the object in the data.flags.
-        const parentItemObject = installedObjectList.find(
-          (i) => i._id === childItem.id
-        );
-        // Set the parent item's flag to the converted list.
-        parentItemObject.flags.installedObjectList = childObjectList;
+      // Convert all of the parent item's installed list to objects.
+      const installedObjectList = parentItem.convertInstalledIdsToObjects(
+        parentItem.actor
+      );
+      // For each child item installed in the parent item...
+      for (const childItem of installedItems) {
+        // ...if it is a container item and has things installed...
+        if (
+          containerTypes.includes(childItem.type) &&
+          childItem.system.installedItems.list.length > 0
+        ) {
+          // ...find the corresponding child object...
+          const childObject = installedObjectList.find(
+            (o) => o._id === childItem._id
+          );
+          // ...and set its flags equal to the function, called recursively.
+          // This will set the flags with installed object data for each installed item,
+          // no matter the depth.
+          childObject.flags.installedObjectList = nestItemObjects(childItem);
+        }
       }
+      // Return the nested object list.
+      return installedObjectList;
     }
-    return installedObjectList;
+
+    // Call the recusive function on the top-level item (`this`).
+    const flag = nestItemObjects(this);
+    return flag;
   };
 };
 
