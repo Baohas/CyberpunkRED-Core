@@ -8,11 +8,36 @@
   scrollbar-width: thin;
 
   // Sublists are the collapsable gear sublists
-  &.sub-list {
-    border: 3px solid var(--cpr-background-border);
-    border-right: 0;
-    border-left: 0;
-    padding: 0;
+  .sub-list {
+    min-width: 100%;
+    .type-tag {
+      border-radius: 0.1rem;
+      padding: 0.05rem 0.15rem;
+      font-size: 0.52rem;
+      opacity: 0.7;
+      font-weight: 400;
+      margin-right: 0.25rem;
+      letter-spacing: 0.06rem;
+      text-transform: uppercase;
+      color: white;
+      background-color: var(--cpr-background-border);
+    }
+    li {
+      background-color: transparent !important; // Don't use zebra striping in sublists
+      border-top: 0.1rem solid var(--cpr-background-dialog-border);
+    }
+    > ol {
+      margin: 0;
+      padding: 0;
+      border: 0.188rem solid transparent;
+      border-top: 0;
+      border-bottom: 0;
+    }
+    .uninstall-single-item {
+      align-items: center;
+      justify-content: end;
+      display: flex;
+    }
   }
 
   .items-header {
@@ -22,6 +47,11 @@
     span {
       padding: 0.125rem;
     }
+  }
+
+  .animated-row {
+    transition: height 150ms ease-in-out, opacity 200ms linear;
+    overflow: hidden;
   }
 
   .item {
@@ -43,10 +73,36 @@
     text-overflow: ellipsis;
     flex-flow: initial;
 
-    img {
+    .item-thumb {
+      position: relative;
       width: 1.75rem;
       height: 1.75rem;
       margin: 0.188rem 0.188rem 0.188rem 0.063rem;
+      // If the item has an upgrade icon, show it on the top right corner
+      i {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.2rem;
+        color: white;
+      }
+      img {
+        width: 100%;
+      }
+    }
+
+    .toggle-installed-visibility {
+      opacity: 0.5;
+      flex: 0;
+      min-width: 1.2rem;
+      margin-right: 0.25rem;
+      text-align: center;
+      &:hover {
+        opacity: 1;
+      }
+      i {
+        transition: transform 150ms ease-in-out;
+        transform-origin: center -0.1rem; // Make the arrow flip from the middle
+      }
     }
   }
 
@@ -262,10 +318,6 @@
 
   .name.item-edit > sup {
     margin-left: 0.313rem;
-  }
-
-  .toggle-installed-visibility {
-    flex: 0;
   }
 
   .gear-amount {

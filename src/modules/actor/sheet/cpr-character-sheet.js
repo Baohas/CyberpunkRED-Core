@@ -371,26 +371,20 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
 
     // Step 2: Toggle the icon rotation to indicate state change.
     const iconElement = event.currentTarget.querySelector("i");
-    iconElement.classList.toggle("fa-rotate-270");
+    iconElement.classList.toggle("fa-flip-vertical");
 
     // Step 3: Identify the HTML elements involved in the toggling.
     const collapsibleContainer = event.currentTarget.closest(".collapsible");
     const installedRow = collapsibleContainer.querySelector(
-      `li[data-items-wrapper-for-parent="${itemId}"]`
+      `div[data-items-wrapper-for-parent="${itemId}"]`
     );
 
-    // Step 4: Prepare the row for animation.
-    installedRow.classList.add("animated-row");
-    installedRow.style.overflow = "hidden";
-    installedRow.style.transition =
-      "height 150ms ease-in-out, opacity 200ms linear";
-
-    // Step 5: Trigger a layout recalculation to prepare for the height transition.
+    // Step 4: Trigger a layout recalculation to prepare for the height transition.
     const currentHeight = installedRow.clientHeight;
     installedRow.style.height = `${currentHeight}px`;
     getComputedStyle(installedRow).height;
 
-    // Step 6: Animate and toggle visibility after animation is done.
+    // Step 5: Animate and toggle visibility after animation is done.
     installedRow.addEventListener(
       "transitionend",
       async () => {
@@ -415,6 +409,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     );
 
     // Step 7: Start the animation.
+    // Note: animation duration is set in CSS (.animated-row in lists.less)
     if (installedRow.classList.contains("item-hidden")) {
       installedRow.style.height = `${installedRow.scrollHeight}px`;
       installedRow.style.opacity = "1";

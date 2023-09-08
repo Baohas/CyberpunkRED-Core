@@ -6,15 +6,20 @@
       draggable="true">
     <div class="item-name gear-name text-nowrap flexrow"
          data-tooltip="{{localize (cprFindConfigValue "objectTypes" item.system.type)}} {{localize "CPR.global.itemTypes.itemUpgrade"}}">
-      <a class="toggle-installed-visibility">
-        {{#if item.system.installedItems.list }}
-          <i class="fa-solid fa-sitemap fa-sm {{#unless (cprGetProp actor.flags.cyberpunk-red-core.showInstalled item.id) }}fa-rotate-270{{/unless}}"></i>
-        {{/if}}
-      </a>
       <a class="name item-edit flex-center">
-        <img src="{{item.img}}"/>
+        <div class="item-thumb">
+          <img src="{{item.img}}"/>
+          {{#if item.system.isUpgraded }}
+            <i class="fa-solid fa-square-up fa-xs"></i>
+          {{/if}}
+        </div>
         {{cprBrandedName item}}
       </a>
+      {{#if item.system.installedItems.list }}
+        <a class="toggle-installed-visibility">
+          <i class="fa-solid fa-chevron-up fa-sm {{#unless (cprGetProp actor.flags.cyberpunk-red-core.showInstalled item.id) }}fa-flip-vertical{{/unless}}"></i>
+        </a>
+      {{/if}}
     </div>
     <div class="item-detail gear-data text-nowrap"
          data-tooltip="{{cprSanitizeText item.system.description.value}}">
@@ -23,6 +28,7 @@
     <div class="item-detail gear-actions text-nowrap">
       {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-actions.hbs" item}}
     </div>
+    {{cprNestedInstalledGearTab item}}
   </li>
 {{/unless}}
 {{cprTrace "END CPR-ITEMUPGRADE-CONTENT.HBS"}}

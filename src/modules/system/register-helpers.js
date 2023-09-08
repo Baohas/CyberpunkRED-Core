@@ -895,7 +895,7 @@ export default function registerHandlebarsHelpers() {
      * @param {Number} [rem = 1] - The amount of indentation.
      * @returns {String}
      */
-    function recursiveHTML(parentItem, topLevelId, rem = 1) {
+    function recursiveHTML(parentItem, topLevelId, rem = 0) {
       // Get all items installed in the parent.
       const installedItems = parentItem.getInstalledItems();
       let html = "";
@@ -908,7 +908,7 @@ export default function registerHandlebarsHelpers() {
         html += `<li class="item flexrow" style="padding-left:${rem}rem;" data-top-level-parent="${topLevelId}"
                      data-item-id="${childItem.id}"
                      data-item-category="${childItem.type}">`;
-        html += `  <a class="name item-view flex-center">- ${childItem.name} (${localizedType})</a>`;
+        html += `  <a class="name item-view flex-center"><span class="type-tag">${localizedType}</span> ${childItem.name}</a>`;
         // Uninstall glyph
         html += `  <a class="uninstall-single-item" data-item-id="${childItem.id}" data-direct-parent="${parentItem.id}">`;
         html += `    <i class="fas fa-folder-minus"></i>`;
@@ -926,7 +926,7 @@ export default function registerHandlebarsHelpers() {
       ]
         ? ""
         : "item-hidden";
-      const wrappedHTML = `<li class="item ${display}" data-items-wrapper-for-parent="${topLevelId}" style="padding: 0;"><ol class="items-list sub-list">${html}</ol></li>`;
+      const wrappedHTML = `<div class="sub-list animated-row ${display}" data-items-wrapper-for-parent="${topLevelId}" style="padding: 0;"><ol>${html}</ol></div>`;
       return wrappedHTML;
     }
 
