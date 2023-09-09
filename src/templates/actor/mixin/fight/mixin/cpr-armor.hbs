@@ -2,6 +2,9 @@
 <div class="item armor-grid" data-item-id="{{this.id}}">
   <div class="armor-image">
     <img alt="{{this.name}}" src="{{this.img}}"/>
+    {{#if this.system.isUpgraded }}
+      <i class="text-super fa-solid fa-square-up"></i>
+    {{/if}}
   </div>
   <div class="armor-name">
     <a class="name item-edit text-semi{{#if (cprCompare (cprGetProp actor "type") '===' "mook")}} deletable changeable{{/if}}"
@@ -17,9 +20,7 @@
            {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}
          {{/if}}">
       {{cprBrandedName this}}
-      {{#if this.system.isUpgraded }}
-        <i class="text-super fa-solid fa-square-up"></i>
-      {{/if}}
+    
     </a>
   </div>
 

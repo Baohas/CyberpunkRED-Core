@@ -5,6 +5,9 @@
   {{!-- Weapon Image --}}
   <div class="weapon-image">
     <img alt="{{this.name}}" src="{{this.img}}"/>
+    {{#if this.system.isUpgraded }}
+        <i class="text-super fa-solid fa-square-up"></i>
+      {{/if}}
   </div>
 
   {{!-- Weapon Name --}}
@@ -29,9 +32,7 @@
          {{/if}}
        ">
       {{cprBrandedName this}}
-      {{#if this.system.isUpgraded }}
-        <i class="text-super fa-solid fa-square-up"></i>
-      {{/if}}
+      
     </a>
   </div>
 

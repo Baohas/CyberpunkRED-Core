@@ -371,7 +371,9 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
 
     // Step 2: Toggle the icon rotation to indicate state change.
     const iconElement = event.currentTarget.querySelector("i");
-    iconElement.classList.toggle("fa-flip-vertical");
+    if (iconElement) {
+      iconElement.classList.toggle("fa-flip-vertical");
+    }
 
     // Step 3: Identify the HTML elements involved in the toggling.
     const collapsibleContainer = event.currentTarget.closest(".collapsible");
@@ -379,18 +381,12 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       `div[data-items-wrapper-for-parent="${itemId}"]`
     );
 
-    // Step 4: Trigger a layout recalculation to prepare for the height transition.
-    const currentHeight = installedRow.clientHeight;
-    installedRow.style.height = `${currentHeight}px`;
-    getComputedStyle(installedRow).height;
+    installedRow.classList.toggle("item-hidden");
 
-    // Step 5: Animate and toggle visibility after animation is done.
+    // Wait for the expand/collapse animation to complete before updating the installFlags (because it re-renders the handlebars)
     installedRow.addEventListener(
       "transitionend",
       async () => {
-        installedRow.classList.toggle("item-hidden");
-        installedRow.style.height = "";
-
         // Update the installFlags.
         if (installFlags) {
           installFlags[itemId] = !installFlags[itemId];
@@ -407,16 +403,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       },
       { once: true }
     );
-
-    // Step 7: Start the animation.
-    // Note: animation duration is set in CSS (.animated-row in lists.less)
-    if (installedRow.classList.contains("item-hidden")) {
-      installedRow.style.height = `${installedRow.scrollHeight}px`;
-      installedRow.style.opacity = "1";
-    } else {
-      installedRow.style.height = "0px";
-      installedRow.style.opacity = "0";
-    }
   }
 
   /**

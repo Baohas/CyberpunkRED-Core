@@ -50,8 +50,12 @@
   }
 
   .animated-row {
-    transition: height 150ms ease-in-out, opacity 200ms linear;
-    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 150ms ease-in-out, opacity 200ms linear;
+    ol {
+      overflow: hidden;
+    }
   }
 
   .item {
@@ -59,8 +63,7 @@
     padding: 0 0.125rem;
   }
   .item-hidden {
-    height: 0;
-    overflow: hidden;
+    grid-template-rows: 0fr;
     opacity: 0;
   }
 
