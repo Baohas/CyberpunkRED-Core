@@ -503,6 +503,22 @@ export default function registerHandlebarsHelpers() {
   );
 
   /**
+   * Return the tooltip string for a skill. Used in the character sheet. Does not localize it here.
+   *
+   * We do not store these tooltips in the skill objects themselves because the skill compendium is
+   * not translated with babele, it is done outside that in lang/en.json. This is for legacy reasons;
+   * code still depends on specific skill names. If we ever translate the skill compendium with babele,
+   * these strings should be set in the item descriptions.
+   */
+  Handlebars.registerHelper("cprGetSkillToolTipKey", (name) => {
+    LOGGER.trace("cprGetSkillToolTipKey | handlebarsHelper | Called.");
+    const tooltipkey = `CPR.global.itemType.skill.${SystemUtils.slugify(
+      name
+    )}ToolTip`;
+    return tooltipkey || name;
+  });
+
+  /**
    * Some skills and roles have spaces and/or parantheses in their name. When substituting in translated strings,
    * this can be a problem to find the key they're listed under.
    *
