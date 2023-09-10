@@ -503,6 +503,14 @@ export default function registerHandlebarsHelpers() {
   );
 
   /**
+   * Return the tooltip string for a stat by stat name Does not localize it here.
+   */
+  Handlebars.registerHelper("cprGetStatToolTip", (stat) => {
+    LOGGER.trace("cprGetStatToolTip | handlebarsHelper | Called.");
+    return `${CPR.statList[stat]}ToolTip`;
+  });
+
+  /**
    * Return the tooltip string for a skill. Used in the character sheet. Does not localize it here.
    *
    * We do not store these tooltips in the skill objects themselves because the skill compendium is
