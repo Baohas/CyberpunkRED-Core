@@ -2,6 +2,12 @@
 
 # Changelog
 
+## Version 0.89.0
+
+### Changes
+
+- #793 - added tooltips for each stat and skill
+
 ## Version 0.88.2
 
 ### Changes
