@@ -42,7 +42,12 @@ const Container = function Container() {
    */
   this.getInstalledItems = function getInstalledItems(type = false) {
     LOGGER.trace("getInstalledItems | Container | Called.");
-    const actor = this.isOwned ? this.actor : false;
+    let actor = false;
+    if (this.documentName === "Actor") {
+      actor = this;
+    } else if (this.isEmbedded) {
+      actor = this.actor;
+    }
 
     const installedItems = [];
 
@@ -64,7 +69,13 @@ const Container = function Container() {
    */
   this.getInstallableItems = function getInstallableItems(type = false) {
     LOGGER.trace("getInstalableItems | Container | Called.");
-    const actor = this.isOwned ? this.actor : false;
+    let actor = false;
+    if (this.documentName === "Actor") {
+      actor = this;
+    } else if (this.isEmbedded) {
+      actor = this.actor;
+    }
+
     // If a type is provided as an argument, then that is the only allowed type.
     // Otherwise, go with the configured values.
     const allowedTypes = type
@@ -106,7 +117,12 @@ const Container = function Container() {
       const installedItems = [];
       const containerTypes = SystemUtils.GetTemplateItemTypes("container");
 
-      const actor = this.isEmbedded ? this.actor : false;
+      let actor = false;
+      if (this.documentName === "Actor") {
+        actor = this;
+      } else if (this.isEmbedded) {
+        actor = this.actor;
+      }
       if (this.system.installedItems.list.length > 0) {
         let idList = this.system.installedItems.list;
         while (idList.length > 0) {
