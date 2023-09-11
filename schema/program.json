@@ -69,14 +69,8 @@
         "installLocation": {
           "$ref": "./components/installable/installLocation.json"
         },
-        "installedIn": {
-          "$ref": "./components/installable/installedIn.json"
-        },
         "interface": {
           "type": "integer"
-        },
-        "isInstalled": {
-          "$ref": "./components/installable/isInstalled.json"
         },
         "isRezzed": {
           "description": "We don't store rezzed programs, should always be false",
@@ -120,9 +114,7 @@
         "description",
         "favorite",
         "installLocation",
-        "installedIn",
         "interface",
-        "isInstalled",
         "isRezzed",
         "per",
         "price",

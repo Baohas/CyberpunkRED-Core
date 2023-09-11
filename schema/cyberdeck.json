@@ -56,17 +56,11 @@
         "installLocation": {
           "$ref": "./components/installable/installLocation.json"
         },
-        "installedIn": {
-          "$ref": "./components/installable/installedIn.json"
-        },
         "installedItems": {
           "$ref": "./components/container/installedItems.json"
         },
         "isElectronic": {
           "$ref": "./components/electronic/isElectronic.json"
-        },
-        "isInstalled": {
-          "$ref": "./components/installable/isInstalled.json"
         },
         "price": {
           "$ref": "./components/valuable/price.json"
@@ -94,9 +88,7 @@
         "equipped",
         "favorite",
         "installLocation",
-        "installedIn",
         "installedItems",
-        "isInstalled",
         "price",
         "programs",
         "size",

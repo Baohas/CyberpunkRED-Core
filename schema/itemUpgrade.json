@@ -71,17 +71,11 @@
         "installLocation": {
           "$ref": "./components/installable/installLocation.json"
         },
-        "installedIn": {
-          "$ref": "./components/installable/installedIn.json"
-        },
         "installedItems": {
           "$ref": "./components/container/installedItems.json"
         },
         "isElectronic": {
           "$ref": "./components/electronic/isElectronic.json"
-        },
-        "isInstalled": {
-          "$ref": "./components/installable/isInstalled.json"
         },
         "isRanged": {
           "$ref": "./components/attackable/isRanged.json"
@@ -142,9 +136,7 @@
         "fireModes",
         "handsReq",
         "installLocation",
-        "installedIn",
         "installedItems",
-        "isInstalled",
         "isRanged",
         "magazine",
         "modifiers",

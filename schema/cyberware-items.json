@@ -75,9 +75,6 @@
         "installLocation": {
           "$ref": "./components/installable/installLocation.json"
         },
-        "installedIn": {
-          "$ref": "./components/installable/installedIn.json"
-        },
         "installedItems": {
           "$ref": "./components/container/installedItems.json"
         },
@@ -86,9 +83,6 @@
         },
         "isFoundational": {
           "type": "boolean"
-        },
-        "isInstalled": {
-          "$ref": "./components/installable/isInstalled.json"
         },
         "isRanged": {
           "$ref": "./components/attackable/isRanged.json"
@@ -160,10 +154,8 @@
         "fireModes",
         "humanityLoss",
         "installLocation",
-        "installedIn",
         "installedItems",
         "isFoundational",
-        "isInstalled",
         "isRanged",
         "isWeapon",
         "magazine",

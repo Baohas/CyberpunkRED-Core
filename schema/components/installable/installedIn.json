@@ -1,5 +1,0 @@
-{
-  "description": "The UUID of the actor/item this item is installed into, not supported by compendia at the moment",
-  "type": "string",
-  "maxLength": 0
-}
