@@ -2,9 +2,6 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "ammoData": {
-      "$ref": "../loadable/ammoData.json"
-    },
     "max": {
       "type": "integer"
     },
@@ -12,9 +9,5 @@
       "type": "integer"
     }
   },
-  "required": [
-    "ammoData",
-    "max",
-    "value"
-  ]
+  "required": ["max", "value"]
 }
