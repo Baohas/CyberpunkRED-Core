@@ -9,12 +9,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": [
-          "cyberdeck",
-          "cyberware",
-          "itemUpgrade",
-          "program"
-        ]
+        "enum": ["ammo", "cyberdeck", "cyberware", "itemUpgrade", "program"]
       }
     },
     "list": {
@@ -31,11 +26,5 @@
       "const": 0
     }
   },
-  "required": [
-    "allowed",
-    "allowedTypes",
-    "list",
-    "slots",
-    "usedSlots"
-  ]
+  "required": ["allowed", "allowedTypes", "list", "slots", "usedSlots"]
 }

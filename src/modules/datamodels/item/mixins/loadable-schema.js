@@ -32,6 +32,21 @@ export default class LoadableSchema extends foundry.abstract.DataModel {
     };
   }
 
+  /**
+   * Migrates data on the fly. From Foundry
+   *
+   * @override
+   * @param {CPRSystemDataModel} source - source actor or item `document.system`
+   * @returns
+   */
+  static migrateData(source) {
+    LOGGER.trace("migrateData");
+    if (!source.installedItems.allowedTypes.includes("ammo")) {
+      source.installedItems.allowedTypes.push("ammo");
+    }
+    return super.migrateData(source);
+  }
+
   get loadedAmmo() {
     LOGGER.trace("loadedAmmo | LoadableSchema | called.");
     return this.parent.getInstalledItems("ammo")[0];
