@@ -68,9 +68,6 @@
         "isInstalled": {
           "$ref": "./components/installable/isInstalled.json"
         },
-        "isUpgraded": {
-          "$ref": "./components/upgradable/isUpgraded.json"
-        },
         "price": {
           "$ref": "./components/valuable/price.json"
         },
@@ -88,9 +85,6 @@
         },
         "source": {
           "$ref": "./components/common/source.json"
-        },
-        "upgrades": {
-          "$ref": "./components/upgradable/upgrades.json"
         }
       },
       "required": [
@@ -103,12 +97,10 @@
         "installedIn",
         "installedItems",
         "isInstalled",
-        "isUpgraded",
         "price",
         "programs",
         "size",
-        "source",
-        "upgrades"
+        "source"
       ]
     },
     "Programs": {

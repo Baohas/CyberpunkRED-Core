@@ -53,9 +53,6 @@
         "installedItems": {
           "$ref": "./components/container/installedItems.json"
         },
-        "isUpgraded": {
-          "$ref": "./components/upgradable/isUpgraded.json"
-        },
         "price": {
           "$ref": "./components/valuable/price.json"
         },
@@ -73,9 +70,6 @@
         },
         "speedNarrative": {
           "type": "string"
-        },
-        "upgrades": {
-          "$ref": "./components/upgradable/upgrades.json"
         }
       },
       "required": [
@@ -84,14 +78,12 @@
         "description",
         "favorite",
         "installedItems",
-        "isUpgraded",
         "price",
         "sdp",
         "seats",
         "source",
         "speedCombat",
-        "speedNarrative",
-        "upgrades"
+        "speedNarrative"
       ]
     }
   }

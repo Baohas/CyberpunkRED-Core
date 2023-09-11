@@ -62,9 +62,6 @@
         "isElectronic": {
           "$ref": "./components/electronic/isElectronic.json"
         },
-        "isUpgraded": {
-          "$ref": "./components/upgradable/isUpgraded.json"
-        },
         "price": {
           "$ref": "./components/valuable/price.json"
         },
@@ -106,10 +103,6 @@
             "top"
           ]
         },
-        "upgrades": {
-          "type": "array",
-          "items": {}
-        },
         "usage": {
           "$ref": "./components/effects/usage.json"
         }
@@ -123,14 +116,12 @@
         "favorite",
         "installedItems",
         "isElectronic",
-        "isUpgraded",
         "price",
         "providesHardening",
         "source",
         "style",
         "revealed",
         "type",
-        "upgrades",
         "usage"
       ]
     }

@@ -75,9 +75,6 @@
         "isShield": {
           "type": "boolean"
         },
-        "isUpgraded": {
-          "$ref": "./components/upgradable/isUpgraded.json"
-        },
         "penalty": {
           "type": "integer"
         },
@@ -96,9 +93,6 @@
         "source": {
           "$ref": "./components/common/source.json"
         },
-        "upgrades": {
-          "$ref": "./components/upgradable/upgrades.json"
-        },
         "usage": {
           "$ref": "./components/effects/usage.json"
         }
@@ -115,13 +109,11 @@
         "isBodyLocation",
         "isHeadLocation",
         "isShield",
-        "isUpgraded",
         "penalty",
         "price",
         "revealed",
         "shieldHitPoints",
         "source",
-        "upgrades",
         "usage"
       ]
     },

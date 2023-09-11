@@ -62,9 +62,6 @@
         "installedItems": {
           "$ref": "./components/container/installedItems.json"
         },
-        "isUpgraded": {
-          "$ref": "./components/upgradable/isUpgraded.json"
-        },
         "price": {
           "$ref": "./components/valuable/price.json"
         },
@@ -76,9 +73,6 @@
         },
         "source": {
           "$ref": "./components/common/source.json"
-        },
-        "upgrades": {
-          "$ref": "./components/upgradable/upgrades.json"
         },
         "usage": {
           "type": "string"
@@ -92,11 +86,9 @@
         "equipped",
         "favorite",
         "installedItems",
-        "isUpgraded",
         "price",
         "revealed",
         "source",
-        "upgrades",
         "usage"
       ]
     }

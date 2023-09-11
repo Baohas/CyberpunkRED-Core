@@ -1,8 +1,0 @@
-{
-  "description": "Installed upgrades, not supported in compendia. Must be 0 length",
-  "type": "array",
-  "items": {
-    "type": "string"
-  },
-  "maxLength": 0
-}

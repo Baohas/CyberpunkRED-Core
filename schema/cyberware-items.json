@@ -93,9 +93,6 @@
         "isRanged": {
           "$ref": "./components/attackable/isRanged.json"
         },
-        "isUpgraded": {
-          "$ref": "./components/installable/isInstalled.json"
-        },
         "isWeapon": {
           "$ref": "./components/attackable/isWeapon.json"
         },
@@ -137,9 +134,6 @@
         "unarmedAutomaticCalculation": {
           "$ref": "./components/attackable/unarmedAutomaticCalculation.json"
         },
-        "upgrades": {
-          "$ref": "./components/upgradable/upgrades.json"
-        },
         "usage": {
           "$ref": "./components/effects/usage.json"
         },
@@ -171,7 +165,6 @@
         "isFoundational",
         "isInstalled",
         "isRanged",
-        "isUpgraded",
         "isWeapon",
         "magazine",
         "price",
@@ -180,7 +173,6 @@
         "source",
         "type",
         "unarmedAutomaticCalculation",
-        "upgrades",
         "usage",
         "usesType",
         "weaponSkill",
