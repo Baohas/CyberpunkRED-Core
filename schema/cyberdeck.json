@@ -68,9 +68,6 @@
         "providesHardening": {
           "$ref": "./components/electronic/providesHardening.json"
         },
-        "programs": {
-          "$ref": "#/definitions/Programs"
-        },
         "quality": {
           "$ref": "./components/quality.json"
         },
@@ -90,25 +87,9 @@
         "installLocation",
         "installedItems",
         "price",
-        "programs",
         "size",
         "source"
       ]
-    },
-    "Programs": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "installed": {
-          "type": "array",
-          "items": {}
-        },
-        "rezzed": {
-          "type": "array",
-          "items": {}
-        }
-      },
-      "required": ["installed", "rezzed"]
     }
   }
 }
