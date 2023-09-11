@@ -895,7 +895,7 @@ export default function registerHandlebarsHelpers() {
      * @param {Number} [rem = 1] - The amount of indentation.
      * @returns {String}
      */
-    function recursiveHTML(parentItem, topLevelId, rem = 0) {
+    function recursiveHTML(parentItem, topLevelId, level = 0) {
       // Get all items installed in the parent.
       const installedItems = parentItem.getInstalledItems();
       let html = "";
@@ -905,7 +905,7 @@ export default function registerHandlebarsHelpers() {
           `TYPES.Item.${childItem.type}`
         );
 
-        html += `<li class="item flexrow" style="padding-left:${rem}rem;" data-top-level-parent="${topLevelId}"
+        html += `<li class="item flexrow" data-row-level=${level} data-top-level-parent="${topLevelId}"
                      data-item-id="${childItem.id}"
                      data-item-category="${childItem.type}">`;
         html += `  <a class="name item-view flex-center"><span class="type-tag">${localizedType}</span> ${childItem.name}</a>`;
@@ -917,17 +917,10 @@ export default function registerHandlebarsHelpers() {
         // If the child item has its own installed items, call this function on the child item
         // and increase the indent.
         if (childItem.system.installedItems?.list?.length > 0) {
-          html += recursiveHTML(childItem, topLevelId, rem + 1);
+          html += recursiveHTML(childItem, topLevelId, level + 1);
         }
       }
-      // Whether the content is hidden or not.
-      const display = parentItem.actor.flags?.[game.system.id]?.showInstalled?.[
-        topLevelId
-      ]
-        ? ""
-        : "item-hidden";
-      const wrappedHTML = `<div class="sub-list animated-row ${display}" data-items-wrapper-for-parent="${topLevelId}" style="padding: 0;"><ol>${html}</ol></div>`;
-      return wrappedHTML;
+      return html;
     }
 
     // Only create a dropdown if the item isn't installed, and has installed items.
@@ -936,7 +929,16 @@ export default function registerHandlebarsHelpers() {
       !item.system.isInstalled
     ) {
       const html = recursiveHTML(item, item.id);
-      return new Handlebars.SafeString(html);
+      // Is subitem hidden or not
+      const display = item.actor.flags?.[game.system.id]?.showInstalled?.[
+        item.id
+      ]
+        ? ""
+        : "item-hidden";
+      // Here we wrap the whole sub-list in a div, so that we can animate it
+      return new Handlebars.SafeString(
+        `<div class="sub-list ${display}" data-items-wrapper-for-parent="${item.id}" style="padding: 0;"><ol>${html}</ol></div>`
+      );
     }
     // Otherwise return a blank string.
     return "";

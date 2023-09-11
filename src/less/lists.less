@@ -7,9 +7,52 @@
   overflow-y: auto;
   scrollbar-width: thin;
 
+  .items-header {
+    align-items: center;
+    background-color: var(--cpr-background-header) !important;
+    color: var(--cpr-text-header);
+    span {
+      padding: 0.125rem;
+    }
+  }
+
   // Sublists are the collapsable gear sublists
   .sub-list {
     min-width: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 150ms ease-in-out, opacity 200ms linear;
+    ol {
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      border: 0.188rem solid transparent;
+      border-top: 0;
+      border-bottom: 0;
+      li {
+        padding: 0;
+      }
+      [data-row-level="1"]:before,
+      [data-row-level="2"]:before,
+      [data-row-level="3"]:before,
+      [data-row-level="4"]:before {
+        margin-right: 0.25rem;
+        content: "";
+        display: block;
+        height: 0.01rem;
+        width: 0.33rem;
+        border-top: 0.1rem solid var(--cpr-background-dialog-border);
+      }
+      [data-row-level="2"] {
+        padding-left: 0.33rem;
+      }
+      [data-row-level="3"] {
+        padding-left: 0.66rem;
+      }
+      [data-row-level="4"] {
+        padding-left: 0.99rem;
+      }
+    }
     .type-tag {
       border-radius: 0.1rem;
       padding: 0.05rem 0.15rem;
@@ -22,39 +65,15 @@
       color: white;
       background-color: var(--cpr-background-border);
     }
+    // Apply styling on all rows
     li {
       background-color: transparent !important; // Don't use zebra striping in sublists
       border-top: 0.1rem solid var(--cpr-background-dialog-border);
-    }
-    > ol {
-      margin: 0;
-      padding: 0;
-      border: 0.188rem solid transparent;
-      border-top: 0;
-      border-bottom: 0;
     }
     .uninstall-single-item {
       align-items: center;
       justify-content: end;
       display: flex;
-    }
-  }
-
-  .items-header {
-    align-items: center;
-    background-color: var(--cpr-background-header) !important;
-    color: var(--cpr-text-header);
-    span {
-      padding: 0.125rem;
-    }
-  }
-
-  .animated-row {
-    display: grid;
-    grid-template-rows: 1fr;
-    transition: grid-template-rows 150ms ease-in-out, opacity 200ms linear;
-    ol {
-      overflow: hidden;
     }
   }
 
