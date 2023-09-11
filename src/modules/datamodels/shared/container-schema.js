@@ -97,6 +97,12 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
       source.installedItems.list = installed.map((i) =>
         this.migrateItemUuid(i)
       );
+
+      // Ensure that this list never has duplicates.
+      // eslint-disable-next-line no-param-reassign
+      source.installedItems.list = Array.from(
+        new Set(source.installedItems.list)
+      );
     }
     return super.migrateData(source);
   }
