@@ -26,7 +26,6 @@ system:
     slots: 3
     usedSlots: 0
   isElectronic: false
-  isUpgraded: false
   price:
     market: 500
   providesHardening: false
@@ -36,6 +35,5 @@ system:
     page: 356
   style: highFashion
   type: top
-  upgrades: []
   usage: equipped
 type: clothing

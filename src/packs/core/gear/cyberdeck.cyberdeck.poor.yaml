@@ -15,7 +15,6 @@ system:
   equipped: owned
   favorite: false
   installLocation: mall
-  installedIn: ""
   installedItems:
     allowed: true
     allowedTypes:
@@ -25,18 +24,12 @@ system:
     slots: 5
     usedSlots: 0
   isElectronic: false
-  isInstalled: false
-  isUpgraded: false
   price:
     market: 100
-  programs:
-    installed: []
-    rezzed: []
   providesHardening: false
   quality: poor
   size: 1
   source:
     book: Core
     page: 353
-  upgrades: []
 type: cyberdeck

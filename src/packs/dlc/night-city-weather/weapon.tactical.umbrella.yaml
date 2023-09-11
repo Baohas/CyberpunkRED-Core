@@ -40,11 +40,7 @@ system:
     slots: 3
     usedSlots: 0
   isRanged: true
-  isUpgraded: false
   magazine:
-    ammoData:
-      name: ""
-      uuid: ""
     max: 2
     value: 0
   price:
@@ -56,7 +52,6 @@ system:
     book: NCW
     page: 6
   unarmedAutomaticCalculation: true
-  upgrades: []
   usage: toggled
   usesType: magazine
   weaponSkill: Handgun

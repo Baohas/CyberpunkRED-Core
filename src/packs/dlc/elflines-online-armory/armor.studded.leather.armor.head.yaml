@@ -30,7 +30,6 @@ system:
   isElectronic: false
   isHeadLocation: true
   isShield: false
-  isUpgraded: false
   penalty: 0
   price:
     market: 50
@@ -42,6 +41,5 @@ system:
   source:
     book: ELO
     page: 3
-  upgrades: []
   usage: equipped
 type: armor

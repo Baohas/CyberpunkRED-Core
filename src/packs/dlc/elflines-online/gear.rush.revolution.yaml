@@ -23,7 +23,6 @@ system:
     slots: 0
     usedSlots: 0
   isElectronic: true
-  isUpgraded: false
   price:
     market: 500
   providesHardening: false
@@ -31,6 +30,5 @@ system:
   source:
     book: ELO
     page: 5
-  upgrades: []
   usage: toggled
 type: gear

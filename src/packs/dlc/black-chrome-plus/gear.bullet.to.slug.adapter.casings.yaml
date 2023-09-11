@@ -30,7 +30,6 @@ system:
     slots: 0
     usedSlots: 0
   isElectronic: false
-  isUpgraded: false
   price:
     market: 100
   providesHardening: false
@@ -38,6 +37,5 @@ system:
   source:
     book: BC+
     page: 3
-  upgrades: []
   usage: toggled
 type: gear

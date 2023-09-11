@@ -31,7 +31,6 @@ system:
   isElectronic: false
   isHeadLocation: false
   isShield: false
-  isUpgraded: false
   penalty: -2
   price:
     market: 500
@@ -43,6 +42,5 @@ system:
   source:
     book: Core
     page: 350
-  upgrades: []
   usage: equipped
 type: armor

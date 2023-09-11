@@ -25,7 +25,6 @@ system:
     slots: 3
     usedSlots: 0
   isElectronic: false
-  isUpgraded: false
   price:
     market: 50
   providesHardening: false
@@ -35,6 +34,5 @@ system:
     page: 356
   style: genericChic
   type: bottoms
-  upgrades: []
   usage: equipped
 type: clothing

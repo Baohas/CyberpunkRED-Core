@@ -25,7 +25,6 @@ system:
     roll: 1d3
     static: 2
   installLocation: mall
-  installedIn: ""
   installedItems:
     allowed: false
     allowedTypes:
@@ -35,14 +34,9 @@ system:
     usedSlots: 0
   isElectronic: true
   isFoundational: false
-  isInstalled: false
   isRanged: false
-  isUpgraded: false
   isWeapon: false
   magazine:
-    ammoData:
-      name: ""
-      uuid: ""
     max: 0
     value: 0
   price:
@@ -56,7 +50,6 @@ system:
     page: 362
   type: cyberAudioSuite
   unarmedAutomaticCalculation: true
-  upgrades: []
   usage: toggled
   usesType: magazine
   weaponSkill: Archery

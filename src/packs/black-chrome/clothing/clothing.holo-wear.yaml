@@ -26,7 +26,6 @@ system:
     slots: 0
     usedSlots: 0
   isElectronic: true
-  isUpgraded: false
   price:
     market: 1000
   providesHardening: false
@@ -36,6 +35,5 @@ system:
     page: 35
   style: genericChic
   type: jacket
-  upgrades: []
   usage: toggled
 type: clothing

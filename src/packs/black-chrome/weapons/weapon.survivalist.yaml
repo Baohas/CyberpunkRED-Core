@@ -37,11 +37,7 @@ system:
     slots: 0
     usedSlots: 0
   isRanged: true
-  isUpgraded: false
   magazine:
-    ammoData:
-      name: ""
-      uuid: ""
     max: 0
     value: 0
   price:
@@ -53,7 +49,6 @@ system:
     book: BC
     page: 103
   unarmedAutomaticCalculation: true
-  upgrades: []
   usage: toggled
   usesType: magazine
   weaponSkill: Archery

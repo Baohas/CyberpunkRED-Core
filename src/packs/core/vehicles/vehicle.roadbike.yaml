@@ -20,7 +20,6 @@ system:
     list: []
     slots: 3
     usedSlots: 0
-  isUpgraded: false
   price:
     market: 20000
   sdp: 35
@@ -30,5 +29,4 @@ system:
     page: 190
   speedCombat: 20
   speedNarrative: 100 MPH / 161 KPH
-  upgrades: []
 type: vehicle

@@ -32,11 +32,7 @@ system:
     slots: 3
     usedSlots: 0
   isRanged: true
-  isUpgraded: false
   magazine:
-    ammoData:
-      name: ""
-      uuid: ""
     max: 25
     value: 0
   price:
@@ -48,7 +44,6 @@ system:
     book: Core
     page: 341
   unarmedAutomaticCalculation: true
-  upgrades: []
   usage: equipped
   usesType: magazine
   weaponSkill: Shoulder Arms

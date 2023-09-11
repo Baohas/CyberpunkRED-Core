@@ -19,9 +19,7 @@ system:
       can take by 1 (min. 2) on their next turn. </p>
   favorite: false
   installLocation: mall
-  installedIn: ""
   interface: 0
-  isInstalled: false
   isRezzed: false
   per: 0
   price:

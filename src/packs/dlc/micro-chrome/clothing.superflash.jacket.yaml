@@ -25,7 +25,6 @@ system:
     slots: 0
     usedSlots: 0
   isElectronic: false
-  isUpgraded: false
   price:
     market: 500
   providesHardening: false
@@ -35,6 +34,5 @@ system:
     page: 1
   style: urbanFlash
   type: jacket
-  upgrades: []
   usage: equipped
 type: clothing

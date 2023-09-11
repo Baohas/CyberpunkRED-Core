@@ -28,7 +28,6 @@ system:
     roll: 1d6
     static: 3
   installLocation: mall
-  installedIn: ""
   installedItems:
     allowed: true
     allowedTypes:
@@ -38,14 +37,9 @@ system:
     usedSlots: 0
   isElectronic: true
   isFoundational: false
-  isInstalled: false
   isRanged: false
-  isUpgraded: false
   isWeapon: false
   magazine:
-    ammoData:
-      name: ""
-      uuid: ""
     max: 0
     value: 0
   price:
@@ -59,7 +53,6 @@ system:
     page: 4
   type: cyberArm
   unarmedAutomaticCalculation: true
-  upgrades: []
   usage: toggled
   usesType: magazine
   weaponSkill: ""

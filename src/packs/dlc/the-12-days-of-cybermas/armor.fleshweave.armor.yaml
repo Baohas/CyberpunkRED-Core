@@ -32,7 +32,6 @@ system:
   isElectronic: false
   isHeadLocation: true
   isShield: false
-  isUpgraded: false
   penalty: 0
   price:
     market: 0
@@ -44,6 +43,5 @@ system:
   source:
     book: 12DoC
     page: 5
-  upgrades: []
   usage: toggled
 type: armor

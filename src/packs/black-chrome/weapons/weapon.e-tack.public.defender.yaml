@@ -38,11 +38,7 @@ system:
     slots: 0
     usedSlots: 0
   isRanged: true
-  isUpgraded: false
   magazine:
-    ammoData:
-      name: ""
-      uuid: ""
     max: 8
     value: 0
   price:
@@ -54,7 +50,6 @@ system:
     book: BC
     page: 115
   unarmedAutomaticCalculation: true
-  upgrades: []
   usage: equipped
   usesType: magazine
   weaponSkill: Handgun

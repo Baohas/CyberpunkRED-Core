@@ -23,7 +23,6 @@ system:
   equipped: owned
   favorite: false
   installLocation: mall
-  installedIn: ""
   installedItems:
     allowed: true
     allowedTypes:
@@ -33,18 +32,12 @@ system:
     slots: 9
     usedSlots: 0
   isElectronic: true
-  isInstalled: false
-  isUpgraded: false
   price:
     market: 100
-  programs:
-    installed: []
-    rezzed: []
   providesHardening: false
   quality: standard
   size: 1
   source:
     book: MwtU
     page: 4
-  upgrades: []
 type: cyberdeck

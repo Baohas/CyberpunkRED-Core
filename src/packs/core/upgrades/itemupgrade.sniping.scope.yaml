@@ -24,7 +24,6 @@ system:
     suppressiveFire: false
   handsReq: 0
   installLocation: mall
-  installedIn: ""
   installedItems:
     allowed: true
     allowedTypes:
@@ -33,12 +32,8 @@ system:
     slots: 3
     usedSlots: 0
   isElectronic: false
-  isInstalled: false
   isRanged: false
   magazine:
-    ammoData:
-      name: ""
-      uuid: ""
     max: 0
     value: 0
   modifiers:

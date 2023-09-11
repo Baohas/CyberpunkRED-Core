@@ -34,7 +34,6 @@ system:
     roll: 2d6
     static: 7
   installLocation: hospital
-  installedIn: ""
   installedItems:
     allowed: true
     allowedTypes:
@@ -44,14 +43,9 @@ system:
     usedSlots: 0
   isElectronic: true
   isFoundational: false
-  isInstalled: false
   isRanged: false
-  isUpgraded: false
   isWeapon: false
   magazine:
-    ammoData:
-      name: ""
-      uuid: ""
     max: 0
     value: 0
   price:
@@ -65,7 +59,6 @@ system:
     page: 5
   type: cyberwareExternal
   unarmedAutomaticCalculation: true
-  upgrades: []
   usage: toggled
   usesType: magazine
   weaponSkill: ""

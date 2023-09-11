@@ -28,7 +28,6 @@ system:
     slots: 3
     usedSlots: 0
   isElectronic: false
-  isUpgraded: false
   price:
     market: 5000
   providesHardening: false
@@ -36,6 +35,5 @@ system:
   source:
     book: BC
     page: 54
-  upgrades: []
   usage: equipped
 type: gear

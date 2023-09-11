@@ -19,9 +19,7 @@ system:
       copy may be Rezzed at a time. Each copy has 1 use per Netrun.</p>
   favorite: false
   installLocation: mall
-  installedIn: ""
   interface: 0
-  isInstalled: false
   isRezzed: false
   per: 0
   price:

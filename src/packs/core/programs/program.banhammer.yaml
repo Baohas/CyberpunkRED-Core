@@ -17,9 +17,7 @@ system:
     value: <p>Deals 3d6 REZ to non-Black ICE or 2d6 Rez damage to Black ICE. </p>
   favorite: false
   installLocation: mall
-  installedIn: ""
   interface: 0
-  isInstalled: false
   isRezzed: false
   per: 0
   price:

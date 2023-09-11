@@ -34,7 +34,6 @@ system:
   isElectronic: false
   isHeadLocation: true
   isShield: false
-  isUpgraded: false
   penalty: 4
   price:
     market: 1000
@@ -46,6 +45,5 @@ system:
   source:
     book: BC
     page: 29
-  upgrades: []
   usage: toggled
 type: armor

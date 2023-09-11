@@ -24,7 +24,6 @@ system:
     slots: 0
     usedSlots: 0
   isElectronic: false
-  isUpgraded: false
   price:
     market: 20
   providesHardening: false
@@ -32,6 +31,5 @@ system:
   source:
     book: CCaCH
     page: 6
-  upgrades: []
   usage: toggled
 type: gear
