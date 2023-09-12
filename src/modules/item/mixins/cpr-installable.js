@@ -91,7 +91,7 @@ const Installable = function Installable() {
    * Otherwise, the item will be installed from all locations.
    *
    * @async
-   * @param {Array<CPRItem(Container)>} providedContainers - a list of specific containers to uninstall this item from.
+   * @param {Array<CPRItem(Container)>} providedContainers - (optional) a list of specific containers to uninstall this item from.
    * @returns {Promise}
    */
   this.uninstall = async function uninstall(providedContainers) {
@@ -99,7 +99,7 @@ const Installable = function Installable() {
     const { actor } = this;
 
     // In theory, something could be installed in multiple items.
-    // In practice, this is currently only true for ammo items.
+    // In practice, this is currently only true for world items and ammo items (on a character sheet).
     let containers;
     if (providedContainers?.length > 0) {
       containers = providedContainers;
@@ -109,32 +109,37 @@ const Installable = function Installable() {
         : game.items.filter((i) => this.system.installedIn.includes(i.id));
     }
 
-    // Turn container item names into a string for the dialog.
-    const containerItemNames = containers
-      .map((c) => c.name)
-      .reduce((accumulator, currentValue) => `${accumulator}, ${currentValue}`);
-
     // Show "Default" dialog.
-    const confirmUninstall = await CPRDialog.showDialog(
+    const dialogData = await CPRDialog.showDialog(
       {
-        dialogMessage: SystemUtils.Format(
-          "CPR.dialog.uninstallConfirmation.message",
-          {
-            installableItemName: this.name,
-            containerItemName: containerItemNames,
-          }
-        ),
+        containers,
+        header: SystemUtils.Format("CPR.dialog.uninstallConfirmation.message", {
+          installableItemName: this.name,
+        }),
+        isAmmo: this.type === "ammo", // Size isn't relevant for ammo items.
+        selectedItems: containers.map((c) => c.id), // All items checked by default.
+        size: this.system.size,
       },
       // Set the options for the dialog.
       {
+        template: `systems/${game.system.id}/templates/dialog/cpr-uninstall-single-item-prompt.hbs`,
         title: SystemUtils.Localize("CPR.dialog.uninstallConfirmation.title"),
       }
     ).catch((err) => LOGGER.debug(err));
 
-    if (!confirmUninstall) {
+    if (!dialogData) {
       return Promise.resolve();
     }
 
+    // An array of selected items from the dialog.
+    const selectedItemIds = Array.isArray(dialogData.selectedItems)
+      ? dialogData.selectedItems
+      : [dialogData.selectedItems];
+
+    // Filter containers by the selectedItems array.
+    containers = containers.filter((c) => selectedItemIds.includes(c.id));
+
+    // Uninstall selected items.
     const uninstallPromises = [];
     for (const container of containers) {
       // Generate a list of promises.

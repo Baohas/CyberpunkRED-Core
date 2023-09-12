@@ -1,0 +1,66 @@
+{{cprTrace "START DIALOG CPR-UNINSTALL-SINGLE-ITEM-PROMPT.HBS"}}
+<form class="dialog-sheet">
+  <div class="dialog-header flexcol">
+    <div class="text-normal text-center">
+      {{header}}
+    </div>
+    <div class="text-center text-semi">
+      {{!-- Display Available Slots --}}
+      {{localize "CPR.global.generic.size"}}:
+      {{#if isAmmo}}
+        <span data-tooltip="{{localize "CPR.dialog.uninstallConfirmation.isAmmoToolTip"}}">
+          {{localize "CPR.global.generic.notApplicable"}}
+        </span>
+      {{else}}
+        {{size}}
+      {{/if}}
+    </div>
+  </div>
+  <hr/>
+  <div class="dialog-grid flexcol">
+    <ol class="dialog-list">
+        <li class="dialog-item dialog-item-header flexrow">
+          <div class="dialog-item-name flex-width-75">
+            <span class="text-semi">
+              {{localize "CPR.global.generic.item"}}
+            </span>
+          </div>
+          <div class="dialog-item-detail flex-width-10">
+            <span class="text-semi">
+              {{localize "CPR.global.generic.slots"}}
+            </span>
+          </div>
+          <div class="dialog-item-input flexrow flex-width-15">
+            <span class="text-semi">
+              {{localize "CPR.actorSheets.commonActions.uninstall"}}
+            </span>
+          </div>
+        </li>
+        {{#each containers as |container| }}
+          <li class="dialog-item flexrow">
+            <div class="dialog-item-name flex-width-75 text-nowrap">
+              {{container.name}}
+            </div>
+            <div class="dialog-item-detail flex-width-10">
+              {{#if ../isAmmo}}
+                <span data-tooltip="{{localize "CPR.dialog.uninstallConfirmation.isAmmoToolTip"}}">
+                  {{localize "CPR.global.generic.notApplicable"}}
+                </span>
+              {{else}}
+                {{container.system.installedItems.usedSlots}} /
+                {{container.system.installedItems.slots}}
+              {{/if}}
+            </div>
+            <div class="dialog-item-input flex-width-15">
+              <input type="checkbox"
+                     name="selectedItems"
+                     value="{{container.id}}"
+                     {{checked (cprListContains ../selectedItems container.id) }}/>
+            </div>
+          </li>
+        {{/each}}
+    </ol>
+  </div>
+  {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
+</form>
+{{cprTrace "END CPR-UNINSTALL-SINGLE-ITEM-PROMPT.HBS"}}
