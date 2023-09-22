@@ -242,9 +242,8 @@ const Loadable = function Loadable() {
    * When a loadable item has an upgrade removed we need to sync the magazine data
    * in case the magazine size decreased, we need to remove the extra bullets.
    *
-   * @param {Object} data - the data the item is being created from
    */
-  this.syncMagazine = function syncMagazine() {
+  this.syncMagazine = async function syncMagazine() {
     const updateData = [];
     const { actor } = this;
     const magazineData = this.system.magazine;
@@ -253,16 +252,19 @@ const Loadable = function Loadable() {
       upgradeData.type === "override"
         ? upgradeData.value
         : magazineData.max + upgradeData.value;
-    if (magazineSize < magazineData.value) {
-      const overage = magazineData.value - magazineSize;
-      updateData.push({ _id: this._id, "system.magazine.value": magazineSize });
-      const ammoItem = actor.getOwnedItem(magazineData.ammoData.uuid);
+    if (magazineSize > magazineData.max) {
+      const overage = magazineData.value - magazineData.max;
+      updateData.push({
+        _id: this._id,
+        "system.magazine.value": magazineData.max,
+      });
+      const ammoItem = this.system.loadedAmmo;
       if (ammoItem) {
         const newAmmoAmount = ammoItem.system.amount + overage;
         updateData.push({ _id: ammoItem._id, "system.amount": newAmmoAmount });
       }
     }
-    return updateData;
+    return actor.updateEmbeddedDocuments("Item", updateData);
   };
 };
 

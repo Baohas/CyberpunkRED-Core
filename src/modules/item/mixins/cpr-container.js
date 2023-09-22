@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* global duplicate Item game Folder */
+/* global duplicate Item game */
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
@@ -334,6 +334,15 @@ const Container = function Container() {
     const uninstalledAmmo = uninstallList.filter((i) => i.type === "ammo");
     if (uninstalledAmmo.length > 0 && loadableTypes.includes(this.type)) {
       await this.unload();
+    }
+
+    // When uninstalling an upgrade that increases magazine size, make sure any extra ammo
+    // that would be in the upgrade is returned to the ammo item.
+    const uninstalledMagUpgrade = uninstallList.find(
+      (i) => i.type === "itemUpgrade" && i.system.modifiers.magazine.value
+    );
+    if (loadableTypes.includes(this.type) && uninstalledMagUpgrade) {
+      await this.syncMagazine();
     }
 
     // Update used slots with the newly installed system.
