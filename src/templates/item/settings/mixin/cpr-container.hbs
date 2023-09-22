@@ -65,14 +65,14 @@
     </div>
   </li>
   {{#if (cprCompare item.system.installedItems.list.length ">" 0) }}
-    <li class="item flexrow">
-      <div class="item flexrow setting-name text-nowrap text-padding-left-smaller">
-        {{#each item.system.installedItems.list as |id| }}
+    {{#each item.system.installedItems.list as |id| }}
+      <li class="item flexrow">
+        <div class="item flexrow setting-name text-nowrap text-padding-left-smaller">
           {{#unless (cprCompare (cprGetProp (cprGetOwnedItem ../item.actor id) "type") "===" "program")}}
             {{cprGetProp (cprGetOwnedItem ../item.actor id) "name"}} ({{localize (cprFindConfigValue "objectTypes" (cprGetProp (cprGetOwnedItem ../item.actor id) "type"))}})
-        {{/unless}}
-      {{/each}}
-    </div>
-  </li>
-{{/if}}
+          {{/unless}}
+        </div>
+      </li>
+    {{/each}}
+  {{/if}}
 {{cprTrace "END CPR-CONTAINER.HBS"}}

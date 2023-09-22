@@ -72,8 +72,14 @@ export default class ProgramDataModel extends CPRSystemDataModel.mixin(
     });
   }
 
+  /**
+   * Convert `system.rez` from a Number to an Object.
+   *
+   * @param {ProgramDataModel} source - The data model for programs
+   * @returns {ProgramDataModel} - the migrated program data model
+   */
   static migrateData(source) {
-    LOGGER.trace("migrateData");
+    LOGGER.trace("migrateData | ProgramDataModel | called.");
     if (!(source.rez instanceof Object)) {
       const newRez = {
         value: source.rez,

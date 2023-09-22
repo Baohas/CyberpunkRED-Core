@@ -33,14 +33,16 @@ export default class LoadableSchema extends foundry.abstract.DataModel {
   }
 
   /**
-   * Migrates data on the fly. From Foundry
+   * Migrates data on the fly. From Foundry.
+   *
+   * Give every weapon item "ammo" as an installable type.
    *
    * @override
    * @param {CPRSystemDataModel} source - source actor or item `document.system`
-   * @returns
+   * @returns {CPRSystemDataModel} - migrated data
    */
   static migrateData(source) {
-    LOGGER.trace("migrateData");
+    LOGGER.trace("migrateData | LoadableSchema | called.");
     if (!source.installedItems.allowedTypes.includes("ammo")) {
       source.installedItems.allowedTypes.push("ammo");
     }

@@ -34,7 +34,7 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
       initialSlots: 3,
     }
   ) {
-    LOGGER.trace("defineSchema | InstalledItemsSchema | called.");
+    LOGGER.trace("defineSchema | ContainerSchema | called.");
     const { fields } = foundry.data;
 
     const baseSchema = {
@@ -65,7 +65,7 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
         required: true,
         nullable: false,
         integer: true,
-        initial: options.initialSlots,
+        initial: options.initialSlots || 3,
         min: 0,
       }),
     };
@@ -82,14 +82,16 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
   }
 
   /**
-   * Migrates data on the fly. From Foundry
+   * Migrates data on the fly. From Foundry.
+   *
+   * Convert UUIDs into regular IDs and make sure there are no duplicates.
    *
    * @override
    * @param {CPRSystemDataModel} source - source actor or item `document.system`
-   * @returns
+   * @returns {CPRSystemDataModel} - migrated data
    */
   static migrateData(source) {
-    LOGGER.trace("migrateData");
+    LOGGER.trace("migrateData | ContainerSchema | called.");
     // Turn this list of UUIDs into a list of IDs.
     if (source.installedItems?.list.length > 0) {
       const installed = source.installedItems.list;
@@ -114,7 +116,7 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
    * @returns {String} - the id of that item
    */
   static migrateItemUuid(uuid) {
-    LOGGER.trace("migrateItemUuid");
+    LOGGER.trace("migrateItemUuid | ContainerSchema | called.");
     if (foundry.data.validators.isValidId(uuid)) {
       return uuid;
     }
