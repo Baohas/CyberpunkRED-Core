@@ -5,12 +5,7 @@
     draggable="false">
   <div class="item-name cyberware-name flexrow text-nowrap">
     <span>
-      <a
-        {{#if (cprCompare depth '===' 1)}}
-          class="name item-view text-padding-left-normal">
-        {{else}}
-          class="name item-view text-padding-left-massive">
-        {{/if}}
+      <a class="name item-view" {{cprIndentCyberware depth}}>
         <span class="name">
           {{cprBrandedName cyberware}}
         </span>

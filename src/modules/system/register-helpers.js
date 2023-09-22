@@ -880,6 +880,7 @@ export default function registerHandlebarsHelpers() {
 
   /**
    * Returns an series of nested <li> elements representing nested installed items.
+   * This is for items that have installed items in the gear tab.
    *
    * @param {CPRItem(Container)} item - The top-level item.
    * @returns {Handlebars.SafeString} - Nested list of installed items.
@@ -942,6 +943,19 @@ export default function registerHandlebarsHelpers() {
     }
     // Otherwise return a blank string.
     return "";
+  });
+
+  /**
+   * Helper to calculate the indent of nested cyberware in the Cyberware tab.
+   * Do this here so we don't put a `style` attribute in the .hbs file, which would cause a test to fail.
+   *
+   * @param {Number} - Depth of the installed item.
+   * @returns {Handlebars.SafeString} - Nested list of installed items.
+   */
+  Handlebars.registerHelper("cprIndentCyberware", (depth) => {
+    LOGGER.trace("cprIndentCyberware | handlebarsHelper | Called.");
+    const style = `style="padding-left:${depth}rem;"`;
+    return new Handlebars.SafeString(style);
   });
 
   /**
