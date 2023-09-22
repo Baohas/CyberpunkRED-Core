@@ -32,7 +32,7 @@
          {{/if}}
        ">
       {{cprBrandedName this}}
-      
+
     </a>
   </div>
 
@@ -40,8 +40,8 @@
   <div class="weapon-ammo">
     {{#if this.system.isRanged}}
       {{#if this.system.hasAmmoLoaded}}
-        {{#with this.system.loadedAmmo as |ammoData|}}
-          {{localize (cprFindConfigValue "ammoType" ammoData.system.type)}}:
+        {{#with this.system.loadedAmmo as |ammo|}}
+          {{localize (cprFindConfigValue "ammoType" ammo.system.type)}}:
         {{/with}}
         {{this.system.magazine.value}}
         /
@@ -78,7 +78,7 @@
 
     {{!-- Damage --}}
     <span
-      {{#if (cprCompare (cprGetAmmoOverrideProp actor this.system.magazine.ammoData.uuid "damage" "mode") "!==" "none")}}
+      {{#if (cprCompare (cprGetAmmoOverrideProp this.system.loadedAmmo "damage" "mode") "!==" "none")}}
         class="text-pill text-italic" data-tooltip="{{localize "CPR.actorSheets.fightTab.ammoDamageOverrideTooltip"}}">
       {{else}}
         class="text-pill">
@@ -88,12 +88,12 @@
     </span>
 
     {{!-- Ablation --}}
-    {{#if this.system.magazine.ammoData.uuid}}
-      {{#with (cprGetOwnedItem actor this.system.magazine.ammoData.uuid) as |ammoData|}}
-        {{#if (cprCompare ammoData.system.ablationValue "!==" 1)}}
+    {{#if this.system.hasAmmoLoaded}}
+      {{#with this.system.loadedAmmo as |ammo|}}
+        {{#if (cprCompare ammo.system.ablationValue "!==" 1)}}
           <span class="text-pill">
             {{localize "CPR.global.generic.ablation"}}
-            {{ammoData.system.ablationValue}}
+            {{ammo.system.ablationValue}}
           </span>
         {{/if}}
       {{/with}}
@@ -129,7 +129,7 @@
       {{#if (cprCompare this.system.fireModes.autoFire ">" 0)}}
         <li>
           <span
-            {{#if (cprCompare (cprGetAmmoOverrideProp actor this.system.magazine.ammoData.uuid "autofire" "mode") "!==" "none")}}
+            {{#if (cprCompare (cprGetAmmoOverrideProp this.system.loadedAmmo "autofire" "mode") "!==" "none")}}
               class="text-padding-right-small text-italic" data-tooltip="{{localize "CPR.actorSheets.fightTab.ammoAutofireOverrideTooltip"}}">
             {{else}}
               class="text-padding-right-small">

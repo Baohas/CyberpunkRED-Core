@@ -1306,17 +1306,14 @@ export default function registerHandlebarsHelpers() {
    * Returns specific property for ammo's damage override. "Override" is a boolean,
    * whether or not to apply the override. "Value" is the damage value, e.g. "3d6".
    *
-   * @param {String} actor - The actor who is the owner of this weapon/ammo.
-   * @param {String} uuid - The Uuid of the ammo item.
+   * @param {String} ammoItem - the ammo item that may be doing the override.
    * @param {String} override - The override we want, 'damage' or 'autofire'.
    * @param {String} property - Should be 'mode', 'value', or 'minimum'.
    */
   Handlebars.registerHelper(
     "cprGetAmmoOverrideProp",
-    (actor, uuid, override, property) => {
+    (ammoItem, override, property) => {
       LOGGER.trace("cprGetAmmoOverrideProp | handlebarsHelper | Called.");
-      const ammoItem = actor.getOwnedItem(uuid);
-
       if (
         !(property === "mode" || property === "value" || property === "minimum")
       ) {
@@ -1333,10 +1330,7 @@ export default function registerHandlebarsHelpers() {
 
       // If no ammo item, return "none". This is a hack to not add extra logic to the handlebars.
       // Prevents melee and unloaded weapons from displaying italicized/tool-tipped damage text-pills.
-      if (ammoItem) {
-        return ammoItem.system.overrides[override][property];
-      }
-      return "none";
+      return ammoItem ? ammoItem.system.overrides[override][property] : "none";
     }
   );
 

@@ -233,7 +233,7 @@
     {{/if}}
   </div>
 </li>
-{{#if (cprCompare item.system.magazine.ammoData.uuid "!==" "") }}
+{{#if item.system.hasAmmoLoaded}}
   <li class="item flexrow">
     <div class="item flexrow setting-name text-nowrap">
       {{localize "CPR.itemSheet.weapon.loadedAmmoQuantity"}}
