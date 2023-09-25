@@ -637,7 +637,7 @@
   "CPR.global.itemType.skill.pickLock": "Pick Lock",
   "CPR.global.itemType.skill.pickLockToolTip": "Ability to unlock non-electronic locks when you do not have the key",
   "CPR.global.itemType.skill.pickLockAndPickPocket": "Pick Lock/Pick Pocket",
-  "CPR.global.itemType.skill.pickLockAndPickPocketToolTip": "Elflines skill. See Pick Log or Pick Pocket skills for more information.",
+  "CPR.global.itemType.skill.pickLockAndPickPocketToolTip": "Elflines skill. See Pick Lock or Pick Pocket skills for more information.",
   "CPR.global.itemType.skill.pickPocket": "Pick Pocket",
   "CPR.global.itemType.skill.pickPocketToolTip": "Lifting small items from others or from stores without detection",
   "CPR.global.itemType.skill.pilotAirVehicle": "Pilot Air Vehicle",
