@@ -45,7 +45,7 @@
           <a class="rollable {{#if skill.system.basic }}text-semi{{/if }}"
              data-roll-type="skill"
              data-roll-title="{{skill.name}}"
-             data-tooltip="{{cprGetSkillToolTipKey skill.name}}">
+             data-tooltip="{{cprGetSkillToolTipKey skill}}">
             {{localize (cprGetLocalizedlNameKey skill)}}
             {{#if (cprCompare skill.system.difficulty "===" "difficult") }}
               (x2)
