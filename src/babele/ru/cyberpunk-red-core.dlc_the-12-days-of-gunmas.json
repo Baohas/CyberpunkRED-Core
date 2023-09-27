@@ -24,7 +24,7 @@
     "Crusher": {
       "name": "Crusher",
       "description": "<p>A pistol that fires shotgun shells. What's not to love.</p>",
-      "dvTable": "СЛ пистолет"
+      "dvTable": "СЛ Пистолет"
     },
     "Dragon Flamethrower": {
       "name": "Dragon Flamethrower",
@@ -33,12 +33,12 @@
     "Hellbringer": {
       "name": "Hellbringer",
       "description": "<p>When this things shoots, you know about it. If fired by someone with less than 10 BODY, this pistol jams. An action is required to unjam it.</p>",
-      "dvTable": "СЛ пистолет"
+      "dvTable": "СЛ Пистолет"
     },
     "Multiple Ammunition Pistol": {
       "name": "Multiple Ammunition Pistol",
       "description": "<p>A very heavy pistol capable of loading up to five different ammo types at once*, with the user able to pick between them before firing.</p>\n<p><em>*Currently not supported, so users have to manually change ammo types</em></p>",
-      "dvTable": "СЛ пистолет"
+      "dvTable": "СЛ Пистолет"
     },
     "Nomad Pneumatic Bolt Gun": {
       "name": "Nomad Pneumatic Bolt Gun",
@@ -48,7 +48,7 @@
     "Nova Model 757 Cityhunter": {
       "name": "Nova Model 757 Cityhunter",
       "description": "<p>This pistol fires it's own custom rounds bought in packs of 18, though they cost the same as a pack of 10. Comes with a Smartgun Link*.</p>\n<p><em>*Smartgun Link must be manually added after acquiring the weapon</em></p>",
-      "dvTable": "СЛ пистолет"
+      "dvTable": "СЛ Пистолет"
     },
     "ST-5 Assault Rifle": {
       "name": "ST-5 Assault Rifle",

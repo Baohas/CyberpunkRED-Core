@@ -3,7 +3,7 @@
   "mapping": {},
   "entries": {
     "DV Assault Rifle (Autofire)": {
-      "name": "DV Assault Rifle (Autofire)",
+      "name": "СЛ Штурмовая винтовка (Автоогонь)",
       "results": [
         {
           "0-6": "15",
@@ -18,7 +18,7 @@
       ]
     },
     "DV Assault Rifle": {
-      "name": "DV Assault Rifle",
+      "name": "СЛ Штурмовая винтовка",
       "results": [
         {
           "0-6": "17",
@@ -33,7 +33,7 @@
       ]
     },
     "DV Bows & Crossbows": {
-      "name": "DV Bows & Crossbows",
+      "name": "СЛ Луки и арбалеты",
       "results": [
         {
           "0-6": "15",
@@ -63,7 +63,7 @@
       ]
     },
     "DV Grenade Launcher": {
-      "name": "DV Grenade Launcher",
+      "name": "СЛ Гранатомёт",
       "results": [
         {
           "0-6": "15",
@@ -78,7 +78,7 @@
       ]
     },
     "DV Pistol": {
-      "name": "DV Pistol",
+      "name": "СЛ Пистолет",
       "results": [
         {
           "0-6": "13",
@@ -88,12 +88,12 @@
           "51-100": "25",
           "101-200": "25",
           "201-234": "30",
-          "235-268": "N/A"
+          "235-268": "Н/Д"
         }
       ]
     },
     "DV Rocket Launcher": {
-      "name": "DV Rocket Launcher",
+      "name": "СЛ Ракетница",
       "results": [
         {
           "0-6": "15",
@@ -108,7 +108,7 @@
       ]
     },
     "DV Shotgun (Slug)": {
-      "name": "DV Shotgun (Slug)",
+      "name": "СЛ Дробовик (Жакан)",
       "results": [
         {
           "0-6": "13",
@@ -118,12 +118,12 @@
           "51-100": "25",
           "101-200": "25",
           "201-234": "30",
-          "235-268": "N/A"
+          "235-268": "Н/Д"
         }
       ]
     },
     "DV SMG (Autofire)": {
-      "name": "DV SMG (Autofire)",
+      "name": "СЛ ПП (Автоогонь)",
       "results": [
         {
           "0-6": "15",
@@ -138,7 +138,7 @@
       ]
     },
     "DV SMG": {
-      "name": "DV SMG",
+      "name": "СЛ ПП",
       "results": [
         {
           "0-6": "13",
@@ -148,12 +148,12 @@
           "51-100": "25",
           "101-200": "25",
           "201-234": "30",
-          "235-268": "N/A"
+          "235-268": "Н/Д"
         }
       ]
     },
     "DV Sniper Rifle": {
-      "name": "DV Sniper Rifle",
+      "name": "СЛ Снайперская винтовка",
       "results": [
         {
           "0-6": "15",
@@ -168,7 +168,7 @@
       ]
     },
     "DV Thrown Weapon": {
-      "name": "DV Thrown Weapon",
+      "name": "СЛ Метательное оружие",
       "results": [
         {
           "0-6": "15",

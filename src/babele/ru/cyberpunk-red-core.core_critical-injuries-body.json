@@ -1,50 +1,50 @@
 {
-  "label": "Critical Injuries (Body)",
+  "label": "Критические ранения тела",
   "mapping": {},
   "entries": {
     "Broken Arm": {
-      "name": "Сломанная рука",
+      "name": "Перелом руки",
       "description": "<p>Рука бесполезна. Урони то, что в ней было.</p>"
     },
     "Broken Leg": {
-      "name": "Сломанная нога",
-      "description": "<p>-4 MOVE (minimum MOVE of 1).</p>"
+      "name": "Перелом ноги",
+      "description": "<p>-4 к СКО (до минимума 1).</p>"
     },
     "Broken Ribs": {
-      "name": "Сломанные рёбра",
-      "description": "<p>Получи критический урон в конце хода, если ты прошел больше 4м/ярд пешком.</p>"
+      "name": "Перелом рёбер",
+      "description": "<p>Получи критический урон в конце хода, если ты прошел больше 4 м/ярд пешком.</p>"
     },
     "Collapsed Lung": {
-      "name": "Пробитое лёгкое",
-      "description": "<p>-2 MOVE (minimum MOVE of 1).</p>"
+      "name": "Разрыв лёгкого",
+      "description": "<p>-2 к СКО (до минимума 1).</p>"
     },
     "Crushed Fingers": {
-      "name": "Сломанные пальцы",
+      "name": "Перелом пальцев",
       "description": "<p>-4 к действиям рукой.</p>"
     },
     "Dismembered Arm": {
       "name": "Оторванная рука",
-      "description": "<p>Рука оторвана, урони то, что в ней было.</p>"
+      "description": "<p>Рука оторвана. Урони то, что в ней было.</p>"
     },
     "Dismembered Hand": {
       "name": "Оторванная кисть",
-      "description": "<p>Кисть оторвана, оторви то, что в ней было.</p>"
+      "description": "<p>Кисть оторвана. Урони то, что в ней было.</p>"
     },
     "Dismembered Leg": {
       "name": "Оторванная нога",
-      "description": "<p>Leg is removed. Cannot Dodge. -6 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>Нога оторвана. Уворачиваться больше невозможно. -6 к СКО (до минимума 1).</p>"
     },
     "Foreign Object": {
       "name": "Инородное тело",
-      "description": "<p>Получи критический урон в конце хода, если ты прошел больше 4м/ярд пешком.</p>"
+      "description": "<p>Получи критический урон в конце хода, если ты прошел больше 4 м/ярд пешком.</p>"
     },
     "Spinal Injury": {
       "name": "Повреждение позвоночника",
       "description": "<p>В следующем ходу: Без действий, только передвижение.</p>"
     },
     "Torn Muscle": {
-      "name": "Порванные связки",
-      "description": "<p>-2 to Melee Attacks.</p>"
+      "name": "Разрыв мышцы",
+      "description": "<p>-2 к атакам в ближнем бою.</p>"
     }
   }
 }

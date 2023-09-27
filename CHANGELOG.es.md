@@ -6,17 +6,17 @@
 
 ### Changes
 
+- #793 - added tooltips for each stat and skill
+
+## Version 0.88.2
+
+### Changes
+
 - Switched to using DataModels to enforce data types (#316, #723)
 - Add setting to disable warning when rolling damage without targets
 - The fumble recovery skill for Solos is now accounted for
 
-### Bug Fixes
-
-- #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
-
-## Version 0.88.2
-
-### Acción requerida
+### Action Needed
 
 Our v11 Migrations of Active Effects introduced a bug where modifiers to STATs (and only STATs). Caused them to be multiplied by 3.
 
@@ -28,6 +28,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 ### Bug Fixes
 
+- #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 - Fix weapons moved to stash not applying correct amount of ammo stack
 - Fix incorrect Black Chrome Grenade Names
 - Fix `Heavy Pistol (ArmorPiercing)` icon
@@ -51,7 +52,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 ## Version 0.88.1
 
-### Action Needed
+### Acción requerida
 
 **WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
 

@@ -3,224 +3,224 @@
   "mapping": {},
   "entries": {
     "Arrow (Armor-Piercing)": {
-      "name": "Arrow (Armor-Piercing)",
-      "description": "<p>Double ablation to armor.</p>"
+      "name": "Стрела (бронебойная)",
+      "description": "<p>Удвоенное повреждение броне.</p>"
     },
     "Arrow (Basic)": {
-      "name": "Arrow (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Стрела (стандартная)",
+      "description": "<p>Обычный боеприпас, ничего особенного.</p>"
     },
     "Arrow (Biotoxin)": {
-      "name": "Arrow (Biotoxin)",
-      "description": "<p>No immediate damage. If hit DV15 Resist Torture/Drugs Check. On a fail 3d6 damage to HP. No Ablation. </p>"
+      "name": "Стрела (с биотоксином)",
+      "description": "<p>При попадании не наносит урон, но необходимо пройти проверку Сопротивления пыткам/препаратам СЛ15. В случае провала цель получает 3d6 урона здоровью. Броня не получает повреждение.</p>"
     },
     "Arrow (Expansive)": {
-      "name": "Arrow (Expansive)",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "name": "Стрела (экспансивная)",
+      "description": "<p>При выпадении критического ранения «Инородное тело» (см. стр. 187 Основной книги правил) нужно сделать бросок на получение ещё одного (другого) критического ранения без получения дополнительного критического урона.</p>"
     },
     "Arrow (Incendiary)": {
-      "name": "Arrow (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Стрела (зажигательная)",
+      "description": "<p>Если цели нанесён урон, то её охватывает пламя. Цель получает 2 очка урона ПЗ в конце хода до тех пор, пока не совершит действие, чтобы потушить огонь. Эффект не накапливается.</p>"
     },
     "Arrow (Poison)": {
-      "name": "Arrow (Poison)",
-      "description": "<p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs Check. On a fail 2d6 damage to HP. No Ablation. </p>"
+      "name": "Стрела (с ядом)",
+      "description": "<p>При попадании не наносит урон, но необходимо пройти проверку Сопротивления пыткам/препаратам СЛ13. В случае провала цель получает 3d6 урона здоровью. Броня не получает повреждение.</p>"
     },
     "Arrow (Rubber)": {
-      "name": "Arrow (Rubber)",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "name": "Стрела (резиновая)",
+      "description": "<p>Не наносит критических ранений. Не наносит повреждения броне. Не позволяет снизить показатель ПЗ ниже единицы. Для экзотического оружия считается стандартным боеприпасом.</p>"
     },
     "Arrow (Sleep)": {
-      "name": "Arrow (Sleep)",
-      "description": "<p>Deals no damage. If meat target hit DV13 Resist Torture/Drugs. On fail falls Prone (see pg. 169) and unconscious for 1 minute. Can be woken by damage or another person using an action to touch/shake them.</p>"
+      "name": "Стрела (усыпляющая)",
+      "description": "<p>Не наносит повреждений. Поражённая мясная цель проходит проверку Сопротивления пыткам/препаратам СЛ13. В случае провала цель получает статус «сбит с ног» (см. стр. 169) и в течение минуты находится без сознания. Цель может разбудить другой персонаж действием, если коснётся или потрясёт её.</p>"
     },
     "Arrow (Smart)": {
-      "name": "Arrow (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Стрела (умная)",
+      "description": "<p>Требует киберимплант «Прицел», иначе не выстрелит. Если у одиночного выстрела выпал промах на четыре или меньше, нужно провести ещё один бросок атаки с той же СЛ, но к броску добавляется 10 вместо обычного показателя характеристики. Можно использовать УДЧ. Цель может увернуться от такого выстрела как обычно.</p>"
     },
     "Battery Pack": {
-      "name": "Батарейный блок",
-      "description": "<p>A rechargeable (1 hour) battery pack, commonly used with Exotic weapons. Contains 8 shots and can be recharged.&nbsp;</p>"
+      "name": "Аккумулятор",
+      "description": "<p>Перезаряжаемый (1 час) аккумулятор, часто используемый в экзотическом оружии. Рассчитан на восемь выстрелов, после чего требует подзарядки.</p>"
     },
     "Grenade (Armor-Piercing)": {
-      "name": "Grenade (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Граната (бронебойная)",
+      "description": "<p>Двойное повреждение броне.</p>"
     },
     "Grenade (Biotoxin)": {
-      "name": "Grenade (Biotoxin)",
-      "description": "<p>No immediate damage. If hit DV15 Resist Torture/Drugs Check. On a fail 3d6 damage to HP. No Ablation. </p>"
+      "name": "Граната (с биотоксином)",
+      "description": "<p>При попадании не наносит урон, но необходимо пройти проверку Сопротивления пыткам/препаратам СЛ15. В случае провала цель получает 3d6 урона здоровью. Броня не получает повреждение.</p>"
     },
     "Grenade (EMP)": {
-      "name": "Grenade (EMP)",
-      "description": "<p>If hit DV15 Cybertech Check. On Fail 2 pieces of Cyberware or carried electronics (GM's choice) stop working for 1 minute. Cyberlimbs hang loosely like a dismembered meat arm see pg. 187.</p>"
+      "name": "Граната (ЭМИ)",
+      "description": "<p>При попадании цель проходит проверку Кибертехники СЛ15. В случае провала на одну минуту отключаются два киберимпланта или электронных устройства (на выбор ГМа). Отключённая конечность болтается, но механически ведёт себя как оторванная (см. стр. 187 Основной книги правил).</p>"
     },
     "Grenade (Flashbang)": {
-      "name": "Grenade (Flashbang)",
-      "description": "<p>Deals no damage. If hit roll DV15 Resist Torture/Drugs. On a fail take the Damaged Eye and Damaged Ear Critical injuries (see pg. 188) for 1 minute. No Crit damage dealt. </p>"
+      "name": "Граната (светошумовая)",
+      "description": "<p>Не наносит урона. Поражённая цель проходит проверку Сопротивления пыткам/препаратам СЛ15. В случае провала цель на одну минут получает критические ранения «Повреждение слуха» и «Повреждение глаза» (см. стр. 188 Основной книги правил) без получения критического урона.</p>"
     },
     "Grenade (Incendiary)": {
-      "name": "Grenade (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Граната (зажигательная)",
+      "description": "<p>Если цели нанесён урон, то её охватывает пламя. Цель получает 2 очка урона ПЗ в конце хода до тех пор, пока не совершит действие, чтобы потушить огонь. Эффект не накапливается.</p>"
     },
     "Grenade (Poison)": {
-      "name": "Grenade (Poison)",
-      "description": "<p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs Check. On a fail 2d6 damage to HP. No Ablation. </p>"
+      "name": "Граната (с ядом)",
+      "description": "<p>При попадании не наносит урон, но необходимо пройти проверку Сопротивления пыткам/препаратам СЛ13. В случае провала цель получает 3d6 урона здоровью. Броня не получает повреждение.</p>"
     },
     "Grenade (Sleep)": {
-      "name": "Grenade (Sleep)",
-      "description": "<p>Deals no damage. If meat target hit DV13 Resist Torture/Drugs. On fail falls Prone (see pg. 169) and unconscious for 1 minute. Can be woken by damage or another person using an action to touch/shake them.</p>"
+      "name": "Граната (усыпляющая)",
+      "description": "<p>Не наносит повреждений. Поражённая мясная цель проходит проверку Сопротивления пыткам/препаратам СЛ13. В случае провала цель получает статус «сбит с ног» (см. стр. 169) и в течение минуты находится без сознания. Цель может разбудить другой персонаж действием, если коснётся или потрясёт её.</p>"
     },
     "Grenade (Smoke)": {
-      "name": "Grenade (Smoke)",
-      "description": "<p>Deals no Damage. Fills a 10m/yd x 10m/yd with smoke for 1 minute. Tasks obscured by smoke have a -4 penalty.</p>"
+      "name": "Граната (дымовая)",
+      "description": "<p>Не наносит урона. Заполняет площадь 10 м/ярд на 10м/ярд дымом на одну минуту. Действия, предпринимаемые в дыму, совершаются со штрафом -4.</p>"
     },
     "Grenade (Teargas)": {
-      "name": "Grenade (Teargas)",
-      "description": "<p>Deals no Damage. Hit targets with Meat eyes roll DV13 Resist Torture/Drugs Check. On fail suffer Damaged Eye Critical Injury (See pg. 188) for 1 minute. Does not deal critical bonus damage.</p>"
+      "name": "Граната (со слезоточивым газом)",
+      "description": "<p>Не наносит урона. Поражённая цель проходит проверку Сопротивления пыткам/препаратам СЛ13. В случае провала цель на одну минут получает критическое ранение «Повреждение глаза» (см. стр. 188) без получения критического урона.</p>"
     },
     "Heavy Pistol (Armor-Piercing)": {
-      "name": "Heavy Pistol (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Для пистолета крупного калибра (бронебойный)",
+      "description": "<p>Двойное повреждение броне.</p>"
     },
     "Heavy Pistol (Basic)": {
-      "name": "Heavy Pistol (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Для пистолета крупного калибра (стандартный)",
+      "description": "<p>Обычный боеприпас, ничего особенного.</p>"
     },
     "Heavy Pistol (Expansive)": {
-      "name": "Heavy Pistol (Expansive)",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "name": "Для пистолета крупного калибра (экспансивный)",
+      "description": "<p>При выпадении критического ранения «Инородное тело» (см. стр. 187 Основной книги правил) нужно сделать бросок на получение ещё одного (другого) критического ранения без получения дополнительного критического урона.</p>"
     },
     "Heavy Pistol (Incendiary)": {
-      "name": "Heavy Pistol (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Для пистолета крупного калибра (зажигательный)",
+      "description": "<p>Если цели нанесён урон, то её охватывает пламя. Цель получает 2 очка урона ПЗ в конце хода до тех пор, пока не совершит действие чтобы потушить огонь. Эффект не накапливается.</p>"
     },
     "Heavy Pistol (Rubber)": {
-      "name": "Heavy Pistol (Rubber)",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "name": "Для пистолета крупного калибра (резиновый)",
+      "description": "<p>Не наносит критических ранений. Не наносит повреждения броне. Не позволяет снизить показатель ПЗ ниже единицы. Для экзотического оружия считается стандартным боеприпасом.</p>"
     },
     "Heavy Pistol (Smart)": {
-      "name": "Heavy Pistol (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Для пистолета крупного калибра (умный)",
+      "description": "<p>Требует киберимплант «Прицел», иначе не выстрелит. Если у одиночного выстрела выпал промах на четыре или меньше, нужно провести ещё один бросок атаки с той же СЛ, но к броску добавляется 10 вместо обычного показателя характеристики. Можно использовать УДЧ. Цель может увернуться от такого выстрела как обычно.</p>"
     },
     "Medium Pistol (Armor-Piercing)": {
-      "name": "Medium Pistol (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Для пистолета среднего калибра (бронебойный)",
+      "description": "<p>Двойное повреждение броне.</p>"
     },
     "Medium Pistol (Basic)": {
-      "name": "Medium Pistol (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Для пистолета среднего калибра (стандартный)",
+      "description": "<p>Обычный боеприпас, ничего особенного.</p>"
     },
     "Medium Pistol (Expansive)": {
-      "name": "Medium Pistol (Expansive)",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "name": "Для пистолета среднего калибра (экспансивный)",
+      "description": "<p>При выпадении критического ранения «Инородное тело» (см. стр. 187 Основной книги правил) нужно сделать бросок на получение ещё одного (другого) критического ранения без получения дополнительного критического урона.</p>"
     },
     "Medium Pistol (Incendiary)": {
-      "name": "Medium Pistol (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Для пистолета среднего калибра (зажигательный)",
+      "description": "<p>Если цели нанесён урон, то её охватывает пламя. Цель получает 2 очка урона ПЗ в конце хода до тех пор, пока не совершит действие, чтобы потушить огонь. Эффект не накапливается.</p>"
     },
     "Medium Pistol (Rubber)": {
-      "name": "Medium Pistol (Rubber)",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "name": "Для пистолета среднего калибра (резиновый)",
+      "description": "<p>Не наносит критических ранений. Не наносит повреждения броне. Не позволяет снизить показатель ПЗ ниже единицы. Для экзотического оружия считается стандартным боеприпасом.</p>"
     },
     "Medium Pistol (Smart)": {
-      "name": "Medium Pistol (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Для пистолета среднего калибра (умный)",
+      "description": "<p>Требует киберимплант «Прицел», иначе не выстрелит. Если у одиночного выстрела выпал промах на четыре или меньше, нужно провести ещё один бросок атаки с той же СЛ, но к броску добавляется 10 вместо обычного показателя характеристики. Можно использовать УДЧ. Цель может увернуться от такого выстрела как обычно.</p>"
     },
     "Paintball (Acid)": {
-      "name": "Paintball (Acid)",
-      "description": "<p>Paintballs filled with acid. Deals no damage but ablates armour by 1 SP on hit*.</p>\n<p><em>*Not currently supported so will need to manually reduce armour on hit</em></p>"
+      "name": "Пейнтбольный шарик (с кислотой)",
+      "description": "<p>Пейнтбольный шарик наполненный кислотой. Не наносит урона, но наносит повреждение броне на 1 ОС при попадании.*</p>\n<p><em>*На данный момент не поддерживается, повреждения нужно устанавливать вручную.</em></p>"
     },
     "Paintball (Basic)": {
-      "name": "Paintball (Basic)",
-      "description": "<p>Regular paintballs that don't do any damage. Annoying though.</p>"
+      "name": "Пейнтбольный шарик (стандартный)",
+      "description": "<p>Обычные пейнтбольные шарики не наносят урона. Но раздражают.</p>"
     },
     "Rifle (Armor-Piercing)": {
-      "name": "Rifle (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Винтовочный (бронебойный)",
+      "description": "<p>Двойное повреждение броне.</p>"
     },
     "Rifle (Basic)": {
-      "name": "Rifle (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Винтовочный (стандартный)",
+      "description": "<p>Обычный боеприпас, ничего особенного.</p>"
     },
     "Rifle (Expansive)": {
-      "name": "Rifle (Expansive)",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "name": "Винтовочный (экспансивный)",
+      "description": "<p>При выпадении критического ранения «Инородное тело» (см. стр. 187 Основной книги правил) нужно сделать бросок на получение ещё одного (другого) критического ранения без получения дополнительного критического урона.</p>"
     },
     "Rifle (Incendiary)": {
-      "name": "Rifle (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Винтовочный (зажигательный)",
+      "description": "<p>Если цели нанесён урон, то её охватывает пламя. Цель получает 2 очка урона ПЗ в конце хода до тех пор, пока не совершит действие, чтобы потушить огонь. Эффект не накапливается.</p>"
     },
     "Rifle (Rubber)": {
-      "name": "Rifle (Rubber)",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "name": "Винтовочный (резиновый)",
+      "description": "<p>Не наносит критических ранений. Не наносит повреждения броне. Не позволяет снизить показатель ПЗ ниже единицы. Для экзотического оружия считается стандартным боеприпасом.</p>"
     },
     "Rifle (Smart)": {
-      "name": "Rifle (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Винтовочный (умный)",
+      "description": "<p>Требует киберимплант «Прицел», иначе не выстрелит. Если у одиночного выстрела выпал промах на четыре или меньше, нужно провести ещё один бросок атаки с той же СЛ, но к броску добавляется 10 вместо обычного показателя характеристики. Можно использовать УДЧ. Цель может увернуться от такого выстрела как обычно.</p>"
     },
     "Rocket (Armor-Piercing)": {
-      "name": "Rocket (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Ракета (бронебойная)",
+      "description": "<p>Двойное повреждение броне.</p>"
     },
     "Rocket (Smart)": {
-      "name": "Rocket (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Ракета (умная)",
+      "description": "<p>Требует киберимплант «Прицел», иначе не выстрелит. Если у одиночного выстрела выпал промах на четыре или меньше, нужно провести ещё один бросок атаки с той же СЛ, но к броску добавляется 10 вместо обычного показателя характеристики. Можно использовать УДЧ. Цель может увернуться от такого выстрела как обычно.</p>"
     },
     "Shotgun Shell (Basic)": {
-      "name": "Shotgun Shell (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Дробь (стандартная)",
+      "description": "<p>Обычный боеприпас, ничего особенного.</p>"
     },
     "Shotgun Shell (Incendiary)": {
-      "name": "Shotgun Shell (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Дробь (зажигательная)",
+      "description": "<p>Если цели нанесён урон, то её охватывает пламя. Цель получает 2 очка урона ПЗ в конце хода до тех пор, пока не совершит действие, чтобы потушить огонь. Эффект не накапливается.</p>"
     },
     "Shotgun Slug (Armor-Piercing)": {
-      "name": "Shotgun Slug (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Жакан (бронебойный)",
+      "description": "<p>Двойное повреждение броне.</p>"
     },
     "Shotgun Slug (Basic)": {
-      "name": "Shotgun Slug (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Жакан (стандартный)",
+      "description": "<p>Обычный боеприпас, ничего особенного.</p>"
     },
     "Shotgun Slug (Expansive)": {
-      "name": "Shotgun Slug (Expansive)",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "name": "Жакан (экспансивный)",
+      "description": "<p>При выпадении критического ранения «Инородное тело» (см. стр. 187 Основной книги правил) нужно сделать бросок на получение ещё одного (другого) критического ранения без получения дополнительного критического урона.</p>"
     },
     "Shotgun Slug (Incendiary)": {
-      "name": "Shotgun Slug (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Жакан (зажигательный)",
+      "description": "<p>Если цели нанесён урон, то её охватывает пламя. Цель получает 2 очка урона ПЗ в конце хода до тех пор, пока не совершит действие, чтобы потушить огонь. Эффект не накапливается.</p>"
     },
     "Shotgun Slug (Rubber)": {
-      "name": "Shotgun Slug (Rubber)",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "name": "Жакан (резиновый)",
+      "description": "<p>Не наносит критических ранений. Не наносит повреждения броне. Не позволяет снизить показатель ПЗ ниже единицы. Для экзотического оружия считается стандартным боеприпасом.</p>"
     },
     "Shotgun Slug (Smart)": {
-      "name": "Shotgun Slug (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Жакан (умный)",
+      "description": "<p>Требует киберимплант «Прицел», иначе не выстрелит. Если у одиночного выстрела выпал промах на четыре или меньше, нужно провести ещё один бросок атаки с той же СЛ, но к броску добавляется 10 вместо обычного показателя характеристики. Можно использовать УДЧ. Цель может увернуться от такого выстрела как обычно.</p>"
     },
     "Very Heavy Pistol (Armor-Piercing)": {
-      "name": "Very Heavy Pistol (Armor-Piercing)",
-      "description": "<p>Double ablation to armor. </p>"
+      "name": "Для пистолета сверхкрупного калибра (бронебойный)",
+      "description": "<p>Двойное повреждение броне.</p>"
     },
     "Very Heavy Pistol (Basic)": {
-      "name": "Very Heavy Pistol (Basic)",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Для пистолета сверхкрупного калибра (стандартный)",
+      "description": "<p>Обычный боеприпас, ничего особенного.</p>"
     },
     "Very Heavy Pistol (Expansive)": {
-      "name": "Very Heavy Pistol (Expansive)",
-      "description": "<p>If you roll Foreign object Critical (see pg. 187), victim rolls for a second (different) Critical Injury. Second injury does not deal bonus damage.</p>"
+      "name": "Для пистолета сверхкрупного калибра (экспансивный)",
+      "description": "<p>При выпадении критического ранения «Инородное тело» (см. стр. 187 Основной книги правил) нужно сделать бросок на получение ещё одного (другого) критического ранения без получения дополнительного критического урона.</p>"
     },
     "Very Heavy Pistol (Incendiary)": {
-      "name": "Very Heavy Pistol (Incendiary)",
-      "description": "<p>If damage dealt to target they are set alight. Target takes 2 damage to HP at end of their turn unless they use action to extinguish flames. Does not stack. </p>"
+      "name": "Для пистолета сверхкрупного калибра (зажигательный)",
+      "description": "<p>Если цели нанесён урон, то её охватывает пламя. Цель получает 2 очка урона ПЗ в конце хода до тех пор, пока не совершит действие, чтобы потушить огонь. Эффект не накапливается.</p>"
     },
     "Very Heavy Pistol (Rubber)": {
-      "name": "Very Heavy Pistol (Rubber)",
-      "description": "<p>Does not cause Critical Injury. Does not ablate armor. Leaves target at minimum 1hp. Counts as Basic ammo for exotic weapons</p>"
+      "name": "Для пистолета сверхкрупного калибра (резиновый)",
+      "description": "<p>Не наносит критических ранений. Не наносит повреждения броне. Не позволяет снизить показатель ПЗ ниже единицы. Для экзотического оружия считается стандартным боеприпасом.</p>"
     },
     "Very Heavy Pistol (Smart)": {
-      "name": "Very Heavy Pistol (Smart)",
-      "description": "<p>Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by 4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add luck. Target can dodge the second roll as normal if able to do so. </p>"
+      "name": "Для пистолета сверхкрупного калибра (умный)",
+      "description": "<p>Требует киберимплант «Прицел», иначе не выстрелит. Если у одиночного выстрела выпал промах на четыре или меньше, нужно провести ещё один бросок атаки с той же СЛ, но к броску добавляется 10 вместо обычного показателя характеристики. Можно использовать УДЧ. Цель может увернуться от такого выстрела как обычно.</p>"
     }
   }
 }

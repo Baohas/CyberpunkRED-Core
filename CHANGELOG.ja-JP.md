@@ -6,15 +6,15 @@
 
 ### Changes
 
+- #793 - added tooltips for each stat and skill
+
+## Version 0.88.2
+
+### Changes
+
 - Switched to using DataModels to enforce data types (#316, #723)
 - Add setting to disable warning when rolling damage without targets
 - The fumble recovery skill for Solos is now accounted for
-
-### Bug Fixes
-
-- #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
-
-## Version 0.88.2
 
 ### Action Needed
 
@@ -28,6 +28,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 ### Bug Fixes
 
+- #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 - Fix weapons moved to stash not applying correct amount of ammo stack
 - Fix incorrect Black Chrome Grenade Names
 - Fix `Heavy Pistol (ArmorPiercing)` icon
@@ -1194,15 +1195,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - Fixed release manifest to not lock users into version 0.75.2 without possibility to update
 
-<<<<<<< HEAD
-
-## Please Note
-
-=======
-
 ### Please Note
-
-> > > > > > > 59734e832 (New translations CHANGELOG.md (Japanese))
 
 - Version 0.74.2 had an error in the release manifest causing issues with updating. This was attempted to be fixed a first time but sadly that fix contain a further issue. A second attempt was made and this was successful. During this however the version numbers appear to have got confused slightly, leading to the strange jump between the version number below (0.74.2) and above (0.75.4).
 - In more specific terms:
@@ -1266,28 +1259,12 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Refactored data model to conform with plans going forward.
 - Logging has been overhauled.
 
-<<<<<<< HEAD
-
-## Version: 0.66 (Hotfix) | Date: 2021-03-21
-
-=======
-
 ## Version: 0.66.0 (Hotfix) | Date: 2021-03-21
-
-> > > > > > > 59734e832 (New translations CHANGELOG.md (Japanese))
 
 - Aimed shot was using the Autofire Skill when attacking instead of using the Weapon Skill
 - Suppressive Fire was using the Weapon Skill when attacking instead of using the Autofire Skill
 
-<<<<<<< HEAD
-
-## Version: 0.65 | Date: 2021-03-20
-
-=======
-
 ## Version: 0.65.0 | Date: 2021-03-20
-
-> > > > > > > 59734e832 (New translations CHANGELOG.md (Japanese))
 
 ### UI/UX
 

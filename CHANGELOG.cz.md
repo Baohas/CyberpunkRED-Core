@@ -6,15 +6,15 @@
 
 ### Changes
 
+- #793 - added tooltips for each stat and skill
+
+## Version 0.88.2
+
+### Changes
+
 - Switched to using DataModels to enforce data types (#316, #723)
 - Add setting to disable warning when rolling damage without targets
 - The fumble recovery skill for Solos is now accounted for
-
-### Bug Fixes
-
-- #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
-
-## Version 0.88.2
 
 ### Action Needed
 
@@ -28,6 +28,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 ### Bug Fixes
 
+- #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 - Fix weapons moved to stash not applying correct amount of ammo stack
 - Fix incorrect Black Chrome Grenade Names
 - Fix `Heavy Pistol (ArmorPiercing)` icon

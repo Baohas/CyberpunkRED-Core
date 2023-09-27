@@ -1,25 +1,25 @@
 {
-  "label": "Micro Chrome",
+  "label": "Микрохром",
   "mapping": {
     "dvTable": "system.dvTable"
   },
   "entries": {
     "Superflash Jacket": {
-      "name": "Superflash Jacket",
-      "description": "<p>A nice jacket carrying a surprise; using an action anyone wearing this jacket can consume a battery to let off a blinding light. Full rules can be found in Micro Chrome on Page 1.</p>"
+      "name": "Куртка «Супервспышка»",
+      "description": "<p>Отличная куртка с сюрпризом. Потратив одну батарею, одетый в эту куртку персонаж может ослепить всех вокруг. Полные правила на странице 1 DLC «Микрохром».</p>"
     },
     "Chipware Compartment": {
-      "name": "Chipware Compartment",
-      "description": "<p>Lets you conceal up to four pieces of chipware, no Check required. Full rules can be found in Micro Chrome on Page 1.</p>"
+      "name": "Отсек для щепок",
+      "description": "<p>Позволяет спрятать до четырёх щепок без проверки. Полные правила на странице 1 DLC «Микрохром».</p>"
     },
     "Smart Lens": {
-      "name": "Smart Lens",
-      "description": "<p>Gives a user a single Cybereye Option. Can use one Smart Lens per eye.</p>"
+      "name": "Умная линза",
+      "description": "<p>Вмещает в себя одно расширение для киберглаз. Можно носить максимум по одной умной линзе на глаз.</p>"
     },
     "MicroCutie": {
-      "name": "MicroCutie",
-      "description": "<p>An excellent quality pistol with a unique HypurrburstTM mode fire mode*. The weapon purrs when used. Full rules can be found in Micro Chrome on Page 1.</p>\n<p><br><em>Special fire mode not currently supported; will need to be manually applied</em></p>",
-      "dvTable": "СЛ пистолет"
+      "name": "МикроМилашка",
+      "description": "<p>Пистолет отличного качества, оснащённый уникальным режимом стрельбы Гипермурчалка&trade;*. Мурчит во время использования. Полные правила на странице 1 DLC «Микрохром».</p>\n<p><br><em>Особые режимы ведения огня на данный момент не поддерживаются системой, их нужно устанавливать в ручную</em></p>",
+      "dvTable": "СЛ Пистолет"
     }
   }
 }

@@ -19,12 +19,12 @@
       "name": "A Box Covered in Chipped Paint",
       "results": [
         {
-          "1-1": "Grenade (Teargas)",
-          "2-2": "Heavy Pistol (Basic)",
+          "1-1": "催涙ガス・グレネード",
+          "2-2": "大型拳銃（通常弾）",
           "3-3": "Bicycle",
           "4-4": "Road Flare",
           "5-5": "Bullet Proof Shield",
-          "6-6": "Shotgun Shell (Basic)"
+          "6-6": "ショットガンの散弾（通常弾）"
         }
       ]
     },
@@ -36,7 +36,7 @@
           "2-2": "Black Lace",
           "3-3": "Bodyweight AutoInjector",
           "4-4": "AirWell 50",
-          "5-5": "Grenade (Poison)",
+          "5-5": "グレネード（毒弾）",
           "6-6": "TR-4 Detonator Fluid"
         }
       ]
@@ -60,7 +60,7 @@
         {
           "1-1": "Binoculars",
           "2-2": "Light Armorjack (Body)",
-          "3-3": "Medium Pistol (Smart)",
+          "3-3": "中型拳銃（スマート弾）",
           "4-4": "Video Camera",
           "5-5": "NeuTongue",
           "6-6": "Reflex Co-Processor"
@@ -85,11 +85,11 @@
       "results": [
         {
           "1-1": "Scavenged Armor",
-          "2-2": "Grenade (Incendiary)",
+          "2-2": "グレネード（焼夷弾）",
           "3-3": "Neo-Soviet Cyberarm",
-          "4-4": "Rifle (Basic)",
-          "5-5": "Rifle (Basic)",
-          "6-6": "Shotgun Shell (Incendiary)"
+          "4-4": "ライフル（通常弾）",
+          "5-5": "ライフル（通常弾）",
+          "6-6": "ショットガン（焼夷弾）"
         }
       ]
     },
@@ -97,10 +97,10 @@
       "name": "A Box Reeking Of Oil",
       "results": [
         {
-          "1-1": "Shotgun Shell (Basic)",
-          "2-2": "Heavy Pistol (Basic)",
+          "1-1": "ショットガンの散弾（通常弾）",
+          "2-2": "大型拳銃（通常弾）",
           "3-3": "Nomad Leathers Footwear",
-          "4-4": "Rifle (Smart)",
+          "4-4": "ライフル（スマート弾）",
           "5-5": "Sniping Scope",
           "6-6": "Smartgun Link"
         }
@@ -127,7 +127,7 @@
           "2-2": "Holo Projector Palm",
           "3-3": "Techtool",
           "4-4": "Audio Recorder",
-          "5-5": "Grenade (Armor-Piercing)",
+          "5-5": "グレネード（徹甲弾）",
           "6-6": "Techscanner"
         }
       ]

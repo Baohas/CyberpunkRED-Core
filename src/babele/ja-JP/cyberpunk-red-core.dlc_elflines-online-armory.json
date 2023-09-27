@@ -6,11 +6,11 @@
   "entries": {
     "Arrow": {
       "name": "Arrow",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "description": "<p>通常弾、特殊機能は何も無い。</p>"
     },
     "Poison Arrow": {
       "name": "Poison Arrow",
-      "description": "<p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs Check. On a fail 2d6 damage to HP. No Ablation. </p>"
+      "description": "<p>攻撃はダメージを与えない。その代わり、命中を受けた“生身の者”は難易度13の〈拷問／薬物抵抗〉判定を行な\nわねばならない。これに失敗した者はHPに直接2d6のダメージを受ける。この弾薬は防具に干渉しないため、防具を損耗しない。</p>"
     },
     "Chainmail Armor (Body)": {
       "name": "Chainmail Armor (Body)",
