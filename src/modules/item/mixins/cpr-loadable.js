@@ -242,26 +242,37 @@ const Loadable = function Loadable() {
    * When a loadable item has an upgrade removed we need to sync the magazine data
    * in case the magazine size decreased, we need to remove the extra bullets.
    *
+   * @returns {Array} - updated embedded documents
    */
   this.syncMagazine = async function syncMagazine() {
     const updateData = [];
     const { actor } = this;
     const magazineData = this.system.magazine;
-    const upgradeData = this.getTotalUpgradeValues("magazine");
-    const magazineSize =
-      upgradeData.type === "override"
-        ? upgradeData.value
-        : magazineData.max + upgradeData.value;
-    if (magazineSize > magazineData.max) {
+    const upgradeInfo = this.getTotalUpgradeValues("magazine");
+    const upgradedMagazineSize =
+      upgradeInfo.type === "override"
+        ? upgradeInfo.value
+        : magazineData.max + upgradeInfo.value;
+    // If upgrade size is larger than the base magazine size...
+    if (upgradedMagazineSize > magazineData.max) {
+      // ...calculate how much over the base magazine size we are....
       const overage = magazineData.value - magazineData.max;
-      updateData.push({
-        _id: this._id,
-        "system.magazine.value": magazineData.max,
-      });
-      const ammoItem = this.system.loadedAmmo;
-      if (ammoItem) {
-        const newAmmoAmount = ammoItem.system.amount + overage;
-        updateData.push({ _id: ammoItem._id, "system.amount": newAmmoAmount });
+      // ....If overage is positive...
+      if (overage > 0) {
+        // ...restore magazine's current value to max size...
+        updateData.push({
+          _id: this._id,
+          "system.magazine.value": magazineData.max,
+        });
+        const ammoItem = this.system.loadedAmmo;
+        if (ammoItem) {
+          // ...and restore excess to the ammo item.
+          const newAmmoAmount = ammoItem.system.amount + overage;
+          updateData.push({
+            _id: ammoItem._id,
+            "system.amount": newAmmoAmount,
+          });
+        }
       }
     }
     return actor.updateEmbeddedDocuments("Item", updateData);

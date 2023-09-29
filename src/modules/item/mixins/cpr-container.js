@@ -332,9 +332,19 @@ const Container = function Container() {
       await this.uninstallPrograms(uninstalledPrograms);
     }
 
-    // Ammo also requires some special actions when uninstalling, namely restoring the ammo
-    // in the magazine back to the ammo item.
     const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
+    // When uninstalling an upgrade that increases magazine size, make sure any extra ammo
+    // that would be in the upgrade is returned to the ammo item. Do this before unloading ammo.
+    const uninstalledMagUpgrade = uninstallList.find(
+      (i) => i.type === "itemUpgrade" && i.system.modifiers.magazine.value
+    );
+    if (loadableTypes.includes(this.type) && uninstalledMagUpgrade) {
+      await this.syncMagazine();
+    }
+
+    // Ammo also requires some special actions when uninstalling, namely restoring the ammo
+    // in the magazine back to the ammo item. Note, when transferring weapons between actors,
+    // we do not want to unload the ammo from the weapon. If this is the case, `options.unloadAmmo` will be false.
     const uninstalledAmmo = uninstallList.filter((i) => i.type === "ammo");
     if (
       options.unloadAmmo &&
@@ -342,15 +352,6 @@ const Container = function Container() {
       loadableTypes.includes(this.type)
     ) {
       await this.unload();
-    }
-
-    // When uninstalling an upgrade that increases magazine size, make sure any extra ammo
-    // that would be in the upgrade is returned to the ammo item.
-    const uninstalledMagUpgrade = uninstallList.find(
-      (i) => i.type === "itemUpgrade" && i.system.modifiers.magazine.value
-    );
-    if (loadableTypes.includes(this.type) && uninstalledMagUpgrade) {
-      await this.syncMagazine();
     }
 
     // Update used slots with the newly installed system.
