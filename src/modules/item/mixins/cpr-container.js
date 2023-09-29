@@ -277,14 +277,18 @@ const Container = function Container() {
    *       is a cyberware item, only remove all embedded cyberware items and if something else
    *       is installed, like a cyberdeck, don't uninstall whatever it has installed.
    * @param {Array} itemList - Array of objects to uninstall
-   * @param {Boolean} recursive  - Boolean stating if the uninstallation should be recursive
-   *                               in that each item uninstalled should also have it's own
-   *                               installed items removed.  This is needed for Cyberware uninstallations.
+   * @param {Object} [options] - Options which define the behavior of uninstallation.
+   * @param {Boolean} [options.recursive = false]  - Boolean stating if the uninstallation should be recursive
+   *                                                 in that each item uninstalled should also have it's own
+   *                                                 installed items removed.  This is needed for Cyberware uninstallations.
+   * @param {Boolean} [options.unloadAmmo = true]  - Boolean stating if ammo should be unloaded as a part of this uninstall action.
+   *
+   * @param {}
    * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
    */
   this.uninstallItems = async function uninstallItems(
     uninstallList,
-    recursive = false
+    options = { recursive: false, unloadAmmo: true }
   ) {
     LOGGER.trace("uninstallItems | Container | Called.");
     if (!Array.isArray(uninstallList)) {
@@ -307,11 +311,11 @@ const Container = function Container() {
       installedIds.splice(index, 1);
 
       // Handle recursion - Uninstall items installed in items from `uninstallList`.
-      if (recursive && containerTypes.includes(item.type)) {
+      if (options.recursive && containerTypes.includes(item.type)) {
         const recursiveUninstalled = item.getInstalledItems();
         if (recursiveUninstalled.length > 0) {
           uninstallPromises.push(
-            item.uninstallItems(recursiveUninstalled, true)
+            item.uninstallItems(recursiveUninstalled, { recursive: true })
           );
         }
       }
@@ -332,7 +336,11 @@ const Container = function Container() {
     // in the magazine back to the ammo item.
     const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
     const uninstalledAmmo = uninstallList.filter((i) => i.type === "ammo");
-    if (uninstalledAmmo.length > 0 && loadableTypes.includes(this.type)) {
+    if (
+      options.unloadAmmo &&
+      uninstalledAmmo.length > 0 &&
+      loadableTypes.includes(this.type)
+    ) {
       await this.unload();
     }
 
@@ -354,7 +362,7 @@ const Container = function Container() {
       });
     }
 
-    // Update the item with the new list and used slots.
+    // Update the document with the new list and used slots.
     return this.update({
       "system.installedItems.list": installedIds,
       "system.installedItems.usedSlots": usedSlots,
@@ -479,9 +487,16 @@ const Container = function Container() {
   ) {
     LOGGER.trace("convertInstalledIdsToObjects | Container | Called.");
     const installedIds = this.system.installedItems.list;
-    const installedItemData = installedIds.map((id) =>
-      actor ? actor.getOwnedItem(id).toObject() : game.items.get(id).toObject()
-    );
+    const installedItemData = installedIds.map((id) => {
+      const itemObject = actor
+        ? actor.getOwnedItem(id).toObject()
+        : game.items.get(id).toObject();
+      // If we are transferring a weapon, we bring only the ammo in the weapon and an empty ammo stack.
+      if (itemObject.type === "ammo") {
+        itemObject.system.amount = 0;
+      }
+      return itemObject;
+    });
     if (installedItemData.length > 0) {
       return installedItemData;
     }

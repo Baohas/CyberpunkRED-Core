@@ -1023,7 +1023,7 @@ export default class CPRActorSheet extends ActorSheet {
 
     if (item.type === "cyberdeck") {
       // Set all of the owned programs that were installed on
-      // this cyberdeck to uninstalled.
+      // this cyberdeck to unrezzed.
       const programs = item.system.installedPrograms;
       const updateList = [];
       programs.forEach((p) => {
@@ -1529,12 +1529,19 @@ export default class CPRActorSheet extends ActorSheet {
     ) {
       const deleteItemList = sourceItem.recursiveGetAllInstalledItems();
       for (const item of deleteItemList) {
-        deleteList.push(item._id);
+        // Delete non-ammo items.
+        if (item.type !== "ammo") deleteList.push(item._id);
+        // Only delete ammo items if they have a non-zero stack size.
+        if (item.type === "ammo" && item.system.amount === 0)
+          deleteList.push(item._id);
       }
     }
 
     if (newItem && transferItem) {
-      await sourceActor.deleteEmbeddedDocuments("Item", deleteList);
+      // Don't unload the ammo when we are transferring weapons. Leave ammo stack as-is.
+      await sourceActor.deleteEmbeddedDocuments("Item", deleteList, {
+        unloadAmmo: false,
+      });
     }
   }
 

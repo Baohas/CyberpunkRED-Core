@@ -313,15 +313,21 @@ export default class CPRActor extends Actor {
    * @override
    * @param {String} embeddedName - document name, usually a category like Item
    * @param {Object} ids - Array of documents to consider
-   * @param {Object} context - an object tracking the context in which the method is being called
+   * @param {Object} [options] - an object tracking the context in which the method is being called
+   * @param {Boolean} [options.cprIsMigrating = false] - Whether or not this is being called during migration.
+   * @param {Boolean} [options.unloadAmmo = true]      - If ammo should be unloaded as a part of this delete action.
    * @returns {null}
    */
-  async deleteEmbeddedDocuments(embeddedName, ids, context = {}) {
+  async deleteEmbeddedDocuments(
+    embeddedName,
+    ids,
+    options = { cprIsMigrating: false, unloadAmmo: true }
+  ) {
     LOGGER.trace("deleteEmbeddedDocuments | CPRActor | called.");
     // If migration is calling this, we assume migration is
     // handling all references to containers and installable
     // items, so we just delete the item.
-    const isMigration = !!context?.cprIsMigrating;
+    const isMigration = !!options?.cprIsMigrating;
     if (!isMigration) {
       const containerTypes = SystemUtils.GetTemplateItemTypes("container");
       const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
@@ -350,7 +356,12 @@ export default class CPRActor extends Actor {
             }
           }
           // Uninstall all items (with recursion) before deletion.
-          uninstallPromises.push(item.uninstallItems(itemList, true));
+          uninstallPromises.push(
+            item.uninstallItems(itemList, {
+              recursive: true,
+              unloadAmmo: options.unloadAmmo,
+            })
+          );
         }
 
         if (
@@ -371,7 +382,7 @@ export default class CPRActor extends Actor {
                 this.getMultipleOwnedItems(item.system.installedIn);
           // Uninstall this item from its install location(s).
           for (const location of installLocations) {
-            uninstallPromises.push(location.uninstallItems([item], false));
+            uninstallPromises.push(location.uninstallItems([item]));
           }
         }
       }
@@ -380,7 +391,7 @@ export default class CPRActor extends Actor {
     }
 
     // Continue on with deleting the documents (call the Foundry function).
-    return super.deleteEmbeddedDocuments(embeddedName, ids, context);
+    return super.deleteEmbeddedDocuments(embeddedName, ids, options);
   }
 
   /**

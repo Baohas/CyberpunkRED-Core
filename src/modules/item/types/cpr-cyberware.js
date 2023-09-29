@@ -46,6 +46,6 @@ export default class CPRCyberwareItem extends CPRItem {
         recursive = true;
       }
     }
-    return super.uninstallItems(itemList, recursive);
+    return super.uninstallItems(itemList, { recursive });
   }
 }
