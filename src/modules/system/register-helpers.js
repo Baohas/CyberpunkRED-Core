@@ -904,8 +904,31 @@ export default function registerHandlebarsHelpers() {
      * @returns {String}
      */
     function recursiveHTML(parentItem, topLevelId, level = 0) {
-      // Get all items installed in the parent.
-      const installedItems = parentItem.getInstalledItems();
+      // Get all items installed in the parent and sort.
+      const installedItems = parentItem.getInstalledItems().sort((a, b) => {
+        // If items are the same type, sort alphabetically.
+        if (a.type === b.type) return a.name > b.name ? 1 : -1;
+
+        let sortOrder = [];
+        switch (parentItem.type) {
+          case "weapon":
+          case "itemUpgrade":
+            // For weapons and item upgrades, show loaded ammo at the top.
+            sortOrder = ["ammo"];
+            break;
+          case "cyberdeck":
+            // For cyberdecks, show installed programs at the top.
+            sortOrder = ["program"];
+            break;
+          case "cyberware":
+            // For cyberware, show installed cyberware at the top.
+            sortOrder = ["cyberware"];
+            break;
+          default:
+            break;
+        }
+        return sortOrder.indexOf(a.type) > sortOrder.indexOf(b.type) ? -1 : 1;
+      }); // Sort so ammo always comes first
       let html = "";
       // For each installed item, create an <li> element with information about that item.
       for (const childItem of installedItems) {
@@ -913,13 +936,26 @@ export default function registerHandlebarsHelpers() {
           `TYPES.Item.${childItem.type}`
         );
 
+        let icon;
+        switch (childItem.type) {
+          case "ammo":
+            icon = `<i class="fas fa-exchange-alt"></i>`;
+            break;
+          case "program":
+            icon = `<i class="fas fa-folder-minus"></i>`;
+            break;
+          default:
+            icon = `<i class="fas fa-sign-out-alt"></i>`;
+            break;
+        }
+
         html += `<li class="item flexrow" data-row-level=${level} data-top-level-parent="${topLevelId}"
                      data-item-id="${childItem.id}"
                      data-item-category="${childItem.type}">`;
         html += `  <a class="name item-view flex-center"><span class="type-tag">${localizedType}</span> ${childItem.name}</a>`;
         // Uninstall glyph
-        html += `  <a class="uninstall-single-item" data-item-id="${childItem.id}" data-direct-parent="${parentItem.id}">`;
-        html += `    <i class="fas fa-folder-minus"></i>`;
+        html += `  <a class="uninstall-single-item button-active" data-item-id="${childItem.id}" data-direct-parent="${parentItem.id}">`;
+        html += `    ${icon}`;
         html += `  </a>`;
         html += `</li>`;
         // If the child item has its own installed items, call this function on the child item
