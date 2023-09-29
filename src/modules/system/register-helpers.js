@@ -868,7 +868,13 @@ export default function registerHandlebarsHelpers() {
       ? item.system.price.market
       : 0;
     if (containerTypes.includes(item.type)) {
-      const installedItems = item.recursiveGetAllInstalledItems();
+      let installedItems = [];
+      try {
+        installedItems = item.recursiveGetAllInstalledItems();
+      } catch {
+        // When an item with installed items is added, this code runs before all the installed items are added,
+        // causing issues
+      }
       installedItems.forEach((installedItem) => {
         totalValue += valuableTypes.includes(installedItem.type)
           ? installedItem.system.price.market

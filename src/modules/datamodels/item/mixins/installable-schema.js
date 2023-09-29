@@ -35,7 +35,8 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
     const actor = this.parent.isEmbedded ? this.parent.actor : false;
     if (actor) {
       return (
-        actor.system.installedItems.list.includes(id) ||
+        // Container actors do not have `installdItems.list`.
+        actor.system.installedItems?.list.includes(id) ||
         actor.items.some((i) => i.system?.installedItems?.list?.includes(id))
       );
     }
@@ -58,7 +59,7 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
     // If this item lives on an actor...
     if (actor) {
       // ...and if this item is intsalled in the actor directly...
-      const inActor = actor.system.installedItems.list.includes(id);
+      const inActor = actor.system.installedItems?.list.includes(id);
       if (inActor) {
         // ...return the actor's ID in an array
         return [actor.id];
