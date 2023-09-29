@@ -80,11 +80,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       .find(".toggle-section-visibility")
       .click((event) => this._toggleSectionVisibility(event));
 
-    // toggle display of nested installed items in the gear tab
-    html
-      .find(".toggle-installed-visibility")
-      .click((event) => this._toggleInstalledVisibility(event));
-
     if (!this.options.editable) return;
     // Listeners for editable fields under go here. Fields might not be editable because
     // the user viewing the sheet might not have permission to. They may not be the owner.
@@ -351,58 +346,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     }
 
     await this.actor.setLifepath(dialogData);
-  }
-
-  /**
-   * Toggle display of nested installed items on the gear tab.
-   *
-   * @callback
-   * @private
-   * @param {*} event - object with details of the event
-   */
-
-  async _toggleInstalledVisibility(event) {
-    // Step 1: Initial setup and logging.
-    LOGGER.trace(
-      "_toggleInstalledVisibility | CPRCharacterActorSheet | Called."
-    );
-    const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
-    const installFlags = this.actor.getFlag(game.system.id, "showInstalled");
-
-    // Step 2: Toggle the icon rotation to indicate state change.
-    const iconElement = event.currentTarget.querySelector("i");
-    if (iconElement) {
-      iconElement.classList.toggle("fa-flip-vertical");
-    }
-
-    // Step 3: Identify the HTML elements involved in the toggling.
-    const collapsibleContainer = event.currentTarget.closest(".collapsible");
-    const installedRow = collapsibleContainer.querySelector(
-      `div[data-items-wrapper-for-parent="${itemId}"]`
-    );
-
-    installedRow.classList.toggle("item-hidden");
-
-    // Wait for the expand/collapse animation to complete before updating the installFlags (because it re-renders the handlebars)
-    installedRow.addEventListener(
-      "transitionend",
-      async () => {
-        // Update the installFlags.
-        if (installFlags) {
-          installFlags[itemId] = !installFlags[itemId];
-          await this.actor.setFlag(
-            game.system.id,
-            "showInstalled",
-            installFlags
-          );
-        } else {
-          await this.actor.setFlag(game.system.id, "showInstalled", {
-            [itemId]: true,
-          });
-        }
-      },
-      { once: true }
-    );
   }
 
   /**

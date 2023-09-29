@@ -4,23 +4,21 @@
       data-item-id="{{item.id}}"
       data-item-category="{{item.type}}"
       draggable="true">
-    <div class="item-name text-nowrap">
-      <a class="name item-edit flex-center"
-         data-tooltip="{{item.system.description.value}}
-                       {{#if (cprHasInstalledItems item) }}
-                       {{localize "CPR.itemSheet.common.installedItems" }}:
-                       </br>
-                       {{cprListInstalledItems item "</br></a>"}}
-                       {{/if}}">
-        <img src="{{item.img}}"/>
+    <div class="item-name text-nowrap flexrow">
+      <a class="name item-edit flex-center" data-tooltip="{{item.system.description.value}}">
+        <div class="item-thumb">
+          <img src="{{item.img}}"/>
+          {{#if item.system.isUpgraded }}
+            <i class="fa-solid fa-square-up fa-xs"></i>
+          {{/if}}
+        </div>
         {{cprBrandedName item}}
-        {{#if item.system.isUpgraded }}
-          <i class="text-super fa-solid fa-square-up"></i>
-        {{/if}}
-        {{#if (cprHasInstalledItems item) }}
-          <i class="text-super fa-solid fa-circle-info"></i>
-        {{/if}}
       </a>
+      {{#if item.system.installedItems.list }}
+        <a class="toggle-installed-visibility">
+          <i class="fa-solid fa-chevron-up fa-sm {{#unless (cprGetProp actor.flags.cyberpunk-red-core.showInstalled item.id) }}fa-flip-vertical{{/unless}}"></i>
+        </a>
+      {{/if}}
     </div>
     <div class="item-detail text-center text-nowrap">
       {{#if (cprHasTemplate item.type "stackable") }}
@@ -59,6 +57,7 @@
     <div class="item-end text-nowrap">
       {{> "systems/cyberpunk-red-core/templates/actor/container/cpr-container-actions.hbs" (cprMergeForPartialArg "item,actor,isGM" item actor isGM)}}
     </div>
+  {{cprNestedInstalledGearTab item}}
   </li>
 {{/unless}}
 {{cprTrace "END CPR-ITEM-CONTENT.HBS"}}

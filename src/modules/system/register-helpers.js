@@ -898,8 +898,9 @@ export default function registerHandlebarsHelpers() {
      * This function is the thing that actually puts the list together. It works
      * recursively, calling itself if child items also have installed items.
      *
-     * @param {CPRItem(Container)} parentItem - The parent item.
-     * @param {Number} [rem = 1] - The amount of indentation.
+     * @param {CPRItem(Container)} parentItem - The parent item (not necessarily the top-most item)
+     * @param {String} topLevelId - ID of the top-most item.
+     * @param {Number} [level = 1] - The amount of indentation.
      * @returns {String}
      */
     function recursiveHTML(parentItem, topLevelId, level = 0) {
