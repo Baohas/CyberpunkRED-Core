@@ -818,18 +818,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Returns true if an item has installed items.
-   */
-  Handlebars.registerHelper("cprHasInstalledItems", (item) => {
-    LOGGER.trace("cprHasInstalledItems | handlebarsHelper | Called.");
-    const itemList =
-      typeof item.system.installedItems === "object"
-        ? item.system.installedItems.list
-        : [];
-    return itemList.length > 0;
-  });
-
-  /**
    * List installed items.
    */
   Handlebars.registerHelper(
@@ -968,9 +956,10 @@ export default function registerHandlebarsHelpers() {
     }
 
     // Only create a dropdown if the item isn't installed, and has installed items.
+    // The exception is cyberdecks, cyberdecks remain on gear tab whether or not they are installed.
     if (
       item.system.installedItems?.list?.length > 0 &&
-      !item.system.isInstalled
+      (item.type === "cyberdeck" || !item.system.isInstalled)
     ) {
       const html = recursiveHTML(item, item.id);
       // Is subitem hidden or not
