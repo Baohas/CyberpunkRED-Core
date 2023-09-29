@@ -4,19 +4,14 @@
 
     <div class="item-image">
       <img src="{{item.img}}" class="item-image-block-img" data-edit="img" />
+        {{#if item.system.isUpgraded }}
+          <i class="fa-solid fa-square-up fa-xs" data-tooltip="{{localize "CPR.global.generic.upgraded"}}"></i>
+        {{/if}}
     </div>
 
     <div class="item-details">
       <div class="item-details-name text-large text-hero">
         {{localize (cprGetLocalizedlNameKey item)}}
-        {{#if (cprIsUpgradable item) }}
-          {{#if item.system.isUpgraded }}
-            <i class="text-super"
-               data-tooltip="{{localize "CPR.global.generic.upgraded"}}"
-               class="fa-solid fa-square-up">
-            </i>
-          {{/if}}
-        {{/if}}
       </div>
 
       <div class="item-details-info">

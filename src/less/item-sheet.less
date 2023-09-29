@@ -23,9 +23,21 @@
     width: auto;
     height: auto;
     background-color: var(--cpr-background-border);
-
+    // If the item has an upgrade icon, show it on the top right corner
     .item-image {
+      position: relative;
       grid-area: item-image;
+
+      i {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.2rem;
+        color: white;
+      }
+
+      img {
+        width: 100%;
+      }
     }
 
     .item-details {
