@@ -1320,13 +1320,58 @@ export default class CPRActor extends Actor {
   }
 
   /**
+   * Update the actor to untrack armor if the resync is clicked.
+   *
+   * @param {String} location - head, body, or shield
+   * @param {String} id - Id of armor item we want to make "current" and available as a resource bar
+   */
+  untrackArmor(location, id) {
+    LOGGER.trace("untrackArmor | CPRActor | Called.");
+    const currentArmor = this.getOwnedItem(id);
+    if (location === "body") {
+      const currentArmorValue = 0;
+      const currentArmorMax = 0;
+      this.update({
+        "system.externalData.currentArmorBody.id": "",
+      });
+      return this.update({
+        "system.externalData.currentArmorBody.value": currentArmorValue,
+        "system.externalData.currentArmorBody.max": currentArmorMax,
+      });
+    }
+    if (location === "head") {
+      const currentArmorValue = 0;
+      const currentArmorMax = 0;
+      this.update({
+        "system.externalData.currentArmorHead.id": "",
+      });
+      return this.update({
+        "system.externalData.currentArmorHead.value": currentArmorValue,
+        "system.externalData.currentArmorHead.max": currentArmorMax,
+      });
+    }
+    if (location === "shield") {
+      const currentArmorValue = 0;
+      const currentArmorMax = 0;
+      this.update({
+        "system.externalData.currentArmorShield.id": "",
+      });
+      return this.update({
+        "system.externalData.currentArmorShield.value": currentArmorValue,
+        "system.externalData.currentArmorShield.max": currentArmorMax,
+      });
+    }
+    return null;
+  }
+
+  /**
    * Update actor data with data from the given armor so that it can be dislpayed in a resource bar.
    *
    * @param {String} location - head, body, or shield
    * @param {String} id - Id of armor item we want to make "current" and available as a resource bar
    */
-  makeThisArmorCurrent(location, id) {
-    LOGGER.trace("makeThisArmorCurrent | CPRActor | Called.");
+  trackArmor(location, id) {
+    LOGGER.trace("trackArmor | CPRActor | Called.");
     const currentArmor = this.getOwnedItem(id);
     if (location === "body") {
       const currentArmorValue =
@@ -1912,7 +1957,7 @@ export default class CPRActor extends Actor {
   /**
    * Ablate the equipped armor at the specified location by the given value.
    *
-   * @param {string} location - locaiton of the ablation
+   * @param {string} location - location of the ablation
    * @param {int} ablation - value of the ablation
    */
   async _ablateArmor(location, ablation) {

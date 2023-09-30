@@ -310,8 +310,15 @@ export default class CPRActorSheet extends ActorSheet {
     // Ablate Armor
     html.find(".ablate").click((event) => this._ablateArmor(event));
 
-    // Set Armor as Current
-    html.find(".armor-current").click((event) => this._makeArmorCurrent(event));
+    // Track armor and set armor values as current
+    html
+      .find(".armor-current-untrack")
+      .click((event) => this._makeArmorCurrentTrack(event));
+
+    // Untrack armor and remove armor values from token
+    html
+      .find(".armor-current-track")
+      .click((event) => this._makeArmorCurrentUntrack(event));
 
     // Generic item action
     html.find(".item-action").click((event) => this._itemAction(event));
@@ -777,11 +784,26 @@ export default class CPRActorSheet extends ActorSheet {
    * @private
    * @param {} event - object capturing event data (what was clicked and where?)
    */
-  _makeArmorCurrent(event) {
-    LOGGER.trace("_makeArmorCurrent | CPRActorSheet | Called.");
+  _makeArmorCurrentTrack(event) {
+    LOGGER.trace("_makeArmorCurrentTrack | CPRActorSheet | Called.");
     const location = SystemUtils.GetEventDatum(event, "data-location");
     const id = SystemUtils.GetEventDatum(event, "data-item-id");
-    this.actor.makeThisArmorCurrent(location, id);
+    this.actor.trackArmor(location, id);
+  }
+
+  /**
+   * This is the callback for setting armor as untracked, which is the star glyph. This
+   * removes the tracking of the armor from the token.
+   *
+   * @callback
+   * @private
+   * @param {} event - object capturing event data (what was clicked and where?)
+   */
+  _makeArmorCurrentUntrack(event) {
+    LOGGER.trace("_makeArmorCurrentUntrack | CPRActorSheet | Called.");
+    const location = SystemUtils.GetEventDatum(event, "data-location");
+    const id = SystemUtils.GetEventDatum(event, "data-item-id");
+    this.actor.untrackArmor(location, id);
   }
 
   /**
@@ -927,6 +949,39 @@ export default class CPRActorSheet extends ActorSheet {
       if (!confirmDelete) {
         return;
       }
+    }
+
+    // Removes armor values for body armor if the body armor is deleted.
+    if (item.type === "armor" && item.system.isBodyLocation) {
+      const currentArmorValue = 0;
+      const currentArmorMax = 0;
+      this.actor.update({
+        "system.externalData.currentArmorBody.value": currentArmorValue,
+        "system.externalData.currentArmorBody.max": currentArmorMax,
+        "system.externalData.currentArmorBody.id": null,
+      });
+    }
+
+    // Removes armor values for head armor if the head armor is deleted.
+    if (item.type === "armor" && item.system.isHeadLocation) {
+      const currentArmorValue = 0;
+      const currentArmorMax = 0;
+      this.actor.update({
+        "system.externalData.currentArmorHead.value": currentArmorValue,
+        "system.externalData.currentArmorHead.max": currentArmorMax,
+        "system.externalData.currentArmorBody.id": null,
+      });
+    }
+
+    // Removes armor values for shield if the shield is deleted.
+    if (item.type === "armor" && item.system.isShield) {
+      const currentArmorValue = 0;
+      const currentArmorMax = 0;
+      this.actor.update({
+        "system.externalData.currentArmorShield.value": currentArmorValue,
+        "system.externalData.currentArmorShield.max": currentArmorMax,
+        "system.externalData.currentArmorShield.id": null,
+      });
     }
 
     if (item.type === "cyberdeck") {

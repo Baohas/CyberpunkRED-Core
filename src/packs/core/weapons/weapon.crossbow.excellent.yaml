@@ -16,8 +16,8 @@ system:
     chat: ""
     unidentified: ""
     value: |-
-      <p>A crossbow, reloaded as part of an Attack Action.</p>
-      <p>+1 to Attack.</p>
+      <p>An excellent quality crossbow, reloaded as part of an Attack action.</p>
+      <p>+1 to Attack check.</p>
   dvTable: DV Bows & Crossbows
   equipped: owned
   favorite: false
