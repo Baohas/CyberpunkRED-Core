@@ -69,16 +69,15 @@ export default class CPRTextUtils {
   /**
    * Proper case string values.
    *
-   * This static method takes a string and sets it to proper case.
+   * This static method takes a string and sets it to proper (title) case.
    *
-   * @param {string} str - The enriched text to be sanitized.
-   * @returns {string} The sanitized text with HTML tags removed and @UUID
-   *                   references replaced.
+   * @param {string} str - The text to be title cased.
+   * @returns {string} The text with the correct title casing.
    *
    * @example
-   * const enrichedText = "Some text @UUID[Actor.xjfzYCPKxygh3dSZ]{...}";
-   * const sanitizedText = YourClass.sanitizeEnrichedText(enrichedText);
-   * // Returns the sanitized version of the enriched text.
+   * const str = "some string"
+   * const str = "Some String"
+   * // Returns the proper (title) case for a string.
    */
 
   static properCase(str) {
