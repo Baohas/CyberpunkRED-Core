@@ -218,11 +218,11 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         // unequipped.
         const actorData = this.actor.getOwnedItem(item.id);
         if (actorData.system.isHeadLocation) {
-          this.actor.untrackArmor("head", actorData._id);
+          this.actor.untrackArmor("Head");
         } else if (actorData.system.isBodyLocation) {
-          this.actor.untrackArmor("body", actorData._id);
+          this.actor.untrackArmor("Body");
         } else if (actorData.system.isShield) {
-          this.actor.untrackArmor("shield", actorData._id);
+          this.actor.untrackArmor("Shield");
         }
         newValue = "owned";
         break;

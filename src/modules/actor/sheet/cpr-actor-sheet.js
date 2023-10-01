@@ -802,8 +802,7 @@ export default class CPRActorSheet extends ActorSheet {
   _makeArmorCurrentUntrack(event) {
     LOGGER.trace("_makeArmorCurrentUntrack | CPRActorSheet | Called.");
     const location = SystemUtils.GetEventDatum(event, "data-location");
-    const id = SystemUtils.GetEventDatum(event, "data-item-id");
-    this.actor.untrackArmor(location, id);
+    this.actor.untrackArmor(location);
   }
 
   /**
@@ -953,35 +952,17 @@ export default class CPRActorSheet extends ActorSheet {
 
     // Removes armor values for body armor if the body armor is deleted.
     if (item.type === "armor" && item.system.isBodyLocation) {
-      const currentArmorValue = 0;
-      const currentArmorMax = 0;
-      this.actor.update({
-        "system.externalData.currentArmorBody.value": currentArmorValue,
-        "system.externalData.currentArmorBody.max": currentArmorMax,
-        "system.externalData.currentArmorBody.id": null,
-      });
+      this.actor.untrackArmor("Body");
     }
 
     // Removes armor values for head armor if the head armor is deleted.
     if (item.type === "armor" && item.system.isHeadLocation) {
-      const currentArmorValue = 0;
-      const currentArmorMax = 0;
-      this.actor.update({
-        "system.externalData.currentArmorHead.value": currentArmorValue,
-        "system.externalData.currentArmorHead.max": currentArmorMax,
-        "system.externalData.currentArmorBody.id": null,
-      });
+      this.actor.untrackArmor("Head");
     }
 
     // Removes armor values for shield if the shield is deleted.
     if (item.type === "armor" && item.system.isShield) {
-      const currentArmorValue = 0;
-      const currentArmorMax = 0;
-      this.actor.update({
-        "system.externalData.currentArmorShield.value": currentArmorValue,
-        "system.externalData.currentArmorShield.max": currentArmorMax,
-        "system.externalData.currentArmorShield.id": null,
-      });
+      this.actor.untrackArmor("Shield");
     }
 
     if (item.type === "cyberdeck") {

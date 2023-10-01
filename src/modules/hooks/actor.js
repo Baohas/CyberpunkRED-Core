@@ -110,7 +110,9 @@ const actorHooks = () => {
                   doc.updateEmbeddedDocuments("Item", updateList);
                 }
                 if (itemType === "currentArmorShield") {
-                  item.system.shieldHitPoints.value = currentValue;
+                  if (currentValue) {
+                    item.system.shieldHitPoints.value = currentValue;
+                  }
                   doc.updateEmbeddedDocuments("Item", [
                     { _id: item.id, system: item.system },
                   ]);

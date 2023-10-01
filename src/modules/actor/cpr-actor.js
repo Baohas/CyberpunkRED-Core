@@ -9,6 +9,7 @@ import * as CPRRolls from "../rolls/cpr-rolls.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import TextUtils from "../utils/TextUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
 
@@ -1323,43 +1324,18 @@ export default class CPRActor extends Actor {
    * Update the actor to untrack armor if the resync is clicked.
    *
    * @param {String} location - head, body, or shield
-   * @param {String} id - Id of armor item we want to make "current" and available as a resource bar
    */
-  async untrackArmor(location, id) {
+  async untrackArmor(location) {
     LOGGER.trace("untrackArmor | CPRActor | Called.");
-    if (location === "body") {
-      const currentArmorValue = 0;
-      const currentArmorMax = 0;
-      await this.update({
-        "system.externalData.currentArmorBody.id": "",
-      });
-      return this.update({
-        "system.externalData.currentArmorBody.value": currentArmorValue,
-        "system.externalData.currentArmorBody.max": currentArmorMax,
-      });
-    }
-    if (location === "head") {
-      const currentArmorValue = 0;
-      const currentArmorMax = 0;
-      await this.update({
-        "system.externalData.currentArmorHead.id": "",
-      });
-      return this.update({
-        "system.externalData.currentArmorHead.value": currentArmorValue,
-        "system.externalData.currentArmorHead.max": currentArmorMax,
-      });
-    }
-    if (location === "shield") {
-      const currentArmorValue = 0;
-      const currentArmorMax = 0;
-      await this.update({
-        "system.externalData.currentArmorShield.id": "",
-      });
-      return this.update({
-        "system.externalData.currentArmorShield.value": currentArmorValue,
-        "system.externalData.currentArmorShield.max": currentArmorMax,
-      });
-    }
+    const armorPath = "system.externalData.currentArmor";
+    const armorLoc = TextUtils.properCase(location);
+    await this.update({
+      [`${armorPath}${armorLoc}.id`]: null,
+    });
+    this.update({
+      [`${armorPath}${armorLoc}.value`]: 0,
+      [`${armorPath}${armorLoc}.max`]: 0,
+    });
     return null;
   }
 
@@ -1372,36 +1348,46 @@ export default class CPRActor extends Actor {
   trackArmor(location, id) {
     LOGGER.trace("trackArmor | CPRActor | Called.");
     const currentArmor = this.getOwnedItem(id);
-    if (location === "body") {
-      const currentArmorValue =
-        currentArmor.system.bodyLocation.sp -
-        currentArmor.system.bodyLocation.ablation;
-      const currentArmorMax = currentArmor.system.bodyLocation.sp;
-      return this.update({
-        "system.externalData.currentArmorBody.value": currentArmorValue,
-        "system.externalData.currentArmorBody.max": currentArmorMax,
-        "system.externalData.currentArmorBody.id": id,
-      });
-    }
-    if (location === "head") {
-      const currentArmorValue =
-        currentArmor.system.headLocation.sp -
-        currentArmor.system.headLocation.ablation;
-      const currentArmorMax = currentArmor.system.headLocation.sp;
-      return this.update({
-        "system.externalData.currentArmorHead.value": currentArmorValue,
-        "system.externalData.currentArmorHead.max": currentArmorMax,
-        "system.externalData.currentArmorHead.id": id,
-      });
-    }
-    if (location === "shield") {
-      const currentArmorValue = currentArmor.system.shieldHitPoints.value;
-      const currentArmorMax = currentArmor.system.shieldHitPoints.max;
-      return this.update({
-        "system.externalData.currentArmorShield.value": currentArmorValue,
-        "system.externalData.currentArmorShield.max": currentArmorMax,
-        "system.externalData.currentArmorShield.id": id,
-      });
+    const armorPath = "system.externalData.currentArmor";
+    switch (location) {
+      case "body": {
+        const currentArmorValue =
+          currentArmor.system.bodyLocation.sp -
+          currentArmor.system.bodyLocation.ablation;
+        const currentArmorMax = currentArmor.system.bodyLocation.sp;
+        const armorLoc = TextUtils.properCase(location);
+        this.update({
+          [`${armorPath}${armorLoc}.value`]: currentArmorValue,
+          [`${armorPath}${armorLoc}.max`]: currentArmorMax,
+          [`${armorPath}${armorLoc}.id`]: id,
+        });
+        break;
+      }
+      case "head": {
+        const currentArmorValue =
+          currentArmor.system.headLocation.sp -
+          currentArmor.system.headLocation.ablation;
+        const currentArmorMax = currentArmor.system.headLocation.sp;
+        const armorLoc = TextUtils.properCase(location);
+        this.update({
+          [`${armorPath}${armorLoc}.value`]: currentArmorValue,
+          [`${armorPath}${armorLoc}.max`]: currentArmorMax,
+          [`${armorPath}${armorLoc}.id`]: id,
+        });
+        break;
+      }
+      case "shield": {
+        const currentArmorValue = currentArmor.system.shieldHitPoints.value;
+        const currentArmorMax = currentArmor.system.shieldHitPoints.max;
+        const armorLoc = TextUtils.properCase(location);
+        this.update({
+          [`${armorPath}${armorLoc}.value`]: currentArmorValue,
+          [`${armorPath}${armorLoc}.max`]: currentArmorMax,
+          [`${armorPath}${armorLoc}.id`]: id,
+        });
+        break;
+      }
+      default:
     }
     return null;
   }

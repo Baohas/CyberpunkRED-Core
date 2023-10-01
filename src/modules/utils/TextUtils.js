@@ -65,4 +65,26 @@ export default class CPRTextUtils {
 
     return sanitizedText;
   }
+
+  /**
+   * Proper case string values.
+   *
+   * This static method takes a string and sets it to proper case.
+   *
+   * @param {string} str - The enriched text to be sanitized.
+   * @returns {string} The sanitized text with HTML tags removed and @UUID
+   *                   references replaced.
+   *
+   * @example
+   * const enrichedText = "Some text @UUID[Actor.xjfzYCPKxygh3dSZ]{...}";
+   * const sanitizedText = YourClass.sanitizeEnrichedText(enrichedText);
+   * // Returns the sanitized version of the enriched text.
+   */
+
+  static properCase(str) {
+    LOGGER.trace("properCase | CPRTextUtils | Called.");
+
+    // converts the string value to title case.
+    return str.toLowerCase().replace(/\b\w/g, (s) => s.toUpperCase());
+  }
 }
