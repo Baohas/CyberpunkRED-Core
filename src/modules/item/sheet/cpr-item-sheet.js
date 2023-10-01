@@ -17,7 +17,7 @@ export default class CPRItemSheet extends ItemSheet {
   /* -------------------------------------------- */
   /** @override */
   static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRItemSheet |git  Called.");
+    LOGGER.trace("defaultOptions | CPRItemSheet | Called.");
     return mergeObject(super.defaultOptions, {
       tabs: [
         {
