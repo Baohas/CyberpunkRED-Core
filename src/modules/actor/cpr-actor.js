@@ -1325,13 +1325,12 @@ export default class CPRActor extends Actor {
    * @param {String} location - head, body, or shield
    * @param {String} id - Id of armor item we want to make "current" and available as a resource bar
    */
-  untrackArmor(location, id) {
+  async untrackArmor(location, id) {
     LOGGER.trace("untrackArmor | CPRActor | Called.");
-    const currentArmor = this.getOwnedItem(id);
     if (location === "body") {
       const currentArmorValue = 0;
       const currentArmorMax = 0;
-      this.update({
+      await this.update({
         "system.externalData.currentArmorBody.id": "",
       });
       return this.update({
@@ -1342,7 +1341,7 @@ export default class CPRActor extends Actor {
     if (location === "head") {
       const currentArmorValue = 0;
       const currentArmorMax = 0;
-      this.update({
+      await this.update({
         "system.externalData.currentArmorHead.id": "",
       });
       return this.update({
@@ -1353,7 +1352,7 @@ export default class CPRActor extends Actor {
     if (location === "shield") {
       const currentArmorValue = 0;
       const currentArmorMax = 0;
-      this.update({
+      await this.update({
         "system.externalData.currentArmorShield.id": "",
       });
       return this.update({
