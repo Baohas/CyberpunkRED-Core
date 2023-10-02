@@ -44,6 +44,11 @@ export default class AttackableSchema extends foundry.abstract.DataModel {
         initial: 0,
         min: 0,
       }),
+      critFailEffect: new fields.StringField({
+        required: true,
+        initial: "jammed",
+        choices: Object.keys(CPR.attackableCritFailEffects),
+      }),
     };
   }
 }

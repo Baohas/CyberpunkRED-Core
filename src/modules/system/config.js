@@ -201,6 +201,12 @@ CPR.ammoVariety = {
   custom: "CPR.global.ammo.variety.custom",
 };
 
+CPR.attackableCritFailEffects = {
+  destroyed: "CPR.itemSheet.critFailEffect.destroyed",
+  destroyedBeyondRepair: "CPR.itemSheet.critFailEffect.destroyedBeyondRepair",
+  jammed: "CPR.itemSheet.critFailEffect.jam",
+};
+
 // Sorted A-Z, with basic at the start and special at the end
 CPR.ammoType = {
   basic: "CPR.global.ammo.type.basic",

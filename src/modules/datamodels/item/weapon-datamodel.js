@@ -1,6 +1,7 @@
 /* globals foundry */
 
 import LOGGER from "../../utils/cpr-logger.js";
+import CPR from "../../system/config.js";
 import CPRSystemDataModel from "../abstract.js";
 import AttackableSchema from "./mixins/attackable-schema.js";
 import CommonSchema from "./mixins/common-schema.js";
