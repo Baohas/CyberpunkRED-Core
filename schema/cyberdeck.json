@@ -80,6 +80,9 @@
         "programs": {
           "$ref": "#/definitions/Programs"
         },
+        "quality": {
+          "$ref": "./components/quality.json"
+        },
         "size": {
           "$ref": "./components/installable/size.json"
         },

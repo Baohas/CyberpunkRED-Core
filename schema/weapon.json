@@ -86,6 +86,9 @@
         "price": {
           "$ref": "./components/valuable/price.json"
         },
+        "quality": {
+          "$ref": "./components/quality.json"
+        },
         "revealed": {
           "$ref": "./components/effects/revealed.json"
         },
