@@ -50,6 +50,9 @@
         "concealable": {
           "$ref": "./components/physical/concealable.json"
         },
+        "critFailEffect": {
+          "$ref": "./components/attackable/critFailEffect.json"
+        },
         "damage": {
           "$ref": "./components/attackable/damage.json"
         },
