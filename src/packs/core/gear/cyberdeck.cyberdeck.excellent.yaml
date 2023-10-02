@@ -33,6 +33,7 @@ system:
     installed: []
     rezzed: []
   providesHardening: false
+  quality: excellent
   size: 1
   source:
     book: Core

@@ -35,6 +35,7 @@ system:
     installed: []
     rezzed: []
   providesHardening: false
+  quality: standard
   size: 1
   source:
     book: MwtU

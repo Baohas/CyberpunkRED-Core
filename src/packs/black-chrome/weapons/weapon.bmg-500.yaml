@@ -43,6 +43,7 @@ system:
     value: 0
   price:
     market: 5000
+  quality: standard
   revealed: true
   rof: 1
   source:

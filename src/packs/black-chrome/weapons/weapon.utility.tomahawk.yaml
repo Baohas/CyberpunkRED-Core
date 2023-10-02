@@ -44,6 +44,7 @@ system:
     value: 0
   price:
     market: 100
+  quality: standard
   revealed: true
   rof: 2
   source:

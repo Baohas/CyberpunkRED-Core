@@ -6,6 +6,7 @@
 
 ### Changes
 
+- Add Quality to Weapons/Cyberdecks
 - #793 - added tooltips for each stat and skill
 - #926, 927 - change descriptions for bows/crossbows to be more clear on rules and cleaned up structure
 - #917 - fix armor remaining tracked after delete and updated 'resync' star to be 'track/untrack' now for armor, removing the appropriate bar.  User will still need to adjust resource bar tracker if armor type is no longer desired to be tracked.
