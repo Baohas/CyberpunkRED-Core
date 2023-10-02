@@ -9,6 +9,7 @@ import EffectsSchema from "./mixins/effects-schema.js";
 import EquippableSchema from "./mixins/equippable-schema.js";
 import LoadableSchema from "./mixins/loadable-schema.js";
 import PhysicalSchema from "./mixins/physical-schema.js";
+import QualitySchema from "./mixins/quality-schema.js";
 import UpgradableSchema from "./mixins/upgradable-schema.js";
 import ValuableSchema from "./mixins/valuable-schema.js";
 
@@ -20,6 +21,7 @@ export default class WeaponDataModel extends CPRSystemDataModel.mixin(
   EquippableSchema,
   LoadableSchema,
   PhysicalSchema,
+  QualitySchema,
   UpgradableSchema,
   ValuableSchema
 ) {
