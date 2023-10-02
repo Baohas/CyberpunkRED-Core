@@ -788,7 +788,7 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("_makeArmorCurrentTrack | CPRActorSheet | Called.");
     const location = SystemUtils.GetEventDatum(event, "data-location");
     const id = SystemUtils.GetEventDatum(event, "data-item-id");
-    this.actor.trackArmor(location, id);
+    this.actor.setTrackedArmor(location, "track", id);
   }
 
   /**
@@ -802,7 +802,7 @@ export default class CPRActorSheet extends ActorSheet {
   _makeArmorCurrentUntrack(event) {
     LOGGER.trace("_makeArmorCurrentUntrack | CPRActorSheet | Called.");
     const location = SystemUtils.GetEventDatum(event, "data-location");
-    this.actor.untrackArmor(location);
+    this.actor.setTrackedArmor(location, "untrack");
   }
 
   /**
@@ -950,19 +950,17 @@ export default class CPRActorSheet extends ActorSheet {
       }
     }
 
-    // Removes armor values for body armor if the body armor is deleted.
-    if (item.type === "armor" && item.system.isBodyLocation) {
-      this.actor.untrackArmor("Body");
-    }
-
-    // Removes armor values for head armor if the head armor is deleted.
-    if (item.type === "armor" && item.system.isHeadLocation) {
-      this.actor.untrackArmor("Head");
-    }
-
-    // Removes armor values for shield if the shield is deleted.
-    if (item.type === "armor" && item.system.isShield) {
-      this.actor.untrackArmor("Shield");
+    if (item.type === "armor") {
+      if (item.system.isBodyLocation) {
+        // Removes armor values for body armor if the body armor is deleted.
+        this.actor.setTrackedArmor("body", "untrack");
+      } else if (item.system.isHeadLocation) {
+        // Removes armor values for head armor if the head armor is deleted.
+        this.actor.setTrackedArmor("head", "untrack");
+      } else if (item.system.isShield) {
+        // Removes armor values for shield if the shield is deleted.
+        this.actor.setTrackedArmor("shield", "untrack");
+      }
     }
 
     if (item.type === "cyberdeck") {

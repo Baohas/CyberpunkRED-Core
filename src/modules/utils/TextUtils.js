@@ -67,9 +67,9 @@ export default class CPRTextUtils {
   }
 
   /**
-   * Proper case string values.
+   * Title case string values.
    *
-   * This static method takes a string and sets it to proper (title) case.
+   * This static method takes a string and returns it in title case.
    *
    * @param {string} str - The text to be title cased.
    * @returns {string} The text with the correct title casing.
@@ -77,11 +77,10 @@ export default class CPRTextUtils {
    * @example
    * const str = "some string"
    * const str = "Some String"
-   * // Returns the proper (title) case for a string.
    */
 
-  static properCase(str) {
-    LOGGER.trace("properCase | CPRTextUtils | Called.");
+  static toTitleCase(str) {
+    LOGGER.trace("toTitleCase | CPRTextUtils | Called.");
 
     // converts the string value to title case.
     return str.toLowerCase().replace(/\b\w/g, (s) => s.toUpperCase());

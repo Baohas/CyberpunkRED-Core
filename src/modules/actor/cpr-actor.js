@@ -1321,74 +1321,55 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Update the actor to untrack armor if the resync is clicked.
+   * Update actor data with data from the given armor so that it can either be displayed in the
+   * resource bar or remove the tracking from the resource bar if the user chooses to untrack the
+   * armor, deletes the armor or cycles the armor from an equipped condition.
    *
    * @param {String} location - head, body, or shield
-   */
-  async untrackArmor(location) {
-    LOGGER.trace("untrackArmor | CPRActor | Called.");
-    const armorPath = "system.externalData.currentArmor";
-    const armorLoc = TextUtils.properCase(location);
-    await this.update({
-      [`${armorPath}${armorLoc}.id`]: null,
-    });
-    this.update({
-      [`${armorPath}${armorLoc}.value`]: 0,
-      [`${armorPath}${armorLoc}.max`]: 0,
-    });
-    return null;
-  }
-
-  /**
-   * Update actor data with data from the given armor so that it can be dislpayed in a resource bar.
-   *
-   * @param {String} location - head, body, or shield
+   * @param {String} action - specifies if the user wants to track or untrack the armor
    * @param {String} id - Id of armor item we want to make "current" and available as a resource bar
    */
-  trackArmor(location, id) {
-    LOGGER.trace("trackArmor | CPRActor | Called.");
-    const currentArmor = this.getOwnedItem(id);
+  async setTrackedArmor(location, action, id = null) {
+    LOGGER.trace("setTrackedArmor | CPRActor | Called.");
     const armorPath = "system.externalData.currentArmor";
-    switch (location) {
-      case "body": {
-        const currentArmorValue =
-          currentArmor.system.bodyLocation.sp -
-          currentArmor.system.bodyLocation.ablation;
-        const currentArmorMax = currentArmor.system.bodyLocation.sp;
-        const armorLoc = TextUtils.properCase(location);
-        this.update({
-          [`${armorPath}${armorLoc}.value`]: currentArmorValue,
-          [`${armorPath}${armorLoc}.max`]: currentArmorMax,
-          [`${armorPath}${armorLoc}.id`]: id,
-        });
+    const armorType = TextUtils.toTitleCase(location);
+    const currentArmor = this.getOwnedItem(id);
+    const update = {};
+
+    switch (action) {
+      case "track": {
+        update.id = id;
+        if (["body", "head"].includes(location)) {
+          update.value =
+            currentArmor.system[`${location}Location`].sp -
+            currentArmor.system[`${location}Location`].ablation;
+          update.max = currentArmor.system[`${location}Location`].sp;
+        } else if (location === "shield") {
+          update.value = currentArmor.system[`${location}HitPoints`].value;
+          update.max = currentArmor.system[`${location}HitPoints`].max;
+        } else {
+          LOGGER("Unknown armor type");
+        }
         break;
       }
-      case "head": {
-        const currentArmorValue =
-          currentArmor.system.headLocation.sp -
-          currentArmor.system.headLocation.ablation;
-        const currentArmorMax = currentArmor.system.headLocation.sp;
-        const armorLoc = TextUtils.properCase(location);
-        this.update({
-          [`${armorPath}${armorLoc}.value`]: currentArmorValue,
-          [`${armorPath}${armorLoc}.max`]: currentArmorMax,
-          [`${armorPath}${armorLoc}.id`]: id,
-        });
-        break;
-      }
-      case "shield": {
-        const currentArmorValue = currentArmor.system.shieldHitPoints.value;
-        const currentArmorMax = currentArmor.system.shieldHitPoints.max;
-        const armorLoc = TextUtils.properCase(location);
-        this.update({
-          [`${armorPath}${armorLoc}.value`]: currentArmorValue,
-          [`${armorPath}${armorLoc}.max`]: currentArmorMax,
-          [`${armorPath}${armorLoc}.id`]: id,
-        });
+      case "untrack": {
+        update.id = null;
+        update.value = 0;
+        update.max = 0;
         break;
       }
       default:
+        LOGGER("Unknown action completed");
     }
+
+    await this.update({
+      [`${armorPath}${armorType}.id`]: update.id,
+    });
+    this.update({
+      [`${armorPath}${armorType}.value`]: update.value,
+      [`${armorPath}${armorType}.max`]: update.max,
+    });
+
     return null;
   }
 
