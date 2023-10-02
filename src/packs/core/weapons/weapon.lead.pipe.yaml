@@ -10,6 +10,7 @@ system:
   concealable:
     concealable: false
     isConcealed: false
+  critFailEffect: jammed
   damage: 3d6
   description:
     chat: ""

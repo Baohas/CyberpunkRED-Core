@@ -11,6 +11,7 @@ system:
   concealable:
     concealable: true
     isConcealed: false
+  critFailEffect: jammed
   damage: "0"
   description:
     chat: ""
