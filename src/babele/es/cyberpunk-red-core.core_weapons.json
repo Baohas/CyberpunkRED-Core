@@ -38,17 +38,17 @@
     },
     "Bow (Excellent)": {
       "name": "Arco (Excelente)",
-      "description": "<p>Arco revitalizado, recargado como parte de una Acción de Ataque.</p>\n<p>+1 al Ataque.</p>",
+      "description": "<p>An excellent quality bow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Bow (Poor)": {
       "name": "Arco (Pobre)",
-      "description": "<p>Un arco revitalizado que debe recargarse después de cada ataque. Si tira 1 en ataque (pifia) la cuerda se suelta y requiere una acción para volver a colocarla. </p>",
+      "description": "<p>A poor quality bow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Bow": {
       "name": "Arco",
-      "description": "<p>Arco revitalizado, recargado como parte de una acción de Ataque.</p>",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Chainsaw (Excellent)": {
@@ -77,17 +77,17 @@
     },
     "Crossbow (Excellent)": {
       "name": "Ballesta (Excelente)",
-      "description": "<p>Una Ballesta, recargada como parte de una acción de Ataque.</p>\n<p>+1 para Ataque.</p>",
+      "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Crossbow (Poor)": {
       "name": "Ballesta (Pobre)",
-      "description": "<p>Una ballesta que debe recargarse después de cada ataque. Si tira 1 en el ataque (pifia) la cuerda se suelta y requiere una acción para volver a colocarla. </p>",
+      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Crossbow": {
       "name": "Ballesta",
-      "description": "<p>Una Ballesta, recargada como parte de una acción de Ataque.</p>",
+      "description": "<p>A standard crossbow, reloaded as part of an Attack action.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Crowbar (Excellent)": {
