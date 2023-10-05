@@ -11,7 +11,7 @@
     },
     "Bearcat": {
       "name": "Bearcat",
-      "description": "<p>Ein Bogen. Das Nachladen ist Teil der Angriffsaktion.</p>\n<p>+1 auf Angriffe.</p>",
+      "description": "<p>A collapsible bow branded with the Eagletech logo, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "SG Bögen und Armbrüste"
     },
     "Boomer Buster": {
@@ -51,7 +51,7 @@
     },
     "Hunter": {
       "name": "Hunter",
-      "description": "<p>Eine Armbrust, die nach jedem Angriff nachgeladen werden muss. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "description": "<p>A poor quality crossbow branded with the GunMart logo, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "SG Bögen und Armbrüste"
     },
     "Jungle Reaper": {
@@ -106,12 +106,12 @@
     },
     "Scorpion": {
       "name": "Scorpion",
-      "description": "<p>Eine Armbrust. Das Nachladen ist Teil der Angriffsaktion.</p>\n<p>+1 auf Angriffe.</p>",
+      "description": "<p>A sleek crossbow branded with the Eagletech logo, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "SG Bögen und Armbrüste"
     },
     "Sherwood": {
       "name": "Sherwood",
-      "description": "<p>Ein Bogen, der nach jedem Angriff nachgeladen werden muss. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du ihn wieder einsetzen kannst.</p>",
+      "description": "<p>A poor quality bow branded with the GunMart logo, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear. </p>",
       "dvTable": "SG Bögen und Armbrüste"
     },
     "SMG-21": {
@@ -131,7 +131,7 @@
     },
     "Striker": {
       "name": "Striker",
-      "description": "<p>Eine Armbrust. Das Nachladen ist Teil der Angriffsaktion.</p>",
+      "description": "<p>A crossbow branded with the Eagletech logo, reloaded as part of an Attack action.</p>",
       "dvTable": "SG Bögen und Armbrüste"
     },
     "Super Chief": {
@@ -146,7 +146,7 @@
     },
     "Tomcat": {
       "name": "Tomcat",
-      "description": "<p>Ein Bogen. Das Nachladen ist Teil der Angriffsaktion.</p>",
+      "description": "<p>A revitalized bow branded with the Eagletech logo, reloaded as part of an Attack Action.</p>",
       "dvTable": "SG Bögen und Armbrüste"
     },
     "Type-18": {
