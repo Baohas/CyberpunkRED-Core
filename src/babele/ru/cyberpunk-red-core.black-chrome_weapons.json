@@ -102,7 +102,7 @@
     },
     "Micro Hydrogen Combustor": {
       "name": "Micro Hydrogen Combustor",
-      "description": "<div class=\"QcsUad BDJ8fb BLojaf\">\n<div class=\"usGWQd\" aria-live=\"polite\">\n<div class=\"KkbLmb\">\n<div class=\"lRu31\"><span class=\"HwtZe\" lang=\"en\"><span class=\"jCAhz ChMk0b\"><span class=\"ryNqvb\">A small explosive that detonates after being immersed in a liquid. Is both a</span></span></span><span class=\"HwtZe\" lang=\"en\">rmor piercing and </span><span class=\"HwtZe\" lang=\"en\"><span class=\"jCAhz ChMk0b\"><span class=\"ryNqvb\">creates a large cloud of smoke. Full rules can be found on page 88.</span></span></span></div>\n</div>\n</div>\n</div>"
+      "description": "<p>Небольное взрывное устройство, приходящее в действие при погружении в жидкость. Оно бронебойное и создаёт большое облако дыма. Полные правила на стр. 88 Чёрного хрома.</p>"
     },
     "ModFire 10X (Pistol)": {
       "name": "ModFire 10X (Pistol)",
@@ -117,7 +117,7 @@
     "ModFire 10X (SMG)": {
       "name": "ModFire 10X (SMG)",
       "description": "<p>The ModFire 10X is an Exotic Heavy Pistol. Can also be transformed into an Exotic SMG or an Exotic Assault Rifle, assuming the user has all the needed parts. Full rules can be found in Black Chrome on Page 114.</p>",
-      "dvTable": "СЛ Пистолет"
+      "dvTable": "СЛ ПП"
     },
     "Mono-Guard": {
       "name": "Mono-Guard",
