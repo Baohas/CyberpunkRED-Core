@@ -38,17 +38,17 @@
     },
     "Bow (Excellent)": {
       "name": "Łuk (doskonałej jakości)",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>An excellent quality bow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Bow (Poor)": {
       "name": "Łuk (słabej jakości)",
-      "description": "<p>Nowoczesny łuk, który musi być przeładowany po każdym ataku. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+      "description": "<p>A poor quality bow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Bow": {
       "name": "Łuk",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Chainsaw (Excellent)": {
@@ -77,17 +77,17 @@
     },
     "Crossbow (Excellent)": {
       "name": "Kusza (doskonałej jakości)",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Crossbow (Poor)": {
       "name": "Kusza (słabej jakości)",
-      "description": "<p>Kusza, którą trzeba przeładować po każdym ataku. Przy krytycznej porażce broń uszkadza się w jakiś sposób i wymaga akcji do usunięcia usterki.</p>",
+      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Crossbow": {
       "name": "Kusza",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>",
+      "description": "<p>A standard crossbow, reloaded as part of an Attack action.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Crowbar (Excellent)": {
