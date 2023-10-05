@@ -28,7 +28,7 @@
     "Burst Flamethrower": {
       "name": "Burst Flamethrower",
       "description": "<p>Can only fire Incendiary Shotgun Shells, but targets ignited by this weapon burn for 4HP a turn.<br><br>Additionally, this weapon can consume all it's remaining ammo to shoot a fireball, which explodes in a similar fashion to an incendiary grenade. The user of the weapon is also consumed by the fireball, getting Deadly on Fire*.</p>\n<p><em>*Special fire mode not currently supported; will need to be manually applied</em></p>",
-      "dvTable": "СЛ Дробовик (Жекан)"
+      "dvTable": "СЛ Дробовик (Жакан)"
     },
     "Enviro-launcher": {
       "name": "Enviro-launcher",
@@ -38,7 +38,7 @@
     "Flare Gun": {
       "name": "Flare Gun",
       "description": "<p>As well as normal Grenade Ammunition, this weapon can fire road flares*. They don't deal any damage, but if fired into the air can be seen from 3 miles. You cannot install this weapon in Pop-up Cyberware.</p>\n<p><em>*Currently not supported so will need to manually delete a road flare from actors inventory after firing</em></p>",
-      "dvTable": "СЛ Гранатомет"
+      "dvTable": "СЛ Гранатомёт"
     },
     "M-02 Heavy Rifle": {
       "name": "M-02 Heavy Rifle",
@@ -62,7 +62,7 @@
     "TearJerker": {
       "name": "TearJerker",
       "description": "<p>This weapon can only fire Smoke or Teargas Ammunition.</p>",
-      "dvTable": "СЛ Гранатомет"
+      "dvTable": "СЛ Гранатомёт"
     },
     "Triple Treat": {
       "name": "Triple Treat",
