@@ -10,7 +10,7 @@
     },
     "AV-4 Engine Upgrade": {
       "name": "Двигатели AV-4",
-      "description": "<p>Может быть установлено на любое наземное транспортное средство. Добавляет транспортному средству аэродиновые движители, делая возможным полёт. Во время полёта нарративная скорость модифицированного транспорта составляет 200 м/ч (322 км/ч), а скорость в бою — 40. Для управления в воздухе требуется навык «Пилотирование».</p>"
+      "description": "<p>Может быть установлено на любое наземное транспортное средство. Добавляет транспортному средству аэродиновые движители, делая возможным полёт. Во время полёта нарративная скорость модифицированного транспорта составляет 200 миль/ч (322 км/ч), а скорость в бою — 40. Для управления в воздухе требуется навык «Пилотирование».</p>"
     },
     "Backup Drive": {
       "name": "Резервный диск",
@@ -142,8 +142,8 @@
       "description": "<p>Можно установить на аэрозеп, AV-4, прогулочный катер, автомобили и яхту. Установка на AV-4 добавляет одно спальное место с кроватью, туалетом, душем и небольшой кухней. Установка на прогулочный катер, яхту или аэрозеп добавляет одно помещение.</p>\n<p><strong>Для установки на спортивный или компактный автомобиль требуется улучшение «Утяжелённая рама»</strong>.</p>"
     },
     "Hover Upgrade": {
-      "name": "Hover Upgrade",
-      "description": "<p>Can be applied to all land vehicles. Adds fans onto the vehicle that allow it to traverse water at a narrative speed of 15 MPH/ 24KPH, and a combat speed of 10.</p>"
+      "name": "Воздушная подушка",
+      "description": "<p>Может быть установлено на любое наземное транспортное средство. Добавляет вентиляторы на днище, что позволяет передвигаться по поверхности воды с нарративной скоростью 15 миль/ч (24 км/ч). Скорость в бою 10.</p>"
     },
     "Infrared Nightvision Scope": {
       "name": "ИК прицел ночного видения",
@@ -187,7 +187,7 @@
     },
     "Security Upgrade": {
       "name": "Дополнительная безопасность",
-      "description": "<p>Can be applied to all vehicles. Adds DNA Locks to the vehicle requring the correct biometrics or a DV 17 Electronics/Security Tech check to unlock. Failure to unlock the vehicle takes damage as if hit with a Stun Baton.</p>\n<p>In addition, while remaining still the vehicle is cloaked and requires a DV17 Perception check to spot. The vehicle must remain stationary for a minute before this activates.</p>"
+      "description": "<p>Может быть установлено на любое транспортное средство. Добавляет замок на ДНК для транспортного средства. Чтобы его открыть нужны корректные биометрические данные или успешная проверка электроники/безопасности СЛ17. В случае провала горе-взломщик получает удар как от оглушающей дубинки.</p>\n<p>Дополнительно, пока транспортное средство находится в состоянии покоя, оно замаcкировано. Чтобы его заметить, нужно пройти проверку внимательности СЛ17. Для активации маскировки транспортное средство должно минуту стоять неподвижно.</p>"
     },
     "Shotgun Underbarrel": {
       "name": "Подствольный дробовик",
@@ -208,7 +208,7 @@
     },
     "Vehicle Heavy Weapon Mount": {
       "name": "Крепление для тяжёлого оружия",
-      "description": "<p>Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. One of the vehicles seats becomes a swivel mount for any two-handed ranged weapon. A passenger may fire the weapon using an Action. The passenger can reload the weapon. The weapon can be removed or reinstalled using an Action.&nbsp;</p>\n<p>The first time this upgrade is taken, included is a <strong>Tsunami Arms Helix</strong>,&nbsp; <strong>Rhinemetall EMG-86 Railgun</strong>, or <strong>Militech \"Cowboy\" U-56 Grenade Launcher</strong>. If the vehicle has the Bulletproof Glass upgrade, the gunner is protected by the same glass.&nbsp;</p>\n<p>You may install this upgrade multiple times if the vehicle has the Housing Capacity upgrade. <strong>Requires Heavy Chassis</strong>.</p>"
+      "description": "<p>Может быть установлено на любое транспортное средство кроме мотоциклов, гидроциклов и автожиров. Вместо одного из сидений устанавливается поворотное крепление для любого двуручного оружия дальнего боя. Пассажир может стрелять из него в качестве действия. Пассажир может перезарядить оружие. Оружие можно снять или снова установить в качестве действия.</p>\n<p>В комплекте с первой установкой этого улучшения идёт <strong>«Спираль» от Цунами армз</strong>, <strong>«Рельсотрон ЭМП-86» от Рейнметалл</strong> или <strong>«Гранатомёт U-56 „Ковбой“» от Милитеха</strong>. Если у транспортного средства есть пуленепробиваемые стёкла, они защищают и стрелка.</p>\n<p>Если у транспортного средства есть улучшение «Жилой отсек», то это улучшение можно установить несколько раз. <strong>Требуется улучшение «Утяжелённая рама»</strong>.</p>"
     }
   }
 }
