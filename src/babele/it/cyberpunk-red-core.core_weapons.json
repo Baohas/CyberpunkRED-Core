@@ -38,17 +38,17 @@
     },
     "Bow (Excellent)": {
       "name": "Arco (Eccellente)",
-      "description": "<p>Un arco rivitalizzato, ricaricato come parte di un'azione di attacco.</p>\n<p>Attacco +1.</p>",
+      "description": "<p>An excellent quality bow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "VD Arco e Balestro"
     },
     "Bow (Poor)": {
       "name": "Arco (Scarso)",
-      "description": "<p>Un arco rivitalizzato che deve essere ricaricato dopo ogni attacco. Se fai 1 all'Attacco (Fallimento Critico) l'arma si inceppa e richiede l'utilizzo di un'azione per sbloccarla. </p>",
+      "description": "<p>A poor quality bow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "VD Arco e Balestro"
     },
     "Bow": {
       "name": "Arco",
-      "description": "<p>Un arco rivitalizzato, ricaricato come parte di un'azione di attacco.</p>",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>",
       "dvTable": "VD Arco e Balestro"
     },
     "Chainsaw (Excellent)": {
@@ -77,17 +77,17 @@
     },
     "Crossbow (Excellent)": {
       "name": "Balestra (Eccellente)",
-      "description": "<p>Una balestra, ricaricata come parte di un'azione di attacco.</p>\n<p>Attacco +1.</p>",
+      "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "VD Arco e Balestro"
     },
     "Crossbow (Poor)": {
       "name": "Balestra (Scarso)",
-      "description": "<p>Una balestra che deve essere ricaricata dopo ogni attacco. Se fai 1 all'Attacco (Fallimento Critico) l'arma si inceppa e richiede l'utilizzo di un'azione per sbloccarla. </p>",
+      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "VD Arco e Balestro"
     },
     "Crossbow": {
       "name": "Balestra",
-      "description": "<p>Una balestra, ricaricato come parte di un' azione di attacco.</p>",
+      "description": "<p>A standard crossbow, reloaded as part of an Attack action.</p>",
       "dvTable": "VD Arco e Balestro"
     },
     "Crowbar (Excellent)": {
