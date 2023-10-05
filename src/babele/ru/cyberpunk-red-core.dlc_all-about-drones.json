@@ -1,30 +1,30 @@
 {
-  "label": "All About Drones",
+  "label": "Всё о дронах",
   "mapping": {},
   "entries": {
     "GRAF3": {
       "name": "GRAF3",
-      "description": "<p>Quadraped construction drone.</p>\n<p>Refer to the full description on page 59 of Interface Red vol. 1.</p>"
+      "description": "<p>Четырёхногий строительный дрон.</p>\n<p>Полное описание смотри на странице 59 Interface RED, том 1.</p>"
     },
     "My First GRAF3": {
-      "name": "My First GRAF3",
-      "description": "<p>Personal Drone. Tiny GRAF3 that can be linked to an Agent.</p>\n<p>Refer to the full description on page 61 of Interface Red vol. 1.</p>"
+      "name": "Мой первый GRAF3",
+      "description": "<p>Дрон для личного пользования. Маленький GRAF3, который можно подключить к агенту.</p>\n<p>Полное описание смотри на странице 61 Interface RED, том 1.</p>"
     },
     "Savannah Eagle": {
-      "name": "Savannah Eagle",
-      "description": "<p>Active Airborne Defense Drone.</p>\n<p>Refer to the fuill description on page 60 of Interface Red vol. 1.</p>"
+      "name": "Саванновый орёл",
+      "description": "<p>Боевой воздушный оборонный дрон.</p>\n<p>Полное описание смотрите на странице 60 Interface RED, том 1.</p>"
     },
     "Savannah Panther": {
-      "name": "Savannah Panther",
-      "description": "<p>Active Defense Drone.</p>\n<p>Refer to the full description on page 61 of Interface Red vol. 1.</p>"
+      "name": "Саванновая пантера",
+      "description": "<p>Боевой оборонный дрон.</p>\n<p>Полное описание смотрите на странице 61 Interface RED, том 1.</p>"
     },
     "The Observer": {
-      "name": "The Observer",
-      "description": "<p>Personal Drone. Flying camera that can be linked to an Agent.</p>\n<p>Refer to the full description on page 62 of Interface Red vol. 1.</p>"
+      "name": "Наблюдатель",
+      "description": "<p>Дрон для личного пользования. Летающая камера, которую можно подключить к агенту.</p>\n<p>Полное описание смотрите на странице 62 Interface RED, том 1.</p>"
     },
     "The Transporter": {
-      "name": "The Transporter",
-      "description": "<p>Personal Drone. Transporter Drone that can be linked to an Agent.</p>\n<p>Refer to the full description on page 63 of Interface Red vol. 1.</p>"
+      "name": "Перевозчик",
+      "description": "<p>Дрон для личного пользования. Транспортный дрон, который можно подключить к агенту.</p>\n<p>Полное описание смотрите на странице 63 Interface RED, том 1.</p>"
     }
   }
 }
