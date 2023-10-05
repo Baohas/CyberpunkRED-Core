@@ -1,42 +1,42 @@
 {
-  "label": "Exotics of 2045",
+  "label": "Экзоты в 2045",
   "mapping": {},
   "entries": {
     "Appetite Controller": {
-      "name": "Appetite Controller",
-      "description": "<p>Suppresses hunger response. User ignores Humanity Loss penalties from starvation trauma but User can still starve. Roll a Death Save at start of 7th consecutive day without eating. +1 to successive Death Saves each day afterwards.</p>\n<p>Requires Biomonitor.</p>"
+      "name": "Регулятор аппетита",
+      "description": "<p>Подавляет чувство голода. Персонаж игнорирует потерю человечности, связанную с голодом, однако не исключает голодную смерть. Бросайте на испытание против смерти на утро седьмого для после последнего приёма пищи. +1 к испытаниям против смерти каждый последующий день.</p>\n<p>Требуется киберимплант «Биомонитор».</p>"
     },
     "Combat Jaw": {
-      "name": "Combat Jaw",
-      "description": "<p>Implanted Very Heavy Melee Weapon.</p>\n<p>Refer to the full description on page 72 of Interface Red vol. 2.</p>"
+      "name": "Боевая челюсть",
+      "description": "<p>Имплантированное очень тяжелое оружие ближнего боя.</p>\n<p>Полное описание на странице 72 Interface RED, том 2.</p>"
     },
     "Combat Tail": {
-      "name": "Combat Tail",
-      "description": "<p>Implanted Heavy Melee Weapon. Requires Neural Link.</p>\n<p>Refer to the full description on page 72 of Interface Red vol. 2.</p>"
+      "name": "Боевой хвост",
+      "description": "<p>Имплантированное очень тяжелое оружие ближнего боя. Требуется киберимплант «Нейронная связь».</p>\n<p>Полное описание на странице 72 Interface RED, том 2.</p>"
     },
     "Extra-Jointed Cyberarm Upgrade": {
-      "name": "Extra-Jointed Cyberarm Upgrade",
-      "description": "<p>Enchances cyberarm articulation. +2 Contortionist. (See Black Chrome pg. 18 for more details)</p>"
+      "name": "Дополнительный сустав для киберруки",
+      "description": "<p>Улучшенная артикуляция киберруки. +2 изворотливость. (Подробности в книге Чёрный хром на странице 18).</p>"
     },
     "Extra-Jointed Cyberleg Upgrade": {
-      "name": "Extra-Jointed Cyberleg Upgrade",
-      "description": "<p>Enchances cyberleg articulation. +2 Contortionist. (See Black Chrome pg. 18 for more details)</p>"
+      "name": "Дополнительный сустав для киберноги",
+      "description": "<p>Улучшенная артикуляция киберноги. +2 изворотливость. (Подробности в книге Чёрный хром на странице 18)</p>"
     },
     "Firebreather": {
-      "name": "Firebreather",
-      "description": "<p>Implanted Exotic Shotgun. Can only hold one incendiary shotgun shell. </p>\n<p>Refer to the full description on page 73 of Interface Red vol. 2.</p>"
+      "name": "Огненное дыхание",
+      "description": "<p>Имплантированный экзотический дробовик. Можно зарядить только один зажигательный жакан. </p>\n<p>Полное описание на странице 73 Interface RED, том 2.</p>"
     },
     "Heuristic Health Monitor": {
-      "name": "Heuristic Health Monitor",
-      "description": "<p>Requires biomonitor. Can know HP at a glance. (See Black Chrome pg. 19 for more details)</p>"
+      "name": "Эвристический монитор здоровья",
+      "description": "<p>Требуется киберимплант «Биомонитор». Можно видеть собственные ПЗ. (Подробности в книге Чёрный хром на странице 19).</p>"
     },
     "NeuTongue": {
-      "name": "NeuTongue",
-      "description": "<p>Simulates flavor sensations. Use a linked Agent to customize flavor profiles. Can be deactivated without an Action. No sense of taste when deactivated.</p>\n<p>Replaces Meat tongue.</p>"
+      "name": "НеоЯзык",
+      "description": "<p>Симулирует вкусовые ощущения. При подключении к агенту можно установить различные вкусовые настройки. Можно отключить без действия, тем самым лишившись вкусовых ощущений.</p>\n<p>Заменяет мясной язык.</p>"
     },
     "Reflex Co-Processor": {
-      "name": "Reflex Co-Processor",
-      "description": "<p>Neuralware. Negates REF requirement to dodge bullets. (See Black Chrome pg. 21 for more details)</p>"
+      "name": "Сопроцессор рефлексов",
+      "description": "<p>Нейроимплант. Нивелирует требования РЕА для уклонения от пуль. (Подробности в книге Чёрный хром на странице 21).</p>"
     }
   }
 }
