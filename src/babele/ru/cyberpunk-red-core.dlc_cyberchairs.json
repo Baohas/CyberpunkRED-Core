@@ -1,14 +1,14 @@
 {
-  "label": "Cyberchairs",
+  "label": "Киберкресла",
   "mapping": {},
   "entries": {
     "Mercurius Cyberchair": {
-      "name": "Mercurius Cyberchair",
-      "description": "<p>An impressively affordable cyberchair, offering great features at this price point. While using it the operator's base MOVE becomes 5, with all regular movement options remaining available.</p>\n<p>Operation of the cyberchair requires either a free hand, or interface plugs.</p>\n<p>If the operator suffers a critical injury that reduces their MOVE, the MOVE of the cyberchair is instead effected.</p>\n<p>The cyberchair cannot be targeted specifically, nor can it be disabled via EMP effects.</p>"
+      "name": "Киберкресло «Меркурий»",
+      "description": "<p>Невероятно доступное киберкресло, обладающее отличным функционалом за приемлемую стоимость.</p>\n<p>Киберкресло нельзя назначить отдельной целью, а так же нельзя вывести из строя с помощью ЭМИ.</p>\n<p>Если оператор получает критическое ранение, снижающее его СКО, это влияет на киберкресло, а не на оператора.</p>\n<p>Киберкресло нельзя назначить отдельной целью, а так же нельзя вывести из строя с помощью ЭМИ.</p>"
     },
     "Spider Cyberchair": {
-      "name": "Spider Cyberchair",
-      "description": "<p>The top of the line cyberchair, giving the premier user many options. While using it the operator's base MOVE becomes 5, with all regular movement options remaining available.</p>\n<p>Additionally, this cyberchair has room for 4 cyberlimb options*. Any options installed always count as being paired.</p>\n<p>Operation of the cyberchair requires either a free hand, or interface plugs.</p>\n<p>If the operator suffers a critical injury that reduces their MOVE, the MOVE of the cyberchair is instead effected.</p>\n<p>The cyberchair cannot be targeted specifically, nor can it be disabled via EMP effects.</p>\n<p><em>*Installing cyberlimp options currently not supported</em></p>"
+      "name": "Киберкресло «Паук»",
+      "description": "<p>Самая совершенная модель киберкресел, обладающая самым широким функционалом. Во время использования басовая СКО оператора становится равна 5, при этом все прочие доступные способы передвижения остаются доступны.</p>\n<p>Дополнительно, в это киберкресло можно установить до четырёх дополнительных киберконечностей*. Киберконечности должны устанавливаться парно.</p>\n<p>Оператору киберкресла для управления нужны или свободные руки, или нейроинтерфейс.</p>\n<p>Если оператор получает критическое ранение, снижающее его СКО, это влияет на киберкресло, а не на оператора.</p>\n<p>Киберкресло нельзя назначить отдельной целью, а так же нельзя вывести из строя с помощью ЭМИ.</p>\n<p><em>*Установка киберконечностей на данный момент не поддерживается</em></p>"
     }
   }
 }
