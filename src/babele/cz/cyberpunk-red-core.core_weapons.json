@@ -38,17 +38,17 @@
     },
     "Bow (Excellent)": {
       "name": "Bow (Excellent)",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>An excellent quality bow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "DV Bows & Crossbows"
     },
     "Bow (Poor)": {
       "name": "Bow (Poor)",
-      "description": "<p>A revitalized bow that must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>A poor quality bow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "DV Bows & Crossbows"
     },
     "Bow": {
       "name": "Bow",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>",
       "dvTable": "DV Bows & Crossbows"
     },
     "Chainsaw (Excellent)": {
@@ -77,17 +77,17 @@
     },
     "Crossbow (Excellent)": {
       "name": "Crossbow (Excellent)",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "DV Bows & Crossbows"
     },
     "Crossbow (Poor)": {
       "name": "Crossbow (Poor)",
-      "description": "<p>A crossbow which must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "DV Bows & Crossbows"
     },
     "Crossbow": {
       "name": "Crossbow",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>",
+      "description": "<p>A standard crossbow, reloaded as part of an Attack action.</p>",
       "dvTable": "DV Bows & Crossbows"
     },
     "Crowbar (Excellent)": {
