@@ -11,7 +11,7 @@
     },
     "Bearcat": {
       "name": "Bearcat",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>A collapsible bow branded with the Eagletech logo, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Boomer Buster": {
@@ -51,7 +51,7 @@
     },
     "Hunter": {
       "name": "Hunter",
-      "description": "<p>A crossbow which must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>A poor quality crossbow branded with the GunMart logo, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Jungle Reaper": {
@@ -106,12 +106,12 @@
     },
     "Scorpion": {
       "name": "Scorpion",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>A sleek crossbow branded with the Eagletech logo, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Sherwood": {
       "name": "Sherwood",
-      "description": "<p>A revitalized bow that must be reloaded after every attack.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>A poor quality bow branded with the GunMart logo, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear. </p>",
       "dvTable": "PT Łuki i kusze"
     },
     "SMG-21": {
@@ -131,7 +131,7 @@
     },
     "Striker": {
       "name": "Striker",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>",
+      "description": "<p>A crossbow branded with the Eagletech logo, reloaded as part of an Attack action.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Super Chief": {
@@ -146,7 +146,7 @@
     },
     "Tomcat": {
       "name": "Tomcat",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>",
+      "description": "<p>A revitalized bow branded with the Eagletech logo, reloaded as part of an Attack Action.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Type-18": {
