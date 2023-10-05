@@ -67,7 +67,7 @@
     "Big Dreem": {
       "name": "Big Dreem",
       "description": "<p>Exotic SMG. Autofire only. Even if you drop the weapon, it will continue to Autofire.</p>",
-      "dvTable": "СЛ ПП (Авто)"
+      "dvTable": "СЛ ПП (Автоогонь)"
     },
     "Hello Cutie 1TruLuv": {
       "name": "Hello Cutie 1TruLuv",
@@ -92,7 +92,7 @@
     "Timeless WW1 Rifle to Pistol Conversion": {
       "name": "Timeless WW1 Rifle to Pistol Conversion",
       "description": "<p>Poor Quality Very Heavy Pistol.</p>\n<p>Manual rearming of the bolt between each shot (one Action).</p>",
-      "dvTable": "СЛ пистолет"
+      "dvTable": "СЛ Пистолет"
     }
   }
 }
