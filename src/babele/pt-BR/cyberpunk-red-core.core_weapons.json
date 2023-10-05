@@ -38,17 +38,17 @@
     },
     "Bow (Excellent)": {
       "name": "Arco (Excelente)",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>An excellent quality bow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "DV Arcos e Balestras"
     },
     "Bow (Poor)": {
       "name": "Arco (pobre)",
-      "description": "<p>Um arco revitalizado que deve ser recarregado após cada ataque. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+      "description": "<p>A poor quality bow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "DV Arcos e Balestras"
     },
     "Bow": {
       "name": "Arco",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>",
       "dvTable": "DV Arcos e Balestras"
     },
     "Chainsaw (Excellent)": {
@@ -77,17 +77,17 @@
     },
     "Crossbow (Excellent)": {
       "name": "Besta (Excelente)",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>\n<p>+1 to Attack.</p>",
+      "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "DV Arcos e Balestras"
     },
     "Crossbow (Poor)": {
       "name": "Besta (pobre)",
-      "description": "<p>Uma besta que deve ser recarregada após cada ataque. Se você rolar 1 no Ataque (falha crítica), a arma emperra e requer o uso de uma ação para ser eliminada.</p>",
+      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "DV Arcos e Balestras"
     },
     "Crossbow": {
       "name": "Besta",
-      "description": "<p>A crossbow, reloaded as part of an Attack Action.</p>",
+      "description": "<p>A standard crossbow, reloaded as part of an Attack action.</p>",
       "dvTable": "DV Arcos e Balestras"
     },
     "Crowbar (Excellent)": {
