@@ -38,17 +38,17 @@
     },
     "Bow (Excellent)": {
       "name": "Bogen (Hervorragende Qualität)",
-      "description": "<p>Ein Bogen. Das Nachladen ist Teil der Angriffsaktion.</p>\n<p>+1 auf Angriffe.</p>",
+      "description": "<p>An excellent quality bow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "SG Bögen und Armbrüste"
     },
     "Bow (Poor)": {
       "name": "Bogen (Schlechte Qualität)",
-      "description": "<p>Ein Bogen von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "description": "<p>A poor quality bow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "SG Bögen und Armbrüste"
     },
     "Bow": {
       "name": "Bogen",
-      "description": "<p>Ein Bogen. Das Nachladen ist Teil der Angriffsaktion.</p>",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>",
       "dvTable": "SG Bögen und Armbrüste"
     },
     "Chainsaw (Excellent)": {
@@ -77,17 +77,17 @@
     },
     "Crossbow (Excellent)": {
       "name": "Armbrust (Hervorragende Qualität)",
-      "description": "<p>Eine Armbrust. Das Nachladen ist Teil der Angriffsaktion.</p>\n<p>+1 auf Angriffe.</p>",
+      "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "SG Bögen und Armbrüste"
     },
     "Crossbow (Poor)": {
       "name": "Armbrust (Schlechte Qualität)",
-      "description": "<p>Eine Armbrust von schlechter Qualität. Wenn du einen kritischen Fehlschlag würfelst (eine 1 beim Angriffswurf), musst du eine Aktion aufwenden, um die Fehlfunktion zu beheben, bevor du sie wieder einsetzen kannst.</p>",
+      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "SG Bögen und Armbrüste"
     },
     "Crossbow": {
       "name": "Armbrust",
-      "description": "<p>Eine Armbrust. Das Nachladen ist Teil der Angriffsaktion.</p>",
+      "description": "<p>A standard crossbow, reloaded as part of an Attack action.</p>",
       "dvTable": "SG Bögen und Armbrüste"
     },
     "Crowbar (Excellent)": {
