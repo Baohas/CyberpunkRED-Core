@@ -6,7 +6,12 @@
 
 ### Changes
 
-- #793 - added tooltips for each stat and skill
+- Add Quality to Weapons/Cyberdecks
+- #793 - добавлены всплывающие подсказки для каждого параметра и навыка.
+- #926, 927 - изменены описания луков и арбалетов. Теперь они не противоречивы и опрятнее выглядят.
+- #917 - исправлено отслеживание брони после удаления, а зезда «Пересинхр» теперь называется «Вкл./Выкл. отслеживание». Соответствующая шкала удалена. Пользователям необходимо перенастроить отображение шкал ресурсов.
+- #737 - изменение отслеживание брони при её снятии. Решение, схожее с проблемой 917.
+- #925 - scrollbar re-added for main windows
 
 ## Version 0.88.2
 
@@ -502,7 +507,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.85.1 (Hotfix) | Date: 2022-12-14
 
-### Bug Fixes
+### Исправления
 
 - Fixed #624 - NET architecture sheet can't click generation button
 
@@ -715,7 +720,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.1 (Hotfix) | Date: 2022-08-01
 
-### Bug Fixes
+### Исправления
 
 - #456 - Selling non-stackable items to vendors results in a NaN offer from the vendor
 - #454 - Kendachi Mono-Three has Incorrect Attack Bonus
