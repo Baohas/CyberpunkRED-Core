@@ -11,7 +11,7 @@
     },
     "Bearcat": {
       "name": "Bearcat",
-      "description": "<p>Un arc renouvelé, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>",
+      "description": "<p>A collapsible bow branded with the Eagletech logo, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Boomer Buster": {
@@ -51,7 +51,7 @@
     },
     "Hunter": {
       "name": "Hunter",
-      "description": "<p>Une arbalète qui doit être rechargée après chaque attaque. Si vous lancez un 1 sur une Attaque (Échec critique) l'arme s'enraye et nécessite une action pour désenrayer. </p>",
+      "description": "<p>A poor quality crossbow branded with the GunMart logo, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Jungle Reaper": {
@@ -106,12 +106,12 @@
     },
     "Scorpion": {
       "name": "Scorpion",
-      "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>",
+      "description": "<p>A sleek crossbow branded with the Eagletech logo, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Sherwood": {
       "name": "Sherwood",
-      "description": "<p>Un arc moderne, doit être rechargé après chaque attaque. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>",
+      "description": "<p>A poor quality bow branded with the GunMart logo, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear. </p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "SMG-21": {
@@ -131,7 +131,7 @@
     },
     "Striker": {
       "name": "Striker",
-      "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>",
+      "description": "<p>A crossbow branded with the Eagletech logo, reloaded as part of an Attack action.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Super Chief": {
@@ -146,7 +146,7 @@
     },
     "Tomcat": {
       "name": "Tomcat",
-      "description": "<p>Un arc moderne, rechargement compris dans l'action d'attaque.</p>",
+      "description": "<p>A revitalized bow branded with the Eagletech logo, reloaded as part of an Attack Action.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Type-18": {
