@@ -9,8 +9,8 @@
       "description": "<p>Basic ammo, nothing special.</p>"
     },
     "Poison Arrow": {
-      "name": "Ядовитая стрела",
-      "description": "<p>Нет мгновенного урона. При попадании цель должна пройти проверку сопротивления пыткам/препаратам СЛ13. При неудаче, цель получает 2d6 урона по ПЗ. Не повреждает броню.</p>"
+      "name": "Отравленная стрела",
+      "description": "<p>При попадании не наносит урон, но необходимо пройти проверку Сопротивления пыткам/препаратам СЛ13. В случае провала цель получает 2d6 урона здоровью. Броня не получает повреждение.</p>"
     },
     "Chainmail Armor (Body)": {
       "name": "Chainmail Armor (Body)",
@@ -21,11 +21,11 @@
       "description": "<p>Armor made up of innumerable metal rings for your head. -2 to REF, DEX, and MOVE.</p>"
     },
     "Full Plate Armor (Body)": {
-      "name": "Full Plate Armor (Body)",
+      "name": "Латный доспех",
       "description": "<p>Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.</p>"
     },
     "Full Plate Armor (Head)": {
-      "name": "Full Plate Armor (Head)",
+      "name": "Шлем латного доспеха",
       "description": "<p>Metal plated armor to resist the most powerful hits to your head. -4 to REF, DEX, and MOVE.</p>"
     },
     "Leather Armor (Body)": {
