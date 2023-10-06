@@ -1,56 +1,56 @@
 {
-  "label": "Elflines Online Armory",
+  "label": "Арсенал «Эльфлайнс Онлайн»",
   "mapping": {
     "dvTable": "system.dvTable"
   },
   "entries": {
     "Arrow": {
-      "name": "Arrow",
-      "description": "<p>Basic ammo, nothing special.</p>"
+      "name": "Стрела",
+      "description": "<p>Обычный боеприпас, ничего особенного.</p>"
     },
     "Poison Arrow": {
       "name": "Отравленная стрела",
       "description": "<p>При попадании не наносит урон, но необходимо пройти проверку Сопротивления пыткам/препаратам СЛ13. В случае провала цель получает 2d6 урона здоровью. Броня не получает повреждение.</p>"
     },
     "Chainmail Armor (Body)": {
-      "name": "Chainmail Armor (Body)",
-      "description": "<p>Armor made up of innumerable metal rings. -2 to REF, DEX, and MOVE.</p>"
+      "name": "Кольчуга",
+      "description": "<p>Броня, сделанная из бесчисленного количества металлических колец. -2 к РЕА, ЛВК и СКО.</p>"
     },
     "Chainmail Armor (Head)": {
-      "name": "Chainmail Armor (Head)",
-      "description": "<p>Armor made up of innumerable metal rings for your head. -2 to REF, DEX, and MOVE.</p>"
+      "name": "Кольчужный шлем",
+      "description": "<p>Броня для головы, сделанная из бесчисленного количества металлических колец. -2 к РЕА, ЛВК и СКО.</p>"
     },
     "Full Plate Armor (Body)": {
       "name": "Латный доспех",
-      "description": "<p>Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.</p>"
+      "description": "<p>Броня из металлических пластин, способная выдержать самые мощные удары. -4 к РЕА, ЛВК и СКО.</p>"
     },
     "Full Plate Armor (Head)": {
       "name": "Шлем латного доспеха",
-      "description": "<p>Metal plated armor to resist the most powerful hits to your head. -4 to REF, DEX, and MOVE.</p>"
+      "description": "<p>Броня из металлических пластин, способная выдержать самые мощные удары в голову. -4 к РЕА, ЛВК и СКО.</p>"
     },
     "Leather Armor (Body)": {
-      "name": "Leather Armor (Body)",
-      "description": "<p>Simple Leather armor. No armor penalty.</p>"
+      "name": "Кожаный доспех",
+      "description": "<p>Простая кожанка. Без штрафа от брони.</p>"
     },
     "Leather Armor (Head)": {
-      "name": "Leather Armor (Head)",
-      "description": "<p>Simple Leather armor for your head. No armor penalty.</p>"
+      "name": "Кожаный шлем",
+      "description": "<p>Простой кожаный шлем. Без штрафа от брони.</p>"
     },
     "Shield": {
       "name": "Щит",
-      "description": "<p>Requires an arm and has HP that is reduced by damage.</p>"
+      "description": "<p>Требуется одна рука и имеет свои ПЗ.</p>"
     },
     "Studded Leather Armor (Body)": {
-      "name": "Studded Leather Armor (Body)",
-      "description": "<p>Standard Studded Leather Armor. No armor penalty.</p>"
+      "name": "Клёпаный кожаный доспех",
+      "description": "<p>Стандартный клёпаный кожаный доспех. Нет штрафов брони.</p>"
     },
     "Studded Leather Armor (Head)": {
-      "name": "Studded Leather Armor (Head)",
-      "description": "<p>Standard Studded Leather Armor for your head. No armor penalty.</p>"
+      "name": "Клёпаный кожаный шлем",
+      "description": "<p>Стандартный клёпаный кожаный доспех для головы. Нет штрафов брони.</p>"
     },
     "Sacred Herbs": {
-      "name": "Sacred Herbs",
-      "description": "<p>Ingesting Sacred Herbs immediately heals HP equal to the user's BODY plus their WILL.</p>"
+      "name": "Священные травы",
+      "description": "<p>Приём священных трав внутрь мгновенно излечивает ПЗ в количестве, равном ТЕЛ + ВОЛЯ.</p>"
     },
     "Vial of Poison": {
       "name": "Ампула с ядом",
@@ -58,24 +58,24 @@
     },
     "Bow": {
       "name": "Лук",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>",
+      "description": "<p>Снова вошедший в моду лук. Перезарядка является частью действия атаки.</p>",
       "dvTable": "СЛ Луки и арбалеты"
     },
     "Dagger": {
-      "name": "Dagger",
-      "description": "<p>A knife fit for a hunter.</p>"
+      "name": "Кинжал",
+      "description": "<p>Нож, в самый раз для охотника.</p>"
     },
     "Greataxe": {
-      "name": "Greataxe",
-      "description": "<p>A wooden pole with a curved blade on each side. Favoured by raid parties for close engagements. Requires 2 hands to wield even by a wielder with Body 8 or higher.</p>"
+      "name": "Двуручный топор",
+      "description": "<p>Два изогнутых лезвия на древке. Излюбленное орудие налётчиков для схваток в ближнем бою. Необходимо держать двумя руками, даже если ТЕЛ 8 или выше.</p>"
     },
     "Longsword": {
-      "name": "Longsword",
-      "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting. 2 ROF if wielding two longswords.</p>"
+      "name": "Длинный меч",
+      "description": "<p>Клинок и рукоять. Создан специально для режущих и колющих ударов. СКА 2 если в руках два длинных меча.</p>"
     },
     "Shortsword": {
-      "name": "Shortsword",
-      "description": "<p>A short bladed, hilted weapon. Specifically designed for cutting or thrusting.</p>"
+      "name": "Короткий меч",
+      "description": "<p>Короткий клинок и рукоять. Создан специально для режущих и колющих ударов.</p>"
     }
   }
 }
