@@ -5,242 +5,242 @@
   },
   "entries": {
     "Arasaka Prototype Variable Assault Rifle": {
-      "name": "Arasaka Prototype Variable Assault Rifle",
-      "description": "<p>The Arasaka Prototype Variable Assault Rifle is an Excellent Quality Exotic Assault Rifle. Assuming you have all the parts, it can use an alternate unique railgun mode. Full rules can be found in Black Chrome on Page 102.</p>",
+      "name": "Прототип регулируемой штурмовой винтовки",
+      "description": "<p>Прототип регулируемой штурмовой винтовки Арасака — это экзотическая штурмовая винтовка отличного качества. При наличии необходимых запчастей, её можно перевести в альтернативный режим рельсотрона. Полные правила на стр. 102 Чёрного хрома.</p>",
       "dvTable": "СЛ Штурмовая винтовка"
     },
     "Beast Shotgun": {
-      "name": "Beast Shotgun",
-      "description": "<p>The Midnight Arms Beast Shotgun is an Exotic Shotgun. Its magazine holds 40 rounds. Requires BODY 10 or higher (unless mounted) when fired or the User will suffer the consequences. Full rules can be found in Black Chrome on Page 111.</p>",
+      "name": "Дробовик «Зверь»",
+      "description": "<p>Дробовик «Зверь» от Миднайт армс — это экзотический дробовик с магазином на 40 патронов. Для стрельбы требуется ТЕЛ 10 или выше (если не стационарный), иначе стрелка ждут последствия. Полные правила на стр. 111 Чёрного хрома.</p>",
       "dvTable": "СЛ Дробовик (Жакан)"
     },
     "BMG-500": {
-      "name": "BMG-500",
-      "description": "<p>The Techtronika Russia BMG-500 is an Exotic Assault Rifle with a magazine of 500 rounds and a bipod. Requires BODY 11 or higher (unless mounted). Full rules can be found in Black Chrome on Page 122.<br><br></p>",
+      "name": "БПМ-500",
+      "description": "<p>БПМ-500 от Технтроника Россия — это экзотическая штурмовая винтовка с магазином на 500 патронов и сошками. Для стрельбы требуется ТЕЛ 11 или выше (если не стационарный). Полные правила на стр. 122 Чёрного хрома.</p>",
       "dvTable": "СЛ Штурмовая винтовка"
     },
     "Bubba Buster": {
-      "name": "Bubba Buster",
-      "description": "<p>The GunMart Bubba Buster is a Poor Quality Exotic Shotgun. It destroys itself if fired more than 3 times in a minute. Full rules can be found in Black Chrome on Page 106.</p>",
+      "name": "Размозжеватель хмырей",
+      "description": "<p>«Размозжеватель хмырей» от Ганмарта — это экзотический дробовик плохого качества. Приходит в негодность, если произвести больше трёх выстрелов в минуту. Полные правила на стр. 106 Чёрного хрома.</p>",
       "dvTable": "СЛ Дробовик (Жакан)"
     },
     "Crowd Buster": {
-      "name": "Crowd Buster",
-      "description": "<p>The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with a unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear Protectors*. Full rules can be found in Black Chrome on Page 116.</p>\n<p><em>*Must be manually applied after purchase</em></p>",
+      "name": "Разгонщик толпы",
+      "description": "<p>«Разгонщик толпы» от Пюрсьют секьюрити инк. — это экзотическая штурмовая винтовка с необычным альтернативным режимом стрельбы. Идёт в комплекте с парой противошумных наушников*. Полные правила на стр. 116 Чёрного хрома.</p>\n<p><em>*Необходимо добавить вручную после получения оружия.</em></p>",
       "dvTable": "СЛ Штурмовая винтовка"
     },
     "Door Cracker": {
-      "name": "Door Cracker",
-      "description": "<p>Cheap explosive item, small area of effect. Full rules can be found on page 87.</p>"
+      "name": "Дверной взломщик",
+      "description": "<p>Дешёвая взрывчатка, небольшой радиус действия. Полные правила на стр. 87 Чёрного хрома.</p>"
     },
     "E-TACK Public Defender": {
-      "name": "E-TACK Public Defender",
-      "description": "<p>Comes with a Smartgun Link attachment*. The User needs a Subdermal Grip to operate it. It has a Lethal and Non-lethal mode.</p>\n<p>Full rules can be found in Black Chrome on Page 115.</p>\n<p><em>* This Upgrade needs to be added manually.</em></p>",
+      "name": "E-TACK «Омбудсмен»",
+      "description": "<p>Идёт в комплекте со смартлинком*. Стрелку необходим подкожный хват. Имеет два режима — летальный и нелетальный.</p>\n<p>Полные правила на стр. 115 Чёрного хрома.</p>\n<p><em>* Улучшение необходимо добавить вручную.</em></p>",
       "dvTable": "СЛ Пистолет"
     },
     "Engage Rocket Launcher": {
-      "name": "Engage Rocket Launcher",
-      "description": "<p>The GunMart Engage Rocket Launcher is a Poor Quality Exotic Rocket Launcher. It explodes on a Critical Failure or when unloading the weapon. Full rules can be found in Black Chrome on Page 107.</p>",
+      "name": "Ракетница «Запуск»",
+      "description": "<p>Ракетница «Запуск» от Ганмарта — экзотическая ракетница плохого качества. Взрывается при критическом провале или при попытке разрядить оружие. Полные правила на стр. 107 Чёрного хрома.</p>",
       "dvTable": "СЛ Ракетница"
     },
     "Faisal's Dead or Alive": {
-      "name": "Faisal's Dead or Alive",
-      "description": "<p>The Faisal's Dead Or Alive is a Poor Quality Exotic Shotgun with an integrated Poor Quality Net Launcher. Full rules can be found in Black Chrome on Page 104.</p>",
+      "name": "Живым или мёртвым",
+      "description": "<p>«Живым или мёртвым» от Фейсала — экзотический дробовик плохого качества со встроенным сеткомётом плохого качества. Полные правила на стр. 104 Чёрного хрома.</p>",
       "dvTable": "СЛ Дробовик (Жакан)"
     },
     "FangFist": {
-      "name": "FangFist",
-      "description": "<p>Excellent Quality One Handed Exotic Medium Melee Weapon.</p>\n<p>A glove with a short retractable blade.</p>\n<p>Full details can be found on page 98.</p>"
+      "name": "Клыкастый кулак",
+      "description": "<p>Экзотическое одноручное среднее оружие ближнего боя отличного качества.</p>\n<p>Перчатка с выдвижным клинком.</p>\n<p>Полные правила на стр. 98 Чёрного хрома.</p>"
     },
     "Fox Dual Ammo Pistol": {
-      "name": "Fox Dual Ammo Pistol",
-      "description": "<p>The Militech Fox Dual Ammo Pistol is an Exotic Heavy Pistol. Full rules can be found in Black Chrome on Page 113.</p>",
+      "name": "Двухзарядный пистолет «Лис»",
+      "description": "<p>Двухзарядный пистолет «Лис» от Милитеха — экзотический пистолет крупного калибра. Полные правила на стр. 113 Чёрного хрома.</p>",
       "dvTable": "СЛ Пистолет"
     },
     "GunMart Smart Special": {
-      "name": "GunMart Smart Special",
-      "description": "<p>The GunMart Smart Special is a Poor Quality Exotic Heavy Pistol with an integrated Smartgun Link. Full rules can be found in Black Chrome on Page 108.</p>",
+      "name": "Визитная карточка (умная)",
+      "description": "<p>Умная «Визитная карточка» от Ганмарта — экзотический пистолет крупного калибра со встроенным смартлинком. Полные правила на стр. 108 Чёрного хрома.</p>",
       "dvTable": "СЛ Пистолет"
     },
     "GunMart Special": {
-      "name": "GunMart Special",
-      "description": "<p>The GunMart Special is a Poor Quality Exotic Heavy Pistol. Full rules can be found in Black Chrome on Page 108.</p>",
+      "name": "Визитная карточка",
+      "description": "<p>«Визитная карточка» от Ганмарта — экзотический пистолет крупного калибра. Полные правила на стр. 108 Чёрного хрома.</p>",
       "dvTable": "СЛ Пистолет"
     },
     "Hades Multipurpose Assault Shotgun": {
-      "name": "Hades Multipurpose Assault Shotgun",
-      "description": "<p>The Hades Multipurpose Assault Shotgun is an Exotic Shotgun. The magazine holds 16 shots. Full rules can be found in Black Chrome on Page 109.</p>",
+      "name": "Многоцелевой штурмовой дробовик «Аид»",
+      "description": "<p>Многоцелевой штурмовой дробовик «Аид» — экзотический дробовик с магазином на 16 патронов. Полные правила на стр. 109 Чёрного хрома.</p>",
       "dvTable": "СЛ Дробовик (Жакан)"
     },
     "Hello Cutie Ultra-K8 Assault Pistol": {
-      "name": "Hello Cutie Ultra-K8 Assault Pistol",
-      "description": "<p>The Sanroo Hello Cutie Ultra-K8 Assault Pistol is an Excellent Quality Exotic Very Heavy Pistol with an Excellent Quality Heavy SMG mode. Full rules can be found in Black Chrome on Page 118.</p>",
+      "name": "Хелло Кьюти Штурмовой пистолет «Ультра-КИС4»",
+      "description": "<p>Штурмовой пистолет Хелло Кьюти «Ультра-КИС4» от Санру — экзотический пистолет сверхкрупного калибра отличного качества с режимом переключения на ПП крупного калибра отличного качества. Полные правила на стр. 118 Чёрного хрома.</p>",
       "dvTable": "СЛ Пистолет"
     },
     "KillChip 100 Micro-Bomb": {
-      "name": "KillChip 100 Micro-Bomb",
-      "description": "<p>Memory chip, but explosive when plugged into Neuralware. Full rules can be found on page 88.</p>"
+      "name": "Микробомба «Щепка-убийца 100»",
+      "description": "<p>Щепка памяти, которая взрывается при подключении к нейроимпланту. Полные правила на стр. 88 Чёрного хрома.</p>"
     },
     "M-04 Variable Assault": {
-      "name": "M-04 Variable Assault",
-      "description": "<p>The Sternmeyer M-04 Variable Assault is a Poor Quality Exotic Assault Rifle with a custom Grenade Launcher underbarrel. Full rules can be found in Black Chrome on Page 119.</p>",
+      "name": "Варьируемая винтовка М-04",
+      "description": "<p>Варьируемая винтовка М-04 от Штернмейер — это экзотическая штурмовая винтовка плохого качества со специально изготовленным подствольным гранатомётом. Полные правила на стр. 119 Чёрного хрома.</p>",
       "dvTable": "СЛ Штурмовая винтовка"
     },
     "Magna Knuckles": {
-      "name": "Magna Knuckles",
-      "description": "<p>One Handed Exotic Medium Melee Weapon. Battery powered EMP effect which can deactivate cyberware, full details can be found on page 96.</p>"
+      "name": "Магнакастет",
+      "description": "<p>Экзотическое одноручное среднее оружие ближнего боя. Подпитывается от батареи, и при помощи ЭМИ может выводить из стоя киберимпланты, полные правила на стр. 96 Чёрного хрома.</p>"
     },
     "Mastiff SMG": {
-      "name": "Mastiff SMG",
-      "description": "<p>The Militech Mastiff SMG is an Exotic Two-Handed SMG and Shotgun. Full rules can be found in Black Chrome on Page 113.</p>",
+      "name": "ПП «Мастиф»",
+      "description": "<p>ПП «Мастиф» от Милитеха — экзотический двуручный ПП и дробовик. Полные правила на стр. 113 Чёрного хрома.</p>",
       "dvTable": "СЛ ПП"
     },
     "Matchmaker": {
-      "name": "Matchmaker",
-      "description": "<p>The Georgia Arms Matchmaker is a Poor Quality Exotic Shotgun that only holds one shot in the magazine. Full rules can be found in Black Chrome on Page 105.</p>",
+      "name": "Сватья",
+      "description": "<p>«Сватья» от Джорджиа армс — это экзотический дробовик плохого качества с одним только патроном в магазине. Полные правила на стр. 105 Чёрного хрома.</p>",
       "dvTable": "СЛ Дробовик (Жакан)"
     },
     "Micro Hydrogen Combustor": {
-      "name": "Micro Hydrogen Combustor",
-      "description": "<p>Небольное взрывное устройство, приходящее в действие при погружении в жидкость. Оно бронебойное и создаёт большое облако дыма. Полные правила на стр. 88 Чёрного хрома.</p>"
+      "name": "Водородная микрокамера горения",
+      "description": "<p>Небольное взрывное устройство, приходящее в действие при погружении в жидкость. Оно бронебойное и создаёт большое облако дыма.</p>\n<p> Полные правила на стр. 88 Чёрного хрома.</p>"
     },
     "ModFire 10X (Pistol)": {
-      "name": "ModFire 10X (Pistol)",
-      "description": "<p>The ModFire 10X is an Exotic Heavy Pistol. Can also be transformed into an Exotic SMG or an Exotic Assault Rifle, assuming the user has all the needed parts. Full rules can be found in Black Chrome on Page 114.</p>",
+      "name": "Модфаер 10X (пистолет)",
+      "description": "<p>Модфаер 10X — это экзотически пистолет крупного калибра. Он может трансформироваться в экзотический ПП или в экзотическую штурмовую винтовку, если у стрелка есть необходимые запчасти. Полные правила на стр. 114 Чёрного хрома.</p>",
       "dvTable": "СЛ Пистолет"
     },
     "ModFire 10X (Rifle)": {
-      "name": "ModFire 10X (Rifle)",
-      "description": "<p>The ModFire 10X is an Exotic Heavy Pistol. Can also be transformed into an Exotic SMG or an Exotic Assault Rifle, assuming the user has all the needed parts. Full rules can be found in Black Chrome on Page 114.</p>",
+      "name": "Модфаер 10X (винтовка)",
+      "description": "<p>Модфаер 10X — это экзотически пистолет крупного калибра. Он может трансформироваться в экзотический ПП или в экзотическую штурмовую винтовку, если у стрелка есть необходимые запчасти. Полные правила на стр. 114 Чёрного хрома.</p>",
       "dvTable": "СЛ Штурмовая винтовка"
     },
     "ModFire 10X (SMG)": {
-      "name": "ModFire 10X (SMG)",
-      "description": "<p>The ModFire 10X is an Exotic Heavy Pistol. Can also be transformed into an Exotic SMG or an Exotic Assault Rifle, assuming the user has all the needed parts. Full rules can be found in Black Chrome on Page 114.</p>",
+      "name": "Модфаер 10X (ПП)",
+      "description": "<p>Модфаер 10X — это экзотически пистолет крупного калибра. Он может трансформироваться в экзотический ПП или в экзотическую штурмовую винтовку, если у стрелка есть необходимые запчасти. Полные правила на стр. 114 Чёрного хрома.</p>",
       "dvTable": "СЛ ПП"
     },
     "Mono-Guard": {
-      "name": "Mono-Guard",
-      "description": "<p>Monowire, One Handed Exotic Heavy Melee Weapon.</p>\n<p>Can apply multiple Critical Injuries, details of which can be found on page 96.</p>"
+      "name": "Моно-заслон",
+      "description": "<p>Моноструна, экзотическое одноручное тяжёлое оружие ближнего боя.</p>\n<p>Может нанести несколько критических ранений, о чём подробнее написано на стр. 96 Чёрного хрома.</p>"
     },
     "Mono-Katana Solo Wolf and Bot": {
-      "name": "Mono-Katana Solo Wolf and Bot",
-      "description": "<p>Poor Quality Two Handed Exotic Very Heavy Melee Weapon.</p>\n<p>Mono-Katana cheap look-alike. Rules for spotting them apart can be found on page 92.</p>"
+      "name": "Моно-катана «Волк-соло и Бот»",
+      "description": "<p>Двуручное экзотическое очень холодное оружие ближнего боя плохого качества.</p>\n<p>Дешёвая копия Моно-катаны. То, как различать их, написано на стр. 92 Чёрного хрома.</p>"
     },
     "Mono-Katana": {
-      "name": "Mono-Katana",
-      "description": "<p>Two Handed Exotic Very Heavy Melee Weapon. When wielded by the correct user the weapon ignores armor less than 7 SP, full details on page 92.</p>"
+      "name": "Моно-катана",
+      "description": "<p>Двуручное экзотическое очень холодное оружие ближнего боя. В руках правильного человека игнорирует броню ниже ОС 7, полные правила на стр. 92 Чёрного хрома.</p>"
     },
     "Mono-Star": {
-      "name": "Mono-Star",
-      "description": "<p>Mono-Shuriken whose orb center contains a kinetic and solar motor allowing the star to spin on itself and vibrate.</p>\n<p>Can be used as both a melee and ranged weapon, rules for which can be found on page 101.</p>",
+      "name": "Моно-звезда",
+      "description": "<p>Моно-сюрикен. Сфера в центре содержит моторчик на солнечной и кинетической энергии, позволяющий сюрикену крутиться и вибрировать самостоятельно.</p>\n<p>Можно использовать как оружие ближнего, так и дальнего боя, о чём подробнее написано на стр. 101 Чёрного хрома.</p>",
       "dvTable": "СЛ Метательное оружие"
     },
     "Mono-Wakizashi": {
-      "name": "Mono-Wakizashi",
-      "description": "<p>One Handed Exotic Heavy Melee Weapon. When wielded by the correct user the weapon ignores armor less than 7 SP, full details on page 93.</p>"
+      "name": "Моно-вакидзаси",
+      "description": "<p>Экзотическое одноручное тяжёлое оружие ближнего боя. В руках правильного человека игнорирует броню ниже ОС 7, полные правила на стр. 93 Чёрного хрома.</p>"
     },
     "Nomad Rocker": {
-      "name": "Nomad Rocker",
-      "description": "<p>The Nomad Rocker is a Poor Quality Exotic Very Heavy Pistol that fires rocks. Ammo is free for this weapon. Full rules can be found in Black Chrome on Page 115.</p>",
+      "name": "Камнемёт кочевников",
+      "description": "<p>Камнемёт кочевников — это экзотический пистолет сверхкрупного калибра, который стреляет камнями. Боеприпасы бесплатные. Полные правила на стр. 115 Чёрного хрома.</p>",
       "dvTable": "СЛ Пистолет"
     },
     "OUTLet Explosive": {
-      "name": "OUTLet Explosive",
-      "description": "<p>Explosive look-alike of an electrical plug adapter. Full rules can be found on page 89.</p>"
+      "name": "Взрывчатка-штепсель",
+      "description": "<p>Взрывное устройство в виде фальш-розетки. Полные правила на стр. 89 Чёрного хрома.</p>"
     },
     "Overlord Handcannon": {
-      "name": "Overlord Handcannon",
-      "description": "<p>The Overlord Handcannon is a Poor Quality Exotic Heavy Pistol with a ROF of 1. It may give a +1 bonus to Facedowns in certain situations. Full rules can be found in Black Chrome on Page 106.</p>",
+      "name": "Бомбарда «Владыка»",
+      "description": "<p>Бомбарда «Владыка» — экзотически пистолет крупного калибра со СКА 1. В некоторых ситуациях даёт бонус +1 в наездах. Полные правила на стр. 106 Чёрного хрома.</p>",
       "dvTable": "СЛ Пистолет"
     },
     "Pepper Shaker": {
-      "name": "Pepper Shaker",
-      "description": "<p>The Federated Arms Pepper Shaker is an Exotic SMG incapable of single shot or aimed shots. Autofire only use 6 bullets for this weapon. Full rules can be found in Black Chrome on Page 105.</p>",
+      "name": "Перечница",
+      "description": "<p>«Перечница» от Федерейтед армс — это экзотический ПП, котоырй не может вести одиночный или прицельный огонь. Автоогонь тратит только шесть патронов. Полные правила на стр. 105 Чёрного хрома.</p>",
       "dvTable": "СЛ ПП (Автоогонь)"
     },
     "Perseus": {
-      "name": "Perseus",
-      "description": "<p>The Militech Perseus is an Excellent Quality Exotic Very Heavy Pistol. Full Rules can be found in Black Chrome on Page 112.</p>",
+      "name": "Персей",
+      "description": "<p>«Персей» от Милитеха — экзотический пистолет сверхкрупного калибра отличного качества. Полные правила на стр. 112 Чёрного хрома.</p>",
       "dvTable": "СЛ Пистолет"
     },
     "Pursuit Security Bouncer": {
-      "name": "Pursuit Security Bouncer",
-      "description": "<p>Battery powered glove.</p>\n<p>One Handed Exotic Combination Stun Baton and Microwaver.</p>\n<p>Full details can be found on page 97.</p>"
+      "name": "Вышибала",
+      "description": "<p>Перчатка на батарейках.</p>\n<p>Одноручная экзотическая смесь оглушающей дубинки и микроволновки.</p>\n<p>Полные правила на стр. 97 Чёрного хрома.</p>"
     },
     "Ranger Combat Boomerang": {
-      "name": "Ranger Combat Boomerang",
-      "description": "<p>Acts like a one Handed Exotic Heavy Melee, though halves SP despite being thrown.</p>\n<p>Contains a built in guidance system, details of which can be found on page 100.</p>",
+      "name": "Боевой бумеранг «Рейнджер»",
+      "description": "<p>Считается за одноручное экзотическое тяжёлое оружие ближнего боя, но даже при броске игнорирует половину ОС.</p>\n<p>Внутри есть встроенная система наведения, подробнее о работе которой написано на стр. 100 Чёрного хрома.</p>",
       "dvTable": "СЛ Метательное оружие"
     },
     "Rhinocefist": {
-      "name": "Rhinocefist",
-      "description": "<p>Armored large stone chisel glove, covering from hand to shoulder. Requires interface plugs. Can be used both for demolition and brawling, detail of which can be found on page 95.</p>"
+      "name": "Кулак-носорог",
+      "description": "<p>Бронированное каменотёсное долото в виде перчатки, закрывающей кисть и предплечье. Требует разъём интерфейса. Можно сносить стены и бошки, подробнее о чём написано на стр. 95 Чёрного хрома.</p>"
     },
     "Rostović Kleaver": {
-      "name": "Rostović Kleaver",
-      "description": "<p>Two Handed Exotic Very Heavy Melee Weapon. Can use a battery pack to increase damage, details of which can be found on page 94.</p>\n<p>Need BODY 11 or more to use it.</p>"
+      "name": "Тесак",
+      "description": "<p>Двуручное экзотическое очень тяжёлое оружие ближнего боя. При помощи аккумулятора можно увеличить урон, о чём подробнее написано на стр. 94 Чёрного хрома.</p>\n<p>Для использования нужно ТЕЛ 11 или выше.</p>"
     },
     "Superchrome® Glam Rifle": {
-      "name": "Superchrome® Glam Rifle",
-      "description": "<p>The Superchrome&reg; Glam Rifle is an Exotic Assault Rifle. It gives the user a +2 bonus to Wardrobe and Style when equipped. Full rules can be found in Black Chrome on Page 120.</p>",
+      "name": "Щегольская винтовка с покрытием «Суперхром®»",
+      "description": "<p>Щегольская винтовка с покрытием «Суперхром&reg;» — экзотическая штурмовая винтовка. Она даёт стрелку бонус +2 к навыку «Гардероб и стиль». Полные правила на стр. 120 Чёрного хрома.</p>",
       "dvTable": "СЛ Штурмовая винтовка"
     },
     "Superchrome® Javelin": {
-      "name": "Superchrome® Javelin",
-      "description": "<p>The Superchrome&reg; Javelin is an Exotic Sniper Rifle. Gives the user a +2 bonus to Wardrobe and Style when equipped. Full rules can be found in Black Chrome on Page 120.</p>",
+      "name": "Джевелин с покрытием «Суперхром®»",
+      "description": "<p>Джевелин с покрытием «Суперхром&reg;» — это экзотическая снайперская винтовка. Она даёт стрелку бонус +2 к навыку «Гардероб и стиль». Полные правила на стр. 120 Чёрного хрома.</p>",
       "dvTable": "СЛ Снайперская винтовка"
     },
     "Superchrome® Sidearm": {
-      "name": "Superchrome® Sidearm",
-      "description": "<p>The Superchrome&reg; Sidearm is an Exotic Very Heavy Pistol. Gives the user a +2 bonus to Wardrobe and Style when equipped. Full rules can be found in Black Chrome on Page 121.</p>",
+      "name": "Личное оружие с покрытием «Суперхром®»",
+      "description": "<p>Личное оружие с покрытием «Суперхром&reg;» — это экзотический пистолет сверхкрупного калибра. Он даёт стрелку бонус +2 к навыку «Гардероб и стиль». Полные правила на стр. 121 Чёрного хрома.</p>",
       "dvTable": "СЛ Пистолет"
     },
     "Survivalist": {
-      "name": "Survivalist",
-      "description": "<p>The Eagletech Survivalist is a 2-in-1 Crossbow and Assault RIfle. It is incapable of Autofire. It comes with an integrated Sniping Scope*. Full rules can be found in Black Chrome on Page 103.</p>\n<p><em>*Must be manually applied after purchase</em></p>",
+      "name": "Выживальщик",
+      "description": "<p>«Выживальщик» от Иглтех — это арбалет и штурмовая винтовка 2 в 1. Из этого оружия нельзя вести автоогонь. Идёт в комплекте со снайперским прицелом*. Полные правила на стр. 103 Чёрного хрома.</p>\n<p><em>*Необходимо добавить вручную после получения оружия.</em></p>",
       "dvTable": "СЛ Луки и арбалеты"
     },
     "Tasmanskiy Klô": {
-      "name": "Tasmanskiy Klô",
-      "description": "<p>Big retractable blades in a Combat Glove.&nbsp;</p>\n<p>Excellent Quality Exotic Very Heavy Melee Weapon.</p>\n<p>Full details can be found on page 99.</p>"
+      "name": "Тасманский ко̂го̂ть",
+      "description": "<p>Большие выдвижные клинки в боевой перчатке.</p>\n<p>Экзотическое очень тяжёлое оружие ближнего боя отличного качества.</p>\n<p>Полные правила на стр. 99 Чёрного хрома.</p>"
     },
     "TechHammer": {
-      "name": "TechHammer",
-      "description": "<p>The KTech TechHammer is an Exotic Shotgun/Rocket Launcher. Full rules can be found in Black Chrome on Page 110.</p>",
+      "name": "Техмолот",
+      "description": "<p>«Техмолот» от КейТех — это экзотический дробовик/ракетница. Полные правила на стр. 110 Чёрного хрома.</p>",
       "dvTable": "СЛ Дробовик (Жакан)"
     },
     "Tommyknocker": {
-      "name": "Tommyknocker",
-      "description": "<p>The Tommyknocker is a combo Exotic Very Heavy Pistol and Poor Quality Shotgun. Requires BODY 10 or to be held in two hands when firing, otherwise the user drops the weapon to the ground. Full rules can be found in Black Chrome on Page 123.</p>",
+      "name": "Томминокер",
+      "description": "<p>Томминокер — это комбинация экзотического пистолета сверхкрупного калибра и дробовика плохого качества. Для стрельбы нужно ТЕЛ 10 или держать оружие двумя руками, в противном случае оно просто упадёт на землю. Полные правила на стр. 123 Чёрного хрома.</p>",
       "dvTable": "СЛ Пистолет"
     },
     "TR-4 Detonator Fluid": {
-      "name": "TR-4 Detonator Fluid",
-      "description": "<p>Must be poured into a fuel tank vehicle to explode. Full rules can be found on page 90.</p>"
+      "name": "Жидкая взрывчатка TR-4",
+      "description": "<p>Для подрыва заливается в топливный бак транспортного средства. Полные правила на стр. 90 Чёрного хрома.</p>"
     },
     "Ulični Uništitelj (Street Destroyer)": {
-      "name": "Ulični Uništitelj (Street Destroyer)",
-      "description": "<p>The Rostović Ulični Uni&scaron;titelj (Street Destroyer) is a Poor Quality Exotic Shotgun. The magazine only holds 3 shots. It can only shoot Shotgun Shells. Full rules can be found in Black Chrome on Page 117.</p>",
+      "name": "Уличный уничтожитель",
+      "description": "<p>«Уличный уничтожитель» от Ростович — экзотический дробовик плохого качества. В магазине всего три патрона. Стреляет только дробью. Полные правила на стр. 117 Чёрного хрома.</p>",
       "dvTable": "СЛ Дробовик (Жакан)"
     },
     "Utility Tomahawk": {
-      "name": "Utility Tomahawk",
-      "description": "<p>Blade and pike, this steel and composite ice axe can help you climb ice walls while also doing serious damage in a fight.</p>\n<p>Can be used as both a melee and ranged weapon, rules for which can be found on page 101.</p>",
+      "name": "Многофункциональный томагавк",
+      "description": "<p>Одновременно и клинок, этот ледоруб из стали и композитных материалов поможет взобраться по ледяному уступу и взять верх в сражении.</p>\n<p>Можно использовать как оружие ближнего боя, так и дальнего, о чём подробнее написано на стр. 101 Чёрного хрома.</p>",
       "dvTable": "СЛ Метательное оружие"
     },
     "Weeping Reaver Katana": {
-      "name": "Weeping Reaver Katana",
-      "description": "<p>Excellent Quality Two Handed Exotic Very Heavy Melee Weapon. Contains three doses of specific fluids for blade coating:</p>\n<ul>\n<li>Arasaka Fire (can ignite target)</li>\n<li>Arasaka Acid (ablates armor)</li>\n<li>Arasaka Wound Salt (applies a second critical injury)</li>\n</ul>\n<p>Full rules can be found on page 91.</p>"
+      "name": "Катана «Плачущий разбойник»",
+      "description": "<p>Двуручное экзотическое очень тяжёлое оружие ближнего бой отличного качества. Содержит три порции того или иного состава для покрытия клинка:</p>\n<ul>\n<li>«Огонь» (поджигает цель)</li>\n<li>«Кислота»(повреждает брони)</li>\n<li>«Соль на рану» (наносит второе критическое ранение)</li>\n</ul>\n<p>Полные правила на стр. 91 Чёрного хрома.</p>"
     },
     "Westwood": {
-      "name": "Westwood",
-      "description": "<p>The Westwood is a Very Heavy Pistol. 6 shot capacity that can't be upgraded with magazine attachments. Full rules can be found in Black Chrome on Page 121.</p>",
+      "name": "Вествуд",
+      "description": "<p>«Вествуд» — это пистолет сверхкрупного калибра. Магазин на шесть патронов нельзя улучшить. Полные правила на стр. 121 Чёрного хрома.</p>",
       "dvTable": "СЛ Пистолет"
     },
     "White Hornet Tanto": {
-      "name": "White Hornet Tanto",
-      "description": "<p>One Handed Exotic Medium Melee Weapon. Can render target unconscious rather than dead, with full rules found on page 93.</p>"
+      "name": "Танто «Белый шершень»",
+      "description": "<p>Одноручное экзотическое среднее оружие ближнего боя. Выводит цель из строя, а не убивает. Полные правила на стр. 93 Чёрного хрома.</p>"
     }
   }
 }
