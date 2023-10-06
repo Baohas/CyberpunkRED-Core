@@ -1,110 +1,110 @@
 {
-  "label": "Midnight With the Upload",
+  "label": "Полночь у Загруза",
   "mapping": {},
   "entries": {
     "Hummingbird": {
-      "name": "Hummingbird",
-      "description": "<p>No frills, just raw processing power.</p>\n<p>2 slots only for Hardware</p>\n<p>+1 to NET Actions each turn.</p>"
+      "name": "Колибри",
+      "description": "<p>Никакой мишуры, голая вычислительная мощность.</p>\n<p>Два слота только под аппаратное обеспечение</p>\n<p>+1 сетевое действие каждый ход.</p>"
     },
     "Kaliya": {
-      "name": "Kaliya",
-      "description": "<p>A fantastic option for dismantling hostile Netrunners. Just hope they don&rsquo;t have any Black ICE.</p>\n<p>6 slots for Programs or Hardware, 3 extra slots only for Flak programs.</p>\n<p>Restrictions for Defender Programs and Black ICE: Only Flak and Asp can be installed in any slot.</p>"
+      "name": "Калия",
+      "description": "<p>Превосходный вариант для того, чтобы разбирать вражеских нетраннеров. Главное, чтобы у них чёрного льда с собой не было.</p>\n<p>Шесть слотов для программ или аппаратного обеспечения, три дополнительных слота только для программы «Фейерверк».</p>\n<p>Ограничения для программ защиты и чёрного льда: в слоты можно установить только программы «Фейерверк» и «Аспид»</p>"
     },
     "Kerberos": {
-      "name": "Kerberos",
-      "description": "<p dir=\"ltr\">Unleash the fires of Hell upon your rivals.</p>\n<p dir=\"ltr\">6 slots for Programs, 5 slots for Hardware.</p>\n<p dir=\"ltr\">Program slots will only accept Hellhound Black ICE.</p>\n<p>&nbsp;</p>"
+      "name": "Кербер",
+      "description": "<p>Обрушь геенну огненную на соперников.</p>\n<p>Шесть слотов для программ, пять слотов для аппаратного обеспечения.</p>\n<p>В слоты для программ можно установить только чёрный лёд «Адская гончая».</p>"
     },
     "Kestrel 2": {
-      "name": "Kestrel 2",
-      "description": "<p>Black ICE can&rsquo;t hit what they can&rsquo;t catch.</p>\n<p>7 slots only for Programs.</p>\n<p>Right after Jacking In, Netrunner can activate a maximum of 2 installed Speedy Gonzalvez Programs without a NET Action.</p>"
+      "name": "Пустельга 2",
+      "description": "<p>Чёрный лёд не попадёт по тому, до чего не сможет добраться.</p>\n<p>Семь слотов только для программ.</p>\n<p>Непосредственно перед подключением нетраннер может запустить до двух установленных программ «Быстрый Гонзалвес» без сетевого действия.</p>"
     },
     "Kirama Advanced Deck": {
-      "name": "Kirama Advanced Deck",
-      "description": "<p>Though it may not be the flashiest choice, Kirama&rsquo;s finest Cyberdeck is expertly balanced and offers some highly practical safety features.</p>\n<p>5 slots for Programs or Hardware.</p>\n<p>Netrunner suffers no negative effects from an Unsafe Jack Out.</p>"
+      "name": "Продвинутая дека Кирама",
+      "description": "<p>Может быть и не самое помпезное устройство на рынке, но эта кибердека от Кирама обладает превосходной сборкой и оборудована полезными функциями безопасности.</p>\n<p>Пять слотов для программ или аппаратного обеспечения.</p>\n<p>Нетраннер не получает негативных эффектов от небезопасного отключения.</p>"
     },
     "Kirama Entry Deck": {
-      "name": "Kirama Entry Deck",
-      "description": "<p>An affordable and balanced Cyberdeck for novice Netrunners. Though limited by its modest hardware specs, it retains the advanced safety features of Kirama&rsquo;s flagship Cyberdecks.</p>\n<p>5 slots only for Programs.</p>\n<p>Only one of each Program category can be installed at a time (Attacker, Defender, Booster, Black ICE). Netrunner suffers no negative effects from an Unsafe Jack Out.</p>"
+      "name": "Начальная дека Кирама",
+      "description": "<p>Качественная кибердека в доступном ценовом сегменте для начинающих нетраннеров. Железо не самое последнее, но функции безопасности такие же, как на флагманских кибердеках Кирама.</p>\n<p>Пять слотов только для программ.</p>\n<p>Можно установить только одну программу каждой категории (атака, защита, усиление, чёрный лёд). Нетраннер не получает негативных эффектов от небезопасного отключения.</p>"
     },
     "Kirama Training Deck": {
-      "name": "Kirama Training Deck",
-      "description": "<p>The quintessential starter Cyberdeck. Bargain-bin price with bare-minimum hardware specs.</p>\n<p>5 slots only for Programs.</p>\n<p>Netrunner must be 2m/yds or closer to Access Point to Jack In. All brain damage from NET combat is doubled.</p>"
+      "name": "Учебная дека Кирама",
+      "description": "<p>Хрестоматийный пример кибердеки для начинающих. Стоит как уценка, минимальный функционал.</p>\n<p>Пять слотов только для программ.</p>\n<p>Нетраннер должен быть на 2 м/ярд ближе к точке доступа для подключения. Урон по мозгу от сетевого боя удваивается.</p>"
     },
     "MicroMate": {
-      "name": "MicroMate",
-      "description": "<p>Perfect for Netrunners who only know one speed: All offense, all the time. Just don't get hit, it's going to hurt. A lot.</p>\n<p>9 slots for Programs or Hardware.</p>\n<p>Slots will not accept Defender Programs. All brain damage from NET combat is doubled.</p>"
+      "name": "МикроДруг",
+      "description": "<p>Идеально для нетраннеров, у которых только один режим: беги и мочи. Главное, чтобы не прилетело — будет больно. Очень.</p>\n<p>Девять слотов для программ и аппаратного обеспечения.</p>\n<p>В слоты нельзя установить программы защиты. Урон по мозгу от сетевого боя удваивается.</p>"
     },
     "Microtech Assault": {
-      "name": "Microtech Assault",
-      "description": "<p>Relax and let your Black ICE do all the heavy lifting.</p>\n<p>4 slots for Programs, 5 slots for Hardware.</p>\n<p>Program slots only accept Black ICE.</p>"
+      "name": "«Штурм» Майкротех",
+      "description": "<p>Расслабься. Пусть чёрный лёд сделает всю тяжёлую работу за тебя.</p>\n<p>Четыре слота для программ, пять слотов для аппаратного обеспечения</p>\n<p>В слоты для программ можно установить только чёрный лёд.</p>"
     },
     "Microtech Scout": {
-      "name": "Microtech Scout",
-      "description": "<p>5 slots for Programs or Hardware.</p>\n<p>Netrunner can roll Pathfinder without a NET Action right after Jacking In.</p>"
+      "name": "«Разведчик» Майкротех",
+      "description": "<p>Пять слотов для программ или аппаратного обеспечения.</p>\n<p>Нетраннер может сделать проверку следопыта без сетевого действия сразу после подключения.</p>"
     },
     "Microtech Warrior": {
-      "name": "Microtech Warrior",
-      "description": "<p>7 Slots only for Programs.</p>\n<p>Netrunner can activate one Armor Program without a NET Action right after Jacking In.</p>"
+      "name": "«Воин» Майкротех",
+      "description": "<p>Семь слотов только для программ.</p>\n<p>Нетраннер может включить одну программу «Доспехи» без сетевого действия сразу после подключения.</p>"
     },
     "Parraline 6000": {
-      "name": "Parraline 6000",
-      "description": "<p>All the Hardware options with none of the restrictions.</p>\n<p>3 Program slots, 6 Hardware slots.</p>"
+      "name": "Парралайн 6000",
+      "description": "<p>Ставь железа сколько влезет.</p>\n<p>Три слота для программ, шесть слотов для аппаратного обеспечения.</p>"
     },
     "Phoenix": {
-      "name": "Phoenix",
-      "description": "<p>Never lose a Program again.</p>\n<p>6 slots for Programs or Hardware.</p>\n<p>Any Program destroyed in a netrunning session is restored upon a safe Jack Out.</p>"
+      "name": "Феникс",
+      "description": "<p>Больше ты никогда не потеряешь программу.</p>\n<p>Шесть слотов для программ или аппаратного обеспечения.</p>\n<p>Любая уничтоженная во время погружения программа восстанавливается после отключения.</p>"
     },
     "Verdant Knight": {
-      "name": "Verdant Knight",
-      "description": "<p>The classic sword-and-board Cyberdeck build is highly effective against Black ICE. Just don&rsquo;t plan on going toe-to-toe with a hostile Netrunner.</p>\n<p>9 slots only for Programs.</p>\n<p>Slots only accept Sword or Shield Programs.</p>"
+      "name": "Юный рыцарь",
+      "description": "<p>Классическая, незамысловатая кибердека, идеально подходящая для борьбы с чёрным льдом. Главное не напороться на вражеского нетраннера.</p>\n<p>Девять слотов только для программ.</p>\n<p>Можно установить только программы «Щит» и «Меч».</p>"
     },
     "Warlock's Book": {
-      "name": "Warlock's Book",
-      "description": "<p>A fantastic option for dismantling hostile Netrunners. Just hope they don&rsquo;t have any Black ICE.</p>\n<p>6 slots for Programs or Hardware, 3 extra slots only for Flak programs.</p>\n<p>Restrictions for Defender Programs and Black ICE: Only Flak and Asp can be installed in any slot.</p>"
+      "name": "Фолиант чернокнижника",
+      "description": "<p>Девять слотов для программ или аппаратного обеспечения.</p>\n<p>Нельзя установить атакующие программы и чёрный лёд.</p>"
     },
     "Aerie": {
-      "name": "Aerie",
-      "description": "<p>Each installed Raven Black ICE destroys Programs instead of derezzing.</p>"
+      "name": "Воронье гнездо",
+      "description": "<p>Установленные «Вороны» уничтожают программы, а не дересают их.</p>"
     },
     "Bushido Accelerator": {
-      "name": "Bushido Accelerator",
-      "description": "<p>+3 Speed to all installed Killer Black ICE.</p>"
+      "name": "Ускоритель бусидо",
+      "description": "<p>+3 СКО для всех установленных «Убийц».</p>"
     },
     "Combat Recorder": {
-      "name": "Combat Recorder",
-      "description": "<p>Real-world Combat data is invaluable for Black ICE development.</p>\n<p>If another Netrunner in the same NET Architecture fails a Death Save, the last 5 minutes of non-self incriminating Netrun combat data is saved to the Cyberdeck. Recordings can be sold for 50eb.</p>"
+      "name": "Регистратор боя",
+      "description": "<p>Настоящие данные сетевого боя бесценны для разработки чёрного льда.</p>\n<p>Если другой нетраннер, подключённый к той же архитектуре сети, проваливает испытание против смерти, последние пять минут данных сетевого боя записываются на кибердеку. Записи можно продать за 50eb.</p>"
     },
     "Defense Sequencer": {
-      "name": "Defense Sequencer",
-      "description": "<p>If an active Armor Program is derezzed or destroyed, Defense Sequencer activates a yet-unused copy of Armor Program at the start of the Netrunner&rsquo;s turn.</p>"
+      "name": "Защитный секвенсор",
+      "description": "<p>Если включённая программа «Доспехи» дереснута или уничтожена, защитный секвенсор включает ещё неиспользованную копию «Доспехов» в начале следующего хода нетраннера.</p>"
     },
     "Feline Instinct": {
-      "name": "Feline Instinct",
-      "description": "<p>If an installed Sabertooth Black ICE destroys a program, that Sabertooth deals an extra 1d6 of damage on each subsequent attack for the duration of the Netrun.</p>"
+      "name": "Кошачий инстинкт",
+      "description": "<p>Если установленный «Саблезуб» уничтожает программу, то он наносит дополнительные 1d6 урона на все последующие атаки за погружение.</p>"
     },
     "Hangry Hangry Dragon": {
-      "name": "Hangry Hangry Dragon",
-      "description": "<p>Everytime an installed Dragon Black ICE destroys a Program it regains full REZ.</p>"
+      "name": "Голодный и злой дракон",
+      "description": "<p>Всякий раз, когда установленный «Дракон» уничтожает программу, он восстанавливает все РЕС.</p>"
     },
     "Perfume Shoppe": {
-      "name": "Perfume Shoppe",
-      "description": "<p>Skunk Black ICE will only take 1 option slot to install.</p>"
+      "name": "Парфюмерный бутик",
+      "description": "<p>Чёрный лёд «Скунс» требует только одного слота для установки.</p>"
     },
     "Smithy": {
-      "name": "Smithy",
-      "description": "<p dir=\"ltr\">Be prepared for anything. Enter a NET Architecture full of Black ICE and you don&rsquo;t have have a Sword Program handy? Swap out your useless Banhammer with the press of a button.</p>\n<p dir=\"ltr\">Use Meat Action to change any and all installed Sword Programs into Banhammer Programs or vice versa.</p>\n<p>&nbsp;</p>"
+      "name": "Кузня",
+      "description": "<p>Будь готов ко всему. Подключился к кишащей чёрным льдом архитектуре сети, а под рукой нет «Меча»? Поменяй на него бесполезный «Банхаммер» одним нажатием кнопки.</p>\n<p>Мясным действием можно поменять любое количество установленных программ «Меч» на «Банхаммер» и наоборот.</p>"
     },
     "Snaketrap": {
-      "name": "Snaketrap",
-      "description": "<p>Protects against the first attack (Asp, Raven, or Poison Flatline effects) that would destroy a random installed Program. This protective effect can be use only once per Netrun even if multiple copies of Snaketrap are installed.</p>"
+      "name": "Ловушка со змеями",
+      "description": "<p>Защищает от первых атак (эффекты «Аспида», «Ворона» или «Ядовитого обнуления»), которые уничтожают случайную установленную программу.. Защитный эффект работает только один раз за погружение, даже если установлено несколько копия «Ловушки со змеями».</p>"
     },
     "Swamp Mist": {
-      "name": "Swamp Mist",
-      "description": "<p>Wisp Black ICE deal 2d6 damage instead of 1d6.</p>\n<p>Black ICE Program restrictions: Only Wisps can be installed.</p>"
+      "name": "Болотный туман",
+      "description": "<p>Чёрный лёд «Дух» наносит 2d6 урона вместо 1d6.</p>\n<p>Ограничения для чёрного льда: в слоты можно установить только программы «Дух».</p>"
     },
     "Swifty Clean": {
-      "name": "Swifty Clean",
-      "description": "<p>Netrunner can roll Cloak twice in a single NET Action and take the higher roll. Cloak can only be used once per Netrun when Swifty Clean is installed.</p>"
+      "name": "Был да сплыл",
+      "description": "<p>Нетраннер может сделать два броска маскировки за одно сетевое действие и выбрать наибольший результат. Маскировку можно использовать только один раз за погружение.</p>"
     }
   }
 }
