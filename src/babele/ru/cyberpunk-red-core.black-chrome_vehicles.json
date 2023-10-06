@@ -3,128 +3,128 @@
   "mapping": {},
   "entries": {
     "AeroCop": {
-      "name": "AeroCop",
-      "description": "<p>AV4 type Aerodyne. Police version.</p>\n<p>Full stats can be found on page 61.</p>"
+      "name": "АэроКоп",
+      "description": "<p>Аэродин AV-4. Полицейская версия.</p>\n<p>Полные характеристики на стр. 61 Чёрного хрома.</p>"
     },
     "AeroVox": {
-      "name": "AeroVox",
-      "description": "<p>AV4 type Aerodyne. Civilian version.</p>\n<p>Full stats can be found on page 61.</p>"
+      "name": "АэроВокс",
+      "description": "<p>Аэродин AV-4. Гражданская версия.</p>\n<p>Полные характеристики на стр. 61 Чёрного хрома.</p>"
     },
     "Badger Corporate Bus": {
-      "name": "Badger Corporate Bus",
-      "description": "<p>A luxurious bus for corporate road trips. Equally ell equipped for work meetings and after meeting drinks.</p>\n<p>Full details can be found on page 80.</p>"
+      "name": "Корпоративный автобус «Барсук»",
+      "description": "<p>Роскошный автобус для корпоративных поездок. Превосходно оборудован как для деловых встреч, так и для вечеринок после.</p>\n<p>Полная информация на стр. 80 Чёрного хрома.</p>"
     },
     "Bellhop": {
-      "name": "Bellhop",
-      "description": "<p>A one seat Gyrocopter which can be folded to the size of a large suitcase.</p>\n<p>Full stats can be found on page 60.</p>"
+      "name": "Посыльный",
+      "description": "<p>Одноместный автожир, который можно сложить до размера большого чемодана.</p>\n<p>Полные характеристики на стр. 60 Чёрного хрома.</p>"
     },
     "Chupacabra": {
-      "name": "Chupacabra",
-      "description": "<p>Compact Groundcar built from recycled parts from older vehicles. Low-tech but high-horse-power.</p>\n<p>Full details can be found on page 66.</p>"
+      "name": "Чупакабра",
+      "description": "<p>Компактный автомобиль, собранный из б/у запчастей, снятых со старых машин. Видок не очень, но топит как надо.</p>\n<p>Полная информация на стр. 66 Чёрного хрома.</p>"
     },
     "Destination": {
-      "name": "Destination",
-      "description": "<p>AV4 style Aerodyne, civilian model.</p>\n<p>Full stats can be found on page 62.</p>"
+      "name": "Назначение",
+      "description": "<p>Аэродин AV-4. Гражданская версия.</p>\n<p>Полные характеристики на стр. 62 Чёрного хрома.</p>"
     },
     "Ebi": {
-      "name": "Ebi",
-      "description": "<p>Small but well thought out Compact Groundcar.</p>\n<p>Full details can be found on page 72.</p>"
+      "name": "Эби",
+      "description": "<p>Маленький, да удаленький компактный автомобиль.</p>\n<p>Полная информация на стр. 72 Чёрного хрома.</p>"
     },
     "EconoCompact": {
-      "name": "EconoCompact",
-      "description": "<p>Small and low-cost Compact Groundcar.</p>\n<p>Full details can be found on page 64.</p>"
+      "name": "ЭконоКомпакт",
+      "description": "<p>Маленький и дешёвый компактный автомобиль.</p>\n<p>Полная информация на стр. 64 Чёрного хрома.</p>"
     },
     "Family Star Van": {
-      "name": "Family Star Van",
-      "description": "<p>Comfortable family Compact Groundcar.</p>\n<p>Full details can be found on page 65.</p>"
+      "name": "Фургон «Фэмили Стар»",
+      "description": "<p>Комфортный компактный автомобиль для всей семьи.</p>\n<p>Полная информация на стр. 65 Чёрного хрома.</p>"
     },
     "Gorgon Security Van": {
-      "name": "Gorgon Security Van",
-      "description": "<p>A monster of an armored van.</p>\n<p>Full details can be found on page 73.</p>"
+      "name": "Охранный фургон «Горгона»",
+      "description": "<p>Чудовищный бронированный фургон.</p>\n<p>Полная информация на стр. 73 Чёрного хрома.</p>"
     },
     "Grundy": {
-      "name": "Grundy",
-      "description": "<p>Armored industrial looking Compact Grouncar, with a powerful combat plow.</p>\n<p>Full details can be found on page 68.</p>"
+      "name": "Резонёр",
+      "description": "<p>Бронированный компактный автомобиль промышленного вида, оснащённый боевым кенгурятником.</p>\n<p>Полная информация на стр. 68 Чёрного хрома.</p>"
     },
     "Harriet 100": {
-      "name": "Harriet 100",
-      "description": "<p>A classic Roadbike with a more feminine look.</p>\n<p>Full details can be found on page 69.</p>"
+      "name": "Хэрриет 100",
+      "description": "<p>Классический дорожный мотоцикл, отличающийся особой женственностью.</p>\n<p>Полная информация на стр. 69 Чёрного хрома.</p>"
     },
     "Harvey 100": {
-      "name": "Harvey 100",
-      "description": "<p>A classic Roadbike.</p>\n<p>Full details can be found on page 69.</p>"
+      "name": "Харви 100",
+      "description": "<p>Классический дорожный мотоцикл.</p>\n<p>Полная информация на стр. 69 Чёрного хрома.</p>"
     },
     "Harvey Merc": {
-      "name": "Harvey Merc",
-      "description": "<p>A classic roadbike, this time with mounted weapons.</p>\n<p>Full details can be found on page 69.</p>"
+      "name": "Харви-наёмник",
+      "description": "<p>Классический дорожный мотоцикл, но с бортовым оружием.</p>\n<p>Полная информация на стр. 69 Чёрного хрома.</p>"
     },
     "Herakles": {
-      "name": "Herakles",
-      "description": "<p>AV4 type troop transport, armored and armed.</p>\n<p>Full stats can be found on page 63.</p>"
+      "name": "Геракл",
+      "description": "<p>Десантный аэродин AV-4, бронированный и оснащённый вооружением.</p>\n<p>Полные характеристики на стр. 63 Чёрного хрома.</p>"
     },
     "Highway Master Artemis": {
-      "name": "Highway Master Artemis",
-      "description": "<p>A low-riding Roadbike with retractable glass cover. Has a surpercharge mode that doesn't come with a safety guarantee.</p>\n<p>Full details can be found on page 70.</p>"
+      "name": "Артемида, владычица дорог",
+      "description": "<p>Дорожный мотоцикл с малым дорожным просветом и выдвижной стеклянной крышкой. Обладает турборежимом, но при его использовании безопасность не гарантирована.</p>\n<p>Полная информация на стр. 70 Чёрного хрома.</p>"
     },
     "JetBoy Hoverboard": {
-      "name": "JetBoy Hoverboard",
-      "description": "<p>A hoverboard driven with Athletics Skill. Can't be upgraded.</p>\n<p>Full details can be found on page 78.</p>"
+      "name": "Ховерборд «ДжетБой»",
+      "description": "<p>Ховерборд, управление которым осуществляется с помощью навыка «Атлетика». Нельзя установить улучшения.</p>\n<p>Полная информация на стр. 78 Чёрного хрома.</p>"
     },
     "MegaHauler": {
-      "name": "MegaHauler",
-      "description": "<p>Armored truck transport. As much a train as a car.</p>\n<p>Full details can be found on page 79.</p>"
+      "name": "Мегагрузовоз",
+      "description": "<p>Бронированный грузовик. В равной степени и автомобиль, и поезд.</p>\n<p>Полная информация на стр. 79 Чёрного хрома.</p>"
     },
     "Molly 1K": {
-      "name": "Molly 1K",
-      "description": "<p>Off-road Compact Groundcar.</p>\n<p>Full details can be found on page 82.</p>"
+      "name": "Молли 1К",
+      "description": "<p>Компактный автомобиль-внедорожник.</p>\n<p>Полная информация на стр. 82 Чёрного хрома.</p>"
     },
     "Paladin 500": {
-      "name": "Paladin 500",
-      "description": "<p>A High Performance Groundcar. Now you can be MadMax. In town. With two mounted Machine Guns.</p>\n<p>Full details can be found on page 75.</p>"
+      "name": "Паладин 500",
+      "description": "<p>Спортивный автомобиль. Стань Безумным Максом. Местного пошиба. С двумя пулемётами на борту.</p>\n<p>Полная информация на стр. 75 Чёрного хрома.</p>"
     },
     "Parallax Cybercycle": {
-      "name": "Parallax Cybercycle",
-      "description": "<p>Top of the line Superbike.</p>\n<p>Full details can be found on page 83.</p>"
+      "name": "Киберцикл «Параллакс»",
+      "description": "<p>Первоклассный супербайк.</p>\n<p>Полная информация на стр. 83 Чёрного хрома.</p>"
     },
     "Range Trike": {
-      "name": "Range Trike",
-      "description": "<p>Three wheeled Roadbike.</p>\n<p>Full details can be found on page 67.</p>"
+      "name": "Разъездной трицикл",
+      "description": "<p>Трёхколёсный дорожный мотоцикл.</p>\n<p>Полная информация на стр. 67 Чёрного хрома.</p>"
     },
     "SH-45 Patroller Law": {
-      "name": "SH-45 Patroller Law",
-      "description": "<p>One seat Gyrocopter. Police version, with mounted Machine Gun.</p>\n<p>Full stats can be found on page 58.</p>"
+      "name": "SH-45 «Полицейский дозорный»",
+      "description": "<p>Одноместный автожир. Полицейская версия с бортовым пулемётом.</p>\n<p>Полные характеристики на стр. 58 Чёрного хрома.</p>"
     },
     "SH-45 Patroller": {
-      "name": "SH-45 Patroller",
-      "description": "<p>One seat Gyrocopter. Civilian version.</p>\n<p>Full stats can be found on page 58.</p>"
+      "name": "SH-45 «Дозорный»",
+      "description": "<p>Одноместный автожир. Гражданская версия.</p>\n<p>Полные характеристики на стр. 58 Чёрного хрома.</p>"
     },
     "Sliver": {
-      "name": "Sliver",
-      "description": "<p>A Roadbike with all the gadgets you'd ever need.</p>\n<p>Full details can be found on page 84.</p>"
+      "name": "Серебринка",
+      "description": "<p>Дорожный мотоцикл, под завязку напичканный всякими гаджетами.</p>\n<p>Полная информация на стр. 84 Чёрного хрома.</p>"
     },
     "Street King Combat Vehicle": {
-      "name": "Street King Combat Vehicle",
-      "description": "<p>A High Performance Groundcar which is large, armored and has a military look.</p>\n<p>Full details can be found on page 77.</p>"
+      "name": "Боевая машина «Король улиц»",
+      "description": "<p>Большой, бронированный, военный на вид спортивный автомобиль.</p>\n<p>Полная информация на стр. 77 Чёрного хрома.</p>"
     },
     "TDT 004": {
       "name": "TDT 004",
-      "description": "<p>Troop transport Helicopter.</p>\n<p>Full details can be found on page 59.</p>"
+      "description": "<p>Десантный транспортный вертолёт.</p>\n<p>Полная информация на стр. 59 Чёрного хрома.</p>"
     },
     "The Zacatzontli Pickup Truck": {
-      "name": "The Zacatzontli Pickup Truck",
-      "description": "<p>A Compact Groundcar equipped for off-road travel.</p>\n<p>Full details can be found on page 74.</p>"
+      "name": "Пикап «Цакацонтли»",
+      "description": "<p>Компактный автомобиль, приспособленный для путешествий по бездорожью.</p>\n<p>Полная информация на стр. 74 Чёрного хрома.</p>"
     },
     "Thunder-X": {
-      "name": "Thunder-X",
-      "description": "<p>A top of the line High Performance Groundcar.</p>\n<p>Full details can be found on page 76.</p>"
+      "name": "Гром-X",
+      "description": "<p>Первоклассный спортивный автомобиль.</p>\n<p>Полная информация на стр. 76 Чёрного хрома.</p>"
     },
     "Volkhov": {
-      "name": "Volkhov",
-      "description": "<p>An armored pickup Compact Groundcar with mounted machine gun. Combes with a bottle of vodka.</p>\n<p>Full details can be found on page 71.</p>"
+      "name": "Волхов",
+      "description": "<p>Бронированный пикап с бортовым пулемётом. Бутылка водки в подарок.</p>\n<p>Полная информация на стр. 71 Чёрного хрома.</p>"
     },
     "Yang's Wheels Rickshaw": {
-      "name": "Yang's Wheels Rickshaw",
-      "description": "<p>Roadbike with attached trailer for passengers.</p>\n<p>Full details can be found on page 81.</p>"
+      "name": "Рикша",
+      "description": "<p>Дорожный мотоцикл с прицепом для пассажиров.</p>\n<p>Полная информация на стр. 81 Чёрного хрома.</p>"
     }
   }
 }
