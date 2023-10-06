@@ -1,54 +1,54 @@
 {
-  "label": "Hornet's Pharmacy",
+  "label": "Аптека Хорнета",
   "mapping": {},
   "entries": {
     "Bodyweight AutoInjector": {
-      "name": "Bodyweight AutoInjector",
-      "description": "<p>Internal Body Cyberware.</p>\n<p>Use an Action to load one dose of Street Drug into a subdermal storage pod. Optionally, one can configure a Biomonitor to automatically dose the user upon entering combat, suffering a critical injury, or reaching a predetermined Wound State threshold.</p>"
+      "name": "Автоинъектор Бодивейт",
+      "description": "<p>Внутренний киберимплант.</p>\n<p>Действием можно загрузить одну дозу уличного наркотика в подкожную капсулу. Дополнительно можно настроить биомонитор таким образом, чтобы доза вводилась при начале боя, получения критического ранения или достижения определённой границы ранений.</p>"
     },
     "Gas Jet": {
-      "name": "Gas Jet",
-      "description": "<p>Cyberarm Option. Takes 2 option slots.</p>\n<p>Gas Jet sprays a burst of 3 doses of a Street Drug or 3 Vials of Poison/Biotoxin into a 3x3 square directly in front of the shooter (similar to Shotgun Shell attack). Can be used one-handed and is virtually undetectable even without a Conceal check.</p>\n<p>All susceptible targets in range suffer the effects of the drug or poison. Targets equipped with gear that neutralizes gas attacks (Nasal Filters &amp; Anti-Smog Breathing Mask) are not affected. Gas Jet must be loaded with 3 more doses after each shot before firing again.</p>"
+      "name": "Газовый рожок",
+      "description": "<p>Расширение для киберруки. Занимает два слота расширений.</p>\n<p>Имплант разбрызгивает три дозы уличного наркотика или три капсулы с ядом/биотоксином на площадь 3х3 квадрата непосредственно напротив стреляющего (как выстрел дробью). Можно использовать одной рукой, а обнаружить только проверкой навыка «Скрыть/обнаружить предмет».</p>\n<p>Все, кто может быть подвержен действию яда или наркотика в зоне поражения, получают соответствующие эффекты. Цели, одетые в снаряжение, нивелирующие газовые атаки (носовые фильтры, антисмоговые респираторы) не подвергаются воздействию. Чтобы снова стрелять, газовый рожок нужно зарядить тремя дозами препарата.</p>"
     },
     "Berserker": {
-      "name": "Berserker",
-      "description": "<p><strong>Primary Effect</strong></p>\n<p>Dose lasts for 10 Minutes.</p>\n<ul>\n<li>Induces a state of frenzy and increased aggression.</li>\n<li>User takes no Bonus Damage for any Critical Injury.</li>\n<li dir=\"ltr\">Wound State/Facedown penalties to Skill or Stat checks are halved.</li>\n</ul>\n<p><strong>Secondary Effect (DV17)</strong></p>\n<p>When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV.</p>\n<ul>\n<li>-2 Humanity Loss.</li>\n<li>User is now addicted to Berserker if not already addicted. +1 to Base Death Save Penalty while addicted.</li>\n</ul>"
+      "name": "Берсерк",
+      "description": "<p><strong>Основной эффект</strong></p>\n<p>Доза действует 10 минут.</p>\n<ul>\n<li>Вводит в состояние бешенства и повышенной агрессии.</li>\n<li>Принявший препарат не получает дополнительные повреждения от критических ранений.</li>\n<li>Штрафы к проверкам навыков и параметров от ранений и наезда уменьшаются вдвое.</li>\n</ul>\n<p><strong>Дополнительный эффект (СЛ17)</strong></p>\n<p>Когда действие дозы прекращается, принявший её проходит проверку ВОЛ + Сопротивление пыткам/препаратам + 1d10 СЛ дополнительного эффекта. В случае провала:</p>\n<ul>\n<li>Потеря человечности -2.</li>\n<li>Персонаж становится зависим и получает +1 базовому штрафу к испытанию против смерти.</li>\n</ul>"
     },
     "Prime Time": {
-      "name": "Prime Time",
-      "description": "<p><strong>Primary Effect</strong></p>\n<p>Dose last 4 Hours.</p>\n<ul>\n<li>Sharpens focus and willpower at the cost of dampened emotions</li>\n<li>-4d6 Humanity until dose wears off*</li>\n<li>+2 to COOL and WILL stats. User&rsquo;s max HP not affected by the +2 WILL</li>\n</ul>\n<p><em>* Humanity can not fall under 0 from taking Prime Time</em></p>\n<p><strong>Secondary (DV17)</strong></p>\n<p>When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV.</p>\n<ul>\n<li>-1 Humanity Loss</li>\n<li>-2 to COOL while addicted and not currently dosed with Prime Time.</li>\n</ul>"
+      "name": "Час пик",
+      "description": "<p><strong>Основной эффект</strong></p>\n<p>Доза действует 4 часа.</p>\n<ul>\n<li>Обостряет концентрацию и самообладание ценой подавления эмоций</li>\n<li>-4d6 человечности пока не закончится действие дозы*</li>\n<li>+2 параметрам ХАР и ВОЛЯ. Максимальный уровень ПЗ не меняется из-за +2 ВОЛЯ</li>\n</ul>\n<p><em>* Человечность не может упасть ниже 0 после принятия Часа пик</em></p>\n<p><strong>Дополнительный эффект (СЛ17)</strong></p>\n<p>Когда действие дозы прекращается, принявший её проходит проверку ВОЛ + Сопротивление пыткам/препаратам + 1d10 СЛ дополнительного эффекта. В случае провала:</p>\n<ul>\n<li>Потеря человечности -1</li>\n<li>Персонаж становится зависим и получает -2 к ХАР пока не находится под действием Часа пик.</li>\n</ul>"
     },
     "Sedative": {
-      "name": "Sedative",
-      "description": "<p>MedTech pharmaceutical.</p>\n<p>Applies the Unconscious condition for 4 hours on a willing target. +2 bonus to MechTech Surgery checks on targets dosed with Sedative.</p>\n<p>Unwilling target must make a DV15 Resist Torture/Drugs check. On failed check, target is unconscious for 1 minute or 20 rounds in combat. Target wakes upon taking damage. Others can use an Action to awaken target.</p>"
+      "name": "Седативное",
+      "description": "<p>Лекарственный препарат медтехника.</p>\n<p>Цель, добровольно принявшая препарат, теряет сознание на 4 часа. Бонус +2 к проверкам хирургии медтехника, если цель под седативным.</p>\n<p>Цель, принявшая препарат не добровольно, должна пройти проверку сопротивления пыткам/препаратам СЛ15. В случае провала персонаж теряет сознание на одну минуту или двадцать ходов в бою. Персонаж просыпается, если получает урон. Другие персонажи могут его разбудить действием.</p>"
     },
     "Sixgun": {
-      "name": "Sixgun",
-      "description": "<p>Leave meatspace behind and supercharge your synapses.</p>\n<p><strong>Primary Effect</strong></p>\n<p>Dose lasts 4 hours.</p>\n<ul>\n<li>+2 to Speed while Netrunning</li>\n<li>-2 To MOVE (Minimum 1)</li>\n<li>-2 To REF to a (Minimum 1)</li>\n<li>User does not suffer the penalties of an Unsafe Jack Out unless forced to Jack Out by a program.</li>\n<li>User can burn 1 Humanity for 1 additional NET Action once per turn.</li>\n</ul>\n<p><strong>Secondary (DV17)</strong></p>\n<p>Unless under Primary Effect</p>\n<ul>\n<li>-2 to Speed while Netrunning</li>\n</ul>"
+      "name": "Сиксган",
+      "description": "<p>Оставь мясное пространство позади и заряди свои синапсы по полной.</p>\n<p><strong>Основной эффект</strong></p>\n<p>Доза действует 4 часа.</p>\n<ul>\n<li>+2 скорости во время нетраннинга</li>\n<li>-2 к СКО (минимум 1)</li>\n<li>-2 к РЕА (минимум 1)</li>\n<li>Принявший дозу не получает штрафы от небезопасного отключения, если его не заставила это сделать программа.</li>\n<li>Принявший дозу может сжечь 1 человечность, чтобы получить 1 дополнительное сетевое действие один раз за ход.</li>\n</ul>\n<p><strong>Дополнительный эффект (СЛ17)</strong></p>\n<p>Когда действие дозы прекращается, принявший её проходит проверку ВОЛ + Сопротивление пыткам/препаратам + 1d10 СЛ дополнительного эффекта. В случае провала:</p>\n<ul>\n<li>Персонаж становится зависим и получает -2 к нетраннингу пока не находится под действием Сиксгана.</li>\n</ul>"
     },
     "Timewarp": {
-      "name": "Timewarp",
-      "description": "<p><strong>Primary Effect</strong></p>\n<p>Dose lasts 1 minute.</p>\n<ul>\n<li>+3 to any Initiative Rolls. If already in combat, +3 to current Initiative.</li>\n</ul>\n<p><strong>Secondary (DV17)</strong></p>\n<p>When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV.</p>\n<ul>\n<li>-2 to Initiative Rolls while addicted if not currently dosed with TimeWarp.</li>\n</ul>"
+      "name": "Искривление времени",
+      "description": "<p><strong>Основной эффект</strong></p>\n<p>Доза действует 1 минуту</p>\n<ul>\n<li>+3 ко всем броскам инициативы. Если принявший дозу уже в бою, +3 к показателю инициативы.</li>\n</ul>\n<p><strong>Дополнительный эффект (СЛ17)</strong></p>\n<p>Когда действие дозы прекращается, принявший её проходит проверку ВОЛ + Сопротивление пыткам/препаратам + 1d10 СЛ дополнительного эффекта. В случае провала:.</p>\n<ul>\n<li>Персонаж становится зависим и получает -2 к броскам инициативы пока не находится под действием Искривления времени.</li>\n</ul>"
     },
     "Veritas": {
-      "name": "Veritas",
-      "description": "<p>Dose lasts 10 minutes.</p>\n<p>MedTech pharmaceutical.</p>\n<p>Target must make a DV17 Resist Torture/Drugs check. On failed check, target suffers -5 to Acting, Concentration, Conversation, Deduction, Human Perception, and Persuasion Checks</p>"
+      "name": "Веритас",
+      "description": "<p>Доза действует 10 минут.</p>\n<p>Лекарственный препарат медтехника.</p>\n<p>Цели необходимо сделать проверку сопротивления пыткам/препаратам СЛ17. В случае провала цель получает штраф -5 к проверкам актёрской игре, концентрации, общения, дедукции, восприятия и внимания.</p>"
     },
     "Delaying Compound": {
-      "name": "Delaying Compound",
-      "description": "<p>This additive delays the effects of a Poison or Biotoxin Vial by a minute or an hour. Mixing multiple Delaying Compounds does not increase delay period.</p>"
+      "name": "Задерживающая добавка",
+      "description": "<p>Эта добавка задерживает эффект яда или биотоксина на минуту или на час. Добавление нескольких задерживающих добавок не увеличивает период задержки.</p>"
     },
     "Distilling Compound": {
-      "name": "Distilling Compound",
-      "description": "<p>This additive increases the Resist Torture/Drugs DV of Poison or Biotoxin Vials by 2. Mixing multiple Distilling Compounds does not increase Resist Torture/Drugs DV beyond the initial +2.</p>"
+      "name": "Очищающая добавка",
+      "description": "<p>Эта добавка увеличивает СЛ проверки сопротивления пыткам/препаратам для ампул с ядом или с биотоксином на 2. Добавление нескольких очищающих добавок не увеличивает сложность проверки.</p>"
     },
     "Osmosis Compound": {
-      "name": "Osmosis Compound",
-      "description": "<p>This additive allows a Vial of Poison or Biotoxin to be absorbed through skin contact. One vial can cover 2 square feet when applied to a surface and lasts for one hour. Can be neutralized by rinsing with water.&nbsp;</p>\n<p>The first meat target to touch the affected area with a meat body part is dosed with the poison. A DV17 Perception check reveals the poison. More than one dose in the same 2 square foot area has no added effect.</p>"
+      "name": "Осмотическая добавка",
+      "description": "<p>Эта добавка позволяет ампуле с ядом или с биотоксином подействовать через кожу. Одной ампулы хватит, чтобы покрыть два квадратных метра (0,2 м<sup>2</sup>), срок действия — один час. Легко смывается водой.</p>\n<p>Первая мясная цель, коснувшаяся поражённую площадь мясной частью тела, получает отравления. Чтобы обнаружить яд нужна проверка внимательности СЛ17. Дополнительное покрытие одной и той же поверхности не принесёт результата.</p>"
     },
     "Suzumebachi Assassin Drone": {
-      "name": "Suzumebachi Assassin Drone",
-      "description": "<p>A small wasp-shaped drone designed for silent assassinations.</p>\n<p>Stats: 6 MOVE - 7SP - 10HP.</p>\n<p>Can be neutralized in 5 min with a DV17 Electronic/Security Tech check.</p>\n<p>Default Programming:</p>\n<ol>\n<li>Locate target using onboard camera.</li>\n<li>Attack target with dartgun until ammo is depleted or target's infrared&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;signature no longer detected</li>\n<li>Exfiltrate and return to operator</li>\n</ol>\n<p>Drone is commonly controlled with a NET Architecture.</p>\n<p>Range:</p>\n<p>Perimeter of a NET Architecture-equipped building or 50m/yds away from a portable NET Architecture.</p>\n<p>Loadout:</p>\n<ul>\n<li>Camera with low Light, UV, Infrared modes</li>\n<li>Dartgun with 8 Biotoxin Arrows</li>\n<li>Airhypo</li>\n</ul>"
+      "name": "Дрон-убийца «Судзумэбати»",
+      "description": "<p>Маленький дрон, исполненный в виде осы, предназначенный для незаметных убийств.</p>\n<p>Параметры: 6 СКО - 7ОС - 10ПЗ.</p>\n<p>Можно обезвредить за пять минут проверкой электроники/безопасности СЛ17.</p>\n<p>Базовая программа:</p>\n<ol>\n<li>Обнаружить цель при помощи встроенной камеры.</li>\n<li>Стрелять по цели из дротикомёта до тех пор, пока не закончатся или цель не станет видно в инфракрасном свете.</li>\n<li>Покинуть место и вернуться к оператору</li>\n</ol>\n<p>Дрон обычно управляется посредством архитектуры сети.</p>\n<p>Радиус:</p>\n<p>Периметр здания с архитектурой сети или 50 м/ярд от портативной архитектуры сети.</p>\n<p>Нагрузка:</p>\n<ul>\n<li>Камера с режимом обзора при низком освещении и в инфракрасном спектре</li>\n<li>Дротикомёт и восемь стрел с биотоксином</li>\n<li>Пневмошприц</li>\n</ul>"
     }
   }
 }
