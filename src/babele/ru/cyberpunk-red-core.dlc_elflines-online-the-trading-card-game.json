@@ -1,26 +1,26 @@
 {
-  "label": "Elflines Online the Trading Card Game",
+  "label": "Коллекционная карточная игра «Эльфлайнс Онлайн»",
   "mapping": {
     "dvTable": "system.dvTable"
   },
   "entries": {
     "Elflines Online Playing Cards": {
-      "name": "Elflines Online Playing Cards",
-      "description": "<p>Cards meant to be used as part of playing Elfines Online The Trading Card Game.</p>"
+      "name": "Карточки «Эльфлайнс Онлайн»",
+      "description": "<p>Карточки для коллекционной карточной игры «Эльфлайнс Онлайн»</p>"
     },
     "Duel Caster": {
       "name": "Duel Caster",
-      "description": "<p>A plastic housing and card launcher for ELO Cards. ROF 3 if only weapon fired on your turn. Can also be loaded with normal playing cards but makes the weapon Poor Quality.</p>",
+      "description": "<p>Пластиковый футляр и метатель для карточек ЭЛО. СКА 3, если в этом ходу не стреляешь из другого оружия. Можно зарядить обычными игральными картами, но тогда оружие становится плохого качества</p>",
       "dvTable": "СЛ Пистолет"
     },
     "Scarlet Blackbow": {
-      "name": "Scarlet Blackbow",
-      "description": "<p>A revitalized bow that must be reloaded after every attack. If you roll 1 on Attack (Crit fail) the bow's battery pack explodes. Comes bundeled with a Quiver and 6 Rubber Arrows.</p>",
+      "name": "Алый чернолук",
+      "description": "<p>Снова вошедший в моду лук. Перезарядка является частью действия атаки.</p>\n<p>Если выпадает единица на атаку (критический провал), взрывается аккумулятор лука.</p>\n<p>В комплекте идут колчан и шесть резиновых стрел.</p>",
       "dvTable": "СЛ Луки и арбалеты"
     },
     "Sword of Arvish": {
-      "name": "Sword of Arvish",
-      "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting. If you roll 1 on Attack (Crit Fail) the weapon crushes the wielder's fingers.</p>"
+      "name": "Меч Арвиша",
+      "description": "<p>Клинок и рукоять. Создан специально для режущих и колющих ударов.</p>\n<p>Если выпадает единица на атаку (критический провал), оружие ломает пальцы хозяину.</p>"
     }
   }
 }
