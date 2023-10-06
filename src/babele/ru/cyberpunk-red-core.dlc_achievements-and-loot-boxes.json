@@ -37,7 +37,7 @@
           "3-3": "Bodyweight AutoInjector",
           "4-4": "AirWell 50",
           "5-5": "Grenade (Poison)",
-          "6-6": "TR-4 Detonator Fluid"
+          "6-6": "Жидкая взрывчатка TR-4"
         }
       ]
     },
@@ -84,7 +84,7 @@
       "name": "A Box Melted Out Of Shape",
       "results": [
         {
-          "1-1": "Scavenged Armor",
+          "1-1": "Перелатанная броня",
           "2-2": "Grenade (Incendiary)",
           "3-3": "Neo-Soviet Cyberarm",
           "4-4": "Rifle (Basic)",
@@ -107,14 +107,14 @@
       ]
     },
     "A Box Sealed With A Lipstick Kiss": {
-      "name": "A Box Sealed With A Lipstick Kiss",
+      "name": "Коробка со следом от губной помады",
       "results": [
         {
           "1-1": "Combat Knife",
-          "3-3": "Shuriken Tornado Grenade",
+          "3-3": "Граната (торнадо сюрикенов)",
           "4-4": "Asia Pop Footwear",
           "5-5": "Businesswear Top",
-          "6-6": "White Hornet Tanto",
+          "6-6": "Танто «Белый шершень»",
           "2-2": "Mr. Studd Sexual Implant"
         }
       ]
@@ -123,7 +123,7 @@
       "name": "A Box Showing Signs Of Repair",
       "results": [
         {
-          "1-1": "Utility Tomahawk",
+          "1-1": "Многофункциональный томагавк",
           "2-2": "Holo Projector Palm",
           "3-3": "Techtool",
           "4-4": "Audio Recorder",
