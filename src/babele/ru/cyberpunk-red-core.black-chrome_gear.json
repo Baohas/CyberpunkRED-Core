@@ -3,112 +3,112 @@
   "mapping": {},
   "entries": {
     "AirWell 50": {
-      "name": "AirWell 50",
-      "description": "<p>Produces enough water to sustain a person. For more information, see Black Chrome Page 48.</p>"
+      "name": "Конденсационный колодец 50",
+      "description": "<p>Производит воду в количестве, достаточном для одного человека. Подробности на стр. 48 Чёрного хрома.</p>"
     },
     "Banshee Microphone": {
-      "name": "Banshee Microphone",
-      "description": "<p>Wireless Microphone Headset. Gives the User a +2 bonus to Play Instrument (Singing) Skill Checks while worn. Doesn't stack with other bonuses to Play Instrument. For additional information, see Black Chrome Page 40.</p>"
+      "name": "Микрофон «Банши»",
+      "description": "<p>Беспроводной микрофон с наушником. Даёт носящему бонус +2 к проверкам игры на инструменте (пение). Бонус не суммируется. Подробности на стр. 40 Чёрного хрома.</p>"
     },
     "ChipVault": {
-      "name": "ChipVault",
-      "description": "<p>Can hold up to 8 pieces of Chipware. Chipware stored inside are immune to EMP effects. For more information, see Black Chrome Page 44.</p>"
+      "name": "Щепкохранилище",
+      "description": "<p>Вмещает в себя до восьми щепок. Хранящиеся внутри щепки неуязвимы к ЭМИ. Подробности на стр. 44 Чёрного хрома.</p>"
     },
     "CO2 Tank": {
-      "name": "CO2 Tank",
-      "description": "<p>A CO2 tank designed for usage with the Masetto AirRider armor. Must be replaced after every usage. Refer to full item description on BC pg. 33.</p>"
+      "name": "Баллон CO₂",
+      "description": "<p>Баллон с CO&#8322;, предназначенный для использования с бронёй «Воздушный наездник» от Масетто. После каждого использования требуется замена. Полное описание предмета на стр. 33 Чёрного хрома.</p>"
     },
     "Doberman 500": {
-      "name": "Doberman 500",
-      "description": "<p>Canine Personal Drone that can be linked to an Agent.&nbsp;<br>Refer to its rules on Page 46 of Black Chrome.</p>"
+      "name": "Доберман 500",
+      "description": "<p>Дрон для личного пользователя в виде собаки, который можно подключить к агенту.</p>\n<p>Полные правила на стр. 46 Чёрного хрома.</p>"
     },
     "Drink Master 3000": {
-      "name": "Drink Master 3000",
-      "description": "<p>Can make 10 beverages out of a 3000 beverages library before needing to be refilled. Can also make Smash. For more information, see Black Chrome Page 42.</p>"
+      "name": "Мастер напитков 3000",
+      "description": "<p>Можно приготовить десять напитков из каталога «Мастера напитков 3000» за одну заправку. Может приготовить Смэш. Подробности на стр. 42 Чёрного хрома.</p>"
     },
     "EL-F4-NT Linear Frame": {
-      "name": "EL-F4-NT Linear Frame",
-      "description": "<p>Exoskeleton. Increases BODY to 12 while equipped. No changes to your HP or Deathsave. Has pre-installed techtools. (See Black Chrome pg. 55 for more details.)</p>"
+      "name": "Прямоходный остов EL-F4-NT",
+      "description": "<p>Экзоскелет. ТЕЛ 12 пока подключён. ПЗ и испытание против смерти остаются неизменными. В комплекте предустановленные техтулы. (Подробности смотри на стр. 55 Чёрного хрома)</p>"
     },
     "Fūma Kotarō Linear Frame": {
-      "name": "Fūma Kotarō Linear Frame",
-      "description": "<p>Exoskeleton.</p>\n<ul>\n<li>Requires 2 Interface Plugs</li>\n<li>Increases BODY to 12 while plugged in</li>\n<li>Does not affect HP or Deathsave</li>\n<li>Stealth +2</li>\n</ul>\n<p>Comes with two Excellent Quality Exotic Heavy Melee Weapons and one Excellent Quality Exotic Light Melee Weapon pre-installed*.</p>\n<p>See Black Chrome pg. 52 for more details.</p>\n<p><em>* Must be manually added.</em></p>"
+      "name": "Прямоходный остов «Фума Котаро»",
+      "description": "<p>Экзоскелет.</p>\n<ul>\n<li>Требуется два разъёма интерфейса</li>\n<li>ТЕЛ 12 пока подключён</li>\n<li>ПЗ и испытание против смерти остаются неизменными</li>\n<li>Скрытность +2</li>\n</ul>\n<p>Идёт в комплекте с двумя единицами экзотического тяжёлого оружия ближнего боя отличного качества и одной единицей экзотического тяжёлого оружия ближнего боя отличного качества*.</p>\n<p>Подробности смотри на стр. 52 Чёрного хрома.</p>\n<p><em>* Необходимо добавить вручную.</em></p>"
     },
     "Jeeves Executive Garment Bag": {
-      "name": "Jeeves Executive Garment Bag",
-      "description": "<p>Bag that can repair one piece of fashion or armor at a time. For more information, see Black Chrome Page 43.</p>"
+      "name": "Мешок для одежды «Камердинер»",
+      "description": "<p>Мешок, способный починить один предмет одежды или брони за раз. Подробности на стр. 43 Чёрного хрома.</p>"
     },
     "Laser Light Electric Guitar": {
-      "name": "Laser Light Electric Guitar",
-      "description": "<p>Electric Guitar that gives the User a +1 to their Play Instrument (Guitar) Skill Check. This guitar also counts as one installation of Light Tattoo Fashionware while worn. For more information, see Black Chrome Page 41.</p>"
+      "name": "Электрическая гитара",
+      "description": "<p>Электрическая гитара, которая даёт играющему бонус +1 к проверкам игры на инструменте (гитара). Так ж гитара считается за одну установку светотату. Подробности на стр. 41 Чёрного хрома.</p>"
     },
     "LF-001 SWAT Linear Frame": {
-      "name": "LF-001 SWAT Linear Frame",
-      "description": "<p>Exoskeleton. Requires 2 Interface Plugs. Increases BODY to 12 while plugged in. No changes to your HP or Deathsave. Ignores the normal movement penalty for climbing and swimming. (See Black Chrome pg. 53 for more details.)</p>"
+      "name": "Прямоходный остов SWAT ПО-001",
+      "description": "<p>Экзоскелет. Требуется два разъёма интерфейса. ТЕЛ 12 пока подключён. ПЗ и испытание против смерти остаются неизменными. Нет штрафа к движению во время лазанья и плаванья. (Подробности смотри на стр. 53 Чёрного хрома)</p>"
     },
     "Mr. Biscuit Multi-Food Processor": {
-      "name": "Mr. Biscuit Multi-Food Processor",
-      "description": "<p>Can sustain a group of up to 10 people when in the Outskirts. For more information, see Black Chrome Page 49.</p>"
+      "name": "Мультипищевой комбайн «Мистер Хрустик»",
+      "description": "<p>Может прокормить до десяти человек, находящихся на Окраине. Подробности на стр. 49 Чёрного хрома.</p>"
     },
     "Nitro Ultra9": {
-      "name": "Nitro Ultra9",
-      "description": "<p>Can be poured into a Vehicle's tank to refill it as an Action. Gives bonuses to movement at the expense of safety. For more information, see Black Chrome Page 49.</p>"
+      "name": "Нитро Ультра9",
+      "description": "<p>Действием можно залить в топливный бак транспортного средства чтобы наполнить. Даёт бонусы к скорости в ущерб безопасности. Подробности на стр. 49 Чёрного хрома.</p>"
     },
     "One Touch Habitat": {
-      "name": "One Touch Habitat",
-      "description": "<p>Provides protection from Exposure. Counts as Sleeping in the Wilderness or as Sleeping on the Streets. For more information, see Black Chrome Page 48.</p>"
+      "name": "Жилище в одно касание",
+      "description": "<p>Защищает от воздействия окружающей среды. Считается за сон в дикой местности или сон на улице. Подробности на стр. 48 Чёрного хрома.</p>"
     },
     "Porta-Printer": {
-      "name": "Porta-Printer",
-      "description": "<p>Miniature Workshop. Allows a Tech to use Upgrade and Fabrication Experstise anywhere as long as they have techtools. For more information, see Black Chrome Page 43.</p>"
+      "name": "Порта-принтер",
+      "description": "<p>Миниатюрная мастерская. Позволяет техника использовать навыки «Мастер улучшений» и «Мастер изготовления» в любых условиях при наличии необходимы инструментов. Подробности на стр. 43 Чёрного хрома.</p>"
     },
     "RapiDeploy Sheath": {
-      "name": "RapiDeploy Sheath",
-      "description": "<p>Gives the User a +2 bonus to their Conceal/Reveal Skill Check if used to conceal a weapon already capable of concealement. For more information, see Black Chrome Page 47.</p>"
+      "name": "Быстродейственная кобура",
+      "description": "<p>Даёт бонус +2 к проверкам навыка «Скрыть/обнаружить предмет» для скрытия оружия, которое можно скрыть. Подробности на стр. 47 Чёрного хрома.</p>"
     },
     "Shower•in•a•Can": {
-      "name": "Shower•in•a•Can",
-      "description": "<p>Spray Deodorant. Desinfects and deodorize. One use per can. For more information, see Black Chrome Page 38.</p>"
+      "name": "Душ•в•банке",
+      "description": "<p>Аэрозольный дезодорант. Избавляет от бактерий и запаха. Одно использование на банку. Подробности на стр. 38 Чёрного хрома.</p>"
     },
     "Sonic Boom Amp": {
-      "name": "Sonic Boom Amp",
-      "description": "<p>While linked to an instrument, the User can take an Action to make everyone nearby make a Resist Torture/Drugs Check. For more information, see Black Chrome Page 40.</p>"
+      "name": "Усилитель «Звуковой удар»",
+      "description": "<p>Подключив к нему инструмент, пользователь может действием заставить всех присутствующих пройти проверку сопротивления пыткам/наркотикам. Подробности на стр. 40 Чёрного хрома.</p>"
     },
     "SovOil Industrial Lubricant": {
-      "name": "SovOil Industrial Lubricant",
-      "description": "<p>Lubricant in a helpfully sized can. For more information, see Black Chrome Page 56.</p>"
+      "name": "Промышленная смазка",
+      "description": "<p>Смазка, которой хватит надолго. Подробности на стр. 56 Чёрного хрома.</p>"
     },
     "SovOil Medical Lubricant": {
-      "name": "SovOil Medical Lubricant",
-      "description": "<p>Lubricant in a helpfully sized can. For more information, see Black Chrome Page 56.</p>"
+      "name": "Медицинская смазка",
+      "description": "<p>Смазка, которой хватит надолго. Подробности на стр. 56 Чёрного хрома.</p>"
     },
     "SovOil Personal Lubricant": {
-      "name": "SovOil Personal Lubricant",
-      "description": "<p>Lubricant in a helpfully sized can. For more information, see Black Chrome Page 56.</p>"
+      "name": "Личная смазка",
+      "description": "<p>Смазка, которой хватит надолго. Подробности на стр. 56 Чёрного хрома.</p>"
     },
     "Streetcase": {
-      "name": "Streetcase",
-      "description": "<p>Can carry many easily accessible items that YOU need to stay safe. For more information, see Black Chrome Page 47.</p>"
+      "name": "Уличный чемоданчик",
+      "description": "<p>Позволяет носить с собой множество небольших предметов, которые ТЕБЕ нужно держать в сохранности. Подробности на стр. 47 Чёрного хрома.</p>"
     },
     "Triti-Fizz": {
-      "name": "Triti-Fizz",
-      "description": "<p>North America's favorite soft drink. For more information, see Black Chrome Page 124.</p>"
+      "name": "Трити-физз",
+      "description": "<p>Прохладительный напиток №1 в Северной Америке. Подробности на стр. 124 Чёрного хрома.</p>"
     },
     "Typhoid Speaker": {
-      "name": "Typhoid Speaker",
-      "description": "<p>When linked to a KillStrom Sonic Boom Amp, increases the DV of the Resist Torture/Drugs Check. For more information, see Black Chrome Page 41.</p>"
+      "name": "Колонка «Тиф»",
+      "description": "<p>При подключении к усилителю «Звуковой удар» от КиллСторм, СЛ проверки сопротивления пыткам/наркотикам увеличивается. Подробности на стр. 41 Чёрного хрома.</p>"
     },
     "Universal Aqualung": {
-      "name": "Universal Aqualung",
-      "description": "<p>When worn, User can breathe underwater as long as within 10 m/yards of the surface. For more information, see Black Chrome Page 42.</p>"
+      "name": "Универсальный акваланг",
+      "description": "<p>С ним можно дышать под водой, находясь на глубине не более 10 м/ярд. Подробности на стр. 42 Чёрного хрома.</p>"
     },
     "Vermilion Linear Frame": {
-      "name": "Vermilion Linear Frame",
-      "description": "<p>Exoskeleton. Requires 2 Interface Plugs. Increases BODY to 12 while plugged in. No changes to your HP or Deathsave. &nbsp;No movement penalty for jumping. While running your movement is increased by 6m/yds. (See Black Chrome pg. 54 for more details.)</p>"
+      "name": "Прямоходный остов «Киноварь»",
+      "description": "<p>Экзоскелет. Требуется два разъёма интерфейса. ТЕЛ 12 пока подключён. ПЗ и испытание против смерти остаются неизменными. Нет штрафа к движению во время прыжков. Во время бега скорость увеличивается на 6 м/ярд. (Подробности смотри на стр. 54 Чёрного хрома)</p>"
     },
     "WorldSat Aerial Sphere": {
-      "name": "WorldSat Aerial Sphere",
-      "description": "<p>When set up, provides access to a Citinet when within 50 miles of the city or of another set up WorldSat Aerial Sphere that is connected to the Citinet. For more information, see Black Chrome Page 50.</p>"
+      "name": "Антенная сфера",
+      "description": "<p>После развёртывания обеспечивает доступ к Ситинету на расстоянии до 50 миль (80 км) от города или другой антенной сферы, подключённой к Ситинету. Подробности на стр. 50 Чёрного хрома.</p>"
     }
   }
 }
