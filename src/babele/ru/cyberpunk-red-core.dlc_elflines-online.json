@@ -4,15 +4,15 @@
   "entries": {
     "Elflines Online": {
       "name": "Elflines Online",
-      "description": "<p>A new in-box copy of the hit BDMMORPG Elflines Online.</p>"
+      "description": "<p>Новая запечатанная копия популярнейшей BDMMORPG «Эльфлайнс Онлайн».</p>"
     },
     "Rank 10 ELO Character": {
-      "name": "Rank 10 ELO Character",
-      "description": "<p>A power-leveled Rank 10 ELO character. (ELO Character must be created via the Macro and ranked up manually.)</p>"
+      "name": "Персонаж ЭЛО десятого уровня",
+      "description": "«Персонаж для ЭЛО десятого уровня» (Персонажей для ЭЛО нужно создавать при помощи макроса и прокачивать вручную)"
     },
     "Rush Revolution": {
-      "name": "Rush Revolution",
-      "description": "<p>Braindance Headset. Required to play Elflines Online.</p>"
+      "name": "Раш Революшн",
+      "description": "<p>Очки для брейндансов. Необходимы для игры в «Эльфлайнс Онлайн».</p>"
     }
   }
 }
