@@ -3,24 +3,24 @@
   "mapping": {},
   "entries": {
     "4Tify": {
-      "name": "4Tify",
-      "description": "<p>An app for your agent. Can reveals weak points by scanning your home. Or a section of cover...</p>\n<p>Full rules can be found on page 13.</p>"
+      "name": "На6вие",
+      "description": "<p>Приложение для агента. Определяет слабые места в жилище. Или в укрытии…</p>\n<p>Полные правила на странице 13 Чёрного хрома.</p>"
     },
     "City Database": {
-      "name": "City Database",
-      "description": "<p>An app for your agent. Find the best adresses in town with this city guide. Full rules on page 14.</p>"
+      "name": "База данных города",
+      "description": "<p>Приложение для агента. Городской справочник, который поможет найти самые лучшие места по твоему запросу.</p>\n<p>Полные правила на странице 14 Чёрного хрома.</p>"
     },
     "Digital Gladiator": {
-      "name": "Digital Gladiator",
-      "description": "<p>An app for your agent. Create a virtual Solo and take your fights into the digital realm!</p>\n<p>Rules for fights can be found on page 12.</p>"
+      "name": "Цифровой гладиатор",
+      "description": "<p>Приложение для агента. Создай виртуального соло и перенеси свои битвы в цифровое пространство!</p>\n<p>Правила боёв на страницу 12 Чёрного хрома.</p>"
     },
     "MedScan": {
-      "name": "MedScan",
-      "description": "<p>An app for your agent. Medical video conferencing, helping you to perfer first aid, for a price. Full rules can be found on page 14.</p>"
+      "name": "МедСкан",
+      "description": "<p>Приложение для агента. Видеоконференция с медицинским специалистом, который поможет с первой помощью. За деньги, конечно.</p>\n<p>Полные правила на странице 14 Чёрного хрома.</p>"
     },
     "NCPD Crime Database": {
-      "name": "NCPD Crime Database",
-      "description": "<p>An app for your agent. Allows the user to look up public criminal information. Full rules for using can be found on page 13.</p>\n<p>&nbsp;</p>"
+      "name": "База досье преступлений",
+      "description": "<p>Приложение для агента. Позволяет пользователю получить доступ к открытым данным о преступлениях.</p>\n<p>Полные правила использования на странице 13 Чёрного хрома.</p>"
     }
   }
 }
