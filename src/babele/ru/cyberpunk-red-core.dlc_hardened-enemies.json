@@ -1,9 +1,9 @@
 {
-  "label": "Hardened Enemies",
+  "label": "Прожжённые враги",
   "mapping": {},
   "entries": {
     "Hardened Lieutenant Tactics": {
-      "name": "Hardened Lieutenant Tactics",
+      "name": "Тактики прожжённых бригадиров",
       "results": [
         {
           "1-1": "1 Mook is firing incendiary ammunition (CP:R page 346), but only has 10 rounds.",
@@ -20,7 +20,7 @@
       ]
     },
     "Hardened Mini Boss Mini Promotion": {
-      "name": "Hardened Mini Boss Mini Promotion",
+      "name": "Повышение для прожжёного мини-босса",
       "results": [
         {
           "1-1": "1 Mook is firing incendiary ammunition (CP:R page 346), but only has 10 rounds.",
@@ -37,7 +37,7 @@
       ]
     },
     "Mook Encounter Complication": {
-      "name": "Mook Encounter Complication",
+      "name": "Сложности при столкновениях с фуфелами",
       "results": [
         {
           "1-1": "1 Mook is firing incendiary ammunition (CP:R page 346), but only has 10 rounds.",
