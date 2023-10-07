@@ -3,20 +3,20 @@
   "mapping": {},
   "entries": {
     "AirRider": {
-      "name": "AirRider",
+      "name": "Воздушный наездник",
       "description": "<p>Kevlar Body Armor that ignores the Whiplash critical injury from car crashes as long as the armor's CO2 tank is full*. Refer to full item description on BC pg. 33.</p>\n<p><em>*Must be manually added after acquiring the armor.</em></p>"
     },
     "Bunker Gear": {
-      "name": "Bunker Gear",
-      "description": "<p>Fireproof flak armor with a built in gas mask and 30 minutes of oxygen in a tank that refills itself after an hour. -4 to REF, DEX, and MOVE. Refer to full item description on BC pg. 29.</p>"
+      "name": "Боевая одежда пожарного",
+      "description": "<p>Огнеупорный костюм сапёра со встроенным респиратором и баллоном с кислородом на тридцать минут. Баллон заполняется автоматически в течение часа. -4 к РЕА, ЛВК и СКО. Полное описание на стр. 29 Чёрного хрома.</p>"
     },
     "Corporate Island": {
-      "name": "Corporate Island",
-      "description": "<p>Light Armorjack that looks like businesswear. Refer to full item description on BC pg. 35.</p>"
+      "name": "Корпоративный остров",
+      "description": "<p>Лёгкий бронекостюм, который выглядит как одежда делового стиля. Полное описание на стр. 35 Чёрного хрома.</p>"
     },
     "Dirk Combat Jacket": {
-      "name": "Dirk Combat Jacket",
-      "description": "<p>Leisurewear-styled Light Armorjack and the ability to conceal two standard magazines without a check. Refer to full item description on BC pg. 28.</p>"
+      "name": "Боевая куртка «Кинжал»",
+      "description": "<p>Лёгкий бронекостюм, выполненный в стиле «спортивки», в котором можно спрятать два стандартных магазина без проверки. Полное описание на стр. 28 Чёрного хрома.</p>"
     },
     "Executive Armor": {
       "name": "Executive Armor",
