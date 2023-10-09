@@ -1,7 +1,7 @@
 {
   "label": "MicroCromo",
   "mapping": {
-    "dvTable": "system.dvTable"
+    "dvTable": "sistema.Tablavd"
   },
   "entries": {
     "Superflash Jacket": {
