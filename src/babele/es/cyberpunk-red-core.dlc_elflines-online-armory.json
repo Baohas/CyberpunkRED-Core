@@ -1,7 +1,7 @@
 {
   "label": "Arsenal de Elflines Online",
   "mapping": {
-    "dvTable": "system.dvTable"
+    "dvTable": "sistema.Tablavd"
   },
   "entries": {
     "Arrow": {
