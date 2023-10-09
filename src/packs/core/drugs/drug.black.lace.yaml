@@ -1,8 +1,8 @@
 _id: 6BM5WFyCyIM8lZib
 _key: "!items!6BM5WFyCyIM8lZib"
 effects:
-  - _id: aNvneLolAXX4F6Rs
-  - _id: L4P56fOWGjVT82ES
+  - aNvneLolAXX4F6Rs
+  - L4P56fOWGjVT82ES
 img: systems/cyberpunk-red-core/icons/compendium/drugs/black_lace.svg
 name: Black Lace
 system:
