@@ -1,0 +1,73 @@
+_id: BEEWtOZvjXxgHvd2
+_key: "!items!BEEWtOZvjXxgHvd2"
+effects: []
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/black-chrome/ziggurat-city-database.svg
+name: City Database
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Ziggurat
+  concealable:
+    concealable: false
+    isConcealed: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>An app for your agent. Find the best adresses in town with this city
+      guide. Full rules on page 14.</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 0
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: false
+  isInstalled: false
+  isRanged: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  modifiers:
+    attackmod:
+      type: modifier
+      value: null
+    damage:
+      type: modifier
+      value: null
+    magazine:
+      type: modifier
+      value: null
+    rof:
+      type: modifier
+      value: null
+    secondaryWeapon:
+      configured: false
+  price:
+    market: 100
+  providesHardening: false
+  rof: 1
+  size: 1
+  source:
+    book: BC
+    page: 14
+  type: gear
+  unarmedAutomaticCalculation: true
+  usesType: magazine
+  weaponSkill: ""
+  weaponType: ""
+type: itemUpgrade

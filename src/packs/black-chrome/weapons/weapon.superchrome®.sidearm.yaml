@@ -1,0 +1,60 @@
+_id: kQ8ZI0Fv1wDnZ5Ru
+_key: "!items!kQ8ZI0Fv1wDnZ5Ru"
+effects:
+  - cbbjCrElwBdBKPvO
+img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
+name: Superchrome® Sidearm
+system:
+  ammoVariety:
+    - vHeavyPistol
+  attackmod: 0
+  brand: Centurion Essentials
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 4d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>The Superchrome&reg; Sidearm is an Exotic Very Heavy Pistol. Gives the
+      user a +2 bonus to Wardrobe and Style when equipped. Full rules can be
+      found in Black Chrome on Page 121.</p>
+  dvTable: DV Pistol
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  installedItems:
+    allowed: false
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isRanged: true
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 8
+    value: 0
+  price:
+    market: 1000
+  quality: standard
+  revealed: true
+  rof: 1
+  source:
+    book: BC
+    page: 121
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: toggled
+  usesType: magazine
+  weaponSkill: Handgun
+  weaponType: vHeavyPistol
+type: weapon

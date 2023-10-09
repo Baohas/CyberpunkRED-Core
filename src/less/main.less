@@ -26,10 +26,11 @@
 
 div,
 section {
-  scrollbar-width: none;
+  scrollbar-width: thin;
 }
 
 .window-app .window-content {
+  font: var(--cpr-font-primary) !important;
   color: var(--cpr-text-normal);
   background: var(--cpr-background-window);
 
@@ -41,6 +42,11 @@ section {
   select {
     color: var(--cpr-text-normal);
     background: var(--cpr-background-window);
+  }
+
+  .entry-name,
+  .directory-list {
+    color: var(--cpr-text-dir-list);
   }
 }
 

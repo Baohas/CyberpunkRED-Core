@@ -237,7 +237,7 @@ export default class CPRActorSheet extends ActorSheet {
         name: e.name,
         sourceName: e.sourceName,
         parentName: e.parent.name,
-        id: e.id,
+        uuid: e.uuid,
         icon: e.icon,
         usage: e.usage,
         system: {
@@ -310,8 +310,15 @@ export default class CPRActorSheet extends ActorSheet {
     // Ablate Armor
     html.find(".ablate").click((event) => this._ablateArmor(event));
 
-    // Set Armor as Current
-    html.find(".armor-current").click((event) => this._makeArmorCurrent(event));
+    // Track armor and set armor values as current
+    html
+      .find(".armor-current-untrack")
+      .click((event) => this._makeArmorCurrentTrack(event));
+
+    // Untrack armor and remove armor values from token
+    html
+      .find(".armor-current-track")
+      .click((event) => this._makeArmorCurrentUntrack(event));
 
     // Generic item action
     html.find(".item-action").click((event) => this._itemAction(event));
@@ -541,13 +548,6 @@ export default class CPRActorSheet extends ActorSheet {
       }
       default:
     }
-    const targetedTokens = SystemUtils.getUserTargetedOrSelected("targeted"); // get user targeted tokens for output to chat
-    if (rollType === CPRRolls.rollTypes.DAMAGE && targetedTokens.length === 0) {
-      SystemUtils.DisplayMessage(
-        "warn",
-        "CPR.chat.damageApplication.noTokenTargeted"
-      );
-    }
 
     // note: for aimed shots this is where location is set
     const keepRolling = await cprRoll.handleRollDialog(event, this.actor, item);
@@ -569,7 +569,7 @@ export default class CPRActorSheet extends ActorSheet {
     }
 
     // "Consume" LUCK if used
-    if (Number.isInteger(cprRoll.luck) > 0) {
+    if (Number.isInteger(cprRoll.luck) && cprRoll.luck > 0) {
       const luckStat = this.actor.system.stats.luck.value;
       this.actor.update({
         "system.stats.luck.value":
@@ -579,6 +579,7 @@ export default class CPRActorSheet extends ActorSheet {
 
     // output to chat
     const token = this.token === null ? null : this.token._id;
+    const targetedTokens = SystemUtils.getUserTargetedOrSelected("targeted"); // get user targeted tokens for output to chat
 
     cprRoll.entityData = {
       actor: this.actor.id,
@@ -783,11 +784,25 @@ export default class CPRActorSheet extends ActorSheet {
    * @private
    * @param {} event - object capturing event data (what was clicked and where?)
    */
-  _makeArmorCurrent(event) {
-    LOGGER.trace("_makeArmorCurrent | CPRActorSheet | Called.");
+  _makeArmorCurrentTrack(event) {
+    LOGGER.trace("_makeArmorCurrentTrack | CPRActorSheet | Called.");
     const location = SystemUtils.GetEventDatum(event, "data-location");
     const id = SystemUtils.GetEventDatum(event, "data-item-id");
-    this.actor.makeThisArmorCurrent(location, id);
+    this.actor.setTrackedArmor(location, "track", id);
+  }
+
+  /**
+   * This is the callback for setting armor as untracked, which is the star glyph. This
+   * removes the tracking of the armor from the token.
+   *
+   * @callback
+   * @private
+   * @param {} event - object capturing event data (what was clicked and where?)
+   */
+  _makeArmorCurrentUntrack(event) {
+    LOGGER.trace("_makeArmorCurrentUntrack | CPRActorSheet | Called.");
+    const location = SystemUtils.GetEventDatum(event, "data-location");
+    this.actor.setTrackedArmor(location, "untrack");
   }
 
   /**
@@ -932,6 +947,19 @@ export default class CPRActorSheet extends ActorSheet {
 
       if (!confirmDelete) {
         return;
+      }
+    }
+
+    if (item.type === "armor") {
+      if (item.system.isBodyLocation) {
+        // Removes armor values for body armor if the body armor is deleted.
+        this.actor.setTrackedArmor("body", "untrack");
+      } else if (item.system.isHeadLocation) {
+        // Removes armor values for head armor if the head armor is deleted.
+        this.actor.setTrackedArmor("head", "untrack");
+      } else if (item.system.isShield) {
+        // Removes armor values for shield if the shield is deleted.
+        this.actor.setTrackedArmor("shield", "untrack");
       }
     }
 

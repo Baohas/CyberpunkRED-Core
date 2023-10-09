@@ -6,7 +6,7 @@ IFS=$'\n\t'
 # SYSTEM_FILE
 
 # Check if src/system.json exists
-SYSFILE="src/${SYSTEM_FILE}"
+SYSFILE="src/${SYSTEM_FILE:-system.json}"
 ERRORS=0
 
 if [[ ! -f "${SYSFILE}" ]]; then
@@ -14,7 +14,7 @@ if [[ ! -f "${SYSFILE}" ]]; then
   exit 1
 fi
 
-# Check we have lanaguaged defined in system.json
+# Check we have lanaguages defined in system.json
 LANGFILES=$(jq -r '.languages | .[] | .path' "${SYSFILE}")
 
 if [[ -z "${LANGFILES}" ]]; then

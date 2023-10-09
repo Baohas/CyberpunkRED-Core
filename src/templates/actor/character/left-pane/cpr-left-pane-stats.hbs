@@ -3,7 +3,7 @@
   {{#each actor.system.stats as |stat s| }}
     <div class="actor-stats-stat text-normal text-center">
       <div class="actor-stats-title text-semi">
-        <a class="rollable" data-roll-type="stat" data-roll-title="{{s}}">
+        <a class="rollable" data-roll-type="stat" data-roll-title="{{s}}" data-tooltip="{{cprGetStatToolTip s}}">
           {{localize (cprFindConfigValue "statList" s)}}
         </a>
       </div>

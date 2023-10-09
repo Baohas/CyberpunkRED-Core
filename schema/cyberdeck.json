@@ -9,6 +9,12 @@
         "_id": {
           "$ref": "./components/id.json"
         },
+        "_key": {
+          "$ref": "./components/key.json"
+        },
+        "effects": {
+          "$ref": "./components/effects.json"
+        },
         "flags": {
           "$ref": "./components/flags.json"
         },
@@ -26,13 +32,7 @@
           "$ref": "#/definitions/System"
         }
       },
-      "required": [
-        "_id",
-        "img",
-        "name",
-        "system",
-        "type"
-      ]
+      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
     },
     "System": {
       "type": "object",
@@ -80,6 +80,9 @@
         "programs": {
           "$ref": "#/definitions/Programs"
         },
+        "quality": {
+          "$ref": "./components/quality.json"
+        },
         "size": {
           "$ref": "./components/installable/size.json"
         },
@@ -121,10 +124,7 @@
           "items": {}
         }
       },
-      "required": [
-        "installed",
-        "rezzed"
-      ]
+      "required": ["installed", "rezzed"]
     }
   }
 }

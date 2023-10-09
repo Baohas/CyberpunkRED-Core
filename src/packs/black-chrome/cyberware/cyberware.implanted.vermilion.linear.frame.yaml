@@ -1,0 +1,71 @@
+_id: vuq1KEbsMjpOTqhl
+_key: "!items!vuq1KEbsMjpOTqhl"
+effects:
+  - n1T1ojrhz0na565t
+img: >-
+  systems/cyberpunk-red-core/icons/compendium/default/default-implanted-linearframe.svg
+name: Implanted Vermilion Linear Frame
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: Wyzard Technologies
+  concealable:
+    concealable: false
+    isConcealed: false
+  core: false
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Increases your BODY stat to 12 (adjusting your HP and Wound Threshold
+      and Death Save). No movement penalty for jumping. While running your
+      movement is increased by 6m/yds. (See Black Chrome pg. 54 for more
+      details.)</p>
+  dvTable: ""
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  humanityLoss:
+    roll: 4d6
+    static: 14
+  installLocation: mall
+  installedIn: ""
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+      - cyberware
+    list: []
+    slots: 3
+    usedSlots: 0
+  isElectronic: true
+  isFoundational: true
+  isInstalled: false
+  isRanged: false
+  isUpgraded: false
+  isWeapon: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 5000
+  providesHardening: false
+  revealed: true
+  rof: 1
+  size: 0
+  source:
+    book: BC
+    page: 54
+  type: borgware
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: installed
+  usesType: magazine
+  weaponSkill: Archery
+  weaponType: assaultRifle
+type: cyberware

@@ -9,8 +9,11 @@
         "_id": {
           "$ref": "./components/id.json"
         },
+        "_key": {
+          "$ref": "./components/key.json"
+        },
         "effects": {
-          "$ref": "./components/effects/activeEffects.json"
+          "$ref": "./components/effects.json"
         },
         "flags": {
           "$ref": "./components/flags.json"
@@ -29,14 +32,7 @@
           "$ref": "#/definitions/System"
         }
       },
-      "required": [
-        "_id",
-        "effects",
-        "img",
-        "name",
-        "system",
-        "type"
-      ]
+      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
     },
     "System": {
       "type": "object",
@@ -53,6 +49,9 @@
         },
         "concealable": {
           "$ref": "./components/physical/concealable.json"
+        },
+        "critFailEffect": {
+          "$ref": "./components/attackable/critFailEffect.json"
         },
         "damage": {
           "$ref": "./components/attackable/damage.json"
@@ -89,6 +88,9 @@
         },
         "price": {
           "$ref": "./components/valuable/price.json"
+        },
+        "quality": {
+          "$ref": "./components/quality.json"
         },
         "revealed": {
           "$ref": "./components/effects/revealed.json"

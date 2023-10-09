@@ -1,0 +1,21 @@
+_id: 7cjWFTjwgwm4Pamn
+_key: "!items!7cjWFTjwgwm4Pamn"
+effects: []
+img: icons/svg/item-bag.svg
+name: Martial Arts
+system:
+  basic: false
+  category: fightingSkills
+  core: true
+  description:
+    chat: ""
+    unidentified: ""
+    value: ""
+  difficulty: difficult
+  favorite: false
+  level: 0
+  source:
+    book: Core
+    page: 137
+  stat: dex
+type: skill

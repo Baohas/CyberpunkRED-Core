@@ -9,6 +9,7 @@ import * as CPRRolls from "../rolls/cpr-rolls.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import TextUtils from "../utils/TextUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
 
@@ -546,9 +547,8 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * This is where derived stats are calculated, and the behavior is driven by which sheet
-   * (aka "app") is associated with the actor. This includes max HP, Humanity, Empathy, and
-   * Death Saves. For mooks we skip humanity and hp calculations.
+   * This is where derived stats are calculated, Note, one can tailor the behavior
+   * depending on which sheet (aka "app") is associated with the actor.
    *
    * To Do: this is called 3 times when creating an actor... why?
    *
@@ -566,12 +566,6 @@ export default class CPRActor extends Actor {
     // seriously wounded
     derivedStats.seriouslyWounded = Math.ceil(derivedStats.hp.max / 2);
 
-    // We need to always call this because if the actor was wounded and now is not, their
-    // value would be equal to max, however their current wound state was never updated.
-    this._setWoundState();
-    // Updated derivedStats variable with currentWoundState
-    derivedStats.currentWoundState = this.system.derivedStats.currentWoundState;
-
     // Death save
     let basePenalty = 0; // 0 + active effects
     const critInjury = this.itemTypes.criticalInjury;
@@ -586,27 +580,23 @@ export default class CPRActor extends Actor {
       derivedStats.deathSave.penalty + derivedStats.deathSave.basePenalty;
     this.system.derivedStats = derivedStats;
 
-    if (typeof this.apps === "undefined") {
-      // this happens when the actor is being created, we hardcode defaults here based on 6s in all stats
-      derivedStats.hp.value = 40;
-      derivedStats.hp.max = 40;
-      derivedStats.humanity.value = 60;
-      derivedStats.humanity.max = 60;
-    } else if (
-      Object.values(this.apps).some(
-        (app) => app instanceof CPRCharacterActorSheet
-      )
-    ) {
-      // The rest is character-specific. We only calculate hp and humanity for characters because some mooks
-      // break the rules/standards.
-      derivedStats.hp.value = Math.min(
-        derivedStats.hp.value,
-        derivedStats.hp.max
-      );
-      if (derivedStats.humanity.value > derivedStats.humanity.max) {
-        derivedStats.humanity.value = derivedStats.humanity.max;
-      }
-    }
+    // Make sure current HP is never higher than max HP.
+    derivedStats.hp.value = Math.min(
+      derivedStats.hp.value,
+      derivedStats.hp.max
+    );
+
+    // Make sure current Humanity is never higher than max Humanity.
+    derivedStats.humanity.value = Math.min(
+      derivedStats.humanity.value,
+      derivedStats.humanity.max
+    );
+
+    // We need to always call this because if the actor was wounded and now is not, their
+    // value would be equal to max, however their current wound state was never updated.
+    this._setWoundState();
+    // Updated derivedStats variable with currentWoundState
+    derivedStats.currentWoundState = this.system.derivedStats.currentWoundState;
   }
 
   /**
@@ -1335,45 +1325,55 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Update actor data with data from the given armor so that it can be dislpayed in a resource bar.
+   * Update actor data with data from the given armor so that it can either be displayed in the
+   * resource bar or remove the tracking from the resource bar if the user chooses to untrack the
+   * armor, deletes the armor or cycles the armor from an equipped condition.
    *
    * @param {String} location - head, body, or shield
+   * @param {String} action - specifies if the user wants to track or untrack the armor
    * @param {String} id - Id of armor item we want to make "current" and available as a resource bar
    */
-  makeThisArmorCurrent(location, id) {
-    LOGGER.trace("makeThisArmorCurrent | CPRActor | Called.");
+  async setTrackedArmor(location, action, id = null) {
+    LOGGER.trace("setTrackedArmor | CPRActor | Called.");
+    const armorPath = "system.externalData.currentArmor";
+    const armorType = TextUtils.toTitleCase(location);
     const currentArmor = this.getOwnedItem(id);
-    if (location === "body") {
-      const currentArmorValue =
-        currentArmor.system.bodyLocation.sp -
-        currentArmor.system.bodyLocation.ablation;
-      const currentArmorMax = currentArmor.system.bodyLocation.sp;
-      return this.update({
-        "system.externalData.currentArmorBody.value": currentArmorValue,
-        "system.externalData.currentArmorBody.max": currentArmorMax,
-        "system.externalData.currentArmorBody.id": id,
-      });
+    const update = {};
+
+    switch (action) {
+      case "track": {
+        update.id = id;
+        if (["body", "head"].includes(location)) {
+          update.value =
+            currentArmor.system[`${location}Location`].sp -
+            currentArmor.system[`${location}Location`].ablation;
+          update.max = currentArmor.system[`${location}Location`].sp;
+        } else if (location === "shield") {
+          update.value = currentArmor.system[`${location}HitPoints`].value;
+          update.max = currentArmor.system[`${location}HitPoints`].max;
+        } else {
+          LOGGER("Unknown armor type");
+        }
+        break;
+      }
+      case "untrack": {
+        update.id = null;
+        update.value = 0;
+        update.max = 0;
+        break;
+      }
+      default:
+        LOGGER("Unknown action completed");
     }
-    if (location === "head") {
-      const currentArmorValue =
-        currentArmor.system.headLocation.sp -
-        currentArmor.system.headLocation.ablation;
-      const currentArmorMax = currentArmor.system.headLocation.sp;
-      return this.update({
-        "system.externalData.currentArmorHead.value": currentArmorValue,
-        "system.externalData.currentArmorHead.max": currentArmorMax,
-        "system.externalData.currentArmorHead.id": id,
-      });
-    }
-    if (location === "shield") {
-      const currentArmorValue = currentArmor.system.shieldHitPoints.value;
-      const currentArmorMax = currentArmor.system.shieldHitPoints.max;
-      return this.update({
-        "system.externalData.currentArmorShield.value": currentArmorValue,
-        "system.externalData.currentArmorShield.max": currentArmorMax,
-        "system.externalData.currentArmorShield.id": id,
-      });
-    }
+
+    await this.update({
+      [`${armorPath}${armorType}.id`]: update.id,
+    });
+    this.update({
+      [`${armorPath}${armorType}.value`]: update.value,
+      [`${armorPath}${armorType}.max`]: update.max,
+    });
+
     return null;
   }
 
@@ -1927,7 +1927,7 @@ export default class CPRActor extends Actor {
   /**
    * Ablate the equipped armor at the specified location by the given value.
    *
-   * @param {string} location - locaiton of the ablation
+   * @param {string} location - location of the ablation
    * @param {int} ablation - value of the ablation
    */
   async _ablateArmor(location, ablation) {

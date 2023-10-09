@@ -1,4 +1,4 @@
-/* global game mergeObject ActorSheet */
+/* global game mergeObject ActorSheet TextEditor */
 import CPRChat from "../../chat/cpr-chat.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
@@ -19,6 +19,25 @@ export default class CPRDemonActorSheet extends ActorSheet {
       width: 652,
       height: "auto",
     });
+  }
+
+  /**
+   * Get actor data into a more convenient organized structure.
+   * Remember, this data is on the DemonActorSheet object, not the CPRActor
+   * object it is tied to. (this.actor)
+   *
+   * @override
+   * @returns {Object} data - a curated structure of actorSheet data
+   */
+  async getData() {
+    LOGGER.trace("getData | CPRActorSheet | Called.");
+    const sheetData = super.getData();
+    sheetData.enrichedHTML = [];
+    sheetData.enrichedHTML.notes = await TextEditor.enrichHTML(
+      this.actor.system.notes,
+      { async: true }
+    );
+    return sheetData;
   }
 
   /**

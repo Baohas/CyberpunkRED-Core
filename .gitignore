@@ -14,12 +14,15 @@ node_modules
 # Local ci
 .gitlab-ci-local/
 vars.env
+errors.txt
+results.json
 
 # Local config
 foundryconfig.json
 
 # Build
 dist/
+src/packs/other/changelog
 
 # Ryan's temp files
 **/foo*

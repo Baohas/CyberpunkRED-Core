@@ -75,7 +75,7 @@ export default class CPRContainerActor extends Actor {
    *
    * @async
    */
-  static async syncInstalledViaInstalledIn() {
+  async syncInstalledViaInstalledIn() {
     LOGGER.trace("syncInstalledViaInstalledIn | CPRActor | called.");
     const actorUUID = this.uuid;
     const updateList = [];

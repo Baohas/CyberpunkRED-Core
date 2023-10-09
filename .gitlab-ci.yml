@@ -62,7 +62,7 @@ manage-issues-on-merge:
     - apk add bash jq curl
   script:
     - echo "Managing Issues..."
-    - bash -x ./.gitlab/pipeline_utils/manage-issues-on-merge.sh
+    - ./.gitlab/pipeline_utils/manage-issues-on-merge.sh
   rules:
     # Don't run if we're in the cleanup-dev schedule
     - if: $CPR_SCHEDULE == "cleanup-dev"
@@ -340,8 +340,30 @@ language-exists:
     - apt-get install jq --yes
   script:
     - echo "Checking if all the language files specified in system.json exist..."
-    # disabling while we fix Crowdin
-    # -./.gitlab/pipeline_tests/test-lang-existence.sh
+    - ./.gitlab/pipeline_tests/test-lang-existence.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'master'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
+
+babele-skills:
+  stage: test
+  before_script:
+    - apt-get update
+    - apt-get install jq --yes
+  script:
+    - echo "Checking if we have generated babele translation files for"
+    - echo "internal_skills when we shouldn't..."
+    - ./.gitlab/pipeline_tests/test-babele-skills.sh
   needs:
     - job: init
       artifacts: true
@@ -397,6 +419,25 @@ changelog-has-changed:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+handelbars-skill-localization:
+  stage: test
+  script:
+    - echo "Checking if we are localizing skills properly..."
+    - ./.gitlab/pipeline_tests/test-handlebars-skill-localization.sh
+  needs:
+    - job: init
+      artifacts: true
+  rules:
+    # Don't run if we're in the cleanup-dev schedule
+    - if: $CPR_SCHEDULE == "cleanup-dev"
+      when: never
+    # Run on MRs
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on merge to 'dev'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    # Run on git tag
+    - if: $CI_COMMIT_TAG
 
 handelbars-inlinestyles:
   stage: test
@@ -646,6 +687,7 @@ build-artifacts:
     - job: handelbars-inlinestyles
     - job: handlebars-helpers
     - job: handlebars-compare
+    - job: handelbars-skill-localization
     - job: handlebars-tooltips
     - job: language-babele
     - job: language-unused-strings

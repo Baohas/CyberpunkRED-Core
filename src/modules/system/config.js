@@ -87,70 +87,70 @@ CPR.skillCategoriesForWeapons = {
 
 // Sorted A-Z
 CPR.skillList = {
-  athletics: "CPR.global.itemType.skill.athletics",
-  basicTech: "CPR.global.itemType.skill.basicTech",
-  brawling: "CPR.global.itemType.skill.brawling",
-  bribery: "CPR.global.itemType.skill.bribery",
-  concentration: "CPR.global.itemType.skill.concentration",
-  conversation: "CPR.global.itemType.skill.conversation",
-  cybertech: "CPR.global.itemType.skill.cybertech",
-  education: "CPR.global.itemType.skill.education",
-  evasion: "CPR.global.itemType.skill.evasion",
-  firstAid: "CPR.global.itemType.skill.firstAid",
-  humanPerception: "CPR.global.itemType.skill.humanPerception",
-  interrogation: "CPR.global.itemType.skill.interrogation",
-  localExpert: "CPR.global.itemType.skill.localExpert",
-  meleeWeapon: "CPR.global.itemType.skill.meleeWeapon",
-  perception: "CPR.global.itemType.skill.perception",
-  persuasion: "CPR.global.itemType.skill.persuasion",
-  playInstrument: "CPR.global.itemType.skill.playInstrument",
-  stealth: "CPR.global.itemType.skill.stealth",
-  tracking: "CPR.global.itemType.skill.tracking",
   accounting: "CPR.global.itemType.skill.accounting",
   acting: "CPR.global.itemType.skill.acting",
   airVehicleTech: "CPR.global.itemType.skill.airVehicleTech",
   animalHandling: "CPR.global.itemType.skill.animalHandling",
   archery: "CPR.global.itemType.skill.archery",
+  athletics: "CPR.global.itemType.skill.athletics",
   autofire: "CPR.global.itemType.skill.autofire",
+  basicTech: "CPR.global.itemType.skill.basicTech",
+  brawling: "CPR.global.itemType.skill.brawling",
+  bribery: "CPR.global.itemType.skill.bribery",
   bureaucracy: "CPR.global.itemType.skill.bureaucracy",
   business: "CPR.global.itemType.skill.business",
   composition: "CPR.global.itemType.skill.composition",
   concealOrRevealObject: "CPR.global.itemType.skill.concealOrRevealObject",
+  concentration: "CPR.global.itemType.skill.concentration",
   contortionist: "CPR.global.itemType.skill.contortionist",
+  conversation: "CPR.global.itemType.skill.conversation",
   criminology: "CPR.global.itemType.skill.criminology",
   cryptography: "CPR.global.itemType.skill.cryptography",
+  cybertech: "CPR.global.itemType.skill.cybertech",
   dance: "CPR.global.itemType.skill.dance",
   deduction: "CPR.global.itemType.skill.deduction",
   demolitions: "CPR.global.itemType.skill.demolitions",
   driveLandVehicle: "CPR.global.itemType.skill.driveLandVehicle",
+  education: "CPR.global.itemType.skill.education",
   electronicsAndSecurityTech:
     "CPR.global.itemType.skill.electronicsAndSecurityTech",
   endurance: "CPR.global.itemType.skill.endurance",
+  evasion: "CPR.global.itemType.skill.evasion",
   forgery: "CPR.global.itemType.skill.forgery",
+  firstAid: "CPR.global.itemType.skill.firstAid",
   gamble: "CPR.global.itemType.skill.gamble",
   handgun: "CPR.global.itemType.skill.handgun",
   heavyWeapons: "CPR.global.itemType.skill.heavyWeapons",
+  humanPerception: "CPR.global.itemType.skill.humanPerception",
+  interrogation: "CPR.global.itemType.skill.interrogation",
   landVehicleTech: "CPR.global.itemType.skill.landVehicleTech",
   language: "CPR.global.itemType.skill.language",
   librarySearch: "CPR.global.itemType.skill.librarySearch",
   lipReading: "CPR.global.itemType.skill.lipReading",
+  localExpert: "CPR.global.itemType.skill.localExpert",
   martialArts: "CPR.global.itemType.skill.martialArts",
+  meleeWeapon: "CPR.global.itemType.skill.meleeWeapon",
   paintOrDrawOrSculpt: "CPR.global.itemType.skill.paintOrDrawOrSculpt",
   paramedic: "CPR.global.itemType.skill.paramedic",
+  perception: "CPR.global.itemType.skill.perception",
   personalGrooming: "CPR.global.itemType.skill.personalGrooming",
+  persuasion: "CPR.global.itemType.skill.persuasion",
   photographyAndFilm: "CPR.global.itemType.skill.photographyAndFilm",
   pickLock: "CPR.global.itemType.skill.pickLock",
   pickPocket: "CPR.global.itemType.skill.pickPocket",
   pilotAirVehicle: "CPR.global.itemType.skill.pilotAirVehicle",
   pilotSeaVehicle: "CPR.global.itemType.skill.pilotSeaVehicle",
+  playInstrument: "CPR.global.itemType.skill.playInstrument",
   resistTortureOrDrugs: "CPR.global.itemType.skill.resistTortureOrDrugs",
   riding: "CPR.global.itemType.skill.riding",
   science: "CPR.global.itemType.skill.science",
   seaVehicleTech: "CPR.global.itemType.skill.seaVehicleTech",
   shoulderArms: "CPR.global.itemType.skill.shoulderArms",
+  stealth: "CPR.global.itemType.skill.stealth",
   streetWise: "CPR.global.itemType.skill.streetwise",
   tactics: "CPR.global.itemType.skill.tactics",
   trading: "CPR.global.itemType.skill.trading",
+  tracking: "CPR.global.itemType.skill.tracking",
   wardrobeAndStyle: "CPR.global.itemType.skill.wardrobeAndStyle",
   weaponstech: "CPR.global.itemType.skill.weaponstech",
   wildernessSurvival: "CPR.global.itemType.skill.wildernessSurvival",
@@ -199,6 +199,12 @@ CPR.ammoVariety = {
   shotgunSlug: "CPR.global.ammo.variety.slug",
   vHeavyPistol: "CPR.global.ammo.variety.veryHeavyPistol",
   custom: "CPR.global.ammo.variety.custom",
+};
+
+CPR.attackableCritFailEffects = {
+  destroyed: "CPR.itemSheet.critFailEffect.destroyed",
+  destroyedBeyondRepair: "CPR.itemSheet.critFailEffect.destroyedBeyondRepair",
+  jammed: "CPR.itemSheet.critFailEffect.jam",
 };
 
 // Sorted A-Z, with basic at the start and special at the end
@@ -365,9 +371,11 @@ CPR.criticalInjuryTables = {
 };
 
 // game.system is not defined when this file is read, so there is a magic string here
-CPR.defaultCriticalInjuryTable = "cyberpunk-red-core.critical-injury-tables";
-CPR.defaultNetArchTable = "cyberpunk-red-core.net-rolltables";
-CPR.defaultDvTable = "cyberpunk-red-core.dv-tables";
+CPR.defaultCriticalInjuryTable =
+  "cyberpunk-red-core.internal_critical-injury-tables";
+CPR.defaultNetArchTable = "cyberpunk-red-core.internal_net-rolltables";
+CPR.defaultDvTable = "cyberpunk-red-core.internal_dv-tables";
+CPR.changelogCompendium = "cyberpunk-red-core.other_changelog";
 
 CPR.criticalInjuryLocation = {
   body: "CPR.global.location.body",

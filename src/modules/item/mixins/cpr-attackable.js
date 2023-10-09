@@ -125,6 +125,15 @@ const Attackable = function Attackable() {
       (m) => !m.isSituational || (m.isSituational && m.onByDefault)
     );
 
+    const fumbleRecovery = actor.itemTypes.role.reduce((rr, role) => {
+      return (
+        rr ||
+        role.getRoleMods("fumbleRecovery", true).reduce((rm, mod) => {
+          return rm || mod.value >= 1;
+        }, false)
+      );
+    }, false);
+
     const effects = Array.from(actor.allApplicableEffects()); // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
@@ -257,6 +266,10 @@ const Attackable = function Attackable() {
           key: "bonuses.universalAttack",
         },
       ]);
+    }
+
+    if (fumbleRecovery >= 1) {
+      cprRoll.wasCritical = cprRoll.wasCritSuccess;
     }
 
     if (cprRoll instanceof CPRRolls.CPRAttackRoll && cprWeaponData.isRanged) {

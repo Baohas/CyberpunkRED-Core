@@ -1,0 +1,116 @@
+_id: QpLSSjVgEtSJFGAe
+_key: "!macros!QpLSSjVgEtSJFGAe"
+command: |-
+  /*
+   * Get EMP'd Items
+   *
+   * Description:
+   *   Compiles a list of Installed Cyberware, Carried Cyberdecks
+   *   Carried Electronic Gear. Then selects 2 at random and outputs
+   *   the results to chat.
+   *
+   * Usage:
+   *   Select 1 or more tokens in a Scene then run the Macro
+   */
+
+  /*
+   * Helper functions
+   */
+
+  // Shuffle an array's items
+  function shuffle(array) {
+    let currentIndex = array.length,
+      randomIndex;
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+    return array;
+  }
+
+  // Get all selected tokens
+  const allTokens = canvas.tokens.controlled;
+
+  /*
+   * Main logic
+   */
+
+  if (allTokens.length === 0) {
+    return ui.notifications.warn(game.i18n.localize("CPR.macro.noTokenSelected"));
+  }
+
+  allTokens.forEach((token) => {
+    console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name}`);
+    let actor =
+      game.actors.filter((a) => a.name === token.name)[0] || token.actor;
+    let items = actor.items;
+
+    // Create a blank array of items
+    let empableItems = [];
+
+    items.forEach((item) => {
+      var hasHardening = 0;
+
+      if ("isElectronic" in item.system) {
+        if (item.system.isElectronic) {
+          if (
+            item.system.equipped === "carried" ||
+            item.system.equipped === "equipped" ||
+            item.system.isInstalled
+          ) {
+            console.debug(
+              `CPR MACRO | Get EMP'd Items | Token ${token.name} | Processing: ${item.name}`
+            );
+
+            if ("installedItems" in item.system) {
+              let installedItems = item.system.installedItems.list;
+
+              installedItems.forEach((installed) => {
+                let installedItem = fromUuidSync(installed);
+
+                if (installedItem.system.providesHardening) {
+                  console.debug(
+                    `CPR MACRO | Get EMP'd Items | Token: ${token.name} | Ignoring: ${item.name}`
+                  );
+                  hasHardening++;
+                }
+              });
+            }
+            if (hasHardening === 0) {
+              console.debug(
+                `CPR MACRO | Get EMP'd Items | Token: ${token.name} | Adding: ${item.name}`
+              );
+              empableItems.push(item.name);
+            }
+          }
+        }
+      }
+    });
+
+    console.debug(
+      `CPR MACRO | Get EMP'd Items | Token: ${token.name} | Potential EMPable Items: ${empableItems}`
+    );
+
+    let empItems = shuffle(empableItems).slice(0, 2);
+    let become = empItems.length > 1 ? "become" : "becomes";
+
+    if (empItems.length > 0) {
+      message = `<strong>${
+        token.document.name
+      }</strong><p>As the EMP goes off your <b>${empItems.join(
+        "</b> and <b>"
+      )}</b> ${become} inoperable for 1 minute.</p>`;
+      ChatMessage.create({ content: message });
+    } else {
+      message = `<strong>${token.document.name}</strong><p>Has no EMPable Items! The EMP detonates with no effect on them.</p>`;
+      ChatMessage.create({ content: message });
+    }
+  });
+img: icons/svg/lightning.svg
+name: Get EMP'd Items
+scope: global
+type: script

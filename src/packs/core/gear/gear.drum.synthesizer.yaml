@@ -1,0 +1,36 @@
+_id: 190HaepMqp2hy7D3
+_key: "!items!190HaepMqp2hy7D3"
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/gear/drum_syntheziser.svg
+name: Drum Synthesizer
+system:
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Makes drum sounds when connected to amplifier.</p>
+  equipped: owned
+  favorite: false
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 0
+    usedSlots: 0
+  isElectronic: true
+  isUpgraded: false
+  price:
+    market: 500
+  providesHardening: false
+  revealed: true
+  source:
+    book: Core
+    page: 353
+  upgrades: []
+  usage: toggled
+type: gear

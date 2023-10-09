@@ -41,11 +41,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     const foundryData = super.getData();
 
     foundryData.enrichedHTML = [];
-    foundryData.enrichedHTML.systemEffect = await TextEditor.enrichHTML(
-      this.actor.system.effect,
-      { async: true }
-    );
-    foundryData.enrichedHTML.systemNotes = await TextEditor.enrichHTML(
+    foundryData.enrichedHTML.notes = await TextEditor.enrichHTML(
       this.actor.system.notes,
       { async: true }
     );
@@ -185,6 +181,20 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     const biPrograms = game.items.filter(
       (i) => i.type === "program" && i.system.class === "blackice"
     );
+
+    // Sorts the biPrograms list before 'selecting Black Ice Actor from Program' link box
+    biPrograms.sort((a, b) => {
+      const progA = a.name.toUpperCase();
+      const progB = b.name.toUpperCase();
+      if (progA < progB) {
+        return -1;
+      }
+      if (progA > progB) {
+        return 1;
+      }
+      return 0;
+    });
+
     const linkedProgramUUID = this.actor.isToken
       ? this.actor.token.getFlag(game.system.id, "programUUID")
       : null;
@@ -233,7 +243,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
         await this.actor.update({
           name: program.name,
           img: program.img,
-          "system.effect": program.system.description.value,
+          "system.notes": program.system.description.value,
         });
         await this.actor.token.update({
           name: program.name,

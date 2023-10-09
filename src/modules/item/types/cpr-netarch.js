@@ -355,7 +355,7 @@ export default class CPRNetArchItem extends CPRItem {
       ? "Netarch Template - Animated"
       : "Netarch Template";
     const scene = await SystemUtils.GetCompendiumDoc(
-      `${game.system.id}.scenes`,
+      `${game.system.id}.other_scenes`,
       sceneName
     );
     const sceneData = duplicate(scene);

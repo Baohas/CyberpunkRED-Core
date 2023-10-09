@@ -25,7 +25,10 @@ const actorHooks = () => {
     LOGGER.trace("preCreateActor | actorHooks | Called.");
     if (typeof createData.img === "undefined") {
       const actorImage = SystemUtils.GetDefaultImage("Actor", createData.type);
-      doc.updateSource({ img: actorImage });
+      doc.updateSource({
+        img: actorImage,
+        "prototypeToken.texture.src": actorImage,
+      });
     }
   });
 
@@ -107,7 +110,9 @@ const actorHooks = () => {
                   doc.updateEmbeddedDocuments("Item", updateList);
                 }
                 if (itemType === "currentArmorShield") {
-                  item.system.shieldHitPoints.value = currentValue;
+                  if (currentValue) {
+                    item.system.shieldHitPoints.value = currentValue;
+                  }
                   doc.updateEmbeddedDocuments("Item", [
                     { _id: item.id, system: item.system },
                   ]);

@@ -348,11 +348,17 @@ export default class CPRMigration {
     });
     const tokenMigrations = tokens.map(async (token) => {
       try {
-        return await this.migrateActor(token.actor);
+        // Essentially we have to update every token with a dummy update so that items aren't
+        // deleted from unlinked tokens. This is a foundry bug. See migration script `020-tokenItemLossFix.js`
+        // TODO: REMOVE THIS AFTER 0.88.X
+        if (Object.getPrototypeOf(this).migrateToken) {
+          await this.migrateToken(token); // This only exists in migration script 020.
+        }
+        return this.migrateActor(token.actor);
       } catch (err) {
         LOGGER.error(err);
         throw new Error(
-          `${this.name}: ${token.actor.name} token had a migration error: ${err.message}`
+          `${this.name}: ${token.name} token had a migration error: ${err.message}`
         );
       }
     });

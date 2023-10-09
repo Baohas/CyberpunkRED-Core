@@ -2,7 +2,76 @@
 
 # Changelog
 
+## Version 0.89.0
+
+### Changes
+
+- Add Quality to Weapons/Cyberdecks
+- #793 - added tooltips for each stat and skill
+- #926, 927 - change descriptions for bows/crossbows to be more clear on rules and cleaned up structure
+- #917 - fix armor remaining tracked after delete and updated 'resync' star to be 'track/untrack' now for armor, removing the appropriate bar. User will still need to adjust resource bar tracker if armor type is no longer desired to be tracked.
+- #737 - change equip behavior to untrack armor type, similar to fix for issue 917.
+- #925 - scrollbar re-added for main windows
+
+## Version 0.88.2
+
+### Changes
+
+- Switched to using DataModels to enforce data types (#316, #723)
+- Add setting to disable warning when rolling damage without targets
+- The fumble recovery skill for Solos is now accounted for
+
+### Action Needed
+
+Our v11 Migrations of Active Effects introduced a bug where modifiers to STATs (and only STATs). Caused them to be multiplied by 3.
+
+For example, if you had the Grafted Bone and Muscle Lace (BODY +2) on an actor with a base BODY of 6, instead of having a BODY of 8, the actor would now have a BODY of 12.
+
+Unfortunately we cannot revert this automatically so you will need to fix these issues manually. Either restore from a pre-`0.88` backup and remgirate or adjust the actors back. This affects all Characters/Mooks who had STAT modifiers.
+
+\*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
+
+### Bug Fixes
+
+- #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
+- Fix weapons moved to stash not applying correct amount of ammo stack
+- Fix incorrect Black Chrome Grenade Names
+- Fix `Heavy Pistol (ArmorPiercing)` icon
+- Fix Mood Eye Cyberware not being fashionware
+- Fix Perfect Fit Cyberfoot not requiring foundational
+- Fix HP and Humanity resetting to 40 HP/60 Humanity every time that world and current scene reloaded.
+- Fix unlinked character and mook actors resetting back to default 40 HP, 60 Humanity
+- Fix being unable to edit/toggle the same AE from multiple copies of the same item.
+- Fix BlackICE actor program link list not in alphabetical order
+- Fix issue where items did not have their dv tables translated.
+- Fixed rare issue where container actor would fail migration.
+- Fix issue where orphaned effects on actors were causing migrations to fail.
+- Fix migration issue where AEs on stats were causing them to be incorrectly recalculated.
+- Fix translation issues with translated skills via Babele
+
+### New Features
+
+- The Changelog is now a Journal allowing:
+  - The entire Changelog to be shown
+  - Re-opening at any time
+
+## Version 0.88.1
+
+### Action Needed
+
+**WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
+
+### Bug Fixes
+
+- Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
+
 ## Version 0.88.0
+
+### Action Needed
+
+We have renamed all Compendia in the system utilizing the new Compendium Folders feature which has meant some changes behind the scenes which mean the pack names themselves have changed.
+
+This means any instances where you have dragged an item from a compendium into a text field like an Item Description or Journal entry which created a link to the item is now referencing a broken item. Unfortunately this would be very complex and fragile to migrate so we have not provided migrations for this. You can fix it by editing the document and dragging and dropping the item from the compendium again.
 
 ### New Features
 
@@ -14,6 +83,14 @@
 ### Bug Fixes
 
 - A couple of minor CSS fixes
+- Facedown rolls correctly include reputation value.
+- Fix CSS colors on User Config pop out
+- Fix Item Description tooltips in gear sheets to sanitize UUID references
+- Fix missing \_stats data from all system Compendia/Packs
+- Localized Mook skills are now sorted alphabetically
+- Fix luck rolls adding luck stat when no luck applied
+- Temp fix for Dice so Nice treating reputation as string on facedown rolls
+- Fix missing foundational need for Holo Projector Cyberware
 
 ### Changes
 
@@ -23,8 +100,10 @@
 - Hide system only Compendiums from Compendium tab
 - Organize Compendiums into Compendium Folders
 - Switch all TextEditor instances to use Prosemirror
+- Combine "effects" and "notes" field for Black Ice.
 - Change font-hero to use same styling as journal headers
 - Change styling of release notes pop-up to match journal styling
+- All Compendium updated for v11 and now sorted into Folders
 
 ## Version 0.87.6
 
@@ -1121,7 +1200,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - Fixed release manifest to not lock users into version 0.75.2 without possibility to update
 
-## Please Note
+### Please Note
 
 - Version 0.74.2 had an error in the release manifest causing issues with updating. This was attempted to be fixed a first time but sadly that fix contain a further issue. A second attempt was made and this was successful. During this however the version numbers appear to have got confused slightly, leading to the strange jump between the version number below (0.74.2) and above (0.75.4).
 - In more specific terms:
@@ -1185,12 +1264,12 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Refactored data model to conform with plans going forward.
 - Logging has been overhauled.
 
-## Version: 0.66 (Hotfix) | Date: 2021-03-21
+## Version: 0.66.0 (Hotfix) | Date: 2021-03-21
 
 - Aimed shot was using the Autofire Skill when attacking instead of using the Weapon Skill
 - Suppressive Fire was using the Weapon Skill when attacking instead of using the Autofire Skill
 
-## Version: 0.65 | Date: 2021-03-20
+## Version: 0.65.0 | Date: 2021-03-20
 
 ### UI/UX
 

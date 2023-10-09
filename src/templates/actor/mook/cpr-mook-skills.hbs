@@ -20,7 +20,7 @@
   </span>
 </div>
 <div class="mook-skills-content text-padding-left-smallest">
-  {{#each (cprSort (cprGetMookSkills actor.itemTypes.skill) "name") as |skill s| }}
+  {{#each (cprGetMookSkills actor.itemTypes.skill) as |skill s| }}
     <span class="item deletable changeable"
           data-item-id="{{skill.id}}"
           tabindex="0">

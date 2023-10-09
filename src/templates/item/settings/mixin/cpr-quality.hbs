@@ -1,0 +1,18 @@
+{{cprTrace "START ITEM SETTINGS MIXIN CPR-QUALITY.HBS"}}
+<li class="item flexrow">
+  <div class="item flexrow setting-name text-nowrap">
+    {{localize "CPR.itemSheet.quality"}}
+  </div>
+  <div class="item flexrow setting-value text-nowrap item-end">
+    <select name="system.quality" data-dtype="{{this.system.quality}}">
+      {{#select item.system.quality}}
+        {{#each (cprFindConfigObj "itemQuality") as |quality q| }}
+          <option value="{{q}}">
+            {{localize quality}}
+          </option>
+        {{/each}}
+      {{/select}}
+    </select>
+  </div>
+</li>
+{{cprTrace "END CPR-QUALITY.HBS"}}

@@ -13,13 +13,13 @@
     <i class="far fa-arrow-alt-circle-down" data-tooltip="{{armorAblateTip}}"></i>
   </a>
   {{#if (cprCompare armorId '===' armorCurrent)}}
-    <a class="armor-current"
+    <a class="armor-current-track"
        data-location="{{armorLocation}}"
        data-item-id="{{armorId}}">
       <i class="fas fa-star" data-tooltip="{{armorResyncTip}}"></i>
     </a>
   {{else}}
-    <a class="armor-current"
+    <a class="armor-current-untrack"
        data-location="{{armorLocation}}"
        data-item-id="{{armorId}}">
       <i class="far fa-star" data-tooltip="{{armorResyncTip}}"></i>

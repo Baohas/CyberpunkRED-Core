@@ -5,12 +5,33 @@ IFS=$'\n\t'
 ERRORS=0
 
 # Get a list of all json files, ignore dirs we don't care about
+# `dist`             Is the default build dir and we don't care abut it
+# `node_modules`     Is the not our code
+# `.vscode`          We don't care about
+# `.gitlab`          Doesn't need checking
+# `.gitlab-ci-local` Is just local stuff
+# `src/babele/*`     Are translation files that are machine generated
+#                    we check the en ones though as these being incorrect would
+#                    break a lot of stuff
+# `schema`           Are JSONSchema files, if incorrect they will fail during the
+#                    validate-packs job
+# `package*.json`    Is npm stuff we don't care about
 mapfile -t DOCS < <(
   find . \
     -not \( -path "./dist" -prune \) \
     -not \( -path "./node_modules" -prune \) \
     -not \( -path "./.vscode" -prune \) \
-    -not \( -path "./.gitlab/pipeline_tests/eslint-plugin-foundry-cpr" -prune \) \
+    -not \( -path "./.gitlab" -prune \) \
+    -not \( -path "./.gitlab-ci-local" -prune \) \
+    -not \( -path "./src/babele/cz" -prune \) \
+    -not \( -path "./src/babele/de" -prune \) \
+    -not \( -path "./src/babele/es" -prune \) \
+    -not \( -path "./src/babele/fr" -prune \) \
+    -not \( -path "./src/babele/it" -prune \) \
+    -not \( -path "./src/babele/pl" -prune \) \
+    -not \( -path "./src/babele/pt-BR" -prune \) \
+    -not \( -path "./src/babele/ru" -prune \) \
+    -not \( -path "./schema" -prune \) \
     -not \( -name "package*.json" \) \
     -iname "*.json"
 )

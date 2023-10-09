@@ -4,63 +4,38 @@ import gulp from "gulp";
 import less from "gulp-less";
 import path from "path";
 import svgmin from "gulp-svgmin";
-import MarkdownIt from "markdown-it";
+import YAML from "js-yaml";
+import ChangelogUtils from "./utils/changelogUtils.mjs";
 
-import * as config from "./config.mjs";
 import {
   DEBUG,
+  DEST_DIR,
   DISCORD_BOT_AVATAR,
   DISCORD_BOT_NAME,
   DISCORD_MESSAGE_BACKUP,
   DISCORD_MESSAGE_CHANGELOG,
   DISCORD_MESSAGE_HEADER,
   DISCORD_MESSAGE_INTROS,
+  SRC_DIR,
+  SOURCE_FILES,
+  SOURCE_DIRS,
   SYSTEM_FILE,
   SYSTEM_TITLE,
   SYSTEM_VERSION,
-} from "./constants.mjs";
-
-// Extrack a header level and it's children
-function _extractMarkdown(markdown, level) {
-  const regex = new RegExp(
-    `^(#{${level}}\\s.*)[\\s\\S]*?(?=(^#{1,${level + 1}}\\s)|$)`,
-    "gm"
-  );
-  const data = [];
-  let match = regex.exec(markdown);
-
-  while (match != null) {
-    const headingText = match[1].replace(`#{${level}}`, "").trim();
-    const startIndex = match.index + match[0].length;
-    const endIndex = markdown.indexOf(`\n${"#".repeat(level)} `, startIndex);
-    const content = markdown
-      .substring(startIndex, endIndex !== -1 ? endIndex : undefined)
-      .trim();
-
-    data.push({ heading: headingText, content });
-
-    match = regex.exec(markdown);
-  }
-
-  return data;
-}
-
-const destFolder = path.resolve(config.dataPath);
-const srcFolder = "src";
-const { sourceFiles } = config;
-const { sourceFolders } = config;
+  PACKS_DIR,
+} from "./config.mjs";
 
 // Helter function to create the target directory we're building into
 async function _createDist() {
-  if (!fs.existsSync(destFolder)) {
-    fs.mkdirSync(destFolder);
+  if (!fs.existsSync(DEST_DIR)) {
+    fs.mkdirSync(DEST_DIR);
   }
 }
 
 // Blast the build directory to ensure it's fresh
 async function cleanDist() {
-  if (fs.existsSync(destFolder)) {
-    fs.emptyDirSync(destFolder);
+  if (fs.existsSync(DEST_DIR)) {
+    fs.emptyDirSync(DEST_DIR);
   }
 }
 
@@ -70,9 +45,9 @@ async function compileLess() {
     log("Building CSS...");
     _createDist();
     gulp
-      .src(path.resolve(srcFolder, "less/main.less"))
+      .src(path.resolve(SRC_DIR, "less/main.less"))
       .pipe(less({ javascriptEnabled: true }))
-      .pipe(gulp.dest(path.resolve(destFolder)))
+      .pipe(gulp.dest(path.resolve(DEST_DIR)))
       .on("finish", () => {
         log("Finished Building CSS.");
         cb();
@@ -86,11 +61,11 @@ async function copyAssets() {
   return new Promise((cb) => {
     log("Copying static assets...");
     _createDist();
-    [...sourceFiles, ...sourceFolders].forEach((asset) => {
+    [...SOURCE_FILES, ...SOURCE_DIRS].forEach((asset) => {
       if (DEBUG) {
         log(`DEBUG: Copying ${asset.from}`);
       }
-      gulp.src(asset.from).pipe(gulp.dest(path.resolve(destFolder, asset.to)));
+      gulp.src(asset.from).pipe(gulp.dest(path.resolve(DEST_DIR, asset.to)));
     });
     log("Finished copying static assets.");
     cb();
@@ -102,7 +77,7 @@ async function buildManifest() {
     log(`Building ${SYSTEM_FILE}...`);
     _createDist();
     // Read the template system.json from src/
-    const systemRaw = fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE));
+    const systemRaw = fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE));
     const system = JSON.parse(systemRaw);
     // If we're in CI use $VERSION as the version, else use a dummy version
     const version = SYSTEM_VERSION;
@@ -120,7 +95,7 @@ async function buildManifest() {
     system.title = SYSTEM_TITLE;
 
     fs.writeFileSync(
-      path.resolve(destFolder, SYSTEM_FILE),
+      path.resolve(DEST_DIR, SYSTEM_FILE),
       JSON.stringify(system, null, 2)
     );
     log(`Finished building ${SYSTEM_FILE}.`);
@@ -136,9 +111,12 @@ async function buildDiscordMessage() {
     const changelog = fs.readFileSync(path.resolve(changelogFile), "utf-8");
 
     // Get the latest release data from the CHANGELOG
-    const releaseData = _extractMarkdown(changelog, 2)[0];
+    const releaseData = ChangelogUtils.markdownToJson(changelog, 2)[0];
     // Make an array of each H3 section from the latest release Data
-    const releaseSections = _extractMarkdown(releaseData.content, 3);
+    const releaseSections = ChangelogUtils.markdownToJson(
+      releaseData.content,
+      3
+    );
 
     // The main Message can only be 2000 chars long, so we'll build it from
     // the above string then add the actual changes in as embeds.
@@ -163,7 +141,7 @@ async function buildDiscordMessage() {
     releaseSections.forEach((section) => {
       const sectionTempData = [];
       const sectionHeading = section.heading.replace("### ", "");
-      const sectionItems = _extractMarkdown(section.content, 4);
+      const sectionItems = ChangelogUtils.markdownToJson(section.content, 4);
 
       if (sectionItems.length > 0) {
         // Loop over each h4 in the parent h3
@@ -214,7 +192,7 @@ async function buildDiscordMessage() {
 
     // Write the discord message data to a file
     fs.writeFileSync(
-      path.join(destFolder, "lang/release-notes/", `discord.json`),
+      path.join(DEST_DIR, "lang/release-notes/", `discord.json`),
       JSON.stringify(jsonData, null, "  "),
       { mode: 0o644 }
     );
@@ -223,49 +201,51 @@ async function buildDiscordMessage() {
   });
 }
 
-// Create the release notes for the version and put it in the distDir
+/**
+ * Generates YAML changelog files from the CHANGELOG for all different
+ * languages and stick them in the PACKS_DIR so we can build them into a
+ * compendium.
+ *
+ * @returns {Promise<void>} A promise that resolves when the changelog
+ * generation is complete.
+ */
 async function buildChangelog() {
-  return new Promise((cb) => {
-    log("Generating Release Notes...");
-    const systemRaw = fs.readFileSync(path.resolve(srcFolder, SYSTEM_FILE));
-    const system = JSON.parse(systemRaw);
-    const { languages } = system;
+  log("Generating Changelog...");
+  const fragmentDir = path.resolve(SRC_DIR, PACKS_DIR);
+  const changelogDir = path.resolve(fragmentDir, "other/changelog");
+  const systemRaw = fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE));
+  const system = JSON.parse(systemRaw);
+  const { languages } = system;
 
-    for (const [key, value] of Object.entries(languages)) {
-      const { lang } = value;
-      const changelogFile =
-        lang !== "en" ? `CHANGELOG.${lang}.md` : "CHANGELOG.md";
-      const changelog = fs.readFileSync(path.resolve(changelogFile), "utf-8");
-      // Get the latest release data from the CHANGELOG
-      const release = _extractMarkdown(changelog, 2)[0];
-      const md = new MarkdownIt();
-      const result = md.render(release.content);
+  // Delete then re-create
+  if (fs.pathExistsSync(changelogDir)) {
+    fs.rmSync(changelogDir, { recursive: true });
+  }
+  fs.mkdirSync(changelogDir, { recursive: true });
 
-      // Create the lang/release-notes directory
-      if (!fs.existsSync(path.join(destFolder, "lang/release-notes/"))) {
-        fs.mkdirpSync(path.join(destFolder, "lang/release-notes/"));
-      }
-
-      fs.writeFileSync(
-        path.join(
-          destFolder,
-          "lang/release-notes/",
-          `${SYSTEM_VERSION}.${lang}`
-        ),
-        result,
-        { mode: 0o644 }
-      );
-    }
-    log("Finished Generating Release Notes.");
-    cb();
+  // Loop over each language
+  const promises = Object.values(languages).map(async (value) => {
+    const langShort = value.lang;
+    const langFull = value.name;
+    const changelogFile =
+      langShort !== "en" ? `CHANGELOG.${langShort}.md` : "CHANGELOG.md";
+    const changelog = fs.readFileSync(path.resolve(changelogFile), "utf-8");
+    await ChangelogUtils.GenerateChangelogJournal(
+      changelog,
+      langFull,
+      changelogDir
+    );
   });
+
+  await Promise.all(promises);
+  log("Finished Generating Changelog...");
 }
 
 async function processImages() {
   return new Promise((cb) => {
     log("Processing Images...");
     gulp
-      .src("src/**/*.{jpg,jpeg,png,webp,webm}", { base: srcFolder })
+      .src("src/**/*.{jpg,jpeg,png,webp,webm}", { base: SRC_DIR })
       .on("data", (file) => {
         if (DEBUG) {
           log(
@@ -276,7 +256,7 @@ async function processImages() {
           );
         }
       })
-      .pipe(gulp.dest(destFolder))
+      .pipe(gulp.dest(DEST_DIR))
       .on("finish", () => {
         log("Finished Processing Images.");
         cb();
@@ -288,7 +268,7 @@ async function processSvgs() {
   return new Promise((cb) => {
     log("Processing SVGs...");
     gulp
-      .src("src/**/*.svg", { base: srcFolder })
+      .src("src/**/*.svg", { base: SRC_DIR })
       .on("data", (file) => {
         if (DEBUG) {
           log(
@@ -302,7 +282,7 @@ async function processSvgs() {
           plugins: ["convertStyleToAttrs"],
         })
       )
-      .pipe(gulp.dest(destFolder))
+      .pipe(gulp.dest(DEST_DIR))
       .on("finish", () => {
         log("Finished Processing SVGs.");
         cb();
@@ -316,12 +296,12 @@ async function watchSrc() {
     gulp
       .watch(pattern)
       .on("all", () =>
-        gulp.src(pattern).pipe(gulp.dest(path.resolve(destFolder, out)))
+        gulp.src(pattern).pipe(gulp.dest(path.resolve(DEST_DIR, out)))
       );
   }
 
-  sourceFiles.forEach((file) => watcher(file.from, file.to));
-  sourceFolders.forEach((folder) => watcher(folder.from, folder.to));
+  SOURCE_FILES.forEach((file) => watcher(file.from, file.to));
+  SOURCE_DIRS.forEach((folder) => watcher(folder.from, folder.to));
   gulp.watch("src/**/*.less").on("all", () => compileLess());
   // disabling while we fix Crowdin
   // gulp.watch("src/lang/*.json").on("all", () => propagateLangs());

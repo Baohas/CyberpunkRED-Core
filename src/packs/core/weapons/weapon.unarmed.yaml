@@ -1,0 +1,55 @@
+_id: X6VYB5awDbtURwIv
+_key: "!items!X6VYB5awDbtURwIv"
+effects: []
+img: systems/cyberpunk-red-core/icons/compendium/weapons/unarmed.svg
+name: Unarmed
+system:
+  ammoVariety: []
+  attackmod: 0
+  brand: ""
+  concealable:
+    concealable: false
+    isConcealed: false
+  critFailEffect: jammed
+  damage: 1d6
+  description:
+    chat: ""
+    unidentified: ""
+    value: <p>Throwing hands, does not ignore half armor.</p>
+  dvTable: ""
+  equipped: owned
+  favorite: false
+  fireModes:
+    autoFire: 0
+    suppressiveFire: false
+  handsReq: 1
+  installedItems:
+    allowed: true
+    allowedTypes:
+      - itemUpgrade
+    list: []
+    slots: 3
+    usedSlots: 0
+  isRanged: false
+  isUpgraded: false
+  magazine:
+    ammoData:
+      name: ""
+      uuid: ""
+    max: 0
+    value: 0
+  price:
+    market: 0
+  quality: standard
+  revealed: true
+  rof: 2
+  source:
+    book: Core
+    page: 176
+  unarmedAutomaticCalculation: true
+  upgrades: []
+  usage: equipped
+  usesType: magazine
+  weaponSkill: Brawling
+  weaponType: unarmed
+type: weapon

@@ -10,6 +10,12 @@
         "_id": {
           "$ref": "./components/id.json"
         },
+        "_key": {
+          "$ref": "./components/key.json"
+        },
+        "effects": {
+          "$ref": "./components/effects.json"
+        },
         "flags": {
           "$ref": "./components/flags.json"
         },
@@ -28,7 +34,7 @@
           "const": "ammo"
         }
       },
-      "required": ["_id", "img", "name", "system", "type"]
+      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
     },
     "System": {
       "type": "object",
