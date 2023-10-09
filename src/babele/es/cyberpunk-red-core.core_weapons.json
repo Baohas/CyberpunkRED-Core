@@ -1,7 +1,7 @@
 {
   "label": "Armas",
   "mapping": {
-    "dvTable": "system.dvTable"
+    "dvTable": "sistema.Tablavd"
   },
   "entries": {
     "Air Pistol": {
@@ -38,17 +38,17 @@
     },
     "Bow (Excellent)": {
       "name": "Arco (Excelente)",
-      "description": "<p>An excellent quality bow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
+      "description": "<p>Arco de calidad excelente, recargado como parte de una Acción de Ataque.</p>\n<p>+1 al Ataque.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Bow (Poor)": {
       "name": "Arco (Pobre)",
-      "description": "<p>A poor quality bow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
+      "description": "<p>Un arco de baja calidad que debe recargarse como parte de una acción de ataque.</p> <p> Si tira 1 en ataque (pifia) la cuerda se suelta y requiere una acción para volver a colocarla. </p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Bow": {
       "name": "Arco",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>",
+      "description": "<p>Arco revitalizado, recargado como parte de una acción de Ataque.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Chainsaw (Excellent)": {
@@ -77,17 +77,17 @@
     },
     "Crossbow (Excellent)": {
       "name": "Ballesta (Excelente)",
-      "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
+      "description": "<p>Una Ballesta de calidad excelente, recargada como parte de una acción de Ataque.</p>\n<p>+1 para Ataque.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Crossbow (Poor)": {
       "name": "Ballesta (Pobre)",
-      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
+      "description": "<p>Una ballesta baja calidad que debe recargarse como parte de una acción de ataque.</p> <p>Si tira 1 en el ataque (pifia) la cuerda se suelta y requiere una acción para volver a colocarla. </p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Crossbow": {
       "name": "Ballesta",
-      "description": "<p>A standard crossbow, reloaded as part of an Attack action.</p>",
+      "description": "<p>Una Ballesta, recargada como parte de una acción de Ataque.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Crowbar (Excellent)": {
