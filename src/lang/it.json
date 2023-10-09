@@ -350,6 +350,7 @@
   "CPR.effectSheet.misc.allActions": "Tutte le azioni",
   "CPR.effectSheet.misc.allActionsHands": "Tutte Le Azioni (Mani)",
   "CPR.effectSheet.misc.allActionsSpeech": "Tutte Le Azioni (Parlate)",
+  "CPR.effectSheet.misc.hasPainSuppression": "Pain Suppression",
   "CPR.effectSheet.modifiers.addSubtract": "Aggiungere / Sottrarre",
   "CPR.effectSheet.modifiers.higherOf": "Override se Superiore",
   "CPR.effectSheet.modifiers.lowerOf": "Override se inferiore",
