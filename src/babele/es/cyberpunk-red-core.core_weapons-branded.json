@@ -1,7 +1,7 @@
 {
   "label": "Armas (de Marca)",
   "mapping": {
-    "dvTable": "system.dvTable"
+    "dvTable": "sistema.Tablavd"
   },
   "entries": {
     "Avenger": {
@@ -11,7 +11,7 @@
     },
     "Bearcat": {
       "name": "Manturón",
-      "description": "<p>A collapsible bow branded with the Eagletech logo, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
+      "description": "<p>Arco plegable con el logo del fabricante Eagletech, recargado como parte de una Acción de Ataque.</p>\n<p>+1 al Ataque.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Boomer Buster": {
@@ -51,7 +51,7 @@
     },
     "Hunter": {
       "name": "Cazador",
-      "description": "<p>A poor quality crossbow branded with the GunMart logo, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
+      "description": "<p>Una ballesta de baja calidad con el logo del fabricante GunMart, que debe recargarse como parte de una acción de ataque.</p><p> Si tira 1 en el ataque (pifia) la cuerda se suelta y requiere una acción para volver a colocarla. </p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Jungle Reaper": {
@@ -106,12 +106,12 @@
     },
     "Scorpion": {
       "name": "Escorpión",
-      "description": "<p>A sleek crossbow branded with the Eagletech logo, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
+      "description": "<p>Una Ballesta pulcra con el logo del fabricante Eagletech, recargada como parte de una acción de Ataque.</p>\n<p>+1 para Ataque.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Sherwood": {
       "name": "Sherwood",
-      "description": "<p>A poor quality bow branded with the GunMart logo, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear. </p>",
+      "description": "<p>Un arco de baja calidad con el logo del fabricante GunMart, que debe recargarse como parte de una acción de ataque.</p><p>Si tira 1 en ataque (pifia) la cuerda se suelta y requiere una acción para volver a colocarla. </p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "SMG-21": {
@@ -131,7 +131,7 @@
     },
     "Striker": {
       "name": "Golpeador",
-      "description": "<p>A crossbow branded with the Eagletech logo, reloaded as part of an Attack action.</p>",
+      "description": "<p>Una Ballesta con el logo del fabricante Eagletech, recargada como parte de una acción de Ataque.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Super Chief": {
@@ -146,7 +146,7 @@
     },
     "Tomcat": {
       "name": "Tomcat",
-      "description": "<p>A revitalized bow branded with the Eagletech logo, reloaded as part of an Attack Action.</p>",
+      "description": "<p>Arco revitalizado con el logo del fabricante Eagletech, recargado como parte de una acción de Ataque.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Type-18": {
