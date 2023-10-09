@@ -1,7 +1,7 @@
 {
   "label": "Elflines Online el Juego de Cartas",
   "mapping": {
-    "dvTable": "system.dvTable"
+    "dvTable": "sistema.Tablavd"
   },
   "entries": {
     "Elflines Online Playing Cards": {
