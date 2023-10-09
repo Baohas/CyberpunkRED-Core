@@ -350,6 +350,7 @@
   "CPR.effectSheet.misc.allActions": "Все действия",
   "CPR.effectSheet.misc.allActionsHands": "Все действия (руки)",
   "CPR.effectSheet.misc.allActionsSpeech": "Все действия (речь)",
+  "CPR.effectSheet.misc.hasPainSuppression": "Подавление боли",
   "CPR.effectSheet.modifiers.addSubtract": "Добавить / Вычесть",
   "CPR.effectSheet.modifiers.higherOf": "Перезаписать если больше",
   "CPR.effectSheet.modifiers.lowerOf": "Перезаписать если меньше",
