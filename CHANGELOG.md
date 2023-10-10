@@ -16,6 +16,7 @@
 - #923 - rebuilt faulty DV rolltables to fix missing distances and inaccurate distances for different weapon types.
 - #925 - scrollbar re-added for main windows
 - #926, 927 - change descriptions for bows/crossbows to be more clear on rules and cleaned up structure
+- #653 - Enable support for dddice
 
 ## Version 0.88.2
 

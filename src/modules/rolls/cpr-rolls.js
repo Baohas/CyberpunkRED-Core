@@ -1,7 +1,7 @@
 /* eslint-disable max-classes-per-file */
 /* global Roll game mergeObject */
 import LOGGER from "../utils/cpr-logger.js";
-import DiceSoNice from "../extern/cpr-dice-so-nice.js";
+import DiceHandler from "../extern/cpr-dice-handler.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import * as CPRRollDialogs from "../dialog/cpr-roll-dialog.js";
 
@@ -157,7 +157,7 @@ export class CPRRoll {
 
   /**
    * The most important method. Perform the roll and save the results to the CPRRoll object.
-   * Because of the integration with DiceSoNice, this is intentionally an async method.
+   * Because of the integration with DiceHandler, this is intentionally an async method.
    *
    * @async
    */
@@ -168,7 +168,7 @@ export class CPRRoll {
 
     // eslint-disable-next-line no-use-before-define
     if (!(this instanceof CPRInitiative)) {
-      await DiceSoNice.ShowDiceSoNice(this._roll);
+      await DiceHandler.handle3dDice(this._roll);
     }
 
     this.initialRoll = this._roll.total;
@@ -186,7 +186,7 @@ export class CPRRoll {
       this._critRoll = await new Roll(this.formula).evaluate();
       // eslint-disable-next-line no-use-before-define
       if (!(this instanceof CPRInitiative)) {
-        await DiceSoNice.ShowDiceSoNice(this._critRoll);
+        await DiceHandler.handle3dDice(this._critRoll);
       }
       this.criticalRoll = this._critRoll.total;
     }

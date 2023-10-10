@@ -3,7 +3,7 @@
 import LOGGER from "../utils/cpr-logger.js";
 import CombatUtils from "../utils/cpr-combatUtils.js";
 import CPRChat from "../chat/cpr-chat.js";
-import DiceSoNice from "../extern/cpr-dice-so-nice.js";
+import DiceHandler from "../extern/cpr-dice-handler.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
@@ -97,10 +97,10 @@ export default class CPRCombat extends Combat {
         "criticalInitiative"
       );
 
-      const roll = DiceSoNice.ShowDiceSoNice(cprRoll._roll);
+      const roll = DiceHandler.handle3dDice(cprRoll._roll);
       let critRoll;
       if (rollCriticals && cprRoll.wasCritical()) {
-        critRoll = DiceSoNice.ShowDiceSoNice(cprRoll._critRoll);
+        critRoll = DiceHandler.handle3dDice(cprRoll._critRoll);
       }
       await Promise.all([roll, critRoll]);
 
