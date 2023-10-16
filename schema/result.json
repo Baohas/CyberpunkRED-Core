@@ -63,7 +63,6 @@
       "required": [
         "_id",
         "_key",
-        "documentCollection",
         "documentId",
         "drawn",
         "img",
