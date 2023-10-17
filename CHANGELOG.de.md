@@ -7,11 +7,16 @@
 ### Änderungen
 
 - Add Quality to Weapons/Cyberdecks
-- #793 - added tooltips for each stat and skill
-- #926, 927 - change descriptions for bows/crossbows to be more clear on rules and cleaned up structure
-- #917 - fix armor remaining tracked after delete and updated 'resync' star to be 'track/untrack' now for armor, removing the appropriate bar. User will still need to adjust resource bar tracker if armor type is no longer desired to be tracked.
+
+### Bug Fixes
+
 - #737 - change equip behavior to untrack armor type, similar to fix for issue 917.
+- #793 - added tooltips for each stat and skill
+- #917 - fix armor remaining tracked after delete and updated 'resync' star to be 'track/untrack' now for armor, removing the appropriate bar. User will still need to adjust resource bar tracker if armor type is no longer desired to be tracked.
+- #923 - rebuilt faulty DV rolltables to fix missing distances and inaccurate distances for different weapon types.
 - #925 - scrollbar re-added for main windows
+- #926, 927 - change descriptions for bows/crossbows to be more clear on rules and cleaned up structure
+- #653 - Enable support for dddice
 
 ## Version 0.88.2
 
@@ -31,7 +36,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 \*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
 
-### Bug Fixes
+### Fehlerbehebungen
 
 - #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 - Fix weapons moved to stash not applying correct amount of ammo stack
@@ -61,7 +66,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 **WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
 
-### Fehlerbehebungen
+### Bug Fixes
 
 - Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
 
