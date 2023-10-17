@@ -7,11 +7,16 @@
 ### Changes
 
 - Add Quality to Weapons/Cyberdecks
-- #793 - добавлены всплывающие подсказки для каждого параметра и навыка.
-- #926, 927 - изменены описания луков и арбалетов. Теперь они не противоречивы и опрятнее выглядят.
-- #917 - исправлено отслеживание брони после удаления, а зезда «Пересинхр» теперь называется «Вкл./Выкл. отслеживание». Соответствующая шкала удалена. Пользователям необходимо перенастроить отображение шкал ресурсов.
+
+### Bug Fixes
+
 - #737 - изменение отслеживание брони при её снятии. Решение, схожее с проблемой 917.
+- #793 - добавлены всплывающие подсказки для каждого параметра и навыка.
+- #917 - исправлено отслеживание брони после удаления, а зезда «Пересинхр» теперь называется «Вкл./Выкл. отслеживание». Соответствующая шкала удалена. Пользователям необходимо перенастроить отображение шкал ресурсов.
+- #923 - rebuilt faulty DV rolltables to fix missing distances and inaccurate distances for different weapon types.
 - #925 - scrollbar re-added for main windows
+- #926, 927 - изменены описания луков и арбалетов. Теперь они не противоречивы и опрятнее выглядят.
+- #653 - Enable support for dddice
 
 ## Version 0.88.2
 
@@ -501,13 +506,13 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
-### Bug Fixes
+### Исправления
 
 - Corrected a capitalisation error that was causing the included Dystopian City Streets map to disappear. Thanks to Latcher for spotting this!
 
 ## Version 0.85.1 (Hotfix) | Date: 2022-12-14
 
-### Исправления
+### Bug Fixes
 
 - Fixed #624 - NET architecture sheet can't click generation button
 
@@ -713,14 +718,14 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.2 (Hotfix) | Date: 2022-08-02
 
-### Bug Fixes
+### Исправления
 
 - #458 - The rulers for the DV Calculation is broken for tables with regexp characters in the name [such as (Autofire)]
 - #455 - Containers/Vendors issues (non-English settings)
 
 ## Version 0.81.1 (Hotfix) | Date: 2022-08-01
 
-### Исправления
+### Bug Fixes
 
 - #456 - Selling non-stackable items to vendors results in a NaN offer from the vendor
 - #454 - Kendachi Mono-Three has Incorrect Attack Bonus
