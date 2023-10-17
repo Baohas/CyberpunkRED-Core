@@ -7,11 +7,16 @@
 ### Att/round
 
 - Add Quality to Weapons/Cyberdecks
-- #793 - added tooltips for each stat and skill
-- #926, 927 - change descriptions for bows/crossbows to be more clear on rules and cleaned up structure
-- #917 - fix armor remaining tracked after delete and updated 'resync' star to be 'track/untrack' now for armor, removing the appropriate bar. User will still need to adjust resource bar tracker if armor type is no longer desired to be tracked.
+
+### Bug Fixes
+
 - #737 - change equip behavior to untrack armor type, similar to fix for issue 917.
+- #793 - added tooltips for each stat and skill
+- #917 - fix armor remaining tracked after delete and updated 'resync' star to be 'track/untrack' now for armor, removing the appropriate bar. User will still need to adjust resource bar tracker if armor type is no longer desired to be tracked.
+- #923 - rebuilt faulty DV rolltables to fix missing distances and inaccurate distances for different weapon types.
 - #925 - scrollbar re-added for main windows
+- #926, 927 - change descriptions for bows/crossbows to be more clear on rules and cleaned up structure
+- #653 - Enable support for dddice
 
 ## Version 0.88.2
 
@@ -31,7 +36,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 \*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
 
-### Bug Fixes
+### Corrections de bugs
 
 - #856 - Correction des jetons de ciblage des cartes de chat divulguant les noms d'acteurs, utilisation des noms de jetons à la place.
 - Fix weapons moved to stash not applying correct amount of ammo stack
@@ -61,7 +66,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 **AVERTISSEMENT**: SI VOUS AVEZ CHARGE LA MISE À JOUR  `0.88.0`/FOUNDRY V11, C'ETAIT UNE ERREUR (mais pas de votre faute). VOUS DEVEZ REVENIR A LA SAUVEGARDE QUE VOUS AVEZ FAITE / FOUNDRY V10, AVANT LA MISE À JOUR À CETTE VERSION. A NOUVEAU, **REVENEZ A FOUNDRY V10 ET A VOTRE SAUVEGARDE QUE VOUS AVEZ FAIT DE CPR `0.87.6`**, PUIS METTEZ À JOUR DIRECTEMENT AVEC LA `V0.88.1`. Passez sur le Discord si vous avez un problème.
 
-### Corrections de bugs
+### Bug Fixes
 
 - Correction d'un bug (de Foundry) où les jetons non liés perdaient tous leurs objets.
 
