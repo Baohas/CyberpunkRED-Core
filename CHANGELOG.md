@@ -11,6 +11,7 @@
 ### Bug Fixes
 
 - #737 - change equip behavior to untrack armor type, similar to fix for issue 917.
+- Fix Effect `name` lookup using old `label` lookup in Effect hbs
 - #793 - added tooltips for each stat and skill
 - #917 - fix armor remaining tracked after delete and updated 'resync' star to be 'track/untrack' now for armor, removing the appropriate bar. User will still need to adjust resource bar tracker if armor type is no longer desired to be tracked.
 - #923 - rebuilt faulty DV rolltables to fix missing distances and inaccurate distances for different weapon types.
