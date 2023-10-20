@@ -27,3 +27,4 @@ src/packs/other/changelog
 # Ryan's temp files
 **/foo*
 **/bar*
+src/packs.*
