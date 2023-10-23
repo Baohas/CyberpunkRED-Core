@@ -9,7 +9,6 @@ import CommonSchema from "./mixins/common-schema.js";
 import ContainerSchema from "./mixins/container-schema.js";
 import EffectsSchema from "./mixins/effects-schema.js";
 import ElectronicSchema from "./mixins/electronic-schema.js";
-import EquippableSchema from "./mixins/equippable-schema.js";
 import InstallableSchema from "./mixins/installable-schema.js";
 import LoadableSchema from "./mixins/loadable-schema.js";
 import PhysicalSchema from "./mixins/physical-schema.js";
@@ -21,7 +20,6 @@ export default class ItemUpgradeDataModel extends CPRSystemDataModel.mixin(
   ContainerSchema,
   EffectsSchema,
   ElectronicSchema,
-  EquippableSchema,
   InstallableSchema,
   LoadableSchema,
   PhysicalSchema,
