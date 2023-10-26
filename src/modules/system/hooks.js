@@ -8,6 +8,7 @@ import * as uiHooks from "../hooks/ui.js";
 import * as hotbarHooks from "../hooks/hotbar.js";
 import * as externalHooks from "../hooks/external-modules.js";
 import * as folderHooks from "../hooks/folder.js";
+import * as renderItemDirHooks from "../hooks/render-item-directory.js";
 
 export default function registerHooks() {
   actorHooks.default();
@@ -20,4 +21,5 @@ export default function registerHooks() {
   hotbarHooks.default();
   tokenHooks.default();
   externalHooks.default();
+  renderItemDirHooks.default();
 }
