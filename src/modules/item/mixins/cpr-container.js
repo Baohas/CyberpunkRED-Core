@@ -260,13 +260,56 @@ const Container = function Container() {
 
     // `document.update` returns undefined if no changes were made. Double exclamation point
     // to make this a boolean.
-    const update = !!(await this.update({
-      "system.installedItems": installedItems,
-    }));
+    const update = !!(await this.installWorldItems(itemList, installedItems));
 
     // Rerender items directory for world items.
     if (!this.isEmbedded) ui.sidebar.tabs.items.render(true);
     return update;
+  };
+
+  /**
+   * This will install items into this *world* item. When world items are installed, a copy should be made of every nested
+   * installed item, and the `installedItems.list` should be updated. This way, world items can work as a sort of 'infinite-stack'.
+   * In other words, you can keep installing new copies of items from the same world item. That is why it is necessary to break
+   * out the logic of installation into world items specifically.
+   *
+   * @recursive
+   * @param {Array} itemList - Array of Item Objects to be installed
+   * @param {Object} installedItems - system.installedItems datapoint
+   * @returns {Promise<Boolean>} - Whether or not changes were made to the caling document.
+   */
+  this.installWorldItems = async function installWorldItems(
+    itemList,
+    installedItems
+  ) {
+    // Create duplicates of all installed items in the world.
+    const newItems = await Item.createDocuments(itemList);
+    const newItemIDs = newItems.map((i) => i.id);
+
+    // Create the new install list: get the current install list (currentInstalledIDs),
+    // then from that list, remove the IDs of the items being replaced (oldItemIDs),
+    // and replace them in the current install list with the IDs of items that will be reinstalled (newItemIDs).
+    const oldItemIDs = itemList.map((i) => i.id);
+    const currentInstalledIDs = installedItems.list;
+    const difference = currentInstalledIDs.filter(
+      (id) => !oldItemIDs.includes(id)
+    );
+    installedItems.list = [...difference, ...newItemIDs];
+
+    for (const item of newItems) {
+      // Skip this iteration of the loop if the new item doesn't have installed items itself.
+      // eslint-disable-next-line no-continue
+      if (!item.system.hasInstalled) continue;
+
+      // Get the list of installed items to duplicate and reinstall.
+      const reinstallList = item.system.installedItems.list.map((id) =>
+        game.items.get(id)
+      );
+      // Call this function recursively on the new item.
+      await item.installWorldItems(reinstallList, item.system.installedItems);
+    }
+    // Update the installedItems.list reference with the list of new IDs.
+    return this.update({ "system.installedItems": installedItems });
   };
 
   /**

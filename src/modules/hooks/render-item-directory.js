@@ -151,6 +151,12 @@ const renderItemDirHooks = () => {
     LOGGER.trace("renderItemDirectory | renderItemDirHooks | Called.");
     const itemElements = html.find("li.item");
 
+    const hiddenElements = itemElements.filter((__, element) => {
+      const item = game.items.get(element.dataset.documentId);
+      return item.system.isInstalled;
+    });
+    hiddenElements.toggleClass("directory-item-hidden");
+
     // Get elements that represent items which have other items installed in them.
     const itemsWithInstalledElements = itemElements.filter((__, element) => {
       const item = game.items.get(element.dataset.documentId);
