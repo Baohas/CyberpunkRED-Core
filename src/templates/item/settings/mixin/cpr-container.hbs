@@ -64,7 +64,7 @@
       <i class="text-smallest text-super text-super fa-solid fa-square-up"></i>{{/if}}
     </div>
   </li>
-  {{#if (cprCompare item.system.installedItems.list.length ">" 0) }}
+  {{#if (cprCompare item.system.hasInstalled ">" 0) }}
     {{#each item.system.installedItems.list as |id| }}
       <li class="item flexrow">
         <div class="item flexrow setting-name text-nowrap text-padding-left-smaller">

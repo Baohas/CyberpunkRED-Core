@@ -47,7 +47,7 @@ function recursiveHTML(parentItem, topLevelId, level = 0) {
     listItem += `</li>`;
     // If the child item has its own installed items, call this function on the child item
     // and increase the indent.
-    if (childItem.system.installedItems?.list?.length > 0) {
+    if (childItem.system.hasInstalled) {
       listItem += recursiveHTML(childItem, topLevelId, level + 1);
     }
   }
@@ -64,8 +64,8 @@ function recursiveHTML(parentItem, topLevelId, level = 0) {
  */
 function _prepareSubList(element) {
   const item = game.items.get(element.dataset.documentId);
-  // Only create a dropdown if the item has installed items.
-  if (item.system.installedItems?.list.length > 0) {
+  // Only create a dropdown if the item has installed items & is not itself installed.
+  if (item.system.hasInstalled && !item.system.isInstalled) {
     const installFlag = item.getFlag(game.system.id, "showInstalled");
     const listItems = recursiveHTML(item, item.id);
     // Is subitem hidden or not
@@ -154,7 +154,7 @@ const renderItemDirHooks = () => {
     // Get elements that represent items which have other items installed in them.
     const itemsWithInstalledElements = itemElements.filter((__, element) => {
       const item = game.items.get(element.dataset.documentId);
-      return item.system.installedItems?.list.length > 0;
+      return item.system.hasInstalled;
     });
 
     // Append the list to each element that represents an item with installed items.

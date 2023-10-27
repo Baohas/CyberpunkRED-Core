@@ -11,13 +11,13 @@
   {{~cprBrandedName cyberware}}{{#unless @last}},{{/unless~}}
 </a>
 {{~#if (cprCompare cyberware.type "===" "cyberware")}}
-  {{~#if (cprCompare cyberware.system.installedItems.list.length ">" 0)~}}
+  {{~#if (cprCompare cyberware.system.hasInstalled)~}}
     (
   {{/if~}}
   {{~#each cyberware.system.installedItems.list as |id|~}}
     {{> "systems/cyberpunk-red-core/templates/actor/mook/cpr-mook-cyberware-optional.hbs" (cprMergeForPartialArg "actor,cyberware" ../actor (cprGetOwnedItem ../actor id))}}
   {{~/each}}
-  {{~#if (cprCompare cyberware.system.installedItems.list.length ">" 0)~}}
+  {{~#if (cprCompare cyberware.system.hasInstalled)~}}
     )
     {{~#unless @last}},{{~/unless}}
   {{~/if}}

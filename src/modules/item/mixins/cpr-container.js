@@ -123,7 +123,7 @@ const Container = function Container() {
       } else if (this.isEmbedded) {
         actor = this.actor;
       }
-      if (this.system.installedItems.list.length > 0) {
+      if (this.system.hasInstalled) {
         let idList = this.system.installedItems.list;
         while (idList.length > 0) {
           for (const id of idList) {
@@ -539,7 +539,7 @@ const Container = function Container() {
         // ...if it is a container item and has things installed...
         if (
           containerTypes.includes(childItem.type) &&
-          childItem.system.installedItems.list.length > 0
+          childItem.system.hasInstalled
         ) {
           // ...find the corresponding child object...
           const childObject = installedObjectList.find(

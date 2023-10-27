@@ -342,7 +342,7 @@ export default class CPRActor extends Actor {
           // ... and item is a container...
           containerTypes.includes(item.type) &&
           // ... and item has things installed into it.
-          item.system.installedItems.list.length > 0
+          item.system.hasInstalled
         ) {
           const itemList = [];
           // For every installed-item in this item...

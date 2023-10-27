@@ -327,7 +327,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
         if (
           containerTypes.includes(item.type) &&
           item.isOwned === true &&
-          item.system.installedItems.list.length > 0
+          item.system.hasInstalled
         ) {
           const deleteItemList = item.recursiveGetAllInstalledItems();
           for (const installedItem of deleteItemList) {
@@ -395,10 +395,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
 
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
 
-    if (
-      containerTypes.includes(item.type) &&
-      cprItemData.installedItems.list.length > 0
-    ) {
+    if (containerTypes.includes(item.type) && cprItemData.hasInstalled) {
       cprItemData.installedItems.list.forEach((installedId) => {
         const installedItem = tradePartnerActor.getOwnedItem(installedId);
         if (installedItem) {
@@ -452,10 +449,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
         effects: duplicate(item.effects),
       });
       deleteItems.push(item._id);
-      if (
-        containerTypes.includes(item.type) &&
-        item.system.installedItems.list.length > 0
-      ) {
+      if (containerTypes.includes(item.type) && item.system.hasInstalled) {
         const deleteItemList = item.recursiveGetAllInstalledItems();
         for (const installedItem of deleteItemList) {
           deleteItems.push(installedItem._id);

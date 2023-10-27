@@ -155,7 +155,7 @@ const itemHooks = () => {
         // item's `system.installedItems.list` to point to them.
         const imported = true;
         doc.createInstalledItemsOnActor(imported);
-      } else if (doc.system.installedItems.list.length > 0) {
+      } else if (doc.system.hasInstalled) {
         // Otherwise this is being added to the actor from a world item.
         // Create installed items on the actor and update the original
         // item's `system.installedItems.list` to point to them.

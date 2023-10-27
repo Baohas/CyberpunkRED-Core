@@ -1304,10 +1304,7 @@ export default class CPRItemSheet extends ItemSheet {
     }
     const allowedTypes = formData.selectedTypes.filter((t) => t);
 
-    if (
-      allowedTypes.length === 0 &&
-      this.item.system.installedItems.list.length > 0
-    ) {
+    if (allowedTypes.length === 0 && this.item.system.hasInstalled) {
       SystemUtils.DisplayMessage(
         "error",
         "CPR.messages.hasInstalledItemsOfRemovedType"

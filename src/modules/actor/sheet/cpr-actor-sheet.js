@@ -1525,7 +1525,7 @@ export default class CPRActorSheet extends ActorSheet {
       newItem &&
       containerTypes.includes(sourceItem.type) &&
       sourceItem.isOwned === true &&
-      sourceItem.system.installedItems.list.length > 0
+      sourceItem.system.hasInstalled
     ) {
       const deleteItemList = sourceItem.recursiveGetAllInstalledItems();
       for (const item of deleteItemList) {

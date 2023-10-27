@@ -749,7 +749,7 @@ export default function registerHandlebarsHelpers() {
       const item = mook.getOwnedItem(installedId);
       if (item.type === "cyberware") {
         const optionals = [];
-        if (item.system.installedItems.list.length > 0) {
+        if (item.system.hasInstalled) {
           for (const optionalid of item.system.installedItems.list) {
             const optionalItem = mook.getOwnedItem(optionalid);
             optionals.push(optionalItem);
@@ -779,7 +779,7 @@ export default function registerHandlebarsHelpers() {
         !exclusionList.includes(item.system.type)
       ) {
         installedCyberwareList.push(item);
-        if (item.system.installedItems.list.length > 0) {
+        if (item.system.hasInstalled) {
           for (const optionalid of item.system.installedItems.list) {
             const optionalItem = mook.getOwnedItem(optionalid);
             installedCyberwareList.push(optionalItem);
@@ -948,7 +948,7 @@ export default function registerHandlebarsHelpers() {
         html += `</li>`;
         // If the child item has its own installed items, call this function on the child item
         // and increase the indent.
-        if (childItem.system.installedItems?.list?.length > 0) {
+        if (childItem.system.hasInstalled > 0) {
           html += recursiveHTML(childItem, topLevelId, level + 1);
         }
       }
@@ -958,7 +958,7 @@ export default function registerHandlebarsHelpers() {
     // Only create a dropdown if the item isn't installed, and has installed items.
     // The exception is cyberdecks, cyberdecks remain on gear tab whether or not they are installed.
     if (
-      item.system.installedItems?.list?.length > 0 &&
+      item.system.hasInstalled &&
       (item.type === "cyberdeck" || !item.system.isInstalled)
     ) {
       const html = recursiveHTML(item, item.id);

@@ -126,4 +126,9 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
       ? parsedUuid.documentId
       : parsedUuid.embedded[index];
   }
+
+  get hasInstalled() {
+    LOGGER.trace("hasInstalled | ContainerSchema | called.");
+    return this.parent.system.installedItems?.list.length > 0;
+  }
 }
