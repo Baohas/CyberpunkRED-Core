@@ -69,10 +69,7 @@ export default function registerHandlebarsHelpers() {
         game.items.get(itemId) || game.items.find((i) => i.uuid === itemId)
       );
     }
-    return (
-      actor.items.find((i) => i.id === itemId) ||
-      actor.items.find((i) => i.uuid === itemId)
-    );
+    return actor.getOwnedItem(itemId);
   });
 
   /**
@@ -887,11 +884,10 @@ export default function registerHandlebarsHelpers() {
      * recursively, calling itself if child items also have installed items.
      *
      * @param {CPRItem(Container)} parentItem - The parent item (not necessarily the top-most item)
-     * @param {String} topLevelId - ID of the top-most item.
      * @param {Number} [level = 1] - The amount of indentation.
      * @returns {String}
      */
-    function recursiveHTML(parentItem, topLevelId, level = 0) {
+    function recursiveHTML(parentItem, level = 0) {
       // Get all items installed in the parent and sort.
       const installedItems = parentItem.getInstalledItems().sort((a, b) => {
         // If items are the same type, sort alphabetically.
@@ -937,7 +933,7 @@ export default function registerHandlebarsHelpers() {
             break;
         }
 
-        html += `<li class="item flexrow" data-row-level=${level} data-top-level-parent="${topLevelId}"
+        html += `<li class="item flexrow" data-row-level=${level}
                      data-item-id="${childItem.id}"
                      data-item-category="${childItem.type}">`;
         html += `  <a class="name item-view flex-center"><span class="type-tag">${localizedType}</span> ${childItem.name}</a>`;
@@ -948,8 +944,8 @@ export default function registerHandlebarsHelpers() {
         html += `</li>`;
         // If the child item has its own installed items, call this function on the child item
         // and increase the indent.
-        if (childItem.system.hasInstalled > 0) {
-          html += recursiveHTML(childItem, topLevelId, level + 1);
+        if (childItem.system.installedItems?.list?.length > 0) {
+          html += recursiveHTML(childItem, level + 1);
         }
       }
       return html;
@@ -961,13 +957,13 @@ export default function registerHandlebarsHelpers() {
       item.system.hasInstalled &&
       (item.type === "cyberdeck" || !item.system.isInstalled)
     ) {
-      const html = recursiveHTML(item, item.id);
+      const html = recursiveHTML(item);
       // Is subitem hidden or not
-      const display = item.actor.flags?.[game.system.id]?.showInstalled?.[
-        item.id
-      ]
-        ? ""
-        : "item-hidden";
+      const display =
+        !item.isEmbedded || // Never hide this list for world items.
+        item.actor?.flags?.[game.system.id]?.showInstalled?.[item.id]
+          ? ""
+          : "item-hidden";
       // Here we wrap the whole sub-list in a div, so that we can animate it
       return new Handlebars.SafeString(
         `<div class="sub-list ${display}" data-items-wrapper-for-parent="${item.id}" style="padding: 0;"><ol>${html}</ol></div>`

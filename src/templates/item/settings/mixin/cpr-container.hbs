@@ -61,18 +61,11 @@
   <div>
     {{localize "CPR.itemSheet.container.availableSlots"}}: {{cprMath "subtract" (cprApplyUpgrade item item.system.installedItems.slots "slots") item.system.installedItems.usedSlots}}
     {{#if (cprCompare (cprApplyUpgrade item item.system.installedItems.slots "slots") "!==" item.system.installedItems.slots) }}
-      <i class="text-smallest text-super text-super fa-solid fa-square-up"></i>{{/if}}
-    </div>
-  </li>
-  {{#if (cprCompare item.system.hasInstalled ">" 0) }}
-    {{#each item.system.installedItems.list as |id| }}
-      <li class="item flexrow">
-        <div class="item flexrow setting-name text-nowrap text-padding-left-smaller">
-          {{#unless (cprCompare (cprGetProp (cprGetOwnedItem ../item.actor id) "type") "===" "program")}}
-            {{cprGetProp (cprGetOwnedItem ../item.actor id) "name"}} ({{localize (cprFindConfigValue "objectTypes" (cprGetProp (cprGetOwnedItem ../item.actor id) "type"))}})
-          {{/unless}}
-        </div>
-      </li>
-    {{/each}}
-  {{/if}}
+      <i class="text-smallest text-super text-super fa-solid fa-square-up"></i>
+    {{/if}}
+  </div>
+</li>
+{{#if item.system.hasInstalled}}
+  {{cprNestedInstalledGearTab item}}
+{{/if}}
 {{cprTrace "END CPR-CONTAINER.HBS"}}

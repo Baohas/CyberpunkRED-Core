@@ -1273,7 +1273,9 @@ export default class CPRItemSheet extends ItemSheet {
   _renderReadOnlyItemCard(event) {
     LOGGER.trace("_renderReadOnlyItemCard | CPRItemSheet | Called.");
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
-    const item = this.actor.items.find((i) => i._id === itemId);
+    const item = this.item.isEmbedded
+      ? this.actor.items.find((i) => i._id === itemId)
+      : game.items.get(itemId);
     item.sheet.render(true, { editable: false });
   }
 
