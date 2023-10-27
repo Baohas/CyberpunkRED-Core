@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* global duplicate Item game */
+/* global duplicate Item game ui */
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
@@ -260,7 +260,13 @@ const Container = function Container() {
 
     // `document.update` returns undefined if no changes were made. Double exclamation point
     // to make this a boolean.
-    return !!(await this.update({ "system.installedItems": installedItems }));
+    const update = !!(await this.update({
+      "system.installedItems": installedItems,
+    }));
+
+    // Rerender items directory for world items.
+    if (!this.isEmbedded) ui.sidebar.tabs.items.render(true);
+    return update;
   };
 
   /**
@@ -282,8 +288,6 @@ const Container = function Container() {
    *                                                 in that each item uninstalled should also have it's own
    *                                                 installed items removed.  This is needed for Cyberware uninstallations.
    * @param {Boolean} [options.unloadAmmo = true]  - Boolean stating if ammo should be unloaded as a part of this uninstall action.
-   *
-   * @param {}
    * @returns {Promise} - Promise containing an updated list of objects from updateEmbeddedDocuments()
    */
   this.uninstallItems = async function uninstallItems(
@@ -364,10 +368,14 @@ const Container = function Container() {
     }
 
     // Update the document with the new list and used slots.
-    return this.update({
+    const updates = await this.update({
       "system.installedItems.list": installedIds,
       "system.installedItems.usedSlots": usedSlots,
     });
+
+    // Rerender items directory for world items.
+    if (!this.isEmbedded) ui.sidebar.tabs.items.render(true);
+    return updates;
   };
 
   /**
