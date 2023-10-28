@@ -26,7 +26,7 @@
     },
     "City Reaper": {
       "name": "City Reaper",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear.</p>",
       "dvTable": "DV SMG"
     },
     "Cityhunter": {
@@ -41,7 +41,7 @@
     },
     "Home Defender": {
       "name": "Home Defender",
-      "description": "<p>An all-purpose shotgun.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>An all-purpose shotgun. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear.</p>",
       "dvTable": "DV Shotgun (Slug)"
     },
     "Hotshot": {
@@ -51,27 +51,27 @@
     },
     "Hunter": {
       "name": "Hunter",
-      "description": "<p>A poor quality crossbow branded with the GunMart logo, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
+      "description": "<p>A poor quality crossbow branded with the GunMart logo, reloaded as part of an Attack action.</p>\n<p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "DV Bows & Crossbows"
     },
     "Jungle Reaper": {
       "name": "Jungle Reaper",
-      "description": "<p>A standard-issue assault rifle.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>A standard-issue assault rifle. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear.</p>",
       "dvTable": "DV Assault Rifle"
     },
     "Long Rifle": {
       "name": "Long Rifle",
-      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. </p>",
+      "description": "<p>A long-distance sniper rifle, commonly used by nomads. Holds 4 bullets in a magazine.</p>",
       "dvTable": "DV Sniper Rifle"
     },
     "Magnum": {
       "name": "Magnum",
-      "description": "<p>A concealable, heavy pistol.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>A concealable, heavy pistol. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear.</p>",
       "dvTable": "DV Pistol"
     },
     "Mark III": {
       "name": "Mark III",
-      "description": "<p>A concealable, heavy pistol. </p>",
+      "description": "<p>A concealable, heavy pistol.</p>",
       "dvTable": "DV Pistol"
     },
     "Minami 10": {
@@ -81,27 +81,27 @@
     },
     "Mini-Gat": {
       "name": "Mini-Gat",
-      "description": "<p>A concealable SMG. </p>",
+      "description": "<p>A concealable SMG.</p>",
       "dvTable": "DV SMG"
     },
     "Mini-Grenade": {
       "name": "Mini-Grenade",
-      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. </p>",
+      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this.</p>",
       "dvTable": "DV Grenade Launcher"
     },
     "P-35": {
       "name": "P-35",
-      "description": "<p>A very heavy pistol. It can't be concealed. </p>",
+      "description": "<p>A very heavy pistol. It can't be concealed.</p>",
       "dvTable": "DV Pistol"
     },
     "Rapid Assault": {
       "name": "Rapid Assault",
-      "description": "<p>An all-purpose shotgun. </p>",
+      "description": "<p>An all-purpose shotgun.</p>",
       "dvTable": "DV Shotgun (Slug)"
     },
     "Ronin": {
       "name": "Ronin",
-      "description": "<p>A standard-issue assault rifle. </p>",
+      "description": "<p>A standard-issue assault rifle.</p>",
       "dvTable": "DV Assault Rifle"
     },
     "Scorpion": {
@@ -111,22 +111,22 @@
     },
     "Sherwood": {
       "name": "Sherwood",
-      "description": "<p>A poor quality bow branded with the GunMart logo, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear. </p>",
+      "description": "<p>A poor quality bow branded with the GunMart logo, reloaded as part of an Attack action.</p>\n<p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
       "dvTable": "DV Bows & Crossbows"
     },
     "SMG-21": {
       "name": "SMG-21",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed. </p>",
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed.</p>",
       "dvTable": "DV SMG"
     },
     "Snipe-Star": {
       "name": "Snipe-Star",
-      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear.</p>",
       "dvTable": "DV Sniper Rifle"
     },
     "Streetmaster": {
       "name": "Streetmaster",
-      "description": "<p>A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear.</p>",
       "dvTable": "DV Pistol"
     },
     "Striker": {
@@ -136,12 +136,12 @@
     },
     "Super Chief": {
       "name": "Super Chief",
-      "description": "<p>A very heavy pistol. It can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>A very heavy pistol. It can't be concealed. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear.</p>",
       "dvTable": "DV Pistol"
     },
     "Tech-Assault III": {
       "name": "Tech-Assault III",
-      "description": "<p>A concealable SMG.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>A concealable SMG. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear.</p>",
       "dvTable": "DV SMG"
     },
     "Tomcat": {
@@ -156,17 +156,17 @@
     },
     "Type-G": {
       "name": "Type-G",
-      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear.</p>",
       "dvTable": "DV Grenade Launcher"
     },
     "Type-R": {
       "name": "Type-R",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear.</p>",
       "dvTable": "DV Rocket Launcher"
     },
     "Urban": {
       "name": "Urban",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage. </p>",
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>",
       "dvTable": "DV Rocket Launcher"
     },
     "Viper": {
@@ -181,7 +181,7 @@
     },
     "X-9mm": {
       "name": "X-9mm",
-      "description": "<p>A concealable, medium-sized pistol. </p>",
+      "description": "<p>A concealable, medium-sized pistol.</p>",
       "dvTable": "DV Pistol"
     }
   }

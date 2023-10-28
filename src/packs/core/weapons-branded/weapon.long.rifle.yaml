@@ -7,14 +7,18 @@ system:
   ammoVariety:
     - rifle
   attackmod: 0
-  brand: Nomad
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: <p>A long-distance sniper rifle. Holds 4 bullets in a magazine. </p>
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>A long-distance sniper rifle, commonly used by nomads. Holds 4 bullets
+      in a magazine.</p>
   dvTable: DV Sniper Rifle
   equipped: owned
   favorite: false
