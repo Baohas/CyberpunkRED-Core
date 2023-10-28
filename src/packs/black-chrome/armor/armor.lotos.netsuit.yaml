@@ -15,10 +15,8 @@ system:
     value: >-
       <p>A netsuit allowing an extra cyberdeck hardware slot that's installed
       directly into the suit which is uninstalled if the suit is removed. Comes
-      standard with an Excellent Quality Cyberdeck*. -2 to REF, DEX, and MOVE.
-      Refer to full item description on BC pg. 31.</p>
-
-      <p><em>*Must be manually added after acquiring the armor</em></p>
+      standard with an Excellent Quality Cyberdeck*. -2 to REF, DEX, and
+      MOVE.</p><p><em>*Must be manually added after acquiring the armor</em></p>
   equipped: owned
   favorite: false
   headLocation:

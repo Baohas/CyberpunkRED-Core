@@ -16,8 +16,7 @@ system:
     value: >-
       <p>Light Armorjack that can swap between "Generic Chic" and "Gang Colors"
       styles with an action from a palette purchased (20eb per color/pattern)
-      and installed on an agent. Comes with one color or pattern of choice.
-      Refer to full item description on BC pg. 32</p>
+      and installed on an agent. Comes with one color or pattern of choice.</p>
   equipped: owned
   favorite: false
   headLocation:

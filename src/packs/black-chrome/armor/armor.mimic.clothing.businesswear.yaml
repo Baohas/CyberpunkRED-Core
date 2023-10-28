@@ -15,7 +15,7 @@ system:
   description:
     value: >-
       <p>Light Armorjack made from a Mimic Clothing Kit and "Businesswear"
-      clothing. Refer to full item description on BC pg. 33.</p>
+      clothing.</p>
   equipped: owned
   favorite: false
   headLocation:

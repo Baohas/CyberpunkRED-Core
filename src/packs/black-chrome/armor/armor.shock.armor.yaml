@@ -12,9 +12,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Kevlar armor that shocks anyone who is grappling you. Refer to full
-      item description on BC pg. 29.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Kevlar armor that shocks anyone who is grappling you.</p>
   equipped: owned
   favorite: false
   headLocation:

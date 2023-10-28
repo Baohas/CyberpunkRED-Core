@@ -14,11 +14,9 @@ system:
   description:
     value: >-
       <p>A Kevlar motorcycle helmet with integrated smart glasses that come with
-      Chyron and Low Light / IR / UV pre-installed*. Refer to full item
-      description on BC pg. 37.</p>
-
-      <p><em>*Smart Glasses and associated cyberware must be manually added and
-      installed after acquring the armor.</em></p>
+      Chyron and Low Light / IR / UV pre-installed*.</p><p><em>*Smart Glasses
+      and associated cyberware must be manually added and installed after
+      acquring the armor.</em></p>
   equipped: owned
   favorite: false
   headLocation:

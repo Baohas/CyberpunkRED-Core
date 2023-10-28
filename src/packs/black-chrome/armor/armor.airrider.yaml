@@ -14,10 +14,9 @@ system:
   description:
     value: >-
       <p>Kevlar Body Armor that ignores the Whiplash critical injury from car
-      crashes as long as the armor's CO2 tank is full*. Refer to full item
-      description on BC pg. 33.</p>
-
-      <p><em>*Must be manually added after acquiring the armor.</em></p>
+      crashes as long as the armor's CO<sub>2</sub> tank is
+      full*.</p><p><em>*Must be manually added after acquiring the
+      armor.</em></p>
   equipped: owned
   favorite: false
   headLocation:

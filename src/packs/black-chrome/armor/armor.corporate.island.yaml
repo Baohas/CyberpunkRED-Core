@@ -12,9 +12,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Light Armorjack that looks like businesswear. Refer to full item
-      description on BC pg. 35.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Light Armorjack that looks like businesswear.</p>
   equipped: owned
   favorite: false
   headLocation:

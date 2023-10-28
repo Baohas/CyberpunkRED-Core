@@ -14,10 +14,8 @@ system:
   description:
     value: >-
       <p>A full set of medium armorjack with integrated smart glasses*. -2 to
-      REF, DEX, and MOVE. Refer to full item description on BC pg. 30.</p>
-
-      <p><em>*Smart Glasses must be manually added after acquiring the
-      armor.</em></p>
+      REF, DEX, and MOVE.</p><p><em>*Smart Glasses must be manually added after
+      acquiring the armor.</em></p>
   equipped: owned
   favorite: false
   headLocation:

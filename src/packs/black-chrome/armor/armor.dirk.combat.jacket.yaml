@@ -15,8 +15,7 @@ system:
   description:
     value: >-
       <p>Leisurewear-styled Light Armorjack and the ability to conceal two
-      standard magazines without a check. Refer to full item description on BC
-      pg. 28.</p>
+      standard magazines without a check.</p>
   equipped: owned
   favorite: false
   headLocation:

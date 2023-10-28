@@ -15,10 +15,9 @@ system:
   description:
     value: >-
       <p>Kevlar Body Armor that comes with two pre-installed medium melee
-      weapons* always considered drawn as long as the armor is equipped. Refer
-      to full item description on BC pg. 36.</p>
-
-      <p><em>*Must be manually added after acquiring the armor.</em></p>
+      weapons* always considered drawn as long as the armor is
+      equipped.</p><p><em>*Must be manually added after acquiring the
+      armor.</em></p>
   equipped: owned
   favorite: false
   headLocation:
