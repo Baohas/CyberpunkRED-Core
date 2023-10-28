@@ -10,14 +10,10 @@ system:
     isConcealed: false
   description:
     value: >-
-      <p>A fantastic option for dismantling hostile Netrunners. Just hope they
-      don&rsquo;t have any Black ICE.</p>
-
-      <p>6 slots for Programs or Hardware, 3 extra slots only for Flak
-      programs.</p>
-
-      <p>Restrictions for Defender Programs and Black ICE: Only Flak and Asp can
-      be installed in any slot.</p>
+      <p>If all you're doing is sliding through NET Architectures, you don't
+      need anything else.</p><p>9 slots to install either Programs or
+      Hardware.</p><p><em>No Attacker or Black ICE Program may be
+      installed.</em></p>
   equipped: owned
   favorite: false
   installLocation: mall

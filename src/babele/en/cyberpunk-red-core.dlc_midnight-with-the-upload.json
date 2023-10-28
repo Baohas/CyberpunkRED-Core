@@ -12,7 +12,7 @@
     },
     "Kerberos": {
       "name": "Kerberos",
-      "description": "<p dir=\"ltr\">Unleash the fires of Hell upon your rivals.</p>\n<p dir=\"ltr\">6 slots for Programs, 5 slots for Hardware.</p>\n<p dir=\"ltr\">Program slots will only accept Hellhound Black ICE.</p>\n<p>&nbsp;</p>"
+      "description": "<p>Unleash the fires of Hell upon your rivals.</p>\n<p>6 slots for Programs, 5 slots for Hardware.</p>\n<p>Program slots will only accept Hellhound Black ICE.</p>"
     },
     "Kestrel 2": {
       "name": "Kestrel 2",
@@ -60,7 +60,7 @@
     },
     "Warlock's Book": {
       "name": "Warlock's Book",
-      "description": "<p>A fantastic option for dismantling hostile Netrunners. Just hope they don&rsquo;t have any Black ICE.</p>\n<p>6 slots for Programs or Hardware, 3 extra slots only for Flak programs.</p>\n<p>Restrictions for Defender Programs and Black ICE: Only Flak and Asp can be installed in any slot.</p>"
+      "description": "<p>If all you're doing is sliding through NET Architectures, you don't need anything else.</p><p>9 slots to install either Programs or Hardware.</p><p><em>No Attacker or Black ICE Program may be installed.</em></p>"
     },
     "Aerie": {
       "name": "Aerie",
@@ -92,7 +92,7 @@
     },
     "Smithy": {
       "name": "Smithy",
-      "description": "<p dir=\"ltr\">Be prepared for anything. Enter a NET Architecture full of Black ICE and you don&rsquo;t have have a Sword Program handy? Swap out your useless Banhammer with the press of a button.</p>\n<p dir=\"ltr\">Use Meat Action to change any and all installed Sword Programs into Banhammer Programs or vice versa.</p>\n<p>&nbsp;</p>"
+      "description": "<p>Be prepared for anything. Enter a NET Architecture full of Black ICE and you don&rsquo;t have have a Sword Program handy? Swap out your useless Banhammer with the press of a button.</p>\n<p>Use Meat Action to change any and all installed Sword Programs into Banhammer Programs or vice versa.</p>"
     },
     "Snaketrap": {
       "name": "Snaketrap",

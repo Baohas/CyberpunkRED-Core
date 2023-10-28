@@ -20,7 +20,6 @@ system:
     allowed: true
     allowedTypes:
       - itemUpgrade
-      - program
     list: []
     slots: 2
     usedSlots: 0

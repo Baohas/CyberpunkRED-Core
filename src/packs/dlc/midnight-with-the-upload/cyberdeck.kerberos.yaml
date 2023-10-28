@@ -10,10 +10,9 @@ system:
     isConcealed: false
   description:
     value: |-
-      <p dir="ltr">Unleash the fires of Hell upon your rivals.</p>
-      <p dir="ltr">6 slots for Programs, 5 slots for Hardware.</p>
-      <p dir="ltr">Program slots will only accept Hellhound Black ICE.</p>
-      <p>&nbsp;</p>
+      <p>Unleash the fires of Hell upon your rivals.</p>
+      <p>6 slots for Programs, 5 slots for Hardware.</p>
+      <p>Program slots will only accept Hellhound Black ICE.</p>
   equipped: owned
   favorite: false
   installLocation: mall
