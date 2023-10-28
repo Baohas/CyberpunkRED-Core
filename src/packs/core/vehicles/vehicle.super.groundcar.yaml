@@ -10,8 +10,8 @@ system:
     isConcealed: false
   description:
     value: >-
-      <p>An expensive, exotic CHOOH2 powered sportscar. It is capable of very
-      high speeds. </p>
+      <p>An expensive, exotic CHOOH<sup>2</sup>-powered sportscar. It is capable
+      of very high speeds.</p>
   favorite: false
   installedItems:
     allowed: true

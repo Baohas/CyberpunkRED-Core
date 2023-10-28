@@ -14,7 +14,9 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: <p>A standard-issue assault rifle. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>A standard-issue assault rifle.</p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

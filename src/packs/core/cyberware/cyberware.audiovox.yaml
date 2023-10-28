@@ -16,8 +16,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument checks.
-      </p>
+      <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument
+      checks.</p>
   dvTable: ""
   favorite: false
   fireModes:

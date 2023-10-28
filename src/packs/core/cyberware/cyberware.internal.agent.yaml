@@ -14,7 +14,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Built in agent. Audio only but can be linked with other cybergear. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>Built in agent. Audio only but can be linked with other cybergear.</p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -5,6 +5,7 @@ changes:
     mode: 2
     priority: null
     value: "3"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -25,5 +26,6 @@ flags:
           onByDefault: true
 icon: systems/cyberpunk-red-core/icons/compendium/cyberware/sandevistan.svg
 name: Sandevistan
+statuses: []
 tint: null
 transfer: true

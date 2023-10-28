@@ -34,51 +34,60 @@ system:
     max: 0
     value: 0
   modifiers:
+    Wardrobe & Style:
+      isSituational: false
+      onByDefault: false
+      value: null
     attackmod:
       isSituational: false
+      onByDefault: false
       type: modifier
       value: null
-    body:
-      type: modifier
+    bodySp:
+      isSituational: false
+      onByDefault: false
       value: null
     cool:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
     damage:
       isSituational: false
+      onByDefault: false
       type: modifier
       value: null
-    dex:
-      type: modifier
-      value: null
-    emp:
-      type: modifier
-      value: null
-    int:
-      type: modifier
-      value: null
-    luck:
-      type: modifier
+    headSp:
+      isSituational: false
+      onByDefault: false
       value: null
     magazine:
-      type: modifier
-      value: null
-    move:
-      type: modifier
-      value: null
-    ref:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
     rof:
+      isSituational: false
+      onByDefault: false
       type: modifier
+      value: null
+    sdp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    seats:
+      isSituational: false
+      onByDefault: false
       value: null
     secondaryWeapon:
       configured: false
-    tech:
-      type: modifier
+    shieldHp:
+      isSituational: false
+      onByDefault: false
       value: null
-    will:
-      type: modifier
+    slots:
+      isSituational: false
+      onByDefault: false
       value: null
   price:
     market: 500

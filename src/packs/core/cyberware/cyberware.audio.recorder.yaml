@@ -13,7 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Records sound. Can link into a chip or agent.  </p>
+    chat: ""
+    unidentified: ""
+    value: <p>Records sound. Can link into a chip or agent.</p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -13,7 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Access to nervous system. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>Access to nervous system.</p>
   dvTable: ""
   favorite: false
   fireModes:

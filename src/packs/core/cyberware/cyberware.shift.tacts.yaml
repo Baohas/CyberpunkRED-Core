@@ -13,7 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Change eye color. Can be activated/deactivated at will. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>Change eye color. Can be activated/deactivated at will.</p>
   dvTable: ""
   favorite: false
   fireModes:

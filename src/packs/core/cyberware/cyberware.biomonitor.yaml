@@ -14,8 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Provides an LED showing vitals readouts. Can be linked to your agent.
-      </p>
+      <p>Provides an LED showing vitals readouts. Can be linked to your
+      agent.</p>
   dvTable: ""
   favorite: false
   fireModes:

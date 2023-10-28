@@ -14,8 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Chipware. Provides  a value of 3 to a specific (x2) skill while
-      installed (unless the skill is already 3+). </p>
+      <p>Chipware. Provides a value of 3 to a specific (x2) skill while
+      installed (unless the skill is already 3+).</p>
   dvTable: ""
   favorite: false
   fireModes:

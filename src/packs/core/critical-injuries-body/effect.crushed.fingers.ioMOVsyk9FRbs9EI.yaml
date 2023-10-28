@@ -5,6 +5,7 @@ changes:
     mode: 2
     priority: null
     value: "-4"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -26,5 +27,6 @@ flags:
 icon: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_fingers.svg
 name: Crushed Fingers
+statuses: []
 tint: null
 transfer: true

@@ -5,6 +5,7 @@ changes:
     mode: 5
     priority: null
     value: "5"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -25,5 +26,6 @@ flags:
           onByDefault: false
 icon: systems/cyberpunk-red-core/icons/compendium/cyberchairs/cyberchair.svg
 name: Mercurius Cyberchair
+statuses: []
 tint: null
 transfer: true

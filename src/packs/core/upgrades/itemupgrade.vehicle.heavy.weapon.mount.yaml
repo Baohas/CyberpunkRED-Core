@@ -18,13 +18,13 @@ system:
       One of the vehicles seats becomes a swivel mount for any two-handed ranged
       weapon. A passenger may fire the weapon using an Action. The passenger can
       reload the weapon. The weapon can be removed or reinstalled using an
-      Action.&nbsp;</p>
+      Action.</p>
 
       <p>The first time this upgrade is taken, included is a <strong>Tsunami
-      Arms Helix</strong>,&nbsp; <strong>Rhinemetall EMG-86 Railgun</strong>, or
+      Arms Helix</strong>, <strong>Rhinemetall EMG-86 Railgun</strong>, or
       <strong>Militech "Cowboy" U-56 Grenade Launcher</strong>. If the vehicle
       has the Bulletproof Glass upgrade, the gunner is protected by the same
-      glass.&nbsp;</p>
+      glass.</p>
 
       <p>You may install this upgrade multiple times if the vehicle has the
       Housing Capacity upgrade. <strong>Requires Heavy Chassis</strong>.</p>
@@ -48,26 +48,62 @@ system:
     max: 0
     value: 0
   modifiers:
+    Wardrobe & Style:
+      isSituational: false
+      onByDefault: false
+      value: null
     attackmod:
+      isSituational: false
+      onByDefault: false
       type: modifier
+      value: null
+    bodySp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    cool:
+      isSituational: false
+      onByDefault: false
       value: null
     damage:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
+    headSp:
+      isSituational: false
+      onByDefault: false
+      value: null
     magazine:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
     rof:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
     sdp:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
     seats:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
     secondaryWeapon:
       configured: false
+    shieldHp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    slots:
+      isSituational: false
+      onByDefault: false
+      value: null
     speedCombat:
       type: modifier
       value: null

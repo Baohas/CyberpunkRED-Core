@@ -13,7 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>A retractable blade in your foot which is a Light Melee Weapon. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>A retractable blade in your foot which is a Light Melee Weapon.</p>
   dvTable: ""
   favorite: false
   fireModes:

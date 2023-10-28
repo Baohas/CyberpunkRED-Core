@@ -13,7 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Built-in hydraulics negates penalty for jumping. Must be paired. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>Built-in hydraulics negates penalty for jumping. Must be paired.</p>
   dvTable: ""
   favorite: false
   fireModes:

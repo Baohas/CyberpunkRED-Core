@@ -5,6 +5,7 @@ changes:
     mode: 2
     priority: null
     value: "2"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -26,5 +27,6 @@ flags:
 icon: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome/extra-joined-cyberleg.svg
 name: Extra-Jointed Cyberleg
+statuses: []
 tint: null
 transfer: true

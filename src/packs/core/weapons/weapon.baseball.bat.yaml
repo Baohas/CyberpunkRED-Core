@@ -13,7 +13,9 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    value: <p>A firmly weighted bat. A favourite weapon of the Baseball Furies. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>A firmly weighted bat. A favourite weapon of the Baseball Furies.</p>
   dvTable: ""
   equipped: owned
   favorite: false

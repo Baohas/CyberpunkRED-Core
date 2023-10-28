@@ -14,8 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>An eye camera which can link into a chip or agent. Great for Medias.
-      </p>
+      <p>An eye camera which can link into a chip or agent. Great for
+      Medias.</p>
   dvTable: ""
   favorite: false
   fireModes:

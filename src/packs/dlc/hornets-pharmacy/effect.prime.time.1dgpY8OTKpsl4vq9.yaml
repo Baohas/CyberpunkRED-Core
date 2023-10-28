@@ -9,6 +9,7 @@ changes:
     mode: 2
     priority: null
     value: "2"
+description: ""
 disabled: true
 duration:
   combat: null
@@ -33,5 +34,6 @@ flags:
           onByDefault: false
 icon: systems/cyberpunk-red-core/icons/compendium/status/prime_time.svg
 name: Prime Time
+statuses: []
 tint: null
 transfer: true

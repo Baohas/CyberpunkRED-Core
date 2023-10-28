@@ -14,17 +14,15 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p dir="ltr">Upgrade for any Jacket fashion item. Mechanically similar to
-      an umbrella, does not serve as a wetsuit.&nbsp;</p>
+      <p>Upgrade for any Jacket fashion item. Mechanically similar to an
+      umbrella, does not serve as a wetsuit.</p>
 
       <p>Protects against Acid Rain. For every minute exposed to Acid Rain, all
       armor ablates by 1 SP (NCW pg 4).</p>
 
-      <p dir="ltr">+2 to Resist Torture/Drugs Checks from Blood Rain exposure.
-      Severe Blood Rain applies the effects of a Vial of Biotoxin on failed
-      check (NCW pg 4).</p>
-
-      <p>&nbsp;</p>
+      <p>+2 to Resist Torture/Drugs Checks from Blood Rain exposure. Severe
+      Blood Rain applies the effects of a Vial of Biotoxin on failed check (NCW
+      pg 4).</p>
   dvTable: ""
   favorite: false
   fireModes:

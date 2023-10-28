@@ -29,6 +29,7 @@ changes:
     mode: 2
     priority: null
     value: "2"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -73,5 +74,6 @@ flags:
           onByDefault: false
 icon: systems/cyberpunk-red-core/icons/compendium/cyberware/techscanner.svg
 name: Techscanner
+statuses: []
 tint: null
 transfer: true

@@ -15,7 +15,7 @@ system:
     value: >-
       <p>If damage dealt to target they are set alight. Target takes 2 damage to
       HP at end of their turn unless they use action to extinguish flames. Does
-      not stack. </p>
+      not stack.</p>
   favorite: false
   overrides:
     autofire:

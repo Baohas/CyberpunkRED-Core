@@ -16,8 +16,8 @@ system:
   description:
     value: >-
       <p>A high-impact grenade launcher. You can use a variety of grenades with
-      this.  If you roll 1 on Attack (Crit fail) the gun jams and requires using
-      an action to clear. </p>
+      this. If you roll 1 on Attack (Crit fail) the gun jams and requires using
+      an action to clear.</p>
   dvTable: DV Grenade Launcher
   equipped: owned
   favorite: false

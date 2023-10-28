@@ -5,6 +5,7 @@ changes:
     mode: 2
     priority: null
     value: "50"
+description: ""
 disabled: true
 duration:
   combat: null
@@ -25,5 +26,6 @@ flags:
           onByDefault: false
 icon: systems/cyberpunk-red-core/icons/compendium/gear/roadflare.svg
 name: Road Flare
+statuses: []
 tint: null
 transfer: true

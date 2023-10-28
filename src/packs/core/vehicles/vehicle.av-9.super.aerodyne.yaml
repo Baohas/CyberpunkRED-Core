@@ -11,7 +11,7 @@ system:
   description:
     value: >-
       <p>A highly advanced AV with limited seats. Can travel up to 300 miles per
-      hour. </p>
+      hour.</p>
   favorite: false
   installedItems:
     allowed: true

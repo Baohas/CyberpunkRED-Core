@@ -14,9 +14,9 @@ system:
   description:
     value: >-
       <p>Can be applied to all land and sea vehicles. A <strong>Very Heavy Melee
-      Weapon&nbsp;</strong>that can be mounted facing the front, side or back of
-      the vehicle. The driver may attack with it using an Action. The weapon
-      cannot be removed.&nbsp;</p>
+      Weapon</strong> that can be mounted facing the front, side or back of the
+      vehicle. The driver may attack with it using an Action. The weapon cannot
+      be removed.</p>
 
       <p>You may install this upgrade multiple times.</p>
   dvTable: ""
@@ -39,26 +39,62 @@ system:
     max: 0
     value: 0
   modifiers:
+    Wardrobe & Style:
+      isSituational: false
+      onByDefault: false
+      value: null
     attackmod:
+      isSituational: false
+      onByDefault: false
       type: modifier
+      value: null
+    bodySp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    cool:
+      isSituational: false
+      onByDefault: false
       value: null
     damage:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
+    headSp:
+      isSituational: false
+      onByDefault: false
+      value: null
     magazine:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
     rof:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
     sdp:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
     seats:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
     secondaryWeapon:
       configured: false
+    shieldHp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    slots:
+      isSituational: false
+      onByDefault: false
+      value: null
     speedCombat:
       type: modifier
       value: null

@@ -14,8 +14,8 @@ system:
   damage: 2d6
   description:
     value: >-
-      <p>Cyberware weapon. You must have the appropriate cyberware installed.
-      </p>
+      <p>Cyberware weapon. You must have the appropriate cyberware
+      installed.</p>
   dvTable: ""
   equipped: owned
   favorite: false

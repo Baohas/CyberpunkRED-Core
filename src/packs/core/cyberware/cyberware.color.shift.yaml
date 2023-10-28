@@ -14,8 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Allows you to shift eyes to an unlimited number of colors and patterns.
-      </p>
+      <p>Allows you to shift eyes to an unlimited number of colors and
+      patterns.</p>
   dvTable: ""
   favorite: false
   fireModes:

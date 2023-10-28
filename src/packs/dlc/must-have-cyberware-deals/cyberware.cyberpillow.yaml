@@ -14,7 +14,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>A comfortable Cyberarm popout pillow for naps on the go.&nbsp;</p>
+    chat: ""
+    unidentified: ""
+    value: <p>A comfortable Cyberarm popout pillow for naps on the go.</p>
   dvTable: ""
   favorite: false
   fireModes:

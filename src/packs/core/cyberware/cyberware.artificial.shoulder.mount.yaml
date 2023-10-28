@@ -15,7 +15,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Allows you to install an extra pair of cyberarms. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>Allows you to install an extra pair of cyberarms.</p>
   dvTable: ""
   favorite: false
   fireModes:

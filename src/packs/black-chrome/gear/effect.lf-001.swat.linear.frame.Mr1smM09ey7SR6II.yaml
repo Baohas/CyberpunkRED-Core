@@ -3,8 +3,8 @@ _key: "!items.effects!DZe6EtplLToNFWjN.Mr1smM09ey7SR6II"
 changes:
   - key: system.stats.body.value
     mode: 5
-    priority: null
     value: "12"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -25,5 +25,6 @@ flags:
           onByDefault: false
 icon: systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
 name: LF-001 SWAT Linear Frame
+statuses: []
 tint: null
 transfer: true

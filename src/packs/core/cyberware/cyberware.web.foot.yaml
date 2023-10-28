@@ -13,7 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Webbing between your toes allows you to swim. Must be paired. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>Webbing between your toes allows you to swim. Must be paired.</p>
   dvTable: ""
   favorite: false
   fireModes:

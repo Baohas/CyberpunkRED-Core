@@ -5,6 +5,7 @@ changes:
     mode: 2
     priority: null
     value: "-4"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -25,5 +26,6 @@ flags:
           onByDefault: false
 icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_leg.svg
 name: Broken Leg
+statuses: []
 tint: null
 transfer: true

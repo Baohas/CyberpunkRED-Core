@@ -13,7 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Looks like a normal foot for the most part. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>Looks like a normal foot for the most part.</p>
   dvTable: ""
   favorite: false
   fireModes:

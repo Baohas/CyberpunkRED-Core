@@ -9,7 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>A small two-seater rotorcraft. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>A small two-seater rotorcraft.</p>
   favorite: false
   installedItems:
     allowed: true

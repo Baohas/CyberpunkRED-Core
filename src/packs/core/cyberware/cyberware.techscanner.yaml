@@ -16,7 +16,7 @@ system:
   description:
     value: >-
       <p>Contains a variety of built-in gadgets and tools. Provides a +2 bonus
-      to multiple skill checks. </p>
+      to multiple skill checks.</p>
   dvTable: ""
   favorite: false
   fireModes:

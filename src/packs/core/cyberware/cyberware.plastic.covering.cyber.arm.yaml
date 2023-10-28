@@ -13,7 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>A type of plastic coating for your arm. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>A type of plastic coating for your arm.</p>
   dvTable: ""
   favorite: false
   fireModes:

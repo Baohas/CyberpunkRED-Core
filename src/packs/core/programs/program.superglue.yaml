@@ -14,7 +14,7 @@ system:
   description:
     value: >-
       <p>The netrunner cannot progress further into the Local NET or safely
-      jacking out for 1d6 rounds.1 use per netrun. </p>
+      jacking out for 1d6 rounds.1 use per netrun.</p>
   favorite: false
   installLocation: mall
   interface: 0

@@ -9,7 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>A common CHOOH2-powered jetski that can seat two people. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>A common CHOOH<sup>2</sup>-powered jetski that can seat two people.</p>
   favorite: false
   installedItems:
     allowed: true

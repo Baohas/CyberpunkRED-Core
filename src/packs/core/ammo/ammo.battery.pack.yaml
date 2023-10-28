@@ -13,7 +13,7 @@ system:
   description:
     value: >-
       <p>A rechargeable (1 hour) battery pack, commonly used with Exotic
-      weapons. Contains 8 shots and can be recharged.&nbsp;</p>
+      weapons. Contains 8 shots and can be recharged.</p>
   favorite: false
   overrides:
     autofire:

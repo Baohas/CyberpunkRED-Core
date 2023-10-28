@@ -14,7 +14,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Speedware. Permanent +2 to Initiative. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>Speedware. Permanent +2 to Initiative.</p>
   dvTable: ""
   favorite: false
   fireModes:

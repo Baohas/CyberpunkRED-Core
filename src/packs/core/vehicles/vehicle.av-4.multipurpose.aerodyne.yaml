@@ -11,7 +11,7 @@ system:
   description:
     value: >-
       <p>A multipurpose aircraft capable of quick insertion thanks to vertical
-      thrusters. Used commonly by Trauma Teams. </p>
+      thrusters. Used commonly by Trauma Teams.</p>
   favorite: false
   installedItems:
     allowed: true

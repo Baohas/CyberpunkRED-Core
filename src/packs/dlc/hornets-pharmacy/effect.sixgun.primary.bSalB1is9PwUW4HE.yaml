@@ -13,6 +13,7 @@ changes:
     mode: 2
     priority: null
     value: "2"
+description: ""
 disabled: true
 duration:
   combat: null
@@ -41,5 +42,6 @@ flags:
           onByDefault: false
 icon: systems/cyberpunk-red-core/icons/compendium/status/sixgun.svg
 name: Sixgun Primary
+statuses: []
 tint: null
 transfer: true

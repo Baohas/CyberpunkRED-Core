@@ -15,8 +15,8 @@ system:
   description:
     value: >-
       <p>Useful as both a tool and a weapon. A rod of iron with split wedges on
-      the ends.  If you roll 1 on Attack (Crit Fail) the weapon fails in some
-      way and requires an action to be made usable again.</p>
+      the ends. If you roll 1 on Attack (Crit Fail) the weapon fails in some way
+      and requires an action to be made usable again.</p>
   dvTable: ""
   equipped: owned
   favorite: false

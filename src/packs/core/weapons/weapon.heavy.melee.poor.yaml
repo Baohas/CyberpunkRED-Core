@@ -18,8 +18,6 @@ system:
 
       <p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and
       requires an action to be made usable again.</p>
-
-      <p>&nbsp;</p>
   dvTable: ""
   equipped: owned
   favorite: false

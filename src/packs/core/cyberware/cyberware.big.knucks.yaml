@@ -13,7 +13,9 @@ system:
   core: false
   damage: 2d6
   description:
-    value: <p>Armored knuckles which function as a Melee Weapon. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>Armored knuckles which function as a Melee Weapon.</p>
   dvTable: ""
   favorite: false
   fireModes:

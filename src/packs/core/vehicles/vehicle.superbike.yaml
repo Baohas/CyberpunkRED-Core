@@ -9,7 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>A beefed-up version of a roadbike, capable of very high speeds. </p>
+    chat: ""
+    unidentified: ""
+    value: <p>A beefed-up version of a roadbike, capable of very high speeds.</p>
   favorite: false
   installedItems:
     allowed: true

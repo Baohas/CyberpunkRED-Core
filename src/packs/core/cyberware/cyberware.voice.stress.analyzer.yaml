@@ -17,7 +17,7 @@ system:
   description:
     value: >-
       <p>Provides +2 to Human Perception and Interrogation checks. Can activate
-      a special lie-detecting mode. </p>
+      a special lie-detecting mode.</p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -15,7 +15,7 @@ system:
   description:
     value: >-
       <p>A bladed, hilted weapon. Specifically designed for cutting or
-      thrusting. </p>
+      thrusting.</p>
   dvTable: ""
   equipped: owned
   favorite: false
