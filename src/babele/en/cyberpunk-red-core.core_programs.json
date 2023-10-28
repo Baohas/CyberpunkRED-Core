@@ -8,11 +8,11 @@
     },
     "Banhammer": {
       "name": "Banhammer",
-      "description": "<p>Deals 3d6 REZ to non-Black ICE or 2d6 Rez damage to Black ICE. </p>"
+      "description": "<p>Deals 3d6 REZ to non-Black ICE or 2d6 Rez damage to Black ICE.</p>"
     },
     "DeckKRASH": {
       "name": "DeckKRASH",
-      "description": "<p>Forces Netrunner to Jack Out unsafely. </p>"
+      "description": "<p>Forces Netrunner to Jack Out unsafely.</p>"
     },
     "Eraser": {
       "name": "Eraser",
@@ -24,11 +24,11 @@
     },
     "Hellbolt": {
       "name": "Hellbolt",
-      "description": "<p>2d6 damage direct to Netrunner's Brain. Their gear catches fire if not insulated. </p>"
+      "description": "<p>2d6 damage direct to Netrunner's Brain. Their gear catches fire if not insulated.</p>"
     },
     "Nervescrub": {
       "name": "Nervescrub",
-      "description": "<p>Lowers a Netrunner's INT REF and DEX by 1d6 (min. 1) for 1 hour.</p>"
+      "description": "<p>Lowers a Netrunner's INT, REF, and DEX by 1d6 (min. 1) for 1 hour.</p>"
     },
     "Poison Flatline": {
       "name": "Poison Flatline",
@@ -48,15 +48,15 @@
     },
     "Superglue": {
       "name": "Superglue",
-      "description": "<p>The netrunner cannot progress further into the Local NET or safely jacking out for 1d6 rounds.1 use per netrun. </p>"
+      "description": "<p>The netrunner cannot progress further into the Local NET or safely jacking out for 1d6 rounds.1 use per netrun.</p>"
     },
     "Sword": {
       "name": "Sword",
-      "description": "<p>Deals 3d6 REZ to Black ICE or 2d6 Rez damage to non-Black ICE. </p>"
+      "description": "<p>Deals 3d6 REZ to Black ICE or 2d6 Rez damage to non-Black ICE.</p>"
     },
     "Vrizzbolt": {
       "name": "Vrizzbolt",
-      "description": "<p>1d6 damage direct to Netrunner's Brain. Lowers total net actions they can take by 1 (min. 2) on their next turn. </p>"
+      "description": "<p>1d6 damage direct to Netrunner's Brain. Lowers total net actions they can take by 1 (min. 2) on their next turn.</p>"
     },
     "Worm": {
       "name": "Worm",

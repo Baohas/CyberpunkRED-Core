@@ -3,8 +3,8 @@ _key: "!items.effects!XySJZT4SbLBmOihf.0iwdEfCEWGdYvMv0"
 changes:
   - key: bonuses.speed
     mode: 2
-    priority: null
     value: "2"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -24,6 +24,7 @@ flags:
           isSituational: false
           onByDefault: false
 icon: systems/cyberpunk-red-core/icons/compendium/programs/speedy_gonzalvez.svg
-name: Speedy Gonzalves
+name: Speedy Gonzalvez
+statuses: []
 tint: null
 transfer: true
