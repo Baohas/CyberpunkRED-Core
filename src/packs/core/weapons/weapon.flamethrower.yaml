@@ -15,9 +15,9 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full
-      item description on pg. 348.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>An Exotic Shotgun that uses the Heavy Weapons Skill.</p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

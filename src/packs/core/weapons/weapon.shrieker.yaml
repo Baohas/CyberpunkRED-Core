@@ -16,9 +16,9 @@ system:
   description:
     value: >-
       <p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged
-      Ear critical injuries. The target must beat a DV15 Resist Torture/Drugs
-      Check or suffer the Damaged Ear critical injury. Refer to the full item
-      description on pg. 349.</p>
+      Ear critical injuries. The target must beat a <strong>DV15 Resist
+      Torture/Drugs</strong> Check or suffer the Damaged Ear critical
+      injury.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

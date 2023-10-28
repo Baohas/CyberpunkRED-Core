@@ -15,11 +15,9 @@ system:
   description:
     value: >-
       <p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It
-      appears as a high-tech katana, able to ignore any armor below SP11*. Refer
-      to the full item description on pg. 348.</p>
-
-      <p><em>*Not currently supported to will need to manually apply damage to
-      armoured targets</em></p>
+      appears as a high-tech katana, able to ignore any armor below
+      SP11*.</p><p><em>*Not currently supported to will need to manually apply
+      damage to armoured targets</em></p>
   dvTable: ""
   equipped: owned
   favorite: false

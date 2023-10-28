@@ -17,7 +17,7 @@ system:
     value: >-
       <p>An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt
       would reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate
-      armor. Refer to the full item description on pg. 349.</p>
+      armor.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

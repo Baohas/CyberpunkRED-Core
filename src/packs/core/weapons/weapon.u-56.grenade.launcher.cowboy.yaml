@@ -16,8 +16,7 @@ system:
   description:
     value: >-
       <p>An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires
-      BODY 11 or higher (unless mounted). Refer to the full item description on
-      pg. 349.</p>
+      BODY 11 or higher (unless mounted).</p>
   dvTable: DV Grenade Launcher
   equipped: owned
   favorite: false

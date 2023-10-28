@@ -17,8 +17,7 @@ system:
   description:
     value: >-
       <p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11
-      or higher (unless mounted). Refer to the full item description on pg.
-      348.</p>
+      or higher (unless mounted).</p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

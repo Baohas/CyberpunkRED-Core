@@ -17,10 +17,8 @@ system:
   description:
     value: >-
       <p>An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun
-      Link* that must be used. Refer to the full item description on pg.
-      348.</p>
-
-      <p><em>*Must be manually added after acquiring the weapon</em></p>
+      Link* that must be used.</p><p><em>*Must be manually added after acquiring
+      the weapon</em></p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false
