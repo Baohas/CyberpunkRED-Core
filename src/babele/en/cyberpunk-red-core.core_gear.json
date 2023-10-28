@@ -16,7 +16,7 @@
     },
     "Battleglove": {
       "name": "Battleglove",
-      "description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>"
+      "description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots.</p>"
     },
     "Smart Glasses": {
       "name": "Smart Glasses",
@@ -68,11 +68,11 @@
     },
     "Cryopump": {
       "name": "Cryopump",
-      "description": "<p>Briefcase used for hooking up a wounded person. Places them in stasis. </p>"
+      "description": "<p>Briefcase-sized tool used for hooking up a wounded person. Places them in stasis.</p>"
     },
     "Cryotank": {
       "name": "Cryotank",
-      "description": "<p>Holds a fully-sized human, heals injuries faster than normal. </p>"
+      "description": "<p>Holds a fully-sized human, heals injuries faster than normal.</p>"
     },
     "Disposable Cell Phone": {
       "name": "Disposable Cell Phone",
@@ -128,11 +128,11 @@
     },
     "Linear Frame β (Beta)": {
       "name": "Linear Frame β (Beta)",
-      "description": "<p>Exoskeleton. Requires 2 Interface Plugs. Increases BODY to 14 while plugged in. No changes to your HP or Deathsave. </p>"
+      "description": "<p>Exoskeleton.</p><ul><li>Requires 2 Interface Plugs</li><li>Increases BODY to 14 while plugged in</li><li>Does not affect HP or Deathsave due to BODY increase</li></ul>"
     },
     "Linear Frame ∑ (Sigma)": {
       "name": "Linear Frame ∑ (Sigma)",
-      "description": "<p>Exoskeleton. Requires 1 Interface Plug. Increases BODY to 12 while plugged in. No changes to your HP or Deathsave. </p>"
+      "description": "<p>Exoskeleton.</p><ul><li>Requires 1 Interface Plug</li><li>Increases BODY to 12 while plugged in</li><li>Does not affect HP or Deathsave due to BODY increase</li></ul>"
     },
     "Lock Picking Set": {
       "name": "Lock Picking Set",

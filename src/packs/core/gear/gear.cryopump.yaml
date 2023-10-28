@@ -11,8 +11,8 @@ system:
     isConcealed: false
   description:
     value: >-
-      <p>Briefcase used for hooking up a wounded person. Places them in stasis.
-      </p>
+      <p>Briefcase-sized tool used for hooking up a wounded person. Places them
+      in stasis.</p>
   equipped: owned
   favorite: false
   installedItems:

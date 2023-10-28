@@ -12,8 +12,9 @@ system:
     isConcealed: false
   description:
     value: >-
-      <p>Exoskeleton. Requires 1 Interface Plug. Increases BODY to 12 while
-      plugged in. No changes to your HP or Deathsave. </p>
+      <p>Exoskeleton.</p><ul><li>Requires 1 Interface Plug</li><li>Increases
+      BODY to 12 while plugged in</li><li>Does not affect HP or Deathsave due to
+      BODY increase</li></ul>
   equipped: owned
   favorite: false
   installedItems:
