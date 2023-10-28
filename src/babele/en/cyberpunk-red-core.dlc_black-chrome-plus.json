@@ -50,11 +50,11 @@
     },
     "Scavenged Armor": {
       "name": "Scavenged Armor",
-      "description": "<p>A scavenged set of Light Armorjack body armor that is unable to be repaired. Refer to full item description on BC+ pg. 4.</p>"
+      "description": "<p>A scavenged set of Light Armorjack body armor that is unable to be repaired.</p>"
     },
     "Piranha Smash": {
       "name": "Piranha Smash",
-      "description": "<p>Looks like smash but it's smash with a lime flavor. And a lower risk of addiction.</p>\n<p><strong>Primary Effect</strong></p>\n<p>Dose lasts 4 hours.</p>\n<p>The user feels happy and satisfied, receiving a temporary modifier of +2 to the following skills</p>\n<ul>\n<li>Acting</li>\n<li>Dance</li>\n<li>Contortionist</li>\n<li>Conversation</li>\n<li>Human Perception</li>\n<li>Persuasion</li>\n</ul>\n<p><strong>Secondary Effect (DV9)</strong></p>\n<p>When the dose wears off, the user rolls WILL + Resist Torture/Drugs + 1d10 against Secondary DV.</p>\n<p>If this fails, they take a -2 to the following skills</p>\n<ul>\n<li>Acting</li>\n<li>Dance</li>\n<li>Contortionist</li>\n<li>Conversation</li>\n<li>Human Perception</li>\n<li>Persuasion</li>\n</ul>"
+      "description": "<p>Looks like smash but it's smash with a lime flavor. And a lower risk of addiction.</p><p><strong>Primary Effect</strong></p><p>Dose lasts 4 hours.</p><p>The user feels happy and satisfied, receiving a temporary modifier of +2 to the following skills</p><ul><li>Acting</li><li>Dance</li><li>Contortionist</li><li>Conversation</li><li>Human Perception</li><li>Persuasion</li></ul><p><strong>Secondary Effect (DV9)</strong></p><p>When the dose wears off, the user rolls <strong>WILL + Resist Torture/Drugs + 1d10 against Secondary DV</strong>.</p><p>If this fails, they take a -2 to the following skills</p><ul><li>Acting</li><li>Dance</li><li>Contortionist</li><li>Conversation</li><li>Human Perception</li><li>Persuasion</li></ul>"
     },
     "Bullet To Slug Adapter Casings": {
       "name": "Bullet To Slug Adapter Casings",
