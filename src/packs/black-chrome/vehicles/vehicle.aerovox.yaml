@@ -9,9 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>AV4 type Aerodyne. Civilian version.</p>
-      <p>Full stats can be found on page 61.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>AV4 type Aerodyne. Civilian version.</p>
   favorite: false
   installedItems:
     allowed: true

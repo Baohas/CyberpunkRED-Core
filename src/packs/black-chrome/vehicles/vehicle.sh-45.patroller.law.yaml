@@ -9,9 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>One seat Gyrocopter. Police version, with mounted Machine Gun.</p>
-      <p>Full stats can be found on page 58.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>One seat Gyrocopter. Police version, with mounted Machine Gun.</p>
   favorite: false
   installedItems:
     allowed: true

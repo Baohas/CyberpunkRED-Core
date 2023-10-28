@@ -10,9 +10,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>AV4 style Aerodyne, civilian model.</p>
-      <p>Full stats can be found on page 62.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>AV4 style Aerodyne, civilian model.</p>
   favorite: false
   installedItems:
     allowed: true

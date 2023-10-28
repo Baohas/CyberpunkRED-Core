@@ -9,9 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>Comfortable family Compact Groundcar.</p>
-      <p>Full details can be found on page 65.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Comfortable family Compact Groundcar.</p>
   favorite: false
   installedItems:
     allowed: true

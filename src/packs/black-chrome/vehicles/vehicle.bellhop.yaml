@@ -12,8 +12,6 @@ system:
     value: >-
       <p>A one seat Gyrocopter which can be folded to the size of a large
       suitcase.</p>
-
-      <p>Full stats can be found on page 60.</p>
   favorite: false
   installedItems:
     allowed: true

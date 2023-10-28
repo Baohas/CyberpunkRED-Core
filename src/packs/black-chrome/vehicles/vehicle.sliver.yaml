@@ -9,9 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>A Roadbike with all the gadgets you'd ever need.</p>
-      <p>Full details can be found on page 84.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>A Roadbike with all the gadgets you'd ever need.</p>
   favorite: false
   installedItems:
     allowed: true

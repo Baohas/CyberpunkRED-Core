@@ -12,8 +12,6 @@ system:
     value: >-
       <p>A High Performance Groundcar. Now you can be MadMax. In town. With two
       mounted Machine Guns.</p>
-
-      <p>Full details can be found on page 75.</p>
   favorite: false
   installedItems:
     allowed: true

@@ -9,9 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>A classic Roadbike with a more feminine look.</p>
-      <p>Full details can be found on page 69.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>A classic Roadbike with a more feminine look.</p>
   favorite: false
   installedItems:
     allowed: true

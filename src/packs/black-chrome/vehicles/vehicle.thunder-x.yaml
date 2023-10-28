@@ -9,9 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>A top of the line High Performance Groundcar.</p>
-      <p>Full details can be found on page 76.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>A top of the line High Performance Groundcar.</p>
   favorite: false
   installedItems:
     allowed: true

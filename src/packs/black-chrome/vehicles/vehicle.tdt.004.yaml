@@ -9,9 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>Troop transport Helicopter.</p>
-      <p>Full details can be found on page 59.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Troop transport Helicopter.</p>
   favorite: false
   installedItems:
     allowed: true

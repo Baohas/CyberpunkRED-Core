@@ -10,10 +10,8 @@ system:
     isConcealed: false
   description:
     value: >-
-      <p>An armored pickup Compact Groundcar with mounted machine gun. Combes
+      <p>An armored pickup Compact Groundcar with mounted machine gun. Comes
       with a bottle of vodka.</p>
-
-      <p>Full details can be found on page 71.</p>
   favorite: false
   installedItems:
     allowed: true

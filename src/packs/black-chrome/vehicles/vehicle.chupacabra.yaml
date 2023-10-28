@@ -12,8 +12,6 @@ system:
     value: >-
       <p>Compact Groundcar built from recycled parts from older vehicles.
       Low-tech but high-horse-power.</p>
-
-      <p>Full details can be found on page 66.</p>
   favorite: false
   installedItems:
     allowed: true

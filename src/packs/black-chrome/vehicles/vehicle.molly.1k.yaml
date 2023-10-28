@@ -9,9 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>Off-road Compact Groundcar.</p>
-      <p>Full details can be found on page 82.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Off-road Compact Groundcar.</p>
   favorite: false
   installedItems:
     allowed: true

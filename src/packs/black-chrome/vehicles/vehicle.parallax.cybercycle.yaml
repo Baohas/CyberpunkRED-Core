@@ -2,16 +2,16 @@ _id: J1uOVT3BkhSWuat6
 _key: "!items!J1uOVT3BkhSWuat6"
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/zonda-parallax.svg
-name: Parallax Cybercycle
+name: Parallax Cybercycle™
 system:
   brand: Zonda
   concealable:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>Top of the line Superbike.</p>
-      <p>Full details can be found on page 83.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Top of the line Superbike.</p>
   favorite: false
   installedItems:
     allowed: true

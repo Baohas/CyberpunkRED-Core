@@ -12,8 +12,6 @@ system:
     value: >-
       <p>Armored industrial looking Compact Grouncar, with a powerful combat
       plow.</p>
-
-      <p>Full details can be found on page 68.</p>
   favorite: false
   installedItems:
     allowed: true

@@ -9,9 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>Small and low-cost Compact Groundcar.</p>
-      <p>Full details can be found on page 64.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Small and low-cost Compact Groundcar.</p>
   favorite: false
   installedItems:
     allowed: true

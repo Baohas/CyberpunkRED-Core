@@ -13,8 +13,6 @@ system:
     value: >-
       <p>A luxurious bus for corporate road trips. Equally ell equipped for work
       meetings and after meeting drinks.</p>
-
-      <p>Full details can be found on page 80.</p>
   favorite: false
   installedItems:
     allowed: true

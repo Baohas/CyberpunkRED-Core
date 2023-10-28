@@ -12,8 +12,6 @@ system:
     value: >-
       <p>A High Performance Groundcar which is large, armored and has a military
       look.</p>
-
-      <p>Full details can be found on page 77.</p>
   favorite: false
   installedItems:
     allowed: true

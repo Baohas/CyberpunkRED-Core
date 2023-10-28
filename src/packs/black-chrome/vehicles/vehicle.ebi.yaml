@@ -9,9 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>Small but well thought out Compact Groundcar.</p>
-      <p>Full details can be found on page 72.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Small but well thought out Compact Groundcar.</p>
   favorite: false
   installedItems:
     allowed: true
