@@ -358,7 +358,6 @@ export default class CPRActor extends Actor {
           // Uninstall all items (with recursion) before deletion.
           uninstallPromises.push(
             item.uninstallItems(itemList, {
-              recursive: true,
               unloadAmmo: options.unloadAmmo,
             })
           );
