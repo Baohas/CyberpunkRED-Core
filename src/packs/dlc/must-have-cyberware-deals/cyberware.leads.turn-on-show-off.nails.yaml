@@ -7,7 +7,7 @@ name: Lead's Turn-On-Show-Off Nails
 system:
   ammoVariety: []
   attackmod: 0
-  brand: ""
+  brand: Lead
   concealable:
     concealable: false
     isConcealed: false

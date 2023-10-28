@@ -8,7 +8,7 @@
     },
     "Cyberpillow": {
       "name": "Cyberpillow",
-      "description": "<p>A comfortable Cyberarm popout pillow for naps on the go.&nbsp;</p>"
+      "description": "<p>A comfortable Cyberarm popout pillow for naps on the go.</p>"
     },
     "External Vidscreen": {
       "name": "External Vidscreen",
@@ -28,7 +28,7 @@
     },
     "Mood Eye": {
       "name": "Mood Eye",
-      "description": "<p>Color-shifting eye lenses. Color is dependent on Neural Link &ldquo;mood&rdquo; scans. DV 21 Acting check to fake a mood scan and change color accordingly. Lenses can be deactivated without an action.</p>\n<ul>\n<li>Red: Rage</li>\n<li>Blue: Sorrow</li>\n<li>Yellow: Terror</li>\n<li>Pink: Horny</li>\n<li>Green: Envy</li>\n<li>Gray: Flatlined</li>\n</ul>\n<p>Fashionware. Requires Neural Link.</p>"
+      "description": "<p>Color-shifting eye lenses. Color is dependent on Neural Link \"mood\" scans. <strong>DV 21 Acting</strong> check to fake a mood scan and change color accordingly. Lenses can be deactivated without an action.</p><ul><li>Red: Rage</li><li>Blue: Sorrow</li><li>Yellow: Terror</li><li>Pink: Horny</li><li>Green: Envy</li><li>Gray: Flatlined</li></ul><p>Fashionware. Requires Neural Link.</p>"
     },
     "NeuTongue": {
       "name": "NeuTongue",

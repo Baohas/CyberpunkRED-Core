@@ -7,7 +7,7 @@ name: Pursuit Security Inc. Personal Shredder
 system:
   ammoVariety: []
   attackmod: 0
-  brand: ""
+  brand: Pursuit Security Inc.
   concealable:
     concealable: true
     isConcealed: false
