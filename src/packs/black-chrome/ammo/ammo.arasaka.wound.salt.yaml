@@ -13,10 +13,8 @@ system:
     isConcealed: false
   description:
     value: >-
-      <p>Coating for Arasaka Weeping Reaver Katana only.</p>
-
-      <p>Able to apply a second a seconde Critical Injury, details of which can
-      be found on page 91.</p>
+      <p>Coating for Arasaka Weeping Reaver Katana only. Adds a second critical
+      injury. No additional damage.</p>
   favorite: false
   overrides:
     autofire:

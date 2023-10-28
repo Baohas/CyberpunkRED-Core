@@ -6,12 +6,17 @@ name: Grenade (Arachnid)
 system:
   ablationValue: 0
   amount: 1
-  brand: Centurion Essentials
+  brand: Centurian Essentials
   concealable:
     concealable: true
     isConcealed: false
   description:
-    value: <p>A very sticky grenade, details of which can be found on page 86.</p>
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>A very sticky grenade. Creates a sticky web that entangles target. Must
+      be destroyed or be torn by anyone in melee range making a <strong>DV 15
+      Brawling Check</strong>.</p>
   favorite: false
   overrides:
     autofire:
