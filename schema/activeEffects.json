@@ -18,6 +18,10 @@
             "$ref": "#/definitions/CPRC-Effect-Change"
           }
         },
+        "description": {
+          "description": "This is a different description type than the common one",
+          "type": "string"
+        },
         "disabled": {
           "type": "boolean"
         },
@@ -38,16 +42,21 @@
         },
         "transfer": {
           "type": "boolean"
+        },
+        "statuses": {
+          "type": "array"
         }
       },
       "required": [
         "_id",
         "changes",
+        "description",
         "disabled",
         "duration",
         "flags",
         "icon",
         "name",
+        "statuses",
         "tint",
         "transfer"
       ]
@@ -210,7 +219,7 @@
           "format": "integer"
         }
       },
-      "required": ["key", "mode", "priority", "value"]
+      "required": ["key", "mode", "value"]
     },
     "CPRC-Effect-Duration": {
       "description": "We do not currently use 'duration' in our AEs. This will need to be better defined if we start using 'duration'",
