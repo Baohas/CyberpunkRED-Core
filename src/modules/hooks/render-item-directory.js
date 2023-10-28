@@ -71,7 +71,16 @@ function _prepareSubList(element) {
     // Is subitem hidden or not
     const display = installFlag ? "" : "item-hidden";
     // Here we wrap the whole sub-list in a div, so that we can animate it
-    return `<div class="sub-list ${display}" data-items-wrapper-for-parent="${item.id}"><ol>${listItems}</ol></div>`;
+    let html = "";
+    html += `<div class="sub-list ${display}" data-items-wrapper-for-parent="${item.id}">`;
+    html += `  <ol>`;
+    html += `    <li class="sub-list-header flexrow">`;
+    html += `     ${SystemUtils.Localize("CPR.global.generic.installedItems")}`;
+    html += `    </li>`;
+    html += `    ${listItems}`;
+    html += `  </ol>`;
+    html += `</div>`;
+    return html;
   }
   // Otherwise return a blank string.
   return "";
