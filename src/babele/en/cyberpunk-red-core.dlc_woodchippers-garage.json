@@ -27,7 +27,7 @@
     },
     "Burst Flamethrower": {
       "name": "Burst Flamethrower",
-      "description": "<p>Can only fire Incendiary Shotgun Shells, but targets ignited by this weapon burn for 4HP a turn.<br><br>Additionally, this weapon can consume all it's remaining ammo to shoot a fireball, which explodes in a similar fashion to an incendiary grenade. The user of the weapon is also consumed by the fireball, getting Deadly on Fire*.</p>\n<p><em>*Special fire mode not currently supported; will need to be manually applied</em></p>",
+      "description": "<p>Can only fire Incendiary Shotgun Shells, but targets ignited by this weapon burn for 4HP a turn.</p>\n<p>Additionally, this weapon can consume all it's remaining ammo to shoot a fireball, which explodes in a similar fashion to an incendiary grenade. The user of the weapon is also consumed by the fireball, getting Deadly on Fire*.</p>\n<p><em>*Special fire mode not currently supported; will need to be manually applied</em></p>",
       "dvTable": "DV Shotgun (Slug)"
     },
     "Enviro-launcher": {
