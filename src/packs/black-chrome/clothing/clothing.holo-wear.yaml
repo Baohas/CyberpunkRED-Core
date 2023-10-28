@@ -12,8 +12,7 @@ system:
   description:
     value: >-
       <p>Holographic clothing that can get disabled by EMP blasts for a minute.
-      Can swap styles with an action if purchased. Refer to full item
-      description on BC pg. 35.</p>
+      Can swap styles with an action if purchased.</p>
   equipped: owned
   favorite: false
   installedItems:
