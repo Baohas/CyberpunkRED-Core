@@ -9,9 +9,13 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    value: >-
-      <p>Business executives and fat-cat defenders ready to risk it all to rise
-      the corporate ladder and realize the New American dream.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Business executives and fat-cat defenders ready to risk it all to rise the
+        corporate ladder and realize the New American dream.
+      </p>
   favorite: false
   hasRoll: false
   isSituational: false

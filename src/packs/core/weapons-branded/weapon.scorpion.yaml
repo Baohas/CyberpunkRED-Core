@@ -16,10 +16,11 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: >-
-      <p>A sleek crossbow branded with the Eagletech logo, reloaded as part of
-      an Attack action.</p>
-
+    value: |
+      <p>
+        A sleek crossbow branded with the Eagletech logo, reloaded as part of an
+        Attack action.
+      </p>
       <p>+1 to Attack check.</p>
   dvTable: DV Bows & Crossbows
   equipped: owned

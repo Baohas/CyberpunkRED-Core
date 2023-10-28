@@ -14,10 +14,13 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>This weapon can't cause Critical Injuries, can't ablate armor, and if
-      it would reduce a target to under 1 HP it instead leaves them Unconscious
-      on 1 HP.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        This weapon can't cause Critical Injuries, can't ablate armor, and if it would
+        reduce a target to under 1 HP it instead leaves them Unconscious on 1 HP.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

@@ -13,13 +13,18 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Be prepared for anything. Enter a NET Architecture full of Black ICE
-      and you don&rsquo;t have have a Sword Program handy? Swap out your useless
-      Banhammer with the press of a button.</p>
-
-      <p>Use Meat Action to change any and all installed Sword Programs into
-      Banhammer Programs or vice versa.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Be prepared for anything. Enter a NET Architecture full of Black ICE and you
+        don&rsquo;t have have a Sword Program handy? Swap out your useless Banhammer
+        with the press of a button.
+      </p>
+      <p>
+        Use Meat Action to change any and all installed Sword Programs into Banhammer
+        Programs or vice versa.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

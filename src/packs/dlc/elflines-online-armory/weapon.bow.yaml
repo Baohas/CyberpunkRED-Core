@@ -14,7 +14,10 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: <p>A revitalized bow, reloaded as part of an Attack Action.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>A revitalized bow, reloaded as part of an Attack Action.</p>
   dvTable: DV Bows & Crossbows
   equipped: owned
   favorite: false

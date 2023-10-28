@@ -15,11 +15,18 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <ul><li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li><li>Increases
-      BODY stat to 12 (adjusting your HP, Wound Threshold, and Death
-      Save)</li><li>No movement penalty for jumping</li><li>Operates as if
-      paired Skate Feet are installed</li></ul>
+    chat: ""
+    unidentified: ""
+    value: |
+      <ul>
+        <li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li>
+        <li>
+          Increases BODY stat to 12 (adjusting your HP, Wound Threshold, and Death
+          Save)
+        </li>
+        <li>No movement penalty for jumping</li>
+        <li>Operates as if paired Skate Feet are installed</li>
+      </ul>
   dvTable: ""
   favorite: false
   fireModes:

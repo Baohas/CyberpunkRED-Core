@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Access to nervous system.</p>
+    value: |
+      <p>Access to nervous system.</p>
   dvTable: ""
   favorite: false
   fireModes:

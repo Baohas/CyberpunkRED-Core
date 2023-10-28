@@ -11,11 +11,17 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Exoskeleton.</p><ul><li>Requires 2 Interface Plugs</li><li>Increases
-      BODY to 12 while plugged in</li><li>No changes to your HP or
-      Deathsave</li><li>No movement penalty for jumping</li><li>Operates as if
-      paired Skate Feet are installed</li></ul>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Exoskeleton.</p>
+      <ul>
+        <li>Requires 2 Interface Plugs</li>
+        <li>Increases BODY to 12 while plugged in</li>
+        <li>No changes to your HP or Deathsave</li>
+        <li>No movement penalty for jumping</li>
+        <li>Operates as if paired Skate Feet are installed</li>
+      </ul>
   equipped: owned
   favorite: false
   installedItems:

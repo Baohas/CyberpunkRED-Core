@@ -9,13 +9,15 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>Black ICE can&rsquo;t hit what they can&rsquo;t catch.</p>
-
       <p>7 slots only for Programs.</p>
-
-      <p>Right after Jacking In, Netrunner can activate a maximum of 2 installed
-      Speedy Gonzalvez Programs without a NET Action.</p>
+      <p>
+        Right after Jacking In, Netrunner can activate a maximum of 2 installed Speedy
+        Gonzalvez Programs without a NET Action.
+      </p>
   equipped: owned
   favorite: false
   installLocation: mall

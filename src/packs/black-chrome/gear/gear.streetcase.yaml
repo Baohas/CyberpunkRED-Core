@@ -12,7 +12,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Can carry many easily accessible items that YOU need to stay safe.</p>
+    value: |
+      <p>Can carry many easily accessible items that YOU need to stay safe.</p>
   equipped: owned
   favorite: false
   installedItems:

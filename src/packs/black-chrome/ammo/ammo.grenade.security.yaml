@@ -13,7 +13,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Armor piercing Grenade. Deals damage to targets but not to cover.</p>
+    value: |
+      <p>Armor piercing Grenade. Deals damage to targets but not to cover.</p>
   favorite: false
   overrides:
     autofire:

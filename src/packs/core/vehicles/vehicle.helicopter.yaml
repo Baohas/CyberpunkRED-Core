@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A four-seater helicopter capable of high speeds and long flights.</p>
+    value: |
+      <p>A four-seater helicopter capable of high speeds and long flights.</p>
   favorite: false
   installedItems:
     allowed: true

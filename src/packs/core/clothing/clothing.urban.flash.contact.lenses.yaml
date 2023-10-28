@@ -11,9 +11,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>The most technological and flashy clothing you can find in the Time of
-      the Red.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The most technological and flashy clothing you can find in the Time of the
+        Red.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

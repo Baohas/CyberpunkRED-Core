@@ -14,9 +14,13 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>The Sanroo Hello Cutie Ultra-K8 Assault Pistol is an Excellent Quality
-      Exotic Very Heavy Pistol with an Excellent Quality Heavy SMG mode.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Sanroo Hello Cutie Ultra-K8 Assault Pistol is an Excellent Quality Exotic
+        Very Heavy Pistol with an Excellent Quality Heavy SMG mode.
+      </p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

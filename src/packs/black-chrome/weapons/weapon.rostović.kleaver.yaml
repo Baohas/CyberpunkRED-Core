@@ -13,9 +13,14 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>Two Handed Exotic Very Heavy Melee Weapon. Can use a battery pack to
-      increase damage.</p><p>Need BODY 11 or more to use it.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Two Handed Exotic Very Heavy Melee Weapon. Can use a battery pack to increase
+        damage.
+      </p>
+      <p>Need BODY 11 or more to use it.</p>
   dvTable: ""
   equipped: owned
   favorite: false

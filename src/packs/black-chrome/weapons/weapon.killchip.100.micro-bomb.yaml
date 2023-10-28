@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Memory chip, but explosive when plugged into Neuralware.</p>
+    value: |
+      <p>Memory chip, but explosive when plugged into Neuralware.</p>
   dvTable: ""
   equipped: owned
   favorite: false

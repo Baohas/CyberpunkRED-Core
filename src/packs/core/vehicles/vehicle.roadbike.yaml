@@ -11,9 +11,10 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: >-
-      <p>A common CHOOH<sup>2</sup>-powered roadbike seen during the time of the
-      Red.</p>
+    value: |
+      <p>
+        A common CHOOH<sup>2</sup>-powered roadbike seen during the time of the Red.
+      </p>
   favorite: false
   installedItems:
     allowed: true

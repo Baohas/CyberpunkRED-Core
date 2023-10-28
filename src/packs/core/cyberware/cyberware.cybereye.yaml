@@ -13,7 +13,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>An artificial eye. Choose Kiroshi Optics!</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>An artificial eye. Choose Kiroshi Optics!</p>
   dvTable: ""
   favorite: false
   fireModes:

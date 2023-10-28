@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Small but well thought out Compact Groundcar.</p>
+    value: |
+      <p>Small but well thought out Compact Groundcar.</p>
   favorite: false
   installedItems:
     allowed: true

@@ -13,12 +13,16 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>Excellent Quality Two Handed Exotic Very Heavy Melee
-      Weapon.</p><p>Contains three doses of specific fluids for blade
-      coating:</p><ul><li>Arasaka Fire (can ignite target)</li><li>Arasaka Acid
-      (ablates armor)</li><li>Arasaka Wound Salt (applies a second critical
-      injury)</li></ul>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Excellent Quality Two Handed Exotic Very Heavy Melee Weapon.</p>
+      <p>Contains three doses of specific fluids for blade coating:</p>
+      <ul>
+        <li>Arasaka Fire (can ignite target)</li>
+        <li>Arasaka Acid (ablates armor)</li>
+        <li>Arasaka Wound Salt (applies a second critical injury)</li>
+      </ul>
   dvTable: ""
   equipped: owned
   favorite: false

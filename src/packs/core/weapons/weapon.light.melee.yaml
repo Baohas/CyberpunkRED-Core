@@ -13,7 +13,10 @@ system:
   critFailEffect: jammed
   damage: 1d6
   description:
-    value: <p>Generic Light Melee weapon.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Generic Light Melee weapon.</p>
   dvTable: ""
   equipped: owned
   favorite: false

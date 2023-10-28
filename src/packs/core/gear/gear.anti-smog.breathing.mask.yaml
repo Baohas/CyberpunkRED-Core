@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Airborne toxin filter.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Airborne toxin filter.</p>
   equipped: owned
   favorite: false
   installedItems:

@@ -15,11 +15,17 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <ul><li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li><li>Increases
-      BODY stat to 12 (adjusting your HP, Wound Threshold, and Death
-      Save)</li><li>Ignores the normal movement penalty for climbing and
-      swimming</li></ul>
+    chat: ""
+    unidentified: ""
+    value: |
+      <ul>
+        <li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li>
+        <li>
+          Increases BODY stat to 12 (adjusting your HP, Wound Threshold, and Death
+          Save)
+        </li>
+        <li>Ignores the normal movement penalty for climbing and swimming</li>
+      </ul>
   dvTable: ""
   favorite: false
   fireModes:

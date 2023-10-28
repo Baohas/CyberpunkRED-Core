@@ -12,7 +12,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Produces enough water to sustain a person.</p>
+    value: |
+      <p>Produces enough water to sustain a person.</p>
   equipped: owned
   favorite: false
   installedItems:

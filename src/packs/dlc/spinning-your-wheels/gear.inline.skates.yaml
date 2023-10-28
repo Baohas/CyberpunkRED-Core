@@ -11,10 +11,14 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>They're roller skates baby! Increases moment by 4 m/yds when using the
-      Run Action, though stopping the use of any options in the user's legs. May
-      cause physical tasks to be done at -2.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        They're roller skates baby! Increases moment by 4 m/yds when using the Run
+        Action, though stopping the use of any options in the user's legs. May cause
+        physical tasks to be done at -2.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

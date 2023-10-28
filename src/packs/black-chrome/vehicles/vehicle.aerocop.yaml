@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>AV4 type Aerodyne. Police version.</p>
+    value: |
+      <p>AV4 type Aerodyne. Police version.</p>
   favorite: false
   installedItems:
     allowed: true

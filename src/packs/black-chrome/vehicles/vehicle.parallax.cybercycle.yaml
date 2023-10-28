@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Top of the line Superbike.</p>
+    value: |
+      <p>Top of the line Superbike.</p>
   favorite: false
   installedItems:
     allowed: true

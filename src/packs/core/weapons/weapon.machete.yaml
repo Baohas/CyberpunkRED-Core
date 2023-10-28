@@ -13,9 +13,13 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    value: >-
-      <p>A long-bladed knife with a variety of uses. Known to be a favourite to
-      some gangs of Night City.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A long-bladed knife with a variety of uses. Known to be a favourite to some
+        gangs of Night City.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

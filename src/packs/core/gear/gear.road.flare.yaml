@@ -11,7 +11,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: "<p>Range: 100m/yd. Duration: 1h.</p>"
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Range: 100m/yd. Duration: 1h.</p>
   equipped: owned
   favorite: false
   installedItems:

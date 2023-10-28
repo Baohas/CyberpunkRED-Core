@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A specialised groundcar designed for sports performance.</p>
+    value: |
+      <p>A specialised groundcar designed for sports performance.</p>
   favorite: false
   installedItems:
     allowed: true

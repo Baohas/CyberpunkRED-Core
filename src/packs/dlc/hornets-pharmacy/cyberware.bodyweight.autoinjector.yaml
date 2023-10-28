@@ -13,13 +13,16 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>Internal Body Cyberware.</p>
-
-      <p>Use an Action to load one dose of Street Drug into a subdermal storage
-      pod. Optionally, one can configure a Biomonitor to automatically dose the
-      user upon entering combat, suffering a critical injury, or reaching a
-      predetermined Wound State threshold.</p>
+      <p>
+        Use an Action to load one dose of Street Drug into a subdermal storage pod.
+        Optionally, one can configure a Biomonitor to automatically dose the user upon
+        entering combat, suffering a critical injury, or reaching a predetermined
+        Wound State threshold.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -11,7 +11,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>+2 First Aid or Paramedic checks.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>+2 First Aid or Paramedic checks.</p>
   equipped: owned
   favorite: false
   installedItems:

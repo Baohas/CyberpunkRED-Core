@@ -13,7 +13,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Provides up to 400x magnification.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Provides up to 400x magnification.</p>
   dvTable: ""
   favorite: false
   fireModes:

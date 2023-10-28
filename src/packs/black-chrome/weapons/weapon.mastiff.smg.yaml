@@ -14,10 +14,16 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    value: >-
-      <p>The Militech Mastiff SMG is an Exotic Two-Handed SMG and
-      Shotgun*.</p><p><em>*Treat this as an SMG with an Underbarrel Shotgun, the
-      upgrade must be added manually.</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>The Militech Mastiff SMG is an Exotic Two-Handed SMG and Shotgun*.</p>
+      <p>
+        <em
+          >*Treat this as an SMG with an Underbarrel Shotgun, the upgrade must be
+          added manually.</em
+        >
+      </p>
   dvTable: DV SMG
   equipped: owned
   favorite: false

@@ -13,7 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: >
       <p>Provides an LED showing vitals readouts. Can be linked to your
       agent.</p>
   dvTable: ""

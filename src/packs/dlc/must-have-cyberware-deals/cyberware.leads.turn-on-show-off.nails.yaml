@@ -14,11 +14,15 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Customizable illuminated nail for each fingertip. Includes pen tools
-      for creating custom patterns. Nail patterns can be downloaded from the
-      CitiNet and synced with a linked Agent.<br>Qualifies as a Light Tattoo. +2
-      Wardrobe and Style when the user has 3 or more Light Tattoos.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Customizable illuminated nail for each fingertip. Includes pen tools for
+        creating custom patterns. Nail patterns can be downloaded from the CitiNet and
+        synced with a linked Agent.<br />Qualifies as a Light Tattoo. +2 Wardrobe and
+        Style when the user has 3 or more Light Tattoos.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

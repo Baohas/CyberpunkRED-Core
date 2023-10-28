@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A classic roadbike, this time with mounted weapons.</p>
+    value: |
+      <p>A classic roadbike, this time with mounted weapons.</p>
   favorite: false
   installedItems:
     allowed: true

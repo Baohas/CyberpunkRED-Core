@@ -15,9 +15,9 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: >-
-      <p>Excellent Quality One Handed Exotic Medium Melee Weapon.</p><p>A glove
-      with a short retractable blade.</p>
+    value: |
+      <p>Excellent Quality One Handed Exotic Medium Melee Weapon.</p>
+      <p>A glove with a short retractable blade.</p>
   dvTable: ""
   equipped: owned
   favorite: false

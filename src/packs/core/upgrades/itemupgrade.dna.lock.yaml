@@ -12,9 +12,13 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Uses biometrics to lock the cyberdeck. Requires <strong>DV17
-      Electronics/Security Tech</strong> Check to crack.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Uses biometrics to lock the cyberdeck. Requires
+        <strong>DV17 Electronics/Security Tech</strong> Check to crack.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

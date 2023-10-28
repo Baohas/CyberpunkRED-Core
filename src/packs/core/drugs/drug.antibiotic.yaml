@@ -11,10 +11,14 @@ system:
     isConcealed: false
   consumed: None
   description:
-    value: >-
-      <p>If a target has started the natural healing process injecting them with
-      Antibiotic will cause them to heal an additional 2 Hit Points per day for
-      a week. This effect does not stack.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        If a target has started the natural healing process injecting them with
+        Antibiotic will cause them to heal an additional 2 Hit Points per day for a
+        week. This effect does not stack.
+      </p>
   equipped: owned
   favorite: false
   price:

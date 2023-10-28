@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Explosive look-alike of an electrical plug adapter.</p>
+    value: |
+      <p>Explosive look-alike of an electrical plug adapter.</p>
   dvTable: ""
   equipped: owned
   favorite: false

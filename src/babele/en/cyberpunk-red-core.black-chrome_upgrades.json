@@ -4,23 +4,23 @@
   "entries": {
     "4Tify": {
       "name": "4Tify",
-      "description": "<p>Agent App.</p><p>Can reveals weak points by scanning your home. Or a section of cover...</p>"
+      "description": "<p>Agent App.</p>\n<p>Can reveals weak points by scanning your home. Or a section of cover...</p>\n"
     },
     "City Database": {
       "name": "City Database",
-      "description": "<p>Agent App.</p><p>+1 bonus to all Local Expert Skills Checks related to communities and neighborhoods for that city.</p>"
+      "description": "<p>Agent App.</p>\n<p>\n  +1 bonus to all Local Expert Skills Checks related to communities and\n  neighborhoods for that city.\n</p>\n"
     },
     "Digital Gladiator": {
       "name": "Digital Gladiator",
-      "description": "<p>Agent App.</p><p>Perhaps you're better suited to duking it out online than in the streets…</p><p>Rules related to creating, playing with, and fighting an opponent in Digital Gladiator are contained in Black Chrome rulebook for this item.</p>"
+      "description": "<p>Agent App.</p>\n<p>Perhaps you're better suited to duking it out online than in the streets…</p>\n<p>\n  Rules related to creating, playing with, and fighting an opponent in Digital\n  Gladiator are contained in Black Chrome rulebook for this item.\n</p>\n"
     },
     "MedScan": {
       "name": "MedScan",
-      "description": "<p>Agent App.</p><p>Requires CitiNet access. MedScan can connect you to a Trauma Team Remote Specialist but their actual guidance costs extra.</p><p>For an increased fee, a remote Trauma Specialist can be hired to direct the user through an entire 4-hour procedure.</p><p>Rules related to cost of hiring and procedures allowed to be done with this App are contained in Black Chrome rulebook for this item.</p>"
+      "description": "<p>Agent App.</p>\n<p>\n  Requires CitiNet access. MedScan can connect you to a Trauma Team Remote\n  Specialist but their actual guidance costs extra.\n</p>\n<p>\n  For an increased fee, a remote Trauma Specialist can be hired to direct the\n  user through an entire 4-hour procedure.\n</p>\n<p>\n  Rules related to cost of hiring and procedures allowed to be done with this\n  App are contained in Black Chrome rulebook for this item.\n</p>\n"
     },
     "NCPD Crime Database": {
       "name": "NCPD Crime Database",
-      "description": "<p>Agent App.</p><p>Requires CitiNet access in Night City. Allows user to research crime database.</p>"
+      "description": "<p>Agent App.</p>\n<p>\n  Requires CitiNet access in Night City. Allows user to research crime database.\n</p>\n"
     }
   }
 }

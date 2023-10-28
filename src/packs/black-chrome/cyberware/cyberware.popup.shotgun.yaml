@@ -15,10 +15,14 @@ system:
   core: false
   damage: 5d6
   description:
-    value: >-
-      <p>A concealable shotgun. Comes with a smartgun link pre-installed*. Can't
-      hold anything with this hand while activated.</p><p><em>* Smart Link must
-      be manually added.</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A concealable shotgun. Comes with a smartgun link pre-installed*. Can't hold
+        anything with this hand while activated.
+      </p>
+      <p><em>* Smart Link must be manually added.</em></p>
   dvTable: DV Shotgun (Slug)
   favorite: false
   fireModes:

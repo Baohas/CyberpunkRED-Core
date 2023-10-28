@@ -8,7 +8,10 @@ name: Crushed Fingers
 system:
   deathSaveIncrease: false
   description:
-    value: <p>-4 to hand actions.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>-4 to hand actions.</p>
   favorite: false
   location: body
   quickFix:

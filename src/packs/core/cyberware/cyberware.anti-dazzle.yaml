@@ -13,7 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: >
       <p>Must be paired. Provides immunity to dazzling effects (like
       flashbangs).</p>
   dvTable: ""

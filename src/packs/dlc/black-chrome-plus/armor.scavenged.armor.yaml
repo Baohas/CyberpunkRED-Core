@@ -13,9 +13,12 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>A scavenged set of Light Armorjack body armor that is unable to be
-      repaired.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A scavenged set of Light Armorjack body armor that is unable to be repaired.
+      </p>
   equipped: owned
   favorite: false
   headLocation:

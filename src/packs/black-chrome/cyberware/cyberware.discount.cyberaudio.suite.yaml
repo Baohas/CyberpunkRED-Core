@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A cheap and bulky interface for an audio enhancement.</p>
+    value: |
+      <p>A cheap and bulky interface for an audio enhancement.</p>
   dvTable: ""
   favorite: false
   fireModes:

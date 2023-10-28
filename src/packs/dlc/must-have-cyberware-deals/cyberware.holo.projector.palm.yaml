@@ -14,11 +14,14 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Projects a small hologram from the User&rsquo;s palm. User can interact
-      with hologram to control a linked Agent&rsquo;s functions. Can be
-      installed in meat arm if it&rsquo;s the only piece of cyberware in that
-      arm.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Projects a small hologram from the User&rsquo;s palm. User can interact with
+        hologram to control a linked Agent&rsquo;s functions. Can be installed in meat
+        arm if it&rsquo;s the only piece of cyberware in that arm.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -13,9 +13,13 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>A japanese wooden pole with a curved blade on one side. Favoured by
-      Arasaka tactical teams for close engagements.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A japanese wooden pole with a curved blade on one side. Favoured by Arasaka
+        tactical teams for close engagements.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

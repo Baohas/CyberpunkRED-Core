@@ -11,9 +11,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Miniature Workshop. Allows a Tech to use Upgrade and Fabrication
-      Experstise anywhere as long as they have techtools.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Miniature Workshop. Allows a Tech to use Upgrade and Fabrication Experstise
+        anywhere as long as they have techtools.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

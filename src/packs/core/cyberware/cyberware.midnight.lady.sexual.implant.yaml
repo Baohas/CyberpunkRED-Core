@@ -13,7 +13,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Machine washable.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Machine washable.</p>
   dvTable: ""
   favorite: false
   fireModes:

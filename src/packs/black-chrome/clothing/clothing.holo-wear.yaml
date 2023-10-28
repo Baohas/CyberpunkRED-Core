@@ -10,9 +10,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Holographic clothing that can get disabled by EMP blasts for a minute.
-      Can swap styles with an action if purchased.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Holographic clothing that can get disabled by EMP blasts for a minute. Can
+        swap styles with an action if purchased.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

@@ -12,9 +12,13 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Cyberdeck can connect to access points from up to 8m/yds away (instead
-      of 6m/yds).</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Cyberdeck can connect to access points from up to 8m/yds away (instead of
+        6m/yds).
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

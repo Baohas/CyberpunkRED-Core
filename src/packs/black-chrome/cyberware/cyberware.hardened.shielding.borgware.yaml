@@ -13,9 +13,11 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Borgware.</p><p>This is installed to is not affected by EMP
-      effects.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Borgware.</p>
+      <p>This is installed to is not affected by EMP effects.</p>
   dvTable: ""
   favorite: false
   fireModes:

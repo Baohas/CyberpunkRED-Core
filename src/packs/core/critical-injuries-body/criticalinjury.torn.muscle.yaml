@@ -7,7 +7,10 @@ name: Torn Muscle
 system:
   deathSaveIncrease: false
   description:
-    value: <p>-2 to Melee Attacks.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>-2 to Melee Attacks.</p>
   favorite: false
   location: body
   quickFix:

@@ -13,9 +13,13 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Everytime an installed Dragon Black ICE destroys a Program it regains
-      full REZ.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Everytime an installed Dragon Black ICE destroys a Program it regains full
+        REZ.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -11,10 +11,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>This additive delays the effects of a Poison or Biotoxin Vial by a
-      minute or an hour. Mixing multiple Delaying Compounds does not increase
-      delay period.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        This additive delays the effects of a Poison or Biotoxin Vial by a minute or
+        an hour. Mixing multiple Delaying Compounds does not increase delay period.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

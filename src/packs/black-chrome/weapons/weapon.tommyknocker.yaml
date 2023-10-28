@@ -14,10 +14,14 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>The Tommyknocker is a combo Exotic Very Heavy Pistol and Poor Quality
-      Shotgun. Requires BODY 10 or to be held in two hands when firing,
-      otherwise the user drops the weapon to the ground.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Tommyknocker is a combo Exotic Very Heavy Pistol and Poor Quality Shotgun.
+        Requires BODY 10 or to be held in two hands when firing, otherwise the user
+        drops the weapon to the ground.
+      </p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

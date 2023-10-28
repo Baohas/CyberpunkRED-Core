@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Requires cyberarm. User can attempt to blind anyone within 25m/yds.</p>
+    value: |
+      <p>Requires cyberarm. User can attempt to blind anyone within 25m/yds.</p>
   dvTable: ""
   favorite: false
   fireModes:

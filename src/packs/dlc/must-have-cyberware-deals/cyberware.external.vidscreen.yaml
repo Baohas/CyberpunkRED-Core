@@ -14,9 +14,13 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Implanted flexible video screen. Use a socketed Memory Chip or linked
-      Agent to stream video to Vidscreen.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Implanted flexible video screen. Use a socketed Memory Chip or linked Agent to
+        stream video to Vidscreen.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

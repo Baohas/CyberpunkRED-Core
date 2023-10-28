@@ -14,9 +14,13 @@ system:
   core: false
   damage: 4d6
   description:
-    value: >-
-      <p>Cyberfinger that holds a concealed Dartgun. Can only be installed on a
-      modular finger cyberhand.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Cyberfinger that holds a concealed Dartgun. Can only be installed on a modular
+        finger cyberhand.
+      </p>
   dvTable: DV Pistol
   favorite: false
   fireModes:

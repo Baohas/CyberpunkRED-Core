@@ -13,10 +13,14 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Light Armorjack that can swap between "Generic Chic" and "Gang Colors"
-      styles with an action from a palette purchased (20eb per color/pattern)
-      and installed on an agent. Comes with one color or pattern of choice.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Light Armorjack that can swap between "Generic Chic" and "Gang Colors" styles
+        with an action from a palette purchased (20eb per color/pattern) and installed
+        on an agent. Comes with one color or pattern of choice.
+      </p>
   equipped: owned
   favorite: false
   headLocation:

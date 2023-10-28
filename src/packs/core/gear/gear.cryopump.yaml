@@ -10,9 +10,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Briefcase-sized tool used for hooking up a wounded person. Places them
-      in stasis.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Briefcase-sized tool used for hooking up a wounded person. Places them in
+        stasis.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

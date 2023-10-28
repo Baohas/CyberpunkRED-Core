@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>A new in-box copy of the hit BDMMORPG Elflines Online.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>A new in-box copy of the hit BDMMORPG Elflines Online.</p>
   equipped: owned
   favorite: false
   installedItems:

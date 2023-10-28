@@ -15,9 +15,13 @@ system:
   critFailEffect: jammed
   damage: 6d6
   description:
-    value: >-
-      <p>A high-impact grenade launcher. You can use a variety of grenades with
-      this. +1 to Attack.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A high-impact grenade launcher. You can use a variety of grenades with this.
+        +1 to Attack.
+      </p>
   dvTable: DV Grenade Launcher
   equipped: owned
   favorite: false

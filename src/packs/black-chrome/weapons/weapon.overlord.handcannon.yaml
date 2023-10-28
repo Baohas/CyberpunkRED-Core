@@ -14,9 +14,13 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    value: >-
-      <p>The Overlord Handcannon is a Poor Quality Exotic Heavy Pistol with a
-      ROF of 1. It may give a +1 bonus to Facedowns in certain situations.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Overlord Handcannon is a Poor Quality Exotic Heavy Pistol with a ROF of 1.
+        It may give a +1 bonus to Facedowns in certain situations.
+      </p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

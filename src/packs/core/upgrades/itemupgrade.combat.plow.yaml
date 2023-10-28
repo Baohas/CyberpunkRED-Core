@@ -12,12 +12,16 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Can be applied to all land and sea vehicles, except Bikes and Jetskies.
-      When you ram something with the front of your vehicle, your vehicle
-      doesn't take damage and nobody inside suffers from the Whiplash critical
-      injury. You deal 2d6 additional ramming damage if your vehicle was boosted
-      by NOS on the turn you ram the object.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can be applied to all land and sea vehicles, except Bikes and Jetskies. When
+        you ram something with the front of your vehicle, your vehicle doesn't take
+        damage and nobody inside suffers from the Whiplash critical injury. You deal
+        2d6 additional ramming damage if your vehicle was boosted by NOS on the turn
+        you ram the object.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -11,9 +11,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>While linked to an instrument, the User can take an Action to make
-      everyone nearby make a Resist Torture/Drugs Check.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        While linked to an instrument, the User can take an Action to make everyone
+        nearby make a Resist Torture/Drugs Check.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

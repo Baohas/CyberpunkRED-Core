@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Off-road Compact Groundcar.</p>
+    value: |
+      <p>Off-road Compact Groundcar.</p>
   favorite: false
   installedItems:
     allowed: true

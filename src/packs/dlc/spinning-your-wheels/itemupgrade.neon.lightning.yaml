@@ -13,11 +13,14 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>Fiber-optic lights on bike's frame and wheels.</p>
-
-      <p>Considered as a Light Tattoo when on or near the bike (gaining +2
-      Wardrobe &amp; Style bonus)</p>
+      <p>
+        Considered as a Light Tattoo when on or near the bike (gaining +2 Wardrobe
+        &amp; Style bonus)
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

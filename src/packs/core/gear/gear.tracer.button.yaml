@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Can be tracked from up to a mile away with a homing tracer.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Can be tracked from up to a mile away with a homing tracer.</p>
   equipped: owned
   favorite: false
   installedItems:

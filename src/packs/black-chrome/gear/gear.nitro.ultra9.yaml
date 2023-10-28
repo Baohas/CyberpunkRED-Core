@@ -10,9 +10,13 @@ system:
     concealable: true
     isConcealed: false
   description:
-    value: >-
-      <p>Can be poured into a Vehicle's tank to refill it as an Action. Gives
-      bonuses to movement at the expense of safety.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can be poured into a Vehicle's tank to refill it as an Action. Gives bonuses
+        to movement at the expense of safety.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

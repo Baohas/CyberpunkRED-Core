@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A single shot weapon which can be concealed.</p>
+    value: |
+      <p>A single shot weapon which can be concealed.</p>
   dvTable: ""
   favorite: false
   fireModes:

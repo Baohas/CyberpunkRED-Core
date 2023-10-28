@@ -14,7 +14,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: >
       <p>Requires cyberarm. The cyberarm this is installed on cannot be
       broken.</p>
   dvTable: ""

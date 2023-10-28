@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>AV4 type troop transport, armored and armed.</p>
+    value: |
+      <p>AV4 type troop transport, armored and armed.</p>
   favorite: false
   installedItems:
     allowed: true

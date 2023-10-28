@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A top of the line High Performance Groundcar.</p>
+    value: |
+      <p>A top of the line High Performance Groundcar.</p>
   favorite: false
   installedItems:
     allowed: true

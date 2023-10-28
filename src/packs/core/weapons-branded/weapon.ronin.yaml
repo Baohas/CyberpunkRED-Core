@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A standard-issue assault rifle.</p>
+    value: |
+      <p>A standard-issue assault rifle.</p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

@@ -17,7 +17,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Enchances cyberleg articulation. +2 Contortionist.</p>
+    value: |
+      <p>Enchances cyberleg articulation. +2 Contortionist.</p>
   dvTable: ""
   favorite: false
   fireModes:

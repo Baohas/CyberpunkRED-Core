@@ -9,7 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>Unleash the fires of Hell upon your rivals.</p>
       <p>6 slots for Programs, 5 slots for Hardware.</p>
       <p>Program slots will only accept Hellhound Black ICE.</p>

@@ -14,10 +14,13 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>Armored large stone chisel glove, covering from hand to shoulder.
-      Requires interface plugs. Can be used both for demolition and
-      brawling.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Armored large stone chisel glove, covering from hand to shoulder. Requires
+        interface plugs. Can be used both for demolition and brawling.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

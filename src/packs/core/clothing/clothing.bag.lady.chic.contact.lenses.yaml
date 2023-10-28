@@ -11,9 +11,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Follow the latest dumpster diver fashion trends! Torn and worn out
-      clothes, perfect if you want that homeless look.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Follow the latest dumpster diver fashion trends! Torn and worn out clothes,
+        perfect if you want that homeless look.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

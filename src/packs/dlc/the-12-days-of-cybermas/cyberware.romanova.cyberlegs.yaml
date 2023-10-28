@@ -14,14 +14,18 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>High fashion Cyberlegs with integrated Talon Foot blades in each heel.
-      Blades can not be removed.</p>
-
-      <p>Paired Cyberlegs, 1000eb for both legs. Each leg has 3 slots for
-      Cyberleg or Cyberlimb Options. Roll Humanity Loss once for the pair of
-      legs. Each leg can suffer separate Critical Injuries and must be repaired
-      individually.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        High fashion Cyberlegs with integrated Talon Foot blades in each heel. Blades
+        can not be removed.
+      </p>
+      <p>
+        Paired Cyberlegs, 1000eb for both legs. Each leg has 3 slots for Cyberleg or
+        Cyberlimb Options. Roll Humanity Loss once for the pair of legs. Each leg can
+        suffer separate Critical Injuries and must be repaired individually.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

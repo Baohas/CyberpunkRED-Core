@@ -9,14 +9,18 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Perfect for Netrunners who only know one speed: All offense, all the
-      time. Just don't get hit, it's going to hurt. A lot.</p>
-
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Perfect for Netrunners who only know one speed: All offense, all the time.
+        Just don't get hit, it's going to hurt. A lot.
+      </p>
       <p>9 slots for Programs or Hardware.</p>
-
-      <p>Slots will not accept Defender Programs. All brain damage from NET
-      combat is doubled.</p>
+      <p>
+        Slots will not accept Defender Programs. All brain damage from NET combat is
+        doubled.
+      </p>
   equipped: owned
   favorite: false
   installLocation: mall

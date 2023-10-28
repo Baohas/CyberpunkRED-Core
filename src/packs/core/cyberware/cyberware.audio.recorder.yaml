@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Records sound. Can link into a chip or agent.</p>
+    value: |
+      <p>Records sound. Can link into a chip or agent.</p>
   dvTable: ""
   favorite: false
   fireModes:

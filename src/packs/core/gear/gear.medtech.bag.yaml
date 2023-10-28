@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Medical equipment.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Medical equipment.</p>
   equipped: owned
   favorite: false
   installedItems:

@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Use it to tape stuff.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Use it to tape stuff.</p>
   equipped: owned
   favorite: false
   installedItems:

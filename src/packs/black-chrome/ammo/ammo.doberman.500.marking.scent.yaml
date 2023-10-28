@@ -12,9 +12,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Unique form of ammunition for the Air Pistol. Provides specialized
-      scent marking on target.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Unique form of ammunition for the Air Pistol. Provides specialized scent
+        marking on target.
+      </p>
   favorite: false
   overrides:
     autofire:

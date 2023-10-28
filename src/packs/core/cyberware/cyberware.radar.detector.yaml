@@ -13,7 +13,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Notifies of detected active radar within a 1 mile radius.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Notifies of detected active radar within a 1 mile radius.</p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -12,12 +12,14 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>A system to attach an Assault Rifle, a Heavy SMG or a Shotgun on the
-      handlebars, along with a firing button.</p>
-
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A system to attach an Assault Rifle, a Heavy SMG or a Shotgun on the
+        handlebars, along with a firing button.
+      </p>
       <p>Shoots only forwards.</p>
-
       <p>Mounting and detaching requires one Action.</p>
   dvTable: ""
   favorite: false

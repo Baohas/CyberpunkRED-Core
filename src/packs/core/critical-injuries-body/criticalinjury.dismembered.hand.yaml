@@ -7,7 +7,10 @@ name: Dismembered Hand
 system:
   deathSaveIncrease: true
   description:
-    value: <p>Hand removed, drop anything it was holding.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Hand removed, drop anything it was holding.</p>
   favorite: false
   location: body
   quickFix:

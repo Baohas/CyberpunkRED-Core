@@ -12,7 +12,9 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: |-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>Hook with a small cargo trailer.</p>
       <p>5 feet x 1.5 feet (1.5m x 0.46m).</p>
       <p>An action is needed to attach and detach the trailer.</p>

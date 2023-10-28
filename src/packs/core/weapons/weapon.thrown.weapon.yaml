@@ -14,11 +14,14 @@ system:
   critFailEffect: jammed
   damage: 6d6
   description:
-    value: >-
-      <p>A basic lob or pitch of an object. Use an Action to make a Ranged
-      Attack at up to 25m/yds. Targets can choose to Dodge your throw if they
-      can Dodge bullets. Melee weapons deal their base damage, but don't
-      penetrate half SP.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up
+        to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets.
+        Melee weapons deal their base damage, but don't penetrate half SP.
+      </p>
   dvTable: DV Thrown Weapon
   equipped: owned
   favorite: false

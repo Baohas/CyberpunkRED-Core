@@ -9,9 +9,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>A CHOOH<sup>2</sup>-powered ground car. Very common with a few dozen
-      manufacturers producing similar models.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A CHOOH<sup>2</sup>-powered ground car. Very common with a few dozen
+        manufacturers producing similar models.
+      </p>
   favorite: false
   installedItems:
     allowed: true

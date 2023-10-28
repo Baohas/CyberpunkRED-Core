@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A Compact Groundcar equipped for off-road travel.</p>
+    value: |
+      <p>A Compact Groundcar equipped for off-road travel.</p>
   favorite: false
   installedItems:
     allowed: true

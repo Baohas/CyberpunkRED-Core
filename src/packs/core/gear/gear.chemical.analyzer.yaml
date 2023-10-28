@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Determine chemical composition using sample database.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Determine chemical composition using sample database.</p>
   equipped: owned
   favorite: false
   installedItems:

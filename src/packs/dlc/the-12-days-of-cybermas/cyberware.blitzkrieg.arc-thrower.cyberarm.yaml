@@ -15,21 +15,25 @@ system:
   core: false
   damage: 4d6
   description:
-    value: >-
-      <p>An &ldquo;arm&rdquo; in name only, the Arc-Thrower is a massive
-      electricity cannon. 0 option slots.</p>
-
-      <p>The Arc-Thrower is One-Handed Exotic Poor Quality Shotgun that uses
-      Heavy Weapons Skill. Fires &ldquo;Shotgun Shell&rdquo; electricity blast
-      with 4d6 damage. Critical Injuries are not possible. Armor is not ablated.
-      If target goes under 1HP from the blast, target has 1HP and is
-      Unconscious.</p>
-
-      <p>Firing the Arc-Thrower consumes a charge from the included Radline
-      MagnaSlot BatteryBrick (100eb). BatteryBrick has a 32 shot capacity and
-      can be recharged in 1 hour. Use an Action to swap in a fresh battery pack
-      even if user has no free hands available. Arc-Thrower does not have a hand
-      attachment.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        An &ldquo;arm&rdquo; in name only, the Arc-Thrower is a massive electricity
+        cannon. 0 option slots.
+      </p>
+      <p>
+        The Arc-Thrower is One-Handed Exotic Poor Quality Shotgun that uses Heavy
+        Weapons Skill. Fires &ldquo;Shotgun Shell&rdquo; electricity blast with 4d6
+        damage. Critical Injuries are not possible. Armor is not ablated. If target
+        goes under 1HP from the blast, target has 1HP and is Unconscious.
+      </p>
+      <p>
+        Firing the Arc-Thrower consumes a charge from the included Radline MagnaSlot
+        BatteryBrick (100eb). BatteryBrick has a 32 shot capacity and can be recharged
+        in 1 hour. Use an Action to swap in a fresh battery pack even if user has no
+        free hands available. Arc-Thrower does not have a hand attachment.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

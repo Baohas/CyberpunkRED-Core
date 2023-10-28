@@ -15,9 +15,11 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Chipware.</p><p>Enhances memorization. +2 Concentration while
-      installed.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Chipware.</p>
+      <p>Enhances memorization. +2 Concentration while installed.</p>
   dvTable: ""
   favorite: false
   fireModes:

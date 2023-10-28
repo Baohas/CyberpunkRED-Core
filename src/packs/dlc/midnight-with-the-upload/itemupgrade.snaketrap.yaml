@@ -13,11 +13,14 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Protects against the first attack (Asp, Raven, or Poison Flatline
-      effects) that would destroy a random installed Program. This protective
-      effect can be use only once per Netrun even if multiple copies of
-      Snaketrap are installed.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Protects against the first attack (Asp, Raven, or Poison Flatline effects)
+        that would destroy a random installed Program. This protective effect can be
+        use only once per Netrun even if multiple copies of Snaketrap are installed.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

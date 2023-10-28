@@ -11,13 +11,15 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>Make any bullet able to be fired as a shotgun slug.</p>
-
       <p>A box of Bullet to Slug Adapter Casings comes with 10 casings.</p>
-
-      <p>You can load 10 bullets into 10 adapters using the included jig in an
-      Action. If loading by hand it takes an Action to load 1 bullet.</p>
+      <p>
+        You can load 10 bullets into 10 adapters using the included jig in an Action.
+        If loading by hand it takes an Action to load 1 bullet.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

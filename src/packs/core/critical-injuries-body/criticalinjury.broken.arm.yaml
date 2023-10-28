@@ -6,7 +6,10 @@ name: Broken Arm
 system:
   deathSaveIncrease: false
   description:
-    value: <p>Arm unusable. Drop what it was holding</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Arm unusable. Drop what it was holding</p>
   favorite: false
   location: body
   quickFix:

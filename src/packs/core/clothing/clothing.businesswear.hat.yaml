@@ -10,9 +10,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Your typical corporative clothing. Show everyone that you're here and
-      you mean business.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Your typical corporative clothing. Show everyone that you're here and you mean
+        business.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

@@ -9,11 +9,14 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>7 Slots only for Programs.</p>
-
-      <p>Netrunner can activate one Armor Program without a NET Action right
-      after Jacking In.</p>
+      <p>
+        Netrunner can activate one Armor Program without a NET Action right after
+        Jacking In.
+      </p>
   equipped: owned
   favorite: false
   installLocation: mall

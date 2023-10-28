@@ -14,9 +14,12 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Glowing tattoos. +2 to Wardrobe & Style if you have at least three
-      installed.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Glowing tattoos. +2 to Wardrobe & Style if you have at least three installed.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

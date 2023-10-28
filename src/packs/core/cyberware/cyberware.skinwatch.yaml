@@ -13,7 +13,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>An LED watch in your skin.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>An LED watch in your skin.</p>
   dvTable: ""
   favorite: false
   fireModes:

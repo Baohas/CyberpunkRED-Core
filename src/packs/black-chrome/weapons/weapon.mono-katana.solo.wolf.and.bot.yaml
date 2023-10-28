@@ -13,9 +13,11 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>Poor Quality Two Handed Exotic Very Heavy Melee
-      Weapon.</p><p>Mono-Katana cheap look-alike.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Poor Quality Two Handed Exotic Very Heavy Melee Weapon.</p>
+      <p>Mono-Katana cheap look-alike.</p>
   dvTable: ""
   equipped: owned
   favorite: false

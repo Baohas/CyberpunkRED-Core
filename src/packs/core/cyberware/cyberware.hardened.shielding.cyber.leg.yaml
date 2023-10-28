@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>The leg and installed options are not affected by EMP effects.</p>
+    value: |
+      <p>The leg and installed options are not affected by EMP effects.</p>
   dvTable: ""
   favorite: false
   fireModes:

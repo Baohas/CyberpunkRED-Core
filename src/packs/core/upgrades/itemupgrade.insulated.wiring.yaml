@@ -14,7 +14,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Cyberdeck and user clothing cannot catch fire.</p>
+    value: |
+      <p>Cyberdeck and user clothing cannot catch fire.</p>
   dvTable: ""
   favorite: false
   fireModes:

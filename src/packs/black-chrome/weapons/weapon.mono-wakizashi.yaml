@@ -13,9 +13,13 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    value: >-
-      <p>One Handed Exotic Heavy Melee Weapon. When wielded by the correct user
-      the weapon ignores armor less than 7 SP.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        One Handed Exotic Heavy Melee Weapon. When wielded by the correct user the
+        weapon ignores armor less than 7 SP.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

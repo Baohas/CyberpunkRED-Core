@@ -10,9 +10,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Can make 10 beverages out of a 3000 beverages library before needing to
-      be refilled. Can also make Smash.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can make 10 beverages out of a 3000 beverages library before needing to be
+        refilled. Can also make Smash.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

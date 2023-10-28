@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A classic Roadbike with a more feminine look.</p>
+    value: |
+      <p>A classic Roadbike with a more feminine look.</p>
   favorite: false
   installedItems:
     allowed: true

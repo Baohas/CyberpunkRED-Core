@@ -13,9 +13,13 @@ system:
   core: false
   damage: 3d6
   description:
-    value: >-
-      <p>Claws which retract from your knuckles which is a Heavy Melee Weapon.
-      Can be concealed.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Claws which retract from your knuckles which is a Heavy Melee Weapon. Can be
+        concealed.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

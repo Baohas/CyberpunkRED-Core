@@ -13,9 +13,13 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    value: >-
-      <p>Useful as both a tool and a weapon. A rod of iron with split wedges on
-      the ends. +1 to Attack.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Useful as both a tool and a weapon. A rod of iron with split wedges on the
+        ends. +1 to Attack.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

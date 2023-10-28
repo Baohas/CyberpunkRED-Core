@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A revitalized bow, reloaded as part of an Attack action.</p>
+    value: |
+      <p>A revitalized bow, reloaded as part of an Attack action.</p>
   dvTable: DV Bows & Crossbows
   equipped: owned
   favorite: false

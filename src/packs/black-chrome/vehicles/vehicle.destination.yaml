@@ -12,7 +12,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>AV4 style Aerodyne, civilian model.</p>
+    value: |
+      <p>AV4 style Aerodyne, civilian model.</p>
   favorite: false
   installedItems:
     allowed: true

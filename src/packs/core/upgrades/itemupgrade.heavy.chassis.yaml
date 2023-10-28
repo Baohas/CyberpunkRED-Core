@@ -12,10 +12,14 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters.
-      Adds 20 SDP to the vehicle. This doesn't affect the glass, and vehicle can
-      now tow up to 10 tons.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. Adds 20
+        SDP to the vehicle. This doesn't affect the glass, and vehicle can now tow up
+        to 10 tons.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

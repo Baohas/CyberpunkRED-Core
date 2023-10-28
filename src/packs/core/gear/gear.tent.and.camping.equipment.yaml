@@ -11,7 +11,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>For one person.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>For one person.</p>
   equipped: owned
   favorite: false
   installedItems:

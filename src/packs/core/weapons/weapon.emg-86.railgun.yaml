@@ -14,11 +14,19 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots.
-      Requires BODY 11 or higher (unless mounted). Ignores any armor below
-      SP11*.</p><p><em>*Not currently supported to will need to manually apply
-      damage to armoured targets</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY
+        11 or higher (unless mounted). Ignores any armor below SP11*.
+      </p>
+      <p>
+        <em
+          >*Not currently supported to will need to manually apply damage to armoured
+          targets</em
+        >
+      </p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

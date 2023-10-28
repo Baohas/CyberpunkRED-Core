@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Must be poured into a fuel tank vehicle to explode.</p>
+    value: |
+      <p>Must be poured into a fuel tank vehicle to explode.</p>
   dvTable: ""
   equipped: owned
   favorite: false

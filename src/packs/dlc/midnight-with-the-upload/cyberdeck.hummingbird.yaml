@@ -9,7 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>No frills, just raw processing power.</p>
       <p>2 slots only for Hardware</p>
       <p>+1 to NET Actions each turn.</p>

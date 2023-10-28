@@ -14,9 +14,13 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>The Nomad Rocker is a Poor Quality Exotic Very Heavy Pistol that fires
-      rocks. Ammo is free for this weapon.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Nomad Rocker is a Poor Quality Exotic Very Heavy Pistol that fires rocks.
+        Ammo is free for this weapon.
+      </p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

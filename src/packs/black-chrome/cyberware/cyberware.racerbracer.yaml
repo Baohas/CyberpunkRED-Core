@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Internal cyberware. Grants immunity to whiplash.</p>
+    value: |
+      <p>Internal cyberware. Grants immunity to whiplash.</p>
   dvTable: ""
   favorite: false
   fireModes:

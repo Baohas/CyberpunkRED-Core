@@ -9,9 +9,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>A multipurpose aircraft capable of quick insertion thanks to vertical
-      thrusters. Used commonly by Trauma Teams.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A multipurpose aircraft capable of quick insertion thanks to vertical
+        thrusters. Used commonly by Trauma Teams.
+      </p>
   favorite: false
   installedItems:
     allowed: true

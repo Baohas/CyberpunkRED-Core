@@ -13,11 +13,14 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Kevlar Body Armor that comes with two pre-installed medium melee
-      weapons* always considered drawn as long as the armor is
-      equipped.</p><p><em>*Must be manually added after acquiring the
-      armor.</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Kevlar Body Armor that comes with two pre-installed medium melee weapons*
+        always considered drawn as long as the armor is equipped.
+      </p>
+      <p><em>*Must be manually added after acquiring the armor.</em></p>
   equipped: owned
   favorite: false
   headLocation:

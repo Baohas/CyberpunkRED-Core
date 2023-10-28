@@ -13,9 +13,13 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>Taken from a derelict aircraft, these blades are capable of slicing
-      most things easily.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Taken from a derelict aircraft, these blades are capable of slicing most
+        things easily.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

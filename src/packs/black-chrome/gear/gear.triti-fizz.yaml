@@ -12,7 +12,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>North America's favorite soft drink.</p>
+    value: |
+      <p>North America's favorite soft drink.</p>
   equipped: owned
   favorite: false
   installedItems:

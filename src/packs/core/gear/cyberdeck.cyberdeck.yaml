@@ -9,7 +9,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Netrunner deck. 7 slots.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Netrunner deck. 7 slots.</p>
   equipped: owned
   favorite: false
   installLocation: mall

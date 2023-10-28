@@ -12,12 +12,15 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Can be applied to all land and sea vehicles. A <strong>Very Heavy Melee
-      Weapon</strong> that can be mounted facing the front, side or back of the
-      vehicle. The driver may attack with it using an Action. The weapon cannot
-      be removed.</p>
-
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can be applied to all land and sea vehicles. A
+        <strong>Very Heavy Melee Weapon</strong> that can be mounted facing the front,
+        side or back of the vehicle. The driver may attack with it using an Action.
+        The weapon cannot be removed.
+      </p>
       <p>You may install this upgrade multiple times.</p>
   dvTable: ""
   favorite: false

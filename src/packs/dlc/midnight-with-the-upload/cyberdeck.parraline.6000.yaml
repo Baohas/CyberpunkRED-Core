@@ -9,7 +9,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>All the Hardware options with none of the restrictions.</p>
       <p>3 Program slots, 6 Hardware slots.</p>
   equipped: owned

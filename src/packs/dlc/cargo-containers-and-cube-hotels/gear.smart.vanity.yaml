@@ -11,9 +11,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Smart grooming station. Comes fully equipped with any tools and makeup
-      you'll need.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Smart grooming station. Comes fully equipped with any tools and makeup you'll
+        need.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

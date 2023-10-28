@@ -14,10 +14,13 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    value: >-
-      <p>The Rostović Ulični Uništitelj (Street Destroyer) is a Poor Quality
-      Exotic Shotgun. The magazine only holds 3 shots. It can only shoot Shotgun
-      Shells.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Rostović Ulični Uništitelj (Street Destroyer) is a Poor Quality Exotic
+        Shotgun. The magazine only holds 3 shots. It can only shoot Shotgun Shells.
+      </p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

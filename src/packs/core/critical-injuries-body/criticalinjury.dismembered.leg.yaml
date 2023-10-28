@@ -8,7 +8,10 @@ name: Dismembered Leg
 system:
   deathSaveIncrease: true
   description:
-    value: <p>Leg is removed. Cannot Dodge. -6 MOVE (minimum MOVE of 1).</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Leg is removed. Cannot Dodge. -6 MOVE (minimum MOVE of 1).</p>
   favorite: false
   location: body
   quickFix:

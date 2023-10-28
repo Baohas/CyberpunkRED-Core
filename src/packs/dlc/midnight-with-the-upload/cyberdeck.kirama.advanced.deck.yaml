@@ -9,13 +9,14 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Though it may not be the flashiest choice, Kirama&rsquo;s finest
-      Cyberdeck is expertly balanced and offers some highly practical safety
-      features.</p>
-
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Though it may not be the flashiest choice, Kirama&rsquo;s finest Cyberdeck is
+        expertly balanced and offers some highly practical safety features.
+      </p>
       <p>5 slots for Programs or Hardware.</p>
-
       <p>Netrunner suffers no negative effects from an Unsafe Jack Out.</p>
   equipped: owned
   favorite: false

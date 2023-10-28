@@ -14,15 +14,21 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>External Body Cyberware*. 7 SP for head and body.<br>Skinweave armor
-      with advanced self-healing functionality. Billions of nanobots repair all
-      damage to FleshWeave(body and head) armor after 10 minutes of rest. Armor
-      does not stack.</p>
-
-      <p><em>* Cyberware Armor does not function as armor in the system, please
-      add the "Sycust FleshWeave (Armor)" item to the character/mook to
-      track</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        External Body Cyberware*. 7 SP for head and body.<br />Skinweave armor with
+        advanced self-healing functionality. Billions of nanobots repair all damage to
+        FleshWeave(body and head) armor after 10 minutes of rest. Armor does not
+        stack.
+      </p>
+      <p>
+        <em
+          >* Cyberware Armor does not function as armor in the system, please add the
+          "Sycust FleshWeave (Armor)" item to the character/mook to track</em
+        >
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

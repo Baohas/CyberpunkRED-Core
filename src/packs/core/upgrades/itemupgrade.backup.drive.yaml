@@ -12,9 +12,13 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Saves Non-Black IE programs when destroyed. These programs can be
-      re-installed by a Netrunner as a meat action.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Saves Non-Black IE programs when destroyed. These programs can be re-installed
+        by a Netrunner as a meat action.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

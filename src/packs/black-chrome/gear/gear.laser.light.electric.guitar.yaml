@@ -12,10 +12,14 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Electric Guitar that gives the User a +1 to their Play Instrument
-      (Guitar) Skill Check. This guitar also counts as one installation of Light
-      Tattoo Fashionware while worn.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Electric Guitar that gives the User a +1 to their Play Instrument (Guitar)
+        Skill Check. This guitar also counts as one installation of Light Tattoo
+        Fashionware while worn.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

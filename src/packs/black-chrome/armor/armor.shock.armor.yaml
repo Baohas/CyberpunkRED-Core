@@ -14,7 +14,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Kevlar armor that shocks anyone who is grappling you.</p>
+    value: |
+      <p>Kevlar armor that shocks anyone who is grappling you.</p>
   equipped: owned
   favorite: false
   headLocation:

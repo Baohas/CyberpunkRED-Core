@@ -11,7 +11,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: >
       <p>If you want to look like a chromed-up cowboy, this is perfect for
       you.</p>
   equipped: owned

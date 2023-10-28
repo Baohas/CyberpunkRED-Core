@@ -14,7 +14,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>+2 Personal Grooming when using Techhair as well. Changes hue.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>+2 Personal Grooming when using Techhair as well. Changes hue.</p>
   dvTable: ""
   favorite: false
   fireModes:

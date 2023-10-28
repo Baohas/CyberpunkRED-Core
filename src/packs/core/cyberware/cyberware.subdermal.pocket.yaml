@@ -13,7 +13,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>2x4 inch underskin pocket</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>2x4 inch underskin pocket</p>
   dvTable: ""
   favorite: false
   fireModes:

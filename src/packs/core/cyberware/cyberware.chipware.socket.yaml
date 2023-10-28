@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Single socket for installation and removal of a piece of chipware.</p>
+    value: |
+      <p>Single socket for installation and removal of a piece of chipware.</p>
   dvTable: ""
   favorite: false
   fireModes:

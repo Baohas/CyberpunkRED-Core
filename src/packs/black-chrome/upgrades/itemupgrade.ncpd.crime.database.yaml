@@ -13,9 +13,13 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Agent App.</p><p>Requires CitiNet access in Night City. Allows user to
-      research crime database.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Agent App.</p>
+      <p>
+        Requires CitiNet access in Night City. Allows user to research crime database.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

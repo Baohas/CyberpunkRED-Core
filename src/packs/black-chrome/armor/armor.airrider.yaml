@@ -12,11 +12,14 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Kevlar Body Armor that ignores the Whiplash critical injury from car
-      crashes as long as the armor's CO<sub>2</sub> tank is
-      full*.</p><p><em>*Must be manually added after acquiring the
-      armor.</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Kevlar Body Armor that ignores the Whiplash critical injury from car crashes
+        as long as the armor's CO<sub>2</sub> tank is full*.
+      </p>
+      <p><em>*Must be manually added after acquiring the armor.</em></p>
   equipped: owned
   favorite: false
   headLocation:

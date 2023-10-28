@@ -14,9 +14,13 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>This weapon fires it's own custom ammunition, priced at 500eb
-      (Expensive) for 80 rounds of Armor-Piercing ammo.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        This weapon fires it's own custom ammunition, priced at 500eb (Expensive) for
+        80 rounds of Armor-Piercing ammo.
+      </p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

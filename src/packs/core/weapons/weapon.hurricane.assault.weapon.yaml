@@ -15,9 +15,13 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11
-      or higher (unless mounted).</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or
+        higher (unless mounted).
+      </p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

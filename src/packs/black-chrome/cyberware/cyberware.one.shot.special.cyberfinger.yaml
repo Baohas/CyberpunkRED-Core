@@ -14,9 +14,13 @@ system:
   core: false
   damage: 3d6
   description:
-    value: >-
-      <p>Cyberfinger that holds a concealed Exotic Heavy Pistol. Can only be
-      installed on a modular finger cyberhand.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Cyberfinger that holds a concealed Exotic Heavy Pistol. Can only be installed
+        on a modular finger cyberhand.
+      </p>
   dvTable: DV Pistol
   favorite: false
   fireModes:

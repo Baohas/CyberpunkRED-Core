@@ -12,7 +12,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Quadruped construction drone.</p>
+    value: |
+      <p>Quadruped construction drone.</p>
   equipped: owned
   favorite: false
   installedItems:

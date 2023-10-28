@@ -12,9 +12,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Metal plated armor to resist the most powerful hits to your head. -4 to
-      REF, DEX, and MOVE.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Metal plated armor to resist the most powerful hits to your head. -4 to REF,
+        DEX, and MOVE.
+      </p>
   equipped: owned
   favorite: false
   headLocation:

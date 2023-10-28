@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Provides immunity to inhalable gases or fumes.</p>
+    value: |
+      <p>Provides immunity to inhalable gases or fumes.</p>
   dvTable: ""
   favorite: false
   fireModes:

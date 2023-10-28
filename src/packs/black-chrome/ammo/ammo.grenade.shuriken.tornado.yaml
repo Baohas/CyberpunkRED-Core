@@ -11,9 +11,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>A literal explosion of shurikens. Armor Piercing grenade. Each shuriken
-      from explosion deals individual damage.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A literal explosion of shurikens. Armor Piercing grenade. Each shuriken from
+        explosion deals individual damage.
+      </p>
   favorite: false
   overrides:
     autofire:

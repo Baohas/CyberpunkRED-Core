@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: "<p>Range: 1 mile.</p>"
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Range: 1 mile.</p>
   equipped: owned
   favorite: false
   installedItems:

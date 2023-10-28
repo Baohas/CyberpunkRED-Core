@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A built-in cyberdeck. Always available.</p>
+    value: |
+      <p>A built-in cyberdeck. Always available.</p>
   dvTable: ""
   favorite: false
   fireModes:

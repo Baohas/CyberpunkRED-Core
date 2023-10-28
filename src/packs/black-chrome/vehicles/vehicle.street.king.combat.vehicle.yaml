@@ -9,9 +9,12 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>A High Performance Groundcar which is large, armored and has a military
-      look.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A High Performance Groundcar which is large, armored and has a military look.
+      </p>
   favorite: false
   installedItems:
     allowed: true

@@ -7,7 +7,10 @@ name: Lost Eye
 system:
   deathSaveIncrease: true
   description:
-    value: <p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>
   favorite: false
   location: head
   quickFix:

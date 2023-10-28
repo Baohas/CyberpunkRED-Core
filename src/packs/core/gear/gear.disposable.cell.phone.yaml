@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Voice calls only.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Voice calls only.</p>
   equipped: owned
   favorite: false
   installedItems:

@@ -13,7 +13,10 @@ system:
     standard: 1d6
   def: 0
   description:
-    value: <p>+2 to Speed while Rezzed.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>+2 to Speed while Rezzed.</p>
   favorite: false
   installLocation: mall
   interface: 0

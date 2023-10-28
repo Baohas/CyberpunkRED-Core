@@ -13,9 +13,13 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>A foldable bulletproof shield that can be drawn or stowed easily. Can't
-      hold anything with this hand while activated.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A foldable bulletproof shield that can be drawn or stowed easily. Can't hold
+        anything with this hand while activated.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

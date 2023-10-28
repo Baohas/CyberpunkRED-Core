@@ -14,10 +14,14 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>The Eagletech Survivalist is a 2-in-1 Crossbow and Assault RIfle. It is
-      incapable of Autofire. It comes with an integrated Sniping
-      Scope*.</p><p><em>*Must be manually applied after purchase</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Eagletech Survivalist is a 2-in-1 Crossbow and Assault RIfle. It is
+        incapable of Autofire. It comes with an integrated Sniping Scope*.
+      </p>
+      <p><em>*Must be manually applied after purchase</em></p>
   dvTable: DV Bows & Crossbows
   equipped: owned
   favorite: false

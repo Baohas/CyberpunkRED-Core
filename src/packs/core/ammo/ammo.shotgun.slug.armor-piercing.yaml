@@ -14,7 +14,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Double ablation to armor.</p>
+    value: |
+      <p>Double ablation to armor.</p>
   favorite: false
   overrides:
     autofire:

@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Cyberfinger. Can only be installed on a modular finger cyberhand.</p>
+    value: |
+      <p>Cyberfinger. Can only be installed on a modular finger cyberhand.</p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -12,11 +12,14 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>The bike loses weight and gains maneuverability.</p>
-
-      <p>Rider obtain a +2 bonus to Athletics skill checks when riding and doing
-      maneuvers.</p>
+      <p>
+        Rider obtain a +2 bonus to Athletics skill checks when riding and doing
+        maneuvers.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

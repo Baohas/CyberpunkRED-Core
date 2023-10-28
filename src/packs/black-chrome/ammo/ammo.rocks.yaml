@@ -13,10 +13,12 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: >-
-      <p>Ammunition that can be used with the Nomad Rocker if of small enough
-      size. Ammunition is considered free and available if small rocks are able
-      to be collected in the area the user is in.</p>
+    value: |
+      <p>
+        Ammunition that can be used with the Nomad Rocker if of small enough size.
+        Ammunition is considered free and available if small rocks are able to be
+        collected in the area the user is in.
+      </p>
   favorite: false
   overrides:
     autofire:

@@ -13,10 +13,14 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    value: >-
-      <p>Mono-Shuriken whose orb center contains a kinetic and solar motor
-      allowing the star to spin on itself and vibrate.</p><p>Can be used as both
-      a melee and ranged weapon.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Mono-Shuriken whose orb center contains a kinetic and solar motor allowing the
+        star to spin on itself and vibrate.
+      </p>
+      <p>Can be used as both a melee and ranged weapon.</p>
   dvTable: DV Thrown Weapon
   equipped: owned
   favorite: false

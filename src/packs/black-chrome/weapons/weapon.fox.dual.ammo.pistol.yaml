@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>The Militech Fox Dual Ammo Pistol is an Exotic Heavy Pistol.</p>
+    value: |
+      <p>The Militech Fox Dual Ammo Pistol is an Exotic Heavy Pistol.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

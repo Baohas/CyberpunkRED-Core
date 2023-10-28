@@ -13,7 +13,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Canine Personal Drone that can be linked to an Agent.</p>
+    value: |
+      <p>Canine Personal Drone that can be linked to an Agent.</p>
   equipped: owned
   favorite: false
   installedItems:

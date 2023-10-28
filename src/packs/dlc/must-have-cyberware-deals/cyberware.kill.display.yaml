@@ -15,11 +15,15 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Subdermal Alphanumeric display that shines clearly through the skin.
-      Use a linked Agent to customize the output. Commonly used as &ldquo;kill
-      counter.&rdquo;<br>Qualifies as a Light Tattoo. +2 Wardrobe and Style when
-      the user has 3 or more Light Tattoos.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Subdermal Alphanumeric display that shines clearly through the skin. Use a
+        linked Agent to customize the output. Commonly used as &ldquo;kill
+        counter.&rdquo;<br />Qualifies as a Light Tattoo. +2 Wardrobe and Style when
+        the user has 3 or more Light Tattoos.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

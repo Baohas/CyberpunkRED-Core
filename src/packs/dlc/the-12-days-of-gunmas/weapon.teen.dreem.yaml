@@ -14,10 +14,14 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    value: >-
-      <p>This SMG can use Autofire and Suppressive Fire all the way down to it's
-      last 2 bullets. Caution is required however, as using either firing mode
-      well melt the gun beyond repair.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        This SMG can use Autofire and Suppressive Fire all the way down to it's last 2
+        bullets. Caution is required however, as using either firing mode well melt
+        the gun beyond repair.
+      </p>
   dvTable: DV SMG
   equipped: owned
   favorite: false

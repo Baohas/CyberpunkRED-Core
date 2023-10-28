@@ -13,11 +13,19 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It
-      appears as a high-tech katana, able to ignore any armor below
-      SP11*.</p><p><em>*Not currently supported to will need to manually apply
-      damage to armoured targets</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears
+        as a high-tech katana, able to ignore any armor below SP11*.
+      </p>
+      <p>
+        <em
+          >*Not currently supported to will need to manually apply damage to armoured
+          targets</em
+        >
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

@@ -13,10 +13,14 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>A wooden pole with a curved blade on each side. Favoured by raid
-      parties for close engagements. Requires 2 hands to wield even by a wielder
-      with Body 8 or higher.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A wooden pole with a curved blade on each side. Favoured by raid parties for
+        close engagements. Requires 2 hands to wield even by a wielder with Body 8 or
+        higher.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

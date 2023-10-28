@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Cheap explosive item, small area of effect.</p>
+    value: |
+      <p>Cheap explosive item, small area of effect.</p>
   dvTable: ""
   equipped: owned
   favorite: false

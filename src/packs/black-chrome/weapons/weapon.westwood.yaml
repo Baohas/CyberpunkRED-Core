@@ -13,9 +13,13 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>The Westwood is a Very Heavy Pistol. 6 shot capacity that can't be
-      upgraded with magazine attachments.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Westwood is a Very Heavy Pistol. 6 shot capacity that can't be upgraded
+        with magazine attachments.
+      </p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

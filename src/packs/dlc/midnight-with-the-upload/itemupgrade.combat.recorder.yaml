@@ -13,12 +13,15 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>Real-world Combat data is invaluable for Black ICE development.</p>
-
-      <p>If another Netrunner in the same NET Architecture fails a Death Save,
-      the last 5 minutes of non-self incriminating Netrun combat data is saved
-      to the Cyberdeck. Recordings can be sold for 50eb.</p>
+      <p>
+        If another Netrunner in the same NET Architecture fails a Death Save, the last
+        5 minutes of non-self incriminating Netrun combat data is saved to the
+        Cyberdeck. Recordings can be sold for 50eb.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

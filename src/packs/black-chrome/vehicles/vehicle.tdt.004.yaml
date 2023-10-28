@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Troop transport Helicopter.</p>
+    value: |
+      <p>Troop transport Helicopter.</p>
   favorite: false
   installedItems:
     allowed: true

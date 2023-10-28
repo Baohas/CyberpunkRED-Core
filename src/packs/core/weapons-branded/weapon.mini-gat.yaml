@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A concealable SMG.</p>
+    value: |
+      <p>A concealable SMG.</p>
   dvTable: DV SMG
   equipped: owned
   favorite: false

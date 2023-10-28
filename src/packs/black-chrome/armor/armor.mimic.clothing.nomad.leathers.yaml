@@ -13,9 +13,12 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Light Armorjack made from a Mimic Clothing Kit and "Nomad Leathers"
-      clothing.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Light Armorjack made from a Mimic Clothing Kit and "Nomad Leathers" clothing.
+      </p>
   equipped: owned
   favorite: false
   headLocation:

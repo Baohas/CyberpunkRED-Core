@@ -13,9 +13,12 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    value: >-
-      <p>A short bladed, hilted weapon. Specifically designed for cutting or
-      thrusting.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A short bladed, hilted weapon. Specifically designed for cutting or thrusting.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

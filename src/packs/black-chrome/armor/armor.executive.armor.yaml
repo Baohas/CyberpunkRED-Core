@@ -12,9 +12,13 @@ system:
     concealable: true
     isConcealed: false
   description:
-    value: >-
-      <p>Light Armorjack that looks like businesswear. Restores 1SP every day SP
-      isn't lost on the armor.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Light Armorjack that looks like businesswear. Restores 1SP every day SP isn't
+        lost on the armor.
+      </p>
   equipped: owned
   favorite: false
   headLocation:

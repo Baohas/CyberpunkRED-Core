@@ -11,10 +11,14 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>The coolest wheels around. Increases moment by 4 m/yds when using the
-      Run Action on level or downwards ground. May cause physical tasks to be
-      done at -2.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The coolest wheels around. Increases moment by 4 m/yds when using the Run
+        Action on level or downwards ground. May cause physical tasks to be done at
+        -2.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

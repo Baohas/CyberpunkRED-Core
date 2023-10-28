@@ -13,9 +13,11 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Internal Cyberware.</p><p>All internal cyberware is not affected by EMP
-      effects.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Internal Cyberware.</p>
+      <p>All internal cyberware is not affected by EMP effects.</p>
   dvTable: ""
   favorite: false
   fireModes:

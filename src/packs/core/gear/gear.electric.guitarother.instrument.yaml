@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Musical instrument. Electric instruments requires an amplifier.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Musical instrument. Electric instruments requires an amplifier.</p>
   equipped: owned
   favorite: false
   installedItems:

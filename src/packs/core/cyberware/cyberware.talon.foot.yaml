@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A retractable blade in your foot which is a Light Melee Weapon.</p>
+    value: |
+      <p>A retractable blade in your foot which is a Light Melee Weapon.</p>
   dvTable: ""
   favorite: false
   fireModes:

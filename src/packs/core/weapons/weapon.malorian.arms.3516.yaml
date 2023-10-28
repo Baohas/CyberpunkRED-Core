@@ -15,10 +15,14 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun
-      Link* that must be used.</p><p><em>*Must be manually added after acquiring
-      the weapon</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link*
+        that must be used.
+      </p>
+      <p><em>*Must be manually added after acquiring the weapon</em></p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

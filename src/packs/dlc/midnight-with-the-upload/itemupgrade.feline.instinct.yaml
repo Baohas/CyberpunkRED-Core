@@ -13,10 +13,14 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>If an installed Sabertooth Black ICE destroys a program, that
-      Sabertooth deals an extra 1d6 of damage on each subsequent attack for the
-      duration of the Netrun.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        If an installed Sabertooth Black ICE destroys a program, that Sabertooth deals
+        an extra 1d6 of damage on each subsequent attack for the duration of the
+        Netrun.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -14,7 +14,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Light Armorjack that looks like businesswear.</p>
+    value: |
+      <p>Light Armorjack that looks like businesswear.</p>
   equipped: owned
   favorite: false
   headLocation:

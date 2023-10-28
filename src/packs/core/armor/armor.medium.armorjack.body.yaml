@@ -12,7 +12,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>
   equipped: owned
   favorite: false
   headLocation:

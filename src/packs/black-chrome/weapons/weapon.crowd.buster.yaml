@@ -14,11 +14,15 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with
-      a unique alternate firing mode. It comes with a pair of Auto Level
-      Dampening Ear Protectors*.</p><p><em>*Must be manually applied after
-      purchase</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with a
+        unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear
+        Protectors*.
+      </p>
+      <p><em>*Must be manually applied after purchase</em></p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

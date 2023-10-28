@@ -13,17 +13,23 @@ system:
   core: false
   damage: 4d6
   description:
-    value: >-
-      <p>A popout Cyberarm chainsaw with integreated exhaust port. Can be
-      deployed and retracted without an Action. User can not use the hand on the
-      ChainRipp's Cyberarm when blade is drawn.</p>
-
-      <p>When deployed, ChainRipp can be revved as an Action and qualifies as an
-      Excellent Quality One-Handed Exotic Very Heavy Melee Weapon. ChainRipp
-      remains revved until deactivated as an Action.</p>
-
-      <p>In the deployed but un-revved state, the ChainRipp is a One-Handed Very
-      Heavy Melee Weapon.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A popout Cyberarm chainsaw with integreated exhaust port. Can be deployed and
+        retracted without an Action. User can not use the hand on the ChainRipp's
+        Cyberarm when blade is drawn.
+      </p>
+      <p>
+        When deployed, ChainRipp can be revved as an Action and qualifies as an
+        Excellent Quality One-Handed Exotic Very Heavy Melee Weapon. ChainRipp remains
+        revved until deactivated as an Action.
+      </p>
+      <p>
+        In the deployed but un-revved state, the ChainRipp is a One-Handed Very Heavy
+        Melee Weapon.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -12,7 +12,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Standard Kevlar for your head. No armor penalty.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Standard Kevlar for your head. No armor penalty.</p>
   equipped: owned
   favorite: false
   headLocation:

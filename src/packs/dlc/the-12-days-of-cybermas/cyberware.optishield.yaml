@@ -14,9 +14,13 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Embedded retractable Mirrorshades. When activated as an Action, user is
-      immune to negative effects of bright light, such as from flashbangs.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Embedded retractable Mirrorshades. When activated as an Action, user is immune
+        to negative effects of bright light, such as from flashbangs.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

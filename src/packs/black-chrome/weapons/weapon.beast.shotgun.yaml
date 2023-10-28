@@ -15,10 +15,14 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>The Midnight Arms Beast Shotgun is an Exotic Shotgun. Its magazine
-      holds 40 rounds. Requires BODY 10 or higher (unless mounted) when fired or
-      the User will suffer the consequences.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Midnight Arms Beast Shotgun is an Exotic Shotgun. Its magazine holds 40
+        rounds. Requires BODY 10 or higher (unless mounted) when fired or the User
+        will suffer the consequences.
+      </p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

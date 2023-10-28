@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A Roadbike with all the gadgets you'd ever need.</p>
+    value: |
+      <p>A Roadbike with all the gadgets you'd ever need.</p>
   favorite: false
   installedItems:
     allowed: true

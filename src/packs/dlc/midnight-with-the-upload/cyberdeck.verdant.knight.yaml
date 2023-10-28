@@ -9,13 +9,14 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>The classic sword-and-board Cyberdeck build is highly effective against
-      Black ICE. Just don&rsquo;t plan on going toe-to-toe with a hostile
-      Netrunner.</p>
-
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The classic sword-and-board Cyberdeck build is highly effective against Black
+        ICE. Just don&rsquo;t plan on going toe-to-toe with a hostile Netrunner.
+      </p>
       <p>9 slots only for Programs.</p>
-
       <p>Slots only accept Sword or Shield Programs.</p>
   equipped: owned
   favorite: false

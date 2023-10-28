@@ -14,9 +14,13 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    value: >-
-      <p>Fire at your finger tips. Can only fire Incendiary Shotgun Shells, but
-      targets ignited by this weapon burn for 4HP a turn.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Fire at your finger tips. Can only fire Incendiary Shotgun Shells, but targets
+        ignited by this weapon burn for 4HP a turn.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

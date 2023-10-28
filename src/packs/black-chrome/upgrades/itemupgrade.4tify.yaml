@@ -12,9 +12,13 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Agent App.</p><p>Can reveals weak points by scanning your home. Or a
-      section of cover...</p>
+    chat: ""
+    unidentified: ""
+    value: >
+      <p>Agent App.</p>
+
+      <p>Can reveals weak points by scanning your home. Or a section of
+      cover...</p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -13,10 +13,14 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    value: >-
-      <p>A hollow cylinder, typically made of metal or fiberglass. It may have
-      conveyed fluids once. If you roll 1 on Attack (Crit Fail) the weapon fails
-      in some way and requires an action to be made usable again.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A hollow cylinder, typically made of metal or fiberglass. It may have conveyed
+        fluids once. If you roll 1 on Attack (Crit Fail) the weapon fails in some way
+        and requires an action to be made usable again.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

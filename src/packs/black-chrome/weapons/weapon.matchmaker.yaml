@@ -15,9 +15,13 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>The Georgia Arms Matchmaker is a Poor Quality Exotic Shotgun that only
-      holds one shot in the magazine.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Georgia Arms Matchmaker is a Poor Quality Exotic Shotgun that only holds
+        one shot in the magazine.
+      </p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

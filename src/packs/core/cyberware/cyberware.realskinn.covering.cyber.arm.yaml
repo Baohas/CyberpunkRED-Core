@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>An artifical skin type for your arm.</p>
+    value: |
+      <p>An artifical skin type for your arm.</p>
   dvTable: ""
   favorite: false
   fireModes:

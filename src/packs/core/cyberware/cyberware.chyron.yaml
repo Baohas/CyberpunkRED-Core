@@ -13,9 +13,12 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Tiny screen in your eye. Provides picture-in-picture for those boring
-      moments.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Tiny screen in your eye. Provides picture-in-picture for those boring moments.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

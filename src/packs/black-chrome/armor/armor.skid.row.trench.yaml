@@ -12,9 +12,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Flak Body Armor that looks like a trench coat in exchange for less
-      protection. -4 to REF, DEX, and MOVE.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Flak Body Armor that looks like a trench coat in exchange for less protection.
+        -4 to REF, DEX, and MOVE.
+      </p>
   equipped: owned
   favorite: false
   headLocation:

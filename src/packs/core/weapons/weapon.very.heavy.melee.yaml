@@ -13,7 +13,10 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: <p>Generic Very Heavy Melee Weapon.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Generic Very Heavy Melee Weapon.</p>
   dvTable: ""
   equipped: owned
   favorite: false

@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Armored knuckles which function as a Melee Weapon.</p>
+    value: |
+      <p>Armored knuckles which function as a Melee Weapon.</p>
   dvTable: ""
   favorite: false
   fireModes:

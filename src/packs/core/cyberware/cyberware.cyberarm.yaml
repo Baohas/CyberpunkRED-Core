@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A cybernetical replacement arm. Comes with a free hand.</p>
+    value: |
+      <p>A cybernetical replacement arm. Comes with a free hand.</p>
   dvTable: ""
   favorite: false
   fireModes:

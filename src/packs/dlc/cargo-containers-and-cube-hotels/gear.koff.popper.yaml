@@ -11,18 +11,16 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>The Continental Brands Koff Popper is the only specialty thermos you'll
-      need.</p>
-
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Continental Brands Koff Popper is the only specialty thermos you'll need.
+      </p>
       <ul>
-
-      <li>Thermos with built in Kof Pop brewer</li>
-
-      <li>Holds 237ml/8oz</li>
-
-      <li>Can only be purchased at an Oasis store</li>
-
+        <li>Thermos with built in Kof Pop brewer</li>
+        <li>Holds 237ml/8oz</li>
+        <li>Can only be purchased at an Oasis store</li>
       </ul>
   equipped: owned
   favorite: false

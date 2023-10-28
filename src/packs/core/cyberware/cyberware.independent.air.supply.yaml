@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>30 minutes of refillable breathable air.</p>
+    value: |
+      <p>30 minutes of refillable breathable air.</p>
   dvTable: ""
   favorite: false
   fireModes:

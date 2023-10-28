@@ -14,7 +14,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Provides a +1 to aimed shots.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Provides a +1 to aimed shots.</p>
   dvTable: ""
   favorite: false
   fireModes:

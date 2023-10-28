@@ -13,7 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: >
       <p>Requires Cyberdeck (Hardwired), adds an extra slot to the
       cyberdeck.</p>
   dvTable: ""

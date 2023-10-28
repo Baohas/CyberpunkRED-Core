@@ -14,7 +14,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Tune into CitiNet radio stations or play your locally saved music.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Tune into CitiNet radio stations or play your locally saved music.</p>
   dvTable: ""
   favorite: false
   fireModes:

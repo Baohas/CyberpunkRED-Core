@@ -9,13 +9,15 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>Never lose a Program again.</p>
-
       <p>6 slots for Programs or Hardware.</p>
-
-      <p>Any Program destroyed in a netrunning session is restored upon a safe
-      Jack Out.</p>
+      <p>
+        Any Program destroyed in a netrunning session is restored upon a safe Jack
+        Out.
+      </p>
   equipped: owned
   favorite: false
   installLocation: mall

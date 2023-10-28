@@ -9,9 +9,13 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    value: >-
-      <p>Master hackers who put themselves at risk as they jack into cyberspace
-      to download secrets and infiltrate networks.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Master hackers who put themselves at risk as they jack into cyberspace to
+        download secrets and infiltrate networks.
+      </p>
   favorite: false
   hasRoll: true
   isSituational: false

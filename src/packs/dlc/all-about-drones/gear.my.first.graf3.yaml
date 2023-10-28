@@ -13,7 +13,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Personal Drone. Tiny GRAF3 that can be linked to an Agent.</p>
+    value: |
+      <p>Personal Drone. Tiny GRAF3 that can be linked to an Agent.</p>
   equipped: owned
   favorite: false
   installedItems:

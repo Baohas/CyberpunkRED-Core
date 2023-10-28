@@ -13,11 +13,15 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Can be applied to all bikes. While using Interface Plugs to drive this
-      vehicle, if you have a REF 8 or higher and you, a passenger, or your bike
-      are the target of an attack, you can attempt to dodge as you would on
-      foot. If you dodge for a passenger, that becomes their defence.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can be applied to all bikes. While using Interface Plugs to drive this
+        vehicle, if you have a REF 8 or higher and you, a passenger, or your bike are
+        the target of an attack, you can attempt to dodge as you would on foot. If you
+        dodge for a passenger, that becomes their defence.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

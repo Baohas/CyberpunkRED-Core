@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>One seat Gyrocopter. Police version, with mounted Machine Gun.</p>
+    value: |
+      <p>One seat Gyrocopter. Police version, with mounted Machine Gun.</p>
   favorite: false
   installedItems:
     allowed: true

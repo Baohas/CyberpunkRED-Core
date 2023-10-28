@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>An elogated saddle, gaining a seat for a passenger.</p>
+    value: |
+      <p>An elogated saddle, gaining a seat for a passenger.</p>
   dvTable: ""
   favorite: false
   fireModes:

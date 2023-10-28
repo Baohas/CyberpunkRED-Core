@@ -12,12 +12,15 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Can be applied to all vehicles. An <strong>Assault Rifle</strong> with
-      a 30 round capacity and only capable of Autofire, that can be mounted
-      facing the front of the vehicle. The driver may fire it using an Action,
-      cannot be reloaded while driving and cannot accept weapon attachments.</p>
-
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can be applied to all vehicles. An <strong>Assault Rifle</strong> with a 30
+        round capacity and only capable of Autofire, that can be mounted facing the
+        front of the vehicle. The driver may fire it using an Action, cannot be
+        reloaded while driving and cannot accept weapon attachments.
+      </p>
       <p>You may install this upgrade multiple times.</p>
   dvTable: ""
   favorite: false

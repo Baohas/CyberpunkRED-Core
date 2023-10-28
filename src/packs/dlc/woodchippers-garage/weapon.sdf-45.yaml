@@ -14,12 +14,16 @@ system:
   critFailEffect: jammed
   damage: 8d6
   description:
-    value: >-
-      <p>This rocket launcher can only load Armor-Piercing rockets, and has a
-      maximum range of 400 m/yds. When fired one rocket at a time, the GM
-      chooses where they rockets land. When fired two rockets at a time, the GM
-      chooses where the rockets land but this time up to 50 m/yds away from the
-      target, and with each rocket more than 10 m/yds from each other.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        This rocket launcher can only load Armor-Piercing rockets, and has a maximum
+        range of 400 m/yds. When fired one rocket at a time, the GM chooses where they
+        rockets land. When fired two rockets at a time, the GM chooses where the
+        rockets land but this time up to 50 m/yds away from the target, and with each
+        rocket more than 10 m/yds from each other.
+      </p>
   dvTable: DV Rocket Launcher
   equipped: owned
   favorite: false

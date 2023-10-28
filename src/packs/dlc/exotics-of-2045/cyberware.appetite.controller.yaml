@@ -14,12 +14,15 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Suppresses hunger response. User ignores Humanity Loss penalties from
-      starvation trauma but User can still starve. Roll a Death Save at start of
-      7th consecutive day without eating. +1 to successive Death Saves each day
-      afterwards.</p>
-
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Suppresses hunger response. User ignores Humanity Loss penalties from
+        starvation trauma but User can still starve. Roll a Death Save at start of 7th
+        consecutive day without eating. +1 to successive Death Saves each day
+        afterwards.
+      </p>
       <p>Requires Biomonitor.</p>
   dvTable: ""
   favorite: false

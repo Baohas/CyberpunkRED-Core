@@ -12,9 +12,13 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Can be applied to all vehicles. Armors the vehicle to SP13. Doesn't
-      affect the glass.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can be applied to all vehicles. Armors the vehicle to SP13. Doesn't affect the
+        glass.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

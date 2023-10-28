@@ -13,7 +13,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Chipware. Can detect motion up to 20m/yd away through surfaces.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Chipware. Can detect motion up to 20m/yd away through surfaces.</p>
   dvTable: ""
   favorite: false
   fireModes:

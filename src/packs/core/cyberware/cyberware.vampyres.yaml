@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Pointy Teeth which is a Light Melee weapon. Can use poison/toxins.</p>
+    value: |
+      <p>Pointy Teeth which is a Light Melee weapon. Can use poison/toxins.</p>
   dvTable: ""
   favorite: false
   fireModes:

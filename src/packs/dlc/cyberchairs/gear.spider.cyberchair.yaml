@@ -11,17 +11,30 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>The top of the line cyberchair, giving the premier user many options.
-      While using it the operator's base MOVE becomes 5, with all regular
-      movement options remaining available.</p><p>Additionally, this cyberchair
-      has room for 4 cyberlimb options*. Any options installed always count as
-      being paired.</p><p>Operation of the cyberchair requires either a free
-      hand, or interface plugs.</p><p>If the operator suffers a critical injury
-      that reduces their MOVE, the MOVE of the cyberchair is instead
-      effected.</p><p>The cyberchair cannot be targeted specifically, nor can it
-      be disabled via EMP effects.</p><p><em>*Installing cyberlimb options
-      currently not supported</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The top of the line cyberchair, giving the premier user many options. While
+        using it the operator's base MOVE becomes 5, with all regular movement options
+        remaining available.
+      </p>
+      <p>
+        Additionally, this cyberchair has room for 4 cyberlimb options*. Any options
+        installed always count as being paired.
+      </p>
+      <p>
+        Operation of the cyberchair requires either a free hand, or interface plugs.
+      </p>
+      <p>
+        If the operator suffers a critical injury that reduces their MOVE, the MOVE of
+        the cyberchair is instead effected.
+      </p>
+      <p>
+        The cyberchair cannot be targeted specifically, nor can it be disabled via EMP
+        effects.
+      </p>
+      <p><em>*Installing cyberlimb options currently not supported</em></p>
   equipped: owned
   favorite: false
   installedItems:

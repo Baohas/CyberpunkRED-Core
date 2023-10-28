@@ -12,15 +12,21 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Can be applied to Aerozep, AV-4, Cabin Cruiser, Groundcars and Yacht.
-      When installed onto a Groundcar or AV-4, it adds a sleeping area with 1
-      bed, a toilet, a shower, and a small kitchen to the vehicle. When
-      installed into a Cabin Cruiser, Yacht, or Aerozep, it adds one room to the
-      vehicle.</p>
-
-      <p><strong>Requires a Heavy Chassis on a Compact Groundcar and High
-      Performance Groundcar</strong>.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can be applied to Aerozep, AV-4, Cabin Cruiser, Groundcars and Yacht. When
+        installed onto a Groundcar or AV-4, it adds a sleeping area with 1 bed, a
+        toilet, a shower, and a small kitchen to the vehicle. When installed into a
+        Cabin Cruiser, Yacht, or Aerozep, it adds one room to the vehicle.
+      </p>
+      <p>
+        <strong
+          >Requires a Heavy Chassis on a Compact Groundcar and High Performance
+          Groundcar</strong
+        >.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

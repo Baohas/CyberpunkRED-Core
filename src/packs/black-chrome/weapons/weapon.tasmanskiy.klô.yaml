@@ -16,9 +16,9 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: >-
-      <p>Excellent Quality Exotic Very Heavy Melee Weapon.</p><p>Big retractable
-      blades in a Combat Glove.</p>
+    value: |
+      <p>Excellent Quality Exotic Very Heavy Melee Weapon.</p>
+      <p>Big retractable blades in a Combat Glove.</p>
   dvTable: ""
   equipped: owned
   favorite: false

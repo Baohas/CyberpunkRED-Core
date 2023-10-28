@@ -11,7 +11,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Wearer is immune to loud sounds.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Wearer is immune to loud sounds.</p>
   equipped: owned
   favorite: false
   installedItems:

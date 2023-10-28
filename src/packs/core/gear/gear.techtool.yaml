@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Multi-purpose tool.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Multi-purpose tool.</p>
   equipped: owned
   favorite: false
   installedItems:

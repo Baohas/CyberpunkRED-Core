@@ -11,9 +11,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>AI Smartphone. +2 Library Search, +2 Wardrobe & Style depending on
-      circumstance.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        AI Smartphone. +2 Library Search, +2 Wardrobe & Style depending on
+        circumstance.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

@@ -7,7 +7,9 @@ name: Foreign Object (H)
 system:
   deathSaveIncrease: false
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: >
       <p>Suffer Crit damage at end of turn if move more than 4m/yrds on
       foot.</p>
   favorite: false

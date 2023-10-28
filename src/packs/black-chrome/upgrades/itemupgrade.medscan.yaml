@@ -13,13 +13,22 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Agent App.</p><p>Requires CitiNet access. MedScan can connect you to a
-      Trauma Team Remote Specialist but their actual guidance costs
-      extra.</p><p>For an increased fee, a remote Trauma Specialist can be hired
-      to direct the user through an entire 4-hour procedure.</p><p>Rules related
-      to cost of hiring and procedures allowed to be done with this App are
-      contained in Black Chrome rulebook for this item.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Agent App.</p>
+      <p>
+        Requires CitiNet access. MedScan can connect you to a Trauma Team Remote
+        Specialist but their actual guidance costs extra.
+      </p>
+      <p>
+        For an increased fee, a remote Trauma Specialist can be hired to direct the
+        user through an entire 4-hour procedure.
+      </p>
+      <p>
+        Rules related to cost of hiring and procedures allowed to be done with this
+        App are contained in Black Chrome rulebook for this item.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

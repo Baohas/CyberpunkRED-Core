@@ -7,7 +7,10 @@ name: Dismembered Arm
 system:
   deathSaveIncrease: true
   description:
-    value: <p>Arm removed, drop anything it was holding.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Arm removed, drop anything it was holding.</p>
   favorite: false
   location: body
   quickFix:

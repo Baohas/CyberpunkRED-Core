@@ -13,7 +13,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Bag that can repair one piece of fashion or armor at a time.</p>
+    value: |
+      <p>Bag that can repair one piece of fashion or armor at a time.</p>
   equipped: owned
   favorite: false
   installedItems:

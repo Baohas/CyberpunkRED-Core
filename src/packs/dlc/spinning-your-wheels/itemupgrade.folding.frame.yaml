@@ -13,12 +13,17 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>You can now fold your bike to the size of a large suitcase for easier
-      transport and storage.</p>
-
-      <p>Can't install this Upgrade with Enclosure, Reinforced Frame, or
-      Smuggling Compartment upgrades.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        You can now fold your bike to the size of a large suitcase for easier
+        transport and storage.
+      </p>
+      <p>
+        Can't install this Upgrade with Enclosure, Reinforced Frame, or Smuggling
+        Compartment upgrades.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Three wheeled Roadbike.</p>
+    value: |
+      <p>Three wheeled Roadbike.</p>
   favorite: false
   installedItems:
     allowed: true

@@ -13,9 +13,13 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>A stowable camera that pops out of your shoulder. Can link with an
-      agent or memory chip.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A stowable camera that pops out of your shoulder. Can link with an agent or
+        memory chip.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

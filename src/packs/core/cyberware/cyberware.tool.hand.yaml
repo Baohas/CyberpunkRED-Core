@@ -13,7 +13,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Each finger in your hand has a different tool. Great for Techs!</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Each finger in your hand has a different tool. Great for Techs!</p>
   dvTable: ""
   favorite: false
   fireModes:

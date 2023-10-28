@@ -13,18 +13,22 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>Cyberarm Option. Takes 2 option slots.</p>
-
-      <p>Gas Jet sprays a burst of 3 doses of a Street Drug or 3 Vials of
-      Poison/Biotoxin into a 3x3 square directly in front of the shooter
-      (similar to Shotgun Shell attack). Can be used one-handed and is virtually
-      undetectable even without a Conceal check.</p>
-
-      <p>All susceptible targets in range suffer the effects of the drug or
-      poison. Targets equipped with gear that neutralizes gas attacks (Nasal
-      Filters &amp; Anti-Smog Breathing Mask) are not affected. Gas Jet must be
-      loaded with 3 more doses after each shot before firing again.</p>
+      <p>
+        Gas Jet sprays a burst of 3 doses of a Street Drug or 3 Vials of
+        Poison/Biotoxin into a 3x3 square directly in front of the shooter (similar to
+        Shotgun Shell attack). Can be used one-handed and is virtually undetectable
+        even without a Conceal check.
+      </p>
+      <p>
+        All susceptible targets in range suffer the effects of the drug or poison.
+        Targets equipped with gear that neutralizes gas attacks (Nasal Filters &amp;
+        Anti-Smog Breathing Mask) are not affected. Gas Jet must be loaded with 3 more
+        doses after each shot before firing again.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

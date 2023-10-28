@@ -14,9 +14,13 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    value: >-
-      <p>One Handed Exotic Medium Melee Weapon. Battery powered EMP effect which
-      can deactivate cyberware.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        One Handed Exotic Medium Melee Weapon. Battery powered EMP effect which can
+        deactivate cyberware.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

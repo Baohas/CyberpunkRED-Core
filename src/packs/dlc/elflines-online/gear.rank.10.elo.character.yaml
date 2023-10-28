@@ -10,9 +10,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>A power-leveled Rank 10 ELO character. (ELO Character must be created
-      via the Macro and ranked up manually.)</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A power-leveled Rank 10 ELO character. (ELO Character must be created via the
+        Macro and ranked up manually.)
+      </p>
   equipped: owned
   favorite: false
   installedItems:

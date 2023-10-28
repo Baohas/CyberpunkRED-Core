@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A hoverboard driven with Athletics Skill. Can't be upgraded.</p>
+    value: |
+      <p>A hoverboard driven with Athletics Skill. Can't be upgraded.</p>
   favorite: false
   installedItems:
     allowed: false

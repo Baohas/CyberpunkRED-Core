@@ -13,9 +13,13 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    value: >-
-      <p>A bladed, hilted weapon. Specifically designed for cutting or
-      thrusting. 2 ROF if wielding two longswords.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A bladed, hilted weapon. Specifically designed for cutting or thrusting. 2 ROF
+        if wielding two longswords.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

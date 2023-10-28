@@ -11,9 +11,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Cards meant to be used as part of playing Elfines Online The Trading
-      Card Game.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Cards meant to be used as part of playing Elfines Online The Trading Card
+        Game.
+      </p>
   favorite: false
   overrides:
     autofire:

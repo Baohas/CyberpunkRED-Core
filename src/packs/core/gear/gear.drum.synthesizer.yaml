@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Makes drum sounds when connected to amplifier.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Makes drum sounds when connected to amplifier.</p>
   equipped: owned
   favorite: false
   installedItems:

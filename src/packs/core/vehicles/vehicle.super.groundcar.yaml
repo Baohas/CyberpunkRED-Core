@@ -9,9 +9,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>An expensive, exotic CHOOH<sup>2</sup>-powered sportscar. It is capable
-      of very high speeds.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        An expensive, exotic CHOOH<sup>2</sup>-powered sportscar. It is capable of
+        very high speeds.
+      </p>
   favorite: false
   installedItems:
     allowed: true

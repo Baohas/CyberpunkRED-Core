@@ -13,10 +13,14 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>Taken from a derelict aircraft, these blades are capable of slicing
-      most things easily. If you roll 1 on Attack (Crit Fail) the weapon fails
-      in some way and requires an action to be made usable again.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Taken from a derelict aircraft, these blades are capable of slicing most
+        things easily. If you roll 1 on Attack (Crit Fail) the weapon fails in some
+        way and requires an action to be made usable again.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

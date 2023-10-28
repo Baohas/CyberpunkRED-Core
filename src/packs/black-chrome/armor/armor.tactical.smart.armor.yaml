@@ -12,10 +12,16 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>A full set of medium armorjack with integrated smart glasses*. -2 to
-      REF, DEX, and MOVE.</p><p><em>*Smart Glasses must be manually added after
-      acquiring the armor.</em></p>
+    chat: ""
+    unidentified: ""
+    value: >
+      <p>
+        A full set of medium armorjack with integrated smart glasses*. -2 to REF, DEX,
+        and MOVE.
+      </p>
+
+      <p><em>*Smart Glasses must be manually added after acquiring the
+      armor.</em></p>
   equipped: owned
   favorite: false
   headLocation:

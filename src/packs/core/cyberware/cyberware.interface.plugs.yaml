@@ -13,9 +13,13 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Plugs in the wrist or head to allow you to connect to machines/systems
-      hands-free.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Plugs in the wrist or head to allow you to connect to machines/systems
+        hands-free.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

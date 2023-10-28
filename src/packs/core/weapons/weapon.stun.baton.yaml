@@ -13,10 +13,14 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    value: >-
-      <p>An Exotic, One-handed Medium Melee Weapon. Target is knocked
-      unconscious if damage dealt would reduce them to under 1 HP. Doesn't cause
-      Critical Injuries or ablate armor.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        An Exotic, One-handed Medium Melee Weapon. Target is knocked unconscious if
+        damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries
+        or ablate armor.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

@@ -11,12 +11,18 @@ system:
     concealable: true
     isConcealed: false
   description:
-    value: >-
-      <p>Paintballs filled with acid. Deals no damage but ablates armour by 1 SP
-      on hit*.</p>
-
-      <p><em>*Not currently supported so will need to manually reduce armour on
-      hit</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Paintballs filled with acid. Deals no damage but ablates armour by 1 SP on
+        hit*.
+      </p>
+      <p>
+        <em
+          >*Not currently supported so will need to manually reduce armour on hit</em
+        >
+      </p>
   favorite: false
   overrides:
     autofire:

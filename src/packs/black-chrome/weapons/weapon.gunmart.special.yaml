@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>The GunMart Special is a Poor Quality Exotic Heavy Pistol.</p>
+    value: |
+      <p>The GunMart Special is a Poor Quality Exotic Heavy Pistol.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

@@ -15,9 +15,13 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>The Faisal's Dead Or Alive is a Poor Quality Exotic Shotgun with an
-      integrated Poor Quality Net Launcher.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Faisal's Dead Or Alive is a Poor Quality Exotic Shotgun with an integrated
+        Poor Quality Net Launcher.
+      </p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

@@ -14,9 +14,13 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    value: >-
-      <p>A concealable, heavy pistol. If you roll 1 on Attack (Crit fail) the
-      gun jams and requires using an action to clear.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A concealable, heavy pistol. If you roll 1 on Attack (Crit fail) the gun jams
+        and requires using an action to clear.
+      </p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

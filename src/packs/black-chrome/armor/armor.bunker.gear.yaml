@@ -12,9 +12,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Fireproof flak armor with a built in gas mask and 30 minutes of oxygen
-      in a tank that refills itself after an hour. -4 to REF, DEX, and MOVE.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Fireproof flak armor with a built in gas mask and 30 minutes of oxygen in a
+        tank that refills itself after an hour. -4 to REF, DEX, and MOVE.
+      </p>
   equipped: owned
   favorite: false
   headLocation:

@@ -11,9 +11,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>When linked to a KillStrom Sonic Boom Amp, increases the DV of the
-      Resist Torture/Drugs Check.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        When linked to a KillStrom Sonic Boom Amp, increases the DV of the Resist
+        Torture/Drugs Check.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

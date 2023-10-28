@@ -14,7 +14,10 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: <p>Exotic Assault Rifle, no Autofire, no Suppressive Fire.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Exotic Assault Rifle, no Autofire, no Suppressive Fire.</p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

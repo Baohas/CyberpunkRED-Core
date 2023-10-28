@@ -14,9 +14,13 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
-      <p>Capable of firing all Non-Basic ammunition, this weapon is still as
-      versatile as when it was invented over two decades ago.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Capable of firing all Non-Basic ammunition, this weapon is still as versatile
+        as when it was invented over two decades ago.
+      </p>
   dvTable: DV Sniper Rifle
   equipped: owned
   favorite: false

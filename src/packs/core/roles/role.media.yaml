@@ -9,9 +9,13 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    value: >-
-      <p>Newspeople, influencers, and cultural phenomena, they are ready to
-      expose the truth by any means necessary.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Newspeople, influencers, and cultural phenomena, they are ready to expose the
+        truth by any means necessary.
+      </p>
   favorite: false
   hasRoll: true
   isSituational: false

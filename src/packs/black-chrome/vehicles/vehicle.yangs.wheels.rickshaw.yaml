@@ -12,7 +12,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Roadbike with attached trailer for passengers.</p>
+    value: |
+      <p>Roadbike with attached trailer for passengers.</p>
   favorite: false
   installedItems:
     allowed: true

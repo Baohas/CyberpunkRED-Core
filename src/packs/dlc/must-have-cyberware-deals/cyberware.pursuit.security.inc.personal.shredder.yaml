@@ -14,9 +14,13 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Heavy duty paper shredder, can be concealed. Features an internal
-      storage for paper shreds.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Heavy duty paper shredder, can be concealed. Features an internal storage for
+        paper shreds.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

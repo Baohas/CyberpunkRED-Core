@@ -12,7 +12,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Lubricant in a helpfully sized can.</p>
+    value: |
+      <p>Lubricant in a helpfully sized can.</p>
   equipped: owned
   favorite: false
   installedItems:

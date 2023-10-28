@@ -15,7 +15,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: >
       <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument
       checks.</p>
   dvTable: ""

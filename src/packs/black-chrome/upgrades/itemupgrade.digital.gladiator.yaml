@@ -12,11 +12,18 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Agent App.</p><p>Perhaps you're better suited to duking it out online
-      than in the streets…</p><p>Rules related to creating, playing with, and
-      fighting an opponent in Digital Gladiator are contained in Black Chrome
-      rulebook for this item.</p>
+    chat: ""
+    unidentified: ""
+    value: >
+      <p>Agent App.</p>
+
+      <p>Perhaps you're better suited to duking it out online than in the
+      streets…</p>
+
+      <p>
+        Rules related to creating, playing with, and fighting an opponent in Digital
+        Gladiator are contained in Black Chrome rulebook for this item.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

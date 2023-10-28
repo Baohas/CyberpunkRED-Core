@@ -13,12 +13,20 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Electric motorised system helping to pedal, increasing speed, lowering
-      tiredness.</p><p>Increases the bicycle's Speed (narrative) to the next
-      BODY tier or adds 5MPH/8KPH to Speed (narrative) if already at the highest
-      BODY tier.</p><p>Rider get +4 bonus to Endurance Checks to resisting
-      exhaustion when riding.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Electric motorised system helping to pedal, increasing speed, lowering
+        tiredness.
+      </p>
+      <p>
+        Increases the bicycle's Speed (narrative) to the next BODY tier or adds
+        5MPH/8KPH to Speed (narrative) if already at the highest BODY tier.
+      </p>
+      <p>
+        Rider get +4 bonus to Endurance Checks to resisting exhaustion when riding.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

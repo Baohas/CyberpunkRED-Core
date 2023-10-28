@@ -14,7 +14,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Speedware. +3 to Initiative for 1 min. 1hr cooldown.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Speedware. +3 to Initiative for 1 min. 1hr cooldown.</p>
   dvTable: ""
   favorite: false
   fireModes:

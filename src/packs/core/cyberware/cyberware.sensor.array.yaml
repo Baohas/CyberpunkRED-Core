@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Allows you to install up to 5 more cyberaudio options.</p>
+    value: |
+      <p>Allows you to install up to 5 more cyberaudio options.</p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -12,7 +12,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Requires an arm and has HP that is reduced by damage.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Requires an arm and has HP that is reduced by damage.</p>
   equipped: owned
   favorite: false
   headLocation:

@@ -13,9 +13,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Leisurewear-styled Light Armorjack and the ability to conceal two
-      standard magazines without a check.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Leisurewear-styled Light Armorjack and the ability to conceal two standard
+        magazines without a check.
+      </p>
   equipped: owned
   favorite: false
   headLocation:

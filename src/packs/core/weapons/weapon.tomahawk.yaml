@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A light axe that can be thrown.</p>
+    value: |
+      <p>A light axe that can be thrown.</p>
   dvTable: ""
   equipped: owned
   favorite: false

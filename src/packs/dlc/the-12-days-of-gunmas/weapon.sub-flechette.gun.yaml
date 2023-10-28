@@ -14,10 +14,13 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    value: >-
-      <p>This SMG can only fire it's own custom Armor-Piercing Ammunition,
-      however that ammo ablates by 4 when dealing damage. Comes with a Smartgun
-      Link*.</p>
+    chat: ""
+    unidentified: ""
+    value: >
+      <p>
+        This SMG can only fire it's own custom Armor-Piercing Ammunition, however that
+        ammo ablates by 4 when dealing damage. Comes with a Smartgun Link*.
+      </p>
 
       <p><em>*Smartgun Link must be manually added after acquiring the
       weapon</em></p>

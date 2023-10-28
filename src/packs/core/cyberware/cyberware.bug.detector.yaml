@@ -13,7 +13,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Notifies of bugs or taps within 2m/yds.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Notifies of bugs or taps within 2m/yds.</p>
   dvTable: ""
   favorite: false
   fireModes:

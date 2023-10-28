@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Nylon.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Nylon.</p>
   equipped: owned
   favorite: false
   installedItems:

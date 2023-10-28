@@ -4,127 +4,127 @@
   "entries": {
     "AeroCop": {
       "name": "AeroCop",
-      "description": "<p>AV4 type Aerodyne. Police version.</p>"
+      "description": "<p>AV4 type Aerodyne. Police version.</p>\n"
     },
     "AeroVox": {
       "name": "AeroVox",
-      "description": "<p>AV4 type Aerodyne. Civilian version.</p>"
+      "description": "<p>AV4 type Aerodyne. Civilian version.</p>\n"
     },
     "Badger Corporate Bus": {
       "name": "Badger Corporate Bus",
-      "description": "<p>A luxurious bus for corporate road trips. Equally ell equipped for work meetings and after meeting drinks.</p>"
+      "description": "<p>\n  A luxurious bus for corporate road trips. Equally ell equipped for work\n  meetings and after meeting drinks.\n</p>\n"
     },
     "Bellhop": {
       "name": "Bellhop",
-      "description": "<p>A one seat Gyrocopter which can be folded to the size of a large suitcase.</p>"
+      "description": "<p>\n  A one seat Gyrocopter which can be folded to the size of a large suitcase.\n</p>\n"
     },
     "Chupacabra": {
       "name": "Chupacabra",
-      "description": "<p>Compact Groundcar built from recycled parts from older vehicles. Low-tech but high-horse-power.</p>"
+      "description": "<p>\n  Compact Groundcar built from recycled parts from older vehicles. Low-tech but\n  high-horse-power.\n</p>\n"
     },
     "Destination": {
       "name": "Destination",
-      "description": "<p>AV4 style Aerodyne, civilian model.</p>"
+      "description": "<p>AV4 style Aerodyne, civilian model.</p>\n"
     },
     "Ebi": {
       "name": "Ebi",
-      "description": "<p>Small but well thought out Compact Groundcar.</p>"
+      "description": "<p>Small but well thought out Compact Groundcar.</p>\n"
     },
     "EconoCompact": {
       "name": "EconoCompact",
-      "description": "<p>Small and low-cost Compact Groundcar.</p>"
+      "description": "<p>Small and low-cost Compact Groundcar.</p>\n"
     },
     "Family Star Van": {
       "name": "Family Star Van",
-      "description": "<p>Comfortable family Compact Groundcar.</p>"
+      "description": "<p>Comfortable family Compact Groundcar.</p>\n"
     },
     "Gorgon Security Van": {
       "name": "Gorgon Security Van",
-      "description": "<p>A monster of an armored van.</p>"
+      "description": "<p>A monster of an armored van.</p>\n"
     },
     "Grundy": {
       "name": "Grundy",
-      "description": "<p>Armored industrial looking Compact Grouncar, with a powerful combat plow.</p>"
+      "description": "<p>Armored industrial looking Compact Grouncar, with a powerful combat plow.</p>\n"
     },
     "Harriet 100": {
       "name": "Harriet 100",
-      "description": "<p>A classic Roadbike with a more feminine look.</p>"
+      "description": "<p>A classic Roadbike with a more feminine look.</p>\n"
     },
     "Harvey 100": {
       "name": "Harvey 100",
-      "description": "<p>A classic Roadbike.</p>"
+      "description": "<p>A classic Roadbike.</p>\n"
     },
     "Harvey Merc": {
       "name": "Harvey Merc",
-      "description": "<p>A classic roadbike, this time with mounted weapons.</p>"
+      "description": "<p>A classic roadbike, this time with mounted weapons.</p>\n"
     },
     "Herakles": {
       "name": "Herakles",
-      "description": "<p>AV4 type troop transport, armored and armed.</p>"
+      "description": "<p>AV4 type troop transport, armored and armed.</p>\n"
     },
     "Highway Master Artemis": {
       "name": "Highway Master Artemis",
-      "description": "<p>A low-riding Roadbike with retractable glass cover. Has a surpercharge mode that doesn't come with a safety guarantee.</p>"
+      "description": "<p>\n  A low-riding Roadbike with retractable glass cover. Has a surpercharge mode\n  that doesn't come with a safety guarantee.\n</p>\n"
     },
     "JetBoy Hoverboard": {
       "name": "JetBoy Hoverboard",
-      "description": "<p>A hoverboard driven with Athletics Skill. Can't be upgraded.</p>"
+      "description": "<p>A hoverboard driven with Athletics Skill. Can't be upgraded.</p>\n"
     },
     "MegaHauler": {
       "name": "MegaHauler",
-      "description": "<p>Armored truck transport. As much a train as a car.</p>"
+      "description": "<p>Armored truck transport. As much a train as a car.</p>\n"
     },
     "Molly 1K": {
       "name": "Molly 1K",
-      "description": "<p>Off-road Compact Groundcar.</p>"
+      "description": "<p>Off-road Compact Groundcar.</p>\n"
     },
     "Paladin 500": {
       "name": "Paladin 500",
-      "description": "<p>A High Performance Groundcar. Now you can be MadMax. In town. With two mounted Machine Guns.</p>"
+      "description": "<p>\n  A High Performance Groundcar. Now you can be MadMax. In town. With two mounted\n  Machine Guns.\n</p>\n"
     },
     "Parallax Cybercycle™": {
       "name": "Parallax Cybercycle™",
-      "description": "<p>Top of the line Superbike.</p>"
+      "description": "<p>Top of the line Superbike.</p>\n"
     },
     "Range Trike": {
       "name": "Range Trike",
-      "description": "<p>Three wheeled Roadbike.</p>"
+      "description": "<p>Three wheeled Roadbike.</p>\n"
     },
     "SH-45 Patroller Law": {
       "name": "SH-45 Patroller Law",
-      "description": "<p>One seat Gyrocopter. Police version, with mounted Machine Gun.</p>"
+      "description": "<p>One seat Gyrocopter. Police version, with mounted Machine Gun.</p>\n"
     },
     "SH-45 Patroller": {
       "name": "SH-45 Patroller",
-      "description": "<p>One seat Gyrocopter. Civilian version.</p>"
+      "description": "<p>One seat Gyrocopter. Civilian version.</p>\n"
     },
     "Sliver": {
       "name": "Sliver",
-      "description": "<p>A Roadbike with all the gadgets you'd ever need.</p>"
+      "description": "<p>A Roadbike with all the gadgets you'd ever need.</p>\n"
     },
     "Street King Combat Vehicle": {
       "name": "Street King Combat Vehicle",
-      "description": "<p>A High Performance Groundcar which is large, armored and has a military look.</p>"
+      "description": "<p>\n  A High Performance Groundcar which is large, armored and has a military look.\n</p>\n"
     },
     "TDT 004": {
       "name": "TDT 004",
-      "description": "<p>Troop transport Helicopter.</p>"
+      "description": "<p>Troop transport Helicopter.</p>\n"
     },
     "The Zacatzontli Pickup Truck": {
       "name": "The Zacatzontli Pickup Truck",
-      "description": "<p>A Compact Groundcar equipped for off-road travel.</p>"
+      "description": "<p>A Compact Groundcar equipped for off-road travel.</p>\n"
     },
     "Thunder-X": {
       "name": "Thunder-X",
-      "description": "<p>A top of the line High Performance Groundcar.</p>"
+      "description": "<p>A top of the line High Performance Groundcar.</p>\n"
     },
     "Volkhov": {
       "name": "Volkhov",
-      "description": "<p>An armored pickup Compact Groundcar with mounted machine gun. Comes with a bottle of vodka.</p>"
+      "description": "<p>\n  An armored pickup Compact Groundcar with mounted machine gun. Comes with a\n  bottle of vodka.\n</p>\n"
     },
     "Yang's Wheels Rickshaw": {
       "name": "Yang's Wheels Rickshaw",
-      "description": "<p>Roadbike with attached trailer for passengers.</p>"
+      "description": "<p>Roadbike with attached trailer for passengers.</p>\n"
     }
   }
 }

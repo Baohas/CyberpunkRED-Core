@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A long-distance sniper rifle. Holds 4 bullets in a magazine.</p>
+    value: |
+      <p>A long-distance sniper rifle. Holds 4 bullets in a magazine.</p>
   dvTable: DV Sniper Rifle
   equipped: owned
   favorite: false

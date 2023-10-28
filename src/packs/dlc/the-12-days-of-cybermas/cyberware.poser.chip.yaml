@@ -16,22 +16,22 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Chipware. Allows User to effortlessly mimic speech patterns and
-      mannerisms of a pre-programmed personality. Standard-issue Cyberware for
-      Poser Gangs.</p>
-
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Chipware. Allows User to effortlessly mimic speech patterns and mannerisms of
+        a pre-programmed personality. Standard-issue Cyberware for Poser Gangs.
+      </p>
       <ul>
-
-      <li>+4 to Acting Checks when imitating that specific personality.</li>
-
-      <li>+5 to Acting Checks with convincing Roleplay.</li>
-
+        <li>+4 to Acting Checks when imitating that specific personality.</li>
+        <li>+5 to Acting Checks with convincing Roleplay.</li>
       </ul>
-
-      <p>Poser Chips programmed with countless hours of celebrity footage cost
-      500eb. More personalized Poser Chips programmed with 10+ hours of footage
-      of a private individual cost 1000eb.</p>
+      <p>
+        Poser Chips programmed with countless hours of celebrity footage cost 500eb.
+        More personalized Poser Chips programmed with 10+ hours of footage of a
+        private individual cost 1000eb.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

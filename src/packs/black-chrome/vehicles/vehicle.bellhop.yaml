@@ -9,9 +9,12 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>A one seat Gyrocopter which can be folded to the size of a large
-      suitcase.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A one seat Gyrocopter which can be folded to the size of a large suitcase.
+      </p>
   favorite: false
   installedItems:
     allowed: true

@@ -15,9 +15,13 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>The Hades Multipurpose Assault Shotgun is an Exotic Shotgun. The
-      magazine holds 16 shots.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The Hades Multipurpose Assault Shotgun is an Exotic Shotgun. The magazine
+        holds 16 shots.
+      </p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

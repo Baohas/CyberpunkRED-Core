@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Webbing between your toes allows you to swim. Must be paired.</p>
+    value: |
+      <p>Webbing between your toes allows you to swim. Must be paired.</p>
   dvTable: ""
   favorite: false
   fireModes:

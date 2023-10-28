@@ -7,9 +7,13 @@ name: Lost Ear
 system:
   deathSaveIncrease: true
   description:
-    value: >-
-      <p>Ear is removed. If move more than 4m/yds in a Turn, cannot move next
-      turn. -4 to hearing based Perception.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Ear is removed. If move more than 4m/yds in a Turn, cannot move next turn. -4
+        to hearing based Perception.
+      </p>
   favorite: false
   location: head
   quickFix:

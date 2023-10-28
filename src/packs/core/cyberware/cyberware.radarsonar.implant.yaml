@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Scans 50m/yds around you. Doesn't work through cover.</p>
+    value: |
+      <p>Scans 50m/yds around you. Doesn't work through cover.</p>
   dvTable: ""
   favorite: false
   fireModes:

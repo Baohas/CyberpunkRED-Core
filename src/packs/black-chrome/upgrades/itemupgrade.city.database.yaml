@@ -13,9 +13,14 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Agent App.</p><p>+1 bonus to all Local Expert Skills Checks related to
-      communities and neighborhoods for that city.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Agent App.</p>
+      <p>
+        +1 bonus to all Local Expert Skills Checks related to communities and
+        neighborhoods for that city.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

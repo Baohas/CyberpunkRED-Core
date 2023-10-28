@@ -12,11 +12,15 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Can be applied to all land vehicles. Adds Aerodyne thrusters to the
-      vehicle, allowing flight. While flying the vehicle has a narrative speed
-      of 200MPH / 322KPH, and a combat speed of 40. The vehicle must be piloted
-      using the Pilot Air Vehicle skill while mid-air.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can be applied to all land vehicles. Adds Aerodyne thrusters to the vehicle,
+        allowing flight. While flying the vehicle has a narrative speed of 200MPH /
+        322KPH, and a combat speed of 40. The vehicle must be piloted using the Pilot
+        Air Vehicle skill while mid-air.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

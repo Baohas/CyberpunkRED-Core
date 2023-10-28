@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A cybernetical replacement leg. Comes with a free foot.</p>
+    value: |
+      <p>A cybernetical replacement leg. Comes with a free foot.</p>
   dvTable: ""
   favorite: false
   fireModes:

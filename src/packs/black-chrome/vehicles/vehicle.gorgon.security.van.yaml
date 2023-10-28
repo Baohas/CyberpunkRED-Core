@@ -12,7 +12,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A monster of an armored van.</p>
+    value: |
+      <p>A monster of an armored van.</p>
   favorite: false
   installedItems:
     allowed: true

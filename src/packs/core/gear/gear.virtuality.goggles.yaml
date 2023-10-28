@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Overlay cyberspace imagery onto vision.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Overlay cyberspace imagery onto vision.</p>
   equipped: owned
   favorite: false
   installedItems:

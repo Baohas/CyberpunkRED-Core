@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Bag.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Bag.</p>
   equipped: owned
   favorite: false
   installedItems:

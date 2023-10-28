@@ -11,7 +11,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: >
       <p>This Furniture Set makes your Cargo Container almost feel like a
       home.</p>
   equipped: owned

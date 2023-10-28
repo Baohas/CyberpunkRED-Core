@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Can fully repair skinweave or subdermal armor once a day.</p>
+    value: |
+      <p>Can fully repair skinweave or subdermal armor once a day.</p>
   dvTable: ""
   favorite: false
   fireModes:

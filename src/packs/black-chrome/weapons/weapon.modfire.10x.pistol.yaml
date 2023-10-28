@@ -14,11 +14,20 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    value: >-
-      <p>The ModFire 10X is an Exotic Heavy Pistol. Can also be transformed into
-      an Exotic SMG or an Exotic Assault Rifle, assuming the user has all the
-      needed parts*.</p><p><em>*Each Modfire 10X mode is treated as a separate
-      weapon type, refer to Weapons compendium for Black Chrome.</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The ModFire 10X is an Exotic Heavy Pistol. Can also be transformed into an
+        Exotic SMG or an Exotic Assault Rifle, assuming the user has all the needed
+        parts*.
+      </p>
+      <p>
+        <em
+          >*Each Modfire 10X mode is treated as a separate weapon type, refer to
+          Weapons compendium for Black Chrome.</em
+        >
+      </p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

@@ -14,11 +14,15 @@ system:
   critFailEffect: jammed
   damage: "0"
   description:
-    value: >-
-      <p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged
-      Ear critical injuries. The target must beat a <strong>DV15 Resist
-      Torture/Drugs</strong> Check or suffer the Damaged Ear critical
-      injury.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear
+        critical injuries. The target must beat a
+        <strong>DV15 Resist Torture/Drugs</strong> Check or suffer the Damaged Ear
+        critical injury.
+      </p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

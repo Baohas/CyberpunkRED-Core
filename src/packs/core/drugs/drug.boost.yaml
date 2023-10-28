@@ -13,15 +13,17 @@ system:
     isConcealed: false
   consumed: Boost Primary
   description:
-    value: |-
+    chat: ""
+    unidentified: ""
+    value: |
       <p><strong>Primary Effect</strong></p>
       <p>Dose lasts 24 hours.</p>
       <ul>
-      <li>The user has INT +2 for the duration</li>
+        <li>The user has INT +2 for the duration</li>
       </ul>
       <p><strong>Secondary Effect (DV17)</strong></p>
       <ul>
-      <li>INT -2</li>
+        <li>INT -2</li>
       </ul>
   equipped: owned
   favorite: false

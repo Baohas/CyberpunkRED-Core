@@ -13,10 +13,14 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>If an active Armor Program is derezzed or destroyed, Defense Sequencer
-      activates a yet-unused copy of Armor Program at the start of the
-      Netrunner&rsquo;s turn.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        If an active Armor Program is derezzed or destroyed, Defense Sequencer
+        activates a yet-unused copy of Armor Program at the start of the
+        Netrunner&rsquo;s turn.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

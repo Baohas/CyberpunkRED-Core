@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>One seat Gyrocopter. Civilian version.</p>
+    value: |
+      <p>One seat Gyrocopter. Civilian version.</p>
   favorite: false
   installedItems:
     allowed: true

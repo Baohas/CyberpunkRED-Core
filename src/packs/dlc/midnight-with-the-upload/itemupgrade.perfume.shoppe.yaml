@@ -13,7 +13,10 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: <p>Skunk Black ICE will only take 1 option slot to install.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Skunk Black ICE will only take 1 option slot to install.</p>
   dvTable: ""
   favorite: false
   fireModes:

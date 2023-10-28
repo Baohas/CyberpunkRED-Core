@@ -13,7 +13,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Can sustain a group of up to 10 people when in the Outskirts.</p>
+    value: |
+      <p>Can sustain a group of up to 10 people when in the Outskirts.</p>
   equipped: owned
   favorite: false
   installedItems:

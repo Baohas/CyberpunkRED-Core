@@ -14,13 +14,23 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Color-shifting eye lenses. Color is dependent on Neural Link "mood"
-      scans. <strong>DV 21 Acting</strong> check to fake a mood scan and change
-      color accordingly. Lenses can be deactivated without an
-      action.</p><ul><li>Red: Rage</li><li>Blue: Sorrow</li><li>Yellow:
-      Terror</li><li>Pink: Horny</li><li>Green: Envy</li><li>Gray:
-      Flatlined</li></ul><p>Fashionware. Requires Neural Link.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Color-shifting eye lenses. Color is dependent on Neural Link "mood" scans.
+        <strong>DV 21 Acting</strong> check to fake a mood scan and change color
+        accordingly. Lenses can be deactivated without an action.
+      </p>
+      <ul>
+        <li>Red: Rage</li>
+        <li>Blue: Sorrow</li>
+        <li>Yellow: Terror</li>
+        <li>Pink: Horny</li>
+        <li>Green: Envy</li>
+        <li>Gray: Flatlined</li>
+      </ul>
+      <p>Fashionware. Requires Neural Link.</p>
   dvTable: ""
   favorite: false
   fireModes:

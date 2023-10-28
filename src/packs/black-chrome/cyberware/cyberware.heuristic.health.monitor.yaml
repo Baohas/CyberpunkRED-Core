@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Requires biomonitor. Can know HP at a glance.</p>
+    value: |
+      <p>Requires biomonitor. Can know HP at a glance.</p>
   dvTable: ""
   favorite: false
   fireModes:

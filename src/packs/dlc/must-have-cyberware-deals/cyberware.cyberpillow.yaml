@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A comfortable Cyberarm popout pillow for naps on the go.</p>
+    value: |
+      <p>A comfortable Cyberarm popout pillow for naps on the go.</p>
   dvTable: ""
   favorite: false
   fireModes:

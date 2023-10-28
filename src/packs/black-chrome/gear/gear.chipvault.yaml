@@ -10,9 +10,13 @@ system:
     concealable: true
     isConcealed: false
   description:
-    value: >-
-      <p>Can hold up to 8 pieces of Chipware. Chipware stored inside are immune
-      to EMP effects.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can hold up to 8 pieces of Chipware. Chipware stored inside are immune to EMP
+        effects.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

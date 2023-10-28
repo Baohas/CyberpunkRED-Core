@@ -14,9 +14,13 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Must be paired. +2 Perception and Lip Reading and Conceal/Reveal Object
-      when using sight.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Must be paired. +2 Perception and Lip Reading and Conceal/Reveal Object when
+        using sight.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

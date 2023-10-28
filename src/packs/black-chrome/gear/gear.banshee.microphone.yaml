@@ -12,10 +12,14 @@ system:
     concealable: true
     isConcealed: false
   description:
-    value: >-
-      <p>Wireless Microphone Headset. Gives the User a +2 bonus to Play
-      Instrument (Singing) Skill Checks while worn. Doesn't stack with other
-      bonuses to Play Instrument.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Wireless Microphone Headset. Gives the User a +2 bonus to Play Instrument
+        (Singing) Skill Checks while worn. Doesn't stack with other bonuses to Play
+        Instrument.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

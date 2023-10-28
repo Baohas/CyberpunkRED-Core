@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Audio tracking of a tracer up to 1 mile. Replacements not included.</p>
+    value: |
+      <p>Audio tracking of a tracer up to 1 mile. Replacements not included.</p>
   dvTable: ""
   favorite: false
   fireModes:

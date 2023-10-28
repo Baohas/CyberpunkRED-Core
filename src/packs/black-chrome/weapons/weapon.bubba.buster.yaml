@@ -15,9 +15,13 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>The GunMart Bubba Buster is a Poor Quality Exotic Shotgun. It destroys
-      itself if fired more than 3 times in a minute.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        The GunMart Bubba Buster is a Poor Quality Exotic Shotgun. It destroys itself
+        if fired more than 3 times in a minute.
+      </p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

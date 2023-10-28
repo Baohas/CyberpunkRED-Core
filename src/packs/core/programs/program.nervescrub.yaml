@@ -14,7 +14,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Lowers a Netrunner's INT, REF, and DEX by 1d6 (min. 1) for 1 hour.</p>
+    value: |
+      <p>Lowers a Netrunner's INT, REF, and DEX by 1d6 (min. 1) for 1 hour.</p>
   favorite: false
   installLocation: mall
   interface: 0

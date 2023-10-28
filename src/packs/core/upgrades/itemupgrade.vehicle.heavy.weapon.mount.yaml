@@ -13,21 +13,26 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters.
-      One of the vehicles seats becomes a swivel mount for any two-handed ranged
-      weapon. A passenger may fire the weapon using an Action. The passenger can
-      reload the weapon. The weapon can be removed or reinstalled using an
-      Action.</p>
-
-      <p>The first time this upgrade is taken, included is a <strong>Tsunami
-      Arms Helix</strong>, <strong>Rhinemetall EMG-86 Railgun</strong>, or
-      <strong>Militech "Cowboy" U-56 Grenade Launcher</strong>. If the vehicle
-      has the Bulletproof Glass upgrade, the gunner is protected by the same
-      glass.</p>
-
-      <p>You may install this upgrade multiple times if the vehicle has the
-      Housing Capacity upgrade. <strong>Requires Heavy Chassis</strong>.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. One of
+        the vehicles seats becomes a swivel mount for any two-handed ranged weapon. A
+        passenger may fire the weapon using an Action. The passenger can reload the
+        weapon. The weapon can be removed or reinstalled using an Action.
+      </p>
+      <p>
+        The first time this upgrade is taken, included is a
+        <strong>Tsunami Arms Helix</strong>,
+        <strong>Rhinemetall EMG-86 Railgun</strong>, or
+        <strong>Militech "Cowboy" U-56 Grenade Launcher</strong>. If the vehicle has
+        the Bulletproof Glass upgrade, the gunner is protected by the same glass.
+      </p>
+      <p>
+        You may install this upgrade multiple times if the vehicle has the Housing
+        Capacity upgrade. <strong>Requires Heavy Chassis</strong>.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

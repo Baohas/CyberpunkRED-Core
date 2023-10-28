@@ -12,11 +12,15 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Can be applied to all vehicles. All glass on the vehicle is now
-      considered cover with 15 HP. Can be taken a second time to upgrade to
-      30HP. All windows take damage individually.</p><p>Refer to the cover rules
-      in CP:R, pg. 182.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can be applied to all vehicles. All glass on the vehicle is now considered
+        cover with 15 HP. Can be taken a second time to upgrade to 30HP. All windows
+        take damage individually.
+      </p>
+      <p>Refer to the cover rules in CP:R, pg. 182.</p>
   dvTable: ""
   favorite: false
   fireModes:

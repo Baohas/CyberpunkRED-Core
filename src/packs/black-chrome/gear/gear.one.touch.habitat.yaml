@@ -10,9 +10,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Provides protection from Exposure. Counts as Sleeping in the Wilderness
-      or as Sleeping on the Streets.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Provides protection from Exposure. Counts as Sleeping in the Wilderness or as
+        Sleeping on the Streets.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

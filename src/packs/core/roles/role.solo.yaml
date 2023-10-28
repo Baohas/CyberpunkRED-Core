@@ -115,9 +115,13 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    value: >-
-      <p>Experts in combat who use their fighting prowess to dominate in the
-      lawless time of the Red.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Experts in combat who use their fighting prowess to dominate in the lawless
+        time of the Red.
+      </p>
   favorite: false
   hasRoll: false
   isSituational: false

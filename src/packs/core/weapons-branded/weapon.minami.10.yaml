@@ -14,7 +14,10 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    value: <p>A concealable SMG. +1 to Attack.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>A concealable SMG. +1 to Attack.</p>
   dvTable: DV SMG
   equipped: owned
   favorite: false

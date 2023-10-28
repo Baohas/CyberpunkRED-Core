@@ -15,7 +15,9 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: >
       <p>The Militech Perseus is an Excellent Quality Exotic Very Heavy
       Pistol.</p>
   dvTable: DV Pistol

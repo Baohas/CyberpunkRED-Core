@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Provides +2 to Resist Torture/Drugs checks.</p>
+    value: |
+      <p>Provides +2 to Resist Torture/Drugs checks.</p>
   dvTable: ""
   favorite: false
   fireModes:

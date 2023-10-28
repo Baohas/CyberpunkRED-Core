@@ -14,7 +14,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Cyberdeck cannot be disabled or destroyed by EMP effects.</p>
+    value: |
+      <p>Cyberdeck cannot be disabled or destroyed by EMP effects.</p>
   dvTable: ""
   favorite: false
   fireModes:

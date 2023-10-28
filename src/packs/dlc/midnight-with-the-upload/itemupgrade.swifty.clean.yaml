@@ -13,10 +13,13 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Netrunner can roll Cloak twice in a single NET Action and take the
-      higher roll. Cloak can only be used once per Netrun when Swifty Clean is
-      installed.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Netrunner can roll Cloak twice in a single NET Action and take the higher
+        roll. Cloak can only be used once per Netrun when Swifty Clean is installed.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

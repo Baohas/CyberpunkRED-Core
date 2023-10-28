@@ -13,13 +13,15 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Earn 20eb monthly by sporting a light-up advertisement on your
-      Cyberleg. User may be responsible for paying the installation fee.
-      Corporate sponsorship may be revoked if the terms are violated, such as
-      obscuring the advertisement with clothing or engaging in
-      &ldquo;off-brand&rdquo; activities.</p>
-
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Earn 20eb monthly by sporting a light-up advertisement on your Cyberleg. User
+        may be responsible for paying the installation fee. Corporate sponsorship may
+        be revoked if the terms are violated, such as obscuring the advertisement with
+        clothing or engaging in &ldquo;off-brand&rdquo; activities.
+      </p>
       <p>Can not be installed in Meat leg.</p>
   dvTable: ""
   favorite: false

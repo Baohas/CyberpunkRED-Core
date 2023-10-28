@@ -16,7 +16,9 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Neuralware.</p><p>Negates REF requirement to dodge bullets.</p>
+    value: |
+      <p>Neuralware.</p>
+      <p>Negates REF requirement to dodge bullets.</p>
   dvTable: ""
   favorite: false
   fireModes:

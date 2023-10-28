@@ -16,7 +16,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>An Exotic Very Heavy Pistol.</p>
+    value: |
+      <p>An Exotic Very Heavy Pistol.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

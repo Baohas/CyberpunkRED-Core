@@ -14,9 +14,13 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    value: >-
-      <p>Exotic SMG. Autofire only. Even if you drop the weapon, it will
-      continue to Autofire.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Exotic SMG. Autofire only. Even if you drop the weapon, it will continue to
+        Autofire.
+      </p>
   dvTable: DV SMG (Autofire)
   equipped: owned
   favorite: false

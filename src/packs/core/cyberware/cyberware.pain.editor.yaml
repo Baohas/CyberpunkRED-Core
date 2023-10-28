@@ -14,7 +14,10 @@ system:
   core: false
   damage: 1d6
   description:
-    value: <p>Chipware. Removes Seriously Wounded penalties.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Chipware. Removes Seriously Wounded penalties.</p>
   dvTable: ""
   favorite: false
   fireModes:

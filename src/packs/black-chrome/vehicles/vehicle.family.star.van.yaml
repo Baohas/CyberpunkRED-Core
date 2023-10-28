@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Comfortable family Compact Groundcar.</p>
+    value: |
+      <p>Comfortable family Compact Groundcar.</p>
   favorite: false
   installedItems:
     allowed: true

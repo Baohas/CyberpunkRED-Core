@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A small two-seater rotorcraft.</p>
+    value: |
+      <p>A small two-seater rotorcraft.</p>
   favorite: false
   installedItems:
     allowed: true

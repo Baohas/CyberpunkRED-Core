@@ -17,7 +17,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>An Exotic Shotgun that uses the Heavy Weapons Skill.</p>
+    value: |
+      <p>An Exotic Shotgun that uses the Heavy Weapons Skill.</p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

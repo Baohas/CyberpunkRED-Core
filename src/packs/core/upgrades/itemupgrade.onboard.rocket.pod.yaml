@@ -12,15 +12,20 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: >-
-      <p>Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. A
-      <strong>Rocket Launcher</strong> with a drum of three rockets, that can be
-      mounted facing the front of the vehicle. The driver may fire it using an
-      Action. It cannot be reloaded while driving, and cannot accept weapon
-      attachments.</p>
-
-      <p>You may install this upgrade multiple times. <strong>Requires Heavy
-      Chassis</strong>.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. A
+        <strong>Rocket Launcher</strong> with a drum of three rockets, that can be
+        mounted facing the front of the vehicle. The driver may fire it using an
+        Action. It cannot be reloaded while driving, and cannot accept weapon
+        attachments.
+      </p>
+      <p>
+        You may install this upgrade multiple times.
+        <strong>Requires Heavy Chassis</strong>.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -10,7 +10,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Show your allegiance with Gang colors!</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Show your allegiance with Gang colors!</p>
   equipped: owned
   favorite: false
   installedItems:

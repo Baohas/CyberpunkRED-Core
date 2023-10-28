@@ -13,9 +13,12 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Urban Flash-styled Light Armorjack that counts as a Light Tattoo while
-      worn.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Urban Flash-styled Light Armorjack that counts as a Light Tattoo while worn.
+      </p>
   equipped: owned
   favorite: false
   headLocation:

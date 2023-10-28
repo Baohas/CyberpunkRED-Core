@@ -13,9 +13,13 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Plating on your hand which allows you to utilise Smartguns. Requires a
-      neural link.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Plating on your hand which allows you to utilise Smartguns. Requires a neural
+        link.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -13,10 +13,12 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: >-
-      <p>A very sticky grenade. Creates a sticky web that entangles target. Must
-      be destroyed or be torn by anyone in melee range making a <strong>DV 15
-      Brawling Check</strong>.</p>
+    value: |
+      <p>
+        A very sticky grenade. Creates a sticky web that entangles target. Must be
+        destroyed or be torn by anyone in melee range making a
+        <strong>DV 15 Brawling Check</strong>.
+      </p>
   favorite: false
   overrides:
     autofire:

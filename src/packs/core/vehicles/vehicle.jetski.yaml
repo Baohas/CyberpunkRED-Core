@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A common CHOOH<sup>2</sup>-powered jetski that can seat two people.</p>
+    value: |
+      <p>A common CHOOH<sup>2</sup>-powered jetski that can seat two people.</p>
   favorite: false
   installedItems:
     allowed: true

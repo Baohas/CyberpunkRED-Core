@@ -14,11 +14,15 @@ system:
   critFailEffect: jammed
   damage: 8d6
   description:
-    value: >-
-      <p>This specially engineered rocket launcher is only capable of being
-      fired once. However, once it has been fired the user can use an action to
-      break of a vial attached to the launcher, which will release an enzyme
-      that will destroy the launcher totally within an hour.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        This specially engineered rocket launcher is only capable of being fired once.
+        However, once it has been fired the user can use an action to break of a vial
+        attached to the launcher, which will release an enzyme that will destroy the
+        launcher totally within an hour.
+      </p>
   dvTable: DV Rocket Launcher
   equipped: owned
   favorite: false

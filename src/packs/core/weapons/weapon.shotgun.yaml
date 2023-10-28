@@ -17,7 +17,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>An all-purpose shotgun.</p>
+    value: |
+      <p>An all-purpose shotgun.</p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

@@ -15,13 +15,20 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Activate as an action to impede signs of life such as heart rate and
-      breathing. To the casual observer, the user appears to be dead. -4 to all
-      Actions in this lethargic state. Can be disabled with an Action. User may
-      experience bluish or pale skin from multiple uses.</p><p><strong>DV17
-      Medical Tech</strong> or <strong>DV21 (Criminology, Deduction,
-      Perception)</strong> Check to discover user is not actually dead.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Activate as an action to impede signs of life such as heart rate and
+        breathing. To the casual observer, the user appears to be dead. -4 to all
+        Actions in this lethargic state. Can be disabled with an Action. User may
+        experience bluish or pale skin from multiple uses.
+      </p>
+      <p>
+        <strong>DV17 Medical Tech</strong> or
+        <strong>DV21 (Criminology, Deduction, Perception)</strong> Check to discover
+        user is not actually dead.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

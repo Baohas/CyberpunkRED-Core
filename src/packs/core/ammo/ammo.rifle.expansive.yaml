@@ -11,10 +11,14 @@ system:
     concealable: true
     isConcealed: false
   description:
-    value: >-
-      <p>If the victim rolls the Foreign object Critical Injury (see pg. 187),
-      they also roll for a second (different) Critical Injury. The second
-      Critical Injury does not deal bonus damage.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        If the victim rolls the Foreign object Critical Injury (see pg. 187), they
+        also roll for a second (different) Critical Injury. The second Critical Injury
+        does not deal bonus damage.
+      </p>
   favorite: false
   overrides:
     autofire:

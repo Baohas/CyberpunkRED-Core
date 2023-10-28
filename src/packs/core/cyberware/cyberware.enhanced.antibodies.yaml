@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Doubles natural healing while resting.</p>
+    value: |
+      <p>Doubles natural healing while resting.</p>
   dvTable: ""
   favorite: false
   fireModes:

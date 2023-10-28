@@ -12,7 +12,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Spray Deodorant. Desinfects and deodorize. One use per can.</p>
+    value: |
+      <p>Spray Deodorant. Desinfects and deodorize. One use per can.</p>
   equipped: owned
   favorite: false
   installedItems:

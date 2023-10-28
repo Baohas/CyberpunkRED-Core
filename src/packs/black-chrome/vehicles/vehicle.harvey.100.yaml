@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A classic Roadbike.</p>
+    value: |
+      <p>A classic Roadbike.</p>
   favorite: false
   installedItems:
     allowed: true

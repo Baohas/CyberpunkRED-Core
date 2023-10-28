@@ -12,9 +12,12 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Heaviest and most powerful armor in circulation. -4 to REF, DEX, and
-      MOVE.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Heaviest and most powerful armor in circulation. -4 to REF, DEX, and MOVE.
+      </p>
   equipped: owned
   favorite: false
   headLocation:

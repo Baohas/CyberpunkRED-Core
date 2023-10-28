@@ -14,7 +14,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Forces Netrunner to Jack Out unsafely.</p>
+    value: |
+      <p>Forces Netrunner to Jack Out unsafely.</p>
   favorite: false
   installLocation: mall
   interface: 0

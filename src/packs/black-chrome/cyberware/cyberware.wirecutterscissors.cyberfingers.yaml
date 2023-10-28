@@ -13,9 +13,13 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Cyberfinger pair that can serve as scissors or wirecutters. Can only be
-      installed on a modular finger cyberhand.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Cyberfinger pair that can serve as scissors or wirecutters. Can only be
+        installed on a modular finger cyberhand.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

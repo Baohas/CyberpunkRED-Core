@@ -12,7 +12,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Personal Drone. Flying camera that can be linked to an Agent.</p>
+    value: |
+      <p>Personal Drone. Flying camera that can be linked to an Agent.</p>
   equipped: owned
   favorite: false
   installedItems:

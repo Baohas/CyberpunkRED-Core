@@ -11,7 +11,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>A fast CHOOH<sup>2</sup>-powered speedboat.</p>
+    value: |
+      <p>A fast CHOOH<sup>2</sup>-powered speedboat.</p>
   favorite: false
   installedItems:
     allowed: true

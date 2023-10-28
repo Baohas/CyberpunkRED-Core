@@ -13,11 +13,14 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: >-
+    chat: ""
+    unidentified: ""
+    value: |
       <p>Generic Poor Quality Very Heavy Melee Weapon.</p>
-
-      <p>If you roll 1 on Attack (Crit Fail) the weapon fails in some way and
-      requires an action to be made usable again.</p>
+      <p>
+        If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires
+        an action to be made usable again.
+      </p>
   dvTable: ""
   equipped: owned
   favorite: false

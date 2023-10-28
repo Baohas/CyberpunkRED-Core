@@ -11,11 +11,16 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Exoskeleton.</p><ul><li>Requires 2 Interface Plugs</li><li>Increases
-      BODY to 12 while plugged in</li><li>Does not affect HP or
-      Deathsave</li><li>Ignores the normal movement penalty for climbing and
-      swimming</li></ul>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Exoskeleton.</p>
+      <ul>
+        <li>Requires 2 Interface Plugs</li>
+        <li>Increases BODY to 12 while plugged in</li>
+        <li>Does not affect HP or Deathsave</li>
+        <li>Ignores the normal movement penalty for climbing and swimming</li>
+      </ul>
   equipped: owned
   favorite: false
   installedItems:

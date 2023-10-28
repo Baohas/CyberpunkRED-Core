@@ -9,11 +9,15 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>If all you're doing is sliding through NET Architectures, you don't
-      need anything else.</p><p>9 slots to install either Programs or
-      Hardware.</p><p><em>No Attacker or Black ICE Program may be
-      installed.</em></p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        If all you're doing is sliding through NET Architectures, you don't need
+        anything else.
+      </p>
+      <p>9 slots to install either Programs or Hardware.</p>
+      <p><em>No Attacker or Black ICE Program may be installed.</em></p>
   equipped: owned
   favorite: false
   installLocation: mall

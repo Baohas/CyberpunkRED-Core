@@ -14,10 +14,14 @@ system:
   critFailEffect: jammed
   damage: "0"
   description:
-    value: >-
-      <p>An Exotic Very Heavy Pistol. Causes cyberware or electrical components
-      to be rendered inoperable for a minute unless the target passes a
-      <strong>DV15 Cybertech Check</strong>.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be
+        rendered inoperable for a minute unless the target passes a
+        <strong>DV15 Cybertech Check</strong>.
+      </p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

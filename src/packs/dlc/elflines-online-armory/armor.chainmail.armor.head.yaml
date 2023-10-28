@@ -12,9 +12,13 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Armor made up of innumerable metal rings for your head. -2 to REF, DEX,
-      and MOVE.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Armor made up of innumerable metal rings for your head. -2 to REF, DEX, and
+        MOVE.
+      </p>
   equipped: owned
   favorite: false
   headLocation:

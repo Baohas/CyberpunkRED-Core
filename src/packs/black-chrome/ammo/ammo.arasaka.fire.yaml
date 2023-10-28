@@ -13,9 +13,11 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: >-
-      <p>Coating for Arasaka Weeping Reaver Katana only. Ignites target.
-      Multiple effects do not stack.</p>
+    value: |
+      <p>
+        Coating for Arasaka Weeping Reaver Katana only. Ignites target. Multiple
+        effects do not stack.
+      </p>
   favorite: false
   overrides:
     autofire:

@@ -14,9 +14,13 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>A sport rifle, for fun, not people. Can only load Small Game Ammunition
-      and is incapable of Autofire and Suppressive Fire.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A sport rifle, for fun, not people. Can only load Small Game Ammunition and is
+        incapable of Autofire and Suppressive Fire.
+      </p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

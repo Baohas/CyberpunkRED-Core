@@ -12,7 +12,10 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: <p>Light version of an Armorjack for your head. No armor penalty.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Light version of an Armorjack for your head. No armor penalty.</p>
   equipped: owned
   favorite: false
   headLocation:

@@ -13,7 +13,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Active Airborne Defense Drone.</p>
+    value: |
+      <p>Active Airborne Defense Drone.</p>
   equipped: owned
   favorite: false
   installedItems:

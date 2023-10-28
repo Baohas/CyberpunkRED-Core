@@ -13,7 +13,10 @@ system:
   critFailEffect: jammed
   damage: 1d6
   description:
-    value: <p>Throwing hands, does ignore half armor.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>Throwing hands, does ignore half armor.</p>
   dvTable: ""
   equipped: owned
   favorite: false

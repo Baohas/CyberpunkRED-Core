@@ -14,9 +14,13 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Internal compartment with a high-powered heating element, ideal for
-      warming up pre-packaged meals.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Internal compartment with a high-powered heating element, ideal for warming up
+        pre-packaged meals.
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -11,11 +11,15 @@ system:
     concealable: true
     isConcealed: false
   description:
-    value: >-
-      <p>Deals no damage. If meat target hit <strong>DV13 Resist
-      Torture/Drugs</strong>. On fail falls Prone (see pg. 169) and unconscious
-      for 1 minute. Can be woken by damage or another person using an action to
-      touch/shake them.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Deals no damage. If meat target hit
+        <strong>DV13 Resist Torture/Drugs</strong>. On fail falls Prone (see pg. 169)
+        and unconscious for 1 minute. Can be woken by damage or another person using
+        an action to touch/shake them.
+      </p>
   favorite: false
   overrides:
     autofire:

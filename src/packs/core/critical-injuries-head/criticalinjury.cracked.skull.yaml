@@ -7,9 +7,13 @@ name: Cracked Skull
 system:
   deathSaveIncrease: true
   description:
-    value: >-
-      <p>Triples damage to HP on aimed headshots (rather than the normal double
-      damage).</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Triples damage to HP on aimed headshots (rather than the normal double
+        damage).
+      </p>
   favorite: false
   location: head
   quickFix:

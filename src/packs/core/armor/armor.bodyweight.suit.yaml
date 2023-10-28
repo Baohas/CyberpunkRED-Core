@@ -12,11 +12,14 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Netrunner armored skinsuit. Can store Cyberdeck and support Interface
-      Plugs. Can't be bought in two pieces. Always worn on both Head and Body
-      Location. Adds one Hardware only Option Slot to connected Cyberdeck. No
-      armor penalty.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        Netrunner armored skinsuit. Can store Cyberdeck and support Interface Plugs.
+        Can't be bought in two pieces. Always worn on both Head and Body Location.
+        Adds one Hardware only Option Slot to connected Cyberdeck. No armor penalty.
+      </p>
   equipped: owned
   favorite: false
   headLocation:

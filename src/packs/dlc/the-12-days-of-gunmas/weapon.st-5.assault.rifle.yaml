@@ -14,10 +14,14 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>A - relatively - reliable gun. If you roll 1 on Attack (Crit fail) you
-      must then toss a coin; if you win the gun fires as normal, while if you
-      lose the gun jams and requires using an action to clear.</p>
+    chat: ""
+    unidentified: ""
+    value: |
+      <p>
+        A - relatively - reliable gun. If you roll 1 on Attack (Crit fail) you must
+        then toss a coin; if you win the gun fires as normal, while if you lose the
+        gun jams and requires using an action to clear.
+      </p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

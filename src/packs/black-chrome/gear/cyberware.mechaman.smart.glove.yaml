@@ -16,13 +16,16 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: >-
-      <p>A biking glove that comes with a subdermal grip pre-installed* which
-      requires a neural link to use. Has 1 additional cyberarm option slot. Any
-      options stored in the Cyberhand or meat hand are inaccessible while the
-      Smart Glove is being worn.<br><em>*Subdermal Grip must be added and
-      installed manually after acquiring the glove, this effectively consumes
-      one of the option slots.</em></p>
+    value: |
+      <p>
+        A biking glove that comes with a subdermal grip pre-installed* which requires
+        a neural link to use. Has 1 additional cyberarm option slot. Any options
+        stored in the Cyberhand or meat hand are inaccessible while the Smart Glove is
+        being worn.<br /><em
+          >*Subdermal Grip must be added and installed manually after acquiring the
+          glove, this effectively consumes one of the option slots.</em
+        >
+      </p>
   dvTable: ""
   favorite: false
   fireModes:

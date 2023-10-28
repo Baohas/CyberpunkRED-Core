@@ -15,7 +15,8 @@ system:
   description:
     chat: ""
     unidentified: ""
-    value: <p>Implanted Very Heavy Melee Weapon.</p>
+    value: |
+      <p>Implanted Very Heavy Melee Weapon.</p>
   dvTable: ""
   favorite: false
   fireModes:
