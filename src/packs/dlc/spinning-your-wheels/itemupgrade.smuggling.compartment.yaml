@@ -12,11 +12,12 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: |-
-      <p>Adds a small hidden storage space in the frame.</p>
-      <p>1 inch x 6 inches (2.54cm x 15.24cm)</p>
-      <p>DV17 Conceal/Reveal Object check to discover.</p>
-      <p>Can't install this Upgrade with Folding Frame.</p>
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Adds a small hidden storage space in the frame.</p><p>1 inch x 6 inches
+      (2.54cm x 15.24cm)</p><p><strong>DV17 Conceal/Reveal Object</strong> check
+      to discover.</p><p>Can't install this Upgrade with Folding Frame.</p>
   dvTable: ""
   favorite: false
   fireModes:

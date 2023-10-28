@@ -14,10 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Bicycle Armored with 7 PS.</p>
-
-      <p>Bike first requires the Reinforced Frame upgrade to install this
-      upgrade.</p>
+      <p>Bicycle Armored with 7 SP.</p><p>Bike first requires the Reinforced
+      Frame upgrade to install this upgrade.</p>
   dvTable: ""
   favorite: false
   fireModes:
@@ -52,7 +50,7 @@ system:
       value: null
     sdp:
       type: modifier
-      value: 7
+      value: 0
     seats:
       type: modifier
       value: null

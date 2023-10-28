@@ -12,9 +12,12 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    value: |-
-      <p>Enclosure glass gains 7 HP.</p>
-      <p>Bike first requires the Enclosure upgrade to install this upgrade.</p>
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Enclosure glass is now considered thin cover with 7 HP. Refer to the
+      cover rules in CP:R, pg. 182.</p><p>Bike first requires the Enclosure
+      upgrade to install this upgrade.</p>
   dvTable: ""
   favorite: false
   fireModes:
@@ -49,7 +52,7 @@ system:
       value: null
     sdp:
       type: modifier
-      value: 7
+      value: 0
     seats:
       type: modifier
       value: null

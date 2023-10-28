@@ -52,7 +52,7 @@ system:
       value: null
     sdp:
       type: modifier
-      value: null
+      value: 5
     seats:
       type: modifier
       value: null

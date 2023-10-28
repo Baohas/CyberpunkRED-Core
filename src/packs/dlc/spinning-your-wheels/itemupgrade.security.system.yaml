@@ -14,10 +14,9 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Linked with your Agent to electrify your bike. A thief must resist DV13
-      Resist Torture/Drugs or unhand the bike.</p>
-
-      <p>Bike is registered with a Nano-VIN.</p>
+      <p>Linked with your Agent to electrify your bike. A thief must resist
+      <strong>DV13 Resist Torture/Drugs</strong> or unhand the bike.</p><p>Bike
+      is registered with a Nano-VIN.</p>
   dvTable: ""
   favorite: false
   fireModes:
