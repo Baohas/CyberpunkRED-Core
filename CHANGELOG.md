@@ -13,7 +13,7 @@
   - Skills (Play Instrument)
 - Add a check to characters to see if they are considered "Hardened"
   - Based on the rules in Danger Gal Dossier pg. 150
-  - Displays an overlay Icon on the Character Sheet Image which will list the reasons a character is considered hardened when hovered
+  - Displays an overlay Icon on the Character Sheet Image which lists the reasons a character is considered hardened when hovered
   - Programmatically available under the `system.derivedStats.isHardened` datapoint
 
 ### Changes
@@ -33,16 +33,10 @@
 
 ### Bug Fixes
 
-- #737 - change equip behavior to untrack armor type, similar to fix for issue 917.
-- Fix Effect `name` lookup using old `label` lookup in Effect hbs
-- #793 - added tooltips for each stat and skill
-- #917 - fix armor remaining tracked after delete and updated 'resync' star to be 'track/untrack' now for armor, removing the appropriate bar. User will still need to adjust resource bar tracker if armor type is no longer desired to be tracked.
-- #923 - rebuilt faulty DV rolltables to fix missing distances and inaccurate distances for different weapon types.
-- #925 - scrollbar re-added for main windows
-- #926, 927 - change descriptions for bows/crossbows to be more clear on rules and cleaned up structure
-- #949 - Fix width adjustment for Black Ice Class selection box
-- #956 - Fixed players being unable to access critical injury card for GM-owned characters by showing compendium item instead
-- #960 - Fix font weight issue with containers title
+- #933 - Fix multiple compendium errors/missing values, thanks @Alexander Fokin
+- #950 - Bolded DV checks in various items of the compendia
+- #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
+- Added several small updates to descriptions to understand various items better
 
 ## Version 0.88.2
 
