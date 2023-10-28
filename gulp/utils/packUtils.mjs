@@ -6,6 +6,7 @@ import path from "path";
 import sanitize from "sanitize-filename";
 import YAML from "js-yaml";
 import { ClassicLevel } from "classic-level";
+import prettier from "prettier";
 
 import { SRC_DIR, SYSTEM_FILE, SYSTEM_VERSION, TRACE } from "../config.mjs";
 
@@ -656,9 +657,10 @@ export default class PackUtils {
         if (data.name) data.name = this.cleanString(data.name);
         if (data.label) data.label = this.cleanString(data.label);
         if (data.system?.description?.value) {
-          data.system.description.value = this.cleanString(
-            data.system.description.value
-          );
+          const cleanDesc = this.cleanString(data.system.description.value);
+          data.system.description.value = prettier.format(cleanDesc, {
+            parser: "html",
+          });
         }
 
         // Ensure values are ints
