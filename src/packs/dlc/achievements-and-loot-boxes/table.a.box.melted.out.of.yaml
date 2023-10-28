@@ -1,10 +1,8 @@
 _id: bOtq937SNIahmbeK
 _key: "!tables!bOtq937SNIahmbeK"
 description: >-
-  Source: Achievements and Loot Boxes pg.6
-
-  All weapons come fully loaded with a compatible ammo type of the GM's
-  choosing.
+  <p>Source: Achievements and Loot Boxes pg.6 All weapons come fully loaded with
+  a compatible ammo type of the GM's choosing.</p>
 displayRoll: true
 formula: 1d6
 img: icons/containers/boxes/crate-wooden-grey.webp
