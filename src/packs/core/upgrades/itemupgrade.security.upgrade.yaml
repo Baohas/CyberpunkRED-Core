@@ -16,11 +16,9 @@ system:
       <p>Can be applied to all vehicles. Adds DNA Locks to the vehicle requring
       the correct biometrics or a DV 17 Electronics/Security Tech check to
       unlock. Failure to unlock the vehicle takes damage as if hit with a Stun
-      Baton.</p>
-
-      <p>In addition, while remaining still the vehicle is cloaked and requires
-      a DV17 Perception check to spot. The vehicle must remain stationary for a
-      minute before this activates.</p>
+      Baton.</p><p>In addition, while remaining still the vehicle is cloaked and
+      requires a <strong>DV17 Perception</strong> check to spot. The vehicle
+      must remain stationary for a minute before this activates.</p>
   dvTable: ""
   favorite: false
   fireModes:

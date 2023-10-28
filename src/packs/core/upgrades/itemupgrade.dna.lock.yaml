@@ -13,8 +13,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Uses biometrics to lock the cyberdeck. Requires DV17
-      Electronics/Security Tech Check to crack.&nbsp;</p>
+      <p>Uses biometrics to lock the cyberdeck. Requires <strong>DV17
+      Electronics/Security Tech</strong> Check to crack.</p>
   dvTable: ""
   favorite: false
   fireModes:

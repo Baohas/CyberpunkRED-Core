@@ -15,9 +15,9 @@ system:
     value: >-
       <p>Can be applied to all vehicles. Adds two <strong>Hidden
       Holsters</strong> to the vehicle, and a large hidden compartment for
-      smuggling purposes. These can be discovered with a DV17 Conceal/Reveal
-      Object check.&nbsp;<br><br>Can be taken multiple times with the exception
-      of Bikes, Jetskis and Gyrocopters.</p>
+      smuggling purposes. These can be discovered with a <strong>DV17
+      Conceal/Reveal Object</strong> check.</p><p>Can be taken multiple times
+      with the exception of Bikes, Jetskis and Gyrocopters.</p>
   dvTable: ""
   favorite: false
   fireModes:
