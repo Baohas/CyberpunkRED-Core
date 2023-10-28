@@ -26,12 +26,12 @@
       "name": "Heavy Armorjack (Head)",
       "description": "<p>Heavier version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>"
     },
-    "Kevlar (Body)": {
-      "name": "Kevlar (Body)",
+    "Kevlar® (Body)": {
+      "name": "Kevlar® (Body)",
       "description": "<p>Standard Kevlar clothing. No armor penalty.</p>"
     },
-    "Kevlar (Head)": {
-      "name": "Kevlar (Head)",
+    "Kevlar® (Head)": {
+      "name": "Kevlar® (Head)",
       "description": "<p>Standard Kevlar for your head. No armor penalty.</p>"
     },
     "Leathers (Body)": {
@@ -58,12 +58,12 @@
       "name": "Medium Armorjack (Head)",
       "description": "<p>Medium version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>"
     },
-    "Metalgear (Body)": {
-      "name": "Metalgear (Body)",
+    "Metalgear® (Body)": {
+      "name": "Metalgear® (Body)",
       "description": "<p>Heaviest and most powerful armor in circulation. -4 to REF, DEX, and MOVE.</p>"
     },
-    "Metalgear (Head)": {
-      "name": "Metalgear (Head)",
+    "Metalgear® (Head)": {
+      "name": "Metalgear® (Head)",
       "description": "<p>Heaviest and most powerful armor in circulation. Protects your head -4 to REF, DEX, and MOVE.</p>"
     },
     "Skin Weave": {
