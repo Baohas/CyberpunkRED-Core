@@ -24,7 +24,7 @@
     },
     "DeathTrance": {
       "name": "DeathTrance",
-      "description": "<p>Activate as an action to impede signs of life such as heart rate and breathing. To the casual observer, the user appears to be dead. -4 to all Actions in this lethargic state. Can be disabled with an Action. User may experience bluish or pale skin from multiple uses.</p>\n<p>DV17 Medical Tech or DV21 (Criminology, Deduction, Perception) Check to discover user is not actually dead.</p>"
+      "description": "<p>Activate as an action to impede signs of life such as heart rate and breathing. To the casual observer, the user appears to be dead. -4 to all Actions in this lethargic state. Can be disabled with an Action. User may experience bluish or pale skin from multiple uses.</p><p><strong>DV17 Medical Tech</strong> or <strong>DV21 (Criminology, Deduction, Perception)</strong> Check to discover user is not actually dead.</p>"
     },
     "FleshWeave": {
       "name": "FleshWeave",
@@ -32,15 +32,15 @@
     },
     "Gang Jazzler": {
       "name": "Gang Jazzler",
-      "description": "<p>Use a Choke Action to stab a grappled target with a popout electrified needle. The target takes no damage but must make a DV13 Resist Torture/Drugs Check. On failed check, target falls Unconscious for 1 minute.</p>\n<p>Powered by a rechargeable battery pack (50eb). Battery pack must be recharged for 1 hour after each use. No check is necessary to conceal Gang Jazzler and battery pack. Can be installed in meat arm if it&rsquo;s the only piece of cyberware in that arm.</p>"
+      "description": "<p>Use a Choke Action to stab a grappled target with a popout electrified needle. The target takes no damage but must make a <strong>DV13 Resist Torture/Drugs</strong> Check. On failed check, target falls Unconscious for 1 minute.</p><p>Powered by a rechargeable battery pack (50eb). Battery pack must be recharged for 1 hour after each use. No check is necessary to conceal Gang Jazzler and battery pack. Can be installed in meat arm if it's the only piece of cyberware in that arm.</p>"
     },
     "MicroWaldo": {
       "name": "MicroWaldo",
-      "description": "<p>A wrist-mounted collection of instruments and probes to facilitate surgery.<br>+1 to Medtech Surgery Checks.&nbsp;</p>\n<p>Takes up 1 Cyberarm Option slot and 1 Neural Link Option slot.</p>"
+      "description": "<p>A wrist-mounted collection of instruments and probes to facilitate surgery.<br>+1 to Medtech Surgery Checks.</p>\n<p>Takes up 1 Cyberarm Option slot and 1 Neural Link Option slot.</p>"
     },
     "MonoVision": {
       "name": "MonoVision",
-      "description": "<p dir=\"ltr\">Single-optic Cybereye visor that takes the place of two meat eyes. Too large for a MultiOptic Mount.&nbsp;</p>\n<p dir=\"ltr\">Cybereye Options are always &ldquo;paired&rdquo; even if there is only one of each type. Penalties from Lost Eye Critical Injury are doubled if the target solely relies on the Monovision for sight.</p>\n<p>Borgware.</p>"
+      "description": "<p>Single-optic Cybereye visor that takes the place of two meat eyes. Too large for a MultiOptic Mount.</p>\n<p>Cybereye Options are always &ldquo;paired&rdquo; even if there is only one of each type. Penalties from Lost Eye Critical Injury are doubled if the target solely relies on the Monovision for sight.</p>\n<p>Borgware.</p>"
     },
     "OptiShield": {
       "name": "OptiShield",
@@ -56,7 +56,7 @@
     },
     "Watch-Man": {
       "name": "Watch-Man",
-      "description": "<p dir=\"ltr\">Internal Agent with retractable screen on the user&rsquo;s forearm. Requires a Cyberarm.</p>"
+      "description": "<p>Internal Agent with retractable screen on the user&rsquo;s forearm. Requires a Cyberarm.</p>"
     }
   }
 }

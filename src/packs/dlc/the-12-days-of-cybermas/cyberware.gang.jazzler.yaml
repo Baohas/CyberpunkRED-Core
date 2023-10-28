@@ -16,14 +16,12 @@ system:
   description:
     value: >-
       <p>Use a Choke Action to stab a grappled target with a popout electrified
-      needle. The target takes no damage but must make a DV13 Resist
-      Torture/Drugs Check. On failed check, target falls Unconscious for 1
-      minute.</p>
-
-      <p>Powered by a rechargeable battery pack (50eb). Battery pack must be
-      recharged for 1 hour after each use. No check is necessary to conceal Gang
-      Jazzler and battery pack. Can be installed in meat arm if it&rsquo;s the
-      only piece of cyberware in that arm.</p>
+      needle. The target takes no damage but must make a <strong>DV13 Resist
+      Torture/Drugs</strong> Check. On failed check, target falls Unconscious
+      for 1 minute.</p><p>Powered by a rechargeable battery pack (50eb). Battery
+      pack must be recharged for 1 hour after each use. No check is necessary to
+      conceal Gang Jazzler and battery pack. Can be installed in meat arm if
+      it's the only piece of cyberware in that arm.</p>
   dvTable: ""
   favorite: false
   fireModes:
