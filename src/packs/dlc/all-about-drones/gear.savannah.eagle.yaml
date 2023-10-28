@@ -11,9 +11,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>Active Airborne Defense Drone.</p>
-      <p>Refer to the fuill description on page 60 of Interface Red vol. 1.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Active Airborne Defense Drone.</p>
   equipped: owned
   favorite: false
   installedItems:

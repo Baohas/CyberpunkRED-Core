@@ -10,9 +10,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>Quadraped construction drone.</p>
-      <p>Refer to the full description on page 59 of Interface Red vol. 1.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Quadruped construction drone.</p>
   equipped: owned
   favorite: false
   installedItems:

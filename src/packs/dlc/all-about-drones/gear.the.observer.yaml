@@ -10,9 +10,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>Personal Drone. Flying camera that can be linked to an Agent.</p>
-      <p>Refer to the full description on page 62 of Interface Red vol. 1.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Personal Drone. Flying camera that can be linked to an Agent.</p>
   equipped: owned
   favorite: false
   installedItems:
