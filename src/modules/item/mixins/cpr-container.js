@@ -440,7 +440,7 @@ const Container = function Container() {
     // If this item is imported, the information for installed items
     // is embedded in its flags.
     if (imported) {
-      for (const itemData of this.flags.installedObjectList) {
+      for (const itemData of this.flags.cprInstallTree) {
         // Add the item data to the list.
         creationList.push(itemData);
       }
@@ -470,8 +470,8 @@ const Container = function Container() {
 
     // Remove the import flags.
     const { flags } = this;
-    if (this.flags.installedObjectList) {
-      flags["-=installedObjectList"] = null;
+    if (this.flags.cprInstallTree) {
+      flags["-=cprInstallTree"] = null;
     }
     // Update the parent item.
     return actor.updateEmbeddedDocuments("Item", [
@@ -491,7 +491,7 @@ const Container = function Container() {
     LOGGER.trace("importInstalledToWorld | CPRItem | called.");
     const newInstalledList = [];
     const { flags } = this;
-    for (const itemData of this.flags.installedObjectList) {
+    for (const itemData of this.flags.cprInstallTree) {
       // Every sublevel of installed item will have its own folder,
       // Pointing to what is installed in.
       const parentFolder = this.folder;
@@ -512,13 +512,13 @@ const Container = function Container() {
       // eslint-disable-next-line no-await-in-loop
       const newItem = await Item.create(itemData);
       newInstalledList.push(newItem.id);
-      if (recursive && newItem.flags.installedObjectList) {
+      if (recursive && newItem.flags.cprInstallTree) {
         newItem.importInstalledToWorld(recursive);
       }
     }
     // Update the item with installed list that contains the newly created items' ids.
     // And remove the now unnecessary import flag.
-    flags["-=installedObjectList"] = null;
+    flags["-=cprInstallTree"] = null;
     return this.update({
       flags,
       "system.installedItems.list": newInstalledList,
@@ -557,7 +557,7 @@ const Container = function Container() {
 
   /**
    * Convert the tree of installed items into a recursive list of installed object data.
-   * Return this list as a field in the calling item's flags (`flags.installedObjectList`).
+   * Return this list as a field in the calling item's flags (`flags.cprInstallTree`).
    *
    * This is called when dragging items between sheets, and when exporting items.
    * Installed item data is then built from these objects.
@@ -582,7 +582,7 @@ const Container = function Container() {
       const installedItems = parentItem.getInstalledItems();
 
       // Convert all of the parent item's installed list to objects.
-      const installedObjectList = parentItem.convertInstalledIdsToObjects(
+      const cprInstallTree = parentItem.convertInstalledIdsToObjects(
         parentItem.actor
       );
       // For each child item installed in the parent item...
@@ -593,17 +593,17 @@ const Container = function Container() {
           childItem.system.hasInstalled
         ) {
           // ...find the corresponding child object...
-          const childObject = installedObjectList.find(
+          const childObject = cprInstallTree.find(
             (o) => o._id === childItem._id
           );
           // ...and set its flags equal to the function, called recursively.
           // This will set the flags with installed object data for each installed item,
           // no matter the depth.
-          childObject.flags.installedObjectList = nestItemObjects(childItem);
+          childObject.flags.cprInstallTree = nestItemObjects(childItem);
         }
       }
       // Return the nested object list.
-      return installedObjectList;
+      return cprInstallTree;
     }
 
     // Call the recusive function on the top-level item (`this`).

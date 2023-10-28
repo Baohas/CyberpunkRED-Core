@@ -149,8 +149,8 @@ const itemHooks = () => {
 
     // If the item is being created on an actor and is a container...
     if (doc.parent && containerTypes.includes(doc.type)) {
-      if (doc.flags.installedObjectList) {
-        // if doc.flags.installedObjectList exists, this is being added to the actor from a compendium.
+      if (doc.flags.cprInstallTree) {
+        // if doc.flags.cprInstallTree exists, this is being added to the actor from a compendium.
         // Create installed items on the actor and update the original
         // item's `system.installedItems.list` to point to them.
         const imported = true;
@@ -165,7 +165,7 @@ const itemHooks = () => {
 
     // If this item is being imported into the world,
     // and it has embedded installed item data in its flags.
-    if (!doc.parent && doc.flags.installedObjectList) {
+    if (!doc.parent && doc.flags.cprInstallTree) {
       // If it doesnt have a folder, create one so that
       // the item and its installed items are organized.
       if (!doc.folder) {

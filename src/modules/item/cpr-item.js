@@ -186,13 +186,13 @@ export default class CPRItem extends Item {
     }
 
     // Get the data for all installed objects.
-    const installedObjectList = this.createInstalledObjectData();
+    const cprInstallTree = this.createInstalledObjectData();
 
     // Set the installed object data as a flag.
-    // Note, if you ever change the name of `installedObjectList` to something else,
+    // Note, if you ever change the name of `cprInstallTree` to something else,
     // you would have to change it in `createInstalledObjectData()` too.
     const { flags } = this;
-    flags.installedObjectList = installedObjectList;
+    flags.cprInstallTree = cprInstallTree;
     data.flags = flags;
 
     // Update the item data with the new flags.
@@ -221,13 +221,13 @@ export default class CPRItem extends Item {
     }
 
     // Get the data for all installed objects.
-    const installedObjectList = item.createInstalledObjectData();
+    const cprInstallTree = item.createInstalledObjectData();
 
     // Set the installed object data as a flag.
-    // Note, if you ever change the name of `installedObjectList` to something else,
+    // Note, if you ever change the name of `cprInstallTree` to something else,
     // you would have to change it in `createInstalledObjectData()` too.
     const flags = duplicate(item.flags);
-    flags.installedObjectList = installedObjectList;
+    flags.cprInstallTree = cprInstallTree;
 
     // Update the item with the new flags.
     await item.update({ flags });
@@ -249,7 +249,7 @@ export default class CPRItem extends Item {
     // Import the item so that we can then manipulate it.
     const item = await super.importFromJSON(json);
     // Only manipulate the imported item if it contains installed item data.
-    if (item.flags.installedObjectList) {
+    if (item.flags.cprInstallTree) {
       // If the newly created item contains installed item data,
       // import the item into a folder (if it doesn't already live in one).
       // That way, that the newly created installed items are organized.
@@ -264,7 +264,7 @@ export default class CPRItem extends Item {
         });
       }
       // Recursively create installed items from the item data embedded in
-      // `item.flags.installedObjectList`
+      // `item.flags.cprInstallTree`
       return item.importInstalledToWorld();
     }
 
