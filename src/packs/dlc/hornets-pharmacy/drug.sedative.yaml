@@ -12,14 +12,12 @@ system:
   consumed: None
   description:
     value: >-
-      <p>MedTech pharmaceutical.</p>
-
-      <p>Applies the Unconscious condition for 4 hours on a willing target. +2
-      bonus to MechTech Surgery checks on targets dosed with Sedative.</p>
-
-      <p>Unwilling target must make a DV15 Resist Torture/Drugs check. On failed
-      check, target is unconscious for 1 minute or 20 rounds in combat. Target
-      wakes upon taking damage. Others can use an Action to awaken target.</p>
+      <p>MedTech pharmaceutical.</p><p>Applies the Unconscious condition for 4
+      hours on a willing target. +2 bonus to MechTech Surgery checks on targets
+      dosed with Sedative.</p><p>Unwilling target must make a <strong>DV15
+      Resist Torture/Drugs</strong> check. On failed check, target is
+      unconscious for 1 minute or 20 rounds in combat. Target wakes upon taking
+      damage. Others can use an Action to awaken target.</p>
   equipped: owned
   favorite: false
   price:

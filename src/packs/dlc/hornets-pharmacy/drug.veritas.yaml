@@ -13,11 +13,8 @@ system:
   consumed: Veritas Primary
   description:
     value: >-
-      <p>Dose lasts 10 minutes.</p>
-
-      <p>MedTech pharmaceutical.</p>
-
-      <p>Target must make a DV17 Resist Torture/Drugs check. On failed check,
+      <p>Dose lasts 10 minutes.</p><p>MedTech pharmaceutical.</p><p>Target must
+      make a <strong>DV17 Resist Torture/Drugs</strong> check. On failed check,
       target suffers -5 to Acting, Concentration, Conversation, Deduction, Human
       Perception, and Persuasion Checks</p>
   equipped: owned

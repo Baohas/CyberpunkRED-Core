@@ -1,10 +1,10 @@
-_id: eBjRKSVNnIpbuFK5
-_key: "!items.effects!lzmfwfxPjDjYE1nM.eBjRKSVNnIpbuFK5"
+_id: 6eJSLpqij03VxIFa
+_key: "!items.effects!ka6ccQeTt7ud3pFi.6eJSLpqij03VxIFa"
 changes:
-  - key: bonuses.deathSavePenalty
+  - key: bonuses.speed
     mode: 2
-    priority: null
-    value: "1"
+    value: "-2"
+description: ""
 disabled: true
 duration:
   combat: null
@@ -18,12 +18,13 @@ flags:
   cyberpunk-red-core:
     changes:
       cats:
-        "0": combat
+        "0": netrun
       situational:
         "0":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/status/beserker_addiction.svg
-name: Beserker Addicted
+icon: systems/cyberpunk-red-core/icons/compendium/status/sixgun_addiction.svg
+name: Sixgun Addiction
+statuses: []
 tint: null
 transfer: true

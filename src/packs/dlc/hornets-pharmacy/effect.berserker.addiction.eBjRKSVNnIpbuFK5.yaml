@@ -1,10 +1,11 @@
-_id: 2UFkxrs6fI3cmpNz
-_key: "!items.effects!8nOTvNR4qZP54nKy.2UFkxrs6fI3cmpNz"
+_id: eBjRKSVNnIpbuFK5
+_key: "!items.effects!lzmfwfxPjDjYE1nM.eBjRKSVNnIpbuFK5"
 changes:
-  - key: bonuses.initiative
+  - key: bonuses.deathSavePenalty
     mode: 2
     priority: null
-    value: "5"
+    value: "1"
+description: ""
 disabled: true
 duration:
   combat: null
@@ -23,7 +24,8 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/status/timewarp_addiction.svg
-name: Timewarp Addicted Primary
+icon: systems/cyberpunk-red-core/icons/compendium/status/beserker_addiction.svg
+name: Berserker Addiction
+statuses: []
 tint: null
 transfer: true

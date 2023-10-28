@@ -6,7 +6,7 @@ name: Bodyweight AutoInjector
 system:
   ammoVariety: []
   attackmod: 0
-  brand: ""
+  brand: Bodyweight
   concealable:
     concealable: false
     isConcealed: false

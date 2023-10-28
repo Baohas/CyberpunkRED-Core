@@ -1,10 +1,10 @@
-_id: 6eJSLpqij03VxIFa
-_key: "!items.effects!ka6ccQeTt7ud3pFi.6eJSLpqij03VxIFa"
+_id: vehnLbHCsPpLEcaK
+_key: "!items.effects!8nOTvNR4qZP54nKy.vehnLbHCsPpLEcaK"
 changes:
-  - key: bonuses.speed
+  - key: bonuses.initiative
     mode: 2
-    priority: null
     value: "-2"
+description: ""
 disabled: true
 duration:
   combat: null
@@ -18,12 +18,13 @@ flags:
   cyberpunk-red-core:
     changes:
       cats:
-        "0": netrun
+        "0": combat
       situational:
         "0":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/status/sixgun_addiction.svg
-name: Sixgun Addicted
+icon: systems/cyberpunk-red-core/icons/compendium/status/timewarp_addiction.svg
+name: Timewarp Addiction
+statuses: []
 tint: null
 transfer: true
