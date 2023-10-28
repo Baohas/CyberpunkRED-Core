@@ -14,9 +14,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Lets you conceal up to four pieces of chipware, no Check required. Full
-      rules can be found in Micro Chrome on Page 1.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Lets you conceal up to four pieces of chipware, no Check required.</p>
   dvTable: ""
   favorite: false
   fireModes:
