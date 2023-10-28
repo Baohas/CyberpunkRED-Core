@@ -16,7 +16,7 @@ system:
   description:
     value: >-
       <p>One Handed Exotic Medium Melee Weapon. Battery powered EMP effect which
-      can deactivate cyberware, full details can be found on page 96.</p>
+      can deactivate cyberware.</p>
   dvTable: ""
   equipped: owned
   favorite: false

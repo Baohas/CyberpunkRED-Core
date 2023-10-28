@@ -6,7 +6,7 @@ name: White Hornet Tanto
 system:
   ammoVariety: []
   attackmod: 0
-  brand: Centurion Essentials
+  brand: Centurian Essentials
   concealable:
     concealable: true
     isConcealed: false
@@ -14,8 +14,8 @@ system:
   damage: 2d6
   description:
     value: >-
-      <p>One Handed Exotic Medium Melee Weapon. Can render target unconscious
-      rather than dead, with full rules found on page 93.</p>
+      <p>One Handed Exotic Medium Melee Weapon.</p><p>Can render target
+      unconscious rather than dead.</p>
   dvTable: ""
   equipped: owned
   favorite: false

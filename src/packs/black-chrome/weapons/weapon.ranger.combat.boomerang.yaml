@@ -16,10 +16,7 @@ system:
   description:
     value: >-
       <p>Acts like a one Handed Exotic Heavy Melee, though halves SP despite
-      being thrown.</p>
-
-      <p>Contains a built in guidance system, details of which can be found on
-      page 100.</p>
+      being thrown.</p><p>Contains a built in guidance system.</p>
   dvTable: DV Thrown Weapon
   equipped: owned
   favorite: false

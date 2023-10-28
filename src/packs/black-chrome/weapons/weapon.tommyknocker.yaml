@@ -7,7 +7,7 @@ system:
   ammoVariety:
     - vHeavyPistol
   attackmod: 0
-  brand: Centurion Essentials
+  brand: Centurian Essentials
   concealable:
     concealable: false
     isConcealed: false
@@ -17,8 +17,7 @@ system:
     value: >-
       <p>The Tommyknocker is a combo Exotic Very Heavy Pistol and Poor Quality
       Shotgun. Requires BODY 10 or to be held in two hands when firing,
-      otherwise the user drops the weapon to the ground. Full rules can be found
-      in Black Chrome on Page 123.</p>
+      otherwise the user drops the weapon to the ground.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

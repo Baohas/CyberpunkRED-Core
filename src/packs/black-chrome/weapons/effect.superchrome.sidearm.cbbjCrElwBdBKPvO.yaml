@@ -1,10 +1,11 @@
-_id: toZ7L2JATaPu0yPl
-_key: "!items.effects!3WelrloimwsNI29P.toZ7L2JATaPu0yPl"
+_id: cbbjCrElwBdBKPvO
+_key: "!items.effects!kQ8ZI0Fv1wDnZ5Ru.cbbjCrElwBdBKPvO"
 changes:
   - key: bonuses.wardrobeAndStyle
     mode: 2
     priority: null
     value: "2"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -23,7 +24,8 @@ flags:
         "0":
           isSituational: true
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
-name: Superchrome® Glam Rifle
+icon: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
+name: Superchrome® Sidearm
+statuses: []
 tint: null
 transfer: true

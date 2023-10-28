@@ -13,9 +13,9 @@ system:
   critFailEffect: jammed
   damage: 6d6
   description:
-    value: >-
-      <p>Explosive look-alike of an electrical plug adapter. Full rules can be
-      found on page 89.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Explosive look-alike of an electrical plug adapter.</p>
   dvTable: ""
   equipped: owned
   favorite: false

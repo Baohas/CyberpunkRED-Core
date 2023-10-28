@@ -16,8 +16,7 @@ system:
   description:
     value: >-
       <p>The Federated Arms Pepper Shaker is an Exotic SMG incapable of single
-      shot or aimed shots. Autofire only use 6 bullets for this weapon. Full
-      rules can be found in Black Chrome on Page 105.</p>
+      shot or aimed shots. Autofire only use 6 bullets for this weapon.</p>
   dvTable: DV SMG (Autofire)
   equipped: owned
   favorite: false

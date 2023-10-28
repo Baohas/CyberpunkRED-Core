@@ -16,8 +16,8 @@ system:
   description:
     value: >-
       <p>The Sternmeyer M-04 Variable Assault is a Poor Quality Exotic Assault
-      Rifle with a custom Grenade Launcher underbarrel. Full rules can be found
-      in Black Chrome on Page 119.</p>
+      Rifle with a custom Grenade Launcher underbarrel*.</p><p><em>*Grenade
+      Launcher must be manually added.</em></p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

@@ -1,10 +1,11 @@
-_id: DyNsjXqBcOOWFdG9
-_key: "!items.effects!OHMbhkYy7we5ieIL.DyNsjXqBcOOWFdG9"
+_id: toZ7L2JATaPu0yPl
+_key: "!items.effects!3WelrloimwsNI29P.toZ7L2JATaPu0yPl"
 changes:
   - key: bonuses.wardrobeAndStyle
     mode: 2
     priority: null
     value: "2"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -23,7 +24,8 @@ flags:
         "0":
           isSituational: true
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle.svg
-name: Superchrome® Javelin
+icon: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
+name: Superchrome® Glam Rifle
+statuses: []
 tint: null
 transfer: true

@@ -14,9 +14,9 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    value: >-
-      <p>The Militech Fox Dual Ammo Pistol is an Exotic Heavy Pistol. Full rules
-      can be found in Black Chrome on Page 113.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>The Militech Fox Dual Ammo Pistol is an Exotic Heavy Pistol.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

@@ -14,10 +14,8 @@ system:
   damage: 4d6
   description:
     value: >-
-      <p>Poor Quality Two Handed Exotic Very Heavy Melee Weapon.</p>
-
-      <p>Mono-Katana cheap look-alike. Rules for spotting them apart can be
-      found on page 92.</p>
+      <p>Poor Quality Two Handed Exotic Very Heavy Melee
+      Weapon.</p><p>Mono-Katana cheap look-alike.</p>
   dvTable: ""
   equipped: owned
   favorite: false

@@ -1,14 +1,14 @@
-_id: OHMbhkYy7we5ieIL
-_key: "!items!OHMbhkYy7we5ieIL"
+_id: 3WelrloimwsNI29P
+_key: "!items!3WelrloimwsNI29P"
 effects:
-  - DyNsjXqBcOOWFdG9
-img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle.svg
-name: Superchrome® Javelin
+  - toZ7L2JATaPu0yPl
+img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
+name: Superchrome® Glam Rifle
 system:
   ammoVariety:
     - rifle
   attackmod: 0
-  brand: Centurion Essentials
+  brand: Centurian Essentials
   concealable:
     concealable: false
     isConcealed: false
@@ -16,15 +16,16 @@ system:
   damage: 5d6
   description:
     value: >-
-      <p>The Superchrome&reg; Javelin is an Exotic Sniper Rifle. Gives the user
-      a +2 bonus to Wardrobe and Style when equipped. Full rules can be found in
-      Black Chrome on Page 120.</p>
-  dvTable: DV Sniper Rifle
+      <p>The Superchrome® Glam Rifle is an Exotic Assault Rifle. It gives the
+      user a +2 bonus to Wardrobe and Style when equipped.</p><p><em>*Note:
+      Superchrome effects do not stack and will need to be managed in the
+      Effects tab if multiple Superchrome items are installed.</em></p>
+  dvTable: DV Assault Rifle
   equipped: owned
   favorite: false
   fireModes:
-    autoFire: 0
-    suppressiveFire: false
+    autoFire: 4
+    suppressiveFire: true
   handsReq: 2
   installedItems:
     allowed: false
@@ -35,7 +36,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
-    max: 4
+    max: 25
     value: 0
   price:
     market: 1000
@@ -49,5 +50,5 @@ system:
   usage: toggled
   usesType: magazine
   weaponSkill: Shoulder Arms
-  weaponType: sniperRifle
+  weaponType: assaultRifle
 type: weapon

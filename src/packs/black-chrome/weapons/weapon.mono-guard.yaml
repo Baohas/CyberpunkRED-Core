@@ -15,10 +15,8 @@ system:
   damage: 3d6
   description:
     value: >-
-      <p>Monowire, One Handed Exotic Heavy Melee Weapon.</p>
-
-      <p>Can apply multiple Critical Injuries, details of which can be found on
-      page 96.</p>
+      <p>Monowire, One Handed Exotic Heavy Melee Weapon.</p><p>Can apply
+      multiple Critical Injuries.</p>
   dvTable: ""
   equipped: owned
   favorite: false

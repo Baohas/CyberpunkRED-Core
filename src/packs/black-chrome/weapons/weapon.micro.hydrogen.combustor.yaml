@@ -15,9 +15,8 @@ system:
   damage: 6d6
   description:
     value: >-
-      <p> A small explosive that detonates after being immersed in a liquid. Is
-      both armor piercing and creates a large cloud of smoke. </p> <p> Full
-      rules can be found on page 88. </p>
+      <p>A small explosive that detonates after being immersed in a liquid. Is
+      both armor piercing and creates a large cloud of smoke.</p>
   dvTable: ""
   equipped: owned
   favorite: false

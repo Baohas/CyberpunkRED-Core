@@ -14,9 +14,9 @@ system:
   critFailEffect: jammed
   damage: 6d6
   description:
-    value: >-
-      <p>Memory chip, but explosive when plugged into Neuralware. Full rules can
-      be found on page 88.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Memory chip, but explosive when plugged into Neuralware.</p>
   dvTable: ""
   equipped: owned
   favorite: false

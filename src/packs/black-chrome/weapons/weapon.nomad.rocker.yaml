@@ -16,8 +16,7 @@ system:
   description:
     value: >-
       <p>The Nomad Rocker is a Poor Quality Exotic Very Heavy Pistol that fires
-      rocks. Ammo is free for this weapon. Full rules can be found in Black
-      Chrome on Page 115.</p>
+      rocks. Ammo is free for this weapon.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

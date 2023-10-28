@@ -17,8 +17,7 @@ system:
     value: >-
       <p>The Arasaka Prototype Variable Assault Rifle is an Excellent Quality
       Exotic Assault Rifle. Assuming you have all the parts, it can use an
-      alternate unique railgun mode. Full rules can be found in Black Chrome on
-      Page 102.</p>
+      alternate unique railgun mode.</p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

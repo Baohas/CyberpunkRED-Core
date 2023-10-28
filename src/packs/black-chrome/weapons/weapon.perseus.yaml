@@ -16,8 +16,8 @@ system:
   damage: 4d6
   description:
     value: >-
-      <p>The Militech Perseus is an Excellent Quality Exotic Very Heavy Pistol.
-      Full Rules can be found in Black Chrome on Page 112.</p>
+      <p>The Militech Perseus is an Excellent Quality Exotic Very Heavy
+      Pistol.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

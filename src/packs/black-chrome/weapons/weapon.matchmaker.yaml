@@ -17,8 +17,7 @@ system:
   description:
     value: >-
       <p>The Georgia Arms Matchmaker is a Poor Quality Exotic Shotgun that only
-      holds one shot in the magazine. Full rules can be found in Black Chrome on
-      Page 105.</p>
+      holds one shot in the magazine.</p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

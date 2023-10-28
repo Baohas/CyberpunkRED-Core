@@ -14,10 +14,11 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    value: |-
-      <p>Big retractable blades in a Combat Glove.&nbsp;</p>
-      <p>Excellent Quality Exotic Very Heavy Melee Weapon.</p>
-      <p>Full details can be found on page 99.</p>
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Excellent Quality Exotic Very Heavy Melee Weapon.</p><p>Big retractable
+      blades in a Combat Glove.</p>
   dvTable: ""
   equipped: owned
   favorite: false

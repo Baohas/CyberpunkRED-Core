@@ -16,8 +16,8 @@ system:
   description:
     value: >-
       <p>The GunMart Engage Rocket Launcher is a Poor Quality Exotic Rocket
-      Launcher. It explodes on a Critical Failure or when unloading the weapon.
-      Full rules can be found in Black Chrome on Page 107.</p>
+      Launcher. It explodes on a Critical Failure or when unloading the
+      weapon.</p>
   dvTable: DV Rocket Launcher
   equipped: owned
   favorite: false

@@ -1,10 +1,11 @@
-_id: cbbjCrElwBdBKPvO
-_key: "!items.effects!kQ8ZI0Fv1wDnZ5Ru.cbbjCrElwBdBKPvO"
+_id: DyNsjXqBcOOWFdG9
+_key: "!items.effects!OHMbhkYy7we5ieIL.DyNsjXqBcOOWFdG9"
 changes:
   - key: bonuses.wardrobeAndStyle
     mode: 2
     priority: null
     value: "2"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -23,7 +24,8 @@ flags:
         "0":
           isSituational: true
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
-name: Superchrome® Sidearm
+icon: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle.svg
+name: Superchrome® Javelin
+statuses: []
 tint: null
 transfer: true

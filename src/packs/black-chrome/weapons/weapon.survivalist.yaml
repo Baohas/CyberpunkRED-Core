@@ -16,10 +16,8 @@ system:
   description:
     value: >-
       <p>The Eagletech Survivalist is a 2-in-1 Crossbow and Assault RIfle. It is
-      incapable of Autofire. It comes with an integrated Sniping Scope*. Full
-      rules can be found in Black Chrome on Page 103.</p>
-
-      <p><em>*Must be manually applied after purchase</em></p>
+      incapable of Autofire. It comes with an integrated Sniping
+      Scope*.</p><p><em>*Must be manually applied after purchase</em></p>
   dvTable: DV Bows & Crossbows
   equipped: owned
   favorite: false

@@ -14,10 +14,11 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    value: |-
-      <p>Battery powered glove.</p>
-      <p>One Handed Exotic Combination Stun Baton and Microwaver.</p>
-      <p>Full details can be found on page 97.</p>
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Battery powered glove.</p><p>One Handed Exotic Combination Stun Baton
+      and Microwaver.</p>
   dvTable: ""
   equipped: owned
   favorite: false

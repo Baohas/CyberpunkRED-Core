@@ -15,7 +15,7 @@ system:
   description:
     value: >-
       <p>Two Handed Exotic Very Heavy Melee Weapon. When wielded by the correct
-      user the weapon ignores armor less than 7 SP, full details on page 92.</p>
+      user the weapon ignores armor less than 7 SP.</p>
   dvTable: ""
   equipped: owned
   favorite: false

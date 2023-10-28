@@ -14,9 +14,9 @@ system:
   critFailEffect: destroyedBeyondRepair
   damage: 3d6
   description:
-    value: >-
-      <p>The GunMart Special is a Poor Quality Exotic Heavy Pistol. Full rules
-      can be found in Black Chrome on Page 108.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>The GunMart Special is a Poor Quality Exotic Heavy Pistol.</p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false

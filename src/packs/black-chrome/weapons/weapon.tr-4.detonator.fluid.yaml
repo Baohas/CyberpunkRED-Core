@@ -14,9 +14,9 @@ system:
   critFailEffect: jammed
   damage: 6d6
   description:
-    value: >-
-      <p>Must be poured into a fuel tank vehicle to explode. Full rules can be
-      found on page 90.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Must be poured into a fuel tank vehicle to explode.</p>
   dvTable: ""
   equipped: owned
   favorite: false

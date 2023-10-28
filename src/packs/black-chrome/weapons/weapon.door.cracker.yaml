@@ -13,9 +13,9 @@ system:
   critFailEffect: jammed
   damage: 6d6
   description:
-    value: >-
-      <p>Cheap explosive item, small area of effect. Full rules can be found on
-      page 87.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Cheap explosive item, small area of effect.</p>
   dvTable: ""
   equipped: owned
   favorite: false

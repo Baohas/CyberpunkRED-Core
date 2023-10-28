@@ -6,7 +6,7 @@ name: Mono-Star
 system:
   ammoVariety: []
   attackmod: 0
-  brand: Kendashi
+  brand: Kendachi
   concealable:
     concealable: true
     isConcealed: false
@@ -15,10 +15,8 @@ system:
   description:
     value: >-
       <p>Mono-Shuriken whose orb center contains a kinetic and solar motor
-      allowing the star to spin on itself and vibrate.</p>
-
-      <p>Can be used as both a melee and ranged weapon, rules for which can be
-      found on page 101.</p>
+      allowing the star to spin on itself and vibrate.</p><p>Can be used as both
+      a melee and ranged weapon.</p>
   dvTable: DV Thrown Weapon
   equipped: owned
   favorite: false

@@ -17,7 +17,7 @@ system:
     value: >-
       <p>The Techtronika Russia BMG-500 is an Exotic Assault Rifle with a
       magazine of 500 rounds and a bipod. Requires BODY 11 or higher (unless
-      mounted). Full rules can be found in Black Chrome on Page 122.<br><br></p>
+      mounted).</p>
   dvTable: DV Assault Rifle
   equipped: owned
   favorite: false

@@ -16,9 +16,9 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    value: >-
-      <p>The KTech TechHammer is an Exotic Shotgun/Rocket Launcher. Full rules
-      can be found in Black Chrome on Page 110.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>The KTech TechHammer is an Exotic Shotgun/Rocket Launcher.</p>
   dvTable: DV Shotgun (Slug)
   equipped: owned
   favorite: false

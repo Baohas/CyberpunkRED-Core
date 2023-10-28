@@ -15,10 +15,8 @@ system:
   description:
     value: >-
       <p>Blade and pike, this steel and composite ice axe can help you climb ice
-      walls while also doing serious damage in a fight.</p>
-
-      <p>Can be used as both a melee and ranged weapon, rules for which can be
-      found on page 101.</p>
+      walls while also doing serious damage in a fight.</p><p>Can be used as
+      both a melee and ranged weapon.</p>
   dvTable: DV Thrown Weapon
   equipped: owned
   favorite: false

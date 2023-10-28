@@ -14,20 +14,11 @@ system:
   damage: 4d6
   description:
     value: >-
-      <p>Excellent Quality Two Handed Exotic Very Heavy Melee Weapon. Contains
-      three doses of specific fluids for blade coating:</p>
-
-      <ul>
-
-      <li>Arasaka Fire (can ignite target)</li>
-
-      <li>Arasaka Acid (ablates armor)</li>
-
-      <li>Arasaka Wound Salt (applies a second critical injury)</li>
-
-      </ul>
-
-      <p>Full rules can be found on page 91.</p>
+      <p>Excellent Quality Two Handed Exotic Very Heavy Melee
+      Weapon.</p><p>Contains three doses of specific fluids for blade
+      coating:</p><ul><li>Arasaka Fire (can ignite target)</li><li>Arasaka Acid
+      (ablates armor)</li><li>Arasaka Wound Salt (applies a second critical
+      injury)</li></ul>
   dvTable: ""
   equipped: owned
   favorite: false
