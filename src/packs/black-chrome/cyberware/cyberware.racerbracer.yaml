@@ -13,9 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Internal cyberware. Grants immunity to whiplash. (See Black Chrome pg.
-      22 for more details)</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Internal cyberware. Grants immunity to whiplash.</p>
   dvTable: ""
   favorite: false
   fireModes:

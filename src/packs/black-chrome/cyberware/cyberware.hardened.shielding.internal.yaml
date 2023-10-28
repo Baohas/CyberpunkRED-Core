@@ -14,8 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Internal Cyberware. All internal cyberware is not affected by EMP
-      effects. (see Black Chrome pg. 20 for more details.)</p>
+      <p>Internal Cyberware.</p><p>All internal cyberware is not affected by EMP
+      effects.</p>
   dvTable: ""
   favorite: false
   fireModes:

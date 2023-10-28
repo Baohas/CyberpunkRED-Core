@@ -15,7 +15,7 @@ system:
   description:
     value: >-
       <p>Cyberfinger functioning as a spray can. Can only be installed on a
-      modular finger cyberhand. (See Black Chrome pg. 26 for more details)</p>
+      modular finger cyberhand.</p>
   dvTable: ""
   favorite: false
   fireModes:

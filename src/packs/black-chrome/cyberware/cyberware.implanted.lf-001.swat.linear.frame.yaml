@@ -16,9 +16,10 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Increases your BODY stat to 12 (adjusting your HP and Wound Threshold
-      and Death Save). Removes the movement penalty for climbing and swimming.
-      (See Black Chrome pg. 53 for more details.)</p>
+      <ul><li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li><li>Increases
+      BODY stat to 12 (adjusting your HP, Wound Threshold, and Death
+      Save)</li><li>Ignores the normal movement penalty for climbing and
+      swimming</li></ul>
   dvTable: ""
   favorite: false
   fireModes:

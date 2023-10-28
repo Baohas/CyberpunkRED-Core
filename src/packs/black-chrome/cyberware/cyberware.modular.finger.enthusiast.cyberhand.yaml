@@ -14,10 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Borgware. Requires cyberarm. Comes with 8 cyberfingers*. (see Black
-      Chrome pg. 18 for more details)</p>
-
-      <p>*Fingers must be added after installation</p>
+      <p>Borgware. Requires cyberarm. Comes with 8 cyberfingers*.</p><p>*Fingers
+      must be added after installation</p>
   dvTable: ""
   favorite: false
   fireModes:

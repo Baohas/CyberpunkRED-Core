@@ -15,8 +15,7 @@ system:
   description:
     value: >-
       <p>Cyberfinger that can be used to conceal two rounds of ammunition of any
-      type. Can only be installed on a modular finger cyberhand. (See Black
-      Chrome pg. 24 for more details)</p>
+      type. Can only be installed on a modular finger cyberhand.</p>
   dvTable: ""
   favorite: false
   fireModes:

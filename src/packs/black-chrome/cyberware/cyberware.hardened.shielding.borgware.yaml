@@ -14,8 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Borgware this is installed to is not affected by EMP effects. (see
-      Black Chrome pg. 17 for more details.)</p>
+      <p>Borgware.</p><p>This is installed to is not affected by EMP
+      effects.</p>
   dvTable: ""
   favorite: false
   fireModes:

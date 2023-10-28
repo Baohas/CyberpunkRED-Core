@@ -14,9 +14,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>Neuralware. Negates REF requirement to dodge bullets. (See Black Chrome
-      pg. 21 for more details)</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Neuralware.</p><p>Negates REF requirement to dodge bullets.</p>
   dvTable: ""
   favorite: false
   fireModes:

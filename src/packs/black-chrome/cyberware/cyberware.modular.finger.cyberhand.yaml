@@ -14,10 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Requires cyberarm. Comes with 5 cyberfingers*. (see Black Chrome pg. 20
-      for more details)</p>
-
-      <p>*Fingers must be added after installation</p>
+      <p>Requires cyberarm. Comes with 5 cyberfingers*.</p><p>*Fingers must be
+      added after installation</p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -14,8 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Requires Cyberdeck (Hardwired), adds an extra slot to the cyberdeck.
-      (See Black Chrome pg. 19 for more details)</p>
+      <p>Requires Cyberdeck (Hardwired), adds an extra slot to the
+      cyberdeck.</p>
   dvTable: ""
   favorite: false
   fireModes:

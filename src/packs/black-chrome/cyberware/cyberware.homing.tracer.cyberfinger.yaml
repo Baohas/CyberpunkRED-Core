@@ -14,10 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Cyberfinger that functions like a
-      @UUID[Compendium.cyberpunk-red-core.gear.QIHx5oQOirtTlAaD]{Homing Tracer}.
-      Can only be installed on a modular finger cyberhand. (See Black Chrome pg.
-      25 for more details)</p>
+      <p>Cyberfinger that functions like a Homing Tracer. Can only be installed
+      on a modular finger cyberhand.</p>
   dvTable: ""
   favorite: false
   fireModes:

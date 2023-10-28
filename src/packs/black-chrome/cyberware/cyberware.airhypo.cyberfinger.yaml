@@ -14,10 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Cyberfinger that holds an
-      @UUID[Compendium.cyberpunk-red-core.gear.Th74cfC87RqEJKAb]{Airhypo}. Can
-      only be installed on a modular finger cyberhand. (See Black Chrome pg. 24
-      for more details)</p>
+      <p>Cyberfinger that holds an Airhypo. Can only be installed on a modular
+      finger cyberhand.</p>
   dvTable: ""
   favorite: false
   fireModes:

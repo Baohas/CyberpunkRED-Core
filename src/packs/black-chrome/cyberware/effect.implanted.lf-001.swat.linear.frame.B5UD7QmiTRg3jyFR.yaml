@@ -3,8 +3,8 @@ _key: "!items.effects!R3b9aNqHxWIAo4tX.B5UD7QmiTRg3jyFR"
 changes:
   - key: system.stats.body.value
     mode: 5
-    priority: null
     value: "12"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -25,6 +25,7 @@ flags:
           onByDefault: false
 icon: >-
   systems/cyberpunk-red-core/icons/compendium/default/default-implanted-linearframe.svg
-name: Implated LF-001 SWAT Linear Frame
+name: Implanted LF-001 SWAT Linear Frame
+statuses: []
 tint: null
 transfer: true

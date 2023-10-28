@@ -15,10 +15,8 @@ system:
   damage: 3d6
   description:
     value: >-
-      <p>Cyberfinger that holds a concealed Exotic
-      @UUID[Compendium.cyberpunk-red-core.weapons.Y433cjlB1uVHPysk]{Heavy
-      Pistol}. Can only be installed on a modular finger cyberhand. (See Black
-      Chrome pg. 26 for more details)</p>
+      <p>Cyberfinger that holds a concealed Exotic Heavy Pistol. Can only be
+      installed on a modular finger cyberhand.</p>
   dvTable: DV Pistol
   favorite: false
   fireModes:

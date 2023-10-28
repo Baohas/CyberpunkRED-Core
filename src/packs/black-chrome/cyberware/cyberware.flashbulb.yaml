@@ -13,9 +13,9 @@ system:
   core: false
   damage: 2d6
   description:
-    value: >-
-      <p>Requires cyberarm. User can attempt to blind anyone within 25m/yds.
-      (See Black Chrome pg. 18 for more details)</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Requires cyberarm. User can attempt to blind anyone within 25m/yds.</p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -13,9 +13,9 @@ system:
   core: false
   damage: 1d6
   description:
-    value: >-
-      <p>The eye and installed options are not affected by EMP effects. (See
-      Black Chrome pg. 19 for more details)</p>
+    chat: ""
+    unidentified: ""
+    value: <p>The eye and installed options are not affected by EMP effects.</p>
   dvTable: ""
   favorite: false
   fireModes:

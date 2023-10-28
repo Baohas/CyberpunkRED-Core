@@ -16,8 +16,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Chipware. Enhances memorization. +2 Concentration while installed. (See
-      Black Chrome pg. 18 for more details)</p>
+      <p>Chipware.</p><p>Enhances memorization. +2 Concentration while
+      installed.</p>
   dvTable: ""
   favorite: false
   fireModes:
