@@ -76,16 +76,31 @@ export default class PackUtils {
       : "";
   }
 
-  /*
-   * Cleans the given filename by removing or replacing specific characters
-   * and symbols.
+  /**
+   * Cleans a given file name by removing special characters and replacing whitespace.
+   * This function sanitizes the input file name by performing a series of operations
+   * to ensure a valid file name format. Each operation serves a specific purpose:
    *
-   * Takes a string representing a filename and performs clean-up then converts
-   * the filename to lowercase.
+   * 01. Removes Unicode format characters.
+   * 02. Removes invisible whitespace (U+2060).
+   * 03. Removes the character Σ (U+2211).
+   * 04. Removes the character β (U+03B2).
+   * 05. Removes left and right single quotation marks.
+   * 06. Removes left and right double quotation marks.
+   * 07. Removes single and double quotes.
+   * 08. Removes parentheses.
+   * 09. Replaces ampersands with the word "and".
+   * 10. Replaces bullet points with dots.
+   * 11. Replaces spaces with dots.
+   * 12. Removes commas.
+   * 13. Removes the registered trademark symbol.
+   * 14. Removes the trademark symbol.
+   * 15. Removes newlines.
+   * 16. Replaces consecutive dots enclosed in hyphens with a single dot.
+   * 17. Replaces multiple consecutive dots with a single dot.
    *
-   * @param {string} data - The input filename to be cleaned.
-   * @returns {string} - The cleaned filename with the specified characters
-   *                     removed or replaced.
+   * @param {string} str - The input file name to be cleaned.
+   * @returns {string} The cleaned file name.
    */
   static cleanFileName(str) {
     if (TRACE) {
@@ -93,9 +108,10 @@ export default class PackUtils {
     }
 
     return sanitize(str)
-      .replace(/\u2060/gu, "") // invisible whitespace
-      .replace(/\u2211/g, "") // Σ
-      .replace(/\u03B2/g, "") // β
+      .replace(/\p{Cf}/gu, "")
+      .replace(/\u2060/gu, "")
+      .replace(/\u2211/g, "")
+      .replace(/\u03B2/g, "")
       .replace(/[‘’]/gu, "")
       .replace(/[“”]/gu, "")
       .replace(/['"]/g, "")
@@ -104,32 +120,65 @@ export default class PackUtils {
       .replace(/•/g, ".")
       .replace(/ /g, ".")
       .replace(/,/g, "")
-      .replace(/\.\./g, ".")
-      .replace(/\.-\./g, ".");
+      .replace(/®/g, "")
+      .replace(/™/g, "")
+      .replace(/\n/gm, "")
+      .replace(/\.-\./g, ".")
+      .replace(/\.+/g, ".");
   }
 
   /*
-   * Removes invisible whitespace characters and normalizes single and double
-   * quotes in the given string.
+   * Normalize strings.
    *
-   * This function takes a string as input and performs the following operations:
-   * 1. Removes invisible whitespace characters (U+2060).
-   * 2. Replaces curly single quotes (‘’) with straight single quotes (').
-   * 3. Replaces curly double quotes (“”) with straight double quotes (").
+   * Foundry/Browsers/Operating Systems/Users introduce different quirks to
+   * text/html fields when editing. This function cleans up/normalizes strings
+   * so they are more consistent across the system.
+   *
+   * 01. Replace all Zero-Width Space (\u2060) characters with an empty string.
+   * 02. Replace all curly single quotes ‘’ with straight single quotes (').
+   * 03. Replace all curly double quotes “” with straight double quotes (").
+   * 04. Remove all occurrences of the HTML entity &nbsp;.
+   * 05. Remove the ' dir="ltr"' attribute from HTML tags.
+   * 06. Replace consecutive line breaks with '</p>\n<p>' to format paragraphs.
+   * 07. Remove any leading space inside <p> tags.
+   * 08. Ensure proper formatting for adjacent <p> tags by replacing '</p> <p>'
+   *     with '</p>\n<p>'.
+   * 09. Remove empty <p> tags containing only '<br>'.
+   * 10. Collapse multiple consecutive whitespaces into a single space.
+   * 10. Trim leading and trailing spaces.
+   * 11. Add spaces around '<strong>' tags for proper spacing.
+   * 12. Add spaces around '</strong>' tags for proper spacing.
+   * 14. Add spaces before and after '</p>' tags to ensure proper spacing.
+   * 15. Remove empty <p> tags.
    *
    * @param {string} str - The input string to be cleaned.
-   * @returns {string} - The cleaned string with invisible whitespace characters
-   *                     removed and quotes normalized.
+   * @returns {string} The cleaned string.
    */
   static cleanString(str) {
     if (TRACE) {
       log(`TRACE: PackUtils | cleanString called.`);
     }
 
+    // Order of operations is important here.
+    // If you are thinking of changing this make sure you understand what is
+    // happening (and the result) in each step and how that affects the
+    // following steps.
     return str
       .replace(/\u2060/gu, "")
       .replace(/[‘’]/gu, "'")
-      .replace(/[“”]/gu, '"');
+      .replace(/[“”]/gu, '"')
+      .replace(/&nbsp;/gu, "")
+      .replace(/\sdir="ltr"/g, "")
+      .replace(/<br\s*\/?>\s*(?=<br\s*\/?>)/g, "</p>\n<p>")
+      .replace(/<p> /g, "<p>")
+      .replace(/<\/p> +<p>/gu, "</p>\n<p>")
+      .replace(/<p><br><\/p>/gu, "")
+      .replace(/[^\S\n]+/g, " ")
+      .replace(/^\s+|\s+$/gu, "")
+      .replace(/<strong> /g, " <strong>")
+      .replace(/ <\/strong>/g, "</strong> ")
+      .replace(/ <\/p>/gu, "</p>")
+      .replace(/<p><\/p>/gu, "");
   }
 
   /**
@@ -226,7 +275,6 @@ export default class PackUtils {
           case "macros":
             return this.cleanFileName(`macro.${nameLower}.yaml`);
           default:
-            log(data);
             throw new Error(
               `ERROR: Unable to determine filename for the above data`
             );
@@ -241,7 +289,6 @@ export default class PackUtils {
       case "results":
         return this.cleanFileName(`result.${textLower}.${id}.yaml`);
       default:
-        log(data);
         throw new Error(
           `ERROR: Unable to determine filename for the above data`
         );
@@ -288,7 +335,11 @@ export default class PackUtils {
       // Dump out to a YAML fragment file
       fs.writeFileSync(
         fileName,
-        YAML.dump(cleanData, { sortKeys: true, quotingType: '"' }, 2)
+        YAML.dump(cleanData, {
+          sortKeys: true,
+          quotingType: '"',
+          lineWidth: 80,
+        })
       );
     }
 
@@ -488,25 +539,6 @@ export default class PackUtils {
    * Cleans the given pack data by removing unnecessary properties and fixing
    * common errors.
    *
-   * This function takes an object representing pack data and performs various
-   * clean-up operations on it:
-   *
-   * 1. Removes specific Foundry keys that are not required.
-   * 2. Deletes certain properties related to the "system" key.
-   * 3. Deletes empty flags and flags.core properties.
-   * 4. Removes empty values from system.ammoVariety for items of type "weapon".
-   * 5. Fixes common errors in packs:
-   *    - Ensures system.source.page is an integer.
-   *    - Sets system.revealed to true and system.usage to "equipped" for items
-   *      that should have effects.
-   *    - Deletes effects, system.revealed, and system.usage for items that
-   *      should not have effects.
-   *    - Sanitizes strings for name, label, and system.description.value
-   *      properties.
-   *    - Ensures system.amount, system.price.market, and
-   *      system.humanityLoss.static are integers.
-   *    - Recursively calls this function on any effects in the data.
-   *
    * @param {Object} data - The input pack data to be cleaned.
    * @returns {Object} - The cleaned pack data after performing the necessary
    *                     clean-up operations.
@@ -567,95 +599,91 @@ export default class PackUtils {
     }
 
     // Only run on items
-    if (data.type === "item") {
-      // These could probably be generated by src/template.json
-      const itemsWithEffects = [
-        "armor",
-        "clothing",
-        "cyberware",
-        "criticalInjury",
-        "drug",
-        "gear",
-        "program",
-        "weapon",
-      ];
+    if ("_key" in data) {
+      if (this.getPackType(data._key) === "items") {
+        const itemsWithEffects = [
+          "armor",
+          "clothing",
+          "cyberware",
+          "criticalInjury",
+          "drug",
+          "gear",
+          "program",
+          "weapon",
+        ];
 
-      // I have no idea where this data is coming from
-      if ("system" in data) {
-        delete data.system.allowedUsage;
-        delete data.system.dvTableNames;
-        delete data.system.isGM;
-        delete data.system.isOwned;
-        delete data.system.relativeSkills;
-        delete data.system.tags;
-      }
-
-      // Remove empty values from system.ammoVariety
-      if (data.type === "weapon") {
-        const ammo = data.system.ammoVariety;
-        const result = ammo.filter((i) => i !== "");
-        data.system.ammoVariety = result;
-      }
-
-      //
-      // Fix common errors in packs
-      //
-
-      // Ensure system.source.page is an int
-      if (data.system?.source?.page) {
-        data.system.source.page = parseInt(data.system.source.page, 10);
-      }
-
-      // If an item should have effects
-      if (itemsWithEffects.includes(data.type)) {
-        // system.revealed should always be true
-        data.system.revealed = true;
-
-        // system.usage should always be one of:
-        // 'equipped', 'installed', 'rezzed', 'snorted', or 'toggled'
-        // never 'carried'
-        // use 'equipped' as the default
-
-        // If we're missing the usage key, set it to 'equipped'
-        if ("usage" in data.system === false) {
-          data.system.usage = "equipped";
+        // I have no idea where this data is coming from
+        if ("system" in data) {
+          delete data.system.allowedUsage;
+          delete data.system.dvTableNames;
+          delete data.system.isGM;
+          delete data.system.isOwned;
+          delete data.system.relativeSkills;
+          delete data.system.tags;
         }
-        // If system.usage is set to 'owned' set it to 'equipped' instead
-        if (data.system.usage === "owned") {
-          data.system.usage = "equipped";
+
+        // Remove empty values from system.ammoVariety
+        if (data.type === "weapon") {
+          const ammo = data.system.ammoVariety;
+          const result = ammo.filter((i) => i !== "");
+          data.system.ammoVariety = result;
         }
-      } else {
-        delete data.effects;
-        delete data.system?.revealed;
-        delete data.system?.usage;
-      }
 
-      // Sanitize strings
-      if (data.name) data.name = this.cleanString(data.name);
-      if (data.label) data.label = this.cleanString(data.label);
+        // If an item should have effects
+        if (itemsWithEffects.includes(data.type)) {
+          // system.revealed should always be true
+          data.system.revealed = true;
 
-      if (data.system?.description?.value) {
-        data.system.description.value = this.cleanString(
-          data.system.description.value
-        );
-      }
+          // system.usage should always be one of:
+          // 'equipped', 'installed', 'rezzed', 'snorted', or 'toggled'
+          // never 'carried'
+          // use 'equipped' as the default
 
-      // Ensure system.amount is an int
-      if (data.system?.amount) {
-        data.system.amount = parseInt(data.system.amount, 10);
-      }
+          // If we're missing the usage key, set it to 'equipped'
+          if ("usage" in data.system === false) {
+            data.system.usage = "equipped";
+          }
+          // If system.usage is set to 'owned' set it to 'equipped' instead
+          if (data.system.usage === "owned") {
+            data.system.usage = "equipped";
+          }
+        } else {
+          delete data.system?.revealed;
+          delete data.system?.usage;
+        }
 
-      // Ensure system.price.market is an int
-      if (data.system?.price) {
-        data.system.price.market = parseInt(data.system.price.market, 10);
-      }
+        // Sanitize strings
+        if (data.name) data.name = this.cleanString(data.name);
+        if (data.label) data.label = this.cleanString(data.label);
+        if (data.system?.description?.value) {
+          data.system.description.value = this.cleanString(
+            data.system.description.value
+          );
+        }
 
-      // Ensure system.humanityLoss.static is an int
-      if (data.system?.humanityLoss?.static) {
-        data.system.humanityLoss.static = parseInt(
-          data.system.humanityLoss.static,
-          10
-        );
+        // Ensure values are ints
+        if (data.system?.source?.page) {
+          data.system.source.page = parseInt(data.system.source.page, 10);
+        }
+
+        if (data.system?.amount) {
+          data.system.amount = parseInt(data.system.amount, 10);
+        }
+
+        if (data.system?.price) {
+          data.system.price.market = parseInt(data.system.price.market, 10);
+        }
+
+        if (data.system?.rank) {
+          data.system.rank = parseInt(data.system.rank, 10);
+        }
+
+        if (data.system?.humanityLoss?.static) {
+          data.system.humanityLoss.static = parseInt(
+            data.system.humanityLoss.static,
+            10
+          );
+        }
       }
     }
     return data;
