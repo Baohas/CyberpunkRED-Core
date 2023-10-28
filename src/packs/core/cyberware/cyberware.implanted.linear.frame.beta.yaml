@@ -16,8 +16,9 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>Increases your BODY stat to 14 (adjusting your HP and Wound Threshold
-      and Death Save)</p>
+      <ul><li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li><li>Increases
+      your BODY stat to 14 (adjusting your HP, Wound Threshold, and Death
+      Save)</li></ul>
   dvTable: ""
   favorite: false
   fireModes:

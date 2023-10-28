@@ -3,7 +3,7 @@ _key: "!items!CHQVWD2VlDiWJSzf"
 effects:
   - LQDd5nho7VGc0hgJ
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/superchrome_covering.svg
-name: Superchrome Covering (Cyber Arm)
+name: Superchrome® Covering (Cyber Arm)
 system:
   ammoVariety: []
   attackmod: 0
@@ -15,8 +15,10 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>A metallic coating for your arm. Provides +2 to Wardrobe and Style.
-      </p>
+      <p>A metallic coating for your arm. Provides +2 to Wardrobe and
+      Style.*</p><p><em>*Note: Superchrome effects do not stack and will need to
+      be managed in the Effects tab if multiple Superchrome items are
+      installed.</em></p>
   dvTable: ""
   favorite: false
   fireModes:

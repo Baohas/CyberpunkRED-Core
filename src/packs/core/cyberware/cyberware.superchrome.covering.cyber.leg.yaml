@@ -3,7 +3,7 @@ _key: "!items!qpLAhi08ZCgbukzn"
 effects:
   - ujXxhKinOIlZe3vI
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/superchrome_covering.svg
-name: Superchrome Covering (Cyber Leg)
+name: Superchrome® Covering (Cyber Leg)
 system:
   ammoVariety: []
   attackmod: 0
@@ -15,8 +15,10 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>A metallic coating for your leg. Provides +2 to Wardrobe and Style.
-      </p>
+      <p>A metallic coating for your leg. Provides +2 to Wardrobe and
+      Style.*</p><p><em>*Note: Superchrome effects do not stack and will need to
+      be managed in the Effects tab if multiple Superchrome items are
+      installed.</em></p>
   dvTable: ""
   favorite: false
   fireModes:

@@ -14,23 +14,23 @@
     },
     "Artificial Shoulder Mount": {
       "name": "Artificial Shoulder Mount",
-      "description": "<p>Allows you to install an extra pair of cyberarms. </p>"
+      "description": "<p>Allows you to install an extra pair of cyberarms.</p>"
     },
     "Audio Recorder": {
       "name": "Audio Recorder",
-      "description": "<p>Records sound. Can link into a chip or agent.  </p>"
+      "description": "<p>Records sound. Can link into a chip or agent.</p>"
     },
     "AudioVox": {
       "name": "AudioVox",
-      "description": "<p>Autotune synthesizer. Provides +2 to Acting and Play Instrument checks. </p>"
+      "description": "<p>Autotune synthesizer. Provides +2 to Acting and Play Instrument checks.</p>"
     },
     "Big Knucks": {
       "name": "Big Knucks",
-      "description": "<p>Armored knuckles which function as a Melee Weapon. </p>"
+      "description": "<p>Armored knuckles which function as a Melee Weapon.</p>"
     },
     "Biomonitor": {
       "name": "Biomonitor",
-      "description": "<p>Provides an LED showing vitals readouts. Can be linked to your agent. </p>"
+      "description": "<p>Provides an LED showing vitals readouts. Can be linked to your agent.</p>"
     },
     "Braindance Recorder": {
       "name": "Braindance Recorder",
@@ -50,15 +50,15 @@
     },
     "Chipware Socket": {
       "name": "Chipware Socket",
-      "description": "<p>Single socket for installation and removal of a piece of chipware. </p>"
+      "description": "<p>Single socket for installation and removal of a piece of chipware.</p>"
     },
     "Chyron": {
       "name": "Chyron",
-      "description": "<p>Tiny screen in your eye. Provides picture-in-picture for those boring moments. </p>"
+      "description": "<p>Tiny screen in your eye. Provides picture-in-picture for those boring moments.</p>"
     },
     "Color Shift": {
       "name": "Color Shift",
-      "description": "<p>Allows you to shift eyes to an unlimited number of colors and patterns. </p>"
+      "description": "<p>Allows you to shift eyes to an unlimited number of colors and patterns.</p>"
     },
     "Contraceptive Implant": {
       "name": "Contraceptive Implant",
@@ -66,7 +66,7 @@
     },
     "Cyberarm": {
       "name": "Cyberarm",
-      "description": "<p>A cybernetical replacement arm. Comes with a free hand. </p>"
+      "description": "<p>A cybernetical replacement arm. Comes with a free hand.</p>"
     },
     "Cyberaudio Suite": {
       "name": "Cyberaudio Suite",
@@ -74,7 +74,7 @@
     },
     "Cyberdeck (Hardwired)": {
       "name": "Cyberdeck (Hardwired)",
-      "description": "<p>A built-in cyberdeck. Always available. </p>"
+      "description": "<p>A built-in cyberdeck. Always available.</p>"
     },
     "Cybereye": {
       "name": "Cybereye",
@@ -82,7 +82,7 @@
     },
     "Cyberleg": {
       "name": "Cyberleg",
-      "description": "<p>A cybernetical replacement leg. Comes with a free foot. </p>"
+      "description": "<p>A cybernetical replacement leg. Comes with a free foot.</p>"
     },
     "Cybersnake": {
       "name": "Cybersnake",
@@ -90,11 +90,11 @@
     },
     "Dartgun": {
       "name": "Dartgun",
-      "description": "<p>A single shot weapon which can be concealed. </p>"
+      "description": "<p>A single shot weapon which can be concealed.</p>"
     },
     "Difficult Skill Chip": {
       "name": "Difficult Skill Chip",
-      "description": "<p>Chipware. Provides  a value of 3 to a specific (x2) skill while installed (unless the skill is already 3+). </p>"
+      "description": "<p>Chipware. Provides a value of 3 to a specific (x2) skill while installed (unless the skill is already 3+).</p>"
     },
     "EMP Threading": {
       "name": "EMP Threading",
@@ -102,11 +102,11 @@
     },
     "Enhanced Antibodies": {
       "name": "Enhanced Antibodies",
-      "description": "<p>Doubles natural healing while resting. </p>"
+      "description": "<p>Doubles natural healing while resting.</p>"
     },
     "Gills": {
       "name": "Gills",
-      "description": "<p>Allows for breathing underwater. </p>"
+      "description": "<p>Allows for breathing underwater.</p>"
     },
     "Grafted Muscle and Bone Lace": {
       "name": "Grafted Muscle and Bone Lace",
@@ -118,15 +118,15 @@
     },
     "Grip Foot": {
       "name": "Grip Foot",
-      "description": "<p>Provides traction for climbing vertically. Must be paired. </p>"
+      "description": "<p>Provides traction for climbing vertically. Must be paired.</p>"
     },
     "Hardened Shielding (Cyber Arm)": {
       "name": "Hardened Shielding (Cyber Arm)",
-      "description": "<p>The arm and installed options are not affected by EMP effects. </p>"
+      "description": "<p>The arm and installed options are not affected by EMP effects.</p>"
     },
     "Hardened Shielding (Cyber Leg)": {
       "name": "Hardened Shielding (Cyber Leg)",
-      "description": "<p>The leg and installed options are not affected by EMP effects. </p>"
+      "description": "<p>The leg and installed options are not affected by EMP effects.</p>"
     },
     "Hidden Holster": {
       "name": "Hidden Holster",
@@ -134,7 +134,7 @@
     },
     "Homing Tracer": {
       "name": "Homing Tracer",
-      "description": "<p>Audio tracking of a tracer up to 1 mile. Replacements not included. </p>"
+      "description": "<p>Audio tracking of a tracer up to 1 mile. Replacements not included.</p>"
     },
     "Image Enhance": {
       "name": "Image Enhance",
@@ -142,35 +142,35 @@
     },
     "Implanted Linear Frame β (Beta)": {
       "name": "Implanted Linear Frame β (Beta)",
-      "description": "<p>Increases your BODY stat to 14 (adjusting your HP and Wound Threshold and Death Save)</p>"
+      "description": "<ul><li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li><li>Increases your BODY stat to 14 (adjusting your HP, Wound Threshold, and Death Save)</li></ul>"
     },
     "Implanted Linear Frame ∑ (Sigma)": {
       "name": "Implanted Linear Frame ∑ (Sigma)",
-      "description": "<p>Increases your BODY stat to 12 (adjusting your HP and Wound Threshold and Death Save)</p>"
+      "description": "<ul><li>Requires BODY 6, Grafted Muscle and Bone Lace</li><li>Increases your BODY stat to 12 (adjusting your HP, Wound Threshold, and Death Save)</li></ul>"
     },
     "Independent Air Supply": {
       "name": "Independent Air Supply",
-      "description": "<p>30 minutes of refillable breathable air. </p>"
+      "description": "<p>30 minutes of refillable breathable air.</p>"
     },
     "Interface Plugs": {
       "name": "Interface Plugs",
-      "description": "<p>Plugs in the wrist or head to allow you to connect to machines/systems hands-free. </p>"
+      "description": "<p>Plugs in the wrist or head to allow you to connect to machines/systems hands-free.</p>"
     },
     "Internal Agent": {
       "name": "Internal Agent",
-      "description": "<p>Built in agent. Audio only but can be linked with other cybergear. </p>"
+      "description": "<p>Built in agent. Audio only but can be linked with other cybergear.</p>"
     },
     "Jump Booster": {
       "name": "Jump Booster",
-      "description": "<p>Built-in hydraulics negates penalty for jumping. Must be paired. </p>"
+      "description": "<p>Built-in hydraulics negates penalty for jumping. Must be paired.</p>"
     },
     "Kerenzikov": {
       "name": "Kerenzikov",
-      "description": "<p>Speedware. Permanent +2 to Initiative. </p>"
+      "description": "<p>Speedware. Permanent +2 to Initiative.</p>"
     },
     "Level Damper": {
       "name": "Level Damper",
-      "description": "<p>Provides immunity to deafness or sudden loud noises. </p>"
+      "description": "<p>Provides immunity to deafness or sudden loud noises.</p>"
     },
     "Light Tattoo": {
       "name": "Light Tattoo",
@@ -202,7 +202,7 @@
     },
     "Memory Chip": {
       "name": "Memory Chip",
-      "description": "<p>Chipware. Data Storage. Like a flash drive for your brain. Eject safely. </p>"
+      "description": "<p>Chipware. Data Storage. Like a flash drive for your brain. Eject safely.</p>"
     },
     "MicroOptics": {
       "name": "MicroOptics",
@@ -210,27 +210,27 @@
     },
     "MicroVideo": {
       "name": "MicroVideo",
-      "description": "<p>An eye camera which can link into a chip or agent. Great for Medias. </p>"
+      "description": "<p>An eye camera which can link into a chip or agent. Great for Medias.</p>"
     },
-    "Midnight Lady Sexual Implant": {
-      "name": "Midnight Lady Sexual Implant",
+    "Midnight Lady™ Sexual Implant": {
+      "name": "Midnight Lady™ Sexual Implant",
       "description": "<p>Machine washable.</p>"
     },
-    "Mr. Studd Sexual Implant": {
-      "name": "Mr. Studd Sexual Implant",
+    "Mr. Studd™ Sexual Implant": {
+      "name": "Mr. Studd™ Sexual Implant",
       "description": "<p>Ready when you are.</p>"
     },
     "MultiOptic Mount": {
       "name": "MultiOptic Mount",
-      "description": "<p>Allows you to install up to 5 more cybereyes. Cybereyes sold separately. </p>"
+      "description": "<p>Allows you to install up to 5 more cybereyes. Cybereyes sold separately.</p>"
     },
     "Nasal Filters": {
       "name": "Nasal Filters",
-      "description": "<p>Provides immunity to inhalable gases or fumes. </p>"
+      "description": "<p>Provides immunity to inhalable gases or fumes.</p>"
     },
     "Neural Link": {
       "name": "Neural Link",
-      "description": "<p>Access to nervous system. </p>"
+      "description": "<p>Access to nervous system.</p>"
     },
     "Olfactory Boost": {
       "name": "Olfactory Boost",
@@ -242,32 +242,32 @@
     },
     "Plastic Covering (Cyber Arm)": {
       "name": "Plastic Covering (Cyber Arm)",
-      "description": "<p>A type of plastic coating for your arm. </p>"
+      "description": "<p>A type of plastic coating for your arm.</p>"
     },
     "Plastic Covering (Cyber Leg)": {
       "name": "Plastic Covering (Cyber Leg)",
-      "description": "<p>A type of plastic coating for your leg. </p>"
+      "description": "<p>A type of plastic coating for your leg.</p>"
     },
     "Popup Grenade Launcher": {
       "name": "Popup Grenade Launcher",
-      "description": "<p>A concealable one-shot Grenade Launcher. Can't hold anything with this hand while activated. </p>",
+      "description": "<p>A concealable one-shot Grenade Launcher. Can't hold anything with this hand while activated.</p>",
       "dvTable": "DV Grenade Launcher"
     },
     "Popup Melee Weapon": {
       "name": "Popup Melee Weapon",
-      "description": "<p>A concealable Melee Weapon. Can't hold anything with this hand while activated. </p>"
+      "description": "<p>A concealable Melee Weapon. Can't hold anything with this hand while activated.</p>"
     },
     "Popup Ranged Weapon": {
       "name": "Popup Ranged Weapon",
-      "description": "<p>A concealable one-handed Ranged Weapon. Can't hold anything with this hand while activated. </p>"
+      "description": "<p>A concealable one-handed Ranged Weapon. Can't hold anything with this hand while activated.</p>"
     },
     "Popup Shield": {
       "name": "Popup Shield",
-      "description": "<p>A foldable bulletproof shield that can be drawn or stowed easily. Can't hold anything with this hand while activated. </p>"
+      "description": "<p>A foldable bulletproof shield that can be drawn or stowed easily. Can't hold anything with this hand while activated.</p>"
     },
     "Quick Change Mount": {
       "name": "Quick Change Mount",
-      "description": "<p>Your cyberarm can be detached and re-attached (and swapped) using your open socket. Keep an arm for every occasion. </p>"
+      "description": "<p>Your cyberarm can be detached and re-attached (and swapped) using your open socket. Keep an arm for every occasion.</p>"
     },
     "Radar Detector": {
       "name": "Radar Detector",
@@ -275,7 +275,7 @@
     },
     "Radar/Sonar Implant": {
       "name": "Radar/Sonar Implant",
-      "description": "<p>Scans 50m/yds around you. Doesn't work through cover. </p>"
+      "description": "<p>Scans 50m/yds around you. Doesn't work through cover.</p>"
     },
     "Radiation Detector": {
       "name": "Radiation Detector",
@@ -289,17 +289,17 @@
       "name": "Radio Scanner/Music Player",
       "description": "<p>Tune into CitiNet radio stations or play your locally saved music.</p>"
     },
-    "Realskinn Covering (Cyber Arm)": {
-      "name": "Realskinn Covering (Cyber Arm)",
-      "description": "<p>An artifical skin type for your arm. </p>"
+    "Realskinn™ Covering (Cyber Arm)": {
+      "name": "Realskinn™ Covering (Cyber Arm)",
+      "description": "<p>An artifical skin type for your arm.</p>"
     },
-    "Realskinn Covering (Cyber Leg)": {
-      "name": "Realskinn Covering (Cyber Leg)",
-      "description": "<p>An artifical skin type for your leg. </p>"
+    "Realskinn™ Covering (Cyber Leg)": {
+      "name": "Realskinn™ Covering (Cyber Leg)",
+      "description": "<p>An artifical skin type for your leg.</p>"
     },
     "Rippers": {
       "name": "Rippers",
-      "description": "<p>Very sharp fingernails which are a Medium Melee Weapon. Can be concealed. </p>"
+      "description": "<p>Very sharp fingernails which are a Medium Melee Weapon. Can be concealed.</p>"
     },
     "Sandevistan": {
       "name": "Sandevistan",
@@ -311,27 +311,27 @@
     },
     "Scratchers": {
       "name": "Scratchers",
-      "description": "<p>Sharp fingernails which are a Light Melee Weapon. Can be concealed. </p>"
+      "description": "<p>Sharp fingernails which are a Light Melee Weapon. Can be concealed.</p>"
     },
     "Sensor Array": {
       "name": "Sensor Array",
-      "description": "<p>Allows you to install up to 5 more cyberaudio options. </p>"
+      "description": "<p>Allows you to install up to 5 more cyberaudio options.</p>"
     },
     "Shift Tacts": {
       "name": "Shift Tacts",
-      "description": "<p>Change eye color. Can be activated/deactivated at will. </p>"
+      "description": "<p>Change eye color. Can be activated/deactivated at will.</p>"
     },
     "Shoulder Cam": {
       "name": "Shoulder Cam",
-      "description": "<p>A stowable camera that pops out of your shoulder. Can link with an agent or memory chip. </p>"
+      "description": "<p>A stowable camera that pops out of your shoulder. Can link with an agent or memory chip.</p>"
     },
     "Skate Foot": {
       "name": "Skate Foot",
-      "description": "<p>While running your movement is increased by 6m/yds. Must be paired. </p>"
+      "description": "<p>While running your movement is increased by 6m/yds. Must be paired.</p>"
     },
     "Skill Chip": {
       "name": "Skill Chip",
-      "description": "<p>Chipware. Provides  a value of 3 to a specific skill while installed (unless the skill is already 3+). </p>"
+      "description": "<p>Chipware.</p><p>Sets a Skill to 3 unless the skill is already &gt;3*.</p><p><em>* Not supported, Skill must be modified manually.</em></p>"
     },
     "Skin Weave": {
       "name": "Skin Weave",
@@ -343,15 +343,15 @@
     },
     "Slice 'N Dice": {
       "name": "Slice 'N Dice",
-      "description": "<p>Monofilament wiring which is a Medium Melee Weapon. Can be concealed. </p>"
+      "description": "<p>Monofilament wiring which is a Medium Melee Weapon. Can be concealed.</p>"
     },
     "Standard Foot": {
       "name": "Standard Foot",
-      "description": "<p>Looks like a normal foot for the most part. </p>"
+      "description": "<p>Looks like a normal foot for the most part.</p>"
     },
     "Standard Hand": {
       "name": "Standard Hand",
-      "description": "<p>Looks like a normal hand for the most part. </p>"
+      "description": "<p>Looks like a normal hand for the most part.</p>"
     },
     "Subdermal Armor": {
       "name": "Subdermal Armor",
@@ -359,19 +359,19 @@
     },
     "Subdermal Grip": {
       "name": "Subdermal Grip",
-      "description": "<p>Plating on your hand which allows you to utilise Smartguns. Requires a neural link. </p>"
+      "description": "<p>Plating on your hand which allows you to utilise Smartguns. Requires a neural link.</p>"
     },
     "Subdermal Pocket": {
       "name": "Subdermal Pocket",
       "description": "<p>2x4 inch underskin pocket</p>"
     },
-    "Superchrome Covering (Cyber Arm)": {
-      "name": "Superchrome Covering (Cyber Arm)",
-      "description": "<p>A metallic coating for your arm. Provides +2 to Wardrobe and Style. </p>"
+    "Superchrome® Covering (Cyber Arm)": {
+      "name": "Superchrome® Covering (Cyber Arm)",
+      "description": "<p>A metallic coating for your arm. Provides +2 to Wardrobe and Style.*</p><p><em>*Note: Superchrome effects do not stack and will need to be managed in the Effects tab if multiple Superchrome items are installed.</em></p>"
     },
-    "Superchrome Covering (Cyber Leg)": {
-      "name": "Superchrome Covering (Cyber Leg)",
-      "description": "<p>A metallic coating for your leg. Provides +2 to Wardrobe and Style. </p>"
+    "Superchrome® Covering (Cyber Leg)": {
+      "name": "Superchrome® Covering (Cyber Leg)",
+      "description": "<p>A metallic coating for your leg. Provides +2 to Wardrobe and Style.*</p><p><em>*Note: Superchrome effects do not stack and will need to be managed in the Effects tab if multiple Superchrome items are installed.</em></p>"
     },
     "Tactile Boost": {
       "name": "Tactile Boost",
@@ -379,7 +379,7 @@
     },
     "Talon Foot": {
       "name": "Talon Foot",
-      "description": "<p>A retractable blade in your foot which is a Light Melee Weapon. </p>"
+      "description": "<p>A retractable blade in your foot which is a Light Melee Weapon.</p>"
     },
     "Targeting Scope": {
       "name": "Targeting Scope",
@@ -391,7 +391,7 @@
     },
     "Techscanner": {
       "name": "Techscanner",
-      "description": "<p>Contains a variety of built-in gadgets and tools. Provides a +2 bonus to multiple skill checks. </p>"
+      "description": "<p>Contains a variety of built-in gadgets and tools. Provides a +2 bonus to multiple skill checks.</p>"
     },
     "TeleOptics": {
       "name": "TeleOptics",
@@ -403,27 +403,27 @@
     },
     "Toxin Binders": {
       "name": "Toxin Binders",
-      "description": "<p>Provides +2 to Resist Torture/Drugs checks. </p>"
+      "description": "<p>Provides +2 to Resist Torture/Drugs checks.</p>"
     },
     "Vampyres": {
       "name": "Vampyres",
-      "description": "<p>Pointy Teeth which is a Light Melee weapon. Can use poison/toxins. </p>"
+      "description": "<p>Pointy Teeth which is a Light Melee weapon. Can use poison/toxins.</p>"
     },
     "Virtuality": {
       "name": "Virtuality",
-      "description": "<p>Must be paired. Built-in virtuality goggles. </p>"
+      "description": "<p>Must be paired. Built-in virtuality goggles.</p>"
     },
     "Voice Stress Analyzer": {
       "name": "Voice Stress Analyzer",
-      "description": "<p>Provides +2 to Human Perception and Interrogation checks. Can activate a special lie-detecting mode. </p>"
+      "description": "<p>Provides +2 to Human Perception and Interrogation checks. Can activate a special lie-detecting mode.</p>"
     },
     "Web Foot": {
       "name": "Web Foot",
-      "description": "<p>Webbing between your toes allows you to swim. Must be paired. </p>"
+      "description": "<p>Webbing between your toes allows you to swim. Must be paired.</p>"
     },
     "Wolvers": {
       "name": "Wolvers",
-      "description": "<p>Claws which retract from your knuckles which is a Heavy Melee Weapon. Can be concealed. </p>"
+      "description": "<p>Claws which retract from your knuckles which is a Heavy Melee Weapon. Can be concealed.</p>"
     }
   }
 }

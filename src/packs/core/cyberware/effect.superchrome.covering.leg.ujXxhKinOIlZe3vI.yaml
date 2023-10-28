@@ -1,10 +1,11 @@
-_id: LQDd5nho7VGc0hgJ
-_key: "!items.effects!CHQVWD2VlDiWJSzf.LQDd5nho7VGc0hgJ"
+_id: ujXxhKinOIlZe3vI
+_key: "!items.effects!qpLAhi08ZCgbukzn.ujXxhKinOIlZe3vI"
 changes:
   - key: bonuses.wardrobeAndStyle
     mode: 2
     priority: null
     value: "2"
+description: ""
 disabled: false
 duration:
   combat: null
@@ -24,6 +25,7 @@ flags:
           isSituational: false
           onByDefault: false
 icon: systems/cyberpunk-red-core/icons/compendium/cyberware/superchrome_covering.svg
-name: Superchrome
+name: Superchrome® Covering (Leg)
+statuses: []
 tint: null
 transfer: true
