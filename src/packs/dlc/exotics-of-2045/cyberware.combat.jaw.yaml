@@ -13,9 +13,9 @@ system:
   core: false
   damage: 4d6
   description:
-    value: |-
-      <p>Implanted Very Heavy Melee Weapon.</p>
-      <p>Refer to the full description on page 72 of Interface Red vol. 2.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Implanted Very Heavy Melee Weapon.</p>
   dvTable: ""
   favorite: false
   fireModes:

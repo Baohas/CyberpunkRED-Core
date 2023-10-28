@@ -8,27 +8,27 @@
     },
     "Combat Jaw": {
       "name": "Combat Jaw",
-      "description": "<p>Implanted Very Heavy Melee Weapon.</p>\n<p>Refer to the full description on page 72 of Interface Red vol. 2.</p>"
+      "description": "<p>Implanted Very Heavy Melee Weapon.</p>"
     },
     "Combat Tail": {
       "name": "Combat Tail",
-      "description": "<p>Implanted Heavy Melee Weapon. Requires Neural Link.</p>\n<p>Refer to the full description on page 72 of Interface Red vol. 2.</p>"
+      "description": "<p>Implanted Heavy Melee Weapon. Requires Neural Link.</p>"
     },
     "Extra-Jointed Cyberarm Upgrade": {
       "name": "Extra-Jointed Cyberarm Upgrade",
-      "description": "<p>Enchances cyberarm articulation. +2 Contortionist. (See Black Chrome pg. 18 for more details)</p>"
+      "description": "<p>Enchances cyberarm articulation. +2 Contortionist.</p>"
     },
     "Extra-Jointed Cyberleg Upgrade": {
       "name": "Extra-Jointed Cyberleg Upgrade",
-      "description": "<p>Enchances cyberleg articulation. +2 Contortionist. (See Black Chrome pg. 18 for more details)</p>"
+      "description": "<p>Enchances cyberleg articulation. +2 Contortionist.</p>"
     },
     "Firebreather": {
       "name": "Firebreather",
-      "description": "<p>Implanted Exotic Shotgun. Can only hold one incendiary shotgun shell. </p>\n<p>Refer to the full description on page 73 of Interface Red vol. 2.</p>"
+      "description": "<p>Implanted Exotic Shotgun. Can only hold one incendiary shotgun shell.</p>"
     },
     "Heuristic Health Monitor": {
       "name": "Heuristic Health Monitor",
-      "description": "<p>Requires biomonitor. Can know HP at a glance. (See Black Chrome pg. 19 for more details)</p>"
+      "description": "<p>Requires biomonitor. Can know HP at a glance.</p>"
     },
     "NeuTongue": {
       "name": "NeuTongue",
@@ -36,7 +36,7 @@
     },
     "Reflex Co-Processor": {
       "name": "Reflex Co-Processor",
-      "description": "<p>Neuralware. Negates REF requirement to dodge bullets. (See Black Chrome pg. 21 for more details)</p>"
+      "description": "<p>Neuralware. Negates REF requirement to dodge bullets.</p>"
     }
   }
 }
