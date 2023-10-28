@@ -260,7 +260,10 @@ const Container = function Container() {
 
     // `document.update` returns undefined if no changes were made. Double exclamation point
     // to make this a boolean.
-    const update = !!(await this.installWorldItems(itemList, installedItems));
+    const update =
+      this.documentName === "Actor"
+        ? !!(await this.update({ "system.installedItems": installedItems }))
+        : !!(await this.installWorldItems(itemList, installedItems));
 
     // Rerender items directory for world items.
     if (!this.isEmbedded) ui.sidebar.tabs.items.render(true);
