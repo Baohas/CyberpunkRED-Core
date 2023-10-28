@@ -1,7 +1,8 @@
 _id: Du1fktuaMc52c1NH
 _key: "!items!Du1fktuaMc52c1NH"
 effects: []
-img: icons/consumables/potions/bottle-conical-corked-nameed-skull-poison-green.webp
+img: >-
+  icons/consumables/potions/bottle-conical-corked-labeled-skull-poison-green.webp
 name: Vial of Poison
 system:
   amount: 1

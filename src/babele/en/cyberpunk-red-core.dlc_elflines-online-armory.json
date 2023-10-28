@@ -10,7 +10,7 @@
     },
     "Poison Arrow": {
       "name": "Poison Arrow",
-      "description": "<p>No immediate damage. If meat target hit, DV13 Resist Torture/Drugs Check. On a fail 2d6 damage to HP. No Ablation. </p>"
+      "description": "<p>No immediate damage. If meat target hit, <strong>DV13 Resist Torture/Drugs</strong> Check. On a fail 2d6 damage to HP. No Ablation.</p>"
     },
     "Chainmail Armor (Body)": {
       "name": "Chainmail Armor (Body)",
