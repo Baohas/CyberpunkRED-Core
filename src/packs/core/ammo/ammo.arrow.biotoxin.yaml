@@ -12,8 +12,8 @@ system:
     isConcealed: false
   description:
     value: >-
-      <p>No immediate damage. If hit DV15 Resist Torture/Drugs Check. On a fail
-      3d6 damage to HP. No Ablation. </p>
+      <p>No immediate damage. If hit <strong>DV15 Resist Torture/Drugs</strong>
+      Check. On a fail 3d6 damage to HP. No Ablation.</p>
   favorite: false
   overrides:
     autofire:

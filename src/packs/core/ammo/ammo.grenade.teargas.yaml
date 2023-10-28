@@ -12,9 +12,9 @@ system:
     isConcealed: false
   description:
     value: >-
-      <p>Deals no Damage. Hit targets with Meat eyes roll DV13 Resist
-      Torture/Drugs Check. On fail suffer Damaged Eye Critical Injury (See pg.
-      188) for 1 minute. Does not deal critical bonus damage.</p>
+      <p>Deals no Damage. Hit targets with Meat eyes roll <strong>DV13 Resist
+      Torture/Drugs</strong> Check. On fail suffer Damaged Eye Critical Injury
+      (See pg. 188) for 1 minute. Does not deal critical bonus damage.</p>
   favorite: false
   overrides:
     autofire:

@@ -12,9 +12,9 @@ system:
     isConcealed: false
   description:
     value: >-
-      <p>Deals no damage. If hit roll DV15 Resist Torture/Drugs. On a fail take
-      the Damaged Eye and Damaged Ear Critical injuries (see pg. 188) for 1
-      minute. No Crit damage dealt. </p>
+      <p>Deals no damage. If hit roll <strong>DV15 Resist
+      Torture/Drugs</strong>. On a fail take the Damaged Eye and Damaged Ear
+      Critical injuries (see pg. 188) for 1 minute. No Crit damage dealt.</p>
   favorite: false
   overrides:
     autofire:
