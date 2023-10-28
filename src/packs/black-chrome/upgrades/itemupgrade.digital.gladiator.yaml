@@ -13,10 +13,10 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>An app for your agent. Create a virtual Solo and take your fights into
-      the digital realm!</p>
-
-      <p>Rules for fights can be found on page 12.</p>
+      <p>Agent App.</p><p>Perhaps you're better suited to duking it out online
+      than in the streets…</p><p>Rules related to creating, playing with, and
+      fighting an opponent in Digital Gladiator are contained in Black Chrome
+      rulebook for this item.</p>
   dvTable: ""
   favorite: false
   fireModes:

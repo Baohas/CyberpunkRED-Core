@@ -13,10 +13,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>An app for your agent. Can reveals weak points by scanning your home.
-      Or a section of cover...</p>
-
-      <p>Full rules can be found on page 13.</p>
+      <p>Agent App.</p><p>Can reveals weak points by scanning your home. Or a
+      section of cover...</p>
   dvTable: ""
   favorite: false
   fireModes:

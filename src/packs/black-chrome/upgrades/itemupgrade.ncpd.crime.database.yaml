@@ -14,10 +14,8 @@ system:
   damage: 1d6
   description:
     value: >-
-      <p>An app for your agent. Allows the user to look up public criminal
-      information. Full rules for using can be found on page 13.</p>
-
-      <p>&nbsp;</p>
+      <p>Agent App.</p><p>Requires CitiNet access in Night City. Allows user to
+      research crime database.</p>
   dvTable: ""
   favorite: false
   fireModes:
