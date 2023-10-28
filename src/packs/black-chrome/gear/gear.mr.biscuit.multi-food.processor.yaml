@@ -11,9 +11,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Can sustain a group of up to 10 people when in the Outskirts. For more
-      information, see Black Chrome Page 49.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Can sustain a group of up to 10 people when in the Outskirts.</p>
   equipped: owned
   favorite: false
   installedItems:

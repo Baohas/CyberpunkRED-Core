@@ -14,7 +14,7 @@ system:
     value: >-
       <p>When set up, provides access to a Citinet when within 50 miles of the
       city or of another set up WorldSat Aerial Sphere that is connected to the
-      Citinet. For more information, see Black Chrome Page 50.</p>
+      Citinet.</p>
   equipped: owned
   favorite: false
   installedItems:

@@ -1,7 +1,7 @@
 _id: QE785D3EE383knl6
 _key: "!items!QE785D3EE383knl6"
 effects:
-  - wt756dqaUSrGgJek
+  - ooPd6s81jF5J1lpO
 img: systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
 name: Vermilion Linear Frame
 system:
@@ -12,10 +12,10 @@ system:
     isConcealed: false
   description:
     value: >-
-      <p>Exoskeleton. Requires 2 Interface Plugs. Increases BODY to 12 while
-      plugged in. No changes to your HP or Deathsave. &nbsp;No movement penalty
-      for jumping. While running your movement is increased by 6m/yds. (See
-      Black Chrome pg. 54 for more details.)</p>
+      <p>Exoskeleton.</p><ul><li>Requires 2 Interface Plugs</li><li>Increases
+      BODY to 12 while plugged in</li><li>No changes to your HP or
+      Deathsave</li><li>No movement penalty for jumping</li><li>Operates as if
+      paired Skate Feet are installed</li></ul>
   equipped: owned
   favorite: false
   installedItems:

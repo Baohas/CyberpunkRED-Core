@@ -12,10 +12,10 @@ system:
     isConcealed: false
   description:
     value: >-
-      <p>Exoskeleton. Requires 2 Interface Plugs. Increases BODY to 12 while
-      plugged in. No changes to your HP or Deathsave. Ignores the normal
-      movement penalty for climbing and swimming. (See Black Chrome pg. 53 for
-      more details.)</p>
+      <p>Exoskeleton.</p><ul><li>Requires 2 Interface Plugs</li><li>Increases
+      BODY to 12 while plugged in</li><li>Does not affect HP or
+      Deathsave</li><li>Ignores the normal movement penalty for climbing and
+      swimming</li></ul>
   equipped: owned
   favorite: false
   installedItems:

@@ -12,7 +12,7 @@ system:
   description:
     value: >-
       <p>Can hold up to 8 pieces of Chipware. Chipware stored inside are immune
-      to EMP effects. For more information, see Black Chrome Page 44.</p>
+      to EMP effects.</p>
   equipped: owned
   favorite: false
   installedItems:

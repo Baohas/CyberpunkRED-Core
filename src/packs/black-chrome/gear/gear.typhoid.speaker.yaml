@@ -13,8 +13,7 @@ system:
   description:
     value: >-
       <p>When linked to a KillStrom Sonic Boom Amp, increases the DV of the
-      Resist Torture/Drugs Check. For more information, see Black Chrome Page
-      41.</p>
+      Resist Torture/Drugs Check.</p>
   equipped: owned
   favorite: false
   installedItems:

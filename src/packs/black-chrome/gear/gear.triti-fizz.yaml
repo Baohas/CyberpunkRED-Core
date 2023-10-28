@@ -10,9 +10,9 @@ system:
     concealable: true
     isConcealed: false
   description:
-    value: >-
-      <p>North America's favorite soft drink. For more information, see Black
-      Chrome Page 124.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>North America's favorite soft drink.</p>
   equipped: owned
   favorite: false
   installedItems:

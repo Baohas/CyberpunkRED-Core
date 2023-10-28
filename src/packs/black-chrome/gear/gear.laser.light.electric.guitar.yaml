@@ -15,8 +15,7 @@ system:
     value: >-
       <p>Electric Guitar that gives the User a +1 to their Play Instrument
       (Guitar) Skill Check. This guitar also counts as one installation of Light
-      Tattoo Fashionware while worn. For more information, see Black Chrome Page
-      41.</p>
+      Tattoo Fashionware while worn.</p>
   equipped: owned
   favorite: false
   installedItems:

@@ -13,8 +13,7 @@ system:
   description:
     value: >-
       <p>Miniature Workshop. Allows a Tech to use Upgrade and Fabrication
-      Experstise anywhere as long as they have techtools. For more information,
-      see Black Chrome Page 43.</p>
+      Experstise anywhere as long as they have techtools.</p>
   equipped: owned
   favorite: false
   installedItems:

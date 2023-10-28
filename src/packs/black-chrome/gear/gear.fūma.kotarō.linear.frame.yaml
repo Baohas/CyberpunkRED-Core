@@ -6,32 +6,21 @@ img: systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
 name: Fūma Kotarō Linear Frame
 system:
   amount: 1
-  brand: Fūma Kotarō
+  brand: ""
   concealable:
     concealable: false
     isConcealed: false
   description:
     value: >-
-      <p>Exoskeleton.</p>
-
-      <ul>
-
-      <li>Requires 2 Interface Plugs</li>
-
-      <li>Increases BODY to 12 while plugged in</li>
-
-      <li>Does not affect HP or Deathsave</li>
-
-      <li>Stealth +2</li>
-
-      </ul>
-
-      <p>Comes with two Excellent Quality Exotic Heavy Melee Weapons and one
-      Excellent Quality Exotic Light Melee Weapon pre-installed*.</p>
-
-      <p>See Black Chrome pg. 52 for more details.</p>
-
-      <p><em>* Must be manually added.</em></p>
+      <p>Exoskeleton.</p><ul><li>Requires 2 Interface Plugs</li><li>Increases
+      BODY to 12 while plugged in</li><li>Does not affect HP or
+      Deathsave</li><li>Stealth +2</li><li>Drawing and sheathing the frame's
+      weapons does not require an Action</li><li>A Conceal check is not required
+      for the weapons concealed in the frame.</li><li><p>Frame has one of two
+      weapon options*:</p><ul><li>Two excellent quality exotic heavy melee
+      weapons</li><li>One excellent quality light melee weapon and one excellent
+      quality exotic very heavy melee weapon</li></ul></li></ul><p><em>* Must be
+      manually added.</em></p>
   equipped: owned
   favorite: false
   installedItems:

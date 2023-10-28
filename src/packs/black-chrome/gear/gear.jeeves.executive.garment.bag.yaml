@@ -11,9 +11,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Bag that can repair one piece of fashion or armor at a time. For more
-      information, see Black Chrome Page 43.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Bag that can repair one piece of fashion or armor at a time.</p>
   equipped: owned
   favorite: false
   installedItems:

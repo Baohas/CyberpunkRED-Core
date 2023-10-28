@@ -2,7 +2,7 @@ _id: wSx9q7TVUJevCu8w
 _key: "!items!wSx9q7TVUJevCu8w"
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/co2-tank.svg
-name: CO2 Tank
+name: CO₂ Tank
 system:
   amount: 1
   brand: Masetto Tech Clothing
@@ -11,9 +11,8 @@ system:
     isConcealed: false
   description:
     value: >-
-      <p>A CO2 tank designed for usage with the Masetto AirRider armor. Must be
-      replaced after every usage. Refer to full item description on BC pg.
-      33.</p>
+      <p>A CO<sub>2</sub> tank designed for usage with the Masetto AirRider
+      armor. Must be replaced after every usage.</p>
   equipped: owned
   favorite: false
   installedItems:

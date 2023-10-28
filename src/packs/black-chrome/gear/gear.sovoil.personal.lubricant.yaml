@@ -10,9 +10,9 @@ system:
     concealable: true
     isConcealed: false
   description:
-    value: >-
-      <p>Lubricant in a helpfully sized can. For more information, see Black
-      Chrome Page 56.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Lubricant in a helpfully sized can.</p>
   equipped: owned
   favorite: false
   installedItems:

@@ -10,9 +10,9 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: >-
-      <p>Produces enough water to sustain a person. For more information, see
-      Black Chrome Page 48.</p>
+    chat: ""
+    unidentified: ""
+    value: <p>Produces enough water to sustain a person.</p>
   equipped: owned
   favorite: false
   installedItems:

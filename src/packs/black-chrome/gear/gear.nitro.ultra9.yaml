@@ -12,8 +12,7 @@ system:
   description:
     value: >-
       <p>Can be poured into a Vehicle's tank to refill it as an Action. Gives
-      bonuses to movement at the expense of safety. For more information, see
-      Black Chrome Page 49.</p>
+      bonuses to movement at the expense of safety.</p>
   equipped: owned
   favorite: false
   installedItems:

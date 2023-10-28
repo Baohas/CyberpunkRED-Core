@@ -12,8 +12,7 @@ system:
   description:
     value: >-
       <p>Provides protection from Exposure. Counts as Sleeping in the Wilderness
-      or as Sleeping on the Streets. For more information, see Black Chrome Page
-      48.</p>
+      or as Sleeping on the Streets.</p>
   equipped: owned
   favorite: false
   installedItems:
