@@ -165,18 +165,7 @@ const itemHooks = () => {
 
     // If this item is being imported into the world,
     // and it has embedded installed item data in its flags.
-    if (!doc.parent && doc.flags.cprInstallTree) {
-      // If it doesnt have a folder, create one so that
-      // the item and its installed items are organized.
-      if (!doc.folder) {
-        const folderName = SystemUtils.Format(
-          "CPR.global.imports.topLevelFolderName",
-          { name: doc.name, id: doc.id }
-        );
-        await doc.update({
-          folder: await SystemUtils.GetFolder("Item", folderName),
-        });
-      }
+    if (!doc.parent && !doc.pack && doc.flags.cprInstallTree) {
       // Convert the embedded data into other world items and update
       // the original item's `system.installedItems.list` to point to them.
       doc.importInstalledToWorld();

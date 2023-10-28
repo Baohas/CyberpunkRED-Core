@@ -250,22 +250,9 @@ export default class CPRItem extends Item {
     const item = await super.importFromJSON(json);
     // Only manipulate the imported item if it contains installed item data.
     if (item.flags.cprInstallTree) {
-      // If the newly created item contains installed item data,
-      // import the item into a folder (if it doesn't already live in one).
-      // That way, that the newly created installed items are organized.
-      // Installed items will then be placed in sub-folders.
-      if (!item.folder) {
-        const folderName = SystemUtils.Format(
-          "CPR.global.imports.topLevelFolderName",
-          { name: item.name, id: item.id }
-        );
-        await item.update({
-          folder: await SystemUtils.GetFolder("Item", folderName),
-        });
-      }
       // Recursively create installed items from the item data embedded in
       // `item.flags.cprInstallTree`
-      return item.importInstalledToWorld();
+      return item.importInstalledToWorld(true);
     }
 
     // If item does not have embedded installed data, just return the item.

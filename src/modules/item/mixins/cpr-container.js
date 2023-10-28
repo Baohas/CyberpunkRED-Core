@@ -482,7 +482,7 @@ const Container = function Container() {
   /**
    * Recursive function to create installed items from imported data.
    *
-   * @param {CPRItem(Container)} item - An object converted from data to an instance of CPRItem
+   * @param {Boolean} recursive - Whether or not to install recursively.
    * @returns {CPRItem(container)} - the updated item
    */
   this.importInstalledToWorld = async function importInstalledToWorld(
@@ -491,26 +491,9 @@ const Container = function Container() {
     LOGGER.trace("importInstalledToWorld | CPRItem | called.");
     const newInstalledList = [];
     const { flags } = this;
-    for (const itemData of this.flags.cprInstallTree) {
-      // Every sublevel of installed item will have its own folder,
-      // Pointing to what is installed in.
-      const parentFolder = this.folder;
-      const folderName = SystemUtils.Format(
-        "CPR.global.imports.subLevelFolderName",
-        { name: this.name, id: this.id }
-      );
-
-      // Folders can have a max depth of 4, so we can't keep creating subfolders.
-      const parent =
-        parentFolder.depth < 4 ? parentFolder : parentFolder.folder;
-      // eslint-disable-next-line no-await-in-loop
-      itemData.folder = await SystemUtils.GetFolder("Item", folderName, {
-        parent,
-      });
-
+    const newItems = await Item.createDocuments(flags.cprInstallTree);
+    for (const newItem of newItems) {
       // Create the item from the object data.
-      // eslint-disable-next-line no-await-in-loop
-      const newItem = await Item.create(itemData);
       newInstalledList.push(newItem.id);
       if (recursive && newItem.flags.cprInstallTree) {
         newItem.importInstalledToWorld(recursive);
@@ -519,10 +502,11 @@ const Container = function Container() {
     // Update the item with installed list that contains the newly created items' ids.
     // And remove the now unnecessary import flag.
     flags["-=cprInstallTree"] = null;
-    return this.update({
+    await this.update({
       flags,
       "system.installedItems.list": newInstalledList,
     });
+    ui.sidebar.tabs.items.render(true);
   };
 
   /**
