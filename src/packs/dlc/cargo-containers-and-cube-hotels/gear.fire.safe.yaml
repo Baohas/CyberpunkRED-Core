@@ -11,13 +11,12 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>Small fireproof lockbox made of Thick Steel.</p>
-      <ul>
-      <li>50HP</li>
-      <li>30cm / 1ft</li>
-      <li>Can be picked with a DV15 Pick Lock Skill Check</li>
-      </ul>
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>Small fireproof lockbox made of Thick
+      Steel.</p><ul><li>50HP</li><li>30cm / 1ft</li><li>Can be picked with a
+      <strong>DV15 Pick Lock</strong> Skill Check</li></ul>
   equipped: owned
   favorite: false
   installedItems:

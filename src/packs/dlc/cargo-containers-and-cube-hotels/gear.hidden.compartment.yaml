@@ -11,12 +11,12 @@ system:
     concealable: false
     isConcealed: false
   description:
-    value: |-
-      <p>A small hidden compartment inside the Cargo Container.</p>
-      <ul>
-      <li>15.25x30x7.5cm / 6x12x3in</li>
-      <li>Can be found with a DV15 Conceal/Reveal Object Skill Check</li>
-      </ul>
+    chat: ""
+    unidentified: ""
+    value: >-
+      <p>A small hidden compartment inside the Cargo
+      Container.</p><ul><li>15.25x30x7.5cm / 6x12x3in</li><li>Can be found with
+      a <strong>DV15 Conceal/Reveal Object</strong> Skill Check</li></ul>
   equipped: owned
   favorite: false
   installedItems:
