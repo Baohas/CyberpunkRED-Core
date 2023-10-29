@@ -874,9 +874,12 @@ export default function registerHandlebarsHelpers() {
    * This is for items that have installed items in the gear tab.
    *
    * @param {CPRItem(Container)} item - The top-level item.
+   * @param {Object} options - Contains Hash Argument from Handlebars
+   * @param {Object} [options.hash.isItemSheet] - Whether or not this is being called on an item sheet.
+   *                                              If false/undefined, this is being called on an actor sheet.
    * @returns {Handlebars.SafeString} - Nested list of installed items.
    */
-  Handlebars.registerHelper("cprNestedInstalledGearTab", (item) => {
+  Handlebars.registerHelper("cprNestedInstalledGearTab", (item, options) => {
     LOGGER.trace("cprGearInstalled | handlebarsHelper | Called.");
 
     /**
@@ -953,14 +956,11 @@ export default function registerHandlebarsHelpers() {
 
     // Only create a dropdown if the item isn't installed, and has installed items.
     // The exception is cyberdecks, cyberdecks remain on gear tab whether or not they are installed.
-    if (
-      item.system.hasInstalled &&
-      (item.type === "cyberdeck" || !item.system.isInstalled)
-    ) {
+    if (item.system.hasInstalled) {
       const html = recursiveHTML(item);
       // Is subitem hidden or not
       const display =
-        !item.isEmbedded || // Never hide this list for world items.
+        options.hash.isItemSheet || // Never hide this list on item sheets.
         item.actor?.flags?.[game.system.id]?.showInstalled?.[item.id]
           ? ""
           : "item-hidden";
