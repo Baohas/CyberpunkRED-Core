@@ -274,7 +274,9 @@ const Container = function Container() {
    * This will install items into this *world* item. When world items are installed, a copy should be made of every nested
    * installed item, and the `installedItems.list` should be updated. This way, world items can work as a sort of 'infinite-stack'.
    * In other words, you can keep installing new copies of items from the same world item. That is why it is necessary to break
-   * out the logic of installation into world items specifically.
+   * out the logic of installation into world items specifically. The reason that you dont see recursion in this function, is
+   * because it gets called from the `createItem` hook. Every new item that is created calls the hook (which then calls this
+   * function, and so on), and thus the recursion is actually embedded in the hook. It really is recursive, just invisibly so.
    *
    * @recursive
    * @param {Array} itemList - Array of Item Objects to be installed
@@ -298,19 +300,6 @@ const Container = function Container() {
       (id) => !oldItemIDs.includes(id)
     );
     installedItems.list = [...difference, ...newItemIDs];
-
-    for (const item of newItems) {
-      // Skip this iteration of the loop if the new item doesn't have installed items itself.
-      // eslint-disable-next-line no-continue
-      if (!item.system.hasInstalled) continue;
-
-      // Get the list of installed items to duplicate and reinstall.
-      const reinstallList = item.system.installedItems.list.map((id) =>
-        game.items.get(id)
-      );
-      // Call this function recursively on the new item.
-      await item.installWorldItems(reinstallList, item.system.installedItems);
-    }
     // Update the installedItems.list reference with the list of new IDs.
     return this.update({ "system.installedItems": installedItems });
   };

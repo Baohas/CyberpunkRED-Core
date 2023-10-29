@@ -171,6 +171,21 @@ const itemHooks = () => {
       doc.importInstalledToWorld();
     }
 
+    // If a world item is being created and has installed items, lets
+    // duplicate those installed items and reinstall them so that each
+    // world item has unique items installed into it.
+    if (!doc.parent && doc.system.hasInstalled && !doc.flags.cprInstallTree) {
+      const installedItemList = doc.system.installedItems.list.map((id) =>
+        game.items.get(id)
+      );
+      // Reset the new item's install list and used slots.
+      await doc.update({
+        "system.installedItems": { list: [], usedSlots: 0 },
+      });
+      doc.installItems(installedItemList);
+    }
+
+    // Role stuff
     const actor = doc.parent;
     if (actor !== null) {
       if (doc.type === "role") {

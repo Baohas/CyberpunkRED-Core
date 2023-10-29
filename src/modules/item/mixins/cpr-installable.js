@@ -99,7 +99,7 @@ const Installable = function Installable() {
     const { actor } = this;
 
     // In theory, something could be installed in multiple items.
-    // In practice, this is currently only true for world items and ammo items (on a character sheet).
+    // In practice, this is currently only true for ammo items (on a character sheet).
     let containers;
     if (providedContainers?.length > 0) {
       containers = providedContainers;
