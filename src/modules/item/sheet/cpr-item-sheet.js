@@ -1,4 +1,4 @@
-/* global TextEditor ItemSheet */
+/* global TextEditor ItemSheet CONFIG */
 /* global mergeObject, game, $, hasProperty, getProperty, setProperty, duplicate */
 import LOGGER from "../../utils/cpr-logger.js";
 import CPR from "../../system/config.js";
@@ -941,12 +941,18 @@ export default class CPRItemSheet extends ItemSheet {
 
   async _uninstallSingleItem(event) {
     LOGGER.trace("_uninstallSingleItem | CPRItemSheet | Called.");
+    // Warn/disallow user if trying to uninstall from items in a pack.
+    if (this.item.pack)
+      return SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.messages.warningCannotModifyInstalledInPack")
+      );
     const installedItemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const actor = this.item.isEmbedded ? this.item.actor : null;
     const installedItem = actor
       ? actor.getOwnedItem(installedItemId)
       : game.items.get(installedItemId);
-    installedItem.uninstall();
+    return installedItem.uninstall();
   }
 
   async _roleAbilityAction(event) {
@@ -1273,9 +1279,22 @@ export default class CPRItemSheet extends ItemSheet {
   _renderReadOnlyItemCard(event) {
     LOGGER.trace("_renderReadOnlyItemCard | CPRItemSheet | Called.");
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
-    const item = this.item.isEmbedded
+    let item = this.item.isEmbedded
       ? this.actor.items.find((i) => i._id === itemId)
       : game.items.get(itemId);
+
+    // If this item is in a pack, its installed items don't actually exist,
+    // except as stored data in `flags.cprInstallTree`. Thus, we find the correct
+    // piece of itemData in this install tree and create an ephermeral item so we can
+    // render its sheet.
+    if (this.item.pack) {
+      const flattenedTree = this.item.flattenInstallTree(
+        this.item.flags.cprInstallTree
+      );
+      const itemData = flattenedTree.find((i) => i._id === itemId);
+      // eslint-disable-next-line new-cap
+      item = new CONFIG.Item.documentClass(itemData); // Create ephemeral item.
+    }
     item.sheet.render(true, { editable: false });
   }
 

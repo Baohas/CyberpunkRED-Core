@@ -887,12 +887,17 @@ export default function registerHandlebarsHelpers() {
      * recursively, calling itself if child items also have installed items.
      *
      * @param {CPRItem(Container)} parentItem - The parent item (not necessarily the top-most item)
+     * @param {Number} [inItemPack] - Whether or not the top-level item is in an item compendium.
      * @param {Number} [level = 1] - The amount of indentation.
      * @returns {String}
      */
-    function recursiveHTML(parentItem, level = 0) {
+    function recursiveHTML(parentItem, inItemPack, level = 0) {
       // Get all items installed in the parent and sort.
-      const installedItems = parentItem.getInstalledItems().sort((a, b) => {
+      // If item is in a pack, get this data from the cprInstallTree instead of real world items.
+      const installedItems = inItemPack
+        ? parentItem.flags.cprInstallTree
+        : parentItem.getInstalledItems();
+      const sortedInstalled = installedItems.sort((a, b) => {
         // If items are the same type, sort alphabetically.
         if (a.type === b.type) return a.name > b.name ? 1 : -1;
 
@@ -915,10 +920,10 @@ export default function registerHandlebarsHelpers() {
             break;
         }
         return sortOrder.indexOf(a.type) > sortOrder.indexOf(b.type) ? -1 : 1;
-      }); // Sort so ammo always comes first
+      });
       let html = "";
       // For each installed item, create an <li> element with information about that item.
-      for (const childItem of installedItems) {
+      for (const childItem of sortedInstalled) {
         const localizedType = SystemUtils.Localize(
           `TYPES.Item.${childItem.type}`
         );
@@ -937,18 +942,18 @@ export default function registerHandlebarsHelpers() {
         }
 
         html += `<li class="item flexrow" data-row-level=${level}
-                     data-item-id="${childItem.id}"
+                     data-item-id="${childItem._id}"
                      data-item-category="${childItem.type}">`;
         html += `  <a class="name item-view flex-center"><span class="type-tag">${localizedType}</span> ${childItem.name}</a>`;
         // Uninstall glyph
-        html += `  <a class="uninstall-single-item button-active" data-item-id="${childItem.id}" data-direct-parent="${parentItem.id}">`;
+        html += `  <a class="uninstall-single-item" data-item-id="${childItem._id}" data-direct-parent="${parentItem._id}">`;
         html += `    ${icon}`;
         html += `  </a>`;
         html += `</li>`;
         // If the child item has its own installed items, call this function on the child item
         // and increase the indent.
         if (childItem.system.installedItems?.list?.length > 0) {
-          html += recursiveHTML(childItem, level + 1);
+          html += recursiveHTML(childItem, inItemPack, level + 1);
         }
       }
       return html;
@@ -957,7 +962,8 @@ export default function registerHandlebarsHelpers() {
     // Only create a dropdown if the item isn't installed, and has installed items.
     // The exception is cyberdecks, cyberdecks remain on gear tab whether or not they are installed.
     if (item.system.hasInstalled) {
-      const html = recursiveHTML(item);
+      const inItemPack = item.pack && !item.isEmbedded; // Check if item is in an item compendium.
+      const html = recursiveHTML(item, inItemPack);
       // Is subitem hidden or not
       const display =
         options.hash.isItemSheet || // Never hide this list on item sheets.

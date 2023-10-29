@@ -586,6 +586,26 @@ const Container = function Container() {
     const flag = nestItemObjects(this);
     return flag;
   };
+
+  /**
+   * Given an install tree (object data in flags), return every item recursively.
+   * This is used for rendering ephemeral item sheets (items that dont exist in the world data base).
+   * Why do we want to do this? So users can see (but not edit) the details of installed items which
+   * exist in items in the compendium.
+   *
+   * @param {Array} tree - item.flags.cprInstallTree (Array of CPRContainerItem-like objects)
+   */
+  this.flattenInstallTree = function flattenInstallTree(tree) {
+    const masterList = [];
+    for (const itemData of tree) {
+      masterList.push(itemData);
+      if (itemData.flags.cprInstallTree?.length > 0) {
+        const childTree = itemData.flags.cprInstallTree;
+        masterList.push(...this.flattenInstallTree(childTree));
+      }
+    }
+    return masterList;
+  };
 };
 
 export default Container;
