@@ -845,30 +845,6 @@ export default function registerHandlebarsHelpers() {
     }
   );
 
-  Handlebars.registerHelper("cprGetItemValue", (item) => {
-    LOGGER.trace("cprGetItemValue | handlebarsHelper | Called.");
-    const valuableTypes = SystemUtils.GetTemplateItemTypes("valuable");
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    let totalValue = valuableTypes.includes(item.type)
-      ? item.system.price.market
-      : 0;
-    if (containerTypes.includes(item.type)) {
-      let installedItems = [];
-      try {
-        installedItems = item.recursiveGetAllInstalledItems();
-      } catch {
-        // When an item with installed items is added, this code runs before all the installed items are added,
-        // causing issues
-      }
-      installedItems.forEach((installedItem) => {
-        totalValue += valuableTypes.includes(installedItem.type)
-          ? installedItem.system.price.market
-          : 0;
-      });
-    }
-    return totalValue;
-  });
-
   /**
    * Returns an series of nested <li> elements representing nested installed items.
    * This is for items that have installed items in the gear tab.
