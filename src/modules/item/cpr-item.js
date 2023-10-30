@@ -63,7 +63,8 @@ export default class CPRItem extends Item {
 
   /**
    * Before deleting a container item, prompt the user whether to delete nested installed items,
-   * or just uninstall them.
+   * or just uninstall them. NOTE: This function affects world items only. See `_deleteOwnedItem` (cpr-actor-sheet.js)
+   * and `deleteEmbeddedDocuments` (cpr-actor.js) for owned items.
    *
    * @override
    * @param {Object} context
@@ -71,11 +72,11 @@ export default class CPRItem extends Item {
    */
   async delete(context) {
     LOGGER.trace("delete | CPRItem | Called.");
-    if (!this.system.hasInstalled) return super.delete(context); // Return if item has no nested installed.
-
-    const deleteInstalled = await ContainerUtils.confirmContainerDelete();
-
-    if (deleteInstalled) {
+    if (!this.system.hasInstalled) return super.delete(context);
+    const formData = await ContainerUtils.confirmContainerDelete(this);
+    if (!formData)
+      return SystemUtils.debug("Form submission cancelled or dialog closed.");
+    if (formData.deleteInstalled) {
       const deleteItems = this.recursiveGetAllInstalledItems().map((i) => i.id);
       Item.deleteDocuments(deleteItems);
     }

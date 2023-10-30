@@ -7,12 +7,12 @@ import CPRDialog from "../../dialog/cpr-dialog-application.js";
 export class ContainerUtils {
   /**
    * Confirm if the user wishes to delete nested installed items or to just uninstall them.
-   * @returns {Boolean} true: delete - false: uninstall.
+   * @returns {Object|void} Form data containing whether or not to delete installed items.
    */
   static async confirmContainerDelete() {
     LOGGER.trace("confirmContainerDelete | ContainerUtils | Called.");
     // Show "Delete Container" dialog.
-    const { deleteInstalled } = await CPRDialog.showDialog(
+    return CPRDialog.showDialog(
       { deleteInstalled: game.settings.get(game.system.id, "deleteContainer") },
       {
         // Set options for dialog.
@@ -20,7 +20,6 @@ export class ContainerUtils {
         template: `systems/${game.system.id}/templates/dialog/cpr-delete-container-prompt.hbs`,
       }
     ).catch((err) => LOGGER.debug(err));
-    return !!deleteInstalled;
   }
 }
 

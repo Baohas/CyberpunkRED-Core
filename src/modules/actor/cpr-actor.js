@@ -12,7 +12,7 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 import TextUtils from "../utils/TextUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
-import Container, { ContainerUtils } from "../item/mixins/cpr-container.js";
+import Container from "../item/mixins/cpr-container.js";
 
 /**
  * CPRActor contains common code between mooks and characters (NPCs and players).
@@ -302,12 +302,17 @@ export default class CPRActor extends Actor {
    * @param {Object} [options] - an object tracking the context in which the method is being called
    * @param {Boolean} [options.cprIsMigrating = false] - Whether or not this is being called during migration.
    * @param {Boolean} [options.unloadAmmo = true]      - If ammo should be unloaded as a part of this delete action.
+   * @param {Boolean} [options.deleteInstalled = false]   - Uninstall or delete installed items?.
    * @returns {null}
    */
   async deleteEmbeddedDocuments(
     embeddedName,
     ids,
-    options = { cprIsMigrating: false, unloadAmmo: true }
+    options = {
+      cprIsMigrating: false,
+      unloadAmmo: true,
+      deleteInstalled: false,
+    }
   ) {
     LOGGER.trace("deleteEmbeddedDocuments | CPRActor | called.");
     // If migration is calling this, we assume migration is
@@ -317,53 +322,29 @@ export default class CPRActor extends Actor {
     if (isMigration)
       return super.deleteEmbeddedDocuments(embeddedName, ids, options);
 
-    // For every item that we are deleting.
+    // For every item that we are deleting...
     const uninstallPromises = [];
     for (const itemId of ids) {
       // Get the item.
       const item = this.getOwnedItem(itemId);
-      // Check if it has installed items.
+      // Check if item is installed somewhere. Uninstall it first.
+      if (item.system.isInstalled) {
+        uninstallPromises.push(item.uninstall({ skipDialog: true }));
+      }
+
+      // Check if it has installed items. Uninstall them before deleting.
       if (item.system.hasInstalled) {
-        // Check if we should delete these installed items or uninstall them.
-        const deleteInstalled = await ContainerUtils.confirmContainerDelete();
-        if (deleteInstalled) {
-          const deleteItems = item
-            .recursiveGetAllInstalledItems()
-            .map((i) => i.id);
-          super.deleteEmbeddedDocuments(embeddedName, deleteItems, options);
-        } else {
-          const itemList = [];
-          // For every installed-item in this item...
-          for (const installedId of item.system.installedItems.list) {
-            // ...get the item,...
-            const installedItem = this.getOwnedItem(installedId);
-            // ...if the item exists...
-            if (installedItem) {
-              // ...add that item to the list.
-              itemList.push(installedItem);
-            }
-          }
+        const installedItemIDs = item.system.installedItems.list;
+        const installedItemsList = installedItemIDs.map((id) =>
+          this.getOwnedItem(id)
+        );
+        if (!options.deleteInstalled) {
           // Uninstall all items before deletion of parent.
           uninstallPromises.push(
-            item.uninstallItems(itemList, {
+            item.uninstallItems(installedItemsList, {
               unloadAmmo: options.unloadAmmo,
             })
           );
-        }
-      }
-
-      if (item.system.isInstalled) {
-        // Get where it is installed (could be multiple locations, if ammo).
-        const installLocations =
-          // If item is installed in the actor,
-          item.system.installedIn.includes(this.id)
-            ? // location is the actor
-              [this]
-            : // else, location is an item or items.
-              this.getMultipleOwnedItems(item.system.installedIn);
-        // Uninstall this item from its install location(s).
-        for (const location of installLocations) {
-          uninstallPromises.push(location.uninstallItems([item]));
         }
       }
     }

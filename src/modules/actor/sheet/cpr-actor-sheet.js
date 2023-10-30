@@ -1,4 +1,4 @@
-/* global ActorSheet, $, setProperty, game, getProperty, mergeObject duplicate, TextEditor, fromUuidSync, document, canvas */
+/* global ActorSheet, $, setProperty, game, getProperty, mergeObject duplicate, TextEditor, fromUuidSync, document, canvas Item */
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRLedger from "../../dialog/cpr-ledger-form.js";
@@ -8,6 +8,7 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import CPRMod from "../../rolls/cpr-modifiers.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import { ContainerUtils } from "../../item/mixins/cpr-container.js";
 
 /**
  * Extend the basic ActorSheet, which comes from Foundry. Not all sheets used in
@@ -1035,16 +1036,24 @@ export default class CPRActorSheet extends ActorSheet {
       });
       await this.actor.updateEmbeddedDocuments("Item", updateList);
     }
-    if (item.type === "cyberware") {
-      if (item.system.isInstalled) {
-        SystemUtils.DisplayMessage(
-          "warn",
-          "CPR.messages.cyberwareDeleteWarning"
-        );
-        return;
+
+    let deleteInstalled = false;
+    let deleteList = [item.id];
+    if (item.system.hasInstalled) {
+      const formData = await ContainerUtils.confirmContainerDelete(item);
+      if (!formData) return;
+      deleteInstalled = formData.deleteInstalled;
+      if (deleteInstalled) {
+        const deleteItems = item
+          .recursiveGetAllInstalledItems()
+          .map((i) => i.id);
+        deleteList = deleteList.concat(deleteItems);
       }
     }
-    await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
+
+    await this.actor.deleteEmbeddedDocuments("Item", deleteList, {
+      deleteInstalled,
+    });
   }
 
   /**
@@ -1524,7 +1533,7 @@ export default class CPRActorSheet extends ActorSheet {
     if (
       newItem &&
       containerTypes.includes(sourceItem.type) &&
-      sourceItem.isOwned === true &&
+      sourceItem.isOwned &&
       sourceItem.system.hasInstalled
     ) {
       const deleteItemList = sourceItem.recursiveGetAllInstalledItems();
@@ -1538,9 +1547,11 @@ export default class CPRActorSheet extends ActorSheet {
     }
 
     if (newItem && transferItem) {
-      // Don't unload the ammo when we are transferring weapons. Leave ammo stack as-is.
       await sourceActor.deleteEmbeddedDocuments("Item", deleteList, {
+        // Don't unload the ammo when we are transferring weapons. Leave ammo stack as-is.
         unloadAmmo: false,
+        // Delete nested installed items.
+        deleteInstalled: true,
       });
     }
   }

@@ -702,7 +702,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     // If a specific container item is provided, uninistall just from that container.
     // Else, uninstall from all locations.
     return container
-      ? installedItem.uninstall([container])
+      ? installedItem.uninstall({ providedContainers: [container] })
       : installedItem.uninstall();
   }
 }
