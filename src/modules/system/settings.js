@@ -179,6 +179,19 @@ const registerSystemSettings = () => {
     }
   );
 
+  // Always delete or uninstall child items from Container item.
+  game.settings.register(game.system.id, "deleteContainer", {
+    name: "CPR.settings.deleteContainer.name",
+    hint: "CPR.settings.deleteContainer.hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      LOGGER.log(`Changed deleteContainer to ${value}`);
+    },
+  });
+
   game.settings.register(game.system.id, "userSettings", {
     name: "User Settings",
     scope: "client",

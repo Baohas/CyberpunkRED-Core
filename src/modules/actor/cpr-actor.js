@@ -12,7 +12,7 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 import TextUtils from "../utils/TextUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
-import Container from "../item/mixins/cpr-container.js";
+import Container, { ContainerUtils } from "../item/mixins/cpr-container.js";
 
 /**
  * CPRActor contains common code between mooks and characters (NPCs and players).
@@ -288,20 +288,6 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * This is extended to handle updating items on unlinked tokens
-   *
-   * @override
-   * @param {String} embeddedName - document name, usually a category like Item
-   * @param {Object} updates - Array of documents to consider
-   * @param {Object} options - an object tracking the context in which the method is being called
-   * @returns {null}
-   */
-  async updateEmbeddedDocuments(embeddedName, updates, options = {}) {
-    LOGGER.trace("updateEmbeddedDocuments | CPRActor | called.");
-    return super.updateEmbeddedDocuments(embeddedName, updates, options);
-  }
-
-  /**
    * This is extended to handle :
    * - items installed in other items
    * - container items with other items installed in them.
@@ -328,22 +314,24 @@ export default class CPRActor extends Actor {
     // handling all references to containers and installable
     // items, so we just delete the item.
     const isMigration = !!options?.cprIsMigrating;
-    if (!isMigration) {
-      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-      const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
-      // For every item that we are deleting.
-      const uninstallPromises = [];
-      for (const itemId of ids) {
-        // Get the item.
-        const item = this.getOwnedItem(itemId);
-        if (
-          // If item exists...
-          item &&
-          // ... and item is a container...
-          containerTypes.includes(item.type) &&
-          // ... and item has things installed into it.
-          item.system.hasInstalled
-        ) {
+    if (isMigration)
+      return super.deleteEmbeddedDocuments(embeddedName, ids, options);
+
+    // For every item that we are deleting.
+    const uninstallPromises = [];
+    for (const itemId of ids) {
+      // Get the item.
+      const item = this.getOwnedItem(itemId);
+      // Check if it has installed items.
+      if (item.system.hasInstalled) {
+        // Check if we should delete these installed items or uninstall them.
+        const deleteInstalled = await ContainerUtils.confirmContainerDelete();
+        if (deleteInstalled) {
+          const deleteItems = item
+            .recursiveGetAllInstalledItems()
+            .map((i) => i.id);
+          super.deleteEmbeddedDocuments(embeddedName, deleteItems, options);
+        } else {
           const itemList = [];
           // For every installed-item in this item...
           for (const installedId of item.system.installedItems.list) {
@@ -355,39 +343,32 @@ export default class CPRActor extends Actor {
               itemList.push(installedItem);
             }
           }
-          // Uninstall all items (with recursion) before deletion.
+          // Uninstall all items before deletion of parent.
           uninstallPromises.push(
             item.uninstallItems(itemList, {
               unloadAmmo: options.unloadAmmo,
             })
           );
         }
+      }
 
-        if (
-          // If item exists...
-          item &&
-          // ...and Item is an installable...
-          installableTypes.includes(item.type) &&
-          // and item is installed somewhere....
-          item.system.isInstalled
-        ) {
-          // ...Get where it is installed (could be multiple locations, if ammo).
-          const installLocations =
-            // If item is installed in the actor,
-            item.system.installedIn.includes(this.id)
-              ? // location is the actor
-                [this]
-              : // else, location is an item or items.
-                this.getMultipleOwnedItems(item.system.installedIn);
-          // Uninstall this item from its install location(s).
-          for (const location of installLocations) {
-            uninstallPromises.push(location.uninstallItems([item]));
-          }
+      if (item.system.isInstalled) {
+        // Get where it is installed (could be multiple locations, if ammo).
+        const installLocations =
+          // If item is installed in the actor,
+          item.system.installedIn.includes(this.id)
+            ? // location is the actor
+              [this]
+            : // else, location is an item or items.
+              this.getMultipleOwnedItems(item.system.installedIn);
+        // Uninstall this item from its install location(s).
+        for (const location of installLocations) {
+          uninstallPromises.push(location.uninstallItems([item]));
         }
       }
-      // Resolve all promises.
-      await Promise.all(uninstallPromises);
     }
+    // Resolve all promises.
+    await Promise.all(uninstallPromises);
 
     // Continue on with deleting the documents (call the Foundry function).
     return super.deleteEmbeddedDocuments(embeddedName, ids, options);

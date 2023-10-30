@@ -14,7 +14,7 @@ import Physical from "./mixins/cpr-physical.js";
 import Stackable from "./mixins/cpr-stackable.js";
 import Upgradable from "./mixins/cpr-upgradable.js";
 import Valuable from "./mixins/cpr-valuable.js";
-import Container from "./mixins/cpr-container.js";
+import Container, { ContainerUtils } from "./mixins/cpr-container.js";
 
 /**
  * We extend the base Item object (document) provided by Foundry. All items in the system derive from it.
@@ -62,21 +62,24 @@ export default class CPRItem extends Item {
   }
 
   /**
-   * We extend this (for now) to handle a migration edge case. Normally, when cloning an item
-   * we remove any ammo or upgrades loaded into it. This is because cloning it as-is, the IDs
-   * of the included items will be cloned too, which isn't what we want. Longer term, ammo and
-   * upgrades should come along for the ride, but be separately created items.
+   * Before deleting a container item, prompt the user whether to delete nested installed items,
+   * or just uninstall them.
    *
-   * During the Active Effects data migration, we did want to keep the included items.
-   * To enable that behavior, pass cprIsMigrating as true in the options object when calling Item.create().
-   *
-   * @param {Item} data - the primitive data for the Item being created
-   * @param {Object} options - options (for Foundry) to the Item creation process
-   * @param {String} userId - user ID that is creating the Item
+   * @override
+   * @param {Object} context
+   * @returns {Promise<CPRItem>}
    */
-  _onCreate(data, options, userId) {
-    LOGGER.trace("_onCreate | CPRItem | Called.");
-    super._onCreate(data, options, userId);
+  async delete(context) {
+    LOGGER.trace("delete | CPRItem | Called.");
+    if (!this.system.hasInstalled) return super.delete(context); // Return if item has no nested installed.
+
+    const deleteInstalled = await ContainerUtils.confirmContainerDelete();
+
+    if (deleteInstalled) {
+      const deleteItems = this.recursiveGetAllInstalledItems().map((i) => i.id);
+      Item.deleteDocuments(deleteItems);
+    }
+    return super.delete(context);
   }
 
   /**

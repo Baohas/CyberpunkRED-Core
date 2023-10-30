@@ -2,6 +2,27 @@
 /* global duplicate Item game ui */
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPRDialog from "../../dialog/cpr-dialog-application.js";
+
+export class ContainerUtils {
+  /**
+   * Confirm if the user wishes to delete nested installed items or to just uninstall them.
+   * @returns {Boolean} true: delete - false: uninstall.
+   */
+  static async confirmContainerDelete() {
+    LOGGER.trace("confirmContainerDelete | ContainerUtils | Called.");
+    // Show "Delete Container" dialog.
+    const { deleteInstalled } = await CPRDialog.showDialog(
+      { deleteInstalled: game.settings.get(game.system.id, "deleteContainer") },
+      {
+        // Set options for dialog.
+        title: SystemUtils.Localize("CPR.dialog.deleteContainer.title"),
+        template: `systems/${game.system.id}/templates/dialog/cpr-delete-container-prompt.hbs`,
+      }
+    ).catch((err) => LOGGER.debug(err));
+    return !!deleteInstalled;
+  }
+}
 
 /**
  * If an item can ACCEPT upgrades (i.e. it has slots), then it should include this
