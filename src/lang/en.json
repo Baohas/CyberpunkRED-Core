@@ -987,7 +987,7 @@
   "CPR.messages.tradeDragInWarn": "You lack the permission to create items in this container. Have GM check container settings",
   "CPR.messages.tradeDragInstalledCyberwareError": "You can't trade installed Cyberware. Uninstall the cyberware and trade it from the Gear tab.",
   "CPR.messages.tradeDragNotBuying": "This vendor is not buying that item type.",
-  "CPR.messages.tradeDragOutWarn": "It is not allowed to drag an item out of a container actor.",
+  "CPR.messages.tradeDragOutWarn": "This user is not allowed to drag an item out of a container actor.",
   "CPR.messages.tradePriceWarn": "You do not have enough Eurobucks. Do some Jobs, Choomba!",
   "CPR.messages.tradeWithWarn": "Please select a character, that should perform the trade first.",
   "CPR.messages.tripleDigitStatMaxWarn": "Your stat max is more than two digits causing formatting issues, only one digit may be shown.",

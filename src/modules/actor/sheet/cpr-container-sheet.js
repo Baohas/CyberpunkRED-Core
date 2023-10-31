@@ -215,9 +215,10 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       return;
     }
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    const valuableTypes = SystemUtils.GetTemplateItemTypes("valuable");
 
+    const cprInstallTree = item.createInstalledObjectData();
     const transferredItemData = duplicate(item);
+    transferredItemData.flags.cprInstallTree = cprInstallTree;
     let cost = 0;
     if (
       item.type === "ammo" &&
@@ -227,15 +228,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       // Ammunition, which is neither grenades nor rockets, are prices are for 10 of them (pg. 344)
       cost = item.system.price.market / 10;
     } else {
-      cost = valuableTypes.includes(item.type) ? item.system.price.market : 0;
-      if (containerTypes.includes(item.type)) {
-        const installedItems = item.recursiveGetAllInstalledItems();
-        installedItems.forEach((installedItem) => {
-          cost += valuableTypes.includes(installedItem.type)
-            ? installedItem.system.price.market
-            : 0;
-        });
-      }
+      cost = item.system.price.market;
     }
     if (!all) {
       // Prepare data for dialog.
@@ -350,10 +343,10 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * the tradePartner and money is deducted accordingly.
    *
    * @private
-   * @param {string} sellerId - actor.id of the person selling the item
+   * @param {string} tradePartnerId - actor.id of the person selling the item
    * @param {Item} item - object to be purchased
    */
-  async _sellItemTo(event) {
+  async _sellItemTo(tradePartnerId, item) {
     LOGGER.trace("_sellItemTo | CPRContainerSheet | Called.");
 
     // Players must have Owned permission on Containers for them to function properly
@@ -364,16 +357,13 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       );
       return;
     }
-    const dragData = TextEditor.getDragEventData(event);
 
-    const tradePartnerActor = game.actors.get(dragData.system.actorId);
-
-    const item = fromUuidSync(dragData.uuid);
     const cprItemData = item.system;
     let cprItemName = item.name;
     const amount = cprItemData.amount ? parseInt(cprItemData.amount, 10) : 1;
     const vendorData = this.actor.system;
     const vendorConfig = vendorData.vendor;
+    const tradePartnerActor = game.actors.get(tradePartnerId);
     const username = game.user.name;
 
     let cost = 0;
@@ -394,15 +384,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     );
 
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-
-    if (containerTypes.includes(item.type) && cprItemData.hasInstalled) {
-      cprItemData.installedItems.list.forEach((installedId) => {
-        const installedItem = tradePartnerActor.getOwnedItem(installedId);
-        if (installedItem) {
-          cost += installedItem.system.price.market;
-        }
-      });
-    }
 
     let vendorOffer = parseInt((amount * cost * percent) / 100, 10);
     vendorOffer = Math.min(vendorOffer, vendorData.wealth.value);
@@ -435,19 +416,13 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
 
     if (dialogData !== undefined) {
       const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
-      if (loadableTypes.includes(item.type)) {
+      if (loadableTypes.includes(item.type) && item.system.hasAmmoLoaded) {
         await item.unload();
       }
       let createItems = [];
       const deleteItems = [];
 
-      createItems.push({
-        name: item.name,
-        system: cprItemData,
-        type: item.type,
-        img: item.img,
-        effects: duplicate(item.effects),
-      });
+      createItems.push(item);
       deleteItems.push(item._id);
       if (containerTypes.includes(item.type) && item.system.hasInstalled) {
         const deleteItemList = item.recursiveGetAllInstalledItems();
@@ -473,58 +448,59 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       }
 
       if (createItems.length > 0) {
-        this.actor
-          .createEmbeddedDocuments("Item", createItems)
-          .then(async (creationSuccess) => {
-            if (creationSuccess.length > 0) {
-              tradePartnerActor
-                .deleteEmbeddedDocuments("Item", deleteItems)
-                .then(async (deletionSuccess) => {
-                  if (deletionSuccess.length > 0) {
-                    let reason = "";
-                    if (amount > 1) {
-                      reason = `${SystemUtils.Format(
-                        "CPR.containerSheet.tradeLog.multipleSold",
-                        {
-                          amount,
-                          name: item.name,
-                          price: vendorOffer,
-                          vendor: this.actor.name,
-                        }
-                      )} - ${username}`;
-                    } else {
-                      reason = `${SystemUtils.Format(
-                        "CPR.containerSheet.tradeLog.singleSold",
-                        {
-                          name: item.name,
-                          price: vendorOffer,
-                          vendor: this.actor.name,
-                        }
-                      )} - ${username}`;
-                    }
-                    const vendorReason = `${SystemUtils.Format(
-                      "CPR.containerSheet.tradeLog.vendorPurchased",
-                      {
-                        name: item.name,
-                        quantity: cprItemData.amount,
-                        seller: tradePartnerActor.name,
-                        price: vendorOffer,
-                      }
-                    )} - ${username}`;
-                    await tradePartnerActor.deltaLedgerProperty(
-                      "wealth",
-                      vendorOffer,
-                      reason
-                    );
-                    await this.actor.recordTransaction(
-                      vendorOffer,
-                      vendorReason,
-                      tradePartnerActor
-                    );
-                  }
-                });
+        const creationSuccess = await this.actor.createEmbeddedDocuments(
+          "Item",
+          createItems
+        );
+        if (creationSuccess.length > 0) {
+          const deletionSuccess =
+            await tradePartnerActor.deleteEmbeddedDocuments(
+              "Item",
+              deleteItems
+            );
+          if (deletionSuccess.length > 0) {
+            let reason = "";
+            if (amount > 1) {
+              reason = `${SystemUtils.Format(
+                "CPR.containerSheet.tradeLog.multipleSold",
+                {
+                  amount,
+                  name: item.name,
+                  price: vendorOffer,
+                  vendor: this.actor.name,
+                }
+              )} - ${username}`;
+            } else {
+              reason = `${SystemUtils.Format(
+                "CPR.containerSheet.tradeLog.singleSold",
+                {
+                  name: item.name,
+                  price: vendorOffer,
+                  vendor: this.actor.name,
+                }
+              )} - ${username}`;
             }
-          });
+            const vendorReason = `${SystemUtils.Format(
+              "CPR.containerSheet.tradeLog.vendorPurchased",
+              {
+                name: item.name,
+                quantity: cprItemData.amount,
+                seller: tradePartnerActor.name,
+                price: vendorOffer,
+              }
+            )} - ${username}`;
+            await tradePartnerActor.deltaLedgerProperty(
+              "wealth",
+              vendorOffer,
+              reason
+            );
+            await this.actor.recordTransaction(
+              vendorOffer,
+              vendorReason,
+              tradePartnerActor
+            );
+          }
+        }
       }
     }
   }
@@ -621,15 +597,15 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (game.user.isGM || playersCanCreate || playersCanSell) {
       if (!game.user.isGM && !playersCanCreate) {
         const dragData = TextEditor.getDragEventData(event);
+        const tradePartnerId = dragData.system.actorId;
         const vendorData = this.actor.system.vendor;
         if (dragData.type === "Item") {
           const item = await Item.implementation.fromDropData(dragData);
-          const itemData = item.toObject();
           if (
-            typeof vendorData.itemTypes[itemData.type] !== "undefined" &&
-            vendorData.itemTypes[itemData.type].isPurchasing
+            typeof vendorData.itemTypes[item.type] !== "undefined" &&
+            vendorData.itemTypes[item.type].isPurchasing
           ) {
-            await this._sellItemTo(event);
+            await this._sellItemTo(tradePartnerId, item);
             return;
           }
           SystemUtils.DisplayMessage(

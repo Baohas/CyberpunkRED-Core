@@ -210,6 +210,7 @@ export default class CPRItem extends Item {
    * in Object form and store it in the flags of the original item. Then, using the
    * `createItem` hook we recursively create all the installed items from this data.
    *
+   * @override
    * @param {Object} data - The data object extracted from a DataTransfer event
    * @param {Object} options - Additional options which affect drop data behavior
    * @returns {Promise<CPRItem>} - The resolved item
