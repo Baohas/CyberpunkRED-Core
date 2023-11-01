@@ -2,6 +2,7 @@
 /* globals Actor, getProperty, hasProperty, setProperty, duplicate game */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
+import Rules from "../utils/cpr-rules.js";
 
 /**
  * Container actors function like loot boxes, player or party stashes, stores, and
@@ -29,29 +30,57 @@ export default class CPRContainerActor extends Actor {
   }
 
   /**
-   * The three reasons we extend this code are:
-   *  - handle an edge case for migrations.
-   *  - handle creating items on unlinked tokens
-   *  - handle item stacking
+   * This is pretty much a copy of the same function in `cpr-actor.js`.
+   * We copy it because CPRContainerActor does not actually extend CPRActor.
+   * In the future, we should refactor so that CPRContainerActor extends CPRActor,
+   * thus rendering this function copy unnecessary.
    *
    * @override
    * @param {String} embeddedName - document name, usually a category like Item
-   * @param {Object} ids - Array of documents to consider
+   * @param {Array<CPRItem>} items - Array of documents to create
    * @param {Object} context - an object tracking the context in which the method is being called
    * @returns {null}
    */
-  async createEmbeddedDocuments(embeddedName, ids, context = {}) {
+  async createEmbeddedDocuments(embeddedName, items, context = {}) {
     LOGGER.trace("createEmbeddedDocuments | CPRContainerActor | called.");
+    if (!embeddedName === "Item")
+      return super.createEmbeddedDocuments(embeddedName, items, context);
+
+    // Don't add core items.
+    const coreItems = items.filter((i) => i?.system.core);
+    if (coreItems.length > 0) {
+      Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
+      items = items.filter((i) => !coreItems.includes(i));
+    }
+
     // Attempt to stack item before creating it
-    if (embeddedName === "Item" && !context.CPRsplitStack && ids.length === 1) {
+    if (!context.CPRsplitStack && items.length === 1) {
       LOGGER.debug("Attempting to stack items on an actor sheet");
-      const doc = ids[0];
+      const doc = items[0];
       const returnValue = await this.automaticallyStackItems(doc);
       if (returnValue.length > 0) {
         return returnValue;
       }
     }
-    return super.createEmbeddedDocuments(embeddedName, ids, context);
+
+    // Create the items
+    const createdItems = await super.createEmbeddedDocuments(
+      embeddedName,
+      items,
+      context
+    );
+
+    // Handle creating and installing any items into the parent item.
+    for (const item of createdItems) {
+      // eslint-disable-next-line no-continue
+      if (!item.system.hasInstalled) continue;
+      // The item will only have this flag if it is imported/coming from another actor.
+      const imported = !!item.flags.cprInstallTree;
+      // The following function recusrively creates and installs all items in the install tree.
+      await item.createInstalledItemsOnActor(imported);
+    }
+
+    return createdItems;
   }
 
   /**

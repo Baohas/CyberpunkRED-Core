@@ -238,36 +238,36 @@ const Container = function Container() {
 
     const updateList = [];
     // Make sure we can actually install the items in this list.
-    if (!this.canInstallItems(itemList)) {
-      return false;
-    }
+    if (!this.canInstallItems(itemList)) return false;
 
     const actor = this.isOwned ? this.actor : false;
 
     const installedItems = duplicate(this.system.installedItems);
     const equippableTypes = SystemUtils.GetTemplateItemTypes("equippable");
 
-    itemList.forEach((item) => {
+    for (const item of itemList) {
       // No need to install it, it it's already installed.
-      if (!installedItems.list.includes(item.id)) {
-        // Add installed item to the target's list.
-        installedItems.list.push(item.id);
-        // Update target's used slots.
-        installedItems.usedSlots += item.system.size;
-        // Update the installed item itself.
-        const itemData = {
-          _id: item.id,
-        };
-        // Set equipped status of the newly installed item.
-        if (equippableTypes.includes(item.type)) {
-          itemData["system.equipped"] = equippableTypes.includes(this.type)
-            ? this.system.equipped
-            : "equipped";
-        }
-        // Push the installed item data
-        updateList.push(itemData);
+      // eslint-disable-next-line no-continue
+      if (installedItems.list.includes(item.id)) continue;
+      // Add installed item to the target's list.
+      installedItems.list.push(item.id);
+      // Update target's used slots.
+      installedItems.usedSlots += item.system.size;
+      // Update the installed item itself.
+      const itemData = {
+        _id: item.id,
+      };
+
+      // Set equipped status of the newly installed item.
+      if (equippableTypes.includes(item.type)) {
+        itemData["system.equipped"] = equippableTypes.includes(this.type)
+          ? this.system.equipped
+          : "equipped";
       }
-    });
+
+      // Push the installed item data
+      updateList.push(itemData);
+    }
     // Push the data for the target item to the update list.
     updateList.push({ _id: this.id, "system.installedItems": installedItems });
 
@@ -320,6 +320,19 @@ const Container = function Container() {
       (id) => !oldItemIDs.includes(id)
     );
     installedItems.list = [...difference, ...newItemIDs];
+
+    for (const item of newItems) {
+      // Skip this iteration of the loop if the new item doesn't have installed items itself.
+      // eslint-disable-next-line no-continue
+      if (!item.system.hasInstalled) continue;
+
+      // Get the list of installed items to duplicate and reinstall.
+      const reinstallList = item.system.installedItems.list.map((id) =>
+        game.items.get(id)
+      );
+      // Call this function recursively on the new item.
+      await item.installWorldItems(reinstallList, item.system.installedItems);
+    }
     // Update the installedItems.list reference with the list of new IDs.
     return this.update({ "system.installedItems": installedItems });
   };
@@ -434,10 +447,8 @@ const Container = function Container() {
   };
 
   /**
-   * This function is called from the createItem hook and it will create any items that are
-   * installed in this container object at the location of this container object. In other words:
-   *
-   * If this object is created on an actor, the installed items are created on the same actor
+   * This function is called from the createEmbeddedDocuments function and it will create any items that are
+   * installed in this container object on the actor and install them into the correct places.
    *
    *
    * @returns {Promise} - Promise of updated document
@@ -449,11 +460,10 @@ const Container = function Container() {
     const actor = this.parent;
     const creationList = [];
 
-    // If this item is imported, the information for installed items
-    // is embedded in its flags.
     if (imported) {
+      // If this item is imported, the information for installed items is embedded in its flags.
       for (const itemData of this.flags.cprInstallTree) {
-        // Add the item data to the list.
+        // Add the item   data to the list.
         creationList.push(itemData);
       }
       // If the item is from the world, we get the information for installed items,
@@ -469,14 +479,19 @@ const Container = function Container() {
     const newInstalledList = [];
     // Create the items from the list.
     if (creationList.length > 0) {
-      const createdItems = await actor.createEmbeddedDocuments(
-        "Item",
-        creationList
-      );
+      // Not calling `createEmbeddedDocuments` here because that function calls this one and we would end up
+      // in an infinite loop. Well, we could make a back-and-forth recursive scenario,
+      // but I think its more straightforward to keep the recursion in a single function.
+      const createdItems = await Item.createDocuments(creationList, {
+        parent: actor,
+      });
 
-      // Keep track of newly created item ID's so we can update the parent item.
       for (const item of createdItems) {
+        // Keep track of newly created item ID's so we can update the parent item.
         newInstalledList.push(item.id);
+        if (item.system.hasInstalled) {
+          await item.createInstalledItemsOnActor(!!item.flags.cprInstallTree);
+        }
       }
     }
 
@@ -503,9 +518,9 @@ const Container = function Container() {
     LOGGER.trace("importInstalledToWorld | CPRItem | called.");
     const newInstalledList = [];
     const { flags } = this;
+    // Create the item from the object data.
     const newItems = await Item.createDocuments(flags.cprInstallTree);
     for (const newItem of newItems) {
-      // Create the item from the object data.
       newInstalledList.push(newItem.id);
       if (recursive && newItem.flags.cprInstallTree) {
         newItem.importInstalledToWorld(recursive);

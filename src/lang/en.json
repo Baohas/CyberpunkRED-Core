@@ -962,7 +962,6 @@
   "CPR.messages.criticalInjuryDuplicateAllWarning": "You already have all the possible critical injuries of that type, Choomba! Good Job!",
   "CPR.messages.criticalInjuryDuplicateLoopWarning": "Error: Unable to roll non-duplicate Critical Injury. Rolltable seems to have mixed (head and body) types of Critical Injuries or entries which can not be reached by the roll formula.",
   "CPR.messages.criticalInjuryDuplicateWarning": "You got a Critical Injury a second time, Choomba! You might want to check it. (This warning can be disabled in the system settings.)",
-  "CPR.messages.cyberwareDeleteWarning": "Before deleting this cyberware uninstall it first!",
   "CPR.messages.dontAddCoreItems": "Do not try to add core items to your character, that is not supported, Choomba!",
   "CPR.messages.duplicateCompendiumLabel": "Watch out, Choom! More than 1 compendium is called ",
   "CPR.messages.errorTooManyCyberdecks": "You can only have one cyberdeck equipped at a time!",

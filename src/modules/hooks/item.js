@@ -1,9 +1,7 @@
-/* global Hooks game Handlebars */
+/* global Hooks */
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
-import CPRMookActorSheet from "../actor/sheet/cpr-mook-sheet.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
-import CPRDialog from "../dialog/cpr-dialog-application.js";
 
 /**
  * Hooks have a set of args that are passed to them from Foundry. Even if we do not use them here,
@@ -38,92 +36,6 @@ const itemHooks = () => {
     }
 
     return true;
-  });
-
-  /**
-   * The createItem Hook is provided by Foundry and triggered here. When an Item is created, this hook is called during
-   * creation. This hook handles:
-   * - Items which have installed items, it calls a creation method to create the installed items at the
-   *   location of the created Item (ie Actor or World)
-   * - Weapons which have ammo, it calls a creation method to create the installed ammo on the actor.
-   * - items dragged on the mook sheet to automatically equip or install them.
-   *
-   * @public
-   * @memberof hookEvents
-   * @param {CPRItem} doc                 The pending document which is requested for creation
-   * @param {object} (unused)             Additional options which modify the creation request
-   * @param {string} userId               The ID of the requesting user, always game.user.id
-   */
-  Hooks.on("createItem", async (doc, _, userId) => {
-    LOGGER.trace("createItem | itemHooks | Called.");
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-
-    // If the item is being created on an actor and is a container...
-    if (doc.parent && containerTypes.includes(doc.type)) {
-      if (doc.flags.cprInstallTree) {
-        // if doc.flags.cprInstallTree exists, this is being added to the actor from a compendium.
-        // Create installed items on the actor and update the original
-        // item's `system.installedItems.list` to point to them.
-        const imported = true;
-        doc.createInstalledItemsOnActor(imported);
-      } else if (doc.system.hasInstalled) {
-        // Otherwise this is being added to the actor from a world item.
-        // Create installed items on the actor and update the original
-        // item's `system.installedItems.list` to point to them.
-        doc.createInstalledItemsOnActor();
-      }
-    }
-
-    // If this item is being imported into the world,
-    // and it has embedded installed item data in its flags.
-    if (!doc.parent && !doc.pack && doc.flags.cprInstallTree) {
-      // Convert the embedded data into other world items and update
-      // the original item's `system.installedItems.list` to point to them.
-      doc.importInstalledToWorld();
-    }
-
-    // If a world item is being created and has installed items, lets
-    // duplicate those installed items and reinstall them so that each
-    // world item has unique items installed into it.
-    if (!doc.parent && doc.system.hasInstalled && !doc.flags.cprInstallTree) {
-      const installedItemList = doc.system.installedItems.list.map((id) =>
-        game.items.get(id)
-      );
-      // Reset the new item's install list and used slots.
-      await doc.update({
-        "system.installedItems": { list: [], usedSlots: 0 },
-      });
-      doc.installItems(installedItemList);
-    }
-
-    // Role stuff
-    const actor = doc.parent;
-    if (actor !== null) {
-      if (doc.type === "role") {
-        if (actor.system.roleInfo.activeRole === "") {
-          actor.update({ "system.roleInfo.activeRole": doc.name });
-        }
-        if (
-          !actor.itemTypes.role.some(
-            (r) => r.id === actor.system.roleInfo.activeNetRole
-          )
-        ) {
-          // If no roles are designated as activeNetRole, OR if an activeNetRole has been set,
-          // but that role has since been deleted, set activeNetRole.
-          actor.update({ "system.roleInfo.activeNetRole": doc.id });
-        }
-      }
-      // when a new item is created (dragged) on a mook sheet, perform a couple changes like auto-equip
-      if (
-        Object.values(actor.apps).some(
-          (app) => app instanceof CPRMookActorSheet
-        ) &&
-        userId === game.user._id
-      ) {
-        LOGGER.debug("handling a dragged item to the mook sheet");
-        actor.handleMookDraggedItem(doc);
-      }
-    }
   });
 
   /**

@@ -4,7 +4,6 @@ import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";
 import CPRCharacterActorSheet from "./sheet/cpr-character-sheet.js";
 import CPRMookActorSheet from "./sheet/cpr-mook-sheet.js";
-import CPRContainerActorSheet from "./sheet/cpr-actor-sheet.js";
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
@@ -235,56 +234,72 @@ export default class CPRActor extends Actor {
   /**
    * The three reasons we extend this code are:
    *  - handle an edge case for migrations.
-   *  - handle creating items on unlinked tokens
+   *  - prevent addition of core items
    *  - handle item stacking
+   *  - Handle containers with installed items
    *
    * @override
    * @param {String} embeddedName - document name, usually a category like Item
-   * @param {Object} ids - Array of documents to consider
+   * @param {Array<CPRItem>} items - Array of items to create
    * @param {Object} context - an object tracking the context in which the method is being called
    * @returns {null}
    */
-  async createEmbeddedDocuments(embeddedName, ids, context = {}) {
+  async createEmbeddedDocuments(embeddedName, items, context = {}) {
     LOGGER.trace("createEmbeddedDocuments | CPRActor | called.");
     // If migration is calling this, we definitely want to
     // create the Embedded Documents.
     const isMigration = !!(
       typeof context !== "undefined" && context.cprIsMigrating
     );
-    if (!isMigration) {
-      if (embeddedName === "Item") {
-        let containsCoreItem = false;
-        ids.forEach((document) => {
-          if (document.system && document.system.core) {
-            containsCoreItem = true;
-          }
-        });
-        if (containsCoreItem) {
-          Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
-          return null;
-        }
-      }
+    if (isMigration || !embeddedName === "Item")
+      return super.createEmbeddedDocuments(embeddedName, items, context);
+
+    // Don't add core items.
+    const coreItems = items.filter((i) => i?.system.core);
+    if (coreItems.length > 0) {
+      Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
+      items = items.filter((i) => !coreItems.includes(i));
     }
 
-    if (
-      embeddedName === "Item" &&
-      Object.values(this.apps).some(
-        (app) =>
-          app instanceof CPRCharacterActorSheet ||
-          app instanceof CPRMookActorSheet ||
-          app instanceof CPRContainerActorSheet
-      ) &&
-      !context.CPRsplitStack &&
-      ids.length === 1
-    ) {
+    // Stack items.
+    const canStack = Object.values(this.apps).some(
+      (app) =>
+        app instanceof CPRCharacterActorSheet ||
+        app instanceof CPRMookActorSheet
+    );
+    if (canStack && !context.CPRsplitStack && items.length === 1) {
       LOGGER.debug("Attempting to stack items on an actor sheet");
-      const doc = ids[0];
-      const returnValue = await this.automaticallyStackItems(doc);
-      if (returnValue.length > 0) {
-        return returnValue;
-      }
+      const [doc] = items;
+      const returnValue = this.automaticallyStackItems(doc);
+      if (returnValue.length > 0) return returnValue;
     }
-    return super.createEmbeddedDocuments(embeddedName, ids, context);
+
+    // Create the items
+    const createdItems = await super.createEmbeddedDocuments(
+      embeddedName,
+      items,
+      context
+    );
+
+    // Handle creating and installing any items into the parent item.
+    for (const item of createdItems) {
+      // eslint-disable-next-line no-continue
+      if (!item.system.hasInstalled) continue;
+      // The item will only have this flag if it is imported/coming from another actor.
+      const imported = !!item.flags.cprInstallTree;
+      // The following function recusrively creates and installs all items in the install tree.
+      await item.createInstalledItemsOnActor(imported);
+    }
+
+    const isMookSheet = Object.values(this.apps).some(
+      (app) => app instanceof CPRMookActorSheet
+    );
+
+    for (const item of createdItems) {
+      if (isMookSheet) await this.handleMookDraggedItem(item);
+    }
+
+    return createdItems;
   }
 
   /**
@@ -298,7 +313,7 @@ export default class CPRActor extends Actor {
    *
    * @override
    * @param {String} embeddedName - document name, usually a category like Item
-   * @param {Object} ids - Array of documents to consider
+   * @param {Object} ids - Array of ids to consider
    * @param {Object} [options] - an object tracking the context in which the method is being called
    * @param {Boolean} [options.cprIsMigrating = false] - Whether or not this is being called during migration.
    * @param {Boolean} [options.unloadAmmo = true]      - If ammo should be unloaded as a part of this delete action.
@@ -551,10 +566,7 @@ export default class CPRActor extends Actor {
       : this.getOwnedItem(formData.foundationalId);
 
     const installationSuccess = await target.installItems([item]);
-
-    if (installationSuccess) {
-      await this.loseHumanityValue(item, formData);
-    }
+    if (installationSuccess) await this.loseHumanityValue(item, formData);
     return installationSuccess;
   }
 
@@ -1888,18 +1900,35 @@ export default class CPRActor extends Actor {
   async handleMookDraggedItem(item) {
     LOGGER.trace("handleMookDraggedItem | CPRActor | Called.");
     // auto-install this cyberware
+    const allInstalled = item.recursiveGetAllInstalledItems();
+
     if (item.type === "cyberware") {
       const installResult = await this.installCyberware(item._id);
       if (!installResult) {
-        return this.deleteEmbeddedDocuments("Item", [item._id]);
+        const deleteInstalled = allInstalled.map((i) => i._id);
+        // Delete item and all installed.
+        return this.deleteEmbeddedDocuments(
+          "Item",
+          [...deleteInstalled, item._id],
+          {
+            deleteInstalled: true,
+          }
+        );
       }
     }
-    // auto-equip this item
+
+    // Auto-equip this item if equippable
+    const updateData = [];
     if (SystemUtils.hasDataModelTemplate(item.type, "equippable")) {
-      return this.updateEmbeddedDocuments("Item", [
-        { _id: item._id, "system.equipped": "equipped" },
-      ]);
+      updateData.push({ _id: item._id, "system.equipped": "equipped" });
     }
-    return Promise.resolve();
+    allInstalled.forEach((i) => {
+      // auto-equip installed items if equippable
+      if (SystemUtils.hasDataModelTemplate(i.type, "equippable")) {
+        updateData.push({ _id: i._id, "system.equipped": "equipped" });
+      }
+    });
+
+    return this.updateEmbeddedDocuments("Item", updateData);
   }
 }

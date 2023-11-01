@@ -24,6 +24,48 @@ import Container, { ContainerUtils } from "./mixins/cpr-container.js";
  */
 export default class CPRItem extends Item {
   /**
+   * We override this function to create container items that have items installed in them.
+   *
+   * @override
+   * @param {Object} data - raw data from which the Item is created
+   * @param {Object} options options (from Foundry) to the Item creation process
+   */
+  static async create(data, options) {
+    LOGGER.trace("create | CPRItem | Called.");
+    const item = await super.create(data, options);
+    // Early return if has no installed, or its in a compendium.
+    if (!item.system.hasInstalled || item.pack) return;
+    // If this item is being imported into the world,
+    // and it has embedded installed item data in its flags.
+    if (!item.parent && item.flags.cprInstallTree) {
+      // Convert the embedded data into other world items and update
+      // the original item's `system.installedItems.list` to point to them.
+      await item.importInstalledToWorld(true);
+    }
+
+    // If a world item is being created and has installed items, lets
+    // duplicate those installed items and reinstall them so that each
+    // world item has unique items installed into it.
+    else if (
+      !item.parent &&
+      item.system.hasInstalled &&
+      !item.flags.cprInstallTree
+    ) {
+      const installedItemList = item.system.installedItems.list.map((id) =>
+        game.items.get(id)
+      );
+      // Reset the new item's install list and used slots.
+      await item.update({
+        "system.installedItems": { list: [], usedSlots: 0 },
+      });
+      item.installItems(installedItemList);
+    }
+
+    // eslint-disable-next-line consistent-return
+    return item;
+  }
+
+  /**
    * TODO: figure out what to do with this, hopefully not needed
    * TODO: this should figure out owned vs. not owned items too
    * @override
@@ -75,7 +117,7 @@ export default class CPRItem extends Item {
     if (!this.system.hasInstalled) return super.delete(context);
     const formData = await ContainerUtils.confirmContainerDelete(this);
     if (!formData)
-      return SystemUtils.debug("Form submission cancelled or dialog closed.");
+      return LOGGER.debug("Form submission cancelled or dialog closed.");
     if (formData.deleteInstalled) {
       const deleteItems = this.recursiveGetAllInstalledItems().map((i) => i.id);
       Item.deleteDocuments(deleteItems);
