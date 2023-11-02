@@ -447,6 +447,72 @@ const Container = function Container() {
   };
 
   /**
+   * This is a helper function for when syncing installed items fails irrecoverably.
+   * It forcibly resets `this.system.installedItems.list` and all nested items within.
+   * This function should fix problems related to mismatches between the above list and
+   * what items actually exist. Unfortunately, it means that users will have to manually
+   * reinstall all any items that weren't messed up but got caught in the reset.
+   *
+   * Ideally, this is seldomly used. It currently is not called anywhere in the code. Rather,
+   * it is a way we can help users resolve issues on their own.
+   *
+   * @async
+   * @param {Boolean} all - If true and on an actor, all items on actor will get reset.
+   *                        If false and on an actor, only things directly installed in the actor will get reset.
+   *                        If not on an actor, has no effect.
+   * @returns {Promise}
+   */
+  this.resetInstalled = async function resetInstalled(all = false) {
+    LOGGER.trace("resetInstalled | Container | Called.");
+    let actor = false;
+    if (this.documentName === "Actor") {
+      actor = this;
+    } else if (this.isEmbedded) {
+      actor = this.actor;
+    }
+
+    const installedItems =
+      this.documentName === "Actor" && all
+        ? this.items
+        : this.recursiveGetAllInstalledItems();
+    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
+    const relevantItems = installedItems.filter(
+      (i) =>
+        containerTypes.includes(i.type) || installableTypes.includes(i.type)
+    );
+    const keepInstalledList = [];
+    const updateList = [];
+    for (const item of relevantItems) {
+      const updateData = {
+        _id: item.id,
+      };
+
+      if (item.system.installedItems?.list) {
+        updateData["system.installedItems.list"] = [];
+      }
+
+      if (item.system.installedItems?.slots) {
+        updateData["system.installedItems.usedSlots"] = 0;
+      }
+
+      if (item.type === "program") {
+        updateData["system.isRezzed"] = false;
+      }
+
+      if (item.system.core) {
+        keepInstalledList.push(item.id);
+      }
+      updateList.push(updateData);
+    }
+    await this.update({ "system.installedItems.list": keepInstalledList });
+    if (actor) {
+      return actor.updateEmbeddedDocuments("Item", updateList);
+    }
+    return Item.updateDocuments(updateList);
+  };
+
+  /**
    * This function is called from the createEmbeddedDocuments function and it will create any items that are
    * installed in this container object on the actor and install them into the correct places.
    *

@@ -87,16 +87,17 @@ export default class CPRContainerActor extends Actor {
    * This is a helper function for when syncing installed items fails irrecoverably.
    * It forcibly uninstalls all items from all other items so that the character sheet
    * can reset from a neutral state. This function should reveal items that are "invisible" on actors
-   * due to UUIDs not matching up. Unfortunately, it means that users will have to manually
+   * due to IDs not matching up. Unfortunately, it means that users will have to manually
    * reinstall all their items, but at least other stats on those items aren't lost.
    * Ideally, this is also seldomly used.
    *
-   * Note: Much of this code is duplicated from CPRActor.
+   * Note: Much of this code is duplicated from CPRContainer (Mixin). It should stay until
+   * we harmonize CPRActor and CPRContainerActor.
    *
    * @async
    */
-  async resetInstalledItems() {
-    LOGGER.trace("resetInstalledItems | CPRActor | called.");
+  async resetInstalled() {
+    LOGGER.trace("resetInstalled | CPRActor | called.");
 
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     const installableTypes = SystemUtils.GetTemplateItemTypes("installable");

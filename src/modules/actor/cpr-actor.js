@@ -92,55 +92,6 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * This is a helper function for when syncing installed items fails irrecoverably.
-   * It forcibly uninstalls all items from all other items so that the character sheet
-   * can reset from a neutral state. This function should reveal items that are "invisible" on actors
-   * due to UUIDs not matching up. Unfortunately, it means that users will have to manually
-   * reinstall all their items, but at least other stats on those items aren't lost.
-   * Ideally, this is also seldomly used.
-   *
-   * @async
-   */
-  async resetInstalledItems() {
-    LOGGER.trace("resetInstalledItems | CPRActor | called.");
-
-    const installedList = [];
-
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
-    const relevantItems = this.items.filter(
-      (i) =>
-        containerTypes.includes(i.type) || installableTypes.includes(i.type)
-    );
-    const updateList = [];
-    for (const item of relevantItems) {
-      const updateData = {
-        _id: item.id,
-      };
-
-      if (item.system.installedItems?.list) {
-        updateData["system.installedItems.list"] = [];
-      }
-
-      if (item.system.installedItems?.slots) {
-        updateData["system.installedItems.usedSlots"] = 0;
-      }
-
-      if (item.type === "program") {
-        updateData["system.isRezzed"] = false;
-      }
-
-      if (item.system.core) {
-        installedList.push(item.id);
-      }
-      updateList.push(updateData);
-    }
-
-    await this.update({ "system.installedItems.list": installedList });
-    await this.updateEmbeddedDocuments("Item", updateList);
-  }
-
-  /**
    * Called when an actor is passed to the client, we override this to calculate
    * derived stats and massage some of the data for convenience later.
    *
