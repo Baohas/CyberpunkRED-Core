@@ -1519,4 +1519,25 @@ export default function registerHandlebarsHelpers() {
     }
     return `${brandName} ${itemName}`;
   });
+
+  /**
+   * Filter weapons by ranged/melee
+   *
+   * @param {Array<CPRWeaponItem>} Array of Weapons
+   * @param (String) `ranged`/`melee`
+   */
+  Handlebars.registerHelper("cprFilterWeapons", (weapons, type) => {
+    LOGGER.trace("cprFightTabWeapons | handlebarsHelper | Called. ");
+    switch (type) {
+      case "ranged": {
+        return weapons.filter((weapon) => weapon.system.isRanged);
+      }
+      case "melee": {
+        return weapons.filter((weapon) => !weapon.system.isRanged);
+      }
+      default: {
+        return [];
+      }
+    }
+  });
 }

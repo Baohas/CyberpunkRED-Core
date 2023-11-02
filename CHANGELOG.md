@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Weapons in fight tab now categorized by Ranged/Melee
+
 ### New Features
 
 - Add Quality to Weapons/Cyberdecks

@@ -58,6 +58,8 @@
   "CPR.characterSheet.bottomPane.fight.rollDefense": "Roll defense",
   "CPR.characterSheet.bottomPane.fight.title": "Fight",
   "CPR.characterSheet.bottomPane.fight.weapons": "Weapons",
+  "CPR.characterSheet.bottomPane.fight.ranged": "Ranged",
+  "CPR.characterSheet.bottomPane.fight.melee": "Melee",
   "CPR.characterSheet.bottomPane.lifepath.affectations": "Affectation You Are Never Without",
   "CPR.characterSheet.bottomPane.lifepath.childhoodEnvironment": "Childhood Environment",
   "CPR.characterSheet.bottomPane.lifepath.clothingStyle": "Clothing Style",

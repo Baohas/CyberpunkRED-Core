@@ -11,11 +11,16 @@
       {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-armor-list.hbs" }}
     </div>
     <div class="weapon-section">
-      <li class="items-header flexrow">
-        <span class="text-padding-left-smallest">
-          {{localize "CPR.characterSheet.bottomPane.fight.weapons"}}
-        </span>
-      </li>
+      {{! If we have 0 Weapons equipped, show "Weapons" as a <header>
+        this is then changes to "Ranged"/"Melee" if we have weapons equipped}}
+      </header>
+      {{#if (cprIsEmpty actor.system.weapons.equipped) }}
+        <li class="items-header flexrow">
+          <span class="text-padding-left-smallest">
+            {{localize "CPR.characterSheet.bottomPane.fight.weapons"}}
+          </span>
+        </li>
+      {{/if}}
       {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-weapons-list.hbs" }}
     </div>
   {{/if}}
