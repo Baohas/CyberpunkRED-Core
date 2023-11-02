@@ -534,6 +534,20 @@ export default class CPRActor extends Actor {
         }
       }
     });
+    // Get all other cyberware installed in this one.
+    const installedCyberware = item
+      .recursiveGetAllInstalledItems()
+      .filter((i) => i.type === "cyberware");
+
+    // Accumulate the roll formulae for each item for display on the sheet.
+    const rolledHumanityLoss = installedCyberware.reduce((accumulator, i) => {
+      return `${accumulator} + ${i.system.humanityLoss.roll}`;
+    }, item.system.humanityLoss.roll);
+
+    // Accumulate the static formulae for each item for display on the sheet.
+    const staticHumanityLoss = installedCyberware.reduce((accumulator, i) => {
+      return accumulator + i.system.humanityLoss.static;
+    }, item.system.humanityLoss.static);
 
     // Show "Install Cyberware" dialog.
     const formData = await CPRDialog.showDialog(
@@ -542,6 +556,9 @@ export default class CPRActor extends Actor {
         foundationalCyberware: compatibleTargetCyberware,
         // If the cyberware being installed is foundational, the array will be empty, thus the optional chaining.
         foundationalId: compatibleTargetCyberware[0]?._id,
+        humanityLossType: "rolled",
+        rolledHumanityLoss,
+        staticHumanityLoss,
       },
       // Set the options for the dialog.
       {
@@ -566,7 +583,11 @@ export default class CPRActor extends Actor {
       : this.getOwnedItem(formData.foundationalId);
 
     const installationSuccess = await target.installItems([item]);
-    if (installationSuccess) await this.loseHumanityValue(item, formData);
+    if (installationSuccess)
+      await this.loseHumanityValue(
+        [item].concat(installedCyberware),
+        formData.humanityLossType
+      );
     return installationSuccess;
   }
 
@@ -1829,41 +1850,32 @@ export default class CPRActor extends Actor {
    * because users can switch between mook and character sheets independent of actor type, we
    * have to keep this here. (i.e. they can create a mook but switch to the character sheet)
    *
-   * @param {CPRItem} item - the Cyberware item being installed (provided just to name the roll)
-   * @param {Object} amount - contains a humanityLoss attribute we use to reduce humanity.
-   *                          Will roll dice if it is a formula.
+   * @param {Array<CPRItem>} itemArray - a list of cyberware being installed
+   * @param {String} humanityLossType - Whether to "roll" for humanity loss, take "static" loss, or to lose "None" at all.
    * @returns {@Promise}
    */
-  async loseHumanityValue(item, amount) {
+  async loseHumanityValue(itemArray, humanityLossType) {
     LOGGER.trace("loseHumanityValue | CPRActor | Called.");
-    if (amount.humanityLoss === "None") {
+    if (humanityLossType === "None") {
       LOGGER.trace(
         "CPR Actor loseHumanityValue | Called. | humanityLoss was None."
       );
-      await this.setMaxHumanity();
-      return;
+      return this.setMaxHumanity();
     }
+
     const { humanity } = this.system.derivedStats;
     let value = Number.isInteger(humanity.value)
       ? humanity.value
       : humanity.max;
-    if (amount.humanityLoss.match(/[0-9]+d[0-9]+/)) {
-      const humRoll = new CPRRolls.CPRHumanityLossRoll(
-        item.name,
-        amount.humanityLoss
-      );
+    for (const item of itemArray) {
+      // Cast formula to a string for the case of a static loss, which is a Number.
+      // If it is already a string, nothing will change.
+      const formula = `${item.system.humanityLoss[humanityLossType]}`;
+      const humRoll = new CPRRolls.CPRHumanityLossRoll(item.name, formula);
       await humRoll.roll();
       value -= humRoll.resultTotal;
       humRoll.entityData = { actor: this.id };
       CPRChat.RenderRollCard(humRoll);
-      LOGGER.trace(
-        "CPR Actor loseHumanityValue | Called. | humanityLoss was rolled."
-      );
-    } else {
-      value -= parseInt(amount.humanityLoss, 10);
-      LOGGER.trace(
-        "CPR Actor loseHumanityValue | Called. | humanityLoss was static."
-      );
     }
 
     if (value <= 0) {
@@ -1871,7 +1883,7 @@ export default class CPRActor extends Actor {
     }
 
     await this.update({ "system.derivedStats.humanity.value": value });
-    await this.setMaxHumanity();
+    return this.setMaxHumanity();
   }
 
   /**

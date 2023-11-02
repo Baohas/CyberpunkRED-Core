@@ -12,13 +12,13 @@
           {{localize "CPR.dialog.installCyberware.humanityLoss"}}:
         </div>
         <div class="dialog-item-input item-end">
-          <select name="humanityLoss">
-            {{#select humanityLoss}}
-              <option value="{{item.system.humanityLoss.roll}}">
-                {{localize "CPR.rolls.roll"}}: {{item.system.humanityLoss.roll}}
+          <select name="humanityLossType">
+            {{#select humanityLossType}}
+              <option value="roll">
+                {{localize "CPR.rolls.roll"}}: {{rolledHumanityLoss}}
               </option>
-              <option value="{{item.system.humanityLoss.static}}">
-                {{localize "CPR.dialog.installCyberware.static"}}: {{item.system.humanityLoss.static}}
+              <option value="static">
+                {{localize "CPR.dialog.installCyberware.static"}}: {{staticHumanityLoss}}
               </option>
               <option value="None">
                 {{localize "CPR.dialog.installCyberware.none"}}
