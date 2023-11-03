@@ -490,6 +490,7 @@
   "CPR.global.generic.hitpoints": "Hit Points",
   "CPR.global.generic.hitpointsShort": "HP",
   "CPR.global.generic.install": "Install",
+  "CPR.global.generic.installed": "Installed",
   "CPR.global.generic.installedItems": "Installed Items",
   "CPR.global.generic.item": "Item",
   "CPR.global.generic.modify": "Modify",

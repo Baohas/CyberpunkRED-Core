@@ -9,18 +9,14 @@
         <div class="item-thumb">
           <img src="{{item.img}}"/>
           {{#if item.system.isUpgraded }}
-            <i class="fa-solid fa-square-up fa-xs"></i>
+            <i class="fa-solid fa-square-up fa-xs" data-tooltip="{{localize "CPR.global.generic.upgraded"}}"></i>
+          {{/if}}
+          {{#if item.system.isInstalled }}
+            <i class="fa-solid fa-circle-info fa-xs" data-tooltip="{{localize "CPR.characterSheet.rightPane.cyber.installedIn"}} {{cprGetProp (cprGetOwnedItem actor item.system.installedIn.[0]) "name"}}"></i>
           {{/if}}
         </div>
         {{cprBrandedName item}}
       </a>
-      {{#if item.system.isInstalled }}
-        <a class="item-view"
-           data-item-id="{{item.system.installedIn.[0]}}"
-           data-tooltip="{{localize "CPR.characterSheet.rightPane.cyber.installedIn"}} {{cprGetProp (cprGetOwnedItem actor item.system.installedIn.[0]) "name"}}">
-          <i class="text-super fa-solid fa-circle-info"></i>
-        </a>
-      {{/if}}
       {{#if item.system.installedItems.list }}
         <a class="toggle-installed-visibility">
           <i class="fa-solid fa-chevron-up fa-sm {{#unless (cprGetProp actor.flags.cyberpunk-red-core.showInstalled item.id) }}fa-flip-vertical{{/unless}}"></i>

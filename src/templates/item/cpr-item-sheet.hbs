@@ -7,6 +7,9 @@
         {{#if item.system.isUpgraded }}
           <i class="fa-solid fa-square-up fa-xs" data-tooltip="{{localize "CPR.global.generic.upgraded"}}"></i>
         {{/if}}
+        {{#if item.system.isInstalled }}
+          <i class="fa-solid fa-circle-info fa-xs" data-tooltip="{{localize "CPR.global.generic.installed"}}"></i>
+        {{/if}}
     </div>
 
     <div class="item-details">

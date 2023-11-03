@@ -21,7 +21,7 @@
         <div class="item-thumb">
           <img src="{{item.img}}"/>
           {{#if item.system.isUpgraded }}
-            <i class="fa-solid fa-square-up fa-xs"></i>
+            <i class="fa-solid fa-square-up fa-xs" data-tooltip="{{localize "CPR.global.generic.upgraded"}}"></i>
           {{/if}}
         </div>
         {{cprBrandedName item}}
