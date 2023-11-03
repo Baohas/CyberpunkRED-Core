@@ -121,6 +121,13 @@ export default class CPRItem extends Item {
     if (formData.deleteInstalled) {
       const deleteItems = this.recursiveGetAllInstalledItems().map((i) => i.id);
       Item.deleteDocuments(deleteItems);
+
+      // Remove flags so that the datapoint does not get bloated.
+      const showInstallFlag = { [`-=${this.id}`]: null };
+      deleteItems.forEach((id) => {
+        showInstallFlag[`-=${id}`] = null;
+      });
+      game.user.setFlag(game.system.id, "showInstalledList", showInstallFlag);
     }
     return super.delete(context);
   }

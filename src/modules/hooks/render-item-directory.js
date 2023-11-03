@@ -66,10 +66,15 @@ function _prepareSubList(element) {
   const item = game.items.get(element.dataset.documentId);
   // Only create a dropdown if the item has installed items & is not itself installed.
   if (item.system.hasInstalled && !item.system.isInstalled) {
-    const installFlag = item.getFlag(game.system.id, "showInstalled");
+    const showInstallFlag = game.user.getFlag(
+      game.system.id,
+      "showInstalledList"
+    );
+    const showNested = showInstallFlag?.[item.id];
+    // Is nested list hidden or not
+    const display = showNested ? "" : "item-hidden";
+    // Generate the sublist
     const listItems = recursiveHTML(item, item.id);
-    // Is subitem hidden or not
-    const display = installFlag ? "" : "item-hidden";
     // Here we wrap the whole sub-list in a div, so that we can animate it
     let html = "";
     html += `<div class="sub-list ${display}" data-items-wrapper-for-parent="${item.id}">`;
@@ -95,10 +100,12 @@ function _prepareSubList(element) {
  * @returns {String} - HTML for the chevron button.
  */
 function _prepareChevron(element) {
-  const item = game.items.get(element.dataset.documentId);
-  const display = item.getFlag(game.system.id, "showInstalled")
-    ? "fa-flip-vertical"
-    : "";
+  const itemID = element.dataset.documentId;
+  const showInstallFlag = game.user.getFlag(
+    game.system.id,
+    "showInstalledList"
+  );
+  const display = showInstallFlag?.[itemID] ? "fa-flip-vertical" : "";
   return `<a class="toggle-install-list-button"><i class="fas fa-chevron-down ${display}"></i></a>`;
 }
 
@@ -125,7 +132,6 @@ function _renderViewOnlyItemSheet(event) {
 function _toggleInstalledVisibility(event) {
   // Step 1: Prepare data
   const itemId = SystemUtils.GetEventDatum(event, "data-document-id");
-  const item = game.items.get(itemId);
 
   // Step 2: Toggle the icon rotation to indicate state change.
   const iconElement = event.currentTarget.querySelector("i");
@@ -142,9 +148,15 @@ function _toggleInstalledVisibility(event) {
 
   // Wait for the expand/collapse animation to complete before updating the installFlags (because it re-renders the handlebars)
   installedRow.one("transitionend", async () => {
-    const installFlag = item.getFlag(game.system.id, "showInstalled");
-    // Update the installFlags.
-    await item.setFlag(game.system.id, "showInstalled", !installFlag);
+    // A per-user flag that stores whether or not to show the nested list on a particular contaier item.
+    const showInstallFlag = game.user.getFlag(
+      game.system.id,
+      "showInstalledList"
+    );
+    const showNested = showInstallFlag?.[itemId];
+    const flagUpdate = { [itemId]: !showNested };
+    // Update the showInstallFlags.
+    await game.user.setFlag(game.system.id, "showInstalledList", flagUpdate);
   });
 }
 
