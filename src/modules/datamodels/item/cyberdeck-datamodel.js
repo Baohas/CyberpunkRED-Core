@@ -30,6 +30,7 @@ export default class CyberdeckDataModel extends CPRSystemDataModel.mixin(
         initialAllowedTypes: ["itemUpgrade", "program"],
         includeSlots: true,
         initialSlots: 7,
+        initialSize: 1,
       }),
       {}
     );

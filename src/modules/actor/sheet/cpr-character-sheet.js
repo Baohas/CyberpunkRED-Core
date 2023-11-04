@@ -113,11 +113,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       .click((event) => this._updateEurobucks(event));
     html.find(".eurobucks-open-ledger").click(() => this.showLedger("wealth"));
 
-    // Create item in inventory
-    html
-      .find(".item-create")
-      .click((event) => this._createInventoryItem(event));
-
     // Fight tab listeners
 
     // update the amount of loaded ammo in the Fight tab
@@ -565,26 +560,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         SystemUtils.Localize("CPR.messages.eurobucksModifyWarn")
       );
     }
-  }
-
-  /**
-   * Create an item in the inventory of the actor. The templates will hide this functionality
-   * if the GMs does not want to permit players to create their own items.
-   *
-   * @private
-   * @callback
-   * @param {Object} event - object capturing event data (what was clicked and where?)
-   */
-  async _createInventoryItem(event) {
-    LOGGER.trace("_createInventoryItem | CPRCharacterActorSheet | Called.");
-    const itemType = SystemUtils.GetEventDatum(event, "data-item-type");
-    const itemString = `TYPES.Item.${itemType}`;
-    const itemName = SystemUtils.Format("CPR.actorSheets.commonActions.new", {
-      item: SystemUtils.Localize(itemString),
-    });
-    const itemImage = SystemUtils.GetDefaultImage("Item", itemType);
-    const itemData = { img: itemImage, name: itemName, type: itemType };
-    await this.actor.createEmbeddedDocuments("Item", [itemData]);
   }
 
   /**

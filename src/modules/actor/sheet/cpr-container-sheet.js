@@ -78,10 +78,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     html
       .find('select[name="trade-with-dropdown"')
       .change((event) => this._setTradePartner(event));
-    // Create item in inventory
-    html
-      .find(".item-create")
-      .click((event) => this._createInventoryItem(event));
+
     //
     html
       .find(".container-type-dropdown")
@@ -503,28 +500,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
         }
       }
     }
-  }
-
-  /**
-   * Create an item in the inventory of the actor. The templates will hide this functionality
-   * if the GMs does not want to permit players to create their own items.
-   *
-   * @private
-   * @callback
-   * @param {Object} event - object capturing event data (what was clicked and where?)
-   */
-  async _createInventoryItem(event) {
-    LOGGER.trace("_createInventoryItem | CPRContainerSheet | Called.");
-    const itemType = SystemUtils.GetEventDatum(event, "data-item-type");
-    const itemTypeNice = itemType.toLowerCase().capitalize();
-    const itemString = "ITEM.Type";
-    const itemTypeLocal = itemString.concat(itemTypeNice);
-    const itemName = `${SystemUtils.Localize(
-      "CPR.actorSheets.commonActions.new"
-    )} ${SystemUtils.Localize(itemTypeLocal)}`;
-    const itemImage = SystemUtils.GetDefaultImage("Item", itemType);
-    const itemData = { img: itemImage, name: itemName, type: itemType };
-    await this.actor.createEmbeddedDocuments("Item", [itemData]);
   }
 
   /**

@@ -333,6 +333,11 @@ export default class CPRActorSheet extends ActorSheet {
       .find(".item-view")
       .click((event) => this._renderReadOnlyItemCard(event));
 
+    // Create item in inventory
+    html
+      .find(".item-create")
+      .click((event) => this._createInventoryItem(event));
+
     // Reset Death Penalty
     html.find(".reset-deathsave-value").click(() => this._resetDeathSave());
 
@@ -1014,7 +1019,7 @@ export default class CPRActorSheet extends ActorSheet {
       }
     }
 
-    if (item.type === "armor") {
+    if (item.type === "armor" && this.actor.type !== "container") {
       if (item.system.isBodyLocation) {
         // Removes armor values for body armor if the body armor is deleted.
         this.actor.setTrackedArmor("body", "untrack");
@@ -1676,6 +1681,26 @@ export default class CPRActorSheet extends ActorSheet {
       this.options.cprContentFilter = "";
       this._render();
     }
+  }
+
+  /**
+   * Create an item in the inventory of the actor. The templates will hide this functionality
+   * if the GMs does not want to permit players to create their own items.
+   *
+   * @private
+   * @callback
+   * @param {Object} event - object capturing event data (what was clicked and where?)
+   */
+  async _createInventoryItem(event) {
+    LOGGER.trace("_createInventoryItem | CPRCharacterActorSheet | Called.");
+    const itemType = SystemUtils.GetEventDatum(event, "data-item-type");
+    const itemString = `TYPES.Item.${itemType}`;
+    const itemName = SystemUtils.Format("CPR.actorSheets.commonActions.new", {
+      item: SystemUtils.Localize(itemString),
+    });
+    const itemImage = SystemUtils.GetDefaultImage("Item", itemType);
+    const itemData = { img: itemImage, name: itemName, type: itemType };
+    await this.actor.createEmbeddedDocuments("Item", [itemData]);
   }
 
   /**

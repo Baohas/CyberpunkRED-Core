@@ -51,7 +51,7 @@ export default class CPRContainerActor extends Actor {
       return super.createEmbeddedDocuments(embeddedName, items, context);
 
     // Don't add core items.
-    const coreItems = items.filter((i) => i?.system.core);
+    const coreItems = items.filter((i) => i.system?.core);
     if (coreItems.length > 0) {
       Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
       items = items.filter((i) => !coreItems.includes(i));
@@ -61,9 +61,11 @@ export default class CPRContainerActor extends Actor {
     if (!context.CPRsplitStack && items.length === 1) {
       LOGGER.debug("Attempting to stack items on an actor sheet");
       const doc = items[0];
-      const returnValue = await this.automaticallyStackItems(doc);
-      if (returnValue.length > 0) {
-        return returnValue;
+      if (doc.system) {
+        const returnValue = await this.automaticallyStackItems(doc);
+        if (returnValue.length > 0) {
+          return returnValue;
+        }
       }
     }
 
