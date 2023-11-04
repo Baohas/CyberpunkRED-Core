@@ -1,5 +1,6 @@
-/* global Hooks */
+/* global Hooks window */
 import LOGGER from "../utils/cpr-logger.js";
+import SheetUtils from "../utils/SheetUtils.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
@@ -27,5 +28,18 @@ const actorSheetHooks = () => {
     // eslint-disable-next-line no-param-reassign
     actorSheet.options.setConfig = true;
   });
+
+  /**
+   * Set width of '.type-tag' elements on the actor sheet
+   *
+   * @param {Object} app - not used but needed
+   * @param {Object} html - The jQuery HTML context for the ActorSheet's DOM.
+   */
+  Hooks.on("renderActorSheet", (app, html) => {
+    window.requestAnimationFrame(() => {
+      SheetUtils.setCssClassWidth(html, ".type-tag");
+    });
+  });
 };
+
 export default actorSheetHooks;

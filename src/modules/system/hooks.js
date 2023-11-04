@@ -5,6 +5,7 @@ import * as externalHooks from "../hooks/external-modules.js";
 import * as folderHooks from "../hooks/folder.js";
 import * as hotbarHooks from "../hooks/hotbar.js";
 import * as itemHooks from "../hooks/item.js";
+import * as itemSheetHooks from "../hooks/item-sheet.js";
 import * as renderItemDirHooks from "../hooks/render-item-directory.js";
 import * as tokenHooks from "../hooks/token.js";
 import * as tokenHudHooks from "../hooks/tokenhud.js";
@@ -18,6 +19,7 @@ export default function registerHooks() {
   folderHooks.default();
   hotbarHooks.default();
   itemHooks.default();
+  itemSheetHooks.default();
   renderItemDirHooks.default();
   tokenHooks.default();
   tokenHudHooks.default();
