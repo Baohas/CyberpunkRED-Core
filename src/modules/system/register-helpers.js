@@ -897,6 +897,7 @@ export default function registerHandlebarsHelpers() {
         }
         return sortOrder.indexOf(a.type) > sortOrder.indexOf(b.type) ? -1 : 1;
       });
+
       let html = "";
       // For each installed item, create an <li> element with information about that item.
       for (const childItem of sortedInstalled) {
@@ -904,28 +905,48 @@ export default function registerHandlebarsHelpers() {
           `TYPES.Item.${childItem.type}`
         );
 
-        let icon;
+        let actions = "";
+        let uninstallIcon = "fa-sign-out-alt"; // Most items have the same uninstall icon
+        const uninstallTooltip = SystemUtils.Localize(
+          "CPR.actorSheets.commonActions.uninstall"
+        );
         switch (childItem.type) {
-          case "ammo":
-            icon = `<i class="fas fa-exchange-alt"></i>`;
+          case "itemUpgrade": {
+            // Ranged weapon upgrades get the change ammo icon.
+            if (childItem.system.type !== "weapon") break;
+            if (!childItem.system.isRanged) break;
+            if (options.hash.isItemSheet) break;
+            const reloadTooltip = SystemUtils.Localize(
+              "CPR.actorSheets.commonActions.changeAmmo"
+            );
+            actions += `<a class="item-action data-item-id="${childItem._id}" data-action="select-ammo">`;
+            actions += `  <i class="fas fa-exchange-alt" data-tooltip="${reloadTooltip}"></i>`;
+            actions += `</a>`;
             break;
+          }
           case "program":
-            icon = `<i class="fas fa-folder-minus"></i>`;
+            // Programs get a unique uninstall icon.
+            uninstallIcon = "fa-folder-minus";
             break;
           default:
-            icon = `<i class="fas fa-sign-out-alt"></i>`;
             break;
         }
+        // Every item gets an uninstall icon.
+        actions += `<a class="uninstall-single-item" data-item-id="${childItem._id}" data-direct-parent="${parentItem._id}">`;
+        actions += `  <i class="fas ${uninstallIcon}" data-tooltip="${uninstallTooltip}"></i>`;
+        actions += `</a>`;
 
+        // Build the list item.
         html += `<li class="item flexrow" data-row-level=${level}
-                     data-item-id="${childItem._id}"
-                     data-item-category="${childItem.type}">`;
+                       data-item-id="${childItem._id}"
+                       data-item-category="${childItem.type}">`;
         html += `  <a class="name item-view flex-center"><span class="type-tag">${localizedType}</span> ${childItem.name}</a>`;
         // Uninstall glyph
-        html += `  <a class="uninstall-single-item" data-item-id="${childItem._id}" data-direct-parent="${parentItem._id}">`;
-        html += `    ${icon}`;
-        html += `  </a>`;
+        html += `  <div class="action-container">`;
+        html += `    ${actions}`;
+        html += `  </div>`;
         html += `</li>`;
+
         // If the child item has its own installed items, call this function on the child item
         // and increase the indent.
         if (childItem.system.installedItems?.list?.length > 0) {
