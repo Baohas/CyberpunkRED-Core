@@ -6,8 +6,11 @@
 
 ### Changes
 
+### New Features
+
 - Add Quality to Weapons/Cyberdecks
 - #653 - Enable support for dddice
+- Adjust font size of Handle/Name in Character sheets if the name overflows
 
 ### Bug Fixes
 

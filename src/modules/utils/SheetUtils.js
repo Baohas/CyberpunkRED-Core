@@ -57,4 +57,50 @@ export default class CPRSheetUtils {
       typeTags.css("width", `${maxWidthInRem}rem`);
     }
   }
+
+  /**
+   * Dynamically adjusts the font size of the input element to fit its contents
+   * within its bounds. It reduces the font size step by step until the text fits
+   * or the minimum font size is reached.
+   *
+   * @param {HTMLElement|jQuery} inputElement - The DOM or jQuery object for the
+   *                                            input field whose font size will
+   *                                            be adjusted. It accepts both a raw
+   *                                            DOM element or a jQuery element.
+   */
+  static adjustFontSizeToFit(inputElement) {
+    // Use LOGGER to trace the call
+    LOGGER.trace("adjustFontSizeToFit | CPRSheetUtils | Called.");
+
+    // Ensure we have the DOM element
+    const input = inputElement.jquery ? inputElement.get(0) : inputElement;
+
+    // Make sure we have a valid element to work with
+    if (!input || !input.style) {
+      LOGGER.warn(
+        "adjustFontSizeToFit | CPRSheetUtils | No input element found or input element has no style property."
+      );
+      return;
+    }
+
+    // Maximum and minimum font sizes in rem
+    const minFontSize = 0.5;
+    const maxFontSize = 2;
+    // How much to adjust the font size each time (in rem)
+    const step = 0.1;
+
+    let fontSize = maxFontSize;
+    input.style.fontSize = `${fontSize}rem`;
+
+    // Decrease the font size until the text fits within the input width
+    while (fontSize > minFontSize && input.scrollWidth > input.clientWidth) {
+      fontSize -= step;
+      input.style.fontSize = `${fontSize}rem`;
+    }
+
+    // If the minimum font size is still too big, set it to the minimum
+    if (input.scrollWidth > input.clientWidth) {
+      input.style.fontSize = `${minFontSize}rem`;
+    }
+  }
 }

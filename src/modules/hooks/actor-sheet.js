@@ -29,16 +29,23 @@ const actorSheetHooks = () => {
     actorSheet.options.setConfig = true;
   });
 
-  /**
-   * Set width of '.type-tag' elements on the actor sheet
-   *
-   * @param {Object} app - not used but needed
-   * @param {Object} html - The jQuery HTML context for the ActorSheet's DOM.
-   */
   Hooks.on("renderActorSheet", (app, html) => {
+    /**
+     * Set width of '.type-tag' elements on the actor sheet
+     */
     window.requestAnimationFrame(() => {
       SheetUtils.setCssClassWidth(html, ".type-tag");
     });
+    /**
+     * Resize the fontsize of the `name` input if the text overflows to allow
+     * long names to look good.
+     */
+    const inputElement = html.find('input[name="name"]');
+    if (inputElement.length) {
+      window.requestAnimationFrame(() => {
+        SheetUtils.adjustFontSizeToFit(inputElement);
+      });
+    }
   });
 };
 
