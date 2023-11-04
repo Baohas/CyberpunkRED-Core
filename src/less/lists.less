@@ -95,11 +95,16 @@
   .item-name {
     flex: 2;
     margin: 0;
-    overflow: clip;
+    overflow: hidden;
     text-align: left;
     align-items: center;
     text-overflow: ellipsis;
     flex-flow: initial;
+
+    .rollable {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     .item-thumb {
       position: relative;
