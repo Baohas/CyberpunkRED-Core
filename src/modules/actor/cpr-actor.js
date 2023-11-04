@@ -195,7 +195,11 @@ export default class CPRActor extends Actor {
    * @param {Object} context - an object tracking the context in which the method is being called
    * @returns {null}
    */
-  async createEmbeddedDocuments(embeddedName, items, context = {}) {
+  async createEmbeddedDocuments(
+    embeddedName,
+    items,
+    context = { createInstalled: true }
+  ) {
     LOGGER.trace("createEmbeddedDocuments | CPRActor | called.");
     // If migration is calling this, we definitely want to
     // create the Embedded Documents.
@@ -221,7 +225,7 @@ export default class CPRActor extends Actor {
     if (canStack && !context.CPRsplitStack && items.length === 1) {
       LOGGER.debug("Attempting to stack items on an actor sheet");
       const [doc] = items;
-      const returnValue = this.automaticallyStackItems(doc);
+      const returnValue = await this.automaticallyStackItems(doc);
       if (returnValue.length > 0) return returnValue;
     }
 
@@ -232,14 +236,16 @@ export default class CPRActor extends Actor {
       context
     );
 
-    // Handle creating and installing any items into the parent item.
-    for (const item of createdItems) {
-      // eslint-disable-next-line no-continue
-      if (!item.system.hasInstalled) continue;
-      // The item will only have this flag if it is imported/coming from another actor.
-      const imported = !!item.flags.cprInstallTree;
-      // The following function recusrively creates and installs all items in the install tree.
-      await item.createInstalledItemsOnActor(imported);
+    if (context.createInstalled) {
+      // Handle creating and installing any items into the parent item.
+      for (const item of createdItems) {
+        // eslint-disable-next-line no-continue
+        if (!item.system.hasInstalled) continue;
+        // The item will only have this flag if it is imported/coming from another actor.
+        const imported = !!item.flags.cprInstallTree;
+        // The following function recusrively creates and installs all items in the install tree.
+        await item.createInstalledItemsOnActor(imported);
+      }
     }
 
     const isMookSheet = Object.values(this.apps).some(
@@ -1282,9 +1288,11 @@ export default class CPRActor extends Actor {
             addedAmount = 1;
           }
           const newAmount = oldAmount + addedAmount;
-          return this.updateEmbeddedDocuments("Item", [
-            { _id: itemMatch.id, "system.amount": newAmount },
-          ]);
+          return this.updateEmbeddedDocuments(
+            "Item",
+            [{ _id: itemMatch.id, "system.amount": newAmount }],
+            { diff: false }
+          );
         }
       }
     }

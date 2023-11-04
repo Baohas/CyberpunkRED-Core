@@ -357,6 +357,11 @@ export default class CPRActorSheet extends ActorSheet {
       .find(".toggle-installed-visibility")
       .click((event) => this._toggleInstalledVisibility(event));
 
+    // Uninstall a single item from its parent.
+    html
+      .find(".uninstall-single-item")
+      .click((event) => this._uninstallSingleItem(event));
+
     // Show edit and delete buttons
     html.find(".row.item").hover(
       (event) => {
@@ -1671,5 +1676,28 @@ export default class CPRActorSheet extends ActorSheet {
       this.options.cprContentFilter = "";
       this._render();
     }
+  }
+
+  /**
+   * Called when the uninstall item glyph is clicked (the minus folder).
+   *
+   * @param {*} event - object capturing event data (what was clicked and where?)
+   * @returns {Promise<null>}
+   */
+  async _uninstallSingleItem(event) {
+    LOGGER.trace("_uninstallSingleItem | CPRCharacterActorSheet | Called.");
+    // Get the item being uninstalled.
+    const installedItemId = SystemUtils.GetEventDatum(event, "data-item-id");
+    const installedItem = this.actor.getOwnedItem(installedItemId);
+
+    // Get the container item that has has the above item installed, if provided.
+    const containerId = SystemUtils.GetEventDatum(event, "data-direct-parent");
+    const container = this.actor.getOwnedItem(containerId);
+
+    // If a specific container item is provided, uninistall just from that container.
+    // Else, uninstall from all locations.
+    return container
+      ? installedItem.uninstall({ providedContainers: [container] })
+      : installedItem.uninstall();
   }
 }

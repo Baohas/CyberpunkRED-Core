@@ -136,11 +136,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       .find(".program-execution")
       .click((event) => this._cyberdeckProgramExecution(event));
 
-    // Uninstall a program on a Cyberdeck
-    html
-      .find(".uninstall-single-item")
-      .click((event) => this._uninstallSingleItem(event));
-
     // Effects tab listeners
     // Create Active Effect
     html.find(".effect-control").click((event) => this.manageEffect(event));
@@ -681,28 +676,5 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     if (updateList.length > 0) {
       this.actor.updateEmbeddedDocuments("Item", updateList);
     }
-  }
-
-  /**
-   * Called when the uninstall item glyph is clicked (the minus folder).
-   *
-   * @param {*} event - object capturing event data (what was clicked and where?)
-   * @returns {Promise<null>}
-   */
-  async _uninstallSingleItem(event) {
-    LOGGER.trace("_uninstallSingleItem | CPRCharacterActorSheet | Called.");
-    // Get the item being uninstalled.
-    const installedItemId = SystemUtils.GetEventDatum(event, "data-item-id");
-    const installedItem = this.actor.getOwnedItem(installedItemId);
-
-    // Get the container item that has has the above item installed, if provided.
-    const containerId = SystemUtils.GetEventDatum(event, "data-direct-parent");
-    const container = this.actor.getOwnedItem(containerId);
-
-    // If a specific container item is provided, uninistall just from that container.
-    // Else, uninstall from all locations.
-    return container
-      ? installedItem.uninstall({ providedContainers: [container] })
-      : installedItem.uninstall();
   }
 }

@@ -148,7 +148,7 @@ const Container = function Container() {
         while (idList.length > 0) {
           for (const id of idList) {
             const item = actor ? actor.getOwnedItem(id) : game.items.get(id);
-            if (item !== null) {
+            if (item) {
               if (containerTypes.includes(item.type)) {
                 idList = idList.concat(item.system.installedItems.list);
               }
@@ -529,7 +529,7 @@ const Container = function Container() {
     if (imported) {
       // If this item is imported, the information for installed items is embedded in its flags.
       for (const itemData of this.flags.cprInstallTree) {
-        // Add the item   data to the list.
+        // Add the item data to the list.
         creationList.push(itemData);
       }
       // If the item is from the world, we get the information for installed items,
@@ -545,12 +545,15 @@ const Container = function Container() {
     const newInstalledList = [];
     // Create the items from the list.
     if (creationList.length > 0) {
-      // Not calling `createEmbeddedDocuments` here because that function calls this one and we would end up
-      // in an infinite loop. Well, we could make a back-and-forth recursive scenario,
-      // but I think its more straightforward to keep the recursion in a single function.
-      const createdItems = await Item.createDocuments(creationList, {
-        parent: actor,
-      });
+      const createdItems = await actor.createEmbeddedDocuments(
+        "Item",
+        creationList,
+        {
+          // This ensures we don't call the function we're currently in from `createEmbeddedDocuments`.
+          // Just create the items normally, and let the function we're in handle the recursion.
+          createInstalled: false,
+        }
+      );
 
       for (const item of createdItems) {
         // Keep track of newly created item ID's so we can update the parent item.

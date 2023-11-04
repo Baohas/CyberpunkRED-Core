@@ -41,7 +41,11 @@ export default class CPRContainerActor extends Actor {
    * @param {Object} context - an object tracking the context in which the method is being called
    * @returns {null}
    */
-  async createEmbeddedDocuments(embeddedName, items, context = {}) {
+  async createEmbeddedDocuments(
+    embeddedName,
+    items,
+    context = { createInstalled: true }
+  ) {
     LOGGER.trace("createEmbeddedDocuments | CPRContainerActor | called.");
     if (!embeddedName === "Item")
       return super.createEmbeddedDocuments(embeddedName, items, context);
@@ -70,14 +74,16 @@ export default class CPRContainerActor extends Actor {
       context
     );
 
-    // Handle creating and installing any items into the parent item.
-    for (const item of createdItems) {
-      // eslint-disable-next-line no-continue
-      if (!item.system.hasInstalled) continue;
-      // The item will only have this flag if it is imported/coming from another actor.
-      const imported = !!item.flags.cprInstallTree;
-      // The following function recusrively creates and installs all items in the install tree.
-      await item.createInstalledItemsOnActor(imported);
+    if (context.createInstalled) {
+      // Handle creating and installing any items into the parent item.
+      for (const item of createdItems) {
+        // eslint-disable-next-line no-continue
+        if (!item.system.hasInstalled) continue;
+        // The item will only have this flag if it is imported/coming from another actor.
+        const imported = !!item.flags.cprInstallTree;
+        // The following function recusrively creates and installs all items in the install tree.
+        await item.createInstalledItemsOnActor(imported);
+      }
     }
 
     return createdItems;
