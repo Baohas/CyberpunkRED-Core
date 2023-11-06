@@ -346,7 +346,7 @@ export default class CPRActor extends Actor {
    * This is where derived stats are calculated, Note, one can tailor the behavior
    * depending on which sheet (aka "app") is associated with the actor.
    *
-   * To Do: this is called 3 times when creating an actor... why?
+   * TODO: this is called 3 times when creating an actor... why?
    *
    * @private
    */
