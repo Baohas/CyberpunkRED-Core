@@ -4,17 +4,13 @@
     <div class="text-normal text-center">
       {{header}}
     </div>
-    <div class="text-center text-semi">
-      {{!-- Display Available Slots --}}
-      {{localize "CPR.global.generic.size"}}:
-      {{#if isAmmo}}
-        <span data-tooltip="{{localize "CPR.dialog.uninstallConfirmation.isAmmoToolTip"}}">
-          {{localize "CPR.global.generic.notApplicable"}}
-        </span>
-      {{else}}
+    {{#unless isAmmo}}
+      <div class="text-center text-semi">
+        {{!-- Display Available Slots --}}
+        {{localize "CPR.global.generic.size"}}:
         {{size}}
-      {{/if}}
-    </div>
+      </div>
+    {{/unless}}
   </div>
   <hr/>
   <div class="dialog-grid flexcol">
@@ -25,11 +21,13 @@
               {{localize "CPR.global.generic.item"}}
             </span>
           </div>
-          <div class="dialog-item-detail flex-width-10">
-            <span class="text-semi">
-              {{localize "CPR.global.generic.slots"}}
-            </span>
-          </div>
+          {{#unless isAmmo}}
+            <div class="dialog-item-detail flex-width-10">
+              <span class="text-semi">
+                {{localize "CPR.global.generic.slots"}}
+              </span>
+            </div>
+          {{/unless}}
           <div class="dialog-item-input flexrow flex-width-15">
             <span class="text-semi">
               {{localize "CPR.actorSheets.commonActions.uninstall"}}
@@ -41,17 +39,13 @@
             <div class="dialog-item-name flex-width-75 text-nowrap">
               {{container.name}}
             </div>
-            <div class="dialog-item-detail flex-width-10">
-              {{#if ../isAmmo}}
-                <span data-tooltip="{{localize "CPR.dialog.uninstallConfirmation.isAmmoToolTip"}}">
-                  {{localize "CPR.global.generic.notApplicable"}}
-                </span>
-              {{else}}
+            {{#unless ../isAmmo}}
+              <div class="dialog-item-detail flex-width-10">
                 {{container.system.installedItems.usedSlots}} /
                 {{container.system.installedItems.slots}}
-              {{/if}}
-            </div>
-            <div class="dialog-item-input flex-width-15">
+              </div>
+            {{/unless}}
+            <div class="dialog-item-input flex-width-{{#unless ../isAmmo}}15{{else}}25{{/unless}}">
               <input type="checkbox"
                      name="selectedItems"
                      value="{{container.id}}"

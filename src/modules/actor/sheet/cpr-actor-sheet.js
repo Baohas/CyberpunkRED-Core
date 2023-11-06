@@ -998,11 +998,35 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _deleteOwnedItem(item, skipConfirm = false) {
     LOGGER.trace("_deleteOwnedItem | CPRActorSheet | Called.");
-    // There's a bug here somewhere.  If the prompt is disabled, it doesn't seem
-    // to delete, but if the player is prompted, it deletes fine???
     const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
-    // Only show the delete confirmation if the setting is on, and internally we do not want to skip it.
-    if (setting && !skipConfirm) {
+    // If item is installed, show dialog to make sure user understands it will be uninstalled
+    if (item.system.isInstalled && !skipConfirm) {
+      // Create list of names of items that this item is installed in..
+      const installedInSlug = item.system.installedIn
+        .map((id) => this.actor.getOwnedItem(id))
+        .map((i) => i.name)
+        .reduce((accumulator, name) => `${accumulator}, ${name}`);
+      const dialogMessage = `${SystemUtils.Localize(
+        "CPR.dialog.deleteInstalledConfirmation.message"
+      )} ${installedInSlug}`;
+
+      // Show "Default" dialog.
+      const confirmDelete = await CPRDialog.showDialog(
+        { dialogMessage },
+        // Set the options for the dialog.
+        {
+          title: SystemUtils.Localize(
+            "CPR.dialog.deleteInstalledConfirmation.title"
+          ),
+        }
+      ).catch((err) => LOGGER.debug(err));
+
+      if (!confirmDelete) {
+        return;
+      }
+      // If item isn't installed, the setting is on, and internally we do not want to skip it,
+      // show the delete confirmation.
+    } else if (setting && !skipConfirm) {
       const dialogMessage = `${SystemUtils.Localize(
         "CPR.dialog.deleteConfirmation.message"
       )} ${item.name}?`;
@@ -1019,6 +1043,7 @@ export default class CPRActorSheet extends ActorSheet {
       }
     }
 
+    // `setTrackedArmor` doesn't exist on Container Actors
     if (item.type === "armor" && this.actor.type !== "container") {
       if (item.system.isBodyLocation) {
         // Removes armor values for body armor if the body armor is deleted.

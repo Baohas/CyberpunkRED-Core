@@ -1165,6 +1165,13 @@ export default class CPRItemSheet extends ItemSheet {
         if (i.system.isInstalled && i.system.installedIn[0] !== this.item.id) {
           return false;
         }
+        // Ammo should really only be loaded from the change-ammo dialog, for now.
+        // This limits the amount of ammo installed in an item.
+        // Only allow uninstalling ammo from this dialog.
+        if (i.type === "ammo" && this.item.system.loadedAmmo?.id !== i.id) {
+          return false;
+        }
+
         return true;
       });
     // Items that are currently installed.
