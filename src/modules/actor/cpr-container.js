@@ -51,22 +51,30 @@ export default class CPRContainerActor extends Actor {
       return super.createEmbeddedDocuments(embeddedName, items, context);
 
     // Don't add core items.
-    const coreItems = items.filter((i) => i.system?.core);
-    if (coreItems.length > 0) {
+    const coreItemIds = items.filter((i) => i.system?.core).map((i) => i._id);
+    if (coreItemIds.length > 0) {
       Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
-      items = items.filter((i) => !coreItems.includes(i));
+      items = items.filter((i) => !coreItemIds.includes(i._id));
     }
 
     // Attempt to stack item before creating it
-    if (!context.CPRsplitStack && items.length === 1) {
+    const stackedItemReferences = [];
+    if (!context.CPRsplitStack) {
       LOGGER.debug("Attempting to stack items on an actor sheet");
-      const doc = items[0];
-      if (doc.system) {
-        const returnValue = await this.automaticallyStackItems(doc);
-        if (returnValue.length > 0) {
-          return returnValue;
+      const dontCreate = [];
+      for (const doc of items) {
+        // eslint-disable-next-line no-continue
+        if (!doc.system) continue;
+        const [returnValue] = await this.automaticallyStackItems(doc);
+        if (returnValue) {
+          dontCreate.push(doc._id);
+          // Keep track of the item that we stacked upon, so we can update the parent's
+          // references later, if the item that was stacked is meant to be installed.
+          stackedItemReferences.push({ id: returnValue._id, system: {} });
         }
       }
+      // Don't create items that we should stack.
+      items = items.filter((i) => !dontCreate.includes(i._id));
     }
 
     // Create the items
@@ -88,7 +96,10 @@ export default class CPRContainerActor extends Actor {
       }
     }
 
-    return createdItems;
+    // Here, we return the created item array, but concatenated with references to any stacked items
+    // This way, when dragging/dropping installed items from sheet to sheet, the calling function can still
+    // update the parent with the correct references (see `createInstalledItemsOnActor()` in the mixin cpr-container.js)
+    return createdItems.concat(stackedItemReferences);
   }
 
   /**
@@ -147,35 +158,33 @@ export default class CPRContainerActor extends Actor {
    *                    - false if it has been stacked on an existing item
    */
   automaticallyStackItems(newItem) {
-    LOGGER.trace("automaticallyStackItems | CPRActor | Called.");
+    LOGGER.trace("automaticallyStackItems | CPRContainerActor | Called.");
     const itemTemplates = SystemUtils.getDataModelTemplates(newItem.type);
     if (itemTemplates.includes("stackable")) {
-      const itemMatch = this.items.find((i) => {
-        if (i.type === newItem.type && i.name === newItem.name) {
-          if (
-            itemTemplates.includes("upgradable") &&
-            i.system.installedUpgrades.length !== 0
-          ) {
-            return false;
-          }
-          return i;
-        }
-        return false;
-      });
-
+      const itemMatch = this.items.find(
+        (i) => i.type === newItem.type && i.name === newItem.name
+      );
       if (itemMatch) {
-        let oldAmount = parseInt(itemMatch.system.amount, 10);
-        let addedAmount = parseInt(newItem.system.amount, 10);
-        if (Number.isNaN(oldAmount)) {
-          oldAmount = 1;
+        const canStack = !(
+          itemTemplates.includes("upgradable") &&
+          itemMatch.system.installedUpgrades.length === 0
+        );
+        if (canStack) {
+          let oldAmount = parseInt(itemMatch.system.amount, 10);
+          let addedAmount = parseInt(newItem.system.amount, 10);
+          if (Number.isNaN(oldAmount)) {
+            oldAmount = 1;
+          }
+          if (Number.isNaN(addedAmount)) {
+            addedAmount = 1;
+          }
+          const newAmount = oldAmount + addedAmount;
+          return this.updateEmbeddedDocuments(
+            "Item",
+            [{ _id: itemMatch.id, "system.amount": newAmount }],
+            { diff: false }
+          );
         }
-        if (Number.isNaN(addedAmount)) {
-          addedAmount = 1;
-        }
-        const newAmount = oldAmount + addedAmount;
-        return this.updateEmbeddedDocuments("Item", [
-          { _id: itemMatch._id, "system.amount": newAmount },
-        ]);
       }
     }
     // If not stackable, then return true to continue adding the item.

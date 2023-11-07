@@ -1,5 +1,5 @@
 {{cprTrace "START ACTOR CONTAINER CPR-ITEM-CONTENT.HBS"}}
-{{#unless item.system.isInstalled}}
+{{#unless (cprCompare item.system.isInstalled "&&" (cprCompare item.type "!==" "ammo"))}}
   <li class="item flexrow {{#if (cprListContains collapsed (cprGeneratePartial "gearTab-VAR" item.type)) }} hide{{/if }}"
       data-item-id="{{item.id}}"
       data-item-category="{{item.type}}"

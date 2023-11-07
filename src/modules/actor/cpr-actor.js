@@ -210,10 +210,10 @@ export default class CPRActor extends Actor {
       return super.createEmbeddedDocuments(embeddedName, items, context);
 
     // Don't add core items.
-    const coreItems = items.filter((i) => i.system?.core);
-    if (coreItems.length > 0) {
+    const coreItemIds = items.filter((i) => i.system?.core).map((i) => i._id);
+    if (coreItemIds.length > 0) {
       Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
-      items = items.filter((i) => !coreItems.includes(i));
+      items = items.filter((i) => !coreItemIds.includes(i._id));
     }
 
     // Stack items.
@@ -222,13 +222,23 @@ export default class CPRActor extends Actor {
         app instanceof CPRCharacterActorSheet ||
         app instanceof CPRMookActorSheet
     );
-    if (canStack && !context.CPRsplitStack && items.length === 1) {
+    const stackedItemReferences = [];
+    if (canStack && !context.CPRsplitStack) {
       LOGGER.debug("Attempting to stack items on an actor sheet");
-      const [doc] = items;
-      if (doc.system) {
-        const returnValue = await this.automaticallyStackItems(doc);
-        if (returnValue.length > 0) return returnValue;
+      const dontCreate = [];
+      for (const doc of items) {
+        // eslint-disable-next-line no-continue
+        if (!doc.system) continue;
+        const [returnValue] = await this.automaticallyStackItems(doc);
+        if (returnValue) {
+          dontCreate.push(doc._id);
+          // Keep track of the item that we stacked upon, so we can update the parent's
+          // references later, if the item that was stacked is meant to be installed.
+          stackedItemReferences.push({ id: returnValue._id, system: {} });
+        }
       }
+      // Don't create items that we should stack.
+      items = items.filter((i) => !dontCreate.includes(i._id));
     }
 
     // Create the items
@@ -258,7 +268,10 @@ export default class CPRActor extends Actor {
       if (isMookSheet) await this.handleMookDraggedItem(item);
     }
 
-    return createdItems;
+    // Here, we return the created item array, but concatenated with references to any stacked items
+    // This way, when dragging/dropping installed items from sheet to sheet, the calling function can still
+    // update the parent with the correct references (see `createInstalledItemsOnActor()` in the mixin cpr-container.js)
+    return createdItems.concat(stackedItemReferences);
   }
 
   /**
