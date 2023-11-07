@@ -238,7 +238,13 @@ const Container = function Container() {
 
     const updateList = [];
     // Make sure we can actually install the items in this list.
-    if (!this.canInstallItems(itemList)) return false;
+    if (!this.canInstallItems(itemList)) {
+      SystemUtils.DisplayMessage(
+        "warn",
+        "CPR.messages.installableNotConfigured"
+      );
+      return false;
+    }
 
     const actor = this.isOwned ? this.actor : false;
 

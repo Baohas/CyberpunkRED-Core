@@ -970,6 +970,7 @@
   "CPR.messages.eurobucksModifyInvalidAction": "Error: Invalid action while modifying Eurobucks.",
   "CPR.messages.eurobucksModifyWarn": "Please enter a number into the 'Modify by' field.",
   "CPR.messages.hasInstalledItemsOfRemovedType": "You can not remove an allowed item type to be installed when you already have one installed",
+  "CPR.messages.installableNotConfigured": "This item is not configured to accept installables (including ammo)",
   "CPR.messages.installInsufficientSlots": "{item} does not have enough available slots to install that",
   "CPR.messages.installInvalidType": "The item you are trying to install into does not accept that item type as a valid install type. Check the item settings and try again.",
   "CPR.messages.insufficientPermissions": "You lack the permissions to perform this action.",
