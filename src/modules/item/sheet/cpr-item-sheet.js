@@ -1160,16 +1160,36 @@ export default class CPRItemSheet extends ItemSheet {
       .getInstallableItems(itemType)
       .filter((i) => {
         // You cannot install something into itself. Get outta here ouroboros.
-        if (i.id === this.item.id) return false;
-        // You can uninstall things that are already installed in this item.
-        if (i.system.isInstalled && i.system.installedIn[0] !== this.item.id) {
+        if (i.id === installTarget.id) return false;
+
+        // You cannot install something that is installed in something else, but...
+        // ...you *can* uninstall things that are already installed in this item.
+        if (
+          i.system.isInstalled &&
+          i.system.installedIn[0] !== installTarget.id
+        ) {
           return false;
         }
-        // Ammo should really only be loaded from the change-ammo dialog, for now.
-        // This limits the amount of ammo installed in an item.
-        // Only allow uninstalling ammo from this dialog.
-        if (i.type === "ammo" && this.item.system.loadedAmmo?.id !== i.id) {
-          return false;
+
+        switch (i.type) {
+          case "ammo":
+            // Ammo should really only be loaded from the change-ammo dialog, for now.
+            // This limits the amount of ammo installed in an item to one.
+            // Only allow uninstalling ammo from this dialog.
+            if (installTarget.system.loadedAmmo?.id !== i.id) return false;
+            break;
+          case "cyberware":
+            // Only allow installation of correct cyberware
+            if (
+              installTarget.system.type !== i.system.type ||
+              i.system.isFoundational
+            ) {
+              return false;
+            }
+            break;
+
+          default:
+            break;
         }
 
         return true;
