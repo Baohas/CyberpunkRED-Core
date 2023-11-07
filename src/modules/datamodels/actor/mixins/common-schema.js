@@ -16,7 +16,7 @@ export default class CommonSchema extends foundry.abstract.DataModel {
         body: new fields.SchemaField(StatSchema.defineSchema()),
         cool: new fields.SchemaField(StatSchema.defineSchema()),
         dex: new fields.SchemaField(StatSchema.defineSchema()),
-        emp: new fields.SchemaField(StatSchema.defineSchema(hasMax)),
+        emp: new fields.SchemaField(StatSchema.defineSchema(hasMax, -10)),
         int: new fields.SchemaField(StatSchema.defineSchema()),
         luck: new fields.SchemaField(StatSchema.defineSchema(hasMax)),
         move: new fields.SchemaField(StatSchema.defineSchema()),

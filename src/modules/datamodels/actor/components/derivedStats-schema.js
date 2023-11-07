@@ -59,7 +59,7 @@ export default class DerivedStatsSchema extends foundry.abstract.DataModel {
           integer: true,
           positive: false,
           initial: 60,
-          min: 0,
+          min: -100, // Humanity can be negative. See Tales of the Red
         }),
       }),
       run: new fields.SchemaField({
