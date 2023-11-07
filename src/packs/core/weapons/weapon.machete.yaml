@@ -13,7 +13,6 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    chat: ""
     value: >-
       <p>A long-bladed knife with a variety of uses. Known to be a favourite to
       some gangs of Night City. </p>

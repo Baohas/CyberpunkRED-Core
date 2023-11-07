@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>A cheap and bulky interface for an audio enhancement. (see Black Chrome
       pg. 17 for more details)</p>

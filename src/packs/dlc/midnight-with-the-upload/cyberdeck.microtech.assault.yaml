@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>Relax and let your Black ICE do all the heavy lifting.</p>
       <p>4 slots for Programs, 5 slots for Hardware.</p>

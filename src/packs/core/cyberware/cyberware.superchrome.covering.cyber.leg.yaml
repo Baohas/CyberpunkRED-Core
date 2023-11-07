@@ -14,7 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>A metallic coating for your leg. Provides +2 to Wardrobe and Style.
       </p>

@@ -14,7 +14,6 @@ system:
   critFailEffect: jammed
   damage: "0"
   description:
-    chat: ""
     value: >-
       <p>The Federated Arms Pepper Shaker is an Exotic SMG incapable of single
       shot or aimed shots. Autofire only use 6 bullets for this weapon. Full

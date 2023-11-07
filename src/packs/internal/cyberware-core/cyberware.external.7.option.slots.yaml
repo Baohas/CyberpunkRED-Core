@@ -13,7 +13,6 @@ system:
   core: true
   damage: 1d6
   description:
-    chat: ""
     value: ""
   dvTable: ""
   favorite: false

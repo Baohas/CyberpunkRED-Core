@@ -13,7 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>An app for your agent. Find the best adresses in town with this city
       guide. Full rules on page 14.</p>

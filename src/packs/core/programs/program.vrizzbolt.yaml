@@ -12,7 +12,6 @@ system:
     standard: 1d6
   def: 0
   description:
-    chat: ""
     value: >-
       <p>1d6 damage direct to Netrunner's Brain. Lowers total net actions they
       can take by 1 (min. 2) on their next turn. </p>

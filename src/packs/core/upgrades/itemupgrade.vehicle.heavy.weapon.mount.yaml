@@ -13,7 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters.
       One of the vehicles seats becomes a swivel mount for any two-handed ranged

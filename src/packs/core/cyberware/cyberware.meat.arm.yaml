@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>A regular arm. This can support attachments like a Standard Hand or
       some weapons and tools as the only installed piece.</p>

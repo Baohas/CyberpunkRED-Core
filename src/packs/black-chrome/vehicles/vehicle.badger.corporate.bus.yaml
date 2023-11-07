@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>A luxurious bus for corporate road trips. Equally ell equipped for work
       meetings and after meeting drinks.</p>

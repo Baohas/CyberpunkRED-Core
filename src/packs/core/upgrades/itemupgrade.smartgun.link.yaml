@@ -12,7 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Turns weapon into a "Smartgun". Refer to all rules specified on pg. 344
       before using.&nbsp;</p>

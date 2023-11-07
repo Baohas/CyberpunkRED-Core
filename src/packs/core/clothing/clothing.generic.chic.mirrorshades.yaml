@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>The kind of clothing you find in the Mega-Plexes of the Dark Future.
       Perfect if you don't want to stand out from a crowd.</p>

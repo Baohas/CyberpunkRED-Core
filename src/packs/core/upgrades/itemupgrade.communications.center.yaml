@@ -12,7 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Can be applied to all vehicles. Touchscreen console that functions as
       an Agent, along with a storage unit containing 6 <strong>Radio

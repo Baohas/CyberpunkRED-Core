@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Holographic clothing that can get disabled by EMP blasts for a minute.
       Can swap styles with an action if purchased. Refer to full item

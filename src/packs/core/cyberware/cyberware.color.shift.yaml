@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Allows you to shift eyes to an unlimited number of colors and patterns.
       </p>

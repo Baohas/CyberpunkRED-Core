@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>A fast CHOOH2-powered speedboat. </p>
   favorite: false
   installedItems:

@@ -12,7 +12,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>Simple Leather armor for your head. No armor penalty.</p>
   equipped: owned
   favorite: false

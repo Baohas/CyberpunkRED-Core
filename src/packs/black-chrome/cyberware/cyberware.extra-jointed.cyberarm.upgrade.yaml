@@ -15,7 +15,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Enchances cyberarm articulation. +2 Contortionist. (See Black Chrome
       pg. 18 for more details)</p>

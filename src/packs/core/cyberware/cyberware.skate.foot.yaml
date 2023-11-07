@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>While running your movement is increased by 6m/yds. Must be paired.
       </p>

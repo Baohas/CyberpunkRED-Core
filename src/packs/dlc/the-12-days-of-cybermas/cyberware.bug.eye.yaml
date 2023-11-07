@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Large insectoid Cybereye packed with option slots. Borgware.</p>
   dvTable: ""
   favorite: false

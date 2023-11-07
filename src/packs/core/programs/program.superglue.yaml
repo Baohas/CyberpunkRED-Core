@@ -12,7 +12,6 @@ system:
     standard: 1d6
   def: 0
   description:
-    chat: ""
     value: >-
       <p>The netrunner cannot progress further into the Local NET or safely
       jacking out for 1d6 rounds.1 use per netrun. </p>

@@ -15,7 +15,6 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    chat: ""
     value: >-
       <p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11
       or higher (unless mounted). Refer to the full item description on pg.

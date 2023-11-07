@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Each finger in your hand has a different tool. Great for Techs!</p>
   dvTable: ""
   favorite: false

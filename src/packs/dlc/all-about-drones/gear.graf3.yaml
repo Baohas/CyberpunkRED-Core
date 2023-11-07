@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>Quadraped construction drone.</p>
       <p>Refer to the full description on page 59 of Interface Red vol. 1.</p>

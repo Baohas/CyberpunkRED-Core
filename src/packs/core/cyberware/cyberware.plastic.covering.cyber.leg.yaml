@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>A type of plastic coating for your leg. </p>
   dvTable: ""
   favorite: false

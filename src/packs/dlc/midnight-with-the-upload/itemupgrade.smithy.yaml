@@ -13,7 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p dir="ltr">Be prepared for anything. Enter a NET Architecture full of
       Black ICE and you don&rsquo;t have have a Sword Program handy? Swap out

@@ -14,7 +14,6 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    chat: ""
     value: >-
       <p>Acts like a one Handed Exotic Heavy Melee, though halves SP despite
       being thrown.</p>

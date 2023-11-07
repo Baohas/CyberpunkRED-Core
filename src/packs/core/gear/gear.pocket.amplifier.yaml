@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: "<p>Duration: 6h. Supports two instruments.</p>"
   equipped: owned
   favorite: false

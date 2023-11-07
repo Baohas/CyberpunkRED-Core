@@ -11,7 +11,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>+2 to multiple TECH-based skills.</p>
   equipped: owned
   favorite: false

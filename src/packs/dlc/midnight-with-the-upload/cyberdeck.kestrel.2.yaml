@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Black ICE can&rsquo;t hit what they can&rsquo;t catch.</p>
 

@@ -12,7 +12,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>A full set of medium armorjack with integrated smart glasses*. -2 to
       REF, DEX, and MOVE. Refer to full item description on BC pg. 30.</p>

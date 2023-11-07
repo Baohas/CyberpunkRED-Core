@@ -11,7 +11,6 @@ system:
     concealable: true
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Deals no Damage. Fills a 10m/yd x 10m/yd with smoke for 1 minute. Tasks
       obscured by smoke have a -4 penalty.</p>

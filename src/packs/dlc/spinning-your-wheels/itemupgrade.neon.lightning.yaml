@@ -13,7 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Fiber-optic lights on bike's frame and wheels.</p>
 

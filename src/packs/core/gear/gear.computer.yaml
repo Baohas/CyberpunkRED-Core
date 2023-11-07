@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>Desktop or laptop.</p>
   equipped: owned
   favorite: false

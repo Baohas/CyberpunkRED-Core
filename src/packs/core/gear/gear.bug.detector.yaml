@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>Detect listening devices. Range 2m/yds.</p>
   equipped: owned
   favorite: false

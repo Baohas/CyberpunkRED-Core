@@ -11,7 +11,6 @@ system:
     concealable: true
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Paintballs filled with acid. Deals no damage but ablates armour by 1 SP
       on hit*.</p>

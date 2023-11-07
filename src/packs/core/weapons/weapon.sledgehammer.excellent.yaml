@@ -13,7 +13,6 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    chat: ""
     value: >-
       <p>A large mallet-like object with a flat metal head which distributes
       impacted force over a wide area.  +1 to Attack.</p>

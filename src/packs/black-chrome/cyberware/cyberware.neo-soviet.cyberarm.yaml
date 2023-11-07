@@ -14,7 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>A soviet cybernetical replacement arm. Comes with a free hand
       pre-installed. -1 to rolls requiring arm without BODY 8+. (See Black

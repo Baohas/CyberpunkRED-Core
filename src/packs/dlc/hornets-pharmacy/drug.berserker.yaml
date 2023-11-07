@@ -12,7 +12,6 @@ system:
     isConcealed: false
   consumed: None
   description:
-    chat: ""
     value: >-
       <p><strong>Primary Effect</strong></p>
 

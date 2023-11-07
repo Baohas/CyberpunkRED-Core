@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>A multipurpose aircraft capable of quick insertion thanks to vertical
       thrusters. Used commonly by Trauma Teams. </p>

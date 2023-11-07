@@ -11,7 +11,6 @@ system:
     concealable: true
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Deals no damage. If meat target hit DV13 Resist Torture/Drugs. On fail
       falls Prone (see pg. 169) and unconscious for 1 minute. Can be woken by

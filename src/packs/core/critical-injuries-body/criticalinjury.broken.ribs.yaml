@@ -6,7 +6,6 @@ name: Broken Ribs
 system:
   deathSaveIncrease: false
   description:
-    chat: ""
     value: >-
       <p>Suffer crit damage at end of turn if you move more than 4m/yrds on
       foot.</p>

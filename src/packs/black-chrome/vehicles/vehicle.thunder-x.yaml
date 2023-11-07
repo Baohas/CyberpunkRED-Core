@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>A top of the line High Performance Groundcar.</p>
       <p>Full details can be found on page 76.</p>

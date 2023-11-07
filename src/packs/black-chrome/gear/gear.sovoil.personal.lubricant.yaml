@@ -10,7 +10,6 @@ system:
     concealable: true
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Lubricant in a helpfully sized can. For more information, see Black
       Chrome Page 56.</p>

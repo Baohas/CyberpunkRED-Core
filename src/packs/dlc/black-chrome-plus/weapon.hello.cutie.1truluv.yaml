@@ -13,7 +13,6 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    chat: ""
     value: >-
       <p>Exotic Sniper Rifle. Can load non basic ammunition.</p>
 

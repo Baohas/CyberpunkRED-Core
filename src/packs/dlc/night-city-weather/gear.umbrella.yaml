@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Protects against Acid Rain. For every minute exposed to Acid Rain, all
       armor ablates by 1 SP (NCW pg 4).</p>

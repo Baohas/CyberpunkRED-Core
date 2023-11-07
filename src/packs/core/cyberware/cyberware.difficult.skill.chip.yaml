@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Chipware. Provides  a value of 3 to a specific (x2) skill while
       installed (unless the skill is already 3+). </p>

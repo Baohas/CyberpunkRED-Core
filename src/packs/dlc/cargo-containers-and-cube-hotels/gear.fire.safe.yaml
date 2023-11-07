@@ -11,7 +11,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>Small fireproof lockbox made of Thick Steel.</p>
       <ul>

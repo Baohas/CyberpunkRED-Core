@@ -11,7 +11,6 @@ system:
     concealable: true
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>If hit DV15 Cybertech Check. On Fail 2 pieces of Cyberware or carried
       electronics (GM's choice) stop working for 1 minute. Cyberlimbs hang

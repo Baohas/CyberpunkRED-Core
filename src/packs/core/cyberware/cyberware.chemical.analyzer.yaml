@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Chipware. Test chemical make up of something.</p>
   dvTable: ""
   favorite: false

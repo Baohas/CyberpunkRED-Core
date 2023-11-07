@@ -8,7 +8,6 @@ system:
   category: educationSkills
   core: true
   description:
-    chat: ""
     value: ""
   difficulty: typical
   favorite: false

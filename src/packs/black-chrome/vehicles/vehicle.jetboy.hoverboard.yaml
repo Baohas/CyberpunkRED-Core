@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>A hoverboard driven with Athletics Skill. Can't be upgraded.</p>
       <p>Full details can be found on page 78.</p>

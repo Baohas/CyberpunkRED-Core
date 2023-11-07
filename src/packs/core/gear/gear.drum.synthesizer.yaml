@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>Makes drum sounds when connected to amplifier.</p>
   equipped: owned
   favorite: false

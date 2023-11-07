@@ -12,7 +12,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Special Ammo Type for the Air Pistol. For more information, see Black
       Chrome Page 44.</p>

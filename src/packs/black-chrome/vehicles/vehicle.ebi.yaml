@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>Small but well thought out Compact Groundcar.</p>
       <p>Full details can be found on page 72.</p>

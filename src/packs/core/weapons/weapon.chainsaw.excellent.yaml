@@ -13,7 +13,6 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    chat: ""
     value: >-
       <p>A portable, refuelable saw that runs on CHOOH2. Lasts about 2-3 hours
       on one tank.  +1 to Attack.</p>

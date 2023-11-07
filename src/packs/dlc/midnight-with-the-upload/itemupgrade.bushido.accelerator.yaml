@@ -13,7 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>+3 Speed to all installed Killer Black ICE.</p>
   dvTable: ""
   favorite: false

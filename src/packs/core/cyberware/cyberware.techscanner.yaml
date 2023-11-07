@@ -14,7 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Contains a variety of built-in gadgets and tools. Provides a +2 bonus
       to multiple skill checks. </p>

@@ -13,7 +13,6 @@ system:
     isConcealed: false
   consumed: Prime Time
   description:
-    chat: ""
     value: >-
       <p><strong>Primary Effect</strong></p>
 

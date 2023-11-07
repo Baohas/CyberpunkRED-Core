@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>Spraypaint with glow-in-the-dark effect.</p>
   equipped: owned
   favorite: false

@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Doubles natural healing while resting. </p>
   dvTable: ""
   favorite: false

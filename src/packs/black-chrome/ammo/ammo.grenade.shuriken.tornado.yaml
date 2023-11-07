@@ -11,7 +11,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>A literal explosion of shurikens. Can apply second Critical Injury,
       details of which can be found on page 87.</p>

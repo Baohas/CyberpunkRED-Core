@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Holster that is hidden inside you.</p>
   dvTable: ""
   favorite: false

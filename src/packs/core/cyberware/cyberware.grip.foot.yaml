@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Provides traction for climbing vertically. Must be paired. </p>
   dvTable: ""
   favorite: false

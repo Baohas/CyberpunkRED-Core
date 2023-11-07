@@ -11,7 +11,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>This additive allows a Vial of Poison or Biotoxin to be absorbed
       through skin contact. One vial can cover 2 square feet when applied to a

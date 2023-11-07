@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Gives a user a single Cybereye Option. Can use one Smart Lens per
       eye.</p>

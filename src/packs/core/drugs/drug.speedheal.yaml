@@ -11,7 +11,6 @@ system:
     isConcealed: false
   consumed: None
   description:
-    chat: ""
     value: >-
       <p>Injecting a target with Speedheal immediately causes them to heal HP
       equal to their BODY plus their WILL. This effect does not work on Mortally

@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>2d6 damage unless Resist Torture/Drugs. Armor does not apply.</p>
   equipped: owned
   favorite: false

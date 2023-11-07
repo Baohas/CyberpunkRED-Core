@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Single socket for installation and removal of a piece of chipware. </p>
   dvTable: ""
   favorite: false

@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>An affordable and balanced Cyberdeck for novice Netrunners. Though
       limited by its modest hardware specs, it retains the advanced safety

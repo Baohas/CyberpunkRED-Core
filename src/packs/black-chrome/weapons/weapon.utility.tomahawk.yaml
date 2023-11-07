@@ -13,7 +13,6 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    chat: ""
     value: >-
       <p>Blade and pike, this steel and composite ice axe can help you climb ice
       walls while also doing serious damage in a fight.</p>

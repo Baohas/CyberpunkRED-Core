@@ -13,7 +13,6 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    chat: ""
     value: |-
       <p>Generic Excellent Quality Very Heavy Melee Weapon.</p>
       <p>+1 to Attack.</p>

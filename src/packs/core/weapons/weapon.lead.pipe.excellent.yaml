@@ -13,7 +13,6 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    chat: ""
     value: >-
       <p>A hollow cylinder, typically made of metal or fiberglass. It may have
       conveyed fluids once.  +1 to Attack.</p>

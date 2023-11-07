@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>A retractable grappling hook embedded into your hand.</p>
   dvTable: ""
   favorite: false

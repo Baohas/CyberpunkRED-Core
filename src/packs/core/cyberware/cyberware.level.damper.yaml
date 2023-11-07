@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Provides immunity to deafness or sudden loud noises. </p>
   dvTable: ""
   favorite: false

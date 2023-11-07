@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Chipware. Allows scent tracking</p>
   dvTable: ""
   favorite: false

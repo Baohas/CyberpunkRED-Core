@@ -12,7 +12,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Heaviest and most powerful armor in circulation. Protects your head -4
       to REF, DEX, and MOVE.</p>

@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>A simple bicycle. It's speed is based on the riders BODY.</p>
 

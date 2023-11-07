@@ -14,7 +14,6 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    chat: ""
     value: >-
       <p>An excellent quality pistol with a unique HypurrburstTM mode fire
       mode*. The weapon purrs when used. Full rules can be found in Micro Chrome

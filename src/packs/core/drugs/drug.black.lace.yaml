@@ -13,7 +13,6 @@ system:
     isConcealed: false
   consumed: Black Lace Primary
   description:
-    chat: ""
     value: >-
       <p><strong>Primary Effect</strong></p>
 

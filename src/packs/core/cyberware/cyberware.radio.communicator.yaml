@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Built in walkie-talkie. 1 mile range.</p>
   dvTable: ""
   favorite: false

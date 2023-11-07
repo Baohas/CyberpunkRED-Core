@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Ready when you are.</p>
   dvTable: ""
   favorite: false

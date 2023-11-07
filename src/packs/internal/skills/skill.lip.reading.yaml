@@ -8,7 +8,6 @@ system:
   category: awarenessSkills
   core: true
   description:
-    chat: ""
     value: ""
   difficulty: typical
   favorite: false

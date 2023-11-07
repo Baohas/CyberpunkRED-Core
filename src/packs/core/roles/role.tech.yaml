@@ -61,7 +61,6 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    chat: ""
     value: >-
       <p>Superior understanding of all-things tech allow them to invent,
       upgrade, and repair to keep the Dark Future functioning.</p>

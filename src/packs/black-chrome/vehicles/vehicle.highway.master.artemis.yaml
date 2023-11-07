@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>A low-riding Roadbike with retractable glass cover. Has a surpercharge
       mode that doesn't come with a safety guarantee.</p>

@@ -13,7 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Can be applied to all groundcars. As an Action, the driver can deploy a
       spike strip. While deployed, any closely trailing vehicles with tires must

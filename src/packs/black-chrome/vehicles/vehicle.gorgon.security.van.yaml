@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>A monster of an armored van.</p>
       <p>Full details can be found on page 73.</p>

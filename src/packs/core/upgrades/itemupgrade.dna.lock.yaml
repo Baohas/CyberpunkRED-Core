@@ -12,7 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Uses biometrics to lock the cyberdeck. Requires DV17
       Electronics/Security Tech Check to crack.&nbsp;</p>

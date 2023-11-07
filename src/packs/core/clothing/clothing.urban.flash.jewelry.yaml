@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>The most technological and flashy clothing you can find in the Time of
       the Red.</p>

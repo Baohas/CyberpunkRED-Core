@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Borgware. Requires cyberarm. Comes with 8 cyberfingers*. (see Black
       Chrome pg. 18 for more details)</p>

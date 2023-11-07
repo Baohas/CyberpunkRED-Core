@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>No frills, just raw processing power.</p>
       <p>2 slots only for Hardware</p>

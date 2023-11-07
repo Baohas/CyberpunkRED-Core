@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>An eye camera which can link into a chip or agent. Great for Medias.
       </p>

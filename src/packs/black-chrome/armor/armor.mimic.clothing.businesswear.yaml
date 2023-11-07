@@ -13,7 +13,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Light Armorjack made from a Mimic Clothing Kit and "Businesswear"
       clothing. Refer to full item description on BC pg. 33.</p>

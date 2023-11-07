@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>A cybernetical replacement leg. Comes with a free foot. </p>
   dvTable: ""
   favorite: false

@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Must be paired. Built-in virtuality goggles. </p>
   dvTable: ""
   favorite: false

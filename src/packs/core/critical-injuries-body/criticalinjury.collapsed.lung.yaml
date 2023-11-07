@@ -8,7 +8,6 @@ name: Collapsed Lung
 system:
   deathSaveIncrease: true
   description:
-    chat: ""
     value: <p>-2 MOVE (minimum MOVE of 1).</p>
   favorite: false
   location: body

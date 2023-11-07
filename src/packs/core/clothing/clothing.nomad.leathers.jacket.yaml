@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>If you want to look like a chromed-up cowboy, this is perfect for
       you.</p>

@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>A beefed-up version of a roadbike, capable of very high speeds. </p>
   favorite: false
   installedItems:

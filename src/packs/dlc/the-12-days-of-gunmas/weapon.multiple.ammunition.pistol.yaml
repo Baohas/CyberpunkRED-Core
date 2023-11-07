@@ -14,7 +14,6 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    chat: ""
     value: >-
       <p>A very heavy pistol capable of loading up to five different ammo types
       at once*, with the user able to pick between them before firing.</p>

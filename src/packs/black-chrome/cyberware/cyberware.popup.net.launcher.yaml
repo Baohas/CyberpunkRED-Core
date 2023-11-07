@@ -14,7 +14,6 @@ system:
   core: false
   damage: "0"
   description:
-    chat: ""
     value: >-
       <p>A concealable exotic net launcher. Can't hold anything with this hand
       while activated. (See Black Chrome pgs. 20-21 for more details)</p>

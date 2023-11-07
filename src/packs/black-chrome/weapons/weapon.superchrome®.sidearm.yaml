@@ -15,7 +15,6 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    chat: ""
     value: >-
       <p>The Superchrome&reg; Sidearm is an Exotic Very Heavy Pistol. Gives the
       user a +2 bonus to Wardrobe and Style when equipped. Full rules can be

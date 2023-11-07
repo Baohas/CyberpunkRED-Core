@@ -11,7 +11,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: "<p>Receive radio transmissions. Range: 1 mile.</p>"
   equipped: owned
   favorite: false

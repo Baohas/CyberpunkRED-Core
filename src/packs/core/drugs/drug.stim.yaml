@@ -12,7 +12,6 @@ system:
     isConcealed: false
   consumed: Stim
   description:
-    chat: ""
     value: >-
       <p>Injecting a target with Stim causes them to ignore all penalties from
       being Seriously Wounded for one hour. It can only be used on a target once

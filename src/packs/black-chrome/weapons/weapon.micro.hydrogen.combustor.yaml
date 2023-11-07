@@ -14,7 +14,6 @@ system:
   critFailEffect: jammed
   damage: 6d6
   description:
-    chat: ""
     value: >-
       <p> A small explosive that detonates after being immersed in a liquid. Is
       both armor piercing and creates a large cloud of smoke. </p> <p> Full

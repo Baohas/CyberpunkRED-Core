@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Can make 10 beverages out of a 3000 beverages library before needing to
       be refilled. Can also make Smash. For more information, see Black Chrome

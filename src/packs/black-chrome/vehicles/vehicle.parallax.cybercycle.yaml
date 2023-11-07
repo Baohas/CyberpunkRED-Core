@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>Top of the line Superbike.</p>
       <p>Full details can be found on page 83.</p>

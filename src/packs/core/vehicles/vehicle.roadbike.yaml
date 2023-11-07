@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>A common CHOOH2-powered roadbike seen during the time of the Red.</p>
   favorite: false
   installedItems:

@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Shows radiation with a blue glow. Maximum range 100m/yds.</p>
   dvTable: ""
   favorite: false

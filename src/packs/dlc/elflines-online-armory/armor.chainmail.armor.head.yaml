@@ -12,7 +12,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Armor made up of innumerable metal rings for your head. -2 to REF, DEX,
       and MOVE.</p>

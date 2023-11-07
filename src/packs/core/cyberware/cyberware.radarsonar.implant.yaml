@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Scans 50m/yds around you. Doesn't work through cover. </p>
   dvTable: ""
   favorite: false

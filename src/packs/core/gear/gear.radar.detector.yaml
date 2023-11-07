@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: "<p>Detect radar beam. Range: 100m/yd</p>"
   equipped: owned
   favorite: false

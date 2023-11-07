@@ -15,7 +15,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>A wrist-mounted collection of instruments and probes to facilitate
       surgery.<br>+1 to Medtech Surgery Checks.&nbsp;</p>

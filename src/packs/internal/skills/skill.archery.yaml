@@ -8,7 +8,6 @@ system:
   category: rangedweaponSkills
   core: true
   description:
-    chat: ""
     value: ""
   difficulty: typical
   favorite: false

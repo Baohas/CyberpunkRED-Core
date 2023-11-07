@@ -13,7 +13,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Kevlar Body Armor that comes with two pre-installed medium melee
       weapons* always considered drawn as long as the armor is equipped. Refer

@@ -7,7 +7,6 @@ name: Brain Injury
 system:
   deathSaveIncrease: true
   description:
-    chat: ""
     value: <p>-2 to actions.</p>
   favorite: false
   location: head

@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Requires cyberarm. Comes with 5 cyberfingers*. (see Black Chrome pg. 20
       for more details)</p>

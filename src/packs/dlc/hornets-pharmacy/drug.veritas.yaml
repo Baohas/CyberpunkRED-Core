@@ -12,7 +12,6 @@ system:
     isConcealed: false
   consumed: Veritas Primary
   description:
-    chat: ""
     value: >-
       <p>Dose lasts 10 minutes.</p>
 

@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>Use it to tape stuff.</p>
   equipped: owned
   favorite: false

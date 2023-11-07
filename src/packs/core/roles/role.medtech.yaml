@@ -61,7 +61,6 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    chat: ""
     value: >-
       <p>Backalley doctors and mechanics of cyberware, using their skills to
       keep fellow edgerunners in good shape and cybered up, often at a

@@ -14,7 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Color-shifting eye lenses. Color is dependent on Neural Link
       &ldquo;mood&rdquo; scans. DV 21 Acting check to fake a mood scan and

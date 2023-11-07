@@ -12,7 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>The bike becomes a trike with a covering body of fiberglass and
       plastic.</p>

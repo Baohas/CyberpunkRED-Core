@@ -11,7 +11,6 @@ system:
     isConcealed: false
   consumed: None
   description:
-    chat: ""
     value: >-
       <p>If a target has started the natural healing process injecting them with
       Antibiotic will cause them to heal an additional 2 Hit Points per day for

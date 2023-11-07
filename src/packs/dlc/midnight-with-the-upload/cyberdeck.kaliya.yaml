@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>A fantastic option for dismantling hostile Netrunners. Just hope they
       don&rsquo;t have any Black ICE.</p>

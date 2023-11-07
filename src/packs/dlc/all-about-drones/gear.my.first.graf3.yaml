@@ -11,7 +11,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>Personal Drone. Tiny GRAF3 that can be linked to an Agent.</p>
       <p>Refer to the full description on page 61 of Interface Red vol. 1.</p>

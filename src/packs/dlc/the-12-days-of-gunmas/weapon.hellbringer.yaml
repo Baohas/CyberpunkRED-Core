@@ -14,7 +14,6 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    chat: ""
     value: >-
       <p>When this things shoots, you know about it. If fired by someone with
       less than 10 BODY, this pistol jams. An action is required to unjam

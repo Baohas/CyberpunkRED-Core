@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>Record 24h of audio on a memory Chip.</p>
   equipped: owned
   favorite: false

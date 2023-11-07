@@ -12,7 +12,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>A netsuit allowing an extra cyberdeck hardware slot that's installed
       directly into the suit which is uninstalled if the suit is removed. Comes

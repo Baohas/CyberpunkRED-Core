@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: "<p>Range: 30m/yds. Not usable as weapon.</p>"
   equipped: owned
   favorite: false

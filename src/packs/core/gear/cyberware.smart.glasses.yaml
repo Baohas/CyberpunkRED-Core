@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>Eyewear with two options slots for cybereye options.</p>
   dvTable: ""
   favorite: false

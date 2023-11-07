@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>A nice jacket carrying a surprise; using an action anyone wearing this
       jacket can consume a battery to let off a blinding light. Full rules can

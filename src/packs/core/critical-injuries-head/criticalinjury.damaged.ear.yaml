@@ -7,7 +7,6 @@ name: Damaged Ear
 system:
   deathSaveIncrease: false
   description:
-    chat: ""
     value: >-
       <p>If move more than 4m/yds in a Turn, cannot move next turn. -2 to
       hearing based Perception.</p>

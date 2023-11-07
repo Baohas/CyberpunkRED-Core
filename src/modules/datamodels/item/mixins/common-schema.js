@@ -8,7 +8,6 @@ export default class CommonSchema extends foundry.abstract.DataModel {
     const { fields } = foundry.data;
     return {
       description: new fields.SchemaField({
-        chat: new fields.StringField({ blank: true }),
         value: new fields.HTMLField({ blank: true }),
       }),
       favorite: new fields.BooleanField({ initial: false }),

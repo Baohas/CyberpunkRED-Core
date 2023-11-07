@@ -12,7 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>An app for your agent. Create a virtual Solo and take your fights into
       the digital realm!</p>

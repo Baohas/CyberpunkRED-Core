@@ -15,7 +15,6 @@ system:
   critFailEffect: jammed
   damage: 8d6
   description:
-    chat: ""
     value: >-
       <p>Uses the Pilot Air Vehicle Skill instead of the Heavy Weapons Skill to
       fire, requires the has Targeting Scope Cyberware, and can only use Smart

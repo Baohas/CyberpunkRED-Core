@@ -14,7 +14,6 @@ system:
   critFailEffect: jammed
   damage: 8d6
   description:
-    chat: ""
     value: >-
       <p>Bring out the big guns. This rocket launcher will do some damage.  If
       you roll 1 on Attack (Crit fail) the gun jams and requires using an action

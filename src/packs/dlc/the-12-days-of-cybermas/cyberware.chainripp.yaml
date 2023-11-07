@@ -13,7 +13,6 @@ system:
   core: false
   damage: 4d6
   description:
-    chat: ""
     value: >-
       <p>A popout Cyberarm chainsaw with integreated exhaust port. Can be
       deployed and retracted without an Action. User can not use the hand on the

@@ -12,7 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Can be applied to all vehicles. Adds a tank of nitrous oxide to the
       vehicle. Allows you to use your Action to use an additional Move Action

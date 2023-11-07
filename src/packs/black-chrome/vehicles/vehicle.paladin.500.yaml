@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>A High Performance Groundcar. Now you can be MadMax. In town. With two
       mounted Machine Guns.</p>

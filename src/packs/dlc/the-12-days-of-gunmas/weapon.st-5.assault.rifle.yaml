@@ -14,7 +14,6 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    chat: ""
     value: >-
       <p>A - relatively - reliable gun. If you roll 1 on Attack (Crit fail) you
       must then toss a coin; if you win the gun fires as normal, while if you

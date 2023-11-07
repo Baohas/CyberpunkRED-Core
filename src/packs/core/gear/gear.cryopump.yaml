@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Briefcase used for hooking up a wounded person. Places them in stasis.
       </p>

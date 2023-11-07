@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>A specialised groundcar designed for sports performance. </p>
   favorite: false
   installedItems:

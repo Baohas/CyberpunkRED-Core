@@ -12,7 +12,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>Light version of an Armorjack. No armor penalty.</p>
   equipped: owned
   favorite: false

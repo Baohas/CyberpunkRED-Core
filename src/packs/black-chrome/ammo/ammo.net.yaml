@@ -11,7 +11,6 @@ system:
     concealable: true
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Net for the net launcher that grapples the target on hit. (See Black
       Chrome Pg. 20-21 for more details)</p>

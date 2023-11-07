@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>A built-in cyberdeck. Always available. </p>
   dvTable: ""
   favorite: false

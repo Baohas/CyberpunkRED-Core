@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: <p>An LED watch in your skin.</p>
   dvTable: ""
   favorite: false

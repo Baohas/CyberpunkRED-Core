@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Compact Groundcar built from recycled parts from older vehicles.
       Low-tech but high-horse-power.</p>

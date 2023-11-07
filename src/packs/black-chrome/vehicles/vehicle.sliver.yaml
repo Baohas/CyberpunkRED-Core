@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>A Roadbike with all the gadgets you'd ever need.</p>
       <p>Full details can be found on page 84.</p>

@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>The quintessential starter Cyberdeck. Bargain-bin price with
       bare-minimum hardware specs.</p>

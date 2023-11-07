@@ -14,7 +14,6 @@ system:
   critFailEffect: jammed
   damage: 6d6
   description:
-    chat: ""
     value: >-
       <p>As well as normal Grenade Ammunition, this weapon can fire road
       flares*. They don't deal any damage, but if fired into the air can be seen

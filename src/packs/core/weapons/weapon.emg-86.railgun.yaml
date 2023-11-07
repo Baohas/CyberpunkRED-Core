@@ -14,7 +14,6 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    chat: ""
     value: >-
       <p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots.
       Requires BODY 11 or higher (unless mounted). Ignores any armor below

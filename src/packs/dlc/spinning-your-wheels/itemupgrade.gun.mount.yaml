@@ -12,7 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>A system to attach an Assault Rifle, a Heavy SMG or a Shotgun on the
       handlebars, along with a firing button.</p>

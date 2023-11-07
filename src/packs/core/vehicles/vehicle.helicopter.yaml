@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: <p>A four-seater helicopter capable of high speeds and long flights. </p>
   favorite: false
   installedItems:

@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>A modern-day cargo blimp. Requires a minimum of two rooms. The price is
       for each room below deck. </p>

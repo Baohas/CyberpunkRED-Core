@@ -13,7 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Your cyberarm can be detached and re-attached (and swapped) using your
       open socket. Keep an arm for every occasion. </p>

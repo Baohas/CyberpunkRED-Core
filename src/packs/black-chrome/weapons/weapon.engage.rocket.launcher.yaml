@@ -14,7 +14,6 @@ system:
   critFailEffect: jammed
   damage: 8d6
   description:
-    chat: ""
     value: >-
       <p>The GunMart Engage Rocket Launcher is a Poor Quality Exotic Rocket
       Launcher. It explodes on a Critical Failure or when unloading the weapon.

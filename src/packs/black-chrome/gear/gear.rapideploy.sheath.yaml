@@ -11,7 +11,6 @@ system:
     concealable: true
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Gives the User a +2 bonus to their Conceal/Reveal Skill Check if used
       to conceal a weapon already capable of concealement. For more information,

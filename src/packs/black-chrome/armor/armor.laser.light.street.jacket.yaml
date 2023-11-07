@@ -13,7 +13,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: >-
       <p>Urban Flash-styled Light Armorjack that counts as a Light Tattoo while
       worn. Refer to full item description on BC pg. 31.</p>

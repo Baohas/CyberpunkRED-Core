@@ -12,7 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Can be applied to all vehicles. All glass on the vehicle is now
       considered cover with 15 HP. Can be taken a second time to upgrade to

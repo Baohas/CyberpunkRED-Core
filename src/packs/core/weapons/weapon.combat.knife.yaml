@@ -13,7 +13,6 @@ system:
   critFailEffect: jammed
   damage: 1d6
   description:
-    chat: ""
     value: <p>A knife fit for the streets.</p>
   dvTable: ""
   equipped: owned

@@ -10,7 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>Roadbike with attached trailer for passengers.</p>
       <p>Full details can be found on page 81.</p>

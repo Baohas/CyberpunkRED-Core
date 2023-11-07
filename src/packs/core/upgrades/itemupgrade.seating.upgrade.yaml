@@ -12,7 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Can be applied to all vehicles. Adds two seats to the vehicle. These
       can be installed as an external sidecar, they may also be installed as

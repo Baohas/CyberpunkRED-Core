@@ -15,7 +15,6 @@ system:
   core: false
   damage: 5d6
   description:
-    chat: ""
     value: >-
       <p>A concealable shotgun. Comes with a smartgun link pre-installed. Can't
       hold anything with this hand while activated. (See Black Chrome pg. 21 for

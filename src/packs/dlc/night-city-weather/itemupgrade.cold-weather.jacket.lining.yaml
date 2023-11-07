@@ -13,7 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
     value: >-
       <p>Upgrade for any Jacket fashion item. User will not suffer Exposure
       penalties from cold temperatures (CP:R pg 181).</p>

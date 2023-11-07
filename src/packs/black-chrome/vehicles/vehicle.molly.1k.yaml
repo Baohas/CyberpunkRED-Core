@@ -9,7 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
     value: |-
       <p>Off-road Compact Groundcar.</p>
       <p>Full details can be found on page 82.</p>
