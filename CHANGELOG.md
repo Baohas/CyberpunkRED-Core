@@ -4,6 +4,14 @@
 
 ## Version 0.89.0
 
+### New Features
+
+- Add Compendia for:
+  - Skills (Local Expert)
+  - Skills (Science)
+  - Skills (Martial Arts)
+  - Skills (Play Instrument)
+
 ### Changes
 
 - Weapons in fight tab now categorized by Ranged/Melee
@@ -13,6 +21,11 @@
 - Add Quality to Weapons/Cyberdecks
 - #653 - Enable support for dddice
 - Adjust font size of Handle/Name in Character sheets if the name overflows
+- Skill Items now have a `skillType` for programmatic access
+- Remove `Science`, `Play Instrument`, `Martial Arts` skills
+  - These will remain on existing Characters
+  - There will not be added to new Characters
+- Rename default `Local Expert` skill to `Local Expert (Your Home)`
 
 ### Bug Fixes
 
