@@ -39,6 +39,7 @@
         "core_skills-local-expert",
         "core_skills-martial-arts",
         "core_skills-play-instrument",
+        "core_skills-science",
         "core_upgrades",
         "core_vehicles",
         "core_weapons",
@@ -266,6 +267,14 @@
       "type": "Item",
       "name": "core_skills-play-instrument",
       "path": "packs/core/skills-play-instrument",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "label": "Skills (Science)",
+      "type": "Item",
+      "name": "core_skills-science",
+      "path": "packs/core/skills-science",
       "system": "cyberpunk-red-core",
       "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
     },
