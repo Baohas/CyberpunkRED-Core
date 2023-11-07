@@ -39,6 +39,40 @@ const itemHooks = () => {
   });
 
   /**
+   * The createItem Hook is provided by Foundry and triggered here. When an Item is created, this hook is called during
+   * creation. This hook handles:
+   *
+   * - Automatically sets the role fields when dragged to a sheet.
+   *
+   * @public
+   * @memberof hookEvents
+   * @param {CPRItem} doc                 The pending document which is requested for creation
+   * @param {object} (unused)             Additional options which modify the creation request
+   * @param {string} userId (unused)      The ID of the requesting user, always game.user.id
+   */
+  Hooks.on("createItem", async (doc, _, userId) => {
+    LOGGER.trace("createItem | itemHooks | Called.");
+    // Role stuff
+    const actor = doc.parent;
+    if (actor !== null) {
+      if (doc.type === "role") {
+        if (actor.system.roleInfo.activeRole === "") {
+          actor.update({ "system.roleInfo.activeRole": doc.name });
+        }
+        if (
+          !actor.itemTypes.role.some(
+            (r) => r.id === actor.system.roleInfo.activeNetRole
+          )
+        ) {
+          // If no roles are designated as activeNetRole, OR if an activeNetRole has been set,
+          // but that role has since been deleted, set activeNetRole.
+          actor.update({ "system.roleInfo.activeNetRole": doc.id });
+        }
+      }
+    }
+  });
+
+  /**
    * The deleteItem Hook is provided by Foundry and triggered here. When an Item is deleted, this hook is called during
    * deletion. In here, if a role is being deleted, we look up other roles that are available and make one of them the
    * new active role. Otherwise we warn that there is no active role on the actor.
