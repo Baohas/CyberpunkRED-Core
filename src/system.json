@@ -38,6 +38,7 @@
         "core_skills-languages",
         "core_skills-local-expert",
         "core_skills-martial-arts",
+        "core_skills-play-instrument",
         "core_upgrades",
         "core_vehicles",
         "core_weapons",
@@ -257,6 +258,14 @@
       "type": "Item",
       "name": "core_skills-martial-arts",
       "path": "packs/core/skills-martial-arts",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "label": "Skills (Play Instrument)",
+      "type": "Item",
+      "name": "core_skills-play-instrument",
+      "path": "packs/core/skills-play-instrument",
       "system": "cyberpunk-red-core",
       "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
     },
