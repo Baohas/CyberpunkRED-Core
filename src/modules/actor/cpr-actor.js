@@ -1835,7 +1835,10 @@ export default class CPRActor extends Actor {
       const humRoll = new CPRRolls.CPRHumanityLossRoll(item.name, formula);
       await humRoll.roll();
       value -= humRoll.resultTotal;
-      humRoll.entityData = { actor: this.id };
+      humRoll.entityData = {
+        actor: this.id,
+        static: humanityLossType === "static",
+      };
       CPRChat.RenderRollCard(humRoll);
     }
 

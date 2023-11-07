@@ -11,13 +11,19 @@
   <div class="rollcard-bottom">
     <div class="cpr-block">
       <div class="d6-rollcard-data">
-        <div class="d6-dice-div">
-          {{!-- die image for initialRoll --}}
-          {{#each faces as |dieFace| }}
-            <img class="{{cprDiceSizeImageClass ../formula}}"
-                 src="systems/cyberpunk-red-core/icons/dice/black/d6_{{dieFace}}.svg"/>
-          {{/each}}
-        </div>
+        {{#if entityData.static}}
+          <div class="humanity-static-div">
+            {{localize "CPR.chat.humanityLoss.static"}}
+          </div>
+        {{else}}
+          <div class="d6-dice-div">
+            {{!-- die image for initialRoll --}}
+            {{#each faces as |dieFace| }}
+              <img class="{{cprDiceSizeImageClass ../formula}}"
+                   src="systems/cyberpunk-red-core/icons/dice/black/d6_{{dieFace}}.svg"/>
+            {{/each}}
+          </div>
+        {{/if}}
         <div class="d6-number-div">
           <span class="{{#if criticalCard }}text-semi{{/if }}">{{resultTotal }}</span>
         </div>
