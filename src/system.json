@@ -36,6 +36,7 @@
         "core_programs",
         "core_roles",
         "core_skills-languages",
+        "core_skills-local-expert",
         "core_upgrades",
         "core_vehicles",
         "core_weapons",
@@ -239,6 +240,14 @@
       "type": "Item",
       "name": "core_skills-languages",
       "path": "packs/core/skills-languages",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "label": "Skills (Local Expert)",
+      "type": "Item",
+      "name": "core_skills-local-expert",
+      "path": "packs/core/skills-local-expert",
       "system": "cyberpunk-red-core",
       "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
     },
