@@ -9,13 +9,13 @@ system:
   core: true
   description:
     chat: ""
-    unidentified: ""
     value: ""
-  difficulty: difficult
+  difficulty: typical
   favorite: false
   level: 0
   source:
     book: Core
     page: 140
   stat: tech
+  skillType: generic
 type: skill
