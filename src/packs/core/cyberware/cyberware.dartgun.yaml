@@ -15,7 +15,6 @@ system:
   damage: 4d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>A single shot weapon which can be concealed. </p>
   dvTable: ""
   favorite: false

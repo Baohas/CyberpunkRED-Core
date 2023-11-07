@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Canine Personal Drone that can be linked to an Agent.&nbsp;<br>Refer to
       its rules on Page 46 of Black Chrome.</p>

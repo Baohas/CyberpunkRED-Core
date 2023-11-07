@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: <p>Basic ammo, nothing special.</p>
   favorite: false
   overrides:

@@ -16,7 +16,6 @@ system:
   damage: 5d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>The Hades Multipurpose Assault Shotgun is an Exotic Shotgun. The
       magazine holds 16 shots. Full rules can be found in Black Chrome on Page

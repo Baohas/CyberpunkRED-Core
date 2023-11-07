@@ -10,7 +10,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A very fast speedboat. Requires a minimum of two rooms. The price is
       for each room below deck. </p>

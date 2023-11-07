@@ -13,7 +13,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>Cyberdeck cannot be disabled or destroyed by EMP effects.&nbsp;</p>
   dvTable: ""
   favorite: false

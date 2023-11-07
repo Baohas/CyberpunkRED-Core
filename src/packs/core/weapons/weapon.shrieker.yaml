@@ -15,7 +15,6 @@ system:
   damage: "0"
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged
       Ear critical injuries. The target must beat a DV15 Resist Torture/Drugs

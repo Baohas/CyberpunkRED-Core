@@ -15,7 +15,6 @@ system:
   damage: 4d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A revitalized bow branded with the Eagletech logo, reloaded as part of
       an Attack Action.</p>

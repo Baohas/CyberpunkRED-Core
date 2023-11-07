@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p dir="ltr">Upgrade for any Jacket fashion item. Mechanically similar to
       an umbrella, does not serve as a wetsuit.&nbsp;</p>

@@ -15,7 +15,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Suppresses hunger response. User ignores Humanity Loss penalties from
       starvation trauma but User can still starve. Roll a Death Save at start of

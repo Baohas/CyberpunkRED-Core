@@ -15,7 +15,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Adjust foot size to perfectly fit any footwear. User can ignore
       penalties for wearing footwear that would otherwise be uncomfortable or

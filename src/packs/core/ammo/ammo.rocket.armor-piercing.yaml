@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: <p>Double ablation to armor. </p>
   favorite: false
   overrides:

@@ -10,7 +10,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: |-
       <p dir="ltr">Unleash the fires of Hell upon your rivals.</p>
       <p dir="ltr">6 slots for Programs, 5 slots for Hardware.</p>

@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>This additive increases the Resist Torture/Drugs DV of Poison or
       Biotoxin Vials by 2. Mixing multiple Distilling Compounds does not

@@ -15,7 +15,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>External Body Cyberware*. 7 SP for head and body.<br>Skinweave armor
       with advanced self-healing functionality. Billions of nanobots repair all

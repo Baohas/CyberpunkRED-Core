@@ -16,7 +16,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Provides +2 to Human Perception and Interrogation checks. Can activate
       a special lie-detecting mode. </p>

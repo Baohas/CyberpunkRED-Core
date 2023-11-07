@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>Allows you to install up to 5 more cyberaudio options. </p>
   dvTable: ""
   favorite: false

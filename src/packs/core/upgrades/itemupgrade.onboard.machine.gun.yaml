@@ -13,7 +13,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Can be applied to all vehicles. An <strong>Assault Rifle </strong>with
       a 30 round capacity and only capable of Autofire, that can be mounted

@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Make any bullet able to be fired as a shotgun slug.</p>
 

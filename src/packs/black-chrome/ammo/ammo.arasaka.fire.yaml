@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: |-
       <p>Coating for Arasaka Weeping Reaver Katana only.</p>
       <p>Can set target on fire, details of which can be found on page 91.</p>

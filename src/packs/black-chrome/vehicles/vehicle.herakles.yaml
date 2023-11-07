@@ -10,7 +10,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: |-
       <p>AV4 type troop transport, armored and armed.</p>
       <p>Full stats can be found on page 63.</p>

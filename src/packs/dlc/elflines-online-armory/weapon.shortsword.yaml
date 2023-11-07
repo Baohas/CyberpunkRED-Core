@@ -14,7 +14,6 @@ system:
   damage: 2d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A short bladed, hilted weapon. Specifically designed for cutting or
       thrusting.</p>

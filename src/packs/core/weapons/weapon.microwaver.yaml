@@ -15,7 +15,6 @@ system:
   damage: "0"
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>An Exotic Very Heavy Pistol. Causes cyberware or electrical components
       to be rendered inoperable for a minute unless the target passes a DV15

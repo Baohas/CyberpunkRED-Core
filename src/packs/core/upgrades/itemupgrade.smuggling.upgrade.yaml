@@ -13,7 +13,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Can be applied to all vehicles. Adds two <strong>Hidden
       Holsters</strong> to the vehicle, and a large hidden compartment for

@@ -15,7 +15,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A plastic housing and card launcher for ELO Cards. ROF 3 if only weapon
       fired on your turn. Can also be loaded with normal playing cards but makes

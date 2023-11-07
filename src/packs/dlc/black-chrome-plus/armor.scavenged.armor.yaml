@@ -14,7 +14,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A scavenged set of Light Armorjack body armor that is unable to be
       repaired. Refer to full item description on BC+ pg. 4.</p>

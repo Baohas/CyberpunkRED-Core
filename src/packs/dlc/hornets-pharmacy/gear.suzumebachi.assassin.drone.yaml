@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A small wasp-shaped drone designed for silent assassinations.</p>
 

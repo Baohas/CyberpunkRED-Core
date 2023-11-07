@@ -8,7 +8,6 @@ system:
   deathSaveIncrease: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>If move more than 4m/yds in a Turn, cannot move next turn. -2 to
       hearing based Perception.</p>

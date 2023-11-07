@@ -13,7 +13,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Can be applied to all land vehicles. Adds fans onto the vehicle that
       allow it to traverse water at a narrative speed of 15 MPH/ 24KPH, and a

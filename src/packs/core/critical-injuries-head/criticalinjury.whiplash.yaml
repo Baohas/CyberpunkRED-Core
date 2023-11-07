@@ -7,7 +7,6 @@ system:
   deathSaveIncrease: true
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>No other effects beyond increasing the base Death Save Penalty by
       1.</p>

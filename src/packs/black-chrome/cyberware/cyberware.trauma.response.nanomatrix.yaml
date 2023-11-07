@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Can fully repair skinweave or subdermal armor once a day. (See Black
       Chrome pg. 22 for more details.)</p>

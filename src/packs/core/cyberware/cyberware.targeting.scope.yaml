@@ -15,7 +15,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>Provides a +1 to aimed shots.</p>
   dvTable: ""
   favorite: false

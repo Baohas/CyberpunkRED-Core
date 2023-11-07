@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Miniature Workshop. Allows a Tech to use Upgrade and Fabrication
       Experstise anywhere as long as they have techtools. For more information,

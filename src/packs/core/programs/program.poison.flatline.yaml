@@ -13,7 +13,6 @@ system:
   def: 0
   description:
     chat: ""
-    unidentified: ""
     value: <p>Destroys a non-Black ICE on the enemy's cyberdeck at random.</p>
   favorite: false
   installLocation: mall

@@ -16,7 +16,6 @@ system:
   damage: 5d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>The Faisal's Dead Or Alive is a Poor Quality Exotic Shotgun with an
       integrated Poor Quality Net Launcher. Full rules can be found in Black

@@ -13,7 +13,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: <p>Armor Item for Skin Weave Cyberware.</p>
   equipped: owned
   favorite: false

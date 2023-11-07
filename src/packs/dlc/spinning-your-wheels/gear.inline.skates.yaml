@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>They're roller skates baby! Increases moment by 4 m/yds when using the
       Run Action, though stopping the use of any options in the user's legs. May

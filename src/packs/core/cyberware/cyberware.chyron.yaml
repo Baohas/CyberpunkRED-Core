@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Tiny screen in your eye. Provides picture-in-picture for those boring
       moments. </p>

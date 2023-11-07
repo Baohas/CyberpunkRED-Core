@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Sharp fingernails which are a Light Melee Weapon. Can be concealed.
       </p>

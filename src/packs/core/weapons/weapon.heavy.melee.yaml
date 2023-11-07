@@ -14,7 +14,6 @@ system:
   damage: 3d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>Generic Heavy Melee Weapon.</p>
   dvTable: ""
   equipped: owned

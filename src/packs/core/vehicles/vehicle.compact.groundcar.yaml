@@ -10,7 +10,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A CHOOH2-powered groundcar. Very common with a few dozen manufacturers
       producing similar models. </p>

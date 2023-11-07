@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Cyberfinger pair that can serve as scissors or wirecutters. Can only be
       installed on a modular finger cyberhand. (See Black Chrome pg. 26 for more

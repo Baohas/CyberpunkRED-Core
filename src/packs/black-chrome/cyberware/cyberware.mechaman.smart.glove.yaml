@@ -15,7 +15,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A biking glove that comes with a subdermal grip pre-installed* which
       requires a neural link to use. Has 1 cyberarm option slot. Refer to full

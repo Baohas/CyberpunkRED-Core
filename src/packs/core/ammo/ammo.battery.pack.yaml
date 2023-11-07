@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A rechargeable (1 hour) battery pack, commonly used with Exotic
       weapons. Contains 8 shots and can be recharged.&nbsp;</p>

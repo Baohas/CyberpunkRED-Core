@@ -13,7 +13,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Can be applied to all land vehicles. Adds Aerodyne thrusters to the
       vehicle, allowing flight. While flying the vehicle has a narrative speed

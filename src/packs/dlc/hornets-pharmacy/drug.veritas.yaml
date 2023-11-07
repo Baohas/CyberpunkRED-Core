@@ -13,7 +13,6 @@ system:
   consumed: Veritas Primary
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Dose lasts 10 minutes.</p>
 

@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Exoskeleton. Requires 2 Interface Plugs. Increases BODY to 12 while
       plugged in. No changes to your HP or Deathsave. Ignores the normal

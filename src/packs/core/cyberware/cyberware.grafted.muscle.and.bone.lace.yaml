@@ -16,7 +16,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>Increase Body by 2 (and related stats). Stacks. Max at 10 Body.</p>
   dvTable: ""
   favorite: false

@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: <p>A very sticky grenade, details of which can be found on page 86.</p>
   favorite: false
   overrides:

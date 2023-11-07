@@ -13,7 +13,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Light Armorjack that looks like businesswear. Restores 1SP every day SP
       isn't lost on the armor. Refer to full item description on BC pg. 34.</p>

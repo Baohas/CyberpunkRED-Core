@@ -13,7 +13,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Netrunner armored skinsuit. Can store Cyberdeck and support Interface
       Plugs. Can't be bought in two pieces. Always worn on both Head and Body

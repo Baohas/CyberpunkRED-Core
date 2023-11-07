@@ -15,7 +15,6 @@ system:
   damage: 8d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>While unloaded, this weapon can be concealed.</p>
   dvTable: DV Rocket Launcher
   equipped: owned

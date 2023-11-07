@@ -11,7 +11,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>If you want to look like a chromed-up cowboy, this is perfect for
       you.</p>

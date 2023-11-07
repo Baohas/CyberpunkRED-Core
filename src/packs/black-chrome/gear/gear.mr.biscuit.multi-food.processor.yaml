@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Can sustain a group of up to 10 people when in the Outskirts. For more
       information, see Black Chrome Page 49.</p>

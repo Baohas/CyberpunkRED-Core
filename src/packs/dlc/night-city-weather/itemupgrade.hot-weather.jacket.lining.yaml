@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Upgrade for any Jacket fashion item. User will not suffer Exposure
       penalties from hot temperatures (CP:R pg 181).&nbsp;</p>

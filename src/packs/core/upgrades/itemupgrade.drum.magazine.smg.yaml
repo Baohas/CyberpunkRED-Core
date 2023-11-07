@@ -13,7 +13,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>Increases magazine size to a massive 50 bullets.</p>
   dvTable: ""
   favorite: false

@@ -16,7 +16,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument checks.
       </p>

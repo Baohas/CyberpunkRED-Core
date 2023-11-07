@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Must be paired. Provides immunity to dazzling effects (like
       flashbangs).</p>

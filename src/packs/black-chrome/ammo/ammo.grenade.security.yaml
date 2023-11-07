@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Armor piercing Grenade that doesn't damage cover. Full rules can be
       found on page 89.</p>

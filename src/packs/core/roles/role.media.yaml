@@ -10,7 +10,6 @@ system:
   bonuses: []
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Newspeople, influencers, and cultural phenomena, they are ready to
       expose the truth by any means necessary.</p>

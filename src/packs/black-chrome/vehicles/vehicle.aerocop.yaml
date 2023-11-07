@@ -10,7 +10,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: |-
       <p>AV4 type Aerodyne. Police version.</p>
       <p>Full stats can be found on page 61.</p>

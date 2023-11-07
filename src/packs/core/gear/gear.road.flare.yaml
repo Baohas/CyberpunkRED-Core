@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: "<p>Range: 100m/yd. Duration: 1h.</p>"
   equipped: owned
   favorite: false

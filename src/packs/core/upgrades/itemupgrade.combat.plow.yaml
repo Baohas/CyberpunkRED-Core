@@ -13,7 +13,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Can be applied to all land and sea vehicles, except Bikes and Jetskies.
       When you ram something with the front of your vehicle, your vehicle

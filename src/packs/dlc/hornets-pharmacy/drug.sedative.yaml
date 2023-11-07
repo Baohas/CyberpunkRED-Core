@@ -12,7 +12,6 @@ system:
   consumed: None
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>MedTech pharmaceutical.</p>
 

@@ -15,7 +15,6 @@ system:
   damage: 3d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>This heavy SMG is the complete package; it comes with a Smartgun Link,
       Infrared Nightvision Scope, and a Sniping Scope*.</p>

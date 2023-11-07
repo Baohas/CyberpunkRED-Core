@@ -13,7 +13,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>Cyberdeck and user clothing cannot catch fire.&nbsp;</p>
   dvTable: ""
   favorite: false

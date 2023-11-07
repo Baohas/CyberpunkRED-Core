@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>This additive delays the effects of a Poison or Biotoxin Vial by a
       minute or an hour. Mixing multiple Delaying Compounds does not increase

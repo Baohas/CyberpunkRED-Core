@@ -10,7 +10,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: |-
       <p>A classic roadbike, this time with mounted weapons.</p>
       <p>Full details can be found on page 69.</p>

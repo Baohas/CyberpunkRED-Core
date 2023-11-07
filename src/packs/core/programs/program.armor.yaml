@@ -13,7 +13,6 @@ system:
   def: 0
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Reduce brain damage by 4 while Rezzed. Only 1 copy Rezzed at a time.
       Each copy has 1 use per Netrun.</p>

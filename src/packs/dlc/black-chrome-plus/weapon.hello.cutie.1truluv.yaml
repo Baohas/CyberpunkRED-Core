@@ -14,7 +14,6 @@ system:
   damage: 5d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Exotic Sniper Rifle. Can load non basic ammunition.</p>
 

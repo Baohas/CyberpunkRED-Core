@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: <p>Custom Ammo for the Teen Dreem.</p>
   favorite: false
   overrides:

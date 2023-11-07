@@ -10,7 +10,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: |-
       <p>Three wheeled Roadbike.</p>
       <p>Full details can be found on page 67.</p>

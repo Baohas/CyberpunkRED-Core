@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>It may not look pretty, but it works. This furniture Set is the bare
       minimum your Cargo Container needs.</p>

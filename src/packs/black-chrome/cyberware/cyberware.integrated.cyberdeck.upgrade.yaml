@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Requires Cyberdeck (Hardwired), adds an extra slot to the cyberdeck.
       (See Black Chrome pg. 19 for more details)</p>

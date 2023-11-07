@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: <p>Regular paintballs that don't do any damage. Annoying though.</p>
   favorite: false
   overrides:

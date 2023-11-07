@@ -16,7 +16,6 @@ system:
   damage: 5d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>An Exotic Shotgun that uses the Heavy Weapons Skill. Refer to the full
       item description on pg. 348.</p>

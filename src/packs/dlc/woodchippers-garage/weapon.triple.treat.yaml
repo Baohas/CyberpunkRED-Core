@@ -15,7 +15,6 @@ system:
   damage: 8d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Comes with an Exotic Grenade Launcher Underbarrel* which - as the main
       gun is poor quality - funcations as a poor quality weapon. It can't be

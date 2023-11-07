@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A knife fit for the streets. If you roll 1 on Attack (Crit Fail) the
       weapon fails in some way and requires an action to be made usable

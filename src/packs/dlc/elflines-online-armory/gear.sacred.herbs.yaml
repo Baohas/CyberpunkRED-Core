@@ -11,7 +11,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Ingesting Sacred Herbs immediately heals HP equal to the user's BODY
       plus their WILL.</p>

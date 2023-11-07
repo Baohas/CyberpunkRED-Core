@@ -11,7 +11,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: "<p>Range: 30m/yds. Not usable as weapon.</p>"
   equipped: owned
   favorite: false

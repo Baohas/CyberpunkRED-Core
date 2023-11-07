@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>It might be cheap, but it is real furniture. This is the starting
       Furniture Set for most cargo containers.</p>

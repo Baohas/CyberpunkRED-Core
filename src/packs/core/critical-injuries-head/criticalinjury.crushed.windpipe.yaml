@@ -8,7 +8,6 @@ system:
   deathSaveIncrease: true
   description:
     chat: ""
-    unidentified: ""
     value: <p>Cannot speak.</p>
   favorite: false
   location: head

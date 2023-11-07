@@ -16,7 +16,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Increases your BODY stat to 12 (adjusting your HP and Wound Threshold
       and Death Save). Removes the movement penalty for climbing and swimming.

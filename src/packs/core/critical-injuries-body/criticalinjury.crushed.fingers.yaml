@@ -9,7 +9,6 @@ system:
   deathSaveIncrease: false
   description:
     chat: ""
-    unidentified: ""
     value: <p>-4 to hand actions.</p>
   favorite: false
   location: body

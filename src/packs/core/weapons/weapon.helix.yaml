@@ -15,7 +15,6 @@ system:
   damage: 5d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets,
       using 20 bullets with each attack. Uses Autofire rules with a

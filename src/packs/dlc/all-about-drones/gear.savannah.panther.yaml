@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: |-
       <p>Active Defense Drone.</p>
       <p>Refer to the full description on page 61 of Interface Red vol. 1.</p>

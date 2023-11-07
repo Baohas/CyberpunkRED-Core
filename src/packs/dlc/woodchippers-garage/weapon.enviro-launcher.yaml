@@ -15,7 +15,6 @@ system:
   damage: 8d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>This specially engineered rocket launcher is only capable of being
       fired once. However, once it has been fired the user can use an action to

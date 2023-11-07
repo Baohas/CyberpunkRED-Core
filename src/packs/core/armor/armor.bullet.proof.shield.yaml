@@ -13,7 +13,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: <p>Requires an arm and has HP that is reduced by damage.</p>
   equipped: owned
   favorite: false

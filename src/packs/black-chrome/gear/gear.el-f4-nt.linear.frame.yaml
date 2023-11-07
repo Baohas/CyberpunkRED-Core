@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Exoskeleton. Increases BODY to 12 while equipped. No changes to your HP
       or Deathsave. Has pre-installed techtools. (See Black Chrome pg. 55 for

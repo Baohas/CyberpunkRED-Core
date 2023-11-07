@@ -14,7 +14,6 @@ system:
   damage: 4d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>The Westwood is a Very Heavy Pistol. 6 shot capacity that can't be
       upgraded with magazine attachments. Full rules can be found in Black

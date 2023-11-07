@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A dynamo on your bike's wheel for converting mechanical energy into
       electricity. Charges a battery pack (such as for weapons) in one hour.</p>

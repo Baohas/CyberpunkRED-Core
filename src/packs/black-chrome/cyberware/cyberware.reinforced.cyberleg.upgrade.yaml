@@ -15,7 +15,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Requires cyberleg. The cyberleg this is installed on cannot be broken.
       (See Black Chrome pgs. 21-22 for more details)</p>

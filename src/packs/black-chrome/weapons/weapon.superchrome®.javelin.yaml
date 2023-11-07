@@ -16,7 +16,6 @@ system:
   damage: 5d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>The Superchrome&reg; Javelin is an Exotic Sniper Rifle. Gives the user
       a +2 bonus to Wardrobe and Style when equipped. Full rules can be found in

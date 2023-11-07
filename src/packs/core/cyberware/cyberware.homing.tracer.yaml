@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Audio tracking of a tracer up to 1 mile. Replacements not included.
       </p>

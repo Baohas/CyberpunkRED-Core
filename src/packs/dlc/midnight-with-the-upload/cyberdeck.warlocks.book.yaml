@@ -10,7 +10,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A fantastic option for dismantling hostile Netrunners. Just hope they
       don&rsquo;t have any Black ICE.</p>

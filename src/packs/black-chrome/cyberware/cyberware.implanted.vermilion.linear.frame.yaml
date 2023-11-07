@@ -16,7 +16,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Increases your BODY stat to 12 (adjusting your HP and Wound Threshold
       and Death Save). No movement penalty for jumping. While running your

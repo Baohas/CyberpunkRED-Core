@@ -11,7 +11,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Can hold up to 8 pieces of Chipware. Chipware stored inside are immune
       to EMP effects. For more information, see Black Chrome Page 44.</p>

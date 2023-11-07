@@ -10,7 +10,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>An armored pickup Compact Groundcar with mounted machine gun. Combes
       with a bottle of vodka.</p>

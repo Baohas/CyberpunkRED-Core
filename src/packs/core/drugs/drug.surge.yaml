@@ -12,7 +12,6 @@ system:
   consumed: None
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Injecting a target with Surge causes them to be immune to sleep
       deprivation for 24 hours. It can only be used on a target once per

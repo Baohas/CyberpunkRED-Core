@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: <p>Small game ammo; not great for people. Deals 2d6 less damage.</p>
   favorite: false
   overrides:

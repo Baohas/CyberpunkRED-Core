@@ -10,7 +10,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: |-
       <p>One seat Gyrocopter. Civilian version.</p>
       <p>Full stats can be found on page 58.</p>

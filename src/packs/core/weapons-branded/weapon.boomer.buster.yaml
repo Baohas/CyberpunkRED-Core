@@ -16,7 +16,6 @@ system:
   damage: 4d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>
   dvTable: DV Pistol
   equipped: owned

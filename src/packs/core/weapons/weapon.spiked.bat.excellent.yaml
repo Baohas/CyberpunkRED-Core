@@ -14,7 +14,6 @@ system:
   damage: 3d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>An advancement over a regular bat. A number of nails have been hammered
       through towards the tip.  +1 to Attack.</p>

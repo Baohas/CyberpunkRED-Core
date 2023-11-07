@@ -8,7 +8,6 @@ system:
   deathSaveIncrease: true
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Ear is removed. If move more than 4m/yds in a Turn, cannot move next
       turn. -4 to hearing based Perception.</p>

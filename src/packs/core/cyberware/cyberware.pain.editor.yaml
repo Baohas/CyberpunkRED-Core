@@ -15,7 +15,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>Chipware. Removes Seriously Wounded penalties.</p>
   dvTable: ""
   favorite: false

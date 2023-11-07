@@ -11,7 +11,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>When worn, User can breathe underwater as long as within 10 m/yards of
       the surface. For more information, see Black Chrome Page 42.</p>

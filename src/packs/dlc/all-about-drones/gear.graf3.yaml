@@ -11,7 +11,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: |-
       <p>Quadraped construction drone.</p>
       <p>Refer to the full description on page 59 of Interface Red vol. 1.</p>

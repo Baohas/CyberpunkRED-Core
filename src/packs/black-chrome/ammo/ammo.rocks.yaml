@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: <p>Ammunition for the Nomad Rocker.</p>
   favorite: false
   overrides:

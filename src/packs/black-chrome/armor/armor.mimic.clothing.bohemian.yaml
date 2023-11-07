@@ -14,7 +14,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Light Armorjack made from a Mimic Clothing Kit and "Bohemian" clothing.
       Refer to full item description on BC pg. 33.</p>

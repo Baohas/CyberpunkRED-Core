@@ -16,7 +16,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Subdermal Alphanumeric display that shines clearly through the skin.
       Use a linked Agent to customize the output. Commonly used as &ldquo;kill

@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Can be applied to all bikes. While using Interface Plugs to drive this
       vehicle, if you have a REF 8 or higher and you, a passenger, or your bike

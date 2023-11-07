@@ -15,7 +15,6 @@ system:
   damage: 8d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>This rocket launcher can only load Armor-Piercing rockets, and has a
       maximum range of 400 m/yds. When fired one rocket at a time, the GM

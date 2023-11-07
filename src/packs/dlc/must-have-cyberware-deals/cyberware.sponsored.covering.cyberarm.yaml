@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Earn 20eb monthly by sporting a light-up advertisement on your
       Cyberarm. User may be responsible for paying the installation fee.

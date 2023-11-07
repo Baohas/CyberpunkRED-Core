@@ -10,7 +10,6 @@ system:
   bonuses: []
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Master hackers who put themselves at risk as they jack into cyberspace
       to download secrets and infiltrate networks.</p>

@@ -14,7 +14,6 @@ system:
   def: 0
   description:
     chat: ""
-    unidentified: ""
     value: <p>+2 to Cloak Checks while Rezzed.</p>
   favorite: false
   installLocation: mall

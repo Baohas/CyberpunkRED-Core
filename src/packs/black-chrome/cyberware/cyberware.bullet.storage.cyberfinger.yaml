@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Cyberfinger that can be used to conceal two rounds of ammunition of any
       type. Can only be installed on a modular finger cyberhand. (See Black

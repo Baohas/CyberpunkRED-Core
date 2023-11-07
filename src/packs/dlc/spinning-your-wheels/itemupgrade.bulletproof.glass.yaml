@@ -13,7 +13,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: |-
       <p>Enclosure glass gains 7 HP.</p>
       <p>Bike first requires the Enclosure upgrade to install this upgrade.</p>

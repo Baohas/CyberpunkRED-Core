@@ -10,7 +10,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: <p>Netrunner deck. 5 slots.</p>
   equipped: owned
   favorite: false

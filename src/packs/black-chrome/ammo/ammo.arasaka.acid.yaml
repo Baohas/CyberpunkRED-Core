@@ -13,7 +13,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: <p>Coating for Arasaka Weeping Reaver Katana only.</p>
   favorite: false
   overrides:

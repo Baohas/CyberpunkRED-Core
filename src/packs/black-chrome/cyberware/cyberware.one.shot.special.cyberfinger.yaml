@@ -15,7 +15,6 @@ system:
   damage: 3d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Cyberfinger that holds a concealed Exotic
       @UUID[Compendium.cyberpunk-red-core.weapons.Y433cjlB1uVHPysk]{Heavy

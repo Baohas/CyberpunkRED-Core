@@ -15,7 +15,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>Provides +2 to perception checks that use hearing.</p>
   dvTable: ""
   favorite: false

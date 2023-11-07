@@ -8,7 +8,6 @@ system:
   deathSaveIncrease: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Suffer Crit damage at end of turn if move more than 4m/yrds on
       foot.</p>

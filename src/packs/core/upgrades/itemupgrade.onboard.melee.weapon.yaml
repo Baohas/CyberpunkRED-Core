@@ -13,7 +13,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Can be applied to all land and sea vehicles. A <strong>Very Heavy Melee
       Weapon&nbsp;</strong>that can be mounted facing the front, side or back of

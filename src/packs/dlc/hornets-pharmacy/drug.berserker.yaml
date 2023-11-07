@@ -13,7 +13,6 @@ system:
   consumed: None
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p><strong>Primary Effect</strong></p>
 

@@ -14,7 +14,6 @@ system:
   damage: 4d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Takes an action to rev up, but once revved is a powerful melee weapon.
       When not revved deals 2d6 damage*.</p>

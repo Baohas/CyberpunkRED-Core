@@ -11,7 +11,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A CO2 tank designed for usage with the Masetto AirRider armor. Must be
       replaced after every usage. Refer to full item description on BC pg.

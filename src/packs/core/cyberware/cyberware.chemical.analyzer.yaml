@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>Chipware. Test chemical make up of something.</p>
   dvTable: ""
   favorite: false

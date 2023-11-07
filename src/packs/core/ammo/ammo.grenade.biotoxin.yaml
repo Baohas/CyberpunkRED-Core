@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>No immediate damage. If hit DV15 Resist Torture/Drugs Check. On a fail
       3d6 damage to HP. No Ablation. </p>

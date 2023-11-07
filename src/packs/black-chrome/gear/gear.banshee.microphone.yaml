@@ -13,7 +13,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Wireless Microphone Headset. Gives the User a +2 bonus to Play
       Instrument (Singing) Skill Checks while worn. Doesn't stack with other

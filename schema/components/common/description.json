@@ -5,16 +5,9 @@
     "chat": {
       "type": "string"
     },
-    "unidentified": {
-      "type": "string"
-    },
     "value": {
       "type": "string"
     }
   },
-  "required": [
-    "chat",
-    "unidentified",
-    "value"
-  ]
+  "required": ["chat", "value"]
 }

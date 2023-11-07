@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: <p>Each finger in your hand has a different tool. Great for Techs!</p>
   dvTable: ""
   favorite: false

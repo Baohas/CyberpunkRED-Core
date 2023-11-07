@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Your run-of-the-mill athletic clothing. Perfect to go for a jog or to
       relax at home.</p>

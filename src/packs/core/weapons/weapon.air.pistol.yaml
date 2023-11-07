@@ -15,7 +15,6 @@ system:
   damage: "0"
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is
       able to ablate armor by one with each hit. Refer to the full item

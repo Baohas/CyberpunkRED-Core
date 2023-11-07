@@ -16,7 +16,6 @@ system:
   damage: 6d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A high-impact grenade launcher. You can use a variety of grenades with
       this. +1 to Attack.</p>

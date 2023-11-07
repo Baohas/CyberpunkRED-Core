@@ -15,7 +15,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A cheap socket for a single installation of chipware. Damage to the
       head sends the installed chipware 30 m/yds away, potentially breaking it

@@ -15,7 +15,6 @@ system:
   damage: 5d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A bullpup rifle in operation for over two decades. Can fire non-basic
       ammunition and comes with a Smartgun Link*.</p>

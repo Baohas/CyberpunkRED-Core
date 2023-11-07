@@ -14,7 +14,6 @@ system:
   damage: 1d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Protects against the first attack (Asp, Raven, or Poison Flatline
       effects) that would destroy a random installed Program. This protective

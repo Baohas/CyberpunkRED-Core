@@ -12,7 +12,6 @@ system:
     isConcealed: false
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>Battery pack that only fits the Radline Blitzkrieg Arc-Thrower
       Cyberarm. Can be recharged in 1 hour.</p>

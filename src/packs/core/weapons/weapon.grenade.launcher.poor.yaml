@@ -15,7 +15,6 @@ system:
   damage: 6d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>A high-impact grenade launcher. You can use a variety of grenades with
       this.  If you roll 1 on Attack (Crit fail) the gun jams and requires using

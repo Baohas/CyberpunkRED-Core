@@ -15,7 +15,6 @@ system:
   damage: 5d6
   description:
     chat: ""
-    unidentified: ""
     value: >-
       <p>The Arasaka Prototype Variable Assault Rifle is an Excellent Quality
       Exotic Assault Rifle. Assuming you have all the parts, it can use an
