@@ -1,5 +1,22 @@
 {{cprTrace "START ITEM SETTINGS CPR-SKILL.HBS"}}
-{{!-- Skill Item Settings--}}
+{{!-- Skill Item Type --}}
+<li class="item flexrow">
+  <div class="item flexrow setting-name text-nowrap">
+    {{localize "CPR.itemSheet.skills.skillType"}}
+  </div>
+  <div class="item flexrow setting-value text-nowrap item-end">
+    <select name="system.skillType" data-dtype="{{item.system.skillType}}">
+      {{#select item.system.skillType}}
+      {{#each (cprFindConfigObj "skillTypes") as |sType t| }}
+        <option value="{{t}}">
+          {{localize sType}}
+        </option>
+      {{/each}}
+    {{/select}}
+  </select>
+</div>
+</li>
+{{!-- Skill Item Category--}}
 <li class="item flexrow">
   <div class="item flexrow setting-name text-nowrap">
     {{localize "CPR.itemSheet.skills.category"}}

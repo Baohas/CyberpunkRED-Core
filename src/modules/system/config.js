@@ -163,6 +163,17 @@ CPR.skillDifficulties = {
   role: "CPR.global.itemType.skill.difficulty.role",
 };
 
+// Some skills like Martial Arts are not skills in them selves but a type of
+// skill;
+CPR.skillTypes = {
+  generic: "CPR.global.itemType.skill.skillType.generic",
+  language: "CPR.global.itemType.skill.skillType.language",
+  localExpert: "CPR.global.itemType.skill.skillType.localExpert",
+  martialArt: "CPR.global.itemType.skill.skillType.martialArt",
+  playInstrument: "CPR.global.itemType.skill.skillType.playInstrument",
+  science: "CPR.global.itemType.skill.skillType.science",
+};
+
 // Sorted as listed in core rule book
 CPR.weaponTypeList = {
   assaultRifle: "CPR.global.weaponType.assaultRifle",

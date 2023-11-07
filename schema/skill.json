@@ -70,6 +70,16 @@
         "level": {
           "type": "integer"
         },
+        "skillType": {
+          "enum": [
+            "generic",
+            "language",
+            "localExpert",
+            "martialArt",
+            "playInstrument",
+            "science"
+          ]
+        },
         "source": {
           "$ref": "./components/common/source.json"
         },
@@ -85,6 +95,7 @@
         "difficulty",
         "favorite",
         "level",
+        "skillType",
         "source",
         "stat"
       ]

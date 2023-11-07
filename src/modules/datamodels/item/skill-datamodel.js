@@ -27,9 +27,13 @@ export default class SkillDataModel extends CPRSystemDataModel.mixin(
         initial: "awarenessSkills",
         choices: Object.keys(CPR.skillCategories),
       }),
-      difficuclty: new fields.StringField({
+      difficulty: new fields.StringField({
         initial: "typical",
         choices: Object.keys(CPR.skillDifficulties),
+      }),
+      skillType: new fields.StringField({
+        initial: "generic",
+        choices: Object.keys(CPR.skillTypes),
       }),
       core: new fields.BooleanField({ initial: false }),
       basic: new fields.BooleanField({ initial: false }),
