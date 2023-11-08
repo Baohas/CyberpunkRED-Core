@@ -200,18 +200,12 @@ export default function registerHandlebarsHelpers() {
     const filteredList = objList.filter((obj) => {
       let objProp = obj;
       const propDepth = key.split(".");
-      // eslint-disable-next-line consistent-return
       propDepth.forEach((propName) => {
         if (typeof objProp[propName] !== "undefined") {
           objProp = objProp[propName];
-        } else {
-          return false;
         }
       });
-      if (objProp === value) {
-        return true;
-      }
-      return false;
+      return objProp === value;
     });
     return filteredList;
   });

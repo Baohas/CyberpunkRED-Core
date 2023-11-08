@@ -49,4 +49,31 @@ export default class CyberwareDataModel extends CPRSystemDataModel.mixin(
       }),
     });
   }
+
+  /**
+   * This getter returns whether or not the cyberware item is installed in an actor,
+   * no matter how many layers it is nested. This is important for calculating max humanity
+   * and displaying cyberweapons on the fight tab. Previously we would only check if the
+   * cyberware was installed, not whether it was installed within an actor.
+   *
+   * NOTE: This getter is only applicable to embedded cyberware items (items that are on an actor)
+   * @returns {Boolean} - whether or not the top-level parent is installed in an actor.
+   */
+  get isInstalledInActor() {
+    LOGGER.trace("isInstalledInActor | CyberwareModel | called.");
+    function getTopLevelParentItem(childItem) {
+      const { actor } = childItem;
+      const parentItem = actor.items.get(childItem.system.installedIn[0]);
+      if (!parentItem) return childItem;
+      return getTopLevelParentItem(parentItem);
+    }
+
+    const item = this.parent;
+    if (!item.isEmbedded)
+      return LOGGER.debug(
+        "Don't call this for world items. This getter should only be called on actor items."
+      );
+    const topLevelItem = getTopLevelParentItem(item);
+    return topLevelItem.system.isInstalled;
+  }
 }

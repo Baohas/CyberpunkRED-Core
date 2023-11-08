@@ -1776,7 +1776,7 @@ export default class CPRActor extends Actor {
     const { stats } = cprData;
     let cyberwarePenalty = 0;
     const installedCyberware = this.itemTypes.cyberware.filter(
-      (cw) => cw.system.isInstalled
+      (cw) => cw.system.isInstalledInActor
     );
     installedCyberware.forEach((cyberware) => {
       if (cyberware.system.type === "borgware") {
