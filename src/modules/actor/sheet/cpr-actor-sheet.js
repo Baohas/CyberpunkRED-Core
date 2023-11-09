@@ -1305,7 +1305,7 @@ export default class CPRActorSheet extends ActorSheet {
       cprRoll.rollCardExtraArgs.itemName = result[0].name;
       cprRoll.rollCardExtraArgs.itemImg = result[0].img;
       let injuryComp;
-      if (injuryCompName === "cyberpunk-red-core.core_critical-injuries-body") {
+      if (injuryCompName === `${game.system.id}.core_critical-injuries-body`) {
         injuryComp = "body";
       } else {
         injuryComp = "head";
