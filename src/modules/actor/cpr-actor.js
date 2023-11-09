@@ -1219,24 +1219,22 @@ export default class CPRActor extends Actor {
    * @private
    * @returns {Number}
    */
+
   _getFreeHands() {
     LOGGER.trace("_getFreeHands | CPRActor | Called.");
-    const weapons = this._getEquippedWeapons();
-    const needed = weapons.map((w) => w.system.handsReq);
-    const freeHands = this._getHands() - needed.reduce((a, b) => a + b, 0);
-    return freeHands;
-  }
+    const equippedWeapons = this.system.weapons.equipped;
+    // Filter out weapons with undefined handsReq (cyberWeapons, itemUpgrade)
+    const filteredWeapons = equippedWeapons.filter(
+      (w) => w.system && w.system.handsReq !== undefined
+    );
+    // Map to just the handsReq values
+    const handsRequired = filteredWeapons.map((w) => w.system.handsReq);
+    // Calculate the total number of hands required by the equipped weapons
+    const totalHandsRequired = handsRequired.reduce((a, b) => a + b, 0);
+    // Calculate the number of free hands
+    const freeHands = this._getHands() - totalHandsRequired;
 
-  /**
-   * Return an array of weapons that are currently equipped
-   *
-   * @private
-   * @returns {Array} of CPRItems
-   */
-  _getEquippedWeapons() {
-    LOGGER.trace("_getEquippedWeapons | CPRActor | Called.");
-    const weapons = this.itemTypes.weapon;
-    return weapons.filter((a) => a.system.equipped === "equipped");
+    return freeHands;
   }
 
   /**
