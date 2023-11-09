@@ -445,17 +445,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Return true if any installed cyberware is a weapon
-   */
-  Handlebars.registerHelper("cprHasCyberneticWeapons", (actor) => {
-    LOGGER.trace("cprHasCyberneticWeapons | handlebarsHelper | Called.");
-    const cyberneticWeapons = actor.itemTypes.cyberware.filter(
-      (cw) => cw.system.isInstalled && cw.system.isWeapon
-    );
-    return cyberneticWeapons.length > 0;
-  });
-
-  /**
    * Return true if an embedded flag on an actor matches the firemode currently set.
    * Used to figure out if a weapon was just used with an alternative fire mode set.
    */
