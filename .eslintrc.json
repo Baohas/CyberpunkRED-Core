@@ -13,6 +13,7 @@
         "terms": ["TODO"]
       }
     ],
+    "import/no-cycle": ["warn"],
     "no-underscore-dangle": "off",
     "no-param-reassign": ["warn"],
     "class-methods-use-this": ["warn"],
