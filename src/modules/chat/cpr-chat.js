@@ -378,7 +378,9 @@ export default class CPRChat {
         case "displayInjury": {
           const injuryId = SystemUtils.GetEventDatum(event, "data-item-id");
           const injuryComp = SystemUtils.GetEventDatum(event, "data-item-comp");
-          const injuryPack = game.packs.get(`${injuryComp}`);
+          const injuryPack = game.packs.get(
+            `${game.system.id}.core_critical-injuries-${injuryComp}`
+          );
           const injury = await injuryPack.getDocument(injuryId);
           injury.sheet.render(true, { editable: false });
           break;
