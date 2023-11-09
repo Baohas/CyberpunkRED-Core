@@ -37,6 +37,19 @@ export default class CPRSystemUtils {
   }
 
   /**
+   * Retrieve the documents packed up in a compendium (aka a pack)
+   *
+   * @async
+   * @static
+   * @param {String} cname - name of the compendium to retrieve (which is not the human readable thing, that's the "label")
+   * @returns {Array}
+   */
+  static async GetCompendiumDocs(cname) {
+    LOGGER.trace("GetCompendiumDocs | CPRSystemUtils | Called.");
+    return game.packs.get(cname).getDocuments();
+  }
+
+  /**
    * Given a compendium label, return its ID. If multiple compendia have the same label, this will
    * return the first one encountered and throw a warning.
    *
@@ -59,19 +72,6 @@ export default class CPRSystemUtils {
       return null;
     }
     return comps[0].metadata.id;
-  }
-
-  /**
-   * Retrieve the documents packed up in a compendium (aka a pack)
-   *
-   * @async
-   * @static
-   * @param {String} cname - name of the compendium to retrieve (which is not the human readable thing, that's the "label")
-   * @returns {Array}
-   */
-  static async GetCompendiumDocs(cname) {
-    LOGGER.trace("GetCompendiumDocs | CPRSystemUtils | Called.");
-    return game.packs.get(cname).getDocuments();
   }
 
   /**

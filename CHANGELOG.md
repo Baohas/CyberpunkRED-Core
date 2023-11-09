@@ -22,6 +22,7 @@
 - #925 - scrollbar re-added for main windows
 - #926, 927 - change descriptions for bows/crossbows to be more clear on rules and cleaned up structure
 - #949 - Fix width adjustment for Black Ice Class selection box
+- #956 - Fixed players being unable to access critical injury card for GM-owned characters by showing compendium item instead
 
 ## Version 0.88.2
 

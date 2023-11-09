@@ -1308,10 +1308,15 @@ export default class CPRActorSheet extends ActorSheet {
         cprRoll.entityData = {
           actor: this.actor.id,
           token: this.token.id,
-          item: result[0].id,
+          item: injury.id,
+          comp: injuryCompName,
         };
       } else {
-        cprRoll.entityData = { actor: this.actor.id, item: result[0].id };
+        cprRoll.entityData = {
+          actor: this.actor.id,
+          item: injury.id,
+          comp: injuryCompName,
+        };
       }
       CPRChat.RenderRollCard(cprRoll);
     });
