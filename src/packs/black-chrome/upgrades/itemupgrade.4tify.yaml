@@ -17,9 +17,10 @@ system:
     value: >
       <p>Agent App.</p>
 
-      <p>Can reveals weak points by scanning your home. Or a section of
+      <p>Can reveal weak points by scanning your home. Or a section of
       cover...</p>
   dvTable: ""
+  equipped: owned
   favorite: false
   fireModes:
     autoFire: 0
