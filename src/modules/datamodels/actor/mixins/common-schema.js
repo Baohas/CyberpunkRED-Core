@@ -5,6 +5,7 @@ import StatSchema from "../components/stat-schema.js";
 import DerivedStatsSchema from "../components/derivedStats-schema.js";
 import ExternalResourceSchema from "../components/external-resource-schema.js";
 import LedgerSchema from "../components/ledger-schema.js";
+import ActorWeaponsSchema from "../components/weapons-schema.js";
 
 export default class CommonSchema extends foundry.abstract.DataModel {
   static defineSchema() {
@@ -62,6 +63,7 @@ export default class CommonSchema extends foundry.abstract.DataModel {
           blank: true,
         }),
       }),
+      weapons: new fields.EmbeddedDataField(ActorWeaponsSchema),
     };
   }
 }
