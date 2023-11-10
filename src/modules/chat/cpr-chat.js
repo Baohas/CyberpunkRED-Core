@@ -376,12 +376,17 @@ export default class CPRChat {
 
         // Gets injury item ID and compendium value, searches compendium pack for value and renders an item card
         case "displayInjury": {
-          const injuryId = SystemUtils.GetEventDatum(event, "data-item-id");
-          const injuryComp = SystemUtils.GetEventDatum(event, "data-item-comp");
-          const injuryPack = game.packs.get(
-            `${game.system.id}.core_critical-injuries-${injuryComp}`
+          const injuryName = SystemUtils.GetEventDatum(event, "data-item-name");
+          const injuryComp = `${
+            game.system.id
+          }.core_critical-injuries-${SystemUtils.GetEventDatum(
+            event,
+            "data-item-comp"
+          )}`;
+          const injury = await SystemUtils.GetCompendiumDoc(
+            injuryComp,
+            injuryName
           );
-          const injury = await injuryPack.getDocument(injuryId);
           injury.sheet.render(true, { editable: false });
           break;
         }
