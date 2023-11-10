@@ -26,7 +26,7 @@ export default class CPRSystemUtils {
    * @static
    * @param {String} cname - compendium name (which is not the human readable thing, that's the "label")
    * @param {String} dname - document name to look for
-   * @returns {Document}
+   * @returns {Document} - returns a Document object with specific document searched for by name
    */
   static async GetCompendiumDoc(cname, dname) {
     LOGGER.trace("GetCompendiumDoc | CPRSystemUtils | Called.");
@@ -42,7 +42,7 @@ export default class CPRSystemUtils {
    * @async
    * @static
    * @param {String} cname - name of the compendium to retrieve (which is not the human readable thing, that's the "label")
-   * @returns {Array}
+   * @returns {Array} - returns an array with all documents from compendium
    */
   static async GetCompendiumDocs(cname) {
     LOGGER.trace("GetCompendiumDocs | CPRSystemUtils | Called.");
