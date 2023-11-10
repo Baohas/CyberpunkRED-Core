@@ -1301,27 +1301,24 @@ export default class CPRActorSheet extends ActorSheet {
         res.roll,
         `systems/${game.system.id}/templates/chat/cpr-critical-injury-rollcard.hbs`
       );
+
+      // Creates card data for critical injury, entityData.actor and entityData.token are vestigial since they're
+      // not used in the critical injury rollcard but are required for the CPRChat.RenderRollCard function
       cprRoll.rollCardExtraArgs.tableName = table.name;
       cprRoll.rollCardExtraArgs.itemName = result[0].name;
       cprRoll.rollCardExtraArgs.itemImg = result[0].img;
-      let injuryComp;
-      if (injuryCompName === `${game.system.id}.core_critical-injuries-body`) {
-        injuryComp = "body";
-      } else {
-        injuryComp = "head";
-      }
       if (this.token) {
         cprRoll.entityData = {
           actor: this.actor.id,
           token: this.token.id,
           item: injury.name,
-          comp: injuryComp,
+          comp: injuryCompName,
         };
       } else {
         cprRoll.entityData = {
           actor: this.actor.id,
           item: injury.name,
-          comp: injuryComp,
+          comp: injuryCompName,
         };
       }
       CPRChat.RenderRollCard(cprRoll);

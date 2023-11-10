@@ -377,12 +377,7 @@ export default class CPRChat {
         // Gets injury item ID and compendium value, searches compendium pack for value and renders an item card
         case "displayInjury": {
           const injuryName = SystemUtils.GetEventDatum(event, "data-item-name");
-          const injuryComp = `${
-            game.system.id
-          }.core_critical-injuries-${SystemUtils.GetEventDatum(
-            event,
-            "data-item-comp"
-          )}`;
+          const injuryComp = SystemUtils.GetEventDatum(event, "data-item-comp");
           const injury = await SystemUtils.GetCompendiumDoc(
             injuryComp,
             injuryName
