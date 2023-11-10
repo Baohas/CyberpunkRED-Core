@@ -1314,13 +1314,13 @@ export default class CPRActorSheet extends ActorSheet {
         cprRoll.entityData = {
           actor: this.actor.id,
           token: this.token.id,
-          item: injury.id,
+          item: injury.name,
           comp: injuryComp,
         };
       } else {
         cprRoll.entityData = {
           actor: this.actor.id,
-          item: injury.id,
+          item: injury.name,
           comp: injuryComp,
         };
       }
