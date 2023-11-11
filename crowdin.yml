@@ -13,7 +13,7 @@ files:
       _: "-"
   - source: /src/babele/en/*.json
     translation: /src/babele/%locale%/%original_file_name%
-    type: json
+    type: json-html
   - source: /CHANGELOG.md
     translation: /CHANGELOG.%locale%.md
     type: md
