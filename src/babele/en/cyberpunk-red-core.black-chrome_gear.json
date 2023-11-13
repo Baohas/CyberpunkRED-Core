@@ -18,8 +18,8 @@
       "name": "ChipVault",
       "description": "<p>\n  Can hold up to 8 pieces of Chipware. Chipware stored inside are immune to EMP\n  effects.\n</p>\n"
     },
-    "CO₂ Tank": {
-      "name": "CO₂ Tank",
+    "CO2 Tank": {
+      "name": "CO2 Tank",
       "description": "<p>\n  A CO<sub>2</sub> tank designed for usage with the Masetto AirRider armor. Must\n  be replaced after every usage.\n</p>\n"
     },
     "Doberman 500": {
