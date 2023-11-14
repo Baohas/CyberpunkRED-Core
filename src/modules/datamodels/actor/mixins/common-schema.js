@@ -48,7 +48,7 @@ export default class CommonSchema extends foundry.abstract.DataModel {
           ExternalResourceSchema.defineSchema()
         ),
       }),
-      derivedStats: new fields.SchemaField(DerivedStatsSchema.defineSchema()),
+      derivedStats: new fields.EmbeddedDataField(DerivedStatsSchema),
       information: new fields.SchemaField({
         alias: new fields.HTMLField({ initial: "" }),
         description: new fields.HTMLField({ initial: "" }),

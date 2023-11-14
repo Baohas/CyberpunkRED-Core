@@ -156,6 +156,16 @@ CPR.skillList = {
   wildernessSurvival: "CPR.global.itemType.skill.wildernessSurvival",
 };
 
+CPR.defaultAttackSkillList = {
+  archery: "CPR.global.itemType.skill.archery",
+  autofire: "CPR.global.itemType.skill.autofire",
+  brawling: "CPR.global.itemType.skill.brawling",
+  handgun: "CPR.global.itemType.skill.handgun",
+  heavyWeapons: "CPR.global.itemType.skill.heavyWeapons",
+  meleeWeapon: "CPR.global.itemType.skill.meleeWeapon",
+  shoulderArms: "CPR.global.itemType.skill.shoulderArms",
+};
+
 // Unsorted
 CPR.skillDifficulties = {
   typical: "CPR.global.itemType.skill.difficulty.typical",
