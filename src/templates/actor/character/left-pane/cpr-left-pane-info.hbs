@@ -6,6 +6,19 @@
          src="{{actor.img}}"
          data-edit="img"
          data-tooltip="{{actor.name}}"/>
+    {{#if actor.system.derivedStats.isHardened.value }}
+      <i class="fa-solid fa-shield overlay"
+         data-tooltip="
+          {{localize 'CPR.characterSheet.leftPane.hardened.reasons.isHardened'}}
+          <hr />
+          {{#each actor.system.derivedStats.isHardened.reasons as |reason|}}
+            <p>
+              {{reason}}
+            </p>
+          {{/each}}
+         ">
+      </i>
+    {{/if}}
   </div>
   {{!-- Handle --}}
   <div class="actor-details-handle text-hero text-large text-padding-sides-smallest">

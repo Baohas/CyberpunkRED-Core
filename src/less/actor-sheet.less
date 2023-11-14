@@ -50,9 +50,23 @@
     }
 
     .actor-details-image {
+      position: relative;
+      display: inline-block;
       background-color: var(--cpr-background-border);
       clip-path: polygon(1.563rem 0, 100% 0, 100% 100%, 0 100%, 0 1.563rem);
       grid-area: actor-details-image;
+
+      .overlay {
+        background-color: unset;
+        position: absolute;
+        bottom: 0.625rem;
+        left: 0.625rem;
+        color: white;
+        font-size: 1.5rem;
+        -webkit-text-stroke-width: 0.125rem;
+        -webkit-text-fill-color: var(--cpr-icon-actor-image-overlay);
+        -webkit-text-stroke-color: var(--cpr-icon-actor-image-overlay-border);
+      }
     }
 
     .actor-details-handle {
