@@ -11,6 +11,10 @@
   - Skills (Science)
   - Skills (Martial Arts)
   - Skills (Play Instrument)
+- Add a check to characters to see if they are considered "Hardened"
+  - Based on the rules in Danger Gal Dossier pg. 150
+  - Displays an overlay Icon on the Character Sheet Image which will list the reasons a character is considered hardened when hovered
+  - Programmatically available under the `system.derivedStats.isHardened` datapoint
 
 ### Changes
 
