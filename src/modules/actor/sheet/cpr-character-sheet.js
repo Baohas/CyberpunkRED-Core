@@ -193,6 +193,17 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
             "CPR.messages.warningTooManyHands"
           );
         }
+        // If moving from carried to equipped cycle state, auto-track the new armor by slot
+        if (item.type === "armor") {
+          const actorData = this.actor.getOwnedItem(item.id);
+          if (actorData.system.isHeadLocation) {
+            this.actor.updateTrackedArmor("head", item.id);
+          } else if (actorData.system.isBodyLocation) {
+            this.actor.updateTrackedArmor("body", item.id);
+          } else if (actorData.system.isShield) {
+            this.actor.updateTrackedArmor("shield", item.id);
+          }
+        }
         newValue = "equipped";
         if (item.type === "cyberdeck") {
           if (this.actor.hasItemTypeEquipped(item.type)) {
@@ -203,15 +214,18 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         break;
       }
       case "equipped": {
-        // If armor is tracked, will untrack the armor from the actor when
-        // unequipped.
         const actorData = this.actor.getOwnedItem(item.id);
-        if (actorData.system.isHeadLocation) {
-          this.actor.setTrackedArmor("head", "untrack");
-        } else if (actorData.system.isBodyLocation) {
-          this.actor.setTrackedArmor("body", "untrack");
-        } else if (actorData.system.isShield) {
-          this.actor.setTrackedArmor("shield", "untrack");
+        // If it's an armor item, and isTracked, untrack it when we unequip it
+        if (item.type === "armor") {
+          if (item.system.isTracked) {
+            if (actorData.system.isHeadLocation) {
+              this.actor.updateTrackedArmor("head");
+            } else if (actorData.system.isBodyLocation) {
+              this.actor.updateTrackedArmor("body");
+            } else if (actorData.system.isShield) {
+              this.actor.updateTrackedArmor("shield");
+            }
+          }
         }
         newValue = "owned";
         break;

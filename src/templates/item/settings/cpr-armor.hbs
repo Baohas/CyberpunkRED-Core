@@ -29,7 +29,7 @@
       {{localize "CPR.itemSheet.common.maximum"}} {{localize "CPR.global.generic.hitpoints"}} {{cprShowUpgrade item "shieldHp"}}
     </div>
     <div class="item flexrow setting-value text-nowrap item-end">
-      <input name="system.shieldHitPoints.max" type="number" value="{{item.system.shieldHitPoints.max}}"/>
+      <input class="armor-shield-max" data-item-id="{{item.id}}" name="system.shieldHitPoints.max" type="number" value="{{item.system.shieldHitPoints.max}}"/>
     </div>
   </li>
   <li class="item flexrow">
@@ -37,7 +37,7 @@
       {{localize "CPR.itemSheet.armor.currentHitpoints"}}
     </div>
     <div class="item flexrow setting-value text-nowrap item-end">
-      <input name="system.shieldHitPoints.value" type="number" value="{{item.system.shieldHitPoints.value}}"/>
+      <input class="armor-shield-value" data-item-id="{{item.id}}" name="system.shieldHitPoints.value" type="number" value="{{item.system.shieldHitPoints.value}}"/>
     </div>
   </li>
 {{else}}
@@ -61,7 +61,7 @@
         {{localize "CPR.itemSheet.armor.headArmorSp"}} {{cprShowUpgrade item "headSp"}}
       </div>
       <div class="item flexrow setting-value text-nowrap item-end">
-        <input name="system.headLocation.sp" type="number" value="{{item.system.headLocation.sp}}"/>
+        <input class="armor-head-sp" data-item-id="{{item.id}}" name="system.headLocation.sp" type="number" value="{{item.system.headLocation.sp}}"/>
       </div>
     </li>
     <li class="item flexrow">
@@ -70,7 +70,7 @@
         "CPR.itemSheet.armor.ablation"}}
       </div>
       <div class="item flexrow setting-value text-nowrap item-end">
-        <input name="system.headLocation.ablation" type="number" value="{{item.system.headLocation.ablation}}"/>
+        <input class="armor-head-ablation" data-item-id="{{item.id}}"  name="system.headLocation.ablation" type="number" value="{{item.system.headLocation.ablation}}"/>
       </div>
     </li>
     <hr/>
@@ -95,7 +95,7 @@
         {{localize "CPR.itemSheet.armor.bodyArmorSp"}}  {{cprShowUpgrade item "bodySp"}}
       </div>
       <div class="item flexrow setting-value text-nowrap item-end">
-        <input name="system.bodyLocation.sp" type="number" value="{{item.system.bodyLocation.sp}}"/>
+        <input class="armor-body-sp" data-item-id="{{item.id}}" name="system.bodyLocation.sp" type="number" value="{{item.system.bodyLocation.sp}}"/>
       </div>
     </li>
     <li class="item flexrow">
@@ -103,7 +103,7 @@
         {{localize "CPR.global.location.body"}} {{localize "CPR.global.itemTypes.armor"}} {{localize "CPR.itemSheet.armor.ablation"}}
       </div>
       <div class="item flexrow setting-value text-nowrap item-end">
-        <input name="system.bodyLocation.ablation" type="number" value="{{item.system.bodyLocation.ablation}}"/>
+        <input class="armor-body-ablation" data-item-id="{{item.id}}" name="system.bodyLocation.ablation" type="number" value="{{item.system.bodyLocation.ablation}}"/>
       </div>
     </li>
   {{/if}}

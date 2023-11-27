@@ -91,7 +91,7 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
   static migrateData(source) {
     LOGGER.trace("migrateData | ContainerSchema | called.");
     // Turn this list of UUIDs into a list of IDs.
-    if (source.installedItems?.list.length > 0) {
+    if (source.installedItems?.list?.length > 0) {
       const installed = source.installedItems.list;
       // eslint-disable-next-line no-param-reassign
       source.installedItems.list = installed.map((i) =>

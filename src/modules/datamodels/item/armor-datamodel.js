@@ -83,4 +83,30 @@ export default class ArmorDataModel extends CPRSystemDataModel.mixin(
       }),
     });
   }
+
+  /**
+   * Check if this armor item is tracked in its actor's externalData datapoint.
+   * This is used to update the armor value if modified directly from the item sheet.
+   *
+   * @getter
+   * @returns {Boolean} - whether or not this armor is being tracked.
+   */
+  get isTracked() {
+    LOGGER.trace("get isTracked | ArmorDataModel | called.");
+    const item = this.parent;
+    if (!item.isEmbedded) return false; // Return false if this item is not embedded in an actor (owned)
+    switch (true) {
+      case item.system.isHeadLocation: {
+        return item.actor.system.externalData.currentArmorHead.id === item.id;
+      }
+      case item.system.isBodyLocation: {
+        return item.actor.system.externalData.currentArmorBody.id === item.id;
+      }
+      case item.system.isShield: {
+        return item.actor.system.externalData.currentArmorShield.id === item.id;
+      }
+      default:
+        return null;
+    }
+  }
 }

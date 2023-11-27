@@ -974,56 +974,53 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Update actor data with data from the given armor so that it can either be displayed in the
-   * resource bar or remove the tracking from the resource bar if the user chooses to untrack the
-   * armor, deletes the armor or cycles the armor from an equipped condition.
+   * Updates tracked armor values based on the given location and item ID
    *
-   * @param {String} location - head, body, or shield
-   * @param {String} action - specifies if the user wants to track or untrack the armor
-   * @param {String} id - Id of armor item we want to make "current" and available as a resource bar
+   * @param {string} location - Armor location (e.g., "shield", "head", "body")
+   * @param {string|null} id - The ID of the item, default is null
+   * @returns {Promise<boolean>} - Returns true if successful, false otherwise
    */
-  async setTrackedArmor(location, action, id = null) {
-    LOGGER.trace("setTrackedArmor | CPRActor | Called.");
+  async updateTrackedArmor(location, id = null) {
+    LOGGER.trace("updateTrackedArmor | CPRActor | Called.");
+    const targetArmor = this.getOwnedItem(id);
+    const armorLocation = TextUtils.toTitleCase(location);
+    const currentArmor =
+      this.system.externalData[`currentArmor${armorLocation}`];
     const armorPath = "system.externalData.currentArmor";
-    const armorType = TextUtils.toTitleCase(location);
-    const currentArmor = this.getOwnedItem(id);
-    const update = {};
+    const update = { value: 0, max: 0 };
 
-    switch (action) {
-      case "track": {
-        update.id = id;
-        if (["body", "head"].includes(location)) {
-          update.value =
-            currentArmor.system[`${location}Location`].sp -
-            currentArmor.system[`${location}Location`].ablation;
-          update.max = currentArmor.system[`${location}Location`].sp;
-        } else if (location === "shield") {
-          update.value = currentArmor.system[`${location}HitPoints`].value;
-          update.max = currentArmor.system[`${location}HitPoints`].max;
-        } else {
-          LOGGER("Unknown armor type");
-        }
-        break;
+    const calculateUpdate = (locationKey) => {
+      // Return defaults if targetArmor is undefined.
+      if (!targetArmor) {
+        return { value: 0, max: 0 };
       }
-      case "untrack": {
-        update.id = null;
-        update.value = 0;
-        update.max = 0;
-        break;
+
+      // If it's a shield just grab the values directly
+      if (location === "shield") {
+        const { value = 0, max = 0 } = targetArmor.system.shieldHitPoints || {};
+        return { value, max };
       }
-      default:
-        LOGGER("Unknown action completed");
+      // Else calculate the value for armor
+      const sp = targetArmor.system[locationKey]?.sp ?? 0;
+      const ablation = targetArmor.system[locationKey]?.ablation ?? 0;
+      return { value: sp - ablation, max: sp };
+    };
+
+    // Get the values of the armor
+    Object.assign(update, calculateUpdate(`${location}Location`));
+
+    // Update the id of the tracked armor if it doesn't match
+    if (currentArmor.id !== id) {
+      await this.update({ [`${armorPath}${armorLocation}.id`]: id });
     }
 
+    // Update armor values
     await this.update({
-      [`${armorPath}${armorType}.id`]: update.id,
-    });
-    this.update({
-      [`${armorPath}${armorType}.value`]: update.value,
-      [`${armorPath}${armorType}.max`]: update.max,
+      [`${armorPath}${armorLocation}.value`]: update.value,
+      [`${armorPath}${armorLocation}.max`]: update.max,
     });
 
-    return null;
+    return true;
   }
 
   /**
