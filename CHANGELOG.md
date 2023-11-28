@@ -34,6 +34,7 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 - Add Speedheal Macro
 - Add ability to set weapon ignore percentage
 - Add ability to set weapon to ignore armor below set SP amount
+- #235 - Added ability to change resource bars for armor from item sheet
 
 ### Changes
 
