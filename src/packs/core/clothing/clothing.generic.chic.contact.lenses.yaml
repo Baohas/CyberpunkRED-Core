@@ -11,8 +11,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         The kind of clothing you find in the Mega-Plexes of the Dark Future. Perfect

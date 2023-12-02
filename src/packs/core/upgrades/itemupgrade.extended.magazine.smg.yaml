@@ -13,8 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Increases magazine size to a hefty 40 bullets.</p>
   dvTable: ""

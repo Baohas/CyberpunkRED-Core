@@ -15,8 +15,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Subdermal Alphanumeric display that shines clearly through the skin. Use a

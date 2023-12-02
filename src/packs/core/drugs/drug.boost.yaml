@@ -13,8 +13,6 @@ system:
     isConcealed: false
   consumed: Boost Primary
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p><strong>Primary Effect</strong></p>
       <p>Dose lasts 24 hours.</p>

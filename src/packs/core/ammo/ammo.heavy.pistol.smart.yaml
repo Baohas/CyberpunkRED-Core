@@ -11,8 +11,6 @@ system:
     concealable: true
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by

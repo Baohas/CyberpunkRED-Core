@@ -15,8 +15,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <ul>
         <li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li>

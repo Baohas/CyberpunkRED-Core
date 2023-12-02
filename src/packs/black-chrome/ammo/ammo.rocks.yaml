@@ -11,8 +11,6 @@ system:
     concealable: true
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Ammunition that can be used with the Nomad Rocker if of small enough size.

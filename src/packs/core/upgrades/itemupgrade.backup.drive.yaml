@@ -12,8 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Saves Non-Black IE programs when destroyed. These programs can be re-installed

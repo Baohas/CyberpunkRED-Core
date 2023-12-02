@@ -115,8 +115,6 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Experts in combat who use their fighting prowess to dominate in the lawless

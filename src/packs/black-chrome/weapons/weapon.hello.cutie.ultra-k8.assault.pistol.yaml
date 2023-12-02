@@ -14,8 +14,6 @@ system:
   critFailEffect: jammed
   damage: 4d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         The Sanroo Hello Cutie Ultra-K8 Assault Pistol is an Excellent Quality Exotic

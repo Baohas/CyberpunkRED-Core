@@ -14,8 +14,6 @@ system:
     isConcealed: false
   consumed: Timewarp Primary
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p><strong>Primary Effect</strong></p>
       <p>Dose lasts 1 minute.</p>

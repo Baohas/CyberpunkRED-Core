@@ -10,8 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Magnification: x2 or x3.</p>
   equipped: owned

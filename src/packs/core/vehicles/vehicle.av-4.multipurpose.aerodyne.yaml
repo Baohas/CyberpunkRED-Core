@@ -9,8 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A multipurpose aircraft capable of quick insertion thanks to vertical

@@ -14,8 +14,6 @@ system:
   critFailEffect: jammed
   damage: 2d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         An excellent quality pistol with a unique Hypurrburst™ mode fire mode*. The

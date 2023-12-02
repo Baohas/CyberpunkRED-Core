@@ -10,8 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A CO<sub>2</sub> tank designed for usage with the Masetto AirRider armor. Must

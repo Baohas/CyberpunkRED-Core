@@ -14,8 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>30 minutes of refillable breathable air.</p>
   dvTable: ""

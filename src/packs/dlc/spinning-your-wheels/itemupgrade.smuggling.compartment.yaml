@@ -12,8 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Adds a small hidden storage space in the frame.</p>
       <p>1 inch x 6 inches (2.54cm x 15.24cm)</p>

@@ -10,8 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Briefcase-sized tool used for hooking up a wounded person. Places them in

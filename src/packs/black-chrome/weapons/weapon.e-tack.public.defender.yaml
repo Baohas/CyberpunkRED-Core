@@ -14,8 +14,6 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Comes with a Smartgun Link attachment*. The User needs a Subdermal Grip to

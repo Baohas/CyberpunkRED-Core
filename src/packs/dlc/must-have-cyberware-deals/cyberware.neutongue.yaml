@@ -14,8 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Simulates flavor sensations. Use a linked Agent to customize flavor profiles.

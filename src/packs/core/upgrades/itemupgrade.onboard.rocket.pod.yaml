@@ -12,8 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. A

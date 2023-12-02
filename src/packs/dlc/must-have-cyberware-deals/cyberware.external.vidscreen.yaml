@@ -14,8 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Implanted flexible video screen. Use a socketed Memory Chip or linked Agent to

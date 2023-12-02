@@ -12,8 +12,6 @@ system:
     concealable: true
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Special ammo to only be used with the Malorian Arms Sub-Flechette Gun. Ablates

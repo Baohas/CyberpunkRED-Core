@@ -13,8 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A stowable camera that pops out of your shoulder. Can link with an agent or

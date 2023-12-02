@@ -12,8 +12,6 @@ system:
     standard: 2d6
   def: 0
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         2d6 damage direct to Netrunner's Brain. Their gear catches fire if not

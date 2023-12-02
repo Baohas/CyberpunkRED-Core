@@ -147,8 +147,6 @@ system:
       sort: 0
       type: skill
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Car people, truckers, transportation afficionados, air-pirates, they are the

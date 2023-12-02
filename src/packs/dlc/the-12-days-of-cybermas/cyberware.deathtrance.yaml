@@ -15,8 +15,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Activate as an action to impede signs of life such as heart rate and

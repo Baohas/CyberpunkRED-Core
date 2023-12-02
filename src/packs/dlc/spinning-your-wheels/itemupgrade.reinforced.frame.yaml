@@ -13,8 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: >
       <p>Bike is now more resistant: +5 SDP and rider can be BODY 11 or
       more.</p>

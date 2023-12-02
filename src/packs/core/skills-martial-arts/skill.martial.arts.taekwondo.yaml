@@ -12,9 +12,9 @@ system:
   difficulty: difficult
   favorite: false
   level: 0
+  skillType: martialArt
   source:
     book: Core
     page: 83
   stat: dex
-  skillType: martialArt
 type: skill

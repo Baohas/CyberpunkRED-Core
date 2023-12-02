@@ -12,8 +12,6 @@ system:
     isConcealed: false
   consumed: Veritas Primary
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Dose lasts 10 minutes.</p>
       <p>MedTech pharmaceutical.</p>

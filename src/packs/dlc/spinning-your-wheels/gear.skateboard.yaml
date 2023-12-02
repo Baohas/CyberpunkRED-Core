@@ -11,8 +11,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         The coolest wheels around. Increases moment by 4 m/yds when using the Run

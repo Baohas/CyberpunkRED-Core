@@ -15,8 +15,6 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         The Midnight Arms Beast Shotgun is an Exotic Shotgun. Its magazine holds 40

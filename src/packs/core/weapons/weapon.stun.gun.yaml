@@ -14,8 +14,6 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt would

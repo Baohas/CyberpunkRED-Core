@@ -13,8 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Requires cyberarm. Comes with 5 cyberfingers*.</p>
       <p>*Fingers must be added after installation</p>

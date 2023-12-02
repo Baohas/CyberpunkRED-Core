@@ -11,8 +11,6 @@ system:
     isConcealed: false
   consumed: None
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Injecting a target with Speedheal immediately causes them to heal HP equal to

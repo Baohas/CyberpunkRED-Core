@@ -12,9 +12,9 @@ system:
   difficulty: typical
   favorite: false
   level: 2
+  skillType: generic
   source:
     book: Core
     page: 139
   stat: emp
-  skillType: generic
 type: skill

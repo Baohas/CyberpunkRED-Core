@@ -10,8 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Following the latest Asian fashion trends, Asia Pop is sure to catch the eye

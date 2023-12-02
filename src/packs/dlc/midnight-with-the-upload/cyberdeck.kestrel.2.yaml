@@ -9,8 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Black ICE can&rsquo;t hit what they can&rsquo;t catch.</p>
       <p>7 slots only for Programs.</p>

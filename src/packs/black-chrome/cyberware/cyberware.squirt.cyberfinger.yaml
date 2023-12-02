@@ -13,8 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Cyberfinger that can hold and spray various liquids. Can only be installed on

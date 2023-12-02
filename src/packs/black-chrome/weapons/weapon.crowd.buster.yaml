@@ -14,8 +14,6 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with a

@@ -11,8 +11,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Personal Drone. Tiny GRAF3 that can be linked to an Agent.</p>
   equipped: owned

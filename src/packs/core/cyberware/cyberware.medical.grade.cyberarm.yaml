@@ -13,8 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>A medical grade cyberarm. Does not allow options to be installed.</p>
   dvTable: ""

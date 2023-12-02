@@ -14,8 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Use a Choke Action to stab a grappled target with a popout electrified needle.

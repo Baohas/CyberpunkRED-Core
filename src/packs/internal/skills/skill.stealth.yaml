@@ -12,9 +12,9 @@ system:
   difficulty: typical
   favorite: false
   level: 2
+  skillType: generic
   source:
     book: Core
     page: 132
   stat: dex
-  skillType: generic
 type: skill

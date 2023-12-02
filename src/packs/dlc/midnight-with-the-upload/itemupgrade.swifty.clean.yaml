@@ -13,8 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Netrunner can roll Cloak twice in a single NET Action and take the higher

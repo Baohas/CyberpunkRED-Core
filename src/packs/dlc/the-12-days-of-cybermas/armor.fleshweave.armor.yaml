@@ -13,8 +13,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Armor Item for Sycust FleshWeave Cyberware.</p>
   equipped: owned

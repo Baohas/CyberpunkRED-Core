@@ -13,8 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Wisp Black ICE deal 2d6 damage instead of 1d6.</p>
       <p>Black ICE Program restrictions: Only Wisps can be installed.</p>

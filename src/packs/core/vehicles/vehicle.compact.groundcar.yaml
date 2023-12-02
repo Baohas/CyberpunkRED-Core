@@ -9,8 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A CHOOH<sup>2</sup>-powered ground car. Very common with a few dozen

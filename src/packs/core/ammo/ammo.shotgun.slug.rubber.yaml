@@ -11,8 +11,6 @@ system:
     concealable: true
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Does not cause Critical Injury. Does not ablate armor. Leaves target at

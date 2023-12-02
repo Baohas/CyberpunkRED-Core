@@ -14,8 +14,6 @@ system:
   core: false
   damage: "0"
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A concealable exotic net launcher. Can't hold anything with this hand while

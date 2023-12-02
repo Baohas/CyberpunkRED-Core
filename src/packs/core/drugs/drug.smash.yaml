@@ -13,8 +13,6 @@ system:
     isConcealed: false
   consumed: Smash Primary
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p><strong>Primary Effect</strong></p>
       <p>Dose lasts 4 hours.</p>

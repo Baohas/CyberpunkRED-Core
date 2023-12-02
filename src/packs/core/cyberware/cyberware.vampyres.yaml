@@ -13,8 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Pointy Teeth which is a Light Melee weapon. Can use poison/toxins.</p>
   dvTable: ""

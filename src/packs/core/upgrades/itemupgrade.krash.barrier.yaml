@@ -12,8 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Cyberdeck is immune to effects that force the Netrunner to Jack Out (safely or

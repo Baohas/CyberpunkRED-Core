@@ -16,8 +16,6 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>The KTech TechHammer is an Exotic Shotgun/Rocket Launcher.</p>
   dvTable: DV Shotgun (Slug)

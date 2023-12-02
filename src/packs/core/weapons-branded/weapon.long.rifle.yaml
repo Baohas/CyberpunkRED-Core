@@ -14,8 +14,6 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A long-distance sniper rifle, commonly used by nomads. Holds 4 bullets in a

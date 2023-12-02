@@ -9,8 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>A classic Roadbike with a more feminine look.</p>
   favorite: false

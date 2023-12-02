@@ -15,8 +15,6 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         The GunMart Bubba Buster is a Poor Quality Exotic Shotgun. It destroys itself

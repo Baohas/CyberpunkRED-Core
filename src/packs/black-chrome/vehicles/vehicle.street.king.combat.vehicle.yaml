@@ -9,8 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A High Performance Groundcar which is large, armored and has a military look.

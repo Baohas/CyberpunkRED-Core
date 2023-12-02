@@ -61,8 +61,6 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Superior understanding of all-things tech allow them to invent, upgrade, and

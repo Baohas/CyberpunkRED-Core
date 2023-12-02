@@ -13,8 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Chipware.</p>
       <p>Sets a Skill to 3 unless the skill is already &gt;3*.</p>

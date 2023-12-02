@@ -11,8 +11,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         When linked to a KillStrom Sonic Boom Amp, increases the DV of the Resist

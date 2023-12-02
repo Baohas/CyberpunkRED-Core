@@ -12,8 +12,6 @@ system:
     standard: 1d6
   def: 0
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         The netrunner cannot progress further into the Local NET or safely jacking out

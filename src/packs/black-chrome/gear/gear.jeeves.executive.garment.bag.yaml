@@ -11,8 +11,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Bag that can repair one piece of fashion or armor at a time.</p>
   equipped: owned

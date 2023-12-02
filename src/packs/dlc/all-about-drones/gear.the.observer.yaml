@@ -10,8 +10,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Personal Drone. Flying camera that can be linked to an Agent.</p>
   equipped: owned

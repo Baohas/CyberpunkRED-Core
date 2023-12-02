@@ -7,8 +7,6 @@ name: Broken Jaw
 system:
   deathSaveIncrease: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>-4 to Speech Actions.</p>
   favorite: false

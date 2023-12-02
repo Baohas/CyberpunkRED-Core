@@ -15,8 +15,6 @@ system:
   core: false
   damage: 6d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A concealable one-shot Grenade Launcher. Can't hold anything with this hand

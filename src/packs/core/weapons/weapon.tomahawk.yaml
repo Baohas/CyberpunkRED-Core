@@ -13,8 +13,6 @@ system:
   critFailEffect: jammed
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>A light axe that can be thrown.</p>
   dvTable: ""

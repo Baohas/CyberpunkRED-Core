@@ -12,8 +12,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: >
       <p>Heavier version of an Armorjack for your head. -2 to REF, DEX, and
       MOVE.</p>

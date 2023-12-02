@@ -11,8 +11,6 @@ system:
     isConcealed: false
   consumed: None
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         If a target has started the natural healing process injecting them with

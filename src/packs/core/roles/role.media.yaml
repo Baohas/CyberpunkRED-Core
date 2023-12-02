@@ -9,8 +9,6 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Newspeople, influencers, and cultural phenomena, they are ready to expose the

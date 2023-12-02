@@ -9,8 +9,6 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Master hackers who put themselves at risk as they jack into cyberspace to

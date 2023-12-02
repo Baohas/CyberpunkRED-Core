@@ -12,8 +12,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A Kevlar motorcycle helmet with integrated smart glasses that come with Chyron

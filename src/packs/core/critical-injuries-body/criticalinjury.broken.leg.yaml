@@ -7,8 +7,6 @@ name: Broken Leg
 system:
   deathSaveIncrease: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>-4 MOVE (minimum MOVE of 1).</p>
   favorite: false

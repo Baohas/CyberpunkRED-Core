@@ -15,8 +15,6 @@ system:
   critFailEffect: jammed
   damage: 6d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>This weapon can only fire Smoke or Teargas Ammunition.</p>
   dvTable: DV Grenade Launcher

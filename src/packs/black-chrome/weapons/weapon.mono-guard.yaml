@@ -14,8 +14,6 @@ system:
   critFailEffect: jammed
   damage: 3d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Monowire, One Handed Exotic Heavy Melee Weapon.</p>
       <p>Can apply multiple Critical Injuries.</p>

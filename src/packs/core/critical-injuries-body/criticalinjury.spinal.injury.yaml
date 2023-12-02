@@ -7,8 +7,6 @@ name: Spinal Injury
 system:
   deathSaveIncrease: true
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Next turn: No action, move only.</p>
   favorite: false

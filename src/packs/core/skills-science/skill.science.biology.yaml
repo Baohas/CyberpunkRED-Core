@@ -12,9 +12,9 @@ system:
   difficulty: typical
   favorite: false
   level: 0
+  skillType: science
   source:
     book: Core
     page: 83
   stat: int
-  skillType: science
 type: skill

@@ -11,8 +11,6 @@ system:
     concealable: true
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A very sticky grenade. Creates a sticky web that entangles target. Must be

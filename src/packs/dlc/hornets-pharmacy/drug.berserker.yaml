@@ -12,8 +12,6 @@ system:
     isConcealed: false
   consumed: None
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p><strong>Primary Effect</strong></p>
       <p>Dose lasts for 10 Minutes.</p>

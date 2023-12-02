@@ -45,8 +45,6 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         They can get anyone anything, as long as the price is right. Using their charm

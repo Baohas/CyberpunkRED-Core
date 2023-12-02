@@ -12,8 +12,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Unique form of ammunition for the Air Pistol. Provides specialized scent

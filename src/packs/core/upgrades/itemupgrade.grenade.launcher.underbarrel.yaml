@@ -14,8 +14,6 @@ system:
     isConcealed: false
   damage: 6d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Functions like a standard grenade launcher, but with a magazine size of 1.

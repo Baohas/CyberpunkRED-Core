@@ -14,8 +14,6 @@ system:
   critFailEffect: jammed
   damage: 6d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Memory chip, but explosive when plugged into Neuralware.</p>
   dvTable: ""

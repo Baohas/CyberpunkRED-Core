@@ -13,8 +13,6 @@ system:
   core: false
   damage: 4d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A popout Cyberarm chainsaw with integreated exhaust port. Can be deployed and

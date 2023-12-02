@@ -13,8 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>An elogated saddle, gaining a seat for a passenger.</p>
   dvTable: ""

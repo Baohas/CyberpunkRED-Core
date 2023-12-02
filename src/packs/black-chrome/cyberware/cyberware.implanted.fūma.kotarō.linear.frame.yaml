@@ -15,8 +15,6 @@ system:
   core: false
   damage: 3d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <ul>
         <li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li>
@@ -60,7 +58,6 @@ system:
   isElectronic: true
   isFoundational: true
   isRanged: false
-  isUpgraded: false
   isWeapon: false
   magazine:
     max: 0

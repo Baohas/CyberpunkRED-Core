@@ -15,8 +15,6 @@ system:
   critFailEffect: jammed
   damage: 5d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>An all-purpose shotgun. +1 to Attack.</p>
   dvTable: DV Shotgun (Slug)

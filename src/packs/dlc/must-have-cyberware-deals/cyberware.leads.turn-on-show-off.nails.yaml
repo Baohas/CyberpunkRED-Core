@@ -14,8 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Customizable illuminated nail for each fingertip. Includes pen tools for

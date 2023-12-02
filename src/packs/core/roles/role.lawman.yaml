@@ -9,8 +9,6 @@ system:
   bonusRatio: 1
   bonuses: []
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Renegade defenders, corporate strike teams, or the last remnants of a

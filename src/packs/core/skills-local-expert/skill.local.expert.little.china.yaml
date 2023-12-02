@@ -12,9 +12,9 @@ system:
   difficulty: typical
   favorite: false
   level: 0
+  skillType: localExpert
   source:
     book: Core
     page: 135
   stat: int
-  skillType: localExpert
 type: skill

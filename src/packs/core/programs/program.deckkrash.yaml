@@ -12,8 +12,6 @@ system:
     standard: "0"
   def: 0
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Forces Netrunner to Jack Out unsafely.</p>
   favorite: false

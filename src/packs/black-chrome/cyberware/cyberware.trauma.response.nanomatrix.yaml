@@ -13,8 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Can fully repair skinweave or subdermal armor once a day.</p>
   dvTable: ""

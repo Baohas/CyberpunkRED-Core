@@ -14,8 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Tune into CitiNet radio stations or play your locally saved music.</p>
   dvTable: ""

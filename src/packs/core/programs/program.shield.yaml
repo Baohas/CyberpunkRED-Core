@@ -12,8 +12,6 @@ system:
     standard: 1d6
   def: 0
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         The first successful brain damage attack from a Non-Black ICE Program is

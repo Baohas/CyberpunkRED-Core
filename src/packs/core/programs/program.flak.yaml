@@ -12,8 +12,6 @@ system:
     standard: 1d6
   def: 0
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Non-Black ICE attacks against you are reduced to 0 while Rezzed. Only 1 copy

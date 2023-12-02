@@ -11,8 +11,6 @@ system:
     isConcealed: false
   consumed: None
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>MedTech pharmaceutical.</p>
       <p>

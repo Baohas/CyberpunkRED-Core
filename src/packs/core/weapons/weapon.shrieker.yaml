@@ -14,8 +14,6 @@ system:
   critFailEffect: jammed
   damage: "0"
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear

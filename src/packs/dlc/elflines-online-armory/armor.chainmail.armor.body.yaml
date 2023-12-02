@@ -12,8 +12,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Armor made up of innumerable metal rings. -2 to REF, DEX, and MOVE.</p>
   equipped: owned

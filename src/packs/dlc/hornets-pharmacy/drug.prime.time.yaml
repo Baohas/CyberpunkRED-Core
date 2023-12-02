@@ -13,8 +13,6 @@ system:
     isConcealed: false
   consumed: Prime Time
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p><strong>Primary Effect</strong></p>
       <p>Dose last 4 Hours.</p>

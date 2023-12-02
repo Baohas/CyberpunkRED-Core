@@ -15,8 +15,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Chipware.</p>
       <p>Enhances memorization. +2 Concentration while installed.</p>

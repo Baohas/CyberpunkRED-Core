@@ -14,8 +14,6 @@ system:
     isConcealed: false
   consumed: Synthcoke Primary
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p><strong>Primary Effect</strong></p>
       <p>Dose lasts 4 hours.</p>

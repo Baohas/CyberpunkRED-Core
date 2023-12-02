@@ -14,8 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Internal Agent with retractable screen on the user&rsquo;s forearm. Requires a

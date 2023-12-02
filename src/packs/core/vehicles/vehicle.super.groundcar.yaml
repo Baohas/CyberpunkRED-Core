@@ -9,8 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         An expensive, exotic CHOOH<sup>2</sup>-powered sportscar. It is capable of

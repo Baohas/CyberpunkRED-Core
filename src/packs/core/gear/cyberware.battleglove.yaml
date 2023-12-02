@@ -13,8 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         An exotic heavy gauntlet, that covers your hand and forearm. Provides three

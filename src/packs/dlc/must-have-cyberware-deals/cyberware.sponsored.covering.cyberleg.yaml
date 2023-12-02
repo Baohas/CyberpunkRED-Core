@@ -13,8 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Earn 20eb monthly by sporting a light-up advertisement on your Cyberleg. User

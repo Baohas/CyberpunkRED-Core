@@ -13,8 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A foldable bulletproof shield that can be drawn or stowed easily. Can't hold

@@ -9,8 +9,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>A simple bicycle. It's speed is based on the riders' BODY.</p>
       <table style="width: 100%; height: 76px" border="1">

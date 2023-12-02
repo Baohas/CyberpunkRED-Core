@@ -14,8 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A soviet cybernetical replacement arm. Comes with a free hand pre-installed.

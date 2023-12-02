@@ -12,8 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Uses biometrics to lock the cyberdeck. Requires

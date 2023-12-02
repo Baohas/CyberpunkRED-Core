@@ -14,8 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A biking glove that comes with a subdermal grip pre-installed* which requires
@@ -35,7 +33,6 @@ system:
     roll: "0"
     static: 0
   installLocation: notApplicable
-  installedIn: ""
   installedItems:
     allowed: true
     allowedTypes:
@@ -46,14 +43,9 @@ system:
     usedSlots: 0
   isElectronic: true
   isFoundational: true
-  isInstalled: false
   isRanged: false
-  isUpgraded: false
   isWeapon: false
   magazine:
-    ammoData:
-      name: ""
-      uuid: ""
     max: 0
     value: 0
   price:
@@ -67,7 +59,6 @@ system:
     page: 37
   type: cyberArm
   unarmedAutomaticCalculation: true
-  upgrades: []
   usage: toggled
   usesType: magazine
   weaponSkill: Brawling

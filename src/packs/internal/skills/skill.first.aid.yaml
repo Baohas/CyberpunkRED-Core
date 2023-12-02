@@ -12,9 +12,9 @@ system:
   difficulty: typical
   favorite: false
   level: 2
+  skillType: generic
   source:
     book: Core
     page: 141
   stat: tech
-  skillType: generic
 type: skill

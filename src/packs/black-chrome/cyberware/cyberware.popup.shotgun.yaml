@@ -15,8 +15,6 @@ system:
   core: false
   damage: 5d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A concealable shotgun. Comes with a smartgun link pre-installed*. Can't hold

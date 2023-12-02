@@ -12,8 +12,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Fireproof flak armor with a built in gas mask and 30 minutes of oxygen in a

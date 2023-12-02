@@ -14,8 +14,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         High fashion Cyberlegs with integrated Talon Foot blades in each heel. Blades

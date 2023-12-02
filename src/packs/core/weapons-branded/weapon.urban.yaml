@@ -14,8 +14,6 @@ system:
   critFailEffect: jammed
   damage: 8d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Bring out the big guns. This rocket launcher will do some damage.</p>
   dvTable: DV Rocket Launcher

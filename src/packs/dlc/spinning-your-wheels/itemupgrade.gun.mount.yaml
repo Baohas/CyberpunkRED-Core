@@ -12,8 +12,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         A system to attach an Assault Rifle, a Heavy SMG or a Shotgun on the

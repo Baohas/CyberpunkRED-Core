@@ -14,8 +14,6 @@ system:
     isConcealed: false
   damage: 5d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Functions like a standard shotgun, but with a magazine size of 2. Requires 2

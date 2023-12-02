@@ -14,8 +14,6 @@ system:
     isConcealed: false
   consumed: Piranha Smash Primary
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         Looks like smash but it's smash with a lime flavor. And a lower risk of

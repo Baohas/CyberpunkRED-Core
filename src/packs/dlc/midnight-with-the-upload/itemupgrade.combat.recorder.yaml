@@ -13,8 +13,6 @@ system:
     isConcealed: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Real-world Combat data is invaluable for Black ICE development.</p>
       <p>

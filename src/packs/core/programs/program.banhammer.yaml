@@ -12,8 +12,6 @@ system:
     standard: 3d6
   def: 0
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>Deals 3d6 REZ to non-Black ICE or 2d6 Rez damage to Black ICE.</p>
   favorite: false

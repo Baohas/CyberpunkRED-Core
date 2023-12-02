@@ -13,8 +13,6 @@ system:
   core: false
   damage: 1d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>The leg and installed options are not affected by EMP effects.</p>
   dvTable: ""

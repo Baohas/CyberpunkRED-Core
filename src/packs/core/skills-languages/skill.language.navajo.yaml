@@ -12,9 +12,9 @@ system:
   difficulty: typical
   favorite: false
   level: 4
+  skillType: language
   source:
     book: Core
     page: 45
   stat: int
-  skillType: language
 type: skill

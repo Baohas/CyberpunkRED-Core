@@ -11,8 +11,6 @@ system:
     concealable: false
     isConcealed: false
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>A small wasp-shaped drone designed for silent assassinations.</p>
       <p>Stats: 6 MOVE - 7SP - 10HP.</p>

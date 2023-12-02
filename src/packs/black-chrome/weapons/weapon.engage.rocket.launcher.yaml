@@ -14,8 +14,6 @@ system:
   critFailEffect: jammed
   damage: 8d6
   description:
-    chat: ""
-    unidentified: ""
     value: |
       <p>
         The GunMart Engage Rocket Launcher is a Poor Quality Exotic Rocket Launcher.
