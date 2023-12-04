@@ -1,11 +1,10 @@
 /* eslint-disable class-methods-use-this */
-/* global Hooks dragRuler Babele game */
-import LOGGER from "../utils/cpr-logger.js";
+/* global Hooks dragRuler game */
+import LOGGER from "../../utils/cpr-logger.js";
 
-const externalHooks = () => {
+const InitializeDragRulerIntegration = () => {
   /**
-   * The cprSpeedProvider Hook is provided for integration with the Drag Ruler
-   * module
+   * DragRuler Module Integration
    * https://github.com/manuelVo/foundryvtt-drag-ruler/
    *
    * @public
@@ -38,14 +37,6 @@ const externalHooks = () => {
 
     dragRuler.registerSystem(game.system.id, cprSpeedProvider);
   });
-  Hooks.on("init", () => {
-    if (
-      game.modules.get("babele") !== undefined &&
-      game.modules.get("babele")?.active
-    ) {
-      Babele.get().setSystemTranslationsDir("babele");
-    }
-  });
 };
 
-export default externalHooks;
+export default InitializeDragRulerIntegration;
