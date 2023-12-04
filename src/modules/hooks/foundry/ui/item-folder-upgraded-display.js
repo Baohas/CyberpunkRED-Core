@@ -1,6 +1,6 @@
 /* global $ Hooks game */
-import LOGGER from "../utils/cpr-logger.js";
-import SystemUtils from "../utils/cpr-systemUtils.js";
+import LOGGER from "../../../utils/cpr-logger.js";
+import SystemUtils from "../../../utils/cpr-systemUtils.js";
 
 /**
  * This function is the thing that actually puts the list together in `prepareSubList()`. It works
@@ -41,8 +41,10 @@ function recursiveHTML(parentItem, topLevelId, level = 0) {
   let listItem = "";
   // For each installed item, create an <li> element with information about that item.
   for (const childItem of installedItems) {
-    listItem += `<li class="item flexrow" data-row-level=${level} data-top-level-parent="${topLevelId}"
-                       data-item-id="${childItem.id}">`;
+    listItem += `<li class="item flexrow"`;
+    listItem += `    data-row-level="${level}"`;
+    listItem += `    data-top-level-parent="${topLevelId}"`;
+    listItem += `    data-item-id="${childItem.id}">`;
     listItem += `  <a class="name item-view flex-center">${childItem.name}</a>`;
     listItem += `</li>`;
     // If the child item has its own installed items, call this function on the child item
@@ -161,11 +163,9 @@ function _toggleInstalledVisibility(event) {
 }
 
 /**
- * This is where we inject HTML and listeners for the item directory. The content we inject displays
+ * Inject HTML and listeners for the Item Tab directory list. The content we inject displays
  * an items install tree.
  *
- * Note: Hooks have a set of args that are passed to them from Foundry. Even if we do not use them here,
- * we document them all for clarity's sake and to make future development/debugging easier.
  */
 const renderItemDirHooks = () => {
   Hooks.on("renderItemDirectory", (_, html) => {
@@ -208,4 +208,5 @@ const renderItemDirHooks = () => {
     });
   });
 };
+
 export default renderItemDirHooks;
