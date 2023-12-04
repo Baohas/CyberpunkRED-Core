@@ -8,7 +8,6 @@ import LOGGER from "../utils/cpr-logger.js";
  * before this change anyway
  */
 const hooksImports = [
-  "ui.js",
   "actor/check-emp-and-luck.js",
   "actor/set-default-image.js",
   "actor/sync-black-ice-with-program.js",
@@ -23,7 +22,10 @@ const hooksImports = [
   "chat/parse-red-command.js",
   "external/babele.js",
   "external/drag-ruler.js",
+  "external/popout.js",
   "foundry/delete-folder.js",
+  "foundry/ui/pause-animation.js",
+  "foundry/ui/theme.js",
   "hotbar/generate-item-macro.js",
   "item/set-default-image.js",
   "item/role/update-sub-roles.js",
