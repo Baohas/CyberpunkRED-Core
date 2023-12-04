@@ -8,7 +8,6 @@ import LOGGER from "../utils/cpr-logger.js";
  * before this change anyway
  */
 const hooksImports = [
-  "tokenhud.js",
   "ui.js",
   "actor/check-emp-and-luck.js",
   "actor/set-default-image.js",
@@ -29,6 +28,7 @@ const hooksImports = [
   "item/set-default-image.js",
   "item/role/update-sub-roles.js",
   "foundry/ui/item-folder-upgraded-display.js",
+  "token/add-dv-token-hud.js",
   "token/close-unlinked-sheet-on-delete.js",
   "token/warn-on-moving-locked-container.js",
 ];
