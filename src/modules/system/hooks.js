@@ -8,7 +8,6 @@ import LOGGER from "../utils/cpr-logger.js";
  * before this change anyway
  */
 const hooksImports = [
-  "actor-sheet.js",
   "chat.js",
   "external-modules.js",
   "folder.js",
@@ -23,6 +22,11 @@ const hooksImports = [
   "actor/set-default-image.js",
   "actor/sync-black-ice-with-program.js",
   "actor/sync-tracked-armor.js",
+  "actor/update-role-from-item.js",
+  "actor/update-role-on-item-delete.js",
+  "actor/sheet/persist-section-views.js",
+  "actor/sheet/resize-name.js",
+  "actor/sheet/resize-type-tag.js",
 ];
 
 export default async function registerHooks() {
