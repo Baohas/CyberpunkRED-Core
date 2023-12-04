@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 /* global Hooks game Macro fromUuidSync */
-import LOGGER from "../utils/cpr-logger.js";
+import LOGGER from "../../utils/cpr-logger.js";
 
 /**
  * Hooks have a set of args that are passed to them from Foundry. Even if we do not use them here,

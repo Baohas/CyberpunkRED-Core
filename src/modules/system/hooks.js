@@ -8,7 +8,6 @@ import LOGGER from "../utils/cpr-logger.js";
  * before this change anyway
  */
 const hooksImports = [
-  "hotbar.js",
   "item.js",
   "item-sheet.js",
   "render-item-directory.js",
@@ -30,6 +29,7 @@ const hooksImports = [
   "external/babele.js",
   "external/drag-ruler.js",
   "foundry/delete-folder.js",
+  "hotbar/generate-item-macro.js",
 ];
 
 export default async function registerHooks() {
