@@ -1,26 +1,46 @@
 <!-- markdownlint-disable MD024 -->
 
-# Changelog
+# Журнал изменений
 
-## Version 0.89.0
+## Версия 0.89.0
 
-### Changes
+### Нововведения
 
-- Add Quality to Weapons/Cyberdecks
+- Добавлены библиотеки для следующий категорий:
+  - Навыки (Знание местности)
+  - Навыки (Наука)
+  - Навыки (Боевые искусства)
+  - Skills (Play Instrument)
+- Add a check to characters to see if they are considered "Hardened"
+  - Based on the rules in Danger Gal Dossier pg. 150
+  - Displays an overlay Icon on the Character Sheet Image which lists the reasons a character is considered hardened when hovered
+  - Programmatically available under the `system.derivedStats.isHardened` datapoint
 
-### Bug Fixes
+### Изменения
 
-- #737 - изменение отслеживание брони при её снятии. Решение, схожее с проблемой 917.
-- #793 - добавлены всплывающие подсказки для каждого параметра и навыка.
-- #917 - исправлено отслеживание брони после удаления, а зезда «Пересинхр» теперь называется «Вкл./Выкл. отслеживание». Соответствующая шкала удалена. Пользователям необходимо перенастроить отображение шкал ресурсов.
-- #923 - rebuilt faulty DV rolltables to fix missing distances and inaccurate distances for different weapon types.
-- #925 - scrollbar re-added for main windows
-- #926, 927 - изменены описания луков и арбалетов. Теперь они не противоречивы и опрятнее выглядят.
-- #653 - Enable support for dddice
+- Оружие на вкладке боя теперь распределено по категориям дальнего и ближнего боя
 
-## Version 0.88.2
+### Нововведения
 
-### Changes
+- Добавлено качество для оружия и кибердек
+- #653 - Добавлена поддержка dddice
+- Adjust font size of Handle/Name in Character sheets if the name overflows
+- Skill Items now have a `skillType` for programmatic access
+- Remove `Science`, `Play Instrument`, `Martial Arts` skills
+  - These will remain on existing Characters
+  - There will not be added to new Characters
+- Rename default `Local Expert` skill to `Local Expert (Your Home)`
+
+### Исправления
+
+- #933 - Fix multiple compendium errors/missing values, thanks @Alexander Fokin
+- #950 - Bolded DV checks in various items of the compendia
+- #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
+- Added several small updates to descriptions to understand various items better
+
+## Версия 0.88.2
+
+### Изменения
 
 - Switched to using DataModels to enforce data types (#316, #723)
 - Add setting to disable warning when rolling damage without targets
@@ -36,7 +56,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 \*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
 
-### Bug Fixes
+### Исправления
 
 - #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 - Fix weapons moved to stash not applying correct amount of ammo stack
@@ -66,7 +86,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 **WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
 
-### Bug Fixes
+### Исправления
 
 - Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
 
@@ -85,7 +105,7 @@ This means any instances where you have dragged an item from a compendium into a
 - Add CSS theming to all TextEditor instances (Notes, Descriptions, etc.)
 - Support for editing Active Effects on owned items
 
-### Bug Fixes
+### Исправления
 
 - A couple of minor CSS fixes
 - Facedown rolls correctly include reputation value.
@@ -112,13 +132,13 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.6
 
-### Bug Fixes
+### Исправления
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
 ## Version 0.87.5
 
-### Bug Fixes
+### Исправления
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
@@ -136,7 +156,7 @@ This means any instances where you have dragged an item from a compendium into a
     - Default: false
   - If enabled we will migrate Module provided compendia
 
-### Bug Fixes
+### Исправления
 
 - Fix some typos/wording in BC+ items
 - Add CSS overrides for Dice Tray module buttons
@@ -155,7 +175,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.3
 
-### Bug Fixes
+### Исправления
 
 - #808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - #812 - Some roles were missing the bonuses data point as an empty array.
@@ -178,7 +198,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.2
 
-### Bug Fixes
+### Исправления
 
 - Fix Programs having `undefined` before their name in character sheets
 - Fix call to `cprBrandName` in Container sheet
@@ -190,7 +210,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.1
 
-### Bug Fixes
+### Исправления
 
 Fix broken migrations
 
@@ -357,7 +377,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 - Removed duplicated suffixes on ammo selection
 - Clicking reload when you are out of an ammo type will bring up the switch ammo dialogue
 
-### Bug Fixes
+### Исправления
 
 - Fixed a capitalisation issue in the medical grade cyber limbs. Thanks ButchAmy!
 - Fixed incorrect page reference numbers for medical grade cyber limbs
@@ -405,7 +425,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 
 ## Version 0.86.1 | Date: 2023-02-05
 
-### Bug Fixes
+### Исправления
 
 - #683 - Dragging a World Item which has another World Items installed in it and THAT item also has another world item installed in it (Cyberarm->Cyberdeck (Hardwired)->Cyberdeck) results in two cyberdecks being created on the actor. This would exponentiate every level of installation if there were more.
 - Add text for missing localized string `CPR.messages.installInvalidType`
@@ -485,7 +505,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - Set the price of several unpurchasable items to 0
 - Removed the poor quality underbarrel grenade launcher, as it isn't actually a distinct item from the regular underbarrel grenade launcher
 
-### Bug Fixes
+### Исправления
 
 - #621 - Add ROF to Cyberware Weapons and Weapon Upgrade Weapons on Mook sheet
 - ROF now uses localized strings
@@ -558,7 +578,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - Where weapon features aren't currently supported, a note has been added to that weapons description
 - Changed the magazine upgrades to use `override` instead of `modifier`
 
-### Bug Fixes
+### Исправления
 
 - Aligned the second column on the gear tab so it is not all over the place
 - Fixed missing thumbnail image for the included Dystopian City Junction map
@@ -577,7 +597,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
-### Bug Fixes
+### Исправления
 
 - Fix HTML Stripping in item descriptions on character sheets
 - Fix Create/Edit Role Ability dialog not submitting.
@@ -615,7 +635,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - #555 - Create Elflines Online Compendium as a Compendium not a macro
 - The Role block in the left pane of the character sheet is now just a simple text box. Active NET Role is now set from the NET section of the Fight tab. This should be a lot clearer to users and require less maintenance.
 
-### Bug Fixes
+### Исправления
 
 - #553 - Macros can be dragged to the hotbar
 - #546 - Techscanner now properly gives bonuses to Cybertech and Weaponstech
@@ -631,7 +651,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.83.1 (Hotfix) | Date: 2022-10-23
 
-### Bug Fixes
+### Исправления
 
 - #529 - Fix non-shop containers having the wrong button
 - #536 - Spelling mistake: "Ememies" (English)
@@ -660,7 +680,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Mook portrait is always shown
 - A few minor UI improvements to the Mook sheet
 
-### Bug Fixes
+### Исправления
 
 - #476 - Vehicles cost can now be edited
 - Cyberware & Upgrade templates still had some references to .data causing the shim to fire
@@ -680,7 +700,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Foundry V10 Compatibility
 - Spanish translation! Thank you ZRAAA78!
 
-### Bug Fixes
+### Исправления
 
 - #473 - Fashionware foundational item not migrated to v10
 - #472 - EMP & Luck Values/Max greater than 9 mess with the formatting. If a user enters a value > 9, a warning banner is shown letting them know there will be formatting issues and the formatting changes to make it more obvious something is amiss.
@@ -709,7 +729,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.3 (Hotfix) | Date: 2022-08-02
 
-### Bug Fixes
+### Исправления
 
 - When installing cyberware and selecting `None` for the Humanity Loss, the maximum humanity was not being decremented forcing one to re-calculate it using the calculator.
 - Corrected an issue with Compendium Migration where `Scene` type Compendia was not properly being migrated.
@@ -806,7 +826,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - The _quality_ field has been removed from items (weapons, cyberdecks and vehicles) to avoid confusion about whether to change values in other fields. You can still use the name and other fields (such at attack modifier) to express excellent quality items
   - Some item types (weapons, vehicles) no longer "stack." They do not have an amount field any more
 
-### Bug Fixes
+### Исправления
 
 - Corrected an issue when a player did not have proper permissions on a vendor, the purchase would fail, but the player would still be charged for the item
 - Fixed the ability to delete items from the Mook sheet
@@ -871,7 +891,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - All items on a mook can be dragged between sheets, allowing the GM to "loot" mooks on behalf of player characters.
   - Several changes to the GitLab README to assist with introducing new developers to the system (Join Us!)
 
-### Bug Fixes
+### Исправления
 
 - Rubber ammunition no longer ablates armor and will not reduce an actor to below 1 hit points per RAW.
 - Fixed #286 - The item data was not being passed when dragging from a Mook sheet causing the drag/drop to fail. This has been resolved.
@@ -927,7 +947,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Feature Request #296: Exotic Weapons from the Core Rulebook are now present in the Weapons Compendium. The Battleglove has been placed into Cyberware Compendium, and Battery Pack has been placed into the Ammo Compendium.
 - Feature Request #319: Item Upgrades are now accessible on a Mook sheet. This includes support for Underbarrel weapons which will display as a usable weapon.
 
-### Bug Fixes
+### Исправления
 
 - Fixed #292: Attempting to delete installed cyberware is prevented now, as it can leave the actor in a broken state.
 - Fixed #294: Cybersnake and Vampyres cyberware items from the compendium now display their weapon stats in the fight tab.
@@ -1008,7 +1028,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - The container sheet inventory will now stretch with the window length vertically
 - Many, many little tweaks and improvements to the French translation (thank you @h.gelis and @thevincekun)
 
-### Bug Fixes
+### Исправления
 
 - Fixed #263: New containers now show infinite stock option, as they are initialized as a shop.
 - Fix #265, #266, #267: Gear tab now remembers scroll position.
@@ -1112,7 +1132,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Default images added for compendia. Images from <https://game-icons.net>. They can be accessed from the file browser in "systems/cyberpunk-red-core/icons/compendium/default".
 - The French translation has been updated to account for all strings in this release. (Thank you VinceKun!)
 
-### Bug Fixes
+### Исправления
 
 - Borgware items (Shoulder Mount / Implanted Frames / MultiOptic Mount / Shoulder Array) are now classified as foundational cyberware and do not require a missing foundational item.
 - Code added so New Worlds will not immediately go through migration
@@ -1184,7 +1204,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added localization to places where it was not implemented. (!325)
 - Removed "Core" tag from Critical Injury and DV compendia (which should be imported) to make them distinct from "Skills - Core" and "Cyberware - Core" (which should NOT be imported). (!379)
 
-### Bug Fixes
+### Исправления
 
 - fixed #49 - The equipped glyph now takes the same space as the other two
 - fixed #158 - Stat padding fixed for LUCK and EMP, so that they have the same font size as the others
@@ -1257,7 +1277,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added a field for a static attack modifier on weapons.
 - Added a warning on cyberware install to remind users that installing cyberware also deducts from maximum humanity.
 
-### Bug Fixes
+### Исправления
 
 - 'Basic' skills (the ones that all characters have points in) now display as bold again (no issue to reference)
 - Token name now correctly displays in chat when rolling from a macro.
@@ -1301,7 +1321,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Foundation for roll glyphs embedded into chat cards implemented.
 - Many changes and fixes for data migration during updates.
 
-### Bug Fixes
+### Исправления
 
 - Applying status condition icons no longer fails.
 - Custom pause animation no longer disappears on unpause/re-pause.

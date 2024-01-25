@@ -1,7 +1,7 @@
 {
   "label": "Le garage de Woodchipper",
   "mapping": {
-    "dvTable": "system.dvTable"
+    "dvTable": "system.tableSD"
   },
   "entries": {
     "M-02 Rounds": {

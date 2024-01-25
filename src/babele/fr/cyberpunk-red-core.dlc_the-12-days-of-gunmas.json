@@ -1,7 +1,7 @@
 {
   "label": "Le Noël des punks à flingues",
   "mapping": {
-    "dvTable": "system.dvTable"
+    "dvTable": "system.tableSD"
   },
   "entries": {
     "Nova Model 757 Rounds": {

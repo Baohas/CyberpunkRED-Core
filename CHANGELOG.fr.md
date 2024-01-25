@@ -4,19 +4,39 @@
 
 ## Version 0.89.0
 
+### Nouvelles fonctionnalités
+
+- Add Compendia for:
+  - Skills (Local Expert)
+  - Skills (Science)
+  - Skills (Martial Arts)
+  - Skills (Play Instrument)
+- Add a check to characters to see if they are considered "Hardened"
+  - Based on the rules in Danger Gal Dossier pg. 150
+  - Displays an overlay Icon on the Character Sheet Image which lists the reasons a character is considered hardened when hovered
+  - Programmatically available under the `system.derivedStats.isHardened` datapoint
+
 ### Att/round
 
+- Weapons in fight tab now categorized by Ranged/Melee
+
+### New Features
+
 - Add Quality to Weapons/Cyberdecks
+- #653 - Enable support for dddice
+- Adjust font size of Handle/Name in Character sheets if the name overflows
+- Skill Items now have a `skillType` for programmatic access
+- Remove `Science`, `Play Instrument`, `Martial Arts` skills
+  - These will remain on existing Characters
+  - There will not be added to new Characters
+- Rename default `Local Expert` skill to `Local Expert (Your Home)`
 
 ### Bug Fixes
 
-- #737 - change equip behavior to untrack armor type, similar to fix for issue 917.
-- #793 - added tooltips for each stat and skill
-- #917 - fix armor remaining tracked after delete and updated 'resync' star to be 'track/untrack' now for armor, removing the appropriate bar. User will still need to adjust resource bar tracker if armor type is no longer desired to be tracked.
-- #923 - rebuilt faulty DV rolltables to fix missing distances and inaccurate distances for different weapon types.
-- #925 - scrollbar re-added for main windows
-- #926, 927 - change descriptions for bows/crossbows to be more clear on rules and cleaned up structure
-- #653 - Enable support for dddice
+- #933 - Fix multiple compendium errors/missing values, thanks @Alexander Fokin
+- #950 - Bolded DV checks in various items of the compendia
+- #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
+- Added several small updates to descriptions to understand various items better
 
 ## Version 0.88.2
 
@@ -54,7 +74,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 - Fix migration issue where AEs on stats were causing them to be incorrectly recalculated.
 - Fix translation issues with translated skills via Babele
 
-### Nouvelles fonctionnalités
+### New Features
 
 - The Changelog is now a Journal allowing:
   - The entire Changelog to be shown

@@ -1,7 +1,7 @@
 {
   "label": "Armes",
   "mapping": {
-    "dvTable": "system.dvTable"
+    "dvTable": "system.tableSD"
   },
   "entries": {
     "Air Pistol": {
@@ -38,17 +38,17 @@
     },
     "Bow (Excellent)": {
       "name": "Arc +",
-      "description": "<p>An excellent quality bow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
+      "description": "<p>Un arc qualité excellente, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Bow (Poor)": {
       "name": "Arc -",
-      "description": "<p>A poor quality bow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
+      "description": "<p>Un arc qualité mauvaise, rechargement compris dans l'action d'attaque.</p><p>Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Bow": {
       "name": "Arc",
-      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>",
+      "description": "<p>Un arc revitalisé, rechargement compris dans l'action d'attaque.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Chainsaw (Excellent)": {
@@ -77,17 +77,17 @@
     },
     "Crossbow (Excellent)": {
       "name": "Arbalète +",
-      "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
+      "description": "<p>Une arbalète qualité excellente, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Crossbow (Poor)": {
       "name": "Arbalète -",
-      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
+      "description": "<p>Une arbalète moderne qualité mauvaise, rechargement compris dans l'attaque.</p><p>Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Crossbow": {
       "name": "Arbalète",
-      "description": "<p>A standard crossbow, reloaded as part of an Attack action.</p>",
+      "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Crowbar (Excellent)": {

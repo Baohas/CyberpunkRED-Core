@@ -1,7 +1,7 @@
 {
   "label": "Améliorations",
   "mapping": {
-    "dvTable": "system.dvTable"
+    "dvTable": "system.tableSD"
   },
   "entries": {
     "Armored Chassis": {

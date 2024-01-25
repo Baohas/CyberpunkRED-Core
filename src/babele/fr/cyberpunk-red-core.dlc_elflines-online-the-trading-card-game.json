@@ -1,7 +1,7 @@
 {
   "label": "Elflines Online le jeu de cartes à collectionner",
   "mapping": {
-    "dvTable": "system.dvTable"
+    "dvTable": "system.tableSD"
   },
   "entries": {
     "Elflines Online Playing Cards": {

@@ -1,7 +1,7 @@
 {
   "label": "Armurerie d'Elflines Online",
   "mapping": {
-    "dvTable": "system.dvTable"
+    "dvTable": "system.tableSD"
   },
   "entries": {
     "Arrow": {
