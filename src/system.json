@@ -69,6 +69,7 @@
         "dlc_night-city-weather",
         "dlc_spinning-your-wheels",
         "dlc_the-12-days-of-cybermas",
+        "dlc_the-12-days-of-gearmas",
         "dlc_the-12-days-of-gunmas",
         "dlc_woodchippers-garage"
       ]
@@ -459,6 +460,14 @@
       "type": "Item",
       "name": "dlc_the-12-days-of-cybermas",
       "path": "packs/dlc/the-12-days-of-cybermas",
+      "system": "cyberpunk-red-core",
+      "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
+    },
+    {
+      "label": "The 12 Days of Gearmas",
+      "type": "Item",
+      "name": "dlc_the-12-days-of-gearmas",
+      "path": "packs/dlc/the-12-days-of-gearmas",
       "system": "cyberpunk-red-core",
       "banner": "systems/cyberpunk-red-core/images/compendium-banner.webp"
     },
