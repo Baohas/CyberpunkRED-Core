@@ -7,12 +7,11 @@ name: Xtra-Dex Smart Glove
 system:
   ammoVariety: []
   attackmod: 0
-  brand: Dynalar
+  brand: Dynalar Technologies
   concealable:
     concealable: false
     isConcealed: false
   core: false
-  critFailEffect: jammed
   damage: 1d6
   description:
     value: |

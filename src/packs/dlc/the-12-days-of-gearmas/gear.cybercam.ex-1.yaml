@@ -6,7 +6,7 @@ img: >-
 name: Cybercam EX-1
 system:
   amount: 1
-  brand: Raven MicroCybernetics
+  brand: Raven Microcybernetics
   concealable:
     concealable: false
     isConcealed: false
