@@ -29,7 +29,7 @@ system:
     list: []
     slots: 0
     usedSlots: 0
-  isElectronic: false
+  isElectronic: true
   price:
     market: 500
   providesHardening: false
@@ -37,5 +37,5 @@ system:
   source:
     book: 12DoGear
     page: 2
-  usage: toggled
+  usage: carried
 type: gear

@@ -12,7 +12,10 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>Small Magnetic Speakers. Can play audio from a connected Agent.</p>
+      <p>
+        Small Magnetic Speakers. Can play audio from a connected Agent within
+        100m/yds.
+      </p>
   equipped: owned
   favorite: false
   installedItems:

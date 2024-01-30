@@ -20,10 +20,12 @@ system:
         Options and is treated as a
         @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular
         Finger Cyberhand} for the sake of installing the 5 supported Cyberfingers*.
+      </p>
+      <p>
         Requires Interface Plugs to access Cyberarm/Cyberfinger Options installed in
         the glove.
       </p>
-      <p><br />*Modular Finger Cyberhand must be added after Installation.</p>
+      <p>*Modular Finger Cyberhand must be added after Installation.</p>
   dvTable: ""
   favorite: false
   fireModes:

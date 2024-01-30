@@ -13,9 +13,9 @@ system:
   description:
     value: |
       <p>
-        Can scan an individual and provide a list of all installed Cyberware. Spits
-        out an error if a Hardened, Tech Upgraded, or Unique piece of Cyberware is
-        detected.
+        Can scan an individual within 2m/yds and provide a list of all installed
+        Cyberware, takes 1 minute. Spits out an error if a Hardened, Tech Upgraded, or
+        Unique piece of Cyberware is detected.
       </p>
   equipped: owned
   favorite: false
@@ -26,7 +26,7 @@ system:
     list: []
     slots: 0
     usedSlots: 0
-  isElectronic: false
+  isElectronic: true
   price:
     market: 1000
   providesHardening: false

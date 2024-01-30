@@ -13,8 +13,9 @@ system:
   description:
     value: |
       <p>
-        A Media presenting a story on a livestream while wearing the Cybercam EX-1
-        gains +1 Believability. This stacks with evidence based bonuses.
+        Head-mounted camera. A Media presenting a story on a livestream while wearing
+        the Cybercam EX-1 gains +1 Believability when using their role ability. This
+        stacks with evidence based bonuses.
       </p>
   equipped: owned
   favorite: false
@@ -25,7 +26,7 @@ system:
     list: []
     slots: 0
     usedSlots: 0
-  isElectronic: false
+  isElectronic: true
   price:
     market: 1000
   providesHardening: false

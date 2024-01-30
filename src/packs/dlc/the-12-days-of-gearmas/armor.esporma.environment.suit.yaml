@@ -17,11 +17,9 @@ system:
       <p>
         Armored Radiation Suit. Protects the wearer from Radiation and comes with an
         Oxygen Tank that lasts for 30 minutes which can be refilled by spending an
-        hour in clean air. Nanomachines
-        <span style="font-family: Jost"
-          >restore 1SP every hour SP isn't lost on the armor</span
-        >
+        hour in clean air.
       </p>
+      <p>Nanomachines restore 1SP every hour SP isn't lost on the armor</p>
   equipped: owned
   favorite: false
   headLocation:

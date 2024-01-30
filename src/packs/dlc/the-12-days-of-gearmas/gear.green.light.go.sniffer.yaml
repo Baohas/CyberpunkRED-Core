@@ -6,15 +6,16 @@ img: >-
 name: Green Light Go Sniffer
 system:
   amount: 1
-  brand: ""
+  brand: Hammered Industries
   concealable:
     concealable: false
     isConcealed: false
   description:
     value: |
       <p>
-        Substance Analyzer. Provides a green or red glow depending on if the substance
-        is clean or cut/mixed with another substance.
+        Chemical Substance Analyzer. Provides a green or red glow depending on if the
+        chemical substance (such as Street Drugs or Pharmaceuticals) is clean or
+        cut/mixed with another substance.
       </p>
   equipped: owned
   favorite: false
@@ -25,7 +26,7 @@ system:
     list: []
     slots: 0
     usedSlots: 0
-  isElectronic: false
+  isElectronic: true
   price:
     market: 100
   providesHardening: false

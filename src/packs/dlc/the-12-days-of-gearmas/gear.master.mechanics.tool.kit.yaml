@@ -35,5 +35,5 @@ system:
   source:
     book: 12DoGear
     page: 3
-  usage: toggled
+  usage: carried
 type: gear

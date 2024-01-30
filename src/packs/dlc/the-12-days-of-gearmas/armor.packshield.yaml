@@ -14,10 +14,17 @@ system:
     isConcealed: false
   description:
     value: |
+      <p>Businesswear Backpack Bulletproof Shield hybrid.</p>
       <p>
-        Businesswear Backpack Bulletproof Shield hybrid. Can carry items like a
-        Carryall, and be equipped in your hand like a shield. Only provides protection
-        when equipped in a hand.
+        Can carry items like a
+        @UUID[Compendium.cyberpunk-red-core.core_gear.Item.y2a4HDhIl7FlJyD7]{Carryall},
+        and be equipped in your hand like a shield.
+      </p>
+      <p>Only provides protection when equipped in a hand.</p>
+      <p>
+        Cannot be installed in
+        @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.I08f3hOEgAPNG4kJ]{Popup
+        Shield}.
       </p>
   equipped: owned
   favorite: false
