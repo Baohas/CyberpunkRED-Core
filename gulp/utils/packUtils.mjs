@@ -553,6 +553,7 @@ export default class PackUtils {
       delete data.author;
     }
 
+    // Cleanup flags we don't care about
     if ("flags" in data) {
       if ("exportSource" in data.flags) {
         delete data.flags.exportSource;
@@ -583,6 +584,9 @@ export default class PackUtils {
     // Delete Foundry keys we don't need
     //
 
+    // We don't use folders in our compendia preferring to have individual
+    // compendia per release as this provides more flexibility for GMs when it
+    // comes to showing/hiding the individual compendium form their game.
     if ("folder" in data) {
       delete data.folder;
     }
@@ -628,6 +632,11 @@ export default class PackUtils {
           const ammo = data.system.ammoVariety;
           const result = ammo.filter((i) => i !== "");
           data.system.ammoVariety = result;
+        }
+
+        // Remove critFailEffect if cyberware is not a weapon
+        if (data.type === "cyberware" && !data.system.isWeapon) {
+          delete data.system.critFailEffect;
         }
 
         // If an item should have effects
