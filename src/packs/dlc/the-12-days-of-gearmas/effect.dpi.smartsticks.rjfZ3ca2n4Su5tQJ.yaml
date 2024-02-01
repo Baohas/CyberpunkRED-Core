@@ -1,7 +1,7 @@
 _id: rjfZ3ca2n4Su5tQJ
-_key: "!items.effects!fBHsASP394A1IpzQ.rjfZ3ca2n4Su5tQJ"
+_key: "!items.effects!DH4W3aiKxj7aQA9D.rjfZ3ca2n4Su5tQJ"
 changes:
-  - key: bonuses.playInstrument
+  - key: bonuses.playInstrument(Drums)
     mode: 2
     priority: null
     value: "1"
