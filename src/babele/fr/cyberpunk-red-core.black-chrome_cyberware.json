@@ -6,175 +6,171 @@
   "entries": {
     "Airhypo Cyberfinger": {
       "name": "Cyberdoigt hypodair",
-      "description": "<p>Cyberdoigts qui contient un @UUID[Compendium.cyberpunk-red-core.gear.Th74cfC87RqEJKAb]{Airhypo}Ne peut être installé que sur une cybermain à doigts modulables (voir Black Chrome p. 24 pour plus de détails)</p>"
+      "description": "<p>\n  Cyberfinger that holds an Airhypo. Can only be installed on a modular finger\n  cyberhand.\n</p>\n"
     },
     "Ballpoint Cyberfinger": {
       "name": "Cyberdoigts stylo à bille",
-      "description": "<p>Cyberdoigt avec un stylo à bille à l'intérieur. Ne peut être installé que sur une cybermain à doigts modulables. (Voir Black Chrome page 24 pour plus de détails)</p>"
+      "description": "<p>\n  Cyberfinger with a ballpoint pen inside. Can only be installed on a modular\n  finger cyberhand.\n</p>\n"
     },
     "Budget Chipware Socket": {
       "name": "Support de puce économique",
-      "description": "<p>Une prise bon marché pour une seule installation de puce. Les dommages à la tête envoient la puce installée à 30 m de distance, la cassant potentiellement (voir Black Chrome p. 17 pour plus de détails).</p>"
+      "description": "<p>\n  A cheap socket for a single installation of chipware. Damage to the head sends\n  the installed chipware 30 m/yds away, potentially breaking it.\n</p>\n"
     },
     "Bullet Storage Cyberfinger": {
       "name": "Cyberdoigt Stockage de balles",
-      "description": "<p>Cyberdoigt pouvant être utilisé pour dissimuler deux balles de n'importe quel type. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 24 pour plus de détails)</p>"
+      "description": "<p>\n  Cyberfinger that can be used to conceal two rounds of ammunition of any type.\n  Can only be installed on a modular finger cyberhand.\n</p>\n"
     },
     "Dartgun Cyberfinger": {
       "name": "Cyberdoigt pistolet à fléchettes",
-      "description": "<p>Cyberdoigt contenant un @UUID[Compendium.cyberpunk-red-core.weapons.fSvkIl83Rsqd7O16]{Dartgun} dissimulé. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 24 pour plus de détails)</p>",
+      "description": "<p>\n  Cyberfinger that holds a concealed Dartgun. Can only be installed on a modular\n  finger cyberhand.\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Discount Cyberaudio Suite": {
       "name": "Kit cyberaudio économique",
-      "description": "<p>Une interface bon marché et encombrante pour une amélioration audio. (voir Black Chrome p. 17 pour plus de détails)</p>"
+      "description": "<p>A cheap and bulky interface for an audio enhancement.</p>\n"
     },
     "Explicit Memory Stimulator": {
       "name": "Stimulateur de mémoire précise",
-      "description": "<p>Puce. Améliore la mémorisation. +2 Concentration quand installée. (Voir Black Chrome p. 18 pour plus de détails)</p>"
+      "description": "<p>Chipware.</p>\n<p>Enhances memorization. +2 Concentration while installed.</p>\n"
     },
     "Extra-Jointed Cyberarm Upgrade": {
       "name": "Amélioration de cyberbras Extra-articulation",
-      "description": "<p>Améliore les articulations de cyberbras. Contorsion +2. (Voir Black Chrome p. 18 pour plus de détails)</p>"
+      "description": "<p>Enchances cyberarm articulation. +2 Contortionist.</p>\n"
     },
     "Extra-Jointed Cyberleg Upgrade": {
       "name": "Amélioration de cyberjambe Extra-articulation",
-      "description": "<p>Améliore les articulations de cyberjambe. Contorsion +2. (Voir Black Chrome p. 18 pour plus de détails)</p>"
+      "description": "<p>Enchances cyberleg articulation. +2 Contortionist.</p>\n"
     },
     "Flashbulb": {
       "name": "Lampe flash",
-      "description": "<p>Nécessite un cyberbras. L'utilisateur peut essayer d'aveugler quiconque dans un rayon de 25 m. (Voir Black Chrome p. 18 pour plus de détails)</p>"
+      "description": "<p>Requires cyberarm. User can attempt to blind anyone within 25m/yds.</p>\n"
     },
     "Flashlight Cyberfinger": {
       "name": "Cyberdoigt lampe de poche",
-      "description": "<p>Cyberdoigt contenant un @UUID[Compendium.cyberpunk-red-core.gear.spgehgLv94vrH4Zo]{Flashlight} dissimulé. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 24 pour plus de détails)</p>"
+      "description": "<p>\n  Cyberfinger that holds a concealed Flashlight. Can only be installed on a\n  modular finger cyberhand.\n</p>\n"
     },
     "Hardened Shielding (Borgware)": {
       "name": "Bouclier renforcé (cyborgimplant)",
-      "description": "<p>Les cyborgimplants installés ne sont pas affectés par les effets IEM (voir Black Chrome p. 17 pour plus de détails.)</p>"
+      "description": "<p>Borgware.</p>\n<p>This is installed to is not affected by EMP effects.</p>\n"
     },
     "Hardened Shielding (Cybereye)": {
       "name": "Bouclier renforcé (cyberoptique)",
-      "description": "<p>L'œil et les options installés ne sont pas affectés par les effets IEM. (Voir Black Chrome p. 19 pour plus de détails)</p>"
+      "description": "<p>The eye and installed options are not affected by EMP effects.</p>\n"
     },
     "Hardened Shielding (Internal)": {
       "name": "Bouclier renforcé (interne)",
-      "description": "<p>Cyberimplant interne. Tous les cyberimplants internes ne sont pas affectés par les effets IEM (voir Black Chrome p. 20 pour plus de détails.)</p>"
+      "description": "<p>Internal Cyberware.</p>\n<p>All internal cyberware is not affected by EMP effects.</p>\n"
     },
     "Heuristic Health Monitor": {
       "name": "Moniteur Heuristique de Santé",
-      "description": "<p>Nécessite un biomoniteur. Pour voir les PS en un coup d'œil. (Voir Black Chrome p. 19 pour plus de détails)</p>"
+      "description": "<p>Requires biomonitor. Can know HP at a glance.</p>\n"
     },
     "Homing Tracer Cyberfinger": {
       "name": "Cyberdoigt traceur",
-      "description": "<p>Cyberdoigts qui contient un @UUID[Compendium.cyberpunk-red-core.gear.QIHx5oQOirtTlAaD]{Homing Tracer}Ne peut être installé que sur une cybermain à doigts modulables (voir Black Chrome p. 25 pour plus de détails)</p>"
+      "description": "<p>\n  Cyberfinger that functions like a Homing Tracer. Can only be installed on a\n  modular finger cyberhand.\n</p>\n"
     },
     "Implanted Fūma Kotarō Linear Frame": {
       "name": "Charpente linéaire interne Fūma Kotarō",
-      "description": "<ul>\n<li>Nécessite 2 prises d'interface</li>\n<li>Augmente COR à 12</li>\n<li>N'affecte pas les PS ou la sauvegarde contre la mort</li>\n<li>Discrétion +2</li>\n</ul>\n<p>Livré avec deux armes de mêlée lourdes exotique d'excellente qualité et une arme de mêlée légère exotique de qualité excellente*.</p>\n<p>Voir Black Chrome p. 52 pour plus de détails.</p>\n<p><em>* Doit être ajouté manuellement.</em></p>"
+      "description": "<ul>\n  <li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li>\n  <li>\n    Increases BODY stat to 12 (adjusting your HP, Wound Threshold, and Death\n    Save)\n  </li>\n  <li>Increase Stealth +2</li>\n  <li>Drawing and sheathing the frame's weapons does not require an Action</li>\n  <li>\n    A Conceal check is not required for the weapons concealed in the frame.\n  </li>\n  <li>\n    <p>Frame has one of two weapon options*:</p>\n    <ul>\n      <li>Two excellent quality exotic heavy melee weapons</li>\n      <li>\n        One excellent quality light melee weapon and one excellent quality\n        exotic very heavy melee weapon\n      </li>\n    </ul>\n  </li>\n</ul>\n<p><em>* Must be manually added.</em></p>\n"
     },
     "Implanted LF-001 SWAT Linear Frame": {
       "name": "Charpente linéaire implantée LF-001 SWAT",
-      "description": "<p>Augmente COR à 12 (ajustant vos PS et Seuil de blessure et sauvegarde contre la mort). Supprime la pénalité de mouvement pour l'escalade et la natation. (Voir Black Chrome p. 53 pour plus de détails.)</p>"
+      "description": "<ul>\n  <li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li>\n  <li>\n    Increases BODY stat to 12 (adjusting your HP, Wound Threshold, and Death\n    Save)\n  </li>\n  <li>Ignores the normal movement penalty for climbing and swimming</li>\n</ul>\n"
     },
     "Implanted Vermilion Linear Frame": {
       "name": "Charpente linéaire implantée Vermilion",
-      "description": "<p>Augmente COR à 12 (ajustant vos PS et Seuil de blessure et Sauvegarde contre la Mort). Pas de malus de déplacement pour sauter. Lors de l'exécution de votre mouvement, votre mouvement est augmenté de 6m. (Voir Black Chrome p. 54 pour plus de détails.)</p>"
+      "description": "<ul>\n  <li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li>\n  <li>\n    Increases BODY stat to 12 (adjusting your HP, Wound Threshold, and Death\n    Save)\n  </li>\n  <li>No movement penalty for jumping</li>\n  <li>Operates as if paired Skate Feet are installed</li>\n</ul>\n"
     },
     "Integrated Cyberdeck Upgrade": {
       "name": "Amélioration cyberconsole intégrée",
-      "description": "<p>Nécessite cyberconsole dans cyberbras, ajoute un emplacement supplémentaire à la cybeconsole. (Voir Black Chrome p. 19 pour plus de détails)</p>"
+      "description": "<p>Requires Cyberdeck (Hardwired), adds an extra slot to the cyberdeck.</p>\n"
     },
     "Laser Pointer Cyberfinger": {
       "name": "Cyberdoigt pointeur laser",
-      "description": "<p>Cyberdoigt contenant un pointeur laser caché. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 25 pour plus de détails)</p>"
+      "description": "<p>\n  Cyberfinger holding a concealed Laser Pointer. Can only be installed on a\n  modular finger cyberhand.\n</p>\n"
     },
     "Lighter Cyberfinger": {
       "name": "Cyberdoigt briquet",
-      "description": "<p>Cyberdoigt contenant un briquet caché. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 25 pour plus de détails)</p>"
+      "description": "<p>\n  Cyberfinger holding a concealed lighter. Can only be installed on a modular\n  finger cyberhand.\n</p>\n"
     },
     "Lockpick Cyberfinger": {
       "name": "Cyberdoigt crochetage",
-      "description": "<p>Cyberdoigt contenant un @UUID[Compendium.cyberpunk-red-core.gear.vlhGpguIMioeA8fe]{Lock Picking Set} dissimulé. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 25 pour plus de détails)</p>"
-    },
-    "MechaMan Smart Glove": {
-      "name": "Gant SmartLink MechaMan",
-      "description": "<p>Un gant de moto livré avec une poignée subdermique préinstallée*, nécessite un cablage neural. A 1 emplacement d'option de cyberbras. Reportez-vous à la description complète de l'objet sur BC p. 37.<br><em>*La poignée subdermique doit être ajoutée et installée manuellement après l'acquisition du gant</em></p>"
+      "description": "<p>\n  Cyberfinger holding a concealed Lock Picking Set. Can only be installed on a\n  modular finger cyberhand.\n</p>\n"
     },
     "Microphone Cyberfinger": {
       "name": "Cyberdoigt microphone",
-      "description": "<p>Cyberdoigt contenant un enregistreur caché. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 25 pour plus de détails)</p>"
+      "description": "<p>\n  Cyberfinger holding a concealed recording device. Can only be installed on a\n  modular finger cyberhand.\n</p>\n"
     },
     "Mini Air Supply Cyberfinger": {
       "name": "Cyberdoigt mini réserve d'air",
-      "description": "<p>Cyberdoigt contenant une réserve d'air. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 26 pour plus de détails)</p>"
+      "description": "<p>\n  Cyberfinger with an integrated air tank. Can only be installed on a modular\n  finger cyberhand.\n</p>\n"
     },
     "Modular Finger Cyberhand": {
       "name": "Doigts modulaires cybermain",
-      "description": "<p>Nécessite un cyberbras. Livrée avec 5 cyberdoigts*. (voir Black Chrome p. 20 pour plus de détails)</p>\n<p>*Les doigts doivent être ajoutés après l'installation</p>"
+      "description": "<p>Requires cyberarm. Comes with 5 cyberfingers*.</p>\n<p>*Fingers must be added after installation</p>\n"
     },
     "Modular Finger Enthusiast Cyberhand": {
       "name": "Cybermain pour fanatique de doigts modulaires",
-      "description": "<p>Cyborgimplant. Nécessite un cyberbras. Livré avec 8 cyberdoigts*. (voir Black Chrome p. 18 pour plus de détails)</p>\n<p>*Les doigts doivent être ajoutés après l'installation</p>"
+      "description": "<p>Borgware. Requires cyberarm. Comes with 8 cyberfingers*.</p>\n<p>*Fingers must be added after installation</p>\n"
     },
     "Neo-Soviet Cyberarm": {
       "name": "Cyberbras neo-soviet",
-      "description": "<p>Un bras de remplacement cybernétique soviétique. Fournit avec une main gratuite préinstallée. -1 aux jets nécessitant le bras sans COR 8+. (Voir Black Chrome p. 20 pour plus de détails)</p>"
+      "description": "<p>\n  A soviet cybernetical replacement arm. Comes with a free hand pre-installed.\n  -1 to rolls requiring arm without BODY 8+.\n</p>\n"
     },
     "One Shot Special Cyberfinger": {
       "name": "Cyberdoigt spécial à usage unique",
-      "description": "<p>Cyberdoigt contenant un @UUID[Compendium.cyberpunk-red-core.weapons.Y433cjlB1uVHPysk]{Heavy Pistol} dissimulé. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 26 pour plus de détails)</p>",
+      "description": "<p>\n  Cyberfinger that holds a concealed Exotic Heavy Pistol. Can only be installed\n  on a modular finger cyberhand.\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Popup Net Launcher": {
       "name": "Lanceur de filet escamotable",
-      "description": "<p>Un lanceur de filet exotique dissimulable. Ne peut rien tenir avec cette main lors de l'activation. (Voir Black Chrome p. 20-21 pour plus de détails)</p>",
+      "description": "<p>\n  A concealable exotic net launcher. Can't hold anything with this hand while\n  activated.\n</p>\n",
       "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Popup Shotgun": {
       "name": "Fusil à pompe escamotable",
-      "description": "<p>Un fusil à pompe dissimulable. Il est fourni avec un lien Smartgun préinstallé. Impossible de tenir quoi que ce soit avec cette main pendant l'activation. (Voir Black Chrome p. 21 pour plus de détails)</p>",
+      "description": "<p>\n  A concealable shotgun. Comes with a smartgun link pre-installed*. Can't hold\n  anything with this hand while activated.\n</p>\n<p><em>* Smart Link must be manually added.</em></p>\n",
       "dvTable": "SD Fusil à pompe (Slug)"
     },
     "RacerBracer": {
       "name": "Collier cervical",
-      "description": "<p>cyberimplant interne. Donne l'immunité au Coup du lapin. (Voir Black Chrome p. 22 pour plus de détails)</p>"
+      "description": "<p>Internal cyberware. Grants immunity to whiplash.</p>\n"
     },
     "Reflex Co-Processor": {
       "name": "Coprocesseur de Réflexe",
-      "description": "<p>Neuromatériel. Permet l'esquive des balles indépendamment des REF . (Voir Black Chrome pg. 21 pour plus de détails)</p>"
+      "description": "<p>Neuralware.</p>\n<p>Negates REF requirement to dodge bullets.</p>\n"
     },
     "Reinforced Cyberarm Upgrade": {
       "name": "Amélioration cyberbras renforcé",
-      "description": "<p>Nécessite un cyberbras. Le cyberbras sur lequel il est installé ne peut pas être cassé. (Voir Black Chrome p. 21-22 pour plus de détails)</p>"
+      "description": "<p>Requires cyberarm. The cyberarm this is installed on cannot be broken.</p>\n"
     },
     "Reinforced Cyberleg Upgrade": {
       "name": "Amélioration cyberjambe renforcée",
-      "description": "<p>Nécessite une cyberjambe. La cyberjambe sur laquelle elle est installée ne peut pas être cassée. (Voir Black Chrome p. 21-22 pour plus de détails)</p>"
+      "description": "<p>Requires cyberleg. The cyberleg this is installed on cannot be broken.</p>\n"
     },
     "Sponsored Cybereye": {
       "name": "Cyberoptique sponsorisé",
-      "description": "<p>Un œil de remplacement. Bandeau est préinstallé*. L'utilisateur expérimente aléatoirement des publicités aléatoires. (Voir Black Chrome p. 22 pour plus de détails)</p>\n<p>*Bandeau doit être ajouté après l'installation</p>"
+      "description": "<p>\n  A replacement eye. Chyron comes pre-installed*. User randomly experiences\n  random ads.\n</p>\n<p><em>*Chyron must be added after installation</em></p>\n"
     },
     "Spray Paint Cyberfinger": {
       "name": "Cyberdoigt bombe de peinture",
-      "description": "<p>Cyberdoigt contenant une bombe de peinture. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 26 pour plus de détails)</p>"
+      "description": "<p>\n  Cyberfinger functioning as a spray can. Can only be installed on a modular\n  finger cyberhand.\n</p>\n"
     },
     "Squirt Cyberfinger": {
       "name": "Cyberdoigt pulvérisateur",
-      "description": "<p>Cyberdoigt qui peut contenir et vaporiser différents liquides dissimulés. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 26 pour plus de détails)</p>"
+      "description": "<p>\n  Cyberfinger that can hold and spray various liquids. Can only be installed on\n  a modular finger cyberhand.\n</p>\n"
     },
     "Standard Cyberfinger": {
       "name": "Cyberdoigt standard",
-      "description": "<p>Les cyberdoigts ne peuvent être installés que sur un des cybermains à doigts modulables (voir Black Chrome p. 26 pour plus de détails)</p>"
+      "description": "<p>Cyberfinger. Can only be installed on a modular finger cyberhand.</p>\n"
     },
     "Trauma Response Nanomatrix": {
       "name": "Trauma Response Nanomatrix",
-      "description": "<p>Vous pouvez réparer entièrement une fois par jour le treillissage dermique ou l'armure subdermique (voir Black Chrome p. 22 pour plus de détails.)</p>"
+      "description": "<p>Can fully repair skinweave or subdermal armor once a day.</p>\n"
     },
     "Wirecutter/Scissors Cyberfingers": {
       "name": "Cyberdoigts coupe-fils/ciseaux",
-      "description": "<p>Cyberdoigt qui peut servir de ciseau dissimulé. Ne peut être installé que sur une cybermain à doigts modulaires. (Voir Black Chrome page 26 pour plus de détails)</p>"
+      "description": "<p>\n  Cyberfinger pair that can serve as scissors or wirecutters. Can only be\n  installed on a modular finger cyberhand.\n</p>\n"
     }
   }
 }

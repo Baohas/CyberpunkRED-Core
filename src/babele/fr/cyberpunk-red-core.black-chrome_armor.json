@@ -4,95 +4,95 @@
   "entries": {
     "AirRider": {
       "name": "AirRider",
-      "description": "<p>Armure de corps en kevlar qui ignore la blessure critique Coup du lapin due à un accident de voiture tant que le réservoir de CO2 de l'armure est plein*. Référez-vous à la description complète de l'article sur BC p. 33.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'armure.</em></p>"
+      "description": "<p>\n  Kevlar Body Armor that ignores the Whiplash critical injury from car crashes\n  as long as the armor's CO<sub>2</sub> tank is full*.\n</p>\n<p><em>*Must be manually added after acquiring the armor.</em></p>\n"
     },
     "Bunker Gear": {
       "name": "Tenue de feu",
-      "description": "<p>Armure type Flak, ignifugée avec un masque à gaz intégré et 30 minutes d'oxygène dans une bouteille qui se recharge en une heure. -4 en REF, DEX et MOUV. Reportez-vous à la description complète de l'élément sur BC p. 29.</p>"
+      "description": "<p>\n  Fireproof flak armor with a built in gas mask and 30 minutes of oxygen in a\n  tank that refills itself after an hour. -4 to REF, DEX, and MOVE.\n</p>\n"
     },
     "Corporate Island": {
       "name": "Corporate Island",
-      "description": "<p>Armure pare-balles légère qui ressemble à des vêtements Cadre sup. Reportez-vous à la description complète de l'objet sur BC p. 35.</p>"
+      "description": "<p>Light Armorjack that looks like businesswear.</p>\n"
     },
     "Dirk Combat Jacket": {
       "name": "Veste de combat Dirk",
-      "description": "<p>Armure pare-balle légère de style Décontracté avec la possibilité de cacher deux chargeurs standards sans jet de compétence. Reportez-vous à la description complète de l'objet sur BC p. 28.</p>"
+      "description": "<p>\n  Leisurewear-styled Light Armorjack and the ability to conceal two standard\n  magazines without a check.\n</p>\n"
     },
     "Executive Armor": {
       "name": "Armure Corporatiste",
-      "description": "<p>Armure pare-balle légère qui ressemble à un vêtement Cadre sup. Restaure 1PA par jour où l'armure ne perd pas de PA. Reportez-vous à la description complète de l'élément sur BC p. 34.</p>"
+      "description": "<p>\n  Light Armorjack that looks like businesswear. Restores 1SP every day SP isn't\n  lost on the armor.\n</p>\n"
     },
     "Laser Light Street Jacket": {
       "name": "Veste de rue Laser Light",
-      "description": "<p>Armure pare-balles légère de style Urbain Flash, qui compte comme un tatouage lumineux quand elle est portée. Reportez-vous à la description complète de l'objet sur BC p. 31.</p>"
+      "description": "<p>\n  Urban Flash-styled Light Armorjack that counts as a Light Tattoo while worn.\n</p>\n"
     },
     "Lotos Netsuit": {
       "name": "Combinaison connectée Lotos",
-      "description": "<p>Une combinaison connectée offrant un emplacement matériel supplémentaire de cyberdeck installé directement à l'intérieur. Désinstallé si la combinaison est retirée. Livrée avec une cyberconsole de qualité excellente*. -2 au REF, DEX et MOUV. Reportez-vous à la description complète de l'article sur BC p. 31. </p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'armure</em></p>"
+      "description": "<p>\n  A netsuit allowing an extra cyberdeck hardware slot that's installed directly\n  into the suit which is uninstalled if the suit is removed. Comes standard with\n  an Excellent Quality Cyberdeck*. -2 to REF, DEX, and MOVE.\n</p>\n<p><em>*Must be manually added after acquiring the armor</em></p>\n"
     },
     "MechaMan Motorcycle Helmet": {
       "name": "Casque de moto MechaMan",
-      "description": "<p>Un casque de moto en kevlar avec lunettes connectées intégrées fournies avec Bandeau et Faible luminosité / IR / UV préinstallé*. Reportez-vous à la description complète de l'article sur BC p. 37.</p>\n<p><em>*Les lunettes connectées et les options associées doivent être ajoutées manuellement et installées après avoir acquis l'armure.</em></p>"
+      "description": "<p>\n  A Kevlar motorcycle helmet with integrated smart glasses that come with Chyron\n  and Low Light / IR / UV pre-installed*.\n</p>\n<p>\n  <em\n    >*Smart Glasses and associated cyberware must be manually added and\n    installed after acquring the armor.</em\n  >\n</p>\n"
     },
     "Mimic Clothing (Asia Pop)": {
       "name": "Vêtement Mimic (Pop asiatique)",
-      "description": "<p>Armure pare-balles légère faite à partir d'un Kit de vêtements Mimic et de vêtements \"Pop asiatique\". Reportez-vous à la description complète de l'objet sur BC p. 33.</p>"
+      "description": "<p>Light Armorjack made from a Mimic Clothing Kit and \"Asia Pop\" clothing.</p>\n"
     },
     "Mimic Clothing (Bag Lady Chic)": {
       "name": "Vêtement Mimic (Vagabond)",
-      "description": "<p>Armure pare-balles légère faite à partir d'un Kit de vêtements Mimic et de vêtements \"Vagabond\". Reportez-vous à la description complète de l'objet sur BC p. 33.</p>"
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Bag Lady Chic\" clothing.\n</p>\n"
     },
     "Mimic Clothing (Bohemian)": {
       "name": "Vêtement Mimic (Bohème)",
-      "description": "<p>Armure pare-balles légère faite à partir d'un Kit de vêtements Mimic et de vêtements \"Bohème\". Reportez-vous à la description complète de l'objet sur BC p. 33.</p>"
+      "description": "<p>Light Armorjack made from a Mimic Clothing Kit and \"Bohemian\" clothing.</p>\n"
     },
     "Mimic Clothing (Businesswear)": {
       "name": "Vêtement Mimic (Cadre sup)",
-      "description": "<p>Armure pare-balles légère faite à partir d'un Kit de vêtements Mimic et de vêtements \"Cadre sup\". Reportez-vous à la description complète de l'objet sur BC p. 33.</p>"
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Businesswear\" clothing.\n</p>\n"
     },
     "Mimic Clothing (Gang Colors)": {
       "name": "Vêtement Mimic (Couleurs du gang)",
-      "description": "<p>Armure pare-balles légère faite à partir d'un Kit de vêtements Mimic et de vêtements \"Couleurs du gang\". Reportez-vous à la description complète de l'objet sur BC p. 33.</p>"
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Gang Colors\" clothing.\n</p>\n"
     },
     "Mimic Clothing (Generic Chic)": {
       "name": "Vêtement Mimic (Générique)",
-      "description": "<p>Armure pare-balles légère faite à partir d'un Kit de vêtements Mimic et de vêtements \"Générique\". Reportez-vous à la description complète de l'objet sur BC p. 33.</p>"
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Generic Chic\" clothing.\n</p>\n"
     },
     "Mimic Clothing (High Fashion)": {
       "name": "Vêtement Mimic (Haute couture)",
-      "description": "<p>Armure pare-balles légère faite à partir d'un Kit de vêtements Mimic et de vêtements \"Haute couture\". Reportez-vous à la description complète de l'objet sur BC p. 33.</p>"
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"High Fashion\" clothing.\n</p>\n"
     },
     "Mimic Clothing (Leisurewear)": {
       "name": "Vêtement Mimic (Décontracté)",
-      "description": "<p>Armure pare-balles légère faite à partir d'un Kit de vêtements Mimic et de vêtements \"Décontracté\". Reportez-vous à la description complète de l'objet sur BC p. 33.</p>"
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Leisurewear\" clothing.\n</p>\n"
     },
     "Mimic Clothing (Nomad Leathers)": {
       "name": "Vêtement Mimic (Âme nomade)",
-      "description": "<p>Armure pare-balles légère faite à partir d'un Kit de vêtements Mimic et de vêtements \"Âme nomade\". Reportez-vous à la description complète de l'objet sur BC p. 33.</p>"
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Nomad Leathers\" clothing.\n</p>\n"
     },
     "Mimic Clothing (Urban Flash)": {
       "name": "Vêtement Mimic (Urbain flash)",
-      "description": "<p>Armure pare-balles légère faite à partir d'un Kit de vêtements Mimic et de vêtements \"Urbain flash\". Reportez-vous à la description complète de l'objet sur BC p. 33.</p>"
+      "description": "<p>\n  Light Armorjack made from a Mimic Clothing Kit and \"Urban Flash\" clothing.\n</p>\n"
     },
     "Montage Variable Clothing Line": {
       "name": "Ligne de Vêtement Montage Variable",
-      "description": "<p>Armure pare-balles légère qui peut changer entre les styles \"Générique\" et \"Couleurs du gang\" en une action avec une palette achetée (20eb par couleur/modèle) et installée sur un Agent. Fournit avec une couleur ou un modèle au choix. Reportez-vous à la description complète de l'élément sur BC p. 32</p>"
+      "description": "<p>\n  Light Armorjack that can swap between \"Generic Chic\" and \"Gang Colors\" styles\n  with an action from a palette purchased (20eb per color/pattern) and installed\n  on an agent. Comes with one color or pattern of choice.\n</p>\n"
     },
     "Shock Armor": {
       "name": "Armure Foudre",
-      "description": "<p>Une armure de Kevlar qui foudroie toute personne qui vous saisit. Référez-vous à la description complète de l'objet sur BC pg. 29.</p>"
+      "description": "<p>Kevlar armor that shocks anyone who is grappling you.</p>\n"
     },
     "Skid Row Trench": {
       "name": "Manteau SkidRow",
-      "description": "<p>Armure de corps type Flak qui ressemble à un trench-coat en échange d'une protection réduite. -4 en REF, DEX et MOUV. Reportez-vous à la description complète de l'élément sur BC p. 33.</p>"
+      "description": "<p>\n  Flak Body Armor that looks like a trench coat in exchange for less protection.\n  -4 to REF, DEX, and MOVE.\n</p>\n"
     },
     "Street Viper Riding Suit": {
       "name": "Combinaison Street Viper",
-      "description": "<p>Armure de corps en kevlar qui est livrée avec deux armes de mêlée intermédiaires préinstallées* toujours considérées comme sorties tant que l'armure est portée. Reportez-vous à la description complète de l'article sur BC p. 36. </p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'armure.</em></p>"
+      "description": "<p>\n  Kevlar Body Armor that comes with two pre-installed medium melee weapons*\n  always considered drawn as long as the armor is equipped.\n</p>\n<p><em>*Must be manually added after acquiring the armor.</em></p>\n"
     },
     "Tactical Smart Armor": {
       "name": "Armure tactique connectée",
-      "description": "<p>Une tenue complète d'armure pare-balles moyenne avec des lunettes connectées intégrées*. -2 au REF, DEX et MOUV. Reportez-vous à la description complète de l'article sur BC p. 30</p>\n<p><em>*Les lunettes connectées doivent être ajoutées manuellement après l'acquisition de l'armure.</em></p>"
+      "description": "<p>\n  A full set of medium armorjack with integrated smart glasses*. -2 to REF, DEX,\n  and MOVE.\n</p>\n<p><em>*Smart Glasses must be manually added after acquiring the armor.</em></p>\n"
     }
   }
 }

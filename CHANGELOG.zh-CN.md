@@ -11,25 +11,23 @@
   - Skills (Science)
   - Skills (Martial Arts)
   - Skills (Play Instrument)
+  - DLC: 12 Days of Gearmas (thanks to @LordCheesusCrust)
 - Add a check to characters to see if they are considered "Hardened"
   - Based on the rules in Danger Gal Dossier pg. 150
   - Displays an overlay Icon on the Character Sheet Image which lists the reasons a character is considered hardened when hovered
   - Programmatically available under the `system.derivedStats.isHardened` datapoint
-
-### Changes
-
-- Weapons in fight tab now categorized by Ranged/Melee
-
-### New Features
-
 - Add Quality to Weapons/Cyberdecks
 - #653 - Enable support for dddice
 - Adjust font size of Handle/Name in Character sheets if the name overflows
 - Skill Items now have a `skillType` for programmatic access
 - Remove `Science`, `Play Instrument`, `Martial Arts` skills
   - These will remain on existing Characters
-  - There will not be added to new Characters
+  - They will not be added to new Characters
 - Rename default `Local Expert` skill to `Local Expert (Your Home)`
+
+### Changes
+
+- Weapons in fight tab now categorized by Ranged/Melee
 
 ### Bug Fixes
 

@@ -11,25 +11,23 @@
   - Skills (Science)
   - Skills (Martial Arts)
   - Skills (Play Instrument)
+  - DLC: 12 Days of Gearmas (thanks to @LordCheesusCrust)
 - Add a check to characters to see if they are considered "Hardened"
   - Based on the rules in Danger Gal Dossier pg. 150
   - Displays an overlay Icon on the Character Sheet Image which lists the reasons a character is considered hardened when hovered
   - Programmatically available under the `system.derivedStats.isHardened` datapoint
-
-### Att/round
-
-- Weapons in fight tab now categorized by Ranged/Melee
-
-### New Features
-
 - Add Quality to Weapons/Cyberdecks
 - #653 - Enable support for dddice
 - Adjust font size of Handle/Name in Character sheets if the name overflows
 - Skill Items now have a `skillType` for programmatic access
 - Remove `Science`, `Play Instrument`, `Martial Arts` skills
   - These will remain on existing Characters
-  - There will not be added to new Characters
+  - They will not be added to new Characters
 - Rename default `Local Expert` skill to `Local Expert (Your Home)`
+
+### Att/round
+
+- Weapons in fight tab now categorized by Ranged/Melee
 
 ### Bug Fixes
 
@@ -42,11 +40,11 @@
 
 ### Changes
 
-- Utilisation des DataModels pour imposer les types de données (#316, #723)
-- Ajout d'un paramètre pour désactiver l'avertissement lors du jet des dégâts sans cibles
+- Switched to using DataModels to enforce data types (#316, #723)
+- Add setting to disable warning when rolling damage without targets
 - The fumble recovery skill for Solos is now accounted for
 
-### Action requise
+### Action Needed
 
 Our v11 Migrations of Active Effects introduced a bug where modifiers to STATs (and only STATs). Caused them to be multiplied by 3.
 
@@ -56,9 +54,9 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 \*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
 
-### Corrections de bugs
+### Bug Fixes
 
-- #856 - Correction des jetons de ciblage des cartes de chat divulguant les noms d'acteurs, utilisation des noms de jetons à la place.
+- #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 - Fix weapons moved to stash not applying correct amount of ammo stack
 - Fix incorrect Black Chrome Grenade Names
 - Fix `Heavy Pistol (ArmorPiercing)` icon
@@ -88,7 +86,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 ### Bug Fixes
 
-- Correction d'un bug (de Foundry) où les jetons non liés perdaient tous leurs objets.
+- Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
 
 ## Version 0.88.0
 
@@ -244,25 +242,25 @@ Par exemple, si vous utilisez [Ernies Modern UI](https://foundryvtt.com/packages
 
 #### Dialogues améliorés
 
-- Tous les dialogues ont été remis en forme et ont été convertis en un nouveau système appelé CPRDialog
-- Cela permettra des dialogues plus réactifs avec une logique complexe, dont la première utilisation est dans de nouveaux dialogues de lancement de dés :
-  - L'interface utilisateur pour les dialogues de jets a été améliorée et alignée sur le style de notre système
-  - Les dialogues sont maintenant des feuilles adaptatives et peuvent changer selon les entrées
-  - Fini le travail de détection : un outil (à la fois dans les boîtes de dialogue et sur les cartes de jet) indique d'où vient chaque bonus/pénalité sur votre jet
-  - Basculer les modificateurs de situation des effets actifs, des améliorations et des rôles directement depuis la boîte de dialogue
-  - Activer/désactiver les modificateurs de situation de base de la page 130 du livre de règles à partir d'un menu déroulant
-  - Ajout des modificateurs supplémentaires au jet si nécessaire
+- All dialogues have been given new styling and have been converted to a new system called CPRDialog
+- This will allow for more responsive dialogues with complex logic, the first use of which is in new roll dialogues:
+  - The UI for roll dialogues has been improved and brought more in-line with the style of our system
+  - Dialogues are now responsive sheets and can change depending on inputs
+  - No more detective work: A tool tip (both in dialogues and on roll cards) displays where every bonus/penalty on your roll comes from
+  - Toggle situational modifiers from active effects, upgrades, and roles right from the dialog
+  - Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu
+  - Add any additional modifiers to the roll as needed
 
 #### Modificateurs de jet
 
-- Nouvelle touche Effet actif : Toutes les Actions - Modifie toutes les actions avec une seule touche d'effets actifs. Trouvé dans la catégorie 'Divers' dans la fenêtre de configuration d'Effet actif.
-- Chaque modificateur d'un effet peut être basculé comme situationnel. Les modificateurs de situation ne s'appliquent que dans certaines situations. Les modificateurs de situation peuvent également être activés par défaut.
-  - Par exemple, le cyberimplant Téléoptique ajoute +1 à certaines attaques lorsque la cible est au-delà de 51 m de distance. Puisque nous ne voulons pas que ce bonus s'applique tout le temps, il est basculé Situationnel. De cette façon, nous pouvons l'appliquer dans les boîtes de dialogue de jet en un seul clic, seulement si nécessaire. Si votre personnage est un sniper et utilise presque toujours le bonus Téléoptique, vous pouvez également basculer le modificateur situationnel comme activé par défaut. De cette façon, le modificateur est appliqué par défaut, mais il peut être désactivé pendant les quelques fois où votre personnage se rapproche de sa distance.
-- Les modificateurs au jet à partir des capacités de rôle ont également des options situationnelles (et Activé par défaut)
-- Les modificateurs au jet à partir des améliorations d'objets ont également des options situationnelles (et Activé par défaut)
-  - Remarque : Les effets avec les modificateurs de situation ont reçu les réglages appropriés sur tous les éléments du compendium, mais vous devrez les mettre à jour manuellement sur des éléments qui existent déjà sur des acteurs
-- Problème connu:
-  - Les effets actifs sur les statistiques se comportent différemment de tous les autres. En raison de cela, les modificateurs sur les effets de statistiques ne peuvent actuellement pas être basculés Situationnels. Cela sera corrigé dans une prochaine version.
+- New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
+- Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
+  - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogues with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
+- Modifiers to rolls from Role Abilities also have Situational (and On By Default) options
+- Modifiers to rolls from item Upgrades also have Situational (and On By Default) options
+  - Note: effects with situational modifiers have been given the appropriate settings on all compendium items but you will have to manually update them on items that already exist on actors
+- Known Issue:
+  - Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
 
 #### Thèmes CSS
 
@@ -272,42 +270,42 @@ Si vous êtes intéressé par la création d'un thème pour le système, consult
 
 #### Compendium
 
-- Ajout du DLC des 12 jours de CyberNoël (Cybermas) avec l'aide de Miklos
-- Ajout du DLC La Pharmacie de Hornet avec l'aide de Miklos
-- Ajout des améliorations de véhicules Nomades avec l'aide de WombatCombat
-- Ajout des améliorations du DLC En Roue Libre (Spinning Your Wheels) avec l'aide de Sushimatic
-- Ajout du DLC Implants Indispensables (Must have Cyberware Deals) avec l'aide de Miklos
-- Ajout du DLC Minuit avec l'Upload (Midnight With The Upload) avec l'aide de Miklos
-- Ajout du contenu du DLC Tarot de Night City avec l'aide de Hakuan Quietpaws
-- Ajout de Tout Sur Les Drones avec l'aide de Hakuan Quietpaws
-- Ajout d'Exotiques en 2045 avec l'aide de Hakuan Quietpaws
-- Ajout du DLC Black Chrome Plus avec l'aide de H.P. Racha et Sushimatic
-- Ajout du DLC Conteneurs et Hôtels Cube avec l'aide de Hakuan Quietpaws
-- Ajout du DLC Météo de Night City avec l'aide de Miklos
-- Ajout des armes de marques avec l'aide de Hakuan Quietpaws
-- Ajout de Black Chrome avec l'aide de H.P. Racha, Hakuan Quietpaws, et Sushimatic
-- Ajout de descriptions des vêtements avec l'aide de Hakuan Quietpaws
-- Ajout des tables aléatoires de Complications de rencontres de sbires, Tactiques de lieutenants endurcis et Promotions de Mini-boss
-- Ajout d'objets manquants de Elflines Online avec l'aide de LordCheesusCroust
-- Ajout du jeu de cartes à collectionner d'Elflines Online avec l'aide de LordCheesusCrust
-- Ajout du DLC Accomplissements et Caisses de butin avec l'aide de LordCheesusCrust
-- Ajout de compétences linguistiques spécifiques avec l'aide de LordCheesusCrust
+- Added The 12 Days of Cybermas with help from Miklos
+- Added Hornet’s Pharmacy with help from Miklos
+- Added Nomad vehicle upgrades with help from WombatCombat
+- Added Spinning Your Wheels upgrades with help from Sushimatic
+- Added Must Have Cyberware Deals with help from Miklos
+- Added Midnight With The Upload with help from Miklos
+- Added Night City Tarot content with help from Hakuan Quietpaws
+- Added All About Drones with help from Hakuan Quietpaws
+- Added Exotics of 2045 with help from Hakuan Quietpaws
+- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
+- Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
+- Added Night City Weather with help from Miklos
+- Added Branded Weapons with help from Hakuan Quietpaws
+- Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic
+- Added clothing descriptions with help from Hakuan Quietpaws
+- Added Mook Encounter Complication, Hardened Lieutenant Tactics, and Hardened Mini Boss Mini Promotion rolltables
+- Added missing Elflines Online items with help from LordCheesusCrust
+- Added Elflines Online the Trading Card Game with help from LordCheesusCrust
+- Added Achievements And Loot Boxes with help from LordCheesusCrust
+- Added language specific skills with help from LordCheesusCrust
 
 #### Autres nouvelles fonctionnalités
 
-- Ajout d'une vérification pour `core.photosensitivityMode` lors du rendu de l'animation de pause
-- Ajout d'un point de données `estElectronique` aux éléments d'équipement
-  - Bien qu'il ne soit pas utilisé par le système lui-même, il a été ajouté comme fonctionnalité de commodité pour les créateurs de modules et/ou pour l'écriture de macros (par exemple : une macro pour sélectionner quels éléments sont désactivés avec un IEM)
-- Ajout de la macro `Objets touchés par IEM`
-  - Une nouvelle Macro qui touche les acteurs sélectionnés dans une scène et touche 2 des éléments : cyberimplant installé (sans blindage anti-IEM), équipement porté (électronique) , ou cyberconsole et affiche les résultats dans la fenêtre de chat
-- Ajout d'un champ de `marque` aux objets physiques
-  - Tous les compendiums fournis par le système ont été migrés
-  - Nous ne fournissons donc aucune migration dans les objets de monde car il y a de nombreux cas de retard pour le faire de façon fiable
-- Ajout de nombreuses nouvelles icônes pour les nouveaux Compendiums
-- Vous pouvez maintenant appliquer un modificateur de perforation via la commande /red
-  - Exemple : `/red 6d6a2` générera un jet de dégâts de 6d6 comme toujours, mais lorsque les dégâts sont appliqués aux tokens, l'armure sera divisée par 2
-  - Note de rappel : Si vous utilisez des jets de modificateurs et le modificateur de description de la carte (#), le modificateur de description de la carte doit être le dernier utilisé sur la ligne. Cela a toujours été le cas, nous le rappelons ici, car cela ajoute maintenant un modificateur supplémentaire.
-- Les objets d'amélioration peuvent maintenant avoir des effets Actifs ajoutés à eux et activés quand l'objet dans lequel ils sont installés est équipé
+- Added a check for `core.photosensitivityMode` when rendering pause animation
+- Added a `isElectronic` data point to Gear items
+  - While it's not used by the system itself it has been added as a convenience feature for module makers and/or writing macros (e.g. a macro to select which items to disable with an EMP)
+- Added `Get EMP'd Items` macro
+  - A new Macro that takes actors selected in a scene and returns 2 of Installed Cyberware (without shielding), carried (electronic) Gear items, or Cyberdecks and outputs the results to chat
+- Added a `brand` field to physical items
+  - All compendia provided by the system have been migrated
+  - We so not provide any migrations for in world items as there are to many edge cases to reliably do this
+- Added many many new icons for the new Compendia
+- You can now pass an ablation modifier via the /red command
+  - Example: `/red 6d6a2` will generate a 6d6 damage roll as it always did, but when the damage is applied to tokens the armor will be ablated by 2
+  - Reminder: if using any roll modifiers and the card description modifier (#), the card description modifier must be the last one used on the line. This has always been the case, just calling it out here as this now adds an additional modifier.
+- Upgrade items can now have ActiveEffects added to them and activated when the item they are installed into is equipped
 
 ### Changes
 
@@ -315,47 +313,47 @@ Si vous êtes intéressé par la création d'un thème pour le système, consult
 
 Cette version apporte beaucoup de changements de feuille pour corriger beaucoup de problèmes révélés par le changement de police dans la dernière version, réduire la complexité du code en arrière-plan, et ajouter plus d'informations et de fonctionnalités aux feuilles.
 
-- Feuille de Personnage
-  - Bloc de statistiques
-    - Repris pour une meilleure mise en page
-    - Autorise les valeurs à 2 chiffres pour EMP/CHA
-  - Bloc Infos
-    - Réécrit pour ajouter plus de fonctionnalité
-    - Déplacement des Eurodollars de l’Équipement
-    - Déplacement de la Réputation depuis l'onglet Parcours de vie
-      - Déplacement de Baston de Regard de l'onglet Combat vers la section Réputation
-    - Déplacement de Recherche/Filtre depuis le volet droit de la feuille
-      - Cela supprime l'option système et est affiché pour tous les utilisateurs
-      - Activation de la recherche automatique lors de la saisie
-    - Retrait des calculateurs PS/Humanité
-      - Fonctionnalité de recalc déplacée vers le titre de section
-  - Onglet Combat
-    - Armes
-      - Déplacement des actions d'armes (Recharger, etc.) pour prendre moins de place
-      - N'affiche `Tir automatique` ou `Tir de Suppression` que si configuré
-      - Affiche le type de munition chargée
-      - Affiche les statistiques de l'arme
-        - Att/round
-        - Modificateur d'attaque
-        - Dégâts
-        - Mains requises
-    - Armure
-      - Ajout d'une Image d'Armure
-      - Mise à jour de présentation
-    - Blessures critiques
-      - Ajout de l'image de blessure critique
-      - Affiche `jet de sauvegarde contre la Mort +1` si une blessure augmente le jet de sauvegarde contre la Mort
-      - Affiche le nom de tous les effets actifs qui sont appliqués
-- Feuille de Sbire
-  - Utilisation du même code de bloc d'arme que la feuille de personnage
-  - Utilisation du même code de bloc d'armure que la feuille de personnage
-  - Améliorations d'objets de soutien sur la feuille de sbire (problème #779)
-- Feuille GLACE Noir
-  - Réécriture complète
-  - Ajout d'un champ `dégâts`
-  - Copie l'image du programme avec les statistiques
-- Feuille d'objet
-  - Légère réécriture de l'en-tête
+- Character Sheet
+  - Stats block
+    - Refactored for better layout
+    - Allows 2 digit values for EMP/LUCK
+  - Info block
+    - Rewrite to add more functionality
+    - Move Eurobucks from Gear
+    - Move Reputation from Lifepath tab
+      - Move Facedown roll from Fight tab to Reputation section
+    - Move Sheet Search/Filter from right pane no man's land
+      - This removes the System Option and is displayed for all users
+      - Enable automatic searching when typing
+    - Remove the HP/Humanity Calculators
+      - Recalc functionality moved to Section title
+  - Fight Tab
+    - Weapons
+      - Move Weapon actions (Reload etc.) to take up less space
+      - Only show `Autofire` or `Suppressive` if configured
+      - Show loaded Ammo Type
+      - Show weapon stats
+        - ROF
+        - Attack Modifier
+        - Damage
+        - Hands Required
+    - Armor
+      - Add Armor Image
+      - Update the Layout
+    - Critical Injuries
+      - Add Critical Injury Image
+      - Display `Death Save +1` if an Injury increases the Death Save
+      - Display the name of any Active Effects that are applied
+- Mook Sheet
+  - Use the same Weapon block code as the character sheet
+  - Use the same Armor block code as the character sheet
+  - Support item upgrades on the mook sheet (issue #779)
+- Black Ice Sheet
+  - Complete re-write
+  - Adds `damage` field
+  - Copies Image from program along with stats
+- Item Sheet
+  - Slight Rewrite of header
 
 #### Ammo Modifies Weapon Damage
 
@@ -363,65 +361,65 @@ Ammo can now modify weapon damage / autofire maximums. Ceci prend en charge les 
 
 #### Autres modifications
 
-- Mise à jour des images d'arrière-plan et d'en-tête, nouvelles versions de Rayane Souizi "Wizi"
-- La liste déroulante de la sélection de munitions affiche maintenant la taille de la pile
-- Modification de l'Arme par défaut pour utiliser l'icône de l'arme par défaut
-- Le champ `source` pour les objets a été divisé en 2 champs séparés
-  - `livre.source`
-  - `page.source`
-- Mise à jour des icônes de compendiums pour les armures
-- Système de systèmes réordonné
-- Ajustement du libellé des objets Elflines existants pour mieux correspondre à leur fonction
-- Mise à jour des icônes par défaut pour les GLACE noirs et les démons
-- Les conteneurs sont configurés comme boutiques par défaut pour tout acheter à 100%
-- Suppression des suffixes dupliqués sur la sélection de munitions
-- Cliquer sur recharger lorsque vous êtes à court d'un type de munitions affichera la boîte de dialogue des munitions
+- Updated the background and header images to new versions by Rayane Souizi "Wizi"
+- Ammo selection dropdown now shows stack size
+- Changed the default weapon to use the default weapon icon
+- `source` field for items has been split into 2 separate Fields
+  - `source.book`
+  - `source.page`
+- Updated compendia icons for armor
+- Reordered system systems
+- Adjusted the wording of existing Elflines items to better fit their function
+- Updated default icons for Black ICE and Demons
+- Containers configured as shops now default to buying all at 100%
+- Removed duplicated suffixes on ammo selection
+- Clicking reload when you are out of an ammo type will bring up the switch ammo dialogue
 
 ### Bug Fixes
 
-- Correction d'un problème de capitalisation dans les cybermembres de classe médicale. Merci ButchAmy !
-- Correction des numéros de page incorrects de référence pour les cybermembres de classe médicale
-- Correction des cybermembres de catégorie médicale acceptant incorrectement les améliorations
-- Correction d'une faute de frappe dans la description du lance-grenades sous-canon
-- Rajout du fusil à pompe monté sous-canon qui avait été accidentellement supprimé
-- Le glissement de liens vers les descriptions des objets relie correctement au document
-- #703 - Correction du problème où les tokens jetés sur la scène par le MJ causaient une erreur de permissions sur le joueur
-- #700 - Correction du problème où la création de tokens GLACE/Démon/Conteneur sur la scène provoquait une erreur dans la console
-- Correction d'un texte d'infobulle manquant dans les paramètres de compendiums
-- Correction d'un arrondi incorrect sur les icônes du crache-feu et des d'armes de lancer
-- Suppression du doublon des SmartLens
-- Correction du manque de table SD pour le lance-grenades escamotable. Merci Diwako!
-- Correction de libellés incorrects pour les Cybersièges. Merci VinceKun!
-- Correction des vélos ne pouvant pas accepter les améliorations
-- Correction de la description du Militech Crusher qui confondait les chevrotines de fusils à pompe et les slugs de fusils à pompe
-- Correction de ne pas pouvoir installer le bon type d'améliorations dans les Smart Lens
-- #701 - Correction du problème avec les GLACE noirs appliquant les mauvais dégâts
-- Correction des Lunettes connectées / Smart Lenses qui n'acceptaient pas les options cyberoptiques
-- Correction du problème où les tokens jetés sur la scène par le MJ causaient une erreur de permissions sur le joueur
-- Correction du problème où la création de tokens GLACE/Démon/Conteneur sur la scène provoquait une erreur dans la console
-- Correction de nombreux endroits où 'NET' était mal formaté comme 'Net'
-- Correction de quelques problèmes liés à la migration :
-  - #681 - Anomalie où la désinstallation des éléments installés était cassée si l'objet était directement installé dans l'acteur et non dans un élément type `conteneur`
-  - Le code appelait createEmbeddedDocument sur le TokenDocument mais cette version de Foundry attend que l'appel soit sur l'acteur associé
-- #741 - Correction d'un problème où la vente d'objets empilables à un vendeur était cassée
-- Migrer les acteurs qui sont sur les scènes dans un compendium échouerait parce que le code a fait des recherches UUID et Foundry ne vous laissera pas le faire de manière synchrone. Ajout de code afin que si la restauration est pour un acteur ou un objet de Compendium, la recherche se fait asynchrone.
-- Correction d'un problème où si la migration effectue une sauvegarde/restauration d'un élément installé, cela supprimerait l'élément d'origine qui faisait que l'élément conteneur signalait le nombre incorrect d'emplacements utilisés.
-- Normalisation du contexte de migration passé à l'acteur:\*EmbeddedDocuments à isMigrating
-- Correction des tags HTML des descriptions d'objets dans la feuille de personnage
-- #705 - En cliquant sur le bouton SD sur une feuille, les utilisateurs avaient parfois l'impression que la règle de contrôle était cassée car elle ne montrait pas de SD s'ils n'avaient pas le token sélectionné. La fonctionnalité a été améliorée :
-  - Cliquer sur la règle SD mettra maintenant en surbrillance la table SD actuelle sur le token associé
-  - Si l'utilisateur ne possède que 1 token de personnage ou de sbire sur une scène, il utilisera par défaut les paramètres SD de ce jeton
-  - Si un utilisateur possède plusieurs tokens de personnages ou de sbires, un message d'avertissement est maintenant lancé lorsque l'utilisateur clique sur la règle pour sélectionner un SD lui disant qu'il a besoin de sélectionner le token avant d'utilisation
-  - Si un utilisateur possède plusieurs tokens de personnages ou de sbires et n'a aucun jeton sélectionné, lorsqu'il utilise la règle, un message s'affiche en dessous de la distance conseillant à l'utilisateur de sélectionner le jeton du SD qu'il souhaite voir
-- Correction des utilisations de restoreOwnedItem pour être cohérentes avec backupOwnedItem en ce qu'il nettoie l'élément possédé qui a été créé
-- #671 - Correction des tokens GLACE noirs corrompus quand ils ont été créés au début parce que les appels pour mettre à jour le token passaient de mauvaises données
-- #795 - Correction de dégâts incorrects causés par la carte de jet de dé pour les programmes.
-- Correction des cyberfauteuils qui ne remplaçaient pas les caractéristiques MOUV des utilisateurs comme ils le devraient. Merci Dingo!
-- #577 - Restauration du mode de tir de l'arme une fois que la macro est terminée à ce qu'il était avant l'exécution de la macro
-- Auparavant, lors du déchargement de munitions que vous ne possédiez plus, la balle était toujours comptée dans l'arme mais disparaissait de l'UI. Cela pouvait causer des problèmes lorsque vous essayez d'utiliser cette arme car le type de balle est inconnu. De plus, lors du rechargement, seule la différence de balle par rapport à l'autre type de balle serait prise en compte au lieu de la quantité totale pour charger l'arme.
-- Correction des compétences non traduites dans la boîte de dialogue d'effet actif.
-- Correction du statut personnalisé de Combat Utility Belt pour l'application automatique d'une gestion de suppression
-- #657 - Correction des problèmes avec le glissement de différents types de documents dans la barre d'action.
+- Fixed a capitalisation issue in the medical grade cyber limbs. Thanks ButchAmy!
+- Fixed incorrect page reference numbers for medical grade cyber limbs
+- Fixed medical grade cyber limbs incorrectly accepting upgrades
+- Fixed a typo in the underbarrel grenade launcher description
+- Added back the underbarrel shotgun that was accidentally deleted
+- Dragging document links to item descriptions links the document correctly
+- #703 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
+- #700 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console
+- Fixed missing tool-tip text in compendia settings
+- Fixed incorrect rounding on the flamethrower and thrown weapon Icons
+- Removed duplicate Smart Lens Cyberware
+- Fixed no DV table being set for the pop-up grenade launcher. Thanks diwako!
+- Fixed some incorrect wording for Cyberchairs. Thanks VinceKun!
+- Fixed bicycles not being able to accept upgrades
+- Fixed description of the Militech Crusher which confused shotgun shells and shotgun slugs
+- Fixed not being able to install the correct type of upgrades into a Smart Lens
+- #701 - Fixed issue with Black ICE rolling the wrong damage
+- Fixed Smart Glasses / Smart Lenses not taking cybereye options
+- Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
+- Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console
+- Fixed many places where 'NET' was incorrectly formatted as 'Net'
+- Fixed a couple issues around migration:
+  - #681 - Issue where uninstalling installed items was broken if the item was directly installed into the actor and not into a `containerType` item
+  - The code was calling createEmbeddedDocument on the TokenDocument however this version of Foundry expects the call to be on the associated actor
+- #741 - Fixed issue where selling stackable items to a vendor was broken
+- Migrating actors that are on scenes in a compendium would fail because the code did UUID lookups and Foundry won't let you do this synchronously. Added code so if the restoration is for a Compenium actor/item, the lookup is done with an async await.
+- Fixed an issue where if migration performs a backup/restore of an installed item, it would delete the original item which was causing the container item to report the incorrect amount of used slots.
+- Standardized the passed migration context to actor:\*EmbeddedDocuments to isMigrating
+- Fixed HTML stripping of item descriptions on the Character sheet
+- #705 - When clicking the DV button on a sheet, users would sometimes feel like the Ruler was broken since it wouldn't show a DV if they did not have the token selected. Functionality has been enhanced:
+  - Clicking the DV ruler will now highlight the current set DV table on the associated token
+  - If the user owns only 1 token of either Character or Mook on a scene, it will default to using the DV settings of that token
+  - If a user owns multiple tokens of either Character or Mook, a warning message is now thrown when the user clicks the ruler to select a DV telling them they need to select the token before use
+  - If a user owns multiple tokens of either Character or Mook and has no tokens selected, when they use the ruler, a message is displayed below the distance advising the user to select the token of the DV they want to see
+- Fixed the usages of restoreOwnedItem to be consistent with backupOwnedItem in that it cleans up the owned item that was created
+- #671 - Fixed BlackICE tokens getting corrupted when they were first created because the calls to update the token were passing bad data
+- #795 - Fixed incorrect damage from rollcard for programs.
+- Fixed Cyberchairs not overriding a users MOVE stat as they should. Thanks Dingo!
+- #577 - Restored firemode of weapon after a macro completes to what it was before the macro was executed
+- Previously, when unloading ammo that you no longer own the item for, it would leave the bullet count in the weapon but clear the UUID of the ammo in the weapon. This could cause problems when attempting to use that weapon as the bullet type is unknown. Additionally, when reloading, it would only take the bullet difference from the other bullet type instead of the full amount to load the weapon.
+- Fixed untranslated skills in active-effect dialog.
+- Fixed Combat Utility Belt custom status auto apply an remove handling
+- #657 - Fixed issues with dragging various document types to the hotbar.
 
 ## Version 0.86.1 | Date: 2023-02-05
 

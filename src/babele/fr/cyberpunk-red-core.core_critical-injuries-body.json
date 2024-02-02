@@ -4,47 +4,47 @@
   "entries": {
     "Broken Arm": {
       "name": "Bras cassé",
-      "description": "<p>Vous ne pouvez pas utiliser votre bras cassé. Vous lâchez immédiatement tous les objets que vous teniez dans la main</p>"
+      "description": "<p>Arm unusable. Drop what it was holding</p>\n"
     },
     "Broken Leg": {
       "name": "Jambe cassée",
-      "description": "<p>-4 au MOUV (minimum 1).</p>"
+      "description": "<p>-4 MOVE (minimum MOVE of 1).</p>\n"
     },
     "Broken Ribs": {
       "name": "Côtes cassées",
-      "description": "<p>A la fin de chaque tour lors duquel vous vous déplacez de plus de 4m à pied, vous subissez de nouveau les dégâts bonus de cette blessure critique.</p>"
+      "description": "<p>Suffer crit damage at end of turn if you move more than 4m/yrds on foot.</p>\n"
     },
     "Collapsed Lung": {
       "name": "Poumon affaissé",
-      "description": "<p>-2 au MOUV (minimum 1).</p>"
+      "description": "<p>-2 MOVE (minimum MOVE of 1).</p>\n"
     },
     "Crushed Fingers": {
       "name": "Doigts écrasés",
-      "description": "<p>-4 à toute action impliquant cette main.</p>"
+      "description": "<p>-4 to hand actions.</p>\n"
     },
     "Dismembered Arm": {
       "name": "Bras arraché",
-      "description": "<p>Le bras arraché est perdu. Vous lâchez immédiatement tous les objets que vous teniez dans la main. La pénalité au jet de sauvegarde contre la mort de base augmente de 1</p>"
+      "description": "<p>Arm removed, drop anything it was holding.</p>\n"
     },
     "Dismembered Hand": {
       "name": "Main arrachée",
-      "description": "<p>La main arraché est perdu. Vous lâchez immédiatement tous les objets que vous teniez dans la main. La pénalité au jet de sauvegarde contre la mort de base augmente de 1</p>"
+      "description": "<p>Hand removed, drop anything it was holding.</p>\n"
     },
     "Dismembered Leg": {
       "name": "Jambe arrachée",
-      "description": "<p>Jambe perdue. Esquive impossible. -6 au MOUV (minimum 1).</p>"
+      "description": "<p>Leg is removed. Cannot Dodge. -6 MOVE (minimum MOVE of 1).</p>\n"
     },
     "Foreign Object": {
       "name": "Plaie avec corps étranger",
-      "description": "<p>A la fin de chaque tour lors duquel vous vous déplacez de plus de 4m à pied, vous subissez de nouveau les dégâts bonus de cette blessure critique.</p>"
+      "description": "<p>Suffer Crit damage at end of turn if move more than 4m/yrds on foot.</p>\n"
     },
     "Spinal Injury": {
       "name": "Vertèbre endommagée",
-      "description": "<p>Prochain tour : Aucune action, sauf mouvement. La pénalité au jet de sauvegarde contre la mort de base augmente de 1</p>"
+      "description": "<p>Next turn: No action, move only.</p>\n"
     },
     "Torn Muscle": {
       "name": "Muscle déchiré",
-      "description": "<p>-2 aux attaques de mêlée.</p>"
+      "description": "<p>-2 to Melee Attacks.</p>\n"
     }
   }
 }

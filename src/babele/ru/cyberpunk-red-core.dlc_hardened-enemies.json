@@ -6,16 +6,16 @@
       "name": "Тактики прожжённых бригадиров",
       "results": [
         {
-          "1-1": "1 Mook is firing incendiary ammunition (CP:R page 346), but only has 10 rounds.",
-          "2-2": "Add 2 additional Mooks to the encounter at the start of the 2nd Round.",
-          "3-3": "2 Mooks are currently experiencing the primary effect of Black Lace (CP:R page 227).",
-          "4-4": "Give them Medium Armorjack that’s been Tech upgraded, removing the Armor Penalty.",
-          "5-5": "Give them an additional 600eb of Cyberware.",
-          "6-6": "Give them a Reputation of 5.",
-          "7-7": "Add an additional Mook of a different type to the encounter.",
-          "8-8": "Add 2 Mooks to the encounter. Give each a Critical Injury to the head.",
-          "9-9": "Add 1 additional Mook to the encounter at the start of Rounds 2, 3, and 4.",
-          "10-10": "1 Mook has an SMG, no sense of self preservation, an Autofire Skill Base of 16, and no head armor."
+          "1-1": "Бригадир и его подчинённые устраивают игрокам засаду (Основная книга правил, стр. 399).",
+          "2-2": "Бригадир хватает кого-нибудь и использует в качестве живого щита (Основная книга правил, стр. 184).",
+          "3-3": "Бригадир приказывает подчинённым сконцентрировать огонь на определённом игроке.",
+          "4-4": "Бригадир приказывает подчинённым отчаянно наброситься на игроков.",
+          "5-5": "Бригадир находится в хорошо обороняемой позиции, в укрытии.",
+          "6-6": "Уровень навыков «Первая помощь» и «Парамедик» у бригадира равен 14.",
+          "7-7": "Бригадир заблаговременно установил растяжку из бронебойной гранаты (Основная книга правил, стр. 345) где-то на поле боя. Чтобы её заметить, требуется проверка Внимательности СЛ15. Для разминирования нужно протий проверку навыка «Взрывотехника» СЛ9. Граната взрывается, когда кто-либо оказывается на одном с ловушкой квадрате.",
+          "8-8": "Бригадир детально изучил боевые способности игроков.",
+          "9-9": "У бригадира ХАР 6, Репутация 2, и он пытается совершить наезд (Основная книга правил, стр. 194) либо до боя, либо в самом его начале.",
+          "10-10": "Базовый показатель навыка «Тактика» бригадира равен 16, и он командует."
         }
       ]
     },
@@ -23,16 +23,16 @@
       "name": "Повышение для прожжёного мини-босса",
       "results": [
         {
-          "1-1": "1 Mook is firing incendiary ammunition (CP:R page 346), but only has 10 rounds.",
-          "2-2": "Add 2 additional Mooks to the encounter at the start of the 2nd Round.",
-          "3-3": "2 Mooks are currently experiencing the primary effect of Black Lace (CP:R page 227).",
-          "4-4": "Give them Medium Armorjack that’s been Tech upgraded, removing the Armor Penalty.",
-          "5-5": "Give them an additional 600eb of Cyberware.",
-          "6-6": "Give them a Reputation of 5.",
-          "7-7": "Add an additional Mook of a different type to the encounter.",
-          "8-8": "Add 2 Mooks to the encounter. Give each a Critical Injury to the head.",
-          "9-9": "Add 1 additional Mook to the encounter at the start of Rounds 2, 3, and 4.",
-          "10-10": "1 Mook has an SMG, no sense of self preservation, an Autofire Skill Base of 16, and no head armor."
+          "1-1": "Увеличьте базовый показатель одного из навыков, который выше 10, до 17.",
+          "2-2": "Увеличьте ПЗ на 10.",
+          "3-3": "У мини-босса есть способность «Работа в команде» (Основная книга правил, стр. 153) третьего ранга и один подчинённый на выбор.",
+          "4-4": "У мини-босса есть средний бронекостюм, который модифицирован Техником таким образом, что он не даёт штрафа брони.",
+          "5-5": "У мини-босса есть дополнительные киберимпланты на 600eb.",
+          "6-6": "У мини-босса Репутация 5.",
+          "7-7": "У бригадира есть ЭМИ граната (Основная книга правил, стр. 345), а базовый навык «Атлетика» равен 16.",
+          "8-8": "Мини-босс принял перед боем дозу Чёрного кружева (Основная книга правил, стр. 357) или Синткокса (Основная книга правил, стр. 358).",
+          "9-9": "Повысьте мини-боссу либо СКО до 16, либо базовое значение навыка «Уклонение» до 18.",
+          "10-10": "У мини-босса есть Жабры (Основная книга правил, стр. 363) и он один раз прошёл процедуру бодискульптинга (Основная книга правил, стр. 226). Акула? Арована? Решай сам."
         }
       ]
     },
@@ -40,16 +40,16 @@
       "name": "Сложности при столкновениях с фуфелами",
       "results": [
         {
-          "1-1": "1 Mook is firing incendiary ammunition (CP:R page 346), but only has 10 rounds.",
-          "2-2": "Add 2 additional Mooks to the encounter at the start of the 2nd Round.",
-          "3-3": "2 Mooks are currently experiencing the primary effect of Black Lace (CP:R page 227).",
-          "4-4": "Give them Medium Armorjack that’s been Tech upgraded, removing the Armor Penalty.",
-          "5-5": "Give them an additional 600eb of Cyberware.",
-          "6-6": "Give them a Reputation of 5.",
-          "7-7": "Add an additional Mook of a different type to the encounter.",
-          "8-8": "Add 2 Mooks to the encounter. Give each a Critical Injury to the head.",
-          "9-9": "Add 1 additional Mook to the encounter at the start of Rounds 2, 3, and 4.",
-          "10-10": "1 Mook has an SMG, no sense of self preservation, an Autofire Skill Base of 16, and no head armor."
+          "1-1": "Один из фуфелов стреляет зажигательными боеприпасами (Основная книга правил, стр. 346), но их у него всего десять штук.",
+          "2-2": "В начале второго раунда в бой вступает ещё два фуфела.",
+          "3-3": "Два фуфела испытывают основной эффект Чёрного кружева (Основная книга правил, стр. 227).",
+          "4-4": "У однного из фуфелов есть бронебойная граната (Основная книга правил, стр. 345), а его базовый показатель навыка «Атлетика» равен 12.",
+          "5-5": "Один из фуфелов отед в тяжёлый бронекостюм (ОС13). Увеличьте ему РЕА, ЛВК и СКО на 2 (до расчёта штрафа брони).",
+          "6-6": "Эти фуфелы необычайно хорошо организованы. Базовый показатель навыка «Тактика» одного из них равен 13, и у него есть дымовая граната (Основная книга правил, стр. 347).",
+          "7-7": "В бой вступает ещё один фуфел, но другого типа.",
+          "8-8": "В бой вступает ещё два фуфела. У каждого есть критическое ранение головы.",
+          "9-9": "В начале второго, третьего и четвёртого раунда в бой вступает по ещё одному фуфелу.",
+          "10-10": "У одного из фуфелов есть ПП, базовое значение навыка «Автоогонь» 16, но отсутствует чувство самосохранения и броня на голове."
         }
       ]
     }

@@ -11,25 +11,23 @@
   - Skills (Science)
   - Skills (Martial Arts)
   - Skills (Play Instrument)
+  - DLC: 12 Days of Gearmas (thanks to @LordCheesusCrust)
 - Add a check to characters to see if they are considered "Hardened"
   - Based on the rules in Danger Gal Dossier pg. 150
   - Displays an overlay Icon on the Character Sheet Image which lists the reasons a character is considered hardened when hovered
   - Programmatically available under the `system.derivedStats.isHardened` datapoint
-
-### Änderungen
-
-- Weapons in fight tab now categorized by Ranged/Melee
-
-### New Features
-
 - Add Quality to Weapons/Cyberdecks
 - #653 - Enable support for dddice
 - Adjust font size of Handle/Name in Character sheets if the name overflows
 - Skill Items now have a `skillType` for programmatic access
 - Remove `Science`, `Play Instrument`, `Martial Arts` skills
   - These will remain on existing Characters
-  - There will not be added to new Characters
+  - They will not be added to new Characters
 - Rename default `Local Expert` skill to `Local Expert (Your Home)`
+
+### Änderungen
+
+- Weapons in fight tab now categorized by Ranged/Melee
 
 ### Bug Fixes
 
@@ -46,7 +44,7 @@
 - Add setting to disable warning when rolling damage without targets
 - The fumble recovery skill for Solos is now accounted for
 
-### Aktion erforderlich
+### Action Needed
 
 Our v11 Migrations of Active Effects introduced a bug where modifiers to STATs (and only STATs). Caused them to be multiplied by 3.
 
@@ -56,7 +54,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 \*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
 
-### Fehlerbehebungen
+### Bug Fixes
 
 - #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 - Fix weapons moved to stash not applying correct amount of ammo stack
@@ -255,14 +253,14 @@ For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/
 
 #### Würfel-Modifikatoren
 
-- Neuer aktive Effekte Schlüsselbegriff: Alle Aktionen - Ändert alle Aktionen mit einem einzigen aktiven Effekt. Zu finden in der Kategorie 'Sonstiges' im Konfigurationsfenster der aktiven Effekte.
-- Jeder Modifikator auf einem Effekt kann als situationsbedingt eingestellt werden. Situationsbedingte Modifikatoren sind solche, die nur in bestimmten Situationen gelten. Situationsbedingte Modifikatoren können auch standardmäßig eingeschaltet werden.
-  - Beispielsweise fügt die TeleOptics Cyberware bestimmten Angriffen einen Modifikator von +1 hinzu, wenn das Ziel weiter als 51 m entfernt ist. Da wir nicht wollen, dass dieser Bonus die ganze Zeit gilt, handelt es sich um einen situationsbedingten Modifikator. Auf diese Weise können wir diesen mit einem Klick im Würfeldialog anwenden, nur wenn nötig. Wenn Ihr Charakter ein Scharfschütze ist und fast immer den TeleOptik-Bonus verwendet, kann man auch den situationsbedingten Modifikator auf standardmäßig an umschalten. Auf diese Weise wird der Modifikator standardmäßig angewendet, aber kann ausgeschaltet werden, wenn der Charakter sich in zu sehr nähert.
+- New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
+- Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
+  - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogues with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
 - Modifiers to rolls from Role Abilities also have Situational (and On By Default) options
 - Modifiers to rolls from item Upgrades also have Situational (and On By Default) options
   - Note: effects with situational modifiers have been given the appropriate settings on all compendium items but you will have to manually update them on items that already exist on actors
 - Known Issue:
-  - Active Effects on Stats behave differently than all others. Aus diesem Grund können Modifikatoren von Statistiken derzeit nicht in situationsbedingte Modifikatoren umgewandelt werden. Dies wird in einer der kommenden Versionen behoben.
+  - Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
 
 #### CSS-Designs
 
@@ -286,7 +284,7 @@ Wenn du daran interessiert bist ein eigenes CSS Design für das System zu erstel
 - Added Night City Weather with help from Miklos
 - Added Branded Weapons with help from Hakuan Quietpaws
 - Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic
-- Bekleidungsbeschreibungen mit Hilfe von Hakuan Quietpaws hinzugefügt
+- Added clothing descriptions with help from Hakuan Quietpaws
 - Added Mook Encounter Complication, Hardened Lieutenant Tactics, and Hardened Mini Boss Mini Promotion rolltables
 - Added missing Elflines Online items with help from LordCheesusCrust
 - Added Elflines Online the Trading Card Game with help from LordCheesusCrust
@@ -379,22 +377,22 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 
 ### Bug Fixes
 
-- Es wurde ein Groß/Kleinschreibungsproblem in den medizinischen Cyber-Gliedmaßen behoben. Danke ButchAmy!
-- Falsche Seitenreferenznummern für medizinische Cyber-Gliedmaßen korrigiert
-- Behoben: Medizinische Cyber-Gliedmaßen akzeptieren fehlerhafterweise Verbesserungen
-- Es wurde ein Tippfehler in der (englischen) Beschreibung des Unterlaufgranatwerfers behoben
+- Fixed a capitalisation issue in the medical grade cyber limbs. Thanks ButchAmy!
+- Fixed incorrect page reference numbers for medical grade cyber limbs
+- Fixed medical grade cyber limbs incorrectly accepting upgrades
+- Fixed a typo in the underbarrel grenade launcher description
 - Added back the underbarrel shotgun that was accidentally deleted
 - Dragging document links to item descriptions links the document correctly
 - #703 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
 - #700 - Fixed issue where creating BI/Demon/Container tokens on the canvas would cause an error in the console
 - Fixed missing tool-tip text in compendia settings
-- Fehlerhafte Rundung bei den Symbolen des Flammenwerfers und von Wurfwaffen behoben
+- Fixed incorrect rounding on the flamethrower and thrown weapon Icons
 - Removed duplicate Smart Lens Cyberware
-- Behoben: Es wurde keine SG-Tabelle für den Pop-Up-Granatwerfer zur Verfügung gestellt. Danke diwako!
-- Einige falsche Formulierungen für Cyberstühle behoben. Danke VinceKun!
-- Behoben: Fahrräder konnten keine Verbesserungen akzeptieren
-- Beschreibung des Militech-Crusher korrigiert, wo Schrotpatronen und Flintenpartonen verwechselt wurden
-- Behoben nicht in der Lage, die korrekte Art von Verbesserungen in ein Smart Objektiv zu installieren
+- Fixed no DV table being set for the pop-up grenade launcher. Thanks diwako!
+- Fixed some incorrect wording for Cyberchairs. Thanks VinceKun!
+- Fixed bicycles not being able to accept upgrades
+- Fixed description of the Militech Crusher which confused shotgun shells and shotgun slugs
+- Fixed not being able to install the correct type of upgrades into a Smart Lens
 - #701 - Fixed issue with Black ICE rolling the wrong damage
 - Fixed Smart Glasses / Smart Lenses not taking cybereye options
 - Fixed issue where GM dropping tokens on the canvas would cause a Player-facing permissions error
@@ -441,7 +439,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 
 ## Version 0.86.0 | Date: 2023-01-21
 
-### Spezifische Anmerkungen für diese Veröffentlichung
+### Release Specific Notes
 
 If you're a GM and you linked Black-ICE items to tokens on the canvas, you might have noticed that the description would not transfer. We fixed this for new linkages created (issue #623), but for any created since the last release, you'll have to copy the description over if you want it.
 

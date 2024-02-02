@@ -4,63 +4,63 @@
   "entries": {
     "Armor": {
       "name": "Pancerz",
-      "description": "<p>Zmniejsza obrażenia mózgowi o 4 kiedy jest zrezowany. Tylko 1 kopia moża być zrezowana na raz. Każda kopia posiada jedno użycie na netrun.</p>"
+      "description": "<p>\n  Reduce brain damage by 4 while Rezzed. Only 1 copy Rezzed at a time. Each copy\n  has 1 use per Netrun.\n</p>\n"
     },
     "Banhammer": {
       "name": "Młot na wroga",
-      "description": "<p>Zadaje 3k6 REZ programom niebędącym Czarnym LODem lub 2k6 REZ Czarnemu LODowi.</p>"
+      "description": "<p>Deals 3d6 REZ to non-Black ICE or 2d6 Rez damage to Black ICE.</p>\n"
     },
     "DeckKRASH": {
       "name": "DekKRASH",
-      "description": "<p>Zmusza netrunnera do awaryjnego wypięcia.</p>"
+      "description": "<p>Forces Netrunner to Jack Out unsafely.</p>\n"
     },
     "Eraser": {
       "name": "Gumka",
-      "description": "<p>+2 do wszystkich testów Maskowania dopóki jest zrezowany.</p>"
+      "description": "<p>+2 to Cloak Checks while Rezzed.</p>\n"
     },
     "Flak": {
       "name": "Powłoka",
-      "description": "<p>Ataki niebędące Czarnym LODem zostają zredukowane do 0 gdy Powłoka jest zrezowana. Tylko 1 kopia może być zrezowana na raz. Każda kopia posiada 1 użycie na netrun.</p>"
+      "description": "<p>\n  Non-Black ICE attacks against you are reduced to 0 while Rezzed. Only 1 copy\n  may be Rezzed at a time. Each copy has 1 use per Netrun.\n</p>\n"
     },
     "Hellbolt": {
       "name": "Piekielny pocisk",
-      "description": "<p>2k6 obrażeń bezpośrednio mózgowi Netrunnera. Jego sprzęt zajmuje się ogniem jeśli nie został odizolowany.</p>"
+      "description": "<p>\n  2d6 damage direct to Netrunner's Brain. Their gear catches fire if not\n  insulated.\n</p>\n"
     },
     "Nervescrub": {
       "name": "Nerwosol",
-      "description": "<p>Zmniejsza INT, REF i ZW Netrunnera o 1k6 (min. 1) na 1 godzinę.</p>"
+      "description": "<p>Lowers a Netrunner's INT, REF, and DEX by 1d6 (min. 1) for 1 hour.</p>\n"
     },
     "Poison Flatline": {
       "name": "Trujący zgon",
-      "description": "<p>Niszczy losowy program niebędący Czarnym LODem na cyberdeku wroga.</p>"
+      "description": "<p>Destroys a non-Black ICE on the enemy's cyberdeck at random.</p>\n"
     },
     "See Ya": {
       "name": "Mam cię!",
-      "description": "<p>+2 do wszystkich testów Zwiadu dopóki jest zrezowany.</p>"
+      "description": "<p>+2 to Pathfinder Checks while Rezzed.</p>\n"
     },
     "Shield": {
       "name": "Tarcza",
-      "description": "<p>Pierwszy udany atak na mózg netrunnera od programu niebędącym Czarnym LODem zostaje zatrzymany. Tylko 1 kopia może być zrezowana na raz. Każda kopia posiada 1 użycie na netrun.</p>"
+      "description": "<p>\n  The first successful brain damage attack from a Non-Black ICE Program is\n  stopped. Only 1 copy may be Rezzed at a time. Each copy has 1 use per Netrun.\n</p>\n"
     },
     "Speedy Gonzalvez": {
       "name": "Szybki Bil",
-      "description": "<p>+2 do Prędkości dopóki jest zrezowany.</p>"
+      "description": "<p>+2 to Speed while Rezzed.</p>\n"
     },
     "Superglue": {
       "name": "Superklej",
-      "description": "<p>Netrunner nie może przejść dalej wgłąb lokalnej sieci lub bezpiecznie się wypiąć przez 1k6 rund. 1 użycie na netrun.</p>"
+      "description": "<p>\n  The netrunner cannot progress further into the Local NET or safely jacking out\n  for 1d6 rounds.1 use per netrun.\n</p>\n"
     },
     "Sword": {
       "name": "Miecz",
-      "description": "<p>Zadaje 3k6 REZ Czarnemu LODowi lub 2k6 REZ programom niebędącym Czarnym LODem.</p>"
+      "description": "<p>Deals 3d6 REZ to Black ICE or 2d6 Rez damage to non-Black ICE.</p>\n"
     },
     "Vrizzbolt": {
       "name": "Mózgoklep",
-      "description": "<p>Zadaje 1k6 obrażeń bezpośrednio mózgowi netrunnera. Zmniejsza maksymalna ilość akcji w sieci jakie może wykonać o 1 (min. 2) podczas jego następnej tury.</p>"
+      "description": "<p>\n  1d6 damage direct to Netrunner's Brain. Lowers total net actions they can take\n  by 1 (min. 2) on their next turn.\n</p>\n"
     },
     "Worm": {
       "name": "Robak",
-      "description": "<p>+2 do wszystkich testów Backdooru dopóki jest zrezowany.</p>"
+      "description": "<p>+2 to Backdoor Checks while Rezzed.</p>\n"
     }
   }
 }

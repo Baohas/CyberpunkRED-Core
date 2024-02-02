@@ -4,47 +4,47 @@
   "entries": {
     "Broken Arm": {
       "name": "Braço Quebrado",
-      "description": "<p>Inutilizável. Solte o que estava segurando</p>"
+      "description": "<p>Arm unusable. Drop what it was holding</p>\n"
     },
     "Broken Leg": {
       "name": "Perna Quebrada",
-      "description": "<p>-4 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>-4 MOVE (minimum MOVE of 1).</p>\n"
     },
     "Broken Ribs": {
       "name": "Costelas Quebradas",
-      "description": "<p>Recebe dano crítico no final do turno se andou mais de 4m/jardas</p>"
+      "description": "<p>Suffer crit damage at end of turn if you move more than 4m/yrds on foot.</p>\n"
     },
     "Collapsed Lung": {
       "name": "Pulmão Comprometido",
-      "description": "<p>-2 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>-2 MOVE (minimum MOVE of 1).</p>\n"
     },
     "Crushed Fingers": {
       "name": "Dedos Esmagados",
-      "description": "<p>-4 em ações de mão.</p>"
+      "description": "<p>-4 to hand actions.</p>\n"
     },
     "Dismembered Arm": {
       "name": "Braço Desmembrado",
-      "description": "<p>Braço removido, solte o que estava segurando.</p>"
+      "description": "<p>Arm removed, drop anything it was holding.</p>\n"
     },
     "Dismembered Hand": {
       "name": "Mão Desmembrada",
-      "description": "<p>Mão removida, solte o que estava segurando.</p>"
+      "description": "<p>Hand removed, drop anything it was holding.</p>\n"
     },
     "Dismembered Leg": {
       "name": "Perna Desmembrada",
-      "description": "<p>Leg is removed. Cannot Dodge. -6 MOVE (minimum MOVE of 1).</p>"
+      "description": "<p>Leg is removed. Cannot Dodge. -6 MOVE (minimum MOVE of 1).</p>\n"
     },
     "Foreign Object": {
       "name": "Objeto Estranho",
-      "description": "<p>Recebe dano crítico no final do turno se andou mais de 4m/jardas.</p>"
+      "description": "<p>Suffer Crit damage at end of turn if move more than 4m/yrds on foot.</p>\n"
     },
     "Spinal Injury": {
       "name": "Lesão na Espinha",
-      "description": "<p>No próximo turno: Sem ação, apenas movimento.</p>"
+      "description": "<p>Next turn: No action, move only.</p>\n"
     },
     "Torn Muscle": {
       "name": "Músculo Rasgado",
-      "description": "<p>-2 to Melee Attacks.</p>"
+      "description": "<p>-2 to Melee Attacks.</p>\n"
     }
   }
 }

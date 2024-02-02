@@ -6,454 +6,454 @@
   "entries": {
     "Air Pistol": {
       "name": "Pistolet à air comprimé",
-      "description": "<p>Pistolet moyen exotique. Tire des billes de peinture. Si chargé avec de l'acide, peut réduire une armure à chaque impact. Reportez-vous à la description complète de l'article p. 349.</p>",
+      "description": "<p>\n  An Exotic Medium Pistol. Fires Paintballs. If loaded with acid it is able to\n  ablate armor by one with each hit.\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Assault Rifle (Excellent)": {
       "name": "Fusil d'assaut +",
-      "description": "<p>Un fusil d'assaut. +1 au jet d'attaque.</p>",
+      "description": "<p>A standard-issue assault rifle. +1 to Attack.</p>\n",
       "dvTable": "SD Fusil d'assaut"
     },
     "Assault Rifle (Poor)": {
       "name": "Fusil d'assaut -",
-      "description": "<p>Un fusil d'assaut. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "description": "<p>\n  A standard-issue assault rifle. If you roll 1 on Attack (Crit fail) the gun\n  jams and requires using an action to clear.\n</p>\n",
       "dvTable": "SD Fusil d'assaut"
     },
     "Assault Rifle": {
       "name": "Fusil d'assaut",
-      "description": "<p>Un fusil d'assaut ordinaire. </p>",
+      "description": "<p>A standard-issue assault rifle.</p>\n",
       "dvTable": "SD Fusil d'assaut"
     },
     "Baseball Bat (Excellent)": {
       "name": "Batte de baseball +",
-      "description": "<p>Une batte de baseball ordinaire. +1 au jet d'attaque.</p>"
+      "description": "<p>\n  A firmly weighted bat. A favourite weapon of the Baseball Furies. +1 to\n  Attack.\n</p>\n"
     },
     "Baseball Bat (Poor)": {
       "name": "Batte de baseball -",
-      "description": "<p>Une batte de baseball ordinaire. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>\n  A firmly weighted bat. A favourite weapon of the Baseball Furies. If you roll\n  1 on Attack (Crit Fail) the weapon fails in some way and requires an action to\n  be made usable again.\n</p>\n"
     },
     "Baseball Bat": {
       "name": "Batte de baseball",
-      "description": "<p>Une batte de baseball ordinaire. </p>"
+      "description": "<p>A firmly weighted bat. A favourite weapon of the Baseball Furies.</p>\n"
     },
     "Bow (Excellent)": {
       "name": "Arc +",
-      "description": "<p>Un arc qualité excellente, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>",
+      "description": "<p>An excellent quality bow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>\n",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Bow (Poor)": {
       "name": "Arc -",
-      "description": "<p>Un arc qualité mauvaise, rechargement compris dans l'action d'attaque.</p><p>Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>",
+      "description": "<p>A poor quality bow, reloaded as part of an Attack action.</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Bow": {
       "name": "Arc",
-      "description": "<p>Un arc revitalisé, rechargement compris dans l'action d'attaque.</p>",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack action.</p>\n",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Chainsaw (Excellent)": {
       "name": "Tronçonneuse +",
-      "description": "<p>Une Tronçonneuse qui fonctionne avec du CHOOH². 2-3 heures d'utilisation par réservoir. +1 au jet d'attaque.</p>"
+      "description": "<p>\n  A portable, refuellable saw that runs on CHOOH<sup>2</sup>. Lasts about 2-3\n  hours on one tank. +1 to Attack.\n</p>\n"
     },
     "Chainsaw (Poor)": {
       "name": "Tronçonneuse -",
-      "description": "<p>Une Tronçonneuse qui fonctionne avec du CHOOH². 2-3 heures d'utilisation par réservoir. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>\n  A portable, refuellable saw that runs on CHOOH<sup>2</sup>. Lasts about 2-3\n  hours on one tank. If you roll 1 on Attack (Crit Fail) the weapon fails in\n  some way and requires an action to be made usable again.\n</p>\n"
     },
     "Chainsaw": {
       "name": "Tronçonneuse",
-      "description": "<p>Une Tronçonneuse qui fonctionne avec du CHOOH². 2-3 heures d'utilisation par réservoir.</p>"
+      "description": "<p>\n  A portable, refuellable saw that runs on CHOOH<sup>2</sup>. Lasts about 2-3\n  hours on one tank.\n</p>\n"
     },
     "Combat Knife (Excellent)": {
       "name": "Couteau de Combat +",
-      "description": "<p>Un couteau adapté aux combats de rues. +1 au jet d'attaque.</p>"
+      "description": "<p>A knife fit for the streets. +1 to Attack.</p>\n"
     },
     "Combat Knife (Poor)": {
       "name": "Couteau de Combat -",
-      "description": "<p>Un couteau adapté aux combats de rues. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>\n  A knife fit for the streets. If you roll 1 on Attack (Crit Fail) the weapon\n  fails in some way and requires an action to be made usable again.\n</p>\n"
     },
     "Combat Knife": {
       "name": "Couteau de Combat",
-      "description": "<p>Un couteau adapté aux combats de rues.</p>"
+      "description": "<p>A knife fit for the streets.</p>\n"
     },
     "Crossbow (Excellent)": {
       "name": "Arbalète +",
-      "description": "<p>Une arbalète qualité excellente, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>",
+      "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>\n",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Crossbow (Poor)": {
       "name": "Arbalète -",
-      "description": "<p>Une arbalète moderne qualité mauvaise, rechargement compris dans l'attaque.</p><p>Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>",
+      "description": "<p>A poor quality crossbow, reloaded as part of an Attack action.</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Crossbow": {
       "name": "Arbalète",
-      "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>",
+      "description": "<p>A standard crossbow, reloaded as part of an Attack action.</p>\n",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Crowbar (Excellent)": {
       "name": "Pied de biche +",
-      "description": "<p>Utile comme outil et en tant qu'arme. +1 au jet d'attaque.</p>"
+      "description": "<p>\n  Useful as both a tool and a weapon. A rod of iron with split wedges on the\n  ends. +1 to Attack.\n</p>\n"
     },
     "Crowbar (Poor)": {
       "name": "Pied de biche -",
-      "description": "<p>Utile comme outil et en tant qu'arme. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable. </p>"
+      "description": "<p>\n  Useful as both a tool and a weapon. A rod of iron with split wedges on the\n  ends. If you roll 1 on Attack (Crit Fail) the weapon fails in some way and\n  requires an action to be made usable again.\n</p>\n"
     },
     "Crowbar": {
       "name": "Pied de biche",
-      "description": "<p>Utile comme outil et en tant qu'arme.</p>"
+      "description": "<p>\n  Useful as both a tool and a weapon. A rod of iron with split wedges on the\n  ends.\n</p>\n"
     },
     "Dartgun": {
       "name": "Pistolet à fléchettes",
-      "description": "<p>Un pistolet exotique très lourd qu'on ne peut charger qu'avec des munitions de type flèche. Contrairement aux autres\narmes tirant des flèches, le pistolet à fléchettes est muni d'un chargeur spécial de 8 flèches et doit être rechargé comme\nun pistolet très lourd standard</p>",
+      "description": "<p>An Exotic Very Heavy Pistol.</p>\n",
       "dvTable": "SD Pistolet"
     },
     "EMG-86 Railgun": {
       "name": "Canon électrique EMG-86",
-      "description": "<p>Fusil d'assaut exotique. Il ne peut pas faire de tirs ciblés ou de tirs automatiques. Nécessite COR 11 ou plus (sauf s'il est monté). Ignore toute armure en dessous de PA11*. Reportez-vous à la description complète de l'élément en p. 347.</p>\n<p><em>*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles blindées</em></p>",
+      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11*.\n</p>\n<p>\n  <em\n    >*Not currently supported to will need to manually apply damage to armoured\n    targets</em\n  >\n</p>\n",
       "dvTable": "SD Fusil d'assaut"
     },
     "Flamethrower": {
       "name": "Crache-feu",
-      "description": "<p>Un fusil à pompe exotique qui utilise la compétence Armes lourdes. Reportez-vous à la description complète de l'objet p. 347.</p>",
+      "description": "<p>An Exotic Shotgun that uses the Heavy Weapons Skill.</p>\n",
       "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Grenade Launcher (Excellent)": {
       "name": "Lance-grenades +",
-      "description": "<p>Lance-grenades avec lesquels vous pouvez utiliser une grande variété de grenades. +1 au jet d'attaque.</p>",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n  +1 to Attack.\n</p>\n",
       "dvTable": "SD Lance-grenades"
     },
     "Grenade Launcher (Poor)": {
       "name": "Lance-grenades -",
-      "description": "<p>Lance-grenades avec lesquels vous pouvez utiliser une grande variété de grenades. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action\n  to clear.\n</p>\n",
       "dvTable": "SD Lance-grenades"
     },
     "Grenade Launcher": {
       "name": "Lance-grenades",
-      "description": "<p>Lance-grenades avec lesquels vous pouvez utiliser une grande variété de grenades.</p>",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n</p>\n",
       "dvTable": "SD Lance-grenades"
     },
     "Heavy Melee (Excellent)": {
       "name": "Arme de mêlée lourde (Excellent)",
-      "description": "<p>Arme de mêlée lourde de qualité excellente.</p>\n<p>+1 à l'attaque.</p>"
+      "description": "<p>Generic Excellent Quality Heavy Melee Weapon.</p>\n<p>+1 to Attack.</p>\n"
     },
     "Heavy Melee (Poor)": {
       "name": "Arme de mêlée Lourde (Mauvais)",
-      "description": "<p>Arme de mêlée lourde générique de mauvaise qualité.</p>\n<p>Si vous tirez un 1 sur un jet d'attaque (échec critique) l'arme échoue d'une certaine manière et nécessite une action pour être à nouveau utilisable.<p>\n<p>&nbsp;</p>"
+      "description": "<p>Generic Poor Quality Heavy Melee Weapon.</p>\n<p>\n  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires\n  an action to be made usable again.\n</p>\n"
     },
     "Heavy Melee": {
       "name": "Arme de mêlée Lourde",
-      "description": "<p>Arme de mêlée lourde générique</p>"
+      "description": "<p>Generic Heavy Melee Weapon.</p>\n"
     },
     "Heavy Pistol (Excellent)": {
       "name": "Pistolet lourd +",
-      "description": "<p>Un pistolet lourd. Dissimulable. +1 au jet d'attaque.</p>",
+      "description": "<p>A concealable, heavy pistol. +1 to Attack.</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Heavy Pistol (Poor)": {
       "name": "Pistolet lourd -",
-      "description": "<p>Un pistolet lourd. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>",
+      "description": "<p>\n  A concealable, heavy pistol. If you roll 1 on Attack (Crit fail) the gun jams\n  and requires using an action to clear.\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Heavy Pistol": {
       "name": "Pistolet lourd",
-      "description": "<p>Un pistolet lourd. Dissimulable </p>",
+      "description": "<p>A concealable, heavy pistol.</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Heavy SMG (Excellent)": {
       "name": "Pistolet-mitrailleur lourd +",
-      "description": "<p>Un pistolet-mitrailleur lourd. Non dissimulable. +1 au jet d'attaque.</p>",
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>\n",
       "dvTable": "SD Pistolet-mitrailleur"
     },
     "Heavy SMG (Poor)": {
       "name": "Pistolet-mitrailleur lourd -",
-      "description": "<p>Pistolet-mitrailleur lourd. Non dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "description": "<p>\n  A heavy SMG. Due to its size it can't be concealed. If you roll 1 on Attack\n  (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
       "dvTable": "SD Pistolet-mitrailleur"
     },
     "Heavy SMG": {
       "name": "Pistolet-mitrailleur lourd",
-      "description": "<p>Un pistolet-mitrailleur lourd. Non dissimulable.</p>",
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed.</p>\n",
       "dvTable": "SD Pistolet-mitrailleur"
     },
     "Helicopter Blades (Excellent)": {
       "name": "Pale d'hélicoptère +",
-      "description": "<p>Récupéré sur un hélicoptère délabré, ces lames sont capables de trancher presque n'importe quoi. +1 au jet d'attaque.</p>"
+      "description": "<p>\n  Taken from a derelict aircraft, these blades are capable of slicing most\n  things easily. +1 to Attack.\n</p>\n"
     },
     "Helicopter Blades (Poor)": {
       "name": "Pale d'hélicoptère -",
-      "description": "<p>Récupéré sur un hélicoptère délabré, ces lames sont capables de trancher presque n'importe quoi. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>\n  Taken from a derelict aircraft, these blades are capable of slicing most\n  things easily. If you roll 1 on Attack (Crit Fail) the weapon fails in some\n  way and requires an action to be made usable again.\n</p>\n"
     },
     "Helicopter Blades": {
       "name": "Pale d'hélicoptère",
-      "description": "<p>Récupéré sur un hélicoptère délabré, ces lames sont capables de trancher presque n'importe quoi.</p>"
+      "description": "<p>\n  Taken from a derelict aircraft, these blades are capable of slicing most\n  things easily.\n</p>\n"
     },
     "Helix": {
       "name": "Helix",
-      "description": "<p>Un fusil d'assaut exotique qui n'utilise que le tir automatique. Contient 40 balles, tire 20 balles à chaque attaque. Utilise les règles Tir automatique avec un multiplicateur maximum de 5. Nécessite COR 11 ou supérieur (sauf s'il est monté). Reportez-vous à la description complète de l'élément à la p. 348.</p>",
+      "description": "<p>\n  An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20\n  bullets with each attack. Uses Autofire rules with a multiplication up to a\n  maximum of 5. Requires BODY 11 or higher (unless mounted).\n</p>\n",
       "dvTable": "SD Fusil d'assaut"
     },
     "Hurricane Assault Weapon": {
       "name": "Fusil d'assaut Hurricane",
-      "description": "<p>Fusil à pompe exotique, 2 Att/round. Ne peut pas viser. Chargeur en cylindre de 16 cartouches.\nRecharger cette arme nécessite deux tours. Tirer avec le fusil d'assaut nécessite COR de 11 ou plus (sauf s'il est monté).</p>",
+      "description": "<p>\n  An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or\n  higher (unless mounted).\n</p>\n",
       "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Lead Pipe (Excellent)": {
       "name": "Tuyau en plomb +",
-      "description": "<p>Un cylindre creux, fait en métal ou en fibre de verre. +1 au jet d'attaque.</p>"
+      "description": "<p>\n  A hollow cylinder, typically made of metal or fiberglass. It may have conveyed\n  fluids once. +1 to Attack.\n</p>\n"
     },
     "Lead Pipe (Poor)": {
       "name": "Tuyau en plomb -",
-      "description": "<p>Un cylindre creux, fait en métal ou en fibre de verre. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>\n  A hollow cylinder, typically made of metal or fiberglass. It may have conveyed\n  fluids once. If you roll 1 on Attack (Crit Fail) the weapon fails in some way\n  and requires an action to be made usable again.\n</p>\n"
     },
     "Lead Pipe": {
       "name": "Tuyau en plomb",
-      "description": "<p>Un cylindre creux, fait en métal ou en fibre de verre.</p>"
+      "description": "<p>\n  A hollow cylinder, typically made of metal or fiberglass. It may have conveyed\n  fluids once.\n</p>\n"
     },
     "Light Melee (Excellent)": {
       "name": "Arme de mêlée légère (Excellent)",
-      "description": "<p>Arme de mêlée légère de qualité excellente.</p>\n<p>+1 à l'attaque.</p>"
+      "description": "<p>Generic Excellent Qulaity Light Melee weapon.</p>\n<p>+1 to Attack.</p>\n"
     },
     "Light Melee (Poor)": {
       "name": "Arme de mêlée légère (Mauvais)",
-      "description": "<p>Arme de mêlée légère de mauvaise qualité.</p>\n<p>Si vous lancez 1 lors de l'attaque (échec critique) l'arme échoue d'une manière ou d'une autre et nécessite une action pour être réutilisable.</p>"
+      "description": "<p>Generic Poor Quality Light Melee weapon.</p>\n<p>\n  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires\n  an action to be made usable again.\n</p>\n"
     },
     "Light Melee": {
       "name": "Arme de mêlée Légère",
-      "description": "<p>Arme de mêlée légère générique.</p>"
+      "description": "<p>Generic Light Melee weapon.</p>\n"
     },
     "Machete (Excellent)": {
       "name": "Machette +",
-      "description": "<p>Un couteau à lame longue qui à une variété d'utilisations. +1 au jet d'attaque.</p>"
+      "description": "<p>\n  A long-bladed knife with a variety of uses. Known to be a favourite to some\n  gangs of Night City. +1 to Attack.\n</p>\n"
     },
     "Machete (Poor)": {
       "name": "Machette -",
-      "description": "<p>Un couteau à lame longue qui à une variété d'utilisations. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>\n  A long-bladed knife with a variety of uses. Known to be a favourite to some\n  gangs of Night City. If you roll 1 on Attack (Crit Fail) the weapon fails in\n  some way and requires an action to be made usable again.\n</p>\n"
     },
     "Machete": {
       "name": "Machette",
-      "description": "<p>Un couteau à lame longue qui à une variété d'utilisations.</p>"
+      "description": "<p>\n  A long-bladed knife with a variety of uses. Known to be a favourite to some\n  gangs of Night City.\n</p>\n"
     },
     "Malorian Arms 3516": {
       "name": "3516 de Malorian Arms",
-      "description": "<p>Pistolet exotique très lourd, qualité excellente. Fourni avec une liaison smartgun* qui doit être utilisée. Reportez-vous à la description complète de l'article sur pg. 347.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'arme</em></p>",
+      "description": "<p>\n  An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link*\n  that must be used.\n</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>\n",
       "dvTable": "SD Pistolet"
     },
     "Martial Arts": {
       "name": "Arts martiaux",
-      "description": "<p>Utilise ses poings/pieds pour attaquer, ignore la moitié de l'armure de l'adversaire.</p>"
+      "description": "<p>Throwing hands, does ignore half armor.</p>\n"
     },
     "Medium Melee (Excellent)": {
       "name": "Arme de mêlée moyenne (Excellent)",
-      "description": "<p>Arme de mêlée intermédiaire générique d'excellente qualité.</p>\n<p>+1 à l'attaque.</p>"
+      "description": "<p>Generic Excellent Quality Medium Melee Weapon.</p>\n<p>+1 to Attack.</p>\n"
     },
     "Medium Melee (Poor)": {
       "name": "Arme de mêlée moyenne (Mauvais)",
-      "description": "<p>Arme de mêlée intermédiaire générique de mauvaise qualité.</p>\n<p>Si vous lancez 1 lors de l'attaque (échec critique) l'arme échoue d'une manière ou d'une autre et nécessite une action pour être réutilisable.</p>"
+      "description": "<p>Generic Poor Quality Medium Melee Weapon.</p>\n<p>\n  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires\n  an action to be made usable again.\n</p>\n"
     },
     "Medium Melee": {
       "name": "Arme de mêlée Moyenne",
-      "description": "<p>Arme de mêlée intermédiaire générique.</p>"
+      "description": "<p>Generic Medium Melee Weapon.</p>\n"
     },
     "Medium Pistol (Excellent)": {
       "name": "Pistolet moyen +",
-      "description": "<p>Un pistolet de taille moyenne. Dissimulable. +1 au jet d'attaque.</p>",
+      "description": "<p>A concealable, medium-sized pistol. +1 to Attack.</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Medium Pistol (Poor)": {
       "name": "Pistolet moyen -",
-      "description": "<p>Un pistolet de taille moyenne de mauvaise qualité. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>",
+      "description": "<p>\n  A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the\n  gun jams and requires using an action to clear.\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Medium Pistol": {
       "name": "Pistolet moyen",
-      "description": "<p>Un pistolet de taille moyenne. Dissimulable </p>",
+      "description": "<p>A concealable, medium-sized pistol.</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Microwaver": {
       "name": "Canon à ondes",
-      "description": "<p>Pistolet exotique très lourd. Permet de rendre inopérants les cyberimplants ou les composants électriques pendant une minute, à moins que la cible ne réussisse un jet de Cybertech SD15. Reportez-vous à la description complète de l'élément sur p. 347.</p>",
+      "description": "<p>\n  An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be\n  rendered inoperable for a minute unless the target passes a\n  <strong>DV15 Cybertech Check</strong>.\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Mono-Three": {
       "name": "Mono-Trois",
-      "description": "<p>Arme exotique de mêlée très lourde à deux mains, excellente qualité. Katana de haute technologie, capable d'ignorer n'importe quelle armure de moins de PA11*. Référez-vous à la description complète de l'article en p. 348.</p>\n<p><em>*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles blindées</em></p>"
+      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11*.\n</p>\n<p>\n  <em\n    >*Not currently supported to will need to manually apply damage to armoured\n    targets</em\n  >\n</p>\n"
     },
     "Naginata (Excellent)": {
       "name": "Naginata +",
-      "description": "<p>Arme d'origine japonaise, proche du fauchard à lame courbe. Utilisé par les équipes tactiques d'Arasaka lors des confrontations aux corps à corps. +1 au jet d'attaque.</p>"
+      "description": "<p>\n  A japanese wooden pole with a curved blade on one side. Favoured by Arasaka\n  tactical teams for close engagements. +1 to Attack.\n</p>\n"
     },
     "Naginata (Poor)": {
       "name": "Naginata -",
-      "description": "<p>Arme d'origine japonaise, proche du fauchard à lame courbe. Utilisé par les équipes tactiques d'Arasaka lors des confrontations aux corps à corps. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>\n  A japanese wooden pole with a curved blade on one side. Favoured by Arasaka\n  tactical teams for close engagements. If you roll 1 on Attack (Crit Fail) the\n  weapon fails in some way and requires an action to be made usable again.\n</p>\n"
     },
     "Naginata": {
       "name": "Naginata",
-      "description": "<p>Arme d'origine japonaise, proche du fauchard à lame courbe. Utilisé par les équipes tactiques d'Arasaka lors des confrontations aux corps à corps.</p>"
+      "description": "<p>\n  A japanese wooden pole with a curved blade on one side. Favoured by Arasaka\n  tactical teams for close engagements.\n</p>\n"
     },
     "Rippers": {
       "name": "Éventreurs",
-      "description": "<p>Cybermatériel de type Arme. Vous devez avoir installé le cybermatériel approprié.</p>"
+      "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed.</p>\n"
     },
     "Rocket Launcher (Excellent)": {
       "name": "Lance-roquettes +",
-      "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts. +1 au jet d'attaque.</p>",
+      "description": "<p>\n  Bring out the big guns. This rocket launcher will do some damage. +1 to\n  Attack.\n</p>\n",
       "dvTable": "SD Lance-roquettes"
     },
     "Rocket Launcher (Poor)": {
       "name": "Lance-roquettes -",
-      "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "description": "<p>\n  Bring out the big guns. This rocket launcher will do some damage. If you roll\n  1 on Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
       "dvTable": "SD Lance-roquettes"
     },
     "Rocket Launcher": {
       "name": "Lance-roquettes",
-      "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts.</p>",
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>\n",
       "dvTable": "SD Lance-roquettes"
     },
     "Shotgun (Excellent)": {
       "name": "Fusil à pompe +",
-      "description": "<p>Fusil à pompe polyvalent. +1 au jet d'attaque.</p>",
+      "description": "<p>An all-purpose shotgun. +1 to Attack.</p>\n",
       "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Shotgun (Poor)": {
       "name": "Fusil à pompe -",
-      "description": "<p>Un fusil à pompe polyvalent. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "description": "<p>\n  An all-purpose shotgun. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n",
       "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Shotgun": {
       "name": "Fusil à pompe",
-      "description": "<p>Un fusil à pompe polyvalent. </p>",
+      "description": "<p>An all-purpose shotgun.</p>\n",
       "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Shrieker": {
       "name": "Hurleur",
-      "description": "<p>Pistolet Exotique très lourd. Nécessite une protection auditive contre les blessures critiques, sinon réussir un jet de Résistance à la torture/aux drogues SD15 ou subir une blessure critique Oreilles endommagées. Reportez-vous à la description complète de l'article sur le p. 348.</p>",
+      "description": "<p>\n  An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear\n  critical injuries. The target must beat a\n  <strong>DV15 Resist Torture/Drugs</strong> Check or suffer the Damaged Ear\n  critical injury.\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Sledgehammer (Excellent)": {
       "name": "Masse +",
-      "description": "<p>Une sorte de grand maillet avec une tête métallique plate. +1 au jet d'attaque.</p>"
+      "description": "<p>\n  A large mallet-like object with a flat metal head which distributes impacted\n  force over a wide area. +1 to Attack.\n</p>\n"
     },
     "Sledgehammer (Poor)": {
       "name": "Masse -",
-      "description": "<p>Une sorte de grand maillet avec une tête métallique plate. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>\n  A large mallet-like object with a flat metal head which distributes impacted\n  force over a wide area. If you roll 1 on Attack (Crit Fail) the weapon fails\n  in some way and requires an action to be made usable again.\n</p>\n"
     },
     "Sledgehammer": {
       "name": "Masse",
-      "description": "<p>Une sorte de grand maillet avec une tête métallique plate.</p>"
+      "description": "<p>\n  A large mallet-like object with a flat metal head which distributes impacted\n  force over a wide area.\n</p>\n"
     },
     "SMG (Excellent)": {
       "name": "Pistolet-mitrailleur +",
-      "description": "<p>Un pistolet-mitrailleur. Dissimulable. +1 au jet d'attaque.</p>",
+      "description": "<p>A concealable SMG. +1 to Attack.</p>\n",
       "dvTable": "SD Pistolet-mitrailleur"
     },
     "SMG (Poor)": {
       "name": "Pistolet-mitrailleur -",
-      "description": "<p>Pistolet-mitrailleur. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "description": "<p>\n  A concealable SMG. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n",
       "dvTable": "SD Pistolet-mitrailleur"
     },
     "SMG": {
       "name": "Pistolet-mitrailleur",
-      "description": "<p>Un pistolet-mitrailleur. Dissimulable.</p>",
+      "description": "<p>A concealable SMG.</p>\n",
       "dvTable": "SD Pistolet-mitrailleur"
     },
     "Sniper Rifle (Excellent)": {
       "name": "Fusil de précision +",
-      "description": "<p>Un fusil utilisé afin d'engager des cibles à longue distance. +1 au jet d'attaque.</p>",
+      "description": "<p>\n  A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.\n</p>\n",
       "dvTable": "SD Fusil de précision"
     },
     "Sniper Rifle (Poor)": {
       "name": "Fusil de précision -",
-      "description": "<p>Un fusil utilisé afin d'engager des cibles à longue distance. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "description": "<p>\n  A long-distance sniper rifle. Holds 4 bullets in a magazine. If you roll 1 on\n  Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
       "dvTable": "SD Fusil de précision"
     },
     "Sniper Rifle": {
       "name": "Fusil de précision",
-      "description": "<p>Un fusil utilisé afin d'engager des cibles à longue distance.</p>",
+      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine.</p>\n",
       "dvTable": "SD Fusil de précision"
     },
     "Spiked Bat (Excellent)": {
       "name": "Batte cloutée +",
-      "description": "<p>Une batte de baseball ayant de multiples clous. +1 au jet d'attaque.</p>"
+      "description": "<p>\n  An advancement over a regular bat. A number of nails have been hammered\n  through towards the tip. +1 to Attack.\n</p>\n"
     },
     "Spiked Bat (Poor)": {
       "name": "Batte cloutée -",
-      "description": "<p>Une batte de baseball ayant de multiples clous. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>\n  An advancement over a regular bat. A number of nails have been hammered\n  through towards the tip. If you roll 1 on Attack (Crit Fail) the weapon fails\n  in some way and requires an action to be made usable again.\n</p>\n"
     },
     "Spiked Bat": {
       "name": "Batte cloutée",
-      "description": "<p>Une batte de baseball ayant de multiples clous.</p>"
+      "description": "<p>\n  An advancement over a regular bat. A number of nails have been hammered\n  through towards the tip.\n</p>\n"
     },
     "Stun Baton": {
       "name": "Matraque électrique",
-      "description": "<p>Arme exotique de mêlée moyenne à une main. Si les dégâts qu'elle inflige réduisent une cible sous 1 PS, la cible est\nsimplement inconsciente et reste à 1 PS. Les dégâts infligés par cette arme ne peuvent pas causer de blessure critique et\nne perforent pas l'armure</p>"
+      "description": "<p>\n  An Exotic, One-handed Medium Melee Weapon. Target is knocked unconscious if\n  damage dealt would reduce them to under 1 HP. Doesn't cause Critical Injuries\n  or ablate armor.\n</p>\n"
     },
     "Stun Gun": {
       "name": "Pistolet à impulsion électrique",
-      "description": "<p>Pistolet lourd exotique. La cible est inconsciente si les dégâts infligés la réduisent à moins d'1 PS. Ne cause pas de blessures critiques ne de perforation d'armure. Reportez-vous à la description complète de l'objet sur le pg. 349.</p>",
+      "description": "<p>\n  An Exotic Heavy Pistol. Target is knocked unconscious if damage dealt would\n  reduce them to under 1 HP. Doesn't cause Critical Injuries or ablate armor.\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Sword (Excellent)": {
       "name": "Épée +",
-      "description": "<p>Une arme avec une lame et une poignée. Conçue pour couper. +1 au jet d'attaque.</p>"
+      "description": "<p>\n  A bladed, hilted weapon. Specifically designed for cutting or thrusting. +1 to\n  Attack.\n</p>\n"
     },
     "Sword (Poor)": {
       "name": "Épée -",
-      "description": "<p>Une arme avec une lame et une poignée. Conçue pour couper. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>\n  A bladed, hilted weapon. Specifically designed for cutting or thrusting. If\n  you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires an\n  action to be made usable again.\n</p>\n"
     },
     "Sword": {
       "name": "Épée",
-      "description": "<p>Une arme avec une lame et une poignée.</p>"
+      "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting.</p>\n"
     },
     "Thrown Weapon": {
       "name": "Arme de lancer",
-      "description": "<p>Le lancer basique d'un objet. Utilisez une action pour faire une attaque à distance à un maximum de 25 m. Les cibles peuvent choisir d'esquiver votre lancer s'ils le peuvent. Les armes de mêlée infligent leurs dégâts de base, mais ne pénètrent pas la moitié des PA.</p>",
+      "description": "<p>\n  A basic lob or pitch of an object. Use an Action to make a Ranged Attack at up\n  to 25m/yds. Targets can choose to Dodge your throw if they can Dodge bullets.\n  Melee weapons deal their base damage, but don't penetrate half SP.\n</p>\n",
       "dvTable": "SD Arme de lancer"
     },
     "Tomahawk (Excellent)": {
       "name": "Tomahawk +",
-      "description": "<p>Une hache légère qui peut être lancée. +1 au jet d'attaque.</p>"
+      "description": "<p>A light axe that can be thrown. +1 to Attack.</p>\n"
     },
     "Tomahawk (Poor)": {
       "name": "Tomahawk -",
-      "description": "<p>Une hache légère qui peut être lancée. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "description": "<p>\n  A light axe that can be thrown. If you roll 1 on Attack (Crit Fail) the weapon\n  fails in some way and requires an action to be made usable again.\n</p>\n"
     },
     "Tomahawk": {
       "name": "Tomahawk",
-      "description": "<p>Une hache légère qui peut être lancée.</p>"
+      "description": "<p>A light axe that can be thrown.</p>\n"
     },
     "U-56 Grenade Launcher \"Cowboy\"": {
       "name": "Lance-Grenades \"Cowboy\" U-56",
-      "description": "<p>Lance-grenades exotique à 2 Att/round. Capacité de quatre grenades. Peut lancer n'importe quel type de grenade. Recharger cette arme demande deux tours. Tirer avec le lance-grenades nécessite COR de 11 ou plus (sauf s'il est monté).</p>",
+      "description": "<p>\n  An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11\n  or higher (unless mounted).\n</p>\n",
       "dvTable": "SD Lance-grenades"
     },
     "Unarmed": {
       "name": "Désarmé",
-      "description": "<p>Utilise ses poings/pieds pour attaquer, n'ignore pas la moitié de l'armure de l'adversaire.</p>"
+      "description": "<p>Throwing hands, does not ignore half armor.</p>\n"
     },
     "Very Heavy Melee (Excellent)": {
       "name": "Arme de mêlée très lourde (Excellent)",
-      "description": "<p>Arme de mêlée très lourde générique d'excellente qualité.</p>\n<p>+1 à l'attaque.</p>"
+      "description": "<p>Generic Excellent Quality Very Heavy Melee Weapon.</p>\n<p>+1 to Attack.</p>\n"
     },
     "Very Heavy Melee (Poor)": {
       "name": "Arme de mêlée très lourde (Mauvais)",
-      "description": "<p>Arme de mêlée très lourde générique de mauvaise qualité.</p>\n<p>Si vous lancez 1 lors de l'attaque (échec critique) l'arme échoue d'une manière ou d'une autre et nécessite une action pour être à nouveau utilisable.</p>"
+      "description": "<p>Generic Poor Quality Very Heavy Melee Weapon.</p>\n<p>\n  If you roll 1 on Attack (Crit Fail) the weapon fails in some way and requires\n  an action to be made usable again.\n</p>\n"
     },
     "Very Heavy Melee": {
       "name": "Arme de mêlée très lourde",
-      "description": "<p>Arme de mêlée très lourde générique.</p>"
+      "description": "<p>Generic Very Heavy Melee Weapon.</p>\n"
     },
     "Very Heavy Pistol (Excellent)": {
       "name": "Pistolet très lourd +",
-      "description": "<p>Un pistolet très lourd. Non dissimulable. +1 au jet d'attaque.</p>",
+      "description": "<p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Very Heavy Pistol (Poor)": {
       "name": "Pistolet très lourd -",
-      "description": "<p>Un pistolet très lourd. Non dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>",
+      "description": "<p>\n  A very heavy pistol. It can't be concealed. If you roll 1 on Attack (Crit\n  fail) the gun jams and requires using an action to clear.\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Very Heavy Pistol": {
       "name": "Pistolet très lourd",
-      "description": "<p>Un pistolet très lourd. Non dissimulable </p>",
+      "description": "<p>A very heavy pistol. It can't be concealed.</p>\n",
       "dvTable": "SD Pistolet"
     }
   }

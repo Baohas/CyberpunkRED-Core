@@ -2,113 +2,117 @@
   "label": "Objets",
   "mapping": {},
   "entries": {
+    "MechaMan Smart Glove": {
+      "name": "MechaMan Smart Glove",
+      "description": "<p>\n  A biking glove that comes with a subdermal grip pre-installed* which requires\n  a neural link to use. Has 1 additional cyberarm option slot. Any options\n  stored in the Cyberhand or meat hand are inaccessible while the Smart Glove is\n  being worn.<br /><em\n    >*Subdermal Grip must be added and installed manually after acquiring the\n    glove, this effectively consumes one of the option slots.</em\n  >\n</p>\n"
+    },
     "AirWell 50": {
       "name": "AirWell 50",
-      "description": "<p>Produit assez d'eau pour une personne. Pour plus d'informations, voir Black Chrome page 48.</p>"
+      "description": "<p>Produces enough water to sustain a person.</p>\n"
     },
     "Banshee Microphone": {
       "name": "Microphone Banshee",
-      "description": "<p>Casque micro sans fil. Donne à l'utilisateur un bonus de +2 aux jets de compétence Instrument (Chant). Ne se cumule pas avec d'autres bonus pour Instrument. Pour plus d'informations, voir Black Chrome page 40.</p>"
+      "description": "<p>\n  Wireless Microphone Headset. Gives the User a +2 bonus to Play Instrument\n  (Singing) Skill Checks while worn. Doesn't stack with other bonuses to Play\n  Instrument.\n</p>\n"
     },
     "ChipVault": {
       "name": "Coffre à puces",
-      "description": "<p>Peut contenir jusqu'à 8 puces. Les puces stockées à l'intérieur sont immunisés contre les effets IEM. Pour plus d'informations, voir Black Chrome page 44.</p>"
+      "description": "<p>\n  Can hold up to 8 pieces of Chipware. Chipware stored inside are immune to EMP\n  effects.\n</p>\n"
     },
     "CO2 Tank": {
       "name": "Réservoir de CO2",
-      "description": "<p>Un réservoir de CO2 conçu pour être utilisé avec l'armure Masetto AirRider. Doit être remplacé après chaque utilisation. Reportez-vous à la description complète de l'objet dans Black Chrome p. 33.</p>"
+      "description": "<p>\n  A CO<sub>2</sub> tank designed for usage with the Masetto AirRider armor. Must\n  be replaced after every usage.\n</p>\n"
     },
     "Doberman 500": {
       "name": "Doberman 500",
-      "description": "<p>Drone canin personnel qui peut être lié à un Agent.&nbsp;<br>Se référer à ses règles sur la page 46 de Black Chrome.</p>"
+      "description": "<p>Canine Personal Drone that can be linked to an Agent.</p>\n"
     },
     "Drink Master 3000": {
       "name": "Drink Master 3000",
-      "description": "<p>Permet de faire 10 boissons d'une bibliothèque de 3000 boissons avant de devoir être rempli de 100ed de matériaux. Peut également faire du Smash. Pour plus d'informations, voir Black Chrome page 42.</p>"
+      "description": "<p>\n  Can make 10 beverages out of a 3000 beverages library before needing to be\n  refilled. Can also make Smash.\n</p>\n"
     },
     "EL-F4-NT Linear Frame": {
       "name": "Charpente linéaire EL-F4-NT",
-      "description": "<p>Exosquelette. Augmente le COR à 12 tant qu'il est équipé. Aucun changement à vos PS ou à votre sauvegarde contre la mort. A des outils technologiques pré-installés. (Voir Black Chrome p. 55 pour plus de détails.)</p>"
+      "description": "<p>Exoskeleton.</p>\n<ul>\n  <li>Increases BODY to 12 while equipped</li>\n  <li>Does not affect HP or Deathsave</li>\n  <li>Has pre-installed pair of Techtools</li>\n</ul>\n"
     },
     "Fūma Kotarō Linear Frame": {
       "name": "Charpente linéaire Fūma Kotarō",
-      "description": "<p>Exosquelette.</p>\n<ul>\n<li>Nécessite 2 prises d'interface</li>\n<li>Augmente COR à 12 lorsque vous y êtes branché</li>\n<li>N'affecte pas les PS ou la sauvegarde contre la mort</li>\n<li>Discrétion +2</li>\n</ul>\n<p>Livré avec deux armes de mêlée lourdes exotique d'excellente qualité et une arme de mêlée légère exotique de qualité excellente*.</p>\n<p>Voir Black Chrome p. 52 pour plus de détails.</p>\n<p><em>* Doit être ajouté manuellement.</em></p>"
+      "description": "<p>Exoskeleton.</p>\n<ul>\n  <li>Requires 2 Interface Plugs</li>\n  <li>Increases BODY to 12 while plugged in</li>\n  <li>Does not affect HP or Deathsave</li>\n  <li>Stealth +2</li>\n  <li>Drawing and sheathing the frame's weapons does not require an Action</li>\n  <li>\n    A Conceal check is not required for the weapons concealed in the frame.\n  </li>\n  <li>\n    <p>Frame has one of two weapon options*:</p>\n    <ul>\n      <li>Two excellent quality exotic heavy melee weapons</li>\n      <li>\n        One excellent quality light melee weapon and one excellent quality\n        exotic very heavy melee weapon\n      </li>\n    </ul>\n  </li>\n</ul>\n<p><em>* Must be manually added.</em></p>\n"
     },
     "Jeeves Executive Garment Bag": {
       "name": "Sac à vêtements corpos Jeeves",
-      "description": "<p>Sac qui peut réparer un vêtement ou une armure à la fois. Pour plus d'informations, voir Black Chrome page 43.</p>"
+      "description": "<p>Bag that can repair one piece of fashion or armor at a time.</p>\n"
     },
     "Laser Light Electric Guitar": {
       "name": "Guitare électrique Laser Light",
-      "description": "<p>Guitare électrique qui donne à l'utilisateur +1 au jet de compétence Instrument (Guitare). Cette guitare compte également comme une installation de tatouage lumineux lorsqu'elle est portée. Pour plus d'informations, voir Black Chrome page 41.</p>"
+      "description": "<p>\n  Electric Guitar that gives the User a +1 to their Play Instrument (Guitar)\n  Skill Check. This guitar also counts as one installation of Light Tattoo\n  Fashionware while worn.\n</p>\n"
     },
     "LF-001 SWAT Linear Frame": {
       "name": "Charpente linéaire LF-001 SWAT",
-      "description": "<p>Exosquelette. Nécessite 2 prises d'interface. Augmente COR à 12 lorsque vous y êtes branché. Aucun changement de vos PS ou de la sauvegarde contre la mort. Ignore la pénalité de mouvement normale pour l'escalade et la natation. (Voir Black Chrome p. 53 pour plus de détails.)</p>"
+      "description": "<p>Exoskeleton.</p>\n<ul>\n  <li>Requires 2 Interface Plugs</li>\n  <li>Increases BODY to 12 while plugged in</li>\n  <li>Does not affect HP or Deathsave</li>\n  <li>Ignores the normal movement penalty for climbing and swimming</li>\n</ul>\n"
     },
     "Mr. Biscuit Multi-Food Processor": {
       "name": "Robot multialiment Mr. Biscuit",
-      "description": "<p>Peut nourrir un groupe de 10 personnes maximum à l'extérieur de la ville. Pour plus d'informations, voir Black Chrome Page 49.</p>"
+      "description": "<p>Can sustain a group of up to 10 people when in the Outskirts.</p>\n"
     },
     "Nitro Ultra9": {
       "name": "Nitro Ultra9",
-      "description": "<p>Peut être versé dans le réservoir des véhicules pour le remplir en une action. Donne des bonus à la mobilité au détriment de la sécurité. Pour plus d'informations, voir Black Chrome page 49.</p>"
+      "description": "<p>\n  Can be poured into a Vehicle's tank to refill it as an Action. Gives bonuses\n  to movement at the expense of safety.\n</p>\n"
     },
     "One Touch Habitat": {
       "name": "Habitat Un-Clic",
-      "description": "<p>Offre une protection contre les éléments. Considéré comme Dormir dans la nature ou comme Dormir dans les rues. Pour plus d'informations, voir Black Chrome page 48.</p>"
+      "description": "<p>\n  Provides protection from Exposure. Counts as Sleeping in the Wilderness or as\n  Sleeping on the Streets.\n</p>\n"
     },
     "Porta-Printer": {
       "name": "Porta-Printer",
-      "description": "<p>Atelier miniature. Permet à un Techie d'utiliser les capacités Expert en amélioration et Expert en fabrication n'importe où tant qu'il a des outils technologiques. Pour plus d'informations, voir Black Chrome page 43.</p>"
+      "description": "<p>\n  Miniature Workshop. Allows a Tech to use Upgrade and Fabrication Experstise\n  anywhere as long as they have techtools.\n</p>\n"
     },
     "RapiDeploy Sheath": {
       "name": "Fourreau RapiDeploy",
-      "description": "<p>Donne à l'utilisateur un bonus de +2 à son jet de compétence Dissimulation/Révélation d'objet s'il est utilisé pour dissimuler une arme qui peut être dissimulée. Pour plus d'informations, voir Black Chrome page 47.</p>"
+      "description": "<p>\n  Gives the User a +2 bonus to their Conceal/Reveal Skill Check if used to\n  conceal a weapon already capable of concealment.\n</p>\n"
     },
     "Shower•in•a•Can": {
       "name": "Douche•en•Cannette",
-      "description": "<p>Déodorant en Spray. Désinfecte et désodorise. Une utilisation par cannette. Pour plus d'informations, voir Black Chrome page 38.</p>"
+      "description": "<p>Spray Deodorant. Desinfects and deodorize. One use per can.</p>\n"
     },
     "Sonic Boom Amp": {
       "name": "Ampli Sonic Boom",
-      "description": "<p>Quand lié à un instrument, l'utilisateur peut effectuer une action pour faire en sorte que tout le monde à proximité fasse un test de Résistance à la torture/aux drogues. Pour plus d'informations, voir Black Chrome page 40.</p>"
+      "description": "<p>\n  While linked to an instrument, the User can take an Action to make everyone\n  nearby make a Resist Torture/Drugs Check.\n</p>\n"
     },
     "SovOil Industrial Lubricant": {
       "name": "Lubrifiant industriel SovOil",
-      "description": "<p>Lubrifiant dans un petit tube pratique. Pour plus d'informations, voir Black Chrome page 56.</p>"
+      "description": "<p>Lubricant in a helpfully sized can.</p>\n"
     },
     "SovOil Medical Lubricant": {
       "name": "Lubrifiant médical SovOil",
-      "description": "<p>Lubrifiant dans un petit tube pratique. Pour plus d'informations, voir Black Chrome page 56.</p>"
+      "description": "<p>Lubricant in a helpfully sized can.</p>\n"
     },
     "SovOil Personal Lubricant": {
       "name": "Lubrifiant personnel SovOil",
-      "description": "<p>Lubrifiant dans un petit tube pratique. Pour plus d'informations, voir Black Chrome page 56.</p>"
+      "description": "<p>Lubricant in a helpfully sized can.</p>\n"
     },
     "Streetcase": {
       "name": "Streetcase",
-      "description": "<p>Peut transporter beaucoup d'éléments facilement accessibles dont vous avez besoin pour rester en sécurité. Pour plus d'informations, consultez Black Chrome page 47.</p>"
+      "description": "<p>Can carry many easily accessible items that YOU need to stay safe.</p>\n"
     },
     "Triti-Fizz": {
       "name": "Triti-Fizz",
-      "description": "<p>Boisson sans alcool préférée en Amérique du Nord. Pour plus d'informations, consultez Black Chrome page 124.</p>"
+      "description": "<p>North America's favorite soft drink.</p>\n"
     },
     "Typhoid Speaker": {
       "name": "Haut-parleur Typhoid",
-      "description": "<p>Lorsqu'il est lié à un ampli Sonic Boom de KillStrom, augmente le SD du test de Résistance à la torture/aux drogues. Pour plus d'informations, voir Black Chrome page 41.</p>"
+      "description": "<p>\n  When linked to a KillStrom Sonic Boom Amp, increases the DV of the Resist\n  Torture/Drugs Check.\n</p>\n"
     },
     "Universal Aqualung": {
       "name": "Branchie Universal",
-      "description": "<p>Lorsqu'il est porté, l'utilisateur peut respirer sous l'eau tant qu'il se trouve à moins de 10 m de la surface. Pour plus d'informations, voir Black Chrome Page 42.</p>"
+      "description": "<p>\n  When worn, User can breathe underwater as long as within 10 m/yards of the\n  surface.\n</p>\n"
     },
     "Vermilion Linear Frame": {
       "name": "Charpente linéaire Vermilion",
-      "description": "<p>Exosquelette. Nécessite 2 ports d'interface. Augmente le COR à 12 lorsque vous y êtes branché. Aucun changement de vos PS ou de la sauvegarde contre la mort. &nbsp;Aucune pénalité de mouvement pour le saut. En course votre mouvement est augmentée de 6m. (Voir Black Chrome p. 54 pour plus de détails.)</p>"
+      "description": "<p>Exoskeleton.</p>\n<ul>\n  <li>Requires 2 Interface Plugs</li>\n  <li>Increases BODY to 12 while plugged in</li>\n  <li>No changes to your HP or Deathsave</li>\n  <li>No movement penalty for jumping</li>\n  <li>Operates as if paired Skate Feet are installed</li>\n</ul>\n"
     },
     "WorldSat Aerial Sphere": {
       "name": "Sphère aérienne WorldSat",
-      "description": "<p>Une fois configuré, fournit un accès à un Citinet lorsque vous êtes à moins de 50 miles de la ville ou d'un autre dispositif Sphère aérienne WorldSat connectée au Citinet. Pour plus d'informations, voir Black Chrome page 50.</p>"
+      "description": "<p>\n  When set up, provides access to a Citinet when within 50 miles of the city or\n  of another set up WorldSat Aerial Sphere that is connected to the Citinet.\n</p>\n"
     }
   }
 }

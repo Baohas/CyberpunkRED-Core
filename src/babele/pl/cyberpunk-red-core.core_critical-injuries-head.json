@@ -4,47 +4,47 @@
   "entries": {
     "Brain Injury": {
       "name": "Uraz mózgu",
-      "description": "<p>-2 do wszystkich akcji. +1 PT do Testu Przeżywalności.</p>"
+      "description": "<p>-2 to actions.</p>\n"
     },
     "Broken Jaw": {
       "name": "Złamana szczęka",
-      "description": "<p>-4 do akcji mowy.</p>"
+      "description": "<p>-4 to Speech Actions.</p>\n"
     },
     "Concussion": {
       "name": "Wstrząśnienie mózgu",
-      "description": "<p>-2 to every action.</p>"
+      "description": "<p>-2 to every action.</p>\n"
     },
     "Cracked Skull": {
       "name": "Pęknięta czaszka",
-      "description": "<p>Triples damage to HP on aimed headshots (rather than the normal double damage).</p>"
+      "description": "<p>\n  Triples damage to HP on aimed headshots (rather than the normal double\n  damage).\n</p>\n"
     },
     "Crushed Windpipe": {
       "name": "Zmiażdżona krtań",
-      "description": "<p>Nie możesz mówić. +1 PT do Testu Przeżywalności.</p>"
+      "description": "<p>Cannot speak.</p>\n"
     },
     "Damaged Ear": {
       "name": "Uraz ucha",
-      "description": "<p>If move more than 4m/yds in a Turn, cannot move next turn. -2 to hearing based Perception.</p>"
+      "description": "<p>\n  If move more than 4m/yds in a Turn, cannot move next turn. -2 to hearing based\n  Perception.\n</p>\n"
     },
     "Damaged Eye": {
       "name": "Uraz oka",
-      "description": "<p>-2 to Ranged and Perception (Sight).</p>"
+      "description": "<p>-2 to Ranged and Perception (Sight).</p>\n"
     },
     "Foreign Object (H)": {
       "name": "Ciało obce (G)",
-      "description": "<p>Otrzymujesz obrażenia krytyczne tej rany na koniec tury jeśli ruszysz się więcej niż 4m/jardy pieszo. Pancerz nie redukuje tych obrażeń.</p>"
+      "description": "<p>Suffer Crit damage at end of turn if move more than 4m/yrds on foot.</p>\n"
     },
     "Lost Ear": {
       "name": "Urwane ucho",
-      "description": "<p>Ear is removed. If move more than 4m/yds in a Turn, cannot move next turn. -4 to hearing based Perception.</p>"
+      "description": "<p>\n  Ear is removed. If move more than 4m/yds in a Turn, cannot move next turn. -4\n  to hearing based Perception.\n</p>\n"
     },
     "Lost Eye": {
       "name": "Utrata oka",
-      "description": "<p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>"
+      "description": "<p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>\n"
     },
     "Whiplash": {
       "name": "Odgięciowy uraz kręgosłupa szyjnego",
-      "description": "<p>No other effects beyond increasing the base Death Save Penalty by 1.</p>"
+      "description": "<p>No other effects beyond increasing the base Death Save Penalty by 1.</p>\n"
     }
   }
 }

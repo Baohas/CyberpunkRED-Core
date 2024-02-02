@@ -4,55 +4,55 @@
   "entries": {
     "Appetite Controller": {
       "name": "Controlador de Apetito",
-      "description": "<p>Reprime la sensación de hambre. El usuario ignora la pérdida de Humanidad de sanciones por trauma de inanición, pero el usuario todavía puede morir de hambre. Tira Salvación contra la Muerte al comienzo del séptimo día consecutivo sin comer. +1 a las sucesivas tiradas de Salvación contra la Muerte cada día después.</p>\n<p>Requiere Biomonitor.</p>"
+      "description": "<p>\n  Suppresses hunger response. User ignores Humanity Loss penalties from\n  starvation trauma but User can still starve. Roll a Death Save at start of 7th\n  consecutive day without eating. +1 to successive Death Saves each day\n  afterwards.\n</p>\n<p>Requires Biomonitor.</p>\n"
     },
     "Cyberpillow": {
       "name": "Ciberalmohada",
-      "description": "<p>Una cómoda almohada que sale del ciberbrazo para las siestas sobre la marcha.</p>"
+      "description": "<p>A comfortable Cyberarm popout pillow for naps on the go.</p>\n"
     },
     "External Vidscreen": {
       "name": "Videopantalla Externa",
-      "description": "<p>Implantada pantalla de vídeo flexible. Utiliza un chip de memoria o un agente vinculado para transmitir vídeo a Videopantalla.</p>"
+      "description": "<p>\n  Implanted flexible video screen. Use a socketed Memory Chip or linked Agent to\n  stream video to Vidscreen.\n</p>\n"
     },
     "Holo Projector Palm": {
       "name": "Holo-Proyector de mano",
-      "description": "<p>Proyecta un pequeño holograma desde la palma del usuario. El usuario puede interactuar con el holograma para controlar las funciones de un agente vinculado. Se puede instalar en el brazo de la carne si es la única pieza de ciberware en ese brazo.</p>"
+      "description": "<p>\n  Projects a small hologram from the User&rsquo;s palm. User can interact with\n  hologram to control a linked Agent&rsquo;s functions. Can be installed in meat\n  arm if it&rsquo;s the only piece of cyberware in that arm.\n</p>\n"
     },
     "Kill Display": {
       "name": "Contador de Muertes",
-      "description": "<p>Contador alfanumérico subdermal que brilla claramente a través de la piel. Usa un agente vinculado para personalizar la salida. Comúnmente usado como contador de bajas.<br>Califica como un Tatuaje Luminoso. +2 Vestimenta y Estilo cuando el usuario tenga 3 o más Tatuajes Luminosos.</p>"
+      "description": "<p>\n  Subdermal Alphanumeric display that shines clearly through the skin. Use a\n  linked Agent to customize the output. Commonly used as &ldquo;kill\n  counter.&rdquo;<br />Qualifies as a Light Tattoo. +2 Wardrobe and Style when\n  the user has 3 or more Light Tattoos.\n</p>\n"
     },
     "Lead's Turn-On-Show-Off Nails": {
       "name": "Uñas Luminosas de Lead",
-      "description": "<p>Uñas iluminadas personalizables para cada punta de los dedos. Incluye herramientas para crear patrones personalizados. Los patrones de uñas se pueden descargar del CitiNet y sincronizar con un agente vinculado.<br>Califica como un Tatuaje Luminoso. +2 Vestimenta y Estilo cuando el usuario tiene 3 o más Tatuajes Luminosos.</p>"
+      "description": "<p>\n  Customizable illuminated nail for each fingertip. Includes pen tools for\n  creating custom patterns. Nail patterns can be downloaded from the CitiNet and\n  synced with a linked Agent.<br />Qualifies as a Light Tattoo. +2 Wardrobe and\n  Style when the user has 3 or more Light Tattoos.\n</p>\n"
     },
     "Mood Eye": {
       "name": "Ojo Animado",
-      "description": "<p>Lentes oculares que cambian de color. El color depende de un conector neuronal que escanea el humor. VD 21 de Actuación para simular un estado de ánimo y cambiar el color en consecuencia. Las lentes se pueden desactivar sin una acción.</p>\n<ul>\n<li>Rojo: Furia</li>\n<li>Azul: Pena</li>\n<li>Amarillo: Terror</li>\n<li>Rosa: Exitado</li>\n<li>Verde: Envidia</li>\n<li>Gray: Muerto</li>\n</ul>\n<p>Fashionware. Requiere Conector Neuronal.</p>"
+      "description": "<p>\n  Color-shifting eye lenses. Color is dependent on Neural Link \"mood\" scans.\n  <strong>DV 21 Acting</strong> check to fake a mood scan and change color\n  accordingly. Lenses can be deactivated without an action.\n</p>\n<ul>\n  <li>Red: Rage</li>\n  <li>Blue: Sorrow</li>\n  <li>Yellow: Terror</li>\n  <li>Pink: Horny</li>\n  <li>Green: Envy</li>\n  <li>Gray: Flatlined</li>\n</ul>\n<p>Fashionware. Requires Neural Link.</p>\n"
     },
     "NeuTongue": {
       "name": "Lengua Neutónica",
-      "description": "<p>Simula sensaciones de sabor. Utiliza un agente vinculado para personalizar los perfiles de sabor. Se puede desactivar sin una acción. No hay sensación de sabor cuando se desactiva.</p>\n<p>Reemplaza la lengua de la carne.</p>"
+      "description": "<p>\n  Simulates flavor sensations. Use a linked Agent to customize flavor profiles.\n  Can be deactivated without an Action. No sense of taste when deactivated.\n</p>\n<p>Replaces Meat tongue.</p>\n"
     },
     "PerfectFit Cyberfoot": {
       "name": "Ciberpie CalcePerfecto",
-      "description": "<p>Ajusta el tamaño de los pies para encajar perfectamente con cualquier calzado. El usuario puede ignorar las penalizaciones por llevar calzado, que de lo contrario sería incómodo o impracticable.<br>Se puede instalar en la pierna de carne si es la única pieza de ciberware de esa pierna.</p>"
+      "description": "<p>\n  Adjust foot size to perfectly fit any footwear. User can ignore penalties for\n  wearing footwear that would otherwise be uncomfortable or impracticable.<br />Can\n  be installed in meat leg if it&rsquo;s the only piece of cyberware in that\n  leg.\n</p>\n"
     },
     "PersonalPak KibbleWarmer": {
       "name": "Calentador de Paquetes de Kibble Personal",
-      "description": "<p>Compartimento interno con un elemento de calefacción de alta potencia, ideal para calentar comidas pre-empaquetadas.</p>"
+      "description": "<p>\n  Internal compartment with a high-powered heating element, ideal for warming up\n  pre-packaged meals.\n</p>\n"
     },
     "Pursuit Security Inc. Personal Shredder": {
       "name": "Triturador Personal de Pursuit Security Inc.",
-      "description": "<p>Triturador de papel de alto impacto, puede ser ocultado. Tiene un compartimento de almacenamiento interno para los residuos de papel.</p>"
+      "description": "<p>\n  Heavy duty paper shredder, can be concealed. Features an internal storage for\n  paper shreds.\n</p>\n"
     },
     "Sponsored Covering (Cyberarm)": {
       "name": "Cobertura Patrocinada (Ciberbrazo)",
-      "description": "<p>Gana 20ed mensualmente al llevar un anuncio luminoso en tu Ciberbrazo. El usuario puede ser responsable de pagar la cuota de instalación. El patrocinio corporativo puede ser revocado si se violan los términos, tales como oscurecer el anuncio con ropa o envolverse en actividades inapropiadas.</p>\n<p>No se puede instalar en el brazo de carne.</p>"
+      "description": "<p>\n  Earn 20eb monthly by sporting a light-up advertisement on your Cyberarm. User\n  may be responsible for paying the installation fee. Corporate sponsorship may\n  be revoked if the terms are violated, such as obscuring the advertisement with\n  clothing or engaging in &ldquo;off-brand&rdquo; activities.\n</p>\n<p>Can not be installed in Meat arm.</p>\n"
     },
     "Sponsored Covering (Cyberleg)": {
       "name": "Cobertura Patrocinada (Ciberpierna)",
-      "description": "<p>Gana 20ed mensualmente al llevar un anuncio luminoso en tu Ciberpierna. El usuario puede ser responsable de pagar la cuota de instalación. El patrocinio corporativo puede ser revocado si se violan los términos, tales como oscurecer el anuncio con ropa o envolverse en actividades inapropiadas.</p>\n<p>No se puede instalar en el brazo de carne.</p>"
+      "description": "<p>\n  Earn 20eb monthly by sporting a light-up advertisement on your Cyberleg. User\n  may be responsible for paying the installation fee. Corporate sponsorship may\n  be revoked if the terms are violated, such as obscuring the advertisement with\n  clothing or engaging in &ldquo;off-brand&rdquo; activities.\n</p>\n<p>Can not be installed in Meat leg.</p>\n"
     }
   }
 }

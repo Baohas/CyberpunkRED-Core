@@ -4,63 +4,63 @@
   "entries": {
     "Armor": {
       "name": "Armadura",
-      "description": "<p>Reduz o dano cerebral em 4 enquanto Carregado. Limite de 1 cópia Carregada por vez. Cada cópia tem 1 uso por Invasão.</p>"
+      "description": "<p>\n  Reduce brain damage by 4 while Rezzed. Only 1 copy Rezzed at a time. Each copy\n  has 1 use per Netrun.\n</p>\n"
     },
     "Banhammer": {
       "name": "Banhammer",
-      "description": "<p>Causa 3d6 REZ a dano não-Preto ou 2d6 Rez ao Elixir Negro. </p>"
+      "description": "<p>Deals 3d6 REZ to non-Black ICE or 2d6 Rez damage to Black ICE.</p>\n"
     },
     "DeckKRASH": {
       "name": "DeckKRASH",
-      "description": "<p>Força o Trilha Rede a Desconectar de forma insegura. </p>"
+      "description": "<p>Forces Netrunner to Jack Out unsafely.</p>\n"
     },
     "Eraser": {
       "name": "Eraser",
-      "description": "<p>+2 para Capa verificações enquanto Rezzed.</p>"
+      "description": "<p>+2 to Cloak Checks while Rezzed.</p>\n"
     },
     "Flak": {
       "name": "Armadura",
-      "description": "<p>Os ataques de não Black ICE contra você são reduzidos a 0 enquanto Carregado. Apenas 1 cópia pode ser Carregada de cada vez. Cada cópia tem 1 uso por Invasão.</p>"
+      "description": "<p>\n  Non-Black ICE attacks against you are reduced to 0 while Rezzed. Only 1 copy\n  may be Rezzed at a time. Each copy has 1 use per Netrun.\n</p>\n"
     },
     "Hellbolt": {
       "name": "Hellbolt",
-      "description": "<p>2d6 de dano direto ao cérebro do Trilha Rede. O alvo pega fogo se o console não tiver isolamento elétrico. </p>"
+      "description": "<p>\n  2d6 damage direct to Netrunner's Brain. Their gear catches fire if not\n  insulated.\n</p>\n"
     },
     "Nervescrub": {
       "name": "Nervescrub",
-      "description": "<p>Por 1 hora, diminui o INT, REF e DES por 1d6 (min. 1).</p>"
+      "description": "<p>Lowers a Netrunner's INT, REF, and DEX by 1d6 (min. 1) for 1 hour.</p>\n"
     },
     "Poison Flatline": {
       "name": "Alinhamento Venenoso",
-      "description": "<p>Destrui um gelo fora do preto no baralho inimigo aleAtoriamente.</p>"
+      "description": "<p>Destroys a non-Black ICE on the enemy's cyberdeck at random.</p>\n"
     },
     "See Ya": {
       "name": "See Ya",
-      "description": "<p>+2 para os Verificadores de Descobridor enquanto Rezido.</p>"
+      "description": "<p>+2 to Pathfinder Checks while Rezzed.</p>\n"
     },
     "Shield": {
       "name": "Escudos",
-      "description": "<p>O primeiro ataque ao cérebro de um Programa ICE não Negro é interrompido. Apenas 1 cópia pode ser Rezada de cada vez. Cada cópia tem 1 uso por Invasão.</p>"
+      "description": "<p>\n  The first successful brain damage attack from a Non-Black ICE Program is\n  stopped. Only 1 copy may be Rezzed at a time. Each copy has 1 use per Netrun.\n</p>\n"
     },
     "Speedy Gonzalvez": {
       "name": "Veloz Gonzalvez",
-      "description": "<p>+2 a Velocidade enquanto Rezido.</p>"
+      "description": "<p>+2 to Speed while Rezzed.</p>\n"
     },
     "Superglue": {
       "name": "Super-cola",
-      "description": "<p>O Trilha Rede não pode continuar a descer na REDE local ou Desconectar com segurança por 1d6 turnos. Uso limitado de 1 por Invasão.</p>"
+      "description": "<p>\n  The netrunner cannot progress further into the Local NET or safely jacking out\n  for 1d6 rounds.1 use per netrun.\n</p>\n"
     },
     "Sword": {
       "name": "Espada",
-      "description": "<p>Causa dano 3d6 REZ ao Elixir Negro ou 2d6 Rez ao Elixir não-Negro. </p>"
+      "description": "<p>Deals 3d6 REZ to Black ICE or 2d6 Rez damage to non-Black ICE.</p>\n"
     },
     "Vrizzbolt": {
       "name": "Vrizzbolt",
-      "description": "<p>1d6 de dano direto ao cérebro do Trilha Rede. Abaixa o total de ações na REDE em 1 até o próximo turno. (mínimo de ações de REDE é 2)</p>"
+      "description": "<p>\n  1d6 damage direct to Netrunner's Brain. Lowers total net actions they can take\n  by 1 (min. 2) on their next turn.\n</p>\n"
     },
     "Worm": {
       "name": "Minhoca",
-      "description": "<p>+2 para as verificações da porta de trás enquanto Quebrado.</p>"
+      "description": "<p>+2 to Backdoor Checks while Rezzed.</p>\n"
     }
   }
 }

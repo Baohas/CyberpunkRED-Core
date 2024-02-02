@@ -4,75 +4,75 @@
   "entries": {
     "Bodyweight Suit": {
       "name": "Tuta Bodyweight",
-      "description": "<p>Tuta aderente per i Netrunner. Ha tasche protette per i Cyberdeck e supporta Connettori di interfaccia. Non può essere acquistata in due pezzi. Sempre indossata sia sulla Testa che sul Corpo. Aggiunge un solo Slot Opzione Hardware al Cyberdeck connesso. Nessuna penalità di armatura</p>"
+      "description": "<p>\n  Netrunner armored skinsuit. Can store Cyberdeck and support Interface Plugs.\n  Can't be bought in two pieces. Always worn on both Head and Body Location.\n  Adds one Hardware only Option Slot to connected Cyberdeck. No armor penalty.\n</p>\n"
     },
     "Bullet Proof Shield": {
       "name": "Scudo Balistico",
-      "description": "<p>Richiede l'utilizzo di un braccio e ha 10 HP ridotti dai danni subiti.</p>"
+      "description": "<p>Requires an arm and has HP that is reduced by damage.</p>\n"
     },
     "Flak (Body)": {
       "name": "Antischegge (Corpo)",
-      "description": "<p>Armatura placcata in metallo per resistere ai colpi più potenti. -4 a RIF, DES e VEL.</p>"
+      "description": "<p>\n  Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.\n</p>\n"
     },
     "Flak (Head)": {
       "name": "Antischegge (Testa)",
-      "description": "<p>Armatura placcata in metallo per resistere ai colpi più potenti sulla testa. -4 a RIF, DES e VEL.</p>"
+      "description": "<p>\n  Metal plated armor to resist the most powerful hits to your head. -4 to REF,\n  DEX, and MOVE.\n</p>\n"
     },
     "Heavy Armorjack (Body)": {
       "name": "Corazza Pesante (Corpo)",
-      "description": "<p>Versione più pesante di una Corazza. -2 a RIF, DES e VEL.</p>"
+      "description": "<p>Heavier version of an Armorjack. -2 to REF, DEX, and MOVE.</p>\n"
     },
     "Heavy Armorjack (Head)": {
       "name": "Corazza Pesante (Testa)",
-      "description": "<p>Versione più pesante di una Corazza per la testa. -2 a RIF, DES e VEL.</p>"
+      "description": "<p>Heavier version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>\n"
     },
-    "Kevlar (Body)": {
-      "name": "Kevlar (Corpo)",
-      "description": "<p>Abbigliamento Kevlar standard. Nessuna penalità all'armatura</p>"
+    "Kevlar® (Body)": {
+      "name": "Kevlar® (Body)",
+      "description": "<p>Standard Kevlar clothing. No armor penalty.</p>\n"
     },
-    "Kevlar (Head)": {
-      "name": "Kevlar (Testa)",
-      "description": "<p>Abbigliamento Kevlar standard. Nessuna penalità all'armatura</p>"
+    "Kevlar® (Head)": {
+      "name": "Kevlar® (Head)",
+      "description": "<p>Standard Kevlar for your head. No armor penalty.</p>\n"
     },
     "Leathers (Body)": {
       "name": "Cuoio (Corpo)",
-      "description": "<p>Armatura in pelle semplice. Nessuna penalità all'armatura</p>"
+      "description": "<p>Simple Leather armor. No armor penalty.</p>\n"
     },
     "Leathers (Head)": {
       "name": "Cuoio (Testa)",
-      "description": "<p>Armatura in pelle semplice per la tua testa. Nessuna penalità all'armatura</p>"
+      "description": "<p>Simple Leather armor for your head. No armor penalty.</p>\n"
     },
     "Light Armorjack (Body)": {
       "name": "Corazza Leggera (Corpo)",
-      "description": "<p>Versione leggera di una Corazza. Nessuna penalità all'armatura</p>"
+      "description": "<p>Light version of an Armorjack. No armor penalty.</p>\n"
     },
     "Light Armorjack (Head)": {
       "name": "Corazza Leggera (Testa)",
-      "description": "<p>Versione leggera di una Corazza per la tua testa. Nessuna penalità all'armatura</p>"
+      "description": "<p>Light version of an Armorjack for your head. No armor penalty.</p>\n"
     },
     "Medium Armorjack (Body)": {
       "name": "Corazza Media (Corpo)",
-      "description": "<p>Versione media di una Corazza. -2 a RIF, DES e VEL.</p>"
+      "description": "<p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>\n"
     },
     "Medium Armorjack (Head)": {
       "name": "Corazza Media (Testa)",
-      "description": "<p>Versione media di una Corazza per la testa. Da -2 a RIF, DES e VEL.</p>"
+      "description": "<p>Medium version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>\n"
     },
-    "Metalgear (Body)": {
-      "name": "Metalgear (Corpo)",
-      "description": "<p>Armatura più pesante e potente in circolazione. Da -4 a RIF, DES e VEL.</p>"
+    "Metalgear® (Body)": {
+      "name": "Metalgear® (Body)",
+      "description": "<p>\n  Heaviest and most powerful armor in circulation. -4 to REF, DEX, and MOVE.\n</p>\n"
     },
-    "Metalgear (Head)": {
-      "name": "Metalgear (Testa)",
-      "description": "<p>Armatura più pesante e potente in circolazione. Protegge la testa con -4 a RIF, DES e VEL.</p>"
+    "Metalgear® (Head)": {
+      "name": "Metalgear® (Head)",
+      "description": "<p>\n  Heaviest and most powerful armor in circulation. Protects your head -4 to REF,\n  DEX, and MOVE.\n</p>\n"
     },
     "Skin Weave": {
       "name": "Skin Weave",
-      "description": "<p>Armatura del Cyberweare \"Skin Weave\".</p>"
+      "description": "<p>Armor Item for Skin Weave Cyberware.</p>\n"
     },
     "Subdermal Armor": {
       "name": "Armatura Subdermale",
-      "description": "<p>Armatura del Cyberweare \"Armatura Subdermale\".</p>"
+      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>\n"
     }
   }
 }

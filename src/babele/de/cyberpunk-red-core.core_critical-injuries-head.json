@@ -4,47 +4,47 @@
   "entries": {
     "Brain Injury": {
       "name": "Hirntrauma",
-      "description": "<p>-2 auf alle Aktionen.</p>"
+      "description": "<p>-2 to actions.</p>\n"
     },
     "Broken Jaw": {
       "name": "Kieferbruch",
-      "description": "<p>-4 auf alle Aktionen mit Sprache</p>"
+      "description": "<p>-4 to Speech Actions.</p>\n"
     },
     "Concussion": {
       "name": "Gehirnerschütterung",
-      "description": "<p>-2 auf alle Aktionen.</p>"
+      "description": "<p>-2 to every action.</p>\n"
     },
     "Cracked Skull": {
       "name": "Schädeltrauma",
-      "description": "<p>Verdreifacht den TP-Schaden durch gezielte Kopfschüsse (statt des normalen zweifachen Schadens).</p>"
+      "description": "<p>\n  Triples damage to HP on aimed headshots (rather than the normal double\n  damage).\n</p>\n"
     },
     "Crushed Windpipe": {
       "name": "Zerquetschte Luftröhre",
-      "description": "<p>Du kannst nicht sprechen.</p>"
+      "description": "<p>Cannot speak.</p>\n"
     },
     "Damaged Ear": {
       "name": "Ohrenschaden",
-      "description": "<p>Wenn du dich mehr als 4 Meter in einem Zug bewegst, kannst du im nächsten Zug gar keine Bewegungsaktion durchführen. -2 auf Wahrnehmungsproben beim Hören.</p>"
+      "description": "<p>\n  If move more than 4m/yds in a Turn, cannot move next turn. -2 to hearing based\n  Perception.\n</p>\n"
     },
     "Damaged Eye": {
       "name": "Augenschaden",
-      "description": "<p>-2 für Fernkampfangriffe und Wahrnehmungsproben mit Sicht.</p>"
+      "description": "<p>-2 to Ranged and Perception (Sight).</p>\n"
     },
     "Foreign Object (H)": {
       "name": "Fremdkörper (Kopf)",
-      "description": "<p>Wenn du dich mehr als 4 Meter in einem Zug bewegst, wird am Ende des Zuges der Bonusschaden der Kritischen Verletzung direkt von deinen TP abgezogen.</p>"
+      "description": "<p>Suffer Crit damage at end of turn if move more than 4m/yrds on foot.</p>\n"
     },
     "Lost Ear": {
       "name": "Verlorenes Ohr",
-      "description": "<p>Dein Ohr ist verloren. Wenn du dich mehr als 4 Meter in einem Zug bewegst, kannst du im nächsten Zug gar keine Bewegungsaktion durchführen. -4 auf Wahrnehmungsproben beim Hören.</p>"
+      "description": "<p>\n  Ear is removed. If move more than 4m/yds in a Turn, cannot move next turn. -4\n  to hearing based Perception.\n</p>\n"
     },
     "Lost Eye": {
       "name": "Verlorenes Auge",
-      "description": "<p>Dein Auge ist verloren. -4 für Fernkampfangriffe und Wahrnehmung mit Sicht.</p>"
+      "description": "<p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>\n"
     },
     "Whiplash": {
       "name": "Schleudertrauma",
-      "description": "<p>Grundmalus für die Traumaprobe wird um 1 erhöht. Kein weiterer Effekt.</p>"
+      "description": "<p>No other effects beyond increasing the base Death Save Penalty by 1.</p>\n"
     }
   }
 }

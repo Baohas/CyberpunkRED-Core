@@ -4,75 +4,75 @@
   "entries": {
     "Bodyweight Suit": {
       "name": "Combinaison connectée",
-      "description": "<p>Combinaison moulante pourvue de couches de gel de protection aggloméré par frittage et à haute absorption d'impact dans les zones vulnérables du corps. En plus de vous accorder une certaine protection, la combinaison connectée a de quoi stocker votre cyberconsole et recevoir vos ports d'interface neuronale. Beaucoup de Netrunners portent des vêtements par-dessus. Contrairement aux autres armures, la combinaison connectée ne s'achète pas en deux parties et doit toujours être portée sur vos zones du corps et de la tête. Une combinaison connectée ajouter un emplacement d'extension réservé au matériel à une cyberconsole.</p>"
+      "description": "<p>\n  Netrunner armored skinsuit. Can store Cyberdeck and support Interface Plugs.\n  Can't be bought in two pieces. Always worn on both Head and Body Location.\n  Adds one Hardware only Option Slot to connected Cyberdeck. No armor penalty.\n</p>\n"
     },
     "Bullet Proof Shield": {
       "name": "Bouclier balistique",
-      "description": "<p>Quand vous utilisez une main pour porter un bouclier, vous ne pouvez pas l'utilisez pour faire quoi ce soit d'autre. Tant qu'il reste des PS vous êtes à couvert. Si un bouclier tombe à 0 PS, il est détruit (jusqu'a ce qu'il soit réparé s'il est inorganique).</p>"
+      "description": "<p>Requires an arm and has HP that is reduced by damage.</p>\n"
     },
     "Flak (Body)": {
       "name": "Flak (Corps)",
-      "description": "<p>Armure avec des plaques métalliques conçues pour se protéger contre les armes explosives, les grenades, les fusils à pompe et les mines. -4 en REF, DEX et MOUV.</p>"
+      "description": "<p>\n  Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.\n</p>\n"
     },
     "Flak (Head)": {
       "name": "Flak (Tête)",
-      "description": "<p>Armure avec des plaques métalliques conçues pour se protéger contre les armes explosives, les grenades, les fusils à pompe et les mines. -4 en REF, DEX et MOUV.</p>"
+      "description": "<p>\n  Metal plated armor to resist the most powerful hits to your head. -4 to REF,\n  DEX, and MOVE.\n</p>\n"
     },
     "Heavy Armorjack (Body)": {
       "name": "Tenue pare-balles lourde (Corps)",
-      "description": "<p>Version la plus épaisse de toutes les tenues par-balles. -2 en REF, DEX et MOUV.</p>"
+      "description": "<p>Heavier version of an Armorjack. -2 to REF, DEX, and MOVE.</p>\n"
     },
     "Heavy Armorjack (Head)": {
       "name": "Tenue pare-balles lourde (Tête)",
-      "description": "<p>Version la plus épaisse de toutes les tenues par-balles. -2 en REF, DEX et MOUV.</p>"
+      "description": "<p>Heavier version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>\n"
     },
-    "Kevlar (Body)": {
-      "name": "Kevlar (Corps)",
-      "description": "<p>La protection de prédilection des 90 dernières années. Pas de pénalité d'armure.</p>"
+    "Kevlar® (Body)": {
+      "name": "Kevlar® (Body)",
+      "description": "<p>Standard Kevlar clothing. No armor penalty.</p>\n"
     },
-    "Kevlar (Head)": {
-      "name": "Kevlar (Tête)",
-      "description": "<p>La protection de prédilection des 90 dernières années. Pas de pénalité d'armure.</p>"
+    "Kevlar® (Head)": {
+      "name": "Kevlar® (Head)",
+      "description": "<p>Standard Kevlar for your head. No armor penalty.</p>\n"
     },
     "Leathers (Body)": {
       "name": "Cuir (Corps)",
-      "description": "<p>Tenue de cuir classique. Pas de pénalité d'armure.</p>"
+      "description": "<p>Simple Leather armor. No armor penalty.</p>\n"
     },
     "Leathers (Head)": {
       "name": "Cuir (Tête)",
-      "description": "<p>Tenue de cuir classique. Pas de pénalité d'armure.</p>"
+      "description": "<p>Simple Leather armor for your head. No armor penalty.</p>\n"
     },
     "Light Armorjack (Body)": {
       "name": "Tenue pare-balles légère (Corps)",
-      "description": "<p>Combinaison de Kevlar et de maillage plastique inséré dans celui de l'étoffe. La tenue pare-balles légère offre une protection supérieure, en particulier contre les balles à haute vélocité. Pas de pénalité d'armure.</p>"
+      "description": "<p>Light version of an Armorjack. No armor penalty.</p>\n"
     },
     "Light Armorjack (Head)": {
       "name": "Tenue pare-balles légère (Tête)",
-      "description": "<p>Combinaison de Kevlar et de maillage plastique inséré dans celui de l'étoffe. La tenue pare-balles légère offre une protection supérieure, en particulier contre les balles à haute vélocité. Pas de pénalité d'armure.</p>"
+      "description": "<p>Light version of an Armorjack for your head. No armor penalty.</p>\n"
     },
     "Medium Armorjack (Body)": {
       "name": "Tenue pare-balles moyenne(Corps)",
-      "description": "<p>Une tenue plus lourde, avec des plaques en plastique robuste renforcées par un maillage de Kevlar. -2 à REF, DEX et MOUV.</p>"
+      "description": "<p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>\n"
     },
     "Medium Armorjack (Head)": {
       "name": "Tenue pare-balles moyenne (Tête)",
-      "description": "<p>Une tenue plus lourde, avec des plaques en plastique robuste renforcées par un maillage de Kevlar. -2 à REF, DEX et MOUV.</p>"
+      "description": "<p>Medium version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>\n"
     },
-    "Metalgear (Body)": {
-      "name": "Metalgear (Corps)",
-      "description": "<p>Du métal et des plaques de plastique sur une combinsaison en maillage, Metalgear arrête presque tous les projectiles. -4 à REF, DEX et MOUV.</p>"
+    "Metalgear® (Body)": {
+      "name": "Metalgear® (Body)",
+      "description": "<p>\n  Heaviest and most powerful armor in circulation. -4 to REF, DEX, and MOVE.\n</p>\n"
     },
-    "Metalgear (Head)": {
-      "name": "Metalgear (Tête)",
-      "description": "<p>Du métal et des plaques de plastique sur une combinsaison en maillage, Metalgear arrête presque tous les projectiles. -4 à REF, DEX et MOUV.</p>"
+    "Metalgear® (Head)": {
+      "name": "Metalgear® (Head)",
+      "description": "<p>\n  Heaviest and most powerful armor in circulation. Protects your head -4 to REF,\n  DEX, and MOVE.\n</p>\n"
     },
     "Skin Weave": {
       "name": "Treillissage dermique",
-      "description": "<p>Cyberimplant peau tissée blindée</p>"
+      "description": "<p>Armor Item for Skin Weave Cyberware.</p>\n"
     },
     "Subdermal Armor": {
       "name": "Armure subdermique",
-      "description": "<p>Cyberimplant armure sous-cutanée</p>"
+      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>\n"
     }
   }
 }

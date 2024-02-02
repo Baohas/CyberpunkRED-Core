@@ -4,47 +4,47 @@
   "entries": {
     "Brain Injury": {
       "name": "Lesão no cérebro",
-      "description": "<p>-2 para ações.</p>"
+      "description": "<p>-2 to actions.</p>\n"
     },
     "Broken Jaw": {
       "name": "Geleia Quebrada",
-      "description": "<p>-4 a fala das ações.</p>"
+      "description": "<p>-4 to Speech Actions.</p>\n"
     },
     "Concussion": {
       "name": "Concussão",
-      "description": "<p>-2 to every action.</p>"
+      "description": "<p>-2 to every action.</p>\n"
     },
     "Cracked Skull": {
       "name": "Crânio Rachado",
-      "description": "<p>Triples damage to HP on aimed headshots (rather than the normal double damage).</p>"
+      "description": "<p>\n  Triples damage to HP on aimed headshots (rather than the normal double\n  damage).\n</p>\n"
     },
     "Crushed Windpipe": {
       "name": "Pipe de Vento Esmagado",
-      "description": "<p>Não fala.</p>"
+      "description": "<p>Cannot speak.</p>\n"
     },
     "Damaged Ear": {
       "name": "Orelha Danificada",
-      "description": "<p>If move more than 4m/yds in a Turn, cannot move next turn. -2 to hearing based Perception.</p>"
+      "description": "<p>\n  If move more than 4m/yds in a Turn, cannot move next turn. -2 to hearing based\n  Perception.\n</p>\n"
     },
     "Damaged Eye": {
       "name": "Olho Danificado",
-      "description": "<p>-2 to Ranged and Perception (Sight).</p>"
+      "description": "<p>-2 to Ranged and Perception (Sight).</p>\n"
     },
     "Foreign Object (H)": {
       "name": "Objeto Estrangeiro (H)",
-      "description": "<p>Recebe dano crítico no final do turno se andou mais de 4m/jardas.</p>"
+      "description": "<p>Suffer Crit damage at end of turn if move more than 4m/yrds on foot.</p>\n"
     },
     "Lost Ear": {
       "name": "Orelha Perdida",
-      "description": "<p>Ear is removed. If move more than 4m/yds in a Turn, cannot move next turn. -4 to hearing based Perception.</p>"
+      "description": "<p>\n  Ear is removed. If move more than 4m/yds in a Turn, cannot move next turn. -4\n  to hearing based Perception.\n</p>\n"
     },
     "Lost Eye": {
       "name": "Olho Perdido",
-      "description": "<p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>"
+      "description": "<p>Eye is removed. -4 to Ranged Attacks and vision based Perception.</p>\n"
     },
     "Whiplash": {
       "name": "Chicote",
-      "description": "<p>No other effects beyond increasing the base Death Save Penalty by 1.</p>"
+      "description": "<p>No other effects beyond increasing the base Death Save Penalty by 1.</p>\n"
     }
   }
 }

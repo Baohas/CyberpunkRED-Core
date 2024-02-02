@@ -6,209 +6,209 @@
   "entries": {
     "Armored Chassis": {
       "name": "Gepanzertes Chassis",
-      "description": "<p>Für alle Fahrzeuge. Panzert das Fahrzeug mit SW 13. Gilt nicht für die Glasscheiben.</p>"
+      "description": "<p>\n  Can be applied to all vehicles. Armors the vehicle to SP13. Doesn't affect the\n  glass.\n</p>\n"
     },
     "AV-4 Engine Upgrade": {
       "name": "AV-4-Triebwerk",
-      "description": "<p>Für alle Bodenfahrzeuge. Statte das Fahrzeug mit Aerodyne-Triebwerken aus, die das Fliegen ermöglichen. Beim Fliegen beträgt die narrative Geschwindigkeit 322 km/h und die Geschwindigkeit im Kampf 40. Die Fertigkeit Luftfahrzeug lenken ist zum Steuern in der Luft nötig.</p>"
+      "description": "<p>\n  Can be applied to all land vehicles. Adds Aerodyne thrusters to the vehicle,\n  allowing flight. While flying the vehicle has a narrative speed of 200MPH /\n  322KPH, and a combat speed of 40. The vehicle must be piloted using the Pilot\n  Air Vehicle skill while mid-air.\n</p>\n"
     },
     "Backup Drive": {
       "name": "Datensicherungslaufwerk",
-      "description": "<p>Speichert Programme, die kein Schwarzes ICE sind, bevor sie zerstört werden. Diese Programme können von einem Netrunner als Fleisch-Aktion wieder installiert werden.</p>"
+      "description": "<p>\n  Saves Non-Black IE programs when destroyed. These programs can be re-installed\n  by a Netrunner as a meat action.\n</p>\n"
     },
     "Bayonet": {
       "name": "Bajonett",
-      "description": "<p>Ein altes Konzept das noch immer gut funktioniert; ermöglicht es, die Waffe als Leichte Nahkampfwaffe zu nutzen. Während das Bayonet aufgesetzt ist, kann die Waffe nicht unter Kleidung verborgen werden.</p>"
+      "description": "<p>\n  An old idea that still works just as good; lets you use your gun as a light\n  melee weapon. While attached, the weapon can't be concealed under clothing.\n</p>\n"
     },
     "Bulletproof Glass": {
       "name": "Panzerglas",
-      "description": "<p>Für alle Fahrzeuge. Alle Glasscheiben gelten nun als Deckung mit 15 TP. Kann ein zweites Mal aufgerüstet werden auf 30 TP. Alle Fenster nehmen separat Schaden.</p>"
+      "description": "<p>\n  Can be applied to all vehicles. All glass on the vehicle is now considered\n  cover with 15 HP. Can be taken a second time to upgrade to 30HP. All windows\n  take damage individually.\n</p>\n<p>Refer to the cover rules in CP:R, pg. 182.</p>\n"
     },
     "Combat Plow": {
       "name": "Kampfpflug",
-      "description": "<p>Für alle Boden- und Wasserfahrzeuge außer Bikes und Jetskis. Wenn du etwas frontal rammst, nimmt das Fahrzeug keinen Schaden und kein Insasse erleidet die Kritische Verletzung Schleudertrauma. Wenn das Fahrzeug durch NOS beschleunigt wurde, erhöht sich der dadurch angerichtete Schaden um 2d6.</p>"
+      "description": "<p>\n  Can be applied to all land and sea vehicles, except Bikes and Jetskies. When\n  you ram something with the front of your vehicle, your vehicle doesn't take\n  damage and nobody inside suffers from the Whiplash critical injury. You deal\n  2d6 additional ramming damage if your vehicle was boosted by NOS on the turn\n  you ram the object.\n</p>\n"
     },
     "Communications Center": {
       "name": "Kommunikationszentrum",
-      "description": "<p>Für alle Fahrzeuge. Touchscreen-Konsole, die als Agent dient und Stauraum mit 6 <strong>Funkkommunikatoren</strong>, 6 <strong>Störer/Entstörer</strong>, <strong>Sendersuche/Musikwiedergabe</strong>, einem <strong>Peilsucher</strong> mit 6 verbundenen <strong>Peilsendern</strong> und einem <strong>Audiorekorder</strong>.</p>"
+      "description": "<p>\n  Can be applied to all vehicles. Touchscreen console that functions as an\n  Agent, along with a storage unit containing 6\n  <strong>Radio Communicators</strong>, 6\n  <strong>Scrambler/Descramblers</strong>, a\n  <strong>Radio Scanner/Music Player</strong>, a\n  <strong>Homing tracer</strong> with 6 tracers, and an\n  <strong>Audio Recorder</strong>.\n</p>\n"
     },
     "Deployable Spike Strip": {
       "name": "Entfaltbares Nagelband",
-      "description": "<p>Kann auf alle Bodenfahrzeuge angewendet werden. Als Aktion kann der Fahrer ein Nagelband entfalten. Entfaltet müssen alle verfolgenden Fahrzeuge einen Wurf auf Bodenfahrzeug lenken gegen SG 17 bestehen, damit ihr Fahrzeug nicht 4d6 Schaden nimmt, als wäre ein Schwachpunkt getroffen worden. Ersatz-Nagelstreifen kosten 10eb.</p>\n<p>Diese Verbesserung kann mehrfach installiert werden. Mit jeder Verbesserung erhöht sich die Anzahl der Nagelbänder, die entfaltet werden können bevor das System nachgeladen werden muss um 1. Das System kann nicht nachgeladen werden, während sich das Fahrzeug bewegt.</p>"
+      "description": "<p>\n  Can be applied to all groundcars. As an Action, the driver can deploy a spike\n  strip. While deployed, any closely trailing vehicles with tires must make a\n  DV17 Drive Land Vehicle Check. On a failure, their vehicle takes 4d6 damage as\n  if hitting a weak point. Replacement spike strips cost 10eb.\n</p>\n<p>\n  You may install this upgrade multiple times, each upgrade increases the amount\n  of spike strips that can be deployed before the system requires reloading, and\n  it cannot be reloaded while the vehicle is moving.\n</p>\n"
     },
     "DNA Lock": {
       "name": "DNS-Schloss",
-      "description": "<p>Ein Cyberdeck mit einem DNS-Schloss. Ein verschlossenes Cyberdeck kann nur mit dem biometrischen Schlüssel oder einer Probe auf Elektronik/Sicherheitstechnik gegen SG 17 geöffnet werden.</p>"
+      "description": "<p>\n  Uses biometrics to lock the cyberdeck. Requires\n  <strong>DV17 Electronics/Security Tech</strong> Check to crack.\n</p>\n"
     },
     "Drum Magazine (Assault Rifle)": {
       "name": "Trommelmagazin (Sturmgewehr)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 45 Schuss.</p>"
+      "description": "<p>Increases magazine size to a massive 45 bullets.</p>\n"
     },
     "Drum Magazine (Grenade Launcher)": {
       "name": "Trommelmagazin (Granatwerfer)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 6 Granaten.</p>"
+      "description": "<p>Increases magazine size to a massive 6 grenades.</p>\n"
     },
     "Drum Magazine (Heavy Pistol)": {
       "name": "Trommelmagazin (Schwere Pistole)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 28 Schuss.</p>"
+      "description": "<p>Increases magazine size to a massive 28 bullets.</p>\n"
     },
     "Drum Magazine (Heavy SMG)": {
       "name": "Trommelmagazin (Schwere MP)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 60 Schuss.</p>"
+      "description": "<p>Increases magazine size to a massive 60 bullets.</p>\n"
     },
     "Drum Magazine (Medium Pistol)": {
       "name": "Trommelmagazin (Mittelschwere Pistole)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 36 Schuss.</p>"
+      "description": "<p>Increases magazine size to a massive 36 bullets.</p>\n"
     },
     "Drum Magazine (Rocket Launcher)": {
       "name": "Trommelmagazin (Raketenwerfer)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 3 Raketen. Viel Boom!</p>"
+      "description": "<p>Increases magazine size to a massive 3 rockets. That's a lot of boom.</p>\n"
     },
     "Drum Magazine (Shotgun)": {
       "name": "Trommelmagazin (Flinte)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 16 Schuss.</p>"
+      "description": "<p>Increases magazine size to a massive 16 rounds.</p>\n"
     },
     "Drum Magazine (SMG)": {
       "name": "Trommelmagazin (MP)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 50 Schuss.</p>"
+      "description": "<p>Increases magazine size to a massive 50 bullets.</p>\n"
     },
     "Drum Magazine (Sniper Rifle)": {
       "name": "Trommelmagazin (Scharfschützengewehr)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 12 Schuss.</p>"
+      "description": "<p>Increases magazine size to a massive 12 bullets.</p>\n"
     },
     "Drum Magazine (Very Heavy Pistol)": {
       "name": "Trommelmagazin (Sehr Schwere Pistole)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 28 Schuss.</p>"
+      "description": "<p>Increases magazine size to a massive 28 bullets.</p>\n"
     },
     "Enhanced Interface Plug Integration": {
       "name": "Verbesserte Interface-Buchsenintegrierung",
-      "description": "<p>Kann auf alle Bikes angewendet werden. Wenn du das Bike mittels Interface-Buchse steuerst kannst du versuchen, Angriffen gegen dich oder deine Mitfahrer auszuweichen wie zu Fuß, wenn du da in der Lage wärst, Geschossen auszuweichen (REF 8+). Wenn du für einen Mitfahrer ausweichst, zählt das als dessen Verteidigung.</p>"
+      "description": "<p>\n  Can be applied to all bikes. While using Interface Plugs to drive this\n  vehicle, if you have a REF 8 or higher and you, a passenger, or your bike are\n  the target of an attack, you can attempt to dodge as you would on foot. If you\n  dodge for a passenger, that becomes their defence.\n</p>\n"
     },
     "Extended Magazine (Assault Rifle)": {
       "name": "Erweitertes Magazin (Sturmgewehr)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 35 Schuss.</p>"
+      "description": "<p>Increases magazine size to a hefty 35 bullets.</p>\n"
     },
     "Extended Magazine (Grenade Launcher)": {
       "name": "Erweitertes Magazin (Granatwerfer)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 4 Granaten.</p>"
+      "description": "<p>Increases magazine size to a hefty 4 grenades.</p>\n"
     },
     "Extended Magazine (Heavy Pistol)": {
       "name": "Erweitertes Magazin (Schwere Pistole)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 14 Schuss.</p>"
+      "description": "<p>Increases magazine size to a hefty 14 bullets.</p>\n"
     },
     "Extended Magazine (Heavy SMG)": {
       "name": "Erweitertes Magazin (Schwere MP)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 50 Schuss.</p>"
+      "description": "<p>Increases magazine size to a hefty 50 bullets.</p>\n"
     },
     "Extended Magazine (Medium Pistol)": {
       "name": "Erweitertes Magazin (Mittelschwere Pistole)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 18 Schuss.</p>"
+      "description": "<p>Increases magazine size to a hefty 18 bullets.</p>\n"
     },
     "Extended Magazine (Rocket Launcher)": {
       "name": "Erweitertes Magazin (Raketenwerfer)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 2 Raketen.</p>"
+      "description": "<p>Increases magazine size to a hefty 2 rockets.</p>\n"
     },
     "Extended Magazine (Shotgun)": {
       "name": "Erweitertes Magazin (Flinte)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 8 Schuss.</p>"
+      "description": "<p>Increases magazine size to a hefty 8 rounds.</p>\n"
     },
     "Extended Magazine (SMG)": {
       "name": "Erweitertes Magazin (MP)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 40 Schuss.</p>"
+      "description": "<p>Increases magazine size to a hefty 40 bullets.</p>\n"
     },
     "Extended Magazine (Sniper Rifle)": {
       "name": "Erweitertes Magazin (Scharfschützengewehr)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 8 Schuss.</p>"
+      "description": "<p>Increases magazine size to a hefty 8 bullets.</p>\n"
     },
     "Extended Magazine (Very Heavy Pistol)": {
       "name": "Erweitertes Magazin (Sehr Schwere Pistole)",
-      "description": "<p>Vergrößert das Magazin auf sagenhafte 14 Schuss.</p>"
+      "description": "<p>Increases magazine size to a hefty 14 bullets.</p>\n"
     },
     "Grenade Launcher Underbarrel": {
       "name": "Granatwerferunterlauf",
-      "description": "<p>Funktioniert wie ein normaler Granatwerfer mit einer Magazingröße von 1. Benötigt zwei Hände zur Nutzung und zwei Zubehörslots. Mit diesem Zubehör kann die Waffe nicht unter Kleidung verborgen werden.</p>\n<p>Die Waffe übernimmt alle Eigenschaften der Waffe, an der sie befestigt ist, wie anderes Zubehör und die Qualität.</p>",
+      "description": "<p>\n  Functions like a standard grenade launcher, but with a magazine size of 1.\n  Requires 2 hands to use, and takes up 2 attachment slots. While attached, the\n  weapon can't be concealed under clothing.\n</p>\n<p>\n  Note that the weapon inherits any modifiers from the gun it is attached to,\n  such as other attachments and quality.\n</p>\n",
       "dvTable": "SG Granatwerfer"
     },
     "Hardened Circuitry": {
       "name": "Schaltkreisabschirmung",
-      "description": "<p>Ein Cyberdeck mit Schaltkreisabschirmung kann durch EMP-Effekte, wie Mikrowellenimpulse, oder die Effekte von Nicht-Schwarzes-ICE-Programmen nicht zeitweise abgeschaltet, außer Betrieb gesetzt oder zerstört werden.</p>"
+      "description": "<p>Cyberdeck cannot be disabled or destroyed by EMP effects.</p>\n"
     },
     "Heavy Chassis": {
       "name": "Schweres Chassis",
-      "description": "<p>Kann auf alle Fahrzeuge außer Bikes, Jetskis und Traghubschrauber angewandt werden. Das Fahrzeug erhält 20 Strukturschadenspunkte (SSP). Das betrifft nicht die Scheiben und das Fahrzeug kann nun bis zu 10 Tonnen ziehen.</p>"
+      "description": "<p>\n  Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. Adds 20\n  SDP to the vehicle. This doesn't affect the glass, and vehicle can now tow up\n  to 10 tons.\n</p>\n"
     },
     "Housing Capacity": {
       "name": "Wohnraum",
-      "description": "<p>Kann auf Aerozep, AV-4, Kajütboot, Bodenfahrzeuge und Jacht angewendet werden. In einem Bodenfahrzeug oder AV-4 wird ein Schlafbereich mit einem Bett, einer Toilette, Dusche und kleiner Küche installiert. Einem Kajütboot, einer Yacht oder einem Aerozep wird stattdessen ein weiterer Raum hinzugefügt.</p>\n<p><strong>Benötigt Schweres Chassis bei einem Bodenfahrzeug oder Hochleistungs-Bodenfahrzeug</strong>.</p>"
+      "description": "<p>\n  Can be applied to Aerozep, AV-4, Cabin Cruiser, Groundcars and Yacht. When\n  installed onto a Groundcar or AV-4, it adds a sleeping area with 1 bed, a\n  toilet, a shower, and a small kitchen to the vehicle. When installed into a\n  Cabin Cruiser, Yacht, or Aerozep, it adds one room to the vehicle.\n</p>\n<p>\n  <strong\n    >Requires a Heavy Chassis on a Compact Groundcar and High Performance\n    Groundcar</strong\n  >.\n</p>\n"
     },
     "Hover Upgrade": {
       "name": "Schwebeflug",
-      "description": "<p>Kann auf alle Bodenfahrzeuge angewandt werden. Bringt Gebläse an, die dem Fahrzeug ermöglichen, mit der Geschwindigkeit eines Kajütboots über Wasseroberflächen zu gleiten (24 km/h narrative Geschwindigkeit, BEW 10 Kampfgeschwindigkeit).</p>"
+      "description": "<p>\n  Can be applied to all land vehicles. Adds fans onto the vehicle that allow it\n  to traverse water at a narrative speed of 15 MPH/ 24KPH while hovering, and a\n  combat speed of 10.\n</p>\n"
     },
     "Infrared Nightvision Scope": {
       "name": "Infrarot-Nachtsicht-Zielfernrohr",
-      "description": "<p>Reduziert die Mali auf 0, denen du üblicherweise unterliegst wenn du auf ein Ziel schießt, das teilweise durch Dunkelheit, Rauch, Nebel und so weiter verdeckt ist.</p>"
+      "description": "<p>Reduces penalties against targets in darkness, smoke/fog to 0.</p>\n"
     },
     "Insulated Wiring": {
       "name": "Kabelisolierung",
-      "description": "<p>Ein Cyberdeck mit Kabelisolierung kann als Folge eines Programmeffektes kein Feuer fangen oder die Kleidung des Anwenders in Brand stecken.</p>"
+      "description": "<p>Cyberdeck and user clothing cannot catch fire.</p>\n"
     },
     "KRASH Barrier": {
       "name": "KRASH-Barriere",
-      "description": "<p>Macht das Cyberdeck immun gegen Effekte, die einen Netrunner zwingen sich auszuklinken (ob sicher oder unsicher).</p>"
+      "description": "<p>\n  Cyberdeck is immune to effects that force the Netrunner to Jack Out (safely or\n  unsafely).\n</p>\n"
     },
     "NOS": {
       "name": "NOS",
-      "description": "<p>Für alle Fahrzeuge. Bring einen Tank mit Stickstoffmonoxid an, der dir erlaubt, eine Aktion zu nutzen um eine zusätzliche Bewegungsaktion durchzuführen, während du das Fahrzeug steuerst.&nbsp;</p>\n<p>Kann mehrfach installiert werden. Jede weitere Installation fügt jeweils einen weiteren Tank hinzu und jeder Tank kann einmal pro Tag genutzt werden, ehe er sich wieder regenerieren muss.</p>"
+      "description": "<p>\n  Can be applied to all vehicles. Adds a tank of nitrous oxide to the vehicle.\n  Allows you to use your Action to use an additional Move Action while driving.\n</p>\n<p>\n  You may install this upgrade multiple times, each upgrade adds an additional\n  tank and each tank may be used once per day.\n</p>\n"
     },
     "Onboard Flamethrower": {
       "name": "Eingebauter Flammenwerfer",
-      "description": "<p>Kan auf alle Fahrzeuge angewandt werden.<strong> </strong>Ein <strong>Flammenwerfer</strong>, der vorne, seitlich oder hinten am Fahrzeug montiert ist. Kann vom Fahrer als Aktion abgefeuert werden. Kann nicht während der Fahrt nachgeladen werden und nimmt kein Zubehör auf.</p>\n<p>Kann mehrfach installiert werden.</p>"
+      "description": "<p>\n  Can be applied to all vehicles. A <strong>Flamethrower</strong> that can be\n  mounted facing the front, side or back of the vehicle. The driver may fire it\n  using an Action. It cannot be reloaded while driving, and cannot accept weapon\n  attachments.\n</p>\n<p>You may install this upgrade multiple times.</p>\n"
     },
     "Onboard Machine Gun": {
       "name": "Eingebautes Maschinengewehr",
-      "description": "<p>Kann auf alle Fahrzeuge angewandt werden. Ein an der Vorderseite montiertes <strong>Sturmgewehr</strong> mit 30 Schuss, das nur im Automatikmodus feuern kann. Kann vom Fahrer als Aktion benutzt werden. Kann während der Fahrt nicht nachgeladen werden und nimmt kein Zubehör auf.</p>\n<p>Kann mehrfach installiert werden.</p>"
+      "description": "<p>\n  Can be applied to all vehicles. An <strong>Assault Rifle</strong> with a 30\n  round capacity and only capable of Autofire, that can be mounted facing the\n  front of the vehicle. The driver may fire it using an Action, cannot be\n  reloaded while driving and cannot accept weapon attachments.\n</p>\n<p>You may install this upgrade multiple times.</p>\n"
     },
     "Onboard Melee Weapon": {
       "name": "Eingebaute Nahkampfwaffe",
-      "description": "<p>Kann auf alle Boden- und Wasserfahrzeuge angewandt werden. Eine <strong>Sehr Schwere Nahkampfwaffe</strong> die vorne, seitlich oder hinten am Fahrzeug angebracht ist. Der Fahrer kann mit ihr als Aktion angreifen. Die Waffe kann nicht entfernt werden und nimmt kein Zubehör auf.</p>\n<p>Kann mehrfach installiert werden.</p>"
+      "description": "<p>\n  Can be applied to all land and sea vehicles. A\n  <strong>Very Heavy Melee Weapon</strong> that can be mounted facing the front,\n  side or back of the vehicle. The driver may attack with it using an Action.\n  The weapon cannot be removed.\n</p>\n<p>You may install this upgrade multiple times.</p>\n"
     },
     "Onboard Rocket Pod": {
       "name": "Eingebauter Raketensockel",
-      "description": "<p>Kann auf alle Fahrzeuge außer Bikes, Jetskis und Tragschrauber angewandt werden. Ein an der Vorderseite montierter <strong>Raketenwerfer</strong> mit einer Trommel von drei Raketen. Kann vom Fahrer als Aktion benutzt werden. Kann während der Fahrt nicht nachgeladen werden und nimmt kein Zubehör auf.</p>\n<p>Kann mehrfach installiert werden. <strong>Benötigt Schweres Chassis</strong>.</p>"
+      "description": "<p>\n  Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. A\n  <strong>Rocket Launcher</strong> with a drum of three rockets, that can be\n  mounted facing the front of the vehicle. The driver may fire it using an\n  Action. It cannot be reloaded while driving, and cannot accept weapon\n  attachments.\n</p>\n<p>\n  You may install this upgrade multiple times.\n  <strong>Requires Heavy Chassis</strong>.\n</p>\n"
     },
     "Range Upgrade": {
       "name": "Reichweitenverbesserung",
-      "description": "<p>Ein Cyberdeck mit einer Reichweitenaufrüstung kann sich mit einem Zugangspunkt verbinden, der bis zu 8 Meter entfernt ist.</p>"
+      "description": "<p>\n  Cyberdeck can connect to access points from up to 8m/yds away (instead of\n  6m/yds).\n</p>\n"
     },
     "Seating Upgrade": {
       "name": "Sitzaufrüstung",
-      "description": "<p>Kann auf alle Fahrzeuge angewandt werden. Fügt zwei Sitze hinzu. Können als Beiwagen (verglast und mit optionalem Seitenfenster) und mit Schleudersitzen (mit entfernbaren Fallschirmen) installiert werden.</p>\n<p>Kann mehrfach installiert werden, außer bei Bikes, Jetskis und Tragschraubern.</p>"
+      "description": "<p>\n  Can be applied to all vehicles. Adds two seats to the vehicle. These can be\n  installed as an external sidecar, they may also be installed as ejector seats\n  with removable parachutes.\n</p>\n<p>\n  Can be taken multiple times with the exception of Bikes, Jetskis and\n  Gyrocopters.\n</p>\n"
     },
     "Security Upgrade": {
       "name": "Sicherheitsaufrüstung",
-      "description": "<p>Kann auf alle Fahrzeuge angewandt werden. Stattet das Fahrzeug mit DNS-Schlössern aus, die zum Entsperren passende Biometrie oder Elektronik/Sicherheitstechnik SG 17 benötigen. Bei Fehlschlag erleidet eine Person Schaden als wäre sie von einem Betäubungsstock getroffen werden, wenn sie sich im Umkreis von zwei Metern aufhält.</p>\n<p>Außerdem verfügt das Fahrzeug über eine Tarnvorrichtung, womit es nur durch Wahrnehmung SG 17 zu erkennen ist, solange es länger als 1 Minute still steht.</p>"
+      "description": "<p>\n  Can be applied to all vehicles. Adds DNA Locks to the vehicle requring the\n  correct biometrics or a DV 17 Electronics/Security Tech check to unlock.\n  Failure to unlock the vehicle takes damage as if hit with a Stun Baton.\n</p>\n<p>\n  In addition, while remaining still the vehicle is cloaked and requires a\n  <strong>DV17 Perception</strong> check to spot. The vehicle must remain\n  stationary for a minute before this activates.\n</p>\n"
     },
     "Shotgun Underbarrel": {
       "name": "Flintenunterlauf",
-      "description": "<p>Funktioniert wie eine normale Flinte mit einer Magazingröße von 2. Benötigt zwei Hände zur Nutzung und zwei Zubehörslots. Mit diesem Zubehör kann die Waffe nicht unter Kleidung verborgen werden.</p>\n<p>Die Waffe übernimmt alle Eigenschaften der Waffe, an der sie befestigt ist, wie anderes Zubehör und die Qualität.</p>",
+      "description": "<p>\n  Functions like a standard shotgun, but with a magazine size of 2. Requires 2\n  hands to use, and takes up 2 attachment slots. While attached, the weapon\n  can't be concealed under clothing.\n</p>\n<p>\n  Note that the weapon inherits any modifiers from the gun it is attached to,\n  such as other attachments and quality.\n</p>\n",
       "dvTable": "SG Flinte (Flintenpatrone)"
     },
     "Smartgun Link": {
       "name": "Smartgun-Verbindung",
-      "description": "<p>Verwandelt die Waffe in eine \"Smartgun\". Beachte alle Regeln auf S. 344, bevor du sie benutzt.</p>"
+      "description": "<p>Turns weapon into a \"Smartgun\".</p>\n"
     },
     "Smuggling Upgrade": {
       "name": "Schmuggleraufrüstung",
-      "description": "<p>Kann auf alle Fahrzeuge angewandt werden. Rüstet das Fahrzeug mit zwei <strong>Versteckten Halftern</strong> aus (die wie die Cyberware funktionieren). Sie zu entdecken erfordert Objekt verbergen/entdecken SG 17.<br><br>Kann mehrfach installiert werden, außer bei Bikes, Jetskis und Tragschraubern.</p>"
+      "description": "<p>\n  Can be applied to all vehicles. Adds two <strong>Hidden Holsters</strong> to\n  the vehicle, and a large hidden compartment for smuggling purposes. These can\n  be discovered with a <strong>DV17 Conceal/Reveal Object</strong> check.\n</p>\n<p>\n  Can be taken multiple times with the exception of Bikes, Jetskis and\n  Gyrocopters.\n</p>\n"
     },
     "Sniping Scope": {
       "name": "Scharfschützen-Zielfernrohr",
-      "description": "<p>Erlaubt, Details aus bis zu 800m Entfernung zu erkennen. +1 auf Angriffe für Einzelschüsse oder Gezielte Schüsse gegen Ziele, die weiter als 50m entfernt sind.</p>"
+      "description": "<p>\n  Allows you to see detail up to 800m/yds. +1 to Single Shot/Aimed Shots for\n  targets greater than 50m/yds.\n</p>\n"
     },
     "Vehicle Heavy Weapon Mount": {
       "name": "Schwerer Fahrzeugwaffenaufsatz",
-      "description": "<p>Kann auf alle Fahrzeuge außer Bikes, Jetskis und Tragschrauber angewandt werden. Einer der Sitze wird zu einem drehbaren Aufsatz für eine beliebige Zweihändige Fernkampfwaffe umgebaut. Ein Mitfahrer kann sie als Aktion abschießen oder nachladen. Die Waffe zu entfernen oder zu installieren erfordert ebenfalls eine Aktion.</p>\n<p>Das erste Mal, dass diese Verbesserung installiert wird, ist eine <strong>Tsunami Arms Helix</strong>, <strong>Rheinmetall EMG-86 Railgun</strong> oder ein <strong>Militech \"Cowboy\" U-56 Granatwerfer</strong> inklusive. Wenn das Fahrzeug Panzerglas aufweist, ist auch der Schütze davon geschützt.</p>\n<p>Kann mehrfach installiert werden, wenn das Fahrzeug über die Aufrüstung <strong>Wohnraum</strong> verfügt. <strong>Benötigt Schweres Chassis</strong>.</p>"
+      "description": "<p>\n  Can be applied to all vehicles except Bikes, Jetskis and Gyrocopters. One of\n  the vehicles seats becomes a swivel mount for any two-handed ranged weapon. A\n  passenger may fire the weapon using an Action. The passenger can reload the\n  weapon. The weapon can be removed or reinstalled using an Action.\n</p>\n<p>\n  The first time this upgrade is taken, included is a\n  <strong>Tsunami Arms Helix</strong>,\n  <strong>Rhinemetall EMG-86 Railgun</strong>, or\n  <strong>Militech \"Cowboy\" U-56 Grenade Launcher</strong>. If the vehicle has\n  the Bulletproof Glass upgrade, the gunner is protected by the same glass.\n</p>\n<p>\n  You may install this upgrade multiple times if the vehicle has the Housing\n  Capacity upgrade. <strong>Requires Heavy Chassis</strong>.\n</p>\n"
     }
   }
 }
