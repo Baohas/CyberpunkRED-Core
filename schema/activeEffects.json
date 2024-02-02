@@ -177,6 +177,7 @@
             "bonuses.pilotAirVehicle",
             "bonuses.pilotSeaVehicle",
             "bonuses.playInstrument",
+            "bonuses.playInstrument(Drums)",
             "bonuses.resistTortureOrDrugs",
             "bonuses.riding",
             "bonuses.science",
