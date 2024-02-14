@@ -4,11 +4,11 @@
   "entries": {
     "Arasaka Acid": {
       "name": "Acide Arasaka",
-      "description": "<p>Coating for Arasaka Weeping Reaver Katana only. Improves ablation effect.</p>\n"
+      "description": "<p>Revêtement seulement pour le katana Ravageur Suintant d'Arasaka. Augmente la perforation d'armure.</p>"
     },
     "Arasaka Fire": {
       "name": "Feu Arasaka",
-      "description": "<p>\n  Coating for Arasaka Weeping Reaver Katana only. Ignites target. Multiple\n  effects do not stack.\n</p>\n"
+      "description": "<p>Revêtement seulement pour le katana Ravageur Suintant d'Arasaka.</p>\n<p>Peut brûler la cible, les détails peuvent être trouvés à la page 91.</p>"
     },
     "Arasaka Wound Salt": {
       "name": "Sel de blessure Arasaka",
