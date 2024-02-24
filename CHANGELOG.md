@@ -35,6 +35,7 @@
 - #933 - Fix multiple compendium errors/missing values, thanks @Alexander Fokin
 - #950 - Bolded DV checks in various items of the compendia
 - #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
+- #979 - Fix styling of inline rolls in chat
 - Added several small updates to descriptions to understand various items better
 - Fix image overflow on Item Sheets
 
