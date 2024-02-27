@@ -75,6 +75,11 @@
       "name": "Combat Knife",
       "description": "<p>A knife fit for the streets.</p>\n"
     },
+    "Constitutional Arms Hurricane Assault Weapon": {
+      "name": "Constitutional Arms Hurricane Assault Weapon",
+      "description": "<p>\n  An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or\n  higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
     "Crossbow (Excellent)": {
       "name": "Crossbow (Excellent)",
       "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>\n",
@@ -106,11 +111,6 @@
       "name": "Dartgun",
       "description": "<p>An Exotic Very Heavy Pistol.</p>\n",
       "dvTable": "DV Pistol"
-    },
-    "EMG-86 Railgun": {
-      "name": "EMG-86 Railgun",
-      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11*.\n</p>\n<p>\n  <em\n    >*Not currently supported to will need to manually apply damage to armoured\n    targets</em\n  >\n</p>\n",
-      "dvTable": "DV Assault Rifle"
     },
     "Flamethrower": {
       "name": "Flamethrower",
@@ -186,15 +186,9 @@
       "name": "Helicopter Blades",
       "description": "<p>\n  Taken from a derelict aircraft, these blades are capable of slicing most\n  things easily.\n</p>\n"
     },
-    "Helix": {
-      "name": "Helix",
-      "description": "<p>\n  An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20\n  bullets with each attack. Uses Autofire rules with a multiplication up to a\n  maximum of 5. Requires BODY 11 or higher (unless mounted).\n</p>\n",
-      "dvTable": "DV Assault Rifle"
-    },
-    "Hurricane Assault Weapon": {
-      "name": "Hurricane Assault Weapon",
-      "description": "<p>\n  An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or\n  higher (unless mounted).\n</p>\n",
-      "dvTable": "DV Shotgun (Slug)"
+    "Kendachi Mono-Three": {
+      "name": "Kendachi Mono-Three",
+      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
     },
     "Lead Pipe (Excellent)": {
       "name": "Lead Pipe (Excellent)",
@@ -273,9 +267,10 @@
       "description": "<p>\n  An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be\n  rendered inoperable for a minute unless the target passes a\n  <strong>DV15 Cybertech Check</strong>.\n</p>\n",
       "dvTable": "DV Pistol"
     },
-    "Mono-Three": {
-      "name": "Mono-Three",
-      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
+    "Militech \"Cowboy\" U-56 Grenade Launcher": {
+      "name": "Militech \"Cowboy\" U-56 Grenade Launcher",
+      "description": "<p>\n  An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11\n  or higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     },
     "Naginata (Excellent)": {
       "name": "Naginata (Excellent)",
@@ -289,9 +284,10 @@
       "name": "Naginata",
       "description": "<p>\n  A japanese wooden pole with a curved blade on one side. Favoured by Arasaka\n  tactical teams for close engagements.\n</p>\n"
     },
-    "Rippers": {
-      "name": "Rippers",
-      "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed.</p>\n"
+    "Rhinemetall EMG-86 Railgun": {
+      "name": "Rhinemetall EMG-86 Railgun",
+      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11*.\n</p>\n<p>\n  <em\n    >*Not currently supported to will need to manually apply damage to armoured\n    targets</em\n  >\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Rocket Launcher (Excellent)": {
       "name": "Rocket Launcher (Excellent)",
@@ -420,10 +416,10 @@
       "name": "Tomahawk",
       "description": "<p>A light axe that can be thrown.</p>\n"
     },
-    "U-56 Grenade Launcher \"Cowboy\"": {
-      "name": "U-56 Grenade Launcher \"Cowboy\"",
-      "description": "<p>\n  An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11\n  or higher (unless mounted).\n</p>\n",
-      "dvTable": "DV Grenade Launcher"
+    "Tsunami Arms Helix": {
+      "name": "Tsunami Arms Helix",
+      "description": "<p>\n  An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20\n  bullets with each attack. Uses Autofire rules with a multiplication up to a\n  maximum of 5. Requires BODY 11 or higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Unarmed": {
       "name": "Unarmed",
@@ -458,3 +454,4 @@
     }
   }
 }
+
