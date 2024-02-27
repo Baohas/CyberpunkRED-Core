@@ -18,6 +18,7 @@ system:
         collected in the area the user is in.
       </p>
   favorite: false
+  installLocation: mall
   overrides:
     autofire:
       minimum: 3
@@ -29,6 +30,7 @@ system:
       value: 3d6
   price:
     market: 0
+  size: 0
   source:
     book: BC
     page: 115

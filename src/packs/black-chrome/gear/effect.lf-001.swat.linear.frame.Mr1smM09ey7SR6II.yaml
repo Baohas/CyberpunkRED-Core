@@ -3,6 +3,7 @@ _key: "!items.effects!DZe6EtplLToNFWjN.Mr1smM09ey7SR6II"
 changes:
   - key: system.stats.body.value
     mode: 5
+    priority: null
     value: "12"
 description: ""
 disabled: false

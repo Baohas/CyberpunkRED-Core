@@ -11,6 +11,7 @@ system:
   concealable:
     concealable: true
     isConcealed: false
+  critFailEffect: jammed
   damage: 1d6
   description:
     value: |
@@ -29,6 +30,7 @@ system:
     allowed: false
     allowedTypes:
       - itemUpgrade
+      - ammo
     list: []
     slots: 3
     usedSlots: 0
@@ -38,20 +40,60 @@ system:
     max: 0
     value: 0
   modifiers:
+    Wardrobe & Style:
+      isSituational: false
+      onByDefault: false
+      value: null
     attackmod:
+      isSituational: false
+      onByDefault: false
       type: modifier
+      value: null
+    bodySp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    cool:
+      isSituational: false
+      onByDefault: false
       value: null
     damage:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
+    headSp:
+      isSituational: false
+      onByDefault: false
+      value: null
     magazine:
+      isSituational: false
+      onByDefault: false
       type: modifier
       value: null
     rof:
+      isSituational: false
+      onByDefault: false
       type: modifier
+      value: null
+    sdp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    seats:
+      isSituational: false
+      onByDefault: false
       value: null
     secondaryWeapon:
       configured: false
+    shieldHp:
+      isSituational: false
+      onByDefault: false
+      value: null
+    slots:
+      isSituational: false
+      onByDefault: false
+      value: null
   price:
     market: 500
   providesHardening: false

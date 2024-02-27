@@ -18,6 +18,7 @@ system:
         No additional damage.
       </p>
   favorite: false
+  installLocation: mall
   overrides:
     autofire:
       minimum: 3
@@ -29,6 +30,7 @@ system:
       value: 3d6
   price:
     market: 100
+  size: 0
   source:
     book: BC
     page: 91

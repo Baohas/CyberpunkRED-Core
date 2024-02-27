@@ -29,6 +29,7 @@ system:
     allowed: false
     allowedTypes:
       - itemUpgrade
+      - ammo
     list: []
     slots: 0
     usedSlots: 0

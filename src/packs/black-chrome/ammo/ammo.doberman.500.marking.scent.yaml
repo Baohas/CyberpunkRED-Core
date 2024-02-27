@@ -18,6 +18,7 @@ system:
         marking on target.
       </p>
   favorite: false
+  installLocation: mall
   overrides:
     autofire:
       minimum: 3
@@ -29,6 +30,7 @@ system:
       value: "0"
   price:
     market: 50
+  size: 0
   source:
     book: BC
     page: 44

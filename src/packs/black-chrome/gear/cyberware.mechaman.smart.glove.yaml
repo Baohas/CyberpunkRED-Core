@@ -38,6 +38,7 @@ system:
     allowedTypes:
       - cyberware
       - itemUpgrade
+      - ammo
     list: []
     slots: 2
     usedSlots: 0

@@ -29,6 +29,7 @@ system:
     allowed: true
     allowedTypes:
       - cyberware
+      - ammo
     list: []
     slots: 5
     usedSlots: 0

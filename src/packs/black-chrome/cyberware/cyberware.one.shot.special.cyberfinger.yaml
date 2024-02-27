@@ -12,6 +12,7 @@ system:
     concealable: true
     isConcealed: false
   core: false
+  critFailEffect: jammed
   damage: 3d6
   description:
     value: |
@@ -32,6 +33,7 @@ system:
     allowed: false
     allowedTypes:
       - itemUpgrade
+      - ammo
     list: []
     slots: 0
     usedSlots: 0
