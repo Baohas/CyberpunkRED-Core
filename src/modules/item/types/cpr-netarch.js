@@ -66,7 +66,7 @@ export default class CPRNetArchItem extends CPRItem {
     LOGGER.trace("_generateNetarchScene | CPRNetarchUtils | called.");
     this.tileData = {
       arrow: {
-        img: `${this.options.filePath}Arrow.${this.options.fileExtension}`,
+        img: `${this.options.filePath}/Arrow.${this.options.fileExtension}`,
         width: this.options.gridSize * this.options.connectorWidth,
         height: this.options.gridSize * this.options.connectorHeight,
         scale: 1,
@@ -75,7 +75,7 @@ export default class CPRNetArchItem extends CPRItem {
         rotation: 0,
       },
       level: {
-        img: `${this.options.filePath}Root.${this.options.fileExtension}`,
+        img: `${this.options.filePath}/Root.${this.options.fileExtension}`,
         width: this.options.gridSize * this.options.levelWidth,
         height: this.options.gridSize * this.options.levelHeight,
         scale: 1,
@@ -167,12 +167,12 @@ export default class CPRNetArchItem extends CPRItem {
           content === "ControlNode"
         ) {
           if ([6, 8, 10, 12].includes(dv)) {
-            newLevel.img = `${this.options.filePath}${content}DV${dv}.${this.options.fileExtension}`;
+            newLevel.img = `${this.options.filePath}/${content}DV${dv}.${this.options.fileExtension}`;
           } else {
-            newLevel.img = `${this.options.filePath}${content}.${this.options.fileExtension}`;
+            newLevel.img = `${this.options.filePath}/${content}.${this.options.fileExtension}`;
           }
         } else {
-          newLevel.img = `${this.options.filePath}${content}.${this.options.fileExtension}`;
+          newLevel.img = `${this.options.filePath}/${content}.${this.options.fileExtension}`;
         }
       }
       newTiles.push(newLevel);
@@ -472,7 +472,7 @@ export default class CPRNetArchItem extends CPRItem {
         this.options.sceneName = formData.sceneName;
       }
     } else if (formData.animated) {
-      this.options.filePath = `systems/${game.system.id}/tiles/netarch/WebM/`;
+      this.options.filePath = `systems/${game.system.id}/tiles/netarch/WebM`;
       this.options.fileExtension = "webm";
       this.animated = true;
     }
