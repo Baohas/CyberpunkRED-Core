@@ -53,6 +53,7 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 
 - #933 - Fix multiple compendium errors/missing values, thanks @Alexander Fokin
 - #950 - Bolded DV checks in various items of the compendia
+- Fix NET Arch image path seperators
 - #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
 - #979 - Fix styling of inline rolls in chat
 - Added several small updates to descriptions to understand various items better
