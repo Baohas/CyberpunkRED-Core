@@ -34,7 +34,8 @@ export class CPRRoll {
     this.die = null;
     // this assumes exactly 1 term, "XdY", which is passed to Foundry's Roll()
     // any +A or -B terms are converted to mods
-    this.formula = this._processFormula(formula);
+    // Cast to lowercase to catch XdY and XDY
+    this.formula = this._processFormula(formula.toLowerCase());
     // the values of each face after a roll
     this.faces = [];
     // the result of the roll before applying mods or critical effects

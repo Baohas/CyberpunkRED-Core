@@ -43,6 +43,8 @@
 ### Changes
 
 - Switched to using DataModels to enforce data types (#316, #723)
+- Fix roll processing to accept lowercase and upper case roll formulas
+  - EG: 1d6 & 1D6
 - Add setting to disable warning when rolling damage without targets
 - The fumble recovery skill for Solos is now accounted for
 
