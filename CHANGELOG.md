@@ -28,6 +28,7 @@
 ### Changes
 
 - Weapons in fight tab now categorized by Ranged/Melee
+- Change Pause Font to Tektur for better internationalization support
 
 ### Bug Fixes
 
