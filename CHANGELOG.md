@@ -35,6 +35,7 @@
 - #950 - Bolded DV checks in various items of the compendia
 - #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
 - Added several small updates to descriptions to understand various items better
+- Fix image overflow on Item Sheets
 
 ## Version 0.88.2
 
