@@ -66,6 +66,9 @@
           "description": "Is it core cyberware?",
           "type": "boolean"
         },
+        "critFailEffect": {
+          "$ref": "./components/attackable/critFailEffect.json"
+        },
         "damage": {
           "$ref": "./components/attackable/damage.json"
         },

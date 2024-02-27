@@ -33,7 +33,7 @@
                          <br/>
                          {{localize "CPR.mookSheet.items.shiftClickToInstallorUninstall"}}"
            data-item-id="{{foundation._id}}">
-          {{~cprBrandedName foundation~}}{{~#unless (cprCompare optionals.length ">" 0)~}}{{~#unless @last~}},{{~/unless~}}{{~/unless~}}
+          {{~foundation.name~}}{{~#unless (cprCompare optionals.length ">" 0)~}}{{~#unless @last~}},{{~/unless~}}{{~/unless~}}
         </a>
       </span>
     {{~/if}}
@@ -60,7 +60,7 @@
                              <br/>
                              {{localize "CPR.mookSheet.items.pressDeleteToDelete"}}"
                data-item-id="{{item.id}}">
-              {{~cprBrandedName item~}}
+              {{~item.name~}}
             </a>
           {{~#if (cprCompare item.type "===" "drug")}}
             <a class="item-action"

@@ -15,7 +15,7 @@
             <i class="fa-solid fa-circle-info fa-xs" data-tooltip="{{localize "CPR.characterSheet.rightPane.cyber.installedIn"}} {{cprGetProp (cprGetOwnedItem actor item.system.installedIn.[0]) "name"}}"></i>
           {{/if}}
         </div>
-        {{cprBrandedName item}}
+        {{ item.name }}
       </a>
       {{#if item.system.installedItems.list }}
         <a class="toggle-installed-visibility">

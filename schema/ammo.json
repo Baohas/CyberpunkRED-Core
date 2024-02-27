@@ -104,8 +104,14 @@
         "favorite": {
           "$ref": "./components/common/favorite.json"
         },
+        "installLocation": {
+          "$ref": "./components/installable/installLocation.json"
+        },
         "price": {
           "$ref": "./components/valuable/price.json"
+        },
+        "size": {
+          "$ref": "./components/installable/size.json"
         },
         "source": {
           "$ref": "./components/common/source.json"
