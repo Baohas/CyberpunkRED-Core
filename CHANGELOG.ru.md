@@ -27,20 +27,25 @@
 
 ### Изменения
 
-- Оружие на вкладке боя теперь распределено по категориям дальнего и ближнего боя
+- Weapons in fight tab now categorized by Ranged/Melee
+- Change Pause Font to Tektur for better internationalization support
 
 ### Исправления
 
 - #933 - Исправлено множество ошибок/отсуствующих значений в библиотеках благодаря @Alexander Fokin
 - #950 - Bolded DV checks in various items of the compendia
 - #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
+- #979 - Fix styling of inline rolls in chat
 - Added several small updates to descriptions to understand various items better
+- Fix image overflow on Item Sheets
 
 ## Версия 0.88.2
 
 ### Изменения
 
 - Switched to using DataModels to enforce data types (#316, #723)
+- Fix roll processing to accept lowercase and upper case roll formulas
+  - EG: 1d6 & 1D6
 - Add setting to disable warning when rolling damage without targets
 - The fumble recovery skill for Solos is now accounted for
 
@@ -530,7 +535,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Версия 0.85.1 (Исправление) | Дата: 2022-12-14
 
-### Исправления
+### Bug Fixes
 
 - Fixed #624 - NET architecture sheet can't click generation button
 
@@ -743,7 +748,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Версия 0.81.1 (Исправление) | Дата: 2022-08-01
 
-### Исправления
+### Bug Fixes
 
 - #456 - Selling non-stackable items to vendors results in a NaN offer from the vendor
 - #454 - Kendachi Mono-Three has Incorrect Attack Bonus

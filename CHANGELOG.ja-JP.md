@@ -28,19 +28,24 @@
 ### Changes
 
 - Weapons in fight tab now categorized by Ranged/Melee
+- Change Pause Font to Tektur for better internationalization support
 
 ### Bug Fixes
 
 - #933 - Fix multiple compendium errors/missing values, thanks @Alexander Fokin
 - #950 - Bolded DV checks in various items of the compendia
 - #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
+- #979 - Fix styling of inline rolls in chat
 - Added several small updates to descriptions to understand various items better
+- Fix image overflow on Item Sheets
 
 ## Version 0.88.2
 
 ### Changes
 
 - Switched to using DataModels to enforce data types (#316, #723)
+- Fix roll processing to accept lowercase and upper case roll formulas
+  - EG: 1d6 & 1D6
 - Add setting to disable warning when rolling damage without targets
 - The fumble recovery skill for Solos is now accounted for
 
