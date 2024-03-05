@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD024 -->
 
-# Changelog
+# Registro modifiche
 
 ## Version 0.89.0
 
@@ -83,7 +83,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
   - The entire Changelog to be shown
   - Re-opening at any time
 
-## Version 0.88.1
+## Versione 0.88.1
 
 ### Action Needed
 
@@ -93,7 +93,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 - Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
 
-## Version 0.88.0
+## Versione 0.88.0
 
 ### Action Needed
 
@@ -133,20 +133,20 @@ This means any instances where you have dragged an item from a compendium into a
 - Change styling of release notes pop-up to match journal styling
 - All Compendium updated for v11 and now sorted into Folders
 
-## Version 0.87.6
+## Versione 0.87.6
 
 ### Bug Fixes
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
-## Version 0.87.5
+## Versione 0.87.5
 
-### Bug Fixes
+### Correzioni di bug
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
 
-## Version 0.87.4
+## Versione 0.87.4
 
 ### New Features
 
@@ -176,9 +176,9 @@ This means any instances where you have dragged an item from a compendium into a
 - Fix #707 - Importing actors from .jsons with installed items should now work as expected.
 - Fix an issue where compendia actors erroneously had their installed item data wiped.
 
-## Version 0.87.3
+## Versione 0.87.3
 
-### Bug Fixes
+### Correzioni di bug
 
 - #808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - #812 - Some roles were missing the bonuses data point as an empty array.
@@ -199,9 +199,9 @@ This means any instances where you have dragged an item from a compendium into a
 - Fix Beta Linear Frames AE mode to be set not add
 - Fix Nova Model 757 slots
 
-## Version 0.87.2
+## Versione 0.87.2
 
-### Bug Fixes
+### Correzioni di bug
 
 - Fix Programs having `undefined` before their name in character sheets
 - Fix call to `cprBrandName` in Container sheet
@@ -211,13 +211,13 @@ This means any instances where you have dragged an item from a compendium into a
 - Increase Black ICE sheet width to acomodate 2 digit REZ values better
 - Fix Black ICE tokens/actors not updating when populating with a program
 
-## Version 0.87.1
+## Versione 0.87.1
 
-### Bug Fixes
+### Correzioni di bug
 
 Fix broken migrations
 
-## Version 0.87.0
+## Versione 0.87.0
 
 ### Action Needed
 
@@ -239,7 +239,7 @@ We have migrated all Gear items provided by our Compendia to support `isElectron
 
 #### CSS Themes / Rewrite
 
-Due to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
+Do to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
 
 For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme then Ernies needs to be configured to use Dark Mode as well.
 
@@ -260,7 +260,7 @@ For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/
 
 - New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
 - Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
-  - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogues with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
+  - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogues with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
 - Modifiers to rolls from Role Abilities also have Situational (and On By Default) options
 - Modifiers to rolls from item Upgrades also have Situational (and On By Default) options
   - Note: effects with situational modifiers have been given the appropriate settings on all compendium items but you will have to manually update them on items that already exist on actors
@@ -273,7 +273,7 @@ We have added the functionality for system specific themes. This allows us to sh
 
 If you are interested in making a theme for the system check out the [CSS Themes](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/CSS-Themes) wiki page which details the process.
 
-#### Compendia
+#### Compendium
 
 - Added The 12 Days of Cybermas with help from Miklos
 - Added Hornet’s Pharmacy with help from Miklos
@@ -428,7 +428,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 
 ## Version 0.86.1 | Date: 2023-02-05
 
-### Bug Fixes
+### Correzioni di bug
 
 - #683 - Dragging a World Item which has another World Items installed in it and THAT item also has another world item installed in it (Cyberarm->Cyberdeck (Hardwired)->Cyberdeck) results in two cyberdecks being created on the actor. This would exponentiate every level of installation if there were more.
 - Add text for missing localized string `CPR.messages.installInvalidType`
@@ -529,7 +529,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
-### Bug Fixes
+### Correzioni di bug
 
 - Corrected a capitalisation error that was causing the included Dystopian City Streets map to disappear. Thanks to Latcher for spotting this!
 
@@ -600,7 +600,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
-### Bug Fixes
+### Correzioni di bug
 
 - Fix HTML Stripping in item descriptions on character sheets
 - Fix Create/Edit Role Ability dialog not submitting.
@@ -654,7 +654,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.83.1 (Hotfix) | Date: 2022-10-23
 
-### Bug Fixes
+### Correzioni di bug
 
 - #529 - Fix non-shop containers having the wrong button
 - #536 - Spelling mistake: "Ememies" (English)
@@ -741,7 +741,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.2 (Hotfix) | Date: 2022-08-02
 
-### Bug Fixes
+### Correzioni di bug
 
 - #458 - The rulers for the DV Calculation is broken for tables with regexp characters in the name [such as (Autofire)]
 - #455 - Containers/Vendors issues (non-English settings)
@@ -1313,7 +1313,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Death saves are now rollable, trackable, and relate to critical injuries.
 - Added the option to apply no humanity loss on installation of cyberware. This is useful if the user realizes a mistake after installation. They can uninstall, edit the item and reinstall without having to worry about fixing humanity loss afterwards. Also useful for reinstallation of items like Skill Chips and extra cyberarms for the quick-change mounts.
 - Added support for damage formulas like 2d6+2, 3d6-4, etc. for all your homebrew and 2020 conversions.
-- Ctrl-click an item name to send its description to chat. This feature is still in the early stages of development and may have some formatting issues on the chat card. These will be addressed as the feature is refined.
+- Ctrl-click an item name to send its description to chat. This feature is still in the early stages of development and may have some formatting issues on the chat card. These will be addressed as the feature is refined. These will be addressed as the feature is refined.
 - Rolling for cyberware is now printed to chat.
 - Items of type ‘gear’ are now equippable (just a cosmetic feature for keeping track of what is on your person vs. somewhere else).
 - Improved alignment when there are multiple Roles selected to display.

@@ -1,30 +1,30 @@
 {
-  "label": "Armor",
+  "label": "Brnění",
   "mapping": {},
   "entries": {
     "Bodyweight Suit": {
       "name": "Bodyweight Suit",
-      "description": "<p>\n  Netrunner armored skinsuit. Can store Cyberdeck and support Interface Plugs.\n  Can't be bought in two pieces. Always worn on both Head and Body Location.\n  Adds one Hardware only Option Slot to connected Cyberdeck. No armor penalty.\n</p>\n"
+      "description": "<p>Netrunner armored skinsuit. Can store Cyberdeck and support Interface Plugs. Can't be bought in two pieces. Always worn on both Head and Body Location. Adds one Hardware only Option Slot to connected Cyberdeck. No armor penalty.</p>"
     },
     "Bullet Proof Shield": {
       "name": "Bullet Proof Shield",
-      "description": "<p>Requires an arm and has HP that is reduced by damage.</p>\n"
+      "description": "<p>Requires an arm and has HP that is reduced by damage.</p>"
     },
     "Flak (Body)": {
       "name": "Flak (Body)",
-      "description": "<p>\n  Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.\n</p>\n"
+      "description": "<p>Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.</p>"
     },
     "Flak (Head)": {
       "name": "Flak (Head)",
-      "description": "<p>\n  Metal plated armor to resist the most powerful hits to your head. -4 to REF,\n  DEX, and MOVE.\n</p>\n"
+      "description": "<p>Metal plated armor to resist the most powerful hits to your head. -4 to REF, DEX, and MOVE.</p>"
     },
     "Heavy Armorjack (Body)": {
       "name": "Heavy Armorjack (Body)",
-      "description": "<p>Heavier version of an Armorjack. -2 to REF, DEX, and MOVE.</p>\n"
+      "description": "<p>Heavier version of an Armorjack. -2 to REF, DEX, and MOVE.</p>"
     },
     "Heavy Armorjack (Head)": {
       "name": "Heavy Armorjack (Head)",
-      "description": "<p>Heavier version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>\n"
+      "description": "<p>Heavier version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>"
     },
     "Kevlar® (Body)": {
       "name": "Kevlar® (Body)",
@@ -36,27 +36,27 @@
     },
     "Leathers (Body)": {
       "name": "Leathers (Body)",
-      "description": "<p>Simple Leather armor. No armor penalty.</p>\n"
+      "description": "<p>Simple Leather armor. No armor penalty.</p>"
     },
     "Leathers (Head)": {
       "name": "Leathers (Head)",
-      "description": "<p>Simple Leather armor for your head. No armor penalty.</p>\n"
+      "description": "<p>Simple Leather armor for your head. No armor penalty.</p>"
     },
     "Light Armorjack (Body)": {
       "name": "Light Armorjack (Body)",
-      "description": "<p>Light version of an Armorjack. No armor penalty.</p>\n"
+      "description": "<p>Light version of an Armorjack. No armor penalty.</p>"
     },
     "Light Armorjack (Head)": {
       "name": "Light Armorjack (Head)",
-      "description": "<p>Light version of an Armorjack for your head. No armor penalty.</p>\n"
+      "description": "<p>Light version of an Armorjack for your head. No armor penalty.</p>"
     },
     "Medium Armorjack (Body)": {
       "name": "Medium Armorjack (Body)",
-      "description": "<p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>\n"
+      "description": "<p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>"
     },
     "Medium Armorjack (Head)": {
       "name": "Medium Armorjack (Head)",
-      "description": "<p>Medium version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>\n"
+      "description": "<p>Medium version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>"
     },
     "Metalgear® (Body)": {
       "name": "Metalgear® (Body)",
@@ -68,11 +68,11 @@
     },
     "Skin Weave": {
       "name": "Skin Weave",
-      "description": "<p>Armor Item for Skin Weave Cyberware.</p>\n"
+      "description": "<p>Armor Item for Skin Weave Cyberware.</p>"
     },
     "Subdermal Armor": {
       "name": "Subdermal Armor",
-      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>\n"
+      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>"
     }
   }
 }

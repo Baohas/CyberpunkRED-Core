@@ -296,7 +296,7 @@ If you are interested in making a theme for the system check out the [CSS Themes
 - Added Achievements And Loot Boxes with help from LordCheesusCrust
 - Added language specific skills with help from LordCheesusCrust
 
-#### Other New Features
+#### Misc
 
 - Added a check for `core.photosensitivityMode` when rendering pause animation
 - Added a `isElectronic` data point to Gear items

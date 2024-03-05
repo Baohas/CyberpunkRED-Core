@@ -239,7 +239,7 @@ We have migrated all Gear items provided by our Compendia to support `isElectron
 
 #### CSS Themes / Rewrite
 
-Due to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
+Do to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
 
 For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme then Ernies needs to be configured to use Dark Mode as well.
 
@@ -284,11 +284,11 @@ If you are interested in making a theme for the system check out the [CSS Themes
 - Added Night City Tarot content with help from Hakuan Quietpaws
 - Added All About Drones with help from Hakuan Quietpaws
 - Added Exotics of 2045 with help from Hakuan Quietpaws
-- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
+- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic Racha and Sushimatic
 - Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
 - Added Night City Weather with help from Miklos
 - Added Branded Weapons with help from Hakuan Quietpaws
-- Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic
+- Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic Racha, Hakuan Quietpaws, and Sushimatic
 - Added clothing descriptions with help from Hakuan Quietpaws
 - Added Mook Encounter Complication, Hardened Lieutenant Tactics, and Hardened Mini Boss Mini Promotion rolltables
 - Added missing Elflines Online items with help from LordCheesusCrust
@@ -910,7 +910,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Fixed #335 - The Media Role Ability now uses the associated rank as a modifier.
 - Fixed #342 - Medical Grade Cyberlimbs are missing
 - Fixed #343 - Allow Smartglasses to take cybereye options. Add Smart Lens from Microchrome. Move Battleglove to gear.
-- Fixed #334 - Missing translation strings for initiative (Meat/NET option) has been re-added and cyberware-based initiative is now working correctly.This requires a Netrunner to have the 'Netrunner' role assigned. Rezzed programs granting SPEED bonuses will be added as a modifier in accordance with pg. 205 of the core rulebook.
+- Fixed #334 - Missing translation strings for initiative (Meat/NET option) has been re-added and cyberware-based initiative is now working correctly. This requires a Netrunner to have the 'Netrunner' role assigned. Rezzed programs granting SPEED bonuses will be added as a modifier in accordance with pg. 205 of the core rulebook.
 - Fixed #349 - Installed cyberware properly supports "Ctrl+Click" to send details to the chat window.
 - Fixed #350 - Fixed uninstalled cyberware on a mook sheet being impossible to delete if the original install failed.
 - Fixed a couple missing translation strings related to synchronizing armor SP to resource bars
@@ -1053,7 +1053,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ### Migration to foundry 0.8.X
 
-- **BREAKING:** This version of our system will not work with Foundry version 0.7.X and below. Do not update this system until you are ready to update your Foundry to version 0.8.X. And as always, **make a backup of your user data** before updating!
+- **BREAKING:** This version of our system will not work with Foundry version 0.7. X and below. Do not update this system until you are ready to update your Foundry to version 0.8. X. And as always, **make a backup of your user data** before updating!
 - Migrated the source code to work with foundry version 0.8.X
 - Rewrote the migration code support new features from foundry 0.8.X
 
@@ -1084,7 +1084,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
     - Cyberdeck items in the Shipped Gear Compendium have been replaced with versions utilizing the new Cyberdeck Item Object
   - Ability to equip one (1) Cyberdeck enables Meat/NET toggle on Fight Tab
   - Ability to install Programs on the Cyberdeck from the Cyberdeck Settings Page and directly from the Gear Tab
-  - Programs (Booster) have been enhanced to allow the addition of Roll Modifiers for Interface Abilities (i.e. Eraser gives a +2 to Cloak)
+  - Programs (Booster) have been enhanced to allow the addition of Roll Modifiers for Interface Abilities (i.e. Eraser gives a +2 to Cloak) Eraser gives a +2 to Cloak)
   - Booster Roll Modifiers exposed in Roll verification dialog and added to the roll for Rezzed Boosters Only
     - Shipped Program Compendium updated to include these roll modifiers (Any imported items should be re-imported or manually updated to add these)
   - Programs (Attacker) have been enhanced to allow the setting of Damage. For Anti-Program Attackers, both BlackICE and non-BlackICE damage rolls may be configured
@@ -1267,7 +1267,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - You can now change the amount of ammo in a weapon's clip right from the fight tab. In addition, you can type "+X" or "-Y" (where X and Y are numbers) into the input and it will perform the math.
 - Mook sheet introduced. Please use [issue #181](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/issues/181) to suggest improvements or point out rough edges.
 - Added "Source" field to item sheets to keep track of where items came from (e.g. Core Rules Pg. 351)
-- "Thrown Weapon" is now a weapon type and "Athletics" is now a weapon skill for throwing grenades, etc. Weapons that use the athletics skill also use DEX as the stat, which is consistent with the rules.
+- "Thrown Weapon" is now a weapon type and "Athletics" is now a weapon skill for throwing grenades, etc. Weapons that use the athletics skill also use DEX as the stat, which is consistent with the rules. Weapons that use the athletics skill also use DEX as the stat, which is consistent with the rules.
 - Weapon section of the Fight Tab has been slightly redesigned.
 - Shields have been implemented (they are an armor type item).
 - Added the ammunition type to the attack and damage roll cards.
@@ -1313,7 +1313,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Death saves are now rollable, trackable, and relate to critical injuries.
 - Added the option to apply no humanity loss on installation of cyberware. This is useful if the user realizes a mistake after installation. They can uninstall, edit the item and reinstall without having to worry about fixing humanity loss afterwards. Also useful for reinstallation of items like Skill Chips and extra cyberarms for the quick-change mounts.
 - Added support for damage formulas like 2d6+2, 3d6-4, etc. for all your homebrew and 2020 conversions.
-- Ctrl-click an item name to send its description to chat. This feature is still in the early stages of development and may have some formatting issues on the chat card. These will be addressed as the feature is refined.
+- Ctrl-click an item name to send its description to chat. This feature is still in the early stages of development and may have some formatting issues on the chat card. These will be addressed as the feature is refined. These will be addressed as the feature is refined.
 - Rolling for cyberware is now printed to chat.
 - Items of type ‘gear’ are now equippable (just a cosmetic feature for keeping track of what is on your person vs. somewhere else).
 - Improved alignment when there are multiple Roles selected to display.

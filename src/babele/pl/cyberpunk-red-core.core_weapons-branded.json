@@ -1,187 +1,187 @@
 {
-  "label": "Weapons (Branded)",
+  "label": "Bronie (Markowe)",
   "mapping": {
     "dvTable": "system.dvTable"
   },
   "entries": {
     "Avenger": {
       "name": "Avenger",
-      "description": "<p>A concealable, medium-sized pistol. +1 to Attack.</p>\n",
+      "description": "<p>Nadający się do ukrycia, średniej wielkości pistolet. +1 do testów broni.</p>",
       "dvTable": "PT Pistolety"
     },
     "Bearcat": {
       "name": "Bearcat",
-      "description": "<p>\n  A collapsible bow branded with the Eagletech logo, reloaded as part of an\n  Attack action.\n</p>\n<p>+1 to Attack check.</p>\n",
+      "description": "<p> Składany łuk z logiem Eagletech, przeładowywany w ramach akcji Ataku.</p>\n<p>+1 do testów broni.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Boomer Buster": {
       "name": "Boomer Buster",
-      "description": "<p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>\n",
+      "description": "<p>Bardzo ciężki pistolet. Nie może zostać ukryty. +1 do testów broni</p>",
       "dvTable": "PT Pistolety"
     },
     "Bulldog": {
       "name": "Bulldog",
-      "description": "<p>An all-purpose shotgun. +1 to Attack.</p>\n",
+      "description": "<p>Wielozadaniowa strzelba. +1 do testów broni.</p>",
       "dvTable": "PT Strzelba (Pocisk)"
     },
     "City Reaper": {
       "name": "City Reaper",
-      "description": "<p>\n  A heavy SMG. Due to its size it can't be concealed. If you roll 1 on Attack\n  (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "description": "<p> Ciężki pistolet maszynowy. Ze względu na rozmiar nie może zostać ukryty. Jeżeli wyrzucisz 1 w teście broni (Krytyczny pech) broń zacina się i wymaga akcji by ją wyczyścić.</p>",
       "dvTable": "PT PM-y"
     },
     "Cityhunter": {
       "name": "Cityhunter",
-      "description": "<p>A concealable, heavy pistol. +1 to Attack.</p>\n",
+      "description": "<p>Nadający się do ukrycia ciężki pistolet. +1 do testów broni.</p>",
       "dvTable": "PT Pistolety"
     },
     "Dragon": {
-      "name": "Dragon",
-      "description": "<p>A standard-issue assault rifle. +1 to Attack.</p>\n",
+      "name": "Smok",
+      "description": "<p>Standardowy karabin szturmowy. +1 do testów broni.</p>",
       "dvTable": "PT Karabiny szturmowe"
     },
     "Home Defender": {
       "name": "Home Defender",
-      "description": "<p>\n  An all-purpose shotgun. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n",
+      "description": "<p>Wielozadaniowa strzelba. Jeżeli wyrzucisz 1 w teście broni (Krytyczny pech) broń zacina się i wymaga akcji, by ją wyczyścić. </p>",
       "dvTable": "PT Strzelba (Pocisk)"
     },
     "Hotshot": {
       "name": "Hotshot",
-      "description": "<p>\n  Bring out the big guns. This rocket launcher will do some damage. +1 to\n  Attack.\n</p>\n",
+      "description": "<p>Wytoczyć duże działa. Ta wyrzutnia rakiet zada trochę obrażeń. +1 do testów broni.</p>",
       "dvTable": "PT Wyrzutnie rakiet"
     },
     "Hunter": {
       "name": "Hunter",
-      "description": "<p>\n  A poor quality crossbow branded with the GunMart logo, reloaded as part of an\n  Attack action.\n</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
+      "description": "<p>Słabej jakości kusza z logiem GunMart, przeładowywany w ramach akcji Ataku.</p> <p>Jeżeli wyrzucisz 1 w teście broni (Krytyczny pech) broń zacina się i wymaga akcji, by ją wyczyścić.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Jungle Reaper": {
       "name": "Jungle Reaper",
-      "description": "<p>\n  A standard-issue assault rifle. If you roll 1 on Attack (Crit fail) the gun\n  jams and requires using an action to clear.\n</p>\n",
+      "description": "<p>Standardowy karabin szturmowy. Jeżeli wyrzucisz 1 w teście broni (Krytyczny pech) broń zacina się i wymaga akcji, by ją wyczyścić.</p>",
       "dvTable": "PT Karabiny szturmowe"
     },
     "Long Rifle": {
       "name": "Long Rifle",
-      "description": "<p>\n  A long-distance sniper rifle, commonly used by nomads. Holds 4 bullets in a\n  magazine.\n</p>\n",
+      "description": "<p>Długodystansowy karabin snajperski. Posiada 4 pociski w magazynku.</p>",
       "dvTable": "PT Karabiny snajperskie"
     },
     "Magnum": {
       "name": "Magnum",
-      "description": "<p>\n  A concealable, heavy pistol. If you roll 1 on Attack (Crit fail) the gun jams\n  and requires using an action to clear.\n</p>\n",
+      "description": "<p>Nadający się do ukrycia ciężki pistolet. Jeżeli wyrzucisz 1 w teście broni (Krytyczny pech) broń zacina się i wymaga akcji, by ją wyczyścić. </p>",
       "dvTable": "PT Pistolety"
     },
     "Mark III": {
       "name": "Mark III",
-      "description": "<p>A concealable, heavy pistol.</p>\n",
+      "description": "<p>Nadający się do ukrycia ciężki pistolet. </p>",
       "dvTable": "PT Pistolety"
     },
     "Minami 10": {
       "name": "Minami 10",
-      "description": "<p>A concealable SMG. +1 to Attack.</p>\n",
+      "description": "<p>Nadający się do ukrycia pistolet maszynowy. +1 do testów broni.</p>",
       "dvTable": "PT PM-y"
     },
     "Mini-Gat": {
       "name": "Mini-Gat",
-      "description": "<p>A concealable SMG.</p>\n",
+      "description": "<p>Nadający się do ukrycia pistolet maszynowy. </p>",
       "dvTable": "PT PM-y"
     },
     "Mini-Grenade": {
       "name": "Mini-Grenade",
-      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n</p>\n",
+      "description": "<p>Granatnik o dużym zasięgu działania. Można używać z różnymi granatami. </p>",
       "dvTable": "PT Granatniki"
     },
     "P-35": {
       "name": "P-35",
-      "description": "<p>A very heavy pistol. It can't be concealed.</p>\n",
+      "description": "<p>Bardzo ciężki pistolet. Nie może zostać ukryty. </p>",
       "dvTable": "PT Pistolety"
     },
     "Rapid Assault": {
-      "name": "Rapid Assault",
-      "description": "<p>An all-purpose shotgun.</p>\n",
+      "name": "Rapid Assult",
+      "description": "<p>Wielozadaniowa strzelba. </p>",
       "dvTable": "PT Strzelba (Pocisk)"
     },
     "Ronin": {
       "name": "Ronin",
-      "description": "<p>A standard-issue assault rifle.</p>\n",
+      "description": "<p>Standardowy karabin szturmowy. </p>",
       "dvTable": "PT Karabiny szturmowe"
     },
     "Scorpion": {
-      "name": "Scorpion",
-      "description": "<p>\n  A sleek crossbow branded with the Eagletech logo, reloaded as part of an\n  Attack action.\n</p>\n<p>+1 to Attack check.</p>\n",
+      "name": "Skorpion",
+      "description": "<p>Wymuskana kusza z logiem Eagletech, przeładowywana w ramach akcji ataku.</p>\n<p>+1 do testów broni.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Sherwood": {
       "name": "Sherwood",
-      "description": "<p>\n  A poor quality bow branded with the GunMart logo, reloaded as part of an\n  Attack action.\n</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
+      "description": "<p>Słabej jakości łuk z logiem GunMart, przeładowywany w ramach akcji ataku..</p> <p>Jeżeli wyrzucisz 1 w teście broni (Krytyczny pech) broń zacina się i wymaga akcji, by ją wyczyścić. </p>",
       "dvTable": "PT Łuki i kusze"
     },
     "SMG-21": {
       "name": "SMG-21",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed.</p>\n",
+      "description": "<p>Ciężki pistolet maszynowy. Z powodu swojego rozmiaru nie może zostać ukryty. </p>",
       "dvTable": "PT PM-y"
     },
     "Snipe-Star": {
       "name": "Snipe-Star",
-      "description": "<p>\n  A long-distance sniper rifle. Holds 4 bullets in a magazine. If you roll 1 on\n  Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "description": "<p>Długodystansowy karabin snajperski. Posiada 4 pociski w magazynku. Jeżeli wyrzucisz 1 w teście broni (Krytyczny pech) broń zacina się i wymaga akcji, by ją wyczyścić. </p>",
       "dvTable": "PT Karabiny snajperskie"
     },
     "Streetmaster": {
       "name": "Streetmaster",
-      "description": "<p>\n  A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the\n  gun jams and requires using an action to clear.\n</p>\n",
+      "description": "<p>Nadający się do ukrycia średniej wielkości pistolet. Jeżeli wyrzucisz 1 w teście broni (Krytyczny pech) broń zacina się i wymaga akcji, by ją wyczyścić. </p>",
       "dvTable": "PT Pistolety"
     },
     "Striker": {
       "name": "Striker",
-      "description": "<p>\n  A crossbow branded with the Eagletech logo, reloaded as part of an Attack\n  action.\n</p>\n",
+      "description": "<p> Kusza z logiem Eagletech, przeładowywana w ramach akcji Ataku.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Super Chief": {
       "name": "Super Chief",
-      "description": "<p>\n  A very heavy pistol. It can't be concealed. If you roll 1 on Attack (Crit\n  fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "description": "<p>Bardzo ciężki pistolet. Nie może zostać ukryty. Jeżeli wyrzucisz 1 w teście broni (Krytyczny pech) broń zacina się i wymaga akcji, by ją wyczyścić. </p>",
       "dvTable": "PT Pistolety"
     },
     "Tech-Assault III": {
       "name": "Tech-Assault III",
-      "description": "<p>\n  A concealable SMG. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n",
+      "description": "<p>Nadający się do ukrycia pistolet maszynowy. Jeżeli wyrzucisz 1 w teście broni (Krytyczny pech) broń zacina się i wymaga akcji, by ją wyczyścić. </p>",
       "dvTable": "PT PM-y"
     },
     "Tomcat": {
       "name": "Tomcat",
-      "description": "<p>\n  A revitalized bow branded with the Eagletech logo, reloaded as part of an\n  Attack Action.\n</p>\n",
+      "description": "<p>Zrewitalizowany łuk z logiem Eagletech, przeładowywany w ramach akcji Ataku.</p>",
       "dvTable": "PT Łuki i kusze"
     },
     "Type-18": {
       "name": "Type-18",
-      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n  +1 to Attack.\n</p>\n",
+      "description": "<p>Granatnik o dużym zasięgu działania. Można używać z różnymi granatami.  +1 do testów broni.</p>",
       "dvTable": "PT Granatniki"
     },
     "Type-G": {
       "name": "Type-G",
-      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action\n  to clear.\n</p>\n",
+      "description": "<p>Granatnik o dużym zasięgu działania. Można używać z różnymi granatami. Jeżeli wyrzucisz 1 w teście broni (Krytyczny pech) broń zacina się i wymaga akcji, by ją wyczyścić.</p>",
       "dvTable": "PT Granatniki"
     },
     "Type-R": {
       "name": "Type-R",
-      "description": "<p>\n  Bring out the big guns. This rocket launcher will do some damage. If you roll\n  1 on Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "description": "<p>Wytoczyć duże działa. Ta wyrzutnia rakiet zada trochę obrażeń. Jeżeli wyrzucisz 1 w teście broni (Krytyczny pech) broń zacina się i wymaga akcji, by ją wyczyścić. </p>",
       "dvTable": "PT Wyrzutnie rakiet"
     },
     "Urban": {
       "name": "Urban",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>\n",
+      "description": "<p>Wytoczyć duże działa. Ta wyrzutnia rakiet zada trochę obrażeń. </p>",
       "dvTable": "PT Wyrzutnie rakiet"
     },
     "Viper": {
       "name": "Viper",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>\n",
+      "description": "<p>Ciężki pistolet maszynowy. Z powodu swojego rozmiaru nie może zostać ukryty. +1 do testów broni.</p>",
       "dvTable": "PT PM-y"
     },
     "WSSA Sniper System": {
       "name": "WSSA Sniper System",
-      "description": "<p>\n  A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.\n</p>\n",
+      "description": "<p>Długodystansowy karabin snajperski. Posiada 4 pociski w magazynku. +1 do ataku.</p>",
       "dvTable": "PT Karabiny snajperskie"
     },
     "X-9mm": {
       "name": "X-9mm",
-      "description": "<p>A concealable, medium-sized pistol.</p>\n",
+      "description": "<p>Nadający się do ukrycia, średniej wielkości pistolet. </p>",
       "dvTable": "PT Pistolety"
     }
   }

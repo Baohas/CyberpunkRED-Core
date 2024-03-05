@@ -6,21 +6,21 @@
   "entries": {
     "Elflines Online Playing Cards": {
       "name": "Cartas de Juego de Elflines Online",
-      "description": "<p>\n  Cards meant to be used as part of playing Elfines Online The Trading Card\n  Game.\n</p>\n"
+      "description": "<p>Cartas destinadas a ser usadas como parte del juego Elflines Online el Juego de Cartas.</p>"
     },
     "Duel Caster": {
       "name": "Lanzador de Duelo",
-      "description": "<p>\n  A plastic housing and card launcher for ELO Cards. ROF 3 if only weapon fired\n  on your turn. Can also be loaded with normal playing cards but makes the\n  weapon Poor Quality.\n</p>\n",
+      "description": "<p>Una carcasa de plástico y lanzador de cartas para Cartas de ELO. CdT 3 si solo se dispara en tu turno. También se puede cargar con cartas normales, pero hace que el arma sea de Calidad Pobre.</p>",
       "dvTable": "VD Pistola"
     },
     "Scarlet Blackbow": {
       "name": "ArcoNegro Escarlata",
-      "description": "<p>\n  A revitalized bow that must be reloaded after every attack. If you roll 1 on\n  Attack (Crit fail) the bow's battery pack explodes. Comes bundeled with a\n  Quiver and 6 Rubber Arrows.\n</p>\n",
+      "description": "<p>Un arco revitalizado que debe recargarse después de cada ataque. Si tira 1 en Ataque (Crit fail), el paquete de batería del arco explota. Viene con una carcaída y 6 flechas de goma.</p>",
       "dvTable": "VD Arcos y Ballestas"
     },
     "Sword of Arvish": {
       "name": "Espada de Arvish",
-      "description": "<p>\n  A bladed, hilted weapon. Specifically designed for cutting or thrusting. If\n  you roll 1 on Attack (Crit Fail) the weapon crushes the wielder's fingers.\n</p>\n"
+      "description": "<p>Arma de filo empuñada. Específicamente diseñada para cortar o pinchar. Si tira 1 en el ataque (pifia) el arma aplasta los dedos de su portador.</p>"
     }
   }
 }

@@ -3,7 +3,7 @@
   "mapping": {},
   "entries": {
     "Critical Injuries (Body)": {
-      "name": "Critical Injuries (Body)",
+      "name": "Ferimento Crítico (Corpo)",
       "results": [
         {
           "2-2": "Braço Desmembrado",
@@ -21,7 +21,7 @@
       ]
     },
     "Critical Injuries (Head)": {
-      "name": "Critical Injuries (Head)",
+      "name": "Ferimento Crítico (Cabeça)",
       "results": [
         {
           "2-2": "Olho Perdido",

@@ -4,63 +4,63 @@
   "entries": {
     "Armor": {
       "name": "Armor",
-      "description": "<p>\n  Reduce brain damage by 4 while Rezzed. Only 1 copy Rezzed at a time. Each copy\n  has 1 use per Netrun.\n</p>\n"
+      "description": "<p>Riduce il danno cerebrale di 4 mentre è Rezzato. Solo 1 copia Rezzata alla volta. Ogni copia ha 1 uso per Netrun.</p>"
     },
     "Banhammer": {
       "name": "Banhammer",
-      "description": "<p>Deals 3d6 REZ to non-Black ICE or 2d6 Rez damage to Black ICE.</p>\n"
+      "description": "<p>Infligge 3d6 REZ ai Programmi non-Black ICE o 2d6 REZ ai Black ICE. </p>"
     },
     "DeckKRASH": {
       "name": "DeckKRASH",
-      "description": "<p>Forces Netrunner to Jack Out unsafely.</p>\n"
+      "description": "<p>Scollegamento forzato del Netrunner nemico dall'Architettura con tutti i danni inflitti dai Black ICE Rezzati che ha incontrato. </p>"
     },
     "Eraser": {
       "name": "Eraser",
-      "description": "<p>+2 to Cloak Checks while Rezzed.</p>\n"
+      "description": "<p>+2 a tutte le Prove di Cloak mentre è Rezzato.</p>"
     },
     "Flak": {
       "name": "Flak",
-      "description": "<p>\n  Non-Black ICE attacks against you are reduced to 0 while Rezzed. Only 1 copy\n  may be Rezzed at a time. Each copy has 1 use per Netrun.\n</p>\n"
+      "description": "<p>Mentre è Rezzato gli attacchi non Black ICE contro di te sono ridotti a 0. Solo 1 copia può Rezzata alla volta. Ogni copia ha 1 uso per Netrun.</p>"
     },
     "Hellbolt": {
       "name": "Hellbolt",
-      "description": "<p>\n  2d6 damage direct to Netrunner's Brain. Their gear catches fire if not\n  insulated.\n</p>\n"
+      "description": "<p>2d6 danni diretti al cervello del Netrunner. Il Cyberdeck prende fuoco se non isolato. </p>"
     },
     "Nervescrub": {
       "name": "Nervescrub",
-      "description": "<p>Lowers a Netrunner's INT, REF, and DEX by 1d6 (min. 1) for 1 hour.</p>\n"
+      "description": "<p>Abbassa RIF, INT e DES del Netrunner di 1d6 (min. 1) per 1 ora.</p>"
     },
     "Poison Flatline": {
       "name": "Poison Flatline",
-      "description": "<p>Destroys a non-Black ICE on the enemy's cyberdeck at random.</p>\n"
+      "description": "<p>Distrugge un non Black ICE a caso sul cyberdeck di un nemico.</p>"
     },
     "See Ya": {
       "name": "See Ya",
-      "description": "<p>+2 to Pathfinder Checks while Rezzed.</p>\n"
+      "description": "<p>+2 a tutte le Prove di Mapper finché è Rezzato.</p>"
     },
     "Shield": {
       "name": "Scudo",
-      "description": "<p>\n  The first successful brain damage attack from a Non-Black ICE Program is\n  stopped. Only 1 copy may be Rezzed at a time. Each copy has 1 use per Netrun.\n</p>\n"
+      "description": "<p>Il primo attacco di danno cerebrale provocato da un programma non Black ICE è ridotto a 0. Solo 1 Copia per volta può essere Rezzata. Ogni Copia ha 1 uso per Netrun.</p>"
     },
     "Speedy Gonzalvez": {
       "name": "Speedy Gonzalvez",
-      "description": "<p>+2 to Speed while Rezzed.</p>\n"
+      "description": "<p>+2 Velocità finché è Rezzato.</p>"
     },
     "Superglue": {
       "name": "Superglue",
-      "description": "<p>\n  The netrunner cannot progress further into the Local NET or safely jacking out\n  for 1d6 rounds.1 use per netrun.\n</p>\n"
+      "description": "<p>Il netrunner non può progredire ulteriormente nell'Architettura o scollegarsi in modo sicuro per 1d6 Round. 1 uso per Copia nel Netrun. </p>"
     },
     "Sword": {
       "name": "Spada",
-      "description": "<p>Deals 3d6 REZ to Black ICE or 2d6 Rez damage to non-Black ICE.</p>\n"
+      "description": "<p>Infligge 2d6 REZ ai Programmi non Black ICE o 3d6 REZ ai Black ICE.</p>"
     },
     "Vrizzbolt": {
       "name": "Vrizzbolt",
-      "description": "<p>\n  1d6 damage direct to Netrunner's Brain. Lowers total net actions they can take\n  by 1 (min. 2) on their next turn.\n</p>\n"
+      "description": "<p>1d6 danni diretti al cervello del Netrunner. Riduce di 1 il numero di Azioni NET che può fare\nnel suo Turno successivo (minimo 2). </p>"
     },
     "Worm": {
       "name": "Worm",
-      "description": "<p>+2 to Backdoor Checks while Rezzed.</p>\n"
+      "description": "<p>+2 a tutte le Prove di Backdoor mentre è Rezzato.</p>"
     }
   }
 }

@@ -4,15 +4,15 @@
   "entries": {
     "Elflines Online": {
       "name": "Elflines Online",
-      "description": "<p>A new in-box copy of the hit BDMMORPG Elflines Online.</p>\n"
+      "description": "<p>Une nouvelle copie in-box du hit BDMMORPG Elflines Online.</p>"
     },
     "Rank 10 ELO Character": {
       "name": "Personnage ELO de rang 10",
-      "description": "<p>\n  A power-leveled Rank 10 ELO character. (ELO Character must be created via the\n  Macro and ranked up manually.)\n</p>\n"
+      "description": "<p>Un personnage ELO de niveau 10 (un personnage ELO doit être créé via la Macro et monter ses niveaux manuellement.)</p>"
     },
     "Rush Revolution": {
       "name": "Rush Revolution",
-      "description": "<p>Braindance Headset. Required to play Elflines Online.</p>\n"
+      "description": "<p>Casque de Braindance. Requis pour jouer à Elflines Online.</p>"
     }
   }
 }

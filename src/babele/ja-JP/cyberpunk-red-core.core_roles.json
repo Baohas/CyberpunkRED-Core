@@ -1,46 +1,46 @@
 {
-  "label": "Roles",
+  "label": " ロール",
   "mapping": {},
   "entries": {
     "Exec": {
-      "name": "Exec",
-      "description": "<p>\n  Business executives and fat-cat defenders ready to risk it all to rise the\n  corporate ladder and realize the New American dream.\n</p>\n"
+      "name": "エグゼク",
+      "description": "<p>すべてを賭けて出世し、ニュー・アメリカン・ドリームを実現しようとする企業幹部や太っ腹な守銭奴たち</p>\n"
     },
     "Fixer": {
-      "name": "Fixer",
-      "description": "<p>\n  They can get anyone anything, as long as the price is right. Using their charm\n  and skills of trade, they make the deals that keep the economy of the Dark\n  Future flowing.\n</p>\n"
+      "name": "フィクサー",
+      "description": "<p>金さえあれば、誰にでも何でも融通する。その魅力と交易の技術を駆使して、暗黒近未来経済を維持するための取引を行う。</p>\n"
     },
     "Lawman": {
-      "name": "Lawman",
-      "description": "<p>\n  Renegade defenders, corporate strike teams, or the last remnants of a\n  government police force, they patrol the streets to enforce some order in an\n  otherwise lawless world.\n</p>\n"
+      "name": "ローマン",
+      "description": "<p>Renegade defenders, corporate strike teams, or the last remnants of a government police force, they patrol the streets to enforce some order in an otherwise lawless world.</p>"
     },
     "Media": {
-      "name": "Media",
-      "description": "<p>\n  Newspeople, influencers, and cultural phenomena, they are ready to expose the\n  truth by any means necessary.\n</p>\n"
+      "name": "メディア",
+      "description": "<p>Newspeople, influencers, and cultural phenomena, they are ready to expose the truth by any means necessary.</p>"
     },
     "Medtech": {
-      "name": "Medtech",
-      "description": "<p>\n  Backalley doctors and mechanics of cyberware, using their skills to keep\n  fellow edgerunners in good shape and cybered up, often at a price.\n</p>\n"
+      "name": "メドテク",
+      "description": "<p>Backalley doctors and mechanics of cyberware, using their skills to keep fellow edgerunners in good shape and cybered up, often at a price.</p>"
     },
     "Netrunner": {
-      "name": "Netrunner",
-      "description": "<p>\n  Master hackers who put themselves at risk as they jack into cyberspace to\n  download secrets and infiltrate networks.\n</p>\n"
+      "name": "ネットランナー",
+      "description": "<p>Master hackers who put themselves at risk as they jack into cyberspace to download secrets and infiltrate networks.</p>"
     },
     "Nomad": {
-      "name": "Nomad",
-      "description": "<p>\n  Car people, truckers, transportation afficionados, air-pirates, they are the\n  sole carriers of product across the world, maintaining the transport and\n  supply chains in the time of the Red.\n</p>\n"
+      "name": "ノーマッド",
+      "description": "<p>Car people, truckers, transportation afficionados, air-pirates, they are the sole carriers of product across the world, maintaining the transport and supply chains in the time of the Red.</p>"
     },
     "Rockerboy": {
-      "name": "Rockerboy",
-      "description": "<p>\n  Rebellious performance artists who use their craft to influence fans/crowds\n  and fight back.\n</p>\n"
+      "name": "ロッカーボーイ",
+      "description": "<p>Rebellious performance artists who use their craft to influence fans/crowds and fight back.</p>"
     },
     "Solo": {
-      "name": "Solo",
-      "description": "<p>\n  Experts in combat who use their fighting prowess to dominate in the lawless\n  time of the Red.\n</p>\n"
+      "name": "ソロ",
+      "description": "<p>Experts in combat who use their fighting prowess to dominate in the lawless time of the Red.</p>"
     },
     "Tech": {
-      "name": "Tech",
-      "description": "<p>\n  Superior understanding of all-things tech allow them to invent, upgrade, and\n  repair to keep the Dark Future functioning.\n</p>\n"
+      "name": "テク",
+      "description": "<p>Superior understanding of all-things tech allow them to invent, upgrade, and repair to keep the Dark Future functioning.</p>"
     }
   }
 }

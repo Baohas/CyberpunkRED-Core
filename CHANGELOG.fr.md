@@ -141,7 +141,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.5
 
-### Bug Fixes
+### Corrections de bugs
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
@@ -178,7 +178,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.3
 
-### Bug Fixes
+### Corrections de bugs
 
 - #808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - #812 - Some roles were missing the bonuses data point as an empty array.
@@ -201,7 +201,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.2
 
-### Bug Fixes
+### Corrections de bugs
 
 - Fix Programs having `undefined` before their name in character sheets
 - Fix call to `cprBrandName` in Container sheet
@@ -213,7 +213,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.1
 
-### Bug Fixes
+### Corrections de bugs
 
 Correction des migrations cassées
 
@@ -360,9 +360,9 @@ Cette version apporte beaucoup de changements de feuille pour corriger beaucoup 
 - Item Sheet
   - Slight Rewrite of header
 
-#### Ammo Modifies Weapon Damage
+#### Munitions qui modifient les dégâts des armes
 
-Ammo can now modify weapon damage / autofire maximums. Ceci prend en charge les munitions qui remplacent les dégâts de l'arme (par exemple, les chevrotines de fusil à pompe), munitions qui ne font aucun dégât (par exemple les munitions somnifères) et les munitions qui ajoutent / soustraient aux dégâts de l'arme (munitions de camelote). De la même manière, les munitions peuvent modifier le maximum de tir automatique de l'arme de base (munitions de camelote).
+Les munitions peuvent désormais modifier les dégâts des armes et le maximum de tir automatique. Ceci prend en charge les munitions qui remplacent les dégâts de l'arme (par exemple, les chevrotines de fusil à pompe), munitions qui ne font aucun dégât (par exemple les munitions somnifères) et les munitions qui ajoutent / soustraient aux dégâts de l'arme (munitions de camelote). De la même manière, les munitions peuvent modifier le maximum de tir automatique de l'arme de base (munitions de camelote).
 
 #### Autres modifications
 
@@ -428,7 +428,7 @@ Ammo can now modify weapon damage / autofire maximums. Ceci prend en charge les 
 
 ## Version 0.86.1 | Date: 2023-02-05
 
-### Bug Fixes
+### Corrections de bugs
 
 - #683 - Dragging a World Item which has another World Items installed in it and THAT item also has another world item installed in it (Cyberarm->Cyberdeck (Hardwired)->Cyberdeck) results in two cyberdecks being created on the actor. This would exponentiate every level of installation if there were more.
 - Add text for missing localized string `CPR.messages.installInvalidType`
@@ -529,7 +529,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
-### Bug Fixes
+### Corrections de bugs
 
 - Corrected a capitalisation error that was causing the included Dystopian City Streets map to disappear. Thanks to Latcher for spotting this!
 
@@ -600,7 +600,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
-### Bug Fixes
+### Corrections de bugs
 
 - Fix HTML Stripping in item descriptions on character sheets
 - Fix Create/Edit Role Ability dialog not submitting.
@@ -654,7 +654,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.83.1 (Hotfix) | Date: 2022-10-23
 
-### Bug Fixes
+### Corrections de bugs
 
 - #529 - Fix non-shop containers having the wrong button
 - #536 - Spelling mistake: "Ememies" (English)
@@ -741,7 +741,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.2 (Hotfix) | Date: 2022-08-02
 
-### Bug Fixes
+### Corrections de bugs
 
 - #458 - The rulers for the DV Calculation is broken for tables with regexp characters in the name [such as (Autofire)]
 - #455 - Containers/Vendors issues (non-English settings)

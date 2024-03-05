@@ -3,7 +3,7 @@
   "mapping": {},
   "entries": {
     "DV Assault Rifle (Autofire)": {
-      "name": "DV Assault Rifle (Autofire)",
+      "name": "DV Rifle de Assalto (Auto)",
       "results": [
         {
           "0-6": "22",
@@ -18,7 +18,7 @@
       ]
     },
     "DV Assault Rifle": {
-      "name": "DV Assault Rifle",
+      "name": "DV Rifle de Assalto",
       "results": [
         {
           "0-6": "17",
@@ -33,7 +33,7 @@
       ]
     },
     "DV Bows & Crossbows": {
-      "name": "DV Bows & Crossbows",
+      "name": "DV Arcos e Balestras",
       "results": [
         {
           "0-6": "15",
@@ -48,7 +48,7 @@
       ]
     },
     "DV Generic": {
-      "name": "DV Generic",
+      "name": "DV Básica",
       "results": [
         {
           "0-6": "",
@@ -63,7 +63,7 @@
       ]
     },
     "DV Grenade Launcher": {
-      "name": "DV Grenade Launcher",
+      "name": "DV Lançador de Granadas",
       "results": [
         {
           "0-6": "16",
@@ -78,7 +78,7 @@
       ]
     },
     "DV Pistol": {
-      "name": "DV Pistol",
+      "name": "DV Pistola",
       "results": [
         {
           "0-6": "13",
@@ -93,7 +93,7 @@
       ]
     },
     "DV Rocket Launcher": {
-      "name": "DV Rocket Launcher",
+      "name": "DV Lança-foguetes",
       "results": [
         {
           "0-6": "17",
@@ -108,7 +108,7 @@
       ]
     },
     "DV Shotgun (Slug)": {
-      "name": "DV Shotgun (Slug)",
+      "name": "DV Espingarda (Cartuchos de Espingarda)",
       "results": [
         {
           "0-6": "13",
@@ -123,7 +123,7 @@
       ]
     },
     "DV SMG (Autofire)": {
-      "name": "DV SMG (Autofire)",
+      "name": "DV SMG (Auto)",
       "results": [
         {
           "0-6": "20",
@@ -153,7 +153,7 @@
       ]
     },
     "DV Sniper Rifle": {
-      "name": "DV Sniper Rifle",
+      "name": "DV Fuzil de Precisão",
       "results": [
         {
           "0-6": "30",
@@ -168,7 +168,7 @@
       ]
     },
     "DV Thrown Weapon": {
-      "name": "DV Thrown Weapon",
+      "name": "DV Arma de Arremesso",
       "results": [
         {
           "0-6": "16",

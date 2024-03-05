@@ -3,7 +3,7 @@
   "mapping": {},
   "entries": {
     "DV Assault Rifle (Autofire)": {
-      "name": "DV Assault Rifle (Autofire)",
+      "name": "PT Karabiny szturmowe (Ogień ciągły)",
       "results": [
         {
           "0-6": "22",
@@ -18,7 +18,7 @@
       ]
     },
     "DV Assault Rifle": {
-      "name": "DV Assault Rifle",
+      "name": "PT Karabiny szturmowe",
       "results": [
         {
           "0-6": "17",
@@ -33,7 +33,7 @@
       ]
     },
     "DV Bows & Crossbows": {
-      "name": "DV Bows & Crossbows",
+      "name": "PT Łuki i kusze",
       "results": [
         {
           "0-6": "15",
@@ -63,7 +63,7 @@
       ]
     },
     "DV Grenade Launcher": {
-      "name": "DV Grenade Launcher",
+      "name": "PT Granatniki",
       "results": [
         {
           "0-6": "16",
@@ -78,7 +78,7 @@
       ]
     },
     "DV Pistol": {
-      "name": "DV Pistol",
+      "name": "PT Pistolety",
       "results": [
         {
           "0-6": "13",
@@ -93,7 +93,7 @@
       ]
     },
     "DV Rocket Launcher": {
-      "name": "DV Rocket Launcher",
+      "name": "PT Wyrzutnie rakiet",
       "results": [
         {
           "0-6": "17",
@@ -108,7 +108,7 @@
       ]
     },
     "DV Shotgun (Slug)": {
-      "name": "DV Shotgun (Slug)",
+      "name": "PT Strzelba (Pocisk)",
       "results": [
         {
           "0-6": "13",
@@ -123,7 +123,7 @@
       ]
     },
     "DV SMG (Autofire)": {
-      "name": "DV SMG (Autofire)",
+      "name": "PT PM-y (Ogień ciągły)",
       "results": [
         {
           "0-6": "20",
@@ -138,7 +138,7 @@
       ]
     },
     "DV SMG": {
-      "name": "DV SMG",
+      "name": "PT PM-y",
       "results": [
         {
           "0-6": "15",
@@ -153,7 +153,7 @@
       ]
     },
     "DV Sniper Rifle": {
-      "name": "DV Sniper Rifle",
+      "name": "PT Karabiny snajperskie",
       "results": [
         {
           "0-6": "30",
@@ -168,7 +168,7 @@
       ]
     },
     "DV Thrown Weapon": {
-      "name": "DV Thrown Weapon",
+      "name": "PT Broń rzucana",
       "results": [
         {
           "0-6": "16",

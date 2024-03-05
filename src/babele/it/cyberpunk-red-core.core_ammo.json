@@ -4,223 +4,223 @@
   "entries": {
     "Arrow (Armor-Piercing)": {
       "name": "Frecce (Perforanti)",
-      "description": "<p>Double ablation to armor.</p>\n"
+      "description": "<p>Queste Munizioni ablano le armature di 2 punti.</p>"
     },
     "Arrow (Basic)": {
       "name": "Frecce (Base)",
-      "description": "<p>Basic ammo, nothing special.</p>\n"
+      "description": "<p>Normali Munizioni senza qualità speciali.</p>"
     },
     "Arrow (Biotoxin)": {
       "name": "Frecce (a Biotossina)",
-      "description": "<p>\n  No immediate damage. If hit <strong>DV15 Resist Torture/Drugs</strong> Check.\n  On a fail 3d6 damage to HP. No Ablation.\n</p>\n"
+      "description": "<p>Un attacco con queste Munizioni non causa danni. La vittima deve superare una Prova di Resistere a Tortura/ Droghe VD 15 per non subire 3d6 danni diretti ai PF. L’armatura non viene ablata.</p>"
     },
     "Arrow (Expansive)": {
       "name": "Frecce (a Espansione)",
-      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury. The second Critical Injury\n  does not deal bonus damage.\n</p>\n"
+      "description": "<p>Se un attacco con queste Munizioni causa la Ferita Critica Corpo Estraneo(vedere pag. 187), la vittima deve tirare per una seconda (diversa) Ferita Critica e subire gli effetti di entrambi. Questa Ferita Critica aggiuntiva non causa Danno Bonus.</p>"
     },
     "Arrow (Incendiary)": {
       "name": "Frecce (Incendiarie)",
-      "description": "<p>\n  If damage dealt to target they are set alight. Target takes 2 damage to HP at\n  end of their turn unless they use action to extinguish flames. Does not stack.\n</p>\n"
+      "description": "<p>Se queste Munizioni causano danni che superano l’armatura del bersaglio, questi prende fuoco. Finché non usa un’Azione per spegnere le fiamme subisce 2 danni diretti ai PF alla fine di ogni suo Turno. Questo effetto non è cumulativo. </p>"
     },
     "Arrow (Poison)": {
       "name": "Frecce (Avvelenate)",
-      "description": "<p>\n  No immediate damage. If meat target hit,\n  <strong>DV13 Resist Torture/Drugs</strong> Check. On a fail 2d6 damage to HP.\n  No Ablation.\n</p>\n"
+      "description": "<p>Un attacco con queste Munizioni non causa danni. La vittima deve superare una Prova di Resistere a Tortura/ Droghe VD 13 per non subire 2d6 danni diretti ai PF. L’armatura non viene ablata. </p>"
     },
     "Arrow (Rubber)": {
       "name": "Frecce (di Gomma)",
-      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons\n</p>\n"
+      "description": "<p>Non causa Colpi Critici. Non abla l'armatura. Se ridotto a 0 lascia il bersaglio ad 1 PF. Conta come Munizione Base per le Armi Insolite</p>"
     },
     "Arrow (Sleep)": {
       "name": "Frecce (Soporifere)",
-      "description": "<p>\n  Deals no damage. If meat target hit\n  <strong>DV13 Resist Torture/Drugs</strong>. On fail falls Prone (see pg. 169)\n  and unconscious for 1 minute. Can be woken by damage or another person using\n  an action to touch/shake them.\n</p>\n"
+      "description": "<p>Un attacco con queste Munizioni non causa danni. La vittima deve superare una Prova di Resistere a Tortura/ Droghe VD 13 per non cadere Prona (vedere pag. 169) e Priva di Sensi per 1 Minuto. Si sveglia se subisce danni o se qualcuno usa un’Azione per scuoterla.</p>"
     },
     "Arrow (Smart)": {
       "name": "Frecce (Smart)",
-      "description": "<p>\n  Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by\n  4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add\n  luck. Target can dodge the second roll as normal if able to do so.\n</p>\n"
+      "description": "<p>Per usare queste Munizioni è necessario avere il Cyberware Mirino, altrimenti non sparerà. Quando si usano queste Munizioni, se si fallisce di 4 o meno la Prova d’Attacco in modalità Colpo Singolo, è possibile attaccare nuovamente contro lo stesso VD dell’attacco originale più 10 al risultato del d10, invece del normale valore. Si può in ogni caso spendere FOR. Chi può schivare i proiettili può farlo anche con questo attacco. </p>"
     },
     "Battery Pack": {
       "name": "Pacchetto Batteria",
-      "description": "<p>\n  A rechargeable (1 hour) battery pack, commonly used with Exotic weapons.\n  Contains 8 shots and can be recharged.\n</p>\n"
+      "description": "<p>Un pacco batteria ricaricabile (1 ora), comunemente usato per armi Esotiche. Contiene 8 colpi e può essere ricaricato.&nbsp;</p>"
     },
     "Grenade (Armor-Piercing)": {
       "name": "Granata (Perforante)",
-      "description": "<p>Double ablation to armor.</p>\n"
+      "description": "<p>Queste Munizioni ablano le armature di 2 punti. </p>"
     },
     "Grenade (Biotoxin)": {
       "name": "Granata (a Biotossina)",
-      "description": "<p>\n  No immediate damage. If hit <strong>DV15 Resist Torture/Drugs</strong> Check.\n  On a fail 3d6 damage to HP. No Ablation.\n</p>\n"
+      "description": "<p>Un attacco con queste Munizioni non causa danni. La vittima deve superare una Prova di Resistere a Tortura/ Droghe VD 15 per non subire 3d6 danni diretti ai PF. L’armatura non viene ablata. </p>"
     },
     "Grenade (EMP)": {
       "name": "Granata (EMP)",
-      "description": "<p>\n  If hit, perform <strong>DV15 Cybertech Check</strong>. On Fail 2 pieces of\n  Cyberware or carried electronics (GM's choice) stop working for 1 minute.\n  Cyberlimbs hang loosely like a dismembered meat arm see pg. 187.\n</p>\n"
+      "description": "<p>Se colpisce, la vittima deve superare una Prova di Cybertecnologia VD 15. Se fallisce, due tra i suoi pezzi di cyberware o dispositivi elettronici (scelti dal GM) smettono di funzionare per 1 minuto. Un Cyberarto disattivato si comporta come un arto di carne che sia stato smembrato, pur rimanendo ancora attaccato (vedere Ferite Critiche a pag. 187).</p>"
     },
     "Grenade (Flashbang)": {
       "name": "Granata (Flashbang)",
-      "description": "<p>\n  Deals no damage. If hit roll <strong>DV15 Resist Torture/Drugs</strong>. On a\n  fail take the Damaged Eye and Damaged Ear Critical injuries (see pg. 188) for\n  1 minute. No Crit damage dealt.\n</p>\n"
+      "description": "<p>Un attacco con queste Munizioni non causa danni, ma la vittima deve superare una Prova di Resistere a Tortura/Droghe VD 15. Se fallisce, subisce gli effetti delle Ferite Critiche Occhio Danneggiato e Orecchio Danneggiato (vedere pag. 188) per 1 minuto. Queste non causano Danni Bonus. </p>"
     },
     "Grenade (Incendiary)": {
       "name": "Granata (Incendiaria)",
-      "description": "<p>\n  If damage dealt to target they are set alight. Target takes 2 damage to HP at\n  end of their turn unless they use action to extinguish flames. Does not stack.\n</p>\n"
+      "description": "<p>Se queste Munizioni causano danni che superano l’armatura del bersaglio, questi prende fuoco. Finché non usa un’Azione per spegnere le fiamme subisce 2 danni diretti ai PF alla fine di ogni suo Turno. Questo effetto non è cumulativo. </p>"
     },
     "Grenade (Poison)": {
       "name": "Granata (Velenosa)",
-      "description": "<p>\n  No immediate damage. If meat target hit,\n  <strong>DV13 Resist Torture/Drugs</strong> Check. On a fail 2d6 damage to HP.\n  No Ablation.\n</p>\n"
+      "description": "<p>Un attacco con queste Munizioni non causa danni. La vittima deve superare una Prova di Resistere a Tortura/ Droghe VD 13 per non subire 2d6 danni diretti ai PF. L’armatura non viene ablata. </p>"
     },
     "Grenade (Sleep)": {
       "name": "Granata (Soporifera)",
-      "description": "<p>\n  Deals no damage. If meat target hit\n  <strong>DV13 Resist Torture/Drugs</strong>. On fail falls Prone (see pg. 169)\n  and unconscious for 1 minute. Can be woken by damage or another person using\n  an action to touch/shake them.\n</p>\n"
+      "description": "<p>Un attacco con queste Munizioni non causa danni. La vittima deve superare una Prova di Resistere a Tortura/ Droghe VD 13 per non cadere Prona (vedere pag. 169) e Priva di Sensi per 1 Minuto. Si sveglia se subisce danni o se qualcuno usa un’Azione per scuoterla.</p>"
     },
     "Grenade (Smoke)": {
       "name": "Granata (Fumogena)",
-      "description": "<p>\n  Deals no Damage. Fills a 10m/yd x 10m/yd with smoke for 1 minute. Tasks\n  obscured by smoke have a -4 penalty.\n</p>\n"
+      "description": "<p>Queste Munizioni non causano danni, ma ricoprono di fumo un’area di 10×10m attorno al punto d’impatto per 1 minuto. La normale penalità per agire nel fumo è -4.</p>"
     },
     "Grenade (Teargas)": {
       "name": "Granata (Lacrimogena)",
-      "description": "<p>\n  Deals no Damage. Hit targets with Meat eyes roll\n  <strong>DV13 Resist Torture/Drugs</strong> Check. On fail suffer Damaged Eye\n  Critical Injury (See pg. 188) for 1 minute. Does not deal critical bonus\n  damage.\n</p>\n"
+      "description": "<p>Un attacco con queste Munizioni non causa danni, ma la vittima deve superare una Prova di Resistere a Tortura/Droghe VD 13. Se fallisce, subisce gli effetti della Ferita Critica Occhio Danneggiato (vedere pag. 188) per 1 minuto. Questa non causa Danni Bonus.</p>"
     },
     "Heavy Pistol (Armor-Piercing)": {
       "name": "Pistola Pesante (Perforante)",
-      "description": "<p>Double ablation to armor.</p>\n"
+      "description": "<p>Queste Munizioni ablano le armature di 2 punti. </p>"
     },
     "Heavy Pistol (Basic)": {
       "name": "Pistola Pesante (Base)",
-      "description": "<p>Basic ammo, nothing special.</p>\n"
+      "description": "<p>Normali Munizioni senza qualità speciali.</p>"
     },
     "Heavy Pistol (Expansive)": {
       "name": "Pistola Pesante (a Espansione)",
-      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury. The second Critical Injury\n  does not deal bonus damage.\n</p>\n"
+      "description": "<p>Se un attacco con queste Munizioni causa la Ferita Critica Corpo Estraneo(vedere pag. 187), la vittima deve tirare per una seconda (diversa) Ferita Critica e subire gli effetti di entrambi. Questa Ferita Critica aggiuntiva non causa Danno Bonus.</p>"
     },
     "Heavy Pistol (Incendiary)": {
       "name": "Pistola Pesante (Incendiario)",
-      "description": "<p>\n  If damage dealt to target they are set alight. Target takes 2 damage to HP at\n  end of their turn unless they use action to extinguish flames. Does not stack.\n</p>\n"
+      "description": "<p>Se queste Munizioni causano danni che superano l’armatura del bersaglio, questi prende fuoco. Finché non usa un’Azione per spegnere le fiamme subisce 2 danni diretti ai PF alla fine di ogni suo Turno. Questo effetto non è cumulativo. </p>"
     },
     "Heavy Pistol (Rubber)": {
       "name": "Pistola Pesante (di Gomma)",
-      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons\n</p>\n"
+      "description": "<p>Non causa Colpi Critici. Non abla l'armatura. Se ridotto a 0 lascia il bersaglio ad 1 PF. Conta come Munizione Base per le Armi Insolite</p>"
     },
     "Heavy Pistol (Smart)": {
       "name": "Pistola Pesante (Smart)",
-      "description": "<p>\n  Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by\n  4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add\n  luck. Target can dodge the second roll as normal if able to do so.\n</p>\n"
+      "description": "<p>Per usare queste Munizioni è necessario avere il Cyberware Mirino, altrimenti non sparerà. Quando si usano queste Munizioni, se si fallisce di 4 o meno la Prova d’Attacco in modalità Colpo Singolo, è possibile attaccare nuovamente contro lo stesso VD dell’attacco originale più 10 al risultato del d10, invece del normale valore. Si può in ogni caso spendere FOR. Chi può schivare i proiettili può farlo anche con questo attacco. </p>"
     },
     "Medium Pistol (Armor-Piercing)": {
       "name": "Pistola Media (Perforante)",
-      "description": "<p>Double ablation to armor.</p>\n"
+      "description": "<p>Queste Munizioni ablano le armature di 2 punti. </p>"
     },
     "Medium Pistol (Basic)": {
       "name": "Pistola Media (Base)",
-      "description": "<p>Basic ammo, nothing special.</p>\n"
+      "description": "<p>Normali Munizioni senza qualità speciali.</p>"
     },
     "Medium Pistol (Expansive)": {
       "name": "Pistola Media (a Espansione)",
-      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury. The second Critical Injury\n  does not deal bonus damage.\n</p>\n"
+      "description": "<p>Se un attacco con queste Munizioni causa la Ferita Critica Corpo Estraneo(vedere pag. 187), la vittima deve tirare per una seconda (diversa) Ferita Critica e subire gli effetti di entrambi. Questa Ferita Critica aggiuntiva non causa Danno Bonus.</p>"
     },
     "Medium Pistol (Incendiary)": {
       "name": "Pistola Media (Incendiario)",
-      "description": "<p>\n  If damage dealt to target they are set alight. Target takes 2 damage to HP at\n  end of their turn unless they use action to extinguish flames. Does not stack.\n</p>\n"
+      "description": "<p>Se queste Munizioni causano danni che superano l’armatura del bersaglio, questi prende fuoco. Finché non usa un’Azione per spegnere le fiamme subisce 2 danni diretti ai PF alla fine di ogni suo Turno. Questo effetto non è cumulativo. </p>"
     },
     "Medium Pistol (Rubber)": {
       "name": "Pistola Media (di Gomma)",
-      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons\n</p>\n"
+      "description": "<p>Non causa Colpi Critici. Non abla l'armatura. Se ridotto a 0 lascia il bersaglio ad 1 PF. Conta come Munizione Base per le Armi Insolite.</p>"
     },
     "Medium Pistol (Smart)": {
       "name": "Pistola Media (Smart)",
-      "description": "<p>\n  Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by\n  4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add\n  luck. Target can dodge the second roll as normal if able to do so.\n</p>\n"
+      "description": "<p>Per usare queste Munizioni è necessario avere il Cyberware Mirino, altrimenti non sparerà. Quando si usano queste Munizioni, se si fallisce di 4 o meno la Prova d’Attacco in modalità Colpo Singolo, è possibile attaccare nuovamente contro lo stesso VD dell’attacco originale più 10 al risultato del d10, invece del normale valore. Si può in ogni caso spendere FOR. Chi può schivare i proiettili può farlo anche con questo attacco. </p>"
     },
     "Paintball (Acid)": {
       "name": "Paintball (Acido)",
-      "description": "<p>\n  Paintballs filled with acid. Deals no damage but ablates armour by 1 SP on\n  hit*.\n</p>\n<p>\n  <em\n    >*Not currently supported so will need to manually reduce armour on hit</em\n  >\n</p>\n"
+      "description": "<p>Paintball pieni di acido. Non infligge danni ma abbatte l'armatura di 1 SP al colpo*.</p>\n<p><em>*Attualmente non supportato, quindi sarà necessario ridurre manualmente l'armatura al colpo.</em></p>"
     },
     "Paintball (Basic)": {
       "name": "Paintball (Base)",
-      "description": "<p>Regular paintballs that don't do any damage. Annoying though.</p>\n"
+      "description": "<p>Palle di vernice regolari che non causano alcun danno. Che noia.</p>"
     },
     "Rifle (Armor-Piercing)": {
       "name": "Fucile (Perforante)",
-      "description": "<p>Double ablation to armor.</p>\n"
+      "description": "<p>Queste Munizioni ablano le armature di 2 punti. </p>"
     },
     "Rifle (Basic)": {
       "name": "Fucile (Base)",
-      "description": "<p>Basic ammo, nothing special.</p>\n"
+      "description": "<p>Normali Munizioni senza qualità speciali.</p>"
     },
     "Rifle (Expansive)": {
       "name": "Fucile (a Espansione)",
-      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury. The second Critical Injury\n  does not deal bonus damage.\n</p>\n"
+      "description": "<p>Se un attacco con queste Munizioni causa la Ferita Critica Corpo Estraneo(vedere pag. 187), la vittima deve tirare per una seconda (diversa) Ferita Critica e subire gli effetti di entrambi. Questa Ferita Critica aggiuntiva non causa Danno Bonus.</p>"
     },
     "Rifle (Incendiary)": {
       "name": "Fucile (Incendiario)",
-      "description": "<p>\n  If damage dealt to target they are set alight. Target takes 2 damage to HP at\n  end of their turn unless they use action to extinguish flames. Does not stack.\n</p>\n"
+      "description": "<p>Se queste Munizioni causano danni che superano l’armatura del bersaglio, questi prende fuoco. Finché non usa un’Azione per spegnere le fiamme subisce 2 danni diretti ai PF alla fine di ogni suo Turno. Questo effetto non è cumulativo.</p>"
     },
     "Rifle (Rubber)": {
       "name": "Fucile (di Gomma)",
-      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons\n</p>\n"
+      "description": "<p>Non causa Colpi Critici. Non abla l'armatura. Se ridotto a 0 lascia il bersaglio ad 1 PF. Conta come Munizione Base per le Armi Insolite.</p>"
     },
     "Rifle (Smart)": {
       "name": "Fucile (Smart)",
-      "description": "<p>\n  Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by\n  4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add\n  luck. Target can dodge the second roll as normal if able to do so.\n</p>\n"
+      "description": "<p>Per usare queste Munizioni è necessario avere il Cyberware Mirino, altrimenti non sparerà. Quando si usano queste Munizioni, se si fallisce di 4 o meno la Prova d’Attacco in modalità Colpo Singolo, è possibile attaccare nuovamente contro lo stesso VD dell’attacco originale più 10 al risultato del d10, invece del normale valore. Si può in ogni caso spendere FOR. Chi può schivare i proiettili può farlo anche con questo attacco. </p>"
     },
     "Rocket (Armor-Piercing)": {
       "name": "Razzo (Perforante)",
-      "description": "<p>Double ablation to armor.</p>\n"
+      "description": "<p>Queste Munizioni ablano le armature di 2 punti. </p>"
     },
     "Rocket (Smart)": {
       "name": "Razzo (Smart)",
-      "description": "<p>\n  Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by\n  4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add\n  luck. Target can dodge the second roll as normal if able to do so.\n</p>\n"
+      "description": "<p>Per usare queste Munizioni è necessario avere il Cyberware Mirino, altrimenti non sparerà. Quando si usano queste Munizioni, se si fallisce di 4 o meno la Prova d’Attacco in modalità Colpo Singolo, è possibile attaccare nuovamente contro lo stesso VD dell’attacco originale più 10 al risultato del d10, invece del normale valore. Si può in ogni caso spendere FOR. Chi può schivare i proiettili può farlo anche con questo attacco. </p>"
     },
     "Shotgun Shell (Basic)": {
       "name": "Cartucce a Pallini (Base)",
-      "description": "<p>Basic ammo, nothing special.</p>\n"
+      "description": "<p>Normali Munizioni senza qualità speciali.</p>"
     },
     "Shotgun Shell (Incendiary)": {
       "name": "Cartucce a Pallini (Incendiarie)",
-      "description": "<p>\n  If damage dealt to target they are set alight. Target takes 2 damage to HP at\n  end of their turn unless they use action to extinguish flames. Does not stack.\n</p>\n"
+      "description": "<p>Se queste Munizioni causano danni che superano l’armatura del bersaglio, questi prende fuoco. Finché non usa un’Azione per spegnere le fiamme subisce 2 danni diretti ai PF alla fine di ogni suo Turno. Questo effetto non è cumulativo. </p>"
     },
     "Shotgun Slug (Armor-Piercing)": {
       "name": "Cartucce a Pallettoni (Perforanti)",
-      "description": "<p>Double ablation to armor.</p>\n"
+      "description": "<p>Queste Munizioni ablano le armature di 2 punti. </p>"
     },
     "Shotgun Slug (Basic)": {
       "name": "Cartucce a Pallettoni (Base)",
-      "description": "<p>Basic ammo, nothing special.</p>\n"
+      "description": "<p>Normali Munizioni senza qualità speciali.</p>"
     },
     "Shotgun Slug (Expansive)": {
       "name": "Cartucce a Pallettoni (a Espansione)",
-      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury. The second Critical Injury\n  does not deal bonus damage.\n</p>\n"
+      "description": "<p>Se un attacco con queste Munizioni causa la Ferita Critica Corpo Estraneo(vedere pag. 187), la vittima deve tirare per una seconda (diversa) Ferita Critica e subire gli effetti di entrambi. Questa Ferita Critica aggiuntiva non causa Danno Bonus.</p>"
     },
     "Shotgun Slug (Incendiary)": {
       "name": "Cartucce a Pallettoni (Incendiarie)",
-      "description": "<p>\n  If damage dealt to target they are set alight. Target takes 2 damage to HP at\n  end of their turn unless they use action to extinguish flames. Does not stack.\n</p>\n"
+      "description": "<p>Se queste Munizioni causano danni che superano l’armatura del bersaglio, questi prende fuoco. Finché non usa un’Azione per spegnere le fiamme subisce 2 danni diretti ai PF alla fine di ogni suo Turno. Questo effetto non è cumulativo. </p>"
     },
     "Shotgun Slug (Rubber)": {
       "name": "Cartucce a Pallettoni (di Gomma)",
-      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons\n</p>\n"
+      "description": "<p>Non causa Colpi Critici. Non abla l'armatura. Se ridotto a 0 lascia il bersaglio ad 1 PF. Conta come Munizione Base per le Armi Insolite.</p>"
     },
     "Shotgun Slug (Smart)": {
       "name": "Cartucce a Pallettoni (Smart)",
-      "description": "<p>\n  Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by\n  4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add\n  luck. Target can dodge the second roll as normal if able to do so.\n</p>\n"
+      "description": "<p>Per usare queste Munizioni è necessario avere il Cyberware Mirino, altrimenti non sparerà. Quando si usano queste Munizioni, se si fallisce di 4 o meno la Prova d’Attacco in modalità Colpo Singolo, è possibile attaccare nuovamente contro lo stesso VD dell’attacco originale più 10 al risultato del d10, invece del normale valore. Si può in ogni caso spendere FOR. Chi può schivare i proiettili può farlo anche con questo attacco. </p>"
     },
     "Very Heavy Pistol (Armor-Piercing)": {
       "name": "Pistola Molto Pesante (Perforante)",
-      "description": "<p>Double ablation to armor.</p>\n"
+      "description": "<p>Queste Munizioni ablano le armature di 2 punti. </p>"
     },
     "Very Heavy Pistol (Basic)": {
       "name": "Pistola Molto Pesante (Base)",
-      "description": "<p>Basic ammo, nothing special.</p>\n"
+      "description": "<p>Normali Munizioni senza qualità speciali.</p>"
     },
     "Very Heavy Pistol (Expansive)": {
       "name": "Pistola Molto Pesante (a Espansione)",
-      "description": "<p>\n  If the victim rolls the Foreign object Critical Injury (see pg. 187), they\n  also roll for a second (different) Critical Injury. The second Critical Injury\n  does not deal bonus damage.\n</p>\n"
+      "description": "<p>Se un attacco con queste Munizioni causa la Ferita Critica Corpo Estraneo(vedere pag. 187), la vittima deve tirare per una seconda (diversa) Ferita Critica e subire gli effetti di entrambi. Questa Ferita Critica aggiuntiva non causa Danno Bonus.</p>"
     },
     "Very Heavy Pistol (Incendiary)": {
       "name": "Pistola Molto Pesante (Incendiario)",
-      "description": "<p>\n  If damage dealt to target they are set alight. Target takes 2 damage to HP at\n  end of their turn unless they use action to extinguish flames. Does not stack.\n</p>\n"
+      "description": "<p>Se queste Munizioni causano danni che superano l’armatura del bersaglio, questi prende fuoco. Finché non usa un’Azione per spegnere le fiamme subisce 2 danni diretti ai PF alla fine di ogni suo Turno. Questo effetto non è cumulativo. </p>"
     },
     "Very Heavy Pistol (Rubber)": {
       "name": "Pistola Molto Pesante (di Gomma)",
-      "description": "<p>\n  Does not cause Critical Injury. Does not ablate armor. Leaves target at\n  minimum 1hp. Counts as Basic ammo for exotic weapons\n</p>\n"
+      "description": "<p>Non causa Colpi Critici. Non abla l'armatura. Se ridotto a 0 lascia il bersaglio ad 1 PF. Conta come Munizione Base per le Armi Insolite.</p>"
     },
     "Very Heavy Pistol (Smart)": {
       "name": "Pistola Molto Pesante (Smart)",
-      "description": "<p>\n  Req Targeting Scope Cyberware, otherwise won't fire. If miss single attack by\n  4 or less, roll second attack at same DV 1d10+10 (not normal stat). Can add\n  luck. Target can dodge the second roll as normal if able to do so.\n</p>\n"
+      "description": "<p>Per usare queste Munizioni è necessario avere il Cyberware Mirino, altrimenti non sparerà. Quando si usano queste Munizioni, se si fallisce di 4 o meno la Prova d’Attacco in modalità Colpo Singolo, è possibile attaccare nuovamente contro lo stesso VD dell’attacco originale più 10 al risultato del d10, invece del normale valore. Si può in ogni caso spendere FOR. Chi può schivare i proiettili può farlo anche con questo attacco. </p>"
     }
   }
 }

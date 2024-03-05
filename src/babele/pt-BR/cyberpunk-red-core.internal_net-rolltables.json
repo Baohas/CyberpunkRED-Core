@@ -1,25 +1,25 @@
 {
-  "label": "NET Architecture Rolltables",
+  "label": "NET architecture Rolltables",
   "mapping": {},
   "entries": {
     "All Other Floors (Advanced)": {
       "name": "All Other Floors (Advanced)",
       "results": [
         {
-          "3-3": "Hellhound",
+          "3-3": "Cão Infernal",
           "4-4": "Asp x2",
           "5-5": "Hellhound, Killer",
-          "6-6": "Hellhound",
+          "6-6": "Cão Infernal",
           "7-7": "Hellhound, Sabertooth",
-          "8-8": "Hellhound",
+          "8-8": "Cão Infernal",
           "9-9": "Password DV10",
           "10-10": "File DV10",
           "11-11": "Control Node DV10",
           "12-12": "Password DV10",
-          "13-13": "Asp",
-          "14-14": "Asp",
-          "15-15": "Dragon",
-          "16-16": "Asp",
+          "13-13": "Víbora",
+          "14-14": "Víbora",
+          "15-15": "Dragão",
+          "16-16": "Víbora",
           "17-17": "Dragon, Wisp",
           "18-18": "Dragon x2"
         }
@@ -29,20 +29,20 @@
       "name": "All Other Floors (Basic)",
       "results": [
         {
-          "3-3": "Hellhound",
+          "3-3": "Cão Infernal",
           "4-4": "Asp x2",
           "5-5": "Hellhound, Killer",
-          "6-6": "Hellhound",
+          "6-6": "Cão Infernal",
           "7-7": "Hellhound, Sabertooth",
-          "8-8": "Hellhound",
+          "8-8": "Cão Infernal",
           "9-9": "Password DV10",
           "10-10": "File DV10",
           "11-11": "Control Node DV10",
           "12-12": "Password DV10",
-          "13-13": "Asp",
-          "14-14": "Asp",
-          "15-15": "Dragon",
-          "16-16": "Asp",
+          "13-13": "Víbora",
+          "14-14": "Víbora",
+          "15-15": "Dragão",
+          "16-16": "Víbora",
           "17-17": "Dragon, Wisp",
           "18-18": "Dragon x2"
         }
@@ -52,20 +52,20 @@
       "name": "All Other Floors (Standard)",
       "results": [
         {
-          "3-3": "Hellhound",
+          "3-3": "Cão Infernal",
           "4-4": "Asp x2",
           "5-5": "Hellhound, Killer",
-          "6-6": "Hellhound",
+          "6-6": "Cão Infernal",
           "7-7": "Hellhound, Sabertooth",
-          "8-8": "Hellhound",
+          "8-8": "Cão Infernal",
           "9-9": "Password DV10",
           "10-10": "File DV10",
           "11-11": "Control Node DV10",
           "12-12": "Password DV10",
-          "13-13": "Asp",
-          "14-14": "Asp",
-          "15-15": "Dragon",
-          "16-16": "Asp",
+          "13-13": "Víbora",
+          "14-14": "Víbora",
+          "15-15": "Dragão",
+          "16-16": "Víbora",
           "17-17": "Dragon, Wisp",
           "18-18": "Dragon x2"
         }
@@ -75,20 +75,20 @@
       "name": "All Other Floors (Uncommon)",
       "results": [
         {
-          "3-3": "Hellhound",
+          "3-3": "Cão Infernal",
           "4-4": "Asp x2",
           "5-5": "Hellhound, Killer",
-          "6-6": "Hellhound",
+          "6-6": "Cão Infernal",
           "7-7": "Hellhound, Sabertooth",
-          "8-8": "Hellhound",
+          "8-8": "Cão Infernal",
           "9-9": "Password DV10",
           "10-10": "File DV10",
           "11-11": "Control Node DV10",
           "12-12": "Password DV10",
-          "13-13": "Asp",
-          "14-14": "Asp",
-          "15-15": "Dragon",
-          "16-16": "Asp",
+          "13-13": "Víbora",
+          "14-14": "Víbora",
+          "15-15": "Dragão",
+          "16-16": "Víbora",
           "17-17": "Dragon, Wisp",
           "18-18": "Dragon x2"
         }
@@ -101,9 +101,9 @@
           "1-1": "File DV6",
           "2-2": "Password DV6",
           "3-3": "Password DV8",
-          "4-4": "Skunk",
-          "5-5": "Wisp",
-          "6-6": "Killer"
+          "4-4": "Gambá",
+          "5-5": "Nuvem Etérea",
+          "6-6": "Assassino"
         }
       ]
     }

@@ -4,39 +4,39 @@
   "entries": {
     "Arasaka Acid": {
       "name": "Ácido de Arasaka",
-      "description": "<p>Coating for Arasaka Weeping Reaver Katana only. Improves ablation effect.</p>\n"
+      "description": "<p>Recubrimiento para la Katana \"Atracador Llorón\" de Arasaka.</p>"
     },
     "Arasaka Fire": {
       "name": "Fuego de Arasaka",
-      "description": "<p>\n  Coating for Arasaka Weeping Reaver Katana only. Ignites target. Multiple\n  effects do not stack.\n</p>\n"
+      "description": "<p>Recubrimiento para la Katana \"Atracador Llorón\" de Arasaka.</p>\n<p>Puede poner el objetivo en llamas, detalles de los cuales se pueden encontrar en la página 91.</p>"
     },
     "Arasaka Wound Salt": {
       "name": "Sal de Herida de Arasaka",
-      "description": "<p>\n  Coating for Arasaka Weeping Reaver Katana only. Adds a second critical injury.\n  No additional damage.\n</p>\n"
+      "description": "<p>Recubrimiento para la Katana \"Atracador Llorón\" de Arasaka.</p>\n<p>Capaz de aplicar un segundo una segunda lesión crítica, cuyos detalles se pueden encontrar en la página 91.</p>"
     },
     "Doberman 500 Marking Scent": {
       "name": "Doberman 500 Perfume Marcador",
-      "description": "<p>\n  Unique form of ammunition for the Air Pistol. Provides specialized scent\n  marking on target.\n</p>\n"
+      "description": "<p>Tipo de munición especial para la Pistola del Aire. Para obtener más información, consulte la página del Cromo Negro 44.</p>"
     },
     "Grenade (Arachnid)": {
       "name": "Granada (Telaraña)",
-      "description": "<p>\n  A very sticky grenade. Creates a sticky web that entangles target. Must be\n  destroyed or be torn by anyone in melee range making a\n  <strong>DV 15 Brawling Check</strong>.\n</p>\n"
+      "description": "<p>Una granada muy pegajosa, cuyos detalles se pueden encontrar en la página 86.</p>"
     },
     "Grenade (Security)": {
       "name": "Granada (Seguridad)",
-      "description": "<p>Armor piercing Grenade. Deals damage to targets but not to cover.</p>\n"
+      "description": "<p>Granada perforadora de armadura que no daña la cobertura. Puede encontrar reglas completas en la página 89.</p>"
     },
     "Grenade (Shuriken Tornado)": {
       "name": "Granada (Tornado de Shuriken)",
-      "description": "<p>\n  A literal explosion of shurikens. Armor Piercing grenade. Each shuriken from\n  explosion deals individual damage.\n</p>\n"
+      "description": "<p>Una explosión literal de shurikens. Puede aplicar una segunda lesión crítica, detalles de los cuales se pueden encontrar en la página 87.</p>"
     },
     "Net": {
       "name": "Red",
-      "description": "<p>Net for the net launcher that grapples the target on hit.</p>\n<p>\n  On hit, grapples target. Target can escape with a\n  <strong>DV13 Contortionist Check</strong> (net victim only) or a\n  <strong>DV13 Brawling Check</strong> which can be attempted by anyone. Net can\n  also be destroyed.\n</p>\n"
+      "description": "<p>Red para el lanzador de redes que atrapa al objetivo al golpear. (Ver Cromo Negro Pg. 20-21 para más detalles)</p>"
     },
     "Rocks": {
       "name": "Rocas",
-      "description": "<p>\n  Ammunition that can be used with the Nomad Rocker if of small enough size.\n  Ammunition is considered free and available if small rocks are able to be\n  collected in the area the user is in.\n</p>\n"
+      "description": "<p>Munición para el Lanza-Rocas Nómada.</p>"
     }
   }
 }

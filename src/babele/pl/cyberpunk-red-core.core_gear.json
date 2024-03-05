@@ -3,228 +3,228 @@
   "mapping": {},
   "entries": {
     "Cyberdeck (Excellent)": {
-      "name": "Cyberdeck (Excellent)",
-      "description": "<p>Netrunner deck. 9 slots.</p>\n"
+      "name": "Cyberdek (doskonałej jakości)",
+      "description": "<p>Netrunner deck. 9 slots.</p>"
     },
     "Cyberdeck (Poor)": {
-      "name": "Cyberdeck (Poor)",
-      "description": "<p>Netrunner deck. 5 slots.</p>\n"
+      "name": "Cyberdek (niskiej jakości)",
+      "description": "<p>Netrunner deck. 5 slots.</p>"
     },
     "Cyberdeck": {
       "name": "Cyberdek",
-      "description": "<p>Netrunner deck. 7 slots.</p>\n"
+      "description": "<p>Dek netrunnera. 7 gniazd.</p>"
     },
     "Battleglove": {
       "name": "Rękawica bojowa",
-      "description": "<p>\n  An exotic heavy gauntlet, that covers your hand and forearm. Provides three\n  option slots.\n</p>\n"
+      "description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>"
     },
     "Smart Glasses": {
       "name": "Smartkulary",
-      "description": "<p>Eyewear with two options slots for cybereye options.</p>\n"
+      "description": "<p>Eyewear with two options slots for cybereye options.</p>"
     },
     "Agent": {
       "name": "Agent",
-      "description": "<p>\n  AI Smartphone. +2 Library Search, +2 Wardrobe & Style depending on\n  circumstance.\n</p>\n"
+      "description": "<p>Smarfon SI. +2 do Przeszukiwania baz danych, +2 do Mody i stylu w zależności od okoliczności.</p>"
     },
     "Airhypo": {
       "name": "Strzykawka bezigłowa",
-      "description": "<p>Hypodermic syringe.</p>\n"
+      "description": "<p>Strzykawka podskórna.</p>"
     },
     "Anti-Smog Breathing Mask": {
       "name": "Maska antysmogowa",
-      "description": "<p>Airborne toxin filter.</p>\n"
+      "description": "<p>Odfiltrowuje toksyny w powietrzu.</p>"
     },
     "Audio Recorder": {
       "name": "Rejestrator dźwięku",
-      "description": "<p>Record 24h of audio on a memory Chip.</p>\n"
+      "description": "<p>Nagrywa 24 godziny audio na czipie pamięci.</p>"
     },
     "Auto Level Dampening Ear Protectors": {
       "name": "Automatyczne słuchawki wygłuszające",
-      "description": "<p>Wearer is immune to loud sounds.</p>\n"
+      "description": "<p>Użytkownik jest niewrażliwy na głośne dźwięki.</p>"
     },
     "Binoculars": {
       "name": "Lornetka",
-      "description": "<p>Magnification: x2 or x3.</p>\n"
+      "description": "<p>Powiększenie: x2 lub x3.</p>"
     },
     "Braindance Viewer": {
       "name": "Przeglądarka braindance'u",
-      "description": "<p>Braindance viewing device.</p>\n"
+      "description": "<p>Urządzenie pozwalające oglądać braindance'y.</p>"
     },
     "Bug Detector": {
       "name": "Wykrywacz podsłuchu",
-      "description": "<p>Detect listening devices. Range 2m/yds.</p>\n"
+      "description": "<p>Wykrywa podsłuchy. Zasięg 2m/jardy.</p>"
     },
     "Carryall": {
       "name": "Torba podręczna",
-      "description": "<p>Bag.</p>\n"
+      "description": "<p>Torba.</p>"
     },
     "Chemical Analyzer": {
       "name": "Analizator biochemiczny",
-      "description": "<p>Determine chemical composition using sample database.</p>\n"
+      "description": "<p>Określa skład chemiczny za pomocą przykładowej bazy danych (s. 352).</p>"
     },
     "Computer": {
       "name": "Komputer",
-      "description": "<p>Desktop or laptop.</p>\n"
+      "description": "<p>Stacjonarny lub laptop.</p>"
     },
     "Cryopump": {
       "name": "Kriopompa",
-      "description": "<p>\n  Briefcase-sized tool used for hooking up a wounded person. Places them in\n  stasis.\n</p>\n"
+      "description": "<p>Aktówka używana do podpinania rannych. Umieszcza rannego w stazie (s. 353).</p>"
     },
     "Cryotank": {
       "name": "Kriozbiornik",
-      "description": "<p>Holds a fully-sized human, heals injuries faster than normal.</p>\n"
+      "description": "<p>Zmieści pełno wymiarową osobę, leczy szybciej niż normalnie (s. 353).</p>"
     },
     "Disposable Cell Phone": {
       "name": "Jednorazowy telefon komórkowy",
-      "description": "<p>Voice calls only.</p>\n"
+      "description": "<p>Tylko połączenia głosowe.</p>"
     },
     "Drum Synthesizer": {
       "name": "Syntezator perkusyjny",
-      "description": "<p>Makes drum sounds when connected to amplifier.</p>\n"
+      "description": "<p>Wydaje dźwięki perkusyjne po podłączeniu do wzmacniacza.</p>"
     },
     "Duct Tape": {
       "name": "Mocna taśma klejąca",
-      "description": "<p>Use it to tape stuff.</p>\n"
+      "description": "<p>Do zaklejania rzeczy, lub ludzi...</p>"
     },
     "Electric Guitar/Other Instrument": {
       "name": "Gitara elektryczna/inny instrument",
-      "description": "<p>Musical instrument. Electric instruments requires an amplifier.</p>\n"
+      "description": "<p>Musical instrument. Electric instruments requires an amplifier.</p>"
     },
     "Flashlight": {
       "name": "Latarka",
-      "description": "<p>10h of light on a single charge. 100m/yd range.</p>\n"
+      "description": "<p>10h światła na pojedynczym naładowaniu. Zasięg 100m/yd.</p>"
     },
     "Food Stick": {
       "name": "Gryzipatyk",
-      "description": "<p>Meal replacement bar.</p>\n"
+      "description": "<p>Obrzydliwy posiłek pod postacią batona.</p>"
     },
     "Glow Paint": {
       "name": "Farba świecąca",
-      "description": "<p>Spraypaint with glow-in-the-dark effect.</p>\n"
+      "description": "<p>Farba fluorescencyjna w spray'u.</p>"
     },
     "Glow Stick": {
       "name": "Światło chemiczne",
-      "description": "<p>Duration: 10h. Range: 4m/yds.</p>\n"
+      "description": "<p>Czas działania: 10h. Zasięg: 4m/yd.</p>"
     },
     "Grapple Gun": {
       "name": "Wyrzutnia haków",
-      "description": "<p>Range: 30m/yds. Not usable as weapon.</p>\n"
+      "description": "<p>Zasięg: 30m/yd. Nie nadaje się jako broń (s. 355).</p>"
     },
     "Handcuffs": {
       "name": "Kajdanki",
-      "description": "<p>BODY>10 can break.</p>\n"
+      "description": "<p>BC > 10 może zerwać.</p>"
     },
     "Homing Tracer": {
       "name": "Odbiornik lokalizatora",
-      "description": "<p>Range: 1 mile.</p>\n"
+      "description": "<p>Zasięg: 1.5km. Można dokupić dodatkowe nadajniki i podłączyć pod ten sam odbiornik.</p>"
     },
     "Inflatable Bed & Sleep-bag": {
       "name": "Nadmuchiwany materac i śpiwór",
-      "description": "<p>Portable sleeping set.</p>\n"
+      "description": "<p>Przenośny zestaw do spania. Kostka 15cm x 15cm.</p>"
     },
     "Kibble Pack": {
       "name": "Torba karmy",
-      "description": "<p>One meal.</p>\n"
+      "description": "<p>Jeden posiłek.</p>"
     },
     "Linear Frame β (Beta)": {
       "name": "Ramownica linearna β (Beta)",
-      "description": "<p>Exoskeleton.</p>\n<ul>\n  <li>Requires 2 Interface Plugs</li>\n  <li>Increases BODY to 14 while plugged in</li>\n  <li>Does not affect HP or Deathsave due to BODY increase</li>\n</ul>\n"
+      "description": "<p>Egzoszkielet. Wymaga 2 złącz interfejsu. Zwiększa BC do 14 dopóki jest podłączony. Nie zmienia PW i testów Przeżywalności (s. 354).</p>"
     },
     "Linear Frame ∑ (Sigma)": {
       "name": "Ramownica linearna ∑ (Sigma)",
-      "description": "<p>Exoskeleton.</p>\n<ul>\n  <li>Requires 1 Interface Plug</li>\n  <li>Increases BODY to 12 while plugged in</li>\n  <li>Does not affect HP or Deathsave due to BODY increase</li>\n</ul>\n"
+      "description": "<p>Egzoszkielet. Wymaga 1 złącza interfejsu. Zwiększa BC do 12 dopóki jest podłączony. Nie zmienia PW i testów Przeżywalności (s. 354).</p>"
     },
     "Lock Picking Set": {
       "name": "Zestaw wytrychów",
-      "description": "<p>Needed to pick mechanical locks.</p>\n"
+      "description": "<p>Potrzebne do otwierania zamków mechanicznych.</p>"
     },
     "Medscanner": {
       "name": "Skaner medyczny",
-      "description": "<p>+2 First Aid or Paramedic checks.</p>\n"
+      "description": "<p>+2 do testów Pierwszej pomocy i Ratownictwa medycznego. Premie z różnych urządzeń nie kumulują się.</p>"
     },
     "Medtech Bag": {
       "name": "Torba medyka",
-      "description": "<p>Medical equipment.</p>\n"
+      "description": "<p>Sprzęt medyczny.</p>"
     },
     "Memory Chip": {
       "name": "Czip pamięci",
-      "description": "<p>Data storage.</p>\n"
+      "description": "<p>Pamięć danych.</p>"
     },
     "MRE": {
       "name": "Racje żywnościowe MRE",
-      "description": "<p>Portable meal. Self-heating.</p>\n"
+      "description": "<p>Przenośny posiłek. Samoogrzewanie chemiczne.</p>"
     },
     "Personal CarePak": {
       "name": "Kosmetyczka CarePak",
-      "description": "<p>Toothbrush etc.</p>\n"
+      "description": "<p>Szczoteczka do zębów itp.</p>"
     },
     "Pocket Amplifier": {
       "name": "Wzmacniacz kieszonkowy",
-      "description": "<p>Duration: 6h. Supports two instruments.</p>\n"
+      "description": "<p>Czas działania: 6h. Obsługuje maksymalnie dwa instrumenty na raz.</p>"
     },
     "Radar Detector": {
       "name": "Wykrywacz radaru",
-      "description": "<p>Detect radar beam. Range: 100m/yd</p>\n"
+      "description": "<p>Wykrywa wiązki radarów. Zasięg: 100m/yd.</p>"
     },
     "Radiation Suit": {
       "name": "Kombinezon chroniący przed promieniowaniem",
-      "description": "<p>Protects the wearer from radiation.</p>\n"
+      "description": "<p>Chroni noszącego przed promieniowaniem.</p>"
     },
     "Radio Communicator": {
       "name": "Radiokomunikator",
-      "description": "<p>Range: 1 mile. In-ear.</p>\n"
+      "description": "<p>Zasięg: 1.5km. Słuchawka dokanałowa.</p>"
     },
     "Radio Scanner/Music Player": {
       "name": "Radio/odtwarzacz muzyki",
-      "description": "<p>Receive radio transmissions. Range: 1 mile.</p>\n"
+      "description": "<p>Odbiera transmisje radiowe i pozwala odtwarzać muzykę. Zasięg: 1.5km. (s. 354)</p>"
     },
     "Road Flare": {
       "name": "Flara alarmowa",
-      "description": "<p>Range: 100m/yd. Duration: 1h.</p>\n"
+      "description": "<p>Jednorazówka. Dostępne różne kolory. Zasięg oświetlenia: 100m/yd. Czas trwania: 1h.</p>"
     },
     "Rope (60m/yd)": {
       "name": "Lina (60m/yd)",
-      "description": "<p>Nylon.</p>\n"
+      "description": "<p>Nylonowa lina. Dostępne różne kolory. Udźwig: 360kg.</p>"
     },
     "Scrambler/Descrambler": {
       "name": "Koder/dekoder",
-      "description": "<p>Comm scrambler/receiver.</p>\n"
+      "description": "<p>Odbiornik i koder komunikacyjny. (s. 353)</p>"
     },
     "Tech Bag": {
       "name": "Przybornik technika",
-      "description": "<p>Tool bag.</p>\n"
+      "description": "<p>Torba narzędziowa.</p>"
     },
     "Techscanner": {
       "name": "Techskaner",
-      "description": "<p>+2 to multiple TECH-based skills.</p>\n"
+      "description": "<p>+2 do wielu umiejętności opartych na TECH (naprawy, elektronika, cyberinżynieria). Premie z różnych urządzeń nie kumulują się. (s. 355)</p>"
     },
     "Techtool": {
       "name": "Technarzędzie",
-      "description": "<p>Multi-purpose tool.</p>\n"
+      "description": "<p>Multinarzędzie.</p>"
     },
     "Tent and Camping Equipment": {
       "name": "Namiot i sprzęt biwakowy",
-      "description": "<p>For one person.</p>\n"
+      "description": "<p>Dla jednej osoby.</p>"
     },
     "Tracer Button": {
       "name": "Nadajnik lokalizatora",
-      "description": "<p>Can be tracked from up to a mile away with a homing tracer.</p>\n"
+      "description": "<p>Można śledzić za pomocą odbiornika lokalizatora do maksymalnie 1.5km.</p>"
     },
     "Vial of Biotoxin": {
       "name": "Fiolka biotoksyny",
-      "description": "<p>3d6 damage unless Resist Torture/Drugs. Armor does not apply.</p>\n"
+      "description": "<p>3k6 obrażeń przy niezdanym przeciwstawnym teście na Odporność na tortury/narkotyki. Zbroja nie wpływa na obrażenia.</p>"
     },
     "Vial of Poison": {
       "name": "Fiolka trucizny",
-      "description": "<p>2d6 damage unless Resist Torture/Drugs. Armor does not apply.</p>\n"
+      "description": "<p>2k6 obrażeń przy niezdanym przeciwstawnym teście na Odporność na tortury/narkotyki. Zbroja nie wpływa na obrażenia.</p>"
     },
     "Video Camera": {
       "name": "Kamera wideo",
-      "description": "<p>12hr per memory chip.</p>\n"
+      "description": "<p>12 godzin nagrań na każdy czip pamięci.</p>"
     },
     "Virtuality Goggles": {
       "name": "Gogle wirtualowe",
-      "description": "<p>Overlay cyberspace imagery onto vision.</p>\n"
+      "description": "<p>Nakłada obraz cyberprzestrzeni na prawdziwy świat.</p>"
     }
   }
 }

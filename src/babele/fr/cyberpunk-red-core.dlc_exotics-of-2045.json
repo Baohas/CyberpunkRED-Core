@@ -4,39 +4,39 @@
   "entries": {
     "Appetite Controller": {
       "name": "Contrôleur d'appétit",
-      "description": "<p>\n  Suppresses hunger response. User ignores Humanity Loss penalties from\n  starvation trauma but User can still starve. Roll a Death Save at start of 7th\n  consecutive day without eating. +1 to successive Death Saves each day\n  afterwards.\n</p>\n<p>Requires Biomonitor.</p>\n"
+      "description": "<p>Supprime la réponse à la faim. L'utilisateur ignore les pénalités de perte d'Humanité dues à un traumatisme de famine mais l'utilisateur peut encore mourir de faim. Lancez une sauvegarde contre la mort au début de la 7e journée consécutive sans manger. +1 aux sauvegardes successives contre la Mort par la suite.</p>\n<p>Nécessite un Biomoniteur.</p>"
     },
     "Combat Jaw": {
       "name": "Mâchoire de combat",
-      "description": "<p>Implanted Very Heavy Melee Weapon.</p>\n"
+      "description": "<p>Arme de mêlée très lourde implantée.</p>\n<p>Se référer à la description complète à la page 72 de lnterface Red vol. 2.</p>"
     },
     "Combat Tail": {
       "name": "Queue de combat",
-      "description": "<p>Implanted Heavy Melee Weapon. Requires Neural Link.</p>\n"
+      "description": "<p>Arme de mêlée lourde implantée. Nécessite un lien neural.</p>\n<p>Se référer à la description complète à la page 72 de Interface Red vol. 2.</p>"
     },
     "Extra-Jointed Cyberarm Upgrade": {
       "name": "Amélioration de cyberbras Extra-articulation",
-      "description": "<p>Enchances cyberarm articulation. +2 Contortionist.</p>\n"
+      "description": "<p>Améliore les articulations de cyberbras. Contorsion +2. (Voir Black Chrome p. 18 pour plus de détails)</p>"
     },
     "Extra-Jointed Cyberleg Upgrade": {
       "name": "Amélioration de cyberjambe Extra-articulation",
-      "description": "<p>Enchances cyberleg articulation. +2 Contortionist.</p>\n"
+      "description": "<p>Améliore les articulations de cyberjambe. Contorsion +2. (Voir Black Chrome p. 18 pour plus de détails)</p>"
     },
     "Firebreather": {
       "name": "Souffle de feu",
-      "description": "<p>Implanted Exotic Shotgun. Can only hold one incendiary shotgun shell.</p>\n"
+      "description": "<p>Fusil à pompe exotique implanté. Ne peux contenir qu'une seule cartouche de fusil à pompe chevrotine incendiaire. </p>\n<p>Référez-vous à la description complète à la page 73 de Interface Red vol. 2.</p>"
     },
     "Heuristic Health Monitor": {
       "name": "Moniteur Heuristique de Santé",
-      "description": "<p>Requires biomonitor. Can know HP at a glance.</p>\n"
+      "description": "<p>Nécessite un biomoniteur. Pour voir les PS en un coup d'œil. (Voir Black Chrome p. 19 pour plus de détails)</p>"
     },
     "NeuTongue": {
       "name": "NovLangue",
-      "description": "<p>\n  Simulates flavor sensations. Use a linked Agent to customize flavor profiles.\n  Can be deactivated without an Action. No sense of taste when deactivated.\n</p>\n<p>Replaces Meat tongue.</p>\n"
+      "description": "<p>Simule les sensations de saveur. Utilise un Agent lié pour personnaliser les profils de saveurs. Peut être désactivé sans Action. Aucun sens du goût lorsqu'il est désactivé.</p>\n<p>Remplace la langue de chair.</p>"
     },
     "Reflex Co-Processor": {
       "name": "Coprocesseur de Réflexe",
-      "description": "<p>Neuralware. Negates REF requirement to dodge bullets.</p>\n"
+      "description": "<p>Neuromatériel. Permet l'esquive des balles indépendamment des REF . (Voir Black Chrome pg. 21 pour plus de détails)</p>"
     }
   }
 }

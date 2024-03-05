@@ -1,25 +1,25 @@
 {
-  "label": "Skills (Play Instrument)",
+  "label": "Compétences (Instrument)",
   "mapping": {},
   "entries": {
     "Play Instrument (Drums)": {
-      "name": "Play Instrument (Drums)",
+      "name": "Instrument (batterie)",
       "description": ""
     },
     "Play Instrument (Guitar)": {
-      "name": "Play Instrument (Guitar)",
+      "name": "Instrument (guitare)",
       "description": ""
     },
     "Play Instrument (Piano)": {
-      "name": "Play Instrument (Piano)",
+      "name": "Instrument (piano)",
       "description": ""
     },
     "Play Instrument (Singing)": {
-      "name": "Play Instrument (Singing)",
+      "name": "Instrument (chant)",
       "description": ""
     },
     "Play Instrument (Violin)": {
-      "name": "Play Instrument (Violin)",
+      "name": "Instrument (violon)",
       "description": ""
     }
   }

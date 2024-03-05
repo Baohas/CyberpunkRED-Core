@@ -239,7 +239,7 @@ We have migrated all Gear items provided by our Compendia to support `isElectron
 
 #### CSS Themes / Rewrite
 
-Due to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
+Do to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
 
 For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme then Ernies needs to be configured to use Dark Mode as well.
 
@@ -260,7 +260,7 @@ For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/
 
 - New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
 - Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
-  - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogues with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
+  - For example, the TeleOptics cyberware adds a +1 to certain attacks when the target is greater than 51m away. Since we do not want this bonus applying all the time, it is toggled Situational. This way, we can apply it in roll dialogues with one click, only as needed. If your character is a sniper and almost always uses the TeleOptics bonus, you can also toggle the Situational modifier as Default On. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range. This way, the modifier is applied by default, but it can be toggled off during the few times your character moves to closer range.
 - Modifiers to rolls from Role Abilities also have Situational (and On By Default) options
 - Modifiers to rolls from item Upgrades also have Situational (and On By Default) options
   - Note: effects with situational modifiers have been given the appropriate settings on all compendium items but you will have to manually update them on items that already exist on actors
@@ -273,7 +273,7 @@ We have added the functionality for system specific themes. This allows us to sh
 
 If you are interested in making a theme for the system check out the [CSS Themes](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/CSS-Themes) wiki page which details the process.
 
-#### Compendia
+#### Kompendia
 
 - Added The 12 Days of Cybermas with help from Miklos
 - Added Hornet’s Pharmacy with help from Miklos
@@ -284,11 +284,11 @@ If you are interested in making a theme for the system check out the [CSS Themes
 - Added Night City Tarot content with help from Hakuan Quietpaws
 - Added All About Drones with help from Hakuan Quietpaws
 - Added Exotics of 2045 with help from Hakuan Quietpaws
-- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
+- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic Racha and Sushimatic
 - Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
 - Added Night City Weather with help from Miklos
 - Added Branded Weapons with help from Hakuan Quietpaws
-- Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic
+- Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic Racha, Hakuan Quietpaws, and Sushimatic
 - Added clothing descriptions with help from Hakuan Quietpaws
 - Added Mook Encounter Complication, Hardened Lieutenant Tactics, and Hardened Mini Boss Mini Promotion rolltables
 - Added missing Elflines Online items with help from LordCheesusCrust
@@ -761,13 +761,13 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - #225 - Active effects for Items
   - Active Effects are a Foundry feature that allow items to apply modifications to stats and skills of characters in the game. Active Effects can also be added to Characters arbitrarily without associating to an item.
-  - An Effects tab on the actor sheet has been added to summarize where active effects are coming from. From there character-level effects can be managed. (create/toggle/edit/delete). Effects from Items cannot be edited or deleted from this tab. Mooks do not yet enjoy Active Effects.
+  - An Effects tab on the actor sheet has been added to summarize where active effects are coming from. From there character-level effects can be managed. (create/toggle/edit/delete). (create/toggle/edit/delete). Effects from Items cannot be edited or deleted from this tab. Mooks do not yet enjoy Active Effects.
   - An Active Effect has a "usage" associated with it on an item. This affects when the effect will be applied. Examples are when carried, when equipped, toggling it on/off yourself or always on. Some specialized ones exist too: Cyberware allows for "when installed." More may be added in the future.
   - The following item types can have Active Effects added to them: armor, clothing, drugs (more on that next), gear, cyberware, weapons, and injuries (see #290).
   - Active effects can be applied to stats, skills, role abilities, a handful of derived stats (like HP), or custom keys in a manner similar to what 5E expects. Only plain addition or subtraction modes are supported.
   - A MOD column has been added to the Role tab in a manner similar to what we have for skills already. Like skills, this makes it clear which abilities are being affected by an Active Effect.
   - Arbitrary skill mods on characters cannot be set in the character sheet any more, that column shows mods coming from active effects now. You can still create skill mods with active effects using the Effects tab.
-  - Active effects can affect skills on a character, even custom skills. Note that there is a known issue where a custom skill does not always show up the first time any character is opened. (see issue #440 for details) Closing an reopening the sheet fixes it for the rest of that session.
+  - Active effects can affect skills on a character, even custom skills. Note that there is a known issue where a custom skill does not always show up the first time any character is opened. (see issue #440 for details) Closing an reopening the sheet fixes it for the rest of that session. (see issue #440 for details) Closing an reopening the sheet fixes it for the rest of that session.
 - #305 - Drugs and Consumables
   - The Drug item type has been added and has a unique action and usage. This is meant to model consumables, meaning items that stack and can be consumed to enjoy some stat or skill benefit.
   - Consuming a drug will reduce the amount by 1 and enable any active effects with the "when consumed" usage set.
@@ -1077,7 +1077,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
     - Players can modify items? - Allows modification of the items. If enabled the item sheets render in an editable way, otherwise they render in a non-editable way. (On for Stash, else Off)
   - Players are not allowed to drag an item out of the container actor to their character sheet. This is only enabled for the GM, as otherwise the players could "steal" items from the container. Players have to use the take/purchase button for that.
   - **KNOWN ISSUE:** Currently, there is a [bug](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/issues/261) affecting unlinked container actors therefore we recommend to workaround this bug, when you create a new container actor, change the Prototype Token to Link Actor Data. This bug will be addressed in a future release.
-- We now support an Italian translation! (thank you Misthero!)
+- The French translation has been updated to account for all strings in this release. (Thank you VinceKun!)
 - Netrunning Initial Implementation
   - Introduction of the Item Object: Cyberdeck
     - Migration code added for existing "Gear" items which have the word "cyberdeck" in the name. These items will be pre-pended with a '[MIGRATED]' tag on it to help identify that the item should be replaced with a new Cyberdeck Item. We have opted to not automate this replacement as people may update just prior to hosting a game and this would/could cause issues for planned sessions.
@@ -1236,7 +1236,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - Another hotfix is created numbered 0.75.3. This changes the manifest and download links to be that of 0.75.3, but contains a typo in the download link
   - The typo is then fixed, but without a bump in the version number
   - 0.75.4 is created, with a new version agnostic manifest link but the download link from 0.75.3
-- This history was initially preserved in a branch containing the various release manifests, but in April 2023 Zankoas deleted that branch in a clean-up. In doing so this note was added to avoid losing the record entirely
+- This history was initially preserved in a branch containing the various release manifests, but in April 2023 Zankoas deleted that branch in a clean-up. In doing so this note was added to avoid losing the record entirely In doing so this note was added to avoid losing the record entirely
 - Three commits from that branch containing the `system.json` changes between 0.74.2 and 0.75.4 hadn't been merged in, and as such were deleted
 - 0.74.2 wasn't tagged, but can be found at commit hash `1fdb27abbcfbf57152690e76992c109a464d57f7` on date `03/05/21 16:48:36`
 

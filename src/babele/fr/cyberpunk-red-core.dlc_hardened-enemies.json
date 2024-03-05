@@ -6,16 +6,16 @@
       "name": "Tactiques des lieutenants endurcis",
       "results": [
         {
-          "1-1": "Lieutenant and their allies ambush the party (CP:R page 399).",
-          "2-2": "Lieutenant is grappling a human shield (CP:R page 184).",
-          "3-3": "Lieutenant orders their allies to focus on a particular player.",
-          "4-4": "Lieutenant orders their allies to charge wildly at the party.",
-          "5-5": "Lieutenant is in a highly defensible position, making use of cover.",
-          "6-6": "Lieutenant has First Aid and Paramedic Skill Bases of 14 each.",
-          "7-7": "Lieutenant has rigged an Armor-Piercing Grenade (CP:R page 345) as a trap before the combat, somewhere on the field. Noticing it requires a DV15 Perception Skill Check. Disarming it requires a DV9 Demolitions Skill Check. The grenade goes off if any Character moves into the square in which it is hidden.",
-          "8-8": "Lieutenant has done extensive research into the combat capabilities of the party.",
-          "9-9": "Lieutenant has a COOL of 6, a Reputation of 2, and attempts a Facedown. (CP:R page 194) either before combat begins or right at the beginning.",
-          "10-10": "Lieutenant has a Tactics Skill Base of 16 and is in command."
+          "1-1": "Un sbire tire des munitions incendiaires (Page 346 du livre de règles), mais n'a que 10 balles.",
+          "2-2": "Ajoutez 2 sbires supplémentaires à la rencontre au début du 2e round.",
+          "3-3": "Deux sbires subissent actuellement l'effet principal de la Dentelle noire (Page 357 du livre de règles).",
+          "4-4": "Donnez leur une tenue pare-balles moyenne qui a été améliorée, supprimant la pénalité d'armure.",
+          "5-5": "Donnez leur 600 ed de cyberimplants supplémentaire.",
+          "6-6": "Donne leur une réputation de 5.",
+          "7-7": "Ajoutez un sbire supplémentaire d'un type différent lors de la rencontre.",
+          "8-8": "Ajoutez 2 sbires à la rencontre. Ils auront toutefois une Blessure Critique à la tête chacun.",
+          "9-9": "Ajoutez 1 sbire supplémentaire à la rencontre au début des rounds 2, 3 et 4.",
+          "10-10": "Un sbire a un pistolet-mitrailleur, aucun sens de l'auto-préservation, une base de compétence de Tir automatique de\n16 et ne porte pas d'armure de tête."
         }
       ]
     },
@@ -23,16 +23,16 @@
       "name": "Promotion des Mini Boss",
       "results": [
         {
-          "1-1": "Increase one of their Skill Bases that is above 10 to 17.",
-          "2-2": "Increase their HP by 10.",
-          "3-3": "Give them Teamwork 3 (see CP:R page 153), and give them a Team Member of your choice.",
+          "1-1": "Un sbire tire des munitions incendiaires (Page 346 du livre de règles), mais n'a que 10 balles.",
+          "2-2": "Ajoutez 2 sbires supplémentaires à la rencontre au début du 2e round.",
+          "3-3": "Deux sbires subissent actuellement l'effet principal de la Dentelle noire (Page 357 du livre de règles).",
           "4-4": "Le Mini-boss est équipé d'une tenue pare-balles moyenne qui a été améliorée, supprimant la pénalité d'armure.",
           "5-5": "Le Mini-boss aura 600 ed de cyberimplants supplémentaire.",
           "6-6": "Le Mini-boss a une réputation de 5.",
-          "7-7": "Give them an EMP Grenade (see CP:R page 345) and an Athletics Skill Base of 16.",
-          "8-8": "Give them either a dose of Black Lace (see CP:R page 357) or Synthcoke (see CP:R page 358) before combat starts.",
-          "9-9": "Increase their MOVE to 8 or increase their Evasion Skill Base to 18.",
-          "10-10": "Give them Gills (see CP:R page 363) and a round of Exotic Bodysculpting (see CP:R page 226). Shark? Arowana? You decide."
+          "7-7": "Ajoutez un sbire supplémentaire d'un type différent lors de la rencontre.",
+          "8-8": "Ajoutez 2 sbires à la rencontre. Ils auront toutefois une Blessure Critique à la tête chacun.",
+          "9-9": "Ajoutez 1 sbire supplémentaire à la rencontre au début des rounds 2, 3 et 4.",
+          "10-10": "Un sbire a un pistolet-mitrailleur, aucun sens de l'auto-préservation, une base de compétence de Tir automatique de\n16 et ne porte pas d'armure de tête."
         }
       ]
     },
@@ -43,9 +43,9 @@
           "1-1": "Un sbire tire des munitions incendiaires (Page 346 du livre de règles), mais n'a que 10 balles.",
           "2-2": "Ajoutez 2 sbires supplémentaires à la rencontre au début du 2e round.",
           "3-3": "Deux sbires subissent actuellement l'effet principal de la Dentelle noire (Page 357 du livre de règles).",
-          "4-4": "One Mook has an Armor-Piercing Grenade (CP:R page 345) and a Athletics Skill Base of 12.",
-          "5-5": "One Mook is wearing Heavy Armorjack (SP13) Body Armor. Increase their REF, DEX, and MOVE by 2 (before calculating the Armor Penalty).",
-          "6-6": "The Mooks are unusually organized. One Mook has a Tactics Skill Base of 13, and a Smoke Grenade (CP:R page 347).",
+          "4-4": "Le Mini-boss est équipé d'une tenue pare-balles moyenne qui a été améliorée, supprimant la pénalité d'armure.",
+          "5-5": "Le Mini-boss aura 600 ed de cyberimplants supplémentaire.",
+          "6-6": "Le Mini-boss a une réputation de 5.",
           "7-7": "Ajoutez un sbire supplémentaire d'un type différent lors de la rencontre.",
           "8-8": "Ajoutez 2 sbires à la rencontre. Ils auront toutefois une Blessure Critique à la tête chacun.",
           "9-9": "Ajoutez 1 sbire supplémentaire à la rencontre au début des rounds 2, 3 et 4.",

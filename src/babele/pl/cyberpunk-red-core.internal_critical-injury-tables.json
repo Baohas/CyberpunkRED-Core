@@ -3,7 +3,7 @@
   "mapping": {},
   "entries": {
     "Critical Injuries (Body)": {
-      "name": "Critical Injuries (Body)",
+      "name": "Rany Krytyczne (Ciało)",
       "results": [
         {
           "2-2": "Odcięta ręka",
@@ -21,7 +21,7 @@
       ]
     },
     "Critical Injuries (Head)": {
-      "name": "Critical Injuries (Head)",
+      "name": "Rany Krytyczne (Głowa)",
       "results": [
         {
           "2-2": "Utrata oka",

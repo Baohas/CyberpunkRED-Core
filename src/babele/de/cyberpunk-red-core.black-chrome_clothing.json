@@ -3,8 +3,8 @@
   "mapping": {},
   "entries": {
     "Holo-Wear": {
-      "name": "Holo-Wear",
-      "description": "<p>\n  Holographic clothing that can get disabled by EMP blasts for a minute. Can\n  swap styles with an action if purchased.\n</p>\n"
+      "name": "Holo-Kleidung",
+      "description": "<p>\nHolografische Kleidung, die durch EMP-Angriffe für eine Minute deaktiviert werden kann. Zwischen gekauften Stilen kann mit einer Aktion gewechselt werden.\n</p>\n"
     }
   }
 }

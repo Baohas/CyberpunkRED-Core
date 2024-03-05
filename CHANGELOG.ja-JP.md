@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD024 -->
 
-# Changelog
+# 更新履歴
 
 ## Version 0.89.0
 

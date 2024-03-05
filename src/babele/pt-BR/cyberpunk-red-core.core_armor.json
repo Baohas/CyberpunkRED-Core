@@ -4,27 +4,27 @@
   "entries": {
     "Bodyweight Suit": {
       "name": "Macacão especializado",
-      "description": "<p>\n  Netrunner armored skinsuit. Can store Cyberdeck and support Interface Plugs.\n  Can't be bought in two pieces. Always worn on both Head and Body Location.\n  Adds one Hardware only Option Slot to connected Cyberdeck. No armor penalty.\n</p>\n"
+      "description": "<p>Macacão reforçado, peça única. Pode armazenar um Console e suporta plugs de interface. Obrigatório ser usado nos espaços de Corpo e Cabeça. +1 de espaços para Hardwares no Console equipado. Sem penalidade de armadura</p>"
     },
     "Bullet Proof Shield": {
       "name": "Escudo à prova de bala",
-      "description": "<p>Requires an arm and has HP that is reduced by damage.</p>\n"
+      "description": "<p>Requer um braço e tem VP que é reduzido por danos.</p>"
     },
     "Flak (Body)": {
       "name": "Armadura (corpo)",
-      "description": "<p>\n  Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.\n</p>\n"
+      "description": "<p>Armadura chapada de metal para resistir aos golpes mais poderosos. -4 a REF, DEX e MOVE.</p>"
     },
     "Flak (Head)": {
       "name": "Armadura (cabeça)",
-      "description": "<p>\n  Metal plated armor to resist the most powerful hits to your head. -4 to REF,\n  DEX, and MOVE.\n</p>\n"
+      "description": "<p>Armadura chapada de metal para resistir aos acertos mais poderosos. -4 para REF, DEX e MOVE.</p>"
     },
     "Heavy Armorjack (Body)": {
       "name": "Colete Pesado",
-      "description": "<p>Heavier version of an Armorjack. -2 to REF, DEX, and MOVE.</p>\n"
+      "description": "<p>Versão mais pesada de um colete. -2 para REF, DEX e MOVE.</p>"
     },
     "Heavy Armorjack (Head)": {
       "name": "Capacete Pesado",
-      "description": "<p>Heavier version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>\n"
+      "description": "<p>A versão mais pesada de um capacete. -2 para REF, DEX e MOVE.</p>"
     },
     "Kevlar® (Body)": {
       "name": "Kevlar® (Body)",
@@ -36,27 +36,27 @@
     },
     "Leathers (Body)": {
       "name": "Couro (Corpo)",
-      "description": "<p>Simple Leather armor. No armor penalty.</p>\n"
+      "description": "<p>Armadura de Couro Simples. Sem penalidade de armadura.</p>"
     },
     "Leathers (Head)": {
       "name": "Couros (Cabeça)",
-      "description": "<p>Simple Leather armor for your head. No armor penalty.</p>\n"
+      "description": "<p>Capacete de Couro simples para sua cabeça. Sem penalidade de armadura.</p>"
     },
     "Light Armorjack (Body)": {
       "name": "Colete Leve",
-      "description": "<p>Light version of an Armorjack. No armor penalty.</p>\n"
+      "description": "<p>Versão leve de um colete. Sem penalidade de armadura.</p>"
     },
     "Light Armorjack (Head)": {
       "name": "Capacete Leve",
-      "description": "<p>Light version of an Armorjack for your head. No armor penalty.</p>\n"
+      "description": "<p>Versão leve de um capacete. Sem penalização de armadura.</p>"
     },
     "Medium Armorjack (Body)": {
       "name": "Colete Médio",
-      "description": "<p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>\n"
+      "description": "<p>Versão média de um colete. -2 para REF, DEX e MOVE.</p>"
     },
     "Medium Armorjack (Head)": {
       "name": "Capacete Médio (cabeça)",
-      "description": "<p>Medium version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>\n"
+      "description": "<p>A versão média de um capacete. -2 para REF, DEX e MOVE.</p>"
     },
     "Metalgear® (Body)": {
       "name": "Metalgear® (Body)",
@@ -68,11 +68,11 @@
     },
     "Skin Weave": {
       "name": "Trenó de Pele",
-      "description": "<p>Armor Item for Skin Weave Cyberware.</p>\n"
+      "description": "<p>Armor Item for Skin Weave Cyberware.</p>"
     },
     "Subdermal Armor": {
       "name": "Armadura Subdermal",
-      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>\n"
+      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>"
     }
   }
 }

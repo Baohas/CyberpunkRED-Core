@@ -1,10 +1,10 @@
 <!-- markdownlint-disable MD024 -->
 
-# Changelog
+# Registro de Cambios
 
 ## Version 0.89.0
 
-### New Features
+### Nuevas Características
 
 - Add Compendia for:
   - Skills (Local Expert)
@@ -25,7 +25,7 @@
   - They will not be added to new Characters
 - Rename default `Local Expert` skill to `Local Expert (Your Home)`
 
-### Changes
+### Cambios
 
 - Weapons in fight tab now categorized by Ranged/Melee
 - Change Pause Font to Tektur for better internationalization support
@@ -83,7 +83,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
   - The entire Changelog to be shown
   - Re-opening at any time
 
-## Version 0.88.1
+## Versión 0.88.1
 
 ### Action Needed
 
@@ -93,7 +93,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 - Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
 
-## Version 0.88.0
+## Versión 0.88.0
 
 ### Action Needed
 
@@ -133,20 +133,20 @@ This means any instances where you have dragged an item from a compendium into a
 - Change styling of release notes pop-up to match journal styling
 - All Compendium updated for v11 and now sorted into Folders
 
-## Version 0.87.6
+## Versión 0.87.6
 
 ### Bug Fixes
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
-## Version 0.87.5
+## Versión 0.87.5
 
-### Bug Fixes
+### Corrección de Errores
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
 
-## Version 0.87.4
+## Versión 0.87.4
 
 ### New Features
 
@@ -176,9 +176,9 @@ This means any instances where you have dragged an item from a compendium into a
 - Fix #707 - Importing actors from .jsons with installed items should now work as expected.
 - Fix an issue where compendia actors erroneously had their installed item data wiped.
 
-## Version 0.87.3
+## Versión 0.87.3
 
-### Bug Fixes
+### Corrección de Errores
 
 - #808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - #812 - Some roles were missing the bonuses data point as an empty array.
@@ -199,9 +199,9 @@ This means any instances where you have dragged an item from a compendium into a
 - Fix Beta Linear Frames AE mode to be set not add
 - Fix Nova Model 757 slots
 
-## Version 0.87.2
+## Versión 0.87.2
 
-### Bug Fixes
+### Corrección de Errores
 
 - Fix Programs having `undefined` before their name in character sheets
 - Fix call to `cprBrandName` in Container sheet
@@ -211,41 +211,41 @@ This means any instances where you have dragged an item from a compendium into a
 - Increase Black ICE sheet width to acomodate 2 digit REZ values better
 - Fix Black ICE tokens/actors not updating when populating with a program
 
-## Version 0.87.1
+## Versión 0.87.1
 
-### Bug Fixes
+### Corrección de Errores
 
-Fix broken migrations
+Reparar migraciones rotas
 
-## Version 0.87.0
+## Versión 0.87.0
 
 ### Action Needed
 
-#### New Discord
+#### Nuevo Discord
 
-We have moved Discord server! If you need any help with this release, want to help with future releases, or just want to join our community we can now be found in our new [Discord server](https://discord.gg/TsvcZUEtbJ). We hope to see you there!
+¡Hemos movido el servidor de Discord! Si necesita ayuda con esta versión, quiere ayudar con futuras versiones, o solo quieres unirte a nuestra comunidad, ahora podemos encontrarnos en nuestro nuevo [servidor de Discord](https://discord.gg/TsvcZUEtbJ). ¡Esperamos verte allí!
 
-#### Ammo Modifies Weapon Damage
+#### Munición modifica el daño de arma
 
-Ammo can now modify weapon damage / autofire maximums. For example, shotgun shells automatically roll 3d6 damage instead of the shotgun's base damage. We made a best attempt at migrating relevant items on actors, but if you've changed the name of compendia items or have homebrew items with this functionality, those items will need to be updated manually.
+La munición ahora puede modificar el daño de arma / máximo de disparo automático. Por ejemplo, los cartuchos de escopeta tiran automáticamente 3d6 puntos de daño en lugar del daño base de la escopeta. Hemos hecho un mejor intento de migrar elementos relevantes sobre los actores, pero si has cambiado el nombre de elementos compendia o tienes elementos propios, con esta funcionalidad, esos elementos tendrán que ser actualizados manualmente.
 
-#### Situational Modifiers
+#### Modificador situacional
 
-Effects with situational modifiers have been given the appropriate settings on all compendium items, but you will have to manually update them on items that already exist on actors. See New Features -> Roll Modifiers section of Changelog for more details.
+Los efectos con modificadores situacionales han recibido la configuración apropiada en todos los elementos del compendio, pero tendrá que actualizarlos manualmente en los elementos que ya existen en los actores. Ver Nueva Características -> en la sección Modificadores de Tiradas de Registro de Cambios para más detalles.
 
-#### Electronic Items
+#### Elementos electrónicos
 
-We have migrated all Gear items provided by our Compendia to support `isElectronic` but you will need to update any homebrew items manually if you want them to support this new data point.
+Hemos migrado todos los elementos de equipo proporcionados por nuestra Compendia para soportar `isElectronic` , pero necesitarás actualizar manualmente cualquier elemento de inicio si quieres que soporte este nuevo punto de datos.
 
-#### CSS Themes / Rewrite
+#### Temas CSS / Reescribir
 
-Due to a large amount of changes to the way we use CSS and having to overwrite a number of Foundry CSS defaults any modules which also touch Foundry CSS may be incompatible or have conflicts with our CSS changes.
+Debido a una gran cantidad de cambios en la forma en que usamos CSS y tener que sobrescribir una serie de CSS de Foundry, cualquier módulo que también toque a Foundry CSS puede ser incompatible o tener conflictos con nuestros cambios CSS.
 
-For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) and the system provided Dark Mode theme then Ernies needs to be configured to use Dark Mode as well.
+Por ejemplo, si estás usando [Ernies Modern UI](https://foundryvtt.com/packages/ernies-modern-layout) y el sistema proporcionado tema de Modo Oscuro, entonces Ernies necesita ser configurado para usar el Modo Oscuro también.
 
 ### New Features
 
-#### Improved Dialogues
+#### Diálogos Mejorados
 
 - All dialogues have been given new styling and have been converted to a new system called CPRDialog
 - This will allow for more responsive dialogues with complex logic, the first use of which is in new roll dialogues:
@@ -256,7 +256,7 @@ For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/
   - Toggle the core situational modifiers on page 130 of the core rule book from a drop-down menu
   - Add any additional modifiers to the roll as needed
 
-#### Roll Modifiers
+#### Modificadores de Tiradas
 
 - New Active Effect key: All Actions - Modify all actions with a single active effects key. Found in the 'Miscellaneous' category in the Active Effect configuration window.
 - Each modifier on an effect can be toggled as Situational. Situational modifiers are ones that only apply in certain situations. Situational modifiers can also be toggled On By Default.
@@ -267,11 +267,11 @@ For example if you are using [Ernies Modern UI](https://foundryvtt.com/packages/
 - Known Issue:
   - Active Effects on Stats behave differently than all others. Because of this, modifiers on Stat effects currently cannot be toggled Situational. This will be fixed in a future release.
 
-#### CSS Themes
+#### Motivos de CSS
 
-We have added the functionality for system specific themes. This allows us to ship a few default themes (dark mode!). You can configure this in the `Settings > Cyberpunk RED - CORE` section.
+Hemos añadido la funcionalidad para temas específicos del sistema. Esto nos permite enviar algunos temas por defecto (modo oscuro!). Puede configurar esto en la sección `Configuración > Cyberpunk RED - CORE`.
 
-If you are interested in making a theme for the system check out the [CSS Themes](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/CSS-Themes) wiki page which details the process.
+Si estás interesado en hacer un tema para el sistema, revisa la página wiki de [temas CSS](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/CSS-Themes) que detalla el proceso.
 
 #### Compendia
 
@@ -284,11 +284,11 @@ If you are interested in making a theme for the system check out the [CSS Themes
 - Added Night City Tarot content with help from Hakuan Quietpaws
 - Added All About Drones with help from Hakuan Quietpaws
 - Added Exotics of 2045 with help from Hakuan Quietpaws
-- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
+- Added Black Chrome Plus DLC with help from H. P. Racha and Sushimatic
 - Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
 - Added Night City Weather with help from Miklos
 - Added Branded Weapons with help from Hakuan Quietpaws
-- Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic
+- Added Black Chrome with help from, H. P. Racha, Hakuan Quietpaws, and Sushimatic
 - Added clothing descriptions with help from Hakuan Quietpaws
 - Added Mook Encounter Complication, Hardened Lieutenant Tactics, and Hardened Mini Boss Mini Promotion rolltables
 - Added missing Elflines Online items with help from LordCheesusCrust
@@ -296,7 +296,7 @@ If you are interested in making a theme for the system check out the [CSS Themes
 - Added Achievements And Loot Boxes with help from LordCheesusCrust
 - Added language specific skills with help from LordCheesusCrust
 
-#### Other New Features
+#### Otras Nuevas Características
 
 - Added a check for `core.photosensitivityMode` when rendering pause animation
 - Added a `isElectronic` data point to Gear items
@@ -314,9 +314,9 @@ If you are interested in making a theme for the system check out the [CSS Themes
 
 ### Changes
 
-#### Sheet Rewrites
+#### Reescritura de Hoja
 
-This release brings lots of Sheet changes to fix a lot of wonk exposed by the font change in the last release, reduce code complexity behind the scenes, and add more information and functionality to the sheets.
+Esta versión trae muchos cambios en la hoja para arreglar un montón de preguntas expuestas por el cambio de fuente en la última versión, reduce la complejidad del código detrás de escena y añade más información y funcionalidad a las hojas.
 
 - Character Sheet
   - Stats block
@@ -360,11 +360,11 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Item Sheet
   - Slight Rewrite of header
 
-#### Ammo Modifies Weapon Damage
+#### Munición modifica el daño de arma
 
-Ammo can now modify weapon damage / autofire maximums. This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo).
+La munición ahora puede modificar el daño de arma / máximo de disparo automático. Soporta munición que anula el daño del arma (por ejemplo, proyectiles de escopeta), munición que no hace daño(ej. munición somnífera) y munición que añade/resta del daño del arma (munición basura). Del mismo modo, la munición puede modificar el máximo de disparo automático del arma base (munición basura).
 
-#### Other Changes
+#### Otros Cambios
 
 - Updated the background and header images to new versions by Rayane Souizi "Wizi"
 - Ammo selection dropdown now shows stack size
@@ -426,9 +426,9 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 - Fixed Combat Utility Belt custom status auto apply an remove handling
 - #657 - Fixed issues with dragging various document types to the hotbar.
 
-## Version 0.86.1 | Date: 2023-02-05
+## Versión 0.86.1 | Fecha: 2023-02-05
 
-### Bug Fixes
+### Corrección de Errores
 
 - #683 - Dragging a World Item which has another World Items installed in it and THAT item also has another world item installed in it (Cyberarm->Cyberdeck (Hardwired)->Cyberdeck) results in two cyberdecks being created on the actor. This would exponentiate every level of installation if there were more.
 - Add text for missing localized string `CPR.messages.installInvalidType`
@@ -442,7 +442,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 
 - When `Debug Elements in UI` is enabled on an item with other installed items in it, the installed items will have their UUID's displayed to help troubleshooting.
 
-## Version 0.86.0 | Date: 2023-01-21
+## Versión 0.86.0 | Fecha: 2023-01-21
 
 ### Release Specific Notes
 
@@ -529,7 +529,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
-### Bug Fixes
+### Corrección de Errores
 
 - Corrected a capitalisation error that was causing the included Dystopian City Streets map to disappear. Thanks to Latcher for spotting this!
 
@@ -539,7 +539,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 - Fixed #624 - NET architecture sheet can't click generation button
 
-## Version 0.85.0 | Date: 2022-12-11
+## Versión 0.85.0 | Fecha: 2022-12-11
 
 ### New Features
 
@@ -600,13 +600,13 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
-### Bug Fixes
+### Corrección de Errores
 
 - Fix HTML Stripping in item descriptions on character sheets
 - Fix Create/Edit Role Ability dialog not submitting.
 - #583 - Using ledger re-applies all Active Effects
 
-## Version 0.84.0 | Date: 2022-11-22
+## Versión 0.84.0 | Fecha: 2022-11-22
 
 ### Release Specific Instructions
 
@@ -654,7 +654,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.83.1 (Hotfix) | Date: 2022-10-23
 
-### Bug Fixes
+### Corrección de Errores
 
 - #529 - Fix non-shop containers having the wrong button
 - #536 - Spelling mistake: "Ememies" (English)
@@ -669,7 +669,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - When a migration failed for any reason, on the next run through it could corrupt upgraded items
   - When running migration through multiple levels of migration, it was possible that the world data model version would be set incorrectly because the code did not await the update of the world data model version. This would cause migration to execute a second time which may cause problems.
 
-## Version 0.83.0 | Date: 2022-10-02
+## Versión 0.83.0 | Fecha: 2022-10-02
 
 ### New Features
 
@@ -696,7 +696,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Fix an issue where the mook sheet notes were not writeable
 - #494 - Cyberware weapons were corrupting data points
 
-## Version 0.82.0 | Date: 2022-09-22
+## Versión 0.82.0 | Fecha: 2022-09-22
 
 ### New Features
 
@@ -741,7 +741,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.2 (Hotfix) | Date: 2022-08-02
 
-### Bug Fixes
+### Corrección de Errores
 
 - #458 - The rulers for the DV Calculation is broken for tables with regexp characters in the name [such as (Autofire)]
 - #455 - Containers/Vendors issues (non-English settings)
@@ -755,7 +755,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - #452 - Migrated Excellent Quality Weapons have no Bonus to Attack
 - #451 - All Migrated Weapon Icons Changed to Heavy Pistol
 
-## Version 0.81.0 | Date: 2022-07-31
+## Versión 0.81.0 | Fecha: 2022-07-31
 
 ### New Features
 
@@ -869,7 +869,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Fixed #355 - Drag and drop to hotbar restored
 - Corrected many French translation strings
 
-## Version 0.80.0 | Date: 2021-12-23
+## Versión 0.80.0 | Fecha: 2021-12-23
 
 ### New Features
 
@@ -877,7 +877,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added functionality to delete single ledger lines for the GM. Players are not able to do so.
   - It is possible to not only delete the line in the ledger, but also change the value up or down upon deletion.
 - Added functionality to manually increase the Death Save Penalty of a character. This is useful in case a character gets hit, while Mortally Wounded.
-- Many new icons added to items in the compendiums! See CREDITS.md for attribution and thanks!
+- Many new icons added to items in the compendiums! See CREDITS.md for attribution and thanks! See CREDITS.md for attribution and thanks!
 
 ### Changes
 
@@ -919,7 +919,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - Fixed #325 - DV ruler broken. Restored by naming the function.
 
-## Version 0.79.0 | Date: 2021-09-11
+## Versión 0.79.0 | Fecha: 2021-09-11
 
 ### New Features
 
@@ -970,7 +970,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - Fixes issue #289: There was a naming conflict on Handlebar helpers between `CPR` and the module `Better Roll Tables`. This hotfix prefixes our helper with `cpr` to avoid this conflict. A more permanent solution will be implemented for all helpers next release.
 
-## Version 0.78.0 | Date: 2021-08-03
+## Versión 0.78.0 | Fecha: 2021-08-03
 
 ### New Features
 
@@ -1049,7 +1049,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Corrected localization issue of text on chat cards when rolling NET Damage
 - Added Zap as a rollable interface ability as it was missing from the list (Zap damage will be handled in a future release)
 
-## Version 0.77.0 | Date: 2021-06-25
+## Versión 0.77.0 | Fecha: 2021-06-25
 
 ### Migration to foundry 0.8.X
 
@@ -1070,14 +1070,14 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - Type Loot: Items are free to take and will be removed after taking them.
   - Type Stash: In addition to the same functionality as "Loot", the players can also modify the contents of the container, e.g. to use it as a group stash.
   - Type Custom: The GM has the option to specify the settings as desired.
-    - Are all items free? - Makes taking an item from the container not cost anything. (On for Loot and Stash, Off for Shop)
-    - Infinite Stock? - Items are not removed from the container after purchasing/taking them. (Off for Loot and Stash, GM can decide in case of Shop)
+    - Are all items free? Are all items free? - Makes taking an item from the container not cost anything. (On for Loot and Stash, Off for Shop)
+    - Infinite Stock? Infinite Stock? - Items are not removed from the container after purchasing/taking them. (Off for Loot and Stash, GM can decide in case of Shop)
     - Players can create items? - Allows to add new items with the plus sign in the header of each category for the players. Also allows players to drag items into the container. (On for Stash, else Off)
-    - Players can delete items? - Allows players to delete items with the trash can symbol. (On for Stahl, else Off)
-    - Players can modify items? - Allows modification of the items. If enabled the item sheets render in an editable way, otherwise they render in a non-editable way. (On for Stash, else Off)
+    - Players can create items? - Allows to add new items with the plus sign in the header of each category for the players. Also allows players to drag items into the container. (On for Stash, else Off)
+    - Players can modify items? Players can modify items? - Allows modification of the items. If enabled the item sheets render in an editable way, otherwise they render in a non-editable way. (On for Stash, else Off)
   - Players are not allowed to drag an item out of the container actor to their character sheet. This is only enabled for the GM, as otherwise the players could "steal" items from the container. Players have to use the take/purchase button for that.
   - **KNOWN ISSUE:** Currently, there is a [bug](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/issues/261) affecting unlinked container actors therefore we recommend to workaround this bug, when you create a new container actor, change the Prototype Token to Link Actor Data. This bug will be addressed in a future release.
-- We now support an Italian translation! (thank you Misthero!)
+- The French translation has been updated to account for all strings in this release. (Thank you VinceKun!)
 - Netrunning Initial Implementation
   - Introduction of the Item Object: Cyberdeck
     - Migration code added for existing "Gear" items which have the word "cyberdeck" in the name. These items will be pre-pended with a '[MIGRATED]' tag on it to help identify that the item should be replaced with a new Cyberdeck Item. We have opted to not automate this replacement as people may update just prior to hosting a game and this would/could cause issues for planned sessions.
@@ -1162,7 +1162,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - Programs can now be displayed in gear tab and on mook sheets for easier tracking.
 
-## Version 0.76.0 | Date: 2021-05-26
+## Versión 0.76.0 | Fecha: 2021-05-26
 
 ### New Features
 

@@ -4,75 +4,75 @@
   "entries": {
     "Bodyweight Suit": {
       "name": "Kombinezon ochronny bodyweight",
-      "description": "<p>\n  Netrunner armored skinsuit. Can store Cyberdeck and support Interface Plugs.\n  Can't be bought in two pieces. Always worn on both Head and Body Location.\n  Adds one Hardware only Option Slot to connected Cyberdeck. No armor penalty.\n</p>\n"
+      "description": "<p>Przylegający opancerzony kombinezon. Ma miejsce na cyberdeck i wsparcie złącz interfejsu. Nie można kupić w dwóch częściach. Zawsze noszony na ciele i głowie. Dodaje jedno gniazdo tylko-sprzętowe do podłączonego cyberdeku. Brak kar za pancerz.</p>"
     },
     "Bullet Proof Shield": {
       "name": "Tarcza kuloodporna",
-      "description": "<p>Requires an arm and has HP that is reduced by damage.</p>\n"
+      "description": "<p>Wymaga ręki i posiada PW, które są redukowane przez obrażenia.</p>"
     },
     "Flak (Body)": {
       "name": "Ubiór kuloodporny (Ciało)",
-      "description": "<p>\n  Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.\n</p>\n"
+      "description": "<p>-4 REF, ZW i RUCH</p>"
     },
     "Flak (Head)": {
       "name": "Ubiór kuloodporny (Głowa)",
-      "description": "<p>\n  Metal plated armor to resist the most powerful hits to your head. -4 to REF,\n  DEX, and MOVE.\n</p>\n"
+      "description": "<p>-4 REF, ZW i RUCH</p>"
     },
     "Heavy Armorjack (Body)": {
       "name": "Ciężka kurtka kuloodporna (Ciało)",
-      "description": "<p>Heavier version of an Armorjack. -2 to REF, DEX, and MOVE.</p>\n"
+      "description": "<p>-2 do REF, ZW i RUCH.</p>"
     },
     "Heavy Armorjack (Head)": {
       "name": "Ciężka kurtka kuloodporna (Głowa)",
-      "description": "<p>Heavier version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>\n"
+      "description": "<p>-2 do REF, ZW i RUCH.</p>"
     },
     "Kevlar® (Body)": {
-      "name": "Kevlar® (Body)",
-      "description": "<p>Standard Kevlar clothing. No armor penalty.</p>\n"
+      "name": "Kevlar® (Ciało)",
+      "description": "<p>Standardowa odzież Kevlarowa. Brak kary za pancerz.</p>"
     },
     "Kevlar® (Head)": {
-      "name": "Kevlar® (Head)",
-      "description": "<p>Standard Kevlar for your head. No armor penalty.</p>\n"
+      "name": "Kevlar® (Głowa)",
+      "description": "<p>Standardowe Kevlarowe okrycie głowy. Brak kary za pancerz.</p>"
     },
     "Leathers (Body)": {
       "name": "Skóry (Ciało)",
-      "description": "<p>Simple Leather armor. No armor penalty.</p>\n"
+      "description": "<p>Prosta odzież skórzana. Brak kar za pancerz.</p>"
     },
     "Leathers (Head)": {
       "name": "Skóry (Głowa)",
-      "description": "<p>Simple Leather armor for your head. No armor penalty.</p>\n"
+      "description": "<p>Prosta odzież skórzana. Brak kar za pancerz.</p>"
     },
     "Light Armorjack (Body)": {
       "name": "Lekka kurtka kuloodporna (Ciało)",
-      "description": "<p>Light version of an Armorjack. No armor penalty.</p>\n"
+      "description": "<p>Brak kar za pancerz.</p>"
     },
     "Light Armorjack (Head)": {
       "name": "Lekka kurtka kuloodporna (Głowa)",
-      "description": "<p>Light version of an Armorjack for your head. No armor penalty.</p>\n"
+      "description": "<p>Brak kar za pancerz.</p>"
     },
     "Medium Armorjack (Body)": {
       "name": "Średnia kurtka kuloodporna (Ciało)",
-      "description": "<p>Medium version of an Armorjack. -2 to REF, DEX, and MOVE.</p>\n"
+      "description": "<p>-2 do REF, ZW i RUCH.</p>"
     },
     "Medium Armorjack (Head)": {
       "name": "Średnia kurtka kuloodporna (Głowa)",
-      "description": "<p>Medium version of an Armorjack for your head. -2 to REF, DEX, and MOVE.</p>\n"
+      "description": "<p>-2 do REF, ZW i RUCH.</p>"
     },
     "Metalgear® (Body)": {
       "name": "Metalgear® (Body)",
-      "description": "<p>\n  Heaviest and most powerful armor in circulation. -4 to REF, DEX, and MOVE.\n</p>\n"
+      "description": "<p> Najcięższy i najpotężniejszy pancerz w obiegu. -4 do REF, ZW i RUCH.</p>"
     },
     "Metalgear® (Head)": {
-      "name": "Metalgear® (Head)",
-      "description": "<p>\n  Heaviest and most powerful armor in circulation. Protects your head -4 to REF,\n  DEX, and MOVE.\n</p>\n"
+      "name": "Metalgear® (Głowa)",
+      "description": "<p>Najcięższy i najpotężniejszy pancerz w obiegu. Chroni twoją głowę. -4 do REF, ZW i RUCH.</p>"
     },
     "Skin Weave": {
       "name": "Splot skórny",
-      "description": "<p>Armor Item for Skin Weave Cyberware.</p>\n"
+      "description": "<p>Armor Item for Skin Weave Cyberware.</p>"
     },
     "Subdermal Armor": {
       "name": "Pancerz podskórny",
-      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>\n"
+      "description": "<p>Armor Item for Subdermal Armor Cyberware.</p>"
     }
   }
 }

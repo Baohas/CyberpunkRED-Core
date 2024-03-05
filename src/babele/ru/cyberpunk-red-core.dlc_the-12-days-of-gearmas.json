@@ -1,10 +1,10 @@
 {
-  "label": "The 12 Days of Gearmas",
+  "label": "Двенадцать дней Снаряждества",
   "mapping": {},
   "entries": {
     "Esporma Environment Suit": {
-      "name": "Esporma Environment Suit",
-      "description": "<p>\n  Armored Radiation Suit. Protects the wearer from Radiation and comes with an\n  Oxygen Tank that lasts for 30 minutes which can be refilled by spending an\n  hour in clean air.\n</p>\n<p>Nanomachines restore 1SP every hour SP isn't lost on the armor</p>\n"
+      "name": "Скафандр от Эспорма",
+      "description": "<p>Бронированный костюм индивидуальной защиты. Предохраняет от излучения и идёт в комплекте с кислородным баллоном, которого хватает на 30 минут. Баллон заполнится вновь, если провести час на свежем воздухе.</p>\n<p>Наномашины восстанавливают 1ОС каждый час, пока броня не получает повреждений.</p>"
     },
     "PackShield": {
       "name": "PackShield",

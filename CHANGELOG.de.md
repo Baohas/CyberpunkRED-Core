@@ -133,20 +133,20 @@ This means any instances where you have dragged an item from a compendium into a
 - Change styling of release notes pop-up to match journal styling
 - All Compendium updated for v11 and now sorted into Folders
 
-## Version 0.87.6
+## Version 0.86.1 | Datum: 6023-02-05
 
 ### Bug Fixes
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
-## Version 0.87.5
+## Version 0.86.1 | Datum: 5023-02-05
 
-### Bug Fixes
+### Fehlerbehebungen
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
 
-## Version 0.87.4
+## Version 0.86.1 | Datum: 4023-02-05
 
 ### New Features
 
@@ -176,9 +176,9 @@ This means any instances where you have dragged an item from a compendium into a
 - Fix #707 - Importing actors from .jsons with installed items should now work as expected.
 - Fix an issue where compendia actors erroneously had their installed item data wiped.
 
-## Version 0.87.3
+## Version 0.86.1 | Datum: 3023-02-05
 
-### Bug Fixes
+### Fehlerbehebungen
 
 - #808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - #812 - Some roles were missing the bonuses data point as an empty array.
@@ -199,9 +199,9 @@ This means any instances where you have dragged an item from a compendium into a
 - Fix Beta Linear Frames AE mode to be set not add
 - Fix Nova Model 757 slots
 
-## Version 0.87.2
+## Version 0.86.1 | Datum: 2023-02-05
 
-### Bug Fixes
+### Fehlerbehebungen
 
 - Fix Programs having `undefined` before their name in character sheets
 - Fix call to `cprBrandName` in Container sheet
@@ -211,9 +211,9 @@ This means any instances where you have dragged an item from a compendium into a
 - Increase Black ICE sheet width to acomodate 2 digit REZ values better
 - Fix Black ICE tokens/actors not updating when populating with a program
 
-## Version 0.87.1
+## Version 0.86.1 | Datum: 1023-02-05
 
-### Bug Fixes
+### Fehlerbehebungen
 
 Fix broken migrations
 
@@ -284,11 +284,11 @@ Wenn du daran interessiert bist ein eigenes CSS Design für das System zu erstel
 - Added Night City Tarot content with help from Hakuan Quietpaws
 - Added All About Drones with help from Hakuan Quietpaws
 - Added Exotics of 2045 with help from Hakuan Quietpaws
-- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic
+- Added Black Chrome Plus DLC with help from H.P. Racha and Sushimatic Racha and Sushimatic
 - Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
 - Added Night City Weather with help from Miklos
 - Added Branded Weapons with help from Hakuan Quietpaws
-- Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic
+- Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic Racha, Hakuan Quietpaws, and Sushimatic
 - Added clothing descriptions with help from Hakuan Quietpaws
 - Added Mook Encounter Complication, Hardened Lieutenant Tactics, and Hardened Mini Boss Mini Promotion rolltables
 - Added missing Elflines Online items with help from LordCheesusCrust
@@ -360,9 +360,9 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 - Item Sheet
   - Slight Rewrite of header
 
-#### Ammo Modifies Weapon Damage
+#### Munition ändert Waffenschaden
 
-Ammo can now modify weapon damage / autofire maximums. This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo).
+Munition kann jetzt den Waffenschaden / das Maximum des automatischen Feuerns ändern. This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo).
 
 #### Other Changes
 
@@ -428,7 +428,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 
 ## Version 0.86.1 | Datum: 2023-02-05
 
-### Bug Fixes
+### Fehlerbehebungen
 
 - #683 - Dragging a World Item which has another World Items installed in it and THAT item also has another world item installed in it (Cyberarm->Cyberdeck (Hardwired)->Cyberdeck) results in two cyberdecks being created on the actor. This would exponentiate every level of installation if there were more.
 - Add text for missing localized string `CPR.messages.installInvalidType`
@@ -442,7 +442,7 @@ Ammo can now modify weapon damage / autofire maximums. This supports ammo which 
 
 - When `Debug Elements in UI` is enabled on an item with other installed items in it, the installed items will have their UUID's displayed to help troubleshooting.
 
-## Version 0.86.0 | Date: 2023-01-21
+## Version 0.86.0 | Datum: 2023-01-21
 
 ### Release Specific Notes
 
@@ -529,7 +529,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
-### Bug Fixes
+### Fehlerbehebungen
 
 - Corrected a capitalisation error that was causing the included Dystopian City Streets map to disappear. Thanks to Latcher for spotting this!
 
@@ -539,7 +539,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 - Fixed #624 - NET architecture sheet can't click generation button
 
-## Version 0.85.0 | Date: 2022-12-11
+## Version 0.85.0 | Datum: 2022-12-11
 
 ### New Features
 
@@ -600,13 +600,13 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
-### Bug Fixes
+### Fehlerbehebungen
 
 - Fix HTML Stripping in item descriptions on character sheets
 - Fix Create/Edit Role Ability dialog not submitting.
 - #583 - Using ledger re-applies all Active Effects
 
-## Version 0.84.0 | Date: 2022-11-22
+## Version 0.84.0 | Datum: 2022-11-22
 
 ### Release Specific Instructions
 
@@ -654,7 +654,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.83.1 (Hotfix) | Date: 2022-10-23
 
-### Bug Fixes
+### Fehlerbehebungen
 
 - #529 - Fix non-shop containers having the wrong button
 - #536 - Spelling mistake: "Ememies" (English)
@@ -669,7 +669,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - When a migration failed for any reason, on the next run through it could corrupt upgraded items
   - When running migration through multiple levels of migration, it was possible that the world data model version would be set incorrectly because the code did not await the update of the world data model version. This would cause migration to execute a second time which may cause problems.
 
-## Version 0.83.0 | Date: 2022-10-02
+## Version 0.83.0 | Datum: 2022-10-02
 
 ### New Features
 
@@ -696,7 +696,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Fix an issue where the mook sheet notes were not writeable
 - #494 - Cyberware weapons were corrupting data points
 
-## Version 0.82.0 | Date: 2022-09-22
+## Version 0.82.0 | Datum: 2022-09-22
 
 ### New Features
 
@@ -741,7 +741,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.2 (Hotfix) | Date: 2022-08-02
 
-### Bug Fixes
+### Fehlerbehebungen
 
 - #458 - The rulers for the DV Calculation is broken for tables with regexp characters in the name [such as (Autofire)]
 - #455 - Containers/Vendors issues (non-English settings)
@@ -869,7 +869,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Fixed #355 - Drag and drop to hotbar restored
 - Corrected many French translation strings
 
-## Version 0.80.0 | Date: 2021-12-23
+## Version 0.80.0 | Datum: 2021-12-23
 
 ### New Features
 
@@ -919,7 +919,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - Fixed #325 - DV ruler broken. Restored by naming the function.
 
-## Version 0.79.0 | Date: 2021-09-11
+## Version 0.79.0 | Datum: 2021-09-11
 
 ### New Features
 
@@ -970,7 +970,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - Fixes issue #289: There was a naming conflict on Handlebar helpers between `CPR` and the module `Better Roll Tables`. This hotfix prefixes our helper with `cpr` to avoid this conflict. A more permanent solution will be implemented for all helpers next release.
 
-## Version 0.78.0 | Date: 2021-08-03
+## Version 0.78.0 | Datum: 2021-08-03
 
 ### New Features
 
@@ -1049,11 +1049,11 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Corrected localization issue of text on chat cards when rolling NET Damage
 - Added Zap as a rollable interface ability as it was missing from the list (Zap damage will be handled in a future release)
 
-## Version 0.77.0 | Date: 2021-06-25
+## Version 0.77.0 | Datum: 2021-06-25
 
 ### Migration to foundry 0.8.X
 
-- **BREAKING:** This version of our system will not work with Foundry version 0.7.X and below. Do not update this system until you are ready to update your Foundry to version 0.8.X. And as always, **make a backup of your user data** before updating!
+- **BREAKING:** This version of our system will not work with Foundry version 0.7.X and below. Do not update this system until you are ready to update your Foundry to version 0.8.X. And as always, **make a backup of your user data** before updating! And as always, **make a backup of your user data** before updating!
 - Migrated the source code to work with foundry version 0.8.X
 - Rewrote the migration code support new features from foundry 0.8.X
 
@@ -1084,7 +1084,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
     - Cyberdeck items in the Shipped Gear Compendium have been replaced with versions utilizing the new Cyberdeck Item Object
   - Ability to equip one (1) Cyberdeck enables Meat/NET toggle on Fight Tab
   - Ability to install Programs on the Cyberdeck from the Cyberdeck Settings Page and directly from the Gear Tab
-  - Programs (Booster) have been enhanced to allow the addition of Roll Modifiers for Interface Abilities (i.e. Eraser gives a +2 to Cloak)
+  - Programs (Booster) have been enhanced to allow the addition of Roll Modifiers for Interface Abilities (i.e. Eraser gives a +2 to Cloak) Eraser gives a +2 to Cloak)
   - Booster Roll Modifiers exposed in Roll verification dialog and added to the roll for Rezzed Boosters Only
     - Shipped Program Compendium updated to include these roll modifiers (Any imported items should be re-imported or manually updated to add these)
   - Programs (Attacker) have been enhanced to allow the setting of Damage. For Anti-Program Attackers, both BlackICE and non-BlackICE damage rolls may be configured
@@ -1162,7 +1162,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 - Programs can now be displayed in gear tab and on mook sheets for easier tracking.
 
-## Version 0.76.0 | Date: 2021-05-26
+## Version 0.76.0 | Datum: 2021-05-26
 
 ### New Features
 
@@ -1257,7 +1257,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - Right clicking a token, you can select a DV table to use and after setting this, any ruler measurements will show the DV along with the measured range.
   - Ranged Weapons can be also configured to use a specific DV table in the item settings. Weapons with DV Tables associated with them will have a ruler in their Fight Tab which can be clicked to set the DV Table for the associated token to quickly switch DV tables when using the Ruler Measurement Tool.
 - Added a Compendium with Roll Tables for Core Ranged DV Measurements from the book also providing a page reference in the description field. Compendium contains a "DV Generic" table that has a description explaining how to create custom DV tables and how they work with the system.
-- Added a "MOD" column to the Skills section of the character sheet and as a field on the Skill Item. When skills (or attacks) are rolled, the dialog will auto-populate with the mod. Skill mods on the character sheet only show non-zero values.
+- Added a "MOD" column to the Skills section of the character sheet and as a field on the Skill Item. When skills (or attacks) are rolled, the dialog will auto-populate with the mod. Skill mods on the character sheet only show non-zero values. Skill mods on the character sheet only show non-zero values.
 - Introduced some code so that the core skills on the character sheet are localized, which will help with current and future translations.
 - Added a "Clothing" item for those stylish chooms (per feature request #165).
 - Localized the new item and actor drop-down menus so that they appear more professional.
@@ -1267,7 +1267,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - You can now change the amount of ammo in a weapon's clip right from the fight tab. In addition, you can type "+X" or "-Y" (where X and Y are numbers) into the input and it will perform the math.
 - Mook sheet introduced. Please use [issue #181](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/issues/181) to suggest improvements or point out rough edges.
 - Added "Source" field to item sheets to keep track of where items came from (e.g. Core Rules Pg. 351)
-- "Thrown Weapon" is now a weapon type and "Athletics" is now a weapon skill for throwing grenades, etc. Weapons that use the athletics skill also use DEX as the stat, which is consistent with the rules.
+- "Thrown Weapon" is now a weapon type and "Athletics" is now a weapon skill for throwing grenades, etc. Weapons that use the athletics skill also use DEX as the stat, which is consistent with the rules. Weapons that use the athletics skill also use DEX as the stat, which is consistent with the rules.
 - Weapon section of the Fight Tab has been slightly redesigned.
 - Shields have been implemented (they are an armor type item).
 - Added the ammunition type to the attack and damage roll cards.
