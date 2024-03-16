@@ -151,7 +151,14 @@
                     {{localize "CPR.chat.damageApplication.criticalDamage"}} <span class="text-semi">{{bonusDamage}}</span>
                   </div>
                 {{/if}}
-                {{#if armorData.equipped }}
+                {{#if (cprCompare armorData.equipped "&&" ignoreArmorEntirely) }}
+                  <div class="text-right text-normal">
+                    Armor Ignored Entirely
+                  </div>
+                {{else}}
+                  {{#if (cprCompare ignoreArmorPercent "!==" 0)}}
+                    <div class="text-right text-normal">{{ignoreArmorPercent}}% of Armor Ignored</div>
+                  {{/if}}
                   <div class="text-right text-normal">
                     {{localize "CPR.chat.damageApplication.armorSP"}} <span class="text-semi">{{armorData.value}}</span>
                   </div>

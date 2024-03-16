@@ -20,7 +20,8 @@
              data-damage-lethal="{{#if (cprCompare rollCardExtraArgs.ammoType "===" "rubber") }}false{{else }}true{{/if }}"
              data-ablation="{{rollCardExtraArgs.ablationValue}}"
              data-ammo-variety="{{rollCardExtraArgs.ammoVariety}}"
-             data-ignore-half-armor="{{#if rollCardExtraArgs.ignoreHalfArmor }}true{{else }}false{{/if }}">
+             data-ignore-armor-percent="{{rollCardExtraArgs.ignoreArmorPercent}}"
+             data-ignore-below-sp="{{rollCardExtraArgs.ignoreBelowSP}}">
             <i class="fas fa-bolt"
                data-tooltip="{{localize "CPR.chat.damageApplication.applyDamageSelected"}}"></i>
           </a>
@@ -122,7 +123,8 @@
              data-damage-lethal="{{#if (cprCompare ../rollCardExtraArgs.ammoType "===" "rubber") }}false{{else }}true{{/if }}"
              data-ablation="{{../rollCardExtraArgs.ablationValue}}"
              data-ammo-variety="{{../rollCardExtraArgs.ammoVariety}}"
-             data-ignore-half-armor="{{#if ../rollCardExtraArgs.ignoreHalfArmor }}true{{else }}false{{/if }}">
+             data-ignore-armor-percent="{{../rollCardExtraArgs.ignoreArmorPercent}}"
+             data-ignore-below-sp="{{../rollCardExtraArgs.ignoreBelowSP}}">
             <i class="fas fa-bolt"
                data-tooltip="{{localize "CPR.chat.damageApplication.applyDamage"}}"></i>
           </a>

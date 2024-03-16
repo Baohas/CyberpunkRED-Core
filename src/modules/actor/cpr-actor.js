@@ -1322,7 +1322,8 @@ export default class CPRActor extends Actor {
    * @param {string} location - location of the damage
    * @param {int} ablation - value of the ablation
    * @param {string} ammoVariety - type of ammo used
-   * @param {boolean} ignoreHalfArmor - if half of the armor should be ignored
+   * @param {int} ignoreArmorPercent - percentage of armor to ignore
+   * @param {int} ignoreBelowSP - value of SP to ignore under
    * @param {boolean} damageLethal - if this damage can cause HP <= 0
    * @param {object} formData - contains booleans about whether to apply shields and other damage reducing effects
    */
@@ -1332,7 +1333,8 @@ export default class CPRActor extends Actor {
     location,
     ablation,
     ammoVariety,
-    ignoreHalfArmor,
+    ignoreArmorPercent,
+    ignoreBelowSP,
     damageLethal,
     formData
   ) {
@@ -1340,6 +1342,8 @@ export default class CPRActor extends Actor {
     let totalDamageDealt = 0;
     let totalDamageReduction = 0;
     let takenDamage = 0;
+    let ignoreArmorEntirely = false;
+    let armorSPRef = 0;
     const armors = location === "brain" ? [] : this.getEquippedArmors(location);
     const armorData = {
       value: 0,
@@ -1412,8 +1416,17 @@ export default class CPRActor extends Actor {
         armorData.value = newValue;
       }
     });
-    if (ignoreHalfArmor) {
-      armorData.value = Math.ceil(armorData.value / 2);
+
+    // Check if weapon can ignore armor under set SP for weapon
+    if (armorData.value < ignoreBelowSP) {
+      ignoreArmorEntirely = true;
+    }
+
+    // If weapon cannot ignore armor, then we check if weapon can ignore half of it
+    if (ignoreArmorPercent !== 0 && ignoreArmorEntirely === false) {
+      armorData.value = Math.round(
+        armorData.value - armorData.value * (ignoreArmorPercent / 100)
+      );
     }
 
     // Deal damage to shield, if used, first.
@@ -1471,7 +1484,7 @@ export default class CPRActor extends Actor {
     totalDamageDealt += bonusDamage;
 
     // If damage did not penetrate armor, then only the bonus damage (if any) is applied, minus any damage reduction.
-    if (damage <= armorData.value) {
+    if (damage <= armorData.value && ignoreArmorEntirely === false) {
       takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
       const currentHp = this.system.derivedStats.hp.value;
       await this.update({
@@ -1492,12 +1505,19 @@ export default class CPRActor extends Actor {
       return;
     }
 
+    // Set armor SP reference to calculate damage, otherwise leave it at 0 if armor is being ignored entirely
+    if (ignoreArmorEntirely) {
+      armorSPRef = 0;
+    } else {
+      armorSPRef = armorData.value;
+    }
+
     // If damage did penetrate armor, deal the regular damage.
     if (location === "head") {
       // Damage taken against the head is doubled.
-      totalDamageDealt += 2 * (damage - armorData.value);
+      totalDamageDealt += 2 * (damage - armorSPRef);
     } else {
-      totalDamageDealt += damage - armorData.value;
+      totalDamageDealt += damage - armorSPRef;
     }
 
     // Tally up takenDamage. If takenDamage is negative from damageReduction, make 0. This way negative takenDamage doesn't heal.
@@ -1530,6 +1550,8 @@ export default class CPRActor extends Actor {
       location,
       totalDamageReduction,
       armorData,
+      ignoreArmorPercent,
+      ignoreArmorEntirely,
       ablation: cardDisplayAblation,
       shieldAblation,
       damageLethal,

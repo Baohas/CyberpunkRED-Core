@@ -492,9 +492,20 @@ export default class CPRChat {
       ? parseInt(SystemUtils.GetEventDatum(event, "data-ablation"), 10)
       : 0;
 
-    const ignoreHalfArmor = /true/i.test(
-      SystemUtils.GetEventDatum(event, "data-ignore-half-armor")
-    );
+    const ignoreArmorPercent = SystemUtils.isNumeric(
+      parseFloat(SystemUtils.GetEventDatum(event, "data-ignore-armor-percent"))
+    )
+      ? parseFloat(
+          SystemUtils.GetEventDatum(event, "data-ignore-armor-percent")
+        )
+      : 0;
+
+    const ignoreBelowSP = SystemUtils.isNumeric(
+      parseInt(SystemUtils.GetEventDatum(event, "data-ignore-below-sp"), 10)
+    )
+      ? parseInt(SystemUtils.GetEventDatum(event, "data-ignore-below-sp"), 10)
+      : 0;
+
     // Whether or not to show Brain Damage Reduction as an option in the DamageApplicationPrompt
     const showBrainDamageReduction = location === "brain";
 
@@ -549,7 +560,8 @@ export default class CPRChat {
         location,
         ablation,
         ammoVariety,
-        ignoreHalfArmor,
+        ignoreArmorPercent,
+        ignoreBelowSP,
         damageLethal,
         dialogData
       );
@@ -598,7 +610,8 @@ export default class CPRChat {
             location,
             ablation,
             ammoVariety,
-            ignoreHalfArmor,
+            ignoreArmorPercent,
+            ignoreBelowSP,
             damageLethal,
             dialogData
           );

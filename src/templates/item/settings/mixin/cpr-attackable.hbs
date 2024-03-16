@@ -136,6 +136,65 @@
     {{/if}}
   </div>
 </li>
+
+{{!- Ignore Armor Settings --}}
+<li class="item flexrow">
+  <div class="item flexrow setting-name text-nowrap">
+    {{localize "CPR.itemSheet.ignoreArmor.text"}}
+  </div>
+  <div class="item flexrow setting-value text-nowrap item-end">
+    {{#if this.editable }}
+      {{#if item.system.canIgnoreArmor }}
+        <a class="item-checkbox" data-target="system.canIgnoreArmor">
+          <i class="far fa-check-circle"></i
+        ></a>
+      {{else}}
+        <a class="item-checkbox" data-target="system.canIgnoreArmor">
+          <i class="far fa-circle"></i>
+        </a>
+      {{/if}}
+    {{else}}
+      {{#if item.system.canIgnoreArmor }}
+        <i class="far fa-check-circle"></i>
+      {{else}}
+        <i class="far fa-circle"></i>
+      {{/if}}
+    {{/if}}
+  </div>
+</li>
+{{#if item.system.canIgnoreArmor }}
+  {{!- Ignore Percentage of Armor Setting --}}
+  <li class="item flexrow">
+    <div class="item flexrow setting-name text-padding-left-largest text-nowrap">
+      {{localize "CPR.itemSheet.ignoreArmor.percent"}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+      {{#if this.editable }}
+        <input name="system.ignoreArmorPercent"
+              type="number"
+              min="0"
+              max="100"
+              value="{{item.system.ignoreArmorPercent}}"/>
+      {{else}}
+        <span class="text-flex-end">{{item.system.ignoreArmorPercent}}</span>
+      {{/if}}
+      &percnt;
+    </div>
+  </li>
+  {{!- Ignore Below Armor SP Setting --}}
+  <li class="item flexrow">
+    <div class="item flexrow setting-name text-padding-left-largest text-nowrap">
+      {{localize "CPR.itemSheet.ignoreArmor.armorSP"}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+      {{#if this.editable }}
+        <input name="system.ignoreBelowSP" type="number" min="0" value="{{item.system.ignoreBelowSP}}"/>
+      {{else}}
+        <span class="text-flex-end">{{item.system.ignoreBelowSP}}</span>
+      {{/if}}
+    </div>
+  </li>
+{{/if}}
 {{!- Ranged Weapon Settings --}}
 <li class="item flexrow">
   <div class="item flexrow setting-name text-nowrap">

@@ -49,6 +49,22 @@ export default class AttackableSchema extends foundry.abstract.DataModel {
         initial: "jammed",
         choices: Object.keys(CPR.attackableCritFailEffects),
       }),
+      canIgnoreArmor: new fields.BooleanField({ initial: false }),
+      ignoreArmorPercent: new fields.NumberField({
+        required: true,
+        nullable: false,
+        integer: false,
+        initial: 0,
+        min: 0,
+        max: 100,
+      }),
+      ignoreBelowSP: new fields.NumberField({
+        required: false,
+        nullable: false,
+        integer: true,
+        initial: 0,
+        min: 0,
+      }),
     };
   }
 }

@@ -339,16 +339,10 @@ const Attackable = function Attackable() {
       }
     }
 
-    const halfArmorAttacks = [
-      "lightMelee",
-      "medMelee",
-      "heavyMelee",
-      "vHeavyMelee",
-      "martialArts",
-    ];
-    if (halfArmorAttacks.includes(weaponType)) {
-      cprRoll.rollCardExtraArgs.ignoreHalfArmor = true;
-    }
+    cprRoll.rollCardExtraArgs.ignoreArmorPercent =
+      cprWeaponData.ignoreArmorPercent;
+
+    cprRoll.rollCardExtraArgs.ignoreBelowSP = cprWeaponData.ignoreBelowSP;
 
     // Get all mods for universal damage bonuses from role abilities.
     let roleMods = [];
