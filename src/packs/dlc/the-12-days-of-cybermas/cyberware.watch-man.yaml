@@ -16,7 +16,7 @@ system:
   description:
     value: |
       <p>
-        Internal Agent with retractable screen on the user&rsquo;s forearm. Requires a
+        Internal Agent with retractable screen on the user's forearm. Requires a
         Cyberarm.
       </p>
   dvTable: ""

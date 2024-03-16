@@ -7,6 +7,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -26,6 +27,8 @@ system:
   humanityLoss:
     roll: 2d6
     static: 7
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
   installLocation: clinic
   installedItems:
     allowed: false

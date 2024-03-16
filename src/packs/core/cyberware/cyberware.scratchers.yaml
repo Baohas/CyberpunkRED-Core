@@ -7,10 +7,12 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
   core: false
+  critFailEffect: jammed
   damage: 1d6
   description:
     value: |
@@ -23,6 +25,8 @@ system:
   humanityLoss:
     roll: 1d3
     static: 2
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
   installLocation: mall
   installedItems:
     allowed: false

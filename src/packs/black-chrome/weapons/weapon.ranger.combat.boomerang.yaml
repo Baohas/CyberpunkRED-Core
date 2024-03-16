@@ -8,6 +8,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: Everest VentureWare
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -27,6 +28,8 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 1
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
   installedItems:
     allowed: true
     allowedTypes:

@@ -8,6 +8,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: Faisal Customs
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -26,6 +27,8 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 1
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
   installedItems:
     allowed: false
     allowedTypes:

@@ -7,6 +7,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: true
     isConcealed: false
@@ -22,6 +23,8 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 1
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
   installedItems:
     allowed: true
     allowedTypes: []

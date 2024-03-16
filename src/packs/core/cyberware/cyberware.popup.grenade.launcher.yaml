@@ -13,6 +13,7 @@ system:
     concealable: false
     isConcealed: false
   core: false
+  critFailEffect: jammed
   damage: 6d6
   description:
     value: |

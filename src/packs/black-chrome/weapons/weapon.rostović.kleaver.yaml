@@ -7,6 +7,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: Rostović
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -26,6 +27,8 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 2
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 11
   installedItems:
     allowed: false
     allowedTypes:

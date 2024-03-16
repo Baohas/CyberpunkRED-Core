@@ -16,7 +16,8 @@ system:
   description:
     value: |
       <p>
-        Glowing tattoos. +2 to Wardrobe & Style if you have at least three installed.
+        Glowing tattoos. +2 to Wardrobe &amp; Style if you have at least three
+        installed.
       </p>
   dvTable: ""
   favorite: false

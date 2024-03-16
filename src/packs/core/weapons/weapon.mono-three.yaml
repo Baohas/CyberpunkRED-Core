@@ -7,6 +7,7 @@ system:
   ammoVariety: []
   attackmod: 1
   brand: Kendachi
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -16,13 +17,7 @@ system:
     value: |
       <p>
         An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears
-        as a high-tech katana, able to ignore any armor below SP11*.
-      </p>
-      <p>
-        <em
-          >*Not currently supported to will need to manually apply damage to armoured
-          targets</em
-        >
+        as a high-tech katana, able to ignore any armor below SP11.
       </p>
   dvTable: ""
   equipped: owned
@@ -31,6 +26,8 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 2
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 11
   installedItems:
     allowed: true
     allowedTypes:

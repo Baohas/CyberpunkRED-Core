@@ -32,6 +32,8 @@ system:
   humanityLoss:
     roll: 4d6
     static: 14
+  ignoreArmorPercent: 50
+  ignoreBelowSP: 0
   installLocation: hospital
   installedItems:
     allowed: true
