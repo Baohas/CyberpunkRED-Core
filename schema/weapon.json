@@ -53,6 +53,15 @@
         "critFailEffect": {
           "$ref": "./components/attackable/critFailEffect.json"
         },
+        "ignoreArmorPercent": {
+          "$ref": "./components/attackable/ignoreArmorPercent.json"
+        },
+        "canIgnoreArmor": {
+          "$ref": "./components/attackable/canIgnoreArmor.json"
+        },
+        "ignoreBelowSP": {
+          "$ref": "./components/attackable/ignoreBelowSP.json"
+        },
         "damage": {
           "$ref": "./components/attackable/damage.json"
         },

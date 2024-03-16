@@ -50,6 +50,18 @@
         "concealable": {
           "$ref": "./components/physical/concealable.json"
         },
+        "critFailEffect": {
+          "$ref": "./components/attackable/critFailEffect.json"
+        },
+        "ignoreArmorPercent": {
+          "$ref": "./components/attackable/ignoreArmorPercent.json"
+        },
+        "canIgnoreArmor": {
+          "$ref": "./components/attackable/canIgnoreArmor.json"
+        },
+        "ignoreBelowSP": {
+          "$ref": "./components/attackable/ignoreBelowSP.json"
+        },
         "core": {
           "description": "Is it core cyberware?",
           "type": "boolean"
