@@ -381,8 +381,8 @@ CPR.itemPriceCategoryMap = {
 };
 
 CPR.itemQuality = {
-  poor: "CPR.global.itemQuality.poor",
   standard: "CPR.global.itemQuality.standard",
+  poor: "CPR.global.itemQuality.poor",
   excellent: "CPR.global.itemQuality.excellent",
 };
 
