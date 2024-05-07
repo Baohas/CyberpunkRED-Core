@@ -1552,6 +1552,7 @@ export default class CPRActor extends Actor {
       armorData,
       ignoreArmorPercent,
       ignoreArmorEntirely,
+      ignoreBelowSP,
       ablation: cardDisplayAblation,
       shieldAblation,
       damageLethal,
