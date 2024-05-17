@@ -174,7 +174,7 @@
     },
     "Light Tattoo": {
       "name": "Tatuaggio Luminoso",
-      "description": "<p>Tatuaggi luminescenti. +2 a Guardaroba e Stile (non cumulativo) se ne hai almeno installati 3.</p>"
+      "description": "<p>\n  Glowing tattoos. +2 to Wardrobe &amp; Style if you have at least three\n  installed.\n</p>\n"
     },
     "Low Light/IR/UV": {
       "name": "Bassa Luminosità/Infrarosso/UV",

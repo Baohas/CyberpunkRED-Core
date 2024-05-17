@@ -275,7 +275,7 @@
     },
     "Mono-Three": {
       "name": "Kendachi Mono-Tre",
-      "description": "<p>Un’ Arma da Mischia Insolita Molto Pesante, a Due Mani e di Alta Qualità. Ha l'aspetto di una Katana ad alta tecnologia, in grado di ignorare le armature con meno di PA 11*. Fare riferimento alla descrizione completa a pag. 347.</p>\n<p><em>*Non attualmente supportato. sarà necessario applicare manualmente il danno ai bersagli corazzati.</em></p>"
+      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
     },
     "Naginata (Excellent)": {
       "name": "Naginata (Eccellente)",

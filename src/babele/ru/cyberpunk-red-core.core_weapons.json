@@ -275,7 +275,7 @@
     },
     "Mono-Three": {
       "name": "Моно-три",
-      "description": "<p>Экзотическое двуручное очень тяжелое оружие отличного качества. Выглядит как хайтек-катана, игнорирует броню меньше ОС11*.</p>\n<p><em>*На данный момент не поддерживается, повреждения бронированным целям нужно выставлять вручную.</em></p>"
+      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
     },
     "Naginata (Excellent)": {
       "name": "Нагината (отличное)",

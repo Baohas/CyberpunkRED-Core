@@ -275,7 +275,7 @@
     },
     "Mono-Three": {
       "name": "Mono-tres",
-      "description": "<p>Un arma cuerpo a cuerpo exótica y de excelente calidad, dos manos a mano. Aparece como una katana de alta tecnología, capaz de ignorar cualquier armadura debajo del CP11*. Consulte la descripción completa del objeto en pg. 348.</p>\n<p><em>*Actualmente no soportada, aplicar daño manualmente a los objetivos blindados</em></p>"
+      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
     },
     "Naginata (Excellent)": {
       "name": "Naginata (Excelente)",

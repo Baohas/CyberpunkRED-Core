@@ -174,7 +174,7 @@
     },
     "Light Tattoo": {
       "name": "Светотату",
-      "description": "<p>Светящиеся татуировки. +2 к проверкам гардероба и стиля если установлено более трёх.</p>"
+      "description": "<p>\n  Glowing tattoos. +2 to Wardrobe &amp; Style if you have at least three\n  installed.\n</p>\n"
     },
     "Low Light/IR/UV": {
       "name": "Слабое освещение/ИК/УФ",

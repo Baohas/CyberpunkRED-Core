@@ -174,7 +174,7 @@
     },
     "Light Tattoo": {
       "name": "Tatouage lumineux",
-      "description": "<p>Donne +2 en Habillement et style quand l'utilisateur possède au moins trois tatouages.</p>"
+      "description": "<p>\n  Glowing tattoos. +2 to Wardrobe &amp; Style if you have at least three\n  installed.\n</p>\n"
     },
     "Low Light/IR/UV": {
       "name": "Luminosité faible/infrarouge/UV",

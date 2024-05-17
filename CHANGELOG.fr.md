@@ -24,6 +24,8 @@
   - These will remain on existing Characters
   - They will not be added to new Characters
 - Rename default `Local Expert` skill to `Local Expert (Your Home)`
+- Add ability to set weapon ignore percentage
+- Add ability to set weapon to ignore armor below set SP amount
 
 ### Att/round
 

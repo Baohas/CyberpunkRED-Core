@@ -174,7 +174,7 @@
     },
     "Light Tattoo": {
       "name": "Tatuaż świetlny",
-      "description": "<p>Świecące tatuaże. +2 do Mody i stylu jeśli masz co najmniej trzy tatuaże jednocześnie.</p>"
+      "description": "<p>\n  Glowing tattoos. +2 to Wardrobe &amp; Style if you have at least three\n  installed.\n</p>\n"
     },
     "Low Light/IR/UV": {
       "name": "Widzenie w ciemności/podczerwieni/UV",

@@ -174,7 +174,7 @@
     },
     "Light Tattoo": {
       "name": "Leucht­tätowierung",
-      "description": "<p>Subdermale Bereiche speichern Licht und projizieren farbige Tätowierungen unter die Haut.. Ein Anwender mit drei oder mehr installierten Leuchttätowierungen addiert +2 zu seiner Fertigkeit Garderobe. (Dieser Bonus gilt nur einmal.)</p>"
+      "description": "<p>\n  Glowing tattoos. +2 to Wardrobe &amp; Style if you have at least three\n  installed.\n</p>\n"
     },
     "Low Light/IR/UV": {
       "name": "Restlicht / Infrarot / UV",

@@ -275,7 +275,7 @@
     },
     "Mono-Three": {
       "name": "Mono-Drei",
-      "description": "<p>Eine Exotische Beidhändige Sehr Schwere Nahkampfwaffe von Hervorragender Qualität. Ein Hightech-Katana, das Panzerung unter SW 11* ignorieren kann. Siehe vollständige Beschreibung auf Seite 348.</p>\n<p><em>*Momentan nicht unterstützt, Schaden muss manuell auf gepanzerte Ziele angewendet werden</em></p>"
+      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
     },
     "Naginata (Excellent)": {
       "name": "Naginata (Hervorragende Qualität)",

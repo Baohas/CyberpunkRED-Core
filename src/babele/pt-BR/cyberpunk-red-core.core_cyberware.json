@@ -174,7 +174,7 @@
     },
     "Light Tattoo": {
       "name": "Tatuagem Leve",
-      "description": "<p>Tatuagens Brilhantes. +2 to Wardrobe & Style se você tiver pelo menos três instalado.</p>"
+      "description": "<p>\n  Glowing tattoos. +2 to Wardrobe &amp; Style if you have at least three\n  installed.\n</p>\n"
     },
     "Low Light/IR/UV": {
       "name": "Luz baixa/IR/UV",

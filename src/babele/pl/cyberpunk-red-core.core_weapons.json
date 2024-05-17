@@ -275,7 +275,7 @@
     },
     "Mono-Three": {
       "name": "Mono-Three",
-      "description": "<p>Egzotyczna, doskonałej jakości, dwuręczna bardzo ciężka broń biała.Wygląda jak katana. Potrafi ignorować dowolny pancerz poniżej 11 OB.</p>\n<p><em>*Chwilowo obrażenia muszą zostać dodawane ręcznie.</em></p>"
+      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
     },
     "Naginata (Excellent)": {
       "name": "Naginata (doskonałej jakości)",
