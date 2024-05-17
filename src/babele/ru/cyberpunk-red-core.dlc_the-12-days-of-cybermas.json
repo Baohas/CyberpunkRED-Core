@@ -12,7 +12,7 @@
     },
     "Blitzkrieg Arc-Thrower Cyberarm": {
       "name": "Киберрука-дугомёт «Блицкриг»",
-      "description": "<p>\n  An \"arm\" in name only, the Arc-Thrower is a massive electricity cannon. 0\n  option slots.\n</p>\n<p>\n  The Arc-Thrower is One-Handed Exotic Poor Quality Shotgun that uses Heavy\n  Weapons Skill. Fires \"Shotgun Shell\" electricity blast with 4d6 damage.\n  Critical Injuries are not possible. Armor is not ablated. If target goes under\n  1HP from the blast, target has 1HP and is Unconscious.\n</p>\n<p>\n  Firing the Arc-Thrower consumes a charge from the included Radline MagnaSlot\n  BatteryBrick (100eb). BatteryBrick has a 32 shot capacity and can be recharged\n  in 1 hour. Use an Action to swap in a fresh battery pack even if user has no\n  free hands available. Arc-Thrower does not have a hand attachment.\n</p>\n"
+      "description": "<p>От руки здесь одно название. По сути это огромная электропушка. Нет слотов расширений.</p>\n<p>Дугомёт — это одноручный экзотический дробовик плохого качества, для использования которого нужен навык крупнокалиберного оружия. Стреляет дробью; электрический разряд наносит 4d6 урона. Невозможно нанести критическое ранение. Броня не получает повреждений. Цель падает без сознания, если удар снижает ПЗ ниже единицы.</p>\n<p>Оружие расходует Аккумулятор «МагнаСлот» (100eb). Его хватает на 32 выстрела, на зарядку требуется один час. Чтобы сменить аккумулятор, требуется действие. Это можно сделать, даже если нет свободных рук. У дугомёта нет кисти.</p>"
     },
     "Bug Eye": {
       "name": "Жучиный глаз",
@@ -40,7 +40,7 @@
     },
     "MonoVision": {
       "name": "МоноВизор",
-      "description": "<p>\n  Single-optic Cybereye visor that takes the place of two meat eyes. Too large\n  for a MultiOptic Mount.\n</p>\n<p>\n  Cybereye Options are always \"paired\" even if there is only one of each type.\n  Penalties from Lost Eye Critical Injury are doubled if the target solely\n  relies on the Monovision for sight.\n</p>\n<p>Borgware.</p>\n"
+      "description": "<p>Киберпотика в виде защитных очков, заменяющая сразу два мясных глаза. Слишком большой для установки крепления МультиОптик.</p>\n<p>При установке расширения кибероптики всегда считаются как в паре. Штрафы от критического ранения «Потеря глаза» удваиваются, если цель для зрения полагается только на МоноВозор.</p>\n<p>Боргимплант.</p>"
     },
     "OptiShield": {
       "name": "ОптиЩит",
@@ -56,7 +56,7 @@
     },
     "Watch-Man": {
       "name": "Уотчмэн",
-      "description": "<p>\n  Internal Agent with retractable screen on the user's forearm. Requires a\n  Cyberarm.\n</p>\n"
+      "description": "<p>Внутренний агент с выдвижным экраном в руке пользователя. Требует киберруку.</p>"
     }
   }
 }
