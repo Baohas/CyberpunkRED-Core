@@ -1,4 +1,3 @@
-/* global document game ui Folder canvas duplicate Handlebars */
 /* eslint-env jquery */
 
 import LOGGER from "./cpr-logger.js";

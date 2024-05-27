@@ -1,4 +1,3 @@
-/* global canvas game */
 import CPRDialog from "../dialog/cpr-dialog-application.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";

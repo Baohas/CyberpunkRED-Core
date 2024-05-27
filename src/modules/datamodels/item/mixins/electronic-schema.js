@@ -1,5 +1,3 @@
-/* globals foundry */
-
 import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class ElectronicSchema extends foundry.abstract.DataModel {

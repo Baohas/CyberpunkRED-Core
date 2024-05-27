@@ -1,5 +1,4 @@
 /* eslint-disable no-await-in-loop */
-/* globals Actor, game, getProperty, hasProperty, duplicate */
 import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";
 import CPRCharacterActorSheet from "./sheet/cpr-character-sheet.js";

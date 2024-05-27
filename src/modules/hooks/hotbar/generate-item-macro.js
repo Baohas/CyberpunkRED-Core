@@ -1,5 +1,4 @@
 /* eslint-disable consistent-return */
-/* global Hooks game Macro fromUuidSync */
 import LOGGER from "../../utils/cpr-logger.js";
 
 /**

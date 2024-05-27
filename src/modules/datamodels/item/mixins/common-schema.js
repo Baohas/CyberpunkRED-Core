@@ -1,5 +1,3 @@
-/* globals foundry */
-
 import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class CommonSchema extends foundry.abstract.DataModel {

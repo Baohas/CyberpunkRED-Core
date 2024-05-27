@@ -1,5 +1,3 @@
-/* global TextEditor ItemSheet CONFIG */
-/* global mergeObject, game, $, hasProperty, getProperty, setProperty, duplicate */
 import LOGGER from "../../utils/cpr-logger.js";
 import CPR from "../../system/config.js";
 import { CPRRoll } from "../../rolls/cpr-rolls.js";

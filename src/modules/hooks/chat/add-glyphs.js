@@ -1,4 +1,3 @@
-/* global Hooks */
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRChat from "../../chat/cpr-chat.js";
 

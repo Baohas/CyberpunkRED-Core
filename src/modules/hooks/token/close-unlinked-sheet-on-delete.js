@@ -1,4 +1,3 @@
-/* global Hooks ui */
 import LOGGER from "../../utils/cpr-logger.js";
 
 const CloseUnlinkedSheetOnDelete = () => {

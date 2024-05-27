@@ -2,7 +2,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */
-/* global game, hasProperty, duplicate, mergeObject, Item, fromUuidSync, fromUuid, TokenDocument, debugger */
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";

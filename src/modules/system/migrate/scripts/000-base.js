@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-await-in-loop */
-/* global CONFIG duplicate expandObject foundry game mergeObject */
+/* global expandObject */
 
 import CPRMigration from "../cpr-migration.js";
 import LOGGER from "../../../utils/cpr-logger.js";

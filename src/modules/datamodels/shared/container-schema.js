@@ -1,5 +1,3 @@
-/* globals foundry parseUuid */
-
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import LOGGER from "../../utils/cpr-logger.js";
 

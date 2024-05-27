@@ -1,4 +1,3 @@
-/* globals game FormApplication mergeObject $ duplicate getProperty setProperty hasProperty */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 

@@ -1,4 +1,3 @@
-/* globals Actor */
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";

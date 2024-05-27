@@ -1,5 +1,4 @@
 /* eslint-disable no-await-in-loop */
-/* globals Actor, getProperty, hasProperty, setProperty, duplicate game */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";

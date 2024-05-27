@@ -1,4 +1,3 @@
-/* global game getProperty */
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LOGGER from "../../utils/cpr-logger.js";

@@ -1,4 +1,3 @@
-/* global ActorSheet, $, setProperty, game, getProperty, mergeObject duplicate, TextEditor, fromUuidSync, document, canvas Item */
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRLedger from "../../dialog/cpr-ledger-form.js";

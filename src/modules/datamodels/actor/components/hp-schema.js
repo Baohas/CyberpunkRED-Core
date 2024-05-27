@@ -1,5 +1,3 @@
-/* global foundry */
-
 import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class HpSchema extends foundry.abstract.DataModel {

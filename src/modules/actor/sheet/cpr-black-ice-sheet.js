@@ -1,4 +1,3 @@
-/* global ActorSheet mergeObject game duplicate TextEditor */
 import CPRChat from "../../chat/cpr-chat.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";

@@ -1,5 +1,4 @@
 /* eslint-disable no-await-in-loop */
-/* global game */
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";

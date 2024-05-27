@@ -1,4 +1,3 @@
-/* global mergeObject game getProperty duplicate setProperty TextEditor Item fromUuidSync */
 /* eslint-env jquery */
 import CPRActorSheet from "./cpr-actor-sheet.js";
 import LOGGER from "../../utils/cpr-logger.js";

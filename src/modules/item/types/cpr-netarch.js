@@ -1,4 +1,3 @@
-/* global game, duplicate, Scene */
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";

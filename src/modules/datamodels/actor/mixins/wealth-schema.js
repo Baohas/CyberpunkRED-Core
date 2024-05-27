@@ -1,5 +1,3 @@
-/* globals foundry */
-
 import LOGGER from "../../../utils/cpr-logger.js";
 import LedgerSchema from "../components/ledger-schema.js";
 

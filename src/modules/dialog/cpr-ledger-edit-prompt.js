@@ -1,4 +1,3 @@
-/* global game renderTemplate, FormDataExtended, Dialog foundry */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 

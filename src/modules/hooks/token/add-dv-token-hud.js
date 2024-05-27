@@ -1,4 +1,3 @@
-/* global game Hooks renderTemplate */
 import LOGGER from "../../utils/cpr-logger.js";
 import HudInterface from "../../hud/interface.js";
 

@@ -1,5 +1,3 @@
-/* global Hooks Babele game */
-
 const InitializeBabeleIntegration = () => {
   /**
    * Babele Module Integration

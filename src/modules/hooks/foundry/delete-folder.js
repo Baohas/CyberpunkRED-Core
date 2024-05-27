@@ -1,4 +1,3 @@
-/* global Hooks */
 import LOGGER from "../../utils/cpr-logger.js";
 
 const PreDeleteFolder = () => {

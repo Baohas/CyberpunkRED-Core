@@ -1,4 +1,3 @@
-/* global Combatant */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import * as CPRRolls from "../rolls/cpr-rolls.js";

@@ -1,4 +1,3 @@
-/* global Handlebars */
 /* eslint-env jquery */
 
 import LOGGER from "./cpr-logger.js";

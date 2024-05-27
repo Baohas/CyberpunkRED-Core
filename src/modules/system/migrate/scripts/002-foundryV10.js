@@ -1,7 +1,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-await-in-loop */
-/* global game, duplicate, mergeObject */
 
 import CPRMigration from "../cpr-migration.js";
 import LOGGER from "../../../utils/cpr-logger.js";

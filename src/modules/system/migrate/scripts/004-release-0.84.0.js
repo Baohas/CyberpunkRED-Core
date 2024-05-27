@@ -1,4 +1,3 @@
-/* global Item fromUuidSync */
 /* eslint-disable foundry-cpr/logger-after-function-definition */
 /* eslint-disable no-await-in-loop */
 

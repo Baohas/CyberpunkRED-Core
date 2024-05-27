@@ -1,5 +1,4 @@
 /* eslint-disable foundry-cpr/logger-after-function-definition */
-/* global duplicate */
 
 import CPRMigration from "../cpr-migration.js";
 import SystemUtils from "../../../utils/cpr-systemUtils.js";

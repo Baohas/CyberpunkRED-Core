@@ -1,5 +1,4 @@
 /* eslint-disable no-await-in-loop */
-/* global Combat game */
 import LOGGER from "../utils/cpr-logger.js";
 import CombatUtils from "../utils/cpr-combatUtils.js";
 import CPRChat from "../chat/cpr-chat.js";

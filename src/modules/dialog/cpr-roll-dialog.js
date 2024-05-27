@@ -1,5 +1,4 @@
 /* eslint-disable max-classes-per-file */
-/* global duplicate */
 import CPRMod from "../rolls/cpr-modifiers.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";

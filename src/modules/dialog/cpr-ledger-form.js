@@ -1,4 +1,3 @@
-/* globals mergeObject duplicate game setProperty getProperty */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";

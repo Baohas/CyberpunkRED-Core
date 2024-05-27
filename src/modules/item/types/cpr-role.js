@@ -1,5 +1,3 @@
-/* global CONST */
-
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";

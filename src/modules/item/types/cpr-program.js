@@ -1,5 +1,3 @@
-/* global game */
-
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";
 

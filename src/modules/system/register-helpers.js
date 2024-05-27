@@ -1,4 +1,3 @@
-/* global Handlebars game getProperty */
 /* eslint-env jquery */
 import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";

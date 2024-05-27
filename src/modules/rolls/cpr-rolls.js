@@ -1,5 +1,4 @@
 /* eslint-disable max-classes-per-file */
-/* global Roll game mergeObject */
 import LOGGER from "../utils/cpr-logger.js";
 import DiceHandler from "../extern/cpr-dice-handler.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";

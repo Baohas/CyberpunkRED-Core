@@ -1,6 +1,5 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-shadow */
-/* global game mergeObject */
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";

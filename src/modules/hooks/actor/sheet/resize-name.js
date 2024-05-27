@@ -1,4 +1,3 @@
-/* global Hooks window */
 import SheetUtils from "../../../utils/SheetUtils.js";
 
 const ResizeName = () => {

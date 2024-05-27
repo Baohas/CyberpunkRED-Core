@@ -1,5 +1,3 @@
-/* global foundry */
-
 import LOGGER from "../../../utils/cpr-logger.js";
 import CPR from "../../../system/config.js";
 

@@ -1,4 +1,3 @@
-/* global game */
 import LOGGER from "../utils/cpr-logger.js";
 
 /**

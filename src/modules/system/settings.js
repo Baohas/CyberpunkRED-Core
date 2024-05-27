@@ -1,4 +1,3 @@
-/* global game */
 import CPR from "./config.js";
 import CPRCompendiaSettings from "../apps/cpr-compendia-settings.js";
 import LOGGER from "../utils/cpr-logger.js";

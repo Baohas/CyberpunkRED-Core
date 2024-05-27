@@ -1,4 +1,3 @@
-/* global setProperty duplicate */
 import LOGGER from "../../utils/cpr-logger.js";
 
 /**

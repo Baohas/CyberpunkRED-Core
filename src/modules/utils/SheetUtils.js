@@ -1,4 +1,3 @@
-/* global document window */
 /* eslint-env jquery */
 
 import LOGGER from "./cpr-logger.js";

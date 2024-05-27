@@ -1,4 +1,3 @@
-/* global duplicate CONST game */
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 

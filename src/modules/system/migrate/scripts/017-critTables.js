@@ -1,5 +1,4 @@
 /* eslint-disable foundry-cpr/logger-after-function-definition */
-/* global game */
 
 import CPRMigration from "../cpr-migration.js";
 import LOGGER from "../../../utils/cpr-logger.js";

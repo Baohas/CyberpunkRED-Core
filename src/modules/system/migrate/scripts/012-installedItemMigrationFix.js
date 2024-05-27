@@ -1,4 +1,3 @@
-/* globals fromUuidSync */
 /* eslint-disable foundry-cpr/logger-after-function-definition */
 
 import CPRMigration from "../cpr-migration.js";

@@ -1,5 +1,3 @@
-/* global ContextMenu, ImagePopout */
-
 import LOGGER from "./cpr-logger.js";
 import SystemUtils from "./cpr-systemUtils.js";
 

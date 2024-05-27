@@ -1,5 +1,4 @@
 /* eslint-disable no-await-in-loop */
-/* global game duplicate fromUuidSync */
 /* eslint-disable foundry-cpr/logger-after-function-definition */
 
 import CPRMigration from "../cpr-migration.js";

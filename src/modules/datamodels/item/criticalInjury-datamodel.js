@@ -1,5 +1,3 @@
-/* globals foundry */
-
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../abstract.js";

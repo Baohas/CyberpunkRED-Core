@@ -1,5 +1,4 @@
 /* eslint-disable class-methods-use-this */
-/* global Hooks dragRuler game */
 import LOGGER from "../../utils/cpr-logger.js";
 
 const InitializeDragRulerIntegration = () => {

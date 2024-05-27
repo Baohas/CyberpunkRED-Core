@@ -1,5 +1,3 @@
-/* global duplicate game randomID Actor Scene canvas fromUuidSync */
-
 import CPR from "../../system/config.js";
 import CPRItem from "../cpr-item.js";
 import * as CPRRolls from "../../rolls/cpr-rolls.js";

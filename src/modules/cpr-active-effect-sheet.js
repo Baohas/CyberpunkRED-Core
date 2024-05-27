@@ -1,4 +1,3 @@
-/* global ActiveEffectConfig CONST getProperty game mergeObject */
 /* eslint-env jquery */
 import LOGGER from "./utils/cpr-logger.js";
 import SystemUtils from "./utils/cpr-systemUtils.js";

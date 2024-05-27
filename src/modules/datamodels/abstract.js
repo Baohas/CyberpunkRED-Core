@@ -1,5 +1,4 @@
 /* eslint-disable max-classes-per-file */
-/* global foundry */
 /* eslint-disable no-continue */
 /* eslint-disable foundry-cpr/logger-after-function-definition */
 
