@@ -784,10 +784,13 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprIsUpgradable", (item) => {
     LOGGER.trace("cprIsUpgradable | handlebarsHelper | Called.");
-    const itemEntities = game.system.template.Item;
+    const hasUpgradableMixin = SystemUtils.hasDataModelTemplate(
+      item.type,
+      "upgradable"
+    );
     let isUpgradable = false;
     if (
-      itemEntities[item.type].templates.includes("upgradable") &&
+      hasUpgradableMixin &&
       item.system.installedItems.allowed &&
       item.system.installedItems.allowedTypes.includes("itemUpgrade")
     ) {
@@ -977,8 +980,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprHasTemplate", (itemType, templateName) => {
     LOGGER.trace("cprHasTemplate | handlebarsHelper | Called.");
-    const itemEntities = game.system.template.Item;
-    return itemEntities[itemType].templates.includes(templateName);
+    return SystemUtils.hasDataModelTemplate(itemType, templateName);
   });
 
   /**
@@ -994,13 +996,13 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprShowUpgrade", (obj, dataPoint) => {
     LOGGER.trace("cprShowUpgrade | handlebarsHelper | Called.");
-    const itemEntities = game.system.template.Item;
     const itemType = obj.type;
+    const hasUpgradableMixin = SystemUtils.hasDataModelTemplate(
+      itemType,
+      "upgradable"
+    );
     let upgradeText = "";
-    if (
-      itemEntities[itemType].templates.includes("upgradable") &&
-      obj.system.isUpgraded
-    ) {
+    if (hasUpgradableMixin && obj.system.isUpgraded) {
       const upgradeData = obj.getTotalUpgradeValues(dataPoint);
       if (upgradeData.value !== 0 && upgradeData.value !== "") {
         const modSource =
@@ -1022,16 +1024,15 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprApplyUpgrade", (obj, baseValue, dataPoint) => {
     LOGGER.trace("cprApplyUpgrade | handlebarsHelper | Called.");
-    const itemEntities = game.system.template.Item;
-    const itemType = obj.type;
+    const hasUpgradableMixin = SystemUtils.hasDataModelTemplate(
+      obj.type,
+      "upgradable"
+    );
     let upgradeResult = Number(baseValue);
     if (Number.isNaN(upgradeResult)) {
       upgradeResult = baseValue;
     }
-    if (
-      itemEntities[itemType].templates.includes("upgradable") &&
-      obj.system.isUpgraded
-    ) {
+    if (hasUpgradableMixin && obj.system.isUpgraded) {
       const upgradeData = obj.getTotalUpgradeValues(dataPoint);
       if (upgradeData.value !== "" && upgradeData.value !== 0) {
         if (upgradeData.type === "override") {

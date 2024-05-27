@@ -608,13 +608,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     LOGGER.trace("_configureSellTo | CPRContainerSheet | Called.");
     const cprActorData = duplicate(this.actor.system);
     const promptData = {};
-    promptData.itemTypes = [];
-    const itemEntities = game.system.template.Item;
-    game.system.template.Item.types.forEach((itemType) => {
-      if (itemEntities[itemType].templates.includes("physical")) {
-        promptData.itemTypes.push(itemType);
-      }
-    });
+    promptData.itemTypes = SystemUtils.GetTemplateItemTypes("physical");
     promptData.currentConfig = cprActorData.vendor;
 
     promptData.itemTypes.forEach((itemType) => {

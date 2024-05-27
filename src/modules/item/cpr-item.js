@@ -379,9 +379,12 @@ export default class CPRItem extends Item {
     const itemType = this.type;
     const cprItemData = this.system;
     const localCprRoll = cprRoll;
-    const itemEntities = game.system.template.Item;
 
-    if (itemEntities[itemType].templates.includes("loadable")) {
+    const hasLoadableTemplate = SystemUtils.hasDataModelTemplate(
+      itemType,
+      "loadable"
+    );
+    if (hasLoadableTemplate) {
       if (localCprRoll instanceof CPRRolls.CPRAttackRoll) {
         if (cprItemData.isRanged) {
           this.dischargeItem(localCprRoll);
