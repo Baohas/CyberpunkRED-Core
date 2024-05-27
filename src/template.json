@@ -1,8 +1,8 @@
 {
   "Actor": {
     "types": ["blackIce", "character", "container", "demon", "mook"],
-    "character": { "templates": ["container"] },
-    "mook": { "templates": ["container"] },
+    "character": {},
+    "mook": {},
     "htmlFields": [
       "notes",
       "information.alias",
@@ -48,133 +48,20 @@
       "weapon"
     ],
     "htmlFields": ["description.value"],
-    "ammo": {
-      "templates": [
-        "common",
-        "installable",
-        "physical",
-        "stackable",
-        "valuable"
-      ]
-    },
-    "armor": {
-      "templates": [
-        "common",
-        "effects",
-        "electronic",
-        "equippable",
-        "physical",
-        "upgradable",
-        "valuable",
-        "container"
-      ]
-    },
-    "clothing": {
-      "templates": [
-        "common",
-        "effects",
-        "electronic",
-        "equippable",
-        "physical",
-        "stackable",
-        "upgradable",
-        "valuable",
-        "container"
-      ]
-    },
-    "criticalInjury": {
-      "templates": ["common", "effects"]
-    },
-    "cyberware": {
-      "templates": [
-        "attackable",
-        "common",
-        "effects",
-        "electronic",
-        "installable",
-        "loadable",
-        "physical",
-        "upgradable",
-        "valuable",
-        "container"
-      ]
-    },
-    "cyberdeck": {
-      "templates": [
-        "common",
-        "electronic",
-        "physical",
-        "upgradable",
-        "equippable",
-        "installable",
-        "valuable",
-        "container"
-      ]
-    },
-    "drug": {
-      "templates": [
-        "common",
-        "effects",
-        "equippable",
-        "physical",
-        "stackable",
-        "valuable"
-      ]
-    },
-    "gear": {
-      "templates": [
-        "common",
-        "effects",
-        "electronic",
-        "equippable",
-        "physical",
-        "stackable",
-        "upgradable",
-        "valuable",
-        "container"
-      ]
-    },
-    "itemUpgrade": {
-      "templates": [
-        "attackable",
-        "common",
-        "electronic",
-        "effects",
-        "equippable",
-        "physical",
-        "installable",
-        "loadable",
-        "valuable",
-        "container"
-      ]
-    },
-    "netarch": {
-      "templates": ["common", "valuable"]
-    },
-    "program": {
-      "templates": ["common", "effects", "installable", "valuable"]
-    },
-    "role": {
-      "templates": ["common"]
-    },
-    "skill": {
-      "templates": ["common"]
-    },
-    "vehicle": {
-      "templates": ["common", "physical", "upgradable", "valuable", "container"]
-    },
-    "weapon": {
-      "templates": [
-        "attackable",
-        "common",
-        "effects",
-        "equippable",
-        "loadable",
-        "physical",
-        "upgradable",
-        "valuable",
-        "container"
-      ]
-    }
+    "ammo": {},
+    "armor": {},
+    "clothing": {},
+    "criticalInjury": {},
+    "cyberware": {},
+    "cyberdeck": {},
+    "drug": {},
+    "gear": {},
+    "itemUpgrade": {},
+    "netarch": {},
+    "program": {},
+    "role": {},
+    "skill": {},
+    "vehicle": {},
+    "weapon": {}
   }
 }
