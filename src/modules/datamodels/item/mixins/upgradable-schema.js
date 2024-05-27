@@ -1,6 +1,8 @@
 import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class UpgradableSchema extends foundry.abstract.DataModel {
+  static mixinName = "upgradable";
+
   static defineSchema() {
     LOGGER.trace("defineSchema | UpgradableSchema | called.");
     return {};

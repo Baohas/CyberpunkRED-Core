@@ -9,6 +9,8 @@ import LedgerSchema from "../components/ledger-schema.js";
 import ActorWeaponsSchema from "../components/weapons-schema.js";
 
 export default class CommonSchema extends foundry.abstract.DataModel {
+  static mixinName = "common";
+
   static defineSchema() {
     LOGGER.trace("defineSchema | CommonSchema | called.");
     const { fields } = foundry.data;

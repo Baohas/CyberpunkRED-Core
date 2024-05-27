@@ -1,6 +1,8 @@
 import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class CommonSchema extends foundry.abstract.DataModel {
+  static mixinName = "common";
+
   static defineSchema() {
     LOGGER.trace("defineSchema | CommonSchema | called.");
     const { fields } = foundry.data;

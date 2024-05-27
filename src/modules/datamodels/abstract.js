@@ -51,6 +51,7 @@ export default class CPRSystemDataModel extends foundry.abstract.DataModel {
     "prototype",
     "migrateData",
     "defineSchema",
+    "mixinName",
   ]);
 
   /* -------------------------------------------- */
@@ -115,7 +116,16 @@ export default class CPRSystemDataModel extends foundry.abstract.DataModel {
       configurable: false,
     });
 
+    const mixinNames = [];
     for (const template of templates) {
+      // Compile the mixin names into a single array.
+      if (!template.mixinName) {
+        throw new Error(
+          `No mixinName property defined on template ${template.name}`
+        );
+      }
+      mixinNames.push(template.mixinName);
+
       // Take all static methods and fields from template and mix in to base class
       for (const [key, descriptor] of Object.entries(
         Object.getOwnPropertyDescriptors(template)
@@ -132,6 +142,13 @@ export default class CPRSystemDataModel extends foundry.abstract.DataModel {
         Object.defineProperty(Base.prototype, key, descriptor);
       }
     }
+
+    // Define mixinNames on the base class.
+    Object.defineProperty(Base, "mixins", {
+      value: Object.seal(mixinNames),
+      writable: false,
+      configurable: false,
+    });
 
     return Base;
   }

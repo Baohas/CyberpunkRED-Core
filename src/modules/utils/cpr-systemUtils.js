@@ -602,10 +602,9 @@ export default class CPRSystemUtils {
   static GetTemplateItemTypes(templateName) {
     LOGGER.trace("GetTemplateItemTypes | CPRSystemUtils | Called.");
     const itemTypes = [];
-    const itemEntityTypes = game.system.template.Item.types;
-    itemEntityTypes.forEach((entityType) => {
-      const entity = game.system.template.Item[entityType];
-      if (entity.templates.includes(templateName)) {
+    const itemDataModels = Object.entries(CONFIG.Item.dataModels);
+    itemDataModels.forEach(([entityType, dataModel]) => {
+      if (dataModel.mixins.includes(templateName)) {
         itemTypes.push(entityType);
       }
     });
@@ -621,7 +620,7 @@ export default class CPRSystemUtils {
    */
   static getDataModelTemplates(itemType) {
     LOGGER.trace("getDataModelTemplates | CPRSystemUtils | Called.");
-    return game.system.template.Item[itemType].templates.filter(
+    return CONFIG.Item.dataModels[itemType].mixins.filter(
       (t) => t !== "common"
     );
   }

@@ -2,9 +2,11 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
 import LOGGER from "../../utils/cpr-logger.js";
 
 /**
- * Container Schema are shared between
+ * Container Schema are shared between Actors and Items
  */
 export default class ContainerSchema extends foundry.abstract.DataModel {
+  static mixinName = "container";
+
   /**
    * NOTE: This schema mixin refers to `document.system.installedItems`. It has nothing to do with the
    * Container Actor type. In fact, Container Actors do not mix in this schema into their data model at all, because
