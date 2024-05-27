@@ -20,7 +20,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
    */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRBlackIceActorSheet | Called.");
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-black-ice-sheet.hbs`,
       width: 575,
       height: "auto",

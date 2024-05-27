@@ -17,7 +17,7 @@ export default class CPRCompendiaSettings extends FormApplication {
    */
   static get defaultOptions() {
     LOGGER.trace("CPRCompendiaSettings | defaultOptions | called.");
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       title: SystemUtils.Localize("CPR.settings.compendiumMenu.title"),
       id: "injury-config",
       template: `systems/${game.system.id}/templates/apps/compendia-settings.hbs`,

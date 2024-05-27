@@ -16,7 +16,7 @@ export default class CPRItemSheet extends ItemSheet {
   /** @override */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRItemSheet | Called.");
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       tabs: [
         {
           navSelector: ".navtabs-item",
@@ -300,7 +300,7 @@ export default class CPRItemSheet extends ItemSheet {
     if (roleType === "mainRole") {
       this.item.update({ system: dialogData.roleData });
     } else {
-      mergeObject(
+      foundry.utils.mergeObject(
         cprRoleData.abilities.find((a) => a.name === subRole.name),
         dialogData.subRole
       );

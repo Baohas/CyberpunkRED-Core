@@ -13,7 +13,7 @@ export default class CPRDemonActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRDemonActorSheet | Called.");
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-demon-sheet.hbs`,
       width: 652,
       height: "auto",

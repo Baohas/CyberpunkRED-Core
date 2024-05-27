@@ -21,7 +21,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRContainerActorSheet | Called.");
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-container-sheet.hbs`,
       width: 990,
     });

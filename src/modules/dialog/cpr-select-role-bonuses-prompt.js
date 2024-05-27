@@ -66,7 +66,7 @@ export default class SelectRoleBonuses extends CPRDialog {
 
     // Merge above object with our original data.
     // This is then used to update the role item in item-sheet.js (_selectRoleBonuses)
-    mergeObject(this.object.roleData, updatedData);
+    foundry.utils.mergeObject(this.object.roleData, updatedData);
     this.render(true); // rerenders the FormApp with the new data.
   }
 }

@@ -299,7 +299,7 @@ export class CPRRoll {
         // returns false if the dialog was closed
         return false;
       }
-      mergeObject(this, dialogData, { overwrite: true });
+      foundry.utils.mergeObject(this, dialogData, { overwrite: true });
     }
     return true;
   }

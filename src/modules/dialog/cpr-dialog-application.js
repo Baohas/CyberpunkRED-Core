@@ -25,7 +25,7 @@ export default class CPRDialog extends FormApplication {
    */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRDialog | called.");
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/dialog/cpr-default-prompt.hbs`,
       title: "CPR.global.generic.title",
       width: 400,
@@ -164,7 +164,7 @@ export default class CPRDialog extends FormApplication {
   async _updateObject(event, formData) {
     LOGGER.trace("_updateObject | CPRDialog | Called.");
     const fd = duplicate(formData);
-    mergeObject(this.object, fd);
+    foundry.utils.mergeObject(this.object, fd);
     this.render(true); // rerenders the FormApp with the new data.
   }
 }

@@ -193,7 +193,7 @@ export default class CPRMigration {
     let newList = duplicate(updateList);
     const inList = updateList.filter((i) => i._id === itemUpdateData._id);
     if (inList.length > 0) {
-      const updatedData = mergeObject(itemUpdateData, inList[0]);
+      const updatedData = foundry.utils.mergeObject(itemUpdateData, inList[0]);
       newList = newList.filter((i) => i._id !== itemUpdateData._id);
       newList.push(updatedData);
     } else {

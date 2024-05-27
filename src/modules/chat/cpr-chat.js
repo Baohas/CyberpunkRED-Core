@@ -439,7 +439,7 @@ export default class CPRChat {
     const isSelf =
       isWhisper &&
       whisperTargets.length === 1 &&
-      whisperTargets[0] === messageData.message.user;
+      whisperTargets[0] === messageData.message.author;
     const indicatorElement = $("<span>");
     indicatorElement.addClass("chat-mode-indicator");
 

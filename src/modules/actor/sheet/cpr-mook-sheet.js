@@ -21,7 +21,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRMookActorSheet | Called.");
     const defaultWidth = 800;
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       width: defaultWidth,
     });
   }

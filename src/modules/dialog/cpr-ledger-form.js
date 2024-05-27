@@ -37,7 +37,7 @@ export default class CPRLedger extends CPRDialog {
    */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRLedger | called.");
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       // The title is set in the constructor above.
       template: `systems/${game.system.id}/templates/dialog/cpr-ledger-form.hbs`,
       width: 600,
@@ -206,7 +206,7 @@ export default class CPRLedger extends CPRDialog {
           icon: "fas fa-check",
           label: SystemUtils.Localize("CPR.dialog.ledgerDeletion.yesAdd"),
           callback: (dialog) => {
-            mergeObject(dialog.object, { action: true, sign: 1 });
+            foundry.utils.mergeObject(dialog.object, { action: true, sign: 1 });
             dialog.confirmDialog();
           },
         },
@@ -214,7 +214,10 @@ export default class CPRLedger extends CPRDialog {
           icon: "fas fa-check",
           label: SystemUtils.Localize("CPR.dialog.ledgerDeletion.yesSubtract"),
           callback: (dialog) => {
-            mergeObject(dialog.object, { action: true, sign: -1 });
+            foundry.utils.mergeObject(dialog.object, {
+              action: true,
+              sign: -1,
+            });
             dialog.confirmDialog();
           },
         },
@@ -222,7 +225,7 @@ export default class CPRLedger extends CPRDialog {
           icon: "fas fa-times",
           label: SystemUtils.Localize("CPR.dialog.common.no"),
           callback: (dialog) => {
-            mergeObject(dialog.object, { action: false });
+            foundry.utils.mergeObject(dialog.object, { action: false });
             dialog.confirmDialog();
           },
         },

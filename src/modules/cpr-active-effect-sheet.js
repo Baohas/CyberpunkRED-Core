@@ -14,7 +14,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    */
   static get defaultOptions() {
     LOGGER.trace("defaultOptions | CPRActiveEffectSheet | Called.");
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
       width: "auto",
       height: "auto",

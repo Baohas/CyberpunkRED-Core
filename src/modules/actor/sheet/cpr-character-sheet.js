@@ -22,7 +22,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     LOGGER.trace("defaultOptions | CPRCharacterActorSheet | Called.");
     const defaultWidth = 1050;
     const defaultHeight = "auto";
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-character-sheet.hbs`,
       width: defaultWidth,
       height: defaultHeight,
