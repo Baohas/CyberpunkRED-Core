@@ -84,7 +84,7 @@ export default class CPRChat {
         const alias = actor.name;
         chatOptions.speaker = { actor, alias };
       }
-      return ChatMessage.create(chatOptions, false);
+      return ChatMessage.create(chatOptions);
     });
   }
 
