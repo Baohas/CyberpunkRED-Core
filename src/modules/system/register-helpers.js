@@ -46,12 +46,12 @@ export default function registerHandlebarsHelpers() {
     LOGGER.trace("cprGetProp | handlebarsHelper | Called.");
     if (typeof object !== "undefined") {
       if (typeof object.length === "undefined") {
-        return getProperty(object, property);
+        return foundry.utils.getProperty(object, property);
       }
       if (object.length > 0) {
         const returnValues = [];
         object.forEach((obj) => {
-          returnValues.push(getProperty(obj, property));
+          returnValues.push(foundry.utils.getProperty(obj, property));
         });
         return returnValues;
       }
@@ -449,7 +449,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprFireMode", (actor, firemode, weaponID) => {
     LOGGER.trace("cprFireMode | handlebarsHelper | Called.");
-    const flag = getProperty(
+    const flag = foundry.utils.getProperty(
       actor,
       `flags.${game.system.id}.firetype-${weaponID}`
     );
@@ -464,7 +464,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprFireFlag", (actor, firetype, weaponID) => {
     LOGGER.trace("cprFireFlag | handlebarsHelper | Called.");
-    const flag = getProperty(
+    const flag = foundry.utils.getProperty(
       actor,
       `flags.${game.system.id}.firetype-${weaponID}`
     );

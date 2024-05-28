@@ -759,7 +759,7 @@ export default class CPRActor extends Actor {
         [valProp]: 0,
         [ledgerProp]: [],
       });
-      return getProperty(this.system, prop);
+      return foundry.utils.getProperty(this.system, prop);
     }
     return null;
   }
@@ -778,11 +778,11 @@ export default class CPRActor extends Actor {
     if (this.isLedgerProperty(prop)) {
       // update "value"; it may be negative
       const valProp = `system.${prop}.value`;
-      let newValue = getProperty(this, valProp);
+      let newValue = foundry.utils.getProperty(this, valProp);
       newValue += value;
       // update the ledger with the change
       const ledgerProp = `system.${prop}.transactions`;
-      const ledger = getProperty(this, ledgerProp);
+      const ledger = foundry.utils.getProperty(this, ledgerProp);
       if (value > 0) {
         ledger.push([
           SystemUtils.Format("CPR.ledger.increaseSentence", {
@@ -807,7 +807,7 @@ export default class CPRActor extends Actor {
         [valProp]: newValue,
         [ledgerProp]: ledger,
       });
-      return getProperty(this.system, prop);
+      return foundry.utils.getProperty(this.system, prop);
     }
     return null;
   }
@@ -826,7 +826,7 @@ export default class CPRActor extends Actor {
     if (this.isLedgerProperty(prop)) {
       const valProp = `system.${prop}.value`;
       const ledgerProp = `system.${prop}.transactions`;
-      const ledger = getProperty(this, ledgerProp);
+      const ledger = foundry.utils.getProperty(this, ledgerProp);
       ledger.push([
         SystemUtils.Format("CPR.ledger.setSentence", {
           property: prop,
@@ -838,7 +838,7 @@ export default class CPRActor extends Actor {
         [valProp]: value,
         [ledgerProp]: ledger,
       });
-      return getProperty(this.system, prop);
+      return foundry.utils.getProperty(this.system, prop);
     }
     return null;
   }
@@ -852,7 +852,7 @@ export default class CPRActor extends Actor {
   listRecords(prop) {
     LOGGER.trace("listRecords | CPRActor | Called.");
     if (this.isLedgerProperty(prop)) {
-      return getProperty(this.system, `${prop}.transactions`);
+      return foundry.utils.getProperty(this.system, `${prop}.transactions`);
     }
     return null;
   }
@@ -870,7 +870,7 @@ export default class CPRActor extends Actor {
    */
   isLedgerProperty(prop) {
     LOGGER.trace("isLedgerProperty | CPRActor | Called.");
-    const ledgerData = getProperty(this.system, prop);
+    const ledgerData = foundry.utils.getProperty(this.system, prop);
     if (!hasProperty(ledgerData, "value")) {
       SystemUtils.DisplayMessage(
         "error",

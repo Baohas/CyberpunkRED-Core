@@ -267,7 +267,7 @@ export default class CPRContainerActor extends Actor {
   listRecords(prop) {
     LOGGER.trace("listRecords | CPRContainerActor | Called.");
     if (prop === "wealth") {
-      return getProperty(this.system, `${prop}.transactions`);
+      return foundry.utils.getProperty(this.system, `${prop}.transactions`);
     }
     return null;
   }
@@ -285,7 +285,7 @@ export default class CPRContainerActor extends Actor {
    */
   isLedgerProperty(prop) {
     LOGGER.trace("isLedgerProperty | CPRContainerActor | Called.");
-    const ledgerData = getProperty(this.system, prop);
+    const ledgerData = foundry.utils.getProperty(this.system, prop);
     if (!hasProperty(ledgerData, "value")) {
       SystemUtils.DisplayMessage(
         "error",
@@ -318,7 +318,7 @@ export default class CPRContainerActor extends Actor {
     // update "value"; it may be negative
     // If Containers ever get Active Effects, this code will be a problem. See Issue #583.
     const cprData = foundry.utils.duplicate(this.system);
-    let newValue = getProperty(cprData, "wealth.value") || 0;
+    let newValue = foundry.utils.getProperty(cprData, "wealth.value") || 0;
     let transactionSentence;
     let transactionType = "set";
 
@@ -354,7 +354,7 @@ export default class CPRContainerActor extends Actor {
 
     setProperty(cprData, "wealth.value", newValue);
     // update the ledger with the change
-    const ledger = getProperty(cprData, "wealth.transactions");
+    const ledger = foundry.utils.getProperty(cprData, "wealth.transactions");
     ledger.push([
       SystemUtils.Format(transactionSentence, {
         property: "wealth",
@@ -366,7 +366,7 @@ export default class CPRContainerActor extends Actor {
     setProperty(cprData, "wealth.transactions", ledger);
     // update the actor and return the modified property
     this.update({ system: cprData });
-    return getProperty(this.system, "wealth");
+    return foundry.utils.getProperty(this.system, "wealth");
   }
 
   /**
@@ -385,7 +385,7 @@ export default class CPRContainerActor extends Actor {
         [valProp]: 0,
         [ledgerProp]: [],
       });
-      return getProperty(this.system, prop);
+      return foundry.utils.getProperty(this.system, prop);
     }
     return null;
   }
@@ -404,11 +404,11 @@ export default class CPRContainerActor extends Actor {
     if (this.isLedgerProperty(prop)) {
       // update "value"; it may be negative
       const valProp = `system.${prop}.value`;
-      let newValue = getProperty(this, valProp);
+      let newValue = foundry.utils.getProperty(this, valProp);
       newValue += value;
       // update the ledger with the change
       const ledgerProp = `system.${prop}.transactions`;
-      const ledger = getProperty(this, ledgerProp);
+      const ledger = foundry.utils.getProperty(this, ledgerProp);
       if (value > 0) {
         ledger.push([
           SystemUtils.Format("CPR.ledger.increaseSentence", {
@@ -433,7 +433,7 @@ export default class CPRContainerActor extends Actor {
         [valProp]: newValue,
         [ledgerProp]: ledger,
       });
-      return getProperty(this.system, prop);
+      return foundry.utils.getProperty(this.system, prop);
     }
     return null;
   }
@@ -452,7 +452,7 @@ export default class CPRContainerActor extends Actor {
     if (this.isLedgerProperty(prop)) {
       const valProp = `system.${prop}.value`;
       const ledgerProp = `system.${prop}.transactions`;
-      const ledger = getProperty(this, ledgerProp);
+      const ledger = foundry.utils.getProperty(this, ledgerProp);
       ledger.push([
         SystemUtils.Format("CPR.ledger.setSentence", {
           property: prop,
@@ -464,7 +464,7 @@ export default class CPRContainerActor extends Actor {
         [valProp]: value,
         [ledgerProp]: ledger,
       });
-      return getProperty(this.system, prop);
+      return foundry.utils.getProperty(this.system, prop);
     }
     return null;
   }

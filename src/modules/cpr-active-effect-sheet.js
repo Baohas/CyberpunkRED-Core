@@ -221,7 +221,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     const { changes } = this.object;
     changes.splice(modnum, 1);
     // Second, remove the corresponding flag for the deleted change
-    const changeFlags = getProperty(
+    const changeFlags = foundry.utils.getProperty(
       this.object,
       `flags.${game.system.id}.changes`
     );

@@ -252,7 +252,7 @@ export default class CPRLedger extends CPRDialog {
     // Change the value if desired.
     if (confirmDelete.action && numbers[0] !== "NaN") {
       const dataPointValue = `system.${this.propName}.value`;
-      const value = getProperty(cprActorData, dataPointValue);
+      const value = foundry.utils.getProperty(cprActorData, dataPointValue);
       setProperty(
         cprActorData,
         dataPointValue,

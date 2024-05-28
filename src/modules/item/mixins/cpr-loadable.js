@@ -38,7 +38,7 @@ const Loadable = function Loadable() {
    */
   this._setDvTable = async function _setDvTable(actor, dvTable) {
     LOGGER.trace("_setDvTable | Loadable | Called.");
-    const flag = getProperty(
+    const flag = foundry.utils.getProperty(
       actor,
       `flags.${game.system.id}.firetype-${this._id}`
     );
@@ -231,7 +231,7 @@ const Loadable = function Loadable() {
     if (this.actor) {
       const [ammo] = this.getInstalledItems("ammo");
       if (ammo) {
-        return getProperty(ammo.system, prop);
+        return foundry.utils.getProperty(ammo.system, prop);
       }
     }
     return undefined;

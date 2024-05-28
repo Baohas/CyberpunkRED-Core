@@ -196,7 +196,7 @@ export default class CPRItemSheet extends ItemSheet {
     LOGGER.trace("_itemCheckboxToggle | CPRItemSheet | Called.");
     const cprItem = foundry.utils.duplicate(this.item);
     const target = SystemUtils.GetEventDatum(event, "data-target");
-    const value = !getProperty(cprItem, target);
+    const value = !foundry.utils.getProperty(cprItem, target);
     if (target === "system.concealable.concealable") {
       this.item.setConcealable(value);
     } else if (hasProperty(cprItem, target)) {
@@ -215,7 +215,7 @@ export default class CPRItemSheet extends ItemSheet {
       .attr("data-target");
     const value = SystemUtils.GetEventDatum(event, "data-value");
     if (hasProperty(cprItem, target)) {
-      const prop = getProperty(cprItem, target);
+      const prop = foundry.utils.getProperty(cprItem, target);
       if (prop.includes(value)) {
         prop.splice(prop.indexOf(value), 1);
       } else {
@@ -514,7 +514,7 @@ export default class CPRItemSheet extends ItemSheet {
         }
       }
       if (hasProperty(cprItemData, "floors")) {
-        const prop = getProperty(cprItemData, "floors");
+        const prop = foundry.utils.getProperty(cprItemData, "floors");
         let deleteElement = null;
         prop.forEach((floor) => {
           if (floor.index === target) {
@@ -529,7 +529,7 @@ export default class CPRItemSheet extends ItemSheet {
 
     if (action === "up" || action === "down") {
       if (hasProperty(cprItemData, "floors")) {
-        const prop = getProperty(cprItemData, "floors");
+        const prop = foundry.utils.getProperty(cprItemData, "floors");
         const indices = [];
         prop.forEach((floor) => {
           indices.push(floor.index);
@@ -710,7 +710,7 @@ export default class CPRItemSheet extends ItemSheet {
       }
 
       if (hasProperty(cprItemData, "floors")) {
-        const prop = getProperty(cprItemData, "floors");
+        const prop = foundry.utils.getProperty(cprItemData, "floors");
         let maxIndex = -1;
         prop.forEach((floor) => {
           if (floor.index > maxIndex) {
@@ -747,7 +747,7 @@ export default class CPRItemSheet extends ItemSheet {
 
     if (action === "edit") {
       if (hasProperty(cprItemData, "floors")) {
-        const prop = getProperty(cprItemData, "floors");
+        const prop = foundry.utils.getProperty(cprItemData, "floors");
         let editElement = null;
         prop.forEach((floor) => {
           if (floor.index === target) {
@@ -998,7 +998,7 @@ export default class CPRItemSheet extends ItemSheet {
           ? "varying"
           : "--";
       if (hasProperty(cprItemData, "abilities")) {
-        const prop = getProperty(cprItemData, "abilities");
+        const prop = foundry.utils.getProperty(cprItemData, "abilities");
         let maxIndex = -1;
         prop.forEach((ability) => {
           if (ability.index > maxIndex) {
@@ -1064,7 +1064,7 @@ export default class CPRItemSheet extends ItemSheet {
         }
       }
       if (hasProperty(cprItemData, "abilities")) {
-        const prop = getProperty(cprItemData, "abilities");
+        const prop = foundry.utils.getProperty(cprItemData, "abilities");
         let deleteElement = null;
         prop.forEach((ability) => {
           if (ability.index === target) {
@@ -1079,7 +1079,7 @@ export default class CPRItemSheet extends ItemSheet {
 
     if (action === "edit") {
       if (hasProperty(cprItemData, "abilities")) {
-        const prop = getProperty(cprItemData, "abilities");
+        const prop = foundry.utils.getProperty(cprItemData, "abilities");
         let editElement = null;
         prop.forEach((ability) => {
           if (ability.index === target) {

@@ -154,7 +154,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (event.ctrlKey) {
       CPRChat.RenderItemCard(item);
     } else {
-      const playersCanModify = getProperty(
+      const playersCanModify = foundry.utils.getProperty(
         this.actor,
         `flags.${game.system.id}.players-modify`
       );
@@ -266,7 +266,12 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
           : 1;
     }
     const tradePartnerActor = game.actors.get(tradePartnerId);
-    if (!getProperty(this.actor, `flags.${game.system.id}.items-free`)) {
+    if (
+      !foundry.utils.getProperty(
+        this.actor,
+        `flags.${game.system.id}.items-free`
+      )
+    ) {
       if (tradePartnerActor.system.wealth.value < cost) {
         SystemUtils.DisplayMessage(
           "warn",
@@ -309,7 +314,12 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
         transferredItemData,
       ]);
     }
-    if (!getProperty(this.actor, `flags.${game.system.id}.infinite-stock`)) {
+    if (
+      !foundry.utils.getProperty(
+        this.actor,
+        `flags.${game.system.id}.infinite-stock`
+      )
+    ) {
       if (all) {
         const deleteList = [item._id];
 
@@ -427,7 +437,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
         }
       }
 
-      const infiniteStock = getProperty(
+      const infiniteStock = foundry.utils.getProperty(
         this.actor,
         `flags.${game.system.id}.infinite-stock`
       );
@@ -553,18 +563,18 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   async _onDrop(event) {
     LOGGER.trace("_onDrop | CPRContainerSheet | Called.");
-    const containerType = getProperty(
+    const containerType = foundry.utils.getProperty(
       this.actor,
       `flags.${game.system.id}.container-type`
     );
     if (!containerType) {
       await this.actor.setContainerType("shop");
     }
-    const playersCanCreate = getProperty(
+    const playersCanCreate = foundry.utils.getProperty(
       this.actor,
       `flags.${game.system.id}.players-create`
     );
-    const playersCanSell = getProperty(
+    const playersCanSell = foundry.utils.getProperty(
       this.actor,
       `flags.${game.system.id}.players-sell`
     );

@@ -1108,7 +1108,7 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("_fireCheckboxToggle | CPRActorSheet | Called.");
     const weaponID = SystemUtils.GetEventDatum(event, "data-item-id");
     const firemode = SystemUtils.GetEventDatum(event, "data-fire-mode");
-    const flag = getProperty(
+    const flag = foundry.utils.getProperty(
       this.actor,
       `flags.${game.system.id}.firetype-${weaponID}`
     );
@@ -1119,7 +1119,7 @@ export default class CPRActorSheet extends ActorSheet {
       const weaponDvTable = this.actor.getOwnedItem(weaponID).system.dvTable;
       const currentDvTable =
         weaponDvTable === ""
-          ? getProperty(this.token, "flags.cprDvTable")
+          ? foundry.utils.getProperty(this.token, "flags.cprDvTable")
           : weaponDvTable;
       if (typeof currentDvTable !== "undefined") {
         const dvTable = currentDvTable.replace(" (Autofire)", "");

@@ -101,7 +101,7 @@ export default class CPRDialog extends FormApplication {
     LOGGER.trace("_itemCheckboxToggle | CPRDialog | Called.");
     const dialogData = this.object;
     const target = SystemUtils.GetEventDatum(event, "data-target");
-    const value = !getProperty(dialogData, target);
+    const value = !foundry.utils.getProperty(dialogData, target);
     if (hasProperty(dialogData, target)) {
       setProperty(dialogData, target, value);
     } else {
