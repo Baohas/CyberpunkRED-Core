@@ -137,6 +137,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/item/description/mixin/cpr-installable.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-loadable.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-physical.hbs`,
+    `systems/${game.system.id}/templates/item/description/mixin/cpr-quality.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-stackable.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-upgradable.hbs`,
     `systems/${game.system.id}/templates/item/description/mixin/cpr-valuable.hbs`,

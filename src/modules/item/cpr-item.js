@@ -10,6 +10,7 @@ import Equippable from "./mixins/cpr-equippable.js";
 import Loadable from "./mixins/cpr-loadable.js";
 import Installable from "./mixins/cpr-installable.js";
 import Physical from "./mixins/cpr-physical.js";
+import Quality from "./mixins/cpr-quality.js";
 import Stackable from "./mixins/cpr-stackable.js";
 import Upgradable from "./mixins/cpr-upgradable.js";
 import Valuable from "./mixins/cpr-valuable.js";
@@ -175,6 +176,10 @@ export default class CPRItem extends Item {
         }
         case "physical": {
           Physical.call(CPRItem.prototype);
+          break;
+        }
+        case "quality": {
+          Quality.call(CPRItem.prototype);
           break;
         }
         case "stackable": {
