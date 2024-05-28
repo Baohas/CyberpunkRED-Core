@@ -352,7 +352,7 @@ export default class CPRContainerActor extends Actor {
       default:
     }
 
-    setProperty(cprData, "wealth.value", newValue);
+    foundry.utils.setProperty(cprData, "wealth.value", newValue);
     // update the ledger with the change
     const ledger = foundry.utils.getProperty(cprData, "wealth.transactions");
     ledger.push([
@@ -363,7 +363,7 @@ export default class CPRContainerActor extends Actor {
       }),
       reason,
     ]);
-    setProperty(cprData, "wealth.transactions", ledger);
+    foundry.utils.setProperty(cprData, "wealth.transactions", ledger);
     // update the actor and return the modified property
     this.update({ system: cprData });
     return foundry.utils.getProperty(this.system, "wealth");

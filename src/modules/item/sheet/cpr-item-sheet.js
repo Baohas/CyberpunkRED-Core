@@ -200,7 +200,7 @@ export default class CPRItemSheet extends ItemSheet {
     if (target === "system.concealable.concealable") {
       this.item.setConcealable(value);
     } else if (hasProperty(cprItem, target)) {
-      setProperty(cprItem, target, value);
+      foundry.utils.setProperty(cprItem, target, value);
       this.item.update(cprItem);
       LOGGER.log(`Item ${this.item.id} ${target} set to ${value}`);
     }
@@ -221,7 +221,7 @@ export default class CPRItemSheet extends ItemSheet {
       } else {
         prop.push(value);
       }
-      setProperty(cprItem, target, prop);
+      foundry.utils.setProperty(cprItem, target, prop);
       this.item.update(cprItem);
     }
   }
@@ -455,7 +455,7 @@ export default class CPRItemSheet extends ItemSheet {
       floorIndex += 1;
     });
     const cprItemData = foundry.utils.duplicate(this.item.system);
-    setProperty(cprItemData, "floors", prop);
+    foundry.utils.setProperty(cprItemData, "floors", prop);
     this.item.update({ system: cprItemData });
   }
 
@@ -522,7 +522,7 @@ export default class CPRItemSheet extends ItemSheet {
           }
         });
         prop.splice(prop.indexOf(deleteElement), 1);
-        setProperty(cprItemData, "floors", prop);
+        foundry.utils.setProperty(cprItemData, "floors", prop);
         this.item.update({ system: cprItemData });
       }
     }
@@ -574,7 +574,7 @@ export default class CPRItemSheet extends ItemSheet {
           newElement2.index = target;
           prop.push(newElement1);
           prop.push(newElement2);
-          setProperty(cprItemData, "floors", prop);
+          foundry.utils.setProperty(cprItemData, "floors", prop);
           this.item.update({ system: cprItemData });
         }
       }
@@ -726,7 +726,7 @@ export default class CPRItemSheet extends ItemSheet {
           blackice: formData.blackice,
           description: formData.description,
         });
-        setProperty(cprItemData, "floors", prop);
+        foundry.utils.setProperty(cprItemData, "floors", prop);
         this.item.update({ system: cprItemData });
       } else {
         const prop = [
@@ -740,7 +740,7 @@ export default class CPRItemSheet extends ItemSheet {
             description: formData.description,
           },
         ];
-        setProperty(cprItemData, "floors", prop);
+        foundry.utils.setProperty(cprItemData, "floors", prop);
         this.item.update({ system: cprItemData });
       }
     }
@@ -893,7 +893,7 @@ export default class CPRItemSheet extends ItemSheet {
           blackice: formData.blackice,
           description: formData.description,
         });
-        setProperty(cprItemData, "floors", prop);
+        foundry.utils.setProperty(cprItemData, "floors", prop);
         this.item.update({ system: cprItemData });
       }
     }
@@ -1019,7 +1019,7 @@ export default class CPRItemSheet extends ItemSheet {
           onByDefault: false,
           hasRoll: formData.hasRoll,
         });
-        setProperty(cprItemData, "abilities", prop);
+        foundry.utils.setProperty(cprItemData, "abilities", prop);
         this.item.update({ system: cprItemData });
       } else {
         const prop = [
@@ -1038,7 +1038,7 @@ export default class CPRItemSheet extends ItemSheet {
             hasRoll: formData.hasRoll,
           },
         ];
-        setProperty(cprItemData, "abilities", prop);
+        foundry.utils.setProperty(cprItemData, "abilities", prop);
         this.item.update({ system: cprItemData });
       }
     }
@@ -1072,7 +1072,7 @@ export default class CPRItemSheet extends ItemSheet {
           }
         });
         prop.splice(prop.indexOf(deleteElement), 1);
-        setProperty(cprItemData, "abilities", prop);
+        foundry.utils.setProperty(cprItemData, "abilities", prop);
         this.item.update({ system: cprItemData });
       }
     }
@@ -1134,7 +1134,7 @@ export default class CPRItemSheet extends ItemSheet {
           onByDefault: editElement.onByDefault,
           hasRoll: formData.hasRoll,
         });
-        setProperty(cprItemData, "abilities", prop);
+        foundry.utils.setProperty(cprItemData, "abilities", prop);
         this.item.update({ system: cprItemData });
       }
     }

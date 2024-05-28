@@ -248,12 +248,16 @@ export default class CPRLedger extends CPRDialog {
     this.contents.splice(lineId, 1);
     const dataPointTransactions = `system.${this.propName}.transactions`;
     const cprActorData = foundry.utils.duplicate(this.actor);
-    setProperty(cprActorData, dataPointTransactions, this.contents);
+    foundry.utils.setProperty(
+      cprActorData,
+      dataPointTransactions,
+      this.contents
+    );
     // Change the value if desired.
     if (confirmDelete.action && numbers[0] !== "NaN") {
       const dataPointValue = `system.${this.propName}.value`;
       const value = foundry.utils.getProperty(cprActorData, dataPointValue);
-      setProperty(
+      foundry.utils.setProperty(
         cprActorData,
         dataPointValue,
         value + confirmDelete.sign * numbers[0]

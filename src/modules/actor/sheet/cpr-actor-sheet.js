@@ -888,7 +888,7 @@ export default class CPRActorSheet extends ActorSheet {
    */
   _updateOwnedItemProp(item, prop, value) {
     LOGGER.trace("_updateOwnedItemProp | CPRActorSheet | Called.");
-    setProperty(item, prop, value);
+    foundry.utils.setProperty(item, prop, value);
     this._updateOwnedItem(item);
   }
 

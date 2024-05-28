@@ -646,7 +646,11 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
           purchasePercentage,
         };
       });
-      setProperty(cprActorData, "data.vendor", promptData.currentConfig);
+      foundry.utils.setProperty(
+        cprActorData,
+        "data.vendor",
+        promptData.currentConfig
+      );
       this.actor.update(cprActorData);
     }
   }
