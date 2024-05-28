@@ -120,7 +120,7 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
     if (foundry.data.validators.isValidId(uuid)) {
       return uuid;
     }
-    const parsedUuid = parseUuid(uuid);
+    const parsedUuid = foundry.utils.parseUuid(uuid);
     const index = parsedUuid.embedded.indexOf("Item") + 1;
     return parsedUuid.documentType === "Item"
       ? parsedUuid.documentId
