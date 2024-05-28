@@ -17,7 +17,7 @@ const Physical = function Physical() {
    */
   this.setConcealable = function setConcealable(val) {
     LOGGER.trace("setConcealable | Physical | Called.");
-    const cprItemData = duplicate(this.system);
+    const cprItemData = foundry.utils.duplicate(this.system);
     let target = "concealable.concealable";
     setProperty(cprItemData, target, val);
     // if we are making an item "unconcealable" (too big), we also unset "concealed" for consistency's sake

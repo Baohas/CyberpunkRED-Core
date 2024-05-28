@@ -190,7 +190,7 @@ export default class CPRMigration {
    */
   static addToUpdateList(updateList, itemUpdateData) {
     LOGGER.trace("addToUpdateList | CPRMigration");
-    let newList = duplicate(updateList);
+    let newList = foundry.utils.duplicate(updateList);
     const inList = updateList.filter((i) => i._id === itemUpdateData._id);
     if (inList.length > 0) {
       const updatedData = foundry.utils.mergeObject(itemUpdateData, inList[0]);

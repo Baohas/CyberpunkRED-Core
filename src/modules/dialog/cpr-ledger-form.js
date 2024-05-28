@@ -151,7 +151,9 @@ export default class CPRLedger extends CPRDialog {
         }
       }
       // Update ledger application contents.
-      this.contents = duplicate(this.actor.listRecords(this.propName));
+      this.contents = foundry.utils.duplicate(
+        this.actor.listRecords(this.propName)
+      );
       this._makeLedgerReadable(this.propName);
       this.render();
     } else {
@@ -185,7 +187,9 @@ export default class CPRLedger extends CPRDialog {
   async _deleteLedgerLine(event) {
     LOGGER.trace("_deleteLedgerLine | CPRLedger | called.");
     const lineId = SystemUtils.GetEventDatum(event, "data-line");
-    this.contents = duplicate(this.actor.listRecords(this.propName));
+    this.contents = foundry.utils.duplicate(
+      this.actor.listRecords(this.propName)
+    );
     let numbers = this.contents[lineId][0].match(/\d+/g);
     if (numbers === null) {
       numbers = ["NaN"];
@@ -243,7 +247,7 @@ export default class CPRLedger extends CPRDialog {
     }
     this.contents.splice(lineId, 1);
     const dataPointTransactions = `system.${this.propName}.transactions`;
-    const cprActorData = duplicate(this.actor);
+    const cprActorData = foundry.utils.duplicate(this.actor);
     setProperty(cprActorData, dataPointTransactions, this.contents);
     // Change the value if desired.
     if (confirmDelete.action && numbers[0] !== "NaN") {

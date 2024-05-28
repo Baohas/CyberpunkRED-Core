@@ -81,7 +81,7 @@ const Effects = function Effects() {
 
   this.copyEffect = function copyEffect(eid) {
     LOGGER.trace("copyEffect | Effects | Called.");
-    const effect = duplicate(this.getEffect(eid));
+    const effect = foundry.utils.duplicate(this.getEffect(eid));
     return this.createEmbeddedDocuments("ActiveEffect", [effect]);
   };
 

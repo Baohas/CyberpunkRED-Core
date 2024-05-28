@@ -279,7 +279,7 @@ export default class CPRItem extends Item {
     // Set the installed object data as a flag.
     // Note, if you ever change the name of `cprInstallTree` to something else,
     // you would have to change it in `createInstalledObjectData()` too.
-    const flags = duplicate(item.flags);
+    const flags = foundry.utils.duplicate(item.flags);
     flags.cprInstallTree = cprInstallTree;
 
     // Update the item with the new flags.

@@ -213,7 +213,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
 
     const cprInstallTree = item.createInstalledObjectData();
-    const transferredItemData = duplicate(item);
+    const transferredItemData = foundry.utils.duplicate(item);
     transferredItemData.flags.cprInstallTree = cprInstallTree;
     let cost = 0;
     if (
@@ -606,7 +606,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    */
   async _configureSellTo() {
     LOGGER.trace("_configureSellTo | CPRContainerSheet | Called.");
-    const cprActorData = duplicate(this.actor.system);
+    const cprActorData = foundry.utils.duplicate(this.actor.system);
     const promptData = {};
     promptData.itemTypes = SystemUtils.GetTemplateItemTypes("physical");
     promptData.currentConfig = cprActorData.vendor;

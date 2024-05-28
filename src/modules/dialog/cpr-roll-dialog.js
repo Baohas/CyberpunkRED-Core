@@ -163,7 +163,7 @@ export class CPRRollDialog extends CPRDialog {
    */
   async _updateObject(event, formData) {
     LOGGER.trace("_updateObject | CPRDialog | Called.");
-    const fd = duplicate(formData);
+    const fd = foundry.utils.duplicate(formData);
     if (formData.additionalMods) {
       // Replace all spaces/commas and then split into an array at each comma.
       fd.additionalMods = fd.additionalMods.replace(/ +/g, ",");

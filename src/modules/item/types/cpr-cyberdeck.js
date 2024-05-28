@@ -62,7 +62,7 @@ export default class CPRCyberdeckItem extends CPRItem {
    */
   async rezProgram(program, callingToken) {
     LOGGER.trace("rezProgram | CPRCyberdeckItem | Called.");
-    const programData = duplicate(program.system);
+    const programData = foundry.utils.duplicate(program.system);
     await program.setRezzed();
     if (programData.class === "blackice") {
       await this._rezBlackIceToken(program, callingToken);

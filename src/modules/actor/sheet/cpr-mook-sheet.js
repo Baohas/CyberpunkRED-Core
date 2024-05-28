@@ -132,10 +132,13 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     });
 
     // Pop up the form with embedded skill details.
-    const formData = await CPRDialog.showDialog(duplicate(skillObj), {
-      title: "CPR.mookSheet.dialog.modSkillTitle",
-      template: `systems/${game.system.id}/templates/dialog/cpr-mod-mook-skill-prompt.hbs`,
-    }).catch((err) => LOGGER.debug(err));
+    const formData = await CPRDialog.showDialog(
+      foundry.utils.duplicate(skillObj),
+      {
+        title: "CPR.mookSheet.dialog.modSkillTitle",
+        template: `systems/${game.system.id}/templates/dialog/cpr-mod-mook-skill-prompt.hbs`,
+      }
+    ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
@@ -235,7 +238,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     }
     mookImageArea.toggleClass("mook-image-small-toggle");
     mookImageImg.toggleClass("hide");
-    const cprActorData = duplicate(this.actor.system);
+    const cprActorData = foundry.utils.duplicate(this.actor.system);
     cprActorData.flags.collapsedImage = collapsedImage;
     this.actor.update(cprActorData);
   }

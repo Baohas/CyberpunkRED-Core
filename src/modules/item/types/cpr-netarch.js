@@ -85,7 +85,7 @@ export default class CPRNetArchItem extends CPRItem {
       },
     };
 
-    const floorData = duplicate(this.system.floors);
+    const floorData = foundry.utils.duplicate(this.system.floors);
     if (floorData.length === 0) {
       SystemUtils.DisplayMessage(
         "error",
@@ -145,7 +145,7 @@ export default class CPRNetArchItem extends CPRItem {
         return;
       }
       levelList.push([level, branch]);
-      const newLevel = duplicate(this.tileData.level);
+      const newLevel = foundry.utils.duplicate(this.tileData.level);
       newLevel.x =
         this.options.gridSize *
         (this.options.cornerOffsetX +
@@ -176,7 +176,7 @@ export default class CPRNetArchItem extends CPRItem {
         }
       }
       newTiles.push(newLevel);
-      const newArrow = duplicate(this.tileData.arrow);
+      const newArrow = foundry.utils.duplicate(this.tileData.arrow);
       newArrow.x =
         this.options.gridSize *
         (this.options.cornerOffsetX -
@@ -203,8 +203,8 @@ export default class CPRNetArchItem extends CPRItem {
     levelList.forEach((level) => {
       if (level[1] !== null) {
         if (!branchCounter.includes(level[1])) {
-          branchCounter.push(duplicate(level[1]));
-          const newArrow = duplicate(this.tileData.arrow);
+          branchCounter.push(foundry.utils.duplicate(level[1]));
+          const newArrow = foundry.utils.duplicate(this.tileData.arrow);
           let deltaHeight =
             this.options.connectorHeight +
             (this.options.levelHeight - this.options.connectorHeight) / 2;
@@ -239,7 +239,7 @@ export default class CPRNetArchItem extends CPRItem {
                 newArrow.width *= deltaHeight / this.options.connectorWidth;
                 deltaHeight = 0;
               }
-              newTiles.push(duplicate(newArrow));
+              newTiles.push(foundry.utils.duplicate(newArrow));
               deltaHeight -= this.options.connectorWidth;
             }
             newArrow.rotation = 0;
@@ -267,7 +267,7 @@ export default class CPRNetArchItem extends CPRItem {
                 newArrow.width *= deltaWidth / this.options.connectorWidth;
                 deltaWidth = 0;
               }
-              newTiles.push(duplicate(newArrow));
+              newTiles.push(foundry.utils.duplicate(newArrow));
               deltaWidth -= this.options.connectorWidth;
             }
           } else {
@@ -299,7 +299,7 @@ export default class CPRNetArchItem extends CPRItem {
                 newArrow.width *= deltaHeight / this.options.connectorWidth;
                 deltaHeight = 0;
               }
-              newTiles.push(duplicate(newArrow));
+              newTiles.push(foundry.utils.duplicate(newArrow));
               deltaHeight -= this.options.connectorWidth;
             }
             newArrow.rotation = 0;
@@ -327,7 +327,7 @@ export default class CPRNetArchItem extends CPRItem {
                 newArrow.width *= deltaWidth / this.options.connectorWidth;
                 deltaWidth = 0;
               }
-              newTiles.push(duplicate(newArrow));
+              newTiles.push(foundry.utils.duplicate(newArrow));
               deltaWidth -= this.options.connectorWidth;
             }
           }
@@ -357,7 +357,7 @@ export default class CPRNetArchItem extends CPRItem {
       `${game.system.id}.other_scenes`,
       sceneName
     );
-    const sceneData = duplicate(scene);
+    const sceneData = foundry.utils.duplicate(scene);
     sceneData.id = null;
     sceneData.name = newName;
     await Scene.createDocuments([sceneData]);

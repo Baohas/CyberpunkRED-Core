@@ -462,7 +462,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       "ActorID _updateRoleAbility | CPRCharacterActorSheet | Called."
     );
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
-    const cprItemData = duplicate(item.system);
+    const cprItemData = foundry.utils.duplicate(item.system);
     const subskill = SystemUtils.GetEventDatum(event, "data-subskill-name");
     const value = parseInt(event.target.value, 10);
     if (!Number.isNaN(value)) {

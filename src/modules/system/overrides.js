@@ -24,7 +24,7 @@ export default function overrideRulerFunctions() {
         const DvTable = token.document.getFlag(game.system.id, "cprDvTable");
         if (DvTable && typeof DvTable === "object") {
           const displayTable = DvTable.name.replace(/^DV /, "");
-          const table = duplicate(DvTable.table);
+          const table = foundry.utils.duplicate(DvTable.table);
           if (typeof table === "object" && Object.keys(table).length > 0) {
             let DV = 0;
             for (const range of Object.keys(table)) {

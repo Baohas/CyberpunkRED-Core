@@ -194,7 +194,7 @@ export default class CPRItemSheet extends ItemSheet {
 
   _itemCheckboxToggle(event) {
     LOGGER.trace("_itemCheckboxToggle | CPRItemSheet | Called.");
-    const cprItem = duplicate(this.item);
+    const cprItem = foundry.utils.duplicate(this.item);
     const target = SystemUtils.GetEventDatum(event, "data-target");
     const value = !getProperty(cprItem, target);
     if (target === "system.concealable.concealable") {
@@ -208,7 +208,7 @@ export default class CPRItemSheet extends ItemSheet {
 
   async _itemMultiOption(event) {
     LOGGER.trace("_itemMultiOption | CPRItemSheet | Called.");
-    const cprItem = duplicate(this.item);
+    const cprItem = foundry.utils.duplicate(this.item);
     // the target the option wants to be put into
     const target = $(event.currentTarget)
       .parents(".item-multi-select")
@@ -259,7 +259,7 @@ export default class CPRItemSheet extends ItemSheet {
    */
   async _selectRoleBonuses(event) {
     LOGGER.trace("ItemSheet | _selectRoleBonuses | Called.");
-    const cprRoleData = duplicate(this.item.system);
+    const cprRoleData = foundry.utils.duplicate(this.item.system);
     const roleType = SystemUtils.GetEventDatum(event, "data-role-type"); // Either "mainRole" or "subRole".
     const coreSkills = await SystemUtils.GetCoreSkills(); // Get core skills.
     const customSkills = game.items.filter((i) => i.type === "skill"); // Get any custom skills.
@@ -454,7 +454,7 @@ export default class CPRItemSheet extends ItemSheet {
       index += 1;
       floorIndex += 1;
     });
-    const cprItemData = duplicate(this.item.system);
+    const cprItemData = foundry.utils.duplicate(this.item.system);
     setProperty(cprItemData, "floors", prop);
     this.item.update({ system: cprItemData });
   }
@@ -489,7 +489,7 @@ export default class CPRItemSheet extends ItemSheet {
       SystemUtils.GetEventDatum(event, "data-action-target")
     );
     const action = SystemUtils.GetEventDatum(event, "data-action-type");
-    const cprItemData = duplicate(this.item.system);
+    const cprItemData = foundry.utils.duplicate(this.item.system);
 
     if (action === "delete") {
       const setting = game.settings.get(
@@ -566,8 +566,8 @@ export default class CPRItemSheet extends ItemSheet {
               element2 = floor;
             }
           });
-          const newElement1 = duplicate(element1);
-          const newElement2 = duplicate(element2);
+          const newElement1 = foundry.utils.duplicate(element1);
+          const newElement2 = foundry.utils.duplicate(element2);
           prop.splice(prop.indexOf(element1), 1);
           prop.splice(prop.indexOf(element2), 1);
           newElement1.index = swapPartner;
@@ -959,7 +959,7 @@ export default class CPRItemSheet extends ItemSheet {
       SystemUtils.GetEventDatum(event, "data-action-target")
     );
     const action = SystemUtils.GetEventDatum(event, "data-action-type");
-    const cprItemData = duplicate(this.item.system);
+    const cprItemData = foundry.utils.duplicate(this.item.system);
     const coreSkills = await SystemUtils.GetCoreSkills();
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned

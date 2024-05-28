@@ -16,7 +16,7 @@ const Electronic = function Electronic() {
    */
   this.setElectronic = function setElectronic(val) {
     LOGGER.trace("setElectronic | Electronic | Called.");
-    const cprItemData = duplicate(this.system);
+    const cprItemData = foundry.utils.duplicate(this.system);
     const target = "system.isElectronic";
     setProperty(cprItemData, target, val);
     this.update({ system: cprItemData });
@@ -29,7 +29,7 @@ const Electronic = function Electronic() {
    */
   this.setProvidesHardening = function setProvidesHardening(val) {
     LOGGER.trace("setProvidesHardening | Electronic | Called.");
-    const cprItemData = duplicate(this.system);
+    const cprItemData = foundry.utils.duplicate(this.system);
     const target = "system.providesHardening";
     setProperty(cprItemData, target, val);
     this.update({ system: cprItemData });

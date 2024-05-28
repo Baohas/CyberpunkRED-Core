@@ -163,7 +163,7 @@ export default class CPRDialog extends FormApplication {
    */
   async _updateObject(event, formData) {
     LOGGER.trace("_updateObject | CPRDialog | Called.");
-    const fd = duplicate(formData);
+    const fd = foundry.utils.duplicate(formData);
     foundry.utils.mergeObject(this.object, fd);
     this.render(true); // rerenders the FormApp with the new data.
   }

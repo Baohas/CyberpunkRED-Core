@@ -50,7 +50,9 @@ export default class CPRBlackIceActor extends Actor {
     ) {
       const cprFlags = this.token.flags[game.system.id];
       if (typeof cprFlags.program !== "undefined") {
-        cprRoll.rollCardExtraArgs.program = duplicate(cprFlags.program);
+        cprRoll.rollCardExtraArgs.program = foundry.utils.duplicate(
+          cprFlags.program
+        );
       }
     }
 

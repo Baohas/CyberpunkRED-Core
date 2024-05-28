@@ -247,7 +247,7 @@ const Container = function Container() {
 
     const actor = this.isOwned ? this.actor : false;
 
-    const installedItems = duplicate(this.system.installedItems);
+    const installedItems = foundry.utils.duplicate(this.system.installedItems);
     const equippableTypes = SystemUtils.GetTemplateItemTypes("equippable");
 
     for (const item of itemList) {
@@ -378,7 +378,9 @@ const Container = function Container() {
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     const actor = this.isOwned ? this.actor : false;
     // Duplicate the currenlty installed items.
-    const installedIds = duplicate(this.system.installedItems.list);
+    const installedIds = foundry.utils.duplicate(
+      this.system.installedItems.list
+    );
 
     const uninstallPromises = [];
     for (const item of uninstallList) {

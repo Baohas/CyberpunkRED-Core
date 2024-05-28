@@ -272,7 +272,7 @@ export default class CPRActorSheet extends ActorSheet {
             (m) => m.isSituational
           );
           // To avoid repeats, duplicate simplifiedEffect to situationalEffect, and push that.
-          const situationalEffect = duplicate(simplifiedEffect);
+          const situationalEffect = foundry.utils.duplicate(simplifiedEffect);
           situationalEffect.changes = situationalMods;
           if (situationalEffect.changes.length > 0) {
             categories.situational.effects.push(situationalEffect);
@@ -1295,8 +1295,8 @@ export default class CPRActorSheet extends ActorSheet {
         name: injury.name,
         type: injury.type,
         img: injury.img,
-        system: duplicate(injury.system),
-        effects: duplicate(injury.effects),
+        system: foundry.utils.duplicate(injury.system),
+        effects: foundry.utils.duplicate(injury.effects),
       };
       const result = await this.actor.createEmbeddedDocuments("Item", [
         cprItemData,
@@ -1655,7 +1655,7 @@ export default class CPRActorSheet extends ActorSheet {
       return;
     }
     const newAmount = oldAmount - formData.splitAmount;
-    const cprNewItemData = duplicate(item.system);
+    const cprNewItemData = foundry.utils.duplicate(item.system);
     cprNewItemData.amount = formData.splitAmount;
     delete cprNewItemData._id;
     await this.actor.updateEmbeddedDocuments("Item", [

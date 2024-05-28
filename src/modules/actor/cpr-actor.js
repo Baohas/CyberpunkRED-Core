@@ -45,7 +45,7 @@ export default class CPRActor extends Actor {
     );
     const containerTypes = SystemUtils.GetTemplateItemTypes("container");
     tmpItems.forEach((item) => {
-      const updatedSystem = duplicate(item.system);
+      const updatedSystem = foundry.utils.duplicate(item.system);
       if (containerTypes.includes(item.type)) {
         updatedSystem.installedItems.slots = 7;
         updatedSystem.installedItems.allowedTypes = [
@@ -1728,7 +1728,7 @@ export default class CPRActor extends Actor {
 
   copyEffect(effect) {
     LOGGER.trace("copyEffect | CPRActor | Called.");
-    const newEffect = duplicate(effect);
+    const newEffect = foundry.utils.duplicate(effect);
     return this.createEmbeddedDocuments("ActiveEffect", [newEffect]);
   }
 

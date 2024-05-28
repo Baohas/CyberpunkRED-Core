@@ -116,7 +116,7 @@ const Upgradable = function Upgradable() {
       } else {
         installedUpgrades.forEach((u, index) => {
           if (u.system.modifiers[dataPoint]?.value > 0) {
-            const mod = duplicate(u.system.modifiers[dataPoint]);
+            const mod = foundry.utils.duplicate(u.system.modifiers[dataPoint]);
             mod.id = `${u.name}-${key}-${index}`; // This should create a unique ID for the mod.
             mod.source = u.name; // Where the upgrade comes from.
             mod.key = key; // Datapoint being upgraded.

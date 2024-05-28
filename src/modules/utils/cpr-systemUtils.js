@@ -351,7 +351,7 @@ export default class CPRSystemUtils {
     if (sortedList.length === 0) {
       const sortedDataList = [];
       itemDataList.forEach((itemData) => {
-        const newItemData = duplicate(itemData);
+        const newItemData = foundry.utils.duplicate(itemData);
         const localizedValue =
           `CPR.global.itemType.${newItemData.type}.`.concat(
             this.slugify(newItemData.name)
