@@ -308,7 +308,12 @@ Hooks.once("ready", async () => {
   if (dataModelVersion !== "newCprWorld") {
     LOGGER.debug(`Data model before comparison: ${dataModelVersion}`);
     if (dataModelVersion.toString().indexOf(".") > -1)
-      dataModelVersion = isNewerVersion("0.80.0", dataModelVersion) ? -1 : 0;
+      dataModelVersion = foundry.utils.isNewerVersion(
+        "0.80.0",
+        dataModelVersion
+      )
+        ? -1
+        : 0;
     LOGGER.debug(`New data model version is: ${dataModelVersion}`);
     const MR = new MigrationRunner();
     // migrateWorld expects to be passed two integer values, returns true on successful migration
