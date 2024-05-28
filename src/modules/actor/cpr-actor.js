@@ -871,14 +871,14 @@ export default class CPRActor extends Actor {
   isLedgerProperty(prop) {
     LOGGER.trace("isLedgerProperty | CPRActor | Called.");
     const ledgerData = foundry.utils.getProperty(this.system, prop);
-    if (!hasProperty(ledgerData, "value")) {
+    if (!foundry.utils.hasProperty(ledgerData, "value")) {
       SystemUtils.DisplayMessage(
         "error",
         SystemUtils.Format("CPR.ledger.errorMessage.missingValue", { prop })
       );
       return false;
     }
-    if (!hasProperty(ledgerData, "transactions")) {
+    if (!foundry.utils.hasProperty(ledgerData, "transactions")) {
       SystemUtils.DisplayMessage(
         "error",
         SystemUtils.Format("CPR.ledger.errorMessage.missingTransactions", {

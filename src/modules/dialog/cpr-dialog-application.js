@@ -102,7 +102,7 @@ export default class CPRDialog extends FormApplication {
     const dialogData = this.object;
     const target = SystemUtils.GetEventDatum(event, "data-target");
     const value = !foundry.utils.getProperty(dialogData, target);
-    if (hasProperty(dialogData, target)) {
+    if (foundry.utils.hasProperty(dialogData, target)) {
       foundry.utils.setProperty(dialogData, target, value);
     } else {
       LOGGER.error(

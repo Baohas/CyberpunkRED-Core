@@ -466,7 +466,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     const subskill = SystemUtils.GetEventDatum(event, "data-subskill-name");
     const value = parseInt(event.target.value, 10);
     if (!Number.isNaN(value)) {
-      if (hasProperty(cprItemData, "rank")) {
+      if (foundry.utils.hasProperty(cprItemData, "rank")) {
         if (subskill) {
           const updateSubskill = cprItemData.abilities.filter(
             (a) => a.name === subskill

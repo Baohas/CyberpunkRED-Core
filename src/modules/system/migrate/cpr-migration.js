@@ -170,7 +170,7 @@ export default class CPRMigration {
     const regex = this.foundryMajorVersion < 10 ? /^system./ : /^data./;
     key = key.replace(regex, `${systemData}.`);
 
-    if (hasProperty(doc, key)) {
+    if (foundry.utils.hasProperty(doc, key)) {
       key = prop.match(/.\../)
         ? prop.replace(/.([^.]*)$/, ".-=$1")
         : `-=${prop}`;

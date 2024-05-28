@@ -199,7 +199,7 @@ export default class CPRItemSheet extends ItemSheet {
     const value = !foundry.utils.getProperty(cprItem, target);
     if (target === "system.concealable.concealable") {
       this.item.setConcealable(value);
-    } else if (hasProperty(cprItem, target)) {
+    } else if (foundry.utils.hasProperty(cprItem, target)) {
       foundry.utils.setProperty(cprItem, target, value);
       this.item.update(cprItem);
       LOGGER.log(`Item ${this.item.id} ${target} set to ${value}`);
@@ -214,7 +214,7 @@ export default class CPRItemSheet extends ItemSheet {
       .parents(".item-multi-select")
       .attr("data-target");
     const value = SystemUtils.GetEventDatum(event, "data-value");
-    if (hasProperty(cprItem, target)) {
+    if (foundry.utils.hasProperty(cprItem, target)) {
       const prop = foundry.utils.getProperty(cprItem, target);
       if (prop.includes(value)) {
         prop.splice(prop.indexOf(value), 1);
@@ -513,7 +513,7 @@ export default class CPRItemSheet extends ItemSheet {
           return;
         }
       }
-      if (hasProperty(cprItemData, "floors")) {
+      if (foundry.utils.hasProperty(cprItemData, "floors")) {
         const prop = foundry.utils.getProperty(cprItemData, "floors");
         let deleteElement = null;
         prop.forEach((floor) => {
@@ -528,7 +528,7 @@ export default class CPRItemSheet extends ItemSheet {
     }
 
     if (action === "up" || action === "down") {
-      if (hasProperty(cprItemData, "floors")) {
+      if (foundry.utils.hasProperty(cprItemData, "floors")) {
         const prop = foundry.utils.getProperty(cprItemData, "floors");
         const indices = [];
         prop.forEach((floor) => {
@@ -709,7 +709,7 @@ export default class CPRItemSheet extends ItemSheet {
         return;
       }
 
-      if (hasProperty(cprItemData, "floors")) {
+      if (foundry.utils.hasProperty(cprItemData, "floors")) {
         const prop = foundry.utils.getProperty(cprItemData, "floors");
         let maxIndex = -1;
         prop.forEach((floor) => {
@@ -746,7 +746,7 @@ export default class CPRItemSheet extends ItemSheet {
     }
 
     if (action === "edit") {
-      if (hasProperty(cprItemData, "floors")) {
+      if (foundry.utils.hasProperty(cprItemData, "floors")) {
         const prop = foundry.utils.getProperty(cprItemData, "floors");
         let editElement = null;
         prop.forEach((floor) => {
@@ -997,7 +997,7 @@ export default class CPRItemSheet extends ItemSheet {
           : formData.skill === "varying"
           ? "varying"
           : "--";
-      if (hasProperty(cprItemData, "abilities")) {
+      if (foundry.utils.hasProperty(cprItemData, "abilities")) {
         const prop = foundry.utils.getProperty(cprItemData, "abilities");
         let maxIndex = -1;
         prop.forEach((ability) => {
@@ -1063,7 +1063,7 @@ export default class CPRItemSheet extends ItemSheet {
           return;
         }
       }
-      if (hasProperty(cprItemData, "abilities")) {
+      if (foundry.utils.hasProperty(cprItemData, "abilities")) {
         const prop = foundry.utils.getProperty(cprItemData, "abilities");
         let deleteElement = null;
         prop.forEach((ability) => {
@@ -1078,7 +1078,7 @@ export default class CPRItemSheet extends ItemSheet {
     }
 
     if (action === "edit") {
-      if (hasProperty(cprItemData, "abilities")) {
+      if (foundry.utils.hasProperty(cprItemData, "abilities")) {
         const prop = foundry.utils.getProperty(cprItemData, "abilities");
         let editElement = null;
         prop.forEach((ability) => {
