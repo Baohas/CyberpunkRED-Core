@@ -15,11 +15,13 @@ const registerSystemSettings = () => {
     hint: "CPR.settings.theme.hint",
     scope: "client",
     config: true,
-    type: String,
+    type: new foundry.data.fields.StringField({
+      required: true,
+      choices: () => SystemUtils.GetThemes(CPR.themes),
+      initial: "default",
+    }),
     default: "default",
-    choices: () => SystemUtils.GetThemes(CPR.themes),
-    onChange: (value) => {
-      LOGGER.log(`Changed theme to ${value}`);
+    onChange: () => {
       SystemUtils.SetTheme();
     },
   });
