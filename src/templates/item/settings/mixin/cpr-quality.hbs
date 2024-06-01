@@ -4,14 +4,8 @@
     {{localize "CPR.itemSheet.quality"}}
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
-    <select name="system.quality" data-dtype="{{this.system.quality}}">
-      {{#select item.system.quality}}
-        {{#each (cprFindConfigObj "itemQuality") as |quality q| }}
-          <option value="{{q}}">
-            {{localize quality}}
-          </option>
-        {{/each}}
-      {{/select}}
+    <select name="system.quality">
+      {{selectOptions (cprFindConfigObj "itemQuality")  selected=item.system.quality localize=true}}
     </select>
   </div>
 </li>
