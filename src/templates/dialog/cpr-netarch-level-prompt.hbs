@@ -14,22 +14,11 @@
         </div>
         <div class="dialog-item-input text-nowrap">
           <select name="floor">
-            {{#select floor}}
-              {{#each floornumbers }}
-                <option value="{{.}}">
-                  {{.}}
-                </option>
-              {{/each}}
-            {{/select}}
+            {{selectOptions floornumbers selected=floor localize=true}}
           </select>
+
           <select name="branch">
-            {{#select branch}}
-              {{#each branchlabels }}
-                <option value="{{.}}">
-                  {{.}}
-                </option>
-              {{/each}}
-            {{/select}}
+            {{selectOptions branchlabels selected=branch localize=true}}
           </select>
         </div>
       </li>
@@ -39,13 +28,7 @@
         </div>
         <div class="dialog-item-input text-nowrap">
           <select class="force-submit" name="content">
-            {{#select content}}
-              {{#each contentoptions }}
-                <option value="{{@key}}">
-                  {{.}}
-                </option>
-              {{/each}}
-            {{/select}}
+            {{selectOptions contentoptions selected=content localize=true}}
           </select>
         </div>
       </li>
@@ -56,15 +39,9 @@
           </div>
           <div class="dialog-item-input text-nowrap">
             <select name="dv">
-              {{#select dv}}
-              {{#each dvoptions }}
-                <option value="{{.}}">
-                  {{.}}
-                </option>
-              {{/each}}
-            {{/select}}
-          </select>
-        </div>
+              {{selectOptions dvoptions selected=dv localize=true}}
+            </select>
+          </div>
         </li>
       {{/unless}}
       {{#if (cprCompare content "===" "CPR.global.programClass.blackice")}}
@@ -74,13 +51,7 @@
           </div>
           <div class="dialog-item-input text-nowrap">
             <select name="blackice">
-              {{#select blackice}}
-                {{#each blackiceoptions }}
-                  <option value="{{@key}}">
-                    {{.}}
-                  </option>
-                {{/each}}
-              {{/select}}
+              {{selectOptions blackiceoptions selected=blackice localize=true}}
             </select>
           </div>
         </li>
@@ -95,3 +66,4 @@
   {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}
 </form>
 {{cprTrace "END CPR-NETARCH-LEVEL-PROMPT.HBS"}}
+
