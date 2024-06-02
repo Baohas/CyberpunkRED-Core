@@ -8,18 +8,12 @@
   <div class="item flexrow setting-value text-nowrap item-end">
     {{#if this.editable }}
       <select name="system.type" data-dtype="{{item.system.type}}">
-        {{#select item.system.type}}
-        {{#each (cprFindConfigObj "cyberwareTypeList") as |type t| }}
-          <option value="{{t}}">
-            {{localize type}}
-          </option>
-        {{/each}}
-      {{/select}}
-    </select>
-  {{else}}
-    <span class="text-flex-end">{{localize (cprFindConfigValue "cyberwareTypeList" item.system.type)}}</span>
-  {{/if}}
-</div>
+        {{selectOptions (cprFindConfigObj "cyberwareTypeList") selected=item.system.type localize=true}}
+      </select>
+    {{else}}
+      <span class="text-flex-end">{{localize (cprFindConfigValue "cyberwareTypeList" item.system.type)}}</span>
+    {{/if}}
+  </div>
 </li>
 {{!-- Install Location Settings --}}
 <li class="item flexrow">
@@ -28,20 +22,13 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     {{#if this.editable }}
-      <select name="system.installLocation"
-              data-dtype="{{item.system.installLocation}}">
-        {{#select item.system.installLocation}}
-        {{#each (cprFindConfigObj "cyberwareInstallList") as |install i| }}
-          <option value="{{i}}">
-            {{localize install}}
-          </option>
-        {{/each}}
-      {{/select}}
-    </select>
-  {{else}}
-    <span class="text-flex-end">{{localize (cprFindConfigValue "cyberwareInstallList" item.system.installLocation)}}</span>
-  {{/if}}
-</div>
+      <select name="system.installLocation" data-dtype="{{item.system.installLocation}}">
+        {{selectOptions (cprFindConfigObj "cyberwareInstallList") selected=item.system.installLocation localize=true}}
+      </select>
+    {{else}}
+      <span class="text-flex-end">{{localize (cprFindConfigValue "cyberwareInstallList" item.system.installLocation)}}</span>
+    {{/if}}
+  </div>
 </li>
 {{!- Static Humanity Loss Settings --}}
 <li class="item flexrow">
