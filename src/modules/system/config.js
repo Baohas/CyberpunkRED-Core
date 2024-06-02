@@ -428,6 +428,13 @@ CPR.damageLocation = {
   leg: "CPR.global.location.leg",
 };
 
+CPR.containerType = {
+  shop: "CPR.containerSheet.containerType.shop",
+  loot: "CPR.containerSheet.containerType.loot",
+  stash: "CPR.containerSheet.containerType.stash",
+  custom: "CPR.containerSheet.containerType.custom",
+};
+
 CPR.blackIceType = {
   antipersonnel: "CPR.global.blackIce.type.antiPersonnel",
   antiprogram: "CPR.global.blackIce.type.antiProgram",

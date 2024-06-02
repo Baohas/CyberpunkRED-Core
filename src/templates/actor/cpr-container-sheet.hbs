@@ -25,13 +25,7 @@
           </div>
           <div class="item-end trade-with-dropdown">
             <select name="trade-with-dropdown" class="item-end trade-with-dropdown">
-              {{#select tradePartnerId}}
-                {{#each userOwnedActors }}
-                  <option name="trade-with-dropdown" value="{{this.id}}">
-                    {{this.name}}
-                  </option>
-                {{/each}}
-              {{/select}}
+              {{selectOptions userOwnedActors selected=tradePartnerId labelAttr="name" valueAttr="id"}}
             </select>
           </div>
         </li>
@@ -75,23 +69,10 @@
             </div>
             <div class="item-end">
               <select class="container-type-dropdown">
-                {{#select actor.flags.cyberpunk-red-core.container-type}}
-                <option value="shop">
-                  {{localize "CPR.containerSheet.containerType.shop"}}
-                </option>
-                <option value="loot">
-                  {{localize "CPR.containerSheet.containerType.loot"}}
-                </option>
-                <option value="stash">
-                  {{localize "CPR.containerSheet.containerType.stash"}}
-                </option>
-                <option value="custom">
-                  {{localize "CPR.containerSheet.containerType.custom"}}
-                </option>
-              {{/select}}
-            </select>
-          </div>
-        </li>
+                {{selectOptions (cprFindConfigObj "containerType") selected=actor.flags.cyberpunk-red-core.container-type localize=true}}
+              </select>
+            </div>
+          </li>
         {{#if (cprCompare actor.flags.cyberpunk-red-core.container-type "===" "custom") }}
           <li class="item flexrow container-type-settings">
             <div class="item-name">
