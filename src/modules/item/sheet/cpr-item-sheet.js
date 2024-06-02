@@ -334,7 +334,7 @@ export default class CPRItemSheet extends ItemSheet {
     );
     const other = await SystemUtils.GetCompendiumDoc(
       tableSetting,
-      "All Other Floors (".concat(formData.difficulty, ")")
+      "All Other Floors (".concat(formData.difficulty.capitalize(), ")")
     );
     const numberOfFloorsRoll = new CPRRoll(
       SystemUtils.Localize("CPR.rolls.roll"),

@@ -391,6 +391,13 @@ CPR.criticalInjuryTables = {
   "Critical Injuries (Body)": "critical-injuries-body",
 };
 
+CPR.netArchDifficulty = {
+  basic: "CPR.dialog.netArchitectureRolltableSelection.basic",
+  standard: "CPR.dialog.netArchitectureRolltableSelection.standard",
+  uncommon: "CPR.dialog.netArchitectureRolltableSelection.uncommon",
+  advanced: "CPR.dialog.netArchitectureRolltableSelection.advanced",
+};
+
 // game.system is not defined when this file is read, so there is a magic string here
 CPR.defaultCriticalInjuryTable =
   "cyberpunk-red-core.internal_critical-injury-tables";

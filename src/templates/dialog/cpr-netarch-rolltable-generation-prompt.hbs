@@ -14,20 +14,7 @@
         </div>
         <div class="dialog-item-input text-nowrap">
           <select name="difficulty">
-            {{#select difficulty}}
-              <option value="Basic" selected="selected">
-                {{localize "CPR.dialog.netArchitectureRolltableSelection.basic"}}
-              </option>
-              <option value="Standard">
-                {{localize "CPR.dialog.netArchitectureRolltableSelection.standard"}}
-              </option>
-              <option value="Uncommon">
-                {{localize "CPR.dialog.netArchitectureRolltableSelection.uncommon"}}
-              </option>
-              <option value="Advanced">
-                {{localize "CPR.dialog.netArchitectureRolltableSelection.advanced"}}
-              </option>
-            {{/select}}
+            {{selectOptions (cprFindConfigObj "netArchDifficulty") selected=difficulty localize=true}}
           </select>
         </div>
       </li>
