@@ -10,25 +10,16 @@
   </div>
 </li>
 {{!-- Crit Fail Effect --}}
-{{#if (cprCompare item.type "===" "weapon")}}
-  {{#if (cprCompare item.system.quality "===" "poor")}}
-    <li class="item flexrow">
-      <div class="item flexrow setting-name text-nowrap">
-        {{localize "CPR.itemSheet.critFailEffect.text"}}
-      </div>
-      <div class="item flexrow setting-value text-nowrap item-end">
-          <select name="system.critFailEffect"
-                  data-dtype="{{item.system.critFailEffect}}">
-            {{#select item.system.critFailEffect}}
-              {{#each (cprFindConfigObj "attackableCritFailEffects") as |effect e| }}
-                <option value="{{e}}">
-                  {{localize effect}}
-                </option>
-              {{/each}}
-            {{/select}}
-          </select>
-      </div>
-    </li>
-  {{/if}}
+{{#if (and (cprCompare item.type "===" "weapon") (cprCompare item.system.quality "===" "poor"))}}
+  <li class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap">
+      {{localize "CPR.itemSheet.critFailEffect.text"}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+      <select name="system.critFailEffect" data-dtype="{{item.system.critFailEffect}}">
+        {{selectOptions (cprFindConfigObj "attackableCritFailEffects") selected=item.system.critFailEffect localize=true}}
+      </select>
+    </div>
+  </li>
 {{/if}}
 {{cprTrace "END CPR-QUALITY.HBS"}}
