@@ -7,15 +7,9 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.variety" data-dtype="{{item.system.variety}}">
-      {{#select item.system.variety}}
-      {{#each (cprFindConfigObj "ammoVariety") as |variety v| }}
-        <option value="{{v}}">
-          {{localize variety}}
-        </option>
-      {{/each}}
-    {{/select}}
-  </select>
-</div>
+      {{selectOptions (cprFindConfigObj "ammoVariety") selected=item.system.variety localize=true}}
+    </select>
+  </div>
 </li>
 {{!-- Ammo Type Settings--}}
 <li class="item flexrow">
@@ -24,15 +18,9 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.type" data-dtype="{{item.system.type}}">
-      {{#select item.system.type}}
-      {{#each (cprFindConfigObj "ammoType") as |type t| }}
-        <option value="{{t}}">
-          {{localize type}}
-        </option>
-      {{/each}}
-    {{/select}}
-  </select>
-</div>
+      {{selectOptions (cprFindConfigObj "ammoType") selected=item.system.type localize=true}}
+    </select>
+  </div>
 </li>
 {{!-- Ablation Value --}}
 <li class="item flexrow">
@@ -51,13 +39,7 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.overrides.damage.mode" data-dtype="{{item.system.overrides.damage.mode}}">
-      {{#select item.system.overrides.damage.mode}}
-        {{#each (cprFindConfigObj "ammoDamageOverrideModes") as |mode m| }}
-          <option value="{{m}}">
-            {{localize mode}}
-          </option>
-        {{/each}}
-      {{/select}}
+      {{selectOptions (cprFindConfigObj "ammoDamageOverrideModes") selected=item.system.overrides.damage.mode localize=true}}
     </select>
   </div>
 </li>
@@ -89,13 +71,7 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.overrides.autofire.mode" data-dtype="{{item.system.overrides.autofire.mode}}">
-      {{#select item.system.overrides.autofire.mode}}
-        {{#each (cprFindConfigObj "ammoAutofireOverrideModes") as |mode m| }}
-          <option value="{{m}}">
-            {{localize mode}}
-          </option>
-        {{/each}}
-      {{/select}}
+      {{selectOptions (cprFindConfigObj "ammoAutofireOverrideModes") selected=item.system.overrides.autofire.mode localize=true}}
     </select>
   </div>
 </li>
