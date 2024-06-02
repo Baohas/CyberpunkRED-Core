@@ -5,16 +5,10 @@
       <li class="item flexrow">
         <div class="item flexrow">
           <select name="programUUID">
-            {{#select programUUID}}
-              <option value="unlink">
-                {{localize "CPR.dialog.configureBlackIceActorFromProgram.unlinkBlackIceFromProgram"}}
-              </option>
-              {{#each biProgramList as |program| }}
-                <option value="{{program.uuid}}">
-                  {{program.name}}
-                </option>
-              {{/each}}
-            {{/select}}
+            <option value="unlink">
+              {{localize "CPR.dialog.configureBlackIceActorFromProgram.unlinkBlackIceFromProgram"}}
+            </option>
+            {{selectOptions biProgramList selected=programUUID labelAttr="name" valueAttr="uuid"}}
           </select>
         </div>
       </li>
