@@ -73,14 +73,8 @@
             {{localize "CPR.rolls.aimFor"}}:
           </div>
           <div class="dialog-item-input text-nowrap">
-            <select name="location">
-              {{#select rollData.location}}
-              {{#each (cprFindConfigObj "aimedLocation") as |location l| }}
-                <option value="{{l}}">
-                  {{localize location}}
-                </option>
-              {{/each}}
-            {{/select}}
+          <select name="location">
+            {{selectOptions (cprFindConfigObj "aimedLocation") selected=rollData.location localize=true}}
           </select>
         </div>
       </li>
