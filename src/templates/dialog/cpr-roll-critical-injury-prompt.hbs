@@ -14,13 +14,7 @@
             {{localize "CPR.global.generic.table"}}:
           </div>
           <select name="currentTable">
-            {{#select currentTable}}
-              {{#each tableNames as |rollTableName| }}
-                <option value="{{rollTableName}}">
-                  {{rollTableName}}
-                </option>
-              {{/each}}
-            {{/select}}
+            {{selectOptions tableNames selected=currentTable}}
           </select>
         {{else}}
           {{localize "CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning"}}
