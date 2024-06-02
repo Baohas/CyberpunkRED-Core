@@ -23,15 +23,9 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.class" data-dtype="{{item.system.class}}">
-      {{#select item.system.class}}
-      {{#each (cprFindConfigObj "programClassList") as |class c| }}
-        <option value="{{c}}">
-          {{localize class}}
-        </option>
-      {{/each}}
-    {{/select}}
-  </select>
-</div>
+      {{selectOptions (cprFindConfigObj "programClassList") selected=item.system.class localize=true}}
+    </select>
+  </div>
 </li>
 {{#if (cprCompare item.system.class "!==" "defender") }}
   <hr/>
@@ -44,16 +38,10 @@
     </div>
     <div class="item flexrow setting-value text-nowrap item-end">
       <select name="system.blackIceType" data-dtype="{{item.system.blackIceType}}">
-        {{#select item.system.blackIceType}}
-        {{#each (cprFindConfigObj "blackIceType") as |blackIceType bit| }}
-          <option value="{{bit}}">
-            {{localize blackIceType}}
-          </option>
-        {{/each}}
-      {{/select}}
-    </select>
-  </div>
-</li>
+        {{selectOptions (cprFindConfigObj "blackIceType") selected=item.system.blackIceType localize=true}}
+      </select>
+    </div>
+  </li>
 {{/if}}
 {{!-- Program Damage Rolls--}}
 {{#if (cprCompare (cprCompare (cprCompare item.system.class "===" "antiprogramattacker") "||" (cprCompare item.system.class "===" "antipersonnelattacker")) "||" (cprCompare item.system.class "===" "blackice")) }}
