@@ -6,15 +6,9 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.style" data-dtype="{{item.system.style}}">
-      {{#select item.system.style}}
-      {{#each (cprFindConfigObj "clothingStyle") as |style s| }}
-        <option value="{{s}}">
-          {{localize style}}
-        </option>
-      {{/each}}
-    {{/select}}
-  </select>
-</div>
+      {{selectOptions (cprFindConfigObj "clothingStyle") selected=item.system.style localize=true}}
+    </select>
+  </div>
 </li>
 {{!-- Clothing Type Settings--}}
 <li class="item flexrow">
@@ -23,14 +17,8 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.type" data-dtype="{{item.system.type}}">
-      {{#select item.system.type}}
-      {{#each (cprFindConfigObj "clothingType") as |type t| }}
-        <option value="{{t}}">
-          {{localize type}}
-        </option>
-      {{/each}}
-    {{/select}}
-  </select>
-</div>
+      {{selectOptions (cprFindConfigObj "clothingType") selected=item.system.type localize=true}}
+    </select>
+  </div>
 </li>
 {{cprTrace "END CPR-CLOTHING.HBS"}}
