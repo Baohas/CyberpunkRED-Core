@@ -250,36 +250,6 @@ Hooks.once("init", async () => {
     ],
   };
 
-  CONFIG.fontDefinitions.Orbitron = {
-    editor: true,
-    fonts: [
-      {
-        urls: [`systems/${game.system.id}/fonts/Orbitron-400.ttf`],
-        weight: 400,
-      },
-      {
-        urls: [`systems/${game.system.id}/fonts/Orbitron-500.ttf`],
-        weight: 500,
-      },
-      {
-        urls: [`systems/${game.system.id}/fonts/Orbitron-600.ttf`],
-        weight: 600,
-      },
-      {
-        urls: [`systems/${game.system.id}/fonts/Orbitron-700.ttf`],
-        weight: 700,
-      },
-      {
-        urls: [`systems/${game.system.id}/fonts/Orbitron-800.ttf`],
-        weight: 800,
-      },
-      {
-        urls: [`systems/${game.system.id}/fonts/Orbitron-900.ttf`],
-        weight: 900,
-      },
-    ],
-  };
-
   preloadHandlebarsTemplates();
   registerHandlebarsHelpers();
   registerSystemSettings();
