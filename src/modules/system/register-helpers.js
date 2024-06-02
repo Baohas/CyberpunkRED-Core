@@ -774,9 +774,9 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprEntityTypes", (entityType) => {
     LOGGER.trace("cprEntityTypes | handlebarsHelper | Called.");
-    return typeof game.system.documentTypes[entityType] === "object"
-      ? game.system.documentTypes[entityType].filter((type) => type !== "base")
-      : {};
+    return typeof game.model[entityType] === "object"
+      ? Object.keys(game.model[entityType]).filter((type) => type !== "base")
+      : [];
   });
 
   /**
