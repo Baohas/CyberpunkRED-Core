@@ -16,13 +16,7 @@
         </div>
         <div class="blackice-info-class-value">
           <select name="system.class">
-            {{#select actor.system.class}}
-              {{#each (cprFindConfigObj "blackIceType") as |class c| }}
-                <option value="{{c}}">
-                  {{localize class}}
-                </option>
-              {{/each}}
-            {{/select}}
+            {{selectOptions (cprFindConfigObj "blackIceType") selected=actor.system.class localize=true}}
           </select>
         </div>
       </div>
