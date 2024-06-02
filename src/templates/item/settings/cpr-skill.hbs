@@ -6,15 +6,9 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.skillType" data-dtype="{{item.system.skillType}}">
-      {{#select item.system.skillType}}
-      {{#each (cprFindConfigObj "skillTypes") as |sType t| }}
-        <option value="{{t}}">
-          {{localize sType}}
-        </option>
-      {{/each}}
-    {{/select}}
-  </select>
-</div>
+      {{selectOptions (cprFindConfigObj "skillTypes") selected=item.system.skillType localize=true}}
+    </select>
+  </div>
 </li>
 {{!-- Skill Item Category--}}
 <li class="item flexrow">
@@ -23,15 +17,9 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.category" data-dtype="{{item.system.category}}">
-      {{#select item.system.category}}
-      {{#each (cprFindConfigObj "skillCategories") as |category c| }}
-        <option value="{{c}}">
-          {{localize category}}
-        </option>
-      {{/each}}
-    {{/select}}
-  </select>
-</div>
+      {{selectOptions (cprFindConfigObj "skillCategories") selected=item.system.category localize=true}}
+    </select>
+  </div>
 </li>
 {{!-- Skill Difficulty Settings--}}
 <li class="item flexrow">
@@ -39,16 +27,10 @@
     {{localize "CPR.itemSheet.skills.difficulty"}}
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
-    <select name="system.difficulty" data-dtype="{{item.system.difficulty}}">
-      {{#select item.system.difficulty}}
-      {{#each (cprFindConfigObj "skillDifficulties") as |difficulty d| }}
-        <option value="{{d}}">
-          {{localize difficulty}}
-        </option>
-      {{/each}}
-    {{/select}}
-  </select>
-</div>
+    <select name="system.difficulty" data-dtype="{{item.system.difficulty}}">\
+      {{selectOptions (cprFindConfigObj "skillDifficulties") selected=item.system.difficulty localize=true}}
+    </select>
+  </div>
 </li>
 {{!-- Skill Basic Settings--}}
 <li class="item flexrow">
@@ -82,14 +64,8 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.stat" data-dtype="{{item.system.stat}}">
-      {{#select item.system.stat}}
-      {{#each (cprFindConfigObj "statList") as |stat s| }}
-        <option value="{{s}}">
-          {{localize stat}}
-        </option>
-      {{/each}}
-    {{/select}}
-  </select>
-</div>
+      {{selectOptions (cprFindConfigObj "statList") selected=item.system.stat localize=true}}
+    </select>
+  </div>
 </li>
 {{cprTrace "END CPR-SKILL.HBS"}}
