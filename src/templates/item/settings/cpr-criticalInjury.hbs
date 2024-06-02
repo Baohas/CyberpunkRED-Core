@@ -6,15 +6,9 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.location" data-dtype="{{item.system.location}}">
-      {{#select item.system.location}}
-      {{#each (cprFindConfigObj "criticalInjuryLocation") as |location l| }}
-        <option value="{{l}}">
-          {{localize location}}
-        </option>
-      {{/each}}
-    {{/select}}
-  </select>
-</div>
+      {{selectOptions (cprFindConfigObj "criticalInjuryLocation") selected=item.system.location localize=true}}
+    </select>
+  </div>
 </li>
 {{!-- Critical Injury Quick Fix Type Settings--}}
 <li class="item flexrow">
@@ -22,17 +16,10 @@
     {{localize "CPR.global.criticalInjury.quickfix"}} {{localize "CPR.global.generic.type"}}
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
-    <select name="system.quickFix.type"
-            data-dtype="{{item.system.quickFix.type}}">
-      {{#select item.system.quickFix.type}}
-      {{#each (cprFindConfigObj "criticalInjuryQuickFix") as |quickfix q| }}
-        <option value="{{q}}">
-          {{localize quickfix}}
-        </option>
-      {{/each}}
-    {{/select}}
-  </select>
-</div>
+    <select name="system.quickFix.type" data-dtype="{{item.system.quickFix.type}}">
+      {{selectOptions (cprFindConfigObj "criticalInjuryQuickFix") selected=item.system.quickFix.type localize=true}}
+    </select>
+  </div>
 </li>
 {{!-- Critical Injury Quick Fix DV Settings--}}
 {{#if (cprCompare item.system.quickFix.type "===" "paramedic") }}
@@ -77,17 +64,10 @@
     {{localize "CPR.itemSheet.criticalInjury.treatment"}} {{localize "CPR.global.generic.type"}}
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
-    <select name="system.treatment.type"
-            data-dtype="{{item.system.treatment.type}}">
-      {{#select item.system.treatment.type}}
-      {{#each (cprFindConfigObj "criticalInjuryTreatment") as |treatment t| }}
-        <option value="{{t}}">
-          {{localize treatment}}
-        </option>
-      {{/each}}
-    {{/select}}
-  </select>
-</div>
+    <select name="system.treatment.type" data-dtype="{{item.system.treatment.type}}">
+      {{selectOptions (cprFindConfigObj "criticalInjuryTreatment") selected=item.system.treatment.type localize=true}}
+    </select>
+  </div>
 </li>
 {{!-- Critical Injury Treatment DV Settings--}}
 {{#if (cprCompare item.system.treatment.type "===" "surgery") }}
