@@ -9,12 +9,7 @@
               name="system.roleInfo.activeNetRole"
               data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.netRoleTooltip"}}"
               data-tooltip-direction="UP">
-        {{#select actor.roleInfo.activeNetRole}}
-          {{#each actor.itemTypes.role }}
-            <option value="{{this.id}}" {{#if (cprCompare this.id "===" ../actor.system.roleInfo.activeNetRole) }}selected{{/if }}>{{this.system.mainRoleAbility }}
-            </option>
-          {{/each}}
-        {{/select}}
+        {{selectOptions netRoleSelectOptions selected=actor.system.roleInfo.activeNetRole}}
       </select>
     </span>
   </li>

@@ -43,6 +43,21 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     });
   }
 
+  async getData() {
+    LOGGER.trace("getData | CPRActorSheet | Called.");
+    const actorSheetData = await super.getData();
+    const characterSheetData = {};
+
+    // Prepare options for selecting a net role.
+    const netRoleSelectOptions = {};
+    this.actor.itemTypes.role.forEach((role) => {
+      netRoleSelectOptions[role.id] = role.system.mainRoleAbility;
+    });
+    characterSheetData.netRoleSelectOptions = netRoleSelectOptions;
+
+    return foundry.utils.mergeObject(characterSheetData, actorSheetData);
+  }
+
   /**
    * Add listeners specific to the Character sheet. Remember additional listeners are added from the
    * parent class, CPRActor.
