@@ -25,7 +25,7 @@
           </div>
           <div class="rezzed-program-reset text-semi text-center"></div>
         </li>
-        {{#each ../rezzedPrograms as |program| }}
+        {{#each ../fightData.cyberdeck.system.rezzedPrograms as |program| }}
           {{#if (cprCompare program.system.class "===" pc) }}
             <li class="item flexrow cyberdeck-rezzed-software-list"
                 data-item-id="{{program.id}}">
@@ -94,7 +94,7 @@
           {{localize "CPR.global.generic.rez"}}
         </div>
       </li>
-      {{#each rezzedPrograms as |program| }}
+      {{#each fightData.cyberdeck.system.rezzedPrograms as |program| }}
         {{#if (cprCompare program.system.class "===" "blackice") }}
           <li class="item flexrow text-padding-left-smallest cyberdeck-rezzed-software-list"
               data-item-id="{{program.id}}">
