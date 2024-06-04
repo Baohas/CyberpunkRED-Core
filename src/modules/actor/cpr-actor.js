@@ -520,6 +520,16 @@ export default class CPRActor extends Actor {
       return accumulator + i.system.humanityLoss.static;
     }, item.system.humanityLoss.static);
 
+    const humanityLossSelectOptions = {
+      roll: SystemUtils.Format("CPR.dialog.installCyberware.roll", {
+        loss: rolledHumanityLoss,
+      }),
+      static: SystemUtils.Format("CPR.dialog.installCyberware.static", {
+        loss: staticHumanityLoss,
+      }),
+      none: SystemUtils.Localize("CPR.dialog.installCyberware.none"),
+    };
+
     // Show "Install Cyberware" dialog.
     const formData = await CPRDialog.showDialog(
       {
@@ -528,8 +538,7 @@ export default class CPRActor extends Actor {
         // If the cyberware being installed is foundational, the array will be empty, thus the optional chaining.
         foundationalId: compatibleTargetCyberware[0]?._id,
         humanityLossType: "rolled",
-        rolledHumanityLoss,
-        staticHumanityLoss,
+        humanityLossSelectOptions,
       },
       // Set the options for the dialog.
       {
@@ -1847,7 +1856,7 @@ export default class CPRActor extends Actor {
    */
   async loseHumanityValue(itemArray, humanityLossType) {
     LOGGER.trace("loseHumanityValue | CPRActor | Called.");
-    if (humanityLossType === "None") {
+    if (humanityLossType === "none") {
       LOGGER.trace(
         "CPR Actor loseHumanityValue | Called. | humanityLoss was None."
       );

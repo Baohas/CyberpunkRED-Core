@@ -13,17 +13,7 @@
         </div>
         <div class="dialog-item-input item-end">
           <select name="humanityLossType">
-            {{#select humanityLossType}}
-              <option value="roll">
-                {{localize "CPR.rolls.roll"}}: {{rolledHumanityLoss}}
-              </option>
-              <option value="static">
-                {{localize "CPR.dialog.installCyberware.static"}}: {{staticHumanityLoss}}
-              </option>
-              <option value="None">
-                {{localize "CPR.dialog.installCyberware.none"}}
-              </option>
-            {{/select}}
+            {{selectOptions humanityLossSelectOptions selected=humanityLossType}}
           </select>
         </div>
       </li>
@@ -39,14 +29,8 @@
             </div>
             <div class="dialog-item-input text-nowrap">
               <select name="foundationalId">
-                {{#select foundationalId}}
-                  {{!-- ONLY DISPLAY CYBERWARE OF SAME TYPE AS OPTIONAL --}}
-                  {{#each foundationalCyberware as |cyberware c| }}
-                    <option value="{{cyberware._id}}">
-                      {{cyberware.name}}
-                    </option>
-                  {{/each}}
-                {{/select}}
+                {{!-- ONLY DISPLAY CYBERWARE OF SAME TYPE AS OPTIONAL --}}
+                {{selectOptions foundationalCyberware selected=foundationalId valueAttr="_id" labelAttr="name"}}
               </select>
             </div>
           </li>

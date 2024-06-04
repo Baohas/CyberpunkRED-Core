@@ -339,6 +339,12 @@ CPR.cyberwareInstallList = {
   notApplicable: "CPR.global.generic.notApplicable",
 };
 
+CPR.cyberwareHumanityLossType = {
+  roll: "CPR.dialog.installCyberware.roll",
+  static: "CPR.dialog.installCyberware.static",
+  none: "CPR.dialog.installCyberware.none",
+};
+
 CPR.woundState = {
   notWounded: "CPR.global.woundState.notWounded",
   lightlyWounded: "CPR.global.woundState.lightlyWounded",
