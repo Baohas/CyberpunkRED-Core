@@ -4,6 +4,12 @@
 
 ## Version 0.89.0
 
+### Action Needed
+
+#### Netrunning Tiles
+
+We have updated the Netrunning Tiles, we have replaced the PNG files with WebP for reduced filesize. This means any scenes using PNG tile will display as broken. These can be fixed by double clicking on the broken tile and either navigating to the new tiles in `tiles/WebP` or manually replacing the `PNG` filder with `WebP` and the extension `png` with `webp`.
+
 ### New Features
 
 - Add Compendia for:
@@ -37,6 +43,7 @@
 - Change Pause Font to Tektur for better internationalization support
 - Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Header elements in text input areas are now styled in a similar way to the core book
+- Update netrunning tiles with new tiles from Solution
 
 ### Bug Fixes
 

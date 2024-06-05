@@ -18,8 +18,8 @@ export default class CPRNetArchItem extends CPRItem {
     LOGGER.trace("constructor | CPRNetarchUtils | called.");
     super(itemData, context);
     this.options = {
-      filePath: `systems/${game.system.id}/tiles/netarch/PNG/`,
-      fileExtension: "png",
+      filePath: `systems/${game.system.id}/tiles/netarch/WebP/`,
+      fileExtension: "webp",
       sceneName: null,
       gridSize: 110,
       connectorWidth: 1,
@@ -435,8 +435,8 @@ export default class CPRNetArchItem extends CPRItem {
     let formData = {
       animated: false,
       customTiles: false,
-      filePath: `systems/${game.system.id}/tiles/netarch/PNG/`,
-      fileExtension: "png",
+      filePath: `systems/${game.system.id}/tiles/netarch/WebP/`,
+      fileExtension: "webp",
       sceneName: "",
       gridSize: 110,
       connectorWidth: 1,
