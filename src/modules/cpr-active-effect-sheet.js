@@ -1,4 +1,6 @@
 /* eslint-env jquery */
+import CPRMod from "./rolls/cpr-modifiers.js";
+import CPR from "./system/config.js";
 import LOGGER from "./utils/cpr-logger.js";
 import SystemUtils from "./utils/cpr-systemUtils.js";
 
@@ -22,6 +24,70 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       // If they closed the dialog (without submitting) then there was just a blank AE on their sheet. This setting prevents that.
       submitOnClose: true,
     });
+  }
+
+  /**
+   * Prepares data for the CPRActiveEffectSheet.
+   *
+   * @override
+   * @return {Promise<Object>} The prepared data.
+   */
+  async getData() {
+    LOGGER.trace("getData | CPRActiveEffectSheet | Called.");
+    const data = await super.getData();
+    const cprData = {};
+    // Convert Changes into CPRMods, which have a more convenient data structure.
+    const modList = CPRMod.getAllModifiers([this.object], true);
+
+    // Prepare input elements for each Change.
+    modList.forEach((change, i) => {
+      const name = `changes.${i}.key`;
+      const selectClasses = ["key-key", "force-submit"];
+      const value = change.key;
+      switch (change.category) {
+        // Prepare the select drop-down for skill keys.
+        case "skill": {
+          const skillOptionConfigs = CPRActiveEffectSheet.getSkillOptionConfigs(
+            this.object
+          );
+          const select = foundry.applications.fields.createSelectInput({
+            name,
+            options: skillOptionConfigs,
+            value,
+          });
+          select.classList.add(...selectClasses);
+          change.keyInput = new Handlebars.SafeString(select.outerHTML);
+          break;
+        }
+        // Prepare the text input for custom keys.
+        case "custom": {
+          const textInput = foundry.applications.fields.createTextInput({
+            name,
+            value,
+          });
+          textInput.classList.add("key-input");
+          change.keyInput = new Handlebars.SafeString(textInput.outerHTML);
+          break;
+        }
+        // Prepare the select drop-down for all other keys.
+        default: {
+          const otherOptionConfigs = CPRActiveEffectSheet.getOtherOptionConfigs(
+            this.object
+          );
+          const select = foundry.applications.fields.createSelectInput({
+            name,
+            options: otherOptionConfigs[change.category],
+            value,
+          });
+          select.classList.add(...selectClasses);
+          change.keyInput = new Handlebars.SafeString(select.outerHTML);
+          break;
+        }
+      }
+    });
+
+    cprData.modList = modList;
+    return foundry.utils.mergeObject(data, cprData);
   }
 
   /**
@@ -256,19 +322,78 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     });
 
     // Finally, update the underlying AE
-    await this.object.unsetFlag(game.system.id, "changes");
-
     const prop = `flags.${game.system.id}.changes`;
-    await this.object.update({
+    const update = await this.object.update({
       changes,
       [prop]: newFlags,
     });
-    return this.submit({ preventClose: true }).then(() => this.render());
+    this.render();
+    return update;
   }
 
-  getData() {
-    LOGGER.trace("getData | CPRActiveEffectSheet | Called.");
-    const data = super.getData();
-    return data;
+  /**
+   * Generate a mapping of skill names and bonus object references for the AE sheet. If the AE
+   * comes from an Item, we look up all non-core skill items in the world, and use that list.
+   * If it comes from an actor, we loop over the skills it owns and generate a mapping with that.
+   *
+   * This is then used to create the Select element for the AE sheet (for Skill keys).
+   *
+   * @param {Object} effect - Sheet object that contains the AE in question
+   * @return {Object} - sorted object of skill keys to names
+   */
+  static getSkillOptionConfigs(effect) {
+    LOGGER.trace("getSkillOptionConfigs | CPRActiveEffectSheet | Called.");
+    const skillMap = CPR.activeEffectKeys.skill;
+    let skillList = [];
+    if (effect.parent.documentName === "Item") {
+      skillList = game.items.filter((i) => i.type === "skill");
+    } else if (effect.parent.documentName === "Actor") {
+      const actor = effect.parent;
+      skillList = actor.items.filter((i) => i.type === "skill");
+    }
+
+    for (const skill of skillList) {
+      skillMap["bonuses.".concat(SystemUtils.slugify(skill.name))] = skill.name;
+    }
+
+    const skillOptionConfigs = Object.entries(skillMap).map(([key, value]) => {
+      return {
+        value: key,
+        label: SystemUtils.Localize(value),
+        disabled: effect.changes.some((change) => change.key === key),
+      };
+    });
+
+    const sortedConfigs = skillOptionConfigs.sort((a, b) => {
+      return SystemUtils.Localize(a.label).localeCompare(
+        game.i18n.localize(b.label)
+      );
+    });
+
+    return sortedConfigs;
+  }
+
+  /**
+   * Generates configuration options, from which a Select element is created.
+   * for all keys except those in the "skill" category.
+   *
+   * @param {Object} effect - The effect data used to generate the configuration options.
+   * @return {Object} The configuration options for other effect categories.
+   */
+  static getOtherOptionConfigs(effect) {
+    LOGGER.trace("getOtherOptionConfigs | CPRActiveEffectSheet | Called.");
+    const configs = {};
+    const aeKeyEntries = Object.entries(CPR.activeEffectKeys);
+    aeKeyEntries.forEach(([categoryKey, data]) => {
+      configs[categoryKey] = Object.entries(data).map(([effectKey, value]) => {
+        return {
+          value: effectKey,
+          label: SystemUtils.Localize(value),
+          disabled: effect.changes.some((change) => change.key === effectKey),
+        };
+      });
+    });
+
+    return configs;
   }
 }

@@ -1125,46 +1125,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Generate a mapping of skill names and bonus object references for the AE sheet. If the AE
-   * comes from an Item, we look up all non-core skill items in the world, and use that list.
-   * If it comes from an actor, we loop over the skills it owns and generate a mapping with that.
-   *
-   * @param {Object} effectData - Sheet object that contains the AE in question
-   * @return {Object} - sorted object of skill keys to names
-   */
-  Handlebars.registerHelper("cprGetSkillsForEffects", (effectData) => {
-    LOGGER.trace("cprGetSkillsForEffects | handlebarsHelper | Called.");
-    const skillMap = CPR.activeEffectKeys.skill;
-    let skillList = [];
-    if (effectData.isItemEffect) {
-      skillList = game.items.filter((i) => i.type === "skill");
-    } else if (effectData.isActorEffect) {
-      const actor = effectData.effect.parent;
-      skillList = actor.items.filter((i) => i.type === "skill");
-    }
-
-    for (const skill of skillList) {
-      const localizedKey = `CPR.global.itemType.skill.${SystemUtils.slugify(
-        skill.name
-      )}`;
-      skillMap["bonuses.".concat(SystemUtils.slugify(skill.name))] =
-        localizedKey;
-    }
-    // "sort" the skillMap properties before passing it back (sorting by localized value)
-    return Object.keys(skillMap)
-      .sort((a, b) =>
-        game.i18n
-          .localize(skillMap[a])
-          .localeCompare(game.i18n.localize(skillMap[b]))
-      )
-      .reduce((result, key) => {
-        // eslint-disable-next-line no-param-reassign
-        result[key] = skillMap[key];
-        return result;
-      }, {});
-  });
-
-  /**
    * Return the name of a skill or stat being changed by an effect. Used in a
    * few active effect UIs.
    *

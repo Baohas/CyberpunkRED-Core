@@ -625,6 +625,16 @@ CPR.upgradableDataPoints = {
   },
 };
 
+CPR.activeEffectCategories = {
+  combat: "CPR.effectSheet.keyCategory.combat",
+  netrun: "CPR.effectSheet.keyCategory.netrun",
+  role: "CPR.effectSheet.keyCategory.role",
+  skill: "CPR.effectSheet.keyCategory.skill",
+  stat: "CPR.effectSheet.keyCategory.stat",
+  misc: "CPR.effectSheet.keyCategory.misc",
+  custom: "CPR.effectSheet.keyCategory.custom",
+};
+
 CPR.activeEffectKeys = {
   combat: {
     "bonuses.hands": "CPR.effectSheet.combat.stats.numberOfHands",
@@ -701,7 +711,7 @@ CPR.activeEffectKeys = {
       "CPR.effectSheet.roleAbility.tech.upgradeExpertise",
   },
   skill: {
-    // Note this listing is expanded in register-helpers (cprGetSkillsForEffects), it is not used as-is
+    // Note this listing is expanded in cpr-active-effect-sheet.js (getSkillOptionConfigs), it is not used as-is
     "bonuses.accounting": "CPR.global.itemType.skill.accounting",
     "bonuses.acting": "CPR.global.itemType.skill.acting",
     "bonuses.airVehicleTech": "CPR.global.itemType.skill.airVehicleTech",
@@ -744,7 +754,6 @@ CPR.activeEffectKeys = {
     "bonuses.librarySearch": "CPR.global.itemType.skill.librarySearch",
     "bonuses.lipReading": "CPR.global.itemType.skill.lipReading",
     "bonuses.localExpert": "CPR.global.itemType.skill.localExpert",
-    "bonuses.martialArts": "CPR.global.itemType.skill.martialArts",
     "bonuses.meleeWeapon": "CPR.global.itemType.skill.meleeWeapon",
     "bonuses.paintOrDrawOrSculpt":
       "CPR.global.itemType.skill.paintOrDrawOrSculpt",
@@ -760,11 +769,9 @@ CPR.activeEffectKeys = {
     "bonuses.pickPocket": "CPR.global.itemType.skill.pickPocket",
     "bonuses.pilotAirVehicle": "CPR.global.itemType.skill.pilotAirVehicle",
     "bonuses.pilotSeaVehicle": "CPR.global.itemType.skill.pilotSeaVehicle",
-    "bonuses.playInstrument": "CPR.global.itemType.skill.playInstrument",
     "bonuses.resistTortureOrDrugs":
       "CPR.global.itemType.skill.resistTortureOrDrugs",
     "bonuses.riding": "CPR.global.itemType.skill.riding",
-    "bonuses.science": "CPR.global.itemType.skill.science",
     "bonuses.seaVehicleTech": "CPR.global.itemType.skill.seaVehicleTech",
     "bonuses.shoulderArms": "CPR.global.itemType.skill.shoulderArms",
     "bonuses.stealth": "CPR.global.itemType.skill.stealth",
