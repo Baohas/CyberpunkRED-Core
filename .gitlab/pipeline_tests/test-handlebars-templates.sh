@@ -9,8 +9,9 @@ ERRORS=0
 PRELOAD="src/modules/system/preload-templates.js"
 CODE_DIR="src/modules"
 
-# Extract paths from the PRELOAD file. SC2016 enforces double quotes, but we have an edge case here were
-# we do NOT want to expand {game.system.id} in shell.
+# Extract paths from the PRELOAD file.
+# SC2016 enforces double quotes, but we have an edge case here were we
+# do NOT want to expand {game.system.id} in shell.
 #shellcheck disable=SC2016
 HBS_FILES=$(grep 'systems/${game.system.id}/templates' "${PRELOAD}" | sed -e 's/\s*`systems\/\${game.system.id}\///g' -e 's/`,//g')
 

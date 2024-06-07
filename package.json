@@ -8,14 +8,13 @@
   },
   "license": "UNLICENSED",
   "scripts": {
-    "test": "echo are there tests??",
     "start": "npx gulp",
     "lint": "npx eslint gulpfile.mjs gulp/*.mjs src/modules",
     "build": "npx gulp build",
     "watch": "npx gulp watch",
     "extractPacks": "npx gulp extractPacks",
     "generateBabele": "npx gulp generateBabele",
-    "install packages": "npm i"
+    "installPackages": "npm i"
   },
   "devDependencies": {
   },
