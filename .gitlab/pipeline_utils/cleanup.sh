@@ -10,13 +10,14 @@ IFS=$'\n\t'
 # The following vars are set during the 'init' CI job.
 # PROJECT_URL SYSTEM_NAME
 
+# Package name
+# We only want to cleanup dev packages in this job
+PACKAGE_NAME="fvtt-${SYSTEM_NAME}-dev"
+
 # Script variables
 # URL of the GitLab Package Repo
-PACKAGES_URL="${PROJECT_URL}/packages"
-
-# Package name
-# Read from environment, default to the dev release if not set.
-PACKAGE_NAME="${PACKAGE_NAME:-fvtt-${SYSTEM_NAME}-dev}"
+# This appends the PACKAGE_NAME as an argument to only return dev packages
+PACKAGES_URL="${PROJECT_URL}/packages?package_name=${PACKAGE_NAME}"
 
 # Error counter
 ERRORS=0
@@ -27,19 +28,23 @@ PACKAGES_KEEP="${PACKAGES_KEEP:-3}"
 
 # Get a list of release ids
 # Sorts by version number oldest => newest
-# Fetch all IDs using curl and jq, and store them in an array
+# While the PACKAGES_URL should only return dev packages we make doubily sure
+# by also filtering the results by PACKAGE_NAME as well.
 mapfile -t ALL_IDS < <(
   curl \
     --silent \
     --location \
     --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
     "${PACKAGES_URL}" |
-    jq -r '.[]
-      | select(.name == "fvtt-cyberpunk-red-core-dev" and .version != "latest")
-      | .id'
+    jq -r \
+      --arg package_name "${PACKAGE_NAME}" \
+      'map(select(.version != "latest" and .name == "$package_name"))
+        | sort_by(.version)
+        | .[].id'
 )
 
-# Remove the latest 3 packages
+# Remove the latest 3 release IDs from the ALL_IDS array so we
+# know which IDS to delete
 DELETE_IDS=("${ALL_IDS[@]::${#ALL_IDS[@]}-3}")
 
 # Hit the GitLab API and delete a package
