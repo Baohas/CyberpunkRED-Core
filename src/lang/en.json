@@ -1232,6 +1232,7 @@
   "CPR.universalBonuses.attack": "Bonus to Attack",
   "CPR.universalBonuses.damage": "Bonus to Damage",
   "CPR.universalBonuses.damageReduction": "Bonus to Damage Reduction",
+  "CPR.universalBonuses.fumbleRecovery": "Fumble Recovery",
   "CPR.universalBonuses.initiative": "Bonus to Initiative",
   "TYPES.Actor.blackIce": "Black ICE",
   "TYPES.Actor.character": "Character",

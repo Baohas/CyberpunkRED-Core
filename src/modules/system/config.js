@@ -499,6 +499,7 @@ CPR.universalBonuses = {
   damage: "CPR.universalBonuses.damage",
   damageReduction: "CPR.universalBonuses.damageReduction",
   initiative: "CPR.universalBonuses.initiative",
+  fumbleRecovery: "CPR.universalBonuses.fumbleRecovery",
 };
 
 CPR.effectModifierModes = {

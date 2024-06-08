@@ -144,8 +144,8 @@
       </li>
       <div class="role-list-content">
         <ol class="items-list">
-          {{#each (cprSort item.system.abilities "name") as |ability| }}
-            <li class="item role-name flexrow">
+          {{#each item.system.abilities as |ability index| }}
+            <li class="item role-name flexrow" data-index="{{index}}">
               <div class="item-name text-nowrap">
                 {{localize (cprGetLocalizedlNameKey ability.name "roleAbility")}}
               </div>
@@ -178,12 +178,12 @@
                      data-tooltip="{{localize "CPR.itemSheet.role.configureRollBonuses"}}"><i class="fas fa-wrench"></i></a>
                 </div>
                 <div class="item-detail role-actions text-nowrap">
-                  <a class="role-ability-action"
-                     data-action-type="edit"
-                     data-action-target="{{ability.index}}"><i class="fas fa-edit" data-tooltip="{{localize "CPR.itemSheet.role.editRoleAbility"}}"></i></a>
-                  <a class="role-ability-action"
-                     data-action-type="delete"
-                     data-action-target="{{ability.index}}"><i class="fas fa-trash-alt" data-tooltip="{{localize "CPR.itemSheet.role.deleteRoleAbility"}}"></i></a>
+                  <a class="role-ability-action" data-action-type="edit">
+                    <i class="fas fa-edit" data-tooltip="{{localize "CPR.itemSheet.role.editRoleAbility"}}"></i>
+                  </a>
+                  <a class="role-ability-action" data-action-type="delete">
+                    <i class="fas fa-trash-alt" data-tooltip="{{localize "CPR.itemSheet.role.deleteRoleAbility"}}"></i>
+                  </a>
                 </div>
               </li>
             {{/each}}

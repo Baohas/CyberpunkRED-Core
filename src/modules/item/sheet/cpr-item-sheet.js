@@ -5,6 +5,7 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
 import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import RoleAbilitySchema from "../../datamodels/item/components/role-ability-schema.js";
 
 /**
  * Extend the basic ActorSheet.
@@ -955,11 +956,12 @@ export default class CPRItemSheet extends ItemSheet {
 
   async _roleAbilityAction(event) {
     LOGGER.trace("ItemSheet | _roleAbilityAction | Called.");
-    const target = Number(
-      SystemUtils.GetEventDatum(event, "data-action-target")
-    );
+    const index = SystemUtils.GetEventDatum(event, "data-index");
     const action = SystemUtils.GetEventDatum(event, "data-action-type");
+
     const cprItemData = foundry.utils.duplicate(this.item.system);
+    const { abilities } = cprItemData;
+
     const coreSkills = await SystemUtils.GetCoreSkills();
     const customSkills = game.items.filter((i) => i.type === "skill");
     const allSkills = this.object.isOwned
@@ -967,19 +969,13 @@ export default class CPRItemSheet extends ItemSheet {
       : coreSkills
           .concat(customSkills)
           .sort((a, b) => (a.name > b.name ? 1 : -1));
+    const multiplierOptions = [0.25, 0.5, 1, 2];
+    let formData = {
+      ...new RoleAbilitySchema(),
+      skillOptions: allSkills,
+      multiplierOptions,
+    };
     if (action === "create") {
-      let formData = {
-        name: "",
-        rank: 0,
-        multiplierOptions: [0.25, 0.5, 1, 2],
-        multiplier: 1,
-        stat: "--",
-        skillOptions: allSkills,
-        skill: "--",
-        hasRoll: false,
-        returnType: "array",
-      };
-
       // Show "Role Ability" dialog.
       formData = await CPRDialog.showDialog(formData, {
         // Set options for dialog.
@@ -997,50 +993,8 @@ export default class CPRItemSheet extends ItemSheet {
           : formData.skill === "varying"
           ? "varying"
           : "--";
-      if (foundry.utils.hasProperty(cprItemData, "abilities")) {
-        const prop = foundry.utils.getProperty(cprItemData, "abilities");
-        let maxIndex = -1;
-        prop.forEach((ability) => {
-          if (ability.index > maxIndex) {
-            maxIndex = ability.index;
-          }
-        });
-        prop.push({
-          index: maxIndex + 1,
-          name: formData.name,
-          rank: formData.rank,
-          multiplier: formData.multiplier,
-          stat: formData.stat,
-          skill: skillObject,
-          bonuses: [],
-          universalBonuses: [],
-          bonusRatio: 1,
-          isSituational: false,
-          onByDefault: false,
-          hasRoll: formData.hasRoll,
-        });
-        foundry.utils.setProperty(cprItemData, "abilities", prop);
-        this.item.update({ system: cprItemData });
-      } else {
-        const prop = [
-          {
-            index: 0,
-            name: formData.name,
-            rank: formData.rank,
-            multiplier: formData.multiplier,
-            stat: formData.stat,
-            skill: skillObject,
-            bonuses: [],
-            universalBonuses: [],
-            bonusRatio: 1,
-            isSituational: false,
-            onByDefault: false,
-            hasRoll: formData.hasRoll,
-          },
-        ];
-        foundry.utils.setProperty(cprItemData, "abilities", prop);
-        this.item.update({ system: cprItemData });
-      }
+      formData.skill = skillObject;
+      abilities.push(formData);
     }
 
     if (action === "delete") {
@@ -1063,81 +1017,51 @@ export default class CPRItemSheet extends ItemSheet {
           return;
         }
       }
-      if (foundry.utils.hasProperty(cprItemData, "abilities")) {
-        const prop = foundry.utils.getProperty(cprItemData, "abilities");
-        let deleteElement = null;
-        prop.forEach((ability) => {
-          if (ability.index === target) {
-            deleteElement = ability;
-          }
-        });
-        prop.splice(prop.indexOf(deleteElement), 1);
-        foundry.utils.setProperty(cprItemData, "abilities", prop);
-        this.item.update({ system: cprItemData });
-      }
+      abilities.splice(index, 1);
     }
 
     if (action === "edit") {
-      if (foundry.utils.hasProperty(cprItemData, "abilities")) {
-        const prop = foundry.utils.getProperty(cprItemData, "abilities");
-        let editElement = null;
-        prop.forEach((ability) => {
-          if (ability.index === target) {
-            editElement = ability;
-          }
-        });
-        const editElementSkill =
-          editElement.skill !== "--" && editElement.skill !== "varying"
-            ? editElement.skill.name
-            : editElement.skill;
-        let formData = {
-          name: editElement.name,
-          rank: editElement.rank,
-          multiplierOptions: [0.25, 0.5, 1, 2],
-          multiplier: editElement.multiplier,
-          stat: editElement.stat,
-          skillOptions: allSkills,
-          skill: editElementSkill,
-          hasRoll: editElement.hasRoll,
-          returnType: "array",
-        };
+      const abilityData = abilities[index];
+      const abilityDataSkill =
+        abilityData.skill !== "--" && abilityData.skill !== "varying"
+          ? abilityData.skill.name
+          : abilityData.skill;
+      formData = {
+        ...abilityData,
+        multiplierOptions,
+        skillOptions: allSkills,
+        skill: abilityDataSkill,
+      };
 
-        // Show "Role Ability" dialog.
-        formData = await CPRDialog.showDialog(formData, {
-          // Set options for dialog.
-          title: SystemUtils.Localize("CPR.dialog.createEditRoleAbility.title"),
-          template: `systems/${game.system.id}/templates/dialog/cpr-role-ability-prompt.hbs`,
-        }).catch((err) => LOGGER.debug(err));
-        if (formData === undefined) {
-          return;
-        }
-
-        // eslint-disable-next-line no-nested-ternary
-        const skillObject =
-          formData.skill !== "--" && formData.skill !== "varying"
-            ? allSkills.find((a) => a.name === formData.skill)
-            : formData.skill === "varying"
-            ? "varying"
-            : "--";
-        prop.splice(prop.indexOf(editElement), 1);
-        prop.push({
-          index: editElement.index,
-          name: formData.name,
-          rank: formData.rank,
-          multiplier: formData.multiplier,
-          stat: formData.stat,
-          skill: skillObject,
-          bonuses: editElement.bonuses,
-          universalBonuses: editElement.universalBonuses,
-          bonusRatio: editElement.bonusRatio,
-          isSituational: editElement.isSituational,
-          onByDefault: editElement.onByDefault,
-          hasRoll: formData.hasRoll,
-        });
-        foundry.utils.setProperty(cprItemData, "abilities", prop);
-        this.item.update({ system: cprItemData });
+      // Show "Role Ability" dialog.
+      formData = await CPRDialog.showDialog(formData, {
+        // Set options for dialog.
+        title: SystemUtils.Localize("CPR.dialog.createEditRoleAbility.title"),
+        template: `systems/${game.system.id}/templates/dialog/cpr-role-ability-prompt.hbs`,
+      }).catch((err) => LOGGER.debug(err));
+      if (formData === undefined) {
+        return;
       }
+
+      // eslint-disable-next-line no-nested-ternary
+      const skillObject =
+        formData.skill !== "--" && formData.skill !== "varying"
+          ? allSkills.find((a) => a.name === formData.skill)
+          : formData.skill === "varying"
+          ? "varying"
+          : "--";
+      formData.skill = skillObject;
+      abilities.splice(
+        index,
+        1,
+        foundry.utils.mergeObject(abilityData, formData)
+      );
     }
+    const sortedAbilities = abilities.sort((a, b) =>
+      a.name > b.name ? -1 : 1
+    );
+    foundry.utils.setProperty(cprItemData, "abilities", sortedAbilities);
+    this.item.update({ system: cprItemData });
   }
 
   /**
