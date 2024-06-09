@@ -1,5 +1,6 @@
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
+import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
@@ -86,12 +87,39 @@ const Loadable = function Loadable() {
         SystemUtils.Localize("CPR.messages.noValidAmmo")
       );
     }
+    // Prepare select options for ammo.
+    const ammoSelectOptions = validAmmo.map((ammo) => {
+      const ammoTypeSubstrings = [
+        SystemUtils.Localize(CPR.ammoType[ammo.system.type]),
+        ammo.system.type,
+      ];
+      // Only programatically show the ammo type if it's not in the name.
+      const showAmmoType = !ammoTypeSubstrings.some((substring) =>
+        ammo.name.toLowerCase().includes(substring.toLowerCase())
+      );
+
+      let label = ammo.name;
+      if (showAmmoType) {
+        label += ` (${ammoTypeSubstrings[0]})`;
+      }
+      label += ` [x${ammo.system.amount}]`;
+      return {
+        label,
+        value: ammo.id,
+      };
+    });
+    // Add an "unload" option if the weapon has loaded ammo.
+    if (this.system.hasAmmoLoaded) {
+      ammoSelectOptions.unshift({
+        value: "",
+        label: SystemUtils.Localize("CPR.dialog.loadAmmo.unload"),
+      });
+    }
 
     let dialogData = {
-      weapon: this,
-      ammoList: validAmmo,
+      weaponName: this.name,
+      ammoList: ammoSelectOptions,
       selectedAmmo: currentAmmo?.id || validAmmo[0].id,
-      returnType: "string",
     };
 
     // Show "Load Ammo" dialog,
@@ -105,7 +133,7 @@ const Loadable = function Loadable() {
     }
 
     const selectedAmmoId = dialogData.selectedAmmo;
-    if (selectedAmmoId === "") {
+    if (!selectedAmmoId) {
       return this.uninstallItems([currentAmmo]);
     }
 

@@ -14,22 +14,7 @@
         </div>
         <div class="dialog-item-input item-end">
           <select name="selectedAmmo">
-            {{#select selectedAmmo}}
-              {{#if weapon.system.hasAmmoLoaded }}
-                <option value="">
-                  {{localize "CPR.dialog.loadAmmo.unload"}}
-                </option>
-              {{/if}}
-              {{#each this.ammoList as |ammo| }}
-                <option value="{{ammo.id}}">
-                  {{ammo.name}}
-                  {{#unless (cprStringContainsSubstringList ammo.name (cprListConcat (localize (cprFindConfigValue 'ammoType' ammo.system.type)) ammo.system.type))}}
-                    ({{localize (cprFindConfigValue "ammoType" ammo.system.type)}})
-                  {{/unless}}
-                  [x{{ammo.system.amount}}]
-                </option>
-              {{/each}}
-            {{/select}}
+            {{selectOptions this.ammoList selected=selectedAmmo}}
           </select>
         </div>
       </li>

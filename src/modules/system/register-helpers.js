@@ -232,21 +232,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * This helper accepts a string and an array and returns true if any string in the
-   * array is contained within the string
-   */
-  Handlebars.registerHelper(
-    "cprStringContainsSubstringList",
-    (string, list) => {
-      LOGGER.trace("stringContainsSubstringList | handlebarsHelper | Called.");
-      const lowerCaseStr = string.toLowerCase();
-      return list.some((substring) =>
-        lowerCaseStr.includes(substring.toLowerCase())
-      );
-    }
-  );
-
-  /**
    * This helper accepts a string that is a list of words separated by strings. It returns true if
    * any of them match a given value.
    */
