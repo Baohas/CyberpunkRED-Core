@@ -29,20 +29,20 @@
       </li>
       <li class="dialog-item flexrow">
         <div class="dialog-item-name text-nowrap">
+          <span class="text-semi">{{localize "CPR.dialog.createEditRoleAbility.hasRoll"}}</span>
+        </div>
+        <div class="dialog-item-input text-nowrap">
+          <input class="item-checkbox text-right" name="hasRoll" data-target="hasRoll" type="checkbox" value="{{hasRoll}}" {{checked hasRoll}}/>
+        </div>
+      </li>
+      {{#if hasRoll }}
+      <li class="dialog-item flexrow">
+        <div class="dialog-item-name text-nowrap">
           <span class="text-semi">{{localize "CPR.dialog.createEditRoleAbility.multiplier"}}</span>
         </div>
         <div class="dialog-item-input text-nowrap">
-          <select name="multiplier">
-            {{#select multiplier}}
-            <option value="--">
-              {{localize "CPR.global.generic.notApplicable"}}
-            </option>
-            {{#each multiplierOptions }}
-              <option value="{{.}}">
-                {{.}}
-              </option>
-            {{/each}}
-          {{/select}}
+        <select name="multiplier">
+          {{selectOptions multiplierOptions selected=multiplier}}
         </select>
       </div>
     </li>
@@ -52,24 +52,7 @@
         </div>
         <div class="dialog-item-input text-nowrap">
           <select name="stat">
-            {{#select stat}}
-              <optgroup label="{{localize "CPR.dialog.createEditRoleAbility.specialOptions"}}">
-                {{#each (cprFindConfigObj "roleSpecialOptions") as |option o| }}
-                  {{#if (cprCompare o "!==" "varying") }}
-                    <option value="{{o}}">
-                      {{localize option}}
-                    </option>
-                  {{/if}}
-                {{/each}}
-              </optgroup>
-              <optgroup label="{{localize "CPR.dialog.createEditRoleAbility.statList"}}">
-                {{#each (cprFindConfigObj "statList") as |stat s| }}
-                  <option value="{{s}}">
-                    {{localize stat}}
-                  </option>
-                {{/each}}
-              </optgroup>
-            {{/select}}
+            {{selectOptions statOptions selected=stat}}
           </select>
         </div>
       </li>
@@ -79,33 +62,11 @@
         </div>
         <div class="dialog-item-input text-nowrap">
           <select name="skill">
-            {{#select skill}}
-            <optgroup label="{{localize "CPR.dialog.createEditRoleAbility.specialOptions"}}">
-              {{#each (cprFindConfigObj "roleSpecialOptions") as |option o| }}
-                <option value="{{o}}">
-                  {{localize option}}
-                </option>
-              {{/each}}
-            </optgroup>
-            <optgroup label="{{localize "CPR.dialog.createEditRoleAbility.skillList"}}">
-              {{#each (cprSortCoreSkills skillOptions) as |option| }}
-                <option value="{{option.name}}">
-                  {{localize (cprGetLocalizedlNameKey option.name "skill")}}
-                </option>
-              {{/each}}
-            </optgroup>
-          {{/select}}
+            {{selectOptions skillOptions selected=skill sort=true}}
         </select>
       </div>
       </li>
-      <li class="dialog-item flexrow">
-        <div class="dialog-item-name text-nowrap">
-          <span class="text-semi">{{localize "CPR.dialog.createEditRoleAbility.hasRoll"}}</span>
-        </div>
-        <div class="dialog-item-input text-nowrap">
-          <input class="item-checkbox text-right" name="hasRoll" data-target="hasRoll" type="checkbox" value="{{hasRoll}}" {{checked hasRoll}}/>
-        </div>
-      </li>
+      {{/if}}
     </ol>
   </div>
   {{> "systems/cyberpunk-red-core/templates/dialog/cpr-dialog-buttons.hbs"}}

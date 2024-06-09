@@ -969,11 +969,60 @@ export default class CPRItemSheet extends ItemSheet {
       : coreSkills
           .concat(customSkills)
           .sort((a, b) => (a.name > b.name ? 1 : -1));
-    const multiplierOptions = [0.25, 0.5, 1, 2];
+
+    // Prepare multiplier options for Select element.
+    const multiplierOptions = [0.25, 0.5, 1, 2].map((v) => {
+      return { value: v };
+    });
+    // Prepare Option Groups for Select Element.
+    const optionGroups = {
+      specialOptions: SystemUtils.Localize(
+        "CPR.dialog.createEditRoleAbility.specialOptions"
+      ),
+      list: SystemUtils.Localize("CPR.dialog.createEditRoleAbility.skillList"),
+    };
+    // Prepare Skill options for Select Element.
+    const skillOptions = [
+      ...Object.entries(CPR.roleSpecialOptions).map(([k, v]) => {
+        return {
+          value: k,
+          label: SystemUtils.Localize(v),
+          group: optionGroups.specialOptions,
+        };
+      }),
+      ...allSkills.map((s) => {
+        return {
+          value: s.name,
+          label: s.name,
+          group: optionGroups.list,
+        };
+      }),
+    ];
+    // Prepare Stat options for Select Element.
+    const statOptions = [
+      {
+        value: "--",
+        label: SystemUtils.Localize("CPR.global.generic.notApplicable"),
+        group: optionGroups.specialOptions,
+      },
+      ...Object.entries(CPR.statList).map(([k, v]) => {
+        return {
+          value: k,
+          label: SystemUtils.Localize(v),
+          group: optionGroups.list,
+        };
+      }),
+    ];
+
+    const selectOptions = {
+      statOptions,
+      skillOptions,
+      multiplierOptions,
+    };
+
     let formData = {
       ...new RoleAbilitySchema(),
-      skillOptions: allSkills,
-      multiplierOptions,
+      ...selectOptions,
     };
     if (action === "create") {
       // Show "Role Ability" dialog.
@@ -1028,8 +1077,7 @@ export default class CPRItemSheet extends ItemSheet {
           : abilityData.skill;
       formData = {
         ...abilityData,
-        multiplierOptions,
-        skillOptions: allSkills,
+        ...selectOptions,
         skill: abilityDataSkill,
       };
 

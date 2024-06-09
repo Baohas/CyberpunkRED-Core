@@ -29,7 +29,7 @@ export default class RoleAbilitySchema extends foundry.abstract.DataModel {
         choices: ["--", ...Object.keys(CPR.statList)],
       }),
       hasRoll: new fields.BooleanField({ initial: false }),
-      skill: new fields.AnyField(), // This field can either be a string ("--" or "varying"), OR a Skill object. This should eventually be changed so that the type is consistent.
+      skill: new fields.AnyField({ required: true, initial: "--" }), // This field can either be a string ("--" or "varying"), OR a Skill object. This should eventually be changed so that the type is consistent.
       bonuses: new fields.ArrayField(new fields.ObjectField()),
       universalBonuses: new fields.ArrayField(
         new fields.StringField({ choices: Object.keys(CPR.universalBonuses) })
