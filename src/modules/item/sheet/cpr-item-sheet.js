@@ -68,9 +68,17 @@ export default class CPRItemSheet extends ItemSheet {
     }
     if (mixins.includes("effects")) {
       cprData.effectNames = this.item.getEffectNames();
-      cprData.effectNames.push(
-        SystemUtils.Localize("CPR.itemSheet.effects.none")
-      );
+      cprData.effectNames.push({
+        label: SystemUtils.Localize("CPR.itemSheet.effects.none"),
+        value: "none",
+      });
+
+      cprData.allowedUsages = this.item.system.allowedUsage.map((use) => {
+        return {
+          value: use,
+          label: CPR.effectUses[use],
+        };
+      });
     }
 
     if (itemType === "role") {

@@ -35,7 +35,7 @@ export default class CPRDrugItem extends CPRItem {
         const { consumed } = this.system;
         if (
           consumed === SystemUtils.Localize("CPR.itemSheet.effects.none") ||
-          consumed === "None"
+          consumed === "none"
         ) {
           // no primary was specified, so we enable all of them
           this.effects.forEach((ae) => {

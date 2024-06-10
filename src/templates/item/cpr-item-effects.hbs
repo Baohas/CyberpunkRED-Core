@@ -97,13 +97,7 @@
           <div class="item flexrow set-usage setting-value text-nowrap item-end">
             {{#if this.editable }}
               <select name="system.usage" data-dtype="{{item.system.usage}}">
-                {{#select item.system.usage}}
-                  {{#each item.system.allowedUsage as |use| }}
-                    <option value="{{use}}">
-                      {{localize (cprFindConfigValue "effectUses" use)}}
-                    </option>
-                  {{/each}}
-                {{/select}}
+                {{selectOptions allowedUsages selected=item.system.usage localize=true}}
               </select>
             {{else}}
               <span class="text-flex-end">{{localize (cprFindConfigValue "effectUses" item.system.usage)}}</span>
@@ -118,13 +112,7 @@
             <div class="item flexrow setting-value text-nowrap item-end">
               {{#if this.editable }}
                 <select name="system.consumed" data-dtype="{{item.system.consumed}}">
-                  {{#select item.system.consumed}}
-                    {{#each effectNames }}
-                      <option value="{{this}}">
-                        {{this}}
-                      </option>
-                    {{/each}}
-                  {{/select}}
+                  {{selectOptions effectNames selected=item.system.consumed}}
                 </select>
               {{else}}
                 <span class="text-flex-end">{{item.system.consumed}}</span>

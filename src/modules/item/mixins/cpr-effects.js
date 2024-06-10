@@ -144,7 +144,12 @@ const Effects = function Effects() {
    */
 
   this.getEffectNames = function getEffectNames() {
-    return this.effects.map((e) => e.name);
+    return this.effects.map((e) => {
+      return {
+        value: e.name,
+        label: e.name,
+      };
+    });
   };
 
   /**
