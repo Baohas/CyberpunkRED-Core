@@ -570,7 +570,7 @@ export default class CPRMigration {
         let newData = {
           // _id: effect.id,
           name: sourceEffect.name,
-          icon: sourceEffect.icon,
+          img: sourceEffect.img,
           system: sourceEffect.system,
           changes: sourceEffect.changes,
           flags: sourceEffect.flags,
@@ -580,7 +580,7 @@ export default class CPRMigration {
           newData = {
             // _id: effect.id,
             name: sourceEffect.name,
-            icon: sourceEffect.icon,
+            img: sourceEffect.img,
             system: sourceEffect.system,
             changes: sourceEffect.changes,
             flags: sourceEffect.flags,

@@ -70,7 +70,7 @@ const Effects = function Effects() {
     const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [
       {
         name: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
-        icon: "icons/svg/aura.svg",
+        img: "icons/svg/aura.svg",
         origin: this.uuid,
         disabled,
       },
