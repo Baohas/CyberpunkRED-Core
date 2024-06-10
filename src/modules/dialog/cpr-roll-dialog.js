@@ -46,12 +46,17 @@ export class CPRRollDialog extends CPRDialog {
    *
    * @override
    */
-  getData() {
+  async getData() {
     LOGGER.trace("getData | CPRRollDialog | called.");
     const data = super.getData();
     data.rollData = this.rollData; // CPRRoll object
     data.actor = this.actor;
     data.prototypeChain = this.prototypeChain;
+
+    // Select element options for program damage rolls.
+    if (this.rollData.rollCardExtraArgs.program) {
+      data.programDamageSelectOptions = this.getProgramDamageSelectOptions();
+    }
 
     // Default situational mods form core book. These modifiers would not apply to Death Save rolls.
     if (!this.prototypeChain.includes("CPRDeathSaveRoll")) {
@@ -78,6 +83,38 @@ export class CPRRollDialog extends CPRDialog {
     });
     data.totalMods = totalMods;
     return data;
+  }
+
+  /**
+   * Prepares the program damage select options.
+   *
+   * @return {Array<Object>} An array of objects containing the value and label for each program damage option.
+   */
+  getProgramDamageSelectOptions() {
+    LOGGER.trace("getProgramDamageSelectOptions | CPRRollDialog | Called.");
+    const standardDamage =
+      this.rollData.rollCardExtraArgs.program.system.damage.standard;
+    const blackIceDamage =
+      this.rollData.rollCardExtraArgs.program.system.damage.blackIce;
+    const programDamageSelectOptions = [
+      {
+        value: standardDamage,
+        label: `${SystemUtils.Format("CPR.itemSheet.program.damageTo", {
+          programType: SystemUtils.Localize(
+            "CPR.itemSheet.program.nonBlackIce"
+          ),
+        })}: (${standardDamage})`,
+      },
+      {
+        value: blackIceDamage,
+        label: `${SystemUtils.Format("CPR.itemSheet.program.damageTo", {
+          programType: SystemUtils.Localize(
+            "CPR.itemSheet.program.nonBlackIce"
+          ),
+        })}: (${blackIceDamage})`,
+      },
+    ];
+    return programDamageSelectOptions;
   }
 
   /**

@@ -20,14 +20,7 @@
           </div>
           <div class="dialog-item-input text-nowrap">
             <select name="formula">
-              {{#select rollData.formula}}
-              <option value="{{rollData.rollCardExtraArgs.program.system.damage.standard}}">
-                {{localize "CPR.itemSheet.program.damageTo" programType=(localize "CPR.itemSheet.program.nonBlackIce")}}: ({{rollData.rollCardExtraArgs.program.system.damage.standard}})
-              </option>
-              <option value="{{rollData.rollCardExtraArgs.program.system.damage.blackIce}}">
-                {{localize "CPR.itemSheet.program.damageTo" programType=(localize "CPR.global.programClass.blackice")}}: ({{rollData.rollCardExtraArgs.program.system.damage.blackIce}})
-              </option>
-            {{/select}}
+              {{selectOptions programDamageSelectOptions selected=rollData.formula}}
           </select>
         </div>
       </li>
