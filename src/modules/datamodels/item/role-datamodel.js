@@ -57,7 +57,9 @@ export default class RoleDataModel extends CPRSystemDataModel.mixin(
    */
   static migrateData(source) {
     LOGGER.trace("migrateData | RoleDataModel | called.");
-    source.abilities.sort((a, b) => (a.name > b.name ? 1 : -1));
+    if (source.abilities) {
+      source.abilities.sort((a, b) => (a.name > b.name ? 1 : -1));
+    }
     return super.migrateData(source);
   }
 }

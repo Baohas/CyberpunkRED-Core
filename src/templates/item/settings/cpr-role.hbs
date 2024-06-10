@@ -57,24 +57,9 @@
       </div>
       <div class="item flexrow setting-value text-nowrap item-end">
         <select name="system.stat" data-dtype="{{item.system.stat}}">
-          {{#select item.system.stat}}
-          <optgroup label="{{localize "CPR.itemSheet.role.specialOptions"}}">
-            {{#each (cprFindConfigObj "roleSpecialOptions") as |option o| }}
-              {{#if (cprCompare o "!==" "varying") }}
-                <option value="{{o}}">
-                  {{localize option}}
-                </option>
-              {{/if}}
-            {{/each}}
-          </optgroup>
-          <optgroup label="{{localize "CPR.itemSheet.role.statList"}}">
-            {{#each (cprFindConfigObj "statList") as |stat s| }}
-              <option value="{{s}}">
-                {{localize stat}}
-              </option>
-            {{/each}}
-          </optgroup>
-        {{/select}}
+          {{!-- The first `selectOptions` is a helper from foundry.  --}}
+          {{!-- The second is a variable that the template can access, prepared in CPRItemSheet.getData() --}}
+          {{selectOptions selectOptions.statOptions selected=item.system.stat}}
       </select>
     </div>
   </li>
@@ -84,22 +69,7 @@
     </div>
     <div class="item flexrow setting-value text-nowrap item-end">
       <select name="system.skill" data-dtype="{{item.system.skill}}">
-        {{#select item.system.skill}}
-        <optgroup label="{{localize "CPR.itemSheet.role.specialOptions"}}">
-          {{#each (cprFindConfigObj "roleSpecialOptions") as |option o| }}
-            <option value="{{o}}">
-              {{localize option}}
-            </option>
-          {{/each}}
-        </optgroup>
-        <optgroup label="{{localize "CPR.itemSheet.role.skillList"}}">
-          {{#each (cprSort relativeSkills "name") as |skill| }}
-            <option value="{{skill.name}}">
-              {{localize (cprGetLocalizedlNameKey skill.name "skill")}}
-            </option>
-          {{/each}}
-        </optgroup>
-      {{/select}}
+        {{selectOptions selectOptions.skillOptions selected=item.system.skill}}
     </select>
   </div>
 </li>

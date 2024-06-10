@@ -73,6 +73,13 @@ export default class CPRItemSheet extends ItemSheet {
       );
     }
 
+    if (itemType === "role") {
+      const selectOptions = CPRItemSheet._getRoleSelectOptions(
+        cprData.relativeSkills
+      );
+      cprData.selectOptions = selectOptions;
+    }
+
     // if (["cyberdeck", "weapon", "armor", "cyberware", "clothing"].indexOf(data.item.type) > -1) {
     //   data.system.availableSlots = this.object.availableSlots();
     // }
@@ -86,6 +93,71 @@ export default class CPRItemSheet extends ItemSheet {
       { async: true }
     );
     return { ...foundryData, ...cprData };
+  }
+
+  /**
+   * Generates the options for the role select element.
+   *
+   * @param {Array<CPRSkill>} skillList - The list of skills.
+   * @return {Object} The options for the role select element.
+   */
+  static _getRoleSelectOptions(skillList, { includeMultiplier = false } = {}) {
+    LOGGER.trace("_getRoleSelectOptions | `CPRItemSheet` | Called.");
+
+    // Prepare Option Groups for Select Element.
+    const optionGroups = {
+      specialOptions: SystemUtils.Localize(
+        "CPR.dialog.createEditRoleAbility.specialOptions"
+      ),
+      list: SystemUtils.Localize("CPR.dialog.createEditRoleAbility.skillList"),
+    };
+    // Prepare Skill options for Select Element.
+    const skillOptions = [
+      ...Object.entries(CPR.roleSpecialOptions).map(([k, v]) => {
+        return {
+          value: k,
+          label: SystemUtils.Localize(v),
+          group: optionGroups.specialOptions,
+        };
+      }),
+      ...skillList.map((s) => {
+        return {
+          value: s.name,
+          label: s.name,
+          group: optionGroups.list,
+        };
+      }),
+    ];
+    // Prepare Stat options for Select Element.
+    const statOptions = [
+      {
+        value: "--",
+        label: SystemUtils.Localize("CPR.global.generic.notApplicable"),
+        group: optionGroups.specialOptions,
+      },
+      ...Object.entries(CPR.statList).map(([k, v]) => {
+        return {
+          value: k,
+          label: SystemUtils.Localize(v),
+          group: optionGroups.list,
+        };
+      }),
+    ];
+
+    const selectOptions = {
+      statOptions,
+      skillOptions,
+    };
+
+    if (includeMultiplier) {
+      // Prepare multiplier options for Select element.
+      const multiplierOptions = [0.25, 0.5, 1, 2].map((v) => {
+        return { value: v };
+      });
+      selectOptions.multiplierOptions = multiplierOptions;
+    }
+
+    return selectOptions;
   }
 
   /* -------------------------------------------- */
@@ -970,55 +1042,9 @@ export default class CPRItemSheet extends ItemSheet {
           .concat(customSkills)
           .sort((a, b) => (a.name > b.name ? 1 : -1));
 
-    // Prepare multiplier options for Select element.
-    const multiplierOptions = [0.25, 0.5, 1, 2].map((v) => {
-      return { value: v };
+    const selectOptions = CPRItemSheet._getRoleSelectOptions(allSkills, {
+      includeMultiplier: true,
     });
-    // Prepare Option Groups for Select Element.
-    const optionGroups = {
-      specialOptions: SystemUtils.Localize(
-        "CPR.dialog.createEditRoleAbility.specialOptions"
-      ),
-      list: SystemUtils.Localize("CPR.dialog.createEditRoleAbility.skillList"),
-    };
-    // Prepare Skill options for Select Element.
-    const skillOptions = [
-      ...Object.entries(CPR.roleSpecialOptions).map(([k, v]) => {
-        return {
-          value: k,
-          label: SystemUtils.Localize(v),
-          group: optionGroups.specialOptions,
-        };
-      }),
-      ...allSkills.map((s) => {
-        return {
-          value: s.name,
-          label: s.name,
-          group: optionGroups.list,
-        };
-      }),
-    ];
-    // Prepare Stat options for Select Element.
-    const statOptions = [
-      {
-        value: "--",
-        label: SystemUtils.Localize("CPR.global.generic.notApplicable"),
-        group: optionGroups.specialOptions,
-      },
-      ...Object.entries(CPR.statList).map(([k, v]) => {
-        return {
-          value: k,
-          label: SystemUtils.Localize(v),
-          group: optionGroups.list,
-        };
-      }),
-    ];
-
-    const selectOptions = {
-      statOptions,
-      skillOptions,
-      multiplierOptions,
-    };
 
     let formData = {
       ...new RoleAbilitySchema(),
