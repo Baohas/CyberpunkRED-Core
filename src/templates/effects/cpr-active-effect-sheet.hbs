@@ -24,12 +24,7 @@
       <div class="form-group">
         <label>{{ localize "EFFECT.Image" }}</label>
         <div class="form-fields">
-          {{filePicker target="img" type="image"}}
-          <input class="image"
-                 type="text"
-                 name="icon"
-                 placeholder="path/image.png"
-                 value="{{effect.img}}"/>
+          <file-picker type="image" name="img" value="{{effect.img}}">
         </div>
       </div>
       <div class="form-group">
