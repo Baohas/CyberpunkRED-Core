@@ -1,4 +1,5 @@
 form {
+
   .notes,
   .hint {
     color: var(--cpr-text-foundry-hint) !important;
@@ -14,14 +15,17 @@ form {
       width: 1.875rem;
     }
   }
+
   .form-group {
     label {
       color: var(--cpr-text-window);
     }
   }
+
   span.units {
     color: var(--cpr-text-hint) !important;
   }
+
   .form-group.slim {
     .form-fields {
       label {
@@ -29,9 +33,11 @@ form {
       }
     }
   }
+
   textarea:read-only {
     color: var(--cpr-text-hint);
   }
+
   textarea {
     color: var(--cpr-text-normal);
   }
@@ -55,6 +61,7 @@ form {
 // User config pop out
 .user-config {
   font-family: var(--cpr-font-primary);
+
   .window-content {
     .directory-list {
       background: var(--cpr-background-box) !important;
@@ -144,6 +151,7 @@ optgroup {
 #macros-popout,
 #ui-right {
   color: var(--cpr-text-header);
+
   button {
     color: var(--cpr-text-foundry-input);
     background-color: var(--cpr-background-foundry-input);
@@ -209,6 +217,7 @@ input::placeholder {
   }
 
   menu {
+
     button,
     ul,
     .pm-dropdown {
@@ -220,6 +229,7 @@ input::placeholder {
       i:hover {
         color: var(--cpr-text-foundry-input) !important;
       }
+
       li {
         &:hover {
           color: var(--cpr-text-foundry-input) !important;
@@ -227,6 +237,7 @@ input::placeholder {
         }
       }
     }
+
     button {
       &:active {
         color: var(--cpr-text-foundry-input) !important;
@@ -329,24 +340,25 @@ input::placeholder {
     text-shadow: none;
   }
 
-  table thead + tbody tr:first-of-type {
+  table thead+tbody tr:first-of-type {
     background-color: blue;
   }
 
   table tbody tr:nth-of-type(even):not(:first-of-type),
-  table thead + tbody tr:nth-of-type(2n) {
+  table thead+tbody tr:nth-of-type(2n) {
     color: var(--cpr-text-normal);
     background: var(--cpr-background-row-even);
   }
 
   table tbody tr:nth-of-type(odd):not(:first-of-type),
-  table thead + tbody tr:nth-of-type(2n + 1) {
+  table thead+tbody tr:nth-of-type(2n + 1) {
     color: var(--cpr-text-normal);
     background: var(--cpr-background-row-odd);
     font-weight: 400;
   }
 
   table {
+
     tr,
     td,
     th {
@@ -357,8 +369,9 @@ input::placeholder {
 
   .journal-sidebar {
     .pages-list {
+
       .directory-item.active:first-of-type,
-      .directory-item.active + :not(.active) {
+      .directory-item.active+ :not(.active) {
         border-top: 0.063rem solid var(--cpr-background-dialog-border);
       }
     }
@@ -379,14 +392,97 @@ input::placeholder {
     font-variant: small-caps;
   }
 
-  // Add a line under all headings
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
+  h1 {
+    position: relative;
+    border-bottom: 1.57rem solid var(--cpr-text-header-line);
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: -0.26rem;
+
+    &::first-letter {
+      float: left;
+      font-size: 4.688rem;
+      line-height: 3.75rem;
+      padding-top: 0.625rem;
+    }
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 1.57rem;
+      height: 1.57rem;
+      position: absolute;
+      bottom: -1.57rem;
+      right: -0.063rem;
+      background-color: var(--cpr-text-header-line-box);
+      margin-left: 0.313rem;
+    }
+  }
+
+  h2 {
+    position: relative;
+    border-bottom: 0.313rem solid var(--cpr-text-header-line);
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 1.57rem;
+      height: 1.57rem;
+      position: absolute;
+      bottom: -0.87rem;
+      right: -0.063rem;
+      background-color: var(--cpr-text-header-line);
+      margin-left: 0.313rem;
+    }
+  }
+
+  h3 {
+    border-bottom: none;
+    font-size: 1.80rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    &::before {
+      content: "▶ ";
+      color: var(--cpr-text-header-arrow);
+    }
+  }
+
+  h4 {
+    text-align: center;
+    border-bottom: none;
+    font-size: 1.80rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    &::before {
+      content: "▶ ";
+      color: var(--cpr-text-header-arrow);
+    }
+
+    &::after {
+      content: " ◀";
+      color: var(--cpr-text-header-arrow);
+    }
+  }
+
+  h5 {
+    text-align: center;
+    border-bottom: none;
+    font-size: 1.80rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
   h6 {
-    border-bottom: 0.125rem solid var(--cpr-background-dialog-border);
+    border-bottom: none;
+    font-size: 1.80rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   blockquote {
@@ -444,6 +540,7 @@ input::placeholder {
     height: 8rem;
     padding-left: 8rem;
   }
+
   .pause-glitch {
     .glitch;
     text-transform: uppercase;
