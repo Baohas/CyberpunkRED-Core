@@ -66,6 +66,20 @@ export default class CPRItemSheet extends ItemSheet {
         cprData.relativeSkills = coreSkills.concat(worldSkills);
       }
     }
+
+    if (mixins.includes("attackable")) {
+      const dvTablesNames = (await SystemUtils.GetDvTables()).map((t) => {
+        return { value: t.name, label: t.name };
+      });
+      cprData.dvTableNames = [
+        {
+          value: "",
+          label: SystemUtils.Localize("CPR.global.generic.notApplicable"),
+        },
+        ...dvTablesNames,
+      ];
+    }
+
     if (mixins.includes("effects")) {
       cprData.effectNames = this.item.getEffectNames();
       cprData.effectNames.push({
@@ -101,13 +115,6 @@ export default class CPRItemSheet extends ItemSheet {
       );
       cprData.selectOptions = selectOptions;
     }
-
-    // if (["cyberdeck", "weapon", "armor", "cyberware", "clothing"].indexOf(data.item.type) > -1) {
-    //   data.system.availableSlots = this.object.availableSlots();
-    // }
-    const dvTables = await SystemUtils.GetDvTables();
-    cprData.dvTableNames = [];
-    for (const table of dvTables) cprData.dvTableNames.push(table.name);
 
     // Enrich the description so that links to foundry documents in item descriptions have proper functionality.
     foundryData.enrichedHTMLDescription = await TextEditor.enrichHTML(

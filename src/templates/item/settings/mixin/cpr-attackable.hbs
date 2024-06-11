@@ -19,13 +19,7 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.weaponType" data-dtype="{{item.system.weaponType}}">
-      {{#select item.system.weaponType}}
-      {{#each (cprFindConfigObj "weaponTypeList") as |type t| }}
-        <option value="{{t}}">
-          {{localize type}}
-        </option>
-      {{/each}}
-    {{/select}}
+      {{selectOptions (cprFindConfigObj "weaponTypeList") selected=item.system.weaponType localize=true}}
   </select>
 </div>
 </li>
@@ -206,16 +200,7 @@
     </div>
     <div class="item flexrow setting-value text-nowrap item-end">
       <select name="system.dvTable" data-dtype="{{item.system.dvTable}}">
-        {{#select item.system.dvTable}}
-        <option value="">
-          N/A
-        </option>
-        {{#each dvTableNames as |rollTable| }}
-          <option value="{{rollTable}}">
-            {{rollTable}}
-          </option>
-        {{/each}}
-      {{/select}}
+        {{selectOptions dvTableNames selected=item.system.dvTable}}
     </select>
   </div>
 </li>
