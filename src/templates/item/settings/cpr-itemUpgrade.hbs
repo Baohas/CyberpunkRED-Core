@@ -7,15 +7,7 @@
   <div class="item flexrow setting-value text-nowrap item-end">
     {{#if this.editable }}
       <select name="system.type" data-dtype="{{item.system.type}}">
-        {{#select item.system.type}}
-        {{#each (cprEntityTypes "Item") as |itemType| }}
-          {{#if (cprHasTemplate itemType "upgradable") }}
-            <option value="{{itemType}}">
-              {{localize (cprFindConfigValue "objectTypes" itemType)}}
-            </option>
-          {{/if}}
-        {{/each}}
-      {{/select}}
+        {{selectOptions selectOptions.upgradableTypes selected=item.system.type localize=true}}
     </select>
   {{else}}
     <span class="text-flex-end">{{localize (cprFindConfigValue "objectTypes" item.type)}}</span>

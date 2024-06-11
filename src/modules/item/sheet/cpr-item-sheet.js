@@ -81,6 +81,20 @@ export default class CPRItemSheet extends ItemSheet {
       });
     }
 
+    if (itemType === "itemUpgrade") {
+      const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
+      const upgradableSelectOptions = upgradableTypes.map((type) => {
+        return {
+          value: type,
+          label: CPR.objectTypes[type],
+        };
+      });
+      const selectOptions = {
+        upgradableTypes: upgradableSelectOptions,
+      };
+      cprData.selectOptions = selectOptions;
+    }
+
     if (itemType === "role") {
       const selectOptions = CPRItemSheet._getRoleSelectOptions(
         cprData.relativeSkills
