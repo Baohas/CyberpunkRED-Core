@@ -30,19 +30,7 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.weaponSkill" data-dtype="{{item.system.weaponSkill}}">
-      {{#select item.system.weaponSkill}}
-      {{#each (cprFindConfigObj "skillCategoriesForWeapons") as |category c| }}
-        <optgroup label="{{localize category}}">
-          {{#each (cprSortCoreSkills ../relativeSkills) as |skillOption| }}
-            {{#if (cprCompare skillOption.system.category "===" c) }}
-              <option value="{{skillOption.name}}">
-                {{localize (cprGetLocalizedlNameKey skillOption)}}
-              </option>
-            {{/if}}
-          {{/each}}
-        </optgroup>
-      {{/each}}
-    {{/select}}
+      {{selectOptions weaponSkillSelectOptions selected=item.system.weaponSkill localize=true sort=true}}
   </select>
 </div>
 </li>

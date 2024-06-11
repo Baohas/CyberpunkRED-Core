@@ -78,6 +78,9 @@ export default class CPRItemSheet extends ItemSheet {
         },
         ...dvTablesNames,
       ];
+
+      cprData.weaponSkillSelectOptions =
+        CPRItemSheet._getWeaponSkillSelectOptions(cprData.relativeSkills);
     }
 
     if (mixins.includes("effects")) {
@@ -122,6 +125,34 @@ export default class CPRItemSheet extends ItemSheet {
       { async: true }
     );
     return { ...foundryData, ...cprData };
+  }
+
+  /**
+   * Generates the options for the weapon skill select element.
+   *
+   * @param {Array<CPRSkill>} skillList - The list of skills.
+   * @return {Array} The options for the weapon skill select element.
+   */
+  static _getWeaponSkillSelectOptions(skillsList) {
+    LOGGER.trace("_getWeaponSkillSelectOptions | `CPRItemSheet` | Called.");
+
+    const options = [];
+
+    Object.entries(CPR.skillCategoriesForWeapons).forEach(([k, v]) => {
+      const optionGroup = SystemUtils.Localize(v);
+
+      const skillByCategory = skillsList.filter((s) => k === s.system.category);
+
+      skillByCategory.forEach((s) => {
+        options.push({
+          value: s.name,
+          label: s.name,
+          group: optionGroup,
+        });
+      });
+    });
+
+    return options;
   }
 
   /**
