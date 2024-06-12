@@ -4,7 +4,11 @@
 # in other jobs.
 init:
   stage: init
+  before_script:
+    - apt-get update
+    - apt-get install -y curl jq
   script:
+    - ./.gitlab/pipeline_tests/test-choombot-key.sh
     - ./.gitlab/pipeline_tests/test-envar-exports.sh
     - ./.gitlab/pipeline_utils/envars.sh
     - npm ci

@@ -11,8 +11,10 @@ manage-issues-on-mr:
     - apk update
     - apk add bash jq curl
   script:
-    - echo "Managing Issues..."
     - ./.gitlab/pipeline_utils/manage-issues-on-mr.sh
+  needs:
+    - job: init
+      artifacts: true
   rules:
     # Don't run if we're in the cleanup-dev schedule
     - if: $CPR_SCHEDULE == "cleanup-dev"
