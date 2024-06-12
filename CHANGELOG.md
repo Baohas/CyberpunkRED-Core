@@ -41,6 +41,7 @@
 - #979 - Fix styling of inline rolls in chat
 - Added several small updates to descriptions to understand various items better
 - Fix image overflow on Item Sheets
+- Fix filepicker favorites styling
 
 ## Version 0.88.2
 
