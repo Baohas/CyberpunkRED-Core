@@ -45,8 +45,7 @@ command: |-
 
   allTokens.forEach((token) => {
     console.debug(`CPR MACRO | Get EMP'd Items | Token: ${token.name}`);
-    let actor =
-      game.actors.filter((a) => a.name === token.name)[0] || token.actor;
+    let actor = token.actor;
     let items = actor.items;
 
     // Create a blank array of items
