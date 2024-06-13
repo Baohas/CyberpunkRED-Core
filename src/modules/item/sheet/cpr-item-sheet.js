@@ -68,17 +68,7 @@ export default class CPRItemSheet extends ItemSheet {
     }
 
     if (mixins.includes("attackable")) {
-      const dvTablesNames = (await SystemUtils.GetDvTables()).map((t) => {
-        return { value: t.name, label: t.name };
-      });
-      cprData.dvTableNames = [
-        {
-          value: "",
-          label: SystemUtils.Localize("CPR.global.generic.notApplicable"),
-        },
-        ...dvTablesNames,
-      ];
-
+      cprData.dvTableNames = await CPRItemSheet._getWeaponDVSelectOptions();
       cprData.weaponSkillSelectOptions =
         CPRItemSheet._getWeaponSkillSelectOptions(cprData.relativeSkills);
     }
@@ -99,42 +89,9 @@ export default class CPRItemSheet extends ItemSheet {
     }
 
     if (itemType === "itemUpgrade") {
-      const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
-      const upgradableSelectOptions = upgradableTypes.map((type) => {
-        return {
-          value: type,
-          label: CPR.objectTypes[type],
-        };
-      });
+      const { upgradableSelectOptions, upgradableSheetData } =
+        CPRItemSheet._getItemUpgradeData(this.item);
       cprData.upgradableTypes = upgradableSelectOptions;
-
-      const upgradeType = this.item.system.type;
-      const upgradableConfigData = CPR.upgradableDataPoints[upgradeType];
-      const dataPointModTypes =
-        CPR.upgradableDataPoints.upgradeConfig.configurableTypes;
-      const upgradableSheetData = [];
-      /* eslint-disable no-continue */
-      for (const [key, value] of Object.entries(upgradableConfigData)) {
-        // Omit this datapoint if its type is not "modifier" or "override".
-        const omitDataPoint = !Object.keys(dataPointModTypes).includes(
-          value.type
-        );
-        if (omitDataPoint) continue;
-
-        const modData = this.item.system.modifiers[key];
-        const dataPoint = {
-          key,
-          localization: value.localization,
-          selectOptions: foundry.utils.duplicate(dataPointModTypes),
-          modData,
-          disableSituational: typeof value.isSituational === "undefined",
-          disableOnByDefault: !modData.isSituational,
-        }; /* eslint-enable no-continue */
-
-        if (upgradeType === "clothing") delete dataPoint.selectOptions.override;
-
-        upgradableSheetData.push(dataPoint);
-      }
       cprData.upgradableDataPoints = upgradableSheetData;
     }
 
@@ -151,6 +108,25 @@ export default class CPRItemSheet extends ItemSheet {
       { async: true }
     );
     return { ...foundryData, ...cprData };
+  }
+
+  /**
+   * Retrieves the options for selecting DV tables in weapon settings.
+   *
+   * @return {Array} The options for selecting DV tables for weapons.
+   */
+  static async _getWeaponDVSelectOptions() {
+    LOGGER.trace("_getWeaponDVSelectOptions | `CPRItemSheet` | Called.");
+    const dvTablesNames = (await SystemUtils.GetDvTables()).map((t) => {
+      return { value: t.name, label: t.name };
+    });
+    return [
+      {
+        value: "",
+        label: SystemUtils.Localize("CPR.global.generic.notApplicable"),
+      },
+      ...dvTablesNames,
+    ];
   }
 
   /**
@@ -244,6 +220,51 @@ export default class CPRItemSheet extends ItemSheet {
     }
 
     return selectOptions;
+  }
+
+  /**
+   * Retrieves data for item upgrades, and prepares it for display in the template.
+   *
+   * @return {Object} Item upgrade data for the template.
+   */
+  static _getItemUpgradeData(item) {
+    LOGGER.trace("_getItemUpgradeData | `CPRItemSheet` | Called.");
+    const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
+    const upgradableSelectOptions = upgradableTypes.map((type) => {
+      return {
+        value: type,
+        label: CPR.objectTypes[type],
+      };
+    });
+    const upgradeType = item.system.type;
+    const upgradableConfigData = CPR.upgradableDataPoints[upgradeType];
+    const dataPointModTypes =
+      CPR.upgradableDataPoints.upgradeConfig.configurableTypes;
+    const upgradableSheetData = [];
+    /* eslint-disable no-continue */
+    for (const [key, value] of Object.entries(upgradableConfigData)) {
+      // Omit this datapoint if its type is not "modifier" or "override".
+      const omitDataPoint = !Object.keys(dataPointModTypes).includes(
+        value.type
+      );
+      if (omitDataPoint) continue;
+
+      const modData = item.system.modifiers[key];
+      const dataPoint = {
+        key,
+        localization: value.localization,
+        selectOptions: foundry.utils.duplicate(dataPointModTypes),
+        modData,
+        disableSituational: typeof value.isSituational === "undefined",
+        disableOnByDefault: !modData.isSituational,
+      }; /* eslint-enable no-continue */
+
+      if (upgradeType === "clothing") delete dataPoint.selectOptions.override;
+
+      upgradableSheetData.push(dataPoint);
+    }
+
+    return { upgradableSelectOptions, upgradableSheetData };
   }
 
   /* -------------------------------------------- */
