@@ -12,6 +12,8 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 
 ### New Features
 
+- Added compatibility for Foundry v12.
+- Removed compatibility for Foundry v11.
 - Add Compendia for:
   - Skills (Local Expert)
   - Skills (Science)
