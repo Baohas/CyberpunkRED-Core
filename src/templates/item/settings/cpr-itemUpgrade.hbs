@@ -86,32 +86,34 @@
     </div>
   </li>
   {{#each upgradableDataPoints as |dataPoint| }}
-    <li class="item flexrow">
+    {{#with dataPoint}}
+      <li class="item flexrow">
         <div class="setting-name text-nowrap">
-          {{localize dataPoint.localization}}
+          {{localize localization}}
         </div>
         <div class="setting-type text-nowrap">
-          <select name="system.modifiers.{{dataPoint.key}}.type">
-            {{selectOptions dataPoint.selectOptions selected=dataPoint.modData.type localize=true}}
-      </select>
-    </div>
-    <div class="setting-value text-nowrap text-center">
-      {{#if ../this.editable }}
-        <input name="system.modifiers.{{dataPoint.key}}.value"
-               type="number"
-               value="{{dataPoint.modData.value}}"
-               placeholder="0"/>
-      {{else}}
-        <span class="text-flex-end">{{dataPoint.modData.value}}</span>
-      {{/if}}
-    </div>
-    <div class="setting-value text-nowrap text-center">
-      <input {{disabled dataPoint.disableSituational}} name="system.modifiers.{{dataPoint.key}}.isSituational" type="checkbox" {{checked dataPoint.modData.isSituational}}/>
-    </div>
-    <div class="setting-value text-nowrap text-center">
-      <input {{disabled dataPoint.disableOnByDefault}} name="system.modifiers.{{dataPoint.key}}.onByDefault" type="checkbox" {{checked dataPoint.modData.onByDefault}}/>
-    </div>
-  </li>
+          <select name="system.modifiers.{{key}}.type">
+            {{selectOptions selectOptions selected=modData.type localize=true}}
+          </select>
+        </div>
+        <div class="setting-value text-nowrap text-center">
+          {{#if ../this.editable }}
+            <input name="system.modifiers.{{key}}.value"
+                   type="number"
+                   value="{{modData.value}}"
+                   placeholder="0"/>
+          {{else}}
+            <span class="text-flex-end">{{modData.value}}</span>
+          {{/if}}
+        </div>
+        <div class="setting-value text-nowrap text-center">
+          <input {{disabled disableSituational}} name="system.modifiers.{{key}}.isSituational" type="checkbox" {{checked modData.isSituational}}/>
+        </div>
+        <div class="setting-value text-nowrap text-center">
+          <input {{disabled disableOnByDefault}} name="system.modifiers.{{key}}.onByDefault" type="checkbox" {{checked modData.onByDefault}}/>
+        </div>
+      </li>
+    {{/with}}
   {{/each}}
 {{/if}}
 {{cprTrace "END CPR-ITEMUPGRADE.HBS"}}
