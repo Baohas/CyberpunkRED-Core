@@ -7,7 +7,7 @@
   <div class="item flexrow setting-value text-nowrap item-end">
     {{#if this.editable }}
       <select name="system.type" data-dtype="{{item.system.type}}">
-        {{selectOptions selectOptions.upgradableTypes selected=item.system.type localize=true}}
+        {{selectOptions upgradableTypes selected=item.system.type localize=true}}
     </select>
   {{else}}
     <span class="text-flex-end">{{localize (cprFindConfigValue "objectTypes" item.type)}}</span>
@@ -79,50 +79,39 @@
       {{localize "CPR.itemSheet.itemUpgrade.modifierValue"}}
     </div>
     <div class="setting-value text-nowrap text-center">
-      {{localize "Situational?"}}
+      {{localize "CPR.effectSheet.header.situational"}}
     </div>
     <div class="setting-value text-nowrap text-center">
-      {{localize "Default On?"}}
+      {{localize "CPR.effectSheet.header.onByDefault"}}
     </div>
   </li>
-  {{#each (cprFindConfigValue "upgradableDataPoints" item.system.type) as |dataPoint dp| }}
-    {{#if (cprListContains (cprGetProp (cprFindConfigValue "upgradableDataPoints" "upgradeConfig") "configurableTypes") dataPoint.type) }}
-      <li class="item flexrow">
+  {{#each upgradableDataPoints as |dataPoint| }}
+    <li class="item flexrow">
         <div class="setting-name text-nowrap">
           {{localize dataPoint.localization}}
         </div>
         <div class="setting-type text-nowrap">
-          <select name="system.modifiers.{{dp}}.type"
-                  data-dtype="{{cprGetProp (cprGetProp ../item.system.modifiers dp) "type"}}">
-            {{#select (cprGetProp (cprGetProp ../item.system.modifiers dp) "type")}}
-            {{#each (cprGetProp (cprFindConfigValue "upgradableDataPoints" "upgradeConfig") "configurableTypes") as |configType ct| }}
-              {{#unless (cprCompare (cprListContains "clothing,gear" ../../item.system.type) "&&" (cprCompare ct "!==" "modifier"))}}
-              <option value="{{ct}}">
-                {{localize configType}}
-              </option>
-            {{/unless}}
-          {{/each}}
-        {{/select}}
+          <select name="system.modifiers.{{dataPoint.key}}.type">
+            {{selectOptions dataPoint.selectOptions selected=dataPoint.modData.type localize=true}}
       </select>
     </div>
     <div class="setting-value text-nowrap text-center">
       {{#if ../this.editable }}
-        <input name="system.modifiers.{{dp}}.value"
+        <input name="system.modifiers.{{dataPoint.key}}.value"
                type="number"
-               value="{{cprGetProp (cprGetProp ../item.system.modifiers dp) "value"}}"
+               value="{{dataPoint.modData.value}}"
                placeholder="0"/>
       {{else}}
-        <span class="text-flex-end">{{cprGetProp (cprGetProp ../item.system.modifiers dp) "value"}}</span>
+        <span class="text-flex-end">{{dataPoint.modData.value}}</span>
       {{/if}}
     </div>
     <div class="setting-value text-nowrap text-center">
-      <input {{#unless (cprCompare dataPoint.isSituational "!==" undefined)}}disabled{{/unless}} name="system.modifiers.{{dp}}.isSituational" type="checkbox" {{checked (cprGetProp (cprGetProp ../item.system.modifiers dp) "isSituational")}}/>
+      <input {{disabled dataPoint.disableSituational}} name="system.modifiers.{{dataPoint.key}}.isSituational" type="checkbox" {{checked dataPoint.modData.isSituational}}/>
     </div>
     <div class="setting-value text-nowrap text-center">
-      <input {{#unless (cprGetProp (cprGetProp ../item.system.modifiers dp) "isSituational")}}disabled{{/unless}} name="system.modifiers.{{dp}}.onByDefault" type="checkbox" {{checked (cprGetProp (cprGetProp ../item.system.modifiers dp) "onByDefault")}}/>
+      <input {{disabled dataPoint.disableOnByDefault}} name="system.modifiers.{{dataPoint.key}}.onByDefault" type="checkbox" {{checked dataPoint.modData.onByDefault}}/>
     </div>
   </li>
-{{/if}}
-{{/each}}
+  {{/each}}
 {{/if}}
 {{cprTrace "END CPR-ITEMUPGRADE.HBS"}}

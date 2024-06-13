@@ -106,10 +106,36 @@ export default class CPRItemSheet extends ItemSheet {
           label: CPR.objectTypes[type],
         };
       });
-      const selectOptions = {
-        upgradableTypes: upgradableSelectOptions,
-      };
-      cprData.selectOptions = selectOptions;
+      cprData.upgradableTypes = upgradableSelectOptions;
+
+      const upgradeType = this.item.system.type;
+      const upgradableConfigData = CPR.upgradableDataPoints[upgradeType];
+      const dataPointModTypes =
+        CPR.upgradableDataPoints.upgradeConfig.configurableTypes;
+      const upgradableSheetData = [];
+      /* eslint-disable no-continue */
+      for (const [key, value] of Object.entries(upgradableConfigData)) {
+        // Omit this datapoint if its type is not "modifier" or "override".
+        const omitDataPoint = !Object.keys(dataPointModTypes).includes(
+          value.type
+        );
+        if (omitDataPoint) continue;
+
+        const modData = this.item.system.modifiers[key];
+        const dataPoint = {
+          key,
+          localization: value.localization,
+          selectOptions: foundry.utils.duplicate(dataPointModTypes),
+          modData,
+          disableSituational: typeof value.isSituational === "undefined",
+          disableOnByDefault: !modData.isSituational,
+        }; /* eslint-enable no-continue */
+
+        if (upgradeType === "clothing") delete dataPoint.selectOptions.override;
+
+        upgradableSheetData.push(dataPoint);
+      }
+      cprData.upgradableDataPoints = upgradableSheetData;
     }
 
     if (itemType === "role") {
