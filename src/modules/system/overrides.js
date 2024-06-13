@@ -5,11 +5,7 @@ export default function overrideRulerFunctions() {
     totalDistance
   ) {
     const { distance } = segment;
-    let returnLabel = foundryPrototype.call(
-      "_getSegmentLabel",
-      segment,
-      totalDistance
-    );
+    let returnLabel = foundryPrototype.call(this, segment, totalDistance);
     if (this.user.isSelf) {
       let token = canvas.tokens.controlled["0"];
       if (!token) {

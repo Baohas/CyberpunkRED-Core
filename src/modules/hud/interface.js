@@ -17,13 +17,16 @@ export default class HudInterface {
    */
   static async SetDvTable(tokenData) {
     LOGGER.trace("SetDvTable | HudInterface | Called.");
-    const dvTables = await SystemUtils.GetDvTables();
+    const dvTables = (await SystemUtils.GetDvTables()).filter(
+      (table) => table.name !== "DV Generic"
+    );
 
     // Show "Set DV" dialog.
     const formData = await CPRDialog.showDialog(
       {
         dvTables,
-        dvTable: tokenData.flags[game.system.id]?.cprDvTable?.name,
+        dvTable:
+          tokenData.flags[game.system.id]?.cprDvTable?.name || dvTables[0].name,
       },
       // Set the options for the dialog.
       {

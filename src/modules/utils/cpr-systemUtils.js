@@ -176,7 +176,7 @@ export default class CPRSystemUtils {
     if (selectedTable) {
       for (const result of selectedTable.results) {
         // Rolltable entry of type is a Text entry
-        if (result.type === 0) {
+        if (result.type === "text") {
           const { range } = result;
           const key = `${range[0]}_${range[1]}`;
           const dv = result.text;
