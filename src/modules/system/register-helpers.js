@@ -661,30 +661,11 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Convert any number of strings into an array
-   */
-  Handlebars.registerHelper("cprListConcat", (...args) => {
-    LOGGER.trace("cprConcat | handlebarsHelper | Called.");
-    // Remove the last argument which is a Handlebars-specific object
-    args.pop();
-    return args;
-  });
-
-  /**
    * Convert a string with a delimiter (such as a comma or space) to an Array of elements
    */
   Handlebars.registerHelper("cprToArray", (string, delimiter) =>
     string.split(delimiter)
   );
-
-  /**
-   * Concatenate 1 object to another with the concat method.
-   */
-  Handlebars.registerHelper("cprObjConcat", (obj1, obj2) => {
-    LOGGER.trace("cprObjConcat | handlebarsHelper | Called.");
-    const obj = obj1.concat(obj2);
-    return obj;
-  });
 
   /**
    * Get all skills on a mook that have a level above 0. This is used to present
@@ -752,16 +733,6 @@ export default function registerHandlebarsHelpers() {
       }
     }
     return installedCyberwareList.length;
-  });
-
-  /**
-   * Get details about an entity type that the game system is aware of
-   */
-  Handlebars.registerHelper("cprEntityTypes", (entityType) => {
-    LOGGER.trace("cprEntityTypes | handlebarsHelper | Called.");
-    return typeof game.model[entityType] === "object"
-      ? Object.keys(game.model[entityType]).filter((type) => type !== "base")
-      : [];
   });
 
   /**
