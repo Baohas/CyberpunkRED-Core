@@ -26,8 +26,6 @@ export default class CPRMigration {
     this.statusMessage = "";
     this.name = "Base CPRMigration Class";
     this.foundryMajorVersion = parseInt(game.version, 10);
-    this.migrationFolder = false;
-    this.itemMapping = {};
     this.debugMigration = {
       enabled: false,
       actor: { name: "", id: "", uuid: "" },
@@ -37,8 +35,7 @@ export default class CPRMigration {
   }
 
   /**
-   * Execute the migration code. This should not be overidden with the exception of the legacy
-   * migration scripts. (000-base.js)
+   * Execute the migration code. This should not be overidden.
    */
   async run() {
     LOGGER.trace("run | CPRMigration");
@@ -151,10 +148,6 @@ export default class CPRMigration {
    * Example deletion key that will delete "data.whatever.property":
    *    { "data.whatever.-=property": null }
    *
-   * Prior to Foundry V10, all CPR data was stored in "data.data" however with V10, that has
-   * been moved to "system" directly off of the object.  Due to this, it is no longer necessary with V10+
-   * to pass the object stub (ie "system") in the property name.
-   *
    * @param {Document} doc - document (item or actor) that we intend to delete properties on
    * @param {String} prop - dot-notation of the property, "data.roleInfo.role" for example
    * @returns {Object}
@@ -162,13 +155,6 @@ export default class CPRMigration {
   static safeDelete(doc, prop) {
     LOGGER.trace("safeDelete | CPRMigration");
     let key = prop;
-    if (this.foundryMajorVersion < 10) {
-      if (key.includes("data.data")) key = key.slice(5); // should only be one data for v9
-    }
-
-    const systemData = this.foundryMajorVersion < 10 ? "data" : "system";
-    const regex = this.foundryMajorVersion < 10 ? /^system./ : /^data./;
-    key = key.replace(regex, `${systemData}.`);
 
     if (foundry.utils.hasProperty(doc, key)) {
       key = prop.match(/.\../)
@@ -347,12 +333,6 @@ export default class CPRMigration {
     });
     const tokenMigrations = tokens.map(async (token) => {
       try {
-        // Essentially we have to update every token with a dummy update so that items aren't
-        // deleted from unlinked tokens. This is a foundry bug. See migration script `020-tokenItemLossFix.js`
-        // TODO: REMOVE THIS AFTER 0.88.X
-        if (Object.getPrototypeOf(this).migrateToken) {
-          await this.migrateToken(token); // This only exists in migration script 020.
-        }
         return this.migrateActor(token.actor);
       } catch (err) {
         LOGGER.error(err);
@@ -470,320 +450,6 @@ export default class CPRMigration {
     return good;
   }
 
-  /**
-   * Create a migration folder for object editing.
-   *
-   * Some things, such as Active Effects can not be edited on on owned item.  To make changes
-   * to these items, the item needs to be cloned or "backed up" into a world item, edited
-   * and then put back onto the Actor.
-   *
-   * If your migration needs to do this, you should call createMigrationFolder() from your
-   * preMigrate function passing the name of the migration.  This will return a folder object
-   * to store the backed up objects.
-   * @param {String} migrationName - the name of the migration running
-   * @returns {Folder}
-   */
-  static async createMigrationFolder(migrationName) {
-    LOGGER.trace("createMigrationFolder | CPRMigration");
-    return CPRSystemUtils.GetFolder("Item", `${migrationName} Workspace`);
-  }
-
-  /**
-   * Delete the migration folder for object editing.
-   *
-   * If your migration code is making use of the backupOwnedItem and restoreOwnedItem
-   * and a migration folder, you should call deleteMigrationFolder() from your
-   * postMigrate() function passing the migration Folder object.
-   *
-   * If the folder is not empty, it will not delete the folder and instead throw
-   * debug messages to the console in order to help figure out why there are still
-   * objects in the folder.
-   *
-   * @param {Folder} migratonFolder - the folder we are storing the items in
-   */
-  static async deleteMigrationFolder(migrationFolder) {
-    LOGGER.trace("deleteMigrationFolder | CPRMigration");
-    if (migrationFolder && migrationFolder.contents.length === 0) {
-      LOGGER.debug("would delete migration folder");
-      migrationFolder.delete();
-    } else {
-      LOGGER.error(`MIGRATION FOLDER NOT EMPTY: ${migrationFolder.name}`);
-      for (const item of migrationFolder.contents) {
-        const mappingData = this.itemMapping[item.uuid];
-        const sourceItem = mappingData?.item
-          ? await fromUuid(mappingData.item)
-          : { name: "<OBJECT MISSING>" };
-        const sourceActor = mappingData?.actor
-          ? await fromUuid(mappingData.actor)
-          : { name: "<OBJECT MISSING>" };
-
-        let errorMessage = `Folder Name: ${migrationFolder.name} | Folder Item: ${item.name} (${item.uuid}) | Source Item: ${sourceItem.name} (${mappingData.item}) | Source Actor: ${sourceActor.name} (${mappingData.actor})`;
-        if (
-          mappingData.actor.match(/Compendium/) &&
-          !sourceActor.name.match(/OBJECT MISSING/)
-        ) {
-          const compendiumTitle = sourceActor.compendium?.title;
-          errorMessage = `${errorMessage} | Compendium: ${compendiumTitle}`;
-          const UuidParts = mappingData.actor.split(".");
-          UuidParts.splice(4);
-          const CompendiumObjectUuid = UuidParts.join(".");
-          const CompendiumObject = await fromUuid(CompendiumObjectUuid);
-          if (CompendiumObject) {
-            errorMessage = `${errorMessage} | Compendium Entry: ${CompendiumObject.name} (${CompendiumObjectUuid})`;
-          }
-        }
-        LOGGER.error(errorMessage);
-      }
-    }
-  }
-
-  /**
-   * Copy an (owned) Item into the migration work folder. This will enable active effects to be created
-   * or changed on them. If it already exists, just return that.
-   *
-   * Note: this method is not idempotent intentionally. Tracking what should or should not backed up
-   *       is a hard problem because the IDs will always change with each call.
-   *
-   * @param {CPRItem} item - the item we are copying
-   * @param {Folder} migratonFolder - the folder we are storing the items in
-   * @returns the copied item data
-   */
-  static async backupOwnedItem(item, migrationFolder) {
-    LOGGER.trace("backupOwnedItem | CPRMigration");
-
-    const newItem = await Item.create(
-      {
-        name: item.name,
-        type: item.type,
-        system: item.system,
-        img: item.img,
-        folder: migrationFolder,
-      },
-      {
-        cprIsMigrating: true,
-      }
-    );
-
-    if (item.effects.size > 0) {
-      for (const sourceEffect of item.effects) {
-        // const [effect] = await newItem.createEffect(false);
-        let newData = {
-          // _id: effect.id,
-          name: sourceEffect.name,
-          img: sourceEffect.img,
-          system: sourceEffect.system,
-          changes: sourceEffect.changes,
-          flags: sourceEffect.flags,
-          disabled: sourceEffect.disabled,
-        };
-        if (this.foundryMajorVersion >= 11) {
-          newData = {
-            // _id: effect.id,
-            name: sourceEffect.name,
-            img: sourceEffect.img,
-            system: sourceEffect.system,
-            changes: sourceEffect.changes,
-            flags: sourceEffect.flags,
-            disabled: sourceEffect.disabled,
-          };
-        }
-
-        await newItem.createEmbeddedDocuments("ActiveEffect", [newData]);
-      }
-    }
-    if (!this.itemMapping) this.itemMapping = {};
-    this.itemMapping[newItem.uuid] = {
-      item: item.uuid,
-      actor: item.actor.uuid,
-    };
-    return newItem;
-  }
-
-  /**
-   * Restores the changed item back onto the original actor ensuring all
-   * data points are updated. Once the object is re-created on the Actor
-   * it is cleaned up from the Migration Folder.
-   *
-   * Note: The OLD item needs to be deleted from the actor by the migration code.
-   *
-   * @param {CPRItem} item - the item we modified and has to be re-created on the Actor
-   */
-  static async restoreOwnedItem(item) {
-    LOGGER.trace("restoreOwnedItems | CPRMigration");
-    const originalData = this.itemMapping[item.uuid];
-
-    if (!originalData) {
-      LOGGER.error(
-        `Attempting to restore item (${item.name}) however source data does not exist.`
-      );
-      return;
-    }
-
-    const compendiumRegex = /Compendium/g;
-
-    let actor = originalData.actor.match(compendiumRegex)
-      ? await fromUuid(originalData.actor)
-      : fromUuidSync(originalData.actor);
-    if (actor instanceof TokenDocument) {
-      actor = actor.actor;
-    }
-    const oldOwnedItem = originalData.item.match(compendiumRegex)
-      ? await fromUuid(originalData.item)
-      : fromUuidSync(originalData.item);
-    const resultArray = await actor.createEmbeddedDocuments("Item", [
-      item.toObject(),
-    ]);
-    if (resultArray.length === 0) {
-      LOGGER.error(
-        `Attempting to restore item (${item.name}) however new item creation failed on actor ${actor.name}.`
-      );
-      return;
-    }
-
-    const newOwnedItem = resultArray[0];
-    const originalUuid = oldOwnedItem.uuid;
-
-    const installableTypes = CPRSystemUtils.GetTemplateItemTypes("installable");
-    const containerTypes = CPRSystemUtils.GetTemplateItemTypes("container");
-    const upgradableTypes = CPRSystemUtils.GetTemplateItemTypes("upgradable");
-    const loadableTypes = CPRSystemUtils.GetTemplateItemTypes("loadable");
-
-    if (
-      installableTypes.includes(item.type) &&
-      actor.system.installedItems?.list.includes(originalUuid)
-    ) {
-      const newInstalledItems = actor.system.installedItems.list.filter(
-        (uuid) => uuid !== originalUuid
-      );
-      newInstalledItems.push(newOwnedItem.uuid);
-      await actor.update({ "system.installedItems.list": newInstalledItems });
-    }
-
-    const ownedItems = actor.items.filter((i) => {
-      if (
-        containerTypes.includes(i.type) &&
-        i.system.installedItems?.list.includes(originalUuid)
-      )
-        return true;
-      if (
-        installableTypes.includes(i.type) &&
-        i.system.isInstalled &&
-        i.system.installedIn === originalUuid
-      )
-        return true;
-      if (
-        loadableTypes.includes(i.type) &&
-        i.system.magazine.ammoData.uuid === originalUuid
-      )
-        return true;
-      return false;
-    });
-
-    const updateList = [];
-
-    if (containerTypes.includes(oldOwnedItem.type)) {
-      updateList.push({
-        _id: newOwnedItem._id,
-        "system.installedItems": oldOwnedItem.system.installedItems,
-      });
-    }
-
-    for (const ownedItem of ownedItems) {
-      const itemUpdates = {
-        _id: ownedItem._id,
-        system: {},
-      };
-
-      if (
-        containerTypes.includes(ownedItem.type) &&
-        ownedItem.system.installedItems.list.includes(originalUuid)
-      ) {
-        const newInstallList = ownedItem.system.installedItems.list.filter(
-          (u) => u !== originalUuid
-        );
-        newInstallList.push(newOwnedItem.uuid);
-        itemUpdates.system.installedItems = { list: newInstallList };
-      }
-
-      if (
-        installableTypes.includes(ownedItem.type) &&
-        ownedItem.system.installedIn === originalUuid
-      ) {
-        itemUpdates.system.installedIn = newOwnedItem.uuid;
-      }
-
-      if (
-        upgradableTypes.includes(ownedItem.type) &&
-        ownedItem.system.upgrades.length > 0 &&
-        ownedItem.system.upgrades.filter((u) => u.uuid === originalUuid)
-          .length > 0
-      ) {
-        const newUpgrades = [];
-        for (const upgradeData of ownedItem.system.upgrades) {
-          if (upgradeData.uuid === originalUuid) {
-            upgradeData.uuid = newOwnedItem.uuid;
-          }
-          newUpgrades.push(upgradeData);
-        }
-        itemUpdates.system.upgrades = newUpgrades;
-      }
-
-      if (
-        loadableTypes.includes(ownedItem.type) &&
-        ownedItem.system.magazine.ammoData.uuid === originalUuid
-      ) {
-        itemUpdates.system.magazine = {
-          ammoData: { name: newOwnedItem.name, uuid: newOwnedItem.uuid },
-        };
-      }
-
-      if (
-        ownedItem.type === "cyberdeck" &&
-        ownedItem.system.programs.installed.filter(
-          (p) => p.uuid === originalUuid
-        ).length > 0
-      ) {
-        const oldPrograms = ownedItem.system.programs;
-        const newPrograms = {
-          installed: [],
-          rezzed: [],
-        };
-
-        for (const programData of oldPrograms.installed) {
-          if (programData.uuid === originalUuid) {
-            programData.uuid = newOwnedItem.uuid;
-          }
-          newPrograms.installed.push(programData);
-        }
-
-        for (const programData of oldPrograms.rezzed) {
-          if (programData.uuid === originalUuid) {
-            programData.uuid = newOwnedItem.uuid;
-          }
-          newPrograms.rezzed.push(programData);
-        }
-        itemUpdates.system.programs = newPrograms;
-      }
-
-      if (
-        ownedItem.type === "role" &&
-        originalUuid.includes(actor.system.roleInfo.activeNetRole)
-      ) {
-        await actor.update({
-          "system.roleInfo.activeNetRole": newOwnedItem._id,
-        });
-      }
-
-      if (Object.keys(itemUpdates.system).length > 0) {
-        updateList.push(itemUpdates);
-      }
-    }
-
-    if (updateList.length > 0) {
-      await actor.updateEmbeddedDocuments("Item", updateList);
-    }
-    await item.delete();
-  }
   /**
    * This block of abstract methods breaks down how each document type is migrated. If there
    * are any steps that need to be taken before migrating, put them in preMigrate. Likewise
