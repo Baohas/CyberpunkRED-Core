@@ -69,7 +69,7 @@ command: |-
               let installedItems = item.system.installedItems.list;
 
               installedItems.forEach((installed) => {
-                let installedItem = fromUuidSync(installed);
+                let installedItem = actor.getOwnedItem(installed);
 
                 if (installedItem.system.providesHardening) {
                   console.debug(
