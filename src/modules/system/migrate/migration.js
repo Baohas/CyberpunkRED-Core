@@ -1,6 +1,7 @@
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
+import MigrationApp from "./migration-app.js";
 
 /**
  * This class provides a method to find and execute all migrations that are needed
@@ -8,20 +9,34 @@ import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
  */
 export default class MigrationRunner {
   /**
-   * This is the top level entry point for executing migrations. This code assumes the user is a GM. It will
-   * figure out what migrations to run, and dispatch them for execution.
+   * Set up some basic data on the migration runner.
    *
    * @param {Number} currDataModelVersion - the current data model version
    * @param {Number} newDataModelVersion - the data model version we want to get to, may be multiple versions ahead
+   */
+  constructor(currDataModelVersion, newDataModelVersion) {
+    LOGGER.trace("constructor | MigrationRunner");
+    this.allMigrations = Migrations;
+    this.currentDataModelVersion = currDataModelVersion;
+    this.newDataModelVersion = newDataModelVersion;
+
+    this.migrationsToDo = this._getMigrations();
+
+    this.migrationSuccessful = null;
+  }
+  /**
+   * This is the top level entry point for executing migrations. This code assumes the user is a GM. It will
+   * figure out what migrations to run, and dispatch them for execution.
+   *
+   * @param {Number} currentDataModelVersion - the current data model version
+   * @param {Number} newDataModelVersion - the data model version we want to get to, may be multiple versions ahead
    * @returns {Boolean} - True if all migrations completed successfully or no migrations are needed
    */
-  async migrateWorld(currDataModelVersion, newDataModelVersion) {
+
+  async migrateWorld() {
     LOGGER.trace("migrateWorld | MigrationRunner");
-    this.allMigrations = Migrations;
-    this.migrationsToDo = MigrationRunner._getMigrations(
-      currDataModelVersion,
-      newDataModelVersion
-    );
+
+    const { currentDataModelVersion, newDataModelVersion } = this;
 
     // No migration needed, return true
     if (this.migrationsToDo.length === 0) {
@@ -30,33 +45,34 @@ export default class MigrationRunner {
 
     CPRSystemUtils.DisplayMessage(
       "notify",
-      `Beginning Migrations of Cyberpunk Red Core from Data Model ${currDataModelVersion} to ${newDataModelVersion}.`
+      `Beginning Migrations of Cyberpunk Red Core from Data Model ${currentDataModelVersion} to ${newDataModelVersion}.`
     );
     CPRSystemUtils.DisplayMessage(
       "warn",
       CPRSystemUtils.Localize("CPR.migration.status.waitForEnd")
     );
-    if (await MigrationRunner.runMigrations(this.migrationsToDo)) {
+    this.migrationSuccessful = await this.runMigrations();
+
+    if (this.migrationSuccessful) {
       CPRSystemUtils.DisplayMessage(
         "notify",
         CPRSystemUtils.Localize("CPR.migration.status.migrationsComplete")
       );
-      return true;
     }
 
-    return false;
+    return this.migrationSuccessful;
   }
 
   /**
    * Run all of the migrations in the right order, waiting for them to complete before proceeding to the next.
    * There's a lot of async/await wrangling going on here; still an amateur on JS asynchronicity.
    *
-   * @param {Array[CPRMigration]} migrationsToDo
    * @returns {Boolean} - True if all migrations completed successfully
    */
-  static async runMigrations(migrationsToDo) {
+  async runMigrations() {
     LOGGER.trace("runMigrations | MigrationRunner");
-    for (const migration of migrationsToDo) {
+
+    for (const migration of this.migrationsToDo) {
       try {
         // eslint-disable-next-line no-await-in-loop
         const result = await migration.run();
@@ -82,17 +98,17 @@ export default class MigrationRunner {
   /**
    * Knowing the data models, figure out which migration scripts (as objects) to run.
    *
-   * @param {Number} currDataModelVersion - the current data model version
-   * @param {Number} newDataModelVersion - the data model version we want to get to, may be multiple versions ahead
    * @return {Array} - an ordered list of objects from each relevant migration script
    */
-  static _getMigrations(currDataModelVersion, newDataModelVersion) {
+  _getMigrations() {
     LOGGER.trace("_getMigrations | MigrationRunner");
+    const { currentDataModelVersion, newDataModelVersion } = this;
     const migrations = Object.values(Migrations).map((M) => new M());
     return migrations
       .filter(
         (m) =>
-          m.version > currDataModelVersion && m.version <= newDataModelVersion
+          m.version > currentDataModelVersion &&
+          m.version <= newDataModelVersion
       )
       .sort((a, b) => (a.version > b.version ? 1 : -1));
   }

@@ -189,6 +189,24 @@ export default class CPRMigration {
   }
 
   /**
+   * Actions to be performed before data is migrated.
+   * Meant to be over-ridden (and the super called), but not required.
+   */
+  preMigrate() {
+    LOGGER.trace("preMigrate | CPRMigration");
+    LOGGER.log("Migrations starting");
+  }
+
+  /**
+   * Actions to be performed after data is migrated.
+   * Meant to be over-ridden (and the super called), but not required.
+   */
+  postMigrate() {
+    LOGGER.trace("postMigrate | CPRMigration");
+    LOGGER.log("Migrations finished.");
+  }
+
+  /**
    * Does nothing and is meant to be over-ridden.
    *
    */

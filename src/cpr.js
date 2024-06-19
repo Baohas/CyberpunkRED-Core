@@ -297,12 +297,14 @@ Hooks.once("ready", async () => {
         ? -1
         : 0;
     LOGGER.debug(`New data model version is: ${dataModelVersion}`);
-    const MR = new MigrationRunner();
-    // migrateWorld expects to be passed two integer values, returns true on successful migration
-    migrationSuccess = await MR.migrateWorld(
+
+    // The `MigrationRunner` constructor expects to be passed two integer values,
+    const MR = new MigrationRunner(
       parseInt(dataModelVersion, 10),
       DATA_MODEL_VERSION
     );
+    // `migrateWorld` returns true on successful migration
+    migrationSuccess = await MR.migrateWorld();
     // Ensure load bar is gone
     SystemUtils.fadeMigrationBar();
   }
