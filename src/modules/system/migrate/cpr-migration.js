@@ -2,7 +2,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */
-import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
 
@@ -41,12 +40,6 @@ export default class CPRMigration {
     LOGGER.trace("run | CPRMigration");
     LOGGER.log(`Migrating to data model version ${this.version}`);
 
-    // These shenanigans are how we dynamically call static methods on whatever migration object is
-    // being run that extends this base class. Normally you need to be explicit, e.g.
-    // ActiveEffectsMigration.run().
-    const classRef = Migrations[this.constructor.name];
-    await this.preMigrate();
-
     // migrate unowned items
     this.statusPercent = 1;
     this.statusMessage =
@@ -66,7 +59,7 @@ export default class CPRMigration {
       return false;
     }
 
-    if (!(await CPRMigration.migrateItems(classRef))) {
+    if (!(await this.migrateItems())) {
       CPRSystemUtils.DisplayMessage(
         "error",
         CPRSystemUtils.Localize("CPR.migration.status.itemErrors")
@@ -114,7 +107,7 @@ export default class CPRMigration {
     CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
 
     // compendia
-    if (!(await this.migrateCompendia(classRef))) {
+    if (!(await this.migrateCompendia())) {
       CPRSystemUtils.DisplayMessage(
         "error",
         CPRSystemUtils.Localize("CPR.migration.status.compendiaErrors")
@@ -192,7 +185,7 @@ export default class CPRMigration {
    * Actions to be performed before data is migrated.
    * Meant to be over-ridden (and the super called), but not required.
    */
-  preMigrate() {
+  async preMigrate() {
     LOGGER.trace("preMigrate | CPRMigration");
     LOGGER.log("Migrations starting");
   }
@@ -201,7 +194,7 @@ export default class CPRMigration {
    * Actions to be performed after data is migrated.
    * Meant to be over-ridden (and the super called), but not required.
    */
-  postMigrate() {
+  async postMigrate() {
     LOGGER.trace("postMigrate | CPRMigration");
     LOGGER.log("Migrations finished.");
   }
@@ -219,13 +212,13 @@ export default class CPRMigration {
   /**
    * Migrate unowned Items
    */
-  static async migrateItems(classRef) {
+  async migrateItems() {
     LOGGER.trace("migrateItems | CPRMigration");
     let good = true;
 
     const itemMigrations = game.items.contents.map(async (item) => {
       try {
-        return await classRef.migrateItem(item);
+        return await this.migrateItem(item);
       } catch (err) {
         LOGGER.error(err);
         throw new Error(
@@ -247,7 +240,7 @@ export default class CPRMigration {
    *
    * @param {CPRItem} item
    */
-  static async migrateItem(item) {
+  async migrateItem(item) {
     LOGGER.trace("migrateItem | CPRMigration");
   }
 
@@ -375,7 +368,7 @@ export default class CPRMigration {
    * later on if a user tries to use entries with an outdated data model. However, the discord
    * community for Foundry preferred locked things to be left alone.
    */
-  async migrateCompendia(classRef) {
+  async migrateCompendia() {
     LOGGER.trace("migrateCompendia | CPRMigration");
     let good = true;
 
@@ -441,7 +434,7 @@ export default class CPRMigration {
             break;
           }
           case "Item": {
-            await classRef.migrateItem(doc);
+            await this.migrateItem(doc);
             break;
           }
           case "Scene": {
