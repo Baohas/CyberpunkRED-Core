@@ -31,6 +31,7 @@
 
 - Weapons in fight tab now categorized by Ranged/Melee
 - Change Pause Font to Tektur for better internationalization support
+- Header elements in text input areas are now styled in a similar way to the core book
 
 ### Исправления
 
@@ -40,6 +41,7 @@
 - #979 - Fix styling of inline rolls in chat
 - Added several small updates to descriptions to understand various items better
 - Fix image overflow on Item Sheets
+- Fix filepicker favorites styling
 
 ## Версия 0.88.2
 
