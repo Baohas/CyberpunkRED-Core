@@ -43,6 +43,10 @@ export default class MigrationRunner {
       return true;
     }
 
+    // Open migration application.
+    const doMigration = new MigrationApp({ migrationRunner: this });
+    doMigration.render({ force: true });
+
     CPRSystemUtils.DisplayMessage(
       "notify",
       `Beginning Migrations of Cyberpunk Red Core from Data Model ${currentDataModelVersion} to ${newDataModelVersion}.`
