@@ -48,7 +48,7 @@ export default class CPRMigration {
       `${CPRSystemUtils.Localize("CPR.migration.status.actors")}, ` +
       `${CPRSystemUtils.Localize("CPR.migration.status.scenes")}, ` +
       `${CPRSystemUtils.Localize("CPR.migration.status.compendia")}...`;
-    CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
+    // CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
 
     // Migrate settings, if any, first.
     if (!(await this.migrateSettings())) {
@@ -73,7 +73,7 @@ export default class CPRMigration {
       `${CPRSystemUtils.Localize("CPR.migration.status.actors")}, ` +
       `${CPRSystemUtils.Localize("CPR.migration.status.scenes")}, ` +
       `${CPRSystemUtils.Localize("CPR.migration.status.compendia")}...`;
-    CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
+    // CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
 
     // migrate actors
     if (!(await this.migrateActors())) {
@@ -89,7 +89,7 @@ export default class CPRMigration {
       `${CPRSystemUtils.Localize("CPR.migration.status.start")} ` +
       `${CPRSystemUtils.Localize("CPR.migration.status.scenes")}, ` +
       `${CPRSystemUtils.Localize("CPR.migration.status.compendia")}...`;
-    CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
+    // CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
 
     // unlinked actors (tokens)
     if (!(await this.migrateScenes())) {
@@ -104,7 +104,7 @@ export default class CPRMigration {
     this.statusMessage =
       `${CPRSystemUtils.Localize("CPR.migration.status.start")} ` +
       `${CPRSystemUtils.Localize("CPR.migration.status.compendia")}...`;
-    CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
+    // CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
 
     // compendia
     if (!(await this.migrateCompendia())) {
@@ -119,7 +119,7 @@ export default class CPRMigration {
     this.statusMessage = `${CPRSystemUtils.Localize(
       "CPR.migration.status.migrationsComplete"
     )}`;
-    CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
+    // CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
 
     // In the future, put top-level migrations for tokens, scenes, and other things here
 
@@ -216,16 +216,26 @@ export default class CPRMigration {
     LOGGER.trace("migrateItems | CPRMigration");
     let good = true;
 
-    const itemMigrations = game.items.contents.map(async (item) => {
+    let itemsMigrated = 0;
+    const itemMigrations = [];
+    for (const item of game.items.contents) {
       try {
-        return await this.migrateItem(item);
+        const migrateItem = await this.migrateItem(item);
+        itemsMigrated += 1;
+        const { totalDocuments } = game.cpr.MigrationRunner;
+        const percent = Math.floor(
+          (itemsMigrated / totalDocuments.items) * 100
+        );
+        CPRSystemUtils.updateMigrationBar(percent, this.statusMessage);
+        itemMigrations.push(migrateItem);
       } catch (err) {
         LOGGER.error(err);
         throw new Error(
           `${this.name}: ${item.name} had a migration error: ${err.message}`
         );
       }
-    });
+    }
+
     const values = await Promise.allSettled(itemMigrations);
     for (const value of values.filter((v) => v.status !== "fulfilled")) {
       LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
