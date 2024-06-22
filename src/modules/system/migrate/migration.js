@@ -32,7 +32,6 @@ export default class MigrationRunner {
    * @param {Number} newDataModelVersion - the data model version we want to get to, may be multiple versions ahead
    * @returns {Boolean} - True if all migrations completed successfully or no migrations are needed
    */
-
   async migrateWorld() {
     LOGGER.trace("migrateWorld | MigrationRunner");
 
@@ -107,13 +106,18 @@ export default class MigrationRunner {
   _getMigrations() {
     LOGGER.trace("_getMigrations | MigrationRunner");
     const { currentDataModelVersion, newDataModelVersion } = this;
-    const migrations = Object.values(Migrations).map((M) => new M());
-    return migrations
-      .filter(
-        (m) =>
-          m.version > currentDataModelVersion &&
-          m.version <= newDataModelVersion
-      )
+    const migrationClasses = Object.values(Migrations);
+    const relevantMigrationClasses = migrationClasses
+      .filter((Migration) => {
+        const { version } = Migration;
+        return (
+          version > currentDataModelVersion && version <= newDataModelVersion
+        );
+      })
       .sort((a, b) => (a.version > b.version ? 1 : -1));
+    const migrations = relevantMigrationClasses.map(
+      (Migration) => new Migration()
+    );
+    return migrations;
   }
 }
