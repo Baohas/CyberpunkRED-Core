@@ -4,11 +4,13 @@
 import CPRMigration from "../cpr-migration.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
-export default class BaseMigration extends CPRMigration {
+export default class TestMigration extends CPRMigration {
   constructor() {
-    LOGGER.trace("constructor | Base Migration");
+    LOGGER.trace("constructor | Test Migration");
     super();
-    this.version = 26;
-    this.name = "Base Migration";
+    this.version = TestMigration.version;
+    this.name = "Test Migration";
   }
+
+  static version = 26;
 }
