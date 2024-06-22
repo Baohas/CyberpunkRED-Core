@@ -223,13 +223,14 @@ export default class CPRMigration {
   }
 
   /**
-   * Migrate actors
+   * Migrate actors and their owned items.
    */
   async migrateActors() {
     LOGGER.trace("migrateActors | CPRMigration");
     // actors in the "directory"
     let good = true;
-    const actorMigrations = game.actors.contents.map(async (actor) => {
+    const actorMigrations = [];
+    for (const actor of game.actors.contents) {
       try {
         if (
           this.debugMigration.enabled &&
@@ -239,14 +240,27 @@ export default class CPRMigration {
         ) {
           debugger;
         }
-        return await this.migrateActor(actor);
+        const migrateActor = await this.migrateActor(actor);
+        // Migrate actor items.
+        for (const item of actor.items.contents) {
+          try {
+            await this.migrateItem(item);
+          } catch (err) {
+            LOGGER.error(err);
+            throw new Error(
+              `${this.name}: ${item.name} (on actor: ${actor.name}) had a migration error: ${err.message}`
+            );
+          }
+        }
+        this.progress.actors.advance();
+        actorMigrations.push(migrateActor);
       } catch (err) {
         LOGGER.error(err);
         throw new Error(
           `${this.name}: ${actor.name} had a migration error: ${err.message}`
         );
       }
-    });
+    }
     const values = await Promise.allSettled(actorMigrations);
     for (const value of values.filter((v) => v.status !== "fulfilled")) {
       LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
