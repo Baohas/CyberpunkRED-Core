@@ -711,62 +711,6 @@ export default class CPRSystemUtils {
     return CPRSystemUtils.getDataModelTemplates(itemType).includes(template);
   }
 
-  /* MIGRATION UTILS */
-
-  /**
-   * Updates the migration bar at the top of the page.
-   * The last time this is called should set the percentage to 100 so it will clear the bar.
-   *
-   * @param {Number} percent - Percentage complete
-   * @param {String} migrationStatus - The words to display on the migration status bar
-   */
-  static updateMigrationBar(percent, updateStatus) {
-    LOGGER.trace("updateMigrationBar | CPRSystemUtils");
-    const migrating = document.getElementById("cpr-migrating");
-    if (migrating === null) {
-      // Add the migration bar to the document since it is not there
-      const migrationNode = document.createElement("div");
-      migrationNode.id = "cpr-migrating";
-      migrationNode.style = `display: block;`;
-      const migrationBar = document.createElement("div");
-      migrationBar.id = "cpr-migration-bar";
-      migrationBar.style = `width: ${percent}%`;
-      migrationBar.className = "migration-bar";
-      const migrationContext = document.createElement("label");
-      migrationContext.id = "cpr-mig-context";
-      migrationContext.innerHTML = "Migration Test";
-      const migrationProgress = document.createElement("label");
-      migrationProgress.id = "cpr-mig-progress";
-      migrationProgress.innerHTML = `${percent}%`;
-      migrationBar.appendChild(migrationContext);
-      migrationBar.appendChild(migrationProgress);
-      migrationNode.appendChild(migrationBar);
-      const uiTop = document.getElementById("ui-top");
-      uiTop.appendChild(migrationNode);
-    } else {
-      // Update the existing bar
-      migrating.querySelector("#cpr-mig-context").textContent = updateStatus;
-      migrating.querySelector("#cpr-mig-progress").textContent = `${percent}%`;
-      migrating.children["cpr-migration-bar"].style = `width: ${percent}%`;
-      migrating.style.display = "block";
-    }
-
-    if (percent === 100 && !migrating.hidden) $(migrating).fadeOut(2000);
-  }
-
-  /**
-   * Fades the migrating bar at the top of the page in the event it gets stuck there. (ie failed migration)
-   */
-  static fadeMigrationBar() {
-    LOGGER.trace("fadeMigrationBar | CPRSystemUtils");
-    const migrating = document.getElementById("cpr-migrating");
-    if (migrating !== null) {
-      if (!migrating.hidden) {
-        $(migrating).fadeOut(2000);
-      }
-    }
-  }
-
   /* Everything else */
 
   /**

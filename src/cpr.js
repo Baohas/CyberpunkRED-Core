@@ -16,6 +16,7 @@ import LOGGER from "./modules/utils/cpr-logger.js";
 import CPRMacro from "./modules/utils/cpr-macros.js";
 import SystemUtils from "./modules/utils/cpr-systemUtils.js";
 import MigrationRunner from "./modules/system/migrate/migration.js";
+import CPRMigration from "./modules/system/migrate/cpr-migration.js";
 import CPR from "./modules/system/config.js";
 
 // Function imports
@@ -308,7 +309,7 @@ Hooks.once("ready", async () => {
     // `migrateWorld` returns true on successful migration
     migrationSuccess = await MR.migrateWorld();
     // Ensure load bar is gone
-    SystemUtils.fadeMigrationBar();
+    CPRMigration.fadeMigrationBar();
   }
   if (migrationSuccess) {
     await game.settings.set(
