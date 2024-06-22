@@ -308,8 +308,6 @@ Hooks.once("ready", async () => {
     game.cpr.MigrationRunner = MR;
     // `migrateWorld` returns true on successful migration
     migrationSuccess = await MR.migrateWorld();
-    // Ensure load bar is gone
-    CPRMigration.fadeMigrationBar();
   }
   if (migrationSuccess) {
     await game.settings.set(

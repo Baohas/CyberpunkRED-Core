@@ -94,7 +94,11 @@ export default class MigrationRunner {
   async runMigrations() {
     LOGGER.trace("runMigrations | MigrationRunner");
 
-    for (const migration of this.migrationsToDo) {
+    const migrationInstances = this.migrationsToDo.map(
+      (Migration) => new Migration()
+    );
+
+    for (const migration of migrationInstances) {
       try {
         // eslint-disable-next-line no-await-in-loop
         const result = await migration.run();
@@ -120,13 +124,12 @@ export default class MigrationRunner {
   /**
    * Knowing the data models, figure out which migration scripts (as objects) to run.
    *
-   * @return {Array} - an ordered list of objects from each relevant migration script
+   * @return {Array<typeof CPRMigration>} - an ordered list of CPRMigration classes.
    */
   _getMigrations() {
     LOGGER.trace("_getMigrations | MigrationRunner");
     const { currentDataModelVersion, newDataModelVersion } = this;
-    const migrationClasses = Object.values(Migrations);
-    const relevantMigrationClasses = migrationClasses
+    const migrationClasses = Object.values(Migrations)
       .filter((Migration) => {
         const { version } = Migration;
         return (
@@ -134,9 +137,6 @@ export default class MigrationRunner {
         );
       })
       .sort((a, b) => (a.version > b.version ? 1 : -1));
-    const migrations = relevantMigrationClasses.map(
-      (Migration) => new Migration()
-    );
-    return migrations;
+    return migrationClasses;
   }
 }

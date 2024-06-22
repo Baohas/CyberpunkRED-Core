@@ -2,6 +2,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */
+import Progress from "../../utils/Progress.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
 
@@ -21,8 +22,6 @@ export default class CPRMigration {
     this.version = null; // the data model version this migration will take us to
     this.flush = false; // migrations will stop after this script, even if more are needed
     this.errors = 0; // Increment if there were errors as part of this migration.
-    this.statusPercent = 0;
-    this.statusMessage = "";
     this.name = "Base CPRMigration Class";
     this.foundryMajorVersion = parseInt(game.version, 10);
     this.debugMigration = {
@@ -31,6 +30,17 @@ export default class CPRMigration {
       scene: { name: "", id: "", uuid: "" },
       compendia: { name: "", id: "", uuid: "" },
     };
+
+    // Create progress bars for each type of document.
+    const { totalDocuments } = game.cpr.MigrationRunner;
+    const progress = {};
+    for (const [docType, max] of Object.entries(totalDocuments)) {
+      const label =
+        `${CPRSystemUtils.Localize("CPR.migration.status.start")} ` +
+        `${CPRSystemUtils.Localize(`CPR.migration.status.${docType}`)}, `;
+      progress[docType] = new Progress({ label, max });
+    }
+    this.progress = progress;
   }
 
   /**
@@ -39,16 +49,6 @@ export default class CPRMigration {
   async run() {
     LOGGER.trace("run | CPRMigration");
     LOGGER.log(`Migrating to data model version ${this.version}`);
-
-    // migrate unowned items
-    this.statusPercent = 1;
-    this.statusMessage =
-      `${CPRSystemUtils.Localize("CPR.migration.status.start")} ` +
-      `${CPRSystemUtils.Localize("CPR.migration.status.items")}, ` +
-      `${CPRSystemUtils.Localize("CPR.migration.status.actors")}, ` +
-      `${CPRSystemUtils.Localize("CPR.migration.status.scenes")}, ` +
-      `${CPRSystemUtils.Localize("CPR.migration.status.compendia")}...`;
-    // CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
 
     // Migrate settings, if any, first.
     if (!(await this.migrateSettings())) {
@@ -59,6 +59,7 @@ export default class CPRMigration {
       return false;
     }
 
+    // migrate unowned items
     if (!(await this.migrateItems())) {
       CPRSystemUtils.DisplayMessage(
         "error",
@@ -66,14 +67,6 @@ export default class CPRMigration {
       );
       return false;
     }
-
-    this.statusPercent += 24;
-    this.statusMessage =
-      `${CPRSystemUtils.Localize("CPR.migration.status.start")} ` +
-      `${CPRSystemUtils.Localize("CPR.migration.status.actors")}, ` +
-      `${CPRSystemUtils.Localize("CPR.migration.status.scenes")}, ` +
-      `${CPRSystemUtils.Localize("CPR.migration.status.compendia")}...`;
-    // CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
 
     // migrate actors
     if (!(await this.migrateActors())) {
@@ -84,13 +77,6 @@ export default class CPRMigration {
       return false;
     }
 
-    this.statusPercent += 25;
-    this.statusMessage =
-      `${CPRSystemUtils.Localize("CPR.migration.status.start")} ` +
-      `${CPRSystemUtils.Localize("CPR.migration.status.scenes")}, ` +
-      `${CPRSystemUtils.Localize("CPR.migration.status.compendia")}...`;
-    // CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
-
     // unlinked actors (tokens)
     if (!(await this.migrateScenes())) {
       CPRSystemUtils.DisplayMessage(
@@ -99,12 +85,6 @@ export default class CPRMigration {
       );
       return false;
     }
-
-    this.statusPercent += 25;
-    this.statusMessage =
-      `${CPRSystemUtils.Localize("CPR.migration.status.start")} ` +
-      `${CPRSystemUtils.Localize("CPR.migration.status.compendia")}...`;
-    // CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
 
     // compendia
     if (!(await this.migrateCompendia())) {
@@ -115,77 +95,15 @@ export default class CPRMigration {
       return false;
     }
 
-    this.statusPercent = 100;
-    this.statusMessage = `${CPRSystemUtils.Localize(
-      "CPR.migration.status.migrationsComplete"
-    )}`;
-    // CPRSystemUtils.updateMigrationBar(this.statusPercent, this.statusMessage);
-
-    // In the future, put top-level migrations for tokens, scenes, and other things here
-
     await this.postMigrate();
 
     if (this.errors !== 0) {
       throw Error("Migration errors encountered");
     }
     await game.settings.set(game.system.id, "dataModelVersion", this.version);
+    // close all progress bars.
+    Object.values(this.progress).forEach((p) => p.close());
     return true;
-  }
-
-  /* MIGRATION UTILS */
-
-  /**
-   * Updates the migration bar at the top of the page.
-   * The last time this is called should set the percentage to 100 so it will clear the bar.
-   *
-   * @param {Number} percent - Percentage complete
-   * @param {String} migrationStatus - The words to display on the migration status bar
-   */
-  static updateMigrationBar(percent, updateStatus) {
-    LOGGER.trace("updateMigrationBar | CPRSystemUtils");
-    const migrating = document.getElementById("cpr-migrating");
-    if (migrating === null) {
-      // Add the migration bar to the document since it is not there
-      const migrationNode = document.createElement("div");
-      migrationNode.id = "cpr-migrating";
-      migrationNode.style = `display: block;`;
-      const migrationBar = document.createElement("div");
-      migrationBar.id = "cpr-migration-bar";
-      migrationBar.style = `width: ${percent}%`;
-      migrationBar.className = "migration-bar";
-      const migrationContext = document.createElement("label");
-      migrationContext.id = "cpr-mig-context";
-      migrationContext.innerHTML = "Migration Test";
-      const migrationProgress = document.createElement("label");
-      migrationProgress.id = "cpr-mig-progress";
-      migrationProgress.innerHTML = `${percent}%`;
-      migrationBar.appendChild(migrationContext);
-      migrationBar.appendChild(migrationProgress);
-      migrationNode.appendChild(migrationBar);
-      const uiTop = document.getElementById("ui-top");
-      uiTop.appendChild(migrationNode);
-    } else {
-      // Update the existing bar
-      migrating.querySelector("#cpr-mig-context").textContent = updateStatus;
-      migrating.querySelector("#cpr-mig-progress").textContent = `${percent}%`;
-      migrating.children["cpr-migration-bar"].style = `width: ${percent}%`;
-      migrating.style.display = "block";
-    }
-
-    if (percent === 100 && !migrating.hidden) $(migrating).fadeOut(2000);
-  }
-
-  /**
-   * Fades the migrating bar at the top of the page in the event it gets stuck there. (ie failed migration)
-   */
-  static fadeMigrationBar() {
-    LOGGER.trace("fadeMigrationBar | CPRSystemUtils");
-    const migrating = document.getElementById("cpr-migrating");
-    if (migrating !== null) {
-      if (!migrating.hidden) {
-        $(migrating).fadeOut(2000);
-      }
-    }
   }
 
   /**
@@ -272,17 +190,11 @@ export default class CPRMigration {
     LOGGER.trace("migrateItems | CPRMigration");
     let good = true;
 
-    let itemsMigrated = 0;
     const itemMigrations = [];
     for (const item of game.items.contents) {
       try {
         const migrateItem = await this.migrateItem(item);
-        itemsMigrated += 1;
-        const { totalDocuments } = game.cpr.MigrationRunner;
-        const percent = Math.floor(
-          (itemsMigrated / totalDocuments.items) * 100
-        );
-        CPRMigration.updateMigrationBar(percent, this.statusMessage);
+        this.progress.items.advance();
         itemMigrations.push(migrateItem);
       } catch (err) {
         LOGGER.error(err);
