@@ -21,6 +21,7 @@ export default class MigrationRunner {
     this.newDataModelVersion = newDataModelVersion;
 
     this.migrationsToDo = this._getMigrations();
+    this.migrationInstances = null; // will be an array of CPRMigration instances, initialized in `migrateWorld`.
 
     this.migrationSuccessful = null;
   }
@@ -97,6 +98,7 @@ export default class MigrationRunner {
     const migrationInstances = this.migrationsToDo.map(
       (Migration) => new Migration()
     );
+    this.migrationInstances = migrationInstances;
 
     for (const migration of migrationInstances) {
       try {
@@ -119,6 +121,21 @@ export default class MigrationRunner {
       }
     }
     return true;
+  }
+
+  /**
+   * Closes all progress bars associated with each migration instance.
+   *
+   * @return {void}
+   */
+  closeProgressBars() {
+    LOGGER.trace("closeProgressBars | MigrationRunner");
+    // close all progress bars.
+    if (!this.migrationInstances)
+      throw new Error("MigrationRunner#migrationInstances has not been set.");
+    for (const migration of this.migrationInstances) {
+      Object.values(migration.progress).forEach((bar) => bar.close());
+    }
   }
 
   /**

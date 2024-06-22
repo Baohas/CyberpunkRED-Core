@@ -101,8 +101,7 @@ export default class CPRMigration {
       throw Error("Migration errors encountered");
     }
     await game.settings.set(game.system.id, "dataModelVersion", this.version);
-    // close all progress bars.
-    Object.values(this.progress).forEach((p) => p.close());
+
     return true;
   }
 
