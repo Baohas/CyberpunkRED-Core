@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */
@@ -24,12 +23,6 @@ export default class CPRMigration {
     this.errors = 0; // Increment if there were errors as part of this migration.
     this.name = "Base CPRMigration Class";
     this.foundryMajorVersion = parseInt(game.version, 10);
-    this.debugMigration = {
-      enabled: false,
-      actor: { name: "", id: "", uuid: "" },
-      scene: { name: "", id: "", uuid: "" },
-      compendia: { name: "", id: "", uuid: "" },
-    };
 
     // Create progress bars for each type of document.
     const { totalDocuments } = game.cpr.MigrationRunner;
@@ -234,14 +227,6 @@ export default class CPRMigration {
     const actorMigrations = [];
     for (const actor of game.actors.contents) {
       try {
-        if (
-          this.debugMigration.enabled &&
-          (actor.name === this.debugMigration.actor.name ||
-            actor.id === this.debugMigration.actor.id ||
-            actor.uuid === this.debugMigration.actor.uuid)
-        ) {
-          debugger;
-        }
         const migrateActor = await this.migrateActor(actor);
         // Migrate actor items.
         for (const item of actor.items.contents) {
@@ -291,14 +276,6 @@ export default class CPRMigration {
     this.progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
     for (const scene of game.scenes.contents) {
       try {
-        if (
-          this.debugMigration.enabled &&
-          (scene.name === this.debugMigration.scene.name ||
-            scene.id === this.debugMigration.scene.id ||
-            scene.uuid === this.debugMigration.scene.uuid)
-        ) {
-          debugger;
-        }
         const migrateScene = await this.migrateScene(scene);
         this.progress.scenes.advance();
         sceneMigrations.push(migrateScene);
@@ -427,15 +404,6 @@ export default class CPRMigration {
 
       // Perform Foundry server-side migration of the pack data model
       await pack.migrate();
-
-      if (
-        this.debugMigration.enabled &&
-        (pack.name === this.debugMigration.compendia.name ||
-          pack.id === this.debugMigration.compendia.id ||
-          pack.uuid === this.debugMigration.compendia.uuid)
-      ) {
-        debugger;
-      }
 
       // Iterate over compendium entries - applying fine-tuned migration functions
       const docs = await pack.getDocuments();
