@@ -39,6 +39,40 @@ export default class CPRMigration {
     this.progress = progress;
   }
 
+  get totalDocuments() {
+    LOGGER.trace("get totalDocuments | MigrationRunner");
+    return {
+      items: CPRMigration.filterDocuments("Item").length,
+      actors: CPRMigration.filterDocuments("Actor").length,
+      scenes: game.scenes.size,
+      tokens: game.scenes.contents.reduce((sum, scene) => {
+        return sum + scene.tokens.size;
+      }, 0),
+      packs: game.packs.filter((pack) => pack.metadata.packageType === "world")
+        .length,
+    };
+  }
+
+  /**
+   * Filter documents based on the specified types and/or mixins.
+   * IMPORTANT: Subclasses should override this
+   *
+   * For example, if you were to only migrate "skill" item types, "attackables"
+   * item mixins, and "container" actor mixins, it would look like:
+   * ```js
+   *   static documentTypeFilters = {
+   *     Item: { types: ["skill"], mixins: ["attackable"] },
+   *     Actor: { types: [], mixins: ["container"] },
+   *   };
+   * ```
+   *
+   * To migrate all types/mixins, do not override.
+   */
+  static documentTypeFilters = {
+    Item: { types: [], mixins: [] },
+    Actor: { types: [], mixins: [] },
+  };
+
   /**
    * Execute the migration code. This should not be overidden.
    */
@@ -151,6 +185,34 @@ export default class CPRMigration {
   }
 
   /**
+   * Filters documents of a given type based on the specified doc types and/or mixins.
+   *
+   * @param {string} docClass - The type of documents to filter: "Item" or "Actor"
+   * @param {CPRActor|Scene} actor - The scope of the filter, i.e. a particular actor. If not provided, defaults to game[collectionName]
+   * @return {Array} An array of filtered documents.
+   */
+  static filterDocuments(docClass, actor = null) {
+    LOGGER.trace("filterDocuments | CPRMigration");
+    const { mixins, types } = this.documentTypeFilters[docClass];
+    const collectionName = `${docClass.toLowerCase()}s`; // "items" or "actors"
+    const docList = actor ? actor[collectionName] : game[collectionName];
+    if (!mixins.length && !types.length) return docList;
+
+    const filteredDocs = docList.filter((doc) => {
+      let docTypeList = [...types];
+      for (const mixin of mixins) {
+        docTypeList = [
+          ...docTypeList,
+          ...CPRSystemUtils.getDocTypesFromMixin(mixin, docClass),
+        ];
+      }
+      const docTypeSet = new Set(docTypeList); // Use Set to remove duplicates
+      return docTypeSet.has(doc.type);
+    });
+    return filteredDocs;
+  }
+
+  /**
    * Actions to be performed before data is migrated.
    * Meant to be over-ridden (and the super called), but not required.
    */
@@ -185,8 +247,9 @@ export default class CPRMigration {
     LOGGER.trace("migrateItems | CPRMigration");
     let good = true;
 
+    const filteredItems = CPRMigration.filterDocuments("Item");
     const itemMigrations = [];
-    for (const item of game.items.contents) {
+    for (const item of filteredItems) {
       try {
         const migrateItem = await this.migrateItem(item);
         this.progress.items.advance();
@@ -224,12 +287,15 @@ export default class CPRMigration {
     LOGGER.trace("migrateActors | CPRMigration");
     // actors in the "directory"
     let good = true;
+
+    const filteredActors = CPRMigration.filterDocuments("Actor");
     const actorMigrations = [];
-    for (const actor of game.actors.contents) {
+    for (const actor of filteredActors) {
       try {
         const migrateActor = await this.migrateActor(actor);
         // Migrate actor items.
-        for (const item of actor.items.contents) {
+        const filteredItems = CPRMigration.filterDocuments("Item", actor);
+        for (const item of filteredItems) {
           try {
             await this.migrateItem(item);
           } catch (err) {
@@ -322,7 +388,8 @@ export default class CPRMigration {
       try {
         const migrateActor = await this.migrateActor(token.actor);
         // Migrate token actor items.
-        for (const item of token.actor.items.contents) {
+        const filteredItems = CPRMigration.filterDocuments("Item", token.actor);
+        for (const item of filteredItems) {
           try {
             await this.migrateItem(item);
           } catch (err) {
