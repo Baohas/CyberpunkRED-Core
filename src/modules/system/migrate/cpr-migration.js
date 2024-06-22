@@ -35,9 +35,12 @@ export default class CPRMigration {
     const { totalDocuments } = game.cpr.MigrationRunner;
     const progress = {};
     for (const [docType, max] of Object.entries(totalDocuments)) {
-      const label =
-        `${CPRSystemUtils.Localize("CPR.migration.status.start")} ` +
-        `${CPRSystemUtils.Localize(`CPR.migration.status.${docType}`)}, `;
+      const label = `${CPRSystemUtils.Format(
+        "CPR.migration.status.migratingDocs",
+        {
+          docType: CPRSystemUtils.Localize(`CPR.migration.status.${docType}`),
+        }
+      )}`;
       progress[docType] = new Progress({ label, max });
     }
     this.progress = progress;
@@ -284,7 +287,9 @@ export default class CPRMigration {
   async migrateScenes() {
     LOGGER.trace("migrateScenes | CPRMigration");
     let good = true;
-    const sceneMigrations = game.scenes.contents.map(async (scene) => {
+    const sceneMigrations = [];
+    this.progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
+    for (const scene of game.scenes.contents) {
       try {
         if (
           this.debugMigration.enabled &&
@@ -294,14 +299,16 @@ export default class CPRMigration {
         ) {
           debugger;
         }
-        return await this.migrateScene(scene);
+        const migrateScene = await this.migrateScene(scene);
+        this.progress.scenes.advance();
+        sceneMigrations.push(migrateScene);
       } catch (err) {
         LOGGER.error(err);
         throw new Error(
           `${this.name}: ${scene.name} had a migration error: ${err.message}`
         );
       }
-    });
+    }
     const values = await Promise.allSettled(sceneMigrations);
     for (const value of values.filter((v) => v.status !== "fulfilled")) {
       LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
@@ -333,16 +340,30 @@ export default class CPRMigration {
       // anything else is a linked token, we assume they're already migrated
       return false;
     });
-    const tokenMigrations = tokens.map(async (token) => {
+    const tokenMigrations = [];
+    for (const token of tokens) {
       try {
-        return this.migrateActor(token.actor);
+        const migrateActor = await this.migrateActor(token.actor);
+        // Migrate token actor items.
+        for (const item of token.actor.items.contents) {
+          try {
+            await this.migrateItem(item);
+          } catch (err) {
+            LOGGER.error(err);
+            throw new Error(
+              `${this.name}: ${item.name} (on actor: ${token.actor.name}, in scene: ${scene.name}) had a migration error: ${err.message}`
+            );
+          }
+        }
+        this.progress.tokens.advance();
+        tokenMigrations.push(migrateActor);
       } catch (err) {
         LOGGER.error(err);
         throw new Error(
-          `${this.name}: ${token.name} token had a migration error: ${err.message}`
+          `${this.name}: ${token.name} token (in scene: ${scene.name}) had a migration error: ${err.message}`
         );
       }
-    });
+    }
     const values = await Promise.allSettled(tokenMigrations);
     for (const value of values.filter((v) => v.status !== "fulfilled")) {
       LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);

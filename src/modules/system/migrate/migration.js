@@ -32,12 +32,16 @@ export default class MigrationRunner {
       items: game.items.size,
       actors: game.actors.size,
       scenes: game.scenes.size,
+      tokens: game.scenes.contents.reduce(
+        (sum, scene) => sum + scene.tokens.size,
+        0
+      ),
       packs: game.packs.filter((pack) => pack.metadata.packageType === "world")
         .length,
       migrationTotal: this.migrationsToDo.length,
       get total() {
         return (
-          (this.items + this.actors + this.scenes + this.packs) *
+          (this.items + this.actors + this.scenes + this.tokens + this.packs) *
           this.migrationTotal
         );
       },
