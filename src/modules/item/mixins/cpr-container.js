@@ -39,7 +39,7 @@ const Container = function Container() {
    */
   this.availableInstallSlots = function availableInstallSlots() {
     LOGGER.trace("availableInstallSlots | Container | Called.");
-    const itemTemplates = SystemUtils.GetTemplateItemTypes("upgradable");
+    const itemTemplates = SystemUtils.getDocTypesFromMixin("upgradable");
     let totalSlots = this.system.installedItems.slots;
     if (itemTemplates.includes(this.type)) {
       const upgradeData = this.getTotalUpgradeValues("slots");
@@ -134,7 +134,7 @@ const Container = function Container() {
       LOGGER.trace("recursiveGetAllInstalledItems | Container | Called.");
 
       const installedItems = [];
-      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+      const containerTypes = SystemUtils.getDocTypesFromMixin("container");
 
       let actor = false;
       if (this.documentName === "Actor") {
@@ -188,7 +188,7 @@ const Container = function Container() {
         // Check that the item's *type* can be installed.
         this.system.installedItems.allowedTypes.includes(item.type) &&
         // Check that the item being installed is actually 'installable'.
-        SystemUtils.getDataModelTemplates(item.type).includes("installable")
+        SystemUtils.getMixins(item.type).includes("installable")
       ) {
         // For actors, which don't have slots, this will result in `0 + undefined = NaN` and will otherwise be unused
         totalInstallationSize += item.system.size;
@@ -248,7 +248,7 @@ const Container = function Container() {
     const actor = this.isOwned ? this.actor : false;
 
     const installedItems = foundry.utils.duplicate(this.system.installedItems);
-    const equippableTypes = SystemUtils.GetTemplateItemTypes("equippable");
+    const equippableTypes = SystemUtils.getDocTypesFromMixin("equippable");
 
     for (const item of itemList) {
       // No need to install it, it it's already installed.
@@ -375,7 +375,7 @@ const Container = function Container() {
         )
       );
     }
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
     const actor = this.isOwned ? this.actor : false;
     // Duplicate the currenlty installed items.
     const installedIds = foundry.utils.duplicate(
@@ -411,7 +411,7 @@ const Container = function Container() {
       await this.uninstallPrograms(uninstalledPrograms);
     }
 
-    const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
+    const loadableTypes = SystemUtils.getDocTypesFromMixin("loadable");
     // When uninstalling an upgrade that increases magazine size, make sure any extra ammo
     // that would be in the upgrade is returned to the ammo item. Do this before unloading ammo.
     const uninstalledMagUpgrade = uninstallList.find(
@@ -482,8 +482,8 @@ const Container = function Container() {
       this.documentName === "Actor" && all
         ? this.items
         : this.recursiveGetAllInstalledItems();
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
+    const installableTypes = SystemUtils.getDocTypesFromMixin("installable");
     const relevantItems = installedItems.filter(
       (i) =>
         containerTypes.includes(i.type) || installableTypes.includes(i.type)
@@ -664,7 +664,7 @@ const Container = function Container() {
      * @returns {Array<Object>} - Array of regular JS objects which contain nested installed item data.
      */
     function nestItemObjects(parentItem) {
-      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+      const containerTypes = SystemUtils.getDocTypesFromMixin("container");
       // Get first level of installed items.
       const installedItems = parentItem.getInstalledItems();
 

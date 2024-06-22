@@ -19,7 +19,7 @@ const Installable = function Installable() {
 
     const { actor } = this;
     const installationType = this.type;
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
 
     const installationTargets = [];
     const installationTargetTypes = [];

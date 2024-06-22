@@ -210,7 +210,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       );
       return;
     }
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
 
     const cprInstallTree = item.createInstalledObjectData();
     const transferredItemData = foundry.utils.duplicate(item);
@@ -389,7 +389,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       10
     );
 
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
 
     let vendorOffer = parseInt((amount * cost * percent) / 100, 10);
     vendorOffer = Math.min(vendorOffer, vendorData.wealth.value);
@@ -421,7 +421,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     ).catch((err) => LOGGER.debug(err));
 
     if (dialogData !== undefined) {
-      const loadableTypes = SystemUtils.GetTemplateItemTypes("loadable");
+      const loadableTypes = SystemUtils.getDocTypesFromMixin("loadable");
       if (loadableTypes.includes(item.type) && item.system.hasAmmoLoaded) {
         await item.unload();
       }
@@ -618,7 +618,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     LOGGER.trace("_configureSellTo | CPRContainerSheet | Called.");
     const cprActorData = foundry.utils.duplicate(this.actor.system);
     const promptData = {};
-    promptData.itemTypes = SystemUtils.GetTemplateItemTypes("physical");
+    promptData.itemTypes = SystemUtils.getDocTypesFromMixin("physical");
     promptData.currentConfig = cprActorData.vendor;
 
     promptData.itemTypes.forEach((itemType) => {

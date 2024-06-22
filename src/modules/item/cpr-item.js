@@ -140,7 +140,7 @@ export default class CPRItem extends Item {
    */
   loadMixins() {
     LOGGER.trace("loadMixins | CPRItem | Called.");
-    const mixins = SystemUtils.getDataModelTemplates(this.type);
+    const mixins = SystemUtils.getMixins(this.type);
     const cprItemData = this.system;
     for (let m = 0; m < mixins.length; m += 1) {
       switch (mixins[m]) {
@@ -236,7 +236,7 @@ export default class CPRItem extends Item {
     LOGGER.trace("toCompendium | CPRItem | called.");
     const data = super.toCompendium(pack, options);
 
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
     // Return data if this is not a container object.
     if (!containerTypes.includes(this.type)) {
       return data;
@@ -273,7 +273,7 @@ export default class CPRItem extends Item {
     const item = await super.fromDropData(data, options);
 
     // Return if not a container item or if this item doesn't have a parent.
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
     if (!containerTypes.includes(item.type) || !item.parent) {
       return item;
     }
@@ -385,10 +385,7 @@ export default class CPRItem extends Item {
     const cprItemData = this.system;
     const localCprRoll = cprRoll;
 
-    const hasLoadableTemplate = SystemUtils.hasDataModelTemplate(
-      itemType,
-      "loadable"
-    );
+    const hasLoadableTemplate = SystemUtils.hasMixin(itemType, "loadable");
     if (hasLoadableTemplate) {
       if (localCprRoll instanceof CPRRolls.CPRAttackRoll) {
         if (cprItemData.isRanged) {

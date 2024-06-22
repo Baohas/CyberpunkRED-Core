@@ -79,7 +79,7 @@ export default class ItemUpgradeDataModel extends CPRSystemDataModel.mixin(
       }),
       type: new fields.StringField({
         initial: "weapon",
-        choices: SystemUtils.GetTemplateItemTypes("upgradable"),
+        choices: SystemUtils.getDocTypesFromMixin("upgradable"),
       }),
     });
   }

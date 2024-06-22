@@ -43,7 +43,7 @@ export default class CPRActor extends Actor {
       await SystemUtils.GetCoreSkills(),
       await SystemUtils.GetCoreCyberware()
     );
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
     tmpItems.forEach((item) => {
       const updatedSystem = foundry.utils.duplicate(item.system);
       if (containerTypes.includes(item.type)) {
@@ -484,7 +484,7 @@ export default class CPRActor extends Actor {
     baseCompatibleFoundationalCyberware.forEach((cyberware) => {
       compatibleTargetCyberware.push(cyberware);
       let idList = cyberware.system.installedItems.list;
-      const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+      const containerTypes = SystemUtils.getDocTypesFromMixin("container");
       while (idList.length > 0) {
         const loopList = idList;
         idList = [];
@@ -722,8 +722,8 @@ export default class CPRActor extends Actor {
     LOGGER.trace("getUpgradeMods | CPRActor | Called.");
     let modValue = 0;
     // See if we have any items which upgrade our stat, and if so, upgrade the stat base
-    const equippableItemTypes = SystemUtils.GetTemplateItemTypes("equippable");
-    const upgradableItemTypes = SystemUtils.GetTemplateItemTypes("upgradable");
+    const equippableItemTypes = SystemUtils.getDocTypesFromMixin("equippable");
+    const upgradableItemTypes = SystemUtils.getDocTypesFromMixin("upgradable");
     const itemTypes = equippableItemTypes.filter((value) =>
       upgradableItemTypes.includes(value)
     );
@@ -1286,7 +1286,7 @@ export default class CPRActor extends Actor {
    */
   automaticallyStackItems(newItem) {
     LOGGER.trace("automaticallyStackItems | CPRActor | Called.");
-    const itemTemplates = SystemUtils.getDataModelTemplates(newItem.type);
+    const itemTemplates = SystemUtils.getMixins(newItem.type);
     if (itemTemplates.includes("stackable")) {
       const itemMatch = this.items.find(
         (i) => i.type === newItem.type && i.name === newItem.name
@@ -1934,12 +1934,12 @@ export default class CPRActor extends Actor {
 
     // Auto-equip this item if equippable
     const updateData = [];
-    if (SystemUtils.hasDataModelTemplate(item.type, "equippable")) {
+    if (SystemUtils.hasMixin(item.type, "equippable")) {
       updateData.push({ _id: item._id, "system.equipped": "equipped" });
     }
     allInstalled.forEach((i) => {
       // auto-equip installed items if equippable
-      if (SystemUtils.hasDataModelTemplate(i.type, "equippable")) {
+      if (SystemUtils.hasMixin(i.type, "equippable")) {
         updateData.push({ _id: i._id, "system.equipped": "equipped" });
       }
     });

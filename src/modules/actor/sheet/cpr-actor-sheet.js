@@ -1573,7 +1573,7 @@ export default class CPRActorSheet extends ActorSheet {
     }
 
     const deleteList = transferItem ? [sourceItem._id] : [];
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
 
     const [newItem] = await super._onDrop(event);
 

@@ -251,7 +251,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       }
     }
     this._updateOwnedItemProp(item, prop, newValue);
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
     if (containerTypes.includes(item.type)) {
       const allInstalledItems = item.recursiveGetAllInstalledItems();
       if (allInstalledItems.length > 0) {

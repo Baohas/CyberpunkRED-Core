@@ -117,8 +117,8 @@ export default class CPRContainerActor extends Actor {
   async resetInstalled() {
     LOGGER.trace("resetInstalled | CPRActor | called.");
 
-    const containerTypes = SystemUtils.GetTemplateItemTypes("container");
-    const installableTypes = SystemUtils.GetTemplateItemTypes("installable");
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
+    const installableTypes = SystemUtils.getDocTypesFromMixin("installable");
     const relevantItems = this.items.filter(
       (i) =>
         containerTypes.includes(i.type) || installableTypes.includes(i.type)
@@ -158,7 +158,7 @@ export default class CPRContainerActor extends Actor {
    */
   automaticallyStackItems(newItem) {
     LOGGER.trace("automaticallyStackItems | CPRContainerActor | Called.");
-    const itemTemplates = SystemUtils.getDataModelTemplates(newItem.type);
+    const itemTemplates = SystemUtils.getMixins(newItem.type);
     if (itemTemplates.includes("stackable")) {
       const itemMatch = this.items.find(
         (i) => i.type === newItem.type && i.name === newItem.name

@@ -178,7 +178,7 @@ const Effects = function Effects() {
     if (this.type === "drug") {
       usageAllowed.push("snorted");
     }
-    if (SystemUtils.hasDataModelTemplate(this.type, "physical")) {
+    if (SystemUtils.hasMixin(this.type, "physical")) {
       if (this.type !== "cyberware") {
         usageAllowed.push("carried");
         usageAllowed.push("equipped");

@@ -672,43 +672,50 @@ export default class CPRSystemUtils {
   /* DATA TEMPLATE UTILS */
 
   /**
-   * Given a data model template name, return the array of item types it is applied to
+   * Given a data model mixin name, return the array of item types it is applied to.
    *
-   * @param {String} templateName - the template name to look up
+   * @param {String} mixinName - the mixin name to look up
+   * @param {String} [docClass="Item"] - class of document: "Item" or "Actor"
    * @returns {Array}
    */
-  static GetTemplateItemTypes(templateName) {
-    LOGGER.trace("GetTemplateItemTypes | CPRSystemUtils | Called.");
-    const itemTypes = [];
-    const itemDataModels = Object.entries(CONFIG.Item.dataModels);
-    itemDataModels.forEach(([entityType, dataModel]) => {
-      if (dataModel.mixins.includes(templateName)) {
-        itemTypes.push(entityType);
+  static getDocTypesFromMixin(mixinName, docClass = "Item") {
+    LOGGER.trace("getDocTypesFromMixin | CPRSystemUtils | Called.");
+    const docTypes = [];
+    const docDataModels = Object.entries(CONFIG[docClass].dataModels);
+    docDataModels.forEach(([entityType, dataModel]) => {
+      if (dataModel.mixins.includes(mixinName)) {
+        docTypes.push(entityType);
       }
     });
-    return itemTypes;
+    return docTypes;
   }
 
   /**
-   * Return an array of data model templates associated with this Item's type. "common" is intentionally
-   * omitted because nothing should operate on it. The logic for common Item functionality should be in
-   * this very file.
+   * Return an array of data model mixins associated with this Document's type. "common" is intentionally
+   * omitted because nothing should operate on it.
    *
-   * @returns {Array} - array of template names which just happens to match mixins available
+   * @param {String} docType - the document type to look up, e.g. "weapon", "armor", etc.
+   * @param {String} [docClass="Item"] - class of document: "Item" or "Actor"
+   * @returns {Array} - array of document types which have the mixin
    */
-  static getDataModelTemplates(itemType) {
-    LOGGER.trace("getDataModelTemplates | CPRSystemUtils | Called.");
-    return CONFIG.Item.dataModels[itemType].mixins.filter(
+  static getMixins(docType, docClass = "Item") {
+    LOGGER.trace("getMixins | CPRSystemUtils | Called.");
+    return CONFIG[docClass].dataModels[docType].mixins.filter(
       (t) => t !== "common"
     );
   }
 
   /**
-   * Answer whether an item has a specific data model template applied or not
+   * Answer whether a document has a specific mixin applied or not
+   *
+   * @param {String} docType - the document type to look up, e.g. "weapon", "armor", etc.
+   * @param {String} mixinName - the mixin name to look up
+   * @param {String} [docClass="Item"] - class of document: "Item" or "Actor"
+   * @returns {Boolean}
    */
-  static hasDataModelTemplate(itemType, template) {
-    LOGGER.trace("hasDataModelTemplate | CPRSystemUtils | Called.");
-    return CPRSystemUtils.getDataModelTemplates(itemType).includes(template);
+  static hasMixin(docType, mixin, docClass = "Item") {
+    LOGGER.trace("hasMixin | CPRSystemUtils | Called.");
+    return CPRSystemUtils.getMixins(docType, docClass).includes(mixin);
   }
 
   /* Everything else */

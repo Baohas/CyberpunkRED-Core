@@ -52,7 +52,7 @@ export default class CPRItemSheet extends ItemSheet {
     const cprData = {};
     cprData.isGM = game.user.isGM;
     const itemType = foundryData.item.type;
-    const mixins = SystemUtils.getDataModelTemplates(itemType);
+    const mixins = SystemUtils.getMixins(itemType);
     if (itemType === "role" || mixins.includes("attackable")) {
       // relativeSkills and relativeAmmo will be other items relevant to this one.
       // For owned objects, the item list will come from the character owner
@@ -229,7 +229,7 @@ export default class CPRItemSheet extends ItemSheet {
    */
   static _getItemUpgradeData(item) {
     LOGGER.trace("_getItemUpgradeData | `CPRItemSheet` | Called.");
-    const upgradableTypes = SystemUtils.GetTemplateItemTypes("upgradable");
+    const upgradableTypes = SystemUtils.getDocTypesFromMixin("upgradable");
     const upgradableSelectOptions = upgradableTypes.map((type) => {
       return {
         value: type,

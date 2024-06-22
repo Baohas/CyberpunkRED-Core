@@ -42,7 +42,7 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
         new fields.StringField({
           required: true,
           blank: true,
-          choices: SystemUtils.GetTemplateItemTypes("installable"),
+          choices: SystemUtils.getDocTypesFromMixin("installable"),
         }),
         { initial: initialAllowedTypes }
       ),

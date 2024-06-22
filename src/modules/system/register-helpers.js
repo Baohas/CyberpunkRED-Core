@@ -740,10 +740,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprIsUpgradable", (item) => {
     LOGGER.trace("cprIsUpgradable | handlebarsHelper | Called.");
-    const hasUpgradableMixin = SystemUtils.hasDataModelTemplate(
-      item.type,
-      "upgradable"
-    );
+    const hasUpgradableMixin = SystemUtils.hasMixin(item.type, "upgradable");
     let isUpgradable = false;
     if (
       hasUpgradableMixin &&
@@ -936,7 +933,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprHasTemplate", (itemType, templateName) => {
     LOGGER.trace("cprHasTemplate | handlebarsHelper | Called.");
-    return SystemUtils.hasDataModelTemplate(itemType, templateName);
+    return SystemUtils.hasMixin(itemType, templateName);
   });
 
   /**
@@ -944,7 +941,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprGetTemplates", (itemType) => {
     LOGGER.trace("cprGetTemplates | handlebarsHelper | Called.");
-    return SystemUtils.getDataModelTemplates(itemType);
+    return SystemUtils.getMixins(itemType);
   });
 
   /**
@@ -953,10 +950,7 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprShowUpgrade", (obj, dataPoint) => {
     LOGGER.trace("cprShowUpgrade | handlebarsHelper | Called.");
     const itemType = obj.type;
-    const hasUpgradableMixin = SystemUtils.hasDataModelTemplate(
-      itemType,
-      "upgradable"
-    );
+    const hasUpgradableMixin = SystemUtils.hasMixin(itemType, "upgradable");
     let upgradeText = "";
     if (hasUpgradableMixin && obj.system.isUpgraded) {
       const upgradeData = obj.getTotalUpgradeValues(dataPoint);
@@ -980,10 +974,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprApplyUpgrade", (obj, baseValue, dataPoint) => {
     LOGGER.trace("cprApplyUpgrade | handlebarsHelper | Called.");
-    const hasUpgradableMixin = SystemUtils.hasDataModelTemplate(
-      obj.type,
-      "upgradable"
-    );
+    const hasUpgradableMixin = SystemUtils.hasMixin(obj.type, "upgradable");
     let upgradeResult = Number(baseValue);
     if (Number.isNaN(upgradeResult)) {
       upgradeResult = baseValue;
