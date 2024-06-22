@@ -303,6 +303,8 @@ Hooks.once("ready", async () => {
       parseInt(dataModelVersion, 10),
       DATA_MODEL_VERSION
     );
+    // Set singleton for easy access to the MigrationRunner.
+    game.cpr.MigrationRunner = MR;
     // `migrateWorld` returns true on successful migration
     migrationSuccess = await MR.migrateWorld();
     // Ensure load bar is gone
