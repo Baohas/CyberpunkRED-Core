@@ -440,6 +440,20 @@ export default class CPRMigration {
   }
 
   /**
+   * Utility function which simulates a long process by delaying the resolution of a Promise.
+   * Used for testing, so probably should not have any commits which call this.
+   *
+   * @param {number} [time=10] - The time in milliseconds to delay the resolution.
+   * @return {Promise} A Promise that resolves after the specified time.
+   */
+  static simulateLongProcess(time = 10) {
+    LOGGER.trace("simulateLongProcess | CPRMigration");
+    return new Promise((resolve) => {
+      setTimeout(resolve, time);
+    });
+  }
+
+  /**
    * This block of abstract methods breaks down how each document type is migrated. If there
    * are any steps that need to be taken before migrating, put them in preMigrate. Likewise
    * any clean up or changes after go in postMigrate. Note that uncommenting these will cause
