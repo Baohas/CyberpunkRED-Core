@@ -309,7 +309,7 @@ Hooks.once("ready", async () => {
     // `migrateWorld` returns true on successful migration
     migrationSuccess = await MR.migrateWorld();
     // close all progress bars.
-    if (MR.migrationsToDo.length) MR.closeProgressBars();
+    if (MR.totalMigrations) MR.closeProgressBars();
   }
   if (migrationSuccess) {
     await game.settings.set(
