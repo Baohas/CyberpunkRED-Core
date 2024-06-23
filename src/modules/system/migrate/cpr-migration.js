@@ -18,10 +18,10 @@ export default class CPRMigration {
    */
   constructor() {
     LOGGER.trace("constructor | CPRMigration");
-    this.version = null; // the data model version this migration will take us to
+    this.version = this.constructor.version; // the data model version this migration will take us to
+    this.name = this.constructor.name;
     this.flush = false; // migrations will stop after this script, even if more are needed
     this.errors = 0; // Increment if there were errors as part of this migration.
-    this.name = "Base CPRMigration Class";
     this.foundryMajorVersion = parseInt(game.version, 10);
 
     // Create progress bars for each type of document.
@@ -39,11 +39,17 @@ export default class CPRMigration {
     this.progress = progress;
   }
 
+  // Override this!
+  static version = null;
+
+  // Override this!
+  static name = "Base Migration Class";
+
   /**
    * Filter documents based on the specified types and/or mixins.
    * IMPORTANT: Subclasses should override this
    *
-   * For example, if you were to only migrate "skill" item types, "attackables"
+   * For example, if you were to only migrate "skill" item types, "attackable"
    * item mixins, and "container" actor mixins, it would look like:
    * ```js
    *   static documentTypeFilters = {
@@ -257,6 +263,57 @@ export default class CPRMigration {
   }
 
   /**
+   * Generate an error and post a message with useful information for a failed migration.
+   *
+   * @param {type} document - The document whose migration caused an error.
+   * @param {Error} error - The Error object
+   * @return {Error} The Error object
+   */
+  static generateError(document, error) {
+    LOGGER.trace("generateError | CPRMigration");
+    const docInfo = { scene: null, actor: null, item: null, token: null };
+
+    const { documentName } = document;
+    /**
+     *  We have the following document types which may fail to migrate:
+     *   - World Items
+     *   - World Actors
+     *   - Items owned by World Actors
+     *   - Token Actors
+     *   - Items owned by Token Actors
+     */
+    switch (documentName) {
+      case "Actor":
+        docInfo.actor = document;
+        break;
+      case "Item":
+        docInfo.item = document;
+        if (document.isEmbedded) {
+          docInfo.actor = document.actor;
+        }
+        break;
+      default:
+        break;
+    }
+    if (docInfo.actor?.isToken) {
+      docInfo.token = document.token;
+      docInfo.scene = document.token.parent;
+    }
+
+    let dataStr = `\nFailed Document: ${document.name}\nUUID: ${document.uuid}`;
+    /* eslint-disable no-continue */
+    for (const [key, value] of Object.entries(docInfo)) {
+      if (!value) continue;
+      dataStr += `\n${key.capitalize()}: ${value.name} (${value.id})`;
+    } /* eslint-enable no-continue */
+
+    const migrationFailString = `Migration Script: '${this.name}' failed.`;
+
+    LOGGER.error(migrationFailString, dataStr, error);
+    return error;
+  }
+
+  /**
    * Actions to be performed before data is migrated.
    * Meant to be over-ridden (and the super called), but not required.
    */
@@ -302,10 +359,7 @@ export default class CPRMigration {
         this.progress.items.advance();
         itemMigrations.push(migrateItem);
       } catch (err) {
-        LOGGER.error(err);
-        throw new Error(
-          `${this.name}: ${item.name} had a migration error: ${err.message}`
-        );
+        throw MigrationClass.generateError(item, err);
       }
     }
 
@@ -353,10 +407,7 @@ export default class CPRMigration {
         progress.advance();
         actorMigrations.push(migrateActor);
       } catch (err) {
-        LOGGER.error(err);
-        throw new Error(
-          `${this.name}: ${actor.name} had a migration error: ${err.message}`
-        );
+        throw MigrationClass.generateError(actor, err);
       }
     }
     const values = await Promise.allSettled(actorMigrations);
@@ -386,16 +437,9 @@ export default class CPRMigration {
     const sceneMigrations = [];
     this.progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
     for (const scene of game.scenes.contents) {
-      try {
-        const migrateScene = await this.migrateScene(scene);
-        this.progress.scenes.advance();
-        sceneMigrations.push(migrateScene);
-      } catch (err) {
-        LOGGER.error(err);
-        throw new Error(
-          `${this.name}: ${scene.name} had a migration error: ${err.message}`
-        );
-      }
+      const migrateScene = await this.migrateScene(scene);
+      this.progress.scenes.advance();
+      sceneMigrations.push(migrateScene);
     }
     const values = await Promise.allSettled(sceneMigrations);
     for (const value of values.filter((v) => v.status !== "fulfilled")) {
