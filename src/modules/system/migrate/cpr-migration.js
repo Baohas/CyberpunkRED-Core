@@ -39,21 +39,6 @@ export default class CPRMigration {
     this.progress = progress;
   }
 
-  static get totalDocuments() {
-    LOGGER.trace("get totalDocuments | MigrationRunner");
-    return {
-      items: CPRMigration.filterDocuments(game.items).length, // World Items
-      actors: CPRMigration.filterDocuments(game.actors).length, // World Actors
-      scenes: game.scenes.size,
-      tokens: game.scenes.contents.reduce((sum, scene) => {
-        const tokenActors = CPRMigration.filterDocuments(scene.tokens);
-        return sum + tokenActors.length;
-      }, 0),
-      packs: game.packs.filter((pack) => pack.metadata.packageType === "world")
-        .length,
-    };
-  }
-
   /**
    * Filter documents based on the specified types and/or mixins.
    * IMPORTANT: Subclasses should override this
@@ -73,6 +58,26 @@ export default class CPRMigration {
     Item: { types: [], mixins: [] },
     Actor: { types: [], mixins: [] },
   };
+
+  /**
+   * Retrieves the total number of various documents to migrate.
+   *
+   * @return {Object} An object containing the count of items, actors, scenes, tokens, and pack documents.
+   */
+  static get totalDocuments() {
+    LOGGER.trace("get totalDocuments | MigrationRunner");
+    return {
+      items: CPRMigration.filterDocuments(game.items).length, // World Items
+      actors: CPRMigration.filterDocuments(game.actors).length, // World Actors
+      scenes: game.scenes.size,
+      tokens: game.scenes.contents.reduce((sum, scene) => {
+        const tokenActors = CPRMigration.filterDocuments(scene.tokens);
+        return sum + tokenActors.length;
+      }, 0),
+      packs: game.packs.filter((pack) => pack.metadata.packageType === "world")
+        .length,
+    };
+  }
 
   /**
    * Execute the migration code. This should not be overidden.
