@@ -340,22 +340,17 @@ export default class CPRMigration {
     const MigrationClass = this.constructor;
     const filteredActors = MigrationClass.filterDocuments(actors);
     const actorMigrations = [];
+    // Whether to advance the progress bar for World Actors or for Tokens.
+    const progress = filteredActors[0]?.isToken
+      ? this.progress.tokens
+      : this.progress.actors;
     for (const actor of filteredActors) {
       try {
         const migrateActor = await this.migrateActor(actor);
         // Migrate actor items.
         const filteredItems = MigrationClass.filterDocuments(actor.items);
-        for (const item of filteredItems) {
-          try {
-            await this.migrateItem(item);
-          } catch (err) {
-            LOGGER.error(err);
-            throw new Error(
-              `${this.name}: ${item.name} (on actor: ${actor.name}) had a migration error: ${err.message}`
-            );
-          }
-        }
-        this.progress.actors.advance();
+        await this.migrateItems(filteredItems);
+        progress.advance();
         actorMigrations.push(migrateActor);
       } catch (err) {
         LOGGER.error(err);
@@ -419,30 +414,7 @@ export default class CPRMigration {
     const MigrationClass = this.constructor;
     const tokenActors = MigrationClass.filterDocuments(scene.tokens);
     const tokenMigrations = [];
-    for (const actor of tokenActors) {
-      try {
-        const migrateActor = await this.migrateActor(actor);
-        // Migrate token actor items.
-        const filteredItems = MigrationClass.filterDocuments(actor.items);
-        for (const item of filteredItems) {
-          try {
-            await this.migrateItem(item);
-          } catch (err) {
-            LOGGER.error(err);
-            throw new Error(
-              `${this.name}: ${item.name} (on actor: ${actor.name}, in scene: ${scene.name}) had a migration error: ${err.message}`
-            );
-          }
-        }
-        this.progress.tokens.advance();
-        tokenMigrations.push(migrateActor);
-      } catch (err) {
-        LOGGER.error(err);
-        throw new Error(
-          `${this.name}: ${actor.token.name} token (in scene: ${scene.name}) had a migration error: ${err.message}`
-        );
-      }
-    }
+    await this.migrateActors(tokenActors);
     const values = await Promise.allSettled(tokenMigrations);
     for (const value of values.filter((v) => v.status !== "fulfilled")) {
       LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
