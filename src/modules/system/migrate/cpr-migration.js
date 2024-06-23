@@ -72,6 +72,7 @@ export default class CPRMigration {
    */
   static get totalDocuments() {
     LOGGER.trace("get totalDocuments | MigrationRunner");
+    const packs = this.filterCompendia(game.packs);
     return {
       items: this.filterDocuments(game.items).length, // World Items
       actors: this.filterDocuments(game.actors).length, // World Actors
@@ -80,8 +81,8 @@ export default class CPRMigration {
         const tokenActors = this.filterDocuments(scene.tokens);
         return sum + tokenActors.length;
       }, 0),
-      packs: game.packs.filter((pack) => pack.metadata.packageType === "world")
-        .length,
+      packs: packs.length,
+      packDocuments: undefined,
     };
   }
 
@@ -250,7 +251,7 @@ export default class CPRMigration {
         // This is technically a broken token and even Foundry throws errors when you do certain things
         // with this token. We skip it.
         LOGGER.warn(
-          `WARNING: Token "${token.name}" (${token.actorId}) on Scene "${token.scene.name}" (${token.scene.id})` +
+          `WARNING: Token "${token.name}" (${token.actorId}) on Scene "${token.parent.name}" (${token.parent.id})` +
             ` is missing the source Actor, so we will skip migrating it. Consider replacing or deleting it.`
         );
         return false;
@@ -260,6 +261,47 @@ export default class CPRMigration {
       return false;
     });
     return filteredTokens;
+  }
+
+  /**
+   * Filters the compendia based on the pack types, source types, and locked status.
+   *
+   * @param {Array<CompendiumCollection>|CompendiumPacks} compendia - The array/map of compendia to filter.
+   * @return {Array} The filtered array of compendia.
+   */
+  static filterCompendia(compendia) {
+    LOGGER.trace("filterCompendia | CPRMigration");
+    // Pack types we provide migrations for
+    const packTypes = ["Actor", "Item", "Scene"];
+
+    // Read setting to check which pack.sourceTypes we are migrating
+    const sourceTypes = ["world"];
+
+    // If we are migrating module compendia add it to the sourceTypes array
+    if (game.settings.get(game.system.id, "migrateModuleCompendia")) {
+      sourceTypes.push("module");
+    }
+
+    // During dev you might want to run migrations on our own packs rather than
+    // migrate by hand, if so uncomment this and set migration of locked packs
+    // to true in the game settings and run your migrations.
+    // sourceTypes.push("system");
+
+    // Check if we are migrating locked packs
+    const migrateLockedPacks = game.settings.get(
+      game.system.id,
+      "migrateLockedCompendia"
+    );
+
+    // Get a list of packs to migrate based on the settings above
+    const packsToMigrate = compendia.filter(
+      (p) =>
+        packTypes.includes(p.metadata.type) &&
+        sourceTypes.includes(p.metadata.packageType) &&
+        (migrateLockedPacks || !p.locked)
+    );
+
+    return packsToMigrate;
   }
 
   /**
@@ -314,6 +356,21 @@ export default class CPRMigration {
   }
 
   /**
+   * Returns the progress bar for a given document.
+   *
+   * @param {Object} document - The document for which to retrieve the progress bar.
+   * @return {Object|null} The progress bar for the document, or null if the document is not provided.
+   */
+  getProgressBar(document) {
+    LOGGER.trace("getProgressBar | CPRMigration");
+    if (!document) return null;
+    const { collectionName } = document;
+    if (document.isToken) return this.progress.tokens;
+    if (document.pack) return this.progress.packDocuments;
+    return this.progress[collectionName];
+  }
+
+  /**
    * Actions to be performed before data is migrated.
    * Meant to be over-ridden (and the super called), but not required.
    */
@@ -352,11 +409,12 @@ export default class CPRMigration {
 
     const MigrationClass = this.constructor;
     const filteredItems = MigrationClass.filterDocuments(items);
+    const progress = this.getProgressBar(filteredItems[0]);
     const itemMigrations = [];
     for (const item of filteredItems) {
       try {
         const migrateItem = await this.migrateItem(item);
-        this.progress.items.advance();
+        progress.advance();
         itemMigrations.push(migrateItem);
       } catch (err) {
         throw MigrationClass.generateError(item, err);
@@ -395,9 +453,7 @@ export default class CPRMigration {
     const filteredActors = MigrationClass.filterDocuments(actors);
     const actorMigrations = [];
     // Whether to advance the progress bar for World Actors or for Tokens.
-    const progress = filteredActors[0]?.isToken
-      ? this.progress.tokens
-      : this.progress.actors;
+    const progress = this.getProgressBar(filteredActors[0]);
     for (const actor of filteredActors) {
       try {
         const migrateActor = await this.migrateActor(actor);
@@ -431,12 +487,12 @@ export default class CPRMigration {
   /**
    * Migrate scenes. We specifically focus on unlinked tokens for now.
    */
-  async migrateScenes() {
+  async migrateScenes(scenes = game.scenes) {
     LOGGER.trace("migrateScenes | CPRMigration");
     let good = true;
     const sceneMigrations = [];
     this.progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
-    for (const scene of game.scenes.contents) {
+    for (const scene of scenes) {
       const migrateScene = await this.migrateScene(scene);
       this.progress.scenes.advance();
       sceneMigrations.push(migrateScene);
@@ -479,43 +535,15 @@ export default class CPRMigration {
     LOGGER.trace("migrateCompendia | CPRMigration");
     let good = true;
 
-    // Pack types we provide migrations for
-    const packTypes = ["Actor", "Item", "Scene"];
-
-    // Read setting to check which pack.sourceTypes we are migrating
-    const sourceTypes = ["world"];
-
-    // If we are migrating module compendia add it to the sourceTypes array
-    if (game.settings.get(game.system.id, "migrateModuleCompendia")) {
-      sourceTypes.push("module");
-    }
-
-    // During dev you might want to run migrations on our own packs rather than
-    // migrate by hand, if so uncomment this and set migration of locked packs
-    // to true in the game settings and run your migrations.
-    // sourceTypes.push("system");
-
-    // Check if we are migrating locked packs
-    const migrateLockedPacks = game.settings.get(
-      game.system.id,
-      "migrateLockedCompendia"
-    );
-
-    // Get a list of packs to migrate based on the settings above
-    const packsToMigrate = game.packs.filter(
-      (p) =>
-        packTypes.includes(p.metadata.type) &&
-        sourceTypes.includes(p.metadata.packageType) &&
-        (migrateLockedPacks || !p.locked)
-    );
-
+    const filteredPacks = this.constructor.filterCompendia(game.packs);
     LOGGER.debug(
-      `CPRC Migration | Migrating packs: ${packsToMigrate
+      `CPRC Migration | Migrating packs: ${filteredPacks
         .map((p) => p.metadata.id)
         .join(", ")}`
     );
 
-    for (const pack of packsToMigrate) {
+    this.progress.packs.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
+    for (const pack of filteredPacks) {
       // If we are migrating locked packs we need to unlock them before migrating
       const wasLocked = pack.locked;
       await pack.configure({ locked: false });
@@ -524,28 +552,25 @@ export default class CPRMigration {
       await pack.migrate();
 
       // Iterate over compendium entries - applying fine-tuned migration functions
+      const packMigrations = [];
       const docs = await pack.getDocuments();
-      const packMigrations = docs.map(async (doc) => {
-        switch (pack.metadata.type) {
-          case "Actor": {
-            await this.migrateActor(doc);
-            break;
-          }
-          case "Item": {
-            await this.migrateItem(doc);
-            break;
-          }
-          case "Scene": {
-            await this.migrateScene(doc);
-            break;
-          }
-          default:
-            CPRSystemUtils.DisplayMessage(
-              "error",
-              `Unexpected doc type in compendia: ${doc}`
-            );
+      switch (pack.metadata.type) {
+        case "Actor": {
+          await this.migrateActors(docs);
+          break;
         }
-      });
+        case "Item": {
+          await this.migrateItems(docs);
+          break;
+        }
+        case "Scene": {
+          await this.migrateScenes(docs);
+          break;
+        }
+        default:
+          break;
+      }
+      this.progress.packs.advance();
 
       const values = await Promise.allSettled(packMigrations);
       for (const value of values.filter((v) => v.status !== "fulfilled")) {
