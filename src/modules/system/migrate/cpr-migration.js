@@ -25,7 +25,7 @@ export default class CPRMigration {
     this.foundryMajorVersion = parseInt(game.version, 10);
 
     // Create progress bars for each type of document.
-    const { totalDocuments } = CPRMigration;
+    const { totalDocuments } = this.constructor;
     const progress = {};
     for (const [docType, max] of Object.entries(totalDocuments)) {
       const label = `${CPRSystemUtils.Format(
@@ -67,11 +67,11 @@ export default class CPRMigration {
   static get totalDocuments() {
     LOGGER.trace("get totalDocuments | MigrationRunner");
     return {
-      items: CPRMigration.filterDocuments(game.items).length, // World Items
-      actors: CPRMigration.filterDocuments(game.actors).length, // World Actors
+      items: this.filterDocuments(game.items).length, // World Items
+      actors: this.filterDocuments(game.actors).length, // World Actors
       scenes: game.scenes.size,
       tokens: game.scenes.contents.reduce((sum, scene) => {
-        const tokenActors = CPRMigration.filterDocuments(scene.tokens);
+        const tokenActors = this.filterDocuments(scene.tokens);
         return sum + tokenActors.length;
       }, 0),
       packs: game.packs.filter((pack) => pack.metadata.packageType === "world")
@@ -293,7 +293,8 @@ export default class CPRMigration {
     LOGGER.trace("migrateItems | CPRMigration");
     let good = true;
 
-    const filteredItems = CPRMigration.filterDocuments(items);
+    const MigrationClass = this.constructor;
+    const filteredItems = MigrationClass.filterDocuments(items);
     const itemMigrations = [];
     for (const item of filteredItems) {
       try {
@@ -336,13 +337,14 @@ export default class CPRMigration {
     // actors in the "directory"
     let good = true;
 
-    const filteredActors = CPRMigration.filterDocuments(actors);
+    const MigrationClass = this.constructor;
+    const filteredActors = MigrationClass.filterDocuments(actors);
     const actorMigrations = [];
     for (const actor of filteredActors) {
       try {
         const migrateActor = await this.migrateActor(actor);
         // Migrate actor items.
-        const filteredItems = CPRMigration.filterDocuments(actor.items);
+        const filteredItems = MigrationClass.filterDocuments(actor.items);
         for (const item of filteredItems) {
           try {
             await this.migrateItem(item);
@@ -414,13 +416,14 @@ export default class CPRMigration {
    */
   async migrateScene(scene) {
     LOGGER.trace("migrateScene | CPRMigration");
-    const tokenActors = CPRMigration.filterDocuments(scene.tokens);
+    const MigrationClass = this.constructor;
+    const tokenActors = MigrationClass.filterDocuments(scene.tokens);
     const tokenMigrations = [];
     for (const actor of tokenActors) {
       try {
         const migrateActor = await this.migrateActor(actor);
         // Migrate token actor items.
-        const filteredItems = CPRMigration.filterDocuments(actor.items);
+        const filteredItems = MigrationClass.filterDocuments(actor.items);
         for (const item of filteredItems) {
           try {
             await this.migrateItem(item);
