@@ -26,28 +26,6 @@ export default class MigrationRunner {
     this.migrationSuccessful = null;
   }
 
-  get totalDocuments() {
-    LOGGER.trace("get totalDocuments | MigrationRunner");
-    return {
-      items: game.items.size,
-      actors: game.actors.size,
-      scenes: game.scenes.size,
-      tokens: game.scenes.contents.reduce(
-        (sum, scene) => sum + scene.tokens.size,
-        0
-      ),
-      packs: game.packs.filter((pack) => pack.metadata.packageType === "world")
-        .length,
-      migrationTotal: this.migrationsToDo.length,
-      get total() {
-        return (
-          (this.items + this.actors + this.scenes + this.tokens + this.packs) *
-          this.migrationTotal
-        );
-      },
-    };
-  }
-
   /**
    * This is the top level entry point for executing migrations. This code assumes the user is a GM. It will
    * figure out what migrations to run, and dispatch them for execution.

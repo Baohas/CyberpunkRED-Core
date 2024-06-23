@@ -25,7 +25,7 @@ export default class CPRMigration {
     this.foundryMajorVersion = parseInt(game.version, 10);
 
     // Create progress bars for each type of document.
-    const { totalDocuments } = game.cpr.MigrationRunner;
+    const { totalDocuments } = CPRMigration;
     const progress = {};
     for (const [docType, max] of Object.entries(totalDocuments)) {
       const label = `${CPRSystemUtils.Format(
@@ -39,14 +39,15 @@ export default class CPRMigration {
     this.progress = progress;
   }
 
-  get totalDocuments() {
+  static get totalDocuments() {
     LOGGER.trace("get totalDocuments | MigrationRunner");
     return {
-      items: CPRMigration.filterDocuments("Item").length,
-      actors: CPRMigration.filterDocuments("Actor").length,
+      items: CPRMigration.filterDocuments(game.items).length, // World Items
+      actors: CPRMigration.filterDocuments(game.actors).length, // World Actors
       scenes: game.scenes.size,
       tokens: game.scenes.contents.reduce((sum, scene) => {
-        return sum + scene.tokens.size;
+        const tokenActors = CPRMigration.filterDocuments(scene.tokens);
+        return sum + tokenActors.length;
       }, 0),
       packs: game.packs.filter((pack) => pack.metadata.packageType === "world")
         .length,
@@ -185,17 +186,26 @@ export default class CPRMigration {
   }
 
   /**
-   * Filters documents of a given type based on the specified doc types and/or mixins.
+   * Filters a list ofdocuments of a given class based on the specified doc types and/or mixins.
    *
-   * @param {string} docClass - The type of documents to filter: "Item" or "Actor"
-   * @param {CPRActor|Scene} actor - The scope of the filter, i.e. a particular actor. If not provided, defaults to game[collectionName]
-   * @return {Array} An array of filtered documents.
+   * @param {Array<Document>|WorldCollection} docList - The list of documents or World Collection to filter
+   * @return {Array<CPRActor|CPRItem>} An array of filtered Actors or Items (but not both).
    */
-  static filterDocuments(docClass, actor = null) {
+  static filterDocuments(docList) {
     LOGGER.trace("filterDocuments | CPRMigration");
-    const { mixins, types } = this.documentTypeFilters[docClass];
-    const collectionName = `${docClass.toLowerCase()}s`; // "items" or "actors"
-    const docList = actor ? actor[collectionName] : game[collectionName];
+    if (!Array.isArray(docList)) docList = Array.from(docList);
+    if (!docList.length) return docList;
+
+    const docName = docList[0].documentName;
+    // Filter tokens, convert them to actors, and then run this function again,
+    // which will skip this block, because now an Array of Actors is being passed.
+    if (docName === "Token") {
+      const filteredTokens = CPRMigration.filterTokens(docList);
+      const tokenActors = filteredTokens.map((token) => token.actor);
+      return this.filterDocuments(tokenActors);
+    }
+
+    const { mixins, types } = this.documentTypeFilters[docName];
     if (!mixins.length && !types.length) return docList;
 
     const filteredDocs = docList.filter((doc) => {
@@ -203,13 +213,42 @@ export default class CPRMigration {
       for (const mixin of mixins) {
         docTypeList = [
           ...docTypeList,
-          ...CPRSystemUtils.getDocTypesFromMixin(mixin, docClass),
+          ...CPRSystemUtils.getDocTypesFromMixin(mixin, docName),
         ];
       }
       const docTypeSet = new Set(docTypeList); // Use Set to remove duplicates
-      return docTypeSet.has(doc.type);
+      return docTypeSet.has(doc.type); // Filter for doc type.
     });
     return filteredDocs;
+  }
+
+  /**
+   * Filters an array of tokens based on certain conditions:
+   *  - The actor that the token is derived from exists.
+   *  - The token is not linked.
+   *
+   * @param {Array<Token>} tokens - The array of tokens to filter.
+   * @return {Array<Token>} An array of filtered tokens.
+   */
+  static filterTokens(tokens) {
+    LOGGER.trace("filterTokens | CPRMigration");
+    const filteredTokens = tokens.filter((token) => {
+      if (!game.actors.has(token.actorId)) {
+        // Degenerate case where the actor that the token is derived from was since
+        // deleted. This makes token.actor null so we don't have a full view of all of the actor data.
+        // This is technically a broken token and even Foundry throws errors when you do certain things
+        // with this token. We skip it.
+        LOGGER.warn(
+          `WARNING: Token "${token.name}" (${token.actorId}) on Scene "${token.scene.name}" (${token.scene.id})` +
+            ` is missing the source Actor, so we will skip migrating it. Consider replacing or deleting it.`
+        );
+        return false;
+      }
+      if (!token.actorLink) return true; // unlinked tokens, this is what we're after
+      // anything else is a linked token, we assume they're already migrated
+      return false;
+    });
+    return filteredTokens;
   }
 
   /**
@@ -242,12 +281,14 @@ export default class CPRMigration {
 
   /**
    * Migrate unowned Items
+   *
+   * @param {Array<CPRItem>|Items} items - array of CPRItems or the Items World Collection itself.
    */
-  async migrateItems() {
+  async migrateItems(items = game.items) {
     LOGGER.trace("migrateItems | CPRMigration");
     let good = true;
 
-    const filteredItems = CPRMigration.filterDocuments("Item");
+    const filteredItems = CPRMigration.filterDocuments(items);
     const itemMigrations = [];
     for (const item of filteredItems) {
       try {
@@ -282,19 +323,21 @@ export default class CPRMigration {
 
   /**
    * Migrate actors and their owned items.
+   *
+   * @param {Array<CPRActor>|Actors} actors - array of CPRActors or the Actors World Collection itself.
    */
-  async migrateActors() {
+  async migrateActors(actors = game.actors) {
     LOGGER.trace("migrateActors | CPRMigration");
     // actors in the "directory"
     let good = true;
 
-    const filteredActors = CPRMigration.filterDocuments("Actor");
+    const filteredActors = CPRMigration.filterDocuments(actors);
     const actorMigrations = [];
     for (const actor of filteredActors) {
       try {
         const migrateActor = await this.migrateActor(actor);
         // Migrate actor items.
-        const filteredItems = CPRMigration.filterDocuments("Item", actor);
+        const filteredItems = CPRMigration.filterDocuments(actor.items);
         for (const item of filteredItems) {
           try {
             await this.migrateItem(item);
@@ -366,36 +409,20 @@ export default class CPRMigration {
    */
   async migrateScene(scene) {
     LOGGER.trace("migrateScene | CPRMigration");
-    const tokens = scene.tokens.contents.filter((token) => {
-      const tokenData = this.foundryMajorVersion < 10 ? token.data : token;
-      if (!game.actors.has(tokenData.actorId)) {
-        // Degenerate case where the actor that the token is derived from was since
-        // deleted. This makes token.actor null so we don't have a full view of all of the actor data.
-        // This is technically a broken token and even Foundry throws errors when you do certain things
-        // with this token. We skip it.
-        LOGGER.warn(
-          `WARNING: Token "${tokenData.name}" (${tokenData.actorId}) on Scene "${scene.name}" (${scene.id})` +
-            ` is missing the source Actor, so we will skip migrating it. Consider replacing or deleting it.`
-        );
-        return false;
-      }
-      if (!tokenData.actorLink) return true; // unlinked tokens, this is what we're after
-      // anything else is a linked token, we assume they're already migrated
-      return false;
-    });
+    const tokenActors = CPRMigration.filterDocuments(scene.tokens);
     const tokenMigrations = [];
-    for (const token of tokens) {
+    for (const actor of tokenActors) {
       try {
-        const migrateActor = await this.migrateActor(token.actor);
+        const migrateActor = await this.migrateActor(actor);
         // Migrate token actor items.
-        const filteredItems = CPRMigration.filterDocuments("Item", token.actor);
+        const filteredItems = CPRMigration.filterDocuments(actor.items);
         for (const item of filteredItems) {
           try {
             await this.migrateItem(item);
           } catch (err) {
             LOGGER.error(err);
             throw new Error(
-              `${this.name}: ${item.name} (on actor: ${token.actor.name}, in scene: ${scene.name}) had a migration error: ${err.message}`
+              `${this.name}: ${item.name} (on actor: ${actor.name}, in scene: ${scene.name}) had a migration error: ${err.message}`
             );
           }
         }
@@ -404,7 +431,7 @@ export default class CPRMigration {
       } catch (err) {
         LOGGER.error(err);
         throw new Error(
-          `${this.name}: ${token.name} token (in scene: ${scene.name}) had a migration error: ${err.message}`
+          `${this.name}: ${actor.token.name} token (in scene: ${scene.name}) had a migration error: ${err.message}`
         );
       }
     }
