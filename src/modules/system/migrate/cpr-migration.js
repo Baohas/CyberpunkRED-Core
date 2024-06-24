@@ -14,32 +14,24 @@ import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
  */
 export default class CPRMigration {
   /**
-   * Basic constructor to establish the version and other options
+   * Basic constructor to establish the version and other options.
+   * NOTE: This class should be instantiated via the static `initialize()`
+   *       method, rather than invoking the constructor directly.
    */
   constructor() {
     LOGGER.trace("constructor | CPRMigration");
-    this.version = this.constructor.version; // the data model version this migration will take us to
-    this.name = this.constructor.name;
+    this.version = this.constructor.version; // Derived from the static property below.
+    this.name = this.constructor.name; // Derived from the static property below.
     this.flush = false; // migrations will stop after this script, even if more are needed
     this.errors = 0; // Increment if there were errors as part of this migration.
     this.foundryMajorVersion = parseInt(game.version, 10);
 
-    // Create progress bars for each type of document.
-    const { totalDocuments } = this.constructor;
-    const progress = {};
-    for (const [docType, max] of Object.entries(totalDocuments)) {
-      const label = `${CPRSystemUtils.Format(
-        "CPR.migration.status.migratingDocs",
-        {
-          docType: CPRSystemUtils.Localize(`CPR.migration.status.${docType}`),
-        }
-      )}`;
-      progress[docType] = new Progress({ label, max });
-    }
-    this.progress = progress;
+    // The next two properties are set in static `initialize()`.
+    this.documents = null;
+    this.progress = null;
   }
 
-  // Override this!
+  // The data model version this migration will take us to. Override this!
   static version = null;
 
   // Override this!
@@ -66,24 +58,141 @@ export default class CPRMigration {
   };
 
   /**
-   * Retrieves the total number of various documents to migrate.
+   * Initialize the CPRMigration instance. We use this function instead
+   * of invoking the constructor (`new CPRMigration()`), because we need
+   * to attach some additional properties that rely on an async operation
+   * (which, we cannot use in the constructor).
    *
-   * @return {Object} An object containing the count of items, actors, scenes, tokens, and pack documents.
+   * @return {CPRMigration} The initialized CPRMigration object.
    */
-  static get totalDocuments() {
-    LOGGER.trace("get totalDocuments | MigrationRunner");
-    const packs = this.filterCompendia(game.packs);
-    return {
-      items: this.filterDocuments(game.items).length, // World Items
-      actors: this.filterDocuments(game.actors).length, // World Actors
-      scenes: game.scenes.size,
-      tokens: game.scenes.contents.reduce((sum, scene) => {
-        const tokenActors = this.filterDocuments(scene.tokens);
-        return sum + tokenActors.length;
-      }, 0),
-      packs: packs.length,
-      packDocuments: undefined,
+  static async initialize() {
+    LOGGER.trace("initialize | CPRMigration");
+    const Migration = new this();
+    Migration.documents = await this.prepareDocumentsForMigration();
+    Migration.progress = Migration.prepareProgressBars();
+
+    return Migration;
+  }
+
+  /**
+   * Filters and organizes the various documents for migration:
+   *   - World Items
+   *   - World Actors
+   *   - Scenes
+   *     - Token Actors
+   *   - Packs
+   *     - Pack Documents (Items, Actors, and Token Actors in Scenes)
+   *
+   * @return {Promise<Object>} An object containing the world items, world actors, scene Map, and pack Map.
+   */
+  static async prepareDocumentsForMigration() {
+    LOGGER.trace("prepareDocumentsForMigration | CPRMigration");
+    // Prepare world items and actors.
+    const worldItems = this.filterDocuments(game.items);
+    const worldActors = this.filterDocuments(game.actors);
+
+    /**
+     * Build a Map of scenes to their Token Actors.
+     * @type {Map<Scene, CPRActor[]>}
+     */
+    const sceneMap = new Map();
+    for (const scene of game.scenes) {
+      /* eslint-disable no-continue */
+      const filteredTokens = this.filterDocuments(scene.tokens);
+      if (filteredTokens.length === 0) continue;
+      sceneMap.set(scene, filteredTokens);
+    }
+
+    /**
+     * Build a Map of CompendiumCollections to their Pack Documents (Items or Token Actors).
+     * @type {Map<CompendiumCollection, CPRItem|CPRActor[]>}
+     */
+    const packMap = new Map();
+    for (const pack of this.filterCompendia(game.packs)) {
+      const { metadata } = pack;
+      let filteredDocuments;
+      // If the pack is of type "Scene", filter the tokens in the scene.
+      if (metadata.type === "Scene") {
+        const sceneDocs = await pack.getDocuments();
+        let tokenList = [];
+        sceneDocs.forEach((scene) => {
+          tokenList = [...tokenList, ...scene.tokens];
+        });
+        filteredDocuments = this.filterDocuments(tokenList);
+      } else {
+        // Else, filter the Actor/Item documents in the pack.
+        const index = Array.from(pack.index);
+        // `filterDocuments()` looks at the first entry in the array for the property: `documentName`.
+        // Typically it's passed an array/map of Documents, in which each entry has this prop by default.
+        // However, in this case, we are passing it an index (array) of limited document data, in which
+        // no entries have that property, so we assign it manually to the first entry in the array.
+        index[0].documentName = metadata.type;
+        const filteredIds = this.filterDocuments(index).map(
+          (docData) => docData._id
+        );
+        filteredDocuments = await pack.getDocuments({ _id__in: filteredIds });
+      }
+      if (filteredDocuments.length === 0) continue;
+      packMap.set(pack, filteredDocuments);
+    } /* eslint-enable no-continue */
+    return { worldItems, worldActors, sceneMap, packMap };
+  }
+
+  /**
+   * Retrieves/organizes the total number of various documents to migrate.
+   *
+   * @return {Object} An object containing the count of items, actors, scenes, tokens, packs, and pack documents.
+   */
+  get totalDocs() {
+    LOGGER.trace("get totalDocs | CPRMigration");
+    if (!this.documents) return null;
+    const { documents } = this;
+    const totals = {
+      items: documents.worldItems.length,
+      actors: documents.worldActors.length,
+      scenes: documents.sceneMap.size,
+      tokens: null,
+      packs: documents.packMap.size,
+      packDocuments: null,
     };
+
+    let tokens = 0;
+    for (const actorList of documents.sceneMap.values()) {
+      tokens += actorList.length;
+    }
+
+    let packDocuments = 0;
+    for (const docList of documents.packMap.values()) {
+      packDocuments += docList.length;
+    }
+
+    totals.tokens = tokens;
+    totals.packDocuments = packDocuments;
+
+    return totals;
+  }
+
+  /**
+   * Prepares progress bars for each document type based on the total number of documents.
+   *
+   * @return {Object} - An object containing progress bars for each document type.
+   *                  - The keys are document types and values are Progress objects.
+   */
+  prepareProgressBars() {
+    LOGGER.trace("prepareProgressBars | CPRMigration");
+    const { totalDocs } = this;
+
+    const progressBars = {};
+    for (const [docType, max] of Object.entries(totalDocs)) {
+      const label = `${CPRSystemUtils.Format(
+        "CPR.migration.status.migratingDocs",
+        {
+          docType: CPRSystemUtils.Localize(`CPR.migration.docType.${docType}`),
+        }
+      )}`;
+      progressBars[docType] = new Progress({ label, max });
+    }
+    return progressBars;
   }
 
   /**
@@ -365,8 +474,10 @@ export default class CPRMigration {
     LOGGER.trace("getProgressBar | CPRMigration");
     if (!document) return null;
     const { collectionName } = document;
-    if (document.isToken) return this.progress.tokens;
+    const isEmbeddedItem = collectionName === "items" && document.isEmbedded;
+    if (isEmbeddedItem) return null; // We do not track progress for items in actors (they are still migrated, of course).
     if (document.pack) return this.progress.packDocuments;
+    if (document.isToken) return this.progress.tokens;
     return this.progress[collectionName];
   }
 
@@ -399,11 +510,11 @@ export default class CPRMigration {
   }
 
   /**
-   * Migrate unowned Items
+   * Migrate Items
    *
    * @param {Array<CPRItem>|Items} items - array of CPRItems or the Items World Collection itself.
    */
-  async migrateItems(items = game.items) {
+  async migrateItems(items = this.documents.worldItems) {
     LOGGER.trace("migrateItems | CPRMigration");
     let good = true;
 
@@ -414,7 +525,7 @@ export default class CPRMigration {
     for (const item of filteredItems) {
       try {
         const migrateItem = await this.migrateItem(item);
-        progress.advance();
+        if (progress) progress.advance();
         itemMigrations.push(migrateItem);
       } catch (err) {
         throw MigrationClass.generateError(item, err);
@@ -442,25 +553,24 @@ export default class CPRMigration {
   /**
    * Migrate actors and their owned items.
    *
-   * @param {Array<CPRActor>|Actors} actors - array of CPRActors or the Actors World Collection itself.
+   * @param {Array<CPRActor>|Actors} actors - filtered array of CPRActors or the Actors World Collection itself.
    */
-  async migrateActors(actors = game.actors) {
+  async migrateActors(actors = this.documents.worldActors) {
     LOGGER.trace("migrateActors | CPRMigration");
-    // actors in the "directory"
     let good = true;
 
     const MigrationClass = this.constructor;
-    const filteredActors = MigrationClass.filterDocuments(actors);
+    // const filteredActors = MigrationClass.filterDocuments(actors);
     const actorMigrations = [];
     // Whether to advance the progress bar for World Actors or for Tokens.
-    const progress = this.getProgressBar(filteredActors[0]);
-    for (const actor of filteredActors) {
+    const progress = this.getProgressBar(actors[0]);
+    for (const actor of actors) {
       try {
         const migrateActor = await this.migrateActor(actor);
         // Migrate actor items.
         const filteredItems = MigrationClass.filterDocuments(actor.items);
         await this.migrateItems(filteredItems);
-        progress.advance();
+        if (progress) progress.advance();
         actorMigrations.push(migrateActor);
       } catch (err) {
         throw MigrationClass.generateError(actor, err);
@@ -487,13 +597,13 @@ export default class CPRMigration {
   /**
    * Migrate scenes. We specifically focus on unlinked tokens for now.
    */
-  async migrateScenes(scenes = game.scenes) {
+  async migrateScenes() {
     LOGGER.trace("migrateScenes | CPRMigration");
     let good = true;
     const sceneMigrations = [];
     this.progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
-    for (const scene of scenes) {
-      const migrateScene = await this.migrateScene(scene);
+    for (const actorList of this.documents.sceneMap.values()) {
+      const migrateScene = await this.migrateActors(actorList);
       this.progress.scenes.advance();
       sceneMigrations.push(migrateScene);
     }
@@ -535,15 +645,8 @@ export default class CPRMigration {
     LOGGER.trace("migrateCompendia | CPRMigration");
     let good = true;
 
-    const filteredPacks = this.constructor.filterCompendia(game.packs);
-    LOGGER.debug(
-      `CPRC Migration | Migrating packs: ${filteredPacks
-        .map((p) => p.metadata.id)
-        .join(", ")}`
-    );
-
     this.progress.packs.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
-    for (const pack of filteredPacks) {
+    for (const [pack, docList] of this.documents.packMap) {
       // If we are migrating locked packs we need to unlock them before migrating
       const wasLocked = pack.locked;
       await pack.configure({ locked: false });
@@ -553,18 +656,14 @@ export default class CPRMigration {
 
       // Iterate over compendium entries - applying fine-tuned migration functions
       const packMigrations = [];
-      const docs = await pack.getDocuments();
       switch (pack.metadata.type) {
+        case "Scene":
         case "Actor": {
-          await this.migrateActors(docs);
+          await this.migrateActors(docList);
           break;
         }
         case "Item": {
-          await this.migrateItems(docs);
-          break;
-        }
-        case "Scene": {
-          await this.migrateScenes(docs);
+          await this.migrateItems(docList);
           break;
         }
         default:

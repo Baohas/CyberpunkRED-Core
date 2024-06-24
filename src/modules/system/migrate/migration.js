@@ -96,12 +96,12 @@ export default class MigrationRunner {
   async runMigrations() {
     LOGGER.trace("runMigrations | MigrationRunner");
 
-    const migrationInstances = this.migrationClasses.map(
-      (Migration) => new Migration()
+    const migrationInstances = this.migrationClasses.map((Migration) =>
+      Migration.initialize()
     );
-    this.migrationInstances = migrationInstances;
+    this.migrationInstances = await Promise.all(migrationInstances);
 
-    for (const migration of migrationInstances) {
+    for (const migration of this.migrationInstances) {
       try {
         // eslint-disable-next-line no-await-in-loop
         const result = await migration.run();
