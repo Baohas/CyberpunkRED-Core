@@ -203,55 +203,22 @@ export default class CPRMigration {
     LOGGER.log(`Migrating to data model version ${this.version}`);
 
     // Migrate settings, if any, first.
-    if (!(await this.migrateSettings())) {
-      CPRSystemUtils.DisplayMessage(
-        "error",
-        CPRSystemUtils.Localize("CPR.migration.status.settingsErrors")
-      );
-      return false;
-    }
+    await this.migrateSettings();
 
-    // migrate unowned items
-    if (!(await this.migrateItems())) {
-      CPRSystemUtils.DisplayMessage(
-        "error",
-        CPRSystemUtils.Localize("CPR.migration.status.itemErrors")
-      );
-      return false;
-    }
+    // migrate world items
+    await this.migrateItems();
 
-    // migrate actors
-    if (!(await this.migrateActors())) {
-      CPRSystemUtils.DisplayMessage(
-        "error",
-        CPRSystemUtils.Localize("CPR.migration.status.actorErrors")
-      );
-      return false;
-    }
+    // migrate world actors
+    await this.migrateActors();
 
-    // unlinked actors (tokens)
-    if (!(await this.migrateScenes())) {
-      CPRSystemUtils.DisplayMessage(
-        "error",
-        CPRSystemUtils.Localize("CPR.migration.status.tokenErrors")
-      );
-      return false;
-    }
+    // unlinked actors (tokens) on scenes
+    await this.migrateScenes();
 
     // compendia
-    if (!(await this.migrateCompendia())) {
-      CPRSystemUtils.DisplayMessage(
-        "error",
-        CPRSystemUtils.Localize("CPR.migration.status.compendiaErrors")
-      );
-      return false;
-    }
+    await this.migrateCompendia();
 
     await this.postMigrate();
 
-    if (this.errors !== 0) {
-      throw Error("Migration errors encountered");
-    }
     await game.settings.set(game.system.id, "dataModelVersion", this.version);
 
     return true;
@@ -516,29 +483,17 @@ export default class CPRMigration {
    */
   async migrateItems(items = this.documents.worldItems) {
     LOGGER.trace("migrateItems | CPRMigration");
-    let good = true;
-
     const MigrationClass = this.constructor;
     const filteredItems = MigrationClass.filterDocuments(items);
     const progress = this.getProgressBar(filteredItems[0]);
-    const itemMigrations = [];
     for (const item of filteredItems) {
       try {
-        const migrateItem = await this.migrateItem(item);
+        await this.migrateItem(item);
         if (progress) progress.advance();
-        itemMigrations.push(migrateItem);
       } catch (err) {
         throw MigrationClass.generateError(item, err);
       }
     }
-
-    const values = await Promise.allSettled(itemMigrations);
-    for (const value of values.filter((v) => v.status !== "fulfilled")) {
-      LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
-      LOGGER.error(value.reason.stack);
-      good = false;
-    }
-    return good;
   }
 
   /**
@@ -557,32 +512,20 @@ export default class CPRMigration {
    */
   async migrateActors(actors = this.documents.worldActors) {
     LOGGER.trace("migrateActors | CPRMigration");
-    let good = true;
-
     const MigrationClass = this.constructor;
-    // const filteredActors = MigrationClass.filterDocuments(actors);
-    const actorMigrations = [];
     // Whether to advance the progress bar for World Actors or for Tokens.
     const progress = this.getProgressBar(actors[0]);
     for (const actor of actors) {
       try {
-        const migrateActor = await this.migrateActor(actor);
+        await this.migrateActor(actor);
         // Migrate actor items.
         const filteredItems = MigrationClass.filterDocuments(actor.items);
         await this.migrateItems(filteredItems);
         if (progress) progress.advance();
-        actorMigrations.push(migrateActor);
       } catch (err) {
         throw MigrationClass.generateError(actor, err);
       }
     }
-    const values = await Promise.allSettled(actorMigrations);
-    for (const value of values.filter((v) => v.status !== "fulfilled")) {
-      LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
-      LOGGER.error(value.reason.stack);
-      good = false;
-    }
-    return good;
   }
 
   /**
@@ -599,36 +542,10 @@ export default class CPRMigration {
    */
   async migrateScenes() {
     LOGGER.trace("migrateScenes | CPRMigration");
-    let good = true;
-    const sceneMigrations = [];
     this.progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
     for (const actorList of this.documents.sceneMap.values()) {
-      const migrateScene = await this.migrateActors(actorList);
+      await this.migrateActors(actorList);
       this.progress.scenes.advance();
-      sceneMigrations.push(migrateScene);
-    }
-    const values = await Promise.allSettled(sceneMigrations);
-    for (const value of values.filter((v) => v.status !== "fulfilled")) {
-      LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
-      LOGGER.error(value.reason.stack);
-      good = false;
-    }
-    return good;
-  }
-
-  /**
-   * Migrate scene
-   */
-  async migrateScene(scene) {
-    LOGGER.trace("migrateScene | CPRMigration");
-    const MigrationClass = this.constructor;
-    const tokenActors = MigrationClass.filterDocuments(scene.tokens);
-    const tokenMigrations = [];
-    await this.migrateActors(tokenActors);
-    const values = await Promise.allSettled(tokenMigrations);
-    for (const value of values.filter((v) => v.status !== "fulfilled")) {
-      LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
-      LOGGER.error(value.reason.stack);
     }
   }
 
@@ -643,7 +560,6 @@ export default class CPRMigration {
    */
   async migrateCompendia() {
     LOGGER.trace("migrateCompendia | CPRMigration");
-    let good = true;
 
     this.progress.packs.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
     for (const [pack, docList] of this.documents.packMap) {
@@ -655,7 +571,6 @@ export default class CPRMigration {
       await pack.migrate();
 
       // Iterate over compendium entries - applying fine-tuned migration functions
-      const packMigrations = [];
       switch (pack.metadata.type) {
         case "Scene":
         case "Actor": {
@@ -671,16 +586,9 @@ export default class CPRMigration {
       }
       this.progress.packs.advance();
 
-      const values = await Promise.allSettled(packMigrations);
-      for (const value of values.filter((v) => v.status !== "fulfilled")) {
-        LOGGER.error(`Migration (${this.name}) error: ${value.reason.message}`);
-        LOGGER.error(value.reason.stack);
-        good = false;
-      }
       // Lock packs if they were locked pre-migration
-      await pack.configure({ locked: wasLocked });
+      pack.configure({ locked: wasLocked });
     }
-    return good;
   }
 
   /**

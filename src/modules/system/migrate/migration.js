@@ -91,7 +91,7 @@ export default class MigrationRunner {
    * Run all of the migrations in the right order, waiting for them to complete before proceeding to the next.
    * There's a lot of async/await wrangling going on here; still an amateur on JS asynchronicity.
    *
-   * @returns {Boolean} - True if all migrations completed successfully
+   * @returns {Promise<Boolean>} - True if all migrations completed successfully
    */
   async runMigrations() {
     LOGGER.trace("runMigrations | MigrationRunner");
@@ -107,6 +107,7 @@ export default class MigrationRunner {
         const result = await migration.run();
         if (!result) return false;
       } catch (err) {
+        LOGGER.error(err);
         CPRSystemUtils.DisplayMessage(
           "error",
           `Fatal error while migrating to ${migration.version}: ${err.message}`
