@@ -383,22 +383,35 @@ export default class CPRMigration {
   /**
    * Generate an error and post a message with useful information for a failed migration.
    *
+   * We have the following document types which may fail to migrate:
+   *   - World Items
+   *   - World Actors
+   *     - Items owned by World Actors
+   *   - Token Actors
+   *     - Items owned by Token Actors
+   *   - Pack Items
+   *   - Pack Actors
+   *     - Items owned by Pack Actors
+   *   - Pack Token Actors (from Scene packs)
+   *     - Items owned by Pack Token Actors
+   *
    * @param {type} document - The document whose migration caused an error.
    * @param {Error} error - The Error object
    * @return {Error} The Error object
    */
   static generateError(document, error) {
     LOGGER.trace("generateError | CPRMigration");
-    const docInfo = { scene: null, actor: null, item: null, token: null };
+    const docInfo = {
+      pack: null,
+      scene: null,
+      token: null,
+      actor: null,
+      item: null,
+    };
 
     const { documentName } = document;
     /**
-     *  We have the following document types which may fail to migrate:
-     *   - World Items
-     *   - World Actors
-     *   - Items owned by World Actors
-     *   - Token Actors
-     *   - Items owned by Token Actors
+     *
      */
     switch (documentName) {
       case "Actor":
@@ -407,22 +420,29 @@ export default class CPRMigration {
       case "Item":
         docInfo.item = document;
         if (document.isEmbedded) {
+          // If this is true, the actor won't generate its own error message.
+          error.fromEmbeddedItem = true;
           docInfo.actor = document.actor;
         }
         break;
       default:
         break;
     }
-    if (docInfo.actor?.isToken) {
-      docInfo.token = document.token;
-      docInfo.scene = document.token.parent;
+    const { actor } = docInfo;
+    if (actor?.isToken) {
+      docInfo.token = actor.token;
+      docInfo.scene = actor.token.parent;
     }
+    if (document.pack) docInfo.pack = document.compendium.metadata;
 
     let dataStr = `\nFailed Document: ${document.name}\nUUID: ${document.uuid}`;
     /* eslint-disable no-continue */
     for (const [key, value] of Object.entries(docInfo)) {
       if (!value) continue;
-      dataStr += `\n${key.capitalize()}: ${value.name} (${value.id})`;
+      // Only packs have metadata, and their human-readable string is in the `metadata.label`
+      // property rather than the `name` property.
+      const label = value.label || value.name;
+      dataStr += `\n${key.capitalize()}: ${label} (${value.id})`;
     } /* eslint-enable no-continue */
 
     const migrationFailString = `Migration Script: '${this.name}' failed.`;
@@ -523,6 +543,9 @@ export default class CPRMigration {
         await this.migrateItems(filteredItems);
         if (progress) progress.advance();
       } catch (err) {
+        // If this is true, the actor won't generate its own error message also,
+        // but just pass along the one generated from the failed item.
+        if (err.fromEmbeddedItem) throw err;
         throw MigrationClass.generateError(actor, err);
       }
     }
