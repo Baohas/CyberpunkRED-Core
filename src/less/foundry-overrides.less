@@ -209,6 +209,38 @@ input::placeholder {
 }
 
 /*
+ * Application V2 Overrides
+ *
+ * As of V12 Foundry has it's own dark/light mode based on the browser. In cases
+ * where the user in in dark mode and the system is in light mode we want to correct
+ * the styling for Foundry specific menus.
+ */
+
+html[data-cpr-theme="default"] body.theme-dark {
+  form.region-config {
+    label {
+      color: #eaeaea !important;
+    }
+
+    .hint {
+      color: #c0c0c0 !important;
+    }
+  }
+}
+
+html[data-cpr-theme="darkmode"] body.theme-light {
+  form.region-config {
+    label {
+      color: var(--cpr-color-black) !important;
+    }
+
+    .hint {
+      color: var(--cpr-color-near-black) !important;
+    }
+  }
+}
+
+/*
  * Prosemirror Overrides
  *
  * .prosemirror gets a lot of styling from the Journals section below as well
