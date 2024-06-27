@@ -110,6 +110,13 @@ export class CPRRoll {
     LOGGER.trace("addMod | CPRRoll | Called.");
     if (Array.isArray(modArray)) {
       modArray.forEach((m) => {
+        if (this.mods.find((mod) => mod.id === m.id)) {
+          LOGGER.warn(
+            "Mod already exists on the roll. Skipping addition of mod:",
+            m
+          );
+          return;
+        }
         if (m && m.value !== 0) this.mods.push(m);
       });
     } else {

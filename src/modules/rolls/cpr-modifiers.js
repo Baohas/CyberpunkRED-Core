@@ -258,6 +258,14 @@ export default class CPRMod {
       filteredMods = filteredMods.concat(deathSavePenaltyMods);
     }
 
+    // Dedupe by key.
+    filteredMods = filteredMods.reduce((acc, mod) => {
+      if (!acc.find((m) => m.key === mod.key)) {
+        acc.push(mod);
+      }
+      return acc;
+    }, []);
+
     return filteredMods;
   }
 
