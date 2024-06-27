@@ -24,6 +24,7 @@
   - These will remain on existing Characters
   - They will not be added to new Characters
 - Rename default `Local Expert` skill to `Local Expert (Your Home)`
+- Add CSS theme support for Monks Active Tile Triggers Module
 - Add ability to set weapon ignore percentage
 - Add ability to set weapon to ignore armor below set SP amount
 
