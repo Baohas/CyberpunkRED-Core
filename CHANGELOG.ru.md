@@ -24,6 +24,7 @@
   - Они останутся на уже существующих персонажах
   - На новых персонажей они добавляться не будут
 - Навык `знание местности` по умолчанию переименован в `Знание местности (Родная местность)`
+- Add CSS theme support for Monks Active Tile Triggers Module
 - Add ability to set weapon ignore percentage
 - Add ability to set weapon to ignore armor below set SP amount
 
