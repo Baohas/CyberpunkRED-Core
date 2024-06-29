@@ -279,39 +279,29 @@ Hooks.once("init", async () => {
 Hooks.once("ready", async () => {
   if (!game.user.isGM) return;
 
-  // Retrofit the old version scheme into the new one. The active effects migration assumes
-  // the legacy migration scripts have been run before (i.e. they're on 0.80.0). If that is
-  // not the case, we force them to migrate to 0.80.0 before moving to "1".
-  let dataModelVersion = game.settings.get(game.system.id, "dataModelVersion")
-    ? game.settings.get(game.system.id, "dataModelVersion")
-    : "0.0";
+  const dataModelVersion = game.settings.get(
+    game.system.id,
+    "dataModelVersion"
+  );
 
-  let migrationSuccess = true;
-  if (dataModelVersion !== "newCprWorld") {
-    LOGGER.debug(`Data model before comparison: ${dataModelVersion}`);
-    if (dataModelVersion.toString().indexOf(".") > -1)
-      dataModelVersion = foundry.utils.isNewerVersion(
-        "0.80.0",
-        dataModelVersion
-      )
-        ? -1
-        : 0;
-    LOGGER.debug(`New data model version is: ${dataModelVersion}`);
+  // Brand new world, already at the latest data model, no migrations needed.
+  if (dataModelVersion === "newCprWorld") return;
 
-    // The `MigrationRunner` constructor expects to be passed two integer values,
-    const MR = new MigrationRunner(
-      parseInt(dataModelVersion, 10),
-      DATA_MODEL_VERSION
-    );
-    // Set singleton for easy access to the MigrationRunner.
-    game.cpr.MigrationRunner = MR;
-    // If no migrations needed, return;
-    if (!MR.needsMigration) return;
-    // `migrateWorld` returns true on successful migration
-    migrationSuccess = await MR.migrateWorld();
-    // close all progress bars.
-    if (MR.totalMigrations) MR.closeProgressBars();
-  }
+  // The `MigrationRunner` constructor expects to be passed two integer values,
+  // the data model version we are migrating from, and the data model version
+  // we are migrating to.
+  const MR = new MigrationRunner(
+    parseInt(dataModelVersion, 10),
+    DATA_MODEL_VERSION
+  );
+  // Set singleton for easy access to the MigrationRunner.
+  game.cpr.MigrationRunner = MR;
+  // If no migrations needed, return;
+  if (!MR.needsMigration) return;
+  // `migrateWorld` returns true on successful migration
+  const migrationSuccess = await MR.migrateWorld();
+  // close all progress bars.
+  if (MR.totalMigrations) MR.closeProgressBars();
 
   if (migrationSuccess) {
     await game.settings.set(
