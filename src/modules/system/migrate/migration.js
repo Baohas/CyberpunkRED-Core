@@ -92,6 +92,10 @@ export default class MigrationRunner {
         "notify",
         CPRSystemUtils.Localize("CPR.migration.status.migrationsComplete")
       );
+      // This makes it so the app no longer acts as a modal,
+      // and users can interact with the rest of Foundry again.
+      migrationApp.element.close();
+      migrationApp.element.show();
     }
 
     return this.migrationSuccessful;
