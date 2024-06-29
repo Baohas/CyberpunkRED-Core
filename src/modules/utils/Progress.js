@@ -60,7 +60,7 @@ export default class Progress {
     migrationBar.className = "migration-bar";
     const migrationContext = document.createElement("label");
     migrationContext.id = "cpr-mig-context";
-    migrationContext.innerHTML = "Migration Test";
+    migrationContext.innerHTML = this.label;
     const migrationProgress = document.createElement("label");
     migrationProgress.id = "cpr-mig-progress";
     migrationProgress.innerHTML = `${percent}%`;
