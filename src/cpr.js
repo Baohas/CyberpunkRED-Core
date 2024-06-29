@@ -16,7 +16,6 @@ import LOGGER from "./modules/utils/cpr-logger.js";
 import CPRMacro from "./modules/utils/cpr-macros.js";
 import SystemUtils from "./modules/utils/cpr-systemUtils.js";
 import MigrationRunner from "./modules/system/migrate/migration.js";
-import CPRMigration from "./modules/system/migrate/cpr-migration.js";
 import CPR from "./modules/system/config.js";
 
 // Function imports
@@ -306,11 +305,14 @@ Hooks.once("ready", async () => {
     );
     // Set singleton for easy access to the MigrationRunner.
     game.cpr.MigrationRunner = MR;
+    // If no migrations needed, return;
+    if (!MR.needsMigration) return;
     // `migrateWorld` returns true on successful migration
     migrationSuccess = await MR.migrateWorld();
     // close all progress bars.
     if (MR.totalMigrations) MR.closeProgressBars();
   }
+
   if (migrationSuccess) {
     await game.settings.set(
       game.system.id,
