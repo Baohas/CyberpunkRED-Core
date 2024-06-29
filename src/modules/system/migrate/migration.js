@@ -27,6 +27,16 @@ export default class MigrationRunner {
   }
 
   /**
+   * Get the migration app, if it exists.
+   * @returns {MigrationApp|null}
+   */
+  static get app() {
+    LOGGER.trace("get app | MigrationRunner");
+    const app = foundry.applications.instances.get("cpr-migration");
+    return app || null;
+  }
+
+  /**
    * Knowing the data model versions, figure out which migration scripts (as objects) to run.
    *
    * @return {Array<typeof CPRMigration>} - an ordered list of CPRMigration subclasses.
@@ -64,8 +74,8 @@ export default class MigrationRunner {
     }
 
     // Open migration application.
-    const doMigration = new MigrationApp({ migrationRunner: this });
-    doMigration.render({ force: true });
+    const migrationApp = new MigrationApp({ migrationRunner: this });
+    migrationApp.render({ force: true });
 
     CPRSystemUtils.DisplayMessage(
       "notify",
