@@ -22,15 +22,26 @@ export default class MigrationRunner {
     this.currentDataModelVersion = currDataModelVersion;
     this.newDataModelVersion = newDataModelVersion;
 
+    this.#migrationClasses = this.filterMigrationClasses();
     this.totalMigrations = this.migrationClasses.length;
-    this.migrationInstances = null; // will be an array of CPRMigration instances, initialized in `migrateWorld`.
 
-    // The next two properties are set in `migrateWorld()`, if migrations are needed.
+    // The following properties are set in `migrateWorld()`or `runMigrations()`.
+    // They are not necessary to compute unless migrations are needed.
+    this.migrationInstances = null;
+    this.documentFilters = null;
     this.documents = null;
     this.progress = null;
 
     // This is also set in `migrateWorld()`, if migrations completed successfully.
     this.migrationSuccessful = null;
+  }
+
+  /** @type {Array<typeof CPRMigration>} */
+  #migrationClasses;
+
+  get migrationClasses() {
+    LOGGER.trace("get migrationClasses | MigrationRunner");
+    return this.#migrationClasses;
   }
 
   /**
@@ -51,25 +62,6 @@ export default class MigrationRunner {
   get needsMigration() {
     LOGGER.trace("get needsMigration | MigrationRunner");
     return this.totalMigrations > 0;
-  }
-
-  /**
-   * Knowing the data model versions, figure out which migration scripts (as objects) to run.
-   *
-   * @return {Array<typeof CPRMigration>} - an ordered list of CPRMigration subclasses.
-   */
-  get migrationClasses() {
-    LOGGER.trace("get migrationClasses | MigrationRunner");
-    const { currentDataModelVersion, newDataModelVersion } = this;
-    const migrationClasses = Object.values(Migrations)
-      .filter((Migration) => {
-        const { version } = Migration;
-        return (
-          version > currentDataModelVersion && version <= newDataModelVersion
-        );
-      })
-      .sort((a, b) => (a.version > b.version ? 1 : -1));
-    return migrationClasses;
   }
 
   /**
@@ -104,6 +96,25 @@ export default class MigrationRunner {
     totals.packDocuments = packDocuments;
 
     return totals;
+  }
+
+  /**
+   * Knowing the data model versions, figure out which migration scripts (as objects) to run.
+   *
+   * @return {Array<typeof CPRMigration>} - an ordered list of CPRMigration subclasses.
+   */
+  filterMigrationClasses() {
+    LOGGER.trace("filterMigrationClasses | MigrationRunner");
+    const { currentDataModelVersion, newDataModelVersion } = this;
+    const migrationClasses = Object.values(Migrations)
+      .filter((Migration) => {
+        const { version } = Migration;
+        return (
+          version > currentDataModelVersion && version <= newDataModelVersion
+        );
+      })
+      .sort((a, b) => (a.version > b.version ? 1 : -1));
+    return migrationClasses;
   }
 
   /**
@@ -215,7 +226,7 @@ export default class MigrationRunner {
       return this.filterDocuments(tokenActors);
     }
 
-    const documentTypes = this.getDocumentTypes(docName);
+    const documentTypes = this.documentFilters[docName];
     if (!documentTypes.size) return docList;
 
     const filteredDocs = docList.filter((doc) => {
@@ -334,6 +345,10 @@ export default class MigrationRunner {
     const migrationApp = new MigrationApp({ migrationRunner: this });
     await migrationApp.render({ force: true });
 
+    this.documentFilters = {
+      Item: this.getDocumentTypes("Item"),
+      Actor: this.getDocumentTypes("Actor"),
+    };
     this.documents = await this.prepareDocumentsForMigration();
     this.progress = this.prepareProgressBars();
 
