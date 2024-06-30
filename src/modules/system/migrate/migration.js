@@ -118,28 +118,87 @@ export default class MigrationRunner {
   }
 
   /**
-   * Retrieves the document filters for a given document name.
+   * This is the top level entry point for executing migrations. This code assumes the user is a GM. It will
+   * figure out what migrations to run, and dispatch them for execution.
    *
-   * @param {string} docName - The name of the document, either "Item" or "Actor".
-   * @return {Set} The set of document filters.
+   * @param {Number} currentDataModelVersion - the current data model version
+   * @param {Number} newDataModelVersion - the data model version we want to get to, may be multiple versions ahead
+   * @returns {Boolean} - True if all migrations completed successfully or no migrations are needed
    */
-  getDocumentTypes(docName) {
-    LOGGER.trace("getDocumentTypes | MigrationRunner");
-    let filters = new Set();
-    for (const Migration of this.migrationClasses) {
-      const { mixins, types } = Migration.documentTypeFilters[docName];
-      if (!types.length && !mixins.length) return filters;
+  async migrateWorld() {
+    LOGGER.trace("migrateWorld | MigrationRunner");
 
-      let docTypeSet = new Set(types);
-      for (const mixin of mixins) {
-        const mixinTypes = new Set(
-          CPRSystemUtils.getDocTypesFromMixin(mixin, docName)
-        );
-        docTypeSet = docTypeSet.union(mixinTypes);
-      }
-      filters = filters.union(docTypeSet);
+    const { currentDataModelVersion, newDataModelVersion } = this;
+
+    // Open migration application before anything else.
+    const migrationApp = new MigrationApp({ migrationRunner: this });
+    await migrationApp.render({ force: true });
+
+    this.documentFilters = {
+      Item: this.getDocumentTypes("Item"),
+      Actor: this.getDocumentTypes("Actor"),
+    };
+    this.documents = await this.prepareDocumentsForMigration();
+    this.progress = this.prepareProgressBars();
+
+    CPRSystemUtils.DisplayMessage(
+      "notify",
+      `Beginning Migrations of Cyberpunk Red Core from Data Model ${currentDataModelVersion} to ${newDataModelVersion}.`
+    );
+    CPRSystemUtils.DisplayMessage(
+      "warn",
+      CPRSystemUtils.Localize("CPR.migration.status.waitForEnd")
+    );
+    this.migrationSuccessful = await this.runMigrations();
+
+    if (this.migrationSuccessful) {
+      CPRSystemUtils.DisplayMessage(
+        "notify",
+        CPRSystemUtils.Localize("CPR.migration.status.migrationsComplete")
+      );
+      // This makes it so the app no longer acts as a modal,
+      // and users can interact with the rest of Foundry again.
+      migrationApp.element.close();
+      migrationApp.element.show();
     }
-    return filters;
+
+    return this.migrationSuccessful;
+  }
+
+  /**
+   * Run all of the migrations in the right order, waiting for them to complete before proceeding to the next.
+   * There's a lot of async/await wrangling going on here; still an amateur on JS asynchronicity.
+   *
+   * @returns {Promise<Boolean>} - True if all migrations completed successfully
+   */
+  async runMigrations() {
+    LOGGER.trace("runMigrations | MigrationRunner");
+
+    this.migrationInstances = this.migrationClasses.map(
+      (Migration) => new Migration()
+    );
+
+    for (const migration of this.migrationInstances) {
+      try {
+        const result = await migration.run();
+        if (!result) return false;
+      } catch (err) {
+        LOGGER.error(err);
+        CPRSystemUtils.DisplayMessage(
+          "error",
+          `Fatal error while migrating to ${migration.version}: ${err.message}`
+        );
+        return false;
+      }
+      if (migration.flush) {
+        CPRSystemUtils.DisplayMessage(
+          "notify",
+          `Migration to data model ${migration.version} complete, please refresh your browser tab to continue.`
+        );
+        return false;
+      }
+    }
+    return true;
   }
 
   /**
@@ -306,6 +365,31 @@ export default class MigrationRunner {
   }
 
   /**
+   * Retrieves the document filters for a given document name.
+   *
+   * @param {string} docName - The name of the document, either "Item" or "Actor".
+   * @return {Set} The set of document filters.
+   */
+  getDocumentTypes(docName) {
+    LOGGER.trace("getDocumentTypes | MigrationRunner");
+    let filters = new Set();
+    for (const Migration of this.migrationClasses) {
+      const { mixins, types } = Migration.documentTypeFilters[docName];
+      if (!types.length && !mixins.length) return filters;
+
+      let docTypeSet = new Set(types);
+      for (const mixin of mixins) {
+        const mixinTypes = new Set(
+          CPRSystemUtils.getDocTypesFromMixin(mixin, docName)
+        );
+        docTypeSet = docTypeSet.union(mixinTypes);
+      }
+      filters = filters.union(docTypeSet);
+    }
+    return filters;
+  }
+
+  /**
    * Prepares progress bars for each document type based on the total number of documents.
    *
    * @return {Object} - An object containing progress bars for each document type.
@@ -326,90 +410,6 @@ export default class MigrationRunner {
       progressBars[docType] = new Progress({ label, max });
     }
     return progressBars;
-  }
-
-  /**
-   * This is the top level entry point for executing migrations. This code assumes the user is a GM. It will
-   * figure out what migrations to run, and dispatch them for execution.
-   *
-   * @param {Number} currentDataModelVersion - the current data model version
-   * @param {Number} newDataModelVersion - the data model version we want to get to, may be multiple versions ahead
-   * @returns {Boolean} - True if all migrations completed successfully or no migrations are needed
-   */
-  async migrateWorld() {
-    LOGGER.trace("migrateWorld | MigrationRunner");
-
-    const { currentDataModelVersion, newDataModelVersion } = this;
-
-    // Open migration application before anything else.
-    const migrationApp = new MigrationApp({ migrationRunner: this });
-    await migrationApp.render({ force: true });
-
-    this.documentFilters = {
-      Item: this.getDocumentTypes("Item"),
-      Actor: this.getDocumentTypes("Actor"),
-    };
-    this.documents = await this.prepareDocumentsForMigration();
-    this.progress = this.prepareProgressBars();
-
-    CPRSystemUtils.DisplayMessage(
-      "notify",
-      `Beginning Migrations of Cyberpunk Red Core from Data Model ${currentDataModelVersion} to ${newDataModelVersion}.`
-    );
-    CPRSystemUtils.DisplayMessage(
-      "warn",
-      CPRSystemUtils.Localize("CPR.migration.status.waitForEnd")
-    );
-    this.migrationSuccessful = await this.runMigrations();
-
-    if (this.migrationSuccessful) {
-      CPRSystemUtils.DisplayMessage(
-        "notify",
-        CPRSystemUtils.Localize("CPR.migration.status.migrationsComplete")
-      );
-      // This makes it so the app no longer acts as a modal,
-      // and users can interact with the rest of Foundry again.
-      migrationApp.element.close();
-      migrationApp.element.show();
-    }
-
-    return this.migrationSuccessful;
-  }
-
-  /**
-   * Run all of the migrations in the right order, waiting for them to complete before proceeding to the next.
-   * There's a lot of async/await wrangling going on here; still an amateur on JS asynchronicity.
-   *
-   * @returns {Promise<Boolean>} - True if all migrations completed successfully
-   */
-  async runMigrations() {
-    LOGGER.trace("runMigrations | MigrationRunner");
-
-    this.migrationInstances = this.migrationClasses.map(
-      (Migration) => new Migration()
-    );
-
-    for (const migration of this.migrationInstances) {
-      try {
-        const result = await migration.run();
-        if (!result) return false;
-      } catch (err) {
-        LOGGER.error(err);
-        CPRSystemUtils.DisplayMessage(
-          "error",
-          `Fatal error while migrating to ${migration.version}: ${err.message}`
-        );
-        return false;
-      }
-      if (migration.flush) {
-        CPRSystemUtils.DisplayMessage(
-          "notify",
-          `Migration to data model ${migration.version} complete, please refresh your browser tab to continue.`
-        );
-        return false;
-      }
-    }
-    return true;
   }
 
   /**
