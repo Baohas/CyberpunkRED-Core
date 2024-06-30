@@ -19,7 +19,6 @@ export default class MigrationRunner {
    */
   constructor(currDataModelVersion, newDataModelVersion) {
     LOGGER.trace("constructor | MigrationRunner");
-    this.allMigrations = Migrations;
     this.currentDataModelVersion = currDataModelVersion;
     this.newDataModelVersion = newDataModelVersion;
 
@@ -108,6 +107,31 @@ export default class MigrationRunner {
   }
 
   /**
+   * Retrieves the document filters for a given document name.
+   *
+   * @param {string} docName - The name of the document, either "Item" or "Actor".
+   * @return {Set} The set of document filters.
+   */
+  getDocumentTypes(docName) {
+    LOGGER.trace("getDocumentTypes | MigrationRunner");
+    let filters = new Set();
+    for (const Migration of this.migrationClasses) {
+      const { mixins, types } = Migration.documentTypeFilters[docName];
+      if (!types.length && !mixins.length) return filters;
+
+      let docTypeSet = new Set(types);
+      for (const mixin of mixins) {
+        const mixinTypes = new Set(
+          CPRSystemUtils.getDocTypesFromMixin(mixin, docName)
+        );
+        docTypeSet = docTypeSet.union(mixinTypes);
+      }
+      filters = filters.union(docTypeSet);
+    }
+    return filters;
+  }
+
+  /**
    * Filters and organizes the various documents for migration:
    *   - World Items
    *   - World Actors
@@ -118,7 +142,7 @@ export default class MigrationRunner {
    *
    * @return {Promise<Object>} An object containing the world items, world actors, scene Map, and pack Map.
    */
-  static async prepareDocumentsForMigration() {
+  async prepareDocumentsForMigration() {
     LOGGER.trace("prepareDocumentsForMigration | MigrationRunner");
     // Prepare world items and actors.
     const worldItems = this.filterDocuments(game.items);
@@ -141,7 +165,7 @@ export default class MigrationRunner {
      * @type {Map<CompendiumCollection, CPRItem|CPRActor[]>}
      */
     const packMap = new Map();
-    for (const pack of this.filterCompendia(game.packs)) {
+    for (const pack of MigrationRunner.filterCompendia(game.packs)) {
       const { metadata } = pack;
       let filteredDocuments;
       // If the pack is of type "Scene", filter the tokens in the scene.
@@ -177,7 +201,7 @@ export default class MigrationRunner {
    * @param {Array<Document>|WorldCollection} docList - The list of documents or World Collection to filter
    * @return {Array<CPRActor|CPRItem>} An array of filtered Actors or Items (but not both).
    */
-  static filterDocuments(docList) {
+  filterDocuments(docList) {
     LOGGER.trace("filterDocuments | MigrationRunner");
     if (!Array.isArray(docList)) docList = Array.from(docList);
     if (!docList.length) return docList;
@@ -191,19 +215,11 @@ export default class MigrationRunner {
       return this.filterDocuments(tokenActors);
     }
 
-    const { mixins, types } = this.documentTypeFilters[docName];
-    if (!mixins.length && !types.length) return docList;
+    const documentTypes = this.getDocumentTypes(docName);
+    if (!documentTypes.size) return docList;
 
     const filteredDocs = docList.filter((doc) => {
-      let docTypeList = [...types];
-      for (const mixin of mixins) {
-        docTypeList = [
-          ...docTypeList,
-          ...CPRSystemUtils.getDocTypesFromMixin(mixin, docName),
-        ];
-      }
-      const docTypeSet = new Set(docTypeList); // Use Set to remove duplicates
-      return docTypeSet.has(doc.type); // Filter for doc type.
+      return documentTypes.has(doc.type); // Filter for doc type.
     });
     return filteredDocs;
   }
@@ -318,8 +334,8 @@ export default class MigrationRunner {
     const migrationApp = new MigrationApp({ migrationRunner: this });
     await migrationApp.render({ force: true });
 
-    this.documents = await MigrationRunner.prepareDocumentsForMigration();
-    this.progress = MigrationRunner.prepareProgressBars();
+    this.documents = await this.prepareDocumentsForMigration();
+    this.progress = this.prepareProgressBars();
 
     CPRSystemUtils.DisplayMessage(
       "notify",
@@ -354,10 +370,9 @@ export default class MigrationRunner {
   async runMigrations() {
     LOGGER.trace("runMigrations | MigrationRunner");
 
-    const migrationInstances = this.migrationClasses.map((Migration) =>
-      Migration.initialize()
+    this.migrationInstances = this.migrationClasses.map(
+      (Migration) => new Migration()
     );
-    this.migrationInstances = await Promise.all(migrationInstances);
 
     for (const migration of this.migrationInstances) {
       try {
