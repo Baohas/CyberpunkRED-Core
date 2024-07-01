@@ -170,7 +170,14 @@ export default class CPRMod {
         attackRollBonusKeys.push("bonuses.singleShot");
         attackRollBonusKeys.push("bonuses.aimedShot");
       } else if (prototypeChain.includes("CPRAutofireRoll")) {
-        attackRollBonusKeys.push("bonuses.autofire");
+        /* The autofire key can be used by both combat and skill checks.
+           It's the only key that's used twice therefore we need to ensure
+           it's only added onece. This check only adds the autofire mod if
+           it hasn't been added as a skillmod already.
+        */
+        if (!filteredMods.find((m) => m.key === "bonuses.autofire")) {
+          attackRollBonusKeys.push("bonuses.autofire");
+        }
       } else if (prototypeChain.includes("CPRSuppressiveFireRoll")) {
         attackRollBonusKeys.push("bonuses.suppressive");
       }
@@ -257,14 +264,6 @@ export default class CPRMod {
       );
       filteredMods = filteredMods.concat(deathSavePenaltyMods);
     }
-
-    // Dedupe by key.
-    filteredMods = filteredMods.reduce((acc, mod) => {
-      if (!acc.find((m) => m.key === mod.key)) {
-        acc.push(mod);
-      }
-      return acc;
-    }, []);
 
     return filteredMods;
   }
