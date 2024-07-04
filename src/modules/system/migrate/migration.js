@@ -420,10 +420,6 @@ export default class MigrationRunner {
   closeProgressBars() {
     LOGGER.trace("closeProgressBars | MigrationRunner");
     // close all progress bars.
-    if (!this.migrationInstances)
-      throw new Error("MigrationRunner#migrationInstances has not been set.");
-    for (const migration of this.migrationInstances) {
-      Object.values(migration.progress).forEach((bar) => bar.close());
-    }
+    Object.values(this.progress).forEach((bar) => bar.close());
   }
 }

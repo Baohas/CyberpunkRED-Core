@@ -49,6 +49,11 @@ export default class CPRMigration {
     Actor: { types: [], mixins: [] },
   };
 
+  static get runner() {
+    LOGGER.trace("get runner | CPRMigration");
+    return game.cpr.MigrationRunner || null;
+  }
+
   /**
    * Execute the migration code. This should not be overidden.
    */
@@ -210,9 +215,10 @@ export default class CPRMigration {
     const { collectionName } = document;
     const isEmbeddedItem = collectionName === "items" && document.isEmbedded;
     if (isEmbeddedItem) return null; // We do not track progress for items in actors (they are still migrated, of course).
-    if (document.pack) return this.progress.packDocuments;
-    if (document.isToken) return this.progress.tokens;
-    return this.progress[collectionName];
+    const { runner } = CPRMigration;
+    if (document.pack) return runner.progress.packDocuments;
+    if (document.isToken) return runner.progress.tokens;
+    return runner.progress[collectionName];
   }
 
   /**
@@ -248,10 +254,10 @@ export default class CPRMigration {
    *
    * @param {Array<CPRItem>|Items} items - array of CPRItems or the Items World Collection itself.
    */
-  async migrateItems(items = this.documents.worldItems) {
+  async migrateItems(items = CPRMigration.runner.documents.worldItems) {
     LOGGER.trace("migrateItems | CPRMigration");
     const MigrationClass = this.constructor;
-    const filteredItems = MigrationClass.filterDocuments(items);
+    const filteredItems = CPRMigration.runner.filterDocuments(items);
     const progress = this.getProgressBar(filteredItems[0]);
     for (const item of filteredItems) {
       try {
@@ -277,7 +283,7 @@ export default class CPRMigration {
    *
    * @param {Array<CPRActor>|Actors} actors - filtered array of CPRActors or the Actors World Collection itself.
    */
-  async migrateActors(actors = this.documents.worldActors) {
+  async migrateActors(actors = CPRMigration.runner.documents.worldActors) {
     LOGGER.trace("migrateActors | CPRMigration");
     const MigrationClass = this.constructor;
     // Whether to advance the progress bar for World Actors or for Tokens.
@@ -286,7 +292,7 @@ export default class CPRMigration {
       try {
         await this.migrateActor(actor);
         // Migrate actor items.
-        const filteredItems = MigrationClass.filterDocuments(actor.items);
+        const filteredItems = CPRMigration.runner.filterDocuments(actor.items);
         await this.migrateItems(filteredItems);
         if (progress) progress.advance();
       } catch (err) {
@@ -312,10 +318,11 @@ export default class CPRMigration {
    */
   async migrateScenes() {
     LOGGER.trace("migrateScenes | CPRMigration");
-    this.progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
-    for (const actorList of this.documents.sceneMap.values()) {
+    const { runner } = CPRMigration;
+    runner.progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
+    for (const actorList of runner.documents.sceneMap.values()) {
       await this.migrateActors(actorList);
-      this.progress.scenes.advance();
+      runner.progress.scenes.advance();
     }
   }
 
@@ -330,9 +337,9 @@ export default class CPRMigration {
    */
   async migrateCompendia() {
     LOGGER.trace("migrateCompendia | CPRMigration");
-
-    this.progress.packs.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
-    for (const [pack, docList] of this.documents.packMap) {
+    const { runner } = CPRMigration;
+    runner.progress.packs.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
+    for (const [pack, docList] of runner.documents.packMap) {
       // If we are migrating locked packs we need to unlock them before migrating
       const wasLocked = pack.locked;
       await pack.configure({ locked: false });
@@ -354,7 +361,7 @@ export default class CPRMigration {
         default:
           break;
       }
-      this.progress.packs.advance();
+      runner.progress.packs.advance();
 
       // Lock packs if they were locked pre-migration
       pack.configure({ locked: wasLocked });
