@@ -5,6 +5,7 @@ import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
 import MigrationApp from "./migration-app.js";
 import Progress from "../../utils/Progress.js";
+import CPRMigration from "./cpr-migration.js";
 
 /**
  * This class provides a method to find and execute all migrations that are needed
@@ -178,26 +179,20 @@ export default class MigrationRunner {
       (Migration) => new Migration()
     );
 
-    for (const migration of this.migrationInstances) {
-      try {
-        const result = await migration.run();
-        if (!result) return false;
-      } catch (err) {
-        LOGGER.error(err);
-        CPRSystemUtils.DisplayMessage(
-          "error",
-          `Fatal error while migrating to ${migration.version}: ${err.message}`
-        );
-        return false;
-      }
-      if (migration.flush) {
-        CPRSystemUtils.DisplayMessage(
-          "notify",
-          `Migration to data model ${migration.version} complete, please refresh your browser tab to continue.`
-        );
-        return false;
-      }
+    try {
+      // migrate world items
+      await this.migrateDocuments(this.documents.worldItems);
+      // migrate world actors
+      await this.migrateDocuments(this.documents.worldActors);
+    } catch (err) {
+      LOGGER.error(err);
+      CPRSystemUtils.DisplayMessage(
+        "error",
+        `Fatal error while migrating: ${err.message}`
+      );
+      return false;
     }
+
     return true;
   }
 
@@ -387,6 +382,75 @@ export default class MigrationRunner {
       filters = filters.union(docTypeSet);
     }
     return filters;
+  }
+
+  /**
+   * Migrate documents, either Actors or items
+   *
+   * @param {Array<CPRItem|CPRActor>} documents - array of CPRItems/CPRActors to migrate.
+   */
+  async migrateDocuments(documents) {
+    LOGGER.trace("migrateDocuments | MigrationRunner");
+    const [firstEntry] = documents;
+    const { documentName, documentClass } = firstEntry.collection;
+    const migrationFunction =
+      documentName === "Item" ? "migrateItem" : "migrateActor";
+    const progress = this.getProgressBar(firstEntry);
+
+    const updates = [];
+    for (const doc of documents) {
+      try {
+        const docData = doc.toObject();
+        const update = await this[migrationFunction](docData);
+        if (update) updates.push(update);
+        if (progress) progress.advance();
+      } catch (err) {
+        throw CPRMigration.generateError(doc, err);
+      }
+    }
+    await documentClass.updateDocuments(updates, { noHook: true });
+  }
+
+  async migrateItem(itemData) {
+    LOGGER.trace("migrateItem | MigrationRunner");
+    for (const migration of this.migrationInstances) {
+      await migration.migrateItem(itemData);
+    }
+    return itemData;
+  }
+
+  async migrateActor(actorData) {
+    LOGGER.trace("migrateActor | MigrationRunner");
+    for (const migration of this.migrationInstances) {
+      // Migrate actor.
+      await migration.migrateActor(actorData);
+      // Migrate embedded items.
+      // eslint-disable-next-line no-continue
+      if (actorData.items.length === 0) continue;
+      actorData.items[0].documentName = "Item"; // Do this hack, or allow docName to be overridden in filterDocuments?
+      const filteredItems = this.filterDocuments(actorData.items);
+      for (const itemData of filteredItems) {
+        await migration.migrateItem(itemData, actorData);
+      }
+    }
+    return actorData;
+  }
+
+  /**
+   * Returns the progress bar for a given document.
+   *
+   * @param {Object} document - The document for which to retrieve the progress bar.
+   * @return {Object|null} The progress bar for the document, or null if the document is not provided.
+   */
+  getProgressBar(document) {
+    LOGGER.trace("getProgressBar | MigrationRunner");
+    if (!document) return null;
+    const { collectionName } = document;
+    const isEmbeddedItem = collectionName === "items" && document.isEmbedded;
+    if (isEmbeddedItem) return null; // We do not track progress for items in actors (they are still migrated, of course).
+    if (document.pack) return this.progress.packDocuments;
+    if (document.isToken) return this.progress.tokens;
+    return this.progress[collectionName];
   }
 
   /**

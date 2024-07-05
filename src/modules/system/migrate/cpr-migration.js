@@ -19,8 +19,6 @@ export default class CPRMigration {
     this.version = this.constructor.version; // Derived from the static property below.
     this.name = this.constructor.name; // Derived from the static property below.
     this.flush = false; // migrations will stop after this script, even if more are needed
-    this.errors = 0; // Increment if there were errors as part of this migration.
-    this.foundryMajorVersion = parseInt(game.version, 10);
   }
 
   // The data model version this migration will take us to. Override this!
@@ -52,35 +50,6 @@ export default class CPRMigration {
   static get runner() {
     LOGGER.trace("get runner | CPRMigration");
     return game.cpr.MigrationRunner || null;
-  }
-
-  /**
-   * Execute the migration code. This should not be overidden.
-   */
-  async run() {
-    LOGGER.trace("run | CPRMigration");
-    LOGGER.log(`Migrating to data model version ${this.version}`);
-
-    // Migrate settings, if any, first.
-    await this.migrateSettings();
-
-    // migrate world items
-    await this.migrateItems();
-
-    // migrate world actors
-    await this.migrateActors();
-
-    // unlinked actors (tokens) on scenes
-    await this.migrateScenes();
-
-    // compendia
-    await this.migrateCompendia();
-
-    await this.postMigrate();
-
-    await game.settings.set(game.system.id, "dataModelVersion", this.version);
-
-    return true;
   }
 
   /**
@@ -162,9 +131,6 @@ export default class CPRMigration {
     };
 
     const { documentName } = document;
-    /**
-     *
-     */
     switch (documentName) {
       case "Actor":
         docInfo.actor = document;
@@ -204,24 +170,6 @@ export default class CPRMigration {
   }
 
   /**
-   * Returns the progress bar for a given document.
-   *
-   * @param {Object} document - The document for which to retrieve the progress bar.
-   * @return {Object|null} The progress bar for the document, or null if the document is not provided.
-   */
-  getProgressBar(document) {
-    LOGGER.trace("getProgressBar | CPRMigration");
-    if (!document) return null;
-    const { collectionName } = document;
-    const isEmbeddedItem = collectionName === "items" && document.isEmbedded;
-    if (isEmbeddedItem) return null; // We do not track progress for items in actors (they are still migrated, of course).
-    const { runner } = CPRMigration;
-    if (document.pack) return runner.progress.packDocuments;
-    if (document.isToken) return runner.progress.tokens;
-    return runner.progress[collectionName];
-  }
-
-  /**
    * Actions to be performed before data is migrated.
    * Meant to be over-ridden (and the super called), but not required.
    */
@@ -250,58 +198,13 @@ export default class CPRMigration {
   }
 
   /**
-   * Migrate Items
-   *
-   * @param {Array<CPRItem>|Items} items - array of CPRItems or the Items World Collection itself.
-   */
-  async migrateItems(items = CPRMigration.runner.documents.worldItems) {
-    LOGGER.trace("migrateItems | CPRMigration");
-    const MigrationClass = this.constructor;
-    const filteredItems = CPRMigration.runner.filterDocuments(items);
-    const progress = this.getProgressBar(filteredItems[0]);
-    for (const item of filteredItems) {
-      try {
-        await this.migrateItem(item);
-        if (progress) progress.advance();
-      } catch (err) {
-        throw MigrationClass.generateError(item, err);
-      }
-    }
-  }
-
-  /**
    * Does nothing and is meant to be over-ridden.
    *
-   * @param {CPRItem} item
+   * @param {Object} itemData - Source data for the item. From item.toObject().
+   * @param {Object} actorData - Source data for the item's parent actor, if any. From actor.toObject().
    */
-  async migrateItem(item) {
+  async migrateItem(itemData, actorData) {
     LOGGER.trace("migrateItem | CPRMigration");
-  }
-
-  /**
-   * Migrate actors and their owned items.
-   *
-   * @param {Array<CPRActor>|Actors} actors - filtered array of CPRActors or the Actors World Collection itself.
-   */
-  async migrateActors(actors = CPRMigration.runner.documents.worldActors) {
-    LOGGER.trace("migrateActors | CPRMigration");
-    const MigrationClass = this.constructor;
-    // Whether to advance the progress bar for World Actors or for Tokens.
-    const progress = this.getProgressBar(actors[0]);
-    for (const actor of actors) {
-      try {
-        await this.migrateActor(actor);
-        // Migrate actor items.
-        const filteredItems = CPRMigration.runner.filterDocuments(actor.items);
-        await this.migrateItems(filteredItems);
-        if (progress) progress.advance();
-      } catch (err) {
-        // If this is true, the actor won't generate its own error message also,
-        // but just pass along the one generated from the failed item.
-        if (err.fromEmbeddedItem) throw err;
-        throw MigrationClass.generateError(actor, err);
-      }
-    }
   }
 
   /**
