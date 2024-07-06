@@ -217,19 +217,6 @@ export default class CPRMigration {
   }
 
   /**
-   * Migrate scenes. We specifically focus on unlinked tokens for now.
-   */
-  async migrateScenes() {
-    LOGGER.trace("migrateScenes | CPRMigration");
-    const { runner } = CPRMigration;
-    runner.progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
-    for (const actorList of runner.documents.sceneMap.values()) {
-      await this.migrateActors(actorList);
-      runner.progress.scenes.advance();
-    }
-  }
-
-  /**
    * Migrate compendia. This code is not meant to be run on the system-provided compendia
    * that we provide. They are updated and imported on the side. The benefit of that approach
    * to users is decreased migration times. I.e., we already migrated our compendia.

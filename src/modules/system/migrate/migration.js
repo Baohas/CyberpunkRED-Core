@@ -184,6 +184,8 @@ export default class MigrationRunner {
       await this.migrateDocuments(this.documents.worldItems);
       // migrate world actors
       await this.migrateDocuments(this.documents.worldActors);
+      // migrate token actors in scenes
+      await this.migrateScenes();
     } catch (err) {
       LOGGER.error(err);
       CPRSystemUtils.DisplayMessage(
@@ -388,9 +390,11 @@ export default class MigrationRunner {
    * Migrate documents, either Actors or items
    *
    * @param {Array<CPRItem|CPRActor>} documents - array of CPRItems/CPRActors to migrate.
+   * @param {boolean} [batch=true] - Whether to batch updates or not.
    */
-  async migrateDocuments(documents) {
+  async migrateDocuments(documents, { batch = true } = {}) {
     LOGGER.trace("migrateDocuments | MigrationRunner");
+    if (!documents.length) return;
     const [firstEntry] = documents;
     const { documentName, documentClass } = firstEntry.collection;
     const migrationFunction =
@@ -402,13 +406,14 @@ export default class MigrationRunner {
       try {
         const docData = doc.toObject();
         const update = await this[migrationFunction](docData);
-        if (update) updates.push(update);
+        if (update && batch) updates.push(update);
+        if (!batch) await doc.update(update, { noHook: true });
         if (progress) progress.advance();
       } catch (err) {
         throw CPRMigration.generateError(doc, err);
       }
     }
-    await documentClass.updateDocuments(updates, { noHook: true });
+    if (batch) await documentClass.updateDocuments(updates, { noHook: true });
   }
 
   async migrateItem(itemData) {
@@ -434,6 +439,34 @@ export default class MigrationRunner {
       }
     }
     return actorData;
+  }
+
+  /**
+   * Migrate scenes, specifically unlinked tokens.
+   */
+  async migrateScenes() {
+    LOGGER.trace("migrateScenes | CPRMigration");
+    this.progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
+    for (const actorList of this.documents.sceneMap.values()) {
+      const filteredTokenActors = actorList.filter((actor) => {
+        const { token } = actor;
+        // Token Actors may not need to be migrated, because their data
+        // comes from global actors. If the token hasn't had data changed,
+        // then it does not need to be migrated.
+        const deltaSource = token.delta?._source;
+        const hasMigratableData =
+          (!!deltaSource && !!deltaSource.flags?.[game.system.id]) ||
+          ((deltaSource ?? {}).items ?? []).length > 0 ||
+          Object.keys(deltaSource?.system ?? {}).length > 0;
+        return hasMigratableData;
+      });
+      this.progress.tokens.max -= actorList.length - filteredTokenActors.length;
+      // We explicitly do not update in batches here, because token actors are
+      // not part of the `Actor` World Collection, which `Actor.updateDocuments()`
+      // updates from.
+      await this.migrateDocuments(filteredTokenActors, { batch: false });
+      this.progress.scenes.advance();
+    }
   }
 
   /**
