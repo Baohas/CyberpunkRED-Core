@@ -217,48 +217,6 @@ export default class CPRMigration {
   }
 
   /**
-   * Migrate compendia. This code is not meant to be run on the system-provided compendia
-   * that we provide. They are updated and imported on the side. The benefit of that approach
-   * to users is decreased migration times. I.e., we already migrated our compendia.
-   *
-   * We respect whether a compendium is locked. If it is, do not touch it. This does invite problems
-   * later on if a user tries to use entries with an outdated data model. However, the discord
-   * community for Foundry preferred locked things to be left alone.
-   */
-  async migrateCompendia() {
-    LOGGER.trace("migrateCompendia | CPRMigration");
-    const { runner } = CPRMigration;
-    runner.progress.packs.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
-    for (const [pack, docList] of runner.documents.packMap) {
-      // If we are migrating locked packs we need to unlock them before migrating
-      const wasLocked = pack.locked;
-      await pack.configure({ locked: false });
-
-      // Perform Foundry server-side migration of the pack data model
-      await pack.migrate();
-
-      // Iterate over compendium entries - applying fine-tuned migration functions
-      switch (pack.metadata.type) {
-        case "Scene":
-        case "Actor": {
-          await this.migrateActors(docList);
-          break;
-        }
-        case "Item": {
-          await this.migrateItems(docList);
-          break;
-        }
-        default:
-          break;
-      }
-      runner.progress.packs.advance();
-
-      // Lock packs if they were locked pre-migration
-      pack.configure({ locked: wasLocked });
-    }
-  }
-
-  /**
    * Utility function which simulates a long process by delaying the resolution of a Promise.
    * Used for testing, so probably should not have any commits which call this.
    *

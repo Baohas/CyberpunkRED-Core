@@ -186,6 +186,8 @@ export default class MigrationRunner {
       await this.migrateDocuments(this.documents.worldActors);
       // migrate token actors in scenes
       await this.migrateScenes();
+      // migrate packs
+      await this.migrateCompendia();
     } catch (err) {
       LOGGER.error(err);
       CPRSystemUtils.DisplayMessage(
@@ -391,8 +393,9 @@ export default class MigrationRunner {
    *
    * @param {Array<CPRItem|CPRActor>} documents - array of CPRItems/CPRActors to migrate.
    * @param {boolean} [batch=true] - Whether to batch updates or not.
+   * @param {string} [pack=null] - The pack id from which the documents are provided.
    */
-  async migrateDocuments(documents, { batch = true } = {}) {
+  async migrateDocuments(documents, { batch = true, pack = null } = {}) {
     LOGGER.trace("migrateDocuments | MigrationRunner");
     if (!documents.length) return;
     const [firstEntry] = documents;
@@ -413,7 +416,8 @@ export default class MigrationRunner {
         throw CPRMigration.generateError(doc, err);
       }
     }
-    if (batch) await documentClass.updateDocuments(updates, { noHook: true });
+    if (batch)
+      await documentClass.updateDocuments(updates, { noHook: true, pack });
   }
 
   async migrateItem(itemData) {
@@ -466,6 +470,46 @@ export default class MigrationRunner {
       // updates from.
       await this.migrateDocuments(filteredTokenActors, { batch: false });
       this.progress.scenes.advance();
+    }
+  }
+
+  /**
+   * Migrate compendia. This code is not meant to be run on the system-provided compendia
+   * that we provide. They are updated and imported on the side. The benefit of that approach
+   * to users is decreased migration times. I.e., we already migrated our compendia.
+   *
+   * We respect whether a compendium is locked. If it is, do not touch it. This does invite problems
+   * later on if a user tries to use entries with an outdated data model. However, the discord
+   * community for Foundry preferred locked things to be left alone.
+   */
+  async migrateCompendia() {
+    LOGGER.trace("migrateCompendia | CPRMigration");
+    this.progress.packs.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
+    for (const [pack, docList] of this.documents.packMap) {
+      // If we are migrating locked packs we need to unlock them before migrating
+      const wasLocked = pack.locked;
+      await pack.configure({ locked: false });
+
+      // Perform Foundry server-side migration of the pack data model
+      await pack.migrate();
+
+      // Iterate over compendium entries - applying fine-tuned migration functions
+      switch (pack.metadata.type) {
+        case "Scene":
+          await this.migrateDocuments(docList, { batch: false });
+          break;
+        case "Actor":
+        case "Item": {
+          await this.migrateDocuments(docList, { pack: pack.metadata.id });
+          break;
+        }
+        default:
+          break;
+      }
+      this.progress.packs.advance();
+
+      // Lock packs if they were locked pre-migration
+      pack.configure({ locked: wasLocked });
     }
   }
 
