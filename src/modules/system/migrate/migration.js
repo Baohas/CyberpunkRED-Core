@@ -247,7 +247,7 @@ export default class MigrationRunner {
         filteredDocuments = this.filterDocuments(tokenList);
       } else {
         // Else, filter the Actor/Item documents in the pack.
-        const index = Array.from(pack.index);
+        const index = Array.from(await pack.getIndex({ fields: ["flags"] }));
         // `filterDocuments()` looks at the first entry in the array for the property: `documentName`.
         // Typically it's passed an array/map of Documents, in which each entry has this prop by default.
         // However, in this case, we are passing it an index (array) of limited document data, in which
@@ -256,6 +256,7 @@ export default class MigrationRunner {
         const filteredIds = this.filterDocuments(index).map(
           (docData) => docData._id
         );
+
         filteredDocuments = await pack.getDocuments({ _id__in: filteredIds });
       }
       if (filteredDocuments.length === 0) continue;
@@ -266,8 +267,9 @@ export default class MigrationRunner {
 
   /**
    * Filters a list of documents of a given class based on the specified doc types and/or mixins.
+   * Also filters out already migrated documents, in the case of a partially completed migration.
    *
-   * @param {Array<Document>|WorldCollection} docList - The list of documents or World Collection to filter
+   * @param {Array<Token|CPRActor|CPRItem|IndexData>} docList - The list of documents to filter
    * @return {Array<CPRActor|CPRItem>} An array of filtered Actors or Items (but not both).
    */
   filterDocuments(docList) {
@@ -284,11 +286,18 @@ export default class MigrationRunner {
       return this.filterDocuments(tokenActors);
     }
 
-    const documentTypes = this.documentFilters[docName];
-    if (!documentTypes.size) return docList;
+    // Filter for docs that are not already migrated, in the case of an incomplete migration.
+    const nonMigratedDocs = docList.filter((doc) => {
+      return !this.alreadyMigrated(doc);
+    });
 
-    const filteredDocs = docList.filter((doc) => {
-      return documentTypes.has(doc.type); // Filter for doc type.
+    const documentTypes = this.documentFilters[docName];
+    if (!documentTypes.size) return nonMigratedDocs;
+
+    // Filter for doc type.
+    const filteredDocs = nonMigratedDocs.filter((doc) => {
+      const alreadyMigrated = this.alreadyMigrated(doc);
+      return documentTypes.has(doc.type) && !alreadyMigrated;
     });
     return filteredDocs;
   }
@@ -409,6 +418,7 @@ export default class MigrationRunner {
       try {
         const docData = doc.toObject();
         const update = await this[migrationFunction](docData);
+        this.updateMigrationRecord(update, doc.isToken);
         if (update && batch) updates.push(update);
         if (!batch) await doc.update(update, { noHook: true });
         if (progress) progress.advance();
@@ -511,6 +521,42 @@ export default class MigrationRunner {
       // Lock packs if they were locked pre-migration
       pack.configure({ locked: wasLocked });
     }
+  }
+
+  /**
+   * Updates the migration record for the provided update object.
+   *
+   * @param {Object} update - The update object containing migration data.
+   * @return {void}
+   */
+  updateMigrationRecord(update, isToken = false) {
+    LOGGER.trace("updateMigrationRecord | MigrationRunner");
+    if (!update.flags[game.system.id]) update.flags[game.system.id] = {};
+    const migrationData = {
+      previous: this.currentDataModelVersion,
+      current: this.newDataModelVersion,
+    };
+    if (isToken) migrationData.isToken = true;
+    update.flags[game.system.id]._migration = migrationData;
+  }
+
+  /**
+   * Checks if the given document has already been migrated to the new data model version.
+   * For tokens, we check the ActorDelta, rather than the parent actor.
+   *
+   * @param {CPRItem|CPRActor|IndexData} doc - The document to check for migration status.
+   * @param {boolean} [ignore=false] - NOTE: Debugging only. - Whether to ignore token migration status.
+   * @return {boolean} Returns true if the document has already been migrated, false otherwise.
+   */
+  alreadyMigrated(doc, ignore = false) {
+    LOGGER.trace("alreadyMigrated | MigrationRunner");
+    if (ignore) return false;
+    const systemFlags = doc.flags[game.system.id];
+    if (!systemFlags) return false;
+    const migrationData = systemFlags._migration;
+    const current = migrationData?.current === this.newDataModelVersion;
+    if (doc.isToken) return current && migrationData.isToken;
+    return current;
   }
 
   /**
