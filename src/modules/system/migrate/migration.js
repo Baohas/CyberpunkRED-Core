@@ -12,16 +12,29 @@ import CPRMigration from "./cpr-migration.js";
  * to get the data to the latest data model.
  */
 export default class MigrationRunner {
+  /** The latest data model version we want to migrate to. */
+  static #LATEST_VERSION = 26;
+
+  /**
+   * The minimum data model version we allow users to migrate from.
+   * If a user attempts migration from a lower version, an error is thrown,
+   * and migration is cancelled before it starts.
+   */
+  static #MINIMUM_VERSION = {
+    dataModel: 24,
+    system: "0.88.2",
+  };
+
   /**
    * Set up some basic data on the migration runner.
    *
    * @param {Number} currDataModelVersion - the current data model version
    * @param {Number} newDataModelVersion - the data model version we want to get to, may be multiple versions ahead
    */
-  constructor(currDataModelVersion, newDataModelVersion) {
+  constructor(currDataModelVersion) {
     LOGGER.trace("constructor | MigrationRunner");
     this.currentDataModelVersion = currDataModelVersion;
-    this.newDataModelVersion = newDataModelVersion;
+    this.newDataModelVersion = MigrationRunner.#LATEST_VERSION;
 
     this.#migrationClasses = this.filterMigrationClasses();
     this.totalMigrations = this.migrationClasses.length;
@@ -122,9 +135,7 @@ export default class MigrationRunner {
    * This is the top level entry point for executing migrations. This code assumes the user is a GM. It will
    * figure out what migrations to run, and dispatch them for execution.
    *
-   * @param {Number} currentDataModelVersion - the current data model version
-   * @param {Number} newDataModelVersion - the data model version we want to get to, may be multiple versions ahead
-   * @returns {Boolean} - True if all migrations completed successfully or no migrations are needed
+   * @returns {Promise<boolean>} - True if all migrations completed successfully or no migrations are needed
    */
   async migrateWorld() {
     LOGGER.trace("migrateWorld | MigrationRunner");
@@ -134,6 +145,13 @@ export default class MigrationRunner {
     // Open migration application before anything else.
     const migrationApp = new MigrationApp({ migrationRunner: this });
     await migrationApp.render({ force: true });
+
+    const MINIMUM_VERSION = MigrationRunner.#MINIMUM_VERSION;
+    if (currentDataModelVersion < MINIMUM_VERSION.dataModel) {
+      throw new Error(
+        `Data model version ${currentDataModelVersion} is too old to migrate. Upgrade to ${MINIMUM_VERSION.system} first, then upgrade to this version.`
+      );
+    }
 
     this.documentFilters = {
       Item: this.getDocumentTypes("Item"),
@@ -168,7 +186,6 @@ export default class MigrationRunner {
 
   /**
    * Run all of the migrations in the right order, waiting for them to complete before proceeding to the next.
-   * There's a lot of async/await wrangling going on here; still an amateur on JS asynchronicity.
    *
    * @returns {Promise<Boolean>} - True if all migrations completed successfully
    */
