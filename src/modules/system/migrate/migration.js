@@ -5,7 +5,6 @@ import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
 import MigrationApp from "./migration-app.js";
 import Progress from "../../utils/Progress.js";
-import CPRMigration from "./cpr-migration.js";
 
 /**
  * This class provides a method to find and execute all migrations that are needed
@@ -214,7 +213,6 @@ export default class MigrationRunner {
       // migrate packs
       await this.migrateCompendia();
     } catch (err) {
-      LOGGER.error(err);
       CPRSystemUtils.DisplayMessage(
         "error",
         `Fatal error while migrating: ${err.message}`
@@ -440,16 +438,14 @@ export default class MigrationRunner {
 
     const updates = [];
     for (const doc of documents) {
-      try {
-        const docData = doc.toObject();
-        const update = await this[migrationFunction](docData);
-        this.updateMigrationRecord(update, doc.isToken);
-        if (update && batch) updates.push(update);
-        if (!batch) await doc.update(update, { noHook: true });
-        if (progress) progress.advance();
-      } catch (err) {
-        throw this.generateError(doc, err);
-      }
+      const docData = doc.toObject();
+      // Attach the uuid to the doc data so it can be retrieved later.
+      docData.uuid = doc.uuid;
+      const update = await this[migrationFunction](docData);
+      this.updateMigrationRecord(update, doc.isToken);
+      if (update && batch) updates.push(update);
+      if (!batch) await doc.update(update, { noHook: true });
+      if (progress) progress.advance();
     }
     if (batch)
       await documentClass.updateDocuments(updates, { noHook: true, pack });
@@ -459,7 +455,11 @@ export default class MigrationRunner {
     LOGGER.trace("migrateItem | MigrationRunner");
     for (const migration of this.migrationInstances) {
       this.#currentMigration = migration;
-      await migration.migrateItem(itemData);
+      try {
+        await migration.migrateItem(itemData);
+      } catch (err) {
+        throw await this.generateError(itemData.uuid, err);
+      }
     }
     return itemData;
   }
@@ -469,14 +469,23 @@ export default class MigrationRunner {
     for (const migration of this.migrationInstances) {
       this.#currentMigration = migration;
       // Migrate actor.
-      await migration.migrateActor(actorData);
+      try {
+        await migration.migrateActor(actorData);
+      } catch (err) {
+        throw await this.generateError(actorData.uuid, err);
+      }
       // Migrate embedded items.
       // eslint-disable-next-line no-continue
       if (actorData.items.length === 0) continue;
       actorData.items[0].documentName = "Item"; // Do this hack, or allow docName to be overridden in filterDocuments?
       const filteredItems = this.filterDocuments(actorData.items);
       for (const itemData of filteredItems) {
-        await migration.migrateItem(itemData, actorData);
+        try {
+          itemData.uuid = `${actorData.uuid}.Item.${itemData._id}`;
+          await migration.migrateItem(itemData, actorData);
+        } catch (err) {
+          throw await this.generateError(itemData.uuid, err);
+        }
       }
     }
     return actorData;
@@ -601,13 +610,14 @@ export default class MigrationRunner {
    *   - Pack Token Actors (from Scene packs)
    *     - Items owned by Pack Token Actors
    *
-   * @param {type} document - The document whose migration caused an error.
+   * @param {string} uuid - The uuid of the document whose migration caused an error.
    * @param {Error} error - The Error object
-   * @return {Error} The Error object
+   * @return {Promise<Error>} The Error object
    */
-  generateError(document, error) {
+  async generateError(uuid, error) {
     LOGGER.trace("generateError | MigrationRunner");
-    const docInfo = {
+    const document = await fromUuid(uuid);
+    const errorInfo = {
       pack: null,
       scene: null,
       token: null,
@@ -618,30 +628,25 @@ export default class MigrationRunner {
     const { documentName } = document;
     switch (documentName) {
       case "Actor":
-        docInfo.actor = document;
+        errorInfo.actor = document;
         break;
       case "Item":
-        docInfo.item = document;
-        if (document.isEmbedded) {
-          // If `fromEmbeddedItem` is true, the actor won't generate
-          // its own (essentially duplicate) error message.
-          error.fromEmbeddedItem = true;
-          docInfo.actor = document.actor;
-        }
+        errorInfo.item = document;
+        if (document.isEmbedded) errorInfo.actor = document.actor;
         break;
       default:
         break;
     }
-    const { actor } = docInfo;
+    const { actor } = errorInfo;
     if (actor?.isToken) {
-      docInfo.token = actor.token;
-      docInfo.scene = actor.token.parent;
+      errorInfo.token = actor.token;
+      errorInfo.scene = actor.token.parent;
     }
-    if (document.pack) docInfo.pack = document.compendium.metadata;
+    if (document.pack) errorInfo.pack = document.compendium.metadata;
 
     let dataStr = `\nFailed Document: ${document.name}\nUUID: ${document.uuid}`;
     /* eslint-disable no-continue */
-    for (const [key, value] of Object.entries(docInfo)) {
+    for (const [key, value] of Object.entries(errorInfo)) {
       if (!value) continue;
       // Only packs have metadata, and their human-readable string is in the `metadata.label`
       // property rather than the `name` property.
@@ -649,9 +654,8 @@ export default class MigrationRunner {
       dataStr += `\n${key.capitalize()}: ${label} (${value.id})`;
     } /* eslint-enable no-continue */
 
-    const migrationFailString = `Migration Script: '${
-      this.#currentMigration.name
-    }' failed.`;
+    const Migration = this.#currentMigration;
+    const migrationFailString = `Migration Script Failed: '${Migration.name}' (Data Model Version: ${Migration.version})`;
 
     LOGGER.error(migrationFailString, dataStr, error);
     return error;
