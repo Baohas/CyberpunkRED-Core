@@ -53,6 +53,14 @@ export default class MigrationRunner {
   /** @type {Array<typeof CPRMigration>} */
   #migrationClasses;
 
+  /**
+   * This property is set in `migrateItem` and `migrateActor`, when we iterate through
+   * the documents that need to be migrated. This way the error message can access
+   * the current migration script.
+   * @type {typeof CPRMigration|null}
+   */
+  #currentMigration = null;
+
   get migrationClasses() {
     LOGGER.trace("get migrationClasses | MigrationRunner");
     return this.#migrationClasses;
@@ -440,7 +448,7 @@ export default class MigrationRunner {
         if (!batch) await doc.update(update, { noHook: true });
         if (progress) progress.advance();
       } catch (err) {
-        throw CPRMigration.generateError(doc, err);
+        throw this.generateError(doc, err);
       }
     }
     if (batch)
@@ -450,6 +458,7 @@ export default class MigrationRunner {
   async migrateItem(itemData) {
     LOGGER.trace("migrateItem | MigrationRunner");
     for (const migration of this.migrationInstances) {
+      this.#currentMigration = migration;
       await migration.migrateItem(itemData);
     }
     return itemData;
@@ -458,6 +467,7 @@ export default class MigrationRunner {
   async migrateActor(actorData) {
     LOGGER.trace("migrateActor | MigrationRunner");
     for (const migration of this.migrationInstances) {
+      this.#currentMigration = migration;
       // Migrate actor.
       await migration.migrateActor(actorData);
       // Migrate embedded items.
@@ -574,6 +584,77 @@ export default class MigrationRunner {
     const current = migrationData?.current === this.newDataModelVersion;
     if (doc.isToken) return current && migrationData.isToken;
     return current;
+  }
+
+  /**
+   * Generate an error and post a message with useful information for a failed migration.
+   *
+   * We have the following document types which may fail to migrate:
+   *   - World Items
+   *   - World Actors
+   *     - Items owned by World Actors
+   *   - Token Actors
+   *     - Items owned by Token Actors
+   *   - Pack Items
+   *   - Pack Actors
+   *     - Items owned by Pack Actors
+   *   - Pack Token Actors (from Scene packs)
+   *     - Items owned by Pack Token Actors
+   *
+   * @param {type} document - The document whose migration caused an error.
+   * @param {Error} error - The Error object
+   * @return {Error} The Error object
+   */
+  generateError(document, error) {
+    LOGGER.trace("generateError | MigrationRunner");
+    const docInfo = {
+      pack: null,
+      scene: null,
+      token: null,
+      actor: null,
+      item: null,
+    };
+
+    const { documentName } = document;
+    switch (documentName) {
+      case "Actor":
+        docInfo.actor = document;
+        break;
+      case "Item":
+        docInfo.item = document;
+        if (document.isEmbedded) {
+          // If `fromEmbeddedItem` is true, the actor won't generate
+          // its own (essentially duplicate) error message.
+          error.fromEmbeddedItem = true;
+          docInfo.actor = document.actor;
+        }
+        break;
+      default:
+        break;
+    }
+    const { actor } = docInfo;
+    if (actor?.isToken) {
+      docInfo.token = actor.token;
+      docInfo.scene = actor.token.parent;
+    }
+    if (document.pack) docInfo.pack = document.compendium.metadata;
+
+    let dataStr = `\nFailed Document: ${document.name}\nUUID: ${document.uuid}`;
+    /* eslint-disable no-continue */
+    for (const [key, value] of Object.entries(docInfo)) {
+      if (!value) continue;
+      // Only packs have metadata, and their human-readable string is in the `metadata.label`
+      // property rather than the `name` property.
+      const label = value.label || value.name;
+      dataStr += `\n${key.capitalize()}: ${label} (${value.id})`;
+    } /* eslint-enable no-continue */
+
+    const migrationFailString = `Migration Script: '${
+      this.#currentMigration.name
+    }' failed.`;
+
+    LOGGER.error(migrationFailString, dataStr, error);
+    return error;
   }
 
   /**
