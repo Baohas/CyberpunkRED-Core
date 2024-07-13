@@ -37,6 +37,8 @@ export default class MigrationRunner {
 
     this.#migrationClasses = this.filterMigrationClasses();
 
+    this.errors = [];
+
     // The following properties are set in `migrateWorld()`.
     // They are not necessary to compute unless migrations are needed.
     this.migrationInstances = null;
@@ -155,6 +157,15 @@ export default class MigrationRunner {
     const migrationApp = new MigrationApp({ migrationRunner: this });
     await migrationApp.render({ force: true });
 
+    // We want to screen for validation errors, as these are thrown in
+    // foundry's update operations, and therefore are not caught during
+    // the normal migration process. We keep track of them here.
+    const errorHook = Hooks.on("error", (location, error) => {
+      if (error instanceof foundry.data.validation.DataModelValidationError) {
+        this.errors.push(error);
+      }
+    });
+
     const { currentDataModelVersion, newDataModelVersion } = this;
     const MINIMUM_VERSION = MigrationRunner.#MINIMUM_VERSION;
     if (currentDataModelVersion < MINIMUM_VERSION.dataModel) {
@@ -191,6 +202,9 @@ export default class MigrationRunner {
       migrationApp.element.close();
       migrationApp.element.show();
     }
+
+    // Turn the hook off because we don't need to track validation errors anymore.
+    Hooks.off("error", errorHook);
 
     return this.migrationSuccessful;
   }
