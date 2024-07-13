@@ -38,10 +38,10 @@ export default class MigrationRunner {
     this.#migrationClasses = this.filterMigrationClasses();
     this.totalMigrations = this.migrationClasses.length;
 
-    // The following properties are set in `migrateWorld()`or `runMigrations()`.
+    // The following properties are set in `migrateWorld()`.
     // They are not necessary to compute unless migrations are needed.
     this.migrationInstances = null;
-    this.documentFilters = null;
+    this.allowedDocTypes = null;
     this.documents = null;
     this.progress = null;
 
@@ -56,7 +56,7 @@ export default class MigrationRunner {
    * This property is set in `migrateItem` and `migrateActor`, when we iterate through
    * the documents that need to be migrated. This way the error message can access
    * the current migration script.
-   * @type {typeof CPRMigration|null}
+   * @type {CPRMigration|null}
    */
   #currentMigration = null;
 
@@ -160,10 +160,10 @@ export default class MigrationRunner {
       );
     }
 
-    this.documentFilters = {
-      Item: this.getDocumentTypes("Item"),
-      Actor: this.getDocumentTypes("Actor"),
-    };
+    this.migrationInstances = this.migrationClasses.map(
+      (Migration) => new Migration()
+    );
+    this.allowedDocTypes = this.getAllowedDocTypes();
     this.documents = await this.prepareDocumentsForMigration();
     this.progress = this.prepareProgressBars();
 
@@ -198,10 +198,6 @@ export default class MigrationRunner {
    */
   async runMigrations() {
     LOGGER.trace("runMigrations | MigrationRunner");
-
-    this.migrationInstances = this.migrationClasses.map(
-      (Migration) => new Migration()
-    );
 
     try {
       // migrate world items
@@ -314,13 +310,12 @@ export default class MigrationRunner {
       return !this.alreadyMigrated(doc);
     });
 
-    const documentTypes = this.documentFilters[docName];
+    const documentTypes = this.allowedDocTypes[docName];
     if (!documentTypes.size) return nonMigratedDocs;
 
     // Filter for doc type.
     const filteredDocs = nonMigratedDocs.filter((doc) => {
-      const alreadyMigrated = this.alreadyMigrated(doc);
-      return documentTypes.has(doc.type) && !alreadyMigrated;
+      return documentTypes.has(doc.type);
     });
     return filteredDocs;
   }
@@ -396,28 +391,40 @@ export default class MigrationRunner {
   }
 
   /**
-   * Retrieves the document filters for a given document name.
+   * Aggregate the allowed document types from each migration.
+   * We use sets because we don't want duplicates, and also Sets are cool.
    *
-   * @param {string} docName - The name of the document, either "Item" or "Actor".
-   * @return {Set} The set of document filters.
+   * @return {Object<Set>} An object which contains Sets of document types that are allowed.
    */
-  getDocumentTypes(docName) {
-    LOGGER.trace("getDocumentTypes | MigrationRunner");
-    let filters = new Set();
-    for (const Migration of this.migrationClasses) {
-      const { mixins, types } = Migration.documentTypeFilters[docName];
-      if (!types.length && !mixins.length) return filters;
-
-      let docTypeSet = new Set(types);
-      for (const mixin of mixins) {
-        const mixinTypes = new Set(
-          CPRSystemUtils.getDocTypesFromMixin(mixin, docName)
-        );
-        docTypeSet = docTypeSet.union(mixinTypes);
+  getAllowedDocTypes() {
+    LOGGER.trace("getAllowedDocTypes | MigrationRunner");
+    const docNames = ["Item", "Actor"];
+    const finalTypes = { Item: new Set(), Actor: new Set() };
+    for (const docName of docNames) {
+      for (const migration of this.migrationInstances) {
+        const allowedDocTypes = migration.allowedDocTypes[docName];
+        finalTypes[docName] = finalTypes[docName].union(allowedDocTypes);
       }
-      filters = filters.union(docTypeSet);
     }
-    return filters;
+    return finalTypes;
+  }
+
+  /**
+   * Checks if the given document type should be migrated.
+   * The default behavior checks the combined set of allowed document types
+   * from each migration. If a migration instance is provided,
+   * we use its specific document types instead.
+   *
+   * @param {('Item'|'Actor')} docName - The name of the document, either "Item" or "Actor".
+   * @param {string} docType - The type of the document.
+   * @return {boolean} Returns true if the document type is allowed, false otherwise.
+   */
+
+  isMigratableType(docName, docType, migration = {}) {
+    LOGGER.trace("isMigratableType | MigrationRunner");
+    const allowedDocTypes = migration.allowedDocTypes || this.allowedDocTypes;
+    if (!allowedDocTypes[docName].size) return true;
+    return allowedDocTypes[docName].has(docType);
   }
 
   /**
@@ -455,6 +462,8 @@ export default class MigrationRunner {
     LOGGER.trace("migrateItem | MigrationRunner");
     for (const migration of this.migrationInstances) {
       this.#currentMigration = migration;
+      /* eslint-disable no-continue */
+      if (!this.isMigratableType("Item", itemData.type, migration)) continue;
       try {
         await migration.migrateItem(itemData);
       } catch (err) {
@@ -468,6 +477,7 @@ export default class MigrationRunner {
     LOGGER.trace("migrateActor | MigrationRunner");
     for (const migration of this.migrationInstances) {
       this.#currentMigration = migration;
+      if (!this.isMigratableType("Actor", actorData.type, migration)) continue;
       // Migrate actor.
       try {
         await migration.migrateActor(actorData);
@@ -477,16 +487,15 @@ export default class MigrationRunner {
       // Migrate embedded items.
       // eslint-disable-next-line no-continue
       if (actorData.items.length === 0) continue;
-      actorData.items[0].documentName = "Item"; // Do this hack, or allow docName to be overridden in filterDocuments?
-      const filteredItems = this.filterDocuments(actorData.items);
-      for (const itemData of filteredItems) {
+      for (const itemData of actorData.items) {
+        if (!this.isMigratableType("Item", itemData.type, migration)) continue;
         try {
           itemData.uuid = `${actorData.uuid}.Item.${itemData._id}`;
           await migration.migrateItem(itemData, actorData);
         } catch (err) {
           throw await this.generateError(itemData.uuid, err);
         }
-      }
+      } /* eslint-enable no-continue */
     }
     return actorData;
   }

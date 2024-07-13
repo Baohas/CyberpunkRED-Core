@@ -1,7 +1,6 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-await-in-loop */
+/* eslint-disable class-methods-use-this, no-unused-vars */
 import LOGGER from "../../utils/cpr-logger.js";
+import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
 
 /**
  * This is the base class for migration scripts. All migrations should extend this class and
@@ -18,6 +17,7 @@ export default class CPRMigration {
     LOGGER.trace("constructor | CPRMigration");
     this.version = this.constructor.version; // Derived from the static property below.
     this.name = this.constructor.name; // Derived from the static property below.
+    this.allowedDocTypes = this.constructor.getAllowedDocTypes();
     this.flush = false; // migrations will stop after this script, even if more are needed
   }
 
@@ -28,13 +28,15 @@ export default class CPRMigration {
   static name = "Base Migration Class";
 
   /**
+   * Override this!
+   *
    * Filter documents based on the specified types and/or mixins.
-   * IMPORTANT: Subclasses should override this
+   * IMPORTANT: Subclasses should override this!
    *
    * For example, if you were to only migrate "skill" item types, "attackable"
    * item mixins, and "container" actor mixins, it would look like:
    * ```js
-   *   static documentTypeFilters = {
+   *   static documentFilters = {
    *     Item: { types: ["skill"], mixins: ["attackable"] },
    *     Actor: { types: [], mixins: ["container"] },
    *   };
@@ -42,14 +44,37 @@ export default class CPRMigration {
    *
    * To migrate all types/mixins, do not override.
    */
-  static documentTypeFilters = {
+  static documentFilters = {
     Item: { types: [], mixins: [] },
     Actor: { types: [], mixins: [] },
   };
 
-  static get runner() {
-    LOGGER.trace("get runner | CPRMigration");
-    return game.cpr.MigrationRunner || null;
+  /**
+   * Retrieve the allowed document types based on the specified types and mixins, for this
+   * specific migration.
+   *
+   * @return {Object} Returns an object containing Sets of document types that are allowed.
+   */
+  static getAllowedDocTypes() {
+    LOGGER.trace("getAllowedDocTypes | CPRMigration");
+    const docTypes = {};
+    /* eslint-disable no-continue */
+    for (const [docName, filters] of Object.entries(this.documentFilters)) {
+      const { mixins, types } = filters;
+      if (!types.length && !mixins.length) {
+        docTypes[docName] = new Set();
+        continue;
+      }
+      let docTypeSet = new Set(types);
+      for (const mixin of mixins) {
+        const mixinTypes = new Set(
+          CPRSystemUtils.getDocTypesFromMixin(mixin, docName)
+        );
+        docTypeSet = docTypeSet.union(mixinTypes);
+      }
+      docTypes[docName] = docTypeSet;
+    } /* eslint-enable no-continue */
+    return docTypes;
   }
 
   /**
@@ -76,47 +101,6 @@ export default class CPRMigration {
       return { [key]: null };
     }
     return {};
-  }
-
-  /**
-   * Takes in an array of object changes (updateList) and a requested object change (itemUpdateData)
-   * and if the object is in the array, it will merge the changes to that object in the array, otherwise
-   * it appends to the array.
-   * Returns an updated array.
-   * @param {Array} updateList - Array of objects to be passed to actor.*EmbeddedDocuments()
-   * @param {Object} itemUpdateData  - Object with at least _id: set and changes for the object
-   * @returns {Array} - Updated updateList including itemUpdateData
-   */
-  static addToUpdateList(updateList, itemUpdateData) {
-    LOGGER.trace("addToUpdateList | CPRMigration");
-    let newList = foundry.utils.duplicate(updateList);
-    const inList = updateList.filter((i) => i._id === itemUpdateData._id);
-    if (inList.length > 0) {
-      const updatedData = foundry.utils.mergeObject(itemUpdateData, inList[0]);
-      newList = newList.filter((i) => i._id !== itemUpdateData._id);
-      newList.push(updatedData);
-    } else {
-      newList.push(itemUpdateData);
-    }
-    return newList;
-  }
-
-  /**
-   * Actions to be performed before data is migrated.
-   * Meant to be over-ridden (and the super called), but not required.
-   */
-  async preMigrate() {
-    LOGGER.trace("preMigrate | CPRMigration");
-    LOGGER.log("Migrations starting");
-  }
-
-  /**
-   * Actions to be performed after data is migrated.
-   * Meant to be over-ridden (and the super called), but not required.
-   */
-  async postMigrate() {
-    LOGGER.trace("postMigrate | CPRMigration");
-    LOGGER.log("Migrations finished.");
   }
 
   /**
@@ -161,21 +145,4 @@ export default class CPRMigration {
       setTimeout(resolve, time);
     });
   }
-
-  /**
-   * This block of abstract methods breaks down how each document type is migrated. If there
-   * are any steps that need to be taken before migrating, put them in preMigrate. Likewise
-   * any clean up or changes after go in postMigrate. Note that uncommenting these will cause
-   * the linter to traceback for some ridiculous reason.
-   *
-   * They all assume data model changes are sent to the server (they're mutators).
-   *
-   * async preMigrate() {}
-   * async migrateActor(actor) {}
-   * static async migrateItem(item) {}
-   * static async migrateMacro(macro) {}
-   * static async migrateToken(token) {}
-   * static async migrateTable(table) {}
-   * async postMigrate() {}
-   */
 }
