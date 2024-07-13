@@ -36,7 +36,6 @@ export default class MigrationRunner {
     this.newDataModelVersion = MigrationRunner.#LATEST_VERSION;
 
     this.#migrationClasses = this.filterMigrationClasses();
-    this.totalMigrations = this.migrationClasses.length;
 
     // The following properties are set in `migrateWorld()`.
     // They are not necessary to compute unless migrations are needed.
@@ -73,6 +72,11 @@ export default class MigrationRunner {
     LOGGER.trace("get app | MigrationRunner");
     const app = foundry.applications.instances.get("cpr-migration");
     return app || null;
+  }
+
+  get totalMigrations() {
+    LOGGER.trace("get totalMigrations | MigrationRunner");
+    return this.migrationClasses.length;
   }
 
   /**
@@ -120,7 +124,7 @@ export default class MigrationRunner {
   }
 
   /**
-   * Knowing the data model versions, figure out which migration scripts (as objects) to run.
+   * Knowing the data model versions, figure out which migration scripts to run.
    *
    * @return {Array<typeof CPRMigration>} - an ordered list of CPRMigration subclasses.
    */
@@ -147,12 +151,11 @@ export default class MigrationRunner {
   async migrateWorld() {
     LOGGER.trace("migrateWorld | MigrationRunner");
 
-    const { currentDataModelVersion, newDataModelVersion } = this;
-
     // Open migration application before anything else.
     const migrationApp = new MigrationApp({ migrationRunner: this });
     await migrationApp.render({ force: true });
 
+    const { currentDataModelVersion, newDataModelVersion } = this;
     const MINIMUM_VERSION = MigrationRunner.#MINIMUM_VERSION;
     if (currentDataModelVersion < MINIMUM_VERSION.dataModel) {
       throw new Error(
@@ -160,6 +163,7 @@ export default class MigrationRunner {
       );
     }
 
+    // Initialize necessary properties, now that we know migration is needed.
     this.migrationInstances = this.migrationClasses.map(
       (Migration) => new Migration()
     );
