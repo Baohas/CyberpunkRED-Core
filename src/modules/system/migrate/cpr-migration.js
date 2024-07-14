@@ -106,6 +106,8 @@ export default class CPRMigration {
   /**
    * Does nothing and is meant to be over-ridden.
    *
+   * This is where you put the logic for changing settings.
+   *
    */
   async migrateSettings() {
     LOGGER.trace("migrateSettings | CPRMigration");
@@ -116,20 +118,24 @@ export default class CPRMigration {
   /**
    * Does nothing and is meant to be over-ridden.
    *
+   * This is where you put the logic for changing the data model for items.
+   *
    * @param {Object} itemData - Source data for the item. From item.toObject().
    * @param {Object} actorData - Source data for the item's parent actor, if any. From actor.toObject().
    */
-  async migrateItem(itemData, actorData) {
-    LOGGER.trace("migrateItem | CPRMigration");
+  async updateItem(itemData, actorData) {
+    LOGGER.trace("updateItem | CPRMigration");
   }
 
   /**
    * Does nothing and is meant to be over-ridden.
    *
-   * @param {CPRActor} actor
+   * This is where you put the logic for changing the data model for actors.
+   *
+   * @param {Object} actorData - Source data for the actor.From actor.toObject().
    */
-  async migrateActor(actor) {
-    LOGGER.trace("migrateActor | CPRMigration");
+  async updateActor(actor) {
+    LOGGER.trace("updateActor | CPRMigration");
   }
 
   /**

@@ -9,18 +9,16 @@ export default class TestMigration extends CPRMigration {
 
   static name = "Test Migration";
 
-  static documentTypeFilters = {
+  static documentFilters = {
     Item: { types: [], mixins: [] },
     Actor: { types: [], mixins: [] },
   };
 
-  async migrateActor(actor) {
-    LOGGER.trace("migrateActor | Test Migration");
-    return CPRMigration.simulateLongProcess(1);
+  async updateActor(doc) {
+    LOGGER.trace("updateActor | Test Migration");
   }
 
-  async migrateItem(item) {
-    LOGGER.trace("migrateItem | Test Migration");
-    return CPRMigration.simulateLongProcess(1);
+  async updateItem(doc) {
+    LOGGER.trace("updateItem | Test Migration");
   }
 }

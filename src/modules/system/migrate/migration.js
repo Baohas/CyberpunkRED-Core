@@ -490,7 +490,7 @@ export default class MigrationRunner {
       /* eslint-disable no-continue */
       if (!this.isMigratableType("Item", itemData.type, migration)) continue;
       try {
-        await migration.migrateItem(itemData);
+        await migration.updateItem(itemData);
       } catch (err) {
         throw await this.generateError(itemData.uuid, err);
       }
@@ -505,7 +505,7 @@ export default class MigrationRunner {
       if (!this.isMigratableType("Actor", actorData.type, migration)) continue;
       // Migrate actor.
       try {
-        await migration.migrateActor(actorData);
+        await migration.updateActor(actorData);
       } catch (err) {
         throw await this.generateError(actorData.uuid, err);
       }
@@ -516,7 +516,7 @@ export default class MigrationRunner {
         if (!this.isMigratableType("Item", itemData.type, migration)) continue;
         try {
           itemData.uuid = `${actorData.uuid}.Item.${itemData._id}`;
-          await migration.migrateItem(itemData, actorData);
+          await migration.updateItem(itemData, actorData);
         } catch (err) {
           throw await this.generateError(itemData.uuid, err);
         }
