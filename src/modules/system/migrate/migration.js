@@ -529,7 +529,7 @@ export default class MigrationRunner {
    * Migrate scenes, specifically unlinked tokens.
    */
   async migrateScenes() {
-    LOGGER.trace("migrateScenes | CPRMigration");
+    LOGGER.trace("migrateScenes | MigrationRunner");
     this.progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
     for (const actorList of this.documents.sceneMap.values()) {
       const filteredTokenActors = actorList.filter((actor) => {
@@ -563,7 +563,7 @@ export default class MigrationRunner {
    * community for Foundry preferred locked things to be left alone.
    */
   async migrateCompendia() {
-    LOGGER.trace("migrateCompendia | CPRMigration");
+    LOGGER.trace("migrateCompendia | MigrationRunner");
     this.progress.packs.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
     for (const [pack, docList] of this.documents.packMap) {
       // If we are migrating locked packs we need to unlock them before migrating
