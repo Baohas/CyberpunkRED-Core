@@ -412,7 +412,7 @@ export default class MigrationRunner {
    * Aggregate the allowed document types from each migration.
    * We use sets because we don't want duplicates, and also Sets are cool.
    *
-   * @return {Object<Set>} An object which contains Sets of document types that are allowed.
+   * @return {Object<Set<string>>} An object which contains Sets of document types that are allowed.
    */
   getAllowedDocTypes() {
     LOGGER.trace("getAllowedDocTypes | MigrationRunner");
@@ -421,6 +421,13 @@ export default class MigrationRunner {
     for (const docName of docNames) {
       for (const migration of this.migrationInstances) {
         const allowedDocTypes = migration.allowedDocTypes[docName];
+        if (!allowedDocTypes.size) {
+          // If any Set is completely empty, set finalTypes[docName]
+          // to empty Set and break out of this inner loop,
+          // since an empty Set indicates all types are allowed.
+          finalTypes[docName] = new Set();
+          break;
+        }
         finalTypes[docName] = finalTypes[docName].union(allowedDocTypes);
       }
     }
