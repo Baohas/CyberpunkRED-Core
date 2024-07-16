@@ -1,3 +1,54 @@
-<div>
-  Hello World!
+<div class="migration-grid dialog-sheet">
+  <header class="header text-center">
+    <div class="title">
+      {{localize "CPR.migration.app.title"}}
+    </div>
+    <hr>
+    <div class="subtitle">
+      {{localize "CPR.migration.app.subtitle"}}
+      <a href="https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/Release-Information/migrations">
+        {{localize "CPR.migration.app.wikiLink"}}<i class="fas fa-external-link-alt"></i>
+      </a>
+    </div>
+  <hr>
+  </header>
+
+  <section class="progress">
+    <ol class="dialog-list flexcol">
+      <li class="dialog-item dialog-item-header text-semi text-center flexrow">
+        <div>{{localize "CPR.migration.app.progressTitle"}}</div>
+      </li>
+      <li class="dialog-item flexrow">
+        <div class="progress-bar">
+          <span class="progress-percent">0%</span>
+        </div>
+        <div class="dialog-item-name">
+          {{localize "CPR.migration.docType.items"}}
+          (<span class="progress-items">0</span>/{{cprCompare runner.totalDocs.items "||" "???"}})
+        </div>
+      </li>
+      <li class="dialog-item flexrow">
+        <div>{{localize "CPR.migration.docType.actors"}}</div>
+      </li>
+      <li class="dialog-item flexrow">
+        <div>{{localize "CPR.migration.docType.scenes"}}</div>
+      </li>
+      <li class="dialog-item flexrow">
+        <div>{{localize "CPR.migration.docType.tokens"}}</div>
+      </li>
+      <li class="dialog-item flexrow">
+        <div>{{localize "CPR.migration.docType.packs"}}</div>
+      </li>
+      <li class="dialog-item flexrow">
+        <div>{{localize "CPR.migration.docType.packDocuments"}}</div>
+      </li>
+      <li class="dialog-item dialog-item-footer progress-status">
+        {{localize "CPR.migration.status.label"}} {{localize "CPR.migration.status.prepareDocuments"}}...
+      </li>
+    </ol>
+  </section>
+
+  <footer class="information">
+
+  </footer>
 </div>

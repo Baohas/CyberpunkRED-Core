@@ -43,6 +43,10 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     window: {
       title: "CPR Migration",
     },
+    position: {
+      width: 600,
+      height: 500,
+    },
     modal: true,
   };
 
@@ -57,6 +61,21 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       template: `systems/cyberpunk-red-core/templates/migration/migration-app.hbs`,
     },
   };
+
+  /**
+   * This is how we prepare the context for the template. Equivalent to `getData()`
+   * in AppV1, but is always async.
+   *
+   * @override
+   * @param {Object} options
+   * @returns {Promise<Object>}
+   */
+  async _prepareContext(options) {
+    LOGGER.trace("_prepareContext | MigrationApp");
+    const context = await super._prepareContext(options);
+    context.runner = this.migrationRunner;
+    return context;
+  }
 
   /** @override */
   _onFirstRender(_context, _options) {

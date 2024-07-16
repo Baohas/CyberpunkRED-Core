@@ -67,6 +67,12 @@
     background-color: var(--cpr-background-header) !important;
     color: var(--cpr-text-header);
   }
+
+  .dialog-item.dialog-item-footer {
+    border-style: outset;
+    border-color: var(--cpr-background-dialog-border);
+    border-width: 0.125rem 0rem 0rem 0rem;
+  }
 }
 
 .lifepath-list {
@@ -126,12 +132,6 @@
   background-color: var(--cpr-background-dialog-selected);
 }
 
-.total-mods {
-  border-style: outset;
-  border-color: var(--cpr-background-dialog-border);
-  border-width: 0.125rem 0rem 0rem 0rem;
-
-  .total-mod-value {
-    padding: 0.063rem 0.188rem;
-  }
+.total-mods .total-mod-value {
+  padding: 0.063rem 0.188rem;
 }
