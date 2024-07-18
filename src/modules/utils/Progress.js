@@ -1,30 +1,43 @@
 import LOGGER from "./cpr-logger.js";
 
 export default class Progress {
-  constructor({ max = 100, label = "" } = {}) {
+  constructor({
+    id = "cpr-default-progress",
+    max = 100,
+    label = game.i18n.localize("CPR.progress.default"),
+    closeWhenFull = false,
+  } = {}) {
     LOGGER.trace("constructor | Progress");
+    this.id = id;
     this.value = 0;
     this.max = max;
     this.label = label;
     this.element = null;
+    this.classes = [];
+
+    this.closeWhenFull = closeWhenFull;
+  }
+
+  static TEMPLATE = `templates/progress-bar.hbs`;
+
+  get percent() {
+    LOGGER.trace("get percent | Progress");
+    return Math.floor((this.value / this.max) * 100);
   }
 
   /**
    * Advances the progress by the specified amount and updates the progress bar.
    * Inspired by PF2e.
    *
-   * @param {Object} options - The options for advancing the progress.
-   * @param {number} [options.by=1] - The amount to advance the progress by.
-   * @param {string} [options.label=this.label] - The label to display on the progress bar.
+   * @param {number} [by=1] - The amount to advance the progress by.
    * @return {void}
    */
-  advance({ by = 1, label = this.label } = {}) {
+  advance(by = 1) {
     LOGGER.trace("advance | Progress");
 
     if (this.value === this.max) return;
     this.value += Math.abs(by);
-    const percent = Math.floor((this.value / this.max) * 100);
-    this.updateBar({ label, percent });
+    this.render();
   }
 
   /**
@@ -43,54 +56,54 @@ export default class Progress {
   }
 
   /**
-   * Renders the progress bar with the specified percentage.
+   * Create an HTML element for the progress bar
+   * and appends it to the specified parent element.
    *
-   * @param {number} [percent=0] - The percentage value to render the progress bar.
-   * @return {void}
+   * @param {Object} [options={}] - The options for creating the Progress bar element.
+   * @param {HTMLElement} parentElement - The parent element to which the progress bar element will be appended.
+   * @return {Promise<void>} A promise that resolves when the progress bar element is created and appended.
    */
-  render(percent = 0) {
-    LOGGER.trace("render | Progress");
-    // Add the migration bar to the document since it is not there
-    const migrationNode = document.createElement("div");
-    migrationNode.id = "cpr-migrating";
-    migrationNode.style = `display: block;`;
-    const migrationBar = document.createElement("div");
-    migrationBar.id = "cpr-migration-bar";
-    migrationBar.style = `width: ${percent}%`;
-    migrationBar.className = "migration-bar";
-    const migrationContext = document.createElement("label");
-    migrationContext.id = "cpr-mig-context";
-    migrationContext.innerHTML = this.label;
-    const migrationProgress = document.createElement("label");
-    migrationProgress.id = "cpr-mig-progress";
-    migrationProgress.innerHTML = `${percent}%`;
-    migrationBar.appendChild(migrationContext);
-    migrationBar.appendChild(migrationProgress);
-    migrationNode.appendChild(migrationBar);
-    const uiTop = document.getElementById("ui-top");
-    uiTop.appendChild(migrationNode);
-    this.element = migrationNode;
+  static async createElement(options = {}, parentElement = null) {
+    LOGGER.trace("createElement | Progress");
+    const progress = new Progress(options);
+    const rawTemplate = await renderTemplate(
+      `systems/${game.system.id}/${this.TEMPLATE}`,
+      progress
+    );
+    const htmlTemplate = document.createElement("template");
+    htmlTemplate.innerHTML = rawTemplate;
+    const [element] = htmlTemplate.content.children;
+    progress.element = element;
+    if (parentElement) {
+      parentElement.appendChild(element);
+    }
+    return progress;
   }
 
   /**
-   * Updates the bar at the top of the page.
-   * The last time this is called should set the percentage to 100 so it will clear the bar.
+   * Renders the progress bar with the specified percentage.
    *
-   * @param {Number} percent - Percentage complete
-   * @param {String} label - The words to display on the migration status bar
+   * @return {void}
    */
-  updateBar({ percent, label } = {}) {
-    LOGGER.trace("updateBar | CPRSystemUtils");
-    const bar = this.element;
-    if (bar === null) {
-      this.render();
-    } else {
-      // Update the existing bar
-      bar.querySelector("#cpr-mig-context").textContent = label;
-      bar.querySelector("#cpr-mig-progress").textContent = `${percent}%`;
-      bar.children["cpr-migration-bar"].style = `width: ${percent}%`;
-      bar.style.display = "block";
-      if (percent === 100 && !bar.hidden) this.close();
+  render() {
+    LOGGER.trace("render | Progress");
+    if (!this.element) return;
+
+    const { element } = this;
+    const progressBar = element.querySelector(".progress-bar");
+    const label = element.querySelector(".progress-label");
+    const currentCount = element.querySelector(".current-count");
+    const maxCount = element.querySelector(".max-count");
+    const percentLabel = element.querySelector(".progress-percent");
+
+    progressBar.style = `width: ${this.percent}%`;
+    label.innerHTML = game.i18n.localize(this.label);
+    currentCount.innerHTML = this.value;
+    maxCount.innerHTML = this.max;
+    percentLabel.innerHTML = `${this.percent}%`;
+
+    if (this.closeWhenFull && this.value === this.max) {
+      this.close();
     }
   }
 }

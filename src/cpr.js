@@ -292,8 +292,6 @@ Hooks.once("ready", async () => {
   if (!MR.needsMigration) return;
   // `migrateWorld` returns true on successful migration
   const migrationSuccess = await MR.migrateWorld();
-  // close all progress bars.
-  if (MR.totalMigrations) MR.closeProgressBars();
 
   if (migrationSuccess) {
     await game.settings.set(

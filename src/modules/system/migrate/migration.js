@@ -4,7 +4,7 @@ import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
 import MigrationApp from "./migration-app.js";
-import Progress from "../../utils/Progress.js";
+import CPR from "../config.js";
 
 /**
  * This class provides a method to find and execute all migrations that are needed
@@ -44,7 +44,6 @@ export default class MigrationRunner {
     this.migrationInstances = null;
     this.allowedDocTypes = null;
     this.documents = null;
-    this.progress = null;
 
     // This is also set in `migrateWorld()`, if migrations completed successfully.
     this.migrationSuccessful = null;
@@ -98,16 +97,17 @@ export default class MigrationRunner {
    */
   get totalDocs() {
     LOGGER.trace("get totalDocs | MigrationRunner");
-    if (!this.documents) return null;
+    const totals = {};
+    Object.keys(CPR.migrationDocTypes).forEach((key) => {
+      totals[key] = null;
+    });
+    if (!this.documents) return totals;
     const { documents } = this;
-    const totals = {
-      items: documents.worldItems.length,
-      actors: documents.worldActors.length,
-      scenes: documents.sceneMap.size,
-      tokens: null,
-      packs: documents.packMap.size,
-      packDocuments: null,
-    };
+
+    totals.items = documents.worldItems.length;
+    totals.actors = documents.worldActors.length;
+    totals.scenes = documents.sceneMap.size;
+    totals.packs = documents.packMap.size;
 
     let tokens = 0;
     for (const actorList of documents.sceneMap.values()) {
@@ -180,7 +180,7 @@ export default class MigrationRunner {
     );
     this.allowedDocTypes = this.getAllowedDocTypes();
     this.documents = await this.prepareDocumentsForMigration();
-    this.progress = this.prepareProgressBars();
+    migrationApp.currentPhase = "documentsReady";
 
     CPRSystemUtils.DisplayMessage(
       "notify",
@@ -530,7 +530,8 @@ export default class MigrationRunner {
    */
   async migrateScenes() {
     LOGGER.trace("migrateScenes | MigrationRunner");
-    this.progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
+    const { progress } = MigrationRunner.app;
+    progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
     for (const actorList of this.documents.sceneMap.values()) {
       const filteredTokenActors = actorList.filter((actor) => {
         const { token } = actor;
@@ -544,12 +545,12 @@ export default class MigrationRunner {
           Object.keys(deltaSource?.system ?? {}).length > 0;
         return hasMigratableData;
       });
-      this.progress.tokens.max -= actorList.length - filteredTokenActors.length;
+      progress.tokens.max -= actorList.length - filteredTokenActors.length;
       // We explicitly do not update in batches here, because token actors are
       // not part of the `Actor` World Collection, which `Actor.updateDocuments()`
       // updates from.
       await this.migrateDocuments(filteredTokenActors, { batch: false });
-      this.progress.scenes.advance();
+      progress.scenes.advance();
     }
   }
 
@@ -564,7 +565,8 @@ export default class MigrationRunner {
    */
   async migrateCompendia() {
     LOGGER.trace("migrateCompendia | MigrationRunner");
-    this.progress.packs.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
+    const { progress } = MigrationRunner.app;
+    progress.packs.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
     for (const [pack, docList] of this.documents.packMap) {
       // If we are migrating locked packs we need to unlock them before migrating
       const wasLocked = pack.locked;
@@ -586,7 +588,7 @@ export default class MigrationRunner {
         default:
           break;
       }
-      this.progress.packs.advance();
+      progress.packs.advance();
 
       // Lock packs if they were locked pre-migration
       pack.configure({ locked: wasLocked });
@@ -706,43 +708,10 @@ export default class MigrationRunner {
     if (!document) return null;
     const { collectionName } = document;
     const isEmbeddedItem = collectionName === "items" && document.isEmbedded;
+    const { progress } = MigrationRunner.app;
     if (isEmbeddedItem) return null; // We do not track progress for items in actors (they are still migrated, of course).
-    if (document.pack) return this.progress.packDocuments;
-    if (document.isToken) return this.progress.tokens;
-    return this.progress[collectionName];
-  }
-
-  /**
-   * Prepares progress bars for each document type based on the total number of documents.
-   *
-   * @return {Object} - An object containing progress bars for each document type.
-   *                  - The keys are document types and values are Progress objects.
-   */
-  prepareProgressBars() {
-    LOGGER.trace("prepareProgressBars | MigrationRunner");
-    const { totalDocs } = this;
-
-    const progressBars = {};
-    for (const [docType, max] of Object.entries(totalDocs)) {
-      const label = `${CPRSystemUtils.Format(
-        "CPR.migration.status.migratingDocs",
-        {
-          docType: CPRSystemUtils.Localize(`CPR.migration.docType.${docType}`),
-        }
-      )}`;
-      progressBars[docType] = new Progress({ label, max });
-    }
-    return progressBars;
-  }
-
-  /**
-   * Closes all progress bars associated with each migration instance.
-   *
-   * @return {void}
-   */
-  closeProgressBars() {
-    LOGGER.trace("closeProgressBars | MigrationRunner");
-    // close all progress bars.
-    Object.values(this.progress).forEach((bar) => bar.close());
+    if (document.pack) return progress.packDocuments;
+    if (document.isToken) return progress.tokens;
+    return progress[collectionName];
   }
 }

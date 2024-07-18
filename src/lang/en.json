@@ -1129,6 +1129,7 @@
   "CPR.netArchitecture.generation.noGMError": "Error: You do not have GM permissions. No Scene generation allowed!",
   "CPR.netArchitecture.generation.noSceneError": "The custom Scene does not exist!",
   "CPR.netArchitecture.generation.useRolltables": "Use Rolltables to populate the NET architecture",
+  "CPR.progress.default": "Progress",
   "CPR.rolls.abilityRank": "Ability Rank",
   "CPR.rolls.aimFor": "Aim for",
   "CPR.rolls.aimedShot": "Aimed Shot",

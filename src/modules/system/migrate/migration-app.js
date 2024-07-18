@@ -1,4 +1,6 @@
 import LOGGER from "../../utils/cpr-logger.js";
+import Progress from "../../utils/Progress.js";
+import CPR from "../config.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -9,9 +11,30 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     LOGGER.trace("constructor | MigrationApp");
     super(options);
     this.#migrationRunner = options.migrationRunner;
+    /** @type {Progress[]} */
+    this.progress = MigrationApp.prepareProgressBars();
+    this.#currentPhase = "init";
   }
 
-  /** A private reference to the migration runner which created this app. */
+  /**
+   * The possible phases of the migration application. An error
+   * is thrown if you try to set a phase that isn't in this list.
+   *
+   * @type {string[]}
+   */
+  static PHASES = ["init", "documentsReady", "migrate", "complete"];
+
+  /**
+   * The current phase of the migration application.
+   * @type {string}
+   */
+  #currentPhase;
+
+  /**
+   * A private reference to the migration runner which created this app.
+   *
+   * @type {MigrationRunner}
+   */
   #migrationRunner;
 
   /**
@@ -21,6 +44,22 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   get migrationRunner() {
     LOGGER.trace("get migrationRunner | MigrationApp");
     return this.#migrationRunner;
+  }
+
+  /**
+   * Sets the current phase of the migration application,
+   * and calls the appropriate method. Throws an error if
+   * the provided phase value is not in the list of possible phases.
+   *
+   * @param {string} value - The new phase value to set.
+   */
+  set currentPhase(value) {
+    LOGGER.trace("set currentPhase | MigrationApp");
+    if (!MigrationApp.PHASES.includes(value)) {
+      throw new Error(`Invalid phase: ${value}`);
+    }
+    this.#currentPhase = value;
+    this.onPhaseChange();
   }
 
   /**
@@ -74,6 +113,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     LOGGER.trace("_prepareContext | MigrationApp");
     const context = await super._prepareContext(options);
     context.runner = this.migrationRunner;
+    context.progress = this.progress;
     return context;
   }
 
@@ -116,5 +156,55 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     if (!this.migrationSuccessful) return;
 
     super.close(options);
+  }
+
+  /**
+   * Prepares progress bars for each document type based on the total number of documents.
+   *
+   * @return {Object<Progress>} - An object containing progress bars for each document type.
+   *                            - The keys are document types and values are Progress objects.
+   */
+  static prepareProgressBars() {
+    LOGGER.trace("prepareProgressBars | MigrationApp");
+    const progressBars = {};
+    for (const [docType, label] of Object.entries(CPR.migrationDocTypes)) {
+      progressBars[docType] = new Progress({
+        id: `migration-progress-${docType}`,
+        label,
+        max: null, // We will set this later.
+      });
+    }
+    return progressBars;
+  }
+
+  /**
+   * Handles the change of the current phase in the MigrationApp.
+   * Calls the appropriate function for the current phase.
+   *
+   * @return {Promise<void>} A promise that resolves when the function for the current phase is called.
+   */
+  async onPhaseChange() {
+    LOGGER.trace("onPhaseChange | MigrationApp");
+    const phase = this.#currentPhase;
+    const functionName = `on${phase.capitalize()}`;
+    await this[functionName](); // Call the function for this phase.
+  }
+
+  /**
+   * Handles the phase of the MigrationApp when the documents are ready.
+   * Sets the element, max value, and renders the progress bar
+   * for each document type.
+   *
+   * @return {Promise<void>} A promise that resolves when the progress bars are set and rendered.
+   */
+  async onDocumentsReady() {
+    LOGGER.trace("onDocumentsReady | MigrationApp");
+    for (const [docType, progress] of Object.entries(this.progress)) {
+      progress.element = this.element.querySelector(
+        `#migration-progress-${docType}`
+      );
+      progress.max = this.migrationRunner.totalDocs[docType];
+      progress.render();
+    }
   }
 }
