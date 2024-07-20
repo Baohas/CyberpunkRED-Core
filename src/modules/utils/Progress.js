@@ -5,6 +5,7 @@ export default class Progress {
     id = "cpr-default-progress",
     max = 100,
     label = game.i18n.localize("CPR.progress.default"),
+    classes = [],
     closeWhenFull = false,
   } = {}) {
     LOGGER.trace("constructor | Progress");
@@ -12,8 +13,8 @@ export default class Progress {
     this.value = 0;
     this.max = max;
     this.label = label;
+    this.classes = classes;
     this.element = null;
-    this.classes = [];
 
     this.closeWhenFull = closeWhenFull;
   }

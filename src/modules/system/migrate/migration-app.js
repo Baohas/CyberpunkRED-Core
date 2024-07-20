@@ -168,10 +168,15 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     LOGGER.trace("prepareProgressBars | MigrationApp");
     const progressBars = {};
     for (const [docType, label] of Object.entries(CPR.migrationDocTypes)) {
+      const classes =
+        docType === "tokens" || docType === "packDocuments"
+          ? ["sub-category"]
+          : [];
       progressBars[docType] = new Progress({
         id: `migration-progress-${docType}`,
         label,
         max: null, // We will set this later.
+        classes,
       });
     }
     return progressBars;

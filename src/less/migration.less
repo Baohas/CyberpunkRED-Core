@@ -43,22 +43,34 @@
     .dialog-item {
       position: relative;
     }
+
+    .progress-container {
+      position: relative;
+
+      .progress-bar {
+        position: absolute;
+
+        top: 75%;
+        width: 0%;
+        height: 25%;
+        background-color: var(--cpr-background-migration-progress);
+        opacity: 0.4;
+      }
+
+      .progress-percent-container {
+        text-align: right;
+        > span {
+          padding-right: 0.5rem;
+        }
+      }
+    }
+
+    .progress-container.sub-category .progress-label-container > span {
+      padding-left: 0.5rem;
+    }
   }
 
   .information {
     grid-area: information;
-  }
-  .progress-container {
-    position: relative;
-
-    .progress-bar {
-      position: absolute;
-
-      top: 75%;
-      width: 0%;
-      height: 25%;
-      background-color: var(--cpr-background-migration-progress);
-      opacity: 0.4;
-    }
   }
 }
