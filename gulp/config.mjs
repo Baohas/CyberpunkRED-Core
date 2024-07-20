@@ -3,6 +3,7 @@ import path from "path";
 import log from "fancy-log";
 import chalk from "chalk";
 
+export const CI = process.env.CI ? process.env.CI : false;
 export const DEBUG = process.env.DEBUG ? process.env.DEBUG : false;
 export const TRACE = process.env.TRACE ? process.env.TRACE : false;
 export const DEFAULT_DESTINATION_FOLDER = "dist";

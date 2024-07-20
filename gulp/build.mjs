@@ -8,6 +8,7 @@ import YAML from "js-yaml";
 import ChangelogUtils from "./utils/changelogUtils.mjs";
 
 import {
+  CI,
   DEBUG,
   DEST_DIR,
   DISCORD_BOT_AVATAR,
@@ -47,6 +48,14 @@ async function compileLess() {
     gulp
       .src(path.resolve(SRC_DIR, "less/main.less"))
       .pipe(less({ javascriptEnabled: true }))
+      .on("error", () => {
+        // If we're in CI throw a hard error, else a soft error
+        if (CI) {
+          throw new Error("CSS failed to compile.");
+        } else {
+          log.error("CSS failed to compile.");
+        }
+      })
       .pipe(gulp.dest(path.resolve(DEST_DIR)))
       .on("finish", () => {
         log("Finished Building CSS.");
