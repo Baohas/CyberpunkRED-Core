@@ -1044,7 +1044,7 @@
   "CPR.migration.status.migratingDocs": "Migrating {docType}",
   "CPR.migration.status.migrationComplete": "SUCCESS! Migration Complete!",
   "CPR.migration.status.migrationsFailed": "Migrations failed! Check console for errors!",
-  "CPR.migration.status.prepareDocuments": "Preparing Documents for Migration",
+  "CPR.migration.status.init": "Preparing Documents for Migration",
   "CPR.migration.status.userPrevented": "You cannot migrate! Migration aborted. See below.",
   "CPR.migration.status.waitForEnd": "World Migration: Release notes will display when finished, please be patient",
   "CPR.module.dsn.colorsetDefault": "- User Default Color -",

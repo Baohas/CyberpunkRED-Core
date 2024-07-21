@@ -25,7 +25,9 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   static PHASES = {
     // This following phases are the standard flow of migrations,
     // from initialization to success.
-    init: {},
+    init: {
+      statusChange: true,
+    },
     documentsReady: {},
     migrateItems: {
       statusChange: true,
@@ -97,6 +99,26 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   }
 
   /**
+   * Calculates the localized current status of the migration application.
+   *
+   * @return {string|null}
+   */
+  get currentStatus() {
+    LOGGER.trace("get currentStatus | MigrationApp");
+    const phase = this.#currentPhase;
+    const phaseData = MigrationApp.PHASES[phase];
+    const { docType, statusChange } = phaseData;
+    if (!statusChange) return null;
+    let statusString = game.i18n.localize(`CPR.migration.status.${phase}`);
+    if (docType) {
+      statusString = game.i18n.format("CPR.migration.status.migratingDocs", {
+        docType: game.i18n.localize(`CPR.migration.docType.${docType}`),
+      });
+    }
+    return statusString;
+  }
+
+  /**
    * Checks if the MigrationRunner has successfully completed all migrations.
    * @returns {Boolean}
    */
@@ -148,6 +170,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     const context = await super._prepareContext(options);
     context.runner = this.migrationRunner;
     context.progress = this.progress;
+    context.status = this.currentStatus;
     return context;
   }
 
@@ -250,24 +273,14 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Updates the status element based on the current phase and docType,
-   * if present.
+   * Updates the status element based on the current phase.
    *
    * @return {void}
    */
   changeStatus() {
     LOGGER.trace("changeStatus | MigrationApp");
     const { element } = this;
-    const phase = this.#currentPhase;
-    const phaseData = MigrationApp.PHASES[phase];
-    const { docType, statusChange } = phaseData;
-    if (!statusChange) return;
-    let statusString = game.i18n.localize(`CPR.migration.status.${phase}`);
-    if (docType) {
-      statusString = game.i18n.format("CPR.migration.status.migratingDocs", {
-        docType: game.i18n.localize(`CPR.migration.docType.${docType}`),
-      });
-    }
+    const statusString = this.currentStatus;
     const statusElement = element.querySelector(".progress-status");
     statusElement.innerHTML = statusString;
   }
