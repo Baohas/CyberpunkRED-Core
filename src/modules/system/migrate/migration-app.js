@@ -186,6 +186,11 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     LOGGER.trace("_onRender | MigrationApp");
     const dialog = this.element;
     dialog.addEventListener("keydown", this._preventEscape.bind(this));
+
+    // Hide the progress count until we actually have calculated the max.
+    dialog.querySelectorAll(".progress-count").forEach((elem) => {
+      elem.style = "display: none";
+    });
   }
 
   /**
@@ -270,6 +275,12 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       progress.max = this.migrationRunner.totalDocs[docType];
       progress.render();
     }
+
+    // Show the progress count once we have calculated the max.
+    this.element.querySelectorAll(".progress-count").forEach((elem) => {
+      elem.style = "";
+    });
+  }
   }
 
   /**
