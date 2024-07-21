@@ -37,8 +37,6 @@ export default class MigrationRunner {
 
     this.#migrationClasses = this.filterMigrationClasses();
 
-    this.errors = [];
-
     // The following properties are set in `migrateWorld()`.
     // They are not necessary to compute unless migrations are needed.
     this.migrationInstances = null;
@@ -48,6 +46,9 @@ export default class MigrationRunner {
     // This is also set in `migrateWorld()`, if migrations completed successfully.
     this.migrationSuccessful = null;
   }
+
+  /** @type {Error} */
+  error;
 
   /** @type {Array<typeof CPRMigration>} */
   #migrationClasses;
@@ -162,7 +163,7 @@ export default class MigrationRunner {
     // the normal migration process. We keep track of them here.
     const errorHook = Hooks.on("error", (location, error) => {
       if (error instanceof foundry.data.validation.DataModelValidationError) {
-        this.errors.push(error);
+        this.error = error;
       }
     });
 
@@ -478,6 +479,7 @@ export default class MigrationRunner {
 
     const updates = [];
     for (const doc of documents) {
+      if (this.error) throw this.error;
       const docData = doc.toObject();
       // Attach the uuid to the doc data so it can be retrieved later.
       docData.uuid = doc.uuid;
@@ -701,6 +703,7 @@ export default class MigrationRunner {
     const Migration = this.#currentMigration;
     const migrationFailString = `Migration Script Failed: '${Migration.name}' (Data Model Version: ${Migration.version})`;
 
+    this.error = error;
     LOGGER.error(migrationFailString, dataStr, error);
     return error;
   }
