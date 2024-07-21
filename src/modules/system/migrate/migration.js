@@ -170,7 +170,8 @@ export default class MigrationRunner {
     const { currentDataModelVersion, newDataModelVersion } = this;
     const MINIMUM_VERSION = MigrationRunner.#MINIMUM_VERSION;
     if (currentDataModelVersion < MINIMUM_VERSION.dataModel) {
-      migrationApp.currentPhase = "userPrevented";
+      await migrationApp.setCurrentPhase("userPrevented");
+      await migrationApp.setCurrentPhase("end");
       throw new Error(
         `Data model version ${currentDataModelVersion} is too old to migrate. Upgrade to ${MINIMUM_VERSION.system} first, then upgrade to this version.`
       );
@@ -182,7 +183,7 @@ export default class MigrationRunner {
     );
     this.allowedDocTypes = this.getAllowedDocTypes();
     this.documents = await this.prepareDocumentsForMigration();
-    migrationApp.currentPhase = "documentsReady";
+    await migrationApp.setCurrentPhase("documentsReady");
 
     CPRSystemUtils.DisplayMessage(
       "notify",
@@ -195,16 +196,17 @@ export default class MigrationRunner {
     this.migrationSuccessful = await this.runMigrations();
 
     if (this.migrationSuccessful) {
-      migrationApp.currentPhase = "migrationComplete";
       CPRSystemUtils.DisplayMessage(
         "notify",
-        CPRSystemUtils.Localize("CPR.migration.status.migrationsComplete")
+        CPRSystemUtils.Localize("CPR.migration.status.migrationComplete")
       );
       // This makes it so the app no longer acts as a modal,
       // and users can interact with the rest of Foundry again.
       migrationApp.element.close();
       migrationApp.element.show();
     }
+
+    await migrationApp.setCurrentPhase("end");
 
     // Turn the hook off because we don't need to track validation errors anymore.
     Hooks.off("error", errorHook);
@@ -223,19 +225,19 @@ export default class MigrationRunner {
     const { app } = MigrationRunner;
     try {
       // migrate world items
-      app.currentPhase = "migrateItems";
+      await app.setCurrentPhase("migrateItems");
       await this.migrateDocuments(this.documents.worldItems);
       // migrate world actors
-      app.currentPhase = "migrateActors";
+      await app.setCurrentPhase("migrateActors");
       await this.migrateDocuments(this.documents.worldActors);
       // migrate token actors in scenes
-      app.currentPhase = "migrateScenes";
+      await app.setCurrentPhase("migrateScenes");
       await this.migrateScenes();
       // migrate packs
-      app.currentPhase = "migrateCompendia";
+      await app.setCurrentPhase("migrateCompendia");
       await this.migrateCompendia();
     } catch (err) {
-      app.currentPhase = "error";
+      await app.setCurrentPhase("error");
       CPRSystemUtils.DisplayMessage(
         "error",
         `Fatal error while migrating: ${err.message}`
@@ -243,6 +245,7 @@ export default class MigrationRunner {
       return false;
     }
 
+    await app.setCurrentPhase("migrationComplete");
     return true;
   }
 

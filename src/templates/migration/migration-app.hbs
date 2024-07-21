@@ -33,7 +33,23 @@
     <hr>
   </section>
 
-  <footer class="information">
-
+  <footer class="messages flexcol">
+    <ol class="dialog-list flexcol">
+      <li class="dialog-item dialog-item-header text-semi text-center flexrow">
+        <a class="message-nav" data-action="navigate" data-direction="back">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+        <div>
+          {{localize "CPR.migration.app.messagesTitle"}}
+          (<span class="message-count">{{currentMessage}}/{{messages.length}}</span>)
+        </div>
+        <a class="message-nav" data-action="navigate" data-direction="next">
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </li>
+      <li class="dialog-item message">
+        {{localize messages.[0]}}
+      </li>
+    </ol>
   </footer>
 </div>

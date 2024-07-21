@@ -122,6 +122,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-deathsave-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-roleAbility-prompt.hbs`,
     `systems/${game.system.id}/templates/progress-bar.hbs`,
+    `systems/${game.system.id}/templates/migration/migration-buttons.hbs`,
 
     // Item: Sheet
     `systems/${game.system.id}/templates/item/cpr-item-description.hbs`,
