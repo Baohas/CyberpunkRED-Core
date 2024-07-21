@@ -169,6 +169,7 @@ export default class MigrationRunner {
     const { currentDataModelVersion, newDataModelVersion } = this;
     const MINIMUM_VERSION = MigrationRunner.#MINIMUM_VERSION;
     if (currentDataModelVersion < MINIMUM_VERSION.dataModel) {
+      migrationApp.currentPhase = "userPrevented";
       throw new Error(
         `Data model version ${currentDataModelVersion} is too old to migrate. Upgrade to ${MINIMUM_VERSION.system} first, then upgrade to this version.`
       );
@@ -193,6 +194,7 @@ export default class MigrationRunner {
     this.migrationSuccessful = await this.runMigrations();
 
     if (this.migrationSuccessful) {
+      migrationApp.currentPhase = "migrationComplete";
       CPRSystemUtils.DisplayMessage(
         "notify",
         CPRSystemUtils.Localize("CPR.migration.status.migrationsComplete")
@@ -217,16 +219,22 @@ export default class MigrationRunner {
   async runMigrations() {
     LOGGER.trace("runMigrations | MigrationRunner");
 
+    const { app } = MigrationRunner;
     try {
       // migrate world items
+      app.currentPhase = "migrateItems";
       await this.migrateDocuments(this.documents.worldItems);
       // migrate world actors
+      app.currentPhase = "migrateActors";
       await this.migrateDocuments(this.documents.worldActors);
       // migrate token actors in scenes
+      app.currentPhase = "migrateScenes";
       await this.migrateScenes();
       // migrate packs
+      app.currentPhase = "migrateCompendia";
       await this.migrateCompendia();
     } catch (err) {
+      app.currentPhase = "error";
       CPRSystemUtils.DisplayMessage(
         "error",
         `Fatal error while migrating: ${err.message}`

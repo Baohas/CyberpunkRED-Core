@@ -20,9 +20,43 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * The possible phases of the migration application. An error
    * is thrown if you try to set a phase that isn't in this list.
    *
-   * @type {string[]}
+   * @type {Object<string, Object>}
    */
-  static PHASES = ["init", "documentsReady", "migrate", "complete"];
+  static PHASES = {
+    // This following phases are the standard flow of migrations,
+    // from initialization to success.
+    init: {},
+    documentsReady: {},
+    migrateItems: {
+      statusChange: true,
+      docType: "items",
+    },
+    applyChangesItems: {},
+    migrateActors: {
+      statusChange: true,
+      docType: "actors",
+    },
+    applyChangesActors: {},
+    migrateScenes: {
+      statusChange: true,
+      docType: "scenesTokens",
+    },
+    migrateCompendia: {
+      statusChange: true,
+      docType: "packsDocs",
+    },
+    migrationComplete: {
+      statusChange: true,
+    },
+    // Below this line are phases which don't follow
+    // the standard flow of migration.
+    error: {
+      statusChange: true,
+    },
+    userPrevented: {
+      statusChange: true,
+    },
+  };
 
   /**
    * The current phase of the migration application.
@@ -55,7 +89,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    */
   set currentPhase(value) {
     LOGGER.trace("set currentPhase | MigrationApp");
-    if (!MigrationApp.PHASES.includes(value)) {
+    if (!Object.keys(MigrationApp.PHASES).includes(value)) {
       throw new Error(`Invalid phase: ${value}`);
     }
     this.#currentPhase = value;
@@ -192,6 +226,8 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     LOGGER.trace("onPhaseChange | MigrationApp");
     const phase = this.#currentPhase;
     const functionName = `on${phase.capitalize()}`;
+    this.changeStatus(); // Change status message.
+    if (typeof this[functionName] !== "function") return;
     await this[functionName](); // Call the function for this phase.
   }
 
@@ -211,5 +247,28 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       progress.max = this.migrationRunner.totalDocs[docType];
       progress.render();
     }
+  }
+
+  /**
+   * Updates the status element based on the current phase and docType,
+   * if present.
+   *
+   * @return {void}
+   */
+  changeStatus() {
+    LOGGER.trace("changeStatus | MigrationApp");
+    const { element } = this;
+    const phase = this.#currentPhase;
+    const phaseData = MigrationApp.PHASES[phase];
+    const { docType, statusChange } = phaseData;
+    if (!statusChange) return;
+    let statusString = game.i18n.localize(`CPR.migration.status.${phase}`);
+    if (docType) {
+      statusString = game.i18n.format("CPR.migration.status.migratingDocs", {
+        docType: game.i18n.localize(`CPR.migration.docType.${docType}`),
+      });
+    }
+    const statusElement = element.querySelector(".progress-status");
+    statusElement.innerHTML = statusString;
   }
 }
