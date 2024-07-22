@@ -65,6 +65,8 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
         },
       },
     },
+    // This phase is called no matter the result of migration.
+    end: {},
     // Below this line are phases which don't follow
     // the standard flow of migration.
     error: {
@@ -395,6 +397,21 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   }
 
   /**
+   * Handles the end phase of the MigrationApp, which is reached regardless
+   * of migration outcome.
+   *
+   * Remove spinner.
+   *
+   * @return {Promise<void>}
+   */
+  async onEnd() {
+    LOGGER.trace("onEnd | MigrationApp");
+    const { element } = this;
+    const spinner = element.querySelector(".spinner");
+    spinner.style = "display: none";
+  }
+
+  /**
    * Updates the status element based on the current phase.
    *
    * @return {void}
@@ -403,6 +420,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     LOGGER.trace("changeStatus | MigrationApp");
     const { element } = this;
     const statusString = this.currentStatus;
+    if (!statusString) return;
     const statusElement = element.querySelector(".progress-status");
     statusElement.innerHTML = statusString;
   }
