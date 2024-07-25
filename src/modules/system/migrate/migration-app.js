@@ -232,6 +232,12 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     });
 
     this.renderNav(); // Hide nav buttons.
+
+    // Hide the close button in the window header.
+    const headerCloseButton = element.querySelector(
+      ".window-header [data-action='close']"
+    );
+    headerCloseButton.style = "display: none";
   }
 
   /** @override */
