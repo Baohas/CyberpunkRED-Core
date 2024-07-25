@@ -1,0 +1,31 @@
+import LOGGER from "../../utils/cpr-logger.js";
+
+export default class MigrationError extends Error {
+  /**
+   * Extend the base Error class with information
+   * related to the failed migration.
+   *
+   * @param {Object} data - extra data associated with this error
+   * @param {string} message - the error message
+   * @param {Object} options - additional options
+   * @override
+   */
+  constructor(data, message, options) {
+    LOGGER.trace("constructor | MigrationError");
+    super(message, options);
+    this.name = "MigrationError";
+    this.type = "MigrationScriptError";
+    const { DataModelValidationError } = foundry.data.validation;
+    if (options.cause instanceof DataModelValidationError) {
+      this.type = "DataModelValidationError";
+    }
+
+    this.data = data;
+    this.data.message = this.message;
+    this.data.originError = {
+      message: options.cause?.message,
+      stack: options.cause?.stack,
+    };
+    this.data.stack = this.stack;
+  }
+}

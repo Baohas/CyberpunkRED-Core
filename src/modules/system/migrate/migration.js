@@ -5,6 +5,7 @@ import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
 import MigrationApp from "./migration-app.js";
 import CPR from "../config.js";
+import MigrationError from "./migration-error.js";
 
 /**
  * This class provides a method to find and execute all migrations that are needed
@@ -47,7 +48,7 @@ export default class MigrationRunner {
     this.migrationSuccessful = null;
   }
 
-  /** @type {Error} */
+  /** @type {MigrationError} */
   error;
 
   /** @type {Array<typeof CPRMigration>} */
@@ -161,10 +162,28 @@ export default class MigrationRunner {
     // We want to screen for validation errors, as these are thrown in
     // foundry's update operations, and therefore are not caught during
     // the normal migration process. We keep track of them here.
-    const errorHook = Hooks.on("error", (location, error) => {
-      if (error instanceof foundry.data.validation.DataModelValidationError) {
-        this.error = error;
-      }
+    const errorHook = Hooks.on("error", (location, error, data) => {
+      if (!(error instanceof foundry.data.validation.DataModelValidationError))
+        return;
+
+      const { id } = data;
+      const failure = error.getFailure();
+      this.error = new MigrationError(
+        {
+          migrationData: {
+            Migration: this.#currentMigration,
+            currentVersion: this.currentDataModelVersion,
+            newVersion: this.newDataModelVersion,
+          },
+          failure,
+          id,
+        },
+        `Foundry DataModelValidationError - ${error.message}`,
+        { cause: error }
+      );
+
+      // Turn hook off once we reach an error.
+      Hooks.off("error", errorHook);
     });
 
     const { currentDataModelVersion, newDataModelVersion } = this;
@@ -706,9 +725,22 @@ export default class MigrationRunner {
     const Migration = this.#currentMigration;
     const migrationFailString = `Migration Script Failed: '${Migration.name}' (Data Model Version: ${Migration.version})`;
 
-    this.error = error;
+    const migrationError = new MigrationError(
+      {
+        migrationData: {
+          Migration,
+          currentVersion: this.currentDataModelVersion,
+          newVersion: this.newDataModelVersion,
+        },
+        document,
+        uuid,
+      },
+      `${migrationFailString}\n${dataStr}`,
+      { cause: error }
+    );
+    this.error = migrationError;
     LOGGER.error(migrationFailString, dataStr, error);
-    return error;
+    return migrationError;
   }
 
   /**
