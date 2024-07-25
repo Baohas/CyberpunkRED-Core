@@ -179,6 +179,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       showChangelog: MigrationApp.showChangelog,
       returnToSetup: MigrationApp.returnToSetup,
       navigate: MigrationApp.navigateMessages,
+      generateReport: MigrationApp.generateReport,
     },
     modal: true,
   };
@@ -311,6 +312,29 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   static returnToSetup() {
     LOGGER.trace("returnToSetup | MigrationApp");
     game.shutDown();
+  }
+
+  /**
+   * Generates a migration error report and saves it as a JSON file.
+   *
+   * @return {void}
+   */
+  static generateReport() {
+    LOGGER.trace("generateReport | MigrationApp");
+    const { error } = this.migrationRunner;
+    const date = new Date();
+    let monthString = date.getMonth() + 1;
+    if (monthString < 10) monthString = `0${monthString}`;
+    let dayString = date.getDate();
+    if (dayString < 10) dayString = `0${dayString}`;
+
+    const dateString = `${date.getFullYear()}${monthString}${dayString}`;
+    const filename = `Migration Error Report - ${game.system.id} - ${dateString}`;
+    saveDataToFile(
+      JSON.stringify(error, null, 2),
+      "text/json",
+      `${filename}.json`
+    );
   }
 
   /**

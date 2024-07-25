@@ -85,6 +85,7 @@
     "parseUuid": "readonly",
     "randomID": "readonly",
     "renderTemplate": "readonly",
+    "saveDataToFile": "readonly",
     "setProperty": "readonly",
     "ui": "readonly",
     "window": "readonly"
