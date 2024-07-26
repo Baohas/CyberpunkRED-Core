@@ -55,13 +55,10 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       statusChange: true,
       addMessage: true,
       buttons: {
-        showChangelog: {
-          label: "CPR.migration.buttons.showChangelog",
-          icon: "fas fa-file-signature",
-        },
         close: {
-          label: "APPLICATION.TOOLS.Close",
-          icon: "fas fa-times",
+          label: "CPR.migration.buttons.close",
+          iconPre: "fas fa-file-signature",
+          iconPost: "fas fa-times",
         },
       },
     },
@@ -73,13 +70,10 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       statusChange: true,
       addMessage: true,
       buttons: {
-        generateReport: {
-          label: "CPR.migration.buttons.generateReport",
-          icon: "fas fa-bug",
-        },
         returnToSetup: {
-          label: "GAME.ReturnSetup",
-          icon: "fas fa-home",
+          label: "CPR.migration.buttons.returnToSetup",
+          iconPre: "fas fa-bug",
+          iconPost: "fas fa-home",
         },
       },
     },
@@ -89,7 +83,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       buttons: {
         returnToSetup: {
           label: "GAME.ReturnSetup",
-          icon: "fas fa-home",
+          iconPre: "fas fa-home",
         },
       },
     },
@@ -272,6 +266,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     if (!this.migrationSuccessful) return;
 
     super.close(options);
+    MigrationApp.showChangelog();
   }
 
   /**
@@ -317,6 +312,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
 
   static returnToSetup() {
     LOGGER.trace("returnToSetup | MigrationApp");
+    MigrationApp.generateReport();
     game.shutDown();
   }
 
@@ -327,7 +323,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    */
   static generateReport() {
     LOGGER.trace("generateReport | MigrationApp");
-    const { error } = this.migrationRunner;
+    const { error } = game.cpr.MigrationRunner;
     const date = new Date();
     let monthString = date.getMonth() + 1;
     if (monthString < 10) monthString = `0${monthString}`;
