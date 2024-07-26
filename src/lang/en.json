@@ -1033,7 +1033,7 @@
   "CPR.migration.app.title": "Cyberpunk RED - Migration Wizard",
   "CPR.migration.app.wikiLink": "See our wiki for more details.",
   "CPR.migration.buttons.close": "Show Changelog / Close",
-  "CPR.migration.buttons.returnToSetup": "Generate Report / Return To Setup",
+  "CPR.migration.buttons.returnToSetup": "Download Report / Return To Setup",
   "CPR.migration.docType.actors": "World Actors",
   "CPR.migration.docType.items": "World Items",
   "CPR.migration.docType.packDocuments": "Compendium Documents  ",

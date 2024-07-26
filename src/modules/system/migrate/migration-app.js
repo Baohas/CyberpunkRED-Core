@@ -170,10 +170,8 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       height: 550,
     },
     actions: {
-      showChangelog: MigrationApp.showChangelog,
       returnToSetup: MigrationApp.returnToSetup,
       navigate: MigrationApp.navigateMessages,
-      generateReport: MigrationApp.generateReport,
     },
     modal: true,
   };
@@ -312,17 +310,17 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
 
   static returnToSetup() {
     LOGGER.trace("returnToSetup | MigrationApp");
-    MigrationApp.generateReport();
+    MigrationApp.downloadReport();
     game.shutDown();
   }
 
   /**
-   * Generates a migration error report and saves it as a JSON file.
+   * Generates a migration error report and downloads it as a JSON file.
    *
    * @return {void}
    */
-  static generateReport() {
-    LOGGER.trace("generateReport | MigrationApp");
+  static downloadReport() {
+    LOGGER.trace("downloadReport | MigrationApp");
     const { error } = game.cpr.MigrationRunner;
     const date = new Date();
     let monthString = date.getMonth() + 1;
@@ -332,8 +330,16 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
 
     const dateString = `${date.getFullYear()}${monthString}${dayString}`;
     const filename = `Migration Error Report - ${game.system.id} - ${dateString}`;
+
+    /** Serialize Sets to arrays for JSON.stringify */
+    function replacer(key, value) {
+      if (!(value instanceof Set)) return value;
+      return Array.from(value);
+    }
+
+    // This function is provided by Foundry's API.
     saveDataToFile(
-      JSON.stringify(error, null, 2),
+      JSON.stringify(error, replacer, 2),
       "text/json",
       `${filename}.json`
     );
