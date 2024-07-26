@@ -271,6 +271,7 @@ CPR.inventoryCategories = {
   cyberdeck: "CPR.global.itemTypes.cyberdeck",
   program: "CPR.global.itemTypes.program",
   itemUpgrade: "CPR.global.itemTypes.itemUpgrade",
+  netarch: "CPR.global.itemTypes.netArchitecture",
 };
 
 // Sorted A-Z

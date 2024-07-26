@@ -36,6 +36,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-drug-content.hbs`,
     `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-gear-content.hbs`,
     `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-itemUpgrade-content.hbs`,
+    `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-netarch-content.hbs`,
     `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-program-content.hbs`,
     `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-program-content.hbs`,
     `systems/${game.system.id}/templates/actor/character/right-pane/tabs/gear/cpr-vehicle-content.hbs`,

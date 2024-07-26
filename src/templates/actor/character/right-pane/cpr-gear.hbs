@@ -36,6 +36,11 @@
               {{localize "CPR.global.itemTypes.ammo"}}
             </span>
           {{/if}}
+          {{#if (cprListContains "netarch" c) }}
+            <span class="item-detail gear-amount gear-section-header text-nowrap">
+              {{localize "CPR.netArchitecture.floor.floors"}}
+            </span>
+          {{/if}}
           <span class="item-detail gear-data gear-section-header text-nowrap">
             {{localize "CPR.characterSheet.rightPane.data"}}
           </span>
