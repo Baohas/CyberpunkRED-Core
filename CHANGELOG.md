@@ -37,6 +37,7 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 - Add ability to set weapon ignore percentage
 - Add ability to set weapon to ignore armor below set SP amount
 - #235 - Added ability to change resource bars for armor from item sheet
+- Display Net Architectures in Character's gear tab
 
 ### Changes
 
