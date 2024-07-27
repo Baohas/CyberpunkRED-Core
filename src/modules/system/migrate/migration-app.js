@@ -160,6 +160,16 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   }
 
   /**
+   * Get the debug options for the MigrationApp.
+   *
+   * @returns {object}
+   */
+  get debug() {
+    LOGGER.trace("get debug | MigrationApp");
+    return this.migrationRunner.debug.app;
+  }
+
+  /**
    * Not explicitly an override, but rather Foundry itself merges this object
    * up the prototype chain.
    */
@@ -220,7 +230,8 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   _onFirstRender(_context, _options) {
     LOGGER.trace("_onFirstRender | MigrationApp");
     const { element } = this;
-    if (this.options.modal) element.showModal();
+    const debugShowModal = this.debug.modal;
+    if (this.options.modal && debugShowModal) element.showModal();
     else element.show();
 
     // Hide the progress count until we actually have calculated the max.
@@ -316,6 +327,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   static returnToSetup() {
     LOGGER.trace("returnToSetup | MigrationApp");
     MigrationApp.downloadReport();
+    if (!this.debug.returnToSetup) return;
     game.shutDown();
   }
 

@@ -48,6 +48,22 @@ export default class MigrationRunner {
     this.migrationSuccessful = null;
   }
 
+  /**
+   * Change default behaviors so migrations are easier to test.
+   * The following booleans represent the default behavior.
+   *
+   * NOTE: DO NOT commit changes to these booleans.
+   */
+  debug = {
+    enforceMinimumVersion: true,
+    remigrateAlreadyMigrated: false,
+    batchMigrations: true,
+    app: {
+      returnToSetup: true,
+      modal: true,
+    },
+  };
+
   /** @type {MigrationError} */
   error;
 
@@ -186,9 +202,15 @@ export default class MigrationRunner {
       Hooks.off("error", errorHook);
     });
 
+    // Enforce a minimum version that user has to migrate from.
+    // Below this, they will be instructed to first update to
+    // the minimum version.
     const { currentDataModelVersion, newDataModelVersion } = this;
     const MINIMUM_VERSION = MigrationRunner.#MINIMUM_VERSION;
-    if (currentDataModelVersion < MINIMUM_VERSION.dataModel) {
+    const belowMinimumVersion =
+      currentDataModelVersion < MINIMUM_VERSION.dataModel;
+    const { enforceMinimumVersion } = this.debug;
+    if (belowMinimumVersion && enforceMinimumVersion) {
       await migrationApp.setCurrentPhase("userPrevented");
       await migrationApp.setCurrentPhase("end");
       throw new Error(
@@ -358,8 +380,9 @@ export default class MigrationRunner {
     }
 
     // Filter for docs that are not already migrated, in the case of an incomplete migration.
+    const { remigrateAlreadyMigrated } = this.debug;
     const nonMigratedDocs = docList.filter((doc) => {
-      return !this.alreadyMigrated(doc);
+      return !this.alreadyMigrated(doc, remigrateAlreadyMigrated);
     });
 
     const documentTypes = this.allowedDocTypes[docName];
@@ -493,7 +516,10 @@ export default class MigrationRunner {
    * @param {boolean} [batch=true] - Whether to batch updates or not.
    * @param {string} [pack=null] - The pack id from which the documents are provided.
    */
-  async migrateDocuments(documents, { batch = true, pack = null } = {}) {
+  async migrateDocuments(
+    documents,
+    { batch = this.debug.batchMigrations, pack = null } = {}
+  ) {
     LOGGER.trace("migrateDocuments | MigrationRunner");
     if (!documents.length) return;
     const [firstEntry] = documents;
