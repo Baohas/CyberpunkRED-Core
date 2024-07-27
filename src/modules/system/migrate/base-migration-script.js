@@ -9,12 +9,12 @@ import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
  *
  * @abstract
  */
-export default class CPRMigration {
+export default class BaseMigrationScript {
   /**
    * Basic constructor to establish the version and other options.
    */
   constructor() {
-    LOGGER.trace("constructor | CPRMigration");
+    LOGGER.trace("constructor | BaseMigrationScript");
     this.version = this.constructor.version; // Derived from the static property below.
     this.name = this.constructor.name; // Derived from the static property below.
     this.allowedDocTypes = this.constructor.getAllowedDocTypes();
@@ -56,7 +56,7 @@ export default class CPRMigration {
    * @return {Object} Returns an object containing Sets of document types that are allowed.
    */
   static getAllowedDocTypes() {
-    LOGGER.trace("getAllowedDocTypes | CPRMigration");
+    LOGGER.trace("getAllowedDocTypes | BaseMigrationScript");
     const docTypes = {};
     /* eslint-disable no-continue */
     for (const [docName, filters] of Object.entries(this.documentFilters)) {
@@ -91,7 +91,7 @@ export default class CPRMigration {
    * @returns {Object}
    */
   static safeDelete(doc, prop) {
-    LOGGER.trace("safeDelete | CPRMigration");
+    LOGGER.trace("safeDelete | BaseMigrationScript");
     let key = prop;
 
     if (foundry.utils.hasProperty(doc, key)) {
@@ -115,7 +115,7 @@ export default class CPRMigration {
    *
    */
   async migrateMisc() {
-    LOGGER.trace("migrateMisc | CPRMigration");
+    LOGGER.trace("migrateMisc | BaseMigrationScript");
   }
 
   /**
@@ -131,7 +131,7 @@ export default class CPRMigration {
    * @param {Object} actorData - Source data for the item's parent actor, if any. From actor.toObject().
    */
   async updateItem(itemData, actorData) {
-    LOGGER.trace("updateItem | CPRMigration");
+    LOGGER.trace("updateItem | BaseMigrationScript");
   }
 
   /**
@@ -146,7 +146,7 @@ export default class CPRMigration {
    * @param {Object} actorData - Source data for the actor.From actor.toObject().
    */
   async updateActor(actor) {
-    LOGGER.trace("updateActor | CPRMigration");
+    LOGGER.trace("updateActor | BaseMigrationScript");
   }
 
   /**
@@ -157,7 +157,7 @@ export default class CPRMigration {
    * @return {Promise} A Promise that resolves after the specified time.
    */
   static simulateLongProcess(time = 10) {
-    LOGGER.trace("simulateLongProcess | CPRMigration");
+    LOGGER.trace("simulateLongProcess | BaseMigrationScript");
     return new Promise((resolve) => {
       setTimeout(resolve, time);
     });

@@ -51,14 +51,14 @@ export default class MigrationRunner {
   /** @type {MigrationError} */
   error;
 
-  /** @type {Array<typeof CPRMigration>} */
+  /** @type {Array<typeof BaseMigrationScript>} */
   #migrationClasses;
 
   /**
    * This property is set in `migrateItem` and `migrateActor`, when we iterate through
    * the documents that need to be migrated. This way the error message can access
    * the current migration script.
-   * @type {CPRMigration|null}
+   * @type {BaseMigrationScript|null}
    */
   #currentMigration = null;
 
@@ -130,7 +130,7 @@ export default class MigrationRunner {
   /**
    * Knowing the data model versions, figure out which migration scripts to run.
    *
-   * @return {Array<typeof CPRMigration>} - an ordered list of CPRMigration subclasses.
+   * @return {Array<typeof BaseMigrationScript>} - an ordered list of BaseMigrationScript subclasses.
    */
   filterMigrationClasses() {
     LOGGER.trace("filterMigrationClasses | MigrationRunner");

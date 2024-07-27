@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-await-in-loop */
 
-import CPRMigration from "../cpr-migration.js";
+import BaseMigrationScript from "../base-migration-script.js";
 import LOGGER from "../../../utils/cpr-logger.js";
 
-export default class TestMigration extends CPRMigration {
+export default class TestMigration extends BaseMigrationScript {
   static version = 25;
 
   static name = "Test Migration";
