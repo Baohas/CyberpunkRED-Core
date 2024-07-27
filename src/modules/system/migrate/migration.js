@@ -243,6 +243,9 @@ export default class MigrationRunner {
 
     const { app } = MigrationRunner;
     try {
+      // migrate miscellaneous data
+      await app.setCurrentPhase("migrateMisc");
+      await this.migrateMisc();
       // migrate world items
       await app.setCurrentPhase("migrateItems");
       await this.migrateDocuments(this.documents.worldItems);
@@ -624,6 +627,33 @@ export default class MigrationRunner {
 
       // Lock packs if they were locked pre-migration
       pack.configure({ locked: wasLocked });
+    }
+  }
+
+  /**
+   * Executes miscellaneous migrations by calling `migrateMisc` on each migration instance.
+   * During this phase we do permit the scripts to make async changes to the database
+   */
+  async migrateMisc() {
+    LOGGER.trace("migrateMisc | MigrationRunner");
+    for (const migration of this.migrationInstances) {
+      this.#currentMigration = migration;
+      try {
+        await migration.migrateMisc();
+      } catch (error) {
+        this.error = new MigrationError(
+          {
+            migrationData: {
+              Migration: this.#currentMigration,
+              currentVersion: this.currentDataModelVersion,
+              newVersion: this.newDataModelVersion,
+            },
+          },
+          `Miscellaneous Migration Error: ${error.message}`,
+          { cause: error }
+        );
+        throw this.error;
+      }
     }
   }
 

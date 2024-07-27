@@ -33,9 +33,14 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       addMessage: true,
     },
     documentsReady: {},
+    migrateMisc: {
+      statusChange: true,
+      addMessage: true,
+    },
     migrateItems: {
       statusChange: true,
       docType: "items",
+      addMessage: true,
     },
     applyChangesItems: {},
     migrateActors: {

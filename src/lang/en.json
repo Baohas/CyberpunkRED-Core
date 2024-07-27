@@ -1047,6 +1047,7 @@
   "CPR.migration.status.label": "Status",
   "CPR.migration.status.migratingDocs": "Migrating {docType}",
   "CPR.migration.status.migrationComplete": "SUCCESS! Migration Complete!",
+  "CPR.migration.status.migrateMisc": "Applying Misc. Migrations",
   "CPR.migration.status.migrationsFailed": "Migrations failed! Check console for errors!",
   "CPR.migration.status.init": "Preparing Documents for Migration",
   "CPR.migration.status.userPrevented": "You cannot migrate! Migration aborted. See below.",

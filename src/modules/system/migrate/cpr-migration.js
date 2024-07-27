@@ -106,19 +106,26 @@ export default class CPRMigration {
   /**
    * Does nothing and is meant to be over-ridden.
    *
-   * This is where you put the logic for changing settings.
+   * This is where you put the logic for migrating miscellaneous data,
+   * specifically, anything that isn't an item or an actor.
+   * E.g. tiles, tables, settings, etc.
+   *
+   * NOTE: Unlike updateItem/updateActor, we do expect you to make
+   * async changes to the database here (e.g. `await someTile.update()`),
    *
    */
-  async migrateSettings() {
-    LOGGER.trace("migrateSettings | CPRMigration");
-    // Return true so that if a migration script doesn't override this function, nothing fails.
-    return true;
+  async migrateMisc() {
+    LOGGER.trace("migrateMisc | CPRMigration");
   }
 
   /**
    * Does nothing and is meant to be over-ridden.
    *
    * This is where you put the logic for changing the data model for items.
+   *
+   * NOTE: Besides rare circumstances, you should not be making changes to
+   * the database here. Manipulate the data object directly, and the
+   * Migration Runner will take care of database operations.
    *
    * @param {Object} itemData - Source data for the item. From item.toObject().
    * @param {Object} actorData - Source data for the item's parent actor, if any. From actor.toObject().
@@ -131,6 +138,10 @@ export default class CPRMigration {
    * Does nothing and is meant to be over-ridden.
    *
    * This is where you put the logic for changing the data model for actors.
+   *
+   * NOTE: Besides rare circumstances, you should not be making changes to
+   * the database here. Manipulate the data object directly, and the
+   * Migration Runner will take care of database operations.
    *
    * @param {Object} actorData - Source data for the actor.From actor.toObject().
    */

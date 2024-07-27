@@ -14,6 +14,10 @@ export default class TestMigration extends CPRMigration {
     Actor: { types: [], mixins: [] },
   };
 
+  async migrateMisc() {
+    LOGGER.trace("migrateMisc | Test Migration");
+  }
+
   async updateActor(doc) {
     LOGGER.trace("updateActor | Test Migration");
   }
