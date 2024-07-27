@@ -1,58 +1,58 @@
 {
-  "label": "The 12 Days of Gearmas",
+  "label": "Les 12 Jours d'Equipements de Noël",
   "mapping": {},
   "entries": {
     "Esporma Environment Suit": {
-      "name": "Esporma Environment Suit",
-      "description": "<p>\n  Armored Radiation Suit. Protects the wearer from Radiation and comes with an\n  Oxygen Tank that lasts for 30 minutes which can be refilled by spending an\n  hour in clean air.\n</p>\n<p>Nanomachines restore 1SP every hour SP isn't lost on the armor</p>\n"
+      "name": "Tenue de protection Esporma",
+      "description": "<p>Combinaison anti-radiations renforcée. Protège le porteur et est livrée avec un réservoir d'oxygène de 30 minutes qui peut être rempli en une heure en air sain.</p>\n<p>Des nanomachines restaurent 1PA chaque heure tant que la tenue ne subit pas de dommage.</p>\n"
     },
     "PackShield": {
-      "name": "PackShield",
-      "description": "<p>Businesswear Backpack Bulletproof Shield hybrid.</p>\n<p>\n  Can carry items like a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.y2a4HDhIl7FlJyD7]{Carryall},\n  and be equipped in your hand like a shield.\n</p>\n<p>Only provides protection when equipped in a hand.</p>\n<p>\n  Cannot be installed in\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.I08f3hOEgAPNG4kJ]{Popup\n  Shield}.\n</p>\n"
+      "name": "Sac bouclier",
+      "description": "<p>Croisement entre un sac à dos de style Cadre Sup et un bouclier ballistique.</p>\n<p>Peut transporter des objets comme un sac et être équipé dans votre main comme un bouclier.</p>\n<p>Offre seulement une protection lorsqu'il est équipé dans une main.</p>\n<p>Ne peut pas être installé dans un membre cyber.</p>\n"
     },
     "Integrated Cyberscanner": {
-      "name": "Integrated Cyberscanner",
-      "description": "<p>\n  Can scan an individual within 2m/yds and provide a list of all installed\n  Cyberware, takes 1 minute. Spits out an error if a Hardened, Tech Upgraded, or\n  Unique piece of Cyberware is detected.\n</p>\n"
+      "name": "Cyberscanner intégré",
+      "description": "<p>Peut scanner un individu à 2m et fournir une liste de toute la cybernétique installée. Nécessite 1 minute de scan. Fait apparaitre une erreur si une pièce de cybernétique est détectée comme étant modifiée, unique ou inconnue.</p>\n"
     },
     "Xtra-Dex Smart Glove": {
-      "name": "Xtra-Dex Smart Glove",
-      "description": "<p>\n  A Smart Glove with Cyberfinger support. Has 2 Option Slots for Cyberarm\n  Options and is treated as a\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular\n  Finger Cyberhand} for the sake of installing the 5 supported Cyberfingers*.\n</p>\n<p>\n  Requires Interface Plugs to access Cyberarm/Cyberfinger Options installed in\n  the glove.\n</p>\n<p>*Modular Finger Cyberhand must be added after Installation.</p>\n"
+      "name": "Gant Intelligent Xtra-Dex",
+      "description": "<p>Un gant intelligent avec options de cyberdoigts. Possède 2 emplacements pour des options de cyberbras et est traité comme une cybermain modulaire*.</p>\n<p>Nécessite des prises d’interface pour accéder aux options cyberbras/cyberdoigt installées dans le gant.</p>\n<p>*Doigt modulaire cybermain doit être ajouté après l'installation.</p>\n"
     },
     "Cybercam EX-1": {
       "name": "Cybercam EX-1",
-      "description": "<p>\n  Head-mounted camera. A Media presenting a story on a livestream while wearing\n  the Cybercam EX-1 gains +1 Believability when using their role ability. This\n  stacks with evidence based bonuses.\n</p>\n"
+      "description": "<p>Caméra casque. Un Média couvrant un sujet en live en portant la Cybercam EX-1 gagne +1 en Crédibilité. Se cumule avec des bonus basés sur la preuve.\n</p>\n"
     },
     "Cyberscanner": {
       "name": "Cyberscanner",
-      "description": "<p>\n  Can scan an individual within 2m/yds and provide a list of all installed\n  Cyberware, takes 1 minute. Spits out an error if a Hardened, Tech Upgraded, or\n  Unique piece of Cyberware is detected.\n</p>\n"
+      "description": "<p>Peut scanner un individu à 2m et fournir une liste de toute la cybernétique installée. Nécessite 1 minute de scan. Fait apparaitre une erreur si une pièce de cybernétique est détectée comme étant modifiée, unique ou inconnue.</p>\n"
     },
     "Green Light Go Sniffer": {
-      "name": "Green Light Go Sniffer",
-      "description": "<p>\n  Chemical Substance Analyzer. Provides a green or red glow depending on if the\n  chemical substance (such as Street Drugs or Pharmaceuticals) is clean or\n  cut/mixed with another substance.\n</p>\n"
+      "name": "Sniffeur Green Light Go",
+      "description": "<p>Analyseur de substance chimique. Fournit une lueur verte ou rouge selon que la substance chimique (comme des drogues de rue ou des médicaments) est pure ou coupée/mélangée avec une autre substance.</p>\n"
     },
     "Ion Cuffs": {
-      "name": "Ion Cuffs",
-      "description": "<p>\n  Handcuffs meant for borgs. Disables any Non-Hardened Cyberware options\n  installed in the limb the cuffs are binding.\n  <span style=\"font-family: Jost\">BODY</span><span class=\"hgKElc\">≥</span\n  ><span style=\"font-family: Jost\">13 can break.</span>\n</p>\n"
+      "name": "Menottes Ion",
+      "description": "<p>Menottes destinées aux borgs. Désactive toutes les cyberoptions non-renforcées installées dans le membre auxquels les menottes sont attachées.\nUn sujet avec COR 13 ou plus peut briser les menottes Ion.</p>\n"
     },
     "MagViewer": {
-      "name": "MagViewer",
-      "description": "<p>\n  Binoculars meant for spotting. Provides detail up to 800m/yds. Provides the\n  user with an additional +1 to an attack roll with a successful Complimentary\n  Skill Check to assist in attacking a target 51m/yds or farther away in\n  addition to any other Complimentary Skill Checks..\n</p>\n<p>\n  Does not stack with\n  @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.Ryex0KHeeDzPQwmN]{Sniping\n  Scope} or\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.uApwuxpuIJMe47Vn]{TeleOptics}.\n</p>\n"
+      "name": "MagJumelles",
+      "description": "<p> Binoculaires destinés au repérage. Fournit des détails jusqu'à 800m. Confère à l'utilisateur un bonus d'assistance/repérage de +1 à un jet d'attaque réussi sur une cible à 51 m ou plus.</p>\n<p> Ne se cumule pas avec une lunette de visée.</p>"
     },
     "Master Mechanic's Tool Kit": {
-      "name": "Master Mechanic's Tool Kit",
-      "description": "<p>\n  Massive Tool Chest. Provides a +4 to multiple skills when rolling Maker Skill\n  Checks. Large enough to be considered Thick Steel Cover, requires BODY 10 to\n  move.\n</p>\n"
+      "name": "Kit d'outils Master Mécanique",
+      "description": "<p>Boite à outils massive offrant +4 aux compétences lors des tests de constructeur.\nAssez grande pour être considérée comme une couverture en acier épais, nécessite un COR de 10 pour être déplacée.</p>\n"
     },
     "MiniMag Speakers": {
-      "name": "MiniMag Speakers",
-      "description": "<p>\n  Small Magnetic Speakers. Can play audio from a connected Agent within\n  100m/yds.\n</p>\n"
+      "name": "Haut-parleurs MiniMag",
+      "description": "<p>Petits haut-parleurs magnétiques. Peut jouer de l'audio à partir d'un agent connecté à 100m.\n</p>\n"
     },
     "Smartsticks": {
       "name": "Smartsticks",
-      "description": "<p>\n  <span style=\"font-family: Jost\"\n    >Smart Drum Sticks. Gives the User a +1 bonus to Play Instrument (Drums)\n    Skill Checks while in use. Doesn't stack with other bonuses to Play\n    Instrument.</span\n  >\n</p>\n"
+      "description": "<p>Baguettes connectées intelligentes. Donne à l'utilisateur un bonus de +1 en Instrument (Batterie) quand il joue avec. Ne se cumule pas avec d'autres bonus d'Instrument.</p>"
     },
     "Metrocar": {
       "name": "Metrocar",
-      "description": "<p>A Cheap Compact Groundcar built for city driving.</p>\n"
+      "description": "<p>Une voiture terrestre compacte bon marché construite pour la conduite en ville.</p>\n"
     }
   }
 }

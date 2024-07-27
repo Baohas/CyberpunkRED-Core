@@ -48,7 +48,7 @@
           "1-1": "Lunettes miroirs Bohème",
           "2-2": "Combinaison Street Viper",
           "3-3": "Cyberoptique sponsorisé",
-          "4-4": "Manteau SkidRow",
+          "4-4": "Trench-coat SkidRow",
           "5-5": "Prime Time",
           "6-6": "Veste de rue Laser Light"
         }
@@ -63,7 +63,7 @@
           "3-3": "Pistolet moyen (excellente qualité)",
           "4-4": "Caméra vidéo",
           "5-5": "NovLangue",
-          "6-6": "Co-processeur de Réflexes"
+          "6-6": "Coprocesseur de réflexes"
         }
       ]
     },
@@ -73,7 +73,7 @@
         {
           "1-1": "Elflines Online",
           "2-2": "Téléphone jetable",
-          "3-3": "Cybermain doigt modulaire",
+          "3-3": "Cybermain à doigts modulaires",
           "4-4": "Bijou Décontracté",
           "5-5": "Agent",
           "6-6": "Lunettes connectées"
@@ -86,7 +86,7 @@
         {
           "1-1": "Armure de récupération",
           "2-2": "Grenade (Incendiaire)",
-          "3-3": "Cyberbras neo-soviet",
+          "3-3": "Cyberbras néo-soviétique",
           "4-4": "Fusil d'assaut (Standard)",
           "5-5": "Fusil (Standard)",
           "6-6": "Chevrotine de fusil à pompe (Incendiaire)"
@@ -94,13 +94,13 @@
       ]
     },
     "A Box Reeking Of Oil": {
-      "name": "Une boîte avec une odeur d'huile",
+      "name": "Une boîte empestant l'huile",
       "results": [
         {
           "1-1": "Chevrotine de fusil à pompe (Standard)",
           "2-2": "Pistolet lourd (Standard)",
-          "3-3": "Chaussures d'Âme nomade",
-          "4-4": "Fusil de précision (mauvaise qualité)",
+          "3-3": "Chaussures Âme nomade",
+          "4-4": "Fusil de précision (Intelligent)",
           "5-5": "Lunette de précision",
           "6-6": "Liaison smartgun"
         }
@@ -110,11 +110,11 @@
       "name": "Une boîte scellée d'un baiser de rouge à lèvres",
       "results": [
         {
-          "1-1": "Arme de mêlée légère",
+          "1-1": "Couteau de combat",
           "3-3": "Grenade Shuriken Tornado",
           "4-4": "Chaussures Pop asiatique",
           "5-5": "Haut de Cadre sup",
-          "6-6": "Tanto White Hornet",
+          "6-6": "Tanto Frelon blanc",
           "2-2": "Implant sexuel Mr. Studd"
         }
       ]

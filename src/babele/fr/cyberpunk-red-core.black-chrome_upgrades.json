@@ -4,23 +4,23 @@
   "entries": {
     "4Tify": {
       "name": "4Tify",
-      "description": "<p>Une application pour votre Agent. Peut révéler des points faibles en scannant votre maison. Ou une section de couverture.</p>\n<p>Les règles complètes peuvent être trouvées dans Black Chrome à la page 13.</p>"
+      "description": "<p>Une application pour votre Agent. </p>\n<p>Peut révéler des points faibles en scannant votre maison. Ou une section de couverture.</p>\n"
     },
     "City Database": {
-      "name": "Base de données de Ville",
-      "description": "<p>Une application pour votre Agent. Trouvez les meilleures adresses en ville avec ce guide de ville. Règles complètes dans Black Chrome à la page 14.</p>"
+      "name": "Base de données de ville",
+      "description": "<p>Une application pour votre Agent. </p>\n<p>Bonus de +1 à tous les jets de compétence de Guide local concernant les communautés et les quartiers de cette ville.</p>\n"
     },
     "Digital Gladiator": {
       "name": "Digital Gladiator",
-      "description": "<p>Une application pour votre Agent. Créez un Solo virtuel et menez vos combats dans le royaume numérique !</p>\n<p>Les règles pour les combats se trouvent dans Black Chrome à la page 12.</p>"
+      "description": "<p>Une application pour votre agent.</p>\n<p>Peut-être êtes-vous plus adapté pour en découdre en ligne que dans la rue...</p>\n<p>\n  Les règles relatives à la création, au jeu et au combat des adversaires dans Digital Gladiator se trouvent dans le livre de règle Black Chrome pour cet objet\n</p>\n"
     },
     "MedScan": {
       "name": "MedScan",
-      "description": "<p>Une application pour votre Agent. Vidéoconférence médicale, vous aide à faire des premiers secours, contre un prix. Les règles complètes peuvent être trouvées dans Black Chrome à la page 14.</p>"
+      "description": "<p>Une application pour votre agent.</p>\n<p>\n  Nécessite un accès à Citinet. MedScan peut vous connecter à distance à un spécialiste de la Trauma Team mais ses conseils effectifs coûtent plus cher\n</p>\n<p>\n  Pour un coût supplémentaire, un spécialiste de la Trauma Team peut être engagé pour guider l'utilisateur à distance pour une procédure de 4 heures.\n</p>\n<p>\n  Les règles relatives au coût d'embauche et aux procédures autorisées avec cette application se trouvent dans le livre de règle Black Chrome pour cet objet.\n</p>\n"
     },
     "NCPD Crime Database": {
-      "name": "Base de données NCPD Crime",
-      "description": "<p>Une application pour votre Agent. Permet à l'utilisateur de rechercher des informations criminelles publiques. Les règles complètes d'utilisation peuvent être trouvées dans Black Chrome à la page 13.</p>\n<p>&nbsp;</p>"
+      "name": "Base de données criminelle du NCPD",
+      "description": "<p>Une application pour votre Agent.</p>\n<p>\n  Nécessite un accès CitiNet à Night City. Permet à l'utilisateur d'explorer la base de données des crimes.\n</p>\n"
     }
   }
 }

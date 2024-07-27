@@ -11,7 +11,7 @@
   - Навыки (Наука)
   - Навыки (Боевые искусства)
   - Навыки (Игра на инструменте)
-  - DLC: 12 Days of Gearmas (thanks to @LordCheesusCrust)
+  - DLC: Двенадцать дней Снаряждества (спасибо @LordCheesusCrust)
 - Добавлены проверки «прожжённости» персонажей
   - На основе правил на стр. 150 Danger Gal Dossier
   - В бланке персонажа появляется иконка, при наведении курсора на которую появляются причины признания «прожжённости»
@@ -24,20 +24,20 @@
   - Они останутся на уже существующих персонажах
   - На новых персонажей они добавляться не будут
 - Навык `знание местности` по умолчанию переименован в `Знание местности (Родная местность)`
-- Add CSS theme support for Monks Active Tile Triggers Module
-- Add ability to set weapon ignore percentage
-- Add ability to set weapon to ignore armor below set SP amount
+- Добавлена поддержка CSS-тем для модуля Monks Active Tile Triggers
+- Добавлена возможность выставить оружию игнорировать проценты
+- Добавлена возможность выставить оружие игнорировать броню ниже определённого показателя ОС
 
 ### Изменения
 
-- Weapons in fight tab now categorized by Ranged/Melee
-- Change Pause Font to Tektur for better internationalization support
-- Header elements in text input areas are now styled in a similar way to the core book
+- Оружие во вкладке «Бой» теперь различается по категории «Ближний/дальний бой»
+- Шрифт сообщения о паузе заменён на Tektur для улучшенной поддержки локализаций на других языках
+- Элементы заголовка в зонах ввода текста теперь внешне похожи на те, что в основной книге правил
 
 ### Исправления
 
 - #933 - Исправлено множество ошибок/отсуствующих значений в библиотеках благодаря @Alexander Fokin
-- #950 - Bolded DV checks in various items of the compendia
+- #950 - Проверки СЛ выделены жирным в некоторых предметах библиотеки
 - #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
 - #979 - Fix styling of inline rolls in chat
 - Added several small updates to descriptions to understand various items better
