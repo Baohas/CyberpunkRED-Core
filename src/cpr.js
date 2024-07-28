@@ -298,11 +298,6 @@ Hooks.once("ready", async () => {
       "dataModelVersion",
       MR.newDataModelVersion
     );
-  } else {
-    SystemUtils.DisplayMessage(
-      "error",
-      SystemUtils.Localize("CPR.migration.status.migrationsFailed")
-    );
   }
   if (
     game.system.version !== game.settings.get(game.system.id, "systemVersion")

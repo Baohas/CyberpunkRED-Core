@@ -206,7 +206,7 @@ export default class MigrationRunner {
     // Enforce a minimum version that user has to migrate from.
     // Below this, they will be instructed to first update to
     // the minimum version.
-    const { currentDataModelVersion, newDataModelVersion } = this;
+    const { currentDataModelVersion } = this;
     const MINIMUM_VERSION = MigrationRunner.#MINIMUM_VERSION;
     const belowMinimumVersion =
       currentDataModelVersion < MINIMUM_VERSION.dataModel;
@@ -227,25 +227,22 @@ export default class MigrationRunner {
     this.documents = await this.prepareDocumentsForMigration();
     await migrationApp.setCurrentPhase("documentsReady");
 
-    CPRSystemUtils.DisplayMessage(
-      "notify",
-      `Beginning Migrations of Cyberpunk Red Core from Data Model ${currentDataModelVersion} to ${newDataModelVersion}.`
-    );
-    CPRSystemUtils.DisplayMessage(
-      "warn",
-      CPRSystemUtils.Localize("CPR.migration.status.waitForEnd")
-    );
     this.migrationSuccessful = await this.runMigrations();
 
     if (this.migrationSuccessful) {
       CPRSystemUtils.DisplayMessage(
         "notify",
-        CPRSystemUtils.Localize("CPR.migration.status.migrationComplete")
+        CPRSystemUtils.Localize("CPR.migration.notification.migrationComplete")
       );
       // This makes it so the app no longer acts as a modal,
       // and users can interact with the rest of Foundry again.
       migrationApp.element.close();
       migrationApp.element.show();
+    } else {
+      CPRSystemUtils.DisplayMessage(
+        "error",
+        CPRSystemUtils.Localize("CPR.migration.notification.migrationFailed")
+      );
     }
 
     await migrationApp.setCurrentPhase("end");
@@ -281,12 +278,9 @@ export default class MigrationRunner {
       // migrate packs
       await app.setCurrentPhase("migrateCompendia");
       await this.migrateCompendia();
-    } catch (err) {
+    } catch (error) {
       await app.setCurrentPhase("error");
-      CPRSystemUtils.DisplayMessage(
-        "error",
-        `Fatal error while migrating: ${err.message}`
-      );
+      LOGGER.error(error);
       return false;
     }
 
@@ -787,11 +781,10 @@ export default class MigrationRunner {
         document,
         uuid,
       },
-      `${migrationFailString}\n${dataStr}`,
+      `${migrationFailString}${dataStr}`,
       { cause: error }
     );
     this.error = migrationError;
-    LOGGER.error(migrationFailString, dataStr, error);
     return migrationError;
   }
 
