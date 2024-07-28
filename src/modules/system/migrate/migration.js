@@ -1,4 +1,4 @@
-/* eslint-disable no-await-in-loop */
+/* eslint-disable no-await-in-loop, no-continue */
 
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
@@ -311,7 +311,6 @@ export default class MigrationRunner {
      */
     const sceneMap = new Map();
     for (const scene of game.scenes) {
-      /* eslint-disable no-continue */
       const filteredTokens = this.filterDocuments(scene.tokens);
       if (filteredTokens.length === 0) continue;
       sceneMap.set(scene, filteredTokens);
@@ -349,7 +348,7 @@ export default class MigrationRunner {
       }
       if (filteredDocuments.length === 0) continue;
       packMap.set(pack, filteredDocuments);
-    } /* eslint-enable no-continue */
+    }
     return { worldItems, worldActors, sceneMap, packMap };
   }
 
@@ -473,7 +472,6 @@ export default class MigrationRunner {
     const finalTypes = { Item: null, Actor: null };
     for (const docName of docNames) {
       for (const migration of this.migrationInstances) {
-        /* eslint-disable no-continue */
         const allowedDocTypes = migration.allowedDocTypes[docName];
         if (!allowedDocTypes) continue;
         if (!allowedDocTypes.size) {
@@ -486,7 +484,7 @@ export default class MigrationRunner {
         finalTypes[docName] = (finalTypes[docName] || new Set()).union(
           allowedDocTypes
         );
-      } /* eslint-enable no-continue */
+      }
     }
     return finalTypes;
   }
@@ -549,7 +547,6 @@ export default class MigrationRunner {
     LOGGER.trace("migrateItem | MigrationRunner");
     for (const migration of this.migrationInstances) {
       this.#currentMigration = migration;
-      /* eslint-disable no-continue */
       if (!this.isMigratableType("Item", itemData.type, migration)) continue;
       try {
         await migration.updateItem(itemData);
@@ -572,7 +569,6 @@ export default class MigrationRunner {
         throw await this.generateError(actorData.uuid, err);
       }
       // Migrate embedded items.
-      // eslint-disable-next-line no-continue
       if (actorData.items.length === 0) continue;
       for (const itemData of actorData.items) {
         if (!this.isMigratableType("Item", itemData.type, migration)) continue;
@@ -582,7 +578,7 @@ export default class MigrationRunner {
         } catch (err) {
           throw await this.generateError(itemData.uuid, err);
         }
-      } /* eslint-enable no-continue */
+      }
     }
     return actorData;
   }
@@ -764,14 +760,13 @@ export default class MigrationRunner {
     if (document.pack) errorInfo.pack = document.compendium.metadata;
 
     let dataStr = `\nFailed Document: ${document.name}\nUUID: ${document.uuid}`;
-    /* eslint-disable no-continue */
     for (const [key, value] of Object.entries(errorInfo)) {
       if (!value) continue;
       // Only packs have metadata, and their human-readable string is in the `metadata.label`
       // property rather than the `name` property.
       const label = value.label || value.name;
       dataStr += `\n${key.capitalize()}: ${label} (${value.id})`;
-    } /* eslint-enable no-continue */
+    }
 
     const Migration = this.#currentMigration;
     const migrationFailString = `Migration Script Failed: '${Migration.name}' (Data Model Version: ${Migration.version})`;
