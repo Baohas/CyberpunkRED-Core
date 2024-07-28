@@ -110,6 +110,12 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   /** Whether the user has changed the message. */
   userChangedMessage = false;
 
+  /** A Set of indices of unread messages. */
+  unreadMessages = new Set();
+
+  /** The time the last displayed message was added. */
+  #lastMsgTime = Date.now();
+
   /**
    * A private reference to the migration runner which created this app.
    *
@@ -318,6 +324,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       direction === "back" ? currentMessageIndex - 1 : currentMessageIndex + 1;
     if (newIndex < 0 || newIndex >= this.messages.length) return;
     this.currentMessageIndex = newIndex;
+    this.unreadMessages.delete(newIndex);
 
     const message = this.messages[newIndex];
     const messagesElement = this.element.querySelector(".messages");
@@ -528,6 +535,16 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       const messagesElement = this.element.querySelector(".messages");
       const messageElement = messagesElement.querySelector(".message");
       messageElement.innerHTML = message;
+
+      // If user didn't have ample time to read a message, mark it as unread.
+      const now = Date.now();
+      if (now - this.#lastMsgTime < 5000) {
+        this.unreadMessages.add(this.messages.length - 2);
+      }
+      this.#lastMsgTime = Date.now();
+    } else {
+      // Mark unread messages.
+      this.unreadMessages.add(this.messages.length - 1);
     }
 
     this.renderNav(); // Show/hide nav buttons and update message count.
@@ -542,13 +559,30 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     LOGGER.trace("renderNav | MigrationApp");
     const messageCount = this.messages.length;
     const { currentMessageIndex } = this;
-    const [prevIcon, nextIcon] =
-      this.element.querySelectorAll(".message-nav > i");
 
+    // Update message count.
     const messageCountElement = this.element.querySelector(".message-count");
     const messageCountString = `${currentMessageIndex + 1}/${messageCount}`;
     messageCountElement.innerHTML = messageCountString;
 
+    // Show unread messages icon, if any.
+    const notificationIcon = this.element.querySelector(".notification-icon");
+    notificationIcon.style = "display: none";
+    if (this.unreadMessages.size) {
+      notificationIcon.style = "";
+      notificationIcon.setAttribute(
+        "data-tooltip",
+        CPRSystemUtils.Format("CPR.migration.app.unreadMessages", {
+          messages: Array.from(this.unreadMessages)
+            .map((i) => i + 1)
+            .join(", "),
+        })
+      );
+    }
+
+    // Show/hide previous and next icons.
+    const [prevIcon, nextIcon] =
+      this.element.querySelectorAll(".message-nav > i");
     prevIcon.style = "";
     nextIcon.style = "";
 
