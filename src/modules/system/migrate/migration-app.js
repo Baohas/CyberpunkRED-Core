@@ -466,6 +466,8 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       progress.max = this.migrationRunner.totalDocs[docType];
       progress.render();
     }
+    const totalElement = this.element.querySelector(".total-docs");
+    totalElement.innerHTML = `(${this.migrationRunner.totalDocs.total})`;
 
     // Show the progress count once we have calculated the max.
     this.element.querySelectorAll(".progress-count").forEach((elem) => {

@@ -120,7 +120,11 @@ export default class MigrationRunner {
    */
   get totalDocs() {
     LOGGER.trace("get totalDocs | MigrationRunner");
-    const totals = {};
+    const totals = {
+      get total() {
+        return this.items + this.actors + this.tokens + this.packDocuments;
+      },
+    };
     Object.keys(CPR.migrationDocTypes).forEach((key) => {
       totals[key] = null;
     });
