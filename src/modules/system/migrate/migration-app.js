@@ -97,6 +97,13 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   /** The current phase of the migration application. */
   #currentPhase = "init";
 
+  /**
+   * The phase of the migration application in which an error occurred.
+   *
+   * @type {string}
+   */
+  #errorPhase;
+
   /** The index of the currently viewed message. */
   currentMessageIndex = 0;
 
@@ -117,6 +124,16 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   get migrationRunner() {
     LOGGER.trace("get migrationRunner | MigrationApp");
     return this.#migrationRunner;
+  }
+
+  /**
+   * Returns the error phase of the MigrationApp.
+   *
+   * @return {string}
+   */
+  get errorPhase() {
+    LOGGER.trace("get errorPhase | MigrationApp");
+    return this.#errorPhase;
   }
 
   /**
@@ -324,9 +341,14 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     changelog.sheet.render(true);
   }
 
+  /**
+   * Download report, if applicable, and then return to setup.
+   * Remember, `this` is the MigrationApp instance, not the class,
+   * even though the function is static (this is a Foundry quirk).
+   */
   static returnToSetup() {
     LOGGER.trace("returnToSetup | MigrationApp");
-    MigrationApp.downloadReport();
+    if (this.errorPhase) MigrationApp.downloadReport();
     if (!this.debug.returnToSetup) return;
     game.shutDown();
   }
@@ -397,6 +419,12 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     LOGGER.trace("setCurrentPhase | MigrationApp");
     if (!Object.keys(MigrationApp.PHASES).includes(value)) {
       throw new Error(`Invalid phase: ${value}`);
+    }
+    // Set phase that caused error, and attach info to error.
+    if (value === "error") {
+      this.#errorPhase = this.#currentPhase;
+      this.migrationRunner.error.data.migrationData.errorPhase =
+        this.#errorPhase;
     }
     this.#currentPhase = value;
     await this.onPhaseChange();

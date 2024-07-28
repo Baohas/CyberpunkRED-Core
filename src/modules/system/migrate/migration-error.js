@@ -21,6 +21,16 @@ export default class MigrationError extends Error {
     }
 
     this.data = data;
+
+    // Set migration data.
+    const runner = game.cpr.MigrationRunner;
+    this.data.migrationData = {
+      MigrationScript: runner.currentMigration,
+      currentVersion: runner.currentDataModelVersion,
+      newVersion: runner.newDataModelVersion,
+      errorPhase: null, // This is applied in the migration app.
+    };
+
     this.data.message = this.message;
     this.data.originError = {
       message: options.cause?.message,

@@ -78,6 +78,11 @@ export default class MigrationRunner {
    */
   #currentMigration = null;
 
+  get currentMigration() {
+    LOGGER.trace("get currentMigration | MigrationRunner");
+    return this.#currentMigration;
+  }
+
   get migrationClasses() {
     LOGGER.trace("get migrationClasses | MigrationRunner");
     return this.#migrationClasses;
@@ -87,7 +92,7 @@ export default class MigrationRunner {
    * Get the migration app, if it exists.
    * @returns {MigrationApp|null}
    */
-  static get app() {
+  get app() {
     LOGGER.trace("get app | MigrationRunner");
     const app = foundry.applications.instances.get("cpr-migration");
     return app || null;
@@ -185,15 +190,7 @@ export default class MigrationRunner {
       const { id } = data;
       const failure = error.getFailure();
       this.error = new MigrationError(
-        {
-          migrationData: {
-            Migration: this.#currentMigration,
-            currentVersion: this.currentDataModelVersion,
-            newVersion: this.newDataModelVersion,
-          },
-          failure,
-          id,
-        },
+        { failure, id },
         `Foundry DataModelValidationError - ${error.message}`,
         { cause: error }
       );
@@ -263,7 +260,7 @@ export default class MigrationRunner {
   async runMigrations() {
     LOGGER.trace("runMigrations | MigrationRunner");
 
-    const { app } = MigrationRunner;
+    const { app } = this;
     try {
       // migrate miscellaneous data
       await app.setCurrentPhase("migrateMisc");
@@ -591,7 +588,7 @@ export default class MigrationRunner {
    */
   async migrateScenes() {
     LOGGER.trace("migrateScenes | MigrationRunner");
-    const { progress } = MigrationRunner.app;
+    const { progress } = this.app;
     progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
     for (const actorList of this.documents.sceneMap.values()) {
       const filteredTokenActors = actorList.filter((actor) => {
@@ -626,7 +623,7 @@ export default class MigrationRunner {
    */
   async migrateCompendia() {
     LOGGER.trace("migrateCompendia | MigrationRunner");
-    const { progress } = MigrationRunner.app;
+    const { progress } = this.app;
     progress.packs.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
     for (const [pack, docList] of this.documents.packMap) {
       // If we are migrating locked packs we need to unlock them before migrating
@@ -668,13 +665,7 @@ export default class MigrationRunner {
         await migration.migrateMisc();
       } catch (error) {
         this.error = new MigrationError(
-          {
-            migrationData: {
-              Migration: this.#currentMigration,
-              currentVersion: this.currentDataModelVersion,
-              newVersion: this.newDataModelVersion,
-            },
-          },
+          {},
           `Miscellaneous Migration Error: ${error.message}`,
           { cause: error }
         );
@@ -787,6 +778,7 @@ export default class MigrationRunner {
           Migration,
           currentVersion: this.currentDataModelVersion,
           newVersion: this.newDataModelVersion,
+          errorPhase: this.app.errorPhase,
         },
         document,
         uuid,
@@ -810,7 +802,7 @@ export default class MigrationRunner {
     if (!document) return null;
     const { collectionName } = document;
     const isEmbeddedItem = collectionName === "items" && document.isEmbedded;
-    const { progress } = MigrationRunner.app;
+    const { progress } = this.app;
     if (isEmbeddedItem) return null; // We do not track progress for items in actors (they are still migrated, of course).
     if (document.pack) return progress.packDocuments;
     if (document.isToken) return progress.tokens;
