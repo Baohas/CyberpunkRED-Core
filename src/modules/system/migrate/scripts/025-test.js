@@ -10,8 +10,8 @@ export default class TestMigration extends BaseMigrationScript {
   static name = "Test Migration";
 
   static documentFilters = {
-    Item: { types: [], mixins: [] },
-    Actor: { types: [], mixins: [] },
+    Item: { none: false, types: [], mixins: [] },
+    Actor: { none: false, types: [], mixins: [] },
   };
 
   async migrateMisc() {

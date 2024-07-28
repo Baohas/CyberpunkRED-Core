@@ -381,6 +381,7 @@ export default class MigrationRunner {
     });
 
     const documentTypes = this.allowedDocTypes[docName];
+    if (!documentTypes) return [];
     if (!documentTypes.size) return nonMigratedDocs;
 
     // Filter for doc type.
@@ -469,10 +470,12 @@ export default class MigrationRunner {
   getAllowedDocTypes() {
     LOGGER.trace("getAllowedDocTypes | MigrationRunner");
     const docNames = ["Item", "Actor"];
-    const finalTypes = { Item: new Set(), Actor: new Set() };
+    const finalTypes = { Item: null, Actor: null };
     for (const docName of docNames) {
       for (const migration of this.migrationInstances) {
+        /* eslint-disable no-continue */
         const allowedDocTypes = migration.allowedDocTypes[docName];
+        if (!allowedDocTypes) continue;
         if (!allowedDocTypes.size) {
           // If any Set is completely empty, set finalTypes[docName]
           // to empty Set and break out of this inner loop,
@@ -480,8 +483,10 @@ export default class MigrationRunner {
           finalTypes[docName] = new Set();
           break;
         }
-        finalTypes[docName] = finalTypes[docName].union(allowedDocTypes);
-      }
+        finalTypes[docName] = (finalTypes[docName] || new Set()).union(
+          allowedDocTypes
+        );
+      } /* eslint-enable no-continue */
     }
     return finalTypes;
   }
@@ -500,6 +505,7 @@ export default class MigrationRunner {
   isMigratableType(docName, docType, migration = {}) {
     LOGGER.trace("isMigratableType | MigrationRunner");
     const allowedDocTypes = migration.allowedDocTypes || this.allowedDocTypes;
+    if (!allowedDocTypes[docName]) return false;
     if (!allowedDocTypes[docName].size) return true;
     return allowedDocTypes[docName].has(docType);
   }
