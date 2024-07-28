@@ -21,9 +21,15 @@ export default class Progress {
 
   static TEMPLATE = `templates/progress-bar.hbs`;
 
+  /**
+   * Percentage of progress completed.
+   * Will return 0 if `NaN`.
+   *
+   * @returns {number}
+   */
   get percent() {
     LOGGER.trace("get percent | Progress");
-    return Math.floor((this.value / this.max) * 100);
+    return Math.floor((this.value / this.max) * 100) || 0;
   }
 
   /**
