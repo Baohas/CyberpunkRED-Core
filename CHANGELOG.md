@@ -32,6 +32,7 @@
 
 - Weapons in fight tab now categorized by Ranged/Melee
 - Change Pause Font to Tektur for better internationalization support
+- Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Header elements in text input areas are now styled in a similar way to the core book
 
 ### Bug Fixes
