@@ -250,6 +250,16 @@ Hooks.once("init", async () => {
     ],
   };
 
+  CONFIG.fontDefinitions.Tektur = {
+    editor: true,
+    fonts: [
+      {
+        urls: [`systems/${game.system.id}/fonts/Tektur-Regular.ttf`],
+        weight: 400,
+      },
+    ],
+  };
+
   preloadHandlebarsTemplates();
   registerHandlebarsHelpers();
   registerSystemSettings();
