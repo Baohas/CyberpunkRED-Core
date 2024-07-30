@@ -7,7 +7,7 @@ system:
   ammoVariety:
     - arrow
   attackmod: 0
-  brand: ""
+  brand: Dynalar Technologies
   concealable:
     concealable: true
     isConcealed: false

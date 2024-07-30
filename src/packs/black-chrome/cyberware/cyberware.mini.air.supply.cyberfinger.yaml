@@ -6,7 +6,7 @@ name: Mini Air Supply Cyberfinger
 system:
   ammoVariety: []
   attackmod: 0
-  brand: ""
+  brand: Dynalar Technologies
   concealable:
     concealable: true
     isConcealed: false

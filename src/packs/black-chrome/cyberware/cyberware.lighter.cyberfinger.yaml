@@ -6,7 +6,7 @@ name: Lighter Cyberfinger
 system:
   ammoVariety: []
   attackmod: 0
-  brand: ""
+  brand: Dynalar Technologies
   concealable:
     concealable: true
     isConcealed: false

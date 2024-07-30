@@ -7,7 +7,7 @@ system:
   ammoVariety:
     - custom
   attackmod: 0
-  brand: ""
+  brand: Pursuit Security Inc.
   concealable:
     concealable: false
     isConcealed: false

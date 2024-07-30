@@ -8,7 +8,7 @@ name: Extra-Jointed Cyberarm Upgrade
 system:
   ammoVariety: []
   attackmod: 0
-  brand: ""
+  brand: Rocklin Augmentics
   concealable:
     concealable: false
     isConcealed: false

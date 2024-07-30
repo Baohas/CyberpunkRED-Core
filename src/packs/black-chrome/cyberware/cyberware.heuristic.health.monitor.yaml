@@ -7,7 +7,7 @@ name: Heuristic Health Monitor
 system:
   ammoVariety: []
   attackmod: 0
-  brand: ""
+  brand: Biotechnica
   concealable:
     concealable: false
     isConcealed: false
