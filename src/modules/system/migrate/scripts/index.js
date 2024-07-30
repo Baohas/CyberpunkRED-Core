@@ -2,3 +2,4 @@
 // add your migration scripts here
 export { default as RoleAbilityNaNMigration } from "./025-roleAbilities.js";
 export { default as ItemQualityMigration } from "./026-itemQuality.js";
+export { default as SkillTypeQualityMigration } from "./027-skillType.js";
