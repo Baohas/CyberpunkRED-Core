@@ -14,7 +14,7 @@ system:
   damage: 1d6
   description:
     value: |
-      <p>An elogated saddle, gaining a seat for a passenger.</p>
+      <p>An elongated saddle, gaining a seat for a passenger.</p>
   dvTable: ""
   favorite: false
   fireModes:

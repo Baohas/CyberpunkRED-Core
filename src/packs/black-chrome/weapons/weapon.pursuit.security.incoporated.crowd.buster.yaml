@@ -2,7 +2,7 @@ _id: dnX1vhlKwmacyuNs
 _key: "!items!dnX1vhlKwmacyuNs"
 effects: []
 img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
-name: Persuit Security Incoporated Crowd Buster
+name: Pursuit Security Incorporated Crowd Buster
 system:
   ammoVariety:
     - rifle
