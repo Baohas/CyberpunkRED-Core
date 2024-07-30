@@ -6,9 +6,29 @@
 
 ### Action Needed
 
-#### Netrunning Tiles
+#### Item Quality
 
-We have updated the Netrunning Tiles, we have replaced the PNG files with WebP for reduced filesize. This means any scenes using PNG tile will display as broken. These can be fixed by double clicking on the broken tile and either navigating to the new tiles in `tiles/WebP` or manually replacing the `PNG` filder with `WebP` and the extension `png` with `webp`.
+We have (re)added item quality data points to Weapons, Cyberdecks, etc. we have migrated items with a best effort (checking for poor/exellent in item names/descriptions) but this migration may not catch 100% of items.
+
+Please manually review any items in your world/custom compendia/on actors that may need to be adjusted.
+
+#### Skill Types
+
+##### Removing old Generic Skills
+
+We have removed the old (incorrect) generic skills `Science`, `Play Instrument`, `Martial Arts`, `Local Expert`, and `Language` from being added to new Characters/Mooks and We have added new system compendia for `Skills (Languages)`, `Skills (Local Expert)`, `Skills (Martial Arts)`, `Skills (Science)`, and `Skills (Science)` which you can use to populate these specific skills for new actors.
+
+As we do not want to lose any of your data we have not removed these Skills from your actors, we have instead made them deletable so you can add the add the correct specific skills and remove the old ones from character sheets as in your own time.
+
+##### Modifying existing Specific Skills
+
+For some functionality in the system we have added a `Skill Type` to each skill, while we have made a best effort to migrate all skills to the correct type there may be some instances where we were unable to detect the correct Skill Type of a skill. If you have any actors with custom skills for `Science`, `Play Instrument`, `Martial Arts`, `Local Expert`, and `Language` you may need to set it's Skill Type of the skill manually in that skill's Settings page. You can follow the process on the [wiki page <i class="fas fa-external-link-alt"></i>](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/Items/Skills#settings-tab).
+
+#### Weapons Ignoring Armor
+
+We have added the ability to allow weapons to ignore a percentage of armor or armor under a certian SP. We have migrated all melee weapons to include the new datapoints to ignore 50% armor by default.
+
+If your players or mooks have any weapons that ignore a different percentage or armor under a certian SP that is not 50%/0SP then you will need to update these manually (or replace from a copy in the system compendia).
 
 #### Get EMP'd Macro
 
