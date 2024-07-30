@@ -25,13 +25,17 @@
   - They will not be added to new Characters
 - Rename default `Local Expert` skill to `Local Expert (Your Home)`
 - Add CSS theme support for Monks Active Tile Triggers Module
+- Add Speedheal Macro
 - Add ability to set weapon ignore percentage
 - Add ability to set weapon to ignore armor below set SP amount
 
 ### Änderungen
 
+- Fix actor lookup in Get EMP Macro
 - Weapons in fight tab now categorized by Ranged/Melee
+- Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Change Pause Font to Tektur for better internationalization support
+- Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Header elements in text input areas are now styled in a similar way to the core book
 
 ### Bug Fixes
