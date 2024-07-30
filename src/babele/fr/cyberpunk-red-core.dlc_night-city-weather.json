@@ -6,19 +6,19 @@
   "entries": {
     "Umbrella": {
       "name": "Parapluie",
-      "description": "<p>Protège contre la pluie acide. Pour chaque minute exposée à la pluie acide, toutes les armures perdent 1 PA (NCW pg 4).</p>\n<p>+2 aux jets de Résistance à la torture/aux drogues quand exposition aux Pluies de Sang. Les Pluies de Sang sévères appliquent les effets d'un flacon de biotoxine lors d'un jet raté (NCW pg 4).</p>"
+      "description": "<p>Protège contre la pluie acide. Pour chaque minute exposée à la pluie acide, toutes les armures perdent 1 PA (NCW p.4).</p>\n<p>+2 aux jets de Résistance à la torture/aux drogues quand exposé aux Pluies de Sang. Les Pluies de Sang sévères appliquent les effets d'un flacon de biotoxine lors d'un jet raté (NCW p.4).</p>\n"
     },
     "Cold-Weather Jacket Lining": {
       "name": "Doublure de veste pour temps froid",
-      "description": "<p>Amélioration pour toute veste. L'utilisateur ne subira pas de pénalités d'exposition aux températures froides (CP:R pg 181).</p>"
+      "description": "<p>Amélioration pour toute veste. L'utilisateur ne subira pas de pénalités d'exposition aux températures froides (CP:R p.181).</p>\n"
     },
     "Hot-Weather Jacket Lining": {
       "name": "Doublure de veste pour temps chaud",
-      "description": "<p>Amélioration pour toute veste. L'utilisateur ne subira pas de pénalités d'exposition aux températures chaudes (CP:R pg 181).&nbsp;</p>\n<p>Les vagues de chaleur doublent toutes les pénalités dues à une armure plus lourde (NCW pg 5). &nbsp;Par exemple, un utilisateur avec une armure pare-balle moyenne subit une pénalité de -4 en MOUV, DEX et REF pendant une vague de chaleur. La doublure pour temps chaud réduit chacune de ces pénalités de 1.</p>"
+      "description": "<p>Amélioration pour toute veste. L'utilisateur ne subira pas de pénalités d'exposition aux températures chaudes (CP:R pg 181).</p>\n<p>Les vagues de chaleur doublent toutes les pénalités dues à une armure plus lourde (NCW pg 5). Par exemple, un utilisateur avec une armure pare-balle moyenne subit une pénalité de -4 en MOUV, DEX et REF pendant une vague de chaleur. La doublure pour temps chaud réduit chacune de ces pénalités de 1.</p>\n"
     },
     "Waterproof Jacket Lining": {
       "name": "Doublure imperméable de veste",
-      "description": "<p dir=\"ltr\">Amélioration pour n'importe quelle veste. Mécaniquement similaire à un parapluie, ne sert pas de tenue de plongée.&nbsp;</p>\n<p>Protège contre la Pluie Acide. Pour chaque minute exposée à la pluie d'acide, toutes les armures perdent 1 PA (NCW pg 4).</p>\n<p dir=\"ltr\">+2 aux jets de Résistance à la torture/aux drogues quand exposition aux Pluies de Sang. Les Pluies de Sang sévères appliquent les effets d'un flacon de biotoxine lors d'un jet raté (NCW pg 4).</p>\n<p>&nbsp;</p>"
+      "description": "<p dir=\"ltr\">Amélioration pour n'importe quelle veste. Mécaniquement similaire à un parapluie, ne sert pas de tenue de plongée.</p>\n<p>Protège contre la Pluie Acide. Pour chaque minute exposée à la pluie d'acide, toutes les armures perdent 1 PA (NCW pg 4).</p>\n<p>+2 aux jets de Résistance à la torture/aux drogues quand exposé aux Pluies de Sang. Les Pluies de Sang sévères appliquent les effets d'un flacon de biotoxine lors d'un jet raté (NCW pg 4).</p>\n"
     },
     "Tactical Umbrella": {
       "name": "Parapluie tactique",

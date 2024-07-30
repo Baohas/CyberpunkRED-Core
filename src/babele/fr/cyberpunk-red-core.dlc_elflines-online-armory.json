@@ -10,7 +10,7 @@
     },
     "Poison Arrow": {
       "name": "Flèche empoisonnée",
-      "description": "<p>L'attaque n'inflige aucun dégât. Quiconque est touché par l'attaque doit à la place effectuer un jet de Résistance à la torture/aux drogues contre un SD 13. En cas d'échec 2d6 points de dégâts aux PS. L'armure de la cible n'est pas perforée.</p>"
+      "description": "<p>L'attaque n'inflige aucun dégât immédiat. Quiconque est touché par l'attaque doit à la place effectuer un jet de <strong>Résistance à la torture/aux drogues SD 13.</strong> En cas d'échec 2d6 points de dégâts aux PS. L'armure de la cible n'est pas perforée.</p>\n"
     },
     "Chainmail Armor (Body)": {
       "name": "Cotte de mailles (Corps)",

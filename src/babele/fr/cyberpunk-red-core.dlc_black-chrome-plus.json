@@ -6,15 +6,15 @@
   "entries": {
     "Arrow (Junk)": {
       "name": "Flèche (Camelote)",
-      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
+      "description": "<p>Munition de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>\n"
     },
     "Big Dreem Rounds": {
-      "name": "Big Dreem munitions",
+      "name": "Munitions Big Dreem",
       "description": "<p>Munitions personnalisées pour TeenDreem.</p>"
     },
     "Heavy Pistol (Junk)": {
       "name": "Pistolet lourd (camelote)",
-      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
+      "description": "<p>Munition de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>\n"
     },
     "Heavy Pistol (Small Game)": {
       "name": "Pistolet Lourd (Petit gibier)",
@@ -22,7 +22,7 @@
     },
     "Medium Pistol (Junk)": {
       "name": "Pistolet moyen (camelote)",
-      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
+      "description": "<p>Munition de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>\n"
     },
     "Medium Pistol (Small Game)": {
       "name": "Pistolet Moyen (Petit gibier)",
@@ -30,7 +30,7 @@
     },
     "Rifle (Junk)": {
       "name": "Fusil (camelote)",
-      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
+      "description": "<p>Munition de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>\n"
     },
     "Rifle (Small Game)": {
       "name": "Fusil (Petit gibier)",
@@ -38,11 +38,11 @@
     },
     "Shotgun Slug (Junk)": {
       "name": "Slug de fusil à pompe (camelote)",
-      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
+      "description": "<p>Munition de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>\n"
     },
     "Very Heavy Pistol (Junk)": {
       "name": "Pistolet très lourd (camelote)",
-      "description": "<p>Munitions de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>"
+      "description": "<p>Munition de camelote ; bon marché mais inflige 1d6 points de dégâts en moins à toute personne ayant plus de 1PA.</p>\n"
     },
     "Very Heavy Pistol (Small Game)": {
       "name": "Pistolet très lourd (Petit gibier)",
@@ -50,14 +50,14 @@
     },
     "Scavenged Armor": {
       "name": "Armure de récupération",
-      "description": "<p>Une armure légère bricolée pour le corps qui ne peut être réparé. Reportez-vous à la description complète de l'objet sur BC+ p. 4.</p>"
+      "description": "<p>Une armure légère bricolée pour le corps et qui ne peut être réparé.</p>\n"
     },
     "Piranha Smash": {
       "name": "Smash Piranha",
-      "description": "<p>On dirait du Smash, mais c'est du Smash goût citron vert. Et avec un moindre risque d'addiction.</p>\n<p><strong>Effet principal</strong></p>\n<p>Un dose dure 4 heures.</p>\n<ul>\n<li>L'utilisateur se sent heureux et satisfait</li>\n<li>+2 en Danse / Contortion / Conversation / Psychologie / Persuasion / Jeu d'acteur</li>\n</ul>\n<p><strong>Effet secondaire (SD9)</strong></p>\n<ul>\n<li>-2 en Danse / Contortion / Conversation / Psychologie / Persuasion / Jeu d'acteur</li>\n<li>Le MJ vous dira quand vous avez besoin de plus de Smash. Jeu de rôle en conséquence.</li>\n</ul>"
+      "description": "<p>On dirait du Smash, mais c'est du Smash goût citron vert. Et avec un risque d'addiction moindre.</p>\n<p><strong>Effet principal</strong></p>\n<p>Un dose dure 4 heures.</p>\n<ul>\n<li>L'utilisateur se sent heureux et satisfait</li>\n<li>+2 en Danse / Contorsion / Conversation / Psychologie / Persuasion / Jeu d'acteur</li>\n</ul>\n<p>\n  Lorsque l'effet de la dose s'estompe, l'utilisateur fait un jet de \n  <strong>VOL+ Résistance à la torture/aux drogues + 1d10 contre un jet d'effets secondaires (SD 9)</strong>.\n</p>\n<p>En cas d'échec :</p>\n<ul>\n<li>-2 en Danse / Contortion / Conversation / Psychologie / Persuasion / Jeu d'acteur</li>\n<li>Le MJ dira quand l'utilisateur a besoin de plus de Smash. Jeu de rôle en conséquence.</li>\n</ul>\n"
     },
     "Bullet To Slug Adapter Casings": {
-      "name": "Douilles adaptatrices balles vers slugs",
+      "name": "Douilles adaptatrices de balles vers slugs",
       "description": "<p>Permet de tirer n'importe quelle balle en tant que slug de fusil à pompe.</p>\n<p>Vendue en boîte de 10 douilles adaptatrices.</p>\n<p>Vous pouvez charger en une Action 10 balles dans 10 adaptateurs en utilisant le casier inclus. Si le chargement est effectué balle par balle il faut une Action pour charger 1 adaptateur.</p>"
     },
     "Solo of Fortune Bodypillow": {
@@ -76,7 +76,7 @@
     },
     "Molotov Cocktail": {
       "name": "Cocktail Molotov",
-      "description": "<p>Grenade incendiaire fragile. Met une cible en feu Mortel (voir CP:R p.180)</p>",
+      "description": "<p>Grenade incendiaire fragile. Met une cible en feu d'intensité mortelle (voir CP:R p.180)</p>\n",
       "dvTable": "SD Arme de lancer"
     },
     "SportMaster": {

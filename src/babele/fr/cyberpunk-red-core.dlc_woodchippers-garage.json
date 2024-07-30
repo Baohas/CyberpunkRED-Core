@@ -14,14 +14,14 @@
     },
     "Paintball (Poison)": {
       "name": "Paintball (poison)",
-      "description": "<p>Créé à partir de 3 fioles de poison fixées ensemble. N'inflige aucun dégât direct à chaque impact.</p>"
+      "description": "<p>Créé à partir de 3 fioles de poison fixées ensemble. N'inflige aucun dégât direct à l'impact.</p>\n"
     },
     "Aegis": {
-      "name": "Aegis",
+      "name": "Égide",
       "description": "<p>Cette arme ne peut pas causer de blessures critiques, ne peut pas perforer l'armure, et si elle réduisait une cible à moins de 1 PV, elle la laisserait Inconsciente avec 1 PV à la place.</p>"
     },
     "Archimedes": {
-      "name": "Archimedes",
+      "name": "Archimède",
       "description": "<p>Utilise la compétence Pilotage de véhicule aérien au lieu de la compétence Armes lourdes pour tirer, nécessite le cyberimplant Dispositif de visée et ne peut utiliser que des roquettes intelligentes. Il est fourni avec une roquette intelligente à l'achat. Quelle gentillesse.</p>",
       "dvTable": "SD Lance-roquettes"
     },
@@ -37,7 +37,7 @@
     },
     "Flare Gun": {
       "name": "Pistolet de détresse",
-      "description": "<p>Comme les munitions de grenades normales, cette arme peut tirer des fusées éclairantes de route*. Elles n'infligent aucun dégât, mais si elles sont tirées dans les airs elles sont visibles à 5 km. Vous ne pouvez pas installer cette arme en cybernétique escamotable.</p>\n<p><em>*Actuellement non pris en charge donc supprimer manuellement une fusée éclairante de route de l'inventaire des acteurs après avoir tiré</em></p>",
+      "description": "<p>Comme les munitions de grenades normales, cette arme peut tirer des fusées éclairantes de route*. Elles n'infligent aucun dégât, mais si elles sont tirées dans les airs elles sont visibles à 5 km. Vous ne pouvez pas installer cette arme en cybernétique escamotable.</p>\n<p><em>*Actuellement non pris en charge, il faut donc supprimer manuellement une fusée éclairante de route de l'inventaire de l'utilisateur après avoir tiré</em></p>\n",
       "dvTable": "SD Lance-grenades"
     },
     "M-02 Heavy Rifle": {
@@ -47,7 +47,7 @@
     },
     "Nomad Air Cannon": {
       "name": "Canon à air Nomade",
-      "description": "<p>Plutôt que des munitions à fusil à pompe normales, cette arme tire tout liquide qu'elle contient. L'acide peut être acheté pour 10eb (bon marché) ce qui réduit de 1 PA toutes les armures portées par la cible. Le poison ou la biotoxine peuvent également être chargés, mais nécessite 3 fioles par tir.</p>"
+      "description": "<p>Plutôt que des munitions de fusil à pompe normales, cette arme tire tout liquide avec lequel elle est rechargée. L'acide peut être acheté pour 10eb (bon marché) ce qui réduit de 1 PA toutes les armures portées par la cible. Du poison ou de la biotoxine peuvent également être chargés, mais cela nécessite 3 fioles par tir.</p>\n"
     },
     "Pocket Launcher": {
       "name": "Lance-roquettes de poche",
@@ -56,7 +56,7 @@
     },
     "SDF-45": {
       "name": "SDF-45",
-      "description": "<p>Ce lance-roquettes ne peut charger que des fusées perforantes et a une portée maximale de 400 m. Quand est tirée une roquette à la fois, le MJ choisit l'endroit où elle atterrit. Quand sont tirées deux roquettes à la fois, le MJ choisit l'endroit où les roquettes atterrissent, mais cette fois jusqu'à 50 m de la cible, et avec chaque roquette séparés d'au moins 10 m.</p>",
+      "description": "<p>Ce lance-roquettes ne peut charger que des fusées perforantes et a une portée maximale de 400 m. Quand l'arme tire une roquette à la fois, le MJ choisit l'endroit où elle atterrit. Quand sont tirées deux roquettes à la fois, le MJ choisit l'endroit où les roquettes atterrissent, mais cette fois jusqu'à 50 m de la cible, et avec chaque roquette séparés d'au moins 10 m.</p>\n",
       "dvTable": "SD Lance-roquettes"
     },
     "TearJerker": {
