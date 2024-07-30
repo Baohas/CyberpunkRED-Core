@@ -1,4 +1,3 @@
-/* global Hooks game */
 import LOGGER from "../../../utils/cpr-logger.js";
 
 const updateTrackedArmor = () => {
@@ -27,7 +26,6 @@ const updateTrackedArmor = () => {
       }
       if ("shieldHitPoints" in updateData.system) {
         actor.updateTrackedArmor("shield", doc._id);
-      }
       }
     }
   });
