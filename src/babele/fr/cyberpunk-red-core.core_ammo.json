@@ -12,7 +12,7 @@
     },
     "Arrow (Biotoxin)": {
       "name": "Flèche (Biotoxine)",
-      "description": "<p>Pas de dégât immédiat. Si touché : jet de Résistance à la torture/aux drogues SD15, si échec : 3d6 de dégât. Ne perfore pas l'armure.</p>"
+      "description": "<p>Pas de dégât immédiat. Si touché : jet de <strong> Résistance à la torture/aux drogues SD15</strong> , si échec : 3d6 de dégât. Ne perfore pas l'armure.</p>\n"
     },
     "Arrow (Expansive)": {
       "name": "Flèche (Expansive)",
@@ -24,15 +24,15 @@
     },
     "Arrow (Poison)": {
       "name": "Flèche (Poison)",
-      "description": "<p>Pas de dégât immédiat. Si chair touchée : jet de Résistance à la torture/aux drogues SD13, si échec : 2d6 de dégât. Ne perfore pas l'armure.</p>"
+      "description": "<p>Pas de dégât immédiat. Si chair touchée : jet de <strong> Résistance à la torture/aux drogues SD13</strong>, si échec : 2d6 de dégâts. Ne perfore pas l'armure.</p>\n"
     },
     "Arrow (Rubber)": {
       "name": "Flèche (Caoutchouc)",
-      "description": "<p>Ne cause pas de blessure critique. Ne perfore pas l'armure. Laisse la cible à 1 PS. Considéré comme munition standard pour les armes exotiques.</p>"
+      "description": "<p>Ne cause pas de blessure critique. Ne perfore pas l'armure. Laisse la cible à 1 PS minimum. Considéré comme munition standard pour les armes exotiques.</p>"
     },
     "Arrow (Sleep)": {
       "name": "Flèche (Soporifique)",
-      "description": "<p>N'applique pas de dégâts. Si chair touchée : jet de Résistance à la torture/aux drogues SD13, si échec la victime tombe au sol. (cf. p.169) et est inconsciente pour 1 minute. Peut être réveillée par dégâts ou par une autre personne utilisant une action en la touchant.</p>"
+      "description": "<p>N'applique pas de dégâts. Si chair touchée : jet de <strong>Résistance à la torture/aux drogues SD13</strong>, si échec la victime tombe au sol. (cf. p. 169) et est inconsciente pour 1 minute. Peut être réveillée par dégâts ou par une autre personne utilisant une action en la touchant/secouant.</p>\n"
     },
     "Arrow (Smart)": {
       "name": "Flèche (Intelligente)",
@@ -40,7 +40,7 @@
     },
     "Battery Pack": {
       "name": "Batterie",
-      "description": "<p>Une batterie rechargeable (1 heure) souvent utilisée pour les armes exotiques. Contient 8 charges.&nbsp;</p>"
+      "description": "<p>Une batterie rechargeable (1 heure) souvent utilisée pour les armes exotiques. Contient 8 charges et peut être rechargée.</p>"
     },
     "Grenade (Armor-Piercing)": {
       "name": "Grenade (Perforante)",
@@ -48,15 +48,15 @@
     },
     "Grenade (Biotoxin)": {
       "name": "Grenade (Biotoxine)",
-      "description": "<p>Pas de dégât immédiat. Si chair touchée : jet Résistance torture/drogues SD15. Si échec 3d6 de dégâts. Ne perfore pas l'armure.</p>"
+      "description": "<p>Pas de dégât immédiat. Si chair touchée : jet de <strong>Résistance à la torture/ aux drogues SD15</strong>. Si échec 3d6 de dégâts. Ne perfore pas l'armure.</p>"
     },
     "Grenade (EMP)": {
       "name": "Grenade (IEM)",
-      "description": "<p>Si touché : jet de résistance Cybertech SD15. Si échec 2 cyberimplants ou appareils électroniques portés (au choix du MJ) cessent de fonctionner pendant 1 minute. Les cybermembres touchés pendent comme un bras de viande démembré (cf. p. 187). </p>"
+      "description": "<p>Si touché : jet de <strong>Cybertech SD15</strong>. Si échec, 2 cyberimplants ou appareils électroniques portés (au choix du MJ) cessent de fonctionner pendant 1 minute. Les cybermembres touchés pendent comme un bras de viande démembré (cf. p. 187). </p>"
     },
     "Grenade (Flashbang)": {
-      "name": "Grenade (Étourdissantes)",
-      "description": "<p>N'applique pas de dégâts. Si touché : jet de Résistance torture/drogues SD15. Si échec appliquer les blessures critiques Oeil endommagé et Oreille endommagée (cf. p. 188) pendant 1 minute, sans les dégâts bonus de blessures critiques.</p>"
+      "name": "Grenade (Étourdissante)",
+      "description": "<p>N'applique pas de dégâts. Si touché : jet de <strong>Résistance à la torture/drogues SD15</strong>. Si échec appliquer les blessures critiques Oeil endommagé et Oreille endommagée (cf. p. 188) pendant 1 minute, sans les dégâts bonus de blessures critiques.</p>"
     },
     "Grenade (Incendiary)": {
       "name": "Grenade (Incendiaire)",
@@ -64,11 +64,11 @@
     },
     "Grenade (Poison)": {
       "name": "Grenade (Poison)",
-      "description": "<p>Pas de dégât immédiat. Si chair touchée : jet de Résistance à la torture/aux drogues SD13, si échec : 2d6 de dégâts. Ne perfore pas l'armure.</p>"
+      "description": "<p>Pas de dégât immédiat. Si chair touchée : jet de <strong>Résistance à la torture/aux drogues SD13</strong>, si échec : 2d6 de dégâts. Ne perfore pas l'armure.</p>"
     },
     "Grenade (Sleep)": {
       "name": "Grenade (Soporifique)",
-      "description": "<p>N'applique pas de dégâts. Si chair touchée : jet de Résistance à la torture/aux drogues SD13, si échec la victime tombe au sol. (cf. p.169) et est inconsciente pour 1 minute. Peut être réveillée par dégâts ou par une autre personne utilisant une action en la touchant.</p>"
+      "description": "<p>N'applique pas de dégâts. Si chair touchée : jet de <strong>Résistance à la torture/aux drogues SD13</strong>, si échec la victime tombe au sol. (cf. p.169) et est inconsciente pour 1 minute. Peut être réveillée par dégâts ou par une autre personne utilisant une action en la touchant/la secouant.</p>"
     },
     "Grenade (Smoke)": {
       "name": "Grenade (Fumigène)",
@@ -76,7 +76,7 @@
     },
     "Grenade (Teargas)": {
       "name": "Grenade (Lacrymogène)",
-      "description": "<p>N'applique pas de dégâts. Si oeil de chair touché : jet de Résistance torture/drogues SD13. Si échec, appliquer la blessure critique Oeil endommagé (cf. p. 188) pour 1 minute, sans les dégâts bonus de blessures critiques. </p>"
+      "description": "<p>N'applique pas de dégâts. Si oeil de chair touché : jet de <strong>Résistance à la torture/ aux drogues SD13</strong>. Si échec, appliquer la blessure critique Oeil endommagé (cf. p. 188) pour 1 minute, sans les dégâts bonus de blessures critiques. </p>"
     },
     "Heavy Pistol (Armor-Piercing)": {
       "name": "Pistolet lourd (Perforante)",
@@ -96,7 +96,7 @@
     },
     "Heavy Pistol (Rubber)": {
       "name": "Pistolet lourd (Caoutchouc)",
-      "description": "<p>Ne cause pas de blessure critique. Ne perfore pas l'armure. Laisse la cible à 1 PS. Considéré comme munition standard pour les armes exotiques.</p>"
+      "description": "<p>Ne cause pas de blessure critique. Ne perfore pas l'armure. Laisse la cible à 1 PS minimum. Considéré comme munition standard pour les armes exotiques.</p>"
     },
     "Heavy Pistol (Smart)": {
       "name": "Pistolet lourd (Intelligente)",
@@ -120,7 +120,7 @@
     },
     "Medium Pistol (Rubber)": {
       "name": "Pistolet moyen (Caoutchouc)",
-      "description": "<p>Ne cause pas de blessure critique. Ne perfore pas l'armure. Laisse la cible à 1 PS. Considéré comme munition standard pour les armes exotiques.</p>"
+      "description": "<p>Ne cause pas de blessure critique. Ne perfore pas l'armure. Laisse la cible à 1 PS minimum. Considéré comme munition standard pour les armes exotiques.</p>"
     },
     "Medium Pistol (Smart)": {
       "name": "Pistolet moyen (Intelligente)",
@@ -152,7 +152,7 @@
     },
     "Rifle (Rubber)": {
       "name": "Fusil (Caoutchouc)",
-      "description": "<p>Ne cause pas de blessure critique. Ne perfore pas l'armure. Laisse la cible à 1 PS. Considéré comme munition standard pour les armes exotiques.</p>"
+      "description": "<p>Ne cause pas de blessure critique. Ne perfore pas l'armure. Laisse la cible à 1 PS minimum. Considéré comme munition standard pour les armes exotiques.</p>"
     },
     "Rifle (Smart)": {
       "name": "Fusil (Intelligente)",
@@ -192,7 +192,7 @@
     },
     "Shotgun Slug (Rubber)": {
       "name": "Slug de fusil à pompe (Caoutchouc)",
-      "description": "<p>Ne cause pas de blessure critique. Ne perfore pas l'armure. Laisse la cible à 1 PS. Considéré comme munition standard pour les armes exotiques.</p>"
+      "description": "<p>Ne cause pas de blessure critique. Ne perfore pas l'armure. Laisse la cible à 1 PS minimum. Considéré comme munition standard pour les armes exotiques.</p>"
     },
     "Shotgun Slug (Smart)": {
       "name": "Slug de fusil à pompe (Intelligente)",
@@ -216,7 +216,7 @@
     },
     "Very Heavy Pistol (Rubber)": {
       "name": "Pistolet très lourd (Caoutchouc)",
-      "description": "<p>Ne cause pas de blessure critique. Ne perfore pas l'armure. Laisse la cible à 1 PS. Considéré comme munition standard pour les armes exotiques.</p>"
+      "description": "<p>Ne cause pas de blessure critique. Ne perfore pas l'armure. Laisse la cible à 1 PS minimum. Considéré comme munition standard pour les armes exotiques.</p>"
     },
     "Very Heavy Pistol (Smart)": {
       "name": "Pistolet très lourd (intelligente)",

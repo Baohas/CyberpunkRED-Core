@@ -66,7 +66,7 @@
     },
     "Triple Treat": {
       "name": "Triple Treat",
-      "description": "<p>Fournit avec un lance-grenades exotique* monté sous le canon qui - comme l'arme principale est de mauvaise qualité - fonctionne comme une arme de mauvaise qualité. Il ne peut pas être supprimé. Celui-ci et l'arme principale peuvent tirer des munitions non basiques.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'arme</em></p>",
+      "description": "<p>\n  Comes with an Exotic Grenade Launcher Underbarrel* which - as the main gun is\n  poor quality - functions as a poor quality weapon. It can't be removed. Both\n  that and the main weapon can fire non-Basic Ammunition.\n</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>\n",
       "dvTable": "SD Lance-roquettes"
     }
   }

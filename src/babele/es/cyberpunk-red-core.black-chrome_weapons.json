@@ -155,14 +155,14 @@
       "description": "<p>El cañón del Soberano Supremo es una Pistola Pesada Exótica de Mala Calidad con una velocidad de disparo de 1. Puede dar una bonificación +1 a Intimidar en ciertas situaciones. Las reglas completas se pueden encontrar en Cromo Negro en la página 106.</p>",
       "dvTable": "VD Pistola"
     },
-    "Persuit Security Incoporated Crowd Buster": {
-      "name": "Persuit Security Incoporated Crowd Buster",
-      "description": "<p>\n  The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with a\n  unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear\n  Protectors*.\n</p>\n<p><em>*Must be manually applied after purchase</em></p>\n",
-      "dvTable": "DV Assault Rifle"
-    },
     "Pursuit Security Bouncer": {
       "name": "Rebotador de Pursuit Security",
       "description": "<p>Guante que funciona a baterías.</p>\n<p>Una combinación Exótica de Bastón Aturdidor y Microondas.</p>\n<p>Los detalles completos se pueden encontrar en la página 97.</p>"
+    },
+    "Pursuit Security Incorporated Crowd Buster": {
+      "name": "Pursuit Security Incorporated Crowd Buster",
+      "description": "<p>\n  The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with a\n  unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear\n  Protectors*.\n</p>\n<p><em>*Must be manually applied after purchase</em></p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Ranger Combat Boomerang": {
       "name": "Boomerang de Ranger Combat",

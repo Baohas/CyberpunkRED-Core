@@ -155,14 +155,14 @@
       "description": "<p>Бомбарда «Владыка» — экзотический пистолет крупного калибра со СКА 1. В некоторых ситуациях даёт бонус +1 в наездах.</p>",
       "dvTable": "СЛ Пистолет"
     },
-    "Persuit Security Incoporated Crowd Buster": {
-      "name": "«Разгонщик толпы» от Пюрсьют секьюрити инкорпорейтед",
-      "description": "<p>«Разгонщик толпы» от Пюрсьют секьюрити инк. — это экзотическая штурмовая винтовка с необычным альтернативным режимом стрельбы. Идёт в комплекте с парой противошумных наушников*.</p>\n<p><em>*Необходимо добавить вручную после получения оружия.</em></p>",
-      "dvTable": "СЛ Штурмовая винтовка"
-    },
     "Pursuit Security Bouncer": {
       "name": "Вышибала",
       "description": "<p>Перчатка на батарейках.</p>\n<p>Одноручная экзотическая смесь оглушающей дубинки и микроволновки.</p>"
+    },
+    "Pursuit Security Incorporated Crowd Buster": {
+      "name": "Pursuit Security Incorporated Crowd Buster",
+      "description": "<p>\n  The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with a\n  unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear\n  Protectors*.\n</p>\n<p><em>*Must be manually applied after purchase</em></p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Ranger Combat Boomerang": {
       "name": "Боевой бумеранг «Рейнджер»",

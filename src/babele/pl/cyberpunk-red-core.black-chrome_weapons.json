@@ -155,14 +155,14 @@
       "description": "<p>The Overlord Handcannon is a Poor Quality Exotic Heavy Pistol with a ROF of 1. It may give a +1 bonus to Facedowns in certain situations. Full rules can be found in Black Chrome on Page 106.</p>",
       "dvTable": "PT Pistolety"
     },
-    "Persuit Security Incoporated Crowd Buster": {
-      "name": "Persuit Security Incoporated Crowd Buster",
-      "description": "<p>\n  The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with a\n  unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear\n  Protectors*.\n</p>\n<p><em>*Must be manually applied after purchase</em></p>\n",
-      "dvTable": "DV Assault Rifle"
-    },
     "Pursuit Security Bouncer": {
       "name": "Pursuit Security Bouncer",
       "description": "<p>Battery powered glove.</p>\n<p>One Handed Exotic Combination Stun Baton and Microwaver.</p>\n<p>Full details can be found on page 97.</p>"
+    },
+    "Pursuit Security Incorporated Crowd Buster": {
+      "name": "Pursuit Security Incorporated Crowd Buster",
+      "description": "<p>\n  The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with a\n  unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear\n  Protectors*.\n</p>\n<p><em>*Must be manually applied after purchase</em></p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Ranger Combat Boomerang": {
       "name": "Ranger Combat Boomerang",

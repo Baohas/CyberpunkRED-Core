@@ -155,14 +155,14 @@
       "description": "<p>Le canon de poing Overlord est un pistolet lourd exotique de mauvaise qualité avec une cadence de tir de 1. Il peut donner un bonus de +1 aux Bastons de regard dans certaines situations.</p>\n",
       "dvTable": "SD Pistolet"
     },
-    "Persuit Security Incoporated Crowd Buster": {
-      "name": "Persuit Security Incoporated Crowd Buster",
-      "description": "<p>\n  The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with a\n  unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear\n  Protectors*.\n</p>\n<p><em>*Must be manually applied after purchase</em></p>\n",
-      "dvTable": "DV Assault Rifle"
-    },
     "Pursuit Security Bouncer": {
       "name": "Foudre de paume Pursuit Security",
       "description": "<p>Gant alimenté par une batterie.</p>\n<p>Combinaison exotique d'une matraque étourdissante à une main et d'un canon à ondes.</p>\n"
+    },
+    "Pursuit Security Incorporated Crowd Buster": {
+      "name": "Pursuit Security Incorporated Crowd Buster",
+      "description": "<p>\n  The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with a\n  unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear\n  Protectors*.\n</p>\n<p><em>*Must be manually applied after purchase</em></p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Ranger Combat Boomerang": {
       "name": "Boomerang de combat Ranger",

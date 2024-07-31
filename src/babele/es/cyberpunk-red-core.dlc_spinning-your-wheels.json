@@ -32,7 +32,7 @@
     },
     "Extended Seat": {
       "name": "Asiento Extendido",
-      "description": "<p>Asiento elongado, ganando un asiento para un pasajero.&nbsp;</p>"
+      "description": "<p>An elongated saddle, gaining a seat for a passenger.</p>\n"
     },
     "Folding Frame": {
       "name": "Marco Plegable",

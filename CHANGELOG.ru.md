@@ -6,14 +6,14 @@
 
 ### Требует внимания
 
-#### Netrunning Tiles
+#### Тайлы для нетраннига
 
-We have updated the Netrunning Tiles, we have replaced the PNG files with WebP for reduced filesize. This means any scenes using PNG tile will display as broken. These can be fixed by double clicking on the broken tile and either navigating to the new tiles in `tiles/WebP` or manually replacing the `PNG` filder with `WebP` and the extension `png` with `webp`.
+Мы обновили тайлы для нетраннига, файлы формата PNG заменены на WebP для сокращения размера. Из-за этого сцены, на которых используются тайлы в формате PNG, будут сломаны. Это можно исправить двойным щелчком на сломанный тайл, после чего или выбрать новый тайл в директории `tiles/WebP`, или вручную в пути к файлу заменить директорию с `PNG` на `WebP` и расширение с `png` на `webp`.
 
 ### Нововведения
 
-- Added compatibility for Foundry v12.
-- Removed compatibility for Foundry v11.
+- Добавлена совместимость с Foundry v12.
+- Убрана совместимость с Foundry v11.
 - Добавлены библиотеки для следующий категорий:
   - Навыки (Знание местности)
   - Навыки (Наука)
@@ -33,34 +33,37 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
   - На новых персонажей они добавляться не будут
 - Навык `знание местности` по умолчанию переименован в `Знание местности (Родная местность)`
 - Добавлена поддержка CSS-тем для модуля Monks Active Tile Triggers
-- Add Speedheal Macro
+- Добавлен макрос спидхила
 - Добавлена возможность выставить оружию игнорировать проценты
 - Добавлена возможность выставить оружие игнорировать броню ниже определённого показателя ОС
-- #235 - Added ability to change resource bars for armor from item sheet
+- #235 - добавлена возможность изменять шкалы ресурсов для брони с бланка предмета
+- Display Net Architectures in Character's gear tab
 
 ### Изменения
 
-- Fix actor lookup in Get EMP Macro
+- Исправлен поиск куклы в Макросе ЭМИ
 - Оружие во вкладке «Бой» теперь различается по категории «Ближний/дальний бой»
-- Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
+- Пролистывание с помощью колеса мыши больше не изменяет параметры/навыки на Бланке персонажа
 - Шрифт сообщения о паузе заменён на Tektur для улучшенной поддержки локализаций на других языках
-- Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
+  - Remove Orbitron font
+- Пролистывание с помощью колеса мыши больше не изменяет параметры/навыки на Бланке персонажа
 - Элементы заголовка в зонах ввода текста теперь внешне похожи на те, что в основной книге правил
-- Update netrunning tiles with new tiles from Solution
-- Change how we handle Branded Items
-  - Rename branded items to use the full item name from the source book
-  - Remove the programatic band name handler
+- Тайлы для нетраннинга обновлены на тайлы от Solution
+- Изменён способ обработки предметов с брендами в нгазвании
+  - Предметы с брендами в названии теперь называются точно, как в соответствующей книге правил
+  - Бренд больше не добавляется в название программно
 
 ### Исправления
 
 - #933 - Исправлено множество ошибок/отсуствующих значений в библиотеках благодаря @Alexander Fokin
 - #950 - Проверки СЛ выделены жирным в некоторых предметах библиотеки
-- Fix NET Arch image path seperators
-- #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
-- #979 - Fix styling of inline rolls in chat
-- Added several small updates to descriptions to understand various items better
-- Fix image overflow on Item Sheets
-- Fix filepicker favorites styling
+- Исправлены разделители путей для Сетевых архитектур
+- #951 - Исправлено повторное упоминание номера страницы в описание предмета, которое и так уже указано в соответствующем параметре бланка предмета
+- #979 - Исправлены стили для встроенных бросков в чате
+- В описания некоторых предметов внесены небольшие изменения для улучшения понимания
+- Исправлен выход изображений за установленные пределы на бланках предметов
+- Fix typos in some items
+- Исправлен стиль для избранного в средстве выбора файлов
 - #1017 - Fix duplicate effect bonuses being applied to attacks
 
 ## Версия 0.88.2

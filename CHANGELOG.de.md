@@ -37,6 +37,7 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 - Add ability to set weapon ignore percentage
 - Add ability to set weapon to ignore armor below set SP amount
 - #235 - Added ability to change resource bars for armor from item sheet
+- Display Net Architectures in Character's gear tab
 
 ### Änderungen
 
@@ -44,6 +45,7 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 - Weapons in fight tab now categorized by Ranged/Melee
 - Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Change Pause Font to Tektur for better internationalization support
+  - Remove Orbitron font
 - Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Header elements in text input areas are now styled in a similar way to the core book
 - Update netrunning tiles with new tiles from Solution
@@ -60,6 +62,7 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 - #979 - Fix styling of inline rolls in chat
 - Added several small updates to descriptions to understand various items better
 - Fix image overflow on Item Sheets
+- Fix typos in some items
 - Fix filepicker favorites styling
 - #1017 - Fix duplicate effect bonuses being applied to attacks
 

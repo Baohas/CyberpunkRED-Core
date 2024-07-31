@@ -37,6 +37,7 @@ Nous avons mis à jour les tuiles de Netrun, nous avons remplacé les fichiers P
 - Ajoute la possibilité de configurer une arme pour qu'elle ignore un pourcentage
 - Ajoute la possibilité de configurer une arme pour qu'elle ignore l'armure en dessous d'un montant de PA déterminé
 - #235 - Ajoute la possibilité de changer les barres de ressources pour l'armure depuis la feuille d'objet
+- Display Net Architectures in Character's gear tab
 
 ### Att/round
 
@@ -44,6 +45,7 @@ Nous avons mis à jour les tuiles de Netrun, nous avons remplacé les fichiers P
 - Les armes dans l'onglet combat sont désormais catégorisées par Distance/Mêlée
 - Utiliser la molette n'ajuste désormais plus les stats/compétences dans la feuille de personnage
 - Changement de la police Pause pour Tektur pour un meilleur support international
+  - Remove Orbitron font
 - Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Les titres dans les zones de texte sont désormais stylisés de la même façon que le livre de base de CP:R
 - Mis à jour des tuiles de Netrunning avec des nouvelles tuiles de Solution3
@@ -60,6 +62,7 @@ Nous avons mis à jour les tuiles de Netrun, nous avons remplacé les fichiers P
 - #979 - Corrige le style des jets de dés dans le chat
 - Ajout de plusieurs petites mise à jour des descriptions pour mieux comprendre différents objets
 - Corrige le débordement des images sur les feuilles d'objet
+- Fix typos in some items
 - Corrige le style favori du sélecteur de fichier
 - #1017 - Corrige les bonus d'effet appliqués aux attaques en doublon
 
