@@ -62,6 +62,7 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 - #979 - Fix styling of inline rolls in chat
 - Added several small updates to descriptions to understand various items better
 - Fix image overflow on Item Sheets
+- Fix typos in some items
 - Fix filepicker favorites styling
 - #1017 - Fix duplicate effect bonuses being applied to attacks
 
