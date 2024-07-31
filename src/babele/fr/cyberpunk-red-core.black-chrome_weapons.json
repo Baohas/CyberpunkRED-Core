@@ -9,53 +9,52 @@
       "description": "<p>Le Fusil d'assaut modulable prototype Arasaka est un fusil d'assaut exotique d'excellente qualité. En supposant que vous avez toutes les pièces, il peut utiliser un mode alternatif unique de canon électrique.</p>\n",
       "dvTable": "SD Fusil d'assaut"
     },
-    "Beast Shotgun": {
-      "name": "Fusil d'assaut Golgoth",
-      "description": "<p>Le Golgoth de Midnight Arms est un fusil à pompe exotique avec un chargeur de 40 coups. Nécessite COR 10 ou plus (sauf s'il est monté) au moment du tir ou l'utilisateur en subira les conséquences.</p>\n",
-      "dvTable": "SD Fusil à pompe (Slug)"
-    },
-    "BMG-500": {
-      "name": "Mitrailleuse Browning 500",
-      "description": "<p>La Browning 500 de Techtronika Russia est un fusil d'assaut exotique avec un chargeur de 500 balles et un bipied. Nécessite COR 11 ou supérieur (sauf si elle est montée).</p>\n",
-      "dvTable": "SD Fusil d'assaut"
-    },
-    "Bubba Buster": {
-      "name": "Explose-tronche",
-      "description": "<p>L'Explose-tronche de GunMart est un fusil à pompe exotique de mauvaise qualité. Il se détruit s'il est tiré plus de 3 fois en une minute.</p>\n",
-      "dvTable": "SD Fusil à pompe (Slug)"
-    },
-    "Crowd Buster": {
-      "name": "Contrôleur de foules",
-      "description": "<p>Le Contrôleur de foules de Pursuit Security Inc. est un fusil d'assaut exotique avec un mode de tir alternatif unique. Livré avec une Protection auditive active*.</p>\n<p><em>*Doit être appliqué manuellement après l'achat</em></p>\n",
-      "dvTable": "SD Fusil d'assaut"
-    },
-    "Door Cracker": {
-      "name": "Enfonceuse de porte",
-      "description": "<p>Objet explosif bon marché, petite zone d'effet.</p>\n"
+    "Arasaka Weeping Reaver Katana": {
+      "name": "Arasaka Weeping Reaver Katana",
+      "description": "<p>Excellent Quality Two Handed Exotic Very Heavy Melee Weapon.</p>\n<p>Contains three doses of specific fluids for blade coating:</p>\n<ul>\n  <li>Arasaka Fire (can ignite target)</li>\n  <li>Arasaka Acid (ablates armor)</li>\n  <li>Arasaka Wound Salt (applies a second critical injury)</li>\n</ul>\n"
     },
     "E-TACK Public Defender": {
       "name": "Défenseur de l'ordre E-TAQUE",
       "description": "<p>Livré avec une liaison Smartgun*. L'utilisateur a besoin d'une poignée subdermique pour l'utiliser. Il a un mode létal et un non létal.</p>\n<p><em>* Cette mise à jour doit être ajoutée manuellement.</em></p>\n",
       "dvTable": "SD Pistolet"
     },
-    "Engage Rocket Launcher": {
-      "name": "Lance-roquettes Briscard",
-      "description": "<p>Le Briscard de GunMart est un lance-roquettes exotique de mauvaise qualité. Il explose sur un échec critique ou lors du déchargement de l'arme.</p>\n",
-      "dvTable": "SD Lance-roquettes"
+    "Eagletech Survivalist": {
+      "name": "Eagletech Survivalist",
+      "description": "<p>\n  The Eagletech Survivalist is a 2-in-1 Crossbow and Assault RIfle. It is\n  incapable of Autofire. It comes with an integrated Sniping Scope*.\n</p>\n<p><em>*Must be manually applied after purchase</em></p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
     "Faisal's Dead or Alive": {
       "name": "Mort ou Vif de Faisal",
       "description": "<p>Le Mort ou Vif de Faisal est un fusil à pompe exotique de mauvaise qualité avec un lanceur de filet de mauvaise qualité intégré.</p>\n",
       "dvTable": "SD Fusil à pompe (Slug)"
     },
-    "FangFist": {
-      "name": "Poing à lame",
-      "description": "<p>Arme de mêlée intermédiaire à une main d'excellente qualité.</p>\n<p>Un gant avec une lame rétractable courte.</p>\n"
+    "Faisal's Magna Knuckles": {
+      "name": "Faisal's Magna Knuckles",
+      "description": "<p>\n  One Handed Exotic Medium Melee Weapon. Battery powered EMP effect which can\n  deactivate cyberware.\n</p>\n"
     },
-    "Fox Dual Ammo Pistol": {
-      "name": "Pistolet à double munition Renard",
-      "description": "<p>Le Renard de Militech est un pistolet lourd exotique.</p>\n",
-      "dvTable": "SD Pistolet"
+    "Federated Arms Pepper Shaker": {
+      "name": "Federated Arms Pepper Shaker",
+      "description": "<p>\n  The Federated Arms Pepper Shaker is an Exotic SMG incapable of single shot or\n  aimed shots. Autofire only use 6 bullets for this weapon.\n</p>\n",
+      "dvTable": "DV SMG (Autofire)"
+    },
+    "Georgia Arms Matchmaker": {
+      "name": "Georgia Arms Matchmaker",
+      "description": "<p>\n  The Georgia Arms Matchmaker is a Poor Quality Exotic Shotgun that only holds\n  one shot in the magazine.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "GunMart Bubba Buster": {
+      "name": "GunMart Bubba Buster",
+      "description": "<p>\n  The GunMart Bubba Buster is a Poor Quality Exotic Shotgun. It destroys itself\n  if fired more than 3 times in a minute.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "GunMart Door Cracker": {
+      "name": "GunMart Door Cracker",
+      "description": "<p>Cheap explosive item, small area of effect.</p>\n"
+    },
+    "GunMart Engage Rocket Launcher": {
+      "name": "GunMart Engage Rocket Launcher",
+      "description": "<p>\n  The GunMart Engage Rocket Launcher is a Poor Quality Exotic Rocket Launcher.\n  It explodes on a Critical Failure or when unloading the weapon.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
     },
     "GunMart Smart Special": {
       "name": "Smartspécial GunMart",
@@ -77,32 +76,55 @@
       "description": "<p>Le pistolet d'assaut Sanroo Ultra-K8 de Hello Cutie est un pistolet très lourd exotique d'excellente qualité, avec un mode pistolet-mitrailleur lourd d'excellente qualité.</p>\n",
       "dvTable": "SD Pistolet"
     },
+    "Kendachi Mono-Guard": {
+      "name": "Kendachi Mono-Guard",
+      "description": "<p>Monowire, One Handed Exotic Heavy Melee Weapon.</p>\n<p>Can apply multiple Critical Injuries.</p>\n"
+    },
+    "Kendachi Mono-Katana": {
+      "name": "Kendachi Mono-Katana",
+      "description": "<p>\n  Two Handed Exotic Very Heavy Melee Weapon. When wielded by the correct user\n  the weapon ignores armor less than 7 SP.\n</p>\n"
+    },
+    "Kendachi Mono-Star": {
+      "name": "Kendachi Mono-Star",
+      "description": "<p>\n  Mono-Shuriken whose orb center contains a kinetic and solar motor allowing the\n  star to spin on itself and vibrate.\n</p>\n<p>Can be used as both a melee and ranged weapon.</p>\n",
+      "dvTable": "DV Thrown Weapon"
+    },
+    "Kendachi Mono-Wakizashi": {
+      "name": "Kendachi Mono-Wakizashi",
+      "description": "<p>\n  One Handed Exotic Heavy Melee Weapon. When wielded by the correct user the\n  weapon ignores armor less than 7 SP.\n</p>\n"
+    },
     "KillChip 100 Micro-Bomb": {
       "name": "Microbombe Puce-tue-le 100",
       "description": "<p>Puce mémoire, mais explosive lorsqu'elle est branchée dans un neuromatériel.</p>\n"
     },
-    "M-04 Variable Assault": {
-      "name": "Fusil d'assaut modulable M-04",
-      "description": "<p>Le M-04 de Sternmeyer est un fusil d'assaut exotique de mauvaise qualité avec un lance-grenades monté personnalisé*.</p>\n<p><em>*Le lance-grenades doit être ajouté manuellement.</em></p>\n",
-      "dvTable": "SD Fusil d'assaut"
-    },
-    "Magna Knuckles": {
-      "name": "Poing de magma",
-      "description": "<p>Arme de mêlée intermédiaire exotique à une main. Un effet IEM alimenté par batterie peut désactiver les cyberimplants.</p>\n"
-    },
-    "Mastiff SMG": {
-      "name": "Pistolet-mitrailleur Mastiff",
-      "description": "<p>Le Mastiff de Militech est un pistolet-mitrailleur exotique à deux mains et un fusil à pompe.</p>\n<p>\n  <em\n    >*Considérez cette arme comme un pistolet-mitrailleur avec un fusil à pompe sous le canon. La mise à jour doit être ajoutée manuellement.</em\n  >\n</p>\n",
-      "dvTable": "SD Pistolet-mitrailleur"
-    },
-    "Matchmaker": {
-      "name": "Entremetteuse",
-      "description": "<p>L'Entremetteuse de Georgie Arms est un fusil à pompe exotique de mauvaise qualité avec un seul coup dans le chargeur.</p>\n",
-      "dvTable": "SD Fusil à pompe (Slug)"
+    "KTech TechHammer": {
+      "name": "KTech TechHammer",
+      "description": "<p>The KTech TechHammer is an Exotic Shotgun/Rocket Launcher.</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
     },
     "Micro Hydrogen Combustor": {
       "name": "Micro catalyseur à hydrogène",
       "description": "<p>\n  Un petit explosif déclenché après avoir été immergé dans un liquide. Est à la fois perce-armure et créé un grand nuage de fumée.\n</p>\n"
+    },
+    "Midnight Arms Beast Shotgun": {
+      "name": "Midnight Arms Beast Shotgun",
+      "description": "<p>\n  The Midnight Arms Beast Shotgun is an Exotic Shotgun. Its magazine holds 40\n  rounds. Requires BODY 10 or higher (unless mounted) when fired or the User\n  will suffer the consequences.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Militech Fox Dual Ammo Pistol": {
+      "name": "Militech Fox Dual Ammo Pistol",
+      "description": "<p>The Militech Fox Dual Ammo Pistol is an Exotic Heavy Pistol.</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Militech Mastiff SMG": {
+      "name": "Militech Mastiff SMG",
+      "description": "<p>The Militech Mastiff SMG is an Exotic Two-Handed SMG and Shotgun*.</p>\n<p>\n  <em\n    >*Treat this as an SMG with an Underbarrel Shotgun, the upgrade must be\n    added manually.</em\n  >\n</p>\n",
+      "dvTable": "DV SMG"
+    },
+    "Militech Perseus": {
+      "name": "Militech Perseus",
+      "description": "<p>The Militech Perseus is an Excellent Quality Exotic Very Heavy Pistol.</p>\n",
+      "dvTable": "DV Pistol"
     },
     "ModFire 10X (Pistol)": {
       "name": "ModFire 10X (Pistolet)",
@@ -119,27 +141,6 @@
       "description": "<p>Le ModFire 10X est un pistolet lourd exotique. Peut également être transformé en pistolet-mitrailleur exotique ou en fusil d'assaut exotique, en supposant que l'utilisateur dispose de toutes les pièces nécessaires*.</p>\n<p>\n  <em\n    >*Chaque mode de Modfire 10X est considérée comme une arme indépendante, se référer au compendium du Black Chrome.</em\n  >\n</p>\n",
       "dvTable": "SD Pistolet Mitrailleur"
     },
-    "Mono-Guard": {
-      "name": "Monogarde",
-      "description": "<p>Monofilament, arme de mêlée lourde exotique à une main.</p>\n<p>Peut appliquer de multiples blessures critiques.</p>\n"
-    },
-    "Mono-Katana Solo Wolf and Bot": {
-      "name": "Monokatana Solo Wolf and Bot",
-      "description": "<p>Arme de mêlée exotique très lourde à deux mains de mauvaise qualité.</p>\n<p>Copie bon marché d'un Mono-Katana.</p>\n"
-    },
-    "Mono-Katana": {
-      "name": "Monokatana",
-      "description": "<p>Arme de mêlée exotique très lourde à deux mains. Lorsqu'elle est maniée par le bon utilisateur, l'arme ignore les armures de moins de 7 PA.</p>\n"
-    },
-    "Mono-Star": {
-      "name": "Monoétoile",
-      "description": "<p>Mono-Shuriken dont l'orbe contient un moteur solaire et cinétique permettant à l'étoile de tourner sur elle-même et de vibrer.</p>\n<p>Peut être utilisé à la fois comme une arme de mêlée et à distance.</p>\n",
-      "dvTable": "SD Arme de lancer"
-    },
-    "Mono-Wakizashi": {
-      "name": "Monowakizashi",
-      "description": "<p>Arme de mêlée exotique très lourde à une main. Lorsqu'elle est maniée par le bon utilisateur, l'arme ignore les armures de moins de 7 PA.</p>\n"
-    },
     "Nomad Rocker": {
       "name": "Rocker nomade",
       "description": "<p>Le Rocker nomade est un pistolet très lourd exotique de mauvaise qualité qui tire des pierres. Les munitions sont gratuites pour cette arme.</p>\n",
@@ -154,15 +155,10 @@
       "description": "<p>Le canon de poing Overlord est un pistolet lourd exotique de mauvaise qualité avec une cadence de tir de 1. Il peut donner un bonus de +1 aux Bastons de regard dans certaines situations.</p>\n",
       "dvTable": "SD Pistolet"
     },
-    "Pepper Shaker": {
-      "name": "Sulfateuse",
-      "description": "<p>La Sulfateuse de Federated Arms est un pistolet-mitrailleur exotique incapable de tirer au coup par coup ou de viser. Le tir automatique n'utilise que 6 balles pour cette arme.</p>\n",
-      "dvTable": "SD Pistolet-mitrailleur (Tir Automatique)"
-    },
-    "Perseus": {
-      "name": "Persée",
-      "description": "<p>Le Persée de Militech est un pistolet très lourd exotique d'excellente qualité.</p>\n",
-      "dvTable": "SD Pistolet"
+    "Persuit Security Incoporated Crowd Buster": {
+      "name": "Persuit Security Incoporated Crowd Buster",
+      "description": "<p>\n  The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with a\n  unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear\n  Protectors*.\n</p>\n<p><em>*Must be manually applied after purchase</em></p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Pursuit Security Bouncer": {
       "name": "Foudre de paume Pursuit Security",
@@ -173,13 +169,31 @@
       "description": "<p>Agit comme une arme de mêlée lourde exotique à une main, ignore la moitié des PA bien que lancé.</p>\n<p>Contient un système de guidage intégré.</p>\n",
       "dvTable": "SD Arme de lancer"
     },
-    "Rhinocefist": {
-      "name": "Rhinopoing",
-      "description": "<p>Large gant blindé, couvrant de la main à épaule. Nécessite des prises d'interface. Peut être utilisé à la fois pour la démolition et la bagarre.</p>\n"
-    },
     "Rostović Kleaver": {
       "name": "Hachoir Rostović",
       "description": "<p>Arme de mêlée exotique très lourde à deux mains. Une batterie peut être utilisée pour augmenter les dégâts.</p>\n<p>Nécessite COR 11 ou plus pour l'utiliser.</p>"
+    },
+    "Rostović Ulični Uništitelj (aka the Street Destroyer)": {
+      "name": "Rostović Ulični Uništitelj (aka the Street Destroyer)",
+      "description": "<p>\n  The Rostović Ulični Uništitelj (Street Destroyer) is a Poor Quality Exotic\n  Shotgun. The magazine only holds 3 shots. It can only shoot Shotgun Shells.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "SlamDance FangFist": {
+      "name": "SlamDance FangFist",
+      "description": "<p>Excellent Quality One Handed Exotic Medium Melee Weapon.</p>\n<p>A glove with a short retractable blade.</p>\n"
+    },
+    "SlamDance Tasmanskiy Klô": {
+      "name": "SlamDance Tasmanskiy Klô",
+      "description": "<p>Excellent Quality Exotic Very Heavy Melee Weapon.</p>\n<p>Big retractable blades in a Combat Glove.</p>\n"
+    },
+    "Solo Wolf and Bot Mono-Katana": {
+      "name": "Solo Wolf and Bot Mono-Katana",
+      "description": "<p>Poor Quality Two Handed Exotic Very Heavy Melee Weapon.</p>\n<p>Mono-Katana cheap look-alike.</p>\n"
+    },
+    "Sternmeyer M-04 Variable Assault": {
+      "name": "Sternmeyer M-04 Variable Assault",
+      "description": "<p>\n  The Sternmeyer M-04 Variable Assault is a Poor Quality Exotic Assault Rifle\n  with a custom Grenade Launcher underbarrel*.\n</p>\n<p><em>*Grenade Launcher must be manually added.</em></p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Superchrome® Glam Rifle": {
       "name": "Fusil glam Superchrome®",
@@ -196,19 +210,10 @@
       "description": "<p>\n  Le Pistolet Superchrome® est un pistolet très lourd exotique. Donne à l'utilisateur un bonus de +2 en Habillement et style lorsqu'il est équipé.\n</p>\n<p>\n  <em\n    >*Note : Les effets Superchrome® ne s'additionnent pas et doivent être gérés dans l'onglet des effets si plusieurs objets Superchrome® sont installés.</em\n  >\n</p>\n",
       "dvTable": "SD Pistolet"
     },
-    "Survivalist": {
-      "name": "Survivant",
-      "description": "<p>Le Survivant de Eagletech est une Arbalète et un fusil d'assaut 2-en-1. Il est incapable de tir automatique. Livré avec une lunette de précision intégrée*.</p>\n<p><em>*Doit être appliqué manuellement après l'achat</em></p>\n",
-      "dvTable": "SD Arcs et arbalètes"
-    },
-    "Tasmanskiy Klô": {
-      "name": "Tasmanskiy Klô",
-      "description": "<p>Arme de mêlée très lourde exotique d'excellente qualité.</p>\n<p>Grandes lames rétractables dans un Gant de Combat.</p>\n"
-    },
-    "TechHammer": {
-      "name": "TechHammer",
-      "description": "<p>Le TechHammer de KTech est un fusil à pompe/lance-roquettes exotique.</p>\n",
-      "dvTable": "SD Fusil à pompe (Slug)"
+    "Techtronika Russia BMG-500": {
+      "name": "Techtronika Russia BMG-500",
+      "description": "<p>\n  The Techtronika Russia BMG-500 is an Exotic Assault Rifle with a magazine of\n  500 rounds and a bipod. Requires BODY 11 or higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Tommyknocker": {
       "name": "Poltergeist",
@@ -219,19 +224,10 @@
       "name": "Fluide de détonation TR-4",
       "description": "<p>Doit être versé dans un réservoir de carburant pour exploser.</p>\n"
     },
-    "Ulični Uništitelj (Street Destroyer)": {
-      "name": "Destructeur des rues",
-      "description": "<p>Le Destructeur des rues de Rostović est un fusil à pompe exotique de mauvaise qualité. Le chargeur ne contient que 3 coups. Il ne peut tirer que des chevrotines.</p>\n",
-      "dvTable": "SD Fusil à pompe (Slug)"
-    },
     "Utility Tomahawk": {
       "name": "Tomahawk multifonction",
       "description": "<p>Lame et pique, ce piolet en acier composite peut vous aider à grimper des parois de glace tout en causant de graves dégâts lors d'un combat.</p>\n<p>Peut être utilisé à la fois comme une arme de mêlée et à distance.</p>\n",
       "dvTable": "SD Arme de lancer"
-    },
-    "Weeping Reaver Katana": {
-      "name": "Katana Larme tranchante",
-      "description": "<p>Arme de mêlée très lourde à deux mains exotique d'excellente qualité.</p>\n<p>Contient trois doses de fluides spécifiques pour enduire la lame :</p>\n<ul>\n<li>Feu Arasaka (peut enflammer la cible)</li>\n<li>Acide Arasaka (permet de percer l'armure)</li>\n<li>Sel de blessure Arasaka (inflige une seconde blessure critique)</li>\n</ul>\n"
     },
     "Westwood": {
       "name": "Westwood",
@@ -241,6 +237,10 @@
     "White Hornet Tanto": {
       "name": "Tanto Frelon blanc",
       "description": "<p>Arme de mêlée intermédiaire à une main exotique.</p>\n<p>Peut rendre la cible inconsciente plutôt que la tuer.</p>\n"
+    },
+    "Zhirafa Rhinocefist": {
+      "name": "Zhirafa Rhinocefist",
+      "description": "<p>\n  Armored large stone chisel glove, covering from hand to shoulder. Requires\n  interface plugs. Can be used both for demolition and brawling.\n</p>\n"
     }
   }
 }

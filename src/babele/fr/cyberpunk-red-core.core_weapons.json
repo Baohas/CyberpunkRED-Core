@@ -75,6 +75,11 @@
       "name": "Couteau de Combat",
       "description": "<p>Un couteau adapté aux combats de rues.</p>"
     },
+    "Constitutional Arms Hurricane Assault Weapon": {
+      "name": "Constitutional Arms Hurricane Assault Weapon",
+      "description": "<p>\n  An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or\n  higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
     "Crossbow (Excellent)": {
       "name": "Arbalète +",
       "description": "<p>Une arbalète qualité excellente, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>",
@@ -106,11 +111,6 @@
       "name": "Pistolet à fléchettes",
       "description": "<p>Un pistolet exotique très lourd qu'on ne peut charger qu'avec des munitions de type flèche. Contrairement aux autres\narmes tirant des flèches, le pistolet à fléchettes est muni d'un chargeur spécial de 8 flèches et doit être rechargé comme\nun pistolet très lourd standard</p>",
       "dvTable": "SD Pistolet"
-    },
-    "EMG-86 Railgun": {
-      "name": "Canon électrique EMG-86",
-      "description": "<p>Fusil d'assaut exotique. Il ne peut pas faire de tirs ciblés ou de tirs automatiques. Nécessite COR 11 ou plus (sauf s'il est monté). Ignore toute armure en dessous de PA11*. Reportez-vous à la description complète de l'élément en p. 347.</p>\n<p><em>*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles blindées</em></p>",
-      "dvTable": "SD Fusil d'assaut"
     },
     "Flamethrower": {
       "name": "Crache-feu",
@@ -186,15 +186,9 @@
       "name": "Pale d'hélicoptère",
       "description": "<p>Récupéré sur un hélicoptère délabré, ces lames sont capables de trancher presque n'importe quoi.</p>"
     },
-    "Helix": {
-      "name": "Helix",
-      "description": "<p>Un fusil d'assaut exotique qui n'utilise que le tir automatique. Contient 40 balles, tire 20 balles à chaque attaque. Utilise les règles Tir automatique avec un multiplicateur maximum de 5. Nécessite COR 11 ou supérieur (sauf s'il est monté). Reportez-vous à la description complète de l'élément à la p. 348.</p>",
-      "dvTable": "SD Fusil d'assaut"
-    },
-    "Hurricane Assault Weapon": {
-      "name": "Fusil d'assaut Hurricane",
-      "description": "<p>Fusil à pompe exotique, 2 Att/round. Ne peut pas viser. Chargeur en cylindre de 16 cartouches.\nRecharger cette arme nécessite deux tours. Tirer avec le fusil d'assaut nécessite COR de 11 ou plus (sauf s'il est monté).</p>",
-      "dvTable": "SD Fusil à pompe (Slug)"
+    "Kendachi Mono-Three": {
+      "name": "Kendachi Mono-Three",
+      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
     },
     "Lead Pipe (Excellent)": {
       "name": "Tuyau en plomb +",
@@ -273,9 +267,10 @@
       "description": "<p>Pistolet exotique très lourd. Permet de rendre inopérants les cyberimplants ou les composants électriques pendant une minute, à moins que la cible ne réussisse un jet de Cybertech SD15. Reportez-vous à la description complète de l'élément sur p. 347.</p>",
       "dvTable": "SD Pistolet"
     },
-    "Mono-Three": {
-      "name": "Mono-Trois",
-      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
+    "Militech \"Cowboy\" U-56 Grenade Launcher": {
+      "name": "Militech \"Cowboy\" U-56 Grenade Launcher",
+      "description": "<p>\n  An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11\n  or higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     },
     "Naginata (Excellent)": {
       "name": "Naginata +",
@@ -289,9 +284,10 @@
       "name": "Naginata",
       "description": "<p>Arme d'origine japonaise, proche du fauchard à lame courbe. Utilisé par les équipes tactiques d'Arasaka lors des confrontations aux corps à corps.</p>"
     },
-    "Rippers": {
-      "name": "Éventreurs",
-      "description": "<p>Cybermatériel de type Arme. Vous devez avoir installé le cybermatériel approprié.</p>"
+    "Rhinemetall EMG-86 Railgun": {
+      "name": "Rhinemetall EMG-86 Railgun",
+      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11*.\n</p>\n<p>\n  <em\n    >*Not currently supported to will need to manually apply damage to armoured\n    targets</em\n  >\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Rocket Launcher (Excellent)": {
       "name": "Lance-roquettes +",
@@ -420,10 +416,10 @@
       "name": "Tomahawk",
       "description": "<p>Une hache légère qui peut être lancée.</p>"
     },
-    "U-56 Grenade Launcher \"Cowboy\"": {
-      "name": "Lance-Grenades \"Cowboy\" U-56",
-      "description": "<p>Lance-grenades exotique à 2 Att/round. Capacité de quatre grenades. Peut lancer n'importe quel type de grenade. Recharger cette arme demande deux tours. Tirer avec le lance-grenades nécessite COR de 11 ou plus (sauf s'il est monté).</p>",
-      "dvTable": "SD Lance-grenades"
+    "Tsunami Arms Helix": {
+      "name": "Tsunami Arms Helix",
+      "description": "<p>\n  An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20\n  bullets with each attack. Uses Autofire rules with a multiplication up to a\n  maximum of 5. Requires BODY 11 or higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Unarmed": {
       "name": "Désarmé",

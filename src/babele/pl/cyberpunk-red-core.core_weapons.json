@@ -75,6 +75,11 @@
       "name": "Nóż bojowy",
       "description": "<p>Nóż pasujący na ulicę.</p>"
     },
+    "Constitutional Arms Hurricane Assault Weapon": {
+      "name": "Constitutional Arms Hurricane Assault Weapon",
+      "description": "<p>\n  An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or\n  higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
     "Crossbow (Excellent)": {
       "name": "Kusza (doskonałej jakości)",
       "description": "<p>Doskonałej jakości kusza, przeładowywana w ramach akcji Ataku.</p>\n<p>+1 do testów broni.</p>",
@@ -106,11 +111,6 @@
       "name": "Pistolet strzałkowy",
       "description": "<p>Egzotyczny bardzo ciężki pistolet. Pełny opis przedmiotu na stronie 348.</p>",
       "dvTable": "PT Pistolety"
-    },
-    "EMG-86 Railgun": {
-      "name": "Karabin elektromagnetyczny EMG-86",
-      "description": "<p>Egzotyczny karabin szturmowy. Nie da się celować ani strzelać ogniem ciągłym. Wymaga 11 CIAŁO lub więcej (chyba że jest zamontowany). Ignoruje dowolny pancerz poniżej 11 OB.</p>\n<p><em>*Chwilowo obrażenia muszą zostać dodane manualnie</em></p>",
-      "dvTable": "PT Karabiny szturmowe"
     },
     "Flamethrower": {
       "name": "Miotacz ognia",
@@ -186,15 +186,9 @@
       "name": "Łopata helikoptera",
       "description": "<p>Część starego helikoptera. Te łopaty przetną się przez większość rzeczy jak przez masło.</p>"
     },
-    "Helix": {
-      "name": "Helix",
-      "description": "<p>Egzotyczny karabin szturmowy z którego można prowadzić tylko ogień ciągły. Mieści 40 pocisków z czego 20 zużywa z każdym atakiem. Używa zasad ognia ciągłego z mnożnikiem maksimum 5. Wymaga 11 CIAŁO lub więcej (chyba że jest zamontowany).</p>",
-      "dvTable": "PT Karabiny szturmowe"
-    },
-    "Hurricane Assault Weapon": {
-      "name": "Hurricane Assault Wepon",
-      "description": "<p>Egzotyczna strzelba z 2 LA. Nie można z niej celować. Wymaga 11 CIAŁO lub więcej (chyba że zamontowany).</p>",
-      "dvTable": "PT Strzelba (Pocisk)"
+    "Kendachi Mono-Three": {
+      "name": "Kendachi Mono-Three",
+      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
     },
     "Lead Pipe (Excellent)": {
       "name": "Gazrurka (doskonałej jakości)",
@@ -273,9 +267,10 @@
       "description": "<p>Egzotyczny bardzo ciężki pistolet. Sprawia że cyborgizacje lub urządzenia elektryczne przestają działać na minutę chyba że cel zda test Cyberinżynierii o PT 15.</p>",
       "dvTable": "PT Pistolety"
     },
-    "Mono-Three": {
-      "name": "Mono-Three",
-      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
+    "Militech \"Cowboy\" U-56 Grenade Launcher": {
+      "name": "Militech \"Cowboy\" U-56 Grenade Launcher",
+      "description": "<p>\n  An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11\n  or higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     },
     "Naginata (Excellent)": {
       "name": "Naginata (doskonałej jakości)",
@@ -289,9 +284,10 @@
       "name": "Naginata",
       "description": "<p>Japońska broń drzewcowa zakończona zagiętym ostrzem z jednej strony. Ulubiona broń do starć na bliskim zasięgu drużyn taktycznych Arasaki.</p>"
     },
-    "Rippers": {
-      "name": "Rozpruwacze",
-      "description": "<p>Cyberbroń. Musisz mieć zainstalowaną odpowiednią cyborgizację.</p>"
+    "Rhinemetall EMG-86 Railgun": {
+      "name": "Rhinemetall EMG-86 Railgun",
+      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11*.\n</p>\n<p>\n  <em\n    >*Not currently supported to will need to manually apply damage to armoured\n    targets</em\n  >\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Rocket Launcher (Excellent)": {
       "name": "Wyrzutnia rakiet (doskonałej jakości)",
@@ -420,10 +416,10 @@
       "name": "Tomahawk",
       "description": "<p>Lekki toporek do rzucania.</p>"
     },
-    "U-56 Grenade Launcher \"Cowboy\"": {
-      "name": "Granatnik U-56 \"Cowboy\"",
-      "description": "<p>Egzotyczny granatnik z  2 LA. Mieszczą się w nim 4 granaty. Wymaga 11 CIAŁO lub więcej (chyba że jest zamontowany).</p>",
-      "dvTable": "PT Granatniki"
+    "Tsunami Arms Helix": {
+      "name": "Tsunami Arms Helix",
+      "description": "<p>\n  An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20\n  bullets with each attack. Uses Autofire rules with a multiplication up to a\n  maximum of 5. Requires BODY 11 or higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Unarmed": {
       "name": "Gołe pięści",

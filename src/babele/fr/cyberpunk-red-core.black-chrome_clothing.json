@@ -2,9 +2,9 @@
   "label": "Vêtements",
   "mapping": {},
   "entries": {
-    "Holo-Wear": {
-      "name": "Holomode Masetto",
-      "description": "<p>Vêtements holographiques qui peuvent être désactivés pendant une minute par des dispositifs IEM. Permet avec une action de permuter entre des styles achetés.</p>\n"
+    "Masetto Holo-Wear": {
+      "name": "Masetto Holo-Wear",
+      "description": "<p>\n  Holographic clothing that can get disabled by EMP blasts for a minute. Can\n  swap styles with an action if purchased.\n</p>\n"
     }
   }
 }

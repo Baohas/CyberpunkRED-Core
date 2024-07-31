@@ -6,41 +6,25 @@
       "name": "AeroCop",
       "description": "<p>AV4 type Aerodyne. Police version.</p>\n<p>Full stats can be found on page 61.</p>"
     },
-    "AeroVox": {
-      "name": "AeroVox",
-      "description": "<p>AV4 type Aerodyne. Civilian version.</p>\n<p>Full stats can be found on page 61.</p>"
+    "AmeriCar EconoCompact": {
+      "name": "AmeriCar EconoCompact",
+      "description": "<p>Small and low-cost Compact Groundcar.</p>\n"
     },
-    "Badger Corporate Bus": {
-      "name": "Badger Corporate Bus",
-      "description": "<p>A luxurious bus for corporate road trips. Equally ell equipped for work meetings and after meeting drinks.</p>\n<p>Full details can be found on page 80.</p>"
+    "AmeriCar Family Star Van": {
+      "name": "AmeriCar Family Star Van",
+      "description": "<p>Comfortable family Compact Groundcar.</p>\n"
     },
-    "Bellhop": {
-      "name": "Bellhop",
-      "description": "<p>A one seat Gyrocopter which can be folded to the size of a large suitcase.</p>\n<p>Full stats can be found on page 60.</p>"
+    "Dayton TDT 004": {
+      "name": "Dayton TDT 004",
+      "description": "<p>Troop transport Helicopter.</p>\n"
     },
-    "Chupacabra": {
-      "name": "Chupacabra",
-      "description": "<p>Compact Groundcar built from recycled parts from older vehicles. Low-tech but high-horse-power.</p>\n<p>Full details can be found on page 66.</p>"
+    "Diego Motors Chupacabra": {
+      "name": "Diego Motors Chupacabra",
+      "description": "<p>\n  Compact Groundcar built from recycled parts from older vehicles. Low-tech but\n  high-horse-power.\n</p>\n"
     },
-    "Destination": {
-      "name": "Destination",
-      "description": "<p>AV4 style Aerodyne, civilian model.</p>\n<p>Full stats can be found on page 62.</p>"
-    },
-    "Ebi": {
-      "name": "Ebi",
-      "description": "<p>Small but well thought out Compact Groundcar.</p>\n<p>Full details can be found on page 72.</p>"
-    },
-    "EconoCompact": {
-      "name": "EconoCompact",
-      "description": "<p>Small and low-cost Compact Groundcar.</p>\n<p>Full details can be found on page 64.</p>"
-    },
-    "Family Star Van": {
-      "name": "Family Star Van",
-      "description": "<p>Comfortable family Compact Groundcar.</p>\n<p>Full details can be found on page 65.</p>"
-    },
-    "Gorgon Security Van": {
-      "name": "Gorgon Security Van",
-      "description": "<p>A monster of an armored van.</p>\n<p>Full details can be found on page 73.</p>"
+    "Diego Motors Range Trike": {
+      "name": "Diego Motors Range Trike",
+      "description": "<p>Three wheeled Roadbike.</p>\n"
     },
     "Grundy": {
       "name": "Grundy",
@@ -58,37 +42,29 @@
       "name": "Harvey Merc",
       "description": "<p>A classic roadbike, this time with mounted weapons.</p>\n<p>Full details can be found on page 69.</p>"
     },
-    "Herakles": {
-      "name": "Herakles",
-      "description": "<p>AV4 type troop transport, armored and armed.</p>\n<p>Full stats can be found on page 63.</p>"
-    },
     "Highway Master Artemis": {
       "name": "Highway Master Artemis",
       "description": "<p>A low-riding Roadbike with retractable glass cover. Has a surpercharge mode that doesn't come with a safety guarantee.</p>\n<p>Full details can be found on page 70.</p>"
     },
-    "JetBoy Hoverboard": {
-      "name": "JetBoy Hoverboard",
-      "description": "<p>A hoverboard driven with Athletics Skill. Can't be upgraded.</p>\n<p>Full details can be found on page 78.</p>"
+    "Kaukaz Volkhov": {
+      "name": "Kaukaz Volkhov",
+      "description": "<p>\n  An armored pickup Compact Groundcar with mounted machine gun. Comes with a\n  bottle of vodka.\n</p>\n"
     },
-    "MegaHauler": {
-      "name": "MegaHauler",
-      "description": "<p>Armored truck transport. As much a train as a car.</p>\n<p>Full details can be found on page 79.</p>"
+    "Makigai Ebi": {
+      "name": "Makigai Ebi",
+      "description": "<p>Small but well thought out Compact Groundcar.</p>\n"
     },
-    "Molly 1K": {
-      "name": "Molly 1K",
-      "description": "<p>Off-road Compact Groundcar.</p>\n<p>Full details can be found on page 82.</p>"
+    "Militech Gorgon Security Van": {
+      "name": "Militech Gorgon Security Van",
+      "description": "<p>A monster of an armored van.</p>\n"
     },
     "Paladin 500": {
       "name": "Paladin 500",
       "description": "<p>A High Performance Groundcar. Now you can be MadMax. In town. With two mounted Machine Guns.</p>\n<p>Full details can be found on page 75.</p>"
     },
-    "Parallax Cybercycle": {
-      "name": "Parallax Cybercycle",
-      "description": "<p>Top of the line Superbike.</p>\n<p>Full details can be found on page 83.</p>"
-    },
-    "Range Trike": {
-      "name": "Range Trike",
-      "description": "<p>Three wheeled Roadbike.</p>\n<p>Full details can be found on page 67.</p>"
+    "Quadra Thunder-X": {
+      "name": "Quadra Thunder-X",
+      "description": "<p>A top of the line High Performance Groundcar.</p>\n"
     },
     "SH-45 Patroller Law": {
       "name": "SH-45 Patroller Law",
@@ -98,33 +74,57 @@
       "name": "SH-45 Patroller",
       "description": "<p>One seat Gyrocopter. Civilian version.</p>\n<p>Full stats can be found on page 58.</p>"
     },
-    "Sliver": {
-      "name": "Sliver",
-      "description": "<p>A Roadbike with all the gadgets you'd ever need.</p>\n<p>Full details can be found on page 84.</p>"
-    },
     "Street King Combat Vehicle": {
       "name": "Street King Combat Vehicle",
       "description": "<p>A High Performance Groundcar which is large, armored and has a military look.</p>\n<p>Full details can be found on page 77.</p>"
     },
-    "TDT 004": {
-      "name": "TDT 004",
-      "description": "<p>Troop transport Helicopter.</p>\n<p>Full details can be found on page 59.</p>"
+    "Tanson Bellhop": {
+      "name": "Tanson Bellhop",
+      "description": "<p>\n  A one seat Gyrocopter which can be folded to the size of a large suitcase.\n</p>\n"
     },
-    "The Zacatzontli Pickup Truck": {
-      "name": "The Zacatzontli Pickup Truck",
-      "description": "<p>A Compact Groundcar equipped for off-road travel.</p>\n<p>Full details can be found on page 74.</p>"
+    "Tanson JetBoy Hoverboard": {
+      "name": "Tanson JetBoy Hoverboard",
+      "description": "<p>A hoverboard driven with Athletics Skill. Can't be upgraded.</p>\n"
     },
-    "Thunder-X": {
-      "name": "Thunder-X",
-      "description": "<p>A top of the line High Performance Groundcar.</p>\n<p>Full details can be found on page 76.</p>"
+    "TetraCorp America Badger Corporate Bus": {
+      "name": "TetraCorp America Badger Corporate Bus",
+      "description": "<p>\n  A luxurious bus for corporate road trips. Equally ell equipped for work\n  meetings and after meeting drinks.\n</p>\n"
     },
-    "Volkhov": {
-      "name": "Volkhov",
-      "description": "<p>An armored pickup Compact Groundcar with mounted machine gun. Combes with a bottle of vodka.</p>\n<p>Full details can be found on page 71.</p>"
+    "TetraCorp America MegaHauler": {
+      "name": "TetraCorp America MegaHauler",
+      "description": "<p>Armored truck transport. As much a train as a car.</p>\n"
     },
     "Yang's Wheels Rickshaw": {
       "name": "Yang's Wheels Rickshaw",
       "description": "<p>Roadbike with attached trailer for passengers.</p>\n<p>Full details can be found on page 81.</p>"
+    },
+    "Zacatzontli Pickup Truck": {
+      "name": "Zacatzontli Pickup Truck",
+      "description": "<p>A Compact Groundcar equipped for off-road travel.</p>\n"
+    },
+    "Zetatech AeroVox": {
+      "name": "Zetatech AeroVox",
+      "description": "<p>AV4 type Aerodyne. Civilian version.</p>\n"
+    },
+    "Zetatech Destination": {
+      "name": "Zetatech Destination",
+      "description": "<p>AV4 style Aerodyne, civilian model.</p>\n"
+    },
+    "Zetatech Herakles": {
+      "name": "Zetatech Herakles",
+      "description": "<p>AV4 type troop transport, armored and armed.</p>\n"
+    },
+    "Zonda Molly 1K": {
+      "name": "Zonda Molly 1K",
+      "description": "<p>Off-road Compact Groundcar.</p>\n"
+    },
+    "Zonda Parallax Cybercycle": {
+      "name": "Zonda Parallax Cybercycle",
+      "description": "<p>Top of the line Superbike.</p>\n"
+    },
+    "Zonda Sliver": {
+      "name": "Zonda Sliver",
+      "description": "<p>A Roadbike with all the gadgets you'd ever need.</p>\n"
     }
   }
 }

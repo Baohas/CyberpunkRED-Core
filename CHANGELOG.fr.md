@@ -4,49 +4,64 @@
 
 ## Version 0.89.0
 
+### Action requise
+
+#### Tuiles de Netrun
+
+Nous avons mis à jour les tuiles de Netrun, nous avons remplacé les fichiers PNG par des fichiers WebP pour en réduire la taille. Cela signifie que les scènes utilisant les tuiles avec les PNG apparaîtront comme cassées. Celles-ci peuvent être réparées en double-cliquant sur la tuile cassée et soit en naviguant jusqu'à la nouvelle tuiles dans `tuiles/WebP` ou en remplaçant manuellement le dossier `PNG` avec les `WebP` et les extensions `png` par `webp`.
+
 ### Nouvelles fonctionnalités
 
-- Add Compendia for:
-  - Skills (Local Expert)
-  - Skills (Science)
-  - Skills (Martial Arts)
-  - Skills (Play Instrument)
-  - DLC: 12 Days of Gearmas (thanks to @LordCheesusCrust)
-- Add a check to characters to see if they are considered "Hardened"
-  - Based on the rules in Danger Gal Dossier pg. 150
-  - Displays an overlay Icon on the Character Sheet Image which lists the reasons a character is considered hardened when hovered
-  - Programmatically available under the `system.derivedStats.isHardened` datapoint
-- Add Quality to Weapons/Cyberdecks
-- #653 - Enable support for dddice
-- Adjust font size of Handle/Name in Character sheets if the name overflows
-- Skill Items now have a `skillType` for programmatic access
-- Remove `Science`, `Play Instrument`, `Martial Arts` skills
-  - These will remain on existing Characters
-  - They will not be added to new Characters
-- Rename default `Local Expert` skill to `Local Expert (Your Home)`
-- Add CSS theme support for Monks Active Tile Triggers Module
-- Add Speedheal Macro
-- Add ability to set weapon ignore percentage
-- Add ability to set weapon to ignore armor below set SP amount
+- Ajout de la compatibilité pour Foundry V12.
+- Retire la compatibilité pour Foundry V11.
+- Ajout de compendium pour :
+  - Compétences (Expert Local)
+  - Compétences (Science)
+  - Compétences (Arts Martiaux)
+  - Compétences (Instrument)
+  - DLC : Les 12 Jours d'Équipements de Noël (Merci à @LordCheesusCrust)
+- Ajout d'une vérification pour savoir si les personnages sont considérés comme "Endurcis"
+  - Basé sur les règles de Dossier Danger Gal p. 150
+  - Une icône sur la feuille de personnage liste désormais les raisons pour lesquelles il est considéré comme endurci lorsque survolé
+  - Programmable sous le point de donnée `system.derivedStats.isHardened`
+- Ajout de Qualité aux Armes et Cyberconsoles
+- #653 - Supporte disponible pour dddice
+- Ajuste la taille de la police du Pseudo/Nom dans la feuille de personnage si le nom déborde
+- Les objets de compétences ont désormais un `skillType` pour l'accès par programmation
+- Supprime les compétences `Science`, `Instrument`, `Arts martiaux`
+  - Elles resteront sur les personnages préexistants
+  - Elles ne seront pas rajoutées aux nouveaux personnages
+- Renomme la compétence de base `Local Expert` en `Guide Local (quartier d'origine)`
+- Ajout d'un support de thème CSS pour le module Monks Active Tile Triggers
+- Ajout d'une macro de Rapidoc
+- Ajoute la possibilité de configurer une arme pour qu'elle ignore un pourcentage
+- Ajoute la possibilité de configurer une arme pour qu'elle ignore l'armure en dessous d'un montant de PA déterminé
+- #235 - Ajoute la possibilité de changer les barres de ressources pour l'armure depuis la feuille d'objet
 
 ### Att/round
 
-- Fix actor lookup in Get EMP Macro
-- Weapons in fight tab now categorized by Ranged/Melee
+- Correction de la recherche d'acteur dans la Macro d'IEM
+- Les armes dans l'onglet combat sont désormais catégorisées par Distance/Mêlée
+- Utiliser la molette n'ajuste désormais plus les stats/compétences dans la feuille de personnage
+- Changement de la police Pause pour Tektur pour un meilleur support international
 - Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
-- Change Pause Font to Tektur for better internationalization support
-- Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
-- Header elements in text input areas are now styled in a similar way to the core book
+- Les titres dans les zones de texte sont désormais stylisés de la même façon que le livre de base de CP:R
+- Mis à jour des tuiles de Netrunning avec des nouvelles tuiles de Solution3
+- Changement de la manière dont nous traitons les objets de Marque
+  - Les objets de marque ont été renommés pour utiliser le nom complet de l'objet selon sa source
+  - Retire le gestionnaire de nom de la bande programmatique
 
-### Bug Fixes
+### Correction de bugs
 
-- #933 - Fix multiple compendium errors/missing values, thanks @Alexander Fokin
-- #950 - Bolded DV checks in various items of the compendia
-- #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
-- #979 - Fix styling of inline rolls in chat
-- Added several small updates to descriptions to understand various items better
-- Fix image overflow on Item Sheets
-- Fix filepicker favorites styling
+- #933 - Corrige de multiples erreurs de compendium / valeurs manquantes, Merci à @Alexander Fokin
+- #950 - les tests de SD de différents items des compendium sont désormais en gras
+- Corrige les séparateurs de chemin d'image NET Arch
+- #951 - Corrige les références de pages dupliquées sur la description de l'élément qui sont déjà présentes dans les propriétés manuelles / de la page pour les éléments
+- #979 - Corrige le style des jets de dés dans le chat
+- Ajout de plusieurs petites mise à jour des descriptions pour mieux comprendre différents objets
+- Corrige le débordement des images sur les feuilles d'objet
+- Corrige le style favori du sélecteur de fichier
+- #1017 - Corrige les bonus d'effet appliqués aux attaques en doublon
 
 ## Version 0.88.2
 
@@ -150,7 +165,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.5
 
-### Corrections de bugs
+### Bug Fixes
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
@@ -741,7 +756,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.3 (Hotfix) | Date: 2022-08-02
 
-### Bug Fixes
+### Corrections de bugs
 
 - When installing cyberware and selecting `None` for the Humanity Loss, the maximum humanity was not being decremented forcing one to re-calculate it using the calculator.
 - Corrected an issue with Compendium Migration where `Scene` type Compendia was not properly being migrated.
@@ -750,7 +765,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.2 (Hotfix) | Date: 2022-08-02
 
-### Corrections de bugs
+### Bug Fixes
 
 - #458 - The rulers for the DV Calculation is broken for tables with regexp characters in the name [such as (Autofire)]
 - #455 - Containers/Vendors issues (non-English settings)

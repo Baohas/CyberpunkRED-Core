@@ -75,6 +75,11 @@
       "name": "Kampfmesser",
       "description": "<p>Ein Messer für die Straße.</p>"
     },
+    "Constitutional Arms Hurricane Assault Weapon": {
+      "name": "Constitutional Arms Hurricane Assault Weapon",
+      "description": "<p>\n  An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or\n  higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
     "Crossbow (Excellent)": {
       "name": "Armbrust (Hervorragende Qualität)",
       "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
@@ -106,11 +111,6 @@
       "name": "Pfeilschuss­pistole",
       "description": "<p>Eine Exotische Sehr Schwere Pistole. Siehe die vollständige Gegenstandsbeschreibung auf S. 348.</p>",
       "dvTable": "SG Pistole"
-    },
-    "EMG-86 Railgun": {
-      "name": "EMG-86 Railgun",
-      "description": "<p>Ein Exotisches Sturmgewehr ohne Option für Automatisches Feuer oder Gezielte Schüsse. Erfordert KRA 11 oder höher (wenn nicht aufmontiert). Ignoriert Rüstung unter SW 11*. Siehe Details auf Seite 349.</p>\n<p><em>*Aktuell nicht unterstützt, Schaden muss auf gepanzerte Ziele manuell angewendet werden</em></p>",
-      "dvTable": "SG Sturmgewehr"
     },
     "Flamethrower": {
       "name": "Flammenwerfer",
@@ -186,15 +186,9 @@
       "name": "Rotorblätter",
       "description": "<p>Diese Klingen stammen aus einem ausrangierten Flugzeug.</p>"
     },
-    "Helix": {
-      "name": "Helix",
-      "description": "<p>Ein Exotisches Sturmgewehr, das ausschließlich Autofeuer unterstützt. Fasst 40 Geschosse, verbraucht 20 pro Angriff. Nutzt Autofeuer bis zu einem maximalen Multiplikator von 5. Benötigt KRA 11 (wenn nicht aufmontiert). Siehe Details auf Seite 349.</p>",
-      "dvTable": "SG Sturmgewehr"
-    },
-    "Hurricane Assault Weapon": {
-      "name": "Hurricane Sturmschrotflinte",
-      "description": "<p>Eine Exotische Schrotflinte mit AF2. Kann keine gezielten Schüsse abgeben und erfordert KRA 11 (wenn nicht aufmontiert). Siehe Details auf Seite 348.</p>",
-      "dvTable": "SG Flinte (Flintenpatrone)"
+    "Kendachi Mono-Three": {
+      "name": "Kendachi Mono-Three",
+      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
     },
     "Lead Pipe (Excellent)": {
       "name": "Bleirohr (Hervorragende Qualität)",
@@ -273,9 +267,10 @@
       "description": "<p>Eine Exotische Sehr Schwere Pistole. Statt Schaden anzurichten, muss das Ziel eine Probe auf Cybertech gegen SG 15 ablegen, damit nicht Cyberware oder Elektronik für eine Minute ausfallen. Siehe vollständige Beschreibung auf Seite 348.</p>",
       "dvTable": "SG Pistole"
     },
-    "Mono-Three": {
-      "name": "Mono-Drei",
-      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
+    "Militech \"Cowboy\" U-56 Grenade Launcher": {
+      "name": "Militech \"Cowboy\" U-56 Grenade Launcher",
+      "description": "<p>\n  An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11\n  or higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     },
     "Naginata (Excellent)": {
       "name": "Naginata (Hervorragende Qualität)",
@@ -289,9 +284,10 @@
       "name": "Naginata",
       "description": "<p>Ein japanischer Holzstab mit einer gebogenen Klinge an einer Seite. Bevorzugt von taktischen Arasaka-Teams für Nahkämpfe.</p>"
     },
-    "Rippers": {
-      "name": "Krallen",
-      "description": "<p>Cyberware-Waffe. Du musst die entsprechende Cyberware installiert haben.</p>"
+    "Rhinemetall EMG-86 Railgun": {
+      "name": "Rhinemetall EMG-86 Railgun",
+      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11*.\n</p>\n<p>\n  <em\n    >*Not currently supported to will need to manually apply damage to armoured\n    targets</em\n  >\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Rocket Launcher (Excellent)": {
       "name": "Raketenwerfer (Hervorragende Qualität)",
@@ -420,10 +416,10 @@
       "name": "Tomahawk",
       "description": "<p>Eine leichte Axt.</p>"
     },
-    "U-56 Grenade Launcher \"Cowboy\"": {
-      "name": "U-56 Granatwerfer \"Cowboy\"",
-      "description": "<p>Ein exotischer Granatwerfer mit AF2. Fasst vier Granaten. Benötigt KRA 11 oder höher (wenn nicht aufmontiert). Details auf Seite 349.</p>",
-      "dvTable": "SG Granatwerfer"
+    "Tsunami Arms Helix": {
+      "name": "Tsunami Arms Helix",
+      "description": "<p>\n  An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20\n  bullets with each attack. Uses Autofire rules with a multiplication up to a\n  maximum of 5. Requires BODY 11 or higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Unarmed": {
       "name": "Faustkampf",

@@ -4,8 +4,16 @@
 
 ## Version 0.89.0
 
+### Action Needed
+
+#### Netrunning Tiles
+
+We have updated the Netrunning Tiles, we have replaced the PNG files with WebP for reduced filesize. This means any scenes using PNG tile will display as broken. These can be fixed by double clicking on the broken tile and either navigating to the new tiles in `tiles/WebP` or manually replacing the `PNG` filder with `WebP` and the extension `png` with `webp`.
+
 ### Nuevas Características
 
+- Added compatibility for Foundry v12.
+- Removed compatibility for Foundry v11.
 - Add Compendia for:
   - Skills (Local Expert)
   - Skills (Science)
@@ -28,6 +36,7 @@
 - Add Speedheal Macro
 - Add ability to set weapon ignore percentage
 - Add ability to set weapon to ignore armor below set SP amount
+- #235 - Added ability to change resource bars for armor from item sheet
 
 ### Cambios
 
@@ -37,16 +46,22 @@
 - Change Pause Font to Tektur for better internationalization support
 - Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Header elements in text input areas are now styled in a similar way to the core book
+- Update netrunning tiles with new tiles from Solution
+- Change how we handle Branded Items
+  - Rename branded items to use the full item name from the source book
+  - Remove the programatic band name handler
 
 ### Bug Fixes
 
 - #933 - Fix multiple compendium errors/missing values, thanks @Alexander Fokin
 - #950 - Bolded DV checks in various items of the compendia
+- Fix NET Arch image path seperators
 - #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
 - #979 - Fix styling of inline rolls in chat
 - Added several small updates to descriptions to understand various items better
 - Fix image overflow on Item Sheets
 - Fix filepicker favorites styling
+- #1017 - Fix duplicate effect bonuses being applied to attacks
 
 ## Version 0.88.2
 
@@ -150,7 +165,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versión 0.87.5
 
-### Corrección de Errores
+### Bug Fixes
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
@@ -741,7 +756,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.3 (Hotfix) | Date: 2022-08-02
 
-### Bug Fixes
+### Corrección de Errores
 
 - When installing cyberware and selecting `None` for the Humanity Loss, the maximum humanity was not being decremented forcing one to re-calculate it using the calculator.
 - Corrected an issue with Compendium Migration where `Scene` type Compendia was not properly being migrated.
@@ -750,7 +765,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.81.2 (Hotfix) | Date: 2022-08-02
 
-### Corrección de Errores
+### Bug Fixes
 
 - #458 - The rulers for the DV Calculation is broken for tables with regexp characters in the name [such as (Autofire)]
 - #455 - Containers/Vendors issues (non-English settings)

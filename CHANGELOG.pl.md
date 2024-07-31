@@ -4,8 +4,16 @@
 
 ## Version 0.89.0
 
+### Action Needed
+
+#### Netrunning Tiles
+
+We have updated the Netrunning Tiles, we have replaced the PNG files with WebP for reduced filesize. This means any scenes using PNG tile will display as broken. These can be fixed by double clicking on the broken tile and either navigating to the new tiles in `tiles/WebP` or manually replacing the `PNG` filder with `WebP` and the extension `png` with `webp`.
+
 ### New Features
 
+- Added compatibility for Foundry v12.
+- Removed compatibility for Foundry v11.
 - Add Compendia for:
   - Skills (Local Expert)
   - Skills (Science)
@@ -28,6 +36,7 @@
 - Add Speedheal Macro
 - Add ability to set weapon ignore percentage
 - Add ability to set weapon to ignore armor below set SP amount
+- #235 - Added ability to change resource bars for armor from item sheet
 
 ### Changes
 
@@ -37,16 +46,22 @@
 - Change Pause Font to Tektur for better internationalization support
 - Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Header elements in text input areas are now styled in a similar way to the core book
+- Update netrunning tiles with new tiles from Solution
+- Change how we handle Branded Items
+  - Rename branded items to use the full item name from the source book
+  - Remove the programatic band name handler
 
 ### Bug Fixes
 
 - #933 - Fix multiple compendium errors/missing values, thanks @Alexander Fokin
 - #950 - Bolded DV checks in various items of the compendia
+- Fix NET Arch image path seperators
 - #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
 - #979 - Fix styling of inline rolls in chat
 - Added several small updates to descriptions to understand various items better
 - Fix image overflow on Item Sheets
 - Fix filepicker favorites styling
+- #1017 - Fix duplicate effect bonuses being applied to attacks
 
 ## Version 0.88.2
 

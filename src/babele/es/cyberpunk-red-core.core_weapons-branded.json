@@ -4,185 +4,185 @@
     "dvTable": "sistema.Tablavd"
   },
   "entries": {
-    "Avenger": {
-      "name": "Vengadora",
-      "description": "<p>Una pistola media ocultable. +1 al ataque.</p>",
-      "dvTable": "VD Pistola"
+    "Arasaka Minami 10": {
+      "name": "Arasaka Minami 10",
+      "description": "<p>A concealable SMG. +1 to Attack.</p>\n",
+      "dvTable": "DV SMG"
     },
-    "Bearcat": {
-      "name": "Manturón",
-      "description": "<p>Arco plegable con el logo del fabricante Eagletech, recargado como parte de una Acción de Ataque.</p>\n<p>+1 al Ataque.</p>",
-      "dvTable": "VD Arcos y Ballestas"
+    "Arasaka Rapid Assault": {
+      "name": "Arasaka Rapid Assault",
+      "description": "<p>An all-purpose shotgun.</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
     },
-    "Boomer Buster": {
-      "name": "Destructor de Boomers",
-      "description": "<p>Una Pistola Muy Pesada. No se puede ocultar. +1 para Atacar.</p>",
-      "dvTable": "VD Pistola"
+    "Arasaka WSSA Sniper System": {
+      "name": "Arasaka WSSA Sniper System",
+      "description": "<p>\n  A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
     },
-    "Bulldog": {
-      "name": "Bulldog",
-      "description": "<p>Una escopeta para todos los propósitos. +1 al Ataque. </p>",
-      "dvTable": "VD Escopeta (Perdigones de escopeta)"
+    "Chadran Arms City Reaper": {
+      "name": "Chadran Arms City Reaper",
+      "description": "<p>\n  A heavy SMG. Due to its size it can't be concealed. If you roll 1 on Attack\n  (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV SMG"
     },
-    "City Reaper": {
-      "name": "Segador de Ciudad",
-      "description": "<p>Un SMG pesado. Debido a su tamaño, no puede ser ocultado. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>",
-      "dvTable": "VD SMG"
+    "Chadran Arms Jungle Reaper": {
+      "name": "Chadran Arms Jungle Reaper",
+      "description": "<p>\n  A standard-issue assault rifle. If you roll 1 on Attack (Crit fail) the gun\n  jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
-    "Cityhunter": {
-      "name": "Cazador de Ciudad",
-      "description": "<p>Una Pistola Pesada ocultable. +1 al Ataque.</p>",
-      "dvTable": "VD Pistola"
+    "Dai Lung Magnum": {
+      "name": "Dai Lung Magnum",
+      "description": "<p>\n  A concealable, heavy pistol. If you roll 1 on Attack (Crit fail) the gun jams\n  and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Dragon": {
-      "name": "Dragón",
-      "description": "<p>Un rifle de asalto estándar. +1 para Atacar.</p>",
-      "dvTable": "VD Rifle de Asalto"
+    "Dai Lung Streetmaster": {
+      "name": "Dai Lung Streetmaster",
+      "description": "<p>\n  A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the\n  gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Home Defender": {
-      "name": "Defensor de Casa",
-      "description": "<p>Una escopeta para todos los propósitos. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>",
-      "dvTable": "VD Escopeta (Perdigones de escopeta)"
+    "Eagletech Bearcat": {
+      "name": "Eagletech Bearcat",
+      "description": "<p>\n  A collapsible bow branded with the Eagletech logo, reloaded as part of an\n  Attack action.\n</p>\n<p>+1 to Attack check.</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "Hotshot": {
-      "name": "Tiro Caliente",
-      "description": "<p>Saca los cañones grandes. Este lanzador de cohetes causará algún daño. +1 al ataque.</p>",
-      "dvTable": "VD Lanzacohetes"
+    "Eagletech Scorpion": {
+      "name": "Eagletech Scorpion",
+      "description": "<p>\n  A sleek crossbow branded with the Eagletech logo, reloaded as part of an\n  Attack action.\n</p>\n<p>+1 to Attack check.</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "Hunter": {
-      "name": "Cazador",
-      "description": "<p>Una ballesta de baja calidad con el logo del fabricante GunMart, que debe recargarse como parte de una acción de ataque.</p><p> Si tira 1 en el ataque (pifia) la cuerda se suelta y requiere una acción para volver a colocarla. </p>",
-      "dvTable": "VD Arcos y Ballestas"
+    "Eagletech Striker": {
+      "name": "Eagletech Striker",
+      "description": "<p>\n  A crossbow branded with the Eagletech logo, reloaded as part of an Attack\n  action.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "Jungle Reaper": {
-      "name": "Segador de la Jungla",
-      "description": "<p>Un rifle de asalto estándar. Si tira 1 en Ataque (pifia) el rifle se atasca y requiere una acción para desatascar. </p>",
-      "dvTable": "VD Rifle de Asalto"
+    "Eagletech Tomcat": {
+      "name": "Eagletech Tomcat",
+      "description": "<p>\n  A revitalized bow branded with the Eagletech logo, reloaded as part of an\n  Attack Action.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "Long Rifle": {
-      "name": "Rifle Largo",
-      "description": "<p>Un rifle de francotirador de larga distancia. Carga 4 balas en un cargador. </p>",
-      "dvTable": "VD Rifle de Francotirador"
+    "Federated Arms Super Chief": {
+      "name": "Federated Arms Super Chief",
+      "description": "<p>\n  A very heavy pistol. It can't be concealed. If you roll 1 on Attack (Crit\n  fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Magnum": {
-      "name": "Magnum",
-      "description": "<p>Una Pistola Pesada ocultable. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>",
-      "dvTable": "VD Pistola"
+    "Federated Arms Tech-Assault III": {
+      "name": "Federated Arms Tech-Assault III",
+      "description": "<p>\n  A concealable SMG. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n",
+      "dvTable": "DV SMG"
     },
-    "Mark III": {
-      "name": "Mark III",
-      "description": "<p>Una Pistola Pesada ocultable.</p>",
-      "dvTable": "VD Pistola"
+    "Federated Arms X-9mm": {
+      "name": "Federated Arms X-9mm",
+      "description": "<p>A concealable, medium-sized pistol.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Minami 10": {
-      "name": "Minami 10",
-      "description": "<p>Un SMG ocultable. +1 para Atacar.</p>",
-      "dvTable": "VD SMG"
+    "GunMart Home Defender": {
+      "name": "GunMart Home Defender",
+      "description": "<p>\n  An all-purpose shotgun. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
     },
-    "Mini-Gat": {
-      "name": "Mini-Gat",
-      "description": "<p>Un SMG ocultable. </p>",
-      "dvTable": "VD SMG"
+    "GunMart Hunter": {
+      "name": "GunMart Hunter",
+      "description": "<p>\n  A poor quality crossbow branded with the GunMart logo, reloaded as part of an\n  Attack action.\n</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "Mini-Grenade": {
-      "name": "Mini-Granada",
-      "description": "<p>Un lanzador de granadas de alto impacto. Puedes usar una variedad de granadas con esto. </p>",
-      "dvTable": "VD Lanzagranadas"
+    "GunMart Sherwood": {
+      "name": "GunMart Sherwood",
+      "description": "<p>\n  A poor quality bow branded with the GunMart logo, reloaded as part of an\n  Attack action.\n</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "P-35": {
-      "name": "P-35",
-      "description": "<p>Una Pistola Muy Pesada. No se puede ocultar.</p>",
-      "dvTable": "VD Pistola"
+    "GunMart Snipe-Star": {
+      "name": "GunMart Snipe-Star",
+      "description": "<p>\n  A long-distance sniper rifle. Holds 4 bullets in a magazine. If you roll 1 on\n  Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
     },
-    "Rapid Assault": {
-      "name": "Asalto Rápido",
-      "description": "<p>Una escopeta para todos los propósitos. </p>",
-      "dvTable": "VD Escopeta (Perdigones de escopeta)"
+    "Militech Avenger": {
+      "name": "Militech Avenger",
+      "description": "<p>A concealable, medium-sized pistol. +1 to Attack.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Ronin": {
-      "name": "Ronin",
-      "description": "<p>Un rifle de asalto estándar. </p>",
-      "dvTable": "VD Rifle de Asalto"
+    "Militech Boomer Buster": {
+      "name": "Militech Boomer Buster",
+      "description": "<p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Scorpion": {
-      "name": "Escorpión",
-      "description": "<p>Una Ballesta pulcra con el logo del fabricante Eagletech, recargada como parte de una acción de Ataque.</p>\n<p>+1 para Ataque.</p>",
-      "dvTable": "VD Arcos y Ballestas"
+    "Militech Bulldog": {
+      "name": "Militech Bulldog",
+      "description": "<p>An all-purpose shotgun. +1 to Attack.</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
     },
-    "Sherwood": {
-      "name": "Sherwood",
-      "description": "<p>Un arco de baja calidad con el logo del fabricante GunMart, que debe recargarse como parte de una acción de ataque.</p><p>Si tira 1 en ataque (pifia) la cuerda se suelta y requiere una acción para volver a colocarla. </p>",
-      "dvTable": "VD Arcos y Ballestas"
+    "Militech Dragon": {
+      "name": "Militech Dragon",
+      "description": "<p>A standard-issue assault rifle. +1 to Attack.</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
-    "SMG-21": {
-      "name": "SMG-21",
-      "description": "<p>Un SMG pesado. Debido a su tamaño, no puede ser ocultado. </p>",
-      "dvTable": "VD SMG"
+    "Militech Hotshot": {
+      "name": "Militech Hotshot",
+      "description": "<p>\n  Bring out the big guns. This rocket launcher will do some damage. +1 to\n  Attack.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
     },
-    "Snipe-Star": {
-      "name": "Francotirador-Estrella",
-      "description": "<p>Un rifle de francotirador de larga distancia. Carga 4 balas en un cargador. Si tira 1 en el ataque (pifia) el rifle se atasca y requiere una acción para desatascar. </p>",
-      "dvTable": "VD Rifle de Francotirador"
+    "Militech Mini-Gat": {
+      "name": "Militech Mini-Gat",
+      "description": "<p>A concealable SMG.</p>\n",
+      "dvTable": "DV SMG"
     },
-    "Streetmaster": {
-      "name": "Maestro Callejero",
-      "description": "<p>Una Pistola Media ocultable. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>",
-      "dvTable": "VD Pistola"
+    "Militech Mini-Grenade": {
+      "name": "Militech Mini-Grenade",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     },
-    "Striker": {
-      "name": "Golpeador",
-      "description": "<p>Una Ballesta con el logo del fabricante Eagletech, recargada como parte de una acción de Ataque.</p>",
-      "dvTable": "VD Arcos y Ballestas"
+    "Militech Ronin": {
+      "name": "Militech Ronin",
+      "description": "<p>A standard-issue assault rifle.</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
-    "Super Chief": {
-      "name": "Super Jefe",
-      "description": "<p>Una Pistola Muy Pesada. No se puede ocultar. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>",
-      "dvTable": "VD Pistola"
+    "Militech Urban": {
+      "name": "Militech Urban",
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>\n",
+      "dvTable": "DV Rocket Launcher"
     },
-    "Tech-Assault III": {
-      "name": "Tech-Asalto III",
-      "description": "<p>Un SMG ocultable. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>",
-      "dvTable": "VD SMG"
+    "Militech Viper": {
+      "name": "Militech Viper",
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>\n",
+      "dvTable": "DV SMG"
     },
-    "Tomcat": {
-      "name": "Tomcat",
-      "description": "<p>Arco revitalizado con el logo del fabricante Eagletech, recargado como parte de una acción de Ataque.</p>",
-      "dvTable": "VD Arcos y Ballestas"
+    "Mustang Arms Mark III": {
+      "name": "Mustang Arms Mark III",
+      "description": "<p>A concealable, heavy pistol.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Type-18": {
-      "name": "Type-18",
-      "description": "<p>Un lanzador de granadas de alto impacto. Puedes usar una variedad de granadas con esto. +1 para Atacar.</p>",
-      "dvTable": "VD Lanzagranadas"
+    "Nomad Long Rifle": {
+      "name": "Nomad Long Rifle",
+      "description": "<p>\n  A long-distance sniper rifle, commonly used by nomads. Holds 4 bullets in a\n  magazine.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
     },
-    "Type-G": {
-      "name": "Type-G",
-      "description": "<p>Un lanzador de granadas de alto impacto. Puedes usar una variedad de granadas con esto. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>",
-      "dvTable": "VD Lanzagranadas"
+    "Nova Cityhunter": {
+      "name": "Nova Cityhunter",
+      "description": "<p>A concealable, heavy pistol. +1 to Attack.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Type-R": {
-      "name": "Type-R",
-      "description": "<p>Saca los cañones grandes. Este lanzador de cohetes causará algún daño. Si tira 1 en el Ataque (pifia) el arma se atasca y requiere una acción para desatascar. </p>",
-      "dvTable": "VD Lanzacohetes"
+    "Sternmeyer P-35": {
+      "name": "Sternmeyer P-35",
+      "description": "<p>A very heavy pistol. It can't be concealed.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Urban": {
-      "name": "Urbano",
-      "description": "<p>Saca los cañones grandes. Este lanzador de cohetes causará algún daño. </p>",
-      "dvTable": "VD Lanzacohetes"
+    "Sternmeyer SMG-21": {
+      "name": "Sternmeyer SMG-21",
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed.</p>\n",
+      "dvTable": "DV SMG"
     },
-    "Viper": {
-      "name": "Víbora",
-      "description": "<p>Un SMG pesado. Debido a su tamaño, no puede ser ocultado. +1 para Atacar.</p>",
-      "dvTable": "VD SMG"
+    "Towa Manufacturing Type-G": {
+      "name": "Towa Manufacturing Type-G",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action\n  to clear.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     },
-    "WSSA Sniper System": {
-      "name": "Sistema de Francotirador WSSA",
-      "description": "<p>Un rifle de francotirador de larga distancia. Carga 4 balas en un cargador. +1 al ataque. </p>",
-      "dvTable": "VD Rifle de Francotirador"
+    "Towa Manufacturing Type-R": {
+      "name": "Towa Manufacturing Type-R",
+      "description": "<p>\n  Bring out the big guns. This rocket launcher will do some damage. If you roll\n  1 on Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
     },
-    "X-9mm": {
-      "name": "X-9mm",
-      "description": "<p>Una Pistola Media ocultable.</p>",
-      "dvTable": "VD Pistola"
+    "Tsunami Arms Type-18": {
+      "name": "Tsunami Arms Type-18",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n  +1 to Attack.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     }
   }
 }

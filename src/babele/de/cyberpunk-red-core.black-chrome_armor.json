@@ -2,14 +2,6 @@
   "label": "Panzerung",
   "mapping": {},
   "entries": {
-    "AirRider": {
-      "name": "AirRider",
-      "description": "<p>Kevlar Body Armor that ignores the Whiplash critical injury from car crashes as long as the armor's CO2 tank is full*. Refer to full item description on BC pg. 33.</p>\n<p><em>*Must be manually added after acquiring the armor.</em></p>"
-    },
-    "Bunker Gear": {
-      "name": "Bunker Gear",
-      "description": "<p>Fireproof flak armor with a built in gas mask and 30 minutes of oxygen in a tank that refills itself after an hour. -4 to REF, DEX, and MOVE. Refer to full item description on BC pg. 29.</p>"
-    },
     "Corporate Island": {
       "name": "Corporate Island",
       "description": "<p>Light Armorjack that looks like businesswear. Refer to full item description on BC pg. 35.</p>"
@@ -22,6 +14,10 @@
       "name": "Executive Armor",
       "description": "<p>Light Armorjack that looks like businesswear. Restores 1SP every day SP isn't lost on the armor. Refer to full item description on BC pg. 34.</p>"
     },
+    "Fire Brand Bunker Gear": {
+      "name": "Fire Brand Bunker Gear",
+      "description": "<p>\n  Fireproof flak armor with a built in gas mask and 30 minutes of oxygen in a\n  tank that refills itself after an hour. -4 to REF, DEX, and MOVE.\n</p>\n"
+    },
     "Laser Light Street Jacket": {
       "name": "Laserlicht-Straßenjacke",
       "description": "<p>Urban Flash-styled Light Armorjack that counts as a Light Tattoo while worn. Refer to full item description on BC pg. 31.</p>"
@@ -29,6 +25,10 @@
     "Lotos Netsuit": {
       "name": "Lotos Netsuit",
       "description": "<p>A netsuit allowing an extra cyberdeck hardware slot that's installed directly into the suit which is uninstalled if the suit is removed. Comes standard with an Excellent Quality Cyberdeck*. -2 to REF, DEX, and MOVE. Refer to full item description on BC pg. 31.</p>\n<p><em>*Must be manually added after acquiring the armor</em></p>"
+    },
+    "Masetto AirRider": {
+      "name": "Masetto AirRider",
+      "description": "<p>\n  Kevlar Body Armor that ignores the Whiplash critical injury from car crashes\n  as long as the armor's CO<sub>2</sub> tank is full*.\n</p>\n<p><em>*Must be manually added after acquiring the armor.</em></p>\n"
     },
     "MechaMan Motorcycle Helmet": {
       "name": "MechaMan Motorcycle Helmet",

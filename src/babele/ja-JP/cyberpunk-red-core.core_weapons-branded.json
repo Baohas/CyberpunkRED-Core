@@ -4,185 +4,185 @@
     "dvTable": "system.dvTable"
   },
   "entries": {
-    "Avenger": {
-      "name": "アヴェンジャー",
-      "description": "<p>A concealable, medium-sized pistol. +1 to Attack.</p>",
-      "dvTable": "DV 拳銃"
-    },
-    "Bearcat": {
-      "name": "ベアキャット",
-      "description": "<p>A collapsible bow branded with the Eagletech logo, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
-      "dvTable": "DV 弓とクロスボウ"
-    },
-    "Boomer Buster": {
-      "name": "ブーマー・バスター",
-      "description": "<p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>",
-      "dvTable": "DV 拳銃"
-    },
-    "Bulldog": {
-      "name": "ブルドッグ",
-      "description": "<p>An all-purpose shotgun. +1 to Attack.</p>",
-      "dvTable": "DV ショットガン (スラッグ弾)"
-    },
-    "City Reaper": {
-      "name": "シティ・リーパー",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+    "Arasaka Minami 10": {
+      "name": "Arasaka Minami 10",
+      "description": "<p>A concealable SMG. +1 to Attack.</p>\n",
       "dvTable": "DV SMG"
     },
-    "Cityhunter": {
-      "name": "シティハンター",
-      "description": "<p>A concealable, heavy pistol. +1 to Attack.</p>",
-      "dvTable": "DV 拳銃"
+    "Arasaka Rapid Assault": {
+      "name": "Arasaka Rapid Assault",
+      "description": "<p>An all-purpose shotgun.</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
     },
-    "Dragon": {
-      "name": "ドラゴン",
-      "description": "<p>A standard-issue assault rifle. +1 to Attack.</p>",
-      "dvTable": "DV アサルトライフル"
+    "Arasaka WSSA Sniper System": {
+      "name": "Arasaka WSSA Sniper System",
+      "description": "<p>\n  A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
     },
-    "Home Defender": {
-      "name": "ホーム・ディフェンダー",
-      "description": "<p>An all-purpose shotgun.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-      "dvTable": "DV ショットガン (スラッグ弾)"
-    },
-    "Hotshot": {
-      "name": "ホットショット",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage. +1 to Attack.</p>",
-      "dvTable": "DV ロケットランチャー"
-    },
-    "Hunter": {
-      "name": "ハンター",
-      "description": "<p>A poor quality crossbow branded with the GunMart logo, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear.</p>",
-      "dvTable": "DV 弓とクロスボウ"
-    },
-    "Jungle Reaper": {
-      "name": "ジャングル・リーパー",
-      "description": "<p>A standard-issue assault rifle.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-      "dvTable": "DV アサルトライフル"
-    },
-    "Long Rifle": {
-      "name": "ロング・ライフル",
-      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. </p>",
-      "dvTable": "DV スナイパーライフル"
-    },
-    "Magnum": {
-      "name": "マグナム",
-      "description": "<p>A concealable, heavy pistol.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-      "dvTable": "DV 拳銃"
-    },
-    "Mark III": {
-      "name": "マーク III",
-      "description": "<p>A concealable, heavy pistol. </p>",
-      "dvTable": "DV 拳銃"
-    },
-    "Minami 10": {
-      "name": "ミナミ10",
-      "description": "<p>A concealable SMG. +1 to Attack.</p>",
+    "Chadran Arms City Reaper": {
+      "name": "Chadran Arms City Reaper",
+      "description": "<p>\n  A heavy SMG. Due to its size it can't be concealed. If you roll 1 on Attack\n  (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
       "dvTable": "DV SMG"
     },
-    "Mini-Gat": {
-      "name": "ミニガット",
-      "description": "<p>A concealable SMG. </p>",
+    "Chadran Arms Jungle Reaper": {
+      "name": "Chadran Arms Jungle Reaper",
+      "description": "<p>\n  A standard-issue assault rifle. If you roll 1 on Attack (Crit fail) the gun\n  jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Dai Lung Magnum": {
+      "name": "Dai Lung Magnum",
+      "description": "<p>\n  A concealable, heavy pistol. If you roll 1 on Attack (Crit fail) the gun jams\n  and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Dai Lung Streetmaster": {
+      "name": "Dai Lung Streetmaster",
+      "description": "<p>\n  A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the\n  gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Eagletech Bearcat": {
+      "name": "Eagletech Bearcat",
+      "description": "<p>\n  A collapsible bow branded with the Eagletech logo, reloaded as part of an\n  Attack action.\n</p>\n<p>+1 to Attack check.</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Eagletech Scorpion": {
+      "name": "Eagletech Scorpion",
+      "description": "<p>\n  A sleek crossbow branded with the Eagletech logo, reloaded as part of an\n  Attack action.\n</p>\n<p>+1 to Attack check.</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Eagletech Striker": {
+      "name": "Eagletech Striker",
+      "description": "<p>\n  A crossbow branded with the Eagletech logo, reloaded as part of an Attack\n  action.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Eagletech Tomcat": {
+      "name": "Eagletech Tomcat",
+      "description": "<p>\n  A revitalized bow branded with the Eagletech logo, reloaded as part of an\n  Attack Action.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
+    },
+    "Federated Arms Super Chief": {
+      "name": "Federated Arms Super Chief",
+      "description": "<p>\n  A very heavy pistol. It can't be concealed. If you roll 1 on Attack (Crit\n  fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Federated Arms Tech-Assault III": {
+      "name": "Federated Arms Tech-Assault III",
+      "description": "<p>\n  A concealable SMG. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n",
       "dvTable": "DV SMG"
     },
-    "Mini-Grenade": {
-      "name": "ミニグレネード",
-      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. </p>",
-      "dvTable": "DV グレネードランチャー"
+    "Federated Arms X-9mm": {
+      "name": "Federated Arms X-9mm",
+      "description": "<p>A concealable, medium-sized pistol.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "P-35": {
-      "name": "P-35",
-      "description": "<p>A very heavy pistol. It can't be concealed. </p>",
-      "dvTable": "DV 拳銃"
+    "GunMart Home Defender": {
+      "name": "GunMart Home Defender",
+      "description": "<p>\n  An all-purpose shotgun. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
     },
-    "Rapid Assault": {
-      "name": "ラピッド・アサルト",
-      "description": "<p>An all-purpose shotgun. </p>",
-      "dvTable": "DV ショットガン (スラッグ弾)"
+    "GunMart Hunter": {
+      "name": "GunMart Hunter",
+      "description": "<p>\n  A poor quality crossbow branded with the GunMart logo, reloaded as part of an\n  Attack action.\n</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "Ronin": {
-      "name": "ローニン",
-      "description": "<p>A standard-issue assault rifle. </p>",
-      "dvTable": "DV アサルトライフル"
+    "GunMart Sherwood": {
+      "name": "GunMart Sherwood",
+      "description": "<p>\n  A poor quality bow branded with the GunMart logo, reloaded as part of an\n  Attack action.\n</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "Scorpion": {
-      "name": "スコーピオン",
-      "description": "<p>A sleek crossbow branded with the Eagletech logo, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
-      "dvTable": "DV 弓とクロスボウ"
+    "GunMart Snipe-Star": {
+      "name": "GunMart Snipe-Star",
+      "description": "<p>\n  A long-distance sniper rifle. Holds 4 bullets in a magazine. If you roll 1 on\n  Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
     },
-    "Sherwood": {
-      "name": "シャーウッド",
-      "description": "<p>A poor quality bow branded with the GunMart logo, reloaded as part of an Attack action.</p> <p>If you roll 1 on Attack (Crit fail) the weapon jams and requires using an action to clear. </p>",
-      "dvTable": "DV 弓とクロスボウ"
+    "Militech Avenger": {
+      "name": "Militech Avenger",
+      "description": "<p>A concealable, medium-sized pistol. +1 to Attack.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "SMG-21": {
-      "name": "SMG-21",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed. </p>",
+    "Militech Boomer Buster": {
+      "name": "Militech Boomer Buster",
+      "description": "<p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>\n",
+      "dvTable": "DV Pistol"
+    },
+    "Militech Bulldog": {
+      "name": "Militech Bulldog",
+      "description": "<p>An all-purpose shotgun. +1 to Attack.</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
+    "Militech Dragon": {
+      "name": "Militech Dragon",
+      "description": "<p>A standard-issue assault rifle. +1 to Attack.</p>\n",
+      "dvTable": "DV Assault Rifle"
+    },
+    "Militech Hotshot": {
+      "name": "Militech Hotshot",
+      "description": "<p>\n  Bring out the big guns. This rocket launcher will do some damage. +1 to\n  Attack.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "Militech Mini-Gat": {
+      "name": "Militech Mini-Gat",
+      "description": "<p>A concealable SMG.</p>\n",
       "dvTable": "DV SMG"
     },
-    "Snipe-Star": {
-      "name": "スナイパースター",
-      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-      "dvTable": "DV スナイパーライフル"
+    "Militech Mini-Grenade": {
+      "name": "Militech Mini-Grenade",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     },
-    "Streetmaster": {
-      "name": "ストリートマスター",
-      "description": "<p>A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-      "dvTable": "DV 拳銃"
+    "Militech Ronin": {
+      "name": "Militech Ronin",
+      "description": "<p>A standard-issue assault rifle.</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
-    "Striker": {
-      "name": "ストライカー",
-      "description": "<p>A crossbow branded with the Eagletech logo, reloaded as part of an Attack action.</p>",
-      "dvTable": "DV 弓とクロスボウ"
+    "Militech Urban": {
+      "name": "Militech Urban",
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>\n",
+      "dvTable": "DV Rocket Launcher"
     },
-    "Super Chief": {
-      "name": "スーパーシェフ",
-      "description": "<p>A very heavy pistol. It can't be concealed.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-      "dvTable": "DV 拳銃"
-    },
-    "Tech-Assault III": {
-      "name": "テクアサルトⅢ",
-      "description": "<p>A concealable SMG.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
+    "Militech Viper": {
+      "name": "Militech Viper",
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>\n",
       "dvTable": "DV SMG"
     },
-    "Tomcat": {
-      "name": "トムキャット",
-      "description": "<p>A revitalized bow branded with the Eagletech logo, reloaded as part of an Attack Action.</p>",
-      "dvTable": "DV 弓とクロスボウ"
+    "Mustang Arms Mark III": {
+      "name": "Mustang Arms Mark III",
+      "description": "<p>A concealable, heavy pistol.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Type-18": {
-      "name": "タイプ18",
-      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this. +1 to Attack.</p>",
-      "dvTable": "DV グレネードランチャー"
+    "Nomad Long Rifle": {
+      "name": "Nomad Long Rifle",
+      "description": "<p>\n  A long-distance sniper rifle, commonly used by nomads. Holds 4 bullets in a\n  magazine.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
     },
-    "Type-G": {
-      "name": "タイプG",
-      "description": "<p>A high-impact grenade launcher. You can use a variety of grenades with this.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-      "dvTable": "DV グレネードランチャー"
+    "Nova Cityhunter": {
+      "name": "Nova Cityhunter",
+      "description": "<p>A concealable, heavy pistol. +1 to Attack.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Type-R": {
-      "name": "タイプR",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action to clear. </p>",
-      "dvTable": "DV ロケットランチャー"
+    "Sternmeyer P-35": {
+      "name": "Sternmeyer P-35",
+      "description": "<p>A very heavy pistol. It can't be concealed.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Urban": {
-      "name": "アーバン",
-      "description": "<p>Bring out the big guns. This rocket launcher will do some damage. </p>",
-      "dvTable": "DV ロケットランチャー"
-    },
-    "Viper": {
-      "name": "ヴァイパー",
-      "description": "<p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>",
+    "Sternmeyer SMG-21": {
+      "name": "Sternmeyer SMG-21",
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed.</p>\n",
       "dvTable": "DV SMG"
     },
-    "WSSA Sniper System": {
-      "name": "WSSAスナイパー・システム",
-      "description": "<p>A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.</p>",
-      "dvTable": "DV スナイパーライフル"
+    "Towa Manufacturing Type-G": {
+      "name": "Towa Manufacturing Type-G",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action\n  to clear.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     },
-    "X-9mm": {
-      "name": "X-9mm",
-      "description": "<p>A concealable, medium-sized pistol. </p>",
-      "dvTable": "DV 拳銃"
+    "Towa Manufacturing Type-R": {
+      "name": "Towa Manufacturing Type-R",
+      "description": "<p>\n  Bring out the big guns. This rocket launcher will do some damage. If you roll\n  1 on Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
+    },
+    "Tsunami Arms Type-18": {
+      "name": "Tsunami Arms Type-18",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n  +1 to Attack.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     }
   }
 }

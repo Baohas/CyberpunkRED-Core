@@ -29,6 +29,10 @@
       "name": "Discount Cyberaudio Suite",
       "description": "<p>A cheap and bulky interface for an audio enhancement. (see Black Chrome pg. 17 for more details)</p>"
     },
+    "Dynalar Modular Finger Enthusiast Cyberhand": {
+      "name": "Dynalar Modular Finger Enthusiast Cyberhand",
+      "description": "<p>Borgware. Requires cyberarm. Comes with 8 cyberfingers*.</p>\n<p>*Fingers must be added after installation</p>\n"
+    },
     "Explicit Memory Stimulator": {
       "name": "Explicit Memory Stimulator",
       "description": "<p>Chipware. Enhances memorization. +2 Concentration while installed. (See Black Chrome pg. 18 for more details)</p>"
@@ -108,10 +112,6 @@
     "Modular Finger Cyberhand": {
       "name": "Modular Finger Cyberhand",
       "description": "<p>Requires cyberarm. Comes with 5 cyberfingers*. (see Black Chrome pg. 20 for more details)</p>\n<p>*Fingers must be added after installation</p>"
-    },
-    "Modular Finger Enthusiast Cyberhand": {
-      "name": "Modular Finger Enthusiast Cyberhand",
-      "description": "<p>Borgware. Requires cyberarm. Comes with 8 cyberfingers*. (see Black Chrome pg. 18 for more details)</p>\n<p>*Fingers must be added after installation</p>"
     },
     "Neo-Soviet Cyberarm": {
       "name": "Neo-Soviet Cyberarm",

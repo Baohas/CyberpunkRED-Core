@@ -4,8 +4,16 @@
 
 ## Версия 0.89.0
 
+### Требует внимания
+
+#### Netrunning Tiles
+
+We have updated the Netrunning Tiles, we have replaced the PNG files with WebP for reduced filesize. This means any scenes using PNG tile will display as broken. These can be fixed by double clicking on the broken tile and either navigating to the new tiles in `tiles/WebP` or manually replacing the `PNG` filder with `WebP` and the extension `png` with `webp`.
+
 ### Нововведения
 
+- Added compatibility for Foundry v12.
+- Removed compatibility for Foundry v11.
 - Добавлены библиотеки для следующий категорий:
   - Навыки (Знание местности)
   - Навыки (Наука)
@@ -28,6 +36,7 @@
 - Add Speedheal Macro
 - Добавлена возможность выставить оружию игнорировать проценты
 - Добавлена возможность выставить оружие игнорировать броню ниже определённого показателя ОС
+- #235 - Added ability to change resource bars for armor from item sheet
 
 ### Изменения
 
@@ -37,16 +46,22 @@
 - Шрифт сообщения о паузе заменён на Tektur для улучшенной поддержки локализаций на других языках
 - Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Элементы заголовка в зонах ввода текста теперь внешне похожи на те, что в основной книге правил
+- Update netrunning tiles with new tiles from Solution
+- Change how we handle Branded Items
+  - Rename branded items to use the full item name from the source book
+  - Remove the programatic band name handler
 
 ### Исправления
 
 - #933 - Исправлено множество ошибок/отсуствующих значений в библиотеках благодаря @Alexander Fokin
 - #950 - Проверки СЛ выделены жирным в некоторых предметах библиотеки
+- Fix NET Arch image path seperators
 - #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
 - #979 - Fix styling of inline rolls in chat
 - Added several small updates to descriptions to understand various items better
 - Fix image overflow on Item Sheets
 - Fix filepicker favorites styling
+- #1017 - Fix duplicate effect bonuses being applied to attacks
 
 ## Версия 0.88.2
 
@@ -150,7 +165,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Версия 0.87.5
 
-### Исправления
+### Bug Fixes
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
@@ -228,7 +243,7 @@ Fix broken migrations
 
 ## Версия 0.87.0
 
-### Требует внимания
+### Action Needed
 
 #### New Discord
 
@@ -544,7 +559,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Версия 0.85.1 (Исправление) | Дата: 2022-12-14
 
-### Bug Fixes
+### Исправления
 
 - Fixed #624 - NET architecture sheet can't click generation button
 
@@ -757,7 +772,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Версия 0.81.1 (Исправление) | Дата: 2022-08-01
 
-### Bug Fixes
+### Исправления
 
 - #456 - Selling non-stackable items to vendors results in a NaN offer from the vendor
 - #454 - Kendachi Mono-Three has Incorrect Attack Bonus

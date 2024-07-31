@@ -75,6 +75,11 @@
       "name": "コンバットナイフ",
       "description": "<p>A knife fit for the streets.</p>"
     },
+    "Constitutional Arms Hurricane Assault Weapon": {
+      "name": "Constitutional Arms Hurricane Assault Weapon",
+      "description": "<p>\n  An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or\n  higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
+    },
     "Crossbow (Excellent)": {
       "name": "クロスボウ (高品質)",
       "description": "<p>An excellent quality crossbow, reloaded as part of an Attack action.</p>\n<p>+1 to Attack check.</p>",
@@ -106,11 +111,6 @@
       "name": "ダーツガン",
       "description": "<p>An Exotic Very Heavy Pistol. Refer to the full item description on pg. 348.</p>",
       "dvTable": "DV 拳銃"
-    },
-    "EMG-86 Railgun": {
-      "name": "EMG-86 レールガン",
-      "description": "<p>An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY 11 or higher (unless mounted). Ignores any armor below SP11*. Refer to the full item description on pg. 349.</p>\n<p><em>*Not currently supported to will need to manually apply damage to armoured targets</em></p>",
-      "dvTable": "DV アサルトライフル"
     },
     "Flamethrower": {
       "name": "フレイムスロワー",
@@ -186,15 +186,9 @@
       "name": "ヘリコプターの回転翼",
       "description": "<p>Taken from a derelict aircraft, these blades are capable of slicing most things easily. </p>"
     },
-    "Helix": {
-      "name": "ヘリックス",
-      "description": "<p>An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20 bullets with each attack. Uses Autofire rules with a multiplication up to a maximum of 5. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>",
-      "dvTable": "DV アサルトライフル"
-    },
-    "Hurricane Assault Weapon": {
-      "name": "ハリケーン・アサルト・ウェポン",
-      "description": "<p>An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or higher (unless mounted). Refer to the full item description on pg. 348.</p>",
-      "dvTable": "DV ショットガン (スラッグ弾)"
+    "Kendachi Mono-Three": {
+      "name": "Kendachi Mono-Three",
+      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
     },
     "Lead Pipe (Excellent)": {
       "name": "鉄パイプ(高品質)",
@@ -273,9 +267,10 @@
       "description": "<p>An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be rendered inoperable for a minute unless the target passes a DV15 Cybertech Check. Refer to the full item description on pg. 348.</p>",
       "dvTable": "DV 拳銃"
     },
-    "Mono-Three": {
-      "name": "モノスリー",
-      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
+    "Militech \"Cowboy\" U-56 Grenade Launcher": {
+      "name": "Militech \"Cowboy\" U-56 Grenade Launcher",
+      "description": "<p>\n  An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11\n  or higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     },
     "Naginata (Excellent)": {
       "name": "薙刀(高品質)",
@@ -289,9 +284,10 @@
       "name": "薙刀",
       "description": "<p>A japanese wooden pole with a curved blade on one side. Favoured by Arasaka tactical teams for close engagements. </p>"
     },
-    "Rippers": {
-      "name": "リパー",
-      "description": "<p>Cyberware weapon. You must have the appropriate cyberware installed. </p>"
+    "Rhinemetall EMG-86 Railgun": {
+      "name": "Rhinemetall EMG-86 Railgun",
+      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11*.\n</p>\n<p>\n  <em\n    >*Not currently supported to will need to manually apply damage to armoured\n    targets</em\n  >\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Rocket Launcher (Excellent)": {
       "name": "ロケットランチャー (高品質)",
@@ -420,10 +416,10 @@
       "name": "トマホーク",
       "description": "<p>A light axe that can be thrown. </p>"
     },
-    "U-56 Grenade Launcher \"Cowboy\"": {
-      "name": "U-56 グレネードランチャー \"カウボーイ\"",
-      "description": "<p>An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11 or higher (unless mounted). Refer to the full item description on pg. 349.</p>",
-      "dvTable": "DV グレネードランチャー"
+    "Tsunami Arms Helix": {
+      "name": "Tsunami Arms Helix",
+      "description": "<p>\n  An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20\n  bullets with each attack. Uses Autofire rules with a multiplication up to a\n  maximum of 5. Requires BODY 11 or higher (unless mounted).\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
     "Unarmed": {
       "name": "素手",

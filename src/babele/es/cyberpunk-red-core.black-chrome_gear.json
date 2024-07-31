@@ -6,25 +6,13 @@
       "name": "MechaMan Smart Glove",
       "description": "<p>\n  A biking glove that comes with a subdermal grip pre-installed* which requires\n  a neural link to use. Has 1 additional cyberarm option slot. Any options\n  stored in the Cyberhand or meat hand are inaccessible while the Smart Glove is\n  being worn.<br /><em\n    >*Subdermal Grip must be added and installed manually after acquiring the\n    glove, this effectively consumes one of the option slots.</em\n  >\n</p>\n"
     },
-    "AirWell 50": {
-      "name": "PozoAire 50",
-      "description": "<p>Produce suficiente agua para sustentar a una persona. Para obtener más información, consulte la página de Cromo Negro 48.</p>"
-    },
-    "Banshee Microphone": {
-      "name": "Micrófono Banshee",
-      "description": "<p>Auricular del micrófono inalámbrico da al usuario una bonificación +2 para Tocar Instrumento (Cantar) mientras se usa. No se acumula con otros bonos para Tocar Instrumento. Para obtener información adicional, consulte la página de Cromo Negro 40.</p>"
-    },
-    "ChipVault": {
-      "name": "BóvedaChip",
-      "description": "<p>Puede contener hasta 8 piezas de Chipware. El Chipware almacenado en el interior es inmune a los efectos EMP. Para obtener más información, consulte la página de Cromo Negro 44.</p>"
+    "ChipVault by SecSystems": {
+      "name": "ChipVault by SecSystems",
+      "description": "<p>\n  Can hold up to 8 pieces of Chipware. Chipware stored inside are immune to EMP\n  effects.\n</p>\n"
     },
     "CO2 Tank": {
       "name": "Tanque de CO2",
       "description": "<p>Un tanque de CO2 diseñado para su uso con la armadura Masetto AirRider. Debe ser reemplazado después de cada uso. Consulte la descripción completa del artículo en el pg. 33.</p>"
-    },
-    "Doberman 500": {
-      "name": "Doberman 500",
-      "description": "<p>Dron Personal Canino que puede ser vinculado a un agente.&nbsp;<br>Consulte sus reglas en la página 46 del Cromo Negro.</p>"
     },
     "Drink Master 3000": {
       "name": "Bebe Master 3000",
@@ -34,13 +22,41 @@
       "name": "Armazón Lineal EL-F4-NT",
       "description": "<p>Exosqueleto. Aumenta el TCO a 12 mientras está equipado. Sin cambios en tu PV o Tirada de Salvación. Tiene herramientas técnicas preinstaladas. (Vea Cromo Negro, pg. 55 para más detalles.)</p>"
     },
+    "Everest VentureWare AirWell 50": {
+      "name": "Everest VentureWare AirWell 50",
+      "description": "<p>Produces enough water to sustain a person.</p>\n"
+    },
+    "Everest VentureWare One Touch Habitat": {
+      "name": "Everest VentureWare One Touch Habitat",
+      "description": "<p>\n  Provides protection from Exposure. Counts as Sleeping in the Wilderness or as\n  Sleeping on the Streets.\n</p>\n"
+    },
     "Fūma Kotarō Linear Frame": {
       "name": "Armazón Lineal Fūma Kotarō",
       "description": "<p>Exosqueleto.</p>\n<ul>\n<li>Requiere 2 Conectores de Interface</li>\n<li>Aumenta TCO a 12 mientras estás enchufado</li>\n<li>No afecta a PV ni a Tirada de Salvación</li>\n<li>Sigilo +2</li>\n</ul>\n<p>Viene con dos armas cuerpo a cuerpo pesadas exóticas de calidad excelente y una arma cuerpo a cuerpo ligera exótica de excelente calidad*.</p>\n<p>Consulte la página de Cromo Negro 52 para más detalles.</p>\n<p><em>* Debe ser añadido manualmente.</em></p>"
     },
+    "Hydrosubsidium Universal Aqualung": {
+      "name": "Hydrosubsidium Universal Aqualung",
+      "description": "<p>\n  When worn, User can breathe underwater as long as within 10 m/yards of the\n  surface.\n</p>\n"
+    },
     "Jeeves Executive Garment Bag": {
       "name": "Bolsa de Prendas Ejecutiva Jeeves",
       "description": "<p>Bolsa que puede reparar una pieza de ropa o armadura a la vez. Para obtener más información, consulte la página de Cromo Negro 43.</p>"
+    },
+    "KillStrom Banshee Microphone": {
+      "name": "KillStrom Banshee Microphone",
+      "description": "<p>\n  Wireless Microphone Headset. Gives the User a +2 bonus to Play Instrument\n  (Singing) Skill Checks while worn. Doesn't stack with other bonuses to Play\n  Instrument.\n</p>\n"
+    },
+    "KillStrom Sonic Boom Amp": {
+      "name": "KillStrom Sonic Boom Amp",
+      "description": "<p>\n  While linked to an instrument, the User can take an Action to make everyone\n  nearby make a Resist Torture/Drugs Check.\n</p>\n"
+    },
+    "KillStrom Typhoid Speaker": {
+      "name": "KillStrom Typhoid Speaker",
+      "description": "<p>\n  When linked to a KillStrom Sonic Boom Amp, increases the DV of the Resist\n  Torture/Drugs Check.\n</p>\n"
+    },
+    "KTech Doberman 500": {
+      "name": "KTech Doberman 500",
+      "description": "<p>Canine Personal Drone that can be linked to an Agent.</p>\n"
     },
     "Laser Light Electric Guitar": {
       "name": "Guitarra eléctrica Ligera Láser",
@@ -54,17 +70,9 @@
       "name": "Sr. Biscuit Procesador Multi-Alimentos",
       "description": "<p>Puedes sustentar a un grupo de hasta 10 personas en las afueras de la ciudad. Para obtener más información, consulta la página de Cromo Negro 49.</p>"
     },
-    "Nitro Ultra9": {
-      "name": "Nitro Ultra9",
-      "description": "<p>Se puede verter en el tanque de un vehículo para rellenarlo como una acción. Da bonificaciones para moverse a expensas de la seguridad. Para obtener más información, consulte la página de Cromo Negro 49.</p>"
-    },
-    "One Touch Habitat": {
-      "name": "Hábitat Un Toque",
-      "description": "<p>Proporciona protección contra la exposición. Cuenta como dormir en la naturaleza o dormir en las calles. Para obtener más información, consulte la página de Cromo Negro 48.</p>"
-    },
-    "Porta-Printer": {
-      "name": "Impresora Porta",
-      "description": "<p>Taller de Miniatura. Permite a un Técnico usar Mejoras y Fabricación en cualquier lugar, siempre y cuando tengan herramientas técnicas. Para obtener más información, consulte la página de Cromo Negro 43.</p>"
+    "Petrochem Nitro Ultra9": {
+      "name": "Petrochem Nitro Ultra9",
+      "description": "<p>\n  Can be poured into a Vehicle's tank to refill it as an Action. Gives bonuses\n  to movement at the expense of safety.\n</p>\n"
     },
     "RapiDeploy Sheath": {
       "name": "Vaina RapiDesplegable",
@@ -73,10 +81,6 @@
     "Shower•in•a•Can": {
       "name": "Ducha-en-Lata",
       "description": "<p>Desodorante de Spray. Desinfecta y desodoriza. Un uso por lata. Para obtener más información, consulte la página 38 de Cromo Negro.</p>"
-    },
-    "Sonic Boom Amp": {
-      "name": "Amplificador de Sonido Boom",
-      "description": "<p>Mientras está vinculado a un instrumento, el usuario puede tomar una acción para hacer que todo el que esté cerca haga una comprobación de Resistir Torturas/Drogas. Para obtener más información, consulte la página 40 de Cromo Negro.</p>"
     },
     "SovOil Industrial Lubricant": {
       "name": "Lubricante Industrial de SovOil",
@@ -90,21 +94,13 @@
       "name": "Lubricante Personal de SovOil",
       "description": "<p>Lubricante en una lata de buen tamaño. Para obtener más información, consulte la página de Cromo Negro 56.</p>"
     },
-    "Streetcase": {
-      "name": "Maletín Callejero",
-      "description": "<p>Puede llevar muchos objetos de fácil acceso que USTED necesita para estar a salvo. Para obtener más información, consulte la página de Cromo Negro 47.</p>"
+    "Streetcase by SecSystems": {
+      "name": "Streetcase by SecSystems",
+      "description": "<p>Can carry many easily accessible items that YOU need to stay safe.</p>\n"
     },
     "Triti-Fizz": {
       "name": "Triti-Fizz",
       "description": "<p>Bebida favorita de Norteamérica. Para obtener más información, consulte la página 124 del Cromo Negro.</p>"
-    },
-    "Typhoid Speaker": {
-      "name": "Altavoz Typhoid",
-      "description": "<p>Cuando está vinculado a un Amplificador de Sonido Boom de KillStrom, incrementa el VD para Resistir Torturas/Drogas. Para obtener más información, consulte la página 41 de Cromo Negro.</p>"
-    },
-    "Universal Aqualung": {
-      "name": "Pulmón Acuático Universal",
-      "description": "<p>Cuando está instalado, el usuario puede respirar bajo el agua mientras esté dentro de 10 m/yardas de la superficie. Para obtener más información, consulte la página de Cromo Negro 42.</p>"
     },
     "Vermilion Linear Frame": {
       "name": "Armazón Lineal Bermellón",
@@ -113,6 +109,10 @@
     "WorldSat Aerial Sphere": {
       "name": "Esfera Aérea de WorldSat",
       "description": "<p>Cuando esté configurado, proporciona acceso a un Citinet cuando se encuentra a menos de 50 millas de la ciudad o de otra esfera Aérea de WorldSat que esté conectada al Citinet. Para obtener más información, consulte la página 50 de Cromo Negro.</p>"
+    },
+    "Zetatech Porta-Printer": {
+      "name": "Zetatech Porta-Printer",
+      "description": "<p>\n  Miniature Workshop. Allows a Tech to use Upgrade and Fabrication Experstise\n  anywhere as long as they have techtools.\n</p>\n"
     }
   }
 }

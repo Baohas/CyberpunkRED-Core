@@ -2,14 +2,6 @@
   "label": "Blindaje",
   "mapping": {},
   "entries": {
-    "AirRider": {
-      "name": "AirRider",
-      "description": "<p>Armadura corporal de Kevlar que ignora la herida crítica de Latigazo de los choques de los coches siempre y cuando el tanque de CO2 de la armadura esté lleno*. Consulte la descripción completa del artículo en el pg. 33.</p>\n<p><em>*Debe añadirse manualmente después de adquirir la armadura.</em></p>"
-    },
-    "Bunker Gear": {
-      "name": "Equipo de Bunker",
-      "description": "<p>Armadura antiincendios con una máscara de gas construida y 30 minutos de oxígeno en un tanque que se rellena después de una hora. -4 a REF, DES y MOV. Consulte la descripción completa del artículo en BC pg. 29.</p>"
-    },
     "Corporate Island": {
       "name": "Isla Corporativa",
       "description": "<p>Armadura ligera que parece una Ropa de Negocios. Consulte la descripción completa del artículo en pg. 35.</p>"
@@ -22,6 +14,10 @@
       "name": "Armadura Ejecutiva",
       "description": "<p>Armadura ligera que parece una Ropa de Negocios. Restaura 1CP cada día que no se pierda CP en la armadura. Consulte la descripción completa del artículo en BC pg. 34.</p>"
     },
+    "Fire Brand Bunker Gear": {
+      "name": "Fire Brand Bunker Gear",
+      "description": "<p>\n  Fireproof flak armor with a built in gas mask and 30 minutes of oxygen in a\n  tank that refills itself after an hour. -4 to REF, DEX, and MOVE.\n</p>\n"
+    },
     "Laser Light Street Jacket": {
       "name": "Chaqueta callejera ligera Laser",
       "description": "<p>Armadura ligera de Estilo Urbano que cuenta con un tatuaje luminoso mientras se usa. Consulte la descripción completa del objeto en el pg. 31.</p>"
@@ -29,6 +25,10 @@
     "Lotos Netsuit": {
       "name": "Traje de Red Lotos",
       "description": "<p>Un traje de red que permite una ranura de hardware adicional de ciberterminal que está instalada directamente en el traje y que se desinstala si se quita el traje. Viene estándar con una Ciberterminal de Calidad Excelente*. -2 a REF, DES, y MOV. Consulte la descripción completa del artículo en BC pg. 31.</p>\n<p><em>*Debe ser añadido manualmente después de adquirir la armadura</em></p>"
+    },
+    "Masetto AirRider": {
+      "name": "Masetto AirRider",
+      "description": "<p>\n  Kevlar Body Armor that ignores the Whiplash critical injury from car crashes\n  as long as the armor's CO<sub>2</sub> tank is full*.\n</p>\n<p><em>*Must be manually added after acquiring the armor.</em></p>\n"
     },
     "MechaMan Motorcycle Helmet": {
       "name": "Casco de Motocicleta MechaMan",

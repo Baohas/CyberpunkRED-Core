@@ -2,9 +2,9 @@
   "label": "ファッション",
   "mapping": {},
   "entries": {
-    "Holo-Wear": {
-      "name": "ホロウェア",
-      "description": "<p>Holographic clothing that can get disabled by EMP blasts for a minute. Can swap styles with an action if purchased. Refer to full item description on BC pg. 35.</p>"
+    "Masetto Holo-Wear": {
+      "name": "Masetto Holo-Wear",
+      "description": "<p>\n  Holographic clothing that can get disabled by EMP blasts for a minute. Can\n  swap styles with an action if purchased.\n</p>\n"
     }
   }
 }

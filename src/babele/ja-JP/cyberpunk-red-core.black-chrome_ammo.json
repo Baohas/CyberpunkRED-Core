@@ -22,9 +22,9 @@
       "name": "グレネード(アラクニド)",
       "description": "<p>A very sticky grenade, details of which can be found on page 86.</p>"
     },
-    "Grenade (Security)": {
-      "name": "グレネード (セキュリティ)",
-      "description": "<p>Armor piercing Grenade that doesn't damage cover. Full rules can be found on page 89.</p>"
+    "Grenade (KTech Security)": {
+      "name": "Grenade (KTech Security)",
+      "description": "<p>Armor piercing Grenade. Deals damage to targets but not to cover.</p>\n"
     },
     "Grenade (Shuriken Tornado)": {
       "name": "グレネード(手裏剣)",

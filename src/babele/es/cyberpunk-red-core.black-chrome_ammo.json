@@ -22,9 +22,9 @@
       "name": "Granada (Telaraña)",
       "description": "<p>Una granada muy pegajosa, cuyos detalles se pueden encontrar en la página 86.</p>"
     },
-    "Grenade (Security)": {
-      "name": "Granada (Seguridad)",
-      "description": "<p>Granada perforadora de armadura que no daña la cobertura. Puede encontrar reglas completas en la página 89.</p>"
+    "Grenade (KTech Security)": {
+      "name": "Grenade (KTech Security)",
+      "description": "<p>Armor piercing Grenade. Deals damage to targets but not to cover.</p>\n"
     },
     "Grenade (Shuriken Tornado)": {
       "name": "Granada (Tornado de Shuriken)",

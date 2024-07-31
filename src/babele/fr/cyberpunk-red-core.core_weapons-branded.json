@@ -4,185 +4,185 @@
     "dvTable": "system.tableSD"
   },
   "entries": {
-    "Avenger": {
-      "name": "Avenger",
-      "description": "<p>Un pistolet de taille moyenne. Dissimulable. +1 au jet d'attaque.</p>",
-      "dvTable": "SD Pistolet"
+    "Arasaka Minami 10": {
+      "name": "Arasaka Minami 10",
+      "description": "<p>A concealable SMG. +1 to Attack.</p>\n",
+      "dvTable": "DV SMG"
     },
-    "Bearcat": {
-      "name": "Bearcat",
-      "description": "<p>Un arc renouvelé, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>",
-      "dvTable": "SD Arcs et arbalètes"
+    "Arasaka Rapid Assault": {
+      "name": "Arasaka Rapid Assault",
+      "description": "<p>An all-purpose shotgun.</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
     },
-    "Boomer Buster": {
-      "name": "Boomer Buster",
-      "description": "<p>Un pistolet très lourd. Non dissimulable. +1 au jet d'attaque.</p>",
-      "dvTable": "SD Pistolet"
+    "Arasaka WSSA Sniper System": {
+      "name": "Arasaka WSSA Sniper System",
+      "description": "<p>\n  A long-distance sniper rifle. Holds 4 bullets in a magazine. +1 to Attack.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
     },
-    "Bulldog": {
-      "name": "Bulldog",
-      "description": "<p>Fusil à pompe polyvalent. +1 au jet d'attaque.</p>",
-      "dvTable": "SD Fusil à pompe (Slug)"
+    "Chadran Arms City Reaper": {
+      "name": "Chadran Arms City Reaper",
+      "description": "<p>\n  A heavy SMG. Due to its size it can't be concealed. If you roll 1 on Attack\n  (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV SMG"
     },
-    "City Reaper": {
-      "name": "City Reaper",
-      "description": "<p>Pistolet-mitrailleur lourd. Non dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
-      "dvTable": "SD Pistolet-mitrailleur"
+    "Chadran Arms Jungle Reaper": {
+      "name": "Chadran Arms Jungle Reaper",
+      "description": "<p>\n  A standard-issue assault rifle. If you roll 1 on Attack (Crit fail) the gun\n  jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
-    "Cityhunter": {
-      "name": "Cityhunter",
-      "description": "<p>Un pistolet lourd. Dissimulable. +1 au jet d'attaque.</p>",
-      "dvTable": "SD Pistolet"
+    "Dai Lung Magnum": {
+      "name": "Dai Lung Magnum",
+      "description": "<p>\n  A concealable, heavy pistol. If you roll 1 on Attack (Crit fail) the gun jams\n  and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Dragon": {
-      "name": "Dragon",
-      "description": "<p>Un fusil d'assaut. +1 au jet d'attaque.</p>",
-      "dvTable": "SD Fusil d'assaut"
+    "Dai Lung Streetmaster": {
+      "name": "Dai Lung Streetmaster",
+      "description": "<p>\n  A concealable, medium-sized pistol. If you roll 1 on Attack (Crit fail) the\n  gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Home Defender": {
-      "name": "Home Defender",
-      "description": "<p>Un fusil à pompe polyvalent. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
-      "dvTable": "SD Fusil à pompe (Slug)"
+    "Eagletech Bearcat": {
+      "name": "Eagletech Bearcat",
+      "description": "<p>\n  A collapsible bow branded with the Eagletech logo, reloaded as part of an\n  Attack action.\n</p>\n<p>+1 to Attack check.</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "Hotshot": {
-      "name": "Hotshot",
-      "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts. +1 au jet d'attaque.</p>",
-      "dvTable": "SD Lance-roquettes"
+    "Eagletech Scorpion": {
+      "name": "Eagletech Scorpion",
+      "description": "<p>\n  A sleek crossbow branded with the Eagletech logo, reloaded as part of an\n  Attack action.\n</p>\n<p>+1 to Attack check.</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "Hunter": {
-      "name": "Hunter",
-      "description": "<p>Une arbalète qui doit être rechargée après chaque attaque. Si vous lancez un 1 sur une Attaque (Échec critique) l'arme s'enraye et nécessite une action pour désenrayer. </p>",
-      "dvTable": "SD Arcs et arbalètes"
+    "Eagletech Striker": {
+      "name": "Eagletech Striker",
+      "description": "<p>\n  A crossbow branded with the Eagletech logo, reloaded as part of an Attack\n  action.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "Jungle Reaper": {
-      "name": "Jungle Reaper",
-      "description": "<p>Un fusil d'assaut. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
-      "dvTable": "SD Fusil d'assaut"
+    "Eagletech Tomcat": {
+      "name": "Eagletech Tomcat",
+      "description": "<p>\n  A revitalized bow branded with the Eagletech logo, reloaded as part of an\n  Attack Action.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "Long Rifle": {
-      "name": "Long Rifle",
-      "description": "<p>Un fusil de précision longue distance. Chargeur de 4 balles. </p>",
-      "dvTable": "SD Fusil de précision"
+    "Federated Arms Super Chief": {
+      "name": "Federated Arms Super Chief",
+      "description": "<p>\n  A very heavy pistol. It can't be concealed. If you roll 1 on Attack (Crit\n  fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Magnum": {
-      "name": "Magnum",
-      "description": "<p>Un pistolet lourd. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>",
-      "dvTable": "SD Pistolet"
+    "Federated Arms Tech-Assault III": {
+      "name": "Federated Arms Tech-Assault III",
+      "description": "<p>\n  A concealable SMG. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n",
+      "dvTable": "DV SMG"
     },
-    "Mark III": {
-      "name": "Mark III",
-      "description": "<p>Un pistolet lourd. Dissimulable </p>",
-      "dvTable": "SD Pistolet"
+    "Federated Arms X-9mm": {
+      "name": "Federated Arms X-9mm",
+      "description": "<p>A concealable, medium-sized pistol.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Minami 10": {
-      "name": "Minami 10",
-      "description": "<p>Un pistolet-mitrailleur. Dissimulable. +1 au jet d'attaque.</p>",
-      "dvTable": "SD Pistolet-mitrailleur"
+    "GunMart Home Defender": {
+      "name": "GunMart Home Defender",
+      "description": "<p>\n  An all-purpose shotgun. If you roll 1 on Attack (Crit fail) the gun jams and\n  requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
     },
-    "Mini-Gat": {
-      "name": "Mini-Gat",
-      "description": "<p>Un pistolet-mitrailleur. Dissimulable.</p>",
-      "dvTable": "SD Pistolet-mitrailleur"
+    "GunMart Hunter": {
+      "name": "GunMart Hunter",
+      "description": "<p>\n  A poor quality crossbow branded with the GunMart logo, reloaded as part of an\n  Attack action.\n</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "Mini-Grenade": {
-      "name": "Mini-Grenade",
-      "description": "<p>Lance-grenades avec lesquels vous pouvez utiliser une grande variété de grenades.</p>",
-      "dvTable": "SD Lance-grenades"
+    "GunMart Sherwood": {
+      "name": "GunMart Sherwood",
+      "description": "<p>\n  A poor quality bow branded with the GunMart logo, reloaded as part of an\n  Attack action.\n</p>\n<p>\n  If you roll 1 on Attack (Crit fail) the weapon jams and requires using an\n  action to clear.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
-    "P-35": {
-      "name": "P-35",
-      "description": "<p>Un pistolet très lourd. Non dissimulable </p>",
-      "dvTable": "SD Pistolet"
+    "GunMart Snipe-Star": {
+      "name": "GunMart Snipe-Star",
+      "description": "<p>\n  A long-distance sniper rifle. Holds 4 bullets in a magazine. If you roll 1 on\n  Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
     },
-    "Rapid Assault": {
-      "name": "Rapid Assault",
-      "description": "<p>Un fusil à pompe polyvalent. </p>",
-      "dvTable": "SD Fusil à pompe (Slug)"
+    "Militech Avenger": {
+      "name": "Militech Avenger",
+      "description": "<p>A concealable, medium-sized pistol. +1 to Attack.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Ronin": {
-      "name": "Ronin",
-      "description": "<p>Un fusil d'assaut ordinaire. </p>",
-      "dvTable": "SD Fusil d'assaut"
+    "Militech Boomer Buster": {
+      "name": "Militech Boomer Buster",
+      "description": "<p>A very heavy pistol. It can't be concealed. +1 to Attack.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Scorpion": {
-      "name": "Scorpion",
-      "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>",
-      "dvTable": "SD Arcs et arbalètes"
+    "Militech Bulldog": {
+      "name": "Militech Bulldog",
+      "description": "<p>An all-purpose shotgun. +1 to Attack.</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
     },
-    "Sherwood": {
-      "name": "Sherwood",
-      "description": "<p>Un arc moderne, doit être rechargé après chaque attaque. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>",
-      "dvTable": "SD Arcs et arbalètes"
+    "Militech Dragon": {
+      "name": "Militech Dragon",
+      "description": "<p>A standard-issue assault rifle. +1 to Attack.</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
-    "SMG-21": {
-      "name": "SMG-21",
-      "description": "<p>Un pistolet-mitrailleur lourd. Non dissimulable.</p>",
-      "dvTable": "SD Pistolet-mitrailleur"
+    "Militech Hotshot": {
+      "name": "Militech Hotshot",
+      "description": "<p>\n  Bring out the big guns. This rocket launcher will do some damage. +1 to\n  Attack.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
     },
-    "Snipe-Star": {
-      "name": "Snipe-Star",
-      "description": "<p>Un fusil de précision longue distance. Chargeur de 4 balles. Si vous lancez 1 sur une Attaque (échec critique) l'arme s'enraye et nécessite une action pour désenrayer. </p>",
-      "dvTable": "SD Fusil de précision"
+    "Militech Mini-Gat": {
+      "name": "Militech Mini-Gat",
+      "description": "<p>A concealable SMG.</p>\n",
+      "dvTable": "DV SMG"
     },
-    "Streetmaster": {
-      "name": "Streetmaster",
-      "description": "<p>Un pistolet moyen, dissimulable. Si vous lancez 1 sur une Attaque (échec critique) le pistolet s'enraye et nécessite une action pour désenrayer. </p>",
-      "dvTable": "SD Pistolet"
+    "Militech Mini-Grenade": {
+      "name": "Militech Mini-Grenade",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     },
-    "Striker": {
-      "name": "Striker",
-      "description": "<p>Une arbalète, rechargement compris dans l'action d'attaque.</p>",
-      "dvTable": "SD Arcs et arbalètes"
+    "Militech Ronin": {
+      "name": "Militech Ronin",
+      "description": "<p>A standard-issue assault rifle.</p>\n",
+      "dvTable": "DV Assault Rifle"
     },
-    "Super Chief": {
-      "name": "Super Chief",
-      "description": "<p>Un pistolet très lourd. Non dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>",
-      "dvTable": "SD Pistolet"
+    "Militech Urban": {
+      "name": "Militech Urban",
+      "description": "<p>Bring out the big guns. This rocket launcher will do some damage.</p>\n",
+      "dvTable": "DV Rocket Launcher"
     },
-    "Tech-Assault III": {
-      "name": "Tech-Assault III",
-      "description": "<p>Pistolet-mitrailleur. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
-      "dvTable": "SD Pistolet-mitrailleur"
+    "Militech Viper": {
+      "name": "Militech Viper",
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed. +1 to Attack.</p>\n",
+      "dvTable": "DV SMG"
     },
-    "Tomcat": {
-      "name": "Tomcat",
-      "description": "<p>Un arc moderne, rechargement compris dans l'action d'attaque.</p>",
-      "dvTable": "SD Arcs et arbalètes"
+    "Mustang Arms Mark III": {
+      "name": "Mustang Arms Mark III",
+      "description": "<p>A concealable, heavy pistol.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Type-18": {
-      "name": "Type-18",
-      "description": "<p>Lance-grenades avec lesquels vous pouvez utiliser une grande variété de grenades. +1 au jet d'attaque.</p>",
-      "dvTable": "SD Lance-grenades"
+    "Nomad Long Rifle": {
+      "name": "Nomad Long Rifle",
+      "description": "<p>\n  A long-distance sniper rifle, commonly used by nomads. Holds 4 bullets in a\n  magazine.\n</p>\n",
+      "dvTable": "DV Sniper Rifle"
     },
-    "Type-G": {
-      "name": "Type-G",
-      "description": "<p>Lance-grenades avec lesquels vous pouvez utiliser une grande variété de grenades. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
-      "dvTable": "SD Lance-grenades"
+    "Nova Cityhunter": {
+      "name": "Nova Cityhunter",
+      "description": "<p>A concealable, heavy pistol. +1 to Attack.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Type-R": {
-      "name": "Type-R",
-      "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
-      "dvTable": "SD Lance-roquettes"
+    "Sternmeyer P-35": {
+      "name": "Sternmeyer P-35",
+      "description": "<p>A very heavy pistol. It can't be concealed.</p>\n",
+      "dvTable": "DV Pistol"
     },
-    "Urban": {
-      "name": "Urban",
-      "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts.</p>",
-      "dvTable": "SD Lance-roquettes"
+    "Sternmeyer SMG-21": {
+      "name": "Sternmeyer SMG-21",
+      "description": "<p>A heavy SMG. Due to its size it can't be concealed.</p>\n",
+      "dvTable": "DV SMG"
     },
-    "Viper": {
-      "name": "Viper",
-      "description": "<p>Un pistolet-mitrailleur lourd. Non dissimulable. +1 au jet d'attaque.</p>",
-      "dvTable": "SD Pistolet-mitrailleur"
+    "Towa Manufacturing Type-G": {
+      "name": "Towa Manufacturing Type-G",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n  If you roll 1 on Attack (Crit fail) the gun jams and requires using an action\n  to clear.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     },
-    "WSSA Sniper System": {
-      "name": "WSSA Sniper System",
-      "description": "<p>Un fusil de précision longue distance. Chargeur de 4 balles. +1 à l'attaque.</p>",
-      "dvTable": "SD Fusil de précision"
+    "Towa Manufacturing Type-R": {
+      "name": "Towa Manufacturing Type-R",
+      "description": "<p>\n  Bring out the big guns. This rocket launcher will do some damage. If you roll\n  1 on Attack (Crit fail) the gun jams and requires using an action to clear.\n</p>\n",
+      "dvTable": "DV Rocket Launcher"
     },
-    "X-9mm": {
-      "name": "X-9mm",
-      "description": "<p>Un pistolet de taille moyenne. Dissimulable </p>",
-      "dvTable": "SD Pistolet"
+    "Tsunami Arms Type-18": {
+      "name": "Tsunami Arms Type-18",
+      "description": "<p>\n  A high-impact grenade launcher. You can use a variety of grenades with this.\n  +1 to Attack.\n</p>\n",
+      "dvTable": "DV Grenade Launcher"
     }
   }
 }
