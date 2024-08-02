@@ -72,6 +72,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Change Pause Font to Tektur for better internationalization support
   - Remove Orbitron font
+- Change the styling of <code> elements
 - Header elements in text input areas are now styled in a similar way to the core book
 - Update netrunning tiles with new tiles from Solution
 - Update Demon sheet layout to be less wonky
