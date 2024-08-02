@@ -13,6 +13,14 @@
   <hr>
   </header>
 
+  <section class="status flexcol">
+    <div class="dialog-item">
+      <span class="progress-status">{{status}}</span>
+      <span class="spinner"><i class="fas fa-rotate fa-spin"></i></span>
+    </div>
+    <hr>
+  </section>
+
   <section class="progress flexcol">
     <ol class="dialog-list flexcol">
       <li class="dialog-item dialog-item-header text-semi text-center flexrow">
@@ -27,12 +35,6 @@
           {{> "systems/cyberpunk-red-core/templates/progress-bar.hbs" progressBar}}
         </li>
       {{/each}}
-
-      <li class="dialog-item dialog-item-footer">
-        <span class="text-semi">{{localize "CPR.migration.status.label"}}: </span>
-        <span class="progress-status">{{status}}</span>
-        <span class="spinner"><i class="fas fa-rotate fa-spin"></i></span>
-      </li>
     </ol>
     <hr>
   </section>

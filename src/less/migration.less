@@ -14,10 +14,11 @@
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto minmax(0, 1fr);
+    grid-template-rows: auto auto auto minmax(0, 1fr);
     grid-auto-flow: row;
     grid-template-areas:
       "header"
+      "status"
       "progress"
       "messages";
   }
@@ -32,6 +33,12 @@
     .title {
       font-size: var(--cpr-font-large);
     }
+  }
+
+  .status {
+    grid-area: status;
+    text-align: center;
+    font-size: var(--cpr-font-large);
   }
 
   .progress {
@@ -56,13 +63,14 @@
 
       .progress-percent-container {
         text-align: right;
-        > span {
+
+        >span {
           padding-right: 0.5rem;
         }
       }
     }
 
-    .progress-container.sub-category .progress-label-container > span {
+    .progress-container.sub-category .progress-label-container>span {
       padding-left: 0.5rem;
     }
   }
