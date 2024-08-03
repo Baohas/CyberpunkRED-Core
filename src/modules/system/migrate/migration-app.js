@@ -28,7 +28,22 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   static PHASES = {
     // This following phases are the standard flow of migrations,
     // from initialization to success.
-    init: {
+    init: {}, // TODO: Delete this?
+    userConfirm: {
+      statusChange: true,
+      addMessage: true,
+      buttons: {
+        confirmMigration: {
+          label: "CPR.migration.buttons.confirmMigration",
+          iconPre: "fas fa-file-signature",
+        },
+        returnToSetup: {
+          label: "CPR.migration.buttons.returnToSetup",
+          iconPre: "fas fa-home",
+        },
+      },
+    },
+    prepareDocuments: {
       statusChange: true,
       addMessage: true,
     },
@@ -123,6 +138,12 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    */
   #migrationRunner;
 
+  /** @type {Function} */
+  confirmMigration;
+
+  /** @type {Function} */
+  rejectMigration;
+
   /**
    * Getter to access the migration runner that created this app.
    * @returns {MigrationRunner}
@@ -133,7 +154,17 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Returns the error phase of the MigrationApp.
+   * Returns the current phase of the MigrationApp.
+   *
+   * @return {string}
+   */
+  get currentPhase() {
+    LOGGER.trace("get currentPhase | MigrationApp");
+    return this.#currentPhase;
+  }
+
+  /**
+   * Returns the error phase of the MigrationApp, if one occurred.
    *
    * @return {string}
    */
@@ -210,6 +241,8 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     actions: {
       returnToSetup: MigrationApp.returnToSetup,
       navigate: MigrationApp.navigateMessages,
+      confirmMigration: MigrationApp.confirmMigration,
+      rejectMigration: MigrationApp.rejectMigration,
     },
     modal: true,
   };
@@ -348,6 +381,19 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     changelog.sheet.render(true);
   }
 
+  userConfirm() {
+    LOGGER.trace("userConfirm | MigrationApp");
+    return new Promise((resolve) => {
+      this.confirmMigration = () => resolve(true);
+      this.rejectMigration = () => resolve(false);
+    });
+  }
+
+  static confirmMigration() {
+    LOGGER.trace("confirmMigration | MigrationApp");
+    this.confirmMigration();
+  }
+
   /**
    * Download report, if applicable, and then return to setup.
    * Remember, `this` is the MigrationApp instance, not the class,
@@ -355,6 +401,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    */
   static returnToSetup() {
     LOGGER.trace("returnToSetup | MigrationApp");
+    if (this.currentPhase === "userConfirm") this.rejectMigration();
     if (this.errorPhase) MigrationApp.downloadReport();
     if (!this.debug.returnToSetup) return;
     game.shutDown();
@@ -444,7 +491,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * NOTE: Phase-change functions should only change the state of the MigrationApp,
    * not the state of the migration/runner itself.
    *
-   * @return {Promise<void>} A promise that resolves when the function for the current phase is called.
+   * @return {Promise<void>}
    */
   async onPhaseChange() {
     LOGGER.trace("onPhaseChange | MigrationApp");
@@ -455,6 +502,19 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     await this.addButtons();
     if (typeof this[functionName] !== "function") return;
     await this[functionName](); // Call the function for this phase.
+  }
+
+  /**
+   * Handles the phase of the MigrationApp when documents begin
+   * being prepared.
+   * Removes the user confirmation buttons.
+   *
+   * @return {Promise<void>}
+   */
+  async onPrepareDocuments() {
+    LOGGER.trace("onPrepareDocuments | MigrationApp");
+    const userConfirmButtons = this.element.querySelector(".buttons");
+    userConfirmButtons.remove();
   }
 
   /**

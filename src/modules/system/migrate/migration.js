@@ -219,6 +219,15 @@ export default class MigrationRunner {
       );
     }
 
+    // Get confirmation from user.
+    await migrationApp.setCurrentPhase("userConfirm");
+    const userConfirm = await migrationApp.userConfirm();
+    if (!userConfirm) {
+      await migrationApp.setCurrentPhase("end");
+      return false;
+    }
+
+    await migrationApp.setCurrentPhase("prepareDocuments");
     // Initialize necessary properties, now that we know migration is needed.
     this.migrationInstances = this.migrationClasses.map(
       (Migration) => new Migration()
