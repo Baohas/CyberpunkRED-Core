@@ -23,8 +23,8 @@
       "description": "<p>\n  Une grenade très collante. Créé une toile collante qui enchevêtre la cible. Doit être détruite ou arrachée par n'importe qui au corps à corps faisant un <strong>Jet de Bagarre SD 15</strong>.\n</p>\n"
     },
     "Grenade (KTech Security)": {
-      "name": "Grenade (KTech Security)",
-      "description": "<p>Armor piercing Grenade. Deals damage to targets but not to cover.</p>\n"
+      "name": "Grenade (KTech Sécurité)",
+      "description": "<p>Grenade perforante. Fait des dégâts aux cibles mais n'endommage pas les couverts.</p>\n"
     },
     "Grenade (Shuriken Tornado)": {
       "name": "Grenade (Shuriken tornade)",
