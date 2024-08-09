@@ -139,6 +139,84 @@ export default class CPRSystemUtils {
   }
 
   /**
+   * Retrieves the martial art skills from actorData.
+   *
+   * @param {Object} actorData - The data of the actor.
+   * @returns {Set} - A Set containing martial art skills from the actorData.
+   */
+  static GetMartialArtSkills(actorData) {
+    LOGGER.trace("GetMartialArtSkills | CPRSystemUtils | Called.");
+
+    // Get any skills with `skillType` === `martialArts`
+    const martialArtSkills = new Set(
+      actorData.itemTypes.skill.reduce((acc, item) => {
+        if (item.system.skillType === "martialArt") {
+          acc.push(this.slugify(item.name));
+        }
+        return acc;
+      }, [])
+    );
+
+    return martialArtSkills;
+  }
+
+  /**
+   * Retrieves the attackable skills of an actor based on the provided actorData.
+   *
+   * @param {Object} actorData - The data of the actor containing item types and systems.
+   * @returns {Set} - A Set containing attackable skills of the actor.
+   */
+  static GetAttackableSkills(actorData) {
+    LOGGER.trace("GetAttackableSkills | CPRSystemUtils | Called.");
+
+    // Find the default attack skills (meleeWeapon, autofire, etc.)
+    // the `Evasion` skill gets grouped with these so we need to exclude it
+    // manually.
+    const defaultAttackSkills = new Set(
+      actorData.itemTypes.skill.reduce((acc, item) => {
+        const itemCategory = item.system.category;
+        const itemName = this.slugify(item.name);
+        const weaponSkills = ["rangedweaponSkills", "fightingSkills"];
+        const excludeSkills = ["evasion"];
+        if (
+          weaponSkills.includes(itemCategory) &&
+          !excludeSkills.includes(itemName)
+        ) {
+          acc.push(itemName);
+        }
+        return acc;
+      }, [])
+    );
+
+    // Get the martialArt Skills
+    const martialArtSkills = this.GetMartialArtSkills(actorData);
+
+    // Get the `weaponSkill` from all weapons in the actorData.
+    // Filter out any blank entries, this can happen in degenerate cases where
+    // a weapon loses it's skill so remove from the Set.
+    const weaponAttackSkills = new Set(
+      actorData.system.weapons.available
+        .map((weapon) => {
+          if (weapon.system.weaponSkill !== "") {
+            this.slugify(weapon.system.weaponSkill);
+          }
+          // Return null to be filtered out
+          return null;
+        })
+        .filter((skill) => skill !== null)
+    );
+
+    // Combine the above into a Set and return it
+    const attackSkills = new Set([
+      ...defaultAttackSkills,
+      ...weaponAttackSkills,
+      ...martialArtSkills,
+    ]);
+
+    return attackSkills;
+  }
+
+  /**
    * Return an array of "core" cyberware that is installed in all characters. These objects
    * are how cyberware with no corresponding foundation to install it in. (chipware for example)
    *

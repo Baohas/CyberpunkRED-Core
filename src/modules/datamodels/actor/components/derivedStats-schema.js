@@ -105,42 +105,18 @@ export default class DerivedStatsSchema extends foundry.abstract.DataModel {
     const actorData = this.parent.parent;
 
     /**
-     *  We need to lookup skill used for attacks there can either be the
-     *  default ones, martial arts skills, or skills defined in weapons
-     *  as `weaponSkill`
+     * Helper function to retrieve the skill name from a slugified version.
+     *
+     * @param {string} skillSlug - The slugified version of the skill name to
+     *                             retrieve.
+     * @returns {string} - The skill name corresponding to the slugified version.
      */
-    const defaultAttackSkills = Object.keys(CPR.defaultAttackSkillList);
-
-    // Get any skills with `skillType` === `martialArts`
-    const martialArtSkills = new Set(
-      actorData.itemTypes.skill.reduce((acc, item) => {
-        if (item.system.skillType === "martialArt") {
-          acc.push(SystemUtils.slugify(item.name));
-        }
-        return acc;
-      }, [])
-    );
-
-    // Get the `weaponSkill` from all available weapons
-    const weaponAttackSkills = new Set(
-      actorData.system.weapons.available.map((weapon) =>
-        SystemUtils.slugify(weapon.system.weaponSkill)
-      )
-    );
-
-    // Combine all the other attack skills into a single array
-    const attackSkills = new Set([
-      ...defaultAttackSkills,
-      ...weaponAttackSkills,
-      ...martialArtSkills,
-    ]);
-
-    // Helper function to get skill.name from slugify(skill.name)
     const getSkillName = (skillSlug) => {
       // Get the translated skill name
       const translatedSkill = SystemUtils.Localize(
         `CPR.global.itemType.skill.${skillSlug}`
       );
+
       // Convert the translated skill name back to the slugified version
       // if they don't match it means it's either a custom skill wihtout
       // a translation, or it doesn't have a translation in lang/*.json
@@ -158,6 +134,13 @@ export default class DerivedStatsSchema extends foundry.abstract.DataModel {
       value: false,
       reasons: [],
     };
+
+    /**
+     *  We need to lookup skill used for attacks these can either be the
+     *  default ones, martial arts skills, or skills defined in weapons
+     *  as `weaponSkill`
+     */
+    const attackSkills = SystemUtils.GetAttackableSkills(actorData);
 
     // REF >= 8 and Evasion >= 6
     if (
@@ -241,7 +224,18 @@ export default class DerivedStatsSchema extends foundry.abstract.DataModel {
     }
 
     // Autofire or any Martial Arts >= 6
-    for (const skill of [...martialArtSkills, ...["autofire"]]) {
+    // We check for the `autofire` skill existing here as Elflines characters
+    // do not have this skill.
+
+    // We find any relevant martialArts skills
+    const martialArtSkills = SystemUtils.GetMartialArtSkills(actorData);
+
+    // Check if the actor has the `autofire` skill, if so add it to the check.
+    const skillsToCheck = attackSkills.has("autofire")
+      ? [...martialArtSkills, ...["autofire"]]
+      : martialArtSkills;
+
+    for (const skill of skillsToCheck) {
       if (
         actorData.system.skills[skill].level +
           actorData.system.skills[skill].mods >=
