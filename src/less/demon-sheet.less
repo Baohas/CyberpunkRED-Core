@@ -1,91 +1,109 @@
-.demon-sheet {
-  font-family: "Jost";
-  display: grid;
-  min-width: 38.438rem;
-  grid-template-areas:
-    "demon-stats"
-    "demon-details";
-  background-color: var(--cpr-background-border);
+[id^="CPRDemonActorSheet"] {
+  max-width: 36.625;
+  min-width: 36.625;
+  height: auto;
 
-  input {
-    border: none;
+  .demon-sheet {
+    display: grid;
+    grid-template-columns: 6rem auto;
+    grid-template-rows: auto;
+    gap: 0.313rem 0.313rem;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "demon-image demon-name"
+      "demon-image demon-stats-title"
+      "demon-image demon-stats"
+      "demon-notes demon-notes";
+    width: 100%;
     height: 100%;
-    color: var(--cpr-text-normal);
-    background-color: var(--cpr-background-box) !important;
+    min-width: 35.625rem;
+    background-color: var(--cpr-background-border);
+    padding: 0.313rem;
+
+    input {
+      border: none;
+      height: 80%;
+      color: var(--cpr-text-normal);
+      background-color: var(--cpr-background-box) !important;
+    }
+  }
+
+  .demon-image {
+    grid-area: demon-image;
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .demon-name {
+    grid-area: demon-name;
+    min-width: 21.875rem;
   }
 
   .demon-stats {
     display: grid;
-    grid-area: demon-stats;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0.313rem 0.313rem;
+    grid-auto-flow: row;
     grid-template-areas:
-      "demon-title"
-      "demon-value";
-    justify-content: center;
-    align-content: center;
-    height: 4rem;
+      "demon-stats-rez demon-stats-interface demon-stats-actions demon-stats-combatNumber";
+    grid-area: demon-stats;
+    align-items: center;
+    justify-items: center;
 
     input {
-      border: none;
       text-align: center;
-      text-justify: center;
-    }
-
-    .demon-title {
-      grid-area: demon-title;
-      color: var(--cpr-text-header);
-      display: flex;
-      justify-content: center;
-      align-content: center;
-      height: 1fr;
-    }
-    .demon-value {
-      grid-area: demon-value;
-
-      .demon-value-stat {
-        background-color: var(--cpr-background-box);
-        margin: 0.313rem;
-      }
-
-      .min-of-max-container {
-        background-color: var(--cpr-background-border);
-        color: var(--cpr-text-header);
-        margin: 0.313rem;
-      }
-
-      .of {
-        padding: 0 0.3rem 0 0.3rem;
-      }
     }
   }
 
-  .demon-details {
-    display: grid;
-    grid-area: demon-details;
-    grid-template-columns: 4.5rem 1fr;
-    grid-template-areas: "demon-icon demon-notes";
-    gap: 0.313rem;
-    padding: 0rem 0.313rem 0.313rem 0.313rem;
-
-    .demon-icon {
-      height: 4.5rem;
-      width: 4.5rem;
-      display: block;
-      grid-area: demon-icon;
-      overflow: hidden;
-    }
-    .demon-notes {
-      grid-area: demon-notes;
-    }
+  .demon-stats-interface {
+    grid-area: demon-stats-interface;
   }
 
-  .demon-edit-section {
-    min-height: 4.5rem;
-    min-width: 8.438rem;
-    height: unset;
-    display: flex;
-    flex: 1 0 auto;
-    flex-wrap: wrap;
+  .demon-stats-actions {
+    grid-area: demon-stats-actions;
+  }
+
+  .demon-stats-combatNumber {
+    grid-area: demon-stats-combatNumber;
+  }
+
+  .demon-notes {
+    grid-area: demon-notes;
     background-color: var(--cpr-background-box);
+    min-height: 4rem;
+
+    .demon-edit-section {
+      height: 100%;
+    }
+  }
+
+  .demon-stats-title {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0.313rem 0.313rem;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "demon-stats-title-rez demon-stats-title-interface demon-stats-title-actions demon-stats-title-combatnumber";
+    grid-area: demon-stats-title;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .demon-stats-title-rez {
+    grid-area: demon-stats-title-rez;
+  }
+
+  .demon-stats-title-interface {
+    grid-area: demon-stats-title-interface;
+  }
+
+  .demon-stats-title-actions {
+    grid-area: demon-stats-title-actions;
+  }
+
+  .demon-stats-title-combatnumber {
+    grid-area: demon-stats-title-combatnumber;
   }
 }
