@@ -244,7 +244,9 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       });
       await this.actor.token.update({
         name: program.name,
-        img: program.img,
+        texture: {
+          src: program.img,
+        },
       });
       await this.actor.token.setFlag(
         game.system.id,
