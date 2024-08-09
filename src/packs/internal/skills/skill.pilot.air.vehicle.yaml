@@ -9,7 +9,7 @@ system:
   core: true
   description:
     value: ""
-  difficulty: typical
+  difficulty: difficult
   favorite: false
   level: 0
   skillType: generic
