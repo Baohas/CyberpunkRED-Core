@@ -38,8 +38,7 @@ system:
   installedItems:
     allowed: true
     allowedTypes:
-      - itemUpgrade
-      - program
+      - cyberware
     list: []
     slots: 3
     usedSlots: 0
