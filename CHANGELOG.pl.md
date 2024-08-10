@@ -46,9 +46,9 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 - Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Change Pause Font to Tektur for better internationalization support
   - Remove Orbitron font
-- Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Header elements in text input areas are now styled in a similar way to the core book
 - Update netrunning tiles with new tiles from Solution
+- Update Demon sheet layout to be less wonky
 - Change how we handle Branded Items
   - Rename branded items to use the full item name from the source book
   - Remove the programatic band name handler

@@ -46,9 +46,9 @@ Nous avons mis à jour les tuiles de Netrun, nous avons remplacé les fichiers P
 - Utiliser la molette n'ajuste désormais plus les stats/compétences dans la feuille de personnage
 - Changement de la police Pause pour Tektur pour un meilleur support international
   - Remove Orbitron font
-- Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Les titres dans les zones de texte sont désormais stylisés de la même façon que le livre de base de CP:R
 - Mis à jour des tuiles de Netrunning avec des nouvelles tuiles de Solution3
+- Update Demon sheet layout to be less wonky
 - Changement de la manière dont nous traitons les objets de Marque
   - Les objets de marque ont été renommés pour utiliser le nom complet de l'objet selon sa source
   - Retire le gestionnaire de nom de la bande programmatique
