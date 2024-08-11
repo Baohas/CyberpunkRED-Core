@@ -25,7 +25,7 @@ export default class CPRBlackIceActor extends Actor {
     const createData = data;
     if (typeof data.system === "undefined") {
       LOGGER.trace("create | New Actor | CPRBlackIceActor | called.");
-      createData.token = {
+      createData.prototypeToken = {
         bar1: { attribute: "stats.rez" },
       };
     }

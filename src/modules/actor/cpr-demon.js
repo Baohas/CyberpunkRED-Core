@@ -24,8 +24,8 @@ export default class CPRDemonActor extends Actor {
     const createData = data;
     if (typeof data.system === "undefined") {
       LOGGER.trace("create | New Actor | CPRDemonActor | called.");
-      createData.token = {
-        bar1: { attribute: "rez" },
+      createData.prototypeToken = {
+        bar1: { attribute: "stats.rez" },
       };
     }
     super.create(createData, options);

@@ -19,7 +19,7 @@ export default class CPRContainerActor extends Actor {
     const createData = data;
     if (typeof data.system === "undefined") {
       LOGGER.trace("create | New Actor | CPRContainerActor | called.");
-      createData.token = {
+      createData.prototypeToken = {
         disposition: 0,
       };
       createData.ownership = { default: 3 };

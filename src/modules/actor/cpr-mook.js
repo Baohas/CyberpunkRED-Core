@@ -23,8 +23,8 @@ export default class CPRMookActor extends CPRActor {
     const createData = data;
     if (typeof data.system === "undefined") {
       LOGGER.trace("create | New Actor | CPRMookActor | called.");
-      createData.token = {
-        vision: true,
+      createData.prototypeToken = {
+        "sight.enabled": true,
         bar1: { attribute: "derivedStats.hp" },
       };
     }

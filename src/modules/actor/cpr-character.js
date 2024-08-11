@@ -23,11 +23,11 @@ export default class CPRCharacterActor extends CPRActor {
     const createData = data;
     if (typeof data.system === "undefined") {
       LOGGER.trace("create | New Actor | CPRCharacterActor | called.");
-      createData.token = {
+      createData.prototypeToken = {
         actorLink: true,
         disposition: 1,
-        vision: true,
-        bar1: { attribute: "derivedStats.hp" },
+        "sight.enabled": true,
+        "bar1.Attribute": "derivedStats.hp",
       };
     }
     return super.create(createData, options);
