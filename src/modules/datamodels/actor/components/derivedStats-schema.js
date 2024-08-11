@@ -145,6 +145,7 @@ export default class DerivedStatsSchema extends foundry.abstract.DataModel {
     // REF >= 8 and Evasion >= 6
     if (
       actorData.system.stats.ref.value >= 8 &&
+      actorData.system.skills.evasion && // Make sure the character actually has evasion.
       actorData.system.skills.evasion.level +
         actorData.system.skills.evasion.mods >=
         6
