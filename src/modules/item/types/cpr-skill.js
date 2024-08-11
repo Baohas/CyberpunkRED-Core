@@ -18,7 +18,7 @@ export default class CPRSkillItem extends CPRItem {
    */
   setSkillLevel(value) {
     LOGGER.trace("setSkillLevel | CPRSkillItem | Called.");
-    this.getRollData().level = Math.clamped(-99, value, 99);
+    this.getRollData().level = Math.clamp(-99, value, 99);
   }
 
   /**

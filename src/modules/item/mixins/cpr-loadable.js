@@ -237,13 +237,13 @@ const Loadable = function Loadable() {
     const maxAmmo = this.system.magazine.max;
     if (this.type === "weapon") {
       if (value.charAt(0) === "+" || value.charAt(0) === "-") {
-        this.system.magazine.value = Math.clamped(
+        this.system.magazine.value = Math.clamp(
           0,
           this.system.magazine.value + parseInt(value, 10),
           maxAmmo
         );
       } else {
-        this.system.magazine.value = Math.clamped(0, value, maxAmmo);
+        this.system.magazine.value = Math.clamp(0, value, maxAmmo);
       }
     }
   };
