@@ -17,6 +17,15 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
 
     /** @type {string[]} */
     this.messages = [game.i18n.localize("CPR.migration.messages.init")];
+
+    /**
+     * See function docs for more info on this property.
+     * @type {Object<string,string[]>}
+     */
+    this.modPackOptions = MigrationApp.getModPackOptions();
+
+    /** @type {array} */
+    this.modPackChoiceIds = [];
   }
 
   /**
@@ -36,10 +45,12 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
         confirmMigration: {
           label: "CPR.migration.buttons.confirmMigration",
           iconPre: "fas fa-file-signature",
+          iconPost: "fa-solid fa-diagram-next",
         },
         returnToSetup: {
-          label: "CPR.migration.buttons.returnToSetup",
-          iconPre: "fas fa-home",
+          label: "CPR.migration.buttons.rejectMigration",
+          iconPre: "fas fa-ban",
+          iconPost: "fas fa-home",
         },
       },
     },
@@ -279,6 +290,24 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     context.messages = this.messages;
     context.currentMessage = this.currentMessageIndex + 1;
     context.buttons = this.buttons;
+
+    // Gather modules that have relevant compendia.
+    context.packModules = {};
+    Object.keys(this.modPackOptions).forEach((moduleId) => {
+      context.packModules[moduleId] = game.modules.get(moduleId).title;
+    });
+
+    // Gather relevant world compendia.
+    context.worldPacks = {};
+    game.packs
+      .filter(
+        (p) =>
+          ["Actor", "Item", "Scene"].includes(p.metadata.type) &&
+          p.metadata.packageType === "world"
+      )
+      .forEach((p) => {
+        context.worldPacks[p.metadata.id] = p.metadata.label;
+      });
     return context;
   }
 
@@ -289,11 +318,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     const debugShowModal = this.debug.modal;
     if (this.options.modal && debugShowModal) element.showModal();
     else element.show();
-
-    // Hide the progress count until we actually have calculated the max.
-    element.querySelectorAll(".progress-count").forEach((elem) => {
-      elem.style = "display: none";
-    });
 
     this.renderNav(); // Hide nav buttons.
 
@@ -337,6 +361,61 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
 
     super.close(options);
     MigrationApp.showChangelog();
+  }
+
+  /**
+   * Map of module id to array of relevant pack ids.
+   * Relevant packs are ones that can be migrated,
+   * i.e., they contain actors, items, or scenes.
+   * @type {Object<string,string[]>}
+   */
+  static getModPackOptions() {
+    LOGGER.trace("getModPackOptions | MigrationApp");
+    const compendiaTypes = ["Actor", "Item", "Scene"];
+
+    // Gather modules with relevant compendia.
+    const modPackOptions = {};
+    game.modules.forEach((module) => {
+      const filteredPacks = module.packs.filter((p) =>
+        compendiaTypes.includes(p.type)
+      );
+      if (filteredPacks.size === 0) return;
+      const packIds = filteredPacks.map((p) => p.id);
+      modPackOptions[module.id] = packIds;
+    });
+
+    return modPackOptions;
+  }
+
+  /**
+   * Confirms the pack selection by processing the form data,
+   * and updates `this.modPackChoiceIds`.
+   *
+   * @returns {void}
+   */
+  confirmPackSelection() {
+    LOGGER.trace("confirmPackSelection | MigrationApp");
+    const formElement = this.element.querySelector("form");
+    const fd = new FormDataExtended(formElement);
+    const formData = foundry.utils.expandObject(fd.object);
+
+    // If single option, `formData.moduleChoices` is not an array.
+    // Make it an array if this is the case.
+    if (!Array.isArray(formData.moduleChoices)) {
+      formData.moduleChoices = [formData.moduleChoices];
+    }
+
+    // Filter out empty values.
+    const moduleChoiceIds = formData.moduleChoices.filter((c) => c);
+    if (moduleChoiceIds.length === 0) return;
+
+    // Update `this.modPackChoiceIds` so value can be read by the MigrationRunner.
+    const chosenPackIds = [];
+    Object.entries(this.modPackOptions).forEach(([moduleId, packIdList]) => {
+      if (!moduleChoiceIds.includes(moduleId)) return;
+      chosenPackIds.push(...packIdList);
+    });
+    this.modPackChoiceIds = chosenPackIds;
   }
 
   /**
@@ -391,6 +470,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
 
   static confirmMigration() {
     LOGGER.trace("confirmMigration | MigrationApp");
+    this.confirmPackSelection();
     this.confirmMigration();
   }
 
@@ -505,16 +585,37 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Handles the phase of the MigrationApp when documents begin
-   * being prepared.
-   * Removes the user confirmation buttons.
+   * Handles the phase when document preparation begins.
+   * Removes the user confirmation buttons and replaces
+   * compendia selection form with progress section.
    *
    * @return {Promise<void>}
    */
   async onPrepareDocuments() {
     LOGGER.trace("onPrepareDocuments | MigrationApp");
+    // Remove user confirmation buttons
     const userConfirmButtons = this.element.querySelector(".buttons");
     userConfirmButtons.remove();
+
+    // Replace compendia selection form with progress section.
+    const progressTemplate = await renderTemplate(
+      `systems/${game.system.id}/templates/migration/migration-progress.hbs`,
+      { progress: this.progress }
+    );
+
+    // Create dummy element.
+    const htmlTemplate = document.createElement("template");
+    htmlTemplate.innerHTML = progressTemplate;
+    const [progressElement] = htmlTemplate.content.children;
+
+    // Hide the progress count until we actually have calculated the max.
+    progressElement.querySelectorAll(".progress-count").forEach((elem) => {
+      elem.style = "display: none";
+    });
+
+    // Replace form with progress element.
+    const compendiaChoiceSection = this.element.querySelector(".progress form");
+    compendiaChoiceSection.replaceWith(progressElement);
   }
 
   /**

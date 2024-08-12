@@ -1,0 +1,39 @@
+<form>
+  <ol class="dialog-list flexcol">
+      <li class="dialog-item dialog-item-header text-semi text-center flexrow">
+        {{localize "CPR.migration.app.worldCompendia"}}
+      </li>
+      {{#if worldPacks}}
+        {{#each worldPacks as |label id|}}
+          <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
+              {{label}}
+            </div>
+          </li>
+        {{/each}}
+      {{else}}
+        <li class="dialog-item">
+          {{localize "CPR.migration.app.noWorldCompendia"}}
+        </li>
+      {{/if}}
+      <li class="dialog-item dialog-item-header text-semi text-center flexrow">
+        {{localize "CPR.migration.app.moduleCompendia"}}
+      </li>
+      {{#if packModules}}
+        {{#each packModules as |title id|}}
+          <li class="dialog-item flexrow">
+            <div class="dialog-item-name text-nowrap">
+              {{title}}
+            </div>
+            <div class="dialog-item-input text-nowrap">
+              <input type="checkbox" name="moduleChoices" value="{{id}}"/>
+            </div>
+          </li>
+        {{/each}}
+      {{else}}
+        <li class="dialog-item">
+          {{localize "CPR.migration.app.noModuleCompendia"}}
+        </li>
+      {{/if}}
+  </ol>
+</form>

@@ -21,21 +21,8 @@
     <hr>
   </section>
 
-  <section class="progress flexcol">
-    <ol class="dialog-list flexcol">
-      <li class="dialog-item dialog-item-header text-semi text-center flexrow">
-        <div>
-          {{localize "CPR.migration.app.progressTitle"}}
-          <span class="total-docs"></span>
-        </div>
-      </li>
-
-      {{#each progress as |progressBar|}}
-        <li class="dialog-item">
-          {{> "systems/cyberpunk-red-core/templates/progress-bar.hbs" progressBar}}
-        </li>
-      {{/each}}
-    </ol>
+  <section class="progress compendia-selection">
+    {{> "systems/cyberpunk-red-core/templates/migration/compendia-selection.hbs" worldPacks=worldPacks packModules=packModules}}
     <hr>
   </section>
 

@@ -92,10 +92,15 @@ export default class MigrationRunner {
    * Get the migration app, if it exists.
    * @returns {MigrationApp|null}
    */
-  get app() {
+  static get app() {
     LOGGER.trace("get app | MigrationRunner");
     const app = foundry.applications.instances.get("cpr-migration");
     return app || null;
+  }
+
+  get app() {
+    LOGGER.trace("get app | MigrationRunner");
+    return MigrationRunner.app;
   }
 
   get totalMigrations() {
@@ -442,28 +447,20 @@ export default class MigrationRunner {
     // Read setting to check which pack.sourceTypes we are migrating
     const sourceTypes = ["world"];
 
-    // If we are migrating module compendia add it to the sourceTypes array
-    if (game.settings.get(game.system.id, "migrateModuleCompendia")) {
-      sourceTypes.push("module");
-    }
-
-    // During dev you might want to run migrations on our own packs rather than
-    // migrate by hand, if so uncomment this and set migration of locked packs
-    // to true in the game settings and run your migrations.
+    /**
+     NOTE: During dev you might want to run migrations on our own packs
+     rather than migrate by hand. If so, uncomment the following line.
+     */
     // sourceTypes.push("system");
 
-    // Check if we are migrating locked packs
-    const migrateLockedPacks = game.settings.get(
-      game.system.id,
-      "migrateLockedCompendia"
-    );
-
-    // Get a list of packs to migrate based on the settings above
+    // Get a list of packs to migrate based on the above
+    // and modules selected by the user in the app.
+    const { modPackChoiceIds } = this.app;
     const packsToMigrate = compendia.filter(
       (p) =>
-        packTypes.includes(p.metadata.type) &&
-        sourceTypes.includes(p.metadata.packageType) &&
-        (migrateLockedPacks || !p.locked)
+        (packTypes.includes(p.metadata.type) &&
+          sourceTypes.includes(p.metadata.packageType)) ||
+        modPackChoiceIds.includes(p.metadata.id)
     );
 
     return packsToMigrate;
