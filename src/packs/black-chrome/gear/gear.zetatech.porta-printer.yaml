@@ -13,7 +13,7 @@ system:
   description:
     value: |
       <p>
-        Miniature Workshop. Allows a Tech to use Upgrade and Fabrication Experstise
+        Miniature Workshop. Allows a Tech to use Upgrade and Fabrication Expertise
         anywhere as long as they have techtools.
       </p>
   equipped: owned
