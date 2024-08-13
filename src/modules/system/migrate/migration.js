@@ -349,6 +349,8 @@ export default class MigrationRunner {
       } else {
         // Else, filter the Actor/Item documents in the pack.
         const index = Array.from(await pack.getIndex({ fields: ["flags"] }));
+        if (index.length === 0) continue; // Edge case where the pack has no documents.
+
         // `filterDocuments()` looks at the first entry in the array for the property: `documentName`.
         // Typically it's passed an array/map of Documents, in which each entry has this prop by default.
         // However, in this case, we are passing it an index (array) of limited document data, in which

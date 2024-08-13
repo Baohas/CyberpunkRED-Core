@@ -1,35 +1,38 @@
 <form>
   <ol class="dialog-list flexcol">
       <li class="dialog-item dialog-item-header text-semi text-center flexrow">
-        {{localize "CPR.migration.app.worldCompendia"}}
+        {{localize "CPR.migration.app.compendiaWorld"}}
       </li>
       {{#if worldPacks}}
-        {{#each worldPacks as |label id|}}
-          <li class="dialog-item flexrow">
-            <div class="dialog-item-name text-nowrap">
-              {{label}}
-            </div>
-          </li>
-        {{/each}}
+        <li class="dialog-item">
+          {{#each worldPacks as |label id|}}
+            {{label}}
+            {{~#unless @last}}, {{/unless}}
+          {{/each}}
+        </li>
       {{else}}
         <li class="dialog-item">
           {{localize "CPR.migration.app.noWorldCompendia"}}
         </li>
       {{/if}}
-      <li class="dialog-item dialog-item-header text-semi text-center flexrow">
-        {{localize "CPR.migration.app.moduleCompendia"}}
+      <li class="dialog-item dialog-item-header text-semi flexrow">
+        <div class="dialog-item-name text-nowrap">
+          {{localize "CPR.migration.app.compendiaModule"}}
+        </div>
+        <div class="dialog-item-input text-nowrap text-padding-right">
+          <input type="checkbox" name="saveSelection"/>
+        </div>
       </li>
       {{#if packModules}}
-        {{#each packModules as |title id|}}
-          <li class="dialog-item flexrow">
-            <div class="dialog-item-name text-nowrap">
-              {{title}}
-            </div>
-            <div class="dialog-item-input text-nowrap">
-              <input type="checkbox" name="moduleChoices" value="{{id}}"/>
-            </div>
-          </li>
-        {{/each}}
+        <li class="dialog-item">
+          {{#each packModules as |modData id|}}
+            <label>
+              {{modData.title}}
+              <input type="checkbox" name="moduleChoices" value="{{id}}" {{checked modData.selected}}/>
+              {{~#unless @last}}, {{/unless}}
+            </label>
+          {{/each}}
+        </li>
       {{else}}
         <li class="dialog-item">
           {{localize "CPR.migration.app.noModuleCompendia"}}

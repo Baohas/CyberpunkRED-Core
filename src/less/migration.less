@@ -7,6 +7,14 @@
       margin-bottom: unset;
     }
   }
+
+  input[type="checkbox"] {
+    margin: unset;
+    background-color: unset;
+    --checkbox-size: var(--cpr-font-small);
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+  }
 }
 
 #cpr-migration {
@@ -97,7 +105,9 @@
     }
 
     .buttons {
-      flex: 1;
+      flex: 0;
+      align-items: flex-end;
+      padding-top: 0.4rem;
 
       .icon-post {
         margin-left: 0.25rem;

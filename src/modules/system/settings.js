@@ -2,6 +2,7 @@ import CPR from "./config.js";
 import CPRCompendiaSettings from "../apps/cpr-compendia-settings.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import ModuleMigrationSettings from "./migrate/module-migration-settings.js";
 
 /**
  * This file defines user settings for the system module.
@@ -65,6 +66,24 @@ const registerSystemSettings = () => {
     hint: "CPR.settings.compendiumMenu.hint",
     icon: "fa-solid fa-book",
     type: CPRCompendiaSettings,
+    restricted: true, // Don't show to non GMs.
+  });
+
+  // Select Modules to migrate their Compendia by default.
+  game.settings.registerMenu(game.system.id, "moduleMigrationMenu", {
+    name: "CPR.settings.moduleMigrationMenu.name",
+    label: "CPR.settings.moduleMigrationMenu.button",
+    hint: "CPR.settings.moduleMigrationMenu.hint",
+    icon: "fa-solid fa-diagram-next",
+    type: ModuleMigrationSettings,
+    restricted: true, // Don't show to non GMs.
+  });
+
+  game.settings.register(game.system.id, "moduleMigrationIds", {
+    scope: "world",
+    config: false,
+    type: Array,
+    default: [],
   });
 
   // Should Initiative Explode?
@@ -199,34 +218,6 @@ const registerSystemSettings = () => {
     config: false,
     type: Object,
     default: {},
-  });
-
-  /*
-   * Migration Settings
-   */
-
-  game.settings.register(game.system.id, "migrateLockedCompendia", {
-    name: "CPR.settings.migrateLockedCompendia.name",
-    hint: "CPR.settings.migrateLockedCompendia.hint",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: true,
-    onChange: (value) => {
-      LOGGER.log(`Changed migrateLockedCompendia to ${value}`);
-    },
-  });
-
-  game.settings.register(game.system.id, "migrateModuleCompendia", {
-    name: "CPR.settings.migrateModuleCompendia.name",
-    hint: "CPR.settings.migrateModuleCompendia.hint",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: false,
-    onChange: (value) => {
-      LOGGER.log(`Changed migrateModuleCompendia to ${value}`);
-    },
   });
 
   /*

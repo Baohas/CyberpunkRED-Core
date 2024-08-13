@@ -292,9 +292,15 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     context.buttons = this.buttons;
 
     // Gather modules that have relevant compendia.
+    const defaultMods = game.settings.get(game.system.id, "moduleMigrationIds");
     context.packModules = {};
     Object.keys(this.modPackOptions).forEach((moduleId) => {
-      context.packModules[moduleId] = game.modules.get(moduleId).title;
+      const mod = game.modules.get(moduleId);
+      const modData = {
+        title: mod.title,
+        selected: defaultMods.includes(moduleId),
+      };
+      context.packModules[moduleId] = modData;
     });
 
     // Gather relevant world compendia.
@@ -407,6 +413,11 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
 
     // Filter out empty values.
     const moduleChoiceIds = formData.moduleChoices.filter((c) => c);
+
+    // Save user choices, if indicated.
+    if (formData.saveSelection)
+      game.settings.set(game.system.id, "moduleMigrationIds", moduleChoiceIds);
+
     if (moduleChoiceIds.length === 0) return;
 
     // Update `this.modPackChoiceIds` so value can be read by the MigrationRunner.
