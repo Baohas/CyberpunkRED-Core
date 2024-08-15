@@ -24,7 +24,7 @@
     },
     "Everest VentureWare AirWell 50": {
       "name": "«Конденсационный колодец 50» от Эверест венчурвэйр",
-      "description": ""
+      "description": "<p>Производит воду в количестве, достаточном для одного человека.</p>"
     },
     "Everest VentureWare One Touch Habitat": {
       "name": "«Жилище в одно касание» от Эверест венчурвэйр",
@@ -83,15 +83,15 @@
       "description": "<p>Аэрозольный дезодорант. Избавляет от бактерий и запаха. Одно использование на банку.</p>"
     },
     "SovOil Industrial Lubricant": {
-      "name": "Промышленная смазка",
+      "name": "Промышленная смазка от Совнефти",
       "description": "<p>Смазка, которой хватит надолго.</p>"
     },
     "SovOil Medical Lubricant": {
-      "name": "Медицинская смазка",
+      "name": "Медицинская смазка от Совнефти",
       "description": "<p>Смазка, которой хватит надолго.</p>"
     },
     "SovOil Personal Lubricant": {
-      "name": "Личная смазка",
+      "name": "Личная смазка от Совнефти",
       "description": "<p>Смазка, которой хватит надолго.</p>"
     },
     "Streetcase by SecSystems": {
