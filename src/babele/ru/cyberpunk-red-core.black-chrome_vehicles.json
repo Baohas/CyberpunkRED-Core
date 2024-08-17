@@ -84,7 +84,7 @@
     },
     "TetraCorp America Badger Corporate Bus": {
       "name": "Корпоративный автобус «Барсук» от ТетраКорп Америка",
-      "description": "<p>\n  A luxurious bus for corporate road trips. Equally well equipped for work\n  meetings and after meeting drinks.\n</p>\n"
+      "description": "<p>Роскошный автобус для корпоративных поездок. Превосходно оборудован как для деловых встреч, так и для вечеринок после.</p>"
     },
     "TetraCorp America MegaHauler": {
       "name": "«Мегагрузовоз» от ТетраКорп Америка",
@@ -99,8 +99,8 @@
       "description": "<p>Компактный автомобиль, приспособленный для путешествий по бездорожью.</p>"
     },
     "Zetatech AeroCop": {
-      "name": "Zetatech AeroCop",
-      "description": "<p>AV4 type Aerodyne. Police version.</p>\n"
+      "name": "«АэроКоп» от Зетатех",
+      "description": "<p>Аэродин AV-4. Полицейская версия.</p>"
     },
     "Zetatech AeroVox": {
       "name": "«АэроВокс» от Зетатех",
