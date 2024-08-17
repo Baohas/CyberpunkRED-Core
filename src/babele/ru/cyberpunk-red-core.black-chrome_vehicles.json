@@ -2,10 +2,6 @@
   "label": "Транспорт",
   "mapping": {},
   "entries": {
-    "AeroCop": {
-      "name": "АэроКоп",
-      "description": "<p>Аэродин AV-4. Полицейская версия.</p>"
-    },
     "AmeriCar EconoCompact": {
       "name": "«ЭконоКомпакт» от АмериКар",
       "description": "<p>Маленький и дешёвый компактный автомобиль.</p>"
@@ -88,7 +84,7 @@
     },
     "TetraCorp America Badger Corporate Bus": {
       "name": "Корпоративный автобус «Барсук» от ТетраКорп Америка",
-      "description": "<p>Роскошный автобус для корпоративных поездок. Превосходно оборудован как для деловых встреч, так и для вечеринок после.</p>"
+      "description": "<p>\n  A luxurious bus for corporate road trips. Equally well equipped for work\n  meetings and after meeting drinks.\n</p>\n"
     },
     "TetraCorp America MegaHauler": {
       "name": "«Мегагрузовоз» от ТетраКорп Америка",
@@ -101,6 +97,10 @@
     "Zacatzontli Pickup Truck": {
       "name": "Пикап «Цакацонтли»",
       "description": "<p>Компактный автомобиль, приспособленный для путешествий по бездорожью.</p>"
+    },
+    "Zetatech AeroCop": {
+      "name": "Zetatech AeroCop",
+      "description": "<p>AV4 type Aerodyne. Police version.</p>\n"
     },
     "Zetatech AeroVox": {
       "name": "«АэроВокс» от Зетатех",
