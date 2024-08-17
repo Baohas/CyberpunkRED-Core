@@ -72,6 +72,8 @@ export default class CPRActorSheet extends ActorSheet {
     const foundryData = super.getData();
     const cprData = {};
 
+    cprData.isHardened = this.actor.system.derivedStats.isHardened;
+
     cprData.fightData = {};
     if (this.actor.type === "mook" || this.actor.type === "character") {
       cprData.fightData.fightOptions = this.actor.hasItemTypeEquipped(
