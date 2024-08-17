@@ -75,18 +75,16 @@
           </div>
         </li>
       {{/each}}
-      {{#unless item.isOwned}}
-        {{#if this.editable }}
-          <br/>
-          <div class="item-controls effect-controls">
-            <a class="effect-control"
-               data-action="create"
-               data-tooltip="{{localize 'CPR.itemSheet.effects.createEffectDesc'}}">
-              <i class="fas fa-plus"></i> {{localize "CPR.itemSheet.effects.createEffect"}}
-            </a>
-          </div>
-        {{/if}}
-      {{/unless}}
+      {{#if this.editable }}
+        <br/>
+        <div class="item-controls effect-controls">
+          <a class="effect-control"
+             data-action="create"
+             data-tooltip="{{localize 'CPR.itemSheet.effects.createEffectDesc'}}">
+            <i class="fas fa-plus"></i> {{localize "CPR.itemSheet.effects.createEffect"}}
+          </a>
+        </div>
+      {{/if}}
     </ol>
     {{#if (cprCompare item.effects.size ">" 0) }}
       <ol>

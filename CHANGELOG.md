@@ -65,6 +65,7 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 - Fix typos in some items
 - Fix filepicker favorites styling
 - #1017 - Fix duplicate effect bonuses being applied to attacks
+- Fix not being able to creat effects on owned items.
 
 ## Version 0.88.2
 
