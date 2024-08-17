@@ -71,11 +71,6 @@
       "description": "<p>Многоцелевой штурмовой дробовик «Аид» — экзотический дробовик с магазином на 16 патронов.</p>",
       "dvTable": "СЛ Дробовик (Жакан)"
     },
-    "Hello Cutie Ultra-K8 Assault Pistol": {
-      "name": "Хелло Кьюти Штурмовой пистолет «Ультра-КИС4»",
-      "description": "<p>Штурмовой пистолет Хелло Кьюти «Ультра-КИС4» от Санру — экзотический пистолет сверхкрупного калибра отличного качества с режимом переключения на ПП крупного калибра отличного качества.</p>",
-      "dvTable": "СЛ Пистолет"
-    },
     "Kendachi Mono-Guard": {
       "name": "«Моно-заслон» от Кэндати",
       "description": "<p>Моноструна, экзотическое одноручное тяжёлое оружие ближнего боя.</p>\n<p>Может нанести несколько критических ранений.</p>"
@@ -160,9 +155,9 @@
       "description": "<p>Перчатка на батарейках.</p>\n<p>Одноручная экзотическая смесь оглушающей дубинки и микроволновки.</p>"
     },
     "Pursuit Security Incorporated Crowd Buster": {
-      "name": "Pursuit Security Incorporated Crowd Buster",
-      "description": "<p>\n  The Pursuit Security Inc. Crowd Buster is an Exotic Assault Rifle with a\n  unique alternate firing mode. It comes with a pair of Auto Level Dampening Ear\n  Protectors*.\n</p>\n<p><em>*Must be manually applied after purchase</em></p>\n",
-      "dvTable": "DV Assault Rifle"
+      "name": "«Разгонщик толпы» от Пюрсьют секьюрити инкорпорейтед",
+      "description": "<p>«Разгонщик толпы» от Пюрсьют секьюрити инк. — это экзотическая штурмовая винтовка с необычным альтернативным режимом стрельбы. Идёт в комплекте с парой противошумных наушников*.</p>\n<p><em>*Необходимо добавить вручную после получения оружия.</em></p>",
+      "dvTable": "СЛ Штурмовая винтовка"
     },
     "Ranger Combat Boomerang": {
       "name": "Боевой бумеранг «Рейнджер»",
@@ -177,6 +172,11 @@
       "name": "«Уличный уничтожитель» от Ростович",
       "description": "<p>«Уличный уничтожитель» от Ростович — экзотический дробовик плохого качества. В магазине всего три патрона. Стреляет только дробью.</p>",
       "dvTable": "СЛ Дробовик (Жакан)"
+    },
+    "Sanroo Hello Cutie Ultra-K8 Assault Pistol": {
+      "name": "Sanroo Hello Cutie Ultra-K8 Assault Pistol",
+      "description": "<p>\n  The Sanroo Hello Cutie Ultra-K8 Assault Pistol is an Excellent Quality Exotic\n  Very Heavy Pistol with an Excellent Quality Heavy SMG mode.\n</p>\n",
+      "dvTable": "DV Pistol"
     },
     "SlamDance FangFist": {
       "name": "«Клыкастый кулак» от СлэмДэнс",
