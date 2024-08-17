@@ -2,10 +2,6 @@
   "label": "Veicoli",
   "mapping": {},
   "entries": {
-    "AeroCop": {
-      "name": "AeroCop",
-      "description": "<p>AV4 type Aerodyne. Police version.</p>\n<p>Full stats can be found on page 61.</p>"
-    },
     "AmeriCar EconoCompact": {
       "name": "AmeriCar EconoCompact",
       "description": "<p>Small and low-cost Compact Groundcar.</p>\n"
@@ -88,7 +84,7 @@
     },
     "TetraCorp America Badger Corporate Bus": {
       "name": "TetraCorp America Badger Corporate Bus",
-      "description": "<p>\n  A luxurious bus for corporate road trips. Equally ell equipped for work\n  meetings and after meeting drinks.\n</p>\n"
+      "description": "<p>\n  A luxurious bus for corporate road trips. Equally well equipped for work\n  meetings and after meeting drinks.\n</p>\n"
     },
     "TetraCorp America MegaHauler": {
       "name": "TetraCorp America MegaHauler",
@@ -101,6 +97,10 @@
     "Zacatzontli Pickup Truck": {
       "name": "Zacatzontli Pickup Truck",
       "description": "<p>A Compact Groundcar equipped for off-road travel.</p>\n"
+    },
+    "Zetatech AeroCop": {
+      "name": "Zetatech AeroCop",
+      "description": "<p>AV4 type Aerodyne. Police version.</p>\n"
     },
     "Zetatech AeroVox": {
       "name": "Zetatech AeroVox",
