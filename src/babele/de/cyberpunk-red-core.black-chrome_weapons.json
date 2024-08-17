@@ -71,11 +71,6 @@
       "description": "<p>The Hades Multipurpose Assault Shotgun is an Exotic Shotgun. The magazine holds 16 shots. Full rules can be found in Black Chrome on Page 109.</p>",
       "dvTable": "SG Flinte (Flintenpatrone)"
     },
-    "Hello Cutie Ultra-K8 Assault Pistol": {
-      "name": "Hello Cutie Ultra-K8 Assault Pistol",
-      "description": "<p>The Sanroo Hello Cutie Ultra-K8 Assault Pistol is an Excellent Quality Exotic Very Heavy Pistol with an Excellent Quality Heavy SMG mode. Full rules can be found in Black Chrome on Page 118.</p>",
-      "dvTable": "SG Pistole"
-    },
     "Kendachi Mono-Guard": {
       "name": "Kendachi Mono-Guard",
       "description": "<p>Monowire, One Handed Exotic Heavy Melee Weapon.</p>\n<p>Can apply multiple Critical Injuries.</p>\n"
@@ -177,6 +172,11 @@
       "name": "Rostović Ulični Uništitelj (aka the Street Destroyer)",
       "description": "<p>\n  The Rostović Ulični Uništitelj (Street Destroyer) is a Poor Quality Exotic\n  Shotgun. The magazine only holds 3 shots. It can only shoot Shotgun Shells.\n</p>\n",
       "dvTable": "DV Shotgun (Slug)"
+    },
+    "Sanroo Hello Cutie Ultra-K8 Assault Pistol": {
+      "name": "Sanroo Hello Cutie Ultra-K8 Assault Pistol",
+      "description": "<p>\n  The Sanroo Hello Cutie Ultra-K8 Assault Pistol is an Excellent Quality Exotic\n  Very Heavy Pistol with an Excellent Quality Heavy SMG mode.\n</p>\n",
+      "dvTable": "DV Pistol"
     },
     "SlamDance FangFist": {
       "name": "SlamDance FangFist",
