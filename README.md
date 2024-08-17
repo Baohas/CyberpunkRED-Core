@@ -28,17 +28,15 @@ If you are a GM or player and curious about how Cyberpunk runs in Foundry VTT, w
 
 The recommended installation method is with the usual FoundryVTT installer. You can find a tutorial for using that [here](https://foundryvtt.com/article/tutorial/).
 
-<!-- markdownlint-disable-next-line MD034 -->
-Our system can be found here: https://foundryvtt.com/packages/cyberpunk-red-core
+Our system can be found [here](https://foundryvtt.com/packages/cyberpunk-red-core)
 
-<!-- markdownlint-disable-next-line MD034 -->
-Alternatively you can grab the manifest directly here: https://gitlab.com/api/v4/projects/22820629/packages/generic/fvtt-cyberpunk-red-core/latest/system.json
+Alternatively you can grab the manifest directly [here](https://gitlab.com/api/v4/projects/22820629/packages/generic/fvtt-cyberpunk-red-core/latest/system.json)
 
 ## Release Notes
 
-The latest changes can be found on our [changelog](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/blob/master/CHANGELOG.md).
+Release notes for each release are available on our [Releases Page](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/releases).
 
-If you want a sneak peak of what is coming in the next update, you can check out the [development changelog](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/blob/dev/CHANGELOG.md).
+If you want a sneak peak of what is coming in the next update, you can check out the [development changelog](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/blob/master/CHANGELOG.md).
 
 ## Join the Community!
 
