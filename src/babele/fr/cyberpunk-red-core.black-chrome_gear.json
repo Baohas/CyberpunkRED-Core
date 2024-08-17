@@ -1,5 +1,5 @@
 {
-  "label": "Objets",
+  "label": "Attirail",
   "mapping": {},
   "entries": {
     "MechaMan Smart Glove": {
@@ -7,12 +7,12 @@
       "description": "<p>  Un gant de moto livré avec une poignée subdermique préinstallée*, nécessite un câblage neural pour être utilisé. Possède 1 emplacement d'option de cyberbras. Toute option de cybermain ou de main de chaire est inaccessible quand le gant est porté.<br /><em\n    >*La poignée subdermique doit être ajoutée et installée manuellement après l'acquisition du gant.</em\n  >\n</p>\n"
     },
     "ChipVault by SecSystems": {
-      "name": "ChipVault by SecSystems",
-      "description": "<p>\n  Can hold up to 8 pieces of Chipware. Chipware stored inside are immune to EMP\n  effects.\n</p>\n"
+      "name": "ChipVault par SecSystems",
+      "description": "<p>Peut contenir jusqu'à 8 puces. Les puces stockées sont immunisées contre les effets IEM.</p>\n"
     },
     "CO2 Tank": {
       "name": "Cartouche de CO2",
-      "description": "<p> \n  Un réservoir de CO<sub>2</sub> conçu pour être utilisé avec l'armure Masetto AirRider. Doit être remplacé après chaque utilisation.\n</p>\n"
+      "description": "<p>Un réservoir de CO<sub>2</sub> conçu pour être utilisé avec la combinaison AirRider Masetto. Doit être remplacé après chaque utilisation.</p>\n"
     },
     "Drink Master 3000": {
       "name": "Cocktailotron 3000",
@@ -23,40 +23,40 @@
       "description": "<p>Exosquelette.</p>\n<ul>\n  <li>Augmente le COR à 12 tant qu'il est équipé.</li>\n  <li>N'affecte pas les PS ou les Jets de Sauvegarde contre la mort.</li>\n  <li>A des outils technologiques préinstallés.</li>\n</ul>\n"
     },
     "Everest VentureWare AirWell 50": {
-      "name": "Everest VentureWare AirWell 50",
-      "description": "<p>Produces enough water to sustain a person.</p>\n"
+      "name": "Condensator 50 Everest VentureWare",
+      "description": "<p>Produit assez d'eau pour qu'une personne survive.</p>\n"
     },
     "Everest VentureWare One Touch Habitat": {
-      "name": "Everest VentureWare One Touch Habitat",
-      "description": "<p>\n  Provides protection from Exposure. Counts as Sleeping in the Wilderness or as\n  Sleeping on the Streets.\n</p>\n"
+      "name": "Tente One Touch Everest VentureWare",
+      "description": "<p>\n  Fournit une protection contre l'exposition à des conditions environnementales extrêmes. \n  Compte comme Dormir dans la nature ou Dormir dans la rue.\n</p>\n"
     },
     "Fūma Kotarō Linear Frame": {
       "name": "Charpente linéaire Fūma Kotarō",
       "description": "<p>Exosquelette.</p>\n<ul>\n  <li>Requiert deux Ports d'Interface</li>\n  <li>Augmente la valeur de COR à 12</li>\n  <li>N'affecte pas les PS ou les jets de sauvegarde contre la mort</li>\n  <li>Discrétion+2</li>\n  <li>Dégaine et rengainer les armes de la charpente ne nécessitent aucune Action </li>\n  <li>\n    Un jet de dissimulation n'est pas requis pour les armes cachés dans la charpente.\n  </li>\n  <li>\n    <p>La charpente dispose de deux choix* :</p>\n    <ul>\n<li>Deux armes de mêlée lourde exotique d'excellente qualité</li>\n<li>\nUne arme de mêlée légère d'excellente qualité et une arme de mêlée très lourde exotique d'excellente qualité\n</li>\n</ul>\n</li>\n</ul>\n<p><em>* Doit être ajouté manuellement.</em></p>\n"
     },
     "Hydrosubsidium Universal Aqualung": {
-      "name": "Hydrosubsidium Universal Aqualung",
-      "description": "<p>\n  When worn, User can breathe underwater as long as within 10 m/yards of the\n  surface.\n</p>\n"
+      "name": "Aquapoumon universel Hydrosubsidium",
+      "description": "<p>Lorsqu'il est porté, l'utilisateur peut respirer sous l'eau tant qu'il se trouve à moins de 10 m de la surface.</p>\n"
     },
     "Jeeves Executive Garment Bag": {
       "name": "Housse à vêtements corporatistes Alfred P.",
       "description": "<p>Sac qui peut réparer un vêtement ou une armure à la fois.</p>\n"
     },
     "KillStrom Banshee Microphone": {
-      "name": "KillStrom Banshee Microphone",
-      "description": "<p>\n  Wireless Microphone Headset. Gives the User a +2 bonus to Play Instrument\n  (Singing) Skill Checks while worn. Doesn't stack with other bonuses to Play\n  Instrument.\n</p>\n"
+      "name": "Micro Banshee KillStrom",
+      "description": "<p>\n  Casque micro sans fil. Donne à l'utilisateur un bonus de +2 aux jets de \n  compétence Instrument (Chant). Ne se cumule pas avec d'autres bonus \n  pour Instrument.\n</p>\n"
     },
     "KillStrom Sonic Boom Amp": {
-      "name": "KillStrom Sonic Boom Amp",
-      "description": "<p>\n  While linked to an instrument, the User can take an Action to make everyone\n  nearby make a Resist Torture/Drugs Check.\n</p>\n"
+      "name": "Ampli Sonic Boom KillStrom",
+      "description": "<p>\n  Lorsqu'il est relié à un instrument, son utilisateur peut utiliser une action pour \n  forcer toute personne à proximité à faire un test de Résistance à la torture/aux drogues.\n</p>\n"
     },
     "KillStrom Typhoid Speaker": {
-      "name": "KillStrom Typhoid Speaker",
-      "description": "<p>\n  When linked to a KillStrom Sonic Boom Amp, increases the DV of the Resist\n  Torture/Drugs Check.\n</p>\n"
+      "name": "Haut-parleur Typhoid KillStrom",
+      "description": "<p>\n  Lorsqu'il est relié à un Ampli Sonic Boom KillStrom, augmente le SD du test \n  de Résistance à la torture/aux drogues.\n</p>\n"
     },
     "KTech Doberman 500": {
-      "name": "KTech Doberman 500",
-      "description": "<p>Canine Personal Drone that can be linked to an Agent.</p>\n"
+      "name": "Doberman 500 KTech",
+      "description": "<p>Drone personnel canin qui peut être connecté à un Agent.</p>\n"
     },
     "Laser Light Electric Guitar": {
       "name": "Guitare électrique Laser Light",
@@ -68,11 +68,11 @@
     },
     "Mr. Biscuit Multi-Food Processor": {
       "name": "Robot de transformation alimentaire toutes denrées M. Biscuit",
-      "description": "<p>Peut nourrir un groupe de 10 personnes maximum à l'extérieur de la ville.</p>\n"
+      "description": "<p>Peut sustenter un groupe de 10 personnes maximum à l'extérieur de la ville.</p>\n"
     },
     "Petrochem Nitro Ultra9": {
-      "name": "Petrochem Nitro Ultra9",
-      "description": "<p>\n  Can be poured into a Vehicle's tank to refill it as an Action. Gives bonuses\n  to movement at the expense of safety.\n</p>\n"
+      "name": "Nitro Ultra9 Petrochem",
+      "description": "<p>\n  Peut être versé dans le réservoir d'un véhicule pour le remplir en une action. \n  Donne des bonus à la vitesse au détriment de la sécurité.\n</p>\n"
     },
     "RapiDeploy Sheath": {
       "name": "Étui Dégainexpress",
@@ -95,8 +95,8 @@
       "description": "<p>Lubrifiant dans un petit tube pratique.</p>\n"
     },
     "Streetcase by SecSystems": {
-      "name": "Streetcase by SecSystems",
-      "description": "<p>Can carry many easily accessible items that YOU need to stay safe.</p>\n"
+      "name": "Streetcase par SecSystems",
+      "description": "<p>Peut transporter de nombreux éléments facilement accessibles dont VOUS avez besoin pour rester en sécurité.</p>\n"
     },
     "Triti-Fizz": {
       "name": "Triti-Fizz",
@@ -111,8 +111,8 @@
       "description": "<p>Une fois configurée, fournit un accès à un Citinet lorsque vous êtes à moins de 80 km de la ville ou d'un autre dispositif Aérosphère WorldSat connecté au Citinet.</p>\n"
     },
     "Zetatech Porta-Printer": {
-      "name": "Zetatech Porta-Printer",
-      "description": "<p>\n  Miniature Workshop. Allows a Tech to use Upgrade and Fabrication Experstise\n  anywhere as long as they have techtools.\n</p>\n"
+      "name": "Imprimante 3D portative Zetatech",
+      "description": "<p>\n  Miniature Workshop. Allows a Tech to use Upgrade and Fabrication Expertise\n  anywhere as long as they have techtools.\n</p>\n"
     }
   }
 }
