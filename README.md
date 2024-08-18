@@ -28,9 +28,9 @@ If you are a GM or player and curious about how Cyberpunk runs in Foundry VTT, w
 
 The recommended installation method is with the usual FoundryVTT installer. You can find a tutorial for using that [here](https://foundryvtt.com/article/tutorial/).
 
-Our system can be found [here](https://foundryvtt.com/packages/cyberpunk-red-core)
+Our system can be found [here](https://foundryvtt.com/packages/cyberpunk-red-core).
 
-Alternatively you can grab the manifest directly [here](https://gitlab.com/api/v4/projects/22820629/packages/generic/fvtt-cyberpunk-red-core/latest/system.json)
+Alternatively you can grab the manifest directly [here](https://gitlab.com/api/v4/projects/22820629/packages/generic/fvtt-cyberpunk-red-core/latest/system.json).
 
 ## Release Notes
 
