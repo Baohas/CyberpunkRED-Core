@@ -23,6 +23,7 @@ import registerHooks from "./modules/system/hooks.js";
 import preloadHandlebarsTemplates from "./modules/system/preload-templates.js";
 import registerHandlebarsHelpers from "./modules/system/register-helpers.js";
 import overrideRulerFunctions from "./modules/system/overrides.js";
+import initalizeAPI from "./modules/api/initialize.js";
 
 // System settings
 import registerSystemSettings from "./modules/system/settings.js";
@@ -120,6 +121,7 @@ Hooks.once("init", async () => {
       CPRItemSheet,
     },
     macro: CPRMacro,
+    api: initalizeAPI(),
   };
 
   // Assign the actor class to the CONFIG
