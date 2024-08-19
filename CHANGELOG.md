@@ -10,6 +10,10 @@
 
 We have updated the Netrunning Tiles, we have replaced the PNG files with WebP for reduced filesize. This means any scenes using PNG tile will display as broken. These can be fixed by double clicking on the broken tile and either navigating to the new tiles in `tiles/WebP` or manually replacing the `PNG` filder with `WebP` and the extension `png` with `webp`.
 
+#### Get EMP'd Macro
+
+If you have imported the `Get EMP'd Macro` you will need to delete the copy in your world and re-import it from the `Other/Macros` Compendium as we have updated this Macro.
+
 ### New Features
 
 - Added compatibility for Foundry v12.
@@ -38,6 +42,8 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 - Add ability to set weapon to ignore armor below set SP amount
 - #235 - Added ability to change resource bars for armor from item sheet
 - Display Net Architectures in Character's gear tab
+- Add Basic system API
+  - Add `GetEMPableItems` function to API
 
 ### Changes
 
