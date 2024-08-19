@@ -10,7 +10,7 @@ import LOGGER from "../../utils/cpr-logger.js";
  * actorData = canvas.tokens.controlled[0].actor;
  * empableItems = game.cpr.api.actor.getEMPableItems(actorData);
  * console.log(empableItems)
- * // Returns: `["item1name", "item2name"]`
+ * // Returns: ["item1name", "item2name", "item3name"]
  *
  * @param {Object} actorData The actor's data containing items
  * @return: {Array<String>} A list of EMPable electronic items
