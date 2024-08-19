@@ -5,6 +5,13 @@ import LOGGER from "../../utils/cpr-logger.js";
  * EMPable if none of its installed items, sibling items, or itself provide
  * hardening against EMP attacks. Returns a list of EMPable items.
  *
+ * @example
+ * // Load actor data from currently controlled token
+ * actorData = canvas.tokens.controlled[0].actor;
+ * empableItems = game.cpr.api.actor.getEMPableItems(actorData);
+ * console.log(empableItems)
+ * // Returns: `["item1name", "item2name"]`
+ *
  * @param {Object} actorData The actor's data containing items
  * @return: {Array<String>} A list of EMPable electronic items
  */
