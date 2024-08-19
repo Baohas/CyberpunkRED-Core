@@ -1,7 +1,7 @@
 async function _loadActorFunctions() {
   const functions = {};
 
-  const actorModuleFiles = [];
+  const actorModuleFiles = ["./actor/empable-items.js"];
 
   const importPromises = actorModuleFiles.map(async (filePath) => {
     const module = await import(filePath);
