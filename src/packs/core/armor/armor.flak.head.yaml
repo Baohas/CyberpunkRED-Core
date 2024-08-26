@@ -33,7 +33,7 @@ system:
   isElectronic: false
   isHeadLocation: true
   isShield: false
-  penalty: -4
+  penalty: 4
   price:
     market: 500
   providesHardening: false

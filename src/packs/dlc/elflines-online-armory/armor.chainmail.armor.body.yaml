@@ -29,7 +29,7 @@ system:
   isElectronic: false
   isHeadLocation: false
   isShield: false
-  penalty: -2
+  penalty: 2
   price:
     market: 100
   providesHardening: false
