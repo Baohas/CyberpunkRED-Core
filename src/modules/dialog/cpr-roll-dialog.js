@@ -108,9 +108,7 @@ export class CPRRollDialog extends CPRDialog {
       {
         value: blackIceDamage,
         label: `${SystemUtils.Format("CPR.itemSheet.program.damageTo", {
-          programType: SystemUtils.Localize(
-            "CPR.itemSheet.program.nonBlackIce"
-          ),
+          programType: SystemUtils.Localize("CPR.itemSheet.program.blackIce"),
         })}: (${blackIceDamage})`,
       },
     ];
