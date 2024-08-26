@@ -66,6 +66,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Fix NET Arch image path seperators
 - #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
 - #979 - Fix styling of inline rolls in chat
+- Fix Medtech translation stering on Role Item
 - Added several small updates to descriptions to understand various items better
 - Fix image overflow on Item Sheets
 - Fix typos in some items
