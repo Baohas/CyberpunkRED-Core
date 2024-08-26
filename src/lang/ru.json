@@ -738,8 +738,6 @@
   "CPR.global.role.media.ability.credibility": "Доверие",
   "CPR.global.role.media.name": "Журналист",
   "CPR.global.role.medtech.ability.medicine": "Медицина",
-  "CPR.global.role.medtech.ability.medtechCryo": "Медтехника (управление криосистемами)",
-  "CPR.global.role.medtech.ability.medtechPharma": "Медтехника (фармацевтика)",
   "CPR.global.role.medtech.ability.surgery": "Хирургия",
   "CPR.global.role.medtech.name": "Медтехник",
   "CPR.global.role.netrunner.ability.interface": "Интерфейс",

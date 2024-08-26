@@ -738,8 +738,6 @@
   "CPR.global.role.media.ability.credibility": "Credibilidad",
   "CPR.global.role.media.name": "Reportero",
   "CPR.global.role.medtech.ability.medicine": "Medicina",
-  "CPR.global.role.medtech.ability.medtechCryo": "Tecnología Médica (Operación de Cryosistemas)",
-  "CPR.global.role.medtech.ability.medtechPharma": "Tecnología Médica (Farmacéutica)",
   "CPR.global.role.medtech.ability.surgery": "Cirugía",
   "CPR.global.role.medtech.name": "Tecnomédico",
   "CPR.global.role.netrunner.ability.interface": "Interface",

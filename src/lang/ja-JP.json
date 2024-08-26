@@ -738,8 +738,6 @@
   "CPR.global.role.media.ability.credibility": "クレディビリティ",
   "CPR.global.role.media.name": "メディア",
   "CPR.global.role.medtech.ability.medicine": "医療技術",
-  "CPR.global.role.medtech.ability.medtechCryo": "医療技術 (クリオシステム操作)",
-  "CPR.global.role.medtech.ability.medtechPharma": "医療技術 (薬品)",
   "CPR.global.role.medtech.ability.surgery": "外科手術",
   "CPR.global.role.medtech.name": "メドテク",
   "CPR.global.role.netrunner.ability.interface": "インターフェイス",

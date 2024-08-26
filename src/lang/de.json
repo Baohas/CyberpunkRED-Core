@@ -738,8 +738,6 @@
   "CPR.global.role.media.ability.credibility": "Glaubwürdigkeit",
   "CPR.global.role.media.name": "Media",
   "CPR.global.role.medtech.ability.medicine": "Medizin",
-  "CPR.global.role.medtech.ability.medtechCryo": "Meditechnik (Kryosysteme)",
-  "CPR.global.role.medtech.ability.medtechPharma": "Meditechnik (Pharmazeutik)",
   "CPR.global.role.medtech.ability.surgery": "Eingriff",
   "CPR.global.role.medtech.name": "MediTechs",
   "CPR.global.role.netrunner.ability.interface": "Interface",

@@ -47,8 +47,11 @@ CPR.roleAbilityList = {
   inventionExpertise: "CPR.global.role.tech.ability.inventionExpertise",
   maker: "CPR.global.role.tech.ability.maker",
   medicine: "CPR.global.role.medtech.ability.medicine",
-  medtechCryo: "CPR.global.role.medtech.ability.medtechCryo",
-  medtechPharma: "CPR.global.role.medtech.ability.medtechPharma",
+  medicalTech: "CPR.global.role.medtech.ability.medicalTech",
+  "medicalTech(CryosystemOperation)":
+    "CPR.global.role.medtech.ability.medicalTech(CryosystemOperation)",
+  "medicalTech(Pharmaceuticals)":
+    "CPR.global.role.medtech.ability.medicalTech(Pharmaceuticals)",
   moto: "CPR.global.role.nomad.ability.moto",
   operator: "CPR.global.role.fixer.ability.operator",
   precisionAttack: "CPR.global.role.solo.ability.precisionAttack",
