@@ -74,6 +74,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - #1017 - Fix duplicate effect bonuses being applied to attacks
 - Fix program damage type in Chat messages for Programs
 - Fix not being able to creat effects on owned items.
+- Fix Black ICE actions/skills not being properly translated
 
 ## Version 0.88.2
 
