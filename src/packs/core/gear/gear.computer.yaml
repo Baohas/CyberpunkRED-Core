@@ -21,7 +21,7 @@ system:
     list: []
     slots: 3
     usedSlots: 0
-  isElectronic: false
+  isElectronic: true
   price:
     market: 50
   providesHardening: false
