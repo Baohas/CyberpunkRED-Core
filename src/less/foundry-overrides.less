@@ -213,14 +213,24 @@ input::placeholder {
   }
 }
 
+/****************************
+ * Application V2 Overrides *
+ ****************************/
+
+[data-cpr-theme="darkmode"] .theme-dark .application {
+  input[type="checkbox"]::before {
+    color: var(--cpr-color-light-grey);
+  }
+  input[type="checkbox"]:checked::before {
+    color: var(--cpr-color-faded-black);
+  }
+}
+
 /*
- * Application V2 Overrides
- *
  * As of V12 Foundry has it's own dark/light mode based on the browser. In cases
  * where the user in in dark mode and the system is in light mode we want to correct
  * the styling for Foundry specific menus.
  */
-
 html[data-cpr-theme="default"] body.theme-dark {
   form.region-config {
     label {

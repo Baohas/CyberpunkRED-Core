@@ -253,7 +253,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       returnToSetup: MigrationApp.returnToSetup,
       navigate: MigrationApp.navigateMessages,
       confirmMigration: MigrationApp.confirmMigration,
-      rejectMigration: MigrationApp.rejectMigration,
+      togglePackSelection: MigrationApp.togglePackSelection,
     },
     modal: true,
   };
@@ -394,6 +394,19 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   }
 
   /**
+   * Toggles the selection of a pack by adding or removing the 'text-pill' class.
+   *
+   * @param {Event} event - The event that triggered the toggle.
+   * @param {HTMLElement} target - The element with [data-action] attribute which triggered the event.
+   * @return {void}
+   */
+  static togglePackSelection(event, target) {
+    LOGGER.trace("togglePackSelection | MigrationApp");
+    if (target === event.target) return; // Prevent double click of label/checkbox.
+    target.classList.toggle("text-pill");
+  }
+
+  /**
    * Confirms the pack selection by processing the form data,
    * and updates `this.modPackChoiceIds`.
    *
@@ -471,6 +484,12 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     changelog.sheet.render(true);
   }
 
+  /**
+   * Creates the promise that will be resolved by the user
+   * by confirming or returning to setup.
+   *
+   * @return {Promise<Boolean>} Resolves to true if the user confirms, false otherwise.
+   */
   userConfirm() {
     LOGGER.trace("userConfirm | MigrationApp");
     return new Promise((resolve) => {
@@ -479,6 +498,13 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     });
   }
 
+  /**
+   * Confirms the migration by processing the pack selection and
+   * calling the instance (non-static) function of the same name,
+   * which will resolve the `this.confirmMigration` promise.
+   *
+   * @return {void}
+   */
   static confirmMigration() {
     LOGGER.trace("confirmMigration | MigrationApp");
     this.confirmPackSelection();

@@ -1,4 +1,4 @@
-<form>
+<form class="compendia-selection">
   <ol class="dialog-list flexcol">
       <li class="dialog-item dialog-item-header text-semi text-center flexrow">
         {{localize "CPR.migration.app.compendiaWorld"}}
@@ -19,17 +19,13 @@
         <div class="dialog-item-name text-nowrap">
           {{localize "CPR.migration.app.compendiaModule"}}
         </div>
-        <div class="dialog-item-input text-nowrap text-padding-right">
-          <input type="checkbox" name="saveSelection"/>
-        </div>
       </li>
       {{#if packModules}}
-        <li class="dialog-item">
+        <li class="dialog-item module-choices">
           {{#each packModules as |modData id|}}
-            <label>
+            <label class="{{#if modData.selected}}text-pill{{/if}}" data-action="togglePackSelection">
               {{modData.title}}
               <input type="checkbox" name="moduleChoices" value="{{id}}" {{checked modData.selected}}/>
-              {{~#unless @last}}, {{/unless}}
             </label>
           {{/each}}
         </li>
@@ -38,5 +34,11 @@
           {{localize "CPR.migration.app.noModuleCompendia"}}
         </li>
       {{/if}}
+      <li class="dialog-item dialog-item-footer">
+        <label>
+          {{localize "CPR.migration.app.saveCompendiaSelection"}}
+          <input type="checkbox" name="saveSelection" checked/>
+        </label>
+      </li>
   </ol>
 </form>
