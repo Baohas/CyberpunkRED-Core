@@ -241,6 +241,7 @@ export default class MigrationRunner {
     this.documents = await this.prepareDocumentsForMigration();
     await migrationApp.setCurrentPhase("documentsReady");
 
+    // Actually run the migration scripts.
     this.migrationSuccessful = await this.runMigrations();
 
     if (this.migrationSuccessful) {
@@ -674,7 +675,7 @@ export default class MigrationRunner {
       } catch (error) {
         this.error = new MigrationError(
           {},
-          `Miscellaneous Migration Error: ${error.message}`,
+          `Miscellaneous Migration Error: '${error.message}'`,
           { cause: error }
         );
         throw this.error;

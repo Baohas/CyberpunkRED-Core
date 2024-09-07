@@ -50,6 +50,7 @@ import RoleDataModel from "./modules/datamodels/item/role-datamodel.js";
 import SkillDataModel from "./modules/datamodels/item/skill-datamodel.js";
 import VehicleDataModel from "./modules/datamodels/item/vehicle-datamodel.js";
 import WeaponDataModel from "./modules/datamodels/item/weapon-datamodel.js";
+import MigrationError from "./modules/system/migrate/migration-error.js";
 
 Hooks.once("init", async () => {
   LOGGER.log("THANK YOU TO EVERYONE WHO HELPED!!!!");
@@ -290,7 +291,19 @@ Hooks.once("ready", async () => {
   // If no migrations needed, return;
   if (!MR.needsMigration) return;
   // `migrateWorld` returns true on successful migration
-  const migrationSuccess = await MR.migrateWorld();
+  let migrationSuccess = false;
+  try {
+    migrationSuccess = await MR.migrateWorld();
+  } catch (error) {
+    MR.error = new MigrationError(
+      {},
+      `Error occurred outside of migration scripts: '${error.message}'`,
+      { cause: error, type: "NonMigrationScriptError" }
+    );
+    await MR.app.setCurrentPhase("error");
+    LOGGER.error(error);
+    await MR.app.setCurrentPhase("end");
+  }
 
   if (migrationSuccess) {
     await game.settings.set(

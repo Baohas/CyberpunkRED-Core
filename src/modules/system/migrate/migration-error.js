@@ -14,7 +14,7 @@ export default class MigrationError extends Error {
     LOGGER.trace("constructor | MigrationError");
     super(message, options);
     this.name = "MigrationError";
-    this.type = "MigrationScriptError";
+    this.type = options.type || "MigrationScriptError";
     const { DataModelValidationError } = foundry.data.validation;
     if (options.cause instanceof DataModelValidationError) {
       this.type = "DataModelValidationError";

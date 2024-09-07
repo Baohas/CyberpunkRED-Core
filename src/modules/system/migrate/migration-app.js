@@ -594,8 +594,8 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     // Set phase that caused error, and attach info to error.
     if (value === "error") {
       this.#errorPhase = this.#currentPhase;
-      this.migrationRunner.error.data.migrationData.errorPhase =
-        this.#errorPhase;
+      const { error } = this.migrationRunner;
+      error.data.migrationData.errorPhase = this.#errorPhase;
     }
     this.#currentPhase = value;
     await this.onPhaseChange();
