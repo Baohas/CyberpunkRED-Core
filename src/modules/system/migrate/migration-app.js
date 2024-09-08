@@ -16,7 +16,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     this.progress = MigrationApp.prepareProgressBars();
 
     /** @type {string[]} */
-    this.messages = [game.i18n.localize("CPR.migration.messages.init")];
+    this.messages = [];
 
     /**
      * See function docs for more info on this property.
@@ -61,12 +61,10 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     documentsReady: {},
     migrateMisc: {
       statusChange: true,
-      addMessage: true,
     },
     migrateItems: {
       statusChange: true,
       docType: "items",
-      addMessage: true,
     },
     applyChangesItems: {},
     migrateActors: {
@@ -736,7 +734,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
 
       // If user didn't have ample time to read a message, mark it as unread.
       const now = Date.now();
-      if (now - this.#lastMsgTime < 5000) {
+      if (this.messages.length > 1 && now - this.#lastMsgTime < 5000) {
         this.unreadMessages.add(this.messages.length - 2);
       }
       this.#lastMsgTime = Date.now();
