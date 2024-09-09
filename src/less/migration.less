@@ -135,6 +135,25 @@
         margin-left: 0.25rem;
         margin-right: unset;
       }
+
+      // The div that grows in size when the confirm button is held.
+      .hold-meter {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        z-index: 1000;
+        transition: width 0.2s linear;
+
+        background-color: var(--cpr-background-migration-progress);
+        opacity: 0.4;
+      }
+
+      .hold-meter.mouse-down {
+        width: 100%;
+        transition: width 0.8s cubic-bezier(0.25, 0.66, 0.45, 0.94);
+      }
     }
   }
 }

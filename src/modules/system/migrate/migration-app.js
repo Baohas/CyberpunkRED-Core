@@ -620,6 +620,59 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   }
 
   /**
+   * Forces user to click and hold to confirm.
+   *
+   * @return {Promise<void>}
+   */
+  async onUserConfirm() {
+    LOGGER.trace("onUserConfirm | MigrationApp");
+    const confirmButton = this.element.querySelector(
+      ".migration-button[data-action='confirmMigration']"
+    );
+    // Set button's position relative, so that the hold-meter
+    // we create can be positioned correctly.
+    confirmButton.style = "position: relative";
+    confirmButton.setAttribute("data-tooltip", "Click and Hold");
+    confirmButton.setAttribute("data-tooltip-direction", "DOWN");
+
+    // Prevent Foundry default click event from firing for now.
+    // Name function so we can delete it later.
+    const stopImmediatePropagation = (event) => {
+      event.stopImmediatePropagation();
+    };
+    confirmButton.addEventListener("click", stopImmediatePropagation);
+
+    // The div that grows in size within the button, while the user
+    // clicks and holds.
+    const holdMeter = document.createElement("div");
+    holdMeter.classList.add("hold-meter");
+    confirmButton.appendChild(holdMeter);
+
+    // Grow hold-meter while holding
+    confirmButton.addEventListener("mousedown", () => {
+      holdMeter.classList.add("mouse-down");
+    });
+
+    // Shrink hold-meter after releasing mouse (anywhere in window).
+    // Name the function so we can remove it later.
+    const mouseUpListener = () => {
+      holdMeter.classList.remove("mouse-down");
+    };
+    window.addEventListener("mouseup", mouseUpListener);
+
+    // Click the button when the hold-meter is full.
+    holdMeter.addEventListener("transitionend", () => {
+      if (holdMeter.classList.contains("mouse-down")) {
+        // Re-allow Foundry default click event.
+        confirmButton.removeEventListener("click", stopImmediatePropagation);
+        confirmButton.click(); // Click!
+        // Remove mouseup listener from window.
+        window.removeEventListener("mouseup", mouseUpListener);
+      }
+    });
+  }
+
+  /**
    * Handles the phase when document preparation begins.
    * Removes the user confirmation buttons and replaces
    * compendia selection form with progress section.
