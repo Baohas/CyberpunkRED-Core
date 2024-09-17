@@ -244,8 +244,8 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       title: "CPR Migration",
     },
     position: {
-      width: 600,
-      height: 550,
+      width: 650,
+      height: 650,
     },
     actions: {
       returnToSetup: MigrationApp.returnToSetup,
