@@ -28,6 +28,10 @@ This game system (including items provided in the compendium) contains unofficia
 - Icons, Art, Design, and Styling by [Flintwyrm](https://twitter.com/Flintwyrm)
 - Background and header images by Rayane Souizi "Wizi"
 
+### 3D Dice Preset
+
+- Permission to use CyberpunkRED branded dice themes are graciously provided by Q-Workshop and R Talsorian Games - Physical dice may be purchased from [their store](https://q-workshop.com)
+
 ### Icons
 
 - Default icons for compendia provided by Lorc, Delapouite, Skoll, sbed, and John Colburn [Game Icons](https://game-icons.net) under the [CC-BY license](https://creativecommons.org/licenses/by/3.0/)
