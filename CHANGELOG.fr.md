@@ -10,6 +10,10 @@
 
 Nous avons mis à jour les tuiles de Netrun, nous avons remplacé les fichiers PNG par des fichiers WebP pour en réduire la taille. Cela signifie que les scènes utilisant les tuiles avec les PNG apparaîtront comme cassées. Celles-ci peuvent être réparées en double-cliquant sur la tuile cassée et soit en naviguant jusqu'à la nouvelle tuiles dans `tuiles/WebP` ou en remplaçant manuellement le dossier `PNG` avec les `WebP` et les extensions `png` par `webp`.
 
+#### Macro Get EMP'd (macro pour effet IEM)
+
+Si vous avez importé la `Macro Get EMP'd` vous aurez besoin de supprimer la copie dans votre monde et de l'importer à nouveau depuis le compendium ` Autres/Macros` car la macro a été mise à jour.
+
 ### Nouvelles fonctionnalités
 
 - Ajout de la compatibilité pour Foundry V12.
@@ -25,7 +29,7 @@ Nous avons mis à jour les tuiles de Netrun, nous avons remplacé les fichiers P
   - Une icône sur la feuille de personnage liste désormais les raisons pour lesquelles il est considéré comme endurci lorsque survolé
   - Programmable sous le point de donnée `system.derivedStats.isHardened`
 - Ajout de Qualité aux Armes et Cyberconsoles
-- #653 - Supporte disponible pour dddice
+- #653 - Support disponible pour dddice
 - Ajuste la taille de la police du Pseudo/Nom dans la feuille de personnage si le nom déborde
 - Les objets de compétences ont désormais un `skillType` pour l'accès par programmation
 - Supprime les compétences `Science`, `Instrument`, `Arts martiaux`
@@ -37,7 +41,9 @@ Nous avons mis à jour les tuiles de Netrun, nous avons remplacé les fichiers P
 - Ajoute la possibilité de configurer une arme pour qu'elle ignore un pourcentage
 - Ajoute la possibilité de configurer une arme pour qu'elle ignore l'armure en dessous d'un montant de PA déterminé
 - #235 - Ajoute la possibilité de changer les barres de ressources pour l'armure depuis la feuille d'objet
-- Display Net Architectures in Character's gear tab
+- Montre les architectures Net dans l'onglet d'attirail des personnages
+- Ajout d'un système basique d'API
+  - Ajout de la fonction `GetEMPableItems` dans les API
 
 ### Att/round
 
@@ -45,10 +51,10 @@ Nous avons mis à jour les tuiles de Netrun, nous avons remplacé les fichiers P
 - Les armes dans l'onglet combat sont désormais catégorisées par Distance/Mêlée
 - Utiliser la molette n'ajuste désormais plus les stats/compétences dans la feuille de personnage
 - Changement de la police Pause pour Tektur pour un meilleur support international
-  - Remove Orbitron font
+  - Retire la police Orbitron
 - Les titres dans les zones de texte sont désormais stylisés de la même façon que le livre de base de CP:R
 - Mis à jour des tuiles de Netrunning avec des nouvelles tuiles de Solution3
-- Update Demon sheet layout to be less wonky
+- Mise à jour de la feuille de Démon pour que la disposition soit moins chelou
 - Changement de la manière dont nous traitons les objets de Marque
   - Les objets de marque ont été renommés pour utiliser le nom complet de l'objet selon sa source
   - Retire le gestionnaire de nom de la bande programmatique
@@ -60,11 +66,16 @@ Nous avons mis à jour les tuiles de Netrun, nous avons remplacé les fichiers P
 - Corrige les séparateurs de chemin d'image NET Arch
 - #951 - Corrige les références de pages dupliquées sur la description de l'élément qui sont déjà présentes dans les propriétés manuelles / de la page pour les éléments
 - #979 - Corrige le style des jets de dés dans le chat
+- Correction de la traduction de Medtech lorsque la souris survole la capacité de rôle
 - Ajout de plusieurs petites mise à jour des descriptions pour mieux comprendre différents objets
 - Corrige le débordement des images sur les feuilles d'objet
-- Fix typos in some items
+- Correction de faute de frappe dans certains items
+- Corrige les Ordinateurs n'étant pas isElectronic
 - Corrige le style favori du sélecteur de fichier
 - #1017 - Corrige les bonus d'effet appliqués aux attaques en doublon
+- Corrige les types de dégâts de programmes dans les messages du chat pour les programmes
+- Corrige l'impossibilité de créer des effets dans les objets possédés.
+- Corrige les compétences/actions de GLACE Noir n'étant pas traduit adéquatement
 
 ## Version 0.88.2
 
@@ -339,7 +350,7 @@ Si vous êtes intéressé par la création d'un thème pour le système, consult
   - Reminder: if using any roll modifiers and the card description modifier (#), the card description modifier must be the last one used on the line. This has always been the case, just calling it out here as this now adds an additional modifier.
 - Upgrade items can now have ActiveEffects added to them and activated when the item they are installed into is equipped
 
-### Changes
+### Changements
 
 #### Réécritures de feuilles
 
