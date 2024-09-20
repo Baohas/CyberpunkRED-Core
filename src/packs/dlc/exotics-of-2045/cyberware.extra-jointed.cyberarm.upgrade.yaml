@@ -16,7 +16,7 @@ system:
   damage: 1d6
   description:
     value: |
-      <p>Enchances cyberarm articulation. +2 Contortionist.</p>
+      <p>Enhances cyberarm articulation. +2 Contortionist.</p>
   dvTable: ""
   favorite: false
   fireModes:

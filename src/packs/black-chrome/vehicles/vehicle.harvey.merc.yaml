@@ -10,7 +10,7 @@ system:
     isConcealed: false
   description:
     value: |
-      <p>A classic roadbike, this time with mounted weapons.</p>
+      <p>A classic Roadbike, this time with mounted weapons.</p>
   favorite: false
   installedItems:
     allowed: true

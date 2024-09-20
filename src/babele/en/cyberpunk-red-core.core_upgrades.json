@@ -14,7 +14,7 @@
     },
     "Backup Drive": {
       "name": "Backup Drive",
-      "description": "<p>\n  Saves Non-Black IE programs when destroyed. These programs can be re-installed\n  by a Netrunner as a meat action.\n</p>\n"
+      "description": "<p>\n  Saves Non-Black ICE programs when destroyed. These programs can be\n  re-installed by a Netrunner as a meat action.\n</p>\n"
     },
     "Bayonet": {
       "name": "Bayonet",

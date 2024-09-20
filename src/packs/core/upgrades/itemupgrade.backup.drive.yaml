@@ -14,8 +14,8 @@ system:
   description:
     value: |
       <p>
-        Saves Non-Black IE programs when destroyed. These programs can be re-installed
-        by a Netrunner as a meat action.
+        Saves Non-Black ICE programs when destroyed. These programs can be
+        re-installed by a Netrunner as a meat action.
       </p>
   dvTable: ""
   favorite: false
